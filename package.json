@@ -1,6 +1,7 @@
 {
   "author": "Dennis Gerike",
   "dependencies": {
+    "ts-node": "10.9.2"
   },
   "description": "REST API for the open car database 'More Cars'",
   "devDependencies": {
@@ -12,7 +13,7 @@
   "name": "@more-cars/rest-api",
   "repository": "https://github.com/more-cars/rest-api",
   "scripts": {
-    "start": "node server.ts"
+    "start": "npx ts-node server.ts"
   },
   "version": "0.1.0"
 }
