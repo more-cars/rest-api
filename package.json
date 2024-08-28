@@ -1,6 +1,8 @@
 {
   "author": "Dennis Gerike",
   "dependencies": {
+    "@types/express": "4.17.21",
+    "express": "4.19.2",
     "ts-node": "10.9.2"
   },
   "description": "REST API for the open car database 'More Cars'",

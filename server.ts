@@ -1,3 +1,5 @@
-const greeting: string = "hello world"
+import express, {Express} from "express"
 
-console.log(greeting)
+const server: Express = express()
+
+console.log(`Server name: ${server.name}`)
