@@ -5,6 +5,9 @@
   "description": "REST API for the open car database 'More Cars'",
   "devDependencies": {
   },
+  "engines": {
+    "node": ">=22"
+  },
   "license": "MIT",
   "name": "@more-cars/rest-api",
   "repository": "https://github.com/more-cars/rest-api",
