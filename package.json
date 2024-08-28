@@ -1,0 +1,14 @@
+{
+  "author": "Dennis Gerike",
+  "dependencies": {
+  },
+  "description": "REST API for the open car database 'More Cars'",
+  "devDependencies": {
+  },
+  "license": "MIT",
+  "name": "@more-cars/rest-api",
+  "repository": "https://github.com/more-cars/rest-api",
+  "scripts": {
+  },
+  "version": "0.1.0"
+}
