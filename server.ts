@@ -1,5 +1,8 @@
 import express, {Express} from "express"
 
 const server: Express = express()
+const PORT = 3000
 
-console.log(`Server name: ${server.name}`)
+server.listen(PORT, () => {
+    console.log(`[server]: Server is running at http://localhost:${PORT}`)
+})
