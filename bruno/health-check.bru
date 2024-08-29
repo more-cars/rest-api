@@ -9,3 +9,10 @@ get {
   body: none
   auth: none
 }
+
+tests {
+  test("health check endpoint should return with status code 200", function() {
+    const data = res.getBody()
+    expect(res.getStatus()).to.equal(200)
+  })
+}

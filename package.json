@@ -17,7 +17,8 @@
   "repository": "https://github.com/more-cars/rest-api",
   "scripts": {
     "start": "npx ts-node server.ts",
-    "start-bruno-gui": "bruno"
+    "start-bruno-gui": "bruno",
+    "run-bruno-tests": "cd bruno && bru run --env local"
   },
   "version": "0.1.0"
 }
