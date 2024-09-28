@@ -21,6 +21,7 @@
     "start:minikube": "deployment/start-minikube-cluster.sh",
     "stop:minikube": "deployment/stop-minikube-cluster.sh",
     "delete:minikube": "deployment/stop-minikube-cluster.sh",
+    "app:deploy": "./deployment/deploy-app.sh",
     "start": "npx ts-node server.ts",
     "start-bruno-gui": "bruno",
     "run-bruno-tests": "cd bruno && bru run --env local",
