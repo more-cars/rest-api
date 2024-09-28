@@ -7,6 +7,20 @@
 * run `npm install`
 * run `npm start`
 
+## Minikube
+
+* run `install:minikube` to install the latest version of minikube
+    * requires sudo privileges
+    * can be run multiple times
+        * if a newer version is available it will be installed
+* run `start:minikube` to start the minikube cluster
+    * this should open the kubernetes dashboard in the browser
+* run `stop:minikube` to stop the minikube cluster
+    * can also be achieved by aborting the `start:minikube` terminal (`ctrl` + `c` or `command` + `c`)
+* run `delete:minikube` to destroy the minikube cluster
+    * a new one can be created with `start:minikube`
+    * changes to the memory or cpu settings require a "delete"
+
 ## API specification
 
 Every REST API endpoint is documented in an _OpenAPI_ file.

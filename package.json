@@ -17,6 +17,10 @@
   "name": "@more-cars/rest-api",
   "repository": "https://github.com/more-cars/rest-api",
   "scripts": {
+    "install:minikube": "./deployment/install-minikube.sh",
+    "start:minikube": "deployment/start-minikube-cluster.sh",
+    "stop:minikube": "deployment/stop-minikube-cluster.sh",
+    "delete:minikube": "deployment/stop-minikube-cluster.sh",
     "start": "npx ts-node server.ts",
     "start-bruno-gui": "bruno",
     "run-bruno-tests": "cd bruno && bru run --env local",
