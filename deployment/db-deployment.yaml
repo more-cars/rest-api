@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-dev-deployment
+  namespace: dev
+  labels:
+    app: db-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-dev
+  template:
+    metadata:
+      labels:
+        app: db-dev
+    spec:
+      containers:
+        - name:
+            neo4j-dev
+          image: neo4j:5.23.0
+          env:
+            - name: NEO4J_AUTH
+              value: neo4j/123456789

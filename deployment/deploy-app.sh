@@ -9,3 +9,6 @@ SCRIPT_PATH=$(dirname "$SCRIPT")
 # creating a namespace
 kubectl apply -f $SCRIPT_PATH/namespace.yaml
 kubectl config set-context --current --namespace=dev
+
+# creating the database
+kubectl apply -f $SCRIPT_PATH/db-deployment.yaml
