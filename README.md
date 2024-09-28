@@ -21,6 +21,15 @@
     * a new one can be created with `start:minikube`
     * changes to the memory or cpu settings require a "delete"
 
+## Start application
+
+* run `start:minikube` to start the kubernetes cluster (see [Minikube](#minikube) section)
+* run `app:deploy` to start the application
+    * this deploys the database and starts a service to be able to connect to it
+* run `tunnel:minikube` to allow the database service to be accessible from outside the cluster
+* run `app:undeploy` to remove the whole application from the cluster
+    * run `app:deploy` to start the application from scratch (empty database, etc.)
+
 ## API specification
 
 Every REST API endpoint is documented in an _OpenAPI_ file.
