@@ -10,6 +10,10 @@ get {
   auth: none
 }
 
+assert {
+  res.status: 200
+}
+
 tests {
   test("health check endpoint should return with status code 200", function() {
     const data = res.getBody()
