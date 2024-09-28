@@ -17,17 +17,17 @@
   "name": "@more-cars/rest-api",
   "repository": "https://github.com/more-cars/rest-api",
   "scripts": {
-    "install:minikube": "./deployment/install-minikube.sh",
-    "start:minikube": "deployment/start-minikube-cluster.sh",
-    "stop:minikube": "deployment/stop-minikube-cluster.sh",
-    "delete:minikube": "deployment/stop-minikube-cluster.sh",
-    "tunnel:minikube": "deployment/start-minikube-tunnel.sh",
+    "minikube:install": "./deployment/install-minikube.sh",
+    "minikube:start": "deployment/start-minikube-cluster.sh",
+    "minikube:stop": "deployment/stop-minikube-cluster.sh",
+    "minikube:delete": "deployment/delete-minikube-cluster.sh",
+    "minikube:tunnel": "deployment/start-minikube-tunnel.sh",
     "app:deploy": "./deployment/deploy-app.sh",
     "app:undeploy": "./deployment/undeploy-app.sh",
     "start": "npx ts-node server.ts",
     "start-bruno-gui": "bruno",
-    "run-bruno-tests": "cd bruno && bru run --env local",
-    "validate-api-schema": "npx ts-node tests/schema-validation.ts"
+    "tests:bruno": "cd bruno && bru run --env local",
+    "tests:validate-api-schema": "npx ts-node tests/schema-validation.ts"
   },
   "version": "0.1.0"
 }
