@@ -12,3 +12,4 @@ kubectl config set-context --current --namespace=dev
 
 # creating the database
 kubectl apply -f $SCRIPT_PATH/db-deployment.yaml
+kubectl apply -f $SCRIPT_PATH/db-service.yaml
