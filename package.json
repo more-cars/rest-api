@@ -21,6 +21,7 @@
     "start:minikube": "deployment/start-minikube-cluster.sh",
     "stop:minikube": "deployment/stop-minikube-cluster.sh",
     "delete:minikube": "deployment/stop-minikube-cluster.sh",
+    "tunnel:minikube": "deployment/start-minikube-tunnel.sh",
     "app:deploy": "./deployment/deploy-app.sh",
     "app:undeploy": "./deployment/undeploy-app.sh",
     "start": "npx ts-node server.ts",
