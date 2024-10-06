@@ -5,31 +5,48 @@
 * Install Node.js and npm
 * Clone repository: https://github.com/more-cars/rest-api.git
 * run `npm install`
-* run `npm start`
+* run `npm start` to start the app locally
+    * see [Minikube](#minikube) section on how to run the app in a local kubernetes cluster
 
 ## Minikube
+
+### Start cluster
 
 * run `npm run minikube:install` to install the latest version of minikube
     * requires sudo privileges
     * can be run multiple times
         * if a newer version is available it will be installed
 * run `npm run minikube:start` to start a local minikube cluster
-    * this should open the kubernetes dashboard in the browser
+    * this should open the kubernetes dashboard in the browser (~30-60 seconds)
 * run `npm run minikube:stop` to stop the minikube cluster
     * can also be achieved by aborting the `minikube:start` terminal (`ctrl` + `c` or `command` + `c`)
 * run `npm run minikube:delete` to destroy the minikube cluster
     * a new one can be created with `npm run minikube:start`
     * changes to the memory or cpu settings require a "delete"
 
-## Start application
+### Start application
 
-* run `npm run minikube:start` to start the kubernetes cluster (see [Minikube](#minikube) section)
-* run `npm run app:deploy` to start the application
-    * this deploys the database and starts a service to be able to connect to it
-* run `npm run minikube:tunnel` to allow the database service to be accessible from outside the cluster
+* make sure the minikube cluster is running (see [Minikube](#minikube) section)
+* run `npm run docker:build-image` to crate a docker image of the application
+    * the image will be built with the code that is currently on the disk
+* run `npm run docker:tag-image:local` to mark this image as a (temporary) dev version
+* run `npm run minikube:import-image` to push the image into the minikube cluster
+* run `npm run app:deploy` to deploy and start the application
+    * this deploys the app and the database
+    * this also starts the necessary services to be able to connect to app and db via browser
+* run `npm run minikube:open-tunnel` to allow the database service to be accessible from outside the cluster
     * requires sudo privileges
+* go to the "services" section in the kubernetes dashboard
+    * search for `app-dev-service`
+    * the column `external endpoints` contains the URL to access the app
+    * check out the URL to make sure the app is running properly
 * run `npm run app:undeploy` to remove the whole application from the cluster
-    * run `npm run app:deploy` to start the application from scratch (empty database, etc.)
+    * run `npm run app:deploy` to start the application from scratch again (empty database, fresh pods, etc.)
+
+## Build application
+
+* run `npm run docker:build-image` to create a docker image for the application
+    * the resulting image can be used for local deployments or for a "real" release candidate for production
 
 ## API specification
 
