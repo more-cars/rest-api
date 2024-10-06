@@ -1,0 +1,9 @@
+.dockerignore
+.git
+.gitignore
+.idea
+bruno
+deployment
+node_modules
+specification
+tests
