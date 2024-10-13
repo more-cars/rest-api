@@ -1,0 +1,22 @@
+meta {
+  name: get-api-spec
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 200
+}
+
+tests {
+  test("health check endpoint should return with status code 200", function() {
+    const data = res.getBody()
+    expect(res.getStatus()).to.equal(200)
+  })
+}
