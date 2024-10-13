@@ -23,6 +23,7 @@
     "docker:tag-image:local": "docker image tag mc-api localhost/mc-api:dev",
     "minikube:install": "./deployment/install-minikube.sh",
     "minikube:import-image": "minikube image load localhost/mc-api:dev -p mc-api",
+    "minikube:delete-image": "minikube image rm localhost/mc-api:dev -p mc-api",
     "minikube:start": "deployment/start-minikube-cluster.sh",
     "minikube:app:deploy": "./deployment/deploy-app.sh",
     "minikube:open-tunnel": "deployment/start-minikube-tunnel.sh",
