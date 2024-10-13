@@ -5,7 +5,8 @@
 * Install Node.js and npm
 * Clone repository: https://github.com/more-cars/rest-api.git
 * run `npm install`
-* run `npm start` to start the app locally
+* run `npm run local:app:start` to start the app locally
+    * it should be available at http://localhost:3000
     * see [Minikube](#minikube) section on how to run the app in a local kubernetes cluster
 
 ## Minikube
