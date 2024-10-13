@@ -17,3 +17,7 @@ kubectl apply -f $SCRIPT_PATH/db-service.yaml
 # creating the app
 kubectl apply -f $SCRIPT_PATH/app-deployment.yaml
 kubectl apply -f $SCRIPT_PATH/app-service.yaml
+
+# creating the Open API specification
+kubectl apply -f $SCRIPT_PATH/openapi-deployment.yaml
+kubectl apply -f $SCRIPT_PATH/openapi-service.yaml
