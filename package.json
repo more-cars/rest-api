@@ -17,6 +17,8 @@
   "name": "@more-cars/rest-api",
   "repository": "https://github.com/more-cars/rest-api",
   "scripts": {
+    "start": "npx ts-node server.ts",
+    "local:app:start": "npm start",
     "docker:build-image": "docker build -t mc-api -f deployment/Dockerfile . ",
     "docker:tag-image:local": "docker image tag mc-api localhost/mc-api:dev",
     "minikube:install": "./deployment/install-minikube.sh",
@@ -27,7 +29,6 @@
     "minikube:stop": "deployment/stop-minikube-cluster.sh",
     "minikube:app:undeploy": "./deployment/undeploy-app.sh",
     "minikube:delete": "deployment/delete-minikube-cluster.sh",
-    "start": "npx ts-node server.ts",
     "start-bruno-gui": "bruno",
     "tests:bruno": "cd bruno && bru run --env local",
     "tests:validate-api-schema": "npx ts-node tests/schema-validation.ts"
