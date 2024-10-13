@@ -29,8 +29,8 @@
     "minikube:stop": "deployment/stop-minikube-cluster.sh",
     "minikube:app:undeploy": "./deployment/undeploy-app.sh",
     "minikube:delete": "deployment/delete-minikube-cluster.sh",
-    "start-bruno-gui": "bruno",
-    "tests:bruno": "cd bruno && bru run --env local",
+    "tests:bruno:open-gui": "bruno",
+    "tests:bruno:run-cli": "cd bruno && bru run --env local",
     "tests:validate-api-schema": "npx ts-node tests/schema-validation.ts"
   },
   "version": "0.1.0"
