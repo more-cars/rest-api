@@ -16,6 +16,7 @@ server.listen(PORT, () => {
 server.get('/', async (req, res) => {
     const apiSpec = require('./specification/OpenApi.json')
     res.status(200)
+    res.setHeader('Content-Type', 'application/json')
     res.send(apiSpec)
 })
 
