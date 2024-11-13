@@ -49,6 +49,12 @@
 * run `npm run docker:build-image` to create a docker image for the application
     * the resulting image can be used for local deployments or for a "real" release candidate for production
 
+## Run tests
+
+* run `npm run tests:jest` to execute all unit tests
+* run `npm run tests:jest:coverage` to additionally create a code coverage report afterward
+    * the report will be stored in the `coverage` folder in the project's root directory
+
 ## API specification
 
 Every REST API endpoint is documented in an _OpenAPI_ file.
