@@ -1,2 +1,8 @@
+# external dependencies
 /node_modules/
+
+# artifacts
+/coverage/
+
+# IDE
 /.idea/
