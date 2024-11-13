@@ -21,7 +21,7 @@
   "name": "@more-cars/rest-api",
   "repository": "https://github.com/more-cars/rest-api",
   "scripts": {
-    "start": "npx ts-node server.ts",
+    "start": "npx ts-node src/server.ts",
     "local:app:start": "npm start",
     "docker:build-image": "docker build -t mc-api -f deployment/Dockerfile . ",
     "docker:tag-image:local": "docker image tag mc-api localhost/mc-api:dev",
