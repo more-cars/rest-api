@@ -2,13 +2,13 @@
   "openapi": "3.1.0",
   "info": {
     "title": "More Cars API 2.0",
-    "description": "OpenAPI specification of the More Cars API",
+    "description": "OpenAPI specification for the More Cars API 2.0",
     "version": "0.1.0"
   },
   "paths": {
     "/": {
       "get": {
-        "summary": "OpenAPI specification of the More Cars API",
+        "summary": "OpenAPI specification",
         "responses": {
           "200": {
             "description": "Successful",
@@ -29,6 +29,34 @@
         "responses": {
           "200": {
             "description": "Healthy",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/car-models/{car-model-id}": {
+      "get": {
+        "summary": "Get Car Model by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-id",
+            "description": "ID of the Car Model",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "No car model with this ID found.",
             "content": {
               "text/plain": {
                 "schema": {
