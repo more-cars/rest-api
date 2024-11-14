@@ -5,6 +5,20 @@
     "description": "OpenAPI specification for the More Cars API 2.0",
     "version": "0.1.0"
   },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Local"
+    },
+    {
+      "url": "http://10.104.56.60/",
+      "description": "Local Minikube"
+    },
+    {
+      "url": "https://more-cars.net/api/v2/",
+      "description": "Production"
+    }
+  ],
   "paths": {
     "/": {
       "get": {
