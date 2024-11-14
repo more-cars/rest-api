@@ -1,0 +1,15 @@
+meta {
+  name: Requesting a Car Model that does not exist
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/car-models/{{invalidCarModelId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 404
+}
