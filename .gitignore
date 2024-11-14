@@ -3,6 +3,7 @@
 
 # artifacts
 /coverage/
+/test-reports/
 
 # IDE
 /.idea/

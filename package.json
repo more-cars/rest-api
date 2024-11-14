@@ -9,6 +9,7 @@
   },
   "description": "REST API for the open car database 'More Cars'",
   "devDependencies": {
+    "@cucumber/cucumber": "11.0.1",
     "@types/jest": "29.5.14",
     "@usebruno/cli": "1.26.2",
     "jest": "29.7.0",
@@ -42,6 +43,7 @@
     "tests:bruno:run-cli": "cd bruno && bru run --env local",
     "tests:jest": "npx jest",
     "tests:jest:coverage": "npx jest --coverage",
+    "tests:cucumber": "npx cucumber-js",
     "tests:validate-api-schema": "npx ts-node tests/schema-validation.ts"
   },
   "version": "0.1.0"
