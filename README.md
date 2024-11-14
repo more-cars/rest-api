@@ -55,6 +55,12 @@
 * run `npm run tests:jest:coverage` to additionally create a code coverage report afterward
     * the report will be stored in the `coverage` folder in the project's root directory
 
+### Behavior tests
+
+* run `npm run tests:cucumber` to execute all behavior tests
+* this requires a running app -> `npm run local:app:start`
+* the report will be saved under `test-reports/behavior`
+
 ## Development mode
 
 When actively developing or debugging the app it is recommended to use the command `npm run dev:app:start`
