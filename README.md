@@ -51,9 +51,11 @@
 
 ## Run tests
 
+### Unit tests
+
 * run `npm run tests:jest` to execute all unit tests
 * run `npm run tests:jest:coverage` to additionally create a code coverage report afterward
-    * the report will be stored in the `coverage` folder in the project's root directory
+    * the report will be stored in the `test-reports/unit` folder
 
 ### Behavior tests
 
@@ -70,7 +72,7 @@ This will activate a file watcher which restarts the app anytime there is a code
 ## API specification
 
 Every REST API endpoint is documented in an _OpenAPI_ file.
-It can be found in the `specification` folder in the project's
+It can be found in the folder `specification/OpenAPI` in the project's
 root directory.
 To verify that the specification is a valid OpenAPI document, the command `npm run tests:validate-api-schema` can be
 executed. 
