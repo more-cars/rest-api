@@ -6,6 +6,12 @@
 import type {Config} from 'jest'
 
 const config: Config = {
+    preset: 'ts-jest',
+    testEnvironment: 'node',
+    testMatch: [
+        '**/tests/unit/*.ts',
+    ],
+
     // Indicates whether the coverage information should be collected while executing the test
     collectCoverage: false,
 
