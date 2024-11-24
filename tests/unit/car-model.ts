@@ -3,7 +3,7 @@ import {CarModel} from "../../src/models/CarModel"
 import {CarModelSchema} from "./schemas/CarModelSchema"
 
 describe('Car Models', () => {
-    test('Requesting a car model that does not exist', () => {
+    test('Requesting a car model that does not exist should fail', () => {
         const foundCarModel = CarModel.findById(-42)
         expect(foundCarModel).toBe(false)
     })
