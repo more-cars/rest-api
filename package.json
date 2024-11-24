@@ -11,7 +11,7 @@
   "devDependencies": {
     "@cucumber/cucumber": "11.1.0",
     "@types/jest": "29.5.14",
-    "@usebruno/cli": "1.26.2",
+    "@usebruno/cli": "1.35.0",
     "ajv": "8.17.1",
     "axios": "1.7.7",
     "jest": "29.7.0",
