@@ -74,5 +74,4 @@ This will activate a file watcher which restarts the app anytime there is a code
 Every REST API endpoint is documented in an _OpenAPI_ file.
 It can be found in the folder `specification/OpenAPI` in the project's
 root directory.
-To verify that the specification is a valid OpenAPI document, the command `npm run tests:validate-api-schema` can be
-executed. 
+To verify that the specification is a valid OpenAPI document run the command `npm run tests:validate-api-schema`.
