@@ -6,7 +6,7 @@ const PORT = 3000
 
 require('./routes/health')(server)
 require('./routes/open-api-specification')(server)
-require('./routes/car-model')(server)
+require('./routes/car-models')(server)
 
 // Allowing all CORS requests
 // TODO: CORS was enabled to allow the Swagger UI to load the API Spec. Does this have any side-effects or introduce security risks?
