@@ -12,8 +12,10 @@ const config: Config = {
         '**/tests/unit/*.ts',
     ],
 
-    // Indicates whether the coverage information should be collected while executing the test
     collectCoverage: false,
+    collectCoverageFrom: [
+        '**/src/**',
+    ],
 
     // The directory where Jest should output its coverage files
     coverageDirectory: "test-reports/unit/coverage",
