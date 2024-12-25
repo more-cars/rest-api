@@ -47,7 +47,7 @@
     "tests:jest": "npx jest",
     "tests:jest:coverage": "npx jest --coverage",
     "tests:cucumber": "npx cucumber-js",
-    "tests:validate-api-schema": "npx ts-node tests/schema-validation.ts"
+    "tests:validate-api-schema": "npx ts-node tests/api/schema-validation.ts"
   },
   "version": "0.1.0"
 }
