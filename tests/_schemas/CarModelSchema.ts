@@ -1,11 +1,11 @@
 export const CarModelSchema = {
     type: "object",
     properties: {
-        id: {type: "integer"},
+        mc_id: {type: "integer"},
         name: {type: "string"},
     },
     required: [
-        "id",
+        "mc_id",
         "name",
     ],
     additionalProperties: false,
