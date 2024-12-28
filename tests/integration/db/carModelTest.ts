@@ -5,7 +5,7 @@ describe('Car Model', () => {
         const expectedCarModelNode = false
         const actualCarModelNode = await getCarModelNodeById(-42)
 
-        expect(actualCarModel)
-            .toBe(expectedCarModel)
+        expect(actualCarModelNode)
+            .toBe(expectedCarModelNode)
     })
 })
