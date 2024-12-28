@@ -8,20 +8,11 @@ import type {Config} from 'jest'
 const config: Config = {
     preset: 'ts-jest',
     testEnvironment: 'node',
-    testMatch: [
-        '**/tests/unit/*.ts',
-    ],
-
+    testMatch: ['<rootDir>/tests/**/*Test.ts'],
     collectCoverage: false,
-    collectCoverageFrom: [
-        '**/src/**',
-    ],
-
-    // The directory where Jest should output its coverage files
-    coverageDirectory: "test-reports/unit/coverage",
-
-    // Indicates which provider should be used to instrument code for coverage
     coverageProvider: "v8",
+    coverageDirectory: '<rootDir>/test-reports/code_coverage',
+    collectCoverageFrom: ['<rootDir>/src/**'],
 }
 
 export default config

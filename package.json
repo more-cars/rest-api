@@ -45,8 +45,10 @@
     "minikube:delete": "deployment/delete-minikube-cluster.sh",
     "tests:bruno:open-gui": "bruno",
     "tests:bruno:run-cli": "cd bruno && bru run --env local",
-    "tests:jest": "npx jest",
-    "tests:jest:coverage": "npx jest --coverage",
+    "tests:unit": "npx jest --projects tests/unit",
+    "tests:integration": "npx jest --projects tests/integration",
+    "tests:unit+integration": "npx jest",
+    "tests:unit+integration:coverage": "npx jest --coverage",
     "tests:cucumber": "npx cucumber-js",
     "tests:validate-api-schema": "npx ts-node tests/api/schema-validation.ts"
   },
