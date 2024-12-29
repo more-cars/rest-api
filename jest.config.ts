@@ -12,6 +12,10 @@ const config: Config = {
     coverageProvider: "v8",
     coverageDirectory: '<rootDir>/test-reports/code_coverage',
     collectCoverageFrom: ['<rootDir>/src/**'],
+    coveragePathIgnorePatterns: [
+        '<rootDir>/src/server.ts',
+        '<rootDir>/src/types',
+    ],
 }
 
 export default config
