@@ -1,9 +1,8 @@
 import {Express} from "express"
 import {CarModel} from "../models/CarModel"
+import {createCarModelNode} from "../db/createCarModelNode"
 
-// Car model
 module.exports = (app: Express) => {
-    // Get car model by id
     app.get('/car-models/:id', async (req, res) => {
         const carModel = await CarModel.findById(parseInt(req.params.id))
 
@@ -16,5 +15,12 @@ module.exports = (app: Express) => {
         res.status(200)
         res.setHeader('Content-Type', 'application/json')
         res.send(carModel)
+    })
+
+    app.post('/car-models', async (req, res) => {
+        const createdNode = await createCarModelNode(req.body)
+        res.status(201)
+        res.setHeader('Content-Type', 'application/json')
+        res.send(createdNode)
     })
 }

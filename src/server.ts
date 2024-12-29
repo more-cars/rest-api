@@ -8,6 +8,9 @@ const PORT = 3000
 // TODO: CORS was enabled to allow the Swagger UI to load the API Spec. Does this have any side-effects or introduce security risks?
 server.use(cors())
 
+// enabling express to parse requests that have a json body
+server.use(express.json())
+
 require('./routes/health')(server)
 require('./routes/open-api-specification')(server)
 require('./routes/car-models')(server)
