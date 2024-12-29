@@ -18,9 +18,15 @@ module.exports = (app: Express) => {
     })
 
     app.post('/car-models', async (req, res) => {
-        const createdNode = await createCarModelNode(req.body)
-        res.status(201)
-        res.setHeader('Content-Type', 'application/json')
-        res.send(createdNode)
+        try {
+            const createdNode = await createCarModelNode(req.body)
+            res.status(201)
+            res.setHeader('Content-Type', 'application/json')
+            res.send(createdNode)
+        } catch (e) {
+            res.status(422)
+            res.setHeader('Content-Type', 'text/plain')
+            res.send('Request failed. Node could not be created.')
+        }
     })
 }
