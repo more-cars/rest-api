@@ -105,6 +105,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Invalid request.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }
