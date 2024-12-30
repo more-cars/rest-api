@@ -51,17 +51,25 @@
 
 ## Run tests
 
-### Unit tests
+### Unit / Integration tests
 
-* run `npm run tests:jest` to execute all unit tests
-* run `npm run tests:jest:coverage` to additionally create a code coverage report afterward
-    * the report will be stored in the `test-reports/unit` folder
+* run `npm run tests:unit` to execute all unit tests
+    * test reports will be created in folder `test-reports/unit`
+* run `npm run tests:integration` to execute all integration tests
+    * test reports will be created in folder `test-reports/integration`
+* run `npm run tests:unit+integration` to execute all unit and all integration tests
+    * test reports will be created in folder `test-reports/combined`
+* run `npm run tests:unit+integration:coverage` to create a combined code coverage report for both test suites
+    * test reports will be created in folder `test-reports/combined`
+    * the coverage report will be saved in folder `test-reports/code_coverage`
 
 ### Behavior tests
 
 * run `npm run tests:cucumber` to execute all behavior tests
-* this requires a running app -> `npm run local:app:start`
-* the report will be saved under `test-reports/behavior`
+* this requires
+    * a running app
+    * a running database
+* the report will be saved in folder `test-reports/behavior`
 
 ## Development mode
 
