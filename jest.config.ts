@@ -16,6 +16,12 @@ const config: Config = {
         '<rootDir>/src/server.ts',
         '<rootDir>/src/types',
     ],
+    coverageThreshold: {
+        global: {
+            statements: 50,
+            branches: 50
+        }
+    }
 }
 
 export default config
