@@ -1,0 +1,22 @@
+meta {
+  name: Creating a CAR MODEL with valid data
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/car-models
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "mc_id": 12345,
+    "name": "Corvette"
+  }
+}
+
+assert {
+  res.status: eq 201
+}
