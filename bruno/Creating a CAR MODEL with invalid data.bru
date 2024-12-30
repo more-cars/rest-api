@@ -1,0 +1,22 @@
+meta {
+  name: Creating a CAR MODEL with invalid data
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/car-models
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "mc_id": 54321,
+    "wrong_attribute_name": "Camaro"
+  }
+}
+
+assert {
+  res.status: eq 422
+}
