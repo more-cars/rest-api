@@ -69,6 +69,16 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Requested `Car Model` was found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModel"
+                }
+              }
+            }
+          },
           "404": {
             "description": "No car model with this ID found.",
             "content": {
