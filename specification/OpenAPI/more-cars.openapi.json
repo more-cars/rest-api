@@ -1,8 +1,8 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "More Cars API 2.0",
-    "description": "OpenAPI specification for the More Cars API 2.0",
+    "title": "More Cars - REST API Specification",
+    "description": "OpenAPI specification for the More Cars API",
     "version": "0.1.0"
   },
   "servers": [
@@ -56,12 +56,12 @@
     },
     "/car-models/{car-model-id}": {
       "get": {
-        "summary": "Get Car Model by ID",
+        "summary": "Get `Car Model` by ID",
         "parameters": [
           {
             "in": "path",
             "name": "car-model-id",
-            "description": "ID of the Car Model",
+            "description": "ID of the `Car Model`",
             "required": true,
             "schema": {
               "type": "integer"
@@ -80,7 +80,7 @@
             }
           },
           "404": {
-            "description": "No car model with this ID found.",
+            "description": "No `Car Model` with the provided ID found.",
             "content": {
               "text/plain": {
                 "schema": {
