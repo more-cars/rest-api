@@ -91,6 +91,23 @@
           }
         }
       }
+    },
+    "/car-models": {
+      "post": {
+        "summary": "Create `Car Model`",
+        "responses": {
+          "201": {
+            "description": "`Car Model` created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModel"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
