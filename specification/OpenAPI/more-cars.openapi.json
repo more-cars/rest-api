@@ -82,5 +82,24 @@
         }
       }
     }
+  },
+  "components": {
+    "schemas": {
+      "CarModel": {
+        "type": "object",
+        "required": [
+          "mc_id",
+          "name"
+        ],
+        "properties": {
+          "mc_id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    }
   }
 }
