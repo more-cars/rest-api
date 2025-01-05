@@ -1,23 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: db-dev-deployment
+  name: api-db-deployment
   namespace: dev
   labels:
-    app: db-dev
+    app.kubernetes.io/name: api-db
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/component: database
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: db-dev
+      app: api-db
   template:
     metadata:
       labels:
-        app: db-dev
+        app: api-db
     spec:
       containers:
         - name:
-            neo4j-dev
+            neo4j
           image: neo4j:5.23.0
           env:
             - name: NEO4J_AUTH

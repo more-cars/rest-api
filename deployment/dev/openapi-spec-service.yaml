@@ -1,14 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: openapi-dev-service
+  name: openapi-spec-service
   namespace: dev
   labels:
-    app: openapi-dev
+    app.kubernetes.io/name: openapi-spec
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/component: server
 spec:
   type: LoadBalancer
   selector:
-    app: openapi-dev
+    app: openapi-spec
   ports:
     - name: http
       port: 80
