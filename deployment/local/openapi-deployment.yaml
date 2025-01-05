@@ -19,4 +19,4 @@ spec:
     spec:
       containers:
         - name: swagger-ui-dev
-          image: swaggerapi/swagger-ui
+          image: swaggerapi/swagger-ui:v5.18.2
