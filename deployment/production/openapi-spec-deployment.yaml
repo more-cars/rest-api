@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openapi-spec-deployment
+  namespace: production
+  labels:
+    app.kubernetes.io/name: openapi-spec
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/component: server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: openapi-spec
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: openapi-spec
+    spec:
+      containers:
+        - name: swagger-ui
+          image: swaggerapi/swagger-ui:v5.18.2

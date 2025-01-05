@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+  namespace: production
+  labels:
+    app.kubernetes.io/name: api
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/component: server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: more-cars-api
+          image: dennisgerike/more-cars-api:0.1.0
+          imagePullPolicy: Always
+          env:
+            - name: DB_HOST
+              value: $(API_DB_SERVICE_SERVICE_HOST)
+      imagePullSecrets:
+        - name: dpr-secret
+
