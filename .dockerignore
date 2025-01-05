@@ -1,8 +1,10 @@
 .dockerignore
-.git
-.gitignore
+.env*
+.git*
 .idea
 bruno
+cucumber.js
+jest.config.ts
 deployment
 node_modules
 test-reports
