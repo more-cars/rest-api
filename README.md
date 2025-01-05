@@ -4,6 +4,8 @@
 
 * Install Node.js and npm
 * Clone repository: https://github.com/more-cars/rest-api.git
+* Copy the `.env.template` file and save as `.env`
+* Configure the location of a running database in the `.env` file
 * run `npm install`
 * run `npm run local:app:start` to start the app locally
     * it should be available at http://localhost:3000
