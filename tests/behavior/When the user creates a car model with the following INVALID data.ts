@@ -11,7 +11,7 @@ When('the user creates a car model with the following INVALID data', async funct
     }
 
     this.latestResponse = await axios
-        .post(`http://localhost:3000/car-models`, carModelData, { // TODO dynamic base url
+        .post(`${process.env.API_URL}/car-models`, carModelData, {
             validateStatus: function (status) {
                 return status === 422 // treating the 422 as a "good" status code, so axios does not fail the request
             }

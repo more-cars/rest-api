@@ -12,5 +12,5 @@ When('the user creates a car model A with the following valid data', async funct
 
     this.carModelA = carModelData
     this.latestResponse = await axios
-        .post(`http://localhost:3000/car-models`, carModelData) // TODO dynamic base url
+        .post(`${process.env.API_URL}/car-models`, carModelData)
 })

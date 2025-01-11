@@ -7,5 +7,5 @@ When('the user requests the car model A via ID', async function () {
     const id = carModelA.mc_id
 
     this.latestResponse = await axios
-        .get(`http://localhost:3000/car-models/${id}`) // TODO dynamic base url
+        .get(`${process.env.API_URL}/car-models/${id}`)
 })
