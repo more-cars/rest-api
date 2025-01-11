@@ -12,6 +12,7 @@ describe('Car Model', () => {
         // the type checker would terminate the program instantly with error code TS2353.
         // When circumventing this type check via @ts-ignore then Neo4j is the second line of defense.
         // The provided data should not be accepted, because the attribute mapping will not work anymore.
+        // @ts-ignore
         await expect(createCarModelNode({
             mc_id: 987654,
             // @ts-ignore
