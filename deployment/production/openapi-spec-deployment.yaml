@@ -22,3 +22,6 @@ spec:
       containers:
         - name: swagger-ui
           image: swaggerapi/swagger-ui:v5.18.2
+          env:
+            - name: URL
+              value: http://$(API_SERVICE_SERVICE_HOST)
