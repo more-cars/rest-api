@@ -26,6 +26,3 @@ spec:
           env:
             - name: DB_HOST
               value: $(API_DB_SERVICE_SERVICE_HOST)
-      imagePullSecrets:
-        - name: dpr-secret
-
