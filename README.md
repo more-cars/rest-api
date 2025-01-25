@@ -11,7 +11,7 @@
     * it should be available at http://localhost:3000
     * see [Minikube](#minikube) section on how to run the app in a local kubernetes cluster
 
-## Minikube
+## Minikube (Local Dev Cluster)
 
 ### Start cluster
 
@@ -84,3 +84,45 @@ Every REST API endpoint is documented in an _OpenAPI_ file.
 It can be found in the folder `specification/OpenAPI` in the project's
 root directory.
 To verify that the specification is a valid OpenAPI document run the command `npm run tests:validate-api-schema`.
+
+## Deployment To Production Environment
+
+### Deploying From Local Machine
+
+Deploying the application to a "real" kubernetes cluster is very similar
+to the deployment with Minikube (see [minikube section](#minikube-local-dev-cluster)).
+The Kubernetes configs are indeed exactly the same, see folder `deployment/prod`.
+They are used for both clusters identically.
+The only difference lies in getting access to the cluster.
+
+#### Production-like Environment In Minikube
+
+With `npm run minikube:deploy:prod` the application is deployed to the local Minikube cluster.
+This is the same command that was used in the [minikube section](#minikube-local-dev-cluster),
+only this time it creates a `prod` environment instead of a `dev` environment.
+The main difference being the source of the docker image (local vs DockerHub repository).
+
+The start script (`npm run minikube:start`) will automatically create a cluster if it doesn't exist yet.
+
+#### Real Production Environment In Google Cloud
+
+The command `npm run gke:deploy:prod` will log in to the Google Cloud,
+select the correct cluster and then roll out all the Kubernetes configuration files.
+
+When this is the first time, all pods and services will be created.
+When the deployment already exists it will be updated.
+When there is nothing to update (because no changes) then nothing will happen to the existing deployment.
+
+The cluster will **not** be created on the fly.
+If it doesn't exist then the deployment will fail.
+It needs to be created manually.
+There exists no script, yet.
+
+The login step will open a browser window and requires a manual login to the Google Cloud.
+
+For the script to work the tools `gcloud` and `kubectl` need to be installed.
+See https://cloud.google.com/sdk/docs/install and https://kubernetes.io/docs/tasks/tools/.
+
+### Deploying Via GitHub Actions Pipeline
+
+...
