@@ -9,7 +9,7 @@
 * run `npm install`
 * run `npm run local:app:start` to start the app locally
     * it should be available at http://localhost:3000
-    * see [Minikube](#minikube) section on how to run the app in a local kubernetes cluster
+    * see [Minikube](#minikube-local-dev-cluster) section on how to run the app in a local kubernetes cluster
 
 ## Minikube (Local Dev Cluster)
 
@@ -29,7 +29,7 @@
 
 ### Start application
 
-* make sure the minikube cluster is running (see [Minikube](#minikube) section)
+* make sure the minikube cluster is running (see [Minikube](#minikube-local-dev-cluster) section)
 * run `npm run docker:build-image` to crate a docker image of the application
     * the image will be built with the code that is currently on the disk
 * run `npm run docker:tag-image:dev` to mark this image as a (temporary) dev version
