@@ -6,6 +6,9 @@
 SCRIPT=$(readlink -f "$0")
 SCRIPT_PATH=$(dirname "$SCRIPT")/$1
 
+# making sure we are actually in the Minikube cluster, not in the Google cluster
+kubectl config use-context mc-api
+
 # creating a namespace
 kubectl apply -f $SCRIPT_PATH/namespace.yaml
 kubectl config set-context --current --namespace=$1
