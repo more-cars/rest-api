@@ -50,6 +50,8 @@
     "minikube:undeploy:prod": "deployment/minikube-app-undeploy.sh prod",
     "minikube:import-dev-image": "minikube image load localhost/mc-api:dev -p mc-api",
     "minikube:delete-dev-image": "minikube image rm localhost/mc-api:dev -p mc-api",
+    "gke:deploy:prod": "deployment/gke-app-deploy.sh prod",
+    "gke:undeploy:prod": "deployment/gke-app-undeploy.sh prod",
     "tests:bruno:open-gui": "bruno",
     "tests:bruno:run-cli": "cd bruno && bru run --env local",
     "tests:unit": "npx jest --projects tests/unit",
