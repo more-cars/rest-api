@@ -25,3 +25,10 @@ spec:
           env:
             - name: URL
               value: http://$(API_SERVICE_SERVICE_HOST)
+          resources:
+            requests:
+              cpu: "10m"
+              memory: "5Mi"
+            limits:
+              cpu: "20m"
+              memory: "10Mi"

@@ -26,3 +26,10 @@ spec:
           env:
             - name: DB_HOST
               value: $(API_DB_SERVICE_SERVICE_HOST)
+          resources:
+            requests:
+              cpu: "70m"
+              memory: "210Mi"
+            limits:
+              cpu: "100m"
+              memory: "250Mi"
