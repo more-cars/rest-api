@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: openapi-spec-service
-  namespace: production
+  namespace: production-2
   labels:
     app.kubernetes.io/name: openapi-spec
     app.kubernetes.io/version: "0.1.0"
