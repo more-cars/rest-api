@@ -32,19 +32,18 @@
 * make sure the minikube cluster is running (see [Minikube](#minikube) section)
 * run `npm run docker:build-image` to crate a docker image of the application
     * the image will be built with the code that is currently on the disk
-* run `npm run docker:tag-image:local` to mark this image as a (temporary) dev version
-* run `npm run minikube:import-image` to push the image into the minikube cluster
-* run `npm run minikube:app:deploy` to deploy and start the application
-    * this deploys the app and the database
-    * this also starts the necessary services to be able to connect to app and db via browser
-* run `npm run minikube:open-tunnel` to allow the database service to be accessible from outside the cluster
+* run `npm run docker:tag-image:dev` to mark this image as a (temporary) dev version
+* run `npm run minikube:import-dev-image` to push the image into the minikube cluster
+* run `npm run minikube:deploy:dev` to deploy and start the application
+    * this deploys the app, the database and the API specification (SwaggerUI)
+* run `npm run minikube:open-tunnel` to allow the services to be accessible from outside the cluster
     * requires sudo privileges
 * go to the "services" section in the kubernetes dashboard
     * search for `app-dev-service`
     * the column `external endpoints` contains the URL to access the app
     * check out the URL to make sure the app is running properly
-* run `npm run minikube:app:undeploy` to remove the whole application from the cluster
-    * run `npm run minikube:app:deploy` to start the application from scratch again (empty database, fresh pods, etc.)
+* run `npm run minikube:undeploy:dev` to remove the whole application from the cluster
+    * run `npm run minikube:deploy:dev` to start the application from scratch again (empty database, fresh pods, etc.)
 
 ## Build application
 
