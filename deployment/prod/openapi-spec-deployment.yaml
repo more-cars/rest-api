@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: openapi-spec-deployment
-  namespace: production-2
+  namespace: prod
   labels:
     app.kubernetes.io/name: openapi-spec
     app.kubernetes.io/version: "0.1.0"

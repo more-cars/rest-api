@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: api-db-deployment
-  namespace: production-2
+  namespace: prod
   labels:
     app.kubernetes.io/name: api-db
     app.kubernetes.io/version: "0.1.0"
