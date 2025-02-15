@@ -8,12 +8,12 @@ module.exports = (app: Express) => {
 
         if (!carModel) {
             res.status(404)
-            res.setHeader('Content-Type', 'text/plain')
+            res.set('Content-Type', 'text/plain')
             return res.send(`A "Car Model" with ID ${req.params.id} could not be found.`)
         }
 
         res.status(200)
-        res.setHeader('Content-Type', 'application/json')
+        res.set('Content-Type', 'application/json')
         res.send(carModel)
     })
 
@@ -21,11 +21,11 @@ module.exports = (app: Express) => {
         try {
             const createdNode = await createCarModelNode(req.body)
             res.status(201)
-            res.setHeader('Content-Type', 'application/json')
+            res.set('Content-Type', 'application/json')
             res.send(createdNode)
         } catch (e) {
             res.status(422)
-            res.setHeader('Content-Type', 'text/plain')
+            res.set('Content-Type', 'text/plain')
             res.send('Request failed. Node could not be created.')
         }
     })
