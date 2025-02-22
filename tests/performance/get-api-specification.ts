@@ -4,16 +4,16 @@ import {check} from "k6"
 export const options = {
     thresholds: {
         http_req_failed: ['rate<=0.0'],
-        http_req_duration: ['p(90)<=50', 'p(95)<=200', 'p(99)<=500'],
+        http_req_duration: ['p(1)<=5', 'p(90)<=10', 'p(95)<=30', 'p(99)<=100'],
     },
     scenarios: {
         getApiSpecification: {
             executor: 'constant-arrival-rate',
-            duration: '1m',
-            rate: 10,
+            duration: '5m',
+            rate: 5,
             timeUnit: '1s',
-            preAllocatedVUs: 10,
-            maxVUs: 10,
+            preAllocatedVUs: 5,
+            maxVUs: 5,
             gracefulStop: '10s',
         }
     }
