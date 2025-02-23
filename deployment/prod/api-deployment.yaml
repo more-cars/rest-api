@@ -22,14 +22,13 @@ spec:
       containers:
         - name: more-cars-api
           image: dennisgerike/more-cars-api:0.1.0
-          imagePullPolicy: Always
           env:
             - name: DB_HOST
               value: $(API_DB_SERVICE_SERVICE_HOST)
           resources:
             requests:
-              cpu: "70m"
+              cpu: "50m"
               memory: "210Mi"
             limits:
               cpu: "100m"
-              memory: "250Mi"
+              memory: "400Mi"
