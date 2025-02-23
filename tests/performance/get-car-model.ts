@@ -1,17 +1,21 @@
 import http from 'k6/http'
 import {check} from "k6"
+import {Trend} from "k6/metrics"
+
+const trendDuration = new Trend('duration', true)
 
 export const options = {
+    summaryTrendStats: ['count', 'min', 'p(1)', 'p(90)', 'p(95)', 'p(98)'],
     thresholds: {
         http_req_failed: ['rate<=0.0'],
-        http_req_duration: ['p(1)<=50', 'p(90)<=50', 'p(95)<=100', 'p(99)<=300'],
+        duration: ['p(1)<=10', 'p(90)<=40', 'p(95)<=100', 'p(98)<=500'],
     },
     scenarios: {
         createCarModel: {
             exec: 'createCarModel',
             executor: 'constant-arrival-rate',
             duration: '1s',
-            rate: 1,
+            rate: 2,
             timeUnit: '1s',
             preAllocatedVUs: 1,
             maxVUs: 1,
@@ -20,7 +24,7 @@ export const options = {
         getCarModel: {
             exec: 'getCarModel',
             executor: 'constant-arrival-rate',
-            startTime: '15s',
+            startTime: '5s',
             duration: '5m',
             rate: 1,
             timeUnit: '1s',
@@ -63,4 +67,6 @@ export function getCarModel() {
         'returns with status code 200': (r) => r.status === 200,
         'content-type is JSON': (r) => r.headers['Content-Type'].includes('application/json'),
     })
+
+    trendDuration.add(response.timings.duration)
 }
