@@ -24,7 +24,7 @@ export const options = {
 }
 
 export default function () {
-    const response = http.get('http://api.more-cars.internal')
+    const response = http.get('http://api.more-cars.prod.internal')
 
     check(response, {
         'returns with status code 200': (r) => r.status === 200,

@@ -24,7 +24,7 @@ export const options = {
 }
 
 export default function () {
-    const url = 'http://api.more-cars.internal/car-models'
+    const url = 'http://api.more-cars.prod.internal/car-models'
     const payload = {
         "mc_id": 12345,
         "name": "Performance Test Car Model",

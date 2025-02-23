@@ -37,7 +37,7 @@ export const options = {
 
 // ARRANGE
 export function createCarModel() {
-    const url = 'http://api.more-cars.internal/car-models'
+    const url = 'http://api.more-cars.prod.internal/car-models'
     const payload = {
         "mc_id": 12345,
         "name": "Performance Test Car Model",
@@ -59,7 +59,7 @@ export function createCarModel() {
 
 // ACT + ASSERT
 export function getCarModel() {
-    const url = 'http://api.more-cars.internal/car-models/12345'
+    const url = 'http://api.more-cars.prod.internal/car-models/12345'
 
     const response = http.get(url)
 
