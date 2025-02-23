@@ -3,7 +3,7 @@
   "info": {
     "title": "More Cars - REST API Specification",
     "description": "OpenAPI specification for the More Cars API",
-    "version": "0.1.0"
+    "version": "0.2.0"
   },
   "servers": [
     {
