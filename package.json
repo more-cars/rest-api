@@ -38,6 +38,7 @@
     "docker:build-image": "docker build -t mc-api -f deployment/Dockerfile .",
     "docker:tag-image": "docker image tag mc-api dennisgerike/more-cars-api:0.1.0",
     "docker:tag-image:dev": "docker image tag mc-api localhost/mc-api:dev",
+    "docker:login": "docker login",
     "docker:push-image": "docker push dennisgerike/more-cars-api:0.1.0",
     "docker:app:start": "docker run --rm localhost/mc-api:dev",
     "minikube:install": "deployment/minikube-install.sh",
