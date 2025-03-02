@@ -1,20 +1,7 @@
-import express, {Express} from "express"
-import cors from "cors"
+import {app} from "./app"
 
-const server: Express = express()
 const PORT = 3000
 
-// Allowing all CORS requests
-// TODO: CORS was enabled to allow the Swagger UI to load the API Spec. Does this have any side-effects or introduce security risks?
-server.use(cors())
-
-// enabling express to parse requests that have a json body
-server.use(express.json())
-
-require('./routes/health')(server)
-require('./routes/open-api-specification')(server)
-require('./routes/car-models')(server)
-
-server.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`[server]: Server is running at http://localhost:${PORT}`)
 })
