@@ -13,6 +13,7 @@ Then('the response should return the car model A', function () {
     const valid = validate(actualCarModel)
     if (!valid) {
         console.log(validate.errors)
+        console.log(actualCarModel)
     }
     assert.ok(valid)
 
