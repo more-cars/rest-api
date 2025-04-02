@@ -109,9 +109,10 @@ export K6_WEB_DASHBOARD_EXPORT=../../test-reports/performance/html-report.html \
 
 ## Development mode
 
-When actively developing or debugging the app it is recommended to use the command `npm run dev:app:start`
-instead of the `local:app:start` script.
-This will activate a file watcher which restarts the app anytime there is a code change in the `src` folder.
+Running the app with `npm start` will start it with a production-like configuration.
+When developing and debugging the app it is recommended to use the command `npm run local:app:start` instead.
+This will activate a file watcher which listens to all modules that are used by the app.
+Whenever one of them is changed the app will automatically be restarted with those changes.
 
 ## API specification
 
