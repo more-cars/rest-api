@@ -4,7 +4,11 @@ const USER = 'neo4j'
 const PASSWORD = '123456789'
 
 export function getDriver() {
-    return neo4j.driver(getDatabaseUrl(), neo4j.auth.basic(USER, PASSWORD))
+    return neo4j.driver(
+        getDatabaseUrl(),
+        neo4j.auth.basic(USER, PASSWORD),
+        {disableLosslessIntegers: true} // see https://github.com/neo4j/neo4j-javascript-driver?tab=readme-ov-file#enabling-native-numbers
+    )
 }
 
 export async function closeDriver(driver: Driver) {
