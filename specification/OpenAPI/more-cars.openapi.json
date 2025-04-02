@@ -125,7 +125,6 @@
       "CarModel": {
         "type": "object",
         "required": [
-          "mc_id",
           "name"
         ],
         "properties": {
