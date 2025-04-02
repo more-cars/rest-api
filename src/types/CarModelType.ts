@@ -1,4 +1,4 @@
 export type CarModelType = {
-    mc_id: number
+    mc_id?: number
     name: string
 }
