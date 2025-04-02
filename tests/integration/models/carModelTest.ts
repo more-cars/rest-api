@@ -12,12 +12,11 @@ describe('Car Model', () => {
 
     test('Creating a car model with valid data should return the new node', async () => {
         const carModelData = {
-            mc_id: faker.number.int({max: 10000}),
             name: faker.vehicle.model(),
         }
         const createdNode = await CarModel.create(carModelData)
 
         expect(createdNode)
-            .toEqual(carModelData)
+            .toEqual(expect.objectContaining(carModelData))
     })
 })

@@ -4,6 +4,7 @@ import {faker} from "@faker-js/faker"
 import {Neo4jError} from "neo4j-driver"
 import Ajv from "ajv"
 import {CarModelSchema} from "../../_schemas/CarModelSchema"
+import {CarModelType} from "../../../src/types/CarModelType"
 
 describe('Car Model', () => {
     test('Creating a car model with invalid data should not be possible', async () => {
@@ -14,7 +15,6 @@ describe('Car Model', () => {
         // The provided data should not be accepted, because the attribute mapping will not work anymore.
         // @ts-ignore
         await expect(createCarModelNode({
-            mc_id: 987654,
             // @ts-ignore
             bad_name: faker.vehicle.model(),
         })).rejects
@@ -23,13 +23,12 @@ describe('Car Model', () => {
 
     test('Creating a car model with valid data should result in a new database node', async () => {
         const carModelData = {
-            mc_id: faker.number.int({max: 10000}),
             name: faker.vehicle.model(),
         }
         const createdNode = await createCarModelNode(carModelData)
 
         expect(createdNode)
-            .toEqual(carModelData)
+            .toEqual(expect.objectContaining(carModelData))
     })
 
     test('Querying a car model that does not exist should return "false"', async () => {
@@ -42,14 +41,12 @@ describe('Car Model', () => {
 
     test('Querying an existing car model should return a db node with correct schema', async () => {
         // ARRANGE
-        const nodeId = faker.number.int({max: 10000})
-        await createCarModelNode({
-            mc_id: nodeId,
+        const createdNode: CarModelType = await createCarModelNode({
             name: faker.vehicle.model(),
         })
 
         // ACT
-        const carModelNode = await getCarModelNodeById(nodeId)
+        const carModelNode = await getCarModelNodeById(createdNode.mc_id as number)
 
         // ASSERT
         const validate = new Ajv().compile(CarModelSchema)
