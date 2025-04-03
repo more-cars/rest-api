@@ -1,6 +1,5 @@
 import {Express} from "express"
 import {CarModel} from "../models/CarModel"
-import {createCarModelNode} from "../db/createCarModelNode"
 
 module.exports = (app: Express) => {
     app.get('/car-models/:id', async (req, res) => {
@@ -19,7 +18,7 @@ module.exports = (app: Express) => {
 
     app.post('/car-models', async (req, res) => {
         try {
-            const createdNode = await createCarModelNode(req.body)
+            const createdNode = await CarModel.create(req.body)
             res.status(201)
             res.set('Content-Type', 'application/json')
             res.send(createdNode)
