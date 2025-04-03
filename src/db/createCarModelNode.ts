@@ -23,7 +23,7 @@ async function createCarModel(carModelData: CarModelType, driver: Driver): Promi
             LIMIT 1`,
         carModelData,
     )
-    const dbNode = records.map(record => record.get('cm'))[0]
+    const dbNode = records[0].get('cm')
 
     // 2. Adding a custom More Cars ID for that node
     // Note: This seems pointless at first glance, because the More Cars ID is exactly the same as the Neo4j ID.
