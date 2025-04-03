@@ -1,4 +1,4 @@
-import {Driver, Session} from "neo4j-driver"
+import {Driver, Node, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "./driver"
 import {CarModelType} from "../types/CarModelType"
 import {dbCarModelType} from "./types/dbCarModelType"
@@ -42,10 +42,14 @@ async function createCarModel(carModelData: CarModelType, driver: Driver): Promi
     return nodeData
 }
 
-async function setMoreCarsId(elementId: string, moreCarsId: number, driver: Driver) {
-    await driver.executeQuery(`
-        MATCH (cm:CarModel) 
-        WHERE elementId(cm) = "${elementId}"
-        SET cm.mc_id = ${moreCarsId}`,
-    )
+async function setMoreCarsId(elementId: string, moreCarsId: number, driver: Driver): Promise<Node> {
+    const {records} = await driver.executeQuery(`
+        MATCH (node:CarModel) 
+        WHERE elementId(node) = "${elementId}"
+        SET node.mc_id = ${moreCarsId}
+        RETURN node
+        LIMIT 1
+    `)
+
+    return records[0].get('node')
 }
