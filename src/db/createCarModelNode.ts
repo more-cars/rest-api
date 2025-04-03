@@ -23,23 +23,27 @@ async function createCarModel(carModelData: CarModelType, driver: Driver): Promi
             LIMIT 1`,
         carModelData,
     )
-    const dbNode = records[0].get('cm')
+    const createdDbNode: Node = records[0].get('cm')
 
     // 2. Adding a custom More Cars ID for that node
     // Note: This seems pointless at first glance, because the More Cars ID is exactly the same as the Neo4j ID.
     //       The benefit: we can modify the More Cars ID anytime, while the Neo4j ID is always read-only.
     //       This will become relevant when migrating nodes from the old database.
     //       In that scenario we need to be able to carry over the existing IDs.
-    const elementId = dbNode.elementId
+    const elementId = createdDbNode.elementId
     const elementIdSplit: Array<string> = elementId.split(':')
     const moreCarsId: number = parseInt(elementIdSplit[2])
-    await setMoreCarsId(elementId, moreCarsId, driver)
+    const enrichedDbNode: Node = await setMoreCarsId(elementId, moreCarsId, driver)
 
-    // 3. Adding the More Cars ID to the response object
-    let nodeData: dbCarModelType = dbNode.properties
-    nodeData['mc_id'] = moreCarsId
+    // 3. Converting the Neo4j node to a More Cars node
+    const node: dbCarModelType = {
+        element_id: enrichedDbNode.elementId,
+        id: enrichedDbNode.identity.high,
+        mc_id: enrichedDbNode.properties.mc_id,
+        name: enrichedDbNode.properties.name
+    }
 
-    return nodeData
+    return node
 }
 
 async function setMoreCarsId(elementId: string, moreCarsId: number, driver: Driver): Promise<Node> {
