@@ -17,8 +17,10 @@ export async function createCarModelNode(carModelData: CarModelType): Promise<db
 
 async function createCarModel(carModelData: CarModelType, driver: Driver): Promise<dbCarModelType> {
     // 1. Creating the node in the database
-    const {records} = await driver.executeQuery(
-        'CREATE (cm:CarModel {name: $name}) RETURN cm',
+    const {records} = await driver.executeQuery(`
+            CREATE (cm:CarModel {name: $name}) 
+            RETURN cm 
+            LIMIT 1`,
         carModelData,
     )
     const dbNode = records.map(record => record.get('cm'))[0]
