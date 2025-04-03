@@ -1,8 +1,8 @@
 import {Driver, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "./driver"
-import {CarModelType} from "../types/CarModelType"
+import {dbCarModelType} from "./types/dbCarModelType"
 
-export async function getCarModelNodeById(id: number) {
+export async function getCarModelNodeById(id: number): Promise<false | dbCarModelType> {
     const driver: Driver = getDriver()
     const session: Session = driver.session()
 
@@ -18,7 +18,7 @@ export async function getCarModelNodeById(id: number) {
         return false
     }
 
-    const dbNode: CarModelType = records.map(record => record.get('cm'))[0].properties
+    const dbNode: dbCarModelType = records.map(record => record.get('cm'))[0].properties
 
     return dbNode
 }
