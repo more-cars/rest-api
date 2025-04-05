@@ -36,6 +36,7 @@
   "scripts": {
     "start": "npx ts-node src/server.ts",
     "local:app:start": "node --watch --env-file=.env -r ts-node/register src/server.ts",
+    "local:db:start": "docker run --rm --env=NEO4J_AUTH=none --publish=7474:7474 --publish=7687:7687 neo4j:5.23.0",
     "docker:build-image": "docker build -t mc-api -f deployment/Dockerfile .",
     "docker:tag-image": "docker image tag mc-api dennisgerike/more-cars-api:0.2.0",
     "docker:tag-image:dev": "docker image tag mc-api localhost/mc-api:dev",
