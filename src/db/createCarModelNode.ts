@@ -36,7 +36,7 @@ async function createCarModel(carModelData: CarModelNode, driver: Driver): Promi
 
     // 3. Converting the Neo4j node to a More Cars node
     const node: CarModelNode = {
-        mc_id: enrichedDbNode.properties.mc_id,
+        id: enrichedDbNode.properties.mc_id,
         name: enrichedDbNode.properties.name
     }
 

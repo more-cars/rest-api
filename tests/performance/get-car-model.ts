@@ -39,7 +39,6 @@ export const options = {
 export function createCarModel() {
     const url = `${__ENV.API_URL}/car-models`
     const payload = {
-        "mc_id": 12345,
         "name": "Performance Test Car Model",
     }
 
@@ -59,7 +58,7 @@ export function createCarModel() {
 
 // ACT + ASSERT
 export function getCarModel() {
-    const url = `${__ENV.API_URL}/car-models/12345`
+    const url = `${__ENV.API_URL}/car-models/0`
     const response = http.get(url)
 
     check(response, {

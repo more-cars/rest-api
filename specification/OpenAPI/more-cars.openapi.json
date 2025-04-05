@@ -128,7 +128,7 @@
           "name"
         ],
         "properties": {
-          "mc_id": {
+          "id": {
             "type": "integer"
           },
           "name": {

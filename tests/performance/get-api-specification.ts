@@ -1,6 +1,6 @@
 import http from 'k6/http'
 import {check} from "k6"
-import {Trend} from "k6/metrics";
+import {Trend} from "k6/metrics"
 
 const trendDuration = new Trend('duration', true)
 

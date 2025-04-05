@@ -18,6 +18,6 @@ Then('the response should return the car model A', function () {
     assert.ok(valid)
 
     // checking the values
-    assert.equal(actualCarModel.mc_id, expectedCarModel.mc_id)
+    assert.equal(actualCarModel.id, expectedCarModel.id)
     assert.equal(actualCarModel.name, expectedCarModel.name)
 })

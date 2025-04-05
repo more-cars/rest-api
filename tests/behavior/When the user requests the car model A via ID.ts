@@ -4,7 +4,7 @@ import {CarModelNode} from "../../src/types/CarModelNode"
 
 When('the user requests the car model A via ID', async function () {
     const carModelA: CarModelNode = this.carModelA
-    const id = carModelA.mc_id
+    const id = carModelA.id
 
     this.latestResponse = await axios
         .get(`${process.env.API_URL}/car-models/${id}`)

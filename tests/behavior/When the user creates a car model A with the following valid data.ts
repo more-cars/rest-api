@@ -14,5 +14,5 @@ When('the user creates a car model A with the following valid data', async funct
         .catch(error => {
             console.error(error.toJSON())
         })
-    this.carModelA['mc_id'] = this.latestResponse.data.mc_id
+    this.carModelA['id'] = this.latestResponse.data.id
 })

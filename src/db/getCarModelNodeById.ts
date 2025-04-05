@@ -28,7 +28,7 @@ async function getCarModelById(id: number, driver: Driver): Promise<false | CarM
     const foundDbNode: Node = records[0].get('node')
 
     const node: CarModelNode = {
-        mc_id: foundDbNode.properties.mc_id,
+        id: foundDbNode.properties.mc_id,
         name: foundDbNode.properties.name
     }
 

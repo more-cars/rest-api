@@ -47,7 +47,7 @@ describe('Car Model', () => {
         })
 
         // ACT
-        const carModelNode = await getCarModelNodeById(createdNode.mc_id as number)
+        const carModelNode = await getCarModelNodeById(createdNode.id as number)
 
         // ASSERT
         const validate = new Ajv().compile(CarModelSchema)

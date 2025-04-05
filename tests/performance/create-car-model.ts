@@ -26,7 +26,6 @@ export const options = {
 export default function () {
     const url = `${__ENV.API_URL}/car-models`
     const payload = {
-        "mc_id": 12345,
         "name": "Performance Test Car Model",
     }
 
