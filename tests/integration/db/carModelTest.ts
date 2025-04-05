@@ -5,6 +5,7 @@ import {Neo4jError} from "neo4j-driver"
 import Ajv from "ajv"
 import {CarModelSchema} from "../../_schemas/CarModelSchema"
 import {CarModelNode} from "../../../src/types/CarModelNode"
+import {seedCarModel} from "../../dbSeeding/seedCarModel"
 
 describe('Car Model', () => {
     test('Creating a car model with invalid data should not be possible', async () => {
@@ -42,9 +43,7 @@ describe('Car Model', () => {
 
     test('Querying an existing car model should return a db node with correct schema', async () => {
         // ARRANGE
-        const createdNode: CarModelNode = await createCarModelNode({
-            name: faker.vehicle.model(),
-        })
+        const createdNode: CarModelNode = await seedCarModel()
 
         // ACT
         const carModelNode = await getCarModelNodeById(createdNode.id as number)
