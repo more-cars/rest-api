@@ -4,15 +4,16 @@ import {faker} from "@faker-js/faker"
 import {Neo4jError} from "neo4j-driver"
 import Ajv from "ajv"
 import {CarModelSchema} from "../../_schemas/CarModelSchema"
-import {CarModelType} from "../../../src/types/CarModelType"
+import {CarModelNode} from "../../../src/types/CarModelNode"
 
 describe('Car Model', () => {
     test('Creating a car model with invalid data should not be possible', async () => {
         // Our first line of defense is TypeScript itself.
-        // When providing invalid data (in this case a non-existing field name)
+        // When providing an invalid data structure (in this case a non-existing field name)
         // the type checker would terminate the program instantly with error code TS2353.
         // When circumventing this type check via @ts-ignore then Neo4j is the second line of defense.
         // The provided data should not be accepted, because the attribute mapping will not work anymore.
+        // (The database query explicitly expects the field "name" to be present.)
         // @ts-ignore
         await expect(createCarModelNode({
             // @ts-ignore
@@ -41,7 +42,7 @@ describe('Car Model', () => {
 
     test('Querying an existing car model should return a db node with correct schema', async () => {
         // ARRANGE
-        const createdNode: CarModelType = await createCarModelNode({
+        const createdNode: CarModelNode = await createCarModelNode({
             name: faker.vehicle.model(),
         })
 

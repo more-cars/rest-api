@@ -1,9 +1,9 @@
 import {When} from "@cucumber/cucumber"
 import axios from "axios"
-import {CarModelType} from "../../src/types/CarModelType"
+import {CarModelNode} from "../../src/types/CarModelNode"
 
 When('the user requests the car model A via ID', async function () {
-    const carModelA: CarModelType = this.carModelA
+    const carModelA: CarModelNode = this.carModelA
     const id = carModelA.mc_id
 
     this.latestResponse = await axios

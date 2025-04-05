@@ -2,11 +2,11 @@ import {Then} from "@cucumber/cucumber"
 import assert from "assert"
 import Ajv from "ajv"
 import {CarModelSchema} from "../_schemas/CarModelSchema"
-import {CarModelType} from "../../src/types/CarModelType"
+import {CarModelNode} from "../../src/types/CarModelNode"
 
 Then('the response should return the car model A', function () {
-    const expectedCarModel: CarModelType = this.carModelA
-    const actualCarModel: CarModelType = this.latestResponse.data
+    const expectedCarModel: CarModelNode = this.carModelA
+    const actualCarModel: CarModelNode = this.latestResponse.data
 
     // checking the schema
     const validate = new Ajv().compile(CarModelSchema)

@@ -1,9 +1,8 @@
 import {Driver, Node, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "./driver"
-import {CarModelType} from "../types/CarModelType"
-import {dbCarModelType} from "./types/dbCarModelType"
+import {CarModelNode} from "../types/CarModelNode"
 
-export async function createCarModelNode(carModelData: CarModelType): Promise<dbCarModelType> {
+export async function createCarModelNode(carModelData: CarModelNode): Promise<CarModelNode> {
     const driver: Driver = getDriver()
     const session: Session = driver.session()
 
@@ -15,7 +14,7 @@ export async function createCarModelNode(carModelData: CarModelType): Promise<db
     return createdNode
 }
 
-async function createCarModel(carModelData: CarModelType, driver: Driver): Promise<dbCarModelType> {
+async function createCarModel(carModelData: CarModelNode, driver: Driver): Promise<CarModelNode> {
     // 1. Creating the node in the database
     const {records} = await driver.executeQuery(`
             CREATE (cm:CarModel {name: $name}) 
@@ -36,9 +35,7 @@ async function createCarModel(carModelData: CarModelType, driver: Driver): Promi
     const enrichedDbNode: Node = await setMoreCarsId(elementId, moreCarsId, driver)
 
     // 3. Converting the Neo4j node to a More Cars node
-    const node: dbCarModelType = {
-        element_id: enrichedDbNode.elementId,
-        id: enrichedDbNode.identity.high,
+    const node: CarModelNode = {
         mc_id: enrichedDbNode.properties.mc_id,
         name: enrichedDbNode.properties.name
     }
