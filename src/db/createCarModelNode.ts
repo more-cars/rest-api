@@ -17,12 +17,12 @@ export async function createCarModelNode(carModelData: CarModelNode): Promise<Ca
 async function createCarModel(carModelData: CarModelNode, driver: Driver): Promise<CarModelNode> {
     // 1. Creating the node in the database
     const {records} = await driver.executeQuery(`
-            CREATE (cm:CarModel {name: $name}) 
-            RETURN cm 
+            CREATE (node:CarModel {name: $name}) 
+            RETURN node 
             LIMIT 1`,
         carModelData,
     )
-    const createdDbNode: Node = records[0].get('cm')
+    const createdDbNode: Node = records[0].get('node')
 
     // 2. Adding a custom More Cars ID for that node
     // Note: This seems pointless at first glance, because the More Cars ID is exactly the same as the Neo4j ID.
