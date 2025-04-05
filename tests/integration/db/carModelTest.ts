@@ -12,12 +12,11 @@ describe('Car Model', () => {
         // Our first line of defense is TypeScript itself.
         // When providing an invalid data structure (in this case a non-existing field name)
         // the type checker would terminate the program instantly with error code TS2353.
-        // When circumventing this type check via @ts-ignore then Neo4j is the second line of defense.
+        // When circumventing this type check via @ts-expect-error then Neo4j is the second line of defense.
         // The provided data should not be accepted, because the attribute mapping will not work anymore.
         // (The database query explicitly expects the field "name" to be present.)
-        // @ts-ignore
         await expect(createCarModelNode({
-            // @ts-ignore
+            // @ts-expect-error see comment above
             bad_name: faker.vehicle.model(),
         })).rejects
             .toThrow(Neo4jError)
