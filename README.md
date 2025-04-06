@@ -2,14 +2,16 @@
 
 ## Quickstart
 
-* Install Node.js and npm
-* Clone repository: https://github.com/more-cars/rest-api.git
-* Copy the `.env.template` file and save as `.env`
-* Configure the location of a running database in the `.env` file
-* run `npm install`
+* install Node.js, npm and Docker
+    * see [Minikube](#minikube-local-dev-cluster) section for a Kubernetes-based environment
+* clone the repository: https://github.com/more-cars/rest-api.git
+* run `npm run local:db:start` to start Neo4j as a local Docker container
+    * it should be available at http://localhost:7474 (no credentials needed)
+* copy the `.env.template` file and save it as `.env`
+    * specify the location of the database: `DB_HOST=localhost`
+* run `npm install` to install all required dependencies and tools
 * run `npm run local:app:start` to start the app locally
     * it should be available at http://localhost:3000
-    * see [Minikube](#minikube-local-dev-cluster) section on how to run the app in a local kubernetes cluster
 
 ## Minikube (Local Dev Cluster)
 
@@ -20,7 +22,7 @@
     * can be run multiple times
         * if a newer version is available it will be installed
 * run `npm run minikube:start` to start a local minikube cluster
-    * this should open the kubernetes dashboard in the browser (~30-60 seconds)
+    * this should open the kubernetes dashboard in the browser (wait ~30-60 seconds)
 * run `npm run minikube:stop` to stop the minikube cluster
     * can also be achieved by aborting the `minikube:start` terminal (`ctrl` + `c` or `command` + `c`)
 * run `npm run minikube:delete` to destroy the minikube cluster
@@ -45,10 +47,12 @@
 * run `npm run minikube:undeploy:dev` to remove the whole application from the cluster
     * run `npm run minikube:deploy:dev` to start the application from scratch again (empty database, fresh pods, etc.)
 
-## Build application
+## Docker Images
 
-* run `npm run docker:build-image` to create a docker image for the application
-    * the resulting image can be used for local deployments or for a "real" release candidate for production
+* run `npm run docker:build-image` to create a docker image of the application
+    * it can be used for local deployments or as "real" release candidates for production
+* run `npm run docker:tag-image:dev` to tag the image as a development image
+* run `npm run docker:tag-image` to tag the image as a production image
 
 ## Run tests
 
