@@ -4,6 +4,7 @@
 .idea
 bruno
 cucumber.js
+eslint.config.mjs
 jest.config.ts
 deployment
 node_modules
