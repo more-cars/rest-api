@@ -6,6 +6,7 @@ require('dotenv').config({path: '.env'})
 module.exports = {
     default: {
         paths: ['specification/Behavior/**/*.feature'],
+        tags: '@implemented',
         require: ['tests/behavior/**/*.ts'],
         requireModule: ['ts-node/register'],
         format: [
