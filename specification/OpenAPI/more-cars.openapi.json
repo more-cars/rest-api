@@ -93,6 +93,24 @@
       }
     },
     "/car-models": {
+      "get": {
+        "summary": "Returns a list of all `Car Model`s",
+        "responses": {
+          "200": {
+            "description": "A list of all `Car Model`s.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CarModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "summary": "Create `Car Model`",
         "responses": {
