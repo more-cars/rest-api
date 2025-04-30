@@ -1,10 +1,15 @@
 import {getCarModelNodeById} from "../db/getCarModelNodeById"
 import {createCarModelNode} from "../db/createCarModelNode"
 import {CarModelNode} from "../types/CarModelNode"
+import {getCarModelNodes} from "../db/getCarModelNodes"
 
 export class CarModel {
     static async findById(id: number): Promise<false | CarModelNode> {
         return await getCarModelNodeById(id)
+    }
+
+    static async findAll() {
+        return await getCarModelNodes()
     }
 
     static async create(data: any): Promise<CarModelNode> {

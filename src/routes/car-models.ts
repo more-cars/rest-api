@@ -17,6 +17,14 @@ module.exports = (app: Express) => {
         res.send(marshalResponseBody(foundCarModel))
     })
 
+    app.get('/car-models/', async (req, res) => {
+        const foundCarModels = await CarModel.findAll()
+
+        res.status(200)
+        res.set('Content-Type', 'application/json')
+        res.send(marshalResponseBodies(foundCarModels))
+    })
+
     app.post('/car-models', async (req, res) => {
         try {
             const createdNode = await CarModel.create(unmarshalRequestBody(req.body))
@@ -53,4 +61,17 @@ function marshalResponseBody(carModel: CarModelNode) {
     }
 
     return responseBody
+}
+
+/**
+ * Creates a valid response body from the given collection of car models.
+ */
+function marshalResponseBodies(carModels: Array<CarModelNode>) {
+    const responseBodies: any[] = []
+
+    carModels.forEach((carModel: CarModelNode) => {
+        responseBodies.push(marshalResponseBody(carModel))
+    })
+
+    return responseBodies
 }
