@@ -4,7 +4,7 @@ Feature: Requesting all CAR MODEL nodes
   @RULE_MCA-12
   Rule: Requesting a CAR MODEL collection returns an (unordered) list of all existing CAR MODEL nodes
 
-  @TEST_MCA-14
+  @TEST_MCA-14 @implemented
   Scenario: Requesting a CAR MODEL collection should return an (unordered) list of all existing CAR MODEL nodes
     Given there exist 12 car models
     When the user requests all car models
