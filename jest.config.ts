@@ -12,6 +12,8 @@ require('dotenv').config({path: '.env'})
 const config: Config = {
     preset: 'ts-jest',
     testMatch: ['<rootDir>/tests/**/*Test.ts'],
+    maxConcurrency: 1,
+    maxWorkers: 1,
     reporters: [
         "default",
         ["./node_modules/jest-html-reporter", {
