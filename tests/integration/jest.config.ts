@@ -10,6 +10,7 @@ module.exports = {
     testMatch: ['<rootDir>/**/*Test.ts'],
     maxConcurrency: 1,
     maxWorkers: 1,
+    forceExit: true,
     preset: 'ts-jest',
     reporters: [
         "default",

@@ -14,6 +14,7 @@ const config: Config = {
     testMatch: ['<rootDir>/tests/**/*Test.ts'],
     maxConcurrency: 1,
     maxWorkers: 1,
+    forceExit: true,
     reporters: [
         "default",
         ["./node_modules/jest-html-reporter", {
