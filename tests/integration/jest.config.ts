@@ -8,6 +8,8 @@ require('dotenv').config({path: path.resolve(__dirname, '../../.env')})
 module.exports = {
     displayName: 'Integration Tests',
     testMatch: ['<rootDir>/**/*Test.ts'],
+    maxConcurrency: 1,
+    maxWorkers: 1,
     preset: 'ts-jest',
     reporters: [
         "default",
