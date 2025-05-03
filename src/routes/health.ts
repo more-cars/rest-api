@@ -1,10 +1,7 @@
-import {Express} from "express"
+import express from "express"
 
-// Health check
-module.exports = (app: Express) => {
-    app.get('/health', async (req, res) => {
-        res.status(200)
-        res.set('Content-Type', 'text/plain')
-        res.send("healthy")
-    })
+export async function healthCheck(req: express.Request, res: express.Response) {
+    res.status(200)
+    res.set('Content-Type', 'text/plain')
+    res.send("healthy")
 }
