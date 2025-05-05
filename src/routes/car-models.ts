@@ -60,11 +60,11 @@ function marshalResponseBody(carModel: CarModelNode) {
     const responseBody = {
         id: carModel.id,
         name: carModel.name,
-        built_from: carModel.built_from,
-        built_to: carModel.built_to,
-        generation: carModel.generation,
-        internal_code: carModel.internal_code,
-        total_production: carModel.total_production,
+        built_from: carModel.built_from ?? null,
+        built_to: carModel.built_to ?? null,
+        generation: carModel.generation ?? null,
+        internal_code: carModel.internal_code ?? null,
+        total_production: carModel.total_production ?? null,
     }
 
     return responseBody
