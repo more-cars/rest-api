@@ -1,5 +1,5 @@
 meta {
-  name: Creating a CAR MODEL with invalid data
+  name: Creating a CAR MODEL with invalid property names
   type: http
   seq: 6
 }
@@ -12,7 +12,8 @@ post {
 
 body:json {
   {
-    "wrong_attribute_name": "Camaro"
+    "naame": "Camaro",
+    "generattion": 2
   }
 }
 
