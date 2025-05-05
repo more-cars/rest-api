@@ -1,0 +1,21 @@
+meta {
+  name: Creating a CAR MODEL with minimal data
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{baseUrl}}/car-models
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Tigra"
+  }
+}
+
+assert {
+  res.status: eq 201
+}
