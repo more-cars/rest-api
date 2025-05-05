@@ -7,8 +7,8 @@ Feature: Creating CAR MODEL nodes
   @TEST_MCA-10 @implemented
   Scenario: A new CAR MODEL is created when valid data was provided
     When the user creates a car model A with the following valid data
-      | attribute | value      |
-      | name      | Testarossa |
+      | key  | value      |
+      | name | Testarossa |
     Then the response should return the car model A
     And the response should return with status code 201
     When the user requests the car model A via ID
