@@ -148,10 +148,33 @@
         "properties": {
           "id": {
             "type": "integer",
-            "readOnly": true
+            "readOnly": true,
+            "example": "588"
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "The official name of the car model, excl. brand name.",
+            "example": "Testarossa"
+          },
+          "built_from": {
+            "type": "integer",
+            "example": 1984
+          },
+          "built_to": {
+            "type": "integer",
+            "example": 1996
+          },
+          "generation": {
+            "type": "integer",
+            "example": null
+          },
+          "internal_code": {
+            "type": "string",
+            "example": "F110"
+          },
+          "total_production": {
+            "type": "integer",
+            "example": 7177
           }
         }
       }
