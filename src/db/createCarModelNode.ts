@@ -27,7 +27,14 @@ async function createCarModel(carModelData: CarModelNode, driver: Driver): Promi
             }) 
             RETURN node 
             LIMIT 1`,
-        carModelData,
+        {
+            name: carModelData.name,
+            built_from: carModelData.built_from ?? null,
+            built_to: carModelData.built_to ?? null,
+            generation: carModelData.generation ?? null,
+            internal_code: carModelData.internal_code ?? null,
+            total_production: carModelData.total_production ?? null,
+        },
     )
     const createdDbNode: Node = records[0].get('node')
 
