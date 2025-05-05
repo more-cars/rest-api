@@ -43,6 +43,11 @@ export async function createCarModel(req: express.Request, res: express.Response
 function unmarshalRequestBody(body: any) {
     const carModel: CarModelNode = {
         name: body.name,
+        built_from: body.built_from ?? null,
+        built_to: body.built_to ?? null,
+        generation: body.generation ?? null,
+        internal_code: body.internal_code ?? null,
+        total_production: body.total_production ?? null,
     }
 
     return carModel
@@ -55,6 +60,11 @@ function marshalResponseBody(carModel: CarModelNode) {
     const responseBody = {
         id: carModel.id,
         name: carModel.name,
+        built_from: carModel.built_from,
+        built_to: carModel.built_to,
+        generation: carModel.generation,
+        internal_code: carModel.internal_code,
+        total_production: carModel.total_production,
     }
 
     return responseBody

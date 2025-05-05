@@ -26,7 +26,12 @@ async function getCarModels(driver: Driver): Promise<Array<CarModelNode>> {
         const dbNode = record.get('node')
         carModelNodes.push({
             id: dbNode.properties.mc_id,
-            name: dbNode.properties.name
+            name: dbNode.properties.name,
+            built_from: dbNode.properties.built_from,
+            built_to: dbNode.properties.built_to,
+            generation: dbNode.properties.generation,
+            internal_code: dbNode.properties.internal_code,
+            total_production: dbNode.properties.total_production,
         })
     })
 

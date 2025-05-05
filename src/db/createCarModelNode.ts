@@ -17,7 +17,14 @@ export async function createCarModelNode(carModelData: CarModelNode): Promise<Ca
 async function createCarModel(carModelData: CarModelNode, driver: Driver): Promise<CarModelNode> {
     // 1. Creating the node in the database
     const {records} = await driver.executeQuery(`
-            CREATE (node:CarModel {name: $name}) 
+            CREATE (node:CarModel {
+                name: $name, 
+                built_from: $built_from,
+                built_to: $built_to,
+                generation: $generation,
+                internal_code: $internal_code,
+                total_production: $total_production
+            }) 
             RETURN node 
             LIMIT 1`,
         carModelData,
@@ -37,7 +44,12 @@ async function createCarModel(carModelData: CarModelNode, driver: Driver): Promi
     // 3. Converting the Neo4j node to a More Cars node
     const node: CarModelNode = {
         id: enrichedDbNode.properties.mc_id,
-        name: enrichedDbNode.properties.name
+        name: enrichedDbNode.properties.name,
+        built_from: enrichedDbNode.properties.built_from,
+        built_to: enrichedDbNode.properties.built_to,
+        generation: enrichedDbNode.properties.generation,
+        internal_code: enrichedDbNode.properties.internal_code,
+        total_production: enrichedDbNode.properties.total_production,
     }
 
     return node

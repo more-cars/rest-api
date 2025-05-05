@@ -29,7 +29,12 @@ async function getCarModelById(id: number, driver: Driver): Promise<false | CarM
 
     const node: CarModelNode = {
         id: foundDbNode.properties.mc_id,
-        name: foundDbNode.properties.name
+        name: foundDbNode.properties.name,
+        built_from: foundDbNode.properties.built_from,
+        built_to: foundDbNode.properties.built_to,
+        generation: foundDbNode.properties.generation,
+        internal_code: foundDbNode.properties.internal_code,
+        total_production: foundDbNode.properties.total_production,
     }
 
     return node
