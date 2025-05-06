@@ -11,11 +11,15 @@
       "description": "Local"
     },
     {
-      "url": "http://10.104.56.60/",
-      "description": "Local Minikube"
+      "url": "http://api.more-cars.dev.internal",
+      "description": "Local Minikube - DEV"
     },
     {
-      "url": "https://more-cars.net/api/v2/",
+      "url": "http://api.more-cars.prod.internal",
+      "description": "Local Minikube - PROD"
+    },
+    {
+      "url": "http://api.fast-cars.info",
       "description": "Production"
     }
   ],
