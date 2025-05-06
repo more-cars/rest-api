@@ -58,6 +58,33 @@
         }
       }
     },
+    "/brands": {
+      "post": {
+        "summary": "Create `Brand`",
+        "responses": {
+          "201": {
+            "description": "`Brand` created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Brand"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid request.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/car-models/{car-model-id}": {
       "get": {
         "summary": "Get `Car Model` by ID",
@@ -144,6 +171,43 @@
   },
   "components": {
     "schemas": {
+      "Brand": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "593"
+          },
+          "name": {
+            "type": "string",
+            "example": "DKW"
+          },
+          "full_name": {
+            "type": "string",
+            "example": "Dampfkraftwagen"
+          },
+          "founded": {
+            "type": "integer",
+            "example": 1916
+          },
+          "defunct": {
+            "type": "integer",
+            "example": 1966
+          },
+          "wmi": {
+            "type": "string",
+            "example": null
+          },
+          "hsn": {
+            "type": "string",
+            "example": "0010"
+          }
+        }
+      },
       "CarModel": {
         "type": "object",
         "required": [
