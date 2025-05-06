@@ -1,6 +1,5 @@
 import {app} from "../../../src/app"
-
-const request = require('supertest')
+import request from "supertest"
 
 describe('GET /this-route-does-not-exist', () => {
     it('should not find anything', async () => {
