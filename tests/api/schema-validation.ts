@@ -1,4 +1,4 @@
-const OpenAPISchemaValidator = require('openapi-schema-validator').default
+import OpenAPISchemaValidator from "openapi-schema-validator"
 
 const targetVersion = 3
 const validator = new OpenAPISchemaValidator({version: targetVersion})
