@@ -1,7 +1,7 @@
 import {DataTable, When} from "@cucumber/cucumber"
 import axios from "axios"
 
-When('the user creates a brand A with the following valid data', async function (dataTable: DataTable) {
+When('the user creates a brand A with the following valid/mixed data', async function (dataTable: DataTable) {
     const rows = dataTable.hashes()
 
     const data: any = {}
