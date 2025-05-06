@@ -3,6 +3,7 @@ import cors from "cors"
 import {healthCheck} from "./routes/health"
 import {openApiSpec} from "./routes/open-api-specification"
 import {createCarModel, getAllCarModels, getCarModelById} from "./routes/car-models"
+import {create} from "./routes/brands/create"
 
 const app: Express = express()
 
@@ -19,5 +20,6 @@ app.get('/health', healthCheck)
 app.get('/car-models', getAllCarModels)
 app.get('/car-models/:id', getCarModelById)
 app.post('/car-models', createCarModel)
+app.post('/brands', create)
 
 export {app}
