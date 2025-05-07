@@ -1,0 +1,21 @@
+meta {
+  name: Create (minimal node)
+  type: http
+  seq: 11
+}
+
+post {
+  url: {{baseUrl}}/brands
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "DKW"
+  }
+}
+
+assert {
+  res.status: eq 201
+}

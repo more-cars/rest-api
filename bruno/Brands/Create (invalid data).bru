@@ -1,0 +1,21 @@
+meta {
+  name: Create (invalid data)
+  type: http
+  seq: 15
+}
+
+post {
+  url: {{baseUrl}}/brands
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "namme": "DKW"
+  }
+}
+
+assert {
+  res.status: eq 422
+}
