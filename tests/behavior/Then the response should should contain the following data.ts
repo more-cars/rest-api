@@ -1,7 +1,7 @@
 import {DataTable, Then} from "@cucumber/cucumber"
 import assert from "assert"
 
-Then('the response should should contain the following data', function (dataTable: DataTable) {
+Then('the response should contain the following data', function (dataTable: DataTable) {
     const rows = dataTable.hashes()
     const responseData = this.latestResponse.data
 

@@ -17,7 +17,7 @@ Feature: Providing every CORE information for a CAR MODEL
       | generation       | 1        |
       | internal_code    | F99      |
       | total_production | 222222   |
-    Then the response should should contain the following data
+    Then the response should contain the following data
       | key              | value    |
       | name             | Test Car |
       | built_from       | 1988     |
