@@ -1,0 +1,15 @@
+@REQ_MCA-19
+Feature: Requesting all BRAND nodes
+  As an API consumer
+  I want to be able to load all BRANDs
+  So I can compare and analyze them without loading each individually
+
+  @RULE_MCA-42
+  Rule: When no BRANDs exist in the database then an empty list is returned
+
+  @TEST_MCA-51 @implemented
+  Scenario: An empty list should be returned when there exist no BRANDs to be fetched
+    Given there exist NO brands
+    When the user requests all brands
+    Then the response should return a collection of 0 brands
+    And the response should return with status code 200
