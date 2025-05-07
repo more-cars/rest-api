@@ -1,12 +1,13 @@
 import {CarModel} from "../../../src/models/CarModel"
 import {deleteAllCarModels} from "../../dbSeeding/deleteAllCarModels"
 import {seedCarModels} from "../../dbSeeding/seedCarModels"
+import {CarModelNode} from "../../../src/types/CarModelNode"
 
 describe('Car Models', () => {
     test('When there are no car models then an empty array should be returned', async () => {
         await deleteAllCarModels()
 
-        const expectedCarModels: Array<CarModel> = []
+        const expectedCarModels: Array<CarModelNode> = []
         const actualCarModels = await CarModel.findAll()
 
         expect(actualCarModels)
