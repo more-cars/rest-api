@@ -4,6 +4,7 @@ import {healthCheck} from "./routes/health"
 import {openApiSpec} from "./routes/open-api-specification"
 import {createCarModel, getAllCarModels, getCarModelById} from "./routes/car-models"
 import {create} from "./routes/brands/create"
+import {getById} from "./routes/brands/getById"
 
 const app: Express = express()
 
@@ -21,5 +22,6 @@ app.get('/car-models', getAllCarModels)
 app.get('/car-models/:id', getCarModelById)
 app.post('/car-models', createCarModel)
 app.post('/brands', create)
+app.get('/brands/:id', getById)
 
 export {app}
