@@ -5,7 +5,7 @@ metadata:
   namespace: prod
   labels:
     app.kubernetes.io/name: api
-    app.kubernetes.io/version: "0.5.0"
+    app.kubernetes.io/version: "0.6.0"
     app.kubernetes.io/component: application
 spec:
   replicas: 1
@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: more-cars-api
-          image: dennisgerike/more-cars-api:0.5.0
+          image: dennisgerike/more-cars-api:0.6.0
           env:
             - name: DB_HOST
               value: $(API_DB_SERVICE_SERVICE_HOST)
