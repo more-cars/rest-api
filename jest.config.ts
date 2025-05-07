@@ -11,7 +11,7 @@ require('dotenv').config({path: '.env'})
 
 const config: Config = {
     preset: 'ts-jest',
-    testMatch: ['<rootDir>/tests/**/*Test.ts'],
+    testMatch: ['<rootDir>/tests/**/*.test.ts'],
     maxConcurrency: 1,
     maxWorkers: 1,
     forceExit: true,

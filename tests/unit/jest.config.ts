@@ -1,6 +1,6 @@
 module.exports = {
     displayName: 'Unit Tests',
-    testMatch: ['<rootDir>/**/*Test.ts'],
+    testMatch: ['<rootDir>/**/*.test.ts'],
     preset: 'ts-jest',
     reporters: [
         "default",
