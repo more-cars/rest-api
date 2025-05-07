@@ -59,6 +59,24 @@
       }
     },
     "/brands": {
+      "get": {
+        "summary": "Returns a list of all `Brand`s",
+        "responses": {
+          "200": {
+            "description": "A list of all `Brand`s.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Brand"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "summary": "Create `Brand`",
         "responses": {
