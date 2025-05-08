@@ -1,11 +1,11 @@
 meta {
-  name: Requesting all CAR MODELs
+  name: Get By Id
   type: http
-  seq: 4
+  seq: 20
 }
 
 get {
-  url: {{baseUrl}}/car-models/
+  url: {{baseUrl}}/car-models/{{validCarModelId}}
   body: none
   auth: none
 }
