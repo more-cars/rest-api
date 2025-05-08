@@ -15,7 +15,8 @@ export async function getCarModelById(req: express.Request, res: express.Respons
     if (!foundCarModel) {
         res.status(404)
         res.set('Content-Type', 'text/plain')
-        return res.send(`A "Car Model" with ID ${req.params.id} could not be found.`)
+        res.send(`A "Car Model" with ID ${req.params.id} could not be found.`)
+        return
     }
 
     res.status(200)

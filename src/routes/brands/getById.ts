@@ -8,7 +8,8 @@ export async function getById(req: express.Request, res: express.Response) {
     if (!foundNode) {
         res.status(404)
         res.set('Content-Type', 'text/plain')
-        return res.send(`A "Brand" with ID ${req.params.id} could not be found.`)
+        res.send(`A "Brand" with ID ${req.params.id} could not be found.`)
+        return
     }
 
     res.status(200)
