@@ -1,4 +1,4 @@
-import {BrandNode} from "../../types/BrandNode"
+import {BrandNode} from "../../../types/BrandNode"
 
 /**
  * Based on the given "brand" node this creates a response object

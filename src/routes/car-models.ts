@@ -1,85 +1,12 @@
 import express from "express"
-import {CarModel} from "../models/CarModel"
-import {CarModelNode} from "../types/CarModelNode"
+import {create} from "./controllers/carModels/create"
+import {getById} from "./controllers/carModels/getById"
+import {getAll} from "./controllers/carModels/getAll"
 
-export async function getAllCarModels(req: express.Request, res: express.Response) {
-    const foundCarModels = await CarModel.findAll()
+const router = express.Router()
 
-    res.status(200)
-    res.set('Content-Type', 'application/json')
-    res.send(marshalResponseBodies(foundCarModels))
-}
+router.post('/car-models', create)
+router.get('/car-models/:id', getById)
+router.get('/car-models', getAll)
 
-export async function getCarModelById(req: express.Request, res: express.Response) {
-    const foundCarModel = await CarModel.findById(parseInt(req.params.id))
-    if (!foundCarModel) {
-        res.status(404)
-        res.set('Content-Type', 'text/plain')
-        res.send(`A "Car Model" with ID ${req.params.id} could not be found.`)
-        return
-    }
-
-    res.status(200)
-    res.set('Content-Type', 'application/json')
-    res.send(marshalResponseBody(foundCarModel))
-}
-
-export async function createCarModel(req: express.Request, res: express.Response) {
-    try {
-        const createdNode = await CarModel.create(unmarshalRequestBody(req.body))
-        res.status(201)
-        res.set('Content-Type', 'application/json')
-        res.send(marshalResponseBody(createdNode))
-    } catch (e) {
-        res.status(422)
-        res.set('Content-Type', 'text/plain')
-        res.send('Request failed. Node could not be created.')
-    }
-}
-
-/**
- * Selects those attributes from the given request body that are legitimate in the context of creating a car model.
- * All other attributes that might exist in the object will be ignored.
- */
-function unmarshalRequestBody(body: any) {
-    const carModel: CarModelNode = {
-        name: body.name,
-        built_from: body.built_from ?? null,
-        built_to: body.built_to ?? null,
-        generation: body.generation ?? null,
-        internal_code: body.internal_code ?? null,
-        total_production: body.total_production ?? null,
-    }
-
-    return carModel
-}
-
-/**
- * Creates a valid response body from the given car model.
- */
-function marshalResponseBody(carModel: CarModelNode) {
-    const responseBody = {
-        id: carModel.id,
-        name: carModel.name,
-        built_from: carModel.built_from ?? null,
-        built_to: carModel.built_to ?? null,
-        generation: carModel.generation ?? null,
-        internal_code: carModel.internal_code ?? null,
-        total_production: carModel.total_production ?? null,
-    }
-
-    return responseBody
-}
-
-/**
- * Creates a valid response body from the given collection of car models.
- */
-function marshalResponseBodies(carModels: Array<CarModelNode>) {
-    const responseBodies: any[] = []
-
-    carModels.forEach((carModel: CarModelNode) => {
-        responseBodies.push(marshalResponseBody(carModel))
-    })
-
-    return responseBodies
-}
+export default router

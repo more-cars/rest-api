@@ -1,18 +1,17 @@
 import express from "express"
-import {Brand} from "../../models/Brand"
+import {CarModel} from "../../../models/CarModel"
 import {marshal} from "./marshal"
 
 export async function getById(req: express.Request, res: express.Response) {
-    const nodeId = parseInt(req.params.id)
-    const foundNode = await Brand.findById(nodeId)
-    if (!foundNode) {
+    const foundCarModel = await CarModel.findById(parseInt(req.params.id))
+    if (!foundCarModel) {
         res.status(404)
         res.set('Content-Type', 'text/plain')
-        res.send(`A "Brand" with ID ${req.params.id} could not be found.`)
+        res.send(`A "Car Model" with ID ${req.params.id} could not be found.`)
         return
     }
 
     res.status(200)
     res.set('Content-Type', 'application/json')
-    res.send(marshal(foundNode))
+    res.send(marshal(foundCarModel))
 }

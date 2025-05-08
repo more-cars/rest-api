@@ -1,11 +1,9 @@
 import express, {Express} from "express"
 import cors from "cors"
-import {healthCheck} from "./routes/health"
-import {openApiSpec} from "./routes/open-api-specification"
-import {createCarModel, getAllCarModels, getCarModelById} from "./routes/car-models"
-import {create} from "./routes/brands/create"
-import {getById} from "./routes/brands/getById"
-import {getAll} from "./routes/brands/getAll"
+import openApiSpecification from "./routes/open-api-specification"
+import brands from './routes/brands'
+import carModels from "./routes/car-models"
+import health from "./routes/health"
 
 const app: Express = express()
 
@@ -17,13 +15,9 @@ app.use(cors())
 app.use(express.json())
 
 // registering all routes
-app.get('/', openApiSpec)
-app.get('/health', healthCheck)
-app.get('/car-models', getAllCarModels)
-app.get('/car-models/:id', getCarModelById)
-app.post('/car-models', createCarModel)
-app.post('/brands', create)
-app.get('/brands/:id', getById)
-app.get('/brands', getAll)
+app.use('/', openApiSpecification)
+app.use('/', health)
+app.use('/', brands)
+app.use('/', carModels)
 
 export {app}

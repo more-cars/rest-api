@@ -1,5 +1,5 @@
 import express from "express"
-import {Brand} from "../../models/Brand"
+import {Brand} from "../../../models/Brand"
 import {unmarshal} from "./unmarshal"
 import {marshal} from "./marshal"
 

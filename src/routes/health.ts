@@ -1,7 +1,8 @@
 import express from "express"
+import {health} from "./controllers/health"
 
-export async function healthCheck(req: express.Request, res: express.Response) {
-    res.status(200)
-    res.set('Content-Type', 'text/plain')
-    res.send("healthy")
-}
+const router = express.Router()
+
+router.get('/health', health)
+
+export default router

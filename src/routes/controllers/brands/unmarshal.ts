@@ -1,11 +1,11 @@
-import {BrandNode} from "../../types/BrandNode"
+import {BrandNode} from "../../../types/BrandNode"
 
 /**
  * Picks all attributes from the request object which conform to the API specification.
  * Every other attributes in there will be ignored.
  */
 export function unmarshal(body: any) {
-    const carModel: BrandNode = {
+    const node: BrandNode = {
         name: body.name,
         full_name: body.full_name ?? null,
         founded: body.founded ?? null,
@@ -14,5 +14,5 @@ export function unmarshal(body: any) {
         hsn: body.hsn ?? null,
     }
 
-    return carModel
+    return node
 }
