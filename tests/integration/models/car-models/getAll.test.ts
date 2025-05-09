@@ -1,9 +1,9 @@
-import {CarModel} from "../../../src/models/CarModel"
-import {deleteAllCarModels} from "../../dbSeeding/deleteAllCarModels"
-import {seedCarModels} from "../../dbSeeding/seedCarModels"
-import {CarModelNode} from "../../../src/types/CarModelNode"
+import {deleteAllCarModels} from "../../../dbSeeding/deleteAllCarModels"
+import {CarModelNode} from "../../../../src/types/CarModelNode"
+import {CarModel} from "../../../../src/models/CarModel"
+import {seedCarModels} from "../../../dbSeeding/seedCarModels"
 
-describe('Car Models', () => {
+describe('Car Model', () => {
     test('When there are no car models then an empty array should be returned', async () => {
         await deleteAllCarModels()
 
@@ -14,7 +14,7 @@ describe('Car Models', () => {
             .toEqual(expectedCarModels)
     })
 
-    test('When car models exist then all of them should be returned', async () => {
+    test('When brands exist then all of them should be returned', async () => {
         await deleteAllCarModels()
         const amount = Math.ceil(Math.random() * 50)
         await seedCarModels(amount)
