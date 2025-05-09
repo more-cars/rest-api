@@ -1,12 +1,12 @@
 import {Driver, Node, Session} from "neo4j-driver"
-import {closeDriver, getDriver} from "./driver"
-import {BrandNode} from "../types/BrandNode"
+import {closeDriver, getDriver} from "../driver"
+import {BrandNode} from "../../types/BrandNode"
 
-export async function getBrandNodeById(id: number): Promise<false | BrandNode> {
+export async function getNodeById(id: number): Promise<false | BrandNode> {
     const driver: Driver = getDriver()
     const session: Session = driver.session()
 
-    const foundNode = await getNodeById(id, driver)
+    const foundNode = await getNode(id, driver)
 
     await session.close()
     await closeDriver(driver)
@@ -14,7 +14,7 @@ export async function getBrandNodeById(id: number): Promise<false | BrandNode> {
     return foundNode
 }
 
-async function getNodeById(id: number, driver: Driver): Promise<false | BrandNode> {
+async function getNode(id: number, driver: Driver): Promise<false | BrandNode> {
     const {records} = await driver.executeQuery(`
             MATCH (node {mc_id: ${id}}) 
             RETURN node

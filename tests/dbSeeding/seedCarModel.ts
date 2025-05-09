@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import {createCarModelNode} from "../../src/db/createCarModelNode"
+import {createNode} from "../../src/db/car-models/createNode"
 
 /**
  * Creates a randomized car model in the database.
@@ -18,5 +18,5 @@ export async function seedCarModel() {
         total_production: faker.number.int({min: 100, max: 10000000}),
     }
 
-    return await createCarModelNode(carModelData)
+    return await createNode(carModelData)
 }

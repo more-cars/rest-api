@@ -1,18 +1,18 @@
 import {BrandNode} from "../types/BrandNode"
-import {createBrandNode} from "../db/createBrandNode"
-import {getBrandNodeById} from "../db/getBrandNodeById"
-import {getBrandNodes} from "../db/getBrandNodes"
+import {createNode} from "../db/brands/createNode"
+import {getNodeById} from "../db/brands/getNodeById"
+import {getAllNodesOfType} from "../db/brands/getAllNodesOfType"
 
 export class Brand {
     static async create(data: any): Promise<BrandNode> {
-        return await createBrandNode(data)
+        return await createNode(data)
     }
 
     static async findById(id: number): Promise<false | BrandNode> {
-        return await getBrandNodeById(id)
+        return await getNodeById(id)
     }
 
     static async findAll() {
-        return await getBrandNodes()
+        return await getAllNodesOfType()
     }
 }

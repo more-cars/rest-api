@@ -1,5 +1,5 @@
 import Ajv from "ajv"
-import {getBrandNodeById} from "../../../../src/db/getBrandNodeById"
+import {getNodeById} from "../../../../src/db/brands/getNodeById"
 import {seedBrand} from "../../../dbSeeding/seedBrand"
 import {BrandNode} from "../../../../src/types/BrandNode"
 import {BrandSchema} from "../../../_schemas/BrandSchema"
@@ -7,7 +7,7 @@ import {BrandSchema} from "../../../_schemas/BrandSchema"
 describe('Brand', () => {
     test('Querying a brand that does not exist should return "false"', async () => {
         const expectedBrandNode = false
-        const actualBrandNode = await getBrandNodeById(-42)
+        const actualBrandNode = await getNodeById(-42)
 
         expect(actualBrandNode)
             .toBe(expectedBrandNode)
@@ -18,7 +18,7 @@ describe('Brand', () => {
         const createdNode: BrandNode = await seedBrand()
 
         // ACT
-        const brandNode = await getBrandNodeById(createdNode.id as number)
+        const brandNode = await getNodeById(createdNode.id as number)
 
         // ASSERT
         const validate = new Ajv().compile(BrandSchema)

@@ -1,18 +1,18 @@
-import {getCarModelNodeById} from "../db/getCarModelNodeById"
-import {createCarModelNode} from "../db/createCarModelNode"
+import {getNodeById} from "../db/car-models/getNodeById"
+import {createNode} from "../db/car-models/createNode"
 import {CarModelNode} from "../types/CarModelNode"
-import {getCarModelNodes} from "../db/getCarModelNodes"
+import {getAllNodesOfType} from "../db/car-models/getAllNodesOfType"
 
 export class CarModel {
     static async findById(id: number): Promise<false | CarModelNode> {
-        return await getCarModelNodeById(id)
+        return await getNodeById(id)
     }
 
     static async findAll() {
-        return await getCarModelNodes()
+        return await getAllNodesOfType()
     }
 
     static async create(data: any): Promise<CarModelNode> {
-        return await createCarModelNode(data)
+        return await createNode(data)
     }
 }

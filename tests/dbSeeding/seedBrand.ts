@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import {createBrandNode} from "../../src/db/createBrandNode"
+import {createNode} from "../../src/db/brands/createNode"
 
 /**
  * Creates a new brand in the database with random fake data.
@@ -18,5 +18,5 @@ export async function seedBrand() {
         hsn: faker.vehicle.vrm(),
     }
 
-    return await createBrandNode(data)
+    return await createNode(data)
 }

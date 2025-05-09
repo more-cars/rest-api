@@ -1,5 +1,5 @@
 import Ajv from "ajv"
-import {getCarModelNodeById} from "../../../../src/db/getCarModelNodeById"
+import {getNodeById} from "../../../../src/db/car-models/getNodeById"
 import {CarModelNode} from "../../../../src/types/CarModelNode"
 import {seedCarModel} from "../../../dbSeeding/seedCarModel"
 import {CarModelSchema} from "../../../_schemas/CarModelSchema"
@@ -7,7 +7,7 @@ import {CarModelSchema} from "../../../_schemas/CarModelSchema"
 describe('Brand', () => {
     test('Querying a brand that does not exist should return "false"', async () => {
         const expectedCarModelNode = false
-        const actualCarModelNode = await getCarModelNodeById(-42)
+        const actualCarModelNode = await getNodeById(-42)
 
         expect(actualCarModelNode)
             .toBe(expectedCarModelNode)
@@ -18,7 +18,7 @@ describe('Brand', () => {
         const createdNode: CarModelNode = await seedCarModel()
 
         // ACT
-        const carModelNode = await getCarModelNodeById(createdNode.id as number)
+        const carModelNode = await getNodeById(createdNode.id as number)
 
         // ASSERT
         const validate = new Ajv().compile(CarModelSchema)

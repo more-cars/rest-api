@@ -1,12 +1,12 @@
 import {Driver, Session} from "neo4j-driver"
-import {closeDriver, getDriver} from "./driver"
-import {CarModelNode} from "../types/CarModelNode"
+import {closeDriver, getDriver} from "../driver"
+import {CarModelNode} from "../../types/CarModelNode"
 
-export async function getCarModelNodes(): Promise<Array<CarModelNode>> {
+export async function getAllNodesOfType(): Promise<Array<CarModelNode>> {
     const driver: Driver = getDriver()
     const session: Session = driver.session()
 
-    const foundNodes = await getCarModels(driver)
+    const foundNodes = await getNodes(driver)
 
     await session.close()
     await closeDriver(driver)
@@ -14,7 +14,7 @@ export async function getCarModelNodes(): Promise<Array<CarModelNode>> {
     return foundNodes
 }
 
-async function getCarModels(driver: Driver): Promise<Array<CarModelNode>> {
+async function getNodes(driver: Driver): Promise<Array<CarModelNode>> {
     const carModelNodes: Array<CarModelNode> = []
 
     const {records} = await driver.executeQuery(`

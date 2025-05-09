@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import {createCarModelNode} from "../../src/db/createCarModelNode"
+import {createNode} from "../../src/db/car-models/createNode"
 
 /**
  * Creates a randomized car model in the database, where only the mandatory fields are filled out.
@@ -13,5 +13,5 @@ export async function seedCarModelMinimal() {
         name: faker.vehicle.model()
     }
 
-    return await createCarModelNode(carModelData)
+    return await createNode(carModelData)
 }
