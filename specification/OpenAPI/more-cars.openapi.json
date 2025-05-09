@@ -23,6 +23,14 @@
       "description": "Production"
     }
   ],
+  "tags": [
+    {
+      "name": "Brands"
+    },
+    {
+      "name": "Car Models"
+    }
+  ],
   "paths": {
     "/": {
       "get": {
@@ -60,6 +68,9 @@
     },
     "/brands": {
       "get": {
+        "tags": [
+          "Brands"
+        ],
         "summary": "Returns a list of all `Brand`s",
         "responses": {
           "200": {
@@ -78,6 +89,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Brands"
+        ],
         "summary": "Create `Brand`",
         "responses": {
           "201": {
@@ -105,6 +119,9 @@
     },
     "/brands/{brand-id}": {
       "get": {
+        "tags": [
+          "Brands"
+        ],
         "summary": "Get `Brand` by ID",
         "parameters": [
           {
@@ -143,6 +160,9 @@
     },
     "/car-models/{car-model-id}": {
       "get": {
+        "tags": [
+          "Car Models"
+        ],
         "summary": "Get `Car Model` by ID",
         "parameters": [
           {
@@ -181,6 +201,9 @@
     },
     "/car-models": {
       "get": {
+        "tags": [
+          "Car Models"
+        ],
         "summary": "Returns a list of all `Car Model`s",
         "responses": {
           "200": {
@@ -199,6 +222,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Car Models"
+        ],
         "summary": "Create `Car Model`",
         "responses": {
           "201": {
