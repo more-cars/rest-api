@@ -158,6 +158,88 @@
         }
       }
     },
+    "/brands/{brand-id}/has-car-models/{car-model-id}": {
+      "post": {
+        "tags": [
+          "Brands"
+        ],
+        "summary": "Connects the given `Brand` to the given `Car Model`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "brand-id",
+            "description": "ID of the `Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "car-model-id",
+            "description": "ID of the `Car Model`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "`Brand` and `Car Model` successfully connected.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "relationship-id": {
+                      "type": "integer",
+                      "readOnly": true,
+                      "example": 1234
+                    },
+                    "relationship-name": {
+                      "type": "string",
+                      "readOnly": true,
+                      "example": "has-car-models"
+                    },
+                    "brand-id": {
+                      "type": "integer",
+                      "readOnly": true,
+                      "example": 12
+                    },
+                    "car-model-id": {
+                      "type": "integer",
+                      "readOnly": true,
+                      "example": 34
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "`Brand` or `Car Model` not found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request cannot be processed.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/car-models/{car-model-id}": {
       "get": {
         "tags": [
@@ -239,6 +321,88 @@
           },
           "422": {
             "description": "Invalid request.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/car-models/{car-model-id}/belongs-to-brand/{brand-id}": {
+      "post": {
+        "tags": [
+          "Car Models"
+        ],
+        "summary": "Connects the given `Car Model` to the given `Brand`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-id",
+            "description": "ID of the `Car Model`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "brand-id",
+            "description": "ID of the `Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "`Car Model` and `Brand` successfully connected.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "relationship-id": {
+                      "type": "integer",
+                      "readOnly": true,
+                      "example": 1234
+                    },
+                    "relationship-name": {
+                      "type": "string",
+                      "readOnly": true,
+                      "example": "belongs-to-brand"
+                    },
+                    "car-model-id": {
+                      "type": "integer",
+                      "readOnly": true,
+                      "example": 34
+                    },
+                    "brand-id": {
+                      "type": "integer",
+                      "readOnly": true,
+                      "example": 12
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "`Car Model` or `Brand` not found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request cannot be processed.",
             "content": {
               "text/plain": {
                 "schema": {
