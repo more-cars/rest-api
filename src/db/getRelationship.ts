@@ -10,12 +10,12 @@ export async function getRelationship(startNodeId: number, endNodeId: number, re
     const driver: Driver = getDriver()
     const session: Session = driver.session()
 
-    const createdRelationship = await getRel(startNodeId, endNodeId, relationshipName, driver)
+    const relationship = await getRel(startNodeId, endNodeId, relationshipName, driver)
 
     await session.close()
     await closeDriver(driver)
 
-    return createdRelationship
+    return relationship
 }
 
 async function getRel(startNodeId: number, endNodeId: number, relationshipName: string, driver: Driver): Promise<false | BaseRelationship> {
