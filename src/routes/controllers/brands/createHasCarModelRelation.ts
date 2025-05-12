@@ -1,6 +1,7 @@
 import express from "express"
 import {Brand} from "../../../models/Brand"
 import {CarModel} from "../../../models/CarModel"
+import {BrandRelationship} from "../../../types/brands/BrandRelationship"
 
 export async function createHasCarModelRelation(req: express.Request, res: express.Response) {
     const brand = await Brand.findById(parseInt(req.params.brandId))
@@ -13,4 +14,15 @@ export async function createHasCarModelRelation(req: express.Request, res: expre
 
         return
     }
+
+    const createdRelationship = await Brand.createHasCarModelRelationship(brand, carModel)
+
+    res.status(201)
+    res.set('Content-Type', 'application/json')
+    res.send({
+        brand_id: brand.id,
+        car_model_id: carModel.id,
+        relationship_id: createdRelationship.relationship_id,
+        relationship_name: BrandRelationship.hasCarModel,
+    })
 }
