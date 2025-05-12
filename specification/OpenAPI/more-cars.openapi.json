@@ -158,7 +158,7 @@
         }
       }
     },
-    "/brands/{brand-id}/has-car-models/{car-model-id}": {
+    "/brands/{brand-id}/has-car-model/{car-model-id}": {
       "post": {
         "tags": [
           "Brands"
@@ -200,7 +200,7 @@
                     "relationship-name": {
                       "type": "string",
                       "readOnly": true,
-                      "example": "has-car-models"
+                      "example": "HAS_CAR_MODEL"
                     },
                     "brand-id": {
                       "type": "integer",
