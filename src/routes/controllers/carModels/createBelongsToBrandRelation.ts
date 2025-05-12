@@ -15,14 +15,20 @@ export async function createBelongsToBrandRelation(req: express.Request, res: ex
         return
     }
 
-    const createdRelationship = await CarModel.createBelongsToBrandRelationship(carModel, brand)
+    try {
+        const createdRelationship = await CarModel.createBelongsToBrandRelationship(carModel, brand)
 
-    res.status(201)
-    res.set('Content-Type', 'application/json')
-    res.send({
-        car_model_id: carModel.id,
-        brand_id: brand.id,
-        relationship_id: createdRelationship.relationship_id,
-        relationship_name: CarModelRelationship.belongsToBrand,
-    })
+        res.status(201)
+        res.set('Content-Type', 'application/json')
+        res.send({
+            car_model_id: carModel.id,
+            brand_id: brand.id,
+            relationship_id: createdRelationship.relationship_id,
+            relationship_name: CarModelRelationship.belongsToBrand,
+        })
+    } catch (e) {
+        res.status(422)
+        res.set('Content-Type', 'text/plain')
+        res.send('Request failed. Relationship could not be created.')
+    }
 }
