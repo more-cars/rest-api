@@ -2,6 +2,7 @@ import {seedBrand} from "../../../dbSeeding/seedBrand"
 import {seedCarModel} from "../../../dbSeeding/seedCarModel"
 import {BaseRelationship} from "../../../../src/types/BaseRelationship"
 import {createRelationship} from "../../../../src/db/createRelationship"
+import {BrandRelationship} from "../../../../src/types/brands/BrandRelationship"
 
 describe('Car Model', () => {
     test('Creating a "Car Model belongs to Brand" relationship when both nodes exist', async () => {
@@ -13,7 +14,7 @@ describe('Car Model', () => {
         const createdRelationship: BaseRelationship = await createRelationship(
             brand.id as number,
             carModel.id as number,
-            'HAS_CAR_MODEL',
+            BrandRelationship.hasCarModel,
         )
 
         expect(createdRelationship)
@@ -23,6 +24,6 @@ describe('Car Model', () => {
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', 'HAS_CAR_MODEL')
+            .toHaveProperty('relationship_name', BrandRelationship.hasCarModel)
     })
 })
