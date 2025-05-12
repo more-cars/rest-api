@@ -1,0 +1,15 @@
+meta {
+  name: Create "has car model" Relation
+  type: http
+  seq: 40
+}
+
+post {
+  url: {{baseUrl}}/brands/{{validBrandId}}/has-car-model/{{validCarModelId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 201
+}
