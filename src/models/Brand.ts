@@ -6,6 +6,7 @@ import {getAllNodesOfType} from "../db/brands/getAllNodesOfType"
 import {createRelationship} from "../db/createRelationship"
 import {BrandHasCarModelRelationship} from "../types/brands/BrandHasCarModelRelationship"
 import {BrandRelationship} from "../types/brands/BrandRelationship"
+import {getRelationship} from "../db/getRelationship"
 
 export class Brand {
     static async create(data: any): Promise<BrandNode> {
@@ -21,6 +22,18 @@ export class Brand {
     }
 
     static async createHasCarModelRelationship(brand: BrandNode, carModel: CarModelNode) {
+        const existingRelationship = await getRelationship(brand.id as number, carModel.id as number, BrandRelationship.hasCarModel)
+        if (existingRelationship) {
+            const specificRelationship: BrandHasCarModelRelationship = {
+                brand_id: brand.id as number,
+                car_model_id: carModel.id as number,
+                relationship_id: existingRelationship.relationship_id,
+                relationship_name: BrandRelationship.hasCarModel,
+            }
+
+            return specificRelationship
+        }
+
         const baseRelationship = await createRelationship(
             brand.id as number,
             carModel.id as number,
