@@ -9,6 +9,6 @@ const router = express.Router()
 router.post('/car-models', create)
 router.get('/car-models/:id', getById)
 router.get('/car-models', getAll)
-router.post('/car-models/:carModelId/has-car-model/:brandId', createBelongsToBrandRelation)
+router.post('/car-models/:carModelId/belongs-to-brand/:brandId', createBelongsToBrandRelation)
 
 export default router
