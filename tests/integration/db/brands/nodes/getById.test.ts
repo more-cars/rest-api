@@ -1,8 +1,8 @@
 import Ajv from "ajv"
-import {getNodeById} from "../../../../src/db/brands/getNodeById"
-import {seedBrand} from "../../../dbSeeding/seedBrand"
-import {BrandNode} from "../../../../src/types/BrandNode"
-import {BrandSchema} from "../../../_schemas/BrandSchema"
+import {getNodeById} from "../../../../../src/db/brands/getNodeById"
+import {seedBrand} from "../../../../dbSeeding/seedBrand"
+import {BrandNode} from "../../../../../src/types/BrandNode"
+import {BrandSchema} from "../../../../_schemas/BrandSchema"
 
 describe('Brand', () => {
     test('Querying a brand that does not exist should return "false"', async () => {

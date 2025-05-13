@@ -1,8 +1,8 @@
-import {seedBrand} from "../../../dbSeeding/seedBrand"
-import {seedCarModel} from "../../../dbSeeding/seedCarModel"
-import {BaseRelationship} from "../../../../src/types/BaseRelationship"
-import {createRelationship} from "../../../../src/db/createRelationship"
-import {BrandRelationship} from "../../../../src/types/brands/BrandRelationship"
+import {seedBrand} from "../../../../dbSeeding/seedBrand"
+import {seedCarModel} from "../../../../dbSeeding/seedCarModel"
+import {BaseRelationship} from "../../../../../src/types/BaseRelationship"
+import {createRelationship} from "../../../../../src/db/createRelationship"
+import {BrandRelationship} from "../../../../../src/types/brands/BrandRelationship"
 
 describe('Brand', () => {
     test('Creating a "Brand has Car Model" relationship when both nodes exist', async () => {

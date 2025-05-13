@@ -1,4 +1,4 @@
-import {Brand} from "../../../../src/models/Brand"
+import {Brand} from "../../../../../src/models/Brand"
 
 describe('Brand', () => {
     test('Fetching a brand that does not exist should return "false"', async () => {

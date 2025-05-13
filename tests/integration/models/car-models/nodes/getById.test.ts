@@ -1,4 +1,4 @@
-import {CarModel} from "../../../../src/models/CarModel"
+import {CarModel} from "../../../../../src/models/CarModel"
 
 describe('Car Model', () => {
     test('Fetching a car model that does not exist should return "false"', async () => {

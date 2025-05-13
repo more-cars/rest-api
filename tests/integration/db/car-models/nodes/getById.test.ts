@@ -1,8 +1,8 @@
 import Ajv from "ajv"
-import {getNodeById} from "../../../../src/db/car-models/getNodeById"
-import {CarModelNode} from "../../../../src/types/CarModelNode"
-import {seedCarModel} from "../../../dbSeeding/seedCarModel"
-import {CarModelSchema} from "../../../_schemas/CarModelSchema"
+import {getNodeById} from "../../../../../src/db/car-models/getNodeById"
+import {CarModelNode} from "../../../../../src/types/CarModelNode"
+import {seedCarModel} from "../../../../dbSeeding/seedCarModel"
+import {CarModelSchema} from "../../../../_schemas/CarModelSchema"
 
 describe('Brand', () => {
     test('Querying a brand that does not exist should return "false"', async () => {
