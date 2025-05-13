@@ -1,0 +1,15 @@
+import {When} from "@cucumber/cucumber"
+import axios from "axios"
+import {BrandNode} from "../../src/types/BrandNode"
+import {CarModelNode} from "../../src/types/CarModelNode"
+
+When('the user connects car model B to brand A', async function () {
+    const brand: BrandNode = this.brandA
+    const carModel: CarModelNode = this.carModelB
+
+    this.latestResponse = await axios
+        .post(`${process.env.API_URL}/brands/${brand.id}/has-car-model/${carModel.id}`)
+        .catch(error => {
+            console.error(error.toJSON())
+        })
+})
