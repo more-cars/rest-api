@@ -9,7 +9,7 @@ Feature: Creating BRAND nodes
 
   @TEST_MCA-46 @implemented
   Scenario: Unknown properties should be ignored when creating a BRAND
-    When the user creates a brand A with the following mixed data
+    When the user creates a brand "A" with the following mixed data
       | key      | value           |
       | name     | Test Brand Test |
       | fonded   | 1955            |

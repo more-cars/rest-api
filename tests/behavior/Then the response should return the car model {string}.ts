@@ -4,8 +4,8 @@ import Ajv from "ajv"
 import {CarModelSchema} from "../_schemas/CarModelSchema"
 import {CarModelNode} from "../../src/types/CarModelNode"
 
-Then('the response should return the car model A', function () {
-    const expectedCarModel: CarModelNode = this.carModelA
+Then('the response should return the car model {string}', function (label: string) {
+    const expectedCarModel: CarModelNode = this.carModel[label]
     const actualCarModel: CarModelNode = this.latestResponse.data
 
     // checking the schema

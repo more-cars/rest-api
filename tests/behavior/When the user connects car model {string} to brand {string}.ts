@@ -3,9 +3,9 @@ import axios from "axios"
 import {BrandNode} from "../../src/types/BrandNode"
 import {CarModelNode} from "../../src/types/CarModelNode"
 
-When('the user connects car model B to brand A', async function () {
-    const brand: BrandNode = this.brandA
-    const carModel: CarModelNode = this.carModelB
+When('the user connects car model {string} to brand {string}', async function (carModelLabel: string, brandLabel: string) {
+    const brand: BrandNode = this.brand[brandLabel]
+    const carModel: CarModelNode = this.carModel[carModelLabel]
 
     this.latestResponse = await axios
         .post(`${process.env.API_URL}/brands/${brand.id}/has-car-model/${carModel.id}`)

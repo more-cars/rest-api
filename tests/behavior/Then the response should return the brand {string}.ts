@@ -4,8 +4,8 @@ import Ajv from "ajv"
 import {BrandNode} from "../../src/types/BrandNode"
 import {BrandSchema} from "../_schemas/BrandSchema"
 
-Then('the response should return the brand A', function () {
-    const expectedNode: BrandNode = this.brandA
+Then('the response should return the brand {string}', function (label: string) {
+    const expectedNode: BrandNode = this.brand[label]
     const actualNode: BrandNode = this.latestResponse.data
 
     // checking the schema

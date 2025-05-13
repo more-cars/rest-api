@@ -1,7 +1,7 @@
 import {DataTable, When} from "@cucumber/cucumber"
 import axios from "axios"
 
-When('the user creates a car model A with the following valid data', async function (dataTable: DataTable) {
+When('the user creates a car model {string} with the following valid data', async function (label: string, dataTable: DataTable) {
     const rows = dataTable.hashes()
 
     const carModelData: any = {}
@@ -9,11 +9,11 @@ When('the user creates a car model A with the following valid data', async funct
         carModelData[row.key] = row.value
     })
 
-    this.carModelA = carModelData
+    this.carModel[label] = carModelData
     this.latestResponse = await axios
         .post(`${process.env.API_URL}/car-models`, carModelData)
         .catch(error => {
             console.error(error.toJSON())
         })
-    this.carModelA['id'] = this.latestResponse.data.id
+    this.carModel[label]['id'] = this.latestResponse.data.id
 })
