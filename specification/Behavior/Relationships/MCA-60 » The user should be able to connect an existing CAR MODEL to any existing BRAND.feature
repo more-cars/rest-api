@@ -17,4 +17,3 @@ Feature: Connecting CAR MODELs to a BRAND
 
     When the user connects brand "A" to car model "B"
     Then the response should return with status code 201
-#
