@@ -3,6 +3,9 @@ import {BrandNode} from "../types/BrandNode"
 import {createNode} from "../db/car-models/createNode"
 import {getNodeById} from "../db/car-models/getNodeById"
 import {getAllNodesOfType} from "../db/car-models/getAllNodesOfType"
+import {
+    deleteForeignCarModelBelongsToBrandRelationship
+} from "./relationships/deleteForeignCarModelBelongsToBrandRelationship"
 import {getCarModelBelongsToBrandRelationship} from "./relationships/getCarModelBelongsToBrandRelationship"
 import {createCarModelBelongsToBrandRelationship} from "./relationships/createCarModelBelongsToBrandRelationship"
 
@@ -24,6 +27,8 @@ export class CarModel {
         if (existingRelation) {
             return existingRelation
         }
+
+        await deleteForeignCarModelBelongsToBrandRelationship(carModel, brand)
 
         return await createCarModelBelongsToBrandRelationship(carModel, brand)
     }
