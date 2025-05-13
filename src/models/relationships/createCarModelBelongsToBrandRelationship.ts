@@ -17,6 +17,10 @@ export async function createCarModelBelongsToBrandRelationship(carModel: CarMode
         BrandRelationship.hasCarModel,
     )
 
+    if (!baseRelationship) {
+        return false
+    }
+
     const specificRelationship: CarModelBelongsToBrandRelationship = {
         car_model_id: carModel.id as number,
         brand_id: brand.id as number,

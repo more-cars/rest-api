@@ -18,6 +18,14 @@ export async function createBelongsToBrandRelation(req: express.Request, res: ex
     try {
         const createdRelationship = await CarModel.createBelongsToBrandRelationship(carModel, brand)
 
+        if (!createdRelationship) {
+            res.status(422)
+            res.set('Content-Type', 'text/plain')
+            res.send('Request failed. Relationship could not be created.')
+
+            return
+        }
+
         res.status(201)
         res.set('Content-Type', 'application/json')
         res.send({

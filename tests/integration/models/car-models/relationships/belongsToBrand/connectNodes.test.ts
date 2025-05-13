@@ -1,8 +1,5 @@
 import {seedBrand} from "../../../../../dbSeeding/seedBrand"
 import {seedCarModel} from "../../../../../dbSeeding/seedCarModel"
-import {
-    CarModelBelongsToBrandRelationship
-} from "../../../../../../src/types/car-models/CarModelBelongsToBrandRelationship"
 import {CarModel} from "../../../../../../src/models/CarModel"
 import {CarModelRelationship} from "../../../../../../src/types/car-models/CarModelRelationship"
 
@@ -11,7 +8,7 @@ describe('Car Model', () => {
         const carModel = await seedCarModel()
         const brand = await seedBrand()
 
-        const createdRelationship: CarModelBelongsToBrandRelationship = await CarModel.createBelongsToBrandRelationship(carModel, brand)
+        const createdRelationship = await CarModel.createBelongsToBrandRelationship(carModel, brand)
 
         expect(createdRelationship)
             .toHaveProperty('car_model_id', carModel.id)
