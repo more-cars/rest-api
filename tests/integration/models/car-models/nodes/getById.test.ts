@@ -1,4 +1,5 @@
 import {CarModel} from "../../../../../src/models/CarModel"
+import {seedCarModel} from "../../../../dbSeeding/seedCarModel"
 
 describe('Car Model', () => {
     test('Fetching a car model that does not exist should return "false"', async () => {
@@ -6,6 +7,14 @@ describe('Car Model', () => {
         const actualCarModel = await CarModel.findById(-42)
 
         expect(actualCarModel)
-            .toBe(expectedCarModel)
+            .toEqual(expectedCarModel)
+    })
+
+    test('When the car model exists it should be returned', async () => {
+        const expectedCarModel = await seedCarModel()
+        const actualCarModel = await CarModel.findById(expectedCarModel.id as number)
+
+        expect(actualCarModel)
+            .toEqual(expectedCarModel)
     })
 })
