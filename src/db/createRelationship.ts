@@ -5,12 +5,9 @@ import {addMoreCarsIdToRelationship} from "./addMoreCarsIdToRelationship"
 
 /**
  * Creating a relationship between the two given nodes.
- *
- * ⚠️
- * The input data is assumed to be valid. It is not validated here.
- * When the given nodes don't exist or the relationship name is invalid then the db query will crash.
+ * When the given nodes don't exist or the relationship name is invalid then the creation will be aborted.
  */
-export async function createRelationship(startNodeId: number, endNodeId: number, relationshipName: string): Promise<BaseRelationship> {
+export async function createRelationship(startNodeId: number, endNodeId: number, relationshipName: string): Promise<false | BaseRelationship> {
     const driver: Driver = getDriver()
     const session: Session = driver.session()
 
@@ -22,7 +19,7 @@ export async function createRelationship(startNodeId: number, endNodeId: number,
     return createdRelationship
 }
 
-async function createRel(startNodeId: number, endNodeId: number, relationshipName: string, driver: Driver): Promise<BaseRelationship> {
+async function createRel(startNodeId: number, endNodeId: number, relationshipName: string, driver: Driver): Promise<false | BaseRelationship> {
     // 1. Creating the rel in the database
     const {records} = await driver.executeQuery(`
             MATCH (a {mc_id: $startNodeId}), (b {mc_id: $endNodeId})
@@ -34,6 +31,11 @@ async function createRel(startNodeId: number, endNodeId: number, relationshipNam
             endNodeId,
         },
     )
+
+    if (records.length === 0) {
+        return false
+    }
+
     const createdDbRel: Node = records[0].get('r')
 
     // 2. Adding a custom More Cars ID for that rel
