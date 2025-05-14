@@ -3,7 +3,7 @@ import {Neo4jError} from "neo4j-driver"
 import {createNode} from "../../../../../src/db/car-models/createNode"
 import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
 
-describe('Brand', () => {
+describe('Car Model', () => {
     test('Creating a new node is not possible when mandatory fields are missing', async () => {
         // @ts-expect-error circumventing the typescript checks to force the error on database side
         await expect(createNode({

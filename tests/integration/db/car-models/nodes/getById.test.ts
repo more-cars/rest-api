@@ -4,7 +4,7 @@ import {CarModelNode} from "../../../../../src/types/CarModelNode"
 import {seedCarModel} from "../../../../dbSeeding/seedCarModel"
 import {CarModelSchema} from "../../../../_schemas/CarModelSchema"
 
-describe('Brand', () => {
+describe('Car Model', () => {
     test('Querying a brand that does not exist should return "false"', async () => {
         const expectedCarModelNode = false
         const actualCarModelNode = await getNodeById(-42)
