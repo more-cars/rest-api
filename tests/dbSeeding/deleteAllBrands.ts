@@ -10,7 +10,7 @@ export async function deleteAllBrands() {
     const session: Session = driver.session()
     await driver.executeQuery(`
         MATCH (node:Brand) 
-        DELETE node
+        DETACH DELETE node
     `)
     await session.close()
     await closeDriver(driver)
