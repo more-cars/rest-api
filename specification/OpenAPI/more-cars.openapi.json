@@ -451,6 +451,16 @@
           "hsn": {
             "type": "string",
             "example": "0010"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
           }
         }
       },
@@ -489,6 +499,16 @@
           "total_production": {
             "type": "integer",
             "example": 7177
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
           }
         }
       }

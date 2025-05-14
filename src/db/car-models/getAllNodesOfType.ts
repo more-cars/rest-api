@@ -32,6 +32,8 @@ async function getNodes(driver: Driver): Promise<Array<CarModelNode>> {
             generation: dbNode.properties.generation,
             internal_code: dbNode.properties.internal_code,
             total_production: dbNode.properties.total_production,
+            created_at: dbNode.properties.created_at,
+            updated_at: dbNode.properties.updated_at,
         })
     })
 

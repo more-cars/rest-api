@@ -32,6 +32,8 @@ async function getNodes(driver: Driver): Promise<Array<BrandNode>> {
             defunct: dbNode.properties.defunct,
             wmi: dbNode.properties.wmi,
             hsn: dbNode.properties.hsn,
+            created_at: dbNode.properties.created_at,
+            updated_at: dbNode.properties.updated_at,
         })
     })
 

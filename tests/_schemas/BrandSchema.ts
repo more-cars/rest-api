@@ -8,10 +8,14 @@ export const BrandSchema = {
         defunct: {type: ["integer", "null"]},
         wmi: {type: ["string", "null"]},
         hsn: {type: ["string", "null"]},
+        created_at: {type: "string"},
+        updated_at: {type: "string"},
     },
     required: [
         "id",
         "name",
+        "created_at",
+        "updated_at",
     ],
     additionalProperties: false,
 }

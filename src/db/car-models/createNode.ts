@@ -2,6 +2,7 @@ import {Driver, Node, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../driver"
 import {CarModelNode} from "../../types/car-models/CarModelNode"
 import {CarModelNodeUserData} from "../../types/car-models/CarModelNodeUserData"
+import {addTimestampsToNode} from "../addTimestampsToNode"
 
 export async function createNode(carModelData: CarModelNodeUserData): Promise<CarModelNode> {
     const driver: Driver = getDriver()
@@ -47,9 +48,13 @@ async function createCarModel(carModelData: CarModelNodeUserData, driver: Driver
     const elementId = createdDbNode.elementId
     const elementIdSplit: Array<string> = elementId.split(':')
     const moreCarsId: number = parseInt(elementIdSplit[2])
-    const enrichedDbNode: Node = await setMoreCarsId(elementId, moreCarsId, driver)
+    await setMoreCarsId(elementId, moreCarsId, driver)
 
-    // 3. Converting the Neo4j node to a More Cars node
+    // 3. Adding timestamps
+    const timestamp = new Date().toISOString()
+    const enrichedDbNode: Node = await addTimestampsToNode(elementId, timestamp, driver)
+
+    // 4. Converting the Neo4j node to a More Cars node
     const node: CarModelNode = {
         id: enrichedDbNode.properties.mc_id,
         name: enrichedDbNode.properties.name,
@@ -58,6 +63,8 @@ async function createCarModel(carModelData: CarModelNodeUserData, driver: Driver
         generation: enrichedDbNode.properties.generation,
         internal_code: enrichedDbNode.properties.internal_code,
         total_production: enrichedDbNode.properties.total_production,
+        created_at: enrichedDbNode.properties.created_at,
+        updated_at: enrichedDbNode.properties.updated_at,
     }
 
     return node

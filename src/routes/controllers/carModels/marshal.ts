@@ -13,6 +13,8 @@ export function marshal(carModel: CarModelNode) {
         generation: carModel.generation ?? null,
         internal_code: carModel.internal_code ?? null,
         total_production: carModel.total_production ?? null,
+        created_at: carModel.created_at,
+        updated_at: carModel.updated_at,
     }
 
     return responseBody

@@ -13,6 +13,8 @@ export function marshal(brand: BrandNode) {
         defunct: brand.defunct ?? null,
         wmi: brand.wmi ?? null,
         hsn: brand.hsn ?? null,
+        created_at: brand.created_at,
+        updated_at: brand.updated_at,
     }
 
     return responseBody

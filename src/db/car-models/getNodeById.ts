@@ -35,6 +35,8 @@ async function getNode(id: number, driver: Driver): Promise<false | CarModelNode
         generation: foundDbNode.properties.generation,
         internal_code: foundDbNode.properties.internal_code,
         total_production: foundDbNode.properties.total_production,
+        created_at: foundDbNode.properties.created_at,
+        updated_at: foundDbNode.properties.updated_at,
     }
 
     return node

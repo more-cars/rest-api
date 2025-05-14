@@ -8,10 +8,14 @@ export const CarModelSchema = {
         generation: {type: ["integer", "null"]},
         internal_code: {type: ["string", "null"]},
         total_production: {type: ["integer", "null"]},
+        created_at: {type: "string"},
+        updated_at: {type: "string"},
     },
     required: [
         "id",
         "name",
+        "created_at",
+        "updated_at",
     ],
     additionalProperties: false,
 }
