@@ -1,7 +1,7 @@
 import {When} from "@cucumber/cucumber"
 import axios from "axios"
-import {BrandNode} from "../../src/types/BrandNode"
-import {CarModelNode} from "../../src/types/CarModelNode"
+import {BrandNode} from "../../../src/types/BrandNode"
+import {CarModelNode} from "../../../src/types/CarModelNode"
 
 When('the user tries to connect car model {string} to brand {string} with the relationship name {string}',
     async function (carModelLabel: string, brandLabel: string, relationshipName: string) {
