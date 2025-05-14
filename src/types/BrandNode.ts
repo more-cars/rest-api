@@ -1,9 +1,4 @@
-export type BrandNode = {
-    id?: number
-    name: string
-    full_name?: string
-    founded?: number
-    defunct?: number
-    wmi?: string
-    hsn?: string
-}
+import {BaseNode} from "./BaseNode"
+import {BrandNodeUserData} from "./BrandNodeUserData"
+
+export type BrandNode = BaseNode & BrandNodeUserData
