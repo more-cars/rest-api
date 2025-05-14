@@ -1,19 +1,10 @@
 import {When} from "@cucumber/cucumber"
 import axios from "axios"
-import {faker} from "@faker-js/faker"
+import FakeBrand from "../../fixtures/nodes/FakeBrand"
 
 When('the user creates a brand', async function () {
-    const data = {
-        name: faker.vehicle.manufacturer(),
-        full_name: faker.vehicle.manufacturer(),
-        founded: faker.number.int({min: 1000, max: 3000}),
-        defunct: faker.number.int({min: 1000, max: 3000}),
-        wmi: faker.vehicle.vrm(),
-        hsn: faker.vehicle.vrm(),
-    }
-
     this.latestResponse = await axios
-        .post(`${process.env.API_URL}/brands`, data)
+        .post(`${process.env.API_URL}/brands`, FakeBrand)
         .catch(error => {
             console.error(error.toJSON())
         })

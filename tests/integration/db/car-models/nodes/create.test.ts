@@ -1,6 +1,7 @@
 import {faker} from "@faker-js/faker"
 import {Neo4jError} from "neo4j-driver"
 import {createNode} from "../../../../../src/db/car-models/createNode"
+import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
 
 describe('Brand', () => {
     test('Creating a new node is not possible when mandatory fields are missing', async () => {
@@ -12,17 +13,9 @@ describe('Brand', () => {
     })
 
     test('When providing valid data the new node can be created', async () => {
-        const data = {
-            name: faker.vehicle.model(),
-            built_from: faker.number.int({min: 1000, max: 3000}),
-            built_to: faker.number.int({min: 1000, max: 3000}),
-            generation: faker.number.int({min: 1, max: 10}),
-            internal_code: faker.commerce.isbn(),
-            total_production: faker.number.int({min: 100, max: 10000000}),
-        }
-        const createdNode = await createNode(data)
+        const createdNode = await createNode(FakeCarModel)
 
         expect(createdNode)
-            .toEqual(expect.objectContaining(data))
+            .toEqual(expect.objectContaining(FakeCarModel))
     })
 })

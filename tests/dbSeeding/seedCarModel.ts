@@ -1,5 +1,5 @@
-import {faker} from "@faker-js/faker"
 import {createNode} from "../../src/db/car-models/createNode"
+import FakeCarModel from "../fixtures/nodes/FakeCarModel"
 
 /**
  * Creates a randomized car model in the database.
@@ -9,14 +9,5 @@ import {createNode} from "../../src/db/car-models/createNode"
  * But for now the risk does not outweigh the effort to implement the functionality twice.
  */
 export async function seedCarModel() {
-    const carModelData = {
-        name: faker.vehicle.model(),
-        built_from: faker.number.int({min: 1000, max: 3000}),
-        built_to: faker.number.int({min: 1000, max: 3000}),
-        generation: faker.number.int({min: 1, max: 10}),
-        internal_code: faker.commerce.isbn(),
-        total_production: faker.number.int({min: 100, max: 10000000}),
-    }
-
-    return await createNode(carModelData)
+    return await createNode(FakeCarModel)
 }
