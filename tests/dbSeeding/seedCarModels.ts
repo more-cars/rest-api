@@ -1,5 +1,5 @@
 import {seedCarModel} from "./seedCarModel"
-import {CarModelNode} from "../../src/types/CarModelNode"
+import {CarModelNode} from "../../src/types/car-models/CarModelNode"
 
 /**
  * Creates the requested amount of car models in the database.

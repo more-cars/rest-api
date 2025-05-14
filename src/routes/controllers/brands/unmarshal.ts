@@ -1,4 +1,4 @@
-import {BrandNodeUserData} from "../../../types/BrandNodeUserData"
+import {BrandNodeUserData} from "../../../types/brands/BrandNodeUserData"
 
 /**
  * Picks all attributes from the request object which conform to the API specification.

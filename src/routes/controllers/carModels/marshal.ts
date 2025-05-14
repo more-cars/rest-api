@@ -1,4 +1,4 @@
-import {CarModelNode} from "../../../types/CarModelNode"
+import {CarModelNode} from "../../../types/car-models/CarModelNode"
 
 /**
  * Based on the given "car model" node this creates a response object

@@ -1,7 +1,7 @@
 import {Driver, Node, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../driver"
-import {BrandNode} from "../../types/BrandNode"
-import {BrandNodeUserData} from "../../types/BrandNodeUserData"
+import {BrandNode} from "../../types/brands/BrandNode"
+import {BrandNodeUserData} from "../../types/brands/BrandNodeUserData"
 import {setMoreCarsId} from "../addMoreCarsIdToNode"
 
 export async function createNode(data: BrandNodeUserData): Promise<BrandNode> {

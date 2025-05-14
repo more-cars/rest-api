@@ -1,4 +1,4 @@
-import {BaseNode} from "./BaseNode"
+import {BaseNode} from "../BaseNode"
 import {CarModelNodeUserData} from "./CarModelNodeUserData"
 
 export type CarModelNode = BaseNode & CarModelNodeUserData

@@ -1,6 +1,6 @@
 import {When} from "@cucumber/cucumber"
 import axios from "axios"
-import {BrandNode} from "../../../src/types/BrandNode"
+import {BrandNode} from "../../../src/types/brands/BrandNode"
 
 When('the user requests the brand {string} via ID', async function (label: string) {
     const brand: BrandNode = this.brand[label]

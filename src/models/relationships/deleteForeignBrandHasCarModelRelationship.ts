@@ -1,5 +1,5 @@
-import {BrandNode} from "../../types/BrandNode"
-import {CarModelNode} from "../../types/CarModelNode"
+import {BrandNode} from "../../types/brands/BrandNode"
+import {CarModelNode} from "../../types/car-models/CarModelNode"
 import {findRelationship} from "../../db/findRelationship"
 import {BrandRelationship} from "../../types/brands/BrandRelationship"
 import {deleteRelationship} from "../../db/deleteRelationship"

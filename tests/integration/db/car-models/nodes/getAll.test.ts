@@ -1,5 +1,5 @@
 import {deleteAllCarModels} from "../../../../dbSeeding/deleteAllCarModels"
-import {CarModelNode} from "../../../../../src/types/CarModelNode"
+import {CarModelNode} from "../../../../../src/types/car-models/CarModelNode"
 import {seedCarModels} from "../../../../dbSeeding/seedCarModels"
 import {getAllNodesOfType} from "../../../../../src/db/car-models/getAllNodesOfType"
 

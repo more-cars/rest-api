@@ -1,7 +1,7 @@
 import {Driver, Node, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../driver"
-import {CarModelNode} from "../../types/CarModelNode"
-import {CarModelNodeUserData} from "../../types/CarModelNodeUserData"
+import {CarModelNode} from "../../types/car-models/CarModelNode"
+import {CarModelNodeUserData} from "../../types/car-models/CarModelNodeUserData"
 
 export async function createNode(carModelData: CarModelNodeUserData): Promise<CarModelNode> {
     const driver: Driver = getDriver()

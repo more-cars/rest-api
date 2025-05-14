@@ -1,5 +1,5 @@
 import {Given} from "@cucumber/cucumber"
-import {CarModelNode} from "../../../src/types/CarModelNode"
+import {CarModelNode} from "../../../src/types/car-models/CarModelNode"
 
 Given('car model {string} does NOT exist', async function (label: string) {
     const carModel: CarModelNode = {

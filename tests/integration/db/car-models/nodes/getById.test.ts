@@ -1,6 +1,6 @@
 import Ajv from "ajv"
 import {getNodeById} from "../../../../../src/db/car-models/getNodeById"
-import {CarModelNode} from "../../../../../src/types/CarModelNode"
+import {CarModelNode} from "../../../../../src/types/car-models/CarModelNode"
 import {seedCarModel} from "../../../../dbSeeding/seedCarModel"
 import {CarModelSchema} from "../../../../_schemas/CarModelSchema"
 

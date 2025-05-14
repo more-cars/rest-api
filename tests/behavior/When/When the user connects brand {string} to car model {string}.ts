@@ -1,7 +1,7 @@
 import {When} from "@cucumber/cucumber"
 import axios from "axios"
-import {CarModelNode} from "../../../src/types/CarModelNode"
-import {BrandNode} from "../../../src/types/BrandNode"
+import {CarModelNode} from "../../../src/types/car-models/CarModelNode"
+import {BrandNode} from "../../../src/types/brands/BrandNode"
 
 When('the user connects brand {string} to car model {string}', async function (brandLabel: string, carModelLabel: string) {
     const carModel: CarModelNode = this.carModel[carModelLabel]
