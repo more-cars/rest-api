@@ -1,0 +1,25 @@
+meta {
+  name: Create (ignored data)
+  type: http
+  seq: 16
+}
+
+post {
+  url: {{baseUrl}}/brands
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "DKW",
+    "created_at": "nope",
+    "updated_at": "nonono"
+  }
+}
+
+assert {
+  res.status: eq 201
+  res.body.created_at: neq nope
+  res.body.updated_at: neq nonono
+}
