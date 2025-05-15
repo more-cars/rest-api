@@ -23,4 +23,6 @@ body:json {
 
 assert {
   res.status: eq 201
+  res.body: isJson
+  res.body.id: gte 0
 }

@@ -12,4 +12,8 @@ get {
 
 assert {
   res.status: eq 200
+  res.body: isJson
+  res.body.id: gte 0
+  res.body.created_at: isNotEmpty
+  res.body.updated_at: isNotEmpty
 }
