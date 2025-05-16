@@ -5,14 +5,14 @@ metadata:
   namespace: prod
   labels:
     app.kubernetes.io/name: load-test
-    app.kubernetes.io/version: "0.6.0"
+    app.kubernetes.io/version: "0.7.0"
     app.kubernetes.io/component: testing
 spec:
   template:
     spec:
       initContainers:
         - name: more-cars-api
-          image: dennisgerike/more-cars-api:0.6.0
+          image: dennisgerike/more-cars-api:0.7.0
           command: [ 'cp', '-R', '/app/tests/performance', '/tests' ]
           volumeMounts:
             - name: test-cases-volume
