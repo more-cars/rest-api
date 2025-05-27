@@ -15,6 +15,10 @@ When('the user requests the {string} {string}', async function (nodeType: string
             node = this.carModel[label]
             path = 'car-models'
             break
+        case 'image':
+            node = this.image[label]
+            path = 'images'
+            break
         default:
             return
     }
