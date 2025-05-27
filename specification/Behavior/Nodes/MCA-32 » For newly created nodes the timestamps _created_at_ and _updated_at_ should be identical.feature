@@ -17,3 +17,4 @@ Feature: Providing timestamps for all NODEs
       | node type |
       | brand     |
       | car model |
+      | image     |
