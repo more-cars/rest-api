@@ -29,6 +29,9 @@
     },
     {
       "name": "Car Models"
+    },
+    {
+      "name": "Images"
     }
   ],
   "paths": {
@@ -413,6 +416,36 @@
           }
         }
       }
+    },
+    "/images": {
+      "post": {
+        "tags": [
+          "Images"
+        ],
+        "summary": "Create `Image`",
+        "responses": {
+          "201": {
+            "description": "`Image` created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Image"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid request.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -509,6 +542,100 @@
             "type": "string",
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "Image": {
+        "type": "object",
+        "required": [
+          "image_provider",
+          "external_id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true,
+            "example": "21186"
+          },
+          "image_provider": {
+            "type": "string",
+            "example": "flickr"
+          },
+          "external_id": {
+            "type": "string",
+            "example": "36039295304"
+          },
+          "name": {
+            "type": "string",
+            "example": "1958 Lincoln Premiere"
+          },
+          "description": {
+            "type": "string",
+            "example": null
+          },
+          "creator": {
+            "type": "string",
+            "example": "More Cars"
+          },
+          "license": {
+            "type": "string",
+            "example": "CC BY 2.0"
+          },
+          "tags": {
+            "type": "string",
+            "example": "Oldtimer, Lincoln, pink"
+          },
+          "source": {
+            "type": "string",
+            "format": "url",
+            "example": "https://www.flickr.com/photos/more-cars/36039295304/"
+          },
+          "image_url_original": {
+            "type": "string",
+            "format": "url",
+            "example": "https://live.staticflickr.com/4389/36039295304_c98f0f3d86_z.jpg"
+          },
+          "image_url_xxl": {
+            "type": "string",
+            "format": "url",
+            "example": null
+          },
+          "image_url_xl": {
+            "type": "string",
+            "format": "url",
+            "example": "https://live.staticflickr.com/4389/36039295304_bdf7d4b0ec_o.jpg"
+          },
+          "image_url_l": {
+            "type": "string",
+            "format": "url",
+            "example": "https://live.staticflickr.com/4389/36039295304_c98f0f3d86_b.jpg"
+          },
+          "image_url_m": {
+            "type": "string",
+            "format": "url",
+            "example": "https://live.staticflickr.com/4389/36039295304_c98f0f3d86_z.jpg"
+          },
+          "image_url_s": {
+            "type": "string",
+            "format": "url",
+            "example": "https://live.staticflickr.com/4389/36039295304_c98f0f3d86_n.jpg"
+          },
+          "image_url_xs": {
+            "type": "string",
+            "format": "url",
+            "example": "https://live.staticflickr.com/4389/36039295304_c98f0f3d86_t.jpg"
+          },
+          "created_at": {
+            "type": "string",
+            "readOnly": true,
+            "format": "date-time",
+            "example": "2018-12-01T16:13:15Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "readOnly": true,
+            "format": "date-time",
+            "example": "2020-11-21T19:21:02Z"
           }
         }
       }
