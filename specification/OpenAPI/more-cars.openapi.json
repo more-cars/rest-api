@@ -487,11 +487,13 @@
           },
           "created_at": {
             "type": "string",
+            "readOnly": true,
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
           },
           "updated_at": {
             "type": "string",
+            "readOnly": true,
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
           }
@@ -535,11 +537,13 @@
           },
           "created_at": {
             "type": "string",
+            "readOnly": true,
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
           },
           "updated_at": {
             "type": "string",
+            "readOnly": true,
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
           }
