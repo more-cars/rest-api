@@ -15,6 +15,7 @@ body:json {
     "image_provider": "picci",
     "external_id": "123456",
     "name": "nein",
+    "my_property": "no",
     "created_at": "nope",
     "updated_at": "nonono"
   }
@@ -23,6 +24,7 @@ body:json {
 assert {
   res.status: eq 201
   res.body.name: neq nein
+  res.body.my_property: isUndefined
   res.body.created_at: neq nope
   res.body.updated_at: neq nonono
 }
