@@ -10,6 +10,7 @@ export async function create(req: express.Request, res: express.Response) {
         res.set('Content-Type', 'application/json')
         res.send(marshal(createdNode))
     } catch (e) {
+        console.error(e)
         res.status(422)
         res.set('Content-Type', 'text/plain')
         res.send('Request failed. Node could not be created.')

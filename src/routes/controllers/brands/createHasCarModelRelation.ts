@@ -35,6 +35,7 @@ export async function createHasCarModelRelation(req: express.Request, res: expre
             relationship_name: BrandRelationship.hasCarModel,
         })
     } catch (e) {
+        console.error(e)
         res.status(422)
         res.set('Content-Type', 'text/plain')
         res.send('Request failed. Relationship could not be created.')
