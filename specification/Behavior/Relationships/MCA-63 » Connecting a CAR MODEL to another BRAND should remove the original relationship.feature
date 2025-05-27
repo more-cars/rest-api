@@ -9,8 +9,8 @@ Feature: Connecting CAR MODELs to a BRAND
 
   @TEST_MCA-63 @implemented
   Scenario: Connecting a CAR MODEL to a different BRAND should remove the original relationship
-    Given there exists a car model "A"
-    And there exists a brand "B"
+    Given there exists a "car model" "A"
+    And there exists a "brand" "B"
     And there exists a relationship "C" between car model "A" and brand "B"
 
     When the user connects car model "A" to a different brand

@@ -9,8 +9,8 @@ Feature: Connecting CAR MODELs to a BRAND
 
   @TEST_MCA-64 @implemented
   Scenario: Creating the same relationship again returns the already existing one
-    Given there exists a brand "A"
-    And there exists a car model "B"
+    Given there exists a "brand" "A"
+    And there exists a "car model" "B"
     And there exists a relationship "C" between car model "B" and brand "A"
 
     When the user connects car model "B" to brand "A"

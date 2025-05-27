@@ -9,7 +9,7 @@ Feature: Providing every CORE information for a CAR MODEL
 
   @TEST_MCA-28 @implemented
   Scenario: Requesting a CAR MODEL should return all CORE properties
-    Given there exists a car model "A"
+    Given there exists a "car model" "A"
     When the user requests the car model "A" via ID
     Then the response should contain the following keys
       | key              |
