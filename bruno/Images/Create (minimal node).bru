@@ -1,0 +1,24 @@
+meta {
+  name: Create (minimal node)
+  type: http
+  seq: 11
+}
+
+post {
+  url: {{baseUrl}}/images
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "image_provider": "picci",
+    "external_id": "123456"
+  }
+}
+
+assert {
+  res.status: eq 201
+  res.body: isJson
+  res.body.id: gte 0
+}
