@@ -1,7 +1,9 @@
-import FakeBrand from "../../../../fixtures/nodes/FakeBrand"
-import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
 import {Brand} from "../../../../../src/models/Brand"
 import {CarModel} from "../../../../../src/models/CarModel"
+import {Image} from "../../../../../src/models/Image"
+import FakeBrand from "../../../../fixtures/nodes/FakeBrand"
+import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
+import FakeImage from "../../../../fixtures/nodes/FakeImage"
 import moment from "moment"
 
 describe('Create Node', () => {
@@ -25,6 +27,16 @@ describe('Create Node', () => {
             .toHaveProperty('updated_at')
         expect(moment(createdCarModel.updated_at).isValid())
             .toEqual(true)
+
+        const createdImage = await Image.create(FakeImage)
+        expect(createdImage)
+            .toHaveProperty('created_at')
+        expect(moment(createdImage.created_at).isValid())
+            .toEqual(true)
+        expect(createdImage)
+            .toHaveProperty('updated_at')
+        expect(moment(createdImage.updated_at).isValid())
+            .toEqual(true)
     })
 
     test('Timestamps have valid dates', async () => {
@@ -35,5 +47,9 @@ describe('Create Node', () => {
         const createdCarModel = await CarModel.create(FakeCarModel)
         expect(moment(createdCarModel.created_at).isValid())
         expect(moment(createdCarModel.updated_at).isValid())
+
+        const createdImage = await Image.create(FakeImage)
+        expect(moment(createdImage.created_at).isValid())
+        expect(moment(createdImage.updated_at).isValid())
     })
 })

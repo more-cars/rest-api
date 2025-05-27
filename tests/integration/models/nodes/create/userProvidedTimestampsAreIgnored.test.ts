@@ -4,6 +4,9 @@ import {Brand} from "../../../../../src/models/Brand"
 import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
 import {CarModelNodeUserData} from "../../../../../src/types/car-models/CarModelNodeUserData"
 import {CarModel} from "../../../../../src/models/CarModel"
+import FakeImage from "../../../../fixtures/nodes/FakeImage"
+import {ImageNodeUserData} from "../../../../../src/types/images/ImageNodeUserData"
+import {Image} from "../../../../../src/models/Image"
 
 describe('Create Node', () => {
     test('Timestamps provided by the user are ignored', async () => {
@@ -32,5 +35,18 @@ describe('Create Node', () => {
         expect(createdCarModel).not.toHaveProperty('created_at', "blubb")
         expect(createdCarModel).toHaveProperty('updated_at')
         expect(createdCarModel).not.toHaveProperty('updated_at', "blobb")
+
+        // IMAGE
+        const imageData: ImageNodeUserData = FakeImage
+        // @ts-expect-error property "created_at" is officially not allowed
+        imageData['created_at'] = "blubb"
+        // @ts-expect-error property "updated_at" is officially not allowed
+        imageData['updated_at'] = "blobb"
+        const createdImage = await Image.create(imageData)
+
+        expect(createdImage).toHaveProperty('created_at')
+        expect(createdImage).not.toHaveProperty('created_at', "blubb")
+        expect(createdImage).toHaveProperty('updated_at')
+        expect(createdImage).not.toHaveProperty('updated_at', "blobb")
     })
 })

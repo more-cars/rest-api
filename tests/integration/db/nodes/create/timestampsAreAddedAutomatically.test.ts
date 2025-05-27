@@ -1,7 +1,9 @@
-import FakeBrand from "../../../../fixtures/nodes/FakeBrand"
-import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
 import {createNode as createBrandNode} from "../../../../../src/db/brands/createNode"
 import {createNode as createCarModelNode} from "../../../../../src/db/car-models/createNode"
+import {createNode as createImageNode} from "../../../../../src/db/images/createNode"
+import FakeBrand from "../../../../fixtures/nodes/FakeBrand"
+import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
+import FakeImageFull from "../../../../fixtures/nodes/FakeImageFull"
 
 describe('Create Node', () => {
     test('Timestamps are added when creating a node', async () => {
@@ -15,6 +17,12 @@ describe('Create Node', () => {
         expect(createdCarModel)
             .toHaveProperty('created_at')
         expect(createdCarModel)
+            .toHaveProperty('updated_at')
+
+        const createdImage = await createImageNode(FakeImageFull)
+        expect(createdImage)
+            .toHaveProperty('created_at')
+        expect(createdImage)
             .toHaveProperty('updated_at')
     })
 })

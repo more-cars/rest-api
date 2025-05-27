@@ -1,9 +1,10 @@
 import express, {Express} from "express"
 import cors from "cors"
 import openApiSpecification from "./routes/open-api-specification"
+import health from "./routes/health"
 import brands from './routes/brands'
 import carModels from "./routes/car-models"
-import health from "./routes/health"
+import images from "./routes/images"
 
 const app: Express = express()
 
@@ -19,5 +20,6 @@ app.use('/', openApiSpecification)
 app.use('/', health)
 app.use('/', brands)
 app.use('/', carModels)
+app.use('/', images)
 
 export {app}

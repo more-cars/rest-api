@@ -1,7 +1,9 @@
-import FakeBrand from "../../../../fixtures/nodes/FakeBrand"
-import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
 import {Brand} from "../../../../../src/models/Brand"
 import {CarModel} from "../../../../../src/models/CarModel"
+import {Image} from "../../../../../src/models/Image"
+import FakeBrand from "../../../../fixtures/nodes/FakeBrand"
+import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
+import FakeImage from "../../../../fixtures/nodes/FakeImage"
 
 describe('Create Node', () => {
     test('Timestamps are identical when creating a node', async () => {
@@ -12,5 +14,9 @@ describe('Create Node', () => {
         const createdCarModel = await CarModel.create(FakeCarModel)
         expect(createdCarModel.created_at)
             .toEqual(createdCarModel.updated_at)
+
+        const createdImage = await Image.create(FakeImage)
+        expect(createdImage.created_at)
+            .toEqual(createdImage.updated_at)
     })
 })
