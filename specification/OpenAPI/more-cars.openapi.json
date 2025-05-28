@@ -459,6 +459,27 @@
       }
     },
     "/images": {
+      "get": {
+        "tags": [
+          "Images"
+        ],
+        "summary": "Returns a list of all `Image`s",
+        "responses": {
+          "200": {
+            "description": "A list of all `Image`s.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Image"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Images"
