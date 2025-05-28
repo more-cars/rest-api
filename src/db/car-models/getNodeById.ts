@@ -28,15 +28,18 @@ async function getNode(id: number, driver: Driver): Promise<false | CarModelNode
     const foundDbNode: Node = records[0].get('node')
 
     const node: CarModelNode = {
+        // system data
         id: foundDbNode.properties.mc_id,
+        created_at: foundDbNode.properties.created_at,
+        updated_at: foundDbNode.properties.updated_at,
+
+        // user data
         name: foundDbNode.properties.name,
         built_from: foundDbNode.properties.built_from,
         built_to: foundDbNode.properties.built_to,
         generation: foundDbNode.properties.generation,
         internal_code: foundDbNode.properties.internal_code,
         total_production: foundDbNode.properties.total_production,
-        created_at: foundDbNode.properties.created_at,
-        updated_at: foundDbNode.properties.updated_at,
     }
 
     return node
