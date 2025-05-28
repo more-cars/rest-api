@@ -16,7 +16,7 @@ export async function getNodeById(id: number): Promise<false | BrandNode> {
 
 async function getNode(id: number, driver: Driver): Promise<false | BrandNode> {
     const {records} = await driver.executeQuery(`
-            MATCH (node {mc_id: ${id}}) 
+            MATCH (node:Brand {mc_id: ${id}}) 
             RETURN node
             LIMIT 1`,
     )
