@@ -10,5 +10,5 @@ Feature: Requesting a BRAND node by its ID
 
   @TEST_MCA-49 @implemented
   Scenario: Requesting a BRAND with an invalid ID should return a 404 response
-    When the user requests a non-existing brand
+    When the user requests a non-existing "BRAND"
     Then the response should return with status code 404
