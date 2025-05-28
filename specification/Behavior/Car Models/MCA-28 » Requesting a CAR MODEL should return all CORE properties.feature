@@ -21,7 +21,7 @@ Feature: Providing every CORE information for a CAR MODEL
       | total_production |
 
     Given there exist 10 "CAR MODEL"s
-    When the user requests all car models
+    When the user requests all "CAR MODEL"s
     Then the response should contain the following keys for each node
       | key              |
       | name             |
