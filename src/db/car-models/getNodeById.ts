@@ -1,6 +1,7 @@
-import {Driver, Node, Session} from "neo4j-driver"
+import {Driver, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../driver"
 import {CarModelNode} from "../../types/car-models/CarModelNode"
+import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 
 export async function getNodeById(id: number): Promise<false | CarModelNode> {
     const driver: Driver = getDriver()
@@ -25,22 +26,5 @@ async function getNode(id: number, driver: Driver): Promise<false | CarModelNode
         return false
     }
 
-    const foundDbNode: Node = records[0].get('node')
-
-    const node: CarModelNode = {
-        // system data
-        id: foundDbNode.properties.mc_id,
-        created_at: foundDbNode.properties.created_at,
-        updated_at: foundDbNode.properties.updated_at,
-
-        // user data
-        name: foundDbNode.properties.name,
-        built_from: foundDbNode.properties.built_from,
-        built_to: foundDbNode.properties.built_to,
-        generation: foundDbNode.properties.generation,
-        internal_code: foundDbNode.properties.internal_code,
-        total_production: foundDbNode.properties.total_production,
-    }
-
-    return node
+    return mapDbNodeToModelNode(records[0].get('node'))
 }

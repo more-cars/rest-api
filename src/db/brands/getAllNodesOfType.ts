@@ -1,6 +1,7 @@
 import {Driver, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../driver"
 import {BrandNode} from "../../types/brands/BrandNode"
+import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 
 export async function getAllNodesOfType(): Promise<Array<BrandNode>> {
     const driver: Driver = getDriver()
@@ -23,18 +24,7 @@ async function getNodes(driver: Driver): Promise<Array<BrandNode>> {
     )
 
     records.forEach(record => {
-        const dbNode = record.get('node')
-        nodes.push({
-            id: dbNode.properties.mc_id,
-            name: dbNode.properties.name,
-            full_name: dbNode.properties.full_name,
-            founded: dbNode.properties.founded,
-            defunct: dbNode.properties.defunct,
-            wmi: dbNode.properties.wmi,
-            hsn: dbNode.properties.hsn,
-            created_at: dbNode.properties.created_at,
-            updated_at: dbNode.properties.updated_at,
-        })
+        nodes.push(mapDbNodeToModelNode(record.get('node')))
     })
 
     return nodes
