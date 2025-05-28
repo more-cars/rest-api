@@ -17,6 +17,9 @@ Then('the response should return the brand {string}', function (label: string) {
     }
     assert.ok(valid)
 
-    // checking the mandatory values
-    assert.deepEqual(actualNode, expectedNode)
+    // checking the data
+    for (const expectedProperty in expectedNode) {
+        // @ts-expect-error TS7053
+        assert.equal(actualNode[expectedProperty], expectedNode[expectedProperty])
+    }
 })

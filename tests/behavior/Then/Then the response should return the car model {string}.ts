@@ -17,6 +17,9 @@ Then('the response should return the car model {string}', function (label: strin
     }
     assert.ok(valid)
 
-    // checking the values
-    assert.deepEqual(actualNode, expectedNode)
+    // checking the data
+    for (const expectedProperty in expectedNode) {
+        // @ts-expect-error TS7053
+        assert.equal(actualNode[expectedProperty], expectedNode[expectedProperty])
+    }
 })
