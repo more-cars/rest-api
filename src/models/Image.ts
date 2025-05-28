@@ -1,4 +1,5 @@
 import {createNode} from "../db/images/createNode"
+import {getNodeById} from "../db/images/getNodeById"
 import {ImageNode} from "../types/images/ImageNode"
 import {ImageNodeUserData} from "../types/images/ImageNodeUserData"
 
@@ -7,6 +8,10 @@ export class Image {
         const completeData = addDummyData(data)
 
         return await createNode(completeData)
+    }
+
+    static async findById(id: number): Promise<false | ImageNode> {
+        return await getNodeById(id)
     }
 }
 
