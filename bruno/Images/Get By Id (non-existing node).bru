@@ -1,0 +1,16 @@
+meta {
+  name: Get By Id (non-existing node)
+  type: http
+  seq: 25
+}
+
+get {
+  url: {{baseUrl}}/images/{{invalidImageId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 404
+  res.body: isString
+}
