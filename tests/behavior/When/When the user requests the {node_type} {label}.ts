@@ -6,7 +6,7 @@ When('the user requests the {string} {string}', async function (nodeType: string
     let node: BaseNode
     let path: string
 
-    switch (nodeType) {
+    switch (nodeType.toLowerCase()) {
         case 'brand':
             node = this.brand[label]
             path = 'brands'

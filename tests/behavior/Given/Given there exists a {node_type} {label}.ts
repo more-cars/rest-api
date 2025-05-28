@@ -3,7 +3,7 @@ import {seedBrand} from "../../dbSeeding/seedBrand"
 import {seedCarModel} from "../../dbSeeding/seedCarModel"
 import {seedImage} from "../../dbSeeding/seedImage"
 
-Given('there exists a {string} {string}', async function (nodeType: string, label: string) {
+Given('there exists a(n) {string} {string}', async function (nodeType: string, label: string) {
     switch (nodeType.toLowerCase()) {
         case 'brand':
             this.brand[label] = await seedBrand()
