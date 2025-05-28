@@ -5,6 +5,7 @@ import {ImageNodeUserData} from "../../types/images/ImageNodeUserData"
 import {ImageNodeGeneratedData} from "../../types/images/ImageNodeGeneratedData"
 import {setMoreCarsId} from "../addMoreCarsIdToNode"
 import {addTimestampsToNode} from "../addTimestampsToNode"
+import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 
 export async function createNode(data: ImageNodeUserData & ImageNodeGeneratedData): Promise<ImageNode> {
     const driver: Driver = getDriver()
@@ -75,26 +76,5 @@ async function createImage(data: ImageNodeUserData & ImageNodeGeneratedData, dri
     const enrichedDbNode: Node = await addTimestampsToNode(elementId, timestamp, driver)
 
     // 4. Converting the Neo4j node to a More Cars node
-    const node: ImageNode = {
-        id: enrichedDbNode.properties.mc_id,
-        external_id: enrichedDbNode.properties.external_id,
-        image_provider: enrichedDbNode.properties.image_provider,
-        name: enrichedDbNode.properties.name,
-        description: enrichedDbNode.properties.description,
-        creator: enrichedDbNode.properties.creator,
-        license: enrichedDbNode.properties.license,
-        tags: enrichedDbNode.properties.tags,
-        source: enrichedDbNode.properties.source,
-        image_url_original: enrichedDbNode.properties.image_url_original,
-        image_url_xxl: enrichedDbNode.properties.image_url_xxl,
-        image_url_xl: enrichedDbNode.properties.image_url_xl,
-        image_url_l: enrichedDbNode.properties.image_url_l,
-        image_url_m: enrichedDbNode.properties.image_url_m,
-        image_url_s: enrichedDbNode.properties.image_url_s,
-        image_url_xs: enrichedDbNode.properties.image_url_xs,
-        created_at: enrichedDbNode.properties.created_at,
-        updated_at: enrichedDbNode.properties.updated_at,
-    }
-
-    return node
+    return mapDbNodeToModelNode(enrichedDbNode)
 }

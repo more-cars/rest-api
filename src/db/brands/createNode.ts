@@ -4,6 +4,7 @@ import {BrandNode} from "../../types/brands/BrandNode"
 import {BrandNodeUserData} from "../../types/brands/BrandNodeUserData"
 import {setMoreCarsId} from "../addMoreCarsIdToNode"
 import {addTimestampsToNode} from "../addTimestampsToNode"
+import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 
 export async function createNode(data: BrandNodeUserData): Promise<BrandNode> {
     const driver: Driver = getDriver()
@@ -56,17 +57,5 @@ async function createBrand(data: BrandNodeUserData, driver: Driver): Promise<Bra
     const enrichedDbNode: Node = await addTimestampsToNode(elementId, timestamp, driver)
 
     // 4. Converting the Neo4j node to a More Cars node
-    const node: BrandNode = {
-        id: enrichedDbNode.properties.mc_id,
-        name: enrichedDbNode.properties.name,
-        full_name: enrichedDbNode.properties.full_name,
-        founded: enrichedDbNode.properties.founded,
-        defunct: enrichedDbNode.properties.defunct,
-        wmi: enrichedDbNode.properties.wmi,
-        hsn: enrichedDbNode.properties.hsn,
-        created_at: enrichedDbNode.properties.created_at,
-        updated_at: enrichedDbNode.properties.updated_at,
-    }
-
-    return node
+    return mapDbNodeToModelNode(enrichedDbNode)
 }

@@ -3,6 +3,7 @@ import {closeDriver, getDriver} from "../driver"
 import {CarModelNode} from "../../types/car-models/CarModelNode"
 import {CarModelNodeUserData} from "../../types/car-models/CarModelNodeUserData"
 import {addTimestampsToNode} from "../addTimestampsToNode"
+import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 
 export async function createNode(carModelData: CarModelNodeUserData): Promise<CarModelNode> {
     const driver: Driver = getDriver()
@@ -55,19 +56,7 @@ async function createCarModel(carModelData: CarModelNodeUserData, driver: Driver
     const enrichedDbNode: Node = await addTimestampsToNode(elementId, timestamp, driver)
 
     // 4. Converting the Neo4j node to a More Cars node
-    const node: CarModelNode = {
-        id: enrichedDbNode.properties.mc_id,
-        name: enrichedDbNode.properties.name,
-        built_from: enrichedDbNode.properties.built_from,
-        built_to: enrichedDbNode.properties.built_to,
-        generation: enrichedDbNode.properties.generation,
-        internal_code: enrichedDbNode.properties.internal_code,
-        total_production: enrichedDbNode.properties.total_production,
-        created_at: enrichedDbNode.properties.created_at,
-        updated_at: enrichedDbNode.properties.updated_at,
-    }
-
-    return node
+    return mapDbNodeToModelNode(enrichedDbNode)
 }
 
 async function setMoreCarsId(elementId: string, moreCarsId: number, driver: Driver): Promise<Node> {
