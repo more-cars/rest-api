@@ -2,7 +2,7 @@ import {Driver, Node, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../driver"
 import {BrandNode} from "../../types/brands/BrandNode"
 import {BrandNodeUserData} from "../../types/brands/BrandNodeUserData"
-import {setMoreCarsId} from "../addMoreCarsIdToNode"
+import {addMoreCarsIdToNode} from "../addMoreCarsIdToNode"
 import {addTimestampsToNode} from "../addTimestampsToNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 
@@ -50,7 +50,7 @@ async function createBrand(data: BrandNodeUserData, driver: Driver): Promise<Bra
     const elementId = createdDbNode.elementId
     const elementIdSplit: Array<string> = elementId.split(':')
     const moreCarsId: number = parseInt(elementIdSplit[2])
-    await setMoreCarsId(elementId, moreCarsId, driver)
+    await addMoreCarsIdToNode(elementId, moreCarsId, "Brand", driver)
 
     // 3. Adding timestamps
     const timestamp = new Date().toISOString()

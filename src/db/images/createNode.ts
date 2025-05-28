@@ -3,7 +3,7 @@ import {closeDriver, getDriver} from "../driver"
 import {ImageNode} from "../../types/images/ImageNode"
 import {ImageNodeUserData} from "../../types/images/ImageNodeUserData"
 import {ImageNodeGeneratedData} from "../../types/images/ImageNodeGeneratedData"
-import {setMoreCarsId} from "../addMoreCarsIdToNode"
+import {addMoreCarsIdToNode} from "../addMoreCarsIdToNode"
 import {addTimestampsToNode} from "../addTimestampsToNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 
@@ -69,7 +69,7 @@ async function createImage(data: ImageNodeUserData & ImageNodeGeneratedData, dri
     const elementId = createdDbNode.elementId
     const elementIdSplit: Array<string> = elementId.split(':')
     const moreCarsId: number = parseInt(elementIdSplit[2])
-    await setMoreCarsId(elementId, moreCarsId, driver)
+    await addMoreCarsIdToNode(elementId, moreCarsId, "Image", driver)
 
     // 3. Adding timestamps
     const timestamp = new Date().toISOString()
