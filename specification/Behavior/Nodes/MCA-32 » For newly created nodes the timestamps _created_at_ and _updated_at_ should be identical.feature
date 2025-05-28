@@ -15,6 +15,6 @@ Feature: Providing timestamps for all NODEs
 
     Examples:
       | node type |
-      | brand     |
-      | car model |
-#      | image     |
+      | BRAND     |
+      | CAR MODEL |
+      | IMAGE     |
