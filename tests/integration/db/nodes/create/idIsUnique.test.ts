@@ -1,6 +1,7 @@
 import {seedBrands} from "../../../../dbSeeding/seedBrands"
 import {seedCarModels} from "../../../../dbSeeding/seedCarModels"
 import {seedImages} from "../../../../dbSeeding/seedImages"
+import {removeDuplicates} from "../../../../_helpers/removeDuplicates"
 
 describe('Create Node', () => {
     test('Each node is created with a different ID', async () => {
@@ -17,9 +18,3 @@ describe('Create Node', () => {
         })
     })
 })
-
-function removeDuplicates(ids: Array<number>) {
-    // creating a SET automatically removes the duplicates
-    const idSet = new Set(ids)
-    return [...idSet]
-}
