@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: more-cars-api
-          image: dennisgerike/more-cars-api:0.7.0
+          image: dennisgerike/more-cars-api:0.8.0
           env:
             - name: DB_HOST
               value: $(API_DB_SERVICE_SERVICE_HOST)
