@@ -3,10 +3,6 @@ kind: Deployment
 metadata:
   name: api-db-deployment
   namespace: prod
-  labels:
-    app.kubernetes.io/name: api-db
-    app.kubernetes.io/version: "0.7.0"
-    app.kubernetes.io/component: database
 spec:
   replicas: 1
   selector:

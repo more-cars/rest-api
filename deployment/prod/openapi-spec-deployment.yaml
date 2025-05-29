@@ -3,10 +3,6 @@ kind: Deployment
 metadata:
   name: openapi-spec-deployment
   namespace: prod
-  labels:
-    app.kubernetes.io/name: openapi-spec
-    app.kubernetes.io/version: "0.7.0"
-    app.kubernetes.io/component: documentation
 spec:
   replicas: 1
   selector:

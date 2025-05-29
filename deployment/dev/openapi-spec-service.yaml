@@ -3,10 +3,6 @@ kind: Service
 metadata:
   name: openapi-spec-service
   namespace: dev
-  labels:
-    app.kubernetes.io/name: openapi-spec
-    app.kubernetes.io/version: "0.7.0"
-    app.kubernetes.io/component: server
 spec:
   type: LoadBalancer
   selector:
