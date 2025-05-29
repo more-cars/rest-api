@@ -15,6 +15,6 @@ When('the user tries to connect car model {string} to brand {string} with the re
                 }
             })
             .catch(error => {
-                console.error(error.toJSON())
+                console.error(error)
             })
     })

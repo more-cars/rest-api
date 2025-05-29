@@ -14,6 +14,6 @@ When('the user tries to connect car model {string} to brand {string}', async fun
             }
         })
         .catch(error => {
-            console.error(error.toJSON())
+            console.error(error)
         })
 })

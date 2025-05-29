@@ -11,7 +11,7 @@ Given('there exists a relationship {string} between car model {string} and brand
         this.latestResponse = await axios
             .post(`${process.env.API_URL}/car-models/${carModel.id}/belongs-to-brand/${brand.id}`)
             .catch(error => {
-                console.error(error.toJSON())
+                console.error(error)
             })
 
         this.relationship[realationshipLabel] = this.latestResponse.data

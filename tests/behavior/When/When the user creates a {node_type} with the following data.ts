@@ -27,6 +27,6 @@ When('the user creates a(n) {string} with the following data', async function (n
     this.latestResponse = await axios
         .post(`${process.env.API_URL}/${path}`, data)
         .catch(error => {
-            console.error(error.toJSON())
+            console.error(error)
         })
 })

@@ -11,6 +11,6 @@ When('the user connects car model {string} to a different brand', async function
     this.latestResponse = await axios
         .post(`${process.env.API_URL}/car-models/${carModel.id}/belongs-to-brand/${brand.id}`)
         .catch(error => {
-            console.error(error.toJSON())
+            console.error(error)
         })
 })

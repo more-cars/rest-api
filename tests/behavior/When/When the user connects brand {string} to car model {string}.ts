@@ -10,6 +10,6 @@ When('the user connects brand {string} to car model {string}', async function (b
     this.latestResponse = await axios
         .post(`${process.env.API_URL}/car-models/${carModel.id}/belongs-to-brand/${brand.id}`)
         .catch(error => {
-            console.error(error.toJSON())
+            console.error(error)
         })
 })

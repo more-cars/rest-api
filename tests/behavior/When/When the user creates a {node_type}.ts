@@ -28,6 +28,6 @@ When('the user creates a(n) {string}', async function (nodeType: string) {
     this.latestResponse = await axios
         .post(`${process.env.API_URL}/${path}`, data)
         .catch(error => {
-            console.error(error.toJSON())
+            console.error(error)
         })
 })

@@ -6,6 +6,6 @@ When('the user creates a car model', async function () {
     this.latestResponse = await axios
         .post(`${process.env.API_URL}/car-models`, FakeCarModel)
         .catch(error => {
-            console.error(error.toJSON())
+            console.error(error)
         })
 })

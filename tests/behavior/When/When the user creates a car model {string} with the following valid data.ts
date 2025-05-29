@@ -13,7 +13,7 @@ When('the user creates a car model {string} with the following valid data', asyn
     this.latestResponse = await axios
         .post(`${process.env.API_URL}/car-models`, carModelData)
         .catch(error => {
-            console.error(error.toJSON())
+            console.error(error)
         })
     this.carModel[label]['id'] = this.latestResponse.data.id
 })

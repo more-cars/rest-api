@@ -13,7 +13,7 @@ When('the user creates a brand {string} with the following valid/mixed data', as
     this.latestResponse = await axios
         .post(`${process.env.API_URL}/brands`, data)
         .catch(error => {
-            console.error(error.toJSON())
+            console.error(error)
         })
     this.brand[label]['id'] = this.latestResponse.data.id
 })
