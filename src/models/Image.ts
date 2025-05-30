@@ -38,6 +38,10 @@ export class Image {
             return false
         }
 
+        if (await partnerNodeIsAnImage(partnerNodeId)) {
+            throw new Error(`Image #${imageId} cannot be connected to another image`)
+        }
+
         const existingRelation = await getImageBelongsToNodeRelationship(imageId, partnerNodeId)
 
         if (existingRelation) {
@@ -69,4 +73,8 @@ function addDummyData(data: ImageNodeUserData) {
     }
 
     return Object.assign(data, additionalData)
+}
+
+async function partnerNodeIsAnImage(nodeId: number): Promise<boolean> {
+    return await getNodeById(nodeId) !== false
 }
