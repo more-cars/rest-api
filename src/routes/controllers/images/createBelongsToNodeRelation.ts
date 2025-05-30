@@ -6,13 +6,21 @@ export async function createBelongsToNodeRelation(req: express.Request, res: exp
     const imageId = parseInt(req.params.imageId)
     const partnerNodeId = parseInt(req.params.partnerNodeId)
 
+    if (!imageId || !partnerNodeId) {
+        res.status(404)
+        res.set('Content-Type', 'text/plain')
+        res.send('Request failed. Image ID and/or partner node ID are invalid.')
+
+        return
+    }
+
     try {
         const createdRelationship = await Image.createBelongsToNodeRelationship(imageId, partnerNodeId)
 
         if (!createdRelationship) {
-            res.status(422)
+            res.status(404)
             res.set('Content-Type', 'text/plain')
-            res.send('Request failed. Relationship could not be created.')
+            res.send('Request failed. Image ID and/or partner node ID not found.')
 
             return
         }

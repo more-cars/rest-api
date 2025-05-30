@@ -1,5 +1,6 @@
 import {createNode} from "../db/images/createNode"
 import {getNodeById} from "../db/images/getNodeById"
+import {getNodeById as getAnyNodeById} from "../db/getNodeById"
 import {getAllNodesOfType} from "../db/images/getAllNodesOfType"
 import {ImageNode} from "../types/images/ImageNode"
 import {ImageNodeUserData} from "../types/images/ImageNodeUserData"
@@ -26,6 +27,13 @@ export class Image {
         imageId: number,
         partnerNodeId: number
     ): Promise<false | ImageBelongsToNodeRelationship> {
+        const imageNode = await getNodeById(imageId)
+        const partnerNode = await getAnyNodeById(partnerNodeId)
+
+        if (!imageNode || !partnerNode) {
+            return false
+        }
+
         const existingRelation = await getImageBelongsToNodeRelationship(imageId, partnerNodeId)
 
         if (existingRelation) {
