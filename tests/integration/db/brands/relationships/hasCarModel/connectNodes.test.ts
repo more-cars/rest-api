@@ -1,6 +1,7 @@
 import {seedBrand} from "../../../../../dbSeeding/seedBrand"
 import {seedCarModel} from "../../../../../dbSeeding/seedCarModel"
 import {createRelationship} from "../../../../../../src/db/createRelationship"
+import {DbRelationship} from "../../../../../../src/types/DbRelationship"
 import {BrandRelationship} from "../../../../../../src/types/brands/BrandRelationship"
 
 describe('Brand', () => {
@@ -11,7 +12,7 @@ describe('Brand', () => {
         const createdRelationship = await createRelationship(
             brand.id as number,
             carModel.id as number,
-            BrandRelationship.hasCarModel,
+            DbRelationship.BrandHasCarModel,
         )
 
         expect(createdRelationship)
@@ -26,11 +27,11 @@ describe('Brand', () => {
 
     test('Invalid nodes fail the relationship creation', async () => {
         const brand = await seedBrand()
-        
+
         const createdRelationship = await createRelationship(
             brand.id as number,
             -42,
-            BrandRelationship.hasCarModel,
+            DbRelationship.BrandHasCarModel,
         )
 
         expect(createdRelationship)

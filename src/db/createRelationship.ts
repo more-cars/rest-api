@@ -1,5 +1,6 @@
 import {Driver, Node, Relationship, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "./driver"
+import {DbRelationship} from "../types/DbRelationship"
 import {BaseRelationship} from "../types/BaseRelationship"
 import {addMoreCarsIdToRelationship} from "./addMoreCarsIdToRelationship"
 
@@ -7,7 +8,11 @@ import {addMoreCarsIdToRelationship} from "./addMoreCarsIdToRelationship"
  * Creating a relationship between the two given nodes.
  * When the given nodes don't exist or the relationship name is invalid then the creation will be aborted.
  */
-export async function createRelationship(startNodeId: number, endNodeId: number, relationshipName: string): Promise<false | BaseRelationship> {
+export async function createRelationship(
+    startNodeId: number,
+    endNodeId: number,
+    relationshipName: DbRelationship
+): Promise<false | BaseRelationship> {
     const driver: Driver = getDriver()
     const session: Session = driver.session()
 
@@ -19,7 +24,12 @@ export async function createRelationship(startNodeId: number, endNodeId: number,
     return createdRelationship
 }
 
-async function createRel(startNodeId: number, endNodeId: number, relationshipName: string, driver: Driver): Promise<false | BaseRelationship> {
+async function createRel(
+    startNodeId: number,
+    endNodeId: number,
+    relationshipName: DbRelationship,
+    driver: Driver
+): Promise<false | BaseRelationship> {
     // 1. Creating the rel in the database
     const {records} = await driver.executeQuery(`
             MATCH (a {mc_id: $startNodeId}), (b {mc_id: $endNodeId})

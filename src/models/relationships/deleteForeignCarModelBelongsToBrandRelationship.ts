@@ -1,7 +1,7 @@
 import {BrandNode} from "../../types/brands/BrandNode"
 import {CarModelNode} from "../../types/car-models/CarModelNode"
 import {findRelationship} from "../../db/findRelationship"
-import {BrandRelationship} from "../../types/brands/BrandRelationship"
+import {DbRelationship} from "../../types/DbRelationship"
 import {deleteRelationship} from "../../db/deleteRelationship"
 
 /**
@@ -12,7 +12,7 @@ import {deleteRelationship} from "../../db/deleteRelationship"
 export async function deleteForeignCarModelBelongsToBrandRelationship(carModel: CarModelNode, brand: BrandNode) {
     const relationship = await findRelationship(
         carModel.id as number,
-        BrandRelationship.hasCarModel,
+        DbRelationship.BrandHasCarModel,
     )
 
     if (relationship && relationship.start_node_id !== brand.id) {

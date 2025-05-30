@@ -1,12 +1,17 @@
 import {Driver, Node, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "./driver"
 import {BaseRelationship} from "../types/BaseRelationship"
+import {DbRelationship} from "../types/DbRelationship"
 
 /**
  * Fetching the relationship between the two given nodes, which matches the provided relationship name.
  * If there exists none then false is returned.
  */
-export async function getRelationship(startNodeId: number, endNodeId: number, relationshipName: string): Promise<false | BaseRelationship> {
+export async function getRelationship(
+    startNodeId: number,
+    endNodeId: number,
+    relationshipName: DbRelationship
+): Promise<false | BaseRelationship> {
     const driver: Driver = getDriver()
     const session: Session = driver.session()
 
@@ -18,7 +23,12 @@ export async function getRelationship(startNodeId: number, endNodeId: number, re
     return relationship
 }
 
-async function getRel(startNodeId: number, endNodeId: number, relationshipName: string, driver: Driver): Promise<false | BaseRelationship> {
+async function getRel(
+    startNodeId: number,
+    endNodeId: number,
+    relationshipName: DbRelationship,
+    driver: Driver
+): Promise<false | BaseRelationship> {
     const {records} = await driver.executeQuery(`
             MATCH (a {mc_id: $startNodeId})-[r:${relationshipName}]->({mc_id: $endNodeId})
             RETURN r

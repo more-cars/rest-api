@@ -1,7 +1,7 @@
 import {seedBrand} from "../../../../../dbSeeding/seedBrand"
 import {seedCarModel} from "../../../../../dbSeeding/seedCarModel"
 import {getRelationship} from "../../../../../../src/db/getRelationship"
-import {BrandRelationship} from "../../../../../../src/types/brands/BrandRelationship"
+import {DbRelationship} from "../../../../../../src/types/DbRelationship"
 import {CarModel} from "../../../../../../src/models/CarModel"
 
 describe('Car Model', () => {
@@ -14,7 +14,7 @@ describe('Car Model', () => {
         const originalRelationship = await getRelationship(
             firstBrand.id as number,
             carModel.id as number,
-            BrandRelationship.hasCarModel,
+            DbRelationship.BrandHasCarModel,
         )
         expect(originalRelationship).not.toBeFalsy()
 
@@ -22,14 +22,14 @@ describe('Car Model', () => {
         const newRelationship = await getRelationship(
             secondBrand.id as number,
             carModel.id as number,
-            BrandRelationship.hasCarModel,
+            DbRelationship.BrandHasCarModel,
         )
         expect(newRelationship).not.toBeFalsy()
 
         const refetchedOriginalRelationship = await getRelationship(
             firstBrand.id as number,
             carModel.id as number,
-            BrandRelationship.hasCarModel,
+            DbRelationship.BrandHasCarModel,
         )
         expect(refetchedOriginalRelationship).toBeFalsy()
     })

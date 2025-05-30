@@ -1,7 +1,7 @@
 import {BrandNode} from "../../types/brands/BrandNode"
 import {CarModelNode} from "../../types/car-models/CarModelNode"
 import {getRelationship} from "../../db/getRelationship"
-import {BrandRelationship} from "../../types/brands/BrandRelationship"
+import {DbRelationship} from "../../types/DbRelationship"
 import {CarModelBelongsToBrandRelationship} from "../../types/car-models/CarModelBelongsToBrandRelationship"
 import {CarModelRelationship} from "../../types/car-models/CarModelRelationship"
 
@@ -14,7 +14,7 @@ export async function getCarModelBelongsToBrandRelationship(carModel: CarModelNo
     const relation = await getRelationship(
         brand.id as number,
         carModel.id as number,
-        BrandRelationship.hasCarModel,
+        DbRelationship.BrandHasCarModel,
     )
 
     if (!relation) {

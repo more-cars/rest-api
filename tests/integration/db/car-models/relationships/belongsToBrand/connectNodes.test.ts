@@ -1,6 +1,7 @@
 import {seedBrand} from "../../../../../dbSeeding/seedBrand"
 import {seedCarModel} from "../../../../../dbSeeding/seedCarModel"
 import {createRelationship} from "../../../../../../src/db/createRelationship"
+import {DbRelationship} from "../../../../../../src/types/DbRelationship"
 import {BrandRelationship} from "../../../../../../src/types/brands/BrandRelationship"
 
 describe('Car Model', () => {
@@ -13,7 +14,7 @@ describe('Car Model', () => {
         const createdRelationship = await createRelationship(
             brand.id as number,
             carModel.id as number,
-            BrandRelationship.hasCarModel,
+            DbRelationship.BrandHasCarModel,
         )
 
         expect(createdRelationship)
@@ -32,7 +33,7 @@ describe('Car Model', () => {
         const createdRelationship = await createRelationship(
             -42,
             carModel.id as number,
-            BrandRelationship.hasCarModel,
+            DbRelationship.BrandHasCarModel,
         )
 
         expect(createdRelationship)
