@@ -68,7 +68,9 @@
     "tests:integration": "npx jest --projects tests/integration",
     "tests:unit+integration": "npx jest",
     "tests:unit+integration:coverage": "npx jest --coverage",
-    "tests:bruno": "cd bruno && bru run --env local",
+    "tests:bruno:local": "cd bruno && bru run --env local",
+    "tests:bruno:minikube-dev": "cd bruno && bru run --env minikube-dev",
+    "tests:bruno:minikube-prod": "cd bruno && bru run --env minikube-prod",
     "tests:cucumber": "npx cucumber-js",
     "tests:performance": "K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_OPEN=true API_URL=http://api.more-cars.prod.internal k6 run tests/performance/get-api-specification.ts"
   },
