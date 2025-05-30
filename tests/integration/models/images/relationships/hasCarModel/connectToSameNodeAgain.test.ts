@@ -1,19 +1,19 @@
-import {seedBrand} from "../../../../../dbSeeding/seedBrand"
 import {seedCarModel} from "../../../../../dbSeeding/seedCarModel"
-import {Brand} from "../../../../../../src/models/Brand"
+import {seedImage} from "../../../../../dbSeeding/seedImage"
+import {Image} from "../../../../../../src/models/Image"
 
-describe('Brand', () => {
+describe('Image', () => {
     test('The relationship ID should not change when creating the same relationship again', async () => {
-        const brand = await seedBrand()
+        const image = await seedImage()
         const carModel = await seedCarModel()
 
         const relationshipBefore =
-            await Brand.createHasCarModelRelationship(brand, carModel)
+            await Image.createBelongsToNodeRelationship(image.id, carModel.id)
         expect(relationshipBefore)
             .not.toBe(false)
 
         const relationshipAfter =
-            await Brand.createHasCarModelRelationship(brand, carModel)
+            await Image.createBelongsToNodeRelationship(image.id, carModel.id)
         expect(relationshipAfter)
             .not.toBe(false)
 
