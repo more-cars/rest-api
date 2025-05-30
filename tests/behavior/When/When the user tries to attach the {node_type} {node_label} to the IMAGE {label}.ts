@@ -11,7 +11,7 @@ When('the user tries to attach the {string} {string} to the IMAGE {string}',
         this.latestResponse = await axios
             .post(`${process.env.API_URL}/images/${imageNode.id}/belongs-to-node/${partnerNode.id}`, null, {
                 validateStatus: function (status) {
-                    return status === 404 // treating the 404 as a "good" status code, so axios does not fail the request
+                    return status === 422 || status === 404 // treating 404 and 422 as "good" status codes, so axios does not fail the request
                 }
             })
             .catch(error => {
