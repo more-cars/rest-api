@@ -9,7 +9,7 @@ describe('Image', () => {
         const image = await seedImage()
         const partnerNode: BaseNode = await seedCarModel()
 
-        const createdRelationship = await Image.createBelongsToNodeRelationship(image, partnerNode)
+        const createdRelationship = await Image.createBelongsToNodeRelationship(image.id, partnerNode.id)
 
         expect(createdRelationship)
             .toHaveProperty('image_id', image.id)

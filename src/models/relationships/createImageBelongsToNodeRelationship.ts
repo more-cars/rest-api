@@ -1,17 +1,15 @@
 import {createRelationship} from "../../db/createRelationship"
 import {DbRelationship} from "../../types/DbRelationship"
-import {ImageNode} from "../../types/images/ImageNode"
-import {BaseNode} from "../../types/BaseNode"
 import {ImageBelongsToNodeRelationship} from "../../types/images/ImageBelongsToNodeRelationship"
 import {ImageRelationship} from "../../types/images/ImageRelationship"
 
 /**
  * Creates a BELONGS_TO_NODE relationship between the given nodes.
  */
-export async function createImageBelongsToNodeRelationship(image: ImageNode, partnerNode: BaseNode) {
+export async function createImageBelongsToNodeRelationship(imageId: number, partnerNodeId: number) {
     const baseRelationship = await createRelationship(
-        image.id as number,
-        partnerNode.id as number,
+        imageId,
+        partnerNodeId,
         DbRelationship.ImageBelongsToNode,
     )
 
@@ -20,8 +18,8 @@ export async function createImageBelongsToNodeRelationship(image: ImageNode, par
     }
 
     const specificRelationship: ImageBelongsToNodeRelationship = {
-        image_id: image.id as number,
-        partner_node_id: partnerNode.id as number,
+        image_id: imageId,
+        partner_node_id: partnerNodeId,
         relationship_id: baseRelationship.relationship_id,
         relationship_name: ImageRelationship.belongsToNode,
     }

@@ -3,7 +3,6 @@ import {getNodeById} from "../db/images/getNodeById"
 import {getAllNodesOfType} from "../db/images/getAllNodesOfType"
 import {ImageNode} from "../types/images/ImageNode"
 import {ImageNodeUserData} from "../types/images/ImageNodeUserData"
-import {BaseNode} from "../types/BaseNode"
 import {getImageBelongsToNodeRelationship} from "./relationships/getImageBelongsToNodeRelationship"
 import {ImageBelongsToNodeRelationship} from "../types/images/ImageBelongsToNodeRelationship"
 import {createImageBelongsToNodeRelationship} from "./relationships/createImageBelongsToNodeRelationship"
@@ -24,16 +23,16 @@ export class Image {
     }
 
     static async createBelongsToNodeRelationship(
-        image: ImageNode,
-        partnerNode: BaseNode
+        imageId: number,
+        partnerNodeId: number
     ): Promise<false | ImageBelongsToNodeRelationship> {
-        const existingRelation = await getImageBelongsToNodeRelationship(image, partnerNode)
+        const existingRelation = await getImageBelongsToNodeRelationship(imageId, partnerNodeId)
 
         if (existingRelation) {
             return existingRelation
         }
 
-        return await createImageBelongsToNodeRelationship(image, partnerNode)
+        return await createImageBelongsToNodeRelationship(imageId, partnerNodeId)
     }
 }
 
