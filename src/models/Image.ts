@@ -27,6 +27,10 @@ export class Image {
         imageId: number,
         partnerNodeId: number
     ): Promise<false | ImageBelongsToNodeRelationship> {
+        if (imageId === partnerNodeId) {
+            throw new Error(`Image #${imageId} cannot be connected to itself`)
+        }
+
         const imageNode = await getNodeById(imageId)
         const partnerNode = await getAnyNodeById(partnerNodeId)
 
