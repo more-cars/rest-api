@@ -3,6 +3,10 @@ import {getNodeById} from "../db/images/getNodeById"
 import {getAllNodesOfType} from "../db/images/getAllNodesOfType"
 import {ImageNode} from "../types/images/ImageNode"
 import {ImageNodeUserData} from "../types/images/ImageNodeUserData"
+import {BaseNode} from "../types/BaseNode"
+import {getImageBelongsToNodeRelationship} from "./relationships/getImageBelongsToNodeRelationship"
+import {ImageBelongsToNodeRelationship} from "../types/images/ImageBelongsToNodeRelationship"
+import {createImageBelongsToNodeRelationship} from "./relationships/createImageBelongsToNodeRelationship"
 
 export class Image {
     static async create(data: ImageNodeUserData): Promise<ImageNode> {
@@ -17,6 +21,19 @@ export class Image {
 
     static async findAll(): Promise<ImageNode[]> {
         return await getAllNodesOfType()
+    }
+
+    static async createBelongsToNodeRelationship(
+        image: ImageNode,
+        partnerNode: BaseNode
+    ): Promise<false | ImageBelongsToNodeRelationship> {
+        const existingRelation = await getImageBelongsToNodeRelationship(image, partnerNode)
+
+        if (existingRelation) {
+            return existingRelation
+        }
+
+        return await createImageBelongsToNodeRelationship(image, partnerNode)
     }
 }
 
