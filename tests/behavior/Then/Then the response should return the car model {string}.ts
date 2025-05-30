@@ -5,7 +5,7 @@ import {CarModelSchema} from "../../_schemas/CarModelSchema"
 import {CarModelNode} from "../../../src/types/car-models/CarModelNode"
 
 Then('the response should return the car model {string}', function (label: string) {
-    const expectedNode: CarModelNode = this.carModel[label]
+    const expectedNode: CarModelNode = this.carmodel[label]
     const actualNode: CarModelNode = this.latestResponse.data
 
     // checking the schema

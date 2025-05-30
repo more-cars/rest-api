@@ -12,7 +12,7 @@ When('the user requests the {string} {string}', async function (nodeType: string
             path = 'brands'
             break
         case 'car model':
-            node = this.carModel[label]
+            node = this.carmodel[label]
             path = 'car-models'
             break
         case 'image':

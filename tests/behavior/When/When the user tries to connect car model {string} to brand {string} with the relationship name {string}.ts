@@ -6,7 +6,7 @@ import {CarModelNode} from "../../../src/types/car-models/CarModelNode"
 When('the user tries to connect car model {string} to brand {string} with the relationship name {string}',
     async function (carModelLabel: string, brandLabel: string, relationshipName: string) {
         const brand: BrandNode = this.brand[brandLabel]
-        const carModel: CarModelNode = this.carModel[carModelLabel]
+        const carModel: CarModelNode = this.carmodel[carModelLabel]
 
         this.latestResponse = await axios
             .post(`${process.env.API_URL}/brands/${brand.id}/${relationshipName}/${carModel.id}`, null, {

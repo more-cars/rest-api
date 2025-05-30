@@ -3,7 +3,7 @@ import axios from "axios"
 import {CarModelNode} from "../../../src/types/car-models/CarModelNode"
 
 When('the user requests the car model {string} via ID', async function (label: string) {
-    const carModel: CarModelNode = this.carModel[label]
+    const carModel: CarModelNode = this.carmodel[label]
 
     this.latestResponse = await axios
         .get(`${process.env.API_URL}/car-models/${carModel.id}`)

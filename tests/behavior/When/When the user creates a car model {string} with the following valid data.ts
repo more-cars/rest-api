@@ -9,11 +9,11 @@ When('the user creates a car model {string} with the following valid data', asyn
         carModelData[row.key] = row.value
     })
 
-    this.carModel[label] = carModelData
+    this.carmodel[label] = carModelData
     this.latestResponse = await axios
         .post(`${process.env.API_URL}/car-models`, carModelData)
         .catch(error => {
             console.error(error)
         })
-    this.carModel[label]['id'] = this.latestResponse.data.id
+    this.carmodel[label]['id'] = this.latestResponse.data.id
 })

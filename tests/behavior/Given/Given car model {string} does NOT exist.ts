@@ -9,5 +9,5 @@ Given('car model {string} does NOT exist', async function (label: string) {
         updated_at: "",
     }
 
-    this.carModel[label] = carModel
+    this.carmodel[label] = carModel
 })

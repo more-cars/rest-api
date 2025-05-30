@@ -9,7 +9,7 @@ Given('there exists a(n) {string} {string}', async function (nodeType: string, l
             this.brand[label] = await seedBrand()
             break
         case 'car model':
-            this.carModel[label] = await seedCarModel()
+            this.carmodel[label] = await seedCarModel()
             break
         case 'image':
             this.image[label] = await seedImage()

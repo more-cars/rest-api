@@ -2,7 +2,7 @@ import {Before} from "@cucumber/cucumber"
 
 Before(function () {
     this.brand = []
-    this.carModel = []
+    this.carmodel = []
     this.image = []
     this.relationship = []
 })

@@ -5,7 +5,7 @@ import axios from "axios"
 
 Given('there exists a relationship {string} between car model {string} and brand {string}',
     async function (realationshipLabel: string, carModelLabel: string, brandLabel: string) {
-        const carModel: CarModelNode = this.carModel[carModelLabel]
+        const carModel: CarModelNode = this.carmodel[carModelLabel]
         const brand: BrandNode = this.brand[brandLabel]
 
         this.latestResponse = await axios
