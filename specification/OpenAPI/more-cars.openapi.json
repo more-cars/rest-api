@@ -510,6 +510,64 @@
       }
     },
     "/images/{image-id}/belongs-to-node/{partner-node-id}": {
+      "get": {
+        "tags": [
+          "Images"
+        ],
+        "summary": "Get the relationship between `Image` and partner node",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "partner-node-id",
+            "description": "ID of the partner node",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requested relationship was found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageBelongsToNode"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "`Image` or partner node not found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request could not be processed. E.g. when both nodes are identical.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Images"
@@ -784,6 +842,37 @@
             "readOnly": true,
             "format": "date-time",
             "example": "2020-11-21T19:21:02Z"
+          }
+        }
+      },
+      "ImageBelongsToNode": {
+        "type": "object",
+        "required": [
+          "image_id",
+          "partner_node_id"
+        ],
+        "properties": {
+          "image_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "607533"
+          },
+          "partner_node_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "607400"
+          },
+          "partner_node_type": {
+            "type": "string",
+            "example": "Car Model Variant"
+          },
+          "relationship_id": {
+            "type": "string",
+            "example": "123456"
+          },
+          "relationship_name": {
+            "type": "string",
+            "example": "belongs-to-node"
           }
         }
       }
