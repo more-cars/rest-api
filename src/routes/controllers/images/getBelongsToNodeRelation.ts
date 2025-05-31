@@ -8,11 +8,17 @@ export async function getBelongsToNodeRelation(req: express.Request, res: expres
     try {
         const relationship = await Image.getBelongsToNodeRelationship(imageId, partnerNodeId)
 
-        if (relationship) {
-            res.status(200)
-            res.set('Content-Type', 'application/json')
-            res.send(relationship)
+        if (!relationship) {
+            res.status(404)
+            res.set('Content-Type', 'text/plain')
+            res.send('Request failed. Image ID and/or partner node ID not found.')
+
+            return
         }
+
+        res.status(200)
+        res.set('Content-Type', 'application/json')
+        res.send(relationship)
     } catch (e) {
         console.error(e)
         res.status(422)
