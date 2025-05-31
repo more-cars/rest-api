@@ -61,4 +61,12 @@ describe('Image', () => {
 
         expect(relationship).toBeFalsy()
     })
+
+    test('Trying to get image relationship when both nodes are the same', async () => {
+        const imageNode = await seedImage()
+
+        await expect(Image.getBelongsToNodeRelationship(imageNode.id, imageNode.id))
+            .rejects
+            .toThrow(Error)
+    })
 })

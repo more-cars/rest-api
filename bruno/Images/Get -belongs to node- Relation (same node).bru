@@ -1,0 +1,16 @@
+meta {
+  name: Get "belongs to node" Relation (same node)
+  type: http
+  seq: 53
+}
+
+get {
+  url: {{baseUrl}}/images/{{validImageId}}/belongs-to-node/{{validImageId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 422
+  res.body: isString
+}
