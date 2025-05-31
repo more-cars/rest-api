@@ -1,0 +1,21 @@
+meta {
+  name: Get "belongs to node" Relation
+  type: http
+  seq: 50
+}
+
+get {
+  url: {{baseUrl}}/images/{{validImageId}}/belongs-to-node/{{validBrandId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body: isJson
+  res.body.image_id: eq {{validImageId}}
+  res.body.partner_node_id: eq {{validBrandId}}
+  res.body.partner_node_type: eq CAR MODEL
+  res.body.relationship_id: gte 0
+  res.body.relationship_name: eq BELONGS_TO_NODE
+}

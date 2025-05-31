@@ -50,6 +50,10 @@ export class Image {
 
         return await createImageBelongsToNodeRelationship(imageId, partnerNodeId)
     }
+
+    static async getBelongsToNodeRelationship(imageId: number, partnerNodeId: number): Promise<false | ImageBelongsToNodeRelationship> {
+        return await getImageBelongsToNodeRelationship(imageId, partnerNodeId)
+    }
 }
 
 /**
