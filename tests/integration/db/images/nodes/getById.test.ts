@@ -1,5 +1,5 @@
 import Ajv from "ajv"
-import {seedImage} from "../../../../dbSeeding/seedImage"
+import {seedImage} from "../../../../dbSeeding/images/nodes/seedImage"
 import {getNodeById} from "../../../../../src/db/images/getNodeById"
 import {ImageNode} from "../../../../../src/types/images/ImageNode"
 import {ImageSchema} from "../../../../_schemas/ImageSchema"

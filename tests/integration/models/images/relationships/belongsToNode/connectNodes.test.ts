@@ -1,5 +1,5 @@
-import {seedImage} from "../../../../../dbSeeding/seedImage"
-import {seedCarModel} from "../../../../../dbSeeding/seedCarModel"
+import {seedImage} from "../../../../../dbSeeding/images/nodes/seedImage"
+import {seedCarModel} from "../../../../../dbSeeding/car-models/nodes/seedCarModel"
 import {BaseNode} from "../../../../../../src/types/BaseNode"
 import {ImageRelationship} from "../../../../../../src/types/images/ImageRelationship"
 import {Image} from "../../../../../../src/models/Image"

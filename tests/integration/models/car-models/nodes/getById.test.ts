@@ -1,5 +1,5 @@
 import {CarModel} from "../../../../../src/models/CarModel"
-import {seedCarModel} from "../../../../dbSeeding/seedCarModel"
+import {seedCarModel} from "../../../../dbSeeding/car-models/nodes/seedCarModel"
 
 describe('Car Model', () => {
     test('Fetching a car model that does not exist should return "false"', async () => {

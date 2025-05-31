@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import {createNode} from "../../src/db/car-models/createNode"
+import {createNode} from "../../../../src/db/car-models/createNode"
 
 /**
  * Creates a randomized car model in the database, where only the mandatory fields are filled out.

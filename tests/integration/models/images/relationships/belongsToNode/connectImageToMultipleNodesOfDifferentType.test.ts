@@ -1,7 +1,7 @@
 import {Image} from "../../../../../../src/models/Image"
-import {seedImage} from "../../../../../dbSeeding/seedImage"
-import {seedBrand} from "../../../../../dbSeeding/seedBrand"
-import {seedCarModel} from "../../../../../dbSeeding/seedCarModel"
+import {seedImage} from "../../../../../dbSeeding/images/nodes/seedImage"
+import {seedBrand} from "../../../../../dbSeeding/brands/nodes/seedBrand"
+import {seedCarModel} from "../../../../../dbSeeding/car-models/nodes/seedCarModel"
 
 describe('Image', () => {
     test('An image can be connected to multiple other nodes from different types', async () => {

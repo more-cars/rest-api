@@ -1,5 +1,5 @@
-import {createNode} from "../../src/db/images/createNode"
-import FakeImageFull from "../fixtures/nodes/FakeImageFull"
+import {createNode} from "../../../../src/db/images/createNode"
+import FakeImageFull from "../../../fixtures/nodes/FakeImageFull"
 
 /**
  * Creates a new image in the database with random fake data.

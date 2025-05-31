@@ -1,6 +1,6 @@
-import {seedImage} from "../../../../../dbSeeding/seedImage"
+import {seedImage} from "../../../../../dbSeeding/images/nodes/seedImage"
 import {Image} from "../../../../../../src/models/Image"
-import {seedBrand} from "../../../../../dbSeeding/seedBrand"
+import {seedBrand} from "../../../../../dbSeeding/brands/nodes/seedBrand"
 
 describe('Image', () => {
     test('An image can be connected to multiple nodes of the same type', async () => {

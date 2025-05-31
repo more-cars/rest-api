@@ -1,6 +1,6 @@
 import Ajv from "ajv"
 import {getNodeById} from "../../../../../src/db/brands/getNodeById"
-import {seedBrand} from "../../../../dbSeeding/seedBrand"
+import {seedBrand} from "../../../../dbSeeding/brands/nodes/seedBrand"
 import {BrandNode} from "../../../../../src/types/brands/BrandNode"
 import {BrandSchema} from "../../../../_schemas/BrandSchema"
 

@@ -1,6 +1,6 @@
-import {seedBrands} from "../../../../dbSeeding/seedBrands"
-import {seedCarModels} from "../../../../dbSeeding/seedCarModels"
-import {seedImages} from "../../../../dbSeeding/seedImages"
+import {seedBrands} from "../../../../dbSeeding/brands/nodes/seedBrands"
+import {seedCarModels} from "../../../../dbSeeding/car-models/nodes/seedCarModels"
+import {seedImages} from "../../../../dbSeeding/images/nodes/seedImages"
 import {removeDuplicates} from "../../../../_helpers/removeDuplicates"
 
 describe('Create Node', () => {

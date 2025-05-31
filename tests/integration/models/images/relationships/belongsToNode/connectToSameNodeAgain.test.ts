@@ -1,5 +1,5 @@
-import {seedCarModel} from "../../../../../dbSeeding/seedCarModel"
-import {seedImage} from "../../../../../dbSeeding/seedImage"
+import {seedCarModel} from "../../../../../dbSeeding/car-models/nodes/seedCarModel"
+import {seedImage} from "../../../../../dbSeeding/images/nodes/seedImage"
 import {Image} from "../../../../../../src/models/Image"
 
 describe('Image', () => {

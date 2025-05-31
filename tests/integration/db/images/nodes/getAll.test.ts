@@ -1,7 +1,7 @@
 import {getAllNodesOfType} from "../../../../../src/db/images/getAllNodesOfType"
-import {deleteAllImages} from "../../../../dbSeeding/deleteAllImages"
+import {deleteAllImages} from "../../../../dbSeeding/images/nodes/deleteAllImages"
 import {ImageNode} from "../../../../../src/types/images/ImageNode"
-import {seedImages} from "../../../../dbSeeding/seedImages"
+import {seedImages} from "../../../../dbSeeding/images/nodes/seedImages"
 
 describe('Images', () => {
     test('When there are no images then an empty array should be returned', async () => {

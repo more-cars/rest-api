@@ -1,5 +1,5 @@
 import {Brand} from "../../../../../src/models/Brand"
-import {seedBrand} from "../../../../dbSeeding/seedBrand"
+import {seedBrand} from "../../../../dbSeeding/brands/nodes/seedBrand"
 
 describe('Brand', () => {
     test('Fetching a brand that does not exist should return "false"', async () => {

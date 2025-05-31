@@ -1,8 +1,8 @@
-import {seedImage} from "../../../../../dbSeeding/seedImage"
-import {seedCarModel} from "../../../../../dbSeeding/seedCarModel"
+import {seedImage} from "../../../../../dbSeeding/images/nodes/seedImage"
+import {seedCarModel} from "../../../../../dbSeeding/car-models/nodes/seedCarModel"
 import {createRelationship} from "../../../../../../src/db/createRelationship"
 import {DbRelationship} from "../../../../../../src/types/DbRelationship"
-import {seedBrand} from "../../../../../dbSeeding/seedBrand"
+import {seedBrand} from "../../../../../dbSeeding/brands/nodes/seedBrand"
 
 describe('Image', () => {
     test('Creating a "Image belongs to Node" relationship when both nodes exist', async () => {

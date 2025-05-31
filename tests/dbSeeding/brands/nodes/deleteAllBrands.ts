@@ -1,5 +1,5 @@
 import {Driver, Session} from "neo4j-driver"
-import {closeDriver, getDriver} from "../../src/db/driver"
+import {closeDriver, getDriver} from "../../../../src/db/driver"
 
 /**
  * Deletes all nodes from type "Brand" in the database.

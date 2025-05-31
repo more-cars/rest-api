@@ -1,5 +1,5 @@
-import {createNode} from "../../src/db/car-models/createNode"
-import FakeCarModel from "../fixtures/nodes/FakeCarModel"
+import {createNode} from "../../../../src/db/car-models/createNode"
+import FakeCarModel from "../../../fixtures/nodes/FakeCarModel"
 
 /**
  * Creates a randomized car model in the database.

@@ -1,5 +1,5 @@
 import {Image} from "../../../../../src/models/Image"
-import {seedImage} from "../../../../dbSeeding/seedImage"
+import {seedImage} from "../../../../dbSeeding/images/nodes/seedImage"
 
 describe('Image', () => {
     test('Fetching an image that does not exist should return "false"', async () => {

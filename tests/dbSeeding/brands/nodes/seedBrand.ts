@@ -1,5 +1,5 @@
-import {createNode} from "../../src/db/brands/createNode"
-import FakeBrand from "../fixtures/nodes/FakeBrand"
+import {createNode} from "../../../../src/db/brands/createNode"
+import FakeBrand from "../../../fixtures/nodes/FakeBrand"
 
 /**
  * Creates a new brand in the database with random fake data.

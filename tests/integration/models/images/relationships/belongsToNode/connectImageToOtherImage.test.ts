@@ -1,4 +1,4 @@
-import {seedImage} from "../../../../../dbSeeding/seedImage"
+import {seedImage} from "../../../../../dbSeeding/images/nodes/seedImage"
 import {Image} from "../../../../../../src/models/Image"
 
 describe('Image', () => {

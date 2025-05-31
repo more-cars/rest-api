@@ -1,6 +1,6 @@
-import {deleteAllBrands} from "../../../../dbSeeding/deleteAllBrands"
+import {deleteAllBrands} from "../../../../dbSeeding/brands/nodes/deleteAllBrands"
 import {BrandNode} from "../../../../../src/types/brands/BrandNode"
-import {seedBrands} from "../../../../dbSeeding/seedBrands"
+import {seedBrands} from "../../../../dbSeeding/brands/nodes/seedBrands"
 import {getAllNodesOfType} from "../../../../../src/db/brands/getAllNodesOfType"
 
 describe('Brands', () => {
