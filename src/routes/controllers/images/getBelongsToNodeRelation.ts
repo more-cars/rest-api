@@ -11,7 +11,7 @@ export async function getBelongsToNodeRelation(req: express.Request, res: expres
         if (!relationship) {
             res.status(404)
             res.set('Content-Type', 'text/plain')
-            res.send('Request failed. Image ID and/or partner node ID not found.')
+            res.send('Request failed. Either the nodes or the relationship does not exist.')
 
             return
         }

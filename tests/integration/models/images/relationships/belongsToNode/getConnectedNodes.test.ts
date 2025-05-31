@@ -53,4 +53,12 @@ describe('Image', () => {
 
         expect(relationship).toBeFalsy()
     })
+
+    test('Trying to get image relationship when there is none', async () => {
+        const imageNode = await seedImage()
+        const partnerNode = await seedCarModel()
+        const relationship = await Image.getBelongsToNodeRelationship(imageNode.id, partnerNode.id)
+
+        expect(relationship).toBeFalsy()
+    })
 })
