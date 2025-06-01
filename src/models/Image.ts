@@ -7,6 +7,7 @@ import {ImageNodeUserData} from "../types/images/ImageNodeUserData"
 import {getImageBelongsToNodeRelationship} from "./relationships/getImageBelongsToNodeRelationship"
 import {ImageBelongsToNodeRelationship} from "../types/images/ImageBelongsToNodeRelationship"
 import {createImageBelongsToNodeRelationship} from "./relationships/createImageBelongsToNodeRelationship"
+import {getRelationships} from "../db/images/getRelationships"
 
 export class Image {
     static async create(data: ImageNodeUserData): Promise<ImageNode> {
@@ -64,6 +65,10 @@ export class Image {
         }
 
         return await getImageBelongsToNodeRelationship(imageId, partnerNodeId)
+    }
+
+    static async getBelongsToNodeRelationships(imageId: number): Promise<Array<ImageBelongsToNodeRelationship>> {
+        return await getRelationships(imageId)
     }
 }
 
