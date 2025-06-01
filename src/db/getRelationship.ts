@@ -1,4 +1,4 @@
-import {Driver, Node, Session} from "neo4j-driver"
+import {Driver, Relationship, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "./driver"
 import {BaseRelationship} from "../types/BaseRelationship"
 import {DbRelationship} from "../types/DbRelationship"
@@ -43,14 +43,12 @@ async function getRel(
         return false
     }
 
-    const fetchedDbRel: Node = records[0].get('r')
+    const fetchedDbRel: Relationship = records[0].get('r')
 
-    const rel: BaseRelationship = {
+    return <BaseRelationship>{
         start_node_id: startNodeId,
         end_node_id: endNodeId,
         relationship_id: fetchedDbRel.properties.mc_id,
         relationship_name: relationshipName,
     }
-
-    return rel
 }
