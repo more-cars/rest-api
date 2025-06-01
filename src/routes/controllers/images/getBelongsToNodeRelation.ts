@@ -23,6 +23,6 @@ export async function getBelongsToNodeRelation(req: express.Request, res: expres
         console.error(e)
         res.status(422)
         res.set('Content-Type', 'text/plain')
-        res.send('Request failed. Relationship could not be created.')
+        res.send('Request failed. Relationship could not be retrieved.')
     }
 }
