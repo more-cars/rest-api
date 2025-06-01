@@ -4,6 +4,7 @@ import {
     seedRelationshipsForSpecificImage
 } from "../../../../../dbSeeding/images/relationships/seedRelationshipsForSpecificImage"
 import {DbRelationship} from "../../../../../../src/types/DbRelationship"
+import assert from "assert"
 
 describe('Image', () => {
     test('Get all "Image belongs to Node" relationships for specific image', async () => {
@@ -12,6 +13,10 @@ describe('Image', () => {
         await seedRelationshipsForSpecificImage(imageNode, amount)
 
         const fetchedRelationships = await Image.getBelongsToNodeRelationships(imageNode.id)
+
+        if (!fetchedRelationships) {
+            assert.fail('Could not fetch relationships')
+        }
 
         expect(fetchedRelationships)
             .toHaveLength(amount)
@@ -30,5 +35,12 @@ describe('Image', () => {
 
         expect(fetchedRelationships)
             .toHaveLength(0)
+    })
+
+    test('Expecting error when there is no such image', async () => {
+        const fetchedRelationships = await Image.getBelongsToNodeRelationships(-42)
+
+        expect(fetchedRelationships)
+            .toBeFalsy()
     })
 })

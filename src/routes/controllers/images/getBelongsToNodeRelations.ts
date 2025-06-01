@@ -7,6 +7,14 @@ export async function getBelongsToNodeRelations(req: express.Request, res: expre
     try {
         const relationships = await Image.getBelongsToNodeRelationships(imageId)
 
+        if (!relationships) {
+            res.status(404)
+            res.set('Content-Type', 'text/plain')
+            res.send('Request failed. Image not found.')
+
+            return
+        }
+
         res.status(200)
         res.set('Content-Type', 'application/json')
         res.send(relationships)

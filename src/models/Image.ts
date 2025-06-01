@@ -67,7 +67,11 @@ export class Image {
         return await getImageBelongsToNodeRelationship(imageId, partnerNodeId)
     }
 
-    static async getBelongsToNodeRelationships(imageId: number): Promise<Array<ImageBelongsToNodeRelationship>> {
+    static async getBelongsToNodeRelationships(imageId: number): Promise<false | Array<ImageBelongsToNodeRelationship>> {
+        if (!await getNodeById(imageId)) {
+            return false
+        }
+
         return await getRelationships(imageId)
     }
 }

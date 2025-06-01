@@ -31,4 +31,11 @@ describe('Image', () => {
         expect(fetchedRelationships)
             .toHaveLength(0)
     })
+
+    test('Expecting empty list when there is no such image', async () => {
+        const fetchedRelationships = await getRelationships(-42)
+
+        expect(fetchedRelationships)
+            .toHaveLength(0)
+    })
 })
