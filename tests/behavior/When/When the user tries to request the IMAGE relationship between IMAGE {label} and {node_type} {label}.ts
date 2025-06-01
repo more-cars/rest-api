@@ -11,7 +11,7 @@ When('the user tries to request the IMAGE relationship between IMAGE {string} an
         this.latestResponse = await axios
             .get(`${process.env.API_URL}/images/${imageNode.id}/belongs-to-node/${partnerNode.id}`, {
                 validateStatus: function (status) {
-                    return status === 404 // treating the 404 as a "good" status code, so axios does not fail the request
+                    return status === 404 || status === 422 // treating 404 and 422 as a "good" status codes, so axios does not fail the request
                 }
             })
             .catch(error => {
