@@ -4,6 +4,7 @@ import {getById} from "./controllers/images/getById"
 import {getAll} from "./controllers/images/getAll"
 import {createBelongsToNodeRelation} from "./controllers/images/createBelongsToNodeRelation"
 import {getBelongsToNodeRelation} from "./controllers/images/getBelongsToNodeRelation"
+import {getBelongsToNodeRelations} from "./controllers/images/getBelongsToNodeRelations"
 
 const router = express.Router()
 
@@ -12,5 +13,6 @@ router.get('/images/:id', getById)
 router.get('/images', getAll)
 router.post('/images/:imageId/belongs-to-node/:partnerNodeId', createBelongsToNodeRelation)
 router.get('/images/:imageId/belongs-to-node/:partnerNodeId', getBelongsToNodeRelation)
+router.get('/images/:imageId/belongs-to-node', getBelongsToNodeRelations)
 
 export default router
