@@ -23,4 +23,12 @@ describe('Image', () => {
                 .toBe(DbRelationship.ImageBelongsToNode)
         })
     })
+
+    test('Expecting empty list when there are no such relationships', async () => {
+        const imageNode = await seedImage()
+        const fetchedRelationships = await Image.getBelongsToNodeRelationships(imageNode.id)
+
+        expect(fetchedRelationships)
+            .toHaveLength(0)
+    })
 })
