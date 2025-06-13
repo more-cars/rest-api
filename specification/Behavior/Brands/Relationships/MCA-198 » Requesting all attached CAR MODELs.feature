@@ -8,7 +8,7 @@ Feature: Requesting all "CAR MODEL belongs BRAND" relationships
   Rule: All attached CAR MODELs are returned
 
   @TEST_MCA-198 @implemented
-  Scenario: Requesting all attached CAR MODELs
+  Scenario: Requesting all CAR MODEL relationships for a specific BRAND
     Given there exists a "BRAND" "Hyundai"
     And there exists a "CAR MODEL" "i10"
     And there exists a "CAR MODEL" "i20"
