@@ -1,0 +1,16 @@
+meta {
+  name: Get "has node" Relations
+  type: http
+  seq: 60
+}
+
+get {
+  url: {{baseUrl}}/brands/{{validBrandId}}/has-car-model
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body: isArray
+}
