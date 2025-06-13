@@ -161,6 +161,50 @@
         }
       }
     },
+    "/brands/{brand-id}/has-car-model": {
+      "get": {
+        "tags": [
+          "Brands"
+        ],
+        "summary": "Get all `Brand-has-Car-Model` relationships",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "brand-id",
+            "description": "ID of the `Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requested relationships were found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BrandHasCarModel"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No `Brand` with the provided ID found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/brands/{brand-id}/has-car-model/{car-model-id}": {
       "post": {
         "tags": [
@@ -751,6 +795,37 @@
           }
         }
       },
+      "BrandHasCarModel": {
+        "type": "object",
+        "required": [
+          "brand_id",
+          "car_model_id",
+          "relationship_id",
+          "relationship_name"
+        ],
+        "properties": {
+          "brand_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "3"
+          },
+          "car_model_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "25"
+          },
+          "relationship_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "123456"
+          },
+          "relationship_name": {
+            "type": "string",
+            "readOnly": true,
+            "example": "has-car-model"
+          }
+        }
+      },
       "Image": {
         "type": "object",
         "required": [
@@ -849,7 +924,9 @@
         "type": "object",
         "required": [
           "image_id",
-          "partner_node_id"
+          "partner_node_id",
+          "relationship_id",
+          "relationship_name"
         ],
         "properties": {
           "image_id": {
@@ -862,16 +939,14 @@
             "readOnly": true,
             "example": "607400"
           },
-          "partner_node_type": {
-            "type": "string",
-            "example": "Car Model Variant"
-          },
           "relationship_id": {
-            "type": "string",
+            "type": "integer",
+            "readOnly": true,
             "example": "123456"
           },
           "relationship_name": {
             "type": "string",
+            "readOnly": true,
             "example": "belongs-to-node"
           }
         }
