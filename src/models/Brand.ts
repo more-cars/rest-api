@@ -8,6 +8,7 @@ import {deleteForeignBrandHasCarModelRelationship} from "./relationships/deleteF
 import {getBrandHasCarModelRelationship} from "./relationships/getBrandHasCarModelRelationship"
 import {createBrandHasCarModelRelationship} from "./relationships/createBrandHasCarModelRelationship"
 import {BrandHasCarModelRelationship} from "../types/brands/BrandHasCarModelRelationship"
+import {getAllBrandHasCarModelRelationships} from "./relationships/getAllBrandHasCarModelRelationships"
 
 export class Brand {
     static async create(data: BrandNodeUserData): Promise<BrandNode> {
@@ -31,5 +32,15 @@ export class Brand {
         await deleteForeignBrandHasCarModelRelationship(brand, carModel)
 
         return await createBrandHasCarModelRelationship(brand, carModel)
+    }
+
+    static async getRelationshipsForHasCarModel(brandId: number): Promise<Array<BrandHasCarModelRelationship>> {
+        const brand = await this.findById(brandId)
+
+        if (!brand) {
+            throw new Error(`A brand with ID #${brandId} not found.`)
+        }
+
+        return await getAllBrandHasCarModelRelationships(brand)
     }
 }
