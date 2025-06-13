@@ -7,16 +7,31 @@ require('dotenv').config({path: path.resolve(__dirname, '../../.env')})
 
 module.exports = {
     displayName: 'Integration Tests',
-    testMatch: ['<rootDir>/**/*.test.ts'],
+    preset: 'ts-jest',
+    rootDir: path.resolve(__dirname, '../../'),
+    testMatch: ['<rootDir>/tests/integration/**/*.test.ts'],
     maxConcurrency: 1,
     maxWorkers: 1,
     forceExit: true,
-    preset: 'ts-jest',
     reporters: [
         "default",
-        ["../../node_modules/jest-html-reporter", {
+        ["<rootDir>/node_modules/jest-html-reporter", {
             "pageTitle": "Integration Tests - Report",
             "outputPath": "./test-reports/integration/report.html",
         }]
     ],
+    collectCoverage: false,
+    coverageProvider: "v8",
+    coverageDirectory: '<rootDir>/test-reports/code-coverage',
+    collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
+    coveragePathIgnorePatterns: [
+        '<rootDir>/src/server.ts',
+        '<rootDir>/src/types',
+    ],
+    coverageThreshold: {
+        global: {
+            statements: 75,
+            branches: 75
+        }
+    }
 }
