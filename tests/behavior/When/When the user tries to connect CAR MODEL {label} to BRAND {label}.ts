@@ -3,7 +3,7 @@ import axios from "axios"
 import {BrandNode} from "../../../src/types/brands/BrandNode"
 import {CarModelNode} from "../../../src/types/car-models/CarModelNode"
 
-When('the user tries to connect car model {string} to brand {string}', async function (carModelLabel: string, brandLabel: string) {
+When('the user tries to connect CAR MODEL {string} to BRAND {string}', async function (carModelLabel: string, brandLabel: string) {
     const brand: BrandNode = this.brand[brandLabel]
     const carModel: CarModelNode = this.carmodel[carModelLabel]
 
