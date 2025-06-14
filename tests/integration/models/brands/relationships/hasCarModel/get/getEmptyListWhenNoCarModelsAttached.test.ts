@@ -1,5 +1,5 @@
 import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
-import {Brand} from "../../../../../../../src/models/Brand"
+import {Brand} from "../../../../../../../src/models/brands/Brand"
 import assert from "assert"
 
 test('An empty list should be returned when no CAR MODEL is connected to the BRAND', async () => {

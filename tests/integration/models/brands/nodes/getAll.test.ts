@@ -1,6 +1,6 @@
 import {deleteAllBrands} from "../../../../dbSeeding/brands/nodes/deleteAllBrands"
 import {BrandNode} from "../../../../../src/types/brands/BrandNode"
-import {Brand} from "../../../../../src/models/Brand"
+import {Brand} from "../../../../../src/models/brands/Brand"
 import {seedBrands} from "../../../../dbSeeding/brands/nodes/seedBrands"
 
 describe('Brands', () => {

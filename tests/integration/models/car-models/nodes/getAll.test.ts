@@ -1,6 +1,6 @@
 import {deleteAllCarModels} from "../../../../dbSeeding/car-models/nodes/deleteAllCarModels"
 import {CarModelNode} from "../../../../../src/types/car-models/CarModelNode"
-import {CarModel} from "../../../../../src/models/CarModel"
+import {CarModel} from "../../../../../src/models/car-models/CarModel"
 import {seedCarModels} from "../../../../dbSeeding/car-models/nodes/seedCarModels"
 
 describe('Car Model', () => {

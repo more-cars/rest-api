@@ -1,5 +1,5 @@
 import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
-import {Brand} from "../../../../../../../src/models/Brand"
+import {Brand} from "../../../../../../../src/models/brands/Brand"
 import {seedCarModels} from "../../../../../../dbSeeding/car-models/nodes/seedCarModels"
 import assert from "assert"
 

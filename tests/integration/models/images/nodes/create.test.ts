@@ -1,4 +1,4 @@
-import {Image} from "../../../../../src/models/Image"
+import {Image} from "../../../../../src/models/images/Image"
 import FakeImage from "../../../../fixtures/nodes/FakeImage"
 
 describe('Image', () => {

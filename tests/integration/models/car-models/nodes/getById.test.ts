@@ -1,4 +1,4 @@
-import {CarModel} from "../../../../../src/models/CarModel"
+import {CarModel} from "../../../../../src/models/car-models/CarModel"
 import {seedCarModel} from "../../../../dbSeeding/car-models/nodes/seedCarModel"
 
 describe('Car Model', () => {

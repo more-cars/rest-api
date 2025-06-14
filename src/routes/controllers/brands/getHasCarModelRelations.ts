@@ -1,5 +1,5 @@
 import express from "express"
-import {Brand} from "../../../models/Brand"
+import {Brand} from "../../../models/brands/Brand"
 import {marshalRelationships} from "./marshalRelationships"
 
 export async function getHasCarModelRelations(req: express.Request, res: express.Response) {

@@ -1,5 +1,5 @@
 import express from "express"
-import {CarModel} from "../../../models/CarModel"
+import {CarModel} from "../../../models/car-models/CarModel"
 import {unmarshal} from "./unmarshal"
 import {marshal} from "./marshal"
 

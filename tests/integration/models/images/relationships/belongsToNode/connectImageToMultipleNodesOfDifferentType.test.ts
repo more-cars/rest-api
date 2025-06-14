@@ -1,4 +1,4 @@
-import {Image} from "../../../../../../src/models/Image"
+import {Image} from "../../../../../../src/models/images/Image"
 import {seedImage} from "../../../../../dbSeeding/images/nodes/seedImage"
 import {seedBrand} from "../../../../../dbSeeding/brands/nodes/seedBrand"
 import {seedCarModel} from "../../../../../dbSeeding/car-models/nodes/seedCarModel"

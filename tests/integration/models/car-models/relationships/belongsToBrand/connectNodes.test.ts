@@ -1,6 +1,6 @@
 import {seedBrand} from "../../../../../dbSeeding/brands/nodes/seedBrand"
 import {seedCarModel} from "../../../../../dbSeeding/car-models/nodes/seedCarModel"
-import {CarModel} from "../../../../../../src/models/CarModel"
+import {CarModel} from "../../../../../../src/models/car-models/CarModel"
 import {CarModelRelationship} from "../../../../../../src/types/car-models/CarModelRelationship"
 
 describe('Car Model', () => {

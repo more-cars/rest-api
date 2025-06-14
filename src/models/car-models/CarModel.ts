@@ -1,15 +1,15 @@
-import {CarModelNode} from "../types/car-models/CarModelNode"
-import {CarModelNodeUserData} from "../types/car-models/CarModelNodeUserData"
-import {BrandNode} from "../types/brands/BrandNode"
-import {createNode} from "../db/car-models/createNode"
-import {getNodeById} from "../db/car-models/getNodeById"
-import {getAllNodesOfType} from "../db/car-models/getAllNodesOfType"
+import {CarModelNode} from "../../types/car-models/CarModelNode"
+import {CarModelNodeUserData} from "../../types/car-models/CarModelNodeUserData"
+import {BrandNode} from "../../types/brands/BrandNode"
+import {createNode} from "../../db/car-models/createNode"
+import {getNodeById} from "../../db/car-models/getNodeById"
+import {getAllNodesOfType} from "../../db/car-models/getAllNodesOfType"
 import {
     deleteForeignCarModelBelongsToBrandRelationship
-} from "./relationships/deleteForeignCarModelBelongsToBrandRelationship"
-import {getCarModelBelongsToBrandRelationship} from "./relationships/getCarModelBelongsToBrandRelationship"
-import {createCarModelBelongsToBrandRelationship} from "./relationships/createCarModelBelongsToBrandRelationship"
-import {CarModelBelongsToBrandRelationship} from "../types/car-models/CarModelBelongsToBrandRelationship"
+} from "./deleteForeignCarModelBelongsToBrandRelationship"
+import {getCarModelBelongsToBrandRelationship} from "./getCarModelBelongsToBrandRelationship"
+import {createCarModelBelongsToBrandRelationship} from "./createCarModelBelongsToBrandRelationship"
+import {CarModelBelongsToBrandRelationship} from "../../types/car-models/CarModelBelongsToBrandRelationship"
 
 export class CarModel {
     static async create(data: CarModelNodeUserData): Promise<CarModelNode> {

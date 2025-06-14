@@ -1,4 +1,4 @@
-import {Brand} from "../../../../../../../src/models/Brand"
+import {Brand} from "../../../../../../../src/models/brands/Brand"
 
 // Opposite to the counterpart test on the database layer, here we expect an error, not an empty list.
 // On the application layer the models perform semantical checks, on the database only syntactical ones.

@@ -1,9 +1,9 @@
 import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
 import FakeBrand from "../../../../fixtures/nodes/FakeBrand"
 import FakeImage from "../../../../fixtures/nodes/FakeImage"
-import {CarModel} from "../../../../../src/models/CarModel"
-import {Brand} from "../../../../../src/models/Brand"
-import {Image} from "../../../../../src/models/Image"
+import {CarModel} from "../../../../../src/models/car-models/CarModel"
+import {Brand} from "../../../../../src/models/brands/Brand"
+import {Image} from "../../../../../src/models/images/Image"
 
 describe('Create Node', () => {
     test('Unknown properties are ignored', async () => {

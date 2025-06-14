@@ -1,4 +1,4 @@
-import {Brand} from "../../../../../src/models/Brand"
+import {Brand} from "../../../../../src/models/brands/Brand"
 import {seedBrand} from "../../../../dbSeeding/brands/nodes/seedBrand"
 
 describe('Brand', () => {

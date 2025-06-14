@@ -1,5 +1,5 @@
 import {seedImage} from "../../../../../dbSeeding/images/nodes/seedImage"
-import {Image} from "../../../../../../src/models/Image"
+import {Image} from "../../../../../../src/models/images/Image"
 import {seedBrand} from "../../../../../dbSeeding/brands/nodes/seedBrand"
 
 describe('Image', () => {

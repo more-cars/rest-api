@@ -1,9 +1,9 @@
 import FakeBrand from "../../../../fixtures/nodes/FakeBrand"
 import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
 import FakeImage from "../../../../fixtures/nodes/FakeImage"
-import {Brand} from "../../../../../src/models/Brand"
-import {CarModel} from "../../../../../src/models/CarModel"
-import {Image} from "../../../../../src/models/Image"
+import {Brand} from "../../../../../src/models/brands/Brand"
+import {CarModel} from "../../../../../src/models/car-models/CarModel"
+import {Image} from "../../../../../src/models/images/Image"
 
 describe('Create Node', () => {
     test('ID is added when creating a node', async () => {

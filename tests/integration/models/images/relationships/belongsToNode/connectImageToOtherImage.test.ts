@@ -1,5 +1,5 @@
 import {seedImage} from "../../../../../dbSeeding/images/nodes/seedImage"
-import {Image} from "../../../../../../src/models/Image"
+import {Image} from "../../../../../../src/models/images/Image"
 
 describe('Image', () => {
     test('Attaching an image to another image is not allowed', async () => {

@@ -1,5 +1,5 @@
 import express from "express"
-import {CarModel} from "../../../models/CarModel"
+import {CarModel} from "../../../models/car-models/CarModel"
 import {marshal} from "./marshal"
 
 export async function getById(req: express.Request, res: express.Response) {

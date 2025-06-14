@@ -1,5 +1,5 @@
 import express from "express"
-import {Image} from "../../../models/Image"
+import {Image} from "../../../models/images/Image"
 import {ImageRelationship} from "../../../types/images/ImageRelationship"
 
 export async function createBelongsToNodeRelation(req: express.Request, res: express.Response) {

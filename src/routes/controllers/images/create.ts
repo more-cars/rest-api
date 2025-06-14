@@ -1,5 +1,5 @@
 import express from "express"
-import {Image} from "../../../models/Image"
+import {Image} from "../../../models/images/Image"
 import {unmarshal} from "./unmarshal"
 import {marshal} from "./marshal"
 

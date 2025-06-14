@@ -1,4 +1,4 @@
-import {CarModel} from "../../../../../src/models/CarModel"
+import {CarModel} from "../../../../../src/models/car-models/CarModel"
 import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
 
 describe('Car Model', () => {

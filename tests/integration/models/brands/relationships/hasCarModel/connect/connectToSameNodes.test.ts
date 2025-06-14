@@ -1,6 +1,6 @@
-import {seedBrand} from "../../../../../dbSeeding/brands/nodes/seedBrand"
-import {seedCarModel} from "../../../../../dbSeeding/car-models/nodes/seedCarModel"
-import {Brand} from "../../../../../../src/models/Brand"
+import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
+import {seedCarModel} from "../../../../../../dbSeeding/car-models/nodes/seedCarModel"
+import {Brand} from "../../../../../../../src/models/brands/Brand"
 
 describe('Brand', () => {
     test('The relationship ID should not change when creating the same relationship again', async () => {

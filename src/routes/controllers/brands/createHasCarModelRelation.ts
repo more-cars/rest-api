@@ -1,6 +1,6 @@
 import express from "express"
-import {Brand} from "../../../models/Brand"
-import {CarModel} from "../../../models/CarModel"
+import {Brand} from "../../../models/brands/Brand"
+import {CarModel} from "../../../models/car-models/CarModel"
 import {BrandRelationship} from "../../../types/brands/BrandRelationship"
 
 export async function createHasCarModelRelation(req: express.Request, res: express.Response) {

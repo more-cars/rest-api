@@ -1,12 +1,12 @@
 import FakeBrand from "../../../../fixtures/nodes/FakeBrand"
 import {BrandNodeUserData} from "../../../../../src/types/brands/BrandNodeUserData"
-import {Brand} from "../../../../../src/models/Brand"
+import {Brand} from "../../../../../src/models/brands/Brand"
 import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
 import {CarModelNodeUserData} from "../../../../../src/types/car-models/CarModelNodeUserData"
-import {CarModel} from "../../../../../src/models/CarModel"
+import {CarModel} from "../../../../../src/models/car-models/CarModel"
 import FakeImage from "../../../../fixtures/nodes/FakeImage"
 import {ImageNodeUserData} from "../../../../../src/types/images/ImageNodeUserData"
-import {Image} from "../../../../../src/models/Image"
+import {Image} from "../../../../../src/models/images/Image"
 
 describe('Create Node', () => {
     test('Timestamps provided by the user are ignored', async () => {

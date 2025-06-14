@@ -1,5 +1,5 @@
 import express from "express"
-import {Image} from "../../../models/Image"
+import {Image} from "../../../models/images/Image"
 
 export async function getBelongsToNodeRelations(req: express.Request, res: express.Response) {
     const imageId = parseInt(req.params.imageId)

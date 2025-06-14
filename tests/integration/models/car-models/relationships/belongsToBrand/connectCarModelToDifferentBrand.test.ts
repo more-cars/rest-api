@@ -2,7 +2,7 @@ import {seedBrand} from "../../../../../dbSeeding/brands/nodes/seedBrand"
 import {seedCarModel} from "../../../../../dbSeeding/car-models/nodes/seedCarModel"
 import {getRelationship} from "../../../../../../src/db/getRelationship"
 import {DbRelationship} from "../../../../../../src/types/DbRelationship"
-import {CarModel} from "../../../../../../src/models/CarModel"
+import {CarModel} from "../../../../../../src/models/car-models/CarModel"
 
 describe('Car Model', () => {
     test('Attaching the car model to another brand removes the original relationship', async () => {

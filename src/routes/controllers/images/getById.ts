@@ -1,6 +1,6 @@
 import express from "express"
 import {marshal} from "./marshal"
-import {Image} from "../../../models/Image"
+import {Image} from "../../../models/images/Image"
 
 export async function getById(req: express.Request, res: express.Response) {
     const nodeId = parseInt(req.params.id)
