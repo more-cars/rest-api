@@ -18,5 +18,5 @@ Feature: Requesting all "CAR MODEL belongs BRAND" relationships
     When the user requests a list of all CAR MODEL relationships for the BRAND "Hyundai"
 
     Then the response should return with status code 200
-    And the response should contain the the relationship "R1"
-    And the response should contain the the relationship "R2"
+    And the response should contain the relationship "R1"
+    And the response should contain the relationship "R2"
