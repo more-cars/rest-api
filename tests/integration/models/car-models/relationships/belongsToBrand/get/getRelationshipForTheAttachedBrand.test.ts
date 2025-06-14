@@ -18,4 +18,10 @@ test('Requesting the relationship between CAR MODEL and attached BRAND', async (
     }
 
     validateJson(relationship, CarModelBelongsToBrandSchema)
+
+    expect(relationship.brand_id)
+        .toBe(brand.id)
+
+    expect(relationship.car_model_id)
+        .toBe(carModel.id)
 })

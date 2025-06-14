@@ -8,6 +8,7 @@ export async function getAllCarModelBelongsToBrandRelationships(carModel: CarMod
     const relationships = await findRelationships(
         carModel.id as number,
         DbRelationship.BrandHasCarModel,
+        true,
     )
     const mappedRelationships: CarModelBelongsToBrandRelationship[] = []
 

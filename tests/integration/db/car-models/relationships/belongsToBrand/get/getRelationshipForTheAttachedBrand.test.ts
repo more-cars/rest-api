@@ -18,7 +18,7 @@ test('Requesting the relationship between CAR MODEL and attached BRAND',
         const relationships = await findRelationships(
             carModel.id as number,
             DbRelationship.BrandHasCarModel,
-            true
+            true,
         )
 
         expect(relationships.length)
