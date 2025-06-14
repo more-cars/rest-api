@@ -357,6 +357,47 @@
         }
       }
     },
+    "/car-models/{car-model-id}/belongs-to-brand": {
+      "get": {
+        "tags": [
+          "Car Models"
+        ],
+        "summary": "Get `Car-Model-belongs-to-Brand` relationship",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-id",
+            "description": "ID of the `Car Model`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requested relationship was found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelBelongsToBrand"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No `Car Model` with the provided ID found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/car-models/{car-model-id}/belongs-to-brand/{brand-id}": {
       "post": {
         "tags": [
@@ -801,6 +842,37 @@
             "type": "string",
             "readOnly": true,
             "example": "has-car-model"
+          }
+        }
+      },
+      "CarModelBelongsToBrand": {
+        "type": "object",
+        "required": [
+          "car_model_id",
+          "brand_id",
+          "relationship_id",
+          "relationship_name"
+        ],
+        "properties": {
+          "car_model_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "25"
+          },
+          "brand_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "3"
+          },
+          "relationship_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "123456"
+          },
+          "relationship_name": {
+            "type": "string",
+            "readOnly": true,
+            "example": "belongs-to-brand"
           }
         }
       },
