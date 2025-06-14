@@ -237,29 +237,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "relationship-id": {
-                      "type": "integer",
-                      "readOnly": true,
-                      "example": 1234
-                    },
-                    "relationship-name": {
-                      "type": "string",
-                      "readOnly": true,
-                      "example": "HAS_CAR_MODEL"
-                    },
-                    "brand-id": {
-                      "type": "integer",
-                      "readOnly": true,
-                      "example": 12
-                    },
-                    "car-model-id": {
-                      "type": "integer",
-                      "readOnly": true,
-                      "example": 34
-                    }
-                  }
+                  "$ref": "#/components/schemas/BrandHasCarModel"
                 }
               }
             }
@@ -413,16 +391,6 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "relationship-id": {
-                      "type": "integer",
-                      "readOnly": true,
-                      "example": 1234
-                    },
-                    "relationship-name": {
-                      "type": "string",
-                      "readOnly": true,
-                      "example": "belongs-to-brand"
-                    },
                     "car-model-id": {
                       "type": "integer",
                       "readOnly": true,
@@ -432,6 +400,16 @@
                       "type": "integer",
                       "readOnly": true,
                       "example": 12
+                    },
+                    "relationship-id": {
+                      "type": "integer",
+                      "readOnly": true,
+                      "example": 1234
+                    },
+                    "relationship-name": {
+                      "type": "string",
+                      "readOnly": true,
+                      "example": "belongs-to-brand"
                     }
                   }
                 }
