@@ -4,11 +4,22 @@ import {createRelationship} from "../../db/createRelationship"
 import {DbRelationship} from "../../types/DbRelationship"
 import {CarModelBelongsToBrandRelationship} from "../../types/car-models/CarModelBelongsToBrandRelationship"
 import {CarModelRelationship} from "../../types/car-models/CarModelRelationship"
+import {deleteExistingCarModelBelongsToBrandRelationship} from "./deleteExistingCarModelBelongsToBrandRelationship"
+import {getCarModelBelongsToBrandRelationship} from "./getCarModelBelongsToBrandRelationship"
 
 /**
- * Creates a BELONGS_TO_BRAND relationship between the given nodes.
+ * Creates a BELONGS_TO_BRAND relationship between the two given nodes.
+ * If that relationship already exists, it will be returned without being recreated.
+ * If there exists a relationship with another BRAND then that will be deleted.
  */
 export async function createCarModelBelongsToBrandRelationship(carModel: CarModelNode, brand: BrandNode) {
+    const existingRelation = await getCarModelBelongsToBrandRelationship(carModel, brand)
+    if (existingRelation) {
+        return existingRelation
+    }
+
+    await deleteExistingCarModelBelongsToBrandRelationship(carModel)
+
     // ⚠️ Outside the database we distinguish between BRAND.HAS_CAR_MODEL and CAR_MODEL.BELONGS_TO_BRAND for better readability.
     // But in the database we have to use the SAME relationship for both directions (HAS_CAR_MODEL and BELONGS_TO_BRAND) to avoid duplicates.
     const baseRelationship = await createRelationship(

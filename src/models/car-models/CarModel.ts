@@ -4,10 +4,6 @@ import {BrandNode} from "../../types/brands/BrandNode"
 import {createNode} from "../../db/car-models/createNode"
 import {getNodeById} from "../../db/car-models/getNodeById"
 import {getAllNodesOfType} from "../../db/car-models/getAllNodesOfType"
-import {
-    deleteForeignCarModelBelongsToBrandRelationship
-} from "./deleteForeignCarModelBelongsToBrandRelationship"
-import {getCarModelBelongsToBrandRelationship} from "./getCarModelBelongsToBrandRelationship"
 import {createCarModelBelongsToBrandRelationship} from "./createCarModelBelongsToBrandRelationship"
 import {CarModelBelongsToBrandRelationship} from "../../types/car-models/CarModelBelongsToBrandRelationship"
 import {getAllCarModelBelongsToBrandRelationships} from "./getAllCarModelBelongsToBrandRelationships"
@@ -26,13 +22,6 @@ export class CarModel {
     }
 
     static async createBelongsToBrandRelationship(carModel: CarModelNode, brand: BrandNode): Promise<false | CarModelBelongsToBrandRelationship> {
-        const existingRelation = await getCarModelBelongsToBrandRelationship(carModel, brand)
-        if (existingRelation) {
-            return existingRelation
-        }
-
-        await deleteForeignCarModelBelongsToBrandRelationship(carModel, brand)
-
         return await createCarModelBelongsToBrandRelationship(carModel, brand)
     }
 
