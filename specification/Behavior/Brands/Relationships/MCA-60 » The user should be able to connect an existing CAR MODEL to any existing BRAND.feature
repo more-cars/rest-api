@@ -15,5 +15,5 @@ Feature: Connecting CAR MODELs to a BRAND
     When the user connects car model "B" to brand "A"
     Then the response should return with status code 201
 
-    When the user connects brand "A" to car model "B"
+    When the user connects BRAND "A" to CAR MODEL "B"
     Then the response should return with status code 201
