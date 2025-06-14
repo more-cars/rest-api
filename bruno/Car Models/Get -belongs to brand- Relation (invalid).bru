@@ -1,0 +1,16 @@
+meta {
+  name: Get "belongs to brand" Relation (invalid)
+  type: http
+  seq: 61
+}
+
+get {
+  url: {{baseUrl}}/car-models/{{invalidCarModelId}}/belongs-to-brand
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 404
+  res.body: isString
+}
