@@ -3,8 +3,8 @@ import {CarModelNode} from "../../../src/types/car-models/CarModelNode"
 import {BrandNode} from "../../../src/types/brands/BrandNode"
 import axios from "axios"
 
-Given('there exists a relationship {string} between car model {string} and brand {string}',
-    async function (realationshipLabel: string, carModelLabel: string, brandLabel: string) {
+Given('there exists a relationship {string} between CAR MODEL {string} and BRAND {string}',
+    async function (relationshipLabel: string, carModelLabel: string, brandLabel: string) {
         const carModel: CarModelNode = this.carmodel[carModelLabel]
         const brand: BrandNode = this.brand[brandLabel]
 
@@ -14,5 +14,5 @@ Given('there exists a relationship {string} between car model {string} and brand
                 console.error(error)
             })
 
-        this.relationship[realationshipLabel] = this.latestResponse.data
+        this.relationship[relationshipLabel] = this.latestResponse.data
     })

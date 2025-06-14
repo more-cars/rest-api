@@ -4,7 +4,7 @@ import {CarModelNode} from "../../../src/types/car-models/CarModelNode"
 import {BrandNode} from "../../../src/types/brands/BrandNode"
 import {seedBrand} from "../../dbSeeding/brands/nodes/seedBrand"
 
-When('the user connects car model {string} to a different brand', async function (carModelLabel: string) {
+When('the user connects CAR MODEL {string} to a different BRAND', async function (carModelLabel: string) {
     const carModel: CarModelNode = this.carmodel[carModelLabel]
     const brand: BrandNode = await seedBrand()
 
