@@ -10,6 +10,7 @@ import {
 import {getCarModelBelongsToBrandRelationship} from "./getCarModelBelongsToBrandRelationship"
 import {createCarModelBelongsToBrandRelationship} from "./createCarModelBelongsToBrandRelationship"
 import {CarModelBelongsToBrandRelationship} from "../../types/car-models/CarModelBelongsToBrandRelationship"
+import {getAllCarModelBelongsToBrandRelationships} from "./getAllCarModelBelongsToBrandRelationships"
 
 export class CarModel {
     static async create(data: CarModelNodeUserData): Promise<CarModelNode> {
@@ -33,5 +34,15 @@ export class CarModel {
         await deleteForeignCarModelBelongsToBrandRelationship(carModel, brand)
 
         return await createCarModelBelongsToBrandRelationship(carModel, brand)
+    }
+
+    static async getRelationshipForBelongsToBrand(carModelId: number): Promise<CarModelBelongsToBrandRelationship> {
+        const carModel = await this.findById(carModelId)
+
+        if (!carModel) {
+            throw new Error(`A car model with ID #${carModelId} not found.`)
+        }
+
+        return (await getAllCarModelBelongsToBrandRelationships(carModel))[0]
     }
 }
