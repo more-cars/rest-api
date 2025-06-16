@@ -430,29 +430,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "car-model-id": {
-                      "type": "integer",
-                      "readOnly": true,
-                      "example": 34
-                    },
-                    "brand-id": {
-                      "type": "integer",
-                      "readOnly": true,
-                      "example": 12
-                    },
-                    "relationship-id": {
-                      "type": "integer",
-                      "readOnly": true,
-                      "example": 1234
-                    },
-                    "relationship-name": {
-                      "type": "string",
-                      "readOnly": true,
-                      "example": "belongs-to-brand"
-                    }
-                  }
+                  "$ref": "#/components/schemas/CarModelBelongsToBrand"
                 }
               }
             }
@@ -662,29 +640,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "relationship-id": {
-                      "type": "integer",
-                      "readOnly": true,
-                      "example": 1234
-                    },
-                    "relationship-name": {
-                      "type": "string",
-                      "readOnly": true,
-                      "example": "BELONGS_TO_NODE"
-                    },
-                    "image-id": {
-                      "type": "integer",
-                      "readOnly": true,
-                      "example": 12
-                    },
-                    "partner-node-id": {
-                      "type": "integer",
-                      "readOnly": true,
-                      "example": 34
-                    }
-                  }
+                  "$ref": "#/components/schemas/ImageBelongsToNode"
                 }
               }
             }
