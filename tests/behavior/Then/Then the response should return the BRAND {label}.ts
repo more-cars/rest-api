@@ -4,7 +4,7 @@ import {BrandNode} from "../../../src/types/brands/BrandNode"
 import {BrandSchema} from "../../_schemas/BrandSchema"
 import {validateJson} from "../../_helpers/validateJson"
 
-Then('the response should return the brand {string}', function (label: string) {
+Then('the response should return the BRAND {string}', function (label: string) {
     const expectedNode: BrandNode = this.brand[label]
     const actualNode: BrandNode = this.latestResponse.data
 
