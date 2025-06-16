@@ -3,25 +3,23 @@ import {seedImages} from "../../../../dbSeeding/images/nodes/seedImages"
 import {ImageNode} from "../../../../../src/types/images/ImageNode"
 import {Image} from "../../../../../src/models/images/Image"
 
-describe("Images", () => {
-    test('When there are no images then an empty array should be returned', async () => {
-        await deleteAllImages()
+test('When there are no images then an empty array should be returned', async () => {
+    await deleteAllImages()
 
-        const expectedNodes: Array<ImageNode> = []
-        const actualNodes = await Image.findAll()
+    const expectedNodes: Array<ImageNode> = []
+    const actualNodes = await Image.findAll()
 
-        expect(actualNodes)
-            .toEqual(expectedNodes)
-    })
+    expect(actualNodes)
+        .toEqual(expectedNodes)
+})
 
-    test('When images exist then all of them should be returned', async () => {
-        await deleteAllImages()
-        const amount = Math.ceil(Math.random() * 50)
-        await seedImages(amount)
+test('When images exist then all of them should be returned', async () => {
+    await deleteAllImages()
+    const amount = Math.ceil(Math.random() * 50)
+    await seedImages(amount)
 
-        const nodes = await Image.findAll()
+    const nodes = await Image.findAll()
 
-        expect(nodes.length)
-            .toEqual(amount)
-    })
+    expect(nodes.length)
+        .toEqual(amount)
 })

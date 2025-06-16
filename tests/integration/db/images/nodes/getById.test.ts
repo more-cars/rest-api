@@ -4,20 +4,18 @@ import {ImageNode} from "../../../../../src/types/images/ImageNode"
 import {ImageSchema} from "../../../../_schemas/ImageSchema"
 import {validateJson} from "../../../../_helpers/validateJson"
 
-describe('Image', () => {
-    test('Querying an image that does not exist should return "false"', async () => {
-        const expectedNode = false
-        const actualNode = await getNodeById(-42)
+test('Querying an image that does not exist should return "false"', async () => {
+    const expectedNode = false
+    const actualNode = await getNodeById(-42)
 
-        expect(actualNode)
-            .toBe(expectedNode)
-    })
+    expect(actualNode)
+        .toBe(expectedNode)
+})
 
-    test('Querying an existing brand should return a db node with correct schema', async () => {
-        const existingNode: ImageNode = await seedImage()
-        const requestedNode = await getNodeById(existingNode.id as number)
+test('Querying an existing brand should return a db node with correct schema', async () => {
+    const existingNode: ImageNode = await seedImage()
+    const requestedNode = await getNodeById(existingNode.id as number)
 
-        expect(validateJson(requestedNode, ImageSchema))
-            .toBe(true)
-    })
+    expect(validateJson(requestedNode, ImageSchema))
+        .toBe(true)
 })

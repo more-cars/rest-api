@@ -5,24 +5,22 @@ import FakeBrand from "../../../../fixtures/nodes/FakeBrand"
 import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
 import FakeImageFull from "../../../../fixtures/nodes/FakeImageFull"
 
-describe('Create Node', () => {
-    test('Timestamps are added when creating a node', async () => {
-        const createdBrand = await createBrandNode(FakeBrand)
-        expect(createdBrand)
-            .toHaveProperty('created_at')
-        expect(createdBrand)
-            .toHaveProperty('updated_at')
+test('Timestamps are added when creating a node', async () => {
+    const createdBrand = await createBrandNode(FakeBrand)
+    expect(createdBrand)
+        .toHaveProperty('created_at')
+    expect(createdBrand)
+        .toHaveProperty('updated_at')
 
-        const createdCarModel = await createCarModelNode(FakeCarModel)
-        expect(createdCarModel)
-            .toHaveProperty('created_at')
-        expect(createdCarModel)
-            .toHaveProperty('updated_at')
+    const createdCarModel = await createCarModelNode(FakeCarModel)
+    expect(createdCarModel)
+        .toHaveProperty('created_at')
+    expect(createdCarModel)
+        .toHaveProperty('updated_at')
 
-        const createdImage = await createImageNode(FakeImageFull)
-        expect(createdImage)
-            .toHaveProperty('created_at')
-        expect(createdImage)
-            .toHaveProperty('updated_at')
-    })
+    const createdImage = await createImageNode(FakeImageFull)
+    expect(createdImage)
+        .toHaveProperty('created_at')
+    expect(createdImage)
+        .toHaveProperty('updated_at')
 })
