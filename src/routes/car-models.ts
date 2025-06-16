@@ -1,9 +1,9 @@
 import express from "express"
-import {create} from "./controllers/carModels/create"
-import {getById} from "./controllers/carModels/getById"
-import {getAll} from "./controllers/carModels/getAll"
-import {createBelongsToBrandRelation} from "./controllers/carModels/createBelongsToBrandRelation"
-import {getBelongsToBrandRelation} from "./controllers/carModels/getBelongsToBrandRelation"
+import {create} from "../controllers/carModels/create"
+import {getById} from "../controllers/carModels/getById"
+import {getAll} from "../controllers/carModels/getAll"
+import {createBelongsToBrandRelation} from "../controllers/carModels/createBelongsToBrandRelation"
+import {getBelongsToBrandRelation} from "../controllers/carModels/getBelongsToBrandRelation"
 
 const router = express.Router()
 

@@ -1,10 +1,10 @@
 import express from "express"
-import {create} from "./controllers/images/create"
-import {getById} from "./controllers/images/getById"
-import {getAll} from "./controllers/images/getAll"
-import {createBelongsToNodeRelation} from "./controllers/images/createBelongsToNodeRelation"
-import {getBelongsToNodeRelation} from "./controllers/images/getBelongsToNodeRelation"
-import {getBelongsToNodeRelations} from "./controllers/images/getBelongsToNodeRelations"
+import {create} from "../controllers/images/create"
+import {getById} from "../controllers/images/getById"
+import {getAll} from "../controllers/images/getAll"
+import {createBelongsToNodeRelation} from "../controllers/images/createBelongsToNodeRelation"
+import {getBelongsToNodeRelation} from "../controllers/images/getBelongsToNodeRelation"
+import {getBelongsToNodeRelations} from "../controllers/images/getBelongsToNodeRelations"
 
 const router = express.Router()
 
