@@ -10,7 +10,12 @@ export async function getBelongsToBrandRelation(req: express.Request, res: expre
 
         res.status(200)
         res.set('Content-Type', 'application/json')
-        res.send(marshalRelationship(relationship))
+
+        if (!relationship) {
+            res.send(null)
+        } else {
+            res.send(marshalRelationship(relationship))
+        }
     } catch (e) {
         console.error(e)
         res.status(404)

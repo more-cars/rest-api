@@ -25,13 +25,19 @@ export class CarModel {
         return await createCarModelBelongsToBrandRelationship(carModel, brand)
     }
 
-    static async getRelationshipForBelongsToBrand(carModelId: number): Promise<CarModelBelongsToBrandRelationship> {
+    static async getRelationshipForBelongsToBrand(carModelId: number): Promise<false | CarModelBelongsToBrandRelationship> {
         const carModel = await this.findById(carModelId)
 
         if (!carModel) {
             throw new Error(`A car model with ID #${carModelId} not found.`)
         }
 
-        return (await getAllCarModelBelongsToBrandRelationships(carModel))[0]
+        const relationships = await getAllCarModelBelongsToBrandRelationships(carModel)
+
+        if (relationships.length === 0) {
+            return false
+        }
+
+        return (relationships)[0]
     }
 }
