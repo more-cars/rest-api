@@ -5,4 +5,5 @@ Before(function () {
     this.carmodel = []
     this.image = []
     this.relationship = []
+    this.relationships = []
 })
