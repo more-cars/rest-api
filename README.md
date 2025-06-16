@@ -70,7 +70,7 @@
 
 ### Behavior tests
 
-* run `npm run tests:cucumber` to execute all behavior tests
+* run `npm run tests:behavior` to execute all cucumber tests
 * this requires
     * a running app
     * a running database
