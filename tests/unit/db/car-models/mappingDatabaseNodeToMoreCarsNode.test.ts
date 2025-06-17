@@ -9,6 +9,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             mc_id: 549,
             created_at: "2025-05-14T11:05:07.793Z",
             updated_at: "2025-05-14T11:05:07.793Z",
+            name: "360 Modena",
             built_from: 1999,
             built_to: 2005,
             generation: null,
@@ -21,10 +22,11 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
     const mappedNode = mapDbNodeToModelNode(dbNode)
 
     expect(mappedNode)
-        .toEqual({
+        .toStrictEqual({
             id: 549,
             created_at: "2025-05-14T11:05:07.793Z",
             updated_at: "2025-05-14T11:05:07.793Z",
+            name: "360 Modena",
             built_from: 1999,
             built_to: 2005,
             generation: null,
