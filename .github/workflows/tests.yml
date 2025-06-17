@@ -11,10 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 22
-    - run: npm ci
-    - name: Validate API schema
-      run: npm run tests:validate-api-schema
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Validate API schema
+        run: npm run tests:validate-api-schema
+      - name: Run Unit Tests
+        run: npm run tests:unit
