@@ -1,22 +1,14 @@
-name: Tests
+name: Run All Test Suites
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
-  validate-api-schema:
-    runs-on: ubuntu-latest
+  api-schema-validation:
+    uses: ./.github/workflows/validate-api-schema.yml
 
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - run: npm ci
-      - name: Validate API schema
-        run: npm run tests:validate-api-schema
-      - name: Run Unit Tests
-        run: npm run tests:unit
+  unit-tests:
+    uses: ./.github/workflows/run-unit-tests.yml
