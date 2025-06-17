@@ -1,6 +1,8 @@
+import fs from 'node:fs'
+
 export function assembleCypherQuery(id: number) {
-    return `
-MATCH (node:CarModel {mc_id: ${id}})
-RETURN node
-LIMIT 1`.trim()
+    const data = fs.readFileSync(__dirname + '/getCarModelById.cypher', 'utf8')
+    return data
+        .trim()
+        .replace('$id', id.toString())
 }
