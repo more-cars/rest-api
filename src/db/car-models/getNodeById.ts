@@ -2,7 +2,8 @@ import {Driver, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../driver"
 import {CarModelNode} from "../../types/car-models/CarModelNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
-import {assembleCypherQuery} from "./assembleCypherQuery"
+import {NodeTypeLabel} from "../NodeTypeLabel"
+import {assembleCypherQuery} from "../assembleCypherQuery"
 
 export async function getNodeById(id: number): Promise<false | CarModelNode> {
     const driver: Driver = getDriver()
@@ -17,7 +18,7 @@ export async function getNodeById(id: number): Promise<false | CarModelNode> {
 }
 
 async function getNode(id: number, driver: Driver): Promise<false | CarModelNode> {
-    const {records} = await driver.executeQuery(assembleCypherQuery(id))
+    const {records} = await driver.executeQuery(assembleCypherQuery(id, NodeTypeLabel.CarModel))
 
     if (records.length === 0) {
         return false

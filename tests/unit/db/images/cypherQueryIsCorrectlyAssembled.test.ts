@@ -1,7 +1,8 @@
-import {assembleCypherQuery} from "../../../../src/db/images/assembleCypherQuery"
+import {assembleCypherQuery} from "../../../../src/db/assembleCypherQuery"
+import {NodeTypeLabel} from "../../../../src/db/NodeTypeLabel"
 
 test('cypher query is correctly assembled for "get image by id" request', async () => {
-    const query = assembleCypherQuery(41)
+    const query = assembleCypherQuery(41, NodeTypeLabel.Image)
 
     expect(query)
         .toEqual(

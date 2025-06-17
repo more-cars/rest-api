@@ -1,8 +1,18 @@
 import fs from 'node:fs'
+import {NodeTypeLabel} from "./NodeTypeLabel"
 
-export function assembleCypherQuery(id: number) {
-    const data = fs.readFileSync(__dirname + '/getNodeById.cypher', 'utf8')
-    return data
+export function assembleCypherQuery(id: number, nodeLabel: false | NodeTypeLabel = false) {
+    const queryTemplate = fs.readFileSync(__dirname + '/getNodeById.cypher', 'utf8')
+
+    let query = queryTemplate
         .trim()
         .replace('$id', id.toString())
+
+    if (nodeLabel) {
+        query = query.replace(':nodeLabel', `:${nodeLabel}`)
+    } else {
+        query = query.replace(':nodeLabel', '')
+    }
+
+    return query
 }
