@@ -2,7 +2,7 @@ import {Driver, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../driver"
 import {ImageNode} from "../../types/images/ImageNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
-import {assembleCypherQuery} from "../assembleCypherQuery"
+import {getNodeByIdQuery} from "../getNodeByIdQuery"
 import {NodeTypeLabel} from "../NodeTypeLabel"
 
 export async function getNodeById(id: number): Promise<false | ImageNode> {
@@ -18,7 +18,7 @@ export async function getNodeById(id: number): Promise<false | ImageNode> {
 }
 
 async function getNode(id: number, driver: Driver): Promise<false | ImageNode> {
-    const {records} = await driver.executeQuery(assembleCypherQuery(id, NodeTypeLabel.Image))
+    const {records} = await driver.executeQuery(getNodeByIdQuery(id, NodeTypeLabel.Image))
 
     if (records.length === 0) {
         return false

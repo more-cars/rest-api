@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import {NodeTypeLabel} from "./NodeTypeLabel"
 
-export function assembleCypherQuery(id: number, nodeLabel: false | NodeTypeLabel = false) {
+export function getNodeByIdQuery(id: number, nodeLabel: false | NodeTypeLabel = false) {
     const queryTemplate = fs.readFileSync(__dirname + '/getNodeById.cypher', 'utf8')
 
     let query = queryTemplate

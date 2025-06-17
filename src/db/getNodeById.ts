@@ -2,7 +2,7 @@ import {Driver, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "./driver"
 import {BaseNode} from "../types/BaseNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
-import {assembleCypherQuery} from "./assembleCypherQuery"
+import {getNodeByIdQuery} from "./getNodeByIdQuery"
 
 export async function getNodeById(id: number): Promise<false | BaseNode> {
     const driver: Driver = getDriver()
@@ -17,7 +17,7 @@ export async function getNodeById(id: number): Promise<false | BaseNode> {
 }
 
 async function getNode(id: number, driver: Driver): Promise<false | BaseNode> {
-    const {records} = await driver.executeQuery(assembleCypherQuery(id))
+    const {records} = await driver.executeQuery(getNodeByIdQuery(id))
 
     if (records.length === 0) {
         return false

@@ -1,7 +1,7 @@
-import {assembleCypherQuery} from "../../../../src/db/assembleCypherQuery"
+import {getNodeByIdQuery} from "../../../../src/db/getNodeByIdQuery"
 
 test('cypher query is correctly assembled for "get node by id" request', async () => {
-    const query = assembleCypherQuery(99)
+    const query = getNodeByIdQuery(99)
 
     expect(query)
         .toEqual(

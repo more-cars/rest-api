@@ -1,8 +1,8 @@
-import {assembleCypherQuery} from "../../../../src/db/assembleCypherQuery"
+import {getNodeByIdQuery} from "../../../../src/db/getNodeByIdQuery"
 import {NodeTypeLabel} from "../../../../src/db/NodeTypeLabel"
 
 test('cypher query is correctly assembled for "get brand by id" request', async () => {
-    const query = assembleCypherQuery(42, NodeTypeLabel.Brand)
+    const query = getNodeByIdQuery(42, NodeTypeLabel.Brand)
 
     expect(query)
         .toEqual(
