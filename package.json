@@ -65,6 +65,7 @@
     "tests:validate-api-schema": "npx ts-node tests/api/schema-validation.ts",
     "tests:lint": "npx eslint src",
     "tests:unit": "npx jest --projects tests/unit",
+    "tests:unit:coverage": "npx jest --projects tests/unit --coverage",
     "tests:integration": "npx jest --projects tests/integration",
     "tests:integration:coverage": "npx jest --projects tests/integration --coverage",
     "tests:bruno:local": "cd bruno && bru run --env local",

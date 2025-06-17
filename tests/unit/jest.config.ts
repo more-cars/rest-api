@@ -12,4 +12,18 @@ module.exports = {
             "outputPath": "./test-reports/unit/report.html",
         }]
     ],
+    collectCoverage: false,
+    coverageProvider: "v8",
+    coverageDirectory: '<rootDir>/test-reports/unit/code-coverage',
+    collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
+    coveragePathIgnorePatterns: [
+        '<rootDir>/src/server.ts',
+        '<rootDir>/src/types',
+    ],
+    coverageThreshold: {
+        global: {
+            statements: 75,
+            branches: 75
+        }
+    }
 }

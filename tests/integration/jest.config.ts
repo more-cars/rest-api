@@ -22,7 +22,7 @@ module.exports = {
     ],
     collectCoverage: false,
     coverageProvider: "v8",
-    coverageDirectory: '<rootDir>/test-reports/code-coverage',
+    coverageDirectory: '<rootDir>/test-reports/integration/code-coverage',
     collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
     coveragePathIgnorePatterns: [
         '<rootDir>/src/server.ts',
