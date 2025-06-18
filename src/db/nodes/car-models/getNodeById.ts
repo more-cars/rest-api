@@ -3,7 +3,7 @@ import {closeDriver, getDriver} from "../../driver"
 import {CarModelNode} from "../../../types/car-models/CarModelNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 import {NodeTypeLabel} from "../../NodeTypeLabel"
-import {getNodeByIdQuery} from "../getNodeByIdQuery"
+import {getNodeByIdQuery} from "../getNodeById"
 
 export async function getNodeById(id: number): Promise<false | CarModelNode> {
     const driver: Driver = getDriver()

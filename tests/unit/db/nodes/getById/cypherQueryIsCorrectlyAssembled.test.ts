@@ -1,4 +1,4 @@
-import {getNodeByIdQuery} from "../../../../../src/db/nodes/getNodeByIdQuery"
+import {getNodeByIdQuery} from "../../../../../src/db/nodes/getNodeById"
 
 test('cypher query is correctly assembled for "get node by id" request', async () => {
     const query = getNodeByIdQuery(99)

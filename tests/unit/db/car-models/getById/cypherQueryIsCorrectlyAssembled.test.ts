@@ -1,4 +1,4 @@
-import {getNodeByIdQuery} from "../../../../../src/db/nodes/getNodeByIdQuery"
+import {getNodeByIdQuery} from "../../../../../src/db/nodes/getNodeById"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 
 test('cypher query is correctly assembled for "get car model by id" request', async () => {

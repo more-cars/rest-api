@@ -1,4 +1,4 @@
-import {addMoreCarsIdToNodeQuery} from "../../../../../src/db/nodes/addMoreCarsIdToNodeQuery"
+import {addMoreCarsIdToNodeQuery} from "../../../../../src/db/nodes/addMoreCarsIdToNode"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 
 test('cypher query is correctly assembled for "add more cars id to brand" request', async () => {

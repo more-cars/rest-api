@@ -1,4 +1,4 @@
-import {addTimestampsToNodeQuery} from "../../../../../src/db/nodes/addTimestampsToNodeQuery"
+import {addTimestampsToNodeQuery} from "../../../../../src/db/nodes/addTimestampsToNode"
 
 test('cypher query is correctly assembled for "add timestamps to brand node" request', async () => {
     const query = addTimestampsToNodeQuery(
