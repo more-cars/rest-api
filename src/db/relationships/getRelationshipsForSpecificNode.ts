@@ -2,8 +2,9 @@ import {Driver, Node, Relationship, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../driver"
 import {BaseRelationship} from "../../types/BaseRelationship"
 import {DbRelationship} from "../../types/DbRelationship"
+import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
-export async function findRelationships(nodeId: number, relationshipName: DbRelationship, nodeIsRelationshipTarget = false): Promise<Array<BaseRelationship>> {
+export async function getRelationshipsForSpecificNode(nodeId: number, relationshipName: DbRelationship, nodeIsRelationshipTarget = false): Promise<Array<BaseRelationship>> {
     const driver: Driver = getDriver()
     const session: Session = driver.session()
 
@@ -18,10 +19,7 @@ export async function findRelationships(nodeId: number, relationshipName: DbRela
 async function getRels(nodeId: number, relationshipName: DbRelationship, nodeIsRelationshipTarget = false, driver: Driver): Promise<Array<BaseRelationship>> {
     const relationships: Array<BaseRelationship> = []
 
-    const {records} = await driver.executeQuery(`
-        MATCH (a {mc_id: ${nodeId}})-[r:${relationshipName}]-(b)
-        RETURN r, b`,
-    )
+    const {records} = await driver.executeQuery(getRelationshipsForSpecificNodeQuery(nodeId, relationshipName))
 
     records.forEach(record => {
         const relationship: Relationship = record.get('r')
@@ -35,4 +33,11 @@ async function getRels(nodeId: number, relationshipName: DbRelationship, nodeIsR
     })
 
     return relationships
+}
+
+export function getRelationshipsForSpecificNodeQuery(nodeId: number, relationshipName: DbRelationship) {
+    return getCypherQueryTemplate('relationships/_cypher/getRelationshipsForSpecificNode.cypher')
+        .trim()
+        .replace('$nodeId', nodeId.toString())
+        .replace('relationshipName', relationshipName)
 }

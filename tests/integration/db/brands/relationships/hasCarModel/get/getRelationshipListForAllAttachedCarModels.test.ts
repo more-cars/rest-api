@@ -2,7 +2,9 @@ import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
 import {seedCarModels} from "../../../../../../dbSeeding/car-models/nodes/seedCarModels"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../../../../src/types/DbRelationship"
-import {findRelationships} from "../../../../../../../src/db/relationships/findRelationships"
+import {
+    getRelationshipsForSpecificNode
+} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
 
 test('Requesting a relationship list for all CAR MODELs that are connected to the BRAND', async () => {
     const brand = await seedBrand()
@@ -16,7 +18,7 @@ test('Requesting a relationship list for all CAR MODELs that are connected to th
         )
     }
 
-    const relationships = await findRelationships(
+    const relationships = await getRelationshipsForSpecificNode(
         brand.id as number,
         DbRelationship.BrandHasCarModel,
     )

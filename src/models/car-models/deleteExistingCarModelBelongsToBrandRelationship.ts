@@ -1,7 +1,7 @@
 import {CarModelNode} from "../../types/car-models/CarModelNode"
 import {DbRelationship} from "../../types/DbRelationship"
 import {deleteRelationshipById} from "../../db/relationships/deleteRelationshipById"
-import {findRelationships} from "../../db/relationships/findRelationships"
+import {getRelationshipsForSpecificNode} from "../../db/relationships/getRelationshipsForSpecificNode"
 
 /**
  * Checks if there exists a relationship between the given CAR MODEL and any BRAND.
@@ -11,7 +11,7 @@ import {findRelationships} from "../../db/relationships/findRelationships"
 export async function deleteExistingCarModelBelongsToBrandRelationship(carModel: CarModelNode): Promise<void> {
     // Officially, there can only exist ONE relationship between a car model and a brand.
     // But to be on the safe side, we will grab all matching relationships the database can find.
-    const relationships = await findRelationships(
+    const relationships = await getRelationshipsForSpecificNode(
         carModel.id as number,
         DbRelationship.BrandHasCarModel,
         true,
