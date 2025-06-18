@@ -3,6 +3,7 @@ import {closeDriver, getDriver} from "../driver"
 import {DbRelationship} from "../../types/DbRelationship"
 import {BaseRelationship} from "../../types/BaseRelationship"
 import {addMoreCarsIdToRelationship} from "./addMoreCarsIdToRelationship"
+import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 /**
  * Creating a relationship between the two given nodes.
@@ -31,16 +32,7 @@ async function createRel(
     driver: Driver
 ): Promise<false | BaseRelationship> {
     // 1. Creating the rel in the database
-    const {records} = await driver.executeQuery(`
-            MATCH (a {mc_id: $startNodeId}), (b {mc_id: $endNodeId})
-            CREATE (a)-[r:${relationshipName}]->(b)
-            RETURN r
-            LIMIT 1`,
-        {
-            startNodeId,
-            endNodeId,
-        },
-    )
+    const {records} = await driver.executeQuery(createRelationshipQuery(startNodeId, relationshipName, endNodeId))
 
     if (records.length === 0) {
         return false
@@ -67,4 +59,12 @@ async function createRel(
     }
 
     return rel
+}
+
+export function createRelationshipQuery(startNodeId: number, relationshipName: string, endNodeId: number) {
+    return getCypherQueryTemplate('relationships/_cypher/createRelationship.cypher')
+        .trim()
+        .replace('relationshipName', relationshipName)
+        .replace('$startNodeId', startNodeId.toString())
+        .replace('$endNodeId', endNodeId.toString())
 }
