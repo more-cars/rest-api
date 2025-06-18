@@ -1,5 +1,5 @@
-import {getNodeByIdQuery} from "../../../../src/db/nodes/getNodeByIdQuery"
-import {NodeTypeLabel} from "../../../../src/db/NodeTypeLabel"
+import {getNodeByIdQuery} from "../../../../../src/db/nodes/getNodeByIdQuery"
+import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 
 test('cypher query is correctly assembled for "get brand by id" request', async () => {
     const query = getNodeByIdQuery(42, NodeTypeLabel.Brand)
