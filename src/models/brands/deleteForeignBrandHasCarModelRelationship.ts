@@ -1,6 +1,6 @@
 import {BrandNode} from "../../types/brands/BrandNode"
 import {CarModelNode} from "../../types/car-models/CarModelNode"
-import {findRelationship} from "../../db/relationships/findRelationship"
+import {getRelationshipForSpecificNode} from "../../db/relationships/getRelationshipForSpecificNode"
 import {DbRelationship} from "../../types/DbRelationship"
 import {deleteRelationshipById} from "../../db/relationships/deleteRelationshipById"
 
@@ -10,7 +10,7 @@ import {deleteRelationshipById} from "../../db/relationships/deleteRelationshipB
  * If not, nothing happens.
  */
 export async function deleteForeignBrandHasCarModelRelationship(brand: BrandNode, carModel: CarModelNode) {
-    const relationship = await findRelationship(
+    const relationship = await getRelationshipForSpecificNode(
         carModel.id as number,
         DbRelationship.BrandHasCarModel,
     )
