@@ -6,6 +6,7 @@ import {ImageNodeGeneratedData} from "../../../types/images/ImageNodeGeneratedDa
 import {addMoreCarsIdToNode} from "../addMoreCarsIdToNode"
 import {addTimestampsToNode} from "../addTimestampsToNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
+import {NodeTypeLabel} from "../../NodeTypeLabel"
 
 export async function createNode(data: ImageNodeUserData & ImageNodeGeneratedData): Promise<ImageNode> {
     const driver: Driver = getDriver()
@@ -69,7 +70,7 @@ async function createImage(data: ImageNodeUserData & ImageNodeGeneratedData, dri
     const elementId = createdDbNode.elementId
     const elementIdSplit: Array<string> = elementId.split(':')
     const moreCarsId: number = parseInt(elementIdSplit[2])
-    await addMoreCarsIdToNode(elementId, moreCarsId, "Image", driver)
+    await addMoreCarsIdToNode(elementId, moreCarsId, NodeTypeLabel.Image, driver)
 
     // 3. Adding timestamps
     const timestamp = new Date().toISOString()

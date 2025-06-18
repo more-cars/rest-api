@@ -5,6 +5,7 @@ import {CarModelNodeUserData} from "../../../types/car-models/CarModelNodeUserDa
 import {addTimestampsToNode} from "../addTimestampsToNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 import {addMoreCarsIdToNode} from "../addMoreCarsIdToNode"
+import {NodeTypeLabel} from "../../NodeTypeLabel"
 
 export async function createNode(carModelData: CarModelNodeUserData): Promise<CarModelNode> {
     const driver: Driver = getDriver()
@@ -50,7 +51,7 @@ async function createCarModel(carModelData: CarModelNodeUserData, driver: Driver
     const elementId = createdDbNode.elementId
     const elementIdSplit: Array<string> = elementId.split(':')
     const moreCarsId: number = parseInt(elementIdSplit[2])
-    await addMoreCarsIdToNode(elementId, moreCarsId, "CarModel", driver)
+    await addMoreCarsIdToNode(elementId, moreCarsId, NodeTypeLabel.CarModel, driver)
 
     // 3. Adding timestamps
     const timestamp = new Date().toISOString()

@@ -5,6 +5,7 @@ import {BrandNodeUserData} from "../../../types/brands/BrandNodeUserData"
 import {addMoreCarsIdToNode} from "../addMoreCarsIdToNode"
 import {addTimestampsToNode} from "../addTimestampsToNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
+import {NodeTypeLabel} from "../../NodeTypeLabel"
 
 export async function createNode(data: BrandNodeUserData): Promise<BrandNode> {
     const driver: Driver = getDriver()
@@ -50,7 +51,7 @@ async function createBrand(data: BrandNodeUserData, driver: Driver): Promise<Bra
     const elementId = createdDbNode.elementId
     const elementIdSplit: Array<string> = elementId.split(':')
     const moreCarsId: number = parseInt(elementIdSplit[2])
-    await addMoreCarsIdToNode(elementId, moreCarsId, "Brand", driver)
+    await addMoreCarsIdToNode(elementId, moreCarsId, NodeTypeLabel.Brand, driver)
 
     // 3. Adding timestamps
     const timestamp = new Date().toISOString()
