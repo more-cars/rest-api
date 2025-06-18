@@ -8,5 +8,5 @@ test('cypher query is correctly assembled for "get car model by id" request', as
         .toEqual(
             "MATCH (node:CarModel {mc_id: 40})\n" +
             "RETURN node\n" +
-            "LIMIT 1")
+            "  LIMIT 1")
 })

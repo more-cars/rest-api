@@ -7,5 +7,5 @@ test('cypher query is correctly assembled for "get node by id" request', async (
         .toEqual(
             "MATCH (node {mc_id: 99})\n" +
             "RETURN node\n" +
-            "LIMIT 1")
+            "  LIMIT 1")
 })

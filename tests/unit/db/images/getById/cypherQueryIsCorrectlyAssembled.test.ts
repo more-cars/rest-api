@@ -8,5 +8,5 @@ test('cypher query is correctly assembled for "get image by id" request', async 
         .toEqual(
             "MATCH (node:Image {mc_id: 41})\n" +
             "RETURN node\n" +
-            "LIMIT 1")
+            "  LIMIT 1")
 })
