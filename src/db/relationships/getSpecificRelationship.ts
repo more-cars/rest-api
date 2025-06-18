@@ -2,12 +2,13 @@ import {Driver, Relationship, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../driver"
 import {BaseRelationship} from "../../types/BaseRelationship"
 import {DbRelationship} from "../../types/DbRelationship"
+import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 /**
  * Fetching the relationship between the two given nodes, which matches the provided relationship name.
  * If there exists none then false is returned.
  */
-export async function getRelationship(
+export async function getSpecificRelationship(
     startNodeId: number,
     endNodeId: number,
     relationshipName: DbRelationship
@@ -29,15 +30,7 @@ async function getRel(
     relationshipName: DbRelationship,
     driver: Driver
 ): Promise<false | BaseRelationship> {
-    const {records} = await driver.executeQuery(`
-            MATCH (a {mc_id: $startNodeId})-[r:${relationshipName}]->({mc_id: $endNodeId})
-            RETURN r
-            LIMIT 1`,
-        {
-            startNodeId,
-            endNodeId,
-        },
-    )
+    const {records} = await driver.executeQuery(getSpecificRelationshipQuery(startNodeId, relationshipName, endNodeId))
 
     if (records.length === 0) {
         return false
@@ -51,4 +44,12 @@ async function getRel(
         relationship_id: fetchedDbRel.properties.mc_id,
         relationship_name: relationshipName,
     }
+}
+
+export function getSpecificRelationshipQuery(startNodeId: number, relationshipName: DbRelationship, endNodeId: number) {
+    return getCypherQueryTemplate('relationships/_cypher/getSpecificRelationship.cypher')
+        .trim()
+        .replace('$startNodeId', startNodeId.toString())
+        .replace('relationshipName', relationshipName)
+        .replace('$endNodeId', endNodeId.toString())
 }

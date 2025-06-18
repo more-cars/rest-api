@@ -5,7 +5,7 @@ import FakeBrand from "../../../fixtures/nodes/FakeBrand"
 import FakeCarModel from "../../../fixtures/nodes/FakeCarModel"
 import {DbRelationship} from "../../../../src/types/DbRelationship"
 import {createRelationship} from "../../../../src/db/relationships/createRelationship"
-import {getRelationship} from "../../../../src/db/relationships/getRelationship"
+import {getSpecificRelationship} from "../../../../src/db/relationships/getSpecificRelationship"
 
 test('ID is always contained in response', async () => {
     const carModel = await createCarModelNode(FakeCarModel)
@@ -16,7 +16,7 @@ test('ID is always contained in response', async () => {
         assert.fail('Relationship creation failed')
     }
 
-    const requestedRelationship = await getRelationship(brand.id, carModel.id, DbRelationship.BrandHasCarModel)
+    const requestedRelationship = await getSpecificRelationship(brand.id, carModel.id, DbRelationship.BrandHasCarModel)
 
     if (!requestedRelationship) {
         assert.fail('Relationship retrieval failed')

@@ -1,7 +1,7 @@
 import {seedImage} from "../../../../../dbSeeding/images/nodes/seedImage"
 import {seedCarModel} from "../../../../../dbSeeding/car-models/nodes/seedCarModel"
 import {seedRelationship} from "../../../../../dbSeeding/images/relationships/seedRelationship"
-import {getRelationship} from "../../../../../../src/db/relationships/getRelationship"
+import {getSpecificRelationship} from "../../../../../../src/db/relationships/getSpecificRelationship"
 import {DbRelationship} from "../../../../../../src/types/DbRelationship"
 import assert from "assert"
 
@@ -18,7 +18,7 @@ test('Get a "Image belongs to Node" relationship when both nodes exist', async (
     const relationshipName = relationship.relationship_name
 
     const fetchedRelationship =
-        await getRelationship(imageId, partnerNodeId, DbRelationship.ImageBelongsToNode)
+        await getSpecificRelationship(imageId, partnerNodeId, DbRelationship.ImageBelongsToNode)
 
     expect(fetchedRelationship)
         .toHaveProperty('start_node_id', imageId)
@@ -33,7 +33,7 @@ test('Get a "Image belongs to Node" relationship when both nodes exist', async (
 test('Trying to get image relationship when image node does not exist', async () => {
     const imageNode = {id: -42}
     const partnerNode = await seedCarModel()
-    const relationship = await getRelationship(imageNode.id, partnerNode.id, DbRelationship.ImageBelongsToNode)
+    const relationship = await getSpecificRelationship(imageNode.id, partnerNode.id, DbRelationship.ImageBelongsToNode)
 
     expect(relationship).toBeFalsy()
 })
@@ -41,7 +41,7 @@ test('Trying to get image relationship when image node does not exist', async ()
 test('Trying to get image relationship when partner node does not exist', async () => {
     const imageNode = await seedImage()
     const partnerNode = await seedCarModel()
-    const relationship = await getRelationship(imageNode.id, partnerNode.id, DbRelationship.ImageBelongsToNode)
+    const relationship = await getSpecificRelationship(imageNode.id, partnerNode.id, DbRelationship.ImageBelongsToNode)
 
     expect(relationship).toBeFalsy()
 })
@@ -49,7 +49,7 @@ test('Trying to get image relationship when partner node does not exist', async 
 test('Trying to get image relationship when both nodes do not exist', async () => {
     const imageNode = {id: -41}
     const partnerNode = {id: -42}
-    const relationship = await getRelationship(imageNode.id, partnerNode.id, DbRelationship.ImageBelongsToNode)
+    const relationship = await getSpecificRelationship(imageNode.id, partnerNode.id, DbRelationship.ImageBelongsToNode)
 
     expect(relationship).toBeFalsy()
 })
@@ -57,7 +57,7 @@ test('Trying to get image relationship when both nodes do not exist', async () =
 test('Trying to get image relationship when there is none', async () => {
     const imageNode = await seedImage()
     const partnerNode = await seedCarModel()
-    const relationship = await getRelationship(imageNode.id, partnerNode.id, DbRelationship.ImageBelongsToNode)
+    const relationship = await getSpecificRelationship(imageNode.id, partnerNode.id, DbRelationship.ImageBelongsToNode)
 
     expect(relationship).toBeFalsy()
 })

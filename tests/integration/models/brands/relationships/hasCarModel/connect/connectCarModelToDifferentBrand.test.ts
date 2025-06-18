@@ -1,7 +1,7 @@
 import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
 import {seedCarModel} from "../../../../../../dbSeeding/car-models/nodes/seedCarModel"
 import {Brand} from "../../../../../../../src/models/brands/Brand"
-import {getRelationship} from "../../../../../../../src/db/relationships/getRelationship"
+import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {DbRelationship} from "../../../../../../../src/types/DbRelationship"
 
 test('Attaching the car model to another brand removes the original relationship', async () => {
@@ -10,7 +10,7 @@ test('Attaching the car model to another brand removes the original relationship
     const carModel = await seedCarModel()
 
     await Brand.createHasCarModelRelationship(firstBrand, carModel)
-    const originalRelationship = await getRelationship(
+    const originalRelationship = await getSpecificRelationship(
         firstBrand.id as number,
         carModel.id as number,
         DbRelationship.BrandHasCarModel,
@@ -18,14 +18,14 @@ test('Attaching the car model to another brand removes the original relationship
     expect(originalRelationship).not.toBeFalsy()
 
     await Brand.createHasCarModelRelationship(secondBrand, carModel)
-    const newRelationship = await getRelationship(
+    const newRelationship = await getSpecificRelationship(
         secondBrand.id as number,
         carModel.id as number,
         DbRelationship.BrandHasCarModel,
     )
     expect(newRelationship).not.toBeFalsy()
 
-    const refetchedOriginalRelationship = await getRelationship(
+    const refetchedOriginalRelationship = await getSpecificRelationship(
         firstBrand.id as number,
         carModel.id as number,
         DbRelationship.BrandHasCarModel,

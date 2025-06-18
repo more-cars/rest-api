@@ -1,6 +1,6 @@
 import {BrandNode} from "../../types/brands/BrandNode"
 import {CarModelNode} from "../../types/car-models/CarModelNode"
-import {getRelationship} from "../../db/relationships/getRelationship"
+import {getSpecificRelationship} from "../../db/relationships/getSpecificRelationship"
 import {DbRelationship} from "../../types/DbRelationship"
 import {CarModelBelongsToBrandRelationship} from "../../types/car-models/CarModelBelongsToBrandRelationship"
 import {CarModelRelationship} from "../../types/car-models/CarModelRelationship"
@@ -11,7 +11,7 @@ import {CarModelRelationship} from "../../types/car-models/CarModelRelationship"
 export async function getCarModelBelongsToBrandRelationship(carModel: CarModelNode, brand: BrandNode) {
     // ⚠️ Outside the database we distinguish between BRAND.HAS_CAR_MODEL and CAR_MODEL.BELONGS_TO_BRAND for better readability.
     // But in the database we have to use the SAME relationship for both directions (HAS_CAR_MODEL and BELONGS_TO_BRAND) to avoid duplicates.
-    const relation = await getRelationship(
+    const relation = await getSpecificRelationship(
         brand.id as number,
         carModel.id as number,
         DbRelationship.BrandHasCarModel,

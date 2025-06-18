@@ -1,6 +1,6 @@
 import {BrandNode} from "../../types/brands/BrandNode"
 import {CarModelNode} from "../../types/car-models/CarModelNode"
-import {getRelationship} from "../../db/relationships/getRelationship"
+import {getSpecificRelationship} from "../../db/relationships/getSpecificRelationship"
 import {DbRelationship} from "../../types/DbRelationship"
 import {BrandRelationship} from "../../types/brands/BrandRelationship"
 import {BrandHasCarModelRelationship} from "../../types/brands/BrandHasCarModelRelationship"
@@ -9,7 +9,7 @@ import {BrandHasCarModelRelationship} from "../../types/brands/BrandHasCarModelR
  * Returns the HAS_CAR_MODEL relationship between the given nodes when it exists.
  */
 export async function getBrandHasCarModelRelationship(brand: BrandNode, carModel: CarModelNode) {
-    const relation = await getRelationship(
+    const relation = await getSpecificRelationship(
         brand.id as number,
         carModel.id as number,
         DbRelationship.BrandHasCarModel,
