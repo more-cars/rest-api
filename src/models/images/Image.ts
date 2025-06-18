@@ -1,13 +1,13 @@
-import {createNode} from "../../db/images/createNode"
-import {getNodeById} from "../../db/images/getNodeById"
-import {getNodeById as getAnyNodeById} from "../../db/getNodeById"
-import {getAllNodesOfType} from "../../db/images/getAllNodesOfType"
+import {createNode} from "../../db/nodes/images/createNode"
+import {getNodeById} from "../../db/nodes/images/getNodeById"
+import {getNodeById as getAnyNodeById} from "../../db/nodes/getNodeById"
+import {getAllNodesOfType} from "../../db/nodes/images/getAllNodesOfType"
 import {ImageNode} from "../../types/images/ImageNode"
 import {ImageNodeUserData} from "../../types/images/ImageNodeUserData"
 import {getImageBelongsToNodeRelationship} from "./getImageBelongsToNodeRelationship"
 import {ImageBelongsToNodeRelationship} from "../../types/images/ImageBelongsToNodeRelationship"
 import {createImageBelongsToNodeRelationship} from "./createImageBelongsToNodeRelationship"
-import {getRelationships} from "../../db/images/getRelationships"
+import {getRelationships} from "../../db/nodes/images/getRelationships"
 
 export class Image {
     static async create(data: ImageNodeUserData): Promise<ImageNode> {

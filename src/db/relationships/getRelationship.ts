@@ -1,7 +1,7 @@
 import {Driver, Relationship, Session} from "neo4j-driver"
-import {closeDriver, getDriver} from "./driver"
-import {BaseRelationship} from "../types/BaseRelationship"
-import {DbRelationship} from "../types/DbRelationship"
+import {closeDriver, getDriver} from "../driver"
+import {BaseRelationship} from "../../types/BaseRelationship"
+import {DbRelationship} from "../../types/DbRelationship"
 
 /**
  * Fetching the relationship between the two given nodes, which matches the provided relationship name.

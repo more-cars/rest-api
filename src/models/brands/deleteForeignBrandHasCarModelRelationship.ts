@@ -1,8 +1,8 @@
 import {BrandNode} from "../../types/brands/BrandNode"
 import {CarModelNode} from "../../types/car-models/CarModelNode"
-import {findRelationship} from "../../db/findRelationship"
+import {findRelationship} from "../../db/relationships/findRelationship"
 import {DbRelationship} from "../../types/DbRelationship"
-import {deleteRelationship} from "../../db/deleteRelationship"
+import {deleteRelationship} from "../../db/relationships/deleteRelationship"
 
 /**
  * Checks if there exists a relationship between the given `car model` and a `brand` that is NOT the given one.

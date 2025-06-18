@@ -1,7 +1,7 @@
 import {seedImage} from "../../../../../dbSeeding/images/nodes/seedImage"
 import {seedCarModel} from "../../../../../dbSeeding/car-models/nodes/seedCarModel"
 import {seedRelationship} from "../../../../../dbSeeding/images/relationships/seedRelationship"
-import {getRelationship} from "../../../../../../src/db/getRelationship"
+import {getRelationship} from "../../../../../../src/db/relationships/getRelationship"
 import {DbRelationship} from "../../../../../../src/types/DbRelationship"
 import assert from "assert"
 

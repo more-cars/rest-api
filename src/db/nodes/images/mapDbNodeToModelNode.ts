@@ -1,4 +1,4 @@
-import {ImageNode} from "../../types/images/ImageNode"
+import {ImageNode} from "../../../types/images/ImageNode"
 import {Node} from "neo4j-driver"
 
 export function mapDbNodeToModelNode(dbNode: Node): ImageNode {

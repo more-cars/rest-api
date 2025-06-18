@@ -1,7 +1,7 @@
 import {BaseRelationship} from "../../../../src/types/BaseRelationship"
 import {seedBrand} from "../nodes/seedBrand"
 import {seedCarModel} from "../../car-models/nodes/seedCarModel"
-import {createRelationship} from "../../../../src/db/createRelationship"
+import {createRelationship} from "../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../src/types/DbRelationship"
 
 export async function seedRelationship(): Promise<BaseRelationship> {

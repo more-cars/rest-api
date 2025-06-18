@@ -1,6 +1,6 @@
 import {seedImage} from "../nodes/seedImage"
 import {seedCarModel} from "../../car-models/nodes/seedCarModel"
-import {createRelationship} from "../../../../src/db/createRelationship"
+import {createRelationship} from "../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../src/types/DbRelationship"
 
 /**

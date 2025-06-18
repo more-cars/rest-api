@@ -1,16 +1,16 @@
 import {Driver, Node, Session} from "neo4j-driver"
-import {closeDriver, getDriver} from "../driver"
-import {CarModelNode} from "../../types/car-models/CarModelNode"
-import {CarModelNodeUserData} from "../../types/car-models/CarModelNodeUserData"
+import {closeDriver, getDriver} from "../../driver"
+import {BrandNode} from "../../../types/brands/BrandNode"
+import {BrandNodeUserData} from "../../../types/brands/BrandNodeUserData"
+import {addMoreCarsIdToNode} from "../addMoreCarsIdToNode"
 import {addTimestampsToNode} from "../addTimestampsToNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
-import {addMoreCarsIdToNode} from "../addMoreCarsIdToNode"
 
-export async function createNode(carModelData: CarModelNodeUserData): Promise<CarModelNode> {
+export async function createNode(data: BrandNodeUserData): Promise<BrandNode> {
     const driver: Driver = getDriver()
     const session: Session = driver.session()
 
-    const createdNode = await createCarModel(carModelData, driver)
+    const createdNode = await createBrand(data, driver)
 
     await session.close()
     await closeDriver(driver)
@@ -18,26 +18,26 @@ export async function createNode(carModelData: CarModelNodeUserData): Promise<Ca
     return createdNode
 }
 
-async function createCarModel(carModelData: CarModelNodeUserData, driver: Driver): Promise<CarModelNode> {
+async function createBrand(data: BrandNodeUserData, driver: Driver): Promise<BrandNode> {
     // 1. Creating the node in the database
     const {records} = await driver.executeQuery(`
-            CREATE (node:CarModel {
+            CREATE (node:Brand {
                 name: $name, 
-                built_from: $built_from,
-                built_to: $built_to,
-                generation: $generation,
-                internal_code: $internal_code,
-                total_production: $total_production
+                full_name: $full_name, 
+                founded: $founded,
+                defunct: $defunct,
+                wmi: $wmi,
+                hsn: $hsn
             }) 
             RETURN node 
             LIMIT 1`,
         {
-            name: carModelData.name,
-            built_from: carModelData.built_from ?? null,
-            built_to: carModelData.built_to ?? null,
-            generation: carModelData.generation ?? null,
-            internal_code: carModelData.internal_code ?? null,
-            total_production: carModelData.total_production ?? null,
+            name: data.name,
+            full_name: data.full_name ?? null,
+            founded: data.founded ?? null,
+            defunct: data.defunct ?? null,
+            wmi: data.wmi ?? null,
+            hsn: data.hsn ?? null,
         },
     )
     const createdDbNode: Node = records[0].get('node')
@@ -50,7 +50,7 @@ async function createCarModel(carModelData: CarModelNodeUserData, driver: Driver
     const elementId = createdDbNode.elementId
     const elementIdSplit: Array<string> = elementId.split(':')
     const moreCarsId: number = parseInt(elementIdSplit[2])
-    await addMoreCarsIdToNode(elementId, moreCarsId, "CarModel", driver)
+    await addMoreCarsIdToNode(elementId, moreCarsId, "Brand", driver)
 
     // 3. Adding timestamps
     const timestamp = new Date().toISOString()

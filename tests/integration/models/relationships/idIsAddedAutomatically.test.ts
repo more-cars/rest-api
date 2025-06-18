@@ -1,5 +1,5 @@
-import {createNode as createBrandNode} from "../../../../src/db/brands/createNode"
-import {createNode as createCarModelNode} from "../../../../src/db/car-models/createNode"
+import {createNode as createBrandNode} from "../../../../src/db/nodes/brands/createNode"
+import {createNode as createCarModelNode} from "../../../../src/db/nodes/car-models/createNode"
 import assert from "assert"
 import FakeBrand from "../../../fixtures/nodes/FakeBrand"
 import FakeCarModel from "../../../fixtures/nodes/FakeCarModel"

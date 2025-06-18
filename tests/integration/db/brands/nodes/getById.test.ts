@@ -1,4 +1,4 @@
-import {getNodeById} from "../../../../../src/db/brands/getNodeById"
+import {getNodeById} from "../../../../../src/db/nodes/brands/getNodeById"
 import {seedBrand} from "../../../../dbSeeding/brands/nodes/seedBrand"
 import {BrandNode} from "../../../../../src/types/brands/BrandNode"
 import {BrandSchema} from "../../../../_schemas/BrandSchema"

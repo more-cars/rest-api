@@ -1,5 +1,5 @@
 import {Neo4jError} from "neo4j-driver"
-import {createNode} from "../../../../../src/db/images/createNode"
+import {createNode} from "../../../../../src/db/nodes/images/createNode"
 import {faker} from "@faker-js/faker"
 import FakeImageFull from "../../../../fixtures/nodes/FakeImageFull"
 

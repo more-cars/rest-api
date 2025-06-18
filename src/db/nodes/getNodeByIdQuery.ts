@@ -1,5 +1,5 @@
 import fs from 'node:fs'
-import {NodeTypeLabel} from "./NodeTypeLabel"
+import {NodeTypeLabel} from "../NodeTypeLabel"
 
 export function getNodeByIdQuery(id: number, nodeLabel: false | NodeTypeLabel = false) {
     const queryTemplate = fs.readFileSync(__dirname + '/getNodeById.cypher', 'utf8')

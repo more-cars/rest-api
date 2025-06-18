@@ -1,4 +1,4 @@
-import {findRelationships} from "../../../../../../../src/db/findRelationships"
+import {findRelationships} from "../../../../../../../src/db/relationships/findRelationships"
 import {DbRelationship} from "../../../../../../../src/types/DbRelationship"
 
 // The database does not perform any semantical checks, only syntax and data structures are checked.

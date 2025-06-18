@@ -1,6 +1,6 @@
 import {seedImage} from "../../../../../dbSeeding/images/nodes/seedImage"
 import {seedCarModel} from "../../../../../dbSeeding/car-models/nodes/seedCarModel"
-import {createRelationship} from "../../../../../../src/db/createRelationship"
+import {createRelationship} from "../../../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../../../src/types/DbRelationship"
 import {seedBrand} from "../../../../../dbSeeding/brands/nodes/seedBrand"
 

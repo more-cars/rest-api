@@ -1,4 +1,4 @@
-import {getRelationship} from "../../db/getRelationship"
+import {getRelationship} from "../../db/relationships/getRelationship"
 import {DbRelationship} from "../../types/DbRelationship"
 import {ImageRelationship} from "../../types/images/ImageRelationship"
 import {ImageBelongsToNodeRelationship} from "../../types/images/ImageBelongsToNodeRelationship"

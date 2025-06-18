@@ -1,7 +1,7 @@
 import {seedCarModel} from "../../../../../../dbSeeding/car-models/nodes/seedCarModel"
 import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
-import {createRelationship} from "../../../../../../../src/db/createRelationship"
-import {findRelationships} from "../../../../../../../src/db/findRelationships"
+import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
+import {findRelationships} from "../../../../../../../src/db/relationships/findRelationships"
 import {DbRelationship} from "../../../../../../../src/types/DbRelationship"
 
 test('Requesting the relationship between CAR MODEL and attached BRAND',

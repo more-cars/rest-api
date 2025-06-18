@@ -1,5 +1,5 @@
 import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
-import {findRelationships} from "../../../../../../../src/db/findRelationships"
+import {findRelationships} from "../../../../../../../src/db/relationships/findRelationships"
 import {DbRelationship} from "../../../../../../../src/types/DbRelationship"
 
 test('An empty list should be returned when no CAR MODEL is connected to the BRAND', async () => {

@@ -1,11 +1,11 @@
 import {Driver, Session} from "neo4j-driver"
-import {closeDriver, getDriver} from "../driver"
-import {CarModelNode} from "../../types/car-models/CarModelNode"
+import {closeDriver, getDriver} from "../../driver"
+import {ImageNode} from "../../../types/images/ImageNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
-import {NodeTypeLabel} from "../NodeTypeLabel"
 import {getNodeByIdQuery} from "../getNodeByIdQuery"
+import {NodeTypeLabel} from "../../NodeTypeLabel"
 
-export async function getNodeById(id: number): Promise<false | CarModelNode> {
+export async function getNodeById(id: number): Promise<false | ImageNode> {
     const driver: Driver = getDriver()
     const session: Session = driver.session()
 
@@ -17,8 +17,8 @@ export async function getNodeById(id: number): Promise<false | CarModelNode> {
     return foundNode
 }
 
-async function getNode(id: number, driver: Driver): Promise<false | CarModelNode> {
-    const {records} = await driver.executeQuery(getNodeByIdQuery(id, NodeTypeLabel.CarModel))
+async function getNode(id: number, driver: Driver): Promise<false | ImageNode> {
+    const {records} = await driver.executeQuery(getNodeByIdQuery(id, NodeTypeLabel.Image))
 
     if (records.length === 0) {
         return false

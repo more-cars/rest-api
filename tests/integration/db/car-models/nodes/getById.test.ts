@@ -1,4 +1,4 @@
-import {getNodeById} from "../../../../../src/db/car-models/getNodeById"
+import {getNodeById} from "../../../../../src/db/nodes/car-models/getNodeById"
 import {CarModelNode} from "../../../../../src/types/car-models/CarModelNode"
 import {seedCarModel} from "../../../../dbSeeding/car-models/nodes/seedCarModel"
 import {CarModelSchema} from "../../../../_schemas/CarModelSchema"

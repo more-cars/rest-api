@@ -1,10 +1,10 @@
-import {createRelationship} from "../../../../src/db/createRelationship"
+import {createRelationship} from "../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../src/types/DbRelationship"
 import assert from "assert"
 import FakeBrand from "../../../fixtures/nodes/FakeBrand"
 import FakeCarModel from "../../../fixtures/nodes/FakeCarModel"
-import {createNode as createBrandNode} from "../../../../src/db/brands/createNode"
-import {createNode as createCarModelNode} from "../../../../src/db/car-models/createNode"
+import {createNode as createBrandNode} from "../../../../src/db/nodes/brands/createNode"
+import {createNode as createCarModelNode} from "../../../../src/db/nodes/car-models/createNode"
 
 test('ID is added when creating a relationship', async () => {
     const brand = await createBrandNode(FakeBrand)

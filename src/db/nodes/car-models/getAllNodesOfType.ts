@@ -1,9 +1,9 @@
 import {Driver, Session} from "neo4j-driver"
-import {closeDriver, getDriver} from "../driver"
-import {BrandNode} from "../../types/brands/BrandNode"
+import {closeDriver, getDriver} from "../../driver"
+import {CarModelNode} from "../../../types/car-models/CarModelNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 
-export async function getAllNodesOfType(): Promise<Array<BrandNode>> {
+export async function getAllNodesOfType(): Promise<Array<CarModelNode>> {
     const driver: Driver = getDriver()
     const session: Session = driver.session()
 
@@ -15,17 +15,17 @@ export async function getAllNodesOfType(): Promise<Array<BrandNode>> {
     return foundNodes
 }
 
-async function getNodes(driver: Driver): Promise<Array<BrandNode>> {
-    const nodes: Array<BrandNode> = []
+async function getNodes(driver: Driver): Promise<Array<CarModelNode>> {
+    const carModelNodes: Array<CarModelNode> = []
 
     const {records} = await driver.executeQuery(`
-            MATCH (node:Brand) 
+            MATCH (node:CarModel) 
             RETURN node`,
     )
 
     records.forEach(record => {
-        nodes.push(mapDbNodeToModelNode(record.get('node')))
+        carModelNodes.push(mapDbNodeToModelNode(record.get('node')))
     })
 
-    return nodes
+    return carModelNodes
 }

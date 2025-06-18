@@ -1,5 +1,5 @@
 import {Node} from "neo4j-driver"
-import {BrandNode} from "../../types/brands/BrandNode"
+import {BrandNode} from "../../../types/brands/BrandNode"
 
 export function mapDbNodeToModelNode(dbNode: Node): BrandNode {
     const modelNode: BrandNode = {

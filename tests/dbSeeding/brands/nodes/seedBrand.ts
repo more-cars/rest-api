@@ -1,4 +1,4 @@
-import {createNode} from "../../../../src/db/brands/createNode"
+import {createNode} from "../../../../src/db/nodes/brands/createNode"
 import FakeBrand from "../../../fixtures/nodes/FakeBrand"
 
 /**

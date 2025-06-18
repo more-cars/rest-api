@@ -1,7 +1,7 @@
 import {deleteAllBrands} from "../../../../dbSeeding/brands/nodes/deleteAllBrands"
 import {BrandNode} from "../../../../../src/types/brands/BrandNode"
 import {seedBrands} from "../../../../dbSeeding/brands/nodes/seedBrands"
-import {getAllNodesOfType} from "../../../../../src/db/brands/getAllNodesOfType"
+import {getAllNodesOfType} from "../../../../../src/db/nodes/brands/getAllNodesOfType"
 
 test('When there are no brands then an empty array should be returned', async () => {
     await deleteAllBrands()

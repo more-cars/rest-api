@@ -1,5 +1,5 @@
 import {Driver, Session} from "neo4j-driver"
-import {closeDriver, getDriver} from "./driver"
+import {closeDriver, getDriver} from "../driver"
 
 /**
  * Deletes the relationship when there actually exists one with the given id.

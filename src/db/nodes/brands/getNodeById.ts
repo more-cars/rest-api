@@ -1,9 +1,9 @@
 import {Driver, Session} from "neo4j-driver"
-import {closeDriver, getDriver} from "../driver"
-import {BrandNode} from "../../types/brands/BrandNode"
+import {closeDriver, getDriver} from "../../driver"
+import {BrandNode} from "../../../types/brands/BrandNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 import {getNodeByIdQuery} from "../getNodeByIdQuery"
-import {NodeTypeLabel} from "../NodeTypeLabel"
+import {NodeTypeLabel} from "../../NodeTypeLabel"
 
 export async function getNodeById(id: number): Promise<false | BrandNode> {
     const driver: Driver = getDriver()

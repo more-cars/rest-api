@@ -1,7 +1,7 @@
 import {Driver, Node, Relationship, Session} from "neo4j-driver"
-import {closeDriver, getDriver} from "./driver"
-import {BaseRelationship} from "../types/BaseRelationship"
-import {DbRelationship} from "../types/DbRelationship"
+import {closeDriver, getDriver} from "../driver"
+import {BaseRelationship} from "../../types/BaseRelationship"
+import {DbRelationship} from "../../types/DbRelationship"
 
 export async function findRelationships(nodeId: number, relationshipName: DbRelationship, nodeIsRelationshipTarget = false): Promise<Array<BaseRelationship>> {
     const driver: Driver = getDriver()

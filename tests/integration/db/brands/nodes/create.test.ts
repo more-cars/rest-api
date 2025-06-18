@@ -1,6 +1,6 @@
 import {faker} from "@faker-js/faker"
 import {Neo4jError} from "neo4j-driver"
-import {createNode} from "../../../../../src/db/brands/createNode"
+import {createNode} from "../../../../../src/db/nodes/brands/createNode"
 import FakeBrand from "../../../../fixtures/nodes/FakeBrand"
 
 test('Creating a new node is not possible when mandatory fields are missing', async () => {

@@ -1,6 +1,6 @@
 import {DbRelationship} from "../../types/DbRelationship"
 import {BrandRelationship} from "../../types/brands/BrandRelationship"
-import {findRelationships} from "../../db/findRelationships"
+import {findRelationships} from "../../db/relationships/findRelationships"
 import {CarModelNode} from "../../types/car-models/CarModelNode"
 import {CarModelBelongsToBrandRelationship} from "../../types/car-models/CarModelBelongsToBrandRelationship"
 

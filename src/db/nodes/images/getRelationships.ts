@@ -1,7 +1,7 @@
 import {Driver, Relationship, Session} from "neo4j-driver"
-import {closeDriver, getDriver} from "../driver"
-import {ImageBelongsToNodeRelationship} from "../../types/images/ImageBelongsToNodeRelationship"
-import {DbRelationship} from "../../types/DbRelationship"
+import {closeDriver, getDriver} from "../../driver"
+import {ImageBelongsToNodeRelationship} from "../../../types/images/ImageBelongsToNodeRelationship"
+import {DbRelationship} from "../../../types/DbRelationship"
 
 export async function getRelationships(startNodeId: number): Promise<Array<ImageBelongsToNodeRelationship>> {
     const driver: Driver = getDriver()
