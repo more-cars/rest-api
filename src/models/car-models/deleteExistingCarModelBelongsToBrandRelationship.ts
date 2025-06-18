@@ -1,6 +1,6 @@
 import {CarModelNode} from "../../types/car-models/CarModelNode"
 import {DbRelationship} from "../../types/DbRelationship"
-import {deleteRelationship} from "../../db/relationships/deleteRelationship"
+import {deleteRelationshipById} from "../../db/relationships/deleteRelationshipById"
 import {findRelationships} from "../../db/relationships/findRelationships"
 
 /**
@@ -18,6 +18,6 @@ export async function deleteExistingCarModelBelongsToBrandRelationship(carModel:
     )
 
     for (const relationship of relationships) {
-        await deleteRelationship(relationship.relationship_id)
+        await deleteRelationshipById(relationship.relationship_id)
     }
 }

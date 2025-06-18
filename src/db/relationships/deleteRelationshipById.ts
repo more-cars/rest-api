@@ -10,18 +10,18 @@ import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
  * Returns true when a relationship was deleted.
  * Returns return false when nothing was deleted.
  */
-export async function deleteRelationship(relationshipId: number): Promise<boolean> {
+export async function deleteRelationshipById(relationshipId: number): Promise<boolean> {
     const driver: Driver = getDriver()
     const session: Session = driver.session()
-    const {summary} = await driver.executeQuery(deleteRelationshipQuery(relationshipId))
+    const {summary} = await driver.executeQuery(deleteRelationshipQueryById(relationshipId))
     await session.close()
     await closeDriver(driver)
 
     return summary.counters.updates().relationshipsDeleted > 0
 }
 
-export function deleteRelationshipQuery(relationshipId: number) {
-    return getCypherQueryTemplate('relationships/_cypher/deleteRelationship.cypher')
+export function deleteRelationshipQueryById(relationshipId: number) {
+    return getCypherQueryTemplate('relationships/_cypher/deleteRelationshipById.cypher')
         .trim()
         .replace('$relationshipId', relationshipId.toString())
 }

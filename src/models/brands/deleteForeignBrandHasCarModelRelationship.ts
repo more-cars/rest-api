@@ -2,7 +2,7 @@ import {BrandNode} from "../../types/brands/BrandNode"
 import {CarModelNode} from "../../types/car-models/CarModelNode"
 import {findRelationship} from "../../db/relationships/findRelationship"
 import {DbRelationship} from "../../types/DbRelationship"
-import {deleteRelationship} from "../../db/relationships/deleteRelationship"
+import {deleteRelationshipById} from "../../db/relationships/deleteRelationshipById"
 
 /**
  * Checks if there exists a relationship between the given `car model` and a `brand` that is NOT the given one.
@@ -16,7 +16,7 @@ export async function deleteForeignBrandHasCarModelRelationship(brand: BrandNode
     )
 
     if (relationship && relationship.start_node_id !== brand.id) {
-        return await deleteRelationship(relationship.relationship_id)
+        return await deleteRelationshipById(relationship.relationship_id)
     }
 
     return false
