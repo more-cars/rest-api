@@ -1,10 +1,8 @@
-import fs from 'node:fs'
 import {NodeTypeLabel} from "../NodeTypeLabel"
+import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 export function getAllNodesOfTypeQuery(nodeLabel: NodeTypeLabel) {
-    const queryTemplate = fs.readFileSync(__dirname + '/getAllNodesOfType.cypher', 'utf8')
-
-    return queryTemplate
+    return getCypherQueryTemplate('nodes/_cypher/getAllNodesOfType.cypher')
         .trim()
         .replace(':nodeLabel', `:${nodeLabel}`)
 }

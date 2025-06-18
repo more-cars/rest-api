@@ -1,10 +1,8 @@
-import fs from 'node:fs'
 import {NodeTypeLabel} from "../NodeTypeLabel"
+import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 export function getNodeByIdQuery(id: number, nodeLabel: false | NodeTypeLabel = false) {
-    const queryTemplate = fs.readFileSync(__dirname + '/getNodeById.cypher', 'utf8')
-
-    let query = queryTemplate
+    let query = getCypherQueryTemplate('nodes/_cypher/getNodeById.cypher')
         .trim()
         .replace('$id', id.toString())
 
