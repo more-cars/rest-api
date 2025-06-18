@@ -1,5 +1,6 @@
 import {Driver, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../driver"
+import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 /**
  * Deletes the relationship when there actually exists one with the given id.
@@ -12,20 +13,15 @@ import {closeDriver, getDriver} from "../driver"
 export async function deleteRelationship(relationshipId: number): Promise<boolean> {
     const driver: Driver = getDriver()
     const session: Session = driver.session()
-
-    const result = await deleteRel(relationshipId, driver)
-
+    const {summary} = await driver.executeQuery(deleteRelationshipQuery(relationshipId))
     await session.close()
     await closeDriver(driver)
 
-    return result
+    return summary.counters.updates().relationshipsDeleted > 0
 }
 
-async function deleteRel(relationshipId: number, driver: Driver): Promise<boolean> {
-    const {summary} = await driver.executeQuery(`
-            MATCH ()-[r {mc_id: ${relationshipId}}]->()
-            DELETE r`,
-    )
-
-    return summary.counters.updates().relationshipsDeleted > 0
+export function deleteRelationshipQuery(relationshipId: number) {
+    return getCypherQueryTemplate('relationships/_cypher/deleteRelationship.cypher')
+        .trim()
+        .replace('$relationshipId', relationshipId.toString())
 }
