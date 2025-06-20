@@ -1,7 +1,10 @@
-import {BrandNode} from "../../../../src/types/brands/BrandNode"
-import {marshal} from "../../../../src/controllers/brands/marshal"
+import {BrandNode} from "../../../../../../src/models/brands/types/BrandNode"
+import {marshal} from "../../../../../../src/controllers/brands/marshal"
 
-test('the More Cars node is correctly mapped to an API response body', async () => {
+/**
+ * @group happyPath
+ */
+test('marshalling a complete and valid request', async () => {
     const node: BrandNode = {
         id: 1,
         created_at: "2025-05-14T11:05:07.793Z",
@@ -9,8 +12,8 @@ test('the More Cars node is correctly mapped to an API response body', async () 
         name: "BMW",
         full_name: "Bayerische Motoren Werke",
         founded: 1916,
-        defunct: undefined,
-        // wmi: "WBA", // field is intentionally omitted
+        defunct: null,
+        wmi: "WBA",
         hsn: "0005",
     }
 
@@ -25,7 +28,7 @@ test('the More Cars node is correctly mapped to an API response body', async () 
             full_name: "Bayerische Motoren Werke",
             founded: 1916,
             defunct: null,
-            wmi: null,
+            wmi: "WBA",
             hsn: "0005",
         })
 })
