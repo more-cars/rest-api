@@ -3,7 +3,7 @@ import {unmarshal} from "./unmarshal"
 import {Brand} from "../../models/brands/Brand"
 import {CreateBrandInput} from "../../models/brands/types/CreateBrandInput"
 import {BrandNode} from "../../models/brands/types/BrandNode"
-import {CreateBrandResponse} from "./types/CreateBrandResponse"
+import {BrandResponse} from "./types/BrandResponse"
 import {marshal} from "./marshal"
 import {CreateBrandRawInput} from "./types/CreateBrandRawInput"
 
@@ -48,7 +48,7 @@ export function sanitize(data: CreateBrandRawInput): CreateBrandInput {
     return data
 }
 
-function send201response(data: CreateBrandResponse, res: express.Response) {
+function send201response(data: BrandResponse, res: express.Response) {
     res.status(201)
     res.set('Content-Type', 'application/json')
     res.send(data)

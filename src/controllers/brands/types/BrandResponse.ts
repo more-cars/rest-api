@@ -1,4 +1,4 @@
-export type CreateBrandResponse = {
+export type BrandResponse = {
     id: number
 
     name: string

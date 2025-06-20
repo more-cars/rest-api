@@ -1,4 +1,4 @@
-import {CreateBrandResponse} from "./types/CreateBrandResponse"
+import {BrandResponse} from "./types/BrandResponse"
 import {BrandNode} from "../../models/brands/types/BrandNode"
 
 /**
@@ -6,7 +6,7 @@ import {BrandNode} from "../../models/brands/types/BrandNode"
  * which conform to the API specification.
  */
 export function marshal(brand: BrandNode) {
-    const marshalledData: CreateBrandResponse = {
+    const marshalledData: BrandResponse = {
         id: brand.id,
         name: brand.name,
         full_name: brand.full_name,
