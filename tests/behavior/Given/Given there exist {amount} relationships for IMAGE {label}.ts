@@ -1,7 +1,6 @@
 import {Given} from "@cucumber/cucumber"
 import axios from "axios"
 import {ImageNode} from "../../../src/types/images/ImageNode"
-import {BrandNode} from "../../../src/types/brands/BrandNode"
 import {seedBrand} from "../../dbSeeding/brands/nodes/seedBrand"
 
 Given('there exist {int} relationships for IMAGE {string}',
@@ -9,7 +8,7 @@ Given('there exist {int} relationships for IMAGE {string}',
         const imageNode: ImageNode = this.image[imageLabel]
 
         for (let i = 0; i < amount; i++) {
-            const partnerNode: BrandNode = await seedBrand()
+            const partnerNode = await seedBrand()
 
             await axios
                 .post(`${process.env.API_URL}/images/${imageNode.id}/belongs-to-node/${partnerNode.id}`)

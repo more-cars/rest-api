@@ -1,5 +1,5 @@
 import FakeBrand from "../../../../fixtures/nodes/FakeBrand"
-import {BrandNodeUserData} from "../../../../../src/types/brands/BrandNodeUserData"
+import {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
 import {Brand} from "../../../../../src/models/brands/Brand"
 import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
 import {CarModelNodeUserData} from "../../../../../src/types/car-models/CarModelNodeUserData"
@@ -10,7 +10,7 @@ import {Image} from "../../../../../src/models/images/Image"
 
 test('Timestamps provided by the user are ignored', async () => {
     // BRAND
-    const brandData: BrandNodeUserData = FakeBrand
+    const brandData: InputBrandCreate = FakeBrand
     // @ts-expect-error property "created_at" is officially not allowed
     brandData['created_at'] = "blubb"
     // @ts-expect-error property "updated_at" is officially not allowed

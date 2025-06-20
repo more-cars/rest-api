@@ -1,18 +1,20 @@
-import {BrandNodeUserData} from "../../types/brands/BrandNodeUserData"
+import {CreateBrandRawInput} from "./types/CreateBrandRawInput"
 
 /**
- * Picks all attributes from the request object which conform to the API specification.
- * Every other attributes in there will be ignored.
+ * This picks all attributes from the data object which are expected according to the API specification.
+ * Everything else in there will be ignored.
+ * The type hints are only there to help constructing the correct STRUCTURE.
+ * The DATA itself is NOT validated here (and also not sanitized).
  */
-export function unmarshal(body: any) {
-    const node: BrandNodeUserData = {
-        name: body.name,
-        full_name: body.full_name ?? null,
-        founded: body.founded ?? null,
-        defunct: body.defunct ?? null,
-        wmi: body.wmi ?? null,
-        hsn: body.hsn ?? null,
+export function unmarshal(data: any): CreateBrandRawInput {
+    const unmarshalledData: CreateBrandRawInput = {
+        name: data.name,
+        full_name: data.full_name,
+        founded: data.founded,
+        defunct: data.defunct,
+        wmi: data.wmi,
+        hsn: data.hsn,
     }
 
-    return node
+    return unmarshalledData
 }

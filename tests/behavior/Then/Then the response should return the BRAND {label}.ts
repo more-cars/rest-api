@@ -1,6 +1,6 @@
 import {Then} from "@cucumber/cucumber"
 import assert from "assert"
-import {BrandNode} from "../../../src/types/brands/BrandNode"
+import {BrandNode} from "../../../src/models/brands/types/BrandNode"
 import {BrandSchema} from "../../_schemas/BrandSchema"
 import {validateJson} from "../../_helpers/validateJson"
 

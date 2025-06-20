@@ -1,6 +1,6 @@
 import {CarModelNode} from "../../types/car-models/CarModelNode"
 import {CarModelNodeUserData} from "../../types/car-models/CarModelNodeUserData"
-import {BrandNode} from "../../types/brands/BrandNode"
+import {BrandNode} from "../brands/types/BrandNode"
 import {createNode} from "../../db/nodes/car-models/createNode"
 import {getNodeById} from "../../db/nodes/car-models/getNodeById"
 import {getAllNodesOfType} from "../../db/nodes/car-models/getAllNodesOfType"

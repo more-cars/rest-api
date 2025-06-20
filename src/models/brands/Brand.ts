@@ -1,18 +1,24 @@
-import {BrandNode} from "../../types/brands/BrandNode"
-import {BrandNodeUserData} from "../../types/brands/BrandNodeUserData"
-import {CarModelNode} from "../../types/car-models/CarModelNode"
+import {BrandNode} from "./types/BrandNode"
+import {CreateBrandInput} from "./types/CreateBrandInput"
+import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../db/nodes/brands/createNode"
+import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/brands/getNodeById"
 import {getAllNodesOfType} from "../../db/nodes/brands/getAllNodesOfType"
+import {BrandHasCarModelRelationship} from "../../types/brands/BrandHasCarModelRelationship"
+import {CarModelNode} from "../../types/car-models/CarModelNode"
+import {createBrandHasCarModelRelationship} from "./createBrandHasCarModelRelationship"
 import {deleteForeignBrandHasCarModelRelationship} from "./deleteForeignBrandHasCarModelRelationship"
 import {getBrandHasCarModelRelationship} from "./getBrandHasCarModelRelationship"
-import {createBrandHasCarModelRelationship} from "./createBrandHasCarModelRelationship"
-import {BrandHasCarModelRelationship} from "../../types/brands/BrandHasCarModelRelationship"
 import {getAllBrandHasCarModelRelationships} from "./getAllBrandHasCarModelRelationships"
 
 export class Brand {
-    static async create(data: BrandNodeUserData): Promise<BrandNode> {
-        return await createNode(data)
+    static async create(data: CreateBrandInput): Promise<BrandNode> {
+        const input = convertInputData(data)
+        const result = await createNode(input)
+        const output = convertOutputData(result)
+
+        return output
     }
 
     static async findById(id: number): Promise<false | BrandNode> {

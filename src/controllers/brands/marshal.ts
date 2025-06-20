@@ -1,11 +1,11 @@
-import {BrandNode} from "../../types/brands/BrandNode"
+import {CreateBrandResponse} from "./types/CreateBrandResponse"
 
 /**
  * Based on the given "brand" node this creates a response object
  * which conform to the API specification.
  */
-export function marshal(brand: BrandNode) {
-    const responseBody = {
+export function marshal(brand: CreateBrandResponse) {
+    const responseBody: CreateBrandResponse = {
         id: brand.id,
         name: brand.name,
         full_name: brand.full_name ?? null,

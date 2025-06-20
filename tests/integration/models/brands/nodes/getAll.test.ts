@@ -1,5 +1,5 @@
 import {deleteAllBrands} from "../../../../dbSeeding/brands/nodes/deleteAllBrands"
-import {BrandNode} from "../../../../../src/types/brands/BrandNode"
+import {BrandNode} from "../../../../../src/models/brands/types/BrandNode"
 import {Brand} from "../../../../../src/models/brands/Brand"
 import {seedBrands} from "../../../../dbSeeding/brands/nodes/seedBrands"
 

@@ -1,25 +1,25 @@
 import {Driver, Node, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../../driver"
-import {BrandNode} from "../../../types/brands/BrandNode"
-import {BrandNodeUserData} from "../../../types/brands/BrandNodeUserData"
+import {BrandNode} from "./types/BrandNode"
+import {InputBrandCreate} from "./types/InputBrandCreate"
 import {addMoreCarsIdToNode} from "../addMoreCarsIdToNode"
 import {addTimestampsToNode} from "../addTimestampsToNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 import {NodeTypeLabel} from "../../NodeTypeLabel"
 
-export async function createNode(data: BrandNodeUserData): Promise<BrandNode> {
+export async function createNode(data: InputBrandCreate): Promise<BrandNode> {
     const driver: Driver = getDriver()
     const session: Session = driver.session()
 
-    const createdNode = await createBrand(data, driver)
+    const node = await createBrand(data, driver)
 
     await session.close()
     await closeDriver(driver)
 
-    return createdNode
+    return mapDbNodeToModelNode(node)
 }
 
-async function createBrand(data: BrandNodeUserData, driver: Driver): Promise<BrandNode> {
+async function createBrand(data: InputBrandCreate, driver: Driver): Promise<Node> {
     // 1. Creating the node in the database
     const {records} = await driver.executeQuery(`
             CREATE (node:Brand {
@@ -55,8 +55,5 @@ async function createBrand(data: BrandNodeUserData, driver: Driver): Promise<Bra
 
     // 3. Adding timestamps
     const timestamp = new Date().toISOString()
-    const enrichedDbNode: Node = await addTimestampsToNode(elementId, timestamp, driver)
-
-    // 4. Converting the Neo4j node to a More Cars node
-    return mapDbNodeToModelNode(enrichedDbNode)
+    return await addTimestampsToNode(elementId, timestamp, driver)
 }

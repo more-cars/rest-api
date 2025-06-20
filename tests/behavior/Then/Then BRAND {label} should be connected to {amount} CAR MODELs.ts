@@ -1,7 +1,7 @@
 import {Then} from "@cucumber/cucumber"
 import assert from "assert"
 import axios from "axios"
-import {BrandNode} from "../../../src/types/brands/BrandNode"
+import {BrandNode} from "../../../src/models/brands/types/BrandNode"
 
 Then('BRAND {string} should be connected to {int} CAR MODELs',
     async function (brandLabel: string, carModelAmount: string) {
