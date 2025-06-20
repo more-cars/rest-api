@@ -1,7 +1,7 @@
 import {Then} from "@cucumber/cucumber"
 import assert from "assert"
 import axios from "axios"
-import {CarModelNode} from "../../../src/types/car-models/CarModelNode"
+import {CarModelNode} from "../../../src/models/car-models/types/CarModelNode"
 import {BrandNode} from "../../../src/models/brands/types/BrandNode"
 
 Then('the CAR MODEL {string} should NOT be connected to the BRAND {string}',

@@ -1,6 +1,6 @@
 import {Driver, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../../driver"
-import {CarModelNode} from "../../../types/car-models/CarModelNode"
+import {CarModelNode} from "./types/CarModelNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 import {getAllNodesOfTypeQuery} from "../getAllNodesOfTypeQuery"
 import {NodeTypeLabel} from "../../NodeTypeLabel"

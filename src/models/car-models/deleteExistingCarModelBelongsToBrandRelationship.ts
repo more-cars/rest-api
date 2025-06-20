@@ -1,4 +1,4 @@
-import {CarModelNode} from "../../types/car-models/CarModelNode"
+import {CarModelNode} from "./types/CarModelNode"
 import {DbRelationship} from "../../types/DbRelationship"
 import {deleteRelationshipById} from "../../db/relationships/deleteRelationshipById"
 import {getRelationshipsForSpecificNode} from "../../db/relationships/getRelationshipsForSpecificNode"

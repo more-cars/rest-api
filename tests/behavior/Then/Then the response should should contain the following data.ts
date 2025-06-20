@@ -6,6 +6,6 @@ Then('the response should contain the following data', function (dataTable: Data
     const responseData = this.latestResponse.data
 
     rows.forEach((row) => {
-        assert(responseData[row.key] === row.value, `Property "${row.key}" does not have value "${row.value}"`)
+        assert(responseData[row.key].toString() === row.value, `Property "${row.key}" does not have value "${row.value}"`)
     })
 })

@@ -1,5 +1,5 @@
 import {BrandNode} from "../../db/nodes/brands/types/BrandNode"
-import {CarModelNode} from "../../types/car-models/CarModelNode"
+import {CarModelNode} from "../car-models/types/CarModelNode"
 import {getSpecificRelationship} from "../../db/relationships/getSpecificRelationship"
 import {DbRelationship} from "../../types/DbRelationship"
 import {BrandRelationship} from "../../types/brands/BrandRelationship"

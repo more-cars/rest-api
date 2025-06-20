@@ -1,7 +1,7 @@
 import {Given} from "@cucumber/cucumber"
 import axios from "axios"
 import {BrandNode} from "../../../src/models/brands/types/BrandNode"
-import {CarModelNode} from "../../../src/types/car-models/CarModelNode"
+import {CarModelNode} from "../../../src/models/car-models/types/CarModelNode"
 
 Given('there exists a relationship {string} between BRAND {string} and CAR MODEL {string}',
     async function (relationshipLabel: string, brandLabel: string, carModelLabel: string) {

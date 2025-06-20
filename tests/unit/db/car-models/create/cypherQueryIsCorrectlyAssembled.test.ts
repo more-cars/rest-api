@@ -1,0 +1,27 @@
+import {createNodeQuery} from "../../../../../src/db/nodes/car-models/createNode"
+import {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
+
+test('cypher query is correctly assembled for "create car model" request', async () => {
+    const data: InputCarModelCreate = {
+        name: "360 Modena",
+        built_from: 1999,
+        built_to: 2005,
+        generation: null,
+        internal_code: "F131",
+        total_production: 16365,
+    }
+    const query = createNodeQuery(data)
+
+    expect(query)
+        .toEqual(
+            "CREATE (node:CarModel {\n" +
+            "  name:             '360 Modena',\n" +
+            "  built_from:       1999,\n" +
+            "  built_to:         2005,\n" +
+            "  generation:       null,\n" +
+            "  internal_code:    'F131',\n" +
+            "  total_production: 16365\n" +
+            "})\n" +
+            "RETURN node\n" +
+            "  LIMIT 1")
+})

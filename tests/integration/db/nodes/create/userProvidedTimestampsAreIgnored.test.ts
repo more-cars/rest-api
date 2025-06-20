@@ -2,7 +2,7 @@ import FakeBrand from "../../../../fixtures/nodes/FakeBrand"
 import {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
 import {createNode as createBrandNode} from "../../../../../src/db/nodes/brands/createNode"
 import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
-import {CarModelNodeUserData} from "../../../../../src/types/car-models/CarModelNodeUserData"
+import {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
 import {createNode as createCarModelNode} from "../../../../../src/db/nodes/car-models/createNode"
 import FakeImageFull from "../../../../fixtures/nodes/FakeImageFull"
 import {ImageNodeUserData} from "../../../../../src/types/images/ImageNodeUserData"
@@ -24,7 +24,7 @@ test('Timestamps provided by the user are ignored', async () => {
     expect(createdBrand).not.toHaveProperty('updated_at', "blobb")
 
     // CAR MODEL
-    const carModelData: CarModelNodeUserData = FakeCarModel
+    const carModelData: InputCarModelCreate = FakeCarModel
     // @ts-expect-error property "created_at" is officially not allowed
     carModelData['created_at'] = "blubb"
     // @ts-expect-error property "updated_at" is officially not allowed

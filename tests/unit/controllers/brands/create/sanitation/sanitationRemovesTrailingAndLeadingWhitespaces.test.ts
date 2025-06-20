@@ -1,8 +1,8 @@
 import {sanitize} from "../../../../../../src/controllers/brands/create"
-import {CreateBrandInput} from "../../../../../../src/models/brands/types/CreateBrandInput"
+import {CreateBrandRawInput} from "../../../../../../src/controllers/brands/types/CreateBrandRawInput"
 
 test.skip('leading and trailing whitespaces are removed', async () => {
-    const data: CreateBrandInput = {
+    const data: CreateBrandRawInput = {
         name: "     BMW     ",
         full_name: "Bayerische Motoren Werke     ",
         founded: 1916,

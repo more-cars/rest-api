@@ -1,11 +1,12 @@
-import {CarModelNode} from "../../types/car-models/CarModelNode"
+import {CarModelNode} from "../../models/car-models/types/CarModelNode"
+import {CarModelResponse} from "./types/CarModelResponse"
 
 /**
  * Based on the given "car model" node this creates a response object
  * which conform to the API specification.
  */
 export function marshal(carModel: CarModelNode) {
-    const responseBody = {
+    const marshalledData: CarModelResponse = {
         id: carModel.id,
         name: carModel.name,
         built_from: carModel.built_from ?? null,
@@ -17,5 +18,5 @@ export function marshal(carModel: CarModelNode) {
         updated_at: carModel.updated_at,
     }
 
-    return responseBody
+    return marshalledData
 }

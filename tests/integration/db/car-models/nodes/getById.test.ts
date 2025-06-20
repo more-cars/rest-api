@@ -1,5 +1,5 @@
 import {getNodeById} from "../../../../../src/db/nodes/car-models/getNodeById"
-import {CarModelNode} from "../../../../../src/types/car-models/CarModelNode"
+import {CarModelNode} from "../../../../../src/db/nodes/car-models/types/CarModelNode"
 import {seedCarModel} from "../../../../dbSeeding/car-models/nodes/seedCarModel"
 import {CarModelSchema} from "../../../../_schemas/CarModelSchema"
 import {validateJson} from "../../../../_helpers/validateJson"

@@ -1,16 +1,22 @@
-import {CarModelNode} from "../../types/car-models/CarModelNode"
-import {CarModelNodeUserData} from "../../types/car-models/CarModelNodeUserData"
-import {BrandNode} from "../brands/types/BrandNode"
+import {CarModelNode} from "./types/CarModelNode"
+import {CreateCarModelInput} from "./types/CreateCarModelInput"
+import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../db/nodes/car-models/createNode"
+import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/car-models/getNodeById"
 import {getAllNodesOfType} from "../../db/nodes/car-models/getAllNodesOfType"
-import {createCarModelBelongsToBrandRelationship} from "./createCarModelBelongsToBrandRelationship"
 import {CarModelBelongsToBrandRelationship} from "../../types/car-models/CarModelBelongsToBrandRelationship"
+import {BrandNode} from "../brands/types/BrandNode"
+import {createCarModelBelongsToBrandRelationship} from "./createCarModelBelongsToBrandRelationship"
 import {getAllCarModelBelongsToBrandRelationships} from "./getAllCarModelBelongsToBrandRelationships"
 
 export class CarModel {
-    static async create(data: CarModelNodeUserData): Promise<CarModelNode> {
-        return await createNode(data)
+    static async create(data: CreateCarModelInput): Promise<CarModelNode> {
+        const input = convertInputData(data)
+        const result = await createNode(input)
+        const output = convertOutputData(result)
+
+        return output
     }
 
     static async findById(id: number): Promise<false | CarModelNode> {

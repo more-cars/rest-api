@@ -1,6 +1,6 @@
 import {Given} from "@cucumber/cucumber"
 import axios from "axios"
-import {CarModelNode} from "../../../src/types/car-models/CarModelNode"
+import {CarModelNode} from "../../../src/models/car-models/types/CarModelNode"
 import assert from "assert"
 
 // TODO This only checks for the non-existence of relationships. It should actively delete them.

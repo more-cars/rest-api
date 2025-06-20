@@ -1,46 +1,28 @@
 import {Driver, Node, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../../driver"
-import {CarModelNode} from "../../../types/car-models/CarModelNode"
-import {CarModelNodeUserData} from "../../../types/car-models/CarModelNodeUserData"
+import {CarModelNode} from "./types/CarModelNode"
+import {InputCarModelCreate} from "./types/InputCarModelCreate"
+import {addMoreCarsIdToNode} from "../addMoreCarsIdToNode"
 import {addTimestampsToNode} from "../addTimestampsToNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
-import {addMoreCarsIdToNode} from "../addMoreCarsIdToNode"
 import {NodeTypeLabel} from "../../NodeTypeLabel"
+import {getCypherQueryTemplate} from "../../getCypherQueryTemplate"
 
-export async function createNode(carModelData: CarModelNodeUserData): Promise<CarModelNode> {
+export async function createNode(data: InputCarModelCreate): Promise<CarModelNode> {
     const driver: Driver = getDriver()
     const session: Session = driver.session()
 
-    const createdNode = await createCarModel(carModelData, driver)
+    const node = await createCarModel(data, driver)
 
     await session.close()
     await closeDriver(driver)
 
-    return createdNode
+    return mapDbNodeToModelNode(node)
 }
 
-async function createCarModel(carModelData: CarModelNodeUserData, driver: Driver): Promise<CarModelNode> {
+async function createCarModel(data: InputCarModelCreate, driver: Driver): Promise<Node> {
     // 1. Creating the node in the database
-    const {records} = await driver.executeQuery(`
-            CREATE (node:CarModel {
-                name: $name, 
-                built_from: $built_from,
-                built_to: $built_to,
-                generation: $generation,
-                internal_code: $internal_code,
-                total_production: $total_production
-            }) 
-            RETURN node 
-            LIMIT 1`,
-        {
-            name: carModelData.name,
-            built_from: carModelData.built_from ?? null,
-            built_to: carModelData.built_to ?? null,
-            generation: carModelData.generation ?? null,
-            internal_code: carModelData.internal_code ?? null,
-            total_production: carModelData.total_production ?? null,
-        },
-    )
+    const {records} = await driver.executeQuery(createNodeQuery(data))
     const createdDbNode: Node = records[0].get('node')
 
     // 2. Adding a custom More Cars ID for that node
@@ -55,8 +37,20 @@ async function createCarModel(carModelData: CarModelNodeUserData, driver: Driver
 
     // 3. Adding timestamps
     const timestamp = new Date().toISOString()
-    const enrichedDbNode: Node = await addTimestampsToNode(elementId, timestamp, driver)
+    return await addTimestampsToNode(elementId, timestamp, driver)
+}
 
-    // 4. Converting the Neo4j node to a More Cars node
-    return mapDbNodeToModelNode(enrichedDbNode)
+export function createNodeQuery(data: InputCarModelCreate) {
+    let template = getCypherQueryTemplate('nodes/car-models/_cypher/createNode.cypher')
+        .trim()
+
+    template = template
+        .replace('$name', `'${data.name}'`)
+        .replace('$built_from', data.built_from ? `${data.built_from}` : 'null')
+        .replace('$built_to', data.built_to ? `${data.built_to}` : 'null')
+        .replace('$generation', data.generation ? `${data.generation}` : 'null')
+        .replace('$internal_code', data.internal_code ? `'${data.internal_code}'` : 'null')
+        .replace('$total_production', data.total_production ? `${data.total_production}` : 'null')
+
+    return template
 }
