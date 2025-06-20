@@ -6,6 +6,7 @@ import {addMoreCarsIdToNode} from "../addMoreCarsIdToNode"
 import {addTimestampsToNode} from "../addTimestampsToNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 import {NodeTypeLabel} from "../../NodeTypeLabel"
+import {getCypherQueryTemplate} from "../../getCypherQueryTemplate"
 
 export async function createNode(data: InputBrandCreate): Promise<BrandNode> {
     const driver: Driver = getDriver()
@@ -21,26 +22,7 @@ export async function createNode(data: InputBrandCreate): Promise<BrandNode> {
 
 async function createBrand(data: InputBrandCreate, driver: Driver): Promise<Node> {
     // 1. Creating the node in the database
-    const {records} = await driver.executeQuery(`
-            CREATE (node:Brand {
-                name: $name, 
-                full_name: $full_name, 
-                founded: $founded,
-                defunct: $defunct,
-                wmi: $wmi,
-                hsn: $hsn
-            }) 
-            RETURN node 
-            LIMIT 1`,
-        {
-            name: data.name,
-            full_name: data.full_name ?? null,
-            founded: data.founded ?? null,
-            defunct: data.defunct ?? null,
-            wmi: data.wmi ?? null,
-            hsn: data.hsn ?? null,
-        },
-    )
+    const {records} = await driver.executeQuery(createNodeQuery(data))
     const createdDbNode: Node = records[0].get('node')
 
     // 2. Adding a custom More Cars ID for that node
@@ -56,4 +38,19 @@ async function createBrand(data: InputBrandCreate, driver: Driver): Promise<Node
     // 3. Adding timestamps
     const timestamp = new Date().toISOString()
     return await addTimestampsToNode(elementId, timestamp, driver)
+}
+
+export function createNodeQuery(data: InputBrandCreate) {
+    let template = getCypherQueryTemplate('nodes/brands/_cypher/createNode.cypher')
+        .trim()
+
+    template = template
+        .replace('$name', `'${data.name}'`)
+        .replace('$full_name', data.full_name ? `'${data.full_name}'` : 'null')
+        .replace('$founded', data.founded ? `${data.founded}` : 'null')
+        .replace('$defunct', data.defunct ? `${data.defunct}` : 'null')
+        .replace('$wmi', data.wmi ? `'${data.wmi}'` : 'null')
+        .replace('$hsn', data.hsn ? `'${data.hsn}'` : 'null')
+
+    return template
 }
