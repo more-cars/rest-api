@@ -1,19 +1,25 @@
+import {ImageNode} from "./types/ImageNode"
+import {CreateImageInput} from "./types/CreateImageInput"
+import {CreateImageGeneratedInput} from "./types/CreateImageGeneratedInput"
+import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../db/nodes/images/createNode"
+import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/images/getNodeById"
 import {getNodeById as getAnyNodeById} from "../../db/nodes/getNodeById"
 import {getAllNodesOfType} from "../../db/nodes/images/getAllNodesOfType"
-import {ImageNode} from "../../types/images/ImageNode"
-import {ImageNodeUserData} from "../../types/images/ImageNodeUserData"
-import {getImageBelongsToNodeRelationship} from "./getImageBelongsToNodeRelationship"
 import {ImageBelongsToNodeRelationship} from "../../types/images/ImageBelongsToNodeRelationship"
+import {getImageBelongsToNodeRelationship} from "./getImageBelongsToNodeRelationship"
 import {createImageBelongsToNodeRelationship} from "./createImageBelongsToNodeRelationship"
 import {getRelationships} from "../../db/nodes/images/getRelationships"
 
 export class Image {
-    static async create(data: ImageNodeUserData): Promise<ImageNode> {
-        const completeData = addDummyData(data)
+    static async create(data: CreateImageInput): Promise<ImageNode> {
+        const generatedData = getGeneratedData()
+        const input = convertInputData(Object.assign(data, generatedData))
+        const result = await createNode(input)
+        const output = convertOutputData(result)
 
-        return await createNode(completeData)
+        return output
     }
 
     static async findById(id: number): Promise<false | ImageNode> {
@@ -79,8 +85,8 @@ export class Image {
 /**
  * TEMPORARY solution until the flickr and wikimedia importer are implemented
  */
-function addDummyData(data: ImageNodeUserData) {
-    const additionalData = {
+function getGeneratedData(): CreateImageGeneratedInput {
+    const generatedData: CreateImageGeneratedInput = {
         name: "DUMMY",
         description: "DUMMY",
         creator: "DUMMY",
@@ -96,7 +102,7 @@ function addDummyData(data: ImageNodeUserData) {
         image_url_xs: "DUMMY",
     }
 
-    return Object.assign(data, additionalData)
+    return generatedData
 }
 
 async function partnerNodeIsAnImage(nodeId: number): Promise<boolean> {

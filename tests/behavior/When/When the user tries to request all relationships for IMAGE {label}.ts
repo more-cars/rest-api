@@ -1,6 +1,6 @@
 import {When} from "@cucumber/cucumber"
 import axios from "axios"
-import {ImageNode} from "../../../src/types/images/ImageNode"
+import {ImageNode} from "../../../src/models/images/types/ImageNode"
 
 When('the user tries to request all relationships for IMAGE {string}',
     async function (imageLabel: string) {

@@ -1,4 +1,4 @@
-import {ImageNode} from "../../../../src/types/images/ImageNode"
+import {ImageNode} from "../../../../src/db/nodes/images/types/ImageNode"
 import {seedImage} from "./seedImage"
 
 /**

@@ -1,8 +1,8 @@
-import {ImageNode} from "../../../types/images/ImageNode"
+import {ImageNode} from "./types/ImageNode"
 import {Node} from "neo4j-driver"
 
 export function mapDbNodeToModelNode(dbNode: Node): ImageNode {
-    const modelNode: ImageNode = {
+    const node: ImageNode = {
         // system data
         id: dbNode.properties.mc_id,
         created_at: dbNode.properties.created_at,
@@ -28,5 +28,5 @@ export function mapDbNodeToModelNode(dbNode: Node): ImageNode {
         image_url_xs: dbNode.properties.image_url_xs,
     }
 
-    return modelNode
+    return node
 }

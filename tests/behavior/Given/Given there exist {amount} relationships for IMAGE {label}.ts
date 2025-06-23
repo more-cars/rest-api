@@ -1,6 +1,6 @@
 import {Given} from "@cucumber/cucumber"
 import axios from "axios"
-import {ImageNode} from "../../../src/types/images/ImageNode"
+import {ImageNode} from "../../../src/models/images/types/ImageNode"
 import {seedBrand} from "../../dbSeeding/brands/nodes/seedBrand"
 
 Given('there exist {int} relationships for IMAGE {string}',

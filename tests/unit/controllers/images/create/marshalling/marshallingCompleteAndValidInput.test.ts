@@ -1,7 +1,10 @@
-import {ImageNode} from "../../../../src/types/images/ImageNode"
-import {marshal} from "../../../../src/controllers/images/marshal"
+import {ImageNode} from "../../../../../../src/models/images/types/ImageNode"
+import {marshal} from "../../../../../../src/controllers/images/marshal"
 
-test('the More Cars node is correctly mapped to an API response body', async () => {
+/**
+ * @group happyPath
+ */
+test('marshalling a complete and valid request', async () => {
     const node: ImageNode = {
         id: 975725,
         created_at: "2025-05-14T11:05:07.793Z",
@@ -16,8 +19,8 @@ test('the More Cars node is correctly mapped to an API response body', async () 
         source: "https://www.flickr.com/photos/more-cars/54570839725/",
         image_url_original: "https://live.staticflickr.com/65535/54570839725_652073f374_z.jpg",
         image_url_xxl: "https://live.staticflickr.com/65535/54570839725_054676cdd8_o.jpg",
-        image_url_xl: undefined,
-        // image_url_l: "https://live.staticflickr.com/65535/54570839725_652073f374_b.jpg", // field is intentionally omitted
+        image_url_xl: null,
+        image_url_l: "https://live.staticflickr.com/65535/54570839725_652073f374_b.jpg",
         image_url_m: "https://live.staticflickr.com/65535/54570839725_652073f374_z.jpg",
         image_url_s: "https://live.staticflickr.com/65535/54570839725_652073f374_n.jpg",
         image_url_xs: "https://live.staticflickr.com/65535/54570839725_652073f374_t.jpg",
@@ -41,7 +44,7 @@ test('the More Cars node is correctly mapped to an API response body', async () 
             image_url_original: "https://live.staticflickr.com/65535/54570839725_652073f374_z.jpg",
             image_url_xxl: "https://live.staticflickr.com/65535/54570839725_054676cdd8_o.jpg",
             image_url_xl: null,
-            image_url_l: null,
+            image_url_l: "https://live.staticflickr.com/65535/54570839725_652073f374_b.jpg",
             image_url_m: "https://live.staticflickr.com/65535/54570839725_652073f374_z.jpg",
             image_url_s: "https://live.staticflickr.com/65535/54570839725_652073f374_n.jpg",
             image_url_xs: "https://live.staticflickr.com/65535/54570839725_652073f374_t.jpg",

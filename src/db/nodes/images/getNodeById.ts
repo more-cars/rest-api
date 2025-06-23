@@ -1,6 +1,6 @@
 import {Driver, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../../driver"
-import {ImageNode} from "../../../types/images/ImageNode"
+import {ImageNode} from "./types/ImageNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 import {getNodeByIdQuery} from "../getNodeById"
 import {NodeTypeLabel} from "../../NodeTypeLabel"

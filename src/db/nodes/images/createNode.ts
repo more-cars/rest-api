@@ -1,65 +1,28 @@
 import {Driver, Node, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../../driver"
-import {ImageNode} from "../../../types/images/ImageNode"
-import {ImageNodeUserData} from "../../../types/images/ImageNodeUserData"
-import {ImageNodeGeneratedData} from "../../../types/images/ImageNodeGeneratedData"
+import {ImageNode} from "./types/ImageNode"
+import {InputImageCreate} from "./types/InputImageCreate"
 import {addMoreCarsIdToNode} from "../addMoreCarsIdToNode"
 import {addTimestampsToNode} from "../addTimestampsToNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 import {NodeTypeLabel} from "../../NodeTypeLabel"
+import {getCypherQueryTemplate} from "../../getCypherQueryTemplate"
 
-export async function createNode(data: ImageNodeUserData & ImageNodeGeneratedData): Promise<ImageNode> {
+export async function createNode(data: InputImageCreate): Promise<ImageNode> {
     const driver: Driver = getDriver()
     const session: Session = driver.session()
 
-    const createdNode = await createImage(data, driver)
+    const node = await createImage(data, driver)
 
     await session.close()
     await closeDriver(driver)
 
-    return createdNode
+    return mapDbNodeToModelNode(node)
 }
 
-async function createImage(data: ImageNodeUserData & ImageNodeGeneratedData, driver: Driver): Promise<ImageNode> {
+async function createImage(data: InputImageCreate, driver: Driver): Promise<Node> {
     // 1. Creating the node in the database
-    const {records} = await driver.executeQuery(`
-            CREATE (node:Image {
-                external_id: $external_id,
-                image_provider: $image_provider,
-                name: $name, 
-                description: $description, 
-                creator: $creator, 
-                license: $license,
-                tags: $tags,
-                source: $source,
-                image_url_original: $image_url_original,
-                image_url_xxl: $image_url_xxl,
-                image_url_xl: $image_url_xl,
-                image_url_l: $image_url_l,
-                image_url_m: $image_url_m,
-                image_url_s: $image_url_s,
-                image_url_xs: $image_url_xs
-            }) 
-            RETURN node 
-            LIMIT 1`,
-        {
-            external_id: data.external_id,
-            image_provider: data.image_provider,
-            name: data.name,
-            description: data.description,
-            creator: data.creator,
-            license: data.license,
-            tags: data.tags,
-            source: data.source,
-            image_url_original: data.image_url_original,
-            image_url_xxl: data.image_url_xxl,
-            image_url_xl: data.image_url_xl,
-            image_url_l: data.image_url_l,
-            image_url_m: data.image_url_m,
-            image_url_s: data.image_url_s,
-            image_url_xs: data.image_url_xs,
-        },
-    )
+    const {records} = await driver.executeQuery(createNodeQuery(data))
     const createdDbNode: Node = records[0].get('node')
 
     // 2. Adding a custom More Cars ID for that node
@@ -74,8 +37,29 @@ async function createImage(data: ImageNodeUserData & ImageNodeGeneratedData, dri
 
     // 3. Adding timestamps
     const timestamp = new Date().toISOString()
-    const enrichedDbNode: Node = await addTimestampsToNode(elementId, timestamp, driver)
+    return await addTimestampsToNode(elementId, timestamp, driver)
+}
 
-    // 4. Converting the Neo4j node to a More Cars node
-    return mapDbNodeToModelNode(enrichedDbNode)
+export function createNodeQuery(data: InputImageCreate) {
+    let template = getCypherQueryTemplate('nodes/images/_cypher/createNode.cypher')
+        .trim()
+
+    template = template
+        .replace('$image_provider', `'${data.image_provider}'`)
+        .replace('$external_id', `'${data.external_id}'`)
+        .replace('$name', `'${data.name}'`)
+        .replace('$description', data.description ? `'${data.description}'` : 'null')
+        .replace('$creator', `'${data.creator}'`)
+        .replace('$license', `'${data.license}'`)
+        .replace('$tags', data.tags ? `'${data.tags}'` : 'null')
+        .replace('$source', `'${data.source}'`)
+        .replace('$image_url_original', `'${data.image_url_original}'`)
+        .replace('$image_url_xxl', data.image_url_xxl ? `'${data.image_url_xxl}'` : 'null')
+        .replace('$image_url_xl', data.image_url_xl ? `'${data.image_url_xl}'` : 'null')
+        .replace('$image_url_l', data.image_url_l ? `'${data.image_url_l}'` : 'null')
+        .replace('$image_url_m', data.image_url_m ? `'${data.image_url_m}'` : 'null')
+        .replace('$image_url_s', data.image_url_s ? `'${data.image_url_s}'` : 'null')
+        .replace('$image_url_xs', data.image_url_xs ? `'${data.image_url_xs}'` : 'null')
+
+    return template
 }

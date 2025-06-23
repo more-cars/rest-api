@@ -4,8 +4,8 @@ import {Brand} from "../../../../../src/models/brands/Brand"
 import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
 import {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
 import {CarModel} from "../../../../../src/models/car-models/CarModel"
-import FakeImage from "../../../../fixtures/nodes/FakeImage"
-import {ImageNodeUserData} from "../../../../../src/types/images/ImageNodeUserData"
+import FakeImageFull from "../../../../fixtures/nodes/FakeImageFull"
+import {InputImageCreate} from "../../../../../src/db/nodes/images/types/InputImageCreate"
 import {Image} from "../../../../../src/models/images/Image"
 
 test('Timestamps provided by the user are ignored', async () => {
@@ -36,7 +36,7 @@ test('Timestamps provided by the user are ignored', async () => {
     expect(createdCarModel).not.toHaveProperty('updated_at', "blobb")
 
     // IMAGE
-    const imageData: ImageNodeUserData = FakeImage
+    const imageData: InputImageCreate = FakeImageFull
     // @ts-expect-error property "created_at" is officially not allowed
     imageData['created_at'] = "blubb"
     // @ts-expect-error property "updated_at" is officially not allowed

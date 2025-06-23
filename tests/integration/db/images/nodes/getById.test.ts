@@ -1,6 +1,6 @@
 import {seedImage} from "../../../../dbSeeding/images/nodes/seedImage"
 import {getNodeById} from "../../../../../src/db/nodes/images/getNodeById"
-import {ImageNode} from "../../../../../src/types/images/ImageNode"
+import {ImageNode} from "../../../../../src/db/nodes/images/types/ImageNode"
 import {ImageSchema} from "../../../../_schemas/ImageSchema"
 import {validateJson} from "../../../../_helpers/validateJson"
 

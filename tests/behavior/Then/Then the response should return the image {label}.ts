@@ -1,6 +1,6 @@
 import {Then} from "@cucumber/cucumber"
 import assert from "assert"
-import {ImageNode} from "../../../src/types/images/ImageNode"
+import {ImageNode} from "../../../src/models/images/types/ImageNode"
 import {ImageSchema} from "../../_schemas/ImageSchema"
 import {validateJson} from "../../_helpers/validateJson"
 

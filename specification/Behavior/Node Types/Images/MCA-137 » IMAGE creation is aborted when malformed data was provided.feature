@@ -12,5 +12,5 @@ Feature: Create IMAGE (base implementation)
     When the user tries to create an "IMAGE" with the following data
       | key              | value  |
       | image_provvidder | flickr |
-    Then the response should return with status code 422
+    Then the response should return with status code 400
     And the response should contain an error message

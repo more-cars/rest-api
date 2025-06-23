@@ -1,6 +1,6 @@
 import {When} from "@cucumber/cucumber"
 import axios from "axios"
-import {ImageNode} from "../../../src/types/images/ImageNode"
+import {ImageNode} from "../../../src/models/images/types/ImageNode"
 import {BaseNode} from "../../../src/types/BaseNode"
 
 When('the user tries to attach the {string} {string} to the IMAGE {string}',
