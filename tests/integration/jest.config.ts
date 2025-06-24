@@ -12,7 +12,6 @@ module.exports = {
     testMatch: ['<rootDir>/tests/integration/**/*.test.ts'],
     maxConcurrency: 1,
     maxWorkers: 1,
-    forceExit: true,
     reporters: [
         "default",
         ["<rootDir>/node_modules/jest-html-reporter", {
