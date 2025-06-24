@@ -7,12 +7,12 @@ test('The relationship ID should not change when creating the same relationship 
     const carModel = await seedCarModel()
 
     const relationshipBefore =
-        await Brand.createHasCarModelRelationship(brand, carModel)
+        await Brand.createHasCarModelRelationship(brand.id, carModel.id)
     expect(relationshipBefore)
         .not.toBe(false)
 
     const relationshipAfter =
-        await Brand.createHasCarModelRelationship(brand, carModel)
+        await Brand.createHasCarModelRelationship(brand.id, carModel.id)
     expect(relationshipAfter)
         .not.toBe(false)
 

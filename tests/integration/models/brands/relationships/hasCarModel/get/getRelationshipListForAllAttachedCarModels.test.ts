@@ -8,7 +8,7 @@ test('Requesting a relationship list for all CAR MODELs that are connected to a 
     const carModels = await seedCarModels(3)
 
     for (const carModel of carModels) {
-        await Brand.createHasCarModelRelationship(brand, carModel)
+        await Brand.createHasCarModelRelationship(brand.id, carModel.id)
     }
 
     const relationships = await Brand.getRelationshipsForHasCarModel(brand.id)

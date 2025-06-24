@@ -7,7 +7,7 @@ import FakeBrand from "../../../fixtures/nodes/FakeBrand"
 test('ID is always contained in response', async () => {
     const carModel = await CarModel.create(FakeCarModel)
     const brand = await Brand.create(FakeBrand)
-    const expectedRelationship = await CarModel.createBelongsToBrandRelationship(carModel, brand)
+    const expectedRelationship = await CarModel.createBelongsToBrandRelationship(carModel.id, brand.id)
 
     if (!expectedRelationship) {
         assert.fail('Relationship creation failed')

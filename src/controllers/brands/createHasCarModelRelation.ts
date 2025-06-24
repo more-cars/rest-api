@@ -14,7 +14,7 @@ export async function createHasCarModelRelation(req: express.Request, res: expre
     }
 
     try {
-        const relationship = await Brand.createHasCarModelRelationship(brand, carModel)
+        const relationship = await Brand.createHasCarModelRelationship(brand.id, carModel.id)
 
         if (!relationship) {
             return send422response(res)

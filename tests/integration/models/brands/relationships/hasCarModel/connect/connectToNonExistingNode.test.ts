@@ -1,7 +1,5 @@
 import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
 import {seedCarModel} from "../../../../../../dbSeeding/car-models/nodes/seedCarModel"
-import FakeCarModelNonExistent from "../../../../../../fixtures/nodes/FakeCarModelNonExistent"
-import FakeBrandNonExistent from "../../../../../../fixtures/nodes/FakeBrandNonExistent"
 import {Brand} from "../../../../../../../src/models/brands/Brand"
 
 test('Expecting an error when any of the nodes does not exist',
@@ -10,17 +8,17 @@ test('Expecting an error when any of the nodes does not exist',
         const carModel = await seedCarModel()
 
         const relationshipAttemptWithNonExistentCarModel =
-            await Brand.createHasCarModelRelationship(FakeBrandNonExistent, carModel)
+            await Brand.createHasCarModelRelationship(-42, carModel.id)
         expect(relationshipAttemptWithNonExistentCarModel)
             .toBeFalsy()
 
         const relationshipAttemptWithNonExistentBrand =
-            await Brand.createHasCarModelRelationship(brand, FakeCarModelNonExistent)
+            await Brand.createHasCarModelRelationship(brand.id, -43)
         expect(relationshipAttemptWithNonExistentBrand)
             .toBeFalsy()
 
         const relationshipAttemptWithBothNodesNonExistent =
-            await Brand.createHasCarModelRelationship(FakeBrandNonExistent, FakeCarModelNonExistent)
+            await Brand.createHasCarModelRelationship(-44, -45)
         expect(relationshipAttemptWithBothNodesNonExistent)
             .toBeFalsy()
     })

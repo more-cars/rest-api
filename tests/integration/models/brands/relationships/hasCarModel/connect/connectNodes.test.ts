@@ -7,7 +7,7 @@ test('Creating a "Brand has Car Model" relationship when both nodes exist', asyn
     const brand = await seedBrand()
     const carModel = await seedCarModel()
 
-    const createdRelationship = await Brand.createHasCarModelRelationship(brand, carModel)
+    const createdRelationship = await Brand.createHasCarModelRelationship(brand.id, carModel.id)
 
     expect(createdRelationship)
         .toHaveProperty('brand_id', brand.id)

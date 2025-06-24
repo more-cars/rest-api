@@ -9,7 +9,7 @@ test('Attaching the car model to another brand removes the original relationship
     const secondBrand = await seedBrand()
     const carModel = await seedCarModel()
 
-    await Brand.createHasCarModelRelationship(firstBrand, carModel)
+    await Brand.createHasCarModelRelationship(firstBrand.id, carModel.id)
     const originalRelationship = await getSpecificRelationship(
         firstBrand.id as number,
         carModel.id as number,
@@ -17,7 +17,7 @@ test('Attaching the car model to another brand removes the original relationship
     )
     expect(originalRelationship).not.toBeFalsy()
 
-    await Brand.createHasCarModelRelationship(secondBrand, carModel)
+    await Brand.createHasCarModelRelationship(secondBrand.id, carModel.id)
     const newRelationship = await getSpecificRelationship(
         secondBrand.id as number,
         carModel.id as number,

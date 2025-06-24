@@ -9,7 +9,7 @@ test('Requesting the relationship between CAR MODEL and attached BRAND', async (
     const carModel = await seedCarModel()
     const brand = await seedBrand()
 
-    await CarModel.createBelongsToBrandRelationship(carModel, brand)
+    await CarModel.createBelongsToBrandRelationship(carModel.id, brand.id)
 
     const relationship = await CarModel.getRelationshipForBelongsToBrand(carModel.id)
 

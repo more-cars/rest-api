@@ -9,7 +9,7 @@ test('A BRAND can have multiple CAR MODELs attached to it', async () => {
     const carModels = await seedCarModels(carModelAmount)
 
     for (const carModel of carModels) {
-        await Brand.createHasCarModelRelationship(brand, carModel)
+        await Brand.createHasCarModelRelationship(brand.id, carModel.id)
     }
 
     const relationships = await Brand.getRelationshipsForHasCarModel(brand.id)
