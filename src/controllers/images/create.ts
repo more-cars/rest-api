@@ -40,8 +40,6 @@ export function validate(data: CreateImageRawInput): boolean {
         return false
     }
 
-    // TODO to be completed
-
     return true
 }
 
@@ -49,7 +47,7 @@ export function validate(data: CreateImageRawInput): boolean {
 export function sanitize(data: CreateImageRawInput): CreateImageInput {
     // TODO to be implemented
 
-    return data
+    return data as CreateImageInput
 }
 
 function send201response(data: ImageResponse, res: express.Response) {
