@@ -36,7 +36,25 @@ export function validate(data: CreateBrandRawInput): boolean {
         return false
     }
 
-    // TODO to be completed
+    if (data.full_name && typeof data.full_name !== "string") {
+        return false
+    }
+
+    if (data.founded && typeof data.founded !== "number") {
+        return false
+    }
+
+    if (data.defunct && typeof data.defunct !== "number") {
+        return false
+    }
+
+    if (data.wmi && typeof data.wmi !== "string") {
+        return false
+    }
+
+    if (data.hsn && typeof data.hsn !== "string") {
+        return false
+    }
 
     return true
 }
@@ -45,7 +63,7 @@ export function validate(data: CreateBrandRawInput): boolean {
 export function sanitize(data: CreateBrandRawInput): CreateBrandInput {
     // TODO to be implemented
 
-    return data
+    return data as CreateBrandInput
 }
 
 function send201response(data: BrandResponse, res: express.Response) {

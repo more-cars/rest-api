@@ -6,7 +6,8 @@ import {CreateBrandRawInput} from "./types/CreateBrandRawInput"
  * The type hints are only there to help constructing the correct STRUCTURE.
  * The DATA itself is NOT validated here (and also not sanitized).
  */
-export function unmarshal(data: any): CreateBrandRawInput {
+// @ts-expect-error We cannot set a data type because we don't know what data the user actually provided.
+export function unmarshal(data): CreateBrandRawInput {
     const unmarshalledData: CreateBrandRawInput = {
         name: data.name,
         full_name: data.full_name,

@@ -1,17 +1,14 @@
 import {CreateBrandRawInput} from "../../../../../../src/controllers/brands/types/CreateBrandRawInput"
 import {validate} from "../../../../../../src/controllers/brands/create"
 
-/**
- * @group happyPath
- */
-test('validating a complete and valid request', async () => {
+test('validating a valid request where optional fields are missing', async () => {
     const data: CreateBrandRawInput = {
         name: "BMW",
-        full_name: "Bayerische Motoren Werke",
-        founded: 1916,
-        defunct: 2222,
-        wmi: "WBA",
-        hsn: "0005",
+        full_name: undefined,
+        founded: undefined,
+        defunct: undefined,
+        wmi: undefined,
+        hsn: undefined,
     }
 
     const result = validate(data)
