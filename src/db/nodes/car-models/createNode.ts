@@ -7,6 +7,7 @@ import {addTimestampsToNode} from "../addTimestampsToNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 import {NodeTypeLabel} from "../../NodeTypeLabel"
 import {getCypherQueryTemplate} from "../../getCypherQueryTemplate"
+import {escapeSingleQuotes} from "../escapeSingleQuotes"
 
 export async function createNode(data: InputCarModelCreate): Promise<CarModelNode> {
     const driver: Driver = getDriver()
@@ -45,11 +46,11 @@ export function createNodeQuery(data: InputCarModelCreate) {
         .trim()
 
     template = template
-        .replace('$name', `'${data.name}'`)
+        .replace('$name', `'${escapeSingleQuotes(data.name)}'`)
         .replace('$built_from', data.built_from ? `${data.built_from}` : 'null')
         .replace('$built_to', data.built_to ? `${data.built_to}` : 'null')
         .replace('$generation', data.generation ? `${data.generation}` : 'null')
-        .replace('$internal_code', data.internal_code ? `'${data.internal_code}'` : 'null')
+        .replace('$internal_code', data.internal_code ? `'${escapeSingleQuotes(data.internal_code)}'` : 'null')
         .replace('$total_production', data.total_production ? `${data.total_production}` : 'null')
 
     return template

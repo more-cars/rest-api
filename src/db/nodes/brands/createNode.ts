@@ -7,6 +7,7 @@ import {addTimestampsToNode} from "../addTimestampsToNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 import {NodeTypeLabel} from "../../NodeTypeLabel"
 import {getCypherQueryTemplate} from "../../getCypherQueryTemplate"
+import {escapeSingleQuotes} from "../escapeSingleQuotes"
 
 export async function createNode(data: InputBrandCreate): Promise<BrandNode> {
     const driver: Driver = getDriver()
@@ -45,12 +46,12 @@ export function createNodeQuery(data: InputBrandCreate) {
         .trim()
 
     template = template
-        .replace('$name', `'${data.name}'`)
-        .replace('$full_name', data.full_name ? `'${data.full_name}'` : 'null')
+        .replace('$name', `'${escapeSingleQuotes(data.name)}'`)
+        .replace('$full_name', data.full_name ? `'${escapeSingleQuotes(data.full_name)}'` : 'null')
         .replace('$founded', data.founded ? `${data.founded}` : 'null')
         .replace('$defunct', data.defunct ? `${data.defunct}` : 'null')
-        .replace('$wmi', data.wmi ? `'${data.wmi}'` : 'null')
-        .replace('$hsn', data.hsn ? `'${data.hsn}'` : 'null')
+        .replace('$wmi', data.wmi ? `'${escapeSingleQuotes(data.wmi)}'` : 'null')
+        .replace('$hsn', data.hsn ? `'${escapeSingleQuotes(data.hsn)}'` : 'null')
 
     return template
 }
