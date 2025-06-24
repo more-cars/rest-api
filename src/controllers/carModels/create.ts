@@ -36,7 +36,25 @@ export function validate(data: CreateCarModelRawInput): boolean {
         return false
     }
 
-    // TODO to be completed
+    if (data.built_from && typeof data.built_from !== "number") {
+        return false
+    }
+
+    if (data.built_to && typeof data.built_to !== "number") {
+        return false
+    }
+
+    if (data.generation && typeof data.generation !== "number") {
+        return false
+    }
+
+    if (data.internal_code && typeof data.internal_code !== "string") {
+        return false
+    }
+
+    if (data.total_production && typeof data.total_production !== "number") {
+        return false
+    }
 
     return true
 }
@@ -45,7 +63,7 @@ export function validate(data: CreateCarModelRawInput): boolean {
 export function sanitize(data: CreateCarModelRawInput): CreateCarModelInput {
     // TODO to be implemented
 
-    return data
+    return data as CreateCarModelInput
 }
 
 function send201response(data: CarModelResponse, res: express.Response) {

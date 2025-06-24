@@ -1,8 +1,8 @@
 export type CreateCarModelRawInput = {
-    name: any
-    built_from: any
-    built_to: any
-    generation: any
-    internal_code: any
-    total_production: any
+    name: unknown
+    built_from: unknown
+    built_to: unknown
+    generation: unknown
+    internal_code: unknown
+    total_production: unknown
 }
