@@ -1,7 +1,7 @@
 import {Driver, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../driver"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
-import {DbRelationship} from "../../types/DbRelationship"
+import {DbRelationship} from "../types/DbRelationship"
 
 export async function deleteRelationshipsByNodeAndType(nodeId: number, relationshipName: DbRelationship): Promise<boolean> {
     const driver: Driver = getDriver()

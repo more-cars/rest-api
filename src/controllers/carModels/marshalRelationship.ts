@@ -1,10 +1,13 @@
-import {CarModelBelongsToBrandRelationship} from "../../types/car-models/CarModelBelongsToBrandRelationship"
+import {CarModelBelongsToBrandRelationship} from "../../models/car-models/types/CarModelBelongsToBrandRelationship"
+import {CarModelBelongsToBrandResponse} from "./types/CarModelBelongsToBrandResponse"
 
 export function marshalRelationship(relationship: CarModelBelongsToBrandRelationship) {
-    return <CarModelBelongsToBrandRelationship>{
+    const marshalledData: CarModelBelongsToBrandResponse = {
         car_model_id: relationship.car_model_id,
         brand_id: relationship.brand_id,
         relationship_id: relationship.relationship_id,
         relationship_name: relationship.relationship_name,
     }
+
+    return marshalledData
 }

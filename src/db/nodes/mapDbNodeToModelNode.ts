@@ -1,5 +1,5 @@
 import {Node} from "neo4j-driver"
-import {BaseNode} from "../../types/BaseNode"
+import {BaseNode} from "../types/BaseNode"
 
 export function mapDbNodeToModelNode(dbNode: Node): BaseNode {
     const modelNode: BaseNode = {

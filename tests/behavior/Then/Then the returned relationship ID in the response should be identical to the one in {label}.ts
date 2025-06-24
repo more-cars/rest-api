@@ -1,6 +1,6 @@
 import {Then} from "@cucumber/cucumber"
 import assert from "assert"
-import {BaseRelationship} from "../../../src/types/BaseRelationship"
+import {BaseRelationship} from "../../../src/db/types/BaseRelationship"
 
 Then('the returned relationship ID in the response should be identical to the one in {string}', function (relationshipLabel: string) {
     const rememberedRelationship: BaseRelationship = this.relationship[relationshipLabel]

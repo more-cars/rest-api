@@ -1,7 +1,7 @@
 import {createRelationship} from "../../db/relationships/createRelationship"
-import {DbRelationship} from "../../types/DbRelationship"
-import {ImageBelongsToNodeRelationship} from "../../types/images/ImageBelongsToNodeRelationship"
-import {ImageRelationship} from "../../types/images/ImageRelationship"
+import {DbRelationship} from "../../db/types/DbRelationship"
+import {ImageBelongsToNodeRelationship} from "./types/ImageBelongsToNodeRelationship"
+import {ImageRelationship} from "./types/ImageRelationship"
 
 /**
  * Creates a BELONGS_TO_NODE relationship between the given nodes.

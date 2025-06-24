@@ -1,6 +1,6 @@
 import {Then} from "@cucumber/cucumber"
 import assert from "assert"
-import {BrandHasCarModelRelationship} from "../../../src/types/brands/BrandHasCarModelRelationship"
+import {BrandHasCarModelRelationship} from "../../../src/models/brands/types/BrandHasCarModelRelationship"
 
 Then('the response should contain the relationship {string}',
     function (label: string) {

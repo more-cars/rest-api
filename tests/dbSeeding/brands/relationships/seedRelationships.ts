@@ -1,4 +1,4 @@
-import {BaseRelationship} from "../../../../src/types/BaseRelationship"
+import {BaseRelationship} from "../../../../src/db/types/BaseRelationship"
 import {seedRelationship} from "./seedRelationship"
 
 export async function seedRelationships(amount: number) {

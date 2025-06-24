@@ -48,7 +48,7 @@ export function createNodeQuery(data: InputImageCreate) {
         .replace('$image_provider', `'${data.image_provider}'`)
         .replace('$external_id', `'${data.external_id}'`)
         .replace('$name', `'${data.name}'`)
-        .replace('$description', data.description ? `'${data.description}'` : 'null')
+        .replace('$description', data.description ? `'${data.description}'` : 'null') // TODO escape single quotes
         .replace('$creator', `'${data.creator}'`)
         .replace('$license', `'${data.license}'`)
         .replace('$tags', data.tags ? `'${data.tags}'` : 'null')

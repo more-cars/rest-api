@@ -2,7 +2,7 @@ import {seedCarModel} from "../../../../../../dbSeeding/car-models/nodes/seedCar
 import {
     getRelationshipsForSpecificNode
 } from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
-import {DbRelationship} from "../../../../../../../src/types/DbRelationship"
+import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 test('An empty list should be returned when no BRAND is connected to the CAR MODEL',
     async () => {

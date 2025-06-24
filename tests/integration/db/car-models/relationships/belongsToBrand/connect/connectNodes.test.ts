@@ -1,8 +1,8 @@
 import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
 import {seedCarModel} from "../../../../../../dbSeeding/car-models/nodes/seedCarModel"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
-import {DbRelationship} from "../../../../../../../src/types/DbRelationship"
-import {BrandRelationship} from "../../../../../../../src/types/brands/BrandRelationship"
+import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {BrandRelationship} from "../../../../../../../src/models/brands/types/BrandRelationship"
 
 test('Creating a "Car Model belongs to Brand" relationship when both nodes exist', async () => {
     const carModel = await seedCarModel()

@@ -1,7 +1,7 @@
 import {Driver, Relationship, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../driver"
-import {BaseRelationship} from "../../types/BaseRelationship"
-import {DbRelationship} from "../../types/DbRelationship"
+import {BaseRelationship} from "../types/BaseRelationship"
+import {DbRelationship} from "../types/DbRelationship"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 /**

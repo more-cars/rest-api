@@ -1,9 +1,9 @@
 import {CarModelNode} from "./types/CarModelNode"
 import {BrandNode} from "../brands/types/BrandNode"
 import {createRelationship} from "../../db/relationships/createRelationship"
-import {DbRelationship} from "../../types/DbRelationship"
-import {CarModelBelongsToBrandRelationship} from "../../types/car-models/CarModelBelongsToBrandRelationship"
-import {CarModelRelationship} from "../../types/car-models/CarModelRelationship"
+import {DbRelationship} from "../../db/types/DbRelationship"
+import {CarModelBelongsToBrandRelationship} from "./types/CarModelBelongsToBrandRelationship"
+import {CarModelRelationship} from "./types/CarModelRelationship"
 import {deleteExistingCarModelBelongsToBrandRelationship} from "./deleteExistingCarModelBelongsToBrandRelationship"
 import {getCarModelBelongsToBrandRelationship} from "./getCarModelBelongsToBrandRelationship"
 

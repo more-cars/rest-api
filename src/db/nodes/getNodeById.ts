@@ -1,6 +1,6 @@
 import {Driver, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../driver"
-import {BaseNode} from "../../types/BaseNode"
+import {BaseNode} from "../types/BaseNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 import {NodeTypeLabel} from "../NodeTypeLabel"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"

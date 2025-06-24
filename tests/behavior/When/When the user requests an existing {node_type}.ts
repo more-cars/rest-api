@@ -1,6 +1,6 @@
 import {When} from "@cucumber/cucumber"
 import axios from "axios"
-import {BaseNode} from "../../../src/types/BaseNode"
+import {BaseNode} from "../../../src/db/types/BaseNode"
 import {getAllNodesOfType as getAllBrands} from "../../../src/db/nodes/brands/getAllNodesOfType"
 import {getAllNodesOfType as getAllCarModels} from "../../../src/db/nodes/car-models/getAllNodesOfType"
 import {getAllNodesOfType as getAllImages} from "../../../src/db/nodes/images/getAllNodesOfType"

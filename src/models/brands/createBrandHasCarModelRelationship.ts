@@ -1,14 +1,14 @@
-import {BrandNode} from "../../db/nodes/brands/types/BrandNode"
+import {BrandNode} from "./types/BrandNode"
 import {CarModelNode} from "../car-models/types/CarModelNode"
 import {createRelationship} from "../../db/relationships/createRelationship"
-import {DbRelationship} from "../../types/DbRelationship"
-import {BrandRelationship} from "../../types/brands/BrandRelationship"
-import {BrandHasCarModelRelationship} from "../../types/brands/BrandHasCarModelRelationship"
+import {DbRelationship} from "../../db/types/DbRelationship"
+import {BrandRelationship} from "./types/BrandRelationship"
+import {BrandHasCarModelRelationship} from "./types/BrandHasCarModelRelationship"
 
 /**
  * Creates a HAS_CAR_MODEL relationship between the given nodes.
  */
-export async function createBrandHasCarModelRelationship(brand: BrandNode, carModel: CarModelNode) {
+export async function createBrandHasCarModelRelationship(brand: BrandNode, carModel: CarModelNode): Promise<false | BrandHasCarModelRelationship> {
     const baseRelationship = await createRelationship(
         brand.id as number,
         carModel.id as number,

@@ -1,6 +1,6 @@
 import {When} from "@cucumber/cucumber"
 import axios from "axios"
-import {BaseNode} from "../../../src/types/BaseNode"
+import {BaseNode} from "../../../src/db/types/BaseNode"
 
 When('the user requests the {string} {string}', async function (nodeType: string, label: string) {
     let node: BaseNode

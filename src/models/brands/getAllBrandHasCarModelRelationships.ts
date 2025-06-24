@@ -1,7 +1,7 @@
-import {BrandNode} from "../../db/nodes/brands/types/BrandNode"
-import {DbRelationship} from "../../types/DbRelationship"
-import {BrandRelationship} from "../../types/brands/BrandRelationship"
-import {BrandHasCarModelRelationship} from "../../types/brands/BrandHasCarModelRelationship"
+import {BrandNode} from "./types/BrandNode"
+import {DbRelationship} from "../../db/types/DbRelationship"
+import {BrandRelationship} from "./types/BrandRelationship"
+import {BrandHasCarModelRelationship} from "./types/BrandHasCarModelRelationship"
 import {getRelationshipsForSpecificNode} from "../../db/relationships/getRelationshipsForSpecificNode"
 
 export async function getAllBrandHasCarModelRelationships(brand: BrandNode) {

@@ -1,7 +1,7 @@
 import {When} from "@cucumber/cucumber"
 import axios from "axios"
 import {ImageNode} from "../../../src/models/images/types/ImageNode"
-import {BaseNode} from "../../../src/types/BaseNode"
+import {BaseNode} from "../../../src/db/types/BaseNode"
 
 When('the user attaches the {string} {string} to the IMAGE {string}',
     async function (partnerNodeType: string, partnerNodeLabel: string, imageLabel: string) {

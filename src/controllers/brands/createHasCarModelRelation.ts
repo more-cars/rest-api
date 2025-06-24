@@ -1,43 +1,48 @@
 import express from "express"
 import {Brand} from "../../models/brands/Brand"
 import {CarModel} from "../../models/car-models/CarModel"
-import {BrandRelationship} from "../../types/brands/BrandRelationship"
+import {BrandHasCarModelResponse} from "./types/BrandHasCarModelResponse"
+import {marshalRelationship} from "./marshalRelationship"
 
 export async function createHasCarModelRelation(req: express.Request, res: express.Response) {
+    // TODO this validation is the responsibility of the models
     const brand = await Brand.findById(parseInt(req.params.brandId))
     const carModel = await CarModel.findById(parseInt(req.params.carModelId))
 
     if (!brand || !carModel) {
-        res.status(404)
-        res.set('Content-Type', 'text/plain')
-        res.send('Request failed. Node not found.')
-
-        return
+        return send404response(res)
     }
 
     try {
-        const createdRelationship = await Brand.createHasCarModelRelationship(brand, carModel)
+        const relationship = await Brand.createHasCarModelRelationship(brand, carModel)
 
-        if (!createdRelationship) {
-            res.status(422)
-            res.set('Content-Type', 'text/plain')
-            res.send('Request failed. Relationship could not be created.')
-
-            return
+        if (!relationship) {
+            return send422response(res)
         }
 
-        res.status(201)
-        res.set('Content-Type', 'application/json')
-        res.send({
-            brand_id: brand.id,
-            car_model_id: carModel.id,
-            relationship_id: createdRelationship.relationship_id,
-            relationship_name: BrandRelationship.hasCarModel,
-        })
+        const marshalledData = marshalRelationship(relationship)
+
+        send201response(marshalledData, res)
     } catch (e) {
         console.error(e)
-        res.status(422)
-        res.set('Content-Type', 'text/plain')
-        res.send('Request failed. Relationship could not be created.')
+        send422response(res)
     }
+}
+
+function send201response(data: BrandHasCarModelResponse, res: express.Response) {
+    res.status(201)
+    res.set('Content-Type', 'application/json')
+    res.send(data)
+}
+
+function send404response(res: express.Response) {
+    res.status(404)
+    res.set('Content-Type', 'text/plain')
+    res.send('Request failed. Node not found.')
+}
+
+function send422response(res: express.Response) {
+    res.status(422)
+    res.set('Content-Type', 'text/plain')
+    res.send('Request failed. Relationship could not be created.')
 }

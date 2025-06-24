@@ -3,7 +3,7 @@ import {Image} from "../../../../../../src/models/images/Image"
 import {
     seedRelationshipsForSpecificImage
 } from "../../../../../dbSeeding/images/relationships/seedRelationshipsForSpecificImage"
-import {DbRelationship} from "../../../../../../src/types/DbRelationship"
+import {DbRelationship} from "../../../../../../src/db/types/DbRelationship"
 import assert from "assert"
 
 test('Get all "Image belongs to Node" relationships for specific image', async () => {

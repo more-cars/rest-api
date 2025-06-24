@@ -1,5 +1,5 @@
 import {ImageNode} from "../../../../src/db/nodes/images/types/ImageNode"
-import {BaseRelationship} from "../../../../src/types/BaseRelationship"
+import {BaseRelationship} from "../../../../src/db/types/BaseRelationship"
 import {seedRelationshipForSpecificImage} from "./seedRelationshipForSpecificImage"
 
 export async function seedRelationshipsForSpecificImage(imageNode: ImageNode, amount: number) {

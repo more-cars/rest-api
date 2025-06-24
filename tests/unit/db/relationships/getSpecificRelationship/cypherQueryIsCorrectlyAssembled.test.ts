@@ -1,5 +1,5 @@
 import {getSpecificRelationshipQuery} from "../../../../../src/db/relationships/getSpecificRelationship"
-import {DbRelationship} from "../../../../../src/types/DbRelationship"
+import {DbRelationship} from "../../../../../src/db/types/DbRelationship"
 
 test('cypher query is correctly assembled for "get specific relationship" request', async () => {
     const query = getSpecificRelationshipQuery(22, DbRelationship.BrandHasCarModel, 44)

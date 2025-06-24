@@ -1,6 +1,6 @@
 import {Then} from "@cucumber/cucumber"
 import assert from "assert"
-import {BaseRelationship} from "../../../src/types/BaseRelationship"
+import {BaseRelationship} from "../../../src/db/types/BaseRelationship"
 import {removeDuplicates} from "../../_helpers/removeDuplicates"
 
 Then('each relationship in the set {string} should contain a different ID',

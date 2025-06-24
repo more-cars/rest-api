@@ -1,7 +1,7 @@
 import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
 import {seedCarModels} from "../../../../../../dbSeeding/car-models/nodes/seedCarModels"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
-import {DbRelationship} from "../../../../../../../src/types/DbRelationship"
+import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {
     getRelationshipsForSpecificNode
 } from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"

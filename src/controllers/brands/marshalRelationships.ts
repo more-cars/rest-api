@@ -1,7 +1,8 @@
-import {BrandHasCarModelRelationship} from "../../types/brands/BrandHasCarModelRelationship"
+import {BrandHasCarModelRelationship} from "../../models/brands/types/BrandHasCarModelRelationship"
 import {marshalRelationship} from "./marshalRelationship"
+import {BrandHasCarModelResponse} from "./types/BrandHasCarModelResponse"
 
-export function marshalRelationships(relationships: Array<BrandHasCarModelRelationship>) {
+export function marshalRelationships(relationships: Array<BrandHasCarModelRelationship>): Array<BrandHasCarModelResponse> {
     const responseObjects: any[] = []
 
     relationships.forEach((relationship) => {

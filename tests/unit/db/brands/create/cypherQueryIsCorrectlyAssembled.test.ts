@@ -8,7 +8,7 @@ test('cypher query is correctly assembled for "create brand" request', async () 
         founded: null,
         defunct: 2020,
         wmi: null,
-        hsn: "0005"
+        hsn: "0005",
     }
     const query = createNodeQuery(data)
 

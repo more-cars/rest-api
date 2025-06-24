@@ -1,6 +1,6 @@
 import {Then} from "@cucumber/cucumber"
 import assert from "assert"
-import {BaseNode} from "../../../src/types/BaseNode"
+import {BaseNode} from "../../../src/db/types/BaseNode"
 import {removeDuplicates} from "../../_helpers/removeDuplicates"
 
 Then('each node in the response should contain a different ID',

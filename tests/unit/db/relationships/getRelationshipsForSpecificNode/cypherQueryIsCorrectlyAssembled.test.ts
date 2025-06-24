@@ -1,4 +1,4 @@
-import {DbRelationship} from "../../../../../src/types/DbRelationship"
+import {DbRelationship} from "../../../../../src/db/types/DbRelationship"
 import {getRelationshipsForSpecificNodeQuery} from "../../../../../src/db/relationships/getRelationshipsForSpecificNode"
 
 test('cypher query is correctly assembled for "get relationships for specific node" request', async () => {

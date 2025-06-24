@@ -1,7 +1,7 @@
 import {seedImage} from "../../../../../dbSeeding/images/nodes/seedImage"
 import {seedCarModel} from "../../../../../dbSeeding/car-models/nodes/seedCarModel"
-import {BaseNode} from "../../../../../../src/types/BaseNode"
-import {ImageRelationship} from "../../../../../../src/types/images/ImageRelationship"
+import {BaseNode} from "../../../../../../src/db/types/BaseNode"
+import {ImageRelationship} from "../../../../../../src/models/images/types/ImageRelationship"
 import {Image} from "../../../../../../src/models/images/Image"
 
 test('Creating a "Image belongs to Node" relationship when both nodes exist', async () => {

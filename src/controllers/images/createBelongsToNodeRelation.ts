@@ -1,42 +1,46 @@
 import express from "express"
 import {Image} from "../../models/images/Image"
-import {ImageRelationship} from "../../types/images/ImageRelationship"
+import {marshalRelationship} from "./marshalRelationship"
+import {ImageBelongsToNodeResponse} from "./types/ImageBelongsToNodeResponse"
 
 export async function createBelongsToNodeRelation(req: express.Request, res: express.Response) {
     const imageId = parseInt(req.params.imageId)
     const partnerNodeId = parseInt(req.params.partnerNodeId)
 
     if (!imageId || !partnerNodeId) {
-        res.status(404)
-        res.set('Content-Type', 'text/plain')
-        res.send('Request failed. Image ID and/or partner node ID are invalid.')
-
-        return
+        return send404response(res)
     }
 
     try {
-        const createdRelationship = await Image.createBelongsToNodeRelationship(imageId, partnerNodeId)
+        const relationship = await Image.createBelongsToNodeRelationship(imageId, partnerNodeId)
 
-        if (!createdRelationship) {
-            res.status(404)
-            res.set('Content-Type', 'text/plain')
-            res.send('Request failed. Image ID and/or partner node ID not found.')
-
-            return
+        if (!relationship) {
+            return send404response(res)
         }
 
-        res.status(201)
-        res.set('Content-Type', 'application/json')
-        res.send({
-            image_id: imageId,
-            partner_node_id: partnerNodeId,
-            relationship_id: createdRelationship.relationship_id,
-            relationship_name: ImageRelationship.belongsToNode,
-        })
+        const marshalledData = marshalRelationship(relationship)
+
+        send201response(marshalledData, res)
     } catch (e) {
         console.error(e)
-        res.status(422)
-        res.set('Content-Type', 'text/plain')
-        res.send('Request failed. Relationship could not be created.')
+        send422response(res)
     }
+}
+
+function send201response(data: ImageBelongsToNodeResponse, res: express.Response) {
+    res.status(201)
+    res.set('Content-Type', 'application/json')
+    res.send(data)
+}
+
+function send404response(res: express.Response) {
+    res.status(404)
+    res.set('Content-Type', 'text/plain')
+    res.send('Request failed. Image ID and/or partner node ID not found.')
+}
+
+function send422response(res: express.Response) {
+    res.status(422)
+    res.set('Content-Type', 'text/plain')
+    res.send('Request failed. Relationship could not be created.')
 }

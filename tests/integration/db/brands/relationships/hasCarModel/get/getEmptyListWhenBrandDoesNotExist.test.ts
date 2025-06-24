@@ -1,7 +1,7 @@
 import {
     getRelationshipsForSpecificNode
 } from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
-import {DbRelationship} from "../../../../../../../src/types/DbRelationship"
+import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 // The database does not make any semantical checks.
 // -42 is a valid input, the relationship name is valid.

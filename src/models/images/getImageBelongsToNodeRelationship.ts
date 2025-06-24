@@ -1,7 +1,7 @@
 import {getSpecificRelationship} from "../../db/relationships/getSpecificRelationship"
-import {DbRelationship} from "../../types/DbRelationship"
-import {ImageRelationship} from "../../types/images/ImageRelationship"
-import {ImageBelongsToNodeRelationship} from "../../types/images/ImageBelongsToNodeRelationship"
+import {DbRelationship} from "../../db/types/DbRelationship"
+import {ImageRelationship} from "./types/ImageRelationship"
+import {ImageBelongsToNodeRelationship} from "./types/ImageBelongsToNodeRelationship"
 
 /**
  * Returns the BELONGS_TO_NODE relationship between the given nodes when it exists.

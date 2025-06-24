@@ -1,5 +1,5 @@
 import {createRelationship} from "../../../../src/db/relationships/createRelationship"
-import {DbRelationship} from "../../../../src/types/DbRelationship"
+import {DbRelationship} from "../../../../src/db/types/DbRelationship"
 import assert from "assert"
 import FakeBrand from "../../../fixtures/nodes/FakeBrand"
 import FakeCarModel from "../../../fixtures/nodes/FakeCarModel"

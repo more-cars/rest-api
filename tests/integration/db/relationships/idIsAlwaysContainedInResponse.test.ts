@@ -3,7 +3,7 @@ import {createNode as createBrandNode} from "../../../../src/db/nodes/brands/cre
 import {createNode as createCarModelNode} from "../../../../src/db/nodes/car-models/createNode"
 import FakeBrand from "../../../fixtures/nodes/FakeBrand"
 import FakeCarModel from "../../../fixtures/nodes/FakeCarModel"
-import {DbRelationship} from "../../../../src/types/DbRelationship"
+import {DbRelationship} from "../../../../src/db/types/DbRelationship"
 import {createRelationship} from "../../../../src/db/relationships/createRelationship"
 import {getSpecificRelationship} from "../../../../src/db/relationships/getSpecificRelationship"
 

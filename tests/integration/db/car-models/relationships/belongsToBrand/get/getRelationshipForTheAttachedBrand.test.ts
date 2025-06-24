@@ -2,9 +2,9 @@ import {seedCarModel} from "../../../../../../dbSeeding/car-models/nodes/seedCar
 import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {
-        getRelationshipsForSpecificNode
+    getRelationshipsForSpecificNode
 } from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
-import {DbRelationship} from "../../../../../../../src/types/DbRelationship"
+import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 test('Requesting the relationship between CAR MODEL and attached BRAND',
     async () => {

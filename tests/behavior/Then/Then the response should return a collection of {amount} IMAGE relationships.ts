@@ -1,6 +1,6 @@
 import {Then} from "@cucumber/cucumber"
 import assert from "assert"
-import {ImageBelongsToNodeRelationship} from "../../../src/types/images/ImageBelongsToNodeRelationship"
+import {ImageBelongsToNodeRelationship} from "../../../src/models/images/types/ImageBelongsToNodeRelationship"
 import {ImageBelongsToNodeSchema} from "../../_schemas/ImageBelongsToNodeSchema"
 import {validateJson} from "../../_helpers/validateJson"
 
