@@ -6,7 +6,7 @@ import {BrandResponse} from "./types/BrandResponse"
  * Creates a valid response object from the given collection of brands.
  */
 export function marshalAll(brands: Array<BrandNode>): Array<BrandResponse> {
-    const responseObjects: any[] = []
+    const responseObjects: Array<BrandResponse> = []
 
     brands.forEach((brand: BrandNode) => {
         responseObjects.push(marshal(brand))

@@ -3,7 +3,7 @@ import {ImageBelongsToNodeRelationship} from "../../models/images/types/ImageBel
 import {ImageBelongsToNodeResponse} from "./types/ImageBelongsToNodeResponse"
 
 export function marshalRelationships(relationships: Array<ImageBelongsToNodeRelationship>): Array<ImageBelongsToNodeResponse> {
-    const responseObjects: any[] = []
+    const responseObjects: Array<ImageBelongsToNodeResponse> = []
 
     relationships.forEach((relationship) => {
         responseObjects.push(marshalRelationship(relationship))

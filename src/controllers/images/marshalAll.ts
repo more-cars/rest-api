@@ -6,7 +6,7 @@ import {ImageResponse} from "./types/ImageResponse"
  * Creates a valid response object from the given collection of images.
  */
 export function marshalAll(images: Array<ImageNode>): Array<ImageResponse> {
-    const responseObjects: any[] = []
+    const responseObjects: Array<ImageResponse> = []
 
     images.forEach((image: ImageNode) => {
         responseObjects.push(marshal(image))
