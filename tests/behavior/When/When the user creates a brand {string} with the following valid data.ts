@@ -6,7 +6,11 @@ When('the user creates a brand {string} with the following valid/mixed data', as
 
     const data: any = {}
     rows.forEach((row) => {
-        data[row.key] = row.value
+        if (['founded', 'defunct'].includes(row.key)) {
+            data[row.key] = parseInt(row.value)
+        } else {
+            data[row.key] = row.value
+        }
     })
 
     this.brand[label] = data

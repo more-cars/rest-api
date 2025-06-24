@@ -11,7 +11,7 @@ When('the user tries to create a brand with the following data', async function 
     this.latestResponse = await axios
         .post(`${process.env.API_URL}/brands`, data, {
             validateStatus: function (status) {
-                return status === 400 // treating the 422 as a "good" status code, so axios does not fail the request
+                return status === 400 // treating the 400 as a "good" status code, so axios does not fail the request
             }
         })
 })
