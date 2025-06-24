@@ -1,23 +1,17 @@
 import express from "express"
 import {Brand} from "../../models/brands/Brand"
-import {CarModel} from "../../models/car-models/CarModel"
 import {BrandHasCarModelResponse} from "./types/BrandHasCarModelResponse"
 import {marshalRelationship} from "./marshalRelationship"
 
 export async function createHasCarModelRelation(req: express.Request, res: express.Response) {
-    // TODO this validation is the responsibility of the models
-    const brand = await Brand.findById(parseInt(req.params.brandId))
-    const carModel = await CarModel.findById(parseInt(req.params.carModelId))
-
-    if (!brand || !carModel) {
-        return send404response(res)
-    }
+    const carModelId = parseInt(req.params.carModelId)
+    const brandId = parseInt(req.params.brandId)
 
     try {
-        const relationship = await Brand.createHasCarModelRelationship(brand.id, carModel.id)
+        const relationship = await Brand.createHasCarModelRelationship(brandId, carModelId)
 
         if (!relationship) {
-            return send422response(res)
+            return send404response(res)
         }
 
         const marshalledData = marshalRelationship(relationship)

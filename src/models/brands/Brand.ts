@@ -6,6 +6,7 @@ import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/brands/getNodeById"
 import {getAllNodesOfType} from "../../db/nodes/brands/getAllNodesOfType"
 import {BrandHasCarModelRelationship} from "./types/BrandHasCarModelRelationship"
+import {CarModel} from "../car-models/CarModel"
 import {createBrandHasCarModelRelationship} from "./createBrandHasCarModelRelationship"
 import {deleteForeignBrandHasCarModelRelationship} from "./deleteForeignBrandHasCarModelRelationship"
 import {getBrandHasCarModelRelationship} from "./getBrandHasCarModelRelationship"
@@ -29,6 +30,13 @@ export class Brand {
     }
 
     static async createHasCarModelRelationship(brandId: number, carModelId: number): Promise<false | BrandHasCarModelRelationship> {
+        const brand = await Brand.findById(brandId)
+        const carModel = await CarModel.findById(carModelId)
+
+        if (!brand || !carModel) {
+            return false
+        }
+
         const existingRelation = await getBrandHasCarModelRelationship(brandId, carModelId)
         if (existingRelation) {
             return existingRelation
