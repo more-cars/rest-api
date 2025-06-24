@@ -10,5 +10,8 @@ jobs:
   api-schema-validation:
     uses: ./.github/workflows/validate-api-schema.yml
 
+  lint-typescript-code:
+    uses: ./.github/workflows/lint-typescript-code.yml
+
   unit-tests:
     uses: ./.github/workflows/run-unit-tests.yml

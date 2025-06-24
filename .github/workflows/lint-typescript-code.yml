@@ -1,0 +1,18 @@
+on:
+  workflow_call:
+
+jobs:
+  run-unit-tests:
+    name: "Lint TypeScript Code"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Node.js dependencies
+        run: npm ci
+      - name: Lint TypeScript code
+        run: npm run tests:lint
