@@ -15,7 +15,7 @@ export async function create(req: express.Request, res: express.Response) {
             return send400response(res)
         }
 
-        const sanitizedData = sanitize(data)
+        const sanitizedData = sanitize(data as CreateCarModelInput)
         const createdNode: CarModelNode = await CarModel.create(sanitizedData)
         const marshalledData = marshal(createdNode)
 
@@ -59,11 +59,16 @@ export function validate(data: CreateCarModelRawInput): boolean {
     return true
 }
 
-// removing trailing whitespaces, strip/convert html tags
-export function sanitize(data: CreateCarModelRawInput): CreateCarModelInput {
-    // TODO to be implemented
-
-    return data as CreateCarModelInput
+export function sanitize(data: CreateCarModelInput): CreateCarModelInput {
+    const sanitizedData: CreateCarModelInput = {
+        name: data.name.trim(),
+        built_from: data.built_from ? data.built_from : null,
+        built_to: data.built_to ? data.built_to : null,
+        generation: data.generation ? data.generation : null,
+        internal_code: data.internal_code ? data.internal_code.trim() : null,
+        total_production: data.total_production ? data.total_production : null,
+    }
+    return sanitizedData
 }
 
 function send201response(data: CarModelResponse, res: express.Response) {

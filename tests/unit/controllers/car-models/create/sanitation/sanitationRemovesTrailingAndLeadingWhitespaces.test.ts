@@ -1,8 +1,8 @@
 import {sanitize} from "../../../../../../src/controllers/carModels/create"
-import {CreateCarModelRawInput} from "../../../../../../src/controllers/carModels/types/CreateCarModelRawInput"
+import {CreateCarModelInput} from "../../../../../../src/models/car-models/types/CreateCarModelInput"
 
-test.skip('leading and trailing whitespaces are removed', async () => {
-    const data: CreateCarModelRawInput = {
+test('leading and trailing whitespaces are removed', async () => {
+    const data: CreateCarModelInput = {
         name: "    360 Modena    ",
         built_from: 1999,
         built_to: 2005,

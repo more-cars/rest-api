@@ -15,7 +15,7 @@ export async function create(req: express.Request, res: express.Response) {
             return send400response(res)
         }
 
-        const sanitizedData = sanitize(data)
+        const sanitizedData = sanitize(data as CreateBrandInput)
         const createdNode: BrandNode = await Brand.create(sanitizedData)
         const marshalledData = marshal(createdNode)
 
@@ -59,11 +59,17 @@ export function validate(data: CreateBrandRawInput): boolean {
     return true
 }
 
-// removing trailing whitespaces, strip/convert html tags
-export function sanitize(data: CreateBrandRawInput): CreateBrandInput {
-    // TODO to be implemented
+export function sanitize(data: CreateBrandInput): CreateBrandInput {
+    const sanitizedData: CreateBrandInput = {
+        name: data.name.trim(),
+        full_name: data.full_name ? data.full_name.trim() : null,
+        founded: data.founded ? data.founded : null,
+        defunct: data.defunct ? data.defunct : null,
+        wmi: data.wmi ? data.wmi.trim() : null,
+        hsn: data.hsn ? data.hsn.trim() : null,
+    }
 
-    return data as CreateBrandInput
+    return sanitizedData
 }
 
 function send201response(data: BrandResponse, res: express.Response) {

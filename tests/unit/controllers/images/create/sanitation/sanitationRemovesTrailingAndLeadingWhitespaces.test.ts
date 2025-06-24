@@ -1,8 +1,8 @@
 import {sanitize} from "../../../../../../src/controllers/images/create"
-import {CreateImageRawInput} from "../../../../../../src/controllers/images/types/CreateImageRawInput"
+import {CreateImageInput} from "../../../../../../src/models/images/types/CreateImageInput"
 
-test.skip('leading and trailing whitespaces are removed', async () => {
-    const data: CreateImageRawInput = {
+test('leading and trailing whitespaces are removed', async () => {
+    const data: CreateImageInput = {
         external_id: "    54570839725",
         image_provider: " flickr    ",
     }

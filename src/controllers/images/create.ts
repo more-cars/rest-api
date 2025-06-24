@@ -15,7 +15,7 @@ export async function create(req: express.Request, res: express.Response) {
             return send400response(res)
         }
 
-        const sanitizedData = sanitize(data)
+        const sanitizedData = sanitize(data as CreateImageInput)
         const createdNode: ImageNode = await Image.create(sanitizedData)
         const marshalledData = marshal(createdNode)
 
@@ -43,11 +43,13 @@ export function validate(data: CreateImageRawInput): boolean {
     return true
 }
 
-// removing trailing whitespaces, strip/convert html tags
-export function sanitize(data: CreateImageRawInput): CreateImageInput {
-    // TODO to be implemented
+export function sanitize(data: CreateImageInput): CreateImageInput {
+    const sanitizedData: CreateImageInput = {
+        external_id: data.external_id.trim(),
+        image_provider: data.image_provider.trim(),
+    }
 
-    return data as CreateImageInput
+    return sanitizedData
 }
 
 function send201response(data: ImageResponse, res: express.Response) {
