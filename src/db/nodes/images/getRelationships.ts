@@ -30,6 +30,8 @@ async function getRels(imageId: number, driver: Driver): Promise<Array<ImageBelo
             partner_node_id: dbEndNode.properties.mc_id,
             relationship_id: dbRel.properties.mc_id,
             relationship_name: dbRel.type,
+            created_at: dbRel.properties.created_at,
+            updated_at: dbRel.properties.updated_at,
         })
     })
 
