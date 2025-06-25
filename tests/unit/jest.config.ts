@@ -15,15 +15,15 @@ module.exports = {
     collectCoverage: false,
     coverageProvider: "v8",
     coverageDirectory: '<rootDir>/test-reports/unit/code-coverage',
-    collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
-    coveragePathIgnorePatterns: [
-        '<rootDir>/src/server.ts',
-        '<rootDir>/src/types',
+    collectCoverageFrom: [
+        '<rootDir>/src/**/*.ts',
+        '!<rootDir>/src/server.ts',
+        '!<rootDir>/src/**/types/**',
     ],
     coverageThreshold: {
         global: {
-            statements: 33,
-            branches: 33
+            statements: 40,
+            branches: 53
         }
     }
 }
