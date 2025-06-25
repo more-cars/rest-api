@@ -69,6 +69,47 @@
         }
       }
     },
+    "/brands/{brand-id}": {
+      "get": {
+        "tags": [
+          "Brands"
+        ],
+        "summary": "Get `Brand` by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "brand-id",
+            "description": "ID of the `Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requested `Brand` was found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Brand"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No `Brand` with the provided ID found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/brands": {
       "get": {
         "tags": [
@@ -109,47 +150,6 @@
           },
           "422": {
             "description": "Invalid request.",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/brands/{brand-id}": {
-      "get": {
-        "tags": [
-          "Brands"
-        ],
-        "summary": "Get `Brand` by ID",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "brand-id",
-            "description": "ID of the `Brand`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Requested `Brand` was found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Brand"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "No `Brand` with the provided ID found.",
             "content": {
               "text/plain": {
                 "schema": {
