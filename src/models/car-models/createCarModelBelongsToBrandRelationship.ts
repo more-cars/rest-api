@@ -35,6 +35,8 @@ export async function createCarModelBelongsToBrandRelationship(carModelId: numbe
         brand_id: brandId as number,
         relationship_id: baseRelationship.relationship_id,
         relationship_name: CarModelRelationship.belongsToBrand,
+        created_at: baseRelationship.created_at,
+        updated_at: baseRelationship.updated_at,
     }
 
     return specificRelationship

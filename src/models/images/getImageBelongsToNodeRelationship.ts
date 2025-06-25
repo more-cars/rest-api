@@ -22,6 +22,8 @@ export async function getImageBelongsToNodeRelationship(imageId: number, partner
         partner_node_id: partnerNodeId,
         relationship_id: relation.relationship_id,
         relationship_name: ImageRelationship.belongsToNode,
+        created_at: relation.created_at,
+        updated_at: relation.updated_at,
     }
 
     return specificRelationship

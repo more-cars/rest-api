@@ -17,6 +17,8 @@ export async function getAllBrandHasCarModelRelationships(brand: BrandNode) {
             car_model_id: relationship.end_node_id,
             relationship_id: relationship.relationship_id,
             relationship_name: BrandRelationship.hasCarModel,
+            created_at: relationship.created_at,
+            updated_at: relationship.updated_at,
         })
     })
 

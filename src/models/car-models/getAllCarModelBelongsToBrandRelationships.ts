@@ -18,6 +18,8 @@ export async function getAllCarModelBelongsToBrandRelationships(carModel: CarMod
             brand_id: relationship.start_node_id,
             relationship_id: relationship.relationship_id,
             relationship_name: BrandRelationship.hasCarModel,
+            created_at: relationship.created_at,
+            updated_at: relationship.updated_at,
         })
     })
 

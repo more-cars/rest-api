@@ -22,6 +22,10 @@ test('Creating a "Brand has Car Model" relationship when both nodes exist', asyn
         .toHaveProperty('relationship_id')
     expect(createdRelationship)
         .toHaveProperty('relationship_name', BrandRelationship.hasCarModel)
+    expect(createdRelationship)
+        .toHaveProperty('created_at')
+    expect(createdRelationship)
+        .toHaveProperty('updated_at')
 })
 
 test('Invalid nodes fail the relationship creation', async () => {

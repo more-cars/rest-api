@@ -17,4 +17,6 @@ assert {
   res.body.car_model_id: eq {{validCarModelId}}
   res.body.relationship_id: gte 0
   res.body.relationship_name: eq HAS_CAR_MODEL
+  res.body.created_at: isString
+  res.body.updated_at: isString
 }

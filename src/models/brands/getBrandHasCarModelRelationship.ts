@@ -22,6 +22,8 @@ export async function getBrandHasCarModelRelationship(brandId: number, carModelI
         car_model_id: carModelId,
         relationship_id: relationship.relationship_id,
         relationship_name: BrandRelationship.hasCarModel,
+        created_at: relationship.created_at,
+        updated_at: relationship.updated_at,
     }
 
     return specificRelationship

@@ -18,4 +18,8 @@ test('Creating a "Image belongs to Node" relationship when both nodes exist', as
         .toHaveProperty('relationship_id')
     expect(createdRelationship)
         .toHaveProperty('relationship_name', ImageRelationship.belongsToNode)
+    expect(createdRelationship)
+        .toHaveProperty('created_at')
+    expect(createdRelationship)
+        .toHaveProperty('updated_at')
 })

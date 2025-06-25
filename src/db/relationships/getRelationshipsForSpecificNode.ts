@@ -29,6 +29,8 @@ async function getRels(nodeId: number, relationshipName: DbRelationship, nodeIsR
             end_node_id: nodeIsRelationshipTarget ? nodeId : partnerNode.properties.mc_id,
             relationship_id: relationship.properties.mc_id,
             relationship_name: relationshipName,
+            created_at: relationship.properties.created_at,
+            updated_at: relationship.properties.updated_at,
         })
     })
 

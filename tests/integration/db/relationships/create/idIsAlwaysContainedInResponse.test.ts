@@ -1,11 +1,11 @@
 import assert from "assert"
-import {createNode as createBrandNode} from "../../../../src/db/nodes/brands/createNode"
-import {createNode as createCarModelNode} from "../../../../src/db/nodes/car-models/createNode"
-import FakeBrand from "../../../fixtures/nodes/FakeBrand"
-import FakeCarModel from "../../../fixtures/nodes/FakeCarModel"
-import {DbRelationship} from "../../../../src/db/types/DbRelationship"
-import {createRelationship} from "../../../../src/db/relationships/createRelationship"
-import {getSpecificRelationship} from "../../../../src/db/relationships/getSpecificRelationship"
+import {createNode as createBrandNode} from "../../../../../src/db/nodes/brands/createNode"
+import {createNode as createCarModelNode} from "../../../../../src/db/nodes/car-models/createNode"
+import FakeBrand from "../../../../fixtures/nodes/FakeBrand"
+import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
+import {DbRelationship} from "../../../../../src/db/types/DbRelationship"
+import {createRelationship} from "../../../../../src/db/relationships/createRelationship"
+import {getSpecificRelationship} from "../../../../../src/db/relationships/getSpecificRelationship"
 
 test('ID is always contained in response', async () => {
     const carModel = await createCarModelNode(FakeCarModel)

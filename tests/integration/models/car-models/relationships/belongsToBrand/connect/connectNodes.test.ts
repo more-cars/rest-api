@@ -17,4 +17,8 @@ test('Creating a "Car Model belongs to Brand" relationship when both nodes exist
         .toHaveProperty('relationship_id')
     expect(createdRelationship)
         .toHaveProperty('relationship_name', CarModelRelationship.belongsToBrand)
+    expect(createdRelationship)
+        .toHaveProperty('created_at')
+    expect(createdRelationship)
+        .toHaveProperty('updated_at')
 })

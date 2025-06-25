@@ -1,9 +1,10 @@
-import {Driver, Node, Relationship, Session} from "neo4j-driver"
+import {Driver, Node, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../driver"
 import {DbRelationship} from "../types/DbRelationship"
 import {BaseRelationship} from "../types/BaseRelationship"
 import {addMoreCarsIdToRelationship} from "./addMoreCarsIdToRelationship"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
+import {addTimestampsToRelationship} from "./addTimestampsToRelationship"
 
 /**
  * Creating a relationship between the two given nodes.
@@ -48,14 +49,20 @@ async function createRel(
     const elementId = createdDbRel.elementId
     const elementIdSplit: Array<string> = elementId.split(':')
     const moreCarsId: number = parseInt(elementIdSplit[2])
-    const enrichedDbRel: Relationship = await addMoreCarsIdToRelationship(elementId, moreCarsId, driver)
+    await addMoreCarsIdToRelationship(elementId, moreCarsId, driver)
 
-    // 3. Converting the Neo4j node to a More Cars node
+    // 3. Adding timestamps
+    const timestamp = new Date().toISOString()
+    const enrichedDbRel = await addTimestampsToRelationship(elementId, timestamp, driver)
+
+    // 4. Converting the Neo4j node to a More Cars node // TODO the calling function should do this
     const rel: BaseRelationship = {
         start_node_id: startNodeId,
         end_node_id: endNodeId,
         relationship_id: enrichedDbRel.properties.mc_id,
         relationship_name: relationshipName,
+        created_at: enrichedDbRel.properties.created_at,
+        updated_at: enrichedDbRel.properties.updated_at,
     }
 
     return rel

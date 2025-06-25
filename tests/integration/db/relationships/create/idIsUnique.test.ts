@@ -1,5 +1,5 @@
-import {seedRelationships} from "../../../dbSeeding/brands/relationships/seedRelationships"
-import {removeDuplicates} from "../../../_helpers/removeDuplicates"
+import {seedRelationships} from "../../../../dbSeeding/brands/relationships/seedRelationships"
+import {removeDuplicates} from "../../../../_helpers/removeDuplicates"
 
 test('Each relationship is created with a different ID', async () => {
     const relationships = await seedRelationships(20)

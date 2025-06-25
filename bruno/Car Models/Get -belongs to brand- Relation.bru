@@ -14,4 +14,6 @@ assert {
   res.status: eq 200
   res.body: isJson
   res.body.relationship_id: gte 0
+  res.body.created_at: isString
+  res.body.updated_at: isString
 }

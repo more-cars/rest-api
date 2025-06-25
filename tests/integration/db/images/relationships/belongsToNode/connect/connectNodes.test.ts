@@ -1,8 +1,8 @@
-import {seedImage} from "../../../../../dbSeeding/images/nodes/seedImage"
-import {seedCarModel} from "../../../../../dbSeeding/car-models/nodes/seedCarModel"
-import {createRelationship} from "../../../../../../src/db/relationships/createRelationship"
-import {DbRelationship} from "../../../../../../src/db/types/DbRelationship"
-import {seedBrand} from "../../../../../dbSeeding/brands/nodes/seedBrand"
+import {seedImage} from "../../../../../../dbSeeding/images/nodes/seedImage"
+import {seedCarModel} from "../../../../../../dbSeeding/car-models/nodes/seedCarModel"
+import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
+import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
 
 test('Creating a "Image belongs to Node" relationship when both nodes exist', async () => {
     const image = await seedImage()
@@ -22,6 +22,10 @@ test('Creating a "Image belongs to Node" relationship when both nodes exist', as
         .toHaveProperty('relationship_id')
     expect(createdRelationship)
         .toHaveProperty('relationship_name', DbRelationship.ImageBelongsToNode)
+    expect(createdRelationship)
+        .toHaveProperty('created_at')
+    expect(createdRelationship)
+        .toHaveProperty('updated_at')
 })
 
 test('Invalid nodes fail the relationship creation', async () => {

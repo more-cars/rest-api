@@ -38,6 +38,8 @@ async function getRel(nodeId: number, relationshipName: DbRelationship, driver: 
         end_node_id: partnerNode.properties.mc_id,
         relationship_id: relation.properties.mc_id,
         relationship_name: relationshipName,
+        created_at: relation.properties.created_at,
+        updated_at: relation.properties.updated_at,
     }
 
     return rel

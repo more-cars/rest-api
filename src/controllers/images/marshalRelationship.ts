@@ -7,6 +7,8 @@ export function marshalRelationship(relationship: ImageBelongsToNodeRelationship
         partner_node_id: relationship.partner_node_id,
         relationship_id: relationship.relationship_id,
         relationship_name: relationship.relationship_name,
+        created_at: relationship.created_at,
+        updated_at: relationship.updated_at,
     }
 
     return marshalledData

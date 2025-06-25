@@ -10,6 +10,8 @@ test('marshalling a complete and valid request', async () => {
         car_model_id: 2,
         relationship_id: 3,
         relationship_name: "HAS_CAR_MODEL",
+        created_at: "2023-10-01T00:00:00.001Z",
+        updated_at: "2023-10-01T00:00:00.001Z",
     }
 
     const mappedNode = marshalRelationship(relationship)
@@ -20,5 +22,7 @@ test('marshalling a complete and valid request', async () => {
             car_model_id: 2,
             relationship_id: 3,
             relationship_name: "HAS_CAR_MODEL",
+            created_at: "2023-10-01T00:00:00.001Z",
+            updated_at: "2023-10-01T00:00:00.001Z",
         })
 })

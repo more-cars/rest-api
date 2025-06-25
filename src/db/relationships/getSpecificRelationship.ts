@@ -38,12 +38,16 @@ async function getRel(
 
     const fetchedDbRel: Relationship = records[0].get('r')
 
-    return <BaseRelationship>{
+    const relationship: BaseRelationship = {
         start_node_id: startNodeId,
         end_node_id: endNodeId,
         relationship_id: fetchedDbRel.properties.mc_id,
         relationship_name: relationshipName,
+        created_at: fetchedDbRel.properties.created_at,
+        updated_at: fetchedDbRel.properties.updated_at,
     }
+
+    return relationship
 }
 
 export function getSpecificRelationshipQuery(startNodeId: number, relationshipName: DbRelationship, endNodeId: number) {
