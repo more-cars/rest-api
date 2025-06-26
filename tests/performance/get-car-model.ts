@@ -11,20 +11,8 @@ export const options = {
         duration: ['p(1)<=10', 'p(90)<=40', 'p(95)<=100', 'p(98)<=500'],
     },
     scenarios: {
-        createCarModel: {
-            exec: 'createCarModel',
-            executor: 'constant-arrival-rate',
-            duration: '1s',
-            rate: 2,
-            timeUnit: '1s',
-            preAllocatedVUs: 1,
-            maxVUs: 1,
-            gracefulStop: '1s',
-        },
         getCarModel: {
-            exec: 'getCarModel',
             executor: 'constant-arrival-rate',
-            startTime: '5s',
             duration: '5m',
             rate: 1,
             timeUnit: '1s',
@@ -35,8 +23,10 @@ export const options = {
     }
 }
 
-// ARRANGE
-export function createCarModel() {
+/**
+ * Creating a new car model, so we can request that in the tests.
+ */
+export function setup() {
     const url = `${__ENV.API_URL}/car-models`
     const payload = {
         "name": "Performance Test Car Model",
@@ -50,20 +40,19 @@ export function createCarModel() {
         }
     )
 
-    check(response, {
-        'returns with status code 201': (r) => r.status === 201,
-        'content-type is JSON': (r) => r.headers['Content-Type'].includes('application/json'),
-    })
+    // @ts-expect-error TS2531
+    return {id: response.json().id}
 }
 
-// ACT + ASSERT
-export function getCarModel() {
-    const url = `${__ENV.API_URL}/car-models/0`
+export default function (data: { id: number }) {
+    const url = `${__ENV.API_URL}/car-models/${data.id}`
     const response = http.get(url)
 
     check(response, {
         'returns with status code 200': (r) => r.status === 200,
         'content-type is JSON': (r) => r.headers['Content-Type'].includes('application/json'),
+        // @ts-expect-error TS2531
+        'correct ID is returned': (r) => r.json().id === data.id,
     })
 
     trendDuration.add(response.timings.duration)
