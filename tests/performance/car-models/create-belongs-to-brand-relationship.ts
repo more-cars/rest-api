@@ -25,9 +25,6 @@ export const options = {
     }
 }
 
-/**
- * Creating a car model and a brand, so we can test the relationship creation between both.
- */
 export function setup() {
     const carModelId = createCarModel()
     const brandId = createBrand()

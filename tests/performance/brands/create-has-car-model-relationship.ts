@@ -1,6 +1,8 @@
 import http from 'k6/http'
 import {check} from "k6"
 import {Trend} from "k6/metrics"
+import {createBrand} from "../_testdata/createBrand.ts"
+import {createCarModel} from "../_testdata/createCarModel.ts"
 
 const trendDuration = new Trend('duration', true)
 
@@ -23,10 +25,6 @@ export const options = {
     }
 }
 
-
-/**
- * Creating a brand and a car model, so we can test the relationship creation between both.
- */
 export function setup() {
     const brandId = createBrand()
     const carModelId = createCarModel()
@@ -50,36 +48,4 @@ export default function (data: { brandId: number, carModelId: number }) {
     })
 
     trendDuration.add(response.timings.duration)
-}
-
-function createBrand() {
-    const url = `${__ENV.API_URL}/brands`
-    const payload = {
-        "name": "Performance Test Brand",
-    }
-
-    const response = http.post(
-        url,
-        JSON.stringify(payload),
-        {headers: {'Content-Type': 'application/json'}}
-    )
-
-    // @ts-expect-error TS2531
-    return response.json().id
-}
-
-function createCarModel() {
-    const url = `${__ENV.API_URL}/car-models`
-    const payload = {
-        "name": "Performance Test Car Model",
-    }
-
-    const response = http.post(
-        url,
-        JSON.stringify(payload),
-        {headers: {'Content-Type': 'application/json'}}
-    )
-
-    // @ts-expect-error TS2531
-    return response.json().id
 }

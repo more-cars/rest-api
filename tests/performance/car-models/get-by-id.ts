@@ -1,6 +1,7 @@
 import http from 'k6/http'
 import {check} from "k6"
 import {Trend} from "k6/metrics"
+import {createCarModel} from "../_testdata/createCarModel.ts"
 
 const trendDuration = new Trend('duration', true)
 
@@ -23,25 +24,8 @@ export const options = {
     }
 }
 
-/**
- * Creating a new car model, so we can request that in the tests.
- */
 export function setup() {
-    const url = `${__ENV.API_URL}/car-models`
-    const payload = {
-        "name": "Performance Test Car Model",
-    }
-
-    const response = http.post(
-        url,
-        JSON.stringify(payload),
-        {
-            headers: {'Content-Type': 'application/json'}
-        }
-    )
-
-    // @ts-expect-error TS2531
-    return {id: response.json().id}
+    return {id: createCarModel()}
 }
 
 export default function (data: { id: number }) {
