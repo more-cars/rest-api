@@ -74,7 +74,7 @@
     "tests:bruno:minikube-dev": "cd bruno && bru run --env minikube-dev",
     "tests:bruno:minikube-prod": "cd bruno && bru run --env minikube-prod",
     "tests:behavior": "npx cucumber-js",
-    "tests:performance": "K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_OPEN=true API_URL=http://api.more-cars.prod.internal k6 run tests/performance/get-brand.ts"
+    "tests:performance": "K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_OPEN=true API_URL=http://api.more-cars.prod.internal k6 run tests/performance/brands/get-by-id.ts"
   },
   "version": "0.11.0"
 }
