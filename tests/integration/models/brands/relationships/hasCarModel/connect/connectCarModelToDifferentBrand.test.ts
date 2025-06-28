@@ -11,23 +11,23 @@ test('Attaching the car model to another brand removes the original relationship
 
     await Brand.createHasCarModelRelationship(firstBrand.id, carModel.id)
     const originalRelationship = await getSpecificRelationship(
-        firstBrand.id as number,
-        carModel.id as number,
+        firstBrand.id,
+        carModel.id,
         DbRelationship.BrandHasCarModel,
     )
     expect(originalRelationship).not.toBeFalsy()
 
     await Brand.createHasCarModelRelationship(secondBrand.id, carModel.id)
     const newRelationship = await getSpecificRelationship(
-        secondBrand.id as number,
-        carModel.id as number,
+        secondBrand.id,
+        carModel.id,
         DbRelationship.BrandHasCarModel,
     )
     expect(newRelationship).not.toBeFalsy()
 
     const refetchedOriginalRelationship = await getSpecificRelationship(
-        firstBrand.id as number,
-        carModel.id as number,
+        firstBrand.id,
+        carModel.id,
         DbRelationship.BrandHasCarModel,
     )
     expect(refetchedOriginalRelationship).toBeFalsy()

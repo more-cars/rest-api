@@ -8,7 +8,7 @@ test('An empty list should be returned when no CAR MODEL is connected to the BRA
     const brand = await seedBrand()
 
     const relationships = await getRelationshipsForSpecificNode(
-        brand.id as number,
+        brand.id,
         DbRelationship.BrandHasCarModel,
     )
 

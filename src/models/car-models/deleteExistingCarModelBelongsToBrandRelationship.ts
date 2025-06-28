@@ -11,7 +11,7 @@ export async function deleteExistingCarModelBelongsToBrandRelationship(carModelI
     // Officially, there can only exist ONE relationship between a car model and a brand.
     // But to be on the safe side, we will grab all matching relationships the database can find.
     const relationships = await getRelationshipsForSpecificNode(
-        carModelId as number,
+        carModelId,
         DbRelationship.BrandHasCarModel,
         true,
     )

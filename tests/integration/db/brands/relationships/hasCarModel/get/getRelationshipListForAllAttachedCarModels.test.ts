@@ -12,14 +12,14 @@ test('Requesting a relationship list for all CAR MODELs that are connected to th
 
     for (const carModel of carModels) {
         await createRelationship(
-            brand.id as number,
-            carModel.id as number,
+            brand.id,
+            carModel.id,
             DbRelationship.BrandHasCarModel,
         )
     }
 
     const relationships = await getRelationshipsForSpecificNode(
-        brand.id as number,
+        brand.id,
         DbRelationship.BrandHasCarModel,
     )
 

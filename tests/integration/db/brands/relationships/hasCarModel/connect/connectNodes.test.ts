@@ -9,8 +9,8 @@ test('Creating a "Brand has Car Model" relationship when both nodes exist', asyn
     const carModel = await seedCarModel()
 
     const createdRelationship = await createRelationship(
-        brand.id as number,
-        carModel.id as number,
+        brand.id,
+        carModel.id,
         DbRelationship.BrandHasCarModel,
     )
 
@@ -32,7 +32,7 @@ test('Invalid nodes fail the relationship creation', async () => {
     const brand = await seedBrand()
 
     const createdRelationship = await createRelationship(
-        brand.id as number,
+        brand.id,
         -42,
         DbRelationship.BrandHasCarModel,
     )

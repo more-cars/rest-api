@@ -6,7 +6,7 @@ import {CarModelBelongsToBrandRelationship} from "./types/CarModelBelongsToBrand
 
 export async function getAllCarModelBelongsToBrandRelationships(carModel: CarModelNode) {
     const relationships = await getRelationshipsForSpecificNode(
-        carModel.id as number,
+        carModel.id,
         DbRelationship.BrandHasCarModel,
         true,
     )

@@ -14,7 +14,7 @@ test('Querying a brand that does not exist should return "false"', async () => {
 
 test('Querying an existing brand should return a db node with correct schema', async () => {
     const createdNode: CarModelNode = await seedCarModel()
-    const carModelNode = await getNodeById(createdNode.id as number)
+    const carModelNode = await getNodeById(createdNode.id)
 
     expect(validateJson(carModelNode, CarModelSchema))
         .toBe(true)

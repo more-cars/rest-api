@@ -6,7 +6,7 @@ import {getRelationshipsForSpecificNode} from "../../db/relationships/getRelatio
 
 export async function getAllBrandHasCarModelRelationships(brand: BrandNode) {
     const relationships = await getRelationshipsForSpecificNode(
-        brand.id as number,
+        brand.id,
         DbRelationship.BrandHasCarModel,
     )
     const mappedRelationships: BrandHasCarModelRelationship[] = []

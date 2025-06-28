@@ -14,7 +14,7 @@ test('Querying an image that does not exist should return "false"', async () => 
 
 test('Querying an existing brand should return a db node with correct schema', async () => {
     const existingNode: ImageNode = await seedImage()
-    const requestedNode = await getNodeById(existingNode.id as number)
+    const requestedNode = await getNodeById(existingNode.id)
 
     expect(validateJson(requestedNode, ImageSchema))
         .toBe(true)

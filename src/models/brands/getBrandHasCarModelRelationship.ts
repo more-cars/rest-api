@@ -8,8 +8,8 @@ import {BrandHasCarModelRelationship} from "./types/BrandHasCarModelRelationship
  */
 export async function getBrandHasCarModelRelationship(brandId: number, carModelId: number): Promise<false | BrandHasCarModelRelationship> {
     const relationship = await getSpecificRelationship(
-        brandId as number,
-        carModelId as number,
+        brandId,
+        carModelId,
         DbRelationship.BrandHasCarModel,
     )
 

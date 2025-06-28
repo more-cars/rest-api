@@ -11,7 +11,7 @@ test('Fetching an image that does not exist should return "false"', async () => 
 
 test('When the image exists it should be returned', async () => {
     const expectedNode = await seedImage()
-    const actualNode = await Image.findById(expectedNode.id as number)
+    const actualNode = await Image.findById(expectedNode.id)
 
     expect(actualNode)
         .toEqual(expectedNode)

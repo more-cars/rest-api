@@ -21,8 +21,8 @@ export async function createCarModelBelongsToBrandRelationship(carModelId: numbe
     // ⚠️ Outside the database we distinguish between BRAND.HAS_CAR_MODEL and CAR_MODEL.BELONGS_TO_BRAND for better readability.
     // But in the database we have to use the SAME relationship for both directions (HAS_CAR_MODEL and BELONGS_TO_BRAND) to avoid duplicates.
     const baseRelationship = await createRelationship(
-        brandId as number,
-        carModelId as number,
+        brandId,
+        carModelId,
         DbRelationship.BrandHasCarModel,
     )
 
@@ -31,8 +31,8 @@ export async function createCarModelBelongsToBrandRelationship(carModelId: numbe
     }
 
     const specificRelationship: CarModelBelongsToBrandRelationship = {
-        car_model_id: carModelId as number,
-        brand_id: brandId as number,
+        car_model_id: carModelId,
+        brand_id: brandId,
         relationship_id: baseRelationship.relationship_id,
         relationship_name: CarModelRelationship.belongsToBrand,
         created_at: baseRelationship.created_at,

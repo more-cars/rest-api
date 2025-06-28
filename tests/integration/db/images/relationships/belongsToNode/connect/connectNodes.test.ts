@@ -9,8 +9,8 @@ test('Creating a "Image belongs to Node" relationship when both nodes exist', as
     const carModel = await seedCarModel()
 
     const createdRelationship = await createRelationship(
-        image.id as number,
-        carModel.id as number,
+        image.id,
+        carModel.id,
         DbRelationship.ImageBelongsToNode,
     )
 
@@ -33,7 +33,7 @@ test('Invalid nodes fail the relationship creation', async () => {
     const brand = await seedBrand()
 
     let createdRelationship = await createRelationship(
-        image.id as number,
+        image.id,
         -42,
         DbRelationship.ImageBelongsToNode,
     )
@@ -42,7 +42,7 @@ test('Invalid nodes fail the relationship creation', async () => {
 
     createdRelationship = await createRelationship(
         -42,
-        brand.id as number,
+        brand.id,
         DbRelationship.ImageBelongsToNode,
     )
     expect(createdRelationship)
