@@ -10,18 +10,15 @@ import {getCypherQueryTemplate} from "../../getCypherQueryTemplate"
 import {escapeSingleQuotes} from "../escapeSingleQuotes"
 
 export async function createNode(data: InputBrandCreate): Promise<BrandNode> {
-    const driver: Driver = getDriver()
-    const session: Session = driver.session()
-
-    const node = await createBrand(data, driver)
-
-    await session.close()
-    await closeDriver(driver)
+    const node = await createDbNode(data)
 
     return mapDbNodeToModelNode(node)
 }
 
-async function createBrand(data: InputBrandCreate, driver: Driver): Promise<Node> {
+async function createDbNode(data: InputBrandCreate): Promise<Node> {
+    const driver: Driver = getDriver()
+    const session: Session = driver.session()
+
     // 1. Creating the node in the database
     const {records} = await driver.executeQuery(createNodeQuery(data))
     const createdDbNode: Node = records[0].get('node')
@@ -34,11 +31,16 @@ async function createBrand(data: InputBrandCreate, driver: Driver): Promise<Node
     const elementId = createdDbNode.elementId
     const elementIdSplit: Array<string> = elementId.split(':')
     const moreCarsId: number = parseInt(elementIdSplit[2])
-    await addMoreCarsIdToNode(elementId, moreCarsId, NodeTypeLabel.Brand, driver)
+    let augmentedDbNode = await addMoreCarsIdToNode(elementId, moreCarsId, NodeTypeLabel.Brand, driver)
 
     // 3. Adding timestamps
     const timestamp = new Date().toISOString()
-    return await addTimestampsToNode(elementId, timestamp, driver)
+    augmentedDbNode = await addTimestampsToNode(elementId, timestamp, driver)
+
+    await session.close()
+    await closeDriver(driver)
+
+    return augmentedDbNode
 }
 
 export function createNodeQuery(data: InputBrandCreate) {
