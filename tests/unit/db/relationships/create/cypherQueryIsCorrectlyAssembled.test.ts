@@ -1,4 +1,4 @@
-import {createRelationshipQuery} from "../../../../../src/db/relationships/createRelationship"
+import {createRelationshipQuery} from "../../../../../src/db/relationships/createDbRelationship.ts"
 
 test('cypher query is correctly assembled for "create relationship" request', async () => {
     const query = createRelationshipQuery(
