@@ -17,6 +17,6 @@ body:json {
 }
 
 assert {
-  res.status: eq 422
+  res.status: eq 400
   res.body: isString
 }
