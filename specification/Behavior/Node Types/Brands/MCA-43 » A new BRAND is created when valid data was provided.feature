@@ -9,15 +9,15 @@ Feature: Creating BRAND nodes
 
   @TEST_MCA-43 @implemented
   Scenario: A new BRAND is created when valid data was provided
-    When the user creates a brand "A" with the following valid data
+    When the user creates a brand "DKW" with the following valid data
       | key       | value           |
       | name      | DKW             |
       | full_name | Dampfkraftwagen |
-#      | founded   | 1916            |
-#      | defunct   | 1966            |
+      | founded   | 1916            |
+      | defunct   | 1966            |
       | wmi       | -               |
       | hsn       | 0010            |
-    Then the response should return the BRAND "A"
+    Then the response should return the BRAND "DKW"
     And the response should return with status code 201
-    When the user requests the brand "A" via ID
-    Then the response should return the BRAND "A"
+    When the user requests the brand "DKW" via ID
+    Then the response should return the BRAND "DKW"
