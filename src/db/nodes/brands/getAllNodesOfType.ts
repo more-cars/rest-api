@@ -1,29 +1,23 @@
 import {Driver, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../../driver"
 import {BrandNode} from "./types/BrandNode"
-import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
-import {getAllNodesOfTypeQuery} from "../getAllNodesOfTypeQuery"
+import {fetchNodesFromDb} from "../fetchNodesFromDb.ts"
 import {NodeTypeLabel} from "../../NodeTypeLabel"
+import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode.ts"
 
 export async function getAllNodesOfType(): Promise<Array<BrandNode>> {
     const driver: Driver = getDriver()
     const session: Session = driver.session()
 
-    const foundNodes = await getNodes(driver)
+    const dbNodes = await fetchNodesFromDb(NodeTypeLabel.Brand)
 
     await session.close()
     await closeDriver(driver)
 
-    return foundNodes
-}
-
-async function getNodes(driver: Driver): Promise<Array<BrandNode>> {
     const nodes: Array<BrandNode> = []
 
-    const {records} = await driver.executeQuery(getAllNodesOfTypeQuery(NodeTypeLabel.Brand))
-
-    records.forEach(record => {
-        nodes.push(mapDbNodeToModelNode(record.get('node')))
+    dbNodes.forEach((dbNode) => {
+        nodes.push(mapDbNodeToModelNode(dbNode))
     })
 
     return nodes
