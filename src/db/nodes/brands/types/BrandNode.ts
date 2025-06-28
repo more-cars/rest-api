@@ -1,5 +1,5 @@
 export type BrandNode = {
-    id: number // TODO within the db layer this is "mc_id"
+    id: number
     created_at: string
     updated_at: string
 
