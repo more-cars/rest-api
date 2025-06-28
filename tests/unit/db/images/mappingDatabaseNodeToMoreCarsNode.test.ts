@@ -1,5 +1,5 @@
 import {Integer, Node} from "neo4j-driver"
-import {mapDbNodeToModelNode} from "../../../../src/db/nodes/images/mapDbNodeToModelNode"
+import {mapDbNodeToImageNode} from "../../../../src/db/nodes/images/mapDbNodeToImageNode.ts"
 
 test('the Neo4j node is correctly mapped to a More Cars node', async () => {
     const dbNode: Node = {
@@ -28,7 +28,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
         elementId: ""
     }
 
-    const mappedNode = mapDbNodeToModelNode(dbNode)
+    const mappedNode = mapDbNodeToImageNode(dbNode)
 
     expect(mappedNode)
         .toStrictEqual({

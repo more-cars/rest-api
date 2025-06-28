@@ -3,7 +3,7 @@ import {closeDriver, getDriver} from "../../driver"
 import {CarModelNode} from "./types/CarModelNode"
 import {fetchNodesFromDb} from "../fetchNodesFromDb.ts"
 import {NodeTypeLabel} from "../../NodeTypeLabel"
-import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
+import {mapDbNodeToCarModelNode} from "./mapDbNodeToCarModelNode.ts"
 
 export async function getAllNodesOfType(): Promise<Array<CarModelNode>> {
     const driver: Driver = getDriver()
@@ -17,7 +17,7 @@ export async function getAllNodesOfType(): Promise<Array<CarModelNode>> {
     const nodes: Array<CarModelNode> = []
 
     dbNodes.forEach((dbNode) => {
-        nodes.push(mapDbNodeToModelNode(dbNode))
+        nodes.push(mapDbNodeToCarModelNode(dbNode))
     })
 
     return nodes

@@ -1,7 +1,7 @@
 import {Node} from "neo4j-driver"
 import {BrandNode} from "./types/BrandNode"
 
-export function mapDbNodeToModelNode(dbNode: Node): BrandNode {
+export function mapDbNodeToBrandNode(dbNode: Node): BrandNode {
     const node: BrandNode = {
         // system data
         id: dbNode.properties.mc_id,

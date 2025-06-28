@@ -2,14 +2,14 @@ import {InputImageCreate} from "./types/InputImageCreate"
 import {ImageNode} from "./types/ImageNode"
 import {createDbNode} from "../createDbNode.ts"
 import {NodeTypeLabel} from "../../NodeTypeLabel"
-import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
+import {mapDbNodeToImageNode} from "./mapDbNodeToImageNode.ts"
 import {getCypherQueryTemplate} from "../../getCypherQueryTemplate"
 import {escapeSingleQuotes} from "../escapeSingleQuotes"
 
 export async function createNode(data: InputImageCreate): Promise<ImageNode> {
     const node = await createDbNode(NodeTypeLabel.Image, createNodeQuery(data))
 
-    return mapDbNodeToModelNode(node)
+    return mapDbNodeToImageNode(node)
 }
 
 export function createNodeQuery(data: InputImageCreate) {

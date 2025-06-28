@@ -2,14 +2,14 @@ import {InputBrandCreate} from "./types/InputBrandCreate"
 import {BrandNode} from "./types/BrandNode"
 import {createDbNode} from "../createDbNode.ts"
 import {NodeTypeLabel} from "../../NodeTypeLabel.ts"
-import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
+import {mapDbNodeToBrandNode} from "./mapDbNodeToBrandNode.ts"
 import {getCypherQueryTemplate} from "../../getCypherQueryTemplate"
 import {escapeSingleQuotes} from "../escapeSingleQuotes"
 
 export async function createNode(data: InputBrandCreate): Promise<BrandNode> {
     const node = await createDbNode(NodeTypeLabel.Brand, createNodeQuery(data))
 
-    return mapDbNodeToModelNode(node)
+    return mapDbNodeToBrandNode(node)
 }
 
 export function createNodeQuery(data: InputBrandCreate) {

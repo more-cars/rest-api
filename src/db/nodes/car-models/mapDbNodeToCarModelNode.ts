@@ -1,7 +1,7 @@
 import {Node} from "neo4j-driver"
 import {CarModelNode} from "./types/CarModelNode"
 
-export function mapDbNodeToModelNode(dbNode: Node): CarModelNode {
+export function mapDbNodeToCarModelNode(dbNode: Node): CarModelNode {
     const node: CarModelNode = {
         // system data
         id: dbNode.properties.mc_id,

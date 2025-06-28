@@ -2,14 +2,14 @@ import {InputCarModelCreate} from "./types/InputCarModelCreate"
 import {CarModelNode} from "./types/CarModelNode"
 import {NodeTypeLabel} from "../../NodeTypeLabel"
 import {createDbNode} from "../createDbNode.ts"
-import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
+import {mapDbNodeToCarModelNode} from "./mapDbNodeToCarModelNode.ts"
 import {getCypherQueryTemplate} from "../../getCypherQueryTemplate"
 import {escapeSingleQuotes} from "../escapeSingleQuotes"
 
 export async function createNode(data: InputCarModelCreate): Promise<CarModelNode> {
     const node = await createDbNode(NodeTypeLabel.CarModel, createNodeQuery(data))
 
-    return mapDbNodeToModelNode(node)
+    return mapDbNodeToCarModelNode(node)
 }
 
 export function createNodeQuery(data: InputCarModelCreate) {

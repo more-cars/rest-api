@@ -1,7 +1,7 @@
 import {BrandNode} from "./types/BrandNode"
 import {fetchNodeFromDb} from "../fetchNodeFromDb.ts"
 import {NodeTypeLabel} from "../../NodeTypeLabel.ts"
-import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
+import {mapDbNodeToBrandNode} from "./mapDbNodeToBrandNode.ts"
 
 export async function getNodeById(id: number): Promise<false | BrandNode> {
     const node = await fetchNodeFromDb(id, NodeTypeLabel.Brand)
@@ -10,5 +10,5 @@ export async function getNodeById(id: number): Promise<false | BrandNode> {
         return false
     }
 
-    return mapDbNodeToModelNode(node)
+    return mapDbNodeToBrandNode(node)
 }

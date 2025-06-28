@@ -1,7 +1,7 @@
 import {ImageNode} from "./types/ImageNode"
 import {Node} from "neo4j-driver"
 
-export function mapDbNodeToModelNode(dbNode: Node): ImageNode {
+export function mapDbNodeToImageNode(dbNode: Node): ImageNode {
     const node: ImageNode = {
         // system data
         id: dbNode.properties.mc_id,

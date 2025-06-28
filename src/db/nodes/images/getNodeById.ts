@@ -1,5 +1,5 @@
 import {ImageNode} from "./types/ImageNode"
-import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
+import {mapDbNodeToImageNode} from "./mapDbNodeToImageNode.ts"
 import {fetchNodeFromDb} from "../fetchNodeFromDb.ts"
 import {NodeTypeLabel} from "../../NodeTypeLabel.ts"
 
@@ -10,5 +10,5 @@ export async function getNodeById(id: number): Promise<false | ImageNode> {
         return false
     }
 
-    return mapDbNodeToModelNode(node)
+    return mapDbNodeToImageNode(node)
 }
