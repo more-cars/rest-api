@@ -20,11 +20,11 @@ export async function createDbNode(nodeType: NodeTypeLabel, query: string): Prom
     const elementId = dbNode.elementId
     const elementIdSplit: Array<string> = elementId.split(':')
     const moreCarsId: number = parseInt(elementIdSplit[2])
-    dbNode = await addMoreCarsIdToNode(elementId, moreCarsId, nodeType, driver)
+    dbNode = await addMoreCarsIdToNode(elementId, moreCarsId, nodeType)
 
     // 3. Adding timestamps
     const timestamp = new Date().toISOString()
-    dbNode = await addTimestampsToNode(elementId, timestamp, driver)
+    dbNode = await addTimestampsToNode(elementId, timestamp)
 
     await session.close()
     await closeDriver(driver)

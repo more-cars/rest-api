@@ -1,14 +1,20 @@
-import {Driver, Node} from "neo4j-driver"
+import {Driver, Node, Session} from "neo4j-driver"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {NodeTypeLabel} from "../NodeTypeLabel"
+import {closeDriver, getDriver} from "../driver.ts"
 
 export async function addMoreCarsIdToNode(
     elementId: string,
     moreCarsId: number,
     nodeType: NodeTypeLabel,
-    driver: Driver
 ): Promise<Node> {
+    const driver: Driver = getDriver()
+    const session: Session = driver.session()
+
     const {records} = await driver.executeQuery(addMoreCarsIdToNodeQuery(nodeType, elementId, moreCarsId))
+
+    await session.close()
+    await closeDriver(driver)
 
     return records[0].get('node')
 }

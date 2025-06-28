@@ -1,11 +1,18 @@
-import {Driver, Node} from "neo4j-driver"
+import {Driver, Node, Session} from "neo4j-driver"
+import {closeDriver, getDriver} from "../driver.ts"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 /**
  * Adds the properties "created_at" and "updated_at" to the given node.
  */
-export async function addTimestampsToNode(elementId: string, timestamp: string, driver: Driver): Promise<Node> {
+export async function addTimestampsToNode(elementId: string, timestamp: string): Promise<Node> {
+    const driver: Driver = getDriver()
+    const session: Session = driver.session()
+
     const {records} = await driver.executeQuery(addTimestampsToNodeQuery(elementId, timestamp, timestamp))
+
+    await session.close()
+    await closeDriver(driver)
 
     return records[0].get('node')
 }
