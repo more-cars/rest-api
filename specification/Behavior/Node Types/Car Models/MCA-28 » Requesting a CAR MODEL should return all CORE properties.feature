@@ -31,7 +31,7 @@ Feature: Providing every CORE information for a CAR MODEL
       | internal_code    |
       | total_production |
 
-    When the user creates a car model
+    When the user creates a "CAR MODEL"
     Then the response should contain the following keys
       | key              |
       | name             |

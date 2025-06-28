@@ -9,7 +9,7 @@ Feature: Creating BRAND nodes
 
   @TEST_MCA-45 @implemented
   Scenario: The response for creating a BRAND returns the new node with all core properties and the ID
-    When the user creates a brand
+    When the user creates a "BRAND"
     Then the response should contain the following keys
       | key       |
       | id        |
