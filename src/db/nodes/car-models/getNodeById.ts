@@ -6,13 +6,7 @@ import {NodeTypeLabel} from "../../NodeTypeLabel"
 import {getNodeByIdQuery} from "../getNodeById"
 
 export async function getNodeById(id: number): Promise<false | CarModelNode> {
-    const driver: Driver = getDriver()
-    const session: Session = driver.session()
-
-    const node = await fetchNodeFromDb(id, driver)
-
-    await session.close()
-    await closeDriver(driver)
+    const node = await fetchNodeFromDb(id)
 
     if (!node) {
         return false
@@ -21,8 +15,14 @@ export async function getNodeById(id: number): Promise<false | CarModelNode> {
     return mapDbNodeToModelNode(node)
 }
 
-async function fetchNodeFromDb(id: number, driver: Driver): Promise<false | Node> {
+async function fetchNodeFromDb(id: number): Promise<false | Node> {
+    const driver: Driver = getDriver()
+    const session: Session = driver.session()
+
     const {records} = await driver.executeQuery(getNodeByIdQuery(id, NodeTypeLabel.CarModel))
+
+    await session.close()
+    await closeDriver(driver)
 
     if (records.length === 0) {
         return false
