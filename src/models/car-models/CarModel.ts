@@ -20,11 +20,24 @@ export class CarModel {
     }
 
     static async findById(id: number): Promise<false | CarModelNode> {
-        return await getNodeById(id)
+        const node = await getNodeById(id)
+
+        if (!node) {
+            return false
+        }
+
+        return convertOutputData(node)
     }
 
     static async findAll(): Promise<CarModelNode[]> {
-        return await getAllNodesOfType()
+        const nodes: Array<CarModelNode> = []
+        const nodesDb = await getAllNodesOfType()
+
+        nodesDb.forEach(node => {
+            nodes.push(convertOutputData(node))
+        })
+
+        return nodes
     }
 
     static async createBelongsToBrandRelationship(carModelId: number, brandId: number): Promise<false | CarModelBelongsToBrandRelationship> {

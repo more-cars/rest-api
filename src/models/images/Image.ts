@@ -23,11 +23,24 @@ export class Image {
     }
 
     static async findById(id: number): Promise<false | ImageNode> {
-        return await getNodeById(id)
+        const node = await getNodeById(id)
+
+        if (!node) {
+            return false
+        }
+
+        return convertOutputData(node)
     }
 
     static async findAll(): Promise<ImageNode[]> {
-        return await getAllNodesOfType()
+        const nodes: Array<ImageNode> = []
+        const nodesDb = await getAllNodesOfType()
+
+        nodesDb.forEach(node => {
+            nodes.push(convertOutputData(node))
+        })
+
+        return nodes
     }
 
     static async createBelongsToNodeRelationship(
