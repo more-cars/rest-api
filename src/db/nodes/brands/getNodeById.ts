@@ -1,4 +1,4 @@
-import {Driver, Session} from "neo4j-driver"
+import {Driver, Node, Session} from "neo4j-driver"
 import {closeDriver, getDriver} from "../../driver"
 import {BrandNode} from "./types/BrandNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
@@ -9,20 +9,24 @@ export async function getNodeById(id: number): Promise<false | BrandNode> {
     const driver: Driver = getDriver()
     const session: Session = driver.session()
 
-    const foundNode = await getNode(id, driver)
+    const node = await fetchNodeFromDb(id, driver)
 
     await session.close()
     await closeDriver(driver)
 
-    return foundNode
+    if (!node) {
+        return false
+    }
+
+    return mapDbNodeToModelNode(node)
 }
 
-async function getNode(id: number, driver: Driver): Promise<false | BrandNode> {
+async function fetchNodeFromDb(id: number, driver: Driver): Promise<false | Node> {
     const {records} = await driver.executeQuery(getNodeByIdQuery(id, NodeTypeLabel.Brand))
 
     if (records.length === 0) {
         return false
     }
 
-    return mapDbNodeToModelNode(records[0].get('node'))
+    return records[0].get('node')
 }
