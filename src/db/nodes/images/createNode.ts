@@ -1,46 +1,15 @@
-import {Driver, Node, Session} from "neo4j-driver"
-import {closeDriver, getDriver} from "../../driver"
-import {ImageNode} from "./types/ImageNode"
 import {InputImageCreate} from "./types/InputImageCreate"
-import {addMoreCarsIdToNode} from "../addMoreCarsIdToNode"
-import {addTimestampsToNode} from "../addTimestampsToNode"
-import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
+import {ImageNode} from "./types/ImageNode"
+import {createDbNode} from "../createDbNode.ts"
 import {NodeTypeLabel} from "../../NodeTypeLabel"
+import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 import {getCypherQueryTemplate} from "../../getCypherQueryTemplate"
 import {escapeSingleQuotes} from "../escapeSingleQuotes"
 
 export async function createNode(data: InputImageCreate): Promise<ImageNode> {
-    const node = await createDbNode(data)
+    const node = await createDbNode(NodeTypeLabel.Image, createNodeQuery(data))
 
     return mapDbNodeToModelNode(node)
-}
-
-async function createDbNode(data: InputImageCreate): Promise<Node> {
-    const driver: Driver = getDriver()
-    const session: Session = driver.session()
-
-    // 1. Creating the node in the database
-    const {records} = await driver.executeQuery(createNodeQuery(data))
-    const createdDbNode: Node = records[0].get('node')
-
-    // 2. Adding a custom More Cars ID for that node
-    // Note: This seems pointless at first glance, because the More Cars ID is exactly the same as the Neo4j ID.
-    //       The benefit: we can modify the More Cars ID anytime, while the Neo4j ID is always read-only.
-    //       This will become relevant when migrating nodes from the old database.
-    //       In that scenario we need to be able to carry over the existing IDs.
-    const elementId = createdDbNode.elementId
-    const elementIdSplit: Array<string> = elementId.split(':')
-    const moreCarsId: number = parseInt(elementIdSplit[2])
-    let augmentedDbNode = await addMoreCarsIdToNode(elementId, moreCarsId, NodeTypeLabel.Image, driver)
-
-    // 3. Adding timestamps
-    const timestamp = new Date().toISOString()
-    augmentedDbNode = await addTimestampsToNode(elementId, timestamp, driver)
-
-    await session.close()
-    await closeDriver(driver)
-
-    return augmentedDbNode
 }
 
 export function createNodeQuery(data: InputImageCreate) {
