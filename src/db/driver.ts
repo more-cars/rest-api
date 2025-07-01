@@ -1,12 +1,9 @@
 import neo4j, {Driver} from "neo4j-driver"
 
-const USER = 'neo4j'
-const PASSWORD = '123456789'
-
 export function getDriver() {
     return neo4j.driver(
         getDatabaseUrl(),
-        neo4j.auth.basic(USER, PASSWORD),
+        neo4j.auth.basic('neo4j', getDatabasePassword()),
         {disableLosslessIntegers: true} // see https://github.com/neo4j/neo4j-javascript-driver?tab=readme-ov-file#enabling-native-numbers
     )
 }
@@ -21,4 +18,12 @@ function getDatabaseUrl() {
     }
 
     return `neo4j://${process.env.DB_HOST}`
+}
+
+function getDatabasePassword() {
+    if (!process.env.DB_PASSWORD) {
+        throw new Error('Missing database password')
+    }
+
+    return process.env.DB_PASSWORD
 }
