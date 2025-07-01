@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-mc1-recovery-dev-job
+  namespace: dev
+spec:
+  template:
+    metadata:
+      name: db-mc1-recovery-dev-job
+    spec:
+      containers:
+        - name: db-mc1-recovery-dev-job
+          image: garland/docker-s3cmd
+          env:
+            - name: aws_key
+              value: <INSERT_AWS_KEY>
+            - name: aws_secret
+              value: <INSERT_AWS_SECRET>
+            - name: SRC_S3
+              value: s3://db.more-cars.net/
+            - name: cmd
+              value: sync-s3-to-local
+          volumeMounts:
+            - mountPath: /opt/dest
+              name: db-mc1-volume-dev
+      volumes:
+        - name: db-mc1-volume-dev
+          persistentVolumeClaim:
+            claimName: db-mc1-volume-dev-pvc
+      restartPolicy: OnFailure

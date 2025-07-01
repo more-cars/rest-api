@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-mc1-db-service
+  namespace: dev
+spec:
+  type: LoadBalancer
+  selector:
+    app: api-mc1-db
+  ports:
+    - name: http
+      port: 7474
+      protocol: TCP
+      targetPort: 7474
+    - name: bolt
+      port: 7687
+      protocol: TCP
+      targetPort: 7687

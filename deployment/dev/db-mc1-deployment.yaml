@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-mc1-db-deployment
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-mc1-db
+  template:
+    metadata:
+      labels:
+        app: api-mc1-db
+    spec:
+      containers:
+        - name:
+            neo4j
+          image: neo4j:3.5.19
+          env:
+            - name: NEO4J_CONF
+              value: /data/databases/more-cars-production.db
+          volumeMounts:
+            - mountPath: /data
+              name: db-mc1-volume-dev
+      volumes:
+        - name: db-mc1-volume-dev
+          persistentVolumeClaim:
+            claimName: db-mc1-volume-dev-pvc
