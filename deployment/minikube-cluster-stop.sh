@@ -1,3 +1,3 @@
 #!/bin/sh
 
-minikube stop -p mc-api
+minikube stop -p morecars

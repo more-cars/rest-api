@@ -1,3 +1,3 @@
 #!/bin/sh
 
-minikube tunnel -p mc-api
+minikube tunnel -p morecars
