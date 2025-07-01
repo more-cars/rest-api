@@ -11,6 +11,7 @@
   },
   "description": "REST API for the open car database 'More Cars'",
   "devDependencies": {
+    "@types/cli-progress": "3.11.6",
     "@cucumber/cucumber": "11.3.0",
     "@eslint/js": "9.29.0",
     "@faker-js/faker": "9.8.0",
