@@ -1,3 +1,6 @@
 export function escapeSingleQuotes(value: string): string {
-    return value.replace(/'/g, "\\'")
+    value = value.replace(/\\/g, "\\\\")
+    value = value.replace(/'/g, "\\'")
+
+    return value
 }
