@@ -1,5 +1,5 @@
 import {getDriver} from "../src/db/driver-mc1.ts"
-import {Driver, Node, Session} from "neo4j-driver"
+import {Node} from "neo4j-driver"
 import {deleteAllBrands} from "../tests/dbSeeding/brands/nodes/deleteAllBrands.ts"
 import {deleteAllCarModels} from "../tests/dbSeeding/car-models/nodes/deleteAllCarModels.ts"
 import {deleteAllImages} from "../tests/dbSeeding/images/nodes/deleteAllImages.ts"
@@ -21,11 +21,11 @@ import {createNode as createImageNode} from "../src/db/nodes/images/createNode.t
 })()
 
 async function migrateNodes(nodeType: string, mapFunc: any, createFunc: any) {
-    const mc1driver: Driver = getDriver()
-    const session: Session = mc1driver.session()
+    const mc1driver = getDriver()
+    const session = mc1driver.session()
     let counter = 0
 
-    mc1driver.session()
+    session
         .run(getNodeQuery(nodeType))
         .subscribe({
             onNext: record => {
@@ -36,14 +36,13 @@ async function migrateNodes(nodeType: string, mapFunc: any, createFunc: any) {
             },
             onCompleted: () => {
                 console.log(`${counter} ${nodeType}s migrated`)
+                session.close()
+                mc1driver.close()
             },
             onError: error => {
                 console.log(error)
             }
         })
-
-    await session.close()
-    await mc1driver.close()
 }
 
 function getNodeQuery(nodeType: string) {
