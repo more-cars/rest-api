@@ -1,0 +1,13 @@
+import {Node} from "neo4j-driver"
+import {InputBrandCreate} from "../../src/db/nodes/brands/types/InputBrandCreate.ts"
+
+export function mapBrand(node: Node): InputBrandCreate {
+    return {
+        name: node.properties.name,
+        full_name: node.properties.full_name,
+        founded: node.properties.founded?.low,
+        defunct: node.properties.defunct?.low,
+        wmi: node.properties.wmi,
+        hsn: node.properties.hsn,
+    }
+}
