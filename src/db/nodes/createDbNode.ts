@@ -1,16 +1,18 @@
-import {Driver, Node, Session} from "neo4j-driver"
+import neo4j, {Driver, Node, Session} from "neo4j-driver"
 import {NodeTypeLabel} from "../NodeTypeLabel.ts"
 import {addMoreCarsIdToNode} from "./addMoreCarsIdToNode.ts"
 import {addTimestampsToNode} from "./addTimestampsToNode.ts"
-import {closeDriver, getDriver} from "../driver.ts"
+import {getDriver} from "../driver.ts"
 
 export async function createDbNode(nodeType: NodeTypeLabel, query: string): Promise<Node> {
     const driver: Driver = getDriver()
-    const session: Session = driver.session()
+    const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
     // 1. Creating the node in the database
-    const {records} = await driver.executeQuery(query)
-    let dbNode: Node = records[0].get('node')
+    let dbNode: Node = await session.executeWrite(async txc => {
+        const result = await txc.run(query)
+        return result.records[0].get('node')
+    })
 
     // 2. Adding a custom More Cars ID for that node
     // Note: This seems pointless at first glance, because the More Cars ID is exactly the same as the Neo4j ID.
@@ -27,7 +29,7 @@ export async function createDbNode(nodeType: NodeTypeLabel, query: string): Prom
     dbNode = await addTimestampsToNode(elementId, timestamp)
 
     await session.close()
-    await closeDriver(driver)
+    await driver.close()
 
     return dbNode
 }
