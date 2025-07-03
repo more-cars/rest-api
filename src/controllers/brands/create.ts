@@ -6,6 +6,9 @@ import {BrandNode} from "../../models/brands/types/BrandNode"
 import {BrandResponse} from "./types/BrandResponse"
 import {marshal} from "./marshal"
 import {CreateBrandRawInput} from "./types/CreateBrandRawInput"
+import {isMandatoryString} from "../validators/isMandatoryString.ts"
+import {isOptionalString} from "../validators/isOptionalString.ts"
+import {isOptionalNumber} from "../validators/isOptionalNumber.ts"
 
 export async function create(req: express.Request, res: express.Response) {
     try {
@@ -32,27 +35,27 @@ export async function create(req: express.Request, res: express.Response) {
  * Checking that all fields have the correct data type.
  */
 export function validate(data: CreateBrandRawInput): boolean {
-    if (!data.name || typeof data.name !== "string") {
+    if (!isMandatoryString(data.name)) {
         return false
     }
 
-    if (data.full_name && typeof data.full_name !== "string") {
+    if (!isOptionalString(data.full_name)) {
         return false
     }
 
-    if (data.founded && typeof data.founded !== "number") {
+    if (!isOptionalNumber(data.founded)) {
         return false
     }
 
-    if (data.defunct && typeof data.defunct !== "number") {
+    if (!isOptionalNumber(data.defunct)) {
         return false
     }
 
-    if (data.wmi && typeof data.wmi !== "string") {
+    if (!isOptionalString(data.wmi)) {
         return false
     }
 
-    if (data.hsn && typeof data.hsn !== "string") {
+    if (!isOptionalString(data.hsn)) {
         return false
     }
 

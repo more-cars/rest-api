@@ -6,6 +6,9 @@ import {marshal} from "./marshal"
 import {CreateCarModelRawInput} from "./types/CreateCarModelRawInput"
 import {CarModel} from "../../models/car-models/CarModel"
 import {CarModelNode} from "../../models/car-models/types/CarModelNode"
+import {isOptionalNumber} from "../validators/isOptionalNumber.ts"
+import {isMandatoryString} from "../validators/isMandatoryString.ts"
+import {isOptionalString} from "../validators/isOptionalString.ts"
 
 export async function create(req: express.Request, res: express.Response) {
     try {
@@ -32,27 +35,27 @@ export async function create(req: express.Request, res: express.Response) {
  * Checking that all fields have the correct data type.
  */
 export function validate(data: CreateCarModelRawInput): boolean {
-    if (!data.name || typeof data.name !== "string") {
+    if (!isMandatoryString(data.name)) {
         return false
     }
 
-    if (data.built_from && typeof data.built_from !== "number") {
+    if (!isOptionalNumber(data.built_from)) {
         return false
     }
 
-    if (data.built_to && typeof data.built_to !== "number") {
+    if (!isOptionalNumber(data.built_to)) {
         return false
     }
 
-    if (data.generation && typeof data.generation !== "number") {
+    if (!isOptionalNumber(data.generation)) {
         return false
     }
 
-    if (data.internal_code && typeof data.internal_code !== "string") {
+    if (!isOptionalString(data.internal_code)) {
         return false
     }
 
-    if (data.total_production && typeof data.total_production !== "number") {
+    if (!isOptionalNumber(data.total_production)) {
         return false
     }
 

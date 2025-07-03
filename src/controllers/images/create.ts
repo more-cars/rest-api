@@ -6,6 +6,7 @@ import {marshal} from "./marshal"
 import {CreateImageRawInput} from "./types/CreateImageRawInput"
 import {Image} from "../../models/images/Image"
 import {ImageNode} from "../../models/images/types/ImageNode"
+import {isMandatoryString} from "../validators/isMandatoryString.ts"
 
 export async function create(req: express.Request, res: express.Response) {
     try {
@@ -32,11 +33,11 @@ export async function create(req: express.Request, res: express.Response) {
  * Checking that all fields have the correct data type.
  */
 export function validate(data: CreateImageRawInput): boolean {
-    if (!data.external_id || typeof data.external_id !== "string") {
+    if (!isMandatoryString(data.external_id)) {
         return false
     }
 
-    if (!data.image_provider || typeof data.image_provider !== "string") {
+    if (!isMandatoryString(data.image_provider)) {
         return false
     }
 
