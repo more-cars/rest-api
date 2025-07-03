@@ -1,5 +1,5 @@
-import {Driver, Node, Session} from "neo4j-driver"
-import {closeDriver, getDriver} from "../driver.ts"
+import neo4j, {Driver, Node, Session} from "neo4j-driver"
+import {getDriver} from "../driver.ts"
 import {NodeTypeLabel} from "../NodeTypeLabel.ts"
 import {getAllNodesOfTypeQuery} from "./getAllNodesOfTypeQuery.ts"
 
@@ -7,12 +7,15 @@ export async function fetchNodesFromDb(nodeType: NodeTypeLabel): Promise<Array<N
     const nodes: Array<Node> = []
 
     const driver: Driver = getDriver()
-    const session: Session = driver.session()
+    const session: Session = driver.session({defaultAccessMode: neo4j.session.READ})
 
-    const {records} = await driver.executeQuery(getAllNodesOfTypeQuery(nodeType))
+    const records = await session.executeRead(async txc => {
+        const result = await txc.run(getAllNodesOfTypeQuery(nodeType))
+        return result.records
+    })
 
     await session.close()
-    await closeDriver(driver)
+    await driver.close()
 
     records.forEach(record => {
         nodes.push(record.get('node'))
