@@ -1,4 +1,4 @@
-import {getDriver} from "../src/db/driver-mc1.ts"
+import {getMc1Driver} from "../src/db/driver-mc1.ts"
 import {Node} from "neo4j-driver"
 import {deleteAllBrands} from "../tests/dbSeeding/brands/nodes/deleteAllBrands.ts"
 import {deleteAllCarModels} from "../tests/dbSeeding/car-models/nodes/deleteAllCarModels.ts"
@@ -22,7 +22,7 @@ import cliProgress from "cli-progress"
 })()
 
 async function migrateNodes(nodeType: string, mapFunc: any, createFunc: any) {
-    const driver = getDriver()
+    const driver = getMc1Driver()
     const session = driver.session()
 
     let finished = false

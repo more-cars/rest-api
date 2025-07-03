@@ -3,7 +3,7 @@ import neo4j from "neo4j-driver"
 const USER = 'neo4j'
 const PASSWORD = process.env.DB_MC1_PASSWORD as string
 
-export function getDriver() {
+export function getMc1Driver() {
     return neo4j.driver(
         getDatabaseUrl(),
         neo4j.auth.basic(USER, PASSWORD),
