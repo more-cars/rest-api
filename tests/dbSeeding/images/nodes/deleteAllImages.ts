@@ -1,17 +1,21 @@
-import {Driver, Session} from "neo4j-driver"
-import {closeDriver, getDriver} from "../../../../src/db/driver"
+import neo4j, {Driver, Session} from "neo4j-driver"
+import {getDriver} from "../../../../src/db/driver"
 
 /**
  * Deletes all nodes from type "Image" in the database.
- * Deletion is exercised directly in the database via a Cypher query.
+ * All relationships that are connected to an "Image" are deleted, too.
  */
 export async function deleteAllImages() {
     const driver: Driver = getDriver()
-    const session: Session = driver.session()
-    await driver.executeQuery(`
-        MATCH (node:Image) 
-        DETACH DELETE node
-    `)
+    const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
+
+    await session.executeWrite(async txc => {
+        await txc.run(`
+            MATCH (node:Image)
+            DETACH DELETE node
+        `)
+    })
+
     await session.close()
-    await closeDriver(driver)
+    await driver.close()
 }
