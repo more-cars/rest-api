@@ -27,7 +27,7 @@ async function migrateNodes(nodeType: string, mapFunc: any, createFunc: any) {
 
     let finished = false
     const progress = new cliProgress.SingleBar({
-        format: `${nodeType} {bar} {percentage}% | ETA: {eta}s | {value}/{total}`
+        format: `{bar} | ${nodeType} | ETA: {eta}s | {value}/{total}`
     }, cliProgress.Presets.shades_classic)
     progress.start(300, 0)
 
