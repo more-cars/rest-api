@@ -1,5 +1,5 @@
-import {Driver, Session} from "neo4j-driver"
-import {closeDriver, getDriver} from "../driver"
+import neo4j, {Driver, Session} from "neo4j-driver"
+import {getDriver} from "../driver"
 import {BaseNode} from "../types/BaseNode"
 import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 import {NodeTypeLabel} from "../NodeTypeLabel"
@@ -7,18 +7,21 @@ import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 export async function getNodeById(id: number): Promise<false | BaseNode> {
     const driver: Driver = getDriver()
-    const session: Session = driver.session()
+    const session: Session = driver.session({defaultAccessMode: neo4j.session.READ})
 
-    const foundNode = await getNode(id, driver)
+    const foundNode = await getNode(id, session)
 
     await session.close()
-    await closeDriver(driver)
+    await driver.close()
 
     return foundNode
 }
 
-async function getNode(id: number, driver: Driver): Promise<false | BaseNode> {
-    const {records} = await driver.executeQuery(getNodeByIdQuery(id))
+async function getNode(id: number, session: Session): Promise<false | BaseNode> {
+    const records = await session.executeRead(async txc => {
+        const result = await txc.run(getNodeByIdQuery(id))
+        return result.records
+    })
 
     if (records.length === 0) {
         return false
