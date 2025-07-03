@@ -1,5 +1,5 @@
-import {Driver, Node, Session} from "neo4j-driver"
-import {closeDriver, getDriver} from "../driver.ts"
+import neo4j, {Driver, Node, Session} from "neo4j-driver"
+import {getDriver} from "../driver.ts"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 /**
@@ -7,14 +7,17 @@ import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
  */
 export async function addTimestampsToNode(elementId: string, timestamp: string): Promise<Node> {
     const driver: Driver = getDriver()
-    const session: Session = driver.session()
+    const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
-    const {records} = await driver.executeQuery(addTimestampsToNodeQuery(elementId, timestamp, timestamp))
+    const dbNode: Node = await session.executeWrite(async txc => {
+        const result = await txc.run(addTimestampsToNodeQuery(elementId, timestamp, timestamp))
+        return result.records[0].get('node')
+    })
 
     await session.close()
-    await closeDriver(driver)
+    await driver.close()
 
-    return records[0].get('node')
+    return dbNode
 }
 
 export function addTimestampsToNodeQuery(elementId: string, createdAt: string, updatedAt: string) {

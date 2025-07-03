@@ -1,7 +1,7 @@
-import {Driver, Node, Session} from "neo4j-driver"
+import neo4j, {Driver, Node, Session} from "neo4j-driver"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {NodeTypeLabel} from "../NodeTypeLabel"
-import {closeDriver, getDriver} from "../driver.ts"
+import {getDriver} from "../driver.ts"
 
 export async function addMoreCarsIdToNode(
     elementId: string,
@@ -9,14 +9,17 @@ export async function addMoreCarsIdToNode(
     nodeType: NodeTypeLabel,
 ): Promise<Node> {
     const driver: Driver = getDriver()
-    const session: Session = driver.session()
+    const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
-    const {records} = await driver.executeQuery(addMoreCarsIdToNodeQuery(nodeType, elementId, moreCarsId))
+    const dbNode: Node = await session.executeWrite(async txc => {
+        const result = await txc.run(addMoreCarsIdToNodeQuery(nodeType, elementId, moreCarsId))
+        return result.records[0].get('node')
+    })
 
     await session.close()
-    await closeDriver(driver)
+    await driver.close()
 
-    return records[0].get('node')
+    return dbNode
 }
 
 export function addMoreCarsIdToNodeQuery(nodeLabel: NodeTypeLabel, elementId: string, moreCarsId: number) {
