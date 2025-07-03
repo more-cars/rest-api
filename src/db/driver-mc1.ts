@@ -7,6 +7,7 @@ export function getMc1Driver() {
     return neo4j.driver(
         getDatabaseUrl(),
         neo4j.auth.basic(USER, PASSWORD),
+        {disableLosslessIntegers: true} // see https://github.com/neo4j/neo4j-javascript-driver?tab=readme-ov-file#enabling-native-numbers
     )
 }
 
