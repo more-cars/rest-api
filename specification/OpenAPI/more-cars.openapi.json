@@ -791,12 +791,7 @@
       },
       "BrandHasCarModel": {
         "type": "object",
-        "required": [
-          "brand_id",
-          "car_model_id",
-          "relationship_id",
-          "relationship_name"
-        ],
+        "required": [],
         "properties": {
           "brand_id": {
             "type": "integer",
@@ -934,12 +929,7 @@
       },
       "CarModelBelongsToBrand": {
         "type": "object",
-        "required": [
-          "car_model_id",
-          "brand_id",
-          "relationship_id",
-          "relationship_name"
-        ],
+        "required": [],
         "properties": {
           "car_model_id": {
             "type": "integer",
@@ -979,10 +969,7 @@
       },
       "Image": {
         "type": "object",
-        "required": [
-          "image_provider",
-          "external_id"
-        ],
+        "required": [],
         "properties": {
           "id": {
             "type": "string",
@@ -1104,12 +1091,7 @@
       },
       "ImageBelongsToNode": {
         "type": "object",
-        "required": [
-          "image_id",
-          "partner_node_id",
-          "relationship_id",
-          "relationship_name"
-        ],
+        "required": [],
         "properties": {
           "image_id": {
             "type": "integer",
