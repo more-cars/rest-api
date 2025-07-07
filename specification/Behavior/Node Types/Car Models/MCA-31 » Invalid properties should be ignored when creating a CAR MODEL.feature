@@ -9,7 +9,7 @@ Feature: Providing every CORE information for a CAR MODEL
 
   @TEST_MCA-31 @implemented
   Scenario: Invalid properties should be ignored when creating a CAR MODEL
-    When the user creates a car model "Test Car" with the following valid data
+    When the user creates a CAR MODEL "Test Car" with the following valid data
       | key         | value    |
       | name        | Test Car |
       | generattion | 3        |

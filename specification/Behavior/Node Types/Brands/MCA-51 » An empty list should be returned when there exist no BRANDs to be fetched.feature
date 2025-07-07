@@ -11,5 +11,5 @@ Feature: Requesting all BRAND nodes
   Scenario: An empty list should be returned when there exist no BRANDs to be fetched
     Given there exist 0 "BRAND"s
     When the user requests all "BRAND"s
-    Then the response should return a collection of 0 brands
+    Then the response should return a collection of 0 BRANDs
     And the response should return with status code 200

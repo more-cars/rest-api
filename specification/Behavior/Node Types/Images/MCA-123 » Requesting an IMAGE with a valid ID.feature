@@ -12,4 +12,4 @@ Feature: Request single IMAGE
     Given there exists an "IMAGE" "A"
     When the user requests the "IMAGE" "A"
     Then the response should return with status code 200
-    And the response should return the image "A"
+    And the response should return the IMAGE "A"

@@ -8,5 +8,5 @@ Feature: Requesting all CAR MODEL nodes
   Scenario: When no CAR MODELs exist in the database then an empty list should be returned
     Given there exist 0 "CAR MODEL"s
     When the user requests all "CAR MODEL"s
-    Then the response should return a collection of 0 car models
+    Then the response should return a collection of 0 CAR MODELs
     And the response should return with status code 200
