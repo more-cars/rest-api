@@ -1,9 +1,13 @@
 import neo4j from "neo4j-driver"
 
 export function getDriver() {
+    const user = 'neo4j'
+    const password = getDatabasePassword()
+    const databaseUrl = getDatabaseUrl()
+
     return neo4j.driver(
-        getDatabaseUrl(),
-        neo4j.auth.basic('neo4j', getDatabasePassword()),
+        databaseUrl,
+        neo4j.auth.basic(user, password),
         {disableLosslessIntegers: true} // see https://github.com/neo4j/neo4j-javascript-driver?tab=readme-ov-file#enabling-native-numbers
     )
 }
