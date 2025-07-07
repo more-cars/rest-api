@@ -3,6 +3,8 @@ import {closeDriver, getDriver} from "../driver.ts"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate.ts"
 import {addMoreCarsIdToRelationship} from "./addMoreCarsIdToRelationship.ts"
 import {addTimestampsToRelationship} from "./addTimestampsToRelationship.ts"
+import {generateMoreCarsId} from "../generateMoreCarsId.ts"
+import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId.ts"
 
 export async function createDbRelationship(startNodeId: number, endNodeId: number, relationshipName: string): Promise<false | Relationship> {
     const driver: Driver = getDriver()
@@ -18,13 +20,8 @@ export async function createDbRelationship(startNodeId: number, endNodeId: numbe
     let dbRelationship: Relationship = records[0].get('r')
 
     // 2. Adding a custom More Cars ID for that relationship
-    // Note: This seems pointless at first glance, because the More Cars ID is exactly the same as the Neo4j ID.
-    //       The benefit: we can modify the More Cars ID anytime, while the Neo4j ID is always read-only.
-    //       This will become relevant when migrating nodes from the old database.
-    //       In that scenario we need to be able to carry over the existing IDs.
     const elementId = dbRelationship.elementId
-    const elementIdSplit: Array<string> = elementId.split(':')
-    const moreCarsId: number = parseInt(elementIdSplit[2])
+    const moreCarsId = generateMoreCarsId(extractBaseIdFromElementId(elementId))
     dbRelationship = await addMoreCarsIdToRelationship(elementId, moreCarsId, driver)
 
     // 3. Adding timestamps

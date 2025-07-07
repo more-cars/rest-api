@@ -3,6 +3,8 @@ import {NodeTypeLabel} from "../NodeTypeLabel.ts"
 import {addMoreCarsIdToNode} from "./addMoreCarsIdToNode.ts"
 import {addTimestampsToNode} from "./addTimestampsToNode.ts"
 import {getDriver} from "../driver.ts"
+import {generateMoreCarsId} from "../generateMoreCarsId.ts"
+import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId.ts"
 
 export async function createDbNode(nodeType: NodeTypeLabel, query: string): Promise<Node> {
     const driver: Driver = getDriver()
@@ -15,13 +17,8 @@ export async function createDbNode(nodeType: NodeTypeLabel, query: string): Prom
     })
 
     // 2. Adding a custom More Cars ID for that node
-    // Note: This seems pointless at first glance, because the More Cars ID is exactly the same as the Neo4j ID.
-    //       The benefit: we can modify the More Cars ID anytime, while the Neo4j ID is always read-only.
-    //       This will become relevant when migrating nodes from the old database.
-    //       In that scenario we need to be able to carry over the existing IDs.
     const elementId = dbNode.elementId
-    const elementIdSplit: Array<string> = elementId.split(':')
-    const moreCarsId: number = parseInt(elementIdSplit[2])
+    const moreCarsId = generateMoreCarsId(extractBaseIdFromElementId(elementId))
     dbNode = await addMoreCarsIdToNode(elementId, moreCarsId, nodeType)
 
     // 3. Adding timestamps

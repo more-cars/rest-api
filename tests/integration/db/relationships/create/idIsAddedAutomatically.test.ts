@@ -16,7 +16,7 @@ test('ID is added when creating a relationship', async () => {
     }
 
     expect(relationship.relationship_id)
-        .toBeGreaterThan(0)
+        .toBeGreaterThanOrEqual(12000000)
     expect(relationship.relationship_id)
-        .toBeLessThan(4294967296)
+        .toBeLessThanOrEqual(99999999)
 })
