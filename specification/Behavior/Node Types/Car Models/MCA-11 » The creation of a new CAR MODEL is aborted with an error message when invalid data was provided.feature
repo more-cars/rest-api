@@ -6,7 +6,7 @@ Feature: Creating CAR MODEL nodes
 
   @TEST_MCA-11 @implemented
   Scenario: The creation of a new CAR MODEL is aborted with an error message when invalid data was provided
-    When the user tries to create a car model with the following data
+    When the user tries to create a CAR MODEL with the following data
       | attribute | value      |
       | bad_name  | Testarossa |
     Then the response should return with status code 400
