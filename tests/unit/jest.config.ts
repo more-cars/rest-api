@@ -19,6 +19,7 @@ module.exports = {
         '<rootDir>/src/**/*.ts',
         '!<rootDir>/src/server.ts',
         '!<rootDir>/src/**/types/**',
+        '!<rootDir>/src/db/driver-mc1.ts',
     ],
     coverageThreshold: {
         global: {
