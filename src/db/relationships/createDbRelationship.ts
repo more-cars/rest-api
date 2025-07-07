@@ -1,5 +1,5 @@
-import {Driver, Relationship, Session} from "neo4j-driver"
-import {closeDriver, getDriver} from "../driver.ts"
+import neo4j, {Driver, Relationship} from "neo4j-driver"
+import {getDriver} from "../driver.ts"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate.ts"
 import {addMoreCarsIdToRelationship} from "./addMoreCarsIdToRelationship.ts"
 import {addTimestampsToRelationship} from "./addTimestampsToRelationship.ts"
@@ -8,10 +8,13 @@ import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId.ts"
 
 export async function createDbRelationship(startNodeId: number, endNodeId: number, relationshipName: string): Promise<false | Relationship> {
     const driver: Driver = getDriver()
-    const session: Session = driver.session()
+    const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
     // 1. Creating the rel in the database
-    const {records} = await driver.executeQuery(createRelationshipQuery(startNodeId, relationshipName, endNodeId))
+    const records = await session.executeWrite(async txc => {
+        const result = await txc.run(createRelationshipQuery(startNodeId, relationshipName, endNodeId))
+        return result.records
+    })
 
     if (records.length === 0) {
         return false
@@ -22,14 +25,14 @@ export async function createDbRelationship(startNodeId: number, endNodeId: numbe
     // 2. Adding a custom More Cars ID for that relationship
     const elementId = dbRelationship.elementId
     const moreCarsId = generateMoreCarsId(extractBaseIdFromElementId(elementId))
-    dbRelationship = await addMoreCarsIdToRelationship(elementId, moreCarsId, driver)
+    dbRelationship = await addMoreCarsIdToRelationship(elementId, moreCarsId, session)
 
     // 3. Adding timestamps
     const timestamp = new Date().toISOString()
-    dbRelationship = await addTimestampsToRelationship(elementId, timestamp, driver)
+    dbRelationship = await addTimestampsToRelationship(elementId, timestamp, session)
 
     await session.close()
-    await closeDriver(driver)
+    await driver.close()
 
     return dbRelationship
 }

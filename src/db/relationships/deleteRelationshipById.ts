@@ -1,5 +1,5 @@
-import {Driver, Session} from "neo4j-driver"
-import {closeDriver, getDriver} from "../driver"
+import neo4j, {Driver} from "neo4j-driver"
+import {getDriver} from "../driver"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 /**
@@ -12,15 +12,20 @@ import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
  */
 export async function deleteRelationshipById(relationshipId: number): Promise<boolean> {
     const driver: Driver = getDriver()
-    const session: Session = driver.session()
-    const {summary} = await driver.executeQuery(deleteRelationshipQueryById(relationshipId))
+    const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
+
+    const summary = await session.executeWrite(async txc => {
+        const result = await txc.run(deleteRelationshipByIdQuery(relationshipId))
+        return result.summary
+    })
+
     await session.close()
-    await closeDriver(driver)
+    await driver.close()
 
     return summary.counters.updates().relationshipsDeleted > 0
 }
 
-export function deleteRelationshipQueryById(relationshipId: number) {
+export function deleteRelationshipByIdQuery(relationshipId: number) {
     return getCypherQueryTemplate('relationships/_cypher/deleteRelationshipById.cypher')
         .trim()
         .replace('$relationshipId', relationshipId.toString())

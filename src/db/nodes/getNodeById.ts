@@ -9,19 +9,13 @@ export async function getNodeById(id: number): Promise<false | BaseNode> {
     const driver: Driver = getDriver()
     const session: Session = driver.session({defaultAccessMode: neo4j.session.READ})
 
-    const foundNode = await getNode(id, session)
-
-    await session.close()
-    await driver.close()
-
-    return foundNode
-}
-
-async function getNode(id: number, session: Session): Promise<false | BaseNode> {
     const records = await session.executeRead(async txc => {
         const result = await txc.run(getNodeByIdQuery(id))
         return result.records
     })
+
+    await session.close()
+    await driver.close()
 
     if (records.length === 0) {
         return false

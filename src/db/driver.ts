@@ -1,4 +1,4 @@
-import neo4j, {Driver} from "neo4j-driver"
+import neo4j from "neo4j-driver"
 
 export function getDriver() {
     return neo4j.driver(
@@ -6,10 +6,6 @@ export function getDriver() {
         neo4j.auth.basic('neo4j', getDatabasePassword()),
         {disableLosslessIntegers: true} // see https://github.com/neo4j/neo4j-javascript-driver?tab=readme-ov-file#enabling-native-numbers
     )
-}
-
-export async function closeDriver(driver: Driver) {
-    await driver.close()
 }
 
 function getDatabaseUrl() {

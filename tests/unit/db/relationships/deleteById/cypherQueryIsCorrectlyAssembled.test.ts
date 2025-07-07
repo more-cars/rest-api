@@ -1,7 +1,7 @@
-import {deleteRelationshipQueryById} from "../../../../../src/db/relationships/deleteRelationshipById"
+import {deleteRelationshipByIdQuery} from "../../../../../src/db/relationships/deleteRelationshipById.ts"
 
 test('cypher query is correctly assembled for "delete relationship by id" request', async () => {
-    const query = deleteRelationshipQueryById(999)
+    const query = deleteRelationshipByIdQuery(999)
 
     expect(query)
         .toEqual(

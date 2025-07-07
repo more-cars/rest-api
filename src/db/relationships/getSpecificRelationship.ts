@@ -1,5 +1,5 @@
-import {Driver, Relationship, Session} from "neo4j-driver"
-import {closeDriver, getDriver} from "../driver"
+import neo4j, {Relationship} from "neo4j-driver"
+import {getDriver} from "../driver"
 import {BaseRelationship} from "../types/BaseRelationship"
 import {DbRelationship} from "../types/DbRelationship"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
@@ -13,28 +13,20 @@ export async function getSpecificRelationship(
     endNodeId: number,
     relationshipName: DbRelationship
 ): Promise<false | BaseRelationship> {
-    const driver: Driver = getDriver()
-    const session: Session = driver.session()
+    const driver = getDriver()
+    const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
-    const relationship = await getRel(startNodeId, endNodeId, relationshipName, driver)
-
-    await session.close()
-    await closeDriver(driver)
-
-    return relationship
-}
-
-async function getRel(
-    startNodeId: number,
-    endNodeId: number,
-    relationshipName: DbRelationship,
-    driver: Driver
-): Promise<false | BaseRelationship> {
-    const {records} = await driver.executeQuery(getSpecificRelationshipQuery(startNodeId, relationshipName, endNodeId))
+    const records = await session.executeRead(async txc => {
+        const result = await txc.run(getSpecificRelationshipQuery(startNodeId, relationshipName, endNodeId))
+        return result.records
+    })
 
     if (records.length === 0) {
         return false
     }
+
+    await session.close()
+    await driver.close()
 
     const fetchedDbRel: Relationship = records[0].get('r')
 
