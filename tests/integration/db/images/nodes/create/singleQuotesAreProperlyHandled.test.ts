@@ -5,9 +5,9 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         external_id: "Ö_3'A123456789",
         image_provider: "flickr's",
         name: "'''",
-        description: "A'1",
-        creator: "B''2",
-        license: "C'''3",
+        description: "$A'1",
+        creator: "B''2$",
+        license: "C'''3$\"",
         tags: "D''''4",
         source: "E'''''5",
         image_url_original: "abcd'ef",
@@ -30,13 +30,13 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         .toEqual("'''")
 
     expect(createdNode.description)
-        .toEqual("A'1")
+        .toEqual("$A'1")
 
     expect(createdNode.creator)
-        .toEqual("B''2")
+        .toEqual("B''2$")
 
     expect(createdNode.license)
-        .toEqual("C'''3")
+        .toEqual("C'''3$\"")
 
     expect(createdNode.tags)
         .toEqual("D''''4")
