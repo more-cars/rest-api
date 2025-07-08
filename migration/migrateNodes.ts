@@ -13,6 +13,7 @@ import cliProgress from "cli-progress"
 import {createDbNode} from "../src/db/nodes/createDbNode.ts"
 import {NodeTypeLabel} from "../src/db/NodeTypeLabel.ts"
 import {addMoreCarsIdToNode} from "../src/db/nodes/addMoreCarsIdToNode.ts"
+import {addTimestampsToNode} from "../src/db/nodes/addTimestampsToNode.ts"
 
 (async function migrate() {
     await deleteAllBrands()
@@ -44,6 +45,11 @@ async function migrateNodes(oldNodeTypeLabel: string, mapFunc: any, newNodeTypeL
                 progress.increment()
                 const nodeNew: Node = await createDbNode(newNodeTypeLabel, queryFunc(data))
                 await addMoreCarsIdToNode(nodeNew.elementId, parseInt(nodeOld.elementId), newNodeTypeLabel)
+                await addTimestampsToNode(
+                    nodeNew.elementId,
+                    new Date(nodeOld.properties.created_at).toISOString(),
+                    new Date(nodeOld.properties.updated_at).toISOString(),
+                )
             },
             onCompleted: () => {
                 session.close()
