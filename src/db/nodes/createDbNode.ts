@@ -23,7 +23,7 @@ export async function createDbNode(nodeType: NodeTypeLabel, query: string): Prom
 
     // 3. Adding timestamps
     const timestamp = new Date().toISOString()
-    dbNode = await addTimestampsToNode(elementId, timestamp)
+    dbNode = await addTimestampsToNode(elementId, timestamp, timestamp)
 
     await session.close()
     await driver.close()
