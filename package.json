@@ -42,7 +42,7 @@
   "scripts": {
     "start": "npx ts-node src/server.ts",
     "local:app:start": "node --watch --env-file=.env -r ts-node/register src/server.ts",
-    "local:db:start": "docker run --rm --env NEO4J_AUTH=none --env NEO4J_server_bolt_thread__pool__max__size=1000 --publish=7474:7474 --publish=7687:7687 neo4j:5.23.0",
+    "local:db:start": "docker run --rm --env NEO4J_AUTH=none --publish=7474:7474 --publish=7687:7687 neo4j:5.23.0",
     "local:db:migrate": "node --env-file=.env -r ts-node/register migration/migrateNodes.ts",
     "bruno:open-gui": "bruno",
     "docker:build-image": "docker build -t mc-api -f deployment/Dockerfile .",
