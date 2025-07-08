@@ -12,6 +12,7 @@ import {createNodeQuery as createImageQuery} from "../src/db/nodes/images/create
 import cliProgress from "cli-progress"
 import {createDbNode} from "../src/db/nodes/createDbNode.ts"
 import {NodeTypeLabel} from "../src/db/NodeTypeLabel.ts"
+import {addMoreCarsIdToNode} from "../src/db/nodes/addMoreCarsIdToNode.ts"
 
 (async function migrate() {
     await deleteAllBrands()
@@ -41,7 +42,8 @@ async function migrateNodes(oldNodeTypeLabel: string, mapFunc: any, newNodeTypeL
                 const nodeOld: Node = record.get('node')
                 const data = mapFunc(nodeOld)
                 progress.increment()
-                await createDbNode(newNodeTypeLabel, queryFunc(data))
+                const nodeNew: Node = await createDbNode(newNodeTypeLabel, queryFunc(data))
+                await addMoreCarsIdToNode(nodeNew.elementId, parseInt(nodeOld.elementId), newNodeTypeLabel)
             },
             onCompleted: () => {
                 session.close()
