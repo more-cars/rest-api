@@ -21,6 +21,8 @@ spec:
           env:
             - name: DB_HOST
               value: $(API_DB_SERVICE_SERVICE_HOST)
+            - name: DB_PASSWORD
+              value: "123456789"
           resources:
             requests:
               cpu: "50m"
