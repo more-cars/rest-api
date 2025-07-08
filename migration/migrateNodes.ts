@@ -1,5 +1,5 @@
 import {getMc1Driver} from "../src/db/driver-mc1.ts"
-import {Node} from "neo4j-driver"
+import neo4j, {Node} from "neo4j-driver"
 import {deleteAllBrands} from "../tests/dbSeeding/brands/nodes/deleteAllBrands.ts"
 import {deleteAllCarModels} from "../tests/dbSeeding/car-models/nodes/deleteAllCarModels.ts"
 import {deleteAllImages} from "../tests/dbSeeding/images/nodes/deleteAllImages.ts"
@@ -27,60 +27,45 @@ import {addTimestampsToNode} from "../src/db/nodes/addTimestampsToNode.ts"
 
 async function migrateNodes(oldNodeTypeLabel: string, mapFunc: any, newNodeTypeLabel: any, queryFunc: any) {
     const driver = getMc1Driver()
-    const session = driver.session()
+    const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
-    let finished = false
+    const records = await session.executeWrite(async txc => {
+        const result = await txc.run(getNodeQuery(oldNodeTypeLabel))
+        return result.records
+    })
+
     const progress = new cliProgress.SingleBar({
         format: `{bar} | ${oldNodeTypeLabel} | ETA: {eta}s | {value}/{total}`
     }, cliProgress.Presets.shades_classic)
-    progress.start(300, 0)
+    progress.start(records.length, 0)
 
-    session
-        .run(getNodeQuery(oldNodeTypeLabel))
-        .subscribe({
-            onNext: async record => {
-                waitSync(25)
-                const nodeOld: Node = record.get('node')
-                const data = mapFunc(nodeOld)
-                progress.increment()
-                const nodeNew: Node = await createDbNode(newNodeTypeLabel, queryFunc(data))
-                await addMoreCarsIdToNode(nodeNew.elementId, parseInt(nodeOld.elementId), newNodeTypeLabel)
-                await addTimestampsToNode(
-                    nodeNew.elementId,
-                    new Date(nodeOld.properties.created_at).toISOString(),
-                    new Date(nodeOld.properties.updated_at).toISOString(),
-                )
-            },
-            onCompleted: () => {
-                session.close()
-                driver.close()
-                progress.stop()
-                finished = true
-            },
-            onError: error => {
-                console.log(error)
-            }
-        })
+    for (const record of records) {
+        const nodeOld = record.get('node')
+        const data = mapFunc(nodeOld)
 
-    while (!finished) {
-        await asyncWait(500)
+        try {
+            const nodeNew: Node = await createDbNode(newNodeTypeLabel, queryFunc(data))
+            await addMoreCarsIdToNode(nodeNew.elementId, parseInt(nodeOld.elementId), newNodeTypeLabel)
+            await addTimestampsToNode(
+                nodeNew.elementId,
+                new Date(nodeOld.properties.created_at).toISOString(),
+                new Date(nodeOld.properties.updated_at).toISOString(),
+            )
+        } catch (e) {
+            console.error(e)
+            console.error(nodeOld)
+        }
+
+        progress.increment()
     }
+
+    progress.stop()
+    await session.close()
+    await driver.close()
 
     return
 }
 
 function getNodeQuery(nodeType: string) {
-    return `MATCH (node:${nodeType}) RETURN node ORDER BY id(node) LIMIT 300`
-}
-
-function waitSync(ms: number) {
-    const start = Date.now()
-    let now = start
-    while (now - start < ms) {
-        now = Date.now()
-    }
-}
-
-async function asyncWait(ms: number) {
-    await new Promise(resolve => setTimeout(resolve, ms))
+    return `MATCH (node:${nodeType}) RETURN node ORDER BY id(node)`
 }
