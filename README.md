@@ -9,6 +9,7 @@
     * it should be available at http://localhost:7474 (no credentials needed)
 * copy the `.env.template` file and save it as `.env`
     * specify the location of the database: `DB_HOST=localhost`
+    * password is not needed
 * run `npm install` to install all required dependencies and tools
 * run `npm run local:app:start` to start the app locally
     * it should be available at http://localhost:3000
@@ -26,14 +27,15 @@
 * run `npm run minikube:stop` to stop the minikube cluster
     * can also be achieved by aborting the `minikube:start` terminal (`ctrl` + `c` or `command` + `c`)
 * run `npm run minikube:delete` to destroy the minikube cluster
-    * a new one can be created with `npm run minikube:start`
-    * changes to the memory or cpu settings require a "delete"
+    * changes to the memory or cpu settings require a "delete" (a restart is not sufficient)
+    * a new cluster can be created with `npm run minikube:start`
+        * the IP addresses of all services will change (starting and stopping preserves the IP addresses)
 
 ### Start application
 
 * make sure the minikube cluster is running (see [Minikube](#minikube-local-dev-cluster) section)
 * run `npm run docker:build-image` to crate a docker image of the application
-    * the image will be built with the code that is currently on the disk
+    * the image will be built based on the code that is currently on the disk (not what is checked in)
 * run `npm run docker:tag-image:dev` to mark this image as a (temporary) dev version
 * run `npm run minikube:import-dev-image` to push the image into the minikube cluster
 * run `npm run minikube:deploy:dev` to deploy and start the application
@@ -41,9 +43,9 @@
 * run `npm run minikube:open-tunnel` to allow the services to be accessible from outside the cluster
     * requires sudo privileges
 * go to the "services" section in the kubernetes dashboard
-    * search for `app-dev-service`
+    * search for `api-service`
     * the column `external endpoints` contains the URL to access the app
-    * check out the URL to make sure the app is running properly
+    * follow that link to make sure the app is running properly
 * run `npm run minikube:undeploy:dev` to remove the whole application from the cluster
     * run `npm run minikube:deploy:dev` to start the application from scratch again (empty database, fresh pods, etc.)
 
@@ -54,27 +56,45 @@
 * run `npm run docker:tag-image:dev` to tag the image as a development image
 * run `npm run docker:tag-image` to tag the image as a production image
 
-## Run tests
+## Tests
+
+### API Validation
+
+All REST API endpoints are documented in an _OpenAPI_ file.
+It can be found in the folder `specification/OpenAPI` in the project's root directory.
+To verify that the specification is a valid OpenAPI document run `npm run tests:validate-api-schema`.
 
 ### Unit / Integration tests
 
 * run `npm run tests:unit` to execute all unit tests
-    * test reports will be created in folder `test-reports/unit`
+    * test report is created in folder `test-reports/unit`
+* run `npm run tests:unit:coverage` to execute all unit tests and generate a code coverage report
+    * test report is created in folder `test-reports/unit`
+    * coverage report is created in folder `test-reports/unit/code-coverage`
 * run `npm run tests:integration` to execute all integration tests
-    * test reports will be created in folder `test-reports/integration`
+    * test report is created in folder `test-reports/integration`
+* run `npm run tests:integration:coverage` to execute all integration tests and generate a code coverage report
+    * test report is created in folder `test-reports/integration`
+    * coverage report is created in folder `test-reports/integration/code-coverage`
 * run `npm run tests:unit+integration` to execute all unit and all integration tests
-    * test reports will be created in folder `test-reports/combined`
-* run `npm run tests:unit+integration:coverage` to create a combined code coverage report for both test suites
-    * test reports will be created in folder `test-reports/combined`
-    * the coverage report will be saved in folder `test-reports/code_coverage`
+    * test report is created in folder `test-reports/unit+integration`
+* run `npm run tests:unit+integration:coverage` to run both test suites and to create a combined code coverage report
+    * test report is created in folder `test-reports/unit+integration`
+    * coverage report is created in folder `test-reports/unit+integration/code-coverage`
 
 ### Behavior tests
 
-* run `npm run tests:behavior` to execute all cucumber tests
-* this requires
-    * a running app
-    * a running database
-* the report will be saved in folder `test-reports/behavior`
+The application's expected behavior is documented via `Gherkin` scenarios.
+They can be found in the directory `specification/Behavior`.
+Those scenarios are automated in form of `Cucumber` tests.
+Their implementation can be found in the directory `tests/behavior`.
+
+With `npm run tests:behavior` the whole suite of Cucumber tests can be executed.
+They run sequentially and produce test reports that can be found in the directory `test-reports/behavior`.
+
+The environment variable `API_URL` specifies where the tests can find the application.
+This needs to be a running instance of the API.
+It can be a local instance, a container in minikube or a cloud deployment - as long as the tests have access to it.
 
 ### Load Tests
 
@@ -117,13 +137,6 @@ Running the app with `npm start` will start it with a production-like configurat
 When developing and debugging the app it is recommended to use the command `npm run local:app:start` instead.
 This will activate a file watcher which listens to all modules that are used by the app.
 Whenever one of them is changed the app will automatically be restarted with those changes.
-
-## API specification
-
-Every REST API endpoint is documented in an _OpenAPI_ file.
-It can be found in the folder `specification/OpenAPI` in the project's
-root directory.
-To verify that the specification is a valid OpenAPI document run the command `npm run tests:validate-api-schema`.
 
 ## Deployment To Production Environment
 
