@@ -265,6 +265,50 @@
         }
       }
     },
+    "/brands/{brand-id}/has-image": {
+      "get": {
+        "tags": [
+          "Brands"
+        ],
+        "summary": "Get all `Brand-has-Image` relationships",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "brand-id",
+            "description": "ID of the `Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requested relationships were found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BrandHasImage"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No `Brand` with the provided ID found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/brands/{brand-id}/has-image/{image-id}": {
       "post": {
         "tags": [
