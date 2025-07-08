@@ -6,40 +6,42 @@ import {deleteAllImages} from "../tests/dbSeeding/images/nodes/deleteAllImages.t
 import {mapBrand} from "./nodes/mapBrand.ts"
 import {mapCarModel} from "./nodes/mapCarModel.ts"
 import {mapImage} from "./nodes/mapImage.ts"
-import {createNode as createBrandNode} from "../src/db/nodes/brands/createNode.ts"
-import {createNode as createCarModelNode} from "../src/db/nodes/car-models/createNode.ts"
-import {createNode as createImageNode} from "../src/db/nodes/images/createNode.ts"
+import {createNodeQuery as createBrandQuery} from "../src/db/nodes/brands/createNode.ts"
+import {createNodeQuery as createCarModelQuery} from "../src/db/nodes/car-models/createNode.ts"
+import {createNodeQuery as createImageQuery} from "../src/db/nodes/images/createNode.ts"
 import cliProgress from "cli-progress"
+import {createDbNode} from "../src/db/nodes/createDbNode.ts"
+import {NodeTypeLabel} from "../src/db/NodeTypeLabel.ts"
 
 (async function migrate() {
     await deleteAllBrands()
     await deleteAllCarModels()
     await deleteAllImages()
 
-    await migrateNodes('brand', mapBrand, createBrandNode)
-    await migrateNodes('carmodel', mapCarModel, createCarModelNode)
-    await migrateNodes('image', mapImage, createImageNode)
+    await migrateNodes('brand', mapBrand, NodeTypeLabel.Brand, createBrandQuery)
+    await migrateNodes('carmodel', mapCarModel, NodeTypeLabel.CarModel, createCarModelQuery)
+    await migrateNodes('image', mapImage, NodeTypeLabel.Image, createImageQuery)
 })()
 
-async function migrateNodes(nodeType: string, mapFunc: any, createFunc: any) {
+async function migrateNodes(oldNodeTypeLabel: string, mapFunc: any, newNodeTypeLabel: any, queryFunc: any) {
     const driver = getMc1Driver()
     const session = driver.session()
 
     let finished = false
     const progress = new cliProgress.SingleBar({
-        format: `{bar} | ${nodeType} | ETA: {eta}s | {value}/{total}`
+        format: `{bar} | ${oldNodeTypeLabel} | ETA: {eta}s | {value}/{total}`
     }, cliProgress.Presets.shades_classic)
     progress.start(300, 0)
 
     session
-        .run(getNodeQuery(nodeType))
+        .run(getNodeQuery(oldNodeTypeLabel))
         .subscribe({
-            onNext: record => {
+            onNext: async record => {
                 waitSync(25)
-                const node: Node = record.get('node')
-                const data = mapFunc(node)
+                const nodeOld: Node = record.get('node')
+                const data = mapFunc(nodeOld)
                 progress.increment()
-                createFunc(data)
+                await createDbNode(newNodeTypeLabel, queryFunc(data))
             },
             onCompleted: () => {
                 session.close()
