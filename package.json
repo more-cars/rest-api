@@ -47,7 +47,7 @@
     "bruno:open-gui": "bruno",
     "docker:build-image": "docker build -t mc-api -f deployment/Dockerfile .",
     "docker:tag-image:dev": "docker image tag mc-api localhost/mc-api:dev",
-    "docker:tag-image:dockerhub": "docker image tag mc-api dennisgerike/more-cars-api:0.12.0",
+    "docker:tag-image:dockerhub": "docker image tag mc-api docker.io/dennisgerike/more-cars-api:0.12.0",
     "docker:tag-image:github": "docker image tag mc-api ghcr.io/more-cars/rest-api:0.12.0",
     "docker:login:dockerhub": "docker login docker.io",
     "docker:login:github": "docker login ghcr.io",
