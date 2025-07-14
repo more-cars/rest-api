@@ -25,13 +25,16 @@
   ],
   "tags": [
     {
-      "name": "Brands"
+      "name": "Brands",
+      "description": "Car `Brand`s enables us to distinguish between car models from different car manufacturers. (E.g. BMW, Toyota, Ford.)"
     },
     {
-      "name": "Car Models"
+      "name": "Car Models",
+      "description": "A `Car Model` represents a group of cars with the same name, from the same brand and the same generation. (E.g. Ferrari Testarossa, VW Golf VII, Ford Fiesta Mk2.)"
     },
     {
-      "name": "Images"
+      "name": "Images",
+      "description": "An `Image` can be photo, an illustration, a logo, a screenshot or similar. It illustrates a car or a car-related object. Depending on the context that can be a brand logos, a race track layout, a book cover, etc."
     }
   ],
   "paths": {
