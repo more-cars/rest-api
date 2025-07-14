@@ -25,11 +25,11 @@ export async function createDbRelationship(startNodeId: number, endNodeId: numbe
     // 2. Adding a custom More Cars ID for that relationship
     const elementId = dbRelationship.elementId
     const moreCarsId = generateMoreCarsId(extractBaseIdFromElementId(elementId))
-    dbRelationship = await addMoreCarsIdToRelationship(elementId, moreCarsId, session)
+    dbRelationship = await addMoreCarsIdToRelationship(elementId, moreCarsId)
 
     // 3. Adding timestamps
     const timestamp = new Date().toISOString()
-    dbRelationship = await addTimestampsToRelationship(elementId, timestamp, session)
+    dbRelationship = await addTimestampsToRelationship(elementId, timestamp, timestamp)
 
     await session.close()
     await driver.close()

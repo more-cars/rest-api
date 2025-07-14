@@ -1,5 +1,6 @@
-import {Relationship, Session} from "neo4j-driver"
+import neo4j, {Driver, Relationship, Session} from "neo4j-driver"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
+import {getDriver} from "../driver.ts"
 
 /**
  * Attaching a More Cars ID to the given relationship.
@@ -8,13 +9,19 @@ import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
  * The input data is assumed to be valid. It is not validated here.
  * When the given relationship doesn't exist or the More Cars ID is invalid then the db query will crash.
  */
-export async function addMoreCarsIdToRelationship(elementId: string, moreCarsId: number, session: Session): Promise<Relationship> {
-    const records = await session.executeWrite(async txc => {
+export async function addMoreCarsIdToRelationship(elementId: string, moreCarsId: number): Promise<Relationship> {
+    const driver: Driver = getDriver()
+    const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
+
+    const dbRel: Relationship = await session.executeWrite(async txc => {
         const result = await txc.run(addMoreCarsIdToRelationshipQuery(elementId, moreCarsId))
-        return result.records
+        return result.records[0].get('rel')
     })
 
-    return records[0].get('rel')
+    await session.close()
+    await driver.close()
+
+    return dbRel
 }
 
 export function addMoreCarsIdToRelationshipQuery(elementId: string, moreCarsId: number) {
