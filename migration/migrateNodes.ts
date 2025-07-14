@@ -15,21 +15,21 @@ import {NodeTypeLabel} from "../src/db/NodeTypeLabel.ts"
 import {addMoreCarsIdToNode} from "../src/db/nodes/addMoreCarsIdToNode.ts"
 import {addTimestampsToNode} from "../src/db/nodes/addTimestampsToNode.ts"
 
-(async function migrate() {
+export async function migrateNodes() {
     await deleteAllBrands()
     await deleteAllCarModels()
     await deleteAllImages()
 
-    await migrateNodes('brand', mapBrand, NodeTypeLabel.Brand, createBrandQuery)
-    await migrateNodes('carmodel', mapCarModel, NodeTypeLabel.CarModel, createCarModelQuery)
-    await migrateNodes('image', mapImage, NodeTypeLabel.Image, createImageQuery)
-})()
+    await migrate('brand', mapBrand, NodeTypeLabel.Brand, createBrandQuery)
+    await migrate('carmodel', mapCarModel, NodeTypeLabel.CarModel, createCarModelQuery)
+    await migrate('image', mapImage, NodeTypeLabel.Image, createImageQuery)
+}
 
-async function migrateNodes(oldNodeTypeLabel: string, mapFunc: any, newNodeTypeLabel: any, queryFunc: any) {
+async function migrate(oldNodeTypeLabel: string, mapFunc: any, newNodeTypeLabel: any, queryFunc: any) {
     const driver = getMc1Driver()
-    const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
+    const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
-    const records = await session.executeWrite(async txc => {
+    const records = await session.executeRead(async txc => {
         const result = await txc.run(getNodeQuery(oldNodeTypeLabel))
         return result.records
     })
