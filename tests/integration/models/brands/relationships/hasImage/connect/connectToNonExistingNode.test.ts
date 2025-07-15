@@ -7,14 +7,14 @@ test('Expecting an error when any of the nodes does not exist',
         const brand = await seedBrand()
         const image = await seedImage()
 
-        const relationshipAttemptWithNonExistentCarModel =
+        const relationshipAttemptWithNonExistentBrand =
             await Brand.createHasImageRelationship(-42, image.id)
-        expect(relationshipAttemptWithNonExistentCarModel)
+        expect(relationshipAttemptWithNonExistentBrand)
             .toBeFalsy()
 
-        const relationshipAttemptWithNonExistentBrand =
+        const relationshipAttemptWithNonExistentImage =
             await Brand.createHasImageRelationship(brand.id, -43)
-        expect(relationshipAttemptWithNonExistentBrand)
+        expect(relationshipAttemptWithNonExistentImage)
             .toBeFalsy()
 
         const relationshipAttemptWithBothNodesNonExistent =
