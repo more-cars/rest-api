@@ -565,6 +565,50 @@
         }
       }
     },
+    "/car-models/{car-model-id}/has-image": {
+      "get": {
+        "tags": [
+          "Car Models"
+        ],
+        "summary": "Get all `Car-Model-has-Image` relationships",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-id",
+            "description": "ID of the `Car Model`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requested relationships were found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CarModelHasImage"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No `Car Model` with the provided ID found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/car-models/{car-model-id}/has-image/{image-id}": {
       "post": {
         "tags": [
