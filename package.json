@@ -70,7 +70,7 @@
     "minikube:tests:performance:prod": "deployment/minikube-run-performance-test.sh prod",
     "gke:deploy:prod": "deployment/gke-app-deploy.sh prod",
     "gke:undeploy:prod": "deployment/gke-app-undeploy.sh prod",
-    "tests:validate-api-schema": "npx ts-node tests/api/schema-validation.ts",
+    "tests:validate-api-schema": "npx ts-node tests/api-validation/schema-validation.ts",
     "tests:lint": "npx eslint src",
     "tests:unit": "npx jest --projects tests/unit",
     "tests:unit:coverage": "npx jest --projects tests/unit --coverage",
