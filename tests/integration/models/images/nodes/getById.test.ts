@@ -1,5 +1,5 @@
 import {Image} from "../../../../../src/models/images/Image"
-import {seedImage} from "../../../../dbSeeding/images/nodes/seedImage"
+import {seedImage} from "../../../../_toolbox/dbSeeding/images/nodes/seedImage"
 
 test('Fetching an image that does not exist should return "false"', async () => {
     const expectedNode = false

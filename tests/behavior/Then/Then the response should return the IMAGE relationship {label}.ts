@@ -1,8 +1,8 @@
 import {Then} from "@cucumber/cucumber"
 import assert from "assert"
 import {ImageBelongsToNodeRelationship} from "../../../src/models/images/types/ImageBelongsToNodeRelationship"
-import {ImageBelongsToNodeSchema} from "../../_schemas/ImageBelongsToNodeSchema"
-import {validateJson} from "../../_helpers/validateJson"
+import {ImageBelongsToNodeSchema} from "../../_toolbox/schemas/ImageBelongsToNodeSchema"
+import {validateJson} from "../../_toolbox/validateJson"
 
 Then('the response should return the IMAGE relationship {string}', function (label: string) {
     const expectedRelationship: ImageBelongsToNodeRelationship = this.relationship[label]

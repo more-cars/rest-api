@@ -1,8 +1,8 @@
 import {Then} from "@cucumber/cucumber"
 import assert from "assert"
 import {BrandNode} from "../../../src/models/brands/types/BrandNode"
-import {BrandSchema} from "../../_schemas/BrandSchema"
-import {validateJson} from "../../_helpers/validateJson"
+import {BrandSchema} from "../../_toolbox/schemas/BrandSchema"
+import {validateJson} from "../../_toolbox/validateJson"
 
 Then('the response should return the BRAND {string}', function (label: string) {
     const expectedNode: BrandNode = this.brand[label]

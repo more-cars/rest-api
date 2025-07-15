@@ -1,7 +1,7 @@
 import {When} from "@cucumber/cucumber"
 import axios from "axios"
 import {BrandNode} from "../../../src/models/brands/types/BrandNode"
-import {seedCarModel} from "../../dbSeeding/car-models/nodes/seedCarModel"
+import {seedCarModel} from "../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
 
 When('the user connects {int} CAR MODELs to BRAND {string}',
     async function (carModelAmount: number, brandLabel: string) {

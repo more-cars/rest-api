@@ -1,6 +1,8 @@
 import {Given} from "@cucumber/cucumber"
-import {BrandNode} from "../../../src/models/brands/types/BrandNode.ts"
-import {seedBrandHasImageRelationship} from "../../dbSeeding/images/relationships/seedBrandHasImageRelationship.ts"
+import {BrandNode} from "../../../src/models/brands/types/BrandNode"
+import {
+    seedBrandHasImageRelationship
+} from "../../_toolbox/dbSeeding/images/relationships/seedBrandHasImageRelationship"
 
 Given('there are {int} IMAGEs connected to BRAND {string}',
     async function (amount: number, label: string) {

@@ -1,7 +1,7 @@
 import {When} from "@cucumber/cucumber"
 import axios from "axios"
-import {seedCarModel} from "../../dbSeeding/car-models/nodes/seedCarModel"
-import {seedBrand} from "../../dbSeeding/brands/nodes/seedBrand"
+import {seedCarModel} from "../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {seedBrand} from "../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 
 When('the user creates a relationship',
     async function () {

@@ -1,8 +1,8 @@
 import {Then} from "@cucumber/cucumber"
 import assert from "assert"
-import {CarModelSchema} from "../../_schemas/CarModelSchema"
+import {CarModelSchema} from "../../_toolbox/schemas/CarModelSchema"
 import {CarModelNode} from "../../../src/models/car-models/types/CarModelNode"
-import {validateJson} from "../../_helpers/validateJson"
+import {validateJson} from "../../_toolbox/validateJson"
 
 Then('the response should return the CAR MODEL {string}',
     function (label: string) {

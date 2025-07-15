@@ -1,5 +1,5 @@
-import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
-import {seedCarModel} from "../../../../../../dbSeeding/car-models/nodes/seedCarModel"
+import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
+import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
 import {Brand} from "../../../../../../../src/models/brands/Brand"
 
 test('The relationship ID should not change when creating the same relationship again', async () => {

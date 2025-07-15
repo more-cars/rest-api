@@ -1,10 +1,10 @@
-import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
+import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {
     getRelationshipsForSpecificNode
 } from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
-import {seedImages} from "../../../../../../dbSeeding/images/nodes/seedImages.ts"
+import {seedImages} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImages"
 
 test('Requesting a relationship list for all IMAGEs that are connected to the BRAND', async () => {
     const brand = await seedBrand()

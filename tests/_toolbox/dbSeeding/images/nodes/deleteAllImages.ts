@@ -1,14 +1,18 @@
 import neo4j, {Driver, Session} from "neo4j-driver"
-import {getDriver} from "../../../../src/db/driver.ts"
+import {getDriver} from "../../../../../src/db/driver"
 
-export async function deleteBrandHasCarModelRelationships() {
+/**
+ * Deletes all nodes from type "Image" in the database.
+ * All relationships that are connected to an "Image" are deleted, too.
+ */
+export async function deleteAllImages() {
     const driver: Driver = getDriver()
     const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
     await session.executeWrite(async txc => {
         await txc.run(`
-            MATCH (a:Brand)-[rel:HAS_CAR_MODEL]-(b:CarModel)
-            DELETE rel
+            MATCH (node:Image)
+            DETACH DELETE node
         `)
     })
 

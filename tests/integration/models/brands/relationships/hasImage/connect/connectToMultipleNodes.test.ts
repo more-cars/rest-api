@@ -1,7 +1,7 @@
-import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
+import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 import {Brand} from "../../../../../../../src/models/brands/Brand"
 import assert from "assert"
-import {seedImages} from "../../../../../../dbSeeding/images/nodes/seedImages.ts"
+import {seedImages} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImages"
 
 test('A BRAND can have multiple IMAGEs attached to it', async () => {
     const brand = await seedBrand()

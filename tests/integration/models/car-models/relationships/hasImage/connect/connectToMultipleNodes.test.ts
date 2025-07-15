@@ -1,7 +1,7 @@
 import assert from "assert"
-import {seedImages} from "../../../../../../dbSeeding/images/nodes/seedImages.ts"
-import {seedCarModel} from "../../../../../../dbSeeding/car-models/nodes/seedCarModel.ts"
-import {CarModel} from "../../../../../../../src/models/car-models/CarModel.ts"
+import {seedImages} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImages"
+import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 
 test('A CAR MODEL can have multiple IMAGEs attached to it', async () => {
     const carModel = await seedCarModel()

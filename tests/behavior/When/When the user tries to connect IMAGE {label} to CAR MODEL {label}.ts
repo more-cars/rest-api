@@ -1,7 +1,7 @@
 import {When} from "@cucumber/cucumber"
 import axios from "axios"
-import {ImageNode} from "../../../src/models/images/types/ImageNode.ts"
-import {CarModelNode} from "../../../src/models/car-models/types/CarModelNode.ts"
+import {ImageNode} from "../../../src/models/images/types/ImageNode"
+import {CarModelNode} from "../../../src/models/car-models/types/CarModelNode"
 
 When('the user tries to connect IMAGE {string} to CAR MODEL {string}',
     async function (imageLabel: string, carModelLabel: string) {

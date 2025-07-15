@@ -1,5 +1,5 @@
 import {CarModel} from "../../../../../src/models/car-models/CarModel"
-import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
+import FakeCarModel from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
 
 test('When providing valid data the new node can be created', async () => {
     const createdNode = await CarModel.create(FakeCarModel)

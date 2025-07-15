@@ -1,8 +1,8 @@
 import assert from "assert"
 import {CarModel} from "../../../../src/models/car-models/CarModel"
 import {Brand} from "../../../../src/models/brands/Brand"
-import FakeCarModel from "../../../fixtures/nodes/FakeCarModel"
-import FakeBrand from "../../../fixtures/nodes/FakeBrand"
+import FakeCarModel from "../../../_toolbox/fixtures/nodes/FakeCarModel"
+import FakeBrand from "../../../_toolbox/fixtures/nodes/FakeBrand"
 
 test('ID is always contained in response', async () => {
     const carModel = await CarModel.create(FakeCarModel)

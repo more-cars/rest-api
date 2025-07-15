@@ -1,7 +1,7 @@
-import {seedImage} from "../../../../../../dbSeeding/images/nodes/seedImage"
+import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
 import {
     seedRelationshipsForSpecificImage
-} from "../../../../../../dbSeeding/images/relationships/seedRelationshipsForSpecificImage"
+} from "../../../../../../_toolbox/dbSeeding/images/relationships/seedRelationshipsForSpecificImage"
 import {getRelationships} from "../../../../../../../src/db/nodes/images/getRelationships"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 

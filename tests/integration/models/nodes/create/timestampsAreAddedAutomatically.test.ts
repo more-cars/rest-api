@@ -1,9 +1,9 @@
 import {Brand} from "../../../../../src/models/brands/Brand"
 import {CarModel} from "../../../../../src/models/car-models/CarModel"
 import {Image} from "../../../../../src/models/images/Image"
-import FakeBrand from "../../../../fixtures/nodes/FakeBrand"
-import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
-import FakeImage from "../../../../fixtures/nodes/FakeImage"
+import FakeBrand from "../../../../_toolbox/fixtures/nodes/FakeBrand"
+import FakeCarModel from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
+import FakeImage from "../../../../_toolbox/fixtures/nodes/FakeImage"
 import moment from "moment"
 
 test('Timestamps are added when creating a node', async () => {

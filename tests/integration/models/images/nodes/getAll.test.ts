@@ -1,5 +1,5 @@
-import {deleteAllImages} from "../../../../dbSeeding/images/nodes/deleteAllImages"
-import {seedImages} from "../../../../dbSeeding/images/nodes/seedImages"
+import {deleteAllImages} from "../../../../_toolbox/dbSeeding/images/nodes/deleteAllImages"
+import {seedImages} from "../../../../_toolbox/dbSeeding/images/nodes/seedImages"
 import {ImageNode} from "../../../../../src/models/images/types/ImageNode"
 import {Image} from "../../../../../src/models/images/Image"
 

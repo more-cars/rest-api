@@ -1,6 +1,6 @@
 import {When} from "@cucumber/cucumber"
 import axios from "axios"
-import {BrandNode} from "../../../src/models/brands/types/BrandNode.ts"
+import {BrandNode} from "../../../src/models/brands/types/BrandNode"
 
 When('the user requests all IMAGEs that are connected to BRAND {string}',
     async function (label: string) {

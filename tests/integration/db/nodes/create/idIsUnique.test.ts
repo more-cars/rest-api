@@ -1,7 +1,7 @@
-import {seedBrands} from "../../../../dbSeeding/brands/nodes/seedBrands"
-import {seedCarModels} from "../../../../dbSeeding/car-models/nodes/seedCarModels"
-import {seedImages} from "../../../../dbSeeding/images/nodes/seedImages"
-import {removeDuplicates} from "../../../../_helpers/removeDuplicates"
+import {seedBrands} from "../../../../_toolbox/dbSeeding/brands/nodes/seedBrands"
+import {seedCarModels} from "../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModels"
+import {seedImages} from "../../../../_toolbox/dbSeeding/images/nodes/seedImages"
+import {removeDuplicates} from "../../../../_toolbox/removeDuplicates"
 
 test('Each node is created with a different ID', async () => {
     const brands = await seedBrands(20)

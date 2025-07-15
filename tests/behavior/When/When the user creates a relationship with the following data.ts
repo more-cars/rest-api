@@ -1,7 +1,7 @@
 import {DataTable, When} from "@cucumber/cucumber"
 import axios from "axios"
-import {seedBrand} from "../../dbSeeding/brands/nodes/seedBrand"
-import {seedCarModel} from "../../dbSeeding/car-models/nodes/seedCarModel"
+import {seedBrand} from "../../_toolbox/dbSeeding/brands/nodes/seedBrand"
+import {seedCarModel} from "../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
 
 When('the user creates a relationship with the following data',
     async function (dataTable: DataTable) {

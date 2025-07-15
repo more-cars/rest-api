@@ -1,6 +1,6 @@
-import {seedImage} from "../../../../../dbSeeding/images/nodes/seedImage"
+import {seedImage} from "../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
 import {Image} from "../../../../../../src/models/images/Image"
-import {seedBrand} from "../../../../../dbSeeding/brands/nodes/seedBrand"
+import {seedBrand} from "../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 
 test('An image can be connected to multiple nodes of the same type', async () => {
     const imageNode = await seedImage()

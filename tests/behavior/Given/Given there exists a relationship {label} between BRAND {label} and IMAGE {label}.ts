@@ -1,7 +1,7 @@
 import {Given} from "@cucumber/cucumber"
 import axios from "axios"
 import {BrandNode} from "../../../src/models/brands/types/BrandNode"
-import {ImageNode} from "../../../src/models/images/types/ImageNode.ts"
+import {ImageNode} from "../../../src/models/images/types/ImageNode"
 
 Given('there exists a relationship {string} between BRAND {string} and IMAGE {string}',
     async function (relationshipLabel: string, brandLabel: string, imageLabel: string) {

@@ -1,10 +1,10 @@
-import FakeBrand from "../../../../fixtures/nodes/FakeBrand"
+import FakeBrand from "../../../../_toolbox/fixtures/nodes/FakeBrand"
 import {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
 import {createNode as createBrandNode} from "../../../../../src/db/nodes/brands/createNode"
-import FakeCarModel from "../../../../fixtures/nodes/FakeCarModel"
+import FakeCarModel from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
 import {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
 import {createNode as createCarModelNode} from "../../../../../src/db/nodes/car-models/createNode"
-import FakeImageFull from "../../../../fixtures/nodes/FakeImageFull"
+import FakeImageFull from "../../../../_toolbox/fixtures/nodes/FakeImageFull"
 import {InputImageCreate} from "../../../../../src/db/nodes/images/types/InputImageCreate"
 import {createNode as createImageNode} from "../../../../../src/db/nodes/images/createNode"
 

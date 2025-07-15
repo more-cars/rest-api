@@ -1,8 +1,8 @@
 import {createNode as createBrandNode} from "../../../../src/db/nodes/brands/createNode"
 import {createNode as createCarModelNode} from "../../../../src/db/nodes/car-models/createNode"
 import assert from "assert"
-import FakeBrand from "../../../fixtures/nodes/FakeBrand"
-import FakeCarModel from "../../../fixtures/nodes/FakeCarModel"
+import FakeBrand from "../../../_toolbox/fixtures/nodes/FakeBrand"
+import FakeCarModel from "../../../_toolbox/fixtures/nodes/FakeCarModel"
 import {Brand} from "../../../../src/models/brands/Brand"
 
 test('ID is added when creating a relationship', async () => {

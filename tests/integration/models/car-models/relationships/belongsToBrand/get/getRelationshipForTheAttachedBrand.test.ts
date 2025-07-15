@@ -1,9 +1,9 @@
-import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
+import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 import assert from "assert"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
-import {seedCarModel} from "../../../../../../dbSeeding/car-models/nodes/seedCarModel"
-import {validateJson} from "../../../../../../_helpers/validateJson"
-import {CarModelBelongsToBrandSchema} from "../../../../../../_schemas/CarModelBelongsToBrandSchema"
+import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {validateJson} from "../../../../../../_toolbox/validateJson"
+import {CarModelBelongsToBrandSchema} from "../../../../../../_toolbox/schemas/CarModelBelongsToBrandSchema"
 
 test('Requesting the relationship between CAR MODEL and attached BRAND', async () => {
     const carModel = await seedCarModel()

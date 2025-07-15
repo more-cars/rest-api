@@ -1,4 +1,4 @@
-import {seedImage} from "../../../../../dbSeeding/images/nodes/seedImage"
+import {seedImage} from "../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
 import {Image} from "../../../../../../src/models/images/Image"
 
 test('Attaching an image to itself is not allowed', async () => {

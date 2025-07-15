@@ -1,7 +1,7 @@
-import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
+import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 import {Brand} from "../../../../../../../src/models/brands/Brand"
 import {BrandRelationship} from "../../../../../../../src/models/brands/types/BrandRelationship"
-import {seedImage} from "../../../../../../dbSeeding/images/nodes/seedImage.ts"
+import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
 
 test('Creating a "Brand has Image" relationship when both nodes exist', async () => {
     const brand = await seedBrand()

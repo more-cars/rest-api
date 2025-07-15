@@ -2,7 +2,7 @@ import {Then} from "@cucumber/cucumber"
 import assert from "assert"
 import axios from "axios"
 import {BrandNode} from "../../../src/models/brands/types/BrandNode"
-import {ImageNode} from "../../../src/models/images/types/ImageNode.ts"
+import {ImageNode} from "../../../src/models/images/types/ImageNode"
 
 Then('the IMAGE {string} should be connected to the BRAND {string}',
     async function (imageLabel: string, brandLabel: string) {

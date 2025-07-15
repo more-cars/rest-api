@@ -1,8 +1,8 @@
-import {seedImage} from "../../../../../../dbSeeding/images/nodes/seedImage"
-import {seedCarModel} from "../../../../../../dbSeeding/car-models/nodes/seedCarModel"
+import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
+import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
-import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
+import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 
 test('Creating a "Image belongs to Node" relationship when both nodes exist', async () => {
     const image = await seedImage()

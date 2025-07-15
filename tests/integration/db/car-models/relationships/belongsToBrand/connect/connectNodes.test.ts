@@ -1,5 +1,5 @@
-import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
-import {seedCarModel} from "../../../../../../dbSeeding/car-models/nodes/seedCarModel"
+import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
+import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {BrandRelationship} from "../../../../../../../src/models/brands/types/BrandRelationship"

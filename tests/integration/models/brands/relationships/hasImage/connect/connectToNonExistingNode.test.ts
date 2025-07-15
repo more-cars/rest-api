@@ -1,6 +1,6 @@
-import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
+import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 import {Brand} from "../../../../../../../src/models/brands/Brand"
-import {seedImage} from "../../../../../../dbSeeding/images/nodes/seedImage.ts"
+import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
 
 test('Expecting an error when any of the nodes does not exist',
     async () => {

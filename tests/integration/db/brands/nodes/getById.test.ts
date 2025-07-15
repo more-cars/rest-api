@@ -1,8 +1,8 @@
 import {getNodeById} from "../../../../../src/db/nodes/brands/getNodeById"
-import {seedBrand} from "../../../../dbSeeding/brands/nodes/seedBrand"
+import {seedBrand} from "../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 import {BrandNode} from "../../../../../src/db/nodes/brands/types/BrandNode"
-import {BrandSchema} from "../../../../_schemas/BrandSchema"
-import {validateJson} from "../../../../_helpers/validateJson"
+import {BrandSchema} from "../../../../_toolbox/schemas/BrandSchema"
+import {validateJson} from "../../../../_toolbox/validateJson"
 
 test('Querying a brand that does not exist should return "false"', async () => {
     const expectedBrandNode = false

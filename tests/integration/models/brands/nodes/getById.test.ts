@@ -1,5 +1,5 @@
 import {Brand} from "../../../../../src/models/brands/Brand"
-import {seedBrand} from "../../../../dbSeeding/brands/nodes/seedBrand"
+import {seedBrand} from "../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 
 test('Fetching a brand that does not exist should return "false"', async () => {
     const expectedBrand = false

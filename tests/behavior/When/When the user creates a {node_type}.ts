@@ -1,8 +1,8 @@
 import {When} from "@cucumber/cucumber"
 import axios from "axios"
-import FakeBrand from "../../fixtures/nodes/FakeBrand"
-import FakeCarModel from "../../fixtures/nodes/FakeCarModel"
-import FakeImage from "../../fixtures/nodes/FakeImage"
+import FakeBrand from "../../_toolbox/fixtures/nodes/FakeBrand"
+import FakeCarModel from "../../_toolbox/fixtures/nodes/FakeCarModel"
+import FakeImage from "../../_toolbox/fixtures/nodes/FakeImage"
 
 When('the user creates a(n) {string}', async function (nodeType: string) {
     let data: any = {}

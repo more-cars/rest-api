@@ -1,6 +1,6 @@
 import {When} from "@cucumber/cucumber"
 import axios from "axios"
-import FakeBrand from "../../fixtures/nodes/FakeBrand"
+import FakeBrand from "../../_toolbox/fixtures/nodes/FakeBrand"
 
 When('the user creates a BRAND {string}',
     async function (label: string) {

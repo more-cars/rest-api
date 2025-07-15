@@ -1,7 +1,7 @@
 import {Image} from "../../../../../../src/models/images/Image"
-import {seedImage} from "../../../../../dbSeeding/images/nodes/seedImage"
-import {seedBrand} from "../../../../../dbSeeding/brands/nodes/seedBrand"
-import {seedCarModel} from "../../../../../dbSeeding/car-models/nodes/seedCarModel"
+import {seedImage} from "../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
+import {seedBrand} from "../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
+import {seedCarModel} from "../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
 
 test('An image can be connected to multiple other nodes from different types', async () => {
     const imageNode = await seedImage()

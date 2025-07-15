@@ -1,5 +1,5 @@
 import {Brand} from "../../../../../src/models/brands/Brand"
-import FakeBrand from "../../../../fixtures/nodes/FakeBrand"
+import FakeBrand from "../../../../_toolbox/fixtures/nodes/FakeBrand"
 
 test('When providing valid data the new node can be created', async () => {
     const createdNode = await Brand.create(FakeBrand)

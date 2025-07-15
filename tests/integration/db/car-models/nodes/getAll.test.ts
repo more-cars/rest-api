@@ -1,6 +1,6 @@
-import {deleteAllCarModels} from "../../../../dbSeeding/car-models/nodes/deleteAllCarModels"
+import {deleteAllCarModels} from "../../../../_toolbox/dbSeeding/car-models/nodes/deleteAllCarModels"
 import {CarModelNode} from "../../../../../src/models/car-models/types/CarModelNode"
-import {seedCarModels} from "../../../../dbSeeding/car-models/nodes/seedCarModels"
+import {seedCarModels} from "../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModels"
 import {getAllNodesOfType} from "../../../../../src/db/nodes/car-models/getAllNodesOfType"
 
 test('When there are no car models then an empty array should be returned', async () => {

@@ -1,4 +1,4 @@
-import {seedCarModel} from "../../../../../../dbSeeding/car-models/nodes/seedCarModel"
+import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
 import {
     getRelationshipsForSpecificNode
 } from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"

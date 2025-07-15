@@ -1,6 +1,6 @@
-import {seedImage} from "../../../../../dbSeeding/images/nodes/seedImage"
-import {seedCarModel} from "../../../../../dbSeeding/car-models/nodes/seedCarModel"
-import {seedRelationship} from "../../../../../dbSeeding/images/relationships/seedRelationship"
+import {seedImage} from "../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
+import {seedCarModel} from "../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {seedRelationship} from "../../../../../_toolbox/dbSeeding/images/relationships/seedRelationship"
 import {Image} from "../../../../../../src/models/images/Image"
 import assert from "assert"
 

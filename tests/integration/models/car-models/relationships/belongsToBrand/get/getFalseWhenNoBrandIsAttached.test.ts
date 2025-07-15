@@ -1,4 +1,4 @@
-import {seedCarModel} from "../../../../../../dbSeeding/car-models/nodes/seedCarModel"
+import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 
 test('False should be returned when no BRAND is connected to the CAR MODEL',

@@ -1,6 +1,6 @@
-import {seedImage} from "../../../../../../dbSeeding/images/nodes/seedImage.ts"
-import {seedCarModel} from "../../../../../../dbSeeding/car-models/nodes/seedCarModel.ts"
-import {CarModel} from "../../../../../../../src/models/car-models/CarModel.ts"
+import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
+import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 
 test('Expecting an error when any of the nodes does not exist',
     async () => {

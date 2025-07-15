@@ -1,7 +1,7 @@
 import {getAllNodesOfType} from "../../../../../src/db/nodes/images/getAllNodesOfType"
-import {deleteAllImages} from "../../../../dbSeeding/images/nodes/deleteAllImages"
+import {deleteAllImages} from "../../../../_toolbox/dbSeeding/images/nodes/deleteAllImages"
 import {ImageNode} from "../../../../../src/db/nodes/images/types/ImageNode"
-import {seedImages} from "../../../../dbSeeding/images/nodes/seedImages"
+import {seedImages} from "../../../../_toolbox/dbSeeding/images/nodes/seedImages"
 
 test('When there are no images then an empty array should be returned', async () => {
     await deleteAllImages()

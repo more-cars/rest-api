@@ -2,9 +2,9 @@ import {When} from "@cucumber/cucumber"
 import {Brand} from "../../../src/models/brands/Brand"
 import {CarModel} from "../../../src/models/car-models/CarModel"
 import {Image} from "../../../src/models/images/Image"
-import FakeBrand from "../../fixtures/nodes/FakeBrand"
-import FakeCarModel from "../../fixtures/nodes/FakeCarModel"
-import FakeImage from "../../fixtures/nodes/FakeImage"
+import FakeBrand from "../../_toolbox/fixtures/nodes/FakeBrand"
+import FakeCarModel from "../../_toolbox/fixtures/nodes/FakeCarModel"
+import FakeImage from "../../_toolbox/fixtures/nodes/FakeImage"
 
 When('the user creates a set of {int} {string}s',
     async function (amount: number, nodeType: string) {

@@ -1,4 +1,4 @@
-import {seedBrand} from "../../../../../../dbSeeding/brands/nodes/seedBrand"
+import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 import {
     getRelationshipsForSpecificNode
 } from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
