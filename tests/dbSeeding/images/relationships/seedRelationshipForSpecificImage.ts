@@ -6,5 +6,5 @@ import {ImageNode} from "../../../../src/db/nodes/images/types/ImageNode"
 export async function seedRelationshipForSpecificImage(imageNode: ImageNode) {
     const partnerNode = await seedCarModel()
 
-    return createRelationship(imageNode.id, partnerNode.id, DbRelationship.ImageBelongsToNode)
+    return createRelationship(partnerNode.id, imageNode.id, DbRelationship.NodeHasImage)
 }

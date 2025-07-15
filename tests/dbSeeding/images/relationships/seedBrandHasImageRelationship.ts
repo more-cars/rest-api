@@ -6,5 +6,5 @@ import {BrandNode} from "../../../../src/models/brands/types/BrandNode.ts"
 export async function seedBrandHasImageRelationship(brand: BrandNode) {
     const image = await seedImage()
 
-    return createRelationship(brand.id, image.id, DbRelationship.BrandHasImage)
+    return createRelationship(brand.id, image.id, DbRelationship.NodeHasImage)
 }

@@ -1,15 +1,16 @@
 import {createRelationshipQuery} from "../../../../../src/db/relationships/createDbRelationship.ts"
+import {DbRelationship} from "../../../../../src/db/types/DbRelationship.ts"
 
 test('cypher query is correctly assembled for "create relationship" request', async () => {
     const query = createRelationshipQuery(
-        12003001,
-        "BELONGS_TO_NODE",
-        12003002)
+        12003001, // Brand
+        DbRelationship.NodeHasImage,
+        12003002) // Image
 
     expect(query)
         .toEqual(
             "MATCH (a {mc_id: 12003001}), (b {mc_id: 12003002})\n" +
-            "CREATE (a)-[r:BELONGS_TO_NODE]->(b)\n" +
+            "CREATE (a)-[r:HAS_IMAGE]->(b)\n" +
             "RETURN r\n" +
             "  LIMIT 1")
 })

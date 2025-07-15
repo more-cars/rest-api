@@ -1,9 +1,10 @@
 import {createRelationshipQuery} from "../../../../../src/db/relationships/createDbRelationship.ts"
+import {DbRelationship} from "../../../../../src/db/types/DbRelationship.ts"
 
 test('cypher query is correctly assembled for "create relationship" request', async () => {
     const query = createRelationshipQuery(
         41,
-        "HAS_CAR_MODEL",
+        DbRelationship.BrandHasCarModel,
         42)
 
     expect(query)

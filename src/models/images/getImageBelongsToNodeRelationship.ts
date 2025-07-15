@@ -8,9 +8,9 @@ import {ImageBelongsToNodeRelationship} from "./types/ImageBelongsToNodeRelation
  */
 export async function getImageBelongsToNodeRelationship(imageId: number, partnerNodeId: number) {
     const relation = await getSpecificRelationship(
-        imageId,
         partnerNodeId,
-        DbRelationship.ImageBelongsToNode,
+        imageId,
+        DbRelationship.NodeHasImage,
     )
 
     if (!relation) {

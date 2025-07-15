@@ -7,7 +7,7 @@ export async function getBrandHasImageRelationship(brandId: number, imageId: num
     const relationship = await getSpecificRelationship(
         brandId,
         imageId,
-        DbRelationship.BrandHasImage,
+        DbRelationship.NodeHasImage,
     )
 
     if (!relationship) {

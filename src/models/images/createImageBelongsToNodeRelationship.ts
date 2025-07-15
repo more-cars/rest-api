@@ -8,9 +8,9 @@ import {ImageRelationship} from "./types/ImageRelationship"
  */
 export async function createImageBelongsToNodeRelationship(imageId: number, partnerNodeId: number) {
     const baseRelationship = await createRelationship(
-        imageId,
         partnerNodeId,
-        DbRelationship.ImageBelongsToNode,
+        imageId,
+        DbRelationship.NodeHasImage,
     )
 
     if (!baseRelationship) {

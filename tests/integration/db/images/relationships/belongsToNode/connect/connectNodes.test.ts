@@ -9,19 +9,19 @@ test('Creating a "Image belongs to Node" relationship when both nodes exist', as
     const carModel = await seedCarModel()
 
     const createdRelationship = await createRelationship(
-        image.id,
         carModel.id,
-        DbRelationship.ImageBelongsToNode,
+        image.id,
+        DbRelationship.NodeHasImage,
     )
 
     expect(createdRelationship)
-        .toHaveProperty('start_node_id', image.id)
+        .toHaveProperty('start_node_id', carModel.id)
     expect(createdRelationship)
-        .toHaveProperty('end_node_id', carModel.id)
+        .toHaveProperty('end_node_id', image.id)
     expect(createdRelationship)
         .toHaveProperty('relationship_id')
     expect(createdRelationship)
-        .toHaveProperty('relationship_name', DbRelationship.ImageBelongsToNode)
+        .toHaveProperty('relationship_name', DbRelationship.NodeHasImage)
     expect(createdRelationship)
         .toHaveProperty('created_at')
     expect(createdRelationship)
@@ -33,17 +33,17 @@ test('Invalid nodes fail the relationship creation', async () => {
     const brand = await seedBrand()
 
     let createdRelationship = await createRelationship(
-        image.id,
         -42,
-        DbRelationship.ImageBelongsToNode,
+        image.id,
+        DbRelationship.NodeHasImage,
     )
     expect(createdRelationship)
         .toEqual(false)
 
     createdRelationship = await createRelationship(
-        -42,
         brand.id,
-        DbRelationship.ImageBelongsToNode,
+        -42,
+        DbRelationship.NodeHasImage,
     )
     expect(createdRelationship)
         .toEqual(false)

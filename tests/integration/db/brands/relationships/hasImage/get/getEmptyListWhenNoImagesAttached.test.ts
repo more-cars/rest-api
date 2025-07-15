@@ -9,7 +9,7 @@ test('An empty list should be returned when no IMAGE is connected to the BRAND',
 
     const relationships = await getRelationshipsForSpecificNode(
         brand.id,
-        DbRelationship.BrandHasImage,
+        DbRelationship.NodeHasImage,
     )
 
     expect(relationships.length)

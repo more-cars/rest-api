@@ -6,7 +6,7 @@ import {DbRelationship} from "../../../../../src/db/types/DbRelationship.ts"
 test('cypher query is correctly assembled for "get relationships" request', async () => {
     const query = getRelationshipsForSpecificNodeQuery(
         12002001,
-        DbRelationship.BrandHasImage,
+        DbRelationship.NodeHasImage,
     )
 
     expect(query)

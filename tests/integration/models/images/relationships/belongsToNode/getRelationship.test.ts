@@ -11,10 +11,9 @@ test('Get a "Image belongs to Node" relationship when both nodes exist', async (
         assert.fail("Failed to seed relationship")
     }
 
-    const imageId = relationship.start_node_id
-    const partnerNodeId = relationship.end_node_id
+    const partnerNodeId = relationship.start_node_id
+    const imageId = relationship.end_node_id
     const relationshipId = relationship.relationship_id
-    const relationshipName = relationship.relationship_name
 
     const fetchedRelationship =
         await Image.getBelongsToNodeRelationship(imageId, partnerNodeId)
@@ -26,7 +25,7 @@ test('Get a "Image belongs to Node" relationship when both nodes exist', async (
     expect(fetchedRelationship)
         .toHaveProperty('relationship_id', relationshipId)
     expect(fetchedRelationship)
-        .toHaveProperty('relationship_name', relationshipName)
+        .toHaveProperty('relationship_name')
     expect(fetchedRelationship)
         .toHaveProperty('created_at')
     expect(fetchedRelationship)

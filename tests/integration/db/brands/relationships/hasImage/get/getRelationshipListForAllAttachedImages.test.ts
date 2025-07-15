@@ -14,13 +14,13 @@ test('Requesting a relationship list for all IMAGEs that are connected to the BR
         await createRelationship(
             brand.id,
             image.id,
-            DbRelationship.BrandHasImage,
+            DbRelationship.NodeHasImage,
         )
     }
 
     const relationships = await getRelationshipsForSpecificNode(
         brand.id,
-        DbRelationship.BrandHasImage,
+        DbRelationship.NodeHasImage,
     )
 
     expect(relationships.length)

@@ -19,7 +19,7 @@ test('Get all "Image belongs to Node" relationships for specific image', async (
         expect(relationship.image_id)
             .toBe(imageNode.id)
         expect(relationship.relationship_name)
-            .toBe(DbRelationship.ImageBelongsToNode)
+            .toBe(DbRelationship.NodeHasImage)
     })
 })
 

@@ -7,7 +7,7 @@ import {BrandHasImageRelationship} from "./types/BrandHasImageRelationship.ts"
 export async function getAllBrandHasImageRelationships(brand: BrandNode) {
     const relationships = await getRelationshipsForSpecificNode(
         brand.id,
-        DbRelationship.BrandHasImage,
+        DbRelationship.NodeHasImage,
     )
     const mappedRelationships: BrandHasImageRelationship[] = []
 

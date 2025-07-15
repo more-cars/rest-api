@@ -10,5 +10,5 @@ export async function seedRelationship() {
     const imageNode = await seedImage()
     const partnerNode = await seedCarModel()
 
-    return createRelationship(imageNode.id, partnerNode.id, DbRelationship.ImageBelongsToNode)
+    return createRelationship(partnerNode.id, imageNode.id, DbRelationship.NodeHasImage)
 }

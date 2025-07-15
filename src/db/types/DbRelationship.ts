@@ -7,6 +7,5 @@
  */
 export enum DbRelationship {
     BrandHasCarModel = 'HAS_CAR_MODEL',
-    BrandHasImage = 'HAS_IMAGE',
-    ImageBelongsToNode = 'BELONGS_TO_NODE',
+    NodeHasImage = 'HAS_IMAGE',
 }

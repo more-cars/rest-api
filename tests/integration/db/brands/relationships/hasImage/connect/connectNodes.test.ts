@@ -11,7 +11,7 @@ test('Creating a "Brand has Image" relationship when both nodes exist', async ()
     const createdRelationship = await createRelationship(
         brand.id,
         image.id,
-        DbRelationship.BrandHasImage,
+        DbRelationship.NodeHasImage,
     )
 
     expect(createdRelationship)
@@ -34,7 +34,7 @@ test('Invalid nodes fail the relationship creation', async () => {
     const createdRelationship = await createRelationship(
         brand.id,
         -42,
-        DbRelationship.BrandHasImage,
+        DbRelationship.NodeHasImage,
     )
 
     expect(createdRelationship)

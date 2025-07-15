@@ -11,7 +11,7 @@ export async function getRelationships(startNodeId: number): Promise<Array<Image
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getRelationshipsForSpecificNodeQuery(startNodeId, DbRelationship.ImageBelongsToNode))
+        const result = await txc.run(getRelationshipsForSpecificNodeQuery(startNodeId, DbRelationship.NodeHasImage))
         return result.records
     })
 
