@@ -1,4 +1,4 @@
-import {seedImage} from "../nodes/seedImage"
+import {seedImage} from "../../images/nodes/seedImage"
 import {createRelationship} from "../../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../../src/db/types/DbRelationship"
 import {BrandNode} from "../../../../../src/models/brands/types/BrandNode"

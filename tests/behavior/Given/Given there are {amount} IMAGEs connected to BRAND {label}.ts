@@ -2,7 +2,7 @@ import {Given} from "@cucumber/cucumber"
 import {BrandNode} from "../../../src/models/brands/types/BrandNode"
 import {
     seedBrandHasImageRelationship
-} from "../../_toolbox/dbSeeding/images/relationships/seedBrandHasImageRelationship"
+} from "../../_toolbox/dbSeeding/brands/relationships/seedBrandHasImageRelationship"
 
 Given('there are {int} IMAGEs connected to BRAND {string}',
     async function (amount: number, label: string) {
