@@ -7,14 +7,14 @@ import {
     deleteBrandHasCarModelRelationships
 } from "../tests/dbSeeding/brands/relationships/deleteBrandHasCarModelRelationships.ts"
 import {
-    deleteNodeHasImageRelationships
-} from "../tests/dbSeeding/images/relationships/deleteNodeHasImageRelationships.ts"
+    deleteAllNodeHasImageRelationships
+} from "../tests/dbSeeding/images/relationships/deleteAllNodeHasImageRelationships.ts"
 import {addTimestampsToRelationship} from "../src/db/relationships/addTimestampsToRelationship.ts"
 import {addMoreCarsIdToRelationship} from "../src/db/relationships/addMoreCarsIdToRelationship.ts"
 
 export async function migrateRelationships() {
     await deleteBrandHasCarModelRelationships()
-    await deleteNodeHasImageRelationships()
+    await deleteAllNodeHasImageRelationships()
 
     await migrate('brand', 'BUILDS_CAR_MODEL', 'carmodel', DbRelationship.BrandHasCarModel)
     await migrate('brand', 'HAS_IMAGE', 'image', DbRelationship.NodeHasImage)
