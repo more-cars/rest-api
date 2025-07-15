@@ -5,8 +5,9 @@ import {addMoreCarsIdToRelationship} from "./addMoreCarsIdToRelationship.ts"
 import {addTimestampsToRelationship} from "./addTimestampsToRelationship.ts"
 import {generateMoreCarsId} from "../generateMoreCarsId.ts"
 import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId.ts"
+import {DbRelationship} from "../types/DbRelationship.ts"
 
-export async function createDbRelationship(startNodeId: number, endNodeId: number, relationshipName: string): Promise<false | Relationship> {
+export async function createDbRelationship(startNodeId: number, endNodeId: number, relationshipName: DbRelationship): Promise<false | Relationship> {
     const driver: Driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
@@ -37,7 +38,7 @@ export async function createDbRelationship(startNodeId: number, endNodeId: numbe
     return dbRelationship
 }
 
-export function createRelationshipQuery(startNodeId: number, relationshipName: string, endNodeId: number) {
+export function createRelationshipQuery(startNodeId: number, relationshipName: DbRelationship, endNodeId: number) {
     return getCypherQueryTemplate('relationships/_cypher/createRelationship.cypher')
         .trim()
         .replace('relationshipName', relationshipName)
