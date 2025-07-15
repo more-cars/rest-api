@@ -1,0 +1,16 @@
+meta {
+  name: Get "has image" Relations
+  type: http
+  seq: 80
+}
+
+get {
+  url: {{baseUrl}}/car-models/{{validCarModelId}}/has-image
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body: isArray
+}
