@@ -6,26 +6,32 @@ import {DbRelationship} from "../src/db/types/DbRelationship.ts"
 import {
     deleteBrandHasCarModelRelationships
 } from "../tests/dbSeeding/brands/relationships/deleteBrandHasCarModelRelationships.ts"
+import {
+    deleteNodeHasImageRelationships
+} from "../tests/dbSeeding/images/relationships/deleteNodeHasImageRelationships.ts"
 import {addTimestampsToRelationship} from "../src/db/relationships/addTimestampsToRelationship.ts"
 import {addMoreCarsIdToRelationship} from "../src/db/relationships/addMoreCarsIdToRelationship.ts"
 
 export async function migrateRelationships() {
     await deleteBrandHasCarModelRelationships()
+    await deleteNodeHasImageRelationships()
 
-    await migrate('brand', 'carmodel', 'BUILDS_CAR_MODEL', DbRelationship.BrandHasCarModel)
+    await migrate('brand', 'BUILDS_CAR_MODEL', 'carmodel', DbRelationship.BrandHasCarModel)
+    await migrate('brand', 'HAS_IMAGE', 'image', DbRelationship.NodeHasImage)
+    await migrate('carmodel', 'HAS_IMAGE', 'image', DbRelationship.NodeHasImage)
 }
 
 async function migrate(
     oldStartNodeTypeLabel: string,
-    oldEndNodeTypeLabel: string,
     oldRelationshipName: string,
+    oldEndNodeTypeLabel: string,
     newRelationshipName: DbRelationship,
 ) {
     const driver = getMc1Driver()
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getOldRelationshipsQuery(oldStartNodeTypeLabel, oldEndNodeTypeLabel, oldRelationshipName))
+        const result = await txc.run(getOldRelationshipsQuery(oldStartNodeTypeLabel, oldRelationshipName, oldEndNodeTypeLabel))
         return result.records
     })
 
@@ -58,6 +64,6 @@ async function migrate(
     return
 }
 
-function getOldRelationshipsQuery(startNode: string, endNode: string, relationshipName: string) {
-    return `MATCH (a:${startNode})-[rel:${relationshipName}]-(:${endNode}) RETURN rel ORDER BY id(rel)`
+function getOldRelationshipsQuery(startNode: string, relationshipName: string, endNode: string) {
+    return `MATCH (a:${startNode})-[rel:${relationshipName}]->(:${endNode}) RETURN rel ORDER BY id(rel)`
 }
