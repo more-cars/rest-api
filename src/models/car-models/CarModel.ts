@@ -9,6 +9,11 @@ import {CarModelBelongsToBrandRelationship} from "./types/CarModelBelongsToBrand
 import {Brand} from "../brands/Brand"
 import {createCarModelBelongsToBrandRelationship} from "./createCarModelBelongsToBrandRelationship"
 import {getAllCarModelBelongsToBrandRelationships} from "./getAllCarModelBelongsToBrandRelationships"
+import {Image} from "../images/Image.ts"
+import {CarModelHasImageRelationship} from "./types/CarModelHasImageRelationship.ts"
+import {getCarModelHasImageRelationship} from "./getCarModelHasImageRelationship.ts"
+import {createCarModelHasImageRelationship} from "./createCarModelHasImageRelationship.ts"
+import {getAllCarModelHasImageRelationships} from "./getAllCarModelHasImageRelationships.ts"
 
 export class CarModel {
     static async create(data: CreateCarModelInput): Promise<CarModelNode> {
@@ -65,5 +70,31 @@ export class CarModel {
         }
 
         return (relationships)[0]
+    }
+
+    static async createHasImageRelationship(carModelId: number, imageId: number): Promise<false | CarModelHasImageRelationship> {
+        const carModel = await CarModel.findById(carModelId)
+        const image = await Image.findById(imageId)
+
+        if (!carModel || !image) {
+            return false
+        }
+
+        const existingRelation = await getCarModelHasImageRelationship(carModelId, imageId)
+        if (existingRelation) {
+            return existingRelation
+        }
+
+        return await createCarModelHasImageRelationship(carModelId, imageId)
+    }
+
+    static async getRelationshipsForHasImage(carModelId: number): Promise<Array<CarModelHasImageRelationship>> {
+        const carModel = await this.findById(carModelId)
+
+        if (!carModel) {
+            throw new Error(`A car model with ID #${carModelId} not found.`)
+        }
+
+        return await getAllCarModelHasImageRelationships(carModel)
     }
 }
