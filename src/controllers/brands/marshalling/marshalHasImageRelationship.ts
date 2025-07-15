@@ -1,5 +1,5 @@
-import {BrandHasImageRelationship} from "../../../models/brands/types/BrandHasImageRelationship.ts"
-import {BrandHasImageResponse} from "../types/BrandHasImageResponse.ts"
+import {BrandHasImageRelationship} from "../../../models/brands/types/BrandHasImageRelationship"
+import {BrandHasImageResponse} from "../types/BrandHasImageResponse"
 
 export function marshalHasImageRelationship(relationship: BrandHasImageRelationship) {
     const marshalledData: BrandHasImageResponse = {

@@ -2,7 +2,7 @@ import {BrandNode} from "./types/BrandNode"
 import {DbRelationship} from "../../db/types/DbRelationship"
 import {BrandRelationship} from "./types/BrandRelationship"
 import {getRelationshipsForSpecificNode} from "../../db/relationships/getRelationshipsForSpecificNode"
-import {BrandHasImageRelationship} from "./types/BrandHasImageRelationship.ts"
+import {BrandHasImageRelationship} from "./types/BrandHasImageRelationship"
 
 export async function getAllBrandHasImageRelationships(brand: BrandNode) {
     const relationships = await getRelationshipsForSpecificNode(

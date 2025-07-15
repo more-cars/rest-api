@@ -1,5 +1,5 @@
-import {generateMoreCarsId} from "../../../../../src/db/generateMoreCarsId.ts"
-import {OutOfRangeError} from "../../../../../src/db/types/OutOfRangeError.ts"
+import {generateMoreCarsId} from "../../../../../src/db/generateMoreCarsId"
+import {OutOfRangeError} from "../../../../../src/db/types/OutOfRangeError"
 
 test.each([
     0,

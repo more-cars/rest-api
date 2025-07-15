@@ -1,7 +1,7 @@
 import {createRelationship} from "../../db/relationships/createRelationship"
 import {DbRelationship} from "../../db/types/DbRelationship"
 import {BrandRelationship} from "./types/BrandRelationship"
-import {BrandHasImageRelationship} from "./types/BrandHasImageRelationship.ts"
+import {BrandHasImageRelationship} from "./types/BrandHasImageRelationship"
 
 export async function createBrandHasImageRelationship(brandId: number, imageId: number): Promise<false | BrandHasImageRelationship> {
     const baseRelationship = await createRelationship(

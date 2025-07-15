@@ -9,11 +9,11 @@ import {CarModelBelongsToBrandRelationship} from "./types/CarModelBelongsToBrand
 import {Brand} from "../brands/Brand"
 import {createCarModelBelongsToBrandRelationship} from "./createCarModelBelongsToBrandRelationship"
 import {getAllCarModelBelongsToBrandRelationships} from "./getAllCarModelBelongsToBrandRelationships"
-import {Image} from "../images/Image.ts"
-import {CarModelHasImageRelationship} from "./types/CarModelHasImageRelationship.ts"
-import {getCarModelHasImageRelationship} from "./getCarModelHasImageRelationship.ts"
-import {createCarModelHasImageRelationship} from "./createCarModelHasImageRelationship.ts"
-import {getAllCarModelHasImageRelationships} from "./getAllCarModelHasImageRelationships.ts"
+import {Image} from "../images/Image"
+import {CarModelHasImageRelationship} from "./types/CarModelHasImageRelationship"
+import {getCarModelHasImageRelationship} from "./getCarModelHasImageRelationship"
+import {createCarModelHasImageRelationship} from "./createCarModelHasImageRelationship"
+import {getAllCarModelHasImageRelationships} from "./getAllCarModelHasImageRelationships"
 
 export class CarModel {
     static async create(data: CreateCarModelInput): Promise<CarModelNode> {

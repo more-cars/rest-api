@@ -1,8 +1,8 @@
 import {DbRelationship} from "../../db/types/DbRelationship"
 import {getRelationshipsForSpecificNode} from "../../db/relationships/getRelationshipsForSpecificNode"
-import {CarModelNode} from "./types/CarModelNode.ts"
-import {CarModelHasImageRelationship} from "./types/CarModelHasImageRelationship.ts"
-import {CarModelRelationship} from "./types/CarModelRelationship.ts"
+import {CarModelNode} from "./types/CarModelNode"
+import {CarModelHasImageRelationship} from "./types/CarModelHasImageRelationship"
+import {CarModelRelationship} from "./types/CarModelRelationship"
 
 export async function getAllCarModelHasImageRelationships(carModel: CarModelNode) {
     const relationships = await getRelationshipsForSpecificNode(

@@ -1,4 +1,4 @@
-import {escapeSingleQuotes} from "../../../../../src/db/nodes/escapeSingleQuotes.ts"
+import {escapeSingleQuotes} from "../../../../../src/db/nodes/escapeSingleQuotes"
 
 test('single quotes are escaped', async () => {
     const value = "Test's Brand Full' Name"

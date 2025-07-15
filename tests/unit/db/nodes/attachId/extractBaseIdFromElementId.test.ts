@@ -1,4 +1,4 @@
-import {extractBaseIdFromElementId} from "../../../../../src/db/extractBaseIdFromElementId.ts"
+import {extractBaseIdFromElementId} from "../../../../../src/db/extractBaseIdFromElementId"
 
 test.each([
     ["4:f86eb04b-536d-4319-a8e9-8cb965f985bc:4", 4],

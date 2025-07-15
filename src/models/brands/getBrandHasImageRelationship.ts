@@ -1,7 +1,7 @@
 import {getSpecificRelationship} from "../../db/relationships/getSpecificRelationship"
 import {DbRelationship} from "../../db/types/DbRelationship"
 import {BrandRelationship} from "./types/BrandRelationship"
-import {BrandHasImageRelationship} from "./types/BrandHasImageRelationship.ts"
+import {BrandHasImageRelationship} from "./types/BrandHasImageRelationship"
 
 export async function getBrandHasImageRelationship(brandId: number, imageId: number): Promise<false | BrandHasImageRelationship> {
     const relationship = await getSpecificRelationship(

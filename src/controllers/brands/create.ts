@@ -6,9 +6,9 @@ import {BrandNode} from "../../models/brands/types/BrandNode"
 import {BrandResponse} from "./types/BrandResponse"
 import {marshal} from "./marshal"
 import {CreateBrandRawInput} from "./types/CreateBrandRawInput"
-import {isMandatoryString} from "../validators/isMandatoryString.ts"
-import {isOptionalString} from "../validators/isOptionalString.ts"
-import {isOptionalNumber} from "../validators/isOptionalNumber.ts"
+import {isMandatoryString} from "../validators/isMandatoryString"
+import {isOptionalString} from "../validators/isOptionalString"
+import {isOptionalNumber} from "../validators/isOptionalNumber"
 
 export async function create(req: express.Request, res: express.Response) {
     try {

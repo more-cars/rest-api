@@ -1,7 +1,7 @@
 import express from "express"
 import {Brand} from "../../models/brands/Brand"
-import {marshalHasImageRelationship} from "./marshalling/marshalHasImageRelationship.ts"
-import {BrandHasImageResponse} from "./types/BrandHasImageResponse.ts"
+import {marshalHasImageRelationship} from "./marshalling/marshalHasImageRelationship"
+import {BrandHasImageResponse} from "./types/BrandHasImageResponse"
 
 export async function createHasImageRelation(req: express.Request, res: express.Response) {
     const brandId = parseInt(req.params.brandId)

@@ -1,7 +1,7 @@
 import neo4j, {Driver, Node, Session} from "neo4j-driver"
-import {getDriver} from "../driver.ts"
-import {NodeTypeLabel} from "../NodeTypeLabel.ts"
-import {getAllNodesOfTypeQuery} from "./getAllNodesOfTypeQuery.ts"
+import {getDriver} from "../driver"
+import {NodeTypeLabel} from "../NodeTypeLabel"
+import {getAllNodesOfTypeQuery} from "./getAllNodesOfTypeQuery"
 
 export async function fetchNodesFromDb(nodeType: NodeTypeLabel): Promise<Array<Node>> {
     const nodes: Array<Node> = []

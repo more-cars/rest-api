@@ -1,5 +1,5 @@
 import {Relationship} from "neo4j-driver"
-import {BaseRelationship} from "../types/BaseRelationship.ts"
+import {BaseRelationship} from "../types/BaseRelationship"
 
 export function mapDbRelationshipToBaseRelationship(
     startNodeId: number,

@@ -1,4 +1,4 @@
-import {OutOfRangeError} from "./types/OutOfRangeError.ts"
+import {OutOfRangeError} from "./types/OutOfRangeError"
 
 /**
  * The database generates IDs that start at zero.

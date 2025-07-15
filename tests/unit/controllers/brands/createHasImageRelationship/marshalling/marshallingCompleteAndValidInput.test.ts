@@ -1,7 +1,7 @@
-import {BrandHasImageRelationship} from "../../../../../../src/models/brands/types/BrandHasImageRelationship.ts"
+import {BrandHasImageRelationship} from "../../../../../../src/models/brands/types/BrandHasImageRelationship"
 import {
     marshalHasImageRelationship
-} from "../../../../../../src/controllers/brands/marshalling/marshalHasImageRelationship.ts"
+} from "../../../../../../src/controllers/brands/marshalling/marshalHasImageRelationship"
 
 test('marshalling a complete and valid request', async () => {
     const relationship: BrandHasImageRelationship = {

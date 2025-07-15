@@ -1,8 +1,8 @@
 import {InputImageCreate} from "./types/InputImageCreate"
 import {ImageNode} from "./types/ImageNode"
-import {createDbNode} from "../createDbNode.ts"
+import {createDbNode} from "../createDbNode"
 import {NodeTypeLabel} from "../../NodeTypeLabel"
-import {mapDbNodeToImageNode} from "./mapDbNodeToImageNode.ts"
+import {mapDbNodeToImageNode} from "./mapDbNodeToImageNode"
 import {getCypherQueryTemplate} from "../../getCypherQueryTemplate"
 import {escapeSingleQuotes} from "../escapeSingleQuotes"
 

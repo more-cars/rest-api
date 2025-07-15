@@ -1,7 +1,7 @@
 import {CarModelNode} from "./types/CarModelNode"
-import {fetchNodesFromDb} from "../fetchNodesFromDb.ts"
+import {fetchNodesFromDb} from "../fetchNodesFromDb"
 import {NodeTypeLabel} from "../../NodeTypeLabel"
-import {mapDbNodeToCarModelNode} from "./mapDbNodeToCarModelNode.ts"
+import {mapDbNodeToCarModelNode} from "./mapDbNodeToCarModelNode"
 
 export async function getAllNodesOfType(): Promise<Array<CarModelNode>> {
     const nodes: Array<CarModelNode> = []

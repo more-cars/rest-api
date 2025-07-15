@@ -1,5 +1,5 @@
-import {CarModelHasImageRelationship} from "../../../models/car-models/types/CarModelHasImageRelationship.ts"
-import {CarModelHasImageResponse} from "../types/CarModelHasImageResponse.ts"
+import {CarModelHasImageRelationship} from "../../../models/car-models/types/CarModelHasImageRelationship"
+import {CarModelHasImageResponse} from "../types/CarModelHasImageResponse"
 
 export function marshalHasImageRelationship(relationship: CarModelHasImageRelationship) {
     const marshalledData: CarModelHasImageResponse = {

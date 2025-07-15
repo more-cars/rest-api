@@ -1,5 +1,5 @@
 import {Integer, Node} from "neo4j-driver"
-import {mapDbNodeToImageNode} from "../../../../src/db/nodes/images/mapDbNodeToImageNode.ts"
+import {mapDbNodeToImageNode} from "../../../../src/db/nodes/images/mapDbNodeToImageNode"
 
 test('the Neo4j node is correctly mapped to a More Cars node', async () => {
     const dbNode: Node = {

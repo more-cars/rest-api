@@ -1,5 +1,5 @@
 import neo4j, {Driver, Node, Session} from "neo4j-driver"
-import {getDriver} from "../driver.ts"
+import {getDriver} from "../driver"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 /**

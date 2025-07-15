@@ -1,6 +1,6 @@
 import neo4j, {Driver, Relationship, Session} from "neo4j-driver"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
-import {getDriver} from "../driver.ts"
+import {getDriver} from "../driver"
 
 /**
  * Adds the properties "created_at" and "updated_at" to the given relationship.

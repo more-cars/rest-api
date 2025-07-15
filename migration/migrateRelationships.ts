@@ -1,16 +1,16 @@
-import {getMc1Driver} from "../src/db/driver-mc1.ts"
+import {getMc1Driver} from "../src/db/driver-mc1"
 import neo4j from "neo4j-driver"
 import cliProgress from "cli-progress"
-import {createDbRelationship} from "../src/db/relationships/createDbRelationship.ts"
-import {DbRelationship} from "../src/db/types/DbRelationship.ts"
+import {createDbRelationship} from "../src/db/relationships/createDbRelationship"
+import {DbRelationship} from "../src/db/types/DbRelationship"
 import {
     deleteBrandHasCarModelRelationships
-} from "../tests/dbSeeding/brands/relationships/deleteBrandHasCarModelRelationships.ts"
+} from "../tests/_toolbox/dbSeeding/brands/relationships/deleteBrandHasCarModelRelationships"
 import {
     deleteAllNodeHasImageRelationships
-} from "../tests/dbSeeding/images/relationships/deleteAllNodeHasImageRelationships.ts"
-import {addTimestampsToRelationship} from "../src/db/relationships/addTimestampsToRelationship.ts"
-import {addMoreCarsIdToRelationship} from "../src/db/relationships/addMoreCarsIdToRelationship.ts"
+} from "../tests/_toolbox/dbSeeding/images/relationships/deleteAllNodeHasImageRelationships"
+import {addTimestampsToRelationship} from "../src/db/relationships/addTimestampsToRelationship"
+import {addMoreCarsIdToRelationship} from "../src/db/relationships/addMoreCarsIdToRelationship"
 
 export async function migrateRelationships() {
     await deleteBrandHasCarModelRelationships()

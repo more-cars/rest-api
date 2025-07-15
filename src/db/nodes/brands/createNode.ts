@@ -1,8 +1,8 @@
 import {InputBrandCreate} from "./types/InputBrandCreate"
 import {BrandNode} from "./types/BrandNode"
-import {createDbNode} from "../createDbNode.ts"
-import {NodeTypeLabel} from "../../NodeTypeLabel.ts"
-import {mapDbNodeToBrandNode} from "./mapDbNodeToBrandNode.ts"
+import {createDbNode} from "../createDbNode"
+import {NodeTypeLabel} from "../../NodeTypeLabel"
+import {mapDbNodeToBrandNode} from "./mapDbNodeToBrandNode"
 import {getCypherQueryTemplate} from "../../getCypherQueryTemplate"
 import {escapeSingleQuotes} from "../escapeSingleQuotes"
 

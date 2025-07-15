@@ -1,8 +1,8 @@
 import {InputCarModelCreate} from "./types/InputCarModelCreate"
 import {CarModelNode} from "./types/CarModelNode"
 import {NodeTypeLabel} from "../../NodeTypeLabel"
-import {createDbNode} from "../createDbNode.ts"
-import {mapDbNodeToCarModelNode} from "./mapDbNodeToCarModelNode.ts"
+import {createDbNode} from "../createDbNode"
+import {mapDbNodeToCarModelNode} from "./mapDbNodeToCarModelNode"
 import {getCypherQueryTemplate} from "../../getCypherQueryTemplate"
 import {escapeSingleQuotes} from "../escapeSingleQuotes"
 

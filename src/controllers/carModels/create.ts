@@ -6,9 +6,9 @@ import {marshal} from "./marshal"
 import {CreateCarModelRawInput} from "./types/CreateCarModelRawInput"
 import {CarModel} from "../../models/car-models/CarModel"
 import {CarModelNode} from "../../models/car-models/types/CarModelNode"
-import {isOptionalNumber} from "../validators/isOptionalNumber.ts"
-import {isMandatoryString} from "../validators/isMandatoryString.ts"
-import {isOptionalString} from "../validators/isOptionalString.ts"
+import {isOptionalNumber} from "../validators/isOptionalNumber"
+import {isMandatoryString} from "../validators/isMandatoryString"
+import {isOptionalString} from "../validators/isOptionalString"
 
 export async function create(req: express.Request, res: express.Response) {
     try {

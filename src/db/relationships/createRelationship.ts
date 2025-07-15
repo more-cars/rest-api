@@ -1,7 +1,7 @@
 import {DbRelationship} from "../types/DbRelationship"
 import {BaseRelationship} from "../types/BaseRelationship"
-import {createDbRelationship} from "./createDbRelationship.ts"
-import {mapDbRelationshipToBaseRelationship} from "./mapDbRelationshipToBaseRelationship.ts"
+import {createDbRelationship} from "./createDbRelationship"
+import {mapDbRelationshipToBaseRelationship} from "./mapDbRelationshipToBaseRelationship"
 
 /**
  * Creating a relationship between the two given nodes.

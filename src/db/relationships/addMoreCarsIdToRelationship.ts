@@ -1,6 +1,6 @@
 import neo4j, {Driver, Relationship, Session} from "neo4j-driver"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
-import {getDriver} from "../driver.ts"
+import {getDriver} from "../driver"
 
 /**
  * Attaching a More Cars ID to the given relationship.

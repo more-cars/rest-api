@@ -1,11 +1,11 @@
 import neo4j, {Driver, Relationship} from "neo4j-driver"
-import {getDriver} from "../driver.ts"
-import {getCypherQueryTemplate} from "../getCypherQueryTemplate.ts"
-import {addMoreCarsIdToRelationship} from "./addMoreCarsIdToRelationship.ts"
-import {addTimestampsToRelationship} from "./addTimestampsToRelationship.ts"
-import {generateMoreCarsId} from "../generateMoreCarsId.ts"
-import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId.ts"
-import {DbRelationship} from "../types/DbRelationship.ts"
+import {getDriver} from "../driver"
+import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
+import {addMoreCarsIdToRelationship} from "./addMoreCarsIdToRelationship"
+import {addTimestampsToRelationship} from "./addTimestampsToRelationship"
+import {generateMoreCarsId} from "../generateMoreCarsId"
+import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId"
+import {DbRelationship} from "../types/DbRelationship"
 
 export async function createDbRelationship(startNodeId: number, endNodeId: number, relationshipName: DbRelationship): Promise<false | Relationship> {
     const driver: Driver = getDriver()

@@ -1,5 +1,5 @@
 import {migrateNodes} from "./migrateNodes"
-import {migrateRelationships} from "./migrateRelationships.ts"
+import {migrateRelationships} from "./migrateRelationships"
 
 migrateAll().then(() => {
     console.log('finished')

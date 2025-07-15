@@ -4,8 +4,8 @@ import {getById} from "../controllers/brands/getById"
 import {getAll} from "../controllers/brands/getAll"
 import {createHasCarModelRelation} from "../controllers/brands/createHasCarModelRelation"
 import {getHasCarModelRelations} from "../controllers/brands/getHasCarModelRelations"
-import {createHasImageRelation} from "../controllers/brands/createHasImageRelation.ts"
-import {getHasImageRelations} from "../controllers/brands/getHasImageRelations.ts"
+import {createHasImageRelation} from "../controllers/brands/createHasImageRelation"
+import {getHasImageRelations} from "../controllers/brands/getHasImageRelations"
 
 const router = express.Router()
 

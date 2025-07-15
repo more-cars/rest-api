@@ -1,9 +1,9 @@
 import {
     marshalHasImageRelationship
-} from "../../../../../../src/controllers/carModels/marshalling/marshalHasImageRelationship.ts"
+} from "../../../../../../src/controllers/carModels/marshalling/marshalHasImageRelationship"
 import {
     CarModelHasImageRelationship
-} from "../../../../../../src/models/car-models/types/CarModelHasImageRelationship.ts"
+} from "../../../../../../src/models/car-models/types/CarModelHasImageRelationship"
 
 test('marshalling a complete and valid request', async () => {
     const relationship: CarModelHasImageRelationship = {

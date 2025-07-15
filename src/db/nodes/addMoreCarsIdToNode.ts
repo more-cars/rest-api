@@ -1,7 +1,7 @@
 import neo4j, {Driver, Node, Session} from "neo4j-driver"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {NodeTypeLabel} from "../NodeTypeLabel"
-import {getDriver} from "../driver.ts"
+import {getDriver} from "../driver"
 
 export async function addMoreCarsIdToNode(
     elementId: string,

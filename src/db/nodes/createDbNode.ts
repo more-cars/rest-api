@@ -1,10 +1,10 @@
 import neo4j, {Driver, Node, Session} from "neo4j-driver"
-import {NodeTypeLabel} from "../NodeTypeLabel.ts"
-import {addMoreCarsIdToNode} from "./addMoreCarsIdToNode.ts"
-import {addTimestampsToNode} from "./addTimestampsToNode.ts"
-import {getDriver} from "../driver.ts"
-import {generateMoreCarsId} from "../generateMoreCarsId.ts"
-import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId.ts"
+import {NodeTypeLabel} from "../NodeTypeLabel"
+import {addMoreCarsIdToNode} from "./addMoreCarsIdToNode"
+import {addTimestampsToNode} from "./addTimestampsToNode"
+import {getDriver} from "../driver"
+import {generateMoreCarsId} from "../generateMoreCarsId"
+import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId"
 
 export async function createDbNode(nodeType: NodeTypeLabel, query: string): Promise<Node> {
     const driver: Driver = getDriver()

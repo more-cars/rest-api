@@ -1,7 +1,7 @@
 import {ImageNode} from "./types/ImageNode"
-import {fetchNodesFromDb} from "../fetchNodesFromDb.ts"
+import {fetchNodesFromDb} from "../fetchNodesFromDb"
 import {NodeTypeLabel} from "../../NodeTypeLabel"
-import {mapDbNodeToImageNode} from "./mapDbNodeToImageNode.ts"
+import {mapDbNodeToImageNode} from "./mapDbNodeToImageNode"
 
 export async function getAllNodesOfType(): Promise<Array<ImageNode>> {
     const nodes: Array<ImageNode> = []

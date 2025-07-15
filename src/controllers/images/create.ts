@@ -6,7 +6,7 @@ import {marshal} from "./marshal"
 import {CreateImageRawInput} from "./types/CreateImageRawInput"
 import {Image} from "../../models/images/Image"
 import {ImageNode} from "../../models/images/types/ImageNode"
-import {isMandatoryString} from "../validators/isMandatoryString.ts"
+import {isMandatoryString} from "../validators/isMandatoryString"
 
 export async function create(req: express.Request, res: express.Response) {
     try {

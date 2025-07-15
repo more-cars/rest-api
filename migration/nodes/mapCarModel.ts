@@ -1,5 +1,5 @@
 import {Node} from "neo4j-driver"
-import {InputCarModelCreate} from "../../src/db/nodes/car-models/types/InputCarModelCreate.ts"
+import {InputCarModelCreate} from "../../src/db/nodes/car-models/types/InputCarModelCreate"
 
 export function mapCarModel(node: Node): InputCarModelCreate {
     return {
