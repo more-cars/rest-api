@@ -1,0 +1,21 @@
+on:
+  workflow_call:
+
+jobs:
+  push-to-ghcr:
+    name: "Push docker image to dockerhub"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Tag image
+        run: docker tag ghcr.io/${{ github.repository }}:${{ inputs.version }} docker.io/dennisgerike/more-cars-api:${{ inputs.version }}
+
+      - name: Log in to dockerhub
+        uses: docker/login-action@v3
+        with:
+          registry: docker.io
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Push image
+        run: docker push docker.io/dennisgerike/more-cars-api:${{ inputs.version }}
