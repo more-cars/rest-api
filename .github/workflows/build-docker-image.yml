@@ -1,0 +1,19 @@
+name: Build Docker image
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version number (e.g. 0.13.0)
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build and tag image
+        run: docker build -t ${{ github.repository }}:${{ inputs.version }} -f deployment/Dockerfile .
