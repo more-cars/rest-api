@@ -17,6 +17,14 @@ jobs:
         with:
           ref: refs/tags/v${{ inputs.version }}
 
+      - name: Log in to ghcr.io
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+
       - name: Build and tag image
         run: docker build -t ghcr.io/${{ github.repository }}:${{ inputs.version }} -f deployment/Dockerfile .
 
