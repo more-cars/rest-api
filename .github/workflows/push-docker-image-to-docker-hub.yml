@@ -2,11 +2,14 @@ on:
   workflow_call:
 
 jobs:
-  push-to-ghcr:
-    name: "Push docker image to dockerhub"
+  push-to-docker-hub:
+    name: "Copy image from ghcr to docker hub"
     runs-on: ubuntu-latest
 
     steps:
+      - name: Pull image
+        run: docker pull ghcr.io/${{ github.repository }}:${{ inputs.version }}
+
       - name: Tag image
         run: docker tag ghcr.io/${{ github.repository }}:${{ inputs.version }} docker.io/dennisgerike/more-cars-api:${{ inputs.version }}
 

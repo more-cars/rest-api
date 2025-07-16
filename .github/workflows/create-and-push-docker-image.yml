@@ -12,6 +12,6 @@ jobs:
   build-docker-image:
     uses: ./.github/workflows/build-docker-image.yml
 
-  push-copy-to-dockerhub:
-    uses: ./.github/workflows/push-docker-image-to-dockerhub.yml
+  push-image-to-docker-hub:
+    uses: ./.github/workflows/push-docker-image-to-docker-hub.yml
     needs: build-docker-image
