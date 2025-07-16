@@ -35,11 +35,14 @@ async function migrate(oldNodeTypeLabel: string, mapFunc: any, newNodeTypeLabel:
     })
 
     const progress = new cliProgress.SingleBar({
-        format: `{bar} | ${oldNodeTypeLabel} | ETA: {eta}s | {value}/{total}`
+        format: `{bar} | ${oldNodeTypeLabel} | ETA: {eta}s | {value}/{total} | {speed} ms/node`
     }, cliProgress.Presets.shades_classic)
-    progress.start(records.length, 0)
+    progress.start(records.length, 0, {
+        speed: "N/A"
+    })
 
     for (const record of records) {
+        const dateBefore = new Date()
         const nodeOld = record.get('node')
         const data = mapFunc(nodeOld)
 
@@ -56,7 +59,9 @@ async function migrate(oldNodeTypeLabel: string, mapFunc: any, newNodeTypeLabel:
             console.error(nodeOld)
         }
 
-        progress.increment()
+        const dateAfter = new Date()
+        const duration = dateAfter.getMilliseconds() - dateBefore.getMilliseconds()
+        progress.increment(1, {speed: duration})
     }
 
     progress.stop()
