@@ -10,7 +10,7 @@ Then('the IMAGE {string} should be connected to the CAR MODEL {string}',
         const carModel: CarModelNode = this.carmodel[carModelLabel]
 
         const response = await axios
-            .get(`${process.env.API_URL}/car-models/${carModel.id}/has-image`)
+            .get(`${process.env.API_URL}/car-models/${carModel.id}/has-image/${image.id}`)
             .catch(error => {
                 console.error(error)
             })

@@ -10,7 +10,7 @@ Then('the IMAGE {string} should be connected to the BRAND {string}',
         const brand: BrandNode = this.brand[brandLabel]
 
         const response = await axios
-            .get(`${process.env.API_URL}/brands/${brand.id}/has-image`)
+            .get(`${process.env.API_URL}/brands/${brand.id}/has-image/${image.id}`)
             .catch(error => {
                 console.error(error)
             })
