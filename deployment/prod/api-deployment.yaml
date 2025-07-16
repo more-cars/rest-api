@@ -17,8 +17,8 @@ spec:
     spec:
       containers:
         - name: more-cars-api
-          image: docker.io/dennisgerike/more-cars-api:0.12.0
-          #image: ghcr.io/more-cars/rest-api:0.12.0
+          image: docker.io/dennisgerike/more-cars-api:0.13.0
+          #image: ghcr.io/more-cars/rest-api:0.13.0
           env:
             - name: DB_HOST
               value: $(API_DB_SERVICE_SERVICE_HOST)
