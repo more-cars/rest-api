@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: refs/tags/v${{ inputs.version }}
 
       - name: Build and tag image
         run: docker build -t ${{ github.repository }}:${{ inputs.version }} -f deployment/Dockerfile .
