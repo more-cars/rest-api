@@ -19,3 +19,6 @@ jobs:
 
       - name: Build and tag image
         run: docker build -t ${{ github.repository }}:${{ inputs.version }} -f deployment/Dockerfile .
+
+      - name: Push image
+        run: docker push ghcr.io/${{ github.repository }}:${{ inputs.version }}
