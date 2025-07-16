@@ -14,3 +14,4 @@ jobs:
 
   push-docker-image:
     uses: ./.github/workflows/push-docker-image.yml
+    needs: build-docker-image
