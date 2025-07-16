@@ -1,14 +1,9 @@
-name: Build Docker image
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: Version number (e.g. 0.13.0)
-        required: true
-        type: string
+  workflow_call:
 
 jobs:
-  build:
+  build-image:
+    name: "Build docker image"
     runs-on: ubuntu-latest
 
     steps:
@@ -17,16 +12,5 @@ jobs:
         with:
           ref: refs/tags/v${{ inputs.version }}
 
-      - name: Log in to ghcr.io
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-
-      - name: Build and tag image
-        run: docker build -t ghcr.io/${{ github.repository }}:${{ inputs.version }} -f deployment/Dockerfile .
-
-      - name: Push image
-        run: docker push ghcr.io/${{ github.repository }}:${{ inputs.version }}
+      - name: Build
+        run: docker build -t mc-api:${{ inputs.version }} -f deployment/Dockerfile .

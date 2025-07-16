@@ -1,0 +1,16 @@
+name: Build Docker image
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version number (e.g. 0.13.0)
+        required: true
+        type: string
+
+jobs:
+  build-docker-image:
+    uses: ./.github/workflows/build-docker-image.yml
+
+  push-docker-image:
+    uses: ./.github/workflows/push-docker-image.yml
