@@ -36,17 +36,20 @@ async function migrate(
     })
 
     const progress = new cliProgress.SingleBar({
-        format: `{bar} | ${oldStartNodeTypeLabel} ${oldRelationshipName} ${oldEndNodeTypeLabel} | ETA: {eta}s | {value}/{total}`
+        format: `{bar} | ${oldStartNodeTypeLabel} ${oldRelationshipName} ${oldEndNodeTypeLabel} | ETA: {eta}s | {value}/{total} | {speed} ms/rel`
     }, cliProgress.Presets.shades_classic)
-    progress.start(records.length, 0)
+    progress.start(records.length, 0, {
+        speed: "N/A"
+    })
 
     for (const record of records) {
+        const dateBefore = new Date()
         const relationshipOld = record.get('rel')
 
         try {
             const newRelationship = await createDbRelationship(relationshipOld.start, relationshipOld.end, newRelationshipName)
             if (newRelationship) {
-                await addMoreCarsIdToRelationship(newRelationship.elementId, relationshipOld.elementId)
+                await addMoreCarsIdToRelationship(newRelationship.elementId, relationshipOld.elementId + 10000000)
                 await addTimestampsToRelationship(newRelationship.elementId, relationshipOld.properties.created_at, relationshipOld.properties.updated_at)
             }
         } catch (e) {
@@ -54,7 +57,9 @@ async function migrate(
             console.error(relationshipOld)
         }
 
-        progress.increment()
+        const dateAfter = new Date()
+        const duration = dateAfter.getMilliseconds() - dateBefore.getMilliseconds()
+        progress.increment(1, {speed: duration})
     }
 
     progress.stop()
