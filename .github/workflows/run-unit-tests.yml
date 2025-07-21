@@ -17,17 +17,6 @@ jobs:
       - name: Run Unit Tests
         run: npm run tests:unit:coverage
       - name: Publish Unit Test Report
-        uses: mikepenz/action-junit-report@v5
-        if: success() || failure()
-        with:
-          report_paths: '**/test-reports/unit/report.xml'
-          summary: Test
-          job_summary: true
-          include_time_in_summary: true
-          include_passed: true
-          detailed_summary: true
-          group_suite: true
-      - name: Publish Unit Test Report - Alternative
         uses: dorny/test-reporter@v2
         if: ${{ !cancelled() }}
         with:
