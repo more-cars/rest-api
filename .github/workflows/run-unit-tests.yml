@@ -24,6 +24,7 @@ jobs:
           summary: Test
           job_summary: true
           include_time_in_summary: true
+          include_passed: true
           detailed_summary: true
       - name: Publish Unit Test Report - Alternative
         uses: dorny/test-reporter@v2
