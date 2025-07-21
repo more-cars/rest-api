@@ -7,6 +7,10 @@ module.exports = {
     testMatch: ['<rootDir>/tests/unit/**/*.test.ts'],
     reporters: [
         "default",
+        ['jest-junit', {
+            outputDirectory: 'test-reports/unit',
+            outputName: 'report.xml'
+        }],
         ["<rootDir>/node_modules/jest-html-reporter", {
             "pageTitle": "Unit Tests - Report",
             "outputPath": "./test-reports/unit/report.html",
