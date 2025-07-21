@@ -9,7 +9,10 @@ module.exports = {
         "default",
         ['jest-junit', {
             outputDirectory: 'test-reports/unit',
-            outputName: 'report.xml'
+            outputName: 'report.xml',
+            suiteName: 'Unit Tests',
+            suiteNameTemplate: '{filepath}',
+            classNameTemplate: '',
         }],
         ["<rootDir>/node_modules/jest-html-reporter", {
             "pageTitle": "Unit Tests - Report",
