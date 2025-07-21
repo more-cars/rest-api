@@ -16,3 +16,8 @@ jobs:
         run: npm ci
       - name: Run Unit Tests
         run: npm run tests:unit:coverage
+      - name: Publish Unit Test Report
+        uses: mikepenz/action-junit-report@v5
+        if: success() || failure()
+        with:
+          report_paths: '**/test-reports/unit/report.xml'
