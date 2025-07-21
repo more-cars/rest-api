@@ -25,3 +25,10 @@ jobs:
           job_summary: true
           include_time_in_summary: true
           detailed_summary: true
+      - name: Publish Unit Test Report - Alternative
+        uses: dorny/test-reporter@v2
+        if: ${{ !cancelled() }}
+        with:
+          name: Unit Tests
+          path: test-reports/unit/report.xml
+          reporter: jest-junit
