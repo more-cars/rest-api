@@ -48,7 +48,7 @@ async function migrate(oldNodeTypeLabel: string, mapFunc: any, newNodeTypeLabel:
 
         try {
             const nodeNew: Node = await createDbNode(newNodeTypeLabel, queryFunc(data))
-            await addMoreCarsIdToNode(nodeNew.elementId, parseInt(nodeOld.elementId), newNodeTypeLabel)
+            await addMoreCarsIdToNode(nodeNew.elementId, parseInt(nodeOld.elementId) + 10000000, newNodeTypeLabel)
             await addTimestampsToNode(
                 nodeNew.elementId,
                 new Date(nodeOld.properties.created_at).toISOString(),
