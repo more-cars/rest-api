@@ -34,3 +34,5 @@ jobs:
           name: Unit Tests
           path: test-reports/unit/report.xml
           reporter: jest-junit
+          badge-title: 'Unit Tests'
+          list-tests: 'none'
