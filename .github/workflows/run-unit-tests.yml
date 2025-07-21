@@ -21,3 +21,4 @@ jobs:
         if: success() || failure()
         with:
           report_paths: '**/test-reports/unit/report.xml'
+          detailed_summary: true
