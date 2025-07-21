@@ -20,6 +20,9 @@ spec:
           env:
             - name: NEO4J_AUTH
               value: neo4j/123456789
+          volumeMounts:
+            - mountPath: /data
+              name: api-db-volume
           resources:
             requests:
               cpu: "50m"
@@ -27,3 +30,7 @@ spec:
             limits:
               cpu: "750m"
               memory: "990Mi"
+      volumes:
+        - name: api-db-volume
+          persistentVolumeClaim:
+            claimName: api-db-pvc
