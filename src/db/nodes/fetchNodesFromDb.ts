@@ -10,7 +10,8 @@ export async function fetchNodesFromDb(nodeType: NodeTypeLabel): Promise<Array<N
     const session: Session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getAllNodesOfTypeQuery(nodeType))
+        // TODO remove the limiter when pagination is implemented
+        const result = await txc.run(getAllNodesOfTypeQuery(nodeType) + ' LIMIT 1000')
         return result.records
     })
 
