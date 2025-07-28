@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {addMoreCarsIdToNodeQuery} from "../../../../../src/db/nodes/addMoreCarsIdToNode"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 

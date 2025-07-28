@@ -32,7 +32,8 @@
     "sinon": "21.0.0",
     "supertest": "7.1.4",
     "ts-jest": "29.4.0",
-    "typescript-eslint": "8.38.0"
+    "typescript-eslint": "8.38.0",
+    "vitest": "3.2.4"
   },
   "engines": {
     "node": ">=22"
@@ -73,7 +74,7 @@
     "gke:undeploy:prod": "deployment/gke-app-undeploy.sh prod",
     "tests:validate-api-schema": "npx ts-node tests/api-validation/schema-validation.ts",
     "tests:lint": "npx eslint src",
-    "tests:unit": "npx jest --projects tests/unit",
+    "tests:unit": "npx vitest run --project unit",
     "tests:unit:coverage": "npx jest --projects tests/unit --coverage",
     "tests:integration": "npx jest --projects tests/integration",
     "tests:integration:coverage": "npx jest --projects tests/integration --coverage",

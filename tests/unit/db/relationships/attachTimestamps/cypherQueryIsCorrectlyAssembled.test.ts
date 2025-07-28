@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {addTimestampsToRelationshipQuery} from "../../../../../src/db/relationships/addTimestampsToRelationship"
 
 test('cypher query is correctly assembled for "add timestamps to relationship" request', async () => {

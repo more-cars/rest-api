@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {getNodeByIdQuery} from "../../../../../src/db/nodes/getNodeById"
 
 test('cypher query is correctly assembled for "get node by id" request', async () => {

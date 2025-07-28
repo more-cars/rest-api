@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/car-models/createNode"
 

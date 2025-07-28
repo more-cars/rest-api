@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {escapeSingleQuotes} from "../../../../../src/db/nodes/escapeSingleQuotes"
 
 test('single quotes are escaped', async () => {

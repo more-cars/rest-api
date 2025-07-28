@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {addMoreCarsIdToRelationshipQuery} from "../../../../../src/db/relationships/addMoreCarsIdToRelationship"
 
 test('cypher query is correctly assembled for "add more cars id to relationship" request', async () => {

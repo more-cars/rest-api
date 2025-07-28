@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {BrandHasImageRelationship} from "../../../../../../src/models/brands/types/BrandHasImageRelationship"
 import {
     marshalHasImageRelationship

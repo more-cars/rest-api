@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {generateMoreCarsId} from "../../../../../src/db/generateMoreCarsId"
 import {OutOfRangeError} from "../../../../../src/db/types/OutOfRangeError"
 

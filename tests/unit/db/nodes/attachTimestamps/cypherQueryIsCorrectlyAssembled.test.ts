@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {addTimestampsToNodeQuery} from "../../../../../src/db/nodes/addTimestampsToNode"
 
 test('cypher query is correctly assembled for "add timestamps to brand node" request', async () => {

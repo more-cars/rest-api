@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {BrandHasCarModelRelationship} from "../../../../../../src/models/brands/types/BrandHasCarModelRelationship"
 import {marshalRelationships} from "../../../../../../src/controllers/brands/marshalRelationships"
 

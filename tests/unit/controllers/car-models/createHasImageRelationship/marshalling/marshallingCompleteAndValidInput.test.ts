@@ -1,9 +1,8 @@
+import {expect, test} from 'vitest'
 import {
     marshalHasImageRelationship
 } from "../../../../../../src/controllers/carModels/marshalling/marshalHasImageRelationship"
-import {
-    CarModelHasImageRelationship
-} from "../../../../../../src/models/car-models/types/CarModelHasImageRelationship"
+import {CarModelHasImageRelationship} from "../../../../../../src/models/car-models/types/CarModelHasImageRelationship"
 
 test('marshalling a complete and valid request', async () => {
     const relationship: CarModelHasImageRelationship = {

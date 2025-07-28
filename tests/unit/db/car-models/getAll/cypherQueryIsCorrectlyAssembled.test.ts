@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {getAllNodesOfTypeQuery} from "../../../../../src/db/nodes/getAllNodesOfTypeQuery"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 

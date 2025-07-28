@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {sanitize} from "../../../../../../src/controllers/carModels/create"
 import {CreateCarModelInput} from "../../../../../../src/models/car-models/types/CreateCarModelInput"
 
