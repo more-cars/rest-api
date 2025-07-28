@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import assert from "assert"
 import {CarModel} from "../../../../src/models/car-models/CarModel"
 import {Brand} from "../../../../src/models/brands/Brand"

@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {getDriver} from "../../../src/db/driver"
 
 test('Missing env variable DB_HOST should cause an exception', () => {

@@ -76,7 +76,7 @@
     "tests:lint": "npx eslint src",
     "tests:unit": "npx vitest run --project unit",
     "tests:unit:coverage": "npx jest --projects tests/unit --coverage",
-    "tests:integration": "npx jest --projects tests/integration",
+    "tests:integration": "npx vitest run --project integration",
     "tests:integration:coverage": "npx jest --projects tests/integration --coverage",
     "tests:unit+integration": "npx jest",
     "tests:unit+integration:coverage": "npx jest --coverage",

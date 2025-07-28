@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
 import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"

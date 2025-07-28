@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {Brand} from "../../../../../src/models/brands/Brand"
 import {CarModel} from "../../../../../src/models/car-models/CarModel"
 import {Image} from "../../../../../src/models/images/Image"

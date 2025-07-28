@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import FakeBrand from "../../../../_toolbox/fixtures/nodes/FakeBrand"
 import FakeCarModel from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
 import FakeImage from "../../../../_toolbox/fixtures/nodes/FakeImage"

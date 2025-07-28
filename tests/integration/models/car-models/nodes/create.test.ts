@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {CarModel} from "../../../../../src/models/car-models/CarModel"
 import FakeCarModel from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
 

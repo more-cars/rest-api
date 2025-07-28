@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 
 // Opposite to the counterpart test on the database layer, here we expect an error, not an empty result.

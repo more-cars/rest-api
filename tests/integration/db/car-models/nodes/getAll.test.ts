@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {deleteAllCarModels} from "../../../../_toolbox/dbSeeding/car-models/nodes/deleteAllCarModels"
 import {CarModelNode} from "../../../../../src/models/car-models/types/CarModelNode"
 import {seedCarModels} from "../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModels"

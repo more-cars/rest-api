@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {Brand} from "../../../../../src/models/brands/Brand"
 import FakeBrand from "../../../../_toolbox/fixtures/nodes/FakeBrand"
 

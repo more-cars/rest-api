@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {createNode as createBrandNode} from "../../../../src/db/nodes/brands/createNode"
 import {createNode as createCarModelNode} from "../../../../src/db/nodes/car-models/createNode"
 import assert from "assert"

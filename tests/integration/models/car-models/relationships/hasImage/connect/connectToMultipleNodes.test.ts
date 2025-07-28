@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import assert from "assert"
 import {seedImages} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImages"
 import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"

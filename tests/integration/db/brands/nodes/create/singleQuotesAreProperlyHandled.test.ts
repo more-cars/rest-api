@@ -1,3 +1,4 @@
+import {expect, test} from 'vitest'
 import {createNode} from "../../../../../../src/db/nodes/brands/createNode"
 
 test('Single quotes in strings are correctly escaped and unescaped', async () => {
