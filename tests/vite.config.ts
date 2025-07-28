@@ -1,10 +1,11 @@
-import {loadEnv} from 'vite'
 import {defineConfig} from 'vitest/config'
+import {loadEnv} from 'vite'
 
 export default defineConfig({
     test: {
-        name: 'integration',
+        name: 'unit+integration',
         include: [
+            '**/unit/**/*.test.ts',
             '**/integration/**/*.test.ts',
         ],
         // All integration tests work on the same database (not mocked).
@@ -31,11 +32,11 @@ export default defineConfig({
                 'text',
                 'html',
             ],
-            reportsDirectory: 'test-reports/integration',
+            reportsDirectory: 'test-reports/unit+integration',
             thresholds: {
-                statements: 65,
-                branches: 92,
-            },
+                statements: 77,
+                branches: 90,
+            }
         }
     },
 })
