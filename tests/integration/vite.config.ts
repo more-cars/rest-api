@@ -1,7 +1,7 @@
 import {loadEnv} from 'vite'
-import {defineConfig} from 'vitest/config'
+import {defineProject} from 'vitest/config'
 
-export default defineConfig({
+export default defineProject({
     test: {
         name: 'integration',
         include: [
@@ -9,8 +9,7 @@ export default defineConfig({
         ],
         // All integration tests work on the same database (not mocked).
         // Therefore, they cannot run in parallel.
-        // The following three options make sure that the tests run strictly sequential.
-        fileParallelism: false,
+        // The following options make sure that the tests run strictly sequential.
         // Using "forks" here, because the default option "threads" always creates parallel tests (even when disabled).
         pool: "forks",
         poolOptions: {
