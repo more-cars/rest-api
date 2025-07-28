@@ -6,6 +6,10 @@ export default defineConfig({
         include: [
             '**/unit/**/*.test.ts',
         ],
+        reporters: [
+            'default',
+            ['junit', {outputFile: 'test-reports/unit/report.xml', suiteName: 'Unit Tests', classnameTemplate: ''}],
+        ],
         coverage: {
             provider: 'v8',
             include: ['src/**'],
@@ -18,7 +22,7 @@ export default defineConfig({
                 'text',
                 'html',
             ],
-            reportsDirectory: 'test-reports/unit',
+            reportsDirectory: 'test-reports/unit/coverage',
             thresholds: {
                 statements: 33,
                 branches: 79,

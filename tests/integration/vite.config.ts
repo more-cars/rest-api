@@ -19,6 +19,14 @@ export default defineConfig({
         },
         // giving vitest access to all environment variables, so the tests can for example find the database
         env: loadEnv('', process.cwd(), ''),
+        reporters: [
+            'default',
+            ['junit', {
+                outputFile: 'test-reports/integration/report.xml',
+                suiteName: 'Integration Tests',
+                classnameTemplate: ''
+            }],
+        ],
         coverage: {
             provider: 'v8',
             include: ['src/**'],
@@ -31,7 +39,7 @@ export default defineConfig({
                 'text',
                 'html',
             ],
-            reportsDirectory: 'test-reports/integration',
+            reportsDirectory: 'test-reports/integration/coverage',
             thresholds: {
                 statements: 65,
                 branches: 92,
