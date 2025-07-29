@@ -1,11 +1,14 @@
 import {loadEnv} from 'vite'
 import {defineConfig} from 'vitest/config'
 
-export default defineConfig({
+const rootDir = __dirname + '/../../'
+
+export default defineConfig(({mode}) => ({
     test: {
         name: 'integration',
+        root: rootDir,
         include: [
-            '**/integration/**/*.test.ts',
+            'tests/integration/**/*.test.ts',
         ],
         // All integration tests work on the same database (not mocked).
         // Therefore, they cannot run in parallel.
@@ -18,7 +21,7 @@ export default defineConfig({
             },
         },
         // giving vitest access to all environment variables, so the tests can for example find the database
-        env: loadEnv('', process.cwd(), ''),
+        env: loadEnv(mode, rootDir, ''),
         reporters: [
             'default',
             ['junit', {
@@ -46,4 +49,4 @@ export default defineConfig({
             },
         }
     },
-})
+}))
