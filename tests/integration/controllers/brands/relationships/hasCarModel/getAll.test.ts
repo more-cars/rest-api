@@ -1,0 +1,35 @@
+import {expect, test, vi} from 'vitest'
+import request from 'supertest'
+import {app} from '../../../../../../src/app'
+import {Brand} from "../../../../../../src/models/brands/Brand"
+
+test('Node does not exist', async () => {
+    vi.spyOn(Brand, 'getRelationshipsForHasCarModel')
+        .mockImplementation(async () => {
+            throw new Error('semantic error')
+        })
+
+    const response = await request(app)
+        .get('/brands/123/has-car-model')
+
+    expect(response.statusCode)
+        .toBe(404)
+})
+
+test('Node exists and has relationship partners', async () => {
+    Brand.getRelationshipsForHasCarModel = vi.fn().mockReturnValue([
+        {
+            relationship_id: 4
+        }, {
+            relationship_id: 5
+        }, {
+            relationship_id: 6
+        }
+    ])
+
+    const response = await request(app)
+        .get('/brands/123/has-car-model')
+
+    expect(response.statusCode)
+        .toBe(200)
+})
