@@ -1,8 +1,8 @@
 import express from "express"
-import {openApiSpec} from "../controllers/open-api-specification"
+import {ApiSpecController} from "../controllers/ApiSpecController"
 
 const router = express.Router()
 
-router.get('/', openApiSpec)
+router.get('/', ApiSpecController.apiSpec)
 
 export default router
