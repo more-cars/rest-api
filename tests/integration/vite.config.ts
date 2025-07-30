@@ -43,6 +43,7 @@ export default defineConfig(({mode}) => ({
                 'html',
             ],
             reportsDirectory: 'test-reports/integration/coverage',
+            reportOnFailure: true,
             thresholds: {
                 statements: 96,
                 branches: 88,
