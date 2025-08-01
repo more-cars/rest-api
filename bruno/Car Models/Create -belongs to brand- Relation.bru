@@ -20,3 +20,8 @@ assert {
   res.body.created_at: isString
   res.body.updated_at: isString
 }
+
+script:pre-request {
+  await ensureValidCarModelExists()
+  await ensureValidBrandExists()
+}

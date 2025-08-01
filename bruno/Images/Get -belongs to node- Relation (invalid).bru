@@ -14,3 +14,7 @@ assert {
   res.status: eq 404
   res.body: isString
 }
+
+script:pre-request {
+  await ensureValidBrandExists()
+}

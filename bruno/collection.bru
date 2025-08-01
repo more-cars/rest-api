@@ -1,6 +1,18 @@
 script:pre-request {
   const axios = require("axios")
 
+  async function ensureValidBrandExists() {
+   if (!bru.getEnvVar('validBrandId')) {
+      const nodeList = await getAllBrands()
+      if (nodeList.length > 0) {
+        bru.setEnvVar("validBrandId", nodeList[0].id)
+      } else {
+        const newNode = await createBrand()
+        bru.setEnvVar("validBrandId", newNode.id)
+      }
+    }
+  }
+
   async function createBrand() {
     const response = await axios.post(bru.getEnvVar('baseUrl') + "/brands", {
       name: 'Dummy'
@@ -18,6 +30,18 @@ script:pre-request {
     return response.data
   }
 
+  async function ensureValidCarModelExists() {
+    if (!bru.getEnvVar('validCarModelId')) {
+      const nodeList = await getAllCarModels()
+      if (nodeList.length > 0) {
+        bru.setEnvVar("validCarModelId", nodeList[0].id)
+      } else {
+        const newNode = await createCarModel()
+        bru.setEnvVar("validCarModelId", newNode.id)
+      }
+    }
+  }
+
   async function createCarModel() {
     const response = await axios.post(bru.getEnvVar('baseUrl') + "/car-models", {
       name: 'Dummy'
@@ -33,6 +57,30 @@ script:pre-request {
   async function getCarModelById(id) {
     const response = await axios.get(bru.getEnvVar('baseUrl') + "/car-models/" + id)
     return response.data
+  }
+
+  async function ensureValidImageExists() {
+    if (!bru.getEnvVar('validImageId')) {
+      const nodeList = await getAllImages()
+      if (nodeList.length > 0) {
+        bru.setEnvVar("validImageId", nodeList[0].id)
+      } else {
+        const newNode = await createImage()
+        bru.setEnvVar("validImageId", newNode.id)
+      }
+    }
+  }
+
+  async function ensureValidSecondImageExists() {
+    if (!bru.getEnvVar('validSecondImageId')) {
+      const nodeList = await getAllImages()
+      if (nodeList.length > 1) {
+        bru.setEnvVar("validSecondImageId", nodeList[1].id)
+      } else {
+        const newNode = await createImage()
+        bru.setEnvVar("validSecondImageId", newNode.id)
+      }
+    }
   }
 
   async function createImage() {

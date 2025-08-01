@@ -14,3 +14,7 @@ assert {
   res.status: eq 422
   res.body: isString
 }
+
+script:pre-request {
+  await ensureValidImageExists()
+}

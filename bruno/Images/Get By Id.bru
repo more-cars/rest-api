@@ -19,13 +19,5 @@ assert {
 }
 
 script:pre-request {
-  if (!bru.getEnvVar('validImageId')) {
-    const nodeList = await getAllImages()
-    if (nodeList.length > 0) {
-      bru.setEnvVar("validImageId", nodeList[0].id)
-    } else {
-      const newNode = await createImage()
-      bru.setEnvVar("validImageId", newNode.id)
-    }
-  }
+  await ensureValidImageExists()
 }
