@@ -1,0 +1,55 @@
+script:pre-request {
+  const axios = require("axios")
+
+  async function createBrand() {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/brands", {
+      name: 'Dummy'
+    })
+    return response.data
+  }
+
+  async function getAllBrands() {
+    const response = await axios.get(bru.getEnvVar('baseUrl') + "/brands")
+    return response.data
+  }
+
+  async function getBrandById(id) {
+    const response = await axios.get(bru.getEnvVar('baseUrl') + "/brands/" + id)
+    return response.data
+  }
+
+  async function createCarModel() {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/car-models", {
+      name: 'Dummy'
+    })
+    return response.data
+  }
+
+  async function getAllCarModels() {
+    const response = await axios.get(bru.getEnvVar('baseUrl') + "/car-models")
+    return response.data
+  }
+
+  async function getCarModelById(id) {
+    const response = await axios.get(bru.getEnvVar('baseUrl') + "/car-models/" + id)
+    return response.data
+  }
+
+  async function createImage() {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/images", {
+        "image_provider": "picci",
+        "external_id": "123456",
+    })
+    return response.data
+  }
+
+  async function getAllImages() {
+    const response = await axios.get(bru.getEnvVar('baseUrl') + "/images")
+    return response.data
+  }
+
+  async function getImageById(id) {
+    const response = await axios.get(bru.getEnvVar('baseUrl') + "/images/" + id)
+    return response.data
+  }
+}
