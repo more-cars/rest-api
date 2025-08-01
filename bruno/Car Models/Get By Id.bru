@@ -24,7 +24,7 @@ script:pre-request {
     if (nodeList.length > 0) {
       bru.setEnvVar("validCarModelId", nodeList[0].id)
     } else {
-      const newNode = await createCarModel
+      const newNode = await createCarModel()
       bru.setEnvVar("validCarModelId", newNode.id)
     }
   }
