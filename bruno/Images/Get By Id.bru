@@ -17,3 +17,15 @@ assert {
   res.body.created_at: isNotEmpty
   res.body.updated_at: isNotEmpty
 }
+
+script:pre-request {
+  if (!bru.getEnvVar('validImageId')) {
+    const nodeList = await getAllImages()
+    if (nodeList.length > 0) {
+      bru.setEnvVar("validImageId", nodeList[0].id)
+    } else {
+      const newNode = await createImage()
+      bru.setEnvVar("validImageId", newNode.id)
+    }
+  }
+}

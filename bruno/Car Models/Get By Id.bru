@@ -17,3 +17,15 @@ assert {
   res.body.created_at: isNotEmpty
   res.body.updated_at: isNotEmpty
 }
+
+script:pre-request {
+  if (!bru.getEnvVar('validCarModelId')) {
+    const nodeList = await getAllCarModels()
+    if (nodeList.length > 0) {
+      bru.setEnvVar("validCarModelId", nodeList[0].id)
+    } else {
+      const newNode = await createCarModel
+      bru.setEnvVar("validCarModelId", newNode.id)
+    }
+  }
+}
