@@ -5,6 +5,7 @@ import health from "./routes/health"
 import brands from './routes/brands'
 import carModels from "./routes/car-models"
 import images from "./routes/images"
+import {basicAuthentication} from "./basicAuthentication"
 
 const app: Express = express()
 
@@ -14,6 +15,9 @@ app.use(cors())
 
 // enabling express to parse requests that have a json body
 app.use(express.json())
+
+// enabling basic auth (if credentials are configured)
+app.use(basicAuthentication)
 
 // registering all routes
 app.use('/', openApiSpecification)
