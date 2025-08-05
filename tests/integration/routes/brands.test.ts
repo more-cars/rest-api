@@ -54,6 +54,14 @@ describe('Brands', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Get "has Image" Relationship', async () => {
+        await request(app)
+            .get('/brands/123/has-image/456')
+
+        expect(BrandController.getHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Get "has Image" Relationships', async () => {
         await request(app)
             .get('/brands/123/has-image')

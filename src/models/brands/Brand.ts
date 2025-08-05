@@ -91,6 +91,10 @@ export class Brand {
         return await createBrandHasImageRelationship(brandId, imageId)
     }
 
+    static async getRelationshipForHasImage(brandId: number, imageId: number): Promise<false | BrandHasImageRelationship> {
+        return await getBrandHasImageRelationship(brandId, imageId)
+    }
+
     static async getRelationshipsForHasImage(brandId: number): Promise<Array<BrandHasImageRelationship>> {
         const brand = await this.findById(brandId)
 
