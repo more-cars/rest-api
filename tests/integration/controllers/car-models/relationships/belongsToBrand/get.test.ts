@@ -27,3 +27,13 @@ test('Node exists and has a relationship partner', async () => {
     expect(response.statusCode)
         .toBe(200)
 })
+
+test('Node exists, but has no relationship partner', async () => {
+    CarModel.getRelationshipForBelongsToBrand = vi.fn().mockReturnValue(false)
+
+    const response = await request(app)
+        .get('/car-models/567/belongs-to-brand')
+
+    expect(response.statusCode)
+        .toBe(200)
+})

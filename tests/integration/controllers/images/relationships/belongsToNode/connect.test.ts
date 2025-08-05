@@ -13,6 +13,18 @@ test('One of the nodes does not exist', async () => {
         .toBe(404)
 })
 
+test('Invalid node IDs are provided', async () => {
+    Image.createBelongsToNodeRelationship = vi.fn().mockReturnValue({
+        relationship_id: 4
+    })
+
+    const response = await request(app)
+        .post('/images/-/belongs-to-node/-')
+
+    expect(response.statusCode)
+        .toBe(404)
+})
+
 test('Both nodes are from the same type', async () => {
     vi.spyOn(Image, 'createBelongsToNodeRelationship')
         .mockImplementation(async () => {
