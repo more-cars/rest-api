@@ -1,0 +1,21 @@
+meta {
+  name: Get "has image" Relation
+  type: http
+  seq: 85
+}
+
+get {
+  url: {{baseUrl}}/brands/{{validBrandId}}/has-image/{{validImageId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body: isArray
+}
+
+script:pre-request {
+  await ensureValidBrandExists()
+  await ensureValidImageExists()
+}
