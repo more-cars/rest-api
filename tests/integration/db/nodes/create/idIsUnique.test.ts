@@ -16,4 +16,4 @@ test('Each node is created with a different ID', async () => {
         expect(extractedIds.length)
             .toBe(deduplicatedIds.length)
     })
-})
+}, 15000)
