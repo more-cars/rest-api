@@ -59,6 +59,17 @@ script:pre-request {
     return response.data
   }
 
+  async function ensureCarModelHasImageRelationshipExists() {
+    await ensureValidCarModelExists()
+    await ensureValidImageExists()
+    await createCarModelHasImageRelationship(bru.getEnvVar('validCarModelId'), bru.getEnvVar('validImageId'))
+  }
+
+  async function createCarModelHasImageRelationship(carModelId, imageId) {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/car-models/" + carModelId + "/has-image/" + imageId)
+    return response.data
+  }
+
   async function ensureValidImageExists() {
     if (!bru.getEnvVar('validImageId')) {
       const nodeList = await getAllImages()
