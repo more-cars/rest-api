@@ -9,6 +9,7 @@ router.get('/car-models', CarModelController.getAll)
 router.post('/car-models/:carModelId/belongs-to-brand/:brandId', CarModelController.createBelongsToBrandRelation)
 router.get('/car-models/:carModelId/belongs-to-brand', CarModelController.getBelongsToBrandRelation)
 router.post('/car-models/:carModelId/has-image/:imageId', CarModelController.createHasImageRelation)
+router.get('/car-models/:carModelId/has-image/:imageId', CarModelController.getHasImageRelation)
 router.get('/car-models/:carModelId/has-image', CarModelController.getHasImageRelations)
 
 export default router

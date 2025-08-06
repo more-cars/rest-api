@@ -16,7 +16,7 @@ test('Requesting the relationship between BRAND and attached IMAGE',
         const relationship = await Brand.getRelationshipForHasImage(brand.id, image.id)
 
         if (!relationship) {
-            assert.fail(`Brand #${brand.id} not found.`)
+            assert.fail(`Relationship creation failed.`)
         }
 
         validateJson(relationship, BrandHasImageSchema)

@@ -46,7 +46,7 @@ export default defineConfig(({mode}) => ({
             reportOnFailure: true,
             thresholds: {
                 statements: 97,
-                branches: 91,
+                branches: 92,
             },
         }
     },

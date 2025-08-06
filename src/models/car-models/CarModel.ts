@@ -88,6 +88,10 @@ export class CarModel {
         return await createCarModelHasImageRelationship(carModelId, imageId)
     }
 
+    static async getRelationshipForHasImage(carModelId: number, imageId: number): Promise<false | CarModelHasImageRelationship> {
+        return await getCarModelHasImageRelationship(carModelId, imageId)
+    }
+
     static async getRelationshipsForHasImage(carModelId: number): Promise<Array<CarModelHasImageRelationship>> {
         const carModel = await this.findById(carModelId)
 
