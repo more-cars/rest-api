@@ -1,17 +1,15 @@
 // Making the variables in the ".env" file available as regular environment variables.
-// Only relevant for local development, because the CI/CD pipeline doesn't use ".env" files.
+// Only relevant for local test development, because the CI/CD pipeline doesn't use ".env" files.
 // (Command will not fail when the file doesn't exist.)
-require('dotenv').config({path: '.env'})
+import "dotenv/config.js"
 
-module.exports = {
-    default: {
-        paths: ['specification/Behavior/**/*.feature'],
-        tags: '@implemented',
-        require: ['tests/behavior/**/*.ts'],
-        requireModule: ['ts-node/register'],
-        format: [
-            'html:test-reports/behavior/cucumber-report.html',
-            'json:test-reports/behavior/cucumber-report.json',
-        ],
-    }
+export default {
+    paths: ['specification/Behavior/**/*.feature'],
+    tags: '@implemented',
+    require: ['tests/behavior/**/*.ts'],
+    requireModule: ['ts-node/register'],
+    format: [
+        'html:test-reports/behavior/cucumber-report.html',
+        'json:test-reports/behavior/cucumber-report.json',
+    ],
 }
