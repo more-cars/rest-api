@@ -22,6 +22,7 @@ export default defineConfig({
             include: ['src/**'],
             exclude: [
                 'src/**/types/**',
+                'src/routes/**',
                 'src/server.ts',
                 'src/db/driver-mc1.ts',
             ],
