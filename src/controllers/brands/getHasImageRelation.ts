@@ -2,7 +2,6 @@ import express from "express"
 import {Brand} from "../../models/brands/Brand"
 import {BrandHasImageResponse} from "./types/BrandHasImageResponse"
 import {marshalHasImageRelationship} from "./marshalling/marshalHasImageRelationship"
-import type {BrandHasImageRelationship} from "../../models/brands/types/BrandHasImageRelationship"
 
 export async function getHasImageRelation(req: express.Request, res: express.Response) {
     const brandId = parseInt(req.params.brandId)
@@ -10,7 +9,12 @@ export async function getHasImageRelation(req: express.Request, res: express.Res
 
     try {
         const relationship = await Brand.getRelationshipForHasImage(brandId, imageId)
-        const marshalledRelationship = marshalHasImageRelationship(relationship as BrandHasImageRelationship)
+
+        if (!relationship) {
+            return send404response(res)
+        }
+
+        const marshalledRelationship = marshalHasImageRelationship(relationship)
 
         send200response(marshalledRelationship, res)
     } catch (e) {

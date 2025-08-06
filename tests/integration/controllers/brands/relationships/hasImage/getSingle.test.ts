@@ -16,7 +16,7 @@ test('Brand and/or Image does not exist', async () => {
         .toBe(404)
 })
 
-test('Node exists and has relationship partner', async () => {
+test('Brand exists and has relationship partner', async () => {
     Brand.getRelationshipForHasImage = vi.fn().mockReturnValue({
         relationship_id: 4
     })
@@ -28,12 +28,12 @@ test('Node exists and has relationship partner', async () => {
         .toBe(200)
 })
 
-test('Node exists, but has no relationship partner', async () => {
+test('Brand exists, but has no relationship partner', async () => {
     Brand.getRelationshipForHasImage = vi.fn().mockReturnValue(false)
 
     const response = await request(app)
         .get('/brands/123/has-image/456')
 
     expect(response.statusCode)
-        .toBe(200)
+        .toBe(404)
 })
