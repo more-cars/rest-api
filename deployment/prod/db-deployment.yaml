@@ -27,9 +27,6 @@ spec:
             requests:
               cpu: "50m"
               memory: "800Mi"
-            limits:
-              cpu: "750m"
-              memory: "990Mi"
       volumes:
         - name: api-db-volume
           persistentVolumeClaim:
