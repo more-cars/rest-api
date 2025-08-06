@@ -12,7 +12,8 @@ get {
 
 assert {
   res.status: eq 200
-  res.body: isArray
+  res.body: isJson
+  res.body.relationship_id: gte 12000000
 }
 
 script:pre-request {
