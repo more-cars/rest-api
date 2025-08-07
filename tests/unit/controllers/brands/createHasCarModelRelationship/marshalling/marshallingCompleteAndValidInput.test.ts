@@ -2,9 +2,6 @@ import {expect, test} from 'vitest'
 import {marshalRelationship} from "../../../../../../src/controllers/brands/marshalRelationship"
 import {BrandHasCarModelRelationship} from "../../../../../../src/models/brands/types/BrandHasCarModelRelationship"
 
-/**
- * @group happyPath
- */
 test('marshalling a complete and valid request', async () => {
     const relationship: BrandHasCarModelRelationship = {
         brand_id: 1,

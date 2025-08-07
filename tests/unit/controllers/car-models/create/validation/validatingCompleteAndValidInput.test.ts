@@ -2,9 +2,6 @@ import {expect, test} from 'vitest'
 import {validate} from "../../../../../../src/controllers/carModels/create"
 import {CreateCarModelRawInput} from "../../../../../../src/controllers/carModels/types/CreateCarModelRawInput"
 
-/**
- * @group happyPath
- */
 test('validating a complete and valid request', async () => {
     const data: CreateCarModelRawInput = {
         name: "360 Modena",

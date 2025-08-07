@@ -4,9 +4,6 @@ import {
     CarModelBelongsToBrandRelationship
 } from "../../../../../../src/models/car-models/types/CarModelBelongsToBrandRelationship"
 
-/**
- * @group happyPath
- */
 test('marshalling a complete and valid request', async () => {
     const relationship: CarModelBelongsToBrandRelationship = {
         car_model_id: 1,

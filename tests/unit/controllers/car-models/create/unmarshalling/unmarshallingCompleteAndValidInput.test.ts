@@ -1,9 +1,6 @@
 import {expect, test} from 'vitest'
 import {unmarshal} from "../../../../../../src/controllers/carModels/unmarshal"
 
-/**
- * @group happyPath
- */
 test('unmarshalling a complete and valid request', async () => {
     const data: any = {
         name: "360 Modena",

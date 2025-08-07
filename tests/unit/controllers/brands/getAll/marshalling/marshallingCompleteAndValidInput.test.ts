@@ -2,9 +2,6 @@ import {expect, test} from 'vitest'
 import {BrandNode} from "../../../../../../src/models/brands/types/BrandNode"
 import {marshalAll} from "../../../../../../src/controllers/brands/marshalAll"
 
-/**
- * @group happyPath
- */
 test('marshalling a complete and valid request', async () => {
     const nodes: Array<BrandNode> = [
         {

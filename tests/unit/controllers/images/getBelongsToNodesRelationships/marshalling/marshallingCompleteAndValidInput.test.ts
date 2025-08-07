@@ -2,9 +2,6 @@ import {expect, test} from 'vitest'
 import {ImageBelongsToNodeRelationship} from "../../../../../../src/models/images/types/ImageBelongsToNodeRelationship"
 import {marshalRelationships} from "../../../../../../src/controllers/images/marshalRelationships"
 
-/**
- * @group happyPath
- */
 test('marshalling a complete and valid request', async () => {
     const relationships: Array<ImageBelongsToNodeRelationship> = [
         {
