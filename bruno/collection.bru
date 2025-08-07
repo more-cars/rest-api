@@ -1,6 +1,9 @@
 script:pre-request {
   const axios = require("axios")
 
+  //////////////////////////////////////////
+  // BRANDS
+  //////////////////////////////////////////
   async function ensureValidBrandExists() {
    if (!bru.getEnvVar('validBrandId')) {
       const nodeList = await getAllBrands()
@@ -30,6 +33,20 @@ script:pre-request {
     return response.data
   }
 
+  async function ensureBrandHasCarModelRelationshipExists() {
+    await ensureValidBrandExists()
+    await ensureValidCarModelExists()
+    await createBrandHasCarModelRelationship(bru.getEnvVar('validBrandId'), bru.getEnvVar('validCarModelId'))
+  }
+
+  async function createBrandHasCarModelRelationship(brandId, carModelId) {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/brands/" + brandId + "/has-car-model/" + carModelId)
+    return response.data
+  }
+
+  //////////////////////////////////////////
+  // CAR MODELS
+  //////////////////////////////////////////
   async function ensureValidCarModelExists() {
     if (!bru.getEnvVar('validCarModelId')) {
       const nodeList = await getAllCarModels()
@@ -70,6 +87,9 @@ script:pre-request {
     return response.data
   }
 
+  //////////////////////////////////////////
+  // IMAGES
+  //////////////////////////////////////////
   async function ensureValidImageExists() {
     if (!bru.getEnvVar('validImageId')) {
       const nodeList = await getAllImages()

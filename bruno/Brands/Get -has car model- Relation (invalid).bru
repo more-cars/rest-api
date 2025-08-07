@@ -1,0 +1,16 @@
+meta {
+  name: Get "has car model" Relations (invalid)
+  type: http
+  seq: 66
+}
+
+get {
+  url: {{baseUrl}}/brands/{{invalidBrandId}}/has-car-model/{{invalidCarModelId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 404
+  res.body: isString
+}
