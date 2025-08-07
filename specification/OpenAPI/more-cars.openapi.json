@@ -392,10 +392,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/BrandHasImage"
-                  }
+                  "$ref": "#/components/schemas/BrandHasImage"
                 }
               }
             }
@@ -740,10 +737,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/CarModelHasImage"
-                  }
+                  "$ref": "#/components/schemas/CarModelHasImage"
                 }
               }
             }
