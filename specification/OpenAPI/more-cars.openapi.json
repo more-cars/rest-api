@@ -209,6 +209,54 @@
       }
     },
     "/brands/{brand-id}/has-car-model/{car-model-id}": {
+      "get": {
+        "tags": [
+          "Brands"
+        ],
+        "summary": "Get `Brand-has-Car-Model` relationship",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "brand-id",
+            "description": "ID of the `Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "car-model-id",
+            "description": "ID of the `Car Model`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requested relationship was found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BrandHasCarModel"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "`Brand`, `Car Model` or relationship not found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Brands"
