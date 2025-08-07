@@ -3,6 +3,7 @@ import {create} from "./brands/create"
 import {getById} from "./brands/getById"
 import {getAll} from "./brands/getAll"
 import {createHasCarModelRelation} from "./brands/createHasCarModelRelation"
+import {getHasCarModelRelation} from "./brands/getHasCarModelRelation"
 import {getHasCarModelRelations} from "./brands/getHasCarModelRelations"
 import {createHasImageRelation} from "./brands/createHasImageRelation"
 import {getHasImageRelation} from "./brands/getHasImageRelation"
@@ -23,6 +24,10 @@ export class BrandController {
 
     static async createHasCarModelRelation(req: express.Request, res: express.Response) {
         await createHasCarModelRelation(req, res)
+    }
+
+    static async getHasCarModelRelation(req: express.Request, res: express.Response) {
+        await getHasCarModelRelation(req, res)
     }
 
     static async getHasCarModelRelations(req: express.Request, res: express.Response) {

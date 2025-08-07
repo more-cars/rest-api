@@ -38,6 +38,14 @@ describe('Brands', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Get "has Car Model" Relationship', async () => {
+        await request(app)
+            .get('/brands/123/has-car-model/456')
+
+        expect(BrandController.getHasCarModelRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Get "has Car Model" Relationships', async () => {
         await request(app)
             .get('/brands/123/has-car-model')

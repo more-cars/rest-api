@@ -1,20 +1,20 @@
 import express from "express"
 import {Brand} from "../../models/brands/Brand"
-import {marshalHasImageRelationship} from "./marshalling/marshalHasImageRelationship"
-import {BrandHasImageResponse} from "./types/BrandHasImageResponse"
+import {BrandHasCarModelResponse} from "./types/BrandHasCarModelResponse"
+import {marshalRelationship} from "./marshalRelationship"
 
-export async function getHasImageRelation(req: express.Request, res: express.Response) {
+export async function getHasCarModelRelation(req: express.Request, res: express.Response) {
+    const carModelId = parseInt(req.params.carModelId)
     const brandId = parseInt(req.params.brandId)
-    const imageId = parseInt(req.params.imageId)
 
     try {
-        const relationship = await Brand.getRelationshipForHasImage(brandId, imageId)
+        const relationship = await Brand.getRelationshipForHasCarModel(brandId, carModelId)
 
         if (!relationship) {
             return send404response(res)
         }
 
-        const marshalledRelationship = marshalHasImageRelationship(relationship)
+        const marshalledRelationship = marshalRelationship(relationship)
 
         send200response(marshalledRelationship, res)
     } catch (e) {
@@ -23,7 +23,7 @@ export async function getHasImageRelation(req: express.Request, res: express.Res
     }
 }
 
-function send200response(data: BrandHasImageResponse, res: express.Response) {
+function send200response(data: BrandHasCarModelResponse, res: express.Response) {
     res.status(200)
     res.set('Content-Type', 'application/json')
     res.send(data)

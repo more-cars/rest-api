@@ -65,6 +65,10 @@ export class Brand {
         return await createBrandHasCarModelRelationship(brandId, carModelId)
     }
 
+    static async getRelationshipForHasCarModel(brandId: number, carModelId: number): Promise<false | BrandHasCarModelRelationship> {
+        return await getBrandHasCarModelRelationship(brandId, carModelId)
+    }
+
     static async getRelationshipsForHasCarModel(brandId: number): Promise<Array<BrandHasCarModelRelationship>> {
         const brand = await this.findById(brandId)
 
