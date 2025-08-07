@@ -1,10 +1,9 @@
 import {expect, test} from 'vitest'
-import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 import {
     getRelationshipsForSpecificNode
 } from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
-import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 
 test('An empty list should be returned when no IMAGE is connected to the BRAND',
     async () => {
@@ -13,7 +12,6 @@ test('An empty list should be returned when no IMAGE is connected to the BRAND',
         const relationships = await getRelationshipsForSpecificNode(
             brand.id,
             DbRelationship.NodeHasImage,
-            true,
         )
 
         expect(relationships.length)

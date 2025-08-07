@@ -12,7 +12,6 @@ test('An empty list should be returned when no IMAGE is connected to the CAR MOD
         const relationships = await getRelationshipsForSpecificNode(
             carModel.id,
             DbRelationship.NodeHasImage,
-            true,
         )
 
         expect(relationships.length)

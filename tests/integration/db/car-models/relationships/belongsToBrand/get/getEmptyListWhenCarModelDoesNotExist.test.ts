@@ -11,6 +11,7 @@ test('An empty list should be returned when the CAR MODEL does not exist', async
     const relationships = await getRelationshipsForSpecificNode(
         -42,
         DbRelationship.BrandHasCarModel,
+        true,
     )
 
     expect(relationships.length)
