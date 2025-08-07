@@ -17,6 +17,5 @@ assert {
 }
 
 script:pre-request {
-  await ensureValidBrandExists()
-  await ensureValidImageExists()
+  await ensureBrandHasImageRelationshipExists()
 }

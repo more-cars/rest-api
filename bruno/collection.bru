@@ -44,6 +44,17 @@ script:pre-request {
     return response.data
   }
 
+  async function ensureBrandHasImageRelationshipExists() {
+    await ensureValidBrandExists()
+    await ensureValidImageExists()
+    await createBrandHasImageRelationship(bru.getEnvVar('validBrandId'), bru.getEnvVar('validImageId'))
+  }
+
+  async function createBrandHasImageRelationship(brandId, imageId) {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/brands/" + brandId + "/has-image/" + imageId)
+    return response.data
+  }
+
   //////////////////////////////////////////
   // CAR MODELS
   //////////////////////////////////////////
@@ -73,6 +84,17 @@ script:pre-request {
 
   async function getCarModelById(id) {
     const response = await axios.get(bru.getEnvVar('baseUrl') + "/car-models/" + id)
+    return response.data
+  }
+
+  async function ensureCarModelBelongsToBrandRelationshipExists() {
+    await ensureValidCarModelExists()
+    await ensureValidBrandExists()
+    await createCarModelBelongsToBrandRelationship(bru.getEnvVar('validCarModelId'), bru.getEnvVar('validBrandId'))
+  }
+
+  async function createCarModelBelongsToBrandRelationship(carModelId, brandId) {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/car-models/" + carModelId + "/belongs-to-brand/" + brandId)
     return response.data
   }
 
