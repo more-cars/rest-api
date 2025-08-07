@@ -2,7 +2,7 @@ import http from 'k6/http'
 import {check} from "k6"
 import {Trend} from "k6/metrics"
 import {createImage} from "../_testdata/createImage.ts"
-import {createImageBelongsToNodeRelationship} from "../_testdata/createImageBelongsToNodeRelationship.ts"
+import {createImageBelongsToNodeRelationships} from "../_testdata/createImageBelongsToNodeRelationships.ts"
 
 const trendDuration = new Trend('duration', true)
 
@@ -27,7 +27,7 @@ export const options = {
 
 export function setup() {
     const imageId = createImage()
-    createImageBelongsToNodeRelationship(imageId, 7)
+    createImageBelongsToNodeRelationships(imageId, 7)
 
     return {
         imageId
