@@ -3,9 +3,6 @@ import {DbRelationship} from "../../db/types/DbRelationship"
 import {CarModelBelongsToBrandRelationship} from "./types/CarModelBelongsToBrandRelationship"
 import {CarModelRelationship} from "./types/CarModelRelationship"
 
-/**
- * Returns the BELONGS_TO_BRAND relationship between the given nodes when it exists.
- */
 export async function getCarModelBelongsToBrandRelationship(carModelId: number, brandId: number): Promise<false | CarModelBelongsToBrandRelationship> {
     // ⚠️ Outside the database we distinguish between BRAND.HAS_CAR_MODEL and CAR_MODEL.BELONGS_TO_BRAND for better readability.
     // But in the database we have to use the SAME relationship for both directions (HAS_CAR_MODEL and BELONGS_TO_BRAND) to avoid duplicates.

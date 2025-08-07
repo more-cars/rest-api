@@ -3,9 +3,6 @@ import {DbRelationship} from "../../db/types/DbRelationship"
 import {ImageBelongsToNodeRelationship} from "./types/ImageBelongsToNodeRelationship"
 import {ImageRelationship} from "./types/ImageRelationship"
 
-/**
- * Creates a BELONGS_TO_NODE relationship between the given nodes.
- */
 export async function createImageBelongsToNodeRelationship(imageId: number, partnerNodeId: number) {
     const baseRelationship = await createRelationship(
         partnerNodeId,

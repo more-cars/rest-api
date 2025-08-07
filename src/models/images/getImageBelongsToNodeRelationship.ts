@@ -3,9 +3,6 @@ import {DbRelationship} from "../../db/types/DbRelationship"
 import {ImageRelationship} from "./types/ImageRelationship"
 import {ImageBelongsToNodeRelationship} from "./types/ImageBelongsToNodeRelationship"
 
-/**
- * Returns the BELONGS_TO_NODE relationship between the given nodes when it exists.
- */
 export async function getImageBelongsToNodeRelationship(imageId: number, partnerNodeId: number) {
     const relation = await getSpecificRelationship(
         partnerNodeId,

@@ -2,9 +2,6 @@ import neo4j, {Driver, Node, Session} from "neo4j-driver"
 import {getDriver} from "../driver"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
-/**
- * Adds the properties "created_at" and "updated_at" to the given node.
- */
 export async function addTimestampsToNode(elementId: string, createdAt: string, updatedAt: string): Promise<Node> {
     const driver: Driver = getDriver()
     const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})

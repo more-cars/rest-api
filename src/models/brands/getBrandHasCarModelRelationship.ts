@@ -3,9 +3,6 @@ import {DbRelationship} from "../../db/types/DbRelationship"
 import {BrandRelationship} from "./types/BrandRelationship"
 import {BrandHasCarModelRelationship} from "./types/BrandHasCarModelRelationship"
 
-/**
- * Returns the HAS_CAR_MODEL relationship between the given nodes when it exists.
- */
 export async function getBrandHasCarModelRelationship(brandId: number, carModelId: number): Promise<false | BrandHasCarModelRelationship> {
     const relationship = await getSpecificRelationship(
         brandId,

@@ -3,9 +3,6 @@ import {DbRelationship} from "../../db/types/DbRelationship"
 import {BrandRelationship} from "./types/BrandRelationship"
 import {BrandHasCarModelRelationship} from "./types/BrandHasCarModelRelationship"
 
-/**
- * Creates a HAS_CAR_MODEL relationship between the given nodes.
- */
 export async function createBrandHasCarModelRelationship(brandId: number, carModelId: number): Promise<false | BrandHasCarModelRelationship> {
     const baseRelationship = await createRelationship(
         brandId,
