@@ -1,0 +1,21 @@
+meta {
+  name: Get "belongs to node type" Relations
+  type: http
+  seq: 70
+}
+
+get {
+  url: {{baseUrl}}/images/{{validImageId}}/belongs-to-node-type
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body.brands: isArray
+  res.body.car_models: isArray
+}
+
+script:pre-request {
+  await ensureValidImageExists()
+}
