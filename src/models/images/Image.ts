@@ -11,6 +11,8 @@ import {ImageBelongsToNodeRelationship} from "./types/ImageBelongsToNodeRelation
 import {getImageBelongsToNodeRelationship} from "./getImageBelongsToNodeRelationship"
 import {createImageBelongsToNodeRelationship} from "./createImageBelongsToNodeRelationship"
 import {getRelationships} from "../../db/nodes/images/getRelationships"
+import type {ImageBelongsToNodeTypeRelationships} from "./types/ImageBelongsToNodeTypeRelationships"
+import {getBelongsToNodeTypeRelationships} from "../../db/nodes/images/getBelongsToNodeTypeRelationships"
 
 export class Image {
     static async create(data: CreateImageInput): Promise<ImageNode> {
@@ -92,6 +94,14 @@ export class Image {
         }
 
         return await getRelationships(imageId)
+    }
+
+    static async getBelongsToNodeTypeRelationships(imageId: number): Promise<false | ImageBelongsToNodeTypeRelationships> {
+        if (!await getNodeById(imageId)) {
+            return false
+        }
+
+        return await getBelongsToNodeTypeRelationships(imageId)
     }
 }
 

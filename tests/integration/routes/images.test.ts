@@ -53,4 +53,12 @@ describe('Images', () => {
         expect(ImageController.getBelongsToNodeRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get "belongs to Node type" Relationships', async () => {
+        await request(app)
+            .get('/images/123/belongs-to-node-type')
+
+        expect(ImageController.getBelongsToNodeTypeRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })

@@ -9,5 +9,6 @@ router.get('/images', ImageController.getAll)
 router.post('/images/:imageId/belongs-to-node/:partnerNodeId', ImageController.createBelongsToNodeRelation)
 router.get('/images/:imageId/belongs-to-node/:partnerNodeId', ImageController.getBelongsToNodeRelation)
 router.get('/images/:imageId/belongs-to-node', ImageController.getBelongsToNodeRelations)
+router.get('/images/:imageId/belongs-to-node-type', ImageController.getBelongsToNodeTypeRelations)
 
 export default router

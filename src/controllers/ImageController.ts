@@ -5,6 +5,7 @@ import {getAll} from "./images/getAll"
 import {createBelongsToNodeRelation} from "./images/createBelongsToNodeRelation"
 import {getBelongsToNodeRelation} from "./images/getBelongsToNodeRelation"
 import {getBelongsToNodeRelations} from "./images/getBelongsToNodeRelations"
+import {getBelongsToNodeTypeRelations} from "./images/getBelongsToNodeTypeRelations"
 
 export class ImageController {
     static async create(req: express.Request, res: express.Response) {
@@ -29,5 +30,9 @@ export class ImageController {
 
     static async getBelongsToNodeRelations(req: express.Request, res: express.Response) {
         await getBelongsToNodeRelations(req, res)
+    }
+
+    static async getBelongsToNodeTypeRelations(req: express.Request, res: express.Response) {
+        await getBelongsToNodeTypeRelations(req, res)
     }
 }
