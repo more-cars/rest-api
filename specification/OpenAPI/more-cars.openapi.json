@@ -1022,6 +1022,60 @@
           }
         }
       }
+    },
+    "/images/{image-id}/belongs-to-node": {
+      "get": {
+        "tags": [
+          "Images"
+        ],
+        "summary": "Get all `Image-belongs-to-Node` relationships",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requested relationships were found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ImageBelongsToNode"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "`Image` node not found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request could not be processed.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
