@@ -70,6 +70,18 @@ script:pre-request {
     }
   }
 
+    async function ensureValidSecondCarModelExists() {
+      if (!bru.getEnvVar('validSecondCarModelId')) {
+        const nodeList = await getAllCarModels()
+        if (nodeList.length > 1) {
+          bru.setEnvVar("validSecondCarModelId", nodeList[1].id)
+        } else {
+          const newNode = await createCarModel()
+          bru.setEnvVar("validSecondCarModelId", newNode.id)
+        }
+      }
+    }
+
   async function createCarModel() {
     const response = await axios.post(bru.getEnvVar('baseUrl') + "/car-models", {
       name: 'Dummy'

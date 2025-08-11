@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: {{baseUrl}}/images/{{validImageId}}/belongs-to-node/{{validCarModelId}}
+  url: {{baseUrl}}/images/{{validImageId}}/belongs-to-node/{{validSecondCarModelId}}
   body: none
   auth: none
 }
@@ -17,5 +17,5 @@ assert {
 
 script:pre-request {
   await ensureValidImageExists()
-  await ensureValidCarModelExists()
+  await ensureValidSecondCarModelExists()
 }
