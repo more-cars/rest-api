@@ -96,6 +96,26 @@ The environment variable `API_URL` specifies where the tests can find the applic
 This needs to be a running instance of the API.
 It can be a local instance, a container in minikube or a cloud deployment - as long as the tests have access to it.
 
+### Smoke Tests
+
+There exist no official smoke tests, but the Bruno collection can be used
+for that under certain circumstances.
+The collection covers every API feature and performs a handful of simple tests for each of them.
+The tests are extremely fast and can be run against every environment.
+The only issue to be aware of is that they create random data.
+So, running them against the production environment is possible, but the test data has to be deleted manually afterward.
+
+Pick one of the following commands to run the smoke tests:
+
+* `npm run tests:bruno:local`
+* `npm run tests:bruno:minikube-dev`
+* `npm run tests:bruno:minikube-testing`
+* `npm run tests:bruno:minikube-prod`
+* `npm run tests:bruno:testing`
+* `npm run tests:bruno:prod`
+
+For more information see the README file in the `bruno` folder, in the project's root directory.
+
 ### Load Tests
 
 The load tests are written in TypeScript and will be executed with `Grafana k6`.
