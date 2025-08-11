@@ -15,3 +15,7 @@ jobs:
 
   unit-tests:
     uses: ./.github/workflows/run-unit-tests.yml
+
+  smoke-tests:
+    uses: ./.github/workflows/run-smoke-tests.yml
+    needs: unit-tests
