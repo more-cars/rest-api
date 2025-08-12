@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-docker-image:
-    uses: ./.github/workflows/build-docker-image.yml
+    uses: ./.github/workflows/build-docker-image-and-push-to-ghcr.yml
 
   push-image-to-docker-hub:
     uses: ./.github/workflows/push-docker-image-to-docker-hub.yml
