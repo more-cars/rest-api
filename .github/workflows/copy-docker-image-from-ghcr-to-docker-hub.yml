@@ -1,8 +1,12 @@
 on:
   workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
 
 jobs:
-  push-to-docker-hub:
+  copy-image-to-docker-hub:
     name: "Copy image from ghcr to docker hub"
     runs-on: ubuntu-latest
 

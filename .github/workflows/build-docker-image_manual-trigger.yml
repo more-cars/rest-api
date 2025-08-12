@@ -1,9 +1,6 @@
-name: Build Docker image
+name: Build docker image (manual trigger)
 
 on:
-  push:
-    tags:
-      - '*'
   workflow_dispatch:
     inputs:
       version:
@@ -14,8 +11,12 @@ on:
 jobs:
   build-docker-image:
     uses: ./.github/workflows/build-docker-image-and-push-to-ghcr.yml
+    with:
+      version: ${{ inputs.version }}
 
-  push-image-to-docker-hub:
-    uses: ./.github/workflows/push-docker-image-to-docker-hub.yml
+  copy-image-to-docker-hub:
+    uses: ./.github/workflows/copy-docker-image-from-ghcr-to-docker-hub.yml
+    with:
+      version: ${{ inputs.version }}
     needs: build-docker-image
     secrets: inherit
