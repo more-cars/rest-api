@@ -5,18 +5,15 @@ on:
     tags:
       - '*'
 
-env:
-  VERSION_NUMBER: ${ inputs.version:1 }
-
 jobs:
   build-docker-image:
     uses: ./.github/workflows/build-docker-image-and-push-to-ghcr.yml
     with:
-      version: ${{ env.VERSION_NUMBER }}
+      version: ${ github.ref_name:1 }
 
   copy-image-to-docker-hub:
     uses: ./.github/workflows/copy-docker-image-from-ghcr-to-docker-hub.yml
     with:
-      version: ${{ env.VERSION_NUMBER }}
+      version: ${ github.ref_name:1 }
     needs: build-docker-image
     secrets: inherit
