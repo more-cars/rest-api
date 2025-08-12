@@ -1,5 +1,15 @@
 on:
   workflow_call:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Target environment to run the tests against (e.g. testing)
+        required: true
+        type: choice
+        options:
+          - testing
+          - prod
+        default: testing
 
 jobs:
   run-smoke-tests:
@@ -15,4 +25,4 @@ jobs:
       - name: Install Node.js dependencies
         run: npm ci
       - name: Run Smoke Tests
-        run: npm run tests:bruno:testing
+        run: npm run tests:bruno:${{ inputs.environment }}

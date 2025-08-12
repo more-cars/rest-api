@@ -1,5 +1,15 @@
 on:
   workflow_call:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Target environment to run the tests against (e.g. testing)
+        required: true
+        type: choice
+        options:
+          - testing
+          - prod
+        default: testing
 
 jobs:
   run-behavior-tests:
@@ -17,4 +27,6 @@ jobs:
       - name: Run Behavior Tests
         run: npm run tests:behavior
         env:
-          API_URL: http://testing.api.fast-cars.info
+          API_URL: http://${{ inputs.environment }}.api.fast-cars.info
+          DB_HOST: http://${{ inputs.environment }}.db.fast-cars.info
+          DB_PASSWORD: 123456789
