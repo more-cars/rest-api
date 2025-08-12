@@ -9,4 +9,4 @@ namespace: testing
 
 images:
   - name: docker.io/dennisgerike/more-cars-api
-    newTag: 0.13.0
+    newTag: 0.14.0
