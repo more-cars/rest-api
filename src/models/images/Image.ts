@@ -7,6 +7,7 @@ import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/images/getNodeById"
 import {getNodeById as getAnyNodeById} from "../../db/nodes/getNodeById"
 import {getAllNodesOfType} from "../../db/nodes/images/getAllNodesOfType"
+import {deleteNode} from "../../db/nodes/deleteNode"
 import {ImageBelongsToNodeRelationship} from "./types/ImageBelongsToNodeRelationship"
 import {getImageBelongsToNodeRelationship} from "./getImageBelongsToNodeRelationship"
 import {createImageBelongsToNodeRelationship} from "./createImageBelongsToNodeRelationship"
@@ -43,6 +44,10 @@ export class Image {
         })
 
         return nodes
+    }
+
+    static async delete(id: number): Promise<boolean> {
+        return await deleteNode(id)
     }
 
     static async createBelongsToNodeRelationship(

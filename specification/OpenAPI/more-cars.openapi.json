@@ -852,6 +852,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Images"
+        ],
+        "summary": "Delete `Image`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Image` was deleted."
+          },
+          "404": {
+            "description": "No `Image` with the provided ID found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/images": {

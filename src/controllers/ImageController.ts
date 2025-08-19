@@ -2,6 +2,7 @@ import express from "express"
 import {create} from "./images/create"
 import {getById} from "./images/getById"
 import {getAll} from "./images/getAll"
+import {deleteNode} from "./images/deleteNode"
 import {createBelongsToNodeRelation} from "./images/createBelongsToNodeRelation"
 import {getBelongsToNodeRelation} from "./images/getBelongsToNodeRelation"
 import {getBelongsToNodeRelations} from "./images/getBelongsToNodeRelations"
@@ -18,6 +19,10 @@ export class ImageController {
 
     static async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
+    }
+
+    static async delete(req: express.Request, res: express.Response) {
+        await deleteNode(req, res)
     }
 
     static async createBelongsToNodeRelation(req: express.Request, res: express.Response) {

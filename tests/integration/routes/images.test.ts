@@ -30,6 +30,14 @@ describe('Images', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete Node', async () => {
+        await request(app)
+            .delete('/images/123')
+
+        expect(ImageController.delete)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create "belongs to Node" Relationship', async () => {
         await request(app)
             .post('/images/123/belongs-to-node/456')

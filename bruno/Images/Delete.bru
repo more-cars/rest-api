@@ -1,0 +1,24 @@
+meta {
+  name: Delete
+  type: http
+  seq: 80
+}
+
+delete {
+  url: {{baseUrl}}/images/{{validImageId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 204
+  res.body: isEmpty
+}
+
+script:pre-request {
+  await ensureValidImageExists()
+}
+
+script:post-response {
+  bru.setEnvVar("validImageId", null)
+}
