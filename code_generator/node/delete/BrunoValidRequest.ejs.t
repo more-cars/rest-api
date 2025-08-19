@@ -21,3 +21,7 @@ assert {
 script:pre-request {
   await ensureValid<%= h.changeCase.pascal(nodetype) %>Exists()
 }
+
+script:post-response {
+  bru.setEnvVar("valid<%= h.changeCase.pascal(nodetype) %>Id", null)
+}
