@@ -4,7 +4,7 @@ to: bruno/<%= h.inflection.pluralize(h.changeCase.title(nodetype)) %>/Delete (in
 meta {
   name: Delete (invalid)
   type: http
-  seq: 51
+  seq: 81
 }
 
 delete {

@@ -4,7 +4,7 @@ to: bruno/<%= h.inflection.pluralize(h.changeCase.title(nodetype)) %>/Delete.bru
 meta {
   name: Delete
   type: http
-  seq: 50
+  seq: 80
 }
 
 delete {
