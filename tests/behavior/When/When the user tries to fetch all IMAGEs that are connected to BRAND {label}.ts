@@ -1,12 +1,12 @@
-import {When} from "@cucumber/cucumber"
+import {When, world} from "@cucumber/cucumber"
 import axios from "axios"
 import {BrandNode} from "../../../src/models/brands/types/BrandNode"
 
 When('the user tries to fetch all IMAGEs that are connected to BRAND {string}',
-    async function (label: string) {
-        const brand: BrandNode = this.brand[label]
+    async (label: string) => {
+        const brand: BrandNode = world.recallNode(label)
 
-        this.latestResponse = await axios
+        const response = await axios
             .get(`${process.env.API_URL}/brands/${brand.id}/has-image`, {
                 validateStatus: function (status) {
                     return status === 404 // treating 404 as a "good" status code, so axios does not fail the request
@@ -15,4 +15,6 @@ When('the user tries to fetch all IMAGEs that are connected to BRAND {string}',
             .catch(error => {
                 console.error(error)
             })
+
+        world.rememberResponse(response)
     })

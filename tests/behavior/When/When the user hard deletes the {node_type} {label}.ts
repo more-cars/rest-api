@@ -1,32 +1,34 @@
-import {When} from "@cucumber/cucumber"
+import {When, world} from "@cucumber/cucumber"
 import axios from "axios"
 import type {BaseNode} from "../../../src/db/types/BaseNode"
 
 When('the user hard deletes the {string} {string}',
-    async function (nodeType: string, label: string) {
+    async (nodeType: string, label: string) => {
         let node: BaseNode
         let path: string
 
         switch (nodeType.toLowerCase()) {
             case 'brand':
-                node = this.brand[label]
+                node = world.recallNode(label)
                 path = 'brands'
                 break
             case 'car model':
-                node = this.carmodel[label]
+                node = world.recallNode(label)
                 path = 'car-models'
                 break
             case 'image':
-                node = this.image[label]
+                node = world.recallNode(label)
                 path = 'images'
                 break
             default:
                 return
         }
 
-        this.latestResponse = await axios
+        const response = await axios
             .delete(`${process.env.API_URL}/${path}/${node.id}`)
             .catch(error => {
                 console.error(error)
             })
+
+        world.rememberResponse(response)
     })

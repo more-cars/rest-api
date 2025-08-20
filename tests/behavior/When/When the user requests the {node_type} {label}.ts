@@ -1,28 +1,31 @@
-import {When} from "@cucumber/cucumber"
+import {When, world} from "@cucumber/cucumber"
 import axios from "axios"
 import {BaseNode} from "../../../src/db/types/BaseNode"
 
-When('the user requests the {string} {string}', async function (nodeType: string, label: string) {
-    let node: BaseNode
-    let path: string
+When('the user requests the {string} {string}',
+    async (nodeType: string, label: string) => {
+        let node: BaseNode
+        let path: string
 
-    switch (nodeType.toLowerCase()) {
-        case 'brand':
-            node = this.brand[label]
-            path = 'brands'
-            break
-        case 'car model':
-            node = this.carmodel[label]
-            path = 'car-models'
-            break
-        case 'image':
-            node = this.image[label]
-            path = 'images'
-            break
-        default:
-            return
-    }
+        switch (nodeType.toLowerCase()) {
+            case 'brand':
+                node = world.recallNode(label)
+                path = 'brands'
+                break
+            case 'car model':
+                node = world.recallNode(label)
+                path = 'car-models'
+                break
+            case 'image':
+                node = world.recallNode(label)
+                path = 'images'
+                break
+            default:
+                return
+        }
 
-    this.latestResponse = await axios
-        .get(`${process.env.API_URL}/${path}/${node.id}`)
-})
+        const response = await axios
+            .get(`${process.env.API_URL}/${path}/${node.id}`)
+
+        world.rememberResponse(response)
+    })

@@ -1,18 +1,18 @@
-import {Given} from "@cucumber/cucumber"
+import {Given, world} from "@cucumber/cucumber"
 import {BrandNode} from "../../../src/models/brands/types/BrandNode"
 import axios from "axios"
 import type {ImageNode} from "../../../src/models/images/types/ImageNode"
 
 Given('there exists a relationship {string} between IMAGE {string} and BRAND {string}',
-    async function (relationshipLabel: string, imageLabel: string, brandLabel: string) {
-        const image: ImageNode = this.image[imageLabel]
-        const brand: BrandNode = this.brand[brandLabel]
+    async (relationshipLabel: string, imageLabel: string, brandLabel: string) => {
+        const image: ImageNode = world.recallNode(imageLabel)
+        const brand: BrandNode = world.recallNode(brandLabel)
 
-        this.latestResponse = await axios
+        const response = await axios
             .post(`${process.env.API_URL}/images/${image.id}/belongs-to-node/${brand.id}`)
             .catch(error => {
                 console.error(error)
             })
 
-        this.relationship[relationshipLabel] = this.latestResponse.data
+        world.rememberRelationship(response?.data, relationshipLabel)
     })

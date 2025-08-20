@@ -1,13 +1,13 @@
-import {Then} from "@cucumber/cucumber"
+import {Then, world} from "@cucumber/cucumber"
 import assert from "assert"
 import axios from "axios"
 import {ImageNode} from "../../../src/models/images/types/ImageNode"
 import {CarModelNode} from "../../../src/models/car-models/types/CarModelNode"
 
 Then('the IMAGE {string} should be connected to the CAR MODEL {string}',
-    async function (imageLabel: string, carModelLabel: string) {
-        const image: ImageNode = this.image[imageLabel]
-        const carModel: CarModelNode = this.carmodel[carModelLabel]
+    async (imageLabel: string, carModelLabel: string) => {
+        const image: ImageNode = world.recallNode(imageLabel)
+        const carModel: CarModelNode = world.recallNode(carModelLabel)
 
         const response = await axios
             .get(`${process.env.API_URL}/car-models/${carModel.id}/has-image/${image.id}`)

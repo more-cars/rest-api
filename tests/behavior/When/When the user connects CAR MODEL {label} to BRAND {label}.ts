@@ -1,16 +1,18 @@
-import {When} from "@cucumber/cucumber"
+import {When, world} from "@cucumber/cucumber"
 import axios from "axios"
 import {BrandNode} from "../../../src/models/brands/types/BrandNode"
 import {CarModelNode} from "../../../src/models/car-models/types/CarModelNode"
 
 When('the user connects CAR MODEL {string} to BRAND {string}',
-    async function (carModelLabel: string, brandLabel: string) {
-        const brand: BrandNode = this.brand[brandLabel]
-        const carModel: CarModelNode = this.carmodel[carModelLabel]
+    async (carModelLabel: string, brandLabel: string) => {
+        const brand: BrandNode = world.recallNode(brandLabel)
+        const carModel: CarModelNode = world.recallNode(carModelLabel)
 
-        this.latestResponse = await axios
+        const response = await axios
             .post(`${process.env.API_URL}/brands/${brand.id}/has-car-model/${carModel.id}`)
             .catch(error => {
                 console.error(error)
             })
+
+        world.rememberResponse(response)
     })

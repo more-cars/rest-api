@@ -1,24 +1,24 @@
-import {Then} from "@cucumber/cucumber"
+import {Then, world} from "@cucumber/cucumber"
 import assert from "assert"
 import axios from "axios"
 import type {BaseNode} from "../../../src/db/types/BaseNode"
 
 Then('the {string} {string} should not exist anymore',
-    async function (nodeType: string, label: string) {
+    async (nodeType: string, label: string) => {
         let node: BaseNode
         let path: string
 
         switch (nodeType.toLowerCase()) {
             case 'brand':
-                node = this.brand[label]
+                node = world.recallNode(label)
                 path = 'brands'
                 break
             case 'car model':
-                node = this.carmodel[label]
+                node = world.recallNode(label)
                 path = 'car-models'
                 break
             case 'image':
-                node = this.image[label]
+                node = world.recallNode(label)
                 path = 'images'
                 break
             default:

@@ -1,9 +1,9 @@
-import {Then} from "@cucumber/cucumber"
+import {Then, world} from "@cucumber/cucumber"
 import assert from "assert"
 
 Then('the response should return a collection with {int} relationships',
-    function (amount: number) {
-        const relationships = this.latestResponse.data
+    (amount: number) => {
+        const relationships = world.recallResponse().data
 
         assert.equal(relationships.length, amount)
 

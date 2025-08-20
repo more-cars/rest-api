@@ -1,11 +1,11 @@
-import {Then} from "@cucumber/cucumber"
+import {Then, world} from "@cucumber/cucumber"
 import assert from "assert"
 import axios from "axios"
 import {BrandNode} from "../../../src/models/brands/types/BrandNode"
 
 Then('BRAND {string} should be connected to {int} CAR MODELs',
-    async function (brandLabel: string, carModelAmount: string) {
-        const brand: BrandNode = this.brand[brandLabel]
+    async (brandLabel: string, carModelAmount: string) => {
+        const brand: BrandNode = world.recallNode(brandLabel)
 
         const response = await axios
             .get(`${process.env.API_URL}/brands/${brand.id}/has-car-model`)

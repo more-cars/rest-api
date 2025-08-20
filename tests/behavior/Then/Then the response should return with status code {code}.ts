@@ -1,7 +1,7 @@
-import {Then} from "@cucumber/cucumber"
+import {Then, world} from "@cucumber/cucumber"
 import assert from "assert"
 
 Then('the response should return with status code {int}',
-    function (statusCode: number) {
-        assert.equal(this.latestResponse.status, statusCode)
+    (statusCode: number) => {
+        assert.equal(world.recallResponse().status, statusCode)
     })

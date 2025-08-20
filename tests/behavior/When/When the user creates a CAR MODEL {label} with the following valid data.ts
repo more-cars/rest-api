@@ -1,8 +1,8 @@
-import {DataTable, When} from "@cucumber/cucumber"
+import {DataTable, When, world} from "@cucumber/cucumber"
 import axios from "axios"
 
 When('the user creates a CAR MODEL {string} with the following valid data',
-    async function (label: string, dataTable: DataTable) {
+    async (label: string, dataTable: DataTable) => {
         const rows = dataTable.hashes()
 
         const data: any = {}
@@ -14,11 +14,12 @@ When('the user creates a CAR MODEL {string} with the following valid data',
             }
         })
 
-        this.carmodel[label] = data
-        this.latestResponse = await axios
+        const response = await axios
             .post(`${process.env.API_URL}/car-models`, data)
             .catch(error => {
                 console.error(error)
             })
-        this.carmodel[label]['id'] = this.latestResponse.data.id
+
+        world.rememberResponse(response)
+        world.rememberNode(response?.data, label)
     })

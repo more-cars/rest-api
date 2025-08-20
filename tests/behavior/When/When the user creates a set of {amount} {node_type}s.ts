@@ -1,4 +1,4 @@
-import {When} from "@cucumber/cucumber"
+import {When, world} from "@cucumber/cucumber"
 import {Brand} from "../../../src/models/brands/Brand"
 import {CarModel} from "../../../src/models/car-models/CarModel"
 import {Image} from "../../../src/models/images/Image"
@@ -7,7 +7,7 @@ import FakeCarModel from "../../_toolbox/fixtures/nodes/FakeCarModel"
 import FakeImage from "../../_toolbox/fixtures/nodes/FakeImage"
 
 When('the user creates a set of {int} {string}s',
-    async function (amount: number, nodeType: string) {
+    async (amount: number, nodeType: string) => {
         const nodes = []
 
         for (let i = 0; i < amount; i++) {
@@ -23,7 +23,9 @@ When('the user creates a set of {int} {string}s',
                     break
             }
         }
-        this.latestResponse = {
+        const response = {
             data: nodes
         }
+
+        world.rememberResponse(response)
     })
