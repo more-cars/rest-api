@@ -6,8 +6,8 @@ skip_if: Delete Node
 ---
     test('Delete Node', async () => {
         await request(app)
-            .delete('/images/123')
+            .delete('/<%= h.inflection.pluralize(h.changeCase.kebab(nodetype)) %>/123')
 
-        expect(ImageController.delete)
+        expect(<%= h.changeCase.pascal(nodetype) %>Controller.delete)
             .toHaveBeenCalledTimes(1)
     })
