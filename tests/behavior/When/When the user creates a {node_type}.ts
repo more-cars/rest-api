@@ -3,23 +3,22 @@ import axios from "axios"
 import FakeBrand from "../../_toolbox/fixtures/nodes/FakeBrand"
 import FakeCarModel from "../../_toolbox/fixtures/nodes/FakeCarModel"
 import FakeImage from "../../_toolbox/fixtures/nodes/FakeImage"
+import {getBasePathFragmentForNodeType} from "../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
+import type {NodeType} from "../../_toolbox/NodeType"
 
 When('the user creates a(n) {string}',
     async (nodeType: string) => {
         let data: any = {}
-        let path: string
+        const path = await getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeType)
 
         switch (nodeType.toLowerCase()) {
             case 'brand':
-                path = 'brands'
                 data = FakeBrand
                 break
             case 'car model':
-                path = 'car-models'
                 data = FakeCarModel
                 break
             case 'image':
-                path = 'images'
                 data = FakeImage
                 break
             default:

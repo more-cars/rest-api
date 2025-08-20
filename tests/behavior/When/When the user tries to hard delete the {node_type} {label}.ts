@@ -1,28 +1,12 @@
 import {When, world} from "@cucumber/cucumber"
 import axios from "axios"
-import type {BaseNode} from "../../../src/db/types/BaseNode"
+import {getBasePathFragmentForNodeType} from "../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
+import type {NodeType} from "../../_toolbox/NodeType"
 
 When('the user tries to hard delete the {string} {string}',
     async (nodeType: string, label: string) => {
-        let node: BaseNode
-        let path: string
-
-        switch (nodeType.toLowerCase()) {
-            case 'brand':
-                node = world.recallNode(label)
-                path = 'brands'
-                break
-            case 'car model':
-                node = world.recallNode(label)
-                path = 'car-models'
-                break
-            case 'image':
-                node = world.recallNode(label)
-                path = 'images'
-                break
-            default:
-                return
-        }
+        const node = world.recallNode(label)
+        const path = await getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeType)
 
         const response = await axios
             .delete(`${process.env.API_URL}/${path}/${node.id}`, {
