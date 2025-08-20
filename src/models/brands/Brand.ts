@@ -5,6 +5,7 @@ import {createNode} from "../../db/nodes/brands/createNode"
 import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/brands/getNodeById"
 import {getAllNodesOfType} from "../../db/nodes/brands/getAllNodesOfType"
+import {deleteNode} from "../../db/nodes/deleteNode"
 import {BrandHasCarModelRelationship} from "./types/BrandHasCarModelRelationship"
 import {CarModel} from "../car-models/CarModel"
 import {createBrandHasCarModelRelationship} from "./createBrandHasCarModelRelationship"
@@ -45,6 +46,10 @@ export class Brand {
         })
 
         return nodes
+    }
+
+    static async delete(id: number): Promise<boolean> {
+        return await deleteNode(id)
     }
 
     static async createHasCarModelRelationship(brandId: number, carModelId: number): Promise<false | BrandHasCarModelRelationship> {

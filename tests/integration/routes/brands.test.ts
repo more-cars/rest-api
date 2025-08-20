@@ -30,6 +30,14 @@ describe('Brands', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete Node', async () => {
+        await request(app)
+            .delete('/brands/123')
+
+        expect(BrandController.delete)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create "has Car Model" Relationship', async () => {
         await request(app)
             .post('/brands/123/has-car-model/456')

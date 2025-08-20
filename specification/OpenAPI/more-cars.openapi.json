@@ -111,6 +111,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Brands"
+        ],
+        "summary": "Delete `Brand`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "brand-id",
+            "description": "ID of the `Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Brand` was deleted."
+          },
+          "404": {
+            "description": "No `Brand` with the provided ID found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/brands": {
