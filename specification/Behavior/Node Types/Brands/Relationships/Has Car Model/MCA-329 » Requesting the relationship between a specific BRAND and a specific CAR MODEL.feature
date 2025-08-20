@@ -11,7 +11,7 @@ Feature: Get single Relationship: BRAND has CAR MODEL
   Scenario: Requesting the relationship between a specific BRAND and a specific CAR MODEL
     Given there exists a "BRAND" "Lamborghini"
     And there exists a "CAR MODEL" "Countach"
-    And there exists a relationship "R" between BRAND "Lamborghini" and CAR MODEL "Countach"
+    And there exists a relationship "R" between "BRAND" "Lamborghini" and "CAR MODEL" "Countach"
 
     When the user requests the relationship between BRAND "Lamborghini" and CAR MODEL "Countach"
     Then the response should return with status code 200

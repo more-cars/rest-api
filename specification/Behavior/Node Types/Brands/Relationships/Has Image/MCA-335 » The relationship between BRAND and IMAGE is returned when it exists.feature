@@ -11,7 +11,7 @@ Feature: Get single Relationship: BRAND has IMAGE
   Scenario: The relationship between BRAND and IMAGE is returned when it exists
     Given there exists a "BRAND" "Honda"
     And there exists an "IMAGE" "logo"
-    And there exists a relationship "R" between BRAND "Honda" and IMAGE "logo"
+    And there exists a relationship "R" between "BRAND" "Honda" and "IMAGE" "logo"
 
     When the user requests the relationship between BRAND "Honda" and IMAGE "logo"
     Then the response should return with status code 200

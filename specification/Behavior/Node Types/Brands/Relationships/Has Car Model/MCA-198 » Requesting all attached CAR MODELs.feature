@@ -12,8 +12,8 @@ Feature: Requesting all "CAR MODEL belongs BRAND" relationships
     Given there exists a "BRAND" "Hyundai"
     And there exists a "CAR MODEL" "i10"
     And there exists a "CAR MODEL" "i20"
-    And there exists a relationship "R1" between BRAND "Hyundai" and CAR MODEL "i10"
-    And there exists a relationship "R2" between BRAND "Hyundai" and CAR MODEL "i20"
+    And there exists a relationship "R1" between "BRAND" "Hyundai" and "CAR MODEL" "i10"
+    And there exists a relationship "R2" between "BRAND" "Hyundai" and "CAR MODEL" "i20"
 
     When the user requests a list of all CAR MODEL relationships for the BRAND "Hyundai"
 

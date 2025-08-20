@@ -11,7 +11,7 @@ Feature: Connecting CAR MODELs to a BRAND
   Scenario: Creating the same relationship again returns the already existing one
     Given there exists a "brand" "A"
     And there exists a "car model" "B"
-    And there exists a relationship "C" between CAR MODEL "B" and BRAND "A"
+    And there exists a relationship "C" between "CAR MODEL" "B" and "BRAND" "A"
 
     When the user connects CAR MODEL "B" to BRAND "A"
     And the response should contain the id of relationship "C"

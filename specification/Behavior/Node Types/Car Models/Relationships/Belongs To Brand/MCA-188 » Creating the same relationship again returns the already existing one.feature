@@ -11,7 +11,7 @@ Feature: Create Relationship: CAR MODEL belongs to BRAND
   Scenario: Creating the same relationship again returns the already existing one
     Given there exists a "CAR MODEL" "Testarossa"
     And there exists a "BRAND" "Ferrari"
-    And there exists a relationship "R" between CAR MODEL "Testarossa" and BRAND "Ferrari"
+    And there exists a relationship "R" between "CAR MODEL" "Testarossa" and "BRAND" "Ferrari"
 
     When the user connects BRAND "Ferrari" to CAR MODEL "Testarossa"
     And the response should contain the id of relationship "R"

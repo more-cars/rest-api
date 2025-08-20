@@ -11,7 +11,7 @@ Feature: Create Relationship: BRAND has IMAGE
   Scenario: Creating the same relationship again
     Given there exists a "BRAND" "Maserati"
     And there exists an "IMAGE" "logo"
-    And there exists a relationship "R" between BRAND "Maserati" and IMAGE "logo"
+    And there exists a relationship "R" between "BRAND" "Maserati" and "IMAGE" "logo"
 
     When the user connects IMAGE "logo" to BRAND "Maserati"
     And the response should contain the id of relationship "R"

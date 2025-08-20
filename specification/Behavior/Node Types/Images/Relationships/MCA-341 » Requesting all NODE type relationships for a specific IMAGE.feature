@@ -13,8 +13,8 @@ Feature: Get all Relationships: IMAGE belongs to NODE TYPE
     Given there exists a "IMAGE" "bmw bonnet"
     And there exists a "BRAND" "BMW"
     And there exists a "CAR MODEL" "M3"
-    And there exists a relationship "R1" between IMAGE "bmw bonnet" and BRAND "BMW"
-    And there exists a relationship "R2" between IMAGE "bmw bonnet" and CAR MODEL "M3"
+    And there exists a relationship "R1" between "IMAGE" "bmw bonnet" and "BRAND" "BMW"
+    And there exists a relationship "R2" between "IMAGE" "bmw bonnet" and "CAR MODEL" "M3"
 
     When the user requests a grouped list of all relationships for the IMAGE "bmw bonnet"
 
