@@ -10,7 +10,7 @@ import type {NodeType} from "../../_toolbox/NodeType"
 When('the user requests an existing {string}',
     async (nodeType: string) => {
         let node: BaseNode
-        const path = await getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeType)
+        const path = getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeType)
 
         switch (nodeType.toLowerCase()) {
             case 'brand':

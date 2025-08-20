@@ -9,7 +9,7 @@ import type {NodeType} from "../../_toolbox/NodeType"
 When('the user creates a(n) {string}',
     async (nodeType: string) => {
         let data: any = {}
-        const path = await getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeType)
+        const path = getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeType)
 
         switch (nodeType.toLowerCase()) {
             case 'brand':

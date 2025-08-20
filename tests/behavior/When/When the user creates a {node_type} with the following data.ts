@@ -6,7 +6,7 @@ import type {NodeType} from "../../_toolbox/NodeType"
 When('the user creates a(n) {string} with the following data',
     async (nodeType: string, dataTable: DataTable) => {
         const data: any = {}
-        const path = await getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeType)
+        const path = getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeType)
 
         const properties = dataTable.hashes()
         properties.forEach((property) => {
