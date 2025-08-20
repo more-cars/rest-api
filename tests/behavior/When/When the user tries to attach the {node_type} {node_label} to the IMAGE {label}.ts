@@ -9,11 +9,7 @@ When('the user tries to attach the {string} {string} to the IMAGE {string}',
         const partnerNode: BaseNode = world.recallNode(partnerNodeLabel)
 
         const response = await axios
-            .post(`${process.env.API_URL}/images/${imageNode.id}/belongs-to-node/${partnerNode.id}`, null, {
-                validateStatus: function (status) {
-                    return status === 422 || status === 404 // treating 404 and 422 as "good" status codes, so axios does not fail the request
-                }
-            })
+            .post(`${process.env.API_URL}/images/${imageNode.id}/belongs-to-node/${partnerNode.id}`)
             .catch(error => {
                 console.error(error)
             })

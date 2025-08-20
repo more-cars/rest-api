@@ -7,11 +7,7 @@ When('the user tries to request a grouped list of all relationships for the IMAG
         const image: ImageNode = world.recallNode(imageLabel)
 
         const response = await axios
-            .get(`${process.env.API_URL}/images/${image.id}/belongs-to-node-type`, {
-                validateStatus: function (status) {
-                    return status === 404 // treating 404 as a "good" status code, so axios does not fail the request
-                }
-            })
+            .get(`${process.env.API_URL}/images/${image.id}/belongs-to-node-type`)
             .catch(error => {
                 console.error(error)
             })

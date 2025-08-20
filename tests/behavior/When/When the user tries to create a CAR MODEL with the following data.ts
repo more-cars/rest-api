@@ -10,11 +10,7 @@ When('the user tries to create a CAR MODEL with the following data',
         }
 
         const response = await axios
-            .post(`${process.env.API_URL}/car-models`, carModelData, {
-                validateStatus: function (status) {
-                    return status === 400 // treating the 400 as a "good" status code, so axios does not fail the request
-                }
-            })
+            .post(`${process.env.API_URL}/car-models`, carModelData)
 
         world.rememberResponse(response)
     })

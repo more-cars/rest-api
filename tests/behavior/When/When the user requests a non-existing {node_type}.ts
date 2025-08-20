@@ -8,11 +8,7 @@ When('the user requests a non-existing {string}',
         const path = await getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeType)
 
         const response = await axios
-            .get(`${process.env.API_URL}/${path}/-42`, {
-                validateStatus: function (status) {
-                    return status === 404 // treating the 404 as a "good" status code, so axios does not fail the request
-                }
-            })
+            .get(`${process.env.API_URL}/${path}/-42`)
 
         world.rememberResponse(response)
     })

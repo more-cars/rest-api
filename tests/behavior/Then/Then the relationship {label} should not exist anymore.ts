@@ -7,11 +7,7 @@ Then('the relationship {string} should not exist anymore',
         const rel = world.recallRelationship(label)
 
         const response = await axios
-            .get(`${process.env.API_URL}/car-models/${rel.car_model_id}/belongs-to-brand/${rel.brand_id}`, {
-                validateStatus: function (status) {
-                    return status === 404 // treating the 404 as a "good" status code, so axios does not fail the request
-                }
-            })
+            .get(`${process.env.API_URL}/car-models/${rel.car_model_id}/belongs-to-brand/${rel.brand_id}`)
             .catch(error => {
                 console.error(error)
             })

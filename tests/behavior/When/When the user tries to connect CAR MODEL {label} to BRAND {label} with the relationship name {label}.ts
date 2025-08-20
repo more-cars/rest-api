@@ -9,11 +9,7 @@ When('the user tries to connect CAR MODEL {string} to BRAND {string} with the re
         const carModel: CarModelNode = world.recallNode(carModelLabel)
 
         const response = await axios
-            .post(`${process.env.API_URL}/brands/${brand.id}/${relationshipName}/${carModel.id}`, null, {
-                validateStatus: function (status) {
-                    return status === 404 // treating the 404 as a "good" status code, so axios does not fail the request
-                }
-            })
+            .post(`${process.env.API_URL}/brands/${brand.id}/${relationshipName}/${carModel.id}`)
             .catch(error => {
                 console.error(error)
             })

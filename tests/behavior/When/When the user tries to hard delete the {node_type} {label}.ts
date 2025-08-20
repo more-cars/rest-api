@@ -9,11 +9,7 @@ When('the user tries to hard delete the {string} {string}',
         const path = await getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeType)
 
         const response = await axios
-            .delete(`${process.env.API_URL}/${path}/${node.id}`, {
-                validateStatus: function (status) {
-                    return status === 404 // treating 404 as a "good" status code, so axios does not fail the request
-                }
-            })
+            .delete(`${process.env.API_URL}/${path}/${node.id}`)
             .catch(error => {
                 console.error(error)
             })

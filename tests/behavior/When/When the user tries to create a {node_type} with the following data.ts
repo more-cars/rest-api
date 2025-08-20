@@ -14,11 +14,7 @@ When('the user tries to create a(n) {string} with the following data',
         })
 
         const response = await axios
-            .post(`${process.env.API_URL}/${path}`, data, {
-                validateStatus: function (status) {
-                    return status === 400 // treating the 400 as a "good" status code, so axios does not fail the request
-                }
-            })
+            .post(`${process.env.API_URL}/${path}`, data)
 
         world.rememberResponse(response)
     })

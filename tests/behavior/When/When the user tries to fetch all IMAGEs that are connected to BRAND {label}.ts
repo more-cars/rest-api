@@ -7,11 +7,7 @@ When('the user tries to fetch all IMAGEs that are connected to BRAND {string}',
         const brand: BrandNode = world.recallNode(label)
 
         const response = await axios
-            .get(`${process.env.API_URL}/brands/${brand.id}/has-image`, {
-                validateStatus: function (status) {
-                    return status === 404 // treating 404 as a "good" status code, so axios does not fail the request
-                }
-            })
+            .get(`${process.env.API_URL}/brands/${brand.id}/has-image`)
             .catch(error => {
                 console.error(error)
             })

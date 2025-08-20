@@ -10,11 +10,7 @@ Then('the {string} {string} should not exist anymore',
         const path = await getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeType)
 
         const response = await axios
-            .get(`${process.env.API_URL}/${path}/${node.id}`, {
-                validateStatus: function (status) {
-                    return status === 404 // treating the 404 as a "good" status code, so axios does not fail the request
-                }
-            })
+            .get(`${process.env.API_URL}/${path}/${node.id}`)
             .catch(error => {
                 console.error(error)
             })

@@ -9,11 +9,7 @@ When('the user tries to request the IMAGE relationship between IMAGE {string} an
         const partnerNode: BaseNode = world.recallNode(partnerNodeLabel)
 
         const response = await axios
-            .get(`${process.env.API_URL}/images/${imageNode.id}/belongs-to-node/${partnerNode.id}`, {
-                validateStatus: function (status) {
-                    return status === 404 || status === 422 // treating 404 and 422 as a "good" status codes, so axios does not fail the request
-                }
-            })
+            .get(`${process.env.API_URL}/images/${imageNode.id}/belongs-to-node/${partnerNode.id}`)
             .catch(error => {
                 console.error(error)
             })

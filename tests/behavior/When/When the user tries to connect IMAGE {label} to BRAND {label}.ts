@@ -9,11 +9,7 @@ When('the user tries to connect IMAGE {string} to BRAND {string}',
         const image: ImageNode = world.recallNode(imageLabel)
 
         const response = await axios
-            .post(`${process.env.API_URL}/brands/${brand.id}/has-image/${image.id}`, null, {
-                validateStatus: function (status) {
-                    return status === 404 // treating the 404 as a "good" status code, so axios does not fail the request
-                }
-            })
+            .post(`${process.env.API_URL}/brands/${brand.id}/has-image/${image.id}`)
             .catch(error => {
                 console.error(error)
             })

@@ -10,11 +10,7 @@ When('the user tries to create a BRAND with the following data',
         }
 
         const response = await axios
-            .post(`${process.env.API_URL}/brands`, data, {
-                validateStatus: function (status) {
-                    return status === 400 // treating the 400 as a "good" status code, so axios does not fail the request
-                }
-            })
+            .post(`${process.env.API_URL}/brands`, data)
 
         world.rememberResponse(response)
     })
