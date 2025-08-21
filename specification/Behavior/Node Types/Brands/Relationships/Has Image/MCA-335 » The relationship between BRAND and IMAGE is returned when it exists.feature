@@ -13,6 +13,6 @@ Feature: Get single Relationship: BRAND has IMAGE
     And there exists an "IMAGE" "logo"
     And there exists a relationship "R" between "BRAND" "Honda" and "IMAGE" "logo"
 
-    When the user requests the relationship between BRAND "Honda" and IMAGE "logo"
+    When the user requests the relationship between "BRAND" "Honda" and "IMAGE" "logo"
     Then the response should return with status code 200
     And the response should return the relationship "R"

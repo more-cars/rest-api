@@ -14,9 +14,9 @@ Feature: Create Relationship: CAR MODEL has IMAGE
     And there exists an "IMAGE" "bonnet"
     And there exists an "IMAGE" "interior"
 
-    When the user connects IMAGE "rear spoiler" to CAR MODEL "Impreza"
-    And the user connects IMAGE "bonnet" to CAR MODEL "Impreza"
-    And the user connects IMAGE "interior" to CAR MODEL "Impreza"
+    When the user connects "IMAGE" "rear spoiler" to "CAR MODEL" "Impreza"
+    And the user connects "IMAGE" "bonnet" to "CAR MODEL" "Impreza"
+    And the user connects "IMAGE" "interior" to "CAR MODEL" "Impreza"
 
     Then the IMAGE "rear spoiler" should be connected to the CAR MODEL "Impreza"
     And the IMAGE "bonnet" should be connected to the CAR MODEL "Impreza"

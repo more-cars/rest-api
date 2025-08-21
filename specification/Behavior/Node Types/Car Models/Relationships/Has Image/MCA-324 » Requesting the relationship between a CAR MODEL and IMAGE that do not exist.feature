@@ -11,15 +11,15 @@ Feature: Get single Relationship: CAR MODEL has IMAGE
   Scenario: Requesting the relationship between a CAR MODEL and IMAGE that do not exist
     Given there exists a "CAR MODEL" "Countach"
     And "IMAGE" "red lambo" does NOT exist
-    When the user requests the relationship between CAR MODEL "Countach" and IMAGE "red lambo"
+    When the user requests the relationship between "CAR MODEL" "Countach" and "IMAGE" "red lambo"
     Then the response should return with status code 404
 
     Given "CAR MODEL" "Countach" does NOT exist
     And there exists an "IMAGE" "red lambo"
-    When the user requests the relationship between CAR MODEL "Countach" and IMAGE "red lambo"
+    When the user requests the relationship between "CAR MODEL" "Countach" and "IMAGE" "red lambo"
     Then the response should return with status code 404
 
     Given "CAR MODEL" "Countach" does NOT exist
     And "IMAGE" "red lambo" does NOT exist
-    When the user requests the relationship between CAR MODEL "Countach" and IMAGE "red lambo"
+    When the user requests the relationship between "CAR MODEL" "Countach" and "IMAGE" "red lambo"
     Then the response should return with status code 404

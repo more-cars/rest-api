@@ -1,11 +1,11 @@
 import {When, world} from "@cucumber/cucumber"
 import axios from "axios"
 import {getBasePathFragmentForNodeType} from "../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
-import type {NodeType} from "../../_toolbox/NodeType"
 import {FakeNode} from "../../_toolbox/fixtures/nodes/FakeNode"
+import type {NodeType} from "../../_toolbox/NodeType"
 
-When('the user creates a(n) {string}',
-    async (nodeType: string) => {
+When('the user creates a {string} {string}',
+    async (nodeType: string, label: string) => {
         const path = getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeType)
         const data = FakeNode(nodeType.toLowerCase() as NodeType)
 
@@ -16,4 +16,5 @@ When('the user creates a(n) {string}',
             })
 
         world.rememberResponse(response)
+        world.rememberNode(response?.data, label)
     })

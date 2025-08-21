@@ -12,5 +12,5 @@ Feature: Create Relationship: BRAND has IMAGE
     Given there exists a "BRAND" "Maserati"
     And there exists an "IMAGE" "logo"
 
-    When the user connects IMAGE "logo" to BRAND "Maserati"
+    When the user connects "IMAGE" "logo" to "BRAND" "Maserati"
     Then the response should return with status code 201

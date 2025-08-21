@@ -12,5 +12,5 @@ Feature: Create Relationship: CAR MODEL belongs to BRAND
     Given there exists a "CAR MODEL" "Testarossa"
     And there exists a "BRAND" "Ferrari"
 
-    When the user connects BRAND "Ferrari" to CAR MODEL "Testarossa"
+    When the user connects "BRAND" "Ferrari" to "CAR MODEL" "Testarossa"
     Then the response should return with status code 201

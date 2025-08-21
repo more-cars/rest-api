@@ -13,5 +13,5 @@ Feature: Create Relationship: CAR MODEL has IMAGE
     And there exists an "IMAGE" "rear spoiler"
     And there exists a relationship "R" between "CAR MODEL" "Impreza" and "IMAGE" "rear spoiler"
 
-    When the user connects IMAGE "rear spoiler" to CAR MODEL "Impreza"
+    When the user connects "IMAGE" "rear spoiler" to "CAR MODEL" "Impreza"
     And the response should contain the id of relationship "R"

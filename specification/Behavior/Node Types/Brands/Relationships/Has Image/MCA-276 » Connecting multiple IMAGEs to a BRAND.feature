@@ -14,9 +14,9 @@ Feature: Create Relationship: BRAND has IMAGE
     And there exists an "IMAGE" "logo 1980"
     And there exists an "IMAGE" "logo 2010"
 
-    When the user connects IMAGE "logo 1960" to BRAND "Maserati"
-    And the user connects IMAGE "logo 1980" to BRAND "Maserati"
-    And the user connects IMAGE "logo 2010" to BRAND "Maserati"
+    When the user connects "IMAGE" "logo 1960" to "BRAND" "Maserati"
+    And the user connects "IMAGE" "logo 1980" to "BRAND" "Maserati"
+    And the user connects "IMAGE" "logo 2010" to "BRAND" "Maserati"
 
     Then the IMAGE "logo 1960" should be connected to the BRAND "Maserati"
     And the IMAGE "logo 1980" should be connected to the BRAND "Maserati"
