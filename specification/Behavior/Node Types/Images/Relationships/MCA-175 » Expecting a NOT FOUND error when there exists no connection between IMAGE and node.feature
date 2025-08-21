@@ -12,7 +12,7 @@ Feature: Request relationship between an IMAGE and a specific node
     Given there exists a "<node type>" "<node>"
     And there exists an "IMAGE" "<image>"
     And there exists no IMAGE relationship between IMAGE "<image>" and "<node type>" "<node>"
-    When the user tries to request the IMAGE relationship between IMAGE "<image>" and "<node type>" "<node>"
+    When the user requests the IMAGE relationship between IMAGE "<image>" and "<node type>" "<node>"
     Then the response should return with status code 404
 
     Examples:

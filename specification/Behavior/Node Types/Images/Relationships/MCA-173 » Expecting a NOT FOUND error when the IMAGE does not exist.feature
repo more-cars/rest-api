@@ -10,5 +10,5 @@ Feature: Request list of all relationships for a specific IMAGE
   @TEST_MCA-173 @implemented
   Scenario: Expecting a NOT FOUND error when the IMAGE does not exist
     Given "IMAGE" "A" does NOT exist
-    When the user tries to request all relationships for IMAGE "A"
+    When the user requests all relationships for IMAGE "A"
     Then the response should return with status code 404

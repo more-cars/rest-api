@@ -11,15 +11,15 @@ Feature: Get single Relationship: BRAND has CAR MODEL
   Scenario: Requesting the relationship between a BRAND and CAR MODEL that do not exist
     Given there exists a "BRAND" "Lamborghini"
     And "CAR MODEL" "Countach" does NOT exist
-    When the user tries to request the relationship between BRAND "Lamborghini" and CAR MODEL "Countach"
+    When the user requests the relationship between BRAND "Lamborghini" and CAR MODEL "Countach"
     Then the response should return with status code 404
 
     Given "BRAND" "Lamborghini" does NOT exist
     And there exists a "CAR MODEL" "Countach"
-    When the user tries to request the relationship between BRAND "Lamborghini" and CAR MODEL "Countach"
+    When the user requests the relationship between BRAND "Lamborghini" and CAR MODEL "Countach"
     Then the response should return with status code 404
 
     Given "BRAND" "Lamborghini" does NOT exist
     And "CAR MODEL" "Countach" does NOT exist
-    When the user tries to request the relationship between BRAND "Lamborghini" and CAR MODEL "Countach"
+    When the user requests the relationship between BRAND "Lamborghini" and CAR MODEL "Countach"
     Then the response should return with status code 404

@@ -9,7 +9,7 @@ Feature: Creating BRAND nodes
 
   @TEST_MCA-44 @implemented
   Scenario: The creation of a new BRAND is aborted with an error message when invalid data was provided
-    When the user tries to create a BRAND with the following data
+    When the user creates a "BRAND" with the following data
       | attribute | value   |
       | bad_name  | Ferrari |
     Then the response should return with status code 400

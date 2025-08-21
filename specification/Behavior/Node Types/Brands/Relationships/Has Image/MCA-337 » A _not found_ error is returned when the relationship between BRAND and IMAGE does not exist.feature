@@ -12,5 +12,5 @@ Feature: Get single Relationship: BRAND has IMAGE
     Given there exists a "BRAND" "Honda"
     And there exists an "IMAGE" "logo"
     And there exists NO relationship between BRAND "Honda" and IMAGE "logo"
-    When the user tries to request the relationship between BRAND "Honda" and IMAGE "logo"
+    When the user requests the relationship between BRAND "Honda" and IMAGE "logo"
     Then the response should return with status code 404
