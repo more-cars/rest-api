@@ -539,6 +539,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Car Models"
+        ],
+        "summary": "Delete `Car Model`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-id",
+            "description": "ID of the `Car Model`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Car Model` was deleted."
+          },
+          "404": {
+            "description": "No `Car Model` with the provided ID found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/car-models": {

@@ -2,6 +2,7 @@ import express from "express"
 import {create} from "./carModels/create"
 import {getById} from "./carModels/getById"
 import {getAll} from "./carModels/getAll"
+import {deleteNode} from "./carModels/deleteNode"
 import {createBelongsToBrandRelation} from "./carModels/createBelongsToBrandRelation"
 import {getBelongsToBrandRelation} from "./carModels/getBelongsToBrandRelation"
 import {createHasImageRelation} from "./carModels/createHasImageRelation"
@@ -19,6 +20,10 @@ export class CarModelController {
 
     static async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
+    }
+
+    static async delete(req: express.Request, res: express.Response) {
+        await deleteNode(req, res)
     }
 
     static async createBelongsToBrandRelation(req: express.Request, res: express.Response) {
