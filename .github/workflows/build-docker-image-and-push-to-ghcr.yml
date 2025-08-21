@@ -14,7 +14,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: refs/tags/v${{ inputs.version }}
+          ref: refs/tags/${{ inputs.version }}
 
       - name: Build
         run: docker build -t mc-api -f deployment/Dockerfile .
