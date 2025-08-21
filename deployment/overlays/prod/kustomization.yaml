@@ -9,4 +9,4 @@ namespace: prod
 
 images:
   - name: docker.io/dennisgerike/more-cars-api
-    newTag: 0.14.0
+    newTag: 0.15.0
