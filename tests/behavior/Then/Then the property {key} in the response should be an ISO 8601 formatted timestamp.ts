@@ -4,6 +4,6 @@ import moment from "moment/moment"
 
 Then('the property {string} in the response should be an ISO 8601 formatted timestamp',
     (key: string) => {
-        const value = world.recallResponse().data[key]
-        assert(moment(value).isValid(), `"${value}" is not a valid timestamp`)
+        assert.equal(typeof world.recallResponse().data, "object")
+        assert(moment(world.recallResponse().data[key]).isValid(), `"Invalid timestamp`)
     })
