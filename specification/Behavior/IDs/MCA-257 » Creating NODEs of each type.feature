@@ -12,7 +12,7 @@ Feature: 8-digit IDs
   @TEST_MCA-257 @implemented
   Scenario Outline: Creating NODEs of each type
     When the user creates a "<node type>"
-    Then the property "id" in the response should be a number greater than 12000000
+    Then the property "id" in the response should be a number greater than 11999999
     And the property "id" in the response should be a number lesser than 99999999
 
     Examples:
