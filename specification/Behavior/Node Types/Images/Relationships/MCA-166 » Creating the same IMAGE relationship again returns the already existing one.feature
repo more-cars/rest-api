@@ -11,7 +11,7 @@ Feature: Create relationship between IMAGE and a specific node
   Scenario Outline: Creating the same IMAGE relationship again returns the already existing one
     Given there exists a "<node type>" "<node>"
     And there exists an "IMAGE" "<image>"
-    And there exists a relationship "R" between IMAGE "<image>" and "<node type>" "<node>"
+    And there exists a relationship "R" between "IMAGE" "<image>" and "<node type>" "<node>"
 
     When the user attaches the "<node type>" "<node>" to the IMAGE "<image>"
     Then the response should return with status code 201

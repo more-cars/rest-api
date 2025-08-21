@@ -11,7 +11,7 @@ Feature: Request relationship between an IMAGE and a specific node
   Scenario Outline: Requesting the relationship between a specific IMAGE and specific node
     Given there exists an "IMAGE" "<image>"
     And there exists a "<node type>" "<node>"
-    And there exists a relationship "R" between IMAGE "<image>" and "<node type>" "<node>"
+    And there exists a relationship "R" between "IMAGE" "<image>" and "<node type>" "<node>"
 
     When the user requests the IMAGE relationship between IMAGE "<image>" and "<node type>" "<node>"
     Then the response should return with status code 200

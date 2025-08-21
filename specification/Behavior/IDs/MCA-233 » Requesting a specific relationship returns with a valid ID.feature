@@ -11,7 +11,7 @@ Feature: Providing IDs for all RELATIONSHIPs
   Scenario: Requesting a specific relationship returns with a valid ID
     Given there exists an "BRAND" "Jaguar"
     And there exists an "IMAGE" "logo"
-    And there exists a relationship "R" between IMAGE "logo" and "BRAND" "Jaguar"
+    And there exists a relationship "R" between "IMAGE" "logo" and "BRAND" "Jaguar"
 
     When the user requests the IMAGE relationship between IMAGE "logo" and "BRAND" "Jaguar"
 
