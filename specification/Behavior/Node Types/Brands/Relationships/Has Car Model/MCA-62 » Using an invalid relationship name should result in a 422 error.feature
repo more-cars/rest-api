@@ -11,5 +11,5 @@ Feature: Connecting CAR MODELs to a BRAND
   Scenario: Using an invalid relationship name should result in a 404 error
     Given there exists a "brand" "A"
     And there exists a "car model" "B"
-    When the user tries to connect CAR MODEL "B" to BRAND "A" with the relationship name "not-a-valid-relationship-name"
+    When the user connects CAR MODEL "B" to BRAND "A" with the relationship name "not-a-valid-relationship-name"
     Then the response should return with status code 404

@@ -11,15 +11,15 @@ Feature: Connecting CAR MODELs to a BRAND
   Scenario: A 404 error should be returned when any of the two nodes does not exist
     Given there exists a "brand" "A"
     And "CAR MODEL" "B" does NOT exist
-    When the user tries to connect CAR MODEL "B" to BRAND "A"
+    When the user connects CAR MODEL "B" to BRAND "A"
     Then the response should return with status code 404
 
     Given "BRAND" "A" does NOT exist
     And there exists a "car model" "B"
-    When the user tries to connect CAR MODEL "B" to BRAND "A"
+    When the user connects CAR MODEL "B" to BRAND "A"
     Then the response should return with status code 404
 
     Given "BRAND" "A" does NOT exist
     And "CAR MODEL" "B" does NOT exist
-    When the user tries to connect CAR MODEL "B" to BRAND "A"
+    When the user connects CAR MODEL "B" to BRAND "A"
     Then the response should return with status code 404
