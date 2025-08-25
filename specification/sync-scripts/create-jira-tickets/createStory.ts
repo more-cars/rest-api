@@ -8,7 +8,7 @@ export async function createStory(data: Story): Promise<string> {
         .post(getJiraApiBaseUrl() + 'issue', {
             fields: {
                 'project': {
-                    id: '10116'
+                    key: 'MCA'
                 },
                 'issuetype': {
                     id: '10001'
