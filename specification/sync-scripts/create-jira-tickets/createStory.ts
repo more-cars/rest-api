@@ -1,5 +1,8 @@
-export function createStory(data: object): string {
-    const key = "MCA-1234"
+import {getJiraApiAuthKey} from "./getJiraApiAuthKey"
 
-    return key
+export function createStory(data: object): string {
+    const apiKey = getJiraApiAuthKey()
+    const ticketId = "MCA-1234"
+
+    return ticketId
 }
