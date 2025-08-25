@@ -1,4 +1,7 @@
 import {input} from '@inquirer/prompts'
+import type {Story} from "./create-jira-tickets/Story"
+import type {AcceptanceCriterion} from "./create-jira-tickets/AcceptanceCriterion"
+import type {Test} from "./create-jira-tickets/Test"
 import {createStory} from "./create-jira-tickets/createStory"
 import {connectStoryToEpic} from "./create-jira-tickets/connectStoryToEpic"
 import {createAcceptanceCriterion} from "./create-jira-tickets/createAcceptanceCriterion"
@@ -11,19 +14,37 @@ async function createTickets() {
         epicId: await input({message: "ID of the existing Jira epic?", required: true}),
     }
 
-    const data = {
-        title: "[test] " + params.nodeType,
+    const storyData: Story = {
+        title: "[test] Create " + params.nodeType.toUpperCase() + ' Node Type',
+        userStory: `As a ...
+I want to be able to ...
+So I can ...`,
         description: "test description",
+        apiVerb: '10187', // POST
+        apiPath: '/' + params.nodeType.toLowerCase(),
+        responseOptions: [
+            '201',
+            '404',
+        ]
     }
 
-    const storyId = await createStory(data)
+    const storyId = await createStory(storyData)
     await connectStoryToEpic(storyId, params.epicId)
     console.log('Created Story:', storyId)
 
-    const acceptanceCriterionId = await createAcceptanceCriterion(data, storyId)
+    const acData: AcceptanceCriterion = {
+        title: "[test] AC for new node type " + params.nodeType.toUpperCase(),
+        description: "test description",
+        responseCode: '10253' // 201
+    }
+    const acceptanceCriterionId = await createAcceptanceCriterion(acData, storyId)
     console.log('Created AC:', acceptanceCriterionId)
 
-    const testId = await createTest(data)
+    const testData: Test = {
+        title: "[test] Test for new node type " + params.nodeType.toUpperCase(),
+        description: "test description",
+    }
+    const testId = await createTest(testData)
     await connectTestToAcceptanceCriterion(testId, acceptanceCriterionId)
     console.log('Created Test:', testId)
 }

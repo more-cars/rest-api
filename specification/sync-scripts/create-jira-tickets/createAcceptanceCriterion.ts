@@ -32,6 +32,9 @@ export async function createAcceptanceCriterion(data: AcceptanceCriterion, paren
                         }
                     ]
                 },
+                'customfield_10801': {
+                    id: data.responseCode
+                },
             }
         }, {
             headers: {
