@@ -9,8 +9,6 @@ test.skip('Creating a new "story" ticket in Jira - real request', async () => {
 
     const key = await createStory(data)
 
-    console.log(key)
-
     expect(key)
         .toContain('MCA-')
 })

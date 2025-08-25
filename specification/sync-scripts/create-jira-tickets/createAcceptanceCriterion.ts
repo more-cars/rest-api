@@ -40,7 +40,5 @@ export async function createAcceptanceCriterion(data: AcceptanceCriterion, paren
             }
         })
 
-    console.log(response)
-
     return response.data.key
 }
