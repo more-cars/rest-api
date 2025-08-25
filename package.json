@@ -92,6 +92,7 @@
     "tests:bruno:prod": "cd bruno && bru run --env gke-prod",
     "tests:behavior": "npx cucumber-js",
     "tests:performance": "K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_OPEN=true API_URL=http://api.more-cars.prod.internal k6 run tests/performance/brands/get-by-id.ts",
+    "tests:sync-scripts": "vitest run -c tests/sync-scripts/vite.config.ts",
     "stats:lines-of-code:src": "sloc src/",
     "stats:lines-of-code:test": "sloc tests/"
   },
