@@ -77,4 +77,12 @@ describe('Car Models', () => {
         expect(CarModelController.getHasImageRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create "has prime image" Relationship', async () => {
+        await request(app)
+            .post('/car-models/123/has-prime-image/456')
+
+        expect(CarModelController.createHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

@@ -12,5 +12,6 @@ router.get('/car-models/:carModelId/belongs-to-brand', CarModelController.getBel
 router.post('/car-models/:carModelId/has-image/:imageId', CarModelController.createHasImageRelation)
 router.get('/car-models/:carModelId/has-image/:imageId', CarModelController.getHasImageRelation)
 router.get('/car-models/:carModelId/has-image', CarModelController.getHasImageRelations)
+router.post('/car-models/:carModelId/has-prime-image/:imageId', CarModelController.createHasPrimeImageRelation)
 
 export default router
