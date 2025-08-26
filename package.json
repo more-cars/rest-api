@@ -77,6 +77,7 @@
     "gke:deploy:prod": "deployment/gke-app-deploy.sh prod",
     "gke:undeploy:prod": "deployment/gke-app-undeploy.sh prod",
     "generate-code:node:delete": "HYGEN_TMPLS=code_generator hygen node delete",
+    "generate-code:relationship:create": "HYGEN_TMPLS=code_generator hygen relationship create",
     "generate-tickets:new-node-type": "node --env-file=.env -r ts-node/register specification/sync-scripts/create-jira-tickets-for-new-node-type.ts",
     "tests:validate-api-schema": "npx ts-node tests/api-validation/schema-validation.ts",
     "tests:lint": "npx eslint src",
