@@ -15,11 +15,19 @@
       "description": "Local Minikube - DEV"
     },
     {
-      "url": "http://api.more-cars.prod.internal",
-      "description": "Local Minikube - PROD"
+      "url": "http://api.more-cars.testing.internal",
+      "description": "Local Minikube - Testing"
     },
     {
-      "url": "http://api.fast-cars.info",
+      "url": "http://api.more-cars.prod.internal",
+      "description": "Local Minikube - Production"
+    },
+    {
+      "url": "http://testing.api.fast-cars.info",
+      "description": "Testing"
+    },
+    {
+      "url": "http://prod.api.fast-cars.info",
       "description": "Production"
     }
   ],
