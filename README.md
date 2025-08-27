@@ -98,21 +98,17 @@ It can be a local instance, a container in minikube or a cloud deployment - as l
 
 ### Smoke Tests
 
-There exist no official smoke tests, but the Bruno collection can be used
-for that under certain circumstances.
+The Bruno collection represents the smoke tests for the More Cars API.
 The collection covers every API feature and performs a handful of simple tests for each of them.
 The tests are extremely fast and can be run against every environment.
 The only issue to be aware of is that they create random data.
 So, running them against the production environment is possible, but the test data has to be deleted manually afterward.
 
-Pick one of the following commands to run the smoke tests:
-
-* `npm run tests:bruno:local`
-* `npm run tests:bruno:minikube-dev`
-* `npm run tests:bruno:minikube-testing`
-* `npm run tests:bruno:minikube-prod`
-* `npm run tests:bruno:testing`
-* `npm run tests:bruno:prod`
+There is an _interactive_ mode and a _direct_ mode to start the test runs.
+`npm run tests:bruno` triggers the interactive mode.
+Here, a wizard will ask for the target environment to run the tests against.
+Alternatively, when providing the target environment via CLI parameter the interactive mode will be circumvented.
+`npm run tests:bruno testing` for example will directly start the tests against the 'testing' environment.
 
 For more information see the README file in the `bruno` folder, in the project's root directory.
 
