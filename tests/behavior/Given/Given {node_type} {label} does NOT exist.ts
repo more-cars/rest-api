@@ -7,5 +7,5 @@ Given('{string} {string} does NOT exist',
             external_id: "Non-existing Image",
         }
 
-        world.rememberNode(node, label)
+        world.rememberNode(node, label, nodeType.toLowerCase())
     })

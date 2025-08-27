@@ -6,7 +6,7 @@ import assert from "assert"
 // TODO This only checks for the non-existence of relationships. It should actively delete them.
 Given('there exists NO relationship between CAR MODEL {string} and any BRAND',
     async (carModelLabel: string) => {
-        const carModel: CarModelNode = world.recallNode(carModelLabel)
+        const carModel: CarModelNode = world.recallNode(carModelLabel).data
 
         const response = await axios
             .get(`${process.env.API_URL}/car-models/${carModel.id}/belongs-to-brand`)

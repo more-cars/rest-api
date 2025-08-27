@@ -5,8 +5,8 @@ import {BaseNode} from "../../../src/db/types/BaseNode"
 
 When('the user requests the IMAGE relationship between IMAGE {string} and {string} {string}',
     async (imageLabel: string, partnerNodeType: string, partnerNodeLabel: string) => {
-        const imageNode: ImageNode = world.recallNode(imageLabel)
-        const partnerNode: BaseNode = world.recallNode(partnerNodeLabel)
+        const imageNode: ImageNode = world.recallNode(imageLabel).data
+        const partnerNode: BaseNode = world.recallNode(partnerNodeLabel).data
 
         const response = await axios
             .get(`${process.env.API_URL}/images/${imageNode.id}/belongs-to-node/${partnerNode.id}`)

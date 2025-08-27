@@ -6,8 +6,8 @@ import {BrandNode} from "../../../src/models/brands/types/BrandNode"
 
 Then('the CAR MODEL {string} should NOT be connected to the BRAND {string}',
     async (carModelLabel: string, brandLabel: string) => {
-        const carModel: CarModelNode = world.recallNode(carModelLabel)
-        const brand: BrandNode = world.recallNode(brandLabel)
+        const carModel: CarModelNode = world.recallNode(carModelLabel).data
+        const brand: BrandNode = world.recallNode(brandLabel).data
 
         const response = await axios
             .get(`${process.env.API_URL}/car-models/${carModel.id}/belongs-to-brand`)

@@ -5,8 +5,8 @@ import {BaseNode} from "../../../src/db/types/BaseNode"
 
 When('the user attaches the {string} {string} to the IMAGE {string}',
     async (partnerNodeType: string, partnerNodeLabel: string, imageLabel: string) => {
-        const imageNode: ImageNode = world.recallNode(imageLabel)
-        const partnerNode: BaseNode = world.recallNode(partnerNodeLabel)
+        const imageNode: ImageNode = world.recallNode(imageLabel).data
+        const partnerNode: BaseNode = world.recallNode(partnerNodeLabel).data
 
         const response = await axios
             .post(`${process.env.API_URL}/images/${imageNode.id}/belongs-to-node/${partnerNode.id}`)

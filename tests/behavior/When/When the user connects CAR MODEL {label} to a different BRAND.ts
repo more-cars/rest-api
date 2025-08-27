@@ -5,7 +5,7 @@ import {seedBrand} from "../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 
 When('the user connects CAR MODEL {string} to a different BRAND',
     async (carModelLabel: string) => {
-        const carModel: CarModelNode = world.recallNode(carModelLabel)
+        const carModel: CarModelNode = world.recallNode(carModelLabel).data
         const brand = await seedBrand()
 
         const response = await axios

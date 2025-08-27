@@ -3,5 +3,5 @@ import {seedCarModelMinimal} from "../../_toolbox/dbSeeding/car-models/nodes/see
 
 Given('there exists a minimal CAR MODEL {string}',
     async (label: string) => {
-        world.rememberNode(await seedCarModelMinimal(), label)
+        world.rememberNode(await seedCarModelMinimal(), label, 'car model')
     })

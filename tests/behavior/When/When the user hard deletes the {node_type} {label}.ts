@@ -5,7 +5,7 @@ import type {NodeType} from "../../_toolbox/NodeType"
 
 When('the user hard deletes the {string} {string}',
     async (nodeType: string, label: string) => {
-        const node = world.recallNode(label)
+        const node = world.recallNode(label).data
         const path = getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeType)
 
         const response = await axios

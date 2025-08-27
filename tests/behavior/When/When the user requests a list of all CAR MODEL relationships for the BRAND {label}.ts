@@ -4,7 +4,7 @@ import {BrandNode} from "../../../src/models/brands/types/BrandNode"
 
 When('the user requests a list of all CAR MODEL relationships for the BRAND {string}',
     async (label: string) => {
-        const brandNode: BrandNode = world.recallNode(label)
+        const brandNode: BrandNode = world.recallNode(label).data
 
         const response = await axios
             .get(`${process.env.API_URL}/brands/${brandNode.id}/has-car-model`)

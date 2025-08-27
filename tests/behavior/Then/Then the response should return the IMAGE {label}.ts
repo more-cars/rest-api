@@ -6,7 +6,7 @@ import {validateJson} from "../../_toolbox/validateJson"
 
 Then('the response should return the IMAGE {string}',
     (label: string) => {
-        const expectedNode: ImageNode = world.recallNode(label)
+        const expectedNode: ImageNode = world.recallNode(label).data
         const actualNode: ImageNode = world.recallResponse().data
 
         assert.ok(validateJson(actualNode, ImageSchema))

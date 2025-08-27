@@ -1,5 +1,6 @@
 import {setWorldConstructor, World} from "@cucumber/cucumber"
 import axios from "axios"
+import type {NodeType} from "../_toolbox/NodeType"
 
 // By default, Axios fails every request that returns with a status code >= 400.
 // But for the tests we only want them to fail when a server error occurred (status code >= 500).
@@ -18,8 +19,8 @@ class CustomWorld extends World {
         super(options)
     }
 
-    rememberNode(node: any, label: string) {
-        this.nodes.set(label, node)
+    rememberNode(data: any, label: string, nodeType: NodeType) {
+        this.nodes.set(label, {data, nodeType})
     }
 
     recallNode(label: string) {

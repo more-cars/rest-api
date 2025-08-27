@@ -6,8 +6,8 @@ import {ImageNode} from "../../../src/models/images/types/ImageNode"
 
 Then('the IMAGE {string} should be connected to the BRAND {string}',
     async (imageLabel: string, brandLabel: string) => {
-        const image: ImageNode = world.recallNode(imageLabel)
-        const brand: BrandNode = world.recallNode(brandLabel)
+        const image: ImageNode = world.recallNode(imageLabel).data
+        const brand: BrandNode = world.recallNode(brandLabel).data
 
         const response = await axios
             .get(`${process.env.API_URL}/brands/${brand.id}/has-image/${image.id}`)

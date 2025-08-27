@@ -6,7 +6,7 @@ import {
 
 Given('there are {int} IMAGEs connected to CAR MODEL {string}',
     async (amount: number, label: string) => {
-        const carModel: CarModelNode = world.recallNode(label)
+        const carModel: CarModelNode = world.recallNode(label).data
 
         for (let i = 0; i < amount; i++) {
             await seedCarModelHasImageRelationship(carModel)

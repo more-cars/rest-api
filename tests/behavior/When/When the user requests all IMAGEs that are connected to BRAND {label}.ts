@@ -4,7 +4,7 @@ import {BrandNode} from "../../../src/models/brands/types/BrandNode"
 
 When('the user requests all IMAGEs that are connected to BRAND {string}',
     async (label: string) => {
-        const brand: BrandNode = world.recallNode(label)
+        const brand: BrandNode = world.recallNode(label).data
 
         const response = await axios
             .get(`${process.env.API_URL}/brands/${brand.id}/has-image`)

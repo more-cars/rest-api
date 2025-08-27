@@ -5,7 +5,7 @@ import {BrandNode} from "../../../src/models/brands/types/BrandNode"
 
 Then('BRAND {string} should be connected to {int} CAR MODELs',
     async (brandLabel: string, carModelAmount: string) => {
-        const brand: BrandNode = world.recallNode(brandLabel)
+        const brand: BrandNode = world.recallNode(brandLabel).data
 
         const response = await axios
             .get(`${process.env.API_URL}/brands/${brand.id}/has-car-model`)

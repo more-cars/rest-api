@@ -5,7 +5,7 @@ import {seedCarModel} from "../../_toolbox/dbSeeding/car-models/nodes/seedCarMod
 
 When('the user connects {int} CAR MODELs to BRAND {string}',
     async (carModelAmount: number, brandLabel: string) => {
-        const brand: BrandNode = world.recallNode(brandLabel)
+        const brand: BrandNode = world.recallNode(brandLabel).data
 
         for (let i = 0; i < carModelAmount; i++) {
             const carModel = await seedCarModel()

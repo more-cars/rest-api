@@ -7,5 +7,6 @@ Given('there exists a(n) {string} {string}',
         world.rememberNode(
             await seedNode(nodeType.toLowerCase() as NodeType),
             label,
+            nodeType.toLowerCase()
         )
     })

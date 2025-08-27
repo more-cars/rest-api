@@ -5,7 +5,7 @@ import {seedBrand} from "../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 
 Given('there exist {int} relationships for IMAGE {string}',
     async (amount: number, imageLabel: string) => {
-        const imageNode: ImageNode = world.recallNode(imageLabel)
+        const imageNode: ImageNode = world.recallNode(imageLabel).data
 
         for (let i = 0; i < amount; i++) {
             const partnerNode = await seedBrand()

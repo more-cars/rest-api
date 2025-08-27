@@ -8,9 +8,9 @@ import {getBasePathFragmentForRelationship} from "../../_toolbox/dbSeeding/getBa
 When('the user connects {string} {string} to {string} {string}',
     async (endNodeType: string, endNodeLabel: string, startNodeType: string, startNodeLabel: string) => {
         const nodePathFragment = getBasePathFragmentForNodeType(startNodeType.toLowerCase() as NodeType)
-        const startNode: BaseNode = world.recallNode(startNodeLabel)
+        const startNode: BaseNode = world.recallNode(startNodeLabel).data
         const relationshipName = getBasePathFragmentForRelationship(startNodeType.toLowerCase() as NodeType, endNodeType.toLowerCase() as NodeType)
-        const endNode: BaseNode = world.recallNode(endNodeLabel)
+        const endNode: BaseNode = world.recallNode(endNodeLabel).data
 
         const response = await axios
             .post(`${process.env.API_URL}/${nodePathFragment}/${startNode.id}/${relationshipName}/${endNode.id}`)

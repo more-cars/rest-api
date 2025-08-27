@@ -9,7 +9,7 @@ import {getBasePathFragmentForRelationship} from "../../_toolbox/dbSeeding/getBa
 Given('there exists a(n) relationship {string} between {string} {string} and a(n) {string}',
     async (relationshipLabel: string, startNodeType: string, startNodeLabel: string, endNodeType: string) => {
         const nodePathFragment = getBasePathFragmentForNodeType(startNodeType.toLowerCase() as NodeType)
-        const startNode: BaseNode = world.recallNode(startNodeLabel)
+        const startNode: BaseNode = world.recallNode(startNodeLabel).data
         const relationshipName = getBasePathFragmentForRelationship(startNodeType.toLowerCase() as NodeType, endNodeType.toLowerCase() as NodeType)
         const endNode = await seedNode(endNodeType.toLowerCase() as NodeType)
 

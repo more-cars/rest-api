@@ -4,7 +4,7 @@ import {ImageNode} from "../../../src/models/images/types/ImageNode"
 
 When('the user requests all relationships for IMAGE {string}',
     async (imageLabel: string) => {
-        const imageNode: ImageNode = world.recallNode(imageLabel)
+        const imageNode: ImageNode = world.recallNode(imageLabel).data
 
         const response = await axios
             .get(`${process.env.API_URL}/images/${imageNode.id}/belongs-to-node`)

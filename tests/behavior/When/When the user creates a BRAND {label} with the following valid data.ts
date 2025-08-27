@@ -21,5 +21,5 @@ When('the user creates a BRAND {string} with the following valid/mixed data',
             })
 
         world.rememberResponse(response)
-        world.rememberNode(response?.data, label)
+        world.rememberNode(response?.data, label, 'brand')
     })

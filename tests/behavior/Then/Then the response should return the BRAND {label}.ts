@@ -6,7 +6,7 @@ import {validateJson} from "../../_toolbox/validateJson"
 
 Then('the response should return the BRAND {string}',
     (label: string) => {
-        const expectedNode: BrandNode = world.recallNode(label)
+        const expectedNode: BrandNode = world.recallNode(label).data
         const actualNode: BrandNode = world.recallResponse().data
 
         assert.ok(validateJson(actualNode, BrandSchema))

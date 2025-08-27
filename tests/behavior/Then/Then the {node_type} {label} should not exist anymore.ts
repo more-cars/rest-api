@@ -6,7 +6,7 @@ import type {NodeType} from "../../_toolbox/NodeType"
 
 Then('the {string} {string} should not exist anymore',
     async (nodeType: string, label: string) => {
-        const node = world.recallNode(label)
+        const node = world.recallNode(label).data
         const path = getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeType)
 
         const response = await axios
