@@ -22,4 +22,4 @@ jobs:
         with:
           install_components: 'gke-gcloud-auth-plugin'
       - name: 'Executing the deployment'
-        run: npm run gke:deploy:testing
+        run: npm run gke:deploy:${{ inputs.environment }}
