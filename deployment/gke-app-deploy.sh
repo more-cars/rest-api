@@ -8,7 +8,7 @@ SCRIPT_PATH=$(dirname "$SCRIPT")
 
 # connecting to the Google Cloud and selecting the correct cluster
 #gcloud auth login
-gcloud config set project more-cars
+#gcloud config set project more-cars
 gcloud container clusters get-credentials more-cars --region=europe-west1-b
 
 # the previous command already selects the correct context, but only implicitly
