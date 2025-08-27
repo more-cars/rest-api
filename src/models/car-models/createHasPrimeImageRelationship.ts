@@ -3,12 +3,15 @@ import {DbRelationship} from "../../db/types/DbRelationship"
 import {CarModelHasPrimeImageRelationship} from "./types/CarModelHasPrimeImageRelationship"
 import {CarModelRelationship} from "./types/CarModelRelationship"
 import {getCarModelHasPrimeImageRelationship} from "./getCarModelHasPrimeImageRelationship"
+import {deleteExistingHasPrimeImageRelationship} from "./deleteExistingHasPrimeImageRelationship"
 
 export async function createHasPrimeImageRelationship(carModelId: number, imageId: number): Promise<false | CarModelHasPrimeImageRelationship> {
     const existingRelation = await getCarModelHasPrimeImageRelationship(carModelId, imageId)
     if (existingRelation) {
         return existingRelation
     }
+
+    await deleteExistingHasPrimeImageRelationship(carModelId)
 
     const baseRelationship = await createRelationship(
         carModelId,
