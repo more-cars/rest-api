@@ -11,14 +11,19 @@ import {
 } from "../tests/_toolbox/dbSeeding/images/relationships/deleteAllNodeHasImageRelationships"
 import {addTimestampsToRelationship} from "../src/db/relationships/addTimestampsToRelationship"
 import {addMoreCarsIdToRelationship} from "../src/db/relationships/addMoreCarsIdToRelationship"
+import {
+    deleteAllHasPrimeImageRelationships
+} from "../tests/_toolbox/dbSeeding/car-models/relationships/deleteAllHasPrimeImageRelationships"
 
 export async function migrateRelationships() {
     await deleteBrandHasCarModelRelationships()
     await deleteAllNodeHasImageRelationships()
+    await deleteAllHasPrimeImageRelationships()
 
     await migrate('brand', 'BUILDS_CAR_MODEL', 'carmodel', DbRelationship.BrandHasCarModel)
     await migrate('brand', 'HAS_IMAGE', 'image', DbRelationship.NodeHasImage)
     await migrate('carmodel', 'HAS_IMAGE', 'image', DbRelationship.NodeHasImage)
+    await migrate('image', 'IS_MAIN_IMAGE_OF_NODE', 'carmodel', DbRelationship.CarModelHasPrimeImage, true)
 }
 
 async function migrate(
@@ -26,6 +31,7 @@ async function migrate(
     oldRelationshipName: string,
     oldEndNodeTypeLabel: string,
     newRelationshipName: DbRelationship,
+    newRelationshipIsReversed: boolean = false,
 ) {
     const driver = getMc1Driver()
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
@@ -47,7 +53,13 @@ async function migrate(
         const relationshipOld = record.get('rel')
 
         try {
-            const newRelationship = await createDbRelationship(relationshipOld.start, relationshipOld.end, newRelationshipName)
+            let newRelationship
+            if (newRelationshipIsReversed) {
+                newRelationship = await createDbRelationship(relationshipOld.end, relationshipOld.start, newRelationshipName)
+            } else {
+                newRelationship = await createDbRelationship(relationshipOld.start, relationshipOld.end, newRelationshipName)
+            }
+
             if (newRelationship) {
                 await addMoreCarsIdToRelationship(newRelationship.elementId, relationshipOld.elementId + 10000000)
                 await addTimestampsToRelationship(newRelationship.elementId, relationshipOld.properties.created_at, relationshipOld.properties.updated_at)
