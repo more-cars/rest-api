@@ -14,11 +14,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: "Checking out the codebase"
+        uses: actions/checkout@v4
       - name: "Authorizing GitHub to access the Google Cloud account"
         uses: 'google-github-actions/auth@v2'
         with:
           credentials_json: '${{ secrets.GCLOUD_CREDENTIALS }}'
-      - name: "Checking out the codebase"
-        uses: actions/checkout@v4
       - name: 'Executing the deployment'
         run: npm run gke:deploy:testing
