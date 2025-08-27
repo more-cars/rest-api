@@ -7,9 +7,9 @@ Feature: Create CAR MODEL-has-prime-image-IMAGE Relationship
   @RULE_MCA-397
   Rule: Creation requests are rejected with an error when the provided data is invalid
 
-  @TEST_MCA-413 @implemented
-  Scenario: Trying to connect an IMAGE to a non-existent CAR MODEL
-    Given "CAR MODEL" "Mondeo" does NOT exist
-    And there exists an "IMAGE" "front-left.jpg"
+  @TEST_MCA-414 @implemented
+  Scenario: Trying to connect a non-existent IMAGE to a CAR MODEL
+    Given there exists a "CAR MODEL" "Mondeo"
+    And "IMAGE" "front-left.jpg" does NOT exist
     When the user requests to connect "front-left.jpg" to "Mondeo" as prime image
     Then the response should reject the request with status code 404
