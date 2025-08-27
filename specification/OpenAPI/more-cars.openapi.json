@@ -11,15 +11,15 @@
       "description": "Local"
     },
     {
-      "url": "http://api.more-cars.dev.internal",
+      "url": "http://dev.api.more-cars.internal",
       "description": "Local Minikube - DEV"
     },
     {
-      "url": "http://api.more-cars.testing.internal",
+      "url": "http://testing.api.more-cars.internal",
       "description": "Local Minikube - Testing"
     },
     {
-      "url": "http://api.more-cars.prod.internal",
+      "url": "http://prod.api.more-cars.internal",
       "description": "Local Minikube - Production"
     },
     {
