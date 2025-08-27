@@ -1,0 +1,24 @@
+name: Deploy app
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version number (e.g. 0.13.0)
+        required: true
+        type: string
+      environment:
+        description: Target environment to deploy to (e.g. testing)
+        required: true
+        type: choice
+        options:
+          - testing
+          - prod
+        default: testing
+
+jobs:
+  run-app-deployment:
+    uses: ./.github/workflows/deploy-app.yml
+    with:
+      version: ${{ inputs.version }}
+      environment: ${{ inputs.environment }}
