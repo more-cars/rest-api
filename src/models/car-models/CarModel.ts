@@ -17,7 +17,6 @@ import {createCarModelHasImageRelationship} from "./createCarModelHasImageRelati
 import {getAllCarModelHasImageRelationships} from "./getAllCarModelHasImageRelationships"
 import {CarModelHasPrimeImageRelationship} from "./types/CarModelHasPrimeImageRelationship"
 import {createHasPrimeImageRelationship} from "./createHasPrimeImageRelationship"
-import {getCarModelHasPrimeImageRelationship} from "./getCarModelHasPrimeImageRelationship"
 
 export class CarModel {
     static async create(data: CreateCarModelInput): Promise<CarModelNode> {
@@ -88,11 +87,6 @@ export class CarModel {
             return false
         }
 
-        const existingRelation = await getCarModelHasImageRelationship(carModelId, imageId)
-        if (existingRelation) {
-            return existingRelation
-        }
-
         return await createCarModelHasImageRelationship(carModelId, imageId)
     }
 
@@ -116,11 +110,6 @@ export class CarModel {
 
         if (!carModel || !image) {
             return false
-        }
-
-        const existingRelation = await getCarModelHasPrimeImageRelationship(carModel.id, image.id)
-        if (existingRelation) {
-            return existingRelation
         }
 
         return await createHasPrimeImageRelationship(carModelId, imageId)
