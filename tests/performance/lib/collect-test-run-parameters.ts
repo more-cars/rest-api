@@ -7,15 +7,47 @@ import {getDashboardExportPath} from "./getDashboardExportPath"
 import {isDashboardOpenedInBrowser} from "./isDashboardOpenedInBrowser"
 import {getDashboardRefreshRate} from "./getDashboardRefreshRate"
 
-const data = `
-export TARGET_ENVIRONMENT=${getTargetEnvironment()}
-export API_URL=${getApiUrl()}
-export TEST_FILE_PATH=${getTestScenario()}
-export K6_WEB_DASHBOARD=${isDashboardEnabled()}
-export K6_WEB_DASHBOARD_EXPORT=${getDashboardExportPath()}
-export K6_WEB_DASHBOARD_OPEN=${isDashboardOpenedInBrowser()}
-export K6_WEB_DASHBOARD_PERIOD=${getDashboardRefreshRate()}
-`
 const filename = process.argv[2]
 
-fs.writeFileSync(__dirname + '/../' + filename, data)
+collectParams()
+    .then((data) => {
+        fs.writeFileSync(__dirname + '/../' + filename, data)
+    })
+
+async function collectParams() {
+    const targetEnvironment = await getTargetEnvironment()
+
+    return assembleEnvFileData({
+        targetEnvironment,
+        apiUrl: getApiUrl(targetEnvironment) || '',
+        scenario: await getTestScenario(),
+        enableDashboard: await isDashboardEnabled(),
+        dashboardExportPath: getDashboardExportPath(),
+        autoOpenDashboardInBrowser: await isDashboardOpenedInBrowser(),
+        dashboardRefreshRate: getDashboardRefreshRate(),
+    })
+}
+
+function assembleEnvFileData(params: PerformanceTestData) {
+    const data = `
+export TARGET_ENVIRONMENT=${params.targetEnvironment}
+export API_URL=${params.apiUrl}
+export SCENARIO=${params.scenario}
+export K6_WEB_DASHBOARD=${params.enableDashboard}
+export K6_WEB_DASHBOARD_EXPORT=${params.dashboardExportPath}
+export K6_WEB_DASHBOARD_OPEN=${params.autoOpenDashboardInBrowser}
+export K6_WEB_DASHBOARD_PERIOD=${params.dashboardRefreshRate}
+`
+
+    return data
+}
+
+type PerformanceTestData = {
+    targetEnvironment: string
+    apiUrl: string
+    scenario: string
+    enableDashboard: boolean
+    dashboardExportPath: string
+    autoOpenDashboardInBrowser: boolean
+    dashboardRefreshRate: string
+}
