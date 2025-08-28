@@ -12,14 +12,14 @@ spec:
           initContainers:
             - name: more-cars-api
               image: dennisgerike/more-cars-api:latest
-              command: [ 'cp', '-R', '/app/tests/performance', '/tests' ]
+              command: [ 'cp', '-R', '/app/tests/performance/.', '/tests' ]
               volumeMounts:
                 - name: test-cases-volume
                   mountPath: /tests
           containers:
             - name: k6
               image: grafana/k6:0.56.0
-              command: [ 'k6', 'run', '/tests/performance/get-api-specification.ts' ]
+              command: [ 'k6', 'run', '/tests/scenarios/get-api-specification.ts' ]
               env:
                 - name: API_URL
                   value: http://$(API_SERVICE_SERVICE_HOST)
