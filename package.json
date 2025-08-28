@@ -91,7 +91,7 @@
     "tests:unit+integration:coverage": "npx vitest run -c tests/vite.config.ts --coverage",
     "tests:bruno": "./tests/smoke/run-tests.sh",
     "tests:behavior": "npx cucumber-js",
-    "tests:performance": "K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_OPEN=true API_URL=http://api.more-cars.prod.internal k6 run tests/performance/brands/get-by-id.ts",
+    "tests:performance": "./tests/performance/run-tests.sh",
     "tests:sync-scripts": "vitest run -c tests/sync-scripts/vite.config.ts",
     "stats:lines-of-code:src": "sloc src/",
     "stats:lines-of-code:test": "sloc tests/"
