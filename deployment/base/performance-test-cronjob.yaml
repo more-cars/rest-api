@@ -11,7 +11,7 @@ spec:
         spec:
           initContainers:
             - name: more-cars-api
-              image: dennisgerike/more-cars-api:0.15.0
+              image: dennisgerike/more-cars-api:latest
               command: [ 'cp', '-R', '/app/tests/performance', '/tests' ]
               volumeMounts:
                 - name: test-cases-volume
