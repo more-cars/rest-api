@@ -9,3 +9,4 @@ resources:
   - db-deployment.yaml
   - openapi-spec-service.yaml
   - openapi-spec-deployment.yaml
+  - performance-test-cronjob.yaml

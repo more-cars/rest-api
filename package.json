@@ -71,6 +71,8 @@
     "minikube:undeploy:prod": "deployment/minikube-app-undeploy.sh prod",
     "minikube:import-dev-image": "minikube image load localhost/mc-api:dev -p morecars",
     "minikube:delete-dev-image": "minikube image rm localhost/mc-api:dev -p morecars",
+    "minikube:tests:performance:dev": "deployment/minikube-run-performance-test.sh dev",
+    "minikube:tests:performance:testing": "deployment/minikube-run-performance-test.sh testing",
     "minikube:tests:performance:prod": "deployment/minikube-run-performance-test.sh prod",
     "gke:deploy:testing": "deployment/gke-app-deploy.sh testing",
     "gke:undeploy:testing": "deployment/gke-app-undeploy.sh testing",

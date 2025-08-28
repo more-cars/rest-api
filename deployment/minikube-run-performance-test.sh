@@ -12,5 +12,5 @@ kubectl config use-context morecars
 # switching to the correct namespace
 kubectl config set-context --current --namespace=$1
 
-# starting the tests (replacing the previous job if there was already one)
-kubectl replace --force -f $SCRIPT_PATH/performance-test-job.yaml
+# starting the job
+kubectl create job performance-test-$(date +%s) --from=cronjob/performance-test-cronjob
