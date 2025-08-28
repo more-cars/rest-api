@@ -1,9 +1,8 @@
 import http from 'k6/http'
 import {check} from "k6"
 import {Trend} from "k6/metrics"
-import {createBrand} from "../_testdata/createBrand.ts"
-import {createCarModel} from "../_testdata/createCarModel.ts"
-import {createBrandHasCarModelRelationship} from "../_testdata/createBrandHasCarModelRelationship.ts"
+import {createCarModel} from "../../_testdata/createCarModel.ts"
+import {createCarModelBelongsToBrandRelationship} from "../../_testdata/createCarModelBelongsToBrandRelationship.ts"
 
 const trendDuration = new Trend('duration', true)
 
@@ -14,7 +13,7 @@ export const options = {
         duration: ['p(1)<=10', 'p(90)<=40', 'p(95)<=100', 'p(98)<=500'],
     },
     scenarios: {
-        getHasCarModelRelationship: {
+        getBelongsToBrandRelationship: {
             executor: 'constant-arrival-rate',
             duration: '5m',
             rate: 1,
@@ -27,18 +26,16 @@ export const options = {
 }
 
 export function setup() {
-    const brandId = createBrand()
     const carModelId = createCarModel()
-    createBrandHasCarModelRelationship(brandId, carModelId)
+    createCarModelBelongsToBrandRelationship(carModelId)
 
     return {
-        brandId,
-        carModelId,
+        carModelId
     }
 }
 
-export default function (data: { brandId: number, carModelId: number }) {
-    const url = `${__ENV.API_URL}/brands/${data.brandId}/has-car-model/${data.carModelId}`
+export default function (data: { carModelId: number }) {
+    const url = `${__ENV.API_URL}/car-models/${data.carModelId}/belongs-to-brand`
 
     const response = http.get(url)
 

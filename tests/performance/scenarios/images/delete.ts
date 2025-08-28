@@ -2,7 +2,7 @@ import http from 'k6/http'
 import exec from 'k6/execution'
 import {check} from "k6"
 import {Trend} from "k6/metrics"
-import {createImage} from "../_testdata/createImage.ts"
+import {createImage} from "../../_testdata/createImage.ts"
 
 const trendDuration = new Trend('duration', true)
 

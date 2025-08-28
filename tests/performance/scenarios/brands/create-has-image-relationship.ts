@@ -1,8 +1,8 @@
 import http from 'k6/http'
 import {check} from "k6"
 import {Trend} from "k6/metrics"
-import {createCarModel} from "../_testdata/createCarModel.ts"
-import {createBrand} from "../_testdata/createBrand.ts"
+import {createBrand} from "../../_testdata/createBrand.ts"
+import {createImage} from "../../_testdata/createImage.ts"
 
 const trendDuration = new Trend('duration', true)
 
@@ -13,7 +13,7 @@ export const options = {
         duration: ['p(1)<=30', 'p(90)<=150', 'p(95)<=300', 'p(98)<=750'],
     },
     scenarios: {
-        createBelongsToBrandRelationship: {
+        createHasImageRelationship: {
             executor: 'constant-arrival-rate',
             duration: '5m',
             rate: 1,
@@ -26,17 +26,17 @@ export const options = {
 }
 
 export function setup() {
-    const carModelId = createCarModel()
     const brandId = createBrand()
+    const imageId = createImage()
 
     return {
-        carModelId,
         brandId,
+        imageId,
     }
 }
 
-export default function (data: { carModelId: number, brandId: number }) {
-    const url = `${__ENV.API_URL}/car-models/${data.carModelId}/belongs-to-brand/${data.brandId}`
+export default function (data: { brandId: number, imageId: number }) {
+    const url = `${__ENV.API_URL}/brands/${data.brandId}/has-image/${data.imageId}`
 
     const response = http.post(url)
 

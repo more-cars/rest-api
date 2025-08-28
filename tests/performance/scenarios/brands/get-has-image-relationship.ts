@@ -1,8 +1,9 @@
 import http from 'k6/http'
 import {check} from "k6"
 import {Trend} from "k6/metrics"
-import {createImage} from "../_testdata/createImage.ts"
-import {createImageBelongsToNodeRelationships} from "../_testdata/createImageBelongsToNodeRelationships.ts"
+import {createBrand} from "../../_testdata/createBrand.ts"
+import {createImage} from "../../_testdata/createImage"
+import {createBrandHasImageRelationship} from "../../_testdata/createBrandHasImageRelationship"
 
 const trendDuration = new Trend('duration', true)
 
@@ -10,14 +11,14 @@ export const options = {
     summaryTrendStats: ['count', 'min', 'p(1)', 'p(90)', 'p(95)', 'p(98)'],
     thresholds: {
         http_req_failed: ['rate<=0.0'],
-        duration: ['p(1)<=30', 'p(90)<=150', 'p(95)<=300', 'p(98)<=750'],
+        duration: ['p(1)<=10', 'p(90)<=40', 'p(95)<=100', 'p(98)<=500'],
     },
     scenarios: {
-        getBelongsToNodeRelationships: {
+        getHasImageRelationship: {
             executor: 'constant-arrival-rate',
             duration: '5m',
             rate: 1,
-            timeUnit: '2s',
+            timeUnit: '1s',
             preAllocatedVUs: 5,
             maxVUs: 5,
             gracefulStop: '10s',
@@ -26,16 +27,18 @@ export const options = {
 }
 
 export function setup() {
+    const brandId = createBrand()
     const imageId = createImage()
-    createImageBelongsToNodeRelationships(imageId, 7)
+    createBrandHasImageRelationship(brandId, imageId)
 
     return {
-        imageId
+        brandId,
+        imageId,
     }
 }
 
-export default function (data: { imageId: number }) {
-    const url = `${__ENV.API_URL}/images/${data.imageId}/belongs-to-node`
+export default function (data: { brandId: number, imageId: number }) {
+    const url = `${__ENV.API_URL}/brands/${data.brandId}/has-image/${data.imageId}/`
 
     const response = http.get(url)
 
@@ -43,7 +46,7 @@ export default function (data: { imageId: number }) {
         'returns with status code 200': (r) => r.status === 200,
         'content-type is JSON': (r) => r.headers['Content-Type'].includes('application/json'),
         // @ts-expect-error TS2531
-        'response is an Array': (r) => r.json().length > 0,
+        'response contains an ID': (r) => typeof r.json().relationship_id === "number",
     })
 
     trendDuration.add(response.timings.duration)

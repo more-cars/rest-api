@@ -1,8 +1,7 @@
 import http from 'k6/http'
 import {check} from "k6"
 import {Trend} from "k6/metrics"
-import {createBrand} from "../_testdata/createBrand.ts"
-import {createBrandHasCarModelRelationships} from "../_testdata/createBrandHasCarModelRelationships.ts"
+import {createCarModel} from "../../_testdata/createCarModel.ts"
 
 const trendDuration = new Trend('duration', true)
 
@@ -13,7 +12,7 @@ export const options = {
         duration: ['p(1)<=10', 'p(90)<=40', 'p(95)<=100', 'p(98)<=500'],
     },
     scenarios: {
-        getHasCarModelRelationships: {
+        getCarModel: {
             executor: 'constant-arrival-rate',
             duration: '5m',
             rate: 1,
@@ -26,24 +25,18 @@ export const options = {
 }
 
 export function setup() {
-    const brandId = createBrand()
-    createBrandHasCarModelRelationships(brandId, 9)
-
-    return {
-        brandId
-    }
+    return {id: createCarModel()}
 }
 
-export default function (data: { brandId: number }) {
-    const url = `${__ENV.API_URL}/brands/${data.brandId}/has-car-model`
-
+export default function (data: { id: number }) {
+    const url = `${__ENV.API_URL}/car-models/${data.id}`
     const response = http.get(url)
 
     check(response, {
         'returns with status code 200': (r) => r.status === 200,
         'content-type is JSON': (r) => r.headers['Content-Type'].includes('application/json'),
         // @ts-expect-error TS2531
-        'response is an Array': (r) => r.json().length > 0,
+        'correct ID is returned': (r) => r.json().id === data.id,
     })
 
     trendDuration.add(response.timings.duration)

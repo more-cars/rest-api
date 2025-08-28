@@ -1,8 +1,8 @@
 import http from 'k6/http'
 import {check} from "k6"
 import {Trend} from "k6/metrics"
-import {createBrand} from "../_testdata/createBrand.ts"
-import {createBrandHasImageRelationships} from "../_testdata/createBrandHasImageRelationships.ts"
+import {createBrand} from "../../_testdata/createBrand.ts"
+import {createBrandHasImageRelationships} from "../../_testdata/createBrandHasImageRelationships.ts"
 
 const trendDuration = new Trend('duration', true)
 

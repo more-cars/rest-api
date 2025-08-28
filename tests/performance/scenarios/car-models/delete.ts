@@ -2,7 +2,7 @@ import http from 'k6/http'
 import exec from 'k6/execution'
 import {check} from "k6"
 import {Trend} from "k6/metrics"
-import {createBrand} from "../_testdata/createBrand.ts"
+import {createCarModel} from "../../_testdata/createCarModel.ts"
 
 const trendDuration = new Trend('duration', true)
 
@@ -13,7 +13,7 @@ export const options = {
         duration: ['p(1)<=10', 'p(90)<=40', 'p(95)<=100', 'p(98)<=500'],
     },
     scenarios: {
-        deleteBrand: {
+        deleteCarModel: {
             executor: 'constant-arrival-rate',
             duration: '5m',
             rate: 1,
@@ -26,18 +26,18 @@ export const options = {
 }
 
 export function setup() {
-    const brands = []
+    const carModels = []
 
     for (let i = 0; i < 310; i++) {
-        brands.push(createBrand())
+        carModels.push(createCarModel())
     }
 
-    return {ids: brands}
+    return {ids: carModels}
 }
 
 export default function (data: { ids: any[] }) {
     const id = data.ids[exec.scenario.iterationInTest]
-    const url = `${__ENV.API_URL}/brands/${id}`
+    const url = `${__ENV.API_URL}/car-models/${id}`
     const response = http.del(url)
 
     check(response, {

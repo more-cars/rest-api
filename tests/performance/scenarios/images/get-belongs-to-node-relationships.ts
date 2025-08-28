@@ -1,8 +1,8 @@
 import http from 'k6/http'
 import {check} from "k6"
 import {Trend} from "k6/metrics"
-import {createImage} from "../_testdata/createImage.ts"
-import {createCarModel} from "../_testdata/createCarModel.ts"
+import {createImage} from "../../_testdata/createImage.ts"
+import {createImageBelongsToNodeRelationships} from "../../_testdata/createImageBelongsToNodeRelationships.ts"
 
 const trendDuration = new Trend('duration', true)
 
@@ -13,7 +13,7 @@ export const options = {
         duration: ['p(1)<=30', 'p(90)<=150', 'p(95)<=300', 'p(98)<=750'],
     },
     scenarios: {
-        createHasImageRelationship: {
+        getBelongsToNodeRelationships: {
             executor: 'constant-arrival-rate',
             duration: '5m',
             rate: 1,
@@ -26,25 +26,24 @@ export const options = {
 }
 
 export function setup() {
-    const carModelId = createCarModel()
     const imageId = createImage()
+    createImageBelongsToNodeRelationships(imageId, 7)
 
     return {
-        carModelId,
-        imageId,
+        imageId
     }
 }
 
-export default function (data: { carModelId: number, imageId: number }) {
-    const url = `${__ENV.API_URL}/car-models/${data.carModelId}/has-image/${data.imageId}`
+export default function (data: { imageId: number }) {
+    const url = `${__ENV.API_URL}/images/${data.imageId}/belongs-to-node`
 
-    const response = http.post(url)
+    const response = http.get(url)
 
     check(response, {
-        'returns with status code 201': (r) => r.status === 201,
+        'returns with status code 200': (r) => r.status === 200,
         'content-type is JSON': (r) => r.headers['Content-Type'].includes('application/json'),
         // @ts-expect-error TS2531
-        'response contains an ID': (r) => typeof r.json().relationship_id === "number",
+        'response is an Array': (r) => r.json().length > 0,
     })
 
     trendDuration.add(response.timings.duration)
