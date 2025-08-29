@@ -15,16 +15,16 @@ collectParams()
     })
 
 async function collectParams() {
-    const targetEnvironment = await getTargetEnvironment()
+    const targetEnvironment = process.env.TARGET_ENVIRONMENT || await getTargetEnvironment()
 
     return assembleEnvFileData({
         targetEnvironment,
-        apiUrl: getApiUrl(targetEnvironment) || '',
-        scenario: await getTestScenario(),
-        enableDashboard: await isDashboardEnabled(),
-        dashboardExportPath: getDashboardExportPath(),
-        autoOpenDashboardInBrowser: await isDashboardOpenedInBrowser(),
-        dashboardRefreshRate: getDashboardRefreshRate(),
+        apiUrl: process.env.API_URL || getApiUrl(targetEnvironment) || '',
+        scenario: process.env.SCENARIO || await getTestScenario(),
+        enableDashboard: process.env.K6_WEB_DASHBOARD === "true" || process.env.K6_WEB_DASHBOARD === "false" || await isDashboardEnabled(),
+        dashboardExportPath: process.env.K6_WEB_DASHBOARD_EXPORT || getDashboardExportPath(),
+        autoOpenDashboardInBrowser: process.env.K6_WEB_DASHBOARD_OPEN === "true" || process.env.K6_WEB_DASHBOARD_OPEN === "false" || await isDashboardOpenedInBrowser(),
+        dashboardRefreshRate: process.env.K6_WEB_DASHBOARD_PERIOD || getDashboardRefreshRate(),
     })
 }
 
