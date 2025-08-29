@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: smoke-test-job
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: more-cars-api
+          image: docker.io/dennisgerike/more-cars-api:latest
+          env:
+            - name: API_URL
+              value: http://$(API_SERVICE_SERVICE_HOST)
+          command: [ "/bin/sh", "-c" ]
+          args:
+            - |
+              npm i --quiet
+              cd bruno
+              npx bru run --env-var baseUrl=$API_URL

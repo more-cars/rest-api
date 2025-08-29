@@ -2,7 +2,6 @@
 .env*
 .git*
 .idea
-bruno
 cucumber.js
 eslint.config.mjs
 deployment
