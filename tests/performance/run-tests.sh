@@ -1,20 +1,38 @@
-#!/bin/bash
+#!/bin/sh
 
-SCRIPTS_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+SCRIPT=$(readlink -f "$0")
+SCRIPT_PATH=$(dirname "$SCRIPT")
 TEMPORARY_ENV_FILE=env.sh
-NODE_OPTIONS='--disable-warning=ExperimentalWarning' npx ts-node "$SCRIPTS_DIR"/lib/collect-test-run-parameters.ts $TEMPORARY_ENV_FILE
-source "$SCRIPTS_DIR"/$TEMPORARY_ENV_FILE
-rm "$SCRIPTS_DIR"/env.sh
+NODE_OPTIONS='--disable-warning=ExperimentalWarning' npx ts-node "$SCRIPT_PATH"/lib/collect-test-run-parameters.ts $TEMPORARY_ENV_FILE
+. "$SCRIPT_PATH"/$TEMPORARY_ENV_FILE
+rm "$SCRIPT_PATH"/env.sh
 
 echo ----------------------------------------------------------
-echo Running performance tests
+echo Running performance tests:
+echo "  Test Runner: $TEST_RUNNER"
 echo "  Target environment: $TARGET_ENVIRONMENT"
 echo "  Environment URL: $API_URL"
 echo "  Test scenario: $SCENARIO"
-echo "  Dashboard enabled: $K6_WEB_DASHBOARD"
+echo "  Report enabled: $K6_WEB_DASHBOARD"
+echo "  Report path: $REPORT_PATH"
+echo "  Report filename: $REPORT_FILENAME"
 echo "  Exporting dashboard to: $K6_WEB_DASHBOARD_EXPORT"
 echo "  Opening dashboard in browser: $K6_WEB_DASHBOARD_OPEN"
 echo "  Dashboard refresh rate: $K6_WEB_DASHBOARD_PERIOD"
 echo ----------------------------------------------------------
 
-k6 run "$SCRIPTS_DIR"/scenarios/"$SCENARIO"
+if [ "$TEST_RUNNER" = local ]; then
+  if [ "$K6_WEB_DASHBOARD" ]; then
+    mkdir -p "$REPORT_PATH"
+  fi
+  k6 run "$SCRIPT_PATH"/scenarios/"$SCENARIO"
+elif [ "$TEST_RUNNER" = minikube ]; then
+  JOB_NAME=performance-test-$(date +%s)
+  export K6_WEB_DASHBOARD_EXPORT=./report.html
+  npx ts-node "$SCRIPT_PATH"/lib/create-patch-file.ts "$JOB_NAME"
+  cd "$SCRIPT_PATH"/../../deployment/ || exit
+  NAMESPACE=$(echo "$TARGET_ENVIRONMENT" | sed 's/minikube-//g')
+  ./minikube-run-performance-test.sh "${NAMESPACE}" "$JOB_NAME"
+elif [ "$TEST_RUNNER" = gke ]; then
+  echo "not implemented yet"
+fi

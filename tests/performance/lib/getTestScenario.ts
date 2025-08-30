@@ -1,6 +1,10 @@
 import {fileSelector, ItemType} from "inquirer-file-selector"
 
-export async function getTestScenario() {
+export async function getTestScenario(override: string | undefined) {
+    if (override && override !== "") {
+        return override
+    }
+
     const selection = await fileSelector({
         message: 'Select test file:',
         basePath: __dirname + '/../scenarios',

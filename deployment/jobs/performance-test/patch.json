@@ -1,0 +1,31 @@
+[
+  {
+    "op": "replace",
+    "path": "/metadata/name",
+    "value": "performance-test-1756567889"
+  },
+  {
+    "op": "add",
+    "path": "/spec/template/spec/containers/0/env/-",
+    "value": {
+      "name": "SCENARIO",
+      "value": "car-models/get-all.ts"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/spec/template/spec/containers/0/env/-",
+    "value": {
+      "name": "K6_WEB_DASHBOARD",
+      "value": "true"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/spec/template/spec/containers/0/env/-",
+    "value": {
+      "name": "K6_WEB_DASHBOARD_EXPORT",
+      "value": "report/report.html"
+    }
+  }
+]

@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: performance-test-job
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      initContainers:
+        - name: more-cars-api
+          image: dennisgerike/more-cars-api:latest
+          command: [ 'cp', '-R', '/app/tests/performance/.', '/tests' ]
+          volumeMounts:
+            - name: test-cases-volume
+              mountPath: /tests
+      containers:
+        - name: k6
+          image: grafana/k6:0.56.0
+          env:
+            - name: API_URL
+              value: http://$(API_SERVICE_SERVICE_HOST)
+          command: [ 'k6', 'run', '/tests/$(SCENARIO)' ]
+          volumeMounts:
+            - name: test-cases-volume
+              mountPath: /tests
+      volumes:
+        - name: test-cases-volume
+          emptyDir:
+            sizeLimit: 10Mi

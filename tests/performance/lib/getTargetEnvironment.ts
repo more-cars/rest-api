@@ -1,8 +1,16 @@
 import {select} from "@inquirer/prompts"
 
-export async function getTargetEnvironment() {
-    const selection = await select({
-        message: 'Against which environment should the performance tests be run?',
+export async function getTargetEnvironment(override: string | undefined) {
+    if (override && override !== "") {
+        return override
+    }
+
+    return await promptUser()
+}
+
+async function promptUser() {
+    return select({
+        message: 'Against which environment should the tests be run?',
         default: 'local',
         choices: [
             {
@@ -18,14 +26,12 @@ export async function getTargetEnvironment() {
                 value: 'minikube-prod',
             },
             {
-                value: 'testing',
+                value: 'gke-testing',
             },
             {
-                value: 'prod',
+                value: 'gke-prod',
                 disabled: true,
             },
         ],
     })
-
-    return selection
 }

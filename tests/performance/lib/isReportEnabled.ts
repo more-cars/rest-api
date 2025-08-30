@@ -1,6 +1,6 @@
 import {select} from "@inquirer/prompts"
 
-export async function isDashboardOpenedInBrowser(override: string | undefined) {
+export async function isReportEnabled(override: string | undefined) {
     if (override === "true") {
         return true
     }
@@ -14,8 +14,8 @@ export async function isDashboardOpenedInBrowser(override: string | undefined) {
 
 async function promptUser() {
     return select({
-        message: 'Automatically open dashboard in browser?',
-        default: false,
+        message: 'Enable reporting?',
+        default: true,
         choices: [
             {
                 value: true,

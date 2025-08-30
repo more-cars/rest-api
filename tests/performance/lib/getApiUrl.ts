@@ -1,4 +1,4 @@
-export function getApiUrl(environment: string) {
+export function getApiUrl(environment: string, override: string | undefined) {
     const apiUrls = new Map<string, string>()
     apiUrls.set('local', 'http://localhost:3000')
     apiUrls.set('minikube-dev', 'http://dev.api.more-cars.internal')
@@ -7,5 +7,11 @@ export function getApiUrl(environment: string) {
     apiUrls.set('testing', 'http://testing.api.fast-cars.info')
     apiUrls.set('prod', 'http://prod.api.fast-cars.info')
 
-    return apiUrls.get(environment)
+    let url = apiUrls.get(environment) || ''
+
+    if (override && override !== "") {
+        url = override
+    }
+
+    return url
 }

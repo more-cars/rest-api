@@ -10,14 +10,14 @@ SCRIPT_PATH=$(dirname "$SCRIPT")
 kubectl config use-context morecars
 
 # switching to the correct namespace
-kubectl config set-context --current --namespace=$1
+kubectl config set-context --current --namespace="$1"
 
 # starting the job
 kubectl apply -k "$SCRIPT_PATH"/overlays/"$1"/jobs/smoke-test
 
 # waiting for the job to complete
 echo waiting for job to finish...
-kubectl wait --for=condition=complete job/"$2"
+kubectl wait --for=condition=complete job/"$2" --timeout=1m
 
 # logging the results of the job
 kubectl describe job/"$2"
