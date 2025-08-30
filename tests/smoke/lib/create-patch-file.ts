@@ -13,6 +13,14 @@ async function createPatchFile() {
             "op": "replace",
             "path": "/metadata/name",
             "value": "smoke-test-" + Date.now()
+        },
+        {
+            "op": "add",
+            "path": "/spec/template/spec/containers/0/env/-",
+            "value": {
+                "name": "REPORTS_ENABLED",
+                "value": process.env.REPORTS_ENABLED
+            }
         }
     ]
 }

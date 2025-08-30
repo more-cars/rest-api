@@ -2,6 +2,14 @@
   {
     "op": "replace",
     "path": "/metadata/name",
-    "value": "smoke-test-1756482993035"
+    "value": "smoke-test-1756551695894"
+  },
+  {
+    "op": "add",
+    "path": "/spec/template/spec/containers/0/env/-",
+    "value": {
+      "name": "REPORTS_ENABLED",
+      "value": "true"
+    }
   }
 ]

@@ -12,11 +12,18 @@ echo Running smoke tests:
 echo "  Test Runner: $TEST_RUNNER"
 echo "  Target environment: $TARGET_ENVIRONMENT"
 echo "  API URL: $API_URL"
+echo "  Reports enabled: $REPORTS_ENABLED"
+echo "  Reports path: $REPORTS_PATH"
 echo ----------------------------------------------------------
 
 if [ "$TEST_RUNNER" = local ]; then
   cd "$SCRIPT_PATH"/../../bruno || exit
-  bru run --env "$TARGET_ENVIRONMENT"
+  if [ "$REPORTS_ENABLED" = true ]; then
+    mkdir -p "$REPORTS_PATH"
+    npx bru run --env "$TARGET_ENVIRONMENT" --reporter-json "$REPORTS_PATH"/report.json --reporter-junit "$REPORTS_PATH"/report.xml --reporter-html "$REPORTS_PATH"/report.html
+  else
+    npx bru run --env "$TARGET_ENVIRONMENT"
+  fi
 elif [ "$TEST_RUNNER" = minikube ]; then
   npx ts-node "$SCRIPT_PATH"/lib/create-patch-file.ts
   cd "$SCRIPT_PATH"/../../deployment/ || exit
