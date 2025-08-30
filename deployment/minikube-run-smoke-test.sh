@@ -14,3 +14,10 @@ kubectl config set-context --current --namespace=$1
 
 # starting the job
 kubectl apply -k "$SCRIPT_PATH"/overlays/"$1"/jobs/smoke-test
+
+# waiting for the job to complete
+echo waiting for job to finish...
+kubectl wait --for=condition=complete job/"$2"
+
+# logging the results of the job
+kubectl describe job/"$2"

@@ -25,10 +25,11 @@ if [ "$TEST_RUNNER" = local ]; then
     npx bru run --env "$TARGET_ENVIRONMENT"
   fi
 elif [ "$TEST_RUNNER" = minikube ]; then
-  npx ts-node "$SCRIPT_PATH"/lib/create-patch-file.ts
+  JOB_NAME=smoke-test-$(date +%s)
+  npx ts-node "$SCRIPT_PATH"/lib/create-patch-file.ts "$JOB_NAME"
   cd "$SCRIPT_PATH"/../../deployment/ || exit
   NAMESPACE=$(echo "$TARGET_ENVIRONMENT" | sed 's/minikube-//g')
-  ./minikube-run-smoke-test.sh "${NAMESPACE}"
+  ./minikube-run-smoke-test.sh "${NAMESPACE}" "$JOB_NAME"
 elif [ "$TEST_RUNNER" = gke ]; then
   echo "not implemented yet"
 fi

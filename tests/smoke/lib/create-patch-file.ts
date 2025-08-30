@@ -8,11 +8,13 @@ createPatchFile()
     })
 
 async function createPatchFile() {
+    const jobName = process.argv[2]
+
     return [
         {
             "op": "replace",
             "path": "/metadata/name",
-            "value": "smoke-test-" + Date.now()
+            "value": jobName
         },
         {
             "op": "add",
