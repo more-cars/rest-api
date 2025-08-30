@@ -10,8 +10,8 @@ SCRIPT_PATH=$(dirname "$SCRIPT")
 kubectl config use-context morecars
 
 # making sure we are in the correct namespace
-kubectl config set-context --current --namespace=$1
+kubectl config set-context --current --namespace="$1"
 
 # letting "kustomize" assemble all snippets into a whole kubernetes configuration
 # and then rolling it out
-kubectl apply -k $SCRIPT_PATH/overlays/$1
+kubectl apply -k "$SCRIPT_PATH"/overlays/"$1"/app

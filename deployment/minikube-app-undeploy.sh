@@ -10,4 +10,4 @@ SCRIPT_PATH=$(dirname "$SCRIPT")/$1
 kubectl config use-context morecars
 
 # deleting the namespace, incl. all deployments, services and jobs
-kubectl delete namespace $1
+kubectl delete namespace "$1"
