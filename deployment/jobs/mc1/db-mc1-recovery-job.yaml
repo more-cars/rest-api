@@ -1,15 +1,15 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: db-mc1-recovery-dev-job
-  namespace: dev
+  name: db-mc1-recovery-job
+  namespace: mc1
 spec:
   template:
     metadata:
-      name: db-mc1-recovery-dev-job
+      name: db-mc1-recovery-job
     spec:
       containers:
-        - name: db-mc1-recovery-dev-job
+        - name: db-mc1-recovery-job
           image: garland/docker-s3cmd
           env:
             - name: aws_key
@@ -22,9 +22,9 @@ spec:
               value: sync-s3-to-local
           volumeMounts:
             - mountPath: /opt/dest
-              name: db-mc1-volume-dev
+              name: db-mc1-volume
       volumes:
-        - name: db-mc1-volume-dev
+        - name: db-mc1-volume
           persistentVolumeClaim:
-            claimName: db-mc1-volume-dev-pvc
+            claimName: db-mc1-volume-pvc
       restartPolicy: OnFailure

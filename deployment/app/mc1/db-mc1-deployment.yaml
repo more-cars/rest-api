@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: api-mc1-db-deployment
-  namespace: dev
+  namespace: mc1
 spec:
   replicas: 1
   selector:
@@ -13,6 +13,14 @@ spec:
       labels:
         app: api-mc1-db
     spec:
+      initContainers:
+        - name: permission-fixer
+          image: ubuntu:22.04
+          command:
+            [ "/bin/bash", "-c", "chown -R root:root /data" ]
+          volumeMounts:
+            - name: db-mc1-volume
+              mountPath: /data
       containers:
         - name:
             neo4j
@@ -21,9 +29,9 @@ spec:
             - name: NEO4J_CONF
               value: /data/databases/more-cars-production.db
           volumeMounts:
-            - mountPath: /data
-              name: db-mc1-volume-dev
+            - name: db-mc1-volume
+              mountPath: /data
       volumes:
-        - name: db-mc1-volume-dev
+        - name: db-mc1-volume
           persistentVolumeClaim:
-            claimName: db-mc1-volume-dev-pvc
+            claimName: db-mc1-volume-pvc
