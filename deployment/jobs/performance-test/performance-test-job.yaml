@@ -20,7 +20,7 @@ spec:
           env:
             - name: API_URL
               value: http://$(API_SERVICE_SERVICE_HOST)
-          command: [ 'k6', 'run', '/tests/$(SCENARIO)' ]
+          command: [ 'k6', 'run', '/tests/scenarios/$(SCENARIO)' ]
           volumeMounts:
             - name: test-cases-volume
               mountPath: /tests
