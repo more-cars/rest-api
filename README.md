@@ -111,17 +111,41 @@ Both work on exactly the same request collection and with the same tests.
 The README file in the `bruno` folder provides more information regarding the differences and how to configure the test
 runs.
 
+### Performance Tests
 
-For more information see the README file in the `bruno` folder, in the project's root directory.
+The performance tests check the response times of each endpoint under a **low** load.
+The goal is **not** to find the limits, but to establish a baseline.
+When a code change makes the application significantly slower, then this should be detected by the tests.
 
-### Load Tests
+The test scenarios can be found in the folder `tests/performance/scenarios`.
+The start script is located one level above: `tests/performance/run-tests.sh`.
+It can be executed directly on the command line (`./run-tests.sh`) or via npm script (`npm run tests:performance`).
 
-The load tests are written in TypeScript and will be executed with `Grafana k6`.
-The test scripts can be found in the folder `tests/performance`.
-By default, the command line will show a summary report at the end of a test run.
-For more detailed information an HTML report can be generated (see steps below).
+The actual test tool is `Grafana k6`.
+It runs the scenarios and creates a test report in the end.
+Environment variables are used to tell k6 which scenario to run, against which environment and so on.
+These are the available options (incl. example values):
 
-The k6 documentation can be found here: https://grafana.com/docs/k6/latest/.
+```
+TEST_RUNNER=local
+TARGET_ENVIRONMENT=local
+API_URL=http://localhost:3000
+SCENARIO=brands/create.ts
+REPORT_PATH=reports
+REPORT_FILENAME=report.html
+K6_WEB_DASHBOARD=true
+K6_WEB_DASHBOARD_EXPORT=report/report.html
+K6_WEB_DASHBOARD_OPEN=false
+K6_WEB_DASHBOARD_PERIOD=3s
+```
+
+When any of those variables is missing then the script will switch into interactive mode,
+where it prompts the user to provide the missing information.
+
+By default, the command line will only show a summary report at the end of a test run.
+When the `K6_WEB_DASHBOARD` variables are configured an HTML report is generated additionally.
+The official documentation at https://grafana.com/docs/k6/latest/results-output/web-dashboard/ provides more
+information.
 
 #### Via Local Installation
 
