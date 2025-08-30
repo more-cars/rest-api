@@ -3,7 +3,7 @@
 SCRIPT=$(readlink -f "$0")
 SCRIPT_PATH=$(dirname "$SCRIPT")
 TEMPORARY_ENV_FILE=env.sh
-NODE_OPTIONS='--disable-warning=ExperimentalWarning' npx ts-node "$SCRIPT_PATH"/lib/collect-test-run-parameters.ts $TEMPORARY_ENV_FILE
+npx ts-node "$SCRIPT_PATH"/lib/collect-test-run-parameters.ts $TEMPORARY_ENV_FILE
 . "$SCRIPT_PATH"/$TEMPORARY_ENV_FILE
 rm "$SCRIPT_PATH"/env.sh
 
