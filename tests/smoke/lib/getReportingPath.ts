@@ -1,8 +1,8 @@
-export function getReportingPath(envVarOverride: string | undefined): string {
+export function getReportingPath(override: string | undefined): string {
     let path = __dirname + '/../../../test-reports/smoke/smoke'
 
-    if (envVarOverride && envVarOverride !== "") {
-        path = envVarOverride
+    if (override && override !== "") {
+        path = override
     }
 
     return path

@@ -1,11 +1,11 @@
 import {select} from "@inquirer/prompts"
 
-export async function isReportingEnabled(envVarOverride: string | undefined): Promise<boolean> {
-    if (envVarOverride === "true") {
+export async function isReportingEnabled(override: string | undefined): Promise<boolean> {
+    if (override === "true") {
         return true
     }
 
-    if (envVarOverride === "false") {
+    if (override === "false") {
         return false
     }
 
