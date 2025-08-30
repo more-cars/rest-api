@@ -25,4 +25,4 @@ jobs:
       - name: Install Node.js dependencies
         run: npm ci
       - name: Run Smoke Tests
-        run: npm run tests:bruno ${{ inputs.environment }}
+        run: npm run tests:smoke:cli ${{ inputs.environment }}
