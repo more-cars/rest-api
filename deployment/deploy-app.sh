@@ -23,5 +23,9 @@ elif [ "$TARGET_CLUSTER" = minikube ]; then
   kubectl config set-context --current --namespace="$NAMESPACE"
   kubectl apply -k "$SCRIPT_PATH"/overlays/"$NAMESPACE"/app
 elif [ "$TARGET_CLUSTER" = gke ]; then
-  echo "not implemented yet"
+  NAMESPACE=$(echo "$TARGET_ENVIRONMENT" | sed 's/gke-//g')
+  npx ts-node "$SCRIPT_PATH"/lib/create-patch-file.ts "$TARGET_VERSION"
+  kubectl config use-context gke_more-cars_europe-west1-b_more-cars
+  kubectl config set-context --current --namespace="$NAMESPACE"
+  kubectl apply -k "$SCRIPT_PATH"/overlays/"$NAMESPACE"/app
 fi
