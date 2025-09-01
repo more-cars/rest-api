@@ -25,6 +25,7 @@ elif [ "$TARGET_CLUSTER" = minikube ]; then
 elif [ "$TARGET_CLUSTER" = gke ]; then
   NAMESPACE=$(echo "$TARGET_ENVIRONMENT" | sed 's/gke-//g')
   npx ts-node "$SCRIPT_PATH"/lib/create-patch-file.ts "$TARGET_VERSION"
+  gcloud container clusters get-credentials more-cars --region=europe-west1-b
   kubectl config use-context gke_more-cars_europe-west1-b_more-cars
   kubectl config set-context --current --namespace="$NAMESPACE"
   kubectl apply -k "$SCRIPT_PATH"/overlays/"$NAMESPACE"/app
