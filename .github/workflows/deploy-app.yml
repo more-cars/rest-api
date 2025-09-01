@@ -22,4 +22,8 @@ jobs:
         with:
           install_components: 'gke-gcloud-auth-plugin'
       - name: 'Executing the deployment'
-        run: npm run gke:deploy:${{ inputs.environment }}
+        run: npm run app:deploy
+        env:
+          TARGET_CLUSTER: gke
+          TARGET_ENVIRONMENT: ${{ inputs.environment }}
+          TARGET_VERSION: latest
