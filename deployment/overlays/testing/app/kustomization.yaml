@@ -6,7 +6,3 @@ resources:
   - namespace.yaml
 
 namespace: testing
-
-images:
-  - name: docker.io/dennisgerike/more-cars-api
-    newTag: 0.15.0
