@@ -160,44 +160,38 @@ When developing and debugging the app it is recommended to use the command `npm 
 This will activate a file watcher which listens to all modules that are used by the app.
 Whenever one of them is changed the app will automatically be restarted with those changes.
 
-## Deployment To Production Environment
+## Deployments
 
-### Deploying From Local Machine
+The command `npm run app:deploy` allows to deploy the whole application to any environment in any cluster.
+A wizard will ask for all required information.
+Alternatively, the configuration options can also be provided via environment variables.
+The wizard will then be skipped and the deployment process is automatically started.
 
-Deploying the application to a "real" kubernetes cluster is very similar
-to the deployment with Minikube (see [minikube section](#minikube-local-dev-cluster)).
-The Kubernetes configs are indeed exactly the same, see folder `deployment/prod`.
-They are used for both clusters identically.
-The only difference lies in getting access to the cluster.
+```
+TARGET_CLUSTER=minikube"
+TARGET_ENVIRONMENT=testing"
+TARGET_VERSION=0.15.0"
+```
 
-#### Production-like Environment In Minikube
+All deployments (apps, database, services, jobs, etc.) run in a `kubernetes` cluster.
+The respective templates can be found in the folders `deployment/app` and `deployment/jobs`.
+By design, those kubernetes templates are completely static.
+This leads to quite some copy'n'paste, because each environment needs their own set of templates.
+To avoid this situation and to keep the templates somewhat maintainable the kubernetes plugin `kustomize` is used.
+It allows each environment to inherit from the kubernetes configs and only override those parts that are different,
+e.g. the namespace.
+The respective scripts can be found in the `deployment/overlay` folder.
 
-With `npm run minikube:deploy:prod` the application is deployed to the local Minikube cluster.
-This is the same command that was used in the [minikube section](#minikube-local-dev-cluster),
-only this time it creates a `prod` environment instead of a `dev` environment.
-The main difference being the source of the docker image (local vs DockerHub repository).
-
-The start script (`npm run minikube:start`) will automatically create a cluster if it doesn't exist yet.
-
-#### Real Production Environment In Google Cloud
-
-The command `npm run gke:deploy:prod` will log in to the Google Cloud,
-select the correct cluster and then roll out all the Kubernetes configuration files.
-
-When this is the first time, all pods and services will be created.
+When this is the first deployment to the environment, all pods and services will be created.
 When the deployment already exists it will be updated.
 When there is nothing to update (because no changes) then nothing will happen to the existing deployment.
 
-The cluster will **not** be created on the fly.
+The cluster itself will **not** be created on the fly.
 If it doesn't exist then the deployment will fail.
-It needs to be created manually.
-There exists no script, yet.
 
-The login step will open a browser window and requires a manual login to the Google Cloud.
+The local `minikube` cluster and the remote `GKE` cluster use exactly the same templates.
+This reduces the maintenance effort significantly.
+The only difference is the authorization.
 
-For the script to work the tools `gcloud` and `kubectl` need to be installed.
+For the scripts to work locally the tools `gcloud` and `kubectl` need to be installed.
 See https://cloud.google.com/sdk/docs/install and https://kubernetes.io/docs/tasks/tools/.
-
-### Deploying Via GitHub Actions Pipeline
-
-...
