@@ -4,17 +4,23 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: Target environment to deploy to (e.g. testing)
+        description: Deploy app in the following environment
         required: true
         type: choice
         options:
           - testing
           - prod
         default: testing
+      version:
+        description: Version to deploy (e.g. 0.13.0)
+        required: true
+        type: string
+        default: latest
 
 jobs:
   run-app-deployment:
     uses: ./.github/workflows/deploy-app.yml
     with:
       environment: ${{ inputs.environment }}
+      version: ${{ inputs.version }}
     secrets: inherit
