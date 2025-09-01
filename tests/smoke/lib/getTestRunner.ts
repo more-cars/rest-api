@@ -17,7 +17,6 @@ export async function getTestRunner(override: string | undefined) {
             },
             {
                 value: 'gke',
-                disabled: true,
             },
         ],
     })

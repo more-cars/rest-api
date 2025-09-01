@@ -13,8 +13,6 @@ spec:
           env:
             - name: API_URL
               value: http://$(API_SERVICE_SERVICE_HOST)
-            - name: REPORTS_PATH
-              value: ./test-reports/smoke
           command: [ "/bin/sh", "-c" ]
           args:
             - |

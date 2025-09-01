@@ -23,6 +23,14 @@ async function createPatchFile() {
                 "name": "REPORTS_ENABLED",
                 "value": process.env.REPORTS_ENABLED
             }
+        },
+        {
+            "op": "add",
+            "path": "/spec/template/spec/containers/0/env/-",
+            "value": {
+                "name": "REPORTS_PATH",
+                "value": process.env.REPORTS_PATH
+            }
         }
     ]
 }

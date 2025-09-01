@@ -1,9 +1,13 @@
-export function getReportingPath(override: string | undefined): string {
-    let path = __dirname + '/../../../test-reports/smoke/smoke'
+import * as path from "node:path"
 
+export function getReportingPath(testRunner: string, override: string | undefined): string {
     if (override && override !== "") {
-        path = override
+        return override
     }
 
-    return path
+    if (testRunner === 'local') {
+        return path.resolve(__dirname + '/../../../test-reports/smoke')
+    }
+
+    return './test-reports/smoke'
 }
