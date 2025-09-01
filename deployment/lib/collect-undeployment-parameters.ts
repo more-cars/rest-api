@@ -18,7 +18,7 @@ async function collectParams() {
     })
 }
 
-function assembleEnvFileData(params: AppUndeployData) {
+function assembleEnvFileData(params: UndeployAppConfig) {
     const data = `
 export TARGET_CLUSTER=${params.targetCluster}
 export TARGET_ENVIRONMENT=${params.targetEnvironment}
@@ -27,7 +27,7 @@ export TARGET_ENVIRONMENT=${params.targetEnvironment}
     return data
 }
 
-type AppUndeployData = {
+type UndeployAppConfig = {
     targetCluster: string
     targetEnvironment: string
 }

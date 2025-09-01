@@ -21,7 +21,7 @@ async function collectParams() {
     })
 }
 
-function assembleEnvFileData(params: AppDeployData) {
+function assembleEnvFileData(params: DeployAppConfig) {
     const data = `
 export TARGET_CLUSTER=${params.targetCluster}
 export TARGET_ENVIRONMENT=${params.targetEnvironment}
@@ -31,7 +31,7 @@ export TARGET_VERSION=${params.targetVersion}
     return data
 }
 
-type AppDeployData = {
+type DeployAppConfig = {
     targetCluster: string
     targetEnvironment: string
     targetVersion: string

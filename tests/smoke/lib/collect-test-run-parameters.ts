@@ -30,7 +30,7 @@ async function collectParams() {
     })
 }
 
-function assembleEnvFileData(params: SmokeTestData) {
+function assembleEnvFileData(params: SmokeTestConfig) {
     const data = `
 export TEST_RUNNER=${params.testRunner}
 export TARGET_CLUSTER=${params.targetCluster}
@@ -43,7 +43,7 @@ export REPORTS_PATH=${params.reportsPath}
     return data
 }
 
-type SmokeTestData = {
+type SmokeTestConfig = {
     testRunner: string
     targetCluster: string
     targetEnvironment: string

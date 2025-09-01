@@ -44,7 +44,7 @@ async function collectParams() {
     })
 }
 
-function assembleEnvFileData(params: PerformanceTestData) {
+function assembleEnvFileData(params: PerformanceTestConfig) {
     const data = `
 export TEST_RUNNER=${params.testRunner}
 export TARGET_CLUSTER=${params.targetCluster}
@@ -62,7 +62,7 @@ export K6_WEB_DASHBOARD_PERIOD=${params.dashboardRefreshRate}
     return data
 }
 
-type PerformanceTestData = {
+type PerformanceTestConfig = {
     testRunner: string
     targetCluster: string
     targetEnvironment: string
