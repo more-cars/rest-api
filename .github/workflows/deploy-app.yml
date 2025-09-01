@@ -13,6 +13,12 @@ jobs:
     steps:
       - name: 'Checking out the codebase'
         uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Node.js dependencies
+        run: npm ci
       - name: 'Authorizing GitHub to access the Google Cloud account'
         uses: 'google-github-actions/auth@v2'
         with:
