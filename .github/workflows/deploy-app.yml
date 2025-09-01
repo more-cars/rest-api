@@ -27,6 +27,8 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v2'
         with:
           install_components: 'gke-gcloud-auth-plugin'
+      - name: debugging
+        run: kubectl config get-contexts
       - name: 'Executing the deployment'
         run: npm run app:deploy
         env:
