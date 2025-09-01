@@ -11,7 +11,7 @@ export async function getTargetEnvironment(override: string | undefined) {
 async function promptUser() {
     return select({
         message: 'In which environment should the app be deployed?',
-        default: 'local',
+        default: 'minikube-testing',
         choices: [
             {
                 value: 'minikube-dev',
