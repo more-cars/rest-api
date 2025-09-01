@@ -1,13 +1,14 @@
 import fs from "node:fs"
 import {getTestRunner} from "../../smoke/lib/getTestRunner"
+import {getTargetCluster} from "./getTargetCluster"
 import {getTargetEnvironment} from "./getTargetEnvironment"
 import {getApiUrl} from "./getApiUrl"
 import {getTestScenario} from "./getTestScenario"
 import {isReportEnabled} from "./isReportEnabled"
-import {getReportPath} from "./getReportPath"
+import {getReportingPath} from "./getReportingPath"
+import {getReportFilename} from "./getReportFilename"
 import {isDashboardOpenedInBrowser} from "./isDashboardOpenedInBrowser"
 import {getDashboardRefreshRate} from "./getDashboardRefreshRate"
-import {getReportFilename} from "./getReportFilename"
 
 collectParams()
     .then((data) => {
@@ -17,18 +18,20 @@ collectParams()
 
 async function collectParams() {
     const testRunner = await getTestRunner(process.env.TEST_RUNNER)
-    const targetEnvironment = await getTargetEnvironment(process.env.TARGET_ENVIRONMENT)
-    const apiUrl = getApiUrl(targetEnvironment, process.env.API_URL)
+    const targetCluster = await getTargetCluster(testRunner, process.env.TARGET_CLUSTER)
+    const targetEnvironment = await getTargetEnvironment(targetCluster, process.env.TARGET_ENVIRONMENT)
+    const apiUrl = getApiUrl(testRunner, targetCluster, targetEnvironment, process.env.API_URL)
     const scenario = await getTestScenario(process.env.SCENARIO)
     const enableReport = await isReportEnabled(process.env.K6_WEB_DASHBOARD)
-    const reportPath = getReportPath(process.env.REPORT_PATH)
+    const reportPath = getReportingPath(testRunner, process.env.REPORT_PATH)
     const reportFilename = getReportFilename(process.env.REPORT_FILENAME)
     const dashboardExportPath = reportPath + '/' + reportFilename
-    const autoOpenDashboardInBrowser = await isDashboardOpenedInBrowser(process.env.K6_WEB_DASHBOARD_OPEN)
+    const autoOpenDashboardInBrowser = await isDashboardOpenedInBrowser(testRunner, process.env.K6_WEB_DASHBOARD_OPEN)
     const dashboardRefreshRate = getDashboardRefreshRate(process.env.K6_WEB_DASHBOARD_PERIOD)
 
     return assembleEnvFileData({
         testRunner,
+        targetCluster,
         targetEnvironment,
         apiUrl,
         scenario,
@@ -44,6 +47,7 @@ async function collectParams() {
 function assembleEnvFileData(params: PerformanceTestData) {
     const data = `
 export TEST_RUNNER=${params.testRunner}
+export TARGET_CLUSTER=${params.targetCluster}
 export TARGET_ENVIRONMENT=${params.targetEnvironment}
 export API_URL=${params.apiUrl}
 export SCENARIO=${params.scenario}
@@ -60,6 +64,7 @@ export K6_WEB_DASHBOARD_PERIOD=${params.dashboardRefreshRate}
 
 type PerformanceTestData = {
     testRunner: string
+    targetCluster: string
     targetEnvironment: string
     apiUrl: string
     scenario: string

@@ -10,6 +10,7 @@ rm "$SCRIPT_PATH"/env.sh
 echo ----------------------------------------------------------
 echo Running performance tests:
 echo "  Test Runner: $TEST_RUNNER"
+echo "  Target cluster: $TARGET_CLUSTER"
 echo "  Target environment: $TARGET_ENVIRONMENT"
 echo "  Environment URL: $API_URL"
 echo "  Test scenario: $SCENARIO"
@@ -28,11 +29,9 @@ if [ "$TEST_RUNNER" = local ]; then
   k6 run "$SCRIPT_PATH"/scenarios/"$SCENARIO"
 elif [ "$TEST_RUNNER" = minikube ]; then
   JOB_NAME=performance-test-$(date +%s)
-  export K6_WEB_DASHBOARD_EXPORT=./report.html
   npx ts-node "$SCRIPT_PATH"/lib/create-patch-file.ts "$JOB_NAME"
   cd "$SCRIPT_PATH"/../../deployment/ || exit
-  NAMESPACE=$(echo "$TARGET_ENVIRONMENT" | sed 's/minikube-//g')
-  ./minikube-run-performance-test.sh "${NAMESPACE}" "$JOB_NAME"
+  ./minikube-run-performance-test.sh "$TARGET_ENVIRONMENT" "$JOB_NAME"
 elif [ "$TEST_RUNNER" = gke ]; then
   echo "not implemented yet"
 fi

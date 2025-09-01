@@ -2,14 +2,14 @@
   {
     "op": "replace",
     "path": "/metadata/name",
-    "value": "performance-test-1756567889"
+    "value": "performance-test-1756741438"
   },
   {
     "op": "add",
     "path": "/spec/template/spec/containers/0/env/-",
     "value": {
       "name": "SCENARIO",
-      "value": "car-models/get-all.ts"
+      "value": "brands/get-all.ts"
     }
   },
   {
@@ -25,7 +25,7 @@
     "path": "/spec/template/spec/containers/0/env/-",
     "value": {
       "name": "K6_WEB_DASHBOARD_EXPORT",
-      "value": "report/report.html"
+      "value": "/report.html"
     }
   }
 ]

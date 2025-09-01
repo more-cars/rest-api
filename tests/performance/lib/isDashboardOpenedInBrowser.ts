@@ -1,11 +1,15 @@
 import {select} from "@inquirer/prompts"
 
-export async function isDashboardOpenedInBrowser(override: string | undefined) {
+export async function isDashboardOpenedInBrowser(testRunner: string, override: string | undefined) {
     if (override === "true") {
         return true
     }
 
     if (override === "false") {
+        return false
+    }
+
+    if (testRunner !== "local") {
         return false
     }
 
