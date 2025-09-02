@@ -33,7 +33,7 @@ jobs:
         with:
           install_components: 'gke-gcloud-auth-plugin'
       - name: Create Smoke Test Job in GKE
-        run: npm run tests:smoke:cli ${{ inputs.environment }}
+        run: npm run tests:smoke:cli
         env:
           TEST_RUNNER: gke
           TARGET_CLUSTER: gke
