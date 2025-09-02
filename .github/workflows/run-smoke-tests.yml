@@ -13,7 +13,7 @@ on:
 
 jobs:
   run-smoke-tests:
-    name: "Run Smoke Tests"
+    name: Run Smoke Tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -24,5 +24,10 @@ jobs:
           node-version: 22
       - name: Install Node.js dependencies
         run: npm ci
-      - name: Run Smoke Tests
+      - name: Create Smoke Test Job in GKE
         run: npm run tests:smoke:cli ${{ inputs.environment }}
+        env:
+          TEST_RUNNER: gke
+          TARGET_CLUSTER: gke
+          TARGET_ENVIRONMENT: ${{ inputs.environment }}
+          REPORTS_ENABLED: true

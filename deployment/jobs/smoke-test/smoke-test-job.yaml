@@ -16,7 +16,7 @@ spec:
           command: [ "/bin/sh", "-c" ]
           args:
             - |
-              npm i --quiet
+              npm ci
 
               if [ "$REPORTS_ENABLED" = true ]; then
                 mkdir -p "$REPORTS_PATH"
