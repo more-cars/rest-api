@@ -1,0 +1,48 @@
+on:
+  workflow_call:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Target environment to run the tests against (e.g. testing)
+        required: true
+        type: choice
+        options:
+          - testing
+          - prod
+        default: testing
+      scenario:
+        description: The name of the scenario
+        required: true
+        type: string
+        default: brands/get-all.ts
+
+jobs:
+  run-performance-tests:
+    name: Run Performance Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Node.js dependencies
+        run: npm ci
+      - name: Authorizing GitHub to access the Google Cloud account
+        uses: 'google-github-actions/auth@v2'
+        with:
+          credentials_json: '${{ secrets.GCLOUD_CREDENTIALS }}'
+      - name: Set up Cloud SDK
+        uses: 'google-github-actions/setup-gcloud@v2'
+        with:
+          install_components: 'gke-gcloud-auth-plugin'
+      - name: Create Performance Test Job in GKE
+        run: npm run tests:performance
+        env:
+          TEST_RUNNER: gke
+          TARGET_CLUSTER: gke
+          TARGET_ENVIRONMENT: ${{ inputs.environment }}
+          SCENARIO: ${{ inputs.scenario }}
+          K6_WEB_DASHBOARD: true
+          K6_WEB_DASHBOARD_OPEN: false
