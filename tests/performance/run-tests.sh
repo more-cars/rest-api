@@ -42,6 +42,6 @@ elif [ "$TEST_RUNNER" = gke ]; then
   kubectl config use-context gke_more-cars_europe-west1-b_more-cars
   kubectl config set-context --current --namespace="$TARGET_ENVIRONMENT"
   kubectl apply -k "$SCRIPT_PATH"/../../deployment/overlays/"$TARGET_ENVIRONMENT"/jobs/performance-test
-  kubectl wait --for=condition=complete job/"$JOB_NAME" --timeout=5m
+  kubectl wait --for=condition=complete job/"$JOB_NAME" --timeout=10m
   kubectl describe job/"$JOB_NAME"
 fi
