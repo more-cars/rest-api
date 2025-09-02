@@ -30,8 +30,18 @@ if [ "$TEST_RUNNER" = local ]; then
 elif [ "$TEST_RUNNER" = minikube ]; then
   JOB_NAME=performance-test-$(date +%s)
   npx ts-node "$SCRIPT_PATH"/lib/create-patch-file.ts "$JOB_NAME"
-  cd "$SCRIPT_PATH"/../../deployment/ || exit
-  ./minikube-run-performance-test.sh "$TARGET_ENVIRONMENT" "$JOB_NAME"
+  kubectl config use-context morecars
+  kubectl config set-context --current --namespace="$TARGET_ENVIRONMENT"
+  kubectl apply -k "$SCRIPT_PATH"/../../deployment/overlays/"$TARGET_ENVIRONMENT"/jobs/performance-test
+  kubectl wait --for=condition=complete job/"$JOB_NAME" --timeout=6m
+  kubectl describe job/"$JOB_NAME"
 elif [ "$TEST_RUNNER" = gke ]; then
-  echo "not implemented yet"
+  JOB_NAME=performance-test-$(date +%s)
+  npx ts-node "$SCRIPT_PATH"/lib/create-patch-file.ts "$JOB_NAME"
+  gcloud container clusters get-credentials more-cars --region=europe-west1-b
+  kubectl config use-context gke_more-cars_europe-west1-b_more-cars
+  kubectl config set-context --current --namespace="$TARGET_ENVIRONMENT"
+  kubectl apply -k "$SCRIPT_PATH"/../../deployment/overlays/"$TARGET_ENVIRONMENT"/jobs/performance-test
+  kubectl wait --for=condition=complete job/"$JOB_NAME" --timeout=5m
+  kubectl describe job/"$JOB_NAME"
 fi
