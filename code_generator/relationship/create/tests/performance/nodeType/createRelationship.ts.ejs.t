@@ -1,5 +1,5 @@
 ---
-to: tests/performance/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/create-<%= h.changeCase.kebab(relationshipName) %>-relationship.ts
+to: tests/performance/scenarios/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/create-<%= h.changeCase.kebab(relationshipName) %>-relationship.ts
 ---
 import http from 'k6/http'
 import {check} from "k6"
