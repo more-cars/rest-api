@@ -1,5 +1,5 @@
 ---
-to: tests/unit/db/<%= h.inflection.pluralize(h.changeCase.camel(nodetype)) %>/delete/cypherQueryIsCorrectlyAssembled.test.ts
+to: tests/unit/db/<%= h.inflection.pluralize(h.changeCase.kebab(nodetype)) %>/delete/cypherQueryIsCorrectlyAssembled.test.ts
 ---
 import {expect, test} from 'vitest'
 import {deleteNodeQuery} from "../../../../../src/db/nodes/deleteNode"

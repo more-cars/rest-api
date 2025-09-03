@@ -12,7 +12,7 @@ test('marshalling a complete and valid request', async () => {
         <%= h.changeCase.snake(startNodeType) %>_id: 1,
         <%= h.changeCase.snake(endNodeType) %>_id: 2,
         relationship_id: 3,
-        relationship_name: "has prime image",
+        relationship_name: "<%= h.changeCase.lower(relationshipName) %>",
         created_at: "2023-10-01T00:00:00.001Z",
         updated_at: "2023-10-01T00:00:00.001Z",
     }
@@ -24,7 +24,7 @@ test('marshalling a complete and valid request', async () => {
             <%= h.changeCase.snake(startNodeType) %>_id: 1,
             <%= h.changeCase.snake(endNodeType) %>_id: 2,
             relationship_id: 3,
-            relationship_name: "has prime image",
+            relationship_name: "<%= h.changeCase.lower(relationshipName) %>",
             created_at: "2023-10-01T00:00:00.001Z",
             updated_at: "2023-10-01T00:00:00.001Z",
         })

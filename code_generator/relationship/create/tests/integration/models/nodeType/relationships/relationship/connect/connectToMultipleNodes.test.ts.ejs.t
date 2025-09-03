@@ -2,7 +2,7 @@
 to: tests/integration/models/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/relationships/<%= h.changeCase.camel(relationshipName) %>/connect/connectToMultipleNodes.test.ts
 ---
 import {expect, test} from 'vitest'
-import {seed<%= h.inflection.pluralize(h.changeCase.pascal(endNodeType)) %>} from "../../../../../../_toolbox/dbSeeding/images/nodes/seed<%= h.inflection.pluralize(h.changeCase.pascal(endNodeType)) %>"
+import {seed<%= h.inflection.pluralize(h.changeCase.pascal(endNodeType)) %>} from "../../../../../../_toolbox/dbSeeding/<%= h.inflection.pluralize(h.changeCase.kebab(endNodeType)) %>/nodes/seed<%= h.inflection.pluralize(h.changeCase.pascal(endNodeType)) %>"
 import {seed<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../_toolbox/dbSeeding/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/nodes/seed<%= h.changeCase.pascal(startNodeType) %>"
 import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../../src/models/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
 import {getRelationshipsForSpecificNode} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
