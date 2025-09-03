@@ -1,5 +1,5 @@
 ---
-to: tests/performance/<%= h.inflection.pluralize(h.changeCase.kebab(nodetype)) %>/delete.ts
+to: tests/performance/scenarios/<%= h.inflection.pluralize(h.changeCase.kebab(nodetype)) %>/delete.ts
 ---
 import http from 'k6/http'
 import exec from 'k6/execution'
