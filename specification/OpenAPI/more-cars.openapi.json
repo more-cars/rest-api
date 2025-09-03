@@ -935,6 +935,47 @@
         }
       }
     },
+    "/car-models/{car-model-id}/has-prime-image": {
+      "get": {
+        "tags": [
+          "Car Models"
+        ],
+        "summary": "Get sole `Car Model has prime image` relationship",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-id",
+            "description": "ID of the `Car Model`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Car Model` and relationship were found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelHasPrimeImage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The relationship could not be determined, because there exists no `Car Model` with the provided ID.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/images/{image-id}": {
       "get": {
         "tags": [

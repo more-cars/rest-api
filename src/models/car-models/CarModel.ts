@@ -17,6 +17,9 @@ import {createCarModelHasImageRelationship} from "./createCarModelHasImageRelati
 import {getAllCarModelHasImageRelationships} from "./getAllCarModelHasImageRelationships"
 import {CarModelHasPrimeImageRelationship} from "./types/CarModelHasPrimeImageRelationship"
 import {createHasPrimeImageRelationship} from "./createHasPrimeImageRelationship"
+import {getHasPrimeImageRelationship} from "./getHasPrimeImageRelationship"
+import {NodeNotFoundError} from "../types/NodeNotFoundError"
+import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 
 export class CarModel {
     static async create(data: CreateCarModelInput): Promise<CarModelNode> {
@@ -113,5 +116,19 @@ export class CarModel {
         }
 
         return await createHasPrimeImageRelationship(carModelId, imageId)
+    }
+
+    static async getHasPrimeImageRelationship(carModelId: number): Promise<CarModelHasPrimeImageRelationship> {
+        const carModel = await CarModel.findById(carModelId)
+        if (!carModel) {
+            throw new NodeNotFoundError(carModelId)
+        }
+
+        const relation = await getHasPrimeImageRelationship(carModelId)
+        if (!relation) {
+            throw new RelationshipNotFoundError('has prime image', carModelId, null)
+        }
+
+        return relation
     }
 }

@@ -1,0 +1,18 @@
+meta {
+  name: Relation "has prime image" - Get
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/car-models/{{validCarModelId}}/has-prime-image
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+script:pre-request {
+  await ensureValidCarModelExists()
+}
