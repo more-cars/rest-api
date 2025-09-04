@@ -1,6 +1,7 @@
 import type {NodeType} from "../NodeType"
 import {dasherize} from "inflection"
 
+// TODO mapping doesn't work when there exist different relationships between the same nodes
 export function getBasePathFragmentForRelationship(startNodeType: NodeType, endNodeType: NodeType) {
     const relationships = new Map<string, Map<string, string>>()
 
