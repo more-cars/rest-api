@@ -15,7 +15,7 @@ Feature: Create relationship between IMAGE and a specific node
 
     When the user attaches the "<node type>" "<node>" to the IMAGE "<image>"
     Then the response should return with status code 201
-    And the returned relationship ID in the response should be identical to the one in "R"
+    And the response should return the relationship "R"
 
     Examples:
       | node type | node     | image                          |
