@@ -1,0 +1,3 @@
+exports.Brands = require('./Brands.js')
+exports.CarModels = require('./CarModels.js')
+exports.Images = require('./Images.js')

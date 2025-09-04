@@ -16,7 +16,7 @@ assert {
 }
 
 script:pre-request {
-  await ensureValidCarModelExists()
+  await lib.CarModels.ensureValidCarModelExists()
 }
 
 script:post-response {

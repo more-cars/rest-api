@@ -17,5 +17,5 @@ assert {
 }
 
 script:pre-request {
-  await ensureBrandHasCarModelRelationshipExists()
+  await lib.Brands.ensureBrandHasCarModelRelationshipExists()
 }

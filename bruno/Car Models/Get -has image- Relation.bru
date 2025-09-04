@@ -17,5 +17,5 @@ assert {
 }
 
 script:pre-request {
-  await ensureCarModelHasImageRelationshipExists()
+  await lib.CarModels.ensureCarModelHasImageRelationshipExists()
 }

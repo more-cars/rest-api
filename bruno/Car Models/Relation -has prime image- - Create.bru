@@ -21,6 +21,6 @@ assert {
 }
 
 script:pre-request {
-  await ensureValidCarModelExists()
-  await ensureValidImageExists()
+  await lib.CarModels.ensureValidCarModelExists()
+  await lib.Images.ensureValidImageExists()
 }
