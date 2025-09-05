@@ -71,6 +71,7 @@
     "generate-code:node:delete": "HYGEN_TMPLS=code_generator hygen node delete",
     "generate-code:relationship:create": "HYGEN_TMPLS=code_generator hygen relationship create",
     "generate-code:relationship:get-sole": "HYGEN_TMPLS=code_generator hygen relationship get-sole",
+    "generate-code:relationship:has": "HYGEN_TMPLS=code_generator hygen relationship has",
     "generate-tickets:new-node-type": "node --env-file=.env -r ts-node/register specification/sync-scripts/create-jira-tickets-for-new-node-type.ts",
     "tests:validate-api-schema": "npx ts-node tests/api-validation/schema-validation.ts",
     "tests:lint": "npx eslint src",
