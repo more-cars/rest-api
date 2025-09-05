@@ -17,5 +17,5 @@ assert {
 }
 
 script:pre-request {
-  await ensureValid<%= h.changeCase.pascal(startNodeType) %>Exists()
+  await lib.<%= h.inflection.pluralize(h.changeCase.pascal(startNodeType)) %>.ensure<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>RelationshipExists()
 }
