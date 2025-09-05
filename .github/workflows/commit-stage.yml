@@ -8,7 +8,7 @@ jobs:
     uses: ./.github/workflows/validate-api-schema.yml
 
   lint-typescript-code:
-    uses: run-code-linter.yml
+    uses: ./.github/workflows/run-code-linter.yml
 
   unit-tests:
     uses: ./.github/workflows/run-unit-tests.yml
