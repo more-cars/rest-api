@@ -3,7 +3,7 @@ on:
 
 jobs:
   validate-api-schema:
-    name: "Validate API Schema"
+    name: Validate API Schema
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
