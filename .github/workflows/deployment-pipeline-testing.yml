@@ -17,18 +17,18 @@ on:
 
 jobs:
   commit-stage:
-    uses: ./.github/workflows/deployment/commit-stage.yml
+    uses: ./.github/workflows/deployment-pipeline/commit-stage.yml
 
   build-release-candidate:
-    uses: ./.github/workflows/deployment/build-release-candidate.yml
+    uses: ./.github/workflows/deployment-pipeline/build-release-candidate.yml
     needs: commit-stage
 
   deploy-release-candidate:
-    uses: ./.github/workflows/deployment/deploy-release-candidate.yml
+    uses: ./.github/workflows/deployment-pipeline/deploy-release-candidate.yml
     with:
       environment: ${{ inputs.environment }}
     needs: build-release-candidate
 
   acceptance-stage:
-    uses: ./.github/workflows/deployment/acceptance-stage.yml
+    uses: ./.github/workflows/deployment-pipeline/acceptance-stage.yml
     needs: deploy-release-candidate
