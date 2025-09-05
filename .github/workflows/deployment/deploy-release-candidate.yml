@@ -1,0 +1,18 @@
+name: Deploy Release Candidate
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        type: string
+        required: true
+        default: testing
+
+jobs:
+  deploy-release-candidate:
+    name: Deploy Release Candidate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - run: echo "deploy release candidate..."

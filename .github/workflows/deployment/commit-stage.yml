@@ -1,0 +1,13 @@
+name: Commit Stage
+
+on:
+  workflow_call:
+
+jobs:
+  commit-stage:
+    name: Commit Stage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - run: echo "commit stage..."

@@ -1,0 +1,34 @@
+name: Deployment Pipeline (Testing Environment)
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Target environment
+        required: true
+        type: choice
+        options:
+          - testing
+        default: testing
+
+  push:
+    branches:
+      - main
+
+jobs:
+  commit-stage:
+    uses: ./.github/workflows/deployment/commit-stage.yml
+
+  build-release-candidate:
+    uses: ./.github/workflows/deployment/build-release-candidate.yml
+    needs: commit-stage
+
+  deploy-release-candidate:
+    uses: ./.github/workflows/deployment/deploy-release-candidate.yml
+    with:
+      environment: ${{ inputs.environment }}
+    needs: build-release-candidate
+
+  acceptance-stage:
+    uses: ./.github/workflows/deployment/acceptance-stage.yml
+    needs: deploy-release-candidate
