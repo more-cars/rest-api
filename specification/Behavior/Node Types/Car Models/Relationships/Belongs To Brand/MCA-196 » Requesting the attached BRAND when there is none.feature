@@ -10,7 +10,7 @@ Feature: Requesting BRAND to which a specific CAR MODEL belongs
   @TEST_MCA-196 @implemented
   Scenario: Requesting the attached BRAND when there is none
     Given there exists a "CAR MODEL" "Yaris"
-    And there exists NO relationship between CAR MODEL "Yaris" and any BRAND
+    And there exists NO "has brand" relationship "R" for "Yaris"
     When the user requests the BRAND that is attached to the CAR MODEL "Yaris"
     Then the response should return with status code 200
     And the response should return an empty body
