@@ -886,6 +886,54 @@
       }
     },
     "/car-models/{car-model-id}/has-prime-image/{image-id}": {
+      "get": {
+        "tags": [
+          "Car Models"
+        ],
+        "summary": "Returns the 'has prime image' relationship between the given `Car Model` and `Image`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-id",
+            "description": "ID of the `Car Model`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The relationship between both nodes was found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelHasPrimeImage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "One of the nodes (or both) don't exist or there exists no 'has prime image' relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Car Models"

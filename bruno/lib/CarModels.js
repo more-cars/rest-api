@@ -82,3 +82,18 @@ async function createCarModelHasImageRelationship(carModelId, imageId) {
 }
 
 exports.createCarModelHasImageRelationship = createCarModelHasImageRelationship
+
+async function ensureCarModelHasPrimeImageRelationshipExists() {
+    await ensureValidCarModelExists()
+    await ensureValidImageExists()
+    await createCarModelHasPrimeImageRelationship(bru.getEnvVar('validCarModelId'), bru.getEnvVar('validImageId'))
+}
+
+exports.ensureCarModelHasPrimeImageRelationshipExists = ensureCarModelHasPrimeImageRelationshipExists
+
+async function createCarModelHasPrimeImageRelationship(carModelId, imageId) {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/car-models/" + carModelId + "/has-prime-image/" + imageId)
+    return response.data
+}
+
+exports.createCarModelHasPrimeImageRelationship = createCarModelHasPrimeImageRelationship
