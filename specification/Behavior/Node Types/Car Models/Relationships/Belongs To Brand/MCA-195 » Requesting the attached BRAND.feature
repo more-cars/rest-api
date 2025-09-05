@@ -12,6 +12,6 @@ Feature: Requesting BRAND to which a specific CAR MODEL belongs
     Given there exists a "CAR MODEL" "Yaris"
     And there exists a "BRAND" "Toyota"
     And there exists a relationship "R" between "BRAND" "Toyota" and "CAR MODEL" "Yaris"
-    When the user requests the BRAND that is attached to the CAR MODEL "Yaris"
+    When the user requests the "belongs to brand" relationship for "Yaris"
     Then the response should return with status code 200
     And the response should return the relationship "R"

@@ -10,5 +10,5 @@ Feature: Requesting BRAND to which a specific CAR MODEL belongs
   @TEST_MCA-197 @implemented
   Scenario: Requesting the attached BRAND for a non-existing CAR MODEL
     Given "CAR MODEL" "Yaris" does NOT exist
-    When the user requests the BRAND that is attached to the CAR MODEL "Yaris"
+    When the user requests the "belongs to brand" relationship for "Yaris"
     Then the response should return with status code 404

@@ -19,5 +19,5 @@ Feature: Creating BRAND nodes
       | hsn       | 0010            |
     Then the response should return the BRAND "DKW"
     And the response should return with status code 201
-    When the user requests the BRAND "DKW" via ID
+    When the user requests the "BRAND" "DKW"
     Then the response should return the BRAND "DKW"

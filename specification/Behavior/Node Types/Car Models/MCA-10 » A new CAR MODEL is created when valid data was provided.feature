@@ -11,5 +11,5 @@ Feature: Creating CAR MODEL nodes
       | name | Testarossa |
     Then the response should return the CAR MODEL "Testarossa"
     And the response should return with status code 201
-    When the user requests the CAR MODEL "Testarossa" via ID
+    When the user requests the "CAR MODEL" "Testarossa"
     Then the response should return the CAR MODEL "Testarossa"

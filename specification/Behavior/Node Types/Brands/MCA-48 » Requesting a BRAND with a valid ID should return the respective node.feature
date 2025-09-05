@@ -11,6 +11,6 @@ Feature: Requesting a BRAND node by its ID
   @TEST_MCA-48 @implemented
   Scenario: Requesting a BRAND with a valid ID should return the respective node
     Given there exists a "brand" "A"
-    When the user requests the BRAND "A" via ID
+    When the user requests the "BRAND" "A"
     Then the response should return the BRAND "A"
     And the response should return with status code 200

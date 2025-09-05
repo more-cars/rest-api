@@ -13,7 +13,7 @@ Feature: Request relationship between an IMAGE and a specific node
     And there exists a "<node type>" "<node>"
     And there exists a relationship "R" between "IMAGE" "<image>" and "<node type>" "<node>"
 
-    When the user requests the IMAGE relationship between IMAGE "<image>" and "<node type>" "<node>"
+    When the user requests the "belongs to node" relationship between "<image>" and "<node>"
     Then the response should return with status code 200
     And the response should return the IMAGE relationship "R"
 
