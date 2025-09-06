@@ -52,12 +52,12 @@
     "db:migrate": "node --env-file=.env -r ts-node/register migration/migrate.ts",
     "docker:build-image": "docker build -t mc-api -f deployment/Dockerfile .",
     "docker:tag-image:dev": "docker image tag mc-api localhost/mc-api:dev",
-    "docker:tag-image:dockerhub": "docker image tag mc-api docker.io/dennisgerike/more-cars-api:0.16.0",
-    "docker:tag-image:github": "docker image tag mc-api ghcr.io/more-cars/rest-api:0.16.0",
+    "docker:tag-image:dockerhub": "docker image tag mc-api docker.io/dennisgerike/more-cars-api:0.17.0",
+    "docker:tag-image:github": "docker image tag mc-api ghcr.io/more-cars/rest-api:0.17.0",
     "docker:login:dockerhub": "docker login docker.io",
     "docker:login:github": "docker login ghcr.io",
-    "docker:push-image:dockerhub": "docker push docker.io/dennisgerike/more-cars-api:0.16.0",
-    "docker:push-image:github": "docker push ghcr.io/more-cars/rest-api:0.16.0",
+    "docker:push-image:dockerhub": "docker push docker.io/dennisgerike/more-cars-api:0.17.0",
+    "docker:push-image:github": "docker push ghcr.io/more-cars/rest-api:0.17.0",
     "docker:app:start": "docker run --rm localhost/mc-api:dev",
     "minikube:install": "deployment/minikube-install.sh",
     "minikube:start": "deployment/minikube-cluster-start.sh",
@@ -89,5 +89,5 @@
     "stats:lines-of-code:src": "sloc src/",
     "stats:lines-of-code:test": "sloc tests/"
   },
-  "version": "0.16.0"
+  "version": "0.17.0"
 }
