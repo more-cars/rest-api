@@ -5,9 +5,6 @@ on:
 
 jobs:
   build-release-candidate:
-    name: Build Release Candidate
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - run: echo "build release candidate..."
+    uses: ./.github/workflows/build-docker-image-and-push-to-ghcr.yml
+    with:
+      package-name: rest-api-rc
