@@ -9,6 +9,7 @@ jobs:
   build-docker-image:
     uses: ./.github/workflows/build-docker-image-and-push-to-ghcr.yml
     with:
+      reference: refs/tags/${{ github.ref_name }}
       version: ${{ github.ref_name }}
 
   copy-image-to-docker-hub:

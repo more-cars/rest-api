@@ -7,18 +7,18 @@ on:
 
 jobs:
   copy-image-to-docker-hub:
-    name: "Copy image from ghcr to docker hub"
+    name: Copy Image to Docker Hub
     runs-on: ubuntu-latest
 
     steps:
-      - name: Pull image
-        run: docker pull ghcr.io/${{ github.repository }}:${{ inputs.version }}
+      - name: Pull image from GHCR
+        run: docker pull ghcr.io/more-cars/rest-api:${{ inputs.version }}
 
       - name: Tag image (concrete version)
-        run: docker tag ghcr.io/${{ github.repository }}:${{ inputs.version }} docker.io/dennisgerike/more-cars-api:${{ inputs.version }}
+        run: docker tag ghcr.io/more-cars/rest-api:${{ inputs.version }} docker.io/dennisgerike/more-cars-api:${{ inputs.version }}
 
       - name: Tag image (latest)
-        run: docker tag ghcr.io/${{ github.repository }}:${{ inputs.version }} docker.io/dennisgerike/more-cars-api:latest
+        run: docker tag ghcr.io/more-cars/rest-api:${{ inputs.version }} docker.io/dennisgerike/more-cars-api:latest
 
       - name: Log in to dockerhub
         uses: docker/login-action@v3
