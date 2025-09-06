@@ -4,11 +4,7 @@ on:
   workflow_call:
 
 jobs:
-  commit-stage:
-    name: Acceptance Stage
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - run: echo "acceptance stage..."
-
+  run-smoke-tests:
+    uses: ./.github/workflows/run-smoke-tests.yml
+    with:
+      environment: testing

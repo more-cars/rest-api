@@ -1,3 +1,5 @@
+name: Run Smoke Tests
+
 on:
   workflow_call:
   workflow_dispatch:
