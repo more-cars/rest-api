@@ -21,3 +21,4 @@ jobs:
   acceptance-stage:
     uses: ./.github/workflows/acceptance-stage.yml
     needs: deploy-release-candidate
+    secrets: inherit

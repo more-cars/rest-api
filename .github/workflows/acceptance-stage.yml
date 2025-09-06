@@ -8,3 +8,4 @@ jobs:
     uses: ./.github/workflows/run-smoke-tests.yml
     with:
       environment: testing
+    secrets: inherit
