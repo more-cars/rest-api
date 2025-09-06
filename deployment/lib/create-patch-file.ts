@@ -8,13 +8,14 @@ createPatchFile()
     })
 
 async function createPatchFile() {
-    const versionNumber = process.argv[2]
+    const packageName = process.env.PACKAGE_NAME
+    const packageVersion = process.env.PACKAGE_VERSION
 
     return [
         {
             "op": "replace",
             "path": "/spec/template/spec/containers/0/image",
-            "value": "docker.io/dennisgerike/more-cars-api:" + versionNumber
+            "value": `ghcr.io/more-cars/${packageName}:${packageVersion}`
         }
     ]
 }

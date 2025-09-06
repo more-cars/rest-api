@@ -168,9 +168,10 @@ Alternatively, the configuration options can also be provided via environment va
 The wizard will then be skipped and the deployment process is automatically started.
 
 ```
-TARGET_CLUSTER=minikube"
-TARGET_ENVIRONMENT=testing"
-TARGET_VERSION=0.15.0"
+TARGET_CLUSTER=minikube
+TARGET_ENVIRONMENT=testing
+PACKAGE_NAME=rest-api
+PACKAGE_VERSION=0.15.0
 ```
 
 All deployments (apps, database, services, jobs, etc.) run in a `kubernetes` cluster.

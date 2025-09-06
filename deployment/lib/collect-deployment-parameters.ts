@@ -1,7 +1,8 @@
 import fs from "node:fs"
 import {getTargetCluster} from "./getTargetCluster"
 import {getTargetEnvironment} from "./getTargetEnvironment"
-import {getTargetVersion} from "./getTargetVersion"
+import {getPackageName} from "./getPackageName"
+import {getPackageVersion} from "./getPackageVersion"
 
 collectParams()
     .then((data) => {
@@ -12,12 +13,14 @@ collectParams()
 async function collectParams() {
     const targetCluster = await getTargetCluster(process.env.TARGET_CLUSTER)
     const targetEnvironment = await getTargetEnvironment(process.env.TARGET_ENVIRONMENT, targetCluster)
-    const targetVersion = await getTargetVersion(process.env.TARGET_VERSION)
+    const packageName = await getPackageName(process.env.PACKAGE_NAME)
+    const packageVersion = await getPackageVersion(process.env.PACKAGE_VERSION)
 
     return assembleEnvFileData({
         targetCluster,
         targetEnvironment,
-        targetVersion,
+        packageName,
+        packageVersion,
     })
 }
 
@@ -25,7 +28,8 @@ function assembleEnvFileData(params: DeployAppConfig) {
     const data = `
 export TARGET_CLUSTER=${params.targetCluster}
 export TARGET_ENVIRONMENT=${params.targetEnvironment}
-export TARGET_VERSION=${params.targetVersion}
+export PACKAGE_NAME=${params.packageName}
+export PACKAGE_VERSION=${params.packageVersion}
 `
 
     return data
@@ -34,5 +38,6 @@ export TARGET_VERSION=${params.targetVersion}
 type DeployAppConfig = {
     targetCluster: string
     targetEnvironment: string
-    targetVersion: string
+    packageName: string
+    packageVersion: string
 }
