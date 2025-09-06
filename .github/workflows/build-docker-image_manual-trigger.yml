@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-docker-image:
-    uses: ./.github/workflows/build-docker-image-and-push-to-ghcr.yml
+    uses: ./.github/workflows/build-docker-image.yml
     with:
       reference: refs/tags/${{ inputs.version }}
       version: ${{ inputs.version }}

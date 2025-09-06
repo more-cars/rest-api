@@ -1,4 +1,4 @@
-name: Build Docker Image and Push to GHCR
+name: Build Docker Image
 
 on:
   workflow_call:
@@ -14,8 +14,8 @@ on:
         default: ${{ github.sha }}
 
 jobs:
-  build-docker-image-and-push-to-ghcr:
-    name: Build Docker Image and Push to GHCR
+  build-docker-image:
+    name: Build Docker Image
     runs-on: ubuntu-latest
 
     steps:
@@ -40,8 +40,8 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Push image (concrete version)
+      - name: Push image to GHCR (concrete version)
         run: docker push ghcr.io/more-cars/${{ inputs.package-name }}:${{ inputs.version }}
 
-      - name: Push image (latest)
+      - name: Push image to GHCR (latest)
         run: docker push ghcr.io/more-cars/${{ inputs.package-name }}:latest

@@ -5,6 +5,6 @@ on:
 
 jobs:
   build-release-candidate:
-    uses: ./.github/workflows/build-docker-image-and-push-to-ghcr.yml
+    uses: ./.github/workflows/build-docker-image.yml
     with:
       package-name: rest-api-rc
