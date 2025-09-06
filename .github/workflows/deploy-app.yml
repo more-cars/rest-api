@@ -1,23 +1,28 @@
+name: Deploy App
+
 on:
   workflow_call:
     inputs:
       environment:
         required: true
         type: string
+      package-name:
+        type: string
+        default: rest-api
       version:
         required: true
         type: string
 
 jobs:
   deploy-app:
-    name: 'Deploying app'
+    name: Deploy App
     runs-on: ubuntu-latest
 
     permissions:
       deployments: write
 
     steps:
-      - name: 'Checking out the codebase'
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Install Node.js
@@ -51,7 +56,8 @@ jobs:
         env:
           TARGET_CLUSTER: gke
           TARGET_ENVIRONMENT: ${{ inputs.environment }}
-          TARGET_VERSION: ${{ inputs.version }}
+          PACKAGE_NAME: ${{ inputs.package-name }}
+          PACKAGE_VERSION: ${{ inputs.version }}
 
       - name: Update deployment status (success)
         if: success()
