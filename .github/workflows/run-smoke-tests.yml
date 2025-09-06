@@ -2,6 +2,11 @@ name: Run Smoke Tests
 
 on:
   workflow_call:
+    inputs:
+      environment:
+        type: string
+        required: true
+        default: testing
   workflow_dispatch:
     inputs:
       environment:
@@ -17,23 +22,29 @@ jobs:
   run-smoke-tests:
     name: Run Smoke Tests
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
+
       - name: Install Node.js dependencies
         run: npm ci
+
       - name: Authorizing GitHub to access the Google Cloud account
         uses: 'google-github-actions/auth@v2'
         with:
           credentials_json: '${{ secrets.GCLOUD_CREDENTIALS }}'
+
       - name: Set up Cloud SDK
         uses: 'google-github-actions/setup-gcloud@v2'
         with:
           install_components: 'gke-gcloud-auth-plugin'
+
       - name: Create Smoke Test Job in GKE
         run: npm run tests:smoke:cli
         env:
