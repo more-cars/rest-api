@@ -1,12 +1,12 @@
 import {input} from '@inquirer/prompts'
-import type {Story} from "./create-jira-tickets/Story"
-import type {AcceptanceCriterion} from "./create-jira-tickets/AcceptanceCriterion"
-import type {Test} from "./create-jira-tickets/Test"
-import {createStory} from "./create-jira-tickets/createStory"
-import {connectStoryToEpic} from "./create-jira-tickets/connectStoryToEpic"
-import {createAcceptanceCriterion} from "./create-jira-tickets/createAcceptanceCriterion"
-import {createTest} from "./create-jira-tickets/createTest"
-import {connectTestToAcceptanceCriterion} from "./create-jira-tickets/connectTestToAcceptanceCriterion"
+import type {Story} from "./lib/types/Story"
+import type {AcceptanceCriterion} from "./lib/types/AcceptanceCriterion"
+import type {Test} from "./lib/types/Test"
+import {createStory} from "./lib/createStory"
+import {connectStoryToEpic} from "./lib/connectStoryToEpic"
+import {createAcceptanceCriterion} from "./lib/createAcceptanceCriterion"
+import {createTest} from "./lib/createTest"
+import {connectTestToAcceptanceCriterion} from "./lib/connectTestToAcceptanceCriterion"
 
 async function createTickets() {
     const params = {
@@ -49,5 +49,4 @@ So I can ...`,
     console.log('Created Test:', testId)
 }
 
-createTickets().then(r => {
-})
+createTickets().then(() => true)

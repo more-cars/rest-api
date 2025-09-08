@@ -1,7 +1,7 @@
 import axios from "axios"
 import {getJiraApiAuthKey} from "./getJiraApiAuthKey"
 import {getJiraApiBaseUrl} from "./getJiraApiBaseUrl"
-import type {AcceptanceCriterion} from "./AcceptanceCriterion"
+import type {AcceptanceCriterion} from "./types/AcceptanceCriterion"
 
 export async function createAcceptanceCriterion(data: AcceptanceCriterion, parentId: string): Promise<string> {
     const response = await axios

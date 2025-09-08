@@ -1,5 +1,5 @@
 import {expect, test} from "vitest"
-import {createTest} from "../../../specification/sync-scripts/create-jira-tickets/createTest"
+import {createTest} from "../../../specification/sync-scripts/lib/createTest"
 
 test.skip('Creating a new "test" ticket in Jira - real request', async () => {
     const data = {

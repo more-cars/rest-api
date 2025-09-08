@@ -1,7 +1,5 @@
 import {expect, test, vi} from "vitest"
-import {
-    createAcceptanceCriterion
-} from "../../../specification/sync-scripts/create-jira-tickets/createAcceptanceCriterion"
+import {createAcceptanceCriterion} from "../../../specification/sync-scripts/lib/createAcceptanceCriterion"
 
 test('Creating a new "AC" ticket in Jira - mocked request', async () => {
     vi.mock("../../../specification/sync-scripts/create-jira-tickets/createAcceptanceCriterion.ts", async () => {

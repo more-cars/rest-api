@@ -1,9 +1,9 @@
 import axios from "axios"
 import {getJiraApiAuthKey} from "./getJiraApiAuthKey"
 import {getJiraApiBaseUrl} from "./getJiraApiBaseUrl"
-import type {Test} from "./Test"
+import type {Story} from "./types/Story"
 
-export async function createTest(data: Test): Promise<string> {
+export async function createStory(data: Story): Promise<string> {
     const response = await axios
         .post(getJiraApiBaseUrl() + 'issue', {
             fields: {
@@ -11,7 +11,7 @@ export async function createTest(data: Test): Promise<string> {
                     key: 'MCA'
                 },
                 'issuetype': {
-                    id: '10100'
+                    id: '10001'
                 },
                 'summary': data.title,
                 'description': {
@@ -29,6 +29,29 @@ export async function createTest(data: Test): Promise<string> {
                         }
                     ]
                 },
+                'customfield_10691': {
+                    version: 1,
+                    type: 'doc',
+                    content: [
+                        {
+                            "type": "paragraph",
+                            "content": [
+                                {
+                                    "type": "text",
+                                    "text": data.userStory,
+                                },
+                            ]
+                        }
+                    ]
+                },
+                'customfield_10732': {
+                    id: data.apiVerb
+                },
+                'customfield_10731': data.apiPath,
+                'customfield_10767': [
+                    {value: data.responseOptions[0]},
+                    {value: data.responseOptions[1]},
+                ]
             }
         }, {
             headers: {
