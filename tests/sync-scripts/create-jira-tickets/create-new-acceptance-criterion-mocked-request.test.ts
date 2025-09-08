@@ -1,8 +1,9 @@
 import {expect, test, vi} from "vitest"
 import {createAcceptanceCriterion} from "../../../specification/sync-scripts/lib/createAcceptanceCriterion"
+import type {AcceptanceCriterion} from "../../../specification/sync-scripts/lib/types/AcceptanceCriterion"
 
 test('Creating a new "AC" ticket in Jira - mocked request', async () => {
-    vi.mock("../../../specification/sync-scripts/create-jira-tickets/createAcceptanceCriterion.ts", async () => {
+    vi.mock("../../../specification/sync-scripts/lib/createAcceptanceCriterion.ts", async () => {
         return {
             createAcceptanceCriterion: () => {
                 return 'TEST-3'
@@ -10,12 +11,13 @@ test('Creating a new "AC" ticket in Jira - mocked request', async () => {
         }
     })
 
-    const data = {
+    const data: AcceptanceCriterion = {
         title: "test title",
         description: "test description",
+        responseCode: "666"
     }
 
-    const key = createAcceptanceCriterion(data, 'TEST-2')
+    const key = await createAcceptanceCriterion(data, 'TEST-2')
 
     expect(key)
         .toEqual('TEST-3')
