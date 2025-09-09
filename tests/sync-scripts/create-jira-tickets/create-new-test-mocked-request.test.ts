@@ -13,7 +13,7 @@ test('Creating a new "test" ticket in Jira - mocked request', async () => {
 
     const data: Test = {
         title: "test title",
-        description: "test description",
+        gherkin: 'test gherkin',
     }
 
     const key = await createTest(data)

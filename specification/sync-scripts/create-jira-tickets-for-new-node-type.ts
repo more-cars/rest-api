@@ -42,7 +42,7 @@ So I can ...`,
 
     const testData: Test = {
         title: "[test] Test for new node type " + params.nodeType.toUpperCase(),
-        description: "test description",
+        gherkin: "dummy"
     }
     const testId = await createTest(testData)
     await connectTestToAcceptanceCriterion(testId, acceptanceCriterionId)

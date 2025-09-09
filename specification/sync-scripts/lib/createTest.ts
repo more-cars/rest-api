@@ -1,41 +1,23 @@
 import axios from "axios"
-import {getJiraApiAuthKey} from "./getJiraApiAuthKey"
-import {getJiraApiBaseUrl} from "./getJiraApiBaseUrl"
 import type {Test} from "./types/Test"
+import {loadGraphqlQuery} from "./loadGraphqlQuery"
+import {getXrayGraphqlUrl} from "./getXrayGraphqlUrl"
+import {obtainXrayApiToken} from "./obtainXrayApiToken"
 
 export async function createTest(data: Test): Promise<string> {
-    const response = await axios
-        .post(getJiraApiBaseUrl() + 'issue', {
-            fields: {
-                'project': {
-                    key: 'MCA'
-                },
-                'issuetype': {
-                    id: '10100'
-                },
-                'summary': data.title,
-                'description': {
-                    version: 1,
-                    type: 'doc',
-                    content: [
-                        {
-                            "type": "paragraph",
-                            "content": [
-                                {
-                                    "type": "text",
-                                    "text": data.description,
-                                },
-                            ]
-                        }
-                    ]
-                },
-            }
+    let query = loadGraphqlQuery('createTest.gql')
+    const gherkin = data.gherkin.replace(/\r?\n/g, '\\n')
+    query = query.replace('$gherkin', gherkin)
+    query = query.replace('$title', data.title)
+
+    const xrayResponse = await axios
+        .post(getXrayGraphqlUrl(), {
+            query
         }, {
             headers: {
-                'Authorization': `Basic ${getJiraApiAuthKey()}`,
-                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${await obtainXrayApiToken()}`
             }
         })
 
-    return response.data.key
+    return xrayResponse.data.data.createTest.test.jira.key
 }

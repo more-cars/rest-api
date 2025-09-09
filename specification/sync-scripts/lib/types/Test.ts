@@ -1,4 +1,4 @@
 export type Test = {
-    title: string,
-    description: string,
+    title: string
+    gherkin: string
 }
