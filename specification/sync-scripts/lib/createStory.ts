@@ -45,7 +45,7 @@ export async function createStory(data: Story): Promise<string> {
                     ]
                 },
                 'customfield_10732': {
-                    id: data.apiVerb
+                    id: getMappedApiVerb(data.apiVerb)
                 },
                 'customfield_10731': data.apiPath,
                 'customfield_10767': [
@@ -61,4 +61,22 @@ export async function createStory(data: Story): Promise<string> {
         })
 
     return response.data.key
+}
+
+function getMappedApiVerb(verb: string) {
+    const map = new Map([
+        ['GET', '10186'],
+        ['POST', '10187'],
+        ['PATCH', '10188'],
+        ['PATCH', '10189'],
+        ['N/A', '10351'],
+    ])
+
+    const mappedValue = map.get(verb)
+
+    if (!mappedValue) {
+        throw new Error(`Unable to find verb ${verb}`)
+    }
+
+    return mappedValue
 }

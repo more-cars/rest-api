@@ -33,7 +33,7 @@ export async function createAcceptanceCriterion(data: AcceptanceCriterion, paren
                     ]
                 },
                 'customfield_10801': {
-                    id: data.responseCode
+                    id: getMappedResponseCode(data.responseCode)
                 },
             }
         }, {
@@ -44,4 +44,24 @@ export async function createAcceptanceCriterion(data: AcceptanceCriterion, paren
         })
 
     return response.data.key
+}
+
+function getMappedResponseCode(responseCode: string) {
+    const map = new Map([
+        ['200', '10252'],
+        ['201', '10253'],
+        ['204', '10318'],
+        ['400', '10254'],
+        ['404', '10255'],
+        ['422', '10256'],
+        ['N/A', '10353'],
+    ])
+
+    const mappedValue = map.get(responseCode)
+
+    if (!mappedValue) {
+        throw new Error(`Unable to find response code ${responseCode}`)
+    }
+
+    return mappedValue
 }
