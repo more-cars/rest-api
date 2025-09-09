@@ -1,5 +1,5 @@
 export type AcceptanceCriterion = {
-    title: string,
-    description: string,
-    responseCode: string,
+    title: string
+    description: string
+    responseCode: string
 }
