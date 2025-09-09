@@ -6,7 +6,7 @@ test.skip('Creating a new "AC" ticket in Jira - real request', async () => {
     const data: AcceptanceCriterion = {
         title: "test title",
         description: "test description",
-        responseCode: "666"
+        responseCode: "201"
     }
 
     const key = await createAcceptanceCriterion(data, 'MCA-434')
