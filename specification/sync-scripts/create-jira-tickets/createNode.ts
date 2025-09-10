@@ -1,4 +1,5 @@
 import type {TicketTree} from "../lib/types/TicketTree"
+import {updateEpic} from "../lib/updateEpic"
 import {createStory} from "../lib/createStory"
 import {connectStoryToEpic} from "../lib/connectStoryToEpic"
 import {createAcceptanceCriterion} from "../lib/createAcceptanceCriterion"
@@ -9,6 +10,8 @@ export async function createNode(data: TicketTree) {
     const createdStories = []
     const createdAcs = []
     const createdTests = []
+
+    await updateEpic(data.epic)
 
     for (const story of data.epic.stories) {
         const storyId = await createStory(story)

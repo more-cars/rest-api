@@ -1,16 +1,20 @@
 import {expect, test, vi} from "vitest"
 import {createNode} from "../../../../specification/sync-scripts/create-jira-tickets/createNode"
+import {updateEpic} from "../../../../specification/sync-scripts/lib/updateEpic"
 import {createStory} from "../../../../specification/sync-scripts/lib/createStory"
+import {connectStoryToEpic} from "../../../../specification/sync-scripts/lib/connectStoryToEpic"
 import {createAcceptanceCriterion} from "../../../../specification/sync-scripts/lib/createAcceptanceCriterion"
 import type {TicketTree} from "../../../../specification/sync-scripts/lib/types/TicketTree"
 import {createTest} from "../../../../specification/sync-scripts/lib/createTest"
 import {
     connectTestToAcceptanceCriterion
 } from "../../../../specification/sync-scripts/lib/connectTestToAcceptanceCriterion"
-import {connectStoryToEpic} from "../../../../specification/sync-scripts/lib/connectStoryToEpic"
 
 test('Expecting the whole stack of required tickets to be created - mocked', async () => {
     await createNode(getDummyTicketTree())
+
+    expect(updateEpic)
+        .toBeCalledTimes(1)
 
     expect(createStory)
         .toBeCalledTimes(1)
@@ -32,6 +36,17 @@ function getDummyTicketTree(): TicketTree {
     return {
         epic: {
             jiraId: 'TEST-1',
+            dataStructure: [{
+                name: "prop1",
+                mandatory: true,
+                datatype: "string",
+                example: "test",
+            }, {
+                name: "prop2",
+                mandatory: false,
+                datatype: "number",
+                example: "test",
+            }],
             stories: [{
                 title: 'Test Story 1',
                 userStory: 'dummy',
@@ -71,6 +86,12 @@ function getDummyTicketTree(): TicketTree {
         }
     }
 }
+
+vi.mock("../../../../specification/sync-scripts/lib/updateEpic.ts", async () => {
+    return {
+        updateEpic: vi.fn(() => true)
+    }
+})
 
 vi.mock("../../../../specification/sync-scripts/lib/createStory.ts", async () => {
     return {

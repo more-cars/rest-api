@@ -19,7 +19,23 @@ test('Expecting the whole stack of required tickets to be created - real request
 function getPopulatedTicketTree(): TicketTree {
     return {
         epic: {
-            jiraId: 'MCA-222',
+            jiraId: 'MCA-498',
+            dataStructure: [{
+                name: "test_prop_1",
+                mandatory: true,
+                datatype: "string",
+                example: "test",
+            }, {
+                name: "test_prop_2",
+                mandatory: false,
+                datatype: "number",
+                example: "test",
+            }, {
+                name: "test_prop_3",
+                mandatory: false,
+                datatype: "boolean",
+                example: "test",
+            }],
             stories: [{
                 title: 'Test Story 1',
                 userStory: `As a... 
