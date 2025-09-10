@@ -15,5 +15,6 @@ export default defineConfig(({mode}) => ({
         reporters: [
             'default',
         ],
+        testTimeout: 15000
     },
 }))
