@@ -3,6 +3,7 @@
 
 # artifacts
 /test-reports/
+ticketTree.json
 
 # IDE
 /.idea/
