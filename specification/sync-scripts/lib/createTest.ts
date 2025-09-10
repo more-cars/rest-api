@@ -6,7 +6,8 @@ import {obtainXrayApiToken} from "./obtainXrayApiToken"
 
 export async function createTest(data: Test): Promise<string> {
     let query = loadGraphqlQuery('createTest.gql')
-    const gherkin = data.gherkin.replace(/\r?\n/g, '\\n')
+    let gherkin = data.gherkin.replace(/\r?\n/g, '\\n')
+    gherkin = gherkin.replace(/"/g, '\\"')
     query = query.replace('$gherkin', gherkin)
     query = query.replace('$title', data.title)
 

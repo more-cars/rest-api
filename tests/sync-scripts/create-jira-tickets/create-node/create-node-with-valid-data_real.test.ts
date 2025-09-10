@@ -56,9 +56,7 @@ So I can...`,
                         tests: [
                             {
                                 title: 'Test Test 1.1.1',
-                                gherkin: `Given there exists ...
-When the user ...
-Then it should ...`
+                                gherkin: "Given there exists\nWhen the user ...\nThen it should ..."
                             },
                         ],
                     },

@@ -5,9 +5,7 @@ import type {Test} from "../../../specification/sync-scripts/lib/types/Test"
 test('Creating a new "test" ticket in Jira - real request', async () => {
     const data: Test = {
         title: "test title",
-        gherkin: `Given...
-When...
-Then...`
+        gherkin: "Given \"test\"...\nWhen...\nThen..."
     }
 
     const key = await createTest(data)
