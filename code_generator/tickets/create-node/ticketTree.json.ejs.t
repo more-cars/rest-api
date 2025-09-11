@@ -45,8 +45,6 @@ to: specification/sync-scripts/create-jira-tickets/ticketTree.json
                                 }
                                 gherkin.push('Then the response should return the \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\"')
                                 gherkin.push('And the response should return with status code 201')
-                                gherkin.push('When the user requests the \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\"')
-                                gherkin.push('Then the response should return the \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\"')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }
