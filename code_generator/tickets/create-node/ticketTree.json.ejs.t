@@ -37,7 +37,7 @@ to: specification/sync-scripts/create-jira-tickets/ticketTree.json
                         {
                             "title": "Creating a <%= h.changeCase.upper(nodeType) %> with valid data",
                             <%
-                                const gherkin = []
+                                gherkin = []
                                 gherkin.push('When the user creates a \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\" with the following data')
                                 gherkin.push('  | key | value | datatype |')
                                 for (prop in properties) {
@@ -59,7 +59,7 @@ to: specification/sync-scripts/create-jira-tickets/ticketTree.json
                         {
                             "title": "Trying to create a <%= h.changeCase.upper(nodeType) %> with missing mandatory information",
                             <%
-                                const gherkin = []
+                                gherkin = []
                                 gherkin.push('When the user tries to create a \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\" with the following data')
                                 gherkin.push('  | key | value | datatype |')
                                 gherkin.push('Then the response should return with status code 400')
@@ -68,7 +68,7 @@ to: specification/sync-scripts/create-jira-tickets/ticketTree.json
                         }, {
                             "title": "Trying to create a <%= h.changeCase.upper(nodeType) %> with invalid data types",
                             <%
-                                const gherkin = []
+                                gherkin = []
                                 gherkin.push('When the user tries to create a \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\" with the following data')
                                 gherkin.push('  | key | value | datatype |')
                                 for (prop in properties) {
@@ -80,7 +80,7 @@ to: specification/sync-scripts/create-jira-tickets/ticketTree.json
                         }, {
                             "title": "Trying to create a <%= h.changeCase.upper(nodeType) %> with malformed data",
                             <%
-                                const gherkin = []
+                                gherkin = []
                                 gherkin.push('When the user tries to create a \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\" with the following data')
                                 gherkin.push('  | key | value | datatype |')
                                 for (prop in properties) {
@@ -99,7 +99,7 @@ to: specification/sync-scripts/create-jira-tickets/ticketTree.json
                         {
                             "title": "Expecting all properties to be returned when creating a <%= h.changeCase.upper(nodeType) %>",
                             <%
-                                const gherkin = []
+                                gherkin = []
                                 gherkin.push('When the user creates a \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\" with the following data')
                                 gherkin.push('  | key | value | datatype |')
                                 for (prop in properties) {
@@ -115,7 +115,7 @@ to: specification/sync-scripts/create-jira-tickets/ticketTree.json
                         }, {
                             "title": "Expecting empty properties to be returned as null values when creating a <%= h.changeCase.upper(nodeType) %>",
                             <%
-                                const gherkin = []
+                                gherkin = []
                                 gherkin.push('When the user creates a \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\" with the following data')
                                 gherkin.push('  | key | value | datatype |')
                                 for (prop in properties) {
@@ -144,7 +144,7 @@ to: specification/sync-scripts/create-jira-tickets/ticketTree.json
                         {
                             "title": "Expecting unknown properties to be ignored when creating a <%= h.changeCase.upper(nodeType) %>",
                             <%
-                                const gherkin = []
+                                gherkin = []
                                 gherkin.push('When the user creates a \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\" with the following data')
                                 gherkin.push('  | key | value | datatype |')
                                 for (prop in properties) {
@@ -171,7 +171,7 @@ to: specification/sync-scripts/create-jira-tickets/ticketTree.json
                         {
                             "title": "Expecting read-only properties to be ignored when creating a <%= h.changeCase.upper(nodeType) %>",
                             <%
-                                const gherkin = []
+                                gherkin = []
                                 gherkin.push('When the user creates a \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\" with the following data')
                                 gherkin.push('  | key | value | datatype |')
                                 for (prop in properties) {
