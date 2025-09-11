@@ -20,7 +20,7 @@ to: specification/sync-scripts/create-jira-tickets/ticketTree.json
                 "Properties are returned, even when they are empty (optional fields). They are returned with value `null`.",
                 "Unknown properties are ignored. They are not processed. They do not produce any info, warning or error messages for the user. -> Status Code `201`",
                 "Read-only properties (`id`, `created_at`, `updated_at`) are ignored. They are not processed. They do not produce any info, warning or error messages for the user. -> Status Code `201`",
-                "Requests with invalid data are rejected. Cases for invalid data include: missing mandatory fields, syntax errors, wrong data types or wrong data structure. -> Status Code `400`",
+                "Requests with invalid data are rejected. Cases for invalid data include: missing mandatory fields, syntax errors, wrong data types or wrong data structure. -> Status Code `400`"
             ],
             "apiVerb": "POST",
             "apiPath": "/<%= h.changeCase.kebab(nodeType) %>",
