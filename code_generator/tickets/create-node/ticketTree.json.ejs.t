@@ -14,13 +14,19 @@ to: specification/sync-scripts/create-jira-tickets/ticketTree.json
         "stories": [{
             "title": "Create <%= h.changeCase.upper(nodeType) %> Node",
             "userStory": "As an API contributor\nI want to be able to create <%= h.changeCase.upper(nodeType) %> nodes\nSo I can fill gaps in the database",
-            "description": "TODO...",
+            "specificationList": [
+                "A <%= h.changeCase.upper(nodeType) %> node is successfully created when requested with valid data. The required data structure is specified in parent (epic) ticket <%= h.changeCase.upper(h.changeCase.kebab(epicId)) %>. -> Status Code `201`",
+                "A successful request returns the created node with all specified properties.",
+                "Properties are returned, even when they are empty (optional fields). They are returned with value `null`.",
+                "Unknown properties are ignored. They are not processed. They do not produce any info, warning or error messages for the user. -> Status Code `201`",
+                "Read-only properties (`id`, `created_at`, `updated_at`) are ignored. They are not processed. They do not produce any info, warning or error messages for the user. -> Status Code `201`",
+                "Requests with invalid data are rejected. Cases for invalid data include: missing mandatory fields, syntax errors, wrong data types or wrong data structure. -> Status Code `400`",
+            ],
             "apiVerb": "POST",
             "apiPath": "/<%= h.changeCase.kebab(nodeType) %>",
             "responseOptions": [
                 "201",
-                "400",
-                "422"
+                "400"
             ],
             "acceptanceCriteria": [
                 {
