@@ -50,7 +50,11 @@ function getDummyTicketTree(): TicketTree {
             stories: [{
                 title: 'Test Story 1',
                 userStory: 'dummy',
-                description: 'dummy',
+                specificationList: [
+                    "spec 1",
+                    "spec 2",
+                    "spec 3",
+                ],
                 apiVerb: 'dummy',
                 apiPath: 'dummy',
                 responseOptions: [],

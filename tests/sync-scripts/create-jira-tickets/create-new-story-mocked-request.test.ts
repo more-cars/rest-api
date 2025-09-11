@@ -13,7 +13,11 @@ test('Creating a new "story" ticket in Jira - mocked request', async () => {
 
     const data: Story = {
         title: "test title",
-        description: "test description",
+        specificationList: [
+            "spec 1",
+            "spec 2",
+            "spec 3",
+        ],
         userStory: "test",
         apiVerb: "test",
         apiPath: "test",

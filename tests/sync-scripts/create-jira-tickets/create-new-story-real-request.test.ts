@@ -5,8 +5,12 @@ import type {Story} from "../../../specification/sync-scripts/lib/types/Story"
 test.skip('Creating a new "story" ticket in Jira - real request', async () => {
     const data: Story = {
         title: "test title",
-        description: "test description",
-        userStory: "As a... I want to... So I can...",
+        specificationList: [
+            "test spec 1",
+            "test spec 2",
+            "test spec 3",
+        ],
+        userStory: "As a...\n I want to...\n So I can...",
         apiVerb: "POST",
         apiPath: "/test-path",
         responseOptions: [
@@ -16,6 +20,8 @@ test.skip('Creating a new "story" ticket in Jira - real request', async () => {
     }
 
     const key = await createStory(data)
+
+    console.log(key)
 
     expect(key)
         .toContain('MCA-')

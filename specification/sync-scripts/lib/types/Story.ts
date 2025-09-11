@@ -1,7 +1,7 @@
 export type Story = {
     title: string
     userStory: string
-    description: string
+    specificationList: Array<string>
     apiVerb: string
     apiPath: string
     responseOptions: string[]
