@@ -13,11 +13,6 @@ test('Input data is structurally invalid', async () => {
 })
 
 test('Input data is semantically invalid', async () => {
-    Brand.create = vi.fn().mockReturnValue({
-        id: 12345,
-        name: "dummy",
-    })
-
     const response = await request(app)
         .post('/brands') // payload is completely missing
 
