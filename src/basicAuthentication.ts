@@ -1,4 +1,5 @@
 import express from "express"
+import {sendResponse401} from "./controllers/responses/sendResponse401"
 
 export function basicAuthentication(req: express.Request, res: express.Response, next: express.NextFunction) {
     if (!requiresAuthentication()) {
@@ -7,7 +8,7 @@ export function basicAuthentication(req: express.Request, res: express.Response,
 
     const authHeader = req.headers.authorization
     if (!authHeader) {
-        return send401Response(res, next)
+        return sendResponse401(res, next)
     }
 
     const auth = Buffer.from(authHeader.split(' ')[1], 'base64').toString().split(':')
@@ -17,7 +18,7 @@ export function basicAuthentication(req: express.Request, res: express.Response,
     const requiredPassword = process.env.BASIC_AUTH_PASSWORD
 
     if (providedUsername !== requiredUsername || providedPassword !== requiredPassword) {
-        return send401Response(res, next)
+        return sendResponse401(res, next)
     }
 
     return next()
@@ -25,12 +26,4 @@ export function basicAuthentication(req: express.Request, res: express.Response,
 
 function requiresAuthentication(): boolean {
     return !!(process.env.BASIC_AUTH_USERNAME && process.env.BASIC_AUTH_PASSWORD)
-}
-
-function send401Response(res: express.Response, next: express.NextFunction) {
-    const err = new Error('Authentication missing')
-    res.setHeader('WWW-Authenticate', 'Basic')
-    res.status(401)
-
-    return next(err)
 }
