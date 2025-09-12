@@ -16,7 +16,13 @@ body:json {
 <%
     const props = {}
     for (prop in properties) {
-        props[prop] = properties[prop].example
+        if (properties[prop].datatype === 'string') {
+            props[prop] = properties[prop].example
+        } else if (properties[prop].datatype === 'number') {
+            props[prop] = parseInt(properties[prop].example)
+        } else if (properties[prop].datatype === 'boolean') {
+            props[prop] = properties[prop].example === 'true' ? true : false
+        }
     }
 -%>
 <%- JSON.stringify(props, null, 2).split('\n').map(line => '  ' + line).join('\n') %>

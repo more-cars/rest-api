@@ -17,7 +17,13 @@ body:json {
     const props = {}
     for (prop in properties) {
         if (properties[prop].mandatory) {
-            props[prop] = properties[prop].example
+            if (properties[prop].datatype === 'string') {
+                props[prop] = properties[prop].example
+            } else if (properties[prop].datatype === 'number') {
+                props[prop] = parseInt(properties[prop].example)
+            } else if (properties[prop].datatype === 'boolean') {
+                props[prop] = properties[prop].example === 'true' ? true : false
+            }
         }
     }
     props["created_at"] = "nope"
