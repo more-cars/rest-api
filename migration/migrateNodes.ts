@@ -3,12 +3,15 @@ import neo4j, {Node} from "neo4j-driver"
 import {deleteAllBrands} from "../tests/_toolbox/dbSeeding/brands/nodes/deleteAllBrands"
 import {deleteAllCarModels} from "../tests/_toolbox/dbSeeding/car-models/nodes/deleteAllCarModels"
 import {deleteAllImages} from "../tests/_toolbox/dbSeeding/images/nodes/deleteAllImages"
+import {deleteAllCompanies} from "../tests/_toolbox/dbSeeding/companies/nodes/deleteAllCompanies"
 import {mapBrand} from "./nodes/mapBrand"
 import {mapCarModel} from "./nodes/mapCarModel"
 import {mapImage} from "./nodes/mapImage"
+import {mapCompany} from "./nodes/mapCompany"
 import {createNodeQuery as createBrandQuery} from "../src/db/nodes/brands/createNode"
 import {createNodeQuery as createCarModelQuery} from "../src/db/nodes/car-models/createNode"
 import {createNodeQuery as createImageQuery} from "../src/db/nodes/images/createNode"
+import {createNodeQuery as createCompanyQuery} from "../src/db/nodes/companies/createNode"
 import cliProgress from "cli-progress"
 import {createDbNode} from "../src/db/nodes/createDbNode"
 import {NodeTypeLabel} from "../src/db/NodeTypeLabel"
@@ -19,10 +22,12 @@ export async function migrateNodes() {
     await deleteAllBrands()
     await deleteAllCarModels()
     await deleteAllImages()
+    await deleteAllCompanies()
 
     await migrate('brand', mapBrand, NodeTypeLabel.Brand, createBrandQuery)
     await migrate('carmodel', mapCarModel, NodeTypeLabel.CarModel, createCarModelQuery)
     await migrate('image', mapImage, NodeTypeLabel.Image, createImageQuery)
+    await migrate('company', mapCompany, NodeTypeLabel.Company, createCompanyQuery)
 }
 
 async function migrate(oldNodeTypeLabel: string, mapFunc: any, newNodeTypeLabel: any, queryFunc: any) {
