@@ -1,4 +1,4 @@
-import {beforeAll, describe, expect, test} from 'vitest'
+import {afterAll, beforeAll, describe, expect, test} from 'vitest'
 import request from "supertest"
 import {app} from "../../src/app"
 
@@ -6,6 +6,11 @@ describe('Basic auth is activated', () => {
     beforeAll(async () => {
         process.env.BASIC_AUTH_USERNAME = 'username'
         process.env.BASIC_AUTH_PASSWORD = 'password'
+    })
+
+    afterAll(async () => {
+        delete process.env.BASIC_AUTH_USERNAME
+        delete process.env.BASIC_AUTH_PASSWORD
     })
 
     test('Request without credentials', async () => {
