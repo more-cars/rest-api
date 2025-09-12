@@ -28,7 +28,7 @@ export function createNodeQuery(data: Input<%= h.changeCase.pascal(nodeType) %>C
 <%   } else if (properties[prop].datatype === 'string') { -%>
         .replace('$<%= prop -%>', data.<%= prop -%> ? `'${escapeSingleQuotes(data.<%= prop -%>)}'` : 'null')
 <%   } else { -%>
-        .replace('$<%= prop -%>', data.<%= prop -%> ? `$(data.<%= prop -%>}` : 'null')
+        .replace('$<%= prop -%>', data.<%= prop -%> ? `${data.<%= prop -%>}` : 'null')
 <%   } -%>
 <% } -%>
     return template
