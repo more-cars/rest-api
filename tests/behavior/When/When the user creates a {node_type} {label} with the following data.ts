@@ -3,7 +3,7 @@ import axios from "axios"
 import {getBasePathFragmentForNodeType} from "../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
 import type {NodeType} from "../../_toolbox/NodeType"
 
-When('the user creates a {string} {string} with the following data',
+When('the user (tries to )create(s) a {string} {string} with the following data',
     async (nodeType: string, label: string, dataTable: DataTable) => {
         const rows = dataTable.hashes()
 
