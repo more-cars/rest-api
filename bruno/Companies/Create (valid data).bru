@@ -1,0 +1,33 @@
+meta {
+  name: Create Company (valid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/companies
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "BMW AG",
+    "founded": 1916,
+    "defunct": null,
+    "headquarters_location": "Munich",
+    "legal_headquarters_location": "Munich"
+  }
+}
+
+assert {
+  res.status: eq 201
+  res.body: isJson
+  res.body.id: gte 12000000
+}
+
+tests {
+  test("both timestamps should be identical", function () {
+    const data = res.getBody()
+    expect(data.created_at).to.eql(data.updated_at)
+  })
+}

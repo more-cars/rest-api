@@ -5,6 +5,7 @@ import health from "./routes/health"
 import brands from './routes/brands'
 import carModels from "./routes/car-models"
 import images from "./routes/images"
+import companies from "./routes/companies"
 import {basicAuthentication} from "./basicAuthentication"
 
 const app: Express = express()
@@ -25,5 +26,6 @@ app.use('/', health)
 app.use('/', brands)
 app.use('/', carModels)
 app.use('/', images)
+app.use('/', companies)
 
 export {app}

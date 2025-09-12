@@ -1,0 +1,19 @@
+meta {
+  name: Create Company (invalid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/companies
+  body: json
+  auth: none
+}
+
+body:json {
+  {}
+}
+
+assert {
+  res.status: eq 400
+  res.body: isString
+}
