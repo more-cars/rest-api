@@ -1,31 +1,33 @@
 import express from "express"
 import {unmarshal} from "./unmarshal"
-import {Brand} from "../../models/brands/Brand"
-import {CreateBrandInput} from "../../models/brands/types/CreateBrandInput"
-import {BrandNode} from "../../models/brands/types/BrandNode"
-import {BrandResponse} from "./types/BrandResponse"
 import {marshal} from "./marshal"
+import {CreateBrandInput} from "../../models/brands/types/CreateBrandInput"
+import {Brand} from "../../models/brands/Brand"
+import {BrandNode} from "../../models/brands/types/BrandNode"
+import {sendResponse201} from "../responses/sendResponse201"
+import {sendResponse400} from "../responses/sendResponse400"
+import {sendResponse500} from "../responses/sendResponse500"
 import {CreateBrandRawInput} from "./types/CreateBrandRawInput"
 import {isMandatoryString} from "../validators/isMandatoryString"
 import {isOptionalString} from "../validators/isOptionalString"
 import {isOptionalNumber} from "../validators/isOptionalNumber"
 
 export async function create(req: express.Request, res: express.Response) {
+    const data = unmarshal(req.body)
+
+    if (!validate(data)) {
+        return sendResponse400(res)
+    }
+
+    const sanitizedData = sanitize(data as CreateBrandInput)
+
     try {
-        const data = unmarshal(req.body)
-
-        if (!validate(data)) {
-            return send400response(res)
-        }
-
-        const sanitizedData = sanitize(data as CreateBrandInput)
         const createdNode: BrandNode = await Brand.create(sanitizedData)
         const marshalledData = marshal(createdNode)
-
-        send201response(marshalledData, res)
+        sendResponse201(marshalledData, res)
     } catch (e) {
         console.error(e)
-        send422response(res)
+        sendResponse500(res)
     }
 }
 
@@ -73,22 +75,4 @@ export function sanitize(data: CreateBrandInput): CreateBrandInput {
     }
 
     return sanitizedData
-}
-
-function send201response(data: BrandResponse, res: express.Response) {
-    res.status(201)
-    res.set('Content-Type', 'application/json')
-    res.send(data)
-}
-
-function send400response(res: express.Response) {
-    res.status(400)
-    res.set('Content-Type', 'text/plain')
-    res.send('Request failed. Input data invalid.')
-}
-
-function send422response(res: express.Response) {
-    res.status(422)
-    res.set('Content-Type', 'text/plain')
-    res.send('Request failed. Node could not be created.')
 }

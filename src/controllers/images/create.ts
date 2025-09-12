@@ -1,29 +1,31 @@
 import express from "express"
 import {unmarshal} from "./unmarshal"
-import {CreateImageInput} from "../../models/images/types/CreateImageInput"
-import {ImageResponse} from "./types/ImageResponse"
 import {marshal} from "./marshal"
-import {CreateImageRawInput} from "./types/CreateImageRawInput"
+import {CreateImageInput} from "../../models/images/types/CreateImageInput"
 import {Image} from "../../models/images/Image"
 import {ImageNode} from "../../models/images/types/ImageNode"
+import {sendResponse500} from "../responses/sendResponse500"
+import {sendResponse400} from "../responses/sendResponse400"
+import {sendResponse201} from "../responses/sendResponse201"
+import {CreateImageRawInput} from "./types/CreateImageRawInput"
 import {isMandatoryString} from "../validators/isMandatoryString"
 
 export async function create(req: express.Request, res: express.Response) {
+    const data = unmarshal(req.body)
+
+    if (!validate(data)) {
+        return sendResponse400(res)
+    }
+
+    const sanitizedData = sanitize(data as CreateImageInput)
+
     try {
-        const data = unmarshal(req.body)
-
-        if (!validate(data)) {
-            return send400response(res)
-        }
-
-        const sanitizedData = sanitize(data as CreateImageInput)
         const createdNode: ImageNode = await Image.create(sanitizedData)
         const marshalledData = marshal(createdNode)
-
-        send201response(marshalledData, res)
+        sendResponse201(marshalledData, res)
     } catch (e) {
         console.error(e)
-        send422response(res)
+        sendResponse500(res)
     }
 }
 
@@ -51,22 +53,4 @@ export function sanitize(data: CreateImageInput): CreateImageInput {
     }
 
     return sanitizedData
-}
-
-function send201response(data: ImageResponse, res: express.Response) {
-    res.status(201)
-    res.set('Content-Type', 'application/json')
-    res.send(data)
-}
-
-function send400response(res: express.Response) {
-    res.status(400)
-    res.set('Content-Type', 'text/plain')
-    res.send('Request failed. Input data invalid.')
-}
-
-function send422response(res: express.Response) {
-    res.status(422)
-    res.set('Content-Type', 'text/plain')
-    res.send('Request failed. Node could not be created.')
 }

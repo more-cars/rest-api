@@ -1,31 +1,33 @@
 import express from "express"
 import {unmarshal} from "./unmarshal"
-import {CreateCarModelInput} from "../../models/car-models/types/CreateCarModelInput"
-import {CarModelResponse} from "./types/CarModelResponse"
 import {marshal} from "./marshal"
-import {CreateCarModelRawInput} from "./types/CreateCarModelRawInput"
+import {CreateCarModelInput} from "../../models/car-models/types/CreateCarModelInput"
 import {CarModel} from "../../models/car-models/CarModel"
 import {CarModelNode} from "../../models/car-models/types/CarModelNode"
+import {sendResponse500} from "../responses/sendResponse500"
+import {sendResponse201} from "../responses/sendResponse201"
+import {sendResponse400} from "../responses/sendResponse400"
+import {CreateCarModelRawInput} from "./types/CreateCarModelRawInput"
 import {isOptionalNumber} from "../validators/isOptionalNumber"
 import {isMandatoryString} from "../validators/isMandatoryString"
 import {isOptionalString} from "../validators/isOptionalString"
 
 export async function create(req: express.Request, res: express.Response) {
+    const data = unmarshal(req.body)
+
+    if (!validate(data)) {
+        return sendResponse400(res)
+    }
+
+    const sanitizedData = sanitize(data as CreateCarModelInput)
+
     try {
-        const data = unmarshal(req.body)
-
-        if (!validate(data)) {
-            return send400response(res)
-        }
-
-        const sanitizedData = sanitize(data as CreateCarModelInput)
         const createdNode: CarModelNode = await CarModel.create(sanitizedData)
         const marshalledData = marshal(createdNode)
-
-        send201response(marshalledData, res)
+        sendResponse201(marshalledData, res)
     } catch (e) {
         console.error(e)
-        send422response(res)
+        sendResponse500(res)
     }
 }
 
@@ -72,22 +74,4 @@ export function sanitize(data: CreateCarModelInput): CreateCarModelInput {
         total_production: data.total_production ? data.total_production : null,
     }
     return sanitizedData
-}
-
-function send201response(data: CarModelResponse, res: express.Response) {
-    res.status(201)
-    res.set('Content-Type', 'application/json')
-    res.send(data)
-}
-
-function send400response(res: express.Response) {
-    res.status(400)
-    res.set('Content-Type', 'text/plain')
-    res.send('Request failed. Input data invalid.')
-}
-
-function send422response(res: express.Response) {
-    res.status(422)
-    res.set('Content-Type', 'text/plain')
-    res.send('Request failed. Node could not be created.')
 }
