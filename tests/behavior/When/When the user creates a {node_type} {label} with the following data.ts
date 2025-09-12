@@ -9,7 +9,7 @@ When('the user creates a {string} {string} with the following data',
 
         const data: any = {}
         rows.forEach((row) => {
-            switch (row.type) {
+            switch (row.datatype) {
                 case 'string':
                     data[row.key] = row.value
                     break
@@ -29,5 +29,5 @@ When('the user creates a {string} {string} with the following data',
             })
 
         world.rememberResponse(response)
-        world.rememberNode(response?.data, label, 'brand')
+        world.rememberNode(response?.data, label, nodeType)
     })
