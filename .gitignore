@@ -4,6 +4,7 @@
 # artifacts
 /test-reports/
 ticketTree.json
+_temp
 
 # IDE
 /.idea/
