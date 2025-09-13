@@ -1,6 +1,10 @@
 import {expect, test} from "vitest"
-import {createAcceptanceCriterion} from "../../../specification/sync-scripts/lib/createAcceptanceCriterion"
-import type {AcceptanceCriterion} from "../../../specification/sync-scripts/lib/types/AcceptanceCriterion"
+import {
+    createAcceptanceCriterion
+} from "../../../specification/sync-scripts/create-jira-tickets/lib/createAcceptanceCriterion"
+import type {
+    AcceptanceCriterion
+} from "../../../specification/sync-scripts/create-jira-tickets/lib/types/AcceptanceCriterion"
 
 test.skip('Creating a new "AC" ticket in Jira - real request', async () => {
     const data: AcceptanceCriterion = {

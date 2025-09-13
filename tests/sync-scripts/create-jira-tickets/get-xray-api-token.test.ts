@@ -1,5 +1,5 @@
 import {describe, expect, test, vi} from "vitest"
-import {obtainXrayApiToken} from "../../../specification/sync-scripts/lib/obtainXrayApiToken"
+import {obtainXrayApiToken} from "../../../specification/sync-scripts/create-jira-tickets/lib/obtainXrayApiToken"
 
 describe('Fetching Xray API token', () => {
     test('with invalid credentials', async () => {

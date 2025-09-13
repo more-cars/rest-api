@@ -1,6 +1,6 @@
 import {expect, test, vi} from "vitest"
-import type {Epic} from "../../../specification/sync-scripts/lib/types/Epic"
-import {updateEpic} from "../../../specification/sync-scripts/lib/updateEpic"
+import type {Epic} from "../../../specification/sync-scripts/create-jira-tickets/lib/types/Epic"
+import {updateEpic} from "../../../specification/sync-scripts/create-jira-tickets/lib/updateEpic"
 
 test('Updating epic ticket in Jira - mocked request', async () => {
     vi.mock("../../../specification/sync-scripts/lib/updateEpic.ts", async () => {

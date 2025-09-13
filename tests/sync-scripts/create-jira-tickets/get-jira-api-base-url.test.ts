@@ -1,5 +1,5 @@
 import {describe, expect, test, vi} from "vitest"
-import {getJiraApiBaseUrl} from "../../../specification/sync-scripts/lib/getJiraApiBaseUrl"
+import {getJiraApiBaseUrl} from "../../../specification/sync-scripts/create-jira-tickets/lib/getJiraApiBaseUrl"
 
 describe('Get Jira API base url', () => {
     test('missing Jira Domain', () => {

@@ -2,15 +2,17 @@ import {expect, test, vi} from "vitest"
 import {
     createCreateNodeTickets
 } from "../../../../specification/sync-scripts/create-jira-tickets/lib/createCreateNodeTickets"
-import {updateEpic} from "../../../../specification/sync-scripts/lib/updateEpic"
-import {createStory} from "../../../../specification/sync-scripts/lib/createStory"
-import {connectStoryToEpic} from "../../../../specification/sync-scripts/lib/connectStoryToEpic"
-import {createAcceptanceCriterion} from "../../../../specification/sync-scripts/lib/createAcceptanceCriterion"
-import type {TicketTree} from "../../../../specification/sync-scripts/lib/types/TicketTree"
-import {createTest} from "../../../../specification/sync-scripts/lib/createTest"
+import {updateEpic} from "../../../../specification/sync-scripts/create-jira-tickets/lib/updateEpic"
+import {createStory} from "../../../../specification/sync-scripts/create-jira-tickets/lib/createStory"
+import {connectStoryToEpic} from "../../../../specification/sync-scripts/create-jira-tickets/lib/connectStoryToEpic"
+import {
+    createAcceptanceCriterion
+} from "../../../../specification/sync-scripts/create-jira-tickets/lib/createAcceptanceCriterion"
+import type {TicketTree} from "../../../../specification/sync-scripts/create-jira-tickets/lib/types/TicketTree"
+import {createTest} from "../../../../specification/sync-scripts/create-jira-tickets/lib/createTest"
 import {
     connectTestToAcceptanceCriterion
-} from "../../../../specification/sync-scripts/lib/connectTestToAcceptanceCriterion"
+} from "../../../../specification/sync-scripts/create-jira-tickets/lib/connectTestToAcceptanceCriterion"
 
 test('Expecting the whole stack of required tickets to be created - mocked', async () => {
     await createCreateNodeTickets(getDummyTicketTree())
