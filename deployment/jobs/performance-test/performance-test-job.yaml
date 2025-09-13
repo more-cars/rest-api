@@ -4,6 +4,7 @@ metadata:
   name: performance-test-job
 spec:
   backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
   template:
     spec:
       restartPolicy: Never
