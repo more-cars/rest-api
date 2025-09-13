@@ -68,7 +68,7 @@
     "minikube:deploy:dev-mc1-db-recovery": "deployment/minikube-mc1-recover-database.sh",
     "minikube:import-dev-image": "minikube image load localhost/mc-api:dev -p morecars",
     "minikube:delete-dev-image": "minikube image rm localhost/mc-api:dev -p morecars",
-    "generate-tickets:node-create": "HYGEN_TMPLS=code_generator hygen tickets create-node && node --env-file=.env -r ts-node/register specification/sync-scripts/create-jira-tickets/feature-create-node.ts",
+    "generate-tickets:node-create": "HYGEN_TMPLS=code_generator hygen tickets create-node && node --env-file=.env -r ts-node/register specification/sync-scripts/create-jira-tickets/create-node.ts",
     "generate-code:node:create": "HYGEN_OVERWRITE=1 HYGEN_TMPLS=code_generator hygen node create",
     "generate-code:node:delete": "HYGEN_TMPLS=code_generator hygen node delete",
     "generate-code:relationship:create": "HYGEN_TMPLS=code_generator hygen relationship create",
