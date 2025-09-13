@@ -3,7 +3,7 @@ import {validateJson} from "../../_toolbox/validateJson.ts"
 import {downloadEpics} from "../../../specification/sync-scripts/download-specification/lib/downloadEpics"
 import {
     GetEpicsResponseSchema
-} from "../../../specification/sync-scripts/download-specification/lib/types/GetEpicsResponseSchema"
+} from "../../../specification/sync-scripts/download-specification/lib/schemas/GetEpicsResponseSchema"
 
 test('Downloading all epics from Jira - real request', async () => {
     const jiraEpics = await downloadEpics()
