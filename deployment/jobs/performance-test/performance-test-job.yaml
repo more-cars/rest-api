@@ -16,7 +16,7 @@ spec:
       restartPolicy: Never
       initContainers:
         - name: more-cars-api
-          image: dennisgerike/more-cars-api:latest
+          image: ghcr.io/more-cars/rest-api:latest
           command: [ 'cp', '-R', '/app/tests/performance/.', '/tests' ]
           volumeMounts:
             - name: test-cases-volume

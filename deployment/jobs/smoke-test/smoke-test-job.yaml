@@ -16,7 +16,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: more-cars-api
-          image: docker.io/dennisgerike/more-cars-api:latest
+          image: ghcr.io/more-cars/rest-api:latest
           env:
             - name: API_URL
               value: http://$(API_SERVICE_SERVICE_HOST)
