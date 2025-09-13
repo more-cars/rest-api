@@ -7,6 +7,10 @@ on:
         type: string
         required: true
         default: testing
+      version:
+        type: string
+        default: latest
+
   workflow_dispatch:
     inputs:
       environment:
@@ -51,4 +55,5 @@ jobs:
           TEST_RUNNER: gke
           TARGET_CLUSTER: gke
           TARGET_ENVIRONMENT: ${{ inputs.environment }}
+          TEST_VERSION: ${{ inputs.version }}
           REPORTS_ENABLED: true

@@ -9,12 +9,19 @@ createPatchFile()
 
 async function createPatchFile() {
     const jobName = process.argv[2]
+    const packageVersion = process.argv[3]
+    const packageName = 'rest-api-rc'
 
     return [
         {
             "op": "replace",
             "path": "/metadata/name",
             "value": jobName
+        },
+        {
+            "op": "replace",
+            "path": "/spec/template/spec/containers/0/image",
+            "value": `ghcr.io/more-cars/${packageName}:${packageVersion}`
         },
         {
             "op": "add",

@@ -27,3 +27,9 @@ spec:
                 cd bruno
                 npx bru run --env-var baseUrl=$API_URL
               fi
+              
+              # Bruno will return with exit code 1 should any of the tests fail.
+              # That would also fail this job. We don't want that.
+              # Evaluating the test results happens outside of this job.
+              # We only want to know if the job has finished. Therefore always returning code 0 here.
+              exit 0
