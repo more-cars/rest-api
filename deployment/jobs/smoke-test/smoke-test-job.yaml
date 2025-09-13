@@ -5,12 +5,6 @@ metadata:
 spec:
   backoffLimit: 0
   ttlSecondsAfterFinished: 86400
-  podFailurePolicy:
-    rules:
-      - action: Ignore
-        onExitCodes:
-          operator: NotIn
-          values: [ 0 ]
   template:
     spec:
       restartPolicy: Never
