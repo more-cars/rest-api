@@ -1,0 +1,298 @@
+[
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "18768",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/18768",
+    "key": "MCA-211",
+    "fields": {
+      "summary": "IDs",
+      "customfield_10764": null,
+      "updated": "2025-06-26T10:42:19.543+0200",
+      "created": "2025-06-10T13:02:41.595+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "18767",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/18767",
+    "key": "MCA-210",
+    "fields": {
+      "summary": "Timestamps",
+      "customfield_10764": null,
+      "updated": "2025-06-26T10:42:21.035+0200",
+      "created": "2025-06-10T13:02:36.043+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "18758",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/18758",
+    "key": "MCA-201",
+    "fields": {
+      "summary": "Node Type: Company",
+      "customfield_10764": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "[\n  {\n    \"name\": \"name\",\n    \"mandatory\": true,\n    \"datatype\": \"string\",\n    \"example\": \"BMW AG\"\n  },\n  {\n    \"name\": \"founded\",\n    \"mandatory\": false,\n    \"datatype\": \"number\",\n    \"example\": \"1916\"\n  },\n  {\n    \"name\": \"defunct\",\n    \"mandatory\": false,\n    \"datatype\": \"number\",\n    \"example\": \"\"\n  },\n  {\n    \"name\": \"headquarters_location\",\n    \"mandatory\": false,\n    \"datatype\": \"string\",\n    \"example\": \"Munich\"\n  },\n  {\n    \"name\": \"legal_headquarters_location\",\n    \"mandatory\": false,\n    \"datatype\": \"string\",\n    \"example\": \"Munich\"\n  }\n]"
+              }
+            ]
+          }
+        ]
+      },
+      "updated": "2025-09-11T10:32:12.186+0200",
+      "created": "2025-06-10T12:45:54.996+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "18562",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/18562",
+    "key": "MCA-72",
+    "fields": {
+      "summary": "IMAGE Node Type",
+      "customfield_10764": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "image_provider: string, mandatory"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "external_id: string, mandatory"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "name: string, mandatory"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "description: string"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "creator: string, mandatory"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "license: string, mandatory"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "tags: string"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "source: string, mandatory"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "image_url_original: string, mandatory"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "image_url_xxl: string"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "image_url_xl: string"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "image_url_l: string"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "image_url_m: string"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "image_url_s: string"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "image_url_xs: string"
+              }
+            ]
+          }
+        ]
+      },
+      "updated": "2025-08-18T15:15:32.676+0200",
+      "created": "2025-05-18T09:58:20.136+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "18561",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/18561",
+    "key": "MCA-71",
+    "fields": {
+      "summary": "BRAND Node Type",
+      "customfield_10764": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "name: string, mandatory"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "full_name: string"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "founded: integer"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "defunct: integer"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "wmi: string"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "hsn: string"
+              }
+            ]
+          }
+        ]
+      },
+      "updated": "2025-08-18T15:15:23.907+0200",
+      "created": "2025-05-18T09:58:11.803+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "18560",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/18560",
+    "key": "MCA-70",
+    "fields": {
+      "summary": "CAR MODEL Node Type",
+      "customfield_10764": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "name: string, mandatory"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "built_from: integer"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "built_to: integer"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "generation: integer"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "internal_code: string"
+              },
+              {
+                "type": "hardBreak"
+              },
+              {
+                "type": "text",
+                "text": "total_production: integer "
+              }
+            ]
+          }
+        ]
+      },
+      "updated": "2025-08-18T15:15:10.879+0200",
+      "created": "2025-05-18T09:58:01.818+0200"
+    }
+  }
+]
