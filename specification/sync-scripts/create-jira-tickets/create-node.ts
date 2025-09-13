@@ -1,7 +1,7 @@
-import {createNode} from "./createNode"
+import {createCreateNodeTickets} from "./lib/createCreateNodeTickets"
 import data from "./ticketTree.json"
 
-createNode(data).then(
+createCreateNodeTickets(data).then(
     createdTickets => {
         console.log('Tickets created:', createdTickets)
     })

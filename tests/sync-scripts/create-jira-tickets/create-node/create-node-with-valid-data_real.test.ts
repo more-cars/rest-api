@@ -1,9 +1,11 @@
 import {expect, test} from "vitest"
-import {createNode} from "../../../../specification/sync-scripts/create-jira-tickets/createNode"
+import {
+    createCreateNodeTickets
+} from "../../../../specification/sync-scripts/create-jira-tickets/lib/createCreateNodeTickets"
 import type {TicketTree} from "../../../../specification/sync-scripts/lib/types/TicketTree"
 
 test.skip('Expecting the whole stack of required tickets to be created - real requests', async () => {
-    const ids = await createNode(getPopulatedTicketTree())
+    const ids = await createCreateNodeTickets(getPopulatedTicketTree())
     console.log(ids)
 
     expect(ids.stories.length)

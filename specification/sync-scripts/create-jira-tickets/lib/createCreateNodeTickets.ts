@@ -1,12 +1,12 @@
-import type {TicketTree} from "../lib/types/TicketTree"
-import {updateEpic} from "../lib/updateEpic"
-import {createStory} from "../lib/createStory"
-import {connectStoryToEpic} from "../lib/connectStoryToEpic"
-import {createAcceptanceCriterion} from "../lib/createAcceptanceCriterion"
-import {createTest} from "../lib/createTest"
-import {connectTestToAcceptanceCriterion} from "../lib/connectTestToAcceptanceCriterion"
+import type {TicketTree} from "../../lib/types/TicketTree"
+import {updateEpic} from "../../lib/updateEpic"
+import {createStory} from "../../lib/createStory"
+import {connectStoryToEpic} from "../../lib/connectStoryToEpic"
+import {createAcceptanceCriterion} from "../../lib/createAcceptanceCriterion"
+import {createTest} from "../../lib/createTest"
+import {connectTestToAcceptanceCriterion} from "../../lib/connectTestToAcceptanceCriterion"
 
-export async function createNode(data: TicketTree) {
+export async function createCreateNodeTickets(data: TicketTree) {
     const createdStories = []
     const createdAcs = []
     const createdTests = []
