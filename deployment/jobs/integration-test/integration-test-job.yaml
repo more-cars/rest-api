@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: integration-test-job
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: more-cars-api
+          image: ghcr.io/more-cars/rest-api:latest
+          env:
+            - name: DB_HOST
+              value: $(API_DB_SERVICE_SERVICE_HOST)
+            - name: DB_PASSWORD
+              value: "123456789"
+          resources:
+            requests:
+              cpu: "300m"
+              memory: "300Mi"
+          command: [ "/bin/sh", "-c" ]
+          args:
+            - |
+
+              npm ci
+
+              if [ "$CODE_COVERAGE_ENABLED" = true ]; then
+                npx vitest run -c tests/integration/vite.config.ts --coverage
+              else
+                npx vitest run -c tests/integration/vite.config.ts
+              fi
+
+              # Vitest will return with exit code 1 should any of the tests fail.
+              # That would also fail this job. We don't want that.
+              # Evaluating the test results happens outside of this job.
+              # We only want to know if the job has finished. Therefore always returning code 0 here.
+              exit 0
