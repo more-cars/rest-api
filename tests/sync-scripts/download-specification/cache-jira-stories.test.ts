@@ -5,7 +5,7 @@ import {cacheJiraTickets} from "../../../specification/sync-scripts/download-spe
 describe('Caching downloaded Jira stories', () => {
     test('at default path with default filename', async () => {
         const jiraStories = JSON.parse(
-            fs.readFileSync(__dirname + '/../../_toolbox/fixtures/specification/jira_story_collection.json', {
+            fs.readFileSync(__dirname + '/fixtures/jira_story_collection.json', {
                 encoding: 'utf8',
                 flag: 'r'
             }))
@@ -28,7 +28,7 @@ describe('Caching downloaded Jira stories', () => {
 
     test('at custom path with custom filename', async () => {
         const jiraStories = JSON.parse(
-            fs.readFileSync(__dirname + '/../../_toolbox/fixtures/specification/jira_story_collection.json', {
+            fs.readFileSync(__dirname + '/fixtures/jira_story_collection.json', {
                 encoding: 'utf8',
                 flag: 'r'
             }))

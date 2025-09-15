@@ -6,7 +6,7 @@ import type {Story} from "../../../specification/sync-scripts/download-specifica
 describe('Storing the extracted stories in the specification folder', () => {
     test('in custom location', async () => {
         const stories: Array<Story> = JSON.parse(
-            fs.readFileSync(__dirname + '/../../_toolbox/fixtures/specification/story_collection.json', {
+            fs.readFileSync(__dirname + '/fixtures/story_collection.json', {
                 encoding: 'utf8',
                 flag: 'r'
             }))

@@ -7,7 +7,7 @@ import {EpicSchema} from "./schemas/EpicSchema"
 
 test('Extracting all epic data from the Jira response', async () => {
     const jiraEpics: Array<JiraEpic> = JSON.parse(
-        fs.readFileSync(__dirname + '/../../_toolbox/fixtures/specification/jira_epic_collection.json', {
+        fs.readFileSync(__dirname + '/fixtures/jira_epic_collection.json', {
             encoding: 'utf8',
             flag: 'r'
         }))

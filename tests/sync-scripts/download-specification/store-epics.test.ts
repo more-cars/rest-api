@@ -6,7 +6,7 @@ import type {Epic} from "../../../specification/sync-scripts/download-specificat
 describe('Storing the extracted epics in the specification folder', () => {
     test('in custom location', async () => {
         const epics: Array<Epic> = JSON.parse(
-            fs.readFileSync(__dirname + '/../../_toolbox/fixtures/specification/epic_collection.json', {
+            fs.readFileSync(__dirname + '/fixtures/epic_collection.json', {
                 encoding: 'utf8',
                 flag: 'r'
             }))

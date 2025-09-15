@@ -7,7 +7,7 @@ import {extractJiraStories} from "../../../specification/sync-scripts/download-s
 
 test('Extracting all story data from the Jira response', async () => {
     const jiraStories: Array<JiraStory> = JSON.parse(
-        fs.readFileSync(__dirname + '/../../_toolbox/fixtures/specification/jira_story_collection.json', {
+        fs.readFileSync(__dirname + '/fixtures/jira_story_collection.json', {
             encoding: 'utf8',
             flag: 'r'
         }))
