@@ -1,0 +1,3288 @@
+[
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "20080",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/20080",
+    "key": "MCA-551",
+    "fields": {
+      "summary": "Read-only properties cannot be overridden by the user when creating a COMPANY",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Read-only properties are for example `ID`, `created_at` and `updated_at`. Analog to unknown properties, those fields will be ignored. They will not be processed and there will be no info, warning or error that they were skipped."
+              }
+            ]
+          }
+        ]
+      },
+      "parent": {
+        "id": "20059",
+        "key": "MCA-539",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/20059",
+        "fields": {
+          "summary": "Create COMPANY Node",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10273",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/statuses/generic.png",
+            "name": "In Approval",
+            "id": "10273",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/4",
+              "id": 4,
+              "key": "indeterminate",
+              "colorName": "yellow",
+              "name": "In Arbeit"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-12T18:03:07.237+0200",
+      "created": "2025-09-11T10:17:57.544+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "20076",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/20076",
+    "key": "MCA-549",
+    "fields": {
+      "summary": "Unknown properties are ignored when creating a COMPANY",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "The user can provide properties that are not specified in the epic MCA-201, but they will be completely ignored. They will not be processed and there will be no info, warning or error that they were skipped."
+              }
+            ]
+          }
+        ]
+      },
+      "parent": {
+        "id": "20059",
+        "key": "MCA-539",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/20059",
+        "fields": {
+          "summary": "Create COMPANY Node",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10273",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/statuses/generic.png",
+            "name": "In Approval",
+            "id": "10273",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/4",
+              "id": 4,
+              "key": "indeterminate",
+              "colorName": "yellow",
+              "name": "In Arbeit"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-12T18:03:04.351+0200",
+      "created": "2025-09-11T10:17:52.862+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "20071",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/20071",
+    "key": "MCA-546",
+    "fields": {
+      "summary": "The response contains all specified properties when creating a COMPANY",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "All properties are returned that are specified in the epic MCA-201. When properties are empty they are returned with null values. IDs, timestamp and other meta information might be included too, but is not in the scope of this AC."
+              }
+            ]
+          }
+        ]
+      },
+      "parent": {
+        "id": "20059",
+        "key": "MCA-539",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/20059",
+        "fields": {
+          "summary": "Create COMPANY Node",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10273",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/statuses/generic.png",
+            "name": "In Approval",
+            "id": "10273",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/4",
+              "id": 4,
+              "key": "indeterminate",
+              "colorName": "yellow",
+              "name": "In Arbeit"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-12T18:02:59.571+0200",
+      "created": "2025-09-11T10:17:44.572+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "20065",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/20065",
+    "key": "MCA-542",
+    "fields": {
+      "summary": "Requests to create a COMPANY are rejected when the provided data is invalid",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Data is invalid when its structure is incorrect, has syntax errors or does not contain all mandatory fields."
+              }
+            ]
+          }
+        ]
+      },
+      "parent": {
+        "id": "20059",
+        "key": "MCA-539",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/20059",
+        "fields": {
+          "summary": "Create COMPANY Node",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10273",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/statuses/generic.png",
+            "name": "In Approval",
+            "id": "10273",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/4",
+              "id": 4,
+              "key": "indeterminate",
+              "colorName": "yellow",
+              "name": "In Arbeit"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-12T18:02:55.260+0200",
+      "created": "2025-09-11T10:17:32.349+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "20061",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/20061",
+    "key": "MCA-540",
+    "fields": {
+      "summary": "Requests to create a COMPANY are accepted when the provided data is valid",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Data is valid when its structure is correct, has no syntax errors and contains all mandatory fields."
+              }
+            ]
+          }
+        ]
+      },
+      "parent": {
+        "id": "20059",
+        "key": "MCA-539",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/20059",
+        "fields": {
+          "summary": "Create COMPANY Node",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10273",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/statuses/generic.png",
+            "name": "In Approval",
+            "id": "10273",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/4",
+              "id": 4,
+              "key": "indeterminate",
+              "colorName": "yellow",
+              "name": "In Arbeit"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-12T18:02:52.227+0200",
+      "created": "2025-09-11T10:17:27.396+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19740",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19740",
+    "key": "MCA-407",
+    "fields": {
+      "summary": "Requesting to delete a non-existing has-prime-image relationship is rejected with an error",
+      "description": null,
+      "parent": {
+        "id": "19270",
+        "key": "MCA-293",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19270",
+        "fields": {
+          "summary": "Delete CAR MODEL-has-prime-image-IMAGE Relationship",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10201",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Ready for Implementation",
+            "id": "10201",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "Zu erledigen"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-08-24T18:30:20.274+0200",
+      "created": "2025-08-24T11:54:30.561+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19737",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19737",
+    "key": "MCA-406",
+    "fields": {
+      "summary": "Deletion requests are rejected with an error when the provided data is invalid",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "invalid data:"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "bulletList",
+                    "content": [
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "CAR MODEL with given ID does not exists"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "IMAGE with given ID does not exists"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "parent": {
+        "id": "19270",
+        "key": "MCA-293",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19270",
+        "fields": {
+          "summary": "Delete CAR MODEL-has-prime-image-IMAGE Relationship",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10201",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Ready for Implementation",
+            "id": "10201",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "Zu erledigen"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-08-24T18:30:13.591+0200",
+      "created": "2025-08-24T11:48:19.070+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19734",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19734",
+    "key": "MCA-405",
+    "fields": {
+      "summary": "The has-prime-image relationship is deleted when provided with valid data",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "invalid data:"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "bulletList",
+                    "content": [
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "CAR MODEL with given ID does not exists"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "IMAGE with given ID does not exists"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "parent": {
+        "id": "19270",
+        "key": "MCA-293",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19270",
+        "fields": {
+          "summary": "Delete CAR MODEL-has-prime-image-IMAGE Relationship",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10201",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Ready for Implementation",
+            "id": "10201",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "Zu erledigen"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-08-24T18:29:47.486+0200",
+      "created": "2025-08-24T11:42:56.924+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19731",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19731",
+    "key": "MCA-404",
+    "fields": {
+      "summary": "Requesting a non-existing has-prime-image relationship is rejected with an error",
+      "description": null,
+      "parent": {
+        "id": "19688",
+        "key": "MCA-388",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19688",
+        "fields": {
+          "summary": "Has CAR MODEL-has-prime-image-IMAGE Relationship",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-06T16:04:55.964+0200",
+      "created": "2025-08-24T11:26:23.571+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19728",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19728",
+    "key": "MCA-403",
+    "fields": {
+      "summary": "Requests are rejected with an error when the provided data is invalid",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "invalid data:"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "bulletList",
+                    "content": [
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "CAR MODEL with given ID does not exists"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "IMAGE with given ID does not exists"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "parent": {
+        "id": "19688",
+        "key": "MCA-388",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19688",
+        "fields": {
+          "summary": "Has CAR MODEL-has-prime-image-IMAGE Relationship",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-06T16:04:58.819+0200",
+      "created": "2025-08-24T11:19:06.629+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19725",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19725",
+    "key": "MCA-402",
+    "fields": {
+      "summary": "The has-prime-image relationship is returned when provided with valid data",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "valid data:"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "bulletList",
+                    "content": [
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "CAR MODEL with given ID exists"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "IMAGE with given ID exists"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "response:"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "bulletList",
+                    "content": [
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "car_model_id",
+                                "marks": [
+                                  {
+                                    "type": "code"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "text",
+                                "text": ": integer"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "image_id",
+                                "marks": [
+                                  {
+                                    "type": "code"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "text",
+                                "text": ": integer"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "relationship_id",
+                                "marks": [
+                                  {
+                                    "type": "code"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "text",
+                                "text": ": integer"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "relationship_name",
+                                "marks": [
+                                  {
+                                    "type": "code"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "text",
+                                "text": ": string → "
+                              },
+                              {
+                                "type": "text",
+                                "text": "has-prime-image",
+                                "marks": [
+                                  {
+                                    "type": "code"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "parent": {
+        "id": "19688",
+        "key": "MCA-388",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19688",
+        "fields": {
+          "summary": "Has CAR MODEL-has-prime-image-IMAGE Relationship",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-06T16:04:53.320+0200",
+      "created": "2025-08-24T11:18:55.212+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19722",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19722",
+    "key": "MCA-401",
+    "fields": {
+      "summary": "Requests are rejected with an error when the provided data is invalid",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "invalid data:"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "bulletList",
+                    "content": [
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "CAR MODEL with given ID does not exists"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "parent": {
+        "id": "19273",
+        "key": "MCA-294",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19273",
+        "fields": {
+          "summary": "Get CAR MODEL-has-prime-image Relationship",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-06T16:04:41.950+0200",
+      "created": "2025-08-24T11:17:44.415+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19719",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19719",
+    "key": "MCA-400",
+    "fields": {
+      "summary": "An empty response is returned when there exists no has-prime-image relationship for the CAR MODEL",
+      "description": null,
+      "parent": {
+        "id": "19273",
+        "key": "MCA-294",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19273",
+        "fields": {
+          "summary": "Get CAR MODEL-has-prime-image Relationship",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-06T16:04:45.432+0200",
+      "created": "2025-08-24T11:11:50.308+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19716",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19716",
+    "key": "MCA-399",
+    "fields": {
+      "summary": "The has-prime-image relationship is returned when provided with valid data",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "valid data:"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "bulletList",
+                    "content": [
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "CAR MODEL with given ID exists"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "response:"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "bulletList",
+                    "content": [
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "car_model_id",
+                                "marks": [
+                                  {
+                                    "type": "code"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "text",
+                                "text": ": integer"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "image_id",
+                                "marks": [
+                                  {
+                                    "type": "code"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "text",
+                                "text": ": integer"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "relationship_id",
+                                "marks": [
+                                  {
+                                    "type": "code"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "text",
+                                "text": ": integer"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "relationship_name",
+                                "marks": [
+                                  {
+                                    "type": "code"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "text",
+                                "text": ": string → "
+                              },
+                              {
+                                "type": "text",
+                                "text": "has-prime-image",
+                                "marks": [
+                                  {
+                                    "type": "code"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "parent": {
+        "id": "19273",
+        "key": "MCA-294",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19273",
+        "fields": {
+          "summary": "Get CAR MODEL-has-prime-image Relationship",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-06T16:04:50.234+0200",
+      "created": "2025-08-24T11:10:25.691+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19713",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19713",
+    "key": "MCA-398",
+    "fields": {
+      "summary": "Creating the same has-prime-image relationship again returns the already existing one",
+      "description": null,
+      "parent": {
+        "id": "19267",
+        "key": "MCA-292",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19267",
+        "fields": {
+          "summary": "Create CAR MODEL-has-prime-image-IMAGE Relationship",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-02T09:08:19.056+0200",
+      "created": "2025-08-23T19:42:19.659+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19710",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19710",
+    "key": "MCA-397",
+    "fields": {
+      "summary": "Creation requests are rejected with an error when the provided data is invalid",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "invalid data:"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "bulletList",
+                    "content": [
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "CAR MODEL with given ID does not exists"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "IMAGE with given ID does not exists"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "parent": {
+        "id": "19267",
+        "key": "MCA-292",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19267",
+        "fields": {
+          "summary": "Create CAR MODEL-has-prime-image-IMAGE Relationship",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-02T09:08:14.212+0200",
+      "created": "2025-08-23T19:42:05.065+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19707",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19707",
+    "key": "MCA-396",
+    "fields": {
+      "summary": "A CAR MODEL cannot have more than one prime IMAGE",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": []
+      },
+      "parent": {
+        "id": "19267",
+        "key": "MCA-292",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19267",
+        "fields": {
+          "summary": "Create CAR MODEL-has-prime-image-IMAGE Relationship",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-02T09:08:25.797+0200",
+      "created": "2025-08-23T19:41:52.083+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19704",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19704",
+    "key": "MCA-395",
+    "fields": {
+      "summary": "Connecting a different prime IMAGE to the CAR MODEL deletes the previous has-prime-image relationship",
+      "description": null,
+      "parent": {
+        "id": "19267",
+        "key": "MCA-292",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19267",
+        "fields": {
+          "summary": "Create CAR MODEL-has-prime-image-IMAGE Relationship",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-02T09:08:22.699+0200",
+      "created": "2025-08-23T19:41:30.477+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19701",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19701",
+    "key": "MCA-394",
+    "fields": {
+      "summary": "The has-prime-image relationship is created when provided with valid data",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "valid data:"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "bulletList",
+                    "content": [
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "CAR MODEL with given ID exists"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "IMAGE with given ID exists"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "response:"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "bulletList",
+                    "content": [
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "car_model_id",
+                                "marks": [
+                                  {
+                                    "type": "code"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "text",
+                                "text": ": integer"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "image_id",
+                                "marks": [
+                                  {
+                                    "type": "code"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "text",
+                                "text": ": integer"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "relationship_id",
+                                "marks": [
+                                  {
+                                    "type": "code"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "text",
+                                "text": ": integer"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "relationship_name",
+                                "marks": [
+                                  {
+                                    "type": "code"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "text",
+                                "text": ": string → "
+                              },
+                              {
+                                "type": "text",
+                                "text": "has-prime-image",
+                                "marks": [
+                                  {
+                                    "type": "code"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "parent": {
+        "id": "19267",
+        "key": "MCA-292",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19267",
+        "fields": {
+          "summary": "Create CAR MODEL-has-prime-image-IMAGE Relationship",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-02T09:08:09.560+0200",
+      "created": "2025-08-23T19:41:00.066+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19698",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19698",
+    "key": "MCA-393",
+    "fields": {
+      "summary": "An error is returned when the page number is out of range",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "e.g. when there are "
+                      },
+                      {
+                        "type": "text",
+                        "text": "5",
+                        "marks": [
+                          {
+                            "type": "code"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": " pages, but the user requests page "
+                      },
+                      {
+                        "type": "text",
+                        "text": "15",
+                        "marks": [
+                          {
+                            "type": "code"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "parent": {
+        "id": "19612",
+        "key": "MCA-369",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19612",
+        "fields": {
+          "summary": "Paginate node collection",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10201",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Ready for Implementation",
+            "id": "10201",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "Zu erledigen"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-08-31T19:07:03.280+0200",
+      "created": "2025-08-22T17:30:54.095+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19686",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19686",
+    "key": "MCA-387",
+    "fields": {
+      "summary": "Non-pagination requests contain pagination meta information",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "e.g. "
+                      },
+                      {
+                        "type": "text",
+                        "text": "/car-models",
+                        "marks": [
+                          {
+                            "type": "code"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": " returns the same fields as specified in "
+                      },
+                      {
+                        "type": "inlineCard",
+                        "attrs": {
+                          "url": "https://dennis-gerike.atlassian.net/browse/MCA-386"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "text": " "
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "parent": {
+        "id": "19612",
+        "key": "MCA-369",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19612",
+        "fields": {
+          "summary": "Paginate node collection",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10201",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Ready for Implementation",
+            "id": "10201",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "Zu erledigen"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-08-31T19:07:31.227+0200",
+      "created": "2025-08-22T15:23:37.060+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19683",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19683",
+    "key": "MCA-386",
+    "fields": {
+      "summary": "The response for each pagination request contains pagination meta information",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "additional fields in the response:"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "bulletList",
+                    "content": [
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "page",
+                                "marks": [
+                                  {
+                                    "type": "code"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "text",
+                                "text": ": number"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "page-size",
+                                "marks": [
+                                  {
+                                    "type": "code"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "text",
+                                "text": ": number"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "total-pages",
+                                "marks": [
+                                  {
+                                    "type": "code"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "text",
+                                "text": ": number"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "listItem",
+                        "content": [
+                          {
+                            "type": "paragraph",
+                            "content": [
+                              {
+                                "type": "text",
+                                "text": "total-items",
+                                "marks": [
+                                  {
+                                    "type": "code"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "text",
+                                "text": ": number"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "parent": {
+        "id": "19612",
+        "key": "MCA-369",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19612",
+        "fields": {
+          "summary": "Paginate node collection",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10201",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Ready for Implementation",
+            "id": "10201",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "Zu erledigen"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-08-31T19:07:21.468+0200",
+      "created": "2025-08-22T15:18:05.577+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19680",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19680",
+    "key": "MCA-385",
+    "fields": {
+      "summary": "Requests with an invalid page number respond with an error",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "negative number"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "0"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "non-integer values"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "parent": {
+        "id": "19612",
+        "key": "MCA-369",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19612",
+        "fields": {
+          "summary": "Paginate node collection",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10201",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Ready for Implementation",
+            "id": "10201",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "Zu erledigen"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-08-31T19:42:44.497+0200",
+      "created": "2025-08-22T15:17:01.260+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19677",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19677",
+    "key": "MCA-384",
+    "fields": {
+      "summary": "Each page contains different nodes",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "e.g. when a node already appeared on page "
+                      },
+                      {
+                        "type": "text",
+                        "text": "1",
+                        "marks": [
+                          {
+                            "type": "code"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": " it should not appear again on page "
+                      },
+                      {
+                        "type": "text",
+                        "text": "2",
+                        "marks": [
+                          {
+                            "type": "code"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "parent": {
+        "id": "19612",
+        "key": "MCA-369",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19612",
+        "fields": {
+          "summary": "Paginate node collection",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10201",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Ready for Implementation",
+            "id": "10201",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "Zu erledigen"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-08-31T19:06:43.144+0200",
+      "created": "2025-08-22T15:14:43.288+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19674",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19674",
+    "key": "MCA-383",
+    "fields": {
+      "summary": "Each page contains a pre-defined amount of nodes",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "for the time being this number is always "
+                      },
+                      {
+                        "type": "text",
+                        "text": "100",
+                        "marks": [
+                          {
+                            "type": "code"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": ", except for the last page"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "parent": {
+        "id": "19612",
+        "key": "MCA-369",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19612",
+        "fields": {
+          "summary": "Paginate node collection",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10201",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Ready for Implementation",
+            "id": "10201",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "Zu erledigen"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-08-31T19:06:33.574+0200",
+      "created": "2025-08-22T15:14:23.266+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19671",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19671",
+    "key": "MCA-382",
+    "fields": {
+      "summary": "Pagination is available for each node type",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "GET /brands?page=3"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "GET /car-models?page=7"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "GET /images?page=1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "…"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "parent": {
+        "id": "19612",
+        "key": "MCA-369",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19612",
+        "fields": {
+          "summary": "Paginate node collection",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10201",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Ready for Implementation",
+            "id": "10201",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/2",
+              "id": 2,
+              "key": "new",
+              "colorName": "blue-gray",
+              "name": "Zu erledigen"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-08-31T19:06:22.442+0200",
+      "created": "2025-08-22T15:13:43.053+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19509",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19509",
+    "key": "MCA-352",
+    "fields": {
+      "summary": "Hard deleting an IMAGE removes all attached RELATIONSHIPs",
+      "description": null,
+      "parent": {
+        "id": "18569",
+        "key": "MCA-79",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/18569",
+        "fields": {
+          "summary": "Hard Delete IMAGE Node",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-02T08:36:06.566+0200",
+      "created": "2025-08-11T09:53:06.494+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19506",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19506",
+    "key": "MCA-351",
+    "fields": {
+      "summary": "Requesting the deletion of a non-existing IMAGE is rejected with an error",
+      "description": null,
+      "parent": {
+        "id": "18569",
+        "key": "MCA-79",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/18569",
+        "fields": {
+          "summary": "Hard Delete IMAGE Node",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-02T08:36:04.047+0200",
+      "created": "2025-08-11T09:52:54.110+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19503",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19503",
+    "key": "MCA-350",
+    "fields": {
+      "summary": "Hard deleting an IMAGE does permanently delete it",
+      "description": null,
+      "parent": {
+        "id": "18569",
+        "key": "MCA-79",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/18569",
+        "fields": {
+          "summary": "Hard Delete IMAGE Node",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-02T08:36:01.362+0200",
+      "created": "2025-08-11T09:52:40.685+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19500",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19500",
+    "key": "MCA-349",
+    "fields": {
+      "summary": "Hard deleting a BRAND removes all attached RELATIONSHIPs",
+      "description": null,
+      "parent": {
+        "id": "18580",
+        "key": "MCA-90",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/18580",
+        "fields": {
+          "summary": "Hard Delete BRAND Node",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-02T08:35:18.424+0200",
+      "created": "2025-08-11T09:52:26.922+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19497",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19497",
+    "key": "MCA-348",
+    "fields": {
+      "summary": "Requesting the deletion of a non-existing BRAND is rejected with an error",
+      "description": null,
+      "parent": {
+        "id": "18580",
+        "key": "MCA-90",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/18580",
+        "fields": {
+          "summary": "Hard Delete BRAND Node",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-02T08:35:13.823+0200",
+      "created": "2025-08-11T09:52:15.751+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19494",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19494",
+    "key": "MCA-347",
+    "fields": {
+      "summary": "Hard deleting a BRAND does permanently delete it",
+      "description": null,
+      "parent": {
+        "id": "18580",
+        "key": "MCA-90",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/18580",
+        "fields": {
+          "summary": "Hard Delete BRAND Node",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-02T08:35:10.209+0200",
+      "created": "2025-08-11T09:52:03.626+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19491",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19491",
+    "key": "MCA-346",
+    "fields": {
+      "summary": "Hard deleting a CAR MODEL removes all attached RELATIONSHIPs",
+      "description": null,
+      "parent": {
+        "id": "18582",
+        "key": "MCA-92",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/18582",
+        "fields": {
+          "summary": "Hard Delete CAR MODEL Node",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-02T08:36:29.726+0200",
+      "created": "2025-08-11T09:31:41.685+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19488",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19488",
+    "key": "MCA-345",
+    "fields": {
+      "summary": "Requesting the deletion of a non-existing CAR MODEL is rejected with an error",
+      "description": null,
+      "parent": {
+        "id": "18582",
+        "key": "MCA-92",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/18582",
+        "fields": {
+          "summary": "Hard Delete CAR MODEL Node",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-02T08:36:26.043+0200",
+      "created": "2025-08-11T09:29:21.980+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19485",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19485",
+    "key": "MCA-344",
+    "fields": {
+      "summary": "Hard deleting a CAR MODEL does permanently delete it",
+      "description": null,
+      "parent": {
+        "id": "18582",
+        "key": "MCA-92",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/18582",
+        "fields": {
+          "summary": "Hard Delete CAR MODEL Node",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-02T08:36:23.387+0200",
+      "created": "2025-08-11T09:28:40.634+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19460",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19460",
+    "key": "MCA-340",
+    "fields": {
+      "summary": "An error is returned when the specified IMAGE does not exist",
+      "description": null,
+      "parent": {
+        "id": "18656",
+        "key": "MCA-155",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/18656",
+        "fields": {
+          "summary": "Get all Relationships: IMAGE belongs to NODE TYPE",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-02T08:46:07.185+0200",
+      "created": "2025-08-05T15:36:48.359+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19457",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19457",
+    "key": "MCA-339",
+    "fields": {
+      "summary": "All groups in the returned object are empty when no NODEs are attached to the IMAGE",
+      "description": null,
+      "parent": {
+        "id": "18656",
+        "key": "MCA-155",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/18656",
+        "fields": {
+          "summary": "Get all Relationships: IMAGE belongs to NODE TYPE",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-02T08:46:02.986+0200",
+      "created": "2025-08-05T15:21:38.962+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19454",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19454",
+    "key": "MCA-338",
+    "fields": {
+      "summary": "All attached NODEs are returned, grouped by NODE type",
+      "description": null,
+      "parent": {
+        "id": "18656",
+        "key": "MCA-155",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/18656",
+        "fields": {
+          "summary": "Get all Relationships: IMAGE belongs to NODE TYPE",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-02T08:45:57.240+0200",
+      "created": "2025-08-05T15:20:09.697+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19448",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19448",
+    "key": "MCA-334",
+    "fields": {
+      "summary": "A \"not found\" error is returned when the relationship between BRAND and IMAGE does not exist",
+      "description": null,
+      "parent": {
+        "id": "19191",
+        "key": "MCA-284",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19191",
+        "fields": {
+          "summary": "Get BRAND-has-IMAGE Relationship by ID",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-02T08:45:14.754+0200",
+      "created": "2025-08-05T14:40:33.222+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19445",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19445",
+    "key": "MCA-333",
+    "fields": {
+      "summary": "A \"not found\" error is returned when the BRAND or IMAGE does not exist",
+      "description": null,
+      "parent": {
+        "id": "19191",
+        "key": "MCA-284",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19191",
+        "fields": {
+          "summary": "Get BRAND-has-IMAGE Relationship by ID",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-02T08:45:11.896+0200",
+      "created": "2025-08-05T14:40:19.242+0200"
+    }
+  },
+  {
+    "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+    "id": "19442",
+    "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19442",
+    "key": "MCA-332",
+    "fields": {
+      "summary": "The relationship between BRAND and IMAGE is returned when it exists",
+      "description": null,
+      "parent": {
+        "id": "19191",
+        "key": "MCA-284",
+        "self": "https://dennis-gerike.atlassian.net/rest/api/3/issue/19191",
+        "fields": {
+          "summary": "Get BRAND-has-IMAGE Relationship by ID",
+          "status": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/status/10001",
+            "description": "",
+            "iconUrl": "https://dennis-gerike.atlassian.net/",
+            "name": "Fertig",
+            "id": "10001",
+            "statusCategory": {
+              "self": "https://dennis-gerike.atlassian.net/rest/api/3/statuscategory/3",
+              "id": 3,
+              "key": "done",
+              "colorName": "green",
+              "name": "Fertig"
+            }
+          },
+          "priority": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/priority/3",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+            "name": "Medium",
+            "id": "3"
+          },
+          "issuetype": {
+            "self": "https://dennis-gerike.atlassian.net/rest/api/3/issuetype/10001",
+            "id": "10001",
+            "description": "Eine Funktionalität oder Funktion, ausgedrückt als Benutzerziel.",
+            "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/issuetypes/story.svg",
+            "name": "Story",
+            "subtask": false,
+            "hierarchyLevel": 0
+          }
+        }
+      },
+      "updated": "2025-09-02T08:45:08.772+0200",
+      "created": "2025-08-05T14:40:08.087+0200"
+    }
+  }
+]

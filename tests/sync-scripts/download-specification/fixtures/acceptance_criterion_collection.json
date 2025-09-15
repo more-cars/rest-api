@@ -1,0 +1,802 @@
+[
+  {
+    "id": "MCA-551",
+    "parent_id": "MCA-539",
+    "title": "Read-only properties cannot be overridden by the user when creating a COMPANY",
+    "description": "Read-only properties are for example \\`ID\\`, \\`created\\_at\\` and \\`updated\\_at\\`. Analog to unknown properties, those fields will be ignored. They will not be processed and there will be no info, warning or error that they were skipped.\n",
+    "created_at": "2025-09-11T10:17:57.544+0200",
+    "updated_at": "2025-09-12T18:03:07.237+0200"
+  },
+  {
+    "id": "MCA-549",
+    "parent_id": "MCA-539",
+    "title": "Unknown properties are ignored when creating a COMPANY",
+    "description": "The user can provide properties that are not specified in the epic MCA-201, but they will be completely ignored. They will not be processed and there will be no info, warning or error that they were skipped.\n",
+    "created_at": "2025-09-11T10:17:52.862+0200",
+    "updated_at": "2025-09-12T18:03:04.351+0200"
+  },
+  {
+    "id": "MCA-546",
+    "parent_id": "MCA-539",
+    "title": "The response contains all specified properties when creating a COMPANY",
+    "description": "All properties are returned that are specified in the epic MCA-201. When properties are empty they are returned with null values. IDs, timestamp and other meta information might be included too, but is not in the scope of this AC.\n",
+    "created_at": "2025-09-11T10:17:44.572+0200",
+    "updated_at": "2025-09-12T18:02:59.571+0200"
+  },
+  {
+    "id": "MCA-542",
+    "parent_id": "MCA-539",
+    "title": "Requests to create a COMPANY are rejected when the provided data is invalid",
+    "description": "Data is invalid when its structure is incorrect, has syntax errors or does not contain all mandatory fields.\n",
+    "created_at": "2025-09-11T10:17:32.349+0200",
+    "updated_at": "2025-09-12T18:02:55.260+0200"
+  },
+  {
+    "id": "MCA-540",
+    "parent_id": "MCA-539",
+    "title": "Requests to create a COMPANY are accepted when the provided data is valid",
+    "description": "Data is valid when its structure is correct, has no syntax errors and contains all mandatory fields.\n",
+    "created_at": "2025-09-11T10:17:27.396+0200",
+    "updated_at": "2025-09-12T18:02:52.227+0200"
+  },
+  {
+    "id": "MCA-407",
+    "parent_id": "MCA-293",
+    "title": "Requesting to delete a non-existing has-prime-image relationship is rejected with an error",
+    "description": "",
+    "created_at": "2025-08-24T11:54:30.561+0200",
+    "updated_at": "2025-08-24T18:30:20.274+0200"
+  },
+  {
+    "id": "MCA-406",
+    "parent_id": "MCA-293",
+    "title": "Deletion requests are rejected with an error when the provided data is invalid",
+    "description": "* invalid data:\n  * CAR MODEL with given ID does not exists\n  * IMAGE with given ID does not exists\n",
+    "created_at": "2025-08-24T11:48:19.070+0200",
+    "updated_at": "2025-08-24T18:30:13.591+0200"
+  },
+  {
+    "id": "MCA-405",
+    "parent_id": "MCA-293",
+    "title": "The has-prime-image relationship is deleted when provided with valid data",
+    "description": "* invalid data:\n  * CAR MODEL with given ID does not exists\n  * IMAGE with given ID does not exists\n",
+    "created_at": "2025-08-24T11:42:56.924+0200",
+    "updated_at": "2025-08-24T18:29:47.486+0200"
+  },
+  {
+    "id": "MCA-404",
+    "parent_id": "MCA-388",
+    "title": "Requesting a non-existing has-prime-image relationship is rejected with an error",
+    "description": "",
+    "created_at": "2025-08-24T11:26:23.571+0200",
+    "updated_at": "2025-09-06T16:04:55.964+0200"
+  },
+  {
+    "id": "MCA-403",
+    "parent_id": "MCA-388",
+    "title": "Requests are rejected with an error when the provided data is invalid",
+    "description": "* invalid data:\n  * CAR MODEL with given ID does not exists\n  * IMAGE with given ID does not exists\n",
+    "created_at": "2025-08-24T11:19:06.629+0200",
+    "updated_at": "2025-09-06T16:04:58.819+0200"
+  },
+  {
+    "id": "MCA-402",
+    "parent_id": "MCA-388",
+    "title": "The has-prime-image relationship is returned when provided with valid data",
+    "description": "* valid data:\n  * CAR MODEL with given ID exists\n  * IMAGE with given ID exists\n* response:\n  * `car_model_id`: integer\n  * `image_id`: integer\n  * `relationship_id`: integer\n  * `relationship_name`: string → `has-prime-image`\n",
+    "created_at": "2025-08-24T11:18:55.212+0200",
+    "updated_at": "2025-09-06T16:04:53.320+0200"
+  },
+  {
+    "id": "MCA-401",
+    "parent_id": "MCA-294",
+    "title": "Requests are rejected with an error when the provided data is invalid",
+    "description": "* invalid data:\n  * CAR MODEL with given ID does not exists\n",
+    "created_at": "2025-08-24T11:17:44.415+0200",
+    "updated_at": "2025-09-06T16:04:41.950+0200"
+  },
+  {
+    "id": "MCA-400",
+    "parent_id": "MCA-294",
+    "title": "An empty response is returned when there exists no has-prime-image relationship for the CAR MODEL",
+    "description": "",
+    "created_at": "2025-08-24T11:11:50.308+0200",
+    "updated_at": "2025-09-06T16:04:45.432+0200"
+  },
+  {
+    "id": "MCA-399",
+    "parent_id": "MCA-294",
+    "title": "The has-prime-image relationship is returned when provided with valid data",
+    "description": "* valid data:\n  * CAR MODEL with given ID exists\n* response:\n  * `car_model_id`: integer\n  * `image_id`: integer\n  * `relationship_id`: integer\n  * `relationship_name`: string → `has-prime-image`\n",
+    "created_at": "2025-08-24T11:10:25.691+0200",
+    "updated_at": "2025-09-06T16:04:50.234+0200"
+  },
+  {
+    "id": "MCA-398",
+    "parent_id": "MCA-292",
+    "title": "Creating the same has-prime-image relationship again returns the already existing one",
+    "description": "",
+    "created_at": "2025-08-23T19:42:19.659+0200",
+    "updated_at": "2025-09-02T09:08:19.056+0200"
+  },
+  {
+    "id": "MCA-397",
+    "parent_id": "MCA-292",
+    "title": "Creation requests are rejected with an error when the provided data is invalid",
+    "description": "* invalid data:\n  * CAR MODEL with given ID does not exists\n  * IMAGE with given ID does not exists\n",
+    "created_at": "2025-08-23T19:42:05.065+0200",
+    "updated_at": "2025-09-02T09:08:14.212+0200"
+  },
+  {
+    "id": "MCA-396",
+    "parent_id": "MCA-292",
+    "title": "A CAR MODEL cannot have more than one prime IMAGE",
+    "description": "",
+    "created_at": "2025-08-23T19:41:52.083+0200",
+    "updated_at": "2025-09-02T09:08:25.797+0200"
+  },
+  {
+    "id": "MCA-395",
+    "parent_id": "MCA-292",
+    "title": "Connecting a different prime IMAGE to the CAR MODEL deletes the previous has-prime-image relationship",
+    "description": "",
+    "created_at": "2025-08-23T19:41:30.477+0200",
+    "updated_at": "2025-09-02T09:08:22.699+0200"
+  },
+  {
+    "id": "MCA-394",
+    "parent_id": "MCA-292",
+    "title": "The has-prime-image relationship is created when provided with valid data",
+    "description": "* valid data:\n  * CAR MODEL with given ID exists\n  * IMAGE with given ID exists\n* response:\n  * `car_model_id`: integer\n  * `image_id`: integer\n  * `relationship_id`: integer\n  * `relationship_name`: string → `has-prime-image`\n",
+    "created_at": "2025-08-23T19:41:00.066+0200",
+    "updated_at": "2025-09-02T09:08:09.560+0200"
+  },
+  {
+    "id": "MCA-393",
+    "parent_id": "MCA-369",
+    "title": "An error is returned when the page number is out of range",
+    "description": "* e.g. when there are `5` pages, but the user requests page `15`\n",
+    "created_at": "2025-08-22T17:30:54.095+0200",
+    "updated_at": "2025-08-31T19:07:03.280+0200"
+  },
+  {
+    "id": "MCA-387",
+    "parent_id": "MCA-369",
+    "title": "Non-pagination requests contain pagination meta information",
+    "description": "* e.g. `/car-models` returns the same fields as specified in <https://dennis-gerike.atlassian.net/browse/MCA-386>&#x20;\n",
+    "created_at": "2025-08-22T15:23:37.060+0200",
+    "updated_at": "2025-08-31T19:07:31.227+0200"
+  },
+  {
+    "id": "MCA-386",
+    "parent_id": "MCA-369",
+    "title": "The response for each pagination request contains pagination meta information",
+    "description": "* additional fields in the response:\n  * `page`: number\n  * `page-size`: number\n  * `total-pages`: number\n  * `total-items`: number\n",
+    "created_at": "2025-08-22T15:18:05.577+0200",
+    "updated_at": "2025-08-31T19:07:21.468+0200"
+  },
+  {
+    "id": "MCA-385",
+    "parent_id": "MCA-369",
+    "title": "Requests with an invalid page number respond with an error",
+    "description": "* negative number\n* 0\n* non-integer values\n",
+    "created_at": "2025-08-22T15:17:01.260+0200",
+    "updated_at": "2025-08-31T19:42:44.497+0200"
+  },
+  {
+    "id": "MCA-384",
+    "parent_id": "MCA-369",
+    "title": "Each page contains different nodes",
+    "description": "* e.g. when a node already appeared on page `1` it should not appear again on page `2`\n",
+    "created_at": "2025-08-22T15:14:43.288+0200",
+    "updated_at": "2025-08-31T19:06:43.144+0200"
+  },
+  {
+    "id": "MCA-383",
+    "parent_id": "MCA-369",
+    "title": "Each page contains a pre-defined amount of nodes",
+    "description": "* for the time being this number is always `100`, except for the last page\n",
+    "created_at": "2025-08-22T15:14:23.266+0200",
+    "updated_at": "2025-08-31T19:06:33.574+0200"
+  },
+  {
+    "id": "MCA-382",
+    "parent_id": "MCA-369",
+    "title": "Pagination is available for each node type",
+    "description": "* GET /brands?page=3\n* GET /car-models?page=7\n* GET /images?page=1\n* …\n",
+    "created_at": "2025-08-22T15:13:43.053+0200",
+    "updated_at": "2025-08-31T19:06:22.442+0200"
+  },
+  {
+    "id": "MCA-352",
+    "parent_id": "MCA-79",
+    "title": "Hard deleting an IMAGE removes all attached RELATIONSHIPs",
+    "description": "",
+    "created_at": "2025-08-11T09:53:06.494+0200",
+    "updated_at": "2025-09-02T08:36:06.566+0200"
+  },
+  {
+    "id": "MCA-351",
+    "parent_id": "MCA-79",
+    "title": "Requesting the deletion of a non-existing IMAGE is rejected with an error",
+    "description": "",
+    "created_at": "2025-08-11T09:52:54.110+0200",
+    "updated_at": "2025-09-02T08:36:04.047+0200"
+  },
+  {
+    "id": "MCA-350",
+    "parent_id": "MCA-79",
+    "title": "Hard deleting an IMAGE does permanently delete it",
+    "description": "",
+    "created_at": "2025-08-11T09:52:40.685+0200",
+    "updated_at": "2025-09-02T08:36:01.362+0200"
+  },
+  {
+    "id": "MCA-349",
+    "parent_id": "MCA-90",
+    "title": "Hard deleting a BRAND removes all attached RELATIONSHIPs",
+    "description": "",
+    "created_at": "2025-08-11T09:52:26.922+0200",
+    "updated_at": "2025-09-02T08:35:18.424+0200"
+  },
+  {
+    "id": "MCA-348",
+    "parent_id": "MCA-90",
+    "title": "Requesting the deletion of a non-existing BRAND is rejected with an error",
+    "description": "",
+    "created_at": "2025-08-11T09:52:15.751+0200",
+    "updated_at": "2025-09-02T08:35:13.823+0200"
+  },
+  {
+    "id": "MCA-347",
+    "parent_id": "MCA-90",
+    "title": "Hard deleting a BRAND does permanently delete it",
+    "description": "",
+    "created_at": "2025-08-11T09:52:03.626+0200",
+    "updated_at": "2025-09-02T08:35:10.209+0200"
+  },
+  {
+    "id": "MCA-346",
+    "parent_id": "MCA-92",
+    "title": "Hard deleting a CAR MODEL removes all attached RELATIONSHIPs",
+    "description": "",
+    "created_at": "2025-08-11T09:31:41.685+0200",
+    "updated_at": "2025-09-02T08:36:29.726+0200"
+  },
+  {
+    "id": "MCA-345",
+    "parent_id": "MCA-92",
+    "title": "Requesting the deletion of a non-existing CAR MODEL is rejected with an error",
+    "description": "",
+    "created_at": "2025-08-11T09:29:21.980+0200",
+    "updated_at": "2025-09-02T08:36:26.043+0200"
+  },
+  {
+    "id": "MCA-344",
+    "parent_id": "MCA-92",
+    "title": "Hard deleting a CAR MODEL does permanently delete it",
+    "description": "",
+    "created_at": "2025-08-11T09:28:40.634+0200",
+    "updated_at": "2025-09-02T08:36:23.387+0200"
+  },
+  {
+    "id": "MCA-340",
+    "parent_id": "MCA-155",
+    "title": "An error is returned when the specified IMAGE does not exist",
+    "description": "",
+    "created_at": "2025-08-05T15:36:48.359+0200",
+    "updated_at": "2025-09-02T08:46:07.185+0200"
+  },
+  {
+    "id": "MCA-339",
+    "parent_id": "MCA-155",
+    "title": "All groups in the returned object are empty when no NODEs are attached to the IMAGE",
+    "description": "",
+    "created_at": "2025-08-05T15:21:38.962+0200",
+    "updated_at": "2025-09-02T08:46:02.986+0200"
+  },
+  {
+    "id": "MCA-338",
+    "parent_id": "MCA-155",
+    "title": "All attached NODEs are returned, grouped by NODE type",
+    "description": "",
+    "created_at": "2025-08-05T15:20:09.697+0200",
+    "updated_at": "2025-09-02T08:45:57.240+0200"
+  },
+  {
+    "id": "MCA-334",
+    "parent_id": "MCA-284",
+    "title": "A \"not found\" error is returned when the relationship between BRAND and IMAGE does not exist",
+    "description": "",
+    "created_at": "2025-08-05T14:40:33.222+0200",
+    "updated_at": "2025-09-02T08:45:14.754+0200"
+  },
+  {
+    "id": "MCA-333",
+    "parent_id": "MCA-284",
+    "title": "A \"not found\" error is returned when the BRAND or IMAGE does not exist",
+    "description": "",
+    "created_at": "2025-08-05T14:40:19.242+0200",
+    "updated_at": "2025-09-02T08:45:11.896+0200"
+  },
+  {
+    "id": "MCA-332",
+    "parent_id": "MCA-284",
+    "title": "The relationship between BRAND and IMAGE is returned when it exists",
+    "description": "",
+    "created_at": "2025-08-05T14:40:08.087+0200",
+    "updated_at": "2025-09-02T08:45:08.772+0200"
+  },
+  {
+    "id": "MCA-328",
+    "parent_id": "MCA-285",
+    "title": "A \"not found\" error is returned when the relationship between BRAND and CAR MODEL does not exist",
+    "description": "",
+    "created_at": "2025-08-05T11:37:16.640+0200",
+    "updated_at": "2025-09-02T08:35:42.884+0200"
+  },
+  {
+    "id": "MCA-327",
+    "parent_id": "MCA-285",
+    "title": "A \"not found\" error is returned when the BRAND or CAR MODEL does not exist",
+    "description": "",
+    "created_at": "2025-08-05T11:37:01.451+0200",
+    "updated_at": "2025-09-02T08:35:40.041+0200"
+  },
+  {
+    "id": "MCA-326",
+    "parent_id": "MCA-285",
+    "title": "The relationship between BRAND and CAR MODEL is returned when it exists",
+    "description": "",
+    "created_at": "2025-08-05T11:36:45.201+0200",
+    "updated_at": "2025-09-02T08:35:36.769+0200"
+  },
+  {
+    "id": "MCA-322",
+    "parent_id": "MCA-283",
+    "title": "A \"not found\" error is returned when the relationship between CAR MODEL and IMAGE does not exist",
+    "description": "",
+    "created_at": "2025-08-05T10:02:48.523+0200",
+    "updated_at": "2025-08-06T18:00:07.208+0200"
+  },
+  {
+    "id": "MCA-321",
+    "parent_id": "MCA-283",
+    "title": "A \"not found\" error is returned when the CAR MODEL or IMAGE does not exist",
+    "description": "",
+    "created_at": "2025-08-05T10:01:43.588+0200",
+    "updated_at": "2025-08-06T18:00:03.925+0200"
+  },
+  {
+    "id": "MCA-320",
+    "parent_id": "MCA-283",
+    "title": "The relationship between CAR MODEL and IMAGE is returned when it exists",
+    "description": "",
+    "created_at": "2025-08-05T09:59:26.556+0200",
+    "updated_at": "2025-08-06T17:59:59.299+0200"
+  },
+  {
+    "id": "MCA-302",
+    "parent_id": "MCA-18",
+    "title": "Read-only properties cannot be overridden by the user when creating a BRAND ",
+    "description": "* read-only properties:\n  * `id`\n  * `created_at`\n  * `updated_at`\n",
+    "created_at": "2025-08-01T09:00:15.640+0200",
+    "updated_at": "2025-09-09T15:40:08.581+0200"
+  },
+  {
+    "id": "MCA-279",
+    "parent_id": "MCA-242",
+    "title": "An error is returned when the specified BRAND does not exist",
+    "description": "404\n",
+    "created_at": "2025-07-07T12:54:48.689+0200",
+    "updated_at": "2025-07-11T18:42:23.839+0200"
+  },
+  {
+    "id": "MCA-278",
+    "parent_id": "MCA-242",
+    "title": "An empty list is returned when there are no IMAGEs attached",
+    "description": "200\n",
+    "created_at": "2025-07-07T12:54:34.850+0200",
+    "updated_at": "2025-07-11T18:42:20.948+0200"
+  },
+  {
+    "id": "MCA-277",
+    "parent_id": "MCA-242",
+    "title": "A list of all attached IMAGEs can be requested",
+    "description": "200\n",
+    "created_at": "2025-07-07T12:54:25.786+0200",
+    "updated_at": "2025-07-11T18:42:16.656+0200"
+  },
+  {
+    "id": "MCA-272",
+    "parent_id": "MCA-240",
+    "title": "Multiple IMAGEs can be attached to a BRAND",
+    "description": "201\n",
+    "created_at": "2025-07-07T11:59:27.338+0200",
+    "updated_at": "2025-07-11T18:41:50.042+0200"
+  },
+  {
+    "id": "MCA-271",
+    "parent_id": "MCA-240",
+    "title": "The same relationship between the same nodes can only exist once",
+    "description": "201\n",
+    "created_at": "2025-07-07T11:59:17.463+0200",
+    "updated_at": "2025-07-11T18:41:52.866+0200"
+  },
+  {
+    "id": "MCA-270",
+    "parent_id": "MCA-240",
+    "title": "A 404 error is returned when any of the two nodes does not exist",
+    "description": "404\n",
+    "created_at": "2025-07-07T11:59:10.546+0200",
+    "updated_at": "2025-07-11T18:41:59.105+0200"
+  },
+  {
+    "id": "MCA-269",
+    "parent_id": "MCA-240",
+    "title": "Any existing IMAGE can be connected to any existing BRAND",
+    "description": "201\n",
+    "created_at": "2025-07-07T11:59:02.868+0200",
+    "updated_at": "2025-07-11T18:41:41.166+0200"
+  },
+  {
+    "id": "MCA-265",
+    "parent_id": "MCA-241",
+    "title": "An error is returned when the specified CAR MODEL does not exist",
+    "description": "404\n",
+    "created_at": "2025-07-04T16:20:23.350+0200",
+    "updated_at": "2025-07-16T12:53:09.473+0200"
+  },
+  {
+    "id": "MCA-264",
+    "parent_id": "MCA-241",
+    "title": "An empty list is returned when there are no IMAGEs attached",
+    "description": "200\n",
+    "created_at": "2025-07-04T16:19:04.171+0200",
+    "updated_at": "2025-07-16T12:53:11.856+0200"
+  },
+  {
+    "id": "MCA-263",
+    "parent_id": "MCA-241",
+    "title": "A list of all attached IMAGEs can be requested",
+    "description": "200\n",
+    "created_at": "2025-07-04T16:18:30.007+0200",
+    "updated_at": "2025-07-16T12:53:14.916+0200"
+  },
+  {
+    "id": "MCA-252",
+    "parent_id": "MCA-239",
+    "title": "Multiple IMAGEs can be connected to a CAR MODEL",
+    "description": "201\n",
+    "created_at": "2025-07-04T09:49:07.770+0200",
+    "updated_at": "2025-07-16T12:52:48.959+0200"
+  },
+  {
+    "id": "MCA-251",
+    "parent_id": "MCA-239",
+    "title": "The same relationship between the same nodes can only exist once",
+    "description": "201\n",
+    "created_at": "2025-07-04T09:48:52.347+0200",
+    "updated_at": "2025-07-16T12:52:52.139+0200"
+  },
+  {
+    "id": "MCA-250",
+    "parent_id": "MCA-239",
+    "title": "A 404 error is returned when any of the two nodes does not exist",
+    "description": "404\n",
+    "created_at": "2025-07-04T09:47:43.229+0200",
+    "updated_at": "2025-07-16T12:52:59.352+0200"
+  },
+  {
+    "id": "MCA-249",
+    "parent_id": "MCA-239",
+    "title": "Any existing IMAGE can be connected to any existing CAR MODEL",
+    "description": "201\n",
+    "created_at": "2025-07-04T09:47:26.582+0200",
+    "updated_at": "2025-07-16T12:52:44.630+0200"
+  },
+  {
+    "id": "MCA-248",
+    "parent_id": "MCA-234",
+    "title": "Updating a RELATIONSHIP does not change its ID",
+    "description": "",
+    "created_at": "2025-07-04T09:23:26.881+0200",
+    "updated_at": "2025-07-04T11:11:25.552+0200"
+  },
+  {
+    "id": "MCA-247",
+    "parent_id": "MCA-234",
+    "title": "Updating a NODE does not change its ID",
+    "description": "",
+    "created_at": "2025-07-04T09:23:13.443+0200",
+    "updated_at": "2025-07-04T11:11:19.763+0200"
+  },
+  {
+    "id": "MCA-246",
+    "parent_id": "MCA-234",
+    "title": "Custom IDs are not allowed when updating a NODE",
+    "description": "when the user sends an ID it will be ignored\n",
+    "created_at": "2025-07-04T09:01:37.873+0200",
+    "updated_at": "2025-07-04T11:11:13.196+0200"
+  },
+  {
+    "id": "MCA-245",
+    "parent_id": "MCA-234",
+    "title": "Custom IDs are not allowed when creating a NODE",
+    "description": "when the user sends an ID it will be ignored\n",
+    "created_at": "2025-07-04T09:01:31.814+0200",
+    "updated_at": "2025-07-11T18:49:00.473+0200"
+  },
+  {
+    "id": "MCA-244",
+    "parent_id": "MCA-234",
+    "title": "RELATIONSHIPs are created with 8-digit IDs",
+    "description": "* starting at 12 million (`12,000,000`)\n* limit: `99,999,999`&#x20;\n",
+    "created_at": "2025-07-04T08:55:53.232+0200",
+    "updated_at": "2025-07-11T18:48:55.743+0200"
+  },
+  {
+    "id": "MCA-243",
+    "parent_id": "MCA-234",
+    "title": "NODEs are created with 8-digit IDs",
+    "description": "* starting at 12 million (`12,000,000`)\n* limit: `99,999,999`&#x20;\n",
+    "created_at": "2025-07-04T08:55:34.919+0200",
+    "updated_at": "2025-07-11T18:48:49.709+0200"
+  },
+  {
+    "id": "MCA-194",
+    "parent_id": "MCA-68",
+    "title": "An error is returned when the specified BRAND does not exist",
+    "description": "404\n",
+    "created_at": "2025-06-05T15:40:11.363+0200",
+    "updated_at": "2025-06-17T08:54:42.817+0200"
+  },
+  {
+    "id": "MCA-193",
+    "parent_id": "MCA-68",
+    "title": "An empty list is returned when no CAR MODEL is attached",
+    "description": "200\n",
+    "created_at": "2025-06-05T15:39:55.145+0200",
+    "updated_at": "2025-06-17T08:54:45.679+0200"
+  },
+  {
+    "id": "MCA-192",
+    "parent_id": "MCA-68",
+    "title": "All attached CAR MODELs are returned",
+    "description": "200\n",
+    "created_at": "2025-06-05T15:39:34.278+0200",
+    "updated_at": "2025-06-17T08:54:45.254+0200"
+  },
+  {
+    "id": "MCA-191",
+    "parent_id": "MCA-182",
+    "title": "An error is returned when the specified CAR MODEL does not exist",
+    "description": "404\n",
+    "created_at": "2025-06-05T15:35:38.614+0200",
+    "updated_at": "2025-06-17T08:54:44.758+0200"
+  },
+  {
+    "id": "MCA-190",
+    "parent_id": "MCA-182",
+    "title": "An empty body is returned when there is no BRAND attached",
+    "description": "200\n",
+    "created_at": "2025-06-05T15:34:57.515+0200",
+    "updated_at": "2025-06-17T08:54:44.324+0200"
+  },
+  {
+    "id": "MCA-189",
+    "parent_id": "MCA-182",
+    "title": "The attached BRAND is returned",
+    "description": "200\n",
+    "created_at": "2025-06-05T15:34:28.086+0200",
+    "updated_at": "2025-06-17T08:54:46.568+0200"
+  },
+  {
+    "id": "MCA-187",
+    "parent_id": "MCA-179",
+    "title": "The same relationship between the same nodes can only exist once",
+    "description": "* trying to create the same relationship again&#x20;\n  * does not negate it (it’s not an on/off switch)\n  * does not create a new connection in the database (no duplicates allowed)\n* no matter how often the request is triggered, the result will always be the same (idempotency)\n  * the ID of the relationship does not change\n",
+    "created_at": "2025-06-04T18:44:03.239+0200",
+    "updated_at": "2025-06-14T11:31:08.476+0200"
+  },
+  {
+    "id": "MCA-183",
+    "parent_id": "MCA-179",
+    "title": "A 404 error is returned when any of the two nodes does not exist",
+    "description": "",
+    "created_at": "2025-06-04T18:03:28.030+0200",
+    "updated_at": "2025-06-14T11:31:00.030+0200"
+  },
+  {
+    "id": "MCA-181",
+    "parent_id": "MCA-179",
+    "title": "Connecting another BRAND to a CAR MODEL removes the original connection",
+    "description": "",
+    "created_at": "2025-05-24T17:50:08.579+0200",
+    "updated_at": "2025-06-14T11:30:44.436+0200"
+  },
+  {
+    "id": "MCA-180",
+    "parent_id": "MCA-179",
+    "title": "Any existing BRAND can be connected to any existing CAR MODEL  ",
+    "description": "",
+    "created_at": "2025-05-24T17:48:32.215+0200",
+    "updated_at": "2025-06-14T11:30:38.713+0200"
+  },
+  {
+    "id": "MCA-162",
+    "parent_id": "MCA-94",
+    "title": "Request is invalid when IMAGE and partner node are identical",
+    "description": "422\n",
+    "created_at": "2025-05-23T18:23:50.513+0200",
+    "updated_at": "2025-06-16T10:55:44.044+0200"
+  },
+  {
+    "id": "MCA-161",
+    "parent_id": "MCA-94",
+    "title": "Request returns a NOT FOUND error when there exists no connection between IMAGE and node",
+    "description": "404\n",
+    "created_at": "2025-05-23T18:23:25.895+0200",
+    "updated_at": "2025-06-16T10:55:47.662+0200"
+  },
+  {
+    "id": "MCA-160",
+    "parent_id": "MCA-94",
+    "title": "Request returns a NOT FOUND error when the IMAGE or partner node does not exists",
+    "description": "404\n",
+    "created_at": "2025-05-23T17:38:40.506+0200",
+    "updated_at": "2025-06-16T10:55:45.848+0200"
+  },
+  {
+    "id": "MCA-159",
+    "parent_id": "MCA-94",
+    "title": "When there exists a connection between IMAGE and node then that relationship is returned",
+    "description": "200\n",
+    "created_at": "2025-05-23T17:35:20.645+0200",
+    "updated_at": "2025-06-16T10:55:54.427+0200"
+  },
+  {
+    "id": "MCA-158",
+    "parent_id": "MCA-154",
+    "title": "Request returns a NOT FOUND error when the IMAGE does not exist",
+    "description": "404\n",
+    "created_at": "2025-05-23T17:33:57.321+0200",
+    "updated_at": "2025-06-16T10:56:04.470+0200"
+  },
+  {
+    "id": "MCA-157",
+    "parent_id": "MCA-154",
+    "title": "When the IMAGE is not connected to any node then an empty list is returned",
+    "description": "200\n",
+    "created_at": "2025-05-23T17:27:57.955+0200",
+    "updated_at": "2025-06-16T10:56:06.842+0200"
+  },
+  {
+    "id": "MCA-156",
+    "parent_id": "MCA-154",
+    "title": "When there exist nodes that are connected to the IMAGE then those relationships are returned",
+    "description": "200\n",
+    "created_at": "2025-05-23T17:27:01.789+0200",
+    "updated_at": "2025-06-16T10:56:08.762+0200"
+  },
+  {
+    "id": "MCA-153",
+    "parent_id": "MCA-82",
+    "title": "An IMAGE can be connected to multiple nodes of different type",
+    "description": "201\n",
+    "created_at": "2025-05-23T14:00:54.011+0200",
+    "updated_at": "2025-06-16T10:51:06.324+0200"
+  },
+  {
+    "id": "MCA-152",
+    "parent_id": "MCA-82",
+    "title": "An IMAGE can be connected to multiple nodes of the same type",
+    "description": "201\n",
+    "created_at": "2025-05-23T14:00:24.592+0200",
+    "updated_at": "2025-06-16T10:51:08.231+0200"
+  },
+  {
+    "id": "MCA-151",
+    "parent_id": "MCA-82",
+    "title": "An IMAGE cannot be connected to another IMAGE",
+    "description": "422\n",
+    "created_at": "2025-05-23T13:59:43.024+0200",
+    "updated_at": "2025-06-16T10:51:28.678+0200"
+  },
+  {
+    "id": "MCA-150",
+    "parent_id": "MCA-82",
+    "title": "An IMAGE cannot be connected to itself",
+    "description": "422\n",
+    "created_at": "2025-05-23T13:59:23.233+0200",
+    "updated_at": "2025-06-16T10:51:13.095+0200"
+  },
+  {
+    "id": "MCA-149",
+    "parent_id": "MCA-82",
+    "title": "The relationship ID does not change when the same relationship between the same nodes is created again",
+    "description": "* creating a new rel and creating the same rel again produces the identical response\n* 201\n",
+    "created_at": "2025-05-23T13:58:43.706+0200",
+    "updated_at": "2025-06-16T10:51:18.580+0200"
+  },
+  {
+    "id": "MCA-147",
+    "parent_id": "MCA-82",
+    "title": "The relationship creation is aborted when any of the two nodes don't exist",
+    "description": "404\n",
+    "created_at": "2025-05-23T13:56:14.327+0200",
+    "updated_at": "2025-06-16T10:51:20.590+0200"
+  },
+  {
+    "id": "MCA-146",
+    "parent_id": "MCA-82",
+    "title": "Any existing IMAGE can be connected to any existing non-IMAGE node",
+    "description": "201\n",
+    "created_at": "2025-05-23T13:54:58.554+0200",
+    "updated_at": "2025-06-16T10:51:37.042+0200"
+  },
+  {
+    "id": "MCA-120",
+    "parent_id": "MCA-88",
+    "title": "The IMAGE is created when the provided WIKIMEDIA ID is valid",
+    "description": "e.g. “1957 Hudson Hornet Super (37054215285).jpg”  →  <https://commons.wikimedia.org/wiki/File:1957_Hudson_Hornet_Super_(37054215285).jpg>&#x20;\n",
+    "created_at": "2025-05-21T14:28:34.239+0200",
+    "updated_at": "2025-05-24T18:49:02.692+0200"
+  },
+  {
+    "id": "MCA-119",
+    "parent_id": "MCA-88",
+    "title": "The IMAGE is NOT created when the provided WIKIMEDIA ID is invalid",
+    "description": "http code 422\n",
+    "created_at": "2025-05-21T14:28:18.734+0200",
+    "updated_at": "2025-05-24T18:49:04.706+0200"
+  },
+  {
+    "id": "MCA-118",
+    "parent_id": "MCA-87",
+    "title": "The IMAGE is created when the provided FLICKR ID is valid",
+    "description": "e.g. “54250906008” → <https://www.flickr.com/photos/more-cars/54250906008/>\n",
+    "created_at": "2025-05-21T14:19:58.318+0200",
+    "updated_at": "2025-05-24T18:49:10.546+0200"
+  },
+  {
+    "id": "MCA-117",
+    "parent_id": "MCA-87",
+    "title": "The IMAGE is NOT created when the provided FLICKR ID is invalid",
+    "description": "http code 422\n",
+    "created_at": "2025-05-21T14:18:53.033+0200",
+    "updated_at": "2025-05-24T18:49:08.652+0200"
+  },
+  {
+    "id": "MCA-116",
+    "parent_id": "MCA-75",
+    "title": "When creating an IMAGE the read-only properties cannot be overridden by the user",
+    "description": "* read-only properties\n  * `id`\n  * `name`\n  * `description`\n  * `creator`\n  * `license`\n  * `tags`\n  * `source`\n  * `image_url_original`\n  * `image_url_xxl`\n  * `image_url_xl`\n  * `image_url_l`\n  * `image_url_m`\n  * `image_url_s`\n  * `image_url_xs`\n  * `created_at`\n  * `updated_at`\n",
+    "created_at": "2025-05-21T14:00:09.399+0200",
+    "updated_at": "2025-06-16T10:48:09.861+0200"
+  },
+  {
+    "id": "MCA-115",
+    "parent_id": "MCA-77",
+    "title": "When no IMAGEs exist in the database then an empty list is returned",
+    "description": "",
+    "created_at": "2025-05-21T13:43:01.973+0200",
+    "updated_at": "2025-06-16T10:50:44.221+0200"
+  },
+  {
+    "id": "MCA-114",
+    "parent_id": "MCA-77",
+    "title": "Requesting an IMAGE collection returns a list of all existing IMAGE nodes",
+    "description": "",
+    "created_at": "2025-05-21T13:42:43.527+0200",
+    "updated_at": "2025-06-16T10:50:40.102+0200"
+  },
+  {
+    "id": "MCA-113",
+    "parent_id": "MCA-75",
+    "title": "The response for creating an IMAGE returns the new node with all specified properties",
+    "description": "* `external_id`: string\n* `image_provider`: string\n* `name`: string, (dummy-value)\n* `description`: string/null, (dummy-value)\n* `creator`: string, (dummy-value)\n* `license`: string, (dummy-value)\n* `tags`: string/null, (dummy-value)\n* `source`: string, (dummy-value)\n* `image_url_original`: string, (dummy-value)\n* `image_url_xxl`: string/null, (dummy-value)\n* `image_url_xl`: string/null, (dummy-value)\n* `image_url_l`: string/null, (dummy-value)\n* `image_url_m`: string/null, (dummy-value)\n* `image_url_s`: string/null, (dummy-value)\n* `image_url_xs`: string/null, (dummy-value)\n",
+    "created_at": "2025-05-21T12:48:16.229+0200",
+    "updated_at": "2025-06-16T10:48:23.050+0200"
+  }
+]
