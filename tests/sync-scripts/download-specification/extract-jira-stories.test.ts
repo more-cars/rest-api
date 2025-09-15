@@ -1,7 +1,7 @@
 import fs from "fs"
 import {expect, test} from "vitest"
 import {validateJson} from "../../_toolbox/validateJson.ts"
-import {StorySchema} from "../../../specification/sync-scripts/download-specification/lib/schemas/StorySchema"
+import {StorySchema} from "./schemas/StorySchema"
 import type {JiraStory} from "../../../specification/sync-scripts/download-specification/lib/types/JiraStory"
 import {extractJiraStories} from "../../../specification/sync-scripts/download-specification/lib/extractJiraStories"
 

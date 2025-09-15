@@ -1,9 +1,7 @@
 import {assert, expect, test} from "vitest"
 import {validateJson} from "../../_toolbox/validateJson.ts"
 import {downloadEpics} from "../../../specification/sync-scripts/download-specification/lib/downloadEpics"
-import {
-    GetEpicsResponseSchema
-} from "../../../specification/sync-scripts/download-specification/lib/schemas/GetEpicsResponseSchema"
+import {GetEpicsResponseSchema} from "./schemas/GetEpicsResponseSchema"
 
 test('Downloading all epics from Jira - real request', async () => {
     const jiraEpics = await downloadEpics()
