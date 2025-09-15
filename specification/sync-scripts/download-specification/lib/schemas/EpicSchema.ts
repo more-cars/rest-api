@@ -8,7 +8,7 @@ export const EpicSchema = {
             type: "string"
         },
         data_structure: {
-            type: ["object", "null"]
+            type: "string"
         },
         updated_at: {
             type: "string"

@@ -2,266 +2,42 @@
   {
     "id": "MCA-211",
     "title": "IDs",
-    "data_structure": null,
+    "data_structure": "",
     "created_at": "2025-06-10T13:02:41.595+0200",
     "updated_at": "2025-06-26T10:42:19.543+0200"
   },
   {
     "id": "MCA-210",
     "title": "Timestamps",
-    "data_structure": null,
+    "data_structure": "",
     "created_at": "2025-06-10T13:02:36.043+0200",
     "updated_at": "2025-06-26T10:42:21.035+0200"
   },
   {
     "id": "MCA-201",
     "title": "Node Type: Company",
-    "data_structure": {
-      "type": "doc",
-      "version": 1,
-      "content": [
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "[\n  {\n    \"name\": \"name\",\n    \"mandatory\": true,\n    \"datatype\": \"string\",\n    \"example\": \"BMW AG\"\n  },\n  {\n    \"name\": \"founded\",\n    \"mandatory\": false,\n    \"datatype\": \"number\",\n    \"example\": \"1916\"\n  },\n  {\n    \"name\": \"defunct\",\n    \"mandatory\": false,\n    \"datatype\": \"number\",\n    \"example\": \"\"\n  },\n  {\n    \"name\": \"headquarters_location\",\n    \"mandatory\": false,\n    \"datatype\": \"string\",\n    \"example\": \"Munich\"\n  },\n  {\n    \"name\": \"legal_headquarters_location\",\n    \"mandatory\": false,\n    \"datatype\": \"string\",\n    \"example\": \"Munich\"\n  }\n]"
-            }
-          ]
-        }
-      ]
-    },
+    "data_structure": "\\[\n&#x20; {\n&#x20;   \"name\": \"name\",\n&#x20;   \"mandatory\": true,\n&#x20;   \"datatype\": \"string\",\n&#x20;   \"example\": \"BMW AG\"\n&#x20; },\n&#x20; {\n&#x20;   \"name\": \"founded\",\n&#x20;   \"mandatory\": false,\n&#x20;   \"datatype\": \"number\",\n&#x20;   \"example\": \"1916\"\n&#x20; },\n&#x20; {\n&#x20;   \"name\": \"defunct\",\n&#x20;   \"mandatory\": false,\n&#x20;   \"datatype\": \"number\",\n&#x20;   \"example\": \"\"\n&#x20; },\n&#x20; {\n&#x20;   \"name\": \"headquarters\\_location\",\n&#x20;   \"mandatory\": false,\n&#x20;   \"datatype\": \"string\",\n&#x20;   \"example\": \"Munich\"\n&#x20; },\n&#x20; {\n&#x20;   \"name\": \"legal\\_headquarters\\_location\",\n&#x20;   \"mandatory\": false,\n&#x20;   \"datatype\": \"string\",\n&#x20;   \"example\": \"Munich\"\n&#x20; }\n]\n",
     "created_at": "2025-06-10T12:45:54.996+0200",
     "updated_at": "2025-09-11T10:32:12.186+0200"
   },
   {
     "id": "MCA-72",
     "title": "IMAGE Node Type",
-    "data_structure": {
-      "type": "doc",
-      "version": 1,
-      "content": [
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "image_provider: string, mandatory"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "external_id: string, mandatory"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "name: string, mandatory"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "description: string"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "creator: string, mandatory"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "license: string, mandatory"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "tags: string"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "source: string, mandatory"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "image_url_original: string, mandatory"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "image_url_xxl: string"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "image_url_xl: string"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "image_url_l: string"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "image_url_m: string"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "image_url_s: string"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "image_url_xs: string"
-            }
-          ]
-        }
-      ]
-    },
+    "data_structure": "image\\_provider: string, mandatory\\\nexternal\\_id: string, mandatory\\\nname: string, mandatory\\\ndescription: string\\\ncreator: string, mandatory\\\nlicense: string, mandatory\\\ntags: string\\\nsource: string, mandatory\\\nimage\\_url\\_original: string, mandatory\\\nimage\\_url\\_xxl: string\\\nimage\\_url\\_xl: string\\\nimage\\_url\\_l: string\\\nimage\\_url\\_m: string\\\nimage\\_url\\_s: string\\\nimage\\_url\\_xs: string\n",
     "created_at": "2025-05-18T09:58:20.136+0200",
     "updated_at": "2025-08-18T15:15:32.676+0200"
   },
   {
     "id": "MCA-71",
     "title": "BRAND Node Type",
-    "data_structure": {
-      "type": "doc",
-      "version": 1,
-      "content": [
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "name: string, mandatory"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "full_name: string"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "founded: integer"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "defunct: integer"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "wmi: string"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "hsn: string"
-            }
-          ]
-        }
-      ]
-    },
+    "data_structure": "name: string, mandatory\\\nfull\\_name: string\\\nfounded: integer\\\ndefunct: integer\\\nwmi: string\\\nhsn: string\n",
     "created_at": "2025-05-18T09:58:11.803+0200",
     "updated_at": "2025-08-18T15:15:23.907+0200"
   },
   {
     "id": "MCA-70",
     "title": "CAR MODEL Node Type",
-    "data_structure": {
-      "type": "doc",
-      "version": 1,
-      "content": [
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "type": "text",
-              "text": "name: string, mandatory"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "built_from: integer"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "built_to: integer"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "generation: integer"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "internal_code: string"
-            },
-            {
-              "type": "hardBreak"
-            },
-            {
-              "type": "text",
-              "text": "total_production: integer "
-            }
-          ]
-        }
-      ]
-    },
+    "data_structure": "name: string, mandatory\\\nbuilt\\_from: integer\\\nbuilt\\_to: integer\\\ngeneration: integer\\\ninternal\\_code: string\\\ntotal\\_production: integer&#x20;\n",
     "created_at": "2025-05-18T09:58:01.818+0200",
     "updated_at": "2025-08-18T15:15:10.879+0200"
   }
