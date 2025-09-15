@@ -1,6 +1,6 @@
 import fs from "fs"
 
-export function cacheJiraTickets(ticketType: 'epic' | 'story' | 'acceptance_criteria' | 'test', ticketCollection: [], path: string = './_temp') {
+export function cacheJiraTickets(ticketType: 'epic' | 'story' | 'acceptance_criteria' | 'test', ticketCollection: Array<any>, path: string = './_temp') {
     if (!fs.existsSync(path)) {
         fs.mkdirSync(path, {recursive: true})
     }
