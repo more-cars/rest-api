@@ -1,8 +1,10 @@
 import {downloadEpics} from "./downloadEpics"
+import {cacheJiraTickets} from "./cacheJiraTickets"
 import {extractJiraEpics} from "./extractJiraEpics"
 import {storeEpics} from "./storeEpics"
 import {downloadStories} from "./downloadStories"
-import {cacheJiraTickets} from "./cacheJiraTickets"
+import {extractJiraStories} from "./extractJiraStories"
+import {storeStories} from "./storeStories"
 
 export async function downloadFullSpec() {
     // epics
@@ -22,4 +24,6 @@ export async function downloadFullSpec() {
         return
     }
     cacheJiraTickets('story', downloadedStories)
+    const extractedStories = extractJiraStories(downloadedStories)
+    storeStories(extractedStories)
 }
