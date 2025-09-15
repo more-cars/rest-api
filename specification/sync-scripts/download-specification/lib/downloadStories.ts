@@ -8,6 +8,7 @@ export async function downloadStories() {
             .post(getJiraApiBaseUrl() + 'search/jql', {
                 "jql": "project = MCA AND issuetype = Story",
                 "fields": [
+                    "parent",
                     "summary",
                     "description",
                     "customfield_10691", // user story

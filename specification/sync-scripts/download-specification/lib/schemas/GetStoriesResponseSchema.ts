@@ -9,6 +9,9 @@ export const GetStoriesResponseSchema = {
             fields: {
                 type: "object",
                 properties: {
+                    parent: {
+                        type: "object",
+                    },
                     summary: {
                         type: "string",
                     },
@@ -35,6 +38,7 @@ export const GetStoriesResponseSchema = {
                     },
                 },
                 required: [
+                    "parent",
                     "summary",
                     "description",
                     "customfield_10691",
