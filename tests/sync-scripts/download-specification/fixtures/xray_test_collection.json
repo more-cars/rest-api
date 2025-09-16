@@ -1,0 +1,608 @@
+[
+  {
+    "gherkin": "When the user creates a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\n  | name | BMW AG | string |\n  | founded | 1916 | number |\n  | defunct |  | number |\n  | headquarters_location | Munich | string |\n  | legal_headquarters_location | Munich | string |\n  | id         | 1234       | number |\n  | created_at | 2025-01-01 | string |\n  | updated_at | 2025-01-01 | string |\nThen the response should contain the following keys\n  | id         |\n  | created_at |\n  | updated_at |\nBut the response should NOT contain the following properties\n  | id         | 1234       |\n  | created_at | 2025-01-01 |\n  | updated_at | 2025-01-01 |",
+    "jira": {
+      "key": "MCA-552",
+      "summary": "Expecting read-only properties to be ignored when creating a COMPANY",
+      "issuelinks": [
+        {
+          "id": "15109",
+          "self": "https://dennis-gerike.atlassian.net/rest/api/2/issueLink/15109",
+          "type": {
+            "id": "10400",
+            "name": "Test",
+            "inward": "is tested by",
+            "outward": "tests",
+            "self": "https://dennis-gerike.atlassian.net/rest/api/2/issueLinkType/10400"
+          },
+          "outwardIssue": {
+            "id": "20080",
+            "key": "MCA-551",
+            "self": "https://dennis-gerike.atlassian.net/rest/api/2/issue/20080",
+            "fields": {
+              "summary": "Read-only properties cannot be overridden by the user when creating a COMPANY",
+              "status": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/status/10001",
+                "description": "",
+                "iconUrl": "https://dennis-gerike.atlassian.net/",
+                "name": "Done",
+                "id": "10001",
+                "statusCategory": {
+                  "self": "https://dennis-gerike.atlassian.net/rest/api/2/statuscategory/3",
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/priority/3",
+                "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/issuetype/10166",
+                "id": "10166",
+                "description": "A rule which specifies one aspect of the user story.",
+                "iconUrl": "https://dennis-gerike.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+                "name": "Acceptance Criteria",
+                "subtask": true,
+                "avatarId": 10318,
+                "hierarchyLevel": -1
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        "implemented"
+      ]
+    }
+  },
+  {
+    "gherkin": "When the user creates a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\n  | name | BMW AG | string |\n  | founded | 1916 | number |\n  | defunct |  | number |\n  | headquarters_location | Munich | string |\n  | legal_headquarters_location | Munich | string |\n  | thimbleweed | park | string |\nThen the response should contain the following properties\n  | key | value |\n  | name | BMW AG |\n  | founded | 1916 |\n  | defunct |  |\n  | headquarters_location | Munich |\n  | legal_headquarters_location | Munich |\nAnd the response should NOT contain the following keys\n  | key         |\n  | thimbleweed |",
+    "jira": {
+      "key": "MCA-550",
+      "summary": "Expecting unknown properties to be ignored when creating a COMPANY",
+      "issuelinks": [
+        {
+          "id": "15108",
+          "self": "https://dennis-gerike.atlassian.net/rest/api/2/issueLink/15108",
+          "type": {
+            "id": "10400",
+            "name": "Test",
+            "inward": "is tested by",
+            "outward": "tests",
+            "self": "https://dennis-gerike.atlassian.net/rest/api/2/issueLinkType/10400"
+          },
+          "outwardIssue": {
+            "id": "20076",
+            "key": "MCA-549",
+            "self": "https://dennis-gerike.atlassian.net/rest/api/2/issue/20076",
+            "fields": {
+              "summary": "Unknown properties are ignored when creating a COMPANY",
+              "status": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/status/10001",
+                "description": "",
+                "iconUrl": "https://dennis-gerike.atlassian.net/",
+                "name": "Done",
+                "id": "10001",
+                "statusCategory": {
+                  "self": "https://dennis-gerike.atlassian.net/rest/api/2/statuscategory/3",
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/priority/3",
+                "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/issuetype/10166",
+                "id": "10166",
+                "description": "A rule which specifies one aspect of the user story.",
+                "iconUrl": "https://dennis-gerike.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+                "name": "Acceptance Criteria",
+                "subtask": true,
+                "avatarId": 10318,
+                "hierarchyLevel": -1
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        "implemented"
+      ]
+    }
+  },
+  {
+    "gherkin": "When the user creates a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\n  | name | BMW AG | string |\nThen the response should contain the following properties\n  | key | value |\n  | name | BMW AG |\n  | founded | |\n  | defunct | |\n  | headquarters_location | |\n  | legal_headquarters_location | |",
+    "jira": {
+      "key": "MCA-548",
+      "summary": "Expecting empty properties to be returned as null values when creating a COMPANY",
+      "issuelinks": [
+        {
+          "id": "15107",
+          "self": "https://dennis-gerike.atlassian.net/rest/api/2/issueLink/15107",
+          "type": {
+            "id": "10400",
+            "name": "Test",
+            "inward": "is tested by",
+            "outward": "tests",
+            "self": "https://dennis-gerike.atlassian.net/rest/api/2/issueLinkType/10400"
+          },
+          "outwardIssue": {
+            "id": "20071",
+            "key": "MCA-546",
+            "self": "https://dennis-gerike.atlassian.net/rest/api/2/issue/20071",
+            "fields": {
+              "summary": "The response contains all specified properties when creating a COMPANY",
+              "status": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/status/10001",
+                "description": "",
+                "iconUrl": "https://dennis-gerike.atlassian.net/",
+                "name": "Done",
+                "id": "10001",
+                "statusCategory": {
+                  "self": "https://dennis-gerike.atlassian.net/rest/api/2/statuscategory/3",
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/priority/3",
+                "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/issuetype/10166",
+                "id": "10166",
+                "description": "A rule which specifies one aspect of the user story.",
+                "iconUrl": "https://dennis-gerike.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+                "name": "Acceptance Criteria",
+                "subtask": true,
+                "avatarId": 10318,
+                "hierarchyLevel": -1
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        "implemented"
+      ]
+    }
+  },
+  {
+    "gherkin": "When the user creates a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\n  | name | BMW AG | string |\n  | founded | 1916 | number |\n  | defunct |  | number |\n  | headquarters_location | Munich | string |\n  | legal_headquarters_location | Munich | string |\nThen the response should contain the following properties\n  | key | value |\n  | name | BMW AG |\n  | founded | 1916 |\n  | defunct |  |\n  | headquarters_location | Munich |\n  | legal_headquarters_location | Munich |",
+    "jira": {
+      "key": "MCA-547",
+      "summary": "Expecting all properties to be returned when creating a COMPANY",
+      "issuelinks": [
+        {
+          "id": "15106",
+          "self": "https://dennis-gerike.atlassian.net/rest/api/2/issueLink/15106",
+          "type": {
+            "id": "10400",
+            "name": "Test",
+            "inward": "is tested by",
+            "outward": "tests",
+            "self": "https://dennis-gerike.atlassian.net/rest/api/2/issueLinkType/10400"
+          },
+          "outwardIssue": {
+            "id": "20071",
+            "key": "MCA-546",
+            "self": "https://dennis-gerike.atlassian.net/rest/api/2/issue/20071",
+            "fields": {
+              "summary": "The response contains all specified properties when creating a COMPANY",
+              "status": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/status/10001",
+                "description": "",
+                "iconUrl": "https://dennis-gerike.atlassian.net/",
+                "name": "Done",
+                "id": "10001",
+                "statusCategory": {
+                  "self": "https://dennis-gerike.atlassian.net/rest/api/2/statuscategory/3",
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/priority/3",
+                "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/issuetype/10166",
+                "id": "10166",
+                "description": "A rule which specifies one aspect of the user story.",
+                "iconUrl": "https://dennis-gerike.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+                "name": "Acceptance Criteria",
+                "subtask": true,
+                "avatarId": 10318,
+                "hierarchyLevel": -1
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        "implemented"
+      ]
+    }
+  },
+  {
+    "gherkin": "When the user tries to create a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\n  | name | ;BMW AG | string |\n  | founded | ;1916 | number |\n  | defunct | ; | number |\n  | headquarters_location | ;Munich | string |\n  | legal_headquarters_location | ;Munich | string |\nThen the response should return with status code 400",
+    "jira": {
+      "key": "MCA-545",
+      "summary": "Trying to create a COMPANY with malformed data",
+      "issuelinks": [
+        {
+          "id": "15105",
+          "self": "https://dennis-gerike.atlassian.net/rest/api/2/issueLink/15105",
+          "type": {
+            "id": "10400",
+            "name": "Test",
+            "inward": "is tested by",
+            "outward": "tests",
+            "self": "https://dennis-gerike.atlassian.net/rest/api/2/issueLinkType/10400"
+          },
+          "outwardIssue": {
+            "id": "20065",
+            "key": "MCA-542",
+            "self": "https://dennis-gerike.atlassian.net/rest/api/2/issue/20065",
+            "fields": {
+              "summary": "Requests to create a COMPANY are rejected when the provided data is invalid",
+              "status": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/status/10001",
+                "description": "",
+                "iconUrl": "https://dennis-gerike.atlassian.net/",
+                "name": "Done",
+                "id": "10001",
+                "statusCategory": {
+                  "self": "https://dennis-gerike.atlassian.net/rest/api/2/statuscategory/3",
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/priority/3",
+                "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/issuetype/10166",
+                "id": "10166",
+                "description": "A rule which specifies one aspect of the user story.",
+                "iconUrl": "https://dennis-gerike.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+                "name": "Acceptance Criteria",
+                "subtask": true,
+                "avatarId": 10318,
+                "hierarchyLevel": -1
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        "implemented"
+      ]
+    }
+  },
+  {
+    "gherkin": "When the user tries to create a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\n  | name | BMW AG | boolean |\n  | founded | 1916 | boolean |\n  | defunct |  | boolean |\n  | headquarters_location | Munich | boolean |\n  | legal_headquarters_location | Munich | boolean |\nThen the response should return with status code 400",
+    "jira": {
+      "key": "MCA-544",
+      "summary": "Trying to create a COMPANY with invalid data types",
+      "issuelinks": [
+        {
+          "id": "15104",
+          "self": "https://dennis-gerike.atlassian.net/rest/api/2/issueLink/15104",
+          "type": {
+            "id": "10400",
+            "name": "Test",
+            "inward": "is tested by",
+            "outward": "tests",
+            "self": "https://dennis-gerike.atlassian.net/rest/api/2/issueLinkType/10400"
+          },
+          "outwardIssue": {
+            "id": "20065",
+            "key": "MCA-542",
+            "self": "https://dennis-gerike.atlassian.net/rest/api/2/issue/20065",
+            "fields": {
+              "summary": "Requests to create a COMPANY are rejected when the provided data is invalid",
+              "status": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/status/10001",
+                "description": "",
+                "iconUrl": "https://dennis-gerike.atlassian.net/",
+                "name": "Done",
+                "id": "10001",
+                "statusCategory": {
+                  "self": "https://dennis-gerike.atlassian.net/rest/api/2/statuscategory/3",
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/priority/3",
+                "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/issuetype/10166",
+                "id": "10166",
+                "description": "A rule which specifies one aspect of the user story.",
+                "iconUrl": "https://dennis-gerike.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+                "name": "Acceptance Criteria",
+                "subtask": true,
+                "avatarId": 10318,
+                "hierarchyLevel": -1
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        "implemented"
+      ]
+    }
+  },
+  {
+    "gherkin": "When the user tries to create a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\nThen the response should return with status code 400",
+    "jira": {
+      "key": "MCA-543",
+      "summary": "Trying to create a COMPANY with missing mandatory information",
+      "issuelinks": [
+        {
+          "id": "15103",
+          "self": "https://dennis-gerike.atlassian.net/rest/api/2/issueLink/15103",
+          "type": {
+            "id": "10400",
+            "name": "Test",
+            "inward": "is tested by",
+            "outward": "tests",
+            "self": "https://dennis-gerike.atlassian.net/rest/api/2/issueLinkType/10400"
+          },
+          "outwardIssue": {
+            "id": "20065",
+            "key": "MCA-542",
+            "self": "https://dennis-gerike.atlassian.net/rest/api/2/issue/20065",
+            "fields": {
+              "summary": "Requests to create a COMPANY are rejected when the provided data is invalid",
+              "status": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/status/10001",
+                "description": "",
+                "iconUrl": "https://dennis-gerike.atlassian.net/",
+                "name": "Done",
+                "id": "10001",
+                "statusCategory": {
+                  "self": "https://dennis-gerike.atlassian.net/rest/api/2/statuscategory/3",
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/priority/3",
+                "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/issuetype/10166",
+                "id": "10166",
+                "description": "A rule which specifies one aspect of the user story.",
+                "iconUrl": "https://dennis-gerike.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+                "name": "Acceptance Criteria",
+                "subtask": true,
+                "avatarId": 10318,
+                "hierarchyLevel": -1
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        "implemented"
+      ]
+    }
+  },
+  {
+    "gherkin": "When the user creates a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\n  | name | BMW AG | string |\n  | founded | 1916 | number |\n  | defunct |  | number |\n  | headquarters_location | Munich | string |\n  | legal_headquarters_location | Munich | string |\nThen the response should return the \"COMPANY\" \"BMW AG\"\nAnd the response should return with status code 201",
+    "jira": {
+      "key": "MCA-541",
+      "summary": "Creating a COMPANY with valid data",
+      "issuelinks": [
+        {
+          "id": "15102",
+          "self": "https://dennis-gerike.atlassian.net/rest/api/2/issueLink/15102",
+          "type": {
+            "id": "10400",
+            "name": "Test",
+            "inward": "is tested by",
+            "outward": "tests",
+            "self": "https://dennis-gerike.atlassian.net/rest/api/2/issueLinkType/10400"
+          },
+          "outwardIssue": {
+            "id": "20061",
+            "key": "MCA-540",
+            "self": "https://dennis-gerike.atlassian.net/rest/api/2/issue/20061",
+            "fields": {
+              "summary": "Requests to create a COMPANY are accepted when the provided data is valid",
+              "status": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/status/10001",
+                "description": "",
+                "iconUrl": "https://dennis-gerike.atlassian.net/",
+                "name": "Done",
+                "id": "10001",
+                "statusCategory": {
+                  "self": "https://dennis-gerike.atlassian.net/rest/api/2/statuscategory/3",
+                  "id": 3,
+                  "key": "done",
+                  "colorName": "green",
+                  "name": "Done"
+                }
+              },
+              "priority": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/priority/3",
+                "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/issuetype/10166",
+                "id": "10166",
+                "description": "A rule which specifies one aspect of the user story.",
+                "iconUrl": "https://dennis-gerike.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+                "name": "Acceptance Criteria",
+                "subtask": true,
+                "avatarId": 10318,
+                "hierarchyLevel": -1
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        "implemented"
+      ]
+    }
+  },
+  {
+    "gherkin": "When the user requests the \"<node_type>\" collection\nThen the response should return with status code 200\nAnd the request should contain pagination meta information\n\nExamples:\n  | node_type |\n  | BRAND     |\n  | CAR_MODEL |\n  | IMAGE     |",
+    "jira": {
+      "key": "MCA-473",
+      "summary": "Expecting the response to contain pagination meta information even when no specific page was requested",
+      "issuelinks": [
+        {
+          "id": "15009",
+          "self": "https://dennis-gerike.atlassian.net/rest/api/2/issueLink/15009",
+          "type": {
+            "id": "10400",
+            "name": "Test",
+            "inward": "is tested by",
+            "outward": "tests",
+            "self": "https://dennis-gerike.atlassian.net/rest/api/2/issueLinkType/10400"
+          },
+          "outwardIssue": {
+            "id": "19686",
+            "key": "MCA-387",
+            "self": "https://dennis-gerike.atlassian.net/rest/api/2/issue/19686",
+            "fields": {
+              "summary": "Non-pagination requests contain pagination meta information",
+              "status": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/status/10201",
+                "description": "",
+                "iconUrl": "https://dennis-gerike.atlassian.net/",
+                "name": "Ready for Implementation",
+                "id": "10201",
+                "statusCategory": {
+                  "self": "https://dennis-gerike.atlassian.net/rest/api/2/statuscategory/2",
+                  "id": 2,
+                  "key": "new",
+                  "colorName": "blue-gray",
+                  "name": "To Do"
+                }
+              },
+              "priority": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/priority/3",
+                "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/issuetype/10166",
+                "id": "10166",
+                "description": "A rule which specifies one aspect of the user story.",
+                "iconUrl": "https://dennis-gerike.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+                "name": "Acceptance Criteria",
+                "subtask": true,
+                "avatarId": 10318,
+                "hierarchyLevel": -1
+              }
+            }
+          }
+        }
+      ],
+      "labels": []
+    }
+  },
+  {
+    "gherkin": "When the user requests page 1 of the \"<node_type>\" collection\nThen the response should return with status code 200\nAnd the request should contain pagination meta information\n\nExamples:\n  | node_type |\n  | BRAND     |\n  | CAR_MODEL |\n  | IMAGE     |",
+    "jira": {
+      "key": "MCA-472",
+      "summary": "Expecting the response to contain pagination meta information when a specific page was requested",
+      "issuelinks": [
+        {
+          "id": "15008",
+          "self": "https://dennis-gerike.atlassian.net/rest/api/2/issueLink/15008",
+          "type": {
+            "id": "10400",
+            "name": "Test",
+            "inward": "is tested by",
+            "outward": "tests",
+            "self": "https://dennis-gerike.atlassian.net/rest/api/2/issueLinkType/10400"
+          },
+          "outwardIssue": {
+            "id": "19683",
+            "key": "MCA-386",
+            "self": "https://dennis-gerike.atlassian.net/rest/api/2/issue/19683",
+            "fields": {
+              "summary": "The response for each pagination request contains pagination meta information",
+              "status": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/status/10201",
+                "description": "",
+                "iconUrl": "https://dennis-gerike.atlassian.net/",
+                "name": "Ready for Implementation",
+                "id": "10201",
+                "statusCategory": {
+                  "self": "https://dennis-gerike.atlassian.net/rest/api/2/statuscategory/2",
+                  "id": 2,
+                  "key": "new",
+                  "colorName": "blue-gray",
+                  "name": "To Do"
+                }
+              },
+              "priority": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/priority/3",
+                "iconUrl": "https://dennis-gerike.atlassian.net/images/icons/priorities/medium_new.svg",
+                "name": "Medium",
+                "id": "3"
+              },
+              "issuetype": {
+                "self": "https://dennis-gerike.atlassian.net/rest/api/2/issuetype/10166",
+                "id": "10166",
+                "description": "A rule which specifies one aspect of the user story.",
+                "iconUrl": "https://dennis-gerike.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+                "name": "Acceptance Criteria",
+                "subtask": true,
+                "avatarId": 10318,
+                "hierarchyLevel": -1
+              }
+            }
+          }
+        }
+      ],
+      "labels": []
+    }
+  }
+]

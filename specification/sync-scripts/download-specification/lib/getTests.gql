@@ -1,0 +1,11 @@
+{
+    getTests(jql: "project = 'MCA' AND testType = 'Cucumber'", limit: 100) {
+        total
+        start
+        limit
+        results {
+            gherkin
+            jira(fields: ["key", "summary", "labels", "issuelinks", "created", "updated"])
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import {downloadEpics} from "./downloadEpics"
-import {cacheJiraTickets} from "./cacheJiraTickets"
+import {cacheJiraTickets, cacheXrayTickets} from "./cacheJiraTickets"
 import {extractJiraEpics} from "./extractJiraEpics"
 import {storeEpics} from "./storeEpics"
 import {downloadStories} from "./downloadStories"
@@ -8,6 +8,9 @@ import {storeStories} from "./storeStories"
 import {downloadAcceptanceCriteria} from "./downloadAcceptanceCriteria"
 import {extractJiraAcceptanceCriteria} from "./extractJiraAcceptanceCriteria"
 import {storeAcceptanceCriteria} from "./storeAcceptanceCriteria"
+import {downloadTests} from "./downloadTests"
+import {extractXrayTests} from "./extractXrayTests"
+import {storeTests} from "./storeTests"
 
 export async function downloadFullSpec() {
     // epics
@@ -39,4 +42,14 @@ export async function downloadFullSpec() {
     cacheJiraTickets('acceptance_criteria', downloadedAcs)
     const extractedAcs = extractJiraAcceptanceCriteria(downloadedAcs)
     storeAcceptanceCriteria(extractedAcs)
+
+    // tests
+    const downloadedTests = await downloadTests()
+    if (!downloadedTests) {
+        console.error("Test tickets could not be downloaded.")
+        return
+    }
+    cacheXrayTickets('test', downloadedTests)
+    const extractedTests = extractXrayTests(downloadedTests)
+    storeTests(extractedTests)
 }
