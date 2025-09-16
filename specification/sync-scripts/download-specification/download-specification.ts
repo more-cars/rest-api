@@ -1,4 +1,4 @@
-import type {TicketListItem} from "./lib/types/TicketListItem"
+import type {ReferenceTicket} from "./lib/types/ReferenceTicket"
 import {downloadEpics} from "./lib/downloadEpics"
 import {cacheJiraTickets, cacheXrayTickets} from "./lib/cacheJiraTickets"
 import {extractJiraEpics} from "./lib/extractJiraEpics"
@@ -14,7 +14,7 @@ import {extractXrayTests} from "./lib/extractXrayTests"
 import {storeTests} from "./lib/storeTests"
 
 export async function downloadFullSpec() {
-    let ticketList: Array<TicketListItem> = []
+    let ticketList: Array<ReferenceTicket> = []
 
     // epics
     const downloadedEpics = await downloadEpics()
@@ -24,7 +24,7 @@ export async function downloadFullSpec() {
     }
     cacheJiraTickets('epic', downloadedEpics)
     const extractedEpics = extractJiraEpics(downloadedEpics)
-    const storedEpics = storeEpics(extractedEpics)
+    const storedEpics = storeEpics(extractedEpics, ticketList)
     ticketList = ticketList.concat(storedEpics)
     console.log('Epics downloaded: ' + extractedEpics.length)
 
@@ -36,7 +36,7 @@ export async function downloadFullSpec() {
     }
     cacheJiraTickets('story', downloadedStories)
     const extractedStories = extractJiraStories(downloadedStories)
-    const storedStories = storeStories(extractedStories)
+    const storedStories = storeStories(extractedStories, ticketList)
     ticketList = ticketList.concat(storedStories)
     console.log('Stories downloaded: ' + extractedStories.length)
 
@@ -48,7 +48,7 @@ export async function downloadFullSpec() {
     }
     cacheJiraTickets('acceptance_criteria', downloadedAcs)
     const extractedAcs = extractJiraAcceptanceCriteria(downloadedAcs)
-    const storedAcceptanceCriteria = storeAcceptanceCriteria(extractedAcs)
+    const storedAcceptanceCriteria = storeAcceptanceCriteria(extractedAcs, ticketList)
     ticketList = ticketList.concat(storedAcceptanceCriteria)
     console.log('Acceptance Criteria downloaded: ' + extractedAcs.length)
 
@@ -60,8 +60,7 @@ export async function downloadFullSpec() {
     }
     cacheXrayTickets('test', downloadedTests)
     const extractedTests = extractXrayTests(downloadedTests)
-    const storedTests = storeTests(extractedTests)
-    ticketList = ticketList.concat(storedTests)
+    storeTests(extractedTests, ticketList)
     console.log('Tests downloaded: ' + extractedTests.length)
 }
 

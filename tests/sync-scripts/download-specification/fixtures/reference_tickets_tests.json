@@ -1,0 +1,37 @@
+[
+  {
+    "type": "test",
+    "id": "MCA-552",
+    "sub_path": "/MCA-201 » Node Type: Company/MCA-539 » Create COMPANY Node/MCA-551 » Read-only properties cannot be overridden by the user when creating a COMPANY/MCA-552 » Expecting read-only properties to be ignored when creating a COMPANY/"
+  },
+  {
+    "type": "test",
+    "id": "MCA-550",
+    "sub_path": "/MCA-201 » Node Type: Company/MCA-539 » Create COMPANY Node/MCA-549 » Unknown properties are ignored when creating a COMPANY/MCA-550 » Expecting unknown properties to be ignored when creating a COMPANY/"
+  },
+  {
+    "type": "test",
+    "id": "MCA-548",
+    "sub_path": "/MCA-201 » Node Type: Company/MCA-539 » Create COMPANY Node/MCA-546 » The response contains all specified properties when creating a COMPANY/MCA-548 » Expecting empty properties to be returned as null values when creating a COMPANY/"
+  },
+  {
+    "type": "test",
+    "id": "MCA-547",
+    "sub_path": "/MCA-201 » Node Type: Company/MCA-539 » Create COMPANY Node/MCA-546 » The response contains all specified properties when creating a COMPANY/MCA-547 » Expecting all properties to be returned when creating a COMPANY/"
+  },
+  {
+    "type": "test",
+    "id": "MCA-544",
+    "sub_path": "/MCA-201 » Node Type: Company/MCA-539 » Create COMPANY Node/MCA-542 » Requests to create a COMPANY are rejected when the provided data is invalid/MCA-544 » Trying to create a COMPANY with invalid data types/"
+  },
+  {
+    "type": "test",
+    "id": "MCA-543",
+    "sub_path": "/MCA-201 » Node Type: Company/MCA-539 » Create COMPANY Node/MCA-542 » Requests to create a COMPANY are rejected when the provided data is invalid/MCA-543 » Trying to create a COMPANY with missing mandatory information/"
+  },
+  {
+    "type": "test",
+    "id": "MCA-541",
+    "sub_path": "/MCA-201 » Node Type: Company/MCA-539 » Create COMPANY Node/MCA-540 » Requests to create a COMPANY are accepted when the provided data is valid/MCA-541 » Creating a COMPANY with valid data/"
+  }
+]

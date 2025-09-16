@@ -1,27 +1,28 @@
 import fs from "fs"
 import type {Story} from "./types/Story"
-import type {TicketListItem} from "./types/TicketListItem"
+import type {ReferenceTicket} from "./types/ReferenceTicket"
+import {getParentTicket} from "./getParentTicket"
 
-export function storeStories(data: Array<Story>, basepath: string = __dirname + '/../../../Behavior') {
-    const ticketList: Array<TicketListItem> = []
+export function storeStories(data: Array<Story>, referenceTickets: Array<ReferenceTicket> = [], basepath: string = __dirname + '/../../../Behavior') {
+    const processedTickets: Array<ReferenceTicket> = []
 
     data.forEach(story => {
-        const subPath = story.id + ' » ' + story.title
-        const folderName = basepath + '/' + subPath
+        const subPath = getParentTicket(referenceTickets, story.parent_id).sub_path + story.id + ' » ' + story.title + '/'
+        const folderName = basepath + subPath
         const fileName = 'data.json'
 
         if (!fs.existsSync(folderName)) {
             fs.mkdirSync(folderName, {recursive: true})
         }
 
-        fs.writeFileSync(folderName + '/' + fileName, JSON.stringify(story, null, 2) + "\n")
+        fs.writeFileSync(folderName + fileName, JSON.stringify(story, null, 2) + "\n")
 
-        ticketList.push({
+        processedTickets.push({
             type: 'story',
             id: story.id,
             sub_path: subPath
         })
     })
 
-    return ticketList
+    return processedTickets
 }

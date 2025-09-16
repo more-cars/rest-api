@@ -1,6 +1,6 @@
 import type {TicketType} from "./TicketType"
 
-export type TicketListItem = {
+export type ReferenceTicket = {
     type: TicketType
     id: string
     sub_path: string

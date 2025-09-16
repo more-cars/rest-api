@@ -6,6 +6,9 @@ import type {
 import {
     storeAcceptanceCriteria
 } from "../../../specification/sync-scripts/download-specification/lib/storeAcceptanceCriteria"
+import type {
+    ReferenceTicket
+} from "../../../specification/sync-scripts/download-specification/lib/types/ReferenceTicket"
 
 describe('Storing the extracted ACs in the specification folder', () => {
     test('in custom location', async () => {
@@ -15,9 +18,15 @@ describe('Storing the extracted ACs in the specification folder', () => {
                 flag: 'r'
             }))
 
+        const referenceTickets: Array<ReferenceTicket> = JSON.parse(
+            fs.readFileSync(__dirname + '/fixtures/reference_tickets_acceptance_criteria.json', {
+                encoding: 'utf8',
+                flag: 'r'
+            }))
+
         const randomSuffix = Math.floor(Math.random() * 100000)
         const storagePath = __dirname + '/_temp/Behavior_' + randomSuffix
-        const ticketList = storeAcceptanceCriteria(acs, storagePath)
+        const ticketList = storeAcceptanceCriteria(acs, referenceTickets, storagePath)
 
         expect(ticketList.length)
             .toEqual(acs.length)

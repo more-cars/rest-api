@@ -2,6 +2,9 @@ import fs from "fs"
 import {describe, expect, test} from "vitest"
 import type {Test} from "../../../specification/sync-scripts/download-specification/lib/types/Test"
 import {storeTests} from "../../../specification/sync-scripts/download-specification/lib/storeTests"
+import type {
+    ReferenceTicket
+} from "../../../specification/sync-scripts/download-specification/lib/types/ReferenceTicket"
 
 describe('Storing the extracted tests in the specification folder', () => {
     test('in custom location', async () => {
@@ -11,9 +14,15 @@ describe('Storing the extracted tests in the specification folder', () => {
                 flag: 'r'
             }))
 
+        const referenceTickets: Array<ReferenceTicket> = JSON.parse(
+            fs.readFileSync(__dirname + '/fixtures/reference_tickets_tests.json', {
+                encoding: 'utf8',
+                flag: 'r'
+            }))
+
         const randomSuffix = Math.floor(Math.random() * 100000)
         const storagePath = __dirname + '/_temp/Behavior_' + randomSuffix
-        const ticketList = storeTests(tests, storagePath)
+        const ticketList = storeTests(tests, referenceTickets, storagePath)
 
         expect(ticketList.length)
             .toEqual(tests.length)
