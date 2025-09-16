@@ -21,12 +21,20 @@ export const GetTestsResponseSchema = {
                     labels: {
                         type: "array"
                     },
+                    updated: {
+                        type: "string"
+                    },
+                    created: {
+                        type: "string"
+                    },
                 },
                 required: [
                     "key",
                     "summary",
                     "issuelinks",
                     "labels",
+                    "created",
+                    "updated",
                 ],
                 additionalProperties: false,
             },
