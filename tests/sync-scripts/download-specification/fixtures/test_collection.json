@@ -6,7 +6,9 @@
     "gherkin": "When the user creates a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\n  | name | BMW AG | string |\n  | founded | 1916 | number |\n  | defunct |  | number |\n  | headquarters_location | Munich | string |\n  | legal_headquarters_location | Munich | string |\n  | id         | 1234       | number |\n  | created_at | 2025-01-01 | string |\n  | updated_at | 2025-01-01 | string |\nThen the response should contain the following keys\n  | id         |\n  | created_at |\n  | updated_at |\nBut the response should NOT contain the following properties\n  | id         | 1234       |\n  | created_at | 2025-01-01 |\n  | updated_at | 2025-01-01 |",
     "labels": [
       "implemented"
-    ]
+    ],
+    "created_at": "2025-09-11T10:18:00.509+0200",
+    "updated_at": "2025-09-12T19:28:05.534+0200"
   },
   {
     "id": "MCA-550",
@@ -15,7 +17,9 @@
     "gherkin": "When the user creates a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\n  | name | BMW AG | string |\n  | founded | 1916 | number |\n  | defunct |  | number |\n  | headquarters_location | Munich | string |\n  | legal_headquarters_location | Munich | string |\n  | thimbleweed | park | string |\nThen the response should contain the following properties\n  | key | value |\n  | name | BMW AG |\n  | founded | 1916 |\n  | defunct |  |\n  | headquarters_location | Munich |\n  | legal_headquarters_location | Munich |\nAnd the response should NOT contain the following keys\n  | key         |\n  | thimbleweed |",
     "labels": [
       "implemented"
-    ]
+    ],
+    "created_at": "2025-09-11T10:17:55.274+0200",
+    "updated_at": "2025-09-12T19:28:01.525+0200"
   },
   {
     "id": "MCA-548",
@@ -24,7 +28,9 @@
     "gherkin": "When the user creates a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\n  | name | BMW AG | string |\nThen the response should contain the following properties\n  | key | value |\n  | name | BMW AG |\n  | founded | |\n  | defunct | |\n  | headquarters_location | |\n  | legal_headquarters_location | |",
     "labels": [
       "implemented"
-    ]
+    ],
+    "created_at": "2025-09-11T10:17:50.751+0200",
+    "updated_at": "2025-09-12T19:27:56.432+0200"
   },
   {
     "id": "MCA-547",
@@ -33,7 +39,9 @@
     "gherkin": "When the user creates a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\n  | name | BMW AG | string |\n  | founded | 1916 | number |\n  | defunct |  | number |\n  | headquarters_location | Munich | string |\n  | legal_headquarters_location | Munich | string |\nThen the response should contain the following properties\n  | key | value |\n  | name | BMW AG |\n  | founded | 1916 |\n  | defunct |  |\n  | headquarters_location | Munich |\n  | legal_headquarters_location | Munich |",
     "labels": [
       "implemented"
-    ]
+    ],
+    "created_at": "2025-09-11T10:17:46.848+0200",
+    "updated_at": "2025-09-12T19:27:53.218+0200"
   },
   {
     "id": "MCA-545",
@@ -42,7 +50,9 @@
     "gherkin": "When the user tries to create a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\n  | name | ;BMW AG | string |\n  | founded | ;1916 | number |\n  | defunct | ; | number |\n  | headquarters_location | ;Munich | string |\n  | legal_headquarters_location | ;Munich | string |\nThen the response should return with status code 400",
     "labels": [
       "implemented"
-    ]
+    ],
+    "created_at": "2025-09-11T10:17:42.287+0200",
+    "updated_at": "2025-09-12T19:12:28.791+0200"
   },
   {
     "id": "MCA-544",
@@ -51,7 +61,9 @@
     "gherkin": "When the user tries to create a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\n  | name | BMW AG | boolean |\n  | founded | 1916 | boolean |\n  | defunct |  | boolean |\n  | headquarters_location | Munich | boolean |\n  | legal_headquarters_location | Munich | boolean |\nThen the response should return with status code 400",
     "labels": [
       "implemented"
-    ]
+    ],
+    "created_at": "2025-09-11T10:17:38.399+0200",
+    "updated_at": "2025-09-12T19:27:43.602+0200"
   },
   {
     "id": "MCA-543",
@@ -60,7 +72,9 @@
     "gherkin": "When the user tries to create a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\nThen the response should return with status code 400",
     "labels": [
       "implemented"
-    ]
+    ],
+    "created_at": "2025-09-11T10:17:34.771+0200",
+    "updated_at": "2025-09-12T19:27:40.083+0200"
   },
   {
     "id": "MCA-541",
@@ -69,6 +83,8 @@
     "gherkin": "When the user creates a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\n  | name | BMW AG | string |\n  | founded | 1916 | number |\n  | defunct |  | number |\n  | headquarters_location | Munich | string |\n  | legal_headquarters_location | Munich | string |\nThen the response should return the \"COMPANY\" \"BMW AG\"\nAnd the response should return with status code 201",
     "labels": [
       "implemented"
-    ]
+    ],
+    "created_at": "2025-09-11T10:17:29.984+0200",
+    "updated_at": "2025-09-12T19:27:33.789+0200"
   }
 ]
