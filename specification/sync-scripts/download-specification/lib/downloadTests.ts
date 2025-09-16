@@ -1,23 +1,39 @@
 import axios from "axios"
-import {getXrayGraphqlUrl} from "./getXrayGraphqlUrl"
+import type {XrayTest} from "./types/XrayTest"
 import {loadGraphqlQuery} from "./loadGraphqlQuery"
+import {getXrayGraphqlUrl} from "./getXrayGraphqlUrl"
 import {obtainXrayApiToken} from "./obtainXrayApiToken"
 
 export async function downloadTests() {
+    let results: Array<XrayTest> = []
+    let startIndex = 0
+    let moreResultsPagesAreAvailable = true
+
     try {
-        const response = await axios
-            .post(getXrayGraphqlUrl(), {
-                query: loadGraphqlQuery('getTests.gql')
-            }, {
-                headers: {
-                    'Authorization': `Bearer ${await obtainXrayApiToken()}`
-                }
-            })
-        return response.data.data.getTests.results
+        do {
+            const response = await requestNextPage(startIndex)
+            results = results.concat(response.data.data.getTests.results)
+            const totalResults = response.data.data.getTests.total
+            startIndex = startIndex + 100
+            moreResultsPagesAreAvailable = (startIndex < totalResults)
+        } while (moreResultsPagesAreAvailable)
     } catch (e) {
-        // @ts-expect-error TS18046
-        console.error(e.response.data)
+        console.error(e)
     }
 
-    return false
+    return results
+}
+
+async function requestNextPage(startIndex: number) {
+    let query = loadGraphqlQuery('getTests.gql')
+    query = query.replace('$start', String(startIndex))
+
+    return axios
+        .post(getXrayGraphqlUrl(), {
+            query
+        }, {
+            headers: {
+                'Authorization': `Bearer ${await obtainXrayApiToken()}`
+            }
+        })
 }

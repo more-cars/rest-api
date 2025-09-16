@@ -22,6 +22,7 @@ export async function downloadFullSpec() {
     cacheJiraTickets('epic', downloadedEpics)
     const extractedEpics = extractJiraEpics(downloadedEpics)
     storeEpics(extractedEpics)
+    console.log('Epics downloaded: ' + extractedEpics.length)
 
     // stories
     const downloadedStories = await downloadStories()
@@ -32,6 +33,7 @@ export async function downloadFullSpec() {
     cacheJiraTickets('story', downloadedStories)
     const extractedStories = extractJiraStories(downloadedStories)
     storeStories(extractedStories)
+    console.log('Stories downloaded: ' + extractedStories.length)
 
     // acceptance criteria
     const downloadedAcs = await downloadAcceptanceCriteria()
@@ -42,6 +44,7 @@ export async function downloadFullSpec() {
     cacheJiraTickets('acceptance_criteria', downloadedAcs)
     const extractedAcs = extractJiraAcceptanceCriteria(downloadedAcs)
     storeAcceptanceCriteria(extractedAcs)
+    console.log('Acceptance Criteria downloaded: ' + extractedAcs.length)
 
     // tests
     const downloadedTests = await downloadTests()
@@ -52,4 +55,5 @@ export async function downloadFullSpec() {
     cacheXrayTickets('test', downloadedTests)
     const extractedTests = extractXrayTests(downloadedTests)
     storeTests(extractedTests)
+    console.log('Tests downloaded: ' + extractedTests.length)
 }

@@ -1,31 +1,45 @@
 import axios from "axios"
 import {getJiraApiBaseUrl} from "./getJiraApiBaseUrl"
 import {getJiraApiAuthKey} from "./getJiraApiAuthKey"
+import type {JiraAcceptanceCriterion} from "./types/JiraAcceptanceCriterion"
 
 export async function downloadAcceptanceCriteria() {
+    let results: Array<JiraAcceptanceCriterion> = []
+    let nextPageToken = null
+    let moreResultsPagesAreAvailable = true
+
     try {
-        const response = await axios
-            .post(getJiraApiBaseUrl() + 'search/jql', {
-                "jql": "project = MCA AND issuetype = 'Acceptance Criteria'",
-                "fields": [
-                    "parent",
-                    "summary",
-                    "description",
-                    "fixVersions",
-                    "created",
-                    "updated",
-                ],
-                "maxResults": 1000,
-            }, {
-                headers: {
-                    'Authorization': `Basic ${getJiraApiAuthKey()}`,
-                    'Content-Type': 'application/json',
-                }
-            })
-        return response.data.issues
+        do {
+            const response = await requestNextPage(nextPageToken)
+            results = results.concat(response.data.issues)
+            nextPageToken = response.data.nextPageToken
+            moreResultsPagesAreAvailable = !!nextPageToken
+        } while (moreResultsPagesAreAvailable)
     } catch (e) {
         console.error(e)
     }
 
-    return false
+    return results
+}
+
+async function requestNextPage(nextPageToken: string | null) {
+    return axios
+        .post(getJiraApiBaseUrl() + 'search/jql', {
+            "jql": "project = MCA AND issuetype = 'Acceptance Criteria'",
+            "fields": [
+                "parent",
+                "summary",
+                "description",
+                "fixVersions",
+                "created",
+                "updated",
+            ],
+            nextPageToken,
+            "maxResults": 100,
+        }, {
+            headers: {
+                'Authorization': `Basic ${getJiraApiAuthKey()}`,
+                'Content-Type': 'application/json',
+            }
+        })
 }
