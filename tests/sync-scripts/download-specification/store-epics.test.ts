@@ -13,7 +13,10 @@ describe('Storing the extracted epics in the specification folder', () => {
 
         const randomSuffix = Math.floor(Math.random() * 100000)
         const storagePath = __dirname + '/_temp/Behavior_' + randomSuffix
-        storeEpics(epics, storagePath)
+        const ticketList = storeEpics(epics, storagePath)
+
+        expect(ticketList.length)
+            .toEqual(epics.length)
 
         epics.forEach(epic => {
             const filePath = storagePath + '/' + epic.id + ' » ' + epic.title + '/data.json'

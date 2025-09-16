@@ -13,7 +13,10 @@ describe('Storing the extracted tests in the specification folder', () => {
 
         const randomSuffix = Math.floor(Math.random() * 100000)
         const storagePath = __dirname + '/_temp/Behavior_' + randomSuffix
-        storeTests(tests, storagePath)
+        const ticketList = storeTests(tests, storagePath)
+
+        expect(ticketList.length)
+            .toEqual(tests.length)
 
         tests.forEach(test => {
             const filePath = storagePath + '/' + test.id + ' » ' + test.title + '/data.json'

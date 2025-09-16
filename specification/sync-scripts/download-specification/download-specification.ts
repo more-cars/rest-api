@@ -1,3 +1,4 @@
+import type {TicketListItem} from "./lib/types/TicketListItem"
 import {downloadEpics} from "./lib/downloadEpics"
 import {cacheJiraTickets, cacheXrayTickets} from "./lib/cacheJiraTickets"
 import {extractJiraEpics} from "./lib/extractJiraEpics"
@@ -13,6 +14,8 @@ import {extractXrayTests} from "./lib/extractXrayTests"
 import {storeTests} from "./lib/storeTests"
 
 export async function downloadFullSpec() {
+    let ticketList: Array<TicketListItem> = []
+
     // epics
     const downloadedEpics = await downloadEpics()
     if (!downloadedEpics) {
@@ -21,7 +24,8 @@ export async function downloadFullSpec() {
     }
     cacheJiraTickets('epic', downloadedEpics)
     const extractedEpics = extractJiraEpics(downloadedEpics)
-    storeEpics(extractedEpics)
+    const storedEpics = storeEpics(extractedEpics)
+    ticketList = ticketList.concat(storedEpics)
     console.log('Epics downloaded: ' + extractedEpics.length)
 
     // stories
@@ -32,7 +36,8 @@ export async function downloadFullSpec() {
     }
     cacheJiraTickets('story', downloadedStories)
     const extractedStories = extractJiraStories(downloadedStories)
-    storeStories(extractedStories)
+    const storedStories = storeStories(extractedStories)
+    ticketList = ticketList.concat(storedStories)
     console.log('Stories downloaded: ' + extractedStories.length)
 
     // acceptance criteria
@@ -43,7 +48,8 @@ export async function downloadFullSpec() {
     }
     cacheJiraTickets('acceptance_criteria', downloadedAcs)
     const extractedAcs = extractJiraAcceptanceCriteria(downloadedAcs)
-    storeAcceptanceCriteria(extractedAcs)
+    const storedAcceptanceCriteria = storeAcceptanceCriteria(extractedAcs)
+    ticketList = ticketList.concat(storedAcceptanceCriteria)
     console.log('Acceptance Criteria downloaded: ' + extractedAcs.length)
 
     // tests
@@ -54,7 +60,8 @@ export async function downloadFullSpec() {
     }
     cacheXrayTickets('test', downloadedTests)
     const extractedTests = extractXrayTests(downloadedTests)
-    storeTests(extractedTests)
+    const storedTests = storeTests(extractedTests)
+    ticketList = ticketList.concat(storedTests)
     console.log('Tests downloaded: ' + extractedTests.length)
 }
 

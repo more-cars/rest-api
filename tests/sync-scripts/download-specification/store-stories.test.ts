@@ -13,7 +13,10 @@ describe('Storing the extracted stories in the specification folder', () => {
 
         const randomSuffix = Math.floor(Math.random() * 100000)
         const storagePath = __dirname + '/_temp/Behavior_' + randomSuffix
-        storeStories(stories, storagePath)
+        const ticketList = storeStories(stories, storagePath)
+
+        expect(ticketList.length)
+            .toEqual(stories.length)
 
         stories.forEach(story => {
             const filePath = storagePath + '/' + story.id + ' » ' + story.title + '/data.json'

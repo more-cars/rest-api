@@ -17,7 +17,10 @@ describe('Storing the extracted ACs in the specification folder', () => {
 
         const randomSuffix = Math.floor(Math.random() * 100000)
         const storagePath = __dirname + '/_temp/Behavior_' + randomSuffix
-        storeAcceptanceCriteria(acs, storagePath)
+        const ticketList = storeAcceptanceCriteria(acs, storagePath)
+
+        expect(ticketList.length)
+            .toEqual(acs.length)
 
         acs.forEach(ac => {
             const filePath = storagePath + '/' + ac.id + ' » ' + ac.title + '/data.json'
