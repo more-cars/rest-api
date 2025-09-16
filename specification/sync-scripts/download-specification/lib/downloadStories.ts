@@ -25,7 +25,7 @@ export async function downloadStories() {
 async function requestNextPage(nextPageToken: string | null) {
     return axios
         .post(getJiraApiBaseUrl() + 'search/jql', {
-            "jql": "project = MCA AND issuetype = Story",
+            "jql": 'project = MCA AND issuetype = Story AND status IN ("Ready for Implementation", "In Development", "In Approval", "In Release", "Done")',
             "fields": [
                 "parent",
                 "summary",

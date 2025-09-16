@@ -25,7 +25,7 @@ export async function downloadEpics(): Promise<false | Array<JiraEpic>> {
 async function requestNextPage(nextPageToken: string | null) {
     return axios
         .post(getJiraApiBaseUrl() + 'search/jql', {
-            "jql": "project = MCA AND issuetype = Epic AND status = 'In Progress'",
+            "jql": 'project = MCA AND issuetype = Epic AND status IN ("In Progress", "Done")',
             "fields": [
                 "summary",
                 "customfield_10764", // data structure field

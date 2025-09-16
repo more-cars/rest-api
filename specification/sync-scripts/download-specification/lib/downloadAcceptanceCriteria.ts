@@ -25,7 +25,7 @@ export async function downloadAcceptanceCriteria() {
 async function requestNextPage(nextPageToken: string | null) {
     return axios
         .post(getJiraApiBaseUrl() + 'search/jql', {
-            "jql": "project = MCA AND issuetype = 'Acceptance Criteria'",
+            "jql": 'project = MCA AND issuetype = "Acceptance Criteria" AND status IN ("Ready for Implementation", "In Development", "In Deployment", "Done")',
             "fields": [
                 "parent",
                 "summary",
