@@ -7,6 +7,7 @@ export type Story = {
     api_path: string | null
     response_options: string[]
     description: string
+    release_versions: string[]
     created_at: string
     updated_at: string
 }

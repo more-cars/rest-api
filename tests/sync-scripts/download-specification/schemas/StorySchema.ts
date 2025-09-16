@@ -25,6 +25,9 @@ export const StorySchema = {
         description: {
             type: "string"
         },
+        release_versions: {
+            type: "array"
+        },
         updated_at: {
             type: "string"
         },
@@ -41,6 +44,7 @@ export const StorySchema = {
         "api_path",
         "response_options",
         "description",
+        "release_versions",
         "updated_at",
         "created_at",
     ],

@@ -16,6 +16,7 @@ export function extractJiraStories(stories: Array<JiraStory>): Array<Story> {
             api_verb: jiraStory.fields.customfield_10732?.value || null,
             api_path: jiraStory.fields.customfield_10731,
             response_options: jiraStory.fields.customfield_10767?.map(item => item.value) || [],
+            release_versions: jiraStory.fields.fixVersions?.map(item => item.name) || [],
             created_at: jiraStory.fields.created,
             updated_at: jiraStory.fields.updated,
         } as Story)

@@ -18,6 +18,9 @@ export const GetAcceptanceCriteriaResponseSchema = {
                     description: {
                         type: ["object", "null"],
                     },
+                    fixVersions: {
+                        type: ["array"],
+                    },
                     updated: {
                         type: "string"
                     },
@@ -29,6 +32,7 @@ export const GetAcceptanceCriteriaResponseSchema = {
                     "parent",
                     "summary",
                     "description",
+                    "fixVersions",
                     "created",
                     "updated",
                 ],

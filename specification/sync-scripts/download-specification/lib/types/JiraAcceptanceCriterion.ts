@@ -6,6 +6,9 @@ export type JiraAcceptanceCriterion = {
         }
         summary: string
         description: object
+        fixVersions: {
+            name: string
+        }[]
         created: string
         updated: string
     }

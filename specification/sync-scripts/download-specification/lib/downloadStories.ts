@@ -15,6 +15,7 @@ export async function downloadStories() {
                     "customfield_10732", // API Verb
                     "customfield_10731", // API Path
                     "customfield_10767", // Response options
+                    "fixVersions",
                     "created",
                     "updated",
                 ],

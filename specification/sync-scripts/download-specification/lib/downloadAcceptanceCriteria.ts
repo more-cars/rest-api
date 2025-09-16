@@ -11,6 +11,7 @@ export async function downloadAcceptanceCriteria() {
                     "parent",
                     "summary",
                     "description",
+                    "fixVersions",
                     "created",
                     "updated",
                 ],

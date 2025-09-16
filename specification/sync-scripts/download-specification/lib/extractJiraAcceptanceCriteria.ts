@@ -12,6 +12,7 @@ export function extractJiraAcceptanceCriteria(acs: Array<JiraAcceptanceCriterion
             parent_id: jiraAc.fields.parent.key,
             title: jiraAc.fields.summary,
             description: extractDescription(jiraAc.fields.description),
+            release_version: jiraAc.fields.fixVersions.length > 0 ? jiraAc.fields.fixVersions[0].name : null,
             created_at: jiraAc.fields.created,
             updated_at: jiraAc.fields.updated,
         } as AcceptanceCriterion)

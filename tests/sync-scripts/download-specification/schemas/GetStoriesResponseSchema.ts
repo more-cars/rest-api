@@ -30,6 +30,9 @@ export const GetStoriesResponseSchema = {
                     customfield_10767: {
                         type: ["array", "null"],
                     },
+                    fixVersions: {
+                        type: ["array", "null"],
+                    },
                     updated: {
                         type: "string"
                     },
@@ -45,6 +48,7 @@ export const GetStoriesResponseSchema = {
                     "customfield_10732",
                     "customfield_10731",
                     "customfield_10767",
+                    "fixVersions",
                     "created",
                     "updated",
                 ],

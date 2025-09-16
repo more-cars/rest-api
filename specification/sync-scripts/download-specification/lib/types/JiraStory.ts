@@ -18,6 +18,9 @@ export type JiraStory = {
         customfield_10767: {
             value: string
         }[]
+        fixVersions: {
+            name: string
+        }[]
         created: string
         updated: string
     }

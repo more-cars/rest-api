@@ -13,6 +13,9 @@ export const AcceptanceCriteriaSchema = {
         description: {
             type: "string"
         },
+        release_version: {
+            type: ["string", "null"]
+        },
         updated_at: {
             type: "string"
         },
@@ -25,6 +28,7 @@ export const AcceptanceCriteriaSchema = {
         "parent_id",
         "title",
         "description",
+        "release_version",
         "updated_at",
         "created_at",
     ],
