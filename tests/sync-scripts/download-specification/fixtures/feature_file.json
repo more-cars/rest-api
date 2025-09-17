@@ -1,0 +1,20 @@
+{
+  "feature": {
+    "id": "DUMMY-1",
+    "title": "Story title",
+    "user_story": "As a tester\nI want to test the tests\nSo the tests are tested"
+  },
+  "rule": {
+    "id": "DUMMY-2",
+    "title": "AC title"
+  },
+  "scenario": {
+    "id": "DUMMY-3",
+    "title": "Test title",
+    "type": "scenario",
+    "gherkin": "Given there exists a test\nWhen the tester tests the test\nThen the test should have been tested",
+    "tags": [
+      "implemented"
+    ]
+  }
+}

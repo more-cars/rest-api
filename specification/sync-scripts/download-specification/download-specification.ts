@@ -12,6 +12,13 @@ import {storeAcceptanceCriteria} from "./lib/storeAcceptanceCriteria"
 import {downloadTests} from "./lib/downloadTests"
 import {extractXrayTests} from "./lib/extractXrayTests"
 import {storeTests} from "./lib/storeTests"
+import {findReferenceTicket} from "./lib/findReferenceTicket"
+import {Test} from "./lib/types/Test"
+import type {AcceptanceCriterion} from "./lib/types/AcceptanceCriterion"
+import type {Story} from "./lib/types/Story"
+import {collectFeatureFileData} from "./lib/collectFeatureFileData"
+import {assembleFeatureFile} from "./lib/assembleFeatureFile"
+import {storeFeatureFile} from "./lib/storeFeatureFile"
 
 export async function downloadFullSpec() {
     let ticketList: Array<ReferenceTicket> = []
@@ -60,8 +67,22 @@ export async function downloadFullSpec() {
     }
     cacheXrayTickets('test', downloadedTests)
     const extractedTests = extractXrayTests(downloadedTests)
-    storeTests(extractedTests, ticketList)
+    const storedTests = storeTests(extractedTests, ticketList)
+    ticketList = ticketList.concat(storedTests)
     console.log('Tests downloaded: ' + extractedTests.length)
+
+    // feature files
+    extractedTests.forEach(test => {
+        const testRef = findReferenceTicket(test.id, ticketList)
+        const acRef = findReferenceTicket((testRef?.data as Test).parent_id, ticketList)
+        const storyRef = findReferenceTicket((acRef?.data as AcceptanceCriterion).parent_id, ticketList)
+
+        const data = collectFeatureFileData(test, acRef?.data as AcceptanceCriterion, storyRef?.data as Story)
+        const feature = assembleFeatureFile(data)
+        const basePath = __dirname + '/../../Behavior/'
+        const subPath = testRef?.sub_path
+        storeFeatureFile(feature, basePath + subPath, data.scenario.id)
+    })
 }
 
 downloadFullSpec().then(r => true)
