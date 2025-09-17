@@ -25,14 +25,14 @@ describe('Storing the extracted ACs in the specification folder', () => {
             }))
 
         const randomSuffix = Math.floor(Math.random() * 100000)
-        const storagePath = __dirname + '/_temp/Behavior_' + randomSuffix
+        const storagePath = __dirname + '/_temp/Behavior_' + randomSuffix + '/'
         const ticketList = storeAcceptanceCriteria(acs, referenceTickets, storagePath)
 
         expect(ticketList.length)
             .toEqual(acs.length)
 
         acs.forEach(ac => {
-            const filePath = storagePath + '/' + ac.id + ' » ' + ac.title + '/data.json'
+            const filePath = storagePath + ac.id + ' » ' + ac.title + '/data.json'
             expect(fs.existsSync(filePath), `Did not find acceptance criteria specification at '${filePath}'.`)
                 .toBeTruthy()
         })

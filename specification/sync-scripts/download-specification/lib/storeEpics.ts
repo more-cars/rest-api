@@ -1,13 +1,14 @@
 import fs from "fs"
 import type {Epic} from "./types/Epic"
 import type {ReferenceTicket} from "./types/ReferenceTicket"
-import {getParentTicket} from "./getParentTicket"
+import {findReferenceTicket} from "./findReferenceTicket"
 
-export function storeEpics(data: Array<Epic>, referenceTickets: Array<ReferenceTicket> = [], basepath: string = __dirname + '/../../../Behavior') {
+export function storeEpics(data: Array<Epic>, referenceTickets: Array<ReferenceTicket> = [], basepath: string = __dirname + '/../../../Behavior/') {
     const processedTickets: Array<ReferenceTicket> = []
 
     data.forEach(epic => {
-        const subPath = getParentTicket(referenceTickets, '').sub_path + epic.id + ' » ' + epic.title + '/'
+        const parentSubPath = findReferenceTicket('', referenceTickets)?.sub_path ?? ''
+        const subPath = parentSubPath + epic.id + ' » ' + epic.title + '/'
         const folderName = basepath + subPath
         const fileName = 'data.json'
 
@@ -20,7 +21,8 @@ export function storeEpics(data: Array<Epic>, referenceTickets: Array<ReferenceT
         processedTickets.push({
             type: 'epic',
             id: epic.id,
-            sub_path: subPath
+            sub_path: subPath,
+            data: epic,
         })
     })
 

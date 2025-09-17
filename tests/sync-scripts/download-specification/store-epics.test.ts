@@ -21,14 +21,14 @@ describe('Storing the extracted epics in the specification folder', () => {
             }))
 
         const randomSuffix = Math.floor(Math.random() * 100000)
-        const storagePath = __dirname + '/_temp/Behavior_' + randomSuffix
+        const storagePath = __dirname + '/_temp/Behavior_' + randomSuffix + '/'
         const ticketList = storeEpics(epics, referenceTickets, storagePath)
 
         expect(ticketList.length)
             .toEqual(epics.length)
 
         epics.forEach(epic => {
-            const filePath = storagePath + '/' + epic.id + ' » ' + epic.title + '/data.json'
+            const filePath = storagePath + epic.id + ' » ' + epic.title + '/data.json'
             expect(fs.existsSync(filePath), `Did not find epic specification at '${filePath}'.`)
                 .toBeTruthy()
         })

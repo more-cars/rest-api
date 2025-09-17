@@ -1,13 +1,14 @@
 import fs from "fs"
 import type {Story} from "./types/Story"
 import type {ReferenceTicket} from "./types/ReferenceTicket"
-import {getParentTicket} from "./getParentTicket"
+import {findReferenceTicket} from "./findReferenceTicket"
 
-export function storeStories(data: Array<Story>, referenceTickets: Array<ReferenceTicket> = [], basepath: string = __dirname + '/../../../Behavior') {
+export function storeStories(data: Array<Story>, referenceTickets: Array<ReferenceTicket> = [], basepath: string = __dirname + '/../../../Behavior/') {
     const processedTickets: Array<ReferenceTicket> = []
 
     data.forEach(story => {
-        const subPath = getParentTicket(referenceTickets, story.parent_id).sub_path + story.id + ' » ' + story.title + '/'
+        const parentSubPath = findReferenceTicket(story.parent_id, referenceTickets)?.sub_path ?? ''
+        const subPath = parentSubPath + story.id + ' » ' + story.title + '/'
         const folderName = basepath + subPath
         const fileName = 'data.json'
 
@@ -20,7 +21,8 @@ export function storeStories(data: Array<Story>, referenceTickets: Array<Referen
         processedTickets.push({
             type: 'story',
             id: story.id,
-            sub_path: subPath
+            sub_path: subPath,
+            data: story,
         })
     })
 

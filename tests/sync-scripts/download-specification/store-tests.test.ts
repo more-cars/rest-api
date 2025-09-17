@@ -21,14 +21,14 @@ describe('Storing the extracted tests in the specification folder', () => {
             }))
 
         const randomSuffix = Math.floor(Math.random() * 100000)
-        const storagePath = __dirname + '/_temp/Behavior_' + randomSuffix
+        const storagePath = __dirname + '/_temp/Behavior_' + randomSuffix + '/'
         const ticketList = storeTests(tests, referenceTickets, storagePath)
 
         expect(ticketList.length)
             .toEqual(tests.length)
 
         tests.forEach(test => {
-            const filePath = storagePath + '/' + test.id + ' » ' + test.title + '/data.json'
+            const filePath = storagePath + test.id + ' » ' + test.title + '/data.json'
             expect(fs.existsSync(filePath), `Did not find test specification at '${filePath}'.`)
                 .toBeTruthy()
         })
