@@ -26,6 +26,7 @@
     "cli-progress": "3.12.0",
     "dotenv": "17.2.2",
     "eslint": "9.35.0",
+    "filenamify": "7.0.0",
     "hygen": "6.2.11",
     "inflection": "3.0.2",
     "inquirer-file-selector": "1.0.1",
@@ -40,7 +41,7 @@
     "vitest": "3.2.4"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=22.13"
   },
   "license": "MIT",
   "name": "@more-cars/rest-api",

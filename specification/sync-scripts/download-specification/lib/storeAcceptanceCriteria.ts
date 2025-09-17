@@ -2,13 +2,14 @@ import fs from "fs"
 import type {AcceptanceCriterion} from "./types/AcceptanceCriterion"
 import type {ReferenceTicket} from "./types/ReferenceTicket"
 import {findReferenceTicket} from "./findReferenceTicket"
+import filenamify from "filenamify"
 
 export function storeAcceptanceCriteria(data: Array<AcceptanceCriterion>, referenceTickets: Array<ReferenceTicket> = [], basepath: string = __dirname + '/../../../Behavior/') {
     const processedTickets: Array<ReferenceTicket> = []
 
     data.forEach(ac => {
         const parentSubPath = findReferenceTicket(ac.parent_id, referenceTickets)?.sub_path ?? ''
-        const subPath = parentSubPath + ac.id + ' » ' + ac.title + '/'
+        const subPath = parentSubPath + ac.id + ' » ' + filenamify(ac.title) + '/'
         const folderName = basepath + subPath
         const fileName = 'data.json'
 
