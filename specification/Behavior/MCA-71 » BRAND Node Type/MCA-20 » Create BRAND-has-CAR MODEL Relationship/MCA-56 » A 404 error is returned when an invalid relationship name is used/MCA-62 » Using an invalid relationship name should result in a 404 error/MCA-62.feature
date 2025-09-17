@@ -4,13 +4,12 @@ Feature: Create BRAND-has-CAR MODEL Relationship
   I want to be able to connect CAR MODELs to a BRAND\
   So I can create car families
 
-
   @RULE_MCA-56
   Rule: A 404 error is returned when an invalid relationship name is used
 
-  @TEST_MCA-62 @implemented
-  Scenario: Using an invalid relationship name should result in a 404 error
-    Given there exists a brand "A"
-    And there exists a car model "B"
-    When the user tries to connect car model "B" to brand "A" with the relationship name "not-a-valid-relationship-name"
-    Then the response should return with status code 404
+    @TEST_MCA-62 @implemented
+    Scenario: Using an invalid relationship name should result in a 404 error
+      Given there exists a brand "A"
+      And there exists a car model "B"
+      When the user tries to connect car model "B" to brand "A" with the relationship name "not-a-valid-relationship-name"
+      Then the response should return with status code 404

@@ -4,18 +4,17 @@ Feature: Providing IDs for all NODEs
   I need all NODEs to have an IDENTIFIER\
   So I can find the NODEs again to reference them in different contexts
 
-
   @RULE_MCA-100
   Rule: Each created node returns with a valid ID
 
-  @TEST_MCA-131 @implemented
-  Scenario Outline: Nodes are created with valid IDs
-    When the user creates a "<node type>"
-    Then the property "id" in the response should be a number greater than 0
-    And the property "id" in the response should be a number smaller than 4294967296
+    @TEST_MCA-131 @implemented
+    Scenario Outline: Nodes are created with valid IDs
+      When the user creates a "<node type>"
+      Then the property "id" in the response should be a number greater than 0
+      And the property "id" in the response should be a number smaller than 4294967296
 
-    Examples:
-    | node type |
-    | BRAND     |
-    | CAR MODEL |
-    | IMAGE     |
+      Examples:
+        | node type |
+        | BRAND     |
+        | CAR MODEL |
+        | IMAGE     |

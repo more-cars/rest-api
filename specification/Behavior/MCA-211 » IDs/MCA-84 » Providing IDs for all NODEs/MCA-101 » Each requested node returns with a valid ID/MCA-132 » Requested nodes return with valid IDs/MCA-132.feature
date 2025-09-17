@@ -4,23 +4,20 @@ Feature: Providing IDs for all NODEs
   I need all NODEs to have an IDENTIFIER\
   So I can find the NODEs again to reference them in different contexts
 
-
   @RULE_MCA-101
   Rule: Each requested node returns with a valid ID
 
-  @TEST_MCA-132 @implemented
-  Scenario Outline: Requested nodes return with valid IDs
-    Given there exist 8 "<node type>"s
+    @TEST_MCA-132 @implemented
+    Scenario Outline: Requested nodes return with valid IDs
+      Given there exist 8 "<node type>"s
+      When the user requests a "<node type>"
+      Then the property "id" in the response should be a number greater than 0
+      And the property "id" in the response should be a number smaller than 4294967296
+      When the user requests all "<node type>"s
+      Then the property "id" of all items in the response should be a number greater than 0
+      And the property "id" of all items in the response should be a number smaller than 4294967296
 
-    When the user requests a "<node type>"
-    Then the property "id" in the response should be a number greater than 0
-    And the property "id" in the response should be a number smaller than 4294967296
-
-    When the user requests all "<node type>"s
-    Then the property "id" of all items in the response should be a number greater than 0
-    And the property "id" of all items in the response should be a number smaller than 4294967296
-
-    Examples:
-    | node type |
-    | BRAND     |
-    | CAR MODEL |
+      Examples:
+        | node type |
+        | BRAND     |
+        | CAR MODEL |

@@ -4,15 +4,14 @@ Feature: Create CAR MODEL-has-prime-image-IMAGE Relationship
   I want to be able to select one IMAGE for a CAR MODEL to be used as prime image\
   So the node has an ideal visual representation in any frontend application
 
-
   @RULE_MCA-398
   Rule: Creating the same has-prime-image relationship again returns the already existing one
 
-  @TEST_MCA-410 @implemented
-  Scenario: Connecting the same IMAGE as prime image to the same CAR MODEL again
-    Given there exists a "CAR MODEL" "Mondeo"
-    And there exists an "IMAGE" "front-left.jpg"
-    And there exists a "has prime image" relationship "prime" between "Mondeo" and "front-left.jpg"
-    When the user requests to connect "front-left.jpg" to "Mondeo" as prime image
-    Then the response should confirm the request with status code 201
-    And the response should return the relationship "prime"
+    @TEST_MCA-410 @implemented
+    Scenario: Connecting the same IMAGE as prime image to the same CAR MODEL again
+      Given there exists a "CAR MODEL" "Mondeo"
+      And there exists an "IMAGE" "front-left.jpg"
+      And there exists a "has prime image" relationship "prime" between "Mondeo" and "front-left.jpg"
+      When the user requests to connect "front-left.jpg" to "Mondeo" as prime image
+      Then the response should confirm the request with status code 201
+      And the response should return the relationship "prime"

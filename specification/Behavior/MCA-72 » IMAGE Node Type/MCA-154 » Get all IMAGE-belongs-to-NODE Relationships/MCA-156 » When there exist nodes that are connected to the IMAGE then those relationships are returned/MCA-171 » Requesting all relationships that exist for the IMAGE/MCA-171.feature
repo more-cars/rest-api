@@ -4,14 +4,13 @@ Feature: Get all IMAGE-belongs-to-NODE Relationships
   I want to find out whether an IMAGE is already connected to other nodes\
   So I can reduce the number of orphans in the database
 
-
   @RULE_MCA-156
   Rule: When there exist nodes that are connected to the IMAGE then those relationships are returned
 
-  @TEST_MCA-171 @Happy-Path @implemented
-  Scenario: Requesting all relationships that exist for the IMAGE
-    Given there exists an "IMAGE" "A"
-    And there exist 7 relationships for IMAGE "A"
-    When the user requests all relationships for IMAGE "A"
-    Then the response should return with status code 200
-    And the response should return a collection of 7 relationships
+    @TEST_MCA-171 @Happy-Path @implemented
+    Scenario: Requesting all relationships that exist for the IMAGE
+      Given there exists an "IMAGE" "A"
+      And there exist 7 relationships for IMAGE "A"
+      When the user requests all relationships for IMAGE "A"
+      Then the response should return with status code 200
+      And the response should return a collection of 7 relationships
