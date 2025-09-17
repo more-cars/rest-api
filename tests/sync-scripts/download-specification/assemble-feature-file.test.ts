@@ -18,7 +18,7 @@ test('Assemble Gherkin feature file based on the collected data', async () => {
             flag: 'r'
         })
 
-    const actualFeatureFile = assembleFeatureFile(data)
+    const actualFeatureFile = await assembleFeatureFile(data)
 
     expect(actualFeatureFile)
         .toStrictEqual(expectedFeatureFile)

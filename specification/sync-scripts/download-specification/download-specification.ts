@@ -72,17 +72,17 @@ export async function downloadFullSpec() {
     console.log('Tests downloaded: ' + extractedTests.length)
 
     // feature files
-    extractedTests.forEach(test => {
+    for (const test of extractedTests) {
         const testRef = findReferenceTicket(test.id, ticketList)
         const acRef = findReferenceTicket((testRef?.data as Test).parent_id, ticketList)
         const storyRef = findReferenceTicket((acRef?.data as AcceptanceCriterion).parent_id, ticketList)
 
         const data = collectFeatureFileData(test, acRef?.data as AcceptanceCriterion, storyRef?.data as Story)
-        const feature = assembleFeatureFile(data)
+        const feature = await assembleFeatureFile(data)
         const basePath = __dirname + '/../../Behavior/'
         const subPath = testRef?.sub_path
         storeFeatureFile(feature, basePath + subPath, data.scenario.id)
-    })
+    }
 }
 
 downloadFullSpec().then(r => true)

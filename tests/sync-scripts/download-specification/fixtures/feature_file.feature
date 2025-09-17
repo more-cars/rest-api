@@ -7,8 +7,12 @@ Feature: Story title
   @RULE_DUMMY-2
   Rule: AC title
 
-  @TEST_DUMMY-3 @implemented
-  Scenario: Test title
-    Given there exists a test
-    When the tester tests the test
-    Then the test should have been tested
+    @TEST_DUMMY-3 @implemented
+    Scenario: Test title
+      Given there exists a test
+        | test |
+        | a    |
+        | b    |
+        | c    |
+      When the tester tests the test
+      Then the test should have been tested

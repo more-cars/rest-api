@@ -29,6 +29,7 @@
     "filenamify": "7.0.0",
     "gherkin-ast": "3.4.2",
     "gherkin-formatter": "1.2.2",
+    "gherkin-io": "1.3.0",
     "hygen": "6.2.11",
     "inflection": "3.0.2",
     "inquirer-file-selector": "1.0.1",
