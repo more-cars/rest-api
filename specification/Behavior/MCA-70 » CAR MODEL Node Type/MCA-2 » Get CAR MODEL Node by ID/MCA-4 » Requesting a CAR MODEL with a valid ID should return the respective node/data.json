@@ -1,0 +1,9 @@
+{
+  "id": "MCA-4",
+  "parent_id": "MCA-2",
+  "title": "Requesting a CAR MODEL with a valid ID should return the respective node",
+  "description": "“Valid“ means there exists a car model in the database with the given ID.\n",
+  "release_version": "0.2.0",
+  "created_at": "2024-08-26T10:52:04.852+0200",
+  "updated_at": "2025-08-05T14:07:50.913+0200"
+}

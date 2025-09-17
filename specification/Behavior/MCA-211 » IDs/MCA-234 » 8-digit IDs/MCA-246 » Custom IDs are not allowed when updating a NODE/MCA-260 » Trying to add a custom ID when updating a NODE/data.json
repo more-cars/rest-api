@@ -1,0 +1,9 @@
+{
+  "id": "MCA-260",
+  "parent_id": "MCA-246",
+  "title": "Trying to add a custom ID when updating a NODE",
+  "gherkin": "Given there exists a \"<node_type>\" \"A\"\nWhen the user updates node \"A\" with the following data\n  | key | value |\n  | id  | 1234  |\nThen the response should return with status code 201\nAnd the response should NOT contain the following properties\n  | key | value |\n  | id  | 1234  |\n\nExamples:\n  | node_type |\n  | brand     |\n  | car model |\n  | image     |",
+  "labels": [],
+  "created_at": "2025-07-04T11:11:12.149+0200",
+  "updated_at": "2025-07-04T12:01:19.734+0200"
+}

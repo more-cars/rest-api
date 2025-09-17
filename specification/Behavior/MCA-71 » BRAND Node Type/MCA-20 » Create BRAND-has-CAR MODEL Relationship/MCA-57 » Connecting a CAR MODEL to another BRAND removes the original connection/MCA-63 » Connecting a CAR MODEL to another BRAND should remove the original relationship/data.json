@@ -1,0 +1,11 @@
+{
+  "id": "MCA-63",
+  "parent_id": "MCA-57",
+  "title": "Connecting a CAR MODEL to another BRAND should remove the original relationship",
+  "gherkin": "Given there exists a \"CAR MODEL\" \"Veyron\"\nAnd there exists a \"BRAND\" \"Bugatti\"\nAnd there exists a relationship \"R\" between CAR MODEL \"Veyron\" and BRAND \"Bugatti\"\n\nWhen the user connects CAR MODEL \"Veyron\" to a different BRAND\nAnd the relationship \"R\" should not exist anymore",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-05-08T16:12:13.953+0200",
+  "updated_at": "2025-06-16T10:43:59.052+0200"
+}

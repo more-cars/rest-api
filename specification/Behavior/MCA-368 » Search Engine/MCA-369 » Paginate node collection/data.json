@@ -1,0 +1,17 @@
+{
+  "id": "MCA-369",
+  "parent_id": "MCA-368",
+  "title": "Paginate node collection",
+  "user_story": "As an API consumer\\\nWhen requesting a list of NODEs (e.g. Images)\\\nI want to fetch them in slices (instead of the whole collection at once)\\\nSo I don't have to wait for and parse a giant response object\n",
+  "description": "The user should be able to restrict the amount of nodes that are returned in a collection. This is for performance reasons (loading thousands of nodes takes some time) and to make it easier for the user to work on the response objects. When requesting a collection the user should be provided with enough meta information to create an informed request (e.g. how many pages are there in total and how big are they).\n\n# Specification\n\n* The parameter `page` can be attached to every “get all nodes of node type” request, e.g. `GET /brands?page=3`.\n* Each full page returns `100` items of the original collection (page size is fixed).\n  * The last page returns the remaining items (between `0` and `100`).\n* Each page contains a different subset of the original collection.\n* When a valid page number was provided then the response returns with code `200`.\n  * Even when the collection is empty (which should only happen in edge cases).\n  * Page `1` is always a valid page number, no matter how large the collection is.\n* Page `0` and negative page numbers lead to a `422` error.\n* Any value that is not a number (e.g. `page=three`) leads to a `422` error.\n* When a page is requested that is out-of-range then a `404` error is returned (e.g. page 10 is requested, but there are only 8).\n* The response returns additional meta data:\n  * current page\n  * page size\n  * pages in total\n  * items in total\n* The meta data is always returned, even when no pagination was requested.\n* The data structure of the returned items in the collection stays untouched.\n\n# Scope & Limits\n\n* The page size is static for now. Making it configurable comes later.\n* The collections are not explicitly sorted. The database decides the order. This might lead to duplicates across multiple pages. This will be tackled in a different ticket.\n* What happens when providing the page parameter multiple times? Depends on how Express.js handles this case. TBD.\n* Collisions between meta information and collection data is possible, e.g. field “pages” in node type “Book”. Will be tackled in a separate ticket.\n",
+  "api_verb": "GET",
+  "api_path": "?page=<page>",
+  "response_options": [
+    "200",
+    "404",
+    "422"
+  ],
+  "release_versions": [],
+  "created_at": "2025-08-18T15:19:55.867+0200",
+  "updated_at": "2025-08-31T19:50:48.830+0200"
+}

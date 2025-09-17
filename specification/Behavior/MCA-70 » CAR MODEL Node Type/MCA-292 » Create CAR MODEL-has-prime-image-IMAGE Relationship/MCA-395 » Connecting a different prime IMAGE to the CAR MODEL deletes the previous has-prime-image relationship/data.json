@@ -1,0 +1,9 @@
+{
+  "id": "MCA-395",
+  "parent_id": "MCA-292",
+  "title": "Connecting a different prime IMAGE to the CAR MODEL deletes the previous has-prime-image relationship",
+  "description": "",
+  "release_version": "0.16.0",
+  "created_at": "2025-08-23T19:41:30.477+0200",
+  "updated_at": "2025-09-02T09:08:22.699+0200"
+}

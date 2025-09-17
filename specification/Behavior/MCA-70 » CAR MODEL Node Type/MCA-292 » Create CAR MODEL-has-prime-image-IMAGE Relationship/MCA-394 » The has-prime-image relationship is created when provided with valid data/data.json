@@ -1,0 +1,9 @@
+{
+  "id": "MCA-394",
+  "parent_id": "MCA-292",
+  "title": "The has-prime-image relationship is created when provided with valid data",
+  "description": "* valid data:\n  * CAR MODEL with given ID exists\n  * IMAGE with given ID exists\n* response:\n  * `car_model_id`: integer\n  * `image_id`: integer\n  * `relationship_id`: integer\n  * `relationship_name`: string → `has-prime-image`\n",
+  "release_version": "0.16.0",
+  "created_at": "2025-08-23T19:41:00.066+0200",
+  "updated_at": "2025-09-02T09:08:09.560+0200"
+}

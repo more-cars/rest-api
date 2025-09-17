@@ -1,0 +1,9 @@
+{
+  "id": "MCA-13",
+  "parent_id": "MCA-3",
+  "title": "When no CAR MODELs exist in the database then an empty list is returned",
+  "description": "In the beginning, this is only relevant for the testing and staging environments, because production will always have car models. But, in the future this will become relevant, when a filter setting might cause an empty result list.\n",
+  "release_version": "0.4.0",
+  "created_at": "2025-04-28T11:03:07.284+0200",
+  "updated_at": "2025-05-20T17:26:00.195+0200"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "MCA-76",
+  "parent_id": "MCA-72",
+  "title": "Get IMAGE Node by ID",
+  "user_story": "As an API consumer\\\nI want to to be able to request a specific IMAGE node\\\nSo I can find out its URL to actually see the photo\n",
+  "description": "# **Request**\n\n* method: `GET`\n* URL path: `/images/<ID>`&#x20;\n\n# **Response&#x20;**\n\n**happy path**\n\n* positive HTTP status code (200)\n* a JSON with the meta information, the user data and the imported data:\n  * `id`: integer\n  * `external_id`: string\n  * `image_provider`: string\n  * `name`: string\n  * `description`: string/null\n  * `creator`: string\n  * `license`: string\n  * `tags`: string/null\n  * `source`: string\n  * `image_url_original`: string\n  * `image_url_xxl`: string/null\n  * `image_url_xl`: string/null\n  * `image_url_l`: string/null\n  * `image_url_m`: string/null\n  * `image_url_s`: string/null\n  * `image_url_xs`: string/null\n  * `created_at`: string\n  * `updated_at`: string\n\n**unhappy path**\n\n* negative HTTP status code (404)\n* a plain text response stating the problem\n\n# **Acceptance Criteria**\n\n**Behavior (Business logic)**\n\n* an existing node can be loaded successfully → 200\n* error when a non-existing node is requested → 404\n\n# **Quality Gates**\n\n* Unit+Integration tests (Jest) are extended (100% coverage combined)\n* Behavior tests (Cucumber) are added (100% coverage)\n* OpenAPI spec is extended\n  * schema is still valid\n* Bruno collection is extended\n* Performance tests are extended\n  * tests are still green\n\n# **NOT in scope for this iteration**\n\n* relationships with other nodes (e.g. car models or company)\n* proper JSON structure according to the JSON:API\n",
+  "api_verb": null,
+  "api_path": null,
+  "response_options": [],
+  "release_versions": [
+    "0.8.0"
+  ],
+  "created_at": "2025-05-18T10:41:14.343+0200",
+  "updated_at": "2025-08-21T14:07:23.004+0200"
+}

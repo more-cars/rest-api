@@ -1,0 +1,18 @@
+{
+  "id": "MCA-294",
+  "parent_id": "MCA-70",
+  "title": "Get CAR MODEL-has-prime-image Relationship",
+  "user_story": "As an API consumer\\\nI want to be able to request the prime IMAGE for a CAR MODEL\\\nSo I can represent the node in the best possible form in the frontend\\\n(Because I don't know which one from the image gallery is the best one)\n",
+  "description": "# Specification\n\n* Requests are rejected with a `404` error when the CAR MODEL doesn't exist.\n* Requests are rejected with a `404` error when a node with the given ID actually exists, but is not a CAR MODEL.\n* The relationship is successfully returned when one actually exists. → Status code `200`.\n  * A JSON object with the relationship information is returned:\n    * `car_model_id`: integer\n    * `image_id`: integer\n    * `relationship_id`: integer\n    * `relationship_name`: string → `has-prime-image`\n* When there exists no `has-prime-image` relationship for the CAR MODEL then an empty response is returned. → Status code `200`.\n",
+  "api_verb": "GET",
+  "api_path": "/car-models/<car-model-id>/has-prime-image",
+  "response_options": [
+    "200",
+    "404"
+  ],
+  "release_versions": [
+    "0.17.0"
+  ],
+  "created_at": "2025-07-24T15:49:14.407+0200",
+  "updated_at": "2025-09-06T16:04:04.552+0200"
+}

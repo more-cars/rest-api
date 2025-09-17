@@ -1,0 +1,11 @@
+{
+  "id": "MCA-409",
+  "parent_id": "MCA-397",
+  "title": "Trying to connect a non-existent IMAGE to a non-existent CAR MODEL",
+  "gherkin": "Given \"CAR MODEL\" \"Mondeo\" does NOT exist\nAnd \"IMAGE\" \"front-left.jpg\" does NOT exist\nWhen the user requests to connect \"front-left.jpg\" to \"Mondeo\" as prime image\nThen the response should reject the request with status code 404",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-08-24T16:09:25.251+0200",
+  "updated_at": "2025-08-27T10:53:12.912+0200"
+}

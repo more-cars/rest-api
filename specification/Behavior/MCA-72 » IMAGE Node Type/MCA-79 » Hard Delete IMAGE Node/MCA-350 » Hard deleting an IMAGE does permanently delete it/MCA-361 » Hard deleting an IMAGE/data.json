@@ -1,0 +1,11 @@
+{
+  "id": "MCA-361",
+  "parent_id": "MCA-350",
+  "title": "Hard deleting an IMAGE",
+  "gherkin": "Given there exists an \"IMAGE\" \"logo\"\nWhen the user hard deletes the \"IMAGE\" \"logo\"\nThen the \"IMAGE\" \"logo\" should not exist anymore",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-08-17T16:28:28.395+0200",
+  "updated_at": "2025-08-21T14:33:50.801+0200"
+}

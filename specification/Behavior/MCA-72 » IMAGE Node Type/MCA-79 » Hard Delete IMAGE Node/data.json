@@ -1,0 +1,18 @@
+{
+  "id": "MCA-79",
+  "parent_id": "MCA-72",
+  "title": "Hard Delete IMAGE Node",
+  "user_story": "As an API contributor\\\nI want to be able to delete an IMAGE\\\nSo I can clean up bad data, test data or redundant data\n",
+  "description": "* the node is deleted when it actually exists → status code `204`\n* when the node does not exist nothing happens → status code `404`\n* all attached relationships are deleted when the node is deleted\n",
+  "api_verb": "DELETE",
+  "api_path": "/images/<image-id>",
+  "response_options": [
+    "204",
+    "404"
+  ],
+  "release_versions": [
+    "0.15.0"
+  ],
+  "created_at": "2025-05-18T10:41:51.673+0200",
+  "updated_at": "2025-08-21T15:18:13.603+0200"
+}

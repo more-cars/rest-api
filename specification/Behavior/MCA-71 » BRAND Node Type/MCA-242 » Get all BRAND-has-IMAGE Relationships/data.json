@@ -1,0 +1,15 @@
+{
+  "id": "MCA-242",
+  "parent_id": "MCA-71",
+  "title": "Get all BRAND-has-IMAGE Relationships",
+  "user_story": "As an API consumer\\\nI want to get all IMAGEs that are attached to a BRAND\\\nSo I can see their logo (resp. their different logos over the time)\n",
+  "description": "# **Request**\n\n* method: `GET`\n* URL path: `/brands/<brand-id>/has-image`\n\n# **Response**\n\n**Happy path**\n\n* positive HTTP status code (200)\n* a JSON array containing the following relationship data for each item:\n  * `brand_id`: integer\n  * `image_id`: integer\n  * `relationship_id`: integer\n  * `relationship_name`: string\n  * `created_at`: string\n  * `updated_at`: string\n\n**Unhappy path**\n\n* when there are no matches then an empty array is returned → status code 200\n* 404 when brand does not exist\n\n# **Acceptance Criteria**\n\n**Behavior (Business Logic)**\n\n* the relationships are successfully retrieved when provided with valid data\n  * status code `200` when brand was found\n* the relationship retrieval fails when the provided data was not valid\n  * `404` when `brand` was not found\n* when there exist no respective relationships then an empty list is returned\n  * status code `200`\n\n# **Quality Gates**\n\n* Unit+Integration tests (Jest) are extended\n* Behavior tests (Cucumber) are added\n* OpenAPI spec is extended & schema is still valid\n* Bruno collection is extended\n* Performance tests are extended & existing tests are still green\n\n# **NOT in scope for this iteration**\n\n* proper JSON structure according to the JSON:API\n",
+  "api_verb": null,
+  "api_path": null,
+  "response_options": [],
+  "release_versions": [
+    "0.12.0"
+  ],
+  "created_at": "2025-06-27T11:09:41.784+0200",
+  "updated_at": "2025-08-21T13:56:13.381+0200"
+}

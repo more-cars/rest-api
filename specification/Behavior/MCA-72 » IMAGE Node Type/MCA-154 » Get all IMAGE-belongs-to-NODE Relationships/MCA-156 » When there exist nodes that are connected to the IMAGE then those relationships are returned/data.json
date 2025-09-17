@@ -1,0 +1,9 @@
+{
+  "id": "MCA-156",
+  "parent_id": "MCA-154",
+  "title": "When there exist nodes that are connected to the IMAGE then those relationships are returned",
+  "description": "200\n",
+  "release_version": "0.9.0",
+  "created_at": "2025-05-23T17:27:01.789+0200",
+  "updated_at": "2025-06-16T10:56:08.762+0200"
+}

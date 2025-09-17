@@ -1,0 +1,11 @@
+{
+  "id": "MCA-64",
+  "parent_id": "MCA-58",
+  "title": "Creating the same relationship again returns the already existing one",
+  "gherkin": "Given there exists a brand \"A\"\nAnd there exists a car model \"B\"\nAnd there exists a relationship \"C\" between car model \"B\" and brand \"A\"\n\nWhen the user connects car model \"B\" to brand \"A\"\nAnd the response should contain the id of relationship \"C\"",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-05-08T16:12:19.768+0200",
+  "updated_at": "2025-05-14T10:47:51.318+0200"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "MCA-144",
+  "parent_id": "MCA-120",
+  "title": "With valid WIKIMEDIA IDs the IMAGE is created",
+  "gherkin": "When the user tries to create an \"IMAGE\" with the following data\n  | _key_          | _value_                                    |\n  | image_platform | wikimedia                                  |\n  | external_id    | 1957 Hudson Hornet Super (37054215285).jpg |\nThen the response should return with status code 201",
+  "labels": [
+    "ext_dependency"
+  ],
+  "created_at": "2025-05-23T11:33:34.132+0200",
+  "updated_at": "2025-08-24T17:39:09.131+0200"
+}

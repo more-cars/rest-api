@@ -1,0 +1,9 @@
+{
+  "id": "MCA-345",
+  "parent_id": "MCA-92",
+  "title": "Requesting the deletion of a non-existing CAR MODEL is rejected with an error",
+  "description": "",
+  "release_version": "0.15.0",
+  "created_at": "2025-08-11T09:29:21.980+0200",
+  "updated_at": "2025-09-02T08:36:26.043+0200"
+}

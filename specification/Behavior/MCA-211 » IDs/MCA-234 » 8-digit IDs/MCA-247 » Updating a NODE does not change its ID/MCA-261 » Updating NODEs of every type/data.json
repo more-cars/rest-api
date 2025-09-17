@@ -1,0 +1,9 @@
+{
+  "id": "MCA-261",
+  "parent_id": "MCA-247",
+  "title": "Updating NODEs of every type",
+  "gherkin": "Given there exists a \"<node_type>\" \"A\"\nWhen the user updates node \"A\"\nThen the response should return with status code 201\nAnd the response should contain the id of node \"A\"\n\nExamples:\n  | node_type |\n  | brand     |\n  | car model |\n  | image     |",
+  "labels": [],
+  "created_at": "2025-07-04T11:11:18.702+0200",
+  "updated_at": "2025-07-04T12:01:26.800+0200"
+}

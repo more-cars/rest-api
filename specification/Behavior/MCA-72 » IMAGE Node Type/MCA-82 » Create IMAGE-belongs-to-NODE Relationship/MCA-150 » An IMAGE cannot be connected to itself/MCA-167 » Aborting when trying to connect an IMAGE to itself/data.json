@@ -1,0 +1,11 @@
+{
+  "id": "MCA-167",
+  "parent_id": "MCA-150",
+  "title": "Aborting when trying to connect an IMAGE to itself",
+  "gherkin": "Given there exists an \"IMAGE\" \"logo.jpg\"\nWhen the user tries to connect \"IMAGE\" \"logo.jpg\" to IMAGE \"logo.jpg\"\nThen the response should return with status code 422",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-05-24T11:49:13.281+0200",
+  "updated_at": "2025-05-31T10:00:04.828+0200"
+}

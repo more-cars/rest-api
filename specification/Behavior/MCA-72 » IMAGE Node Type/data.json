@@ -1,0 +1,7 @@
+{
+  "id": "MCA-72",
+  "title": "IMAGE Node Type",
+  "data_structure": "image\\_provider: string, mandatory\\\nexternal\\_id: string, mandatory\\\nname: string, mandatory\\\ndescription: string\\\ncreator: string, mandatory\\\nlicense: string, mandatory\\\ntags: string\\\nsource: string, mandatory\\\nimage\\_url\\_original: string, mandatory\\\nimage\\_url\\_xxl: string\\\nimage\\_url\\_xl: string\\\nimage\\_url\\_l: string\\\nimage\\_url\\_m: string\\\nimage\\_url\\_s: string\\\nimage\\_url\\_xs: string\n",
+  "created_at": "2025-05-18T09:58:20.136+0200",
+  "updated_at": "2025-08-18T15:15:32.676+0200"
+}

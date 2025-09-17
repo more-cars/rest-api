@@ -1,0 +1,7 @@
+{
+  "id": "MCA-70",
+  "title": "CAR MODEL Node Type",
+  "data_structure": "name: string, mandatory\\\nbuilt\\_from: integer\\\nbuilt\\_to: integer\\\ngeneration: integer\\\ninternal\\_code: string\\\ntotal\\_production: integer&#x20;\n",
+  "created_at": "2025-05-18T09:58:01.818+0200",
+  "updated_at": "2025-08-18T15:15:10.879+0200"
+}

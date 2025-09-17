@@ -1,0 +1,11 @@
+{
+  "id": "MCA-32",
+  "parent_id": "MCA-22",
+  "title": "For newly created nodes the timestamps \"created_at\" and \"updated_at\" should be identical",
+  "gherkin": "Given there exists a <node type> \"A\"\nWhen the user requests the \"<node type>\" \"A\"\nThen the properties \"created_at\" and \"updated_at\" in the response should be identical\n\nExamples:\n  | node type |\n  | brand     |\n  | car model |",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-05-04T13:11:03.696+0200",
+  "updated_at": "2025-05-18T10:53:52.249+0200"
+}

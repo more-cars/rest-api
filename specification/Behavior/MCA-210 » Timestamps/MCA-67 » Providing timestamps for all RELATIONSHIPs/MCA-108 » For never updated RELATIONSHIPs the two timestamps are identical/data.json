@@ -1,0 +1,9 @@
+{
+  "id": "MCA-108",
+  "parent_id": "MCA-67",
+  "title": "For never updated RELATIONSHIPs the two timestamps are identical",
+  "description": "",
+  "release_version": "0.11.0",
+  "created_at": "2025-05-20T18:01:27.328+0200",
+  "updated_at": "2025-07-11T18:48:19.044+0200"
+}

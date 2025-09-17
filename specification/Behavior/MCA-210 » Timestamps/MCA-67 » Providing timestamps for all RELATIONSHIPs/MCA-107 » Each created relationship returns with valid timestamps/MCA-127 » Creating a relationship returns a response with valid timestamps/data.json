@@ -1,0 +1,12 @@
+{
+  "id": "MCA-127",
+  "parent_id": "MCA-107",
+  "title": "Creating a relationship returns a response with valid timestamps",
+  "gherkin": "When the user creates a relationship\nThen the property \"created_at\" in the response should be an ISO 8601 formatted timestamp\nAnd the property \"updated_at\" in the response should be an ISO 8601 formatted timestamp",
+  "labels": [
+    "Happy-Path",
+    "implemented"
+  ],
+  "created_at": "2025-05-22T16:41:39.829+0200",
+  "updated_at": "2025-06-26T11:12:40.757+0200"
+}

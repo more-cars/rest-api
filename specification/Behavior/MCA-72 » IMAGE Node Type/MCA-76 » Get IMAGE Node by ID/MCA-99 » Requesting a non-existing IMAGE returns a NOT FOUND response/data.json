@@ -1,0 +1,9 @@
+{
+  "id": "MCA-99",
+  "parent_id": "MCA-76",
+  "title": "Requesting a non-existing IMAGE returns a NOT FOUND response",
+  "description": "",
+  "release_version": "0.8.0",
+  "created_at": "2025-05-20T16:15:43.095+0200",
+  "updated_at": "2025-06-16T10:50:30.104+0200"
+}

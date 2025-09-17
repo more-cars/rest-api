@@ -1,0 +1,18 @@
+{
+  "id": "MCA-92",
+  "parent_id": "MCA-70",
+  "title": "Hard Delete CAR MODEL Node",
+  "user_story": "As an API contributor\\\nI want to be able to delete a CAR MODEL\\\nSo I can clean up bad data, test data or redundant data\n",
+  "description": "* the node is deleted when it actually exists → status code `204`\n* when the node does not exist nothing happens → status code `404`\n* all attached relationships are deleted when the node is deleted\n",
+  "api_verb": "DELETE",
+  "api_path": "/car-models/<car-model-id>",
+  "response_options": [
+    "204",
+    "404"
+  ],
+  "release_versions": [
+    "0.15.0"
+  ],
+  "created_at": "2025-05-19T18:09:51.674+0200",
+  "updated_at": "2025-08-21T15:18:11.283+0200"
+}

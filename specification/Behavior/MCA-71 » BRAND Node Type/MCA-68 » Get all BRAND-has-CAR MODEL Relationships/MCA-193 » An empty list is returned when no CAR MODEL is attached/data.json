@@ -1,0 +1,9 @@
+{
+  "id": "MCA-193",
+  "parent_id": "MCA-68",
+  "title": "An empty list is returned when no CAR MODEL is attached",
+  "description": "200\n",
+  "release_version": "0.10.0",
+  "created_at": "2025-06-05T15:39:55.145+0200",
+  "updated_at": "2025-06-17T08:54:45.679+0200"
+}

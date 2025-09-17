@@ -1,0 +1,11 @@
+{
+  "id": "MCA-324",
+  "parent_id": "MCA-321",
+  "title": "Requesting the relationship between a CAR MODEL and IMAGE that do not exist",
+  "gherkin": "Given there exists a \"CAR MODEL\" \"Countach\"\nAnd \"IMAGE\" \"red lambo\" does NOT exist\nWhen the user requests the relationship between CAR MODEL \"Countach\" and IMAGE \"red lambo\"\nThen the response should return with status code 404\n\nGiven \"CAR MODEL\" \"Countach\" does NOT exist\nAnd there exists an \"IMAGE\" \"red lambo\"\nWhen the user requests the relationship between CAR MODEL \"Countach\" and IMAGE \"red lambo\"\nThen the response should return with status code 404\n\nGiven \"CAR MODEL\" \"Countach\" does NOT exist\nAnd \"IMAGE\" \"red lambo\" does NOT exist\nWhen the user requests the relationship between CAR MODEL \"Countach\" and IMAGE \"red lambo\"\nThen the response should return with status code 404",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-08-05T10:29:30.931+0200",
+  "updated_at": "2025-08-21T14:33:46.296+0200"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "MCA-248",
+  "parent_id": "MCA-234",
+  "title": "Updating a RELATIONSHIP does not change its ID",
+  "description": "",
+  "release_version": null,
+  "created_at": "2025-07-04T09:23:26.881+0200",
+  "updated_at": "2025-07-04T11:11:25.552+0200"
+}

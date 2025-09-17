@@ -1,0 +1,16 @@
+{
+  "id": "MCA-293",
+  "parent_id": "MCA-70",
+  "title": "Delete CAR MODEL-has-prime-image-IMAGE Relationship",
+  "user_story": "As an API contributor\\\nI want to be able to detach the prime IMAGE from a CAR MODEL\\\nSo I can clean up bad data or test data\n",
+  "description": "# Expected Behavior\n\n* Requests are rejected with a `404` error when the CAR MODEL, the IMAGE or both don't exist.\n* Requests are rejected with a `404` error when a node with the given ID actually exists, but does not have the correct type. The first node needs to be a CAR MODEL, the second an IMAGE.\n* Requests are rejected with a `404` error when no `has-prime-image` relationship exists between both nodes.\n* The relationship is successfully deleted when it actually exists. → Status code `204`.\n\n# Scope & Limits\n\n* No authorization at the moment. Everyone can delete the relationship.\n",
+  "api_verb": "DELETE",
+  "api_path": "/car-models/<car-model-id>/has-prime-image/<image-id>",
+  "response_options": [
+    "204",
+    "404"
+  ],
+  "release_versions": [],
+  "created_at": "2025-07-24T15:48:49.366+0200",
+  "updated_at": "2025-09-06T15:30:07.624+0200"
+}

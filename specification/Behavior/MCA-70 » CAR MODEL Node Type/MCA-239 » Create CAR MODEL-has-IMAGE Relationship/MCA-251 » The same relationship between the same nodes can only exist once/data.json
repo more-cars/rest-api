@@ -1,0 +1,9 @@
+{
+  "id": "MCA-251",
+  "parent_id": "MCA-239",
+  "title": "The same relationship between the same nodes can only exist once",
+  "description": "201\n",
+  "release_version": "0.13.0",
+  "created_at": "2025-07-04T09:48:52.347+0200",
+  "updated_at": "2025-07-16T12:52:52.139+0200"
+}

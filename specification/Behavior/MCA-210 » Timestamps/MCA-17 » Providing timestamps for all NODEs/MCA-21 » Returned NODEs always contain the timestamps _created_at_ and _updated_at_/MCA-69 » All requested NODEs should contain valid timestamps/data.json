@@ -1,0 +1,11 @@
+{
+  "id": "MCA-69",
+  "parent_id": "MCA-21",
+  "title": "All requested NODEs should contain valid timestamps",
+  "gherkin": "Given there exist 5 \"<node type>\"s\nWhen the user requests all \"<node type>\"s\nAnd for each item the following properties in the response should contain a valid timestamp\n  | key        |\n  | created_at |\n  | updated_at |\n\nExamples:\n  | node type |\n  | brand     |\n  | car model |",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-05-16T09:19:02.754+0200",
+  "updated_at": "2025-09-16T18:15:05.605+0200"
+}

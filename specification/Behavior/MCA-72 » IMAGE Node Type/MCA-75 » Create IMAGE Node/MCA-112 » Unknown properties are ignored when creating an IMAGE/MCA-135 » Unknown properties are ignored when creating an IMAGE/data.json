@@ -1,0 +1,11 @@
+{
+  "id": "MCA-135",
+  "parent_id": "MCA-112",
+  "title": "Unknown properties are ignored when creating an IMAGE",
+  "gherkin": "When the user creates an \"IMAGE\" with the following data\n  | _key_          | _value_ |\n  | image_provider | flickr  |\n  | image_id       | 12345   |\n  | my_property    | ABC     |\nThen the response should return with status code 201\nBut the response should NOT contain the following keys\n  | key         |\n  | my_property |",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-05-22T17:35:37.641+0200",
+  "updated_at": "2025-05-27T17:20:40.312+0200"
+}

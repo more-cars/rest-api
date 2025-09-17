@@ -1,0 +1,9 @@
+{
+  "id": "MCA-472",
+  "parent_id": "MCA-386",
+  "title": "Expecting the response to contain pagination meta information when a specific page was requested",
+  "gherkin": "When the user requests page 1 of the \"<node_type>\" collection\nThen the response should return with status code 200\nAnd the request should contain pagination meta information\n\nExamples:\n  | node_type |\n  | BRAND     |\n  | CAR_MODEL |\n  | IMAGE     |",
+  "labels": [],
+  "created_at": "2025-08-31T19:07:20.453+0200",
+  "updated_at": "2025-08-31T19:50:24.111+0200"
+}

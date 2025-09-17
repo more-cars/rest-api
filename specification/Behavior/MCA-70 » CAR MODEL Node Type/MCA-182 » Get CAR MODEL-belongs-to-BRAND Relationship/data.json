@@ -1,0 +1,18 @@
+{
+  "id": "MCA-182",
+  "parent_id": "MCA-70",
+  "title": "Get CAR MODEL-belongs-to-BRAND Relationship",
+  "user_story": "As an API contributor\\\nI want to know to which BRAND a specific CAR MODEL is connected to\\\nSo I can verify the correctness of the relationship\n",
+  "description": "# **Response**\n\n**Happy path**\n\n* positive HTTP status code (200)\n* a JSON object containing the following relationship data:\n  * `brand_id`: integer\n  * `car_model_id`: integer\n  * `relationship_id`: integer\n  * `relationship_name`: string\n* when there is no brand connected an empty body is returned (200)\n\n**Unhappy path**\n\n* 404 when car model does not exist\n\n# **Acceptance Criteria**\n\n**Behavior (Business Logic)**\n\n* the brand is returned when there is one is attached to the car model\n* 200 and an empty body is returned when no brand is attached\n* a 404 is returned when the car model does not exist\n\n# **NOT in scope for this iteration**\n\n* proper JSON structure according to the JSON:API\n",
+  "api_verb": "GET",
+  "api_path": "/car-models/<car-model-id>/belongs-to-brand",
+  "response_options": [
+    "200",
+    "404"
+  ],
+  "release_versions": [
+    "0.10.0"
+  ],
+  "created_at": "2025-06-02T09:31:34.498+0200",
+  "updated_at": "2025-08-17T16:42:44.049+0200"
+}

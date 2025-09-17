@@ -1,0 +1,11 @@
+{
+  "id": "MCA-419",
+  "parent_id": "MCA-403",
+  "title": "Trying to request a specific prime IMAGE relationship for a CAR MODEL that does not exist",
+  "gherkin": "Given \"CAR MODEL\" \"Mondeo\" does NOT exist\nAnd there exists an \"IMAGE\" \"front-left.jpg\"\nWhen the user requests the \"has prime image\" relationship between \"Mondeo\" and \"front-left.jpg\"\nThen the request should be rejected with status code 404",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-08-24T18:09:29.582+0200",
+  "updated_at": "2025-09-05T17:27:17.103+0200"
+}

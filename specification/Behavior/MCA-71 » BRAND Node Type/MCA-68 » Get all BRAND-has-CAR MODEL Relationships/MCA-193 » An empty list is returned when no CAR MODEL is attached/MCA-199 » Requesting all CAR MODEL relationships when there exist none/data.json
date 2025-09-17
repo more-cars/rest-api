@@ -1,0 +1,11 @@
+{
+  "id": "MCA-199",
+  "parent_id": "MCA-193",
+  "title": "Requesting all CAR MODEL relationships when there exist none",
+  "gherkin": "When the user creates a BRAND \"Hyundai\"\nAnd the user requests a list of all CAR MODEL relationships for the BRAND \"Hyundai\"\nThen the response should return with status code 200\nAnd the response should return an empty list",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-06-05T17:39:06.593+0200",
+  "updated_at": "2025-06-16T16:16:12.839+0200"
+}

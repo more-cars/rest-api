@@ -1,0 +1,11 @@
+{
+  "id": "MCA-30",
+  "parent_id": "MCA-26",
+  "title": "Valid CORE properties should be saved when creating a CAR MODEL",
+  "gherkin": "When the user creates a car model \"Test Car\" with the following valid data\n  | key              | value    |\n  | name             | Test Car |\n  | built_from       | 1988     |\n  | built_to         | 1999     |\n  | generation       | 1        |\n  | internal_code    | F99      |\n  | total_production | 222222   |\nThen the response should contain the following data\n  | key              | value    |\n  | name             | Test Car |\n  | built_from       | 1988     |\n  | built_to         | 1999     |\n  | generation       | 1        |\n  | internal_code    | F99      |\n  | total_production | 222222   |",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-05-04T13:03:17.861+0200",
+  "updated_at": "2025-05-08T11:50:57.672+0200"
+}

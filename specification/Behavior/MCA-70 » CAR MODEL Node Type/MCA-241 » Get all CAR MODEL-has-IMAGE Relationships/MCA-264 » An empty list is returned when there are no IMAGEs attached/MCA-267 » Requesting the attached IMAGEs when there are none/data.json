@@ -1,0 +1,11 @@
+{
+  "id": "MCA-267",
+  "parent_id": "MCA-264",
+  "title": "Requesting the attached IMAGEs when there are none",
+  "gherkin": "Given there exists a \"CAR MODEL\" \"Jetta\"\nAnd there are no IMAGEs attached to CAR MODEL \"Jetta\"\nWhen the user requests all IMAGEs that are connected to CAR MODEL \"Jetta\"\nThen the response should return an empty list",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-07-04T16:28:35.618+0200",
+  "updated_at": "2025-07-16T10:29:08.528+0200"
+}

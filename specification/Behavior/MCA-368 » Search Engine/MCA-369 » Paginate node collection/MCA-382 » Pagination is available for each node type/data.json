@@ -1,0 +1,9 @@
+{
+  "id": "MCA-382",
+  "parent_id": "MCA-369",
+  "title": "Pagination is available for each node type",
+  "description": "* GET /brands?page=3\n* GET /car-models?page=7\n* GET /images?page=1\n* …\n",
+  "release_version": null,
+  "created_at": "2025-08-22T15:13:43.053+0200",
+  "updated_at": "2025-08-31T19:06:22.442+0200"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "MCA-539",
+  "parent_id": "MCA-201",
+  "title": "Create COMPANY Node",
+  "user_story": "As an API contributor\nI want to be able to create COMPANY nodes\nSo I can fill gaps in the database\n",
+  "description": "* A COMPANY node is successfully created when requested with valid data. The required data structure is specified in parent (epic) ticket MCA-201. -> Status Code \\`201\\`\n* A successful request returns the created node with all specified properties.\n* Properties are returned, even when they are empty (optional fields). They are returned with value \\`null\\`.\n* Unknown properties are ignored. They are not processed. They do not produce any info, warning or error messages for the user. -> Status Code \\`201\\`\n* Read-only properties (\\`id\\`, \\`created\\_at\\`, \\`updated\\_at\\`) are ignored. They are not processed. They do not produce any info, warning or error messages for the user. -> Status Code \\`201\\`\n* Requests with invalid data are rejected. Cases for invalid data include: missing mandatory fields, syntax errors, wrong data types or wrong data structure. -> Status Code \\`400\\`\n",
+  "api_verb": "POST",
+  "api_path": "/company",
+  "response_options": [
+    "201",
+    "400"
+  ],
+  "release_versions": [
+    "0.18.0"
+  ],
+  "created_at": "2025-09-11T10:17:26.225+0200",
+  "updated_at": "2025-09-12T19:28:26.423+0200"
+}

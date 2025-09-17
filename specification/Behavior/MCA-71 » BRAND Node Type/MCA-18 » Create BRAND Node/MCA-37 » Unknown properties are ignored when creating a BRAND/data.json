@@ -1,0 +1,9 @@
+{
+  "id": "MCA-37",
+  "parent_id": "MCA-18",
+  "title": "Unknown properties are ignored when creating a BRAND",
+  "description": "",
+  "release_version": "0.6.0",
+  "created_at": "2025-05-06T09:51:37.086+0200",
+  "updated_at": "2025-05-20T17:30:45.928+0200"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "MCA-1",
+  "parent_id": "MCA-70",
+  "title": "Create CAR MODEL Node",
+  "user_story": "As an API contributor\\\nI want to be able to create car models\\\nSo I can fill gaps in the database\n",
+  "description": "# **Response**\n\n**Happy path**\n\n* positive HTTP status code (201)\n* a simple JSON with the following properties of the newly created node:\n  * id: integer\n  * name: string\n\n**Unhappy path**\n\n* negative HTTP status code (400, 422)\n* a plain text response stating the problem\n\n# **NOT in scope for this iteration**\n\n* validations (except check for mandatory fields)\n  * duplicate IDs\n  * invalid data types\n* creating multiple car models at once (bulk create)\n* meta information\n* versioning information\n* auth / security\n* proper JSON structure according to the JSON:API\n\n# **Acceptance Criteria**\n\n**Behavior (Business Logic)**\n\n* the car model is successfully created when provided with valid data\n* an error when the provided data was not valid\n* the car model is not created in error case\n",
+  "api_verb": "POST",
+  "api_path": "/car-models",
+  "response_options": [
+    "201",
+    "400"
+  ],
+  "release_versions": [
+    "0.2.0"
+  ],
+  "created_at": "2024-08-26T09:33:23.694+0200",
+  "updated_at": "2025-09-12T17:11:25.656+0200"
+}

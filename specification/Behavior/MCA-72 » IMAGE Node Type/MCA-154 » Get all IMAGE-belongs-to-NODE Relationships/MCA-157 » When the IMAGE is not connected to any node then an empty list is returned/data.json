@@ -1,0 +1,9 @@
+{
+  "id": "MCA-157",
+  "parent_id": "MCA-154",
+  "title": "When the IMAGE is not connected to any node then an empty list is returned",
+  "description": "200\n",
+  "release_version": "0.9.0",
+  "created_at": "2025-05-23T17:27:57.955+0200",
+  "updated_at": "2025-06-16T10:56:06.842+0200"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "MCA-125",
+  "parent_id": "MCA-109",
+  "title": "Custom timestamps are ignored when creating a RELATIONSHIP",
+  "gherkin": "When the user creates a relationship with the following data\n  | key        | value                |\n  | created_at | 2022-07-23T03:00:00Z |\n  | updated_at | 2022-07-23T03:00:00Z |\nThen the response should return with status code 201\nAnd the response should NOT contain the following properties\n  | key        | value                |\n  | updated_at | 2022-07-23T03:00:00Z |\n  | created_at | 2022-07-23T03:00:00Z |",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-05-22T13:11:20.091+0200",
+  "updated_at": "2025-06-26T11:12:46.885+0200"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "MCA-103",
+  "parent_id": "MCA-97",
+  "title": "Each created relationship returns with a valid ID",
+  "description": "",
+  "release_version": "0.7.0",
+  "created_at": "2025-05-20T16:41:50.435+0200",
+  "updated_at": "2025-06-16T14:24:07.021+0200"
+}

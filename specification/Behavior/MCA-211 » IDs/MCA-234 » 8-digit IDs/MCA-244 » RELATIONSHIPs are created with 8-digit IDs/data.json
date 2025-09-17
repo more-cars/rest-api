@@ -1,0 +1,9 @@
+{
+  "id": "MCA-244",
+  "parent_id": "MCA-234",
+  "title": "RELATIONSHIPs are created with 8-digit IDs",
+  "description": "* starting at 12 million (`12,000,000`)\n* limit: `99,999,999`&#x20;\n",
+  "release_version": "0.12.0",
+  "created_at": "2025-07-04T08:55:53.232+0200",
+  "updated_at": "2025-07-11T18:48:55.743+0200"
+}

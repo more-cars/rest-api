@@ -1,0 +1,9 @@
+{
+  "id": "MCA-111",
+  "parent_id": "MCA-75",
+  "title": "The creation of a new IMAGE is aborted with an error message when malformed data was provided",
+  "description": "http code 400\n",
+  "release_version": "0.8.0",
+  "created_at": "2025-05-21T12:05:48.896+0200",
+  "updated_at": "2025-06-16T10:48:14.661+0200"
+}

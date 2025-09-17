@@ -1,0 +1,9 @@
+{
+  "id": "MCA-143",
+  "parent_id": "MCA-119",
+  "title": "Invalid WIKIMEDIA IDs fail the IMAGE creation",
+  "gherkin": "When the user tries to create an \"IMAGE\" with the following data\n  | _key_          | _value_              |\n  | image_platform | wikimedia            |\n  | external_id    | ABCDE                |\nThen the response should return with status code 422",
+  "labels": [],
+  "created_at": "2025-05-23T11:24:52.585+0200",
+  "updated_at": "2025-05-24T18:48:46.790+0200"
+}

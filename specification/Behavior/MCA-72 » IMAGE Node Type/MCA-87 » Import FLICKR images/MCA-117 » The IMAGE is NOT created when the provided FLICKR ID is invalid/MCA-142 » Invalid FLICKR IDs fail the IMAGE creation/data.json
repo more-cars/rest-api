@@ -1,0 +1,9 @@
+{
+  "id": "MCA-142",
+  "parent_id": "MCA-117",
+  "title": "Invalid FLICKR IDs fail the IMAGE creation",
+  "gherkin": "When the user tries to create an \"IMAGE\" with the following data\n  | _key_          | _value_              |\n  | image_platform | flickr               |\n  | external_id    | ABCDE                |\nThen the response should return with status code 422",
+  "labels": [],
+  "created_at": "2025-05-23T11:22:26.058+0200",
+  "updated_at": "2025-05-24T18:48:42.555+0200"
+}

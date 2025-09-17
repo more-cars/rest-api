@@ -1,0 +1,11 @@
+{
+  "id": "MCA-46",
+  "parent_id": "MCA-37",
+  "title": "Trying to add unknown properties when creating a BRAND",
+  "gherkin": "When the user creates a brand \"A\" with the following mixed data\n  | key      | value           |\n  | name     | Test Brand Test |\n  | fonded   | 1955            |\n  | defunckt | 1999            |\nThen the following keys in the response object should be of value null\n  | key     |\n  | founded |\n  | defunct |\nThen the response should NOT contain the following keys\n  | key      |\n  | fonded   |\n  | defunckt |",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-05-06T11:33:30.694+0200",
+  "updated_at": "2025-08-01T09:42:38.616+0200"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "MCA-114",
+  "parent_id": "MCA-77",
+  "title": "Requesting an IMAGE collection returns a list of all existing IMAGE nodes",
+  "description": "",
+  "release_version": "0.8.0",
+  "created_at": "2025-05-21T13:42:43.527+0200",
+  "updated_at": "2025-06-16T10:50:40.102+0200"
+}

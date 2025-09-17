@@ -1,0 +1,9 @@
+{
+  "id": "MCA-320",
+  "parent_id": "MCA-283",
+  "title": "The relationship between CAR MODEL and IMAGE is returned when it exists",
+  "description": "",
+  "release_version": null,
+  "created_at": "2025-08-05T09:59:26.556+0200",
+  "updated_at": "2025-08-06T17:59:59.299+0200"
+}

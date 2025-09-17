@@ -1,0 +1,11 @@
+{
+  "id": "MCA-123",
+  "parent_id": "MCA-98",
+  "title": "Requesting an IMAGE with a valid ID",
+  "gherkin": "Given there exists an \"IMAGE\" \"A\"\nWhen the user requests the \"IMAGE\" \"A\"\nAnd the response should return with status code 200\nThen the response should return the \"IMAGE\" \"A\"",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-05-21T17:19:59.224+0200",
+  "updated_at": "2025-05-28T11:49:50.022+0200"
+}

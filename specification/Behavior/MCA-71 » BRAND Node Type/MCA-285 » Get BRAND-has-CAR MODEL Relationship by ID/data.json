@@ -1,0 +1,18 @@
+{
+  "id": "MCA-285",
+  "parent_id": "MCA-71",
+  "title": "Get BRAND-has-CAR MODEL Relationship by ID",
+  "user_story": "As an API contributor\\\nI want to be able to request the relationship between a BRAND and a CAR MODEL\\\nSo I can find out if they are already connected or not\n",
+  "description": "* the requested relationship is returned when it actually exists → status code `200`\n  * requirements: the brand, the car model and the relationship between both nodes exist\n  * response: a JSON containing the following relationship data:\n    * `brand_id`: integer\n    * `car_model_id`: integer\n    * `relationship_id`: integer\n    * `relationship_name`: string\n    * `created_at`: string\n    * `updated_at`: string\n* the relationship retrieval fails with status code `404` when the provided data was not valid:\n  * a `brand` with the given ID was not found\n    * node with given ID exists, but is not a `brand`\n  * a `car model` with the given ID was not found\n    * node with given ID exists, but is not a `car model`\n  * the relationship between both nodes was not found\n",
+  "api_verb": "GET",
+  "api_path": "/brands/<brand-id>/has-car-model/<car-model-id>",
+  "response_options": [
+    "200",
+    "404"
+  ],
+  "release_versions": [
+    "0.14.0"
+  ],
+  "created_at": "2025-07-20T11:25:41.915+0200",
+  "updated_at": "2025-08-21T13:54:26.965+0200"
+}

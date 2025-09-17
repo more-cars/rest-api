@@ -1,0 +1,11 @@
+{
+  "id": "MCA-134",
+  "parent_id": "MCA-104",
+  "title": "Requesting a collections of relationships returns with valid IDs",
+  "gherkin": "Given there exist 5 relationships\n\nWhen the user requests a relationship\nThen the relationship ID in the response should be a number greater than 0\nAnd the relationship ID in the response should be a number smaller than 4294967296\n\nWhen the user requests all relationships\nThen the relationship ID of all items in the response should be a number greater than 0\nAnd the relationship ID of all items in the response should be a number smaller than 4294967296",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-05-22T17:28:14.200+0200",
+  "updated_at": "2025-06-16T16:16:31.147+0200"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "MCA-75",
+  "parent_id": "MCA-72",
+  "title": "Create IMAGE Node",
+  "user_story": "As an API contributor\\\nI want to be able to create IMAGE nodes\\\nSo I can later use them to illustrate other nodes\n",
+  "description": "For the time being, More Cars will **not** host any images, but will use the infrastructure of platforms like wikimedia and flickr. Meaning, all photos will be hotlinked. As a result of that, the user only has to provide a reference to the external photos. The remaining information will automatically be pulled from those platforms via API call.\n\nIn this first iteration the goal is just to create a foundation. Only dummy data will be created here. With <https://dennis-gerike.atlassian.net/browse/MCA-87> and <https://dennis-gerike.atlassian.net/browse/MCA-88> it will become possible to actually import real images from those platforms.&#x20;\n\n# **Request**\n\n* method: `POST`\n* URL path: `/images`&#x20;\n* properties:\n  * `image_provider`: string, mandatory\n  * `external_id`: string, mandatory\n\n# **Response**\n\n**Happy path**\n\n* positive HTTP status code (201)\n* a JSON with the meta information, the user data and the generated dummy data:\n  * `id`: integer\n  * `external_id`: string\n  * `image_provider`: string\n  * `name`: string, (dummy-value)\n  * `description`: string/null, (dummy-value)\n  * `creator`: string, (dummy-value)\n  * `license`: string, (dummy-value)\n  * `tags`: string/null, (dummy-value)\n  * `source`: string, (dummy-value)\n  * `image_url_original`: string, (dummy-value)\n  * `image_url_xxl`: string/null, (dummy-value)\n  * `image_url_xl`: string/null, (dummy-value)\n  * `image_url_l`: string/null, (dummy-value)\n  * `image_url_m`: string/null, (dummy-value)\n  * `image_url_s`: string/null, (dummy-value)\n  * `image_url_xs`: string/null, (dummy-value)\n  * `created_at`: string\n  * `updated_at`: string\n\n**Unhappy path**\n\n* negative HTTP status code (400)\n* a plain text response stating the problem\n\n# **Acceptance Criteria**\n\n**Behavior (Business Logic)**\n\n* the node is successfully created when provided with valid data&#x20;\n  * in this first iteration data is accepted when both mandatory fields are filled with strings\n* when the request is malformed then code 400 is returned (incl. error message in plain text)\n  * when mandatory fields are missing\n  * when wrong data types were submitted\n* unknown properties are ignored (no error, no warning)\n* the properties that would be imported from the image platform are filled with dummy data for now\n\n# **Quality Gates**\n\n* Unit+Integration tests (Jest) are extended (100% coverage)\n* Behavior tests (Cucumber) are added (100% coverage)\n* OpenAPI spec is extended\n  * schema is still valid\n* Bruno collection is extended\n* Performance tests are extended\n  * tests are still green\n\n# **NOT in scope for this iteration**\n\n* full validation\n* bulk create\n* versioning information\n* auth / security\n* proper JSON structure according to the JSON:API\n",
+  "api_verb": "POST",
+  "api_path": "/images",
+  "response_options": [
+    "201",
+    "400"
+  ],
+  "release_versions": [
+    "0.8.0"
+  ],
+  "created_at": "2025-05-18T10:40:32.804+0200",
+  "updated_at": "2025-09-12T17:11:45.653+0200"
+}

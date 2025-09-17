@@ -1,0 +1,11 @@
+{
+  "id": "MCA-176",
+  "parent_id": "MCA-160",
+  "title": "Expecting a NOT FOUND error when the IMAGE or partner node does not exist",
+  "gherkin": "Given there exists a \"<node type>\" \"<node>\"\nAnd \"IMAGE\" \"<image>\" does NOT exist\nWhen the user requests the IMAGE relationship between \"<node type>\" \"<node>\" and IMAGE \"<image>\"\nThen the response should return with status code 404\n\nGiven \"<node type>\" \"<node>\" does NOT exist\nAnd there exists an \"IMAGE\" \"<image>\"\nWhen the user requests the IMAGE relationship between \"<node type>\" \"<node>\" and IMAGE \"<image>\"\nThen the response should return with status code 404\n\nGiven \"<node type>\" \"<node>\" does NOT exist\nAnd \"IMAGE\" \"<image>\" does NOT exist\nWhen the user requests the IMAGE relationship between \"<node type>\" \"<node>\" and IMAGE \"<image>\"\nThen the response should return with status code 404\n\nExamples:\n  | node type | node     | image                          |\n  | BRAND     | Ferrari  | ferrari-logo.jpg               |\n  | CAR MODEL | Countach | lamborghini-countach-front.jpg |",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-05-24T15:10:32.820+0200",
+  "updated_at": "2025-06-01T14:05:56.919+0200"
+}

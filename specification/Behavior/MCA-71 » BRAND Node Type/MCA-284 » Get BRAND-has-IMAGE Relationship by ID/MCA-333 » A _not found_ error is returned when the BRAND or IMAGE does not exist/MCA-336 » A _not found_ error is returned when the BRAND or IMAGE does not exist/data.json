@@ -1,0 +1,11 @@
+{
+  "id": "MCA-336",
+  "parent_id": "MCA-333",
+  "title": "A \"not found\" error is returned when the BRAND or IMAGE does not exist",
+  "gherkin": "Given there exists a \"BRAND\" \"Honda\"\nAnd \"IMAGE\" \"logo\" does NOT exist\nWhen the user tries to request the relationship between BRAND \"Honda\" and IMAGE \"logo\"\nThen the response should return with status code 404\n\nGiven \"BRAND\" \"Honda\" does NOT exist\nAnd there exists an \"IMAGE\" \"logo\"\nWhen the user tries to request the relationship between BRAND \"Honda\" and IMAGE \"logo\"\nThen the response should return with status code 404\n\nGiven \"BRAND\" \"Honda\" does NOT exist\nAnd \"IMAGE\" \"logo\" does NOT exist\nWhen the user tries to request the relationship between BRAND \"Honda\" and IMAGE \"logo\"\nThen the response should return with status code 404",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-08-05T14:42:32.457+0200",
+  "updated_at": "2025-08-21T14:33:48.368+0200"
+}

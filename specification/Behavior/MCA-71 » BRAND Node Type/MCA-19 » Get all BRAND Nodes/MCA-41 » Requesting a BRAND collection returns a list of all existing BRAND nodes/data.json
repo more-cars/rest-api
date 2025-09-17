@@ -1,0 +1,9 @@
+{
+  "id": "MCA-41",
+  "parent_id": "MCA-19",
+  "title": "Requesting a BRAND collection returns a list of all existing BRAND nodes",
+  "description": "",
+  "release_version": "0.6.0",
+  "created_at": "2025-05-06T10:38:55.436+0200",
+  "updated_at": "2025-06-16T10:37:24.901+0200"
+}

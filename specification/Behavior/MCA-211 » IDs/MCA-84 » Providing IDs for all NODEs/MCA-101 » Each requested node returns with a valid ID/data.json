@@ -1,0 +1,9 @@
+{
+  "id": "MCA-101",
+  "parent_id": "MCA-84",
+  "title": "Each requested node returns with a valid ID",
+  "description": "* whenever a node is requested the response has to contain an ID\n  * get by ID\n  * get all Brands, get all Car Models, get all Images, etc.\n",
+  "release_version": "0.8.0",
+  "created_at": "2025-05-20T16:18:10.424+0200",
+  "updated_at": "2025-06-16T10:57:02.332+0200"
+}

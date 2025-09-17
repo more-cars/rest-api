@@ -1,0 +1,9 @@
+{
+  "id": "MCA-113",
+  "parent_id": "MCA-75",
+  "title": "The response for creating an IMAGE returns the new node with all specified properties",
+  "description": "* `external_id`: string\n* `image_provider`: string\n* `name`: string, (dummy-value)\n* `description`: string/null, (dummy-value)\n* `creator`: string, (dummy-value)\n* `license`: string, (dummy-value)\n* `tags`: string/null, (dummy-value)\n* `source`: string, (dummy-value)\n* `image_url_original`: string, (dummy-value)\n* `image_url_xxl`: string/null, (dummy-value)\n* `image_url_xl`: string/null, (dummy-value)\n* `image_url_l`: string/null, (dummy-value)\n* `image_url_m`: string/null, (dummy-value)\n* `image_url_s`: string/null, (dummy-value)\n* `image_url_xs`: string/null, (dummy-value)\n",
+  "release_version": "0.8.0",
+  "created_at": "2025-05-21T12:48:16.229+0200",
+  "updated_at": "2025-06-16T10:48:23.050+0200"
+}

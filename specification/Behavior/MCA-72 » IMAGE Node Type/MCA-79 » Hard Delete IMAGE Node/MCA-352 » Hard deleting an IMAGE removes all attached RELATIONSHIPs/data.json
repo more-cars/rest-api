@@ -1,0 +1,9 @@
+{
+  "id": "MCA-352",
+  "parent_id": "MCA-79",
+  "title": "Hard deleting an IMAGE removes all attached RELATIONSHIPs",
+  "description": "",
+  "release_version": "0.15.0",
+  "created_at": "2025-08-11T09:53:06.494+0200",
+  "updated_at": "2025-09-02T08:36:06.566+0200"
+}

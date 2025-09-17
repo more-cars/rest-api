@@ -1,0 +1,9 @@
+{
+  "id": "MCA-149",
+  "parent_id": "MCA-82",
+  "title": "The relationship ID does not change when the same relationship between the same nodes is created again",
+  "description": "* creating a new rel and creating the same rel again produces the identical response\n* 201\n",
+  "release_version": "0.9.0",
+  "created_at": "2025-05-23T13:58:43.706+0200",
+  "updated_at": "2025-06-16T10:51:18.580+0200"
+}

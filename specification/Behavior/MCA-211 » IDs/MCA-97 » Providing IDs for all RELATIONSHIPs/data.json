@@ -1,0 +1,15 @@
+{
+  "id": "MCA-97",
+  "parent_id": "MCA-211",
+  "title": "Providing IDs for all RELATIONSHIPs",
+  "user_story": "As an API consumer\\\nI need all RELATIONSHIPs to have an IDENTIFIER\\\nSo I can find the RELATIONSHIPs again to reference them in different contexts\n",
+  "description": "# Background Information\n\nEach relationship needs to have a (unique) identifier. Without them it is (partially) impossible to identify specific relationships.\n\nNeo4J automatically adds an `ID` and an `element ID` when a new relationship is created. But using them directly is problematic.&#x20;\n\n**Issue:** Whenever a relationship is deleted, its ID is released and Neo4J can (and will) use it again for new relationships. This can cause confusing when two or more relationships have/had the same ID.\n\n# The Mission\n\nIn order to solve those issues the only option is to manage the IDs on application side. Creating a relationship between two nodes needs to trigger a process that generates a unique ID and attaches it to that relationship. Where exactly this process happens doesn’t matter so much. Important is that a returned relationship always contains an ID. Meaning, it **cannot** be an asynchronous solution where the ID is added afterwards via a cron job. Using a synchronous solution here will make the response times a bit slower (a few milliseconds), but avoids complex business logic.\n\n# **Acceptance Criteria**\n\n* whenever a relationship is created the response has to contain an ID\n  * returned as field `relationship_id` from type `number`\n* whenever a relationship is requested the response has to contain an ID\n  * get by ID\n  * get all Brand has Car Model relationships, etc.\n* the generated ID is returned as a number (integer) within the 32-bit space\n  * this allows for up to 4 billion relationships→ this will be more than enough for the next 10 or 20 years\n  * how this number is internally stored doesn’t matter, as long as it is returned as described above\n* the ID needs to be unique → no other relationship is allowed to have the same ID\n",
+  "api_verb": null,
+  "api_path": null,
+  "response_options": [],
+  "release_versions": [
+    "0.10.0"
+  ],
+  "created_at": "2025-05-20T10:34:40.719+0200",
+  "updated_at": "2025-06-17T08:54:43.320+0200"
+}

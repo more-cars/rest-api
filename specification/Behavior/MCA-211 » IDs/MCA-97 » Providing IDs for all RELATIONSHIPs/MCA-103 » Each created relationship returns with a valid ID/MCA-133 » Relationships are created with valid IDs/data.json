@@ -1,0 +1,12 @@
+{
+  "id": "MCA-133",
+  "parent_id": "MCA-103",
+  "title": "Relationships are created with valid IDs",
+  "gherkin": "When the user creates a relationship\nThen the property \"relationship_id\" in the response should be a number greater than 0\nAnd the property \"relationship_id\" in the response should be a number lesser than 4294967296",
+  "labels": [
+    "Happy-Path",
+    "implemented"
+  ],
+  "created_at": "2025-05-22T17:23:49.440+0200",
+  "updated_at": "2025-06-16T16:16:40.104+0200"
+}

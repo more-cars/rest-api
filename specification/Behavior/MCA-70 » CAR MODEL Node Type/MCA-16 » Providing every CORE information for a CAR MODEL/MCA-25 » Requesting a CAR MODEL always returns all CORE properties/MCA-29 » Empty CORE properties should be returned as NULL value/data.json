@@ -1,0 +1,11 @@
+{
+  "id": "MCA-29",
+  "parent_id": "MCA-25",
+  "title": "Empty CORE properties should be returned as NULL value",
+  "gherkin": "Given there exists a minimal car model \"Octavia\"\nWhen the user requests the car model \"Octavia\" via ID\nThen the following keys in the response object should be of value null\n  | key              |\n  | built_from       |\n  | built_to         |\n  | generation       |\n  | internal_code    |\n  | total_production |",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-05-04T13:00:48.441+0200",
+  "updated_at": "2025-05-08T11:50:52.019+0200"
+}

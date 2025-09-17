@@ -1,0 +1,11 @@
+{
+  "id": "MCA-330",
+  "parent_id": "MCA-327",
+  "title": "Requesting the relationship between a BRAND and CAR MODEL that do not exist",
+  "gherkin": "Given there exists a \"BRAND\" \"Lamborghini\"\nAnd \"CAR MODEL\" \"Countach\" does NOT exist\nWhen the user tries to request the relationship between BRAND \"Lamborghini\" and CAR MODEL \"Countach\"\nThen the response should return with status code 404\n\nGiven \"BRAND\" \"Lamborghini\" does NOT exist\nAnd there exists a \"CAR MODEL\" \"Countach\"\nWhen the user tries to request the relationship between BRAND \"Lamborghini\" and CAR MODEL \"Countach\"\nThen the response should return with status code 404\n\nGiven \"BRAND\" \"Lamborghini\" does NOT exist\nAnd \"CAR MODEL\" \"Countach\" does NOT exist\nWhen the user tries to request the relationship between BRAND \"Lamborghini\" and CAR MODEL \"Countach\"\nThen the response should return with status code 404",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-08-05T11:43:07.561+0200",
+  "updated_at": "2025-08-21T14:33:47.254+0200"
+}

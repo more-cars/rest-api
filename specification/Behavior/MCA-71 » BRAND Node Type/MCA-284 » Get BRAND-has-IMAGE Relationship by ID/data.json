@@ -1,0 +1,18 @@
+{
+  "id": "MCA-284",
+  "parent_id": "MCA-71",
+  "title": "Get BRAND-has-IMAGE Relationship by ID",
+  "user_story": "As an API contributor\\\nI want to be able to request the relationship between a BRAND and an IMAGE\\\nSo I can find out if they are already connected or not\n",
+  "description": "* the requested relationship is returned when it actually exists → status code `200`\n  * requirements: the `brand`, the `image` and the `relationship` between both nodes exist\n  * response: a JSON containing the following relationship data:\n    * `brand_id`: integer\n    * `image_id`: integer\n    * `relationship_id`: integer\n    * `relationship_name`: string\n    * `created_at`: string\n    * `updated_at`: string\n* the relationship retrieval fails with status code `404` when the provided data was not valid:\n  * a `brand` with the given ID was not found\n    * node with given ID exists, but is not a `brand`\n  * an `image` with the given ID was not found\n    * node with given ID exists, but is not an `image`\n  * the relationship between both nodes was not found\n\n### **NOT in scope for this iteration**\n\n* proper JSON structure according to the JSON:API\n* returning the actual nodes (for now only the IDs)\n",
+  "api_verb": "GET",
+  "api_path": "/brands/<brand-id>/has-image/<image-id>",
+  "response_options": [
+    "200",
+    "404"
+  ],
+  "release_versions": [
+    "0.14.0"
+  ],
+  "created_at": "2025-07-16T10:38:19.670+0200",
+  "updated_at": "2025-08-21T13:55:56.807+0200"
+}

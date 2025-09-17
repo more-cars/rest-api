@@ -1,0 +1,15 @@
+{
+  "id": "MCA-234",
+  "parent_id": "MCA-211",
+  "title": "8-digit IDs",
+  "user_story": "As a user\\\nI want the NODE IDs to be short enough \\\nSo I can remember them\\\nBut long enough \\\nSo they can be used as meaningful search terms\n",
+  "description": "## Context\n\nIn <https://dennis-gerike.atlassian.net/browse/MCA-84> and <https://dennis-gerike.atlassian.net/browse/MCA-97> all nodes and relationships were extended to contain a custom More Cars ID. The goal of having dedicated IDs is to have full control over them, because the internal Neo4j IDs can neither be changed nor manipulated. But there are two situations were that will be necessary. When migrating the records from the old database to the new one the IDs must stay the same (to not invalidate the existing More Cars links in the internet). Also, the number pattern of the IDs should be adjustable. Right now, the brand “BMW” has the ID “1”. The newest nodes have 6 digits. To have a more uniform pattern (and to make it easier to search for those IDs) they should all have the same length.\n\n## Mission\n\nThe IDs for all nodes and all relationships should be changed to be always 8 digits long. Until now those IDs are just a trimmed copy of the internal Neo4j IDs. The Neo4j IDs can still be used as the basis, but they need to be padded to reach the wanted size. The resulting IDs should still be integers (no UUID, no hex numbers, no alphanumeric strings).\n\nThere is a slight chance that More Cars 2.0 will be run in parallel with More Cars 1.0 for a while. To avoid potential collisions with the IDs the MC2 numbers should start at 12 million. When the old records are migrated they will be converted to fit in the space between 10 million and 12 million. E.g. when the Neo4j node has the ID “123” then the More Cars ID would be `12,000,123` for the new nodes resp. `10,000,123` for the old nodes.&#x20;\n\n## **Acceptance Criteria**\n\n* all nodes are created with an ID (positive integer number) larger than `12,000,000` and smaller than `99,999,999`\n* all relationships are created with an ID (positive integer number) bigger than `12,000,000` and smaller than `99,999,999`\n* the user may not override the ID of a node when creating or updating it\n* the user may not override the ID of a relationship when creating or updating it\n* the system may not override the ID of a node when updating it\n* the system may not override the ID of a relationship when updating it\n\n## Dev Hints\n\n* the code needs to stay flexible enough to give nodes a different ID (e.g. when doing the migration from More Cars 1.0)\n* the code needs to stay flexible enough to give relationships a different ID (not relevant for the migration from More Cars 1.0, but there might be other cases)\n",
+  "api_verb": null,
+  "api_path": null,
+  "response_options": [],
+  "release_versions": [
+    "0.12.0"
+  ],
+  "created_at": "2025-06-17T08:48:55.899+0200",
+  "updated_at": "2025-07-21T10:45:44.932+0200"
+}

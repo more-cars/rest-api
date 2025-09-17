@@ -1,0 +1,11 @@
+{
+  "id": "MCA-130",
+  "parent_id": "MCA-102",
+  "title": "Each node gets a different ID",
+  "gherkin": "When the user creates a set of 20 \"<node type>\" \"A\"\nThen the response of each created node in set \"A\" should contain a different node ID\n\nExamples:\n  | node type |\n  | BRAND     |\n  | CAR MODEL |",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-05-22T17:03:00.821+0200",
+  "updated_at": "2025-05-29T10:26:12.669+0200"
+}

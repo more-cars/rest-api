@@ -1,0 +1,11 @@
+{
+  "id": "MCA-126",
+  "parent_id": "MCA-108",
+  "title": "In new relationships the \"created\" and \"updated\" timestamps are identical",
+  "gherkin": "When the user creates a relationship\nThen the properties \"created_at\" and \"updated_at\" in the response should be identical",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-05-22T16:38:11.017+0200",
+  "updated_at": "2025-06-26T11:12:44.850+0200"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "MCA-353",
+  "parent_id": "MCA-344",
+  "title": "Hard deleting a CAR MODEL",
+  "gherkin": "Given there exists a \"CAR MODEL\" \"Avensis\"\nWhen the user hard deletes the \"CAR MODEL\" \"Avensis\"\nThen the \"CAR MODEL\" \"Avensis\" should not exist anymore",
+  "labels": [
+    "implemented"
+  ],
+  "created_at": "2025-08-17T12:58:43.126+0200",
+  "updated_at": "2025-08-21T14:26:13.687+0200"
+}

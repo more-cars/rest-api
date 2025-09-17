@@ -1,0 +1,9 @@
+{
+  "id": "MCA-170",
+  "parent_id": "MCA-153",
+  "title": "Connecting an IMAGE to multiple nodes of different type",
+  "gherkin": "Given there exists a \"BRAND\" \"Porsche\"\nAnd there exists a \"CAR MODEL\" \"Cayman\"\nAnd there exists an \"IMAGE\" \"porsche-cayman.jpg\"\n\nWhen the user attaches the \"BRAND\" \"Porsche\" to the image \"porsche-cayman.jpg\"\nAnd the user attaches the \"CAR MODEL\" \"Cayman\" to the image \"porsche-cayman.jpg\"\n\nThen \"BRAND\" \"Porsche\" should be connected to image \"porsche-cayman.jpg\"\nAnd \"CAR MODEL\" \"Cayman\" should be connected to image \"porsche-cayman.jpg\"",
+  "labels": [],
+  "created_at": "2025-05-24T12:02:23.757+0200",
+  "updated_at": "2025-08-24T17:39:13.794+0200"
+}

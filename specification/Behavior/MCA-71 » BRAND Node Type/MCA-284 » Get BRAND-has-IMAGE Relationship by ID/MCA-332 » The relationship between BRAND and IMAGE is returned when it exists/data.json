@@ -1,0 +1,9 @@
+{
+  "id": "MCA-332",
+  "parent_id": "MCA-284",
+  "title": "The relationship between BRAND and IMAGE is returned when it exists",
+  "description": "",
+  "release_version": "0.14.0",
+  "created_at": "2025-08-05T14:40:08.087+0200",
+  "updated_at": "2025-09-02T08:45:08.772+0200"
+}

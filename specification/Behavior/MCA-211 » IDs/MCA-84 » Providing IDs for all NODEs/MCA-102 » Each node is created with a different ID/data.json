@@ -1,0 +1,9 @@
+{
+  "id": "MCA-102",
+  "parent_id": "MCA-84",
+  "title": "Each node is created with a different ID",
+  "description": "* the ID needs to be unique → no other node is allowed to have the same ID\n",
+  "release_version": "0.8.0",
+  "created_at": "2025-05-20T16:19:18.764+0200",
+  "updated_at": "2025-06-16T10:57:00.454+0200"
+}

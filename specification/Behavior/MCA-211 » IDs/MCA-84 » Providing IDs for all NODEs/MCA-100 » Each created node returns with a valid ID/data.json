@@ -1,0 +1,9 @@
+{
+  "id": "MCA-100",
+  "parent_id": "MCA-84",
+  "title": "Each created node returns with a valid ID",
+  "description": "* whenever a node is created the response has to contain an ID\n  * returned as field `id` from type `number`\n* the generated ID is returned as a number (integer) within the 32-bit space\n  * this allows for up to 4 billion nodes → this will be more than enough for the next 10 or 20 years\n  * how this number is internally stored doesn’t matter, as long as it is returned as described above\n",
+  "release_version": "0.8.0",
+  "created_at": "2025-05-20T16:17:54.353+0200",
+  "updated_at": "2025-06-16T10:56:56.779+0200"
+}

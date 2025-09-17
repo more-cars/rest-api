@@ -1,0 +1,9 @@
+{
+  "id": "MCA-262",
+  "parent_id": "MCA-248",
+  "title": "Updating RELATIONSHIPs of every type",
+  "gherkin": "Given there exists a relationship \"R\" between a CAR MODEL and a BRAND\nWhen the user updates the relationship \"R\"\nThen the response should contain the id of relationship \"R\"\n\nGiven there exists a relationship \"R\" between a IMAGE and a CAR MODEL\nWhen the user updates the relationship \"R\"\nThen the response should contain the id of relationship \"R\"\n\nGiven there exists a relationship \"R\" between a IMAGE and a BRAND\nWhen the user updates the relationship \"R\"\nThen the response should contain the id of relationship \"R\"",
+  "labels": [],
+  "created_at": "2025-07-04T11:11:24.520+0200",
+  "updated_at": "2025-07-04T12:01:29.741+0200"
+}

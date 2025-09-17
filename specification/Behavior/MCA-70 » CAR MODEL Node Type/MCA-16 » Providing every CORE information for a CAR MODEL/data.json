@@ -1,0 +1,15 @@
+{
+  "id": "MCA-16",
+  "parent_id": "MCA-70",
+  "title": "Providing every CORE information for a CAR MODEL",
+  "user_story": "As an API consumer\\\nI want to get every core information for a car model\\\nSo I am not limited to its ID and name\n",
+  "description": "# **Background**\n\nIn the first iteration of the Car Model implementation ([MCA-1](https://dennis-gerike.atlassian.net/browse/MCA-1)) the nodes only got a name and an ID. This was to reduce complexity, to focus on the essentials and to get a working solution as fast as possible.\n\n# **Task**\n\nNow, that there exists a foundation we can add the “remaining“ properties. Meaning, all core properties that already exist in More Cars 1.0.\n\n# **Core Properties**\n\nThe following list of properties has to be added to the Car Models:\n\n* `built_from`: integer\n* `built_to`: integer\n* `generation`: integer\n* `internal_code`: string\n* `total_production`: integer&#x20;\n\n# **Acceptance Criteria**\n\n**Behavior (Business logic)**\n\n* when creating a car model the user can provide the new core properties (alongside the old ones)\n  * they will be saved in the node analog to the `name` or `id`\n  * they will be returned in the 201-response analog to the `name` or `id`\n* when requesting a car model all core properties are returned\n  * applies to all routes: “get car model by id”, “get all car models”\n* core properties are always returned, even when they are not set\n  * value is returned as `null` in this case\n* invalid properties are ignored (no error, no warning)\n\n**Quality Gates**\n\n* Unit+Integration tests (Jest) are extended (100% coverage combined)\n* Behavior tests (Cucumber) are added (100% coverage)\n* OpenAPI spec is extended\n  * schema is still valid\n* Bruno collection is extended\n* Performance tests are extended\n  * tests are still green\n\n# **NOT in scope for this iteration**\n\n* meta information, like `created_at` or `updated_at`\n* data validation (only data types → but we get that for free from TypeScript)\n* proper JSON structure according to the JSON:API\n\nNo migration is needed for the existing Car Model nodes. Neo4j doesn’t store null-values, therefore a migration would not change the data in any way. Also there is no persisted production database yet.\n",
+  "api_verb": null,
+  "api_path": null,
+  "response_options": [],
+  "release_versions": [
+    "0.5.0"
+  ],
+  "created_at": "2025-05-01T09:44:35.445+0200",
+  "updated_at": "2025-08-21T14:17:06.305+0200"
+}
