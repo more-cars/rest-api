@@ -9,10 +9,12 @@ Feature: Providing IDs for all NODEs
 
     @TEST_MCA-130 @implemented
     Scenario Outline: Each node gets a different ID
-      When the user creates a set of 20 "<node type>" "A"
-      Then the response of each created node in set "A" should contain a different node ID
+      When the user creates a set of 20 "<node type>"s
+      Then each node in the response should contain a different ID
 
       Examples:
         | node type |
+        | COMPANY   |
         | BRAND     |
         | CAR MODEL |
+        | IMAGE     |

@@ -13,9 +13,9 @@ Feature: Create COMPANY Node
         | key  | value  | datatype |
         | name | BMW AG | string   |
       Then the response should contain the following properties
-        | key                         | value  |
-        | name                        | BMW AG |
-        | founded                     |        |
-        | defunct                     |        |
-        | headquarters_location       |        |
-        | legal_headquarters_location |        |
+        | key                         | value  | datatype |
+        | name                        | BMW AG | string   |
+        | founded                     |        | number   |
+        | defunct                     |        | number   |
+        | headquarters_location       |        | string   |
+        | legal_headquarters_location |        | string   |

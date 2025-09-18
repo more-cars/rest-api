@@ -11,5 +11,5 @@ Feature: Get IMAGE Node by ID
     Scenario: Requesting an IMAGE with a valid ID
       Given there exists an "IMAGE" "A"
       When the user requests the "IMAGE" "A"
-      And the response should return with status code 200
-      Then the response should return the "IMAGE" "A"
+      Then the response should return with status code 200
+      And the response should return the IMAGE "A"

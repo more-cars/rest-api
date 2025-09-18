@@ -11,5 +11,5 @@ Feature: Get all Relationships: IMAGE belongs to NODE TYPE
     @TEST_MCA-343 @implemented
     Scenario: Requesting all NODE type relationships when the IMAGE does not exist
       Given "IMAGE" "bmw bonnet" does NOT exist
-      When the user tries to request a grouped list of all relationships for the IMAGE "bmw bonnet"
+      When the user requests a grouped list of all relationships for the IMAGE "bmw bonnet"
       Then the response should return with status code 404

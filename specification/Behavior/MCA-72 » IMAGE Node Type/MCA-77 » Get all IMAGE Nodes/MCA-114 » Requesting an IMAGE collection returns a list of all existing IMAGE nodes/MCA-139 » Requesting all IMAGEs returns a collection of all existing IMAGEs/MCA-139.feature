@@ -12,4 +12,4 @@ Feature: Get all IMAGE Nodes
       Given there exist 13 "IMAGE"s
       When the user requests all "IMAGE"s
       Then the response should return with status code 200
-      And the response should return a collection of 13 "IMAGE" nodes
+      And the response should return a collection of 13 "IMAGE"s

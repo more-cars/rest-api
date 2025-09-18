@@ -11,7 +11,7 @@ Feature: Create IMAGE Node
     Scenario: All specified properties are returned when an IMAGE was created
       When the user creates an "IMAGE"
       Then the response should contain the following keys
-        | _key_              |
+        | key                |
         | external_id        |
         | image_provider     |
         | name               |

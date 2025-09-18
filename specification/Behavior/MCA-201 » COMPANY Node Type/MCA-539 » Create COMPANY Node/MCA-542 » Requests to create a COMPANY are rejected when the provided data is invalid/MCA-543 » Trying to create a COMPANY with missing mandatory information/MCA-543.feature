@@ -11,4 +11,4 @@ Feature: Create COMPANY Node
     Scenario: Trying to create a COMPANY with missing mandatory information
       When the user tries to create a "COMPANY" "BMW AG" with the following data
         | key | value | datatype |
-      Then the response should return with status code 400
+      Then the request should be rejected with status code 400

@@ -9,12 +9,13 @@ Feature: Get IMAGE-belongs-to-NODE Relationship by ID
 
     @TEST_MCA-174 @Happy-Path @implemented
     Scenario Outline: Requesting the relationship between a specific IMAGE and specific node
-      Given there exists an "IMAGE" "image"
+      Given there exists an "IMAGE" "<image>"
       And there exists a "<node type>" "<node>"
-      And there exist a relationship "R" between IMAGE "<image>" and "<node type>" "<node>"
-      When the user requests the IMAGE relationship between "<node type>" "<node>" and IMAGE "<image>"
+      And there exists a relationship "R" between "IMAGE" "<image>" and "<node type>" "<node>"
+
+      When the user requests the "belongs to node" relationship between "<image>" and "<node>"
       Then the response should return with status code 200
-      And the response should return the relationship "R"
+      And the response should return the IMAGE relationship "R"
 
       Examples:
         | node type | node     | image                          |

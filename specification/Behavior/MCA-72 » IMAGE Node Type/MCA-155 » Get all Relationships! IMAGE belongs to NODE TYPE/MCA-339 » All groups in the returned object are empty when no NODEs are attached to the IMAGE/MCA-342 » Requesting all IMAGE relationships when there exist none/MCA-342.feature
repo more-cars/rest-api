@@ -13,4 +13,4 @@ Feature: Get all Relationships: IMAGE belongs to NODE TYPE
       Given there exists an "IMAGE" "bmw bonnet"
       When the user requests a grouped list of all relationships for the IMAGE "bmw bonnet"
       Then the response should return with status code 200
-      And the response should return an empty object
+      And all groups in the response should be an empty list

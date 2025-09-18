@@ -20,10 +20,12 @@ Feature: Create COMPANY Node
         | created_at                  | 2025-01-01 | string   |
         | updated_at                  | 2025-01-01 | string   |
       Then the response should contain the following keys
+        | key        |
         | id         |
         | created_at |
         | updated_at |
       But the response should NOT contain the following properties
-        | id         | 1234       |
-        | created_at | 2025-01-01 |
-        | updated_at | 2025-01-01 |
+        | key        | value      | datatype |
+        | id         | 1234       | number   |
+        | created_at | 2025-01-01 | string   |
+        | updated_at | 2025-01-01 | string   |

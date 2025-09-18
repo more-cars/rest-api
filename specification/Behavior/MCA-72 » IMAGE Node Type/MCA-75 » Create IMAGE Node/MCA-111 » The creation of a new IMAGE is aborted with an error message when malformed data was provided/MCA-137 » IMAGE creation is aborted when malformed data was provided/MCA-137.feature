@@ -9,7 +9,7 @@ Feature: Create IMAGE Node
 
     @TEST_MCA-137 @implemented
     Scenario: IMAGE creation is aborted when malformed data was provided
-      When the user tries to create an "IMAGE" with the following data
+      When the user creates an "IMAGE" with the following data
         | key              | value  |
         | image_provvidder | flickr |
       Then the response should return with status code 400

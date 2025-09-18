@@ -24,6 +24,7 @@ Feature: 8-digit IDs
 
       Examples:
         | node_type |
-        | brand     |
-        | car model |
-        | image     |
+        | COMPANY   |
+        | BRAND     |
+        | CAR MODEL |
+        | IMAGE     |

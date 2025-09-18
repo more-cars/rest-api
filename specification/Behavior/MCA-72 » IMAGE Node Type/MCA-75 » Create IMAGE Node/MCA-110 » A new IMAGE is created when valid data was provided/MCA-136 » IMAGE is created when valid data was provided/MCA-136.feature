@@ -9,13 +9,13 @@ Feature: Create IMAGE Node
 
     @TEST_MCA-136 @Happy-Path @implemented
     Scenario: IMAGE is created when valid data was provided
-      When the user creates an "IMAGE" with the following valid data
-        | _key_          | _value_   |
+      When the user creates an "IMAGE" with the following data
+        | key            | value     |
         | image_provider | something |
         | external_id    | 12345     |
       Then the response should return with status code 201
       And the response should contain the following keys
-        | _key_          |
+        | key            |
         | id             |
         | image_provider |
         | external_id    |

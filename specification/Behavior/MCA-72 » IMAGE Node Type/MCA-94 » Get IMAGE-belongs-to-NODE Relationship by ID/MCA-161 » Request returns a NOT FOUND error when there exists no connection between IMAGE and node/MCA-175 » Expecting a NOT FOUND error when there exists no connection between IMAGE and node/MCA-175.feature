@@ -11,8 +11,8 @@ Feature: Get IMAGE-belongs-to-NODE Relationship by ID
     Scenario Outline: Expecting a NOT FOUND error when there exists no connection between IMAGE and node
       Given there exists a "<node type>" "<node>"
       And there exists an "IMAGE" "<image>"
-      And there exists no IMAGE relationship between "<node type>" "<node>" and IMAGE "<image>"
-      When the user requests the IMAGE relationship between "<node type>" "<node>" and IMAGE "<image>"
+      And there exists NO "belongs to node" relationship "R" between "<image>" and "<node>"
+      When the user requests the "belongs to node" relationship between "<image>" and "<node>"
       Then the response should return with status code 404
 
       Examples:

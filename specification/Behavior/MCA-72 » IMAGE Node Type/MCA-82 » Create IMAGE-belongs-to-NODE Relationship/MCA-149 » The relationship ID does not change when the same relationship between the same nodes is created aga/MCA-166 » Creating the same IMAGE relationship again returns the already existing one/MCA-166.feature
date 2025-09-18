@@ -11,10 +11,11 @@ Feature: Create IMAGE-belongs-to-NODE Relationship
     Scenario Outline: Creating the same IMAGE relationship again returns the already existing one
       Given there exists a "<node type>" "<node>"
       And there exists an "IMAGE" "<image>"
-      And there exists a relationship "R" between IMAGE "<image>" and "<node type>" "<node>"
-      When the user connects "<node type>" "<node>" to IMAGE "<image>"
+      And there exists a relationship "R" between "IMAGE" "<image>" and "<node type>" "<node>"
+
+      When the user attaches the "<node type>" "<node>" to the IMAGE "<image>"
       Then the response should return with status code 201
-      And the returned relationship ID in the response should be identical to the one in "R"
+      And the response should return the relationship "R"
 
       Examples:
         | node type | node     | image                          |

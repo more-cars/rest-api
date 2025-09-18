@@ -10,8 +10,8 @@ Feature: Create IMAGE Node
     @TEST_MCA-140 @implemented
     Scenario: Trying to override read-only properties when creating an IMAGE
       When the user creates an "IMAGE" with the following data
-        | _key_              | _value_              |
-        | image_platform     | flickr               |
+        | key                | value                |
+        | image_provider     | flickr               |
         | external_id        | 12345                |
         | id                 | 123                  |
         | name               | TEST                 |
@@ -31,9 +31,7 @@ Feature: Create IMAGE Node
         | updated_at         | 2022-07-23T03:00:00Z |
       Then the response should return with status code 201
       And the response should NOT contain the following properties
-        | _key_              | _value_              |
-        | image_platform     | flickr               |
-        | external_id        | 12345                |
+        | key                | value                |
         | id                 | 123                  |
         | name               | TEST                 |
         | description        | TEST                 |

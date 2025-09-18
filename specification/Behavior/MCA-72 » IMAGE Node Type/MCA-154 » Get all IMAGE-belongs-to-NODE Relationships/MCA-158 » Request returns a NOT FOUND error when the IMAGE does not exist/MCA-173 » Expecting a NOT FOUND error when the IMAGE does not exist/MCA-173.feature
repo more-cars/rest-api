@@ -9,6 +9,6 @@ Feature: Get all IMAGE-belongs-to-NODE Relationships
 
     @TEST_MCA-173 @implemented
     Scenario: Expecting a NOT FOUND error when the IMAGE does not exist
-      Given there exists NO "IMAGE" "A"
+      Given "IMAGE" "A" does NOT exist
       When the user requests all relationships for IMAGE "A"
       Then the response should return with status code 404

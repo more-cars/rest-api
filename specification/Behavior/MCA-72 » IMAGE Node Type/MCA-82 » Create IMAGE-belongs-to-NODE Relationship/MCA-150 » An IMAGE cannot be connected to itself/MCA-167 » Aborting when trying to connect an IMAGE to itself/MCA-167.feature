@@ -10,5 +10,5 @@ Feature: Create IMAGE-belongs-to-NODE Relationship
     @TEST_MCA-167 @implemented
     Scenario: Aborting when trying to connect an IMAGE to itself
       Given there exists an "IMAGE" "logo.jpg"
-      When the user tries to connect "IMAGE" "logo.jpg" to IMAGE "logo.jpg"
+      When the user attaches the "IMAGE" "logo.jpg" to the IMAGE "logo.jpg"
       Then the response should return with status code 422

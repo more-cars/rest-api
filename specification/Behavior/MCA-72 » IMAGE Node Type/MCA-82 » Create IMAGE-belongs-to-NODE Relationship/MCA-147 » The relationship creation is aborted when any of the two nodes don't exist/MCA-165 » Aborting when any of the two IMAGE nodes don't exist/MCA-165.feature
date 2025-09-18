@@ -11,15 +11,17 @@ Feature: Create IMAGE-belongs-to-NODE Relationship
     Scenario Outline: Aborting when any of the two IMAGE nodes don't exist
       Given there exists a "<node type>" "<node>"
       And "IMAGE" "<image>" does NOT exist
-      When the user tries to connect "<node type>" "<node>" to IMAGE "<image>"
+      When the user attaches the "<node type>" "<node>" to the IMAGE "<image>"
       Then the response should return with status code 404
+
       Given "<node type>" "<node>" does NOT exist
       And there exists an "IMAGE" "<image>"
-      When the user tries to connect "<node type>" "<node>" to IMAGE "<image>"
+      When the user attaches the "<node type>" "<node>" to the IMAGE "<image>"
       Then the response should return with status code 404
+
       Given "<node type>" "<node>" does NOT exist
       And "IMAGE" "<image>" does NOT exist
-      When the user tries to connect "<node type>" "<node>" to IMAGE "<image>"
+      When the user attaches the "<node type>" "<node>" to the IMAGE "<image>"
       Then the response should return with status code 404
 
       Examples:

@@ -13,4 +13,4 @@ Feature: Get all IMAGE-belongs-to-NODE Relationships
       And there exist 7 relationships for IMAGE "A"
       When the user requests all relationships for IMAGE "A"
       Then the response should return with status code 200
-      And the response should return a collection of 7 relationships
+      And the response should return a collection of 7 IMAGE relationships
