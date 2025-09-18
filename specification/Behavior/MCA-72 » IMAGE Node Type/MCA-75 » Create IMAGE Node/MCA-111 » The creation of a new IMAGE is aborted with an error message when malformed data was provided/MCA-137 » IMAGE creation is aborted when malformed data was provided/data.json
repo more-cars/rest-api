@@ -2,7 +2,7 @@
   "id": "MCA-137",
   "parent_id": "MCA-111",
   "title": "IMAGE creation is aborted when malformed data was provided",
-  "gherkin": "When the user tries to create an \"IMAGE\" with the following data\n  | key              | value  |\n  | image_provvidder | flickr |\nThen the response should return with status code 400\nAnd the response should contain an error message",
+  "gherkin": "When the user creates an \"IMAGE\" with the following data\n  | key              | value  |\n  | image_provvidder | flickr |\nThen the response should return with status code 400\nAnd the response should contain an error message",
   "labels": [
     "implemented"
   ],

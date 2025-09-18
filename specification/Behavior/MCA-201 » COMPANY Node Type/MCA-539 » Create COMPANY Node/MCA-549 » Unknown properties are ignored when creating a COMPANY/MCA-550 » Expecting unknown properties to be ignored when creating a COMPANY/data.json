@@ -2,7 +2,7 @@
   "id": "MCA-550",
   "parent_id": "MCA-549",
   "title": "Expecting unknown properties to be ignored when creating a COMPANY",
-  "gherkin": "When the user creates a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\n  | name | BMW AG | string |\n  | founded | 1916 | number |\n  | defunct |  | number |\n  | headquarters_location | Munich | string |\n  | legal_headquarters_location | Munich | string |\n  | thimbleweed | park | string |\nThen the response should contain the following properties\n  | key | value |\n  | name | BMW AG |\n  | founded | 1916 |\n  | defunct |  |\n  | headquarters_location | Munich |\n  | legal_headquarters_location | Munich |\nAnd the response should NOT contain the following keys\n  | key         |\n  | thimbleweed |",
+  "gherkin": "When the user creates a \"COMPANY\" \"BMW AG\" with the following data\n  | key                         | value  | datatype |\n  | name                        | BMW AG | string   |\n  | founded                     | 1916   | number   |\n  | defunct                     |        | number   |\n  | headquarters_location       | Munich | string   |\n  | legal_headquarters_location | Munich | string   |\n  | thimbleweed                 | park   | string   |\nThen the response should contain the following properties\n  | key                         | value  | datatype |\n  | name                        | BMW AG | string   |\n  | founded                     | 1916   | number   |\n  | defunct                     |        | number   |\n  | headquarters_location       | Munich | string   |\n  | legal_headquarters_location | Munich | string   |\nAnd the response should NOT contain the following keys\n  | key         |\n  | thimbleweed |",
   "labels": [
     "implemented"
   ],

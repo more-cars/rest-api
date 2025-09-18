@@ -7,7 +7,7 @@ Feature: Get all IMAGE Nodes
   @RULE_MCA-114
   Rule: Requesting an IMAGE collection returns a list of all existing IMAGE nodes
 
-    @TEST_MCA-139 @Happy-Path @implemented
+    @TEST_MCA-139 @implemented
     Scenario: Requesting all IMAGEs returns a collection of all existing IMAGEs
       Given there exist 13 "IMAGE"s
       When the user requests all "IMAGE"s

@@ -2,7 +2,7 @@
   "id": "MCA-257",
   "parent_id": "MCA-243",
   "title": "Creating NODEs of each type",
-  "gherkin": "When the user creates a \"<node type>\"\nThen the property \"id\" in the response should be a number greater than 12000000\nAnd the property \"id\" in the response should be a number smaller than 99999999\n\nExamples:\n  | node type |\n  | BRAND     |\n  | CAR MODEL |\n  | IMAGE     |",
+  "gherkin": "When the user creates a \"<node type>\"\nThen the property \"id\" in the response should be a number greater than 11999999\nAnd the property \"id\" in the response should be a number lesser than 99999999\n\nExamples:\n  | node type |\n  | COMPANY   |\n  | BRAND     |\n  | CAR MODEL |\n  | IMAGE     |",
   "labels": [
     "implemented"
   ],

@@ -2,7 +2,7 @@
   "id": "MCA-547",
   "parent_id": "MCA-546",
   "title": "Expecting all properties to be returned when creating a COMPANY",
-  "gherkin": "When the user creates a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\n  | name | BMW AG | string |\n  | founded | 1916 | number |\n  | defunct |  | number |\n  | headquarters_location | Munich | string |\n  | legal_headquarters_location | Munich | string |\nThen the response should contain the following properties\n  | key | value |\n  | name | BMW AG |\n  | founded | 1916 |\n  | defunct |  |\n  | headquarters_location | Munich |\n  | legal_headquarters_location | Munich |",
+  "gherkin": "When the user creates a \"COMPANY\" \"BMW AG\" with the following data\n  | key                         | value  | datatype |\n  | name                        | BMW AG | string   |\n  | founded                     | 1916   | number   |\n  | defunct                     |        | number   |\n  | headquarters_location       | Munich | string   |\n  | legal_headquarters_location | Munich | string   |\nThen the response should contain the following properties\n  | key                         | value  | datatype |\n  | name                        | BMW AG | string   |\n  | founded                     | 1916   | number   |\n  | defunct                     |        | number   |\n  | headquarters_location       | Munich | string   |\n  | legal_headquarters_location | Munich | string   |",
   "labels": [
     "implemented"
   ],

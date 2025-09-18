@@ -2,7 +2,7 @@
   "id": "MCA-233",
   "parent_id": "MCA-104",
   "title": "Requesting a specific relationship returns with a valid ID",
-  "gherkin": "Given there exists an \"BRAND\" \"Jaguar\"\nAnd there exists an \"IMAGE\" \"logo\"\nAnd there exists a relationship \"R\" between IMAGE \"logo\" and \"BRAND\" \"Jaguar\"\n\nWhen the user requests the IMAGE relationship between IMAGE \"logo\" and \"BRAND\" \"Jaguar\"\n\nThen the property \"relationship_id\" in the response should be a number greater than 0\nAnd the property \"relationship_id\" in the response should be a number lesser than 4294967296",
+  "gherkin": "Given there exists an \"BRAND\" \"Jaguar\"\nAnd there exists an \"IMAGE\" \"logo\"\nAnd there exists a relationship \"R\" between \"IMAGE\" \"logo\" and \"BRAND\" \"Jaguar\"\n\nWhen the user requests the \"belongs to node\" relationship between \"logo\" and \"Jaguar\"\n\nThen the property \"relationship_id\" in the response should be a number greater than 0\nAnd the property \"relationship_id\" in the response should be a number lesser than 4294967296",
   "labels": [
     "implemented"
   ],

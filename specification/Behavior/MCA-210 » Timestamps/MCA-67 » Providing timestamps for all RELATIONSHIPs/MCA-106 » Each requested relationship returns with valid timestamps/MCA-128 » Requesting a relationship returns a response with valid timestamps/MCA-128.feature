@@ -2,7 +2,7 @@
 Feature: Providing timestamps for all RELATIONSHIPs
   As an API consumer\
   I want all RELATIONSHIPs to have timestamps\
-  So I can assess how up-to-date the provided information is&#x20;
+  So I can assess how up-to-date the provided information is
 
   @RULE_MCA-106
   Rule: Each requested relationship returns with valid timestamps

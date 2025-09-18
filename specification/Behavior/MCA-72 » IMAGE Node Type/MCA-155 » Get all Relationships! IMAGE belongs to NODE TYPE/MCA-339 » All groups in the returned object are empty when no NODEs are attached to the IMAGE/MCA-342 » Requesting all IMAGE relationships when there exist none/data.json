@@ -2,7 +2,7 @@
   "id": "MCA-342",
   "parent_id": "MCA-339",
   "title": "Requesting all IMAGE relationships when there exist none",
-  "gherkin": "Given there exists an \"IMAGE\" \"bmw bonnet\"\nWhen the user requests a grouped list of all relationships for the IMAGE \"bmw bonnet\"\nThen the response should return with status code 200\nAnd the response should return an empty object",
+  "gherkin": "Given there exists an \"IMAGE\" \"bmw bonnet\"\nWhen the user requests a grouped list of all relationships for the IMAGE \"bmw bonnet\"\nThen the response should return with status code 200\nAnd all groups in the response should be an empty list",
   "labels": [
     "implemented"
   ],

@@ -13,12 +13,10 @@ Feature: Create IMAGE-belongs-to-NODE Relationship
       And "IMAGE" "<image>" does NOT exist
       When the user attaches the "<node type>" "<node>" to the IMAGE "<image>"
       Then the response should return with status code 404
-
       Given "<node type>" "<node>" does NOT exist
       And there exists an "IMAGE" "<image>"
       When the user attaches the "<node type>" "<node>" to the IMAGE "<image>"
       Then the response should return with status code 404
-
       Given "<node type>" "<node>" does NOT exist
       And "IMAGE" "<image>" does NOT exist
       When the user attaches the "<node type>" "<node>" to the IMAGE "<image>"

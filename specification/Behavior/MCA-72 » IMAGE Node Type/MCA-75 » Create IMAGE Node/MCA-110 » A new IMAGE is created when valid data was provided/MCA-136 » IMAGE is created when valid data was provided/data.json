@@ -2,11 +2,10 @@
   "id": "MCA-136",
   "parent_id": "MCA-110",
   "title": "IMAGE is created when valid data was provided",
-  "gherkin": "When the user creates an \"IMAGE\" with the following valid data\n  | _key_          | _value_   |\n  | image_provider | something |\n  | external_id    | 12345     |\nThen the response should return with status code 201\nAnd the response should contain the following keys\n\t| _key_          |\n\t| id             |\n\t| image_provider |\n\t| external_id    |",
+  "gherkin": "When the user creates an \"IMAGE\" with the following data\n  | key            | value     |\n  | image_provider | something |\n  | external_id    | 12345     |\nThen the response should return with status code 201\nAnd the response should contain the following keys\n  | key            |\n  | id             |\n  | image_provider |\n  | external_id    |",
   "labels": [
-    "Happy-Path",
     "implemented"
   ],
   "created_at": "2025-05-23T09:58:39.783+0200",
-  "updated_at": "2025-05-27T17:18:35.345+0200"
+  "updated_at": "2025-09-18T09:22:01.838+0200"
 }

@@ -2,7 +2,7 @@
   "id": "MCA-258",
   "parent_id": "MCA-244",
   "title": "Creating RELATIONSHIPs of each type",
-  "gherkin": "When the user connects a CAR MODEL to a BRAND\nThen the property \"relationship_id\" in the response should be a number greater than 12000000\nAnd the property \"relationship_id\" in the response should be a number lesser than 99999999\n\nWhen the user connects a CAR MODEL to an IMAGE\nThen the property \"relationship_id\" in the response should be a number greater than 12000000\nAnd the property \"relationship_id\" in the response should be a number lesser than 99999999\n\nWhen the user connects a BRAND to an IMAGE\nThen the property \"relationship_id\" in the response should be a number greater than 12000000\nAnd the property \"relationship_id\" in the response should be a number lesser than 99999999",
+  "gherkin": "When the user connects a \"CAR MODEL\" to a \"BRAND\"\nThen the property \"relationship_id\" in the response should be a number greater than 11999999\nAnd the property \"relationship_id\" in the response should be a number lesser than 99999999\n\nWhen the user connects a \"CAR MODEL\" to an \"IMAGE\"\nThen the property \"relationship_id\" in the response should be a number greater than 11999999\nAnd the property \"relationship_id\" in the response should be a number lesser than 99999999\n\nWhen the user connects a \"BRAND\" to an \"IMAGE\"\nThen the property \"relationship_id\" in the response should be a number greater than 11999999\nAnd the property \"relationship_id\" in the response should be a number lesser than 99999999",
   "labels": [
     "implemented"
   ],

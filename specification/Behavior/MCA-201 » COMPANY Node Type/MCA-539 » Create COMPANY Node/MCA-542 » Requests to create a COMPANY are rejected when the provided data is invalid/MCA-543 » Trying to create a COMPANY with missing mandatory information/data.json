@@ -2,7 +2,7 @@
   "id": "MCA-543",
   "parent_id": "MCA-542",
   "title": "Trying to create a COMPANY with missing mandatory information",
-  "gherkin": "When the user tries to create a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\nThen the response should return with status code 400",
+  "gherkin": "When the user tries to create a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\nThen the request should be rejected with status code 400",
   "labels": [
     "implemented"
   ],

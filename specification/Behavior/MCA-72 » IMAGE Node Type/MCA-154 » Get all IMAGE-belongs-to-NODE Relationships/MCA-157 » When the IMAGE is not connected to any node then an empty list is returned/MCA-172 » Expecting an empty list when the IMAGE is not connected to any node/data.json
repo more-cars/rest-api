@@ -2,7 +2,7 @@
   "id": "MCA-172",
   "parent_id": "MCA-157",
   "title": "Expecting an empty list when the IMAGE is not connected to any node",
-  "gherkin": "Given there exists an \"IMAGE\" \"A\"\nAnd there exist 0 relationships for IMAGE \"A\"\nWhen the user requests all relationships for IMAGE \"A\"\nThen the response should return with status code 200\nAnd the response should return a collection of 0 relationships",
+  "gherkin": "Given there exists an \"IMAGE\" \"A\"\nAnd there exist 0 relationships for IMAGE \"A\"\nWhen the user requests all relationships for IMAGE \"A\"\nThen the response should return with status code 200\nAnd the response should return a collection of 0 IMAGE relationships",
   "labels": [
     "implemented"
   ],

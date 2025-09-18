@@ -2,7 +2,7 @@
   "id": "MCA-175",
   "parent_id": "MCA-161",
   "title": "Expecting a NOT FOUND error when there exists no connection between IMAGE and node",
-  "gherkin": "Given there exists a \"<node type>\" \"<node>\"\nAnd there exists an \"IMAGE\" \"<image>\"\nAnd there exists no IMAGE relationship between \"<node type>\" \"<node>\" and IMAGE \"<image>\"\nWhen the user requests the IMAGE relationship between \"<node type>\" \"<node>\" and IMAGE \"<image>\"\nThen the response should return with status code 404\n\nExamples:\n  | node type | node     | image                          |\n  | BRAND     | Ferrari  | ferrari-logo.jpg               |\n  | CAR MODEL | Countach | lamborghini-countach-front.jpg |",
+  "gherkin": "Given there exists a \"<node type>\" \"<node>\"\nAnd there exists an \"IMAGE\" \"<image>\"\nAnd there exists NO \"belongs to node\" relationship \"R\" between \"<image>\" and \"<node>\"\nWhen the user requests the \"belongs to node\" relationship between \"<image>\" and \"<node>\"\nThen the response should return with status code 404\n\nExamples:\n  | node type | node     | image                          |\n  | BRAND     | Ferrari  | ferrari-logo.jpg               |\n  | CAR MODEL | Countach | lamborghini-countach-front.jpg |",
   "labels": [
     "implemented"
   ],

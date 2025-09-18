@@ -2,7 +2,7 @@
   "id": "MCA-134",
   "parent_id": "MCA-104",
   "title": "Requesting a collections of relationships returns with valid IDs",
-  "gherkin": "Given there exist 5 relationships\n\nWhen the user requests a relationship\nThen the relationship ID in the response should be a number greater than 0\nAnd the relationship ID in the response should be a number smaller than 4294967296\n\nWhen the user requests all relationships\nThen the relationship ID of all items in the response should be a number greater than 0\nAnd the relationship ID of all items in the response should be a number smaller than 4294967296",
+  "gherkin": "Given there exists an \"IMAGE\" \"logo\"\nAnd there exist 5 relationships for IMAGE \"logo\"\nWhen the user requests all relationships for IMAGE \"logo\"\nThen the property \"relationship_id\" of all items in the response should be a number greater than 0\nAnd the property \"relationship_id\" of all items in the response should be a number lesser than 4294967296",
   "labels": [
     "implemented"
   ],

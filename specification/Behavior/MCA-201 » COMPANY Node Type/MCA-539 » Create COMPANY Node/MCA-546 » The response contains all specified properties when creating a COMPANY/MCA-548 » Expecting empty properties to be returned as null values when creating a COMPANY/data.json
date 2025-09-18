@@ -2,7 +2,7 @@
   "id": "MCA-548",
   "parent_id": "MCA-546",
   "title": "Expecting empty properties to be returned as null values when creating a COMPANY",
-  "gherkin": "When the user creates a \"COMPANY\" \"BMW AG\" with the following data\n  | key | value | datatype |\n  | name | BMW AG | string |\nThen the response should contain the following properties\n  | key | value |\n  | name | BMW AG |\n  | founded | |\n  | defunct | |\n  | headquarters_location | |\n  | legal_headquarters_location | |",
+  "gherkin": "When the user creates a \"COMPANY\" \"BMW AG\" with the following data\n  | key  | value  | datatype |\n  | name | BMW AG | string   |\nThen the response should contain the following properties\n  | key                         | value  | datatype |\n  | name                        | BMW AG | string   |\n  | founded                     |        | number   |\n  | defunct                     |        | number   |\n  | headquarters_location       |        | string   |\n  | legal_headquarters_location |        | string   |",
   "labels": [
     "implemented"
   ],

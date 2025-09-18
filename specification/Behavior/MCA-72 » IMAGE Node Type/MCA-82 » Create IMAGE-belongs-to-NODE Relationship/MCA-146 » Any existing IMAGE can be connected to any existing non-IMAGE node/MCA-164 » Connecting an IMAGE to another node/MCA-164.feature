@@ -7,7 +7,7 @@ Feature: Create IMAGE-belongs-to-NODE Relationship
   @RULE_MCA-146
   Rule: Any existing IMAGE can be connected to any existing non-IMAGE node
 
-    @TEST_MCA-164 @Happy-Path @implemented
+    @TEST_MCA-164 @implemented
     Scenario Outline: Connecting an IMAGE to another node
       Given there exists a "<node type>" "<node>"
       And there exists an "IMAGE" "<image>"

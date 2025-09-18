@@ -2,7 +2,7 @@
   "id": "MCA-141",
   "parent_id": "MCA-113",
   "title": "All specified properties are returned when an IMAGE was created",
-  "gherkin": "When the user creates an \"IMAGE\"\nThen the response should contain the following keys\n  | _key_              |\n  | external_id        |\n  | image_provider     |\n  | name               |\n  | description        |\n  | creator            |\n  | license            |\n  | tags               |\n  | source             |\n  | image_url_original |\n  | image_url_xxl      |\n  | image_url_xl       |\n  | image_url_l        |\n  | image_url_m        |\n  | image_url_s        |\n  | image_url_xs       |",
+  "gherkin": "When the user creates an \"IMAGE\"\nThen the response should contain the following keys\n  | key                |\n  | external_id        |\n  | image_provider     |\n  | name               |\n  | description        |\n  | creator            |\n  | license            |\n  | tags               |\n  | source             |\n  | image_url_original |\n  | image_url_xxl      |\n  | image_url_xl       |\n  | image_url_l        |\n  | image_url_m        |\n  | image_url_s        |\n  | image_url_xs       |",
   "labels": [
     "implemented"
   ],

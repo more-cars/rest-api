@@ -18,12 +18,12 @@ Feature: Create COMPANY Node
         | legal_headquarters_location | Munich | string   |
         | thimbleweed                 | park   | string   |
       Then the response should contain the following properties
-        | key                         | value  |
-        | name                        | BMW AG |
-        | founded                     | 1916   |
-        | defunct                     |        |
-        | headquarters_location       | Munich |
-        | legal_headquarters_location | Munich |
+        | key                         | value  | datatype |
+        | name                        | BMW AG | string   |
+        | founded                     | 1916   | number   |
+        | defunct                     |        | number   |
+        | headquarters_location       | Munich | string   |
+        | legal_headquarters_location | Munich | string   |
       And the response should NOT contain the following keys
         | key         |
         | thimbleweed |

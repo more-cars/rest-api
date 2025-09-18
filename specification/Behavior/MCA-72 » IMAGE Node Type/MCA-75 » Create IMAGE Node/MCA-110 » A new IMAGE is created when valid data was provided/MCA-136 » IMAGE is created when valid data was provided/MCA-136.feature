@@ -7,7 +7,7 @@ Feature: Create IMAGE Node
   @RULE_MCA-110
   Rule: A new IMAGE is created when valid data was provided
 
-    @TEST_MCA-136 @Happy-Path @implemented
+    @TEST_MCA-136 @implemented
     Scenario: IMAGE is created when valid data was provided
       When the user creates an "IMAGE" with the following data
         | key            | value     |

@@ -2,7 +2,7 @@
   "id": "MCA-177",
   "parent_id": "MCA-162",
   "title": "Aborting when requesting a relationship where IMAGE and partner node are identical",
-  "gherkin": "Given there exists an \"IMAGE\" \"logo.jpg\"\nWhen the user requests the IMAGE relationship between \"IMAGE\" \"logo.jpg\" and IMAGE \"logo.jpg\"\nThen the response should return with status code 422",
+  "gherkin": "Given there exists an \"IMAGE\" \"logo.jpg\"\nWhen the user requests the \"belongs to node\" relationship between \"logo.jpg\" and \"logo.jpg\"\nThen the response should return with status code 422",
   "labels": [
     "implemented"
   ],
