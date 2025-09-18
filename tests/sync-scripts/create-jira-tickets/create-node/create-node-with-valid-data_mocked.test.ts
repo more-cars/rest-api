@@ -1,7 +1,5 @@
 import {expect, test, vi} from "vitest"
-import {
-    createCreateNodeTickets
-} from "../../../../specification/sync-scripts/create-jira-tickets/lib/createCreateNodeTickets"
+import {createTickets} from "../../../../specification/sync-scripts/create-jira-tickets/lib/createTickets"
 import {updateEpic} from "../../../../specification/sync-scripts/create-jira-tickets/lib/updateEpic"
 import {createStory} from "../../../../specification/sync-scripts/create-jira-tickets/lib/createStory"
 import {connectStoryToEpic} from "../../../../specification/sync-scripts/create-jira-tickets/lib/connectStoryToEpic"
@@ -15,7 +13,7 @@ import {
 } from "../../../../specification/sync-scripts/create-jira-tickets/lib/connectTestToAcceptanceCriterion"
 
 test('Expecting the whole stack of required tickets to be created - mocked', async () => {
-    await createCreateNodeTickets(getDummyTicketTree())
+    await createTickets(getDummyTicketTree())
 
     expect(updateEpic)
         .toBeCalledTimes(1)

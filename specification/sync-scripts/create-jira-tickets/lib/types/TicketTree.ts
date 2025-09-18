@@ -6,7 +6,7 @@ import type {PropertyDataStructure} from "./PropertyDataStructure"
 export type TicketTree = {
     epic: {
         jiraId: string
-        dataStructure: Array<PropertyDataStructure>
+        dataStructure: Array<PropertyDataStructure> | null
         stories: Array<Story & {
             acceptanceCriteria: Array<AcceptanceCriterion & {
                 tests: Array<Test>

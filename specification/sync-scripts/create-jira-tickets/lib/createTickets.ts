@@ -6,7 +6,7 @@ import {createAcceptanceCriterion} from "./createAcceptanceCriterion"
 import {createTest} from "./createTest"
 import {connectTestToAcceptanceCriterion} from "./connectTestToAcceptanceCriterion"
 
-export async function createCreateNodeTickets(data: TicketTree) {
+export async function createTickets(data: TicketTree) {
     const createdStories = []
     const createdAcs = []
     const createdTests = []

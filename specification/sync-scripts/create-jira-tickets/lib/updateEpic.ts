@@ -4,6 +4,10 @@ import {getJiraApiBaseUrl} from "./getJiraApiBaseUrl"
 import {getJiraApiAuthKey} from "./getJiraApiAuthKey"
 
 export async function updateEpic(data: Epic): Promise<number> {
+    if (!data.dataStructure) {
+        return 304
+    }
+
     const response = await axios
         .put(getJiraApiBaseUrl() + 'issue/' + data.jiraId, {
             fields: {
