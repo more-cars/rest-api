@@ -1,5 +1,5 @@
 ---
-to: bruno/<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>/Create (minimal data).bru
+to: bruno/<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>/Node - Create (minimal data).bru
 ---
 meta {
   name: Create <%= h.changeCase.title(nodeType) %> (minimal data)
