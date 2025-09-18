@@ -2,7 +2,7 @@
   "id": "MCA-256",
   "parent_id": "MCA-252",
   "title": "Connecting multiple IMAGEs to a CAR MODEL",
-  "gherkin": "Given there exists a \"CAR MODEL\" \"Impreza\"\nAnd there exists an \"IMAGE\" \"rear spoiler\"\nAnd there exists an \"IMAGE\" \"bonnet\"\nAnd there exists an \"IMAGE\" \"interior\"\n\nWhen the user attaches the IMAGE \"rear spoiler\" to the CAR MODEL \"Impreza\"\nAnd the user attaches the IMAGE \"bonnet\" to the CAR MODEL \"Impreza\"\nAnd the user attaches the IMAGE \"interior\" to the CAR MODEL \"Impreza\"\n\nThen IMAGE \"rear spoiler\" should be connected to CAR MODEL \"Impreza\"\nAnd IMAGE \"bonnet\" should be connected to CAR MODEL \"Impreza\"\nAnd IMAGE \"interior\" should be connected to CAR MODEL \"Impreza\"",
+  "gherkin": "Given there exists a \"CAR MODEL\" \"Impreza\"\nAnd there exists an \"IMAGE\" \"rear spoiler\"\nAnd there exists an \"IMAGE\" \"bonnet\"\nAnd there exists an \"IMAGE\" \"interior\"\n\nWhen the user connects \"IMAGE\" \"rear spoiler\" to \"CAR MODEL\" \"Impreza\"\nAnd the user connects \"IMAGE\" \"bonnet\" to \"CAR MODEL\" \"Impreza\"\nAnd the user connects \"IMAGE\" \"interior\" to \"CAR MODEL\" \"Impreza\"\n\nThen the IMAGE \"rear spoiler\" should be connected to the CAR MODEL \"Impreza\"\nAnd the IMAGE \"bonnet\" should be connected to the CAR MODEL \"Impreza\"\nAnd the IMAGE \"interior\" should be connected to the CAR MODEL \"Impreza\"",
   "labels": [
     "implemented"
   ],

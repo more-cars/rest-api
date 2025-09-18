@@ -2,7 +2,7 @@
   "id": "MCA-254",
   "parent_id": "MCA-250",
   "title": "Trying to connect non-existent nodes",
-  "gherkin": "Given there exists a \"CAR MODEL\" \"Impreza\"\nAnd \"IMAGE\" \"rear spoiler\" does NOT exist\nWhen the user tries to connect IMAGE \"rear spoiler\" to CAR MODEL \"Impreza\"\nThen the response should return with status code 404\n\nGiven \"CAR MODEL\" \"Impreza\" does NOT exist\nAnd there exists an \"IMAGE\" \"rear spoiler\"\nWhen the user tries to connect IMAGE \"rear spoiler\" to CAR MODEL \"Impreza\"\nThen the response should return with status code 404\n\nGiven \"CAR MODEL\" \"Impreza\" does NOT exist\nAnd \"IMAGE\" \"rear spoiler\" does NOT exist\nWhen the user tries to connect IMAGE \"rear spoiler\" to CAR MODEL \"Impreza\"\nThen the response should return with status code 404",
+  "gherkin": "Given there exists a \"CAR MODEL\" \"Impreza\"\nAnd \"IMAGE\" \"rear spoiler\" does NOT exist\nWhen the user connects \"IMAGE\" \"rear spoiler\" to \"CAR MODEL\" \"Impreza\"\nThen the response should return with status code 404\n\nGiven \"CAR MODEL\" \"Impreza\" does NOT exist\nAnd there exists an \"IMAGE\" \"rear spoiler\"\nWhen the user connects \"IMAGE\" \"rear spoiler\" to \"CAR MODEL\" \"Impreza\"\nThen the response should return with status code 404\n\nGiven \"CAR MODEL\" \"Impreza\" does NOT exist\nAnd \"IMAGE\" \"rear spoiler\" does NOT exist\nWhen the user connects \"IMAGE\" \"rear spoiler\" to \"CAR MODEL\" \"Impreza\"\nThen the response should return with status code 404",
   "labels": [
     "implemented"
   ],

@@ -2,7 +2,7 @@
   "id": "MCA-323",
   "parent_id": "MCA-320",
   "title": "Requesting the relationship between a specific CAR MODEL and a specific IMAGE",
-  "gherkin": "Given there exists a \"CAR MODEL\" \"Countach\"\nAnd there exists an \"IMAGE\" \"front-left\"\nAnd there exist a relationship \"R\" between CAR MODEL \"Countach\" and IMAGE \"front-left\"\n\nWhen the user requests the IMAGE relationship between CAR MODEL \"Countach\" and IMAGE \"front-left\"\nThen the response should return with status code 200\nAnd the response should return the relationship \"R\"",
+  "gherkin": "Given there exists a \"CAR MODEL\" \"Countach\"\nAnd there exists an \"IMAGE\" \"front-left\"\nAnd there exists a relationship \"R\" between \"CAR MODEL\" \"Countach\" and \"IMAGE\" \"front-left\"\n\nWhen the user requests the relationship between \"CAR MODEL\" \"Countach\" and \"IMAGE\" \"front-left\"\nThen the response should return with status code 200\nAnd the response should return the relationship \"R\"",
   "labels": [
     "implemented"
   ],

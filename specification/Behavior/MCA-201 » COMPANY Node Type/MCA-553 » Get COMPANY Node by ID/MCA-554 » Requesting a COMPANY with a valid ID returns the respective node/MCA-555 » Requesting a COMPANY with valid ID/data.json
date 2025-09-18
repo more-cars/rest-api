@@ -1,0 +1,9 @@
+{
+  "id": "MCA-555",
+  "parent_id": "MCA-554",
+  "title": "Requesting a COMPANY with valid ID",
+  "gherkin": "Given there exists a \"COMPANY\" \"Automobili Lamborghini S.p.A.\"\nWhen the user requests the \"COMPANY\" \"Automobili Lamborghini S.p.A.\"\nThen the response should return with status code 200\nAnd the response should return the \"COMPANY\" \"Automobili Lamborghini S.p.A.\"",
+  "labels": [],
+  "created_at": "2025-09-18T12:30:54.273+0200",
+  "updated_at": "2025-09-18T17:15:15.492+0200"
+}

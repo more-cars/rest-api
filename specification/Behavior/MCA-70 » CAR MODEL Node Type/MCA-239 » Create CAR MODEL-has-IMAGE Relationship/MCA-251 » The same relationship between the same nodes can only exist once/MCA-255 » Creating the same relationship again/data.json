@@ -2,7 +2,7 @@
   "id": "MCA-255",
   "parent_id": "MCA-251",
   "title": "Creating the same relationship again",
-  "gherkin": "Given there exists a \"CAR MODEL\" \"Impreza\"\nAnd there exists an \"IMAGE\" \"rear spoiler\"\nAnd there exists a relationship \"R\" between CAR MODEL \"Impreza\" and IMAGE \"rear spoiler\"\n\nWhen the user connects IMAGE \"rear spoiler\" to CAR MODEL \"Impreza\"\nAnd the response should contain the id of relationship \"R\"",
+  "gherkin": "Given there exists a \"CAR MODEL\" \"Impreza\"\nAnd there exists an \"IMAGE\" \"rear spoiler\"\nAnd there exists a relationship \"R\" between \"CAR MODEL\" \"Impreza\" and \"IMAGE\" \"rear spoiler\"\n\nWhen the user connects \"IMAGE\" \"rear spoiler\" to \"CAR MODEL\" \"Impreza\"\nAnd the response should contain the id of relationship \"R\"",
   "labels": [
     "implemented"
   ],

@@ -2,7 +2,7 @@
   "id": "MCA-268",
   "parent_id": "MCA-265",
   "title": "Requesting the attached IMAGEs for a CAR MODEL that does not exist",
-  "gherkin": "Given \"CAR MODEL\" \"Jetta\" does NOT exist\nWhen the user tries to fetch all IMAGEs that are connected to CAR MODEL \"Jetta\"\nThen the response should return with status code 404",
+  "gherkin": "Given \"CAR MODEL\" \"Jetta\" does NOT exist\nWhen the user requests all IMAGEs that are connected to CAR MODEL \"Jetta\"\nThen the response should return with status code 404",
   "labels": [
     "implemented"
   ],

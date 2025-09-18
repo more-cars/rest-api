@@ -10,5 +10,5 @@ Feature: Get CAR MODEL Node by ID
 
     @TEST_MCA-7 @implemented
     Scenario: Requesting a CAR MODEL with an invalid ID should return a 404 response
-      When the user requests a non-existing car model
+      When the user requests a non-existing "CAR MODEL"
       Then the response should return with status code 404

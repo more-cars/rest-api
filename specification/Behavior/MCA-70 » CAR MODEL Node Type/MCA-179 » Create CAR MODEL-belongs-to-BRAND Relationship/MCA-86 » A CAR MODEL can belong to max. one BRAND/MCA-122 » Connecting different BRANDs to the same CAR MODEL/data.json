@@ -2,7 +2,7 @@
   "id": "MCA-122",
   "parent_id": "MCA-86",
   "title": "Connecting different BRANDs to the same CAR MODEL",
-  "gherkin": "Given there exists a \"CAR MODEL\" \"Asterion\"\nAnd there exists a \"BRAND\" \"Bugatti\"\nAnd there exists a \"BRAND\" \"Chevrolet\"\n\nWhen the user connects BRAND \"Bugatti\" to CAR MODEL \"Asterion\"\nThen the CAR MODEL \"Asterion\" should be connected to 1 BRAND\nAnd the CAR MODEL \"Asterion\" should be connected to the BRAND \"Bugatti\"\n\nWhen the user connects BRAND \"Chevrolet\" to CAR MODEL \"Asterion\"\nThen the CAR MODEL \"Asterion\" should be connected to 1 BRAND\nAnd the CAR MODEL \"Asterion\" should be connected to the BRAND \"Chevrolet\"",
+  "gherkin": "Given there exists a \"CAR MODEL\" \"Asterion\"\nAnd there exists a \"BRAND\" \"Bugatti\"\nAnd there exists a \"BRAND\" \"Chevrolet\"\n\nWhen the user connects \"BRAND\" \"Bugatti\" to \"CAR MODEL\" \"Asterion\"\nAnd the CAR MODEL \"Asterion\" should be connected to the BRAND \"Bugatti\"\n\nWhen the user connects \"BRAND\" \"Chevrolet\" to \"CAR MODEL\" \"Asterion\"\nAnd the CAR MODEL \"Asterion\" should be connected to the BRAND \"Chevrolet\"\nAnd the CAR MODEL \"Asterion\" should NOT be connected to the BRAND \"Bugatti\"",
   "labels": [
     "implemented"
   ],

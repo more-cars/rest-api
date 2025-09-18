@@ -2,7 +2,7 @@
   "id": "MCA-186",
   "parent_id": "MCA-183",
   "title": "Expecting an error when any of the two nodes does not exist",
-  "gherkin": "Given there exists a \"CAR MODEL\" \"Testarossa\"\nAnd \"BRAND\" \"Ferrari\" does NOT exist\nWhen the user tries to connect BRAND \"Ferrari\" to CAR MODEL \"Testarossa\"\nThen the response should return with status code 404\n\nGiven \"CAR MODEL\" \"Testarossa\" does NOT exist\nAnd there exists a car model \"B\"\nWhen the user tries to connect BRAND \"Ferrari\" to CAR MODEL \"Testarossa\"\nThen the response should return with status code 404\n\nGiven \"CAR MODEL\" \"Testarossa\" does NOT exist\nAnd \"BRAND\" \"Ferrari\" does NOT exist\nWhen the user tries to connect BRAND \"Ferrari\" to CAR MODEL \"Testarossa\"\nThen the response should return with status code 404",
+  "gherkin": "Given there exists a \"CAR MODEL\" \"Testarossa\"\nAnd \"BRAND\" \"Ferrari\" does NOT exist\nWhen the user connects \"BRAND\" \"Ferrari\" to \"CAR MODEL\" \"Testarossa\"\nThen the response should return with status code 404\n\nGiven \"CAR MODEL\" \"Testarossa\" does NOT exist\nAnd there exists a \"CAR MODEL\" \"B\"\nWhen the user connects \"BRAND\" \"Ferrari\" to \"CAR MODEL\" \"Testarossa\"\nThen the response should return with status code 404\n\nGiven \"CAR MODEL\" \"Testarossa\" does NOT exist\nAnd \"BRAND\" \"Ferrari\" does NOT exist\nWhen the user connects \"BRAND\" \"Ferrari\" to \"CAR MODEL\" \"Testarossa\"\nThen the response should return with status code 404",
   "labels": [
     "implemented"
   ],

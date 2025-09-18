@@ -2,7 +2,7 @@
   "id": "MCA-197",
   "parent_id": "MCA-191",
   "title": "Requesting the attached BRAND for a non-existing CAR MODEL",
-  "gherkin": "Given \"CAR MODEL\" \"Yaris\" does not exist\nWhen the user requests the BRAND that is attached to the CAR MODEL \"Yaris\"\nThen the response should return with status code 404",
+  "gherkin": "Given \"CAR MODEL\" \"Yaris\" does NOT exist\nWhen the user requests the \"belongs to brand\" relationship for \"Yaris\"\nThen the response should return with status code 404",
   "labels": [
     "implemented"
   ],

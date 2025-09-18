@@ -2,7 +2,7 @@
   "id": "MCA-10",
   "parent_id": "MCA-8",
   "title": "A new CAR MODEL is created when valid data was provided",
-  "gherkin": "When the user creates a car model \"Testarossa\" with the following valid data\n  | key  | value      |\n  | name | Testarossa |\nThen the response should return the car model \"Testarossa\"\nAnd the response should return with status code 201\nWhen the user requests the car model \"Testarossa\" via ID\nThen the response should return the car model \"Testarossa\"",
+  "gherkin": "When the user creates a CAR MODEL \"Testarossa\" with the following valid data\n  | key  | value      |\n  | name | Testarossa |\nThen the response should return the CAR MODEL \"Testarossa\"\nAnd the response should return with status code 201\nWhen the user requests the \"CAR MODEL\" \"Testarossa\"\nThen the response should return the CAR MODEL \"Testarossa\"",
   "labels": [
     "implemented"
   ],

@@ -10,5 +10,5 @@ Feature: Get all CAR MODEL-has-IMAGE Relationships
     @TEST_MCA-268 @implemented
     Scenario: Requesting the attached IMAGEs for a CAR MODEL that does not exist
       Given "CAR MODEL" "Jetta" does NOT exist
-      When the user tries to fetch all IMAGEs that are connected to CAR MODEL "Jetta"
+      When the user requests all IMAGEs that are connected to CAR MODEL "Jetta"
       Then the response should return with status code 404

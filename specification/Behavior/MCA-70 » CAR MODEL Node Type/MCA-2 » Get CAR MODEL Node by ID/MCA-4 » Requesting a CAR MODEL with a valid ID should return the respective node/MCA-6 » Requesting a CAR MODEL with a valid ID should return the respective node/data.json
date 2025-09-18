@@ -2,7 +2,7 @@
   "id": "MCA-6",
   "parent_id": "MCA-4",
   "title": "Requesting a CAR MODEL with a valid ID should return the respective node",
-  "gherkin": "Given there exists a car model A\nWhen the user requests the car model A via ID\nThen the response should return the car model A\nAnd the response should return with status code 200",
+  "gherkin": "Given there exists a \"car model\" \"A\"\nWhen the user requests the \"CAR MODEL\" \"A\"\nThen the response should return the CAR MODEL \"A\"\nAnd the response should return with status code 200",
   "labels": [
     "implemented"
   ],

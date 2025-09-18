@@ -2,7 +2,7 @@
   "id": "MCA-15",
   "parent_id": "MCA-13",
   "title": "When no CAR MODELs exist in the database then an empty list should be returned",
-  "gherkin": "Given there exist NO car models\nWhen the user requests all car models\nThen the response should return a collection of 0 car models\nAnd the response should return with status code 200",
+  "gherkin": "Given there exist 0 \"CAR MODEL\"s\nWhen the user requests all \"CAR MODEL\"s\nThen the response should return a collection of 0 \"CAR MODEL\"s\nAnd the response should return with status code 200",
   "labels": [
     "implemented"
   ],

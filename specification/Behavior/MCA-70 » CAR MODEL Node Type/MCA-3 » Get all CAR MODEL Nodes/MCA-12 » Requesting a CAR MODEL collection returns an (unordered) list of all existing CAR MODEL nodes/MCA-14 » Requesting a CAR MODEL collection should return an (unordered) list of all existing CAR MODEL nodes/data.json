@@ -2,7 +2,7 @@
   "id": "MCA-14",
   "parent_id": "MCA-12",
   "title": "Requesting a CAR MODEL collection should return an (unordered) list of all existing CAR MODEL nodes",
-  "gherkin": "Given there exist 12 car models\nWhen the user requests all car models\nThen the response should return a collection of 12 car models\nAnd the response should return with status code 200",
+  "gherkin": "Given there exist 12 \"CAR MODEL\"s\nWhen the user requests all \"CAR MODEL\"s\nThen the response should return a collection of 12 \"CAR MODEL\"s\nAnd the response should return with status code 200",
   "labels": [
     "implemented"
   ],

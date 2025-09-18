@@ -12,9 +12,8 @@ Feature: Create CAR MODEL-belongs-to-BRAND Relationship
       Given there exists a "CAR MODEL" "Asterion"
       And there exists a "BRAND" "Bugatti"
       And there exists a "BRAND" "Chevrolet"
-      When the user connects BRAND "Bugatti" to CAR MODEL "Asterion"
-      Then the CAR MODEL "Asterion" should be connected to 1 BRAND
+      When the user connects "BRAND" "Bugatti" to "CAR MODEL" "Asterion"
       And the CAR MODEL "Asterion" should be connected to the BRAND "Bugatti"
-      When the user connects BRAND "Chevrolet" to CAR MODEL "Asterion"
-      Then the CAR MODEL "Asterion" should be connected to 1 BRAND
+      When the user connects "BRAND" "Chevrolet" to "CAR MODEL" "Asterion"
       And the CAR MODEL "Asterion" should be connected to the BRAND "Chevrolet"
+      And the CAR MODEL "Asterion" should NOT be connected to the BRAND "Bugatti"

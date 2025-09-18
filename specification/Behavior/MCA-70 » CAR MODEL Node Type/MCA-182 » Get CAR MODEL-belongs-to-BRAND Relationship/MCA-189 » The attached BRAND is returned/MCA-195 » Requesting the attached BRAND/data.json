@@ -2,7 +2,7 @@
   "id": "MCA-195",
   "parent_id": "MCA-189",
   "title": "Requesting the attached BRAND",
-  "gherkin": "Given there exists a \"CAR MODEL\" \"Yaris\"\nAnd there exists a \"BRAND\" \"Toyota\"\nAnd there exists a relation \"R\" between CAR MODEL \"Yaris\" and BRAND \"Toyota\"\nWhen the user requests the BRAND that is attached to the CAR MODEL \"Yaris\"\nThen the response should return with status code 200\nAnd the response should return the \"BRAND\" \"Toyota\"",
+  "gherkin": "Given there exists a \"CAR MODEL\" \"Yaris\"\nAnd there exists a \"BRAND\" \"Toyota\"\nAnd there exists a relationship \"R\" between \"BRAND\" \"Toyota\" and \"CAR MODEL\" \"Yaris\"\nWhen the user requests the \"belongs to brand\" relationship for \"Yaris\"\nThen the response should return with status code 200\nAnd the response should return the relationship \"R\"",
   "labels": [
     "implemented"
   ],

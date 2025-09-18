@@ -2,7 +2,7 @@
   "id": "MCA-29",
   "parent_id": "MCA-25",
   "title": "Empty CORE properties should be returned as NULL value",
-  "gherkin": "Given there exists a minimal car model \"Octavia\"\nWhen the user requests the car model \"Octavia\" via ID\nThen the following keys in the response object should be of value null\n  | key              |\n  | built_from       |\n  | built_to         |\n  | generation       |\n  | internal_code    |\n  | total_production |",
+  "gherkin": "Given there exists a minimal CAR MODEL \"Octavia\"\nWhen the user requests the \"CAR MODEL\" \"Octavia\"\nThen the following keys in the response object should be of value null\n  | key              |\n  | built_from       |\n  | built_to         |\n  | generation       |\n  | internal_code    |\n  | total_production |",
   "labels": [
     "implemented"
   ],

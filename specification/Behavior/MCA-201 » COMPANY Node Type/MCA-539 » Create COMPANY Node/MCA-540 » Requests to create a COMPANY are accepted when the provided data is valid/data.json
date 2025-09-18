@@ -3,7 +3,7 @@
   "parent_id": "MCA-539",
   "title": "Requests to create a COMPANY are accepted when the provided data is valid",
   "description": "Data is valid when its structure is correct, has no syntax errors and contains all mandatory fields.\n",
-  "release_version": null,
+  "release_version": "0.18.0",
   "created_at": "2025-09-11T10:17:27.396+0200",
-  "updated_at": "2025-09-12T18:02:52.227+0200"
+  "updated_at": "2025-09-18T17:17:45.375+0200"
 }

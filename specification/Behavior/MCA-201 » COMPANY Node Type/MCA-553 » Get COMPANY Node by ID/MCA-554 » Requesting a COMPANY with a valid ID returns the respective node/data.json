@@ -1,0 +1,9 @@
+{
+  "id": "MCA-554",
+  "parent_id": "MCA-553",
+  "title": "Requesting a COMPANY with a valid ID returns the respective node",
+  "description": "An ID is deemed valid when there exists a node with that ID AND the node is from type COMPANY.\n",
+  "release_version": "0.18.0",
+  "created_at": "2025-09-18T12:30:51.396+0200",
+  "updated_at": "2025-09-18T17:18:05.708+0200"
+}

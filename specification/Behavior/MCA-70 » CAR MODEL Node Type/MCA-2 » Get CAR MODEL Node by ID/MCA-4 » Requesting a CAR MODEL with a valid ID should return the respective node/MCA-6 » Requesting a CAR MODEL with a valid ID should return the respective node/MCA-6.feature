@@ -10,7 +10,7 @@ Feature: Get CAR MODEL Node by ID
 
     @TEST_MCA-6 @implemented
     Scenario: Requesting a CAR MODEL with a valid ID should return the respective node
-      Given there exists a car model A
-      When the user requests the car model A via ID
-      Then the response should return the car model A
+      Given there exists a "car model" "A"
+      When the user requests the "CAR MODEL" "A"
+      Then the response should return the CAR MODEL "A"
       And the response should return with status code 200

@@ -2,7 +2,7 @@
   "id": "MCA-31",
   "parent_id": "MCA-27",
   "title": "Invalid properties should be ignored when creating a CAR MODEL",
-  "gherkin": "When the user creates a car model \"Test Car\" with the following valid data\n  | key         | value    |\n  | name        | Test Car |\n  | generattion | 3        |\n  | code        | ABC      |\nThen the following keys in the response object should be of value null\n  | key           |\n  | generation    |\n  | internal_code |\nThen the response should NOT contain the following keys\n  | key         |\n  | generattion |\n  | code        |",
+  "gherkin": "When the user creates a CAR MODEL \"Test Car\" with the following valid data\n  | key         | value    |\n  | name        | Test Car |\n  | generattion | 3        |\n  | code        | ABC      |\nThen the following keys in the response object should be of value null\n  | key           |\n  | generation    |\n  | internal_code |\nThen the response should NOT contain the following keys\n  | key         |\n  | generattion |\n  | code        |",
   "labels": [
     "implemented"
   ],

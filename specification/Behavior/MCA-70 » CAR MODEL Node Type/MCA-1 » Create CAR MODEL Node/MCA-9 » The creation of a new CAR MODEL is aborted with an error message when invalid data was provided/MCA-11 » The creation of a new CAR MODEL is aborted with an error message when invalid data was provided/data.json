@@ -2,7 +2,7 @@
   "id": "MCA-11",
   "parent_id": "MCA-9",
   "title": "The creation of a new CAR MODEL is aborted with an error message when invalid data was provided",
-  "gherkin": "When the user tries to create a car model with the following data\n  | attribute | value      |\n  | bad_name  | Testarossa |\nThen the response should return with status code 400",
+  "gherkin": "When the user creates a \"CAR MODEL\" with the following data\n  | attribute | value      |\n  | bad_name  | Testarossa |\nThen the response should return with status code 400",
   "labels": [
     "implemented"
   ],

@@ -2,7 +2,7 @@
   "id": "MCA-324",
   "parent_id": "MCA-321",
   "title": "Requesting the relationship between a CAR MODEL and IMAGE that do not exist",
-  "gherkin": "Given there exists a \"CAR MODEL\" \"Countach\"\nAnd \"IMAGE\" \"red lambo\" does NOT exist\nWhen the user requests the relationship between CAR MODEL \"Countach\" and IMAGE \"red lambo\"\nThen the response should return with status code 404\n\nGiven \"CAR MODEL\" \"Countach\" does NOT exist\nAnd there exists an \"IMAGE\" \"red lambo\"\nWhen the user requests the relationship between CAR MODEL \"Countach\" and IMAGE \"red lambo\"\nThen the response should return with status code 404\n\nGiven \"CAR MODEL\" \"Countach\" does NOT exist\nAnd \"IMAGE\" \"red lambo\" does NOT exist\nWhen the user requests the relationship between CAR MODEL \"Countach\" and IMAGE \"red lambo\"\nThen the response should return with status code 404",
+  "gherkin": "Given there exists a \"CAR MODEL\" \"Countach\"\nAnd \"IMAGE\" \"red lambo\" does NOT exist\nWhen the user requests the relationship between \"CAR MODEL\" \"Countach\" and \"IMAGE\" \"red lambo\"\nThen the response should return with status code 404\n\nGiven \"CAR MODEL\" \"Countach\" does NOT exist\nAnd there exists an \"IMAGE\" \"red lambo\"\nWhen the user requests the relationship between \"CAR MODEL\" \"Countach\" and \"IMAGE\" \"red lambo\"\nThen the response should return with status code 404\n\nGiven \"CAR MODEL\" \"Countach\" does NOT exist\nAnd \"IMAGE\" \"red lambo\" does NOT exist\nWhen the user requests the relationship between \"CAR MODEL\" \"Countach\" and \"IMAGE\" \"red lambo\"\nThen the response should return with status code 404",
   "labels": [
     "implemented"
   ],

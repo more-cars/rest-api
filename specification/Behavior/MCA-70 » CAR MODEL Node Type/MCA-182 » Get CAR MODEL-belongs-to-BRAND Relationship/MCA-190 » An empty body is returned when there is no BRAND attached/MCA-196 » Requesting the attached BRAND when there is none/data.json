@@ -2,7 +2,7 @@
   "id": "MCA-196",
   "parent_id": "MCA-190",
   "title": "Requesting the attached BRAND when there is none",
-  "gherkin": "Given there exists a \"CAR MODEL\" \"Yaris\"\nAnd there exists NO relationship between CAR MODEL \"Yaris\" and any BRAND\nWhen the user requests the BRAND that is attached to the CAR MODEL \"Yaris\"\nThen the response should return with status code 200\nAnd the response should return an empty body",
+  "gherkin": "Given there exists a \"CAR MODEL\" \"Yaris\"\nAnd there exists NO \"belongs to brand\" relationship \"R\" for \"Yaris\"\nWhen the user requests the \"belongs to brand\" relationship for \"Yaris\"\nThen the response should return with status code 200\nAnd the response should return an empty body",
   "labels": [
     "implemented"
   ],
