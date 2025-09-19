@@ -7,7 +7,7 @@ Feature: Get COMPANY Node by ID
   @RULE_MCA-554
   Rule: Requesting a COMPANY with a valid ID returns the respective node
 
-    @TEST_MCA-555
+    @TEST_MCA-555 @implemented
     Scenario: Requesting a COMPANY with valid ID
       Given there exists a "COMPANY" "Automobili Lamborghini S.p.A."
       When the user requests the "COMPANY" "Automobili Lamborghini S.p.A."
