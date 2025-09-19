@@ -2,7 +2,7 @@
   "id": "MCA-43",
   "parent_id": "MCA-34",
   "title": "Creating a BRAND with valid data",
-  "gherkin": "When the user creates a brand \"DKW\" with the following valid data\n  | key       | value           |\n  | name      | DKW             |\n  | full_name | Dampfkraftwagen |\n  | founded   | 1916            |\n  | defunct   | 1966            |\n  | wmi       | -               |\n  | hsn       | 0010            |\nThen the response should return the BRAND \"DKW\"\nAnd the response should return with status code 201\nWhen the user requests the brand \"DKW\" via ID\nThen the response should return the BRAND \"DKW\"",
+  "gherkin": "When the user creates a BRAND \"DKW\" with the following valid data\n  | key       | value           |\n  | name      | DKW             |\n  | full_name | Dampfkraftwagen |\n  | founded   | 1916            |\n  | defunct   | 1966            |\n  | wmi       | -               |\n  | hsn       | 0010            |\nThen the response should return the BRAND \"DKW\"\nAnd the response should return with status code 201\nWhen the user requests the \"BRAND\" \"DKW\"\nThen the response should return the BRAND \"DKW\"",
   "labels": [
     "implemented"
   ],

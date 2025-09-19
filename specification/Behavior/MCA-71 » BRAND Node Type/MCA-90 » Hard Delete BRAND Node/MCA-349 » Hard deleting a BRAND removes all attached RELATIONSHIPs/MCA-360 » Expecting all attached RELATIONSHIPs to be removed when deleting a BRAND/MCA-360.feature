@@ -10,8 +10,8 @@ Feature: Hard Delete BRAND Node
     @TEST_MCA-360 @implemented
     Scenario: Expecting all attached RELATIONSHIPs to be removed when deleting a BRAND
       Given there exists a "BRAND" "Kia"
-      And there exists a relationship "R1" between BRAND "Kia" and a CAR MODEL
-      And there exists a relationship "R2" between BRAND "Kia" and an IMAGE
+      And there exists a relationship "R1" between "BRAND" "Kia" and a "CAR MODEL"
+      And there exists a relationship "R2" between "BRAND" "Kia" and an "IMAGE"
       When the user hard deletes the "BRAND" "Kia"
       Then the "BRAND" "Kia" should not exist anymore
       And the relationship "R1" should not exist anymore

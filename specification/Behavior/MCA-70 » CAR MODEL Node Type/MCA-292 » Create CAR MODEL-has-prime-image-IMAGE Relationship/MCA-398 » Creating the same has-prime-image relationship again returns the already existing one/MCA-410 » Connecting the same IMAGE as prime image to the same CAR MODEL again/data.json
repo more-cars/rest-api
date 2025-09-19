@@ -2,7 +2,7 @@
   "id": "MCA-410",
   "parent_id": "MCA-398",
   "title": "Connecting the same IMAGE as prime image to the same CAR MODEL again",
-  "gherkin": "Given there exists a \"CAR MODEL\" \"Mondeo\"\nAnd there exists an \"IMAGE\" \"front-left.jpg\"\nAnd there exists a \"has prime image\" relationship \"prime\" between \"Mondeo\" and \"front-left.jpg\"\nWhen the user requests to connect \"front-left.jpg\" to \"Mondeo\" as prime image\nThen the response should confirm the request with status code 201\nAnd the response should return the relationship \"prime\"",
+  "gherkin": "Given there exists a \"CAR MODEL\" \"Mondeo\"\nAnd there exists an \"IMAGE\" \"front-left.jpg\"\nAnd there exists a \"has prime image\" relationship \"prime\" between \"Mondeo\" and \"front-left.jpg\"\nWhen the user requests to connect \"front-left.jpg\" to \"Mondeo\" as prime image\nThen the request should be confirmed with status code 201\nAnd the response should return the relationship \"prime\"",
   "labels": [
     "implemented"
   ],

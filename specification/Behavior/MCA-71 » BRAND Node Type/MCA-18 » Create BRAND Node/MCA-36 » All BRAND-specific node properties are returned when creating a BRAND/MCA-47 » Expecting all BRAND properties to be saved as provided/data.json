@@ -2,7 +2,7 @@
   "id": "MCA-47",
   "parent_id": "MCA-36",
   "title": "Expecting all BRAND properties to be saved as provided",
-  "gherkin": "When the user creates a brand \"DKW\" with the following valid data\n  | key       | value           |\n  | name      | DKW             |\n  | full_name | Dampfkraftwagen |\n  | founded   | 1916            |\n  | defunct   | 1966            |\n  | wmi       | -               |\n  | hsn       | 0010            |\nThen the response should contain the following data\n  | key       | value           |\n  | name      | DKW             |\n  | full_name | Dampfkraftwagen |\n  | founded   | 1916            |\n  | defunct   | 1966            |\n  | wmi       | -               |\n  | hsn       | 0010            |",
+  "gherkin": "When the user creates a BRAND \"DKW\" with the following valid data\n  | key       | value           |\n  | name      | DKW             |\n  | full_name | Dampfkraftwagen |\n  | founded   | 1916            |\n  | defunct   | 1966            |\n  | wmi       | -               |\n  | hsn       | 0010            |\nThen the response should contain the following data\n  | key       | value           |\n  | name      | DKW             |\n  | full_name | Dampfkraftwagen |\n  | founded   | 1916            |\n  | defunct   | 1966            |\n  | wmi       | -               |\n  | hsn       | 0010            |",
   "labels": [
     "implemented"
   ],

@@ -2,7 +2,7 @@
   "id": "MCA-62",
   "parent_id": "MCA-56",
   "title": "Using an invalid relationship name should result in a 404 error",
-  "gherkin": "Given there exists a brand \"A\"\nAnd there exists a car model \"B\"\nWhen the user tries to connect car model \"B\" to brand \"A\" with the relationship name \"not-a-valid-relationship-name\"\nThen the response should return with status code 404",
+  "gherkin": "Given there exists a \"BRAND\" \"A\"\nAnd there exists a \"CAR MODEL\" \"B\"\nWhen the user connects CAR MODEL \"B\" to BRAND \"A\" with the relationship name \"not-a-valid-relationship-name\"\nThen the response should return with status code 404",
   "labels": [
     "implemented"
   ],

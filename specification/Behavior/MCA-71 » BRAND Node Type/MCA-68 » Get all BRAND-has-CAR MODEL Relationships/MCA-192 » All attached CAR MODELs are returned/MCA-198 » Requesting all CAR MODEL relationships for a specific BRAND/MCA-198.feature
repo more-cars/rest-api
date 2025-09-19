@@ -12,9 +12,9 @@ Feature: Get all BRAND-has-CAR MODEL Relationships
       Given there exists a "BRAND" "Hyundai"
       And there exists a "CAR MODEL" "i10"
       And there exists a "CAR MODEL" "i20"
-      And there exists a relationship "R1" between BRAND "Hyundai" and CAR MODEL "i10"
-      And there exists a relationship "R2" between BRAND "Hyundai" and CAR MODEL "i20"
+      And there exists a relationship "R1" between "BRAND" "Hyundai" and "CAR MODEL" "i10"
+      And there exists a relationship "R2" between "BRAND" "Hyundai" and "CAR MODEL" "i20"
       When the user requests a list of all CAR MODEL relationships for the BRAND "Hyundai"
       Then the response should return with status code 200
-      And the response should contain the the relationship "R1"
-      And the response should contain the the relationship "R2"
+      And the response should contain the relationship "R1"
+      And the response should contain the relationship "R2"

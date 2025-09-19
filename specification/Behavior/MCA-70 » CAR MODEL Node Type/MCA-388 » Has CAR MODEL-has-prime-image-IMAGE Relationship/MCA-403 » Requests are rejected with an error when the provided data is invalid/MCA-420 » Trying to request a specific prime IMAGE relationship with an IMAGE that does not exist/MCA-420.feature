@@ -10,6 +10,6 @@ Feature: Has CAR MODEL-has-prime-image-IMAGE Relationship
     @TEST_MCA-420 @implemented
     Scenario: Trying to request a specific prime IMAGE relationship with an IMAGE that does not exist
       Given there exists a "CAR MODEL" "Mondeo"
-      And an "IMAGE" "front-left.jpg" does not exist
-      When the user requests the prime "IMAGE" relationship between "Mondeo" and "front-left.jpg"
+      And "IMAGE" "front-left.jpg" does NOT exist
+      When the user requests the "has prime image" relationship between "Mondeo" and "front-left.jpg"
       Then the request should be rejected with status code 404

@@ -2,7 +2,7 @@
   "id": "MCA-274",
   "parent_id": "MCA-270",
   "title": "Trying to connect non-existent nodes",
-  "gherkin": "Given there exists a \"BRAND\" \"Maserati\"\nAnd \"IMAGE\" \"logo\" does NOT exist\nWhen the user tries to connect IMAGE \"logo\" to BRAND \"Maserati\"\nThen the response should return with status code 404\n\nGiven \"BRAND\" \"Maserati\" does NOT exist\nAnd there exists an \"IMAGE\" \"logo\"\nWhen the user tries to connect IMAGE \"logo\" to BRAND \"Maserati\"\nThen the response should return with status code 404\n\nGiven \"BRAND\" \"Maserati\" does NOT exist\nAnd \"IMAGE\" \"logo\" does NOT exist\nWhen the user tries to connect IMAGE \"logo\" to BRAND \"Maserati\"\nThen the response should return with status code 404",
+  "gherkin": "Given there exists a \"BRAND\" \"Maserati\"\nAnd \"IMAGE\" \"logo\" does NOT exist\nWhen the user connects \"IMAGE\" \"logo\" to \"BRAND\" \"Maserati\"\nThen the response should return with status code 404\n\nGiven \"BRAND\" \"Maserati\" does NOT exist\nAnd there exists an \"IMAGE\" \"logo\"\nWhen the user connects \"IMAGE\" \"logo\" to \"BRAND\" \"Maserati\"\nThen the response should return with status code 404\n\nGiven \"BRAND\" \"Maserati\" does NOT exist\nAnd \"IMAGE\" \"logo\" does NOT exist\nWhen the user connects \"IMAGE\" \"logo\" to \"BRAND\" \"Maserati\"\nThen the response should return with status code 404",
   "labels": [
     "implemented"
   ],

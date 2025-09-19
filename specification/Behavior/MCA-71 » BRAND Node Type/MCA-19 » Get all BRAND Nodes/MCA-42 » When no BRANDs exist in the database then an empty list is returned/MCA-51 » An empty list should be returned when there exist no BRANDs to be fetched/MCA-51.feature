@@ -9,7 +9,7 @@ Feature: Get all BRAND Nodes
 
     @TEST_MCA-51 @implemented
     Scenario: An empty list should be returned when there exist no BRANDs to be fetched
-      Given there exist NO brands
-      When the user requests all brands
-      Then the response should return a collection of 0 brands
+      Given there exist 0 "BRAND"s
+      When the user requests all "BRAND"s
+      Then the response should return a collection of 0 "BRAND"s
       And the response should return with status code 200

@@ -9,7 +9,9 @@ Feature: Create BRAND-has-CAR MODEL Relationship
 
     @TEST_MCA-60 @implemented
     Scenario: The user should be able to connect an existing CAR MODEL to any existing BRAND
-      Given there exists a brand "A"
-      And there exists a car model "B"
-      When the user connects car model "B" to brand "A"
+      Given there exists a "BRAND" "A"
+      And there exists a "CAR MODEL" "B"
+      When the user connects "CAR MODEL" "B" to "BRAND" "A"
+      Then the response should return with status code 201
+      When the user connects "BRAND" "A" to "CAR MODEL" "B"
       Then the response should return with status code 201

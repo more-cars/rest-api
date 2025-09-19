@@ -9,7 +9,7 @@ Feature: Get all BRAND Nodes
 
     @TEST_MCA-50 @implemented
     Scenario: Requesting a BRAND collection should return a list of all existing BRAND nodes
-      Given there exist 11 brands
-      When the user requests all brands
-      Then the response should return a collection of 11 brands
+      Given there exist 11 "BRAND"s
+      When the user requests all "BRAND"s
+      Then the response should return a collection of 11 "BRAND"s
       And the response should return with status code 200

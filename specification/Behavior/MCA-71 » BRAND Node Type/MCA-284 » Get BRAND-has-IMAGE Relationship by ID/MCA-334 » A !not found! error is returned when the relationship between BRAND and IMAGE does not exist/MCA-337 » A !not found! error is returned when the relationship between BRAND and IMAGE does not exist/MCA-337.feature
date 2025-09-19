@@ -11,6 +11,6 @@ Feature: Get BRAND-has-IMAGE Relationship by ID
     Scenario: A "not found" error is returned when the relationship between BRAND and IMAGE does not exist
       Given there exists a "BRAND" "Honda"
       And there exists an "IMAGE" "logo"
-      And there exists NO relationship between BRAND "Honda" and IMAGE "logo"
-      When the user tries to request the relationship between BRAND "Honda" and IMAGE "logo"
+      And there exists NO "belongs to car model" relationship "R" between "Honda" and "logo"
+      When the user requests the relationship between "BRAND" "Honda" and "IMAGE" "logo"
       Then the response should return with status code 404

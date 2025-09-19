@@ -2,7 +2,7 @@
   "id": "MCA-282",
   "parent_id": "MCA-279",
   "title": "Requesting the attached IMAGEs for a BRAND that does not exist",
-  "gherkin": "Given \"BRAND\" \"Maserati\" does NOT exist\nWhen the user tries to fetch all IMAGEs that are connected to BRAND \"Maserati\"\nThen the response should return with status code 404",
+  "gherkin": "Given \"BRAND\" \"Maserati\" does NOT exist\nWhen the user requests all IMAGEs that are connected to BRAND \"Maserati\"\nThen the response should return with status code 404",
   "labels": [
     "implemented"
   ],

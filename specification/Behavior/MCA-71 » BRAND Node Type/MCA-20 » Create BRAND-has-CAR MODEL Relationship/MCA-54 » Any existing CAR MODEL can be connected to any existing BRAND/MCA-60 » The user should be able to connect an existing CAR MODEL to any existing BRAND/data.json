@@ -2,7 +2,7 @@
   "id": "MCA-60",
   "parent_id": "MCA-54",
   "title": "The user should be able to connect an existing CAR MODEL to any existing BRAND",
-  "gherkin": "Given there exists a brand \"A\"\nAnd there exists a car model \"B\"\n\nWhen the user connects car model \"B\" to brand \"A\"\nThen the response should return with status code 201",
+  "gherkin": "Given there exists a \"BRAND\" \"A\"\nAnd there exists a \"CAR MODEL\" \"B\"\n\nWhen the user connects \"CAR MODEL\" \"B\" to \"BRAND\" \"A\"\nThen the response should return with status code 201\n\nWhen the user connects \"BRAND\" \"A\" to \"CAR MODEL\" \"B\"\nThen the response should return with status code 201",
   "labels": [
     "implemented"
   ],

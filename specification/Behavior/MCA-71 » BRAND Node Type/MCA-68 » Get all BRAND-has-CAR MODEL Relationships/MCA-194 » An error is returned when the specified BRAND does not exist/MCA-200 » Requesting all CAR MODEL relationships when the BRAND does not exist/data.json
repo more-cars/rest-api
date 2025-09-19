@@ -2,7 +2,7 @@
   "id": "MCA-200",
   "parent_id": "MCA-194",
   "title": "Requesting all CAR MODEL relationships when the BRAND does not exist",
-  "gherkin": "Given \"BRAND\" \"Hyundai\" does NOT exist\nWhen the user tries to request a list of all CAR MODEL relationships for the BRAND \"Hyundai\"\nThen the response should return with status code 404",
+  "gherkin": "Given \"BRAND\" \"Hyundai\" does NOT exist\nWhen the user requests a list of all CAR MODEL relationships for the BRAND \"Hyundai\"\nThen the response should return with status code 404",
   "labels": [
     "implemented"
   ],

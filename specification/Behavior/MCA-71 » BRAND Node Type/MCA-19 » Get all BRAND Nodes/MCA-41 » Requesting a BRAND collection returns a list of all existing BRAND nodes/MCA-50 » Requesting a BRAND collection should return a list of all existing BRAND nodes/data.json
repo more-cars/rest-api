@@ -2,7 +2,7 @@
   "id": "MCA-50",
   "parent_id": "MCA-41",
   "title": "Requesting a BRAND collection should return a list of all existing BRAND nodes",
-  "gherkin": "Given there exist 11 brands\nWhen the user requests all brands\nThen the response should return a collection of 11 brands\nAnd the response should return with status code 200",
+  "gherkin": "Given there exist 11 \"BRAND\"s\nWhen the user requests all \"BRAND\"s\nThen the response should return a collection of 11 \"BRAND\"s\nAnd the response should return with status code 200",
   "labels": [
     "implemented"
   ],

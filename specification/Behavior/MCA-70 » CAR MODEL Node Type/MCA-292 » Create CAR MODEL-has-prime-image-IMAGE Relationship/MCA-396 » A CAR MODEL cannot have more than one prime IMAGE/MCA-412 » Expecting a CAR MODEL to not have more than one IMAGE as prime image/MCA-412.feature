@@ -14,4 +14,4 @@ Feature: Create CAR MODEL-has-prime-image-IMAGE Relationship
       And there exists an "IMAGE" "rear-spoiler.jpg"
       When the user requests to connect "front-left.jpg" to "Mondeo" as prime image
       And the user requests to connect "rear-spoiler.jpg" to "Mondeo" as prime image
-      Then there should be 1 "IMAGE" connected as prime image to the "CAR MODEL" "Mondeo"
+      Then there should exist exactly one "has prime image" relationship for "Mondeo"

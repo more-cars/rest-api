@@ -2,7 +2,7 @@
   "id": "MCA-45",
   "parent_id": "MCA-36",
   "title": "Expecting all BRAND-specific properties to be included in the \"create brand\" response",
-  "gherkin": "When the user creates a \"BRAND\"\nThen the response should contain the following keys\n  | key       |\n  | name      |\n  | full_name |\n  | founded   |\n  | defunct   |\n  | wmi       |\n  | hsn       |",
+  "gherkin": "When the user creates a \"BRAND\"\nThen the response should contain the following keys\n  | key       |\n  | id        |\n  | name      |\n  | full_name |\n  | founded   |\n  | defunct   |\n  | wmi       |\n  | hsn       |",
   "labels": [
     "implemented"
   ],

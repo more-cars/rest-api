@@ -2,7 +2,7 @@
   "id": "MCA-48",
   "parent_id": "MCA-39",
   "title": "Requesting a BRAND with a valid ID should return the respective node",
-  "gherkin": "Given there exists a brand A\nWhen the user requests the brand A via ID\nThen the response should return the brand A\nAnd the response should return with status code 200",
+  "gherkin": "Given there exists a \"BRAND\" \"A\"\nWhen the user requests the \"BRAND\" \"A\"\nThen the response should return the BRAND \"A\"\nAnd the response should return with status code 200",
   "labels": [
     "implemented"
   ],

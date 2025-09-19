@@ -14,5 +14,5 @@ Feature: Create CAR MODEL-has-prime-image-IMAGE Relationship
       And there exists an "IMAGE" "rear-spoiler.jpg"
       And there exists a "has prime image" relationship "prime" between "Mondeo" and "front-left.jpg"
       When the user requests to connect "rear-spoiler.jpg" to "Mondeo" as prime image
-      Then the response should confirm the request with status code 201
+      Then the request should be confirmed with status code 201
       And the response should NOT return the relationship "prime"

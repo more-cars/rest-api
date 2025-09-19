@@ -9,8 +9,8 @@ Feature: Create BRAND-has-CAR MODEL Relationship
 
     @TEST_MCA-64 @implemented
     Scenario: Creating the same relationship again returns the already existing one
-      Given there exists a brand "A"
-      And there exists a car model "B"
-      And there exists a relationship "C" between car model "B" and brand "A"
-      When the user connects car model "B" to brand "A"
+      Given there exists a "BRAND" "A"
+      And there exists a "CAR MODEL" "B"
+      And there exists a relationship "C" between "CAR MODEL" "B" and "BRAND" "A"
+      When the user connects "CAR MODEL" "B" to "BRAND" "A"
       And the response should contain the id of relationship "C"

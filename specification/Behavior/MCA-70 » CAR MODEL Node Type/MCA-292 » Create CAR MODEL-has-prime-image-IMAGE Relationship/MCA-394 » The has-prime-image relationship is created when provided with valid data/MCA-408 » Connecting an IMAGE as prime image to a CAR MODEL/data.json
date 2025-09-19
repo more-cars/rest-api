@@ -2,7 +2,7 @@
   "id": "MCA-408",
   "parent_id": "MCA-394",
   "title": "Connecting an IMAGE as prime image to a CAR MODEL",
-  "gherkin": "Given there exists a \"CAR MODEL\" \"Mondeo\"\nAnd there exists an \"IMAGE\" \"front-left.jpg\"\nWhen the user requests to connect \"front-left.jpg\" to \"Mondeo\" as prime image\nThen the response should confirm the request with status code 201",
+  "gherkin": "Given there exists a \"CAR MODEL\" \"Mondeo\"\nAnd there exists an \"IMAGE\" \"front-left.jpg\"\nWhen the user requests to connect \"front-left.jpg\" to \"Mondeo\" as prime image\nThen the request should be confirmed with status code 201",
   "labels": [
     "implemented"
   ],

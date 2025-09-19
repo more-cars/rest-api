@@ -2,7 +2,7 @@
   "id": "MCA-412",
   "parent_id": "MCA-396",
   "title": "Expecting a CAR MODEL to not have more than one IMAGE as prime image",
-  "gherkin": "Given there exists a \"CAR MODEL\" \"Mondeo\"\nAnd there exists an \"IMAGE\" \"front-left.jpg\"\nAnd there exists an \"IMAGE\" \"rear-spoiler.jpg\"\nWhen the user requests to connect \"front-left.jpg\" to \"Mondeo\" as prime image\nAnd the user requests to connect \"rear-spoiler.jpg\" to \"Mondeo\" as prime image\nThen there should be 1 \"IMAGE\" connected as prime image to the \"CAR MODEL\" \"Mondeo\"",
+  "gherkin": "Given there exists a \"CAR MODEL\" \"Mondeo\"\nAnd there exists an \"IMAGE\" \"front-left.jpg\"\nAnd there exists an \"IMAGE\" \"rear-spoiler.jpg\"\nWhen the user requests to connect \"front-left.jpg\" to \"Mondeo\" as prime image\nAnd the user requests to connect \"rear-spoiler.jpg\" to \"Mondeo\" as prime image\nThen there should exist exactly one \"has prime image\" relationship for \"Mondeo\"",
   "labels": [
     "implemented"
   ],

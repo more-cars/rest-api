@@ -10,6 +10,6 @@ Feature: Get all BRAND-has-IMAGE Relationships
     @TEST_MCA-280 @implemented
     Scenario: Requesting the attached IMAGEs
       Given there exists a "BRAND" "Maserati"
-      And there are 3 IMAGEs attached to BRAND "Maserati"
+      And there are 3 IMAGEs connected to BRAND "Maserati"
       When the user requests all IMAGEs that are connected to BRAND "Maserati"
       Then the response should return a collection with 3 relationships

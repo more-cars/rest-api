@@ -12,6 +12,7 @@ Feature: Create BRAND Node
       When the user creates a "BRAND"
       Then the response should contain the following keys
         | key       |
+        | id        |
         | name      |
         | full_name |
         | founded   |

@@ -9,7 +9,7 @@ Feature: Create BRAND Node
 
     @TEST_MCA-47 @implemented
     Scenario: Expecting all BRAND properties to be saved as provided
-      When the user creates a brand "DKW" with the following valid data
+      When the user creates a BRAND "DKW" with the following valid data
         | key       | value           |
         | name      | DKW             |
         | full_name | Dampfkraftwagen |

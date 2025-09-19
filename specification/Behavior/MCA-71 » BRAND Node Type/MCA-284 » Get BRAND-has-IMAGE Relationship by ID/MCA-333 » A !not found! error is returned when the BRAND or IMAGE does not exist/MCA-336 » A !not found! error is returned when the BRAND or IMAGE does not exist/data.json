@@ -2,7 +2,7 @@
   "id": "MCA-336",
   "parent_id": "MCA-333",
   "title": "A \"not found\" error is returned when the BRAND or IMAGE does not exist",
-  "gherkin": "Given there exists a \"BRAND\" \"Honda\"\nAnd \"IMAGE\" \"logo\" does NOT exist\nWhen the user tries to request the relationship between BRAND \"Honda\" and IMAGE \"logo\"\nThen the response should return with status code 404\n\nGiven \"BRAND\" \"Honda\" does NOT exist\nAnd there exists an \"IMAGE\" \"logo\"\nWhen the user tries to request the relationship between BRAND \"Honda\" and IMAGE \"logo\"\nThen the response should return with status code 404\n\nGiven \"BRAND\" \"Honda\" does NOT exist\nAnd \"IMAGE\" \"logo\" does NOT exist\nWhen the user tries to request the relationship between BRAND \"Honda\" and IMAGE \"logo\"\nThen the response should return with status code 404",
+  "gherkin": "Given there exists a \"BRAND\" \"Honda\"\nAnd \"IMAGE\" \"logo\" does NOT exist\nWhen the user requests the relationship between \"BRAND\" \"Honda\" and \"IMAGE\" \"logo\"\nThen the response should return with status code 404\n\nGiven \"BRAND\" \"Honda\" does NOT exist\nAnd there exists an \"IMAGE\" \"logo\"\nWhen the user requests the relationship between \"BRAND\" \"Honda\" and \"IMAGE\" \"logo\"\nThen the response should return with status code 404\n\nGiven \"BRAND\" \"Honda\" does NOT exist\nAnd \"IMAGE\" \"logo\" does NOT exist\nWhen the user requests the relationship between \"BRAND\" \"Honda\" and \"IMAGE\" \"logo\"\nThen the response should return with status code 404",
   "labels": [
     "implemented"
   ],

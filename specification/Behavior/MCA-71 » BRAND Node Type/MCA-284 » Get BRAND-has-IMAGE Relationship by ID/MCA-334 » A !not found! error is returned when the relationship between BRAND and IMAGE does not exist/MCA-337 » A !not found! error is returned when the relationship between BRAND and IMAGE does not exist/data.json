@@ -2,7 +2,7 @@
   "id": "MCA-337",
   "parent_id": "MCA-334",
   "title": "A \"not found\" error is returned when the relationship between BRAND and IMAGE does not exist",
-  "gherkin": "Given there exists a \"BRAND\" \"Honda\"\nAnd there exists an \"IMAGE\" \"logo\"\nAnd there exists NO relationship between BRAND \"Honda\" and IMAGE \"logo\"\nWhen the user tries to request the relationship between BRAND \"Honda\" and IMAGE \"logo\"\nThen the response should return with status code 404",
+  "gherkin": "Given there exists a \"BRAND\" \"Honda\"\nAnd there exists an \"IMAGE\" \"logo\"\nAnd there exists NO \"belongs to car model\" relationship \"R\" between \"Honda\" and \"logo\"\nWhen the user requests the relationship between \"BRAND\" \"Honda\" and \"IMAGE\" \"logo\"\nThen the response should return with status code 404",
   "labels": [
     "implemented"
   ],

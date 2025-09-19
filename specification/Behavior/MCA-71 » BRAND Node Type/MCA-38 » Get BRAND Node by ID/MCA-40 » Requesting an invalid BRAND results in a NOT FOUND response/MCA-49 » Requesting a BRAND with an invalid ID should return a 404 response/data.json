@@ -2,7 +2,7 @@
   "id": "MCA-49",
   "parent_id": "MCA-40",
   "title": "Requesting a BRAND with an invalid ID should return a 404 response",
-  "gherkin": "When the user requests a non-existing brand\nThen the response should return with status code 404",
+  "gherkin": "When the user requests a non-existing \"BRAND\"\nThen the response should return with status code 404",
   "labels": [
     "implemented"
   ],

@@ -12,4 +12,4 @@ Feature: Create CAR MODEL-has-prime-image-IMAGE Relationship
       Given there exists a "CAR MODEL" "Mondeo"
       And there exists an "IMAGE" "front-left.jpg"
       When the user requests to connect "front-left.jpg" to "Mondeo" as prime image
-      Then the response should confirm the request with status code 201
+      Then the request should be confirmed with status code 201

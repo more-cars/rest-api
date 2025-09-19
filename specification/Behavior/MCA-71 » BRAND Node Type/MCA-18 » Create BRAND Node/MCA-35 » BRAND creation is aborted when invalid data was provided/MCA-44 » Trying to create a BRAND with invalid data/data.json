@@ -2,7 +2,7 @@
   "id": "MCA-44",
   "parent_id": "MCA-35",
   "title": "Trying to create a BRAND with invalid data",
-  "gherkin": "When the user tries to create a brand with the following data\n  | attribute | value   |\n  | bad_name  | Ferrari |\nThen the response should return with status code 400",
+  "gherkin": "When the user creates a \"BRAND\" with the following data\n  | attribute | value   |\n  | bad_name  | Ferrari |\nThen the response should return with status code 400",
   "labels": [
     "implemented"
   ],

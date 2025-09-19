@@ -2,7 +2,7 @@
   "id": "MCA-51",
   "parent_id": "MCA-42",
   "title": "An empty list should be returned when there exist no BRANDs to be fetched",
-  "gherkin": "Given there exist NO brands\nWhen the user requests all brands\nThen the response should return a collection of 0 brands\nAnd the response should return with status code 200",
+  "gherkin": "Given there exist 0 \"BRAND\"s\nWhen the user requests all \"BRAND\"s\nThen the response should return a collection of 0 \"BRAND\"s\nAnd the response should return with status code 200",
   "labels": [
     "implemented"
   ],

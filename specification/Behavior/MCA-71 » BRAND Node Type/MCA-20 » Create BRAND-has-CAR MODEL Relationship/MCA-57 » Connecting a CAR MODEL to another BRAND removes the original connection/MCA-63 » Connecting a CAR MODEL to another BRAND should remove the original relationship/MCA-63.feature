@@ -11,6 +11,6 @@ Feature: Create BRAND-has-CAR MODEL Relationship
     Scenario: Connecting a CAR MODEL to another BRAND should remove the original relationship
       Given there exists a "CAR MODEL" "Veyron"
       And there exists a "BRAND" "Bugatti"
-      And there exists a relationship "R" between CAR MODEL "Veyron" and BRAND "Bugatti"
+      And there exists a relationship "R" between "CAR MODEL" "Veyron" and "BRAND" "Bugatti"
       When the user connects CAR MODEL "Veyron" to a different BRAND
       And the relationship "R" should not exist anymore

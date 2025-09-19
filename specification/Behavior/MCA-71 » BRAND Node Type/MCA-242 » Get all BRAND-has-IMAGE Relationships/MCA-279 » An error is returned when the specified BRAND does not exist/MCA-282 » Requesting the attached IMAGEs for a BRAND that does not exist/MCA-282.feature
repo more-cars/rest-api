@@ -10,5 +10,5 @@ Feature: Get all BRAND-has-IMAGE Relationships
     @TEST_MCA-282 @implemented
     Scenario: Requesting the attached IMAGEs for a BRAND that does not exist
       Given "BRAND" "Maserati" does NOT exist
-      When the user tries to fetch all IMAGEs that are connected to BRAND "Maserati"
+      When the user requests all IMAGEs that are connected to BRAND "Maserati"
       Then the response should return with status code 404

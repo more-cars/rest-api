@@ -9,7 +9,7 @@ Feature: Create BRAND Node
 
     @TEST_MCA-43 @implemented
     Scenario: Creating a BRAND with valid data
-      When the user creates a brand "DKW" with the following valid data
+      When the user creates a BRAND "DKW" with the following valid data
         | key       | value           |
         | name      | DKW             |
         | full_name | Dampfkraftwagen |
@@ -19,5 +19,5 @@ Feature: Create BRAND Node
         | hsn       | 0010            |
       Then the response should return the BRAND "DKW"
       And the response should return with status code 201
-      When the user requests the brand "DKW" via ID
+      When the user requests the "BRAND" "DKW"
       Then the response should return the BRAND "DKW"

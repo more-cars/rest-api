@@ -2,7 +2,7 @@
   "id": "MCA-329",
   "parent_id": "MCA-326",
   "title": "Requesting the relationship between a specific BRAND and a specific CAR MODEL",
-  "gherkin": "Given there exists a \"BRAND\" \"Lamborghini\"\nAnd there exists a \"CAR MODEL\" \"Countach\"\nAnd there exists a relationship \"R\" between BRAND \"Lamborghini\" and CAR MODEL \"Countach\"\n\nWhen the user requests the relationship between BRAND \"Lamborghini\" and CAR MODEL \"Countach\"\nThen the response should return with status code 200\nAnd the response should return the relationship \"R\"",
+  "gherkin": "Given there exists a \"BRAND\" \"Lamborghini\"\nAnd there exists a \"CAR MODEL\" \"Countach\"\nAnd there exists a relationship \"R\" between \"BRAND\" \"Lamborghini\" and \"CAR MODEL\" \"Countach\"\n\nWhen the user requests the relationship between \"BRAND\" \"Lamborghini\" and \"CAR MODEL\" \"Countach\"\nThen the response should return with status code 200\nAnd the response should return the relationship \"R\"",
   "labels": [
     "implemented"
   ],

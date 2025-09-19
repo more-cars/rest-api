@@ -2,7 +2,7 @@
   "id": "MCA-280",
   "parent_id": "MCA-277",
   "title": "Requesting the attached IMAGEs",
-  "gherkin": "Given there exists a \"BRAND\" \"Maserati\"\nAnd there are 3 IMAGEs attached to BRAND \"Maserati\"\nWhen the user requests all IMAGEs that are connected to BRAND \"Maserati\"\nThen the response should return a collection with 3 relationships",
+  "gherkin": "Given there exists a \"BRAND\" \"Maserati\"\nAnd there are 3 IMAGEs connected to BRAND \"Maserati\"\nWhen the user requests all IMAGEs that are connected to BRAND \"Maserati\"\nThen the response should return a collection with 3 relationships",
   "labels": [
     "implemented"
   ],

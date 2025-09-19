@@ -11,13 +11,13 @@ Feature: Create BRAND-has-IMAGE Relationship
     Scenario: Trying to connect non-existent nodes
       Given there exists a "BRAND" "Maserati"
       And "IMAGE" "logo" does NOT exist
-      When the user tries to connect IMAGE "logo" to BRAND "Maserati"
+      When the user connects "IMAGE" "logo" to "BRAND" "Maserati"
       Then the response should return with status code 404
       Given "BRAND" "Maserati" does NOT exist
       And there exists an "IMAGE" "logo"
-      When the user tries to connect IMAGE "logo" to BRAND "Maserati"
+      When the user connects "IMAGE" "logo" to "BRAND" "Maserati"
       Then the response should return with status code 404
       Given "BRAND" "Maserati" does NOT exist
       And "IMAGE" "logo" does NOT exist
-      When the user tries to connect IMAGE "logo" to BRAND "Maserati"
+      When the user connects "IMAGE" "logo" to "BRAND" "Maserati"
       Then the response should return with status code 404
