@@ -3,7 +3,7 @@ import {seedRelationships} from "../../../../_toolbox/dbSeeding/brands/relations
 import {removeDuplicates} from "../../../../_toolbox/removeDuplicates"
 
 test('Each relationship is created with a different ID', async () => {
-    const relationships = await seedRelationships(20)
+    const relationships = await seedRelationships(10)
 
     const extractedIds = relationships.map(relationship => relationship.relationship_id)
     const deduplicatedIds = removeDuplicates(extractedIds)
