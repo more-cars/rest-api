@@ -88,7 +88,7 @@ function getMappedApiVerb(verb: string) {
         ['GET', '10186'],
         ['POST', '10187'],
         ['PATCH', '10188'],
-        ['PATCH', '10189'],
+        ['DELETE', '10189'],
         ['N/A', '10351'],
     ])
 
