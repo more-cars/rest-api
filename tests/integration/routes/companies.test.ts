@@ -22,4 +22,12 @@ describe('Companies', () => {
             .toHaveBeenCalledTimes(1)
 
     })
+
+    test('Get all Nodes', async () => {
+        await request(app)
+            .get('/companies')
+
+        expect(CompanyController.getAll)
+            .toHaveBeenCalledTimes(1)
+    })
 })

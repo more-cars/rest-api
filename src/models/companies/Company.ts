@@ -4,6 +4,7 @@ import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../db/nodes/companies/createNode"
 import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/companies/getNodeById"
+import {getAllNodesOfType} from "../../db/nodes/companies/getAllNodesOfType"
 
 export class Company {
     static async create(data: CreateCompanyInput): Promise<CompanyNode> {
@@ -22,5 +23,16 @@ export class Company {
         }
 
         return convertOutputData(node)
+    }
+
+    static async findAll(): Promise<CompanyNode[]> {
+        const nodes: Array<CompanyNode> = []
+        const nodesDb = await getAllNodesOfType()
+
+        nodesDb.forEach(node => {
+            nodes.push(convertOutputData(node))
+        })
+
+        return nodes
     }
 }
