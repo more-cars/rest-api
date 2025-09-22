@@ -1,7 +1,7 @@
 module.exports = [
     {
         type: 'input',
-        name: 'nodetype',
-        message: "Which node type should be extended with the 'delete node' feature?"
+        name: 'nodeType',
+        message: "Name of the node type that should be extended with the 'Delete Node' feature?"
     }
 ]

@@ -1,11 +1,11 @@
 ---
-to: tests/performance/scenarios/<%= h.inflection.pluralize(h.changeCase.kebab(nodetype)) %>/delete.ts
+to: tests/performance/scenarios/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/delete.ts
 ---
 import http from 'k6/http'
 import exec from 'k6/execution'
 import {check} from "k6"
 import {Trend} from "k6/metrics"
-import {create<%= h.changeCase.pascal(nodetype) %>} from "../_testdata/create<%= h.changeCase.pascal(nodetype) %>.ts"
+import {createNode} from "../../_testdata/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/createNode.ts"
 
 const trendDuration = new Trend('duration', true)
 
@@ -16,7 +16,7 @@ export const options = {
         duration: ['p(1)<=10', 'p(90)<=40', 'p(95)<=100', 'p(98)<=500'],
     },
     scenarios: {
-        delete<%= h.changeCase.pascal(nodetype) %>: {
+        delete<%= h.changeCase.pascal(nodeType) %>: {
             executor: 'constant-arrival-rate',
             duration: '5m',
             rate: 1,
@@ -29,18 +29,18 @@ export const options = {
 }
 
 export function setup() {
-    const <%= h.inflection.pluralize(h.changeCase.camel(nodetype)) %> = []
+    const <%= h.changeCase.camel(h.inflection.pluralize(nodeType)) %> = []
 
     for (let i = 0; i < 310; i++) {
-        <%= h.inflection.pluralize(h.changeCase.camel(nodetype)) %>.push(create<%= h.changeCase.pascal(nodetype) %>())
+        <%= h.changeCase.camel(h.inflection.pluralize(nodeType)) %>.push(createNode())
     }
 
-    return {ids: <%= h.inflection.pluralize(h.changeCase.camel(nodetype)) %>}
+    return {ids: <%= h.changeCase.camel(h.inflection.pluralize(nodeType)) %>}
 }
 
 export default function (data: { ids: any[] }) {
     const id = data.ids[exec.scenario.iterationInTest]
-    const url = `${__ENV.API_URL}/<%= h.inflection.pluralize(h.changeCase.kebab(nodetype)) %>/${id}`
+    const url = `${__ENV.API_URL}/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/${id}`
     const response = http.del(url)
 
     check(response, {
