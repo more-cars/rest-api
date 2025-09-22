@@ -76,6 +76,7 @@
     "minikube:delete-dev-image": "minikube image rm localhost/mc-api:dev -p morecars",
     "generate-tickets:node:create": "HYGEN_TMPLS=code_generator hygen tickets create-node && node --env-file=.env -r ts-node/register specification/sync-scripts/create-jira-tickets/create-jira-tickets.ts",
     "generate-tickets:node:get-by-id": "HYGEN_TMPLS=code_generator hygen tickets get-node-by-id && node --env-file=.env -r ts-node/register specification/sync-scripts/create-jira-tickets/create-jira-tickets.ts",
+    "generate-tickets:node:get-all": "HYGEN_TMPLS=code_generator hygen tickets get-all-nodes && node --env-file=.env -r ts-node/register specification/sync-scripts/create-jira-tickets/create-jira-tickets.ts",
     "specification:download": "node --env-file=.env -r ts-node/register specification/sync-scripts/download-specification/download-specification.ts",
     "generate-code:node:create": "HYGEN_TMPLS=code_generator hygen node create",
     "generate-code:node:get-by-id": "HYGEN_TMPLS=code_generator hygen node get-by-id",
