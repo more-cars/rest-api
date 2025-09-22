@@ -5,7 +5,7 @@
   "user_story": "As an API consumer\nI want to be able to request a specific COMPANY\nSo I can find out all the details about it when I only have its ID\n",
   "description": "* The requested COMPANY node is returned when the provided ID is valid. -> Status Code \\`200\\`\n* A successful request returns the node with all specified properties.\n* Properties are returned, even when they are empty (optional fields). They are returned with value \\`null\\`.\n* Requests with invalid ID are rejected. This case can happen when there exists no node with that ID or when the node is not from type COMPANY. -> Status Code \\`404\\`\n",
   "api_verb": "GET",
-  "api_path": "/companies/company-id",
+  "api_path": "/companies/<company-id>",
   "response_options": [
     "200",
     "404"
@@ -14,5 +14,5 @@
     "0.18.0"
   ],
   "created_at": "2025-09-18T12:30:49.935+0200",
-  "updated_at": "2025-09-19T12:23:16.681+0200"
+  "updated_at": "2025-09-22T15:58:18.013+0200"
 }
