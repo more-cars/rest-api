@@ -1,5 +1,6 @@
 import {Then, world} from "@cucumber/cucumber"
 import assert from "assert"
+import {CompanySchema} from "../../_toolbox/schemas/CompanySchema"
 import {BrandSchema} from "../../_toolbox/schemas/BrandSchema"
 import {CarModelSchema} from "../../_toolbox/schemas/CarModelSchema"
 import {ImageSchema} from "../../_toolbox/schemas/ImageSchema"
@@ -12,6 +13,9 @@ Then('the response should return a collection of {int} {string}s',
         let validationSchema = {}
 
         switch (nodeType.toLowerCase()) {
+            case 'company':
+                validationSchema = CompanySchema
+                break
             case 'brand':
                 validationSchema = BrandSchema
                 break
@@ -22,7 +26,7 @@ Then('the response should return a collection of {int} {string}s',
                 validationSchema = ImageSchema
                 break
             default:
-                assert.fail(`Node type "${nodeType}" is invalid`)
+                assert.fail(`Node type "${nodeType}" is invalid or unknown`)
         }
 
         world.recallResponse().data.forEach((item: any) => {
