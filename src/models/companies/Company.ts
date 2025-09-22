@@ -5,6 +5,7 @@ import {createNode} from "../../db/nodes/companies/createNode"
 import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/companies/getNodeById"
 import {getAllNodesOfType} from "../../db/nodes/companies/getAllNodesOfType"
+import {deleteNode} from "../../db/nodes/deleteNode"
 
 export class Company {
     static async create(data: CreateCompanyInput): Promise<CompanyNode> {
@@ -34,5 +35,9 @@ export class Company {
         })
 
         return nodes
+    }
+
+    static async delete(id: number): Promise<boolean> {
+        return await deleteNode(id)
     }
 }

@@ -1,0 +1,23 @@
+meta {
+  name: Delete Company
+  type: http
+}
+
+delete {
+  url: {{baseUrl}}/companies/{{validCompanyId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 204
+  res.body: isEmpty
+}
+
+script:pre-request {
+  await lib.Companies.ensureValidCompanyExists()
+}
+
+script:post-response {
+  bru.setEnvVar("validCompanyId", null)
+}

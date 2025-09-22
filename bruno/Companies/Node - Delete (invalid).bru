@@ -1,0 +1,15 @@
+meta {
+  name: Delete Company (invalid)
+  type: http
+}
+
+delete {
+  url: {{baseUrl}}/companies/{{invalidCompanyId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 404
+  res.body: isString
+}

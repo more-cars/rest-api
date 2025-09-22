@@ -30,4 +30,12 @@ describe('Companies', () => {
         expect(CompanyController.getAll)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete Node', async () => {
+        await request(app)
+            .delete('/companies/123')
+
+        expect(CompanyController.delete)
+            .toHaveBeenCalledTimes(1)
+    })
 })
