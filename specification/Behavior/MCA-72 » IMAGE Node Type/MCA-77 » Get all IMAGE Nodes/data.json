@@ -3,13 +3,15 @@
   "parent_id": "MCA-72",
   "title": "Get all IMAGE Nodes",
   "user_story": "As an API consumer\\\nI want to be able to request all IMAGEs\\\nSo I can process them without having to load each of them individually\n",
-  "description": "# **Request**\n\n* method: `GET`\n* URL path: `/images`\n\n# **Response**\n\n**Happy path**\n\n* positive HTTP status code (200)\n* a JSON array of all image nodes, each having the following properties:\n  * `id``: integer`\n  * `external_id``: string`\n  * `image_provider``: string`\n  * `name``: string`\n  * `description``: string/null`\n  * `creator``: string`\n  * `license``: string`\n  * `tags``: string/null`\n  * `source``: string`\n  * `image_url_original``: string`\n  * `image_url_xxl``: string/null`\n  * `image_url_xl``: string/null`\n  * `image_url_l``: string/null`\n  * `image_url_m``: string/null`\n  * `image_url_s``: string/null`\n  * `image_url_xs``: string/null`\n  * `created_at``: string`\n  * `updated_at``: string`\n\n**Unhappy path**\n\n* n.a. → when there are no images an empty array is returned → same status code (200)\n\n# **Acceptance Criteria**\n\n**Behavior (Business logic)**\n\n* all existing nodes of that node type are returned as a list → 200\n* an empty list is returned when there exist no nodes of that node type in the database → 200\n\n# **Quality Gates**\n\n* Unit+Integration tests (Jest) are extended (100% coverage combined)\n* Behavior tests (Cucumber) are added (100% coverage)\n* OpenAPI spec is extended\n  * schema is still valid\n* Bruno collection is extended\n* Performance tests are extended\n  * tests are still green\n\n# **NOT in scope for this iteration**\n\n* relationships with other nodes (e.g. car models or company)\n* proper JSON structure according to the JSON:API\n* sorting, filtering, pagination\n",
-  "api_verb": null,
-  "api_path": null,
-  "response_options": [],
+  "description": "# **Response**\n\n**Happy path**\n\n* positive HTTP status code (200)\n* a JSON array of all image nodes, each having the following properties:\n  * `id``: integer`\n  * `external_id``: string`\n  * `image_provider``: string`\n  * `name``: string`\n  * `description``: string/null`\n  * `creator``: string`\n  * `license``: string`\n  * `tags``: string/null`\n  * `source``: string`\n  * `image_url_original``: string`\n  * `image_url_xxl``: string/null`\n  * `image_url_xl``: string/null`\n  * `image_url_l``: string/null`\n  * `image_url_m``: string/null`\n  * `image_url_s``: string/null`\n  * `image_url_xs``: string/null`\n  * `created_at``: string`\n  * `updated_at``: string`\n\n**Unhappy path**\n\n* n.a. → when there are no images an empty array is returned → same status code (200)\n\n# **Acceptance Criteria**\n\n**Behavior (Business logic)**\n\n* all existing nodes of that node type are returned as a list → 200\n* an empty list is returned when there exist no nodes of that node type in the database → 200\n\n# **NOT in scope for this iteration**\n\n* relationships with other nodes (e.g. car models or company)\n* proper JSON structure according to the JSON:API\n* sorting, filtering, pagination\n",
+  "api_verb": "GET",
+  "api_path": "/images",
+  "response_options": [
+    "200"
+  ],
   "release_versions": [
     "0.8.0"
   ],
   "created_at": "2025-05-18T10:41:23.704+0200",
-  "updated_at": "2025-08-21T14:07:49.491+0200"
+  "updated_at": "2025-09-22T08:41:57.546+0200"
 }

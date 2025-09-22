@@ -3,13 +3,15 @@
   "parent_id": "MCA-70",
   "title": "Get all CAR MODEL Nodes",
   "user_story": "As an API consumer \\\nI want to be able to load all car models\\\nSo I can compare and analyze them without loading each individually\n",
-  "description": "# **Request**\n\n* method: `GET`\n* url path: `/car-models`&#x20;\n\n# **Response**\n\n**Happy path**\n\n* positive HTTP status code (200)\n* a simple JSON with an array of all car model nodes:\n  * id: integer\n  * name: string\n\n**Unhappy path**\n\n* n.a. → when there are no car models an empty array is returned → same status code (200)\n\n# **NOT in scope for this iteration**\n\n* other core properties, like `built_from` and `built_to`&#x20;\n* meta information, like created\\_at or updated\\_at\n* auth / security\n* proper JSON structure according to the JSON:API\n* relationships with other nodes (e.g. brands or car model variants)\n* specific ordering or configurable ordering → the database decides\n* pagination\n\n# **Acceptance Criteria**\n\n**Behavior (Business logic)**\n\n* all existing car models are returned as a list\n* an empty list is returned when there exist no car models in the database\n\n**Quality Gates**\n\n* Unit+Integration tests (Jest) are extended (100% coverage combined)\n* Behavior tests (Cucumber) are added (100% coverage)\n* OpenAPI spec is extended\n  * schema is still valid\n* Bruno collection is extended\n",
-  "api_verb": null,
-  "api_path": null,
-  "response_options": [],
+  "description": "# **Response**\n\n**Happy path**\n\n* positive HTTP status code (200)\n* a simple JSON with an array of all car model nodes:\n  * id: integer\n  * name: string\n\n**Unhappy path**\n\n* n.a. → when there are no car models an empty array is returned → same status code (200)\n\n# **NOT in scope for this iteration**\n\n* other core properties, like `built_from` and `built_to`&#x20;\n* meta information, like created\\_at or updated\\_at\n* auth / security\n* proper JSON structure according to the JSON:API\n* relationships with other nodes (e.g. brands or car model variants)\n* specific ordering or configurable ordering → the database decides\n* pagination\n\n# **Acceptance Criteria**\n\n**Behavior (Business logic)**\n\n* all existing car models are returned as a list\n* an empty list is returned when there exist no car models in the database\n",
+  "api_verb": "GET",
+  "api_path": "/car-models",
+  "response_options": [
+    "200"
+  ],
   "release_versions": [
     "0.4.0"
   ],
   "created_at": "2024-08-26T09:36:30.347+0200",
-  "updated_at": "2025-08-17T13:06:57.092+0200"
+  "updated_at": "2025-09-22T08:41:37.473+0200"
 }

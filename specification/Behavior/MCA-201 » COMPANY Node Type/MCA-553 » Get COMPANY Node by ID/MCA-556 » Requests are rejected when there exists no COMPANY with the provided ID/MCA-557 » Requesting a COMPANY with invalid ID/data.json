@@ -3,7 +3,9 @@
   "parent_id": "MCA-556",
   "title": "Requesting a COMPANY with invalid ID",
   "gherkin": "When the user requests a non-existing \"COMPANY\"\nThen the request should be rejected with status code 404",
-  "labels": [],
+  "labels": [
+    "implemented"
+  ],
   "created_at": "2025-09-18T12:30:59.171+0200",
-  "updated_at": "2025-09-18T18:04:52.803+0200"
+  "updated_at": "2025-09-19T12:22:26.857+0200"
 }
