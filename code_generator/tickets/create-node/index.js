@@ -1,7 +1,7 @@
 module.exports = {
     prompt: async ({inquirer}) => {
         const questions = [{
-            message: 'Create tickets for which node type? (e.g. "Racing Series")',
+            message: 'Create "Create Node" tickets for which node type? (e.g. "Racing Series")',
             name: 'nodeType',
             type: 'input',
         }, {

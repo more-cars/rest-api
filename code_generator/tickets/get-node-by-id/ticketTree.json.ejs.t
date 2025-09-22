@@ -15,7 +15,7 @@ to: specification/sync-scripts/create-jira-tickets/ticketTree.json
                 "Requests with invalid ID are rejected. This case can happen when there exists no node with that ID or when the node is not from type <%= h.changeCase.upper(nodeType) %>. -> Status Code `404`"
             ],
             "apiVerb": "GET",
-            "apiPath": "/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.kebab(nodeType) %>-id",
+            "apiPath": "/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<<%= h.changeCase.kebab(nodeType) %>-id>",
             "responseOptions": [
                 "200",
                 "404"
