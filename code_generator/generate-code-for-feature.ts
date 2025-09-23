@@ -1,5 +1,6 @@
 import {select} from "@inquirer/prompts"
 import inquirer from 'inquirer'
+import {convertToCliParameters} from "./lib/convertToCliParameters"
 import {runShellCommand} from "./lib/runShellCommand"
 
 generateCodeForFeature().then(() => true)
@@ -50,14 +51,4 @@ async function promptFeatureParameters(typeOfData: string, typeOfFeature: string
     const questions = require(`${__dirname}/${typeOfData}/${typeOfFeature}/prompt.js`)
 
     return inquirer.prompt(questions)
-}
-
-function convertToCliParameters(parameters: any) {
-    const cliParams = []
-
-    for (const param in parameters) {
-        cliParams.push(`--${param}='${parameters[param]}'`)
-    }
-
-    return cliParams.join(' ')
 }
