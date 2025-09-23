@@ -5,7 +5,7 @@ import "dotenv/config.js"
 
 export default {
     paths: ['specification/Behavior/**/*.feature'],
-    tags: '@implemented',
+    tags: '@implemented and not @deactivated',
     require: ['tests/behavior/**/*.ts'],
     requireModule: ['ts-node/register'],
     format: [
