@@ -1,5 +1,5 @@
 import {expect, test} from "vitest"
-import {connectStoryToEpic} from "../../../specification/sync-scripts/create-jira-tickets/lib/connectStoryToEpic"
+import {connectStoryToEpic} from "../../../ticket-generator/lib/connectStoryToEpic"
 
 test.skip('Connecting a "story" to an "epic" in Jira - real request - failure', async () => {
     await expect(connectStoryToEpic('TEST-2', 'TEST-1'))

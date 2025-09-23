@@ -1,16 +1,12 @@
 import {expect, test, vi} from "vitest"
-import {createTickets} from "../../../../specification/sync-scripts/create-jira-tickets/lib/createTickets"
-import {updateEpic} from "../../../../specification/sync-scripts/create-jira-tickets/lib/updateEpic"
-import {createStory} from "../../../../specification/sync-scripts/create-jira-tickets/lib/createStory"
-import {connectStoryToEpic} from "../../../../specification/sync-scripts/create-jira-tickets/lib/connectStoryToEpic"
-import {
-    createAcceptanceCriterion
-} from "../../../../specification/sync-scripts/create-jira-tickets/lib/createAcceptanceCriterion"
-import type {TicketTree} from "../../../../specification/sync-scripts/create-jira-tickets/lib/types/TicketTree"
-import {createTest} from "../../../../specification/sync-scripts/create-jira-tickets/lib/createTest"
-import {
-    connectTestToAcceptanceCriterion
-} from "../../../../specification/sync-scripts/create-jira-tickets/lib/connectTestToAcceptanceCriterion"
+import {createTickets} from "../../../../ticket-generator/lib/createTickets"
+import {updateEpic} from "../../../../ticket-generator/lib/updateEpic"
+import {createStory} from "../../../../ticket-generator/lib/createStory"
+import {connectStoryToEpic} from "../../../../ticket-generator/lib/connectStoryToEpic"
+import {createAcceptanceCriterion} from "../../../../ticket-generator/lib/createAcceptanceCriterion"
+import type {TicketTree} from "../../../../ticket-generator/lib/types/TicketTree"
+import {createTest} from "../../../../ticket-generator/lib/createTest"
+import {connectTestToAcceptanceCriterion} from "../../../../ticket-generator/lib/connectTestToAcceptanceCriterion"
 
 test('Expecting the whole stack of required tickets to be created - mocked', async () => {
     await createTickets(getDummyTicketTree())

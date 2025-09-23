@@ -1,5 +1,5 @@
 import {describe, expect, test, vi} from "vitest"
-import {getJiraApiAuthKey} from "../../../specification/sync-scripts/create-jira-tickets/lib/getJiraApiAuthKey"
+import {getJiraApiAuthKey} from "../../../ticket-generator/lib/getJiraApiAuthKey"
 
 describe('Get Jira API auth key', () => {
     test('missing username', () => {

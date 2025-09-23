@@ -1,6 +1,6 @@
 import {expect, test} from "vitest"
-import {createStory} from "../../../specification/sync-scripts/create-jira-tickets/lib/createStory"
-import type {Story} from "../../../specification/sync-scripts/create-jira-tickets/lib/types/Story"
+import {createStory} from "../../../ticket-generator/lib/createStory"
+import type {Story} from "../../../ticket-generator/lib/types/Story"
 
 test.skip('Creating a new "story" ticket in Jira - real request', async () => {
     const data: Story = {

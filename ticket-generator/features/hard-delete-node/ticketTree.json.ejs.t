@@ -1,5 +1,5 @@
 ---
-to: specification/sync-scripts/create-jira-tickets/ticketTree.json
+to: ticket-generator/_temp/ticketTree.json
 ---
 {
     "epic": {

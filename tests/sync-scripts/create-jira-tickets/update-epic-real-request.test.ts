@@ -1,6 +1,6 @@
 import {expect, test} from "vitest"
-import type {Epic} from "../../../specification/sync-scripts/create-jira-tickets/lib/types/Epic"
-import {updateEpic} from "../../../specification/sync-scripts/create-jira-tickets/lib/updateEpic"
+import type {Epic} from "../../../ticket-generator/lib/types/Epic"
+import {updateEpic} from "../../../ticket-generator/lib/updateEpic"
 
 test('Updating epic ticket in Jira - real request', async () => {
     const data: Epic = {

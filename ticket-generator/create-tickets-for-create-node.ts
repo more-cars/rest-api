@@ -1,5 +1,5 @@
 import {createTickets} from "./lib/createTickets"
-import data from "./ticketTree.json"
+import data from "./_temp/ticketTree.json"
 
 createTickets(data).then(
     createdTickets => {

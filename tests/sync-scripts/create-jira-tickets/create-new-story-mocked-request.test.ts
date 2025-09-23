@@ -1,6 +1,6 @@
 import {expect, test, vi} from "vitest"
-import {createStory} from "../../../specification/sync-scripts/create-jira-tickets/lib/createStory"
-import type {Story} from "../../../specification/sync-scripts/create-jira-tickets/lib/types/Story"
+import {createStory} from "../../../ticket-generator/lib/createStory"
+import type {Story} from "../../../ticket-generator/lib/types/Story"
 
 test('Creating a new "story" ticket in Jira - mocked request', async () => {
     vi.mock("../../../specification/sync-scripts/lib/createStory.ts", async () => {

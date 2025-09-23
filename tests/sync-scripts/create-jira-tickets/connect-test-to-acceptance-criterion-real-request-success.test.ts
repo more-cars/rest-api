@@ -1,7 +1,5 @@
 import {expect, test} from "vitest"
-import {
-    connectTestToAcceptanceCriterion
-} from "../../../specification/sync-scripts/create-jira-tickets/lib/connectTestToAcceptanceCriterion"
+import {connectTestToAcceptanceCriterion} from "../../../ticket-generator/lib/connectTestToAcceptanceCriterion"
 
 test.skip('Connecting a "test" to an "acceptance criterion" in Jira - real request - success', async () => {
     const response = await connectTestToAcceptanceCriterion('MCA-436', 'MCA-435')

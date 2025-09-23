@@ -1,6 +1,6 @@
 import {expect, test} from "vitest"
-import {createTest} from "../../../specification/sync-scripts/create-jira-tickets/lib/createTest"
-import type {Test} from "../../../specification/sync-scripts/create-jira-tickets/lib/types/Test"
+import {createTest} from "../../../ticket-generator/lib/createTest"
+import type {Test} from "../../../ticket-generator/lib/types/Test"
 
 test('Creating a new "test" ticket in Jira - real request', async () => {
     const data: Test = {
