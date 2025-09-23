@@ -2,7 +2,7 @@
   "id": "MCA-363",
   "parent_id": "MCA-352",
   "title": "Expecting all attached RELATIONSHIPs to be removed when deleting an IMAGE",
-  "gherkin": "Given there exists an \"IMAGE\" \"logo\"\nAnd there exists a relationship \"R1\" between \"IMAGE\" \"logo\" and a \"CAR MODEL\"\nAnd there exists a relationship \"R2\" between \"IMAGE\" \"logo\" and a \"BRAND\"\nWhen the user hard deletes the \"IMAGE\" \"logo\"\nThen the \"IMAGE\" \"logo\" should not exist anymore\nAnd the relationship \"R1\" should not exist anymore\nAnd the relationship \"R2\" should not exist anymore",
+  "gherkin": "Given there exists an \"IMAGE\" \"logo\"\nAnd there exists a relationship \"R1\" between \"IMAGE\" \"logo\" and a \"CAR MODEL\"\nAnd there exists a relationship \"R2\" between \"IMAGE\" \"logo\" and a \"BRAND\"\nWhen the user hard-deletes the \"IMAGE\" \"logo\"\nThen the \"IMAGE\" \"logo\" should not exist anymore\nAnd the relationship \"R1\" should not exist anymore\nAnd the relationship \"R2\" should not exist anymore",
   "labels": [
     "implemented"
   ],

@@ -2,7 +2,7 @@
   "id": "MCA-355",
   "parent_id": "MCA-346",
   "title": "Expecting all attached RELATIONSHIPs to be removed when deleting a CAR MODEL ",
-  "gherkin": "Given there exists a \"CAR MODEL\" \"Avensis\"\nAnd there exists a relationship \"R1\" between \"CAR MODEL\" \"Avensis\" and a \"BRAND\"\nAnd there exists a relationship \"R2\" between \"CAR MODEL\" \"Avensis\" and an \"IMAGE\"\nWhen the user hard deletes the \"CAR MODEL\" \"Avensis\"\nThen the \"CAR MODEL\" \"Avensis\" should not exist anymore\nAnd the relationship \"R1\" should not exist anymore\nAnd the relationship \"R2\" should not exist anymore",
+  "gherkin": "Given there exists a \"CAR MODEL\" \"Avensis\"\nAnd there exists a relationship \"R1\" between \"CAR MODEL\" \"Avensis\" and a \"BRAND\"\nAnd there exists a relationship \"R2\" between \"CAR MODEL\" \"Avensis\" and an \"IMAGE\"\nWhen the user hard-deletes the \"CAR MODEL\" \"Avensis\"\nThen the \"CAR MODEL\" \"Avensis\" should not exist anymore\nAnd the relationship \"R1\" should not exist anymore\nAnd the relationship \"R2\" should not exist anymore",
   "labels": [
     "implemented"
   ],

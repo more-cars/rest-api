@@ -2,7 +2,7 @@
   "id": "MCA-361",
   "parent_id": "MCA-350",
   "title": "Hard deleting an IMAGE",
-  "gherkin": "Given there exists an \"IMAGE\" \"logo\"\nWhen the user hard deletes the \"IMAGE\" \"logo\"\nThen the \"IMAGE\" \"logo\" should not exist anymore",
+  "gherkin": "Given there exists an \"IMAGE\" \"logo\"\nWhen the user hard-deletes the \"IMAGE\" \"logo\"\nThen the \"IMAGE\" \"logo\" should not exist anymore",
   "labels": [
     "implemented"
   ],

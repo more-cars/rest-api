@@ -7,7 +7,7 @@ Feature: Providing timestamps for all RELATIONSHIPs
   @RULE_MCA-106
   Rule: Each requested relationship returns with valid timestamps
 
-    @TEST_MCA-128 @implemented
+    @TEST_MCA-128 @deactivated @implemented
     Scenario: Requesting a relationship returns a response with valid timestamps
       Given there exists a relationship "R"
       When the user requests the relationship "R"

@@ -10,5 +10,5 @@ Feature: Hard Delete CAR MODEL Node
     @TEST_MCA-353 @implemented
     Scenario: Hard deleting a CAR MODEL
       Given there exists a "CAR MODEL" "Avensis"
-      When the user hard deletes the "CAR MODEL" "Avensis"
+      When the user hard-deletes the "CAR MODEL" "Avensis"
       Then the "CAR MODEL" "Avensis" should not exist anymore

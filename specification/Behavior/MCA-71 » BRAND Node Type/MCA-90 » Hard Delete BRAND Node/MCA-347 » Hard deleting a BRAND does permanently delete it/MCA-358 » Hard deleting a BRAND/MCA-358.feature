@@ -10,5 +10,5 @@ Feature: Hard Delete BRAND Node
     @TEST_MCA-358 @implemented
     Scenario: Hard deleting a BRAND
       Given there exists a "BRAND" "Kia"
-      When the user hard deletes the "BRAND" "Kia"
+      When the user hard-deletes the "BRAND" "Kia"
       Then the "BRAND" "Kia" should not exist anymore

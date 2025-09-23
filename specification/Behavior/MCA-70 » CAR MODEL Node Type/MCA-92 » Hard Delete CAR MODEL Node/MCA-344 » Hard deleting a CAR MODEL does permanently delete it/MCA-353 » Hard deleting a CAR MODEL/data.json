@@ -2,7 +2,7 @@
   "id": "MCA-353",
   "parent_id": "MCA-344",
   "title": "Hard deleting a CAR MODEL",
-  "gherkin": "Given there exists a \"CAR MODEL\" \"Avensis\"\nWhen the user hard deletes the \"CAR MODEL\" \"Avensis\"\nThen the \"CAR MODEL\" \"Avensis\" should not exist anymore",
+  "gherkin": "Given there exists a \"CAR MODEL\" \"Avensis\"\nWhen the user hard-deletes the \"CAR MODEL\" \"Avensis\"\nThen the \"CAR MODEL\" \"Avensis\" should not exist anymore",
   "labels": [
     "implemented"
   ],

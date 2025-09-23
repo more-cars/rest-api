@@ -2,7 +2,7 @@
   "id": "MCA-354",
   "parent_id": "MCA-345",
   "title": "Trying to delete a non-existing CAR MODEL",
-  "gherkin": "Given \"CAR MODEL\" \"Avensis\" does NOT exist\nWhen the user hard deletes the \"CAR MODEL\" \"Avensis\"\nThen the response should return with status code 404",
+  "gherkin": "Given \"CAR MODEL\" \"Avensis\" does NOT exist\nWhen the user hard-deletes the \"CAR MODEL\" \"Avensis\"\nThen the response should return with status code 404",
   "labels": [
     "implemented"
   ],

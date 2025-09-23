@@ -10,5 +10,5 @@ Feature: Hard Delete BRAND Node
     @TEST_MCA-359 @implemented
     Scenario: Trying to delete a non-existing BRAND
       Given "BRAND" "Kia" does NOT exist
-      When the user hard deletes the "BRAND" "Kia"
+      When the user hard-deletes the "BRAND" "Kia"
       Then the response should return with status code 404

@@ -2,7 +2,7 @@
   "id": "MCA-358",
   "parent_id": "MCA-347",
   "title": "Hard deleting a BRAND",
-  "gherkin": "Given there exists a \"BRAND\" \"Kia\"\nWhen the user hard deletes the \"BRAND\" \"Kia\"\nThen the \"BRAND\" \"Kia\" should not exist anymore",
+  "gherkin": "Given there exists a \"BRAND\" \"Kia\"\nWhen the user hard-deletes the \"BRAND\" \"Kia\"\nThen the \"BRAND\" \"Kia\" should not exist anymore",
   "labels": [
     "implemented"
   ],

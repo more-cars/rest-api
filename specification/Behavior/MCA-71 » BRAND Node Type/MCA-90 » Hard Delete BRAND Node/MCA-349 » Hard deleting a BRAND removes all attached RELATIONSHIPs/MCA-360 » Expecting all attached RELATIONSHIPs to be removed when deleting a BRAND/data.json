@@ -2,7 +2,7 @@
   "id": "MCA-360",
   "parent_id": "MCA-349",
   "title": "Expecting all attached RELATIONSHIPs to be removed when deleting a BRAND",
-  "gherkin": "Given there exists a \"BRAND\" \"Kia\"\nAnd there exists a relationship \"R1\" between \"BRAND\" \"Kia\" and a \"CAR MODEL\"\nAnd there exists a relationship \"R2\" between \"BRAND\" \"Kia\" and an \"IMAGE\"\nWhen the user hard deletes the \"BRAND\" \"Kia\"\nThen the \"BRAND\" \"Kia\" should not exist anymore\nAnd the relationship \"R1\" should not exist anymore\nAnd the relationship \"R2\" should not exist anymore",
+  "gherkin": "Given there exists a \"BRAND\" \"Kia\"\nAnd there exists a relationship \"R1\" between \"BRAND\" \"Kia\" and a \"CAR MODEL\"\nAnd there exists a relationship \"R2\" between \"BRAND\" \"Kia\" and an \"IMAGE\"\nWhen the user hard-deletes the \"BRAND\" \"Kia\"\nThen the \"BRAND\" \"Kia\" should not exist anymore\nAnd the relationship \"R1\" should not exist anymore\nAnd the relationship \"R2\" should not exist anymore",
   "labels": [
     "implemented"
   ],

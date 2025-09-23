@@ -2,8 +2,10 @@
   "id": "MCA-567",
   "parent_id": "MCA-566",
   "title": "Trying to hard-delete a non-existing COMPANY",
-  "gherkin": "Given \"COMPANY\" \"Dr. Ing. h.c. F. Porsche AG\" does NOT exist\nWhen the user tries to hard-delete the \"COMPANY\" \"Dr. Ing. h.c. F. Porsche AG\"\nThen the request should be rejected with status code 404",
-  "labels": [],
+  "gherkin": "Given \"COMPANY\" \"Dr. Ing. h.c. F. Porsche AG\" does NOT exist\nWhen the user hard-deletes the \"COMPANY\" \"Dr. Ing. h.c. F. Porsche AG\"\nThen the request should be rejected with status code 404",
+  "labels": [
+    "implemented"
+  ],
   "created_at": "2025-09-22T15:53:28.992+0200",
-  "updated_at": "2025-09-22T17:38:04.165+0200"
+  "updated_at": "2025-09-23T09:23:47.082+0200"
 }

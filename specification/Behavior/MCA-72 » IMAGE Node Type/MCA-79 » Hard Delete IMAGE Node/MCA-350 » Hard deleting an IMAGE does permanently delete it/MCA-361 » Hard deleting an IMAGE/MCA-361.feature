@@ -10,5 +10,5 @@ Feature: Hard Delete IMAGE Node
     @TEST_MCA-361 @implemented
     Scenario: Hard deleting an IMAGE
       Given there exists an "IMAGE" "logo"
-      When the user hard deletes the "IMAGE" "logo"
+      When the user hard-deletes the "IMAGE" "logo"
       Then the "IMAGE" "logo" should not exist anymore

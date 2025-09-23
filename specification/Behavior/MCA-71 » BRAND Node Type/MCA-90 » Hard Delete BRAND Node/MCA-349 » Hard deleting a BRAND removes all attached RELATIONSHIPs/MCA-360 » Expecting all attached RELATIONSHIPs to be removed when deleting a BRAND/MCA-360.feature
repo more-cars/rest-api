@@ -12,7 +12,7 @@ Feature: Hard Delete BRAND Node
       Given there exists a "BRAND" "Kia"
       And there exists a relationship "R1" between "BRAND" "Kia" and a "CAR MODEL"
       And there exists a relationship "R2" between "BRAND" "Kia" and an "IMAGE"
-      When the user hard deletes the "BRAND" "Kia"
+      When the user hard-deletes the "BRAND" "Kia"
       Then the "BRAND" "Kia" should not exist anymore
       And the relationship "R1" should not exist anymore
       And the relationship "R2" should not exist anymore

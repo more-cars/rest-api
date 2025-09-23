@@ -12,7 +12,7 @@ Feature: Hard Delete CAR MODEL Node
       Given there exists a "CAR MODEL" "Avensis"
       And there exists a relationship "R1" between "CAR MODEL" "Avensis" and a "BRAND"
       And there exists a relationship "R2" between "CAR MODEL" "Avensis" and an "IMAGE"
-      When the user hard deletes the "CAR MODEL" "Avensis"
+      When the user hard-deletes the "CAR MODEL" "Avensis"
       Then the "CAR MODEL" "Avensis" should not exist anymore
       And the relationship "R1" should not exist anymore
       And the relationship "R2" should not exist anymore

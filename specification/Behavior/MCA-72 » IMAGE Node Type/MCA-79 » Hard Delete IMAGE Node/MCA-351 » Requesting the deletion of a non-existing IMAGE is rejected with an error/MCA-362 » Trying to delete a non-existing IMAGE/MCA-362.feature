@@ -10,5 +10,5 @@ Feature: Hard Delete IMAGE Node
     @TEST_MCA-362 @implemented
     Scenario: Trying to delete a non-existing IMAGE
       Given "IMAGE" "logo" does NOT exist
-      When the user hard deletes the "IMAGE" "logo"
+      When the user hard-deletes the "IMAGE" "logo"
       Then the response should return with status code 404

@@ -10,5 +10,5 @@ Feature: Hard Delete CAR MODEL Node
     @TEST_MCA-354 @implemented
     Scenario: Trying to delete a non-existing CAR MODEL
       Given "CAR MODEL" "Avensis" does NOT exist
-      When the user hard deletes the "CAR MODEL" "Avensis"
+      When the user hard-deletes the "CAR MODEL" "Avensis"
       Then the response should return with status code 404
