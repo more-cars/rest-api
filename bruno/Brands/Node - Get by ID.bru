@@ -1,11 +1,10 @@
 meta {
-  name: Get By Id
+  name: Get Brand by ID
   type: http
-  seq: 20
 }
 
 get {
-  url: {{baseUrl}}/images/{{validImageId}}
+  url: {{baseUrl}}/brands/{{validBrandId}}
   body: none
   auth: none
 }
@@ -19,5 +18,5 @@ assert {
 }
 
 script:pre-request {
-  await lib.Images.ensureValidImageExists()
+  await lib.Brands.ensureValidBrandExists()
 }

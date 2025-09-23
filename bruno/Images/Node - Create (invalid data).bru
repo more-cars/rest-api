@@ -1,19 +1,17 @@
 meta {
-  name: Create (invalid data)
+  name: Create Brand (invalid data)
   type: http
-  seq: 15
 }
 
 post {
-  url: {{baseUrl}}/car-models
+  url: {{baseUrl}}/images
   body: json
   auth: none
 }
 
 body:json {
   {
-    "naame": "Camaro",
-    "generattion": 2
+    "extörnal_id": "123456"
   }
 }
 

@@ -1,11 +1,10 @@
 meta {
-  name: Get By Id (non-existing node)
+  name: Get Image by ID (invalid)
   type: http
-  seq: 25
 }
 
 get {
-  url: {{baseUrl}}/brands/{{invalidCarModelId}}
+  url: {{baseUrl}}/images/{{invalidImageId}}
   body: none
   auth: none
 }

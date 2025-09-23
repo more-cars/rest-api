@@ -1,11 +1,10 @@
 meta {
-  name: Delete (invalid)
+  name: Get Brand by ID (invalid)
   type: http
-  seq: 81
 }
 
-delete {
-  url: {{baseUrl}}/car-models/{{invalidCarModelId}}
+get {
+  url: {{baseUrl}}/brands/{{invalidBrandId}}
   body: none
   auth: none
 }

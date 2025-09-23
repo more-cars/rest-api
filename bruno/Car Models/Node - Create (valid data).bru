@@ -1,24 +1,23 @@
 meta {
-  name: Create
+  name: Create Car Model (valid data)
   type: http
-  seq: 10
 }
 
 post {
-  url: {{baseUrl}}/brands
+  url: {{baseUrl}}/car-models
   body: json
   auth: none
 }
 
 body:json {
   {
-    "name": "DKW",
-    "full_name": "Dampfkraftwagen",
-    "founded": 1916,
-    "defunct": 1966,
-    "wmi": null,
-    "hsn": "0010"
-  }
+      "name": "Corvette",
+      "built_from": 1997,
+      "built_to": 2004,
+      "generation": 5,
+      "internal_code": "C5",
+      "total_production": 248715
+    }
 }
 
 assert {
@@ -33,3 +32,4 @@ tests {
     expect(data.created_at).to.eql(data.updated_at)
   })
 }
+

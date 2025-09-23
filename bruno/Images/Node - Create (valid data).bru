@@ -1,24 +1,19 @@
 meta {
-  name: Create
+  name: Create Brand (valid data)
   type: http
-  seq: 10
 }
 
 post {
-  url: {{baseUrl}}/car-models
+  url: {{baseUrl}}/images
   body: json
   auth: none
 }
 
 body:json {
   {
-      "name": "Corvette",
-      "built_from": 1997,
-      "built_to": 2004,
-      "generation": 5,
-      "internal_code": "C5",
-      "total_production": 248715
-    }
+    "image_provider": "picci",
+    "external_id": "123456"
+  }
 }
 
 assert {
@@ -33,4 +28,3 @@ tests {
     expect(data.created_at).to.eql(data.updated_at)
   })
 }
-

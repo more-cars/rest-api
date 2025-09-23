@@ -1,19 +1,17 @@
 meta {
-  name: Create (minimal node)
+  name: Create Car Model (minimal data)
   type: http
-  seq: 11
 }
 
 post {
-  url: {{baseUrl}}/images
+  url: {{baseUrl}}/car-models
   body: json
   auth: none
 }
 
 body:json {
   {
-    "image_provider": "picci",
-    "external_id": "123456"
+    "name": "Tigra"
   }
 }
 

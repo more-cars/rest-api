@@ -1,19 +1,22 @@
 meta {
-  name: Create
+  name: Create Brand (valid data)
   type: http
-  seq: 10
 }
 
 post {
-  url: {{baseUrl}}/images
+  url: {{baseUrl}}/brands
   body: json
   auth: none
 }
 
 body:json {
   {
-    "image_provider": "picci",
-    "external_id": "123456"
+    "name": "DKW",
+    "full_name": "Dampfkraftwagen",
+    "founded": 1916,
+    "defunct": 1966,
+    "wmi": null,
+    "hsn": "0010"
   }
 }
 

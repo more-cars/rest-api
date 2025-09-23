@@ -1,0 +1,22 @@
+meta {
+  name: Get Image by ID
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/images/{{validImageId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body: isJson
+  res.body.id: gte 12000000
+  res.body.created_at: isNotEmpty
+  res.body.updated_at: isNotEmpty
+}
+
+script:pre-request {
+  await lib.Images.ensureValidImageExists()
+}
