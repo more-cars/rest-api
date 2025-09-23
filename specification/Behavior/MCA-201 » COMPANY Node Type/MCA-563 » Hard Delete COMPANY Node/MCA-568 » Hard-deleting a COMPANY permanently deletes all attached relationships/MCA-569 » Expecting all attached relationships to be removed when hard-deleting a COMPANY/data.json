@@ -1,0 +1,9 @@
+{
+  "id": "MCA-569",
+  "parent_id": "MCA-568",
+  "title": "Expecting all attached relationships to be removed when hard-deleting a COMPANY",
+  "gherkin": "Given there exists a \"COMPANY\" \"Dr. Ing. h.c. F. Porsche AG\"\nAnd there exists a relationship \"R1\" for \"COMPANY\" \"Dr. Ing. h.c. F. Porsche AG\"\nAnd there exists a relationship \"R2\" for \"COMPANY\" \"Dr. Ing. h.c. F. Porsche AG\"\nWhen the user hard-deletes the \"COMPANY\" \"Dr. Ing. h.c. F. Porsche AG\"\nThen the \"COMPANY\" \"Dr. Ing. h.c. F. Porsche AG\" should not exist anymore\nAnd the relationship \"R1\" should not exist anymore\nAnd the relationship \"R2\" should not exist anymore",
+  "labels": [],
+  "created_at": "2025-09-22T15:53:34.332+0200",
+  "updated_at": "2025-09-22T17:38:06.190+0200"
+}
