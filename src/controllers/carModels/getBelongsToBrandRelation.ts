@@ -1,7 +1,8 @@
 import express from "express"
 import {CarModel} from "../../models/car-models/CarModel"
 import {marshalRelationship} from "./marshalRelationship"
-import {CarModelBelongsToBrandResponse} from "./types/CarModelBelongsToBrandResponse"
+import {sendResponse200} from "../responses/sendResponse200"
+import {sendResponse404} from "../responses/sendResponse404"
 
 export async function getBelongsToBrandRelation(req: express.Request, res: express.Response) {
     const carModelId = parseInt(req.params.carModelId)
@@ -10,24 +11,12 @@ export async function getBelongsToBrandRelation(req: express.Request, res: expre
         const relationship = await CarModel.getRelationshipForBelongsToBrand(carModelId)
 
         if (!relationship) {
-            send200response(null, res)
+            sendResponse200(null, res)
         } else {
-            send200response(marshalRelationship(relationship), res)
+            sendResponse200(marshalRelationship(relationship), res)
         }
     } catch (e) {
         console.error(e)
-        send404response(res)
+        sendResponse404(res)
     }
-}
-
-function send200response(data: null | CarModelBelongsToBrandResponse, res: express.Response) {
-    res.status(200)
-    res.set('Content-Type', 'application/json')
-    res.send(data)
-}
-
-function send404response(res: express.Response) {
-    res.status(404)
-    res.set('Content-Type', 'text/plain')
-    res.send('Request failed. Did you provide a valid "Car Model" ID?')
 }

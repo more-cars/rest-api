@@ -1,7 +1,8 @@
 import express from "express"
 import {CarModel} from "../../models/car-models/CarModel"
 import {marshalHasImageRelationship} from "./marshalling/marshalHasImageRelationship"
-import {CarModelHasImageResponse} from "./types/CarModelHasImageResponse"
+import {sendResponse200} from "../responses/sendResponse200"
+import {sendResponse404} from "../responses/sendResponse404"
 
 export async function getHasImageRelation(req: express.Request, res: express.Response) {
     const carModelId = parseInt(req.params.carModelId)
@@ -11,26 +12,14 @@ export async function getHasImageRelation(req: express.Request, res: express.Res
         const relationship = await CarModel.getRelationshipForHasImage(carModelId, imageId)
 
         if (!relationship) {
-            return send404response(res)
+            return sendResponse404(res)
         }
 
         const marshalledRelationship = marshalHasImageRelationship(relationship)
 
-        send200response(marshalledRelationship, res)
+        sendResponse200(marshalledRelationship, res)
     } catch (e) {
         console.error(e)
-        send404response(res)
+        sendResponse404(res)
     }
-}
-
-function send200response(data: CarModelHasImageResponse, res: express.Response) {
-    res.status(200)
-    res.set('Content-Type', 'application/json')
-    res.send(data)
-}
-
-function send404response(res: express.Response) {
-    res.status(404)
-    res.set('Content-Type', 'text/plain')
-    res.send('Request failed. Did you provide a valid "Car Model" ID?')
 }

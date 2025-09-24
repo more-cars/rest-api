@@ -1,7 +1,9 @@
 import express from "express"
 import {marshalHasImageRelationship} from "./marshalling/marshalHasImageRelationship"
 import {CarModel} from "../../models/car-models/CarModel"
-import {CarModelHasImageResponse} from "./types/CarModelHasImageResponse"
+import {sendResponse201} from "../responses/sendResponse201"
+import {sendResponse404} from "../responses/sendResponse404"
+import {sendResponse422} from "../responses/sendResponse422"
 
 export async function createHasImageRelation(req: express.Request, res: express.Response) {
     const carModelId = parseInt(req.params.carModelId)
@@ -11,32 +13,14 @@ export async function createHasImageRelation(req: express.Request, res: express.
         const relationship = await CarModel.createHasImageRelationship(carModelId, imageId)
 
         if (!relationship) {
-            return send404response(res)
+            return sendResponse404(res)
         }
 
         const marshalledData = marshalHasImageRelationship(relationship)
 
-        send201response(marshalledData, res)
+        sendResponse201(marshalledData, res)
     } catch (e) {
         console.error(e)
-        send422response(res)
+        sendResponse422(res)
     }
-}
-
-function send201response(data: CarModelHasImageResponse, res: express.Response) {
-    res.status(201)
-    res.set('Content-Type', 'application/json')
-    res.send(data)
-}
-
-function send404response(res: express.Response) {
-    res.status(404)
-    res.set('Content-Type', 'text/plain')
-    res.send('Request failed. Node not found.')
-}
-
-function send422response(res: express.Response) {
-    res.status(422)
-    res.set('Content-Type', 'text/plain')
-    res.send('Request failed. Relationship could not be created.')
 }

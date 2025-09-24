@@ -1,7 +1,9 @@
 import express from "express"
 import {marshalHasPrimeImageRelationship} from "./marshalling/marshalHasPrimeImageRelationship"
 import {CarModel} from "../../models/car-models/CarModel"
-import {CarModelHasPrimeImageResponse} from "./types/CarModelHasPrimeImageResponse"
+import {sendResponse201} from "../responses/sendResponse201"
+import {sendResponse404} from "../responses/sendResponse404"
+import {sendResponse500} from "../responses/sendResponse500"
 
 export async function createHasPrimeImageRelation(req: express.Request, res: express.Response) {
     const carModelId = parseInt(req.params.carModelId)
@@ -11,32 +13,14 @@ export async function createHasPrimeImageRelation(req: express.Request, res: exp
         const relationship = await CarModel.createHasPrimeImageRelationship(carModelId, imageId)
 
         if (!relationship) {
-            return send404response(res)
+            return sendResponse404(res)
         }
 
         const marshalledData = marshalHasPrimeImageRelationship(relationship)
 
-        send201response(marshalledData, res)
+        sendResponse201(marshalledData, res)
     } catch (e) {
         console.error(e)
-        send500response(res)
+        sendResponse500(res)
     }
-}
-
-function send201response(data: CarModelHasPrimeImageResponse, res: express.Response) {
-    res.status(201)
-    res.set('Content-Type', 'application/json')
-    res.send(data)
-}
-
-function send404response(res: express.Response) {
-    res.status(404)
-    res.set('Content-Type', 'text/plain')
-    res.send('Request failed. Node not found.')
-}
-
-function send500response(res: express.Response) {
-    res.status(500)
-    res.set('Content-Type', 'text/plain')
-    res.send('Request failed. Relationship could not be created.')
 }
