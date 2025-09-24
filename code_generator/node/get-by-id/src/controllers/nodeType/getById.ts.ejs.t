@@ -12,7 +12,7 @@ export async function getById(req: express.Request, res: express.Response) {
     const node = await <%= h.changeCase.pascal(nodeType) %>.findById(nodeId)
 
     if (!node) {
-       return sendResponse404(res)
+        return sendResponse404(res)
     }
 
     const marshalledData = marshal(node)

@@ -29,11 +29,6 @@ export async function create(req: express.Request, res: express.Response) {
     }
 }
 
-/**
- * Syntactical and structural checks.
- * Checking that all mandatory fields are set.
- * Checking that all fields have the correct data type.
- */
 export function validate(data: CreateImageRawInput): boolean {
     if (!isMandatoryString(data.external_id)) {
         return false
@@ -47,10 +42,8 @@ export function validate(data: CreateImageRawInput): boolean {
 }
 
 export function sanitize(data: CreateImageInput): CreateImageInput {
-    const sanitizedData: CreateImageInput = {
+    return {
         external_id: data.external_id.trim(),
         image_provider: data.image_provider.trim(),
-    }
-
-    return sanitizedData
+    } as CreateImageInput
 }

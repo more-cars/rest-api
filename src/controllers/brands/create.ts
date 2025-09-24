@@ -31,11 +31,6 @@ export async function create(req: express.Request, res: express.Response) {
     }
 }
 
-/**
- * Syntactical and structural checks.
- * Checking that all mandatory fields are set.
- * Checking that all fields have the correct data type.
- */
 export function validate(data: CreateBrandRawInput): boolean {
     if (!isMandatoryString(data.name)) {
         return false
@@ -65,14 +60,12 @@ export function validate(data: CreateBrandRawInput): boolean {
 }
 
 export function sanitize(data: CreateBrandInput): CreateBrandInput {
-    const sanitizedData: CreateBrandInput = {
+    return {
         name: data.name.trim(),
         full_name: data.full_name ? data.full_name.trim() : null,
         founded: data.founded ? data.founded : null,
         defunct: data.defunct ? data.defunct : null,
         wmi: data.wmi ? data.wmi.trim() : null,
         hsn: data.hsn ? data.hsn.trim() : null,
-    }
-
-    return sanitizedData
+    } as CreateBrandInput
 }

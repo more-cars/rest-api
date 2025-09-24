@@ -1,25 +1,15 @@
 import express from "express"
 import {Image} from "../../models/images/Image"
+import {sendResponse204} from "../responses/sendResponse204"
+import {sendResponse404} from "../responses/sendResponse404"
 
 export async function deleteNode(req: express.Request, res: express.Response) {
     const nodeId = parseInt(req.params.id)
     const success = await Image.delete(nodeId)
 
     if (!success) {
-        return send404response(res)
+        return sendResponse404(res)
     }
 
-    send204response(res)
-}
-
-function send204response(res: express.Response) {
-    res.status(204)
-    res.set('Content-Type', 'application/json')
-    res.send()
-}
-
-function send404response(res: express.Response) {
-    res.status(404)
-    res.set('Content-Type', 'text/plain')
-    res.send(`A "Image" with the provided ID could not be found.`)
+    sendResponse204(res)
 }

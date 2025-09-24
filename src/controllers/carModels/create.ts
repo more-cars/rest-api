@@ -31,11 +31,6 @@ export async function create(req: express.Request, res: express.Response) {
     }
 }
 
-/**
- * Syntactical and structural checks.
- * Checking that all mandatory fields are set.
- * Checking that all fields have the correct data type.
- */
 export function validate(data: CreateCarModelRawInput): boolean {
     if (!isMandatoryString(data.name)) {
         return false
@@ -65,13 +60,12 @@ export function validate(data: CreateCarModelRawInput): boolean {
 }
 
 export function sanitize(data: CreateCarModelInput): CreateCarModelInput {
-    const sanitizedData: CreateCarModelInput = {
+    return {
         name: data.name.trim(),
         built_from: data.built_from ? data.built_from : null,
         built_to: data.built_to ? data.built_to : null,
         generation: data.generation ? data.generation : null,
         internal_code: data.internal_code ? data.internal_code.trim() : null,
         total_production: data.total_production ? data.total_production : null,
-    }
-    return sanitizedData
+    } as CreateCarModelInput
 }
