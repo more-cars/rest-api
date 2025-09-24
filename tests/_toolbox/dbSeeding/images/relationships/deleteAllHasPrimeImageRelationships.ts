@@ -1,13 +1,14 @@
 import neo4j, {Driver, Session} from "neo4j-driver"
 import {getDriver} from "../../../../../src/db/driver"
+import type {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 
-export async function deleteAllHasPrimeImageRelationships() {
+export async function deleteAllHasPrimeImageRelationships(startNodeType: NodeTypeLabel) {
     const driver: Driver = getDriver()
     const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
     await session.executeWrite(async txc => {
         await txc.run(`
-            MATCH (a:CarModel)-[rel:HAS_PRIME_IMAGE]->(b:Image)
+            MATCH (a:${startNodeType})-[rel:HAS_PRIME_IMAGE]->(b:Image)
             DELETE rel
         `)
     })

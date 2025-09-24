@@ -1,5 +1,5 @@
 import {Node} from "neo4j-driver"
-import {InputImageCreate} from "../../src/db/nodes/images/types/InputImageCreate"
+import {InputImageCreate} from "../../../src/db/nodes/images/types/InputImageCreate"
 
 export function mapImage(node: Node): InputImageCreate {
     return {
