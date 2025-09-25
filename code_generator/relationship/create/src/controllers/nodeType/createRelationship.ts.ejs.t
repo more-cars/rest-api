@@ -2,9 +2,14 @@
 to: src/controllers/<%= h.inflection.pluralize(h.changeCase.camel(startNodeType)) %>/create<%= h.changeCase.pascal(relationshipName) %>Relation.ts
 ---
 import express from "express"
+import {<%= h.changeCase.pascal(startNodeType) %>} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
 import {marshal<%= h.changeCase.pascal(relationshipName) %>Relationship} from "./marshalling/marshal<%= h.changeCase.pascal(relationshipName) %>Relationship"
-import {<%= h.changeCase.pascal(startNodeType) %>} from "../../models/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
-import {<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Response} from "./types/<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Response"
+import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
+import {RelationshipAlreadyExistsError} from "../../models/types/RelationshipAlreadyExistsError"
+import {sendResponse201} from "../responses/sendResponse201"
+import {sendResponse304} from "../responses/sendResponse304"
+import {sendResponse404} from "../responses/sendResponse404"
+import {sendResponse500} from "../responses/sendResponse500"
 
 export async function create<%= h.changeCase.pascal(relationshipName) %>Relation(req: express.Request, res: express.Response) {
     const <%= h.changeCase.camel(startNodeType) %>Id = parseInt(req.params.<%= h.changeCase.camel(startNodeType) %>Id)
@@ -12,34 +17,16 @@ export async function create<%= h.changeCase.pascal(relationshipName) %>Relation
 
     try {
         const relationship = await <%= h.changeCase.pascal(startNodeType) %>.create<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(endNodeType) %>Id)
-
-        if (!relationship) {
-            return send404response(res)
-        }
-
         const marshalledData = marshal<%= h.changeCase.pascal(relationshipName) %>Relationship(relationship)
-
-        send201response(marshalledData, res)
+        sendResponse201(marshalledData, res)
     } catch (e) {
-        console.error(e)
-        send500response(res)
+        if (e instanceof NodeNotFoundError) {
+            sendResponse404(res)
+        } else if (e instanceof RelationshipAlreadyExistsError) {
+            sendResponse304(res)
+        } else {
+            console.error(e)
+            sendResponse500(res)
+        }
     }
-}
-
-function send201response(data: <%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Response, res: express.Response) {
-    res.status(201)
-    res.set('Content-Type', 'application/json')
-    res.send(data)
-}
-
-function send404response(res: express.Response) {
-    res.status(404)
-    res.set('Content-Type', 'text/plain')
-    res.send('Request failed. Node not found.')
-}
-
-function send500response(res: express.Response) {
-    res.status(500)
-    res.set('Content-Type', 'text/plain')
-    res.send('Request failed. Relationship could not be created.')
 }

@@ -1,7 +1,7 @@
 ---
 inject: true
 to: specification/OpenAPI/more-cars.openapi.json
-after: \"schemas\"
+before: \"<%= h.changeCase.pascal(startNodeType) %>\"
 skip_if: \"<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>\"
 ---
       "<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>": {
@@ -26,7 +26,7 @@ skip_if: \"<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(rela
           "relationship_name": {
             "type": "string",
             "readOnly": true,
-            "example": "<%= h.changeCase.lower(relationshipName) %>"
+            "example": "<%= h.changeCase.kebab(relationshipName) %>"
           },
           "created_at": {
             "type": "string",

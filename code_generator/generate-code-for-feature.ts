@@ -35,6 +35,7 @@ async function promptTypeOfFeature(typeOfData: 'node' | 'relationship') {
             choices.push({value: 'delete'})
             break
         case 'relationship':
+            choices.push({value: 'create'})
             choices.push({value: 'get-sole'})
             choices.push({value: 'has'})
             break
