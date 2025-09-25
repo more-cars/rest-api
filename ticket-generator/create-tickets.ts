@@ -24,6 +24,7 @@ async function promptFeature() {
         {value: 'get-node-by-id'},
         {value: 'get-all-nodes'},
         {value: 'hard-delete-node'},
+        {value: 'create-relationship'},
     ]
 
     return select({

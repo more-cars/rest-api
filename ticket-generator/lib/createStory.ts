@@ -43,7 +43,7 @@ function getPayload(data: Story) {
                         "content": [
                             {
                                 "type": "text",
-                                "text": data.userStory,
+                                "text": data.userStory || '',
                             },
                         ]
                     }
@@ -53,10 +53,7 @@ function getPayload(data: Story) {
                 id: getMappedApiVerb(data.apiVerb)
             },
             'customfield_10731': data.apiPath,
-            'customfield_10767': [
-                {value: data.responseOptions[0]},
-                {value: data.responseOptions[1]},
-            ]
+            'customfield_10767': getResponseOptionsList(data.responseOptions)
         }
     }
 }
@@ -99,4 +96,14 @@ function getMappedApiVerb(verb: string) {
     }
 
     return mappedValue
+}
+
+function getResponseOptionsList(options: string[]) {
+    const mappedOptions: { value: string }[] = []
+
+    options.forEach(option => {
+        mappedOptions.push({value: option})
+    })
+
+    return mappedOptions
 }
