@@ -3,7 +3,7 @@
   "parent_id": "MCA-369",
   "title": "Requests with an invalid page number respond with an error",
   "description": "* negative number\n* 0\n* non-integer values\n",
-  "release_version": null,
+  "release_version": "0.20.0",
   "created_at": "2025-08-22T15:17:01.260+0200",
-  "updated_at": "2025-08-31T19:42:44.497+0200"
+  "updated_at": "2025-09-24T17:18:25.391+0200"
 }

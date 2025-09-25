@@ -3,7 +3,7 @@
   "parent_id": "MCA-563",
   "title": "Hard-deleting a COMPANY permanently deletes it",
   "description": "The only way to recover a hard-deleted node is to restore the database.\n",
-  "release_version": null,
+  "release_version": "0.19.0",
   "created_at": "2025-09-22T15:53:20.718+0200",
-  "updated_at": "2025-09-22T17:37:37.874+0200"
+  "updated_at": "2025-09-24T17:14:26.569+0200"
 }
