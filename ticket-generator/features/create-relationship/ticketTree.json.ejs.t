@@ -56,19 +56,31 @@ to: ticket-generator/_temp/ticketTree.json
                     "responseCode": "404",
                     "tests": [
                         {
-                            "title": "Trying to create a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship with invalid IDs",
+                            "title": "Trying to create a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship with invalid <%= h.changeCase.upper(startNodeType) %> ID",
+                            <%
+                                gherkin = []
+                                gherkin.push('Given \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\" does NOT exist')
+                                gherkin.push('And there exists a \\"' + h.changeCase.upper(endNodeType) + '\\" \\"' + endNodeExampleName + '\\"')
+                                gherkin.push('When the user creates a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
+                                gherkin.push('Then the request should be rejected with status code 404')
+                            %>
+                            "gherkin": "<%- gherkin.join('\\n') %>"
+                        },
+                        {
+                            "title": "Trying to create a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship with invalid <%= h.changeCase.upper(endNodeType) %> ID",
                             <%
                                 gherkin = []
                                 gherkin.push('Given there exists a \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\"')
                                 gherkin.push('And \\"' + h.changeCase.upper(endNodeType) + '\\" \\"' + endNodeExampleName + '\\" does NOT exist')
                                 gherkin.push('When the user creates a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
                                 gherkin.push('Then the request should be rejected with status code 404')
-
-                                gherkin.push('Given \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\" does NOT exist')
-                                gherkin.push('And there exists a \\"' + h.changeCase.upper(endNodeType) + '\\" \\"' + endNodeExampleName + '\\"')
-                                gherkin.push('When the user creates a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
-                                gherkin.push('Then the request should be rejected with status code 404')
-
+                            %>
+                            "gherkin": "<%- gherkin.join('\\n') %>"
+                        },
+                        {
+                            "title": "Trying to create a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship where both IDs are invalid",
+                            <%
+                                gherkin = []
                                 gherkin.push('Given \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\" does NOT exist')
                                 gherkin.push('And \\"' + h.changeCase.upper(endNodeType) + '\\" \\"' + endNodeExampleName + '\\" does NOT exist')
                                 gherkin.push('When the user creates a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
