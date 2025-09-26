@@ -38,4 +38,12 @@ describe('Companies', () => {
         expect(CompanyController.delete)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-brand‹ Relationship', async () => {
+        await request(app)
+            .post('/companies/123/has-brand/456')
+
+        expect(CompanyController.createHasBrandRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

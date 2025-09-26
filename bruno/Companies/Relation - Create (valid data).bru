@@ -1,0 +1,26 @@
+meta {
+  name: Create ›has-brand‹ relation (valid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/companies/{{validCompanyId}}/has-brand/{{validBrandId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 201
+  res.body: isJson
+  res.body.company_id: eq {{validCompanyId}}
+  res.body.brand_id: eq {{validBrandId}}
+  res.body.relationship_id: gte 12_000_000
+  res.body.relationship_name: eq HAS_BRAND
+  res.body.created_at: isString
+  res.body.updated_at: isString
+}
+
+script:pre-request {
+  await ensureValidCompanyExists()
+  await ensureValidBrandExists()
+}
