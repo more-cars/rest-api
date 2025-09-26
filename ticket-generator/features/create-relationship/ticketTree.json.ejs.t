@@ -52,7 +52,7 @@ to: ticket-generator/_temp/ticketTree.json
                 },
                 {
                     "title": "Requests to create a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship are rejected when the provided data is invalid",
-                    "description": "When there exists no node with the provided ID -> rejected.\nWhen there exists a node with the provided ID, but it is not from type <%= h.changeCase.upper(startNodeType) %> resp. <%= h.changeCase.upper(endNodeType) %> -> rejected.",
+                    "description": "There exists no <%= h.changeCase.upper(startNodeType) %> with the provided ID? -> rejected.\nThere exists no <%= h.changeCase.upper(endNodeType) %> with the provided ID? -> rejected.",
                     "responseCode": "404",
                     "tests": [
                         {
