@@ -3,7 +3,7 @@ import {DbRelationship} from "../../db/types/DbRelationship"
 import {BrandRelationship} from "./types/BrandRelationship"
 import {BrandHasCarModelRelationship} from "./types/BrandHasCarModelRelationship"
 
-export async function getBrandHasCarModelRelationship(brandId: number, carModelId: number): Promise<false | BrandHasCarModelRelationship> {
+export async function getHasCarModelRelationship(brandId: number, carModelId: number): Promise<false | BrandHasCarModelRelationship> {
     const relationship = await getSpecificRelationship(
         brandId,
         carModelId,
@@ -14,14 +14,12 @@ export async function getBrandHasCarModelRelationship(brandId: number, carModelI
         return false
     }
 
-    const specificRelationship: BrandHasCarModelRelationship = {
+    return {
         brand_id: brandId,
         car_model_id: carModelId,
         relationship_id: relationship.relationship_id,
         relationship_name: BrandRelationship.hasCarModel,
         created_at: relationship.created_at,
         updated_at: relationship.updated_at,
-    }
-
-    return specificRelationship
+    } as BrandHasCarModelRelationship
 }

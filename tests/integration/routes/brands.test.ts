@@ -38,7 +38,7 @@ describe('Brands', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Create "has Car Model" Relationship', async () => {
+    test('Create ›has-car-model‹ Relationship', async () => {
         await request(app)
             .post('/brands/123/has-car-model/456')
 

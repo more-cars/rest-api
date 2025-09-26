@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {createRelationshipQuery} from "../../../../../src/db/relationships/createDbRelationship"
 import {DbRelationship} from "../../../../../src/db/types/DbRelationship"
 
-test('cypher query is correctly assembled for "create relationship" request', async () => {
+test('assembled database query for creating a ›has-car-model‹ relationship', async () => {
     const query = createRelationshipQuery(
         12002007,
         DbRelationship.BrandHasCarModel,

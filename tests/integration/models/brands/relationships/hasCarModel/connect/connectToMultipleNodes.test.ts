@@ -2,9 +2,12 @@ import {expect, test} from 'vitest'
 import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 import {Brand} from "../../../../../../../src/models/brands/Brand"
 import {seedCarModels} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModels"
-import assert from "assert"
+import {
+    getRelationshipsForSpecificNode
+} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
-test('A BRAND can have multiple CAR MODELs attached to it', async () => {
+test('A Company can have multiple ›has-car-model‹ relationships', async () => {
     const brand = await seedBrand()
     const carModelAmount = 3
     const carModels = await seedCarModels(carModelAmount)
@@ -13,11 +16,7 @@ test('A BRAND can have multiple CAR MODELs attached to it', async () => {
         await Brand.createHasCarModelRelationship(brand.id, carModel.id)
     }
 
-    const relationships = await Brand.getRelationshipsForHasCarModel(brand.id)
-
-    if (!relationships) {
-        assert.fail(`Brand #${brand.id} not found.`)
-    }
+    const relationships = await getRelationshipsForSpecificNode(brand.id, DbRelationship.BrandHasCarModel)
 
     expect(relationships.length)
         .toBe(carModelAmount)

@@ -4,7 +4,7 @@ import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/node
 import {Brand} from "../../../../../../../src/models/brands/Brand"
 import {BrandRelationship} from "../../../../../../../src/models/brands/types/BrandRelationship"
 
-test('Creating a "Brand has Car Model" relationship when both nodes exist', async () => {
+test('Creating a ›has-car-model‹ relationship with valid data', async () => {
     const brand = await seedBrand()
     const carModel = await seedCarModel()
 

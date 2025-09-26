@@ -1,12 +1,12 @@
 import {BrandHasCarModelRelationship} from "../../models/brands/types/BrandHasCarModelRelationship"
-import {marshalRelationship} from "./marshalRelationship"
+import {marshalHasCarModelRelationship} from "./marshalling/marshalHasCarModelRelationship"
 import {BrandHasCarModelResponse} from "./types/BrandHasCarModelResponse"
 
 export function marshalRelationships(relationships: Array<BrandHasCarModelRelationship>): Array<BrandHasCarModelResponse> {
     const responseObjects: Array<BrandHasCarModelResponse> = []
 
     relationships.forEach((relationship) => {
-        responseObjects.push(marshalRelationship(relationship))
+        responseObjects.push(marshalHasCarModelRelationship(relationship))
     })
 
     return responseObjects

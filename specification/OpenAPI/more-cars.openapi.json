@@ -305,7 +305,7 @@
         "tags": [
           "Brands"
         ],
-        "summary": "Connects the given `Brand` to the given `Car Model`",
+        "summary": "Creates a ›has-car-model‹ relationship between the `Brand` and the `Car Model`",
         "parameters": [
           {
             "in": "path",
@@ -328,7 +328,7 @@
         ],
         "responses": {
           "201": {
-            "description": "`Brand` and `Car Model` successfully connected.",
+            "description": "Relationship ›has-car-model‹ between `Brand` and `Car Model` successfully created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -337,18 +337,11 @@
               }
             }
           },
-          "404": {
-            "description": "`Brand` or `Car Model` not found.",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
+          "304": {
+            "description": "The relationship ›has-car-model‹ between `Brand` and `Car Model` already exists."
           },
-          "422": {
-            "description": "Request cannot be processed.",
+          "404": {
+            "description": "`Brand` and/or `Car Model` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {

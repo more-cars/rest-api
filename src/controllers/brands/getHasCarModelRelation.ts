@@ -1,6 +1,6 @@
 import express from "express"
 import {Brand} from "../../models/brands/Brand"
-import {marshalRelationship} from "./marshalRelationship"
+import {marshalHasCarModelRelationship} from "./marshalling/marshalHasCarModelRelationship"
 import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
 
@@ -15,7 +15,7 @@ export async function getHasCarModelRelation(req: express.Request, res: express.
             return sendResponse404(res)
         }
 
-        const marshalledRelationship = marshalRelationship(relationship)
+        const marshalledRelationship = marshalHasCarModelRelationship(relationship)
 
         sendResponse200(marshalledRelationship, res)
     } catch (e) {

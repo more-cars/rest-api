@@ -1,7 +1,6 @@
 meta {
-  name: Create "has car model" Relation
+  name: Create ›has-car-model‹ relation (valid data)
   type: http
-  seq: 40
 }
 
 post {
@@ -15,7 +14,7 @@ assert {
   res.body: isJson
   res.body.brand_id: eq {{validBrandId}}
   res.body.car_model_id: eq {{validCarModelId}}
-  res.body.relationship_id: gte 0
+  res.body.relationship_id: gte 12000000
   res.body.relationship_name: eq HAS_CAR_MODEL
   res.body.created_at: isString
   res.body.updated_at: isString

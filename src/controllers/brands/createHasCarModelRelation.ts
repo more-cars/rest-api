@@ -1,26 +1,29 @@
 import express from "express"
 import {Brand} from "../../models/brands/Brand"
-import {marshalRelationship} from "./marshalRelationship"
+import {marshalHasCarModelRelationship} from "./marshalling/marshalHasCarModelRelationship"
 import {sendResponse201} from "../responses/sendResponse201"
 import {sendResponse404} from "../responses/sendResponse404"
-import {sendResponse422} from "../responses/sendResponse422"
+import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
+import {RelationshipAlreadyExistsError} from "../../models/types/RelationshipAlreadyExistsError"
+import {sendResponse304} from "../responses/sendResponse304"
+import {sendResponse500} from "../responses/sendResponse500"
 
 export async function createHasCarModelRelation(req: express.Request, res: express.Response) {
-    const carModelId = parseInt(req.params.carModelId)
     const brandId = parseInt(req.params.brandId)
+    const carModelId = parseInt(req.params.carModelId)
 
     try {
         const relationship = await Brand.createHasCarModelRelationship(brandId, carModelId)
-
-        if (!relationship) {
-            return sendResponse404(res)
-        }
-
-        const marshalledData = marshalRelationship(relationship)
-
+        const marshalledData = marshalHasCarModelRelationship(relationship)
         sendResponse201(marshalledData, res)
     } catch (e) {
-        console.error(e)
-        sendResponse422(res)
+        if (e instanceof NodeNotFoundError) {
+            sendResponse404(res)
+        } else if (e instanceof RelationshipAlreadyExistsError) {
+            sendResponse304(res)
+        } else {
+            console.error(e)
+            sendResponse500(res)
+        }
     }
 }

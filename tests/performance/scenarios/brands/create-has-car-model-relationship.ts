@@ -41,10 +41,7 @@ export default function (data: { brandId: number, carModelId: number }) {
     const response = http.post(url)
 
     check(response, {
-        'returns with status code 201': (r) => r.status === 201,
-        'content-type is JSON': (r) => r.headers['Content-Type'].includes('application/json'),
-        // @ts-expect-error TS2531
-        'response contains an ID': (r) => typeof r.json().relationship_id === "number",
+        'returns with status code 201 or 304': (r) => (r.status === 201 || r.status === 304),
     })
 
     trendDuration.add(response.timings.duration)

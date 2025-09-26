@@ -5,7 +5,7 @@ import {createRelationship} from "../../../../../../../src/db/relationships/crea
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {BrandRelationship} from "../../../../../../../src/models/brands/types/BrandRelationship"
 
-test('Creating a "Brand has Car Model" relationship when both nodes exist', async () => {
+test('Creating a ›has-car-model‹ relationship with valid data', async () => {
     const brand = await seedBrand()
     const carModel = await seedCarModel()
 
@@ -29,7 +29,7 @@ test('Creating a "Brand has Car Model" relationship when both nodes exist', asyn
         .toHaveProperty('updated_at')
 })
 
-test('Invalid nodes fail the relationship creation', async () => {
+test('Trying to create a ›has-car-model‹ relationship with nodes that do not exist', async () => {
     const brand = await seedBrand()
 
     const createdRelationship = await createRelationship(
