@@ -58,4 +58,3 @@ test('A completely valid request, but the database call fails (e.g. one of the n
     expect(response.statusCode)
         .toBe(500)
 })
-

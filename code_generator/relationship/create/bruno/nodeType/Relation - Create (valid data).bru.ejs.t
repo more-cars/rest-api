@@ -17,7 +17,7 @@ assert {
   res.body: isJson
   res.body.<%= h.changeCase.snake(startNodeType) %>_id: eq {{valid<%= h.changeCase.pascal(startNodeType) %>Id}}
   res.body.<%= h.changeCase.snake(endNodeType) %>_id: eq {{valid<%= h.changeCase.pascal(endNodeType) %>Id}}
-  res.body.relationship_id: gte 12_000_000
+  res.body.relationship_id: gte 12000000
   res.body.relationship_name: eq <%= h.changeCase.constant(relationshipName) %>
   res.body.created_at: isString
   res.body.updated_at: isString
