@@ -1,9 +1,0 @@
-{
-  "id": "MCA-85",
-  "parent_id": "MCA-20",
-  "title": "A BRAND can have multiple CAR MODELs",
-  "description": "",
-  "release_version": "0.7.0",
-  "created_at": "2025-05-18T10:55:55.200+0200",
-  "updated_at": "2025-06-14T11:27:46.086+0200"
-}
