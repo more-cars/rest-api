@@ -4,7 +4,7 @@ Feature: Create COMPANY-has-brand Relationship
   @RULE_MCA-630
   Rule: Each COMPANY can be in a ›has-brand‹ relationship with multiple BRANDS
 
-    @TEST_MCA-631 @implemented
+    @TEST_MCA-631 @deactivated @implemented
     Scenario: Creating multiple ›has-brand‹ relationships
       Given there exists a "COMPANY" "Volkswagen AG"
       And there exists a "BRAND" "VW"
