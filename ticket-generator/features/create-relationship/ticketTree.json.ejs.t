@@ -12,7 +12,7 @@ to: ticket-generator/_temp/ticketTree.json
                 "The relationship ›<%= h.changeCase.kebab(relationshipName) %>‹ is created when the provided IDs of the <%= h.changeCase.upper(startNodeType) %> and <%= h.changeCase.upper(endNodeType) %> are valid. -> Status Code `201`",
                 "A successful request returns the ID of the created relationship and the IDs of both nodes.",
                 "Requests with invalid IDs are rejected. This can happen when there exist no nodes with the given IDs or when those nodes are from the wrong type. -> Status Code `404`",
-                "The same ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship between the same nodes can only be created once. Attempts to recreate them will be ignored and return the already existing relationship. -> Status Code `304`",
+                "The same ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship between the same nodes can only be created once. Attempts to recreate them will be ignored. -> Status Code `304`",
 <% if (cardinality === '1:1' || cardinality === 'n:1') { -%>
                 "At the same time a <%= h.changeCase.upper(startNodeType) %> can only be in a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship with one <%= h.changeCase.upper(endNodeType) %>"
 <% } else if (cardinality === '1:n' || cardinality === 'm:n') { -%>
@@ -80,7 +80,7 @@ to: ticket-generator/_temp/ticketTree.json
                 },
                 {
                     "title": "The same ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship between the same nodes can only be created once",
-                    "description": "Requests to create the same relationship again are allowed, but they will not be processed. Consecutive attempts will always return the already existing relationship.",
+                    "description": "Requests to create the same relationship again are allowed, but they will not be processed. Consecutive attempts will always return an empty 304 response.",
                     "responseCode": "304",
                     "tests": [
                         {
