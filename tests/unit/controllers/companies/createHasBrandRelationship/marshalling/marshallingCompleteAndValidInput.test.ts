@@ -9,7 +9,7 @@ test('marshalled output for ›has-brand‹ relationship when provided with comp
         company_id: 1,
         brand_id: 2,
         relationship_id: 3,
-        relationship_name: "has brand",
+        relationship_name: "HAS_BRAND",
         created_at: "2023-10-01T00:00:00.001Z",
         updated_at: "2023-10-01T00:00:00.001Z",
     }
@@ -21,7 +21,7 @@ test('marshalled output for ›has-brand‹ relationship when provided with comp
             company_id: 1,
             brand_id: 2,
             relationship_id: 3,
-            relationship_name: "has brand",
+            relationship_name: "HAS_BRAND",
             created_at: "2023-10-01T00:00:00.001Z",
             updated_at: "2023-10-01T00:00:00.001Z",
         })

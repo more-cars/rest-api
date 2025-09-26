@@ -18,7 +18,7 @@ test('Creating a ›has-brand‹ relationship with valid data', async () => {
 })
 
 test('Trying to create the same ›has-brand‹ relationship again', async () => {
-     vi.spyOn(Company, 'createHasBrandRelationship')
+    vi.spyOn(Company, 'createHasBrandRelationship')
         .mockImplementation(async () => {
             throw new RelationshipAlreadyExistsError('has-brand', 123, 567)
         })
@@ -31,7 +31,7 @@ test('Trying to create the same ›has-brand‹ relationship again', async () =>
 })
 
 test('Trying to create a ›has-brand‹ relationship with nodes that do not exist', async () => {
-     vi.spyOn(Company, 'createHasBrandRelationship')
+    vi.spyOn(Company, 'createHasBrandRelationship')
         .mockImplementation(async () => {
             throw new NodeNotFoundError(123)
         })
@@ -55,4 +55,3 @@ test('A completely valid request, but the database call fails (e.g. one of the n
     expect(response.statusCode)
         .toBe(500)
 })
-
