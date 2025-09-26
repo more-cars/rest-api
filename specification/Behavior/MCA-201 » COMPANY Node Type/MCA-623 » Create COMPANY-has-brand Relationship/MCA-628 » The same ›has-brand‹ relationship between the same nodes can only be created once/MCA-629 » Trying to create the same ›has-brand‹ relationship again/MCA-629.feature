@@ -1,5 +1,8 @@
 @REQ_MCA-623
 Feature: Create COMPANY-has-brand Relationship
+  As an API contributor\
+  I want to be able to connect BRANDS to a COMPANY\
+  So an API consumer can find out which BRANDS are owned by which COMPANY
 
   @RULE_MCA-628
   Rule: The same ›has-brand‹ relationship between the same nodes can only be created once

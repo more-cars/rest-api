@@ -1,0 +1,19 @@
+{
+  "id": "MCA-20",
+  "parent_id": "MCA-71",
+  "title": "Create BRAND-has-car-model Relationship",
+  "user_story": "As an API contributor\\\nI want to be able to connect CAR MODELs to a BRAND\\\nSo I can create car families\n",
+  "description": "* The relationship ›has-car-model‹ is created when the provided IDs of the BRAND and CAR MODEL are valid. -> Status Code \\`201\\`\n* A successful request returns the ID of the created relationship and the IDs of both nodes.\n* Requests with invalid IDs are rejected. This can happen when there exist no nodes with the given IDs or when those nodes are from the wrong type. -> Status Code \\`404\\`\n* The same ›has-car-model‹ relationship between the same nodes can only be created once. Attempts to recreate them will be ignored. -> Status Code \\`304\\`\n* Each BRAND can be in a ›has-car-model‹ relationship with multiple CAR MODELS\n",
+  "api_verb": "POST",
+  "api_path": "/brands/<brand-id>/has-car-model/<car-model-id>",
+  "response_options": [
+    "201",
+    "304",
+    "404"
+  ],
+  "release_versions": [
+    "0.7.0"
+  ],
+  "created_at": "2025-05-01T09:52:47.354+0200",
+  "updated_at": "2025-09-26T11:20:14.874+0200"
+}
