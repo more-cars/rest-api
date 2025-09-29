@@ -16,7 +16,7 @@ import {CompanyRelationship} from "./types/CompanyRelationship"
 import {createHasPrimeImageRelationship} from "./createHasPrimeImageRelationship"
 import {deleteHasPrimeImageRelationships} from "./deleteHasPrimeImageRelationships"
 import {Image} from "../images/Image"
-import {getHasPrimeImageRelationship} from "./getHasPrimeImageRelationship"
+import {getSpecificHasPrimeImageRelationship} from "./getSpecificHasPrimeImageRelationship"
 import type {CompanyHasPrimeImageRelationship} from "./types/CompanyHasPrimeImageRelationship"
 
 export class Company {
@@ -88,7 +88,7 @@ export class Company {
             throw new NodeNotFoundError(imageId)
         }
 
-        const existingRelation = await getHasPrimeImageRelationship(companyId, imageId)
+        const existingRelation = await getSpecificHasPrimeImageRelationship(companyId, imageId)
         if (existingRelation) {
             throw new RelationshipAlreadyExistsError(CompanyRelationship.hasPrimeImage, companyId, imageId)
         }

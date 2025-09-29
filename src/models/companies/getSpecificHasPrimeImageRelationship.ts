@@ -3,7 +3,7 @@ import {DbRelationship} from "../../db/types/DbRelationship"
 import {CompanyRelationship} from "./types/CompanyRelationship"
 import {CompanyHasPrimeImageRelationship} from "./types/CompanyHasPrimeImageRelationship"
 
-export async function getHasPrimeImageRelationship(companyId: number, imageId: number): Promise<false | CompanyHasPrimeImageRelationship> {
+export async function getSpecificHasPrimeImageRelationship(companyId: number, imageId: number): Promise<false | CompanyHasPrimeImageRelationship> {
     const baseRelationship = await getSpecificRelationship(
         companyId,
         imageId,

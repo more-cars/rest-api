@@ -17,7 +17,7 @@ skip_if: static async create<%= h.changeCase.pascal(relationshipName) %>Relation
             throw new NodeNotFoundError(<%= h.changeCase.camel(endNodeType) %>Id)
         }
 
-        const existingRelation = await get<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(endNodeType) %>Id)
+        const existingRelation = await getSpecific<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(endNodeType) %>Id)
         if (existingRelation) {
             throw new RelationshipAlreadyExistsError(<%= h.changeCase.pascal(startNodeType) %>Relationship.<%= h.changeCase.camel(relationshipName) %>, <%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(endNodeType) %>Id)
         }

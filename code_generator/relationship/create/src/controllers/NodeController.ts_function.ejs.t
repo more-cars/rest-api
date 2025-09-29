@@ -6,5 +6,5 @@ skip_if: static async create<%= h.changeCase.pascal(relationshipName) %>Relation
 ---
     }
 
-   static async create<%= h.changeCase.pascal(relationshipName) %>Relation(req: express.Request, res: express.Response) {
-       await create<%= h.changeCase.pascal(relationshipName) %>Relation(req, res)
+    static async create<%= h.changeCase.pascal(relationshipName) %>Relation(req: express.Request, res: express.Response) {
+        await create<%= h.changeCase.pascal(relationshipName) %>Relation(req, res)
