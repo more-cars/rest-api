@@ -1,5 +1,5 @@
 ---
-to: tests/performance/scenarios/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/get-<%= h.changeCase.kebab(relationshipName) %>-relationship.ts
+to: tests/performance/scenarios/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/get-<%= h.changeCase.kebab(relationshipName) %>-relationship.ts
 ---
 import http from 'k6/http'
 import {check} from "k6"
@@ -34,8 +34,8 @@ export function setup() {
     const <%= h.changeCase.camel(endNodeType) %>Id = create<%= h.changeCase.pascal(endNodeType) %>()
     createRelationship(
         '<%= h.changeCase.lower(startNodeType) %>',
-        carModelId,
-        imageId,
+        <%= h.changeCase.camel(startNodeType) %>Id,
+        <%= h.changeCase.camel(endNodeType) %>Id,
         '<%= h.changeCase.lower(relationshipName) %>',
     )
 
@@ -45,7 +45,7 @@ export function setup() {
 }
 
 export default function (data: { <%= h.changeCase.camel(startNodeType) %>Id: number }) {
-    const url = `${__ENV.API_URL}/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/${data.<%= h.changeCase.camel(startNodeType) %>Id}/<%= h.changeCase.kebab(relationshipName) %>`
+    const url = `${__ENV.API_URL}/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/${data.<%= h.changeCase.camel(startNodeType) %>Id}/<%= h.changeCase.kebab(relationshipName) %>`
 
     const response = http.get(url)
 

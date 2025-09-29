@@ -1,8 +1,8 @@
 ---
 inject: true
-to: bruno/lib/<%= h.inflection.pluralize(h.changeCase.pascal(startNodeType)) %>.js
+to: bruno/lib/<%= h.changeCase.pascal(h.inflection.pluralize(startNodeType)) %>.js
 before: async function
-skip_if: ensure<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>RelationshipExists
+skip_if: async function ensure<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>RelationshipExists
 ---
 async function ensure<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>RelationshipExists() {
     await ensureValid<%= h.changeCase.pascal(startNodeType) %>Exists()

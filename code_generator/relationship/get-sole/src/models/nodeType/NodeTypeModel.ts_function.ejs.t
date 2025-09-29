@@ -1,9 +1,11 @@
 ---
 inject: true
 to: src/models/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>.ts
-after: return await create<%= h.changeCase.pascal(relationshipName) %>Relationship.*\n
+before: \}\n\}
 skip_if: static async get<%= h.changeCase.pascal(relationshipName) %>Relationship
 ---
+    }
+
     static async get<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id: number): Promise<<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Relationship> {
         const <%= h.changeCase.camel(startNodeType) %> = await <%= h.changeCase.pascal(startNodeType) %>.findById(<%= h.changeCase.camel(startNodeType) %>Id)
         if (!<%= h.changeCase.camel(startNodeType) %>) {
@@ -16,4 +18,3 @@ skip_if: static async get<%= h.changeCase.pascal(relationshipName) %>Relationshi
         }
 
         return relation
-    }
