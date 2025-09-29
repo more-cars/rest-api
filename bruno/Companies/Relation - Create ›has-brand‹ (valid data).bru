@@ -21,6 +21,6 @@ assert {
 }
 
 script:pre-request {
-  await ensureValidCompanyExists()
-  await ensureValidBrandExists()
+  await lib.Companies.ensureValidCompanyExists()
+  await lib.Brands.ensureValidBrandExists()
 }

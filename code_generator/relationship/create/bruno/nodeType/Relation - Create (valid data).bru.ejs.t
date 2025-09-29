@@ -24,6 +24,6 @@ assert {
 }
 
 script:pre-request {
-  await ensureValid<%= h.changeCase.pascal(startNodeType) %>Exists()
-  await ensureValid<%= h.changeCase.pascal(endNodeType) %>Exists()
+  await lib.<%= h.changeCase.pascal(h.inflection.pluralize(startNodeType)) %>.ensureValid<%= h.changeCase.pascal(startNodeType) %>Exists()
+  await lib.<%= h.changeCase.pascal(h.inflection.pluralize(endNodeType)) %>.ensureValid<%= h.changeCase.pascal(endNodeType) %>Exists()
 }
