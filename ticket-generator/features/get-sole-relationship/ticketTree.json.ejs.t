@@ -7,7 +7,7 @@ to: ticket-generator/_temp/ticketTree.json
         "dataStructure": null,
         "stories": [{
             "title": "Get <%= h.changeCase.upper(startNodeType) %>-<%= h.changeCase.kebab(relationshipName) %> Relationship",
-            "userStory": "As an API consumer\nI want to be able to request the prime image of a <%= h.changeCase.upper(startNodeType) %>\nSo I can represent the node in the best possible form in my frontend application\n(Because I don't know which image from the node's gallery is the best one)",
+            "userStory": null,
             "specificationList": [
                 "The ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship for the selected <%= h.changeCase.upper(startNodeType) %> is returned when one exists. -> Status Code `200`",
                 "The response contains the relationship ID and the two node IDs, but not the nodes itself.",
