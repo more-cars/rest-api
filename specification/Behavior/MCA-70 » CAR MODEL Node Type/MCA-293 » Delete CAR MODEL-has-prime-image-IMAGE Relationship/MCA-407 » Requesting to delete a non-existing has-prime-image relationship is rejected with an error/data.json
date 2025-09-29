@@ -1,9 +1,0 @@
-{
-  "id": "MCA-407",
-  "parent_id": "MCA-293",
-  "title": "Requesting to delete a non-existing has-prime-image relationship is rejected with an error",
-  "description": "",
-  "release_version": null,
-  "created_at": "2025-08-24T11:54:30.561+0200",
-  "updated_at": "2025-08-24T18:30:20.274+0200"
-}

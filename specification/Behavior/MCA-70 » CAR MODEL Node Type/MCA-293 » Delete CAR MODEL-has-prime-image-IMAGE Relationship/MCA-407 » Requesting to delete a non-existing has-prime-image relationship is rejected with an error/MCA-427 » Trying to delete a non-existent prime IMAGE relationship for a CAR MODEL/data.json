@@ -1,9 +1,0 @@
-{
-  "id": "MCA-427",
-  "parent_id": "MCA-407",
-  "title": "Trying to delete a non-existent prime IMAGE relationship for a CAR MODEL",
-  "gherkin": "Given there exists a \"CAR MODEL\" \"Mondeo\"\nAnd there exists an \"IMAGE\" \"front-left.jpg\"\nAnd there exists no prime \"IMAGE\" relationship between \"Mondeo\" and \"front-left.jpg\"\nWhen the user requests to delete the prime \"IMAGE\" relationship between \"Mondeo\" and \"front-left.jpg\"\nThen the request should be rejected with status code 404",
-  "labels": [],
-  "created_at": "2025-08-24T18:30:19.388+0200",
-  "updated_at": "2025-08-24T18:37:07.632+0200"
-}

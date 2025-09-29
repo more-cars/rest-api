@@ -1,9 +1,0 @@
-{
-  "id": "MCA-556",
-  "parent_id": "MCA-553",
-  "title": "Requests are rejected when there exists no COMPANY with the provided ID",
-  "description": "When there exists no node with the provided ID -> rejected.\nWhen there exists a node with the provided ID, but it is not from type COMPANY -> rejected.\n",
-  "release_version": "0.18.0",
-  "created_at": "2025-09-18T12:30:56.478+0200",
-  "updated_at": "2025-09-18T18:04:19.998+0200"
-}

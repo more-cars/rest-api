@@ -1,9 +1,0 @@
-{
-  "id": "MCA-386",
-  "parent_id": "MCA-369",
-  "title": "The response for each pagination request contains pagination meta information",
-  "description": "* additional fields in the response:\n  * `page`: number\n  * `page-size`: number\n  * `total-pages`: number\n  * `total-items`: number\n",
-  "release_version": "0.21.0",
-  "created_at": "2025-08-22T15:18:05.577+0200",
-  "updated_at": "2025-09-26T10:55:44.472+0200"
-}

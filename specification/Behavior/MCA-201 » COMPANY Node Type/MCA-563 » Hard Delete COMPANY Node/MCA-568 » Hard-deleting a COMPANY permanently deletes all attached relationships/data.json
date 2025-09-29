@@ -1,9 +1,0 @@
-{
-  "id": "MCA-568",
-  "parent_id": "MCA-563",
-  "title": "Hard-deleting a COMPANY permanently deletes all attached relationships",
-  "description": "This affects all attached relationships (no matter the type) - be it internal or public relationships. Features that rely on those relationships are responsible to copy, backup or persist the data themselves.\n",
-  "release_version": "0.19.0",
-  "created_at": "2025-09-22T15:53:31.554+0200",
-  "updated_at": "2025-09-24T17:14:32.433+0200"
-}

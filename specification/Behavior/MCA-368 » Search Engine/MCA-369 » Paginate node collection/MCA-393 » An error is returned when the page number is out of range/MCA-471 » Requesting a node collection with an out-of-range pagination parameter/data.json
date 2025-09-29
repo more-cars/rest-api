@@ -1,9 +1,0 @@
-{
-  "id": "MCA-471",
-  "parent_id": "MCA-393",
-  "title": "Requesting a node collection with an out-of-range pagination parameter",
-  "gherkin": "Given there exist 3 \"<node_type>\"s\nWhen the user requests page 17 of the \"<node_type>\" collection\nThen the response should return with status code 404\n\nExamples:\n  | node_type |\n  | BRAND     |\n  | CAR_MODEL |\n  | IMAGE     |",
-  "labels": [],
-  "created_at": "2025-08-31T19:07:02.353+0200",
-  "updated_at": "2025-08-31T19:50:22.337+0200"
-}

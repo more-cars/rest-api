@@ -1,9 +1,0 @@
-{
-  "id": "MCA-551",
-  "parent_id": "MCA-539",
-  "title": "Read-only properties cannot be overridden by the user when creating a COMPANY",
-  "description": "Read-only properties are for example \\`ID\\`, \\`created\\_at\\` and \\`updated\\_at\\`. Analog to unknown properties, those fields will be ignored. They will not be processed and there will be no info, warning or error that they were skipped.\n",
-  "release_version": "0.18.0",
-  "created_at": "2025-09-11T10:17:57.544+0200",
-  "updated_at": "2025-09-18T17:17:50.203+0200"
-}
