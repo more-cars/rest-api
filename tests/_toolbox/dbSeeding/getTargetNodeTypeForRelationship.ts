@@ -5,6 +5,13 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeType, relati
     relationshipName = relationshipName.toLowerCase().replaceAll('_', ' ')
 
     relationships.set(
+        'company', new Map([
+            ['has brand', 'brand'],
+            ['has image', 'image'],
+            ['has prime image', 'image'],
+        ]))
+
+    relationships.set(
         'brand', new Map([
             ['has car model', 'car model'],
             ['has image', 'image'],
