@@ -1492,6 +1492,50 @@
         }
       }
     },
+    "/companies/{company-id}/has-brand": {
+      "get": {
+        "tags": [
+          "Companies"
+        ],
+        "summary": "Get all `Company has brand` relationships",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "company-id",
+            "description": "ID of the `Company`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Company` with the provided ID was found and its `has brand` relationships are returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CompanyHasBrand"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The relationships could not be determined, because there exists no `Company` with the provided ID.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/companies/{company-id}/has-brand/{brand-id}": {
       "post": {
         "tags": [

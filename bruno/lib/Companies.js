@@ -1,4 +1,5 @@
 const axios = require("axios")
+const {ensureValidBrandExists} = require("./Brands")
 const {ensureValidImageExists} = require("./Images")
 
 async function ensureValidCompanyExists() {
@@ -19,6 +20,21 @@ async function createCompany() {
 }
 
 exports.createCompany = createCompany
+
+async function createCompanyHasBrandRelationship(companyId, brandId) {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/companies/" + companyId + "/has-brand/" + brandId)
+    return response.data
+}
+
+exports.createCompanyHasBrandRelationship = createCompanyHasBrandRelationship
+
+async function ensureCompanyHasBrandRelationshipExists() {
+    await ensureValidCompanyExists()
+    await ensureValidBrandExists()
+    await createCompanyHasBrandRelationship(bru.getEnvVar('validCompanyId'), bru.getEnvVar('validBrandId'))
+}
+
+exports.ensureCompanyHasBrandRelationshipExists = ensureCompanyHasBrandRelationshipExists
 
 async function createCompanyHasPrimeImageRelationship(companyId, imageId) {
     const response = await axios.post(bru.getEnvVar('baseUrl') + "/companies/" + companyId + "/has-prime-image/" + imageId)

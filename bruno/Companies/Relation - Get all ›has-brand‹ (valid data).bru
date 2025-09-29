@@ -1,0 +1,19 @@
+meta {
+  name: Get all ›has-brand‹ relations (valid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/companies/{{validCompanyId}}/has-brand
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body: isArray
+}
+
+script:pre-request {
+  await lib.Companies.ensureCompanyHasBrandRelationshipExists()
+}

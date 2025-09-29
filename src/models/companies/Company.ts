@@ -20,6 +20,7 @@ import {Image} from "../images/Image"
 import {getSpecificHasPrimeImageRelationship} from "./getSpecificHasPrimeImageRelationship"
 import type {CompanyHasPrimeImageRelationship} from "./types/CompanyHasPrimeImageRelationship"
 import {getHasPrimeImageRelationship} from "./getHasPrimeImageRelationship"
+import {getAllHasBrandRelationships} from "./getAllHasBrandRelationships"
 
 export class Company {
     static async create(data: CreateCompanyInput): Promise<CompanyNode> {
@@ -77,6 +78,15 @@ export class Company {
         }
 
         return createdRelationship
+    }
+
+    static async getAllHasBrandRelationships(companyId: number): Promise<Array<CompanyHasBrandRelationship>> {
+        const company = await Company.findById(companyId)
+        if (!company) {
+            throw new NodeNotFoundError(companyId)
+        }
+
+        return await getAllHasBrandRelationships(companyId)
     }
 
     static async createHasPrimeImageRelationship(companyId: number, imageId: number): Promise<CompanyHasPrimeImageRelationship> {
