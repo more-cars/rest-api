@@ -1,0 +1,25 @@
+meta {
+  name: Get ›has-prime-image‹ relation (valid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/companies/{{validCompanyId}}/has-prime-image
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body: isJson
+  res.body.company_id: eq {{validCompanyId}}
+  res.body.image_id: gte 12000000
+  res.body.relationship_id: gte 12000000
+  res.body.relationship_name: eq has-prime-image
+  res.body.created_at: isString
+  res.body.updated_at: isString
+}
+
+script:pre-request {
+  await lib.Companies.ensureCompanyHasPrimeImageRelationshipExists()
+}

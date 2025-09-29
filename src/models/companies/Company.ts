@@ -14,10 +14,12 @@ import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExists
 import type {CompanyHasBrandRelationship} from "./types/CompanyHasBrandRelationship"
 import {CompanyRelationship} from "./types/CompanyRelationship"
 import {createHasPrimeImageRelationship} from "./createHasPrimeImageRelationship"
+import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {deleteHasPrimeImageRelationships} from "./deleteHasPrimeImageRelationships"
 import {Image} from "../images/Image"
 import {getSpecificHasPrimeImageRelationship} from "./getSpecificHasPrimeImageRelationship"
 import type {CompanyHasPrimeImageRelationship} from "./types/CompanyHasPrimeImageRelationship"
+import {getHasPrimeImageRelationship} from "./getHasPrimeImageRelationship"
 
 export class Company {
     static async create(data: CreateCompanyInput): Promise<CompanyNode> {
@@ -101,5 +103,19 @@ export class Company {
         }
 
         return createdRelationship
+    }
+
+    static async getHasPrimeImageRelationship(companyId: number): Promise<CompanyHasPrimeImageRelationship> {
+        const company = await Company.findById(companyId)
+        if (!company) {
+            throw new NodeNotFoundError(companyId)
+        }
+
+        const relation = await getHasPrimeImageRelationship(companyId)
+        if (!relation) {
+            throw new RelationshipNotFoundError('has prime image', companyId, null)
+        }
+
+        return relation
     }
 }

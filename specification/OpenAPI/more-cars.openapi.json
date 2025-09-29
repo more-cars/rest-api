@@ -1545,6 +1545,47 @@
         }
       }
     },
+    "/companies/{company-id}/has-prime-image": {
+      "get": {
+        "tags": [
+          "Companies"
+        ],
+        "summary": "Get sole `Company has prime image` relationship",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "company-id",
+            "description": "ID of the `Company`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Company` and relationship were found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyHasPrimeImage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The relationship could not be determined, because there exists no `Company` with the provided ID.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/companies/{company-id}/has-prime-image/{image-id}": {
       "post": {
         "tags": [

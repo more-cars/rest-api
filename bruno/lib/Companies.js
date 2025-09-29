@@ -1,4 +1,5 @@
 const axios = require("axios")
+const {ensureValidImageExists} = require("./Images")
 
 async function ensureValidCompanyExists() {
     if (!bru.getEnvVar('validCompanyId')) {
@@ -25,3 +26,11 @@ async function createCompanyHasPrimeImageRelationship(companyId, imageId) {
 }
 
 exports.createCompanyHasPrimeImageRelationship = createCompanyHasPrimeImageRelationship
+
+async function ensureCompanyHasPrimeImageRelationshipExists() {
+    await ensureValidCompanyExists()
+    await ensureValidImageExists()
+    await createCompanyHasPrimeImageRelationship(bru.getEnvVar('validCompanyId'), bru.getEnvVar('validImageId'))
+}
+
+exports.ensureCompanyHasPrimeImageRelationshipExists = ensureCompanyHasPrimeImageRelationshipExists
