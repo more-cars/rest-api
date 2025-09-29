@@ -11,10 +11,3 @@ async function ensure<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.p
 }
 
 exports.ensure<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>RelationshipExists = ensure<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>RelationshipExists
-
-async function create<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(endNodeType) %>Id) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/" + <%= h.changeCase.camel(startNodeType) %>Id + "/<%= h.changeCase.kebab(relationshipName) %>/" + <%= h.changeCase.camel(endNodeType) %>Id)
-    return response.data
-}
-
-exports.create<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Relationship = create<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Relationship

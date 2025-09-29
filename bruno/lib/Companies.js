@@ -18,3 +18,10 @@ async function createCompany() {
 }
 
 exports.createCompany = createCompany
+
+async function createCompanyHasPrimeImageRelationship(companyId, imageId) {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/companies/" + companyId + "/has-prime-image/" + imageId)
+    return response.data
+}
+
+exports.createCompanyHasPrimeImageRelationship = createCompanyHasPrimeImageRelationship
