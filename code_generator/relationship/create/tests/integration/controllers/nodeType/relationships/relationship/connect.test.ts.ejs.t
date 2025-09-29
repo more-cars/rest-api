@@ -10,7 +10,8 @@ import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types
 
 test('Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship with valid data', async () => {
     <%= h.changeCase.pascal(startNodeType) %>.create<%= h.changeCase.pascal(relationshipName) %>Relationship = vi.fn().mockReturnValue({
-        relationship_id: 4
+        relationship_id: 4,
+        relationship_name: '<%= h.changeCase.kebab(relationshipName) %>',
     })
 
     const response = await request(app)
@@ -21,7 +22,7 @@ test('Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship 
 })
 
 test('Trying to create the same ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship again', async () => {
-     vi.spyOn(<%= h.changeCase.pascal(startNodeType) %>, 'create<%= h.changeCase.pascal(relationshipName) %>Relationship')
+    vi.spyOn(<%= h.changeCase.pascal(startNodeType) %>, 'create<%= h.changeCase.pascal(relationshipName) %>Relationship')
         .mockImplementation(async () => {
             throw new RelationshipAlreadyExistsError('<%= h.changeCase.kebab(relationshipName) %>', 123, 567)
         })
@@ -34,7 +35,7 @@ test('Trying to create the same ›<%= h.changeCase.kebab(relationshipName) %>�
 })
 
 test('Trying to create a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship with nodes that do not exist', async () => {
-     vi.spyOn(<%= h.changeCase.pascal(startNodeType) %>, 'create<%= h.changeCase.pascal(relationshipName) %>Relationship')
+    vi.spyOn(<%= h.changeCase.pascal(startNodeType) %>, 'create<%= h.changeCase.pascal(relationshipName) %>Relationship')
         .mockImplementation(async () => {
             throw new NodeNotFoundError(123)
         })

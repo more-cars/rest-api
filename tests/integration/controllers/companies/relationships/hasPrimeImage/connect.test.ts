@@ -7,7 +7,8 @@ import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types
 
 test('Creating a ›has-prime-image‹ relationship with valid data', async () => {
     Company.createHasPrimeImageRelationship = vi.fn().mockReturnValue({
-        relationship_id: 4
+        relationship_id: 4,
+        relationship_name: 'has-prime-image',
     })
 
     const response = await request(app)
@@ -18,7 +19,7 @@ test('Creating a ›has-prime-image‹ relationship with valid data', async () =
 })
 
 test('Trying to create the same ›has-prime-image‹ relationship again', async () => {
-     vi.spyOn(Company, 'createHasPrimeImageRelationship')
+    vi.spyOn(Company, 'createHasPrimeImageRelationship')
         .mockImplementation(async () => {
             throw new RelationshipAlreadyExistsError('has-prime-image', 123, 567)
         })
@@ -31,7 +32,7 @@ test('Trying to create the same ›has-prime-image‹ relationship again', async
 })
 
 test('Trying to create a ›has-prime-image‹ relationship with nodes that do not exist', async () => {
-     vi.spyOn(Company, 'createHasPrimeImageRelationship')
+    vi.spyOn(Company, 'createHasPrimeImageRelationship')
         .mockImplementation(async () => {
             throw new NodeNotFoundError(123)
         })
