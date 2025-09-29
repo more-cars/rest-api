@@ -112,12 +112,12 @@ to: ticket-generator/_temp/ticketTree.json
                 },
 <% if (cardinality === '1:1' || cardinality === 'n:1') { %>
                 {
-                    "title": "Each <%= h.changeCase.pascal(endNodeType) %> can be in a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship with only one <%= h.changeCase.pascal(endNodeType) %>",
-                    "description": "Connecting a different <%= h.changeCase.pascal(endNodeType) %> will delete the previous relationship.",
+                    "title": "At the same time, each <%= h.changeCase.upper(startNodeType) %> can only be in a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship with one <%= h.changeCase.upper(endNodeType) %>",
+                    "description": "Connecting a different <%= h.changeCase.upper(endNodeType) %> will delete the previous relationship.",
                     "responseCode": "201",
                     "tests": [
                         {
-                            "title": "Connecting a different <%= h.changeCase.pascal(endNodeType) %>",
+                            "title": "Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship with a different <%= h.changeCase.upper(endNodeType) %>",
                             <%
                                 gherkin = []
                                 gherkin.push('Given there exists a \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\"')
