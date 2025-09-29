@@ -1,0 +1,26 @@
+meta {
+  name: Create ›has-prime-image‹ relation (valid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/companies/{{validCompanyId}}/has-prime-image/{{validImageId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 201
+  res.body: isJson
+  res.body.company_id: eq {{validCompanyId}}
+  res.body.image_id: eq {{validImageId}}
+  res.body.relationship_id: gte 12000000
+  res.body.relationship_name: eq has-prime-image
+  res.body.created_at: isString
+  res.body.updated_at: isString
+}
+
+script:pre-request {
+  await ensureValidCompanyExists()
+  await ensureValidImageExists()
+}

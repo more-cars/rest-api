@@ -8,5 +8,6 @@ router.get('/companies/:id', CompanyController.getById)
 router.get('/companies', CompanyController.getAll)
 router.delete('/companies/:id', CompanyController.delete)
 router.post('/companies/:companyId/has-brand/:brandId', CompanyController.createHasBrandRelation)
+router.post('/companies/:companyId/has-prime-image/:imageId', CompanyController.createHasPrimeImageRelation)
 
 export default router

@@ -46,4 +46,12 @@ describe('Companies', () => {
         expect(CompanyController.createHasBrandRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-prime-image‹ Relationship', async () => {
+        await request(app)
+            .post('/companies/123/has-prime-image/456')
+
+        expect(CompanyController.createHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

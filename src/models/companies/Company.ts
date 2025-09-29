@@ -13,7 +13,11 @@ import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
 import type {CompanyHasBrandRelationship} from "./types/CompanyHasBrandRelationship"
 import {CompanyRelationship} from "./types/CompanyRelationship"
-
+import {createHasPrimeImageRelationship} from "./createHasPrimeImageRelationship"
+import {deleteHasPrimeImageRelationships} from "./deleteHasPrimeImageRelationships"
+import {Image} from "../images/Image"
+import {getHasPrimeImageRelationship} from "./getHasPrimeImageRelationship"
+import type {CompanyHasPrimeImageRelationship} from "./types/CompanyHasPrimeImageRelationship"
 
 export class Company {
     static async create(data: CreateCompanyInput): Promise<CompanyNode> {
@@ -66,6 +70,32 @@ export class Company {
         }
 
         const createdRelationship = await createHasBrandRelationship(companyId, brandId)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    }
+
+    static async createHasPrimeImageRelationship(companyId: number, imageId: number): Promise<CompanyHasPrimeImageRelationship> {
+        const company = await Company.findById(companyId)
+        if (!company) {
+            throw new NodeNotFoundError(companyId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const existingRelation = await getHasPrimeImageRelationship(companyId, imageId)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(CompanyRelationship.hasPrimeImage, companyId, imageId)
+        }
+
+        await deleteHasPrimeImageRelationships(companyId)
+
+        const createdRelationship = await createHasPrimeImageRelationship(companyId, imageId)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
