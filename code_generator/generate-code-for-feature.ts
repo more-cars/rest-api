@@ -37,6 +37,7 @@ async function promptTypeOfFeature(typeOfData: 'node' | 'relationship') {
         case 'relationship':
             choices.push({value: 'create'})
             choices.push({value: 'get-sole'})
+            choices.push({value: 'get-all'})
             choices.push({value: 'has'})
             break
     }
