@@ -31,7 +31,7 @@ to: ticket-generator/_temp/ticketTree.json
                             <%
                                 gherkin = []
                                 gherkin.push('Given there exists a \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\"')
-                                gherkin.push('And there exist a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship \\"R\\" for \\"' + startNodeExampleName + '\\"')
+                                gherkin.push('And there exists a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship \\"R\\" for \\"' + startNodeExampleName + '\\"')
                                 gherkin.push('When the user requests the \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship for \\"' + startNodeExampleName + '\\"')
                                 gherkin.push('Then the request should be confirmed with status code 200')
                                 gherkin.push('And the response should contain the relationship \\"R\\"')
