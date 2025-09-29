@@ -1,5 +1,5 @@
 ---
-to: bruno/<%= h.changeCase.title(h.inflection.pluralize(startNodeType)) %>/Relation - Create (valid data).bru
+to: bruno/<%= h.changeCase.title(h.inflection.pluralize(startNodeType)) %>/Relation - Create ›<%= h.changeCase.kebab(relationshipName) %>‹ (valid data).bru
 ---
 meta {
   name: Create ›<%= h.changeCase.kebab(relationshipName) %>‹ relation (valid data)
@@ -18,7 +18,7 @@ assert {
   res.body.<%= h.changeCase.snake(startNodeType) %>_id: eq {{valid<%= h.changeCase.pascal(startNodeType) %>Id}}
   res.body.<%= h.changeCase.snake(endNodeType) %>_id: eq {{valid<%= h.changeCase.pascal(endNodeType) %>Id}}
   res.body.relationship_id: gte 12000000
-  res.body.relationship_name: eq <%= h.changeCase.constant(relationshipName) %>
+  res.body.relationship_name: eq <%= h.changeCase.kebab(relationshipName) %>
   res.body.created_at: isString
   res.body.updated_at: isString
 }

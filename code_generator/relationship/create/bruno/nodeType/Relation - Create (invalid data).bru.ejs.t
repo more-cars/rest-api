@@ -1,5 +1,5 @@
 ---
-to: bruno/<%= h.changeCase.title(h.inflection.pluralize(startNodeType)) %>/Relation - Create (invalid data).bru
+to: bruno/<%= h.changeCase.title(h.inflection.pluralize(startNodeType)) %>/Relation - Create ›<%= h.changeCase.kebab(relationshipName) %>‹ (invalid data).bru
 ---
 meta {
   name: Create ›<%= h.changeCase.kebab(relationshipName) %>‹ relation (invalid data)

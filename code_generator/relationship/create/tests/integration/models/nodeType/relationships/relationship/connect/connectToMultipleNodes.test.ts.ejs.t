@@ -8,7 +8,11 @@ import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../../sr
 import {getRelationshipsForSpecificNode} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
+<% if (cardinality === '1:1' || cardinality === 'n:1') { -%>
+test('A <%= h.changeCase.title(startNodeType) %> can NOT have multiple ›<%= h.changeCase.kebab(relationshipName) %>‹ relationships', async () => {
+<% } else if (cardinality === '1:n' || cardinality === 'm:n') { -%>
 test('A <%= h.changeCase.title(startNodeType) %> can have multiple ›<%= h.changeCase.kebab(relationshipName) %>‹ relationships', async () => {
+<% } -%>
     const <%= h.changeCase.camel(startNodeType) %> = await seed<%= h.changeCase.pascal(startNodeType) %>()
     const <%= h.changeCase.camel(h.inflection.pluralize(endNodeType)) %>Amount = 3
     const <%= h.changeCase.camel(h.inflection.pluralize(endNodeType)) %> = await seed<%= h.changeCase.pascal(h.inflection.pluralize(endNodeType)) %>(<%= h.changeCase.camel(h.inflection.pluralize(endNodeType)) %>Amount)
@@ -20,5 +24,9 @@ test('A <%= h.changeCase.title(startNodeType) %> can have multiple ›<%= h.chan
     const relationships = await getRelationshipsForSpecificNode(<%= h.changeCase.camel(startNodeType) %>.id, DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
 
     expect(relationships.length)
+<% if (cardinality === '1:1' || cardinality === 'n:1') { -%>
+        .toBe(1)
+<% } else if (cardinality === '1:n' || cardinality === 'm:n') { -%>
         .toBe(<%= h.changeCase.camel(h.inflection.pluralize(endNodeType)) %>Amount)
+<% } -%>
 })
