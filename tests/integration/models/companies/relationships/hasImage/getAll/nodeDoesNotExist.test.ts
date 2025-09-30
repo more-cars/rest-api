@@ -1,0 +1,9 @@
+import {expect, test} from 'vitest'
+import {Company} from "../../../../../../../src/models/companies/Company"
+import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
+
+test('Company does not exist', async () => {
+    await expect(Company.getAllHasImageRelationships(-42))
+        .rejects
+        .toThrow(NodeNotFoundError)
+})

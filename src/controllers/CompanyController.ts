@@ -8,6 +8,7 @@ import {getAllHasBrandRelations} from "./companies/getAllHasBrandRelations"
 import {deleteHasBrandRelation} from "./companies/deleteHasBrandRelation"
 import {createHasImageRelation} from "./companies/createHasImageRelation"
 import {createHasPrimeImageRelation} from "./companies/createHasPrimeImageRelation"
+import {getAllHasImageRelations} from "./companies/getAllHasImageRelations"
 import {getHasPrimeImageRelation} from "./companies/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./companies/deleteHasPrimeImageRelation"
 
@@ -46,6 +47,10 @@ export class CompanyController {
 
     static async createHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await createHasPrimeImageRelation(req, res)
+    }
+
+    static async getAllHasImageRelations(req: express.Request, res: express.Response) {
+        await getAllHasImageRelations(req, res)
     }
 
     static async getHasPrimeImageRelation(req: express.Request, res: express.Response) {

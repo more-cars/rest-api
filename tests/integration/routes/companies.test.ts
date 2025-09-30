@@ -71,6 +71,14 @@ describe('Companies', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Get all ›has-image‹ Relationships', async () => {
+        await request(app)
+            .get('/companies/123/has-image')
+
+        expect(CompanyController.getAllHasImageRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-prime-image‹ Relationship', async () => {
         await request(app)
             .post('/companies/123/has-prime-image/456')

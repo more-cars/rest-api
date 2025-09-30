@@ -43,6 +43,14 @@ async function createCompanyHasImageRelationship(companyId, imageId) {
 
 exports.createCompanyHasImageRelationship = createCompanyHasImageRelationship
 
+async function ensureCompanyHasImageRelationshipExists() {
+    await ensureValidCompanyExists()
+    await ensureValidImageExists()
+    await createCompanyHasImageRelationship(bru.getEnvVar('validCompanyId'), bru.getEnvVar('validImageId'))
+}
+
+exports.ensureCompanyHasImageRelationshipExists = ensureCompanyHasImageRelationshipExists
+
 async function createCompanyHasPrimeImageRelationship(companyId, imageId) {
     const response = await axios.post(bru.getEnvVar('baseUrl') + "/companies/" + companyId + "/has-prime-image/" + imageId)
     return response.data

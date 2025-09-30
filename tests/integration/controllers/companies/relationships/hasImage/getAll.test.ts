@@ -1,0 +1,49 @@
+import {expect, test, vi} from 'vitest'
+import request from 'supertest'
+import {app} from '../../../../../../src/app'
+import {Company} from "../../../../../../src/models/companies/Company"
+import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
+
+test('Company does not exist', async () => {
+    vi.spyOn(Company, 'getAllHasImageRelationships')
+        .mockImplementation(async () => {
+            throw new NodeNotFoundError(1234)
+        })
+
+    const response = await request(app)
+        .get('/companies/1234/has-image')
+
+    expect(response.statusCode)
+        .toBe(404)
+})
+
+test('Company exists, but has no relationships', async () => {
+    Company.getAllHasImageRelationships = vi.fn().mockReturnValue([])
+
+    const response = await request(app)
+        .get('/companies/1234/has-image')
+
+    expect(response.statusCode)
+        .toBe(200)
+})
+
+test('Company exists and has relationships', async () => {
+    Company.getAllHasImageRelationships = vi.fn().mockReturnValue([
+        {
+            relationship_id: 4,
+            relationship_name: 'has-image',
+        }, {
+            relationship_id: 5,
+            relationship_name: 'has-image',
+        }, {
+            relationship_id: 6,
+            relationship_name: 'has-image',
+        }
+    ])
+
+    const response = await request(app)
+        .get('/companies/1234/has-image')
+
+    expect(response.statusCode)
+        .toBe(200)
+})
