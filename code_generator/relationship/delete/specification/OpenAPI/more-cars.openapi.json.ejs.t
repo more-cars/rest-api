@@ -1,7 +1,7 @@
 ---
 inject: true
 to: specification/OpenAPI/more-cars.openapi.json
-after: <%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/{<%= h.changeCase.kebab(startNodeType) %>-id}/<%= h.changeCase.kebab(relationshipName) %>
+after: <%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/{<%= h.changeCase.kebab(startNodeType) %>-id}/<%= h.changeCase.kebab(relationshipName) %>/{<%= h.changeCase.kebab(endNodeType) %>-id}
 skip_if: Deletes a `<%= h.changeCase.title(startNodeType) %> <%= h.changeCase.lower(relationshipName) %>` relationship
 ---
       "delete": {
