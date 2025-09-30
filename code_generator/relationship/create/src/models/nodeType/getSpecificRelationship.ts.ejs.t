@@ -1,5 +1,5 @@
 ---
-to: src/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/get<%= h.changeCase.pascal(relationshipName) %>Relationship.ts
+to: src/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/getSpecific<%= h.changeCase.pascal(relationshipName) %>Relationship.ts
 ---
 import {getSpecificRelationship} from "../../db/relationships/getSpecificRelationship"
 import {DbRelationship} from "../../db/types/DbRelationship"
