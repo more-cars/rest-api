@@ -21,12 +21,14 @@ async function prepareAndCreateTickets() {
 
 async function promptFeature() {
     const choices = [
+        // {value: 'create-node'}, // TODO currently implemented in a separate script, because of the nested prompts
         {value: 'get-node-by-id'},
         {value: 'get-all-nodes'},
         {value: 'hard-delete-node'},
         {value: 'create-relationship'},
         {value: 'get-all-relationships'},
         {value: 'get-sole-relationship'},
+        {value: 'delete-relationship'},
     ]
 
     return select({
