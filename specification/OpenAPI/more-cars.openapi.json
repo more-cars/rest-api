@@ -1534,6 +1534,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Companies"
+        ],
+        "summary": "Deletes a `Company has brand` relationship",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "company-id",
+            "description": "ID of the `Company`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "brand-id",
+            "description": "ID of the `Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The relationship between both nodes was successfully deleted."
+          },
+          "404": {
+            "description": "One of the nodes (or both) don't exist or there exists no `has brand` relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/companies/{company-id}/has-brand/{brand-id}": {

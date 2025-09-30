@@ -55,6 +55,14 @@ describe('Companies', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete ›has-brand‹ Relationship', async () => {
+        await request(app)
+            .delete('/companies/123/has-brand/456')
+
+        expect(CompanyController.deleteHasBrandRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-prime-image‹ Relationship', async () => {
         await request(app)
             .post('/companies/123/has-prime-image/456')

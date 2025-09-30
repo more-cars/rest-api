@@ -9,6 +9,7 @@ router.get('/companies', CompanyController.getAll)
 router.delete('/companies/:id', CompanyController.delete)
 router.post('/companies/:companyId/has-brand/:brandId', CompanyController.createHasBrandRelation)
 router.get('/companies/:companyId/has-brand', CompanyController.getAllHasBrandRelations)
+router.delete('/companies/:companyId/has-brand/:brandId', CompanyController.deleteHasBrandRelation)
 router.post('/companies/:companyId/has-prime-image/:imageId', CompanyController.createHasPrimeImageRelation)
 router.get('/companies/:companyId/has-prime-image', CompanyController.getHasPrimeImageRelation)
 

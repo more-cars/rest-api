@@ -1,0 +1,15 @@
+meta {
+  name: Delete ›has-brand‹ relation (invalid data)
+  type: http
+}
+
+delete {
+  url: {{baseUrl}}/companies/{{invalidCompanyId}}/has-brand/{{invalidBrandId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 404
+  res.body: isString
+}
