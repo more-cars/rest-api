@@ -1,0 +1,13 @@
+---
+to: src/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/delete<%= h.changeCase.pascal(relationshipName) %>Relationship.ts
+---
+import {deleteSpecificRelationship} from "../../db/relationships/deleteSpecificRelationship"
+import {DbRelationship} from "../../db/types/DbRelationship"
+
+export async function delete<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id: number, <%= h.changeCase.camel(endNodeType) %>Id: number): Promise<boolean> {
+    return await deleteSpecificRelationship(
+        <%= h.changeCase.camel(startNodeType) %>Id,
+        <%= h.changeCase.camel(endNodeType) %>Id,
+        DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
+    )
+}
