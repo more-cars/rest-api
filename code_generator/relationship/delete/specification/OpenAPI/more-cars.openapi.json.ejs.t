@@ -8,7 +8,7 @@ skip_if: Deletes a `<%= h.changeCase.title(startNodeType) %> <%= h.changeCase.lo
         "tags": [
           "<%= h.changeCase.title(h.inflection.pluralize(startNodeType)) %>"
         ],
-        "summary": "Deletes a `<%= h.changeCase.title(startNodeType) %> <%= h.changeCase.lower(relationshipName) %>` relationship"
+        "summary": "Deletes a `<%= h.changeCase.title(startNodeType) %> <%= h.changeCase.lower(relationshipName) %>` relationship",
         "parameters": [
           {
             "in": "path",
@@ -31,7 +31,7 @@ skip_if: Deletes a `<%= h.changeCase.title(startNodeType) %> <%= h.changeCase.lo
         ],
         "responses": {
           "204": {
-            "description": "The relationship between both nodes was successfully deleted.",
+            "description": "The relationship between both nodes was successfully deleted."
           },
           "404": {
             "description": "One of the nodes (or both) don't exist or there exists no `<%= h.changeCase.lower(relationshipName) %>` relationship between them.",

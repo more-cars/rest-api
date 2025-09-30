@@ -13,7 +13,7 @@ test('Both nodes and the relationship exist', async () => {
     const relationshipBefore = await getSpecificRelationship(
         seededRelationship.start_node_id,
         seededRelationship.end_node_id,
-        DbRelationship.CompanyHasBrand,
+        DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
     )
 
     expect(relationshipBefore)
