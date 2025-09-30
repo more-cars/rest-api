@@ -6,6 +6,7 @@ import {deleteNode} from "./companies/deleteNode"
 import {createHasBrandRelation} from "./companies/createHasBrandRelation"
 import {getAllHasBrandRelations} from "./companies/getAllHasBrandRelations"
 import {deleteHasBrandRelation} from "./companies/deleteHasBrandRelation"
+import {createHasImageRelation} from "./companies/createHasImageRelation"
 import {createHasPrimeImageRelation} from "./companies/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./companies/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./companies/deleteHasPrimeImageRelation"
@@ -37,6 +38,10 @@ export class CompanyController {
 
     static async deleteHasBrandRelation(req: express.Request, res: express.Response) {
         await deleteHasBrandRelation(req, res)
+    }
+
+    static async createHasImageRelation(req: express.Request, res: express.Response) {
+        await createHasImageRelation(req, res)
     }
 
     static async createHasPrimeImageRelation(req: express.Request, res: express.Response) {
