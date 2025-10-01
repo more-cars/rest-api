@@ -3,7 +3,7 @@ import {DbRelationship} from "../../db/types/DbRelationship"
 import {CompanyRelationship} from "./types/CompanyRelationship"
 import {CompanyHasBrandRelationship} from "./types/CompanyHasBrandRelationship"
 
-export async function getHasBrandRelationship(companyId: number, brandId: number): Promise<false | CompanyHasBrandRelationship> {
+export async function getSpecificHasBrandRelationship(companyId: number, brandId: number): Promise<false | CompanyHasBrandRelationship> {
     const baseRelationship = await getSpecificRelationship(
         companyId,
         brandId,

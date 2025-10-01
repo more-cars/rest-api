@@ -8,7 +8,7 @@ import {getAllNodesOfType} from "../../db/nodes/companies/getAllNodesOfType"
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {createHasBrandRelationship} from "./createHasBrandRelationship"
 import {Brand} from "../brands/Brand"
-import {getHasBrandRelationship} from "./getHasBrandRelationship"
+import {getSpecificHasBrandRelationship} from "./getSpecificHasBrandRelationship"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
 import type {CompanyHasBrandRelationship} from "./types/CompanyHasBrandRelationship"
@@ -74,7 +74,7 @@ export class Company {
             throw new NodeNotFoundError(brandId)
         }
 
-        const existingRelation = await getHasBrandRelationship(companyId, brandId)
+        const existingRelation = await getSpecificHasBrandRelationship(companyId, brandId)
         if (existingRelation) {
             throw new RelationshipAlreadyExistsError(CompanyRelationship.hasBrand, companyId, brandId)
         }
@@ -107,7 +107,7 @@ export class Company {
             throw new NodeNotFoundError(brandId)
         }
 
-        const relation = await getHasBrandRelationship(companyId, brandId)
+        const relation = await getSpecificHasBrandRelationship(companyId, brandId)
         if (!relation) {
             throw new RelationshipNotFoundError('has brand', companyId, brandId)
         }
