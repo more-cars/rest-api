@@ -4,6 +4,19 @@ import {app} from '../../../../../../src/app'
 import {Company} from "../../../../../../src/models/companies/Company"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 
+test('Database request failed', async () => {
+    vi.spyOn(Company, 'getAllHasBrandRelationships')
+        .mockImplementation(async () => {
+            throw new Error()
+        })
+
+    const response = await request(app)
+        .get('/companies/1234/has-brand')
+
+    expect(response.statusCode)
+        .toBe(500)
+})
+
 test('Company does not exist', async () => {
     vi.spyOn(Company, 'getAllHasBrandRelationships')
         .mockImplementation(async () => {

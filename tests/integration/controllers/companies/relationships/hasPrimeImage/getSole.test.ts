@@ -5,6 +5,19 @@ import {Company} from "../../../../../../src/models/companies/Company"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
 
+test('Database request failed', async () => {
+    vi.spyOn(Company, 'getHasPrimeImageRelationship')
+        .mockImplementation(async () => {
+            throw new Error()
+        })
+
+    const response = await request(app)
+        .get('/companies/1234/has-prime-image')
+
+    expect(response.statusCode)
+        .toBe(500)
+})
+
 test('Company does not exist', async () => {
     vi.spyOn(Company, 'getHasPrimeImageRelationship')
         .mockImplementation(async () => {
