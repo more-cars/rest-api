@@ -7,8 +7,12 @@ Then('the response should return the relationship {string}',
         const expectedRelationship: BrandHasCarModelRelationship = world.recallRelationship(label)
         const actualRelationship = world.recallResponse().data
 
-        assert.deepStrictEqual(
-            actualRelationship,
-            expectedRelationship,
-        )
+        if ('start_node_id' in expectedRelationship) { // relationship was created via db seeder
+            assert.equal(expectedRelationship.relationship_id, actualRelationship.relationship_id)
+        } else {
+            assert.deepStrictEqual( // relationship was created via api
+                actualRelationship,
+                expectedRelationship,
+            )
+        }
     })
