@@ -22,7 +22,12 @@ async function createCompany() {
 exports.createCompany = createCompany
 
 async function createCompanyHasBrandRelationship(companyId, brandId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/companies/" + companyId + "/has-brand/" + brandId)
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/companies/" + companyId + "/has-brand/" + brandId, null, {
+        validateStatus: function (status) {
+            return status < 400
+        }
+    })
+
     return response.data
 }
 
@@ -37,7 +42,12 @@ async function ensureCompanyHasBrandRelationshipExists() {
 exports.ensureCompanyHasBrandRelationshipExists = ensureCompanyHasBrandRelationshipExists
 
 async function createCompanyHasImageRelationship(companyId, imageId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/companies/" + companyId + "/has-image/" + imageId)
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/companies/" + companyId + "/has-image/" + imageId, null, {
+        validateStatus: function (status) {
+            return status < 400
+        }
+    })
+
     return response.data
 }
 
@@ -52,7 +62,12 @@ async function ensureCompanyHasImageRelationshipExists() {
 exports.ensureCompanyHasImageRelationshipExists = ensureCompanyHasImageRelationshipExists
 
 async function createCompanyHasPrimeImageRelationship(companyId, imageId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/companies/" + companyId + "/has-prime-image/" + imageId)
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/companies/" + companyId + "/has-prime-image/" + imageId, null, {
+        validateStatus: function (status) {
+            return status < 400
+        }
+    })
+
     return response.data
 }
 

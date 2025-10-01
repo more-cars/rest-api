@@ -48,7 +48,12 @@ async function ensureBrandHasCarModelRelationshipExists() {
 exports.ensureBrandHasCarModelRelationshipExists = ensureBrandHasCarModelRelationshipExists
 
 async function createBrandHasCarModelRelationship(brandId, carModelId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/brands/" + brandId + "/has-car-model/" + carModelId)
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/brands/" + brandId + "/has-car-model/" + carModelId, null, {
+        validateStatus: function (status) {
+            return status < 400
+        }
+    })
+
     return response.data
 }
 
@@ -63,7 +68,12 @@ async function ensureBrandHasImageRelationshipExists() {
 exports.ensureBrandHasImageRelationshipExists = ensureBrandHasImageRelationshipExists
 
 async function createBrandHasImageRelationship(brandId, imageId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/brands/" + brandId + "/has-image/" + imageId)
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/brands/" + brandId + "/has-image/" + imageId, null, {
+        validateStatus: function (status) {
+            return status < 400
+        }
+    })
+
     return response.data
 }
 
