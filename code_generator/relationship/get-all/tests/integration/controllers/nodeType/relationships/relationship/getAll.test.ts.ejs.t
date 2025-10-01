@@ -7,6 +7,19 @@ import {app} from '../../../../../../src/app'
 import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 
+test('Database request failed', async () => {
+    vi.spyOn(<%= h.changeCase.pascal(startNodeType) %>, 'getAll<%= h.changeCase.pascal(relationshipName) %>Relationships')
+        .mockImplementation(async () => {
+            throw new Error()
+        })
+
+    const response = await request(app)
+        .get('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/1234/<%= h.changeCase.kebab(relationshipName) %>')
+
+    expect(response.statusCode)
+        .toBe(500)
+})
+
 test('<%= h.changeCase.title(startNodeType) %> does not exist', async () => {
     vi.spyOn(<%= h.changeCase.pascal(startNodeType) %>, 'getAll<%= h.changeCase.pascal(relationshipName) %>Relationships')
         .mockImplementation(async () => {
