@@ -1,9 +1,9 @@
 import {confirm, select} from "@inquirer/prompts"
 import {NodeTypeMapping} from "./lib/NodeTypeMapping"
-import type {NodeTypeLabel} from "../src/db/NodeTypeLabel"
+import {NodeTypeLabel} from "../src/db/NodeTypeLabel"
 import type {NodeTypeLabelOld} from "./lib/types/NodeTypeLabelOld"
 import cliProgress from "cli-progress"
-import type {DbRelationship} from "../src/db/types/DbRelationship"
+import {DbRelationship} from "../src/db/types/DbRelationship"
 import {deleteRelationshipsOfType} from "./lib/deleteRelationshipsOfType"
 import {fetchOldRelationshipsOfType} from "./lib/fetchOldRelationshipsOfType"
 import {RelationshipTypeMapping} from "./lib/RelationshipTypeMapping"
@@ -11,15 +11,18 @@ import type {RelationshipTypeLabelOld} from "./lib/types/RelationshipTypeLabelOl
 import {createDbRelationship} from "../src/db/relationships/createDbRelationship"
 import {addMoreCarsIdToRelationship} from "../src/db/relationships/addMoreCarsIdToRelationship"
 import {addTimestampsToRelationship} from "../src/db/relationships/addTimestampsToRelationship"
+import {getAllNodeTypes} from "./lib/getAllNodeTypes"
+import {getAllPotentialPartnerNodeTypes} from "./lib/getAllPotentialPartnerNodeTypes"
+import {getAllRelationshipTypes} from "./lib/getAllRelationshipTypes"
 
 migrateRelationshipsOfType().then(() => true)
 
 async function migrateRelationshipsOfType() {
     const newStartNodeType = await promptStartNodeType()
     const oldStartNodeType = NodeTypeMapping.get(newStartNodeType) as NodeTypeLabelOld
-    const newEndNodeType = await promptEndNodeType()
+    const newEndNodeType = await promptEndNodeType(newStartNodeType)
     const oldEndNodeType = NodeTypeMapping.get(newEndNodeType) as NodeTypeLabelOld
-    const newRelationshipType = await promptRelationshipType()
+    const newRelationshipType = await promptRelationshipType(newStartNodeType, newEndNodeType)
     const oldRelationshipType = RelationshipTypeMapping.get(newRelationshipType) as RelationshipTypeLabelOld
 
     const deleteRelationships = await promptDeleteRelationships()
@@ -28,7 +31,7 @@ async function migrateRelationshipsOfType() {
     }
 
     let records
-    if (relationshipIsInversed(newRelationshipType)) {
+    if (isRelationshipReversedInOldDb(newRelationshipType)) {
         records = await fetchOldRelationshipsOfType(oldRelationshipType, oldEndNodeType, oldStartNodeType)
     } else {
         records = await fetchOldRelationshipsOfType(oldRelationshipType, oldStartNodeType, oldEndNodeType)
@@ -42,7 +45,7 @@ async function migrateRelationshipsOfType() {
     for (const record of records) {
         const oldRelationship = record.get('rel')
         let newRelationship
-        if (relationshipIsInversed(newRelationshipType)) {
+        if (isRelationshipReversedInOldDb(newRelationshipType)) {
             newRelationship = await createDbRelationship(parseInt(oldRelationship.end) + 10_000_000, parseInt(oldRelationship.start) + 10_000_000, newRelationshipType)
         } else {
             newRelationship = await createDbRelationship(parseInt(oldRelationship.start) + 10_000_000, parseInt(oldRelationship.end) + 10_000_000, newRelationshipType)
@@ -59,50 +62,46 @@ async function migrateRelationshipsOfType() {
 }
 
 async function promptStartNodeType() {
-    const choices = [
-        {value: 'Company'},
-        {value: 'Brand'},
-        {value: 'CarModel'},
-        {value: 'Image'},
-    ]
+    // TODO disable all node types that that have no has-relationship (important for the next prompt)
+    const nodeOptions = getAllNodeTypes()
+    const choices = []
 
-    const nodeType = await select({
+    for (const node of nodeOptions) {
+        choices.push({value: node})
+    }
+
+    return select({
         message: 'Start node type of the relationship?',
         choices,
     })
-
-    return nodeType as NodeTypeLabel
 }
 
-async function promptEndNodeType() {
-    const choices = [
-        {value: 'Company'},
-        {value: 'Brand'},
-        {value: 'CarModel'},
-        {value: 'Image'},
-    ]
+async function promptEndNodeType(startNodeType: NodeTypeLabel) {
+    const nodeOptions = getAllPotentialPartnerNodeTypes().get(startNodeType) as NodeTypeLabel[]
+    const choices = []
 
-    const nodeType = await select({
+    for (const node of nodeOptions) {
+        choices.push({value: node})
+    }
+
+    return select({
         message: 'End node type of the relationship?',
         choices,
     })
-
-    return nodeType as NodeTypeLabel
 }
 
-async function promptRelationshipType() {
-    const choices = [
-        {value: 'HAS_CAR_MODEL'},
-        {value: 'HAS_IMAGE'},
-        {value: 'HAS_PRIME_IMAGE'},
-    ]
+async function promptRelationshipType(startNodeType: NodeTypeLabel, endNodeType: NodeTypeLabel) {
+    const relationshipOptions = getAllRelationshipTypes().get(startNodeType)?.get(endNodeType) as DbRelationship[]
+    const choices = []
 
-    const relationshipType = await select({
+    for (const relationship of relationshipOptions) {
+        choices.push({value: relationship})
+    }
+
+    return select({
         message: 'Migrating all relationships of which type?',
         choices,
     })
-
-    return relationshipType as DbRelationship
 }
 
 async function promptDeleteRelationships() {
@@ -112,7 +111,7 @@ async function promptDeleteRelationships() {
     })
 }
 
-function relationshipIsInversed(relationshipType: DbRelationship) {
+function isRelationshipReversedInOldDb(relationshipType: DbRelationship) {
     if (relationshipType === 'HAS_PRIME_IMAGE') {
         return true
     }
