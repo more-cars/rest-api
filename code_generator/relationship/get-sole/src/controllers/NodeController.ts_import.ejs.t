@@ -1,7 +1,7 @@
 ---
 inject: true
 to: src/controllers/<%= h.changeCase.pascal(startNodeType) %>Controller.ts
-before: \nexport class <%= h.changeCase.pascal(startNodeType) %>Controller
+before: \nexport class
 skip_if: import {get<%= h.changeCase.pascal(relationshipName) %>Relation} from
 ---
 import {get<%= h.changeCase.pascal(relationshipName) %>Relation} from "./<%= h.changeCase.camel(h.inflection.pluralize(startNodeType)) %>/get<%= h.changeCase.pascal(relationshipName) %>Relation"
