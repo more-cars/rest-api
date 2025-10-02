@@ -4,6 +4,7 @@ import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../db/nodes/companies/createNode"
 import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/companies/getNodeById"
+import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
 import {getAllNodesOfType} from "../../db/nodes/companies/getAllNodesOfType"
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {createHasBrandRelationship} from "./createHasBrandRelationship"
@@ -48,9 +49,9 @@ export class Company {
         return convertOutputData(node)
     }
 
-    static async findAll(): Promise<CompanyNode[]> {
+    static async findAll(options: NodeCollectionConstraints = {page: 1}): Promise<CompanyNode[]> {
         const nodes: Array<CompanyNode> = []
-        const nodesDb = await getAllNodesOfType()
+        const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {
             nodes.push(convertOutputData(node))

@@ -4,6 +4,7 @@ import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../db/nodes/car-models/createNode"
 import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/car-models/getNodeById"
+import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
 import {getAllNodesOfType} from "../../db/nodes/car-models/getAllNodesOfType"
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {CarModelBelongsToBrandRelationship} from "./types/CarModelBelongsToBrandRelationship"
@@ -41,9 +42,9 @@ export class CarModel {
         return convertOutputData(node)
     }
 
-    static async findAll(): Promise<CarModelNode[]> {
+    static async findAll(options: NodeCollectionConstraints = {page: 1}): Promise<CarModelNode[]> {
         const nodes: Array<CarModelNode> = []
-        const nodesDb = await getAllNodesOfType()
+        const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {
             nodes.push(convertOutputData(node))

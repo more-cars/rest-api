@@ -6,6 +6,7 @@ import {createNode} from "../../db/nodes/images/createNode"
 import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/images/getNodeById"
 import {getNodeById as getAnyNodeById} from "../../db/nodes/getNodeById"
+import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
 import {getAllNodesOfType} from "../../db/nodes/images/getAllNodesOfType"
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {ImageBelongsToNodeRelationship} from "./types/ImageBelongsToNodeRelationship"
@@ -35,9 +36,9 @@ export class Image {
         return convertOutputData(node)
     }
 
-    static async findAll(): Promise<ImageNode[]> {
+    static async findAll(options: NodeCollectionConstraints = {page: 1}): Promise<ImageNode[]> {
         const nodes: Array<ImageNode> = []
-        const nodesDb = await getAllNodesOfType()
+        const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {
             nodes.push(convertOutputData(node))

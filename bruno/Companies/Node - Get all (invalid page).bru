@@ -1,0 +1,15 @@
+meta {
+  name: Get all Companies (invalid page)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/companies?page=-2
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.body: isString
+}

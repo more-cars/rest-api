@@ -1,0 +1,15 @@
+meta {
+  name: Get all Brands (invalid page)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/brands?page=-2
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.body: isString
+}

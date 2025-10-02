@@ -11,7 +11,7 @@ import type {RelationshipTypeLabelOld} from "./lib/types/RelationshipTypeLabelOl
 import {createDbRelationship} from "../src/db/relationships/createDbRelationship"
 import {addMoreCarsIdToRelationship} from "../src/db/relationships/addMoreCarsIdToRelationship"
 import {addTimestampsToRelationship} from "../src/db/relationships/addTimestampsToRelationship"
-import {getAllNodeTypes} from "./lib/getAllNodeTypes"
+import {getAllNodeTypes} from "../tests/_toolbox/getAllNodeTypes"
 import {getAllPotentialPartnerNodeTypes} from "./lib/getAllPotentialPartnerNodeTypes"
 import {getAllRelationshipTypes} from "./lib/getAllRelationshipTypes"
 

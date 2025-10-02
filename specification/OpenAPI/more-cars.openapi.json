@@ -163,6 +163,18 @@
           "Brands"
         ],
         "summary": "Returns a list of all `Brand`s",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "description": "Defines, which slice of the whole `Brand` collection should be returned. Each full page contains 100 nodes. The last page contains the remaining nodes. Pages that are out of range return an empty list.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "A list of all `Brand`s.",
@@ -584,6 +596,18 @@
           "Car Models"
         ],
         "summary": "Returns a list of all `Car Model`s",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "description": "Defines, which slice of the whole `Car Model` collection should be returned. Each full page contains 100 nodes. The last page contains the remaining nodes. Pages that are out of range return an empty list.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "A list of all `Car Model`s.",
@@ -1100,6 +1124,18 @@
           "Images"
         ],
         "summary": "Returns a list of all `Image`s",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "description": "Defines, which slice of the whole `Image` collection should be returned. Each full page contains 100 nodes. The last page contains the remaining nodes. Pages that are out of range return an empty list.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "A list of all `Image`s.",
@@ -1374,6 +1410,18 @@
           "Companies"
         ],
         "summary": "Get all `Companies`",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "description": "Defines, which slice of the whole `Company` collection should be returned. Each full page contains 100 nodes. The last page contains the remaining nodes. Pages that are out of range return an empty list.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "List of `Companies` successfully loaded.",
