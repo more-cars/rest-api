@@ -6,9 +6,9 @@ skip_if: static async findAll
 ---
     }
 
-    static async findAll(): Promise<<%= h.changeCase.pascal(nodeType) %>Node[]> {
+    static async findAll(options: NodeCollectionConstraints = {page: 1}): Promise<<%= h.changeCase.pascal(nodeType) %>Node[]> {
         const nodes: Array<<%= h.changeCase.pascal(nodeType) %>Node> = []
-        const nodesDb = await getAllNodesOfType()
+        const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {
             nodes.push(convertOutputData(node))
