@@ -12,6 +12,7 @@ axios.defaults.validateStatus = function (status) {
 // to simplify the test code and make it more stable.
 class CustomWorld extends World {
     nodes = new Map<string, any>()
+    nodeCollections = new Map<string, any>()
     relationships = new Map<string, any>()
     response: any
 
@@ -25,6 +26,14 @@ class CustomWorld extends World {
 
     recallNode(label: string) {
         return this.nodes.get(label)
+    }
+
+    rememberNodeCollection(data: any[], label: string, nodeType: NodeType) {
+        this.nodeCollections.set(label, {data, nodeType})
+    }
+
+    recallNodeCollection(label: string) {
+        return this.nodeCollections.get(label)
     }
 
     rememberRelationship(relationship: any, label: string) {
