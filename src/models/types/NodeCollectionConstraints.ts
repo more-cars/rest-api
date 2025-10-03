@@ -1,4 +1,5 @@
 export type NodeCollectionConstraints = {
-    page: number
     page?: number | null
+    sortByProperty?: string | null
+    sortDirection?: string | null
 }

@@ -1,13 +1,13 @@
 import type {NodeCollectionConstraints} from "../../../models/types/NodeCollectionConstraints"
 import {CarModelNode} from "./types/CarModelNode"
-import {getDbQueryPaginationParams} from "../getDbQueryPaginationParams"
+import {getDbQueryCollectionParams} from "../getDbQueryCollectionParams"
 import {fetchNodesFromDb} from "../fetchNodesFromDb"
 import {NodeTypeLabel} from "../../NodeTypeLabel"
 import {mapDbNodeToCarModelNode} from "./mapDbNodeToCarModelNode"
 
-export async function getAllNodesOfType(constraints: NodeCollectionConstraints = {page: 1}): Promise<Array<CarModelNode>> {
+export async function getAllNodesOfType(constraints: NodeCollectionConstraints = {}): Promise<Array<CarModelNode>> {
     const nodes: Array<CarModelNode> = []
-    const dbParams = getDbQueryPaginationParams(constraints)
+    const dbParams = getDbQueryCollectionParams(constraints)
     const dbNodes = await fetchNodesFromDb(NodeTypeLabel.CarModel, dbParams)
 
     dbNodes.forEach((dbNode) => {

@@ -1,0 +1,15 @@
+meta {
+  name: Get all Car Models (valid sort)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/car-models?sort_by_property=name&sort_direction=desc
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body: isArray
+}

@@ -5,8 +5,10 @@ import {getAllNodesOfTypeQuery} from "./getAllNodesOfTypeQuery"
 import type {CollectionQueryParams} from "../types/CollectionQueryParams"
 
 export async function fetchNodesFromDb(nodeType: NodeTypeLabel, params: CollectionQueryParams = {
+    sortByProperty: 'mc_id',
+    sortDirection: 'ASC',
     limit: 100,
-    offset: 0
+    offset: 0,
 }): Promise<Array<Node>> {
     const nodes: Array<Node> = []
 

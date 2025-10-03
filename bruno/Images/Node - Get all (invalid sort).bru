@@ -1,0 +1,15 @@
+meta {
+  name: Get all Images (invalid sort)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/images?sort_by_property=blubb
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.body: isString
+}

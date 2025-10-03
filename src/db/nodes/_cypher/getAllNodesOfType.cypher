@@ -1,5 +1,5 @@
 MATCH (node:nodeLabel)
 RETURN node
-  ORDER BY node.mc_id
+  ORDER BY node.$sortByProperty $sortDirection
   SKIP $offset
   LIMIT $limit

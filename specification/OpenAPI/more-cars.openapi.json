@@ -173,6 +173,29 @@
               "minimum": 1,
               "default": 1
             }
+          },
+          {
+            "in": "query",
+            "name": "sort_by_property",
+            "description": "Returns the `Brand` collection, ordered by the specified property.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "id",
+                "name",
+                "full_name",
+                "founded",
+                "defunct",
+                "wmi",
+                "hsn",
+                "created_at",
+                "updated_at"
+              ],
+              "default": "id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/SortDirection"
           }
         ],
         "responses": {
@@ -185,6 +208,16 @@
                   "items": {
                     "$ref": "#/components/schemas/Brand"
                   }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction') are invalid.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
                 }
               }
             }
@@ -606,6 +639,29 @@
               "minimum": 1,
               "default": 1
             }
+          },
+          {
+            "in": "query",
+            "name": "sort_by_property",
+            "description": "Returns the `Car Model` collection, ordered by the specified property.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "id",
+                "name",
+                "built_from",
+                "built_to",
+                "generation",
+                "internal_code",
+                "total_production",
+                "created_at",
+                "updated_at"
+              ],
+              "default": "id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/SortDirection"
           }
         ],
         "responses": {
@@ -618,6 +674,16 @@
                   "items": {
                     "$ref": "#/components/schemas/CarModel"
                   }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction') are invalid.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
                 }
               }
             }
@@ -1134,6 +1200,38 @@
               "minimum": 1,
               "default": 1
             }
+          },
+          {
+            "in": "query",
+            "name": "sort_by_property",
+            "description": "Returns the `Image` collection, ordered by the specified property.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "id",
+                "image_provider",
+                "external_id",
+                "name",
+                "description",
+                "creator",
+                "license",
+                "tags",
+                "source",
+                "image_url_original",
+                "image_url_xxl",
+                "image_url_xl",
+                "image_url_l",
+                "image_url_m",
+                "image_url_s",
+                "image_url_xs",
+                "created_at",
+                "updated_at"
+              ],
+              "default": "id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/SortDirection"
           }
         ],
         "responses": {
@@ -1146,6 +1244,16 @@
                   "items": {
                     "$ref": "#/components/schemas/Image"
                   }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction') are invalid.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
                 }
               }
             }
@@ -1420,6 +1528,28 @@
               "minimum": 1,
               "default": 1
             }
+          },
+          {
+            "in": "query",
+            "name": "sort_by_property",
+            "description": "Returns the `Company` collection, ordered by the specified property.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "id",
+                "name",
+                "founded",
+                "defunct",
+                "headquarters_location",
+                "legal_headquarters_location",
+                "created_at",
+                "updated_at"
+              ],
+              "default": "id"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/SortDirection"
           }
         ],
         "responses": {
@@ -1432,6 +1562,16 @@
                   "items": {
                     "$ref": "#/components/schemas/Company"
                   }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction') are invalid.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
                 }
               }
             }
@@ -2621,6 +2761,21 @@
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
           }
+        }
+      }
+    },
+    "parameters": {
+      "SortDirection": {
+        "in": "query",
+        "name": "sort_direction",
+        "description": "Allows to switch the order direction of the returned node collection between ascending and descending.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "asc",
+            "desc"
+          ],
+          "default": "asc"
         }
       }
     }
