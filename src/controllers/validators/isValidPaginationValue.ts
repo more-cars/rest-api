@@ -1,4 +1,8 @@
 export function isValidPaginationValue(value: unknown) {
+    if (value === null) {
+        return true
+    }
+
     if (typeof value !== 'number') {
         return false
     }
