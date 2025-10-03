@@ -4,9 +4,9 @@ import {NodeTypeLabel} from "../src/db/NodeTypeLabel"
 import type {NodeTypeLabelOld} from "./lib/types/NodeTypeLabelOld"
 import cliProgress from "cli-progress"
 import {DbRelationship} from "../src/db/types/DbRelationship"
-import {deleteRelationshipsOfType} from "./lib/deleteRelationshipsOfType"
 import {fetchOldRelationshipsOfType} from "./lib/fetchOldRelationshipsOfType"
 import {RelationshipTypeMapping} from "./lib/RelationshipTypeMapping"
+import {deleteAllRelationshipsOfType} from "../tests/_toolbox/dbSeeding/deleteAllRelationshipsOfType"
 import type {RelationshipTypeLabelOld} from "./lib/types/RelationshipTypeLabelOld"
 import {createDbRelationship} from "../src/db/relationships/createDbRelationship"
 import {addMoreCarsIdToRelationship} from "../src/db/relationships/addMoreCarsIdToRelationship"
@@ -27,7 +27,7 @@ async function migrateRelationshipsOfType() {
 
     const deleteRelationships = await promptDeleteRelationships()
     if (deleteRelationships) {
-        await deleteRelationshipsOfType(newRelationshipType, newStartNodeType)
+        await deleteAllRelationshipsOfType(newRelationshipType, newStartNodeType, newEndNodeType)
     }
 
     let records

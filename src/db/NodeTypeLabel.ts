@@ -1,6 +1,6 @@
 export enum NodeTypeLabel {
+    Company = "Company",
     Brand = "Brand",
     CarModel = "CarModel",
     Image = "Image",
-    Company = "Company",
 }
