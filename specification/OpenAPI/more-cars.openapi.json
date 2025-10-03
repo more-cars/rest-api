@@ -165,14 +165,7 @@
         "summary": "Returns a list of all `Brand`s",
         "parameters": [
           {
-            "in": "query",
-            "name": "page",
-            "description": "Defines, which slice of the whole `Brand` collection should be returned. Each full page contains 100 nodes. The last page contains the remaining nodes. Pages that are out of range return an empty list.",
-            "schema": {
-              "type": "integer",
-              "minimum": 1,
-              "default": 1
-            }
+            "$ref": "#/components/parameters/Page"
           },
           {
             "in": "query",
@@ -631,14 +624,7 @@
         "summary": "Returns a list of all `Car Model`s",
         "parameters": [
           {
-            "in": "query",
-            "name": "page",
-            "description": "Defines, which slice of the whole `Car Model` collection should be returned. Each full page contains 100 nodes. The last page contains the remaining nodes. Pages that are out of range return an empty list.",
-            "schema": {
-              "type": "integer",
-              "minimum": 1,
-              "default": 1
-            }
+            "$ref": "#/components/parameters/Page"
           },
           {
             "in": "query",
@@ -1192,14 +1178,7 @@
         "summary": "Returns a list of all `Image`s",
         "parameters": [
           {
-            "in": "query",
-            "name": "page",
-            "description": "Defines, which slice of the whole `Image` collection should be returned. Each full page contains 100 nodes. The last page contains the remaining nodes. Pages that are out of range return an empty list.",
-            "schema": {
-              "type": "integer",
-              "minimum": 1,
-              "default": 1
-            }
+            "$ref": "#/components/parameters/Page"
           },
           {
             "in": "query",
@@ -1520,14 +1499,7 @@
         "summary": "Get all `Companies`",
         "parameters": [
           {
-            "in": "query",
-            "name": "page",
-            "description": "Defines, which slice of the whole `Company` collection should be returned. Each full page contains 100 nodes. The last page contains the remaining nodes. Pages that are out of range return an empty list.",
-            "schema": {
-              "type": "integer",
-              "minimum": 1,
-              "default": 1
-            }
+            "$ref": "#/components/parameters/Page"
           },
           {
             "in": "query",
@@ -2765,6 +2737,16 @@
       }
     },
     "parameters": {
+      "Page": {
+        "in": "query",
+        "name": "page",
+        "description": "Defines, which slice of the whole collection should be returned. Each full page contains 100 nodes. The last page contains the remaining nodes. Pages that are out of range return an empty list.",
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1
+        }
+      },
       "SortDirection": {
         "in": "query",
         "name": "sort_direction",
