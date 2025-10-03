@@ -36,7 +36,7 @@ export class Image {
         return convertOutputData(node)
     }
 
-    static async findAll(options: NodeCollectionConstraints = {page: 1}): Promise<ImageNode[]> {
+    static async findAll(options: NodeCollectionConstraints = {}): Promise<ImageNode[]> {
         const nodes: Array<ImageNode> = []
         const nodesDb = await getAllNodesOfType(options)
 

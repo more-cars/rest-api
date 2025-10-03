@@ -42,7 +42,7 @@ export class CarModel {
         return convertOutputData(node)
     }
 
-    static async findAll(options: NodeCollectionConstraints = {page: 1}): Promise<CarModelNode[]> {
+    static async findAll(options: NodeCollectionConstraints = {}): Promise<CarModelNode[]> {
         const nodes: Array<CarModelNode> = []
         const nodesDb = await getAllNodesOfType(options)
 

@@ -41,7 +41,7 @@ export class Brand {
         return convertOutputData(node)
     }
 
-    static async findAll(options: NodeCollectionConstraints = {page: 1}): Promise<BrandNode[]> {
+    static async findAll(options: NodeCollectionConstraints = {}): Promise<BrandNode[]> {
         const nodes: Array<BrandNode> = []
         const nodesDb = await getAllNodesOfType(options)
 
