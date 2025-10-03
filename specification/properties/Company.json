@@ -1,0 +1,10 @@
+[
+  "id",
+  "name",
+  "founded",
+  "defunct",
+  "headquarters_location",
+  "legal_headquarters_location",
+  "created_at",
+  "updated_at"
+]

@@ -1,0 +1,20 @@
+[
+  "id",
+  "external_id",
+  "image_provider",
+  "name",
+  "description",
+  "creator",
+  "license",
+  "tags",
+  "source",
+  "image_url_original",
+  "image_url_xxl",
+  "image_url_xl",
+  "image_url_l",
+  "image_url_m",
+  "image_url_s",
+  "image_url_xs",
+  "created_at",
+  "updated_at"
+]
