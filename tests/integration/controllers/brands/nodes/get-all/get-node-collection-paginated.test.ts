@@ -4,11 +4,15 @@ import {app} from "../../../../../../src/app"
 import {Brand} from "../../../../../../src/models/brands/Brand"
 
 describe('Expecting correct status code when requesting a paginated node collection', () => {
-    test('when pagination parameter is valid', async () => {
+    test.each([
+        ['1'],
+        ['999'],
+        ['']
+    ])('when pagination parameter is valid: $0', async (page) => {
         Brand.findAll = vi.fn().mockReturnValue([])
 
         const response = await request(app)
-            .get('/brands?page=1')
+            .get('/brands?page=' + page)
 
         expect(response.statusCode)
             .toBe(200)
@@ -25,16 +29,16 @@ describe('Expecting correct status code when requesting a paginated node collect
     })
 
     test.each([
-        [0.9],
-        [0],
-        [-1],
-        [-999],
-        [-4.963],
+        ['0.9'],
+        ['0'],
+        ['-1'],
+        ['-999'],
+        ['-4.963'],
         ['three'],
-        [true],
-        [false],
-        [null],
-    ])('when pagination parameter is invalid', async (page) => {
+        ['true'],
+        ['false'],
+        ['null']
+    ])('when pagination parameter is invalid: $0', async (page) => {
         Brand.findAll = vi.fn().mockReturnValue([])
 
         const response = await request(app)
