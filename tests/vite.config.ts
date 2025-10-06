@@ -5,7 +5,7 @@ const rootDir = __dirname + '/../'
 
 export default defineConfig(({mode}) => ({
     test: {
-        name: 'unit+integration',
+        name: 'developer',
         root: rootDir,
         include: [
             'tests/unit/**/*.test.ts',
@@ -26,8 +26,8 @@ export default defineConfig(({mode}) => ({
         reporters: [
             'default',
             ['junit', {
-                outputFile: 'test-reports/unit+integration/report.xml',
-                suiteName: 'Unit+Integration Tests',
+                outputFile: 'test-reports/developer/report.xml',
+                suiteName: 'Developer Tests',
                 classnameTemplate: ''
             }],
         ],
@@ -43,7 +43,7 @@ export default defineConfig(({mode}) => ({
                 'text',
                 'html',
             ],
-            reportsDirectory: 'test-reports/unit+integration/coverage',
+            reportsDirectory: 'test-reports/developer/coverage',
             reportOnFailure: true,
             thresholds: {
                 statements: 99,

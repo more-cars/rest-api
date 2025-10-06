@@ -76,11 +76,11 @@ To verify that the specification is a valid OpenAPI document run `npm run tests:
     * a wizard will ask for the required parameters
     * by default the test report is created in folder `test-reports/integration`
     * by default the code coverage report is created in folder `test-reports/integration/code-coverage` (if activated)
-* run `npm run tests:unit+integration` to execute all unit and all integration tests
-    * test report is created in folder `test-reports/unit+integration`
-* run `npm run tests:unit+integration:coverage` to run both test suites and to create a combined code coverage report
-    * test report is created in folder `test-reports/unit+integration`
-    * coverage report is created in folder `test-reports/unit+integration/code-coverage`
+* run `npm run tests:developer` to execute all unit and all integration tests
+    * test report is created in folder `test-reports/developer`
+* run `npm run tests:developer:coverage` to run both test suites and to create a combined code coverage report
+    * test report is created in folder `test-reports/developer`
+    * coverage report is created in folder `test-reports/developer/code-coverage`
 
 ### Behavior tests
 
