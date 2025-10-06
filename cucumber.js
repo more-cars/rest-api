@@ -4,7 +4,7 @@
 import "dotenv/config.js"
 
 export default {
-    paths: ['rest-api-specification/**/*.feature'],
+    paths: ['rest-api-specification/spec/**/*.feature'],
     tags: '@implemented and not @deactivated',
     require: ['tests/behavior/**/*.ts'],
     requireModule: ['ts-node/register'],
