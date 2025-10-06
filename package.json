@@ -54,7 +54,7 @@
     "start": "npx ts-node src/server.ts",
     "local:app:start": "node --watch --env-file=.env -r ts-node/register src/server.ts",
     "local:db:start": "docker run --rm --env NEO4J_AUTH=none --publish=7474:7474 --publish=7687:7687 neo4j:5.23.0",
-    "specification:download": "node --env-file=.env -r ts-node/register specification/sync-scripts/download-specification/download-specification.ts",
+    "specification:download": "node --env-file=.env -r ts-node/register rest-api-specification/download-specification.ts",
     "app:deploy": "./deployment/deploy-app.sh",
     "app:undeploy": "./deployment/undeploy-app.sh",
     "db:migrate:nodes": "node --env-file=.env -r ts-node/register migration/migrate-nodes.ts",
