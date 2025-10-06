@@ -7,7 +7,11 @@ import request from "supertest"
 import {app} from "../../../../../../src/app"
 
 describe('Expecting correct status code when requesting a paginated node collection', () => {
-    test('when pagination parameter is valid', async () => {
+    test.each([
+        ['1'],
+        ['999'],
+        ['']
+    ])('when pagination parameter is valid: $0', async (page) => {
         <%= h.changeCase.pascal(nodeType) %>.findAll = vi.fn().mockReturnValue([])
 
         const response = await request(app)
@@ -28,16 +32,16 @@ describe('Expecting correct status code when requesting a paginated node collect
     })
 
     test.each([
-        [0.9],
-        [0],
-        [-1],
-        [-999],
-        [-4.963],
+        ['0.9'],
+        ['0'],
+        ['-1'],
+        ['-999'],
+        ['-4.963'],
         ['three'],
-        [true],
-        [false],
-        [null],
-    ])('when pagination parameter is invalid', async (page) => {
+        ['true'],
+        ['false'],
+        ['null']
+    ])('when pagination parameter is invalid: $0', async (page) => {
         <%= h.changeCase.pascal(nodeType) %>.findAll = vi.fn().mockReturnValue([])
 
         const response = await request(app)
