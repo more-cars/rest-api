@@ -18,7 +18,7 @@ assert {
 }
 
 script:pre-request {
-  await lib.Companies.ensureValid<%= h.changeCase.pascal(nodeType) %>Exists()
+  await lib.<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>.ensureValid<%= h.changeCase.pascal(nodeType) %>Exists()
 }
 
 script:post-response {

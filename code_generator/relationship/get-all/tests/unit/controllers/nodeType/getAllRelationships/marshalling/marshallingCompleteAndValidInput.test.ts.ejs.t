@@ -2,8 +2,8 @@
 to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/getAll<%= h.changeCase.pascal(relationshipName) %>Relationships/marshalling/marshallingCompleteAndValidInput.test.ts
 ---
 import {expect, test} from 'vitest'
-import type {<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Relationship} from "../../../../../../src/models/companies/types/<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Relationship"
-import {marshal<%= h.changeCase.pascal(relationshipName) %>Relationships} from "../../../../../../src/controllers/companies/marshalling/marshal<%= h.changeCase.pascal(relationshipName) %>Relationships"
+import type {<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Relationship} from "../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Relationship"
+import {marshal<%= h.changeCase.pascal(relationshipName) %>Relationships} from "../../../../../../src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshalling/marshal<%= h.changeCase.pascal(relationshipName) %>Relationships"
 
 test('marshalling a complete and valid request', async () => {
     const relationships: Array<<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Relationship> = [
