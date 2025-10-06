@@ -6,7 +6,7 @@ import "dotenv/config.js"
 export default {
     paths: ['rest-api-specification/spec/**/*.feature'],
     tags: '@implemented and not @deactivated',
-    require: ['tests/behavior/**/*.ts'],
+    require: ['tests/behavior/steps/**/*.ts'],
     requireModule: ['ts-node/register'],
     format: [
         'html:test-reports/behavior/cucumber-report.html',
