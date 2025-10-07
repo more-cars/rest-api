@@ -3,10 +3,7 @@ import axios from "axios"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
 import type {NodeType} from "../../../_toolbox/NodeType"
 
-/**
- * @deprecated: use "the user requests a {string} collection" step instead
- */
-When('the user requests all {string}s',
+When('the user requests a {string} collection',
     async (nodeType: string) => {
         const path = getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeType)
 
