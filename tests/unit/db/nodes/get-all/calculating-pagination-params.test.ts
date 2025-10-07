@@ -6,7 +6,7 @@ test.each([
     [2, 100, 100],
     [3, 200, 100],
     [99, 9800, 100],
-])('converting the page parameter to the respective db query parameters', async (page, offset, limit) => {
+])('calculating the pagination parameters', async (page, offset, limit) => {
     const dbParams = getDbQueryCollectionParams({page})
 
     expect(dbParams.offset).to.equal(offset)

@@ -177,6 +177,20 @@
           },
           {
             "$ref": "#/components/parameters/SortDirection"
+          },
+          {
+            "in": "query",
+            "name": "filter_by_property",
+            "description": "Specifies by which node property the `Brand` collection should be filtered.",
+            "schema": {
+              "$ref": "#/components/schemas/BrandProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/FilterValue"
+          },
+          {
+            "$ref": "#/components/parameters/FilterOperator"
           }
         ],
         "responses": {
@@ -194,7 +208,7 @@
             }
           },
           "400": {
-            "description": "One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction') are invalid.",
+            "description": "One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -624,6 +638,20 @@
           },
           {
             "$ref": "#/components/parameters/SortDirection"
+          },
+          {
+            "in": "query",
+            "name": "filter_by_property",
+            "description": "Specifies by which node property the `Car Model` collection should be filtered.",
+            "schema": {
+              "$ref": "#/components/schemas/CarModelProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/FilterValue"
+          },
+          {
+            "$ref": "#/components/parameters/FilterOperator"
           }
         ],
         "responses": {
@@ -641,7 +669,7 @@
             }
           },
           "400": {
-            "description": "One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction') are invalid.",
+            "description": "One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1166,6 +1194,20 @@
           },
           {
             "$ref": "#/components/parameters/SortDirection"
+          },
+          {
+            "in": "query",
+            "name": "filter_by_property",
+            "description": "Specifies by which node property the `Image` collection should be filtered.",
+            "schema": {
+              "$ref": "#/components/schemas/ImageProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/FilterValue"
+          },
+          {
+            "$ref": "#/components/parameters/FilterOperator"
           }
         ],
         "responses": {
@@ -1183,7 +1225,7 @@
             }
           },
           "400": {
-            "description": "One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction') are invalid.",
+            "description": "One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1466,6 +1508,20 @@
           },
           {
             "$ref": "#/components/parameters/SortDirection"
+          },
+          {
+            "in": "query",
+            "name": "filter_by_property",
+            "description": "Specifies by which node property the `Company` collection should be filtered.",
+            "schema": {
+              "$ref": "#/components/schemas/CompanyProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/FilterValue"
+          },
+          {
+            "$ref": "#/components/parameters/FilterOperator"
           }
         ],
         "responses": {
@@ -1483,7 +1539,7 @@
             }
           },
           "400": {
-            "description": "One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction') are invalid.",
+            "description": "One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -2770,6 +2826,28 @@
             "desc"
           ],
           "default": "asc"
+        }
+      },
+      "FilterValue": {
+        "in": "query",
+        "name": "filter_value",
+        "description": "Specifies the value against which the filter property is compared against."
+      },
+      "FilterOperator": {
+        "in": "query",
+        "name": "filter_operator",
+        "description": "Specifies how the property values should be compared against the filter value.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "eq",
+            "neq",
+            "lt",
+            "gt",
+            "lte",
+            "gte"
+          ],
+          "default": "eq"
         }
       }
     }

@@ -2,29 +2,34 @@ import {describe, expect, test} from 'vitest'
 import {getAllNodeTypes} from "../../../../_toolbox/getAllNodeTypes"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 import {getAllNodesOfTypeQuery} from "../../../../../src/db/nodes/getAllNodesOfTypeQuery"
+import {DbFilterOperator} from "../../../../../src/db/types/DbFilterOperator"
 
-describe('assembly of the database query for a "get all nodes" request', () => {
+describe('db query assembly for "get all nodes" - sorting', () => {
     test.each([
-        ['default', 'mc_id', 'ASC', 0, 100],
-        ['pagination', 'mc_id', 'ASC', 0, 100],
-        ['sort', 'mc_id', 'ASC', 0, 100],
-        ['descending sort', 'mc_id', 'DESC', 0, 100],
-    ])('$0 request', async (name, sortByProperty, sortDirection, offset, limit) => {
+        ['mc_id', 'ASC'],
+        ['name', 'ASC'],
+        ['mc_id', 'DESC'],
+        ['name', 'DESC'],
+    ])('sorting by $0 $1', async (sortByProperty, sortDirection) => {
         getAllNodeTypes().forEach((nodeType: NodeTypeLabel) => {
             const query = getAllNodesOfTypeQuery(nodeType, {
                 sortByProperty,
                 sortDirection,
-                offset,
-                limit,
+                filterByProperty: 'dummy',
+                filterValue: 'dummy',
+                filterOperator: DbFilterOperator.equal,
+                offset: 0,
+                limit: 100,
             })
 
             expect(query)
                 .toEqual(
                     "MATCH (node:" + nodeType + ")\n" +
+                    "WHERE node.dummy = 'dummy'\n" +
                     "RETURN node\n" +
                     "  ORDER BY node." + sortByProperty + " " + sortDirection + "\n" +
-                    "  SKIP " + offset + "\n" +
-                    "  LIMIT " + limit)
+                    "  SKIP 0\n" +
+                    "  LIMIT 100")
         })
     })
 })

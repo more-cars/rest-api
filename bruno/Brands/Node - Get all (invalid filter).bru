@@ -1,0 +1,15 @@
+meta {
+  name: Get all Brands (invalid filter)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/brands?filter_by_property=blubb
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 400
+  res.body: isString
+}

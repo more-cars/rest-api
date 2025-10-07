@@ -1,14 +1,18 @@
 import neo4j, {Driver, Node, Session} from "neo4j-driver"
 import {getDriver} from "../driver"
-import {NodeTypeLabel} from "../NodeTypeLabel"
-import {getAllNodesOfTypeQuery} from "./getAllNodesOfTypeQuery"
+import type {NodeTypeLabel} from "../NodeTypeLabel"
 import type {CollectionQueryParams} from "../types/CollectionQueryParams"
+import {DbFilterOperator} from "../types/DbFilterOperator"
+import {getAllNodesOfTypeQuery} from "./getAllNodesOfTypeQuery"
 
 export async function fetchNodesFromDb(nodeType: NodeTypeLabel, params: CollectionQueryParams = {
     sortByProperty: 'mc_id',
     sortDirection: 'ASC',
-    limit: 100,
+    filterByProperty: 'mc_id',
+    filterValue: -1,
+    filterOperator: DbFilterOperator.not_equal,
     offset: 0,
+    limit: 100,
 }): Promise<Array<Node>> {
     const nodes: Array<Node> = []
 
