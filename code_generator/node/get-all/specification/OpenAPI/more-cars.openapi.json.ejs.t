@@ -24,6 +24,20 @@ skip_if: Get all `<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>`
           {
             "$ref": "#/components/parameters/SortDirection"
           }
+          {
+            "in": "query",
+            "name": "filter_by_property",
+            "description": "Specifies by which node property the `<%= h.changeCase.title(nodeType) %>` collection should be filtered.",
+            "schema": {
+              "$ref": "#/components/schemas/<%= h.changeCase.pascal(nodeType) %>Properties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/FilterValue"
+          },
+          {
+            "$ref": "#/components/parameters/FilterOperator"
+          }
         ],
         "responses": {
           "200": {
@@ -35,6 +49,16 @@ skip_if: Get all `<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>`
                   "items": {
                     "$ref": "#/components/schemas/<%= h.changeCase.pascal(nodeType) %>"
                   }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
                 }
               }
             }
