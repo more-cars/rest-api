@@ -4,15 +4,15 @@ import {seedCarModel} from "./car-models/nodes/seedCarModel"
 import {seedImage} from "./images/nodes/seedImage"
 import {seedCompany} from "./companies/nodes/seedCompany"
 
-export async function seedNode(nodeType: NodeType) {
+export async function seedNode(nodeType: NodeType, customFakeData: object = {}) {
     switch (nodeType) {
         case "brand":
-            return await seedBrand()
+            return await seedBrand(customFakeData)
         case "car model":
-            return await seedCarModel()
+            return await seedCarModel(customFakeData)
         case "image":
-            return await seedImage()
+            return await seedImage(customFakeData)
         case "company":
-            return await seedCompany()
+            return await seedCompany(customFakeData)
     }
 }
