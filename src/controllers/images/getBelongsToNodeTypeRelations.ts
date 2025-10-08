@@ -1,6 +1,6 @@
 import express from "express"
 import {Image} from "../../models/images/Image"
-import {marshalBelongsToNodeTypeRelationships} from "./marshalBelongsToNodeTypeRelationships"
+import {marshalBelongsToNodeTypeRelationships} from "./marshalling/marshalBelongsToNodeTypeRelationships"
 import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
 import {sendResponse422} from "../responses/sendResponse422"

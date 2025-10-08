@@ -1,5 +1,7 @@
 import {expect, test} from 'vitest'
-import {marshalRelationship} from "../../../../../../src/controllers/images/marshalRelationship"
+import {
+    marshalBelongsToNodeRelationship
+} from "../../../../../../src/controllers/images/marshalling/marshalBelongsToNodeRelationship"
 import {ImageBelongsToNodeRelationship} from "../../../../../../src/models/images/types/ImageBelongsToNodeRelationship"
 
 test('marshalling a complete and valid request', async () => {
@@ -12,7 +14,7 @@ test('marshalling a complete and valid request', async () => {
         updated_at: "2023-10-01T00:00:00.001Z",
     }
 
-    const mappedNode = marshalRelationship(relationship)
+    const mappedNode = marshalBelongsToNodeRelationship(relationship)
 
     expect(mappedNode)
         .toStrictEqual({

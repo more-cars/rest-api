@@ -4,10 +4,18 @@ import type {
 } from "../../../../../../src/models/images/types/ImageBelongsToNodeTypeRelationships"
 import {
     marshalBelongsToNodeTypeRelationships
-} from "../../../../../../src/controllers/images/marshalBelongsToNodeTypeRelationships"
+} from "../../../../../../src/controllers/images/marshalling/marshalBelongsToNodeTypeRelationships"
 
 test('marshalling a complete and valid request', async () => {
     const relationships: ImageBelongsToNodeTypeRelationships = {
+        companies: [{
+            image_id: 13,
+            partner_node_id: 23,
+            relationship_id: 33,
+            relationship_name: "BLEBB",
+            created_at: "2023-10-01T00:00:00.001Z",
+            updated_at: "2023-10-01T00:00:00.001Z",
+        }],
         brands: [{
             image_id: 10,
             partner_node_id: 20,
@@ -37,6 +45,14 @@ test('marshalling a complete and valid request', async () => {
 
     expect(mappedNode)
         .toStrictEqual({
+            companies: [{
+                image_id: 13,
+                partner_node_id: 23,
+                relationship_id: 33,
+                relationship_name: "BLEBB",
+                created_at: "2023-10-01T00:00:00.001Z",
+                updated_at: "2023-10-01T00:00:00.001Z",
+            }],
             brands: [{
                 image_id: 10,
                 partner_node_id: 20,

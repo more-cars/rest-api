@@ -1,18 +1,16 @@
 import {CarModelNode} from "../../../models/car-models/types/CarModelNode"
 import {CarModelResponse} from "../types/CarModelResponse"
 
-export function marshalNode(carModel: CarModelNode) {
-    const marshalledData: CarModelResponse = {
-        id: carModel.id,
-        name: carModel.name,
-        built_from: carModel.built_from ?? null,
-        built_to: carModel.built_to ?? null,
-        generation: carModel.generation ?? null,
-        internal_code: carModel.internal_code ?? null,
-        total_production: carModel.total_production ?? null,
-        created_at: carModel.created_at,
-        updated_at: carModel.updated_at,
-    }
-
-    return marshalledData
+export function marshalNode(node: CarModelNode) {
+    return {
+        id: node.id,
+        name: node.name,
+        built_from: node.built_from ?? null,
+        built_to: node.built_to ?? null,
+        generation: node.generation ?? null,
+        internal_code: node.internal_code ?? null,
+        total_production: node.total_production ?? null,
+        created_at: node.created_at,
+        updated_at: node.updated_at,
+    } as CarModelResponse
 }

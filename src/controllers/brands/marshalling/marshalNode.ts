@@ -1,18 +1,16 @@
 import {BrandResponse} from "../types/BrandResponse"
 import {BrandNode} from "../../../models/brands/types/BrandNode"
 
-export function marshalNode(brand: BrandNode) {
-    const marshalledData: BrandResponse = {
-        id: brand.id,
-        name: brand.name,
-        full_name: brand.full_name ?? null,
-        founded: brand.founded ?? null,
-        defunct: brand.defunct ?? null,
-        wmi: brand.wmi ?? null,
-        hsn: brand.hsn ?? null,
-        created_at: brand.created_at,
-        updated_at: brand.updated_at,
-    }
-
-    return marshalledData
+export function marshalNode(node: BrandNode) {
+    return {
+        id: node.id,
+        name: node.name,
+        full_name: node.full_name ?? null,
+        founded: node.founded ?? null,
+        defunct: node.defunct ?? null,
+        wmi: node.wmi ?? null,
+        hsn: node.hsn ?? null,
+        created_at: node.created_at,
+        updated_at: node.updated_at,
+    } as BrandResponse
 }

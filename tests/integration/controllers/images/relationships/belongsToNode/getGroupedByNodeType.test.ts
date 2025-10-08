@@ -26,6 +26,7 @@ test('Semantic or runtime error', async () => {
 })
 test('Node exists, but has no relationships', async () => {
     Image.getBelongsToNodeTypeRelationships = vi.fn().mockReturnValue({
+        companies: [],
         brands: [],
         car_models: [],
     })

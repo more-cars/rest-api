@@ -2,11 +2,11 @@ import {CarModelNode} from "../../../models/car-models/types/CarModelNode"
 import {marshalNode} from "./marshalNode"
 import {CarModelResponse} from "../types/CarModelResponse"
 
-export function marshalNodeCollection(carModels: Array<CarModelNode>): Array<CarModelResponse> {
+export function marshalNodeCollection(nodes: Array<CarModelNode>) {
     const responseObjects: Array<CarModelResponse> = []
 
-    carModels.forEach((carModel: CarModelNode) => {
-        responseObjects.push(marshalNode(carModel))
+    nodes.forEach((node: CarModelNode) => {
+        responseObjects.push(marshalNode(node))
     })
 
     return responseObjects

@@ -2,7 +2,7 @@ import {BrandHasImageRelationship} from "../../../models/brands/types/BrandHasIm
 import {BrandHasImageResponse} from "../types/BrandHasImageResponse"
 import {marshalHasImageRelationship} from "./marshalHasImageRelationship"
 
-export function marshalHasImageRelationships(relationships: Array<BrandHasImageRelationship>): Array<BrandHasImageResponse> {
+export function marshalHasImageRelationships(relationships: Array<BrandHasImageRelationship>) {
     const responseObjects: Array<BrandHasImageResponse> = []
 
     relationships.forEach((relationship) => {

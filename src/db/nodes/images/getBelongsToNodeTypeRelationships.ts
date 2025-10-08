@@ -9,6 +9,7 @@ import type {ImageBelongsToNodeRelationship} from "../../../models/images/types/
 
 export async function getBelongsToNodeTypeRelationships(imageId: number): Promise<ImageBelongsToNodeTypeRelationships> {
     return {
+        companies: await fetchImageRelationshipsForNodeType(NodeTypeLabel.Company, imageId),
         brands: await fetchImageRelationshipsForNodeType(NodeTypeLabel.Brand, imageId),
         car_models: await fetchImageRelationshipsForNodeType(NodeTypeLabel.CarModel, imageId)
     }

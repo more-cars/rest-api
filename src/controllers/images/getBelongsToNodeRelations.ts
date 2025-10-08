@@ -1,6 +1,6 @@
 import express from "express"
 import {Image} from "../../models/images/Image"
-import {marshalRelationships} from "./marshalRelationships"
+import {marshalBelongsToNodeRelationships} from "./marshalling/marshalBelongsToNodeRelationships"
 import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
 import {sendResponse422} from "../responses/sendResponse422"
@@ -15,7 +15,7 @@ export async function getBelongsToNodeRelations(req: express.Request, res: expre
             return sendResponse404(res)
         }
 
-        const marshalledData = marshalRelationships(relationships)
+        const marshalledData = marshalBelongsToNodeRelationships(relationships)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

@@ -1,6 +1,6 @@
 import express from "express"
 import {CarModel} from "../../models/car-models/CarModel"
-import {marshalRelationship} from "./marshalRelationship"
+import {marshalBelongsToBrandRelationship} from "./marshalling/marshalBelongsToBrandRelationship"
 import {sendResponse201} from "../responses/sendResponse201"
 import {sendResponse404} from "../responses/sendResponse404"
 import {sendResponse422} from "../responses/sendResponse422"
@@ -16,7 +16,7 @@ export async function createBelongsToBrandRelation(req: express.Request, res: ex
             return sendResponse404(res)
         }
 
-        const marshalledData = marshalRelationship(relationship)
+        const marshalledData = marshalBelongsToBrandRelationship(relationship)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

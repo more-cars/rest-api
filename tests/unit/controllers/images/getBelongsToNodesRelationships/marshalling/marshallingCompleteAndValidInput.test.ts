@@ -1,6 +1,8 @@
 import {expect, test} from 'vitest'
 import {ImageBelongsToNodeRelationship} from "../../../../../../src/models/images/types/ImageBelongsToNodeRelationship"
-import {marshalRelationships} from "../../../../../../src/controllers/images/marshalRelationships"
+import {
+    marshalBelongsToNodeRelationships
+} from "../../../../../../src/controllers/images/marshalling/marshalBelongsToNodeRelationships"
 
 test('marshalling a complete and valid request', async () => {
     const relationships: Array<ImageBelongsToNodeRelationship> = [
@@ -30,7 +32,7 @@ test('marshalling a complete and valid request', async () => {
         }
     ]
 
-    const mappedNode = marshalRelationships(relationships)
+    const mappedNode = marshalBelongsToNodeRelationships(relationships)
 
     expect(mappedNode)
         .toStrictEqual([

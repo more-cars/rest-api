@@ -1,6 +1,8 @@
 import {expect, test} from 'vitest'
 import {BrandHasCarModelRelationship} from "../../../../../../src/models/brands/types/BrandHasCarModelRelationship"
-import {marshalRelationships} from "../../../../../../src/controllers/brands/marshalRelationships"
+import {
+    marshalHasCarModelRelationships
+} from "../../../../../../src/controllers/brands/marshalling/marshalHasCarModelRelationships"
 
 test('marshalling a complete and valid request', async () => {
     const relationships: Array<BrandHasCarModelRelationship> = [
@@ -33,7 +35,7 @@ test('marshalling a complete and valid request', async () => {
         }
     ]
 
-    const mappedNode = marshalRelationships(relationships)
+    const mappedNode = marshalHasCarModelRelationships(relationships)
 
     expect(mappedNode)
         .toStrictEqual([
