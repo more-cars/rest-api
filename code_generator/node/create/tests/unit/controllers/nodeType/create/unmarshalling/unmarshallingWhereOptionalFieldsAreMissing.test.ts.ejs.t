@@ -21,7 +21,7 @@ to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeTyp
     }
 -%>
 import {expect, test} from 'vitest'
-import {unmarshal} from "../../../../../../src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/unmarshal"
+import {unmarshalInputData} from "../../../../../../src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshalling/unmarshalInputData"
 
 /**
  * Missing optional fields are automatically added as "undefined".
@@ -29,7 +29,7 @@ import {unmarshal} from "../../../../../../src/controllers/<%= h.changeCase.keba
 test('unmarshalling a valid request where optional fields are missing', async () => {
     const data: any = <%- JSON.stringify(props_in, null, 2).replace(/"([^"]+)":/g, '$1:') %>
 
-    const result = unmarshal(data)
+    const result = unmarshalInputData(data)
 
     expect(result)
         .toStrictEqual({

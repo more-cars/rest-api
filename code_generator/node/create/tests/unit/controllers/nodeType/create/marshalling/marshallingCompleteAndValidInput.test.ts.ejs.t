@@ -15,7 +15,7 @@ to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeTyp
 -%>
 import {expect, test} from 'vitest'
 import {<%= h.changeCase.pascal(nodeType) %>Node} from "../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node"
-import {marshal} from "../../../../../../src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshal"
+import {marshalNode} from "../../../../../../src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshalling/marshalNode"
 
 test('marshalling a complete and valid request', async () => {
     const node: <%= h.changeCase.pascal(nodeType) %>Node = {
@@ -25,7 +25,7 @@ test('marshalling a complete and valid request', async () => {
 <%- props.map(line => '        ' + line).join(',\n') %>,
     }
 
-    const mappedNode = marshal(node)
+    const mappedNode = marshalNode(node)
 
     expect(mappedNode)
         .toStrictEqual({

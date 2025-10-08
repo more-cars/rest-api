@@ -1,10 +1,10 @@
 ---
-to: src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshal.ts
+to: src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshalling/marshalNode.ts
 ---
 import {<%= h.changeCase.pascal(nodeType) %>Response} from "./types/<%= h.changeCase.pascal(nodeType) %>Response"
 import {<%= h.changeCase.pascal(nodeType) %>Node} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node"
 
-export function marshal(node: <%= h.changeCase.pascal(nodeType) %>Node) {
+export function marshalNode(node: <%= h.changeCase.pascal(nodeType) %>Node) {
     return {
         id: node.id,
 <% for (prop in properties) { -%>

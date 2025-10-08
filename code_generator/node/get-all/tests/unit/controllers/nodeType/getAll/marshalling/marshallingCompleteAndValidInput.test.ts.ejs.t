@@ -4,7 +4,7 @@ to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeTyp
 import {expect, test} from 'vitest'
 import type {<%= h.changeCase.pascal(nodeType) %>Node} from "../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node"
 import Fake<%= h.changeCase.pascal(nodeType) %> from "../../../../_toolbox/fixtures/nodes/Fake<%= h.changeCase.pascal(nodeType) %>"
-import {marshalAll} from "../../../../../src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>a/marshalAll"
+import {marshalNodeCollection} from "../../../../../src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>a/marshalling/marshalNodeCollection"
 
 test('marshalling a complete and valid request', async () => {
     const fakeNode1: <%= h.changeCase.pascal(nodeType) %>Node = Object.assign({}, Fake<%= h.changeCase.pascal(nodeType) %>, {id: 1, created_at: "dummy", updated_at: "dummy"})
@@ -17,7 +17,7 @@ test('marshalling a complete and valid request', async () => {
         fakeNode3,
     ]
 
-    const mappedNodes = marshalAll(nodes)
+    const mappedNodes = marshalNodeCollection(nodes)
 
     expect(mappedNodes[0])
         .toEqual(fakeNode1)

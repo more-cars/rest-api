@@ -3,7 +3,7 @@ to: src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/
 ---
 import express from "express"
 import {<%= h.changeCase.pascal(nodeType) %>} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"
-import {marshal} from "./marshal"
+import {marshalNode} from "./marshalling/marshalNode"
 import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
 
@@ -15,7 +15,7 @@ export async function getById(req: express.Request, res: express.Response) {
         return sendResponse404(res)
     }
 
-    const marshalledData = marshal(node)
+    const marshalledData = marshalNode(node)
 
     sendResponse200(marshalledData, res)
 }

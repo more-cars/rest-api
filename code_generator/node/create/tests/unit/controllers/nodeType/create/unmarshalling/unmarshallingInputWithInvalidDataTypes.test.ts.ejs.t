@@ -8,7 +8,7 @@ to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeTyp
     }
 -%>
 import {expect, test} from 'vitest'
-import {unmarshal} from "../../../../../../src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/unmarshal"
+import {unmarshalInputData} from "../../../../../../src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshalling/unmarshalInputData"
 
 /**
  * Unmarshalling does NOT perform any validation.
@@ -19,7 +19,7 @@ test('unmarshalling a request where the data types are incorrect', async () => {
 <%- props.map(line => '        ' + line).join(',\n') %>,
     }
 
-    const result = unmarshal(data)
+    const result = unmarshalInputData(data)
 
     expect(result)
         .toStrictEqual({

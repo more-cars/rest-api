@@ -2,8 +2,8 @@
 to: src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create.ts
 ---
 import express from "express"
-import {unmarshal} from "./unmarshal"
-import {marshal} from "./marshal"
+import {unmarshalInputData} from "./marshalling/unmarshalInputData"
+import {marshalNode} from "./marshalling/marshalNode"
 import {Create<%= h.changeCase.pascal(nodeType) %>Input} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Create<%= h.changeCase.pascal(nodeType) %>Input"
 import {<%= h.changeCase.pascal(nodeType) %>Node} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node"
 import {<%= h.changeCase.pascal(nodeType) %>} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"
@@ -26,7 +26,7 @@ export async function create(req: express.Request, res: express.Response) {
 
     try {
         const createdNode: <%= h.changeCase.pascal(nodeType) %>Node = await <%= h.changeCase.pascal(nodeType) %>.create(sanitizedData)
-        const marshalledData = marshal(createdNode)
+        const marshalledData = marshalNode(createdNode)
         sendResponse201(marshalledData, res)
     } catch (e) {
         console.error(e)
