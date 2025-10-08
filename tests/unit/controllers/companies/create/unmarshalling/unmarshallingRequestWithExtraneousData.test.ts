@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshal} from "../../../../../../src/controllers/companies/unmarshal"
+import {unmarshalInputData} from "../../../../../../src/controllers/companies/marshalling/unmarshalInputData"
 
 /**
  * Requests are NOT rejected when they contain too much information.
@@ -15,7 +15,7 @@ test('unmarshalling a request where extraneous fields are contained', async () =
         my_property: "Hello",
     }
 
-    const result = unmarshal(data)
+    const result = unmarshalInputData(data)
 
     expect(result)
         .toStrictEqual({

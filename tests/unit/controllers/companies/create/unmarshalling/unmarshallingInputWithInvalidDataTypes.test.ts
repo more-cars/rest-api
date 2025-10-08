@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshal} from "../../../../../../src/controllers/companies/unmarshal"
+import {unmarshalInputData} from "../../../../../../src/controllers/companies/marshalling/unmarshalInputData"
 
 /**
  * Unmarshalling does NOT perform any validation.
@@ -14,7 +14,7 @@ test('unmarshalling a request where the data types are incorrect', async () => {
         legal_headquarters_location: true,
     }
 
-    const result = unmarshal(data)
+    const result = unmarshalInputData(data)
 
     expect(result)
         .toStrictEqual({

@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshal} from "../../../../../../src/controllers/carModels/unmarshal"
+import {unmarshalInputData} from "../../../../../../src/controllers/carModels/marshalling/unmarshalInputData"
 
 /**
  * Unmarshalling does NOT perform any validation.
@@ -10,7 +10,7 @@ test('unmarshalling a request where mandatory fields are missing', async () => {
         generation: 7,
     }
 
-    const result = unmarshal(data)
+    const result = unmarshalInputData(data)
 
     expect(result)
         .toStrictEqual({

@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshal} from "../../../../../../src/controllers/companies/unmarshal"
+import {unmarshalInputData} from "../../../../../../src/controllers/companies/marshalling/unmarshalInputData"
 
 test('unmarshalling a complete and valid request', async () => {
     const data: any = {
@@ -10,7 +10,7 @@ test('unmarshalling a complete and valid request', async () => {
         legal_headquarters_location: "Munich",
     }
 
-    const result = unmarshal(data)
+    const result = unmarshalInputData(data)
 
     expect(result)
         .toStrictEqual({

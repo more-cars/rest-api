@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshal} from "../../../../../../src/controllers/carModels/unmarshal"
+import {unmarshalInputData} from "../../../../../../src/controllers/carModels/marshalling/unmarshalInputData"
 
 /**
  * Missing optional fields are automatically added as "undefined".
@@ -9,7 +9,7 @@ test('unmarshalling a valid request where optional fields are missing', async ()
         name: "360 Modena",
     }
 
-    const result = unmarshal(data)
+    const result = unmarshalInputData(data)
 
     expect(result)
         .toStrictEqual({

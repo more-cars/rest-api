@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshal} from "../../../../../../src/controllers/images/unmarshal"
+import {unmarshalInputData} from "../../../../../../src/controllers/images/marshalling/unmarshalInputData"
 
 test('unmarshalling a complete and valid request', async () => {
     const data: any = {
@@ -7,7 +7,7 @@ test('unmarshalling a complete and valid request', async () => {
         image_provider: "flickr",
     }
 
-    const result = unmarshal(data)
+    const result = unmarshalInputData(data)
 
     expect(result)
         .toStrictEqual({

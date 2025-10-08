@@ -1,5 +1,5 @@
 import express from "express"
-import {unmarshal} from "./unmarshal"
+import {unmarshalInputData} from "./marshalling/unmarshalInputData"
 import {marshalNode} from "./marshalling/marshalNode"
 import {CreateImageInput} from "../../models/images/types/CreateImageInput"
 import {Image} from "../../models/images/Image"
@@ -11,7 +11,7 @@ import {CreateImageRawInput} from "./types/CreateImageRawInput"
 import {isMandatoryString} from "../validators/isMandatoryString"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshal(req.body)
+    const data = unmarshalInputData(req.body)
 
     if (!validate(data)) {
         return sendResponse400(res)

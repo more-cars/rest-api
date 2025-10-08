@@ -1,5 +1,5 @@
 import express from "express"
-import {unmarshal} from "./unmarshal"
+import {unmarshalInputData} from "./marshalling/unmarshalInputData"
 import {marshalNode} from "./marshalling/marshalNode"
 import {CreateCarModelInput} from "../../models/car-models/types/CreateCarModelInput"
 import {CarModel} from "../../models/car-models/CarModel"
@@ -13,7 +13,7 @@ import {isMandatoryString} from "../validators/isMandatoryString"
 import {isOptionalString} from "../validators/isOptionalString"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshal(req.body)
+    const data = unmarshalInputData(req.body)
 
     if (!validate(data)) {
         return sendResponse400(res)

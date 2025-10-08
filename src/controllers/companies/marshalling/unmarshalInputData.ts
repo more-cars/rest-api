@@ -1,7 +1,7 @@
-import {CreateCompanyRawInput} from "./types/CreateCompanyRawInput"
+import {CreateCompanyRawInput} from "../types/CreateCompanyRawInput"
 
 // @ts-expect-error We cannot set a data type because we don't know what data the user actually provided.
-export function unmarshal(data): CreateCompanyRawInput {
+export function unmarshalInputData(data): CreateCompanyRawInput {
     return {
         name: data.name,
         founded: data.founded,
