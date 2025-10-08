@@ -1,6 +1,6 @@
 import express from "express"
 import {unmarshal} from "./unmarshal"
-import {marshal} from "./marshal"
+import {marshalNode} from "./marshalling/marshalNode"
 import {CreateCarModelInput} from "../../models/car-models/types/CreateCarModelInput"
 import {CarModel} from "../../models/car-models/CarModel"
 import {CarModelNode} from "../../models/car-models/types/CarModelNode"
@@ -23,7 +23,7 @@ export async function create(req: express.Request, res: express.Response) {
 
     try {
         const createdNode: CarModelNode = await CarModel.create(sanitizedData)
-        const marshalledData = marshal(createdNode)
+        const marshalledData = marshalNode(createdNode)
         return sendResponse201(marshalledData, res)
     } catch (e) {
         console.error(e)

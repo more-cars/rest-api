@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {BrandNode} from "../../../../../../src/models/brands/types/BrandNode"
-import {marshal} from "../../../../../../src/controllers/brands/marshal"
+import {marshalNode} from "../../../../../../src/controllers/brands/marshalling/marshalNode"
 
 test('marshalling a complete and valid request', async () => {
     const node: BrandNode = {
@@ -15,7 +15,7 @@ test('marshalling a complete and valid request', async () => {
         hsn: "0005",
     }
 
-    const mappedNode = marshal(node)
+    const mappedNode = marshalNode(node)
 
     expect(mappedNode)
         .toStrictEqual({

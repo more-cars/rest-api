@@ -1,6 +1,6 @@
 import express from "express"
 import {unmarshal} from "./unmarshal"
-import {marshal} from "./marshal"
+import {marshalNode} from "./marshalling/marshalNode"
 import {CreateBrandInput} from "../../models/brands/types/CreateBrandInput"
 import {Brand} from "../../models/brands/Brand"
 import {BrandNode} from "../../models/brands/types/BrandNode"
@@ -23,7 +23,7 @@ export async function create(req: express.Request, res: express.Response) {
 
     try {
         const createdNode: BrandNode = await Brand.create(sanitizedData)
-        const marshalledData = marshal(createdNode)
+        const marshalledData = marshalNode(createdNode)
         return sendResponse201(marshalledData, res)
     } catch (e) {
         console.error(e)

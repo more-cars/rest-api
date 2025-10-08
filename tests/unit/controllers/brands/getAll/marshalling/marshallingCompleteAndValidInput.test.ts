@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {BrandNode} from "../../../../../../src/models/brands/types/BrandNode"
-import {marshalAll} from "../../../../../../src/controllers/brands/marshalAll"
+import {marshalNodeCollection} from "../../../../../../src/controllers/brands/marshalling/marshalNodeCollection"
 
 test('marshalling a complete and valid request', async () => {
     const nodes: Array<BrandNode> = [
@@ -39,7 +39,7 @@ test('marshalling a complete and valid request', async () => {
         },
     ]
 
-    const mappedNodes = marshalAll(nodes)
+    const mappedNodes = marshalNodeCollection(nodes)
 
     expect(mappedNodes)
         .toStrictEqual([

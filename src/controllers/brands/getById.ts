@@ -1,6 +1,6 @@
 import express from "express"
 import {Brand} from "../../models/brands/Brand"
-import {marshal} from "./marshal"
+import {marshalNode} from "./marshalling/marshalNode"
 import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
 
@@ -12,7 +12,7 @@ export async function getById(req: express.Request, res: express.Response) {
         return sendResponse404(res)
     }
 
-    const marshalledData = marshal(node)
+    const marshalledData = marshalNode(node)
 
     return sendResponse200(marshalledData, res)
 }

@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {CompanyNode} from "../../../../../../src/models/companies/types/CompanyNode"
-import {marshal} from "../../../../../../src/controllers/companies/marshal"
+import {marshalNode} from "../../../../../../src/controllers/companies/marshalling/marshalNode"
 
 test('marshalling a complete and valid request', async () => {
     const node: CompanyNode = {
@@ -14,7 +14,7 @@ test('marshalling a complete and valid request', async () => {
         legal_headquarters_location: "Munich",
     }
 
-    const mappedNode = marshal(node)
+    const mappedNode = marshalNode(node)
 
     expect(mappedNode)
         .toStrictEqual({

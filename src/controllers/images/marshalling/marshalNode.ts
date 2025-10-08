@@ -1,11 +1,7 @@
-import {ImageNode} from "../../models/images/types/ImageNode"
-import {ImageResponse} from "./types/ImageResponse"
+import {ImageNode} from "../../../models/images/types/ImageNode"
+import {ImageResponse} from "../types/ImageResponse"
 
-/**
- * Based on the given "image" node this creates a response object
- * which conform to the API specification.
- */
-export function marshal(image: ImageNode) {
+export function marshalNode(image: ImageNode) {
     const marshalledData: ImageResponse = {
         id: image.id,
 

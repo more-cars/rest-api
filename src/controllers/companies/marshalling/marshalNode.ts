@@ -1,7 +1,7 @@
-import {CompanyResponse} from "./types/CompanyResponse"
-import {CompanyNode} from "../../models/companies/types/CompanyNode"
+import {CompanyResponse} from "../types/CompanyResponse"
+import {CompanyNode} from "../../../models/companies/types/CompanyNode"
 
-export function marshal(node: CompanyNode) {
+export function marshalNode(node: CompanyNode) {
     return {
         id: node.id,
         name: node.name,

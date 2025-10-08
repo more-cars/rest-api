@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {ImageNode} from "../../../../../../src/models/images/types/ImageNode"
-import {marshal} from "../../../../../../src/controllers/images/marshal"
+import {marshalNode} from "../../../../../../src/controllers/images/marshalling/marshalNode"
 
 test('marshalling a complete and valid request', async () => {
     const node: ImageNode = {
@@ -24,7 +24,7 @@ test('marshalling a complete and valid request', async () => {
         image_url_xs: "https://live.staticflickr.com/65535/54570839725_652073f374_t.jpg",
     }
 
-    const mappedNode = marshal(node)
+    const mappedNode = marshalNode(node)
 
     expect(mappedNode)
         .toStrictEqual({

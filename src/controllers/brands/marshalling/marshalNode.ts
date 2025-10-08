@@ -1,11 +1,7 @@
-import {BrandResponse} from "./types/BrandResponse"
-import {BrandNode} from "../../models/brands/types/BrandNode"
+import {BrandResponse} from "../types/BrandResponse"
+import {BrandNode} from "../../../models/brands/types/BrandNode"
 
-/**
- * Based on the given BRAND node this creates a response object
- * which conform to the API specification.
- */
-export function marshal(brand: BrandNode) {
+export function marshalNode(brand: BrandNode) {
     const marshalledData: BrandResponse = {
         id: brand.id,
         name: brand.name,

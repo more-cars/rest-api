@@ -1,6 +1,6 @@
 import express from "express"
 import {unmarshal} from "./unmarshal"
-import {marshal} from "./marshal"
+import {marshalNode} from "./marshalling/marshalNode"
 import {CreateImageInput} from "../../models/images/types/CreateImageInput"
 import {Image} from "../../models/images/Image"
 import {ImageNode} from "../../models/images/types/ImageNode"
@@ -21,7 +21,7 @@ export async function create(req: express.Request, res: express.Response) {
 
     try {
         const createdNode: ImageNode = await Image.create(sanitizedData)
-        const marshalledData = marshal(createdNode)
+        const marshalledData = marshalNode(createdNode)
         return sendResponse201(marshalledData, res)
     } catch (e) {
         console.error(e)
