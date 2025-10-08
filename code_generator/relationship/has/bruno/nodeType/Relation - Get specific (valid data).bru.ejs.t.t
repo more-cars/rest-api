@@ -1,5 +1,5 @@
 ---
-to: bruno/<%= h.inflection.pluralize(h.changeCase.title(startNodeType)) %>/Relation -<%= h.changeCase.lower(relationshipName) %>- - Has.bru
+to: bruno/<%= h.inflection.pluralize(h.changeCase.title(startNodeType)) %>/Relation - Get specific ›<%= h.changeCase.kebab(relationshipName) %>‹ (valid data).bru
 ---
 meta {
   name: Relation "<%= h.changeCase.lower(relationshipName) %>" - Has
