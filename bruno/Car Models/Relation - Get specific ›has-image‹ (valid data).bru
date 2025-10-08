@@ -1,0 +1,20 @@
+meta {
+  name: Get specific ›has-image‹ relation (valid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/car-models/{{validCarModelId}}/has-image/{{validImageId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body: isJson
+  res.body.relationship_id: gte 12000000
+}
+
+script:pre-request {
+  await lib.CarModels.ensureCarModelHasImageRelationshipExists()
+}

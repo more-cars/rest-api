@@ -1,0 +1,20 @@
+meta {
+  name: Get specific ›belongs-to-node‹ relation (not existent)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/images/{{validImageId}}/belongs-to-node/{{validSecondCarModelId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 404
+  res.body: isString
+}
+
+script:pre-request {
+  await lib.Images.ensureValidImageExists()
+  await lib.CarModels.ensureValidSecondCarModelExists()
+}

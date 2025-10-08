@@ -1,0 +1,19 @@
+meta {
+  name: Get all ›belongs-to-node‹ relations (valid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/images/{{validImageId}}/belongs-to-node
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body: isArray
+}
+
+script:pre-request {
+  await lib.Images.ensureValidImageExists()
+}

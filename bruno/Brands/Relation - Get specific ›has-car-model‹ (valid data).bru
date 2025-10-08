@@ -1,0 +1,20 @@
+meta {
+  name: Get specific ›has-car-model‹ relation (valid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/brands/{{validBrandId}}/has-car-model/{{validCarModelId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body: isJson
+  res.body.relationship_id: gte 12000000
+}
+
+script:pre-request {
+  await lib.Brands.ensureBrandHasCarModelRelationshipExists()
+}

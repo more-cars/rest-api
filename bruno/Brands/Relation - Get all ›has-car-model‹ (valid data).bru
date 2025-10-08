@@ -1,0 +1,19 @@
+meta {
+  name: Get all ›has-car-model‹ relations (valid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/brands/{{validBrandId}}/has-car-model
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body: isArray
+}
+
+script:pre-request {
+  await lib.Brands.ensureValidBrandExists()
+}

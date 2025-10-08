@@ -1,0 +1,15 @@
+meta {
+  name: Get specific ›has-image‹ relation (invalid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/brands/{{invalidBrandId}}/has-image/{{invalidImageId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 404
+  res.body: isString
+}

@@ -1,0 +1,19 @@
+meta {
+  name: Create ›belongs-to-node‹ relation (same node)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/images/{{validImageId}}/belongs-to-node/{{validImageId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 422
+  res.body: isString
+}
+
+script:pre-request {
+  await lib.Images.ensureValidImageExists()
+}

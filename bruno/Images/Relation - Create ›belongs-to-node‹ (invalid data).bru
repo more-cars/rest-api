@@ -1,0 +1,15 @@
+meta {
+  name: Create ›belongs-to-node‹ relation (invalid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/images/{{invalidImageId}}/belongs-to-node/{{invalidBrandId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 404
+  res.body: isString
+}
