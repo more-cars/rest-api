@@ -11,9 +11,9 @@ export async function getHasCarModelRelations(req: express.Request, res: express
         const relationships = await Brand.getRelationshipsForHasCarModel(brandId)
         const marshalledRelationships = marshalRelationships(relationships)
 
-        sendResponse200(marshalledRelationships, res)
+        return sendResponse200(marshalledRelationships, res)
     } catch (e) {
         console.error(e)
-        sendResponse404(res)
+        return sendResponse404(res)
     }
 }

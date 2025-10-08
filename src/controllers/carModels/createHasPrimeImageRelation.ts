@@ -18,9 +18,9 @@ export async function createHasPrimeImageRelation(req: express.Request, res: exp
 
         const marshalledData = marshalHasPrimeImageRelationship(relationship)
 
-        sendResponse201(marshalledData, res)
+        return sendResponse201(marshalledData, res)
     } catch (e) {
         console.error(e)
-        sendResponse500(res)
+        return sendResponse500(res)
     }
 }

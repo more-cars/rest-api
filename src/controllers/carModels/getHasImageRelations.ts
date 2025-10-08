@@ -11,9 +11,9 @@ export async function getHasImageRelations(req: express.Request, res: express.Re
         const relationships = await CarModel.getRelationshipsForHasImage(carModelId)
         const marshalledRelationships = marshalHasImageRelationships(relationships)
 
-        sendResponse200(marshalledRelationships, res)
+        return sendResponse200(marshalledRelationships, res)
     } catch (e) {
         console.error(e)
-        sendResponse404(res)
+        return sendResponse404(res)
     }
 }

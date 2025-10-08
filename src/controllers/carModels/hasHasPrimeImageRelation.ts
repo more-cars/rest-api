@@ -14,15 +14,15 @@ export async function hasHasPrimeImageRelation(req: express.Request, res: expres
     try {
         const relationship = await CarModel.hasHasPrimeImageRelationship(carModelId, imageId)
         const marshalledData = marshalHasPrimeImageRelationship(relationship)
-        sendResponse200(marshalledData, res)
+        return sendResponse200(marshalledData, res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {
-            sendResponse404(res)
+            return sendResponse404(res)
         } else if (e instanceof RelationshipNotFoundError) {
-            sendResponse404(res)
+            return sendResponse404(res)
         } else {
             console.error(e)
-            sendResponse500(res)
+            return sendResponse500(res)
         }
     }
 }

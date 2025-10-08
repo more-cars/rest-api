@@ -17,9 +17,9 @@ export async function getHasCarModelRelation(req: express.Request, res: express.
 
         const marshalledRelationship = marshalHasCarModelRelationship(relationship)
 
-        sendResponse200(marshalledRelationship, res)
+        return sendResponse200(marshalledRelationship, res)
     } catch (e) {
         console.error(e)
-        sendResponse404(res)
+        return sendResponse404(res)
     }
 }

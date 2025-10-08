@@ -12,15 +12,15 @@ export async function deleteHasImageRelation(req: express.Request, res: express.
 
     try {
         await Company.deleteHasImageRelationship(companyId, imageId)
-        sendResponse204(res)
+        return sendResponse204(res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {
-            sendResponse404(res)
+            return sendResponse404(res)
         } else if (e instanceof RelationshipNotFoundError) {
-            sendResponse404(res)
+            return sendResponse404(res)
         } else {
             console.error(e)
-            sendResponse500(res)
+            return sendResponse500(res)
         }
     }
 }

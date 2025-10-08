@@ -15,15 +15,15 @@ export async function createHasBrandRelation(req: express.Request, res: express.
     try {
         const relationship = await Company.createHasBrandRelationship(companyId, brandId)
         const marshalledData = marshalHasBrandRelationship(relationship)
-        sendResponse201(marshalledData, res)
+        return sendResponse201(marshalledData, res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {
-            sendResponse404(res)
+            return sendResponse404(res)
         } else if (e instanceof RelationshipAlreadyExistsError) {
-            sendResponse304(res)
+            return sendResponse304(res)
         } else {
             console.error(e)
-            sendResponse500(res)
+            return sendResponse500(res)
         }
     }
 }

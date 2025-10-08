@@ -18,9 +18,9 @@ export async function createBelongsToBrandRelation(req: express.Request, res: ex
 
         const marshalledData = marshalRelationship(relationship)
 
-        sendResponse201(marshalledData, res)
+        return sendResponse201(marshalledData, res)
     } catch (e) {
         console.error(e)
-        sendResponse422(res)
+        return sendResponse422(res)
     }
 }

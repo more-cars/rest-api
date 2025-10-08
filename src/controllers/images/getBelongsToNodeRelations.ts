@@ -17,9 +17,9 @@ export async function getBelongsToNodeRelations(req: express.Request, res: expre
 
         const marshalledData = marshalRelationships(relationships)
 
-        sendResponse200(marshalledData, res)
+        return sendResponse200(marshalledData, res)
     } catch (e) {
         console.error(e)
-        sendResponse422(res)
+        return sendResponse422(res)
     }
 }

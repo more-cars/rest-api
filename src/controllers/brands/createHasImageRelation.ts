@@ -18,9 +18,9 @@ export async function createHasImageRelation(req: express.Request, res: express.
 
         const marshalledData = marshalHasImageRelationship(relationship)
 
-        sendResponse201(marshalledData, res)
+        return sendResponse201(marshalledData, res)
     } catch (e) {
         console.error(e)
-        sendResponse422(res)
+        return sendResponse422(res)
     }
 }

@@ -11,12 +11,12 @@ export async function getBelongsToBrandRelation(req: express.Request, res: expre
         const relationship = await CarModel.getRelationshipForBelongsToBrand(carModelId)
 
         if (!relationship) {
-            sendResponse200(null, res)
+            return sendResponse200(null, res)
         } else {
-            sendResponse200(marshalRelationship(relationship), res)
+            return sendResponse200(marshalRelationship(relationship), res)
         }
     } catch (e) {
         console.error(e)
-        sendResponse404(res)
+        return sendResponse404(res)
     }
 }
