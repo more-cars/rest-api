@@ -2394,7 +2394,7 @@
           "relationship_name": {
             "type": "string",
             "readOnly": true,
-            "example": "has prime image"
+            "example": "has-prime-image"
           },
           "created_at": {
             "type": "string",
