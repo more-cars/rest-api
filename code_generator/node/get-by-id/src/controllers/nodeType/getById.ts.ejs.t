@@ -17,5 +17,5 @@ export async function getById(req: express.Request, res: express.Response) {
 
     const marshalledData = marshalNode(node)
 
-    sendResponse200(marshalledData, res)
+    return sendResponse200(marshalledData, res)
 }

@@ -14,5 +14,5 @@ export async function deleteNode(req: express.Request, res: express.Response) {
         return sendResponse404(res)
     }
 
-    sendResponse204(res)
+    return sendResponse204(res)
 }

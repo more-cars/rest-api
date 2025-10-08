@@ -27,10 +27,10 @@ export async function create(req: express.Request, res: express.Response) {
     try {
         const createdNode: <%= h.changeCase.pascal(nodeType) %>Node = await <%= h.changeCase.pascal(nodeType) %>.create(sanitizedData)
         const marshalledData = marshalNode(createdNode)
-        sendResponse201(marshalledData, res)
+        return sendResponse201(marshalledData, res)
     } catch (e) {
         console.error(e)
-        sendResponse500(res)
+        return sendResponse500(res)
     }
 }
 

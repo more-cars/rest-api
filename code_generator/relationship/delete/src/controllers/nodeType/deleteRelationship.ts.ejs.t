@@ -15,15 +15,15 @@ export async function delete<%= h.changeCase.pascal(relationshipName) %>Relation
 
     try {
         await <%= h.changeCase.pascal(startNodeType) %>.delete<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(endNodeType) %>Id)
-        sendResponse204(res)
+        return sendResponse204(res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {
-            sendResponse404(res)
+            return sendResponse404(res)
         } else if (e instanceof RelationshipNotFoundError) {
-            sendResponse404(res)
+            return sendResponse404(res)
         } else {
             console.error(e)
-            sendResponse500(res)
+            return sendResponse500(res)
         }
     }
 }

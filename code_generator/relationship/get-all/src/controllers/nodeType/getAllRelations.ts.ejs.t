@@ -15,13 +15,13 @@ export async function getAll<%= h.changeCase.pascal(relationshipName) %>Relation
     try {
         const relationships = await <%= h.changeCase.pascal(startNodeType) %>.getAll<%= h.changeCase.pascal(relationshipName) %>Relationships(<%= h.changeCase.camel(startNodeType) %>Id)
         const marshalledData = marshal<%= h.changeCase.pascal(relationshipName) %>Relationships(relationships)
-        sendResponse200(marshalledData, res)
+        return sendResponse200(marshalledData, res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {
-            sendResponse404(res)
+            return sendResponse404(res)
         } else {
             console.error(e)
-            sendResponse500(res)
+            return sendResponse500(res)
         }
     }
 }
