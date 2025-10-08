@@ -1,7 +1,7 @@
 import {select} from "@inquirer/prompts"
 import inquirer from 'inquirer'
 import {convertToCliParameters} from "./lib/convertToCliParameters"
-import {runShellCommand} from "./lib/runShellCommand"
+import {spawnShellCommand} from "./lib/spawnShellCommand"
 
 generateCodeForFeature().then(() => true)
 
@@ -11,8 +11,7 @@ async function generateCodeForFeature() {
     const featureParameters = await promptFeatureParameters(typeOfData, typeOfFeature)
     const cliParameters = convertToCliParameters(featureParameters)
     const hygenCommand = `HYGEN_OVERWRITE=1 HYGEN_TMPLS='${__dirname}' hygen ${typeOfData} ${typeOfFeature} ${cliParameters}`
-    console.log(hygenCommand)
-    await runShellCommand(hygenCommand)
+    await spawnShellCommand(hygenCommand)
 }
 
 async function promptTypeOfData() {

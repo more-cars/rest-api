@@ -1,6 +1,6 @@
 import {select} from "@inquirer/prompts"
 import {convertToCliParameters} from "../code_generator/lib/convertToCliParameters"
-import {runShellCommand} from "../code_generator/lib/runShellCommand"
+import {spawnShellCommand} from "../code_generator/lib/spawnShellCommand"
 import inquirer from 'inquirer'
 import fs from "node:fs"
 import {createTickets} from "./lib/createTickets"
@@ -8,13 +8,19 @@ import {createTickets} from "./lib/createTickets"
 prepareAndCreateTickets().then(() => true)
 
 async function prepareAndCreateTickets() {
+    const ticketTreePath = __dirname + '/_temp/ticketTree.json'
+    if (fs.existsSync(ticketTreePath)) {
+        fs.rmSync(ticketTreePath)
+    }
+
     const feature = await promptFeature()
     const featureParameters = await promptFeatureParameters(feature)
     const cliParameters = convertToCliParameters(featureParameters)
-    const hygenCommand = `HYGEN_OVERWRITE=1 HYGEN_TMPLS='${__dirname}' hygen features ${feature} ${cliParameters}`
-    await runShellCommand(hygenCommand)
 
-    const data = JSON.parse(fs.readFileSync(__dirname + '/_temp/ticketTree.json', 'utf8'))
+    const hygenCommand = `HYGEN_OVERWRITE=1 HYGEN_TMPLS='${__dirname}' hygen features ${feature} ${cliParameters}`
+    await spawnShellCommand(hygenCommand)
+
+    const data = JSON.parse(fs.readFileSync(ticketTreePath, 'utf8'))
     const createdTickets = await createTickets(data)
     console.log('Tickets created:', createdTickets)
 }
