@@ -28,7 +28,8 @@ test('Both nodes are from the same type', async () => {
 
 test('Both nodes exist and are valid relationship partners', async () => {
     CarModel.createHasImageRelationship = vi.fn().mockReturnValue({
-        relationship_id: 4
+        relationship_id: 4,
+        relationship_name: 'has-image',
     })
 
     const response = await request(app)

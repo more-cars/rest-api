@@ -21,7 +21,7 @@ test('marshalling a complete and valid request', async () => {
             image_id: 10,
             partner_node_id: 20,
             relationship_id: 30,
-            relationship_name: "BLUBB",
+            relationship_name: "blubb",
             created_at: "2023-10-01T00:00:00.001Z",
             updated_at: "2023-10-01T00:00:00.001Z",
         })

@@ -46,7 +46,8 @@ test('Both nodes exists, but have no relationship', async () => {
 
 test('Nodes and relationship exist', async () => {
     CarModel.hasHasPrimeImageRelationship = vi.fn().mockReturnValue({
-        relationship_id: 4
+        relationship_id: 4,
+        relationship_name: 'has-prime-image',
     })
 
     const response = await request(app)

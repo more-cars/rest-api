@@ -15,7 +15,8 @@ test('One of the nodes does not exist', async () => {
 
 test('Invalid node IDs are provided', async () => {
     Image.createBelongsToNodeRelationship = vi.fn().mockReturnValue({
-        relationship_id: 4
+        relationship_id: 4,
+        relationship_name: 'belongs-to-node',
     })
 
     const response = await request(app)
@@ -40,7 +41,8 @@ test('Both nodes are from the same type', async () => {
 
 test('Both nodes exist and are valid relationship partners', async () => {
     Image.createBelongsToNodeRelationship = vi.fn().mockReturnValue({
-        relationship_id: 4
+        relationship_id: 4,
+        relationship_name: 'belongs-to-node',
     })
 
     const response = await request(app)

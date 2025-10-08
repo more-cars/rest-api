@@ -23,7 +23,7 @@ test('marshalling a complete and valid request', async () => {
             car_model_id: 1,
             brand_id: 2,
             relationship_id: 3,
-            relationship_name: "BELONGS_TO_BRAND",
+            relationship_name: "belongs-to-brand",
             created_at: "2023-10-01T00:00:00.001Z",
             updated_at: "2023-10-01T00:00:00.001Z",
         })

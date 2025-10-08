@@ -18,7 +18,8 @@ test('Brand and/or Car Model does not exist', async () => {
 
 test('Brand exists and has relationship partner', async () => {
     Brand.getRelationshipForHasCarModel = vi.fn().mockReturnValue({
-        relationship_id: 4
+        relationship_id: 4,
+        relationship_name: 'has-car-model',
     })
 
     const response = await request(app)

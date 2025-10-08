@@ -15,7 +15,7 @@ assert {
   res.body.car_model_id: eq {{validCarModelId}}
   res.body.brand_id: eq {{validBrandId}}
   res.body.relationship_id: gte 0
-  res.body.relationship_name: eq BELONGS_TO_BRAND
+  res.body.relationship_name: eq belongs-to-brand
   res.body.created_at: isString
   res.body.updated_at: isString
 }

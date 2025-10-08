@@ -19,11 +19,14 @@ test('Node does not exist', async () => {
 test('Node exists and has relationship partners', async () => {
     CarModel.getRelationshipsForHasImage = vi.fn().mockReturnValue([
         {
-            relationship_id: 4
+            relationship_id: 4,
+            relationship_name: 'has-image',
         }, {
-            relationship_id: 5
+            relationship_id: 5,
+            relationship_name: 'has-image',
         }, {
-            relationship_id: 6
+            relationship_id: 6,
+            relationship_name: 'has-image',
         }
     ])
 

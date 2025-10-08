@@ -15,7 +15,7 @@ assert {
   res.body.car_model_id: eq {{validCarModelId}}
   res.body.image_id: eq {{validImageId}}
   res.body.relationship_id: gte 0
-  res.body.relationship_name: eq HAS_PRIME_IMAGE
+  res.body.relationship_name: eq has-prime-image
   res.body.created_at: isString
   res.body.updated_at: isString
 }

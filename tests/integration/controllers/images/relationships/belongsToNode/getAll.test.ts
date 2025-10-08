@@ -27,11 +27,14 @@ test('Semantic error', async () => {
 test('Node exists and has relationship partners', async () => {
     Image.getBelongsToNodeRelationships = vi.fn().mockReturnValue([
         {
-            relationship_id: 4
+            relationship_id: 4,
+            relationship_name: 'belongs-to-node',
         }, {
-            relationship_id: 5
+            relationship_id: 5,
+            relationship_name: 'belongs-to-node',
         }, {
-            relationship_id: 6
+            relationship_id: 6,
+            relationship_name: 'belongs-to-node',
         }
     ])
 

@@ -18,7 +18,8 @@ test('Node does not exist', async () => {
 
 test('Node exists and has a relationship partner', async () => {
     CarModel.getRelationshipForBelongsToBrand = vi.fn().mockReturnValue({
-        relationship_id: 4
+        relationship_id: 4,
+        relationship_name: 'belongs-to-brand',
     })
 
     const response = await request(app)

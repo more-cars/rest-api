@@ -26,7 +26,8 @@ test('Semantic error', async () => {
 })
 test('Both nodes exists and have a relationship with each other', async () => {
     Image.getBelongsToNodeRelationship = vi.fn().mockReturnValue({
-        relationship_id: 4
+        relationship_id: 4,
+        relationship_name: 'belongs-to-node',
     })
 
     const response = await request(app)
