@@ -11,6 +11,14 @@ get {
 
 assert {
   res.status: eq 200
+  res.body: isJson
+  res.body.data.relationship_id: gte 12000000
+  res.body.data.relationship_name: eq has-prime-image
+  res.body.data.relationship_partner: isJson
+  res.body.data.relationship_partner.node_type: image
+  res.body.data.relationship_partner.data.id: gte 12000000
+  res.body.data.created_at: isString
+  res.body.data.updated_at: isString
 }
 
 script:pre-request {

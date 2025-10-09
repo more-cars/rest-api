@@ -1,6 +1,8 @@
 import express from "express"
 import {Brand} from "../../models/brands/Brand"
-import {marshalHasImageRelationship} from "./marshalling/marshalHasImageRelationship"
+import {Image} from "../../models/images/Image"
+import type {ImageNode} from "../../models/images/types/ImageNode"
+import {marshalRelationship} from "../relationships/marshalRelationship"
 import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
 
@@ -15,9 +17,10 @@ export async function getHasImageRelation(req: express.Request, res: express.Res
             return sendResponse404(res)
         }
 
-        const marshalledRelationship = marshalHasImageRelationship(relationship)
+        const relationshipPartner = await Image.findById(relationship.image_id)
+        const marshalledData = marshalRelationship(relationship, relationshipPartner as ImageNode, 'image')
 
-        return sendResponse200(marshalledRelationship, res)
+        return sendResponse200(marshalledData, res)
     } catch (e) {
         console.error(e)
         return sendResponse404(res)

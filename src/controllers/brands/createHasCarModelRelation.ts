@@ -1,11 +1,13 @@
 import express from "express"
 import {Brand} from "../../models/brands/Brand"
-import {marshalHasCarModelRelationship} from "./marshalling/marshalHasCarModelRelationship"
-import {sendResponse201} from "../responses/sendResponse201"
-import {sendResponse404} from "../responses/sendResponse404"
+import {CarModel} from "../../models/car-models/CarModel"
+import type {CarModelNode} from "../../models/car-models/types/CarModelNode"
+import {marshalRelationship} from "../relationships/marshalRelationship"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../models/types/RelationshipAlreadyExistsError"
+import {sendResponse201} from "../responses/sendResponse201"
 import {sendResponse304} from "../responses/sendResponse304"
+import {sendResponse404} from "../responses/sendResponse404"
 import {sendResponse500} from "../responses/sendResponse500"
 
 export async function createHasCarModelRelation(req: express.Request, res: express.Response) {
@@ -14,7 +16,8 @@ export async function createHasCarModelRelation(req: express.Request, res: expre
 
     try {
         const relationship = await Brand.createHasCarModelRelationship(brandId, carModelId)
-        const marshalledData = marshalHasCarModelRelationship(relationship)
+        const relationshipPartner = await CarModel.findById(brandId)
+        const marshalledData = marshalRelationship(relationship, relationshipPartner as CarModelNode, 'car model')
         return sendResponse201(marshalledData, res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {

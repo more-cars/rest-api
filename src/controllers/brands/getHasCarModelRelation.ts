@@ -1,6 +1,8 @@
 import express from "express"
 import {Brand} from "../../models/brands/Brand"
-import {marshalHasCarModelRelationship} from "./marshalling/marshalHasCarModelRelationship"
+import {CarModel} from "../../models/car-models/CarModel"
+import type {CarModelNode} from "../../models/car-models/types/CarModelNode"
+import {marshalRelationship} from "../relationships/marshalRelationship"
 import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
 
@@ -15,9 +17,10 @@ export async function getHasCarModelRelation(req: express.Request, res: express.
             return sendResponse404(res)
         }
 
-        const marshalledRelationship = marshalHasCarModelRelationship(relationship)
+        const relationshipPartner = await CarModel.findById(relationship.car_model_id)
+        const marshalledData = marshalRelationship(relationship, relationshipPartner as CarModelNode, 'car model')
 
-        return sendResponse200(marshalledRelationship, res)
+        return sendResponse200(marshalledData, res)
     } catch (e) {
         console.error(e)
         return sendResponse404(res)
