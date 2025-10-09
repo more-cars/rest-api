@@ -6,7 +6,7 @@ const axios = require("axios")
 async function ensureValid<%= h.changeCase.pascal(nodeType) %>Exists() {
     if (!bru.getEnvVar('valid<%= h.changeCase.pascal(nodeType) %>Id')) {
             const newNode = await create<%= h.changeCase.pascal(nodeType) %>()
-            bru.setEnvVar("valid<%= h.changeCase.pascal(nodeType) %>Id", newNode.id)
+            bru.setEnvVar("valid<%= h.changeCase.pascal(nodeType) %>Id", newNode.data.id)
     }
 }
 

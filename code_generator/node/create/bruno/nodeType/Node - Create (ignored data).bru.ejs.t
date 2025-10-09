@@ -34,6 +34,6 @@ body:json {
 
 assert {
   res.status: eq 201
-  res.body.created_at: neq nope
-  res.body.updated_at: neq nonono
+  res.body.data.created_at: neq nope
+  res.body.data.updated_at: neq nonono
 }

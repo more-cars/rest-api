@@ -15,9 +15,9 @@ get {
 assert {
   res.status: eq 200
   res.body: isJson
-  res.body.id: gte 12000000
-  res.body.created_at: isNotEmpty
-  res.body.updated_at: isNotEmpty
+  res.body.data.id: gte 12000000
+  res.body.data.created_at: isNotEmpty
+  res.body.data.updated_at: isNotEmpty
 }
 
 script:pre-request {

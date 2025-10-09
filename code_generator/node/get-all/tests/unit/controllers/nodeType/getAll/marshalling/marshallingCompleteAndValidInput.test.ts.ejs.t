@@ -20,11 +20,11 @@ test('marshalling a complete and valid request', async () => {
     const mappedNodes = marshalNodeCollection(nodes)
 
     expect(mappedNodes[0])
-        .toEqual(fakeNode1)
+        .toEqual({data: fakeNode1})
 
     expect(mappedNodes[1])
-        .toEqual(fakeNode2)
+        .toEqual({data: fakeNode2})
 
     expect(mappedNodes[2])
-        .toEqual(fakeNode3)
+        .toEqual({data: fakeNode3})
 })

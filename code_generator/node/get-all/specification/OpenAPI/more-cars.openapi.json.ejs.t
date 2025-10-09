@@ -47,7 +47,7 @@ skip_if: Get all `<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>`
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/<%= h.changeCase.pascal(nodeType) %>"
+                    "$ref": "#/components/schemas/<%= h.changeCase.pascal(nodeType) %>Response"
                   }
                 }
               }

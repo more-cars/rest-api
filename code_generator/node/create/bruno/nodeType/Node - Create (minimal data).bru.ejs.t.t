@@ -33,5 +33,5 @@ body:json {
 assert {
   res.status: eq 201
   res.body: isJson
-  res.body.id: gte 12000000
+  res.body.data.id: gte 12000000
 }

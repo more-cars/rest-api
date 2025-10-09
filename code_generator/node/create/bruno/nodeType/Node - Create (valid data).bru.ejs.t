@@ -31,12 +31,12 @@ body:json {
 assert {
   res.status: eq 201
   res.body: isJson
-  res.body.id: gte 12000000
+  res.body.data.id: gte 12000000
 }
 
 tests {
   test("both timestamps should be identical", function () {
     const data = res.getBody()
-    expect(data.created_at).to.eql(data.updated_at)
+    expect(data.data.created_at).to.eql(data.data.updated_at)
   })
 }

@@ -50,3 +50,11 @@ skip_if: \"<%= h.changeCase.pascal(nodeType) %>\"
         "required": <%- JSON.stringify(requiredProperties, null, 2).split('\n').map(line => '        ' + line).join('\n') %>,
         "properties": <%- JSON.stringify(schemaProperties, null, 2).split('\n').map(line => '        ' + line).join('\n') %>
       },
+      "<%= h.changeCase.pascal(nodeType) %>Response": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/<%= h.changeCase.pascal(nodeType) %>"
+          }
+        }
+      },

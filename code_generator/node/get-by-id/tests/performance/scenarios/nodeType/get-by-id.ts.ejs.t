@@ -39,7 +39,7 @@ export default function (data: { id: number }) {
         'returns with status code 200': (r) => r.status === 200,
         'content-type is JSON': (r) => r.headers['Content-Type'].includes('application/json'),
         // @ts-expect-error TS2531
-        'correct ID is returned': (r) => r.json().id === data.id,
+        'correct ID is returned': (r) => r.json().data.id === data.id,
     })
 
     trendDuration.add(response.timings.duration)

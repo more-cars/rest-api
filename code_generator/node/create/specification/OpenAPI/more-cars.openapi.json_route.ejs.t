@@ -17,7 +17,7 @@ skip_if: Create `<%= h.changeCase.title(nodeType) %>`
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/<%= h.changeCase.pascal(nodeType) %>"
+                  "$ref": "#/components/schemas/<%= h.changeCase.pascal(nodeType) %>Response"
                 }
               }
             }
