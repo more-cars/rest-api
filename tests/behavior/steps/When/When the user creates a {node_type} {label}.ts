@@ -16,5 +16,5 @@ When('the user creates a {string} {string}',
             })
 
         world.rememberResponse(response)
-        world.rememberNode(response?.data, label, nodeType.toLowerCase())
+        world.rememberNode(response?.data.data, label, nodeType.toLowerCase())
     })

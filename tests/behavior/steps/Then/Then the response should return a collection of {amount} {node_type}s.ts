@@ -30,6 +30,6 @@ Then('the response should return a collection of {int} {string}s',
         }
 
         world.recallResponse().data.forEach((item: any) => {
-            assert.ok(validateJson(item, validationSchema))
+            assert.ok(validateJson(item.data, validationSchema))
         })
     })

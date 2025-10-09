@@ -6,10 +6,10 @@ async function ensureValidBrandExists() {
     if (!bru.getEnvVar('validBrandId')) {
         const nodeList = await getAllBrands()
         if (nodeList.length > 0) {
-            bru.setEnvVar("validBrandId", nodeList[0].id)
+            bru.setEnvVar("validBrandId", nodeList[0].data.id)
         } else {
             const newNode = await createBrand()
-            bru.setEnvVar("validBrandId", newNode.id)
+            bru.setEnvVar("validBrandId", newNode.data.id)
         }
     }
 }

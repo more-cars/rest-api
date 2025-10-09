@@ -5,5 +5,5 @@ Then('the response should contain a node with {string} {string} at position {int
     (property: string, propertyValue: string, position: number) => {
         const responseData = world.recallResponse().data
 
-        assert.equal(responseData[position - 1][property], propertyValue)
+        assert.equal(responseData[position - 1].data[property], propertyValue)
     })

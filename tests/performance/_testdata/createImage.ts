@@ -14,5 +14,5 @@ export function createImage() {
     )
 
     // @ts-expect-error TS2531
-    return response.json().id
+    return response.json().data.id
 }

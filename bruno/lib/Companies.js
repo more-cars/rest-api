@@ -4,8 +4,13 @@ const {ensureValidImageExists} = require("./Images")
 
 async function ensureValidCompanyExists() {
     if (!bru.getEnvVar('validCompanyId')) {
-        const newNode = await createCompany()
-        bru.setEnvVar("validCompanyId", newNode.id)
+        const nodeList = await getAllCompanies()
+        if (nodeList.length > 0) {
+            bru.setEnvVar("validCompanyId", nodeList[0].data.id)
+        } else {
+            const newNode = await createCompany()
+            bru.setEnvVar("validCompanyId", newNode.data.id)
+        } //
     }
 }
 
@@ -20,6 +25,13 @@ async function createCompany() {
 }
 
 exports.createCompany = createCompany
+
+async function getAllCompanies() {
+    const response = await axios.get(bru.getEnvVar('baseUrl') + "/companies")
+    return response.data
+}
+
+exports.getAllCompanies = getAllCompanies
 
 async function createCompanyHasBrandRelationship(companyId, brandId) {
     const response = await axios.post(bru.getEnvVar('baseUrl') + "/companies/" + companyId + "/has-brand/" + brandId, null, {

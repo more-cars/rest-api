@@ -7,7 +7,7 @@ import {CompanySchema} from "../../../_toolbox/schemas/CompanySchema"
 Then('the response should return the {string} {string}',
     (nodeType: string, label: string) => {
         const expectedNode: BaseNode = world.recallNode(label).data
-        const actualNode = world.recallResponse().data
+        const actualNode = world.recallResponse().data.data
 
         assert.ok(validateJson(actualNode, CompanySchema))
 

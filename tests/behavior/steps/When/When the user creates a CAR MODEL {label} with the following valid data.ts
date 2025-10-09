@@ -21,5 +21,5 @@ When('the user creates a CAR MODEL {string} with the following valid data',
             })
 
         world.rememberResponse(response)
-        world.rememberNode(response?.data, label, 'car model')
+        world.rememberNode(response?.data.data, label, 'car model')
     })

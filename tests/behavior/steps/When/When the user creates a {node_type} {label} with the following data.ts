@@ -29,5 +29,5 @@ When('the user (tries to )create(s) a {string} {string} with the following data'
             })
 
         world.rememberResponse(response)
-        world.rememberNode(response?.data, label, nodeType)
+        world.rememberNode(response?.data.data, label, nodeType)
     })

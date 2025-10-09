@@ -7,7 +7,7 @@ import {validateJson} from "../../../_toolbox/validateJson"
 Then('the response should return the CAR MODEL {string}',
     (label: string) => {
         const expectedNode: CarModelNode = world.recallNode(label).data
-        const actualNode: CarModelNode = world.recallResponse().data
+        const actualNode: CarModelNode = world.recallResponse().data.data
 
         assert.ok(validateJson(actualNode, CarModelSchema))
 

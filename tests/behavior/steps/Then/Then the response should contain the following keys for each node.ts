@@ -8,7 +8,7 @@ Then('the response should contain the following keys for each node',
 
         responseItems.forEach((item: any) => {
             rows.forEach((row) => {
-                assert(row.key in item, `"${row.key}" not found in the response`)
+                assert(row.key in item.data, `"${row.key}" not found in the response`)
             })
         })
     })

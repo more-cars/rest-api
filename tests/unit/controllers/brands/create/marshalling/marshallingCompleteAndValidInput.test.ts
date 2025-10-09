@@ -19,14 +19,16 @@ test('marshalling a complete and valid request', async () => {
 
     expect(mappedNode)
         .toStrictEqual({
-            id: 1,
-            created_at: "2025-05-14T11:05:07.793Z",
-            updated_at: "2025-05-14T11:05:07.793Z",
-            name: "BMW",
-            full_name: "Bayerische Motoren Werke",
-            founded: 1916,
-            defunct: null,
-            wmi: "WBA",
-            hsn: "0005",
+            data: {
+                id: 1,
+                created_at: "2025-05-14T11:05:07.793Z",
+                updated_at: "2025-05-14T11:05:07.793Z",
+                name: "BMW",
+                full_name: "Bayerische Motoren Werke",
+                founded: 1916,
+                defunct: null,
+                wmi: "WBA",
+                hsn: "0005",
+            }
         })
 })

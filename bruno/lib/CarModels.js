@@ -6,10 +6,10 @@ async function ensureValidCarModelExists() {
     if (!bru.getEnvVar('validCarModelId')) {
         const nodeList = await getAllCarModels()
         if (nodeList.length > 0) {
-            bru.setEnvVar("validCarModelId", nodeList[0].id)
+            bru.setEnvVar("validCarModelId", nodeList[0].data.id)
         } else {
             const newNode = await createCarModel()
-            bru.setEnvVar("validCarModelId", newNode.id)
+            bru.setEnvVar("validCarModelId", newNode.data.id)
         }
     }
 }
@@ -20,10 +20,10 @@ async function ensureValidSecondCarModelExists() {
     if (!bru.getEnvVar('validSecondCarModelId')) {
         const nodeList = await getAllCarModels()
         if (nodeList.length > 1) {
-            bru.setEnvVar("validSecondCarModelId", nodeList[1].id)
+            bru.setEnvVar("validSecondCarModelId", nodeList[1].data.id)
         } else {
             const newNode = await createCarModel()
-            bru.setEnvVar("validSecondCarModelId", newNode.id)
+            bru.setEnvVar("validSecondCarModelId", newNode.data.id)
         }
     }
 }

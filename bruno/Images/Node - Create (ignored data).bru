@@ -22,8 +22,8 @@ body:json {
 
 assert {
   res.status: eq 201
-  res.body.name: neq nein
-  res.body.my_property: isUndefined
-  res.body.created_at: neq nope
-  res.body.updated_at: neq nonono
+  res.body.data.name: neq nein
+  res.body.data.my_property: isUndefined
+  res.body.data.created_at: neq nope
+  res.body.data.updated_at: neq nonono
 }

@@ -6,6 +6,6 @@ Then('the property {string} of all items in the response should be a number grea
         const responseData = world.recallResponse().data
 
         responseData.forEach((item: any) => {
-            assert.equal(parseInt(item[key]) > parseInt(value), true, `"${item[key]}" is not greater than "${value}"`)
+            assert.equal(parseInt(item.data[key]) > parseInt(value), true, `"${item.data[key]}" is not greater than "${value}"`)
         })
     })

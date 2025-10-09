@@ -4,10 +4,10 @@ async function ensureValidImageExists() {
     if (!bru.getEnvVar('validImageId')) {
         const nodeList = await getAllImages()
         if (nodeList.length > 0) {
-            bru.setEnvVar("validImageId", nodeList[0].id)
+            bru.setEnvVar("validImageId", nodeList[0].data.id)
         } else {
             const newNode = await createImage()
-            bru.setEnvVar("validImageId", newNode.id)
+            bru.setEnvVar("validImageId", newNode.data.id)
         }
     }
 }
@@ -18,10 +18,10 @@ async function ensureValidSecondImageExists() {
     if (!bru.getEnvVar('validSecondImageId')) {
         const nodeList = await getAllImages()
         if (nodeList.length > 1) {
-            bru.setEnvVar("validSecondImageId", nodeList[1].id)
+            bru.setEnvVar("validSecondImageId", nodeList[1].data.id)
         } else {
             const newNode = await createImage()
-            bru.setEnvVar("validSecondImageId", newNode.id)
+            bru.setEnvVar("validSecondImageId", newNode.data.id)
         }
     }
 }

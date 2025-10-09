@@ -4,7 +4,7 @@ import assert from "assert"
 Then('the response should contain the following data',
     (dataTable: DataTable) => {
         const rows = dataTable.hashes()
-        const responseData = world.recallResponse().data
+        const responseData = world.recallResponse().data.data
 
         rows.forEach((row) => {
             assert(responseData[row.key].toString() === row.value, `Property "${row.key}" does not have value "${row.value}"`)

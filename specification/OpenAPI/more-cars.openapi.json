@@ -107,7 +107,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Brand"
+                  "$ref": "#/components/schemas/BrandResponse"
                 }
               }
             }
@@ -201,7 +201,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Brand"
+                    "$ref": "#/components/schemas/BrandResponse"
                   }
                 }
               }
@@ -230,7 +230,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Brand"
+                  "$ref": "#/components/schemas/BrandResponse"
                 }
               }
             }
@@ -568,7 +568,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CarModel"
+                  "$ref": "#/components/schemas/CarModelResponse"
                 }
               }
             }
@@ -662,7 +662,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/CarModel"
+                    "$ref": "#/components/schemas/CarModelResponse"
                   }
                 }
               }
@@ -691,7 +691,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CarModel"
+                  "$ref": "#/components/schemas/CarModelResponse"
                 }
               }
             }
@@ -1124,7 +1124,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Image"
+                  "$ref": "#/components/schemas/ImageResponse"
                 }
               }
             }
@@ -1218,7 +1218,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Image"
+                    "$ref": "#/components/schemas/ImageResponse"
                   }
                 }
               }
@@ -1247,7 +1247,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Image"
+                  "$ref": "#/components/schemas/ImageResponse"
                 }
               }
             }
@@ -1532,7 +1532,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Company"
+                    "$ref": "#/components/schemas/CompanyResponse"
                   }
                 }
               }
@@ -1561,7 +1561,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Company"
+                  "$ref": "#/components/schemas/CompanyResponse"
                 }
               }
             }
@@ -1602,7 +1602,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Company"
+                  "$ref": "#/components/schemas/CompanyResponse"
                 }
               }
             }
@@ -2139,6 +2139,14 @@
         ],
         "default": "id"
       },
+      "BrandResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Brand"
+          }
+        }
+      },
       "BrandHasCarModel": {
         "type": "object",
         "required": [],
@@ -2291,6 +2299,14 @@
           "updated_at"
         ],
         "default": "id"
+      },
+      "CarModelResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CarModel"
+          }
+        }
       },
       "CarModelBelongsToBrand": {
         "type": "object",
@@ -2558,6 +2574,14 @@
         ],
         "default": "id"
       },
+      "ImageResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Image"
+          }
+        }
+      },
       "ImageBelongsToNode": {
         "type": "object",
         "required": [],
@@ -2682,6 +2706,14 @@
           "updated_at"
         ],
         "default": "id"
+      },
+      "CompanyResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Company"
+          }
+        }
       },
       "CompanyHasBrand": {
         "type": "object",

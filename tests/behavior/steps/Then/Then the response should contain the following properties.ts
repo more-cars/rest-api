@@ -4,7 +4,7 @@ import assert from "assert"
 Then('the response should contain the following properties',
     (dataTable: DataTable) => {
         const rows = dataTable.hashes()
-        const responseData = world.recallResponse().data
+        const responseData = world.recallResponse().data.data
 
         rows.forEach((row) => {
             if (row.datatype === 'string') {

@@ -4,8 +4,7 @@ import assert from "assert"
 Then('the response should contain the following keys',
     (dataTable: DataTable) => {
         const rows = dataTable.hashes()
-        const responseData = world.recallResponse().data
-
+        const responseData = world.recallResponse().data.data
         rows.forEach((row) => {
             assert(row.key in responseData, `"${row.key}" not found in the response`)
         })

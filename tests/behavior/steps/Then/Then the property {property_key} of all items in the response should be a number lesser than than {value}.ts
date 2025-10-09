@@ -6,6 +6,6 @@ Then('the property {string} of all items in the response should be a number less
         const responseData = world.recallResponse().data
 
         responseData.forEach((item: any) => {
-            assert.equal(parseInt(item[key]) < parseInt(value), true, `"${item[key]}" is not lesser than "${value}"`)
+            assert.equal(parseInt(item.data[key]) < parseInt(value), true, `"${item.data[key]}" is not lesser than "${value}"`)
         })
     })
