@@ -1,6 +1,6 @@
 import express from "express"
 import {Company} from "../../models/companies/Company"
-import {marshalHasBrandRelationships} from "./marshalling/marshalHasBrandRelationships"
+import {marshalRelationships} from "../relationships/marshalRelationships"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
@@ -11,7 +11,7 @@ export async function getAllHasBrandRelations(req: express.Request, res: express
 
     try {
         const relationships = await Company.getAllHasBrandRelationships(companyId)
-        const marshalledData = marshalHasBrandRelationships(relationships)
+        const marshalledData = marshalRelationships(relationships, "brand")
         return sendResponse200(marshalledData, res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {

@@ -1,8 +1,10 @@
 import express from "express"
 import {Company} from "../../models/companies/Company"
-import {marshalHasImageRelationship} from "./marshalling/marshalHasImageRelationship"
+import {Image} from "../../models/images/Image"
+import type {ImageNode} from "../../models/images/types/ImageNode"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../models/types/RelationshipAlreadyExistsError"
+import {marshalRelationship} from "../relationships/marshalRelationship"
 import {sendResponse201} from "../responses/sendResponse201"
 import {sendResponse304} from "../responses/sendResponse304"
 import {sendResponse404} from "../responses/sendResponse404"
@@ -14,7 +16,8 @@ export async function createHasImageRelation(req: express.Request, res: express.
 
     try {
         const relationship = await Company.createHasImageRelationship(companyId, imageId)
-        const marshalledData = marshalHasImageRelationship(relationship)
+        const relationshipPartner = await Image.findById(imageId)
+        const marshalledData = marshalRelationship(relationship, relationshipPartner as ImageNode, 'image')
         return sendResponse201(marshalledData, res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {

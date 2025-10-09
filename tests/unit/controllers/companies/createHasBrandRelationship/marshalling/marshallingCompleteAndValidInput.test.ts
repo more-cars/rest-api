@@ -1,10 +1,15 @@
 import {expect, test} from 'vitest'
-import {
-    marshalHasBrandRelationship
-} from "../../../../../../src/controllers/companies/marshalling/marshalHasBrandRelationship"
+import FakeBrand from "../../../../../_toolbox/fixtures/nodes/FakeBrand"
 import {CompanyHasBrandRelationship} from "../../../../../../src/models/companies/types/CompanyHasBrandRelationship"
+import {marshalRelationship} from "../../../../../../src/controllers/relationships/marshalRelationship"
 
 test('marshalled output for ›has-brand‹ relationship when provided with complete and valid input data', async () => {
+    const partnerNode = Object.assign({}, FakeBrand, {
+        id: 2,
+        created_at: "2023-10-01T00:00:00.001Z",
+        updated_at: "2023-10-01T00:00:00.001Z",
+    })
+
     const relationship: CompanyHasBrandRelationship = {
         company_id: 1,
         brand_id: 2,
@@ -14,15 +19,19 @@ test('marshalled output for ›has-brand‹ relationship when provided with comp
         updated_at: "2023-10-01T00:00:00.001Z",
     }
 
-    const marshalledData = marshalHasBrandRelationship(relationship)
+    const marshalledData = marshalRelationship(relationship, partnerNode, 'brand')
 
     expect(marshalledData)
         .toStrictEqual({
-            company_id: 1,
-            brand_id: 2,
-            relationship_id: 3,
-            relationship_name: "has-brand",
-            created_at: "2023-10-01T00:00:00.001Z",
-            updated_at: "2023-10-01T00:00:00.001Z",
+            data: {
+                relationship_id: 3,
+                relationship_name: "has-brand",
+                relationship_partner: {
+                    node_type: 'brand',
+                    data: partnerNode,
+                },
+                created_at: "2023-10-01T00:00:00.001Z",
+                updated_at: "2023-10-01T00:00:00.001Z",
+            }
         })
 })

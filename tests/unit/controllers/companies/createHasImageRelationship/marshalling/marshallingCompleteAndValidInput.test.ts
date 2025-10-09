@@ -1,10 +1,17 @@
 import {expect, test} from 'vitest'
-import {
-    marshalHasImageRelationship
-} from "../../../../../../src/controllers/companies/marshalling/marshalHasImageRelationship"
-import {CompanyHasImageRelationship} from "../../../../../../src/models/companies/types/CompanyHasImageRelationship"
+import FakeImageFull from "../../../../../_toolbox/fixtures/nodes/FakeImageFull"
+import type {
+    CompanyHasImageRelationship
+} from "../../../../../../src/models/companies/types/CompanyHasImageRelationship"
+import {marshalRelationship} from "../../../../../../src/controllers/relationships/marshalRelationship"
 
 test('marshalled output for ›has-image‹ relationship when provided with complete and valid input data', async () => {
+    const partnerNode = Object.assign({}, FakeImageFull, {
+        id: 2,
+        created_at: "2023-10-01T00:00:00.001Z",
+        updated_at: "2023-10-01T00:00:00.001Z",
+    })
+
     const relationship: CompanyHasImageRelationship = {
         company_id: 1,
         image_id: 2,
@@ -14,15 +21,19 @@ test('marshalled output for ›has-image‹ relationship when provided with comp
         updated_at: "2023-10-01T00:00:00.001Z",
     }
 
-    const marshalledData = marshalHasImageRelationship(relationship)
+    const marshalledData = marshalRelationship(relationship, partnerNode, 'image')
 
     expect(marshalledData)
         .toStrictEqual({
-            company_id: 1,
-            image_id: 2,
-            relationship_id: 3,
-            relationship_name: "has-image",
-            created_at: "2023-10-01T00:00:00.001Z",
-            updated_at: "2023-10-01T00:00:00.001Z",
+            data: {
+                relationship_id: 3,
+                relationship_name: "has-image",
+                relationship_partner: {
+                    node_type: 'image',
+                    data: partnerNode,
+                },
+                created_at: "2023-10-01T00:00:00.001Z",
+                updated_at: "2023-10-01T00:00:00.001Z",
+            }
         })
 })
