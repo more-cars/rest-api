@@ -1,6 +1,8 @@
 import express from "express"
 import {CarModel} from "../../models/car-models/CarModel"
-import {marshalHasPrimeImageRelationship} from "./marshalling/marshalHasPrimeImageRelationship"
+import {Image} from "../../models/images/Image"
+import type {ImageNode} from "../../models/images/types/ImageNode"
+import {marshalRelationship} from "../relationships/marshalRelationship"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../models/types/RelationshipNotFoundError"
 import {sendResponse200} from "../responses/sendResponse200"
@@ -12,7 +14,8 @@ export async function getHasPrimeImageRelation(req: express.Request, res: expres
 
     try {
         const relationship = await CarModel.getHasPrimeImageRelationship(carModelId)
-        const marshalledData = marshalHasPrimeImageRelationship(relationship)
+        const relationshipPartner = await Image.findById(relationship.image_id)
+        const marshalledData = marshalRelationship(relationship, relationshipPartner as ImageNode, 'image')
         return sendResponse200(marshalledData, res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {

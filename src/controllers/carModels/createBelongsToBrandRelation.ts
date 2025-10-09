@@ -1,6 +1,8 @@
 import express from "express"
 import {CarModel} from "../../models/car-models/CarModel"
-import {marshalBelongsToBrandRelationship} from "./marshalling/marshalBelongsToBrandRelationship"
+import {Brand} from "../../models/brands/Brand"
+import type {BrandNode} from "../../models/brands/types/BrandNode"
+import {marshalRelationship} from "../relationships/marshalRelationship"
 import {sendResponse201} from "../responses/sendResponse201"
 import {sendResponse404} from "../responses/sendResponse404"
 import {sendResponse422} from "../responses/sendResponse422"
@@ -11,12 +13,12 @@ export async function createBelongsToBrandRelation(req: express.Request, res: ex
 
     try {
         const relationship = await CarModel.createBelongsToBrandRelationship(carModelId, brandId)
+        const relationshipPartner = await Brand.findById(brandId)
+        const marshalledData = marshalRelationship(relationship, relationshipPartner as BrandNode, 'brand')
 
         if (!relationship) {
             return sendResponse404(res)
         }
-
-        const marshalledData = marshalBelongsToBrandRelationship(relationship)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {
