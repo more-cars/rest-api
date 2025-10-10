@@ -1,10 +1,15 @@
 import {expect, test} from 'vitest'
-import {
-    marshalBelongsToNodeRelationship
-} from "../../../../../../src/controllers/images/marshalling/marshalBelongsToNodeRelationship"
+import FakeBrand from "../../../../../_toolbox/fixtures/nodes/FakeBrand"
 import {ImageBelongsToNodeRelationship} from "../../../../../../src/models/images/types/ImageBelongsToNodeRelationship"
+import {marshalRelationship} from "../../../../../../src/controllers/relationships/marshalRelationship"
 
-test('marshalling a complete and valid request', async () => {
+test('marshalled output for ›has-brand‹ relationship when provided with complete and valid input data', async () => {
+    const partnerNode = Object.assign({}, FakeBrand, {
+        id: 2,
+        created_at: "2023-10-01T00:00:00.001Z",
+        updated_at: "2023-10-01T00:00:00.001Z",
+    })
+
     const relationship: ImageBelongsToNodeRelationship = {
         image_id: 1,
         partner_node_id: 2,
@@ -14,15 +19,19 @@ test('marshalling a complete and valid request', async () => {
         updated_at: "2023-10-01T00:00:00.001Z",
     }
 
-    const mappedNode = marshalBelongsToNodeRelationship(relationship)
+    const marshalledData = marshalRelationship(relationship, partnerNode, 'brand')
 
-    expect(mappedNode)
+    expect(marshalledData)
         .toStrictEqual({
-            image_id: 1,
-            partner_node_id: 2,
-            relationship_id: 3,
-            relationship_name: "belongs-to-node",
-            created_at: "2023-10-01T00:00:00.001Z",
-            updated_at: "2023-10-01T00:00:00.001Z",
+            data: {
+                relationship_id: 3,
+                relationship_name: "belongs-to-node",
+                relationship_partner: {
+                    node_type: 'brand',
+                    data: partnerNode,
+                },
+                created_at: "2023-10-01T00:00:00.001Z",
+                updated_at: "2023-10-01T00:00:00.001Z",
+            }
         })
 })

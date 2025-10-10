@@ -3,7 +3,7 @@ import type {NodeType} from "../nodes/types/NodeType"
 import {marshalRelationship} from "./marshalRelationship"
 import type {RelationshipCollectionResponse} from "./types/RelationshipCollectionResponse"
 
-export function marshalRelationships(relationships: any[], partnerNodeType: NodeType) {
+export function marshalRelationships(relationships: any[], partnerNodeType: NodeType | null) {
     const items: Array<RelationshipResponse> = []
 
     for (const relationship of relationships) {

@@ -12,12 +12,13 @@ get {
 assert {
   res.status: eq 200
   res.body: isJson
-  res.body.image_id: eq {{validImageId}}
-  res.body.partner_node_id: eq {{validBrandId}}
-  res.body.relationship_id: gte 0
-  res.body.relationship_name: eq belongs-to-node
-  res.body.created_at: isString
-  res.body.updated_at: isString
+  res.body.data.relationship_id: gte 12000000
+  res.body.data.relationship_name: eq belongs-to-node
+  res.body.data.relationship_partner: isJson
+  res.body.data.relationship_partner.node_type: isString
+  res.body.data.relationship_partner.data.id: gte 12000000
+  res.body.data.created_at: isString
+  res.body.data.updated_at: isString
 }
 
 script:pre-request {

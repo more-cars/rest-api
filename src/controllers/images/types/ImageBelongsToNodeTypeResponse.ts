@@ -1,7 +1,7 @@
-import type {ImageBelongsToNodeResponse} from "./ImageBelongsToNodeResponse"
+import type {RelationshipCollectionResponse} from "../../relationships/types/RelationshipCollectionResponse"
 
 export type ImageBelongsToNodeTypeResponse = {
-    "companies": ImageBelongsToNodeResponse[]
-    "brands": ImageBelongsToNodeResponse[]
-    "car_models": ImageBelongsToNodeResponse[]
+    "companies": RelationshipCollectionResponse
+    "brands": RelationshipCollectionResponse
+    "car_models": RelationshipCollectionResponse
 }
