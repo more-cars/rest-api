@@ -1,4 +1,5 @@
 const axios = require("axios")
+const {ensureValidCompanyExists} = require("./Companies")
 
 async function ensureValidImageExists() {
     if (!bru.getEnvVar('validImageId')) {
@@ -51,3 +52,23 @@ async function getImageById(id) {
 }
 
 exports.getImageById = getImageById
+
+async function ensureImageBelongsToNodeRelationshipExists() {
+    await ensureValidImageExists()
+    await ensureValidCompanyExists()
+    await createImageBelongsToNodeRelationship(bru.getEnvVar('validImageId'), bru.getEnvVar('validCompanyId'))
+}
+
+exports.ensureImageBelongsToNodeRelationshipExists = ensureImageBelongsToNodeRelationshipExists
+
+async function createImageBelongsToNodeRelationship(imageId, nodeId) {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/images/" + imageId + "/belongs-to-node/" + nodeId, null, {
+        validateStatus: function (status) {
+            return status < 400
+        }
+    })
+
+    return response.data
+}
+
+exports.createImageBelongsToNodeRelationship = createImageBelongsToNodeRelationship
