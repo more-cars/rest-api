@@ -1,5 +1,7 @@
 import express from "express"
 import {Company} from "../../models/companies/Company"
+import {Brand} from "../../models/brands/Brand"
+import type {BrandNode} from "../../models/brands/types/BrandNode"
 import {marshalRelationships} from "../relationships/marshalRelationships"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {sendResponse200} from "../responses/sendResponse200"
@@ -11,6 +13,9 @@ export async function getAllHasBrandRelations(req: express.Request, res: express
 
     try {
         const relationships = await Company.getAllHasBrandRelationships(companyId)
+        for (const relationship of relationships) {
+            relationship.relationship_partner = await Brand.findById(relationship.brand_id) as BrandNode
+        }
         const marshalledData = marshalRelationships(relationships, "brand")
         return sendResponse200(marshalledData, res)
     } catch (e) {

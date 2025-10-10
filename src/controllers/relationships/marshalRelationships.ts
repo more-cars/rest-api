@@ -7,7 +7,7 @@ export function marshalRelationships(relationships: any[], partnerNodeType: Node
     const items: Array<RelationshipResponse> = []
 
     for (const relationship of relationships) {
-        const relationshipPartner = relationship.partner_node
+        const relationshipPartner = relationship.relationship_partner
         items.push(marshalRelationship(relationship, relationshipPartner, partnerNodeType))
     }
 

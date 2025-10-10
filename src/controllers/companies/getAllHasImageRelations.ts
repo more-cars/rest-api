@@ -1,5 +1,7 @@
 import express from "express"
 import {Company} from "../../models/companies/Company"
+import {Image} from "../../models/images/Image"
+import type {ImageNode} from "../../models/images/types/ImageNode"
 import {marshalRelationships} from "../relationships/marshalRelationships"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {sendResponse200} from "../responses/sendResponse200"
@@ -11,6 +13,9 @@ export async function getAllHasImageRelations(req: express.Request, res: express
 
     try {
         const relationships = await Company.getAllHasImageRelationships(companyId)
+        for (const relationship of relationships) {
+            relationship.relationship_partner = await Image.findById(relationship.image_id) as ImageNode
+        }
         const marshalledData = marshalRelationships(relationships, "image")
         return sendResponse200(marshalledData, res)
     } catch (e) {
