@@ -16,7 +16,7 @@ export async function createHasCarModelRelation(req: express.Request, res: expre
 
     try {
         const relationship = await Brand.createHasCarModelRelationship(brandId, carModelId)
-        const relationshipPartner = await CarModel.findById(brandId)
+        const relationshipPartner = await CarModel.findById(carModelId)
         const marshalledData = marshalRelationship(relationship, relationshipPartner as CarModelNode, 'car model')
         return sendResponse201(marshalledData, res)
     } catch (e) {

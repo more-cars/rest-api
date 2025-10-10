@@ -7,8 +7,8 @@ import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
 
 export async function getHasCarModelRelation(req: express.Request, res: express.Response) {
-    const carModelId = parseInt(req.params.carModelId)
     const brandId = parseInt(req.params.brandId)
+    const carModelId = parseInt(req.params.carModelId)
 
     try {
         const relationship = await Brand.getRelationshipForHasCarModel(brandId, carModelId)

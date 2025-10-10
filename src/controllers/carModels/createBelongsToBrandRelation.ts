@@ -13,12 +13,13 @@ export async function createBelongsToBrandRelation(req: express.Request, res: ex
 
     try {
         const relationship = await CarModel.createBelongsToBrandRelationship(carModelId, brandId)
-        const relationshipPartner = await Brand.findById(brandId)
-        const marshalledData = marshalRelationship(relationship, relationshipPartner as BrandNode, 'brand')
 
         if (!relationship) {
             return sendResponse404(res)
         }
+
+        const relationshipPartner = await Brand.findById(brandId)
+        const marshalledData = marshalRelationship(relationship, relationshipPartner as BrandNode, 'brand')
 
         return sendResponse201(marshalledData, res)
     } catch (e) {
