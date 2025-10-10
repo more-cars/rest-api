@@ -2,6 +2,7 @@ import {expect, test} from 'vitest'
 import FakeBrand from "../../../../../_toolbox/fixtures/nodes/FakeBrand"
 import {ImageBelongsToNodeRelationship} from "../../../../../../src/models/images/types/ImageBelongsToNodeRelationship"
 import {marshalRelationship} from "../../../../../../src/controllers/relationships/marshalRelationship"
+import type {BaseRelationship} from "../../../../../../src/controllers/relationships/types/BaseRelationship"
 
 test('marshalled output for ›has-brand‹ relationship when provided with complete and valid input data', async () => {
     const partnerNode = Object.assign({}, FakeBrand, {
@@ -19,7 +20,7 @@ test('marshalled output for ›has-brand‹ relationship when provided with comp
         updated_at: "2023-10-01T00:00:00.001Z",
     }
 
-    const marshalledData = marshalRelationship(relationship, partnerNode, 'brand')
+    const marshalledData = marshalRelationship(relationship as BaseRelationship, partnerNode, 'brand')
 
     expect(marshalledData)
         .toStrictEqual({

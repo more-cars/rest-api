@@ -4,6 +4,7 @@ import type {
     CompanyHasImageRelationship
 } from "../../../../../../src/models/companies/types/CompanyHasImageRelationship"
 import {marshalRelationship} from "../../../../../../src/controllers/relationships/marshalRelationship"
+import type {BaseRelationship} from "../../../../../../src/controllers/relationships/types/BaseRelationship"
 
 test('marshalled output for ›has-image‹ relationship when provided with complete and valid input data', async () => {
     const partnerNode = Object.assign({}, FakeImageFull, {
@@ -21,7 +22,7 @@ test('marshalled output for ›has-image‹ relationship when provided with comp
         updated_at: "2023-10-01T00:00:00.001Z",
     }
 
-    const marshalledData = marshalRelationship(relationship, partnerNode, 'image')
+    const marshalledData = marshalRelationship(relationship as BaseRelationship, partnerNode, 'image')
 
     expect(marshalledData)
         .toStrictEqual({
