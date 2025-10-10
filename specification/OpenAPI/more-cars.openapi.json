@@ -271,10 +271,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/BrandHasCarModel"
-                  }
+                  "$ref": "#/components/schemas/BrandHasCarModelCollectionResponse"
                 }
               }
             }
@@ -324,7 +321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BrandHasCarModel"
+                  "$ref": "#/components/schemas/BrandHasCarModelResponse"
                 }
               }
             }
@@ -372,7 +369,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BrandHasCarModel"
+                  "$ref": "#/components/schemas/BrandHasCarModelResponse"
                 }
               }
             }
@@ -416,10 +413,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/BrandHasImage"
-                  }
+                  "$ref": "#/components/schemas/BrandHasImageCollectionResponse"
                 }
               }
             }
@@ -469,7 +463,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BrandHasImage"
+                  "$ref": "#/components/schemas/BrandHasImageResponse"
                 }
               }
             }
@@ -517,7 +511,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BrandHasImage"
+                  "$ref": "#/components/schemas/BrandHasImageResponse"
                 }
               }
             }
@@ -732,7 +726,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CarModelBelongsToBrand"
+                  "$ref": "#/components/schemas/CarModelBelongsToBrandResponse"
                 }
               }
             }
@@ -782,7 +776,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CarModelBelongsToBrand"
+                  "$ref": "#/components/schemas/CarModelBelongsToBrandResponse"
                 }
               }
             }
@@ -833,10 +827,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/CarModelHasImage"
-                  }
+                  "$ref": "#/components/schemas/CarModelHasImageCollectionResponse"
                 }
               }
             }
@@ -886,7 +877,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CarModelHasImage"
+                  "$ref": "#/components/schemas/CarModelHasImageResponse"
                 }
               }
             }
@@ -934,7 +925,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CarModelHasImage"
+                  "$ref": "#/components/schemas/CarModelHasImageResponse"
                 }
               }
             }
@@ -994,7 +985,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CarModelHasPrimeImage"
+                  "$ref": "#/components/schemas/CarModelHasPrimeImageResponse"
                 }
               }
             }
@@ -1042,7 +1033,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CarModelHasPrimeImage"
+                  "$ref": "#/components/schemas/CarModelHasPrimeImageResponse"
                 }
               }
             }
@@ -1083,7 +1074,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CarModelHasPrimeImage"
+                  "$ref": "#/components/schemas/CarModelHasPrimeImageResponse"
                 }
               }
             }
@@ -1297,7 +1288,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ImageBelongsToNode"
+                  "$ref": "#/components/schemas/ImageBelongsToNodeResponse"
                 }
               }
             }
@@ -1355,7 +1346,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ImageBelongsToNode"
+                  "$ref": "#/components/schemas/ImageBelongsToNodeResponse"
                 }
               }
             }
@@ -1406,10 +1397,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ImageBelongsToNode"
-                  }
+                  "$ref": "#/components/schemas/ImageBelongsToNodeCollectionResponse"
                 }
               }
             }
@@ -1460,7 +1448,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ImageBelongsToNodeType"
+                  "$ref": "#/components/schemas/ImageBelongsToNodeTypeResponse"
                 }
               }
             }
@@ -1675,10 +1663,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/CompanyHasBrand"
-                  }
+                  "$ref": "#/components/schemas/CompanyHasBrandCollectionResponse"
                 }
               }
             }
@@ -1769,7 +1754,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CompanyHasBrand"
+                  "$ref": "#/components/schemas/CompanyHasBrandResponse"
                 }
               }
             }
@@ -1813,10 +1798,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/CompanyHasImage"
-                  }
+                  "$ref": "#/components/schemas/CompanyHasImageCollectionResponse"
                 }
               }
             }
@@ -1866,7 +1848,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CompanyHasImage"
+                  "$ref": "#/components/schemas/CompanyHasImageResponse"
                 }
               }
             }
@@ -1951,7 +1933,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CompanyHasPrimeImage"
+                  "$ref": "#/components/schemas/CompanyHasPrimeImageResponse"
                 }
               }
             }
@@ -2042,7 +2024,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CompanyHasPrimeImage"
+                  "$ref": "#/components/schemas/CompanyHasPrimeImageResponse"
                 }
               }
             }
@@ -2151,16 +2133,6 @@
         "type": "object",
         "required": [],
         "properties": {
-          "brand_id": {
-            "type": "integer",
-            "readOnly": true,
-            "example": "3"
-          },
-          "car_model_id": {
-            "type": "integer",
-            "readOnly": true,
-            "example": "25"
-          },
           "relationship_id": {
             "type": "integer",
             "readOnly": true,
@@ -2171,19 +2143,50 @@
             "readOnly": true,
             "example": "has-car-model"
           },
+          "relationship_partner": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "car-model"
+              },
+              "data": {
+                "$ref": "#/components/schemas/CarModel"
+              }
+            }
+          },
           "created_at": {
             "type": "string",
             "readOnly": true,
-            "description": "Timestamp for when this node was created. Generated by the system. Cannot be changed.",
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
           },
           "updated_at": {
             "type": "string",
             "readOnly": true,
-            "description": "Timestamp for when this node was last modified. Generated by the system.",
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "BrandHasCarModelResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/BrandHasCarModel"
+          }
+        }
+      },
+      "BrandHasCarModelCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BrandHasCarModelResponse"
+            }
           }
         }
       },
@@ -2191,16 +2194,6 @@
         "type": "object",
         "required": [],
         "properties": {
-          "brand_id": {
-            "type": "integer",
-            "readOnly": true,
-            "example": "1"
-          },
-          "image_id": {
-            "type": "integer",
-            "readOnly": true,
-            "example": "2125"
-          },
           "relationship_id": {
             "type": "integer",
             "readOnly": true,
@@ -2211,19 +2204,50 @@
             "readOnly": true,
             "example": "has-image"
           },
+          "relationship_partner": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "image"
+              },
+              "data": {
+                "$ref": "#/components/schemas/Image"
+              }
+            }
+          },
           "created_at": {
             "type": "string",
             "readOnly": true,
-            "description": "Timestamp for when this node was created. Generated by the system. Cannot be changed.",
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
           },
           "updated_at": {
             "type": "string",
             "readOnly": true,
-            "description": "Timestamp for when this node was last modified. Generated by the system.",
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "BrandHasImageResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/BrandHasImage"
+          }
+        }
+      },
+      "BrandHasImageCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BrandHasImageResponse"
+            }
           }
         }
       },
@@ -2312,16 +2336,6 @@
         "type": "object",
         "required": [],
         "properties": {
-          "car_model_id": {
-            "type": "integer",
-            "readOnly": true,
-            "example": "25"
-          },
-          "brand_id": {
-            "type": "integer",
-            "readOnly": true,
-            "example": "3"
-          },
           "relationship_id": {
             "type": "integer",
             "readOnly": true,
@@ -2332,19 +2346,39 @@
             "readOnly": true,
             "example": "belongs-to-brand"
           },
+          "relationship_partner": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "brand"
+              },
+              "data": {
+                "$ref": "#/components/schemas/Brand"
+              }
+            }
+          },
           "created_at": {
             "type": "string",
             "readOnly": true,
-            "description": "Timestamp for when this node was created. Generated by the system. Cannot be changed.",
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
           },
           "updated_at": {
             "type": "string",
             "readOnly": true,
-            "description": "Timestamp for when this node was last modified. Generated by the system.",
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "CarModelBelongsToBrandResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CarModelBelongsToBrand"
           }
         }
       },
@@ -2352,16 +2386,6 @@
         "type": "object",
         "required": [],
         "properties": {
-          "car_model_id": {
-            "type": "integer",
-            "readOnly": true,
-            "example": "1100"
-          },
-          "image_id": {
-            "type": "integer",
-            "readOnly": true,
-            "example": "4069"
-          },
           "relationship_id": {
             "type": "integer",
             "readOnly": true,
@@ -2372,19 +2396,50 @@
             "readOnly": true,
             "example": "has-image"
           },
+          "relationship_partner": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "image"
+              },
+              "data": {
+                "$ref": "#/components/schemas/Image"
+              }
+            }
+          },
           "created_at": {
             "type": "string",
             "readOnly": true,
-            "description": "Timestamp for when this node was created. Generated by the system. Cannot be changed.",
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
           },
           "updated_at": {
             "type": "string",
             "readOnly": true,
-            "description": "Timestamp for when this node was last modified. Generated by the system.",
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "CarModelHasImageResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CarModelHasImage"
+          }
+        }
+      },
+      "CarModelHasImageCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CarModelHasImageResponse"
+            }
           }
         }
       },
@@ -2392,16 +2447,6 @@
         "type": "object",
         "required": [],
         "properties": {
-          "carModel_id": {
-            "type": "integer",
-            "readOnly": true,
-            "example": "1234"
-          },
-          "image_id": {
-            "type": "integer",
-            "readOnly": true,
-            "example": "5678"
-          },
           "relationship_id": {
             "type": "integer",
             "readOnly": true,
@@ -2412,19 +2457,39 @@
             "readOnly": true,
             "example": "has-prime-image"
           },
+          "relationship_partner": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "image"
+              },
+              "data": {
+                "$ref": "#/components/schemas/Image"
+              }
+            }
+          },
           "created_at": {
             "type": "string",
             "readOnly": true,
-            "description": "Timestamp for when this node was created. Generated by the system. Cannot be changed.",
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
           },
           "updated_at": {
             "type": "string",
             "readOnly": true,
-            "description": "Timestamp for when this node was last modified. Generated by the system.",
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "CarModelHasPrimeImageResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CarModelHasPrimeImage"
           }
         }
       },
@@ -2586,16 +2651,6 @@
         "type": "object",
         "required": [],
         "properties": {
-          "image_id": {
-            "type": "integer",
-            "readOnly": true,
-            "example": "607533"
-          },
-          "partner_node_id": {
-            "type": "integer",
-            "readOnly": true,
-            "example": "607400"
-          },
           "relationship_id": {
             "type": "integer",
             "readOnly": true,
@@ -2606,19 +2661,60 @@
             "readOnly": true,
             "example": "belongs-to-node"
           },
+          "relationship_partner": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "brand"
+              },
+              "data": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Company"
+                  },
+                  {
+                    "$ref": "#/components/schemas/Brand"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CarModel"
+                  }
+                ]
+              }
+            }
+          },
           "created_at": {
             "type": "string",
             "readOnly": true,
-            "description": "Timestamp for when this node was created. Generated by the system. Cannot be changed.",
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
           },
           "updated_at": {
             "type": "string",
             "readOnly": true,
-            "description": "Timestamp for when this node was last modified. Generated by the system.",
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "ImageBelongsToNodeResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ImageBelongsToNode"
+          }
+        }
+      },
+      "ImageBelongsToNodeCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ImageBelongsToNodeResponse"
+            }
           }
         }
       },
@@ -2626,6 +2722,12 @@
         "type": "object",
         "required": [],
         "properties": {
+          "companies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ImageBelongsToNode"
+            }
+          },
           "brands": {
             "type": "array",
             "items": {
@@ -2637,6 +2739,14 @@
             "items": {
               "$ref": "#/components/schemas/ImageBelongsToNode"
             }
+          }
+        }
+      },
+      "ImageBelongsToNodeTypeResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ImageBelongsToNodeType"
           }
         }
       },
@@ -2719,16 +2829,6 @@
         "type": "object",
         "required": [],
         "properties": {
-          "company_id": {
-            "type": "integer",
-            "readOnly": true,
-            "example": "1234"
-          },
-          "brand_id": {
-            "type": "integer",
-            "readOnly": true,
-            "example": "5678"
-          },
           "relationship_id": {
             "type": "integer",
             "readOnly": true,
@@ -2739,19 +2839,50 @@
             "readOnly": true,
             "example": "has-brand"
           },
+          "relationship_partner": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "brand"
+              },
+              "data": {
+                "$ref": "#/components/schemas/Brand"
+              }
+            }
+          },
           "created_at": {
             "type": "string",
             "readOnly": true,
-            "description": "Timestamp for when this node was created. Generated by the system. Cannot be changed.",
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
           },
           "updated_at": {
             "type": "string",
             "readOnly": true,
-            "description": "Timestamp for when this node was last modified. Generated by the system.",
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "CompanyHasBrandResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CompanyHasBrand"
+          }
+        }
+      },
+      "CompanyHasBrandCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CompanyHasBrandResponse"
+            }
           }
         }
       },
@@ -2759,16 +2890,6 @@
         "type": "object",
         "required": [],
         "properties": {
-          "company_id": {
-            "type": "integer",
-            "readOnly": true,
-            "example": "1234"
-          },
-          "image_id": {
-            "type": "integer",
-            "readOnly": true,
-            "example": "5678"
-          },
           "relationship_id": {
             "type": "integer",
             "readOnly": true,
@@ -2779,19 +2900,50 @@
             "readOnly": true,
             "example": "has-image"
           },
+          "relationship_partner": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "image"
+              },
+              "data": {
+                "$ref": "#/components/schemas/Image"
+              }
+            }
+          },
           "created_at": {
             "type": "string",
             "readOnly": true,
-            "description": "Timestamp for when this node was created. Generated by the system. Cannot be changed.",
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
           },
           "updated_at": {
             "type": "string",
             "readOnly": true,
-            "description": "Timestamp for when this node was last modified. Generated by the system.",
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "CompanyHasImageResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CompanyHasImage"
+          }
+        }
+      },
+      "CompanyHasImageCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CompanyHasImageResponse"
+            }
           }
         }
       },
@@ -2799,16 +2951,6 @@
         "type": "object",
         "required": [],
         "properties": {
-          "company_id": {
-            "type": "integer",
-            "readOnly": true,
-            "example": "1234"
-          },
-          "image_id": {
-            "type": "integer",
-            "readOnly": true,
-            "example": "5678"
-          },
           "relationship_id": {
             "type": "integer",
             "readOnly": true,
@@ -2819,19 +2961,39 @@
             "readOnly": true,
             "example": "has-prime-image"
           },
+          "relationship_partner": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "image"
+              },
+              "data": {
+                "$ref": "#/components/schemas/Image"
+              }
+            }
+          },
           "created_at": {
             "type": "string",
             "readOnly": true,
-            "description": "Timestamp for when this node was created. Generated by the system. Cannot be changed.",
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
           },
           "updated_at": {
             "type": "string",
             "readOnly": true,
-            "description": "Timestamp for when this node was last modified. Generated by the system.",
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
             "format": "date-time",
             "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "CompanyHasPrimeImageResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CompanyHasPrimeImage"
           }
         }
       }
