@@ -10,7 +10,7 @@ export function marshalRelationship(relationship: BaseRelationship, partnerNode:
             relationship_id: relationship.relationship_id,
             relationship_name: dasherize(relationship.relationship_name.toLowerCase()),
             relationship_partner: {
-                node_type: dasherize(partnerNodeType as string) || '-',
+                node_type: dasherize(partnerNodeType as string || '-'),
                 data: partnerNode || {}
             },
             created_at: relationship.created_at,
