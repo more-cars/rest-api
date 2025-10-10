@@ -5,7 +5,7 @@ import availableProperties from "../../../specification/properties/Brand.json"
 import {InvalidPaginationParams} from "../../models/types/InvalidPaginationParams"
 import {InvalidSortingParams} from "../../models/types/InvalidSortingParams"
 import {InvalidFilterParams} from "../../models/types/InvalidFilterParams"
-import {marshalNodeCollection} from "./marshalling/marshalNodeCollection"
+import {marshalNodes} from "./marshalling/marshalNodes"
 import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse400} from "../responses/sendResponse400"
 import {sendResponse500} from "../responses/sendResponse500"
@@ -14,7 +14,7 @@ export async function getAll(req: express.Request, res: express.Response) {
     try {
         const params = extractCollectionConstraintParameters(req, availableProperties)
         const nodes = await Brand.findAll(params)
-        const marshalledData = marshalNodeCollection(nodes)
+        const marshalledData = marshalNodes(nodes)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

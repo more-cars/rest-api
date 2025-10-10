@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import type {BrandNode} from "../../../../../src/models/brands/types/BrandNode"
 import FakeBrand from "../../../../_toolbox/fixtures/nodes/FakeBrand"
-import {marshalNodeCollection} from "../../../../../src/controllers/brands/marshalling/marshalNodeCollection"
+import {marshalNodes} from "../../../../../src/controllers/brands/marshalling/marshalNodes"
 
 test('marshalling a complete and valid request', async () => {
     const fakeNode1: BrandNode = Object.assign({}, FakeBrand, {id: 1, created_at: "dummy", updated_at: "dummy"})
@@ -14,14 +14,14 @@ test('marshalling a complete and valid request', async () => {
         fakeNode3,
     ]
 
-    const mappedNodes = marshalNodeCollection(nodes)
+    const marshalledData = marshalNodes(nodes)
 
-    expect(mappedNodes[0])
+    expect(marshalledData.data[0])
         .toEqual({data: fakeNode1})
 
-    expect(mappedNodes[1])
+    expect(marshalledData.data[1])
         .toEqual({data: fakeNode2})
 
-    expect(mappedNodes[2])
+    expect(marshalledData.data[2])
         .toEqual({data: fakeNode3})
 })
