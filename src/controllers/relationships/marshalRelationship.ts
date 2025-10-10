@@ -2,8 +2,9 @@ import {dasherize} from "inflection"
 import type {RelationshipResponse} from "./types/RelationshipResponse"
 import type {BaseNode} from "../nodes/types/BaseNode"
 import type {NodeType} from "../nodes/types/NodeType"
+import type {BaseRelationship} from "./types/BaseRelationship"
 
-export function marshalRelationship(relationship: any, partnerNode: BaseNode, partnerNodeType: NodeType | null) {
+export function marshalRelationship(relationship: BaseRelationship, partnerNode: BaseNode, partnerNodeType: NodeType | null) {
     return {
         data: {
             relationship_id: relationship.relationship_id,

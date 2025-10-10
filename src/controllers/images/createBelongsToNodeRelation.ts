@@ -6,6 +6,7 @@ import {marshalRelationship} from "../relationships/marshalRelationship"
 import {sendResponse201} from "../responses/sendResponse201"
 import {sendResponse404} from "../responses/sendResponse404"
 import {sendResponse422} from "../responses/sendResponse422"
+import type {BaseRelationship} from "../relationships/types/BaseRelationship"
 
 export async function createBelongsToNodeRelation(req: express.Request, res: express.Response) {
     const imageId = parseInt(req.params.imageId)
@@ -23,7 +24,7 @@ export async function createBelongsToNodeRelation(req: express.Request, res: exp
         }
 
         const relationshipPartner = await Node.findById(partnerNodeId)
-        const marshalledData = marshalRelationship(relationship, relationshipPartner as BaseNode, 'brand') // TODO provide correct partnernodetype
+        const marshalledData = marshalRelationship(relationship as BaseRelationship, relationshipPartner as BaseNode, 'brand') // TODO provide correct partnernodetype
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

@@ -5,6 +5,7 @@ import type {CarModelNode} from "../../models/car-models/types/CarModelNode"
 import {marshalRelationship} from "../relationships/marshalRelationship"
 import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
+import type {BaseRelationship} from "../relationships/types/BaseRelationship"
 
 export async function getHasCarModelRelation(req: express.Request, res: express.Response) {
     const brandId = parseInt(req.params.brandId)
@@ -18,7 +19,7 @@ export async function getHasCarModelRelation(req: express.Request, res: express.
         }
 
         const relationshipPartner = await CarModel.findById(relationship.car_model_id)
-        const marshalledData = marshalRelationship(relationship, relationshipPartner as CarModelNode, 'car model')
+        const marshalledData = marshalRelationship(relationship as BaseRelationship, relationshipPartner as CarModelNode, 'car model')
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

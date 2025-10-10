@@ -8,6 +8,7 @@ import {RelationshipNotFoundError} from "../../models/types/RelationshipNotFound
 import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
 import {sendResponse500} from "../responses/sendResponse500"
+import type {BaseRelationship} from "../relationships/types/BaseRelationship"
 
 export async function hasHasPrimeImageRelation(req: express.Request, res: express.Response) {
     const carModelId = parseInt(req.params.carModelId)
@@ -16,7 +17,7 @@ export async function hasHasPrimeImageRelation(req: express.Request, res: expres
     try {
         const relationship = await CarModel.hasHasPrimeImageRelationship(carModelId, imageId)
         const relationshipPartner = await Image.findById(relationship.image_id)
-        const marshalledData = marshalRelationship(relationship, relationshipPartner as ImageNode, 'image')
+        const marshalledData = marshalRelationship(relationship as BaseRelationship, relationshipPartner as ImageNode, 'image')
         return sendResponse200(marshalledData, res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {

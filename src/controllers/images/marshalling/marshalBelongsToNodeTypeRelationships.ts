@@ -3,37 +3,41 @@ import type {
 } from "../../../models/images/types/ImageBelongsToNodeTypeRelationships"
 import type {ImageBelongsToNodeTypeResponse} from "../types/ImageBelongsToNodeTypeResponse"
 import {marshalRelationship} from "../../relationships/marshalRelationship"
+import type {BaseRelationship} from "../../relationships/types/BaseRelationship"
 
 export function marshalBelongsToNodeTypeRelationships(relationships: ImageBelongsToNodeTypeRelationships) {
     // TODO this solution is not scalable
     const marshalledData: ImageBelongsToNodeTypeResponse = {
-        companies: {data: []},
-        brands: {data: []},
-        car_models: {data: []},
+        data: {
+            companies: {data: []},
+            brands: {data: []},
+            car_models: {data: []},
+        }
     }
 
     relationships.companies.forEach((relationship) => {
-        marshalledData.companies.data.push(marshalRelationship(relationship, {
+        // TODO avoid fallback, provide correct partner node type
+        marshalledData.data.companies.data.push(marshalRelationship(relationship as BaseRelationship, relationship.relationship_partner || {
             id: 0,
             created_at: "",
             updated_at: ""
-        }, 'brand')) // TODO provide correct partnernodetype)
+        }, 'brand'))
     })
 
     relationships.brands.forEach((relationship) => {
-        marshalledData.brands.data.push(marshalRelationship(relationship, {
+        marshalledData.data.brands.data.push(marshalRelationship(relationship as BaseRelationship, relationship.relationship_partner || {
             id: 0,
             created_at: "",
             updated_at: ""
-        }, 'brand')) // TODO provide correct partnernodetype)
+        }, 'brand'))
     })
 
     relationships.car_models.forEach((relationship) => {
-        marshalledData.car_models.data.push(marshalRelationship(relationship, {
+        marshalledData.data.car_models.data.push(marshalRelationship(relationship as BaseRelationship, relationship.relationship_partner || {
             id: 0,
             created_at: "",
             updated_at: ""
-        }, 'brand')) // TODO provide correct partnernodetype)
+        }, 'brand'))
     })
 
     return marshalledData

@@ -9,6 +9,7 @@ import {sendResponse201} from "../responses/sendResponse201"
 import {sendResponse304} from "../responses/sendResponse304"
 import {sendResponse404} from "../responses/sendResponse404"
 import {sendResponse500} from "../responses/sendResponse500"
+import type {BaseRelationship} from "../relationships/types/BaseRelationship"
 
 export async function createHasImageRelation(req: express.Request, res: express.Response) {
     const companyId = parseInt(req.params.companyId)
@@ -17,7 +18,7 @@ export async function createHasImageRelation(req: express.Request, res: express.
     try {
         const relationship = await Company.createHasImageRelationship(companyId, imageId)
         const relationshipPartner = await Image.findById(imageId)
-        const marshalledData = marshalRelationship(relationship, relationshipPartner as ImageNode, 'image')
+        const marshalledData = marshalRelationship(relationship as BaseRelationship, relationshipPartner as ImageNode, 'image')
         return sendResponse201(marshalledData, res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {

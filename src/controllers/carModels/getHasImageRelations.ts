@@ -5,6 +5,7 @@ import type {ImageNode} from "../../models/images/types/ImageNode"
 import {marshalRelationships} from "../relationships/marshalRelationships"
 import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
+import type {BaseRelationship} from "../relationships/types/BaseRelationship"
 
 export async function getHasImageRelations(req: express.Request, res: express.Response) {
     const carModelId = parseInt(req.params.carModelId)
@@ -14,7 +15,7 @@ export async function getHasImageRelations(req: express.Request, res: express.Re
         for (const relationship of relationships) {
             relationship.relationship_partner = await Image.findById(relationship.image_id) as ImageNode
         }
-        const marshalledData = marshalRelationships(relationships, 'image')
+        const marshalledData = marshalRelationships(relationships as BaseRelationship[], 'image')
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

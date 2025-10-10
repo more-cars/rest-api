@@ -1,8 +1,9 @@
+import type {BaseNode} from "../../nodes/types/BaseNode"
+
 export type BaseRelationship = {
     relationship_id: number
     relationship_name: string
-    start_node_id: number
-    end_node_id: number
+    relationship_partner: BaseNode
     created_at: string
     updated_at: string
 }

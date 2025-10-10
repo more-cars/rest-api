@@ -5,6 +5,7 @@ import type {BrandNode} from "../../models/brands/types/BrandNode"
 import {marshalRelationship} from "../relationships/marshalRelationship"
 import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
+import type {BaseRelationship} from "../relationships/types/BaseRelationship"
 
 export async function getBelongsToBrandRelation(req: express.Request, res: express.Response) {
     const carModelId = parseInt(req.params.carModelId)
@@ -16,7 +17,7 @@ export async function getBelongsToBrandRelation(req: express.Request, res: expre
             return sendResponse200(null, res)
         } else {
             const relationshipPartner = await Brand.findById(relationship.brand_id)
-            const marshalledData = marshalRelationship(relationship, relationshipPartner as BrandNode, 'brand')
+            const marshalledData = marshalRelationship(relationship as BaseRelationship, relationshipPartner as BrandNode, 'brand')
             return sendResponse200(marshalledData, res)
         }
     } catch (e) {

@@ -6,6 +6,7 @@ import {marshalRelationship} from "../relationships/marshalRelationship"
 import {sendResponse201} from "../responses/sendResponse201"
 import {sendResponse404} from "../responses/sendResponse404"
 import {sendResponse422} from "../responses/sendResponse422"
+import type {BaseRelationship} from "../relationships/types/BaseRelationship"
 
 export async function createBelongsToBrandRelation(req: express.Request, res: express.Response) {
     const carModelId = parseInt(req.params.carModelId)
@@ -19,7 +20,7 @@ export async function createBelongsToBrandRelation(req: express.Request, res: ex
         }
 
         const relationshipPartner = await Brand.findById(brandId)
-        const marshalledData = marshalRelationship(relationship, relationshipPartner as BrandNode, 'brand')
+        const marshalledData = marshalRelationship(relationship as BaseRelationship, relationshipPartner as BrandNode, 'brand')
 
         return sendResponse201(marshalledData, res)
     } catch (e) {
