@@ -4,7 +4,7 @@ import {Brand} from "../../../../../../../src/models/brands/Brand"
 import assert from "assert"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
 import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
-import {BrandHasImageSchema} from "../../../../../../_toolbox/schemas/BrandHasImageSchema"
+import {RelationshipSchema} from "../../../../../../_toolbox/schemas/RelationshipSchema"
 
 test('Requesting the relationship between BRAND and attached IMAGE',
     async () => {
@@ -19,7 +19,7 @@ test('Requesting the relationship between BRAND and attached IMAGE',
             assert.fail(`Relationship creation failed.`)
         }
 
-        validateJson(relationship, BrandHasImageSchema)
+        validateJson(relationship, RelationshipSchema)
 
         expect(relationship.brand_id)
             .toBe(brand.id)

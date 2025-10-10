@@ -4,7 +4,7 @@ import assert from "assert"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
-import {CarModelBelongsToBrandSchema} from "../../../../../../_toolbox/schemas/CarModelBelongsToBrandSchema"
+import {RelationshipSchema} from "../../../../../../_toolbox/schemas/RelationshipSchema"
 
 test('Requesting the relationship between CAR MODEL and attached BRAND', async () => {
     const carModel = await seedCarModel()
@@ -18,7 +18,7 @@ test('Requesting the relationship between CAR MODEL and attached BRAND', async (
         assert.fail(`Car Model #${carModel.id} not found.`)
     }
 
-    validateJson(relationship, CarModelBelongsToBrandSchema)
+    validateJson(relationship, RelationshipSchema)
 
     expect(relationship.brand_id)
         .toBe(brand.id)

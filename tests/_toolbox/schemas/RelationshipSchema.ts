@@ -1,18 +1,26 @@
-export const CarModelBelongsToBrandSchema = {
+export const RelationshipSchema = {
     type: "object",
     properties: {
-        car_model_id: {type: "integer"},
-        brand_id: {type: "integer"},
         relationship_id: {type: "integer"},
         relationship_name: {type: "string"},
+        relationship_partner: {
+            type: "object",
+            properties: {
+                node_type: {type: "string"},
+                data: {type: "object"},
+            },
+            required: [
+                "node_type",
+                "data",
+            ],
+        },
         created_at: {type: "string"},
         updated_at: {type: "string"},
     },
     required: [
-        "car_model_id",
-        "brand_id",
         "relationship_id",
         "relationship_name",
+        "relationship_partner",
         "created_at",
         "updated_at",
     ],

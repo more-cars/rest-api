@@ -4,7 +4,7 @@ import {Brand} from "../../../../../../../src/models/brands/Brand"
 import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
-import {BrandHasCarModelSchema} from "../../../../../../_toolbox/schemas/BrandHasCarModelSchema"
+import {RelationshipSchema} from "../../../../../../_toolbox/schemas/RelationshipSchema"
 
 test('Requesting the relationship between BRAND and attached CAR MODEL',
     async () => {
@@ -19,7 +19,7 @@ test('Requesting the relationship between BRAND and attached CAR MODEL',
             assert.fail(`Relationship creation failed.`)
         }
 
-        validateJson(relationship, BrandHasCarModelSchema)
+        validateJson(relationship, RelationshipSchema)
 
         expect(relationship.brand_id)
             .toBe(brand.id)

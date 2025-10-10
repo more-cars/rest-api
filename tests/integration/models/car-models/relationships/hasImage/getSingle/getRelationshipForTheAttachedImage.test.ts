@@ -4,7 +4,7 @@ import {validateJson} from "../../../../../../_toolbox/validateJson"
 import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
 import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
-import {CarModelHasImageSchema} from "../../../../../../_toolbox/schemas/CarModelHasImageSchema"
+import {RelationshipSchema} from "../../../../../../_toolbox/schemas/RelationshipSchema"
 
 test('Requesting the relationship between CAR MODEL and attached IMAGE',
     async () => {
@@ -19,7 +19,7 @@ test('Requesting the relationship between CAR MODEL and attached IMAGE',
             assert.fail(`Relationship creation failed.`)
         }
 
-        validateJson(relationship, CarModelHasImageSchema)
+        validateJson(relationship, RelationshipSchema)
 
         expect(relationship.car_model_id)
             .toBe(carModel.id)
