@@ -2,6 +2,7 @@ import {expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {CarModel} from "../../../../../../src/models/car-models/CarModel"
+import {Brand} from "../../../../../../src/models/brands/Brand"
 
 test('Node does not exist', async () => {
     vi.spyOn(CarModel, 'getRelationshipForBelongsToBrand')
@@ -21,6 +22,8 @@ test('Node exists and has a relationship partner', async () => {
         relationship_id: 4,
         relationship_name: 'belongs-to-brand',
     })
+
+    Brand.findById = vi.fn().mockReturnValue(null)
 
     const response = await request(app)
         .get('/car-models/567/belongs-to-brand')

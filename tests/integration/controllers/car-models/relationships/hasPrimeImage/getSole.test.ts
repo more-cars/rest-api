@@ -4,6 +4,7 @@ import {app} from '../../../../../../src/app'
 import {CarModel} from "../../../../../../src/models/car-models/CarModel"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
+import {Image} from "../../../../../../src/models/images/Image"
 
 test('Car Model does not exist', async () => {
     vi.spyOn(CarModel, 'getHasPrimeImageRelationship')
@@ -36,6 +37,8 @@ test('Car Model exists and has relationship', async () => {
         relationship_id: 4,
         relationship_name: 'has-prime-image',
     })
+
+    Image.findById = vi.fn().mockReturnValue(null)
 
     const response = await request(app)
         .get('/car-models/1234/has-prime-image')

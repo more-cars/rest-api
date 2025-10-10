@@ -2,6 +2,7 @@ import {expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {Image} from "../../../../../../src/models/images/Image"
+import {Node} from "../../../../../../src/models/Node"
 
 test('Node does not exist', async () => {
     Image.getBelongsToNodeRelationship = vi.fn().mockReturnValue(false)
@@ -29,6 +30,8 @@ test('Both nodes exists and have a relationship with each other', async () => {
         relationship_id: 4,
         relationship_name: 'belongs-to-node',
     })
+
+    Node.findById = vi.fn().mockReturnValue(null)
 
     const response = await request(app)
         .get('/images/1234/belongs-to-node/567')

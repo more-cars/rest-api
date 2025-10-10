@@ -3,6 +3,7 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {Company} from "../../../../../../src/models/companies/Company"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
+import {Image} from "../../../../../../src/models/images/Image"
 
 test('Database request failed', async () => {
     vi.spyOn(Company, 'getAllHasImageRelationships')
@@ -53,6 +54,8 @@ test('Company exists and has relationships', async () => {
             relationship_name: 'has-image',
         }
     ])
+
+    Image.findById = vi.fn().mockReturnValue(null)
 
     const response = await request(app)
         .get('/companies/1234/has-image')
