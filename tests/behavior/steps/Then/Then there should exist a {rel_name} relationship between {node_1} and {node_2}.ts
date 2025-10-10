@@ -18,5 +18,5 @@ Then('there should exist a {string} relationship between {string} and {string}',
             })
 
         assert.equal(response?.status, 200)
-        assert(response?.data.relationship_id !== undefined)
+        assert(response?.data.data.relationship_id !== undefined)
     })

@@ -5,7 +5,7 @@ import {BrandHasCarModelRelationship} from "../../../../src/models/brands/types/
 Then('the response should return the relationship {string}',
     (label: string) => {
         const expectedRelationship: BrandHasCarModelRelationship = world.recallRelationship(label)
-        const actualRelationship = world.recallResponse().data
+        const actualRelationship = world.recallResponse().data.data
 
         if ('start_node_id' in expectedRelationship) { // relationship was created via db seeder
             assert.equal(expectedRelationship.relationship_id, actualRelationship.relationship_id)

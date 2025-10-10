@@ -3,7 +3,7 @@ import assert from "assert"
 
 Then('the response should contain a node with {string} {string} at position {int}',
     (property: string, propertyValue: string, position: number) => {
-        const responseData = world.recallResponse().data
+        const responseData = world.recallResponse().data.data
 
         assert.equal(responseData[position - 1].data[property], propertyValue)
     })

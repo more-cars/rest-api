@@ -19,5 +19,5 @@ Given('there exists a(n) relationship {string} between {string} {string} and a(n
                 console.error(error)
             })
 
-        world.rememberRelationship(response?.data, relationshipLabel)
+        world.rememberRelationship(response?.data.data, relationshipLabel)
     })

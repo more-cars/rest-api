@@ -19,5 +19,5 @@ Then('the CAR MODEL {string} should be connected to the BRAND {string}',
             assert.fail('Failed to fetch the car model belongs to brand relationship.')
         }
 
-        assert(response.data.brand_id === brand.id)
+        assert(response.data.data.relationship_partner.data.id === brand.id)
     })

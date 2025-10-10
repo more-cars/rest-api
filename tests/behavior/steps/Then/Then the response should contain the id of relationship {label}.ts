@@ -7,9 +7,9 @@ Then('the response should contain the id of relationship {string}',
         const rememberedRelationship: BrandHasCarModelRelationship = world.recallRelationship(label)
 
         assert.equal(
-            world.recallResponse().data['relationship_id'],
+            world.recallResponse().data.data.relationship_id,
             rememberedRelationship.relationship_id,
-            `Relationship ID "${world.recallResponse().data['relationship_id']}" was returned, 
+            `Relationship ID "${world.recallResponse().data.data.relationship_id}" was returned, 
         but expected "${rememberedRelationship.relationship_id}".`
         )
     })

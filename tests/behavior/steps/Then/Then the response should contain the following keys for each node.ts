@@ -4,7 +4,7 @@ import assert from "assert"
 Then('the response should contain the following keys for each node',
     (dataTable: DataTable) => {
         const rows = dataTable.hashes()
-        const responseItems = world.recallResponse().data
+        const responseItems = world.recallResponse().data.data
 
         responseItems.forEach((item: any) => {
             rows.forEach((row) => {

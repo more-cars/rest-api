@@ -4,7 +4,7 @@ import assert from "assert"
 Then('the response should NOT contain the following properties',
     (dataTable: DataTable) => {
         const properties = dataTable.hashes()
-        const responseData = world.recallResponse().data
+        const responseData = world.recallResponse().data.data
 
         properties.forEach((property) => {
             assert.notEqual(

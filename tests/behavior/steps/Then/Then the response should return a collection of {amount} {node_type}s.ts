@@ -8,7 +8,7 @@ import {validateJson} from "../../../_toolbox/validateJson"
 
 Then('the response should return a collection of {int} {string}s',
     (amount: number, nodeType: string) => {
-        assert.equal(world.recallResponse().data.length, amount)
+        assert.equal(world.recallResponse().data.data.length, amount)
 
         let validationSchema = {}
 
@@ -29,7 +29,7 @@ Then('the response should return a collection of {int} {string}s',
                 assert.fail(`Node type "${nodeType}" is invalid or unknown`)
         }
 
-        world.recallResponse().data.forEach((item: any) => {
+        world.recallResponse().data.data.forEach((item: any) => {
             assert.ok(validateJson(item.data, validationSchema))
         })
     })

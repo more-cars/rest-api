@@ -19,6 +19,6 @@ Then('there should exist exactly one {string} relationship for {string}',
             assert.fail('Request failed')
         }
 
-        assert.equal(Array.isArray(response.data), false)
-        assert(response.data.relationship_id !== undefined)
+        assert.equal(Array.isArray(response.data.data), false)
+        assert(response.data.data.relationship_id !== undefined)
     })

@@ -3,7 +3,7 @@ import assert from "assert"
 
 Then('the returned nodes should be sorted {string} by {string}',
     (sortDirection: string, property: string) => {
-        const responseData = world.recallResponse().data
+        const responseData = world.recallResponse().data.data
         const returnedPropertyValues = responseData.map((node: any) => node[property])
 
         if (sortDirection === 'asc') {

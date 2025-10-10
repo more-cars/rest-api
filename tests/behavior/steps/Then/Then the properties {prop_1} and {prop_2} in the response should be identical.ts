@@ -3,7 +3,7 @@ import assert from "assert"
 
 Then('the properties {string} and {string} in the response should be identical',
     (property_1: string, property_2: string) => {
-        const responseData = world.recallResponse().data
+        const responseData = world.recallResponse().data.data
 
         assert.equal(
             responseData[property_1],
