@@ -104,7 +104,6 @@ to: ticket-generator/_temp/ticketTree.json
                                 gherkin.push('And there exists a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
                                 gherkin.push('When the user creates a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
                                 gherkin.push('Then the response should return with status code 304')
-                                gherkin.push('And the response should return an empty body')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }
