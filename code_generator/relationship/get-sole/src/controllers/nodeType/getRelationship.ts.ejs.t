@@ -3,7 +3,9 @@ to: src/controllers/<%= h.inflection.pluralize(h.changeCase.camel(startNodeType)
 ---
 import express from "express"
 import {<%= h.changeCase.pascal(startNodeType) %>} from "../../models/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
-import {marshal<%= h.changeCase.pascal(relationshipName) %>Relationship} from "./marshalling/marshal<%= h.changeCase.pascal(relationshipName) %>Relationship"
+import type {<%= h.changeCase.pascal(startNodeType) %>Node} from "../../models/brands/types/<%= h.changeCase.pascal(startNodeType) %>Node"
+import type {BaseRelationship} from "../relationships/types/BaseRelationship"
+import {marshalRelationship} from "../relationships/marshalRelationship"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../models/types/RelationshipNotFoundError"
 import {sendResponse200} from "../responses/sendResponse200"
@@ -16,6 +18,7 @@ export async function get<%= h.changeCase.pascal(relationshipName) %>Relation(re
     try {
         const relationship = await <%= h.changeCase.pascal(startNodeType) %>.get<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id)
         const marshalledData = marshal<%= h.changeCase.pascal(relationshipName) %>Relationship(relationship)
+
         return sendResponse200(marshalledData, res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {
