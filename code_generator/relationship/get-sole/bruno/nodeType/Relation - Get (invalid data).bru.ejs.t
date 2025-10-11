@@ -13,6 +13,6 @@ get {
 }
 
 assert {
-  res.status: eq 404
+  res.status: 404
   res.body: isString
 }

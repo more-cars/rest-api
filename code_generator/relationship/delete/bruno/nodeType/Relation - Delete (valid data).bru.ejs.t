@@ -13,7 +13,7 @@ delete {
 }
 
 assert {
-  res.status: eq 204
+  res.status: 204
 }
 
 script:pre-request {

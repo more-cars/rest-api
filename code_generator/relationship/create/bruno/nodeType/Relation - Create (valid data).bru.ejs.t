@@ -13,14 +13,15 @@ post {
 }
 
 assert {
-  res.status: eq 201
+  res.status: 201
   res.body: isJson
-  res.body.<%= h.changeCase.snake(startNodeType) %>_id: eq {{valid<%= h.changeCase.pascal(startNodeType) %>Id}}
-  res.body.<%= h.changeCase.snake(endNodeType) %>_id: eq {{valid<%= h.changeCase.pascal(endNodeType) %>Id}}
-  res.body.relationship_id: gte 12000000
-  res.body.relationship_name: eq <%= h.changeCase.kebab(relationshipName) %>
-  res.body.created_at: isString
-  res.body.updated_at: isString
+  res.body.data.relationship_id: gte 12000000
+  res.body.data.relationship_name: <%= h.changeCase.kebab(relationshipName) %>
+  res.body.data.relationship_partner: isJson
+  res.body.data.relationship_partner.node_type: <%= h.changeCase.kebab(endNodeType) %>
+  res.body.data.relationship_partner.data.id: {{valid<%= h.changeCase.pascal(endNodeType) %>Id}}
+  res.body.data.created_at: isString
+  res.body.data.updated_at: isString
 }
 
 script:pre-request {
