@@ -13,7 +13,7 @@ test('Requesting the relationship between BRAND and attached CAR MODEL',
 
         await Brand.createHasCarModelRelationship(brand.id, carModel.id)
 
-        const relationship = await Brand.getRelationshipForHasCarModel(brand.id, carModel.id)
+        const relationship = await Brand.getSpecificHasCarModelRelationship(brand.id, carModel.id)
 
         if (!relationship) {
             assert.fail(`Relationship creation failed.`)

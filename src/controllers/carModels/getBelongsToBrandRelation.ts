@@ -14,7 +14,7 @@ export async function getBelongsToBrandRelation(req: express.Request, res: expre
     const carModelId = parseInt(req.params.carModelId)
 
     try {
-        const relationship = await CarModel.getRelationshipForBelongsToBrand(carModelId)
+        const relationship = await CarModel.getBelongsToBrandRelationship(carModelId)
         const relationshipPartner = await Brand.findById(relationship.brand_id)
         const marshalledData = marshalRelationship(relationship as BaseRelationship, relationshipPartner as BrandNode, 'brand')
 

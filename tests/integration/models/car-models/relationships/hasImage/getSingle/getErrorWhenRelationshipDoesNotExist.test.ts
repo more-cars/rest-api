@@ -7,7 +7,7 @@ test('An error should be returned when no relationship between CAR MODEL and IMA
     const carModel = await seedCarModel()
     const image = await seedImage()
 
-    const relationship = await CarModel.getRelationshipForHasImage(carModel.id, image.id)
+    const relationship = await CarModel.getSpecificHasImageRelationship(carModel.id, image.id)
 
     expect(relationship)
         .toBeFalsy()

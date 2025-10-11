@@ -7,7 +7,7 @@ test('Both nodes exist, but have no relationship', async () => {
     const carModel = await seedNode('car model')
     const image = await seedNode('image')
 
-    await expect(CarModel.hasHasPrimeImageRelationship(carModel.id, image.id))
+    await expect(CarModel.getSpecificHasPrimeImageRelationship(carModel.id, image.id))
         .rejects
         .toThrow(RelationshipNotFoundError)
 })

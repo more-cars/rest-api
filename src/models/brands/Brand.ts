@@ -82,7 +82,7 @@ export class Brand {
         return createdRelationship
     }
 
-    static async getRelationshipForHasCarModel(brandId: number, carModelId: number): Promise<false | BrandHasCarModelRelationship> {
+    static async getSpecificHasCarModelRelationship(brandId: number, carModelId: number): Promise<false | BrandHasCarModelRelationship> {
         return await getHasCarModelRelationship(brandId, carModelId)
     }
 
@@ -112,7 +112,7 @@ export class Brand {
         return await createBrandHasImageRelationship(brandId, imageId)
     }
 
-    static async getRelationshipForHasImage(brandId: number, imageId: number): Promise<false | BrandHasImageRelationship> {
+    static async getSpecificHasImageRelationship(brandId: number, imageId: number): Promise<false | BrandHasImageRelationship> {
         return await getBrandHasImageRelationship(brandId, imageId)
     }
 

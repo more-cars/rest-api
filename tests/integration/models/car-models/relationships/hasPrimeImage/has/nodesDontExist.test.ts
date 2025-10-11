@@ -6,7 +6,7 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 test('Car Model does not exist', async () => {
     const carModel = await seedNode('car model')
 
-    await expect(CarModel.hasHasPrimeImageRelationship(carModel.id, -43))
+    await expect(CarModel.getSpecificHasPrimeImageRelationship(carModel.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 })
@@ -14,13 +14,13 @@ test('Car Model does not exist', async () => {
 test('Image does not exist', async () => {
     const image = await seedNode('car model')
 
-    await expect(CarModel.hasHasPrimeImageRelationship(-42, image.id))
+    await expect(CarModel.getSpecificHasPrimeImageRelationship(-42, image.id))
         .rejects
         .toThrow(NodeNotFoundError)
 })
 
 test('Both nodes do not exist', async () => {
-    await expect(CarModel.hasHasPrimeImageRelationship(-42, -43))
+    await expect(CarModel.getSpecificHasPrimeImageRelationship(-42, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 })

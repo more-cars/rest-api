@@ -7,7 +7,7 @@ import {RelationshipSchema} from "../../../../../../_toolbox/schemas/Relationshi
 
 test('Both nodes and the relationship exist', async () => {
     const expectedRelationship = await seedRelationship('car model', 'image', DbRelationship.CarModelHasPrimeImage)
-    const actualRelationship = await CarModel.hasHasPrimeImageRelationship(expectedRelationship.start_node_id, expectedRelationship.end_node_id)
+    const actualRelationship = await CarModel.getSpecificHasPrimeImageRelationship(expectedRelationship.start_node_id, expectedRelationship.end_node_id)
 
     validateJson(actualRelationship, RelationshipSchema)
 

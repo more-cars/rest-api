@@ -7,7 +7,7 @@ import {RelationshipNotFoundError} from "../../../../../../src/models/types/Rela
 import {Image} from "../../../../../../src/models/images/Image"
 
 test('Car Model does not exist', async () => {
-    vi.spyOn(CarModel, 'hasHasPrimeImageRelationship')
+    vi.spyOn(CarModel, 'getSpecificHasPrimeImageRelationship')
         .mockImplementation(async () => {
             throw new NodeNotFoundError(1234)
         })
@@ -20,7 +20,7 @@ test('Car Model does not exist', async () => {
 })
 
 test('Image does not exist', async () => {
-    vi.spyOn(CarModel, 'hasHasPrimeImageRelationship')
+    vi.spyOn(CarModel, 'getSpecificHasPrimeImageRelationship')
         .mockImplementation(async () => {
             throw new NodeNotFoundError(5678)
         })
@@ -33,7 +33,7 @@ test('Image does not exist', async () => {
 })
 
 test('Both nodes exists, but have no relationship', async () => {
-    vi.spyOn(CarModel, 'hasHasPrimeImageRelationship')
+    vi.spyOn(CarModel, 'getSpecificHasPrimeImageRelationship')
         .mockImplementation(async () => {
             throw new RelationshipNotFoundError('has prime image', 1234, 5678)
         })
@@ -46,7 +46,7 @@ test('Both nodes exists, but have no relationship', async () => {
 })
 
 test('Nodes and relationship exist', async () => {
-    CarModel.hasHasPrimeImageRelationship = vi.fn().mockReturnValue({
+    CarModel.getSpecificHasPrimeImageRelationship = vi.fn().mockReturnValue({
         relationship_id: 4,
         relationship_name: 'has-prime-image',
     })

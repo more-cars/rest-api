@@ -12,7 +12,7 @@ export async function getSpecificHasCarModelRelation(req: express.Request, res: 
     const carModelId = parseInt(req.params.carModelId)
 
     try {
-        const relationship = await Brand.getRelationshipForHasCarModel(brandId, carModelId)
+        const relationship = await Brand.getSpecificHasCarModelRelationship(brandId, carModelId)
 
         if (!relationship) {
             return sendResponse404(res)

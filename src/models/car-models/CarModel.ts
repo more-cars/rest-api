@@ -68,7 +68,7 @@ export class CarModel {
         return await createCarModelBelongsToBrandRelationship(carModelId, brandId)
     }
 
-    static async getRelationshipForBelongsToBrand(carModelId: number): Promise<false | CarModelBelongsToBrandRelationship> {
+    static async getBelongsToBrandRelationship(carModelId: number): Promise<false | CarModelBelongsToBrandRelationship> {
         const carModel = await this.findById(carModelId)
 
         if (!carModel) {
@@ -95,7 +95,7 @@ export class CarModel {
         return await createCarModelHasImageRelationship(carModelId, imageId)
     }
 
-    static async getRelationshipForHasImage(carModelId: number, imageId: number): Promise<false | CarModelHasImageRelationship> {
+    static async getSpecificHasImageRelationship(carModelId: number, imageId: number): Promise<false | CarModelHasImageRelationship> {
         return await getCarModelHasImageRelationship(carModelId, imageId)
     }
 
@@ -134,7 +134,7 @@ export class CarModel {
         return relation
     }
 
-    static async hasHasPrimeImageRelationship(carModelId: number, imageId: number): Promise<CarModelHasPrimeImageRelationship> {
+    static async getSpecificHasPrimeImageRelationship(carModelId: number, imageId: number): Promise<CarModelHasPrimeImageRelationship> {
         const carModel = await CarModel.findById(carModelId)
         const image = await Image.findById(imageId)
 

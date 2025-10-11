@@ -14,7 +14,7 @@ test('ID is always contained in response', async () => {
         assert.fail('Relationship creation failed')
     }
 
-    const requestedRelationship = await CarModel.getRelationshipForBelongsToBrand(carModel.id)
+    const requestedRelationship = await CarModel.getBelongsToBrandRelationship(carModel.id)
 
     if (!requestedRelationship) {
         assert.fail('Relationship retrieval failed')

@@ -7,7 +7,7 @@ test('An error should be returned when no relationship between BRAND and IMAGE e
     const brand = await seedBrand()
     const image = await seedImage()
 
-    const relationship = await Brand.getRelationshipForHasImage(brand.id, image.id)
+    const relationship = await Brand.getSpecificHasImageRelationship(brand.id, image.id)
 
     expect(relationship)
         .toBeFalsy()

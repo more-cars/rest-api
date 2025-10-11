@@ -13,7 +13,7 @@ test('Requesting the relationship between CAR MODEL and attached IMAGE',
 
         await CarModel.createHasImageRelationship(carModel.id, image.id)
 
-        const relationship = await CarModel.getRelationshipForHasImage(carModel.id, image.id)
+        const relationship = await CarModel.getSpecificHasImageRelationship(carModel.id, image.id)
 
         if (!relationship) {
             assert.fail(`Relationship creation failed.`)

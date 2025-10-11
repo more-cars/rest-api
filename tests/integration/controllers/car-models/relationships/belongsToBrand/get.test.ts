@@ -5,7 +5,7 @@ import {CarModel} from "../../../../../../src/models/car-models/CarModel"
 import {Brand} from "../../../../../../src/models/brands/Brand"
 
 test('Node does not exist', async () => {
-    vi.spyOn(CarModel, 'getRelationshipForBelongsToBrand')
+    vi.spyOn(CarModel, 'getBelongsToBrandRelationship')
         .mockImplementation(async () => {
             throw new Error('semantic error')
         })
@@ -18,7 +18,7 @@ test('Node does not exist', async () => {
 })
 
 test('Node exists and has a relationship partner', async () => {
-    CarModel.getRelationshipForBelongsToBrand = vi.fn().mockReturnValue({
+    CarModel.getBelongsToBrandRelationship = vi.fn().mockReturnValue({
         relationship_id: 4,
         relationship_name: 'belongs-to-brand',
     })
@@ -33,7 +33,7 @@ test('Node exists and has a relationship partner', async () => {
 })
 
 test('Node exists, but has no relationship partner', async () => {
-    CarModel.getRelationshipForBelongsToBrand = vi.fn().mockReturnValue(false)
+    CarModel.getBelongsToBrandRelationship = vi.fn().mockReturnValue(false)
 
     const response = await request(app)
         .get('/car-models/567/belongs-to-brand')

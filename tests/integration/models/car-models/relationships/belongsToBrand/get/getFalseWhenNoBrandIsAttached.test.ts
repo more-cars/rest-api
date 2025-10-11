@@ -6,7 +6,7 @@ test('False should be returned when no BRAND is connected to the CAR MODEL',
     async () => {
         const carModel = await seedCarModel()
 
-        const relationships = await CarModel.getRelationshipForBelongsToBrand(carModel.id)
+        const relationships = await CarModel.getBelongsToBrandRelationship(carModel.id)
 
         expect(relationships)
             .toBe(false)

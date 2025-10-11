@@ -79,7 +79,7 @@ export class Image {
         return await createImageBelongsToNodeRelationship(imageId, partnerNodeId)
     }
 
-    static async getBelongsToNodeRelationship(imageId: number, partnerNodeId: number): Promise<false | ImageBelongsToNodeRelationship> {
+    static async getSpecificBelongsToNodeRelationship(imageId: number, partnerNodeId: number): Promise<false | ImageBelongsToNodeRelationship> {
         if (imageId === partnerNodeId) {
             throw new Error(`A relationship between the image #${imageId} and itself cannot exist`)
         }

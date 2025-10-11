@@ -7,7 +7,7 @@ test('An error should be returned when no relationship between BRAND and CAR MOD
     const brand = await seedBrand()
     const carModel = await seedCarModel()
 
-    const relationship = await Brand.getRelationshipForHasCarModel(brand.id, carModel.id)
+    const relationship = await Brand.getSpecificHasCarModelRelationship(brand.id, carModel.id)
 
     expect(relationship)
         .toBeFalsy()

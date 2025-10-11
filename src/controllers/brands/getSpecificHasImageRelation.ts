@@ -12,7 +12,7 @@ export async function getSpecificHasImageRelation(req: express.Request, res: exp
     const imageId = parseInt(req.params.imageId)
 
     try {
-        const relationship = await Brand.getRelationshipForHasImage(brandId, imageId)
+        const relationship = await Brand.getSpecificHasImageRelationship(brandId, imageId)
 
         if (!relationship) {
             return sendResponse404(res)
