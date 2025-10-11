@@ -10,18 +10,17 @@ get {
 }
 
 assert {
-  res.status: eq 200
+  res.status: 200
   res.body: isJson
   res.body.data.relationship_id: gte 12000000
-  res.body.data.relationship_name: eq belongs-to-node
+  res.body.data.relationship_name: belongs-to-node
   res.body.data.relationship_partner: isJson
   res.body.data.relationship_partner.node_type: isString
-  res.body.data.relationship_partner.data.id: gte 12000000
+  res.body.data.relationship_partner.data.id: {{validBrandId}}
   res.body.data.created_at: isString
   res.body.data.updated_at: isString
 }
 
 script:pre-request {
-  await lib.Images.ensureValidImageExists()
-  await lib.Brands.ensureValidBrandExists()
+  await lib.Images.ensureImageBelongsToNodeRelationshipExists()
 }
