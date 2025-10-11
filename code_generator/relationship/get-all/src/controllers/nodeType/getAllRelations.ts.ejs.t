@@ -3,7 +3,10 @@ to: src/controllers/<%= h.changeCase.camel(h.inflection.pluralize(startNodeType)
 ---
 import express from "express"
 import {<%= h.changeCase.pascal(startNodeType) %>} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
-import {marshal<%= h.changeCase.pascal(relationshipName) %>Relationships} from "./marshalling/marshal<%= h.changeCase.pascal(relationshipName) %>Relationships"
+import {<%= h.changeCase.pascal(endNodeType) %>} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(endNodeType)) %>/<%= h.changeCase.pascal(endNodeType) %>"
+import type {<%= h.changeCase.pascal(endNodeType) %>Node} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(endNodeType)) %>/types/<%= h.changeCase.pascal(endNodeType) %>Node"
+import type {BaseRelationship} from "../relationships/types/BaseRelationship"
+import {marshalRelationships} from "../relationships/marshalRelationships"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
@@ -14,7 +17,11 @@ export async function getAll<%= h.changeCase.pascal(relationshipName) %>Relation
 
     try {
         const relationships = await <%= h.changeCase.pascal(startNodeType) %>.getAll<%= h.changeCase.pascal(relationshipName) %>Relationships(<%= h.changeCase.camel(startNodeType) %>Id)
-        const marshalledData = marshal<%= h.changeCase.pascal(relationshipName) %>Relationships(relationships)
+        for (const relationship of relationships) {
+            relationship.relationship_partner = await <%= h.changeCase.pascal(endNodeType) %>.findById(relationship.<%= h.changeCase.snake(startNodeType) %>_id) as <%= h.changeCase.pascal(endNodeType) %>Node
+        }
+        const marshalledData = marshalRelationships(relationships as BaseRelationship[], "<%= h.changeCase.kebab(startNodeType) %>")
+
         return sendResponse200(marshalledData, res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {
