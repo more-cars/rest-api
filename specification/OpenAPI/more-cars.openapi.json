@@ -857,7 +857,7 @@
         "tags": [
           "Brands"
         ],
-        "summary": "Get `Brand-has-Car-Model` relationship",
+        "summary": "Get the ›has-car-model‹ relationship between the `Brand` and `Car Model`",
         "parameters": [
           {
             "in": "path",
@@ -880,7 +880,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Requested relationship was found.",
+            "description": "The specific ›has-car-model‹ relationship was found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -890,7 +890,7 @@
             }
           },
           "404": {
-            "description": "`Brand`, `Car Model` or relationship not found.",
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-car-model‹ relationship between them.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -999,7 +999,7 @@
         "tags": [
           "Brands"
         ],
-        "summary": "Get `Brand-has-Image` relationship",
+        "summary": "Get the ›has-image‹ relationship between the `Brand` and `Image`",
         "parameters": [
           {
             "in": "path",
@@ -1022,7 +1022,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Requested relationship was found.",
+            "description": "The specific ›has-image‹ relationship was found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1032,7 +1032,7 @@
             }
           },
           "404": {
-            "description": "No `Brand` or `Image` with the provided ID found.",
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-image‹ relationship between them.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1396,7 +1396,7 @@
         "tags": [
           "Car Models"
         ],
-        "summary": "Get `Car-Model-has-Image` relationship",
+        "summary": "Get the ›has-image‹ relationship between the `Car Model` and `Image`",
         "parameters": [
           {
             "in": "path",
@@ -1419,7 +1419,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Requested relationship was found.",
+            "description": "The specific ›has-image‹ relationship was found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1429,7 +1429,7 @@
             }
           },
           "404": {
-            "description": "No `Car Model` or `Image` with the provided ID found.",
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-image‹ relationship between them.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1538,7 +1538,7 @@
         "tags": [
           "Car Models"
         ],
-        "summary": "Returns the 'has prime image' relationship between the given `Car Model` and `Image`",
+        "summary": "Get the ›has-prime-image‹ relationship between the `Car Model` and `Image`",
         "parameters": [
           {
             "in": "path",
@@ -1561,7 +1561,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The relationship between both nodes was found.",
+            "description": "The specific ›has-prime-image‹ relationship was found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1571,7 +1571,7 @@
             }
           },
           "404": {
-            "description": "One of the nodes (or both) don't exist or there exists no 'has prime image' relationship between them.",
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-prime-image‹ relationship between them.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1851,7 +1851,7 @@
         "tags": [
           "Images"
         ],
-        "summary": "Get the relationship between `Image` and partner node",
+        "summary": "Get the ›belongs-to-node‹ relationship between the `Image` and partner node",
         "parameters": [
           {
             "in": "path",
@@ -1874,7 +1874,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Requested relationship was found.",
+            "description": "The specific ›belongs-to-node‹ relationship was found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1884,7 +1884,7 @@
             }
           },
           "404": {
-            "description": "`Image` or partner node not found.",
+            "description": "Request failed. Either the nodes don't exist or there exists no ›belongs-to-node‹ relationship between them.",
             "content": {
               "text/plain": {
                 "schema": {

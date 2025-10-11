@@ -1,14 +1,14 @@
 ---
 inject: true
 to: specification/OpenAPI/more-cars.openapi.json
-after: <%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/{<%= h.changeCase.kebab(startNodeType) %>-id}/<%= h.changeCase.kebab(relationshipName) %>
-skip_if: Returns the '<%= h.changeCase.lower(relationshipName) %>' relationship between the given `<%= h.changeCase.title(startNodeType) %>` and `<%= h.changeCase.title(endNodeType) %>`
+after: <%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/{<%= h.changeCase.kebab(startNodeType) %>-id}/<%= h.changeCase.kebab(relationshipName) %>/{<%= h.changeCase.kebab(endNodeType) %>-id}
+skip_if: Get the ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship between the `<%= h.changeCase.title(startNodeType) %>` and `<%= h.changeCase.title(endNodeType) %>`
 ---
       "get": {
         "tags": [
-          "<%= h.inflection.pluralize(h.changeCase.title(startNodeType)) %>"
+          "<%= h.changeCase.title(h.inflection.pluralize(startNodeType)) %>"
         ],
-        "summary": "Returns the '<%= h.changeCase.lower(relationshipName) %>' relationship between the given `<%= h.changeCase.title(startNodeType) %>` and `<%= h.changeCase.title(endNodeType) %>`",
+        "summary": "Get the ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship between the `<%= h.changeCase.title(startNodeType) %>` and `<%= h.changeCase.title(endNodeType) %>`",
         "parameters": [
           {
             "in": "path",
@@ -31,7 +31,7 @@ skip_if: Returns the '<%= h.changeCase.lower(relationshipName) %>' relationship 
         ],
         "responses": {
           "200": {
-            "description": "The relationship between both nodes was found.",
+            "description": "The specific ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship was found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -41,7 +41,7 @@ skip_if: Returns the '<%= h.changeCase.lower(relationshipName) %>' relationship 
             }
           },
           "404": {
-            "description": "One of the nodes (or both) don't exist or there exists no '<%= h.changeCase.lower(relationshipName) %>' relationship between them.",
+            "description": "Request failed. Either the nodes don't exist or there exists no ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship between them.",
             "content": {
               "text/plain": {
                 "schema": {
