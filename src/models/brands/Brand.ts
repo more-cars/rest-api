@@ -21,6 +21,7 @@ import {getAllBrandHasImageRelationships} from "./getAllBrandHasImageRelationshi
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
 import {BrandRelationship} from "./types/BrandRelationship"
+import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 
 export class Brand {
     static async create(data: CreateBrandInput): Promise<BrandNode> {
@@ -82,8 +83,23 @@ export class Brand {
         return createdRelationship
     }
 
-    static async getSpecificHasCarModelRelationship(brandId: number, carModelId: number): Promise<false | BrandHasCarModelRelationship> {
-        return await getHasCarModelRelationship(brandId, carModelId)
+    static async getSpecificHasCarModelRelationship(brandId: number, carModelId: number): Promise<BrandHasCarModelRelationship> {
+        const brand = await Brand.findById(brandId)
+        if (!brand) {
+            throw new NodeNotFoundError(brandId)
+        }
+
+        const carModel = await CarModel.findById(carModelId)
+        if (!carModel) {
+            throw new NodeNotFoundError(carModelId)
+        }
+
+        const relationship = await getHasCarModelRelationship(brandId, carModelId)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(BrandRelationship.hasCarModel, brandId, carModelId)
+        }
+
+        return relationship
     }
 
     static async getAllHasCarModelRelationships(brandId: number): Promise<Array<BrandHasCarModelRelationship>> {
@@ -112,8 +128,23 @@ export class Brand {
         return await createBrandHasImageRelationship(brandId, imageId)
     }
 
-    static async getSpecificHasImageRelationship(brandId: number, imageId: number): Promise<false | BrandHasImageRelationship> {
-        return await getBrandHasImageRelationship(brandId, imageId)
+    static async getSpecificHasImageRelationship(brandId: number, imageId: number): Promise<BrandHasImageRelationship> {
+        const brand = await Brand.findById(brandId)
+        if (!brand) {
+            throw new NodeNotFoundError(brandId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const relationship = await getBrandHasImageRelationship(brandId, imageId)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(BrandRelationship.hasImage, brandId, imageId)
+        }
+
+        return relationship
     }
 
     static async getAllHasImageRelationships(brandId: number): Promise<Array<BrandHasImageRelationship>> {
