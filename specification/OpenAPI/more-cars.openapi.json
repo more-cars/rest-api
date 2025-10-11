@@ -520,7 +520,7 @@
         "tags": [
           "Companies"
         ],
-        "summary": "Get sole `Company has prime image` relationship",
+        "summary": "Get the ›has-prime-image‹ relationship for the `Company`",
         "parameters": [
           {
             "in": "path",
@@ -534,7 +534,7 @@
         ],
         "responses": {
           "200": {
-            "description": "`Company` and relationship were found.",
+            "description": "The ›has-prime-image‹ relationship was successfully loaded.",
             "content": {
               "application/json": {
                 "schema": {
@@ -544,7 +544,7 @@
             }
           },
           "404": {
-            "description": "The relationship could not be determined, because there exists no `Company` with the provided ID.",
+            "description": "Request failed. The `Company` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1261,7 +1261,7 @@
         "tags": [
           "Car Models"
         ],
-        "summary": "Get `Car-Model-belongs-to-Brand` relationship",
+        "summary": "Get the ›belongs-to-brand‹ relationship for the `Car Model`",
         "parameters": [
           {
             "in": "path",
@@ -1275,7 +1275,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Requested relationship was found.",
+            "description": "The ›belongs-to-brand‹ relationship was successfully loaded.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1285,7 +1285,7 @@
             }
           },
           "404": {
-            "description": "No `Car Model` with the provided ID found.",
+            "description": "Request failed. The `Car Model` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1497,7 +1497,7 @@
         "tags": [
           "Car Models"
         ],
-        "summary": "Get sole `Car Model has prime image` relationship",
+        "summary": "Get the ›has-prime-image‹ relationship for the `Car Model`",
         "parameters": [
           {
             "in": "path",
@@ -1511,7 +1511,7 @@
         ],
         "responses": {
           "200": {
-            "description": "`Car Model` and relationship were found.",
+            "description": "The ›has-prime-image‹ relationship was successfully loaded.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1521,7 +1521,7 @@
             }
           },
           "404": {
-            "description": "The relationship could not be determined, because there exists no `Car Model` with the provided ID.",
+            "description": "Request failed. The `Car Model` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {

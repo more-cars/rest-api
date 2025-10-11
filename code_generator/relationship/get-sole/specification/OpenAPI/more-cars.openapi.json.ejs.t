@@ -2,14 +2,14 @@
 inject: true
 to: specification/OpenAPI/more-cars.openapi.json
 before: <%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/{<%= h.changeCase.kebab(startNodeType) %>-id}/<%= h.changeCase.kebab(relationshipName) %>
-skip_if: Get sole `<%= h.changeCase.title(startNodeType) %> <%= h.changeCase.lower(relationshipName) %>` relationship
+skip_if: Get the ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship for the `<%= h.changeCase.title(startNodeType) %>`
 ---
     "/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/{<%= h.changeCase.kebab(startNodeType) %>-id}/<%= h.changeCase.kebab(relationshipName) %>": {
       "get": {
         "tags": [
           "<%= h.inflection.pluralize(h.changeCase.title(startNodeType)) %>"
         ],
-        "summary": "Get sole `<%= h.changeCase.title(startNodeType) %> <%= h.changeCase.lower(relationshipName) %>` relationship",
+        "summary": "Get the ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship for the `<%= h.changeCase.title(startNodeType) %>`",
         "parameters": [
           {
             "in": "path",
@@ -23,7 +23,7 @@ skip_if: Get sole `<%= h.changeCase.title(startNodeType) %> <%= h.changeCase.low
         ],
         "responses": {
           "200": {
-            "description": "`<%= h.changeCase.title(startNodeType) %>` and relationship were found.",
+            "description": "The ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship was successfully loaded.",
             "content": {
               "application/json": {
                 "schema": {
@@ -33,7 +33,7 @@ skip_if: Get sole `<%= h.changeCase.title(startNodeType) %> <%= h.changeCase.low
             }
           },
           "404": {
-            "description": "The relationship could not be determined, because there exists no `<%= h.changeCase.title(startNodeType) %>` with the provided ID.",
+            "description": "Request failed. The `<%= h.changeCase.title(startNodeType) %>` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
