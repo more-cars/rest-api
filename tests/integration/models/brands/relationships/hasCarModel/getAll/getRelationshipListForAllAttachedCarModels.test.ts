@@ -12,7 +12,7 @@ test('Requesting a relationship list for all CAR MODELs that are connected to a 
         await Brand.createHasCarModelRelationship(brand.id, carModel.id)
     }
 
-    const relationships = await Brand.getRelationshipsForHasCarModel(brand.id)
+    const relationships = await Brand.getAllHasCarModelRelationships(brand.id)
 
     if (!relationships) {
         assert.fail(`Brand #${brand.id} not found.`)

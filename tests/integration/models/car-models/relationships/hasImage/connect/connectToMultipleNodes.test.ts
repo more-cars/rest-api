@@ -13,7 +13,7 @@ test('A CAR MODEL can have multiple IMAGEs attached to it', async () => {
         await CarModel.createHasImageRelationship(carModel.id, image.id)
     }
 
-    const relationships = await CarModel.getRelationshipsForHasImage(carModel.id)
+    const relationships = await CarModel.getAllHasImageRelationships(carModel.id)
 
     if (!relationships) {
         assert.fail(`Car Model #${carModel.id} not found.`)

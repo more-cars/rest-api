@@ -1,26 +1,26 @@
 import express from "express"
 import {Image} from "../../models/images/Image"
+import type {BaseRelationship} from "../relationships/types/BaseRelationship"
 import {marshalRelationships} from "../relationships/marshalRelationships"
+import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
-import {sendResponse422} from "../responses/sendResponse422"
-import type {BaseRelationship} from "../relationships/types/BaseRelationship"
+import {sendResponse500} from "../responses/sendResponse500"
 
 export async function getAllBelongsToNodeRelations(req: express.Request, res: express.Response) {
     const imageId = parseInt(req.params.imageId)
 
     try {
         const relationships = await Image.getBelongsToNodeRelationships(imageId)
-
-        if (!relationships) {
-            return sendResponse404(res)
-        }
-
         const marshalledData = marshalRelationships(relationships as BaseRelationship[], null) // TODO provide correct partnernodetype
 
         return sendResponse200(marshalledData, res)
     } catch (e) {
-        console.error(e)
-        return sendResponse422(res)
+        if (e instanceof NodeNotFoundError) {
+            return sendResponse404(res)
+        } else {
+            console.error(e)
+            return sendResponse500(res)
+        }
     }
 }

@@ -86,7 +86,7 @@ export class Brand {
         return await getHasCarModelRelationship(brandId, carModelId)
     }
 
-    static async getRelationshipsForHasCarModel(brandId: number): Promise<Array<BrandHasCarModelRelationship>> {
+    static async getAllHasCarModelRelationships(brandId: number): Promise<Array<BrandHasCarModelRelationship>> {
         const brand = await this.findById(brandId)
 
         if (!brand) {
@@ -116,7 +116,7 @@ export class Brand {
         return await getBrandHasImageRelationship(brandId, imageId)
     }
 
-    static async getRelationshipsForHasImage(brandId: number): Promise<Array<BrandHasImageRelationship>> {
+    static async getAllHasImageRelationships(brandId: number): Promise<Array<BrandHasImageRelationship>> {
         const brand = await this.findById(brandId)
 
         if (!brand) {

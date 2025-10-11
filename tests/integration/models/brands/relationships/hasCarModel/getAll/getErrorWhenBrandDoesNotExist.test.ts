@@ -5,7 +5,7 @@ import {Brand} from "../../../../../../../src/models/brands/Brand"
 // On the application layer the models perform semantical checks, on the database only syntactical ones.
 // If the brand does not exist it should be detected and return an error.
 test('An error should be returned when the BRAND does not exist', async () => {
-    await expect(Brand.getRelationshipsForHasCarModel(-42))
+    await expect(Brand.getAllHasCarModelRelationships(-42))
         .rejects
         .toThrow(Error)
 })

@@ -5,7 +5,7 @@ import {Brand} from "../../../../../../src/models/brands/Brand"
 import {Image} from "../../../../../../src/models/images/Image"
 
 test('Node does not exist', async () => {
-    vi.spyOn(Brand, 'getRelationshipsForHasImage')
+    vi.spyOn(Brand, 'getAllHasImageRelationships')
         .mockImplementation(async () => {
             throw new Error('semantic error')
         })
@@ -18,7 +18,7 @@ test('Node does not exist', async () => {
 })
 
 test('Node exists and has relationship partners', async () => {
-    Brand.getRelationshipsForHasImage = vi.fn().mockReturnValue([
+    Brand.getAllHasImageRelationships = vi.fn().mockReturnValue([
         {
             relationship_id: 4,
             relationship_name: 'has-image',

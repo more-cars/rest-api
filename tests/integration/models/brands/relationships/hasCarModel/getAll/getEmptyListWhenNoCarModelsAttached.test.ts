@@ -6,7 +6,7 @@ import assert from "assert"
 test('An empty list should be returned when no CAR MODEL is connected to the BRAND', async () => {
     const brand = await seedBrand()
 
-    const relationships = await Brand.getRelationshipsForHasCarModel(brand.id)
+    const relationships = await Brand.getAllHasCarModelRelationships(brand.id)
 
     if (!relationships) {
         assert.fail('Brand not found.')

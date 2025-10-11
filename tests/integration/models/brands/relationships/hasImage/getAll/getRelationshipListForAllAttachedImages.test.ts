@@ -12,7 +12,7 @@ test('Requesting a relationship list for all IMAGEs that are connected to a BRAN
         await Brand.createHasImageRelationship(brand.id, image.id)
     }
 
-    const relationships = await Brand.getRelationshipsForHasImage(brand.id)
+    const relationships = await Brand.getAllHasImageRelationships(brand.id)
 
     if (!relationships) {
         assert.fail(`Brand #${brand.id} not found.`)

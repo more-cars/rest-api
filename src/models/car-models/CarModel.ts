@@ -99,7 +99,7 @@ export class CarModel {
         return await getCarModelHasImageRelationship(carModelId, imageId)
     }
 
-    static async getRelationshipsForHasImage(carModelId: number): Promise<Array<CarModelHasImageRelationship>> {
+    static async getAllHasImageRelationships(carModelId: number): Promise<Array<CarModelHasImageRelationship>> {
         const carModel = await this.findById(carModelId)
 
         if (!carModel) {
