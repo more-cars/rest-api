@@ -22,10 +22,10 @@ skip_if: 'Delete `<%= h.changeCase.title(nodeType) %>`'
         ],
         "responses": {
           "204": {
-            "description": "`<%= h.changeCase.title(nodeType) %>` was deleted."
+            "description": "`<%= h.changeCase.title(nodeType) %>` successfully deleted."
           },
           "404": {
-            "description": "No `<%= h.changeCase.title(nodeType) %>` with the provided ID found.",
+            "description": "Deletion request failed. A `<%= h.changeCase.title(nodeType) %>` with the provided ID could not be found.",
             "content": {
               "text/plain": {
                 "schema": {

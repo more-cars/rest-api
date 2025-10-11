@@ -230,10 +230,10 @@
         ],
         "responses": {
           "204": {
-            "description": "`Company` was deleted."
+            "description": "`Company` successfully deleted."
           },
           "404": {
-            "description": "No `Company` with the provided ID found.",
+            "description": "Deletion request failed. A `Company` with the provided ID could not be found.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -796,10 +796,10 @@
         ],
         "responses": {
           "204": {
-            "description": "`Brand` was deleted."
+            "description": "`Brand` successfully deleted."
           },
           "404": {
-            "description": "No `Brand` with the provided ID found.",
+            "description": "Deletion request failed. A `Brand` with the provided ID could not be found.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1248,10 +1248,10 @@
         ],
         "responses": {
           "204": {
-            "description": "`Car Model` was deleted."
+            "description": "`Car Model` successfully deleted."
           },
           "404": {
-            "description": "No `Car Model` with the provided ID found.",
+            "description": "Deletion request failed. A `Car Model` with the provided ID could not be found.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1798,10 +1798,10 @@
         ],
         "responses": {
           "204": {
-            "description": "`Image` was deleted."
+            "description": "`Image` successfully deleted."
           },
           "404": {
-            "description": "No `Image` with the provided ID found.",
+            "description": "Deletion request failed. An `Image` with the provided ID could not be found.",
             "content": {
               "text/plain": {
                 "schema": {
