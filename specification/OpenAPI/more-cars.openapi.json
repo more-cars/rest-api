@@ -716,7 +716,7 @@
         "summary": "Create `Brand`",
         "responses": {
           "201": {
-            "description": "`Brand` created.",
+            "description": "`Brand` successfully created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -725,8 +725,8 @@
               }
             }
           },
-          "422": {
-            "description": "Invalid request.",
+          "400": {
+            "description": "`Brand` could not be created. The provided data was invalid or malformed.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1168,7 +1168,7 @@
         "summary": "Create `Car Model`",
         "responses": {
           "201": {
-            "description": "`Car Model` created.",
+            "description": "`Car Model` successfully created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1177,8 +1177,8 @@
               }
             }
           },
-          "422": {
-            "description": "Invalid request.",
+          "400": {
+            "description": "`Car Model` could not be created. The provided data was invalid or malformed.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1718,7 +1718,7 @@
         "summary": "Create `Image`",
         "responses": {
           "201": {
-            "description": "`Image` created.",
+            "description": "`Image` successfully created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1727,8 +1727,8 @@
               }
             }
           },
-          "422": {
-            "description": "Invalid request.",
+          "400": {
+            "description": "`Image` could not be created. The provided data was invalid or malformed.",
             "content": {
               "text/plain": {
                 "schema": {
