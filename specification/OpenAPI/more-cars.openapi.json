@@ -250,7 +250,7 @@
         "tags": [
           "Companies"
         ],
-        "summary": "Get all `Company has brand` relationships",
+        "summary": "Get all ›has-brand‹ relationships for the `Company`",
         "parameters": [
           {
             "in": "path",
@@ -264,7 +264,7 @@
         ],
         "responses": {
           "200": {
-            "description": "`Company` with the provided ID was found and its `has brand` relationships are returned.",
+            "description": "The collection of ›has-brand‹ relationships was successfully loaded.",
             "content": {
               "application/json": {
                 "schema": {
@@ -274,7 +274,7 @@
             }
           },
           "404": {
-            "description": "The relationships could not be determined, because there exists no `Company` with the provided ID.",
+            "description": "Request failed. The `Company` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -385,7 +385,7 @@
         "tags": [
           "Companies"
         ],
-        "summary": "Get all `Company has image` relationships",
+        "summary": "Get all ›has-image‹ relationships for the `Company`",
         "parameters": [
           {
             "in": "path",
@@ -399,7 +399,7 @@
         ],
         "responses": {
           "200": {
-            "description": "`Company` with the provided ID was found and its `has image` relationships are returned.",
+            "description": "The collection of ›has-image‹ relationships was successfully loaded.",
             "content": {
               "application/json": {
                 "schema": {
@@ -409,7 +409,7 @@
             }
           },
           "404": {
-            "description": "The relationships could not be determined, because there exists no `Company` with the provided ID.",
+            "description": "Request failed. The `Company` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -816,7 +816,7 @@
         "tags": [
           "Brands"
         ],
-        "summary": "Get all `Brand-has-Car-Model` relationships",
+        "summary": "Get all ›has-car-model‹ relationships for the `Brand`",
         "parameters": [
           {
             "in": "path",
@@ -830,7 +830,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Requested relationships were found.",
+            "description": "The collection of ›has-car-model‹ relationships was successfully loaded.",
             "content": {
               "application/json": {
                 "schema": {
@@ -840,7 +840,7 @@
             }
           },
           "404": {
-            "description": "No `Brand` with the provided ID found.",
+            "description": "Request failed. The `Brand` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -958,7 +958,7 @@
         "tags": [
           "Brands"
         ],
-        "summary": "Get all `Brand-has-Image` relationships",
+        "summary": "Get all ›has-image‹ relationships for the `Brand`",
         "parameters": [
           {
             "in": "path",
@@ -972,7 +972,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Requested relationships were found.",
+            "description": "The collection of ›has-image‹ relationships was successfully loaded.",
             "content": {
               "application/json": {
                 "schema": {
@@ -982,7 +982,7 @@
             }
           },
           "404": {
-            "description": "No `Brand` with the provided ID found.",
+            "description": "Request failed. The `Brand` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1355,7 +1355,7 @@
         "tags": [
           "Car Models"
         ],
-        "summary": "Get all `Car-Model-has-Image` relationships",
+        "summary": "Get all ›has-image‹ relationships for the `Car Model`",
         "parameters": [
           {
             "in": "path",
@@ -1369,7 +1369,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Requested relationships were found.",
+            "description": "The collection of ›has-image‹ relationships was successfully loaded.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1379,7 +1379,7 @@
             }
           },
           "404": {
-            "description": "No `Car Model` with the provided ID found.",
+            "description": "Request failed. The `Car Model` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1800,7 +1800,7 @@
         "tags": [
           "Images"
         ],
-        "summary": "Get all `Image-belongs-to-Node` relationships",
+        "summary": "Get all ›belongs-to-node‹ relationships for the `Image`",
         "parameters": [
           {
             "in": "path",
@@ -1814,7 +1814,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Requested relationships were found.",
+            "description": "The collection of ›belongs-to-node‹ relationships was successfully loaded.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1824,7 +1824,7 @@
             }
           },
           "404": {
-            "description": "`Image` node not found.",
+            "description": "Request failed. The `Image` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1972,7 +1972,7 @@
         "tags": [
           "Images"
         ],
-        "summary": "Get all `Image-belongs-to-Node-type` relationships",
+        "summary": "Get all ›belongs-to-node-type‹ relationships for the `Image`",
         "parameters": [
           {
             "in": "path",
@@ -1986,7 +1986,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Requested relationships were found.",
+            "description": "The collection of ›belongs-to-node-type‹ relationships was successfully loaded.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1996,7 +1996,7 @@
             }
           },
           "404": {
-            "description": "`Image` node not found.",
+            "description": "Request failed. The `Image` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
