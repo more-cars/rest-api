@@ -201,7 +201,7 @@
             }
           },
           "404": {
-            "description": "No `Company` with the provided ID found.",
+            "description": "Request failed. A `Company` with the provided ID could not be found.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -757,7 +757,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Requested `Brand` was found.",
+            "description": "`Brand` successfully loaded.",
             "content": {
               "application/json": {
                 "schema": {
@@ -767,7 +767,7 @@
             }
           },
           "404": {
-            "description": "No `Brand` with the provided ID found.",
+            "description": "Request failed. A `Brand` with the provided ID could not be found.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1209,7 +1209,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Requested `Car Model` was found.",
+            "description": "`Car Model` successfully loaded.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1219,7 +1219,7 @@
             }
           },
           "404": {
-            "description": "No `Car Model` with the provided ID found.",
+            "description": "Request failed. A `Car Model` with the provided ID could not be found.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1759,7 +1759,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Requested `Image` was found.",
+            "description": "`Image` successfully loaded.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1769,7 +1769,7 @@
             }
           },
           "404": {
-            "description": "No `Image` with the provided ID found.",
+            "description": "Request failed. An `Image` with the provided ID could not be found.",
             "content": {
               "text/plain": {
                 "schema": {
