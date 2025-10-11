@@ -1,8 +1,8 @@
 ---
-to: bruno/<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>/Node - Get by ID.bru
+to: bruno/<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>/Node - Get by ID (valid data).bru
 ---
 meta {
-  name: Get <%= h.changeCase.title(nodeType) %> by ID
+  name: Get <%= h.changeCase.title(nodeType) %> by ID (valid data)
   type: http
 }
 
@@ -13,9 +13,9 @@ get {
 }
 
 assert {
-  res.status: eq 200
+  res.status: 200
   res.body: isJson
-  res.body.data.id: gte 12000000
+  res.body.data.id: {{valid<%= h.changeCase.pascal(nodeType) %>Id}}
   res.body.data.created_at: isNotEmpty
   res.body.data.updated_at: isNotEmpty
 }

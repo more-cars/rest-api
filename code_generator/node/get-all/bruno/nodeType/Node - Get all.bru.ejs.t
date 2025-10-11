@@ -13,6 +13,12 @@ get {
 }
 
 assert {
-  res.status: eq 200
-  res.body: isArray
+  res.status: 200
+  res.body.data: isArray
+  res.body.data[0].data: isJson
+  res.body.data[0].data.id: gte 12000000
+}
+
+script:pre-request {
+  await lib.<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>.ensureValid<%= h.changeCase.pascal(nodeType) %>Exists()
 }

@@ -1,8 +1,8 @@
 ---
-to: bruno/<%= h.inflection.pluralize(h.changeCase.title(nodeType)) %>/Node - Delete (invalid).bru
+to: bruno/<%= h.inflection.pluralize(h.changeCase.title(nodeType)) %>/Node - Delete (invalid data).bru
 ---
 meta {
-  name: Delete <%= h.changeCase.title(nodeType) %> (invalid)
+  name: Delete <%= h.changeCase.title(nodeType) %> (invalid data)
   type: http
 }
 
@@ -13,6 +13,6 @@ delete {
 }
 
 assert {
-  res.status: eq 404
+  res.status: 404
   res.body: isString
 }

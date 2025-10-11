@@ -13,6 +13,6 @@ get {
 }
 
 assert {
-  res.status: eq 200
+  res.status: 200
   res.body: isArray
 }
