@@ -2,14 +2,14 @@ import express from "express"
 import {Company} from "../../models/companies/Company"
 import {Image} from "../../models/images/Image"
 import type {ImageNode} from "../../models/images/types/ImageNode"
+import type {BaseRelationship} from "../relationships/types/BaseRelationship"
+import {marshalRelationship} from "../relationships/marshalRelationship"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../models/types/RelationshipAlreadyExistsError"
-import {marshalRelationship} from "../relationships/marshalRelationship"
 import {sendResponse201} from "../responses/sendResponse201"
 import {sendResponse304} from "../responses/sendResponse304"
 import {sendResponse404} from "../responses/sendResponse404"
 import {sendResponse500} from "../responses/sendResponse500"
-import type {BaseRelationship} from "../relationships/types/BaseRelationship"
 
 export async function createHasPrimeImageRelation(req: express.Request, res: express.Response) {
     const companyId = parseInt(req.params.companyId)
@@ -19,6 +19,7 @@ export async function createHasPrimeImageRelation(req: express.Request, res: exp
         const relationship = await Company.createHasPrimeImageRelationship(companyId, imageId)
         const relationshipPartner = await Image.findById(imageId)
         const marshalledData = marshalRelationship(relationship as BaseRelationship, relationshipPartner as ImageNode, 'image')
+
         return sendResponse201(marshalledData, res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {
