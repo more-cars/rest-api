@@ -368,7 +368,7 @@
             "description": "The relationship ›has-brand‹ between `Company` and `Brand` already exists."
           },
           "404": {
-            "description": "`Company` and/or `Brand` could not be found in the database.",
+            "description": "Request failed. `Company` and/or `Brand` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -462,7 +462,7 @@
             "description": "The relationship ›has-image‹ between `Company` and `Image` already exists."
           },
           "404": {
-            "description": "`Company` and/or `Image` could not be found in the database.",
+            "description": "Request failed. `Company` and/or `Image` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -638,7 +638,7 @@
             "description": "The relationship ›has-prime-image‹ between `Company` and `Image` already exists."
           },
           "404": {
-            "description": "`Company` and/or `Image` could not be found in the database.",
+            "description": "Request failed. `Company` and/or `Image` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -941,7 +941,7 @@
             "description": "The relationship ›has-car-model‹ between `Brand` and `Car Model` already exists."
           },
           "404": {
-            "description": "`Brand` and/or `Car Model` could not be found in the database.",
+            "description": "Request failed. `Brand` and/or `Car Model` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1047,7 +1047,7 @@
         "tags": [
           "Brands"
         ],
-        "summary": "Connects the given `Image` to the given `Brand`",
+        "summary": "Creates a ›has-image‹ relationship between the `Brand` and the `Image`",
         "parameters": [
           {
             "in": "path",
@@ -1070,7 +1070,7 @@
         ],
         "responses": {
           "201": {
-            "description": "`Brand` and `Image` successfully connected.",
+            "description": "Relationship ›has-image‹ between `Brand` and `Image` successfully created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1079,18 +1079,11 @@
               }
             }
           },
-          "404": {
-            "description": "`Brand` or `Image` not found.",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
+          "304": {
+            "description": "The relationship ›has-image‹ between `Brand` and `Image` already exists."
           },
-          "422": {
-            "description": "Request cannot be processed.",
+          "404": {
+            "description": "Request failed. `Brand` and/or `Image` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1309,7 +1302,7 @@
         "tags": [
           "Car Models"
         ],
-        "summary": "Connects the given `Car Model` to the given `Brand`",
+        "summary": "Creates a ›belongs-to-brand‹ relationship between the `Car Model` and the `Brand`",
         "parameters": [
           {
             "in": "path",
@@ -1332,7 +1325,7 @@
         ],
         "responses": {
           "201": {
-            "description": "`Car Model` and `Brand` successfully connected.",
+            "description": "Relationship ›belongs-to-brand‹ between `Car Model` and `Brand` successfully created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1341,18 +1334,11 @@
               }
             }
           },
-          "404": {
-            "description": "`Car Model` or `Brand` not found.",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
+          "304": {
+            "description": "The relationship ›belongs-to-brand‹ between `Car Model` and `Brand` already exists."
           },
-          "422": {
-            "description": "Request cannot be processed.",
+          "404": {
+            "description": "Request failed. `Car Model` and/or `Brand` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1458,7 +1444,7 @@
         "tags": [
           "Car Models"
         ],
-        "summary": "Connects the given `Image` to the given `Car Model`",
+        "summary": "Creates a ›has-image‹ relationship between the `Car Model` and the `Image`",
         "parameters": [
           {
             "in": "path",
@@ -1481,7 +1467,7 @@
         ],
         "responses": {
           "201": {
-            "description": "`Car Model` and `Image` successfully connected.",
+            "description": "Relationship ›has-image‹ between `Car Model` and `Image` successfully created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1490,18 +1476,11 @@
               }
             }
           },
-          "404": {
-            "description": "`Car Model` or `Image` not found.",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
+          "304": {
+            "description": "The relationship ›has-image‹ between `Car Model` and `Image` already exists."
           },
-          "422": {
-            "description": "Request cannot be processed.",
+          "404": {
+            "description": "Request failed. `Car Model` and/or `Image` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1607,7 +1586,7 @@
         "tags": [
           "Car Models"
         ],
-        "summary": "Creates a 'has prime image' relationship between the `Car Model` and the `Image`",
+        "summary": "Creates a ›has-prime-image‹ relationship between the `Car Model` and the `Image`",
         "parameters": [
           {
             "in": "path",
@@ -1630,7 +1609,7 @@
         ],
         "responses": {
           "201": {
-            "description": "`Car Model` and `Image` successfully connected.",
+            "description": "Relationship ›has-prime-image‹ between `Car Model` and `Image` successfully created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1639,8 +1618,11 @@
               }
             }
           },
+          "304": {
+            "description": "The relationship ›has-prime-image‹ between `Car Model` and `Image` already exists."
+          },
           "404": {
-            "description": "`Car Model` or `Image` not found.",
+            "description": "Request failed. `Car Model` and/or `Image` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1927,7 +1909,7 @@
         "tags": [
           "Images"
         ],
-        "summary": "Connects the given `Image` to the given partner node",
+        "summary": "Creates a ›belongs-to-node‹ relationship between the `Image` and the partner node",
         "parameters": [
           {
             "in": "path",
@@ -1950,7 +1932,7 @@
         ],
         "responses": {
           "201": {
-            "description": "`Image` and partner node successfully connected.",
+            "description": "Relationship ›belongs-to-node‹ between `Image` and partner node successfully created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1959,8 +1941,11 @@
               }
             }
           },
+          "304": {
+            "description": "The relationship ›belongs-to-node‹ between `Image` and partner node already exists."
+          },
           "404": {
-            "description": "`Image` or partner node not found.",
+            "description": "Request failed. `Image` and/or partner node could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1970,7 +1955,7 @@
             }
           },
           "422": {
-            "description": "Request cannot be processed.",
+            "description": "Request failed. Partner node not compatible with the `Image`.",
             "content": {
               "text/plain": {
                 "schema": {

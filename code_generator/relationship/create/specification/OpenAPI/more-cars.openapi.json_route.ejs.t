@@ -45,7 +45,7 @@ skip_if: Creates a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationshi
             "description": "The relationship ›<%= h.changeCase.kebab(relationshipName) %>‹ between `<%= h.changeCase.title(startNodeType) %>` and `<%= h.changeCase.title(endNodeType) %>` already exists."
           },
           "404": {
-            "description": "`<%= h.changeCase.title(startNodeType) %>` and/or `<%= h.changeCase.title(endNodeType) %>` could not be found in the database.",
+            "description": "Request failed. `<%= h.changeCase.title(startNodeType) %>` and/or `<%= h.changeCase.title(endNodeType) %>` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
