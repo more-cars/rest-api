@@ -66,7 +66,7 @@ describe('Car Models', () => {
         await request(app)
             .get('/car-models/123/has-image/456')
 
-        expect(CarModelController.getHasImageRelation)
+        expect(CarModelController.getSpecificHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
 
@@ -74,7 +74,7 @@ describe('Car Models', () => {
         await request(app)
             .get('/car-models/123/has-image')
 
-        expect(CarModelController.getHasImageRelations)
+        expect(CarModelController.getAllHasImageRelations)
             .toHaveBeenCalledTimes(1)
     })
 
@@ -98,7 +98,7 @@ describe('Car Models', () => {
         await request(app)
             .get('/car-models/123/has-prime-image/456')
 
-        expect(CarModelController.hasHasPrimeImageRelation)
+        expect(CarModelController.getSpecificHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
 })

@@ -41,11 +41,11 @@ export class CarModelController {
         await createHasImageRelation(req, res)
     }
 
-    static async getHasImageRelation(req: express.Request, res: express.Response) {
+    static async getSpecificHasImageRelation(req: express.Request, res: express.Response) {
         await getHasImageRelation(req, res)
     }
 
-    static async getHasImageRelations(req: express.Request, res: express.Response) {
+    static async getAllHasImageRelations(req: express.Request, res: express.Response) {
         await getHasImageRelations(req, res)
     }
 
@@ -57,7 +57,7 @@ export class CarModelController {
         await getHasPrimeImageRelation(req, res)
     }
 
-    static async hasHasPrimeImageRelation(req: express.Request, res: express.Response) {
+    static async getSpecificHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await hasHasPrimeImageRelation(req, res)
     }
 }

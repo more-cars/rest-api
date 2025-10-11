@@ -50,7 +50,7 @@ describe('Brands', () => {
         await request(app)
             .get('/brands/123/has-car-model/456')
 
-        expect(BrandController.getHasCarModelRelation)
+        expect(BrandController.getSpecificHasCarModelRelation)
             .toHaveBeenCalledTimes(1)
     })
 
@@ -58,7 +58,7 @@ describe('Brands', () => {
         await request(app)
             .get('/brands/123/has-car-model')
 
-        expect(BrandController.getHasCarModelRelations)
+        expect(BrandController.getAllHasCarModelRelations)
             .toHaveBeenCalledTimes(1)
     })
 
@@ -74,7 +74,7 @@ describe('Brands', () => {
         await request(app)
             .get('/brands/123/has-image/456')
 
-        expect(BrandController.getHasImageRelation)
+        expect(BrandController.getSpecificHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
 
@@ -82,7 +82,7 @@ describe('Brands', () => {
         await request(app)
             .get('/brands/123/has-image')
 
-        expect(BrandController.getHasImageRelations)
+        expect(BrandController.getAllHasImageRelations)
             .toHaveBeenCalledTimes(1)
     })
 })

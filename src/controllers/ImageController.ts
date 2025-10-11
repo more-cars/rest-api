@@ -29,15 +29,15 @@ export class ImageController {
         await createBelongsToNodeRelation(req, res)
     }
 
-    static async getBelongsToNodeRelation(req: express.Request, res: express.Response) {
+    static async getSpecificBelongsToNodeRelation(req: express.Request, res: express.Response) {
         await getBelongsToNodeRelation(req, res)
     }
 
-    static async getBelongsToNodeRelations(req: express.Request, res: express.Response) {
+    static async getAllBelongsToNodeRelations(req: express.Request, res: express.Response) {
         await getBelongsToNodeRelations(req, res)
     }
 
-    static async getBelongsToNodeTypeRelations(req: express.Request, res: express.Response) {
+    static async getAllBelongsToNodeTypeRelations(req: express.Request, res: express.Response) {
         await getBelongsToNodeTypeRelations(req, res)
     }
 }

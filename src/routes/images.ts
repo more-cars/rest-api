@@ -8,8 +8,8 @@ router.get('/images/:id', ImageController.getById)
 router.get('/images', ImageController.getAll)
 router.delete('/images/:id', ImageController.delete)
 router.post('/images/:imageId/belongs-to-node/:partnerNodeId', ImageController.createBelongsToNodeRelation)
-router.get('/images/:imageId/belongs-to-node/:partnerNodeId', ImageController.getBelongsToNodeRelation)
-router.get('/images/:imageId/belongs-to-node', ImageController.getBelongsToNodeRelations)
-router.get('/images/:imageId/belongs-to-node-type', ImageController.getBelongsToNodeTypeRelations)
+router.get('/images/:imageId/belongs-to-node/:partnerNodeId', ImageController.getSpecificBelongsToNodeRelation)
+router.get('/images/:imageId/belongs-to-node', ImageController.getAllBelongsToNodeRelations)
+router.get('/images/:imageId/belongs-to-node-type', ImageController.getAllBelongsToNodeTypeRelations)
 
 export default router

@@ -31,11 +31,11 @@ export class BrandController {
         await createHasCarModelRelation(req, res)
     }
 
-    static async getHasCarModelRelation(req: express.Request, res: express.Response) {
+    static async getSpecificHasCarModelRelation(req: express.Request, res: express.Response) {
         await getHasCarModelRelation(req, res)
     }
 
-    static async getHasCarModelRelations(req: express.Request, res: express.Response) {
+    static async getAllHasCarModelRelations(req: express.Request, res: express.Response) {
         await getHasCarModelRelations(req, res)
     }
 
@@ -43,11 +43,11 @@ export class BrandController {
         await createHasImageRelation(req, res)
     }
 
-    static async getHasImageRelation(req: express.Request, res: express.Response) {
+    static async getSpecificHasImageRelation(req: express.Request, res: express.Response) {
         await getHasImageRelation(req, res)
     }
 
-    static async getHasImageRelations(req: express.Request, res: express.Response) {
+    static async getAllHasImageRelations(req: express.Request, res: express.Response) {
         await getHasImageRelations(req, res)
     }
 }

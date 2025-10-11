@@ -50,7 +50,7 @@ describe('Images', () => {
         await request(app)
             .get('/images/123/belongs-to-node/456')
 
-        expect(ImageController.getBelongsToNodeRelation)
+        expect(ImageController.getSpecificBelongsToNodeRelation)
             .toHaveBeenCalledTimes(1)
     })
 
@@ -58,7 +58,7 @@ describe('Images', () => {
         await request(app)
             .get('/images/123/belongs-to-node')
 
-        expect(ImageController.getBelongsToNodeRelations)
+        expect(ImageController.getAllBelongsToNodeRelations)
             .toHaveBeenCalledTimes(1)
     })
 
@@ -66,7 +66,7 @@ describe('Images', () => {
         await request(app)
             .get('/images/123/belongs-to-node-type')
 
-        expect(ImageController.getBelongsToNodeTypeRelations)
+        expect(ImageController.getAllBelongsToNodeTypeRelations)
             .toHaveBeenCalledTimes(1)
     })
 })

@@ -10,10 +10,10 @@ router.delete('/car-models/:id', CarModelController.delete)
 router.post('/car-models/:carModelId/belongs-to-brand/:brandId', CarModelController.createBelongsToBrandRelation)
 router.get('/car-models/:carModelId/belongs-to-brand', CarModelController.getBelongsToBrandRelation)
 router.post('/car-models/:carModelId/has-image/:imageId', CarModelController.createHasImageRelation)
-router.get('/car-models/:carModelId/has-image/:imageId', CarModelController.getHasImageRelation)
-router.get('/car-models/:carModelId/has-image', CarModelController.getHasImageRelations)
+router.get('/car-models/:carModelId/has-image/:imageId', CarModelController.getSpecificHasImageRelation)
+router.get('/car-models/:carModelId/has-image', CarModelController.getAllHasImageRelations)
 router.post('/car-models/:carModelId/has-prime-image/:imageId', CarModelController.createHasPrimeImageRelation)
 router.get('/car-models/:carModelId/has-prime-image', CarModelController.getHasPrimeImageRelation)
-router.get('/car-models/:carModelId/has-prime-image/:imageId', CarModelController.hasHasPrimeImageRelation)
+router.get('/car-models/:carModelId/has-prime-image/:imageId', CarModelController.getSpecificHasPrimeImageRelation)
 
 export default router
