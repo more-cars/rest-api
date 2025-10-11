@@ -1,15 +1,15 @@
 meta {
-  name: Delete Brand (invalid)
+  name: Get Brand by ID (invalid data)
   type: http
 }
 
-delete {
+get {
   url: {{baseUrl}}/brands/{{invalidBrandId}}
   body: none
   auth: none
 }
 
 assert {
-  res.status: eq 404
+  res.status: 404
   res.body: isString
 }

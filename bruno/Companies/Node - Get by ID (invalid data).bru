@@ -1,0 +1,15 @@
+meta {
+  name: Get Company by ID (invalid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/companies/{{invalidCompanyId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}

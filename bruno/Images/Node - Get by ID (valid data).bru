@@ -1,22 +1,22 @@
 meta {
-  name: Get Brand by ID
+  name: Get Image by ID (valid data)
   type: http
 }
 
 get {
-  url: {{baseUrl}}/brands/{{validBrandId}}
+  url: {{baseUrl}}/images/{{validImageId}}
   body: none
   auth: none
 }
 
 assert {
-  res.status: eq 200
+  res.status: 200
   res.body: isJson
-  res.body.data.id: gte 12000000
+  res.body.data.id: {{validImageId}}
   res.body.data.created_at: isNotEmpty
   res.body.data.updated_at: isNotEmpty
 }
 
 script:pre-request {
-  await lib.Brands.ensureValidBrandExists()
+  await lib.Images.ensureValidImageExists()
 }

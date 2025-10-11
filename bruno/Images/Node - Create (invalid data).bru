@@ -10,12 +10,10 @@ post {
 }
 
 body:json {
-  {
-    "extörnal_id": "123456"
-  }
+  {}
 }
 
 assert {
-  res.status: eq 400
+  res.status: 400
   res.body: isString
 }

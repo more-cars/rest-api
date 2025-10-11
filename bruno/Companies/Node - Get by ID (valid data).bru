@@ -1,5 +1,5 @@
 meta {
-  name: Get Company by ID
+  name: Get Company by ID (valid data)
   type: http
 }
 
@@ -10,9 +10,9 @@ get {
 }
 
 assert {
-  res.status: eq 200
+  res.status: 200
   res.body: isJson
-  res.body.data.id: gte 12000000
+  res.body.data.id: {{validCompanyId}}
   res.body.data.created_at: isNotEmpty
   res.body.data.updated_at: isNotEmpty
 }

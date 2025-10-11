@@ -1,5 +1,5 @@
 meta {
-  name: Delete Image
+  name: Delete Image (valid data)
   type: http
 }
 
@@ -10,7 +10,7 @@ delete {
 }
 
 assert {
-  res.status: eq 204
+  res.status: 204
   res.body: isEmpty
 }
 

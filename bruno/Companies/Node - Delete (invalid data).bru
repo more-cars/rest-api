@@ -1,5 +1,5 @@
 meta {
-  name: Delete Company (invalid)
+  name: Delete Company (invalid data)
   type: http
 }
 
@@ -10,6 +10,6 @@ delete {
 }
 
 assert {
-  res.status: eq 404
+  res.status: 404
   res.body: isString
 }

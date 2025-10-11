@@ -1,22 +1,22 @@
 meta {
-  name: Get Car Model by ID
+  name: Get Brand by ID (valid data)
   type: http
 }
 
 get {
-  url: {{baseUrl}}/car-models/{{validCarModelId}}
+  url: {{baseUrl}}/brands/{{validBrandId}}
   body: none
   auth: none
 }
 
 assert {
-  res.status: eq 200
+  res.status: 200
   res.body: isJson
-  res.body.data.id: gte 12000000
+  res.body.data.id: {{validBrandId}}
   res.body.data.created_at: isNotEmpty
   res.body.data.updated_at: isNotEmpty
 }
 
 script:pre-request {
-  await lib.CarModels.ensureValidCarModelExists()
+  await lib.Brands.ensureValidBrandExists()
 }
