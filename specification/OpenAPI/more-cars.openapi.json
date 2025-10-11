@@ -122,7 +122,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of `Companies` successfully loaded.",
+            "description": "`Company` collection successfully loaded.",
             "content": {
               "application/json": {
                 "schema": {
@@ -132,7 +132,7 @@
             }
           },
           "400": {
-            "description": "One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
+            "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -688,7 +688,7 @@
         ],
         "responses": {
           "200": {
-            "description": "A list of all `Brand`s.",
+            "description": "`Brand` collection successfully loaded.",
             "content": {
               "application/json": {
                 "schema": {
@@ -698,7 +698,7 @@
             }
           },
           "400": {
-            "description": "One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
+            "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1140,7 +1140,7 @@
         ],
         "responses": {
           "200": {
-            "description": "A list of all `Car Model`s.",
+            "description": "`Car Model` collection successfully loaded.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1150,7 +1150,7 @@
             }
           },
           "400": {
-            "description": "One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
+            "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1690,7 +1690,7 @@
         ],
         "responses": {
           "200": {
-            "description": "A list of all `Image`s.",
+            "description": "`Image` collection successfully loaded.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1700,7 +1700,7 @@
             }
           },
           "400": {
-            "description": "One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
+            "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
               "text/plain": {
                 "schema": {

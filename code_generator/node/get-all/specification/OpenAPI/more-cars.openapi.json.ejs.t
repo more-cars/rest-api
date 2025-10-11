@@ -41,20 +41,17 @@ skip_if: Get all `<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>`
         ],
         "responses": {
           "200": {
-            "description": "List of `<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>` successfully loaded.",
+            "description": "`<%= h.changeCase.title(nodeType) %>` collection successfully loaded.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/<%= h.changeCase.pascal(nodeType) %>Response"
-                  }
+                  "$ref": "#/components/schemas/<%= h.changeCase.pascal(nodeType) %>CollectionResponse"
                 }
               }
             }
           },
           "400": {
-            "description": "One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
+            "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
               "text/plain": {
                 "schema": {
