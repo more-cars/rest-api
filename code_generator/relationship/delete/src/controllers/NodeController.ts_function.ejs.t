@@ -7,4 +7,4 @@ skip_if: static async delete<%= h.changeCase.pascal(relationshipName) %>Relation
     }
 
     static async delete<%= h.changeCase.pascal(relationshipName) %>Relation(req: express.Request, res: express.Response) {
-       await delete<%= h.changeCase.pascal(relationshipName) %>Relation(req, res)
+        await delete<%= h.changeCase.pascal(relationshipName) %>Relation(req, res)
