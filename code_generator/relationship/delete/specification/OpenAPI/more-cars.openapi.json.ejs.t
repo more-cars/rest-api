@@ -2,13 +2,13 @@
 inject: true
 to: specification/OpenAPI/more-cars.openapi.json
 after: <%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/{<%= h.changeCase.kebab(startNodeType) %>-id}/<%= h.changeCase.kebab(relationshipName) %>/{<%= h.changeCase.kebab(endNodeType) %>-id}
-skip_if: Deletes a `<%= h.changeCase.title(startNodeType) %> <%= h.changeCase.lower(relationshipName) %>` relationship
+skip_if: Deletes the ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship
 ---
       "delete": {
         "tags": [
           "<%= h.changeCase.title(h.inflection.pluralize(startNodeType)) %>"
         ],
-        "summary": "Deletes a `<%= h.changeCase.title(startNodeType) %> <%= h.changeCase.lower(relationshipName) %>` relationship",
+        "summary": "Deletes the ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship between the `<%= h.changeCase.title(startNodeType) %>` and the `<%= h.changeCase.title(endNodeType) %>`",
         "parameters": [
           {
             "in": "path",
@@ -31,10 +31,10 @@ skip_if: Deletes a `<%= h.changeCase.title(startNodeType) %> <%= h.changeCase.lo
         ],
         "responses": {
           "204": {
-            "description": "The relationship between both nodes was successfully deleted."
+            "description": "Deleting ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship between `<%= h.changeCase.title(startNodeType) %>` and `<%= h.changeCase.title(endNodeType) %>` was successful.",
           },
           "404": {
-            "description": "One of the nodes (or both) don't exist or there exists no `<%= h.changeCase.lower(relationshipName) %>` relationship between them.",
+            "description": "Request failed. Either the nodes don't exist or there exists no `<%= h.changeCase.lower(relationshipName) %>` relationship between them.",
             "content": {
               "text/plain": {
                 "schema": {

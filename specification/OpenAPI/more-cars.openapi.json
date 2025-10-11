@@ -284,47 +284,6 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "Companies"
-        ],
-        "summary": "Deletes a `Company has brand` relationship",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "company-id",
-            "description": "ID of the `Company`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "in": "path",
-            "name": "brand-id",
-            "description": "ID of the `Brand`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The relationship between both nodes was successfully deleted."
-          },
-          "404": {
-            "description": "One of the nodes (or both) don't exist or there exists no `has brand` relationship between them.",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
       }
     },
     "/companies/{company-id}/has-brand/{brand-id}": {
@@ -369,6 +328,47 @@
           },
           "404": {
             "description": "Request failed. `Company` and/or `Brand` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Companies"
+        ],
+        "summary": "Deletes the ›has-brand‹ relationship between the `Company` and the `Brand`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "company-id",
+            "description": "ID of the `Company`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "brand-id",
+            "description": "ID of the `Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-brand‹ relationship between `Company` and `Brand` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-brand‹ relationship between them.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -477,7 +477,7 @@
         "tags": [
           "Companies"
         ],
-        "summary": "Deletes a `Company has image` relationship",
+        "summary": "Deletes the ›has-image‹ relationship between the `Company` and the `Image`",
         "parameters": [
           {
             "in": "path",
@@ -500,10 +500,10 @@
         ],
         "responses": {
           "204": {
-            "description": "The relationship between both nodes was successfully deleted."
+            "description": "Deleting ›has-image‹ relationship between `Company` and `Image` was successful."
           },
           "404": {
-            "description": "One of the nodes (or both) don't exist or there exists no `has image` relationship between them.",
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-image‹ relationship between them.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -545,47 +545,6 @@
           },
           "404": {
             "description": "The relationship could not be determined, because there exists no `Company` with the provided ID.",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Companies"
-        ],
-        "summary": "Deletes a `Company has prime image` relationship",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "company-id",
-            "description": "ID of the `Company`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "The relationship between both nodes was successfully deleted."
-          },
-          "404": {
-            "description": "One of the nodes (or both) don't exist or there exists no `has prime image` relationship between them.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -639,6 +598,47 @@
           },
           "404": {
             "description": "Request failed. `Company` and/or `Image` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Companies"
+        ],
+        "summary": "Deletes the ›has-prime-image‹ relationship between the `Company` and the `Image`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "company-id",
+            "description": "ID of the `Company`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-prime-image‹ relationship between `Company` and `Image` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-prime-image‹ relationship between them.",
             "content": {
               "text/plain": {
                 "schema": {
