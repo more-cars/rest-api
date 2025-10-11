@@ -7,7 +7,7 @@ import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
 import type {BaseRelationship} from "../relationships/types/BaseRelationship"
 
-export async function getHasCarModelRelation(req: express.Request, res: express.Response) {
+export async function getSpecificHasCarModelRelation(req: express.Request, res: express.Response) {
     const brandId = parseInt(req.params.brandId)
     const carModelId = parseInt(req.params.carModelId)
 

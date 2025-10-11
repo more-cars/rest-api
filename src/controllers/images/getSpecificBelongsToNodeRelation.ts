@@ -8,7 +8,7 @@ import {sendResponse404} from "../responses/sendResponse404"
 import {sendResponse422} from "../responses/sendResponse422"
 import type {BaseRelationship} from "../relationships/types/BaseRelationship"
 
-export async function getBelongsToNodeRelation(req: express.Request, res: express.Response) {
+export async function getSpecificBelongsToNodeRelation(req: express.Request, res: express.Response) {
     const imageId = parseInt(req.params.imageId)
     const partnerNodeId = parseInt(req.params.partnerNodeId)
 

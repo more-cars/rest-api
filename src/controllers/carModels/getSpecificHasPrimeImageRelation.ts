@@ -10,7 +10,7 @@ import {sendResponse404} from "../responses/sendResponse404"
 import {sendResponse500} from "../responses/sendResponse500"
 import type {BaseRelationship} from "../relationships/types/BaseRelationship"
 
-export async function hasHasPrimeImageRelation(req: express.Request, res: express.Response) {
+export async function getSpecificHasPrimeImageRelation(req: express.Request, res: express.Response) {
     const carModelId = parseInt(req.params.carModelId)
     const imageId = parseInt(req.params.imageId)
 

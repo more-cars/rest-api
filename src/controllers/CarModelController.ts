@@ -6,11 +6,11 @@ import {deleteNode} from "./carModels/deleteNode"
 import {createBelongsToBrandRelation} from "./carModels/createBelongsToBrandRelation"
 import {getBelongsToBrandRelation} from "./carModels/getBelongsToBrandRelation"
 import {createHasImageRelation} from "./carModels/createHasImageRelation"
-import {getHasImageRelation} from "./carModels/getHasImageRelation"
-import {getHasImageRelations} from "./carModels/getHasImageRelations"
+import {getSpecificHasImageRelation} from "./carModels/getSpecificHasImageRelation"
+import {getAllHasImageRelations} from "./carModels/getAllHasImageRelations"
 import {createHasPrimeImageRelation} from "./carModels/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./carModels/getHasPrimeImageRelation"
-import {hasHasPrimeImageRelation} from "./carModels/hasHasPrimeImageRelation"
+import {getSpecificHasPrimeImageRelation} from "./carModels/getSpecificHasPrimeImageRelation"
 
 export class CarModelController {
     static async create(req: express.Request, res: express.Response) {
@@ -42,11 +42,11 @@ export class CarModelController {
     }
 
     static async getSpecificHasImageRelation(req: express.Request, res: express.Response) {
-        await getHasImageRelation(req, res)
+        await getSpecificHasImageRelation(req, res)
     }
 
     static async getAllHasImageRelations(req: express.Request, res: express.Response) {
-        await getHasImageRelations(req, res)
+        await getAllHasImageRelations(req, res)
     }
 
     static async createHasPrimeImageRelation(req: express.Request, res: express.Response) {
@@ -58,6 +58,6 @@ export class CarModelController {
     }
 
     static async getSpecificHasPrimeImageRelation(req: express.Request, res: express.Response) {
-        await hasHasPrimeImageRelation(req, res)
+        await getSpecificHasPrimeImageRelation(req, res)
     }
 }

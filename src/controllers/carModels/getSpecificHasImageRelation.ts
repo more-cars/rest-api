@@ -1,5 +1,5 @@
 import express from "express"
-import {Brand} from "../../models/brands/Brand"
+import {CarModel} from "../../models/car-models/CarModel"
 import {Image} from "../../models/images/Image"
 import type {ImageNode} from "../../models/images/types/ImageNode"
 import {marshalRelationship} from "../relationships/marshalRelationship"
@@ -7,17 +7,16 @@ import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
 import type {BaseRelationship} from "../relationships/types/BaseRelationship"
 
-export async function getHasImageRelation(req: express.Request, res: express.Response) {
-    const brandId = parseInt(req.params.brandId)
+export async function getSpecificHasImageRelation(req: express.Request, res: express.Response) {
+    const carModelId = parseInt(req.params.carModelId)
     const imageId = parseInt(req.params.imageId)
 
     try {
-        const relationship = await Brand.getRelationshipForHasImage(brandId, imageId)
+        const relationship = await CarModel.getRelationshipForHasImage(carModelId, imageId)
 
         if (!relationship) {
             return sendResponse404(res)
         }
-
         const relationshipPartner = await Image.findById(relationship.image_id)
         const marshalledData = marshalRelationship(relationship as BaseRelationship, relationshipPartner as ImageNode, 'image')
 

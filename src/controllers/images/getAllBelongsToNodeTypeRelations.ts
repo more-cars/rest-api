@@ -5,7 +5,7 @@ import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
 import {sendResponse422} from "../responses/sendResponse422"
 
-export async function getBelongsToNodeTypeRelations(req: express.Request, res: express.Response) {
+export async function getAllBelongsToNodeTypeRelations(req: express.Request, res: express.Response) {
     const imageId = parseInt(req.params.imageId)
 
     try {

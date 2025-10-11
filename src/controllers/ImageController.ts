@@ -4,9 +4,9 @@ import {getById} from "./images/getById"
 import {getAll} from "./images/getAll"
 import {deleteNode} from "./images/deleteNode"
 import {createBelongsToNodeRelation} from "./images/createBelongsToNodeRelation"
-import {getBelongsToNodeRelation} from "./images/getBelongsToNodeRelation"
-import {getBelongsToNodeRelations} from "./images/getBelongsToNodeRelations"
-import {getBelongsToNodeTypeRelations} from "./images/getBelongsToNodeTypeRelations"
+import {getSpecificBelongsToNodeRelation} from "./images/getSpecificBelongsToNodeRelation"
+import {getAllBelongsToNodeRelations} from "./images/getAllBelongsToNodeRelations"
+import {getAllBelongsToNodeTypeRelations} from "./images/getAllBelongsToNodeTypeRelations"
 
 export class ImageController {
     static async create(req: express.Request, res: express.Response) {
@@ -30,14 +30,14 @@ export class ImageController {
     }
 
     static async getSpecificBelongsToNodeRelation(req: express.Request, res: express.Response) {
-        await getBelongsToNodeRelation(req, res)
+        await getSpecificBelongsToNodeRelation(req, res)
     }
 
     static async getAllBelongsToNodeRelations(req: express.Request, res: express.Response) {
-        await getBelongsToNodeRelations(req, res)
+        await getAllBelongsToNodeRelations(req, res)
     }
 
     static async getAllBelongsToNodeTypeRelations(req: express.Request, res: express.Response) {
-        await getBelongsToNodeTypeRelations(req, res)
+        await getAllBelongsToNodeTypeRelations(req, res)
     }
 }
