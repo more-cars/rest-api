@@ -2,15 +2,14 @@ import express from "express"
 import {unmarshalInputData} from "./marshalling/unmarshalInputData"
 import {marshalNode} from "./marshalling/marshalNode"
 import {CreateCompanyInput} from "../../models/companies/types/CreateCompanyInput"
-import {CompanyNode} from "../../models/companies/types/CompanyNode"
 import {Company} from "../../models/companies/Company"
-import {sendResponse201} from "../responses/sendResponse201"
-import {sendResponse400} from "../responses/sendResponse400"
-import {sendResponse500} from "../responses/sendResponse500"
-import {CreateCompanyRawInput} from "./types/CreateCompanyRawInput"
+import type {CreateCompanyRawInput} from "./types/CreateCompanyRawInput"
 import {isMandatoryString} from "../validators/isMandatoryString"
 import {isOptionalString} from "../validators/isOptionalString"
 import {isOptionalNumber} from "../validators/isOptionalNumber"
+import {sendResponse201} from "../responses/sendResponse201"
+import {sendResponse400} from "../responses/sendResponse400"
+import {sendResponse500} from "../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
     const data = unmarshalInputData(req.body)
@@ -22,8 +21,9 @@ export async function create(req: express.Request, res: express.Response) {
     const sanitizedData = sanitize(data as CreateCompanyInput)
 
     try {
-        const createdNode: CompanyNode = await Company.create(sanitizedData)
+        const createdNode = await Company.create(sanitizedData)
         const marshalledData = marshalNode(createdNode)
+
         return sendResponse201(marshalledData, res)
     } catch (e) {
         console.error(e)
@@ -32,7 +32,6 @@ export async function create(req: express.Request, res: express.Response) {
 }
 
 export function validate(data: CreateCompanyRawInput): boolean {
-
     if (!isMandatoryString(data.name)) {
         return false
     }

@@ -5,18 +5,17 @@ import express from "express"
 import {unmarshalInputData} from "./marshalling/unmarshalInputData"
 import {marshalNode} from "./marshalling/marshalNode"
 import {Create<%= h.changeCase.pascal(nodeType) %>Input} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Create<%= h.changeCase.pascal(nodeType) %>Input"
-import {<%= h.changeCase.pascal(nodeType) %>Node} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node"
 import {<%= h.changeCase.pascal(nodeType) %>} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"
-import {sendResponse201} from "../responses/sendResponse201"
-import {sendResponse400} from "../responses/sendResponse400"
-import {sendResponse500} from "../responses/sendResponse500"
-import {Create<%= h.changeCase.pascal(nodeType) %>RawInput} from "./types/Create<%= h.changeCase.pascal(nodeType) %>RawInput"
+import type {Create<%= h.changeCase.pascal(nodeType) %>RawInput} from "./types/Create<%= h.changeCase.pascal(nodeType) %>RawInput"
 import {isMandatoryString} from "../validators/isMandatoryString"
 import {isOptionalString} from "../validators/isOptionalString"
 import {isOptionalNumber} from "../validators/isOptionalNumber"
+import {sendResponse201} from "../responses/sendResponse201"
+import {sendResponse400} from "../responses/sendResponse400"
+import {sendResponse500} from "../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshal(req.body)
+    const data = unmarshalInputData(req.body)
 
     if (!validate(data)) {
         return sendResponse400(res)
@@ -25,8 +24,9 @@ export async function create(req: express.Request, res: express.Response) {
     const sanitizedData = sanitize(data as Create<%= h.changeCase.pascal(nodeType) %>Input)
 
     try {
-        const createdNode: <%= h.changeCase.pascal(nodeType) %>Node = await <%= h.changeCase.pascal(nodeType) %>.create(sanitizedData)
+        const createdNode = await <%= h.changeCase.pascal(nodeType) %>.create(sanitizedData)
         const marshalledData = marshalNode(createdNode)
+
         return sendResponse201(marshalledData, res)
     } catch (e) {
         console.error(e)

@@ -3,14 +3,13 @@ import {unmarshalInputData} from "./marshalling/unmarshalInputData"
 import {marshalNode} from "./marshalling/marshalNode"
 import {CreateCarModelInput} from "../../models/car-models/types/CreateCarModelInput"
 import {CarModel} from "../../models/car-models/CarModel"
-import {CarModelNode} from "../../models/car-models/types/CarModelNode"
-import {sendResponse500} from "../responses/sendResponse500"
-import {sendResponse201} from "../responses/sendResponse201"
-import {sendResponse400} from "../responses/sendResponse400"
-import {CreateCarModelRawInput} from "./types/CreateCarModelRawInput"
-import {isOptionalNumber} from "../validators/isOptionalNumber"
+import type {CreateCarModelRawInput} from "./types/CreateCarModelRawInput"
 import {isMandatoryString} from "../validators/isMandatoryString"
 import {isOptionalString} from "../validators/isOptionalString"
+import {isOptionalNumber} from "../validators/isOptionalNumber"
+import {sendResponse201} from "../responses/sendResponse201"
+import {sendResponse400} from "../responses/sendResponse400"
+import {sendResponse500} from "../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
     const data = unmarshalInputData(req.body)
@@ -22,8 +21,9 @@ export async function create(req: express.Request, res: express.Response) {
     const sanitizedData = sanitize(data as CreateCarModelInput)
 
     try {
-        const createdNode: CarModelNode = await CarModel.create(sanitizedData)
+        const createdNode = await CarModel.create(sanitizedData)
         const marshalledData = marshalNode(createdNode)
+
         return sendResponse201(marshalledData, res)
     } catch (e) {
         console.error(e)

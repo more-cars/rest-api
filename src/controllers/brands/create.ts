@@ -3,14 +3,13 @@ import {unmarshalInputData} from "./marshalling/unmarshalInputData"
 import {marshalNode} from "./marshalling/marshalNode"
 import {CreateBrandInput} from "../../models/brands/types/CreateBrandInput"
 import {Brand} from "../../models/brands/Brand"
-import {BrandNode} from "../../models/brands/types/BrandNode"
-import {sendResponse201} from "../responses/sendResponse201"
-import {sendResponse400} from "../responses/sendResponse400"
-import {sendResponse500} from "../responses/sendResponse500"
-import {CreateBrandRawInput} from "./types/CreateBrandRawInput"
+import type {CreateBrandRawInput} from "./types/CreateBrandRawInput"
 import {isMandatoryString} from "../validators/isMandatoryString"
 import {isOptionalString} from "../validators/isOptionalString"
 import {isOptionalNumber} from "../validators/isOptionalNumber"
+import {sendResponse201} from "../responses/sendResponse201"
+import {sendResponse400} from "../responses/sendResponse400"
+import {sendResponse500} from "../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
     const data = unmarshalInputData(req.body)
@@ -22,8 +21,9 @@ export async function create(req: express.Request, res: express.Response) {
     const sanitizedData = sanitize(data as CreateBrandInput)
 
     try {
-        const createdNode: BrandNode = await Brand.create(sanitizedData)
+        const createdNode = await Brand.create(sanitizedData)
         const marshalledData = marshalNode(createdNode)
+
         return sendResponse201(marshalledData, res)
     } catch (e) {
         console.error(e)

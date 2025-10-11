@@ -3,12 +3,11 @@ import {unmarshalInputData} from "./marshalling/unmarshalInputData"
 import {marshalNode} from "./marshalling/marshalNode"
 import {CreateImageInput} from "../../models/images/types/CreateImageInput"
 import {Image} from "../../models/images/Image"
-import {ImageNode} from "../../models/images/types/ImageNode"
-import {sendResponse500} from "../responses/sendResponse500"
-import {sendResponse400} from "../responses/sendResponse400"
-import {sendResponse201} from "../responses/sendResponse201"
-import {CreateImageRawInput} from "./types/CreateImageRawInput"
+import type {CreateImageRawInput} from "./types/CreateImageRawInput"
 import {isMandatoryString} from "../validators/isMandatoryString"
+import {sendResponse201} from "../responses/sendResponse201"
+import {sendResponse400} from "../responses/sendResponse400"
+import {sendResponse500} from "../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
     const data = unmarshalInputData(req.body)
@@ -20,8 +19,9 @@ export async function create(req: express.Request, res: express.Response) {
     const sanitizedData = sanitize(data as CreateImageInput)
 
     try {
-        const createdNode: ImageNode = await Image.create(sanitizedData)
+        const createdNode = await Image.create(sanitizedData)
         const marshalledData = marshalNode(createdNode)
+
         return sendResponse201(marshalledData, res)
     } catch (e) {
         console.error(e)
