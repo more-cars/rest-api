@@ -26,6 +26,8 @@ import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExists
 import {getSpecificBelongsToBrandRelationship} from "./getSpecificBelongsToBrandRelationship"
 import {getSpecificHasImageRelationship} from "./getSpecificHasImageRelationship"
 import {getSpecificHasPrimeImageRelationship} from "./getSpecificHasPrimeImageRelationship"
+import {deleteDeprecatedRelationship} from "../relationships/deleteDeprecatedRelationship"
+import {DbRelationship} from "../../db/types/DbRelationship"
 
 export class CarModel {
     static async create(data: CreateCarModelInput): Promise<CarModelNode> {
@@ -81,6 +83,8 @@ export class CarModel {
         if (existingRelationship) {
             throw new RelationshipAlreadyExistsError(CarModelRelationship.belongsToBrand, carModelId, brandId)
         }
+
+        await deleteDeprecatedRelationship(carModelId, DbRelationship.BrandHasCarModel)
 
         const createdRelationship = await createBelongsToBrandRelationship(carModelId, brandId)
         if (!createdRelationship) {
@@ -171,6 +175,8 @@ export class CarModel {
         if (existingRelationship) {
             throw new RelationshipAlreadyExistsError(CarModelRelationship.hasPrimeImage, carModelId, imageId)
         }
+
+        await deleteDeprecatedRelationship(carModelId, DbRelationship.CarModelHasPrimeImage)
 
         const createdRelationship = await createHasPrimeImageRelationship(carModelId, imageId)
         if (!createdRelationship) {
