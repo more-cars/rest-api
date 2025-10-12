@@ -6,5 +6,10 @@ skip_if: static async delete
 ---
     }
 
-    static async delete(id: number): Promise<boolean> {
-            return await deleteNode(id)
+    static async delete(<%= h.changeCase.camel(nodeType) %>Id: number): Promise<void> {
+        const node = await <%= h.changeCase.pascal(nodeType) %>.findById(<%= h.changeCase.camel(nodeType) %>Id)
+        if (!node) {
+            throw new NodeNotFoundError(<%= h.changeCase.camel(nodeType) %>Id)
+        }
+
+        await deleteNode(<%= h.changeCase.camel(nodeType) %>Id)

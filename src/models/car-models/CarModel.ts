@@ -57,8 +57,13 @@ export class CarModel {
         return nodes
     }
 
-    static async delete(id: number): Promise<boolean> {
-        return await deleteNode(id)
+    static async delete(carModelId: number): Promise<void> {
+        const node = await CarModel.findById(carModelId)
+        if (!node) {
+            throw new NodeNotFoundError(carModelId)
+        }
+
+        await deleteNode(carModelId)
     }
 
     static async createBelongsToBrandRelationship(carModelId: number, brandId: number): Promise<CarModelBelongsToBrandRelationship> {

@@ -52,8 +52,13 @@ export class Image {
         return nodes
     }
 
-    static async delete(id: number): Promise<boolean> {
-        return await deleteNode(id)
+    static async delete(imageId: number): Promise<void> {
+        const node = await Image.findById(imageId)
+        if (!node) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        await deleteNode(imageId)
     }
 
     static async createBelongsToNodeRelationship(imageId: number, partnerId: number): Promise<ImageBelongsToNodeRelationship> {
