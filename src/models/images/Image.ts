@@ -10,11 +10,15 @@ import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints
 import {getAllNodesOfType} from "../../db/nodes/images/getAllNodesOfType"
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {ImageBelongsToNodeRelationship} from "./types/ImageBelongsToNodeRelationship"
-import {getImageBelongsToNodeRelationship} from "./getImageBelongsToNodeRelationship"
-import {createImageBelongsToNodeRelationship} from "./createImageBelongsToNodeRelationship"
+import {getSpecificImageBelongsToNodeRelationship} from "./getSpecificImageBelongsToNodeRelationship"
+import {createBelongsToNodeRelationship} from "./createBelongsToNodeRelationship"
 import {getRelationships} from "../../db/nodes/images/getRelationships"
 import type {ImageBelongsToNodeTypeRelationships} from "./types/ImageBelongsToNodeTypeRelationships"
 import {getBelongsToNodeTypeRelationships} from "../../db/nodes/images/getBelongsToNodeTypeRelationships"
+import {NodeNotFoundError} from "../types/NodeNotFoundError"
+import {SemanticError} from "../types/SemanticError"
+import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
+import {ImageRelationship} from "./types/ImageRelationship"
 
 export class Image {
     static async create(data: CreateImageInput): Promise<ImageNode> {
@@ -51,32 +55,36 @@ export class Image {
         return await deleteNode(id)
     }
 
-    static async createBelongsToNodeRelationship(
-        imageId: number,
-        partnerNodeId: number
-    ): Promise<false | ImageBelongsToNodeRelationship> {
-        if (imageId === partnerNodeId) {
-            throw new Error(`Image #${imageId} cannot be connected to itself`)
+    static async createBelongsToNodeRelationship(imageId: number, partnerId: number) {
+        if (imageId === partnerId) {
+            throw new SemanticError(`Image #${imageId} cannot be connected to itself`)
         }
 
-        const imageNode = await getNodeById(imageId)
-        const partnerNode = await getAnyNodeById(partnerNodeId)
-
-        if (!imageNode || !partnerNode) {
-            return false
+        const image = await getNodeById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
         }
 
-        if (await partnerNodeIsAnImage(partnerNodeId)) {
-            throw new Error(`Image #${imageId} cannot be connected to another image`)
+        const partner = await getAnyNodeById(partnerId)
+        if (!partner) {
+            throw new NodeNotFoundError(partnerId)
         }
 
-        const existingRelation = await getImageBelongsToNodeRelationship(imageId, partnerNodeId)
+        if (await partnerNodeIsAnImage(partnerId)) {
+            throw new SemanticError(`Image #${imageId} cannot be connected to another image`)
+        }
 
+        const existingRelation = await getSpecificImageBelongsToNodeRelationship(imageId, partnerId)
         if (existingRelation) {
-            return existingRelation
+            throw new RelationshipAlreadyExistsError(ImageRelationship.belongsToNode, imageId, partnerId)
         }
 
-        return await createImageBelongsToNodeRelationship(imageId, partnerNodeId)
+        const createdRelationship = await createBelongsToNodeRelationship(imageId, partnerId)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 
     static async getSpecificBelongsToNodeRelationship(imageId: number, partnerNodeId: number): Promise<false | ImageBelongsToNodeRelationship> {
@@ -91,7 +99,7 @@ export class Image {
             return false
         }
 
-        return await getImageBelongsToNodeRelationship(imageId, partnerNodeId)
+        return await getSpecificImageBelongsToNodeRelationship(imageId, partnerNodeId)
     }
 
     static async getBelongsToNodeRelationships(imageId: number): Promise<false | Array<ImageBelongsToNodeRelationship>> {

@@ -1,13 +1,13 @@
 import {getSpecificRelationship} from "../../db/relationships/getSpecificRelationship"
 import {DbRelationship} from "../../db/types/DbRelationship"
-import {CompanyRelationship} from "./types/CompanyRelationship"
-import {CompanyHasImageRelationship} from "./types/CompanyHasImageRelationship"
+import {CarModelRelationship} from "./types/CarModelRelationship"
+import type {CarModelHasImageRelationship} from "./types/CarModelHasImageRelationship"
 
-export async function getSpecificHasImageRelationship(companyId: number, imageId: number) {
+export async function getSpecificHasImageRelationship(carModelId: number, imageId: number) {
     const dbRelationship = await getSpecificRelationship(
-        companyId,
+        carModelId,
         imageId,
-        DbRelationship.CompanyHasImage,
+        DbRelationship.NodeHasImage,
     )
 
     if (!dbRelationship) {
@@ -15,11 +15,11 @@ export async function getSpecificHasImageRelationship(companyId: number, imageId
     }
 
     return {
-        company_id: companyId,
+        car_model_id: carModelId,
         image_id: imageId,
         relationship_id: dbRelationship.relationship_id,
-        relationship_name: CompanyRelationship.hasImage,
+        relationship_name: CarModelRelationship.hasImage,
         created_at: dbRelationship.created_at,
         updated_at: dbRelationship.updated_at,
-    } as CompanyHasImageRelationship
+    } as CarModelHasImageRelationship
 }

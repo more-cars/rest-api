@@ -1,13 +1,13 @@
 import {createRelationship} from "../../db/relationships/createRelationship"
 import {DbRelationship} from "../../db/types/DbRelationship"
-import {CompanyRelationship} from "./types/CompanyRelationship"
-import {CompanyHasPrimeImageRelationship} from "./types/CompanyHasPrimeImageRelationship"
+import {ImageRelationship} from "./types/ImageRelationship"
+import {ImageBelongsToNodeRelationship} from "./types/ImageBelongsToNodeRelationship"
 
-export async function createHasPrimeImageRelationship(companyId: number, imageId: number) {
+export async function createBelongsToNodeRelationship(imageId: number, partnerNodeId: number) {
     const dbRelationship = await createRelationship(
-        companyId,
+        partnerNodeId,
         imageId,
-        DbRelationship.CompanyHasPrimeImage,
+        DbRelationship.NodeHasImage,
     )
 
     if (!dbRelationship) {
@@ -15,11 +15,11 @@ export async function createHasPrimeImageRelationship(companyId: number, imageId
     }
 
     return {
-        company_id: companyId,
         image_id: imageId,
+        partner_node_id: partnerNodeId,
         relationship_id: dbRelationship.relationship_id,
-        relationship_name: CompanyRelationship.hasPrimeImage,
+        relationship_name: ImageRelationship.belongsToNode,
         created_at: dbRelationship.created_at,
         updated_at: dbRelationship.updated_at,
-    } as CompanyHasPrimeImageRelationship
+    } as ImageBelongsToNodeRelationship
 }

@@ -3,25 +3,23 @@ import {DbRelationship} from "../../db/types/DbRelationship"
 import {ImageRelationship} from "./types/ImageRelationship"
 import {ImageBelongsToNodeRelationship} from "./types/ImageBelongsToNodeRelationship"
 
-export async function getImageBelongsToNodeRelationship(imageId: number, partnerNodeId: number) {
-    const relation = await getSpecificRelationship(
+export async function getSpecificImageBelongsToNodeRelationship(imageId: number, partnerNodeId: number) {
+    const dbRelationship = await getSpecificRelationship(
         partnerNodeId,
         imageId,
         DbRelationship.NodeHasImage,
     )
 
-    if (!relation) {
+    if (!dbRelationship) {
         return false
     }
 
-    const specificRelationship: ImageBelongsToNodeRelationship = {
+    return {
         image_id: imageId,
         partner_node_id: partnerNodeId,
-        relationship_id: relation.relationship_id,
+        relationship_id: dbRelationship.relationship_id,
         relationship_name: ImageRelationship.belongsToNode,
-        created_at: relation.created_at,
-        updated_at: relation.updated_at,
-    }
-
-    return specificRelationship
+        created_at: dbRelationship.created_at,
+        updated_at: dbRelationship.updated_at,
+    } as ImageBelongsToNodeRelationship
 }

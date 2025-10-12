@@ -1,36 +1,25 @@
 import {createRelationship} from "../../db/relationships/createRelationship"
 import {DbRelationship} from "../../db/types/DbRelationship"
-import {CarModelHasPrimeImageRelationship} from "./types/CarModelHasPrimeImageRelationship"
 import {CarModelRelationship} from "./types/CarModelRelationship"
-import {getCarModelHasPrimeImageRelationship} from "./getCarModelHasPrimeImageRelationship"
-import {deleteExistingHasPrimeImageRelationship} from "./deleteExistingHasPrimeImageRelationship"
+import {CarModelHasPrimeImageRelationship} from "./types/CarModelHasPrimeImageRelationship"
 
-export async function createHasPrimeImageRelationship(carModelId: number, imageId: number): Promise<false | CarModelHasPrimeImageRelationship> {
-    const existingRelation = await getCarModelHasPrimeImageRelationship(carModelId, imageId)
-    if (existingRelation) {
-        return existingRelation
-    }
-
-    await deleteExistingHasPrimeImageRelationship(carModelId)
-
-    const baseRelationship = await createRelationship(
+export async function createHasPrimeImageRelationship(carModelId: number, imageId: number) {
+    const dbRelationship = await createRelationship(
         carModelId,
         imageId,
         DbRelationship.CarModelHasPrimeImage,
     )
 
-    if (!baseRelationship) {
+    if (!dbRelationship) {
         return false
     }
 
-    const specificRelationship: CarModelHasPrimeImageRelationship = {
+    return {
         car_model_id: carModelId,
         image_id: imageId,
-        relationship_id: baseRelationship.relationship_id,
+        relationship_id: dbRelationship.relationship_id,
         relationship_name: CarModelRelationship.hasPrimeImage,
-        created_at: baseRelationship.created_at,
-        updated_at: baseRelationship.updated_at,
-    }
-
-    return specificRelationship
+        created_at: dbRelationship.created_at,
+        updated_at: dbRelationship.updated_at,
+    } as CarModelHasPrimeImageRelationship
 }

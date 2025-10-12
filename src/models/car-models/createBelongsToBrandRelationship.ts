@@ -1,13 +1,13 @@
 import {createRelationship} from "../../db/relationships/createRelationship"
 import {DbRelationship} from "../../db/types/DbRelationship"
-import {CompanyRelationship} from "./types/CompanyRelationship"
-import {CompanyHasBrandRelationship} from "./types/CompanyHasBrandRelationship"
+import {CarModelRelationship} from "./types/CarModelRelationship"
+import {CarModelBelongsToBrandRelationship} from "./types/CarModelBelongsToBrandRelationship"
 
-export async function createHasBrandRelationship(companyId: number, brandId: number) {
+export async function createBelongsToBrandRelationship(carModelId: number, brandId: number) {
     const dbRelationship = await createRelationship(
-        companyId,
         brandId,
-        DbRelationship.CompanyHasBrand,
+        carModelId,
+        DbRelationship.BrandHasCarModel,
     )
 
     if (!dbRelationship) {
@@ -15,11 +15,11 @@ export async function createHasBrandRelationship(companyId: number, brandId: num
     }
 
     return {
-        company_id: companyId,
+        car_model_id: carModelId,
         brand_id: brandId,
         relationship_id: dbRelationship.relationship_id,
-        relationship_name: CompanyRelationship.hasBrand,
+        relationship_name: CarModelRelationship.belongsToBrand,
         created_at: dbRelationship.created_at,
         updated_at: dbRelationship.updated_at,
-    } as CompanyHasBrandRelationship
+    } as CarModelBelongsToBrandRelationship
 }
