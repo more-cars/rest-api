@@ -14,7 +14,7 @@ import {deleteForeignHasCarModelRelationship} from "./deleteForeignHasCarModelRe
 import {getSpecificHasCarModelRelationship} from "./getSpecificHasCarModelRelationship"
 import {getAllBrandHasCarModelRelationships} from "./getAllBrandHasCarModelRelationships"
 import {BrandHasImageRelationship} from "./types/BrandHasImageRelationship"
-import {getSpecificBrandHasImageRelationship} from "./getSpecificBrandHasImageRelationship"
+import {getSpecificHasImageRelationship} from "./getSpecificHasImageRelationship"
 import {Image} from "../images/Image"
 import {createHasImageRelationship} from "./createHasImageRelationship"
 import {getAllBrandHasImageRelationships} from "./getAllBrandHasImageRelationships"
@@ -123,7 +123,7 @@ export class Brand {
             throw new NodeNotFoundError(imageId)
         }
 
-        const existingRelation = await getSpecificBrandHasImageRelationship(brandId, imageId)
+        const existingRelation = await getSpecificHasImageRelationship(brandId, imageId)
         if (existingRelation) {
             throw new RelationshipAlreadyExistsError(BrandRelationship.hasImage, brandId, imageId)
         }
@@ -147,7 +147,7 @@ export class Brand {
             throw new NodeNotFoundError(imageId)
         }
 
-        const relationship = await getSpecificBrandHasImageRelationship(brandId, imageId)
+        const relationship = await getSpecificHasImageRelationship(brandId, imageId)
         if (!relationship) {
             throw new RelationshipNotFoundError(BrandRelationship.hasImage, brandId, imageId)
         }

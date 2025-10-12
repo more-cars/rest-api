@@ -3,7 +3,7 @@ import {DbRelationship} from "../../db/types/DbRelationship"
 import {ImageRelationship} from "./types/ImageRelationship"
 import {ImageBelongsToNodeRelationship} from "./types/ImageBelongsToNodeRelationship"
 
-export async function getSpecificImageBelongsToNodeRelationship(imageId: number, partnerNodeId: number) {
+export async function getSpecificBelongsToNodeRelationship(imageId: number, partnerNodeId: number) {
     const dbRelationship = await getSpecificRelationship(
         partnerNodeId,
         imageId,
