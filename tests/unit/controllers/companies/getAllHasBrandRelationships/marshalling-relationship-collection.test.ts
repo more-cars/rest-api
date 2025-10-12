@@ -1,9 +1,9 @@
 import {expect, test} from 'vitest'
-import {CompanyHasBrandRelationship} from "../../../../../../src/models/companies/types/CompanyHasBrandRelationship"
-import {marshalRelationships} from "../../../../../../src/controllers/relationships/marshalRelationships"
-import type {BaseRelationship} from "../../../../../../src/controllers/relationships/types/BaseRelationship"
+import {CompanyHasBrandRelationship} from "../../../../../src/models/companies/types/CompanyHasBrandRelationship"
+import {marshalRelationships} from "../../../../../src/controllers/relationships/marshalRelationships"
+import type {BaseRelationship} from "../../../../../src/controllers/relationships/types/BaseRelationship"
 
-test('marshalling a complete and valid request', async () => {
+test("marshalling a collection of ›has-brand‹ relationships", async () => {
     const relationships: Array<CompanyHasBrandRelationship> = [
         {
             company_id: 1,
@@ -17,7 +17,6 @@ test('marshalling a complete and valid request', async () => {
             },
             created_at: "2023-10-01T00:00:00.001Z",
             updated_at: "2023-10-01T00:00:00.001Z",
-
         },
         {
             company_id: 10,
@@ -31,7 +30,6 @@ test('marshalling a complete and valid request', async () => {
             },
             created_at: "2023-10-01T00:00:00.001Z",
             updated_at: "2023-10-01T00:00:00.001Z",
-
         },
         {
             company_id: 100,
@@ -45,20 +43,19 @@ test('marshalling a complete and valid request', async () => {
             },
             created_at: "2023-10-01T00:00:00.001Z",
             updated_at: "2023-10-01T00:00:00.001Z",
-
-        }
+        },
     ]
 
-    const mappedNode = marshalRelationships(relationships as BaseRelationship[], 'brand')
+    const marshalledRelationships = marshalRelationships(relationships as BaseRelationship[], "brand")
 
-    expect(mappedNode)
+    expect(marshalledRelationships)
         .toStrictEqual({
             data: [{
                 data: {
                     relationship_id: 3,
                     relationship_name: "has-brand",
                     relationship_partner: {
-                        node_type: 'brand',
+                        node_type: "brand",
                         data: {
                             id: 111,
                             created_at: "dummy",
@@ -73,7 +70,7 @@ test('marshalling a complete and valid request', async () => {
                     relationship_id: 30,
                     relationship_name: "has-brand",
                     relationship_partner: {
-                        node_type: 'brand',
+                        node_type: "brand",
                         data: {
                             id: 222,
                             created_at: "dummy",
@@ -88,7 +85,7 @@ test('marshalling a complete and valid request', async () => {
                     relationship_id: 300,
                     relationship_name: "has-brand",
                     relationship_partner: {
-                        node_type: 'brand',
+                        node_type: "brand",
                         data: {
                             id: 333,
                             created_at: "dummy",

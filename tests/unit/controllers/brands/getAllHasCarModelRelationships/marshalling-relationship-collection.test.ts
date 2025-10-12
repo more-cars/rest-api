@@ -1,15 +1,15 @@
 import {expect, test} from 'vitest'
-import {CompanyHasImageRelationship} from "../../../../../../src/models/companies/types/CompanyHasImageRelationship"
-import {marshalRelationships} from "../../../../../../src/controllers/relationships/marshalRelationships"
-import type {BaseRelationship} from "../../../../../../src/controllers/relationships/types/BaseRelationship"
+import {BrandHasCarModelRelationship} from "../../../../../src/models/brands/types/BrandHasCarModelRelationship"
+import {marshalRelationships} from "../../../../../src/controllers/relationships/marshalRelationships"
+import type {BaseRelationship} from "../../../../../src/controllers/relationships/types/BaseRelationship"
 
-test('marshalling a complete and valid request', async () => {
-    const relationships: Array<CompanyHasImageRelationship> = [
+test("marshalling a collection of ›has-car-model‹ relationships", async () => {
+    const relationships: Array<BrandHasCarModelRelationship> = [
         {
-            company_id: 1,
-            image_id: 2,
+            brand_id: 1,
+            car_model_id: 2,
             relationship_id: 3,
-            relationship_name: "HAS_IMAGE",
+            relationship_name: "HAS_CAR_MODEL",
             relationship_partner: {
                 id: 111,
                 created_at: "dummy",
@@ -17,13 +17,12 @@ test('marshalling a complete and valid request', async () => {
             },
             created_at: "2023-10-01T00:00:00.001Z",
             updated_at: "2023-10-01T00:00:00.001Z",
-
         },
         {
-            company_id: 10,
-            image_id: 20,
+            brand_id: 10,
+            car_model_id: 20,
             relationship_id: 30,
-            relationship_name: "HAS_IMAGE",
+            relationship_name: "HAS_CAR_MODEL",
             relationship_partner: {
                 id: 222,
                 created_at: "dummy",
@@ -31,13 +30,12 @@ test('marshalling a complete and valid request', async () => {
             },
             created_at: "2023-10-01T00:00:00.001Z",
             updated_at: "2023-10-01T00:00:00.001Z",
-
         },
         {
-            company_id: 100,
-            image_id: 200,
+            brand_id: 100,
+            car_model_id: 200,
             relationship_id: 300,
-            relationship_name: "HAS_IMAGE",
+            relationship_name: "HAS_CAR_MODEL",
             relationship_partner: {
                 id: 333,
                 created_at: "dummy",
@@ -45,20 +43,19 @@ test('marshalling a complete and valid request', async () => {
             },
             created_at: "2023-10-01T00:00:00.001Z",
             updated_at: "2023-10-01T00:00:00.001Z",
-
-        }
+        },
     ]
 
-    const mappedNode = marshalRelationships(relationships as BaseRelationship[], 'image')
+    const marshalledRelationships = marshalRelationships(relationships as BaseRelationship[], "car model")
 
-    expect(mappedNode)
+    expect(marshalledRelationships)
         .toStrictEqual({
             data: [{
                 data: {
                     relationship_id: 3,
-                    relationship_name: "has-image",
+                    relationship_name: "has-car-model",
                     relationship_partner: {
-                        node_type: 'image',
+                        node_type: "car-model",
                         data: {
                             id: 111,
                             created_at: "dummy",
@@ -71,9 +68,9 @@ test('marshalling a complete and valid request', async () => {
             }, {
                 data: {
                     relationship_id: 30,
-                    relationship_name: "has-image",
+                    relationship_name: "has-car-model",
                     relationship_partner: {
-                        node_type: 'image',
+                        node_type: "car-model",
                         data: {
                             id: 222,
                             created_at: "dummy",
@@ -86,9 +83,9 @@ test('marshalling a complete and valid request', async () => {
             }, {
                 data: {
                     relationship_id: 300,
-                    relationship_name: "has-image",
+                    relationship_name: "has-car-model",
                     relationship_partner: {
-                        node_type: 'image',
+                        node_type: "car-model",
                         data: {
                             id: 333,
                             created_at: "dummy",
