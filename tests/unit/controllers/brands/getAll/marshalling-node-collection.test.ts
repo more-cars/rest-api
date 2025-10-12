@@ -3,7 +3,7 @@ import type {BrandNode} from "../../../../../src/models/brands/types/BrandNode"
 import FakeBrand from "../../../../_toolbox/fixtures/nodes/FakeBrand"
 import {marshalNodes} from "../../../../../src/controllers/brands/marshalling/marshalNodes"
 
-test('marshalling a complete and valid request', async () => {
+test("marshalling a collection of BRAND nodes", async () => {
     const fakeNode1: BrandNode = Object.assign({}, FakeBrand, {id: 1, created_at: "dummy", updated_at: "dummy"})
     const fakeNode2: BrandNode = Object.assign({}, FakeBrand, {id: 2, created_at: "dummy", updated_at: "dummy"})
     const fakeNode3: BrandNode = Object.assign({}, FakeBrand, {id: 3, created_at: "dummy", updated_at: "dummy"})

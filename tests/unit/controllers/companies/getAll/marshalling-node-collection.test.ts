@@ -3,7 +3,7 @@ import type {CompanyNode} from "../../../../../src/models/companies/types/Compan
 import FakeCompany from "../../../../_toolbox/fixtures/nodes/FakeCompany"
 import {marshalNodes} from "../../../../../src/controllers/companies/marshalling/marshalNodes"
 
-test('marshalling a complete and valid request', async () => {
+test("marshalling a collection of COMPANY nodes", async () => {
     const fakeNode1: CompanyNode = Object.assign({}, FakeCompany, {id: 1, created_at: "dummy", updated_at: "dummy"})
     const fakeNode2: CompanyNode = Object.assign({}, FakeCompany, {id: 2, created_at: "dummy", updated_at: "dummy"})
     const fakeNode3: CompanyNode = Object.assign({}, FakeCompany, {id: 3, created_at: "dummy", updated_at: "dummy"})
