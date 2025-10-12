@@ -22,7 +22,9 @@ skip_if: static async create<%= h.changeCase.pascal(relationshipName) %>Relation
             throw new RelationshipAlreadyExistsError(<%= h.changeCase.pascal(startNodeType) %>Relationship.<%= h.changeCase.camel(relationshipName) %>, <%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(endNodeType) %>Id)
         }
 <% if (cardinality === '1:1' || cardinality === 'n:1') { %>
-        await deleteForeign<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(endNodeType) %>Id)
+        await deleteDeprecatedRelationship(<%= h.changeCase.camel(startNodeType) %>Id)
+<% else if (cardinality === '1:n') { %>
+        await deleteDeprecatedRelationship(<%= h.changeCase.camel(endNodeType) %>Id)
 <% } %>
         const createdRelationship = await create<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(endNodeType) %>Id)
         if (!createdRelationship) {

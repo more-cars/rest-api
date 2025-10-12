@@ -28,7 +28,8 @@ import {getSpecificHasImageRelationship} from "./getSpecificHasImageRelationship
 import type {CompanyHasImageRelationship} from "./types/CompanyHasImageRelationship"
 import {getAllHasImageRelationships} from "./getAllHasImageRelationships"
 import {deleteHasImageRelationship} from "./deleteHasImageRelationship"
-import {deleteForeignHasBrandRelationship} from "./deleteForeignHasBrandRelationship"
+import {deleteDeprecatedRelationship} from "../relationships/deleteDeprecatedRelationship"
+import {DbRelationship} from "../../db/types/DbRelationship"
 
 export class Company {
     static async create(data: CreateCompanyInput): Promise<CompanyNode> {
@@ -85,7 +86,7 @@ export class Company {
             throw new RelationshipAlreadyExistsError(CompanyRelationship.hasBrand, companyId, brandId)
         }
 
-        await deleteForeignHasBrandRelationship(brandId)
+        await deleteDeprecatedRelationship(brandId, DbRelationship.CompanyHasBrand)
 
         const createdRelationship = await createHasBrandRelationship(companyId, brandId)
         if (!createdRelationship) {
@@ -190,6 +191,8 @@ export class Company {
         if (existingRelationship) {
             throw new RelationshipAlreadyExistsError(CompanyRelationship.hasPrimeImage, companyId, imageId)
         }
+
+        await deleteDeprecatedRelationship(companyId, DbRelationship.CompanyHasPrimeImage)
 
         const createdRelationship = await createHasPrimeImageRelationship(companyId, imageId)
         if (!createdRelationship) {

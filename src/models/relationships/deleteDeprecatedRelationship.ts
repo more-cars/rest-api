@@ -1,11 +1,11 @@
-import {getRelationshipForSpecificNode} from "../../db/relationships/getRelationshipForSpecificNode"
 import {DbRelationship} from "../../db/types/DbRelationship"
+import {getRelationshipForSpecificNode} from "../../db/relationships/getRelationshipForSpecificNode"
 import {deleteRelationshipById} from "../../db/relationships/deleteRelationshipById"
 
-export async function deleteForeignHasBrandRelationship(brandId: number) {
+export async function deleteDeprecatedRelationship(nodeId: number, relationshipType: DbRelationship) {
     const relationship = await getRelationshipForSpecificNode(
-        brandId,
-        DbRelationship.CompanyHasBrand,
+        nodeId,
+        relationshipType,
     )
 
     if (relationship) {

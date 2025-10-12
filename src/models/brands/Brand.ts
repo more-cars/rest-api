@@ -10,7 +10,8 @@ import {deleteNode} from "../../db/nodes/deleteNode"
 import {BrandHasCarModelRelationship} from "./types/BrandHasCarModelRelationship"
 import {CarModel} from "../car-models/CarModel"
 import {createHasCarModelRelationship} from "./createHasCarModelRelationship"
-import {deleteForeignHasCarModelRelationship} from "./deleteForeignHasCarModelRelationship"
+import {deleteDeprecatedRelationship} from "../relationships/deleteDeprecatedRelationship"
+import {DbRelationship} from "../../db/types/DbRelationship"
 import {getSpecificHasCarModelRelationship} from "./getSpecificHasCarModelRelationship"
 import {getAllBrandHasCarModelRelationships} from "./getAllBrandHasCarModelRelationships"
 import {BrandHasImageRelationship} from "./types/BrandHasImageRelationship"
@@ -78,7 +79,7 @@ export class Brand {
             throw new RelationshipAlreadyExistsError(BrandRelationship.hasCarModel, brandId, carModelId)
         }
 
-        await deleteForeignHasCarModelRelationship(carModelId)
+        await deleteDeprecatedRelationship(carModelId, DbRelationship.BrandHasCarModel)
 
         const createdRelationship = await createHasCarModelRelationship(brandId, carModelId)
         if (!createdRelationship) {
