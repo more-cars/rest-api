@@ -200,12 +200,12 @@ export class Company {
             throw new NodeNotFoundError(companyId)
         }
 
-        const relation = await getHasPrimeImageRelationship(companyId)
-        if (!relation) {
-            throw new RelationshipNotFoundError('has prime image', companyId, null)
+        const relationship = await getHasPrimeImageRelationship(companyId)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(CompanyRelationship.hasPrimeImage, companyId, null)
         }
 
-        return relation
+        return relationship
     }
 
     static async deleteHasPrimeImageRelationship(companyId: number, imageId: number): Promise<void> {

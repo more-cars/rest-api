@@ -88,7 +88,7 @@ export class Image {
         return createdRelationship
     }
 
-    static async getSpecificBelongsToNodeRelationship(imageId: number, partnerId: number): Promise<false | ImageBelongsToNodeRelationship> {
+    static async getSpecificBelongsToNodeRelationship(imageId: number, partnerId: number): Promise<ImageBelongsToNodeRelationship> {
         const image = await getNodeById(imageId)
         if (!image) {
             throw new NodeNotFoundError(imageId)

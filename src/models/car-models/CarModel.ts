@@ -182,12 +182,12 @@ export class CarModel {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relation = await getHasPrimeImageRelationship(carModelId)
-        if (!relation) {
-            throw new RelationshipNotFoundError('has prime image', carModelId, null)
+        const relationship = await getHasPrimeImageRelationship(carModelId)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(CarModelRelationship.hasPrimeImage, carModelId, null)
         }
 
-        return relation
+        return relationship
     }
 
     static async getSpecificHasPrimeImageRelationship(carModelId: number, imageId: number): Promise<CarModelHasPrimeImageRelationship> {

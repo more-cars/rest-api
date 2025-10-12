@@ -1,7 +1,7 @@
 ---
 inject: true
-to: src/models/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>.ts
-after: from "./create<%= h.changeCase.pascal(relationshipName) %>Relationship"
-skip_if: "../types/RelationshipNotFoundError"
+to: src/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>.ts
+before: \nexport class
+skip_if: import {RelationshipNotFoundError} from
 ---
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
