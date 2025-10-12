@@ -11,7 +11,7 @@ export async function getAllBelongsToNodeRelations(req: express.Request, res: ex
     const imageId = parseInt(req.params.imageId)
 
     try {
-        const relationships = await Image.getBelongsToNodeRelationships(imageId)
+        const relationships = await Image.getAllBelongsToNodeRelationships(imageId)
         const marshalledData = marshalRelationships(relationships as BaseRelationship[], null) // TODO provide correct partnernodetype
 
         return sendResponse200(marshalledData, res)

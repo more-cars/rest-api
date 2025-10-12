@@ -12,4 +12,4 @@ skip_if: static async getAll<%= h.changeCase.pascal(relationshipName) %>Relation
             throw new NodeNotFoundError(<%= h.changeCase.camel(startNodeType) %>Id)
         }
 
-        return await getAll<%= h.changeCase.pascal(relationshipName) %>Relationships(<%= h.changeCase.camel(startNodeType) %>Id)
+        return getAll<%= h.changeCase.pascal(relationshipName) %>Relationships(<%= h.changeCase.camel(startNodeType) %>Id)

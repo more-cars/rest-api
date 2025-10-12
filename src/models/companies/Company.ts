@@ -96,7 +96,7 @@ export class Company {
             throw new NodeNotFoundError(companyId)
         }
 
-        return await getAllHasBrandRelationships(companyId)
+        return getAllHasBrandRelationships(companyId)
     }
 
     static async deleteHasBrandRelationship(companyId: number, brandId: number): Promise<void> {
@@ -148,7 +148,7 @@ export class Company {
             throw new NodeNotFoundError(companyId)
         }
 
-        return await getAllHasImageRelationships(companyId)
+        return getAllHasImageRelationships(companyId)
     }
 
     static async deleteHasImageRelationship(companyId: number, imageId: number): Promise<void> {

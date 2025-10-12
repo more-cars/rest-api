@@ -104,12 +104,11 @@ export class Brand {
 
     static async getAllHasCarModelRelationships(brandId: number): Promise<Array<BrandHasCarModelRelationship>> {
         const brand = await this.findById(brandId)
-
         if (!brand) {
-            throw new Error(`A brand with ID #${brandId} not found.`)
+            throw new NodeNotFoundError(brandId)
         }
 
-        return await getAllBrandHasCarModelRelationships(brand)
+        return getAllBrandHasCarModelRelationships(brandId)
     }
 
     static async createHasImageRelationship(brandId: number, imageId: number): Promise<BrandHasImageRelationship> {
@@ -159,9 +158,9 @@ export class Brand {
         const brand = await this.findById(brandId)
 
         if (!brand) {
-            throw new Error(`A brand with ID #${brandId} not found.`)
+            throw new NodeNotFoundError(brandId)
         }
 
-        return await getAllBrandHasImageRelationships(brand)
+        return getAllBrandHasImageRelationships(brandId)
     }
 }

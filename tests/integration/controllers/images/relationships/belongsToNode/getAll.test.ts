@@ -4,7 +4,7 @@ import {app} from '../../../../../../src/app'
 import {Image} from "../../../../../../src/models/images/Image"
 
 test('Node does not exist', async () => {
-    Image.getBelongsToNodeRelationships = vi.fn().mockReturnValue(false)
+    Image.getAllBelongsToNodeRelationships = vi.fn().mockReturnValue(false)
 
     const response = await request(app)
         .get('/images/1234/belongs-to-node')
@@ -13,7 +13,7 @@ test('Node does not exist', async () => {
         .toBe(404)
 })
 test('Semantic error', async () => {
-    vi.spyOn(Image, 'getBelongsToNodeRelationships')
+    vi.spyOn(Image, 'getAllBelongsToNodeRelationships')
         .mockImplementation(async () => {
             throw new Error('semantic error')
         })
@@ -25,7 +25,7 @@ test('Semantic error', async () => {
         .toBe(422)
 })
 test('Node exists and has relationship partners', async () => {
-    Image.getBelongsToNodeRelationships = vi.fn().mockReturnValue([
+    Image.getAllBelongsToNodeRelationships = vi.fn().mockReturnValue([
         {
             relationship_id: 4,
             relationship_name: 'belongs-to-node',

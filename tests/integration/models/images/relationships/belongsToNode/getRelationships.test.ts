@@ -12,7 +12,7 @@ test('Get all "Image belongs to Node" relationships for specific image', async (
     const amount = 7
     await seedRelationshipsForSpecificImage(imageNode, amount)
 
-    const fetchedRelationships = await Image.getBelongsToNodeRelationships(imageNode.id)
+    const fetchedRelationships = await Image.getAllBelongsToNodeRelationships(imageNode.id)
 
     if (!fetchedRelationships) {
         assert.fail('Could not fetch relationships')
@@ -31,14 +31,14 @@ test('Get all "Image belongs to Node" relationships for specific image', async (
 
 test('Expecting empty list when there are no such relationships', async () => {
     const imageNode = await seedImage()
-    const fetchedRelationships = await Image.getBelongsToNodeRelationships(imageNode.id)
+    const fetchedRelationships = await Image.getAllBelongsToNodeRelationships(imageNode.id)
 
     expect(fetchedRelationships)
         .toHaveLength(0)
 })
 
 test('Expecting error when there is no such image', async () => {
-    const fetchedRelationships = await Image.getBelongsToNodeRelationships(-42)
+    const fetchedRelationships = await Image.getAllBelongsToNodeRelationships(-42)
 
     expect(fetchedRelationships)
         .toBeFalsy()

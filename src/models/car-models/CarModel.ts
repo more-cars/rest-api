@@ -14,7 +14,7 @@ import {Image} from "../images/Image"
 import {CarModelHasImageRelationship} from "./types/CarModelHasImageRelationship"
 import {getCarModelHasImageRelationship} from "./getCarModelHasImageRelationship"
 import {createHasImageRelationship} from "./createHasImageRelationship"
-import {getAllCarModelHasImageRelationships} from "./getAllCarModelHasImageRelationships"
+import {getAllHasImageRelationships} from "./getAllHasImageRelationships"
 import {CarModelHasPrimeImageRelationship} from "./types/CarModelHasPrimeImageRelationship"
 import {createHasPrimeImageRelationship} from "./createHasPrimeImageRelationship"
 import {getHasPrimeImageRelationship} from "./getHasPrimeImageRelationship"
@@ -143,13 +143,12 @@ export class CarModel {
     }
 
     static async getAllHasImageRelationships(carModelId: number): Promise<Array<CarModelHasImageRelationship>> {
-        const carModel = await this.findById(carModelId)
-
+        const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
-            throw new Error(`A car model with ID #${carModelId} not found.`)
+            throw new NodeNotFoundError(carModelId)
         }
 
-        return await getAllCarModelHasImageRelationships(carModel)
+        return getAllHasImageRelationships(carModelId)
     }
 
     static async createHasPrimeImageRelationship(carModelId: number, imageId: number): Promise<CarModelHasPrimeImageRelationship> {
