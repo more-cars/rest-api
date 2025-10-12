@@ -1,10 +1,10 @@
 import {expect, test} from 'vitest'
-import FakeCarModel from "../../../../../_toolbox/fixtures/nodes/FakeCarModel"
-import {BrandHasCarModelRelationship} from "../../../../../../src/models/brands/types/BrandHasCarModelRelationship"
-import {marshalRelationship} from "../../../../../../src/controllers/relationships/marshalRelationship"
-import type {BaseRelationship} from "../../../../../../src/controllers/relationships/types/BaseRelationship"
+import FakeCarModel from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
+import {BrandHasCarModelRelationship} from "../../../../../src/models/brands/types/BrandHasCarModelRelationship"
+import {marshalRelationship} from "../../../../../src/controllers/relationships/marshalRelationship"
+import type {BaseRelationship} from "../../../../../src/controllers/relationships/types/BaseRelationship"
 
-test('marshalled output for ›has-brand‹ relationship when provided with complete and valid input data', async () => {
+test('marshalled output for ›has-car-model‹ relationship when provided with complete and valid input data', async () => {
     const partnerNode = Object.assign({}, FakeCarModel, {
         id: 2,
         created_at: "2023-10-01T00:00:00.001Z",
@@ -20,7 +20,7 @@ test('marshalled output for ›has-brand‹ relationship when provided with comp
         updated_at: "2023-10-01T00:00:00.001Z",
     }
 
-    const marshalledData = marshalRelationship(relationship as BaseRelationship, partnerNode, 'car model')
+    const marshalledData = marshalRelationship(relationship as BaseRelationship, partnerNode, "car model")
 
     expect(marshalledData)
         .toStrictEqual({
@@ -28,7 +28,7 @@ test('marshalled output for ›has-brand‹ relationship when provided with comp
                 relationship_id: 3,
                 relationship_name: "has-car-model",
                 relationship_partner: {
-                    node_type: 'car-model',
+                    node_type: "car-model",
                     data: partnerNode,
                 },
                 created_at: "2023-10-01T00:00:00.001Z",

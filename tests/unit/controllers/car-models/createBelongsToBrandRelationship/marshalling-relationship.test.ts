@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
-import FakeBrand from "../../../../../_toolbox/fixtures/nodes/FakeBrand"
+import FakeBrand from "../../../../_toolbox/fixtures/nodes/FakeBrand"
 import {
     CarModelBelongsToBrandRelationship
-} from "../../../../../../src/models/car-models/types/CarModelBelongsToBrandRelationship"
-import {marshalRelationship} from "../../../../../../src/controllers/relationships/marshalRelationship"
-import type {BaseRelationship} from "../../../../../../src/controllers/relationships/types/BaseRelationship"
+} from "../../../../../src/models/car-models/types/CarModelBelongsToBrandRelationship"
+import {marshalRelationship} from "../../../../../src/controllers/relationships/marshalRelationship"
+import type {BaseRelationship} from "../../../../../src/controllers/relationships/types/BaseRelationship"
 
-test('marshalled output for ›has-brand‹ relationship when provided with complete and valid input data', async () => {
+test('marshalled output for ›belongs-to-brand‹ relationship when provided with complete and valid input data', async () => {
     const partnerNode = Object.assign({}, FakeBrand, {
         id: 2,
         created_at: "2023-10-01T00:00:00.001Z",
@@ -22,7 +22,7 @@ test('marshalled output for ›has-brand‹ relationship when provided with comp
         updated_at: "2023-10-01T00:00:00.001Z",
     }
 
-    const marshalledData = marshalRelationship(relationship as BaseRelationship, partnerNode, 'brand')
+    const marshalledData = marshalRelationship(relationship as BaseRelationship, partnerNode, "brand")
 
     expect(marshalledData)
         .toStrictEqual({
@@ -30,7 +30,7 @@ test('marshalled output for ›has-brand‹ relationship when provided with comp
                 relationship_id: 3,
                 relationship_name: "belongs-to-brand",
                 relationship_partner: {
-                    node_type: 'brand',
+                    node_type: "brand",
                     data: partnerNode,
                 },
                 created_at: "2023-10-01T00:00:00.001Z",

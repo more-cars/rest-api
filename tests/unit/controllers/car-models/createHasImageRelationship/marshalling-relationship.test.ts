@@ -1,13 +1,13 @@
 import {expect, test} from 'vitest'
-import FakeImageFull from "../../../../../_toolbox/fixtures/nodes/FakeImageFull"
+import FakeImage from "../../../../_toolbox/fixtures/nodes/FakeImage"
 import type {
     CarModelHasImageRelationship
-} from "../../../../../../src/models/car-models/types/CarModelHasImageRelationship"
-import {marshalRelationship} from "../../../../../../src/controllers/relationships/marshalRelationship"
-import type {BaseRelationship} from "../../../../../../src/controllers/relationships/types/BaseRelationship"
+} from "../../../../../src/models/car-models/types/CarModelHasImageRelationship"
+import {marshalRelationship} from "../../../../../src/controllers/relationships/marshalRelationship"
+import type {BaseRelationship} from "../../../../../src/controllers/relationships/types/BaseRelationship"
 
 test('marshalled output for ›has-image‹ relationship when provided with complete and valid input data', async () => {
-    const partnerNode = Object.assign({}, FakeImageFull, {
+    const partnerNode = Object.assign({}, FakeImage, {
         id: 2,
         created_at: "2023-10-01T00:00:00.001Z",
         updated_at: "2023-10-01T00:00:00.001Z",
@@ -22,7 +22,7 @@ test('marshalled output for ›has-image‹ relationship when provided with comp
         updated_at: "2023-10-01T00:00:00.001Z",
     }
 
-    const marshalledData = marshalRelationship(relationship as BaseRelationship, partnerNode, 'image')
+    const marshalledData = marshalRelationship(relationship as BaseRelationship, partnerNode, "image")
 
     expect(marshalledData)
         .toStrictEqual({
@@ -30,7 +30,7 @@ test('marshalled output for ›has-image‹ relationship when provided with comp
                 relationship_id: 3,
                 relationship_name: "has-image",
                 relationship_partner: {
-                    node_type: 'image',
+                    node_type: "image",
                     data: partnerNode,
                 },
                 created_at: "2023-10-01T00:00:00.001Z",
