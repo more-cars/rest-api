@@ -1,5 +1,5 @@
 ---
-to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create/marshalling/marshallingCompleteAndValidInput.test.ts
+to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create/marshalling/marshalling-node.test.ts
 ---
 <%
     let props = []
@@ -17,7 +17,7 @@ import {expect, test} from 'vitest'
 import {<%= h.changeCase.pascal(nodeType) %>Node} from "../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node"
 import {marshalNode} from "../../../../../../src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshalling/marshalNode"
 
-test('marshalling a complete and valid request', async () => {
+test("marshalling a <%= h.changeCase.upper(nodeType) %> node", async () => {
     const node: <%= h.changeCase.pascal(nodeType) %>Node = {
         id: 1,
         created_at: "2025-05-14T11:05:07.793Z",
@@ -25,15 +25,15 @@ test('marshalling a complete and valid request', async () => {
 <%- props.map(line => '        ' + line).join(',\n') %>,
     }
 
-    const mappedNode = marshalNode(node)
+    const marshalledNode = marshalNode(node)
 
-    expect(mappedNode)
+    expect(marshalledNode)
         .toStrictEqual({
             data: {
                 id: 1,
+<%- props.map(line => '            ' + line).join(',\n') %>,
                 created_at: "2025-05-14T11:05:07.793Z",
                 updated_at: "2025-05-14T11:05:07.793Z",
-<%- props.map(line => '            ' + line).join(',\n') %>,
             }
         })
 })

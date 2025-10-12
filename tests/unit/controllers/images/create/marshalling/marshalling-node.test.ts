@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {ImageNode} from "../../../../../../src/models/images/types/ImageNode"
 import {marshalNode} from "../../../../../../src/controllers/images/marshalling/marshalNode"
 
-test('marshalling a complete and valid request', async () => {
+test("marshalling an IMAGE node", async () => {
     const node: ImageNode = {
         id: 975725,
         created_at: "2025-05-14T11:05:07.793Z",
@@ -24,14 +24,12 @@ test('marshalling a complete and valid request', async () => {
         image_url_xs: "https://live.staticflickr.com/65535/54570839725_652073f374_t.jpg",
     }
 
-    const mappedNode = marshalNode(node)
+    const marshalledNode = marshalNode(node)
 
-    expect(mappedNode)
+    expect(marshalledNode)
         .toStrictEqual({
             data: {
                 id: 975725,
-                created_at: "2025-05-14T11:05:07.793Z",
-                updated_at: "2025-05-14T11:05:07.793Z",
                 external_id: "54570839725",
                 image_provider: "flickr",
                 name: "1989 Porsche 911 Turbo",
@@ -47,6 +45,8 @@ test('marshalling a complete and valid request', async () => {
                 image_url_m: "https://live.staticflickr.com/65535/54570839725_652073f374_z.jpg",
                 image_url_s: "https://live.staticflickr.com/65535/54570839725_652073f374_n.jpg",
                 image_url_xs: "https://live.staticflickr.com/65535/54570839725_652073f374_t.jpg",
+                created_at: "2025-05-14T11:05:07.793Z",
+                updated_at: "2025-05-14T11:05:07.793Z",
             }
         })
 })
