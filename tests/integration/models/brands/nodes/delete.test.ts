@@ -1,18 +1,19 @@
-import {expect, test} from 'vitest'
+import {describe, expect, test} from 'vitest'
 import {Brand} from "../../../../../src/models/brands/Brand"
+import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
 import {seedBrand} from "../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 
-test('Deleting an brand that does not exist should return "false"', async () => {
-    const success = await Brand.delete(-42)
+describe('Deleting a BRAND', () => {
+    test('that does not exist', async () => {
+        await expect(Brand.delete(-42))
+            .rejects
+            .toThrow(NodeNotFoundError)
+    })
 
-    expect(success)
-        .toEqual(false)
-})
-
-test('When the brand exists it should be deleted', async () => {
-    const node = await seedBrand()
-    const success = await Brand.delete(node.id)
-
-    expect(success)
-        .toEqual(true)
+    test('that exists', async () => {
+        const node = await seedBrand()
+        await expect(Brand.delete(node.id))
+            .resolves
+            .not.toThrow(NodeNotFoundError)
+    })
 })

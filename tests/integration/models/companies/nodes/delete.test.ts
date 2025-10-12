@@ -1,18 +1,19 @@
-import {expect, test} from 'vitest'
+import {describe, expect, test} from 'vitest'
 import {Company} from "../../../../../src/models/companies/Company"
 import {seedCompany} from "../../../../_toolbox/dbSeeding/companies/nodes/seedCompany"
+import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
 
-test('Deleting an company that does not exist should return "false"', async () => {
-    const success = await Company.delete(-42)
+describe('Deleting a COMPANY', () => {
+    test('that does not exist', async () => {
+        await expect(Company.delete(-42))
+            .rejects
+            .toThrow(NodeNotFoundError)
+    })
 
-    expect(success)
-        .toEqual(false)
-})
-
-test('When the company exists it should be deleted', async () => {
-    const node = await seedCompany()
-    const success = await Company.delete(node.id)
-
-    expect(success)
-        .toEqual(true)
+    test('that exists', async () => {
+        const node = await seedCompany()
+        await expect(Company.delete(node.id))
+            .resolves
+            .not.toThrow(NodeNotFoundError)
+    })
 })
