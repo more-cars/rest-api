@@ -2,23 +2,17 @@ import {expect, test} from 'vitest'
 import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
 import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
+import {RelationshipAlreadyExistsError} from "../../../../../../../src/models/types/RelationshipAlreadyExistsError"
 
-test('The relationship ID should not change when creating the same relationship again', async () => {
+test('Trying to create the same ›has-prime-image‹ relationship again', async () => {
     const carModel = await seedCarModel()
     const image = await seedImage()
 
-    const relationshipBefore =
-        await CarModel.createHasPrimeImageRelationship(carModel.id, image.id)
-    expect(relationshipBefore)
-        .not.toBe(false)
+    await expect(CarModel.createHasPrimeImageRelationship(carModel.id, image.id))
+        .resolves
+        .not.toThrow(RelationshipAlreadyExistsError)
 
-    const relationshipAfter =
-        await CarModel.createHasPrimeImageRelationship(carModel.id, image.id)
-    expect(relationshipAfter)
-        .not.toBe(false)
-
-    if (relationshipAfter && relationshipBefore) {
-        expect(relationshipAfter.relationship_id)
-            .toEqual(relationshipBefore.relationship_id)
-    }
+    await expect(CarModel.createHasPrimeImageRelationship(carModel.id, image.id))
+        .rejects
+        .toThrow(RelationshipAlreadyExistsError)
 })

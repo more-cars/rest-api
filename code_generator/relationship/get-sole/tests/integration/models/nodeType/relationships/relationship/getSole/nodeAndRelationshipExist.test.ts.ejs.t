@@ -8,7 +8,7 @@ import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
 import {<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Schema} from "../../../../../../_toolbox/schemas/<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Schema"
 
-test('<%= h.changeCase.title(startNodeType) %> and relationship exist', async () => {
+test('<%= h.changeCase.upper(startNodeType) %> exists and has a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship', async () => {
     const expectedRelationship = await seedRelationship('<%= h.changeCase.lower(startNodeType) %>', '<%= h.changeCase.lower(endNodeType) %>', DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
     const actualRelationship = await <%= h.changeCase.pascal(startNodeType) %>.get<%= h.changeCase.pascal(relationshipName) %>Relationship(expectedRelationship.start_node_id)
 

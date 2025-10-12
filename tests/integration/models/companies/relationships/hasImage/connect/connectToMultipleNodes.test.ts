@@ -2,10 +2,12 @@ import {expect, test} from 'vitest'
 import {seedImages} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImages"
 import {seedCompany} from "../../../../../../_toolbox/dbSeeding/companies/nodes/seedCompany"
 import {Company} from "../../../../../../../src/models/companies/Company"
-import {getRelationshipsForSpecificNode} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+import {
+    getRelationshipsForSpecificNode
+} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
-test('A Company can have multiple ›has-image‹ relationships', async () => {
+test('A COMPANY can have multiple ›has-image‹ relationships', async () => {
     const company = await seedCompany()
     const imagesAmount = 3
     const images = await seedImages(imagesAmount)

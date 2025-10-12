@@ -6,7 +6,7 @@ import {seed<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../_
 import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../../src/models/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
 import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
 
-test('<%= h.changeCase.title(startNodeType) %> exists, but has no relationship', async () => {
+test('<%= h.changeCase.upper(startNodeType) %> exists, but has no ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship', async () => {
     const <%= h.changeCase.camel(startNodeType) %> = await seed<%= h.changeCase.pascal(startNodeType) %>()
 
     await expect(<%= h.changeCase.pascal(startNodeType) %>.get<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>.id))

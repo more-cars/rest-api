@@ -13,8 +13,7 @@ test('A completely valid request, but the database call fails (e.g. one of the n
     const carModel = await seedCarModel()
     const image = await seedImage()
 
-    const relationship = await CarModel.createHasPrimeImageRelationship(carModel.id, image.id)
-
-    expect(relationship)
-        .toBeFalsy()
+    await expect(CarModel.createHasPrimeImageRelationship(carModel.id, image.id))
+        .rejects
+        .toThrow(Error)
 })

@@ -3,7 +3,7 @@ import {seedCompany} from "../../../../../../_toolbox/dbSeeding/companies/nodes/
 import {Company} from "../../../../../../../src/models/companies/Company"
 import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
 
-test('Company exists, but has no relationship', async () => {
+test('COMPANY exists, but has no ›has-prime-image‹ relationship', async () => {
     const company = await seedCompany()
 
     await expect(Company.getHasPrimeImageRelationship(company.id))

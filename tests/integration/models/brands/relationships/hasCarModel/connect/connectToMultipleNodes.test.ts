@@ -7,7 +7,7 @@ import {
 } from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
-test('A Company can have multiple ›has-car-model‹ relationships', async () => {
+test('A BRAND can have multiple ›has-car-model‹ relationships', async () => {
     const brand = await seedBrand()
     const carModelAmount = 3
     const carModels = await seedCarModels(carModelAmount)

@@ -5,7 +5,7 @@ import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../../../../_toolbox/schemas/RelationshipSchema"
 
-test('Company and relationship exist', async () => {
+test('COMPANY exists and has a ›has-prime-image‹ relationship', async () => {
     const expectedRelationship = await seedRelationship('company', 'image', DbRelationship.CompanyHasPrimeImage)
     const actualRelationship = await Company.getHasPrimeImageRelationship(expectedRelationship.start_node_id)
 

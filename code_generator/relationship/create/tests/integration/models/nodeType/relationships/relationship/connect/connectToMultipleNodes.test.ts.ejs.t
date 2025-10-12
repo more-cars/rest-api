@@ -9,9 +9,9 @@ import {getRelationshipsForSpecificNode} from "../../../../../../../src/db/relat
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 <% if (cardinality === '1:1' || cardinality === 'n:1') { -%>
-test('A <%= h.changeCase.title(startNodeType) %> can NOT have multiple ›<%= h.changeCase.kebab(relationshipName) %>‹ relationships', async () => {
+test('A <%= h.changeCase.upper(startNodeType) %> cannot  have multiple ›<%= h.changeCase.kebab(relationshipName) %>‹ relationships', async () => {
 <% } else if (cardinality === '1:n' || cardinality === 'm:n') { -%>
-test('A <%= h.changeCase.title(startNodeType) %> can have multiple ›<%= h.changeCase.kebab(relationshipName) %>‹ relationships', async () => {
+test('A <%= h.changeCase.upper(startNodeType) %> can have multiple ›<%= h.changeCase.kebab(relationshipName) %>‹ relationships', async () => {
 <% } -%>
     const <%= h.changeCase.camel(startNodeType) %> = await seed<%= h.changeCase.pascal(startNodeType) %>()
     const <%= h.changeCase.camel(h.inflection.pluralize(endNodeType)) %>Amount = 3
