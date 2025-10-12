@@ -112,7 +112,7 @@ export class Company {
 
         const relation = await getSpecificHasBrandRelationship(companyId, brandId)
         if (!relation) {
-            throw new RelationshipNotFoundError('has brand', companyId, brandId)
+            throw new RelationshipNotFoundError('has-brand', companyId, brandId)
         }
 
         await deleteHasBrandRelationship(companyId, brandId)
@@ -164,7 +164,7 @@ export class Company {
 
         const relation = await getSpecificHasImageRelationship(companyId, imageId)
         if (!relation) {
-            throw new RelationshipNotFoundError('has image', companyId, imageId)
+            throw new RelationshipNotFoundError('has-image', companyId, imageId)
         }
 
         await deleteHasImageRelationship(companyId, imageId)
@@ -221,7 +221,7 @@ export class Company {
 
         const relation = await getSpecificHasPrimeImageRelationship(companyId, imageId)
         if (!relation) {
-            throw new RelationshipNotFoundError('has prime image', companyId, imageId)
+            throw new RelationshipNotFoundError('has-prime-image', companyId, imageId)
         }
 
         await deleteHasPrimeImageRelationship(companyId, imageId)

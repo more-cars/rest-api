@@ -19,7 +19,7 @@ skip_if: static async delete<%= h.changeCase.pascal(relationshipName) %>Relation
 
         const relation = await getSpecific<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(endNodeType) %>Id)
         if (!relation) {
-            throw new RelationshipNotFoundError('<%= h.changeCase.lower(relationshipName) %>', <%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(endNodeType) %>Id)
+            throw new RelationshipNotFoundError('<%= h.changeCase.kebab(relationshipName) %>', <%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(endNodeType) %>Id)
         }
 
         await delete<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(endNodeType) %>Id)
