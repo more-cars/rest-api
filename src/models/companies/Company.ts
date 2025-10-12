@@ -75,8 +75,8 @@ export class Company {
             throw new NodeNotFoundError(brandId)
         }
 
-        const existingRelation = await getSpecificHasBrandRelationship(companyId, brandId)
-        if (existingRelation) {
+        const existingRelationship = await getSpecificHasBrandRelationship(companyId, brandId)
+        if (existingRelationship) {
             throw new RelationshipAlreadyExistsError(CompanyRelationship.hasBrand, companyId, brandId)
         }
 
@@ -129,8 +129,8 @@ export class Company {
             throw new NodeNotFoundError(imageId)
         }
 
-        const existingRelation = await getSpecificHasImageRelationship(companyId, imageId)
-        if (existingRelation) {
+        const existingRelationship = await getSpecificHasImageRelationship(companyId, imageId)
+        if (existingRelationship) {
             throw new RelationshipAlreadyExistsError(CompanyRelationship.hasImage, companyId, imageId)
         }
 
@@ -181,8 +181,8 @@ export class Company {
             throw new NodeNotFoundError(imageId)
         }
 
-        const existingRelation = await getSpecificHasPrimeImageRelationship(companyId, imageId)
-        if (existingRelation) {
+        const existingRelationship = await getSpecificHasPrimeImageRelationship(companyId, imageId)
+        if (existingRelationship) {
             throw new RelationshipAlreadyExistsError(CompanyRelationship.hasPrimeImage, companyId, imageId)
         }
 

@@ -68,8 +68,8 @@ export class Brand {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const existingRelation = await getSpecificHasCarModelRelationship(brandId, carModelId)
-        if (existingRelation) {
+        const existingRelationship = await getSpecificHasCarModelRelationship(brandId, carModelId)
+        if (existingRelationship) {
             throw new RelationshipAlreadyExistsError(BrandRelationship.hasCarModel, brandId, carModelId)
         }
 
@@ -112,7 +112,7 @@ export class Brand {
         return await getAllBrandHasCarModelRelationships(brand)
     }
 
-    static async createHasImageRelationship(brandId: number, imageId: number): Promise<false | BrandHasImageRelationship> {
+    static async createHasImageRelationship(brandId: number, imageId: number): Promise<BrandHasImageRelationship> {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -123,8 +123,8 @@ export class Brand {
             throw new NodeNotFoundError(imageId)
         }
 
-        const existingRelation = await getSpecificHasImageRelationship(brandId, imageId)
-        if (existingRelation) {
+        const existingRelationship = await getSpecificHasImageRelationship(brandId, imageId)
+        if (existingRelationship) {
             throw new RelationshipAlreadyExistsError(BrandRelationship.hasImage, brandId, imageId)
         }
 

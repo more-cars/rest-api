@@ -56,7 +56,7 @@ export class Image {
         return await deleteNode(id)
     }
 
-    static async createBelongsToNodeRelationship(imageId: number, partnerId: number) {
+    static async createBelongsToNodeRelationship(imageId: number, partnerId: number): Promise<ImageBelongsToNodeRelationship> {
         if (imageId === partnerId) {
             throw new SemanticError(`Image #${imageId} cannot be connected to itself`)
         }
@@ -75,8 +75,8 @@ export class Image {
             throw new SemanticError(`Image #${imageId} cannot be connected to another image`)
         }
 
-        const existingRelation = await getSpecificBelongsToNodeRelationship(imageId, partnerId)
-        if (existingRelation) {
+        const existingRelationship = await getSpecificBelongsToNodeRelationship(imageId, partnerId)
+        if (existingRelationship) {
             throw new RelationshipAlreadyExistsError(ImageRelationship.belongsToNode, imageId, partnerId)
         }
 
