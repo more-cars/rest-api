@@ -2,9 +2,13 @@ import {expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from "../../../../../src/app.ts"
 import {CarModel} from "../../../../../src/models/car-models/CarModel"
+import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
 
 test('Expecting error when node does not exist', async () => {
-    CarModel.delete = vi.fn().mockReturnValue(false)
+    vi.spyOn(CarModel, 'delete')
+        .mockImplementation(async () => {
+            throw new NodeNotFoundError(-42)
+        })
 
     const response = await request(app)
         .delete('/car-models/-42')
