@@ -20,6 +20,8 @@ import {SemanticError} from "../types/SemanticError"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
 import {ImageRelationship} from "./types/ImageRelationship"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
+import {deleteBelongsToNodeRelationship} from "./deleteBelongsToNodeRelationship"
+import {Node} from "../Node"
 
 export class Image {
     static async create(data: CreateImageInput): Promise<ImageNode> {
@@ -119,6 +121,25 @@ export class Image {
         }
 
         return getAllBelongsToNodeRelationships(imageId)
+    }
+
+    static async deleteBelongsToNodeRelationship(imageId: number, partnerNodeId: number): Promise<void> {
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const partnerNode = await Node.findById(partnerNodeId)
+        if (!partnerNode) {
+            throw new NodeNotFoundError(partnerNodeId)
+        }
+
+        const relationship = await getSpecificBelongsToNodeRelationship(imageId, partnerNodeId)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(ImageRelationship.belongsToNode, imageId, partnerNodeId)
+        }
+
+        await deleteBelongsToNodeRelationship(imageId, partnerNodeId)
     }
 
     static async getBelongsToNodeTypeRelationships(imageId: number): Promise<false | ImageBelongsToNodeTypeRelationships> {

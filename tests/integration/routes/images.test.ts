@@ -62,6 +62,14 @@ describe('Images', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete ›belongs-to-node‹ relationship', async () => {
+        await request(app)
+            .delete('/images/123/belongs-to-node/456')
+
+        expect(ImageController.deleteBelongsToNodeRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Get "belongs to Node type" Relationships', async () => {
         await request(app)
             .get('/images/123/belongs-to-node-type')

@@ -2170,6 +2170,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Images"
+        ],
+        "summary": "Deletes the ›belongs-to-node‹ relationship between the `Image` and the partner node",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "partner-node-id",
+            "description": "ID of the partner node",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›belongs-to-node‹ relationship between `Image` and partner node was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›belongs-to-node‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/images/{image-id}/belongs-to-node-type": {
