@@ -31,10 +31,10 @@ skip_if: Deletes the ›<%= h.changeCase.kebab(relationshipName) %>‹ relations
         ],
         "responses": {
           "204": {
-            "description": "Deleting ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship between `<%= h.changeCase.title(startNodeType) %>` and `<%= h.changeCase.title(endNodeType) %>` was successful.",
+            "description": "Deleting ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship between `<%= h.changeCase.title(startNodeType) %>` and `<%= h.changeCase.title(endNodeType) %>` was successful."
           },
           "404": {
-            "description": "Request failed. Either the nodes don't exist or there exists no `<%= h.changeCase.lower(relationshipName) %>` relationship between them.",
+            "description": "Request failed. Either the nodes don't exist or there exists no ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship between them.",
             "content": {
               "text/plain": {
                 "schema": {

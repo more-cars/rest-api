@@ -6,7 +6,7 @@ skip_if: Delete ›<%= h.changeCase.kebab(relationshipName) %>‹ Relationship
 ---
     })
 
-    test('Delete ›<%= h.changeCase.kebab(relationshipName) %>‹ Relationship', async () => {
+    test('Delete ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship', async () => {
         await request(app)
             .delete('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/123/<%= h.changeCase.kebab(relationshipName) %>/456')
 
