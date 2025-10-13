@@ -24,6 +24,7 @@ import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExists
 import {BrandRelationship} from "./types/BrandRelationship"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {deleteHasCarModelRelationship} from "./deleteHasCarModelRelationship"
+import {deleteHasImageRelationship} from "./deleteHasImageRelationship"
 
 export class Brand {
     static async create(data: CreateBrandInput): Promise<BrandNode> {
@@ -188,5 +189,24 @@ export class Brand {
         }
 
         return getAllBrandHasImageRelationships(brandId)
+    }
+
+    static async deleteHasImageRelationship(brandId: number, imageId: number): Promise<void> {
+        const brand = await Brand.findById(brandId)
+        if (!brand) {
+            throw new NodeNotFoundError(brandId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const relationship = await getSpecificHasImageRelationship(brandId, imageId)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(BrandRelationship.hasImage, brandId, imageId)
+        }
+
+        await deleteHasImageRelationship(brandId, imageId)
     }
 }

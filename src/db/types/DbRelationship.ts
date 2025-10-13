@@ -6,10 +6,11 @@
  *    In the database there exist no aliases, so only one of them can be the "official" relationship.
  */
 export enum DbRelationship {
-    BrandHasCarModel = 'HAS_CAR_MODEL',
     NodeHasImage = 'HAS_IMAGE',
-    CarModelHasPrimeImage = 'HAS_PRIME_IMAGE',
     CompanyHasBrand = 'HAS_BRAND',
     CompanyHasImage = 'HAS_IMAGE',
     CompanyHasPrimeImage = 'HAS_PRIME_IMAGE',
+    BrandHasCarModel = 'HAS_CAR_MODEL',
+    BrandHasImage = 'HAS_IMAGE',
+    CarModelHasPrimeImage = 'HAS_PRIME_IMAGE',
 }

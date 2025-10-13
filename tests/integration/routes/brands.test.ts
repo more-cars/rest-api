@@ -93,4 +93,12 @@ describe('Brands', () => {
         expect(BrandController.getAllHasImageRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-image‹ relationship', async () => {
+        await request(app)
+            .delete('/brands/123/has-image/456')
+
+        expect(BrandController.deleteHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
