@@ -32,8 +32,8 @@ to: ticket-generator/_temp/ticketTree.json
                                 gherkin = []
                                 gherkin.push('Given there exists a \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\"')
                                 gherkin.push('And there exists a \\"' + h.changeCase.upper(endNodeType) + '\\" \\"' + endNodeExampleName + '\\"')
-                                gherkin.push('And there exists a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship \\"R\\" between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
-                                gherkin.push('When the user deletes the \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
+                                gherkin.push('And there exists a \\"' + h.changeCase.lower(relationshipName) + '\\" relationship \\"R\\" between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
+                                gherkin.push('When the user deletes the \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
                                 gherkin.push('Then the request should be confirmed with status code 204')
                                 gherkin.push('And the relationship \\"R\\" should not exist anymore')
                             %>
@@ -52,7 +52,7 @@ to: ticket-generator/_temp/ticketTree.json
                                 gherkin = []
                                 gherkin.push('Given \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\" does NOT exist')
                                 gherkin.push('And there exists a \\"' + h.changeCase.upper(endNodeType) + '\\" \\"' + endNodeExampleName + '\\"')
-                                gherkin.push('When the user deletes the \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
+                                gherkin.push('When the user deletes the \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
                                 gherkin.push('Then the request should be rejected with status code 404')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
@@ -63,7 +63,7 @@ to: ticket-generator/_temp/ticketTree.json
                                 gherkin = []
                                 gherkin.push('Given there exists a \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\"')
                                 gherkin.push('And \\"' + h.changeCase.upper(endNodeType) + '\\" \\"' + endNodeExampleName + '\\" does NOT exist')
-                                gherkin.push('When the user deletes the \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
+                                gherkin.push('When the user deletes the \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
                                 gherkin.push('Then the request should be rejected with status code 404')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
@@ -74,7 +74,7 @@ to: ticket-generator/_temp/ticketTree.json
                                 gherkin = []
                                 gherkin.push('Given \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\" does NOT exist')
                                 gherkin.push('And \\"' + h.changeCase.upper(endNodeType) + '\\" \\"' + endNodeExampleName + '\\" does NOT exist')
-                                gherkin.push('When the user deletes the \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
+                                gherkin.push('When the user deletes the \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
                                 gherkin.push('Then the request should be rejected with status code 404')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
@@ -92,8 +92,8 @@ to: ticket-generator/_temp/ticketTree.json
                                 gherkin = []
                                 gherkin.push('Given there exists a \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\"')
                                 gherkin.push('And there exists a \\"' + h.changeCase.upper(endNodeType) + '\\" \\"' + endNodeExampleName + '\\"')
-                                gherkin.push('And there exists NO \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
-                                gherkin.push('When the user deletes the \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
+                                gherkin.push('And there exists NO \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
+                                gherkin.push('When the user deletes the \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
                                 gherkin.push('Then the request should be rejected with status code 404')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
