@@ -7,7 +7,7 @@ export async function createBelongsToNodeRelationship(imageId: number, partnerNo
     const dbRelationship = await createRelationship(
         partnerNodeId,
         imageId,
-        DbRelationship.NodeHasImage,
+        DbRelationship.ImageBelongsToNode,
     )
 
     if (!dbRelationship) {

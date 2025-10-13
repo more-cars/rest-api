@@ -6,7 +6,7 @@ import {ImageRelationship} from "./types/ImageRelationship"
 export async function getAllBelongsToNodeRelationships(imageId: number) {
     const dbRelationships = await getRelationshipsForSpecificNode(
         imageId,
-        DbRelationship.NodeHasImage,
+        DbRelationship.ImageBelongsToNode,
     )
 
     const mappedRelationships: ImageBelongsToNodeRelationship[] = []

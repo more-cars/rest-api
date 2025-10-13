@@ -7,7 +7,7 @@ export async function createBelongsToBrandRelationship(carModelId: number, brand
     const dbRelationship = await createRelationship(
         brandId,
         carModelId,
-        DbRelationship.BrandHasCarModel,
+        DbRelationship.CarModelBelongsToBrand,
     )
 
     if (!dbRelationship) {

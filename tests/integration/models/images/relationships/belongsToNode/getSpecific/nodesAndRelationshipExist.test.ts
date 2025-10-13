@@ -6,7 +6,7 @@ import {validateJson} from "../../../../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../../../../_toolbox/schemas/RelationshipSchema"
 
 test('Both nodes and a ›belongs-to-node‹ relationship exist', async () => {
-    const expectedRelationship = await seedRelationship('image', 'company', DbRelationship.NodeHasImage)
+    const expectedRelationship = await seedRelationship('image', 'company', DbRelationship.ImageBelongsToCompany)
     const actualRelationship = await Image.getSpecificBelongsToNodeRelationship(expectedRelationship.start_node_id, expectedRelationship.end_node_id)
 
     validateJson(actualRelationship, RelationshipSchema)
