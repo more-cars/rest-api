@@ -30,6 +30,7 @@ import {deleteDeprecatedRelationship} from "../relationships/deleteDeprecatedRel
 import {DbRelationship} from "../../db/types/DbRelationship"
 import {deleteHasPrimeImageRelationship} from "./deleteHasPrimeImageRelationship"
 import {deleteHasImageRelationship} from "./deleteHasImageRelationship"
+import {deleteBelongsToBrandRelationship} from "./deleteBelongsToBrandRelationship"
 
 export class CarModel {
     static async create(data: CreateCarModelInput): Promise<CarModelNode> {
@@ -108,6 +109,25 @@ export class CarModel {
         }
 
         return relationship
+    }
+
+    static async deleteBelongsToBrandRelationship(carModelId: number, brandId: number): Promise<void> {
+        const carModel = await CarModel.findById(carModelId)
+        if (!carModel) {
+            throw new NodeNotFoundError(carModelId)
+        }
+
+        const brand = await Brand.findById(brandId)
+        if (!brand) {
+            throw new NodeNotFoundError(brandId)
+        }
+
+        const relationship = await getSpecificBelongsToBrandRelationship(carModelId, brandId)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(CarModelRelationship.belongsToBrand, carModelId, brandId)
+        }
+
+        await deleteBelongsToBrandRelationship(carModelId, brandId)
     }
 
     static async createHasImageRelationship(carModelId: number, imageId: number): Promise<CarModelHasImageRelationship> {

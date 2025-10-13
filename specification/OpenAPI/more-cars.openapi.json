@@ -1430,6 +1430,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Car Models"
+        ],
+        "summary": "Deletes the ›belongs-to-brand‹ relationship between the `Car Model` and the `Brand`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-id",
+            "description": "ID of the `Car Model`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "brand-id",
+            "description": "ID of the `Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›belongs-to-brand‹ relationship between `Car Model` and `Brand` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›belongs-to-brand‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/car-models/{car-model-id}/has-image": {
