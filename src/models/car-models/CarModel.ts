@@ -28,6 +28,7 @@ import {getSpecificHasImageRelationship} from "./getSpecificHasImageRelationship
 import {getSpecificHasPrimeImageRelationship} from "./getSpecificHasPrimeImageRelationship"
 import {deleteDeprecatedRelationship} from "../relationships/deleteDeprecatedRelationship"
 import {DbRelationship} from "../../db/types/DbRelationship"
+import {deleteHasPrimeImageRelationship} from "./deleteHasPrimeImageRelationship"
 
 export class CarModel {
     static async create(data: CreateCarModelInput): Promise<CarModelNode> {
@@ -217,5 +218,24 @@ export class CarModel {
         }
 
         return relationship
+    }
+
+    static async deleteHasPrimeImageRelationship(carModelId: number, imageId: number): Promise<void> {
+        const carModel = await CarModel.findById(carModelId)
+        if (!carModel) {
+            throw new NodeNotFoundError(carModelId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const relationship = await getSpecificHasPrimeImageRelationship(carModelId, imageId)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(CarModelRelationship.hasPrimeImage, carModelId, imageId)
+        }
+
+        await deleteHasPrimeImageRelationship(carModelId, imageId)
     }
 }
