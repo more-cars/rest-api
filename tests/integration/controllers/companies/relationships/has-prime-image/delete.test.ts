@@ -7,7 +7,7 @@ import {RelationshipNotFoundError} from "../../../../../../src/models/types/Rela
 
 describe('Deleting a ›has-prime-image‹ relationship', () => {
     test('Providing valid data', async () => {
-        Company.deleteHasImageRelationship = vi.fn().mockReturnValue(null)
+        Company.deleteHasPrimeImageRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
             .delete('/companies/123/has-prime-image/567')
@@ -17,7 +17,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('Providing invalid data (non-existent nodes)', async () => {
-        vi.spyOn(Company, 'deleteHasImageRelationship')
+        vi.spyOn(Company, 'deleteHasPrimeImageRelationship')
             .mockImplementation(async () => {
                 throw new NodeNotFoundError(123)
             })
@@ -30,7 +30,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('Providing invalid data (non-existent relationship)', async () => {
-        vi.spyOn(Company, 'deleteHasImageRelationship')
+        vi.spyOn(Company, 'deleteHasPrimeImageRelationship')
             .mockImplementation(async () => {
                 throw new RelationshipNotFoundError('has-prime-image', 123, 567)
             })
@@ -43,7 +43,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('Providing valid data, but the database call randomly fails', async () => {
-        vi.spyOn(Company, 'deleteHasImageRelationship')
+        vi.spyOn(Company, 'deleteHasPrimeImageRelationship')
             .mockImplementation(async () => {
                 throw new Error('Arbitrary error')
             })
