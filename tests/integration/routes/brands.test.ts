@@ -62,6 +62,14 @@ describe('Brands', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete ›has-car-model‹ relationship', async () => {
+        await request(app)
+            .delete('/brands/123/has-car-model/456')
+
+        expect(BrandController.deleteHasCarModelRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create "has Image" Relationship', async () => {
         await request(app)
             .post('/brands/123/has-image/456')
