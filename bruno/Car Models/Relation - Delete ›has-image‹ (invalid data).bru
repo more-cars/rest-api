@@ -1,0 +1,15 @@
+meta {
+  name: Delete ›has-image‹ relation (invalid data)
+  type: http
+}
+
+delete {
+  url: {{baseUrl}}/car-models/{{invalidCarModelId}}/has-image/{{invalidImageId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}

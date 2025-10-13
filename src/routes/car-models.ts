@@ -12,6 +12,7 @@ router.get('/car-models/:carModelId/belongs-to-brand', CarModelController.getBel
 router.post('/car-models/:carModelId/has-image/:imageId', CarModelController.createHasImageRelation)
 router.get('/car-models/:carModelId/has-image/:imageId', CarModelController.getSpecificHasImageRelation)
 router.get('/car-models/:carModelId/has-image', CarModelController.getAllHasImageRelations)
+router.delete('/car-models/:carModelId/has-image/:imageId', CarModelController.deleteHasImageRelation)
 router.post('/car-models/:carModelId/has-prime-image/:imageId', CarModelController.createHasPrimeImageRelation)
 router.get('/car-models/:carModelId/has-prime-image', CarModelController.getHasPrimeImageRelation)
 router.get('/car-models/:carModelId/has-prime-image/:imageId', CarModelController.getSpecificHasPrimeImageRelation)

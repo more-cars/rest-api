@@ -78,6 +78,14 @@ describe('Car Models', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete ›has-image‹ relationship', async () => {
+        await request(app)
+            .delete('/car-models/123/has-image/456')
+
+        expect(CarModelController.deleteHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create "has prime image" Relationship', async () => {
         await request(app)
             .post('/car-models/123/has-prime-image/456')

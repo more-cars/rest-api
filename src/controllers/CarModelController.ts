@@ -8,6 +8,7 @@ import {getBelongsToBrandRelation} from "./carModels/getBelongsToBrandRelation"
 import {createHasImageRelation} from "./carModels/createHasImageRelation"
 import {getSpecificHasImageRelation} from "./carModels/getSpecificHasImageRelation"
 import {getAllHasImageRelations} from "./carModels/getAllHasImageRelations"
+import {deleteHasImageRelation} from "./carModels/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./carModels/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./carModels/getHasPrimeImageRelation"
 import {getSpecificHasPrimeImageRelation} from "./carModels/getSpecificHasPrimeImageRelation"
@@ -48,6 +49,10 @@ export class CarModelController {
 
     static async getAllHasImageRelations(req: express.Request, res: express.Response) {
         await getAllHasImageRelations(req, res)
+    }
+
+    static async deleteHasImageRelation(req: express.Request, res: express.Response) {
+        await deleteHasImageRelation(req, res)
     }
 
     static async createHasPrimeImageRelation(req: express.Request, res: express.Response) {
