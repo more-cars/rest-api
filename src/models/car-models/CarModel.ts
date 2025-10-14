@@ -34,6 +34,7 @@ import {deleteBelongsToBrandRelationship} from "./deleteBelongsToBrandRelationsh
 import {createHasSuccessorRelationship} from "./createHasSuccessorRelationship"
 import {getSpecificHasSuccessorRelationship} from "./getSpecificHasSuccessorRelationship"
 import type {CarModelHasSuccessorRelationship} from "./types/CarModelHasSuccessorRelationship"
+import {SemanticError} from "../types/SemanticError"
 
 export class CarModel {
     static async create(data: CreateCarModelInput): Promise<CarModelNode> {
@@ -134,6 +135,10 @@ export class CarModel {
     }
 
     static async createHasSuccessorRelationship(carModelId: number, partnerId: number): Promise<CarModelHasSuccessorRelationship> {
+        if (carModelId === partnerId) {
+            throw new SemanticError(`Car Model #${carModelId} cannot be connected to itself`)
+        }
+
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)

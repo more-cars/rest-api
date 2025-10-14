@@ -4,6 +4,7 @@ import {app} from '../../../../../../src/app'
 import {CarModel} from "../../../../../../src/models/car-models/CarModel"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {SemanticError} from "../../../../../../src/models/types/SemanticError"
 
 describe('Creating a ›has-successor‹ relationship', () => {
     test('Providing valid data', async () => {
@@ -56,5 +57,18 @@ describe('Creating a ›has-successor‹ relationship', () => {
 
         expect(response.statusCode)
             .toBe(304)
+    })
+
+    test('Trying to connect the CAR MODEL to itself', async () => {
+        vi.spyOn(CarModel, 'createHasSuccessorRelationship')
+            .mockImplementation(async () => {
+                throw new SemanticError('A Car Model cannot be connected to itself')
+            })
+
+        const response = await request(app)
+            .post('/car-models/123/has-successor/123')
+
+        expect(response.statusCode)
+            .toBe(422)
     })
 })
