@@ -21,7 +21,7 @@ export async function create<%= h.changeCase.pascal(relationshipName) %>Relation
     try {
         const relation = await <%= h.changeCase.pascal(startNodeType) %>.create<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(endNodeType) %>Id)
         const relationPartner = await <%= h.changeCase.pascal(endNodeType) %>.findById(<%= h.changeCase.camel(endNodeType) %>Id)
-        const marshalledData = marshalRelationship(relation as BaseRelationship, relationPartner as <%= h.changeCase.pascal(endNodeType) %>Node, '<%= h.changeCase.kebab(endNodeType) %>')
+        const marshalledData = marshalRelationship(relation as BaseRelationship, relationPartner as <%= h.changeCase.pascal(endNodeType) %>Node, '<%= h.changeCase.lower(endNodeType) %>')
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

@@ -16,7 +16,7 @@ test('Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship 
     expect(createdRelationship)
         .toHaveProperty('<%= h.changeCase.snake(startNodeType) %>_id', <%= h.changeCase.camel(startNodeType) %>.id)
     expect(createdRelationship)
-        .toHaveProperty('<%= h.changeCase.kebab(endNodeType) %>_id', <%= h.changeCase.camel(endNodeType) %>.id)
+        .toHaveProperty('<%= h.changeCase.snake(endNodeType) %>_id', <%= h.changeCase.camel(endNodeType) %>.id)
     expect(createdRelationship)
         .toHaveProperty('relationship_id')
     expect(createdRelationship)

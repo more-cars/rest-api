@@ -2,8 +2,8 @@
 to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.kebab(relationshipName) %>/create/db-query-assembly.test.ts
 ---
 import {expect, test} from 'vitest'
-import {createRelationshipQuery} from "../../../../../src/db/relationships/createDbRelationship"
-import {DbRelationship} from "../../../../../src/db/types/DbRelationship"
+import {createRelationshipQuery} from "../../../../../../src/db/relationships/createDbRelationship"
+import {DbRelationship} from "../../../../../../src/db/types/DbRelationship"
 
 test('assembled database query for creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship', async () => {
     const query = createRelationshipQuery(

@@ -23,7 +23,7 @@ test('marshalled output for ›<%= h.changeCase.kebab(relationshipName) %>‹ re
         updated_at: "2023-10-01T00:00:00.001Z",
     }
 
-    const marshalledData = marshalRelationship(relationship as BaseRelationship, partnerNode, "<%= h.changeCase.kebab(endNodeType) %>")
+    const marshalledData = marshalRelationship(relationship as BaseRelationship, partnerNode, "<%= h.changeCase.lower(endNodeType) %>")
 
     expect(marshalledData)
         .toStrictEqual({
