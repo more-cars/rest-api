@@ -15,6 +15,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeType, relati
         'brand', new Map([
             ['has car model', 'car model'],
             ['has image', 'image'],
+            ['has prime image', 'image'],
         ]))
 
     relationships.set(
@@ -26,6 +27,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeType, relati
 
     relationships.set(
         'image', new Map([
+            ['belongs to node', 'company'],
             ['belongs to node', 'brand'],
             ['belongs to node', 'car model'],
         ]))
