@@ -5,7 +5,7 @@ import {expect, test} from 'vitest'
 import {getRelationshipForSpecificNodeQuery} from "../../../../../../src/db/relationships/getRelationshipForSpecificNode"
 import {DbRelationship} from "../../../../../../src/db/types/DbRelationship"
 
-test('cypher query is correctly assembled for "get sole relationship" request', async () => {
+test('assembled database query for fetching ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship', async () => {
     const query = getRelationshipForSpecificNodeQuery(
         12002002, // <%= h.changeCase.title(startNodeType) %>
         DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,

@@ -1,5 +1,5 @@
 ---
-to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/getAll<%= h.changeCase.pascal(relationshipName) %>Relationships/cypherQueryIsCorrectlyAssembled.test.ts
+to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.kebab(relationshipName) %>/get-all/db-query-assembly.test.ts
 ---
 import {expect, test} from 'vitest'
 import {getRelationshipsForSpecificNodeQuery} from "../../../../../src/db/relationships/getRelationshipsForSpecificNode"
