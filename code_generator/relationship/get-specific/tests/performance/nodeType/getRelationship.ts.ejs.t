@@ -34,8 +34,8 @@ export function setup() {
     const <%= h.changeCase.camel(endNodeType) %>Id = create<%= h.changeCase.pascal(endNodeType) %>()
     createRelationship(
         '<%= h.changeCase.lower(startNodeType) %>',
-        carModelId,
-        imageId,
+        <%= h.changeCase.camel(startNodeType) %>Id,
+        <%= h.changeCase.camel(endNodeType) %>Id,
         '<%= h.changeCase.lower(relationshipName) %>',
     )
 

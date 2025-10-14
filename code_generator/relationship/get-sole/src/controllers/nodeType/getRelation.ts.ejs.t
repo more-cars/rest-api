@@ -3,7 +3,7 @@ to: src/controllers/<%= h.inflection.pluralize(h.changeCase.camel(startNodeType)
 ---
 import express from "express"
 import {<%= h.changeCase.pascal(startNodeType) %>} from "../../models/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
-import type {<%= h.changeCase.pascal(startNodeType) %>Node} from "../../models/brands/types/<%= h.changeCase.pascal(startNodeType) %>Node"
+import type {<%= h.changeCase.pascal(startNodeType) %>Node} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/types/<%= h.changeCase.pascal(startNodeType) %>Node"
 import type {BaseRelationship} from "../relationships/types/BaseRelationship"
 import {marshalRelationship} from "../relationships/marshalRelationship"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"

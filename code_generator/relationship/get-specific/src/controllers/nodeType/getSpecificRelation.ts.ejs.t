@@ -19,7 +19,7 @@ export async function getSpecific<%= h.changeCase.pascal(relationshipName) %>Rel
 
     try {
         const relationship = await <%= h.changeCase.pascal(startNodeType) %>.getSpecific<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(endNodeType) %>Id)
-        const relationshipPartner = await Image.findById(relationship.<%= h.changeCase.camel(endNodeType) %>Id)
+        const relationshipPartner = await <%= h.changeCase.pascal(endNodeType) %>.findById(relationship.<%= h.changeCase.camel(endNodeType) %>Id)
         const marshalledData = marshalRelationship(relationship as BaseRelationship, relationshipPartner as <%= h.changeCase.pascal(endNodeType) %>Node, '<%= h.changeCase.kebab(endNodeType) %>')
 
         return sendResponse200(marshalledData, res)
