@@ -17,5 +17,6 @@ router.get('/brands/:brandId/has-image', BrandController.getAllHasImageRelations
 router.delete('/brands/:brandId/has-image/:imageId', BrandController.deleteHasImageRelation)
 router.post('/brands/:brandId/has-prime-image/:imageId', BrandController.createHasPrimeImageRelation)
 router.get('/brands/:brandId/has-prime-image', BrandController.getHasPrimeImageRelation)
+router.delete('/brands/:brandId/has-prime-image/:imageId', BrandController.deleteHasPrimeImageRelation)
 
 export default router

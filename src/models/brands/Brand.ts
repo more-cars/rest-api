@@ -29,6 +29,7 @@ import {createHasPrimeImageRelationship} from "./createHasPrimeImageRelationship
 import {getSpecificHasPrimeImageRelationship} from "./getSpecificHasPrimeImageRelationship"
 import type {BrandHasPrimeImageRelationship} from "./types/BrandHasPrimeImageRelationship"
 import {getHasPrimeImageRelationship} from "./getHasPrimeImageRelationship"
+import {deleteHasPrimeImageRelationship} from "./deleteHasPrimeImageRelationship"
 
 export class Brand {
     static async create(data: CreateBrandInput): Promise<BrandNode> {
@@ -252,5 +253,24 @@ export class Brand {
         }
 
         return relationship
+    }
+
+    static async deleteHasPrimeImageRelationship(brandId: number, imageId: number): Promise<void> {
+        const brand = await Brand.findById(brandId)
+        if (!brand) {
+            throw new NodeNotFoundError(brandId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const relationship = await getSpecificHasPrimeImageRelationship(brandId, imageId)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(BrandRelationship.hasPrimeImage, brandId, imageId)
+        }
+
+        await deleteHasPrimeImageRelationship(brandId, imageId)
     }
 }
