@@ -1,5 +1,5 @@
 ---
-to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/create<%= h.changeCase.pascal(relationshipName) %>Relationship/marshalling-relationship.test.ts
+to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.kebab(relationshipName) %>/marshalling-relationship.test.ts
 ---
 import {expect, test} from 'vitest'
 import Fake<%= h.changeCase.pascal(endNodeType) %> from "../../../../_toolbox/fixtures/nodes/Fake<%= h.changeCase.pascal(endNodeType) %>"

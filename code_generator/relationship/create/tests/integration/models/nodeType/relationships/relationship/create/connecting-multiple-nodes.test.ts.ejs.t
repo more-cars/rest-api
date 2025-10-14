@@ -1,5 +1,5 @@
 ---
-to: tests/integration/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/relationships/<%= h.changeCase.camel(relationshipName) %>/connect/connectToMultipleNodes.test.ts
+to: tests/integration/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/relationships/<%= h.changeCase.kebab(relationshipName) %>/create/connecting-multiple-nodes.test.ts
 ---
 import {expect, test} from 'vitest'
 import {seed<%= h.changeCase.pascal(h.inflection.pluralize(endNodeType)) %>} from "../../../../../../_toolbox/dbSeeding/<%= h.changeCase.kebab(h.inflection.pluralize(endNodeType)) %>/nodes/seed<%= h.changeCase.pascal(h.inflection.pluralize(endNodeType)) %>"
@@ -9,7 +9,7 @@ import {getRelationshipsForSpecificNode} from "../../../../../../../src/db/relat
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 <% if (cardinality === '1:1' || cardinality === 'n:1') { -%>
-test('A <%= h.changeCase.upper(startNodeType) %> cannot  have multiple ›<%= h.changeCase.kebab(relationshipName) %>‹ relationships', async () => {
+test('A <%= h.changeCase.upper(startNodeType) %> cannot have multiple ›<%= h.changeCase.kebab(relationshipName) %>‹ relationships', async () => {
 <% } else if (cardinality === '1:n' || cardinality === 'm:n') { -%>
 test('A <%= h.changeCase.upper(startNodeType) %> can have multiple ›<%= h.changeCase.kebab(relationshipName) %>‹ relationships', async () => {
 <% } -%>
