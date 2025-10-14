@@ -31,8 +31,8 @@ to: ticket-generator/_temp/ticketTree.json
                             <%
                                 gherkin = []
                                 gherkin.push('Given there exists a \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\"')
-                                gherkin.push('And there exists a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship \\"R\\" for \\"' + startNodeExampleName + '\\"')
-                                gherkin.push('When the user requests the \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship for \\"' + startNodeExampleName + '\\"')
+                                gherkin.push('And there exists a \\"' + h.changeCase.lower(relationshipName) + '\\" relationship \\"R\\" for \\"' + startNodeExampleName + '\\"')
+                                gherkin.push('When the user requests the \\"' + h.changeCase.lower(relationshipName) + '\\" relationship for \\"' + startNodeExampleName + '\\"')
                                 gherkin.push('Then the request should be confirmed with status code 200')
                                 gherkin.push('And the response should contain the relationship \\"R\\"')
                             %>
@@ -50,8 +50,8 @@ to: ticket-generator/_temp/ticketTree.json
                             <%
                                 gherkin = []
                                 gherkin.push('Given there exists a \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\"')
-                                gherkin.push('And there exists NO \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship for \\"' + startNodeExampleName + '\\"')
-                                gherkin.push('When the user requests the \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship for \\"' + startNodeExampleName + '\\"')
+                                gherkin.push('And there exists NO \\"' + h.changeCase.lower(relationshipName) + '\\" relationship for \\"' + startNodeExampleName + '\\"')
+                                gherkin.push('When the user requests the \\"' + h.changeCase.lower(relationshipName) + '\\" relationship for \\"' + startNodeExampleName + '\\"')
                                 gherkin.push('Then the request should be confirmed with status code 200')
                                 gherkin.push('But the response should return an empty body')
                             %>
@@ -69,7 +69,7 @@ to: ticket-generator/_temp/ticketTree.json
                             <%
                                 gherkin = []
                                 gherkin.push('Given \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\" does NOT exist')
-                                gherkin.push('When the user requests the \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship for \\"' + startNodeExampleName + '\\"')
+                                gherkin.push('When the user requests the \\"' + h.changeCase.lower(relationshipName) + '\\" relationship for \\"' + startNodeExampleName + '\\"')
                                 gherkin.push('Then the request should be rejected with status code 404')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
