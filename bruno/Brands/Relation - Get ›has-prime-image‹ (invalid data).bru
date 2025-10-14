@@ -1,0 +1,15 @@
+meta {
+  name: Get ›has-prime-image‹ relation (invalid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/brands/{{invalidBrandId}}/has-prime-image
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
