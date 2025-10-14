@@ -27,7 +27,7 @@ skip_if: Get the ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship 
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>"
+                  "$ref": "#/components/schemas/<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Response"
                 }
               }
             }

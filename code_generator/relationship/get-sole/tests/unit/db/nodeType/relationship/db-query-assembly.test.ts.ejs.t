@@ -1,9 +1,9 @@
 ---
-to: tests/unit/db/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/get<%= h.changeCase.pascal(relationshipName) %>Relationship/cypherQueryIsCorrectlyAssembled.test.ts
+to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.kebab(relationshipName) %>/get/db-query-assembly.test.ts
 ---
 import {expect, test} from 'vitest'
-import {getRelationshipForSpecificNodeQuery} from "../../../../../src/db/relationships/getRelationshipForSpecificNode"
-import {DbRelationship} from "../../../../../src/db/types/DbRelationship"
+import {getRelationshipForSpecificNodeQuery} from "../../../../../../src/db/relationships/getRelationshipForSpecificNode"
+import {DbRelationship} from "../../../../../../src/db/types/DbRelationship"
 
 test('cypher query is correctly assembled for "get sole relationship" request', async () => {
     const query = getRelationshipForSpecificNodeQuery(

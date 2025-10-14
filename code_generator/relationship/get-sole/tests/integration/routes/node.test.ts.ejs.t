@@ -2,11 +2,11 @@
 inject: true
 to: tests/integration/routes/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>.test.ts
 before: \}\)\n\}\)
-skip_if: Get ›<%= h.changeCase.kebab(relationshipName) %>‹ Relationship
+skip_if: Get ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship
 ---
     })
 
-    test('Get ›<%= h.changeCase.kebab(relationshipName) %>‹ Relationship', async () => {
+    test('Get ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship', async () => {
         await request(app)
             .get('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/123/<%= h.changeCase.kebab(relationshipName) %>')
 
