@@ -10,7 +10,7 @@ to: ticket-generator/_temp/ticketTree.json
             "userStory": null,
             "specificationList": [
                 "The relationship ›<%= h.changeCase.kebab(relationshipName) %>‹ is created when the provided IDs of the <%= h.changeCase.upper(startNodeType) %> and <%= h.changeCase.upper(endNodeType) %> are valid. -> Status Code `201`",
-                "A successful request returns the ID of the created relationship and the IDs of both nodes.",
+                "A successful request returns the ID of the created relationship, the relationship name and the relationship partner.",
                 "Requests with invalid IDs are rejected. This can happen when there exist no nodes with the given IDs or when those nodes are from the wrong type. -> Status Code `404`",
                 "The same ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship between the same nodes can only be created once. Attempts to recreate them will be ignored. -> Status Code `304`",
 <% if (cardinality === '1:1' || cardinality === 'n:1') { -%>
