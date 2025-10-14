@@ -16,6 +16,7 @@ export enum DbRelationship {
     BrandHasImage = 'HAS_IMAGE',
     BrandHasPrimeImage = 'HAS_PRIME_IMAGE',
     CarModelBelongsToBrand = 'HAS_CAR_MODEL',
+    CarModelHasSuccessor = 'HAS_SUCCESSOR',
     CarModelHasImage = 'HAS_IMAGE',
     CarModelHasPrimeImage = 'HAS_PRIME_IMAGE',
 }

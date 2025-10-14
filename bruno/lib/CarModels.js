@@ -73,6 +73,26 @@ async function createCarModelBelongsToBrandRelationship(carModelId, brandId) {
 
 exports.createCarModelBelongsToBrandRelationship = createCarModelBelongsToBrandRelationship
 
+async function ensureCarModelHasSuccessorRelationshipExists() {
+    await ensureValidCarModelExists()
+    await ensureValidSecondCarModelExists()
+    await createCarModelHasSuccessorRelationship(bru.getEnvVar('validCarModelId'), bru.getEnvVar('validSecondCarModelId'))
+}
+
+exports.ensureCarModelHasSuccessorRelationshipExists = ensureCarModelHasSuccessorRelationshipExists
+
+async function createCarModelHasSuccessorRelationship(carModelId, partnerId) {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/car-models/" + carModelId + "/has-successor/" + partnerId, null, {
+        validateStatus: function (status) {
+            return status < 400
+        }
+    })
+
+    return response.data
+}
+
+exports.createCarModelHasSuccessorRelationship = createCarModelHasSuccessorRelationship
+
 async function ensureCarModelHasImageRelationshipExists() {
     await ensureValidCarModelExists()
     await ensureValidImageExists()
