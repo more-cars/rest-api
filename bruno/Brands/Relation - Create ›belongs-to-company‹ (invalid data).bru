@@ -1,0 +1,15 @@
+meta {
+  name: Create ›belongs-to-company‹ relation (invalid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/brands/{{invalidBrandId}}/belongs-to-company/{{invalidCompanyId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
