@@ -38,13 +38,13 @@ to: ticket-generator/_temp/ticketTree.json
                                 gherkin = []
                                 gherkin.push('Given there exists a \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\"')
                                 gherkin.push('And there exists a \\"' + h.changeCase.upper(endNodeType) + '\\" \\"' + endNodeExampleName + '\\"')
-                                gherkin.push('When the user creates a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
+                                gherkin.push('When the user creates a \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
                                 gherkin.push('Then the request should be confirmed with status code 201')
                                 gherkin.push('And the response should contain the following keys')
-                                gherkin.push('| key |')
-                                gherkin.push('| ' + h.changeCase.kebab(startNodeType) + '_id |')
-                                gherkin.push('| ' + h.changeCase.kebab(endNodeType) + '_id |')
-                                gherkin.push('| relationship_id |')
+                                gherkin.push('| key                  |')
+                                gherkin.push('| relationship_id      |')
+                                gherkin.push('| relationship_name    |')
+                                gherkin.push('| relationship_partner |')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }
@@ -61,7 +61,7 @@ to: ticket-generator/_temp/ticketTree.json
                                 gherkin = []
                                 gherkin.push('Given \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\" does NOT exist')
                                 gherkin.push('And there exists a \\"' + h.changeCase.upper(endNodeType) + '\\" \\"' + endNodeExampleName + '\\"')
-                                gherkin.push('When the user creates a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
+                                gherkin.push('When the user creates a \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
                                 gherkin.push('Then the request should be rejected with status code 404')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
@@ -72,7 +72,7 @@ to: ticket-generator/_temp/ticketTree.json
                                 gherkin = []
                                 gherkin.push('Given there exists a \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\"')
                                 gherkin.push('And \\"' + h.changeCase.upper(endNodeType) + '\\" \\"' + endNodeExampleName + '\\" does NOT exist')
-                                gherkin.push('When the user creates a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
+                                gherkin.push('When the user creates a \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
                                 gherkin.push('Then the request should be rejected with status code 404')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
@@ -83,7 +83,7 @@ to: ticket-generator/_temp/ticketTree.json
                                 gherkin = []
                                 gherkin.push('Given \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\" does NOT exist')
                                 gherkin.push('And \\"' + h.changeCase.upper(endNodeType) + '\\" \\"' + endNodeExampleName + '\\" does NOT exist')
-                                gherkin.push('When the user creates a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
+                                gherkin.push('When the user creates a \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
                                 gherkin.push('Then the request should be rejected with status code 404')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
@@ -101,8 +101,8 @@ to: ticket-generator/_temp/ticketTree.json
                                 gherkin = []
                                 gherkin.push('Given there exists a \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\"')
                                 gherkin.push('And there exists a \\"' + h.changeCase.upper(endNodeType) + '\\" \\"' + endNodeExampleName + '\\"')
-                                gherkin.push('And there exists a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
-                                gherkin.push('When the user creates a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
+                                gherkin.push('And there exists a \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
+                                gherkin.push('When the user creates a \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
                                 gherkin.push('Then the response should return with status code 304')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
@@ -122,11 +122,11 @@ to: ticket-generator/_temp/ticketTree.json
                                 gherkin.push('Given there exists a \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\"')
                                 gherkin.push('And there exists a \\"' + h.changeCase.upper(endNodeType) + '\\" \\"' + endNodeExampleName + '\\"')
                                 gherkin.push('And there exists a \\"' + h.changeCase.upper(endNodeType) + '\\" \\"' + endNodeExampleName + ' (Alternative)\\"')
-                                gherkin.push('When the user creates a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
-                                gherkin.push('Then there should exist a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
-                                gherkin.push('When the user creates a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + ' (Alternative)\\"')
-                                gherkin.push('Then there should exist a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + ' (Alternative)\\"')
-                                gherkin.push('But there should exist NO \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
+                                gherkin.push('When the user creates a \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
+                                gherkin.push('Then there should exist a \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
+                                gherkin.push('When the user creates a \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + ' (Alternative)\\"')
+                                gherkin.push('Then there should exist a \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + ' (Alternative)\\"')
+                                gherkin.push('But there should exist NO \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }
@@ -145,10 +145,10 @@ to: ticket-generator/_temp/ticketTree.json
                                 gherkin.push('Given there exists a \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\"')
                                 gherkin.push('And there exists a \\"' + h.changeCase.upper(endNodeType) + '\\" \\"' + endNodeExampleName + '\\"')
                                 gherkin.push('And there exists a \\"' + h.changeCase.upper(endNodeType) + '\\" \\"' + endNodeExampleName + ' (Alternative)\\"')
-                                gherkin.push('When the user creates a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
-                                gherkin.push('And the user creates a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + ' (Alternative)\\"')
-                                gherkin.push('Then there should exist a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
-                                gherkin.push('And there should exist a \\"' + h.changeCase.kebab(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + ' (Alternative)\\"')
+                                gherkin.push('When the user creates a \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
+                                gherkin.push('And the user creates a \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + ' (Alternative)\\"')
+                                gherkin.push('Then there should exist a \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + '\\"')
+                                gherkin.push('And there should exist a \\"' + h.changeCase.lower(relationshipName) + '\\" relationship between \\"' + startNodeExampleName + '\\" and \\"' + endNodeExampleName + ' (Alternative)\\"')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }
