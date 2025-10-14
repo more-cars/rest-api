@@ -1,5 +1,5 @@
 ---
-to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/delete<%= h.changeCase.pascal(relationshipName) %>Relationship/cypherQueryIsCorrectlyAssembled.test.ts
+to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.kebab(relationshipName) %>/delete/db-query-assembly.test.ts
 ---
 import {expect, test} from 'vitest'
 import {deleteSpecificRelationshipQuery} from "../../../../../src/db/relationships/deleteSpecificRelationship"

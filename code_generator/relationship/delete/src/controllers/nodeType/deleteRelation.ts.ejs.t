@@ -2,7 +2,7 @@
 to: src/controllers/<%= h.changeCase.camel(h.inflection.pluralize(startNodeType)) %>/delete<%= h.changeCase.pascal(relationshipName) %>Relation.ts
 ---
 import express from "express"
-import {<%= h.changeCase.pascal(startNodeType) %>} from "../../models/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
+import {<%= h.changeCase.pascal(startNodeType) %>} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../models/types/RelationshipNotFoundError"
 import {sendResponse204} from "../responses/sendResponse204"
