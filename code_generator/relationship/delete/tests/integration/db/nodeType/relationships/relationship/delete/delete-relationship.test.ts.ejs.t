@@ -10,40 +10,40 @@ import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 describe('Trying to delete a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-    const seededRelationship = await seedRelationship('<%= h.changeCase.lower(startNodeType) %>', '<%= h.changeCase.lower(endNodeType) %>', DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
+        const seededRelationship = await seedRelationship('<%= h.changeCase.lower(startNodeType) %>', '<%= h.changeCase.lower(endNodeType) %>', DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
 
-    const relationshipBefore = await getSpecificRelationship(
-        seededRelationship.start_node_id,
-        seededRelationship.end_node_id,
-        DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
-    )
+        const relationshipBefore = await getSpecificRelationship(
+            seededRelationship.start_node_id,
+            seededRelationship.end_node_id,
+            DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
+        )
 
-    expect(relationshipBefore)
-        .toBeTruthy()
+        expect(relationshipBefore)
+            .toBeTruthy()
 
-    await deleteSpecificRelationship(
-        seededRelationship.start_node_id,
-        seededRelationship.end_node_id,
-        DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
-    )
+        await deleteSpecificRelationship(
+            seededRelationship.start_node_id,
+            seededRelationship.end_node_id,
+            DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
+        )
 
-    const relationshipAfter = await getSpecificRelationship(
-        seededRelationship.start_node_id,
-        seededRelationship.end_node_id,
-        DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
-    )
+        const relationshipAfter = await getSpecificRelationship(
+            seededRelationship.start_node_id,
+            seededRelationship.end_node_id,
+            DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
+        )
 
-    expect(relationshipAfter)
-        .toBeFalsy()
+        expect(relationshipAfter)
+            .toBeFalsy()
     })
 
     test('nodes exists, but not the relationship', async () => {
         const <%= h.changeCase.camel(startNodeType) %> = await seedNode('<%= h.changeCase.lower(startNodeType) %>')
-        const <%= h.changeCase.camel(endNodeType) %> = await seedNode('<%= h.changeCase.lower(endNodeType) %>')
+        const <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %> = await seedNode('<%= h.changeCase.lower(endNodeType) %>')
 
         const relationship = await deleteSpecificRelationship(
             <%= h.changeCase.camel(startNodeType) %>.id,
-            <%= h.changeCase.camel(endNodeType) %>.id,
+            <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>.id,
             DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
         )
 

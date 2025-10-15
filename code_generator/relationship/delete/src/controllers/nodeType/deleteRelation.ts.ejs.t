@@ -11,10 +11,10 @@ import {sendResponse500} from "../responses/sendResponse500"
 
 export async function delete<%= h.changeCase.pascal(relationshipName) %>Relation(req: express.Request, res: express.Response) {
     const <%= h.changeCase.camel(startNodeType) %>Id = parseInt(req.params.<%= h.changeCase.camel(startNodeType) %>Id)
-    const <%= h.changeCase.camel(endNodeType) %>Id = parseInt(req.params.<%= h.changeCase.camel(endNodeType) %>Id)
+    const <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id = parseInt(req.params.<%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id)
 
     try {
-        await <%= h.changeCase.pascal(startNodeType) %>.delete<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(endNodeType) %>Id)
+        await <%= h.changeCase.pascal(startNodeType) %>.delete<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id)
 
         return sendResponse204(res)
     } catch (e) {
