@@ -35,7 +35,6 @@ export default defineConfig(({mode}) => ({
             provider: 'v8',
             include: ['src/**'],
             exclude: [
-                'src/**/types/**',
                 'src/server.ts',
                 'src/db/driver-mc1.ts',
             ],
@@ -47,7 +46,7 @@ export default defineConfig(({mode}) => ({
             reportOnFailure: true,
             thresholds: {
                 statements: 96,
-                branches: 92,
+                branches: 93,
             },
         }
     },

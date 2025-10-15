@@ -21,9 +21,11 @@ export default defineConfig({
             provider: 'v8',
             include: ['src/**'],
             exclude: [
+                'src/*.ts',
                 'src/**/types/**',
                 'src/routes/**',
-                'src/server.ts',
+                'src/controllers/*.ts',
+                'src/controllers/*/*Relation',
                 'src/db/driver-mc1.ts',
             ],
             reporter: [
@@ -33,7 +35,7 @@ export default defineConfig({
             reportsDirectory: 'test-reports/unit/coverage',
             reportOnFailure: true,
             thresholds: {
-                statements: 22,
+                statements: 23,
                 branches: 75,
             }
         }
