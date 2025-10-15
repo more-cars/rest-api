@@ -9,12 +9,10 @@ test('Creating a "Car Model belongs to Brand" relationship when both nodes exist
     const carModel = await seedCarModel()
     const brand = await seedBrand()
 
-    // Using the same HAS_CAR_MODEL relationship here as in the Brand nodes.
-    // Crating a second relationship for the opposite direction (BELONGS_TO_BRAND) would make no sense.
     const createdRelationship = await createRelationship(
         brand.id,
         carModel.id,
-        DbRelationship.BrandHasCarModel,
+        DbRelationship.CarModelBelongsToBrand,
     )
 
     expect(createdRelationship)

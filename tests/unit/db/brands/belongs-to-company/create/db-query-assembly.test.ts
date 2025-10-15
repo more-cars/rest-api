@@ -11,7 +11,7 @@ test('assembled database query for creating a ›belongs-to-company‹ relations
     expect(query)
         .toEqual(
             "MATCH (a {mc_id: 12002002}), (b {mc_id: 12002003})\n" +
-            "CREATE (a)-[r:BELONGS_TO_COMPANY]->(b)\n" +
+            "CREATE (a)-[r:HAS_BRAND]->(b)\n" +
             "RETURN r\n" +
             "  LIMIT 1")
 })

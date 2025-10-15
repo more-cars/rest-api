@@ -3,7 +3,7 @@ import {createRelationship} from "../../../../../../../src/db/relationships/crea
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 import {seedCompany} from "../../../../../../_toolbox/dbSeeding/companies/nodes/seedCompany"
-import {BrandRelationship} from "../../../../../../../src/models/brands/types/BrandRelationship"
+import {CompanyRelationship} from "../../../../../../../src/models/companies/types/CompanyRelationship"
 
 describe('Creating a ›belongs-to-company‹ relationship', () => {
     test('with valid data', async () => {
@@ -23,7 +23,7 @@ describe('Creating a ›belongs-to-company‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', BrandRelationship.belongsToCompany)
+            .toHaveProperty('relationship_name', CompanyRelationship.hasBrand)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)

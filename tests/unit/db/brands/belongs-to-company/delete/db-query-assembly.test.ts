@@ -11,6 +11,6 @@ test('assembled database query for deleting ›belongs-to-company‹ relationshi
 
     expect(query)
         .toEqual(
-            "MATCH (a {mc_id: 12002002})-[r:BELONGS_TO_COMPANY]-(b {mc_id: 12002003})\n" +
+            "MATCH (a {mc_id: 12002002})-[r:HAS_BRAND]-(b {mc_id: 12002003})\n" +
             "DELETE r")
 })
