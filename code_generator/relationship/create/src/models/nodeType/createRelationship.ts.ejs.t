@@ -6,10 +6,10 @@ import {DbRelationship} from "../../db/types/DbRelationship"
 import {<%= h.changeCase.pascal(startNodeType) %>Relationship} from "./types/<%= h.changeCase.pascal(startNodeType) %>Relationship"
 import {<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Relationship} from "./types/<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Relationship"
 
-export async function create<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id: number, <%= h.changeCase.camel(endNodeType) %>Id: number) {
+export async function create<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id: number, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id: number) {
     const dbRelationship = await createRelationship(
         <%= h.changeCase.camel(startNodeType) %>Id,
-        <%= h.changeCase.camel(endNodeType) %>Id,
+        <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id,
         DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
     )
 
@@ -19,7 +19,7 @@ export async function create<%= h.changeCase.pascal(relationshipName) %>Relation
 
     return {
         <%= h.changeCase.snake(startNodeType) %>_id: <%= h.changeCase.camel(startNodeType) %>Id,
-        <%= h.changeCase.snake(endNodeType) %>_id: <%= h.changeCase.camel(endNodeType) %>Id,
+        <%= h.changeCase.snake(startNodeType === endNodeType ? 'partner' : endNodeType) %>_id: <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id,
         relationship_id: dbRelationship.relationship_id,
         relationship_name: <%= h.changeCase.pascal(startNodeType) %>Relationship.<%= h.changeCase.camel(relationshipName) %>,
         created_at: dbRelationship.created_at,

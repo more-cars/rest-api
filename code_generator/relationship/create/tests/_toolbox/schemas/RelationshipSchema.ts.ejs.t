@@ -5,7 +5,7 @@ export const <%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(re
     type: "object",
     properties: {
         <%= h.changeCase.snake(startNodeType) %>_id: {type: "integer"},
-        <%= h.changeCase.snake(endNodeType) %>_id: {type: "integer"},
+        <%= h.changeCase.snake(startNodeType === endNodeType ? 'partner' : endNodeType) %>_id: {type: "integer"},
         relationship_id: {type: "integer"},
         relationship_name: {type: "string"},
         created_at: {type: "string"},
@@ -13,7 +13,7 @@ export const <%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(re
     },
     required: [
         "<%= h.changeCase.snake(startNodeType) %>_id",
-        "<%= h.changeCase.snake(endNodeType) %>_id",
+        "<%= h.changeCase.snake(startNodeType === endNodeType ? 'partner' : endNodeType) %>_id",
         "relationship_id",
         "relationship_name",
         "created_at",

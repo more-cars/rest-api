@@ -9,14 +9,14 @@ import {<%= h.changeCase.pascal(startNodeType) %>Relationship} from "../../../..
 
 test('Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship with valid data', async () => {
     const <%= h.changeCase.camel(startNodeType) %> = await seed<%= h.changeCase.pascal(startNodeType) %>()
-    const <%= h.changeCase.camel(endNodeType) %> = await seed<%= h.changeCase.pascal(endNodeType) %>()
+    const <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %> = await seed<%= h.changeCase.pascal(endNodeType) %>()
 
-    const createdRelationship = await <%= h.changeCase.pascal(startNodeType) %>.create<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>.id, <%= h.changeCase.camel(endNodeType) %>.id)
+    const createdRelationship = await <%= h.changeCase.pascal(startNodeType) %>.create<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>.id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>.id)
 
     expect(createdRelationship)
         .toHaveProperty('<%= h.changeCase.snake(startNodeType) %>_id', <%= h.changeCase.camel(startNodeType) %>.id)
     expect(createdRelationship)
-        .toHaveProperty('<%= h.changeCase.snake(endNodeType) %>_id', <%= h.changeCase.camel(endNodeType) %>.id)
+        .toHaveProperty('<%= h.changeCase.snake(startNodeType === endNodeType ? 'partner' : endNodeType) %>_id', <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>.id)
     expect(createdRelationship)
         .toHaveProperty('relationship_id')
     expect(createdRelationship)

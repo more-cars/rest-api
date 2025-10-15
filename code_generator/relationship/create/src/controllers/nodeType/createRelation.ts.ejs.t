@@ -9,6 +9,9 @@ import type {BaseRelationship} from "../relationships/types/BaseRelationship"
 import {marshalRelationship} from "../relationships/marshalRelationship"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../models/types/RelationshipAlreadyExistsError"
+<% if (startNodeType === endNodeType) { %>
+import {SemanticError} from "../../models/types/SemanticError"
+<% } %>
 import {sendResponse201} from "../responses/sendResponse201"
 import {sendResponse304} from "../responses/sendResponse304"
 import {sendResponse404} from "../responses/sendResponse404"
@@ -16,17 +19,21 @@ import {sendResponse500} from "../responses/sendResponse500"
 
 export async function create<%= h.changeCase.pascal(relationshipName) %>Relation(req: express.Request, res: express.Response) {
     const <%= h.changeCase.camel(startNodeType) %>Id = parseInt(req.params.<%= h.changeCase.camel(startNodeType) %>Id)
-    const <%= h.changeCase.camel(endNodeType) %>Id = parseInt(req.params.<%= h.changeCase.camel(endNodeType) %>Id)
+    const <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id = parseInt(req.params.<%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id)
 
     try {
-        const relation = await <%= h.changeCase.pascal(startNodeType) %>.create<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(endNodeType) %>Id)
-        const relationPartner = await <%= h.changeCase.pascal(endNodeType) %>.findById(<%= h.changeCase.camel(endNodeType) %>Id)
+        const relation = await <%= h.changeCase.pascal(startNodeType) %>.create<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id)
+        const relationPartner = await <%= h.changeCase.pascal(endNodeType) %>.findById(<%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id)
         const marshalledData = marshalRelationship(relation as BaseRelationship, relationPartner as <%= h.changeCase.pascal(endNodeType) %>Node, '<%= h.changeCase.lower(endNodeType) %>')
 
         return sendResponse201(marshalledData, res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {
             return sendResponse404(res)
+<% if (startNodeType === endNodeType) { %>
+        } else if (e instanceof SemanticError) {
+            return sendResponse422(res)
+<% } %>
         } else if (e instanceof RelationshipAlreadyExistsError) {
             return sendResponse304(res)
         } else {

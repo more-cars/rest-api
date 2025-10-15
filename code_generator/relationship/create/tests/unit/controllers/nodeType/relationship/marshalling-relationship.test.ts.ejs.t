@@ -16,7 +16,7 @@ test('marshalled output for ›<%= h.changeCase.kebab(relationshipName) %>‹ re
 
     const relationship: <%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Relationship = {
         <%= h.changeCase.snake(startNodeType) %>_id: 1,
-        <%= h.changeCase.snake(endNodeType) %>_id: 2,
+        <%= h.changeCase.snake(startNodeType === endNodeType ? 'partner' : endNodeType) %>_id: 2,
         relationship_id: 3,
         relationship_name: "<%= h.changeCase.constant(relationshipName) %>",
         created_at: "2023-10-01T00:00:00.001Z",
