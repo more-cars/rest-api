@@ -21,7 +21,7 @@ describe('Requesting a ›<%= h.changeCase.kebab(relationshipName) %>‹ relatio
         expect(actualRelationship.<%= h.changeCase.snake(startNodeType) %>_id)
             .toBe(expectedRelationship.start_node_id)
 
-        expect(actualRelationship.<%= h.changeCase.snake(endNodeType) %>_id)
+        expect(actualRelationship.<%= h.changeCase.snake(startNodeType === endNodeType ? 'partner' : endNodeType) %>_id)
             .toBe(expectedRelationship.end_node_id)
     })
 

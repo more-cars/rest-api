@@ -18,7 +18,7 @@ export async function get<%= h.changeCase.pascal(relationshipName) %>Relationshi
 
     return {
         <%= h.changeCase.snake(startNodeType) %>_id: dbRelationship.start_node_id,
-        <%= h.changeCase.snake(endNodeType) %>_id: dbRelationship.end_node_id,
+        <%= h.changeCase.snake(startNodeType === endNodeType ? 'partner' : endNodeType) %>_id: dbRelationship.end_node_id,
         relationship_id: dbRelationship.relationship_id,
         relationship_name: <%= h.changeCase.pascal(startNodeType) %>Relationship.<%= h.changeCase.camel(relationshipName) %>,
         created_at: dbRelationship.created_at,
