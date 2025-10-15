@@ -10,8 +10,8 @@ to: ticket-generator/_temp/ticketTree.json
             "userStory": null,
             "specificationList": [
                 "The ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship for the selected <%= h.changeCase.upper(startNodeType) %> is returned when one exists. -> Status Code `200`",
-                "The response contains the relationship ID and the two node IDs, but not the nodes itself.",
-                "An empty response is returned when the the selected <%= h.changeCase.upper(startNodeType) %> has no ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship. -> Status Code `200`",
+                "The response contains the relationship ID, the relationship name and the relationship partner.",
+                "An empty response is returned when the selected <%= h.changeCase.upper(startNodeType) %> has no ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship. -> Status Code `200`",
                 "Requests with invalid ID are rejected. This can happen when there exists no node with the given ID or it is not a <%= h.changeCase.upper(startNodeType) %>. -> Status Code `404`"
             ],
             "apiVerb": "GET",
