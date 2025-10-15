@@ -1,7 +1,7 @@
 ---
 to: tests/integration/db/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/relationships/<%= h.changeCase.kebab(relationshipName) %>/delete/delete-relationship.test.ts
 ---
-import {expect, test} from 'vitest'
+import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
