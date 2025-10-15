@@ -37,6 +37,9 @@ import type {CarModelHasSuccessorRelationship} from "./types/CarModelHasSuccesso
 import {SemanticError} from "../types/SemanticError"
 import {getHasSuccessorRelationship} from "./getHasSuccessorRelationship"
 import {deleteHasSuccessorRelationship} from "./deleteHasSuccessorRelationship"
+import {createIsSuccessorOfRelationship} from "./createIsSuccessorOfRelationship"
+import {getSpecificIsSuccessorOfRelationship} from "./getSpecificIsSuccessorOfRelationship"
+import type {CarModelIsSuccessorOfRelationship} from "./types/CarModelIsSuccessorOfRelationship"
 
 export class CarModel {
     static async create(data: CreateCarModelInput): Promise<CarModelNode> {
@@ -197,6 +200,36 @@ export class CarModel {
         }
 
         await deleteHasSuccessorRelationship(carModelId, partnerId)
+    }
+
+    static async createIsSuccessorOfRelationship(carModelId: number, partnerId: number): Promise<CarModelIsSuccessorOfRelationship> {
+        if (carModelId === partnerId) {
+            throw new SemanticError(`Car Model #${carModelId} cannot be connected to itself`)
+        }
+
+        const carModel = await CarModel.findById(carModelId)
+        if (!carModel) {
+            throw new NodeNotFoundError(carModelId)
+        }
+
+        const partner = await CarModel.findById(partnerId)
+        if (!partner) {
+            throw new NodeNotFoundError(partnerId)
+        }
+
+        const existingRelation = await getSpecificIsSuccessorOfRelationship(carModelId, partnerId)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(CarModelRelationship.isSuccessorOf, carModelId, partnerId)
+        }
+
+        await deleteDeprecatedRelationship(carModelId, DbRelationship.CarModelIsSuccessorOf)
+
+        const createdRelationship = await createIsSuccessorOfRelationship(carModelId, partnerId)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 
     static async createHasImageRelationship(carModelId: number, imageId: number): Promise<CarModelHasImageRelationship> {

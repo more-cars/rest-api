@@ -13,6 +13,7 @@ router.delete('/car-models/:carModelId/belongs-to-brand/:brandId', CarModelContr
 router.post('/car-models/:carModelId/has-successor/:relationPartnerId', CarModelController.createHasSuccessorRelation)
 router.get('/car-models/:carModelId/has-successor', CarModelController.getHasSuccessorRelation)
 router.delete('/car-models/:carModelId/has-successor/:partnerId', CarModelController.deleteHasSuccessorRelation)
+router.post('/car-models/:carModelId/is-successor-of/:partnerId', CarModelController.createIsSuccessorOfRelation)
 router.post('/car-models/:carModelId/has-image/:imageId', CarModelController.createHasImageRelation)
 router.get('/car-models/:carModelId/has-image/:imageId', CarModelController.getSpecificHasImageRelation)
 router.get('/car-models/:carModelId/has-image', CarModelController.getAllHasImageRelations)
