@@ -94,6 +94,14 @@ describe('Car Models', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Get ›is-successor-of‹ relationship', async () => {
+        await request(app)
+            .get('/car-models/123/is-successor-of')
+
+        expect(CarModelController.getIsSuccessorOfRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create "has Image" Relationship', async () => {
         await request(app)
             .post('/car-models/123/has-image/456')

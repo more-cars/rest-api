@@ -1,0 +1,15 @@
+meta {
+  name: Get ›is-successor-of‹ relation (invalid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/car-models/{{invalidCarModelId}}/is-successor-of
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}

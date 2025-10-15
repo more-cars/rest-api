@@ -1878,6 +1878,47 @@
         }
       }
     },
+    "/car-models/{car-model-id}/is-successor-of": {
+      "get": {
+        "tags": [
+          "Car Models"
+        ],
+        "summary": "Get the ›is-successor-of‹ relationship for the `Car Model`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-id",
+            "description": "ID of the `Car Model`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›is-successor-of‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelIsSuccessorOfResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Car Model` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/car-models/{car-model-id}/is-successor-of/{partner-id}": {
       "post": {
         "tags": [
