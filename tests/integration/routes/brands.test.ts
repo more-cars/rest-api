@@ -46,6 +46,14 @@ describe('Brands', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Get ›belongs-to-company‹ relationship', async () => {
+        await request(app)
+            .get('/brands/123/belongs-to-company')
+
+        expect(BrandController.getBelongsToCompanyRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-car-model‹ Relationship', async () => {
         await request(app)
             .post('/brands/123/has-car-model/456')

@@ -811,6 +811,47 @@
         }
       }
     },
+    "/brands/{brand-id}/belongs-to-company": {
+      "get": {
+        "tags": [
+          "Brands"
+        ],
+        "summary": "Get the ›belongs-to-company‹ relationship for the `Brand`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "brand-id",
+            "description": "ID of the `Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›belongs-to-company‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BrandBelongsToCompanyResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Brand` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/brands/{brand-id}/belongs-to-company/{company-id}": {
       "post": {
         "tags": [
