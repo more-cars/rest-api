@@ -35,6 +35,7 @@ import {Company} from "../companies/Company"
 import {getSpecificBelongsToCompanyRelationship} from "./getSpecificBelongsToCompanyRelationship"
 import type {BrandBelongsToCompanyRelationship} from "./types/BrandBelongsToCompanyRelationship"
 import {getBelongsToCompanyRelationship} from "./getBelongsToCompanyRelationship"
+import {deleteBelongsToCompanyRelationship} from "./deleteBelongsToCompanyRelationship"
 
 export class Brand {
     static async create(data: CreateBrandInput): Promise<BrandNode> {
@@ -113,6 +114,25 @@ export class Brand {
         }
 
         return relationship
+    }
+
+    static async deleteBelongsToCompanyRelationship(brandId: number, companyId: number): Promise<void> {
+        const brand = await Brand.findById(brandId)
+        if (!brand) {
+            throw new NodeNotFoundError(brandId)
+        }
+
+        const company = await Company.findById(companyId)
+        if (!company) {
+            throw new NodeNotFoundError(companyId)
+        }
+
+        const relationship = await getSpecificBelongsToCompanyRelationship(brandId, companyId)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(BrandRelationship.belongsToCompany, brandId, companyId)
+        }
+
+        await deleteBelongsToCompanyRelationship(brandId, companyId)
     }
 
     static async createHasCarModelRelationship(brandId: number, carModelId: number): Promise<BrandHasCarModelRelationship> {

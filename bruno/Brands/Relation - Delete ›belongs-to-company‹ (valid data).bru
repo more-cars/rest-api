@@ -1,0 +1,18 @@
+meta {
+  name: Delete ›belongs-to-company‹ relation (valid data)
+  type: http
+}
+
+delete {
+  url: {{baseUrl}}/brands/{{validBrandId}}/belongs-to-company/{{validCompanyId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 204
+}
+
+script:pre-request {
+  await lib.Brands.ensureBrandBelongsToCompanyRelationshipExists()
+}

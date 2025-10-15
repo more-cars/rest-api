@@ -5,6 +5,7 @@ import {getAll} from "./brands/getAll"
 import {deleteNode} from "./brands/deleteNode"
 import {createBelongsToCompanyRelation} from "./brands/createBelongsToCompanyRelation"
 import {getBelongsToCompanyRelation} from "./brands/getBelongsToCompanyRelation"
+import {deleteBelongsToCompanyRelation} from "./brands/deleteBelongsToCompanyRelation"
 import {createHasCarModelRelation} from "./brands/createHasCarModelRelation"
 import {getSpecificHasCarModelRelation} from "./brands/getSpecificHasCarModelRelation"
 import {getAllHasCarModelRelations} from "./brands/getAllHasCarModelRelations"
@@ -40,6 +41,10 @@ export class BrandController {
 
     static async getBelongsToCompanyRelation(req: express.Request, res: express.Response) {
         await getBelongsToCompanyRelation(req, res)
+    }
+
+    static async deleteBelongsToCompanyRelation(req: express.Request, res: express.Response) {
+        await deleteBelongsToCompanyRelation(req, res)
     }
 
     static async createHasCarModelRelation(req: express.Request, res: express.Response) {
