@@ -1970,6 +1970,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Car Models"
+        ],
+        "summary": "Deletes the ›is-successor-of‹ relationship between the `Car Model` and the `Partner`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-id",
+            "description": "ID of the `Car Model`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "partner-id",
+            "description": "ID of the `Partner`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›is-successor-of‹ relationship between `Car Model` and `Partner` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›is-successor-of‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/car-models/{car-model-id}/has-image": {

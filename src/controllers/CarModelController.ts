@@ -19,6 +19,7 @@ import {createHasPrimeImageRelation} from "./carModels/createHasPrimeImageRelati
 import {getHasPrimeImageRelation} from "./carModels/getHasPrimeImageRelation"
 import {getSpecificHasPrimeImageRelation} from "./carModels/getSpecificHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./carModels/deleteHasPrimeImageRelation"
+import {deleteIsSuccessorOfRelation} from "./carModels/deleteIsSuccessorOfRelation"
 
 export class CarModelController {
     static async create(req: express.Request, res: express.Response) {
@@ -67,6 +68,10 @@ export class CarModelController {
 
     static async getIsSuccessorOfRelation(req: express.Request, res: express.Response) {
         await getIsSuccessorOfRelation(req, res)
+    }
+
+    static async deleteIsSuccessorOfRelation(req: express.Request, res: express.Response) {
+        await deleteIsSuccessorOfRelation(req, res)
     }
 
     static async createHasImageRelation(req: express.Request, res: express.Response) {

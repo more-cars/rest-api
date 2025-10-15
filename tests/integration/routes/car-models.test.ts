@@ -102,6 +102,14 @@ describe('Car Models', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete ›is-successor-of‹ relationship', async () => {
+        await request(app)
+            .delete('/car-models/123/is-successor-of/456')
+
+        expect(CarModelController.deleteIsSuccessorOfRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create "has Image" Relationship', async () => {
         await request(app)
             .post('/car-models/123/has-image/456')

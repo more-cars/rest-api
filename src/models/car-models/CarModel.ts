@@ -41,6 +41,7 @@ import {createIsSuccessorOfRelationship} from "./createIsSuccessorOfRelationship
 import {getSpecificIsSuccessorOfRelationship} from "./getSpecificIsSuccessorOfRelationship"
 import type {CarModelIsSuccessorOfRelationship} from "./types/CarModelIsSuccessorOfRelationship"
 import {getIsSuccessorOfRelationship} from "./getIsSuccessorOfRelationship"
+import {deleteIsSuccessorOfRelationship} from "./deleteIsSuccessorOfRelationship"
 
 export class CarModel {
     static async create(data: CreateCarModelInput): Promise<CarModelNode> {
@@ -245,6 +246,25 @@ export class CarModel {
         }
 
         return relationship
+    }
+
+    static async deleteIsSuccessorOfRelationship(carModelId: number, partnerId: number): Promise<void> {
+        const carModel = await CarModel.findById(carModelId)
+        if (!carModel) {
+            throw new NodeNotFoundError(carModelId)
+        }
+
+        const partner = await CarModel.findById(partnerId)
+        if (!partner) {
+            throw new NodeNotFoundError(partnerId)
+        }
+
+        const relationship = await getSpecificIsSuccessorOfRelationship(carModelId, partnerId)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(CarModelRelationship.isSuccessorOf, carModelId, partnerId)
+        }
+
+        await deleteIsSuccessorOfRelationship(carModelId, partnerId)
     }
 
     static async createHasImageRelationship(carModelId: number, imageId: number): Promise<CarModelHasImageRelationship> {
