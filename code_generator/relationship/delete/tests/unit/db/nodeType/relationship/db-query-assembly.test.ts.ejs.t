@@ -2,8 +2,8 @@
 to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.kebab(relationshipName) %>/delete/db-query-assembly.test.ts
 ---
 import {expect, test} from 'vitest'
-import {deleteSpecificRelationshipQuery} from "../../../../../src/db/relationships/deleteSpecificRelationship"
-import {DbRelationship} from "../../../../../src/db/types/DbRelationship"
+import {deleteSpecificRelationshipQuery} from "../../../../../../src/db/relationships/deleteSpecificRelationship"
+import {DbRelationship} from "../../../../../../src/db/types/DbRelationship"
 
 test('assembled database query for deleting ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship', async () => {
     const query = deleteSpecificRelationshipQuery(
