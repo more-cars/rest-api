@@ -35,6 +35,7 @@ import {createHasSuccessorRelationship} from "./createHasSuccessorRelationship"
 import {getSpecificHasSuccessorRelationship} from "./getSpecificHasSuccessorRelationship"
 import type {CarModelHasSuccessorRelationship} from "./types/CarModelHasSuccessorRelationship"
 import {SemanticError} from "../types/SemanticError"
+import {getHasSuccessorRelationship} from "./getHasSuccessorRelationship"
 
 export class CarModel {
     static async create(data: CreateCarModelInput): Promise<CarModelNode> {
@@ -162,6 +163,20 @@ export class CarModel {
         }
 
         return createdRelationship
+    }
+
+    static async getHasSuccessorRelationship(carModelId: number): Promise<CarModelHasSuccessorRelationship> {
+        const carModel = await CarModel.findById(carModelId)
+        if (!carModel) {
+            throw new NodeNotFoundError(carModelId)
+        }
+
+        const relationship = await getHasSuccessorRelationship(carModelId)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(CarModelRelationship.hasSuccessor, carModelId, null)
+        }
+
+        return relationship
     }
 
     static async createHasImageRelationship(carModelId: number, imageId: number): Promise<CarModelHasImageRelationship> {

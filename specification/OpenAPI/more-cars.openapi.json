@@ -1743,6 +1743,47 @@
         }
       }
     },
+    "/car-models/{car-model-id}/has-successor": {
+      "get": {
+        "tags": [
+          "Car Models"
+        ],
+        "summary": "Get the ›has-successor‹ relationship for the `Car Model`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-id",
+            "description": "ID of the `Car Model`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›has-successor‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelHasSuccessorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Car Model` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/car-models/{car-model-id}/has-successor/{partner-id}": {
       "post": {
         "tags": [

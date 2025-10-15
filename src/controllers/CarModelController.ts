@@ -7,6 +7,7 @@ import {createBelongsToBrandRelation} from "./carModels/createBelongsToBrandRela
 import {getBelongsToBrandRelation} from "./carModels/getBelongsToBrandRelation"
 import {deleteBelongsToBrandRelation} from "./carModels/deleteBelongsToBrandRelation"
 import {createHasSuccessorRelation} from "./carModels/createHasSuccessorRelation"
+import {getHasSuccessorRelation} from "./carModels/getHasSuccessorRelation"
 import {createHasImageRelation} from "./carModels/createHasImageRelation"
 import {getSpecificHasImageRelation} from "./carModels/getSpecificHasImageRelation"
 import {getAllHasImageRelations} from "./carModels/getAllHasImageRelations"
@@ -47,6 +48,10 @@ export class CarModelController {
 
     static async createHasSuccessorRelation(req: express.Request, res: express.Response) {
         await createHasSuccessorRelation(req, res)
+    }
+
+    static async getHasSuccessorRelation(req: express.Request, res: express.Response) {
+        await getHasSuccessorRelation(req, res)
     }
 
     static async createHasImageRelation(req: express.Request, res: express.Response) {
