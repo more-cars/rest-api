@@ -17,9 +17,9 @@ export async function get<%= h.changeCase.pascal(relationshipName) %>Relation(re
     const <%= h.changeCase.camel(startNodeType) %>Id = parseInt(req.params.<%= h.changeCase.camel(startNodeType) %>Id)
 
     try {
-        const relationship = await <%= h.changeCase.pascal(startNodeType) %>.get<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id)
-        const relationshipPartner = await <%= h.changeCase.pascal(endNodeType) %>.findById(relationship.<%= h.changeCase.snake(endNodeType) %>_id)
-        const marshalledData = marshalRelationship(relationship as BaseRelationship, relationshipPartner as <%= h.changeCase.pascal(endNodeType) %>Node, '<%= h.changeCase.lower(endNodeType) %>')
+        const relation = await <%= h.changeCase.pascal(startNodeType) %>.get<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id)
+        const relationPartner = await <%= h.changeCase.pascal(endNodeType) %>.findById(relation.<%= h.changeCase.snake(endNodeType) %>_id)
+        const marshalledData = marshalRelationship(relation as BaseRelationship, relationPartner as <%= h.changeCase.pascal(endNodeType) %>Node, '<%= h.changeCase.lower(endNodeType) %>')
 
         return sendResponse200(marshalledData, res)
     } catch (e) {
