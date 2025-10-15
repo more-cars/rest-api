@@ -66,7 +66,7 @@ describe('Creating a ›is-successor-of‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/car-models/123/is-successor-of/567')
+            .post('/car-models/123/is-successor-of/123')
 
         expect(response.statusCode)
             .toBe(422)
