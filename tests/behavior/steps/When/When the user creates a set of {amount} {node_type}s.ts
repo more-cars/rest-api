@@ -14,23 +14,31 @@ When('the user creates a set of {int} {string}s',
 
         // TODO this approach is not scalable, and it is cheating because we are circumventing the API -> needs to be an explicit API call
         for (let i = 0; i < amount; i++) {
+            let node
+
             switch (nodeType.toLowerCase()) {
                 case 'company':
-                    nodes.push(await Company.create(FakeCompany))
+                    node = await Company.create(FakeCompany)
                     break
                 case 'brand':
-                    nodes.push(await Brand.create(FakeBrand))
+                    node = await Brand.create(FakeBrand)
                     break
                 case 'car model':
-                    nodes.push(await CarModel.create(FakeCarModel))
+                    node = await CarModel.create(FakeCarModel)
                     break
                 case 'image':
-                    nodes.push(await Image.create(FakeImage))
+                    node = await Image.create(FakeImage)
                     break
             }
+
+            nodes.push({
+                data: node
+            })
         }
         const response = {
-            data: nodes
+            data: { // axios payload
+                data: nodes // mc payload
+            }
         }
 
         world.rememberResponse(response)
