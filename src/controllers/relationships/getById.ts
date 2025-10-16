@@ -1,0 +1,28 @@
+import express from "express"
+import {Relationship} from "../../models/relationships/Relationship"
+import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
+import {RelationshipNotFoundError} from "../../models/types/RelationshipNotFoundError"
+import {marshalRelationship} from "./marshalRelationship"
+import {sendResponse200} from "../responses/sendResponse200"
+import {sendResponse404} from "../responses/sendResponse404"
+import {sendResponse500} from "../responses/sendResponse500"
+
+export async function getById(req: express.Request, res: express.Response) {
+    const relationshipId = parseInt(req.params.id)
+
+    try {
+        const relationship = await Relationship.findById(relationshipId)
+        const marshalledData = marshalRelationship(relationship, relationship.relationship_partner, null)
+
+        return sendResponse200(marshalledData, res)
+    } catch (e) {
+        if (e instanceof NodeNotFoundError) {
+            return sendResponse404(res)
+        } else if (e instanceof RelationshipNotFoundError) {
+            return sendResponse404(res)
+        } else {
+            console.error(e)
+            return sendResponse500(res)
+        }
+    }
+}

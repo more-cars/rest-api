@@ -1,6 +1,6 @@
 import http from "k6/http"
-import type {NodeType} from "../../_toolbox/NodeType"
-import {getBasePathFragmentForNodeType} from "../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
+import type {NodeType} from "../../_toolbox/NodeType.ts"
+import {getBasePathFragmentForNodeType} from "../../_toolbox/dbSeeding/getBasePathFragmentForNodeType.ts"
 import {dasherize} from "inflection"
 
 export function createRelationship(
@@ -10,5 +10,8 @@ export function createRelationship(
     relationshipName: string
 ) {
     const url = `${__ENV.API_URL}/${getBasePathFragmentForNodeType(startNodeType)}/${startNodeId}/${dasherize(relationshipName)}/${endNodeId}`
-    http.post(url)
+    const response = http.post(url)
+
+    // @ts-expect-error TS2531
+    return response.json().data.relationship_id
 }

@@ -6,6 +6,7 @@ import brands from './routes/brands'
 import carModels from "./routes/car-models"
 import images from "./routes/images"
 import companies from "./routes/companies"
+import relationships from "./routes/relationships"
 import {basicAuthentication} from "./basicAuthentication"
 
 const app: Express = express()
@@ -27,5 +28,6 @@ app.use('/', brands)
 app.use('/', carModels)
 app.use('/', images)
 app.use('/', companies)
+app.use('/', relationships)
 
 export {app}
