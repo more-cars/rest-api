@@ -12,6 +12,7 @@ export function getAllPotentialPartnerNodeTypes() {
             NodeTypeLabel.Image,
         ]],
         [NodeTypeLabel.CarModel, [
+            NodeTypeLabel.CarModel,
             NodeTypeLabel.Image,
         ]],
     ])

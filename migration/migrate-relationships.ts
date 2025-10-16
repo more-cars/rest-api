@@ -116,5 +116,9 @@ function isRelationshipReversedInOldDb(relationshipType: DbRelationship) {
         return true
     }
 
+    if (relationshipType === 'HAS_SUCCESSOR') {
+        return true
+    }
+
     return false
 }

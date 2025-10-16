@@ -5,6 +5,7 @@ import type {RelationshipTypeLabelOld} from "./types/RelationshipTypeLabelOld"
 export const RelationshipTypeMapping = new Map<DbRelationship, RelationshipTypeLabelOld>([
     [DbRelationship.CompanyHasBrand, 'OWNS_BRAND'],
     [DbRelationship.BrandHasCarModel, 'BUILDS_CAR_MODEL'],
+    [DbRelationship.CarModelHasSuccessor, 'IS_SUCCESSOR_OF'],
     [DbRelationship.NodeHasImage, 'HAS_IMAGE'],
     [DbRelationship.CarModelHasPrimeImage, 'IS_MAIN_IMAGE_OF_NODE'],
 ])
