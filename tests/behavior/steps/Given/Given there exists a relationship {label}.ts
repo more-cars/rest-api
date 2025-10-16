@@ -3,5 +3,5 @@ import {seedRelationship} from "../../../_toolbox/dbSeeding/brands/relationships
 
 When('there exists a relationship {string}',
     async (label: string) => {
-        world.rememberRelationship(seedRelationship(), label)
+        world.rememberRelationship(await seedRelationship(), label)
     })
