@@ -13,9 +13,9 @@ to: ticket-generator/_temp/ticketTree.json
         "dataStructure": <%- JSON.stringify(dataStructure, null, 2) %>,
         "stories": [{
             "title": "Create <%= h.changeCase.upper(nodeType) %> Node",
-            "userStory": "As an API contributor\nI want to be able to create <%= h.changeCase.upper(nodeType) %> nodes\nSo I can fill gaps in the database",
+            "userStory": "As an API contributor\nI want to be able to create <%= h.changeCase.upper(h.inflection.pluralize(nodeType)) %>\nSo I can fill gaps in the database",
             "specificationList": [
-                "A <%= h.changeCase.upper(nodeType) %> node is successfully created when requested with valid data. The required data structure is specified in parent (epic) ticket <%= h.changeCase.upper(h.changeCase.kebab(epicId)) %>. -> Status Code `201`",
+                "A <%= h.changeCase.upper(nodeType) %> node is successfully created when the request contains valid data. The required data structure is specified in parent (epic) ticket <%= h.changeCase.upper(h.changeCase.kebab(epicId)) %>. -> Status Code `201`",
                 "A successful request returns the created node with all specified properties.",
                 "Properties are returned, even when they are empty (optional fields). They are returned with value `null`.",
                 "Unknown properties are ignored. They are not processed. They do not produce any info, warning or error messages for the user. -> Status Code `201`",
@@ -43,8 +43,8 @@ to: ticket-generator/_temp/ticketTree.json
                                 for (prop in properties) {
                                     gherkin.push('  | ' + prop + ' | ' + properties[prop].example + ' | ' + properties[prop].datatype + ' |')
                                 }
-                                gherkin.push('Then the response should return the \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\"')
-                                gherkin.push('And the response should return with status code 201')
+                                gherkin.push('Then the request should be confirmed with status code 201')
+                                gherkin.push('And the response should return the \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\"')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }
@@ -60,7 +60,7 @@ to: ticket-generator/_temp/ticketTree.json
                                 gherkin = []
                                 gherkin.push('When the user tries to create a \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\" with the following data')
                                 gherkin.push('  | key | value | datatype |')
-                                gherkin.push('Then the response should return with status code 400')
+                                gherkin.push('Then the request should be rejected with status code 400')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }, {
@@ -72,19 +72,7 @@ to: ticket-generator/_temp/ticketTree.json
                                 for (prop in properties) {
                                    gherkin.push('  | ' + prop + ' | ' + properties[prop].example + ' | boolean |')
                                 }
-                                gherkin.push('Then the response should return with status code 400')
-                            %>
-                            "gherkin": "<%- gherkin.join('\\n') %>"
-                        }, {
-                            "title": "Trying to create a <%= h.changeCase.upper(nodeType) %> with malformed data",
-                            <%
-                                gherkin = []
-                                gherkin.push('When the user tries to create a \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\" with the following data')
-                                gherkin.push('  | key | value | datatype |')
-                                for (prop in properties) {
-                                  gherkin.push('  | ' + prop + ' | ;' + properties[prop].example + ' | ' + properties[prop].datatype + ' |')
-                                }
-                                gherkin.push('Then the response should return with status code 400')
+                                gherkin.push('Then the request should be rejected with status code 400')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }
@@ -104,9 +92,9 @@ to: ticket-generator/_temp/ticketTree.json
                                     gherkin.push('  | ' + prop + ' | ' + properties[prop].example + ' | ' + properties[prop].datatype + ' |')
                                 }
                                 gherkin.push('Then the response should contain the following properties')
-                                gherkin.push('  | key | value |')
+                                gherkin.push('  | key | value | datatype |')
                                 for (prop in properties) {
-                                    gherkin.push('  | ' + prop + ' | ' + properties[prop].example + ' |')
+                                    gherkin.push('  | ' + prop + ' | ' + properties[prop].example + ' | ' + properties[prop].datatype + ' |')
                                 }
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
@@ -122,12 +110,12 @@ to: ticket-generator/_temp/ticketTree.json
                                     }
                                 }
                                 gherkin.push('Then the response should contain the following properties')
-                                gherkin.push('  | key | value |')
+                                gherkin.push('  | key | value | datatype |')
                                 for (prop in properties) {
                                     if (properties[prop].mandatory) {
-                                        gherkin.push('  | ' + prop + ' | ' + properties[prop].example + ' |')
+                                        gherkin.push('  | ' + prop + ' | ' + properties[prop].example + ' | ' + properties[prop].datatype + ' |')
                                     } else {
-                                        gherkin.push('  | ' + prop + ' | |')
+                                        gherkin.push('  | ' + prop + ' |  | ' + properties[prop].datatype + ' |')
                                     }
                                 }
                             %>
@@ -150,9 +138,9 @@ to: ticket-generator/_temp/ticketTree.json
                                 }
                                 gherkin.push('  | thimbleweed | park | string |')
                                 gherkin.push('Then the response should contain the following properties')
-                                gherkin.push('  | key | value |')
+                                gherkin.push('  | key | value | datatype |')
                                 for (prop in properties) {
-                                    gherkin.push('  | ' + prop + ' | ' + properties[prop].example + ' |')
+                                    gherkin.push('  | ' + prop + ' | ' + properties[prop].example + ' | ' + properties[prop].datatype + ' |')
                                 }
                                 gherkin.push('And the response should NOT contain the following keys')
                                 gherkin.push('  | key         |')
@@ -183,9 +171,9 @@ to: ticket-generator/_temp/ticketTree.json
                                 gherkin.push('  | created_at |')
                                 gherkin.push('  | updated_at |')
                                 gherkin.push('But the response should NOT contain the following properties')
-                                gherkin.push('  | id         | 1234       |')
-                                gherkin.push('  | created_at | 2025-01-01 |')
-                                gherkin.push('  | updated_at | 2025-01-01 |')
+                                gherkin.push('  | id         | 1234       | number |')
+                                gherkin.push('  | created_at | 2025-01-01 | string |')
+                                gherkin.push('  | updated_at | 2025-01-01 | string |')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }
