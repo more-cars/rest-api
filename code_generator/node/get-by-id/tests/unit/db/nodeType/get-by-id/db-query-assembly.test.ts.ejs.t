@@ -1,5 +1,5 @@
 ---
-to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/getById/cypherQueryIsCorrectlyAssembled.test.ts
+to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/get-by-id/db-query-assembly.test.ts
 ---
 import {expect, test} from 'vitest'
 import {getNodeByIdQuery} from "../../../../../src/db/nodes/getNodeById"

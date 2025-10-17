@@ -1,5 +1,5 @@
 ---
-to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/delete/cypherQueryIsCorrectlyAssembled.test.ts
+to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/delete/db-query-assembly.test.ts
 ---
 import {expect, test} from 'vitest'
 import {deleteNodeQuery} from "../../../../../src/db/nodes/deleteNode"

@@ -1,5 +1,5 @@
 ---
-to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create/cypherQueryIsCorrectlyAssembled.test.ts
+to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create/db-query-assembly.test.ts
 ---
 <%
     props_in = []
