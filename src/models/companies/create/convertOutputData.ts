@@ -1,8 +1,8 @@
 import {CompanyNode as CompanyNodeInput} from "../../../db/nodes/companies/types/CompanyNode"
-import {CompanyNode as CompanyNodeOutput} from "../types/CompanyNode"
+import {CompanyNode} from "../types/CompanyNode"
 
-export function convertOutputData(data: CompanyNodeInput): CompanyNodeOutput {
-    const convertedData: CompanyNodeOutput = {
+export function convertOutputData(data: CompanyNodeInput): CompanyNode {
+    return {
         id: data.id,
         name: data.name,
         founded: data.founded,
@@ -11,7 +11,5 @@ export function convertOutputData(data: CompanyNodeInput): CompanyNodeOutput {
         legal_headquarters_location: data.legal_headquarters_location,
         created_at: data.created_at,
         updated_at: data.updated_at,
-    }
-
-    return convertedData
+    } as CompanyNode
 }

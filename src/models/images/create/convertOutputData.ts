@@ -1,8 +1,8 @@
 import {ImageNode as ImageNodeInput} from "../../../db/nodes/images/types/ImageNode"
-import {ImageNode as ImageNodeOutput} from "../types/ImageNode"
+import {ImageNode} from "../types/ImageNode"
 
-export function convertOutputData(data: ImageNodeInput): ImageNodeOutput {
-    const convertedData: ImageNodeOutput = {
+export function convertOutputData(data: ImageNodeInput): ImageNode {
+    return {
         id: data.id,
         image_provider: data.image_provider,
         external_id: data.external_id,
@@ -21,7 +21,5 @@ export function convertOutputData(data: ImageNodeInput): ImageNodeOutput {
         image_url_xs: data.image_url_xs,
         created_at: data.created_at,
         updated_at: data.updated_at,
-    }
-
-    return convertedData
+    } as ImageNode
 }

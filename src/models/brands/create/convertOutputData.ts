@@ -1,8 +1,8 @@
 import {BrandNode as BrandNodeInput} from "../../../db/nodes/brands/types/BrandNode"
-import {BrandNode as BrandNodeOutput} from "../types/BrandNode"
+import {BrandNode} from "../types/BrandNode"
 
-export function convertOutputData(data: BrandNodeInput): BrandNodeOutput {
-    const convertedData: BrandNodeOutput = {
+export function convertOutputData(data: BrandNodeInput): BrandNode {
+    return {
         id: data.id,
         name: data.name,
         full_name: data.full_name,
@@ -12,7 +12,5 @@ export function convertOutputData(data: BrandNodeInput): BrandNodeOutput {
         hsn: data.hsn,
         created_at: data.created_at,
         updated_at: data.updated_at,
-    }
-
-    return convertedData
+    } as BrandNode
 }
