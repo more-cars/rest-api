@@ -4,7 +4,7 @@ import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 import {getAllNodesOfTypeQuery} from "../../../../../src/db/nodes/getAllNodesOfTypeQuery"
 import {DbFilterOperator} from "../../../../../src/db/types/DbFilterOperator"
 
-describe('db query assembly for "get all nodes" - combined params', () => {
+describe('database query for fetching all nodes of a type - combined params', () => {
     test.each([
         ['mc_id', 'ASC', 'name', 'BMW', DbFilterOperator.equal, 0, 100],
         ['mc_id', 'ASC', 'max_power', '500', DbFilterOperator.greater_than, 0, 100],

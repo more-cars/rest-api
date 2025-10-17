@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {createNodeQuery} from "../../../../../src/db/nodes/images/createNode"
 import {InputImageCreate} from "../../../../../src/db/nodes/images/types/InputImageCreate"
 
-test('cypher query is correctly assembled for "create image" request', async () => {
+test('database query for creating an IMAGE node', async () => {
     const data: InputImageCreate = {
         external_id: "54570839725",
         image_provider: "flickr",

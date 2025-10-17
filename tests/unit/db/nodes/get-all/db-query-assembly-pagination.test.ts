@@ -4,7 +4,7 @@ import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 import {getAllNodesOfTypeQuery} from "../../../../../src/db/nodes/getAllNodesOfTypeQuery"
 import {DbFilterOperator} from "../../../../../src/db/types/DbFilterOperator"
 
-describe('db query assembly for "get all nodes" - pagination', () => {
+describe('database query for fetching all nodes of a type - pagination', () => {
     test.each([
         [1, 0, 100],
         [2, 100, 100],

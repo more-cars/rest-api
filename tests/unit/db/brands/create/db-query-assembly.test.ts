@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {createNodeQuery} from "../../../../../src/db/nodes/brands/createNode"
 import {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
 
-test('cypher query is correctly assembled for "create brand" request', async () => {
+test('database query for creating a BRAND node', async () => {
     const data: InputBrandCreate = {
         name: "Test Brand",
         full_name: "Test Brand Full Name",

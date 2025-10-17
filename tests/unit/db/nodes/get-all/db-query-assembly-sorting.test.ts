@@ -4,7 +4,7 @@ import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 import {getAllNodesOfTypeQuery} from "../../../../../src/db/nodes/getAllNodesOfTypeQuery"
 import {DbFilterOperator} from "../../../../../src/db/types/DbFilterOperator"
 
-describe('db query assembly for "get all nodes" - sorting', () => {
+describe('database query for fetching all nodes of a type - sorting', () => {
     test.each([
         ['mc_id', 'ASC'],
         ['name', 'ASC'],

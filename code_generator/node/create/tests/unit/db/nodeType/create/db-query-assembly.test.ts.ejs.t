@@ -28,7 +28,7 @@ import {expect, test} from 'vitest'
 import {createNodeQuery} from "../../../../../src/db/nodes/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/createNode"
 import {Input<%= h.changeCase.pascal(nodeType) %>Create} from "../../../../../src/db/nodes/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Input<%= h.changeCase.pascal(nodeType) %>Create"
 
-test('cypher query is correctly assembled', async () => {
+test('database query for creating a <%= h.changeCase.upper(nodeType) %> node', async () => {
     const data: Input<%= h.changeCase.pascal(nodeType) %>Create = {
 <%- props_in.map(line => '        ' + line).join(',\n') %>
     }
