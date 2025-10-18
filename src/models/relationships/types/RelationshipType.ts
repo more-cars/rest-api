@@ -1,0 +1,15 @@
+export enum RelationshipType {
+    CompanyHasBrand = 'HAS_BRAND',
+    CompanyHasImage = 'HAS_IMAGE',
+    CompanyHasPrimeImage = 'HAS_PRIME_IMAGE',
+    BrandBelongsToCompany = 'BELONGS_TO_COMPANY',
+    BrandHasCarModel = 'HAS_CAR_MODEL',
+    BrandHasImage = 'HAS_IMAGE',
+    BrandHasPrimeImage = 'HAS_PRIME_IMAGE',
+    CarModelBelongsToBrand = 'BELONGS_TO_BRAND',
+    CarModelHasSuccessor = 'HAS_SUCCESSOR',
+    CarModelIsSuccessorOf = 'IS_SUCCESSOR_OF',
+    CarModelHasImage = 'HAS_IMAGE',
+    CarModelHasPrimeImage = 'HAS_PRIME_IMAGE',
+    ImageBelongsToNode = 'BELONGS_TO_NODE',
+}
