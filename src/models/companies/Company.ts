@@ -19,7 +19,7 @@ import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {Image} from "../images/Image"
 import {getSpecificHasPrimeImageRelationship} from "./getSpecificHasPrimeImageRelationship"
 import type {CompanyHasPrimeImageRelationship} from "./types/CompanyHasPrimeImageRelationship"
-import {getRelationship} from "../relationships/getRelationship"
+import {getRel} from "../relationships/getRel"
 import {getAllHasBrandRelationships} from "./getAllHasBrandRelationships"
 import {createHasImageRelationship} from "./createHasImageRelationship"
 import {getSpecificHasImageRelationship} from "./getSpecificHasImageRelationship"
@@ -208,7 +208,7 @@ export class Company {
             throw new NodeNotFoundError(companyId)
         }
 
-        const relationship = await getRelationship(companyId, RelationshipType.CompanyHasPrimeImage)
+        const relationship = await getRel(companyId, RelationshipType.CompanyHasPrimeImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(CompanyRelationship.hasPrimeImage, companyId, null)
         }

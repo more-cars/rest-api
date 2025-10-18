@@ -30,7 +30,7 @@ import {createBelongsToCompanyRelationship} from "./createBelongsToCompanyRelati
 import {Company} from "../companies/Company"
 import {getSpecificBelongsToCompanyRelationship} from "./getSpecificBelongsToCompanyRelationship"
 import type {BrandBelongsToCompanyRelationship} from "./types/BrandBelongsToCompanyRelationship"
-import {getRelationship} from "../relationships/getRelationship"
+import {getRel} from "../relationships/getRel"
 import {RelationshipType} from "../relationships/types/RelationshipType"
 import {getSpecificRel} from "../relationships/getSpecificRel"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
@@ -106,7 +106,7 @@ export class Brand {
             throw new NodeNotFoundError(brandId)
         }
 
-        const relationship = await getRelationship(brandId, RelationshipType.BrandBelongsToCompany)
+        const relationship = await getRel(brandId, RelationshipType.BrandBelongsToCompany)
         if (!relationship) {
             throw new RelationshipNotFoundError(BrandRelationship.belongsToCompany, brandId, null)
         }
@@ -310,7 +310,7 @@ export class Brand {
             throw new NodeNotFoundError(brandId)
         }
 
-        const relationship = await getRelationship(brandId, RelationshipType.BrandHasPrimeImage)
+        const relationship = await getRel(brandId, RelationshipType.BrandHasPrimeImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(BrandRelationship.hasPrimeImage, brandId, null)
         }

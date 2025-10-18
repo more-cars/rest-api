@@ -17,7 +17,7 @@ import {createHasImageRelationship} from "./createHasImageRelationship"
 import {getAllHasImageRelationships} from "./getAllHasImageRelationships"
 import {CarModelHasPrimeImageRelationship} from "./types/CarModelHasPrimeImageRelationship"
 import {createHasPrimeImageRelationship} from "./createHasPrimeImageRelationship"
-import {getRelationship} from "../relationships/getRelationship"
+import {getRel} from "../relationships/getRel"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {CarModelRelationship} from "./types/CarModelRelationship"
@@ -109,7 +109,7 @@ export class CarModel {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getRelationship(carModelId, RelationshipType.CarModelBelongsToBrand)
+        const relationship = await getRel(carModelId, RelationshipType.CarModelBelongsToBrand)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.belongsToBrand, carModelId)
         }
@@ -172,7 +172,7 @@ export class CarModel {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getRelationship(carModelId, RelationshipType.CarModelHasSuccessor)
+        const relationship = await getRel(carModelId, RelationshipType.CarModelHasSuccessor)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.hasSuccessor, carModelId, null)
         }
@@ -235,7 +235,7 @@ export class CarModel {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getRelationship(carModelId, RelationshipType.CarModelIsSuccessorOf)
+        const relationship = await getRel(carModelId, RelationshipType.CarModelIsSuccessorOf)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.isSuccessorOf, carModelId, null)
         }
@@ -365,7 +365,7 @@ export class CarModel {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getRelationship(carModelId, RelationshipType.CarModelHasPrimeImage)
+        const relationship = await getRel(carModelId, RelationshipType.CarModelHasPrimeImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.hasPrimeImage, carModelId, null)
         }
