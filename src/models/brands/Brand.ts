@@ -23,19 +23,17 @@ import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
 import {BrandRelationship} from "./types/BrandRelationship"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
-import {deleteHasCarModelRelationship} from "./deleteHasCarModelRelationship"
-import {deleteHasImageRelationship} from "./deleteHasImageRelationship"
 import {createHasPrimeImageRelationship} from "./createHasPrimeImageRelationship"
 import {getSpecificHasPrimeImageRelationship} from "./getSpecificHasPrimeImageRelationship"
 import type {BrandHasPrimeImageRelationship} from "./types/BrandHasPrimeImageRelationship"
-import {deleteHasPrimeImageRelationship} from "./deleteHasPrimeImageRelationship"
 import {createBelongsToCompanyRelationship} from "./createBelongsToCompanyRelationship"
 import {Company} from "../companies/Company"
 import {getSpecificBelongsToCompanyRelationship} from "./getSpecificBelongsToCompanyRelationship"
 import type {BrandBelongsToCompanyRelationship} from "./types/BrandBelongsToCompanyRelationship"
-import {deleteBelongsToCompanyRelationship} from "./deleteBelongsToCompanyRelationship"
 import {getRelationship} from "../relationships/getRelationship"
 import {RelationshipType} from "../relationships/types/RelationshipType"
+import {getSpecificRel} from "../relationships/getSpecificRel"
+import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 
 export class Brand {
     static async create(data: CreateBrandInput): Promise<BrandNode> {
@@ -116,7 +114,7 @@ export class Brand {
         return relationship
     }
 
-    static async deleteBelongsToCompanyRelationship(brandId: number, companyId: number): Promise<void> {
+    static async deleteBelongsToCompanyRelationship(brandId: number, companyId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -127,12 +125,12 @@ export class Brand {
             throw new NodeNotFoundError(companyId)
         }
 
-        const relationship = await getSpecificBelongsToCompanyRelationship(brandId, companyId)
+        const relationship = await getSpecificRel(brandId, companyId, RelationshipType.BrandBelongsToCompany)
         if (!relationship) {
             throw new RelationshipNotFoundError(BrandRelationship.belongsToCompany, brandId, companyId)
         }
 
-        await deleteBelongsToCompanyRelationship(brandId, companyId)
+        await deleteSpecificRel(brandId, companyId, RelationshipType.BrandBelongsToCompany)
     }
 
     static async createHasCarModelRelationship(brandId: number, carModelId: number): Promise<BrandHasCarModelRelationship> {
@@ -189,7 +187,7 @@ export class Brand {
         return getAllBrandHasCarModelRelationships(brandId)
     }
 
-    static async deleteHasCarModelRelationship(brandId: number, carModelId: number): Promise<void> {
+    static async deleteHasCarModelRelationship(brandId: number, carModelId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -200,12 +198,12 @@ export class Brand {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getSpecificHasCarModelRelationship(brandId, carModelId)
+        const relationship = await getSpecificRel(brandId, carModelId, RelationshipType.BrandHasCarModel)
         if (!relationship) {
             throw new RelationshipNotFoundError(BrandRelationship.hasCarModel, brandId, carModelId)
         }
 
-        await deleteHasCarModelRelationship(brandId, carModelId)
+        await deleteSpecificRel(brandId, carModelId, RelationshipType.BrandHasCarModel)
     }
 
     static async createHasImageRelationship(brandId: number, imageId: number): Promise<BrandHasImageRelationship> {
@@ -261,7 +259,7 @@ export class Brand {
         return getAllBrandHasImageRelationships(brandId)
     }
 
-    static async deleteHasImageRelationship(brandId: number, imageId: number): Promise<void> {
+    static async deleteHasImageRelationship(brandId: number, imageId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -272,12 +270,12 @@ export class Brand {
             throw new NodeNotFoundError(imageId)
         }
 
-        const relationship = await getSpecificHasImageRelationship(brandId, imageId)
+        const relationship = await getSpecificRel(brandId, imageId, RelationshipType.BrandHasImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(BrandRelationship.hasImage, brandId, imageId)
         }
 
-        await deleteHasImageRelationship(brandId, imageId)
+        await deleteSpecificRel(brandId, imageId, RelationshipType.BrandHasImage)
     }
 
     static async createHasPrimeImageRelationship(brandId: number, imageId: number): Promise<BrandHasPrimeImageRelationship> {
@@ -320,7 +318,7 @@ export class Brand {
         return relationship
     }
 
-    static async deleteHasPrimeImageRelationship(brandId: number, imageId: number): Promise<void> {
+    static async deleteHasPrimeImageRelationship(brandId: number, imageId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -331,11 +329,11 @@ export class Brand {
             throw new NodeNotFoundError(imageId)
         }
 
-        const relationship = await getSpecificHasPrimeImageRelationship(brandId, imageId)
+        const relationship = await getSpecificRel(brandId, imageId, RelationshipType.BrandHasPrimeImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(BrandRelationship.hasPrimeImage, brandId, imageId)
         }
 
-        await deleteHasPrimeImageRelationship(brandId, imageId)
+        await deleteSpecificRel(brandId, imageId, RelationshipType.BrandHasPrimeImage)
     }
 }

@@ -27,19 +27,16 @@ import {getSpecificHasImageRelationship} from "./getSpecificHasImageRelationship
 import {getSpecificHasPrimeImageRelationship} from "./getSpecificHasPrimeImageRelationship"
 import {deleteDeprecatedRelationship} from "../relationships/deleteDeprecatedRelationship"
 import {DbRelationship} from "../../db/types/DbRelationship"
-import {deleteHasPrimeImageRelationship} from "./deleteHasPrimeImageRelationship"
-import {deleteHasImageRelationship} from "./deleteHasImageRelationship"
-import {deleteBelongsToBrandRelationship} from "./deleteBelongsToBrandRelationship"
 import {createHasSuccessorRelationship} from "./createHasSuccessorRelationship"
 import {getSpecificHasSuccessorRelationship} from "./getSpecificHasSuccessorRelationship"
 import type {CarModelHasSuccessorRelationship} from "./types/CarModelHasSuccessorRelationship"
 import {SemanticError} from "../types/SemanticError"
-import {deleteHasSuccessorRelationship} from "./deleteHasSuccessorRelationship"
 import {createIsSuccessorOfRelationship} from "./createIsSuccessorOfRelationship"
 import {getSpecificIsSuccessorOfRelationship} from "./getSpecificIsSuccessorOfRelationship"
 import type {CarModelIsSuccessorOfRelationship} from "./types/CarModelIsSuccessorOfRelationship"
-import {deleteIsSuccessorOfRelationship} from "./deleteIsSuccessorOfRelationship"
 import {RelationshipType} from "../relationships/types/RelationshipType"
+import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
+import {getSpecificRel} from "../relationships/getSpecificRel"
 
 export class CarModel {
     static async create(data: CreateCarModelInput): Promise<CarModelNode> {
@@ -120,7 +117,7 @@ export class CarModel {
         return relationship
     }
 
-    static async deleteBelongsToBrandRelationship(carModelId: number, brandId: number): Promise<void> {
+    static async deleteBelongsToBrandRelationship(carModelId: number, brandId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -131,12 +128,12 @@ export class CarModel {
             throw new NodeNotFoundError(brandId)
         }
 
-        const relationship = await getSpecificBelongsToBrandRelationship(carModelId, brandId)
+        const relationship = await getSpecificRel(carModelId, brandId, RelationshipType.CarModelBelongsToBrand)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.belongsToBrand, carModelId, brandId)
         }
 
-        await deleteBelongsToBrandRelationship(carModelId, brandId)
+        await deleteSpecificRel(carModelId, brandId, RelationshipType.CarModelBelongsToBrand)
     }
 
     static async createHasSuccessorRelationship(carModelId: number, partnerId: number): Promise<CarModelHasSuccessorRelationship> {
@@ -183,7 +180,7 @@ export class CarModel {
         return relationship
     }
 
-    static async deleteHasSuccessorRelationship(carModelId: number, partnerId: number): Promise<void> {
+    static async deleteHasSuccessorRelationship(carModelId: number, partnerId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -194,12 +191,12 @@ export class CarModel {
             throw new NodeNotFoundError(partnerId)
         }
 
-        const relationship = await getSpecificHasSuccessorRelationship(carModelId, partnerId)
+        const relationship = await getSpecificRel(carModelId, partnerId, RelationshipType.CarModelHasSuccessor)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.hasSuccessor, carModelId, partnerId)
         }
 
-        await deleteHasSuccessorRelationship(carModelId, partnerId)
+        await deleteSpecificRel(carModelId, partnerId, RelationshipType.CarModelHasSuccessor)
     }
 
     static async createIsSuccessorOfRelationship(carModelId: number, partnerId: number): Promise<CarModelIsSuccessorOfRelationship> {
@@ -246,7 +243,7 @@ export class CarModel {
         return relationship
     }
 
-    static async deleteIsSuccessorOfRelationship(carModelId: number, partnerId: number): Promise<void> {
+    static async deleteIsSuccessorOfRelationship(carModelId: number, partnerId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -257,12 +254,12 @@ export class CarModel {
             throw new NodeNotFoundError(partnerId)
         }
 
-        const relationship = await getSpecificIsSuccessorOfRelationship(carModelId, partnerId)
+        const relationship = await getSpecificRel(carModelId, partnerId, RelationshipType.CarModelIsSuccessorOf)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.isSuccessorOf, carModelId, partnerId)
         }
 
-        await deleteIsSuccessorOfRelationship(carModelId, partnerId)
+        await deleteSpecificRel(carModelId, partnerId, RelationshipType.CarModelIsSuccessorOf)
     }
 
     static async createHasImageRelationship(carModelId: number, imageId: number): Promise<CarModelHasImageRelationship> {
@@ -317,7 +314,7 @@ export class CarModel {
         return getAllHasImageRelationships(carModelId)
     }
 
-    static async deleteHasImageRelationship(carModelId: number, imageId: number): Promise<void> {
+    static async deleteHasImageRelationship(carModelId: number, imageId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -328,12 +325,12 @@ export class CarModel {
             throw new NodeNotFoundError(imageId)
         }
 
-        const relationship = await getSpecificHasImageRelationship(carModelId, imageId)
+        const relationship = await getSpecificRel(carModelId, imageId, RelationshipType.CarModelHasImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.hasImage, carModelId, imageId)
         }
 
-        await deleteHasImageRelationship(carModelId, imageId)
+        await deleteSpecificRel(carModelId, imageId, RelationshipType.CarModelHasImage)
     }
 
     static async createHasPrimeImageRelationship(carModelId: number, imageId: number): Promise<CarModelHasPrimeImageRelationship> {
@@ -395,7 +392,7 @@ export class CarModel {
         return relationship
     }
 
-    static async deleteHasPrimeImageRelationship(carModelId: number, imageId: number): Promise<void> {
+    static async deleteHasPrimeImageRelationship(carModelId: number, imageId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -406,11 +403,11 @@ export class CarModel {
             throw new NodeNotFoundError(imageId)
         }
 
-        const relationship = await getSpecificHasPrimeImageRelationship(carModelId, imageId)
+        const relationship = await getSpecificRel(carModelId, imageId, RelationshipType.CarModelHasPrimeImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.hasPrimeImage, carModelId, imageId)
         }
 
-        await deleteHasPrimeImageRelationship(carModelId, imageId)
+        await deleteSpecificRel(carModelId, imageId, RelationshipType.CarModelHasPrimeImage)
     }
 }

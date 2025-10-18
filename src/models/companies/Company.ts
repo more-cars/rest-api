@@ -21,16 +21,15 @@ import {getSpecificHasPrimeImageRelationship} from "./getSpecificHasPrimeImageRe
 import type {CompanyHasPrimeImageRelationship} from "./types/CompanyHasPrimeImageRelationship"
 import {getRelationship} from "../relationships/getRelationship"
 import {getAllHasBrandRelationships} from "./getAllHasBrandRelationships"
-import {deleteHasBrandRelationship} from "./deleteHasBrandRelationship"
-import {deleteHasPrimeImageRelationship} from "./deleteHasPrimeImageRelationship"
 import {createHasImageRelationship} from "./createHasImageRelationship"
 import {getSpecificHasImageRelationship} from "./getSpecificHasImageRelationship"
 import type {CompanyHasImageRelationship} from "./types/CompanyHasImageRelationship"
 import {getAllHasImageRelationships} from "./getAllHasImageRelationships"
-import {deleteHasImageRelationship} from "./deleteHasImageRelationship"
 import {deleteDeprecatedRelationship} from "../relationships/deleteDeprecatedRelationship"
 import {DbRelationship} from "../../db/types/DbRelationship"
 import {RelationshipType} from "../relationships/types/RelationshipType"
+import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
+import {getSpecificRel} from "../relationships/getSpecificRel"
 
 export class Company {
     static async create(data: CreateCompanyInput): Promise<CompanyNode> {
@@ -106,7 +105,7 @@ export class Company {
         return getAllHasBrandRelationships(companyId)
     }
 
-    static async deleteHasBrandRelationship(companyId: number, brandId: number): Promise<void> {
+    static async deleteHasBrandRelationship(companyId: number, brandId: number) {
         const company = await Company.findById(companyId)
         if (!company) {
             throw new NodeNotFoundError(companyId)
@@ -117,12 +116,12 @@ export class Company {
             throw new NodeNotFoundError(brandId)
         }
 
-        const relationship = await getSpecificHasBrandRelationship(companyId, brandId)
+        const relationship = await getSpecificRel(companyId, brandId, RelationshipType.CompanyHasBrand)
         if (!relationship) {
             throw new RelationshipNotFoundError(CompanyRelationship.hasBrand, companyId, brandId)
         }
 
-        await deleteHasBrandRelationship(companyId, brandId)
+        await deleteSpecificRel(companyId, brandId, RelationshipType.CompanyHasBrand)
     }
 
     static async createHasImageRelationship(companyId: number, imageId: number): Promise<CompanyHasImageRelationship> {
@@ -158,7 +157,7 @@ export class Company {
         return getAllHasImageRelationships(companyId)
     }
 
-    static async deleteHasImageRelationship(companyId: number, imageId: number): Promise<void> {
+    static async deleteHasImageRelationship(companyId: number, imageId: number) {
         const company = await Company.findById(companyId)
         if (!company) {
             throw new NodeNotFoundError(companyId)
@@ -169,12 +168,12 @@ export class Company {
             throw new NodeNotFoundError(imageId)
         }
 
-        const relationship = await getSpecificHasImageRelationship(companyId, imageId)
+        const relationship = await getSpecificRel(companyId, imageId, RelationshipType.CompanyHasImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(CompanyRelationship.hasImage, companyId, imageId)
         }
 
-        await deleteHasImageRelationship(companyId, imageId)
+        await deleteSpecificRel(companyId, imageId, RelationshipType.CompanyHasImage)
     }
 
     static async createHasPrimeImageRelationship(companyId: number, imageId: number): Promise<CompanyHasPrimeImageRelationship> {
@@ -217,7 +216,7 @@ export class Company {
         return relationship
     }
 
-    static async deleteHasPrimeImageRelationship(companyId: number, imageId: number): Promise<void> {
+    static async deleteHasPrimeImageRelationship(companyId: number, imageId: number) {
         const company = await Company.findById(companyId)
         if (!company) {
             throw new NodeNotFoundError(companyId)
@@ -228,11 +227,11 @@ export class Company {
             throw new NodeNotFoundError(imageId)
         }
 
-        const relationship = await getSpecificHasPrimeImageRelationship(companyId, imageId)
+        const relationship = await getSpecificRel(companyId, imageId, RelationshipType.CompanyHasPrimeImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(CompanyRelationship.hasPrimeImage, companyId, imageId)
         }
 
-        await deleteHasPrimeImageRelationship(companyId, imageId)
+        await deleteSpecificRel(companyId, imageId, RelationshipType.CompanyHasPrimeImage)
     }
 }
