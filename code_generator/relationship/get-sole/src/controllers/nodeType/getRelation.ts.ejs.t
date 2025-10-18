@@ -3,10 +3,7 @@ to: src/controllers/<%= h.changeCase.camel(h.inflection.pluralize(startNodeType)
 ---
 import express from "express"
 import {<%= h.changeCase.pascal(startNodeType) %>} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
-import {<%= h.changeCase.pascal(endNodeType) %>} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(endNodeType)) %>/<%= h.changeCase.pascal(endNodeType) %>"
-import type {<%= h.changeCase.pascal(endNodeType) %>Node} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(endNodeType)) %>/types/<%= h.changeCase.pascal(endNodeType) %>Node"
-import type {BaseRelationship} from "../relationships/types/BaseRelationship"
-import {marshalRelationship} from "../relationships/marshalRelationship"
+import {marshalRelation} from "../relationships/marshalRelation"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../models/types/RelationshipNotFoundError"
 import {sendResponse200} from "../responses/sendResponse200"
@@ -18,8 +15,7 @@ export async function get<%= h.changeCase.pascal(relationshipName) %>Relation(re
 
     try {
         const relation = await <%= h.changeCase.pascal(startNodeType) %>.get<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id)
-        const relationPartner = await <%= h.changeCase.pascal(endNodeType) %>.findById(relation.<%= h.changeCase.snake(startNodeType === endNodeType ? 'partner' : endNodeType) %>_id)
-        const marshalledData = marshalRelationship(relation as BaseRelationship, relationPartner as <%= h.changeCase.pascal(endNodeType) %>Node, '<%= h.changeCase.lower(endNodeType) %>')
+        const marshalledData = marshalRelation(relation, '<%= h.changeCase.lower(endNodeType) %>')
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

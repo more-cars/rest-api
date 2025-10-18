@@ -1,8 +1,6 @@
 import express from "express"
 import {CarModel} from "../../models/car-models/CarModel"
-import type {CarModelNode} from "../../models/car-models/types/CarModelNode"
-import type {BaseRelationship} from "../relationships/types/BaseRelationship"
-import {marshalRelationship} from "../relationships/marshalRelationship"
+import {marshalRelation} from "../relationships/marshalRelation"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../models/types/RelationshipNotFoundError"
 import {sendResponse200} from "../responses/sendResponse200"
@@ -14,8 +12,7 @@ export async function getHasSuccessorRelation(req: express.Request, res: express
 
     try {
         const relation = await CarModel.getHasSuccessorRelationship(carModelId)
-        const relationPartner = await CarModel.findById(relation.partner_id)
-        const marshalledData = marshalRelationship(relation as BaseRelationship, relationPartner as CarModelNode, 'car model')
+        const marshalledData = marshalRelation(relation, 'car model')
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

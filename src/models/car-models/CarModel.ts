@@ -17,10 +17,9 @@ import {createHasImageRelationship} from "./createHasImageRelationship"
 import {getAllHasImageRelationships} from "./getAllHasImageRelationships"
 import {CarModelHasPrimeImageRelationship} from "./types/CarModelHasPrimeImageRelationship"
 import {createHasPrimeImageRelationship} from "./createHasPrimeImageRelationship"
-import {getHasPrimeImageRelationship} from "./getHasPrimeImageRelationship"
+import {getRelationship} from "../relationships/getRelationship"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
-import {getBelongsToBrandRelationship} from "./getBelongsToBrandRelationship"
 import {CarModelRelationship} from "./types/CarModelRelationship"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
 import {getSpecificBelongsToBrandRelationship} from "./getSpecificBelongsToBrandRelationship"
@@ -35,13 +34,12 @@ import {createHasSuccessorRelationship} from "./createHasSuccessorRelationship"
 import {getSpecificHasSuccessorRelationship} from "./getSpecificHasSuccessorRelationship"
 import type {CarModelHasSuccessorRelationship} from "./types/CarModelHasSuccessorRelationship"
 import {SemanticError} from "../types/SemanticError"
-import {getHasSuccessorRelationship} from "./getHasSuccessorRelationship"
 import {deleteHasSuccessorRelationship} from "./deleteHasSuccessorRelationship"
 import {createIsSuccessorOfRelationship} from "./createIsSuccessorOfRelationship"
 import {getSpecificIsSuccessorOfRelationship} from "./getSpecificIsSuccessorOfRelationship"
 import type {CarModelIsSuccessorOfRelationship} from "./types/CarModelIsSuccessorOfRelationship"
-import {getIsSuccessorOfRelationship} from "./getIsSuccessorOfRelationship"
 import {deleteIsSuccessorOfRelationship} from "./deleteIsSuccessorOfRelationship"
+import {RelationshipType} from "../relationships/types/RelationshipType"
 
 export class CarModel {
     static async create(data: CreateCarModelInput): Promise<CarModelNode> {
@@ -108,13 +106,13 @@ export class CarModel {
         return createdRelationship
     }
 
-    static async getBelongsToBrandRelationship(carModelId: number): Promise<CarModelBelongsToBrandRelationship> {
+    static async getBelongsToBrandRelationship(carModelId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getBelongsToBrandRelationship(carModelId)
+        const relationship = await getRelationship(carModelId, RelationshipType.CarModelBelongsToBrand)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.belongsToBrand, carModelId)
         }
@@ -171,13 +169,13 @@ export class CarModel {
         return createdRelationship
     }
 
-    static async getHasSuccessorRelationship(carModelId: number): Promise<CarModelHasSuccessorRelationship> {
+    static async getHasSuccessorRelationship(carModelId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getHasSuccessorRelationship(carModelId)
+        const relationship = await getRelationship(carModelId, RelationshipType.CarModelHasSuccessor)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.hasSuccessor, carModelId, null)
         }
@@ -234,13 +232,13 @@ export class CarModel {
         return createdRelationship
     }
 
-    static async getIsSuccessorOfRelationship(carModelId: number): Promise<CarModelIsSuccessorOfRelationship> {
+    static async getIsSuccessorOfRelationship(carModelId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getIsSuccessorOfRelationship(carModelId)
+        const relationship = await getRelationship(carModelId, RelationshipType.CarModelIsSuccessorOf)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.isSuccessorOf, carModelId, null)
         }
@@ -364,13 +362,13 @@ export class CarModel {
         return createdRelationship
     }
 
-    static async getHasPrimeImageRelationship(carModelId: number): Promise<CarModelHasPrimeImageRelationship> {
+    static async getHasPrimeImageRelationship(carModelId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getHasPrimeImageRelationship(carModelId)
+        const relationship = await getRelationship(carModelId, RelationshipType.CarModelHasPrimeImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.hasPrimeImage, carModelId, null)
         }

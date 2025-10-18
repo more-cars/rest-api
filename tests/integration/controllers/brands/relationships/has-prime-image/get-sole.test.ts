@@ -2,18 +2,15 @@ import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {Brand} from "../../../../../../src/models/brands/Brand"
-import {Image} from "../../../../../../src/models/images/Image"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
 
 describe('Requesting the ›has-prime-image‹ relationship', () => {
     test('Providing valid data', async () => {
         Brand.getHasPrimeImageRelationship = vi.fn().mockReturnValue({
-            relationship_id: 4,
-            relationship_name: 'has-prime-image',
+            id: 4,
+            type: 'has-prime-image',
         })
-
-        Image.findById = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
             .get('/brands/123/has-prime-image')

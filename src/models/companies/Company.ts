@@ -19,7 +19,7 @@ import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {Image} from "../images/Image"
 import {getSpecificHasPrimeImageRelationship} from "./getSpecificHasPrimeImageRelationship"
 import type {CompanyHasPrimeImageRelationship} from "./types/CompanyHasPrimeImageRelationship"
-import {getHasPrimeImageRelationship} from "./getHasPrimeImageRelationship"
+import {getRelationship} from "../relationships/getRelationship"
 import {getAllHasBrandRelationships} from "./getAllHasBrandRelationships"
 import {deleteHasBrandRelationship} from "./deleteHasBrandRelationship"
 import {deleteHasPrimeImageRelationship} from "./deleteHasPrimeImageRelationship"
@@ -30,6 +30,7 @@ import {getAllHasImageRelationships} from "./getAllHasImageRelationships"
 import {deleteHasImageRelationship} from "./deleteHasImageRelationship"
 import {deleteDeprecatedRelationship} from "../relationships/deleteDeprecatedRelationship"
 import {DbRelationship} from "../../db/types/DbRelationship"
+import {RelationshipType} from "../relationships/types/RelationshipType"
 
 export class Company {
     static async create(data: CreateCompanyInput): Promise<CompanyNode> {
@@ -202,13 +203,13 @@ export class Company {
         return createdRelationship
     }
 
-    static async getHasPrimeImageRelationship(companyId: number): Promise<CompanyHasPrimeImageRelationship> {
+    static async getHasPrimeImageRelationship(companyId: number) {
         const company = await Company.findById(companyId)
         if (!company) {
             throw new NodeNotFoundError(companyId)
         }
 
-        const relationship = await getHasPrimeImageRelationship(companyId)
+        const relationship = await getRelationship(companyId, RelationshipType.CompanyHasPrimeImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(CompanyRelationship.hasPrimeImage, companyId, null)
         }

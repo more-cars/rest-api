@@ -5,18 +5,15 @@ import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
-import {<%= h.changeCase.pascal(endNodeType) %>} from "../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(endNodeType)) %>/<%= h.changeCase.pascal(endNodeType) %>"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
 
 describe('Requesting the ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship', () => {
     test('Providing valid data', async () => {
         <%= h.changeCase.pascal(startNodeType) %>.get<%= h.changeCase.pascal(relationshipName) %>Relationship = vi.fn().mockReturnValue({
-            relationship_id: 4,
-            relationship_name: '<%= h.changeCase.kebab(relationshipName) %>',
+            id: 4,
+            type: '<%= h.changeCase.kebab(relationshipName) %>',
         })
-
-        <%= h.changeCase.pascal(endNodeType) %>.findById = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
             .get('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/123/<%= h.changeCase.kebab(relationshipName) %>')

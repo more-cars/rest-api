@@ -8,10 +8,10 @@ import {RelationshipSchema} from "../../../../../../_toolbox/schemas/model/Relat
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
 
-describe('Requesting a ›is-successor-of‹ relationship', () => {
+describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship('car model', 'car model', DbRelationship.CarModelIsSuccessorOf)
-        const actualRelationship = await CarModel.getIsSuccessorOfRelationship(expectedRelationship.start_node_id)
+        const expectedRelationship = await seedRelationship('car model', 'image', DbRelationship.CarModelHasPrimeImage)
+        const actualRelationship = await CarModel.getHasPrimeImageRelationship(expectedRelationship.start_node_id)
 
         validateJson(actualRelationship, RelationshipSchema)
 
@@ -25,13 +25,13 @@ describe('Requesting a ›is-successor-of‹ relationship', () => {
     test('node exists, but not the relationship', async () => {
         const carModel = await seedCarModel()
 
-        await expect(CarModel.getIsSuccessorOfRelationship(carModel.id))
+        await expect(CarModel.getHasPrimeImageRelationship(carModel.id))
             .rejects
             .toThrow(RelationshipNotFoundError)
     })
 
     test('neither node, nor relationship exist', async () => {
-        await expect(CarModel.getIsSuccessorOfRelationship(-42))
+        await expect(CarModel.getHasPrimeImageRelationship(-42))
             .rejects
             .toThrow(NodeNotFoundError)
     })

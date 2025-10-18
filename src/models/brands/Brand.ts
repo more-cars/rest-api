@@ -28,14 +28,14 @@ import {deleteHasImageRelationship} from "./deleteHasImageRelationship"
 import {createHasPrimeImageRelationship} from "./createHasPrimeImageRelationship"
 import {getSpecificHasPrimeImageRelationship} from "./getSpecificHasPrimeImageRelationship"
 import type {BrandHasPrimeImageRelationship} from "./types/BrandHasPrimeImageRelationship"
-import {getHasPrimeImageRelationship} from "./getHasPrimeImageRelationship"
 import {deleteHasPrimeImageRelationship} from "./deleteHasPrimeImageRelationship"
 import {createBelongsToCompanyRelationship} from "./createBelongsToCompanyRelationship"
 import {Company} from "../companies/Company"
 import {getSpecificBelongsToCompanyRelationship} from "./getSpecificBelongsToCompanyRelationship"
 import type {BrandBelongsToCompanyRelationship} from "./types/BrandBelongsToCompanyRelationship"
-import {getBelongsToCompanyRelationship} from "./getBelongsToCompanyRelationship"
 import {deleteBelongsToCompanyRelationship} from "./deleteBelongsToCompanyRelationship"
+import {getRelationship} from "../relationships/getRelationship"
+import {RelationshipType} from "../relationships/types/RelationshipType"
 
 export class Brand {
     static async create(data: CreateBrandInput): Promise<BrandNode> {
@@ -102,13 +102,13 @@ export class Brand {
         return createdRelationship
     }
 
-    static async getBelongsToCompanyRelationship(brandId: number): Promise<BrandBelongsToCompanyRelationship> {
+    static async getBelongsToCompanyRelationship(brandId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
         }
 
-        const relationship = await getBelongsToCompanyRelationship(brandId)
+        const relationship = await getRelationship(brandId, RelationshipType.BrandBelongsToCompany)
         if (!relationship) {
             throw new RelationshipNotFoundError(BrandRelationship.belongsToCompany, brandId, null)
         }
@@ -306,13 +306,13 @@ export class Brand {
         return createdRelationship
     }
 
-    static async getHasPrimeImageRelationship(brandId: number): Promise<BrandHasPrimeImageRelationship> {
+    static async getHasPrimeImageRelationship(brandId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
         }
 
-        const relationship = await getHasPrimeImageRelationship(brandId)
+        const relationship = await getRelationship(brandId, RelationshipType.BrandHasPrimeImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(BrandRelationship.hasPrimeImage, brandId, null)
         }

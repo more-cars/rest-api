@@ -1,17 +1,17 @@
 import {describe, expect, test} from 'vitest'
-import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
+import {Company} from "../../../../../../../src/models/companies/Company"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
-import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {seedCompany} from "../../../../../../_toolbox/dbSeeding/companies/nodes/seedCompany"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../../../../_toolbox/schemas/model/RelationshipSchema"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
 
-describe('Requesting a ›is-successor-of‹ relationship', () => {
+describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship('car model', 'car model', DbRelationship.CarModelIsSuccessorOf)
-        const actualRelationship = await CarModel.getIsSuccessorOfRelationship(expectedRelationship.start_node_id)
+        const expectedRelationship = await seedRelationship('company', 'image', DbRelationship.CompanyHasPrimeImage)
+        const actualRelationship = await Company.getHasPrimeImageRelationship(expectedRelationship.start_node_id)
 
         validateJson(actualRelationship, RelationshipSchema)
 
@@ -23,15 +23,15 @@ describe('Requesting a ›is-successor-of‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const carModel = await seedCarModel()
+        const company = await seedCompany()
 
-        await expect(CarModel.getIsSuccessorOfRelationship(carModel.id))
+        await expect(Company.getHasPrimeImageRelationship(company.id))
             .rejects
             .toThrow(RelationshipNotFoundError)
     })
 
     test('neither node, nor relationship exist', async () => {
-        await expect(CarModel.getIsSuccessorOfRelationship(-42))
+        await expect(Company.getHasPrimeImageRelationship(-42))
             .rejects
             .toThrow(NodeNotFoundError)
     })

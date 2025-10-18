@@ -8,11 +8,9 @@ import {RelationshipNotFoundError} from "../../../../../../src/models/types/Rela
 describe('Requesting the ›has-successor‹ relationship', () => {
     test('Providing valid data', async () => {
         CarModel.getHasSuccessorRelationship = vi.fn().mockReturnValue({
-            relationship_id: 4,
-            relationship_name: 'has-successor',
+            id: 4,
+            type: 'has-successor',
         })
-
-        CarModel.findById = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
             .get('/car-models/123/has-successor')

@@ -4,7 +4,7 @@ import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
-import {BrandBelongsToCompanySchema} from "../../../../../../_toolbox/schemas/BrandBelongsToCompanySchema"
+import {RelationshipSchema} from "../../../../../../_toolbox/schemas/model/RelationshipSchema"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
 
@@ -13,12 +13,12 @@ describe('Requesting a ›belongs-to-company‹ relationship', () => {
         const expectedRelationship = await seedRelationship('brand', 'company', DbRelationship.BrandBelongsToCompany)
         const actualRelationship = await Brand.getBelongsToCompanyRelationship(expectedRelationship.start_node_id)
 
-        validateJson(actualRelationship, BrandBelongsToCompanySchema)
+        validateJson(actualRelationship, RelationshipSchema)
 
-        expect(actualRelationship.brand_id)
+        expect(actualRelationship.origin.id)
             .toBe(expectedRelationship.start_node_id)
 
-        expect(actualRelationship.company_id)
+        expect(actualRelationship.destination.id)
             .toBe(expectedRelationship.end_node_id)
     })
 

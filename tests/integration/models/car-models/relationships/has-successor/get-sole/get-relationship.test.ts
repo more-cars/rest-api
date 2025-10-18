@@ -4,7 +4,7 @@ import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
-import {CarModelHasSuccessorSchema} from "../../../../../../_toolbox/schemas/CarModelHasSuccessorSchema"
+import {RelationshipSchema} from "../../../../../../_toolbox/schemas/model/RelationshipSchema"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
 
@@ -13,12 +13,12 @@ describe('Requesting a ›has-successor‹ relationship', () => {
         const expectedRelationship = await seedRelationship('car model', 'car model', DbRelationship.CarModelHasSuccessor)
         const actualRelationship = await CarModel.getHasSuccessorRelationship(expectedRelationship.start_node_id)
 
-        validateJson(actualRelationship, CarModelHasSuccessorSchema)
+        validateJson(actualRelationship, RelationshipSchema)
 
-        expect(actualRelationship.car_model_id)
+        expect(actualRelationship.origin.id)
             .toBe(expectedRelationship.start_node_id)
 
-        expect(actualRelationship.partner_id)
+        expect(actualRelationship.destination.id)
             .toBe(expectedRelationship.end_node_id)
     })
 
