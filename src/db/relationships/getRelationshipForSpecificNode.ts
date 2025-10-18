@@ -27,19 +27,30 @@ export async function getRelationshipForSpecificNode(nodeId: number, relationshi
     await session.close()
     await driver.close()
 
+    const sourceNode: Node = records[0].get('a')
     const relation: Relationship = records[0].get('r')
-    const partnerNode: Node = records[0].get('b')
+    const endNode: Node = records[0].get('b')
 
-    const rel: BaseRelationship = {
+    return {
+        id: relation.properties.mc_id,
+        type: relationshipName,
         start_node_id: nodeId,
-        end_node_id: partnerNode.properties.mc_id,
+        start_node: Object.assign({}, sourceNode.properties, {
+            id: sourceNode.properties.mc_id,
+            created_at: sourceNode.properties.created_at,
+            updated_at: sourceNode.properties.updated_at,
+        }),
+        end_node_id: endNode.properties.mc_id,
+        end_node: Object.assign({}, endNode.properties, {
+            id: endNode.properties.mc_id,
+            created_at: endNode.properties.created_at,
+            updated_at: endNode.properties.updated_at,
+        }),
         relationship_id: relation.properties.mc_id,
         relationship_name: relationshipName,
         created_at: relation.properties.created_at,
         updated_at: relation.properties.updated_at,
-    }
-
-    return rel
+    } as BaseRelationship
 }
 
 export function getRelationshipForSpecificNodeQuery(nodeId: number, relationshipName: DbRelationship) {

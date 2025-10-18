@@ -11,7 +11,7 @@ test('database query for fetching a relationship', async () => {
         expect(query)
             .toEqual(
                 "MATCH (a {mc_id: " + startNodeId + "})-[r:" + relationshipType + "]-(b)\n" +
-                "RETURN r, b\n" +
+                "RETURN a, r, b\n" +
                 "  LIMIT 1")
     })
 })
