@@ -2,6 +2,6 @@
 inject: true
 to: src/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>.ts
 before: \nexport class
-skip_if: import {create<%= h.changeCase.pascal(relationshipName) %>Relationship} from
+skip_if: import {createRel} from
 ---
-import {create<%= h.changeCase.pascal(relationshipName) %>Relationship} from "./create<%= h.changeCase.pascal(relationshipName) %>Relationship"
+import {createRel} from "../relationships/createRel"

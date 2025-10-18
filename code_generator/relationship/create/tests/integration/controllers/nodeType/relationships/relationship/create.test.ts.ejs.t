@@ -11,8 +11,8 @@ import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types
 describe('Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship', () => {
     test('Providing valid data', async () => {
         <%= h.changeCase.pascal(startNodeType) %>.create<%= h.changeCase.pascal(relationshipName) %>Relationship = vi.fn().mockReturnValue({
-            relationship_id: 4,
-            relationship_name: '<%= h.changeCase.kebab(relationshipName) %>',
+            id: 4,
+            type: '<%= h.changeCase.kebab(relationshipName) %>',
         })
 
         const response = await request(app)

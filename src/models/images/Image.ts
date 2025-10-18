@@ -11,7 +11,6 @@ import {getAllNodesOfType} from "../../db/nodes/images/getAllNodesOfType"
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {ImageBelongsToNodeRelationship} from "./types/ImageBelongsToNodeRelationship"
 import {getSpecificBelongsToNodeRelationship} from "./getSpecificBelongsToNodeRelationship"
-import {createBelongsToNodeRelationship} from "./createBelongsToNodeRelationship"
 import {getAllBelongsToNodeRelationships} from "./getAllBelongsToNodeRelationships"
 import type {ImageBelongsToNodeTypeRelationships} from "./types/ImageBelongsToNodeTypeRelationships"
 import {getBelongsToNodeTypeRelationships} from "../../db/nodes/images/getBelongsToNodeTypeRelationships"
@@ -24,6 +23,7 @@ import {Node} from "../Node"
 import {getSpecificRel} from "../relationships/getSpecificRel"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {RelationshipType} from "../relationships/types/RelationshipType"
+import {createRel} from "../relationships/createRel"
 
 export class Image {
     static async create(data: CreateImageInput): Promise<ImageNode> {
@@ -65,7 +65,7 @@ export class Image {
         await deleteNode(imageId)
     }
 
-    static async createBelongsToNodeRelationship(imageId: number, partnerId: number): Promise<ImageBelongsToNodeRelationship> {
+    static async createBelongsToNodeRelationship(imageId: number, partnerId: number) {
         if (imageId === partnerId) {
             throw new SemanticError(`Image #${imageId} cannot be connected to itself`)
         }
@@ -84,12 +84,12 @@ export class Image {
             throw new SemanticError(`Image #${imageId} cannot be connected to another image`)
         }
 
-        const existingRelationship = await getSpecificBelongsToNodeRelationship(imageId, partnerId)
+        const existingRelationship = await getSpecificRel(imageId, partnerId, RelationshipType.ImageBelongsToNode)
         if (existingRelationship) {
             throw new RelationshipAlreadyExistsError(ImageRelationship.belongsToNode, imageId, partnerId)
         }
 
-        const createdRelationship = await createBelongsToNodeRelationship(imageId, partnerId)
+        const createdRelationship = await createRel(imageId, partnerId, RelationshipType.ImageBelongsToNode)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }

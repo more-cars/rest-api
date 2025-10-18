@@ -9,7 +9,6 @@ import {getAllNodesOfType} from "../../db/nodes/brands/getAllNodesOfType"
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {BrandHasCarModelRelationship} from "./types/BrandHasCarModelRelationship"
 import {CarModel} from "../car-models/CarModel"
-import {createHasCarModelRelationship} from "./createHasCarModelRelationship"
 import {deleteDeprecatedRelationship} from "../relationships/deleteDeprecatedRelationship"
 import {DbRelationship} from "../../db/types/DbRelationship"
 import {getSpecificHasCarModelRelationship} from "./getSpecificHasCarModelRelationship"
@@ -17,23 +16,17 @@ import {getAllBrandHasCarModelRelationships} from "./getAllBrandHasCarModelRelat
 import {BrandHasImageRelationship} from "./types/BrandHasImageRelationship"
 import {getSpecificHasImageRelationship} from "./getSpecificHasImageRelationship"
 import {Image} from "../images/Image"
-import {createHasImageRelationship} from "./createHasImageRelationship"
 import {getAllBrandHasImageRelationships} from "./getAllBrandHasImageRelationships"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
 import {BrandRelationship} from "./types/BrandRelationship"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
-import {createHasPrimeImageRelationship} from "./createHasPrimeImageRelationship"
-import {getSpecificHasPrimeImageRelationship} from "./getSpecificHasPrimeImageRelationship"
-import type {BrandHasPrimeImageRelationship} from "./types/BrandHasPrimeImageRelationship"
-import {createBelongsToCompanyRelationship} from "./createBelongsToCompanyRelationship"
 import {Company} from "../companies/Company"
-import {getSpecificBelongsToCompanyRelationship} from "./getSpecificBelongsToCompanyRelationship"
-import type {BrandBelongsToCompanyRelationship} from "./types/BrandBelongsToCompanyRelationship"
 import {getRel} from "../relationships/getRel"
 import {RelationshipType} from "../relationships/types/RelationshipType"
 import {getSpecificRel} from "../relationships/getSpecificRel"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
+import {createRel} from "../relationships/createRel"
 
 export class Brand {
     static async create(data: CreateBrandInput): Promise<BrandNode> {
@@ -74,7 +67,7 @@ export class Brand {
         await deleteNode(brandId)
     }
 
-    static async createBelongsToCompanyRelationship(brandId: number, companyId: number): Promise<BrandBelongsToCompanyRelationship> {
+    static async createBelongsToCompanyRelationship(brandId: number, companyId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -85,14 +78,14 @@ export class Brand {
             throw new NodeNotFoundError(companyId)
         }
 
-        const existingRelation = await getSpecificBelongsToCompanyRelationship(brandId, companyId)
+        const existingRelation = await getSpecificRel(brandId, companyId, RelationshipType.BrandBelongsToCompany)
         if (existingRelation) {
             throw new RelationshipAlreadyExistsError(BrandRelationship.belongsToCompany, brandId, companyId)
         }
 
         await deleteDeprecatedRelationship(brandId, DbRelationship.BrandBelongsToCompany)
 
-        const createdRelationship = await createBelongsToCompanyRelationship(brandId, companyId)
+        const createdRelationship = await createRel(brandId, companyId, RelationshipType.BrandBelongsToCompany)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -133,7 +126,7 @@ export class Brand {
         await deleteSpecificRel(brandId, companyId, RelationshipType.BrandBelongsToCompany)
     }
 
-    static async createHasCarModelRelationship(brandId: number, carModelId: number): Promise<BrandHasCarModelRelationship> {
+    static async createHasCarModelRelationship(brandId: number, carModelId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -144,14 +137,14 @@ export class Brand {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const existingRelationship = await getSpecificHasCarModelRelationship(brandId, carModelId)
+        const existingRelationship = await getSpecificRel(brandId, carModelId, RelationshipType.BrandHasCarModel)
         if (existingRelationship) {
             throw new RelationshipAlreadyExistsError(BrandRelationship.hasCarModel, brandId, carModelId)
         }
 
         await deleteDeprecatedRelationship(carModelId, DbRelationship.BrandHasCarModel)
 
-        const createdRelationship = await createHasCarModelRelationship(brandId, carModelId)
+        const createdRelationship = await createRel(brandId, carModelId, RelationshipType.BrandHasCarModel)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -206,7 +199,7 @@ export class Brand {
         await deleteSpecificRel(brandId, carModelId, RelationshipType.BrandHasCarModel)
     }
 
-    static async createHasImageRelationship(brandId: number, imageId: number): Promise<BrandHasImageRelationship> {
+    static async createHasImageRelationship(brandId: number, imageId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -217,12 +210,12 @@ export class Brand {
             throw new NodeNotFoundError(imageId)
         }
 
-        const existingRelationship = await getSpecificHasImageRelationship(brandId, imageId)
+        const existingRelationship = await getSpecificRel(brandId, imageId, RelationshipType.BrandHasImage)
         if (existingRelationship) {
             throw new RelationshipAlreadyExistsError(BrandRelationship.hasImage, brandId, imageId)
         }
 
-        const createdRelationship = await createHasImageRelationship(brandId, imageId)
+        const createdRelationship = await createRel(brandId, imageId, RelationshipType.BrandHasImage)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -278,7 +271,7 @@ export class Brand {
         await deleteSpecificRel(brandId, imageId, RelationshipType.BrandHasImage)
     }
 
-    static async createHasPrimeImageRelationship(brandId: number, imageId: number): Promise<BrandHasPrimeImageRelationship> {
+    static async createHasPrimeImageRelationship(brandId: number, imageId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -289,14 +282,14 @@ export class Brand {
             throw new NodeNotFoundError(imageId)
         }
 
-        const existingRelation = await getSpecificHasPrimeImageRelationship(brandId, imageId)
+        const existingRelation = await getSpecificRel(brandId, imageId, RelationshipType.BrandHasPrimeImage)
         if (existingRelation) {
             throw new RelationshipAlreadyExistsError(BrandRelationship.hasPrimeImage, brandId, imageId)
         }
 
         await deleteDeprecatedRelationship(brandId, DbRelationship.BrandHasPrimeImage)
 
-        const createdRelationship = await createHasPrimeImageRelationship(brandId, imageId)
+        const createdRelationship = await createRel(brandId, imageId, RelationshipType.BrandHasPrimeImage)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }

@@ -8,8 +8,8 @@ import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types
 describe('Creating a ›belongs-to-node‹ relationship', () => {
     test('Providing valid data', async () => {
         Image.createBelongsToNodeRelationship = vi.fn().mockReturnValue({
-            relationship_id: 4,
-            relationship_name: 'belongs-to-node',
+            id: 4,
+            type: 'belongs-to-node',
         })
 
         const response = await request(app)

@@ -9,8 +9,8 @@ import {SemanticError} from "../../../../../../src/models/types/SemanticError"
 describe('Creating a ›has-successor‹ relationship', () => {
     test('Providing valid data', async () => {
         CarModel.createHasSuccessorRelationship = vi.fn().mockReturnValue({
-            relationship_id: 4,
-            relationship_name: 'has-successor',
+            id: 4,
+            type: 'has-successor',
         })
 
         const response = await request(app)

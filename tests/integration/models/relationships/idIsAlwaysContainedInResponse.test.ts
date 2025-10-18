@@ -21,5 +21,5 @@ test('ID is always contained in response', async () => {
     }
 
     expect(requestedRelationship.id)
-        .toBe(expectedRelationship.relationship_id)
+        .toBe(expectedRelationship.id)
 })

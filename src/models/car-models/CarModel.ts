@@ -7,36 +7,25 @@ import {getNodeById} from "../../db/nodes/car-models/getNodeById"
 import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
 import {getAllNodesOfType} from "../../db/nodes/car-models/getAllNodesOfType"
 import {deleteNode} from "../../db/nodes/deleteNode"
-import {CarModelBelongsToBrandRelationship} from "./types/CarModelBelongsToBrandRelationship"
 import {Brand} from "../brands/Brand"
-import {createBelongsToBrandRelationship} from "./createBelongsToBrandRelationship"
 import {Image} from "../images/Image"
 import {CarModelHasImageRelationship} from "./types/CarModelHasImageRelationship"
 import {getCarModelHasImageRelationship} from "./getCarModelHasImageRelationship"
-import {createHasImageRelationship} from "./createHasImageRelationship"
 import {getAllHasImageRelationships} from "./getAllHasImageRelationships"
 import {CarModelHasPrimeImageRelationship} from "./types/CarModelHasPrimeImageRelationship"
-import {createHasPrimeImageRelationship} from "./createHasPrimeImageRelationship"
 import {getRel} from "../relationships/getRel"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {CarModelRelationship} from "./types/CarModelRelationship"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
-import {getSpecificBelongsToBrandRelationship} from "./getSpecificBelongsToBrandRelationship"
-import {getSpecificHasImageRelationship} from "./getSpecificHasImageRelationship"
 import {getSpecificHasPrimeImageRelationship} from "./getSpecificHasPrimeImageRelationship"
 import {deleteDeprecatedRelationship} from "../relationships/deleteDeprecatedRelationship"
 import {DbRelationship} from "../../db/types/DbRelationship"
-import {createHasSuccessorRelationship} from "./createHasSuccessorRelationship"
-import {getSpecificHasSuccessorRelationship} from "./getSpecificHasSuccessorRelationship"
-import type {CarModelHasSuccessorRelationship} from "./types/CarModelHasSuccessorRelationship"
 import {SemanticError} from "../types/SemanticError"
-import {createIsSuccessorOfRelationship} from "./createIsSuccessorOfRelationship"
-import {getSpecificIsSuccessorOfRelationship} from "./getSpecificIsSuccessorOfRelationship"
-import type {CarModelIsSuccessorOfRelationship} from "./types/CarModelIsSuccessorOfRelationship"
 import {RelationshipType} from "../relationships/types/RelationshipType"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {getSpecificRel} from "../relationships/getSpecificRel"
+import {createRel} from "../relationships/createRel"
 
 export class CarModel {
     static async create(data: CreateCarModelInput): Promise<CarModelNode> {
@@ -77,7 +66,7 @@ export class CarModel {
         await deleteNode(carModelId)
     }
 
-    static async createBelongsToBrandRelationship(carModelId: number, brandId: number): Promise<CarModelBelongsToBrandRelationship> {
+    static async createBelongsToBrandRelationship(carModelId: number, brandId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -88,14 +77,14 @@ export class CarModel {
             throw new NodeNotFoundError(brandId)
         }
 
-        const existingRelationship = await getSpecificBelongsToBrandRelationship(carModelId, brandId)
+        const existingRelationship = await getSpecificRel(carModelId, brandId, RelationshipType.CarModelBelongsToBrand)
         if (existingRelationship) {
             throw new RelationshipAlreadyExistsError(CarModelRelationship.belongsToBrand, carModelId, brandId)
         }
 
         await deleteDeprecatedRelationship(carModelId, DbRelationship.BrandHasCarModel)
 
-        const createdRelationship = await createBelongsToBrandRelationship(carModelId, brandId)
+        const createdRelationship = await createRel(carModelId, brandId, RelationshipType.CarModelBelongsToBrand)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -136,7 +125,7 @@ export class CarModel {
         await deleteSpecificRel(carModelId, brandId, RelationshipType.CarModelBelongsToBrand)
     }
 
-    static async createHasSuccessorRelationship(carModelId: number, partnerId: number): Promise<CarModelHasSuccessorRelationship> {
+    static async createHasSuccessorRelationship(carModelId: number, partnerId: number) {
         if (carModelId === partnerId) {
             throw new SemanticError(`Car Model #${carModelId} cannot be connected to itself`)
         }
@@ -151,14 +140,14 @@ export class CarModel {
             throw new NodeNotFoundError(partnerId)
         }
 
-        const existingRelation = await getSpecificHasSuccessorRelationship(carModelId, partnerId)
+        const existingRelation = await getSpecificRel(carModelId, partnerId, RelationshipType.CarModelHasSuccessor)
         if (existingRelation) {
             throw new RelationshipAlreadyExistsError(CarModelRelationship.hasSuccessor, carModelId, partnerId)
         }
 
         await deleteDeprecatedRelationship(carModelId, DbRelationship.CarModelHasSuccessor)
 
-        const createdRelationship = await createHasSuccessorRelationship(carModelId, partnerId)
+        const createdRelationship = await createRel(carModelId, partnerId, RelationshipType.CarModelHasSuccessor)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -199,7 +188,7 @@ export class CarModel {
         await deleteSpecificRel(carModelId, partnerId, RelationshipType.CarModelHasSuccessor)
     }
 
-    static async createIsSuccessorOfRelationship(carModelId: number, partnerId: number): Promise<CarModelIsSuccessorOfRelationship> {
+    static async createIsSuccessorOfRelationship(carModelId: number, partnerId: number) {
         if (carModelId === partnerId) {
             throw new SemanticError(`Car Model #${carModelId} cannot be connected to itself`)
         }
@@ -214,14 +203,14 @@ export class CarModel {
             throw new NodeNotFoundError(partnerId)
         }
 
-        const existingRelation = await getSpecificIsSuccessorOfRelationship(carModelId, partnerId)
+        const existingRelation = await getSpecificRel(carModelId, partnerId, RelationshipType.CarModelIsSuccessorOf)
         if (existingRelation) {
             throw new RelationshipAlreadyExistsError(CarModelRelationship.isSuccessorOf, carModelId, partnerId)
         }
 
         await deleteDeprecatedRelationship(carModelId, DbRelationship.CarModelIsSuccessorOf)
 
-        const createdRelationship = await createIsSuccessorOfRelationship(carModelId, partnerId)
+        const createdRelationship = await createRel(carModelId, partnerId, RelationshipType.CarModelIsSuccessorOf)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -262,7 +251,7 @@ export class CarModel {
         await deleteSpecificRel(carModelId, partnerId, RelationshipType.CarModelIsSuccessorOf)
     }
 
-    static async createHasImageRelationship(carModelId: number, imageId: number): Promise<CarModelHasImageRelationship> {
+    static async createHasImageRelationship(carModelId: number, imageId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -273,12 +262,12 @@ export class CarModel {
             throw new NodeNotFoundError(imageId)
         }
 
-        const existingRelationship = await getSpecificHasImageRelationship(carModelId, imageId)
+        const existingRelationship = await getSpecificRel(carModelId, imageId, RelationshipType.CarModelHasImage)
         if (existingRelationship) {
             throw new RelationshipAlreadyExistsError(CarModelRelationship.hasImage, carModelId, imageId)
         }
 
-        const createdRelationship = await createHasImageRelationship(carModelId, imageId)
+        const createdRelationship = await createRel(carModelId, imageId, RelationshipType.CarModelHasImage)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -333,7 +322,7 @@ export class CarModel {
         await deleteSpecificRel(carModelId, imageId, RelationshipType.CarModelHasImage)
     }
 
-    static async createHasPrimeImageRelationship(carModelId: number, imageId: number): Promise<CarModelHasPrimeImageRelationship> {
+    static async createHasPrimeImageRelationship(carModelId: number, imageId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -344,14 +333,14 @@ export class CarModel {
             throw new NodeNotFoundError(imageId)
         }
 
-        const existingRelationship = await getSpecificHasPrimeImageRelationship(carModelId, imageId)
+        const existingRelationship = await getSpecificRel(carModelId, imageId, RelationshipType.CarModelHasPrimeImage)
         if (existingRelationship) {
             throw new RelationshipAlreadyExistsError(CarModelRelationship.hasPrimeImage, carModelId, imageId)
         }
 
         await deleteDeprecatedRelationship(carModelId, DbRelationship.CarModelHasPrimeImage)
 
-        const createdRelationship = await createHasPrimeImageRelationship(carModelId, imageId)
+        const createdRelationship = await createRel(carModelId, imageId, RelationshipType.CarModelHasPrimeImage)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }

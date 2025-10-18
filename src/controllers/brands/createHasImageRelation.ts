@@ -1,9 +1,6 @@
 import express from "express"
 import {Brand} from "../../models/brands/Brand"
-import {Image} from "../../models/images/Image"
-import type {ImageNode} from "../../models/images/types/ImageNode"
-import type {BaseRelationship} from "../relationships/types/BaseRelationship"
-import {marshalRelationship} from "../relationships/marshalRelationship"
+import {marshalRelation} from "../relationships/marshalRelation"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../models/types/RelationshipAlreadyExistsError"
 import {sendResponse201} from "../responses/sendResponse201"
@@ -16,9 +13,8 @@ export async function createHasImageRelation(req: express.Request, res: express.
     const imageId = parseInt(req.params.imageId)
 
     try {
-        const relationship = await Brand.createHasImageRelationship(brandId, imageId)
-        const relationshipPartner = await Image.findById(imageId)
-        const marshalledData = marshalRelationship(relationship as BaseRelationship, relationshipPartner as ImageNode, 'image')
+        const relation = await Brand.createHasImageRelationship(brandId, imageId)
+        const marshalledData = marshalRelation(relation, 'image')
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

@@ -1,8 +1,6 @@
 import express from "express"
 import {CarModel} from "../../models/car-models/CarModel"
-import type {CarModelNode} from "../../models/car-models/types/CarModelNode"
-import type {BaseRelationship} from "../relationships/types/BaseRelationship"
-import {marshalRelationship} from "../relationships/marshalRelationship"
+import {marshalRelation} from "../relationships/marshalRelation"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../models/types/RelationshipAlreadyExistsError"
 import {SemanticError} from "../../models/types/SemanticError"
@@ -18,8 +16,7 @@ export async function createIsSuccessorOfRelation(req: express.Request, res: exp
 
     try {
         const relation = await CarModel.createIsSuccessorOfRelationship(carModelId, partnerId)
-        const relationPartner = await CarModel.findById(partnerId)
-        const marshalledData = marshalRelationship(relation as BaseRelationship, relationPartner as CarModelNode, 'car model')
+        const marshalledData = marshalRelation(relation, 'car model')
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

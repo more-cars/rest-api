@@ -8,8 +8,8 @@ import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types
 describe('Creating a ›belongs-to-company‹ relationship', () => {
     test('Providing valid data', async () => {
         Brand.createBelongsToCompanyRelationship = vi.fn().mockReturnValue({
-            relationship_id: 4,
-            relationship_name: 'belongs-to-company',
+            id: 4,
+            type: 'belongs-to-company',
         })
 
         const response = await request(app)

@@ -8,8 +8,8 @@ import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types
 describe('Creating a ›has-prime-image‹ relationship', () => {
     test('Providing valid data', async () => {
         Brand.createHasPrimeImageRelationship = vi.fn().mockReturnValue({
-            relationship_id: 4,
-            relationship_name: 'has-prime-image',
+            id: 4,
+            type: 'has-prime-image',
         })
 
         const response = await request(app)

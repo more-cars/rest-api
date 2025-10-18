@@ -1,9 +1,6 @@
 import express from "express"
 import {CarModel} from "../../models/car-models/CarModel"
-import {Brand} from "../../models/brands/Brand"
-import type {BrandNode} from "../../models/brands/types/BrandNode"
-import type {BaseRelationship} from "../relationships/types/BaseRelationship"
-import {marshalRelationship} from "../relationships/marshalRelationship"
+import {marshalRelation} from "../relationships/marshalRelation"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../models/types/RelationshipAlreadyExistsError"
 import {sendResponse201} from "../responses/sendResponse201"
@@ -16,9 +13,8 @@ export async function createBelongsToBrandRelation(req: express.Request, res: ex
     const brandId = parseInt(req.params.brandId)
 
     try {
-        const relationship = await CarModel.createBelongsToBrandRelationship(carModelId, brandId)
-        const relationshipPartner = await Brand.findById(brandId)
-        const marshalledData = marshalRelationship(relationship as BaseRelationship, relationshipPartner as BrandNode, 'brand')
+        const relation = await CarModel.createBelongsToBrandRelationship(carModelId, brandId)
+        const marshalledData = marshalRelation(relation, 'brand')
 
         return sendResponse201(marshalledData, res)
     } catch (e) {
