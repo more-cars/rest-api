@@ -1,7 +1,7 @@
 import {DbRelationship} from "../types/DbRelationship"
 import {BaseRelationship} from "../types/BaseRelationship"
 import {createDbRelationship} from "./createDbRelationship"
-import {mapDbRelationshipToBaseRelationship} from "./mapDbRelationshipToBaseRelationship"
+import {mapNeo4jRelationshipToDbRelationship} from "./mapNeo4jRelationshipToDbRelationship"
 
 /**
  * Creating a relationship between the two given nodes.
@@ -18,5 +18,5 @@ export async function createRelationship(
         return false
     }
 
-    return mapDbRelationshipToBaseRelationship(startNodeId, endNodeId, relationshipName, relationship)
+    return mapNeo4jRelationshipToDbRelationship(startNodeId, endNodeId, relationshipName, relationship)
 }
