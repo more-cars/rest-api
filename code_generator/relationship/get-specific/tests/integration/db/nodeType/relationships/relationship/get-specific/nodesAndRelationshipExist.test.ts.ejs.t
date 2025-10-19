@@ -1,5 +1,5 @@
 ---
-to: tests/integration/db/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/relationships/<%= h.changeCase.camel(relationshipName) %>/has/nodesAndRelationshipExist.test.ts
+to: tests/integration/db/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/relationships/<%= h.changeCase.camel(relationshipName) %>/get-specific/nodesAndRelationshipExist.test.ts
 ---
 import {expect, test} from 'vitest'
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"

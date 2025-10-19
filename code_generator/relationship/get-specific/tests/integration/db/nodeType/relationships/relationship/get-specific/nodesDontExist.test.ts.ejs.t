@@ -1,5 +1,5 @@
 ---
-to: tests/integration/db/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/relationships/<%= h.changeCase.camel(relationshipName) %>/has/nodesDontExist.test.ts
+to: tests/integration/db/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/relationships/<%= h.changeCase.camel(relationshipName) %>/get-specific/nodesDontExist.test.ts
 ---
 import {expect, test} from 'vitest'
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"

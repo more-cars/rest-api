@@ -1,9 +1,6 @@
 import express from "express"
 import {Image} from "../../models/images/Image"
-import {Node} from "../../models/Node"
-import type {BaseNode} from "../nodes/types/BaseNode"
-import type {BaseRelationship} from "../relationships/types/BaseRelationship"
-import {marshalRelationship} from "../relationships/marshalRelationship"
+import {marshalRelation} from "../relationships/marshalRelation"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../models/types/RelationshipNotFoundError"
 import {sendResponse200} from "../responses/sendResponse200"
@@ -15,9 +12,8 @@ export async function getSpecificBelongsToNodeRelation(req: express.Request, res
     const partnerNodeId = parseInt(req.params.partnerNodeId)
 
     try {
-        const relationship = await Image.getSpecificBelongsToNodeRelationship(imageId, partnerNodeId)
-        const relationshipPartner = await Node.findById(partnerNodeId)
-        const marshalledData = marshalRelationship(relationship as BaseRelationship, relationshipPartner as BaseNode, null) // TODO provide correct partnernodetype
+        const relation = await Image.getSpecificBelongsToNodeRelationship(imageId, partnerNodeId)
+        const marshalledData = marshalRelation(relation, 'brand') // TODO provide correct partner node type
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

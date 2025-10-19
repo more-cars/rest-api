@@ -14,9 +14,9 @@ test('Both nodes and a ›<%= h.changeCase.kebab(relationshipName) %>‹ relatio
 
     validateJson(actualRelationship, <%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Schema)
 
-    expect(actualRelationship.<%= h.changeCase.snake(startNodeType) %>_id)
+    expect(actualRelationship.origin.id)
         .toBe(expectedRelationship.start_node_id)
 
-    expect(actualRelationship.<%= h.changeCase.snake(endNodeType) %>_id)
+    expect(actualRelationship.destination.id)
         .toBe(expectedRelationship.end_node_id)
 })

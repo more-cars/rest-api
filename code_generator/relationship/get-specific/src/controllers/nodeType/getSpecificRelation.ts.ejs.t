@@ -3,10 +3,7 @@ to: src/controllers/<%= h.changeCase.camel(h.inflection.pluralize(startNodeType)
 ---
 import express from "express"
 import {<%= h.changeCase.pascal(startNodeType) %>} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
-import {<%= h.changeCase.pascal(endNodeType) %>} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(endNodeType)) %>/<%= h.changeCase.pascal(endNodeType) %>"
-import type {<%= h.changeCase.pascal(endNodeType) %>Node} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(endNodeType)) %>/types/<%= h.changeCase.pascal(endNodeType) %>Node"
-import type {BaseRelationship} from "../relationships/types/BaseRelationship"
-import {marshalRelationship} from "../relationships/marshalRelationship"
+import {marshalRelation} from "../relationships/marshalRelation"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../models/types/RelationshipNotFoundError"
 import {sendResponse200} from "../responses/sendResponse200"
@@ -18,9 +15,8 @@ export async function getSpecific<%= h.changeCase.pascal(relationshipName) %>Rel
     const <%= h.changeCase.camel(endNodeType) %>Id = parseInt(req.params.<%= h.changeCase.camel(endNodeType) %>Id)
 
     try {
-        const relationship = await <%= h.changeCase.pascal(startNodeType) %>.getSpecific<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(endNodeType) %>Id)
-        const relationshipPartner = await <%= h.changeCase.pascal(endNodeType) %>.findById(relationship.<%= h.changeCase.camel(endNodeType) %>Id)
-        const marshalledData = marshalRelationship(relationship as BaseRelationship, relationshipPartner as <%= h.changeCase.pascal(endNodeType) %>Node, '<%= h.changeCase.kebab(endNodeType) %>')
+        const relation = await <%= h.changeCase.pascal(startNodeType) %>.getSpecific<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(endNodeType) %>Id)
+        const marshalledData = marshalRelation(relation, '<%= h.changeCase.kebab(endNodeType) %>')
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

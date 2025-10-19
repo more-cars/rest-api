@@ -21,9 +21,9 @@ test('Both nodes and a ›has-car-model‹ relationship exist',
 
         validateJson(relationship, RelationshipSchema)
 
-        expect(relationship.brand_id)
+        expect(relationship.origin.id)
             .toBe(brand.id)
 
-        expect(relationship.car_model_id)
+        expect(relationship.destination.id)
             .toBe(carModel.id)
     })

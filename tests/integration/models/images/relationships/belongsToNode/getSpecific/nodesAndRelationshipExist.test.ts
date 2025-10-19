@@ -11,9 +11,9 @@ test('Both nodes and a ›belongs-to-node‹ relationship exist', async () => {
 
     validateJson(actualRelationship, RelationshipSchema)
 
-    expect(actualRelationship.image_id)
+    expect(actualRelationship.origin.id)
         .toBe(expectedRelationship.start_node_id)
 
-    expect(actualRelationship.partner_node_id)
+    expect(actualRelationship.destination.id)
         .toBe(expectedRelationship.end_node_id)
 })

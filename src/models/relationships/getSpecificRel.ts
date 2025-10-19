@@ -2,6 +2,7 @@ import type {RelationshipType} from "./types/RelationshipType"
 import type {DbRelationship} from "../../db/types/DbRelationship"
 import {getDbRelationshipType} from "./getDbRelationshipType"
 import {getSpecificRelationship} from "../../db/relationships/getSpecificRelationship"
+import {Node} from "../Node"
 import type {GenericRelation} from "./types/GenericRelation"
 
 export async function getSpecificRel(originId: number, destinationId: number, relationshipType: RelationshipType) {
@@ -18,10 +19,10 @@ export async function getSpecificRel(originId: number, destinationId: number, re
     }
 
     return {
-        id: dbRelationship.id,
+        id: dbRelationship.id || dbRelationship.relationship_id,
         type: relationshipType,
-        origin: dbRelationship.start_node,
-        destination: dbRelationship.end_node,
+        origin: await Node.findById(originId),
+        destination: await Node.findById(destinationId),
         created_at: dbRelationship.created_at,
         updated_at: dbRelationship.updated_at
     } as GenericRelation

@@ -21,9 +21,9 @@ test('Both nodes and a ›has-image‹ relationship exist',
 
         validateJson(relationship, RelationshipSchema)
 
-        expect(relationship.brand_id)
+        expect(relationship.origin.id)
             .toBe(brand.id)
 
-        expect(relationship.image_id)
+        expect(relationship.destination.id)
             .toBe(image.id)
     })

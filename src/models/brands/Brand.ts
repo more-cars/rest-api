@@ -11,10 +11,8 @@ import {BrandHasCarModelRelationship} from "./types/BrandHasCarModelRelationship
 import {CarModel} from "../car-models/CarModel"
 import {deleteDeprecatedRelationship} from "../relationships/deleteDeprecatedRelationship"
 import {DbRelationship} from "../../db/types/DbRelationship"
-import {getSpecificHasCarModelRelationship} from "./getSpecificHasCarModelRelationship"
 import {getAllBrandHasCarModelRelationships} from "./getAllBrandHasCarModelRelationships"
 import {BrandHasImageRelationship} from "./types/BrandHasImageRelationship"
-import {getSpecificHasImageRelationship} from "./getSpecificHasImageRelationship"
 import {Image} from "../images/Image"
 import {getAllBrandHasImageRelationships} from "./getAllBrandHasImageRelationships"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
@@ -152,7 +150,7 @@ export class Brand {
         return createdRelationship
     }
 
-    static async getSpecificHasCarModelRelationship(brandId: number, carModelId: number): Promise<BrandHasCarModelRelationship> {
+    static async getSpecificHasCarModelRelationship(brandId: number, carModelId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -163,7 +161,7 @@ export class Brand {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getSpecificHasCarModelRelationship(brandId, carModelId)
+        const relationship = await getSpecificRel(brandId, carModelId, RelationshipType.BrandHasCarModel)
         if (!relationship) {
             throw new RelationshipNotFoundError(BrandRelationship.hasCarModel, brandId, carModelId)
         }
@@ -223,7 +221,7 @@ export class Brand {
         return createdRelationship
     }
 
-    static async getSpecificHasImageRelationship(brandId: number, imageId: number): Promise<BrandHasImageRelationship> {
+    static async getSpecificHasImageRelationship(brandId: number, imageId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -234,7 +232,7 @@ export class Brand {
             throw new NodeNotFoundError(imageId)
         }
 
-        const relationship = await getSpecificHasImageRelationship(brandId, imageId)
+        const relationship = await getSpecificRel(brandId, imageId, RelationshipType.BrandHasImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(BrandRelationship.hasImage, brandId, imageId)
         }

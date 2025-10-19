@@ -11,9 +11,9 @@ test('Both nodes and a ›has-prime-image‹ relationship exist', async () => {
 
     validateJson(actualRelationship, RelationshipSchema)
 
-    expect(actualRelationship.car_model_id)
+    expect(actualRelationship.origin.id)
         .toBe(expectedRelationship.start_node_id)
 
-    expect(actualRelationship.image_id)
+    expect(actualRelationship.destination.id)
         .toBe(expectedRelationship.end_node_id)
 })

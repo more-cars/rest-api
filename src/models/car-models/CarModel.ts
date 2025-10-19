@@ -10,15 +10,12 @@ import {deleteNode} from "../../db/nodes/deleteNode"
 import {Brand} from "../brands/Brand"
 import {Image} from "../images/Image"
 import {CarModelHasImageRelationship} from "./types/CarModelHasImageRelationship"
-import {getCarModelHasImageRelationship} from "./getCarModelHasImageRelationship"
 import {getAllHasImageRelationships} from "./getAllHasImageRelationships"
-import {CarModelHasPrimeImageRelationship} from "./types/CarModelHasPrimeImageRelationship"
 import {getRel} from "../relationships/getRel"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {CarModelRelationship} from "./types/CarModelRelationship"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
-import {getSpecificHasPrimeImageRelationship} from "./getSpecificHasPrimeImageRelationship"
 import {deleteDeprecatedRelationship} from "../relationships/deleteDeprecatedRelationship"
 import {DbRelationship} from "../../db/types/DbRelationship"
 import {SemanticError} from "../types/SemanticError"
@@ -275,7 +272,7 @@ export class CarModel {
         return createdRelationship
     }
 
-    static async getSpecificHasImageRelationship(carModelId: number, imageId: number): Promise<CarModelHasImageRelationship> {
+    static async getSpecificHasImageRelationship(carModelId: number, imageId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -286,7 +283,7 @@ export class CarModel {
             throw new NodeNotFoundError(imageId)
         }
 
-        const relationship = await getCarModelHasImageRelationship(carModelId, imageId)
+        const relationship = await getSpecificRel(carModelId, imageId, RelationshipType.CarModelHasImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.hasImage, carModelId, imageId)
         }
@@ -362,7 +359,7 @@ export class CarModel {
         return relationship
     }
 
-    static async getSpecificHasPrimeImageRelationship(carModelId: number, imageId: number): Promise<CarModelHasPrimeImageRelationship> {
+    static async getSpecificHasPrimeImageRelationship(carModelId: number, imageId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -373,7 +370,7 @@ export class CarModel {
             throw new NodeNotFoundError(imageId)
         }
 
-        const relationship = await getSpecificHasPrimeImageRelationship(carModelId, imageId)
+        const relationship = await getSpecificRel(carModelId, imageId, RelationshipType.CarModelHasPrimeImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.hasPrimeImage, carModelId, imageId)
         }

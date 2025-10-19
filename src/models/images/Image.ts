@@ -10,7 +10,6 @@ import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints
 import {getAllNodesOfType} from "../../db/nodes/images/getAllNodesOfType"
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {ImageBelongsToNodeRelationship} from "./types/ImageBelongsToNodeRelationship"
-import {getSpecificBelongsToNodeRelationship} from "./getSpecificBelongsToNodeRelationship"
 import {getAllBelongsToNodeRelationships} from "./getAllBelongsToNodeRelationships"
 import type {ImageBelongsToNodeTypeRelationships} from "./types/ImageBelongsToNodeTypeRelationships"
 import {getBelongsToNodeTypeRelationships} from "../../db/nodes/images/getBelongsToNodeTypeRelationships"
@@ -97,7 +96,7 @@ export class Image {
         return createdRelationship
     }
 
-    static async getSpecificBelongsToNodeRelationship(imageId: number, partnerId: number): Promise<ImageBelongsToNodeRelationship> {
+    static async getSpecificBelongsToNodeRelationship(imageId: number, partnerId: number) {
         const image = await getNodeById(imageId)
         if (!image) {
             throw new NodeNotFoundError(imageId)
@@ -108,7 +107,7 @@ export class Image {
             throw new NodeNotFoundError(partnerId)
         }
 
-        const relationship = await getSpecificBelongsToNodeRelationship(imageId, partnerId)
+        const relationship = await getSpecificRel(imageId, partnerId, RelationshipType.ImageBelongsToNode)
         if (!relationship) {
             throw new RelationshipNotFoundError(ImageRelationship.belongsToNode, imageId, partnerId)
         }
