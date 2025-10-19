@@ -1,5 +1,5 @@
 import {getRelationshipById} from "../../db/relationships/getRelationshipById"
-import type {GenericRelationship} from "./types/GenericRelationship"
+import {GenericRelation} from "./types/GenericRelation"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {getNodeById} from "../../db/nodes/getNodeById"
@@ -19,13 +19,12 @@ export class Relationship {
         }
 
         return {
-            start_node_id: dbRelationship.start_node_id,
-            end_node_id: dbRelationship.end_node_id,
-            relationship_id: dbRelationship.relationship_id,
-            relationship_name: dbRelationship.relationship_name,
-            relationship_partner: endNode,
+            id: dbRelationship.id || dbRelationship.relationship_id,
+            type: dbRelationship.type || dbRelationship.relationship_name,
+            origin: dbRelationship.start_node,
+            destination: dbRelationship.end_node,
             created_at: dbRelationship.created_at,
             updated_at: dbRelationship.updated_at,
-        } as GenericRelationship
+        } as GenericRelation
     }
 }
