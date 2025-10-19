@@ -1,7 +1,6 @@
 import neo4j, {Driver, Session} from "neo4j-driver"
 import {getDriver} from "../driver"
 import {BaseNode} from "../types/BaseNode"
-import {mapDbNodeToModelNode} from "./mapDbNodeToModelNode"
 import {NodeTypeLabel} from "../NodeTypeLabel"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
@@ -21,7 +20,11 @@ export async function getNodeById(id: number): Promise<false | BaseNode> {
         return false
     }
 
-    return mapDbNodeToModelNode(records[0].get('node'))
+    const node = records[0].get('node').properties
+    node.id = node.mc_id
+    delete node.mc_id
+
+    return node
 }
 
 export function getNodeByIdQuery(id: number, nodeLabel: false | NodeTypeLabel = false) {

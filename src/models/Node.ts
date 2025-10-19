@@ -9,6 +9,8 @@ export class Node {
             return false
         }
 
+        // TODO map db properties to model properties
+
         return node
     }
 }
