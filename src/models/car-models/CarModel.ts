@@ -9,8 +9,6 @@ import {getAllNodesOfType} from "../../db/nodes/car-models/getAllNodesOfType"
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {Brand} from "../brands/Brand"
 import {Image} from "../images/Image"
-import {CarModelHasImageRelationship} from "./types/CarModelHasImageRelationship"
-import {getAllHasImageRelationships} from "./getAllHasImageRelationships"
 import {getRel} from "../relationships/getRel"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
@@ -23,6 +21,7 @@ import {RelationshipType} from "../relationships/types/RelationshipType"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {getSpecificRel} from "../relationships/getSpecificRel"
 import {createRel} from "../relationships/createRel"
+import {getAllRels} from "../relationships/getAllRels"
 
 export class CarModel {
     static async create(data: CreateCarModelInput): Promise<CarModelNode> {
@@ -291,13 +290,13 @@ export class CarModel {
         return relationship
     }
 
-    static async getAllHasImageRelationships(carModelId: number): Promise<Array<CarModelHasImageRelationship>> {
+    static async getAllHasImageRelationships(carModelId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
         }
 
-        return getAllHasImageRelationships(carModelId)
+        return getAllRels(carModelId, RelationshipType.CarModelHasImage)
     }
 
     static async deleteHasImageRelationship(carModelId: number, imageId: number) {

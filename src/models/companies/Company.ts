@@ -10,20 +10,17 @@ import {deleteNode} from "../../db/nodes/deleteNode"
 import {Brand} from "../brands/Brand"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
-import type {CompanyHasBrandRelationship} from "./types/CompanyHasBrandRelationship"
 import {CompanyRelationship} from "./types/CompanyRelationship"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {Image} from "../images/Image"
 import {getRel} from "../relationships/getRel"
-import {getAllHasBrandRelationships} from "./getAllHasBrandRelationships"
-import type {CompanyHasImageRelationship} from "./types/CompanyHasImageRelationship"
-import {getAllHasImageRelationships} from "./getAllHasImageRelationships"
 import {deleteDeprecatedRelationship} from "../relationships/deleteDeprecatedRelationship"
 import {DbRelationship} from "../../db/types/DbRelationship"
 import {RelationshipType} from "../relationships/types/RelationshipType"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {getSpecificRel} from "../relationships/getSpecificRel"
 import {createRel} from "../relationships/createRel"
+import {getAllRels} from "../relationships/getAllRels"
 
 export class Company {
     static async create(data: CreateCompanyInput): Promise<CompanyNode> {
@@ -90,13 +87,13 @@ export class Company {
         return createdRelationship
     }
 
-    static async getAllHasBrandRelationships(companyId: number): Promise<Array<CompanyHasBrandRelationship>> {
+    static async getAllHasBrandRelationships(companyId: number) {
         const company = await Company.findById(companyId)
         if (!company) {
             throw new NodeNotFoundError(companyId)
         }
 
-        return getAllHasBrandRelationships(companyId)
+        return getAllRels(companyId, RelationshipType.CompanyHasBrand)
     }
 
     static async deleteHasBrandRelationship(companyId: number, brandId: number) {
@@ -142,13 +139,13 @@ export class Company {
         return createdRelationship
     }
 
-    static async getAllHasImageRelationships(companyId: number): Promise<Array<CompanyHasImageRelationship>> {
+    static async getAllHasImageRelationships(companyId: number) {
         const company = await Company.findById(companyId)
         if (!company) {
             throw new NodeNotFoundError(companyId)
         }
 
-        return getAllHasImageRelationships(companyId)
+        return getAllRels(companyId, RelationshipType.CompanyHasImage)
     }
 
     static async deleteHasImageRelationship(companyId: number, imageId: number) {

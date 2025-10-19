@@ -8,14 +8,14 @@ describe('Requesting all ›belongs-to-node‹ relationships', () => {
     test('Providing valid data', async () => {
         Image.getAllBelongsToNodeRelationships = vi.fn().mockReturnValue([
             {
-                relationship_id: 4,
-                relationship_name: 'belongs-to-node',
+                id: 4,
+                type: 'belongs-to-node',
             }, {
-                relationship_id: 5,
-                relationship_name: 'belongs-to-node',
+                id: 5,
+                type: 'belongs-to-node',
             }, {
-                relationship_id: 6,
-                relationship_name: 'belongs-to-node',
+                id: 6,
+                type: 'belongs-to-node',
             }
         ])
 

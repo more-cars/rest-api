@@ -2,25 +2,22 @@ import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {Brand} from "../../../../../../src/models/brands/Brand"
-import {CarModel} from "../../../../../../src/models/car-models/CarModel"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 
 describe('Requesting all ›has-car-model‹ relationships', () => {
     test('Providing valid data', async () => {
         Brand.getAllHasCarModelRelationships = vi.fn().mockReturnValue([
             {
-                relationship_id: 4,
-                relationship_name: 'has-car-model',
+                id: 4,
+                type: 'has-car-model',
             }, {
-                relationship_id: 5,
-                relationship_name: 'has-car-model',
+                id: 5,
+                type: 'has-car-model',
             }, {
-                relationship_id: 6,
-                relationship_name: 'has-car-model',
+                id: 6,
+                type: 'has-car-model',
             }
         ])
-
-        CarModel.findById = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
             .get('/brands/123/has-car-model')

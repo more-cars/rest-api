@@ -9,8 +9,6 @@ import {getNodeById as getAnyNodeById} from "../../db/nodes/getNodeById"
 import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
 import {getAllNodesOfType} from "../../db/nodes/images/getAllNodesOfType"
 import {deleteNode} from "../../db/nodes/deleteNode"
-import {ImageBelongsToNodeRelationship} from "./types/ImageBelongsToNodeRelationship"
-import {getAllBelongsToNodeRelationships} from "./getAllBelongsToNodeRelationships"
 import type {ImageBelongsToNodeTypeRelationships} from "./types/ImageBelongsToNodeTypeRelationships"
 import {getBelongsToNodeTypeRelationships} from "../../db/nodes/images/getBelongsToNodeTypeRelationships"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
@@ -23,6 +21,7 @@ import {getSpecificRel} from "../relationships/getSpecificRel"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {RelationshipType} from "../relationships/types/RelationshipType"
 import {createRel} from "../relationships/createRel"
+import {getAllRels} from "../relationships/getAllRels"
 
 export class Image {
     static async create(data: CreateImageInput): Promise<ImageNode> {
@@ -115,13 +114,13 @@ export class Image {
         return relationship
     }
 
-    static async getAllBelongsToNodeRelationships(imageId: number): Promise<Array<ImageBelongsToNodeRelationship>> {
+    static async getAllBelongsToNodeRelationships(imageId: number) {
         const image = await Image.findById(imageId)
         if (!image) {
             throw new NodeNotFoundError(imageId)
         }
 
-        return getAllBelongsToNodeRelationships(imageId)
+        return getAllRels(imageId, RelationshipType.ImageBelongsToNode)
     }
 
     static async deleteBelongsToNodeRelationship(imageId: number, partnerNodeId: number) {
