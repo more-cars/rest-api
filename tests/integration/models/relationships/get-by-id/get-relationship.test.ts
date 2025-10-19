@@ -3,7 +3,7 @@ import {seedRelationship} from "../../../../_toolbox/dbSeeding/seedRelationship"
 import {DbRelationship} from "../../../../../src/db/types/DbRelationship"
 import {Relationship} from "../../../../../src/models/relationships/Relationship"
 import {validateJson} from "../../../../_toolbox/validateJson"
-import {RelationshipSchema} from "../../../../_toolbox/schemas/RelationshipSchema"
+import {RelationshipSchema} from "../../../../_toolbox/schemas/model/RelationshipSchema"
 import {RelationshipNotFoundError} from "../../../../../src/models/types/RelationshipNotFoundError"
 
 describe('Requesting a relationship', () => {
