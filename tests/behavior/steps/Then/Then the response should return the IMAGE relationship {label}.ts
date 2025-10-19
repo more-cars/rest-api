@@ -1,7 +1,7 @@
 import {Then, world} from "@cucumber/cucumber"
 import assert from "assert"
 import {ImageBelongsToNodeRelationship} from "../../../../src/models/images/types/ImageBelongsToNodeRelationship"
-import {RelationshipSchema} from "../../../_toolbox/schemas/RelationshipSchema"
+import {RelationshipSchema} from "../../../_toolbox/schemas/controller/RelationshipSchema"
 import {validateJson} from "../../../_toolbox/validateJson"
 import type {RelationshipResponse} from "../../../../src/controllers/relationships/types/RelationshipResponse"
 

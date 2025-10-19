@@ -4,7 +4,7 @@ import {Brand} from "../../../../../../../src/models/brands/Brand"
 import assert from "assert"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
 import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
-import {RelationshipSchema} from "../../../../../../_toolbox/schemas/RelationshipSchema"
+import {RelationshipSchema} from "../../../../../../_toolbox/schemas/controller/RelationshipSchema"
 
 test('Both nodes and a ›has-image‹ relationship exist',
     async () => {

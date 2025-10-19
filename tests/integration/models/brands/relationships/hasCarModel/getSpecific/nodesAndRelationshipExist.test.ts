@@ -4,7 +4,7 @@ import {Brand} from "../../../../../../../src/models/brands/Brand"
 import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
-import {RelationshipSchema} from "../../../../../../_toolbox/schemas/RelationshipSchema"
+import {RelationshipSchema} from "../../../../../../_toolbox/schemas/controller/RelationshipSchema"
 
 test('Both nodes and a ›has-car-model‹ relationship exist',
     async () => {

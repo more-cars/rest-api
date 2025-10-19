@@ -3,7 +3,7 @@ import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelatio
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {Image} from "../../../../../../../src/models/images/Image"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
-import {RelationshipSchema} from "../../../../../../_toolbox/schemas/RelationshipSchema"
+import {RelationshipSchema} from "../../../../../../_toolbox/schemas/controller/RelationshipSchema"
 
 test('Both nodes and a ›belongs-to-node‹ relationship exist', async () => {
     const expectedRelationship = await seedRelationship('image', 'company', DbRelationship.ImageBelongsToCompany)
