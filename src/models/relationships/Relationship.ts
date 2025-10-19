@@ -1,8 +1,9 @@
 import {getRelationshipById} from "../../db/relationships/getRelationshipById"
-import {GenericRelation} from "./types/GenericRelation"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
-import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {getNodeById} from "../../db/nodes/getNodeById"
+import {NodeNotFoundError} from "../types/NodeNotFoundError"
+import {Node} from "../Node"
+import {GenericRelation} from "./types/GenericRelation"
 
 export class Relationship {
     static async findById(id: number) {
@@ -12,17 +13,21 @@ export class Relationship {
             throw new RelationshipNotFoundError('-', 0)
         }
 
-        const endNode = await getNodeById(dbRelationship.end_node_id)
-
-        if (!endNode) {
+        const destination = await getNodeById(dbRelationship.end_node_id)
+        if (!destination) {
             throw new NodeNotFoundError(dbRelationship.end_node_id)
+        }
+
+        const origin = await Node.findById(dbRelationship.start_node_id)
+        if (!origin) {
+            throw new NodeNotFoundError(dbRelationship.start_node_id)
         }
 
         return {
             id: dbRelationship.id || dbRelationship.relationship_id,
             type: dbRelationship.type || dbRelationship.relationship_name,
-            origin: dbRelationship.start_node,
-            destination: dbRelationship.end_node,
+            origin: origin,
+            destination: destination,
             created_at: dbRelationship.created_at,
             updated_at: dbRelationship.updated_at,
         } as GenericRelation
