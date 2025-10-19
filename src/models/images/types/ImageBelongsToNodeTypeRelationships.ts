@@ -1,7 +1,7 @@
-import type {ImageBelongsToNodeRelationship} from "./ImageBelongsToNodeRelationship"
+import type {GenericRelation} from "../../relationships/types/GenericRelation"
 
 export type ImageBelongsToNodeTypeRelationships = {
-    "companies": ImageBelongsToNodeRelationship[]
-    "brands": ImageBelongsToNodeRelationship[]
-    "car_models": ImageBelongsToNodeRelationship[]
+    companies: GenericRelation[]
+    brands: GenericRelation[]
+    car_models: GenericRelation[]
 }

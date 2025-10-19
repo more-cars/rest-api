@@ -12,7 +12,7 @@ test('cypher query is correctly assembled for "get relationships per node type" 
     expect(query)
         .toEqual(
             "MATCH (a:Image {mc_id: 12002001})-[r:HAS_IMAGE]-(b:Brand)\n" +
-            "RETURN r, b")
+            "RETURN a, r, b")
 
     query = getImageBelongsToNodeTypeRelationshipsQuery(
         12002001,
@@ -21,5 +21,5 @@ test('cypher query is correctly assembled for "get relationships per node type" 
     expect(query)
         .toEqual(
             "MATCH (a:Image {mc_id: 12002001})-[r:HAS_IMAGE]-(b:CarModel)\n" +
-            "RETURN r, b")
+            "RETURN a, r, b")
 })

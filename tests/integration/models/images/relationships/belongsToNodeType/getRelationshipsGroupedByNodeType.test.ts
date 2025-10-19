@@ -18,15 +18,17 @@ test('Get all "Image belongs to Node type" relationships for specific image', as
         assert.fail('Could not fetch relationships')
     }
 
+    expect(fetchedRelationships.companies)
+        .toHaveLength(0)
     expect(fetchedRelationships.brands)
         .toHaveLength(0)
     expect(fetchedRelationships.car_models)
         .toHaveLength(amount)
 
     fetchedRelationships.car_models.forEach(relationship => {
-        expect(relationship.image_id)
+        expect(relationship.origin.id)
             .toBe(imageNode.id)
-        expect(relationship.relationship_name)
+        expect(relationship.type)
             .toBe(DbRelationship.NodeHasImage)
     })
 })

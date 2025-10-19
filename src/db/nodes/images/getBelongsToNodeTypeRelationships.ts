@@ -1,22 +1,11 @@
-import neo4j, {type Driver, type Relationship} from "neo4j-driver"
+import neo4j, {type Driver, type Node, type Relationship} from "neo4j-driver"
+import {NodeTypeLabel} from "../../NodeTypeLabel"
+import type {BaseRelationship} from "../../types/BaseRelationship"
 import {getDriver} from "../../driver"
 import {getCypherQueryTemplate} from "../../getCypherQueryTemplate"
-import type {
-    ImageBelongsToNodeTypeRelationships
-} from "../../../models/images/types/ImageBelongsToNodeTypeRelationships"
-import {NodeTypeLabel} from "../../NodeTypeLabel"
-import type {ImageBelongsToNodeRelationship} from "../../../models/images/types/ImageBelongsToNodeRelationship"
-
-export async function getBelongsToNodeTypeRelationships(imageId: number): Promise<ImageBelongsToNodeTypeRelationships> {
-    return {
-        companies: await fetchImageRelationshipsForNodeType(NodeTypeLabel.Company, imageId),
-        brands: await fetchImageRelationshipsForNodeType(NodeTypeLabel.Brand, imageId),
-        car_models: await fetchImageRelationshipsForNodeType(NodeTypeLabel.CarModel, imageId)
-    }
-}
 
 export async function fetchImageRelationshipsForNodeType(nodeType: NodeTypeLabel, imageId: number) {
-    const relationships: Array<ImageBelongsToNodeRelationship> = []
+    const relationships: BaseRelationship[] = []
 
     const driver: Driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
@@ -30,17 +19,30 @@ export async function fetchImageRelationshipsForNodeType(nodeType: NodeTypeLabel
     await driver.close()
 
     records.forEach((record) => {
-        const dbRel: Relationship = record.get('r')
-        const dbEndNode: Relationship = record.get('b')
+        const startNode: Node = record.get('a')
+        const relationship: Relationship = record.get('r')
+        const endNode: Node = record.get('b')
 
-        relationships.push(<ImageBelongsToNodeRelationship>{
-            image_id: imageId,
-            partner_node_id: dbEndNode.properties.mc_id,
-            relationship_id: dbRel.properties.mc_id,
-            relationship_name: dbRel.type,
-            created_at: dbRel.properties.created_at,
-            updated_at: dbRel.properties.updated_at,
-        })
+        relationships.push({
+            id: relationship.properties.mc_id,
+            relationship_id: relationship.properties.mc_id,
+            type: relationship.type,
+            relationship_name: relationship.type,
+            start_node: Object.assign({}, startNode.properties, {
+                id: startNode.properties.mc_id,
+                created_at: startNode.properties.created_at,
+                updated_at: startNode.properties.updated_at,
+            }),
+            start_node_id: startNode.properties.mc_id,
+            end_node: Object.assign({}, endNode.properties, {
+                id: endNode.properties.mc_id,
+                created_at: endNode.properties.created_at,
+                updated_at: endNode.properties.updated_at,
+            }),
+            end_node_id: endNode.properties.mc_id,
+            created_at: relationship.properties.created_at,
+            updated_at: relationship.properties.updated_at,
+        } as BaseRelationship)
     })
 
     return relationships

@@ -10,7 +10,7 @@ import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints
 import {getAllNodesOfType} from "../../db/nodes/images/getAllNodesOfType"
 import {deleteNode} from "../../db/nodes/deleteNode"
 import type {ImageBelongsToNodeTypeRelationships} from "./types/ImageBelongsToNodeTypeRelationships"
-import {getBelongsToNodeTypeRelationships} from "../../db/nodes/images/getBelongsToNodeTypeRelationships"
+import {fetchImageRelationshipsForNodeType} from "../../db/nodes/images/getBelongsToNodeTypeRelationships"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {SemanticError} from "../types/SemanticError"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
@@ -22,6 +22,9 @@ import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {RelationshipType} from "../relationships/types/RelationshipType"
 import {createRel} from "../relationships/createRel"
 import {getAllRels} from "../relationships/getAllRels"
+import type {GenericRelation} from "../relationships/types/GenericRelation"
+import {NodeTypeLabel} from "../../db/NodeTypeLabel"
+import {mapDbRelationshipToModelRelationship} from "../relationships/mapDbRelationshipToModelRelationship"
 
 export class Image {
     static async create(data: CreateImageInput): Promise<ImageNode> {
@@ -142,12 +145,40 @@ export class Image {
         await deleteSpecificRel(imageId, partnerNodeId, RelationshipType.ImageBelongsToNode)
     }
 
-    static async getBelongsToNodeTypeRelationships(imageId: number): Promise<false | ImageBelongsToNodeTypeRelationships> {
+    static async getBelongsToNodeTypeRelationships(imageId: number) {
         if (!await getNodeById(imageId)) {
             return false
         }
 
-        return await getBelongsToNodeTypeRelationships(imageId)
+        const companyRels = await fetchImageRelationshipsForNodeType(NodeTypeLabel.Company, imageId)
+        const brandRels = await fetchImageRelationshipsForNodeType(NodeTypeLabel.Brand, imageId)
+        const carModelRels = await fetchImageRelationshipsForNodeType(NodeTypeLabel.CarModel, imageId)
+
+        const belongsToNodeTypeRelationships: ImageBelongsToNodeTypeRelationships = {
+            companies: [],
+            brands: [],
+            car_models: [],
+        }
+
+        let mappedRelationships: GenericRelation[] = []
+        for (const relationship of companyRels) {
+            mappedRelationships.push(await mapDbRelationshipToModelRelationship(relationship))
+        }
+        belongsToNodeTypeRelationships.companies = mappedRelationships
+
+        mappedRelationships = []
+        for (const relationship of brandRels) {
+            mappedRelationships.push(await mapDbRelationshipToModelRelationship(relationship))
+        }
+        belongsToNodeTypeRelationships.brands = mappedRelationships
+
+        mappedRelationships = []
+        for (const relationship of carModelRels) {
+            mappedRelationships.push(await mapDbRelationshipToModelRelationship(relationship))
+        }
+        belongsToNodeTypeRelationships.car_models = mappedRelationships
+
+        return belongsToNodeTypeRelationships
     }
 }
 
