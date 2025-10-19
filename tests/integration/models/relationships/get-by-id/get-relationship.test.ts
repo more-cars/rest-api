@@ -13,10 +13,10 @@ describe('Requesting a relationship', () => {
 
         validateJson(actualRelationship, RelationshipSchema)
 
-        expect(actualRelationship.start_node_id)
+        expect(actualRelationship.origin.id)
             .toBe(expectedRelationship.start_node_id)
 
-        expect(actualRelationship.end_node_id)
+        expect(actualRelationship.destination.id)
             .toBe(expectedRelationship.end_node_id)
     })
 
