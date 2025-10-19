@@ -2,17 +2,17 @@ import express from "express"
 import {Relationship} from "../../models/relationships/Relationship"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../models/types/RelationshipNotFoundError"
-import {marshalRelationship} from "./marshalRelationship"
+import {marshalRelation} from "./marshalRelation"
 import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
 import {sendResponse500} from "../responses/sendResponse500"
 
 export async function getById(req: express.Request, res: express.Response) {
-    const relationshipId = parseInt(req.params.id)
+    const relationId = parseInt(req.params.id)
 
     try {
-        const relationship = await Relationship.findById(relationshipId)
-        const marshalledData = marshalRelationship(relationship, relationship.relationship_partner, null)
+        const relation = await Relationship.findById(relationId)
+        const marshalledData = marshalRelation(relation, 'brand') // TODO provide correct partner node type
 
         return sendResponse200(marshalledData, res)
     } catch (e) {
