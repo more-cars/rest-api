@@ -8,8 +8,8 @@ import {RelationshipNotFoundError} from "../../../../src/models/types/Relationsh
 describe('Requesting a relationship by ID', () => {
     test('Providing valid data', async () => {
         Relationship.findById = vi.fn().mockReturnValue({
-            relationship_id: 4,
-            relationship_name: 'rel',
+            id: 4,
+            type: 'rel',
         })
 
         const response = await request(app)

@@ -6,7 +6,7 @@ import {RelationshipController} from "../../../src/controllers/RelationshipContr
 describe('Relationships', () => {
     vi.mock("../../../src/controllers/RelationshipController.ts", {spy: true})
 
-    test('Get Node by ID', async () => {
+    test('Get relationship by ID', async () => {
         await request(app)
             .get('/relationships/123')
 
