@@ -4,7 +4,7 @@ meta {
 }
 
 get {
-  url: {{baseUrl}}/images/{{validImageId}}/belongs-to-node/{{validBrandId}}
+  url: {{baseUrl}}/images/{{validImageId}}/belongs-to-node/{{validCarModelId}}
   body: none
   auth: none
 }
@@ -16,7 +16,7 @@ assert {
   res.body.data.relationship_name: belongs-to-node
   res.body.data.relationship_partner: isJson
   res.body.data.relationship_partner.node_type: isString
-  res.body.data.relationship_partner.data.id: {{validBrandId}}
+  res.body.data.relationship_partner.data.id: {{validCarModelId}}
   res.body.data.created_at: isString
   res.body.data.updated_at: isString
 }
