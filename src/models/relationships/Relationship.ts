@@ -1,6 +1,5 @@
 import {getRelationshipById} from "../../db/relationships/getRelationshipById"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
-import {getNodeById} from "../../db/nodes/getNodeById"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {Node} from "../Node"
 import {GenericRelation} from "./types/GenericRelation"
@@ -13,7 +12,7 @@ export class Relationship {
             throw new RelationshipNotFoundError('-', 0)
         }
 
-        const destination = await getNodeById(dbRelationship.end_node_id)
+        const destination = await Node.findById(dbRelationship.end_node_id)
         if (!destination) {
             throw new NodeNotFoundError(dbRelationship.end_node_id)
         }
