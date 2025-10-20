@@ -2935,6 +2935,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Race Tracks"
+        ],
+        "summary": "Delete `Race Track`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "race-track-id",
+            "description": "ID of the `Race Track`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Race Track` successfully deleted."
+          },
+          "404": {
+            "description": "Deletion request failed. A `Race Track` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/relationships/{relationship-id}": {

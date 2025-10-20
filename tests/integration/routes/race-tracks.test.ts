@@ -29,4 +29,12 @@ describe('Race Tracks', () => {
         expect(RaceTrackController.getAll)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete Node', async () => {
+        await request(app)
+            .delete('/race-tracks/123')
+
+        expect(RaceTrackController.delete)
+            .toHaveBeenCalledTimes(1)
+    })
 })
