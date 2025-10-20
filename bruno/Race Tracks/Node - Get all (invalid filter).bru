@@ -1,0 +1,15 @@
+meta {
+  name: Get all Race Tracks (invalid filter)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/race-tracks?filter_by_property=blubb
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 400
+  res.body: isString
+}

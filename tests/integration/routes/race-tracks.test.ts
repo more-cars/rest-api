@@ -21,4 +21,12 @@ describe('Race Tracks', () => {
         expect(RaceTrackController.getById)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all Nodes', async () => {
+        await request(app)
+            .get('/race-tracks')
+
+        expect(RaceTrackController.getAll)
+            .toHaveBeenCalledTimes(1)
+    })
 })

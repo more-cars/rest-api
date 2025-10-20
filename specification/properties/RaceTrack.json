@@ -1,0 +1,11 @@
+[
+  "id",
+  "name",
+  "opened",
+  "closed",
+  "type",
+  "location",
+  "geo_position",
+  "created_at",
+  "updated_at"
+]

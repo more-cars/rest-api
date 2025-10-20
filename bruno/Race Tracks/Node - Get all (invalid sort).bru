@@ -1,0 +1,15 @@
+meta {
+  name: Get all Race Tracks (invalid sort)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/race-tracks?sort_by_property=blubb
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 400
+  res.body: isString
+}

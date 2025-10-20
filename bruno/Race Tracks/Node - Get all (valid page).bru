@@ -1,0 +1,15 @@
+meta {
+  name: Get all Race Tracks (valid page)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/race-tracks?page=2
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 200
+  res.body.data: isArray
+}

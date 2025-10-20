@@ -4,6 +4,8 @@ import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../db/nodes/race-tracks/createNode"
 import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/race-tracks/getNodeById"
+import {getAllNodesOfType} from "../../db/nodes/race-tracks/getAllNodesOfType"
+import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
 
 export class RaceTrack {
     static async create(data: CreateRaceTrackInput): Promise<RaceTrackNode> {
@@ -22,5 +24,16 @@ export class RaceTrack {
         }
 
         return convertOutputData(node)
+    }
+
+    static async findAll(options: NodeCollectionConstraints = {}): Promise<RaceTrackNode[]> {
+        const nodes: Array<RaceTrackNode> = []
+        const nodesDb = await getAllNodesOfType(options)
+
+        nodesDb.forEach(node => {
+            nodes.push(convertOutputData(node))
+        })
+
+        return nodes
     }
 }

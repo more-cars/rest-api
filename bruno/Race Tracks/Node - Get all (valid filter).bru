@@ -1,0 +1,15 @@
+meta {
+  name: Get all Race Tracks (valid filter)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/race-tracks?filter_by_property=id&filter_value=1234&filter_operator=gte
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 200
+  res.body.data: isArray
+}
