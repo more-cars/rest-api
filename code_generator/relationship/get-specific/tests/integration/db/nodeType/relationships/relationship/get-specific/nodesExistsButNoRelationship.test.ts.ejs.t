@@ -3,12 +3,13 @@ to: tests/integration/db/<%= h.inflection.pluralize(h.changeCase.kebab(startNode
 ---
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 test('Expecting an empty list when the relationship does not exist', async () => {
-    const <%= h.changeCase.camel(startNodeType) %> = await seedNode('<%= h.changeCase.lower(startNodeType) %>')
-    const <%= h.changeCase.camel(endNodeType) %> = await seedNode('<%= h.changeCase.lower(endNodeType) %>')
+    const <%= h.changeCase.camel(startNodeType) %> = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>)
+    const <%= h.changeCase.camel(endNodeType) %> = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(endNodeType) %>)
 
     const relationship = await getSpecificRelationship(
         <%= h.changeCase.camel(startNodeType) %>.id,

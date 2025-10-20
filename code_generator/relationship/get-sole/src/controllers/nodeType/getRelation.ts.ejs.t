@@ -4,6 +4,7 @@ to: src/controllers/<%= h.changeCase.camel(h.inflection.pluralize(startNodeType)
 import express from "express"
 import {<%= h.changeCase.pascal(startNodeType) %>} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
 import {marshalRelation} from "../relationships/marshalRelation"
+import {NodeTypeEnum} from "../nodes/types/NodeTypeEnum"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../models/types/RelationshipNotFoundError"
 import {sendResponse200} from "../responses/sendResponse200"
@@ -15,7 +16,7 @@ export async function get<%= h.changeCase.pascal(relationshipName) %>Relation(re
 
     try {
         const relation = await <%= h.changeCase.pascal(startNodeType) %>.get<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id)
-        const marshalledData = marshalRelation(relation, '<%= h.changeCase.lower(endNodeType) %>')
+        const marshalledData = marshalRelation(relation, NodeTypeEnum.'<%= h.changeCase.constant(endNodeType) %>')
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

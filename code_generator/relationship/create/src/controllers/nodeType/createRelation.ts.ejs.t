@@ -4,6 +4,7 @@ to: src/controllers/<%= h.inflection.pluralize(h.changeCase.camel(startNodeType)
 import express from "express"
 import {<%= h.changeCase.pascal(startNodeType) %>} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
 import {marshalRelation} from "../relationships/marshalRelation"
+import {NodeTypeEnum} from "../nodes/types/NodeTypeEnum"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../models/types/RelationshipAlreadyExistsError"
 <% if (startNodeType === endNodeType) { %>
@@ -20,7 +21,7 @@ export async function create<%= h.changeCase.pascal(relationshipName) %>Relation
 
     try {
         const relation = await <%= h.changeCase.pascal(startNodeType) %>.create<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id)
-        const marshalledData = marshalRelation(relation, '<%= h.changeCase.lower(endNodeType) %>')
+        const marshalledData = marshalRelation(relation, NodeTypeEnum.'<%= h.changeCase.constant(endNodeType) %>')
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

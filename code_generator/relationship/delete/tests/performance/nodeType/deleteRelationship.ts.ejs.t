@@ -8,6 +8,7 @@ import {Trend} from "k6/metrics"
 import {create<%= h.changeCase.pascal(startNodeType) %>} from "../../_testdata/create<%= h.changeCase.pascal(startNodeType) %>.ts"
 import {create<%= h.changeCase.pascal(endNodeType) %>} from "../../_testdata/create<%= h.changeCase.pascal(endNodeType) %>.ts"
 import {createRelationship} from "../../_testdata/createRelationship.ts"
+import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 const trendDuration = new Trend('duration', true)
 
@@ -37,7 +38,7 @@ export function setup() {
     for (let i = 0; i < 310; i++) {
         const <%= h.changeCase.camel(endNodeType) %> = create<%= h.changeCase.pascal(endNodeType) %>()
         createRelationship(
-            '<%= h.changeCase.lower(startNodeType) %>',
+            NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>,
             <%= h.changeCase.camel(startNodeType) %>Id,
             <%= h.changeCase.camel(endNodeType) %>,
             '<%= h.changeCase.lower(relationshipName) %>',
