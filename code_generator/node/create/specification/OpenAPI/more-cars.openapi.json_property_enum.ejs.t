@@ -8,8 +8,8 @@ skip_if: \"<%= h.changeCase.pascal(nodeType) %>Properties\"
     const enumProperties = []
 
     enumProperties.push('id')
-    enumProperties('created_at')
-    enumProperties('updated_at')
+    enumProperties.push('created_at')
+    enumProperties.push('updated_at')
 
     for (prop in properties) {
         enumProperties.push(prop)
