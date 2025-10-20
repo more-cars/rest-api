@@ -163,17 +163,17 @@ to: ticket-generator/_temp/ticketTree.json
                                 for (prop in properties) {
                                     gherkin.push('  | ' + prop + ' | ' + properties[prop].example + ' | ' + properties[prop].datatype + ' |')
                                 }
-                                gherkin.push('  | id         | 1234       | number |')
-                                gherkin.push('  | created_at | 2025-01-01 | string |')
-                                gherkin.push('  | updated_at | 2025-01-01 | string |')
+                                gherkin.push('  | id         | 1234       | datatype |')
+                                gherkin.push('  | created_at | 2025-01-01 | string   |')
+                                gherkin.push('  | updated_at | 2025-01-01 | string   |')
                                 gherkin.push('Then the response should contain the following keys')
                                 gherkin.push('  | id         |')
                                 gherkin.push('  | created_at |')
                                 gherkin.push('  | updated_at |')
                                 gherkin.push('But the response should NOT contain the following properties')
-                                gherkin.push('  | id         | 1234       | number |')
-                                gherkin.push('  | created_at | 2025-01-01 | string |')
-                                gherkin.push('  | updated_at | 2025-01-01 | string |')
+                                gherkin.push('  | id         | 1234       | datatype |')
+                                gherkin.push('  | created_at | 2025-01-01 | string   |')
+                                gherkin.push('  | updated_at | 2025-01-01 | string   |')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }
