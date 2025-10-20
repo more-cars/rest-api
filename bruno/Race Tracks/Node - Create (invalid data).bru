@@ -1,0 +1,19 @@
+meta {
+  name: Create Race Track (invalid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/race-tracks
+  body: json
+  auth: none
+}
+
+body:json {
+  {}
+}
+
+assert {
+  res.status: 400
+  res.body: isString
+}
