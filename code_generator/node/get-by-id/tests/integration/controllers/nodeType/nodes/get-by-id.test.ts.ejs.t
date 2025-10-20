@@ -1,5 +1,5 @@
 ---
-to: tests/integration/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/nodes/getById.test.ts
+to: tests/integration/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/nodes/get-by-id.test.ts
 ---
 import {expect, test, vi} from 'vitest'
 import request from 'supertest'

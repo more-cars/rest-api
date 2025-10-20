@@ -5,7 +5,7 @@ import {<%= h.changeCase.pascal(nodeType) %>Node} from "../../../../../src/db/no
 import {seed<%= h.changeCase.pascal(nodeType) %>} from "./seed<%= h.changeCase.pascal(nodeType) %>"
 
 export async function seed<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>(amount: number) {
-    const <%= h.changeCase.camel(h.inflection.pluralize(nodeType)) %>: Array<<%= h.changeCase.pascal(nodeType) %>Node> = []
+    const <%= h.changeCase.camel(h.inflection.pluralize(nodeType)) %>: <%= h.changeCase.pascal(nodeType) %>Node[] = []
 
     for (let i = 0; i < amount; i++) {
         <%= h.changeCase.camel(h.inflection.pluralize(nodeType)) %>.push(await seed<%= h.changeCase.pascal(nodeType) %>())

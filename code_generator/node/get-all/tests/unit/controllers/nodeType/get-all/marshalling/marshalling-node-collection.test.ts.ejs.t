@@ -1,10 +1,10 @@
 ---
-to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/getAll/marshalling-node-collection.test.ts
+to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/get-all/marshalling-node-collection.test.ts
 ---
 import {expect, test} from 'vitest'
 import type {<%= h.changeCase.pascal(nodeType) %>Node} from "../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node"
 import Fake<%= h.changeCase.pascal(nodeType) %> from "../../../../_toolbox/fixtures/nodes/Fake<%= h.changeCase.pascal(nodeType) %>"
-import {marshalNodeCollection} from "../../../../../src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>a/marshalling/marshalNodeCollection"
+import {marshalNodes} from "../../../../../src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshalling/marshalNodes"
 
 test("marshalling a collection of <%= h.changeCase.upper(nodeType) %> nodes", async () => {
     const fakeNode1: <%= h.changeCase.pascal(nodeType) %>Node = Object.assign({}, Fake<%= h.changeCase.pascal(nodeType) %>, {id: 1, created_at: "dummy", updated_at: "dummy"})

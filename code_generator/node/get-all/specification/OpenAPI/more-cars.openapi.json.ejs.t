@@ -23,7 +23,7 @@ skip_if: Get all `<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>`
           },
           {
             "$ref": "#/components/parameters/SortDirection"
-          }
+          },
           {
             "in": "query",
             "name": "filter_by_property",
