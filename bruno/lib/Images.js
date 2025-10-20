@@ -16,14 +16,12 @@ async function ensureValidImageExists() {
 exports.ensureValidImageExists = ensureValidImageExists
 
 async function ensureValidSecondImageExists() {
-    if (!bru.getEnvVar('validSecondImageId')) {
-        const nodeList = await getAllImages()
-        if (nodeList.length > 1) {
-            bru.setEnvVar("validSecondImageId", nodeList[1].data.id)
-        } else {
-            const newNode = await createImage()
-            bru.setEnvVar("validSecondImageId", newNode.data.id)
-        }
+    const nodeList = await getAllImages()
+    if (nodeList.length > 1) {
+        bru.setEnvVar("validSecondImageId", nodeList[nodeList.length - 1].data.id)
+    } else {
+        const newNode = await createImage()
+        bru.setEnvVar("validSecondImageId", newNode.data.id)
     }
 }
 

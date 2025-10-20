@@ -17,14 +17,12 @@ async function ensureValidCarModelExists() {
 exports.ensureValidCarModelExists = ensureValidCarModelExists
 
 async function ensureValidSecondCarModelExists() {
-    if (!bru.getEnvVar('validSecondCarModelId')) {
-        const nodeList = await getAllCarModels()
-        if (nodeList.length > 1) {
-            bru.setEnvVar("validSecondCarModelId", nodeList[1].data.id)
-        } else {
-            const newNode = await createCarModel()
-            bru.setEnvVar("validSecondCarModelId", newNode.data.id)
-        }
+    const nodeList = await getAllCarModels()
+    if (nodeList.length > 1) {
+        bru.setEnvVar("validSecondCarModelId", nodeList[nodeList.length - 1].data.id)
+    } else {
+        const newNode = await createCarModel()
+        bru.setEnvVar("validSecondCarModelId", newNode.data.id)
     }
 }
 
