@@ -16,7 +16,8 @@ describe('Requesting a ›<%= h.changeCase.kebab(relationshipName) %>‹ relatio
         const expectedRelationship = await seedRelationship('<%= h.changeCase.lower(startNodeType) %>', '<%= h.changeCase.lower(endNodeType) %>', DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
         const actualRelationship = await <%= h.changeCase.pascal(startNodeType) %>.get<%= h.changeCase.pascal(relationshipName) %>Relationship(expectedRelationship.start_node_id)
 
-        validateJson(actualRelationship, RelationshipSchema)
+        expect(validateJson(actualRelationship, RelationshipSchema))
+            .toBeTruthy()
 
         expect(actualRelationship.origin.id)
             .toBe(expectedRelationship.start_node_id)

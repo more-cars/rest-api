@@ -13,7 +13,8 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
         const expectedRelationship = await seedRelationship('car model', 'image', DbRelationship.CarModelHasPrimeImage)
         const actualRelationship = await CarModel.getHasPrimeImageRelationship(expectedRelationship.start_node_id)
 
-        validateJson(actualRelationship, RelationshipSchema)
+        expect(validateJson(actualRelationship, RelationshipSchema))
+            .toBeTruthy()
 
         expect(actualRelationship.origin.id)
             .toBe(expectedRelationship.start_node_id)

@@ -21,5 +21,5 @@ test('Querying an existing <%= h.changeCase.upper(nodeType) %> should return a d
     const <%= h.changeCase.camel(nodeType) %>Node = await getNodeById(createdNode.id)
 
     expect(validateJson(<%= h.changeCase.camel(nodeType) %>Node, <%= h.changeCase.pascal(nodeType) %>Schema))
-        .toBe(true)
+        .toBeTruthy()
 })

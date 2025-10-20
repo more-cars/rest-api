@@ -18,5 +18,5 @@ test('Querying an existing brand should return a db node with correct schema', a
     const brandNode = await getNodeById(createdNode.id)
 
     expect(validateJson(brandNode, BrandSchema))
-        .toBe(true)
+        .toBeTruthy()
 })

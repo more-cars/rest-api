@@ -18,5 +18,5 @@ test('Querying an existing brand should return a db node with correct schema', a
     const requestedNode = await getNodeById(existingNode.id)
 
     expect(validateJson(requestedNode, ImageSchema))
-        .toBe(true)
+        .toBeTruthy()
 })

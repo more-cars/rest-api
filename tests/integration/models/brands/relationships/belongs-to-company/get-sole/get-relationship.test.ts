@@ -13,7 +13,8 @@ describe('Requesting a ›belongs-to-company‹ relationship', () => {
         const expectedRelationship = await seedRelationship('brand', 'company', DbRelationship.BrandBelongsToCompany)
         const actualRelationship = await Brand.getBelongsToCompanyRelationship(expectedRelationship.start_node_id)
 
-        validateJson(actualRelationship, RelationshipSchema)
+        expect(validateJson(actualRelationship, RelationshipSchema))
+            .toBeTruthy()
 
         expect(actualRelationship.origin.id)
             .toBe(expectedRelationship.start_node_id)

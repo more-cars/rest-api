@@ -3,13 +3,14 @@ import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelatio
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {Image} from "../../../../../../../src/models/images/Image"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
-import {RelationshipSchema} from "../../../../../../_toolbox/schemas/controller/RelationshipSchema"
+import {RelationshipSchema} from "../../../../../../_toolbox/schemas/model/RelationshipSchema"
 
 test('Both nodes and a ›belongs-to-node‹ relationship exist', async () => {
     const expectedRelationship = await seedRelationship('image', 'company', DbRelationship.ImageBelongsToCompany)
     const actualRelationship = await Image.getSpecificBelongsToNodeRelationship(expectedRelationship.start_node_id, expectedRelationship.end_node_id)
 
-    validateJson(actualRelationship, RelationshipSchema)
+    expect(validateJson(actualRelationship, RelationshipSchema))
+        .toBeTruthy()
 
     expect(actualRelationship.origin.id)
         .toBe(expectedRelationship.start_node_id)

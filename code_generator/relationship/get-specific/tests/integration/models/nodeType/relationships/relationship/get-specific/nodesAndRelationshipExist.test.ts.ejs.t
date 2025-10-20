@@ -12,7 +12,8 @@ test('Both nodes and a ›<%= h.changeCase.kebab(relationshipName) %>‹ relatio
     const expectedRelationship = await seedRelationship('<%= h.changeCase.lower(startNodeType) %>', '<%= h.changeCase.lower(endNodeType) %>', DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
     const actualRelationship = await <%= h.changeCase.pascal(startNodeType) %>.has<%= h.changeCase.pascal(relationshipName) %>Relationship(expectedRelationship.start_node_id, expectedRelationship.end_node_id)
 
-    validateJson(actualRelationship, <%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Schema)
+    expect(validateJson(actualRelationship, <%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Schema))
+        .toBeTruthy()
 
     expect(actualRelationship.origin.id)
         .toBe(expectedRelationship.start_node_id)

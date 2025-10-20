@@ -18,5 +18,5 @@ test('Querying an existing COMPANY should return a db node with correct schema',
     const companyNode = await getNodeById(createdNode.id)
 
     expect(validateJson(companyNode, CompanySchema))
-        .toBe(true)
+        .toBeTruthy()
 })

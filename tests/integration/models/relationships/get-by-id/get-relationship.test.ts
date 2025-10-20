@@ -11,7 +11,8 @@ describe('Requesting a relationship', () => {
         const expectedRelationship = await seedRelationship('brand', 'car model', DbRelationship.BrandHasCarModel)
         const actualRelationship = await Relationship.findById(expectedRelationship.relationship_id)
 
-        validateJson(actualRelationship, RelationshipSchema)
+        expect(validateJson(actualRelationship, RelationshipSchema))
+            .toBeTruthy()
 
         expect(actualRelationship.origin.id)
             .toBe(expectedRelationship.start_node_id)

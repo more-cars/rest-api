@@ -13,7 +13,8 @@ describe('Requesting a ›has-successor‹ relationship', () => {
         const expectedRelationship = await seedRelationship('car model', 'car model', DbRelationship.CarModelHasSuccessor)
         const actualRelationship = await CarModel.getHasSuccessorRelationship(expectedRelationship.start_node_id)
 
-        validateJson(actualRelationship, RelationshipSchema)
+        expect(validateJson(actualRelationship, RelationshipSchema))
+            .toBeTruthy()
 
         expect(actualRelationship.origin.id)
             .toBe(expectedRelationship.start_node_id)

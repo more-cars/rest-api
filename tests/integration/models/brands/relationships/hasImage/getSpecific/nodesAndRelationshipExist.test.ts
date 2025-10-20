@@ -4,7 +4,7 @@ import {Brand} from "../../../../../../../src/models/brands/Brand"
 import assert from "assert"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
 import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
-import {RelationshipSchema} from "../../../../../../_toolbox/schemas/controller/RelationshipSchema"
+import {RelationshipSchema} from "../../../../../../_toolbox/schemas/model/RelationshipSchema"
 
 test('Both nodes and a ›has-image‹ relationship exist',
     async () => {
@@ -19,7 +19,8 @@ test('Both nodes and a ›has-image‹ relationship exist',
             assert.fail(`Relationship creation failed.`)
         }
 
-        validateJson(relationship, RelationshipSchema)
+        expect(validateJson(relationship, RelationshipSchema))
+            .toBeTruthy()
 
         expect(relationship.origin.id)
             .toBe(brand.id)
