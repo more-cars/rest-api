@@ -1,4 +1,5 @@
 import {faker} from "@faker-js/faker"
+import type {InputRaceTrackCreate} from "../../../../src/db/nodes/race-tracks/types/InputRaceTrackCreate"
 
 export default {
     name: faker.word.noun(),
@@ -7,4 +8,4 @@ export default {
     type: faker.word.noun(),
     location: faker.word.noun(),
     geo_position: faker.word.noun(),
-}
+} as InputRaceTrackCreate

@@ -2,6 +2,7 @@
 to: tests/_toolbox/fixtures/nodes/Fake<%= h.changeCase.pascal(nodeType) %>.ts
 ---
 import {faker} from "@faker-js/faker"
+import type {Input<%= h.changeCase.pascal(nodeType) %>Create} from "../../../../src/db/nodes/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Input<%= h.changeCase.pascal(nodeType) %>Create"
 
 export default {
 <% for (prop in properties) { -%>
@@ -13,4 +14,4 @@ export default {
     <%= prop %>: faker.datatype.boolean(),
 <%    } -%>
 <% } -%>
-}
+} as Input<%= h.changeCase.pascal(nodeType) %>Create
