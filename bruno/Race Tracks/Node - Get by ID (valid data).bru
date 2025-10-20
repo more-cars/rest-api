@@ -1,0 +1,22 @@
+meta {
+  name: Get Race Track by ID (valid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/race-tracks/{{validRaceTrackId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 200
+  res.body: isJson
+  res.body.data.id: {{validRaceTrackId}}
+  res.body.data.created_at: isNotEmpty
+  res.body.data.updated_at: isNotEmpty
+}
+
+script:pre-request {
+  await lib.RaceTracks.ensureValidRaceTrackExists()
+}
