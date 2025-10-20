@@ -3,11 +3,12 @@ import {seedCompany} from "../../../../../../_toolbox/dbSeeding/companies/nodes/
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {Company} from "../../../../../../../src/models/companies/Company"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 test('COMPANY exists and has ›has-image‹ relationships', async () => {
     const company = await seedCompany()
-    await seedRelationshipForStartNode(company.id, 'image', DbRelationship.CompanyHasImage)
-    await seedRelationshipForStartNode(company.id, 'image', DbRelationship.CompanyHasImage)
+    await seedRelationshipForStartNode(company.id, NodeTypeEnum.IMAGE, DbRelationship.CompanyHasImage)
+    await seedRelationshipForStartNode(company.id, NodeTypeEnum.IMAGE, DbRelationship.CompanyHasImage)
 
     const relationships = await Company.getAllHasImageRelationships(company.id)
 

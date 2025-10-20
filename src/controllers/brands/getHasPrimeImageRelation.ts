@@ -1,6 +1,7 @@
 import express from "express"
 import {Brand} from "../../models/brands/Brand"
 import {marshalRelation} from "../relationships/marshalRelation"
+import {NodeTypeEnum} from "../nodes/types/NodeTypeEnum"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../models/types/RelationshipNotFoundError"
 import {sendResponse200} from "../responses/sendResponse200"
@@ -12,7 +13,7 @@ export async function getHasPrimeImageRelation(req: express.Request, res: expres
 
     try {
         const relation = await Brand.getHasPrimeImageRelationship(brandId)
-        const marshalledData = marshalRelation(relation, 'image')
+        const marshalledData = marshalRelation(relation, NodeTypeEnum.IMAGE)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

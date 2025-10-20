@@ -1,6 +1,7 @@
 import express from "express"
 import {CarModel} from "../../models/car-models/CarModel"
 import {marshalRelation} from "../relationships/marshalRelation"
+import {NodeTypeEnum} from "../nodes/types/NodeTypeEnum"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../models/types/RelationshipAlreadyExistsError"
 import {sendResponse201} from "../responses/sendResponse201"
@@ -14,7 +15,7 @@ export async function createHasPrimeImageRelation(req: express.Request, res: exp
 
     try {
         const relation = await CarModel.createHasPrimeImageRelationship(carModelId, imageId)
-        const marshalledData = marshalRelation(relation, 'image')
+        const marshalledData = marshalRelation(relation, NodeTypeEnum.IMAGE)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

@@ -1,6 +1,6 @@
-import type {NodeType} from "../NodeType"
+import type {NodeTypeEnum} from "../../../src/controllers/nodes/types/NodeTypeEnum"
 import {dasherize, pluralize} from 'inflection'
 
-export function getBasePathFragmentForNodeType(nodeType: NodeType) {
+export function getBasePathFragmentForNodeType(nodeType: NodeTypeEnum) {
     return dasherize(pluralize(nodeType))
 }

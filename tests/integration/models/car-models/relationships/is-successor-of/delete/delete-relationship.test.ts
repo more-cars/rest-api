@@ -6,10 +6,11 @@ import {getSpecificRelationship} from "../../../../../../../src/db/relationships
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 describe('Deleting a ›is-successor-of‹ relationship', () => {
     test('CAR MODEL node does not exist', async () => {
-        const carModel = await seedNode('car model')
+        const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
 
         await expect(CarModel.deleteIsSuccessorOfRelationship(carModel.id, -43))
             .rejects
@@ -17,7 +18,7 @@ describe('Deleting a ›is-successor-of‹ relationship', () => {
     })
 
     test('PARTNER node does not exist', async () => {
-        const partner = await seedNode('car model')
+        const partner = await seedNode(NodeTypeEnum.CAR_MODEL)
 
         await expect(CarModel.deleteIsSuccessorOfRelationship(-42, partner.id))
             .rejects
@@ -31,8 +32,8 @@ describe('Deleting a ›is-successor-of‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›is-successor-of‹ relationship', async () => {
-        const carModel = await seedNode('car model')
-        const partner = await seedNode('car model')
+        const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
+        const partner = await seedNode(NodeTypeEnum.CAR_MODEL)
 
         await expect(CarModel.deleteIsSuccessorOfRelationship(carModel.id, partner.id))
             .rejects
@@ -40,7 +41,7 @@ describe('Deleting a ›is-successor-of‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›is-successor-of‹ relationship', async () => {
-        const seededRelationship = await seedRelationship('car model', 'car model', DbRelationship.CarModelIsSuccessorOf)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.CAR_MODEL, DbRelationship.CarModelIsSuccessorOf)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,

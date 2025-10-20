@@ -4,6 +4,7 @@ import {Trend} from "k6/metrics"
 import {createBrand} from "../../_testdata/createBrand.ts"
 import {createCarModel} from "../../_testdata/createCarModel.ts"
 import {createRelationship} from "../../_testdata/createRelationship.ts"
+import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 const trendDuration = new Trend('duration', true)
 
@@ -29,7 +30,7 @@ export const options = {
 export function setup() {
     const startNodeId = createBrand()
     const endNodeId = createCarModel()
-    const relationshipId = createRelationship("brand", startNodeId, endNodeId, 'has-car-model')
+    const relationshipId = createRelationship(NodeTypeEnum.BRAND, startNodeId, endNodeId, 'has-car-model')
 
     return {id: relationshipId}
 }

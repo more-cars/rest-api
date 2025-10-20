@@ -4,10 +4,11 @@ import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelatio
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {deleteSpecificRelationship} from "../../../../../../../src/db/relationships/deleteSpecificRelationship"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 describe('Trying to delete a ›is-successor-of‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship('car model', 'car model', DbRelationship.CarModelIsSuccessorOf)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.CAR_MODEL, DbRelationship.CarModelIsSuccessorOf)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
@@ -35,8 +36,8 @@ describe('Trying to delete a ›is-successor-of‹ relationship', () => {
     })
 
     test('nodes exists, but not the relationship', async () => {
-        const carModel = await seedNode('car model')
-        const partner = await seedNode('car model')
+        const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
+        const partner = await seedNode(NodeTypeEnum.CAR_MODEL)
 
         const relationship = await deleteSpecificRelationship(
             carModel.id,

@@ -3,9 +3,10 @@ import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelatio
 import {Brand} from "../../../../../../../src/models/brands/Brand"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 test('Both nodes and the relationship exist', async () => {
-    const seededRelationship = await seedRelationship('brand', 'car model', DbRelationship.BrandHasCarModel)
+    const seededRelationship = await seedRelationship(NodeTypeEnum.BRAND, NodeTypeEnum.CAR_MODEL, DbRelationship.BrandHasCarModel)
 
     const relationshipBefore = await getSpecificRelationship(
         seededRelationship.start_node_id,

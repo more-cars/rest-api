@@ -2,9 +2,10 @@ import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 test('Car Model does not exist', async () => {
-    const carModel = await seedNode('car model')
+    const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
 
     await expect(CarModel.deleteBelongsToBrandRelationship(carModel.id, -43))
         .rejects
@@ -12,7 +13,7 @@ test('Car Model does not exist', async () => {
 })
 
 test('Brand does not exist', async () => {
-    const brand = await seedNode('car model')
+    const brand = await seedNode(NodeTypeEnum.CAR_MODEL)
 
     await expect(CarModel.deleteBelongsToBrandRelationship(-42, brand.id))
         .rejects

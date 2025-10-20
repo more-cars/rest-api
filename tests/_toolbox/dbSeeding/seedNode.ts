@@ -1,18 +1,21 @@
-import type {NodeType} from "../NodeType"
+import {NodeTypeEnum} from "../../../src/controllers/nodes/types/NodeTypeEnum"
+import {seedCompany} from "./companies/nodes/seedCompany"
 import {seedBrand} from "./brands/nodes/seedBrand"
 import {seedCarModel} from "./car-models/nodes/seedCarModel"
+import {seedRaceTrack} from "./race-tracks/nodes/seedRaceTrack"
 import {seedImage} from "./images/nodes/seedImage"
-import {seedCompany} from "./companies/nodes/seedCompany"
 
-export async function seedNode(nodeType: NodeType, customFakeData: object = {}) {
+export async function seedNode(nodeType: NodeTypeEnum, customFakeData: object = {}) {
     switch (nodeType) {
-        case "brand":
-            return await seedBrand(customFakeData)
-        case "car model":
-            return await seedCarModel(customFakeData)
-        case "image":
-            return await seedImage(customFakeData)
-        case "company":
+        case NodeTypeEnum.COMPANY:
             return await seedCompany(customFakeData)
+        case NodeTypeEnum.BRAND:
+            return await seedBrand(customFakeData)
+        case NodeTypeEnum.CAR_MODEL:
+            return await seedCarModel(customFakeData)
+        case NodeTypeEnum.IMAGE:
+            return await seedImage(customFakeData)
+        case NodeTypeEnum.RACE_TRACK:
+            return await seedRaceTrack(customFakeData)
     }
 }

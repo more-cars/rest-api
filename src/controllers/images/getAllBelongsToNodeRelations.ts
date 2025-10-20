@@ -1,6 +1,7 @@
 import express from "express"
 import {Image} from "../../models/images/Image"
 import {marshalRelations} from "../relationships/marshalRelations"
+import {NodeTypeEnum} from "../nodes/types/NodeTypeEnum"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
@@ -11,7 +12,7 @@ export async function getAllBelongsToNodeRelations(req: express.Request, res: ex
 
     try {
         const relations = await Image.getAllBelongsToNodeRelationships(imageId)
-        const marshalledData = marshalRelations(relations, 'brand') // TODO provide correct partner node type
+        const marshalledData = marshalRelations(relations, NodeTypeEnum.BRAND) // TODO provide correct partner node type
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

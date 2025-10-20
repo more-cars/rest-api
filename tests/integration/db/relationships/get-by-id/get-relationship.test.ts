@@ -3,10 +3,11 @@ import assert from "assert"
 import {seedRelationship} from "../../../../_toolbox/dbSeeding/seedRelationship"
 import {DbRelationship} from "../../../../../src/db/types/DbRelationship"
 import {getRelationshipById} from "../../../../../src/db/relationships/getRelationshipById"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 describe('Requesting a relationship', () => {
     test('relationship exists', async () => {
-        const expectedRelationship = await seedRelationship('brand', 'car model', DbRelationship.BrandHasCarModel)
+        const expectedRelationship = await seedRelationship(NodeTypeEnum.BRAND, NodeTypeEnum.CAR_MODEL, DbRelationship.BrandHasCarModel)
         const actualRelationship = await getRelationshipById(expectedRelationship.relationship_id)
 
         if (!actualRelationship) {

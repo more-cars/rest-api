@@ -1,6 +1,7 @@
 import express from "express"
 import {Company} from "../../models/companies/Company"
 import {marshalRelations} from "../relationships/marshalRelations"
+import {NodeTypeEnum} from "../nodes/types/NodeTypeEnum"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {sendResponse200} from "../responses/sendResponse200"
 import {sendResponse404} from "../responses/sendResponse404"
@@ -11,7 +12,7 @@ export async function getAllHasBrandRelations(req: express.Request, res: express
 
     try {
         const relations = await Company.getAllHasBrandRelationships(companyId)
-        const marshalledData = marshalRelations(relations, "brand")
+        const marshalledData = marshalRelations(relations, NodeTypeEnum.BRAND)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

@@ -1,6 +1,7 @@
 import express from "express"
 import {Brand} from "../../models/brands/Brand"
 import {marshalRelation} from "../relationships/marshalRelation"
+import {NodeTypeEnum} from "../nodes/types/NodeTypeEnum"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../models/types/RelationshipNotFoundError"
 import {sendResponse200} from "../responses/sendResponse200"
@@ -12,7 +13,7 @@ export async function getBelongsToCompanyRelation(req: express.Request, res: exp
 
     try {
         const relation = await Brand.getBelongsToCompanyRelationship(brandId)
-        const marshalledData = marshalRelation(relation, 'company')
+        const marshalledData = marshalRelation(relation, NodeTypeEnum.COMPANY)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

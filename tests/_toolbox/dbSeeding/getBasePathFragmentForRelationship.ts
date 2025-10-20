@@ -1,8 +1,8 @@
-import type {NodeType} from "../NodeType"
+import type {NodeTypeEnum} from "../../../src/controllers/nodes/types/NodeTypeEnum"
 import {dasherize} from "inflection"
 
 // TODO mapping doesn't work when there exist different relationships between the same nodes
-export function getBasePathFragmentForRelationship(startNodeType: NodeType, endNodeType: NodeType) {
+export function getBasePathFragmentForRelationship(startNodeType: NodeTypeEnum, endNodeType: NodeTypeEnum) {
     const relationships = new Map<string, Map<string, string>>()
 
     relationships.set(

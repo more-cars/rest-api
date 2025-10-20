@@ -1,11 +1,11 @@
-import type {NodeType} from "../NodeType"
+import type {NodeTypeEnum} from "../../../src/controllers/nodes/types/NodeTypeEnum"
+import type {DbRelationship} from "../../../src/db/types/DbRelationship"
 import {seedNode} from "./seedNode"
 import {createRelationship} from "../../../src/db/relationships/createRelationship"
-import type {DbRelationship} from "../../../src/db/types/DbRelationship"
 
 export async function seedRelationship(
-    startNodeType: NodeType,
-    endNodeType: NodeType,
+    startNodeType: NodeTypeEnum,
+    endNodeType: NodeTypeEnum,
     relationshipName: DbRelationship
 ) {
     const startNode = await seedNode(startNodeType)

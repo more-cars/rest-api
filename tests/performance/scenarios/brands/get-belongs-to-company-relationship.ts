@@ -4,6 +4,7 @@ import {Trend} from "k6/metrics"
 import {createBrand} from "../../_testdata/createBrand.ts"
 import {createCompany} from "../../_testdata/createCompany.ts"
 import {createRelationship} from "../../_testdata/createRelationship.ts"
+import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 const trendDuration = new Trend('duration', true)
 
@@ -30,7 +31,7 @@ export function setup() {
     const brandId = createBrand()
     const companyId = createCompany()
     createRelationship(
-        'brand',
+        NodeTypeEnum.BRAND,
         brandId,
         companyId,
         'belongs to company',

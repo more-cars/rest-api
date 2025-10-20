@@ -1,10 +1,10 @@
 import {dasherize} from "inflection"
 import type {GenericRelation} from "../../models/relationships/types/GenericRelation"
-import type {NodeType} from "../nodes/types/NodeType"
+import type {NodeTypeEnum} from "../nodes/types/NodeTypeEnum"
 import {marshalSingleNode} from "../nodes/marshalSingleNode"
 import type {RelationshipResponse} from "./types/RelationshipResponse"
 
-export function marshalRelation(relation: GenericRelation, partnerNodeType: NodeType) {
+export function marshalRelation(relation: GenericRelation, partnerNodeType: NodeTypeEnum) {
     return {
         data: {
             relationship_id: relation.id,

@@ -1,13 +1,13 @@
 import {createRelationship} from "../../../src/db/relationships/createRelationship"
-import type {DbRelationship} from "../../../src/db/types/DbRelationship"
 import type {BaseNode} from "../../../src/db/types/BaseNode"
-import {seedNode} from "./seedNode"
+import type {NodeTypeEnum} from "../../../src/controllers/nodes/types/NodeTypeEnum"
+import type {DbRelationship} from "../../../src/db/types/DbRelationship"
 import {getTargetNodeTypeForRelationship} from "./getTargetNodeTypeForRelationship"
-import type {NodeType} from "../NodeType"
+import {seedNode} from "./seedNode"
 
 export async function seedRelationshipForNode(
     startNode: BaseNode,
-    startNodeType: NodeType,
+    startNodeType: NodeTypeEnum,
     relationshipName: DbRelationship
 ) {
     const endNodeType = getTargetNodeTypeForRelationship(startNodeType, relationshipName)

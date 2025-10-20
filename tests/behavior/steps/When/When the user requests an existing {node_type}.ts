@@ -6,12 +6,12 @@ import {getAllNodesOfType as getAllBrands} from "../../../../src/db/nodes/brands
 import {getAllNodesOfType as getAllCarModels} from "../../../../src/db/nodes/car-models/getAllNodesOfType"
 import {getAllNodesOfType as getAllImages} from "../../../../src/db/nodes/images/getAllNodesOfType"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
-import type {NodeType} from "../../../_toolbox/NodeType"
+import type {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 When('the user requests an existing {string}',
     async (nodeType: string) => {
         let node: BaseNode
-        const path = getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeType)
+        const path = getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeTypeEnum)
 
         switch (nodeType.toLowerCase()) {
             case 'company':

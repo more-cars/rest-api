@@ -1,6 +1,6 @@
-import type {NodeType} from "../NodeType"
+import type {NodeTypeEnum} from "../../../src/controllers/nodes/types/NodeTypeEnum"
 
-export function getTargetNodeTypeForRelationship(startNodeType: NodeType, relationshipName: string) {
+export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, relationshipName: string) {
     const relationships = new Map<string, Map<string, string>>()
     relationshipName = relationshipName.toLowerCase().replaceAll('_', ' ')
 
@@ -40,5 +40,5 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeType, relati
         throw new Error('TEST ERROR: No relationship mapping found')
     }
 
-    return match as NodeType
+    return match as NodeTypeEnum
 }

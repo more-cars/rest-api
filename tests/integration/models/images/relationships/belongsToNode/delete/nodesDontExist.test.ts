@@ -2,9 +2,10 @@ import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {Image} from "../../../../../../../src/models/images/Image"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 test('Image does not exist', async () => {
-    const image = await seedNode('image')
+    const image = await seedNode(NodeTypeEnum.IMAGE)
 
     await expect(Image.deleteBelongsToNodeRelationship(image.id, -43))
         .rejects
@@ -12,7 +13,7 @@ test('Image does not exist', async () => {
 })
 
 test('Partner node does not exist', async () => {
-    const partnerNode = await seedNode('company')
+    const partnerNode = await seedNode(NodeTypeEnum.COMPANY)
 
     await expect(Image.deleteBelongsToNodeRelationship(-42, partnerNode.id))
         .rejects

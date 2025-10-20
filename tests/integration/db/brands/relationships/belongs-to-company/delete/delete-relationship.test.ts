@@ -3,11 +3,12 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {deleteSpecificRelationship} from "../../../../../../../src/db/relationships/deleteSpecificRelationship"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 describe('Trying to delete a ›belongs-to-company‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship('brand', 'company', DbRelationship.BrandBelongsToCompany)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.BRAND, NodeTypeEnum.COMPANY, DbRelationship.BrandBelongsToCompany)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
@@ -35,8 +36,8 @@ describe('Trying to delete a ›belongs-to-company‹ relationship', () => {
     })
 
     test('nodes exists, but not the relationship', async () => {
-        const brand = await seedNode('brand')
-        const company = await seedNode('company')
+        const brand = await seedNode(NodeTypeEnum.BRAND)
+        const company = await seedNode(NodeTypeEnum.COMPANY)
 
         const relationship = await deleteSpecificRelationship(
             brand.id,

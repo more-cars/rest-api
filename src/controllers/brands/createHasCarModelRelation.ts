@@ -1,6 +1,7 @@
 import express from "express"
 import {Brand} from "../../models/brands/Brand"
 import {marshalRelation} from "../relationships/marshalRelation"
+import {NodeTypeEnum} from "../nodes/types/NodeTypeEnum"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../models/types/RelationshipAlreadyExistsError"
 import {sendResponse201} from "../responses/sendResponse201"
@@ -14,7 +15,7 @@ export async function createHasCarModelRelation(req: express.Request, res: expre
 
     try {
         const relation = await Brand.createHasCarModelRelationship(brandId, carModelId)
-        const marshalledData = marshalRelation(relation, 'car model')
+        const marshalledData = marshalRelation(relation, NodeTypeEnum.CAR_MODEL)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

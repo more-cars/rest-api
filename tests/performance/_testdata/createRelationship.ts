@@ -1,10 +1,10 @@
 import http from "k6/http"
-import type {NodeType} from "../../_toolbox/NodeType.ts"
+import type {NodeTypeEnum} from "../../../src/controllers/nodes/types/NodeTypeEnum.ts"
 import {getBasePathFragmentForNodeType} from "../../_toolbox/dbSeeding/getBasePathFragmentForNodeType.ts"
 import {dasherize} from "inflection"
 
 export function createRelationship(
-    startNodeType: NodeType,
+    startNodeType: NodeTypeEnum,
     startNodeId: number,
     endNodeId: number,
     relationshipName: string
