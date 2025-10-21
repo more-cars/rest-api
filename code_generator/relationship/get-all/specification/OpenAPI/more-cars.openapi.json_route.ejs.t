@@ -23,7 +23,6 @@ skip_if: Get all ›<%= h.changeCase.kebab(relationshipName) %>‹ relationships
         ],
         "responses": {
           "200": {
-            "description": "`<%= h.changeCase.title(startNodeType) %>` with the provided ID was found and its `<%= h.changeCase.lower(relationshipName) %>` relationships are returned.",
             "description": "The collection of ›<%= h.changeCase.kebab(relationshipName) %>‹ relationships was successfully loaded.",
             "content": {
               "application/json": {
