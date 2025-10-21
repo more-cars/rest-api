@@ -31,7 +31,7 @@ test("marshalling a <%= h.changeCase.upper(nodeType) %> node", async () => {
         .toStrictEqual({
             data: {
                 id: 1,
-<%- props.map(line => '            ' + line).join(',\n') %>,
+<%- props.map(line => '                ' + line).join(',\n') %>,
                 created_at: "2025-05-14T11:05:07.793Z",
                 updated_at: "2025-05-14T11:05:07.793Z",
             }

@@ -1,5 +1,5 @@
 ---
-to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create/singleQuotesAreCorrectlyEscaped.test.ts
+to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create/escaping-single-quotes.test.ts
 ---
 <%
     props_in = []

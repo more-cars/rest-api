@@ -1,5 +1,5 @@
 ---
-to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/mappingDatabaseNodeToMoreCarsNode.test.ts
+to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/mapping-neo4j-node-to-db-layer-node.test.ts
 ---
 import {expect, test} from 'vitest'
 import {Integer, Node} from "neo4j-driver"

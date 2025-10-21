@@ -1,7 +1,7 @@
 ---
 inject: true
 to: specification/OpenAPI/more-cars.openapi.json
-before: .*\},\n.*\"components\"
+before: \"/relationships/{relationship-id}\"
 skip_if: Create `<%= h.changeCase.title(nodeType) %>`
 ---
     ,
