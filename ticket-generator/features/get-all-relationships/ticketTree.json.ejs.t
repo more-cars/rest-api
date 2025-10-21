@@ -34,7 +34,7 @@ to: ticket-generator/_temp/ticketTree.json
                                 gherkin.push('And there exist 3 \\"' + h.changeCase.kebab(relationshipName) + '\\" relationships for \\"' + startNodeExampleName + '\\"')
                                 gherkin.push('When the user requests all \\"' + h.changeCase.kebab(relationshipName) + '\\" relationships for \\"' + startNodeExampleName + '\\"')
                                 gherkin.push('Then the request should be confirmed with status code 200')
-                                gherkin.push('And the response should contain a collection of 3 \\"' + h.changeCase.kebab(relationshipName) + '\\" relationships')
+                                gherkin.push('And the response should return a collection with 3 \\"' + h.changeCase.kebab(relationshipName) + '\\" relationships')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }
