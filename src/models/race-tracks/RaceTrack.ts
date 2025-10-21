@@ -139,4 +139,31 @@ export class RaceTrack {
 
         return createdRelationship
     }
+
+    static async createHasPrimeImageRelationship(raceTrackId: number, imageId: number) {
+
+        const raceTrack = await RaceTrack.findById(raceTrackId)
+        if (!raceTrack) {
+            throw new NodeNotFoundError(raceTrackId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const existingRelation = await getSpecificRel(raceTrackId, imageId, RelationshipType.RaceTrackHasPrimeImage)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(RaceTrackRelationship.hasPrimeImage, raceTrackId, imageId)
+        }
+
+        await deleteDeprecatedRelationship(raceTrackId, DbRelationship.RaceTrackHasPrimeImage)
+
+        const createdRelationship = await createRel(raceTrackId, imageId, RelationshipType.RaceTrackHasPrimeImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    }
 }

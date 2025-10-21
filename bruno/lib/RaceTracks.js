@@ -2,26 +2,6 @@ const axios = require("axios")
 const {ensureValidTrackLayoutExists} = require("./TrackLayouts")
 const {ensureValidImageExists} = require("./Images")
 
-async function ensureRaceTrackHasImageRelationshipExists() {
-    await ensureValidRaceTrackExists()
-    await ensureValidImageExists()
-    await createRaceTrackHasImageRelationship(bru.getEnvVar('validRaceTrackId'), bru.getEnvVar('validImageId'))
-}
-
-exports.ensureRaceTrackHasImageRelationshipExists = ensureRaceTrackHasImageRelationshipExists
-
-async function createRaceTrackHasImageRelationship(raceTrackId, imageId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/race-tracks/" + raceTrackId + "/has-image/" + imageId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
-}
-
-exports.createRaceTrackHasImageRelationship = createRaceTrackHasImageRelationship
-
 async function ensureValidRaceTrackExists() {
     if (!bru.getEnvVar('validRaceTrackId')) {
         const nodeList = await getAllRaceTracks()
@@ -72,3 +52,43 @@ async function createRaceTrackHasLayoutRelationship(raceTrackId, trackLayoutId) 
 }
 
 exports.createRaceTrackHasLayoutRelationship = createRaceTrackHasLayoutRelationship
+
+async function ensureRaceTrackHasImageRelationshipExists() {
+    await ensureValidRaceTrackExists()
+    await ensureValidImageExists()
+    await createRaceTrackHasImageRelationship(bru.getEnvVar('validRaceTrackId'), bru.getEnvVar('validImageId'))
+}
+
+exports.ensureRaceTrackHasImageRelationshipExists = ensureRaceTrackHasImageRelationshipExists
+
+async function createRaceTrackHasImageRelationship(raceTrackId, imageId) {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/race-tracks/" + raceTrackId + "/has-image/" + imageId, null, {
+        validateStatus: function (status) {
+            return status < 400
+        }
+    })
+
+    return response.data
+}
+
+exports.createRaceTrackHasImageRelationship = createRaceTrackHasImageRelationship
+
+async function ensureRaceTrackHasPrimeImageRelationshipExists() {
+    await ensureValidRaceTrackExists()
+    await ensureValidImageExists()
+    await createRaceTrackHasPrimeImageRelationship(bru.getEnvVar('validRaceTrackId'), bru.getEnvVar('validImageId'))
+}
+
+exports.ensureRaceTrackHasPrimeImageRelationshipExists = ensureRaceTrackHasPrimeImageRelationshipExists
+
+async function createRaceTrackHasPrimeImageRelationship(raceTrackId, imageId) {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/race-tracks/" + raceTrackId + "/has-prime-image/" + imageId, null, {
+        validateStatus: function (status) {
+            return status < 400
+        }
+    })
+
+    return response.data
+}
+
+exports.createRaceTrackHasPrimeImageRelationship = createRaceTrackHasPrimeImageRelationship
