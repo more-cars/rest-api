@@ -141,6 +141,15 @@ export class RaceTrack {
         return createdRelationship
     }
 
+    static async getAllHasImageRelationships(raceTrackId: number) {
+        const raceTrack = await RaceTrack.findById(raceTrackId)
+        if (!raceTrack) {
+            throw new NodeNotFoundError(raceTrackId)
+        }
+
+        return getAllRels(raceTrackId, RelationshipType.RaceTrackHasImage)
+    }
+
     static async createHasPrimeImageRelationship(raceTrackId: number, imageId: number) {
 
         const raceTrack = await RaceTrack.findById(raceTrackId)

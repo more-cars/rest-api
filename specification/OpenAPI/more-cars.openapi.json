@@ -3104,6 +3104,47 @@
         }
       }
     },
+    "/race-tracks/{race-track-id}/has-image": {
+      "get": {
+        "tags": [
+          "Race Tracks"
+        ],
+        "summary": "Get all ›has-image‹ relationships for the `Race Track`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "race-track-id",
+            "description": "ID of the `Race Track`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-image‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RaceTrackHasImageCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Race Track` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/race-tracks/{race-track-id}/has-image/{image-id}": {
       "post": {
         "tags": [
@@ -5305,6 +5346,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/RaceTrackHasImage"
+          }
+        }
+      },
+      "RaceTrackHasImageCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RaceTrackHasImageResponse"
+            }
           }
         }
       },
