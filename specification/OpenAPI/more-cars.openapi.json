@@ -3588,6 +3588,47 @@
         }
       }
     },
+    "/track-layouts/{track-layout-id}/has-image": {
+      "get": {
+        "tags": [
+          "Track Layouts"
+        ],
+        "summary": "Get all ›has-image‹ relationships for the `Track Layout`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "track-layout-id",
+            "description": "ID of the `Track Layout`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-image‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrackLayoutHasImageCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Track Layout` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/track-layouts/{track-layout-id}/has-image/{image-id}": {
       "post": {
         "tags": [
@@ -5248,24 +5289,6 @@
           }
         }
       },
-      "TrackLayoutProperties": {
-        "type": "string",
-        "enum": [
-          "id",
-          "created_at",
-          "updated_at",
-          "name",
-          "year_from",
-          "year_to",
-          "length",
-          "length_unit",
-          "direction",
-          "elevation_change",
-          "elevation_change_unit",
-          "surface"
-        ],
-        "default": "id"
-      },
       "TrackLayoutBelongsToRaceTrack": {
         "type": "object",
         "required": [],
@@ -5365,6 +5388,35 @@
             "$ref": "#/components/schemas/TrackLayoutHasImage"
           }
         }
+      },
+      "TrackLayoutHasImageCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TrackLayoutHasImageResponse"
+            }
+          }
+        }
+      },
+      "TrackLayoutProperties": {
+        "type": "string",
+        "enum": [
+          "id",
+          "created_at",
+          "updated_at",
+          "name",
+          "year_from",
+          "year_to",
+          "length",
+          "length_unit",
+          "direction",
+          "elevation_change",
+          "elevation_change_unit",
+          "surface"
+        ],
+        "default": "id"
       },
       "Relationship": {
         "type": "object",

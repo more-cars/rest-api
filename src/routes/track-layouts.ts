@@ -11,5 +11,6 @@ router.post('/track-layouts/:trackLayoutId/belongs-to-race-track/:raceTrackId', 
 router.get('/track-layouts/:trackLayoutId/belongs-to-race-track', TrackLayoutController.getBelongsToRaceTrackRelation)
 router.delete('/track-layouts/:trackLayoutId/belongs-to-race-track/:raceTrackId', TrackLayoutController.deleteBelongsToRaceTrackRelation)
 router.post('/track-layouts/:trackLayoutId/has-image/:imageId', TrackLayoutController.createHasImageRelation)
+router.get('/track-layouts/:trackLayoutId/has-image', TrackLayoutController.getAllHasImageRelations)
 
 export default router

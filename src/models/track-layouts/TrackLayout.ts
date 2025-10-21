@@ -20,6 +20,7 @@ import {getRel} from "../relationships/getRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {Image} from "../images/Image"
+import {getAllRels} from "../relationships/getAllRels"
 
 export class TrackLayout {
     static async create(data: CreateTrackLayoutInput): Promise<TrackLayoutNode> {
@@ -143,5 +144,14 @@ export class TrackLayout {
         }
 
         return createdRelationship
+    }
+
+    static async getAllHasImageRelationships(trackLayoutId: number) {
+        const trackLayout = await TrackLayout.findById(trackLayoutId)
+        if (!trackLayout) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        return getAllRels(trackLayoutId, RelationshipType.TrackLayoutHasImage)
     }
 }

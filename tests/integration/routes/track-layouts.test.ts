@@ -69,4 +69,12 @@ describe('Track Layouts', () => {
         expect(TrackLayoutController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›has-image‹ Relationships', async () => {
+        await request(app)
+            .get('/track-layouts/123/has-image')
+
+        expect(TrackLayoutController.getAllHasImageRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })
