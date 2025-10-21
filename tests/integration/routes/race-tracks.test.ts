@@ -78,6 +78,14 @@ describe('Race Tracks', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete ›has-image‹ relationship', async () => {
+        await request(app)
+            .delete('/race-tracks/123/has-image/456')
+
+        expect(RaceTrackController.deleteHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-prime-image‹ relationship', async () => {
         await request(app)
             .post('/race-tracks/123/has-prime-image/456')

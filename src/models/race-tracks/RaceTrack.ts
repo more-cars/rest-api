@@ -150,6 +150,25 @@ export class RaceTrack {
         return getAllRels(raceTrackId, RelationshipType.RaceTrackHasImage)
     }
 
+    static async deleteHasImageRelationship(raceTrackId: number, imageId: number) {
+        const raceTrack = await RaceTrack.findById(raceTrackId)
+        if (!raceTrack) {
+            throw new NodeNotFoundError(raceTrackId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const relationship = await getSpecificRel(raceTrackId, imageId, RelationshipType.RaceTrackHasImage)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(RaceTrackRelationship.hasImage, raceTrackId, imageId)
+        }
+
+        await deleteSpecificRel(raceTrackId, imageId, RelationshipType.RaceTrackHasImage)
+    }
+
     static async createHasPrimeImageRelationship(raceTrackId: number, imageId: number) {
 
         const raceTrack = await RaceTrack.findById(raceTrackId)
