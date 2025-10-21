@@ -63,8 +63,8 @@ to: ticket-generator/_temp/ticketTree.json
                             <%
                                 gherkin = []
                                 gherkin.push('Given there exists a \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\"')
-                                gherkin.push('And there exists a "has image" relationship \\"R1\\" for \\"' + exampleName + '\\"')
-                                gherkin.push('And there exists a "has prime image" relationship \\"R2\\" for \\"' + exampleName + '\\"')
+                                gherkin.push('And there exists a \\"has image\\" relationship \\"R1\\" for \\"' + exampleName + '\\"')
+                                gherkin.push('And there exists a \\"has prime image\\" relationship \\"R2\\" for \\"' + exampleName + '\\"')
                                 gherkin.push('When the user hard-deletes the \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\"')
                                 gherkin.push('Then the \\"' + h.changeCase.upper(nodeType) + '\\" \\"' + exampleName + '\\" should not exist anymore')
                                 gherkin.push('And the relationship \\"R1\\" should not exist anymore')
