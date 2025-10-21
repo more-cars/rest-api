@@ -29,4 +29,12 @@ describe('Track Layouts', () => {
         expect(TrackLayoutController.getAll)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete Node', async () => {
+        await request(app)
+            .delete('/track-layouts/123')
+
+        expect(TrackLayoutController.delete)
+            .toHaveBeenCalledTimes(1)
+    })
 })

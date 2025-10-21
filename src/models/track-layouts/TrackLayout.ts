@@ -6,6 +6,8 @@ import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/track-layouts/getNodeById"
 import {getAllNodesOfType} from "../../db/nodes/track-layouts/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
+import {deleteNode} from "../../db/nodes/deleteNode"
+import {NodeNotFoundError} from "../types/NodeNotFoundError"
 
 export class TrackLayout {
     static async create(data: CreateTrackLayoutInput): Promise<TrackLayoutNode> {
@@ -35,5 +37,14 @@ export class TrackLayout {
         })
 
         return nodes
+    }
+
+    static async delete(trackLayoutId: number): Promise<void> {
+        const node = await TrackLayout.findById(trackLayoutId)
+        if (!node) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        await deleteNode(trackLayoutId)
     }
 }

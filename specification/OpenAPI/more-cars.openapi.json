@@ -3096,6 +3096,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Track Layouts"
+        ],
+        "summary": "Delete `Track Layout`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "track-layout-id",
+            "description": "ID of the `Track Layout`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Track Layout` successfully deleted."
+          },
+          "404": {
+            "description": "Deletion request failed. A `Track Layout` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/relationships/{relationship-id}": {
