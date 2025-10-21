@@ -14,5 +14,6 @@ export enum RelationshipType {
     RaceTrackHasLayout = 'HAS_LAYOUT',
     RaceTrackHasImage = 'HAS_IMAGE',
     RaceTrackHasPrimeImage = 'HAS_PRIME_IMAGE',
+    TrackLayoutBelongsToRaceTrack = 'BELONGS_TO_RACE_TRACK',
     ImageBelongsToNode = 'BELONGS_TO_NODE',
 }

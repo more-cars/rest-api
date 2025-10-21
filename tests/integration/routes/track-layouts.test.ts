@@ -37,4 +37,12 @@ describe('Track Layouts', () => {
         expect(TrackLayoutController.delete)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›belongs-to-race-track‹ relationship', async () => {
+        await request(app)
+            .post('/track-layouts/123/belongs-to-race-track/456')
+
+        expect(TrackLayoutController.createBelongsToRaceTrackRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
