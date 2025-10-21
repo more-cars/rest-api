@@ -3062,6 +3062,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Race Tracks"
+        ],
+        "summary": "Deletes the ›has-layout‹ relationship between the `Race Track` and the `Track Layout`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "race-track-id",
+            "description": "ID of the `Race Track`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "track-layout-id",
+            "description": "ID of the `Track Layout`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-layout‹ relationship between `Race Track` and `Track Layout` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-layout‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/track-layouts": {

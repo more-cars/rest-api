@@ -17,6 +17,8 @@ import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExists
 import {RelationshipType} from "../relationships/types/RelationshipType"
 import {RaceTrackRelationship} from "./types/RaceTrackRelationship"
 import {getAllRels} from "../relationships/getAllRels"
+import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
+import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 
 export class RaceTrack {
     static async create(data: CreateRaceTrackInput): Promise<RaceTrackNode> {
@@ -91,5 +93,24 @@ export class RaceTrack {
         }
 
         return getAllRels(raceTrackId, RelationshipType.RaceTrackHasLayout)
+    }
+
+    static async deleteHasLayoutRelationship(raceTrackId: number, trackLayoutId: number) {
+        const raceTrack = await RaceTrack.findById(raceTrackId)
+        if (!raceTrack) {
+            throw new NodeNotFoundError(raceTrackId)
+        }
+
+        const trackLayout = await TrackLayout.findById(trackLayoutId)
+        if (!trackLayout) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        const relationship = await getSpecificRel(raceTrackId, trackLayoutId, RelationshipType.RaceTrackHasLayout)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(RaceTrackRelationship.hasLayout, raceTrackId, trackLayoutId)
+        }
+
+        await deleteSpecificRel(raceTrackId, trackLayoutId, RelationshipType.RaceTrackHasLayout)
     }
 }

@@ -53,4 +53,12 @@ describe('Race Tracks', () => {
         expect(RaceTrackController.getAllHasLayoutRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-layout‹ relationship', async () => {
+        await request(app)
+            .delete('/race-tracks/123/has-layout/456')
+
+        expect(RaceTrackController.deleteHasLayoutRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
