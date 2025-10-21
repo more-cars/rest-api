@@ -8,5 +8,6 @@ router.get('/track-layouts/:id', TrackLayoutController.getById)
 router.get('/track-layouts', TrackLayoutController.getAll)
 router.delete('/track-layouts/:id', TrackLayoutController.delete)
 router.post('/track-layouts/:trackLayoutId/belongs-to-race-track/:raceTrackId', TrackLayoutController.createBelongsToRaceTrackRelation)
+router.get('/track-layouts/:trackLayoutId/belongs-to-race-track', TrackLayoutController.getBelongsToRaceTrackRelation)
 
 export default router

@@ -4,6 +4,7 @@ import {getById} from "./track-layouts/getById"
 import {getAll} from "./track-layouts/getAll"
 import {deleteNode} from "./track-layouts/deleteNode"
 import {createBelongsToRaceTrackRelation} from "./track-layouts/createBelongsToRaceTrackRelation"
+import {getBelongsToRaceTrackRelation} from "./track-layouts/getBelongsToRaceTrackRelation"
 
 export class TrackLayoutController {
     static async create(req: express.Request, res: express.Response) {
@@ -24,5 +25,9 @@ export class TrackLayoutController {
 
     static async createBelongsToRaceTrackRelation(req: express.Request, res: express.Response) {
         await createBelongsToRaceTrackRelation(req, res)
+    }
+
+    static async getBelongsToRaceTrackRelation(req: express.Request, res: express.Response) {
+        await getBelongsToRaceTrackRelation(req, res)
     }
 }

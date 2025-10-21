@@ -16,6 +16,8 @@ import {getSpecificRel} from "../relationships/getSpecificRel"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
 import {RelationshipType} from "../relationships/types/RelationshipType"
 import {TrackLayoutRelationship} from "./types/TrackLayoutRelationship"
+import {getRel} from "../relationships/getRel"
+import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 
 export class TrackLayout {
     static async create(data: CreateTrackLayoutInput): Promise<TrackLayoutNode> {
@@ -81,5 +83,19 @@ export class TrackLayout {
         }
 
         return createdRelationship
+    }
+
+    static async getBelongsToRaceTrackRelationship(trackLayoutId: number) {
+        const trackLayout = await TrackLayout.findById(trackLayoutId)
+        if (!trackLayout) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        const relationship = await getRel(trackLayoutId, RelationshipType.TrackLayoutBelongsToRaceTrack)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(TrackLayoutRelationship.belongsToRaceTrack, trackLayoutId, null)
+        }
+
+        return relationship
     }
 }

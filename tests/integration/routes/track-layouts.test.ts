@@ -45,4 +45,12 @@ describe('Track Layouts', () => {
         expect(TrackLayoutController.createBelongsToRaceTrackRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›belongs-to-race-track‹ relationship', async () => {
+        await request(app)
+            .get('/track-layouts/123/belongs-to-race-track')
+
+        expect(TrackLayoutController.getBelongsToRaceTrackRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

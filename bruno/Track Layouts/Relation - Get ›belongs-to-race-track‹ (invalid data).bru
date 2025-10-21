@@ -1,0 +1,15 @@
+meta {
+  name: Get ›belongs-to-race-track‹ relation (invalid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/track-layouts/{{invalidTrackLayoutId}}/belongs-to-race-track
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}

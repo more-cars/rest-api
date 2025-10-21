@@ -3453,6 +3453,47 @@
         }
       }
     },
+    "/track-layouts/{track-layout-id}/belongs-to-race-track": {
+      "get": {
+        "tags": [
+          "Track Layouts"
+        ],
+        "summary": "Get the ›belongs-to-race-track‹ relationship for the `Track Layout`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "track-layout-id",
+            "description": "ID of the `Track Layout`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›belongs-to-race-track‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrackLayoutBelongsToRaceTrackResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Track Layout` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/track-layouts/{track-layout-id}/belongs-to-race-track/{race-track-id}": {
       "post": {
         "tags": [
