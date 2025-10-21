@@ -9,6 +9,7 @@ import {deleteBelongsToRaceTrackRelation} from "./track-layouts/deleteBelongsToR
 import {createHasImageRelation} from "./track-layouts/createHasImageRelation"
 import {getAllHasImageRelations} from "./track-layouts/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./track-layouts/deleteHasImageRelation"
+import {createHasPrimeImageRelation} from "./track-layouts/createHasPrimeImageRelation"
 
 export class TrackLayoutController {
     static async create(req: express.Request, res: express.Response) {
@@ -49,5 +50,9 @@ export class TrackLayoutController {
 
     static async deleteHasImageRelation(req: express.Request, res: express.Response) {
         await deleteHasImageRelation(req, res)
+    }
+
+    static async createHasPrimeImageRelation(req: express.Request, res: express.Response) {
+        await createHasPrimeImageRelation(req, res)
     }
 }

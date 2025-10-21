@@ -72,3 +72,23 @@ async function createTrackLayoutHasImageRelationship(trackLayoutId, imageId) {
 }
 
 exports.createTrackLayoutHasImageRelationship = createTrackLayoutHasImageRelationship
+
+async function ensureTrackLayoutHasPrimeImageRelationshipExists() {
+    await ensureValidTrackLayoutExists()
+    await ensureValidImageExists()
+    await createTrackLayoutHasPrimeImageRelationship(bru.getEnvVar('validTrackLayoutId'), bru.getEnvVar('validImageId'))
+}
+
+exports.ensureTrackLayoutHasPrimeImageRelationshipExists = ensureTrackLayoutHasPrimeImageRelationshipExists
+
+async function createTrackLayoutHasPrimeImageRelationship(trackLayoutId, imageId) {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/track-layouts/" + trackLayoutId + "/has-prime-image/" + imageId, null, {
+        validateStatus: function (status) {
+            return status < 400
+        }
+    })
+
+    return response.data
+}
+
+exports.createTrackLayoutHasPrimeImageRelationship = createTrackLayoutHasPrimeImageRelationship

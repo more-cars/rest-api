@@ -173,4 +173,31 @@ export class TrackLayout {
 
         await deleteSpecificRel(trackLayoutId, imageId, RelationshipType.TrackLayoutHasImage)
     }
+
+    static async createHasPrimeImageRelationship(trackLayoutId: number, imageId: number) {
+
+        const trackLayout = await TrackLayout.findById(trackLayoutId)
+        if (!trackLayout) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const existingRelation = await getSpecificRel(trackLayoutId, imageId, RelationshipType.TrackLayoutHasPrimeImage)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(TrackLayoutRelationship.hasPrimeImage, trackLayoutId, imageId)
+        }
+
+        await deleteDeprecatedRelationship(trackLayoutId, DbRelationship.TrackLayoutHasPrimeImage)
+
+        const createdRelationship = await createRel(trackLayoutId, imageId, RelationshipType.TrackLayoutHasPrimeImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    }
 }
