@@ -4,8 +4,7 @@ to: tests/performance/scenarios/<%= h.inflection.pluralize(h.changeCase.kebab(st
 import http from 'k6/http'
 import {check} from "k6"
 import {Trend} from "k6/metrics"
-import {create<%= h.changeCase.pascal(startNodeType) %>} from "../../_testdata/create<%= h.changeCase.pascal(startNodeType) %>.ts"
-import {create<%= h.changeCase.pascal(endNodeType) %>} from "../../_testdata/create<%= h.changeCase.pascal(endNodeType) %>.ts"
+import {createNode} from "../../_testdata/createNode.ts"
 import {createRelationship} from "../../_testdata/createRelationship.ts"
 import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
 
@@ -31,8 +30,8 @@ export const options = {
 }
 
 export function setup() {
-    const <%= h.changeCase.camel(startNodeType) %>Id = create<%= h.changeCase.pascal(startNodeType) %>()
-    const <%= h.changeCase.camel(endNodeType) %>Id = create<%= h.changeCase.pascal(endNodeType) %>()
+    const <%= h.changeCase.camel(startNodeType) %>Id = createNode(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>)
+    const <%= h.changeCase.camel(endNodeType) %>Id = createNode(NodeTypeEnum.<%= h.changeCase.constant(endNodeType) %>)
     createRelationship(
         NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>,
         <%= h.changeCase.camel(startNodeType) %>Id,

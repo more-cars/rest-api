@@ -5,5 +5,5 @@ before: \nexport class
 skip_if: import {deleteDeprecatedRelationship} from
 ---
 <% if (cardinality === '1:1' || cardinality === 'n:1' || cardinality === '1:n') { %>
-import {deleteDeprecatedRelationship} from "./deleteDeprecatedRelationship"
+import {deleteDeprecatedRelationship} from "../relationships/deleteDeprecatedRelationship"
 <% } %>

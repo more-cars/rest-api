@@ -2,8 +2,9 @@
 to: tests/integration/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/relationships/<%= h.changeCase.kebab(relationshipName) %>/create/connecting-multiple-nodes.test.ts
 ---
 import {expect, test} from 'vitest'
-import {seed<%= h.changeCase.pascal(h.inflection.pluralize(endNodeType)) %>} from "../../../../../../_toolbox/dbSeeding/<%= h.changeCase.kebab(h.inflection.pluralize(endNodeType)) %>/nodes/seed<%= h.changeCase.pascal(h.inflection.pluralize(endNodeType)) %>"
-import {seed<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../_toolbox/dbSeeding/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/nodes/seed<%= h.changeCase.pascal(startNodeType) %>"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
 import {getRelationshipsForSpecificNode} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
@@ -13,9 +14,9 @@ test('A <%= h.changeCase.upper(startNodeType) %> cannot have multiple ›<%= h.c
 <% } else if (cardinality === '1:n' || cardinality === 'm:n') { -%>
 test('A <%= h.changeCase.upper(startNodeType) %> can have multiple ›<%= h.changeCase.kebab(relationshipName) %>‹ relationships', async () => {
 <% } -%>
-    const <%= h.changeCase.camel(startNodeType) %> = await seed<%= h.changeCase.pascal(startNodeType) %>()
+    const <%= h.changeCase.camel(startNodeType) %> = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>)
     const <%= h.changeCase.camel(h.inflection.pluralize(startNodeType === endNodeType ? 'partner' : endNodeType)) %>Amount = 3
-    const <%= h.changeCase.camel(h.inflection.pluralize(startNodeType === endNodeType ? 'partner' : endNodeType)) %> = await seed<%= h.changeCase.pascal(h.inflection.pluralize(endNodeType)) %>(<%= h.changeCase.camel(h.inflection.pluralize(startNodeType === endNodeType ? 'partner' : endNodeType)) %>Amount)
+    const <%= h.changeCase.camel(h.inflection.pluralize(startNodeType === endNodeType ? 'partner' : endNodeType)) %> = await seedNodes(NodeTypeEnum.<%= h.changeCase.constant(endNodeType) %>, <%= h.changeCase.camel(h.inflection.pluralize(startNodeType === endNodeType ? 'partner' : endNodeType)) %>Amount)
 
     for (const <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %> of <%= h.changeCase.camel(h.inflection.pluralize(startNodeType === endNodeType ? 'partner' : endNodeType)) %>) {
         await <%= h.changeCase.pascal(startNodeType) %>.create<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>.id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>.id)

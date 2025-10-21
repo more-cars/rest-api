@@ -1,7 +1,7 @@
 ---
 inject: true
 to: specification/OpenAPI/more-cars.openapi.json
-before: \"<%= h.changeCase.pascal(startNodeType) %>\"
+before: \"Relationship\"
 skip_if: \"<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>\"
 ---
       "<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>": {

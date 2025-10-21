@@ -4,8 +4,8 @@ to: tests/performance/scenarios/<%= h.changeCase.kebab(h.inflection.pluralize(st
 import http from 'k6/http'
 import {check} from "k6"
 import {Trend} from "k6/metrics"
-import {create<%= h.changeCase.pascal(startNodeType) %>} from "../../_testdata/create<%= h.changeCase.pascal(startNodeType) %>.ts"
-import {create<%= h.changeCase.pascal(endNodeType) %>} from "../../_testdata/create<%= h.changeCase.pascal(endNodeType) %>.ts"
+import {createNode} from "../../_testdata/createNode.ts"
+import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum.ts"
 
 const trendDuration = new Trend('duration', true)
 
@@ -29,8 +29,8 @@ export const options = {
 }
 
 export function setup() {
-    const <%= h.changeCase.camel(startNodeType) %>Id = create<%= h.changeCase.pascal(startNodeType) %>()
-    const <%= h.changeCase.camel(endNodeType) %>Id = create<%= h.changeCase.pascal(endNodeType) %>()
+    const <%= h.changeCase.camel(startNodeType) %>Id = createNode(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>)
+    const <%= h.changeCase.camel(endNodeType) %>Id = createNode(NodeTypeEnum.<%= h.changeCase.constant(endNodeType) %>)
 
     return {
         <%= h.changeCase.camel(startNodeType) %>Id,

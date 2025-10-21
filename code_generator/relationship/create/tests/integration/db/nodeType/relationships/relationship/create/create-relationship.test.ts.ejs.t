@@ -4,14 +4,14 @@ to: tests/integration/db/<%= h.changeCase.kebab(h.inflection.pluralize(startNode
 import {describe, expect, test} from 'vitest'
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
-import {seed<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../_toolbox/dbSeeding/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/nodes/seed<%= h.changeCase.pascal(startNodeType) %>"
-import {seed<%= h.changeCase.pascal(endNodeType) %>} from "../../../../../../_toolbox/dbSeeding/<%= h.changeCase.kebab(h.inflection.pluralize(endNodeType)) %>/nodes/seed<%= h.changeCase.pascal(endNodeType) %>"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {<%= h.changeCase.pascal(startNodeType) %>Relationship} from "../../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/types/<%= h.changeCase.pascal(startNodeType) %>Relationship"
 
 describe('Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship', () => {
     test('with valid data', async () => {
-        const <%= h.changeCase.camel(startNodeType) %> = await seed<%= h.changeCase.pascal(startNodeType) %>()
-        const <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %> = await seed<%= h.changeCase.pascal(endNodeType) %>()
+        const <%= h.changeCase.camel(startNodeType) %> = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>)
+        const <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %> = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(endNodeType) %>)
 
         const createdRelationship = await createRelationship(
             <%= h.changeCase.camel(startNodeType) %>.id,
@@ -34,7 +34,7 @@ describe('Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relations
     })
 
     test('with invalid data', async () => {
-        const <%= h.changeCase.camel(startNodeType) %> = await seed<%= h.changeCase.pascal(startNodeType) %>()
+        const <%= h.changeCase.camel(startNodeType) %> = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>)
 
         const createdRelationship = await createRelationship(
             <%= h.changeCase.camel(startNodeType) %>.id,

@@ -2,7 +2,7 @@
 to: tests/integration/db/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/relationships/<%= h.changeCase.kebab(relationshipName) %>/get-sole/get-relationship.test.ts
 ---
 import {describe, expect, test} from 'vitest'
-import {seed<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../_toolbox/dbSeeding/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/nodes/seed<%= h.changeCase.pascal(startNodeType) %>"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getRelationshipsForSpecificNode} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
@@ -22,7 +22,7 @@ describe('Requesting a ›<%= h.changeCase.kebab(relationshipName) %>‹ relatio
     })
 
     test('node exists, but not the relationship', async () => {
-        const <%= h.changeCase.camel(startNodeType) %> = await seed<%= h.changeCase.pascal(startNodeType) %>()
+        const <%= h.changeCase.camel(startNodeType) %> = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>)
 
         const relationships = await getRelationshipsForSpecificNode(
             <%= h.changeCase.camel(startNodeType) %>.id,

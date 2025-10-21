@@ -1,7 +1,7 @@
 ---
 inject: true
-to: src/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/relationships/getDbRelationshipType.ts
-before: ])
-skip_if: import {getSpecificRel} from
+to: src/models/relationships/getDbRelationshipType.ts
+before: RelationshipType.ImageBelongsToNode
+skip_if: RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>
 ---
         [RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>, DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>],

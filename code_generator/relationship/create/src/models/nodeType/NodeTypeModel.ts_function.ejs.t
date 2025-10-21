@@ -22,7 +22,7 @@ skip_if: static async create<%= h.changeCase.pascal(relationshipName) %>Relation
             throw new NodeNotFoundError(<%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id)
         }
 
-        const existingRelation = await getSpecificRel(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id, RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>))
+        const existingRelation = await getSpecificRel(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id, RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
         if (existingRelation) {
             throw new RelationshipAlreadyExistsError(<%= h.changeCase.pascal(startNodeType) %>Relationship.<%= h.changeCase.camel(relationshipName) %>, <%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id)
         }
@@ -31,7 +31,7 @@ skip_if: static async create<%= h.changeCase.pascal(relationshipName) %>Relation
 <% } else if (cardinality === '1:n') { %>
         await deleteDeprecatedRelationship(<%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id, DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
 <% } %>
-        const createdRelationship = await createRel(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id, RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>))
+        const createdRelationship = await createRel(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id, RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
