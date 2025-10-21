@@ -1,5 +1,5 @@
 ---
-to: src/controllers/<%= h.changeCase.camel(h.inflection.pluralize(nodeType)) %>/deleteNode.ts
+to: src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/deleteNode.ts
 ---
 import express from "express"
 import {<%= h.changeCase.pascal(nodeType) %>} from "../../models/<%= h.inflection.pluralize(h.changeCase.kebab(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"

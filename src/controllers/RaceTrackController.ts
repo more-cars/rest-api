@@ -2,7 +2,7 @@ import express from "express"
 import {create} from "./race-tracks/create"
 import {getById} from "./race-tracks/getById"
 import {getAll} from "./race-tracks/getAll"
-import {deleteNode} from "./raceTracks/deleteNode"
+import {deleteNode} from "./race-tracks/deleteNode"
 
 export class RaceTrackController {
     static async create(req: express.Request, res: express.Response) {
