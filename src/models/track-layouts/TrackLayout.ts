@@ -18,6 +18,7 @@ import {RelationshipType} from "../relationships/types/RelationshipType"
 import {TrackLayoutRelationship} from "./types/TrackLayoutRelationship"
 import {getRel} from "../relationships/getRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
+import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 
 export class TrackLayout {
     static async create(data: CreateTrackLayoutInput): Promise<TrackLayoutNode> {
@@ -97,5 +98,24 @@ export class TrackLayout {
         }
 
         return relationship
+    }
+
+    static async deleteBelongsToRaceTrackRelationship(trackLayoutId: number, raceTrackId: number) {
+        const trackLayout = await TrackLayout.findById(trackLayoutId)
+        if (!trackLayout) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        const raceTrack = await RaceTrack.findById(raceTrackId)
+        if (!raceTrack) {
+            throw new NodeNotFoundError(raceTrackId)
+        }
+
+        const relationship = await getSpecificRel(trackLayoutId, raceTrackId, RelationshipType.TrackLayoutBelongsToRaceTrack)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(TrackLayoutRelationship.belongsToRaceTrack, trackLayoutId, raceTrackId)
+        }
+
+        await deleteSpecificRel(trackLayoutId, raceTrackId, RelationshipType.TrackLayoutBelongsToRaceTrack)
     }
 }
