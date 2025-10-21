@@ -1,0 +1,15 @@
+meta {
+  name: Get Track Layout by ID (invalid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/track-layouts/{{invalidTrackLayoutId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}

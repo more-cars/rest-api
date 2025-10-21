@@ -2999,6 +2999,47 @@
         }
       }
     },
+    "/track-layouts/{track-layout-id}": {
+      "get": {
+        "tags": [
+          "Track Layouts"
+        ],
+        "summary": "Get `Track Layout` by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "track-layout-id",
+            "description": "ID of the `Track Layout`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Track Layout` successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrackLayoutResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. A `Track Layout` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/relationships/{relationship-id}": {
       "get": {
         "tags": [

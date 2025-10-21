@@ -1,0 +1,22 @@
+meta {
+  name: Get Track Layout by ID (valid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/track-layouts/{{validTrackLayoutId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 200
+  res.body: isJson
+  res.body.data.id: {{validTrackLayoutId}}
+  res.body.data.created_at: isNotEmpty
+  res.body.data.updated_at: isNotEmpty
+}
+
+script:pre-request {
+  await lib.TrackLayouts.ensureValidTrackLayoutExists()
+}

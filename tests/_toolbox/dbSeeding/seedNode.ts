@@ -1,8 +1,10 @@
+import assert from "assert"
 import {NodeTypeEnum} from "../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedCompany} from "./companies/nodes/seedCompany"
 import {seedBrand} from "./brands/nodes/seedBrand"
 import {seedCarModel} from "./car-models/nodes/seedCarModel"
 import {seedRaceTrack} from "./race-tracks/nodes/seedRaceTrack"
+import {seedTrackLayout} from "./track-layouts/nodes/seedTrackLayout"
 import {seedImage} from "./images/nodes/seedImage"
 
 export async function seedNode(nodeType: NodeTypeEnum, customFakeData: object = {}) {
@@ -13,9 +15,13 @@ export async function seedNode(nodeType: NodeTypeEnum, customFakeData: object = 
             return await seedBrand(customFakeData)
         case NodeTypeEnum.CAR_MODEL:
             return await seedCarModel(customFakeData)
-        case NodeTypeEnum.IMAGE:
-            return await seedImage(customFakeData)
         case NodeTypeEnum.RACE_TRACK:
             return await seedRaceTrack(customFakeData)
+        case NodeTypeEnum.TRACK_LAYOUT:
+            return await seedTrackLayout(customFakeData)
+        case NodeTypeEnum.IMAGE:
+            return await seedImage(customFakeData)
+        default:
+            assert.fail(`Node type "${nodeType}" is invalid or unknown`)
     }
 }
