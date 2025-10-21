@@ -7,6 +7,7 @@
  */
 export enum DbRelationship {
     NodeHasImage = 'HAS_IMAGE',
+    NodeHasPrimeImage = 'HAS_PRIME_IMAGE',
     ImageBelongsToNode = 'HAS_IMAGE',
     ImageBelongsToCompany = 'HAS_IMAGE',
     CompanyHasBrand = 'HAS_BRAND',

@@ -1,0 +1,19 @@
+meta {
+  name: Create Track Layout (invalid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/track-layouts
+  body: json
+  auth: none
+}
+
+body:json {
+  {}
+}
+
+assert {
+  res.status: 400
+  res.body: isString
+}

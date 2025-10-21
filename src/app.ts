@@ -6,6 +6,7 @@ import companies from "./routes/companies"
 import brands from './routes/brands'
 import carModels from "./routes/car-models"
 import raceTracks from "./routes/race-tracks"
+import trackLayouts from "./routes/track-layouts"
 import images from "./routes/images"
 import relationships from "./routes/relationships"
 import {basicAuthentication} from "./basicAuthentication"
@@ -29,6 +30,7 @@ app.use('/', companies)
 app.use('/', brands)
 app.use('/', carModels)
 app.use('/', raceTracks)
+app.use('/', trackLayouts)
 app.use('/', images)
 app.use('/', relationships)
 

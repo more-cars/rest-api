@@ -1,0 +1,14 @@
+[
+  "id",
+  "name",
+  "year_from",
+  "year_to",
+  "length",
+  "length_unit",
+  "direction",
+  "elevation_change",
+  "elevation_change_unit",
+  "surface",
+  "created_at",
+  "updated_at"
+]

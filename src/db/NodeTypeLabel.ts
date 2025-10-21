@@ -3,5 +3,6 @@ export enum NodeTypeLabel {
     Brand = "Brand",
     CarModel = "CarModel",
     RaceTrack = "RaceTrack",
+    TrackLayout = "TrackLayout",
     Image = "Image",
 }

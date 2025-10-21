@@ -1,0 +1,32 @@
+import {expect, test} from 'vitest'
+import {sanitize} from "../../../../../../src/controllers/track-layouts/create"
+import {CreateTrackLayoutInput} from "../../../../../../src/models/track-layouts/types/CreateTrackLayoutInput"
+
+test('leading and trailing whitespaces are removed from all properties of type "string"', async () => {
+    const data: CreateTrackLayoutInput = {
+        name: "   GP Circuit  ",
+        year_from: 1967,
+        year_to: 1999,
+        length: 7.004,
+        length_unit: "   km  ",
+        direction: "   clockwise  ",
+        elevation_change: 71,
+        elevation_change_unit: "   m  ",
+        surface: "   asphalt  ",
+    }
+
+    const result = sanitize(data)
+
+    expect(result)
+        .toStrictEqual({
+            name: "GP Circuit",
+            year_from: 1967,
+            year_to: 1999,
+            length: 7.004,
+            length_unit: "km",
+            direction: "clockwise",
+            elevation_change: 71,
+            elevation_change_unit: "m",
+            surface: "asphalt",
+        })
+})

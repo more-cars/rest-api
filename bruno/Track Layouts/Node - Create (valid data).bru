@@ -1,0 +1,37 @@
+meta {
+  name: Create Track Layout (valid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/track-layouts
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "GP Circuit",
+    "year_from": 1967,
+    "year_to": 1999,
+    "length": 7,
+    "length_unit": "km",
+    "direction": "clockwise",
+    "elevation_change": 71,
+    "elevation_change_unit": "m",
+    "surface": "asphalt"
+  }
+}
+
+assert {
+  res.status: 201
+  res.body: isJson
+  res.body.data.id: gte 12000000
+}
+
+tests {
+  test("both timestamps should be identical", function () {
+    const data = res.getBody()
+    expect(data.data.created_at).to.eql(data.data.updated_at)
+  })
+}
