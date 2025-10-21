@@ -1,6 +1,8 @@
-export type RelationshipTypeLabelOld =
-    'OWNS_BRAND' |
-    'BUILDS_CAR_MODEL' |
-    'IS_SUCCESSOR_OF' |
-    'HAS_IMAGE' |
-    'IS_MAIN_IMAGE_OF_NODE'
+export enum RelationshipTypeLabelOld {
+    CompanyHasBrand = "OWNS_BRAND",
+    BrandHasCarModel = "BUILDS_CAR_MODEL",
+    CarModelHasSuccessor = "IS_SUCCESSOR_OF",
+    RaceTrackHasLayout = "HAS_RACE_TRACK_VARIANT",
+    NodeHasImage = "HAS_IMAGE",
+    NodeHasPrimeImage = "IS_MAIN_IMAGE_OF_NODE",
+}

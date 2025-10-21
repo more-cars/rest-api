@@ -1,21 +1,28 @@
+import assert from "assert"
 import type {Node} from "neo4j-driver"
-import {mapBrand} from "./mappings/mapBrand"
-import type {NodeTypeLabel} from "../../src/db/NodeTypeLabel"
+import {NodeTypeLabel} from "../../src/db/NodeTypeLabel"
 import {mapCompany} from "./mappings/mapCompany"
+import {mapBrand} from "./mappings/mapBrand"
 import {mapCarModel} from "./mappings/mapCarModel"
+import {mapRaceTrack} from "./mappings/mapRaceTrack"
+import {mapTrackLayout} from "./mappings/mapTrackLayout"
 import {mapImage} from "./mappings/mapImage"
 
 export function mapNodeProperties(oldNode: Node, nodeType: NodeTypeLabel) {
     switch (nodeType) {
-        case 'Company':
+        case NodeTypeLabel.Company:
             return mapCompany(oldNode)
-        case 'Brand':
+        case NodeTypeLabel.Brand:
             return mapBrand(oldNode)
-        case 'CarModel':
+        case NodeTypeLabel.CarModel:
             return mapCarModel(oldNode)
-        case 'Image':
+        case NodeTypeLabel.RaceTrack:
+            return mapRaceTrack(oldNode)
+        case NodeTypeLabel.TrackLayout:
+            return mapTrackLayout(oldNode)
+        case NodeTypeLabel.Image:
             return mapImage(oldNode)
+        default:
+            assert.fail(`Node type "${nodeType}" is invalid or unknown`)
     }
-
-    throw new Error('Unknown Node Type')
 }

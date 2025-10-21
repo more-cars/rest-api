@@ -1,11 +1,11 @@
 import {DbRelationship} from "../../src/db/types/DbRelationship"
-import type {RelationshipTypeLabelOld} from "./types/RelationshipTypeLabelOld"
+import {RelationshipTypeLabelOld} from "./types/RelationshipTypeLabelOld"
 
 // mapping of all relationship types to find out their names in the old database
 export const RelationshipTypeMapping = new Map<DbRelationship, RelationshipTypeLabelOld>([
-    [DbRelationship.CompanyHasBrand, 'OWNS_BRAND'],
-    [DbRelationship.BrandHasCarModel, 'BUILDS_CAR_MODEL'],
-    [DbRelationship.CarModelHasSuccessor, 'IS_SUCCESSOR_OF'],
-    [DbRelationship.NodeHasImage, 'HAS_IMAGE'],
-    [DbRelationship.CarModelHasPrimeImage, 'IS_MAIN_IMAGE_OF_NODE'],
+    [DbRelationship.CompanyHasBrand, RelationshipTypeLabelOld.CompanyHasBrand],
+    [DbRelationship.BrandHasCarModel, RelationshipTypeLabelOld.BrandHasCarModel],
+    [DbRelationship.CarModelHasSuccessor, RelationshipTypeLabelOld.CarModelHasSuccessor],
+    [DbRelationship.NodeHasImage, RelationshipTypeLabelOld.NodeHasImage],
+    [DbRelationship.NodeHasPrimeImage, RelationshipTypeLabelOld.NodeHasPrimeImage],
 ])

@@ -1,31 +1,41 @@
+import type {Node} from "neo4j-driver"
 import type {InputCompanyCreate} from "../../src/db/nodes/companies/types/InputCompanyCreate"
 import type {InputBrandCreate} from "../../src/db/nodes/brands/types/InputBrandCreate"
 import type {InputCarModelCreate} from "../../src/db/nodes/car-models/types/InputCarModelCreate"
+import type {InputRaceTrackCreate} from "../../src/db/nodes/race-tracks/types/InputRaceTrackCreate"
+import type {InputTrackLayoutCreate} from "../../src/db/nodes/track-layouts/types/InputTrackLayoutCreate"
 import type {InputImageCreate} from "../../src/db/nodes/images/types/InputImageCreate"
-import {createDbNode} from "../../src/db/nodes/createDbNode"
-import type {NodeTypeLabel} from "../../src/db/NodeTypeLabel"
+import {NodeTypeLabel} from "../../src/db/NodeTypeLabel"
 import {createNodeQuery as createCompanyQuery} from "../../src/db/nodes/companies/createNode"
 import {createNodeQuery as createBrandQuery} from "../../src/db/nodes/brands/createNode"
 import {createNodeQuery as createCarModelQuery} from "../../src/db/nodes/car-models/createNode"
+import {createNodeQuery as createRaceTrackQuery} from "../../src/db/nodes/race-tracks/createNode"
+import {createNodeQuery as createTrackLayoutQuery} from "../../src/db/nodes/track-layouts/createNode"
 import {createNodeQuery as createImageQuery} from "../../src/db/nodes/images/createNode"
+import {createDbNode} from "../../src/db/nodes/createDbNode"
 import {addMoreCarsIdToNode} from "../../src/db/nodes/addMoreCarsIdToNode"
 import {addTimestampsToNode} from "../../src/db/nodes/addTimestampsToNode"
-import type {Node} from "neo4j-driver"
 
-export async function storeNode(data: InputCompanyCreate | InputBrandCreate | InputCarModelCreate | InputImageCreate, newNodeType: NodeTypeLabel, oldNode: Node): Promise<void> {
+export async function storeNode(data: InputCompanyCreate | InputBrandCreate | InputCarModelCreate | InputRaceTrackCreate | InputTrackLayoutCreate | InputImageCreate, newNodeType: NodeTypeLabel, oldNode: Node): Promise<void> {
     let query = ''
 
     switch (newNodeType) {
-        case 'Company':
+        case NodeTypeLabel.Company:
             query = createCompanyQuery(data as InputCompanyCreate)
             break
-        case 'Brand':
+        case NodeTypeLabel.Brand:
             query = createBrandQuery(data as InputBrandCreate)
             break
-        case 'CarModel':
+        case NodeTypeLabel.CarModel:
             query = createCarModelQuery(data as InputCarModelCreate)
             break
-        case 'Image':
+        case NodeTypeLabel.RaceTrack:
+            query = createRaceTrackQuery(data as InputRaceTrackCreate)
+            break
+        case NodeTypeLabel.TrackLayout:
+            query = createTrackLayoutQuery(data as InputTrackLayoutCreate)
+            break
+        case NodeTypeLabel.Image:
             query = createImageQuery(data as InputImageCreate)
             break
     }
