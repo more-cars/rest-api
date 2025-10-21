@@ -8,6 +8,7 @@ import {getAllHasLayoutRelations} from "./race-tracks/getAllHasLayoutRelations"
 import {deleteHasLayoutRelation} from "./race-tracks/deleteHasLayoutRelation"
 import {createHasImageRelation} from "./race-tracks/createHasImageRelation"
 import {createHasPrimeImageRelation} from "./race-tracks/createHasPrimeImageRelation"
+import {getHasPrimeImageRelation} from "./race-tracks/getHasPrimeImageRelation"
 
 export class RaceTrackController {
     static async create(req: express.Request, res: express.Response) {
@@ -44,5 +45,9 @@ export class RaceTrackController {
 
     static async createHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await createHasPrimeImageRelation(req, res)
+    }
+
+    static async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
+        await getHasPrimeImageRelation(req, res)
     }
 }

@@ -2988,7 +2988,6 @@
         ],
         "responses": {
           "200": {
-            "description": "`Race Track` with the provided ID was found and its `has layout` relationships are returned.",
             "description": "The collection of ›has-layout‹ relationships was successfully loaded.",
             "content": {
               "application/json": {
@@ -3147,6 +3146,47 @@
           },
           "404": {
             "description": "Request failed. `Race Track` and/or `Image` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/race-tracks/{race-track-id}/has-prime-image": {
+      "get": {
+        "tags": [
+          "Race Tracks"
+        ],
+        "summary": "Get the ›has-prime-image‹ relationship for the `Race Track`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "race-track-id",
+            "description": "ID of the `Race Track`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›has-prime-image‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RaceTrackHasPrimeImageResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Race Track` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -4711,21 +4751,6 @@
           }
         }
       },
-      "RaceTrackProperties": {
-        "type": "string",
-        "enum": [
-          "id",
-          "created_at",
-          "updated_at",
-          "name",
-          "opened",
-          "closed",
-          "type",
-          "location",
-          "geo_position"
-        ],
-        "default": "id"
-      },
       "RaceTrackHasLayout": {
         "type": "object",
         "required": [],
@@ -4773,6 +4798,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/RaceTrackHasLayout"
+          }
+        }
+      },
+      "RaceTrackHasLayoutCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RaceTrackHasLayoutResponse"
+            }
           }
         }
       },
@@ -4875,6 +4911,21 @@
             "$ref": "#/components/schemas/RaceTrackHasPrimeImage"
           }
         }
+      },
+      "RaceTrackProperties": {
+        "type": "string",
+        "enum": [
+          "id",
+          "created_at",
+          "updated_at",
+          "name",
+          "opened",
+          "closed",
+          "type",
+          "location",
+          "geo_position"
+        ],
+        "default": "id"
       },
       "TrackLayout": {
         "type": "object",
