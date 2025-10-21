@@ -14,5 +14,6 @@ router.post('/track-layouts/:trackLayoutId/has-image/:imageId', TrackLayoutContr
 router.get('/track-layouts/:trackLayoutId/has-image', TrackLayoutController.getAllHasImageRelations)
 router.delete('/track-layouts/:trackLayoutId/has-image/:imageId', TrackLayoutController.deleteHasImageRelation)
 router.post('/track-layouts/:trackLayoutId/has-prime-image/:imageId', TrackLayoutController.createHasPrimeImageRelation)
+router.get('/track-layouts/:trackLayoutId/has-prime-image', TrackLayoutController.getHasPrimeImageRelation)
 
 export default router

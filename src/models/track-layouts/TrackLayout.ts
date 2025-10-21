@@ -200,4 +200,18 @@ export class TrackLayout {
 
         return createdRelationship
     }
+
+    static async getHasPrimeImageRelationship(trackLayoutId: number) {
+        const trackLayout = await TrackLayout.findById(trackLayoutId)
+        if (!trackLayout) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        const relationship = await getRel(trackLayoutId, RelationshipType.TrackLayoutHasPrimeImage)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(TrackLayoutRelationship.hasPrimeImage, trackLayoutId, null)
+        }
+
+        return relationship
+    }
 }

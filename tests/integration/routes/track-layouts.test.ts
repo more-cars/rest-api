@@ -93,4 +93,12 @@ describe('Track Layouts', () => {
         expect(TrackLayoutController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .get('/track-layouts/123/has-prime-image')
+
+        expect(TrackLayoutController.getHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
