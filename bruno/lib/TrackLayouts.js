@@ -2,8 +2,13 @@ const axios = require("axios")
 
 async function ensureValidTrackLayoutExists() {
     if (!bru.getEnvVar('validTrackLayoutId')) {
-        const newNode = await createTrackLayout()
-        bru.setEnvVar("validTrackLayoutId", newNode.data.id)
+        const nodeList = await getAllTrackLayouts()
+        if (nodeList.length > 0) {
+            bru.setEnvVar("validTrackLayoutId", nodeList[0].data.id)
+        } else {
+            const newNode = await createTrackLayout()
+            bru.setEnvVar("validTrackLayoutId", newNode.data.id)
+        } //
     }
 }
 
@@ -18,3 +23,10 @@ async function createTrackLayout() {
 }
 
 exports.createTrackLayout = createTrackLayout
+
+async function getAllTrackLayouts() {
+    const response = await axios.get(bru.getEnvVar('baseUrl') + "/track-layouts")
+    return response.data
+}
+
+exports.getAllTrackLayouts = getAllTrackLayouts

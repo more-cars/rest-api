@@ -21,4 +21,12 @@ describe('Track Layouts', () => {
         expect(TrackLayoutController.getById)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all Nodes', async () => {
+        await request(app)
+            .get('/track-layouts')
+
+        expect(TrackLayoutController.getAll)
+            .toHaveBeenCalledTimes(1)
+    })
 })
