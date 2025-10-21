@@ -13,5 +13,6 @@ router.delete('/race-tracks/:raceTrackId/has-layout/:trackLayoutId', RaceTrackCo
 router.post('/race-tracks/:raceTrackId/has-image/:imageId', RaceTrackController.createHasImageRelation)
 router.post('/race-tracks/:raceTrackId/has-prime-image/:imageId', RaceTrackController.createHasPrimeImageRelation)
 router.get('/race-tracks/:raceTrackId/has-prime-image', RaceTrackController.getHasPrimeImageRelation)
+router.delete('/race-tracks/:raceTrackId/has-prime-image/:imageId', RaceTrackController.deleteHasPrimeImageRelation)
 
 export default router

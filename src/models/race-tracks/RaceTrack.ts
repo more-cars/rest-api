@@ -181,4 +181,23 @@ export class RaceTrack {
 
         return relationship
     }
+
+    static async deleteHasPrimeImageRelationship(raceTrackId: number, imageId: number) {
+        const raceTrack = await RaceTrack.findById(raceTrackId)
+        if (!raceTrack) {
+            throw new NodeNotFoundError(raceTrackId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const relationship = await getSpecificRel(raceTrackId, imageId, RelationshipType.RaceTrackHasPrimeImage)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(RaceTrackRelationship.hasPrimeImage, raceTrackId, imageId)
+        }
+
+        await deleteSpecificRel(raceTrackId, imageId, RelationshipType.RaceTrackHasPrimeImage)
+    }
 }
