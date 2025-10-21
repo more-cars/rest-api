@@ -11,5 +11,6 @@ export enum RelationshipType {
     CarModelIsSuccessorOf = 'IS_SUCCESSOR_OF',
     CarModelHasImage = 'HAS_IMAGE',
     CarModelHasPrimeImage = 'HAS_PRIME_IMAGE',
+    RaceTrackHasLayout = 'HAS_LAYOUT',
     ImageBelongsToNode = 'BELONGS_TO_NODE',
 }

@@ -1,0 +1,15 @@
+meta {
+  name: Create ›has-layout‹ relation (invalid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/race-tracks/{{invalidRaceTrackId}}/has-layout/{{invalidTrackLayoutId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}

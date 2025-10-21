@@ -1,4 +1,5 @@
 const axios = require("axios")
+const {ensureValidTrackLayoutExists} = require("./TrackLayouts")
 
 async function ensureValidRaceTrackExists() {
     if (!bru.getEnvVar('validRaceTrackId')) {
@@ -30,3 +31,23 @@ async function getAllRaceTracks() {
 }
 
 exports.getAllRaceTracks = getAllRaceTracks
+
+async function ensureRaceTrackHasLayoutRelationshipExists() {
+    await ensureValidRaceTrackExists()
+    await ensureValidTrackLayoutExists()
+    await createRaceTrackHasLayoutRelationship(bru.getEnvVar('validRaceTrackId'), bru.getEnvVar('validTrackLayoutId'))
+}
+
+exports.ensureRaceTrackHasLayoutRelationshipExists = ensureRaceTrackHasLayoutRelationshipExists
+
+async function createRaceTrackHasLayoutRelationship(raceTrackId, trackLayoutId) {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/race-tracks/" + raceTrackId + "/has-layout/" + trackLayoutId, null, {
+        validateStatus: function (status) {
+            return status < 400
+        }
+    })
+
+    return response.data
+}
+
+exports.createRaceTrackHasLayoutRelationship = createRaceTrackHasLayoutRelationship

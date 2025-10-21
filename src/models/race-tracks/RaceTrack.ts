@@ -8,6 +8,14 @@ import {getAllNodesOfType} from "../../db/nodes/race-tracks/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
+import {createRel} from "../relationships/createRel"
+import {DbRelationship} from "../../db/types/DbRelationship"
+import {deleteDeprecatedRelationship} from "../relationships/deleteDeprecatedRelationship"
+import {TrackLayout} from "../track-layouts/TrackLayout"
+import {getSpecificRel} from "../relationships/getSpecificRel"
+import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
+import {RelationshipType} from "../relationships/types/RelationshipType"
+import {RaceTrackRelationship} from "./types/RaceTrackRelationship"
 
 export class RaceTrack {
     static async create(data: CreateRaceTrackInput): Promise<RaceTrackNode> {
@@ -46,5 +54,32 @@ export class RaceTrack {
         }
 
         await deleteNode(raceTrackId)
+    }
+
+    static async createHasLayoutRelationship(raceTrackId: number, trackLayoutId: number) {
+
+        const raceTrack = await RaceTrack.findById(raceTrackId)
+        if (!raceTrack) {
+            throw new NodeNotFoundError(raceTrackId)
+        }
+
+        const trackLayout = await TrackLayout.findById(trackLayoutId)
+        if (!trackLayout) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        const existingRelation = await getSpecificRel(raceTrackId, trackLayoutId, RelationshipType.RaceTrackHasLayout)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(RaceTrackRelationship.hasLayout, raceTrackId, trackLayoutId)
+        }
+
+        await deleteDeprecatedRelationship(trackLayoutId, DbRelationship.RaceTrackHasLayout)
+
+        const createdRelationship = await createRel(raceTrackId, trackLayoutId, RelationshipType.RaceTrackHasLayout)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 }
