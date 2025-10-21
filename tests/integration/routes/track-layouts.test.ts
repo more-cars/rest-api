@@ -101,4 +101,12 @@ describe('Track Layouts', () => {
         expect(TrackLayoutController.getHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .delete('/track-layouts/123/has-prime-image/456')
+
+        expect(TrackLayoutController.deleteHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

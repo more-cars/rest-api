@@ -214,4 +214,23 @@ export class TrackLayout {
 
         return relationship
     }
+
+    static async deleteHasPrimeImageRelationship(trackLayoutId: number, imageId: number) {
+        const trackLayout = await TrackLayout.findById(trackLayoutId)
+        if (!trackLayout) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const relationship = await getSpecificRel(trackLayoutId, imageId, RelationshipType.TrackLayoutHasPrimeImage)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(TrackLayoutRelationship.hasPrimeImage, trackLayoutId, imageId)
+        }
+
+        await deleteSpecificRel(trackLayoutId, imageId, RelationshipType.TrackLayoutHasPrimeImage)
+    }
 }
