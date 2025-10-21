@@ -154,4 +154,23 @@ export class TrackLayout {
 
         return getAllRels(trackLayoutId, RelationshipType.TrackLayoutHasImage)
     }
+
+    static async deleteHasImageRelationship(trackLayoutId: number, imageId: number) {
+        const trackLayout = await TrackLayout.findById(trackLayoutId)
+        if (!trackLayout) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const relationship = await getSpecificRel(trackLayoutId, imageId, RelationshipType.TrackLayoutHasImage)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(TrackLayoutRelationship.hasImage, trackLayoutId, imageId)
+        }
+
+        await deleteSpecificRel(trackLayoutId, imageId, RelationshipType.TrackLayoutHasImage)
+    }
 }

@@ -77,4 +77,12 @@ describe('Track Layouts', () => {
         expect(TrackLayoutController.getAllHasImageRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-image‹ relationship', async () => {
+        await request(app)
+            .delete('/track-layouts/123/has-image/456')
+
+        expect(TrackLayoutController.deleteHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
