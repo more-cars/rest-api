@@ -48,13 +48,32 @@ export function getAllRelationshipTypes() {
                         [
                             DbRelationship.CarModelHasSuccessor,
                         ],
-                    ], [
-                    NodeTypeLabel.Image,
-                    [
-                        DbRelationship.NodeHasImage,
-                        DbRelationship.CarModelHasPrimeImage,
                     ],
-                ],
+                    [
+                        NodeTypeLabel.Image,
+                        [
+                            DbRelationship.CarModelHasImage,
+                            DbRelationship.CarModelHasPrimeImage,
+                        ],
+                    ],
+                ])
+            ],
+            [
+                NodeTypeLabel.RaceTrack, new Map(
+                [
+                    [
+                        NodeTypeLabel.TrackLayout,
+                        [
+                            DbRelationship.RaceTrackHasLayout,
+                        ],
+                    ],
+                    [
+                        NodeTypeLabel.Image,
+                        [
+                            DbRelationship.RaceTrackHasImage,
+                            DbRelationship.RaceTrackHasPrimeImage,
+                        ],
+                    ],
                 ])
             ],
             [

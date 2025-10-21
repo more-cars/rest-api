@@ -15,5 +15,12 @@ export function getAllPotentialPartnerNodeTypes() {
             NodeTypeLabel.CarModel,
             NodeTypeLabel.Image,
         ]],
+        [NodeTypeLabel.RaceTrack, [
+            NodeTypeLabel.TrackLayout,
+            NodeTypeLabel.Image,
+        ]],
+        [NodeTypeLabel.TrackLayout, [
+            NodeTypeLabel.Image,
+        ]],
     ])
 }

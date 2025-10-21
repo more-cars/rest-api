@@ -6,6 +6,7 @@ export const RelationshipTypeMapping = new Map<DbRelationship, RelationshipTypeL
     [DbRelationship.CompanyHasBrand, RelationshipTypeLabelOld.CompanyHasBrand],
     [DbRelationship.BrandHasCarModel, RelationshipTypeLabelOld.BrandHasCarModel],
     [DbRelationship.CarModelHasSuccessor, RelationshipTypeLabelOld.CarModelHasSuccessor],
+    [DbRelationship.RaceTrackHasLayout, RelationshipTypeLabelOld.RaceTrackHasLayout],
     [DbRelationship.NodeHasImage, RelationshipTypeLabelOld.NodeHasImage],
     [DbRelationship.NodeHasPrimeImage, RelationshipTypeLabelOld.NodeHasPrimeImage],
 ])

@@ -7,6 +7,7 @@ import {mapNodeProperties} from "./lib/mapNodeProperties"
 import {storeNode} from "./lib/storeNode"
 import cliProgress from "cli-progress"
 import {deleteNodesOfType} from "./lib/deleteNodesOfType"
+import {getAllNodeTypes} from "../tests/_toolbox/getAllNodeTypes"
 
 migrateNodesOfType().then(() => true)
 
@@ -35,12 +36,7 @@ async function migrateNodesOfType() {
 }
 
 async function promptNodeType() {
-    const choices = [
-        {value: 'Company'},
-        {value: 'Brand'},
-        {value: 'CarModel'},
-        {value: 'Image'},
-    ]
+    const choices = getAllNodeTypes()
 
     const nodeType = await select({
         message: 'Migrating all nodes of which type?',
