@@ -3,7 +3,8 @@ to: tests/integration/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeT
 ---
 import {expect, test} from 'vitest'
 import {<%= h.changeCase.pascal(nodeType) %>} from "../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"
-import {seed<%= h.changeCase.pascal(nodeType) %>} from "../../../../_toolbox/dbSeeding/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/nodes/seed<%= h.changeCase.pascal(nodeType) %>"
+import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 test('Fetching a <%= h.changeCase.upper(nodeType) %> that does not exist should return "false"', async () => {
     const expected<%= h.changeCase.pascal(nodeType) %> = false
@@ -14,7 +15,7 @@ test('Fetching a <%= h.changeCase.upper(nodeType) %> that does not exist should 
 })
 
 test('When the <%= h.changeCase.upper(nodeType) %> exists it should be returned', async () => {
-    const expected<%= h.changeCase.pascal(nodeType) %> = await seed<%= h.changeCase.pascal(nodeType) %>()
+    const expected<%= h.changeCase.pascal(nodeType) %> = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>) as <%= h.changeCase.pascal(nodeType) %>Node
     const actual<%= h.changeCase.pascal(nodeType) %> = await <%= h.changeCase.pascal(nodeType) %>.findById(expected<%= h.changeCase.pascal(nodeType) %>.id)
 
     expect(actual<%= h.changeCase.pascal(nodeType) %>)

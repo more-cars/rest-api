@@ -1,7 +1,7 @@
 ---
 inject: true
 to: bruno/lib/<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>.js
-after: if (!bru.getEnvVar('valid<%= h.changeCase.pascal(nodeType) %>Id'))
+before: const newNode
 skip_if: const nodeList = await getAll<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>()
 ---
         const nodeList = await getAll<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>()
