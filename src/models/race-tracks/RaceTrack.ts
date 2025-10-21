@@ -19,6 +19,7 @@ import {RaceTrackRelationship} from "./types/RaceTrackRelationship"
 import {getAllRels} from "../relationships/getAllRels"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
+import {Image} from "../images/Image"
 
 export class RaceTrack {
     static async create(data: CreateRaceTrackInput): Promise<RaceTrackNode> {
@@ -112,5 +113,30 @@ export class RaceTrack {
         }
 
         await deleteSpecificRel(raceTrackId, trackLayoutId, RelationshipType.RaceTrackHasLayout)
+    }
+
+    static async createHasImageRelationship(raceTrackId: number, imageId: number) {
+
+        const raceTrack = await RaceTrack.findById(raceTrackId)
+        if (!raceTrack) {
+            throw new NodeNotFoundError(raceTrackId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const existingRelation = await getSpecificRel(raceTrackId, imageId, RelationshipType.RaceTrackHasImage)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(RaceTrackRelationship.hasImage, raceTrackId, imageId)
+        }
+
+        const createdRelationship = await createRel(raceTrackId, imageId, RelationshipType.RaceTrackHasImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 }
