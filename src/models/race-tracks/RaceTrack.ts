@@ -16,6 +16,7 @@ import {getSpecificRel} from "../relationships/getSpecificRel"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
 import {RelationshipType} from "../relationships/types/RelationshipType"
 import {RaceTrackRelationship} from "./types/RaceTrackRelationship"
+import {getAllRels} from "../relationships/getAllRels"
 
 export class RaceTrack {
     static async create(data: CreateRaceTrackInput): Promise<RaceTrackNode> {
@@ -81,5 +82,14 @@ export class RaceTrack {
         }
 
         return createdRelationship
+    }
+
+    static async getAllHasLayoutRelationships(raceTrackId: number) {
+        const raceTrack = await RaceTrack.findById(raceTrackId)
+        if (!raceTrack) {
+            throw new NodeNotFoundError(raceTrackId)
+        }
+
+        return getAllRels(raceTrackId, RelationshipType.RaceTrackHasLayout)
     }
 }

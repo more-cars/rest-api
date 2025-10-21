@@ -1,0 +1,15 @@
+meta {
+  name: Get all ›has-layout‹ relations (invalid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/race-tracks/{{invalidRaceTrackId}}/has-layout
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}

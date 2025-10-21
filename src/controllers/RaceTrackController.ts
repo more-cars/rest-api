@@ -4,6 +4,7 @@ import {getById} from "./race-tracks/getById"
 import {getAll} from "./race-tracks/getAll"
 import {deleteNode} from "./race-tracks/deleteNode"
 import {createHasLayoutRelation} from "./race-tracks/createHasLayoutRelation"
+import {getAllHasLayoutRelations} from "./race-tracks/getAllHasLayoutRelations"
 
 export class RaceTrackController {
     static async create(req: express.Request, res: express.Response) {
@@ -24,5 +25,9 @@ export class RaceTrackController {
 
     static async createHasLayoutRelation(req: express.Request, res: express.Response) {
         await createHasLayoutRelation(req, res)
+    }
+
+    static async getAllHasLayoutRelations(req: express.Request, res: express.Response) {
+        await getAllHasLayoutRelations(req, res)
     }
 }

@@ -45,4 +45,12 @@ describe('Race Tracks', () => {
         expect(RaceTrackController.createHasLayoutRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›has-layout‹ Relationships', async () => {
+        await request(app)
+            .get('/race-tracks/123/has-layout')
+
+        expect(RaceTrackController.getAllHasLayoutRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })

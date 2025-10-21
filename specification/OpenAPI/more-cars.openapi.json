@@ -2969,6 +2969,48 @@
         }
       }
     },
+    "/race-tracks/{race-track-id}/has-layout": {
+      "get": {
+        "tags": [
+          "Race Tracks"
+        ],
+        "summary": "Get all ›has-layout‹ relationships for the `Race Track`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "race-track-id",
+            "description": "ID of the `Race Track`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Race Track` with the provided ID was found and its `has layout` relationships are returned.",
+            "description": "The collection of ›has-layout‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RaceTrackHasLayoutCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Race Track` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/race-tracks/{race-track-id}/has-layout/{track-layout-id}": {
       "post": {
         "tags": [
