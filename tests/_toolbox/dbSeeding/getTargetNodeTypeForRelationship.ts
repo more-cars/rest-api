@@ -23,6 +23,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
         NodeTypeEnum.CAR_MODEL, new Map([
             ['belongs to brand', NodeTypeEnum.BRAND],
             ['has successor', NodeTypeEnum.CAR_MODEL],
+            ['is successor of', NodeTypeEnum.CAR_MODEL],
             ['has image', NodeTypeEnum.IMAGE],
             ['has prime image', NodeTypeEnum.IMAGE],
         ]))
