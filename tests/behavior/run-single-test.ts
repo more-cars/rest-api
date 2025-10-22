@@ -9,8 +9,11 @@ async function runSingleTest() {
     })
 
     testId = testId.replace('MCA-', '')
+    const testKey = 'MCA-' + testId
 
-    console.log("Test scenario MCA-" + testId + " started...")
+    console.log("Test scenario " + testKey + " started...")
 
+    console.time(testKey)
     await spawnShellCommand(`npx cucumber-js --tags "@TEST_MCA-${testId}"`)
+    console.timeEnd(testKey)
 }
