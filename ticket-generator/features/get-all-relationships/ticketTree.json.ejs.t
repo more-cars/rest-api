@@ -31,10 +31,10 @@ to: ticket-generator/_temp/ticketTree.json
                             <%
                                 gherkin = []
                                 gherkin.push('Given there exists a \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\"')
-                                gherkin.push('And there exist 3 \\"' + h.changeCase.kebab(relationshipName) + '\\" relationships for \\"' + startNodeExampleName + '\\"')
-                                gherkin.push('When the user requests all \\"' + h.changeCase.kebab(relationshipName) + '\\" relationships for \\"' + startNodeExampleName + '\\"')
+                                gherkin.push('And there exist 3 \\"' + h.changeCase.lower(relationshipName) + '\\" relationships for \\"' + startNodeExampleName + '\\"')
+                                gherkin.push('When the user requests all \\"' + h.changeCase.lower(relationshipName) + '\\" relationships for \\"' + startNodeExampleName + '\\"')
                                 gherkin.push('Then the request should be confirmed with status code 200')
-                                gherkin.push('And the response should return a collection with 3 \\"' + h.changeCase.kebab(relationshipName) + '\\" relationships')
+                                gherkin.push('And the response should return a collection with 3 \\"' + h.changeCase.lower(relationshipName) + '\\" relationships')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
                         }
@@ -50,8 +50,8 @@ to: ticket-generator/_temp/ticketTree.json
                             <%
                                 gherkin = []
                                 gherkin.push('Given there exists a \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\"')
-                                gherkin.push('And there exist 0 \\"' + h.changeCase.kebab(relationshipName) + '\\" relationships for \\"' + startNodeExampleName + '\\"')
-                                gherkin.push('When the user requests all \\"' + h.changeCase.kebab(relationshipName) + '\\" relationships for \\"' + startNodeExampleName + '\\"')
+                                gherkin.push('And there exist 0 \\"' + h.changeCase.lower(relationshipName) + '\\" relationships for \\"' + startNodeExampleName + '\\"')
+                                gherkin.push('When the user requests all \\"' + h.changeCase.lower(relationshipName) + '\\" relationships for \\"' + startNodeExampleName + '\\"')
                                 gherkin.push('Then the request should be confirmed with status code 200')
                                 gherkin.push('And the response should return an empty list')
                             %>
@@ -69,7 +69,7 @@ to: ticket-generator/_temp/ticketTree.json
                             <%
                                 gherkin = []
                                 gherkin.push('Given \\"' + h.changeCase.upper(startNodeType) + '\\" \\"' + startNodeExampleName + '\\" does NOT exist')
-                                gherkin.push('When the user requests all \\"' + h.changeCase.kebab(relationshipName) + '\\" relationships for \\"' + startNodeExampleName + '\\"')
+                                gherkin.push('When the user requests all \\"' + h.changeCase.lower(relationshipName) + '\\" relationships for \\"' + startNodeExampleName + '\\"')
                                 gherkin.push('Then the request should be rejected with status code 404')
                             %>
                             "gherkin": "<%- gherkin.join('\\n') %>"
