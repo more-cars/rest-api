@@ -1,37 +1,53 @@
-import type {NodeTypeEnum} from "../../../src/controllers/nodes/types/NodeTypeEnum"
+import {NodeTypeEnum} from "../../../src/controllers/nodes/types/NodeTypeEnum"
 
 export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, relationshipName: string) {
     const relationships = new Map<string, Map<string, string>>()
     relationshipName = relationshipName.toLowerCase().replaceAll('_', ' ')
 
     relationships.set(
-        'company', new Map([
-            ['has brand', 'brand'],
-            ['has image', 'image'],
-            ['has prime image', 'image'],
+        NodeTypeEnum.COMPANY, new Map([
+            ['has brand', NodeTypeEnum.BRAND],
+            ['has image', NodeTypeEnum.IMAGE],
+            ['has prime image', NodeTypeEnum.IMAGE],
         ]))
 
     relationships.set(
-        'brand', new Map([
-            ['belongs to company', 'company'],
-            ['has car model', 'car model'],
-            ['has image', 'image'],
-            ['has prime image', 'image'],
+        NodeTypeEnum.BRAND, new Map([
+            ['belongs to company', NodeTypeEnum.COMPANY],
+            ['has car model', NodeTypeEnum.CAR_MODEL],
+            ['has image', NodeTypeEnum.IMAGE],
+            ['has prime image', NodeTypeEnum.IMAGE],
         ]))
 
     relationships.set(
-        'car model', new Map([
-            ['belongs to brand', 'brand'],
-            ['has successor', 'car model'],
-            ['has image', 'image'],
-            ['has prime image', 'image'],
+        NodeTypeEnum.CAR_MODEL, new Map([
+            ['belongs to brand', NodeTypeEnum.BRAND],
+            ['has successor', NodeTypeEnum.CAR_MODEL],
+            ['has image', NodeTypeEnum.IMAGE],
+            ['has prime image', NodeTypeEnum.IMAGE],
         ]))
 
     relationships.set(
-        'image', new Map([
-            ['belongs to node', 'company'],
-            ['belongs to node', 'brand'],
-            ['belongs to node', 'car model'],
+        NodeTypeEnum.RACE_TRACK, new Map([
+            ['has layout', NodeTypeEnum.TRACK_LAYOUT],
+            ['has image', NodeTypeEnum.IMAGE],
+            ['has prime image', NodeTypeEnum.IMAGE],
+        ]))
+
+    relationships.set(
+        NodeTypeEnum.TRACK_LAYOUT, new Map([
+            ['belongs to race track', NodeTypeEnum.RACE_TRACK],
+            ['has image', NodeTypeEnum.IMAGE],
+            ['has prime image', NodeTypeEnum.IMAGE],
+        ]))
+
+    relationships.set(
+        NodeTypeEnum.IMAGE, new Map([
+            ['belongs to node', NodeTypeEnum.COMPANY],
+            ['belongs to node', NodeTypeEnum.BRAND],
+            ['belongs to node', NodeTypeEnum.CAR_MODEL],
+            ['belongs to node', NodeTypeEnum.RACE_TRACK],
+            ['belongs to node', NodeTypeEnum.TRACK_LAYOUT],
         ]))
 
     const match = relationships.get(startNodeType)?.get(relationshipName)
