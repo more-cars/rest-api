@@ -7,10 +7,12 @@ import {Node} from "../Node"
 
 export async function createRel(originId: number, destinationId: number, relationshipType: RelationshipType) {
     const dbRelationshipType: DbRelationship = getDbRelationshipType(relationshipType)
+    // TODO replace quick'n'dirty with proper solution
+    const isReverseRelationship = relationshipType.includes('BELONGS_TO') || relationshipType.includes('IS_')
 
     const dbRelationship = await createRelationship(
-        originId,
-        destinationId,
+        isReverseRelationship ? destinationId : originId,
+        isReverseRelationship ? originId : destinationId,
         dbRelationshipType,
     )
 

@@ -24,7 +24,7 @@ export class Relationship {
 
         return {
             id: dbRelationship.id || dbRelationship.relationship_id,
-            type: dbRelationship.type || dbRelationship.relationship_name,
+            type: dbRelationship.type || dbRelationship.relationship_name, // TODO convert db relationship to model relationship (might also be an inverse relation)
             origin: origin,
             destination: destination,
             created_at: dbRelationship.created_at,
