@@ -1,6 +1,6 @@
 ---
 inject: true
-to: tests/_toolbox/fixtures/nodes/FakeNode.ts
+to: tests/_toolbox/fixtures/nodes/FakeNodeInput.ts
 before: case NodeTypeEnum.IMAGE
 skip_if: return Fake<%= h.changeCase.pascal(nodeType) %>
 ---

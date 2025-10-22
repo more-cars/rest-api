@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {getAllModelRelationshipTypes} from "../../../_toolbox/getAllModelRelationshipTypes"
-import {FakeNode} from '../../../_toolbox/fixtures/nodes/FakeNode'
+import {FakeNodeInput} from '../../../_toolbox/fixtures/nodes/FakeNodeInput'
 import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {BaseNode} from "../../../../src/controllers/nodes/types/BaseNode"
 import type {GenericRelation} from "../../../../src/models/relationships/types/GenericRelation"
@@ -9,8 +9,8 @@ import {dasherize} from "inflection"
 
 test('marshalling a relation', async () => {
     getAllModelRelationshipTypes().forEach((modelRelationshipType) => {
-        const origin = FakeNode(NodeTypeEnum.BRAND) as unknown as BaseNode
-        const destination = FakeNode(NodeTypeEnum.CAR_MODEL) as unknown as BaseNode
+        const origin = FakeNodeInput(NodeTypeEnum.BRAND) as unknown as BaseNode
+        const destination = FakeNodeInput(NodeTypeEnum.CAR_MODEL) as unknown as BaseNode
         const relation: GenericRelation = {
             id: 3,
             type: modelRelationshipType,

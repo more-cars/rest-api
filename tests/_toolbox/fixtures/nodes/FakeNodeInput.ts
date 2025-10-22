@@ -7,7 +7,7 @@ import FakeRaceTrack from "./FakeRaceTrack"
 import FakeTrackLayout from "./FakeTrackLayout"
 import FakeImage from "./FakeImage"
 
-export function FakeNode(nodeType: NodeTypeEnum) {
+export function FakeNodeInput(nodeType: NodeTypeEnum) {
     switch (nodeType) {
         case NodeTypeEnum.COMPANY:
             return FakeCompany
