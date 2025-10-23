@@ -228,4 +228,23 @@ export class RacingEvent {
 
         return relationship
     }
+
+    static async deleteFollowsEventRelationship(racingEventId: number, partnerId: number) {
+        const racingEvent = await RacingEvent.findById(racingEventId)
+        if (!racingEvent) {
+            throw new NodeNotFoundError(racingEventId)
+        }
+
+        const partner = await RacingEvent.findById(partnerId)
+        if (!partner) {
+            throw new NodeNotFoundError(partnerId)
+        }
+
+        const relationship = await getSpecificRel(racingEventId, partnerId, RelationshipType.RacingEventFollowsEvent)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(RacingEventRelationship.followsEvent, racingEventId, partnerId)
+        }
+
+        await deleteSpecificRel(racingEventId, partnerId, RelationshipType.RacingEventFollowsEvent)
+    }
 }

@@ -101,4 +101,12 @@ describe('Racing Events', () => {
         expect(RacingEventController.getFollowsEventRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›follows-event‹ relationship', async () => {
+        await request(app)
+            .delete('/racing-events/123/follows-event/456')
+
+        expect(RacingEventController.deleteFollowsEventRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

@@ -32,7 +32,7 @@ export const options = {
 
 export function setup() {
     const <%= h.changeCase.camel(startNodeType) %>Id = createNode(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>)
-    const <%= h.changeCase.camel(endNodeType) %>Ids = []
+    const <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Ids = []
 
     for (let i = 0; i < 310; i++) {
         const <%= h.changeCase.camel(endNodeType) %> = createNode(NodeTypeEnum.<%= h.changeCase.constant(endNodeType) %>)
@@ -42,18 +42,18 @@ export function setup() {
             <%= h.changeCase.camel(endNodeType) %>,
             '<%= h.changeCase.lower(relationshipName) %>',
         )
-        <%= h.changeCase.camel(endNodeType) %>Ids.push(<%= h.changeCase.camel(endNodeType) %>)
+        <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Ids.push(<%= h.changeCase.camel(endNodeType) %>)
     }
 
     return {
         <%= h.changeCase.camel(startNodeType) %>Id,
-        <%= h.changeCase.camel(endNodeType) %>Ids
+        <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Ids
     }
 }
 
-export default function (data: { <%= h.changeCase.camel(startNodeType) %>Id: number, <%= h.changeCase.camel(endNodeType) %>Ids: number[] }) {
-    const <%= h.changeCase.camel(endNodeType) %>Id = data.<%= h.changeCase.camel(endNodeType) %>Ids[exec.scenario.iterationInTest]
-    const url = `${__ENV.API_URL}/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/${data.<%= h.changeCase.camel(startNodeType) %>Id}/<%= h.changeCase.kebab(relationshipName) %>/${<%= h.changeCase.camel(endNodeType) %>Id}`
+export default function (data: { <%= h.changeCase.camel(startNodeType) %>Id: number, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Ids: number[] }) {
+    const <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id = data.<%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Ids[exec.scenario.iterationInTest]
+    const url = `${__ENV.API_URL}/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/${data.<%= h.changeCase.camel(startNodeType) %>Id}/<%= h.changeCase.kebab(relationshipName) %>/${<%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id}`
 
     const response = http.del(url)
 
