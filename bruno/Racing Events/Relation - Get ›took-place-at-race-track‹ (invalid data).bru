@@ -1,0 +1,15 @@
+meta {
+  name: Get ›took-place-at-race-track‹ relation (invalid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/racing-events/{{invalidRacingEventId}}/took-place-at-race-track
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}

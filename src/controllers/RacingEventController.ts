@@ -13,6 +13,7 @@ import {createFollowsEventRelation} from "./racing-events/createFollowsEventRela
 import {getFollowsEventRelation} from "./racing-events/getFollowsEventRelation"
 import {deleteFollowsEventRelation} from "./racing-events/deleteFollowsEventRelation"
 import {createTookPlaceAtRaceTrackRelation} from "./racing-events/createTookPlaceAtRaceTrackRelation"
+import {getTookPlaceAtRaceTrackRelation} from "./racing-events/getTookPlaceAtRaceTrackRelation"
 
 export class RacingEventController {
     static async create(req: express.Request, res: express.Response) {
@@ -69,5 +70,9 @@ export class RacingEventController {
 
     static async createTookPlaceAtRaceTrackRelation(req: express.Request, res: express.Response) {
         await createTookPlaceAtRaceTrackRelation(req, res)
+    }
+
+    static async getTookPlaceAtRaceTrackRelation(req: express.Request, res: express.Response) {
+        await getTookPlaceAtRaceTrackRelation(req, res)
     }
 }

@@ -5072,6 +5072,47 @@
         }
       }
     },
+    "/racing-events/{racing-event-id}/took-place-at-race-track": {
+      "get": {
+        "tags": [
+          "Racing Events"
+        ],
+        "summary": "Get the ›took-place-at-race-track‹ relationship for the `Racing Event`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-event-id",
+            "description": "ID of the `Racing Event`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›took-place-at-race-track‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RacingEventTookPlaceAtRaceTrackResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Racing Event` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/racing-events/{racing-event-id}/took-place-at-race-track/{race-track-id}": {
       "post": {
         "tags": [

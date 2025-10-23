@@ -275,4 +275,18 @@ export class RacingEvent {
 
         return createdRelationship
     }
+
+    static async getTookPlaceAtRaceTrackRelationship(racingEventId: number) {
+        const racingEvent = await RacingEvent.findById(racingEventId)
+        if (!racingEvent) {
+            throw new NodeNotFoundError(racingEventId)
+        }
+
+        const relationship = await getRel(racingEventId, RelationshipType.RacingEventTookPlaceAtRaceTrack)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(RacingEventRelationship.tookPlaceAtRaceTrack, racingEventId, null)
+        }
+
+        return relationship
+    }
 }

@@ -1,0 +1,42 @@
+import {describe, expect, test} from 'vitest'
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {getRelationshipsForSpecificNode} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+
+describe('Requesting a ›took-place-at-race-track‹ relationship', () => {
+    test('node and relationship exist', async () => {
+        const relationship = await seedRelationship(NodeTypeEnum.RACING_EVENT, NodeTypeEnum.RACE_TRACK, DbRelationship.RacingEventTookPlaceAtRaceTrack)
+
+        const relationships = await getRelationshipsForSpecificNode(
+            relationship.start_node_id,
+            DbRelationship.RacingEventTookPlaceAtRaceTrack,
+        )
+
+        expect(relationships.length)
+            .toBe(1)
+    })
+
+    test('node exists, but not the relationship', async () => {
+        const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
+
+        const relationships = await getRelationshipsForSpecificNode(
+            racingEvent.id,
+            DbRelationship.RacingEventTookPlaceAtRaceTrack,
+        )
+
+        expect(relationships.length)
+            .toBe(0)
+    })
+
+    test('neither node, nor relationship exist', async () => {
+        const relationships = await getRelationshipsForSpecificNode(
+            -42,
+            DbRelationship.RacingEventTookPlaceAtRaceTrack,
+        )
+
+        expect(relationships.length)
+            .toBe(0)
+    })
+})
