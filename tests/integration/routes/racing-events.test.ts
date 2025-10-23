@@ -125,4 +125,12 @@ describe('Racing Events', () => {
         expect(RacingEventController.getTookPlaceAtRaceTrackRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›took-place-at-race-track‹ relationship', async () => {
+        await request(app)
+            .delete('/racing-events/123/took-place-at-race-track/456')
+
+        expect(RacingEventController.deleteTookPlaceAtRaceTrackRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

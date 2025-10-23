@@ -5164,6 +5164,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Racing Events"
+        ],
+        "summary": "Deletes the ›took-place-at-race-track‹ relationship between the `Racing Event` and the `Race Track`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-event-id",
+            "description": "ID of the `Racing Event`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "race-track-id",
+            "description": "ID of the `Race Track`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›took-place-at-race-track‹ relationship between `Racing Event` and `Race Track` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›took-place-at-race-track‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/relationships/{relationship-id}": {

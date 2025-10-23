@@ -1,0 +1,18 @@
+meta {
+  name: Delete ›took-place-at-race-track‹ relation (valid data)
+  type: http
+}
+
+delete {
+  url: {{baseUrl}}/racing-events/{{validRacingEventId}}/took-place-at-race-track/{{validRaceTrackId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 204
+}
+
+script:pre-request {
+  await lib.RacingEvents.ensureRacingEventTookPlaceAtRaceTrackRelationshipExists()
+}
