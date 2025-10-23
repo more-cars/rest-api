@@ -11,6 +11,7 @@ import {getAllHasImageRelations} from "./racing-series/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./racing-series/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./racing-series/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./racing-series/getHasPrimeImageRelation"
+import {deleteHasPrimeImageRelation} from "./racing-series/deleteHasPrimeImageRelation"
 
 export class RacingSeriesController {
     static async create(req: express.Request, res: express.Response) {
@@ -59,5 +60,9 @@ export class RacingSeriesController {
 
     static async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await getHasPrimeImageRelation(req, res)
+    }
+
+    static async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
+        await deleteHasPrimeImageRelation(req, res)
     }
 }
