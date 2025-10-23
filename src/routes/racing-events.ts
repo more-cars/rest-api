@@ -22,5 +22,6 @@ router.delete('/racing-events/:racingEventId/took-place-at-race-track/:raceTrack
 router.post('/racing-events/:racingEventId/used-the-track-layout/:trackLayoutId', RacingEventController.createUsedTheTrackLayoutRelation)
 router.get('/racing-events/:racingEventId/used-the-track-layout', RacingEventController.getUsedTheTrackLayoutRelation)
 router.delete('/racing-events/:racingEventId/used-the-track-layout/:trackLayoutId', RacingEventController.deleteUsedTheTrackLayoutRelation)
+router.post('/racing-events/:racingEventId/has-image/:imageId', RacingEventController.createHasImageRelation)
 
 export default router

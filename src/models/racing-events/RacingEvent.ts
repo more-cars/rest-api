@@ -22,6 +22,7 @@ import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {SemanticError} from "../types/SemanticError"
 import {RaceTrack} from "../race-tracks/RaceTrack"
 import {TrackLayout} from "../track-layouts/TrackLayout"
+import {Image} from "../images/Image"
 
 export class RacingEvent {
     static async create(data: CreateRacingEventInput): Promise<RacingEventNode> {
@@ -368,5 +369,30 @@ export class RacingEvent {
         }
 
         await deleteSpecificRel(racingEventId, trackLayoutId, RelationshipType.RacingEventUsedTheTrackLayout)
+    }
+
+    static async createHasImageRelationship(racingEventId: number, imageId: number) {
+
+        const racingEvent = await RacingEvent.findById(racingEventId)
+        if (!racingEvent) {
+            throw new NodeNotFoundError(racingEventId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const existingRelation = await getSpecificRel(racingEventId, imageId, RelationshipType.RacingEventHasImage)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(RacingEventRelationship.hasImage, racingEventId, imageId)
+        }
+
+        const createdRelationship = await createRel(racingEventId, imageId, RelationshipType.RacingEventHasImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 }
