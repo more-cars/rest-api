@@ -21,6 +21,7 @@ import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {Image} from "../images/Image"
 import {getRel} from "../relationships/getRel"
+import {RacingEvent} from "../racing-events/RacingEvent"
 
 export class RaceTrack {
     static async create(data: CreateRaceTrackInput): Promise<RaceTrackNode> {
@@ -227,5 +228,32 @@ export class RaceTrack {
         }
 
         await deleteSpecificRel(raceTrackId, imageId, RelationshipType.RaceTrackHasPrimeImage)
+    }
+
+    static async createHostedRacingEventRelationship(raceTrackId: number, racingEventId: number) {
+
+        const raceTrack = await RaceTrack.findById(raceTrackId)
+        if (!raceTrack) {
+            throw new NodeNotFoundError(raceTrackId)
+        }
+
+        const racingEvent = await RacingEvent.findById(racingEventId)
+        if (!racingEvent) {
+            throw new NodeNotFoundError(racingEventId)
+        }
+
+        const existingRelation = await getSpecificRel(raceTrackId, racingEventId, RelationshipType.RaceTrackHostedRacingEvent)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(RaceTrackRelationship.hostedRacingEvent, raceTrackId, racingEventId)
+        }
+
+        await deleteDeprecatedRelationship(racingEventId, DbRelationship.RaceTrackHostedRacingEvent)
+
+        const createdRelationship = await createRel(raceTrackId, racingEventId, RelationshipType.RaceTrackHostedRacingEvent)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 }

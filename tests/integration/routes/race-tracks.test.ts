@@ -109,4 +109,12 @@ describe('Race Tracks', () => {
         expect(RaceTrackController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›hosted-racing-event‹ relationship', async () => {
+        await request(app)
+            .post('/race-tracks/123/hosted-racing-event/456')
+
+        expect(RaceTrackController.createHostedRacingEventRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

@@ -12,6 +12,7 @@ import {deleteHasImageRelation} from "./race-tracks/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./race-tracks/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./race-tracks/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./race-tracks/deleteHasPrimeImageRelation"
+import {createHostedRacingEventRelation} from "./race-tracks/createHostedRacingEventRelation"
 
 export class RaceTrackController {
     static async create(req: express.Request, res: express.Response) {
@@ -64,5 +65,9 @@ export class RaceTrackController {
 
     static async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
+    }
+
+    static async createHostedRacingEventRelation(req: express.Request, res: express.Response) {
+        await createHostedRacingEventRelation(req, res)
     }
 }

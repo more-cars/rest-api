@@ -32,6 +32,7 @@ export function getDbRelationshipType(relationshipType: RelationshipType): DbRel
         [RelationshipType.RacingEventUsedTheTrackLayout, DbRelationship.RacingEventUsedTheTrackLayout],
         [RelationshipType.RacingEventHasImage, DbRelationship.RacingEventHasImage],
         [RelationshipType.RacingEventHasPrimeImage, DbRelationship.RacingEventHasPrimeImage],
+        [RelationshipType.RaceTrackHostedRacingEvent, DbRelationship.RaceTrackHostedRacingEvent],
         [RelationshipType.ImageBelongsToNode, DbRelationship.ImageBelongsToNode],
     ])
 

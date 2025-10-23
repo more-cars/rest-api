@@ -1,0 +1,15 @@
+meta {
+  name: Create ›hosted-racing-event‹ relation (invalid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/race-tracks/{{invalidRaceTrackId}}/hosted-racing-event/{{invalidRacingEventId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
