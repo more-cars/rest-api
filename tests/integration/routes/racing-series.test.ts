@@ -69,4 +69,12 @@ describe('Racing Series', () => {
         expect(RacingSeriesController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›has-image‹ Relationships', async () => {
+        await request(app)
+            .get('/racing-series/123/has-image')
+
+        expect(RacingSeriesController.getAllHasImageRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })

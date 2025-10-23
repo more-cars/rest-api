@@ -139,4 +139,13 @@ export class RacingSeries {
 
         return createdRelationship
     }
+
+    static async getAllHasImageRelationships(racingSeriesId: number) {
+        const racingSeries = await RacingSeries.findById(racingSeriesId)
+        if (!racingSeries) {
+            throw new NodeNotFoundError(racingSeriesId)
+        }
+
+        return getAllRels(racingSeriesId, RelationshipType.RacingSeriesHasImage)
+    }
 }

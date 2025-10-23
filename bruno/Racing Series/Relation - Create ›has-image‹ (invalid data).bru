@@ -1,0 +1,15 @@
+meta {
+  name: Create ›has-image‹ relation (invalid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/racing-series/{{invalidRacingSeriesId}}/has-image/{{invalidImageId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
