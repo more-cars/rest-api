@@ -83,3 +83,23 @@ async function createRacingEventIsFollowedByEventRelationship(racingEventId, par
 }
 
 exports.createRacingEventIsFollowedByEventRelationship = createRacingEventIsFollowedByEventRelationship
+
+async function ensureRacingEventFollowsEventRelationshipExists() {
+    await ensureValidRacingEventExists()
+    await ensureValidSecondRacingEventExists()
+    await createRacingEventFollowsEventRelationship(bru.getEnvVar('validRacingEventId'), bru.getEnvVar('validSecondRacingEventId'))
+}
+
+exports.ensureRacingEventFollowsEventRelationshipExists = ensureRacingEventFollowsEventRelationshipExists
+
+async function createRacingEventFollowsEventRelationship(racingEventId, partnerId) {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/racing-events/" + racingEventId + "/follows-event/" + partnerId, null, {
+        validateStatus: function (status) {
+            return status < 400
+        }
+    })
+
+    return response.data
+}
+
+exports.createRacingEventFollowsEventRelationship = createRacingEventFollowsEventRelationship

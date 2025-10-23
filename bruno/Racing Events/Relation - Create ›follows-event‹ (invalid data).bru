@@ -1,0 +1,15 @@
+meta {
+  name: Create ›follows-event‹ relation (invalid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/racing-events/{{invalidRacingEventId}}/follows-event/{{invalidBrandId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
