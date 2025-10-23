@@ -189,4 +189,12 @@ describe('Racing Events', () => {
         expect(RacingEventController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .get('/racing-events/123/has-prime-image')
+
+        expect(RacingEventController.getHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
