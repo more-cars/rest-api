@@ -1,5 +1,6 @@
 import {expect, test} from 'vitest'
-import FakeBrand from "../../../../_toolbox/fixtures/nodes/FakeBrand"
+import {FakeNodeInput} from "../../../../_toolbox/fixtures/nodes/FakeNodeInput"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
 import {createNode as createBrandNode} from "../../../../../src/db/nodes/brands/createNode"
 import FakeCarModel from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
@@ -11,11 +12,7 @@ import {createNode as createImageNode} from "../../../../../src/db/nodes/images/
 
 test('Timestamps provided by the user are ignored', async () => {
     // BRAND
-    const brandData: InputBrandCreate = FakeBrand
-    // @ts-expect-error property "created_at" is officially not allowed
-    brandData['created_at'] = "blubb"
-    // @ts-expect-error property "updated_at" is officially not allowed
-    brandData['updated_at'] = "blobb"
+    const brandData = FakeNodeInput(NodeTypeEnum.BRAND) as InputBrandCreate
     const createdBrand = await createBrandNode(brandData)
 
     expect(createdBrand).toHaveProperty('created_at')

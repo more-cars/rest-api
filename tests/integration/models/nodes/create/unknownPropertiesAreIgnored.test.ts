@@ -1,6 +1,8 @@
 import {expect, test} from 'vitest'
 import FakeCarModel from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
-import FakeBrand from "../../../../_toolbox/fixtures/nodes/FakeBrand"
+import {FakeNodeInput} from "../../../../_toolbox/fixtures/nodes/FakeNodeInput"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
 import FakeImage from "../../../../_toolbox/fixtures/nodes/FakeImage"
 import {CarModel} from "../../../../../src/models/car-models/CarModel"
 import {Brand} from "../../../../../src/models/brands/Brand"
@@ -18,13 +20,15 @@ test('Unknown properties are ignored', async () => {
         .not.toContain("my_property")
 
     // BRAND
-    const brandData = Object.assign(FakeBrand, {
+    const brandData = Object.assign({}, FakeNodeInput(NodeTypeEnum.BRAND) as InputBrandCreate, {
         "my_property": "NOT_ALLOWED_TO_ADD"
     })
     createdNode = await Brand.create(brandData)
     expect(createdNode)
         .not.toContain("my_property")
 
+
+    // IMAGE
     const imageData = Object.assign(FakeImage, {
         "my_property": "NOT_ALLOWED_TO_ADD"
     })

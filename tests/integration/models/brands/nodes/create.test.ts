@@ -1,16 +1,17 @@
 import {expect, test} from 'vitest'
 import {Brand} from "../../../../../src/models/brands/Brand"
-import FakeBrand from "../../../../_toolbox/fixtures/nodes/FakeBrand"
+import {FakeBrand} from "../../../../_toolbox/fixtures/nodes/FakeBrand"
 
-test('When providing valid data the new node can be created', async () => {
-    const createdNode = await Brand.create(FakeBrand)
+test('Expecting node to be created when provided with valid data', async () => {
+    const inputData = FakeBrand.dbInput()
+    const createdNode = await Brand.create(inputData)
 
     expect(createdNode)
-        .toEqual(expect.objectContaining(FakeBrand))
+        .toEqual(expect.objectContaining(inputData))
 })
 
-test('Read-only properties cannot be overridden', async () => {
-    const validData = FakeBrand
+test('Trying to override read-only properties', async () => {
+    const validData = FakeBrand.dbInput()
     const readOnlyData = {
         id: 9999,
         created_at: "NOT_ALLOWED_TO_OVERWRITE",

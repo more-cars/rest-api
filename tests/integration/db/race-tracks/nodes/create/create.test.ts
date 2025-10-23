@@ -1,9 +1,9 @@
 import {expect, test} from 'vitest'
-import {FakeRacingEvent} from "../../../../../_toolbox/fixtures/nodes/FakeRacingEvent"
-import {createNode} from "../../../../../../src/db/nodes/racing-events/createNode"
+import {FakeRaceTrack} from "../../../../../_toolbox/fixtures/nodes/FakeRaceTrack"
+import {createNode} from "../../../../../../src/db/nodes/race-tracks/createNode"
 
 test('Creating node with valid data', async () => {
-    const inputData = FakeRacingEvent.dbInput()
+    const inputData = FakeRaceTrack.dbInput()
     const createdNode = await createNode(inputData)
 
     expect(createdNode)

@@ -2,13 +2,15 @@ import {expect, test} from 'vitest'
 import {Brand} from "../../../../../src/models/brands/Brand"
 import {CarModel} from "../../../../../src/models/car-models/CarModel"
 import {Image} from "../../../../../src/models/images/Image"
-import FakeBrand from "../../../../_toolbox/fixtures/nodes/FakeBrand"
+import {FakeNodeInput} from "../../../../_toolbox/fixtures/nodes/FakeNodeInput"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
 import FakeCarModel from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
 import FakeImage from "../../../../_toolbox/fixtures/nodes/FakeImage"
 import moment from "moment"
 
 test('Timestamps are added when creating a node', async () => {
-    const createdBrand = await Brand.create(FakeBrand)
+    const createdBrand = await Brand.create(FakeNodeInput(NodeTypeEnum.BRAND) as InputBrandCreate)
     expect(createdBrand)
         .toHaveProperty('created_at')
     expect(moment(createdBrand.created_at).isValid())
@@ -40,7 +42,7 @@ test('Timestamps are added when creating a node', async () => {
 })
 
 test('Timestamps have valid dates', async () => {
-    const createdBrand = await Brand.create(FakeBrand)
+    const createdBrand = await Brand.create(FakeNodeInput(NodeTypeEnum.BRAND) as InputBrandCreate)
     expect(moment(createdBrand.created_at).isValid())
     expect(moment(createdBrand.updated_at).isValid())
 

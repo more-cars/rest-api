@@ -1,5 +1,7 @@
 import {expect, test} from 'vitest'
-import FakeBrand from "../../../../_toolbox/fixtures/nodes/FakeBrand"
+import {FakeNodeInput} from "../../../../_toolbox/fixtures/nodes/FakeNodeInput"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
 import FakeCarModel from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
 import FakeImage from "../../../../_toolbox/fixtures/nodes/FakeImage"
 import {Brand} from "../../../../../src/models/brands/Brand"
@@ -7,7 +9,7 @@ import {CarModel} from "../../../../../src/models/car-models/CarModel"
 import {Image} from "../../../../../src/models/images/Image"
 
 test('ID is added when creating a node', async () => {
-    const createdBrand = await Brand.create(FakeBrand)
+    const createdBrand = await Brand.create(FakeNodeInput(NodeTypeEnum.BRAND) as InputBrandCreate)
     expect(createdBrand.id)
         .toBeGreaterThanOrEqual(12000000)
     expect(createdBrand.id)
