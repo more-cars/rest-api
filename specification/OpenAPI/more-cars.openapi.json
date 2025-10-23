@@ -4761,6 +4761,47 @@
         }
       }
     },
+    "delete": {
+      "tags": [
+        "Racing Events"
+      ],
+      "summary": "Deletes the ›belongs-to-racing-series‹ relationship between the `Racing Event` and the `Racing Series`",
+      "parameters": [
+        {
+          "in": "path",
+          "name": "racing-event-id",
+          "description": "ID of the `Racing Event`",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        },
+        {
+          "in": "path",
+          "name": "racing-series-id",
+          "description": "ID of the `Racing Series`",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "Deleting ›belongs-to-racing-series‹ relationship between `Racing Event` and `Racing Series` was successful."
+        },
+        "404": {
+          "description": "Request failed. Either the nodes don't exist or there exists no ›belongs-to-racing-series‹ relationship between them.",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
     "/relationships/{relationship-id}": {
       "get": {
         "tags": [

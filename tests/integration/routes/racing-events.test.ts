@@ -53,4 +53,12 @@ describe('Racing Events', () => {
         expect(RacingEventController.getBelongsToRacingSeriesRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›belongs-to-racing-series‹ relationship', async () => {
+        await request(app)
+            .delete('/racing-events/123/belongs-to-racing-series/456')
+
+        expect(RacingEventController.deleteBelongsToRacingSeriesRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
