@@ -465,4 +465,23 @@ export class RacingEvent {
 
         return relationship
     }
+
+    static async deleteHasPrimeImageRelationship(racingEventId: number, imageId: number) {
+        const racingEvent = await RacingEvent.findById(racingEventId)
+        if (!racingEvent) {
+            throw new NodeNotFoundError(racingEventId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const relationship = await getSpecificRel(racingEventId, imageId, RelationshipType.RacingEventHasPrimeImage)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(RacingEventRelationship.hasPrimeImage, racingEventId, imageId)
+        }
+
+        await deleteSpecificRel(racingEventId, imageId, RelationshipType.RacingEventHasPrimeImage)
+    }
 }
