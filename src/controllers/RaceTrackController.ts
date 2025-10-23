@@ -6,13 +6,14 @@ import {deleteNode} from "./race-tracks/deleteNode"
 import {createHasLayoutRelation} from "./race-tracks/createHasLayoutRelation"
 import {getAllHasLayoutRelations} from "./race-tracks/getAllHasLayoutRelations"
 import {deleteHasLayoutRelation} from "./race-tracks/deleteHasLayoutRelation"
+import {createHostedRacingEventRelation} from "./race-tracks/createHostedRacingEventRelation"
+import {getAllHostedRacingEventRelations} from "./race-tracks/getAllHostedRacingEventRelations"
 import {createHasImageRelation} from "./race-tracks/createHasImageRelation"
 import {getAllHasImageRelations} from "./race-tracks/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./race-tracks/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./race-tracks/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./race-tracks/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./race-tracks/deleteHasPrimeImageRelation"
-import {createHostedRacingEventRelation} from "./race-tracks/createHostedRacingEventRelation"
 
 export class RaceTrackController {
     static async create(req: express.Request, res: express.Response) {
@@ -43,6 +44,14 @@ export class RaceTrackController {
         await deleteHasLayoutRelation(req, res)
     }
 
+    static async createHostedRacingEventRelation(req: express.Request, res: express.Response) {
+        await createHostedRacingEventRelation(req, res)
+    }
+
+    static async getAllHostedRacingEventRelations(req: express.Request, res: express.Response) {
+        await getAllHostedRacingEventRelations(req, res)
+    }
+
     static async createHasImageRelation(req: express.Request, res: express.Response) {
         await createHasImageRelation(req, res)
     }
@@ -65,9 +74,5 @@ export class RaceTrackController {
 
     static async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
-    }
-
-    static async createHostedRacingEventRelation(req: express.Request, res: express.Response) {
-        await createHostedRacingEventRelation(req, res)
     }
 }

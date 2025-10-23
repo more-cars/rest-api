@@ -62,6 +62,22 @@ describe('Race Tracks', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Create ›hosted-racing-event‹ relationship', async () => {
+        await request(app)
+            .post('/race-tracks/123/hosted-racing-event/456')
+
+        expect(RaceTrackController.createHostedRacingEventRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get all ›hosted-racing-event‹ Relationships', async () => {
+        await request(app)
+            .get('/race-tracks/123/hosted-racing-event')
+
+        expect(RaceTrackController.getAllHostedRacingEventRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/race-tracks/123/has-image/456')
@@ -107,14 +123,6 @@ describe('Race Tracks', () => {
             .delete('/race-tracks/123/has-prime-image/456')
 
         expect(RaceTrackController.deleteHasPrimeImageRelation)
-            .toHaveBeenCalledTimes(1)
-    })
-
-    test('Create ›hosted-racing-event‹ relationship', async () => {
-        await request(app)
-            .post('/race-tracks/123/hosted-racing-event/456')
-
-        expect(RaceTrackController.createHostedRacingEventRelation)
             .toHaveBeenCalledTimes(1)
     })
 })
