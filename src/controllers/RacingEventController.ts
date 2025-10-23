@@ -20,6 +20,7 @@ import {getUsedTheTrackLayoutRelation} from "./racing-events/getUsedTheTrackLayo
 import {deleteUsedTheTrackLayoutRelation} from "./racing-events/deleteUsedTheTrackLayoutRelation"
 import {createHasImageRelation} from "./racing-events/createHasImageRelation"
 import {getAllHasImageRelations} from "./racing-events/getAllHasImageRelations"
+import {deleteHasImageRelation} from "./racing-events/deleteHasImageRelation"
 
 export class RacingEventController {
     static async create(req: express.Request, res: express.Response) {
@@ -104,5 +105,9 @@ export class RacingEventController {
 
     static async getAllHasImageRelations(req: express.Request, res: express.Response) {
         await getAllHasImageRelations(req, res)
+    }
+
+    static async deleteHasImageRelation(req: express.Request, res: express.Response) {
+        await deleteHasImageRelation(req, res)
     }
 }
