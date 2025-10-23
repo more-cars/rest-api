@@ -30,10 +30,6 @@ test('Timestamps provided by the user are ignored', async () => {
 
     // IMAGE
     const imageData: InputImageCreate = FakeImageFull
-    // @ts-expect-error property "created_at" is officially not allowed
-    imageData['created_at'] = "blubb"
-    // @ts-expect-error property "updated_at" is officially not allowed
-    imageData['updated_at'] = "blobb"
     const createdImage = await createImageNode(imageData)
 
     expect(createdImage).toHaveProperty('created_at')

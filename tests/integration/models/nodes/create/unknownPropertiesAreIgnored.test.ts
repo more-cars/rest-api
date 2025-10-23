@@ -3,10 +3,10 @@ import {FakeNodeInput} from "../../../../_toolbox/fixtures/nodes/FakeNodeInput"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
 import type {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
-import FakeImage from "../../../../_toolbox/fixtures/nodes/FakeImage"
 import {CarModel} from "../../../../../src/models/car-models/CarModel"
 import {Brand} from "../../../../../src/models/brands/Brand"
 import {Image} from "../../../../../src/models/images/Image"
+import type {InputImageCreate} from "../../../../../src/db/nodes/images/types/InputImageCreate"
 
 test('Unknown properties are ignored', async () => {
     let createdNode
@@ -29,7 +29,7 @@ test('Unknown properties are ignored', async () => {
 
 
     // IMAGE
-    const imageData = Object.assign(FakeImage, {
+    const imageData = Object.assign({}, FakeNodeInput(NodeTypeEnum.IMAGE) as InputImageCreate, {
         "my_property": "NOT_ALLOWED_TO_ADD"
     })
     createdNode = await Image.create(imageData)

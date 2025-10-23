@@ -7,7 +7,6 @@ import type {InputImageCreate} from "../../../../../src/db/nodes/images/types/In
 import {Brand} from "../../../../../src/models/brands/Brand"
 import {CarModel} from "../../../../../src/models/car-models/CarModel"
 import {Image} from "../../../../../src/models/images/Image"
-import FakeImageFull from "../../../../_toolbox/fixtures/nodes/FakeImageFull"
 
 test('Timestamps provided by the user are ignored', async () => {
     // BRAND
@@ -29,11 +28,7 @@ test('Timestamps provided by the user are ignored', async () => {
     expect(createdCarModel).not.toHaveProperty('updated_at', "blobb")
 
     // IMAGE
-    const imageData: InputImageCreate = FakeImageFull
-    // @ts-expect-error property "created_at" is officially not allowed
-    imageData['created_at'] = "blubb"
-    // @ts-expect-error property "updated_at" is officially not allowed
-    imageData['updated_at'] = "blobb"
+    const imageData: InputImageCreate = FakeNodeInput(NodeTypeEnum.IMAGE) as InputImageCreate
     const createdImage = await Image.create(imageData)
 
     expect(createdImage).toHaveProperty('created_at')

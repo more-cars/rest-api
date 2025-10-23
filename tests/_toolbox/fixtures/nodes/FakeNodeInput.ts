@@ -7,7 +7,7 @@ import {FakeRaceTrack} from "./FakeRaceTrack"
 import {FakeTrackLayout} from "./FakeTrackLayout"
 import {FakeRacingSeries} from "./FakeRacingSeries"
 import {FakeRacingEvent} from "./FakeRacingEvent"
-import FakeImage from "./FakeImage"
+import {FakeImage} from "./FakeImage"
 
 export function FakeNodeInput(nodeType: NodeTypeEnum) {
     switch (nodeType) {
@@ -26,7 +26,7 @@ export function FakeNodeInput(nodeType: NodeTypeEnum) {
         case NodeTypeEnum.RACING_EVENT:
             return FakeRacingEvent.dbInput()
         case NodeTypeEnum.IMAGE:
-            return FakeImage
+            return FakeImage.dbInput()
         default:
             assert.fail(`Node type "${nodeType}" is invalid or unknown`)
     }
