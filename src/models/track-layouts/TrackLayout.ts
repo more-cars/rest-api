@@ -149,6 +149,15 @@ export class TrackLayout {
         return createdRelationship
     }
 
+    static async getAllWasUsedByRacingEventRelationships(trackLayoutId: number) {
+        const trackLayout = await TrackLayout.findById(trackLayoutId)
+        if (!trackLayout) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        return getAllRels(trackLayoutId, RelationshipType.TrackLayoutWasUsedByRacingEvent)
+    }
+
     static async createHasImageRelationship(trackLayoutId: number, imageId: number) {
 
         const trackLayout = await TrackLayout.findById(trackLayoutId)

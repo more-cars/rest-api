@@ -7,6 +7,7 @@ import {createBelongsToRaceTrackRelation} from "./track-layouts/createBelongsToR
 import {getBelongsToRaceTrackRelation} from "./track-layouts/getBelongsToRaceTrackRelation"
 import {deleteBelongsToRaceTrackRelation} from "./track-layouts/deleteBelongsToRaceTrackRelation"
 import {createWasUsedByRacingEventRelation} from "./track-layouts/createWasUsedByRacingEventRelation"
+import {getAllWasUsedByRacingEventRelations} from "./track-layouts/getAllWasUsedByRacingEventRelations"
 import {createHasImageRelation} from "./track-layouts/createHasImageRelation"
 import {getAllHasImageRelations} from "./track-layouts/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./track-layouts/deleteHasImageRelation"
@@ -69,5 +70,9 @@ export class TrackLayoutController {
 
     static async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
+    }
+
+    static async getAllWasUsedByRacingEventRelations(req: express.Request, res: express.Response) {
+        await getAllWasUsedByRacingEventRelations(req, res)
     }
 }

@@ -70,6 +70,14 @@ describe('Track Layouts', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Get all ›was-used-by-racing-event‹ Relationships', async () => {
+        await request(app)
+            .get('/track-layouts/123/was-used-by-racing-event')
+
+        expect(TrackLayoutController.getAllWasUsedByRacingEventRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/track-layouts/123/has-image/456')

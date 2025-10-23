@@ -3805,6 +3805,47 @@
         }
       }
     },
+    "/track-layouts/{track-layout-id}/was-used-by-racing-event": {
+      "get": {
+        "tags": [
+          "Track Layouts"
+        ],
+        "summary": "Get all ›was-used-by-racing-event‹ relationships for the `Track Layout`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "track-layout-id",
+            "description": "ID of the `Track Layout`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›was-used-by-racing-event‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrackLayoutWasUsedByRacingEventCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Track Layout` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/track-layouts/{track-layout-id}/was-used-by-racing-event/{racing-event-id}": {
       "post": {
         "tags": [
@@ -7576,6 +7617,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/TrackLayoutWasUsedByRacingEvent"
+          }
+        }
+      },
+      "TrackLayoutWasUsedByRacingEventCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TrackLayoutWasUsedByRacingEventResponse"
+            }
           }
         }
       },
