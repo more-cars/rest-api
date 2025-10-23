@@ -8,6 +8,7 @@ import {getAllHasRacingEventRelations} from "./racing-series/getAllHasRacingEven
 import {deleteHasRacingEventRelation} from "./racing-series/deleteHasRacingEventRelation"
 import {createHasImageRelation} from "./racing-series/createHasImageRelation"
 import {getAllHasImageRelations} from "./racing-series/getAllHasImageRelations"
+import {deleteHasImageRelation} from "./racing-series/deleteHasImageRelation"
 
 export class RacingSeriesController {
     static async create(req: express.Request, res: express.Response) {
@@ -44,5 +45,9 @@ export class RacingSeriesController {
 
     static async getAllHasImageRelations(req: express.Request, res: express.Response) {
         await getAllHasImageRelations(req, res)
+    }
+
+    static async deleteHasImageRelation(req: express.Request, res: express.Response) {
+        await deleteHasImageRelation(req, res)
     }
 }
