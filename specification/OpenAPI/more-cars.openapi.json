@@ -4759,43 +4759,96 @@
             }
           }
         }
-      }
-    },
-    "delete": {
-      "tags": [
-        "Racing Events"
-      ],
-      "summary": "Deletes the ›belongs-to-racing-series‹ relationship between the `Racing Event` and the `Racing Series`",
-      "parameters": [
-        {
-          "in": "path",
-          "name": "racing-event-id",
-          "description": "ID of the `Racing Event`",
-          "required": true,
-          "schema": {
-            "type": "integer"
+      },
+      "delete": {
+        "tags": [
+          "Racing Events"
+        ],
+        "summary": "Deletes the ›belongs-to-racing-series‹ relationship between the `Racing Event` and the `Racing Series`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-event-id",
+            "description": "ID of the `Racing Event`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "racing-series-id",
+            "description": "ID of the `Racing Series`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
           }
-        },
-        {
-          "in": "path",
-          "name": "racing-series-id",
-          "description": "ID of the `Racing Series`",
-          "required": true,
-          "schema": {
-            "type": "integer"
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›belongs-to-racing-series‹ relationship between `Racing Event` and `Racing Series` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›belongs-to-racing-series‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
-      ],
-      "responses": {
-        "204": {
-          "description": "Deleting ›belongs-to-racing-series‹ relationship between `Racing Event` and `Racing Series` was successful."
-        },
-        "404": {
-          "description": "Request failed. Either the nodes don't exist or there exists no ›belongs-to-racing-series‹ relationship between them.",
-          "content": {
-            "text/plain": {
-              "schema": {
-                "type": "string"
+      }
+    },
+    "/racing-events/{racing-event-id}/is-followed-by-event/{partner-id}": {
+      "post": {
+        "tags": [
+          "Racing Events"
+        ],
+        "summary": "Creates a ›is-followed-by-event‹ relationship between the `Racing Event` and the `Partner`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-event-id",
+            "description": "ID of the `Racing Event`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "partner-id",
+            "description": "ID of the `Partner`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Relationship ›is-followed-by-event‹ between `Racing Event` and `Partner` successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RacingEventIsFollowedByEventResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "The relationship ›is-followed-by-event‹ between `Racing Event` and `Partner` already exists."
+          },
+          "404": {
+            "description": "Request failed. `Racing Event` and/or `Partner` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
               }
             }
           }
@@ -6977,6 +7030,56 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/RacingEventBelongsToRacingSeries"
+          }
+        }
+      },
+      "RacingEventIsFollowedByEvent": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "relationship_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "123456"
+          },
+          "relationship_name": {
+            "type": "string",
+            "readOnly": true,
+            "example": "is-followed-by-event"
+          },
+          "relationship_partner": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "racing-event"
+              },
+              "data": {
+                "$ref": "#/components/schemas/RacingEvent"
+              }
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "RacingEventIsFollowedByEventResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/RacingEventIsFollowedByEvent"
           }
         }
       },

@@ -19,6 +19,7 @@ import {RacingEventRelationship} from "./types/RacingEventRelationship"
 import {getRel} from "../relationships/getRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
+import {SemanticError} from "../types/SemanticError"
 
 export class RacingEvent {
     static async create(data: CreateRacingEventInput): Promise<RacingEventNode> {
@@ -117,5 +118,36 @@ export class RacingEvent {
         }
 
         await deleteSpecificRel(racingEventId, racingSeriesId, RelationshipType.RacingEventBelongsToRacingSeries)
+    }
+
+    static async createIsFollowedByEventRelationship(racingEventId: number, partnerId: number) {
+
+        if (racingEventId === partnerId) {
+            throw new SemanticError(`Racing Event #${racingEventId} cannot be connected to itself`)
+        }
+
+        const racingEvent = await RacingEvent.findById(racingEventId)
+        if (!racingEvent) {
+            throw new NodeNotFoundError(racingEventId)
+        }
+
+        const partner = await RacingEvent.findById(partnerId)
+        if (!partner) {
+            throw new NodeNotFoundError(partnerId)
+        }
+
+        const existingRelation = await getSpecificRel(racingEventId, partnerId, RelationshipType.RacingEventIsFollowedByEvent)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(RacingEventRelationship.isFollowedByEvent, racingEventId, partnerId)
+        }
+
+        await deleteDeprecatedRelationship(racingEventId, DbRelationship.RacingEventIsFollowedByEvent)
+
+        const createdRelationship = await createRel(racingEventId, partnerId, RelationshipType.RacingEventIsFollowedByEvent)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 }

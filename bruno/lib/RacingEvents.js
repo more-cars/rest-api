@@ -15,6 +15,18 @@ async function ensureValidRacingEventExists() {
 
 exports.ensureValidRacingEventExists = ensureValidRacingEventExists
 
+async function ensureValidSecondRacingEventExists() {
+    const nodeList = await getAllRacingEvents()
+    if (nodeList.length > 1) {
+        bru.setEnvVar("validSecongRacingEventId", nodeList[nodeList.length - 1].data.id)
+    } else {
+        const newNode = await createRacingEvent()
+        bru.setEnvVar("validSecondRacingEventId", newNode.data.id)
+    }
+}
+
+exports.ensureValidSecondRacingEventExists = ensureValidSecondRacingEventExists
+
 async function createRacingEvent() {
     const response = await axios.post(bru.getEnvVar('baseUrl') + "/racing-events", {
         name: 'GP Monaco 2025',
@@ -51,3 +63,23 @@ async function createRacingEventBelongsToRacingSeriesRelationship(racingEventId,
 }
 
 exports.createRacingEventBelongsToRacingSeriesRelationship = createRacingEventBelongsToRacingSeriesRelationship
+
+async function ensureRacingEventIsFollowedByEventRelationshipExists() {
+    await ensureValidRacingEventExists()
+    await ensureValidSecondRacingEventExists()
+    await createRacingEventIsFollowedByEventRelationship(bru.getEnvVar('validRacingEventId'), bru.getEnvVar('validSecondRacingEventId'))
+}
+
+exports.ensureRacingEventIsFollowedByEventRelationshipExists = ensureRacingEventIsFollowedByEventRelationshipExists
+
+async function createRacingEventIsFollowedByEventRelationship(racingEventId, partnerId) {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/racing-events/" + racingEventId + "/is-followed-by-event/" + partnerId, null, {
+        validateStatus: function (status) {
+            return status < 400
+        }
+    })
+
+    return response.data
+}
+
+exports.createRacingEventIsFollowedByEventRelationship = createRacingEventIsFollowedByEventRelationship

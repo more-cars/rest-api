@@ -1,29 +1,29 @@
 import {describe, expect, test} from 'vitest'
-import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
-import {RacingSeriesRelationship} from "../../../../../../../src/models/racing-series/types/RacingSeriesRelationship"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {RacingEventRelationship} from "../../../../../../../src/models/racing-events/types/RacingEventRelationship"
 
-describe('Creating a ›belongs-to-racing-series‹ relationship', () => {
+describe('Creating a ›is-followed-by-event‹ relationship', () => {
     test('with valid data', async () => {
         const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
-        const racingSeries = await seedNode(NodeTypeEnum.RACING_SERIES)
+        const partner = await seedNode(NodeTypeEnum.RACING_EVENT)
 
         const createdRelationship = await createRelationship(
-            racingSeries.id,
             racingEvent.id,
-            DbRelationship.RacingEventBelongsToRacingSeries,
+            partner.id,
+            DbRelationship.RacingEventIsFollowedByEvent,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node_id', racingSeries.id)
+            .toHaveProperty('start_node_id', racingEvent.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node_id', racingEvent.id)
+            .toHaveProperty('end_node_id', partner.id)
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', RacingSeriesRelationship.hasRacingEvent)
+            .toHaveProperty('relationship_name', RacingEventRelationship.isFollowedByEvent)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)
@@ -36,7 +36,7 @@ describe('Creating a ›belongs-to-racing-series‹ relationship', () => {
         const createdRelationship = await createRelationship(
             racingEvent.id,
             -42,
-            DbRelationship.RacingEventBelongsToRacingSeries,
+            DbRelationship.RacingEventIsFollowedByEvent,
         )
 
         expect(createdRelationship)

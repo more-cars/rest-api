@@ -61,4 +61,12 @@ describe('Racing Events', () => {
         expect(RacingEventController.deleteBelongsToRacingSeriesRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›is-followed-by-event‹ relationship', async () => {
+        await request(app)
+            .post('/racing-events/123/is-followed-by-event/456')
+
+        expect(RacingEventController.createIsFollowedByEventRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

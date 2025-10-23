@@ -9,6 +9,7 @@ import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../models/types/RelationshipAlreadyExistsError"
 <% if (startNodeType === endNodeType) { %>
 import {SemanticError} from "../../models/types/SemanticError"
+import {sendResponse422} from "../responses/sendResponse422"
 <% } %>
 import {sendResponse201} from "../responses/sendResponse201"
 import {sendResponse304} from "../responses/sendResponse304"

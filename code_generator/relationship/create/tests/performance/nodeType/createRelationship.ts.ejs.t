@@ -30,16 +30,16 @@ export const options = {
 
 export function setup() {
     const <%= h.changeCase.camel(startNodeType) %>Id = createNode(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>)
-    const <%= h.changeCase.camel(endNodeType) %>Id = createNode(NodeTypeEnum.<%= h.changeCase.constant(endNodeType) %>)
+    const <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id = createNode(NodeTypeEnum.<%= h.changeCase.constant(endNodeType) %>)
 
     return {
         <%= h.changeCase.camel(startNodeType) %>Id,
-        <%= h.changeCase.camel(endNodeType) %>Id,
+        <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id,
     }
 }
 
-export default function (data: { <%= h.changeCase.camel(startNodeType) %>Id: number, <%= h.changeCase.camel(endNodeType) %>Id: number }) {
-    const url = `${__ENV.API_URL}/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/${data.<%= h.changeCase.camel(startNodeType) %>Id}/<%= h.changeCase.kebab(relationshipName) %>/${data.<%= h.changeCase.camel(endNodeType) %>Id}`
+export default function (data: { <%= h.changeCase.camel(startNodeType) %>Id: number, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id: number }) {
+    const url = `${__ENV.API_URL}/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/${data.<%= h.changeCase.camel(startNodeType) %>Id}/<%= h.changeCase.kebab(relationshipName) %>/${data.<%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id}`
 
     const response = http.post(url)
 

@@ -10,5 +10,6 @@ router.delete('/racing-events/:id', RacingEventController.delete)
 router.post('/racing-events/:racingEventId/belongs-to-racing-series/:racingSeriesId', RacingEventController.createBelongsToRacingSeriesRelation)
 router.get('/racing-events/:racingEventId/belongs-to-racing-series', RacingEventController.getBelongsToRacingSeriesRelation)
 router.delete('/racing-events/:racingEventId/belongs-to-racing-series/:racingSeriesId', RacingEventController.deleteBelongsToRacingSeriesRelation)
+router.post('/racing-events/:racingEventId/is-followed-by-event/:partnerId', RacingEventController.createIsFollowedByEventRelation)
 
 export default router
