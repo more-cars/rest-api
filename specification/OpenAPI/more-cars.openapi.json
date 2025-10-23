@@ -3897,6 +3897,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Track Layouts"
+        ],
+        "summary": "Deletes the ›was-used-by-racing-event‹ relationship between the `Track Layout` and the `Racing Event`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "track-layout-id",
+            "description": "ID of the `Track Layout`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "racing-event-id",
+            "description": "ID of the `Racing Event`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›was-used-by-racing-event‹ relationship between `Track Layout` and `Racing Event` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›was-used-by-racing-event‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/track-layouts/{track-layout-id}/has-image": {

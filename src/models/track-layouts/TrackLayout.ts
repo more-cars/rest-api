@@ -158,6 +158,25 @@ export class TrackLayout {
         return getAllRels(trackLayoutId, RelationshipType.TrackLayoutWasUsedByRacingEvent)
     }
 
+    static async deleteWasUsedByRacingEventRelationship(trackLayoutId: number, racingEventId: number) {
+        const trackLayout = await TrackLayout.findById(trackLayoutId)
+        if (!trackLayout) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        const racingEvent = await RacingEvent.findById(racingEventId)
+        if (!racingEvent) {
+            throw new NodeNotFoundError(racingEventId)
+        }
+
+        const relationship = await getSpecificRel(trackLayoutId, racingEventId, RelationshipType.TrackLayoutWasUsedByRacingEvent)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(TrackLayoutRelationship.wasUsedByRacingEvent, trackLayoutId, racingEventId)
+        }
+
+        await deleteSpecificRel(trackLayoutId, racingEventId, RelationshipType.TrackLayoutWasUsedByRacingEvent)
+    }
+
     static async createHasImageRelationship(trackLayoutId: number, imageId: number) {
 
         const trackLayout = await TrackLayout.findById(trackLayoutId)

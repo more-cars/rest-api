@@ -78,6 +78,14 @@ describe('Track Layouts', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete ›was-used-by-racing-event‹ relationship', async () => {
+        await request(app)
+            .delete('/track-layouts/123/was-used-by-racing-event/456')
+
+        expect(TrackLayoutController.deleteWasUsedByRacingEventRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/track-layouts/123/has-image/456')
