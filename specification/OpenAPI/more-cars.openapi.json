@@ -4193,6 +4193,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Racing Series"
+        ],
+        "summary": "Deletes the ›has-racing-event‹ relationship between the `Racing Series` and the `Racing Event`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-series-id",
+            "description": "ID of the `Racing Series`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "racing-event-id",
+            "description": "ID of the `Racing Event`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-racing-event‹ relationship between `Racing Series` and `Racing Event` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-racing-event‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/racing-events": {

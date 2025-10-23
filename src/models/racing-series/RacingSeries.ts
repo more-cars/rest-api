@@ -17,6 +17,8 @@ import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExists
 import {RelationshipType} from "../relationships/types/RelationshipType"
 import {RacingSeriesRelationship} from "./types/RacingSeriesRelationship"
 import {getAllRels} from "../relationships/getAllRels"
+import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
+import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 
 export class RacingSeries {
     static async create(data: CreateRacingSeriesInput): Promise<RacingSeriesNode> {
@@ -91,5 +93,24 @@ export class RacingSeries {
         }
 
         return getAllRels(racingSeriesId, RelationshipType.RacingSeriesHasRacingEvent)
+    }
+
+    static async deleteHasRacingEventRelationship(racingSeriesId: number, racingEventId: number) {
+        const racingSeries = await RacingSeries.findById(racingSeriesId)
+        if (!racingSeries) {
+            throw new NodeNotFoundError(racingSeriesId)
+        }
+
+        const racingEvent = await RacingEvent.findById(racingEventId)
+        if (!racingEvent) {
+            throw new NodeNotFoundError(racingEventId)
+        }
+
+        const relationship = await getSpecificRel(racingSeriesId, racingEventId, RelationshipType.RacingSeriesHasRacingEvent)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(RacingSeriesRelationship.hasRacingEvent, racingSeriesId, racingEventId)
+        }
+
+        await deleteSpecificRel(racingSeriesId, racingEventId, RelationshipType.RacingSeriesHasRacingEvent)
     }
 }
