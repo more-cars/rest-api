@@ -23,6 +23,7 @@ import {SemanticError} from "../types/SemanticError"
 import {RaceTrack} from "../race-tracks/RaceTrack"
 import {TrackLayout} from "../track-layouts/TrackLayout"
 import {Image} from "../images/Image"
+import {getAllRels} from "../relationships/getAllRels"
 
 export class RacingEvent {
     static async create(data: CreateRacingEventInput): Promise<RacingEventNode> {
@@ -394,5 +395,14 @@ export class RacingEvent {
         }
 
         return createdRelationship
+    }
+
+    static async getAllHasImageRelationships(racingEventId: number) {
+        const racingEvent = await RacingEvent.findById(racingEventId)
+        if (!racingEvent) {
+            throw new NodeNotFoundError(racingEventId)
+        }
+
+        return getAllRels(racingEventId, RelationshipType.RacingEventHasImage)
     }
 }
