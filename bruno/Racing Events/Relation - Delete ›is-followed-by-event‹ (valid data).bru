@@ -1,0 +1,18 @@
+meta {
+  name: Delete ›is-followed-by-event‹ relation (valid data)
+  type: http
+}
+
+delete {
+  url: {{baseUrl}}/racing-events/{{validRacingEventId}}/is-followed-by-event/{{validSecondRacingEventId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 204
+}
+
+script:pre-request {
+  await lib.RacingEvents.ensureRacingEventIsFollowedByEventRelationshipExists()
+}
