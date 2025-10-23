@@ -6,6 +6,8 @@ import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/racing-events/getNodeById"
 import {getAllNodesOfType} from "../../db/nodes/racing-events/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
+import {deleteNode} from "../../db/nodes/deleteNode"
+import {NodeNotFoundError} from "../types/NodeNotFoundError"
 
 export class RacingEvent {
     static async create(data: CreateRacingEventInput): Promise<RacingEventNode> {
@@ -35,5 +37,14 @@ export class RacingEvent {
         })
 
         return nodes
+    }
+
+    static async delete(racingEventId: number): Promise<void> {
+        const node = await RacingEvent.findById(racingEventId)
+        if (!node) {
+            throw new NodeNotFoundError(racingEventId)
+        }
+
+        await deleteNode(racingEventId)
     }
 }

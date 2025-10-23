@@ -4097,6 +4097,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Racing Events"
+        ],
+        "summary": "Delete `Racing Event`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-event-id",
+            "description": "ID of the `Racing Event`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Racing Event` successfully deleted."
+          },
+          "404": {
+            "description": "Deletion request failed. A `Racing Event` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/relationships/{relationship-id}": {
@@ -5979,10 +6011,10 @@
       },
       "RacingEvent": {
         "type": "object",
-        "required":         [
+        "required": [
           "name"
         ],
-        "properties":         {
+        "properties": {
           "id": {
             "type": "integer",
             "readOnly": true,
@@ -6035,7 +6067,7 @@
       },
       "RacingEventProperties": {
         "type": "string",
-        "enum":         [
+        "enum": [
           "id",
           "created_at",
           "updated_at",
