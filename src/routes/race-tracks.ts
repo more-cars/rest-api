@@ -12,6 +12,7 @@ router.get('/race-tracks/:raceTrackId/has-layout', RaceTrackController.getAllHas
 router.delete('/race-tracks/:raceTrackId/has-layout/:trackLayoutId', RaceTrackController.deleteHasLayoutRelation)
 router.post('/race-tracks/:raceTrackId/hosted-racing-event/:racingEventId', RaceTrackController.createHostedRacingEventRelation)
 router.get('/race-tracks/:raceTrackId/hosted-racing-event', RaceTrackController.getAllHostedRacingEventRelations)
+router.delete('/race-tracks/:raceTrackId/hosted-racing-event/:racingEventId', RaceTrackController.deleteHostedRacingEventRelation)
 router.post('/race-tracks/:raceTrackId/has-image/:imageId', RaceTrackController.createHasImageRelation)
 router.get('/race-tracks/:raceTrackId/has-image', RaceTrackController.getAllHasImageRelations)
 router.delete('/race-tracks/:raceTrackId/has-image/:imageId', RaceTrackController.deleteHasImageRelation)

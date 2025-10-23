@@ -78,6 +78,14 @@ describe('Race Tracks', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete ›hosted-racing-event‹ relationship', async () => {
+        await request(app)
+            .delete('/race-tracks/123/hosted-racing-event/456')
+
+        expect(RaceTrackController.deleteHostedRacingEventRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/race-tracks/123/has-image/456')
