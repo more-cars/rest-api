@@ -1,5 +1,6 @@
 const axios = require("axios")
 const {ensureValidRacingEventExists} = require("./RacingEvents")
+const {ensureValidImageExists} = require("./Images")
 
 async function ensureValidRacingSeriesExists() {
     if (!bru.getEnvVar('validRacingSeriesId')) {
@@ -51,3 +52,23 @@ async function createRacingSeriesHasRacingEventRelationship(racingSeriesId, raci
 }
 
 exports.createRacingSeriesHasRacingEventRelationship = createRacingSeriesHasRacingEventRelationship
+
+async function ensureRacingSeriesHasImageRelationshipExists() {
+    await ensureValidRacingSeriesExists()
+    await ensureValidImageExists()
+    await createRacingSeriesHasImageRelationship(bru.getEnvVar('validRacingSeriesId'), bru.getEnvVar('validImageId'))
+}
+
+exports.ensureRacingSeriesHasImageRelationshipExists = ensureRacingSeriesHasImageRelationshipExists
+
+async function createRacingSeriesHasImageRelationship(racingSeriesId, imageId) {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/racing-series/" + racingSeriesId + "/has-image/" + imageId, null, {
+        validateStatus: function (status) {
+            return status < 400
+        }
+    })
+
+    return response.data
+}
+
+exports.createRacingSeriesHasImageRelationship = createRacingSeriesHasImageRelationship

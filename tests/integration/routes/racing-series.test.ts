@@ -61,4 +61,12 @@ describe('Racing Series', () => {
         expect(RacingSeriesController.deleteHasRacingEventRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-image‹ relationship', async () => {
+        await request(app)
+            .post('/racing-series/123/has-image/456')
+
+        expect(RacingSeriesController.createHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

@@ -29,4 +29,5 @@ export enum DbRelationship {
     TrackLayoutHasImage = 'HAS_IMAGE',
     TrackLayoutHasPrimeImage = 'HAS_PRIME_IMAGE',
     RacingSeriesHasRacingEvent = 'HAS_RACING_EVENT',
+    RacingSeriesHasImage = 'HAS_IMAGE',
 }
