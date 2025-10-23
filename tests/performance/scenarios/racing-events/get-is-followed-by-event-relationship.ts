@@ -1,6 +1,3 @@
----
-to: tests/performance/scenarios/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/get-<%= h.changeCase.kebab(relationshipName) %>-relationship.ts
----
 import http from 'k6/http'
 import {check} from "k6"
 import {Trend} from "k6/metrics"
@@ -17,7 +14,7 @@ export const options = {
         duration: ['p(1)<=10', 'p(90)<=40', 'p(95)<=100', 'p(98)<=500'],
     },
     scenarios: {
-        get<%= h.changeCase.pascal(relationshipName) %>Relationship: {
+        getIsFollowedByEventRelationship: {
             executor: 'constant-arrival-rate',
             duration: '5m',
             rate: 1,
@@ -30,22 +27,22 @@ export const options = {
 }
 
 export function setup() {
-    const <%= h.changeCase.camel(startNodeType) %>Id = createNode(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>)
-    const <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id = createNode(NodeTypeEnum.<%= h.changeCase.constant(endNodeType) %>)
+    const racingEventId = createNode(NodeTypeEnum.RACING_EVENT)
+    const partnerId = createNode(NodeTypeEnum.RACING_EVENT)
     createRelationship(
-        NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>,
-        <%= h.changeCase.camel(startNodeType) %>Id,
-        <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id,
-        '<%= h.changeCase.lower(relationshipName) %>',
+        NodeTypeEnum.RACING_EVENT,
+        racingEventId,
+        partnerId,
+        'is followed by event',
     )
 
     return {
-        <%= h.changeCase.camel(startNodeType) %>Id
+        racingEventId
     }
 }
 
-export default function (data: { <%= h.changeCase.camel(startNodeType) %>Id: number }) {
-    const url = `${__ENV.API_URL}/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/${data.<%= h.changeCase.camel(startNodeType) %>Id}/<%= h.changeCase.kebab(relationshipName) %>`
+export default function (data: { racingEventId: number }) {
+    const url = `${__ENV.API_URL}/racing-events/${data.racingEventId}/is-followed-by-event`
 
     const response = http.get(url)
 

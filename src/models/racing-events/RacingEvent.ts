@@ -150,4 +150,18 @@ export class RacingEvent {
 
         return createdRelationship
     }
+
+    static async getIsFollowedByEventRelationship(racingEventId: number) {
+        const racingEvent = await RacingEvent.findById(racingEventId)
+        if (!racingEvent) {
+            throw new NodeNotFoundError(racingEventId)
+        }
+
+        const relationship = await getRel(racingEventId, RelationshipType.RacingEventIsFollowedByEvent)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(RacingEventRelationship.isFollowedByEvent, racingEventId, null)
+        }
+
+        return relationship
+    }
 }

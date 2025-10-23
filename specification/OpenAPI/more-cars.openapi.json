@@ -4802,6 +4802,47 @@
         }
       }
     },
+    "/racing-events/{racing-event-id}/is-followed-by-event": {
+      "get": {
+        "tags": [
+          "Racing Events"
+        ],
+        "summary": "Get the ›is-followed-by-event‹ relationship for the `Racing Event`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-event-id",
+            "description": "ID of the `Racing Event`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›is-followed-by-event‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RacingEventIsFollowedByEventResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Racing Event` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/racing-events/{racing-event-id}/is-followed-by-event/{partner-id}": {
       "post": {
         "tags": [

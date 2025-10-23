@@ -7,6 +7,7 @@ import {createBelongsToRacingSeriesRelation} from "./racing-events/createBelongs
 import {getBelongsToRacingSeriesRelation} from "./racing-events/getBelongsToRacingSeriesRelation"
 import {deleteBelongsToRacingSeriesRelation} from "./racing-events/deleteBelongsToRacingSeriesRelation"
 import {createIsFollowedByEventRelation} from "./racing-events/createIsFollowedByEventRelation"
+import {getIsFollowedByEventRelation} from "./racing-events/getIsFollowedByEventRelation"
 
 export class RacingEventController {
     static async create(req: express.Request, res: express.Response) {
@@ -39,5 +40,9 @@ export class RacingEventController {
 
     static async createIsFollowedByEventRelation(req: express.Request, res: express.Response) {
         await createIsFollowedByEventRelation(req, res)
+    }
+
+    static async getIsFollowedByEventRelation(req: express.Request, res: express.Response) {
+        await getIsFollowedByEventRelation(req, res)
     }
 }
