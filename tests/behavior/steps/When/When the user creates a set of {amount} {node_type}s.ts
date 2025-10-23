@@ -1,40 +1,28 @@
 import {When, world} from "@cucumber/cucumber"
-import {Company} from "../../../../src/models/companies/Company"
-import {Brand} from "../../../../src/models/brands/Brand"
-import {CarModel} from "../../../../src/models/car-models/CarModel"
-import {Image} from "../../../../src/models/images/Image"
-import FakeCompany from "../../../_toolbox/fixtures/nodes/FakeCompany"
-import FakeBrand from "../../../_toolbox/fixtures/nodes/FakeBrand"
-import FakeCarModel from "../../../_toolbox/fixtures/nodes/FakeCarModel"
-import FakeImage from "../../../_toolbox/fixtures/nodes/FakeImage"
+import axios from "axios"
+import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
+import type {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {FakeNodeInput} from "../../../_toolbox/fixtures/nodes/FakeNodeInput"
 
 When('the user creates a set of {int} {string}s',
     async (amount: number, nodeType: string) => {
         const nodes = []
 
-        // TODO this approach is not scalable, and it is cheating because we are circumventing the API -> needs to be an explicit API call
         for (let i = 0; i < amount; i++) {
-            let node
+            const path = getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeTypeEnum)
+            const data = FakeNodeInput(nodeType.toLowerCase() as NodeTypeEnum)
 
-            switch (nodeType.toLowerCase()) {
-                case 'company':
-                    node = await Company.create(FakeCompany)
-                    break
-                case 'brand':
-                    node = await Brand.create(FakeBrand)
-                    break
-                case 'car model':
-                    node = await CarModel.create(FakeCarModel)
-                    break
-                case 'image':
-                    node = await Image.create(FakeImage)
-                    break
-            }
+            const response = await axios
+                .post(`${process.env.API_URL}/${path}`, data)
+                .catch(error => {
+                    console.error(error)
+                })
 
             nodes.push({
-                data: node
+                data: response?.data.data
             })
         }
+
         const response = {
             data: { // axios payload
                 data: nodes // mc payload
