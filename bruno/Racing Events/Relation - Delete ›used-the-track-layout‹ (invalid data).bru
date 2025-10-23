@@ -1,0 +1,15 @@
+meta {
+  name: Delete ›used-the-track-layout‹ relation (invalid data)
+  type: http
+}
+
+delete {
+  url: {{baseUrl}}/racing-events/{{invalidRacingEventId}}/used-the-track-layout/{{invalidTrackLayoutId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}

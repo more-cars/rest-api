@@ -17,6 +17,7 @@ import {getTookPlaceAtRaceTrackRelation} from "./racing-events/getTookPlaceAtRac
 import {deleteTookPlaceAtRaceTrackRelation} from "./racing-events/deleteTookPlaceAtRaceTrackRelation"
 import {createUsedTheTrackLayoutRelation} from "./racing-events/createUsedTheTrackLayoutRelation"
 import {getUsedTheTrackLayoutRelation} from "./racing-events/getUsedTheTrackLayoutRelation"
+import {deleteUsedTheTrackLayoutRelation} from "./racing-events/deleteUsedTheTrackLayoutRelation"
 
 export class RacingEventController {
     static async create(req: express.Request, res: express.Response) {
@@ -89,5 +90,9 @@ export class RacingEventController {
 
     static async getUsedTheTrackLayoutRelation(req: express.Request, res: express.Response) {
         await getUsedTheTrackLayoutRelation(req, res)
+    }
+
+    static async deleteUsedTheTrackLayoutRelation(req: express.Request, res: express.Response) {
+        await deleteUsedTheTrackLayoutRelation(req, res)
     }
 }

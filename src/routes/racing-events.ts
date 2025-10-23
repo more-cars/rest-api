@@ -21,5 +21,6 @@ router.get('/racing-events/:racingEventId/took-place-at-race-track', RacingEvent
 router.delete('/racing-events/:racingEventId/took-place-at-race-track/:raceTrackId', RacingEventController.deleteTookPlaceAtRaceTrackRelation)
 router.post('/racing-events/:racingEventId/used-the-track-layout/:trackLayoutId', RacingEventController.createUsedTheTrackLayoutRelation)
 router.get('/racing-events/:racingEventId/used-the-track-layout', RacingEventController.getUsedTheTrackLayoutRelation)
+router.delete('/racing-events/:racingEventId/used-the-track-layout/:trackLayoutId', RacingEventController.deleteUsedTheTrackLayoutRelation)
 
 export default router

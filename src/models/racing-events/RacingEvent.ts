@@ -350,4 +350,23 @@ export class RacingEvent {
 
         return relationship
     }
+
+    static async deleteUsedTheTrackLayoutRelationship(racingEventId: number, trackLayoutId: number) {
+        const racingEvent = await RacingEvent.findById(racingEventId)
+        if (!racingEvent) {
+            throw new NodeNotFoundError(racingEventId)
+        }
+
+        const trackLayout = await TrackLayout.findById(trackLayoutId)
+        if (!trackLayout) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        const relationship = await getSpecificRel(racingEventId, trackLayoutId, RelationshipType.RacingEventUsedTheTrackLayout)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(RacingEventRelationship.usedTheTrackLayout, racingEventId, trackLayoutId)
+        }
+
+        await deleteSpecificRel(racingEventId, trackLayoutId, RelationshipType.RacingEventUsedTheTrackLayout)
+    }
 }

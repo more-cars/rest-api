@@ -5299,6 +5299,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Racing Events"
+        ],
+        "summary": "Deletes the ›used-the-track-layout‹ relationship between the `Racing Event` and the `Track Layout`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-event-id",
+            "description": "ID of the `Racing Event`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "track-layout-id",
+            "description": "ID of the `Track Layout`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›used-the-track-layout‹ relationship between `Racing Event` and `Track Layout` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›used-the-track-layout‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/relationships/{relationship-id}": {

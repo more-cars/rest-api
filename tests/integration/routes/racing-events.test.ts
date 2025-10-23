@@ -149,4 +149,12 @@ describe('Racing Events', () => {
         expect(RacingEventController.getUsedTheTrackLayoutRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›used-the-track-layout‹ relationship', async () => {
+        await request(app)
+            .delete('/racing-events/123/used-the-track-layout/456')
+
+        expect(RacingEventController.deleteUsedTheTrackLayoutRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
