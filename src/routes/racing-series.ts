@@ -7,5 +7,6 @@ router.post('/racing-series', RacingSeriesController.create)
 router.get('/racing-series/:id', RacingSeriesController.getById)
 router.get('/racing-series', RacingSeriesController.getAll)
 router.delete('/racing-series/:id', RacingSeriesController.delete)
+router.post('/racing-series/:racingSeriesId/has-racing-event/:racingEventId', RacingSeriesController.createHasRacingEventRelation)
 
 export default router

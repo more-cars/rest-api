@@ -37,4 +37,12 @@ describe('Racing Series', () => {
         expect(RacingSeriesController.delete)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-racing-event‹ relationship', async () => {
+        await request(app)
+            .post('/racing-series/123/has-racing-event/456')
+
+        expect(RacingSeriesController.createHasRacingEventRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

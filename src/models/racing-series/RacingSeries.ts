@@ -8,6 +8,14 @@ import {getAllNodesOfType} from "../../db/nodes/racing-series/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
+import {createRel} from "../relationships/createRel"
+import {DbRelationship} from "../../db/types/DbRelationship"
+import {deleteDeprecatedRelationship} from "../relationships/deleteDeprecatedRelationship"
+import {RacingEvent} from "../racing-events/RacingEvent"
+import {getSpecificRel} from "../relationships/getSpecificRel"
+import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
+import {RelationshipType} from "../relationships/types/RelationshipType"
+import {RacingSeriesRelationship} from "./types/RacingSeriesRelationship"
 
 export class RacingSeries {
     static async create(data: CreateRacingSeriesInput): Promise<RacingSeriesNode> {
@@ -46,5 +54,32 @@ export class RacingSeries {
         }
 
         await deleteNode(racingSeriesId)
+    }
+
+    static async createHasRacingEventRelationship(racingSeriesId: number, racingEventId: number) {
+
+        const racingSeries = await RacingSeries.findById(racingSeriesId)
+        if (!racingSeries) {
+            throw new NodeNotFoundError(racingSeriesId)
+        }
+
+        const racingEvent = await RacingEvent.findById(racingEventId)
+        if (!racingEvent) {
+            throw new NodeNotFoundError(racingEventId)
+        }
+
+        const existingRelation = await getSpecificRel(racingSeriesId, racingEventId, RelationshipType.RacingSeriesHasRacingEvent)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(RacingSeriesRelationship.hasRacingEvent, racingSeriesId, racingEventId)
+        }
+
+        await deleteDeprecatedRelationship(racingEventId, DbRelationship.RacingSeriesHasRacingEvent)
+
+        const createdRelationship = await createRel(racingSeriesId, racingEventId, RelationshipType.RacingSeriesHasRacingEvent)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 }

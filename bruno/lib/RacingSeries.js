@@ -1,4 +1,5 @@
 const axios = require("axios")
+const {ensureValidRacingEventExists} = require("./RacingEvents")
 
 async function ensureValidRacingSeriesExists() {
     if (!bru.getEnvVar('validRacingSeriesId')) {
@@ -30,3 +31,23 @@ async function getAllRacingSeries() {
 }
 
 exports.getAllRacingSeries = getAllRacingSeries
+
+async function ensureRacingSeriesHasRacingEventRelationshipExists() {
+    await ensureValidRacingSeriesExists()
+    await ensureValidRacingEventExists()
+    await createRacingSeriesHasRacingEventRelationship(bru.getEnvVar('validRacingSeriesId'), bru.getEnvVar('validRacingEventId'))
+}
+
+exports.ensureRacingSeriesHasRacingEventRelationshipExists = ensureRacingSeriesHasRacingEventRelationshipExists
+
+async function createRacingSeriesHasRacingEventRelationship(racingSeriesId, racingEventId) {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/racing-series/" + racingSeriesId + "/has-racing-event/" + racingEventId, null, {
+        validateStatus: function (status) {
+            return status < 400
+        }
+    })
+
+    return response.data
+}
+
+exports.createRacingSeriesHasRacingEventRelationship = createRacingSeriesHasRacingEventRelationship
