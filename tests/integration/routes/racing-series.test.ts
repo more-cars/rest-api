@@ -93,4 +93,12 @@ describe('Racing Series', () => {
         expect(RacingSeriesController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .get('/racing-series/123/has-prime-image')
+
+        expect(RacingSeriesController.getHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
