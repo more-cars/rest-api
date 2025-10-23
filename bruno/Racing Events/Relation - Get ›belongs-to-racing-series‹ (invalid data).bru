@@ -1,0 +1,15 @@
+meta {
+  name: Get ›belongs-to-racing-series‹ relation (invalid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/racing-events/{{invalidRacingEventId}}/belongs-to-racing-series
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}

@@ -4667,6 +4667,47 @@
         }
       }
     },
+    "/racing-events/{racing-event-id}/belongs-to-racing-series": {
+      "get": {
+        "tags": [
+          "Racing Events"
+        ],
+        "summary": "Get the ›belongs-to-racing-series‹ relationship for the `Racing Event`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-event-id",
+            "description": "ID of the `Racing Event`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›belongs-to-racing-series‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RacingEventBelongsToRacingSeriesResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Racing Event` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/racing-events/{racing-event-id}/belongs-to-racing-series/{racing-series-id}": {
       "post": {
         "tags": [
