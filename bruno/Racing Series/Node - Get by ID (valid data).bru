@@ -1,0 +1,22 @@
+meta {
+  name: Get Racing Series by ID (valid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/racing-series/{{validRacingSeriesId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 200
+  res.body: isJson
+  res.body.data.id: {{validRacingSeriesId}}
+  res.body.data.created_at: isNotEmpty
+  res.body.data.updated_at: isNotEmpty
+}
+
+script:pre-request {
+  await lib.RacingSeries.ensureValidRacingSeriesExists()
+}
