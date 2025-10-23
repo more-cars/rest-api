@@ -6,7 +6,7 @@ import {createNode} from "../../../../../../src/db/nodes/<%= h.changeCase.kebab(
 import {Fake<%= h.changeCase.pascal(nodeType) %>} from "../../../../../_toolbox/fixtures/nodes/Fake<%= h.changeCase.pascal(nodeType) %>"
 
 test('Creating node with valid data', async () => {
-    const inputData = FakeRaceTrack.dbInput()
+    const inputData = Fake<%= h.changeCase.pascal(nodeType) %>.dbInput()
     const createdNode = await createNode(inputData)
 
     expect(createdNode)

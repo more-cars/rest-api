@@ -5,7 +5,7 @@ import {faker} from "@faker-js/faker"
 import type {Input<%= h.changeCase.pascal(nodeType) %>Create} from "../../../../src/db/nodes/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Input<%= h.changeCase.pascal(nodeType) %>Create"
 import type {<%= h.changeCase.pascal(nodeType) %>Node} from "../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node"
 
-export class FakeRaceTrack {
+export class Fake<%= h.changeCase.pascal(nodeType) %> {
     static dbInput() {
         return {
 <% for (prop in properties) { -%>

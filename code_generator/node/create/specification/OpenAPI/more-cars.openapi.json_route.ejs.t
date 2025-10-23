@@ -4,7 +4,6 @@ to: specification/OpenAPI/more-cars.openapi.json
 before: \"/relationships/{relationship-id}\"
 skip_if: Create `<%= h.changeCase.title(nodeType) %>`
 ---
-    ,
     "/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>": {
       "post": {
         "tags": [
@@ -34,4 +33,4 @@ skip_if: Create `<%= h.changeCase.title(nodeType) %>`
           }
         }
       }
-    }
+    },
