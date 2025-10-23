@@ -2,7 +2,7 @@ import assert from "assert"
 import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
 import FakeCompany from "./FakeCompany"
 import {FakeBrand} from "./FakeBrand"
-import FakeCarModel from "./FakeCarModel"
+import {FakeCarModel} from "./FakeCarModel"
 import {FakeRaceTrack} from "./FakeRaceTrack"
 import {FakeTrackLayout} from "./FakeTrackLayout"
 import {FakeRacingSeries} from "./FakeRacingSeries"
@@ -16,7 +16,7 @@ export function FakeNodeInput(nodeType: NodeTypeEnum) {
         case NodeTypeEnum.BRAND:
             return FakeBrand.dbInput()
         case NodeTypeEnum.CAR_MODEL:
-            return FakeCarModel
+            return FakeCarModel.dbInput()
         case NodeTypeEnum.RACE_TRACK:
             return FakeRaceTrack.dbInput()
         case NodeTypeEnum.TRACK_LAYOUT:

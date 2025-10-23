@@ -2,13 +2,13 @@ import {expect, test} from 'vitest'
 import assert from "assert"
 import {CarModel} from "../../../../src/models/car-models/CarModel"
 import {Brand} from "../../../../src/models/brands/Brand"
-import FakeCarModel from "../../../_toolbox/fixtures/nodes/FakeCarModel"
 import {FakeNodeInput} from "../../../_toolbox/fixtures/nodes/FakeNodeInput"
 import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {InputBrandCreate} from "../../../../src/db/nodes/brands/types/InputBrandCreate"
+import type {InputBrandCreate} from "../../../../src/db/nodes/brands/types/InputBrandCreate"
+import type {InputCarModelCreate} from "../../../../src/db/nodes/car-models/types/InputCarModelCreate"
 
 test('ID is always contained in response', async () => {
-    const carModel = await CarModel.create(FakeCarModel)
+    const carModel = await CarModel.create(FakeNodeInput(NodeTypeEnum.CAR_MODEL) as InputCarModelCreate)
     const brand = await Brand.create(FakeNodeInput(NodeTypeEnum.BRAND) as InputBrandCreate)
     const expectedRelationship = await CarModel.createBelongsToBrandRelationship(carModel.id, brand.id)
 

@@ -4,8 +4,8 @@ import {createNode as createCarModelNode} from "../../../../../src/db/nodes/car-
 import {createNode as createImageNode} from "../../../../../src/db/nodes/images/createNode"
 import {FakeNodeInput} from "../../../../_toolbox/fixtures/nodes/FakeNodeInput"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
-import FakeCarModel from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
+import type {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
+import type {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
 import FakeImageFull from "../../../../_toolbox/fixtures/nodes/FakeImageFull"
 
 test('ID is added when creating a node', async () => {
@@ -15,7 +15,7 @@ test('ID is added when creating a node', async () => {
     expect(createdBrand.id)
         .toBeLessThanOrEqual(99999999)
 
-    const createdCarModel = await createCarModelNode(FakeCarModel)
+    const createdCarModel = await createCarModelNode(FakeNodeInput(NodeTypeEnum.CAR_MODEL) as InputCarModelCreate)
     expect(createdCarModel.id)
         .toBeGreaterThanOrEqual(12000000)
     expect(createdCarModel.id)

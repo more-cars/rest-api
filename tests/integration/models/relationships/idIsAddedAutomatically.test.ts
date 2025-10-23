@@ -4,13 +4,13 @@ import {createNode as createCarModelNode} from "../../../../src/db/nodes/car-mod
 import assert from "assert"
 import {FakeNodeInput} from "../../../_toolbox/fixtures/nodes/FakeNodeInput"
 import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {InputBrandCreate} from "../../../../src/db/nodes/brands/types/InputBrandCreate"
-import FakeCarModel from "../../../_toolbox/fixtures/nodes/FakeCarModel"
+import type {InputBrandCreate} from "../../../../src/db/nodes/brands/types/InputBrandCreate"
+import type {InputCarModelCreate} from "../../../../src/db/nodes/car-models/types/InputCarModelCreate"
 import {Brand} from "../../../../src/models/brands/Brand"
 
 test('ID is added when creating a relationship', async () => {
     const brand = await createBrandNode(FakeNodeInput(NodeTypeEnum.BRAND) as InputBrandCreate)
-    const carModel = await createCarModelNode(FakeCarModel)
+    const carModel = await createCarModelNode(FakeNodeInput(NodeTypeEnum.CAR_MODEL) as InputCarModelCreate)
     const relationship = await Brand.createHasCarModelRelationship(brand.id, carModel.id)
 
     if (!relationship) {

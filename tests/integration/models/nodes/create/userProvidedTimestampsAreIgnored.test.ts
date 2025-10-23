@@ -1,14 +1,13 @@
 import {expect, test} from 'vitest'
 import {FakeNodeInput} from "../../../../_toolbox/fixtures/nodes/FakeNodeInput"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
+import type {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
+import type {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
+import type {InputImageCreate} from "../../../../../src/db/nodes/images/types/InputImageCreate"
 import {Brand} from "../../../../../src/models/brands/Brand"
-import FakeCarModel from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
-import {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
 import {CarModel} from "../../../../../src/models/car-models/CarModel"
-import FakeImageFull from "../../../../_toolbox/fixtures/nodes/FakeImageFull"
-import {InputImageCreate} from "../../../../../src/db/nodes/images/types/InputImageCreate"
 import {Image} from "../../../../../src/models/images/Image"
+import FakeImageFull from "../../../../_toolbox/fixtures/nodes/FakeImageFull"
 
 test('Timestamps provided by the user are ignored', async () => {
     // BRAND
@@ -21,11 +20,7 @@ test('Timestamps provided by the user are ignored', async () => {
     expect(createdBrand).not.toHaveProperty('updated_at', "blobb")
 
     // CAR MODEL
-    const carModelData: InputCarModelCreate = FakeCarModel
-    // @ts-expect-error property "created_at" is officially not allowed
-    carModelData['created_at'] = "blubb"
-    // @ts-expect-error property "updated_at" is officially not allowed
-    carModelData['updated_at'] = "blobb"
+    const carModelData = FakeNodeInput(NodeTypeEnum.CAR_MODEL) as InputCarModelCreate
     const createdCarModel = await CarModel.create(carModelData)
 
     expect(createdCarModel).toHaveProperty('created_at')

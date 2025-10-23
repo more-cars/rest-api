@@ -1,8 +1,8 @@
 import {expect, test} from 'vitest'
 import {FakeNodeInput} from "../../../../_toolbox/fixtures/nodes/FakeNodeInput"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
-import FakeCarModel from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
+import type {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
+import type {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
 import FakeImage from "../../../../_toolbox/fixtures/nodes/FakeImage"
 import {Brand} from "../../../../../src/models/brands/Brand"
 import {CarModel} from "../../../../../src/models/car-models/CarModel"
@@ -15,7 +15,7 @@ test('ID is added when creating a node', async () => {
     expect(createdBrand.id)
         .toBeLessThanOrEqual(99999999)
 
-    const createdCarModel = await CarModel.create(FakeCarModel)
+    const createdCarModel = await CarModel.create(FakeNodeInput(NodeTypeEnum.CAR_MODEL) as InputCarModelCreate)
     expect(createdCarModel.id)
         .toBeGreaterThanOrEqual(12000000)
     expect(createdCarModel.id)

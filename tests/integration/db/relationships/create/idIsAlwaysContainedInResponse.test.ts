@@ -4,14 +4,14 @@ import {createNode as createBrandNode} from "../../../../../src/db/nodes/brands/
 import {createNode as createCarModelNode} from "../../../../../src/db/nodes/car-models/createNode"
 import {FakeNodeInput} from "../../../../_toolbox/fixtures/nodes/FakeNodeInput"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
-import FakeCarModel from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
+import type {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
+import type {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
 import {DbRelationship} from "../../../../../src/db/types/DbRelationship"
 import {createRelationship} from "../../../../../src/db/relationships/createRelationship"
 import {getSpecificRelationship} from "../../../../../src/db/relationships/getSpecificRelationship"
 
 test('ID is always contained in response', async () => {
-    const carModel = await createCarModelNode(FakeCarModel)
+    const carModel = await createCarModelNode(FakeNodeInput(NodeTypeEnum.CAR_MODEL) as InputCarModelCreate)
     const brand = await createBrandNode(FakeNodeInput(NodeTypeEnum.BRAND) as InputBrandCreate)
     const expectedRelationship = await createRelationship(brand.id, carModel.id, DbRelationship.BrandHasCarModel)
 

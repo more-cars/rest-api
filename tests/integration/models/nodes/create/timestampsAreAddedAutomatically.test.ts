@@ -4,8 +4,8 @@ import {CarModel} from "../../../../../src/models/car-models/CarModel"
 import {Image} from "../../../../../src/models/images/Image"
 import {FakeNodeInput} from "../../../../_toolbox/fixtures/nodes/FakeNodeInput"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
-import FakeCarModel from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
+import type {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
+import type {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
 import FakeImage from "../../../../_toolbox/fixtures/nodes/FakeImage"
 import moment from "moment"
 
@@ -20,7 +20,7 @@ test('Timestamps are added when creating a node', async () => {
     expect(moment(createdBrand.updated_at).isValid())
         .toEqual(true)
 
-    const createdCarModel = await CarModel.create(FakeCarModel)
+    const createdCarModel = await CarModel.create(FakeNodeInput(NodeTypeEnum.CAR_MODEL) as InputCarModelCreate)
     expect(createdCarModel)
         .toHaveProperty('created_at')
     expect(moment(createdCarModel.created_at).isValid())
@@ -46,7 +46,7 @@ test('Timestamps have valid dates', async () => {
     expect(moment(createdBrand.created_at).isValid())
     expect(moment(createdBrand.updated_at).isValid())
 
-    const createdCarModel = await CarModel.create(FakeCarModel)
+    const createdCarModel = await CarModel.create(FakeNodeInput(NodeTypeEnum.CAR_MODEL) as InputCarModelCreate)
     expect(moment(createdCarModel.created_at).isValid())
     expect(moment(createdCarModel.updated_at).isValid())
 

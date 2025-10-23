@@ -1,16 +1,17 @@
 import {expect, test} from 'vitest'
+import {FakeCarModel} from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
 import {CarModel} from "../../../../../src/models/car-models/CarModel"
-import FakeCarModel from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
 
 test('When providing valid data the new node can be created', async () => {
-    const createdNode = await CarModel.create(FakeCarModel)
+    const inputData = FakeCarModel.dbInput()
+    const createdNode = await CarModel.create(inputData)
 
     expect(createdNode)
-        .toEqual(expect.objectContaining(FakeCarModel))
+        .toEqual(expect.objectContaining(inputData))
 })
 
 test('Read-only properties cannot be overridden', async () => {
-    const validData = FakeCarModel
+    const validData = FakeCarModel.dbInput()
     const readOnlyData = {
         id: 9999,
         created_at: "NOT_ALLOWED_TO_OVERWRITE",

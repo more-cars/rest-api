@@ -4,8 +4,8 @@ import {createNode as createCarModelNode} from "../../../../../src/db/nodes/car-
 import {createNode as createImageNode} from "../../../../../src/db/nodes/images/createNode"
 import {FakeNodeInput} from "../../../../_toolbox/fixtures/nodes/FakeNodeInput"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
-import FakeCarModel from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
+import type {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
+import type {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
 import FakeImageFull from "../../../../_toolbox/fixtures/nodes/FakeImageFull"
 
 test('Timestamps are added when creating a node', async () => {
@@ -15,7 +15,7 @@ test('Timestamps are added when creating a node', async () => {
     expect(createdBrand)
         .toHaveProperty('updated_at')
 
-    const createdCarModel = await createCarModelNode(FakeCarModel)
+    const createdCarModel = await createCarModelNode(FakeNodeInput(NodeTypeEnum.CAR_MODEL) as InputCarModelCreate)
     expect(createdCarModel)
         .toHaveProperty('created_at')
     expect(createdCarModel)

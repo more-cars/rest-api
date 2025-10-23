@@ -1,14 +1,13 @@
 import {expect, test} from 'vitest'
 import {FakeNodeInput} from "../../../../_toolbox/fixtures/nodes/FakeNodeInput"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
+import type {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
+import type {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
+import type {InputImageCreate} from "../../../../../src/db/nodes/images/types/InputImageCreate"
 import {createNode as createBrandNode} from "../../../../../src/db/nodes/brands/createNode"
-import FakeCarModel from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
-import {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
 import {createNode as createCarModelNode} from "../../../../../src/db/nodes/car-models/createNode"
-import FakeImageFull from "../../../../_toolbox/fixtures/nodes/FakeImageFull"
-import {InputImageCreate} from "../../../../../src/db/nodes/images/types/InputImageCreate"
 import {createNode as createImageNode} from "../../../../../src/db/nodes/images/createNode"
+import FakeImageFull from "../../../../_toolbox/fixtures/nodes/FakeImageFull"
 
 test('Timestamps provided by the user are ignored', async () => {
     // BRAND
@@ -21,11 +20,7 @@ test('Timestamps provided by the user are ignored', async () => {
     expect(createdBrand).not.toHaveProperty('updated_at', "blobb")
 
     // CAR MODEL
-    const carModelData: InputCarModelCreate = FakeCarModel
-    // @ts-expect-error property "created_at" is officially not allowed
-    carModelData['created_at'] = "blubb"
-    // @ts-expect-error property "updated_at" is officially not allowed
-    carModelData['updated_at'] = "blobb"
+    const carModelData = FakeNodeInput(NodeTypeEnum.CAR_MODEL) as InputCarModelCreate
     const createdCarModel = await createCarModelNode(carModelData)
 
     expect(createdCarModel).toHaveProperty('created_at')
