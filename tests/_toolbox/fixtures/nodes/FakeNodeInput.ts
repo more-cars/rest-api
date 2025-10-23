@@ -3,7 +3,7 @@ import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum
 import FakeCompany from "./FakeCompany"
 import FakeBrand from "./FakeBrand"
 import FakeCarModel from "./FakeCarModel"
-import FakeRaceTrack from "./FakeRaceTrack"
+import {FakeRaceTrack} from "./FakeRaceTrack"
 import FakeTrackLayout from "./FakeTrackLayout"
 import FakeImage from "./FakeImage"
 
@@ -16,7 +16,7 @@ export function FakeNodeInput(nodeType: NodeTypeEnum) {
         case NodeTypeEnum.CAR_MODEL:
             return FakeCarModel
         case NodeTypeEnum.RACE_TRACK:
-            return FakeRaceTrack
+            return FakeRaceTrack.dbInput()
         case NodeTypeEnum.TRACK_LAYOUT:
             return FakeTrackLayout
         case NodeTypeEnum.IMAGE:

@@ -3,17 +3,18 @@ to: tests/integration/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeT
 ---
 import {expect, test} from 'vitest'
 import {<%= h.changeCase.pascal(nodeType) %>} from "../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"
-import Fake<%= h.changeCase.pascal(nodeType) %> from "../../../../_toolbox/fixtures/nodes/Fake<%= h.changeCase.pascal(nodeType) %>"
+import {Fake<%= h.changeCase.pascal(nodeType) %>} from "../../../../_toolbox/fixtures/nodes/Fake<%= h.changeCase.pascal(nodeType) %>"
 
 test('Expecting node to be created when provided with valid data', async () => {
-    const createdNode = await <%= h.changeCase.pascal(nodeType) %>.create(Fake<%= h.changeCase.pascal(nodeType) %>)
+    const inputData = Fake<%= h.changeCase.pascal(nodeType) %>.dbInput()
+    const createdNode = await <%= h.changeCase.pascal(nodeType) %>.create(inputData)
 
     expect(createdNode)
-        .toEqual(expect.objectContaining(Fake<%= h.changeCase.pascal(nodeType) %>))
+        .toEqual(expect.objectContaining(inputData))
 })
 
 test('Trying to override read-only properties', async () => {
-    const validData = Fake<%= h.changeCase.pascal(nodeType) %>
+    const validData = Fake<%= h.changeCase.pascal(nodeType) %>.dbInput()
     const readOnlyData = {
         id: 9999,
         created_at: "NOT_ALLOWED_TO_OVERWRITE",
