@@ -109,4 +109,12 @@ describe('Racing Events', () => {
         expect(RacingEventController.deleteFollowsEventRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›took-place-at-race-track‹ relationship', async () => {
+        await request(app)
+            .post('/racing-events/123/took-place-at-race-track/456')
+
+        expect(RacingEventController.createTookPlaceAtRaceTrackRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

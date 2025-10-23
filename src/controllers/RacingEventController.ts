@@ -12,6 +12,7 @@ import {deleteIsFollowedByEventRelation} from "./racing-events/deleteIsFollowedB
 import {createFollowsEventRelation} from "./racing-events/createFollowsEventRelation"
 import {getFollowsEventRelation} from "./racing-events/getFollowsEventRelation"
 import {deleteFollowsEventRelation} from "./racing-events/deleteFollowsEventRelation"
+import {createTookPlaceAtRaceTrackRelation} from "./racing-events/createTookPlaceAtRaceTrackRelation"
 
 export class RacingEventController {
     static async create(req: express.Request, res: express.Response) {
@@ -64,5 +65,9 @@ export class RacingEventController {
 
     static async deleteFollowsEventRelation(req: express.Request, res: express.Response) {
         await deleteFollowsEventRelation(req, res)
+    }
+
+    static async createTookPlaceAtRaceTrackRelation(req: express.Request, res: express.Response) {
+        await createTookPlaceAtRaceTrackRelation(req, res)
     }
 }

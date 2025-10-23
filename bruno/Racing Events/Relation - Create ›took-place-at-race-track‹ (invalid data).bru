@@ -1,0 +1,15 @@
+meta {
+  name: Create ›took-place-at-race-track‹ relation (invalid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/racing-events/{{invalidRacingEventId}}/took-place-at-race-track/{{invalidRaceTrackId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
