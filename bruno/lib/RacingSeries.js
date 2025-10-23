@@ -72,3 +72,23 @@ async function createRacingSeriesHasImageRelationship(racingSeriesId, imageId) {
 }
 
 exports.createRacingSeriesHasImageRelationship = createRacingSeriesHasImageRelationship
+
+async function ensureRacingSeriesHasPrimeImageRelationshipExists() {
+    await ensureValidRacingSeriesExists()
+    await ensureValidImageExists()
+    await createRacingSeriesHasPrimeImageRelationship(bru.getEnvVar('validRacingSeriesId'), bru.getEnvVar('validImageId'))
+}
+
+exports.ensureRacingSeriesHasPrimeImageRelationshipExists = ensureRacingSeriesHasPrimeImageRelationshipExists
+
+async function createRacingSeriesHasPrimeImageRelationship(racingSeriesId, imageId) {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/racing-series/" + racingSeriesId + "/has-prime-image/" + imageId, null, {
+        validateStatus: function (status) {
+            return status < 400
+        }
+    })
+
+    return response.data
+}
+
+exports.createRacingSeriesHasPrimeImageRelationship = createRacingSeriesHasPrimeImageRelationship
