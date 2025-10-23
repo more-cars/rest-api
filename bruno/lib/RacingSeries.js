@@ -2,8 +2,13 @@ const axios = require("axios")
 
 async function ensureValidRacingSeriesExists() {
     if (!bru.getEnvVar('validRacingSeriesId')) {
-        const newNode = await createRacingSeries()
-        bru.setEnvVar("validRacingSeriesId", newNode.data.id)
+        const nodeList = await getAllRacingSeries()
+        if (nodeList.length > 0) {
+            bru.setEnvVar("validRacingSeriesId", nodeList[0].data.id)
+        } else {
+            const newNode = await createRacingSeries()
+            bru.setEnvVar("validRacingSeriesId", newNode.data.id)
+        } //
     }
 }
 
@@ -18,3 +23,10 @@ async function createRacingSeries() {
 }
 
 exports.createRacingSeries = createRacingSeries
+
+async function getAllRacingSeries() {
+    const response = await axios.get(bru.getEnvVar('baseUrl') + "/racing-series")
+    return response.data
+}
+
+exports.getAllRacingSeries = getAllRacingSeries

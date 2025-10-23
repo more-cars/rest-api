@@ -21,4 +21,12 @@ describe('Racing Series', () => {
         expect(RacingSeriesController.getById)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all Nodes', async () => {
+        await request(app)
+            .get('/racing-series')
+
+        expect(RacingSeriesController.getAll)
+            .toHaveBeenCalledTimes(1)
+    })
 })

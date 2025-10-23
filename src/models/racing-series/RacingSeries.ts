@@ -4,6 +4,8 @@ import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../db/nodes/racing-series/createNode"
 import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/racing-series/getNodeById"
+import {getAllNodesOfType} from "../../db/nodes/racing-series/getAllNodesOfType"
+import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
 
 export class RacingSeries {
     static async create(data: CreateRacingSeriesInput): Promise<RacingSeriesNode> {
@@ -22,5 +24,16 @@ export class RacingSeries {
         }
 
         return convertOutputData(node)
+    }
+
+    static async findAll(options: NodeCollectionConstraints = {}): Promise<RacingSeriesNode[]> {
+        const nodes: Array<RacingSeriesNode> = []
+        const nodesDb = await getAllNodesOfType(options)
+
+        nodesDb.forEach(node => {
+            nodes.push(convertOutputData(node))
+        })
+
+        return nodes
     }
 }

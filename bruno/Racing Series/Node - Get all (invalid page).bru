@@ -1,0 +1,15 @@
+meta {
+  name: Get all Racing Series (invalid page)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/racing-series?page=-2
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 400
+  res.body: isString
+}
