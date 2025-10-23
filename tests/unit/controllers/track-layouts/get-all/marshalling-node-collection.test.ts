@@ -1,14 +1,13 @@
 import {expect, test} from 'vitest'
-import type {TrackLayoutNode} from "../../../../../src/models/track-layouts/types/TrackLayoutNode"
-import FakeTrackLayout from "../../../../_toolbox/fixtures/nodes/FakeTrackLayout"
+import {FakeTrackLayout} from "../../../../_toolbox/fixtures/nodes/FakeTrackLayout"
 import {marshalNodes} from "../../../../../src/controllers/track-layouts/marshalling/marshalNodes"
 
 test("marshalling a collection of TRACK LAYOUT nodes", async () => {
-    const fakeNode1: TrackLayoutNode = Object.assign({}, FakeTrackLayout, {id: 1, created_at: "dummy", updated_at: "dummy"})
-    const fakeNode2: TrackLayoutNode = Object.assign({}, FakeTrackLayout, {id: 2, created_at: "dummy", updated_at: "dummy"})
-    const fakeNode3: TrackLayoutNode = Object.assign({}, FakeTrackLayout, {id: 3, created_at: "dummy", updated_at: "dummy"})
+    const fakeNode1 = FakeTrackLayout.modelOutput()
+    const fakeNode2 = FakeTrackLayout.modelOutput()
+    const fakeNode3 = FakeTrackLayout.modelOutput()
 
-    const nodes: Array<TrackLayoutNode> = [
+    const nodes = [
         fakeNode1,
         fakeNode2,
         fakeNode3,

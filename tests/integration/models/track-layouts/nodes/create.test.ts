@@ -1,16 +1,17 @@
 import {expect, test} from 'vitest'
 import {TrackLayout} from "../../../../../src/models/track-layouts/TrackLayout"
-import FakeTrackLayout from "../../../../_toolbox/fixtures/nodes/FakeTrackLayout"
+import {FakeTrackLayout} from "../../../../_toolbox/fixtures/nodes/FakeTrackLayout"
 
 test('Expecting node to be created when provided with valid data', async () => {
-    const createdNode = await TrackLayout.create(FakeTrackLayout)
+    const inputData = FakeTrackLayout.dbInput()
+    const createdNode = await TrackLayout.create(inputData)
 
     expect(createdNode)
-        .toEqual(expect.objectContaining(FakeTrackLayout))
+        .toEqual(expect.objectContaining(inputData))
 })
 
 test('Trying to override read-only properties', async () => {
-    const validData = FakeTrackLayout
+    const validData = FakeTrackLayout.dbInput()
     const readOnlyData = {
         id: 9999,
         created_at: "NOT_ALLOWED_TO_OVERWRITE",
