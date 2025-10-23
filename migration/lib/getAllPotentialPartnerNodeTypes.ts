@@ -22,5 +22,15 @@ export function getAllPotentialPartnerNodeTypes() {
         [NodeTypeLabel.TrackLayout, [
             NodeTypeLabel.Image,
         ]],
+        [NodeTypeLabel.RacingSeries, [
+            NodeTypeLabel.RacingEvent,
+            NodeTypeLabel.Image,
+        ]],
+        [NodeTypeLabel.RacingEvent, [
+            NodeTypeLabel.RacingEvent,
+            NodeTypeLabel.RaceTrack,
+            NodeTypeLabel.TrackLayout,
+            NodeTypeLabel.Image,
+        ]],
     ])
 }

@@ -6,6 +6,8 @@ import {mapBrand} from "./mappings/mapBrand"
 import {mapCarModel} from "./mappings/mapCarModel"
 import {mapRaceTrack} from "./mappings/mapRaceTrack"
 import {mapTrackLayout} from "./mappings/mapTrackLayout"
+import {mapRacingSeries} from "./mappings/mapRacingSeries"
+import {mapRacingEvent} from "./mappings/mapRacingEvent"
 import {mapImage} from "./mappings/mapImage"
 
 export function mapNodeProperties(oldNode: Node, nodeType: NodeTypeLabel) {
@@ -20,6 +22,10 @@ export function mapNodeProperties(oldNode: Node, nodeType: NodeTypeLabel) {
             return mapRaceTrack(oldNode)
         case NodeTypeLabel.TrackLayout:
             return mapTrackLayout(oldNode)
+        case NodeTypeLabel.RacingSeries:
+            return mapRacingSeries(oldNode)
+        case NodeTypeLabel.RacingEvent:
+            return mapRacingEvent(oldNode)
         case NodeTypeLabel.Image:
             return mapImage(oldNode)
         default:

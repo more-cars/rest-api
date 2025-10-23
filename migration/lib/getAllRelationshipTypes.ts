@@ -74,6 +74,66 @@ export function getAllRelationshipTypes() {
                             DbRelationship.RaceTrackHasPrimeImage,
                         ],
                     ],
+                ]),
+            ],
+            [
+                NodeTypeLabel.TrackLayout, new Map(
+                [
+                    [
+                        NodeTypeLabel.Image,
+                        [
+                            DbRelationship.TrackLayoutHasImage,
+                            DbRelationship.TrackLayoutHasPrimeImage,
+                        ],
+                    ],
+                ])
+            ],
+            [
+                NodeTypeLabel.RacingSeries, new Map(
+                [
+                    [
+                        NodeTypeLabel.RacingEvent,
+                        [
+                            DbRelationship.RacingSeriesHasRacingEvent,
+                        ],
+                    ],
+                    [
+                        NodeTypeLabel.Image,
+                        [
+                            DbRelationship.RacingSeriesHasImage,
+                            DbRelationship.RacingSeriesHasPrimeImage,
+                        ],
+                    ],
+                ])
+            ],
+            [
+                NodeTypeLabel.RacingEvent, new Map(
+                [
+                    [
+                        NodeTypeLabel.RacingEvent,
+                        [
+                            DbRelationship.RacingEventIsFollowedByEvent,
+                        ],
+                    ],
+                    [
+                        NodeTypeLabel.RaceTrack,
+                        [
+                            DbRelationship.RacingEventTookPlaceAtRaceTrack,
+                        ],
+                    ],
+                    [
+                        NodeTypeLabel.TrackLayout,
+                        [
+                            DbRelationship.RacingEventUsedTheTrackLayout,
+                        ],
+                    ],
+                    [
+                        NodeTypeLabel.Image,
+                        [
+                            DbRelationship.RacingEventHasImage,
+                            DbRelationship.RacingEventHasPrimeImage,
+                        ],
+                    ],
                 ])
             ],
             [

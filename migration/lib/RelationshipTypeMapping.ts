@@ -7,6 +7,10 @@ export const RelationshipTypeMapping = new Map<DbRelationship, RelationshipTypeL
     [DbRelationship.BrandHasCarModel, RelationshipTypeLabelOld.BrandHasCarModel],
     [DbRelationship.CarModelHasSuccessor, RelationshipTypeLabelOld.CarModelHasSuccessor],
     [DbRelationship.RaceTrackHasLayout, RelationshipTypeLabelOld.RaceTrackHasLayout],
+    [DbRelationship.RacingSeriesHasRacingEvent, RelationshipTypeLabelOld.RacingSeriesHasRacingEvent],
+    [DbRelationship.RacingEventIsFollowedByEvent, RelationshipTypeLabelOld.RacingEventIsFollowedByEvent],
+    [DbRelationship.RacingEventTookPlaceAtRaceTrack, RelationshipTypeLabelOld.RacingEventTookPlaceAtRaceTrack],
+    [DbRelationship.RacingEventUsedTheTrackLayout, RelationshipTypeLabelOld.RacingEventUsedTheTrackLayout],
     [DbRelationship.NodeHasImage, RelationshipTypeLabelOld.NodeHasImage],
     [DbRelationship.NodeHasPrimeImage, RelationshipTypeLabelOld.NodeHasPrimeImage],
 ])

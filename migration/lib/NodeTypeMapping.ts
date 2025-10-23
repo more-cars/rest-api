@@ -7,5 +7,7 @@ export const NodeTypeMapping = new Map<NodeTypeLabel, NodeTypeLabelOld>([
     [NodeTypeLabel.CarModel, NodeTypeLabelOld.CarModel],
     [NodeTypeLabel.RaceTrack, NodeTypeLabelOld.RaceTrack],
     [NodeTypeLabel.TrackLayout, NodeTypeLabelOld.TrackLayout],
+    [NodeTypeLabel.RacingSeries, NodeTypeLabelOld.RacingSeries],
+    [NodeTypeLabel.RacingEvent, NodeTypeLabelOld.RacingEvent],
     [NodeTypeLabel.Image, NodeTypeLabelOld.Image],
 ])

@@ -7,7 +7,7 @@ import {DbRelationship} from "../src/db/types/DbRelationship"
 import {fetchOldRelationshipsOfType} from "./lib/fetchOldRelationshipsOfType"
 import {RelationshipTypeMapping} from "./lib/RelationshipTypeMapping"
 import {deleteAllRelationshipsOfType} from "../tests/_toolbox/dbSeeding/deleteAllRelationshipsOfType"
-import type {RelationshipTypeLabelOld} from "./lib/types/RelationshipTypeLabelOld"
+import {RelationshipTypeLabelOld} from "./lib/types/RelationshipTypeLabelOld"
 import {createDbRelationship} from "../src/db/relationships/createDbRelationship"
 import {addMoreCarsIdToRelationship} from "../src/db/relationships/addMoreCarsIdToRelationship"
 import {addTimestampsToRelationship} from "../src/db/relationships/addTimestampsToRelationship"
@@ -111,14 +111,10 @@ async function promptDeleteRelationships() {
     })
 }
 
-function isRelationshipReversedInOldDb(relationshipType: DbRelationship) {
-    if (relationshipType === 'HAS_PRIME_IMAGE') {
-        return true
-    }
-
-    if (relationshipType === 'HAS_SUCCESSOR') {
-        return true
-    }
-
-    return false
+function isRelationshipReversedInOldDb(newRelationshipType: DbRelationship) {
+    return newRelationshipType in [
+        DbRelationship.CarModelHasSuccessor,
+        DbRelationship.RacingEventIsFollowedByEvent,
+        DbRelationship.NodeHasPrimeImage,
+    ]
 }

@@ -4,6 +4,8 @@ import type {InputBrandCreate} from "../../src/db/nodes/brands/types/InputBrandC
 import type {InputCarModelCreate} from "../../src/db/nodes/car-models/types/InputCarModelCreate"
 import type {InputRaceTrackCreate} from "../../src/db/nodes/race-tracks/types/InputRaceTrackCreate"
 import type {InputTrackLayoutCreate} from "../../src/db/nodes/track-layouts/types/InputTrackLayoutCreate"
+import type {InputRacingSeriesCreate} from "../../src/db/nodes/racing-series/types/InputRacingSeriesCreate"
+import type {InputRacingEventCreate} from "../../src/db/nodes/racing-events/types/InputRacingEventCreate"
 import type {InputImageCreate} from "../../src/db/nodes/images/types/InputImageCreate"
 import {NodeTypeLabel} from "../../src/db/NodeTypeLabel"
 import {createNodeQuery as createCompanyQuery} from "../../src/db/nodes/companies/createNode"
@@ -11,12 +13,25 @@ import {createNodeQuery as createBrandQuery} from "../../src/db/nodes/brands/cre
 import {createNodeQuery as createCarModelQuery} from "../../src/db/nodes/car-models/createNode"
 import {createNodeQuery as createRaceTrackQuery} from "../../src/db/nodes/race-tracks/createNode"
 import {createNodeQuery as createTrackLayoutQuery} from "../../src/db/nodes/track-layouts/createNode"
+import {createNodeQuery as createRacingSeriesQuery} from "../../src/db/nodes/racing-series/createNode"
+import {createNodeQuery as createRacingEventQuery} from "../../src/db/nodes/racing-events/createNode"
 import {createNodeQuery as createImageQuery} from "../../src/db/nodes/images/createNode"
 import {createDbNode} from "../../src/db/nodes/createDbNode"
 import {addMoreCarsIdToNode} from "../../src/db/nodes/addMoreCarsIdToNode"
 import {addTimestampsToNode} from "../../src/db/nodes/addTimestampsToNode"
 
-export async function storeNode(data: InputCompanyCreate | InputBrandCreate | InputCarModelCreate | InputRaceTrackCreate | InputTrackLayoutCreate | InputImageCreate, newNodeType: NodeTypeLabel, oldNode: Node): Promise<void> {
+type InputTypes =
+    InputCompanyCreate |
+    InputBrandCreate |
+    InputCarModelCreate |
+    InputRaceTrackCreate |
+    InputTrackLayoutCreate |
+    InputRacingSeriesCreate |
+    InputRacingEventCreate |
+    InputImageCreate
+
+
+export async function storeNode(data: InputTypes, newNodeType: NodeTypeLabel, oldNode: Node): Promise<void> {
     let query = ''
 
     switch (newNodeType) {
@@ -34,6 +49,12 @@ export async function storeNode(data: InputCompanyCreate | InputBrandCreate | In
             break
         case NodeTypeLabel.TrackLayout:
             query = createTrackLayoutQuery(data as InputTrackLayoutCreate)
+            break
+        case NodeTypeLabel.RacingSeries:
+            query = createRacingSeriesQuery(data as InputRacingSeriesCreate)
+            break
+        case NodeTypeLabel.RacingEvent:
+            query = createRacingEventQuery(data as InputRacingEventCreate)
             break
         case NodeTypeLabel.Image:
             query = createImageQuery(data as InputImageCreate)
