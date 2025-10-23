@@ -1,0 +1,19 @@
+meta {
+  name: Create Racing Event (invalid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/racing-events
+  body: json
+  auth: none
+}
+
+body:json {
+  {}
+}
+
+assert {
+  res.status: 400
+  res.body: isString
+}
