@@ -1,6 +1,7 @@
 const axios = require("axios")
 const {ensureValidRaceTrackExists} = require("./RaceTracks")
 const {ensureValidImageExists} = require("./Images")
+const {ensureValidRacingEventExists} = require("./RacingEvents")
 
 async function ensureValidTrackLayoutExists() {
     if (!bru.getEnvVar('validTrackLayoutId')) {
@@ -52,6 +53,27 @@ async function createTrackLayoutBelongsToRaceTrackRelationship(trackLayoutId, ra
 }
 
 exports.createTrackLayoutBelongsToRaceTrackRelationship = createTrackLayoutBelongsToRaceTrackRelationship
+
+async function ensureTrackLayoutWasUsedByRacingEventRelationshipExists() {
+    await ensureValidTrackLayoutExists()
+    await ensureValidRacingEventExists()
+    await createTrackLayoutWasUsedByRacingEventRelationship(bru.getEnvVar('validTrackLayoutId'), bru.getEnvVar('validRacingEventId'))
+}
+
+exports.ensureTrackLayoutWasUsedByRacingEventRelationshipExists = ensureTrackLayoutWasUsedByRacingEventRelationshipExists
+
+async function createTrackLayoutWasUsedByRacingEventRelationship(trackLayoutId, racingEventId) {
+    const response = await axios.post(bru.getEnvVar('baseUrl') + "/track-layouts/" + trackLayoutId + "/was-used-by-racing-event/" + racingEventId, null, {
+        validateStatus: function (status) {
+            return status < 400
+        }
+    })
+
+    return response.data
+}
+
+exports.createTrackLayoutWasUsedByRacingEventRelationship = createTrackLayoutWasUsedByRacingEventRelationship
+
 
 async function ensureTrackLayoutHasImageRelationshipExists() {
     await ensureValidTrackLayoutExists()

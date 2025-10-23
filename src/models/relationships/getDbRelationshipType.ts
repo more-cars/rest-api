@@ -17,9 +17,11 @@ export function getDbRelationshipType(relationshipType: RelationshipType): DbRel
         [RelationshipType.CarModelHasImage, DbRelationship.CarModelHasImage],
         [RelationshipType.CarModelHasPrimeImage, DbRelationship.CarModelHasPrimeImage],
         [RelationshipType.RaceTrackHasLayout, DbRelationship.RaceTrackHasLayout],
+        [RelationshipType.RaceTrackHostedRacingEvent, DbRelationship.RaceTrackHostedRacingEvent],
         [RelationshipType.RaceTrackHasImage, DbRelationship.RaceTrackHasImage],
         [RelationshipType.RaceTrackHasPrimeImage, DbRelationship.RaceTrackHasPrimeImage],
         [RelationshipType.TrackLayoutBelongsToRaceTrack, DbRelationship.TrackLayoutBelongsToRaceTrack],
+        [RelationshipType.TrackLayoutWasUsedByRacingEvent, DbRelationship.TrackLayoutWasUsedByRacingEvent],
         [RelationshipType.TrackLayoutHasImage, DbRelationship.TrackLayoutHasImage],
         [RelationshipType.TrackLayoutHasPrimeImage, DbRelationship.TrackLayoutHasPrimeImage],
         [RelationshipType.RacingSeriesHasRacingEvent, DbRelationship.RacingSeriesHasRacingEvent],
@@ -32,7 +34,6 @@ export function getDbRelationshipType(relationshipType: RelationshipType): DbRel
         [RelationshipType.RacingEventUsedTheTrackLayout, DbRelationship.RacingEventUsedTheTrackLayout],
         [RelationshipType.RacingEventHasImage, DbRelationship.RacingEventHasImage],
         [RelationshipType.RacingEventHasPrimeImage, DbRelationship.RacingEventHasPrimeImage],
-        [RelationshipType.RaceTrackHostedRacingEvent, DbRelationship.RaceTrackHostedRacingEvent],
         [RelationshipType.ImageBelongsToNode, DbRelationship.ImageBelongsToNode],
     ])
 

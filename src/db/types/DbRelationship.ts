@@ -23,9 +23,11 @@ export enum DbRelationship {
     CarModelHasImage = 'HAS_IMAGE',
     CarModelHasPrimeImage = 'HAS_PRIME_IMAGE',
     RaceTrackHasLayout = 'HAS_LAYOUT',
+    RaceTrackHostedRacingEvent = 'TOOK_PLACE_AT_RACE_TRACK',
     RaceTrackHasImage = 'HAS_IMAGE',
     RaceTrackHasPrimeImage = 'HAS_PRIME_IMAGE',
     TrackLayoutBelongsToRaceTrack = 'HAS_LAYOUT',
+    TrackLayoutWasUsedByRacingEvent = 'USED_THE_TRACK_LAYOUT',
     TrackLayoutHasImage = 'HAS_IMAGE',
     TrackLayoutHasPrimeImage = 'HAS_PRIME_IMAGE',
     RacingSeriesHasRacingEvent = 'HAS_RACING_EVENT',
@@ -38,5 +40,4 @@ export enum DbRelationship {
     RacingEventUsedTheTrackLayout = 'USED_THE_TRACK_LAYOUT',
     RacingEventHasImage = 'HAS_IMAGE',
     RacingEventHasPrimeImage = 'HAS_PRIME_IMAGE',
-    RaceTrackHostedRacingEvent = 'TOOK_PLACE_AT_RACE_TRACK',
 }

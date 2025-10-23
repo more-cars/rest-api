@@ -12,9 +12,11 @@ export enum RelationshipType {
     CarModelHasImage = 'HAS_IMAGE',
     CarModelHasPrimeImage = 'HAS_PRIME_IMAGE',
     RaceTrackHasLayout = 'HAS_LAYOUT',
+    RaceTrackHostedRacingEvent = 'HOSTED_RACING_EVENT',
     RaceTrackHasImage = 'HAS_IMAGE',
     RaceTrackHasPrimeImage = 'HAS_PRIME_IMAGE',
     TrackLayoutBelongsToRaceTrack = 'BELONGS_TO_RACE_TRACK',
+    TrackLayoutWasUsedByRacingEvent = 'WAS_USED_BY_RACING_EVENT',
     TrackLayoutHasImage = 'HAS_IMAGE',
     TrackLayoutHasPrimeImage = 'HAS_PRIME_IMAGE',
     RacingSeriesHasRacingEvent = 'HAS_RACING_EVENT',
@@ -27,6 +29,5 @@ export enum RelationshipType {
     RacingEventUsedTheTrackLayout = 'USED_THE_TRACK_LAYOUT',
     RacingEventHasImage = 'HAS_IMAGE',
     RacingEventHasPrimeImage = 'HAS_PRIME_IMAGE',
-    RaceTrackHostedRacingEvent = 'HOSTED_RACING_EVENT',
     ImageBelongsToNode = 'BELONGS_TO_NODE',
 }
