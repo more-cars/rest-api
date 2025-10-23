@@ -133,4 +133,12 @@ describe('Racing Events', () => {
         expect(RacingEventController.deleteTookPlaceAtRaceTrackRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›used-the-track-layout‹ relationship', async () => {
+        await request(app)
+            .post('/racing-events/123/used-the-track-layout/456')
+
+        expect(RacingEventController.createUsedTheTrackLayoutRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

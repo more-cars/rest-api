@@ -3,4 +3,5 @@ export enum RacingEventRelationship {
     isFollowedByEvent = "IS_FOLLOWED_BY_EVENT",
     followsEvent = "FOLLOWS_EVENT",
     tookPlaceAtRaceTrack = "TOOK_PLACE_AT_RACE_TRACK",
+    usedTheTrackLayout = "USED_THE_TRACK_LAYOUT",
 }

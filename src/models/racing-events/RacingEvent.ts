@@ -21,6 +21,7 @@ import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {SemanticError} from "../types/SemanticError"
 import {RaceTrack} from "../race-tracks/RaceTrack"
+import {TrackLayout} from "../track-layouts/TrackLayout"
 
 export class RacingEvent {
     static async create(data: CreateRacingEventInput): Promise<RacingEventNode> {
@@ -307,5 +308,32 @@ export class RacingEvent {
         }
 
         await deleteSpecificRel(racingEventId, raceTrackId, RelationshipType.RacingEventTookPlaceAtRaceTrack)
+    }
+
+    static async createUsedTheTrackLayoutRelationship(racingEventId: number, trackLayoutId: number) {
+
+        const racingEvent = await RacingEvent.findById(racingEventId)
+        if (!racingEvent) {
+            throw new NodeNotFoundError(racingEventId)
+        }
+
+        const trackLayout = await TrackLayout.findById(trackLayoutId)
+        if (!trackLayout) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        const existingRelation = await getSpecificRel(racingEventId, trackLayoutId, RelationshipType.RacingEventUsedTheTrackLayout)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(RacingEventRelationship.usedTheTrackLayout, racingEventId, trackLayoutId)
+        }
+
+        await deleteDeprecatedRelationship(racingEventId, DbRelationship.RacingEventUsedTheTrackLayout)
+
+        const createdRelationship = await createRel(racingEventId, trackLayoutId, RelationshipType.RacingEventUsedTheTrackLayout)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 }
