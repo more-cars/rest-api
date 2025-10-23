@@ -5207,6 +5207,47 @@
         }
       }
     },
+    "/racing-events/{racing-event-id}/used-the-track-layout": {
+      "get": {
+        "tags": [
+          "Racing Events"
+        ],
+        "summary": "Get the ›used-the-track-layout‹ relationship for the `Racing Event`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-event-id",
+            "description": "ID of the `Racing Event`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›used-the-track-layout‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RacingEventUsedTheTrackLayoutResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Racing Event` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/racing-events/{racing-event-id}/used-the-track-layout/{track-layout-id}": {
       "post": {
         "tags": [

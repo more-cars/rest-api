@@ -141,4 +141,12 @@ describe('Racing Events', () => {
         expect(RacingEventController.createUsedTheTrackLayoutRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›used-the-track-layout‹ relationship', async () => {
+        await request(app)
+            .get('/racing-events/123/used-the-track-layout')
+
+        expect(RacingEventController.getUsedTheTrackLayoutRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
