@@ -1,10 +1,9 @@
 ---
 inject: true
 to: specification/OpenAPI/more-cars.openapi.json
-before: .*\},\n.*\"components\"
+before: \"/relationships/{relationship-id}\"
 skip_if: Get `<%= h.changeCase.title(nodeType) %>` by ID
 ---
-    ,
     "/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/{<%= h.changeCase.kebab(nodeType) %>-id}": {
       "get": {
         "tags": [
@@ -45,4 +44,4 @@ skip_if: Get `<%= h.changeCase.title(nodeType) %>` by ID
           }
         }
       }
-    }
+    },

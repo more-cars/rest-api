@@ -5,6 +5,7 @@ import {expect, test} from 'vitest'
 import {<%= h.changeCase.pascal(nodeType) %>} from "../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import type {<%= h.changeCase.pascal(nodeType) %>Node} from "../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node"
 
 test('Fetching a <%= h.changeCase.upper(nodeType) %> that does not exist should return "false"', async () => {
     const expected<%= h.changeCase.pascal(nodeType) %> = false

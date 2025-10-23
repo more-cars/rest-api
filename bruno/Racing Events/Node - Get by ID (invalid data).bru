@@ -1,0 +1,15 @@
+meta {
+  name: Get Racing Event by ID (invalid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/racing-events/{{invalidRacingEventId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}

@@ -4000,6 +4000,47 @@
         }
       }
     },
+    "/racing-events/{racing-event-id}": {
+      "get": {
+        "tags": [
+          "Racing Events"
+        ],
+        "summary": "Get `Racing Event` by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-event-id",
+            "description": "ID of the `Racing Event`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Racing Event` successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RacingEventResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. A `Racing Event` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/relationships/{relationship-id}": {
       "get": {
         "tags": [
