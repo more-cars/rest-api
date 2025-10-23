@@ -5,6 +5,7 @@ import FakeBrand from "./FakeBrand"
 import FakeCarModel from "./FakeCarModel"
 import {FakeRaceTrack} from "./FakeRaceTrack"
 import FakeTrackLayout from "./FakeTrackLayout"
+import {FakeRacingSeries} from "./FakeRacingSeries"
 import FakeImage from "./FakeImage"
 
 export function FakeNodeInput(nodeType: NodeTypeEnum) {
@@ -19,6 +20,8 @@ export function FakeNodeInput(nodeType: NodeTypeEnum) {
             return FakeRaceTrack.dbInput()
         case NodeTypeEnum.TRACK_LAYOUT:
             return FakeTrackLayout
+        case NodeTypeEnum.RACING_SERIES:
+            return FakeRacingSeries.dbInput()
         case NodeTypeEnum.IMAGE:
             return FakeImage
         default:
