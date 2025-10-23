@@ -4101,6 +4101,47 @@
         }
       }
     },
+    "/racing-series/{racing-series-id}/has-racing-event": {
+      "get": {
+        "tags": [
+          "Racing Series"
+        ],
+        "summary": "Get all ›has-racing-event‹ relationships for the `Racing Series`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-series-id",
+            "description": "ID of the `Racing Series`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-racing-event‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RacingSeriesHasRacingEventCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Racing Series` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/racing-series/{racing-series-id}/has-racing-event/{racing-event-id}": {
       "post": {
         "tags": [
@@ -6236,6 +6277,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/RacingSeriesHasRacingEvent"
+          }
+        }
+      },
+      "RacingSeriesHasRacingEventCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RacingSeriesHasRacingEventResponse"
+            }
           }
         }
       },

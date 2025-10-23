@@ -16,6 +16,7 @@ import {getSpecificRel} from "../relationships/getSpecificRel"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
 import {RelationshipType} from "../relationships/types/RelationshipType"
 import {RacingSeriesRelationship} from "./types/RacingSeriesRelationship"
+import {getAllRels} from "../relationships/getAllRels"
 
 export class RacingSeries {
     static async create(data: CreateRacingSeriesInput): Promise<RacingSeriesNode> {
@@ -81,5 +82,14 @@ export class RacingSeries {
         }
 
         return createdRelationship
+    }
+
+    static async getAllHasRacingEventRelationships(racingSeriesId: number) {
+        const racingSeries = await RacingSeries.findById(racingSeriesId)
+        if (!racingSeries) {
+            throw new NodeNotFoundError(racingSeriesId)
+        }
+
+        return getAllRels(racingSeriesId, RelationshipType.RacingSeriesHasRacingEvent)
     }
 }
