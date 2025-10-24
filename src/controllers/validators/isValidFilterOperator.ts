@@ -5,6 +5,10 @@ export function isValidFilterOperator(value: unknown) {
         return true
     }
 
+    if (value === undefined) {
+        return true
+    }
+
     if (typeof value !== 'string') {
         return false
     }

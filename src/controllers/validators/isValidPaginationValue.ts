@@ -3,11 +3,19 @@ export function isValidPaginationValue(value: unknown) {
         return true
     }
 
+    if (value === undefined) {
+        return true
+    }
+
     if (typeof value !== 'number') {
         return false
     }
 
-    if (isNaN(value)) {
+    if (Number.isNaN(value)) {
+        return false
+    }
+
+    if (!Number.isInteger(value)) {
         return false
     }
 

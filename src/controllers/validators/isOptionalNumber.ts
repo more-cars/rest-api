@@ -11,5 +11,9 @@ export function isOptionalNumber(value: unknown) {
         return false
     }
 
+    if (Number.isNaN(value)) {
+        return false
+    }
+
     return true
 }

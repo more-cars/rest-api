@@ -3,6 +3,10 @@ export function isValidSortingDirection(value: unknown) {
         return true
     }
 
+    if (value === undefined) {
+        return true
+    }
+
     if (typeof value !== 'string') {
         return false
     }
@@ -11,7 +15,7 @@ export function isValidSortingDirection(value: unknown) {
         return true
     }
 
-    if (value === 'asc' || value === 'desc') {
+    if (value.toLowerCase() === 'asc' || value.toLowerCase() === 'desc') {
         return true
     }
 

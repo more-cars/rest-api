@@ -3,9 +3,17 @@ export function isValidFilterProperty(property: unknown, validProperties: string
         return true
     }
 
+    if (property === undefined) {
+        return true
+    }
+
     if (typeof property !== 'string') {
         return false
     }
 
-    return validProperties.includes(property)
+    if (property === '') {
+        return true
+    }
+
+    return validProperties.includes(property.toLowerCase())
 }
