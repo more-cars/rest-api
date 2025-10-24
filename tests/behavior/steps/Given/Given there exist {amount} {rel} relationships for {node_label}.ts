@@ -1,7 +1,7 @@
 import {Given, world} from "@cucumber/cucumber"
 import type {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {BaseNode} from "../../../../src/db/types/BaseNode"
-import {getTargetNodeTypeForRelationship} from "../../../_toolbox/dbSeeding/getTargetNodeTypeForRelationship"
+import {getTargetNodeTypeForRelationship} from "../../../_toolbox/getTargetNodeTypeForRelationship"
 import {seedNode} from "../../../_toolbox/dbSeeding/seedNode"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
 import axios from "axios"
