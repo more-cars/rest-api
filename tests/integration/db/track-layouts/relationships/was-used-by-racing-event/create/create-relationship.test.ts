@@ -1,9 +1,9 @@
 import {describe, expect, test} from 'vitest'
-import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {TrackLayoutRelationship} from "../../../../../../../src/models/track-layouts/types/TrackLayoutRelationship"
+import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
+import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RacingEventRelationship} from "../../../../../../../src/models/racing-events/types/RacingEventRelationship"
 
 describe('Creating a ›was-used-by-racing-event‹ relationship', () => {
     test('with valid data', async () => {
@@ -11,19 +11,19 @@ describe('Creating a ›was-used-by-racing-event‹ relationship', () => {
         const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
 
         const createdRelationship = await createRelationship(
-            trackLayout.id,
             racingEvent.id,
+            trackLayout.id,
             DbRelationship.TrackLayoutWasUsedByRacingEvent,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node_id', trackLayout.id)
+            .toHaveProperty('start_node_id', racingEvent.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node_id', racingEvent.id)
+            .toHaveProperty('end_node_id', trackLayout.id)
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', TrackLayoutRelationship.wasUsedByRacingEvent)
+            .toHaveProperty('relationship_name', RacingEventRelationship.usedTheTrackLayout)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)
