@@ -12,6 +12,10 @@ export function marshalBelongsToNodeTypeRelationships(relationships: ImageBelong
             companies: {data: []},
             brands: {data: []},
             car_models: {data: []},
+            race_tracks: {data: []},
+            track_layouts: {data: []},
+            racing_series: {data: []},
+            racing_events: {data: []},
         }
     }
 
@@ -25,6 +29,22 @@ export function marshalBelongsToNodeTypeRelationships(relationships: ImageBelong
 
     relationships.car_models.forEach((relationship) => {
         marshalledData.data.car_models.data.push(marshalRelation(relationship, NodeTypeEnum.CAR_MODEL))
+    })
+
+    relationships.race_tracks.forEach((relationship) => {
+        marshalledData.data.race_tracks.data.push(marshalRelation(relationship, NodeTypeEnum.RACE_TRACK))
+    })
+
+    relationships.track_layouts.forEach((relationship) => {
+        marshalledData.data.track_layouts.data.push(marshalRelation(relationship, NodeTypeEnum.TRACK_LAYOUT))
+    })
+
+    relationships.racing_series.forEach((relationship) => {
+        marshalledData.data.racing_series.data.push(marshalRelation(relationship, NodeTypeEnum.RACING_SERIES))
+    })
+
+    relationships.racing_events.forEach((relationship) => {
+        marshalledData.data.racing_events.data.push(marshalRelation(relationship, NodeTypeEnum.RACING_EVENT))
     })
 
     return marshalledData

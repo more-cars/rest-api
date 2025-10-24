@@ -153,11 +153,19 @@ export class Image {
         const companyRels = await fetchImageRelationshipsForNodeType(NodeTypeLabel.Company, imageId)
         const brandRels = await fetchImageRelationshipsForNodeType(NodeTypeLabel.Brand, imageId)
         const carModelRels = await fetchImageRelationshipsForNodeType(NodeTypeLabel.CarModel, imageId)
+        const raceTrackRels = await fetchImageRelationshipsForNodeType(NodeTypeLabel.RaceTrack, imageId)
+        const trackLayoutRels = await fetchImageRelationshipsForNodeType(NodeTypeLabel.TrackLayout, imageId)
+        const racingSeriesRels = await fetchImageRelationshipsForNodeType(NodeTypeLabel.RacingSeries, imageId)
+        const racingEventsRels = await fetchImageRelationshipsForNodeType(NodeTypeLabel.RacingEvent, imageId)
 
         const belongsToNodeTypeRelationships: ImageBelongsToNodeTypeRelationships = {
             companies: [],
             brands: [],
             car_models: [],
+            race_tracks: [],
+            track_layouts: [],
+            racing_series: [],
+            racing_events: [],
         }
 
         let mappedRelationships: GenericRelation[] = []
@@ -177,6 +185,30 @@ export class Image {
             mappedRelationships.push(await mapDbRelationshipToModelRelationship(relationship))
         }
         belongsToNodeTypeRelationships.car_models = mappedRelationships
+
+        mappedRelationships = []
+        for (const relationship of raceTrackRels) {
+            mappedRelationships.push(await mapDbRelationshipToModelRelationship(relationship))
+        }
+        belongsToNodeTypeRelationships.race_tracks = mappedRelationships
+
+        mappedRelationships = []
+        for (const relationship of trackLayoutRels) {
+            mappedRelationships.push(await mapDbRelationshipToModelRelationship(relationship))
+        }
+        belongsToNodeTypeRelationships.track_layouts = mappedRelationships
+
+        mappedRelationships = []
+        for (const relationship of racingSeriesRels) {
+            mappedRelationships.push(await mapDbRelationshipToModelRelationship(relationship))
+        }
+        belongsToNodeTypeRelationships.racing_series = mappedRelationships
+
+        mappedRelationships = []
+        for (const relationship of racingEventsRels) {
+            mappedRelationships.push(await mapDbRelationshipToModelRelationship(relationship))
+        }
+        belongsToNodeTypeRelationships.racing_events = mappedRelationships
 
         return belongsToNodeTypeRelationships
     }

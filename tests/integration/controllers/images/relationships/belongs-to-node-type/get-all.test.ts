@@ -6,9 +6,13 @@ import {Image} from "../../../../../../src/models/images/Image"
 describe('Requesting all ›belongs-to-node-type‹ relationships', () => {
     test('Providing valid data', async () => {
         Image.getBelongsToNodeTypeRelationships = vi.fn().mockReturnValue({
-            "companies": [],
-            "brands": [],
-            "car_models": [],
+            companies: [],
+            brands: [],
+            car_models: [],
+            race_tracks: [],
+            track_layouts: [],
+            racing_series: [],
+            racing_events: [],
         })
 
         const response = await request(app)

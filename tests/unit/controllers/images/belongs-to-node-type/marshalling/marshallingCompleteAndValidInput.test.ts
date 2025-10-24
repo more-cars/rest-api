@@ -5,72 +5,18 @@ import type {
 import {
     marshalBelongsToNodeTypeRelationships
 } from "../../../../../../src/controllers/images/marshalling/marshalBelongsToNodeTypeRelationships"
+import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {kebabCase} from "change-case"
 
 test('marshalling a ›belongs-to-node-type‹ relationship collection', async () => {
     const relationships: ImageBelongsToNodeTypeRelationships = {
-        companies: [{
-            id: 3,
-            type: 'BELONGS_TO_COMPANY',
-            origin: {
-                id: 1,
-                created_at: "dummy",
-                updated_at: "dummy",
-            },
-            destination: {
-                id: 2,
-                created_at: "dummy",
-                updated_at: "dummy",
-            },
-            created_at: "2023-10-01T00:00:00.001Z",
-            updated_at: "2023-10-01T00:00:00.001Z",
-        }],
-        brands: [{
-            id: 30,
-            type: 'BELONGS_TO_BRAND',
-            origin: {
-                id: 10,
-                created_at: "dummy",
-                updated_at: "dummy",
-            },
-            destination: {
-                id: 20,
-                created_at: "dummy",
-                updated_at: "dummy",
-            },
-            created_at: "2023-10-01T00:00:00.001Z",
-            updated_at: "2023-10-01T00:00:00.001Z",
-        }, {
-            id: 31,
-            type: 'BELONGS_TO_BRAND',
-            origin: {
-                id: 11,
-                created_at: "dummy",
-                updated_at: "dummy",
-            },
-            destination: {
-                id: 21,
-                created_at: "dummy",
-                updated_at: "dummy",
-            },
-            created_at: "2023-10-01T00:00:00.001Z",
-            updated_at: "2023-10-01T00:00:00.001Z",
-        }],
-        car_models: [{
-            id: 300,
-            type: 'BELONGS_TO_CAR_MODEL',
-            origin: {
-                id: 100,
-                created_at: "dummy",
-                updated_at: "dummy",
-            },
-            destination: {
-                id: 200,
-                created_at: "dummy",
-                updated_at: "dummy",
-            },
-            created_at: "2023-10-01T00:00:00.001Z",
-            updated_at: "2023-10-01T00:00:00.001Z",
-        }]
+        companies: [getRelationshipModel(NodeTypeEnum.COMPANY)],
+        brands: [getRelationshipModel(NodeTypeEnum.BRAND)],
+        car_models: [getRelationshipModel(NodeTypeEnum.CAR_MODEL)],
+        race_tracks: [getRelationshipModel(NodeTypeEnum.RACE_TRACK)],
+        track_layouts: [getRelationshipModel(NodeTypeEnum.TRACK_LAYOUT)],
+        racing_series: [getRelationshipModel(NodeTypeEnum.RACING_SERIES)],
+        racing_events: [getRelationshipModel(NodeTypeEnum.RACING_EVENT)],
     }
 
     const mappedNode = marshalBelongsToNodeTypeRelationships(relationships)
@@ -80,73 +26,75 @@ test('marshalling a ›belongs-to-node-type‹ relationship collection', async (
             data: {
                 companies: {
                     data: [{
-                        data: {
-                            relationship_id: 3,
-                            relationship_name: "belongs-to-company",
-                            relationship_partner: {
-                                node_type: 'company',
-                                data: {
-                                    id: 2,
-                                    created_at: "dummy",
-                                    updated_at: "dummy",
-                                },
-                            },
-                            created_at: "2023-10-01T00:00:00.001Z",
-                            updated_at: "2023-10-01T00:00:00.001Z",
-                        },
+                        data: getMarshalledRelation(NodeTypeEnum.COMPANY)
                     }],
                 },
                 brands: {
                     data: [{
-                        data: {
-                            relationship_id: 30,
-                            relationship_name: "belongs-to-brand",
-                            relationship_partner: {
-                                node_type: 'brand',
-                                data: {
-                                    id: 20,
-                                    created_at: "dummy",
-                                    updated_at: "dummy",
-                                },
-                            },
-                            created_at: "2023-10-01T00:00:00.001Z",
-                            updated_at: "2023-10-01T00:00:00.001Z",
-                        },
-                    }, {
-                        data: {
-                            relationship_id: 31,
-                            relationship_name: "belongs-to-brand",
-                            relationship_partner: {
-                                node_type: 'brand',
-                                data: {
-                                    id: 21,
-                                    created_at: "dummy",
-                                    updated_at: "dummy",
-                                },
-                            },
-                            created_at: "2023-10-01T00:00:00.001Z",
-                            updated_at: "2023-10-01T00:00:00.001Z",
-                        },
+                        data: getMarshalledRelation(NodeTypeEnum.BRAND)
                     }],
                 },
                 car_models: {
                     data: [{
-                        data: {
-                            relationship_id: 300,
-                            relationship_name: "belongs-to-car-model",
-                            relationship_partner: {
-                                node_type: 'car-model',
-                                data: {
-                                    id: 200,
-                                    created_at: "dummy",
-                                    updated_at: "dummy",
-                                },
-                            },
-                            created_at: "2023-10-01T00:00:00.001Z",
-                            updated_at: "2023-10-01T00:00:00.001Z",
-                        },
+                        data: getMarshalledRelation(NodeTypeEnum.CAR_MODEL)
                     }]
-                }
+                },
+                race_tracks: {
+                    data: [{
+                        data: getMarshalledRelation(NodeTypeEnum.RACE_TRACK)
+                    }]
+                },
+                track_layouts: {
+                    data: [{
+                        data: getMarshalledRelation(NodeTypeEnum.TRACK_LAYOUT)
+                    }]
+                },
+                racing_series: {
+                    data: [{
+                        data: getMarshalledRelation(NodeTypeEnum.RACING_SERIES)
+                    }]
+                },
+                racing_events: {
+                    data: [{
+                        data: getMarshalledRelation(NodeTypeEnum.RACING_EVENT)
+                    }]
+                },
             }
         })
 })
+
+function getRelationshipModel(nodeType: NodeTypeEnum) {
+    return {
+        id: 1,
+        type: 'BELONGS_TO_' + nodeType,
+        origin: {
+            id: 2,
+            created_at: "dummy",
+            updated_at: "dummy",
+        },
+        destination: {
+            id: 3,
+            created_at: "dummy",
+            updated_at: "dummy",
+        },
+        created_at: "2023-10-01T00:00:00.001Z",
+        updated_at: "2023-10-01T00:00:00.001Z",
+    }
+}
+
+function getMarshalledRelation(nodeType: NodeTypeEnum) {
+    return {
+        relationship_id: 1,
+        relationship_name: 'belongs-to-' + kebabCase(nodeType),
+        relationship_partner: {
+            node_type: kebabCase(nodeType),
+            data: {
+                id: 3,
+                created_at: "dummy",
+                updated_at: "dummy",
+            },
+        },
+        created_at: "2023-10-01T00:00:00.001Z",
+        updated_at: "2023-10-01T00:00:00.001Z",
+    }
+}
