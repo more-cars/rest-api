@@ -112,9 +112,9 @@ async function promptDeleteRelationships() {
 }
 
 function isRelationshipReversedInOldDb(newRelationshipType: DbRelationship) {
-    return newRelationshipType in [
+    return [
         DbRelationship.CarModelHasSuccessor,
         DbRelationship.RacingEventIsFollowedByEvent,
         DbRelationship.NodeHasPrimeImage,
-    ]
+    ].includes(newRelationshipType)
 }
