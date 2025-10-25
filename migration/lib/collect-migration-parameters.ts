@@ -44,7 +44,7 @@ export TARGET_ENVIRONMENT=${params.targetEnvironment}
 export DB_MC1_HOST=${params.sourceDbHost}
 export DB_MC1_PASSWORD=${params.sourceDbPassword}
 export DB_HOST=${params.targetDbHost}
-export DB_PASSWORD=${params.targetDbHost}
+export DB_PASSWORD=${params.targetDbPassword}
 export DATA_TYPE=${params.dataType}
 `
 }
