@@ -13,9 +13,7 @@ echo "  Migration runner: $MIGRATION_RUNNER"
 echo "  Target cluster: $TARGET_CLUSTER"
 echo "  Target environment: $TARGET_ENVIRONMENT"
 echo "  Source database: $DB_MC1_HOST"
-echo "  DB password (new): *****"
 echo "  Target database: $DB_HOST"
-echo "  DB password (old): *****"
 echo "  Data type: $DATA_TYPE"
 echo ----------------------------------------------------------
 
