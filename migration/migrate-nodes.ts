@@ -1,12 +1,12 @@
 import {confirm, select} from "@inquirer/prompts"
-import {NodeTypeMapping} from "./lib/NodeTypeMapping"
+import {NodeTypeMapping} from "./src/NodeTypeMapping"
 import type {NodeTypeLabel} from "../src/db/NodeTypeLabel"
-import {fetchOldNodesOfType} from "./lib/fetchOldNodesOfType"
-import type {NodeTypeLabelOld} from "./lib/types/NodeTypeLabelOld"
-import {mapNodeProperties} from "./lib/mapNodeProperties"
-import {storeNode} from "./lib/storeNode"
+import {fetchOldNodesOfType} from "./src/fetchOldNodesOfType"
+import type {NodeTypeLabelOld} from "./src/types/NodeTypeLabelOld"
+import {mapNodeProperties} from "./src/mapNodeProperties"
+import {storeNode} from "./src/storeNode"
 import cliProgress from "cli-progress"
-import {deleteNodesOfType} from "./lib/deleteNodesOfType"
+import {deleteNodesOfType} from "./src/deleteNodesOfType"
 import {getAllNodeTypes} from "../tests/_toolbox/getAllNodeTypes"
 
 migrateNodesOfType().then(() => true)
