@@ -14,13 +14,15 @@ echo "  Target cluster: $TARGET_CLUSTER"
 echo "  Target environment: $TARGET_ENVIRONMENT"
 echo "  Source database: $DB_MC1_HOST"
 echo "  Target database: $DB_HOST"
-echo "  Data type: $DATA_TYPE"
+echo "  Data type: $MIGRATE_DATA_TYPE"
+echo "  Node type: $MIGRATE_NODE_TYPE"
+echo "  Delete old data: $DELETE_EXISTING_DATA"
 echo ----------------------------------------------------------
 
 if [ "$MIGRATION_RUNNER" = local ]; then
-  if [ "$DATA_TYPE" = nodes ]; then
+  if [ "$MIGRATE_DATA_TYPE" = nodes ]; then
     node -r ts-node/register migration/migrate-nodes.ts
-  elif [ "$DATA_TYPE" = relationships ]; then
+  elif [ "$MIGRATE_DATA_TYPE" = relationships ]; then
     node -r ts-node/register migration/migrate-relationships.ts
   fi
 fi

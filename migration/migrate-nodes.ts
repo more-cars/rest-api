@@ -1,21 +1,17 @@
-import {confirm, select} from "@inquirer/prompts"
 import {NodeTypeMapping} from "./src/NodeTypeMapping"
-import type {NodeTypeLabel} from "../src/db/NodeTypeLabel"
-import {fetchOldNodesOfType} from "./src/fetchOldNodesOfType"
 import type {NodeTypeLabelOld} from "./src/types/NodeTypeLabelOld"
+import {deleteNodesOfType} from "./src/deleteNodesOfType"
+import {fetchOldNodesOfType} from "./src/fetchOldNodesOfType"
+import cliProgress from "cli-progress"
 import {mapNodeProperties} from "./src/mapNodeProperties"
 import {storeNode} from "./src/storeNode"
-import cliProgress from "cli-progress"
-import {deleteNodesOfType} from "./src/deleteNodesOfType"
-import {getAllNodeTypes} from "../tests/_toolbox/getAllNodeTypes"
-
-migrateNodesOfType().then(() => true)
+import type {NodeTypeLabel} from "../src/db/NodeTypeLabel"
 
 async function migrateNodesOfType() {
-    const newNodeType = await determineNodeType(process.env.MIGRATE_NODE_TYPE)
+    const newNodeType = determineNodeType()
     const oldNodeType = NodeTypeMapping.get(newNodeType) as NodeTypeLabelOld
 
-    const deleteNodes = await determineDeleteNodes(process.env.DELETE_EXISTING_NODES)
+    const deleteNodes = determineDeleteNodes()
     if (deleteNodes) {
         await deleteNodesOfType(newNodeType)
     }
@@ -35,36 +31,20 @@ async function migrateNodesOfType() {
     progress.stop()
 }
 
-async function determineNodeType(override: string | undefined) {
-    if (override && override !== "") {
-        return override as NodeTypeLabel
+function determineNodeType() {
+    const nodeType = process.env.MIGRATE_NODE_TYPE
+
+    if (!nodeType && nodeType === "") {
+        throw new Error('Node type missing')
     }
-
-    return promptNodeType()
-}
-
-async function promptNodeType() {
-    const choices = getAllNodeTypes()
-
-    const nodeType = await select({
-        message: 'Migrating all nodes of which type?',
-        choices,
-    })
 
     return nodeType as NodeTypeLabel
 }
 
-async function determineDeleteNodes(override: string | undefined) {
-    if (override && override !== "") {
-        return override === 'true'
-    }
+function determineDeleteNodes() {
+    const deleteNodes = process.env.DELETE_EXISTING_DATA
 
-    return promptDeleteNodes()
+    return deleteNodes === 'true'
 }
 
-async function promptDeleteNodes() {
-    return confirm({
-        message: 'Should all existing nodes of the selected type be DELETED from the target database before migration?',
-        default: true,
-    })
-}
+migrateNodesOfType().then(() => true)

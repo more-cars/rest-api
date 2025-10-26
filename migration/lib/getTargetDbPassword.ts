@@ -1,4 +1,4 @@
-export function getDbOldPassword(override: string | undefined) {
+export function getTargetDbPassword(override: string | undefined) {
     if (override && override !== "") {
         return override
     }
