@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migrate-nodes-job
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: more-cars-api
+          image: ghcr.io/more-cars/rest-api:latest
+          env:
+            - name: DB_HOST
+              value: http://$(API_SERVICE_SERVICE_HOST)
+          command: [ "/bin/sh", "-c" ]
+          args:
+            - |
+              npm ci
+
+              node -r ts-node/register migration/migrate-nodes.ts
