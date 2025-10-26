@@ -26,14 +26,6 @@ async function createPatchFile_nodes() {
             "op": "add",
             "path": "/spec/template/spec/containers/0/env/-",
             "value": {
-                "name": "DB_MC1_HOST",
-                "value": process.env.MIGRATION_SOURCE_DB_HOST || process.env.DB_MC1_HOST
-            }
-        },
-        {
-            "op": "add",
-            "path": "/spec/template/spec/containers/0/env/-",
-            "value": {
                 "name": "DB_MC1_PASSWORD",
                 "value": process.env.MIGRATION_SOURCE_DB_PASSWORD
             }

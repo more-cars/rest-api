@@ -13,14 +13,6 @@
     "op": "add",
     "path": "/spec/template/spec/containers/0/env/-",
     "value": {
-      "name": "DB_MC1_HOST",
-      "value": ""
-    }
-  },
-  {
-    "op": "add",
-    "path": "/spec/template/spec/containers/0/env/-",
-    "value": {
       "name": "DB_MC1_PASSWORD",
       "value": ""
     }
