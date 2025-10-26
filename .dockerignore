@@ -2,6 +2,7 @@
 .env*
 .git*
 .idea
+certificates
 cucumber.js
 eslint.config.mjs
 deployment
