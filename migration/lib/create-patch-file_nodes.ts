@@ -9,8 +9,6 @@ createPatchFile_nodes()
 
 async function createPatchFile_nodes() {
     const jobName = process.argv[2]
-    const nodeType = process.argv[3]
-    const deleteNodes = process.argv[4]
     const packageName = 'rest-api-rc'
 
     return [
@@ -53,7 +51,7 @@ async function createPatchFile_nodes() {
             "path": "/spec/template/spec/containers/0/env/-",
             "value": {
                 "name": "MIGRATE_NODE_TYPE",
-                "value": nodeType
+                "value": process.env.MIGRATE_NODE_TYPE
             }
         },
         {
@@ -61,7 +59,7 @@ async function createPatchFile_nodes() {
             "path": "/spec/template/spec/containers/0/env/-",
             "value": {
                 "name": "DELETE_EXISTING_DATA",
-                "value": deleteNodes
+                "value": process.env.DELETE_EXISTING_DATA
             }
         }
     ]
