@@ -9,6 +9,9 @@ resources:
   - db-deployment.yaml
   - openapi-spec-service.yaml
   - openapi-spec-deployment.yaml
+  - mc1/db-mc1-pvc.yaml
+  - mc1/db-mc1-service.yaml
+  - mc1/db-mc1-deployment.yaml
 
 patches:
   - path: patch.json

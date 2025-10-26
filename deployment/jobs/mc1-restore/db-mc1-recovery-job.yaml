@@ -2,7 +2,6 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: db-mc1-recovery-job
-  namespace: mc1
 spec:
   template:
     metadata:

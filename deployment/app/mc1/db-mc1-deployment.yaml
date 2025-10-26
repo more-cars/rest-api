@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: api-mc1-db-deployment
-  namespace: mc1
 spec:
   replicas: 1
   selector:
