@@ -12,10 +12,10 @@ import {getAllNodeTypes} from "../tests/_toolbox/getAllNodeTypes"
 migrateNodesOfType().then(() => true)
 
 async function migrateNodesOfType() {
-    const newNodeType = await promptNodeType()
+    const newNodeType = await determineNodeType(process.env.MIGRATE_NODE_TYPE)
     const oldNodeType = NodeTypeMapping.get(newNodeType) as NodeTypeLabelOld
 
-    const deleteNodes = await promptDeleteNodes()
+    const deleteNodes = await determineDeleteNodes(process.env.DELETE_EXISTING_NODES)
     if (deleteNodes) {
         await deleteNodesOfType(newNodeType)
     }
@@ -35,6 +35,14 @@ async function migrateNodesOfType() {
     progress.stop()
 }
 
+async function determineNodeType(override: string | undefined) {
+    if (override && override !== "") {
+        return override as NodeTypeLabel
+    }
+
+    return promptNodeType()
+}
+
 async function promptNodeType() {
     const choices = getAllNodeTypes()
 
@@ -44,6 +52,14 @@ async function promptNodeType() {
     })
 
     return nodeType as NodeTypeLabel
+}
+
+async function determineDeleteNodes(override: string | undefined) {
+    if (override && override !== "") {
+        return override === 'true'
+    }
+
+    return promptDeleteNodes()
 }
 
 async function promptDeleteNodes() {
