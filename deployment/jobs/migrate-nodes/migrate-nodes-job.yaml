@@ -13,9 +13,9 @@ spec:
           image: ghcr.io/more-cars/rest-api:latest
           env:
             - name: DB_HOST
-              value: http://$(API_SERVICE_SERVICE_HOST)
+              value: $(API_DB_SERVICE_SERVICE_HOST)
             - name: DB_MC1_HOST
-              value: http://$(API_MC1_DB_SERVICE_SERVICE_HOST)
+              value: $(API_MC1_DB_SERVICE_SERVICE_HOST)
           command: [ "/bin/sh", "-c" ]
           args:
             - |
