@@ -77,7 +77,9 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
         ]))
 
     relationships.set(
-        NodeTypeEnum.RACING_SESSION, new Map([]))
+        NodeTypeEnum.RACING_SESSION, new Map([
+            [RelationshipType.RacingSessionBelongsToRacingEvent, NodeTypeEnum.RACING_EVENT],
+        ]))
 
     const match = relationships.get(startNodeType)?.get(relationshipName as RelationshipType)
 

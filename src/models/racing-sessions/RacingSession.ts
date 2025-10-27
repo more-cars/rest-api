@@ -8,6 +8,14 @@ import {getAllNodesOfType} from "../../db/nodes/racing-sessions/getAllNodesOfTyp
 import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
+import {createRel} from "../relationships/createRel"
+import {DbRelationship} from "../../db/types/DbRelationship"
+import {deleteDeprecatedRelationship} from "../relationships/deleteDeprecatedRelationship"
+import {RacingEvent} from "../racing-events/RacingEvent"
+import {getSpecificRel} from "../relationships/getSpecificRel"
+import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
+import {RelationshipType} from "../relationships/types/RelationshipType"
+import {RacingSessionRelationship} from "./types/RacingSessionRelationship"
 
 export class RacingSession {
     static async create(data: CreateRacingSessionInput): Promise<RacingSessionNode> {
@@ -46,5 +54,32 @@ export class RacingSession {
         }
 
         await deleteNode(racingSessionId)
+    }
+
+    static async createBelongsToRacingEventRelationship(racingSessionId: number, racingEventId: number) {
+
+        const racingSession = await RacingSession.findById(racingSessionId)
+        if (!racingSession) {
+            throw new NodeNotFoundError(racingSessionId)
+        }
+
+        const racingEvent = await RacingEvent.findById(racingEventId)
+        if (!racingEvent) {
+            throw new NodeNotFoundError(racingEventId)
+        }
+
+        const existingRelation = await getSpecificRel(racingSessionId, racingEventId, RelationshipType.RacingSessionBelongsToRacingEvent)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(RacingSessionRelationship.belongsToRacingEvent, racingSessionId, racingEventId)
+        }
+
+        await deleteDeprecatedRelationship(racingSessionId, DbRelationship.RacingSessionBelongsToRacingEvent)
+
+        const createdRelationship = await createRel(racingSessionId, racingEventId, RelationshipType.RacingSessionBelongsToRacingEvent)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 }
