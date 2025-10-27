@@ -199,4 +199,18 @@ export class RacingSession {
 
         return createdRelationship
     }
+
+    static async getHasPrimeImageRelationship(racingSessionId: number) {
+        const racingSession = await RacingSession.findById(racingSessionId)
+        if (!racingSession) {
+            throw new NodeNotFoundError(racingSessionId)
+        }
+
+        const relationship = await getRel(racingSessionId, RelationshipType.RacingSessionHasPrimeImage)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(RacingSessionRelationship.hasPrimeImage, racingSessionId, null)
+        }
+
+        return relationship
+    }
 }
