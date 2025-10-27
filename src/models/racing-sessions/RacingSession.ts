@@ -172,4 +172,31 @@ export class RacingSession {
 
         await deleteSpecificRel(racingSessionId, imageId, RelationshipType.RacingSessionHasImage)
     }
+
+    static async createHasPrimeImageRelationship(racingSessionId: number, imageId: number) {
+
+        const racingSession = await RacingSession.findById(racingSessionId)
+        if (!racingSession) {
+            throw new NodeNotFoundError(racingSessionId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const existingRelation = await getSpecificRel(racingSessionId, imageId, RelationshipType.RacingSessionHasPrimeImage)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(RacingSessionRelationship.hasPrimeImage, racingSessionId, imageId)
+        }
+
+        await deleteDeprecatedRelationship(racingSessionId, DbRelationship.RacingSessionHasPrimeImage)
+
+        const createdRelationship = await createRel(racingSessionId, imageId, RelationshipType.RacingSessionHasPrimeImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    }
 }

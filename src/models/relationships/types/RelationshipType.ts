@@ -32,5 +32,6 @@ export enum RelationshipType {
     RacingEventHasPrimeImage = 'HAS_PRIME_IMAGE',
     RacingSessionBelongsToRacingEvent = 'BELONGS_TO_RACING_EVENT',
     RacingSessionHasImage = 'HAS_IMAGE',
+    RacingSessionHasPrimeImage = 'HAS_PRIME_IMAGE',
     ImageBelongsToNode = 'BELONGS_TO_NODE',
 }

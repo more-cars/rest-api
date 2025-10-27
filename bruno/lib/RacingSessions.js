@@ -57,3 +57,17 @@ async function createRacingSessionHasImageRelationship(racingSessionId, imageId)
 }
 
 exports.createRacingSessionHasImageRelationship = createRacingSessionHasImageRelationship
+
+async function ensureRacingSessionHasPrimeImageRelationshipExists() {
+    await ensureValidRacingSessionExists()
+    await ensureValidImageExists()
+    await createRacingSessionHasPrimeImageRelationship(bru.getEnvVar('validRacingSessionId'), bru.getEnvVar('validImageId'))
+}
+
+exports.ensureRacingSessionHasPrimeImageRelationshipExists = ensureRacingSessionHasPrimeImageRelationshipExists
+
+async function createRacingSessionHasPrimeImageRelationship(racingSessionId, imageId) {
+    return submitPostRequest("/racing-sessions/" + racingSessionId + "/has-prime-image/" + imageId)
+}
+
+exports.createRacingSessionHasPrimeImageRelationship = createRacingSessionHasPrimeImageRelationship

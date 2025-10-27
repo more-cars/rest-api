@@ -13,5 +13,6 @@ router.delete('/racing-sessions/:racingSessionId/belongs-to-racing-event/:racing
 router.post('/racing-sessions/:racingSessionId/has-image/:imageId', RacingSessionController.createHasImageRelation)
 router.get('/racing-sessions/:racingSessionId/has-image', RacingSessionController.getAllHasImageRelations)
 router.delete('/racing-sessions/:racingSessionId/has-image/:imageId', RacingSessionController.deleteHasImageRelation)
+router.post('/racing-sessions/:racingSessionId/has-prime-image/:imageId', RacingSessionController.createHasPrimeImageRelation)
 
 export default router
