@@ -5,6 +5,7 @@ import {getAll} from "./racing-sessions/getAll"
 import {deleteNode} from "./racing-sessions/deleteNode"
 import {createBelongsToRacingEventRelation} from "./racing-sessions/createBelongsToRacingEventRelation"
 import {getBelongsToRacingEventRelation} from "./racing-sessions/getBelongsToRacingEventRelation"
+import {deleteBelongsToRacingEventRelation} from "./racing-sessions/deleteBelongsToRacingEventRelation"
 
 export class RacingSessionController {
     static async create(req: express.Request, res: express.Response) {
@@ -29,5 +30,9 @@ export class RacingSessionController {
 
     static async getBelongsToRacingEventRelation(req: express.Request, res: express.Response) {
         await getBelongsToRacingEventRelation(req, res)
+    }
+
+    static async deleteBelongsToRacingEventRelation(req: express.Request, res: express.Response) {
+        await deleteBelongsToRacingEventRelation(req, res)
     }
 }
