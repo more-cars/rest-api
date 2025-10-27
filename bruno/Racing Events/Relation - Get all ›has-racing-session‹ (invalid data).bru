@@ -1,0 +1,15 @@
+meta {
+  name: Get all ›has-racing-session‹ relations (invalid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/racing-events/{{invalidRacingEventId}}/has-racing-session
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}

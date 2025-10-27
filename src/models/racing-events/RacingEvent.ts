@@ -400,6 +400,15 @@ export class RacingEvent {
         return createdRelationship
     }
 
+    static async getAllHasRacingSessionRelationships(racingEventId: number) {
+        const racingEvent = await RacingEvent.findById(racingEventId)
+        if (!racingEvent) {
+            throw new NodeNotFoundError(racingEventId)
+        }
+
+        return getAllRels(racingEventId, RelationshipType.RacingEventHasRacingSession)
+    }
+
     static async createHasImageRelationship(racingEventId: number, imageId: number) {
 
         const racingEvent = await RacingEvent.findById(racingEventId)
