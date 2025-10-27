@@ -13,13 +13,7 @@ async function ensure<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.p
 exports.ensure<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>RelationshipExists = ensure<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>RelationshipExists
 
 async function create<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(endNodeType) %>Id) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/" + <%= h.changeCase.camel(startNodeType) %>Id + "/<%= h.changeCase.kebab(relationshipName) %>/" + <%= h.changeCase.camel(endNodeType) %>Id, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/" + <%= h.changeCase.camel(startNodeType) %>Id + "/<%= h.changeCase.kebab(relationshipName) %>/" + <%= h.changeCase.camel(endNodeType) %>Id)
 }
 
 exports.create<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Relationship = create<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Relationship
