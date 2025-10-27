@@ -174,6 +174,14 @@ describe('Racing Events', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete ›has-racing-session‹ relationship', async () => {
+        await request(app)
+            .delete('/racing-events/123/has-racing-session/456')
+
+        expect(RacingEventController.deleteHasRacingSessionRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/racing-events/123/has-image/456')

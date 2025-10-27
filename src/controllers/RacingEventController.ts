@@ -20,6 +20,7 @@ import {getUsedTheTrackLayoutRelation} from "./racing-events/getUsedTheTrackLayo
 import {deleteUsedTheTrackLayoutRelation} from "./racing-events/deleteUsedTheTrackLayoutRelation"
 import {createHasRacingSessionRelation} from "./racing-events/createHasRacingSessionRelation"
 import {getAllHasRacingSessionRelations} from "./racing-events/getAllHasRacingSessionRelations"
+import {deleteHasRacingSessionRelation} from "./racing-events/deleteHasRacingSessionRelation"
 import {createHasImageRelation} from "./racing-events/createHasImageRelation"
 import {getAllHasImageRelations} from "./racing-events/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./racing-events/deleteHasImageRelation"
@@ -110,6 +111,10 @@ export class RacingEventController {
 
     static async getAllHasRacingSessionRelations(req: express.Request, res: express.Response) {
         await getAllHasRacingSessionRelations(req, res)
+    }
+
+    static async deleteHasRacingSessionRelation(req: express.Request, res: express.Response) {
+        await deleteHasRacingSessionRelation(req, res)
     }
 
     static async createHasImageRelation(req: express.Request, res: express.Response) {

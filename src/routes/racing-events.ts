@@ -24,6 +24,7 @@ router.get('/racing-events/:racingEventId/used-the-track-layout', RacingEventCon
 router.delete('/racing-events/:racingEventId/used-the-track-layout/:trackLayoutId', RacingEventController.deleteUsedTheTrackLayoutRelation)
 router.post('/racing-events/:racingEventId/has-racing-session/:racingSessionId', RacingEventController.createHasRacingSessionRelation)
 router.get('/racing-events/:racingEventId/has-racing-session', RacingEventController.getAllHasRacingSessionRelations)
+router.delete('/racing-events/:racingEventId/has-racing-session/:racingSessionId', RacingEventController.deleteHasRacingSessionRelation)
 router.post('/racing-events/:racingEventId/has-image/:imageId', RacingEventController.createHasImageRelation)
 router.get('/racing-events/:racingEventId/has-image', RacingEventController.getAllHasImageRelations)
 router.delete('/racing-events/:racingEventId/has-image/:imageId', RacingEventController.deleteHasImageRelation)
