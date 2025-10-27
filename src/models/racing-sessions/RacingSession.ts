@@ -213,4 +213,23 @@ export class RacingSession {
 
         return relationship
     }
+
+    static async deleteHasPrimeImageRelationship(racingSessionId: number, imageId: number) {
+        const racingSession = await RacingSession.findById(racingSessionId)
+        if (!racingSession) {
+            throw new NodeNotFoundError(racingSessionId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const relationship = await getSpecificRel(racingSessionId, imageId, RelationshipType.RacingSessionHasPrimeImage)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(RacingSessionRelationship.hasPrimeImage, racingSessionId, imageId)
+        }
+
+        await deleteSpecificRel(racingSessionId, imageId, RelationshipType.RacingSessionHasPrimeImage)
+    }
 }
