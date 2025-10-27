@@ -6313,6 +6313,47 @@
         }
       }
     },
+    "/racing-sessions/{racing-session-id}/has-image": {
+      "get": {
+        "tags": [
+          "Racing Sessions"
+        ],
+        "summary": "Get all ›has-image‹ relationships for the `Racing Session`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-session-id",
+            "description": "ID of the `Racing Session`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-image‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RacingSessionHasImageCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Racing Session` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/racing-sessions/{racing-session-id}/has-image/{image-id}": {
       "post": {
         "tags": [
@@ -9230,6 +9271,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/RacingSessionHasImage"
+          }
+        }
+      },
+      "RacingSessionHasImageCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RacingSessionHasImageResponse"
+            }
           }
         }
       },

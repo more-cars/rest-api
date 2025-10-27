@@ -20,6 +20,7 @@ import {getRel} from "../relationships/getRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {Image} from "../images/Image"
+import {getAllRels} from "../relationships/getAllRels"
 
 export class RacingSession {
     static async create(data: CreateRacingSessionInput): Promise<RacingSessionNode> {
@@ -142,5 +143,14 @@ export class RacingSession {
         }
 
         return createdRelationship
+    }
+
+    static async getAllHasImageRelationships(racingSessionId: number) {
+        const racingSession = await RacingSession.findById(racingSessionId)
+        if (!racingSession) {
+            throw new NodeNotFoundError(racingSessionId)
+        }
+
+        return getAllRels(racingSessionId, RelationshipType.RacingSessionHasImage)
     }
 }
