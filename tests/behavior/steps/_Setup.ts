@@ -1,4 +1,5 @@
 import {setWorldConstructor, World} from "@cucumber/cucumber"
+import https from "https"
 import axios from "axios"
 import type {NodeTypeEnum} from "../../../src/controllers/nodes/types/NodeTypeEnum"
 
@@ -7,6 +8,12 @@ import type {NodeTypeEnum} from "../../../src/controllers/nodes/types/NodeTypeEn
 axios.defaults.validateStatus = function (status) {
     return status < 500
 }
+
+// Axios will fail requests when the SSL certificate is invalid.
+// As long as the dev and testing environments have no valid certificates we have to tell axios to accept such requests.
+axios.defaults.httpsAgent = new https.Agent({
+    rejectUnauthorized: false
+})
 
 // Adding a handful of helper functions to the cucumber "world"
 // to simplify the test code and make it more stable.
