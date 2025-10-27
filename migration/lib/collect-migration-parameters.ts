@@ -20,7 +20,7 @@ async function collectParams() {
     const migrationRunner = await getMigrationRunner(process.env.MIGRATION_RUNNER)
     const targetCluster = await getTargetCluster(migrationRunner, process.env.TARGET_CLUSTER)
     const targetEnvironment = await getTargetEnvironment(targetCluster, process.env.TARGET_ENVIRONMENT)
-    const sourceDb = await getSourceDb(process.env.MIGRATION_SOURCE_DB_HOST)
+    const sourceDb = await getSourceDb(migrationRunner, process.env.MIGRATION_SOURCE_DB_HOST)
     const sourceDbPassword = getSourceDbPassword(process.env.MIGRATION_SOURCE_DB_PASSWORD)
     const targetDb = getTargetDb(migrationRunner, targetCluster, targetEnvironment, process.env.MIGRATION_TARGET_DB_HOST)
     const targetDbPassword = getTargetDbPassword(process.env.MIGRATION_TARGET_DB_PASSWORD)
