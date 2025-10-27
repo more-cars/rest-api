@@ -37,5 +37,13 @@ elif [ "$MIGRATION_RUNNER" = minikube ]; then
     kubectl apply -k "$SCRIPT_PATH"/../deployment/overlays/"$TARGET_ENVIRONMENT"/jobs/migrate-nodes
     kubectl wait --for=condition=complete job/"$JOB_NAME" --timeout=60m
     kubectl describe job/"$JOB_NAME"
+  elif [ "$MIGRATE_DATA_TYPE" = relationships ]; then
+    JOB_NAME=migrate-relationships-$(date +%s)
+    npx ts-node "$SCRIPT_PATH"/lib/create-patch-file_relationships.ts "$JOB_NAME"
+    kubectl config use-context morecars
+    kubectl config set-context --current --namespace="$TARGET_ENVIRONMENT"
+    kubectl apply -k "$SCRIPT_PATH"/../deployment/overlays/"$TARGET_ENVIRONMENT"/jobs/migrate-relationships
+    kubectl wait --for=condition=complete job/"$JOB_NAME" --timeout=60m
+    kubectl describe job/"$JOB_NAME"
   fi
 fi

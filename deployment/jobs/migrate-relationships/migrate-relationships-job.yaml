@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migrate-relationships-job
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: more-cars-api
+          image: ghcr.io/more-cars/rest-api:latest
+          env:
+            - name: DB_HOST
+              value: $(API_DB_SERVICE_SERVICE_HOST)
+            - name: DB_MC1_HOST
+              value: $(API_MC1_DB_SERVICE_SERVICE_HOST)
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "900Mi"
+          command: [ "/bin/sh", "-c" ]
+          args:
+            - |
+              npm ci
+
+              node -r ts-node/register migration/migrate-relationships.ts

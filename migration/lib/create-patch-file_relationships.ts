@@ -2,7 +2,7 @@ import fs from "node:fs"
 
 createPatchFile()
     .then((data) => {
-        const path = __dirname + '/../../deployment/jobs/migrate-nodes/'
+        const path = __dirname + '/../../deployment/jobs/migrate-relationships/'
         const filename = 'patch.json'
         fs.writeFileSync(path + filename, JSON.stringify(data, null, 2))
     })
@@ -42,8 +42,24 @@ async function createPatchFile() {
             "op": "add",
             "path": "/spec/template/spec/containers/0/env/-",
             "value": {
-                "name": "MIGRATE_NODE_TYPE",
-                "value": process.env.MIGRATE_NODE_TYPE
+                "name": "MIGRATE_RELATIONSHIP_TYPE",
+                "value": process.env.MIGRATE_RELATIONSHIP_TYPE
+            }
+        },
+        {
+            "op": "add",
+            "path": "/spec/template/spec/containers/0/env/-",
+            "value": {
+                "name": "START_NODE_TYPE",
+                "value": process.env.START_NODE_TYPE
+            }
+        },
+        {
+            "op": "add",
+            "path": "/spec/template/spec/containers/0/env/-",
+            "value": {
+                "name": "END_NODE_TYPE",
+                "value": process.env.END_NODE_TYPE
             }
         },
         {
