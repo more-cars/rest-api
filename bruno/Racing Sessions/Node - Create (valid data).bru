@@ -1,0 +1,35 @@
+meta {
+  name: Create Racing Session (valid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/racing-sessions
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Grand Prix",
+    "start_date": "2025-05-20",
+    "start_time": "14:00",
+    "duration": 120,
+    "duration_unit": "min",
+    "distance": 58,
+    "distance_unit": "laps"
+  }
+}
+
+assert {
+  res.status: 201
+  res.body: isJson
+  res.body.data.id: gte 12000000
+}
+
+tests {
+  test("both timestamps should be identical", function () {
+    const data = res.getBody()
+    expect(data.data.created_at).to.eql(data.data.updated_at)
+  })
+}

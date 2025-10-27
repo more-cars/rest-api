@@ -6,5 +6,6 @@ export enum NodeTypeEnum {
     TRACK_LAYOUT = 'track layout',
     RACING_SERIES = "racing series",
     RACING_EVENT = "racing event",
+    RACING_SESSION = "racing session",
     IMAGE = 'image',
 }

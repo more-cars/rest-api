@@ -7,6 +7,7 @@ import {RaceTrackSchema} from "../RaceTrackSchema"
 import {TrackLayoutSchema} from "../TrackLayoutSchema"
 import {RacingSeriesSchema} from "../RacingSeriesSchema"
 import {RacingEventSchema} from "../RacingEventSchema"
+import {RacingSessionSchema} from "../RacingSessionSchema"
 import {ImageSchema} from "../ImageSchema"
 
 export function getSchemaForNodeType(nodeType: NodeTypeEnum) {
@@ -25,6 +26,8 @@ export function getSchemaForNodeType(nodeType: NodeTypeEnum) {
             return RacingSeriesSchema
         case NodeTypeEnum.RACING_EVENT:
             return RacingEventSchema
+        case NodeTypeEnum.RACING_SESSION:
+            return RacingSessionSchema
         case NodeTypeEnum.IMAGE:
             return ImageSchema
         default:

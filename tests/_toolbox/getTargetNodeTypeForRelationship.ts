@@ -75,6 +75,9 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
             [RelationshipType.ImageBelongsToNode, NodeTypeEnum.RACING_EVENT],
         ]))
 
+    relationships.set(
+        NodeTypeEnum.RACING_SESSION, new Map([]))
+
     const match = relationships.get(startNodeType)?.get(relationshipName as RelationshipType)
 
     if (!match) {

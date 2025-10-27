@@ -1,0 +1,24 @@
+meta {
+  name: Create Racing Session (ignored data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/racing-sessions
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Grand Prix",
+    "created_at": "nope",
+    "updated_at": "nonono"
+  }
+}
+
+assert {
+  res.status: 201
+  res.body.data.created_at: neq nope
+  res.body.data.updated_at: neq nonono
+}
