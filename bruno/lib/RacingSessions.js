@@ -2,10 +2,22 @@ const axios = require("axios")
 
 async function ensureValidRacingSessionExists() {
     if (!bru.getEnvVar('validRacingSessionId')) {
-        const newNode = await createRacingSession()
-        bru.setEnvVar("validRacingSessionId", newNode.data.id)
+        const nodeList = await getAllRacingSessions()
+        if (nodeList.length > 0) {
+            bru.setEnvVar("validRacingSessionId", nodeList[0].data.id)
+        } else {
+            const newNode = await createRacingSession()
+            bru.setEnvVar("validRacingSessionId", newNode.data.id)
+        } //
     }
 }
+
+async function getAllRacingSessions() {
+    const response = await axios.get(bru.getEnvVar('baseUrl') + "/racing-sessions")
+    return response.data
+}
+
+exports.getAllRacingSessions = getAllRacingSessions
 
 exports.ensureValidRacingSessionExists = ensureValidRacingSessionExists
 

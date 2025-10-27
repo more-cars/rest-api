@@ -5883,6 +5883,64 @@
       }
     },
     "/racing-sessions": {
+      "get": {
+        "tags": [
+          "Racing Sessions"
+        ],
+        "summary": "Get all `Racing Sessions`",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Page"
+          },
+          {
+            "in": "query",
+            "name": "sort_by_property",
+            "description": "Returns the `Racing Session` collection, ordered by the specified property.",
+            "schema": {
+              "$ref": "#/components/schemas/RacingSessionProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/SortDirection"
+          },
+          {
+            "in": "query",
+            "name": "filter_by_property",
+            "description": "Specifies by which node property the `Racing Session` collection should be filtered.",
+            "schema": {
+              "$ref": "#/components/schemas/RacingSessionProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/FilterValue"
+          },
+          {
+            "$ref": "#/components/parameters/FilterOperator"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Racing Session` collection successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RacingSessionCollectionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Racing Sessions"
@@ -8645,6 +8703,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/RacingSession"
+          }
+        }
+      },
+      "RacingSessionCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RacingSessionResponse"
+            }
           }
         }
       },

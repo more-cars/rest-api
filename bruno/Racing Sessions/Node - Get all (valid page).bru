@@ -1,0 +1,15 @@
+meta {
+  name: Get all Racing Sessions (valid page)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/racing-sessions?page=2
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 200
+  res.body.data: isArray
+}
