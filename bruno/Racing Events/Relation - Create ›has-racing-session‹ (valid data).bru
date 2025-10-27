@@ -1,0 +1,27 @@
+meta {
+  name: Create ›has-racing-session‹ relation (valid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/racing-events/{{validRacingEventId}}/has-racing-session/{{validRacingSessionId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 201
+  res.body: isJson
+  res.body.data.relationship_id: gte 12000000
+  res.body.data.relationship_name: has-racing-session
+  res.body.data.relationship_partner: isJson
+  res.body.data.relationship_partner.node_type: racing-session
+  res.body.data.relationship_partner.data.id: {{validRacingSessionId}}
+  res.body.data.created_at: isString
+  res.body.data.updated_at: isString
+}
+
+script:pre-request {
+  await lib.RacingEvents.ensureValidRacingEventExists()
+  await lib.RacingSessions.ensureValidRacingSessionExists()
+}

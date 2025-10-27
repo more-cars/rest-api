@@ -158,6 +158,14 @@ describe('Racing Events', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Create ›has-racing-session‹ relationship', async () => {
+        await request(app)
+            .post('/racing-events/123/has-racing-session/456')
+
+        expect(RacingEventController.createHasRacingSessionRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/racing-events/123/has-image/456')

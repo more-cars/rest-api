@@ -4,6 +4,7 @@ export enum RacingEventRelationship {
     followsEvent = "FOLLOWS_EVENT",
     tookPlaceAtRaceTrack = "TOOK_PLACE_AT_RACE_TRACK",
     usedTheTrackLayout = "USED_THE_TRACK_LAYOUT",
+    hasRacingSession = "HAS_RACING_SESSION",
     hasImage = "HAS_IMAGE",
     hasPrimeImage = "HAS_PRIME_IMAGE",
 }

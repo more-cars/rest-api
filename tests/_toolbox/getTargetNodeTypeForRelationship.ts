@@ -60,6 +60,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
             [RelationshipType.RacingEventIsFollowedByEvent, NodeTypeEnum.RACING_EVENT],
             [RelationshipType.RacingEventTookPlaceAtRaceTrack, NodeTypeEnum.RACE_TRACK],
             [RelationshipType.RacingEventUsedTheTrackLayout, NodeTypeEnum.TRACK_LAYOUT],
+            [RelationshipType.RacingEventHasRacingSession, NodeTypeEnum.RACING_SESSION],
             [RelationshipType.RacingEventHasImage, NodeTypeEnum.IMAGE],
             [RelationshipType.RacingEventHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
