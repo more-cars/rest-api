@@ -1,5 +1,5 @@
 const axios = require("axios")
-const {submitPostRequest} = require("./request")
+const {submitPostRequest, submitGetRequest} = require("./request")
 const {ensureValidRaceTrackExists} = require("./RaceTracks")
 const {ensureValidImageExists} = require("./Images")
 const {ensureValidRacingEventExists} = require("./RacingEvents")
@@ -27,8 +27,7 @@ async function createTrackLayout() {
 exports.createTrackLayout = createTrackLayout
 
 async function getAllTrackLayouts() {
-    const response = await axios.get(bru.getEnvVar('baseUrl') + "/track-layouts")
-    return response.data
+    return submitGetRequest("/track-layouts")
 }
 
 exports.getAllTrackLayouts = getAllTrackLayouts

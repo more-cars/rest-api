@@ -7,3 +7,11 @@ async function submitPostRequest(path, data) {
 }
 
 exports.submitPostRequest = submitPostRequest
+
+async function submitGetRequest(path) {
+    const response = await axios.get(bru.getEnvVar('baseUrl') + path)
+
+    return response.data
+}
+
+exports.submitGetRequest = submitGetRequest

@@ -1,5 +1,5 @@
 const axios = require("axios")
-const {submitPostRequest} = require("./request")
+const {submitPostRequest, submitGetRequest} = require("./request")
 const {ensureValidCarModelExists} = require("./CarModels")
 
 async function ensureValidImageExists() {
@@ -38,8 +38,7 @@ async function createImage() {
 exports.createImage = createImage
 
 async function getAllImages() {
-    const response = await axios.get(bru.getEnvVar('baseUrl') + "/images")
-    return response.data
+    return submitGetRequest("/images")
 }
 
 exports.getAllImages = getAllImages

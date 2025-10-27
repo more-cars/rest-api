@@ -1,5 +1,5 @@
 const axios = require("axios")
-const {submitPostRequest} = require("./request")
+const {submitPostRequest, submitGetRequest} = require("./request")
 const {ensureValidImageExists} = require("./Images")
 const {ensureValidCarModelExists} = require("./CarModels")
 const {ensureValidCompanyExists} = require("./Companies")
@@ -27,8 +27,7 @@ async function createBrand() {
 exports.createBrand = createBrand
 
 async function getAllBrands() {
-    const response = await axios.get(bru.getEnvVar('baseUrl') + "/brands")
-    return response.data
+    return submitGetRequest("/brands")
 }
 
 exports.getAllBrands = getAllBrands
