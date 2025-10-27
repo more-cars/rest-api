@@ -61,4 +61,12 @@ describe('Racing Sessions', () => {
         expect(RacingSessionController.deleteBelongsToRacingEventRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-image‹ relationship', async () => {
+        await request(app)
+            .post('/racing-sessions/123/has-image/456')
+
+        expect(RacingSessionController.createHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
