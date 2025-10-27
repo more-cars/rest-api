@@ -1,4 +1,5 @@
 const axios = require("axios")
+const {submitPostRequest} = require("./request")
 const {ensureValidRacingEventExists} = require("./RacingEvents")
 const {ensureValidImageExists} = require("./Images")
 
@@ -17,11 +18,9 @@ async function ensureValidRacingSeriesExists() {
 exports.ensureValidRacingSeriesExists = ensureValidRacingSeriesExists
 
 async function createRacingSeries() {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/racing-series", {
+    return submitPostRequest("/racing-series", {
         name: 'Formula 1',
     })
-
-    return response.data
 }
 
 exports.createRacingSeries = createRacingSeries

@@ -1,4 +1,5 @@
 const axios = require("axios")
+const {submitPostRequest} = require("./request")
 const {ensureValidRacingEventExists} = require("./RacingEvents")
 
 async function ensureValidRacingSessionExists() {
@@ -23,11 +24,9 @@ async function getAllRacingSessions() {
 exports.getAllRacingSessions = getAllRacingSessions
 
 async function createRacingSession() {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/racing-sessions", {
+    return submitPostRequest("/racing-sessions", {
         name: 'Grand Prix',
     })
-
-    return response.data
 }
 
 exports.createRacingSession = createRacingSession

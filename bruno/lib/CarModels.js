@@ -1,4 +1,5 @@
 const axios = require("axios")
+const {submitPostRequest} = require("./request")
 const {ensureValidBrandExists} = require("./Brands")
 const {ensureValidImageExists} = require("./Images")
 
@@ -29,10 +30,9 @@ async function ensureValidSecondCarModelExists() {
 exports.ensureValidSecondCarModelExists = ensureValidSecondCarModelExists
 
 async function createCarModel() {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/car-models", {
+    return submitPostRequest("/car-models", {
         name: 'Dummy'
     })
-    return response.data
 }
 
 exports.createCarModel = createCarModel

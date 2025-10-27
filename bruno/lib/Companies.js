@@ -1,4 +1,5 @@
 const axios = require("axios")
+const {submitPostRequest} = require("./request")
 const {ensureValidBrandExists} = require("./Brands")
 const {ensureValidImageExists} = require("./Images")
 
@@ -17,11 +18,9 @@ async function ensureValidCompanyExists() {
 exports.ensureValidCompanyExists = ensureValidCompanyExists
 
 async function createCompany() {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/companies", {
+    return submitPostRequest("/companies", {
         name: 'Dummy',
     })
-
-    return response.data
 }
 
 exports.createCompany = createCompany
