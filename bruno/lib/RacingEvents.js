@@ -1,4 +1,3 @@
-const axios = require("axios")
 const {submitPostRequest, submitGetRequest} = require("./request")
 const {ensureValidRacingSeriesExists} = require("./RacingSeries")
 const {ensureValidRaceTrackExists} = require("./RaceTracks")
@@ -55,13 +54,7 @@ async function ensureRacingEventBelongsToRacingSeriesRelationshipExists() {
 exports.ensureRacingEventBelongsToRacingSeriesRelationshipExists = ensureRacingEventBelongsToRacingSeriesRelationshipExists
 
 async function createRacingEventBelongsToRacingSeriesRelationship(racingEventId, racingSeriesId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/racing-events/" + racingEventId + "/belongs-to-racing-series/" + racingSeriesId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/racing-events/" + racingEventId + "/belongs-to-racing-series/" + racingSeriesId)
 }
 
 exports.createRacingEventBelongsToRacingSeriesRelationship = createRacingEventBelongsToRacingSeriesRelationship
@@ -75,13 +68,7 @@ async function ensureRacingEventIsFollowedByEventRelationshipExists() {
 exports.ensureRacingEventIsFollowedByEventRelationshipExists = ensureRacingEventIsFollowedByEventRelationshipExists
 
 async function createRacingEventIsFollowedByEventRelationship(racingEventId, partnerId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/racing-events/" + racingEventId + "/is-followed-by-event/" + partnerId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/racing-events/" + racingEventId + "/is-followed-by-event/" + partnerId)
 }
 
 exports.createRacingEventIsFollowedByEventRelationship = createRacingEventIsFollowedByEventRelationship
@@ -95,13 +82,7 @@ async function ensureRacingEventFollowsEventRelationshipExists() {
 exports.ensureRacingEventFollowsEventRelationshipExists = ensureRacingEventFollowsEventRelationshipExists
 
 async function createRacingEventFollowsEventRelationship(racingEventId, partnerId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/racing-events/" + racingEventId + "/follows-event/" + partnerId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/racing-events/" + racingEventId + "/follows-event/" + partnerId)
 }
 
 exports.createRacingEventFollowsEventRelationship = createRacingEventFollowsEventRelationship
@@ -115,13 +96,7 @@ async function ensureRacingEventTookPlaceAtRaceTrackRelationshipExists() {
 exports.ensureRacingEventTookPlaceAtRaceTrackRelationshipExists = ensureRacingEventTookPlaceAtRaceTrackRelationshipExists
 
 async function createRacingEventTookPlaceAtRaceTrackRelationship(racingEventId, raceTrackId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/racing-events/" + racingEventId + "/took-place-at-race-track/" + raceTrackId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/racing-events/" + racingEventId + "/took-place-at-race-track/" + raceTrackId)
 }
 
 exports.createRacingEventTookPlaceAtRaceTrackRelationship = createRacingEventTookPlaceAtRaceTrackRelationship
@@ -135,13 +110,7 @@ async function ensureRacingEventUsedTheTrackLayoutRelationshipExists() {
 exports.ensureRacingEventUsedTheTrackLayoutRelationshipExists = ensureRacingEventUsedTheTrackLayoutRelationshipExists
 
 async function createRacingEventUsedTheTrackLayoutRelationship(racingEventId, trackLayoutId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/racing-events/" + racingEventId + "/used-the-track-layout/" + trackLayoutId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/racing-events/" + racingEventId + "/used-the-track-layout/" + trackLayoutId)
 }
 
 exports.createRacingEventUsedTheTrackLayoutRelationship = createRacingEventUsedTheTrackLayoutRelationship
@@ -155,13 +124,7 @@ async function ensureRacingEventHasRacingSessionRelationshipExists() {
 exports.ensureRacingEventHasRacingSessionRelationshipExists = ensureRacingEventHasRacingSessionRelationshipExists
 
 async function createRacingEventHasRacingSessionRelationship(racingEventId, racingSessionId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/racing-events/" + racingEventId + "/has-racing-session/" + racingSessionId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/racing-events/" + racingEventId + "/has-racing-session/" + racingSessionId)
 }
 
 exports.createRacingEventHasRacingSessionRelationship = createRacingEventHasRacingSessionRelationship
@@ -175,13 +138,7 @@ async function ensureRacingEventHasImageRelationshipExists() {
 exports.ensureRacingEventHasImageRelationshipExists = ensureRacingEventHasImageRelationshipExists
 
 async function createRacingEventHasImageRelationship(racingEventId, imageId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/racing-events/" + racingEventId + "/has-image/" + imageId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/racing-events/" + racingEventId + "/has-image/" + imageId)
 }
 
 exports.createRacingEventHasImageRelationship = createRacingEventHasImageRelationship
@@ -195,13 +152,7 @@ async function ensureRacingEventHasPrimeImageRelationshipExists() {
 exports.ensureRacingEventHasPrimeImageRelationshipExists = ensureRacingEventHasPrimeImageRelationshipExists
 
 async function createRacingEventHasPrimeImageRelationship(racingEventId, imageId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/racing-events/" + racingEventId + "/has-prime-image/" + imageId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/racing-events/" + racingEventId + "/has-prime-image/" + imageId)
 }
 
 exports.createRacingEventHasPrimeImageRelationship = createRacingEventHasPrimeImageRelationship

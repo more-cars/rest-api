@@ -1,4 +1,4 @@
-const axios = require("axios")
+const {submitPostRequest} = require("./request")
 const {createBrand} = require("./Brands")
 const {createCarModel} = require("./CarModels")
 
@@ -15,13 +15,7 @@ async function ensureValidRelationshipExists() {
 exports.ensureValidRelationshipExists = ensureValidRelationshipExists
 
 async function createRelationship(brandId, carModelId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/brands/" + brandId + "/has-car-model/" + carModelId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/brands/" + brandId + "/has-car-model/" + carModelId)
 }
 
 exports.createRelationship = createRelationship

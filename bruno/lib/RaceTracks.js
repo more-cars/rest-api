@@ -1,4 +1,3 @@
-const axios = require("axios")
 const {submitPostRequest, submitGetRequest} = require("./request")
 const {ensureValidTrackLayoutExists} = require("./TrackLayouts")
 const {ensureValidImageExists} = require("./Images")
@@ -41,13 +40,7 @@ async function ensureRaceTrackHasLayoutRelationshipExists() {
 exports.ensureRaceTrackHasLayoutRelationshipExists = ensureRaceTrackHasLayoutRelationshipExists
 
 async function createRaceTrackHasLayoutRelationship(raceTrackId, trackLayoutId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/race-tracks/" + raceTrackId + "/has-layout/" + trackLayoutId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/race-tracks/" + raceTrackId + "/has-layout/" + trackLayoutId)
 }
 
 exports.createRaceTrackHasLayoutRelationship = createRaceTrackHasLayoutRelationship
@@ -61,13 +54,7 @@ async function ensureRaceTrackHasImageRelationshipExists() {
 exports.ensureRaceTrackHasImageRelationshipExists = ensureRaceTrackHasImageRelationshipExists
 
 async function createRaceTrackHasImageRelationship(raceTrackId, imageId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/race-tracks/" + raceTrackId + "/has-image/" + imageId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/race-tracks/" + raceTrackId + "/has-image/" + imageId)
 }
 
 exports.createRaceTrackHasImageRelationship = createRaceTrackHasImageRelationship
@@ -81,13 +68,7 @@ async function ensureRaceTrackHasPrimeImageRelationshipExists() {
 exports.ensureRaceTrackHasPrimeImageRelationshipExists = ensureRaceTrackHasPrimeImageRelationshipExists
 
 async function createRaceTrackHasPrimeImageRelationship(raceTrackId, imageId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/race-tracks/" + raceTrackId + "/has-prime-image/" + imageId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/race-tracks/" + raceTrackId + "/has-prime-image/" + imageId)
 }
 
 exports.createRaceTrackHasPrimeImageRelationship = createRaceTrackHasPrimeImageRelationship
@@ -101,13 +82,7 @@ async function ensureRaceTrackHostedRacingEventRelationshipExists() {
 exports.ensureRaceTrackHostedRacingEventRelationshipExists = ensureRaceTrackHostedRacingEventRelationshipExists
 
 async function createRaceTrackHostedRacingEventRelationship(raceTrackId, racingEventId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/race-tracks/" + raceTrackId + "/hosted-racing-event/" + racingEventId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/race-tracks/" + raceTrackId + "/hosted-racing-event/" + racingEventId)
 }
 
 exports.createRaceTrackHostedRacingEventRelationship = createRaceTrackHostedRacingEventRelationship

@@ -1,7 +1,11 @@
 const axios = require("axios")
 
 async function submitPostRequest(path, data) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + path, data)
+    const response = await axios.post(bru.getEnvVar('baseUrl') + path, data, {
+        validateStatus: function (status) {
+            return status < 400
+        }
+    })
 
     return response.data
 }

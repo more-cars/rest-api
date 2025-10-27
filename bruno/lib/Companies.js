@@ -1,4 +1,3 @@
-const axios = require("axios")
 const {submitPostRequest, submitGetRequest} = require("./request")
 const {ensureValidBrandExists} = require("./Brands")
 const {ensureValidImageExists} = require("./Images")
@@ -32,13 +31,7 @@ async function getAllCompanies() {
 exports.getAllCompanies = getAllCompanies
 
 async function createCompanyHasBrandRelationship(companyId, brandId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/companies/" + companyId + "/has-brand/" + brandId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/companies/" + companyId + "/has-brand/" + brandId)
 }
 
 exports.createCompanyHasBrandRelationship = createCompanyHasBrandRelationship
@@ -52,13 +45,7 @@ async function ensureCompanyHasBrandRelationshipExists() {
 exports.ensureCompanyHasBrandRelationshipExists = ensureCompanyHasBrandRelationshipExists
 
 async function createCompanyHasImageRelationship(companyId, imageId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/companies/" + companyId + "/has-image/" + imageId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/companies/" + companyId + "/has-image/" + imageId)
 }
 
 exports.createCompanyHasImageRelationship = createCompanyHasImageRelationship
@@ -72,13 +59,7 @@ async function ensureCompanyHasImageRelationshipExists() {
 exports.ensureCompanyHasImageRelationshipExists = ensureCompanyHasImageRelationshipExists
 
 async function createCompanyHasPrimeImageRelationship(companyId, imageId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/companies/" + companyId + "/has-prime-image/" + imageId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/companies/" + companyId + "/has-prime-image/" + imageId)
 }
 
 exports.createCompanyHasPrimeImageRelationship = createCompanyHasPrimeImageRelationship

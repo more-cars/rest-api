@@ -1,4 +1,3 @@
-const axios = require("axios")
 const {submitPostRequest, submitGetRequest} = require("./request")
 const {ensureValidRacingEventExists} = require("./RacingEvents")
 
@@ -39,13 +38,7 @@ async function ensureRacingSessionBelongsToRacingEventRelationshipExists() {
 exports.ensureRacingSessionBelongsToRacingEventRelationshipExists = ensureRacingSessionBelongsToRacingEventRelationshipExists
 
 async function createRacingSessionBelongsToRacingEventRelationship(racingSessionId, racingEventId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/racing-sessions/" + racingSessionId + "/belongs-to-racing-event/" + racingEventId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/racing-sessions/" + racingSessionId + "/belongs-to-racing-event/" + racingEventId)
 }
 
 exports.createRacingSessionBelongsToRacingEventRelationship = createRacingSessionBelongsToRacingEventRelationship

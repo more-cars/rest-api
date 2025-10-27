@@ -1,4 +1,3 @@
-const axios = require("axios")
 const {submitPostRequest, submitGetRequest} = require("./request")
 const {ensureValidBrandExists} = require("./Brands")
 const {ensureValidImageExists} = require("./Images")
@@ -52,13 +51,7 @@ async function ensureCarModelBelongsToBrandRelationshipExists() {
 exports.ensureCarModelBelongsToBrandRelationshipExists = ensureCarModelBelongsToBrandRelationshipExists
 
 async function createCarModelBelongsToBrandRelationship(carModelId, brandId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/car-models/" + carModelId + "/belongs-to-brand/" + brandId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/car-models/" + carModelId + "/belongs-to-brand/" + brandId)
 }
 
 exports.createCarModelBelongsToBrandRelationship = createCarModelBelongsToBrandRelationship
@@ -72,13 +65,7 @@ async function ensureCarModelHasSuccessorRelationshipExists() {
 exports.ensureCarModelHasSuccessorRelationshipExists = ensureCarModelHasSuccessorRelationshipExists
 
 async function createCarModelHasSuccessorRelationship(carModelId, partnerId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/car-models/" + carModelId + "/has-successor/" + partnerId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/car-models/" + carModelId + "/has-successor/" + partnerId)
 }
 
 exports.createCarModelHasSuccessorRelationship = createCarModelHasSuccessorRelationship
@@ -92,13 +79,7 @@ async function ensureCarModelIsSuccessorOfRelationshipExists() {
 exports.ensureCarModelIsSuccessorOfRelationshipExists = ensureCarModelIsSuccessorOfRelationshipExists
 
 async function createCarModelIsSuccessorOfRelationship(carModelId, partnerId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/car-models/" + carModelId + "/is-successor-of/" + partnerId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/car-models/" + carModelId + "/is-successor-of/" + partnerId)
 }
 
 exports.createCarModelIsSuccessorOfRelationship = createCarModelIsSuccessorOfRelationship
@@ -112,13 +93,7 @@ async function ensureCarModelHasImageRelationshipExists() {
 exports.ensureCarModelHasImageRelationshipExists = ensureCarModelHasImageRelationshipExists
 
 async function createCarModelHasImageRelationship(carModelId, imageId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/car-models/" + carModelId + "/has-image/" + imageId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/car-models/" + carModelId + "/has-image/" + imageId)
 }
 
 exports.createCarModelHasImageRelationship = createCarModelHasImageRelationship
@@ -132,13 +107,7 @@ async function ensureCarModelHasPrimeImageRelationshipExists() {
 exports.ensureCarModelHasPrimeImageRelationshipExists = ensureCarModelHasPrimeImageRelationshipExists
 
 async function createCarModelHasPrimeImageRelationship(carModelId, imageId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/car-models/" + carModelId + "/has-prime-image/" + imageId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/car-models/" + carModelId + "/has-prime-image/" + imageId)
 }
 
 exports.createCarModelHasPrimeImageRelationship = createCarModelHasPrimeImageRelationship

@@ -1,4 +1,3 @@
-const axios = require("axios")
 const {submitPostRequest, submitGetRequest} = require("./request")
 const {ensureValidCarModelExists} = require("./CarModels")
 
@@ -52,13 +51,7 @@ async function ensureImageBelongsToNodeRelationshipExists() {
 exports.ensureImageBelongsToNodeRelationshipExists = ensureImageBelongsToNodeRelationshipExists
 
 async function createImageBelongsToNodeRelationship(imageId, nodeId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/images/" + imageId + "/belongs-to-node/" + nodeId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/images/" + imageId + "/belongs-to-node/" + nodeId)
 }
 
 exports.createImageBelongsToNodeRelationship = createImageBelongsToNodeRelationship

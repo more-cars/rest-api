@@ -1,4 +1,3 @@
-const axios = require("axios")
 const {submitPostRequest, submitGetRequest} = require("./request")
 const {ensureValidRaceTrackExists} = require("./RaceTracks")
 const {ensureValidImageExists} = require("./Images")
@@ -41,13 +40,7 @@ async function ensureTrackLayoutBelongsToRaceTrackRelationshipExists() {
 exports.ensureTrackLayoutBelongsToRaceTrackRelationshipExists = ensureTrackLayoutBelongsToRaceTrackRelationshipExists
 
 async function createTrackLayoutBelongsToRaceTrackRelationship(trackLayoutId, raceTrackId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/track-layouts/" + trackLayoutId + "/belongs-to-race-track/" + raceTrackId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/track-layouts/" + trackLayoutId + "/belongs-to-race-track/" + raceTrackId)
 }
 
 exports.createTrackLayoutBelongsToRaceTrackRelationship = createTrackLayoutBelongsToRaceTrackRelationship
@@ -61,13 +54,7 @@ async function ensureTrackLayoutWasUsedByRacingEventRelationshipExists() {
 exports.ensureTrackLayoutWasUsedByRacingEventRelationshipExists = ensureTrackLayoutWasUsedByRacingEventRelationshipExists
 
 async function createTrackLayoutWasUsedByRacingEventRelationship(trackLayoutId, racingEventId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/track-layouts/" + trackLayoutId + "/was-used-by-racing-event/" + racingEventId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/track-layouts/" + trackLayoutId + "/was-used-by-racing-event/" + racingEventId)
 }
 
 exports.createTrackLayoutWasUsedByRacingEventRelationship = createTrackLayoutWasUsedByRacingEventRelationship
@@ -82,13 +69,7 @@ async function ensureTrackLayoutHasImageRelationshipExists() {
 exports.ensureTrackLayoutHasImageRelationshipExists = ensureTrackLayoutHasImageRelationshipExists
 
 async function createTrackLayoutHasImageRelationship(trackLayoutId, imageId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/track-layouts/" + trackLayoutId + "/has-image/" + imageId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/track-layouts/" + trackLayoutId + "/has-image/" + imageId)
 }
 
 exports.createTrackLayoutHasImageRelationship = createTrackLayoutHasImageRelationship
@@ -102,13 +83,7 @@ async function ensureTrackLayoutHasPrimeImageRelationshipExists() {
 exports.ensureTrackLayoutHasPrimeImageRelationshipExists = ensureTrackLayoutHasPrimeImageRelationshipExists
 
 async function createTrackLayoutHasPrimeImageRelationship(trackLayoutId, imageId) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + "/track-layouts/" + trackLayoutId + "/has-prime-image/" + imageId, null, {
-        validateStatus: function (status) {
-            return status < 400
-        }
-    })
-
-    return response.data
+    return submitPostRequest("/track-layouts/" + trackLayoutId + "/has-prime-image/" + imageId)
 }
 
 exports.createTrackLayoutHasPrimeImageRelationship = createTrackLayoutHasPrimeImageRelationship
