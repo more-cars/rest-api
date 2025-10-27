@@ -32,13 +32,6 @@ async function getAllBrands() {
 
 exports.getAllBrands = getAllBrands
 
-async function getBrandById(id) {
-    const response = await axios.get(bru.getEnvVar('baseUrl') + "/brands/" + id)
-    return response.data
-}
-
-exports.getBrandById = getBrandById
-
 async function ensureBrandBelongsToCompanyRelationshipExists() {
     await ensureValidBrandExists()
     await ensureValidCompanyExists()

@@ -43,13 +43,6 @@ async function getAllCarModels() {
 
 exports.getAllCarModels = getAllCarModels
 
-async function getCarModelById(id) {
-    const response = await axios.get(bru.getEnvVar('baseUrl') + "/car-models/" + id)
-    return response.data
-}
-
-exports.getCarModelById = getCarModelById
-
 async function ensureCarModelBelongsToBrandRelationshipExists() {
     await ensureValidCarModelExists()
     await ensureValidBrandExists()

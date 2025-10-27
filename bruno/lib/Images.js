@@ -43,13 +43,6 @@ async function getAllImages() {
 
 exports.getAllImages = getAllImages
 
-async function getImageById(id) {
-    const response = await axios.get(bru.getEnvVar('baseUrl') + "/images/" + id)
-    return response.data
-}
-
-exports.getImageById = getImageById
-
 async function ensureImageBelongsToNodeRelationshipExists() {
     await ensureValidImageExists()
     await ensureValidCarModelExists()
