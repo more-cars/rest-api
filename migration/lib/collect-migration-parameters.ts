@@ -8,7 +8,10 @@ import {getTargetDb} from "./getTargetDb"
 import {getTargetDbPassword} from "./getTargetDbPassword"
 import {getDataType} from "./getDataType"
 import {getNodeType} from "./getNodeType"
-import {deleteExistingNodes} from "./deleteExistingNodes"
+import {getStartNodeType} from "./getStartNodeType"
+import {getEndNodeType} from "./getEndNodeType"
+import {getRelationshipType} from "./getRelationshipType"
+import {deleteExistingData} from "./deleteExistingData"
 
 collectParams()
     .then((data) => {
@@ -25,16 +28,17 @@ async function collectParams() {
     const targetDb = getTargetDb(migrationRunner, targetCluster, targetEnvironment, process.env.MIGRATION_TARGET_DB_HOST)
     const targetDbPassword = getTargetDbPassword(process.env.MIGRATION_TARGET_DB_PASSWORD)
     const dataType = await getDataType(process.env.MIGRATE_DATA_TYPE)
+    let nodeType, relationshipType, startNodeType, endNodeType
 
-    let nodeType = ''
     if (dataType === 'nodes') {
         nodeType = await getNodeType(process.env.MIGRATE_NODE_TYPE)
-
     } else if (dataType === 'relationships') {
-
+        startNodeType = await getStartNodeType(process.env.MIGRATE_RELATIONSHIP_TYPE)
+        endNodeType = await getEndNodeType(startNodeType, process.env.START_NODE_TYPE)
+        relationshipType = await getRelationshipType(startNodeType, endNodeType, process.env.END_NODE_TYPE)
     }
 
-    const deleteExistingData = await deleteExistingNodes(process.env.DELETE_EXISTING_DATA)
+    const deleteData = await deleteExistingData(process.env.DELETE_EXISTING_DATA)
 
     return assembleEnvFileData({
         migrationRunner,
@@ -45,8 +49,11 @@ async function collectParams() {
         targetDbHost: targetDb,
         targetDbPassword: targetDbPassword,
         dataType,
-        nodeType,
-        deleteExistingData,
+        nodeType: nodeType || '',
+        relationshipType: relationshipType || '',
+        startNodeType: startNodeType || '',
+        endNodeType: endNodeType || '',
+        deleteExistingData: deleteData,
     })
 }
 
@@ -61,6 +68,9 @@ export DB_HOST=${params.targetDbHost}
 export DB_PASSWORD=${params.targetDbPassword}
 export MIGRATE_DATA_TYPE=${params.dataType}
 export MIGRATE_NODE_TYPE=${params.nodeType}
+export MIGRATE_RELATIONSHIP_TYPE=${params.relationshipType}
+export START_NODE_TYPE=${params.startNodeType}
+export END_NODE_TYPE=${params.endNodeType}
 export DELETE_EXISTING_DATA=${params.deleteExistingData}
 `
 }
@@ -75,5 +85,8 @@ type MigrationConfig = {
     targetDbPassword: string,
     dataType: string,
     nodeType: string,
+    relationshipType: string,
+    startNodeType: string,
+    endNodeType: string,
     deleteExistingData: boolean,
 }

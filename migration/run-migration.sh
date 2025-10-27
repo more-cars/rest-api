@@ -16,6 +16,9 @@ echo "  Source database: $DB_MC1_HOST"
 echo "  Target database: $DB_HOST"
 echo "  Data type: $MIGRATE_DATA_TYPE"
 echo "  Node type: $MIGRATE_NODE_TYPE"
+echo "  Relationship type: $MIGRATE_RELATIONSHIP_TYPE"
+echo "  Start node type: $START_NODE_TYPE"
+echo "  end node type: $END_NODE_TYPE"
 echo "  Delete old data: $DELETE_EXISTING_DATA"
 echo ----------------------------------------------------------
 

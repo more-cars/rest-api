@@ -1,31 +1,27 @@
-import {confirm, select} from "@inquirer/prompts"
-import {NodeTypeMapping} from "./src/NodeTypeMapping"
-import {NodeTypeLabel} from "../src/db/NodeTypeLabel"
-import type {NodeTypeLabelOld} from "./src/types/NodeTypeLabelOld"
 import cliProgress from "cli-progress"
-import {DbRelationship} from "../src/db/types/DbRelationship"
-import {fetchOldRelationshipsOfType} from "./src/fetchOldRelationshipsOfType"
+import {NodeTypeMapping} from "./src/NodeTypeMapping"
+import type {NodeTypeLabelOld} from "./src/types/NodeTypeLabelOld"
 import {RelationshipTypeMapping} from "./src/RelationshipTypeMapping"
-import {deleteAllRelationshipsOfType} from "../tests/_toolbox/dbSeeding/deleteAllRelationshipsOfType"
 import {RelationshipTypeLabelOld} from "./src/types/RelationshipTypeLabelOld"
+import {fetchOldRelationshipsOfType} from "./src/fetchOldRelationshipsOfType"
+import {deleteAllRelationshipsOfType} from "../tests/_toolbox/dbSeeding/deleteAllRelationshipsOfType"
 import {createDbRelationship} from "../src/db/relationships/createDbRelationship"
 import {addMoreCarsIdToRelationship} from "../src/db/relationships/addMoreCarsIdToRelationship"
 import {addTimestampsToRelationship} from "../src/db/relationships/addTimestampsToRelationship"
-import {getAllNodeTypes} from "../tests/_toolbox/getAllNodeTypes"
-import {getAllPotentialPartnerNodeTypes} from "./src/getAllPotentialPartnerNodeTypes"
-import {getAllRelationshipTypes} from "./src/getAllRelationshipTypes"
+import {NodeTypeLabel} from "../src/db/NodeTypeLabel"
+import {DbRelationship} from "../src/db/types/DbRelationship"
 
 migrateRelationshipsOfType().then(() => true)
 
 async function migrateRelationshipsOfType() {
-    const newStartNodeType = await promptStartNodeType()
+    const newStartNodeType = await determineStartNodeType()
     const oldStartNodeType = NodeTypeMapping.get(newStartNodeType) as NodeTypeLabelOld
-    const newEndNodeType = await promptEndNodeType(newStartNodeType)
+    const newEndNodeType = await determineEndNodeType()
     const oldEndNodeType = NodeTypeMapping.get(newEndNodeType) as NodeTypeLabelOld
-    const newRelationshipType = await promptRelationshipType(newStartNodeType, newEndNodeType)
+    const newRelationshipType = await determineRelationshipType()
     const oldRelationshipType = RelationshipTypeMapping.get(newRelationshipType) as RelationshipTypeLabelOld
 
-    const deleteRelationships = await promptDeleteRelationships()
+    const deleteRelationships = await determineDeleteRelationships()
     if (deleteRelationships) {
         await deleteAllRelationshipsOfType(newRelationshipType, newStartNodeType, newEndNodeType)
     }
@@ -61,54 +57,40 @@ async function migrateRelationshipsOfType() {
     progress.stop()
 }
 
-async function promptStartNodeType() {
-    // TODO disable all node types that that have no has-relationship (important for the next prompt)
-    const nodeOptions = getAllNodeTypes()
-    const choices = []
+async function determineStartNodeType() {
+    const startNodeType = process.env.START_NODE_TYPE
 
-    for (const node of nodeOptions) {
-        choices.push({value: node})
+    if (!startNodeType && startNodeType === "") {
+        throw new Error('Start node type missing')
     }
 
-    return select({
-        message: 'Start node type of the relationship?',
-        choices,
-    })
+    return startNodeType as NodeTypeLabel
 }
 
-async function promptEndNodeType(startNodeType: NodeTypeLabel) {
-    const nodeOptions = getAllPotentialPartnerNodeTypes().get(startNodeType) as NodeTypeLabel[]
-    const choices = []
+async function determineEndNodeType() {
+    const endNodeType = process.env.END_NODE_TYPE
 
-    for (const node of nodeOptions) {
-        choices.push({value: node})
+    if (!endNodeType && endNodeType === "") {
+        throw new Error('End node type missing')
     }
 
-    return select({
-        message: 'End node type of the relationship?',
-        choices,
-    })
+    return endNodeType as NodeTypeLabel
 }
 
-async function promptRelationshipType(startNodeType: NodeTypeLabel, endNodeType: NodeTypeLabel) {
-    const relationshipOptions = getAllRelationshipTypes().get(startNodeType)?.get(endNodeType) as DbRelationship[]
-    const choices = []
+async function determineRelationshipType() {
+    const relationshipType = process.env.MIGRATE_RELATIONSHIP_TYPE
 
-    for (const relationship of relationshipOptions) {
-        choices.push({value: relationship})
+    if (!relationshipType && relationshipType === "") {
+        throw new Error('Start node type missing')
     }
 
-    return select({
-        message: 'Migrating all relationships of which type?',
-        choices,
-    })
+    return relationshipType as DbRelationship
 }
 
-async function promptDeleteRelationships() {
-    return confirm({
-        message: 'Should all existing relationships of the selected type be DELETED from the target database before migration?',
-        default: true,
-    })
+async function determineDeleteRelationships() {
+    const deleteRels = process.env.DELETE_EXISTING_DATA
+
+    return deleteRels === 'true'
 }
 
 function isRelationshipReversedInOldDb(newRelationshipType: DbRelationship) {
