@@ -6,6 +6,8 @@ import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/racing-sessions/getNodeById"
 import {getAllNodesOfType} from "../../db/nodes/racing-sessions/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
+import {deleteNode} from "../../db/nodes/deleteNode"
+import {NodeNotFoundError} from "../types/NodeNotFoundError"
 
 export class RacingSession {
     static async create(data: CreateRacingSessionInput): Promise<RacingSessionNode> {
@@ -35,5 +37,14 @@ export class RacingSession {
         })
 
         return nodes
+    }
+
+    static async delete(racingSessionId: number): Promise<void> {
+        const node = await RacingSession.findById(racingSessionId)
+        if (!node) {
+            throw new NodeNotFoundError(racingSessionId)
+        }
+
+        await deleteNode(racingSessionId)
     }
 }

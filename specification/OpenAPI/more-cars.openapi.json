@@ -6009,6 +6009,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Racing Sessions"
+        ],
+        "summary": "Delete `Racing Session`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-session-id",
+            "description": "ID of the `Racing Session`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Racing Session` successfully deleted."
+          },
+          "404": {
+            "description": "Deletion request failed. A `Racing Session` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/relationships/{relationship-id}": {
@@ -8637,10 +8669,10 @@
       },
       "RacingSession": {
         "type": "object",
-        "required":         [
+        "required": [
           "name"
         ],
-        "properties":         {
+        "properties": {
           "id": {
             "type": "integer",
             "readOnly": true,
@@ -8719,7 +8751,7 @@
       },
       "RacingSessionProperties": {
         "type": "string",
-        "enum":         [
+        "enum": [
           "id",
           "created_at",
           "updated_at",

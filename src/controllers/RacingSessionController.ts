@@ -2,6 +2,7 @@ import express from "express"
 import {create} from "./racing-sessions/create"
 import {getById} from "./racing-sessions/getById"
 import {getAll} from "./racing-sessions/getAll"
+import {deleteNode} from "./racing-sessions/deleteNode"
 
 export class RacingSessionController {
     static async create(req: express.Request, res: express.Response) {
@@ -14,5 +15,9 @@ export class RacingSessionController {
 
     static async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
+    }
+
+    static async delete(req: express.Request, res: express.Response) {
+        await deleteNode(req, res)
     }
 }
