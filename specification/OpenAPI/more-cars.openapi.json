@@ -5912,6 +5912,47 @@
         }
       }
     },
+    "/racing-sessions/{racing-session-id}": {
+      "get": {
+        "tags": [
+          "Racing Sessions"
+        ],
+        "summary": "Get `Racing Session` by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-session-id",
+            "description": "ID of the `Racing Session`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Racing Session` successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RacingSessionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. A `Racing Session` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/relationships/{relationship-id}": {
       "get": {
         "tags": [

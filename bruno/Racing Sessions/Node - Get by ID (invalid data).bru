@@ -1,0 +1,15 @@
+meta {
+  name: Get Racing Session by ID (invalid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/racing-sessions/{{invalidRacingSessionId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
