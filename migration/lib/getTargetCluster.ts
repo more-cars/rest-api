@@ -1,11 +1,11 @@
 import {select} from "@inquirer/prompts"
 
-export async function getTargetCluster(testRunner: string, override: string | undefined) {
+export async function getTargetCluster(migrationRunner: string, override: string | undefined) {
     if (override && override !== "") {
         return override
     }
 
-    return await promptUser(testRunner)
+    return await promptUser(migrationRunner)
 }
 
 async function promptUser(testRunner: string) {

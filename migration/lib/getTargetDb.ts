@@ -1,4 +1,4 @@
-export function getTargetDb(testRunner: string, targetCluster: string, targetEnvironment: string, override: string | undefined) {
+export function getTargetDb(migrationRunner: string, targetCluster: string, targetEnvironment: string, override: string | undefined) {
     if (override && override !== "") {
         return override
     }
@@ -33,5 +33,5 @@ export function getTargetDb(testRunner: string, targetCluster: string, targetEnv
         ])],
     ])
 
-    return dbUrls.get(testRunner)?.get(targetCluster)?.get(targetEnvironment) || ''
+    return dbUrls.get(migrationRunner)?.get(targetCluster)?.get(targetEnvironment) || ''
 }

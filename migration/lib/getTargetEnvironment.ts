@@ -9,7 +9,6 @@ export async function getTargetEnvironment(targetCluster: string, override: stri
 }
 
 async function promptUser(targetCluster: string) {
-
     const choices = []
 
     if (targetCluster === 'local') {
