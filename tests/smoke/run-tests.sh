@@ -22,9 +22,9 @@ if [ "$TEST_RUNNER" = local ]; then
   cd "$SCRIPT_PATH"/../../bruno || exit
   if [ "$REPORTS_ENABLED" = true ]; then
     mkdir -p "$REPORTS_PATH"
-    npx bru run --env "$TARGET_CLUSTER"-"$TARGET_ENVIRONMENT" --reporter-json "$REPORTS_PATH"/report.json --reporter-junit "$REPORTS_PATH"/report.xml --reporter-html "$REPORTS_PATH"/report.html
+    npx bru run --insecure --env "$TARGET_CLUSTER"-"$TARGET_ENVIRONMENT" --reporter-json "$REPORTS_PATH"/report.json --reporter-junit "$REPORTS_PATH"/report.xml --reporter-html "$REPORTS_PATH"/report.html
   else
-    npx bru run --env "$TARGET_CLUSTER"-"$TARGET_ENVIRONMENT"
+    npx bru run --insecure --env "$TARGET_CLUSTER"-"$TARGET_ENVIRONMENT"
   fi
 elif [ "$TEST_RUNNER" = minikube ]; then
   JOB_NAME=smoke-test-$(date +%s)
