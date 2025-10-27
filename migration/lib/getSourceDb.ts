@@ -16,7 +16,7 @@ async function promptUser() {
     const choices = []
 
     choices.push(
-        {value: 'localhost'},
+        {value: 'mc1db.more-cars.internal'},
         {value: 'dev.mc1db.more-cars.internal'},
         {value: 'testing.mc1db.more-cars.internal'},
         {value: 'prod.mc1db.more-cars.internal'},
