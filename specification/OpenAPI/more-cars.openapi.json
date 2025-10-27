@@ -6178,6 +6178,47 @@
         }
       }
     },
+    "/racing-sessions/{racing-session-id}/belongs-to-racing-event": {
+      "get": {
+        "tags": [
+          "Racing Sessions"
+        ],
+        "summary": "Get the ›belongs-to-racing-event‹ relationship for the `Racing Session`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-session-id",
+            "description": "ID of the `Racing Session`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›belongs-to-racing-event‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RacingSessionBelongsToRacingEventResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Racing Session` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/racing-sessions/{racing-session-id}/belongs-to-racing-event/{racing-event-id}": {
       "post": {
         "tags": [

@@ -4,6 +4,7 @@ import {getById} from "./racing-sessions/getById"
 import {getAll} from "./racing-sessions/getAll"
 import {deleteNode} from "./racing-sessions/deleteNode"
 import {createBelongsToRacingEventRelation} from "./racing-sessions/createBelongsToRacingEventRelation"
+import {getBelongsToRacingEventRelation} from "./racing-sessions/getBelongsToRacingEventRelation"
 
 export class RacingSessionController {
     static async create(req: express.Request, res: express.Response) {
@@ -24,5 +25,9 @@ export class RacingSessionController {
 
     static async createBelongsToRacingEventRelation(req: express.Request, res: express.Response) {
         await createBelongsToRacingEventRelation(req, res)
+    }
+
+    static async getBelongsToRacingEventRelation(req: express.Request, res: express.Response) {
+        await getBelongsToRacingEventRelation(req, res)
     }
 }
