@@ -18,13 +18,13 @@ describe('Expecting correct status code when requesting a plain node collection'
         SessionResult.findAll = vi.fn().mockReturnValue([
             {
                 id: 1,
-                name: "dummy",
+                position: 1,
             }, {
                 id: 2,
-                name: "dummy",
+                position: 2,
             }, {
                 id: 3,
-                name: "dummy",
+                position: 3,
             }
         ])
 
