@@ -3940,6 +3940,47 @@
         }
       }
     },
+    "/track-layouts/{track-layout-id}/has-lap-time": {
+      "get": {
+        "tags": [
+          "Track Layouts"
+        ],
+        "summary": "Get all ›has-lap-time‹ relationships for the `Track Layout`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "track-layout-id",
+            "description": "ID of the `Track Layout`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-lap-time‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrackLayoutHasLapTimeCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Track Layout` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/track-layouts/{track-layout-id}/has-lap-time/{lap-time-id}": {
       "post": {
         "tags": [
@@ -9335,6 +9376,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/TrackLayoutHasLapTime"
+          }
+        }
+      },
+      "TrackLayoutHasLapTimeCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TrackLayoutHasLapTimeResponse"
+            }
           }
         }
       },

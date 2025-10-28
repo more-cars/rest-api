@@ -205,6 +205,15 @@ export class TrackLayout {
         return createdRelationship
     }
 
+    static async getAllHasLapTimeRelationships(trackLayoutId: number) {
+        const trackLayout = await TrackLayout.findById(trackLayoutId)
+        if (!trackLayout) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        return getAllRels(trackLayoutId, RelationshipType.TrackLayoutHasLapTime)
+    }
+
     static async createHasImageRelationship(trackLayoutId: number, imageId: number) {
 
         const trackLayout = await TrackLayout.findById(trackLayoutId)

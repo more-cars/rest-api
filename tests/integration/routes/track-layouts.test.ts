@@ -94,6 +94,14 @@ describe('Track Layouts', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Get all ›has-lap-time‹ Relationships', async () => {
+        await request(app)
+            .get('/track-layouts/123/has-lap-time')
+
+        expect(TrackLayoutController.getAllHasLapTimeRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/track-layouts/123/has-image/456')
