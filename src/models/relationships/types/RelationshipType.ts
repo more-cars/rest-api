@@ -35,5 +35,6 @@ export enum RelationshipType {
     RacingSessionHasImage = 'HAS_IMAGE',
     RacingSessionHasPrimeImage = 'HAS_PRIME_IMAGE',
     SessionResultBelongsToRacingSession = 'BELONGS_TO_RACING_SESSION',
+    SessionResultHasLapTime = 'HAS_LAP_TIME',
     ImageBelongsToNode = 'BELONGS_TO_NODE',
 }

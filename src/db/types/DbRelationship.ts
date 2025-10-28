@@ -46,4 +46,5 @@ export enum DbRelationship {
     RacingSessionHasImage = 'HAS_IMAGE',
     RacingSessionHasPrimeImage = 'HAS_PRIME_IMAGE',
     SessionResultBelongsToRacingSession = 'HAS_SESSION_RESULT',
+    SessionResultHasLapTime = 'HAS_LAP_TIME',
 }

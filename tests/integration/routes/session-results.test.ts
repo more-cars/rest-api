@@ -61,4 +61,12 @@ describe('Session Results', () => {
         expect(SessionResultController.deleteBelongsToRacingSessionRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-lap-time‹ relationship', async () => {
+        await request(app)
+            .post('/session-results/123/has-lap-time/456')
+
+        expect(SessionResultController.createHasLapTimeRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
