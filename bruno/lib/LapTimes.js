@@ -1,4 +1,5 @@
 const {submitPostRequest, submitGetRequest} = require("./request")
+const {ensureValidSessionResultExists} = require("./SessionResults")
 
 async function ensureValidLapTimeExists() {
     if (!bru.getEnvVar('validLapTimeId')) {
@@ -28,3 +29,17 @@ async function getAllLapTimes() {
 }
 
 exports.getAllLapTimes = getAllLapTimes
+
+async function ensureLapTimeBelongsToSessionResultRelationshipExists() {
+    await ensureValidLapTimeExists()
+    await ensureValidSessionResultExists()
+    await createLapTimeBelongsToSessionResultRelationship(bru.getEnvVar('validLapTimeId'), bru.getEnvVar('validSessionResultId'))
+}
+
+exports.ensureLapTimeBelongsToSessionResultRelationshipExists = ensureLapTimeBelongsToSessionResultRelationshipExists
+
+async function createLapTimeBelongsToSessionResultRelationship(lapTimeId, sessionResultId) {
+    return submitPostRequest("/lap-times/" + lapTimeId + "/belongs-to-session-result/" + sessionResultId)
+}
+
+exports.createLapTimeBelongsToSessionResultRelationship = createLapTimeBelongsToSessionResultRelationship
