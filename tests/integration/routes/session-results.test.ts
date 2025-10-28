@@ -37,4 +37,12 @@ describe('Session Results', () => {
         expect(SessionResultController.delete)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›belongs-to-racing-session‹ relationship', async () => {
+        await request(app)
+            .post('/session-results/123/belongs-to-racing-session/456')
+
+        expect(SessionResultController.createBelongsToRacingSessionRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

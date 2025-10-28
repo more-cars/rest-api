@@ -1,4 +1,5 @@
 const {submitPostRequest, submitGetRequest} = require("./request")
+const {ensureValidRacingSessionExists} = require("./RacingSessions")
 
 async function ensureValidSessionResultExists() {
     if (!bru.getEnvVar('validSessionResultId')) {
@@ -28,3 +29,17 @@ async function getAllSessionResults() {
 }
 
 exports.getAllSessionResults = getAllSessionResults
+
+async function ensureSessionResultBelongsToRacingSessionRelationshipExists() {
+    await ensureValidSessionResultExists()
+    await ensureValidRacingSessionExists()
+    await createSessionResultBelongsToRacingSessionRelationship(bru.getEnvVar('validSessionResultId'), bru.getEnvVar('validRacingSessionId'))
+}
+
+exports.ensureSessionResultBelongsToRacingSessionRelationshipExists = ensureSessionResultBelongsToRacingSessionRelationshipExists
+
+async function createSessionResultBelongsToRacingSessionRelationship(sessionResultId, racingSessionId) {
+    return submitPostRequest("/session-results/" + sessionResultId + "/belongs-to-racing-session/" + racingSessionId)
+}
+
+exports.createSessionResultBelongsToRacingSessionRelationship = createSessionResultBelongsToRacingSessionRelationship

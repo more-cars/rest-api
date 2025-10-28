@@ -8,6 +8,14 @@ import {getAllNodesOfType} from "../../db/nodes/session-results/getAllNodesOfTyp
 import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
+import {createRel} from "../relationships/createRel"
+import {DbRelationship} from "../../db/types/DbRelationship"
+import {deleteDeprecatedRelationship} from "../relationships/deleteDeprecatedRelationship"
+import {RacingSession} from "../racing-sessions/RacingSession"
+import {getSpecificRel} from "../relationships/getSpecificRel"
+import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
+import {RelationshipType} from "../relationships/types/RelationshipType"
+import {SessionResultRelationship} from "./types/SessionResultRelationship"
 
 export class SessionResult {
     static async create(data: CreateSessionResultInput): Promise<SessionResultNode> {
@@ -46,5 +54,32 @@ export class SessionResult {
         }
 
         await deleteNode(sessionResultId)
+    }
+
+    static async createBelongsToRacingSessionRelationship(sessionResultId: number, racingSessionId: number) {
+
+        const sessionResult = await SessionResult.findById(sessionResultId)
+        if (!sessionResult) {
+            throw new NodeNotFoundError(sessionResultId)
+        }
+
+        const racingSession = await RacingSession.findById(racingSessionId)
+        if (!racingSession) {
+            throw new NodeNotFoundError(racingSessionId)
+        }
+
+        const existingRelation = await getSpecificRel(sessionResultId, racingSessionId, RelationshipType.SessionResultBelongsToRacingSession)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(SessionResultRelationship.belongsToRacingSession, sessionResultId, racingSessionId)
+        }
+
+        await deleteDeprecatedRelationship(sessionResultId, DbRelationship.SessionResultBelongsToRacingSession)
+
+        const createdRelationship = await createRel(sessionResultId, racingSessionId, RelationshipType.SessionResultBelongsToRacingSession)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 }
