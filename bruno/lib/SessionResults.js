@@ -73,3 +73,17 @@ async function createSessionResultHasImageRelationship(sessionResultId, imageId)
 }
 
 exports.createSessionResultHasImageRelationship = createSessionResultHasImageRelationship
+
+async function ensureSessionResultHasPrimeImageRelationshipExists() {
+    await ensureValidSessionResultExists()
+    await ensureValidImageExists()
+    await createSessionResultHasPrimeImageRelationship(bru.getEnvVar('validSessionResultId'), bru.getEnvVar('validImageId'))
+}
+
+exports.ensureSessionResultHasPrimeImageRelationshipExists = ensureSessionResultHasPrimeImageRelationshipExists
+
+async function createSessionResultHasPrimeImageRelationship(sessionResultId, imageId) {
+    return submitPostRequest("/session-results/" + sessionResultId + "/has-prime-image/" + imageId)
+}
+
+exports.createSessionResultHasPrimeImageRelationship = createSessionResultHasPrimeImageRelationship

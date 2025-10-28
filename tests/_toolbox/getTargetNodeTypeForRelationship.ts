@@ -93,6 +93,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
             [RelationshipType.SessionResultBelongsToRacingSession, NodeTypeEnum.RACING_SESSION],
             [RelationshipType.SessionResultHasLapTime, NodeTypeEnum.LAP_TIME],
             [RelationshipType.SessionResultHasImage, NodeTypeEnum.IMAGE],
+            [RelationshipType.SessionResultHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
 
     relationships.set(

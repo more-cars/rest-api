@@ -229,4 +229,31 @@ export class SessionResult {
 
         await deleteSpecificRel(sessionResultId, imageId, RelationshipType.SessionResultHasImage)
     }
+
+    static async createHasPrimeImageRelationship(sessionResultId: number, imageId: number) {
+
+        const sessionResult = await SessionResult.findById(sessionResultId)
+        if (!sessionResult) {
+            throw new NodeNotFoundError(sessionResultId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const existingRelation = await getSpecificRel(sessionResultId, imageId, RelationshipType.SessionResultHasPrimeImage)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(SessionResultRelationship.hasPrimeImage, sessionResultId, imageId)
+        }
+
+        await deleteDeprecatedRelationship(sessionResultId, DbRelationship.SessionResultHasPrimeImage)
+
+        const createdRelationship = await createRel(sessionResultId, imageId, RelationshipType.SessionResultHasPrimeImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    }
 }

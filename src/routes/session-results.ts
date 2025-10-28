@@ -16,5 +16,6 @@ router.delete('/session-results/:sessionResultId/has-lap-time/:lapTimeId', Sessi
 router.post('/session-results/:sessionResultId/has-image/:imageId', SessionResultController.createHasImageRelation)
 router.get('/session-results/:sessionResultId/has-image', SessionResultController.getAllHasImageRelations)
 router.delete('/session-results/:sessionResultId/has-image/:imageId', SessionResultController.deleteHasImageRelation)
+router.post('/session-results/:sessionResultId/has-prime-image/:imageId', SessionResultController.createHasPrimeImageRelation)
 
 export default router
