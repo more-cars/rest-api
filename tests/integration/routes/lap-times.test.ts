@@ -117,4 +117,12 @@ describe('Lap Times', () => {
         expect(LapTimeController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .get('/lap-times/123/has-prime-image')
+
+        expect(LapTimeController.getHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

@@ -261,4 +261,18 @@ export class LapTime {
 
         return createdRelationship
     }
+
+    static async getHasPrimeImageRelationship(lapTimeId: number) {
+        const lapTime = await LapTime.findById(lapTimeId)
+        if (!lapTime) {
+            throw new NodeNotFoundError(lapTimeId)
+        }
+
+        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeHasPrimeImage)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(LapTimeRelationship.hasPrimeImage, lapTimeId, null)
+        }
+
+        return relationship
+    }
 }
