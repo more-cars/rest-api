@@ -9,6 +9,7 @@ import {deleteBelongsToRacingSessionRelation} from "./session-results/deleteBelo
 import {createHasLapTimeRelation} from "./session-results/createHasLapTimeRelation"
 import {getAllHasLapTimeRelations} from "./session-results/getAllHasLapTimeRelations"
 import {deleteHasLapTimeRelation} from "./session-results/deleteHasLapTimeRelation"
+import {createHasImageRelation} from "./session-results/createHasImageRelation"
 
 export class SessionResultController {
     static async create(req: express.Request, res: express.Response) {
@@ -49,5 +50,9 @@ export class SessionResultController {
 
     static async deleteHasLapTimeRelation(req: express.Request, res: express.Response) {
         await deleteHasLapTimeRelation(req, res)
+    }
+
+    static async createHasImageRelation(req: express.Request, res: express.Response) {
+        await createHasImageRelation(req, res)
     }
 }

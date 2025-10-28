@@ -7,6 +7,20 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
     relationshipName = constantCase(relationshipName)
 
     relationships.set(
+        NodeTypeEnum.IMAGE, new Map([
+            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.COMPANY],
+            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.BRAND],
+            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.CAR_MODEL],
+            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.RACE_TRACK],
+            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.TRACK_LAYOUT],
+            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.RACING_SERIES],
+            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.RACING_EVENT],
+            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.RACING_SESSION],
+            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.SESSION_RESULT],
+            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.LAP_TIME],
+        ]))
+
+    relationships.set(
         NodeTypeEnum.COMPANY, new Map([
             [RelationshipType.CompanyHasBrand, NodeTypeEnum.BRAND],
             [RelationshipType.CompanyHasImage, NodeTypeEnum.IMAGE],
@@ -67,17 +81,6 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
         ]))
 
     relationships.set(
-        NodeTypeEnum.IMAGE, new Map([
-            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.COMPANY],
-            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.BRAND],
-            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.CAR_MODEL],
-            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.RACE_TRACK],
-            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.TRACK_LAYOUT],
-            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.RACING_SERIES],
-            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.RACING_EVENT],
-        ]))
-
-    relationships.set(
         NodeTypeEnum.RACING_SESSION, new Map([
             [RelationshipType.RacingSessionBelongsToRacingEvent, NodeTypeEnum.RACING_EVENT],
             [RelationshipType.RacingSessionHasSessionResult, NodeTypeEnum.SESSION_RESULT],
@@ -89,6 +92,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
         NodeTypeEnum.SESSION_RESULT, new Map([
             [RelationshipType.SessionResultBelongsToRacingSession, NodeTypeEnum.RACING_SESSION],
             [RelationshipType.SessionResultHasLapTime, NodeTypeEnum.LAP_TIME],
+            [RelationshipType.SessionResultHasImage, NodeTypeEnum.IMAGE],
         ]))
 
     relationships.set(

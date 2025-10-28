@@ -85,4 +85,12 @@ describe('Session Results', () => {
         expect(SessionResultController.deleteHasLapTimeRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-image‹ relationship', async () => {
+        await request(app)
+            .post('/session-results/123/has-image/456')
+
+        expect(SessionResultController.createHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

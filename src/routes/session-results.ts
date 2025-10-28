@@ -13,5 +13,6 @@ router.delete('/session-results/:sessionResultId/belongs-to-racing-session/:raci
 router.post('/session-results/:sessionResultId/has-lap-time/:lapTimeId', SessionResultController.createHasLapTimeRelation)
 router.get('/session-results/:sessionResultId/has-lap-time', SessionResultController.getAllHasLapTimeRelations)
 router.delete('/session-results/:sessionResultId/has-lap-time/:lapTimeId', SessionResultController.deleteHasLapTimeRelation)
+router.post('/session-results/:sessionResultId/has-image/:imageId', SessionResultController.createHasImageRelation)
 
 export default router

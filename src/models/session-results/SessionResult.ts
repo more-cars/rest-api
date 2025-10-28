@@ -21,6 +21,7 @@ import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {LapTime} from "../lap-times/LapTime"
 import {getAllRels} from "../relationships/getAllRels"
+import {Image} from "../images/Image"
 
 export class SessionResult {
     static async create(data: CreateSessionResultInput): Promise<SessionResultNode> {
@@ -174,5 +175,30 @@ export class SessionResult {
         }
 
         await deleteSpecificRel(sessionResultId, lapTimeId, RelationshipType.SessionResultHasLapTime)
+    }
+
+    static async createHasImageRelationship(sessionResultId: number, imageId: number) {
+
+        const sessionResult = await SessionResult.findById(sessionResultId)
+        if (!sessionResult) {
+            throw new NodeNotFoundError(sessionResultId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const existingRelation = await getSpecificRel(sessionResultId, imageId, RelationshipType.SessionResultHasImage)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(SessionResultRelationship.hasImage, sessionResultId, imageId)
+        }
+
+        const createdRelationship = await createRel(sessionResultId, imageId, RelationshipType.SessionResultHasImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 }

@@ -42,6 +42,7 @@ export function getDbRelationshipType(relationshipType: RelationshipType): DbRel
         [RelationshipType.RacingSessionHasPrimeImage, DbRelationship.RacingSessionHasPrimeImage],
         [RelationshipType.SessionResultBelongsToRacingSession, DbRelationship.SessionResultBelongsToRacingSession],
         [RelationshipType.SessionResultHasLapTime, DbRelationship.SessionResultHasLapTime],
+        [RelationshipType.SessionResultHasImage, DbRelationship.SessionResultHasImage],
         [RelationshipType.LapTimeBelongsToSessionResult, DbRelationship.LapTimeBelongsToSessionResult],
         [RelationshipType.LapTimeAchievedOnTrackLayout, DbRelationship.LapTimeAchievedOnTrackLayout],
         [RelationshipType.LapTimeHasImage, DbRelationship.LapTimeHasImage],
