@@ -7106,6 +7106,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Session Results"
+        ],
+        "summary": "Deletes the ›has-lap-time‹ relationship between the `Session Result` and the `Lap Time`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session-result-id",
+            "description": "ID of the `Session Result`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "lap-time-id",
+            "description": "ID of the `Lap Time`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-lap-time‹ relationship between `Session Result` and `Lap Time` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-lap-time‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/lap-times": {

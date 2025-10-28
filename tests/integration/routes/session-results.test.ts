@@ -77,4 +77,12 @@ describe('Session Results', () => {
         expect(SessionResultController.getAllHasLapTimeRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-lap-time‹ relationship', async () => {
+        await request(app)
+            .delete('/session-results/123/has-lap-time/456')
+
+        expect(SessionResultController.deleteHasLapTimeRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

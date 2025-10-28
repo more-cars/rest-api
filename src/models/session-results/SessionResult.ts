@@ -156,4 +156,23 @@ export class SessionResult {
 
         return getAllRels(sessionResultId, RelationshipType.SessionResultHasLapTime)
     }
+
+    static async deleteHasLapTimeRelationship(sessionResultId: number, lapTimeId: number) {
+        const sessionResult = await SessionResult.findById(sessionResultId)
+        if (!sessionResult) {
+            throw new NodeNotFoundError(sessionResultId)
+        }
+
+        const lapTime = await LapTime.findById(lapTimeId)
+        if (!lapTime) {
+            throw new NodeNotFoundError(lapTimeId)
+        }
+
+        const relationship = await getSpecificRel(sessionResultId, lapTimeId, RelationshipType.SessionResultHasLapTime)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(SessionResultRelationship.hasLapTime, sessionResultId, lapTimeId)
+        }
+
+        await deleteSpecificRel(sessionResultId, lapTimeId, RelationshipType.SessionResultHasLapTime)
+    }
 }
