@@ -14,6 +14,7 @@ import {getAllHasImageRelations} from "./session-results/getAllHasImageRelations
 import {deleteHasImageRelation} from "./session-results/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./session-results/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./session-results/getHasPrimeImageRelation"
+import {deleteHasPrimeImageRelation} from "./session-results/deleteHasPrimeImageRelation"
 
 export class SessionResultController {
     static async create(req: express.Request, res: express.Response) {
@@ -74,5 +75,9 @@ export class SessionResultController {
 
     static async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await getHasPrimeImageRelation(req, res)
+    }
+
+    static async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
+        await deleteHasPrimeImageRelation(req, res)
     }
 }

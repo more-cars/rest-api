@@ -18,5 +18,6 @@ router.get('/session-results/:sessionResultId/has-image', SessionResultControlle
 router.delete('/session-results/:sessionResultId/has-image/:imageId', SessionResultController.deleteHasImageRelation)
 router.post('/session-results/:sessionResultId/has-prime-image/:imageId', SessionResultController.createHasPrimeImageRelation)
 router.get('/session-results/:sessionResultId/has-prime-image', SessionResultController.getHasPrimeImageRelation)
+router.delete('/session-results/:sessionResultId/has-prime-image/:imageId', SessionResultController.deleteHasPrimeImageRelation)
 
 export default router

@@ -125,4 +125,12 @@ describe('Session Results', () => {
         expect(SessionResultController.getHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .delete('/session-results/123/has-prime-image/456')
+
+        expect(SessionResultController.deleteHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
