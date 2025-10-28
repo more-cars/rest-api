@@ -1,0 +1,15 @@
+meta {
+  name: Get ›belongs-to-session-result‹ relation (invalid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/lap-times/{{invalidLapTimeId}}/belongs-to-session-result
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}

@@ -45,4 +45,12 @@ describe('Lap Times', () => {
         expect(LapTimeController.createBelongsToSessionResultRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›belongs-to-session-result‹ relationship', async () => {
+        await request(app)
+            .get('/lap-times/123/belongs-to-session-result')
+
+        expect(LapTimeController.getBelongsToSessionResultRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

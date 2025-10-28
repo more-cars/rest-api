@@ -16,6 +16,8 @@ import {getSpecificRel} from "../relationships/getSpecificRel"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
 import {RelationshipType} from "../relationships/types/RelationshipType"
 import {LapTimeRelationship} from "./types/LapTimeRelationship"
+import {getRel} from "../relationships/getRel"
+import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 
 export class LapTime {
     static async create(data: CreateLapTimeInput): Promise<LapTimeNode> {
@@ -81,5 +83,19 @@ export class LapTime {
         }
 
         return createdRelationship
+    }
+
+    static async getBelongsToSessionResultRelationship(lapTimeId: number) {
+        const lapTime = await LapTime.findById(lapTimeId)
+        if (!lapTime) {
+            throw new NodeNotFoundError(lapTimeId)
+        }
+
+        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeBelongsToSessionResult)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(LapTimeRelationship.belongsToSessionResult, lapTimeId, null)
+        }
+
+        return relationship
     }
 }

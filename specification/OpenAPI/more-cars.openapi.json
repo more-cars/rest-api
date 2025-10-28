@@ -7310,6 +7310,47 @@
         }
       }
     },
+    "/lap-times/{lap-time-id}/belongs-to-session-result": {
+      "get": {
+        "tags": [
+          "Lap Times"
+        ],
+        "summary": "Get the ›belongs-to-session-result‹ relationship for the `Lap Time`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "lap-time-id",
+            "description": "ID of the `Lap Time`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›belongs-to-session-result‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LapTimeBelongsToSessionResultResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Lap Time` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/lap-times/{lap-time-id}/belongs-to-session-result/{session-result-id}": {
       "post": {
         "tags": [
