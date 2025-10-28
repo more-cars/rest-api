@@ -1,0 +1,15 @@
+meta {
+  name: Get all Lap Times (valid page)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/lap-times?page=2
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 200
+  res.body.data: isArray
+}

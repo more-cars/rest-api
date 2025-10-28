@@ -1,0 +1,21 @@
+meta {
+  name: Get all Lap Times
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/lap-times
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 200
+  res.body.data: isArray
+  res.body.data[0].data: isJson
+  res.body.data[0].data.id: gte 12000000
+}
+
+script:pre-request {
+  await lib.LapTimes.ensureValidLapTimeExists()
+}

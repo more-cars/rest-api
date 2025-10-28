@@ -21,4 +21,12 @@ describe('Lap Times', () => {
         expect(LapTimeController.getById)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all Nodes', async () => {
+        await request(app)
+            .get('/lap-times')
+
+        expect(LapTimeController.getAll)
+            .toHaveBeenCalledTimes(1)
+    })
 })

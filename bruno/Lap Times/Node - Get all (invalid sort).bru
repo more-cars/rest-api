@@ -1,0 +1,15 @@
+meta {
+  name: Get all Lap Times (invalid sort)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/lap-times?sort_by_property=blubb
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 400
+  res.body: isString
+}

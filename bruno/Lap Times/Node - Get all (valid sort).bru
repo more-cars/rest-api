@@ -1,0 +1,17 @@
+meta {
+  name: Get all Lap Times (valid sort)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/lap-times?sort_by_property=time&sort_direction=desc
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 200
+  res.body.data: isArray
+  res.body.data[0].data: isJson
+  res.body.data[0].data.id: gte 12000000
+}

@@ -2,8 +2,13 @@ const {submitPostRequest, submitGetRequest} = require("./request")
 
 async function ensureValidLapTimeExists() {
     if (!bru.getEnvVar('validLapTimeId')) {
-        const newNode = await createLapTime()
-        bru.setEnvVar("validLapTimeId", newNode.data.id)
+        const nodeList = await getAllLapTimes()
+        if (nodeList.length > 0) {
+            bru.setEnvVar("validLapTimeId", nodeList[0].data.id)
+        } else {
+            const newNode = await createLapTime()
+            bru.setEnvVar("validLapTimeId", newNode.data.id)
+        } //
     }
 }
 
@@ -17,3 +22,9 @@ async function createLapTime() {
 }
 
 exports.createLapTime = createLapTime
+
+async function getAllLapTimes() {
+    return submitGetRequest("/lap-times")
+}
+
+exports.getAllLapTimes = getAllLapTimes
