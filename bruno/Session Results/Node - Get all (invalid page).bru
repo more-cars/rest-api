@@ -1,0 +1,15 @@
+meta {
+  name: Get all Session Results (invalid page)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/session-results?page=-2
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 400
+  res.body: isString
+}

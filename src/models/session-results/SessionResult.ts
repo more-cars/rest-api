@@ -4,6 +4,8 @@ import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../db/nodes/session-results/createNode"
 import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/session-results/getNodeById"
+import {getAllNodesOfType} from "../../db/nodes/session-results/getAllNodesOfType"
+import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
 
 export class SessionResult {
     static async create(data: CreateSessionResultInput): Promise<SessionResultNode> {
@@ -22,5 +24,16 @@ export class SessionResult {
         }
 
         return convertOutputData(node)
+    }
+
+    static async findAll(options: NodeCollectionConstraints = {}): Promise<SessionResultNode[]> {
+        const nodes: Array<SessionResultNode> = []
+        const nodesDb = await getAllNodesOfType(options)
+
+        nodesDb.forEach(node => {
+            nodes.push(convertOutputData(node))
+        })
+
+        return nodes
     }
 }

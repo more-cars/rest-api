@@ -2,8 +2,13 @@ const {submitPostRequest, submitGetRequest} = require("./request")
 
 async function ensureValidSessionResultExists() {
     if (!bru.getEnvVar('validSessionResultId')) {
-        const newNode = await createSessionResult()
-        bru.setEnvVar("validSessionResultId", newNode.data.id)
+        const nodeList = await getAllSessionResults()
+        if (nodeList.length > 0) {
+            bru.setEnvVar("validSessionResultId", nodeList[0].data.id)
+        } else {
+            const newNode = await createSessionResult()
+            bru.setEnvVar("validSessionResultId", newNode.data.id)
+        } //
     }
 }
 
@@ -17,3 +22,9 @@ async function createSessionResult() {
 }
 
 exports.createSessionResult = createSessionResult
+
+async function getAllSessionResults() {
+    return submitGetRequest("/session-results")
+}
+
+exports.getAllSessionResults = getAllSessionResults

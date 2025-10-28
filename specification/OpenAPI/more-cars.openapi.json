@@ -6584,6 +6584,64 @@
       }
     },
     "/session-results": {
+      "get": {
+        "tags": [
+          "Session Results"
+        ],
+        "summary": "Get all `Session Results`",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Page"
+          },
+          {
+            "in": "query",
+            "name": "sort_by_property",
+            "description": "Returns the `Session Result` collection, ordered by the specified property.",
+            "schema": {
+              "$ref": "#/components/schemas/SessionResultProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/SortDirection"
+          },
+          {
+            "in": "query",
+            "name": "filter_by_property",
+            "description": "Specifies by which node property the `Session Result` collection should be filtered.",
+            "schema": {
+              "$ref": "#/components/schemas/SessionResultProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/FilterValue"
+          },
+          {
+            "$ref": "#/components/parameters/FilterOperator"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Session Result` collection successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionResultCollectionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Session Results"
@@ -9672,6 +9730,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/SessionResult"
+          }
+        }
+      },
+      "SessionResultCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SessionResultResponse"
+            }
           }
         }
       },
