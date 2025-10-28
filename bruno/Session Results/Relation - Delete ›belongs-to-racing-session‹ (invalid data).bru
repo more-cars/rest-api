@@ -1,0 +1,15 @@
+meta {
+  name: Delete ›belongs-to-racing-session‹ relation (invalid data)
+  type: http
+}
+
+delete {
+  url: {{baseUrl}}/session-results/{{invalidSessionResultId}}/belongs-to-racing-session/{{invalidRacingSessionId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}

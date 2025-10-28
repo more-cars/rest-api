@@ -18,6 +18,7 @@ import {RelationshipType} from "../relationships/types/RelationshipType"
 import {SessionResultRelationship} from "./types/SessionResultRelationship"
 import {getRel} from "../relationships/getRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
+import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 
 export class SessionResult {
     static async create(data: CreateSessionResultInput): Promise<SessionResultNode> {
@@ -97,5 +98,24 @@ export class SessionResult {
         }
 
         return relationship
+    }
+
+    static async deleteBelongsToRacingSessionRelationship(sessionResultId: number, racingSessionId: number) {
+        const sessionResult = await SessionResult.findById(sessionResultId)
+        if (!sessionResult) {
+            throw new NodeNotFoundError(sessionResultId)
+        }
+
+        const racingSession = await RacingSession.findById(racingSessionId)
+        if (!racingSession) {
+            throw new NodeNotFoundError(racingSessionId)
+        }
+
+        const relationship = await getSpecificRel(sessionResultId, racingSessionId, RelationshipType.SessionResultBelongsToRacingSession)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(SessionResultRelationship.belongsToRacingSession, sessionResultId, racingSessionId)
+        }
+
+        await deleteSpecificRel(sessionResultId, racingSessionId, RelationshipType.SessionResultBelongsToRacingSession)
     }
 }

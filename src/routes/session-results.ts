@@ -9,5 +9,6 @@ router.get('/session-results', SessionResultController.getAll)
 router.delete('/session-results/:id', SessionResultController.delete)
 router.post('/session-results/:sessionResultId/belongs-to-racing-session/:racingSessionId', SessionResultController.createBelongsToRacingSessionRelation)
 router.get('/session-results/:sessionResultId/belongs-to-racing-session', SessionResultController.getBelongsToRacingSessionRelation)
+router.delete('/session-results/:sessionResultId/belongs-to-racing-session/:racingSessionId', SessionResultController.deleteBelongsToRacingSessionRelation)
 
 export default router
