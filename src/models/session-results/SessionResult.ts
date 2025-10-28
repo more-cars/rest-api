@@ -3,6 +3,7 @@ import {SessionResultNode} from "./types/SessionResultNode"
 import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../db/nodes/session-results/createNode"
 import {convertOutputData} from "./create/convertOutputData"
+import {getNodeById} from "../../db/nodes/session-results/getNodeById"
 
 export class SessionResult {
     static async create(data: CreateSessionResultInput): Promise<SessionResultNode> {
@@ -11,5 +12,15 @@ export class SessionResult {
         const output = convertOutputData(result)
 
         return output
+    }
+
+    static async findById(id: number): Promise<false | SessionResultNode> {
+        const node = await getNodeById(id)
+
+        if (!node) {
+            return false
+        }
+
+        return convertOutputData(node)
     }
 }

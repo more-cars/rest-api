@@ -6613,6 +6613,47 @@
         }
       }
     },
+    "/session-results/{session-result-id}": {
+      "get": {
+        "tags": [
+          "Session Results"
+        ],
+        "summary": "Get `Session Result` by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session-result-id",
+            "description": "ID of the `Session Result`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Session Result` successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionResultResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. A `Session Result` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/relationships/{relationship-id}": {
       "get": {
         "tags": [

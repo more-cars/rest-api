@@ -1,0 +1,15 @@
+meta {
+  name: Get Session Result by ID (invalid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/session-results/{{invalidSessionResultId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}

@@ -1,0 +1,22 @@
+meta {
+  name: Get Session Result by ID (valid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/session-results/{{validSessionResultId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 200
+  res.body: isJson
+  res.body.data.id: {{validSessionResultId}}
+  res.body.data.created_at: isNotEmpty
+  res.body.data.updated_at: isNotEmpty
+}
+
+script:pre-request {
+  await lib.SessionResults.ensureValidSessionResultExists()
+}

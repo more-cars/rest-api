@@ -13,4 +13,12 @@ describe('Session Results', () => {
         expect(SessionResultController.create)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get Node by ID', async () => {
+        await request(app)
+            .get('/session-results/123')
+
+        expect(SessionResultController.getById)
+            .toHaveBeenCalledTimes(1)
+    })
 })
