@@ -101,4 +101,12 @@ describe('Session Results', () => {
         expect(SessionResultController.getAllHasImageRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-image‹ relationship', async () => {
+        await request(app)
+            .delete('/session-results/123/has-image/456')
+
+        expect(SessionResultController.deleteHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

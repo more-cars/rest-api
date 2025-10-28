@@ -210,4 +210,23 @@ export class SessionResult {
 
         return getAllRels(sessionResultId, RelationshipType.SessionResultHasImage)
     }
+
+    static async deleteHasImageRelationship(sessionResultId: number, imageId: number) {
+        const sessionResult = await SessionResult.findById(sessionResultId)
+        if (!sessionResult) {
+            throw new NodeNotFoundError(sessionResultId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const relationship = await getSpecificRel(sessionResultId, imageId, RelationshipType.SessionResultHasImage)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(SessionResultRelationship.hasImage, sessionResultId, imageId)
+        }
+
+        await deleteSpecificRel(sessionResultId, imageId, RelationshipType.SessionResultHasImage)
+    }
 }
