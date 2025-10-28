@@ -20,6 +20,7 @@ import {getRel} from "../relationships/getRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {LapTime} from "../lap-times/LapTime"
+import {getAllRels} from "../relationships/getAllRels"
 
 export class SessionResult {
     static async create(data: CreateSessionResultInput): Promise<SessionResultNode> {
@@ -145,5 +146,14 @@ export class SessionResult {
         }
 
         return createdRelationship
+    }
+
+    static async getAllHasLapTimeRelationships(sessionResultId: number) {
+        const sessionResult = await SessionResult.findById(sessionResultId)
+        if (!sessionResult) {
+            throw new NodeNotFoundError(sessionResultId)
+        }
+
+        return getAllRels(sessionResultId, RelationshipType.SessionResultHasLapTime)
     }
 }

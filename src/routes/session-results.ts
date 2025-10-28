@@ -11,5 +11,6 @@ router.post('/session-results/:sessionResultId/belongs-to-racing-session/:racing
 router.get('/session-results/:sessionResultId/belongs-to-racing-session', SessionResultController.getBelongsToRacingSessionRelation)
 router.delete('/session-results/:sessionResultId/belongs-to-racing-session/:racingSessionId', SessionResultController.deleteBelongsToRacingSessionRelation)
 router.post('/session-results/:sessionResultId/has-lap-time/:lapTimeId', SessionResultController.createHasLapTimeRelation)
+router.get('/session-results/:sessionResultId/has-lap-time', SessionResultController.getAllHasLapTimeRelations)
 
 export default router

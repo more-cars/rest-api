@@ -1,0 +1,15 @@
+meta {
+  name: Get all ›has-lap-time‹ relations (invalid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/session-results/{{invalidSessionResultId}}/has-lap-time
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}

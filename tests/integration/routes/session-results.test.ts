@@ -69,4 +69,12 @@ describe('Session Results', () => {
         expect(SessionResultController.createHasLapTimeRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›has-lap-time‹ Relationships', async () => {
+        await request(app)
+            .get('/session-results/123/has-lap-time')
+
+        expect(SessionResultController.getAllHasLapTimeRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })
