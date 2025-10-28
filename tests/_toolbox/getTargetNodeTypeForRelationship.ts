@@ -94,6 +94,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
     relationships.set(
         NodeTypeEnum.LAP_TIME, new Map([
             [RelationshipType.LapTimeBelongsToSessionResult, NodeTypeEnum.SESSION_RESULT],
+            [RelationshipType.LapTimeAchievedOnTrackLayout, NodeTypeEnum.TRACK_LAYOUT],
         ]))
 
     const match = relationships.get(startNodeType)?.get(relationshipName as RelationshipType)

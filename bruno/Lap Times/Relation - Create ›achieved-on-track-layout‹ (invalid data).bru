@@ -1,0 +1,15 @@
+meta {
+  name: Create ›achieved-on-track-layout‹ relation (invalid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/lap-times/{{invalidLapTimeId}}/achieved-on-track-layout/{{invalidTrackLayoutId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}

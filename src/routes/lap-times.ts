@@ -10,5 +10,6 @@ router.delete('/lap-times/:id', LapTimeController.delete)
 router.post('/lap-times/:lapTimeId/belongs-to-session-result/:sessionResultId', LapTimeController.createBelongsToSessionResultRelation)
 router.get('/lap-times/:lapTimeId/belongs-to-session-result', LapTimeController.getBelongsToSessionResultRelation)
 router.delete('/lap-times/:lapTimeId/belongs-to-session-result/:sessionResultId', LapTimeController.deleteBelongsToSessionResultRelation)
+router.post('/lap-times/:lapTimeId/achieved-on-track-layout/:trackLayoutId', LapTimeController.createAchievedOnTrackLayoutRelation)
 
 export default router

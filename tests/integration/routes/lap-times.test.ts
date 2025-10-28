@@ -61,4 +61,12 @@ describe('Lap Times', () => {
         expect(LapTimeController.deleteBelongsToSessionResultRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›achieved-on-track-layout‹ relationship', async () => {
+        await request(app)
+            .post('/lap-times/123/achieved-on-track-layout/456')
+
+        expect(LapTimeController.createAchievedOnTrackLayoutRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

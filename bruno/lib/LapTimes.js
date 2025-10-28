@@ -1,5 +1,6 @@
 const {submitPostRequest, submitGetRequest} = require("./request")
 const {ensureValidSessionResultExists} = require("./SessionResults")
+const {ensureValidTrackLayoutExists} = require("./TrackLayouts")
 
 async function ensureValidLapTimeExists() {
     if (!bru.getEnvVar('validLapTimeId')) {
@@ -43,3 +44,17 @@ async function createLapTimeBelongsToSessionResultRelationship(lapTimeId, sessio
 }
 
 exports.createLapTimeBelongsToSessionResultRelationship = createLapTimeBelongsToSessionResultRelationship
+
+async function ensureLapTimeAchievedOnTrackLayoutRelationshipExists() {
+    await ensureValidLapTimeExists()
+    await ensureValidTrackLayoutExists()
+    await createLapTimeAchievedOnTrackLayoutRelationship(bru.getEnvVar('validLapTimeId'), bru.getEnvVar('validTrackLayoutId'))
+}
+
+exports.ensureLapTimeAchievedOnTrackLayoutRelationshipExists = ensureLapTimeAchievedOnTrackLayoutRelationshipExists
+
+async function createLapTimeAchievedOnTrackLayoutRelationship(lapTimeId, trackLayoutId) {
+    return submitPostRequest("/lap-times/" + lapTimeId + "/achieved-on-track-layout/" + trackLayoutId)
+}
+
+exports.createLapTimeAchievedOnTrackLayoutRelationship = createLapTimeAchievedOnTrackLayoutRelationship

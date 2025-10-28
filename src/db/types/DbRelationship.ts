@@ -49,4 +49,5 @@ export enum DbRelationship {
     SessionResultBelongsToRacingSession = 'HAS_SESSION_RESULT',
     SessionResultHasLapTime = 'HAS_LAP_TIME',
     LapTimeBelongsToSessionResult = 'HAS_LAP_TIME',
+    LapTimeAchievedOnTrackLayout = 'HAS_LAP_TIME',
 }
