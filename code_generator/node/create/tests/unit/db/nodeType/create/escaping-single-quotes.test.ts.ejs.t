@@ -6,6 +6,8 @@ to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/cr
     for (prop in properties) {
         if (properties[prop].datatype === 'string') {
             props_in.push(prop + ': "\'' + properties[prop].example + '"')
+        } else if (properties[prop].datatype === 'number' && properties[prop].mandatory) {
+            props_in.push(prop + ': ' + properties[prop].example)
         } else {
             props_in.push(prop + ': null')
         }
@@ -15,6 +17,8 @@ to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/cr
     for (prop in properties) {
         if (properties[prop].datatype === 'string') {
             props_out.push('            "  ' + prop + ": '\\\\'" + properties[prop].example + "'")
+        } else if (properties[prop].datatype === 'number' && properties[prop].mandatory) {
+            props_out.push('            "  ' + prop + ": " + properties[prop].example)
         } else {
             props_out.push('            "  ' + prop + ": null")
         }

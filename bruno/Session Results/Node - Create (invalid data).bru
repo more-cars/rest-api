@@ -1,0 +1,19 @@
+meta {
+  name: Create Session Result (invalid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/session-results
+  body: json
+  auth: none
+}
+
+body:json {
+  {}
+}
+
+assert {
+  res.status: 400
+  res.body: isString
+}

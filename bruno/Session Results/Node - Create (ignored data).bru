@@ -1,0 +1,25 @@
+meta {
+  name: Create Session Result (ignored data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/session-results
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "position": 1,
+    "driver_name": "Lewis Hamilton",
+    "created_at": "nope",
+    "updated_at": "nonono"
+  }
+}
+
+assert {
+  res.status: 201
+  res.body.data.created_at: neq nope
+  res.body.data.updated_at: neq nonono
+}

@@ -2,10 +2,12 @@
 to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create/unmarshalling/unmarshallingWhereOptionalFieldsAreMissing.test.ts
 ---
 <%
-    props_in = {}
+    props_in = []
     for (prop in properties) {
-        if (properties[prop].mandatory) {
-            props_in[prop] = properties[prop].example
+        if (properties[prop].mandatory && properties[prop].datatype === 'string') {
+            props_in.push(prop + ': "' + properties[prop].example + '"')
+        } else if (properties[prop].mandatory) {
+            props_in.push(prop + ': ' + properties[prop].example)
         }
     }
 
@@ -27,7 +29,9 @@ import {unmarshalInputData} from "../../../../../../src/controllers/<%= h.change
  * Missing optional fields are automatically added as "undefined".
  */
 test('unmarshalling a valid request where optional fields are missing', async () => {
-    const data: any = <%- JSON.stringify(props_in, null, 2).replace(/"([^"]+)":/g, '$1:') %>
+    const data: any = {
+<%- props_in.map(line => '        ' + line).join(',\n') %>,
+    }
 
     const result = unmarshalInputData(data)
 

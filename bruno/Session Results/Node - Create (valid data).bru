@@ -1,0 +1,36 @@
+meta {
+  name: Create Session Result (valid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/session-results
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "position": 1,
+    "race_number": "44",
+    "driver_name": "Lewis Hamilton",
+    "team_name": "Mercedes",
+    "race_time": "PT1H23M45.678S",
+    "laps": 51,
+    "status": "finished",
+    "points": 25
+  }
+}
+
+assert {
+  res.status: 201
+  res.body: isJson
+  res.body.data.id: gte 12000000
+}
+
+tests {
+  test("both timestamps should be identical", function () {
+    const data = res.getBody()
+    expect(data.data.created_at).to.eql(data.data.updated_at)
+  })
+}

@@ -7,5 +7,6 @@ export enum NodeTypeLabel {
     RacingSeries = "RacingSeries",
     RacingEvent = "RacingEvent",
     RacingSession = "RacingSession",
+    SessionResult = "SessionResult",
     Image = "Image",
 }

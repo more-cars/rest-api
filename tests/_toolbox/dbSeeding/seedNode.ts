@@ -8,6 +8,7 @@ import {seedTrackLayout} from "./track-layouts/nodes/seedTrackLayout"
 import {seedRacingSeries} from "./racing-series/nodes/seedRacingSeries"
 import {seedRacingEvent} from "./racing-events/nodes/seedRacingEvent"
 import {seedRacingSession} from "./racing-sessions/nodes/seedRacingSession"
+import {seedSessionResult} from "./session-results/nodes/seedSessionResult"
 import {seedImage} from "./images/nodes/seedImage"
 
 export async function seedNode(nodeType: NodeTypeEnum, customFakeData: object = {}) {
@@ -28,6 +29,8 @@ export async function seedNode(nodeType: NodeTypeEnum, customFakeData: object = 
             return seedRacingEvent(customFakeData)
         case NodeTypeEnum.RACING_SESSION:
             return seedRacingSession(customFakeData)
+        case NodeTypeEnum.SESSION_RESULT:
+            return seedSessionResult(customFakeData)
         case NodeTypeEnum.IMAGE:
             return await seedImage(customFakeData)
         default:

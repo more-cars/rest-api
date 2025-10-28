@@ -8,6 +8,7 @@ import {FakeTrackLayout} from "./FakeTrackLayout"
 import {FakeRacingSeries} from "./FakeRacingSeries"
 import {FakeRacingEvent} from "./FakeRacingEvent"
 import {FakeRacingSession} from "./FakeRacingSession"
+import {FakeSessionResult} from "./FakeSessionResult"
 import {FakeImage} from "./FakeImage"
 
 export function FakeNodeInput(nodeType: NodeTypeEnum) {
@@ -28,6 +29,8 @@ export function FakeNodeInput(nodeType: NodeTypeEnum) {
             return FakeRacingEvent.dbInput()
         case NodeTypeEnum.RACING_SESSION:
             return FakeRacingSession.dbInput()
+        case NodeTypeEnum.SESSION_RESULT:
+            return FakeSessionResult.dbInput()
         case NodeTypeEnum.IMAGE:
             return FakeImage.dbInput()
         default:
