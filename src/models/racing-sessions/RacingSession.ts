@@ -158,6 +158,25 @@ export class RacingSession {
         return getAllRels(racingSessionId, RelationshipType.RacingSessionHasSessionResult)
     }
 
+    static async deleteHasSessionResultRelationship(racingSessionId: number, sessionResultId: number) {
+        const racingSession = await RacingSession.findById(racingSessionId)
+        if (!racingSession) {
+            throw new NodeNotFoundError(racingSessionId)
+        }
+
+        const sessionResult = await SessionResult.findById(sessionResultId)
+        if (!sessionResult) {
+            throw new NodeNotFoundError(sessionResultId)
+        }
+
+        const relationship = await getSpecificRel(racingSessionId, sessionResultId, RelationshipType.RacingSessionHasSessionResult)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(RacingSessionRelationship.hasSessionResult, racingSessionId, sessionResultId)
+        }
+
+        await deleteSpecificRel(racingSessionId, sessionResultId, RelationshipType.RacingSessionHasSessionResult)
+    }
+
     static async createHasImageRelationship(racingSessionId: number, imageId: number) {
         const racingSession = await RacingSession.findById(racingSessionId)
         if (!racingSession) {

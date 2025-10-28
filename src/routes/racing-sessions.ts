@@ -12,6 +12,7 @@ router.get('/racing-sessions/:racingSessionId/belongs-to-racing-event', RacingSe
 router.delete('/racing-sessions/:racingSessionId/belongs-to-racing-event/:racingEventId', RacingSessionController.deleteBelongsToRacingEventRelation)
 router.post('/racing-sessions/:racingSessionId/has-session-result/:sessionResultId', RacingSessionController.createHasSessionResultRelation)
 router.get('/racing-sessions/:racingSessionId/has-session-result', RacingSessionController.getAllHasSessionResultRelations)
+router.delete('/racing-sessions/:racingSessionId/has-session-result/:sessionResultId', RacingSessionController.deleteHasSessionResultRelation)
 router.post('/racing-sessions/:racingSessionId/has-image/:imageId', RacingSessionController.createHasImageRelation)
 router.get('/racing-sessions/:racingSessionId/has-image', RacingSessionController.getAllHasImageRelations)
 router.delete('/racing-sessions/:racingSessionId/has-image/:imageId', RacingSessionController.deleteHasImageRelation)
