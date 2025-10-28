@@ -275,4 +275,23 @@ export class LapTime {
 
         return relationship
     }
+
+    static async deleteHasPrimeImageRelationship(lapTimeId: number, imageId: number) {
+        const lapTime = await LapTime.findById(lapTimeId)
+        if (!lapTime) {
+            throw new NodeNotFoundError(lapTimeId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const relationship = await getSpecificRel(lapTimeId, imageId, RelationshipType.LapTimeHasPrimeImage)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(LapTimeRelationship.hasPrimeImage, lapTimeId, imageId)
+        }
+
+        await deleteSpecificRel(lapTimeId, imageId, RelationshipType.LapTimeHasPrimeImage)
+    }
 }

@@ -14,6 +14,7 @@ import {getAllHasImageRelations} from "./lap-times/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./lap-times/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./lap-times/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./lap-times/getHasPrimeImageRelation"
+import {deleteHasPrimeImageRelation} from "./lap-times/deleteHasPrimeImageRelation"
 
 export class LapTimeController {
     static async create(req: express.Request, res: express.Response) {
@@ -74,5 +75,9 @@ export class LapTimeController {
 
     static async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await getHasPrimeImageRelation(req, res)
+    }
+
+    static async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
+        await deleteHasPrimeImageRelation(req, res)
     }
 }
