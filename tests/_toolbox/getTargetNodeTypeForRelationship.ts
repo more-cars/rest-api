@@ -95,6 +95,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
         NodeTypeEnum.LAP_TIME, new Map([
             [RelationshipType.LapTimeBelongsToSessionResult, NodeTypeEnum.SESSION_RESULT],
             [RelationshipType.LapTimeAchievedOnTrackLayout, NodeTypeEnum.TRACK_LAYOUT],
+            [RelationshipType.LapTimeHasImage, NodeTypeEnum.IMAGE],
         ]))
 
     const match = relationships.get(startNodeType)?.get(relationshipName as RelationshipType)

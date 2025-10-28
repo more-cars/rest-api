@@ -85,4 +85,12 @@ describe('Lap Times', () => {
         expect(LapTimeController.deleteAchievedOnTrackLayoutRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-image‹ relationship', async () => {
+        await request(app)
+            .post('/lap-times/123/has-image/456')
+
+        expect(LapTimeController.createHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

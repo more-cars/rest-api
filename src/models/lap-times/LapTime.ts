@@ -20,6 +20,7 @@ import {getRel} from "../relationships/getRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {TrackLayout} from "../track-layouts/TrackLayout"
+import {Image} from "../images/Image"
 
 export class LapTime {
     static async create(data: CreateLapTimeInput): Promise<LapTimeNode> {
@@ -178,5 +179,30 @@ export class LapTime {
         }
 
         await deleteSpecificRel(lapTimeId, trackLayoutId, RelationshipType.LapTimeAchievedOnTrackLayout)
+    }
+
+    static async createHasImageRelationship(lapTimeId: number, imageId: number) {
+
+        const lapTime = await LapTime.findById(lapTimeId)
+        if (!lapTime) {
+            throw new NodeNotFoundError(lapTimeId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const existingRelation = await getSpecificRel(lapTimeId, imageId, RelationshipType.LapTimeHasImage)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(LapTimeRelationship.hasImage, lapTimeId, imageId)
+        }
+
+        const createdRelationship = await createRel(lapTimeId, imageId, RelationshipType.LapTimeHasImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 }
