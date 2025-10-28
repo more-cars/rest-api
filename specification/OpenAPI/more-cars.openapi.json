@@ -7580,6 +7580,47 @@
         }
       }
     },
+    "/lap-times/{lap-time-id}/achieved-on-track-layout": {
+      "get": {
+        "tags": [
+          "Lap Times"
+        ],
+        "summary": "Get the ›achieved-on-track-layout‹ relationship for the `Lap Time`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "lap-time-id",
+            "description": "ID of the `Lap Time`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›achieved-on-track-layout‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LapTimeAchievedOnTrackLayoutResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Lap Time` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/lap-times/{lap-time-id}/achieved-on-track-layout/{track-layout-id}": {
       "post": {
         "tags": [

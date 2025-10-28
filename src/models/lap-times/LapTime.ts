@@ -146,4 +146,18 @@ export class LapTime {
 
         return createdRelationship
     }
+
+    static async getAchievedOnTrackLayoutRelationship(lapTimeId: number) {
+        const lapTime = await LapTime.findById(lapTimeId)
+        if (!lapTime) {
+            throw new NodeNotFoundError(lapTimeId)
+        }
+
+        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeAchievedOnTrackLayout)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(LapTimeRelationship.achievedOnTrackLayout, lapTimeId, null)
+        }
+
+        return relationship
+    }
 }

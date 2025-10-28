@@ -69,4 +69,12 @@ describe('Lap Times', () => {
         expect(LapTimeController.createAchievedOnTrackLayoutRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›achieved-on-track-layout‹ relationship', async () => {
+        await request(app)
+            .get('/lap-times/123/achieved-on-track-layout')
+
+        expect(LapTimeController.getAchievedOnTrackLayoutRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
