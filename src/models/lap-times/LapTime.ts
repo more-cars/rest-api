@@ -6,6 +6,8 @@ import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/lap-times/getNodeById"
 import {getAllNodesOfType} from "../../db/nodes/lap-times/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
+import {deleteNode} from "../../db/nodes/deleteNode"
+import {NodeNotFoundError} from "../types/NodeNotFoundError"
 
 export class LapTime {
     static async create(data: CreateLapTimeInput): Promise<LapTimeNode> {
@@ -35,5 +37,14 @@ export class LapTime {
         })
 
         return nodes
+    }
+
+    static async delete(lapTimeId: number): Promise<void> {
+        const node = await LapTime.findById(lapTimeId)
+        if (!node) {
+            throw new NodeNotFoundError(lapTimeId)
+        }
+
+        await deleteNode(lapTimeId)
     }
 }

@@ -6,5 +6,6 @@ const router = express.Router()
 router.post('/lap-times', LapTimeController.create)
 router.get('/lap-times/:id', LapTimeController.getById)
 router.get('/lap-times', LapTimeController.getAll)
+router.delete('/lap-times/:id', LapTimeController.delete)
 
 export default router

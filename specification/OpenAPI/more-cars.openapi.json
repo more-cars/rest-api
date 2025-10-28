@@ -7141,6 +7141,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Lap Times"
+        ],
+        "summary": "Delete `Lap Time`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "lap-time-id",
+            "description": "ID of the `Lap Time`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Lap Time` successfully deleted."
+          },
+          "404": {
+            "description": "Deletion request failed. A `Lap Time` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/relationships/{relationship-id}": {
@@ -10305,11 +10337,11 @@
       },
       "LapTime": {
         "type": "object",
-        "required":         [
+        "required": [
           "time",
           "driver_name"
         ],
-        "properties":         {
+        "properties": {
           "id": {
             "type": "integer",
             "readOnly": true,
@@ -10368,7 +10400,7 @@
       },
       "LapTimeProperties": {
         "type": "string",
-        "enum":         [
+        "enum": [
           "id",
           "created_at",
           "updated_at",

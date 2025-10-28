@@ -29,4 +29,12 @@ describe('Lap Times', () => {
         expect(LapTimeController.getAll)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete Node', async () => {
+        await request(app)
+            .delete('/lap-times/123')
+
+        expect(LapTimeController.delete)
+            .toHaveBeenCalledTimes(1)
+    })
 })
