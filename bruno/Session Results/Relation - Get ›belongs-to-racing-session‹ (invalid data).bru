@@ -1,0 +1,15 @@
+meta {
+  name: Get ›belongs-to-racing-session‹ relation (invalid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/session-results/{{invalidSessionResultId}}/belongs-to-racing-session
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}

@@ -16,6 +16,8 @@ import {getSpecificRel} from "../relationships/getSpecificRel"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
 import {RelationshipType} from "../relationships/types/RelationshipType"
 import {SessionResultRelationship} from "./types/SessionResultRelationship"
+import {getRel} from "../relationships/getRel"
+import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 
 export class SessionResult {
     static async create(data: CreateSessionResultInput): Promise<SessionResultNode> {
@@ -81,5 +83,19 @@ export class SessionResult {
         }
 
         return createdRelationship
+    }
+
+    static async getBelongsToRacingSessionRelationship(sessionResultId: number) {
+        const sessionResult = await SessionResult.findById(sessionResultId)
+        if (!sessionResult) {
+            throw new NodeNotFoundError(sessionResultId)
+        }
+
+        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultBelongsToRacingSession)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(SessionResultRelationship.belongsToRacingSession, sessionResultId, null)
+        }
+
+        return relationship
     }
 }

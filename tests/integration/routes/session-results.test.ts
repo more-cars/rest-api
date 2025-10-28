@@ -45,4 +45,12 @@ describe('Session Results', () => {
         expect(SessionResultController.createBelongsToRacingSessionRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›belongs-to-racing-session‹ relationship', async () => {
+        await request(app)
+            .get('/session-results/123/belongs-to-racing-session')
+
+        expect(SessionResultController.getBelongsToRacingSessionRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
