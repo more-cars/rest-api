@@ -117,4 +117,12 @@ describe('Session Results', () => {
         expect(SessionResultController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .get('/session-results/123/has-prime-image')
+
+        expect(SessionResultController.getHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

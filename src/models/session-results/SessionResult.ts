@@ -256,4 +256,18 @@ export class SessionResult {
 
         return createdRelationship
     }
+
+    static async getHasPrimeImageRelationship(sessionResultId: number) {
+        const sessionResult = await SessionResult.findById(sessionResultId)
+        if (!sessionResult) {
+            throw new NodeNotFoundError(sessionResultId)
+        }
+
+        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultHasPrimeImage)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(SessionResultRelationship.hasPrimeImage, sessionResultId, null)
+        }
+
+        return relationship
+    }
 }
