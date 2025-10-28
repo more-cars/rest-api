@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {BrandNode} from "../../../../../../src/models/brands/types/BrandNode"
-import {marshalNode} from "../../../../../../src/controllers/brands/marshalling/marshalNode"
+import {BrandNode} from "../../../../../src/models/brands/types/BrandNode"
+import {marshalNode} from "../../../../../src/controllers/brands/marshalling/marshalNode"
 
 test("marshalling a BRAND node", async () => {
     const node: BrandNode = {

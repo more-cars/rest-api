@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CompanyNode} from "../../../../../../src/models/companies/types/CompanyNode"
-import {marshalNode} from "../../../../../../src/controllers/companies/marshalling/marshalNode"
+import {CompanyNode} from "../../../../../src/models/companies/types/CompanyNode"
+import {marshalNode} from "../../../../../src/controllers/companies/marshalling/marshalNode"
 
 test("marshalling a COMPANY node", async () => {
     const node: CompanyNode = {

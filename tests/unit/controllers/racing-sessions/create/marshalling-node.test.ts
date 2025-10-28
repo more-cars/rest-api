@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {RacingSessionNode} from "../../../../../../src/models/racing-sessions/types/RacingSessionNode"
-import {marshalNode} from "../../../../../../src/controllers/racing-sessions/marshalling/marshalNode"
+import {RacingSessionNode} from "../../../../../src/models/racing-sessions/types/RacingSessionNode"
+import {marshalNode} from "../../../../../src/controllers/racing-sessions/marshalling/marshalNode"
 
 test("marshalling a RACING SESSION node", async () => {
     const node: RacingSessionNode = {

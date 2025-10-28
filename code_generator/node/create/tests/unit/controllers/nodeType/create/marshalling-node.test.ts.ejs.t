@@ -1,5 +1,5 @@
 ---
-to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create/marshalling/marshalling-node.test.ts
+to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create/marshalling-node.test.ts
 ---
 <%
     let props = []
@@ -14,8 +14,8 @@ to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeTyp
     }
 -%>
 import {expect, test} from 'vitest'
-import {<%= h.changeCase.pascal(nodeType) %>Node} from "../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node"
-import {marshalNode} from "../../../../../../src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshalling/marshalNode"
+import {<%= h.changeCase.pascal(nodeType) %>Node} from "../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node"
+import {marshalNode} from "../../../../../src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshalling/marshalNode"
 
 test("marshalling a <%= h.changeCase.upper(nodeType) %> node", async () => {
     const node: <%= h.changeCase.pascal(nodeType) %>Node = {
