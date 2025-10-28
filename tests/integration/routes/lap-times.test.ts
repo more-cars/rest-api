@@ -77,4 +77,12 @@ describe('Lap Times', () => {
         expect(LapTimeController.getAchievedOnTrackLayoutRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›achieved-on-track-layout‹ relationship', async () => {
+        await request(app)
+            .delete('/lap-times/123/achieved-on-track-layout/456')
+
+        expect(LapTimeController.deleteAchievedOnTrackLayoutRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

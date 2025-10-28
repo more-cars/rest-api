@@ -8,6 +8,7 @@ import {getBelongsToSessionResultRelation} from "./lap-times/getBelongsToSession
 import {deleteBelongsToSessionResultRelation} from "./lap-times/deleteBelongsToSessionResultRelation"
 import {createAchievedOnTrackLayoutRelation} from "./lap-times/createAchievedOnTrackLayoutRelation"
 import {getAchievedOnTrackLayoutRelation} from "./lap-times/getAchievedOnTrackLayoutRelation"
+import {deleteAchievedOnTrackLayoutRelation} from "./lap-times/deleteAchievedOnTrackLayoutRelation"
 
 export class LapTimeController {
     static async create(req: express.Request, res: express.Response) {
@@ -44,5 +45,9 @@ export class LapTimeController {
 
     static async getAchievedOnTrackLayoutRelation(req: express.Request, res: express.Response) {
         await getAchievedOnTrackLayoutRelation(req, res)
+    }
+
+    static async deleteAchievedOnTrackLayoutRelation(req: express.Request, res: express.Response) {
+        await deleteAchievedOnTrackLayoutRelation(req, res)
     }
 }

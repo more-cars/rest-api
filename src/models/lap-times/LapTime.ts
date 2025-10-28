@@ -160,4 +160,23 @@ export class LapTime {
 
         return relationship
     }
+
+    static async deleteAchievedOnTrackLayoutRelationship(lapTimeId: number, trackLayoutId: number) {
+        const lapTime = await LapTime.findById(lapTimeId)
+        if (!lapTime) {
+            throw new NodeNotFoundError(lapTimeId)
+        }
+
+        const trackLayout = await TrackLayout.findById(trackLayoutId)
+        if (!trackLayout) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        const relationship = await getSpecificRel(lapTimeId, trackLayoutId, RelationshipType.LapTimeAchievedOnTrackLayout)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(LapTimeRelationship.achievedOnTrackLayout, lapTimeId, trackLayoutId)
+        }
+
+        await deleteSpecificRel(lapTimeId, trackLayoutId, RelationshipType.LapTimeAchievedOnTrackLayout)
+    }
 }
