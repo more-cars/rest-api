@@ -6,13 +6,14 @@ import {deleteNode} from "./racing-sessions/deleteNode"
 import {createBelongsToRacingEventRelation} from "./racing-sessions/createBelongsToRacingEventRelation"
 import {getBelongsToRacingEventRelation} from "./racing-sessions/getBelongsToRacingEventRelation"
 import {deleteBelongsToRacingEventRelation} from "./racing-sessions/deleteBelongsToRacingEventRelation"
+import {createHasSessionResultRelation} from "./racing-sessions/createHasSessionResultRelation"
+import {getAllHasSessionResultRelations} from "./racing-sessions/getAllHasSessionResultRelations"
 import {createHasImageRelation} from "./racing-sessions/createHasImageRelation"
 import {getAllHasImageRelations} from "./racing-sessions/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./racing-sessions/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./racing-sessions/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./racing-sessions/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./racing-sessions/deleteHasPrimeImageRelation"
-import {createHasSessionResultRelation} from "./racing-sessions/createHasSessionResultRelation"
 
 export class RacingSessionController {
     static async create(req: express.Request, res: express.Response) {
@@ -43,6 +44,14 @@ export class RacingSessionController {
         await deleteBelongsToRacingEventRelation(req, res)
     }
 
+    static async createHasSessionResultRelation(req: express.Request, res: express.Response) {
+        await createHasSessionResultRelation(req, res)
+    }
+
+    static async getAllHasSessionResultRelations(req: express.Request, res: express.Response) {
+        await getAllHasSessionResultRelations(req, res)
+    }
+
     static async createHasImageRelation(req: express.Request, res: express.Response) {
         await createHasImageRelation(req, res)
     }
@@ -65,9 +74,5 @@ export class RacingSessionController {
 
     static async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
-    }
-
-    static async createHasSessionResultRelation(req: express.Request, res: express.Response) {
-        await createHasSessionResultRelation(req, res)
     }
 }

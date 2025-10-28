@@ -149,6 +149,15 @@ export class RacingSession {
         return createdRelationship
     }
 
+    static async getAllHasSessionResultRelationships(racingSessionId: number) {
+        const racingSession = await RacingSession.findById(racingSessionId)
+        if (!racingSession) {
+            throw new NodeNotFoundError(racingSessionId)
+        }
+
+        return getAllRels(racingSessionId, RelationshipType.RacingSessionHasSessionResult)
+    }
+
     static async createHasImageRelationship(racingSessionId: number, imageId: number) {
         const racingSession = await RacingSession.findById(racingSessionId)
         if (!racingSession) {

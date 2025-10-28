@@ -6313,6 +6313,47 @@
         }
       }
     },
+    "/racing-sessions/{racing-session-id}/has-session-result": {
+      "get": {
+        "tags": [
+          "Racing Sessions"
+        ],
+        "summary": "Get all ›has-session-result‹ relationships for the `Racing Session`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-session-id",
+            "description": "ID of the `Racing Session`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-session-result‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RacingSessionHasSessionResultCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Racing Session` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/racing-sessions/{racing-session-id}/has-session-result/{session-result-id}": {
       "post": {
         "tags": [
@@ -9796,6 +9837,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/RacingSessionHasSessionResult"
+          }
+        }
+      },
+      "RacingSessionHasSessionResultCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RacingSessionHasSessionResultResponse"
+            }
           }
         }
       },
