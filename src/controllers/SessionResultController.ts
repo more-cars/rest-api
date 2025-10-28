@@ -10,6 +10,7 @@ import {createHasLapTimeRelation} from "./session-results/createHasLapTimeRelati
 import {getAllHasLapTimeRelations} from "./session-results/getAllHasLapTimeRelations"
 import {deleteHasLapTimeRelation} from "./session-results/deleteHasLapTimeRelation"
 import {createHasImageRelation} from "./session-results/createHasImageRelation"
+import {getAllHasImageRelations} from "./session-results/getAllHasImageRelations"
 
 export class SessionResultController {
     static async create(req: express.Request, res: express.Response) {
@@ -54,5 +55,9 @@ export class SessionResultController {
 
     static async createHasImageRelation(req: express.Request, res: express.Response) {
         await createHasImageRelation(req, res)
+    }
+
+    static async getAllHasImageRelations(req: express.Request, res: express.Response) {
+        await getAllHasImageRelations(req, res)
     }
 }

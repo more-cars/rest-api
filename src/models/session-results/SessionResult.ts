@@ -201,4 +201,13 @@ export class SessionResult {
 
         return createdRelationship
     }
+
+    static async getAllHasImageRelationships(sessionResultId: number) {
+        const sessionResult = await SessionResult.findById(sessionResultId)
+        if (!sessionResult) {
+            throw new NodeNotFoundError(sessionResultId)
+        }
+
+        return getAllRels(sessionResultId, RelationshipType.SessionResultHasImage)
+    }
 }

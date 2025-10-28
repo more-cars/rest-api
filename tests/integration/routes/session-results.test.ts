@@ -93,4 +93,12 @@ describe('Session Results', () => {
         expect(SessionResultController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›has-image‹ Relationships', async () => {
+        await request(app)
+            .get('/session-results/123/has-image')
+
+        expect(SessionResultController.getAllHasImageRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })
