@@ -13,4 +13,12 @@ describe('Lap Times', () => {
         expect(LapTimeController.create)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get Node by ID', async () => {
+        await request(app)
+            .get('/lap-times/123')
+
+        expect(LapTimeController.getById)
+            .toHaveBeenCalledTimes(1)
+    })
 })

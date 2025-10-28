@@ -1,0 +1,15 @@
+meta {
+  name: Get Lap Time by ID (invalid data)
+  type: http
+}
+
+get {
+  url: {{baseUrl}}/lap-times/{{invalidLapTimeId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
