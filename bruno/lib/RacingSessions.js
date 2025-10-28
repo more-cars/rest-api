@@ -1,6 +1,7 @@
 const {submitPostRequest, submitGetRequest} = require("./request")
 const {ensureValidRacingEventExists} = require("./RacingEvents")
 const {ensureValidImageExists} = require("./Images")
+const {ensureValidSessionResultExists} = require("./SessionResults")
 
 async function ensureValidRacingSessionExists() {
     if (!bru.getEnvVar('validRacingSessionId')) {
@@ -71,3 +72,17 @@ async function createRacingSessionHasPrimeImageRelationship(racingSessionId, ima
 }
 
 exports.createRacingSessionHasPrimeImageRelationship = createRacingSessionHasPrimeImageRelationship
+
+async function ensureRacingSessionHasSessionResultRelationshipExists() {
+    await ensureValidRacingSessionExists()
+    await ensureValidSessionResultExists()
+    await createRacingSessionHasSessionResultRelationship(bru.getEnvVar('validRacingSessionId'), bru.getEnvVar('validSessionResultId'))
+}
+
+exports.ensureRacingSessionHasSessionResultRelationshipExists = ensureRacingSessionHasSessionResultRelationshipExists
+
+async function createRacingSessionHasSessionResultRelationship(racingSessionId, sessionResultId) {
+    return submitPostRequest("/racing-sessions/" + racingSessionId + "/has-session-result/" + sessionResultId)
+}
+
+exports.createRacingSessionHasSessionResultRelationship = createRacingSessionHasSessionResultRelationship

@@ -79,6 +79,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
     relationships.set(
         NodeTypeEnum.RACING_SESSION, new Map([
             [RelationshipType.RacingSessionBelongsToRacingEvent, NodeTypeEnum.RACING_EVENT],
+            [RelationshipType.RacingSessionHasSessionResult, NodeTypeEnum.SESSION_RESULT],
             [RelationshipType.RacingSessionHasImage, NodeTypeEnum.IMAGE],
             [RelationshipType.RacingSessionHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
