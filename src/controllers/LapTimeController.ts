@@ -5,6 +5,7 @@ import {getAll} from "./lap-times/getAll"
 import {deleteNode} from "./lap-times/deleteNode"
 import {createBelongsToSessionResultRelation} from "./lap-times/createBelongsToSessionResultRelation"
 import {getBelongsToSessionResultRelation} from "./lap-times/getBelongsToSessionResultRelation"
+import {deleteBelongsToSessionResultRelation} from "./lap-times/deleteBelongsToSessionResultRelation"
 
 export class LapTimeController {
     static async create(req: express.Request, res: express.Response) {
@@ -29,5 +30,9 @@ export class LapTimeController {
 
     static async getBelongsToSessionResultRelation(req: express.Request, res: express.Response) {
         await getBelongsToSessionResultRelation(req, res)
+    }
+
+    static async deleteBelongsToSessionResultRelation(req: express.Request, res: express.Response) {
+        await deleteBelongsToSessionResultRelation(req, res)
     }
 }

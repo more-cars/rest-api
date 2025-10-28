@@ -53,4 +53,12 @@ describe('Lap Times', () => {
         expect(LapTimeController.getBelongsToSessionResultRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›belongs-to-session-result‹ relationship', async () => {
+        await request(app)
+            .delete('/lap-times/123/belongs-to-session-result/456')
+
+        expect(LapTimeController.deleteBelongsToSessionResultRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

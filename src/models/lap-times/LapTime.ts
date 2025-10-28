@@ -18,6 +18,7 @@ import {RelationshipType} from "../relationships/types/RelationshipType"
 import {LapTimeRelationship} from "./types/LapTimeRelationship"
 import {getRel} from "../relationships/getRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
+import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 
 export class LapTime {
     static async create(data: CreateLapTimeInput): Promise<LapTimeNode> {
@@ -97,5 +98,24 @@ export class LapTime {
         }
 
         return relationship
+    }
+
+    static async deleteBelongsToSessionResultRelationship(lapTimeId: number, sessionResultId: number) {
+        const lapTime = await LapTime.findById(lapTimeId)
+        if (!lapTime) {
+            throw new NodeNotFoundError(lapTimeId)
+        }
+
+        const sessionResult = await SessionResult.findById(sessionResultId)
+        if (!sessionResult) {
+            throw new NodeNotFoundError(sessionResultId)
+        }
+
+        const relationship = await getSpecificRel(lapTimeId, sessionResultId, RelationshipType.LapTimeBelongsToSessionResult)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(LapTimeRelationship.belongsToSessionResult, lapTimeId, sessionResultId)
+        }
+
+        await deleteSpecificRel(lapTimeId, sessionResultId, RelationshipType.LapTimeBelongsToSessionResult)
     }
 }
