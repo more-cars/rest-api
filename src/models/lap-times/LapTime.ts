@@ -21,6 +21,7 @@ import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {TrackLayout} from "../track-layouts/TrackLayout"
 import {Image} from "../images/Image"
+import {getAllRels} from "../relationships/getAllRels"
 
 export class LapTime {
     static async create(data: CreateLapTimeInput): Promise<LapTimeNode> {
@@ -204,5 +205,14 @@ export class LapTime {
         }
 
         return createdRelationship
+    }
+
+    static async getAllHasImageRelationships(lapTimeId: number) {
+        const lapTime = await LapTime.findById(lapTimeId)
+        if (!lapTime) {
+            throw new NodeNotFoundError(lapTimeId)
+        }
+
+        return getAllRels(lapTimeId, RelationshipType.LapTimeHasImage)
     }
 }

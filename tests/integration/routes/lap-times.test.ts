@@ -93,4 +93,12 @@ describe('Lap Times', () => {
         expect(LapTimeController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›has-image‹ Relationships', async () => {
+        await request(app)
+            .get('/lap-times/123/has-image')
+
+        expect(LapTimeController.getAllHasImageRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })

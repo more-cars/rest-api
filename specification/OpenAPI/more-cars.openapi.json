@@ -7715,6 +7715,47 @@
         }
       }
     },
+    "/lap-times/{lap-time-id}/has-image": {
+      "get": {
+        "tags": [
+          "Lap Times"
+        ],
+        "summary": "Get all ›has-image‹ relationships for the `Lap Time`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "lap-time-id",
+            "description": "ID of the `Lap Time`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-image‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LapTimeHasImageCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Lap Time` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/lap-times/{lap-time-id}/has-image/{image-id}": {
       "post": {
         "tags": [
@@ -11260,6 +11301,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/LapTimeHasImage"
+          }
+        }
+      },
+      "LapTimeHasImageCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LapTimeHasImageResponse"
+            }
           }
         }
       },
