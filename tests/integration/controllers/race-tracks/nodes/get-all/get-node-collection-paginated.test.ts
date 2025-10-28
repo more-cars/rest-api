@@ -12,7 +12,7 @@ describe('Expecting correct status code when requesting a paginated node collect
         RaceTrack.findAll = vi.fn().mockReturnValue([])
 
         const response = await request(app)
-            .get('/race-tracks?page=1')
+            .get('/race-tracks?page=' + page)
 
         expect(response.statusCode)
             .toBe(200)
