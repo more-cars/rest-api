@@ -6710,6 +6710,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Session Results"
+        ],
+        "summary": "Delete `Session Result`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session-result-id",
+            "description": "ID of the `Session Result`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Session Result` successfully deleted."
+          },
+          "404": {
+            "description": "Deletion request failed. A `Session Result` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/relationships/{relationship-id}": {
@@ -9658,11 +9690,11 @@
       },
       "SessionResult": {
         "type": "object",
-        "required":         [
+        "required": [
           "position",
           "driver_name"
         ],
-        "properties":         {
+        "properties": {
           "id": {
             "type": "integer",
             "readOnly": true,
@@ -9746,7 +9778,7 @@
       },
       "SessionResultProperties": {
         "type": "string",
-        "enum":         [
+        "enum": [
           "id",
           "created_at",
           "updated_at",

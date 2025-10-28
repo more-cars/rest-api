@@ -6,6 +6,8 @@ import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/session-results/getNodeById"
 import {getAllNodesOfType} from "../../db/nodes/session-results/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
+import {deleteNode} from "../../db/nodes/deleteNode"
+import {NodeNotFoundError} from "../types/NodeNotFoundError"
 
 export class SessionResult {
     static async create(data: CreateSessionResultInput): Promise<SessionResultNode> {
@@ -35,5 +37,14 @@ export class SessionResult {
         })
 
         return nodes
+    }
+
+    static async delete(sessionResultId: number): Promise<void> {
+        const node = await SessionResult.findById(sessionResultId)
+        if (!node) {
+            throw new NodeNotFoundError(sessionResultId)
+        }
+
+        await deleteNode(sessionResultId)
     }
 }

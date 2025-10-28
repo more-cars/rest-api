@@ -29,4 +29,12 @@ describe('Session Results', () => {
         expect(SessionResultController.getAll)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete Node', async () => {
+        await request(app)
+            .delete('/session-results/123')
+
+        expect(SessionResultController.delete)
+            .toHaveBeenCalledTimes(1)
+    })
 })
