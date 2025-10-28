@@ -101,4 +101,12 @@ describe('Lap Times', () => {
         expect(LapTimeController.getAllHasImageRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-image‹ relationship', async () => {
+        await request(app)
+            .delete('/lap-times/123/has-image/456')
+
+        expect(LapTimeController.deleteHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
