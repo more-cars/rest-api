@@ -1,0 +1,19 @@
+import {expect, test, vi} from 'vitest'
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {TrackLayout} from "../../../../../../../src/models/track-layouts/TrackLayout"
+
+test('A completely valid request, but the database call fails (e.g. one of the nodes was deleted just a moment ago)', async () => {
+    vi.mock("../../../../../../../src/db/relationships/createRelationship", async () => {
+        return {
+            createRelationship: () => false
+        }
+    })
+
+    const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
+    const lapTime = await seedNode(NodeTypeEnum.LAP_TIME)
+
+    await expect(TrackLayout.createHasLapTimeRelationship(trackLayout.id, lapTime.id))
+        .rejects
+        .toThrow(Error)
+})

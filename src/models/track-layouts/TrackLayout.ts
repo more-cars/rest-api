@@ -22,6 +22,7 @@ import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {Image} from "../images/Image"
 import {getAllRels} from "../relationships/getAllRels"
 import {RacingEvent} from "../racing-events/RacingEvent"
+import {LapTime} from "../lap-times/LapTime"
 
 export class TrackLayout {
     static async create(data: CreateTrackLayoutInput): Promise<TrackLayoutNode> {
@@ -175,6 +176,33 @@ export class TrackLayout {
         }
 
         await deleteSpecificRel(trackLayoutId, racingEventId, RelationshipType.TrackLayoutWasUsedByRacingEvent)
+    }
+
+    static async createHasLapTimeRelationship(trackLayoutId: number, lapTimeId: number) {
+
+        const trackLayout = await TrackLayout.findById(trackLayoutId)
+        if (!trackLayout) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        const lapTime = await LapTime.findById(lapTimeId)
+        if (!lapTime) {
+            throw new NodeNotFoundError(lapTimeId)
+        }
+
+        const existingRelation = await getSpecificRel(trackLayoutId, lapTimeId, RelationshipType.TrackLayoutHasLapTime)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(TrackLayoutRelationship.hasLapTime, trackLayoutId, lapTimeId)
+        }
+
+        await deleteDeprecatedRelationship(lapTimeId, DbRelationship.TrackLayoutHasLapTime)
+
+        const createdRelationship = await createRel(trackLayoutId, lapTimeId, RelationshipType.TrackLayoutHasLapTime)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 
     static async createHasImageRelationship(trackLayoutId: number, imageId: number) {

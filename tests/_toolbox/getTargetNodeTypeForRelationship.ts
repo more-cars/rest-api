@@ -42,6 +42,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
         NodeTypeEnum.TRACK_LAYOUT, new Map([
             [RelationshipType.TrackLayoutBelongsToRaceTrack, NodeTypeEnum.RACE_TRACK],
             [RelationshipType.TrackLayoutWasUsedByRacingEvent, NodeTypeEnum.RACING_EVENT],
+            [RelationshipType.TrackLayoutHasLapTime, NodeTypeEnum.LAP_TIME],
             [RelationshipType.TrackLayoutHasImage, NodeTypeEnum.IMAGE],
             [RelationshipType.TrackLayoutHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))

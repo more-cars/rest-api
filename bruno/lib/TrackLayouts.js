@@ -2,6 +2,7 @@ const {submitPostRequest, submitGetRequest} = require("./request")
 const {ensureValidRaceTrackExists} = require("./RaceTracks")
 const {ensureValidImageExists} = require("./Images")
 const {ensureValidRacingEventExists} = require("./RacingEvents")
+const {ensureValidLapTimeExists} = require("./LapTimes")
 
 async function ensureValidTrackLayoutExists() {
     if (!bru.getEnvVar('validTrackLayoutId')) {
@@ -87,3 +88,17 @@ async function createTrackLayoutHasPrimeImageRelationship(trackLayoutId, imageId
 }
 
 exports.createTrackLayoutHasPrimeImageRelationship = createTrackLayoutHasPrimeImageRelationship
+
+async function ensureTrackLayoutHasLapTimeRelationshipExists() {
+    await ensureValidTrackLayoutExists()
+    await ensureValidLapTimeExists()
+    await createTrackLayoutHasLapTimeRelationship(bru.getEnvVar('validTrackLayoutId'), bru.getEnvVar('validLapTimeId'))
+}
+
+exports.ensureTrackLayoutHasLapTimeRelationshipExists = ensureTrackLayoutHasLapTimeRelationshipExists
+
+async function createTrackLayoutHasLapTimeRelationship(trackLayoutId, lapTimeId) {
+    return submitPostRequest("/track-layouts/" + trackLayoutId + "/has-lap-time/" + lapTimeId)
+}
+
+exports.createTrackLayoutHasLapTimeRelationship = createTrackLayoutHasLapTimeRelationship
