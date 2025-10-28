@@ -40,7 +40,7 @@ export function validate(data: Create<%= h.changeCase.pascal(nodeType) %>RawInpu
     if (!isMandatoryString(data.<%= prop -%>)) {
 <% } else if (properties[prop].datatype === 'string') { %>
     if (!isOptionalString(data.<%= prop -%>)) {
-<% if (properties[prop].mandatory && properties[prop].datatype === 'number') { %>
+<% } else if (properties[prop].mandatory && properties[prop].datatype === 'number') { %>
     if (!isMandatoryNumber(data.<%= prop -%>)) {
 <% } else if (properties[prop].datatype === 'number') { %>
     if (!isOptionalNumber(data.<%= prop -%>)) {

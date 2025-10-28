@@ -1,0 +1,19 @@
+meta {
+  name: Create Lap Time (invalid data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/lap-times
+  body: json
+  auth: none
+}
+
+body:json {
+  {}
+}
+
+assert {
+  res.status: 400
+  res.body: isString
+}

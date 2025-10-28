@@ -31,14 +31,14 @@ import {sanitize} from "../../../../../src/controllers/<%= h.changeCase.kebab(h.
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
         const data: Create<%= h.changeCase.pascal(nodeType) %>Input = {
-    <%- props_in.map(line => '        ' + line).join(',\n') %>,
+<%- props_in.map(line => '            ' + line).join(',\n') %>,
         }
 
         const result = sanitize(data)
 
         expect(result)
             .toStrictEqual({
-    <%- props_out.map(line => '            ' + line).join(',\n') %>,
+<%- props_out.map(line => '                ' + line).join(',\n') %>,
             })
     })
 })

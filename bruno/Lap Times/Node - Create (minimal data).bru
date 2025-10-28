@@ -1,0 +1,23 @@
+meta {
+  name: Create Lap Time (minimal data)
+  type: http
+}
+
+post {
+  url: {{baseUrl}}/lap-times
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "time": "PT1M33.294S",
+    "driver_name": "Klaus Ludwig"
+  }
+}
+
+assert {
+  res.status: 201
+  res.body: isJson
+  res.body.data.id: gte 12000000
+}

@@ -9,6 +9,7 @@ import {seedRacingSeries} from "./racing-series/nodes/seedRacingSeries"
 import {seedRacingEvent} from "./racing-events/nodes/seedRacingEvent"
 import {seedRacingSession} from "./racing-sessions/nodes/seedRacingSession"
 import {seedSessionResult} from "./session-results/nodes/seedSessionResult"
+import {seedLapTime} from "./lap-times/nodes/seedLapTime"
 import {seedImage} from "./images/nodes/seedImage"
 
 export async function seedNode(nodeType: NodeTypeEnum, customFakeData: object = {}) {
@@ -31,6 +32,8 @@ export async function seedNode(nodeType: NodeTypeEnum, customFakeData: object = 
             return seedRacingSession(customFakeData)
         case NodeTypeEnum.SESSION_RESULT:
             return seedSessionResult(customFakeData)
+        case NodeTypeEnum.LAP_TIME:
+            return seedLapTime(customFakeData)
         case NodeTypeEnum.IMAGE:
             return await seedImage(customFakeData)
         default:
