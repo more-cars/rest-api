@@ -214,6 +214,25 @@ export class TrackLayout {
         return getAllRels(trackLayoutId, RelationshipType.TrackLayoutHasLapTime)
     }
 
+    static async deleteHasLapTimeRelationship(trackLayoutId: number, lapTimeId: number) {
+        const trackLayout = await TrackLayout.findById(trackLayoutId)
+        if (!trackLayout) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        const lapTime = await LapTime.findById(lapTimeId)
+        if (!lapTime) {
+            throw new NodeNotFoundError(lapTimeId)
+        }
+
+        const relationship = await getSpecificRel(trackLayoutId, lapTimeId, RelationshipType.TrackLayoutHasLapTime)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(TrackLayoutRelationship.hasLapTime, trackLayoutId, lapTimeId)
+        }
+
+        await deleteSpecificRel(trackLayoutId, lapTimeId, RelationshipType.TrackLayoutHasLapTime)
+    }
+
     static async createHasImageRelationship(trackLayoutId: number, imageId: number) {
 
         const trackLayout = await TrackLayout.findById(trackLayoutId)

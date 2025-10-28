@@ -15,6 +15,7 @@ router.get('/track-layouts/:trackLayoutId/was-used-by-racing-event', TrackLayout
 router.delete('/track-layouts/:trackLayoutId/was-used-by-racing-event/:racingEventId', TrackLayoutController.deleteWasUsedByRacingEventRelation)
 router.post('/track-layouts/:trackLayoutId/has-lap-time/:lapTimeId', TrackLayoutController.createHasLapTimeRelation)
 router.get('/track-layouts/:trackLayoutId/has-lap-time', TrackLayoutController.getAllHasLapTimeRelations)
+router.delete('/track-layouts/:trackLayoutId/has-lap-time/:lapTimeId', TrackLayoutController.deleteHasLapTimeRelation)
 router.post('/track-layouts/:trackLayoutId/has-image/:imageId', TrackLayoutController.createHasImageRelation)
 router.get('/track-layouts/:trackLayoutId/has-image', TrackLayoutController.getAllHasImageRelations)
 router.delete('/track-layouts/:trackLayoutId/has-image/:imageId', TrackLayoutController.deleteHasImageRelation)
