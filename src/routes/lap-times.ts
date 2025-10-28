@@ -16,5 +16,6 @@ router.delete('/lap-times/:lapTimeId/achieved-on-track-layout/:trackLayoutId', L
 router.post('/lap-times/:lapTimeId/has-image/:imageId', LapTimeController.createHasImageRelation)
 router.get('/lap-times/:lapTimeId/has-image', LapTimeController.getAllHasImageRelations)
 router.delete('/lap-times/:lapTimeId/has-image/:imageId', LapTimeController.deleteHasImageRelation)
+router.post('/lap-times/:lapTimeId/has-prime-image/:imageId', LapTimeController.createHasPrimeImageRelation)
 
 export default router

@@ -234,4 +234,31 @@ export class LapTime {
 
         await deleteSpecificRel(lapTimeId, imageId, RelationshipType.LapTimeHasImage)
     }
+
+    static async createHasPrimeImageRelationship(lapTimeId: number, imageId: number) {
+
+        const lapTime = await LapTime.findById(lapTimeId)
+        if (!lapTime) {
+            throw new NodeNotFoundError(lapTimeId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const existingRelation = await getSpecificRel(lapTimeId, imageId, RelationshipType.LapTimeHasPrimeImage)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(LapTimeRelationship.hasPrimeImage, lapTimeId, imageId)
+        }
+
+        await deleteDeprecatedRelationship(lapTimeId, DbRelationship.LapTimeHasPrimeImage)
+
+        const createdRelationship = await createRel(lapTimeId, imageId, RelationshipType.LapTimeHasPrimeImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    }
 }

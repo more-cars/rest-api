@@ -45,6 +45,7 @@ export function getDbRelationshipType(relationshipType: RelationshipType): DbRel
         [RelationshipType.LapTimeBelongsToSessionResult, DbRelationship.LapTimeBelongsToSessionResult],
         [RelationshipType.LapTimeAchievedOnTrackLayout, DbRelationship.LapTimeAchievedOnTrackLayout],
         [RelationshipType.LapTimeHasImage, DbRelationship.LapTimeHasImage],
+        [RelationshipType.LapTimeHasPrimeImage, DbRelationship.LapTimeHasPrimeImage],
         [RelationshipType.ImageBelongsToNode, DbRelationship.ImageBelongsToNode],
     ])
 

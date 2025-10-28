@@ -12,6 +12,7 @@ import {deleteAchievedOnTrackLayoutRelation} from "./lap-times/deleteAchievedOnT
 import {createHasImageRelation} from "./lap-times/createHasImageRelation"
 import {getAllHasImageRelations} from "./lap-times/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./lap-times/deleteHasImageRelation"
+import {createHasPrimeImageRelation} from "./lap-times/createHasPrimeImageRelation"
 
 export class LapTimeController {
     static async create(req: express.Request, res: express.Response) {
@@ -64,5 +65,9 @@ export class LapTimeController {
 
     static async deleteHasImageRelation(req: express.Request, res: express.Response) {
         await deleteHasImageRelation(req, res)
+    }
+
+    static async createHasPrimeImageRelation(req: express.Request, res: express.Response) {
+        await createHasPrimeImageRelation(req, res)
     }
 }

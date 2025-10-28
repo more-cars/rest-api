@@ -51,4 +51,5 @@ export enum DbRelationship {
     LapTimeBelongsToSessionResult = 'HAS_LAP_TIME',
     LapTimeAchievedOnTrackLayout = 'HAS_LAP_TIME',
     LapTimeHasImage = 'HAS_IMAGE',
+    LapTimeHasPrimeImage = 'HAS_PRIME_IMAGE',
 }

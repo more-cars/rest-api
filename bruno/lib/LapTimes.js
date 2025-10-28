@@ -73,3 +73,17 @@ async function createLapTimeHasImageRelationship(lapTimeId, imageId) {
 }
 
 exports.createLapTimeHasImageRelationship = createLapTimeHasImageRelationship
+
+async function ensureLapTimeHasPrimeImageRelationshipExists() {
+    await ensureValidLapTimeExists()
+    await ensureValidImageExists()
+    await createLapTimeHasPrimeImageRelationship(bru.getEnvVar('validLapTimeId'), bru.getEnvVar('validImageId'))
+}
+
+exports.ensureLapTimeHasPrimeImageRelationshipExists = ensureLapTimeHasPrimeImageRelationshipExists
+
+async function createLapTimeHasPrimeImageRelationship(lapTimeId, imageId) {
+    return submitPostRequest("/lap-times/" + lapTimeId + "/has-prime-image/" + imageId)
+}
+
+exports.createLapTimeHasPrimeImageRelationship = createLapTimeHasPrimeImageRelationship
