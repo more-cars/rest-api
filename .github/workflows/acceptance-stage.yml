@@ -10,10 +10,3 @@ jobs:
       environment: testing
       version: ${{ github.sha }}
     secrets: inherit
-
-  run-integration-tests:
-    uses: ./.github/workflows/run-integration-tests.yml
-    with:
-      environment: testing
-      version: ${{ github.sha }}
-    secrets: inherit
