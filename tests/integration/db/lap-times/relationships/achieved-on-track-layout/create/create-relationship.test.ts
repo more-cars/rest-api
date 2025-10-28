@@ -3,7 +3,7 @@ import {createRelationship} from "../../../../../../../src/db/relationships/crea
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {LapTimeRelationship} from "../../../../../../../src/models/lap-times/types/LapTimeRelationship"
+import {TrackLayoutRelationship} from "../../../../../../../src/models/track-layouts/types/TrackLayoutRelationship"
 
 describe('Creating a ›achieved-on-track-layout‹ relationship', () => {
     test('with valid data', async () => {
@@ -11,19 +11,19 @@ describe('Creating a ›achieved-on-track-layout‹ relationship', () => {
         const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
 
         const createdRelationship = await createRelationship(
-            lapTime.id,
             trackLayout.id,
+            lapTime.id,
             DbRelationship.LapTimeAchievedOnTrackLayout,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node_id', lapTime.id)
+            .toHaveProperty('start_node_id', trackLayout.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node_id', trackLayout.id)
+            .toHaveProperty('end_node_id', lapTime.id)
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', LapTimeRelationship.achievedOnTrackLayout)
+            .toHaveProperty('relationship_name', TrackLayoutRelationship.hasLapTime)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)
