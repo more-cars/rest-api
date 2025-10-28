@@ -96,7 +96,9 @@ async function determineDeleteRelationships() {
 function isRelationshipReversedInOldDb(newRelationshipType: DbRelationship) {
     return [
         DbRelationship.CarModelHasSuccessor,
+        DbRelationship.TrackLayoutHasLapTime,
         DbRelationship.RacingEventIsFollowedByEvent,
+        DbRelationship.SessionResultHasLapTime,
         DbRelationship.NodeHasPrimeImage,
     ].includes(newRelationshipType)
 }

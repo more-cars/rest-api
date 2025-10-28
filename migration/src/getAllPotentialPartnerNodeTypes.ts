@@ -20,6 +20,7 @@ export function getAllPotentialPartnerNodeTypes() {
             NodeTypeLabel.Image,
         ]],
         [NodeTypeLabel.TrackLayout, [
+            NodeTypeLabel.LapTime,
             NodeTypeLabel.Image,
         ]],
         [NodeTypeLabel.RacingSeries, [
@@ -30,6 +31,18 @@ export function getAllPotentialPartnerNodeTypes() {
             NodeTypeLabel.RacingEvent,
             NodeTypeLabel.RaceTrack,
             NodeTypeLabel.TrackLayout,
+            NodeTypeLabel.RacingSession,
+            NodeTypeLabel.Image,
+        ]],
+        [NodeTypeLabel.RacingSession, [
+            NodeTypeLabel.SessionResult,
+            NodeTypeLabel.Image,
+        ]],
+        [NodeTypeLabel.SessionResult, [
+            NodeTypeLabel.LapTime,
+            NodeTypeLabel.Image,
+        ]],
+        [NodeTypeLabel.LapTime, [
             NodeTypeLabel.Image,
         ]],
     ])

@@ -80,12 +80,17 @@ export function getAllRelationshipTypes() {
                 NodeTypeLabel.TrackLayout, new Map(
                 [
                     [
-                        NodeTypeLabel.Image,
+                        NodeTypeLabel.LapTime,
                         [
-                            DbRelationship.TrackLayoutHasImage,
-                            DbRelationship.TrackLayoutHasPrimeImage,
+                            DbRelationship.TrackLayoutHasLapTime,
                         ],
+                    ], [
+                    NodeTypeLabel.Image,
+                    [
+                        DbRelationship.TrackLayoutHasImage,
+                        DbRelationship.TrackLayoutHasPrimeImage,
                     ],
+                ],
                 ])
             ],
             [
@@ -128,10 +133,64 @@ export function getAllRelationshipTypes() {
                         ],
                     ],
                     [
+                        NodeTypeLabel.RacingSession,
+                        [
+                            DbRelationship.RacingEventHasRacingSession,
+                        ],
+                    ],
+                    [
                         NodeTypeLabel.Image,
                         [
                             DbRelationship.RacingEventHasImage,
                             DbRelationship.RacingEventHasPrimeImage,
+                        ],
+                    ],
+                ])
+            ],
+            [
+                NodeTypeLabel.RacingSession, new Map(
+                [
+                    [
+                        NodeTypeLabel.SessionResult,
+                        [
+                            DbRelationship.RacingSessionHasSessionResult,
+                        ],
+                    ],
+                    [
+                        NodeTypeLabel.Image,
+                        [
+                            DbRelationship.RacingSessionHasImage,
+                            DbRelationship.RacingSessionHasPrimeImage,
+                        ],
+                    ],
+                ])
+            ],
+            [
+                NodeTypeLabel.SessionResult, new Map(
+                [
+                    [
+                        NodeTypeLabel.LapTime,
+                        [
+                            DbRelationship.SessionResultHasLapTime,
+                        ],
+                    ],
+                    [
+                        NodeTypeLabel.Image,
+                        [
+                            DbRelationship.SessionResultHasImage,
+                            DbRelationship.SessionResultHasPrimeImage,
+                        ],
+                    ],
+                ])
+            ],
+            [
+                NodeTypeLabel.LapTime, new Map(
+                [
+                    [
+                        NodeTypeLabel.Image,
+                        [
+                            DbRelationship.LapTimeHasImage,
+                            DbRelationship.LapTimeHasPrimeImage,
                         ],
                     ],
                 ])

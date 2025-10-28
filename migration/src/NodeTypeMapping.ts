@@ -9,5 +9,8 @@ export const NodeTypeMapping = new Map<NodeTypeLabel, NodeTypeLabelOld>([
     [NodeTypeLabel.TrackLayout, NodeTypeLabelOld.TrackLayout],
     [NodeTypeLabel.RacingSeries, NodeTypeLabelOld.RacingSeries],
     [NodeTypeLabel.RacingEvent, NodeTypeLabelOld.RacingEvent],
+    [NodeTypeLabel.RacingSession, NodeTypeLabelOld.RacingSession],
+    [NodeTypeLabel.SessionResult, NodeTypeLabelOld.SessionResult],
+    [NodeTypeLabel.LapTime, NodeTypeLabelOld.LapTime],
     [NodeTypeLabel.Image, NodeTypeLabelOld.Image],
 ])
