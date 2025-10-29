@@ -9,7 +9,7 @@ export async function getTestVersion(testRunner: string, targetCluster: string, 
         return ''
     }
 
-    return await promptUser()
+    return promptUser()
 }
 
 async function promptUser() {

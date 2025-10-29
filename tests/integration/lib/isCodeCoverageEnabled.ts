@@ -9,7 +9,7 @@ export async function isCodeCoverageEnabled(override: string | undefined): Promi
         return false
     }
 
-    return await promptUser()
+    return promptUser()
 }
 
 async function promptUser() {

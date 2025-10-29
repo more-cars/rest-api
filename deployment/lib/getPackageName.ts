@@ -5,7 +5,7 @@ export async function getPackageName(override: string | undefined) {
         return override
     }
 
-    return await promptUser()
+    return promptUser()
 }
 
 async function promptUser() {

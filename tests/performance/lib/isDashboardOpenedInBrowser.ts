@@ -13,7 +13,7 @@ export async function isDashboardOpenedInBrowser(testRunner: string, override: s
         return false
     }
 
-    return await promptUser()
+    return promptUser()
 }
 
 async function promptUser() {

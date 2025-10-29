@@ -5,7 +5,7 @@ export async function getTargetEnvironment(override: string | undefined, cluster
         return override
     }
 
-    return await promptUser(cluster)
+    return promptUser(cluster)
 }
 
 async function promptUser(cluster: string) {

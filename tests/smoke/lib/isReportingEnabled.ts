@@ -9,7 +9,7 @@ export async function isReportingEnabled(override: string | undefined): Promise<
         return false
     }
 
-    return await promptUser()
+    return promptUser()
 }
 
 async function promptUser() {

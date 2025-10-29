@@ -19,5 +19,5 @@ export async function seedCarModelMinimal() {
         total_production: null
     }
 
-    return await createNode(carModelData)
+    return createNode(carModelData)
 }

@@ -15,15 +15,15 @@ import {seedImage} from "./images/nodes/seedImage"
 export async function seedNode(nodeType: NodeTypeEnum, customFakeData: object = {}) {
     switch (nodeType) {
         case NodeTypeEnum.COMPANY:
-            return await seedCompany(customFakeData)
+            return seedCompany(customFakeData)
         case NodeTypeEnum.BRAND:
-            return await seedBrand(customFakeData)
+            return seedBrand(customFakeData)
         case NodeTypeEnum.CAR_MODEL:
-            return await seedCarModel(customFakeData)
+            return seedCarModel(customFakeData)
         case NodeTypeEnum.RACE_TRACK:
-            return await seedRaceTrack(customFakeData)
+            return seedRaceTrack(customFakeData)
         case NodeTypeEnum.TRACK_LAYOUT:
-            return await seedTrackLayout(customFakeData)
+            return seedTrackLayout(customFakeData)
         case NodeTypeEnum.RACING_SERIES:
             return seedRacingSeries(customFakeData)
         case NodeTypeEnum.RACING_EVENT:
@@ -35,7 +35,7 @@ export async function seedNode(nodeType: NodeTypeEnum, customFakeData: object = 
         case NodeTypeEnum.LAP_TIME:
             return seedLapTime(customFakeData)
         case NodeTypeEnum.IMAGE:
-            return await seedImage(customFakeData)
+            return seedImage(customFakeData)
         default:
             assert.fail(`Node type "${nodeType}" is invalid or unknown`)
     }

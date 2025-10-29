@@ -5,7 +5,7 @@ export async function getTargetCluster(migrationRunner: string, override: string
         return override
     }
 
-    return await promptUser(migrationRunner)
+    return promptUser(migrationRunner)
 }
 
 async function promptUser(testRunner: string) {
