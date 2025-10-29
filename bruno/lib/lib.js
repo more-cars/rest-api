@@ -10,3 +10,5 @@ exports.SessionResults = require('./SessionResults.js')
 exports.LapTimes = require('./LapTimes.js')
 exports.Images = require('./Images.js')
 exports.Relationships = require('./Relationships.js')
+
+exports.tools = require('./tools.js')

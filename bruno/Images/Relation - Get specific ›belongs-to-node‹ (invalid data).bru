@@ -22,3 +22,7 @@ assert {
 script:pre-request {
   await lib.Brands.ensureValidBrandExists()
 }
+
+script:pre-request {
+  lib.tools.generateInvalidId('Image')
+}

@@ -1,5 +1,5 @@
 ---
-to: bruno/<%= h.inflection.pluralize(h.changeCase.title(startNodeType)) %>/Relation - Get specific ›<%= h.changeCase.kebab(relationshipName) %>‹ (invalid data).bru
+to: bruno/<%= h.changeCase.title(h.inflection.pluralize(startNodeType)) %>/Relation - Get specific ›<%= h.changeCase.kebab(relationshipName) %>‹ (invalid data).bru
 ---
 meta {
   name: Get specific ›<%= h.changeCase.lower(relationshipName) %>‹ relation (invalid data)
@@ -12,7 +12,7 @@ meta {
 }
 
 get {
-  url: {{baseUrl}}/<%= h.inflection.pluralize(h.changeCase.kebab(startNodeType)) %>/{{invalid<%= h.changeCase.pascal(startNodeType) %>Id}}/<%= h.changeCase.kebab(relationshipName) %>/{{invalid<%= h.changeCase.pascal(endNodeType) %>Id}}
+  url: {{baseUrl}}/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/{{invalid<%= h.changeCase.pascal(startNodeType) %>Id}}/<%= h.changeCase.kebab(relationshipName) %>/{{invalid<%= h.changeCase.pascal(endNodeType) %>Id}}
   body: none
   auth: none
 }
@@ -20,4 +20,9 @@ get {
 assert {
   res.status: 404
   res.body: isString
+}
+
+script:pre-request {
+  lib.tools.generateInvalidId('<%= h.changeCase.pascal(startNodeType) %>')
+  lib.tools.generateInvalidId('<%= h.changeCase.pascal(endNodeType) %>')
 }

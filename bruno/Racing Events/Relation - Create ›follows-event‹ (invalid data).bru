@@ -9,7 +9,7 @@ meta {
 }
 
 post {
-  url: {{baseUrl}}/racing-events/{{invalidRacingEventId}}/follows-event/{{invalidBrandId}}
+  url: {{baseUrl}}/racing-events/{{invalidRacingEventId}}/follows-event/{{invalidSecondRacingEventId}}
   body: none
   auth: none
 }
@@ -17,4 +17,9 @@ post {
 assert {
   res.status: 404
   res.body: isString
+}
+
+script:pre-request {
+  lib.tools.generateInvalidId('RacingEvent')
+  lib.tools.generateSecondInvalidId('RacingEvent')
 }

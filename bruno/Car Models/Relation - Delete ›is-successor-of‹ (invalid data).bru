@@ -9,7 +9,7 @@ meta {
 }
 
 delete {
-  url: {{baseUrl}}/car-models/{{invalidCarModelId}}/is-successor-of/{{invalidBrandId}}
+  url: {{baseUrl}}/car-models/{{invalidCarModelId}}/is-successor-of/{{invalidSecondCarModelId}}
   body: none
   auth: none
 }
@@ -17,4 +17,9 @@ delete {
 assert {
   res.status: 404
   res.body: isString
+}
+
+script:pre-request {
+  lib.tools.generateInvalidId('CarModel')
+  lib.tools.generateSecondInvalidId('CarModel')
 }

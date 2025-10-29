@@ -12,7 +12,7 @@ meta {
 }
 
 delete {
-  url: {{baseUrl}}/<%= h.inflection.pluralize(h.changeCase.kebab(nodeType)) %>/{{valid<%= h.changeCase.pascal(nodeType) %>Id}}
+  url: {{baseUrl}}/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/{{valid<%= h.changeCase.pascal(nodeType) %>Id}}
   body: none
   auth: none
 }

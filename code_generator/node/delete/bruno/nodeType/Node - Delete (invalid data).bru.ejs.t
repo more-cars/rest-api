@@ -1,5 +1,5 @@
 ---
-to: bruno/<%= h.inflection.pluralize(h.changeCase.title(nodeType)) %>/Node - Delete (invalid data).bru
+to: bruno/<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>/Node - Delete (invalid data).bru
 ---
 meta {
   name: Delete <%= h.changeCase.title(nodeType) %> (invalid data)
@@ -12,7 +12,7 @@ meta {
 }
 
 delete {
-  url: {{baseUrl}}/<%= h.inflection.pluralize(h.changeCase.kebab(nodeType)) %>/{{invalid<%= h.changeCase.pascal(nodeType) %>Id}}
+  url: {{baseUrl}}/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/{{invalid<%= h.changeCase.pascal(nodeType) %>Id}}
   body: none
   auth: none
 }
@@ -20,4 +20,7 @@ delete {
 assert {
   res.status: 404
   res.body: isString
+}
+script:pre-request {
+  lib.tools.generateInvalidId('<%= h.changeCase.pascal(nodeType) %>')
 }

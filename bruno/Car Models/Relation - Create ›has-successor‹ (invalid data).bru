@@ -9,7 +9,7 @@ meta {
 }
 
 post {
-  url: {{baseUrl}}/car-models/{{invalidCarModelId}}/has-successor/{{invalidBrandId}}
+  url: {{baseUrl}}/car-models/{{invalidCarModelId}}/has-successor/{{invalidSecondCarModelId}}
   body: none
   auth: none
 }
@@ -17,4 +17,9 @@ post {
 assert {
   res.status: 404
   res.body: isString
+}
+
+script:pre-request {
+  lib.tools.generateInvalidId('CarModel')
+  lib.tools.generateSecondInvalidId('CarModel')
 }

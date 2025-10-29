@@ -18,3 +18,8 @@ assert {
   res.status: 404
   res.body: isString
 }
+
+script:pre-request {
+  lib.tools.generateInvalidId('TrackLayout')
+  lib.tools.generateInvalidId('LapTime')
+}

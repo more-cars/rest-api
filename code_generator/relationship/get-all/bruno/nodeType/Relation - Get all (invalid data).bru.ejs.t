@@ -22,3 +22,7 @@ assert {
   res.status: 404
   res.body: isString
 }
+
+script:pre-request {
+  lib.tools.generateInvalidId('<%= h.changeCase.pascal(startNodeType) %>')
+}
