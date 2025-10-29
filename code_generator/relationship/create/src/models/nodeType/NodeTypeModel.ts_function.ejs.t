@@ -27,9 +27,9 @@ skip_if: static async create<%= h.changeCase.pascal(relationshipName) %>Relation
             throw new RelationshipAlreadyExistsError(<%= h.changeCase.pascal(startNodeType) %>Relationship.<%= h.changeCase.camel(relationshipName) %>, <%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id)
         }
 <% if (cardinality === '1:1' || cardinality === 'n:1') { %>
-        await deleteDeprecatedRelationship(<%= h.changeCase.camel(startNodeType) %>Id, DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
+        await deleteDeprecatedRel(<%= h.changeCase.camel(startNodeType) %>Id, DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>, NodeTypeLabel.<%= h.changeCase.pascal(endNodeType) %>)
 <% } else if (cardinality === '1:n') { %>
-        await deleteDeprecatedRelationship(<%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id, DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
+        await deleteDeprecatedRel(<%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id, DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>, NodeTypeLabel.<%= h.changeCase.pascal(startNodeType) %>)
 <% } %>
         const createdRelationship = await createRel(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id, RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
         if (!createdRelationship) {
