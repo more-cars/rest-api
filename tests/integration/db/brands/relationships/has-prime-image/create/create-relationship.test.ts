@@ -1,14 +1,14 @@
 import {describe, expect, test} from 'vitest'
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
-import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
-import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
 import {BrandRelationship} from "../../../../../../../src/models/brands/types/BrandRelationship"
 
 describe('Creating a ›has-prime-image‹ relationship', () => {
     test('with valid data', async () => {
-        const brand = await seedBrand()
-        const image = await seedImage()
+        const brand = await seedNode(NodeTypeEnum.BRAND)
+        const image = await seedNode(NodeTypeEnum.IMAGE)
 
         const createdRelationship = await createRelationship(
             brand.id,
@@ -31,7 +31,7 @@ describe('Creating a ›has-prime-image‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const brand = await seedBrand()
+        const brand = await seedNode(NodeTypeEnum.BRAND)
 
         const createdRelationship = await createRelationship(
             brand.id,

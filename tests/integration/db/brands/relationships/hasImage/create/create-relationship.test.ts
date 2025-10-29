@@ -3,27 +3,27 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
-import {CarModelRelationship} from "../../../../../../../src/models/car-models/types/CarModelRelationship"
+import {BrandRelationship} from "../../../../../../../src/models/brands/types/BrandRelationship"
 
-describe('Creating a ›is-successor-of‹ relationship', () => {
+describe('Creating a ›has-image‹ relationship', () => {
     test('with valid data', async () => {
-        const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
-        const partner = await seedNode(NodeTypeEnum.CAR_MODEL)
+        const brand = await seedNode(NodeTypeEnum.BRAND)
+        const image = await seedNode(NodeTypeEnum.IMAGE)
 
         const createdRelationship = await createRelationship(
-            partner.id,
-            carModel.id,
-            DbRelationship.CarModelIsSuccessorOf,
+            brand.id,
+            image.id,
+            DbRelationship.BrandHasImage,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node_id', partner.id)
+            .toHaveProperty('start_node_id', brand.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node_id', carModel.id)
+            .toHaveProperty('end_node_id', image.id)
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', CarModelRelationship.hasSuccessor)
+            .toHaveProperty('relationship_name', BrandRelationship.hasImage)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)
@@ -31,12 +31,12 @@ describe('Creating a ›is-successor-of‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
+        const brand = await seedNode(NodeTypeEnum.BRAND)
 
         const createdRelationship = await createRelationship(
-            carModel.id,
+            brand.id,
             -42,
-            DbRelationship.CarModelIsSuccessorOf,
+            DbRelationship.BrandHasImage,
         )
 
         expect(createdRelationship)

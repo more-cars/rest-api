@@ -1,28 +1,28 @@
 import {expect, test} from 'vitest'
-import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {BrandRelationship} from "../../../../../../../src/models/brands/types/BrandRelationship"
-import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
-test('Creating a "Brand has Image" relationship when both nodes exist', async () => {
-    const brand = await seedBrand()
-    const image = await seedImage()
+test('Creating a "Car Model belongs to Brand" relationship when both nodes exist', async () => {
+    const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
+    const brand = await seedNode(NodeTypeEnum.BRAND)
 
     const createdRelationship = await createRelationship(
         brand.id,
-        image.id,
-        DbRelationship.NodeHasImage,
+        carModel.id,
+        DbRelationship.CarModelBelongsToBrand,
     )
 
     expect(createdRelationship)
         .toHaveProperty('start_node_id', brand.id)
     expect(createdRelationship)
-        .toHaveProperty('end_node_id', image.id)
+        .toHaveProperty('end_node_id', carModel.id)
     expect(createdRelationship)
         .toHaveProperty('relationship_id')
     expect(createdRelationship)
-        .toHaveProperty('relationship_name', BrandRelationship.hasImage)
+        .toHaveProperty('relationship_name', BrandRelationship.hasCarModel)
     expect(createdRelationship)
         .toHaveProperty('created_at')
     expect(createdRelationship)
@@ -30,12 +30,12 @@ test('Creating a "Brand has Image" relationship when both nodes exist', async ()
 })
 
 test('Invalid nodes fail the relationship creation', async () => {
-    const brand = await seedBrand()
+    const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
 
     const createdRelationship = await createRelationship(
-        brand.id,
         -42,
-        DbRelationship.NodeHasImage,
+        carModel.id,
+        DbRelationship.CarModelBelongsToBrand,
     )
 
     expect(createdRelationship)

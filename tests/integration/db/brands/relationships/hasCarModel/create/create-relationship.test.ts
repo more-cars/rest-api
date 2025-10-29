@@ -1,13 +1,13 @@
 import {expect, test} from 'vitest'
-import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
-import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {BrandRelationship} from "../../../../../../../src/models/brands/types/BrandRelationship"
 
 test('Creating a ›has-car-model‹ relationship with valid data', async () => {
-    const brand = await seedBrand()
-    const carModel = await seedCarModel()
+    const brand = await seedNode(NodeTypeEnum.BRAND)
+    const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
 
     const createdRelationship = await createRelationship(
         brand.id,
@@ -30,7 +30,7 @@ test('Creating a ›has-car-model‹ relationship with valid data', async () => 
 })
 
 test('Trying to create a ›has-car-model‹ relationship with nodes that do not exist', async () => {
-    const brand = await seedBrand()
+    const brand = await seedNode(NodeTypeEnum.BRAND)
 
     const createdRelationship = await createRelationship(
         brand.id,
