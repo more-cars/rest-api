@@ -2,8 +2,13 @@
 to: bruno/<%= h.inflection.pluralize(h.changeCase.title(startNodeType)) %>/Relation - Get specific ›<%= h.changeCase.kebab(relationshipName) %>‹ (invalid data).bru
 ---
 meta {
-  name: Relation "<%= h.changeCase.lower(relationshipName) %>" - Has (invalid)
+  name: Get specific ›<%= h.changeCase.lower(relationshipName) %>‹ relation (invalid data)
   type: http
+  tags: [
+    get
+    relation
+    invalid
+  ]
 }
 
 get {

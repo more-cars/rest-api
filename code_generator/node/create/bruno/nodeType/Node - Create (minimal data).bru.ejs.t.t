@@ -4,6 +4,11 @@ to: bruno/<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>/Node - Cre
 meta {
   name: Create <%= h.changeCase.title(nodeType) %> (minimal data)
   type: http
+  tags: [
+    create
+    node
+    valid
+  ]
 }
 
 post {

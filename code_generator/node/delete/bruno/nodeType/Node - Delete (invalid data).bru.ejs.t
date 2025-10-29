@@ -4,6 +4,11 @@ to: bruno/<%= h.inflection.pluralize(h.changeCase.title(nodeType)) %>/Node - Del
 meta {
   name: Delete <%= h.changeCase.title(nodeType) %> (invalid data)
   type: http
+  tags: [
+    delete
+    node
+    invalid
+  ]
 }
 
 delete {

@@ -4,6 +4,13 @@ to: bruno/<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>/Node - Get
 meta {
   name: Get all <%= h.changeCase.title(h.inflection.pluralize(nodeType)) %> (invalid sort)
   type: http
+  tags: [
+    get
+    node
+    collection
+    sorting
+    invalid
+  ]
 }
 
 get {

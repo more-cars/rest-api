@@ -4,6 +4,11 @@ to: bruno/<%= h.changeCase.title(h.inflection.pluralize(startNodeType)) %>/Relat
 meta {
   name: Create ›<%= h.changeCase.kebab(relationshipName) %>‹ relation (invalid data)
   type: http
+  tags: [
+    create
+    relation
+    invalid
+  ]
 }
 
 post {
