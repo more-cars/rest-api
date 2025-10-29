@@ -14,7 +14,7 @@ import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {CarModelRelationship} from "./types/CarModelRelationship"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
-import {deleteDeprecatedRelationship} from "../relationships/deleteDeprecatedRelationship"
+import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
 import {DbRelationship} from "../../db/types/DbRelationship"
 import {SemanticError} from "../types/SemanticError"
 import {RelationshipType} from "../relationships/types/RelationshipType"
@@ -79,7 +79,7 @@ export class CarModel {
             throw new RelationshipAlreadyExistsError(CarModelRelationship.belongsToBrand, carModelId, brandId)
         }
 
-        await deleteDeprecatedRelationship(carModelId, DbRelationship.BrandHasCarModel, NodeTypeLabel.Brand)
+        await deleteDeprecatedRel(carModelId, DbRelationship.BrandHasCarModel, NodeTypeLabel.Brand)
 
         const createdRelationship = await createRel(carModelId, brandId, RelationshipType.CarModelBelongsToBrand)
         if (!createdRelationship) {
@@ -142,7 +142,7 @@ export class CarModel {
             throw new RelationshipAlreadyExistsError(CarModelRelationship.hasSuccessor, carModelId, partnerId)
         }
 
-        await deleteDeprecatedRelationship(carModelId, DbRelationship.CarModelHasSuccessor, NodeTypeLabel.CarModel)
+        await deleteDeprecatedRel(carModelId, DbRelationship.CarModelHasSuccessor, NodeTypeLabel.CarModel)
 
         const createdRelationship = await createRel(carModelId, partnerId, RelationshipType.CarModelHasSuccessor)
         if (!createdRelationship) {
@@ -205,7 +205,7 @@ export class CarModel {
             throw new RelationshipAlreadyExistsError(CarModelRelationship.isSuccessorOf, carModelId, partnerId)
         }
 
-        await deleteDeprecatedRelationship(carModelId, DbRelationship.CarModelIsSuccessorOf, NodeTypeLabel.CarModel)
+        await deleteDeprecatedRel(carModelId, DbRelationship.CarModelIsSuccessorOf, NodeTypeLabel.CarModel)
 
         const createdRelationship = await createRel(carModelId, partnerId, RelationshipType.CarModelIsSuccessorOf)
         if (!createdRelationship) {
@@ -335,7 +335,7 @@ export class CarModel {
             throw new RelationshipAlreadyExistsError(CarModelRelationship.hasPrimeImage, carModelId, imageId)
         }
 
-        await deleteDeprecatedRelationship(carModelId, DbRelationship.CarModelHasPrimeImage, NodeTypeLabel.Image)
+        await deleteDeprecatedRel(carModelId, DbRelationship.CarModelHasPrimeImage, NodeTypeLabel.Image)
 
         const createdRelationship = await createRel(carModelId, imageId, RelationshipType.CarModelHasPrimeImage)
         if (!createdRelationship) {

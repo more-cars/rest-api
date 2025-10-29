@@ -8,7 +8,7 @@ import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints
 import {getAllNodesOfType} from "../../db/nodes/brands/getAllNodesOfType"
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {CarModel} from "../car-models/CarModel"
-import {deleteDeprecatedRelationship} from "../relationships/deleteDeprecatedRelationship"
+import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
 import {DbRelationship} from "../../db/types/DbRelationship"
 import {Image} from "../images/Image"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
@@ -79,7 +79,7 @@ export class Brand {
             throw new RelationshipAlreadyExistsError(BrandRelationship.belongsToCompany, brandId, companyId)
         }
 
-        await deleteDeprecatedRelationship(brandId, DbRelationship.BrandBelongsToCompany, NodeTypeLabel.Company)
+        await deleteDeprecatedRel(brandId, DbRelationship.BrandBelongsToCompany, NodeTypeLabel.Company)
 
         const createdRelationship = await createRel(brandId, companyId, RelationshipType.BrandBelongsToCompany)
         if (!createdRelationship) {
@@ -138,7 +138,7 @@ export class Brand {
             throw new RelationshipAlreadyExistsError(BrandRelationship.hasCarModel, brandId, carModelId)
         }
 
-        await deleteDeprecatedRelationship(carModelId, DbRelationship.BrandHasCarModel, NodeTypeLabel.Brand)
+        await deleteDeprecatedRel(carModelId, DbRelationship.BrandHasCarModel, NodeTypeLabel.Brand)
 
         const createdRelationship = await createRel(brandId, carModelId, RelationshipType.BrandHasCarModel)
         if (!createdRelationship) {
@@ -283,7 +283,7 @@ export class Brand {
             throw new RelationshipAlreadyExistsError(BrandRelationship.hasPrimeImage, brandId, imageId)
         }
 
-        await deleteDeprecatedRelationship(brandId, DbRelationship.BrandHasPrimeImage, NodeTypeLabel.Image)
+        await deleteDeprecatedRel(brandId, DbRelationship.BrandHasPrimeImage, NodeTypeLabel.Image)
 
         const createdRelationship = await createRel(brandId, imageId, RelationshipType.BrandHasPrimeImage)
         if (!createdRelationship) {
