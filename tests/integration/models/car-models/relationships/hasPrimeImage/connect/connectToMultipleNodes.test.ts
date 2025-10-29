@@ -3,8 +3,8 @@ import {seedImages} from "../../../../../../_toolbox/dbSeeding/images/nodes/seed
 import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 import {
-    getRelationshipsForSpecificNode
-} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+    getRelationshipCollection
+} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 test('A CAR MODEL cannot have multiple ›has-prime-image‹ relationships', async () => {
@@ -16,7 +16,7 @@ test('A CAR MODEL cannot have multiple ›has-prime-image‹ relationships', asy
         await CarModel.createHasPrimeImageRelationship(carModel.id, image.id)
     }
 
-    const relationships = await getRelationshipsForSpecificNode(carModel.id, DbRelationship.CarModelHasPrimeImage)
+    const relationships = await getRelationshipCollection(carModel.id, DbRelationship.CarModelHasPrimeImage)
 
     expect(relationships.length)
         .toBe(1)

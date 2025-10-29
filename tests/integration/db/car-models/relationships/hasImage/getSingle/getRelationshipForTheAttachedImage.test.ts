@@ -1,8 +1,8 @@
 import {expect, test} from 'vitest'
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {
-    getRelationshipsForSpecificNode
-} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+    getRelationshipCollection
+} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
 import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
@@ -18,7 +18,7 @@ test('Requesting the relationship between CAR MODEL and attached IMAGE',
             DbRelationship.NodeHasImage,
         )
 
-        const relationships = await getRelationshipsForSpecificNode(
+        const relationships = await getRelationshipCollection(
             carModel.id,
             DbRelationship.NodeHasImage,
         )

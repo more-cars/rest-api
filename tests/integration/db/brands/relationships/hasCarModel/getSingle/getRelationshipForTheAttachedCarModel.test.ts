@@ -2,8 +2,8 @@ import {expect, test} from 'vitest'
 import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {
-        getRelationshipsForSpecificNode
-} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+        getRelationshipCollection
+} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
 
@@ -18,7 +18,7 @@ test('Requesting the relationship between BRAND and attached CAR MODEL',
             DbRelationship.BrandHasCarModel,
         )
 
-        const relationships = await getRelationshipsForSpecificNode(
+        const relationships = await getRelationshipCollection(
             brand.id,
             DbRelationship.BrandHasCarModel,
         )

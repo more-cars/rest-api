@@ -3,7 +3,7 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {RacingSession} from "../../../../../../../src/models/racing-sessions/RacingSession"
-import {getRelationshipsForSpecificNode} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 test('A RACING SESSION can have multiple ›has-image‹ relationships', async () => {
@@ -15,7 +15,7 @@ test('A RACING SESSION can have multiple ›has-image‹ relationships', async (
         await RacingSession.createHasImageRelationship(racingSession.id, image.id)
     }
 
-    const relationships = await getRelationshipsForSpecificNode(racingSession.id, DbRelationship.RacingSessionHasImage)
+    const relationships = await getRelationshipCollection(racingSession.id, DbRelationship.RacingSessionHasImage)
 
     expect(relationships.length)
         .toBe(imagesAmount)

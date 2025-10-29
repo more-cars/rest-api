@@ -3,8 +3,8 @@ import {seedImages} from "../../../../../../_toolbox/dbSeeding/images/nodes/seed
 import {seedCompany} from "../../../../../../_toolbox/dbSeeding/companies/nodes/seedCompany"
 import {Company} from "../../../../../../../src/models/companies/Company"
 import {
-    getRelationshipsForSpecificNode
-} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+    getRelationshipCollection
+} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 test('A COMPANY cannot have multiple ›has-prime-image‹ relationships', async () => {
@@ -16,7 +16,7 @@ test('A COMPANY cannot have multiple ›has-prime-image‹ relationships', async
         await Company.createHasPrimeImageRelationship(company.id, image.id)
     }
 
-    const relationships = await getRelationshipsForSpecificNode(company.id, DbRelationship.CompanyHasPrimeImage)
+    const relationships = await getRelationshipCollection(company.id, DbRelationship.CompanyHasPrimeImage)
 
     expect(relationships.length)
         .toBe(1)

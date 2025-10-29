@@ -3,8 +3,8 @@ import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedB
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {
-    getRelationshipsForSpecificNode
-} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+    getRelationshipCollection
+} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {seedImages} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImages"
 
 test('Requesting a relationship list for all IMAGEs that are connected to the BRAND', async () => {
@@ -19,7 +19,7 @@ test('Requesting a relationship list for all IMAGEs that are connected to the BR
         )
     }
 
-    const relationships = await getRelationshipsForSpecificNode(
+    const relationships = await getRelationshipCollection(
         brand.id,
         DbRelationship.NodeHasImage,
     )

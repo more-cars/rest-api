@@ -3,7 +3,7 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {SessionResult} from "../../../../../../../src/models/session-results/SessionResult"
-import {getRelationshipsForSpecificNode} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 test('A SESSION RESULT cannot have multiple ›has-prime-image‹ relationships', async () => {
@@ -15,7 +15,7 @@ test('A SESSION RESULT cannot have multiple ›has-prime-image‹ relationships'
         await SessionResult.createHasPrimeImageRelationship(sessionResult.id, image.id)
     }
 
-    const relationships = await getRelationshipsForSpecificNode(sessionResult.id, DbRelationship.SessionResultHasPrimeImage)
+    const relationships = await getRelationshipCollection(sessionResult.id, DbRelationship.SessionResultHasPrimeImage)
 
     expect(relationships.length)
         .toBe(1)

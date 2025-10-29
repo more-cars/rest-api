@@ -4,8 +4,8 @@ import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {RaceTrack} from "../../../../../../../src/models/race-tracks/RaceTrack"
 import {
-    getRelationshipsForSpecificNode
-} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+    getRelationshipCollection
+} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 test('A RACE TRACK can have multiple ›has-layout‹ relationships', async () => {
@@ -17,7 +17,7 @@ test('A RACE TRACK can have multiple ›has-layout‹ relationships', async () =
         await RaceTrack.createHasLayoutRelationship(raceTrack.id, trackLayout.id)
     }
 
-    const relationships = await getRelationshipsForSpecificNode(raceTrack.id, DbRelationship.RaceTrackHasLayout)
+    const relationships = await getRelationshipCollection(raceTrack.id, DbRelationship.RaceTrackHasLayout)
 
     expect(relationships.length)
         .toBe(trackLayoutsAmount)

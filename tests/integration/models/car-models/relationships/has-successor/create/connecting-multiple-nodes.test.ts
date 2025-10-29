@@ -3,8 +3,8 @@ import {seedCarModels} from "../../../../../../_toolbox/dbSeeding/car-models/nod
 import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 import {
-    getRelationshipsForSpecificNode
-} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+    getRelationshipCollection
+} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 test('A CAR MODEL cannot have multiple ›has-successor‹ relationships', async () => {
@@ -16,7 +16,7 @@ test('A CAR MODEL cannot have multiple ›has-successor‹ relationships', async
         await CarModel.createHasSuccessorRelationship(carModel.id, partnerNode.id)
     }
 
-    const relationships = await getRelationshipsForSpecificNode(carModel.id, DbRelationship.CarModelHasSuccessor)
+    const relationships = await getRelationshipCollection(carModel.id, DbRelationship.CarModelHasSuccessor)
 
     expect(relationships.length)
         .toBe(1)

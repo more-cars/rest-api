@@ -1,7 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {
-    getRelationshipsForSpecificNode
-} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+    getRelationshipCollection
+} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
@@ -11,7 +11,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
         const relationship = await seedRelationship(NodeTypeEnum.BRAND, NodeTypeEnum.IMAGE, DbRelationship.BrandHasPrimeImage)
 
-        const relationships = await getRelationshipsForSpecificNode(
+        const relationships = await getRelationshipCollection(
             relationship.start_node_id,
             DbRelationship.BrandHasPrimeImage,
         )
@@ -23,7 +23,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node exists, but not the relationship', async () => {
         const brand = await seedBrand()
 
-        const relationships = await getRelationshipsForSpecificNode(
+        const relationships = await getRelationshipCollection(
             brand.id,
             DbRelationship.BrandHasPrimeImage,
         )
@@ -33,7 +33,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     })
 
     test('neither node, nor relationship exist', async () => {
-        const relationships = await getRelationshipsForSpecificNode(
+        const relationships = await getRelationshipCollection(
             -42,
             DbRelationship.BrandHasPrimeImage,
         )

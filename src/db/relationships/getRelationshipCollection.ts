@@ -4,14 +4,14 @@ import {BaseRelationship} from "../types/BaseRelationship"
 import {DbRelationship} from "../types/DbRelationship"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
-export async function getRelationshipsForSpecificNode(nodeId: number, relationshipName: DbRelationship, nodeIsRelationshipTarget = false): Promise<Array<BaseRelationship>> {
+export async function getRelationshipCollection(nodeId: number, relationshipName: DbRelationship, nodeIsRelationshipTarget = false): Promise<Array<BaseRelationship>> {
     const relationships: Array<BaseRelationship> = []
 
     const driver: Driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getRelationshipsForSpecificNodeQuery(nodeId, relationshipName))
+        const result = await txc.run(getRelationshipCollectionQuery(nodeId, relationshipName))
         return result.records
     })
 
@@ -34,8 +34,8 @@ export async function getRelationshipsForSpecificNode(nodeId: number, relationsh
     return relationships
 }
 
-export function getRelationshipsForSpecificNodeQuery(nodeId: number, relationshipName: DbRelationship) {
-    return getCypherQueryTemplate('relationships/_cypher/getRelationshipsForSpecificNode.cypher')
+export function getRelationshipCollectionQuery(nodeId: number, relationshipName: DbRelationship) {
+    return getCypherQueryTemplate('relationships/_cypher/getRelationshipCollection.cypher')
         .trim()
         .replace('$nodeId', nodeId.toString())
         .replace('relationshipName', relationshipName)

@@ -3,8 +3,8 @@ import {seedCompany} from "../../../../../../_toolbox/dbSeeding/companies/nodes/
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {
-    getRelationshipsForSpecificNode
-} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+    getRelationshipCollection
+} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 test('Node and relationships exist', async () => {
@@ -12,7 +12,7 @@ test('Node and relationships exist', async () => {
     await seedRelationshipForStartNode(company.id, NodeTypeEnum.IMAGE, DbRelationship.CompanyHasImage)
     await seedRelationshipForStartNode(company.id, NodeTypeEnum.IMAGE, DbRelationship.CompanyHasImage)
 
-    const relationships = await getRelationshipsForSpecificNode(
+    const relationships = await getRelationshipCollection(
         company.id,
         DbRelationship.CompanyHasImage,
     )

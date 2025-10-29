@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
-import {getRelationshipsForSpecificNode} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 describe('Requesting all ›has-lap-time‹ relationships', () => {
@@ -11,7 +11,7 @@ describe('Requesting all ›has-lap-time‹ relationships', () => {
         await seedRelationshipForStartNode(sessionResult.id, NodeTypeEnum.LAP_TIME, DbRelationship.SessionResultHasLapTime)
         await seedRelationshipForStartNode(sessionResult.id, NodeTypeEnum.LAP_TIME, DbRelationship.SessionResultHasLapTime)
 
-        const relationships = await getRelationshipsForSpecificNode(
+        const relationships = await getRelationshipCollection(
             sessionResult.id,
             DbRelationship.SessionResultHasLapTime,
         )
@@ -23,7 +23,7 @@ describe('Requesting all ›has-lap-time‹ relationships', () => {
     test('node exists, but no relationships', async () => {
         const sessionResult = await seedNode(NodeTypeEnum.SESSION_RESULT)
 
-        const relationships = await getRelationshipsForSpecificNode(
+        const relationships = await getRelationshipCollection(
             sessionResult.id,
             DbRelationship.SessionResultHasLapTime,
         )
@@ -33,7 +33,7 @@ describe('Requesting all ›has-lap-time‹ relationships', () => {
     })
 
     test('neither node, nor relationships exist', async () => {
-        const relationships = await getRelationshipsForSpecificNode(
+        const relationships = await getRelationshipCollection(
             -42,
             DbRelationship.SessionResultHasLapTime,
         )

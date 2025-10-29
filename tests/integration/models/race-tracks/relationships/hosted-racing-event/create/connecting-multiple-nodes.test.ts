@@ -3,7 +3,7 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {RaceTrack} from "../../../../../../../src/models/race-tracks/RaceTrack"
-import {getRelationshipsForSpecificNode} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 test('A RACE TRACK can have multiple ›hosted-racing-event‹ relationships', async () => {
@@ -15,7 +15,7 @@ test('A RACE TRACK can have multiple ›hosted-racing-event‹ relationships', a
         await RaceTrack.createHostedRacingEventRelationship(raceTrack.id, racingEvent.id)
     }
 
-    const relationships = await getRelationshipsForSpecificNode(raceTrack.id, DbRelationship.RaceTrackHostedRacingEvent)
+    const relationships = await getRelationshipCollection(raceTrack.id, DbRelationship.RaceTrackHostedRacingEvent)
 
     expect(relationships.length)
         .toBe(racingEventsAmount)

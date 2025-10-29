@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
-import {getRelationshipsForSpecificNode} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 describe('Requesting all ›has-image‹ relationships', () => {
@@ -11,7 +11,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
         await seedRelationshipForStartNode(racingSession.id, NodeTypeEnum.IMAGE, DbRelationship.RacingSessionHasImage)
         await seedRelationshipForStartNode(racingSession.id, NodeTypeEnum.IMAGE, DbRelationship.RacingSessionHasImage)
 
-        const relationships = await getRelationshipsForSpecificNode(
+        const relationships = await getRelationshipCollection(
             racingSession.id,
             DbRelationship.RacingSessionHasImage,
         )
@@ -23,7 +23,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
     test('node exists, but no relationships', async () => {
         const racingSession = await seedNode(NodeTypeEnum.RACING_SESSION)
 
-        const relationships = await getRelationshipsForSpecificNode(
+        const relationships = await getRelationshipCollection(
             racingSession.id,
             DbRelationship.RacingSessionHasImage,
         )
@@ -33,7 +33,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
     })
 
     test('neither node, nor relationships exist', async () => {
-        const relationships = await getRelationshipsForSpecificNode(
+        const relationships = await getRelationshipCollection(
             -42,
             DbRelationship.RacingSessionHasImage,
         )

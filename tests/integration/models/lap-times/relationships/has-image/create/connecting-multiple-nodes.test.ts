@@ -3,7 +3,7 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {LapTime} from "../../../../../../../src/models/lap-times/LapTime"
-import {getRelationshipsForSpecificNode} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 test('A LAP TIME can have multiple ›has-image‹ relationships', async () => {
@@ -15,7 +15,7 @@ test('A LAP TIME can have multiple ›has-image‹ relationships', async () => {
         await LapTime.createHasImageRelationship(lapTime.id, image.id)
     }
 
-    const relationships = await getRelationshipsForSpecificNode(lapTime.id, DbRelationship.LapTimeHasImage)
+    const relationships = await getRelationshipCollection(lapTime.id, DbRelationship.LapTimeHasImage)
 
     expect(relationships.length)
         .toBe(imagesAmount)

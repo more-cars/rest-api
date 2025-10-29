@@ -3,7 +3,7 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {TrackLayout} from "../../../../../../../src/models/track-layouts/TrackLayout"
-import {getRelationshipsForSpecificNode} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 test('A TRACK LAYOUT cannot have multiple ›belongs-to-race-track‹ relationships', async () => {
@@ -15,7 +15,7 @@ test('A TRACK LAYOUT cannot have multiple ›belongs-to-race-track‹ relationsh
         await TrackLayout.createBelongsToRaceTrackRelationship(trackLayout.id, raceTrack.id)
     }
 
-    const relationships = await getRelationshipsForSpecificNode(trackLayout.id, DbRelationship.TrackLayoutBelongsToRaceTrack)
+    const relationships = await getRelationshipCollection(trackLayout.id, DbRelationship.TrackLayoutBelongsToRaceTrack)
 
     expect(relationships.length)
         .toBe(1)

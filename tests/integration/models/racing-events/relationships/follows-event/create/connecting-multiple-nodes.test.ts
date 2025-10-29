@@ -3,7 +3,7 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {RacingEvent} from "../../../../../../../src/models/racing-events/RacingEvent"
-import {getRelationshipsForSpecificNode} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 test('A RACING EVENT cannot have multiple ›follows-event‹ relationships', async () => {
@@ -15,7 +15,7 @@ test('A RACING EVENT cannot have multiple ›follows-event‹ relationships', as
         await RacingEvent.createFollowsEventRelationship(racingEvent.id, partner.id)
     }
 
-    const relationships = await getRelationshipsForSpecificNode(racingEvent.id, DbRelationship.RacingEventFollowsEvent)
+    const relationships = await getRelationshipCollection(racingEvent.id, DbRelationship.RacingEventFollowsEvent)
 
     expect(relationships.length)
         .toBe(1)

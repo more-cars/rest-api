@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
-import {getRelationshipsForSpecificNode} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 describe('Requesting all ›has-layout‹ relationships', () => {
@@ -11,7 +11,7 @@ describe('Requesting all ›has-layout‹ relationships', () => {
         await seedRelationshipForStartNode(raceTrack.id, NodeTypeEnum.TRACK_LAYOUT, DbRelationship.RaceTrackHasLayout)
         await seedRelationshipForStartNode(raceTrack.id, NodeTypeEnum.TRACK_LAYOUT, DbRelationship.RaceTrackHasLayout)
 
-        const relationships = await getRelationshipsForSpecificNode(
+        const relationships = await getRelationshipCollection(
             raceTrack.id,
             DbRelationship.RaceTrackHasLayout,
         )
@@ -23,7 +23,7 @@ describe('Requesting all ›has-layout‹ relationships', () => {
     test('node exists, but no relationships', async () => {
         const raceTrack = await seedNode(NodeTypeEnum.RACE_TRACK)
 
-        const relationships = await getRelationshipsForSpecificNode(
+        const relationships = await getRelationshipCollection(
             raceTrack.id,
             DbRelationship.RaceTrackHasLayout,
         )
@@ -33,7 +33,7 @@ describe('Requesting all ›has-layout‹ relationships', () => {
     })
 
     test('neither node, nor relationships exist', async () => {
-        const relationships = await getRelationshipsForSpecificNode(
+        const relationships = await getRelationshipCollection(
             -42,
             DbRelationship.RaceTrackHasLayout,
         )

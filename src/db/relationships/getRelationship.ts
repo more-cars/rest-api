@@ -11,12 +11,12 @@ import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
  * ⚠️
  * When there exist multiple relationships then only one of them will be returned (which is not necessarily the first one).
  */
-export async function getRelationshipForSpecificNode(nodeId: number, relationshipName: DbRelationship): Promise<false | BaseRelationship> {
+export async function getRelationship(nodeId: number, relationshipName: DbRelationship): Promise<false | BaseRelationship> {
     const driver: Driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getRelationshipForSpecificNodeQuery(nodeId, relationshipName))
+        const result = await txc.run(getRelationshipQuery(nodeId, relationshipName))
         return result.records
     })
 
@@ -53,8 +53,8 @@ export async function getRelationshipForSpecificNode(nodeId: number, relationshi
     } as BaseRelationship
 }
 
-export function getRelationshipForSpecificNodeQuery(nodeId: number, relationshipName: DbRelationship) {
-    return getCypherQueryTemplate('relationships/_cypher/getRelationshipForSpecificNode.cypher')
+export function getRelationshipQuery(nodeId: number, relationshipName: DbRelationship) {
+    return getCypherQueryTemplate('relationships/_cypher/getRelationship.cypher')
         .trim()
         .replace('$nodeId', nodeId.toString())
         .replace('relationshipName', relationshipName)

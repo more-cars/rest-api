@@ -4,8 +4,8 @@ import {seedCarModels} from "../../../../../../_toolbox/dbSeeding/car-models/nod
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {
-    getRelationshipsForSpecificNode
-} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+    getRelationshipCollection
+} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 
 test('Requesting a relationship list for all CAR MODELs that are connected to the BRAND', async () => {
     const brand = await seedBrand()
@@ -19,7 +19,7 @@ test('Requesting a relationship list for all CAR MODELs that are connected to th
         )
     }
 
-    const relationships = await getRelationshipsForSpecificNode(
+    const relationships = await getRelationshipCollection(
         brand.id,
         DbRelationship.BrandHasCarModel,
     )

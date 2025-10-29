@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
-import {getRelationshipsForSpecificNode} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 describe('Requesting all ›was-used-by-racing-event‹ relationships', () => {
@@ -11,7 +11,7 @@ describe('Requesting all ›was-used-by-racing-event‹ relationships', () => {
         await seedRelationshipForStartNode(trackLayout.id, NodeTypeEnum.RACING_EVENT, DbRelationship.TrackLayoutWasUsedByRacingEvent)
         await seedRelationshipForStartNode(trackLayout.id, NodeTypeEnum.RACING_EVENT, DbRelationship.TrackLayoutWasUsedByRacingEvent)
 
-        const relationships = await getRelationshipsForSpecificNode(
+        const relationships = await getRelationshipCollection(
             trackLayout.id,
             DbRelationship.TrackLayoutWasUsedByRacingEvent,
         )
@@ -23,7 +23,7 @@ describe('Requesting all ›was-used-by-racing-event‹ relationships', () => {
     test('node exists, but no relationships', async () => {
         const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
 
-        const relationships = await getRelationshipsForSpecificNode(
+        const relationships = await getRelationshipCollection(
             trackLayout.id,
             DbRelationship.TrackLayoutWasUsedByRacingEvent,
         )
@@ -33,7 +33,7 @@ describe('Requesting all ›was-used-by-racing-event‹ relationships', () => {
     })
 
     test('neither node, nor relationships exist', async () => {
-        const relationships = await getRelationshipsForSpecificNode(
+        const relationships = await getRelationshipCollection(
             -42,
             DbRelationship.TrackLayoutWasUsedByRacingEvent,
         )

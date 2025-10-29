@@ -3,7 +3,7 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {SessionResult} from "../../../../../../../src/models/session-results/SessionResult"
-import {getRelationshipsForSpecificNode} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 test('A SESSION RESULT cannot have multiple ›belongs-to-racing-session‹ relationships', async () => {
@@ -15,7 +15,7 @@ test('A SESSION RESULT cannot have multiple ›belongs-to-racing-session‹ rela
         await SessionResult.createBelongsToRacingSessionRelationship(sessionResult.id, racingSession.id)
     }
 
-    const relationships = await getRelationshipsForSpecificNode(sessionResult.id, DbRelationship.SessionResultBelongsToRacingSession)
+    const relationships = await getRelationshipCollection(sessionResult.id, DbRelationship.SessionResultBelongsToRacingSession)
 
     expect(relationships.length)
         .toBe(1)

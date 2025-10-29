@@ -1,9 +1,9 @@
 import {DbRelationship} from "../../db/types/DbRelationship"
-import {getRelationshipForSpecificNode} from "../../db/relationships/getRelationshipForSpecificNode"
+import {getRelationship} from "../../db/relationships/getRelationship"
 import {deleteRelationshipById} from "../../db/relationships/deleteRelationshipById"
 
 export async function deleteDeprecatedRelationship(nodeId: number, relationshipType: DbRelationship) {
-    const relationship = await getRelationshipForSpecificNode(
+    const relationship = await getRelationship(
         nodeId,
         relationshipType,
     )

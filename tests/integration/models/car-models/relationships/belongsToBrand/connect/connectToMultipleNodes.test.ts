@@ -3,8 +3,8 @@ import {seedBrands} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seed
 import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 import {
-    getRelationshipsForSpecificNode
-} from "../../../../../../../src/db/relationships/getRelationshipsForSpecificNode"
+    getRelationshipCollection
+} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 test('A CAR MODEL cannot have multiple ›belongs-to-brand‹ relationships', async () => {
@@ -16,7 +16,7 @@ test('A CAR MODEL cannot have multiple ›belongs-to-brand‹ relationships', as
         await CarModel.createBelongsToBrandRelationship(carModel.id, brand.id)
     }
 
-    const relationships = await getRelationshipsForSpecificNode(carModel.id, DbRelationship.BrandHasCarModel)
+    const relationships = await getRelationshipCollection(carModel.id, DbRelationship.BrandHasCarModel)
 
     expect(relationships.length)
         .toBe(1)

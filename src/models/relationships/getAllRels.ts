@@ -1,14 +1,14 @@
 import type {RelationshipType} from "./types/RelationshipType"
 import type {DbRelationship} from "../../db/types/DbRelationship"
 import {getDbRelationshipType} from "./getDbRelationshipType"
-import {getRelationshipsForSpecificNode} from "../../db/relationships/getRelationshipsForSpecificNode"
+import {getRelationshipCollection} from "../../db/relationships/getRelationshipCollection"
 import type {GenericRelation} from "./types/GenericRelation"
 import {Node} from "../Node"
 
 export async function getAllRels(nodeId: number, relationshipType: RelationshipType) {
     const dbRelationshipType: DbRelationship = getDbRelationshipType(relationshipType)
 
-    const relationships = await getRelationshipsForSpecificNode(
+    const relationships = await getRelationshipCollection(
         nodeId,
         dbRelationshipType,
     )
