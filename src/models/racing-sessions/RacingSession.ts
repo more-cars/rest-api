@@ -22,6 +22,7 @@ import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {Image} from "../images/Image"
 import {getAllRels} from "../relationships/getAllRels"
 import {SessionResult} from "../session-results/SessionResult"
+import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 
 export class RacingSession {
     static async create(data: CreateRacingSessionInput): Promise<RacingSessionNode> {
@@ -79,7 +80,7 @@ export class RacingSession {
             throw new RelationshipAlreadyExistsError(RacingSessionRelationship.belongsToRacingEvent, racingSessionId, racingEventId)
         }
 
-        await deleteDeprecatedRelationship(racingSessionId, DbRelationship.RacingSessionBelongsToRacingEvent)
+        await deleteDeprecatedRelationship(racingSessionId, DbRelationship.RacingSessionBelongsToRacingEvent, NodeTypeLabel.RacingEvent)
 
         const createdRelationship = await createRel(racingSessionId, racingEventId, RelationshipType.RacingSessionBelongsToRacingEvent)
         if (!createdRelationship) {
@@ -95,7 +96,7 @@ export class RacingSession {
             throw new NodeNotFoundError(racingSessionId)
         }
 
-        const relationship = await getRel(racingSessionId, RelationshipType.RacingSessionBelongsToRacingEvent)
+        const relationship = await getRel(racingSessionId, RelationshipType.RacingSessionBelongsToRacingEvent, NodeTypeLabel.RacingEvent)
         if (!relationship) {
             throw new RelationshipNotFoundError(RacingSessionRelationship.belongsToRacingEvent, racingSessionId, null)
         }
@@ -139,7 +140,7 @@ export class RacingSession {
             throw new RelationshipAlreadyExistsError(RacingSessionRelationship.hasSessionResult, racingSessionId, sessionResultId)
         }
 
-        await deleteDeprecatedRelationship(sessionResultId, DbRelationship.RacingSessionHasSessionResult)
+        await deleteDeprecatedRelationship(sessionResultId, DbRelationship.RacingSessionHasSessionResult, NodeTypeLabel.RacingSession)
 
         const createdRelationship = await createRel(racingSessionId, sessionResultId, RelationshipType.RacingSessionHasSessionResult)
         if (!createdRelationship) {
@@ -246,7 +247,7 @@ export class RacingSession {
             throw new RelationshipAlreadyExistsError(RacingSessionRelationship.hasPrimeImage, racingSessionId, imageId)
         }
 
-        await deleteDeprecatedRelationship(racingSessionId, DbRelationship.RacingSessionHasPrimeImage)
+        await deleteDeprecatedRelationship(racingSessionId, DbRelationship.RacingSessionHasPrimeImage, NodeTypeLabel.Image)
 
         const createdRelationship = await createRel(racingSessionId, imageId, RelationshipType.RacingSessionHasPrimeImage)
         if (!createdRelationship) {
@@ -262,7 +263,7 @@ export class RacingSession {
             throw new NodeNotFoundError(racingSessionId)
         }
 
-        const relationship = await getRel(racingSessionId, RelationshipType.RacingSessionHasPrimeImage)
+        const relationship = await getRel(racingSessionId, RelationshipType.RacingSessionHasPrimeImage, NodeTypeLabel.Image)
         if (!relationship) {
             throw new RelationshipNotFoundError(RacingSessionRelationship.hasPrimeImage, racingSessionId, null)
         }

@@ -3,20 +3,14 @@ import {getDriver} from "../driver"
 import {BaseRelationship} from "../types/BaseRelationship"
 import {DbRelationship} from "../types/DbRelationship"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
+import type {NodeTypeLabel} from "../NodeTypeLabel"
 
-/**
- * Searches for an existing relationship for the given node, which matches the provided relationship name.
- * If there exists none then false is returned.
- *
- * ⚠️
- * When there exist multiple relationships then only one of them will be returned (which is not necessarily the first one).
- */
-export async function getRelationship(nodeId: number, relationshipName: DbRelationship): Promise<false | BaseRelationship> {
+export async function getRelationship(startNodeId: number, relationshipName: DbRelationship, endNodeType: NodeTypeLabel): Promise<false | BaseRelationship> {
     const driver: Driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getRelationshipQuery(nodeId, relationshipName))
+        const result = await txc.run(getRelationshipQuery(startNodeId, relationshipName, endNodeType))
         return result.records
     })
 
@@ -34,7 +28,7 @@ export async function getRelationship(nodeId: number, relationshipName: DbRelati
     return {
         id: relation.properties.mc_id,
         type: relationshipName,
-        start_node_id: nodeId,
+        start_node_id: startNodeId,
         start_node: Object.assign({}, sourceNode.properties, {
             id: sourceNode.properties.mc_id,
             created_at: sourceNode.properties.created_at,
@@ -53,9 +47,10 @@ export async function getRelationship(nodeId: number, relationshipName: DbRelati
     } as BaseRelationship
 }
 
-export function getRelationshipQuery(nodeId: number, relationshipName: DbRelationship) {
+export function getRelationshipQuery(startNodeId: number, relationshipName: DbRelationship, endNodeLabel: NodeTypeLabel) {
     return getCypherQueryTemplate('relationships/_cypher/getRelationship.cypher')
         .trim()
-        .replace('$nodeId', nodeId.toString())
+        .replace('$startNodeId', startNodeId.toString())
         .replace('relationshipName', relationshipName)
+        .replace('$endNodeLabel', endNodeLabel)
 }

@@ -21,6 +21,7 @@ import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {getSpecificRel} from "../relationships/getSpecificRel"
 import {createRel} from "../relationships/createRel"
 import {getAllRels} from "../relationships/getAllRels"
+import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 
 export class Company {
     static async create(data: CreateCompanyInput): Promise<CompanyNode> {
@@ -77,7 +78,7 @@ export class Company {
             throw new RelationshipAlreadyExistsError(CompanyRelationship.hasBrand, companyId, brandId)
         }
 
-        await deleteDeprecatedRelationship(brandId, DbRelationship.CompanyHasBrand)
+        await deleteDeprecatedRelationship(brandId, DbRelationship.CompanyHasBrand, NodeTypeLabel.Company)
 
         const createdRelationship = await createRel(companyId, brandId, RelationshipType.CompanyHasBrand)
         if (!createdRelationship) {
@@ -183,7 +184,7 @@ export class Company {
             throw new RelationshipAlreadyExistsError(CompanyRelationship.hasPrimeImage, companyId, imageId)
         }
 
-        await deleteDeprecatedRelationship(companyId, DbRelationship.CompanyHasPrimeImage)
+        await deleteDeprecatedRelationship(companyId, DbRelationship.CompanyHasPrimeImage, NodeTypeLabel.Image)
 
         const createdRelationship = await createRel(companyId, imageId, RelationshipType.CompanyHasPrimeImage)
         if (!createdRelationship) {
@@ -199,7 +200,7 @@ export class Company {
             throw new NodeNotFoundError(companyId)
         }
 
-        const relationship = await getRel(companyId, RelationshipType.CompanyHasPrimeImage)
+        const relationship = await getRel(companyId, RelationshipType.CompanyHasPrimeImage, NodeTypeLabel.Image)
         if (!relationship) {
             throw new RelationshipNotFoundError(CompanyRelationship.hasPrimeImage, companyId, null)
         }

@@ -22,6 +22,7 @@ import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {Image} from "../images/Image"
 import {getRel} from "../relationships/getRel"
 import {RacingEvent} from "../racing-events/RacingEvent"
+import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 
 export class RaceTrack {
     static async create(data: CreateRaceTrackInput): Promise<RaceTrackNode> {
@@ -79,7 +80,7 @@ export class RaceTrack {
             throw new RelationshipAlreadyExistsError(RaceTrackRelationship.hasLayout, raceTrackId, trackLayoutId)
         }
 
-        await deleteDeprecatedRelationship(trackLayoutId, DbRelationship.RaceTrackHasLayout)
+        await deleteDeprecatedRelationship(trackLayoutId, DbRelationship.RaceTrackHasLayout, NodeTypeLabel.RaceTrack)
 
         const createdRelationship = await createRel(raceTrackId, trackLayoutId, RelationshipType.RaceTrackHasLayout)
         if (!createdRelationship) {
@@ -134,7 +135,7 @@ export class RaceTrack {
             throw new RelationshipAlreadyExistsError(RaceTrackRelationship.hostedRacingEvent, raceTrackId, racingEventId)
         }
 
-        await deleteDeprecatedRelationship(racingEventId, DbRelationship.RaceTrackHostedRacingEvent)
+        await deleteDeprecatedRelationship(racingEventId, DbRelationship.RaceTrackHostedRacingEvent, NodeTypeLabel.RaceTrack)
 
         const createdRelationship = await createRel(raceTrackId, racingEventId, RelationshipType.RaceTrackHostedRacingEvent)
         if (!createdRelationship) {
@@ -242,7 +243,7 @@ export class RaceTrack {
             throw new RelationshipAlreadyExistsError(RaceTrackRelationship.hasPrimeImage, raceTrackId, imageId)
         }
 
-        await deleteDeprecatedRelationship(raceTrackId, DbRelationship.RaceTrackHasPrimeImage)
+        await deleteDeprecatedRelationship(raceTrackId, DbRelationship.RaceTrackHasPrimeImage, NodeTypeLabel.Image)
 
         const createdRelationship = await createRel(raceTrackId, imageId, RelationshipType.RaceTrackHasPrimeImage)
         if (!createdRelationship) {
@@ -258,7 +259,7 @@ export class RaceTrack {
             throw new NodeNotFoundError(raceTrackId)
         }
 
-        const relationship = await getRel(raceTrackId, RelationshipType.RaceTrackHasPrimeImage)
+        const relationship = await getRel(raceTrackId, RelationshipType.RaceTrackHasPrimeImage, NodeTypeLabel.Image)
         if (!relationship) {
             throw new RelationshipNotFoundError(RaceTrackRelationship.hasPrimeImage, raceTrackId, null)
         }

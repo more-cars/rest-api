@@ -22,6 +22,7 @@ import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {LapTime} from "../lap-times/LapTime"
 import {getAllRels} from "../relationships/getAllRels"
 import {Image} from "../images/Image"
+import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 
 export class SessionResult {
     static async create(data: CreateSessionResultInput): Promise<SessionResultNode> {
@@ -79,7 +80,7 @@ export class SessionResult {
             throw new RelationshipAlreadyExistsError(SessionResultRelationship.belongsToRacingSession, sessionResultId, racingSessionId)
         }
 
-        await deleteDeprecatedRelationship(sessionResultId, DbRelationship.SessionResultBelongsToRacingSession)
+        await deleteDeprecatedRelationship(sessionResultId, DbRelationship.SessionResultBelongsToRacingSession, NodeTypeLabel.RacingSession)
 
         const createdRelationship = await createRel(sessionResultId, racingSessionId, RelationshipType.SessionResultBelongsToRacingSession)
         if (!createdRelationship) {
@@ -95,7 +96,7 @@ export class SessionResult {
             throw new NodeNotFoundError(sessionResultId)
         }
 
-        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultBelongsToRacingSession)
+        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultBelongsToRacingSession, NodeTypeLabel.RacingSession)
         if (!relationship) {
             throw new RelationshipNotFoundError(SessionResultRelationship.belongsToRacingSession, sessionResultId, null)
         }
@@ -139,7 +140,7 @@ export class SessionResult {
             throw new RelationshipAlreadyExistsError(SessionResultRelationship.hasLapTime, sessionResultId, lapTimeId)
         }
 
-        await deleteDeprecatedRelationship(lapTimeId, DbRelationship.SessionResultHasLapTime)
+        await deleteDeprecatedRelationship(lapTimeId, DbRelationship.SessionResultHasLapTime, NodeTypeLabel.SessionResult)
 
         const createdRelationship = await createRel(sessionResultId, lapTimeId, RelationshipType.SessionResultHasLapTime)
         if (!createdRelationship) {
@@ -247,7 +248,7 @@ export class SessionResult {
             throw new RelationshipAlreadyExistsError(SessionResultRelationship.hasPrimeImage, sessionResultId, imageId)
         }
 
-        await deleteDeprecatedRelationship(sessionResultId, DbRelationship.SessionResultHasPrimeImage)
+        await deleteDeprecatedRelationship(sessionResultId, DbRelationship.SessionResultHasPrimeImage, NodeTypeLabel.Image)
 
         const createdRelationship = await createRel(sessionResultId, imageId, RelationshipType.SessionResultHasPrimeImage)
         if (!createdRelationship) {
@@ -263,7 +264,7 @@ export class SessionResult {
             throw new NodeNotFoundError(sessionResultId)
         }
 
-        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultHasPrimeImage)
+        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultHasPrimeImage, NodeTypeLabel.Image)
         if (!relationship) {
             throw new RelationshipNotFoundError(SessionResultRelationship.hasPrimeImage, sessionResultId, null)
         }

@@ -22,6 +22,7 @@ import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {TrackLayout} from "../track-layouts/TrackLayout"
 import {Image} from "../images/Image"
 import {getAllRels} from "../relationships/getAllRels"
+import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 
 export class LapTime {
     static async create(data: CreateLapTimeInput): Promise<LapTimeNode> {
@@ -79,7 +80,7 @@ export class LapTime {
             throw new RelationshipAlreadyExistsError(LapTimeRelationship.belongsToSessionResult, lapTimeId, sessionResultId)
         }
 
-        await deleteDeprecatedRelationship(lapTimeId, DbRelationship.LapTimeBelongsToSessionResult)
+        await deleteDeprecatedRelationship(lapTimeId, DbRelationship.LapTimeBelongsToSessionResult, NodeTypeLabel.SessionResult)
 
         const createdRelationship = await createRel(lapTimeId, sessionResultId, RelationshipType.LapTimeBelongsToSessionResult)
         if (!createdRelationship) {
@@ -95,7 +96,7 @@ export class LapTime {
             throw new NodeNotFoundError(lapTimeId)
         }
 
-        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeBelongsToSessionResult)
+        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeBelongsToSessionResult, NodeTypeLabel.SessionResult)
         if (!relationship) {
             throw new RelationshipNotFoundError(LapTimeRelationship.belongsToSessionResult, lapTimeId, null)
         }
@@ -139,7 +140,7 @@ export class LapTime {
             throw new RelationshipAlreadyExistsError(LapTimeRelationship.achievedOnTrackLayout, lapTimeId, trackLayoutId)
         }
 
-        await deleteDeprecatedRelationship(lapTimeId, DbRelationship.LapTimeAchievedOnTrackLayout)
+        await deleteDeprecatedRelationship(lapTimeId, DbRelationship.LapTimeAchievedOnTrackLayout, NodeTypeLabel.TrackLayout)
 
         const createdRelationship = await createRel(lapTimeId, trackLayoutId, RelationshipType.LapTimeAchievedOnTrackLayout)
         if (!createdRelationship) {
@@ -155,7 +156,7 @@ export class LapTime {
             throw new NodeNotFoundError(lapTimeId)
         }
 
-        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeAchievedOnTrackLayout)
+        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeAchievedOnTrackLayout, NodeTypeLabel.TrackLayout)
         if (!relationship) {
             throw new RelationshipNotFoundError(LapTimeRelationship.achievedOnTrackLayout, lapTimeId, null)
         }
@@ -252,7 +253,7 @@ export class LapTime {
             throw new RelationshipAlreadyExistsError(LapTimeRelationship.hasPrimeImage, lapTimeId, imageId)
         }
 
-        await deleteDeprecatedRelationship(lapTimeId, DbRelationship.LapTimeHasPrimeImage)
+        await deleteDeprecatedRelationship(lapTimeId, DbRelationship.LapTimeHasPrimeImage, NodeTypeLabel.Image)
 
         const createdRelationship = await createRel(lapTimeId, imageId, RelationshipType.LapTimeHasPrimeImage)
         if (!createdRelationship) {
@@ -268,7 +269,7 @@ export class LapTime {
             throw new NodeNotFoundError(lapTimeId)
         }
 
-        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeHasPrimeImage)
+        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeHasPrimeImage, NodeTypeLabel.Image)
         if (!relationship) {
             throw new RelationshipNotFoundError(LapTimeRelationship.hasPrimeImage, lapTimeId, null)
         }

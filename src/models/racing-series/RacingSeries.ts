@@ -21,6 +21,7 @@ import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {Image} from "../images/Image"
 import {getRel} from "../relationships/getRel"
+import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 
 export class RacingSeries {
     static async create(data: CreateRacingSeriesInput): Promise<RacingSeriesNode> {
@@ -78,7 +79,7 @@ export class RacingSeries {
             throw new RelationshipAlreadyExistsError(RacingSeriesRelationship.hasRacingEvent, racingSeriesId, racingEventId)
         }
 
-        await deleteDeprecatedRelationship(racingEventId, DbRelationship.RacingSeriesHasRacingEvent)
+        await deleteDeprecatedRelationship(racingEventId, DbRelationship.RacingSeriesHasRacingEvent, NodeTypeLabel.RacingSeries)
 
         const createdRelationship = await createRel(racingSeriesId, racingEventId, RelationshipType.RacingSeriesHasRacingEvent)
         if (!createdRelationship) {
@@ -186,7 +187,7 @@ export class RacingSeries {
             throw new RelationshipAlreadyExistsError(RacingSeriesRelationship.hasPrimeImage, racingSeriesId, imageId)
         }
 
-        await deleteDeprecatedRelationship(racingSeriesId, DbRelationship.RacingSeriesHasPrimeImage)
+        await deleteDeprecatedRelationship(racingSeriesId, DbRelationship.RacingSeriesHasPrimeImage, NodeTypeLabel.Image)
 
         const createdRelationship = await createRel(racingSeriesId, imageId, RelationshipType.RacingSeriesHasPrimeImage)
         if (!createdRelationship) {
@@ -202,7 +203,7 @@ export class RacingSeries {
             throw new NodeNotFoundError(racingSeriesId)
         }
 
-        const relationship = await getRel(racingSeriesId, RelationshipType.RacingSeriesHasPrimeImage)
+        const relationship = await getRel(racingSeriesId, RelationshipType.RacingSeriesHasPrimeImage, NodeTypeLabel.Image)
         if (!relationship) {
             throw new RelationshipNotFoundError(RacingSeriesRelationship.hasPrimeImage, racingSeriesId, null)
         }

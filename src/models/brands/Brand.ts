@@ -22,6 +22,7 @@ import {getSpecificRel} from "../relationships/getSpecificRel"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {createRel} from "../relationships/createRel"
 import {getAllRels} from "../relationships/getAllRels"
+import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 
 export class Brand {
     static async create(data: CreateBrandInput): Promise<BrandNode> {
@@ -78,7 +79,7 @@ export class Brand {
             throw new RelationshipAlreadyExistsError(BrandRelationship.belongsToCompany, brandId, companyId)
         }
 
-        await deleteDeprecatedRelationship(brandId, DbRelationship.BrandBelongsToCompany)
+        await deleteDeprecatedRelationship(brandId, DbRelationship.BrandBelongsToCompany, NodeTypeLabel.Company)
 
         const createdRelationship = await createRel(brandId, companyId, RelationshipType.BrandBelongsToCompany)
         if (!createdRelationship) {
@@ -94,7 +95,7 @@ export class Brand {
             throw new NodeNotFoundError(brandId)
         }
 
-        const relationship = await getRel(brandId, RelationshipType.BrandBelongsToCompany)
+        const relationship = await getRel(brandId, RelationshipType.BrandBelongsToCompany, NodeTypeLabel.Company)
         if (!relationship) {
             throw new RelationshipNotFoundError(BrandRelationship.belongsToCompany, brandId, null)
         }
@@ -137,7 +138,7 @@ export class Brand {
             throw new RelationshipAlreadyExistsError(BrandRelationship.hasCarModel, brandId, carModelId)
         }
 
-        await deleteDeprecatedRelationship(carModelId, DbRelationship.BrandHasCarModel)
+        await deleteDeprecatedRelationship(carModelId, DbRelationship.BrandHasCarModel, NodeTypeLabel.Brand)
 
         const createdRelationship = await createRel(brandId, carModelId, RelationshipType.BrandHasCarModel)
         if (!createdRelationship) {
@@ -282,7 +283,7 @@ export class Brand {
             throw new RelationshipAlreadyExistsError(BrandRelationship.hasPrimeImage, brandId, imageId)
         }
 
-        await deleteDeprecatedRelationship(brandId, DbRelationship.BrandHasPrimeImage)
+        await deleteDeprecatedRelationship(brandId, DbRelationship.BrandHasPrimeImage, NodeTypeLabel.Image)
 
         const createdRelationship = await createRel(brandId, imageId, RelationshipType.BrandHasPrimeImage)
         if (!createdRelationship) {
@@ -298,7 +299,7 @@ export class Brand {
             throw new NodeNotFoundError(brandId)
         }
 
-        const relationship = await getRel(brandId, RelationshipType.BrandHasPrimeImage)
+        const relationship = await getRel(brandId, RelationshipType.BrandHasPrimeImage, NodeTypeLabel.Image)
         if (!relationship) {
             throw new RelationshipNotFoundError(BrandRelationship.hasPrimeImage, brandId, null)
         }
