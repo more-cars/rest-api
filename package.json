@@ -64,7 +64,6 @@
     "minikube:open-tunnel": "deployment/minikube-tunnel-start.sh",
     "minikube:stop": "deployment/minikube-cluster-stop.sh",
     "minikube:delete": "deployment/minikube-cluster-delete.sh",
-    "minikube:mc1:deploy": "deployment/minikube-mc1-deploy-database.sh",
     "minikube:mc1:db-recovery": "deployment/minikube-mc1-recover-database.sh",
     "minikube:import-dev-image": "minikube image load localhost/mc-api:dev -p morecars",
     "minikube:delete-dev-image": "minikube image rm localhost/mc-api:dev -p morecars",
