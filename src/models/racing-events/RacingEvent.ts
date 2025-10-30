@@ -147,6 +147,7 @@ export class RacingEvent {
             throw new RelationshipAlreadyExistsError(RacingEventRelationship.isFollowedByEvent, racingEventId, partnerId)
         }
 
+        await deleteDeprecatedRel(racingEventId, DbRelationship.RacingEventIsFollowedByEvent, NodeTypeLabel.RacingEvent)
         await deleteDeprecatedRel(partnerId, DbRelationship.RacingEventIsFollowedByEvent, NodeTypeLabel.RacingEvent)
 
         const createdRelationship = await createRel(racingEventId, partnerId, RelationshipType.RacingEventIsFollowedByEvent)
@@ -211,6 +212,7 @@ export class RacingEvent {
             throw new RelationshipAlreadyExistsError(RacingEventRelationship.followsEvent, racingEventId, partnerId)
         }
 
+        await deleteDeprecatedRel(racingEventId, DbRelationship.RacingEventFollowsEvent, NodeTypeLabel.RacingEvent)
         await deleteDeprecatedRel(partnerId, DbRelationship.RacingEventFollowsEvent, NodeTypeLabel.RacingEvent)
 
         const createdRelationship = await createRel(racingEventId, partnerId, RelationshipType.RacingEventFollowsEvent)
