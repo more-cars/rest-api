@@ -211,4 +211,23 @@ export class CarModelVariant {
 
         return getAllRels(carModelVariantId, RelationshipType.CarModelVariantAchievedLapTime)
     }
+
+    static async deleteAchievedLapTimeRelationship(carModelVariantId: number, lapTimeId: number) {
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const lapTime = await LapTime.findById(lapTimeId)
+        if (!lapTime) {
+            throw new NodeNotFoundError(lapTimeId)
+        }
+
+        const relationship = await getSpecificRel(carModelVariantId, lapTimeId, RelationshipType.CarModelVariantAchievedLapTime)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(CarModelVariantRelationship.achievedLapTime, carModelVariantId, lapTimeId)
+        }
+
+        await deleteSpecificRel(carModelVariantId, lapTimeId, RelationshipType.CarModelVariantAchievedLapTime)
+    }
 }

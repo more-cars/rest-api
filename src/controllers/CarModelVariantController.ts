@@ -11,6 +11,7 @@ import {getAllAchievedSessionResultRelations} from "./car-model-variants/getAllA
 import {deleteAchievedSessionResultRelation} from "./car-model-variants/deleteAchievedSessionResultRelation"
 import {createAchievedLapTimeRelation} from "./car-model-variants/createAchievedLapTimeRelation"
 import {getAllAchievedLapTimeRelations} from "./car-model-variants/getAllAchievedLapTimeRelations"
+import {deleteAchievedLapTimeRelation} from "./car-model-variants/deleteAchievedLapTimeRelation"
 
 export class CarModelVariantController {
     static async create(req: express.Request, res: express.Response) {
@@ -59,5 +60,9 @@ export class CarModelVariantController {
 
     static async getAllAchievedLapTimeRelations(req: express.Request, res: express.Response) {
         await getAllAchievedLapTimeRelations(req, res)
+    }
+
+    static async deleteAchievedLapTimeRelation(req: express.Request, res: express.Response) {
+        await deleteAchievedLapTimeRelation(req, res)
     }
 }

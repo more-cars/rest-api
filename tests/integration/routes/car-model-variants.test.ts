@@ -101,4 +101,12 @@ describe('Car Model Variants', () => {
         expect(CarModelVariantController.getAllAchievedLapTimeRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›achieved-lap-time‹ relationship', async () => {
+        await request(app)
+            .delete('/car-model-variants/123/achieved-lap-time/456')
+
+        expect(CarModelVariantController.deleteAchievedLapTimeRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
