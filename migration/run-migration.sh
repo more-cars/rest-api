@@ -46,4 +46,24 @@ elif [ "$MIGRATION_RUNNER" = minikube ]; then
     kubectl wait --for=condition=complete job/"$JOB_NAME" --timeout=60m
     kubectl describe job/"$JOB_NAME"
   fi
+elif [ "$MIGRATION_RUNNER" = gke ]; then
+  if [ "$MIGRATE_DATA_TYPE" = nodes ]; then
+    JOB_NAME=migrate-nodes-$(date +%s)
+    npx ts-node "$SCRIPT_PATH"/lib/create-patch-file_nodes.ts "$JOB_NAME"
+    gcloud container clusters get-credentials more-cars --region=europe-west1-b
+    kubectl config use-context gke_more-cars_europe-west1-b_more-cars
+    kubectl config set-context --current --namespace="$TARGET_ENVIRONMENT"
+    kubectl apply -k "$SCRIPT_PATH"/../deployment/overlays/"$TARGET_ENVIRONMENT"/jobs/migrate-nodes
+    kubectl wait --for=condition=complete job/"$JOB_NAME" --timeout=60m
+    kubectl describe job/"$JOB_NAME"
+  elif [ "$MIGRATE_DATA_TYPE" = relationships ]; then
+    JOB_NAME=migrate-relationships-$(date +%s)
+    npx ts-node "$SCRIPT_PATH"/lib/create-patch-file_relationships.ts "$JOB_NAME"
+    gcloud container clusters get-credentials more-cars --region=europe-west1-b
+    kubectl config use-context gke_more-cars_europe-west1-b_more-cars
+    kubectl config set-context --current --namespace="$TARGET_ENVIRONMENT"
+    kubectl apply -k "$SCRIPT_PATH"/../deployment/overlays/"$TARGET_ENVIRONMENT"/jobs/migrate-relationships
+    kubectl wait --for=condition=complete job/"$JOB_NAME" --timeout=60m
+    kubectl describe job/"$JOB_NAME"
+  fi
 fi
