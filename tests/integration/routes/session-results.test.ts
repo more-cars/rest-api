@@ -94,6 +94,14 @@ describe('Session Results', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Get ›achieved-with-car-model-variant‹ relationship', async () => {
+        await request(app)
+            .get('/session-results/123/achieved-with-car-model-variant')
+
+        expect(SessionResultController.getAchievedWithCarModelVariantRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/session-results/123/has-image/456')

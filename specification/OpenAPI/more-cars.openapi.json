@@ -7850,6 +7850,47 @@
         }
       }
     },
+    "/session-results/{session-result-id}/achieved-with-car-model-variant": {
+      "get": {
+        "tags": [
+          "Session Results"
+        ],
+        "summary": "Get the ›achieved-with-car-model-variant‹ relationship for the `Session Result`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session-result-id",
+            "description": "ID of the `Session Result`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›achieved-with-car-model-variant‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionResultAchievedWithCarModelVariantResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Session Result` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/session-results/{session-result-id}/achieved-with-car-model-variant/{car-model-variant-id}": {
       "post": {
         "tags": [

@@ -179,6 +179,46 @@ export class SessionResult {
         await deleteSpecificRel(sessionResultId, lapTimeId, RelationshipType.SessionResultHasLapTime)
     }
 
+    static async createAchievedWithCarModelVariantRelationship(sessionResultId: number, carModelVariantId: number) {
+        const sessionResult = await SessionResult.findById(sessionResultId)
+        if (!sessionResult) {
+            throw new NodeNotFoundError(sessionResultId)
+        }
+
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const existingRelation = await getSpecificRel(sessionResultId, carModelVariantId, RelationshipType.SessionResultAchievedWithCarModelVariant)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(SessionResultRelationship.achievedWithCarModelVariant, sessionResultId, carModelVariantId)
+        }
+
+        await deleteDeprecatedRel(sessionResultId, DbRelationship.SessionResultAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant)
+
+        const createdRelationship = await createRel(sessionResultId, carModelVariantId, RelationshipType.SessionResultAchievedWithCarModelVariant)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    }
+
+    static async getAchievedWithCarModelVariantRelationship(sessionResultId: number) {
+        const sessionResult = await SessionResult.findById(sessionResultId)
+        if (!sessionResult) {
+            throw new NodeNotFoundError(sessionResultId)
+        }
+
+        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(SessionResultRelationship.achievedWithCarModelVariant, sessionResultId, null)
+        }
+
+        return relationship
+    }
+
     static async createHasImageRelationship(sessionResultId: number, imageId: number) {
 
         const sessionResult = await SessionResult.findById(sessionResultId)
@@ -290,31 +330,5 @@ export class SessionResult {
         }
 
         await deleteSpecificRel(sessionResultId, imageId, RelationshipType.SessionResultHasPrimeImage)
-    }
-
-    static async createAchievedWithCarModelVariantRelationship(sessionResultId: number, carModelVariantId: number) {
-        const sessionResult = await SessionResult.findById(sessionResultId)
-        if (!sessionResult) {
-            throw new NodeNotFoundError(sessionResultId)
-        }
-
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
-
-        const existingRelation = await getSpecificRel(sessionResultId, carModelVariantId, RelationshipType.SessionResultAchievedWithCarModelVariant)
-        if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(SessionResultRelationship.achievedWithCarModelVariant, sessionResultId, carModelVariantId)
-        }
-
-        await deleteDeprecatedRel(sessionResultId, DbRelationship.SessionResultAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant)
-
-        const createdRelationship = await createRel(sessionResultId, carModelVariantId, RelationshipType.SessionResultAchievedWithCarModelVariant)
-        if (!createdRelationship) {
-            throw new Error('Relationship could not be created')
-        }
-
-        return createdRelationship
     }
 }
