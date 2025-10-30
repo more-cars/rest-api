@@ -28,10 +28,10 @@ export async function create<%= h.changeCase.pascal(relationshipName) %>Relation
     } catch (e) {
         if (e instanceof NodeNotFoundError) {
             return sendResponse404(res)
-<% if (startNodeType === endNodeType) { %>
+<% if (startNodeType === endNodeType) { -%>
         } else if (e instanceof SemanticError) {
             return sendResponse422(res)
-<% } %>
+<% } -%>
         } else if (e instanceof RelationshipAlreadyExistsError) {
             return sendResponse304(res)
         } else {

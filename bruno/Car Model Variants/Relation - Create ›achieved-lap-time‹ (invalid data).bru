@@ -1,0 +1,25 @@
+meta {
+  name: Create ›achieved-lap-time‹ relation (invalid data)
+  type: http
+  tags: [
+    create
+    relation
+    invalid
+  ]
+}
+
+post {
+  url: {{baseUrl}}/car-model-variants/{{invalidCarModelVariantId}}/achieved-lap-time/{{invalidLapTimeId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
+
+script:pre-request {
+  lib.tools.generateInvalidId('CarModelVariant')
+  lib.tools.generateInvalidId('LapTime')
+}

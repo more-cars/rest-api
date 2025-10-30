@@ -85,4 +85,12 @@ describe('Car Model Variants', () => {
         expect(CarModelVariantController.deleteAchievedSessionResultRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›achieved-lap-time‹ relationship', async () => {
+        await request(app)
+            .post('/car-model-variants/123/achieved-lap-time/456')
+
+        expect(CarModelVariantController.createAchievedLapTimeRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

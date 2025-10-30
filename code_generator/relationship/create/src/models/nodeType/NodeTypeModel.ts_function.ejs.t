@@ -7,11 +7,11 @@ skip_if: static async create<%= h.changeCase.pascal(relationshipName) %>Relation
     }
 
     static async create<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id: number, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id: number) {
-<% if (startNodeType === endNodeType) { %>
+<% if (startNodeType === endNodeType) { -%>
         if (<%= h.changeCase.camel(startNodeType) %>Id === partnerId) {
             throw new SemanticError(`<%= h.changeCase.title(startNodeType) %> #${<%= h.changeCase.camel(startNodeType) %>Id} cannot be connected to itself`)
         }
-<% } %>
+<% } -%>
         const <%= h.changeCase.camel(startNodeType) %> = await <%= h.changeCase.pascal(startNodeType) %>.findById(<%= h.changeCase.camel(startNodeType) %>Id)
         if (!<%= h.changeCase.camel(startNodeType) %>) {
             throw new NodeNotFoundError(<%= h.changeCase.camel(startNodeType) %>Id)
@@ -26,10 +26,10 @@ skip_if: static async create<%= h.changeCase.pascal(relationshipName) %>Relation
         if (existingRelation) {
             throw new RelationshipAlreadyExistsError(<%= h.changeCase.pascal(startNodeType) %>Relationship.<%= h.changeCase.camel(relationshipName) %>, <%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id)
         }
-<% if (cardinality === '1:1' || cardinality === 'n:1') { %>
+<% if (cardinality === '1:1' || cardinality === 'n:1') { -%>
         await deleteDeprecatedRel(<%= h.changeCase.camel(startNodeType) %>Id, DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>, NodeTypeLabel.<%= h.changeCase.pascal(endNodeType) %>)
 <% } %>
-<% if (cardinality === '1:1' || cardinality === '1:n') { %>
+<% if (cardinality === '1:1' || cardinality === '1:n') { -%>
         await deleteDeprecatedRel(<%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id, DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>, NodeTypeLabel.<%= h.changeCase.pascal(startNodeType) %>)
 <% } %>
         const createdRelationship = await createRel(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id, RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
