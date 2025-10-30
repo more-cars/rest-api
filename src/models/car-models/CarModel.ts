@@ -142,7 +142,7 @@ export class CarModel {
             throw new RelationshipAlreadyExistsError(CarModelRelationship.hasSuccessor, carModelId, partnerId)
         }
 
-        await deleteDeprecatedRel(carModelId, DbRelationship.CarModelHasSuccessor, NodeTypeLabel.CarModel)
+        await deleteDeprecatedRel(partnerId, DbRelationship.CarModelHasSuccessor, NodeTypeLabel.CarModel)
 
         const createdRelationship = await createRel(carModelId, partnerId, RelationshipType.CarModelHasSuccessor)
         if (!createdRelationship) {
@@ -205,7 +205,7 @@ export class CarModel {
             throw new RelationshipAlreadyExistsError(CarModelRelationship.isSuccessorOf, carModelId, partnerId)
         }
 
-        await deleteDeprecatedRel(carModelId, DbRelationship.CarModelIsSuccessorOf, NodeTypeLabel.CarModel)
+        await deleteDeprecatedRel(partnerId, DbRelationship.CarModelIsSuccessorOf, NodeTypeLabel.CarModel)
 
         const createdRelationship = await createRel(carModelId, partnerId, RelationshipType.CarModelIsSuccessorOf)
         if (!createdRelationship) {
