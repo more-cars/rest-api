@@ -3,8 +3,9 @@ import {NodeTypeMapping} from "./src/NodeTypeMapping"
 import type {NodeTypeLabelOld} from "./src/types/NodeTypeLabelOld"
 import {RelationshipTypeMapping} from "./src/RelationshipTypeMapping"
 import {RelationshipTypeLabelOld} from "./src/types/RelationshipTypeLabelOld"
-import {fetchOldRelationshipsOfType} from "./src/fetchOldRelationshipsOfType"
 import {deleteAllRelationshipsOfType} from "../tests/_toolbox/dbSeeding/deleteAllRelationshipsOfType"
+import {isRelationshipReversedInOldDb} from "./src/isRelationshipReversedInOldDb"
+import {fetchOldRelationshipsOfType} from "./src/fetchOldRelationshipsOfType"
 import {createDbRelationship} from "../src/db/relationships/createDbRelationship"
 import {addMoreCarsIdToRelationship} from "../src/db/relationships/addMoreCarsIdToRelationship"
 import {addTimestampsToRelationship} from "../src/db/relationships/addTimestampsToRelationship"
@@ -91,14 +92,4 @@ async function determineDeleteRelationships() {
     const deleteRels = process.env.DELETE_EXISTING_DATA
 
     return deleteRels === 'true'
-}
-
-function isRelationshipReversedInOldDb(newRelationshipType: DbRelationship) {
-    return [
-        DbRelationship.CarModelHasSuccessor,
-        DbRelationship.TrackLayoutHasLapTime,
-        DbRelationship.RacingEventIsFollowedByEvent,
-        DbRelationship.SessionResultHasLapTime,
-        DbRelationship.NodeHasPrimeImage,
-    ].includes(newRelationshipType)
 }

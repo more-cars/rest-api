@@ -2,6 +2,7 @@ export enum NodeTypeLabelOld {
     Company = "company",
     Brand = "brand",
     CarModel = "carmodel",
+    CarModelVariant = "carmodelvariation",
     RaceTrack = "racetrack",
     TrackLayout = "racetrackvariant",
     RacingSeries = "racingseries",

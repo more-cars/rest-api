@@ -2,6 +2,7 @@ import type {Node} from "neo4j-driver"
 import type {InputCompanyCreate} from "../../src/db/nodes/companies/types/InputCompanyCreate"
 import type {InputBrandCreate} from "../../src/db/nodes/brands/types/InputBrandCreate"
 import type {InputCarModelCreate} from "../../src/db/nodes/car-models/types/InputCarModelCreate"
+import type {InputCarModelVariantCreate} from "../../src/db/nodes/car-model-variants/types/InputCarModelVariantCreate"
 import type {InputRaceTrackCreate} from "../../src/db/nodes/race-tracks/types/InputRaceTrackCreate"
 import type {InputTrackLayoutCreate} from "../../src/db/nodes/track-layouts/types/InputTrackLayoutCreate"
 import type {InputRacingSeriesCreate} from "../../src/db/nodes/racing-series/types/InputRacingSeriesCreate"
@@ -14,6 +15,7 @@ import {NodeTypeLabel} from "../../src/db/NodeTypeLabel"
 import {createNodeQuery as createCompanyQuery} from "../../src/db/nodes/companies/createNode"
 import {createNodeQuery as createBrandQuery} from "../../src/db/nodes/brands/createNode"
 import {createNodeQuery as createCarModelQuery} from "../../src/db/nodes/car-models/createNode"
+import {createNodeQuery as createCarModelVariantQuery} from "../../src/db/nodes/car-model-variants/createNode"
 import {createNodeQuery as createRaceTrackQuery} from "../../src/db/nodes/race-tracks/createNode"
 import {createNodeQuery as createTrackLayoutQuery} from "../../src/db/nodes/track-layouts/createNode"
 import {createNodeQuery as createRacingSeriesQuery} from "../../src/db/nodes/racing-series/createNode"
@@ -30,6 +32,7 @@ type InputTypes =
     InputCompanyCreate |
     InputBrandCreate |
     InputCarModelCreate |
+    InputCarModelVariantCreate |
     InputRaceTrackCreate |
     InputTrackLayoutCreate |
     InputRacingSeriesCreate |
@@ -52,6 +55,9 @@ export async function storeNode(data: InputTypes, newNodeType: NodeTypeLabel, ol
             break
         case NodeTypeLabel.CarModel:
             query = createCarModelQuery(data as InputCarModelCreate)
+            break
+        case NodeTypeLabel.CarModelVariant:
+            query = createCarModelVariantQuery(data as InputCarModelVariantCreate)
             break
         case NodeTypeLabel.RaceTrack:
             query = createRaceTrackQuery(data as InputRaceTrackCreate)

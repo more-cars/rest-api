@@ -4,6 +4,7 @@ import {NodeTypeLabel} from "../../src/db/NodeTypeLabel"
 import {mapCompany} from "./mappings/mapCompany"
 import {mapBrand} from "./mappings/mapBrand"
 import {mapCarModel} from "./mappings/mapCarModel"
+import {mapCarModelVariant} from "./mappings/mapCarModelVariant"
 import {mapRaceTrack} from "./mappings/mapRaceTrack"
 import {mapTrackLayout} from "./mappings/mapTrackLayout"
 import {mapRacingSeries} from "./mappings/mapRacingSeries"
@@ -21,6 +22,8 @@ export function mapNodeProperties(oldNode: Node, nodeType: NodeTypeLabel) {
             return mapBrand(oldNode)
         case NodeTypeLabel.CarModel:
             return mapCarModel(oldNode)
+        case NodeTypeLabel.CarModelVariant:
+            return mapCarModelVariant(oldNode)
         case NodeTypeLabel.RaceTrack:
             return mapRaceTrack(oldNode)
         case NodeTypeLabel.TrackLayout:

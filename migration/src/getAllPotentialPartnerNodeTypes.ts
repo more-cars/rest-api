@@ -13,6 +13,12 @@ export function getAllPotentialPartnerNodeTypes() {
         ]],
         [NodeTypeLabel.CarModel, [
             NodeTypeLabel.CarModel,
+            NodeTypeLabel.CarModelVariant,
+            NodeTypeLabel.Image,
+        ]],
+        [NodeTypeLabel.CarModelVariant, [
+            NodeTypeLabel.SessionResult,
+            NodeTypeLabel.LapTime,
             NodeTypeLabel.Image,
         ]],
         [NodeTypeLabel.RaceTrack, [

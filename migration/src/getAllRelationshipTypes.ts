@@ -1,6 +1,7 @@
 import {NodeTypeLabel} from "../../src/db/NodeTypeLabel";
 import {DbRelationship} from "../../src/db/types/DbRelationship";
 
+// This considers only the outgoing relationships (has-relationships, not the belongs-to relationships).
 export function getAllRelationshipTypes() {
     return new Map<NodeTypeLabel, Map<NodeTypeLabel, DbRelationship[]>>(
         [
@@ -50,10 +51,40 @@ export function getAllRelationshipTypes() {
                         ],
                     ],
                     [
+                        NodeTypeLabel.CarModelVariant,
+                        [
+                            DbRelationship.CarModelHasVariant,
+                        ],
+                    ],
+                    [
                         NodeTypeLabel.Image,
                         [
                             DbRelationship.CarModelHasImage,
                             DbRelationship.CarModelHasPrimeImage,
+                        ],
+                    ],
+                ])
+            ],
+            [
+                NodeTypeLabel.CarModelVariant, new Map(
+                [
+                    [
+                        NodeTypeLabel.SessionResult,
+                        [
+                            DbRelationship.CarModelVariantAchievedSessionResult,
+                        ],
+                    ],
+                    [
+                        NodeTypeLabel.LapTime,
+                        [
+                            DbRelationship.CarModelVariantAchievedLapTime,
+                        ],
+                    ],
+                    [
+                        NodeTypeLabel.Image,
+                        [
+                            DbRelationship.CarModelVariantHasImage,
+                            DbRelationship.CarModelVariantHasPrimeImage,
                         ],
                     ],
                 ])
