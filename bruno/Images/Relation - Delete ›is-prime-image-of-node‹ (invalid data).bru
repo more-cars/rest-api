@@ -1,0 +1,25 @@
+meta {
+  name: Delete ›is-prime-image-of-node‹ relation (invalid data)
+  type: http
+  tags: [
+    delete
+    relation
+    invalid
+  ]
+}
+
+delete {
+  url: {{baseUrl}}/images/{{invalidImageId}}/is-prime-image-of-node/{{invalidNodeId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
+
+script:pre-request {
+  lib.tools.generateInvalidId('Image')
+  lib.tools.generateInvalidId('Node')
+}

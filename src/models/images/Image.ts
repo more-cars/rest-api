@@ -249,6 +249,25 @@ export class Image {
 
         return getAllRels(imageId, RelationshipType.ImageIsPrimeImageOfNode)
     }
+
+    static async deleteIsPrimeImageOfNodeRelationship(imageId: number, nodeId: number) {
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const node = await Node.findById(nodeId)
+        if (!node) {
+            throw new NodeNotFoundError(nodeId)
+        }
+
+        const relationship = await getSpecificRel(imageId, nodeId, RelationshipType.ImageIsPrimeImageOfNode)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(ImageRelationship.isPrimeImageOfNode, imageId, nodeId)
+        }
+
+        await deleteSpecificRel(imageId, nodeId, RelationshipType.ImageIsPrimeImageOfNode)
+    }
 }
 
 /**

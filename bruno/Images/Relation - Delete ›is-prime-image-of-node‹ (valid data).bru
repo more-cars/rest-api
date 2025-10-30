@@ -1,0 +1,23 @@
+meta {
+  name: Delete ›is-prime-image-of-node‹ relation (valid data)
+  type: http
+  tags: [
+    delete
+    relation
+    valid
+  ]
+}
+
+delete {
+  url: {{baseUrl}}/images/{{validImageId}}/is-prime-image-of-node/{{validNodeId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 204
+}
+
+script:pre-request {
+  await lib.Images.ensureImageIsPrimeImageOfNodeRelationshipExists()
+}

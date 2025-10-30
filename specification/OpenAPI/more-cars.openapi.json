@@ -3871,6 +3871,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Images"
+        ],
+        "summary": "Deletes the ›is-prime-image-of-node‹ relationship between the `Image` and the `Node`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "node-id",
+            "description": "ID of the `Node`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›is-prime-image-of-node‹ relationship between `Image` and `Node` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›is-prime-image-of-node‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/race-tracks": {

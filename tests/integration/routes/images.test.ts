@@ -93,4 +93,12 @@ describe('Images', () => {
         expect(ImageController.getAllIsPrimeImageOfNodeRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›is-prime-image-of-node‹ relationship', async () => {
+        await request(app)
+            .delete('/images/123/is-prime-image-of-node/456')
+
+        expect(ImageController.deleteIsPrimeImageOfNodeRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
