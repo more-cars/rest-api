@@ -11,7 +11,7 @@ test('Expecting an empty list when the relationship does not exist', async () =>
     const relationship = await deleteSpecificRelationship(
         image.id,
         partnerNode.id,
-        DbRelationship.ImageBelongsToCompany,
+        DbRelationship.ImageBelongsToNode,
     )
 
     expect(relationship)

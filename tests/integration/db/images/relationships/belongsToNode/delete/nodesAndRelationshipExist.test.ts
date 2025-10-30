@@ -6,12 +6,12 @@ import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 test('Both nodes and the relationship exist', async () => {
-    const seededRelationship = await seedRelationship(NodeTypeEnum.IMAGE, NodeTypeEnum.COMPANY, DbRelationship.ImageBelongsToCompany)
+    const seededRelationship = await seedRelationship(NodeTypeEnum.IMAGE, NodeTypeEnum.COMPANY, DbRelationship.ImageBelongsToNode)
 
     const relationshipBefore = await getSpecificRelationship(
         seededRelationship.start_node_id,
         seededRelationship.end_node_id,
-        DbRelationship.ImageBelongsToCompany,
+        DbRelationship.ImageBelongsToNode,
     )
 
     expect(relationshipBefore)
@@ -20,13 +20,13 @@ test('Both nodes and the relationship exist', async () => {
     await deleteSpecificRelationship(
         seededRelationship.start_node_id,
         seededRelationship.end_node_id,
-        DbRelationship.ImageBelongsToCompany,
+        DbRelationship.ImageBelongsToNode,
     )
 
     const relationshipAfter = await getSpecificRelationship(
         seededRelationship.start_node_id,
         seededRelationship.end_node_id,
-        DbRelationship.ImageBelongsToCompany,
+        DbRelationship.ImageBelongsToNode,
     )
 
     expect(relationshipAfter)

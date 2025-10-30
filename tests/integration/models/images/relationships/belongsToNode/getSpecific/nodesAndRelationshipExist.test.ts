@@ -7,7 +7,7 @@ import {RelationshipSchema} from "../../../../../../_toolbox/schemas/model/Relat
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 test('Both nodes and a ›belongs-to-node‹ relationship exist', async () => {
-    const expectedRelationship = await seedRelationship(NodeTypeEnum.IMAGE, NodeTypeEnum.COMPANY, DbRelationship.ImageBelongsToCompany)
+    const expectedRelationship = await seedRelationship(NodeTypeEnum.IMAGE, NodeTypeEnum.COMPANY, DbRelationship.ImageBelongsToNode)
     const actualRelationship = await Image.getSpecificBelongsToNodeRelationship(expectedRelationship.start_node_id, expectedRelationship.end_node_id)
 
     expect(validateJson(actualRelationship, RelationshipSchema))
