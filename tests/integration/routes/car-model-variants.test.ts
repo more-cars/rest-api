@@ -21,4 +21,12 @@ describe('Car Model Variants', () => {
         expect(CarModelVariantController.getById)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all Nodes', async () => {
+        await request(app)
+            .get('/car-model-variants')
+
+        expect(CarModelVariantController.getAll)
+            .toHaveBeenCalledTimes(1)
+    })
 })

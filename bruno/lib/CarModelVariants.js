@@ -2,8 +2,13 @@ const {submitPostRequest, submitGetRequest} = require("./request")
 
 async function ensureValidCarModelVariantExists() {
     if (!bru.getEnvVar('validCarModelVariantId')) {
-        const newNode = await createCarModelVariant()
-        bru.setEnvVar("validCarModelVariantId", newNode.data.id)
+        const nodeList = await getAllCarModelVariants()
+        if (nodeList.length > 0) {
+            bru.setEnvVar("validCarModelVariantId", nodeList[0].data.id)
+        } else {
+            const newNode = await createCarModelVariant()
+            bru.setEnvVar("validCarModelVariantId", newNode.data.id)
+        } //
     }
 }
 
@@ -16,3 +21,9 @@ async function createCarModelVariant() {
 }
 
 exports.createCarModelVariant = createCarModelVariant
+
+async function getAllCarModelVariants() {
+    return submitGetRequest("/car-model-variants")
+}
+
+exports.getAllCarModelVariants = getAllCarModelVariants

@@ -4,6 +4,8 @@ import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../db/nodes/car-model-variants/createNode"
 import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/car-model-variants/getNodeById"
+import {getAllNodesOfType} from "../../db/nodes/car-model-variants/getAllNodesOfType"
+import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
 
 export class CarModelVariant {
     static async create(data: CreateCarModelVariantInput): Promise<CarModelVariantNode> {
@@ -22,5 +24,16 @@ export class CarModelVariant {
         }
 
         return convertOutputData(node)
+    }
+
+    static async findAll(options: NodeCollectionConstraints = {}): Promise<CarModelVariantNode[]> {
+        const nodes: Array<CarModelVariantNode> = []
+        const nodesDb = await getAllNodesOfType(options)
+
+        nodesDb.forEach(node => {
+            nodes.push(convertOutputData(node))
+        })
+
+        return nodes
     }
 }
