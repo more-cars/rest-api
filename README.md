@@ -57,6 +57,15 @@
 * run `npm run docker:tag-image:dev` to tag the image as a development image
 * run `npm run docker:tag-image` to tag the image as a production image
 
+## Databases
+
+* all databases (except in local environment) require a password
+* the deployments are configured to expect the password as a "Kubernetes Secret"
+    * name: `db-credentials`
+    * key-value pair: `password=the_password`
+* from the command line those secrets can be created via:
+    * `kubectl create secret generic db-credentials --from-literal=password='123456789' --namespace=prod`
+
 ## Tests
 
 ### API Validation

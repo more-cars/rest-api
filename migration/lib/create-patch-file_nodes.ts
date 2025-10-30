@@ -26,22 +26,6 @@ async function createPatchFile() {
             "op": "add",
             "path": "/spec/template/spec/containers/0/env/-",
             "value": {
-                "name": "DB_MC1_PASSWORD",
-                "value": process.env.MIGRATION_SOURCE_DB_PASSWORD
-            }
-        },
-        {
-            "op": "add",
-            "path": "/spec/template/spec/containers/0/env/-",
-            "value": {
-                "name": "DB_PASSWORD",
-                "value": process.env.MIGRATION_TARGET_DB_PASSWORD
-            }
-        },
-        {
-            "op": "add",
-            "path": "/spec/template/spec/containers/0/env/-",
-            "value": {
                 "name": "MIGRATE_NODE_TYPE",
                 "value": process.env.MIGRATE_NODE_TYPE
             }

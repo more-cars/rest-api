@@ -15,7 +15,10 @@ spec:
             - name: DB_HOST
               value: $(API_DB_SERVICE_SERVICE_HOST)
             - name: DB_PASSWORD
-              value: "123456789"
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: password
           resources:
             requests:
               cpu: "300m"
