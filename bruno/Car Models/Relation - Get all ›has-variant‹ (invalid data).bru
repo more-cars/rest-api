@@ -1,0 +1,25 @@
+meta {
+  name: Get all ›has-variant‹ relations (invalid data)
+  type: http
+  tags: [
+    get
+    relation
+    collection
+    invalid
+  ]
+}
+
+get {
+  url: {{baseUrl}}/car-models/{{invalidCarModelId}}/has-variant
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
+
+script:pre-request {
+  lib.tools.generateInvalidId('CarModel')
+}

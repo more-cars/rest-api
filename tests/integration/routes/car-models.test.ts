@@ -110,6 +110,22 @@ describe('Car Models', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Create ›has-variant‹ relationship', async () => {
+        await request(app)
+            .post('/car-models/123/has-variant/456')
+
+        expect(CarModelController.createHasVariantRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get all ›has-variant‹ Relationships', async () => {
+        await request(app)
+            .get('/car-models/123/has-variant')
+
+        expect(CarModelController.getAllHasVariantRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create "has Image" Relationship', async () => {
         await request(app)
             .post('/car-models/123/has-image/456')
@@ -171,14 +187,6 @@ describe('Car Models', () => {
             .delete('/car-models/123/has-prime-image/456')
 
         expect(CarModelController.deleteHasPrimeImageRelation)
-            .toHaveBeenCalledTimes(1)
-    })
-
-    test('Create ›has-variant‹ relationship', async () => {
-        await request(app)
-            .post('/car-models/123/has-variant/456')
-
-        expect(CarModelController.createHasVariantRelation)
             .toHaveBeenCalledTimes(1)
     })
 })

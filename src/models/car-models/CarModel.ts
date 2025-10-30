@@ -277,6 +277,15 @@ export class CarModel {
         return createdRelationship
     }
 
+    static async getAllHasVariantRelationships(carModelId: number) {
+        const carModel = await CarModel.findById(carModelId)
+        if (!carModel) {
+            throw new NodeNotFoundError(carModelId)
+        }
+
+        return getAllRels(carModelId, RelationshipType.CarModelHasVariant)
+    }
+
     static async createHasImageRelationship(carModelId: number, imageId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
