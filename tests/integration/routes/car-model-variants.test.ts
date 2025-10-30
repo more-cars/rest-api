@@ -117,4 +117,12 @@ describe('Car Model Variants', () => {
         expect(CarModelVariantController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›has-image‹ Relationships', async () => {
+        await request(app)
+            .get('/car-model-variants/123/has-image')
+
+        expect(CarModelVariantController.getAllHasImageRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })

@@ -3084,6 +3084,47 @@
         }
       }
     },
+    "/car-model-variants/{car-model-variant-id}/has-image": {
+      "get": {
+        "tags": [
+          "Car Model Variants"
+        ],
+        "summary": "Get all ›has-image‹ relationships for the `Car Model Variant`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-image‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelVariantHasImageCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Car Model Variant` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/car-model-variants/{car-model-variant-id}/has-image/{image-id}": {
       "post": {
         "tags": [
@@ -10522,6 +10563,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/CarModelVariantHasImage"
+          }
+        }
+      },
+      "CarModelVariantHasImageCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CarModelVariantHasImageResponse"
+            }
           }
         }
       },

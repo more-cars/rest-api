@@ -17,5 +17,6 @@ router.post('/car-model-variants/:carModelVariantId/achieved-lap-time/:lapTimeId
 router.get('/car-model-variants/:carModelVariantId/achieved-lap-time', CarModelVariantController.getAllAchievedLapTimeRelations)
 router.delete('/car-model-variants/:carModelVariantId/achieved-lap-time/:lapTimeId', CarModelVariantController.deleteAchievedLapTimeRelation)
 router.post('/car-model-variants/:carModelVariantId/has-image/:imageId', CarModelVariantController.createHasImageRelation)
+router.get('/car-model-variants/:carModelVariantId/has-image', CarModelVariantController.getAllHasImageRelations)
 
 export default router
