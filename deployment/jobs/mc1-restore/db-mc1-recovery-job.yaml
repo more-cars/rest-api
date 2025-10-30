@@ -12,9 +12,15 @@ spec:
           image: garland/docker-s3cmd
           env:
             - name: aws_key
-              value: <INSERT_AWS_KEY>
+              valueFrom:
+                secretKeyRef:
+                  name: aws-credentials
+                  key: key
             - name: aws_secret
-              value: <INSERT_AWS_SECRET>
+              valueFrom:
+                secretKeyRef:
+                  name: aws-credentials
+                  key: secret
             - name: SRC_S3
               value: s3://db.more-cars.net/
             - name: cmd
