@@ -16,6 +16,7 @@ import {createHasImageRelation} from "./car-model-variants/createHasImageRelatio
 import {getAllHasImageRelations} from "./car-model-variants/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./car-model-variants/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./car-model-variants/createHasPrimeImageRelation"
+import {getHasPrimeImageRelation} from "./car-model-variants/getHasPrimeImageRelation"
 
 export class CarModelVariantController {
     static async create(req: express.Request, res: express.Response) {
@@ -84,5 +85,9 @@ export class CarModelVariantController {
 
     static async createHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await createHasPrimeImageRelation(req, res)
+    }
+
+    static async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
+        await getHasPrimeImageRelation(req, res)
     }
 }

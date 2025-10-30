@@ -309,4 +309,18 @@ export class CarModelVariant {
 
         return createdRelationship
     }
+
+    static async getHasPrimeImageRelationship(carModelVariantId: number) {
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const relationship = await getRel(carModelVariantId, RelationshipType.CarModelVariantHasPrimeImage, NodeTypeLabel.Image)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(CarModelVariantRelationship.hasPrimeImage, carModelVariantId, null)
+        }
+
+        return relationship
+    }
 }
