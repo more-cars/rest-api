@@ -9,6 +9,7 @@ import {getAllBelongsToNodeRelations} from "./images/getAllBelongsToNodeRelation
 import {deleteBelongsToNodeRelation} from "./images/deleteBelongsToNodeRelation"
 import {getAllBelongsToNodeTypeRelations} from "./images/getAllBelongsToNodeTypeRelations"
 import {createIsPrimeImageOfNodeRelation} from "./images/createIsPrimeImageOfNodeRelation"
+import {getAllIsPrimeImageOfNodeRelations} from "./images/getAllIsPrimeImageOfNodeRelations"
 
 export class ImageController {
     static async create(req: express.Request, res: express.Response) {
@@ -49,5 +50,9 @@ export class ImageController {
 
     static async createIsPrimeImageOfNodeRelation(req: express.Request, res: express.Response) {
         await createIsPrimeImageOfNodeRelation(req, res)
+    }
+
+    static async getAllIsPrimeImageOfNodeRelations(req: express.Request, res: express.Response) {
+        await getAllIsPrimeImageOfNodeRelations(req, res)
     }
 }

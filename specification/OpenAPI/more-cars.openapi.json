@@ -3779,6 +3779,47 @@
         }
       }
     },
+    "/images/{image-id}/is-prime-image-of-node": {
+      "get": {
+        "tags": [
+          "Images"
+        ],
+        "summary": "Get all ›is-prime-image-of-node‹ relationships for the `Image`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›is-prime-image-of-node‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageIsPrimeImageOfNodeCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Image` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/images/{image-id}/is-prime-image-of-node/{node-id}": {
       "post": {
         "tags": [
@@ -11202,6 +11243,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/ImageIsPrimeImageOfNode"
+          }
+        }
+      },
+      "ImageIsPrimeImageOfNodeCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ImageIsPrimeImageOfNodeResponse"
+            }
           }
         }
       },

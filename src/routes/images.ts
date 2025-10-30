@@ -13,5 +13,6 @@ router.get('/images/:imageId/belongs-to-node', ImageController.getAllBelongsToNo
 router.delete('/images/:imageId/belongs-to-node/:partnerNodeId', ImageController.deleteBelongsToNodeRelation)
 router.get('/images/:imageId/belongs-to-node-type', ImageController.getAllBelongsToNodeTypeRelations)
 router.post('/images/:imageId/is-prime-image-of-node/:nodeId', ImageController.createIsPrimeImageOfNodeRelation)
+router.get('/images/:imageId/is-prime-image-of-node', ImageController.getAllIsPrimeImageOfNodeRelations)
 
 export default router

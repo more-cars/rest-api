@@ -85,4 +85,12 @@ describe('Images', () => {
         expect(ImageController.createIsPrimeImageOfNodeRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›is-prime-image-of-node‹ Relationships', async () => {
+        await request(app)
+            .get('/images/123/is-prime-image-of-node')
+
+        expect(ImageController.getAllIsPrimeImageOfNodeRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })

@@ -240,6 +240,15 @@ export class Image {
 
         return createdRelationship
     }
+
+    static async getAllIsPrimeImageOfNodeRelationships(imageId: number) {
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        return getAllRels(imageId, RelationshipType.ImageIsPrimeImageOfNode)
+    }
 }
 
 /**
