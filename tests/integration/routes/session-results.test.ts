@@ -102,6 +102,14 @@ describe('Session Results', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete ›achieved-with-car-model-variant‹ relationship', async () => {
+        await request(app)
+            .delete('/session-results/123/achieved-with-car-model-variant/456')
+
+        expect(SessionResultController.deleteAchievedWithCarModelVariantRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/session-results/123/has-image/456')

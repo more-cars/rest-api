@@ -15,6 +15,7 @@ router.get('/session-results/:sessionResultId/has-lap-time', SessionResultContro
 router.delete('/session-results/:sessionResultId/has-lap-time/:lapTimeId', SessionResultController.deleteHasLapTimeRelation)
 router.post('/session-results/:sessionResultId/achieved-with-car-model-variant/:carModelVariantId', SessionResultController.createAchievedWithCarModelVariantRelation)
 router.get('/session-results/:sessionResultId/achieved-with-car-model-variant', SessionResultController.getAchievedWithCarModelVariantRelation)
+router.delete('/session-results/:sessionResultId/achieved-with-car-model-variant/:carModelVariantId', SessionResultController.deleteAchievedWithCarModelVariantRelation)
 router.post('/session-results/:sessionResultId/has-image/:imageId', SessionResultController.createHasImageRelation)
 router.get('/session-results/:sessionResultId/has-image', SessionResultController.getAllHasImageRelations)
 router.delete('/session-results/:sessionResultId/has-image/:imageId', SessionResultController.deleteHasImageRelation)

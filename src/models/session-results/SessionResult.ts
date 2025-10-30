@@ -219,6 +219,25 @@ export class SessionResult {
         return relationship
     }
 
+    static async deleteAchievedWithCarModelVariantRelationship(sessionResultId: number, carModelVariantId: number) {
+        const sessionResult = await SessionResult.findById(sessionResultId)
+        if (!sessionResult) {
+            throw new NodeNotFoundError(sessionResultId)
+        }
+
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const relationship = await getSpecificRel(sessionResultId, carModelVariantId, RelationshipType.SessionResultAchievedWithCarModelVariant)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(SessionResultRelationship.achievedWithCarModelVariant, sessionResultId, carModelVariantId)
+        }
+
+        await deleteSpecificRel(sessionResultId, carModelVariantId, RelationshipType.SessionResultAchievedWithCarModelVariant)
+    }
+
     static async createHasImageRelationship(sessionResultId: number, imageId: number) {
 
         const sessionResult = await SessionResult.findById(sessionResultId)

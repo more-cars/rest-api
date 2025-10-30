@@ -1,0 +1,25 @@
+meta {
+  name: Delete ›achieved-with-car-model-variant‹ relation (invalid data)
+  type: http
+  tags: [
+    delete
+    relation
+    invalid
+  ]
+}
+
+delete {
+  url: {{baseUrl}}/session-results/{{invalidSessionResultId}}/achieved-with-car-model-variant/{{invalidCarModelVariantId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
+
+script:pre-request {
+  lib.tools.generateInvalidId('SessionResult')
+  lib.tools.generateInvalidId('CarModelVariant')
+}
