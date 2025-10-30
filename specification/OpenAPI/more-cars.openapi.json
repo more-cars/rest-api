@@ -2413,6 +2413,47 @@
         }
       }
     },
+    "/car-model-variants/{car-model-variant-id}": {
+      "get": {
+        "tags": [
+          "Car Model Variants"
+        ],
+        "summary": "Get `Car Model Variant` by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Car Model Variant` successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelVariantResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. A `Car Model Variant` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/images": {
       "get": {
         "tags": [

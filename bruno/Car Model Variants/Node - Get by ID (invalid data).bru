@@ -1,0 +1,24 @@
+meta {
+  name: Get Car Model Variant by ID (invalid data)
+  type: http
+  tags: [
+    get
+    node
+    invalid
+  ]
+}
+
+get {
+  url: {{baseUrl}}/car-model-variants/{{invalidCarModelVariantId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
+
+script:pre-request {
+  lib.tools.generateInvalidId('CarModelVariant')
+}

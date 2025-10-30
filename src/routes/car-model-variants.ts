@@ -4,5 +4,6 @@ import {CarModelVariantController} from "../controllers/CarModelVariantControlle
 const router = express.Router()
 
 router.post('/car-model-variants', CarModelVariantController.create)
+router.get('/car-model-variants/:id', CarModelVariantController.getById)
 
 export default router
