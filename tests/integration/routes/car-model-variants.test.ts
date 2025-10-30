@@ -125,4 +125,12 @@ describe('Car Model Variants', () => {
         expect(CarModelVariantController.getAllHasImageRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-image‹ relationship', async () => {
+        await request(app)
+            .delete('/car-model-variants/123/has-image/456')
+
+        expect(CarModelVariantController.deleteHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
