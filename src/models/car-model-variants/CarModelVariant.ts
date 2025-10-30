@@ -20,6 +20,7 @@ import {CarModelVariantRelationship} from "./types/CarModelVariantRelationship"
 import {getRel} from "../relationships/getRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
+import {SessionResult} from "../session-results/SessionResult"
 
 export class CarModelVariant {
     static async create(data: CreateCarModelVariantInput): Promise<CarModelVariantNode> {
@@ -118,5 +119,31 @@ export class CarModelVariant {
         }
 
         await deleteSpecificRel(carModelVariantId, carModelId, RelationshipType.CarModelVariantIsVariantOf)
+    }
+
+    static async createAchievedSessionResultRelationship(carModelVariantId: number, sessionResultId: number) {
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const sessionResult = await SessionResult.findById(sessionResultId)
+        if (!sessionResult) {
+            throw new NodeNotFoundError(sessionResultId)
+        }
+
+        const existingRelation = await getSpecificRel(carModelVariantId, sessionResultId, RelationshipType.CarModelVariantAchievedSessionResult)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(CarModelVariantRelationship.achievedSessionResult, carModelVariantId, sessionResultId)
+        }
+
+        await deleteDeprecatedRel(sessionResultId, DbRelationship.CarModelVariantAchievedSessionResult, NodeTypeLabel.CarModelVariant)
+
+        const createdRelationship = await createRel(carModelVariantId, sessionResultId, RelationshipType.CarModelVariantAchievedSessionResult)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 }

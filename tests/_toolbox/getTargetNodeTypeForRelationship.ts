@@ -49,6 +49,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
     relationships.set(
         NodeTypeEnum.CAR_MODEL_VARIANT, new Map([
             [RelationshipType.CarModelVariantIsVariantOf, NodeTypeEnum.CAR_MODEL],
+            [RelationshipType.CarModelVariantAchievedSessionResult, NodeTypeEnum.SESSION_RESULT],
         ]))
 
     relationships.set(

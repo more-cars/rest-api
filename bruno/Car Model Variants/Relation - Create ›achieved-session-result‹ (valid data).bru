@@ -1,0 +1,32 @@
+meta {
+  name: Create ›achieved-session-result‹ relation (valid data)
+  type: http
+  tags: [
+    create
+    relation
+    valid
+  ]
+}
+
+post {
+  url: {{baseUrl}}/car-model-variants/{{validCarModelVariantId}}/achieved-session-result/{{validSessionResultId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 201
+  res.body: isJson
+  res.body.data.relationship_id: gte 12000000
+  res.body.data.relationship_name: achieved-session-result
+  res.body.data.relationship_partner: isJson
+  res.body.data.relationship_partner.node_type: session-result
+  res.body.data.relationship_partner.data.id: {{validSessionResultId}}
+  res.body.data.created_at: isString
+  res.body.data.updated_at: isString
+}
+
+script:pre-request {
+  await lib.CarModelVariants.ensureValidCarModelVariantExists()
+  await lib.SessionResults.ensureValidSessionResultExists()
+}

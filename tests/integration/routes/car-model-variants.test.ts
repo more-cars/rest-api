@@ -61,4 +61,12 @@ describe('Car Model Variants', () => {
         expect(CarModelVariantController.deleteIsVariantOfRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›achieved-session-result‹ relationship', async () => {
+        await request(app)
+            .post('/car-model-variants/123/achieved-session-result/456')
+
+        expect(CarModelVariantController.createAchievedSessionResultRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

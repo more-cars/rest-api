@@ -1,5 +1,6 @@
 const {submitPostRequest, submitGetRequest} = require("./request")
 const {ensureValidCarModelExists} = require("./CarModels")
+const {ensureValidSessionResultExists} = require("./SessionResults")
 
 async function ensureValidCarModelVariantExists() {
     if (!bru.getEnvVar('validCarModelVariantId')) {
@@ -42,3 +43,17 @@ async function createCarModelVariantIsVariantOfRelationship(carModelVariantId, c
 }
 
 exports.createCarModelVariantIsVariantOfRelationship = createCarModelVariantIsVariantOfRelationship
+
+async function ensureCarModelVariantAchievedSessionResultRelationshipExists() {
+    await ensureValidCarModelVariantExists()
+    await ensureValidSessionResultExists()
+    await createCarModelVariantAchievedSessionResultRelationship(bru.getEnvVar('validCarModelVariantId'), bru.getEnvVar('validSessionResultId'))
+}
+
+exports.ensureCarModelVariantAchievedSessionResultRelationshipExists = ensureCarModelVariantAchievedSessionResultRelationshipExists
+
+async function createCarModelVariantAchievedSessionResultRelationship(carModelVariantId, sessionResultId) {
+    return submitPostRequest("/car-model-variants/" + carModelVariantId + "/achieved-session-result/" + sessionResultId)
+}
+
+exports.createCarModelVariantAchievedSessionResultRelationship = createCarModelVariantAchievedSessionResultRelationship
