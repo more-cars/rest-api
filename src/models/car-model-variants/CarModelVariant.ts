@@ -19,6 +19,7 @@ import {RelationshipType} from "../relationships/types/RelationshipType"
 import {CarModelVariantRelationship} from "./types/CarModelVariantRelationship"
 import {getRel} from "../relationships/getRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
+import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 
 export class CarModelVariant {
     static async create(data: CreateCarModelVariantInput): Promise<CarModelVariantNode> {
@@ -98,5 +99,24 @@ export class CarModelVariant {
         }
 
         return relationship
+    }
+
+    static async deleteIsVariantOfRelationship(carModelVariantId: number, carModelId: number) {
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const carModel = await CarModel.findById(carModelId)
+        if (!carModel) {
+            throw new NodeNotFoundError(carModelId)
+        }
+
+        const relationship = await getSpecificRel(carModelVariantId, carModelId, RelationshipType.CarModelVariantIsVariantOf)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(CarModelVariantRelationship.isVariantOf, carModelVariantId, carModelId)
+        }
+
+        await deleteSpecificRel(carModelVariantId, carModelId, RelationshipType.CarModelVariantIsVariantOf)
     }
 }

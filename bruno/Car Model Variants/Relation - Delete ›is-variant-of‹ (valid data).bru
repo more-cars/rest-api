@@ -1,0 +1,23 @@
+meta {
+  name: Delete ›is-variant-of‹ relation (valid data)
+  type: http
+  tags: [
+    delete
+    relation
+    valid
+  ]
+}
+
+delete {
+  url: {{baseUrl}}/car-model-variants/{{validCarModelVariantId}}/is-variant-of/{{validCarModelId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 204
+}
+
+script:pre-request {
+  await lib.CarModelVariants.ensureCarModelVariantIsVariantOfRelationshipExists()
+}
