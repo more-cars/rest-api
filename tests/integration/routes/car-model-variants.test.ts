@@ -149,4 +149,12 @@ describe('Car Model Variants', () => {
         expect(CarModelVariantController.getHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .delete('/car-model-variants/123/has-prime-image/456')
+
+        expect(CarModelVariantController.deleteHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

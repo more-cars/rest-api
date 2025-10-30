@@ -323,4 +323,23 @@ export class CarModelVariant {
 
         return relationship
     }
+
+    static async deleteHasPrimeImageRelationship(carModelVariantId: number, imageId: number) {
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const relationship = await getSpecificRel(carModelVariantId, imageId, RelationshipType.CarModelVariantHasPrimeImage)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(CarModelVariantRelationship.hasPrimeImage, carModelVariantId, imageId)
+        }
+
+        await deleteSpecificRel(carModelVariantId, imageId, RelationshipType.CarModelVariantHasPrimeImage)
+    }
 }

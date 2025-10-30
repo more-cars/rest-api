@@ -1,0 +1,23 @@
+meta {
+  name: Delete ›has-prime-image‹ relation (valid data)
+  type: http
+  tags: [
+    delete
+    relation
+    valid
+  ]
+}
+
+delete {
+  url: {{baseUrl}}/car-model-variants/{{validCarModelVariantId}}/has-prime-image/{{validImageId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 204
+}
+
+script:pre-request {
+  await lib.CarModelVariants.ensureCarModelVariantHasPrimeImageRelationshipExists()
+}

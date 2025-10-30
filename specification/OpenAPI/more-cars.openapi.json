@@ -3311,6 +3311,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Car Model Variants"
+        ],
+        "summary": "Deletes the ›has-prime-image‹ relationship between the `Car Model Variant` and the `Image`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-prime-image‹ relationship between `Car Model Variant` and `Image` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-prime-image‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/images": {

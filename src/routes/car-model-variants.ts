@@ -21,5 +21,6 @@ router.get('/car-model-variants/:carModelVariantId/has-image', CarModelVariantCo
 router.delete('/car-model-variants/:carModelVariantId/has-image/:imageId', CarModelVariantController.deleteHasImageRelation)
 router.post('/car-model-variants/:carModelVariantId/has-prime-image/:imageId', CarModelVariantController.createHasPrimeImageRelation)
 router.get('/car-model-variants/:carModelVariantId/has-prime-image', CarModelVariantController.getHasPrimeImageRelation)
+router.delete('/car-model-variants/:carModelVariantId/has-prime-image/:imageId', CarModelVariantController.deleteHasPrimeImageRelation)
 
 export default router
