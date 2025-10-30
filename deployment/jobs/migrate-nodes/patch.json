@@ -2,7 +2,7 @@
   {
     "op": "replace",
     "path": "/metadata/name",
-    "value": "migrate-nodes-1761489121"
+    "value": "migrate-nodes-1761825963"
   },
   {
     "op": "replace",
@@ -13,24 +13,8 @@
     "op": "add",
     "path": "/spec/template/spec/containers/0/env/-",
     "value": {
-      "name": "DB_MC1_PASSWORD",
-      "value": ""
-    }
-  },
-  {
-    "op": "add",
-    "path": "/spec/template/spec/containers/0/env/-",
-    "value": {
-      "name": "DB_PASSWORD",
-      "value": ""
-    }
-  },
-  {
-    "op": "add",
-    "path": "/spec/template/spec/containers/0/env/-",
-    "value": {
       "name": "MIGRATE_NODE_TYPE",
-      "value": "Company"
+      "value": "Brand"
     }
   },
   {

@@ -2,6 +2,6 @@
   {
     "op": "replace",
     "path": "/spec/template/spec/containers/0/image",
-    "value": "ghcr.io/more-cars/rest-api-rc:8df4fbf279bf7b497cc29e67b2c1e789762fe26e"
+    "value": "ghcr.io/more-cars/rest-api-rc:latest"
   }
 ]
