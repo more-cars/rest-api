@@ -8913,6 +8913,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Lap Times"
+        ],
+        "summary": "Deletes the ›achieved-with-car-model-variant‹ relationship between the `Lap Time` and the `Car Model Variant`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "lap-time-id",
+            "description": "ID of the `Lap Time`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›achieved-with-car-model-variant‹ relationship between `Lap Time` and `Car Model Variant` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›achieved-with-car-model-variant‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/lap-times/{lap-time-id}/has-image": {

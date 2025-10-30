@@ -1,0 +1,23 @@
+meta {
+  name: Delete ›achieved-with-car-model-variant‹ relation (valid data)
+  type: http
+  tags: [
+    delete
+    relation
+    valid
+  ]
+}
+
+delete {
+  url: {{baseUrl}}/lap-times/{{validLapTimeId}}/achieved-with-car-model-variant/{{validCarModelVariantId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 204
+}
+
+script:pre-request {
+  await lib.LapTimes.ensureLapTimeAchievedWithCarModelVariantRelationshipExists()
+}

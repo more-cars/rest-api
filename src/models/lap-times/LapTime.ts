@@ -199,8 +199,8 @@ export class LapTime {
         if (existingRelation) {
             throw new RelationshipAlreadyExistsError(LapTimeRelationship.achievedWithCarModelVariant, lapTimeId, carModelVariantId)
         }
-        await deleteDeprecatedRel(lapTimeId, DbRelationship.LapTimeAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant)
 
+        await deleteDeprecatedRel(lapTimeId, DbRelationship.LapTimeAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant)
 
         const createdRelationship = await createRel(lapTimeId, carModelVariantId, RelationshipType.LapTimeAchievedWithCarModelVariant)
         if (!createdRelationship) {
@@ -222,6 +222,25 @@ export class LapTime {
         }
 
         return relationship
+    }
+
+    static async deleteAchievedWithCarModelVariantRelationship(lapTimeId: number, carModelVariantId: number) {
+        const lapTime = await LapTime.findById(lapTimeId)
+        if (!lapTime) {
+            throw new NodeNotFoundError(lapTimeId)
+        }
+
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const relationship = await getSpecificRel(lapTimeId, carModelVariantId, RelationshipType.LapTimeAchievedWithCarModelVariant)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(LapTimeRelationship.achievedWithCarModelVariant, lapTimeId, carModelVariantId)
+        }
+
+        await deleteSpecificRel(lapTimeId, carModelVariantId, RelationshipType.LapTimeAchievedWithCarModelVariant)
     }
 
     static async createHasImageRelationship(lapTimeId: number, imageId: number) {

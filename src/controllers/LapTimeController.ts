@@ -10,13 +10,14 @@ import {createAchievedOnTrackLayoutRelation} from "./lap-times/createAchievedOnT
 import {getAchievedOnTrackLayoutRelation} from "./lap-times/getAchievedOnTrackLayoutRelation"
 import {deleteAchievedOnTrackLayoutRelation} from "./lap-times/deleteAchievedOnTrackLayoutRelation"
 import {createAchievedWithCarModelVariantRelation} from "./lap-times/createAchievedWithCarModelVariantRelation"
+import {getAchievedWithCarModelVariantRelation} from "./lap-times/getAchievedWithCarModelVariantRelation"
+import {deleteAchievedWithCarModelVariantRelation} from "./lap-times/deleteAchievedWithCarModelVariantRelation"
 import {createHasImageRelation} from "./lap-times/createHasImageRelation"
 import {getAllHasImageRelations} from "./lap-times/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./lap-times/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./lap-times/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./lap-times/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./lap-times/deleteHasPrimeImageRelation"
-import {getAchievedWithCarModelVariantRelation} from "./lap-times/getAchievedWithCarModelVariantRelation"
 
 export class LapTimeController {
     static async create(req: express.Request, res: express.Response) {
@@ -65,6 +66,10 @@ export class LapTimeController {
 
     static async getAchievedWithCarModelVariantRelation(req: express.Request, res: express.Response) {
         await getAchievedWithCarModelVariantRelation(req, res)
+    }
+
+    static async deleteAchievedWithCarModelVariantRelation(req: express.Request, res: express.Response) {
+        await deleteAchievedWithCarModelVariantRelation(req, res)
     }
 
     static async createHasImageRelation(req: express.Request, res: express.Response) {
