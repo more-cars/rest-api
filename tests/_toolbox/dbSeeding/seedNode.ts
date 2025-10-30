@@ -3,6 +3,7 @@ import {NodeTypeEnum} from "../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedCompany} from "./companies/nodes/seedCompany"
 import {seedBrand} from "./brands/nodes/seedBrand"
 import {seedCarModel} from "./car-models/nodes/seedCarModel"
+import {seedCarModelVariant} from "./car-model-variants/nodes/seedCarModelVariant"
 import {seedRaceTrack} from "./race-tracks/nodes/seedRaceTrack"
 import {seedTrackLayout} from "./track-layouts/nodes/seedTrackLayout"
 import {seedRacingSeries} from "./racing-series/nodes/seedRacingSeries"
@@ -20,6 +21,8 @@ export async function seedNode(nodeType: NodeTypeEnum, customFakeData: object = 
             return seedBrand(customFakeData)
         case NodeTypeEnum.CAR_MODEL:
             return seedCarModel(customFakeData)
+        case NodeTypeEnum.CAR_MODEL_VARIANT:
+            return seedCarModelVariant(customFakeData)
         case NodeTypeEnum.RACE_TRACK:
             return seedRaceTrack(customFakeData)
         case NodeTypeEnum.TRACK_LAYOUT:

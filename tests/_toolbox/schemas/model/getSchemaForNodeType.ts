@@ -3,6 +3,7 @@ import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum
 import {CompanySchema} from "../CompanySchema"
 import {BrandSchema} from "../BrandSchema"
 import {CarModelSchema} from "../CarModelSchema"
+import {CarModelVariantSchema} from "../CarModelVariantSchema"
 import {RaceTrackSchema} from "../RaceTrackSchema"
 import {TrackLayoutSchema} from "../TrackLayoutSchema"
 import {RacingSeriesSchema} from "../RacingSeriesSchema"
@@ -20,6 +21,8 @@ export function getSchemaForNodeType(nodeType: NodeTypeEnum) {
             return BrandSchema
         case NodeTypeEnum.CAR_MODEL:
             return CarModelSchema
+        case NodeTypeEnum.CAR_MODEL_VARIANT:
+            return CarModelVariantSchema
         case NodeTypeEnum.RACE_TRACK:
             return RaceTrackSchema
         case NodeTypeEnum.TRACK_LAYOUT:

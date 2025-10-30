@@ -11,6 +11,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
             [RelationshipType.ImageBelongsToNode, NodeTypeEnum.COMPANY],
             [RelationshipType.ImageBelongsToNode, NodeTypeEnum.BRAND],
             [RelationshipType.ImageBelongsToNode, NodeTypeEnum.CAR_MODEL],
+            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.CAR_MODEL_VARIANT],
             [RelationshipType.ImageBelongsToNode, NodeTypeEnum.RACE_TRACK],
             [RelationshipType.ImageBelongsToNode, NodeTypeEnum.TRACK_LAYOUT],
             [RelationshipType.ImageBelongsToNode, NodeTypeEnum.RACING_SERIES],
@@ -43,6 +44,9 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
             [RelationshipType.CarModelHasImage, NodeTypeEnum.IMAGE],
             [RelationshipType.CarModelHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
+
+    relationships.set(
+        NodeTypeEnum.CAR_MODEL_VARIANT, new Map([]))
 
     relationships.set(
         NodeTypeEnum.RACE_TRACK, new Map([

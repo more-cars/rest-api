@@ -1,6 +1,7 @@
 exports.Companies = require('./Companies.js')
 exports.Brands = require('./Brands.js')
 exports.CarModels = require('./CarModels.js')
+exports.CarModelVariants = require('./CarModelVariants.js')
 exports.RaceTracks = require('./RaceTracks.js')
 exports.TrackLayouts = require('./TrackLayouts.js')
 exports.RacingSeries = require('./RacingSeries.js')

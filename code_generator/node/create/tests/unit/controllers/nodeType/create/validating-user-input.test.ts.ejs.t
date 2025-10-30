@@ -9,13 +9,13 @@ describe('Validating user input', () => {
     test('mandatory fields are missing', async () => {
         const data: Create<%= h.changeCase.pascal(nodeType) %>RawInput = {
 <% for (prop in properties) { %>
-<%   if (properties[prop].mandatory) { %>
+<%   if (properties[prop].mandatory) { -%>
             <%= prop %>: undefined,
-<%   } else if (properties[prop].datatype === 'string') { %>
+<%   } else if (properties[prop].datatype === 'string') { -%>
             <%= prop %>: "<%= properties[prop].example %>",
-<%   } else { %>
-            <%= prop %>: <%= properties[prop].example %>,
-<%   } %>
+<%   } else { -%>
+            <%= prop %>: <%= properties[prop].example || null %>,
+<%   } -%>
 <% } -%>
         }
 
@@ -50,7 +50,7 @@ describe('Validating user input', () => {
 <%   if (properties[prop].datatype === 'string') { %>
             <%= prop %>: "<%= properties[prop].example %>",
 <%   } else { %>
-            <%= prop %>: <%= properties[prop].example %>,
+            <%= prop %>: <%= properties[prop].example || null %>,
 <%   } %>
 <% } -%>
         }
