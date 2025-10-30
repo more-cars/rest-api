@@ -7,6 +7,7 @@ import {createIsVariantOfRelation} from "./car-model-variants/createIsVariantOfR
 import {getIsVariantOfRelation} from "./car-model-variants/getIsVariantOfRelation"
 import {deleteIsVariantOfRelation} from "./car-model-variants/deleteIsVariantOfRelation"
 import {createAchievedSessionResultRelation} from "./car-model-variants/createAchievedSessionResultRelation"
+import {getAllAchievedSessionResultRelations} from "./car-model-variants/getAllAchievedSessionResultRelations"
 
 export class CarModelVariantController {
     static async create(req: express.Request, res: express.Response) {
@@ -39,5 +40,9 @@ export class CarModelVariantController {
 
     static async createAchievedSessionResultRelation(req: express.Request, res: express.Response) {
         await createAchievedSessionResultRelation(req, res)
+    }
+
+    static async getAllAchievedSessionResultRelations(req: express.Request, res: express.Response) {
+        await getAllAchievedSessionResultRelations(req, res)
     }
 }

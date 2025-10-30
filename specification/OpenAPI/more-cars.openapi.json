@@ -2814,6 +2814,47 @@
         }
       }
     },
+    "/car-model-variants/{car-model-variant-id}/achieved-session-result": {
+      "get": {
+        "tags": [
+          "Car Model Variants"
+        ],
+        "summary": "Get all ›achieved-session-result‹ relationships for the `Car Model Variant`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›achieved-session-result‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelVariantAchievedSessionResultCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Car Model Variant` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/car-model-variants/{car-model-variant-id}/achieved-session-result/{session-result-id}": {
       "post": {
         "tags": [
@@ -9860,6 +9901,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/CarModelVariantAchievedSessionResult"
+          }
+        }
+      },
+      "CarModelVariantAchievedSessionResultCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CarModelVariantAchievedSessionResultResponse"
+            }
           }
         }
       },

@@ -21,6 +21,7 @@ import {getRel} from "../relationships/getRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {SessionResult} from "../session-results/SessionResult"
+import {getAllRels} from "../relationships/getAllRels"
 
 export class CarModelVariant {
     static async create(data: CreateCarModelVariantInput): Promise<CarModelVariantNode> {
@@ -145,5 +146,14 @@ export class CarModelVariant {
         }
 
         return createdRelationship
+    }
+
+    static async getAllAchievedSessionResultRelationships(carModelVariantId: number) {
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        return getAllRels(carModelVariantId, RelationshipType.CarModelVariantAchievedSessionResult)
     }
 }

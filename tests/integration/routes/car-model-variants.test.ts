@@ -69,4 +69,12 @@ describe('Car Model Variants', () => {
         expect(CarModelVariantController.createAchievedSessionResultRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›achieved-session-result‹ Relationships', async () => {
+        await request(app)
+            .get('/car-model-variants/123/achieved-session-result')
+
+        expect(CarModelVariantController.getAllAchievedSessionResultRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })
