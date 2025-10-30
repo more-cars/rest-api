@@ -37,4 +37,12 @@ describe('Car Model Variants', () => {
         expect(CarModelVariantController.delete)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›is-variant-of‹ relationship', async () => {
+        await request(app)
+            .post('/car-model-variants/123/is-variant-of/456')
+
+        expect(CarModelVariantController.createIsVariantOfRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

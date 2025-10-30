@@ -8,6 +8,15 @@ import {getAllNodesOfType} from "../../db/nodes/car-model-variants/getAllNodesOf
 import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
+import {createRel} from "../relationships/createRel"
+import {DbRelationship} from "../../db/types/DbRelationship"
+import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
+import {NodeTypeLabel} from "../../db/NodeTypeLabel"
+import {CarModel} from "../car-models/CarModel"
+import {getSpecificRel} from "../relationships/getSpecificRel"
+import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
+import {RelationshipType} from "../relationships/types/RelationshipType"
+import {CarModelVariantRelationship} from "./types/CarModelVariantRelationship"
 
 export class CarModelVariant {
     static async create(data: CreateCarModelVariantInput): Promise<CarModelVariantNode> {
@@ -46,5 +55,32 @@ export class CarModelVariant {
         }
 
         await deleteNode(carModelVariantId)
+    }
+
+    static async createIsVariantOfRelationship(carModelVariantId: number, carModelId: number) {
+
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const carModel = await CarModel.findById(carModelId)
+        if (!carModel) {
+            throw new NodeNotFoundError(carModelId)
+        }
+
+        const existingRelation = await getSpecificRel(carModelVariantId, carModelId, RelationshipType.CarModelVariantIsVariantOf)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(CarModelVariantRelationship.isVariantOf, carModelVariantId, carModelId)
+        }
+
+        await deleteDeprecatedRel(carModelVariantId, DbRelationship.CarModelVariantIsVariantOf, NodeTypeLabel.CarModel)
+
+        const createdRelationship = await createRel(carModelVariantId, carModelId, RelationshipType.CarModelVariantIsVariantOf)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 }

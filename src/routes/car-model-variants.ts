@@ -7,5 +7,6 @@ router.post('/car-model-variants', CarModelVariantController.create)
 router.get('/car-model-variants/:id', CarModelVariantController.getById)
 router.get('/car-model-variants', CarModelVariantController.getAll)
 router.delete('/car-model-variants/:id', CarModelVariantController.delete)
+router.post('/car-model-variants/:carModelVariantId/is-variant-of/:carModelId', CarModelVariantController.createIsVariantOfRelation)
 
 export default router

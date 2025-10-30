@@ -11,6 +11,7 @@ export enum RelationshipType {
     CarModelIsSuccessorOf = 'IS_SUCCESSOR_OF',
     CarModelHasImage = 'HAS_IMAGE',
     CarModelHasPrimeImage = 'HAS_PRIME_IMAGE',
+    CarModelVariantIsVariantOf = 'IS_VARIANT_OF',
     RaceTrackHasLayout = 'HAS_LAYOUT',
     RaceTrackHostedRacingEvent = 'HOSTED_RACING_EVENT',
     RaceTrackHasImage = 'HAS_IMAGE',

@@ -16,6 +16,7 @@ export function getDbRelationshipType(relationshipType: RelationshipType): DbRel
         [RelationshipType.CarModelIsSuccessorOf, DbRelationship.CarModelIsSuccessorOf],
         [RelationshipType.CarModelHasImage, DbRelationship.CarModelHasImage],
         [RelationshipType.CarModelHasPrimeImage, DbRelationship.CarModelHasPrimeImage],
+        [RelationshipType.CarModelVariantIsVariantOf, DbRelationship.CarModelVariantIsVariantOf],
         [RelationshipType.RaceTrackHasLayout, DbRelationship.RaceTrackHasLayout],
         [RelationshipType.RaceTrackHostedRacingEvent, DbRelationship.RaceTrackHostedRacingEvent],
         [RelationshipType.RaceTrackHasImage, DbRelationship.RaceTrackHasImage],
