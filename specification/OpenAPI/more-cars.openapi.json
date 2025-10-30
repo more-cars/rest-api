@@ -2949,6 +2949,47 @@
         }
       }
     },
+    "/car-model-variants/{car-model-variant-id}/achieved-lap-time": {
+      "get": {
+        "tags": [
+          "Car Model Variants"
+        ],
+        "summary": "Get all ›achieved-lap-time‹ relationships for the `Car Model Variant`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›achieved-lap-time‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelVariantAchievedLapTimeCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Car Model Variant` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/car-model-variants/{car-model-variant-id}/achieved-lap-time/{lap-time-id}": {
       "post": {
         "tags": [
@@ -10191,6 +10232,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/CarModelVariantAchievedLapTime"
+          }
+        }
+      },
+      "CarModelVariantAchievedLapTimeCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CarModelVariantAchievedLapTimeResponse"
+            }
           }
         }
       },

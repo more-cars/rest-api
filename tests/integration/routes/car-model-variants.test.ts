@@ -93,4 +93,12 @@ describe('Car Model Variants', () => {
         expect(CarModelVariantController.createAchievedLapTimeRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›achieved-lap-time‹ Relationships', async () => {
+        await request(app)
+            .get('/car-model-variants/123/achieved-lap-time')
+
+        expect(CarModelVariantController.getAllAchievedLapTimeRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })

@@ -14,5 +14,6 @@ router.post('/car-model-variants/:carModelVariantId/achieved-session-result/:ses
 router.get('/car-model-variants/:carModelVariantId/achieved-session-result', CarModelVariantController.getAllAchievedSessionResultRelations)
 router.delete('/car-model-variants/:carModelVariantId/achieved-session-result/:sessionResultId', CarModelVariantController.deleteAchievedSessionResultRelation)
 router.post('/car-model-variants/:carModelVariantId/achieved-lap-time/:lapTimeId', CarModelVariantController.createAchievedLapTimeRelation)
+router.get('/car-model-variants/:carModelVariantId/achieved-lap-time', CarModelVariantController.getAllAchievedLapTimeRelations)
 
 export default router

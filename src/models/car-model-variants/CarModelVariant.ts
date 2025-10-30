@@ -202,4 +202,13 @@ export class CarModelVariant {
 
         return createdRelationship
     }
+
+    static async getAllAchievedLapTimeRelationships(carModelVariantId: number) {
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        return getAllRels(carModelVariantId, RelationshipType.CarModelVariantAchievedLapTime)
+    }
 }
