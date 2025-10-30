@@ -18,6 +18,7 @@ router.get('/car-models/:carModelId/is-successor-of', CarModelController.getIsSu
 router.delete('/car-models/:carModelId/is-successor-of/:partnerId', CarModelController.deleteIsSuccessorOfRelation)
 router.post('/car-models/:carModelId/has-variant/:carModelVariantId', CarModelController.createHasVariantRelation)
 router.get('/car-models/:carModelId/has-variant', CarModelController.getAllHasVariantRelations)
+router.delete('/car-models/:carModelId/has-variant/:carModelVariantId', CarModelController.deleteHasVariantRelation)
 router.post('/car-models/:carModelId/has-image/:imageId', CarModelController.createHasImageRelation)
 router.get('/car-models/:carModelId/has-image/:imageId', CarModelController.getSpecificHasImageRelation)
 router.get('/car-models/:carModelId/has-image', CarModelController.getAllHasImageRelations)

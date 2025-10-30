@@ -286,6 +286,25 @@ export class CarModel {
         return getAllRels(carModelId, RelationshipType.CarModelHasVariant)
     }
 
+    static async deleteHasVariantRelationship(carModelId: number, carModelVariantId: number) {
+        const carModel = await CarModel.findById(carModelId)
+        if (!carModel) {
+            throw new NodeNotFoundError(carModelId)
+        }
+
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const relationship = await getSpecificRel(carModelId, carModelVariantId, RelationshipType.CarModelHasVariant)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(CarModelRelationship.hasVariant, carModelId, carModelVariantId)
+        }
+
+        await deleteSpecificRel(carModelId, carModelVariantId, RelationshipType.CarModelHasVariant)
+    }
+
     static async createHasImageRelationship(carModelId: number, imageId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {

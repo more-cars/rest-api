@@ -1,0 +1,25 @@
+meta {
+  name: Delete ›has-variant‹ relation (invalid data)
+  type: http
+  tags: [
+    delete
+    relation
+    invalid
+  ]
+}
+
+delete {
+  url: {{baseUrl}}/car-models/{{invalidCarModelId}}/has-variant/{{invalidCarModelVariantId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
+
+script:pre-request {
+  lib.tools.generateInvalidId('CarModel')
+  lib.tools.generateInvalidId('CarModelVariant')
+}
