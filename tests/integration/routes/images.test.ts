@@ -77,4 +77,12 @@ describe('Images', () => {
         expect(ImageController.getAllBelongsToNodeTypeRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›is-prime-image-of-node‹ relationship', async () => {
+        await request(app)
+            .post('/images/123/is-prime-image-of-node/456')
+
+        expect(ImageController.createIsPrimeImageOfNodeRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

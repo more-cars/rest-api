@@ -57,6 +57,7 @@ export function getDbRelationshipType(relationshipType: RelationshipType): DbRel
         [RelationshipType.LapTimeHasImage, DbRelationship.LapTimeHasImage],
         [RelationshipType.LapTimeHasPrimeImage, DbRelationship.LapTimeHasPrimeImage],
         [RelationshipType.ImageBelongsToNode, DbRelationship.ImageBelongsToNode],
+        [RelationshipType.ImageIsPrimeImageOfNode, DbRelationship.ImageIsPrimeImageOfNode],
     ])
 
     const mappedRel = mapping.get(relationshipType)

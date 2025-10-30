@@ -25,6 +25,8 @@ import {getAllRels} from "../relationships/getAllRels"
 import type {GenericRelation} from "../relationships/types/GenericRelation"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {mapDbRelationshipToModelRelationship} from "../relationships/mapDbRelationshipToModelRelationship"
+import {DbRelationship} from "../../db/types/DbRelationship"
+import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
 
 export class Image {
     static async create(data: CreateImageInput): Promise<ImageNode> {
@@ -211,6 +213,32 @@ export class Image {
         belongsToNodeTypeRelationships.racing_events = mappedRelationships
 
         return belongsToNodeTypeRelationships
+    }
+
+    static async createIsPrimeImageOfNodeRelationship(imageId: number, nodeId: number) {
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const node = await Node.findById(nodeId)
+        if (!node) {
+            throw new NodeNotFoundError(nodeId)
+        }
+
+        const existingRelation = await getSpecificRel(imageId, nodeId, RelationshipType.ImageIsPrimeImageOfNode)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(ImageRelationship.isPrimeImageOfNode, imageId, nodeId)
+        }
+
+        await deleteDeprecatedRel(nodeId, DbRelationship.ImageIsPrimeImageOfNode, NodeTypeLabel.Image)
+
+        const createdRelationship = await createRel(imageId, nodeId, RelationshipType.ImageIsPrimeImageOfNode)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 }
 
