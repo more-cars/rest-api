@@ -2510,6 +2510,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Car Model Variants"
+        ],
+        "summary": "Delete `Car Model Variant`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Car Model Variant` successfully deleted."
+          },
+          "404": {
+            "description": "Deletion request failed. A `Car Model Variant` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/images": {

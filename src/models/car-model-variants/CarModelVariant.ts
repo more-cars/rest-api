@@ -6,6 +6,8 @@ import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/car-model-variants/getNodeById"
 import {getAllNodesOfType} from "../../db/nodes/car-model-variants/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
+import {deleteNode} from "../../db/nodes/deleteNode"
+import {NodeNotFoundError} from "../types/NodeNotFoundError"
 
 export class CarModelVariant {
     static async create(data: CreateCarModelVariantInput): Promise<CarModelVariantNode> {
@@ -35,5 +37,14 @@ export class CarModelVariant {
         })
 
         return nodes
+    }
+
+    static async delete(carModelVariantId: number): Promise<void> {
+        const node = await CarModelVariant.findById(carModelVariantId)
+        if (!node) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        await deleteNode(carModelVariantId)
     }
 }

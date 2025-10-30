@@ -1,0 +1,28 @@
+meta {
+  name: Delete Car Model Variant (valid data)
+  type: http
+  tags: [
+    delete
+    node
+    valid
+  ]
+}
+
+delete {
+  url: {{baseUrl}}/car-model-variants/{{validCarModelVariantId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 204
+  res.body: isEmpty
+}
+
+script:pre-request {
+  await lib.CarModelVariants.ensureValidCarModelVariantExists()
+}
+
+script:post-response {
+  bru.setEnvVar("validCarModelVariantId", null)
+}
