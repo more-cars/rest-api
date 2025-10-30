@@ -15,7 +15,12 @@ echo "  Target environment: $TARGET_ENVIRONMENT"
 echo ----------------------------------------------------------
 
 if [ "$MIGRATION_RUNNER" = minikube ]; then
-    kubectl config use-context morecars
-    kubectl config set-context --current --namespace="$TARGET_ENVIRONMENT"
-    kubectl apply -k "$SCRIPT_PATH"/../deployment/overlays/"$TARGET_ENVIRONMENT"/jobs/mc1-restore
+  kubectl config use-context morecars
+  kubectl config set-context --current --namespace="$TARGET_ENVIRONMENT"
+  kubectl apply -k "$SCRIPT_PATH"/../deployment/overlays/"$TARGET_ENVIRONMENT"/jobs/mc1-restore
+elif [ "$MIGRATION_RUNNER" = gke ]; then
+  gcloud container clusters get-credentials more-cars --region=europe-west1-b
+  kubectl config use-context gke_more-cars_europe-west1-b_more-cars
+  kubectl config set-context --current --namespace="$TARGET_ENVIRONMENT"
+  kubectl apply -k "$SCRIPT_PATH"/../deployment/overlays/"$TARGET_ENVIRONMENT"/jobs/mc1-restore
 fi
