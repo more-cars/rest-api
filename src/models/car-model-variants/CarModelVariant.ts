@@ -17,6 +17,8 @@ import {getSpecificRel} from "../relationships/getSpecificRel"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
 import {RelationshipType} from "../relationships/types/RelationshipType"
 import {CarModelVariantRelationship} from "./types/CarModelVariantRelationship"
+import {getRel} from "../relationships/getRel"
+import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 
 export class CarModelVariant {
     static async create(data: CreateCarModelVariantInput): Promise<CarModelVariantNode> {
@@ -82,5 +84,19 @@ export class CarModelVariant {
         }
 
         return createdRelationship
+    }
+
+    static async getIsVariantOfRelationship(carModelVariantId: number) {
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const relationship = await getRel(carModelVariantId, RelationshipType.CarModelVariantIsVariantOf, NodeTypeLabel.CarModel)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(CarModelVariantRelationship.isVariantOf, carModelVariantId, null)
+        }
+
+        return relationship
     }
 }

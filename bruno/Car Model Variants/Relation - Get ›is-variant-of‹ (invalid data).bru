@@ -1,0 +1,24 @@
+meta {
+  name: Get ›is-variant-of‹ relation (invalid data)
+  type: http
+  tags: [
+    get
+    relation
+    invalid
+  ]
+}
+
+get {
+  url: {{baseUrl}}/car-model-variants/{{invalidCarModelVariantId}}/is-variant-of
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
+
+script:pre-request {
+  lib.tools.generateInvalidId('CarModelVariant')
+}

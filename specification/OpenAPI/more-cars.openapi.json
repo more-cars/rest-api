@@ -2544,6 +2544,47 @@
         }
       }
     },
+    "/car-model-variants/{car-model-variant-id}/is-variant-of": {
+      "get": {
+        "tags": [
+          "Car Model Variants"
+        ],
+        "summary": "Get the ›is-variant-of‹ relationship for the `Car Model Variant`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›is-variant-of‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelVariantIsVariantOfResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Car Model Variant` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/car-model-variants/{car-model-variant-id}/is-variant-of/{car-model-id}": {
       "post": {
         "tags": [

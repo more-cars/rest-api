@@ -45,4 +45,12 @@ describe('Car Model Variants', () => {
         expect(CarModelVariantController.createIsVariantOfRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›is-variant-of‹ relationship', async () => {
+        await request(app)
+            .get('/car-model-variants/123/is-variant-of')
+
+        expect(CarModelVariantController.getIsVariantOfRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
