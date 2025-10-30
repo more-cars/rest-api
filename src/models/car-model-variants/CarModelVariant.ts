@@ -283,4 +283,30 @@ export class CarModelVariant {
 
         await deleteSpecificRel(carModelVariantId, imageId, RelationshipType.CarModelVariantHasImage)
     }
+
+    static async createHasPrimeImageRelationship(carModelVariantId: number, imageId: number) {
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const existingRelation = await getSpecificRel(carModelVariantId, imageId, RelationshipType.CarModelVariantHasPrimeImage)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(CarModelVariantRelationship.hasPrimeImage, carModelVariantId, imageId)
+        }
+
+        await deleteDeprecatedRel(carModelVariantId, DbRelationship.CarModelVariantHasPrimeImage, NodeTypeLabel.Image)
+
+        const createdRelationship = await createRel(carModelVariantId, imageId, RelationshipType.CarModelVariantHasPrimeImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    }
 }

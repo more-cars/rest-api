@@ -133,4 +133,12 @@ describe('Car Model Variants', () => {
         expect(CarModelVariantController.deleteHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .post('/car-model-variants/123/has-prime-image/456')
+
+        expect(CarModelVariantController.createHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

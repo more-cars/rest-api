@@ -52,6 +52,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
             [RelationshipType.CarModelVariantAchievedSessionResult, NodeTypeEnum.SESSION_RESULT],
             [RelationshipType.CarModelVariantAchievedLapTime, NodeTypeEnum.LAP_TIME],
             [RelationshipType.CarModelVariantHasImage, NodeTypeEnum.IMAGE],
+            [RelationshipType.CarModelVariantHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
 
     relationships.set(

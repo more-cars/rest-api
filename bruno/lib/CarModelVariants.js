@@ -87,3 +87,17 @@ async function createCarModelVariantHasImageRelationship(carModelVariantId, imag
 }
 
 exports.createCarModelVariantHasImageRelationship = createCarModelVariantHasImageRelationship
+
+async function ensureCarModelVariantHasPrimeImageRelationshipExists() {
+    await ensureValidCarModelVariantExists()
+    await ensureValidImageExists()
+    await createCarModelVariantHasPrimeImageRelationship(bru.getEnvVar('validCarModelVariantId'), bru.getEnvVar('validImageId'))
+}
+
+exports.ensureCarModelVariantHasPrimeImageRelationshipExists = ensureCarModelVariantHasPrimeImageRelationshipExists
+
+async function createCarModelVariantHasPrimeImageRelationship(carModelVariantId, imageId) {
+    return submitPostRequest("/car-model-variants/" + carModelVariantId + "/has-prime-image/" + imageId)
+}
+
+exports.createCarModelVariantHasPrimeImageRelationship = createCarModelVariantHasPrimeImageRelationship

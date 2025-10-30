@@ -26,6 +26,7 @@ export enum DbRelationship {
     CarModelVariantAchievedSessionResult = 'ACHIEVED_SESSION_RESULT',
     CarModelVariantAchievedLapTime = 'ACHIEVED_LAP_TIME',
     CarModelVariantHasImage = 'HAS_IMAGE',
+    CarModelVariantHasPrimeImage = 'HAS_PRIME_IMAGE',
     RaceTrackHasLayout = 'HAS_LAYOUT',
     RaceTrackHostedRacingEvent = 'TOOK_PLACE_AT_RACE_TRACK',
     RaceTrackHasImage = 'HAS_IMAGE',
