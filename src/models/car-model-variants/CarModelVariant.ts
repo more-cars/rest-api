@@ -156,4 +156,23 @@ export class CarModelVariant {
 
         return getAllRels(carModelVariantId, RelationshipType.CarModelVariantAchievedSessionResult)
     }
+
+    static async deleteAchievedSessionResultRelationship(carModelVariantId: number, sessionResultId: number) {
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const sessionResult = await SessionResult.findById(sessionResultId)
+        if (!sessionResult) {
+            throw new NodeNotFoundError(sessionResultId)
+        }
+
+        const relationship = await getSpecificRel(carModelVariantId, sessionResultId, RelationshipType.CarModelVariantAchievedSessionResult)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(CarModelVariantRelationship.achievedSessionResult, carModelVariantId, sessionResultId)
+        }
+
+        await deleteSpecificRel(carModelVariantId, sessionResultId, RelationshipType.CarModelVariantAchievedSessionResult)
+    }
 }

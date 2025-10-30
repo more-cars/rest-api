@@ -77,4 +77,12 @@ describe('Car Model Variants', () => {
         expect(CarModelVariantController.getAllAchievedSessionResultRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›achieved-session-result‹ relationship', async () => {
+        await request(app)
+            .delete('/car-model-variants/123/achieved-session-result/456')
+
+        expect(CarModelVariantController.deleteAchievedSessionResultRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

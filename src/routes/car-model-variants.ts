@@ -12,5 +12,6 @@ router.get('/car-model-variants/:carModelVariantId/is-variant-of', CarModelVaria
 router.delete('/car-model-variants/:carModelVariantId/is-variant-of/:carModelId', CarModelVariantController.deleteIsVariantOfRelation)
 router.post('/car-model-variants/:carModelVariantId/achieved-session-result/:sessionResultId', CarModelVariantController.createAchievedSessionResultRelation)
 router.get('/car-model-variants/:carModelVariantId/achieved-session-result', CarModelVariantController.getAllAchievedSessionResultRelations)
+router.delete('/car-model-variants/:carModelVariantId/achieved-session-result/:sessionResultId', CarModelVariantController.deleteAchievedSessionResultRelation)
 
 export default router
