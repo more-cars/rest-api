@@ -109,4 +109,12 @@ describe('Car Model Variants', () => {
         expect(CarModelVariantController.deleteAchievedLapTimeRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-image‹ relationship', async () => {
+        await request(app)
+            .post('/car-model-variants/123/has-image/456')
+
+        expect(CarModelVariantController.createHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

@@ -15,6 +15,7 @@ export enum RelationshipType {
     CarModelVariantIsVariantOf = 'IS_VARIANT_OF',
     CarModelVariantAchievedSessionResult = 'ACHIEVED_SESSION_RESULT',
     CarModelVariantAchievedLapTime = 'ACHIEVED_LAP_TIME',
+    CarModelVariantHasImage = 'HAS_IMAGE',
     RaceTrackHasLayout = 'HAS_LAYOUT',
     RaceTrackHostedRacingEvent = 'HOSTED_RACING_EVENT',
     RaceTrackHasImage = 'HAS_IMAGE',

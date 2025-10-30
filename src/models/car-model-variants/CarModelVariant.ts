@@ -23,6 +23,7 @@ import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {SessionResult} from "../session-results/SessionResult"
 import {getAllRels} from "../relationships/getAllRels"
 import {LapTime} from "../lap-times/LapTime"
+import {Image} from "../images/Image"
 
 export class CarModelVariant {
     static async create(data: CreateCarModelVariantInput): Promise<CarModelVariantNode> {
@@ -229,5 +230,29 @@ export class CarModelVariant {
         }
 
         await deleteSpecificRel(carModelVariantId, lapTimeId, RelationshipType.CarModelVariantAchievedLapTime)
+    }
+
+    static async createHasImageRelationship(carModelVariantId: number, imageId: number) {
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const existingRelation = await getSpecificRel(carModelVariantId, imageId, RelationshipType.CarModelVariantHasImage)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(CarModelVariantRelationship.hasImage, carModelVariantId, imageId)
+        }
+
+        const createdRelationship = await createRel(carModelVariantId, imageId, RelationshipType.CarModelVariantHasImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 }

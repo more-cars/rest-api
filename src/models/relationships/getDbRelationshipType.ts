@@ -20,6 +20,7 @@ export function getDbRelationshipType(relationshipType: RelationshipType): DbRel
         [RelationshipType.CarModelVariantIsVariantOf, DbRelationship.CarModelVariantIsVariantOf],
         [RelationshipType.CarModelVariantAchievedSessionResult, DbRelationship.CarModelVariantAchievedSessionResult],
         [RelationshipType.CarModelVariantAchievedLapTime, DbRelationship.CarModelVariantAchievedLapTime],
+        [RelationshipType.CarModelVariantHasImage, DbRelationship.CarModelVariantHasImage],
         [RelationshipType.RaceTrackHasLayout, DbRelationship.RaceTrackHasLayout],
         [RelationshipType.RaceTrackHostedRacingEvent, DbRelationship.RaceTrackHostedRacingEvent],
         [RelationshipType.RaceTrackHasImage, DbRelationship.RaceTrackHasImage],

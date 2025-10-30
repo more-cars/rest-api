@@ -2,6 +2,7 @@ const {submitPostRequest, submitGetRequest} = require("./request")
 const {ensureValidCarModelExists} = require("./CarModels")
 const {ensureValidSessionResultExists} = require("./SessionResults")
 const {ensureValidLapTimeExists} = require("./LapTimes")
+const {ensureValidImageExists} = require("./Images")
 
 async function ensureValidCarModelVariantExists() {
     if (!bru.getEnvVar('validCarModelVariantId')) {
@@ -72,3 +73,17 @@ async function createCarModelVariantAchievedLapTimeRelationship(carModelVariantI
 }
 
 exports.createCarModelVariantAchievedLapTimeRelationship = createCarModelVariantAchievedLapTimeRelationship
+
+async function ensureCarModelVariantHasImageRelationshipExists() {
+    await ensureValidCarModelVariantExists()
+    await ensureValidImageExists()
+    await createCarModelVariantHasImageRelationship(bru.getEnvVar('validCarModelVariantId'), bru.getEnvVar('validImageId'))
+}
+
+exports.ensureCarModelVariantHasImageRelationshipExists = ensureCarModelVariantHasImageRelationshipExists
+
+async function createCarModelVariantHasImageRelationship(carModelVariantId, imageId) {
+    return submitPostRequest("/car-model-variants/" + carModelVariantId + "/has-image/" + imageId)
+}
+
+exports.createCarModelVariantHasImageRelationship = createCarModelVariantHasImageRelationship

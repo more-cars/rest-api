@@ -12,6 +12,7 @@ import {deleteAchievedSessionResultRelation} from "./car-model-variants/deleteAc
 import {createAchievedLapTimeRelation} from "./car-model-variants/createAchievedLapTimeRelation"
 import {getAllAchievedLapTimeRelations} from "./car-model-variants/getAllAchievedLapTimeRelations"
 import {deleteAchievedLapTimeRelation} from "./car-model-variants/deleteAchievedLapTimeRelation"
+import {createHasImageRelation} from "./car-model-variants/createHasImageRelation"
 
 export class CarModelVariantController {
     static async create(req: express.Request, res: express.Response) {
@@ -64,5 +65,9 @@ export class CarModelVariantController {
 
     static async deleteAchievedLapTimeRelation(req: express.Request, res: express.Response) {
         await deleteAchievedLapTimeRelation(req, res)
+    }
+
+    static async createHasImageRelation(req: express.Request, res: express.Response) {
+        await createHasImageRelation(req, res)
     }
 }
