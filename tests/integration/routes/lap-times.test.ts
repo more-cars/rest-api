@@ -86,6 +86,14 @@ describe('Lap Times', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Create ›achieved-with-car-model-variant‹ relationship', async () => {
+        await request(app)
+            .post('/lap-times/123/achieved-with-car-model-variant/456')
+
+        expect(LapTimeController.createAchievedWithCarModelVariantRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/lap-times/123/has-image/456')

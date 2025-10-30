@@ -110,6 +110,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
         NodeTypeEnum.LAP_TIME, new Map([
             [RelationshipType.LapTimeBelongsToSessionResult, NodeTypeEnum.SESSION_RESULT],
             [RelationshipType.LapTimeAchievedOnTrackLayout, NodeTypeEnum.TRACK_LAYOUT],
+            [RelationshipType.LapTimeAchievedWithCarModelVariant, NodeTypeEnum.CAR_MODEL_VARIANT],
             [RelationshipType.LapTimeHasImage, NodeTypeEnum.IMAGE],
             [RelationshipType.LapTimeHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))

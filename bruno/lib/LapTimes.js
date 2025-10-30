@@ -2,6 +2,7 @@ const {submitPostRequest, submitGetRequest} = require("./request")
 const {ensureValidSessionResultExists} = require("./SessionResults")
 const {ensureValidTrackLayoutExists} = require("./TrackLayouts")
 const {ensureValidImageExists} = require("./Images")
+const {ensureValidCarModelVariantExists} = require("./CarModelVariants")
 
 async function ensureValidLapTimeExists() {
     if (!bru.getEnvVar('validLapTimeId')) {
@@ -87,3 +88,17 @@ async function createLapTimeHasPrimeImageRelationship(lapTimeId, imageId) {
 }
 
 exports.createLapTimeHasPrimeImageRelationship = createLapTimeHasPrimeImageRelationship
+
+async function ensureLapTimeAchievedWithCarModelVariantRelationshipExists() {
+    await ensureValidLapTimeExists()
+    await ensureValidCarModelVariantExists()
+    await createLapTimeAchievedWithCarModelVariantRelationship(bru.getEnvVar('validLapTimeId'), bru.getEnvVar('validCarModelVariantId'))
+}
+
+exports.ensureLapTimeAchievedWithCarModelVariantRelationshipExists = ensureLapTimeAchievedWithCarModelVariantRelationshipExists
+
+async function createLapTimeAchievedWithCarModelVariantRelationship(lapTimeId, carModelVariantId) {
+    return submitPostRequest("/lap-times/" + lapTimeId + "/achieved-with-car-model-variant/" + carModelVariantId)
+}
+
+exports.createLapTimeAchievedWithCarModelVariantRelationship = createLapTimeAchievedWithCarModelVariantRelationship

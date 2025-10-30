@@ -23,6 +23,7 @@ import {TrackLayout} from "../track-layouts/TrackLayout"
 import {Image} from "../images/Image"
 import {getAllRels} from "../relationships/getAllRels"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
+import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 
 export class LapTime {
     static async create(data: CreateLapTimeInput): Promise<LapTimeNode> {
@@ -181,6 +182,32 @@ export class LapTime {
         }
 
         await deleteSpecificRel(lapTimeId, trackLayoutId, RelationshipType.LapTimeAchievedOnTrackLayout)
+    }
+
+    static async createAchievedWithCarModelVariantRelationship(lapTimeId: number, carModelVariantId: number) {
+        const lapTime = await LapTime.findById(lapTimeId)
+        if (!lapTime) {
+            throw new NodeNotFoundError(lapTimeId)
+        }
+
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const existingRelation = await getSpecificRel(lapTimeId, carModelVariantId, RelationshipType.LapTimeAchievedWithCarModelVariant)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(LapTimeRelationship.achievedWithCarModelVariant, lapTimeId, carModelVariantId)
+        }
+        await deleteDeprecatedRel(lapTimeId, DbRelationship.LapTimeAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant)
+
+
+        const createdRelationship = await createRel(lapTimeId, carModelVariantId, RelationshipType.LapTimeAchievedWithCarModelVariant)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 
     static async createHasImageRelationship(lapTimeId: number, imageId: number) {
