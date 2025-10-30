@@ -23,6 +23,7 @@ import {LapTime} from "../lap-times/LapTime"
 import {getAllRels} from "../relationships/getAllRels"
 import {Image} from "../images/Image"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
+import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 
 export class SessionResult {
     static async create(data: CreateSessionResultInput): Promise<SessionResultNode> {
@@ -289,5 +290,31 @@ export class SessionResult {
         }
 
         await deleteSpecificRel(sessionResultId, imageId, RelationshipType.SessionResultHasPrimeImage)
+    }
+
+    static async createAchievedWithCarModelVariantRelationship(sessionResultId: number, carModelVariantId: number) {
+        const sessionResult = await SessionResult.findById(sessionResultId)
+        if (!sessionResult) {
+            throw new NodeNotFoundError(sessionResultId)
+        }
+
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const existingRelation = await getSpecificRel(sessionResultId, carModelVariantId, RelationshipType.SessionResultAchievedWithCarModelVariant)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(SessionResultRelationship.achievedWithCarModelVariant, sessionResultId, carModelVariantId)
+        }
+
+        await deleteDeprecatedRel(sessionResultId, DbRelationship.SessionResultAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant)
+
+        const createdRelationship = await createRel(sessionResultId, carModelVariantId, RelationshipType.SessionResultAchievedWithCarModelVariant)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 }

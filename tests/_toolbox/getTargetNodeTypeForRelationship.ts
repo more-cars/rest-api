@@ -100,6 +100,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
         NodeTypeEnum.SESSION_RESULT, new Map([
             [RelationshipType.SessionResultBelongsToRacingSession, NodeTypeEnum.RACING_SESSION],
             [RelationshipType.SessionResultHasLapTime, NodeTypeEnum.LAP_TIME],
+            [RelationshipType.SessionResultAchievedWithCarModelVariant, NodeTypeEnum.CAR_MODEL_VARIANT],
             [RelationshipType.SessionResultHasImage, NodeTypeEnum.IMAGE],
             [RelationshipType.SessionResultHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))

@@ -13,6 +13,7 @@ router.delete('/session-results/:sessionResultId/belongs-to-racing-session/:raci
 router.post('/session-results/:sessionResultId/has-lap-time/:lapTimeId', SessionResultController.createHasLapTimeRelation)
 router.get('/session-results/:sessionResultId/has-lap-time', SessionResultController.getAllHasLapTimeRelations)
 router.delete('/session-results/:sessionResultId/has-lap-time/:lapTimeId', SessionResultController.deleteHasLapTimeRelation)
+router.post('/session-results/:sessionResultId/achieved-with-car-model-variant/:carModelVariantId', SessionResultController.createAchievedWithCarModelVariantRelation)
 router.post('/session-results/:sessionResultId/has-image/:imageId', SessionResultController.createHasImageRelation)
 router.get('/session-results/:sessionResultId/has-image', SessionResultController.getAllHasImageRelations)
 router.delete('/session-results/:sessionResultId/has-image/:imageId', SessionResultController.deleteHasImageRelation)

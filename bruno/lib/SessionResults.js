@@ -2,6 +2,7 @@ const {submitPostRequest, submitGetRequest} = require("./request")
 const {ensureValidRacingSessionExists} = require("./RacingSessions")
 const {ensureValidLapTimeExists} = require("./LapTimes")
 const {ensureValidImageExists} = require("./Images")
+const {ensureValidCarModelVariantExists} = require("./CarModelVariants")
 
 async function ensureValidSessionResultExists() {
     if (!bru.getEnvVar('validSessionResultId')) {
@@ -87,3 +88,17 @@ async function createSessionResultHasPrimeImageRelationship(sessionResultId, ima
 }
 
 exports.createSessionResultHasPrimeImageRelationship = createSessionResultHasPrimeImageRelationship
+
+async function ensureSessionResultAchievedWithCarModelVariantRelationshipExists() {
+    await ensureValidSessionResultExists()
+    await ensureValidCarModelVariantExists()
+    await createSessionResultAchievedWithCarModelVariantRelationship(bru.getEnvVar('validSessionResultId'), bru.getEnvVar('validCarModelVariantId'))
+}
+
+exports.ensureSessionResultAchievedWithCarModelVariantRelationshipExists = ensureSessionResultAchievedWithCarModelVariantRelationshipExists
+
+async function createSessionResultAchievedWithCarModelVariantRelationship(sessionResultId, carModelVariantId) {
+    return submitPostRequest("/session-results/" + sessionResultId + "/achieved-with-car-model-variant/" + carModelVariantId)
+}
+
+exports.createSessionResultAchievedWithCarModelVariantRelationship = createSessionResultAchievedWithCarModelVariantRelationship
