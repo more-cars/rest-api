@@ -8821,6 +8821,47 @@
         }
       }
     },
+    "/lap-times/{lap-time-id}/achieved-with-car-model-variant": {
+      "get": {
+        "tags": [
+          "Lap Times"
+        ],
+        "summary": "Get the ›achieved-with-car-model-variant‹ relationship for the `Lap Time`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "lap-time-id",
+            "description": "ID of the `Lap Time`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›achieved-with-car-model-variant‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LapTimeAchievedWithCarModelVariantResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Lap Time` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/lap-times/{lap-time-id}/achieved-with-car-model-variant/{car-model-variant-id}": {
       "post": {
         "tags": [

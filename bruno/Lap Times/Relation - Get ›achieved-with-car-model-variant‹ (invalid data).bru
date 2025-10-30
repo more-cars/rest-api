@@ -1,0 +1,24 @@
+meta {
+  name: Get ›achieved-with-car-model-variant‹ relation (invalid data)
+  type: http
+  tags: [
+    get
+    relation
+    invalid
+  ]
+}
+
+get {
+  url: {{baseUrl}}/lap-times/{{invalidLapTimeId}}/achieved-with-car-model-variant
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
+
+script:pre-request {
+  lib.tools.generateInvalidId('LapTime')
+}

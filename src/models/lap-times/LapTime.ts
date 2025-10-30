@@ -210,6 +210,20 @@ export class LapTime {
         return createdRelationship
     }
 
+    static async getAchievedWithCarModelVariantRelationship(lapTimeId: number) {
+        const lapTime = await LapTime.findById(lapTimeId)
+        if (!lapTime) {
+            throw new NodeNotFoundError(lapTimeId)
+        }
+
+        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(LapTimeRelationship.achievedWithCarModelVariant, lapTimeId, null)
+        }
+
+        return relationship
+    }
+
     static async createHasImageRelationship(lapTimeId: number, imageId: number) {
 
         const lapTime = await LapTime.findById(lapTimeId)
