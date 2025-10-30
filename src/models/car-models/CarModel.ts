@@ -23,6 +23,7 @@ import {getSpecificRel} from "../relationships/getSpecificRel"
 import {createRel} from "../relationships/createRel"
 import {getAllRels} from "../relationships/getAllRels"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
+import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 
 export class CarModel {
     static async create(data: CreateCarModelInput): Promise<CarModelNode> {
@@ -248,6 +249,32 @@ export class CarModel {
         }
 
         await deleteSpecificRel(carModelId, partnerId, RelationshipType.CarModelIsSuccessorOf)
+    }
+
+    static async createHasVariantRelationship(carModelId: number, carModelVariantId: number) {
+        const carModel = await CarModel.findById(carModelId)
+        if (!carModel) {
+            throw new NodeNotFoundError(carModelId)
+        }
+
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const existingRelation = await getSpecificRel(carModelId, carModelVariantId, RelationshipType.CarModelHasVariant)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(CarModelRelationship.hasVariant, carModelId, carModelVariantId)
+        }
+
+        await deleteDeprecatedRel(carModelVariantId, DbRelationship.CarModelHasVariant, NodeTypeLabel.CarModel)
+
+        const createdRelationship = await createRel(carModelId, carModelVariantId, RelationshipType.CarModelHasVariant)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     }
 
     static async createHasImageRelationship(carModelId: number, imageId: number) {

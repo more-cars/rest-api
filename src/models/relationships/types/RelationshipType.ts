@@ -9,6 +9,7 @@ export enum RelationshipType {
     CarModelBelongsToBrand = 'BELONGS_TO_BRAND',
     CarModelHasSuccessor = 'HAS_SUCCESSOR',
     CarModelIsSuccessorOf = 'IS_SUCCESSOR_OF',
+    CarModelHasVariant = 'HAS_VARIANT',
     CarModelHasImage = 'HAS_IMAGE',
     CarModelHasPrimeImage = 'HAS_PRIME_IMAGE',
     CarModelVariantIsVariantOf = 'IS_VARIANT_OF',

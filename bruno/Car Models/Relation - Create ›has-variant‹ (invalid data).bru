@@ -1,0 +1,25 @@
+meta {
+  name: Create ›has-variant‹ relation (invalid data)
+  type: http
+  tags: [
+    create
+    relation
+    invalid
+  ]
+}
+
+post {
+  url: {{baseUrl}}/car-models/{{invalidCarModelId}}/has-variant/{{invalidCarModelVariantId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
+
+script:pre-request {
+  lib.tools.generateInvalidId('CarModel')
+  lib.tools.generateInvalidId('CarModelVariant')
+}

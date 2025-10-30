@@ -14,6 +14,7 @@ export function getDbRelationshipType(relationshipType: RelationshipType): DbRel
         [RelationshipType.CarModelBelongsToBrand, DbRelationship.CarModelBelongsToBrand],
         [RelationshipType.CarModelHasSuccessor, DbRelationship.CarModelHasSuccessor],
         [RelationshipType.CarModelIsSuccessorOf, DbRelationship.CarModelIsSuccessorOf],
+        [RelationshipType.CarModelHasVariant, DbRelationship.CarModelHasVariant],
         [RelationshipType.CarModelHasImage, DbRelationship.CarModelHasImage],
         [RelationshipType.CarModelHasPrimeImage, DbRelationship.CarModelHasPrimeImage],
         [RelationshipType.CarModelVariantIsVariantOf, DbRelationship.CarModelVariantIsVariantOf],

@@ -1,6 +1,7 @@
 const {submitPostRequest, submitGetRequest} = require("./request")
 const {ensureValidBrandExists} = require("./Brands")
 const {ensureValidImageExists} = require("./Images")
+const {ensureValidCarModelVariantExists} = require("./CarModelVariants")
 
 async function ensureValidCarModelExists() {
     if (!bru.getEnvVar('validCarModelId')) {
@@ -111,3 +112,17 @@ async function createCarModelHasPrimeImageRelationship(carModelId, imageId) {
 }
 
 exports.createCarModelHasPrimeImageRelationship = createCarModelHasPrimeImageRelationship
+
+async function ensureCarModelHasVariantRelationshipExists() {
+    await ensureValidCarModelExists()
+    await ensureValidCarModelVariantExists()
+    await createCarModelHasVariantRelationship(bru.getEnvVar('validCarModelId'), bru.getEnvVar('validCarModelVariantId'))
+}
+
+exports.ensureCarModelHasVariantRelationshipExists = ensureCarModelHasVariantRelationshipExists
+
+async function createCarModelHasVariantRelationship(carModelId, carModelVariantId) {
+    return submitPostRequest("/car-models/" + carModelId + "/has-variant/" + carModelVariantId)
+}
+
+exports.createCarModelHasVariantRelationship = createCarModelHasVariantRelationship

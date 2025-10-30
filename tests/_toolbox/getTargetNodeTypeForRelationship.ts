@@ -41,6 +41,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
             [RelationshipType.CarModelBelongsToBrand, NodeTypeEnum.BRAND],
             [RelationshipType.CarModelHasSuccessor, NodeTypeEnum.CAR_MODEL],
             [RelationshipType.CarModelIsSuccessorOf, NodeTypeEnum.CAR_MODEL],
+            [RelationshipType.CarModelHasVariant, NodeTypeEnum.CAR_MODEL_VARIANT],
             [RelationshipType.CarModelHasImage, NodeTypeEnum.IMAGE],
             [RelationshipType.CarModelHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
