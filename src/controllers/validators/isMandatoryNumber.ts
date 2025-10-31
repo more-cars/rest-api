@@ -1,5 +1,9 @@
 export function isMandatoryNumber(value: unknown) {
-    if (!value) {
+    if (value === null) {
+        return false
+    }
+
+    if (value === undefined) {
         return false
     }
 
