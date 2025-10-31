@@ -15,6 +15,7 @@ export async function createAchievedWithCarModelVariantRelation(req: express.Req
 
     try {
         const relation = await LapTime.createAchievedWithCarModelVariantRelationship(lapTimeId, carModelVariantId)
+        relation.type = 'ACHIEVED_WITH_CAR_MODEL_VARIANT' // TODO a mapper is needed to translate the relationship names (controller vs model)
         const marshalledData = marshalRelation(relation, NodeTypeEnum.CAR_MODEL_VARIANT)
 
         return sendResponse201(marshalledData, res)
