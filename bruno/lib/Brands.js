@@ -3,86 +3,64 @@ const {ensureValidImageExists} = require("./Images")
 const {ensureValidCarModelExists} = require("./CarModels")
 const {ensureValidCompanyExists} = require("./Companies")
 
-async function ensureValidBrandExists() {
+exports.ensureValidBrandExists = async function ensureValidBrandExists() {
     if (!bru.getEnvVar('validBrandId')) {
-        const nodeList = await getAllBrands()
+        const nodeList = await this.getAllBrands()
         if (nodeList.length > 0) {
             bru.setEnvVar("validBrandId", nodeList[0].data.id)
         } else {
-            const newNode = await createBrand()
+            const newNode = await this.createBrand()
             bru.setEnvVar("validBrandId", newNode.data.id)
         }
     }
 }
 
-exports.ensureValidBrandExists = ensureValidBrandExists
-
-async function createBrand() {
+exports.createBrand = async function createBrand() {
     return submitPostRequest("/brands", {
         name: 'Dummy'
     })
 }
 
-exports.createBrand = createBrand
-
-async function getAllBrands() {
+exports.getAllBrands = async function getAllBrands() {
     return submitGetRequest("/brands")
 }
 
-exports.getAllBrands = getAllBrands
-
-async function ensureBrandBelongsToCompanyRelationshipExists() {
-    await ensureValidBrandExists()
+exports.ensureBrandBelongsToCompanyRelationshipExists = async function ensureBrandBelongsToCompanyRelationshipExists() {
+    await this.ensureValidBrandExists()
     await ensureValidCompanyExists()
-    await createBrandBelongsToCompanyRelationship(bru.getEnvVar('validBrandId'), bru.getEnvVar('validCompanyId'))
+    await this.createBrandBelongsToCompanyRelationship(bru.getEnvVar('validBrandId'), bru.getEnvVar('validCompanyId'))
 }
 
-exports.ensureBrandBelongsToCompanyRelationshipExists = ensureBrandBelongsToCompanyRelationshipExists
-
-async function createBrandBelongsToCompanyRelationship(brandId, companyId) {
+exports.createBrandBelongsToCompanyRelationship = async function createBrandBelongsToCompanyRelationship(brandId, companyId) {
     return submitPostRequest("/brands/" + brandId + "/belongs-to-company/" + companyId)
 }
 
-exports.createBrandBelongsToCompanyRelationship = createBrandBelongsToCompanyRelationship
-
-async function ensureBrandHasCarModelRelationshipExists() {
-    await ensureValidBrandExists()
+exports.ensureBrandHasCarModelRelationshipExists = async function ensureBrandHasCarModelRelationshipExists() {
+    await this.ensureValidBrandExists()
     await ensureValidCarModelExists()
-    await createBrandHasCarModelRelationship(bru.getEnvVar('validBrandId'), bru.getEnvVar('validCarModelId'))
+    await this.createBrandHasCarModelRelationship(bru.getEnvVar('validBrandId'), bru.getEnvVar('validCarModelId'))
 }
 
-exports.ensureBrandHasCarModelRelationshipExists = ensureBrandHasCarModelRelationshipExists
-
-async function createBrandHasCarModelRelationship(brandId, carModelId) {
+exports.createBrandHasCarModelRelationship = async function createBrandHasCarModelRelationship(brandId, carModelId) {
     return submitPostRequest("/brands/" + brandId + "/has-car-model/" + carModelId)
 }
 
-exports.createBrandHasCarModelRelationship = createBrandHasCarModelRelationship
-
-async function ensureBrandHasImageRelationshipExists() {
-    await ensureValidBrandExists()
+exports.ensureBrandHasImageRelationshipExists = async function ensureBrandHasImageRelationshipExists() {
+    await this.ensureValidBrandExists()
     await ensureValidImageExists()
-    await createBrandHasImageRelationship(bru.getEnvVar('validBrandId'), bru.getEnvVar('validImageId'))
+    await this.createBrandHasImageRelationship(bru.getEnvVar('validBrandId'), bru.getEnvVar('validImageId'))
 }
 
-exports.ensureBrandHasImageRelationshipExists = ensureBrandHasImageRelationshipExists
-
-async function createBrandHasImageRelationship(brandId, imageId) {
+exports.createBrandHasImageRelationship = async function createBrandHasImageRelationship(brandId, imageId) {
     return submitPostRequest("/brands/" + brandId + "/has-image/" + imageId)
 }
 
-exports.createBrandHasImageRelationship = createBrandHasImageRelationship
-
-async function ensureBrandHasPrimeImageRelationshipExists() {
-    await ensureValidBrandExists()
+exports.ensureBrandHasPrimeImageRelationshipExists = async function ensureBrandHasPrimeImageRelationshipExists() {
+    await this.ensureValidBrandExists()
     await ensureValidImageExists()
-    await createBrandHasPrimeImageRelationship(bru.getEnvVar('validBrandId'), bru.getEnvVar('validImageId'))
+    await this.createBrandHasPrimeImageRelationship(bru.getEnvVar('validBrandId'), bru.getEnvVar('validImageId'))
 }
 
-exports.ensureBrandHasPrimeImageRelationshipExists = ensureBrandHasPrimeImageRelationshipExists
-
-async function createBrandHasPrimeImageRelationship(brandId, imageId) {
+exports.createBrandHasPrimeImageRelationship = async function createBrandHasPrimeImageRelationship(brandId, imageId) {
     return submitPostRequest("/brands/" + brandId + "/has-prime-image/" + imageId)
 }
-
-exports.createBrandHasPrimeImageRelationship = createBrandHasPrimeImageRelationship

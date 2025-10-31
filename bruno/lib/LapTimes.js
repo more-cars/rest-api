@@ -4,101 +4,75 @@ const {ensureValidTrackLayoutExists} = require("./TrackLayouts")
 const {ensureValidImageExists} = require("./Images")
 const {ensureValidCarModelVariantExists} = require("./CarModelVariants")
 
-async function ensureValidLapTimeExists() {
+exports.ensureValidLapTimeExists = async function ensureValidLapTimeExists() {
     if (!bru.getEnvVar('validLapTimeId')) {
-        const nodeList = await getAllLapTimes()
+        const nodeList = await this.getAllLapTimes()
         if (nodeList.length > 0) {
             bru.setEnvVar("validLapTimeId", nodeList[0].data.id)
         } else {
-            const newNode = await createLapTime()
+            const newNode = await this.createLapTime()
             bru.setEnvVar("validLapTimeId", newNode.data.id)
         } //
     }
 }
 
-exports.ensureValidLapTimeExists = ensureValidLapTimeExists
-
-async function createLapTime() {
+exports.createLapTime = async function createLapTime() {
     return submitPostRequest("/lap-times", {
         time: 'PT1M33.294S',
         driver_name: 'Klaus Ludwig',
     })
 }
 
-exports.createLapTime = createLapTime
-
-async function getAllLapTimes() {
+exports.getAllLapTimes = async function getAllLapTimes() {
     return submitGetRequest("/lap-times")
 }
 
-exports.getAllLapTimes = getAllLapTimes
-
-async function ensureLapTimeBelongsToSessionResultRelationshipExists() {
-    await ensureValidLapTimeExists()
+exports.ensureLapTimeBelongsToSessionResultRelationshipExists = async function ensureLapTimeBelongsToSessionResultRelationshipExists() {
+    await this.ensureValidLapTimeExists()
     await ensureValidSessionResultExists()
-    await createLapTimeBelongsToSessionResultRelationship(bru.getEnvVar('validLapTimeId'), bru.getEnvVar('validSessionResultId'))
+    await this.createLapTimeBelongsToSessionResultRelationship(bru.getEnvVar('validLapTimeId'), bru.getEnvVar('validSessionResultId'))
 }
 
-exports.ensureLapTimeBelongsToSessionResultRelationshipExists = ensureLapTimeBelongsToSessionResultRelationshipExists
-
-async function createLapTimeBelongsToSessionResultRelationship(lapTimeId, sessionResultId) {
+exports.createLapTimeBelongsToSessionResultRelationship = async function createLapTimeBelongsToSessionResultRelationship(lapTimeId, sessionResultId) {
     return submitPostRequest("/lap-times/" + lapTimeId + "/belongs-to-session-result/" + sessionResultId)
 }
 
-exports.createLapTimeBelongsToSessionResultRelationship = createLapTimeBelongsToSessionResultRelationship
-
-async function ensureLapTimeAchievedOnTrackLayoutRelationshipExists() {
-    await ensureValidLapTimeExists()
+exports.ensureLapTimeAchievedOnTrackLayoutRelationshipExists = async function ensureLapTimeAchievedOnTrackLayoutRelationshipExists() {
+    await this.ensureValidLapTimeExists()
     await ensureValidTrackLayoutExists()
-    await createLapTimeAchievedOnTrackLayoutRelationship(bru.getEnvVar('validLapTimeId'), bru.getEnvVar('validTrackLayoutId'))
+    await this.createLapTimeAchievedOnTrackLayoutRelationship(bru.getEnvVar('validLapTimeId'), bru.getEnvVar('validTrackLayoutId'))
 }
 
-exports.ensureLapTimeAchievedOnTrackLayoutRelationshipExists = ensureLapTimeAchievedOnTrackLayoutRelationshipExists
-
-async function createLapTimeAchievedOnTrackLayoutRelationship(lapTimeId, trackLayoutId) {
+exports.createLapTimeAchievedOnTrackLayoutRelationship = async function createLapTimeAchievedOnTrackLayoutRelationship(lapTimeId, trackLayoutId) {
     return submitPostRequest("/lap-times/" + lapTimeId + "/achieved-on-track-layout/" + trackLayoutId)
 }
 
-exports.createLapTimeAchievedOnTrackLayoutRelationship = createLapTimeAchievedOnTrackLayoutRelationship
-
-async function ensureLapTimeHasImageRelationshipExists() {
-    await ensureValidLapTimeExists()
+exports.ensureLapTimeHasImageRelationshipExists = async function ensureLapTimeHasImageRelationshipExists() {
+    await this.ensureValidLapTimeExists()
     await ensureValidImageExists()
-    await createLapTimeHasImageRelationship(bru.getEnvVar('validLapTimeId'), bru.getEnvVar('validImageId'))
+    await this.createLapTimeHasImageRelationship(bru.getEnvVar('validLapTimeId'), bru.getEnvVar('validImageId'))
 }
 
-exports.ensureLapTimeHasImageRelationshipExists = ensureLapTimeHasImageRelationshipExists
-
-async function createLapTimeHasImageRelationship(lapTimeId, imageId) {
+exports.createLapTimeHasImageRelationship = async function createLapTimeHasImageRelationship(lapTimeId, imageId) {
     return submitPostRequest("/lap-times/" + lapTimeId + "/has-image/" + imageId)
 }
 
-exports.createLapTimeHasImageRelationship = createLapTimeHasImageRelationship
-
-async function ensureLapTimeHasPrimeImageRelationshipExists() {
-    await ensureValidLapTimeExists()
+exports.ensureLapTimeHasPrimeImageRelationshipExists = async function ensureLapTimeHasPrimeImageRelationshipExists() {
+    await this.ensureValidLapTimeExists()
     await ensureValidImageExists()
-    await createLapTimeHasPrimeImageRelationship(bru.getEnvVar('validLapTimeId'), bru.getEnvVar('validImageId'))
+    await this.createLapTimeHasPrimeImageRelationship(bru.getEnvVar('validLapTimeId'), bru.getEnvVar('validImageId'))
 }
 
-exports.ensureLapTimeHasPrimeImageRelationshipExists = ensureLapTimeHasPrimeImageRelationshipExists
-
-async function createLapTimeHasPrimeImageRelationship(lapTimeId, imageId) {
+exports.createLapTimeHasPrimeImageRelationship = async function createLapTimeHasPrimeImageRelationship(lapTimeId, imageId) {
     return submitPostRequest("/lap-times/" + lapTimeId + "/has-prime-image/" + imageId)
 }
 
-exports.createLapTimeHasPrimeImageRelationship = createLapTimeHasPrimeImageRelationship
-
-async function ensureLapTimeAchievedWithCarModelVariantRelationshipExists() {
-    await ensureValidLapTimeExists()
+exports.ensureLapTimeAchievedWithCarModelVariantRelationshipExists = async function ensureLapTimeAchievedWithCarModelVariantRelationshipExists() {
+    await this.ensureValidLapTimeExists()
     await ensureValidCarModelVariantExists()
-    await createLapTimeAchievedWithCarModelVariantRelationship(bru.getEnvVar('validLapTimeId'), bru.getEnvVar('validCarModelVariantId'))
+    await this.createLapTimeAchievedWithCarModelVariantRelationship(bru.getEnvVar('validLapTimeId'), bru.getEnvVar('validCarModelVariantId'))
 }
 
-exports.ensureLapTimeAchievedWithCarModelVariantRelationshipExists = ensureLapTimeAchievedWithCarModelVariantRelationshipExists
-
-async function createLapTimeAchievedWithCarModelVariantRelationship(lapTimeId, carModelVariantId) {
+exports.createLapTimeAchievedWithCarModelVariantRelationship = async function createLapTimeAchievedWithCarModelVariantRelationship(lapTimeId, carModelVariantId) {
     return submitPostRequest("/lap-times/" + lapTimeId + "/achieved-with-car-model-variant/" + carModelVariantId)
 }
-
-exports.createLapTimeAchievedWithCarModelVariantRelationship = createLapTimeAchievedWithCarModelVariantRelationship

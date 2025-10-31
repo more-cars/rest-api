@@ -5,154 +5,114 @@ const {ensureValidTrackLayoutExists} = require("./TrackLayouts")
 const {ensureValidImageExists} = require("./Images")
 const {ensureValidRacingSessionExists} = require("./RacingSessions")
 
-async function ensureValidRacingEventExists() {
+exports.ensureValidRacingEventExists = async function ensureValidRacingEventExists() {
     if (!bru.getEnvVar('validRacingEventId')) {
-        const nodeList = await getAllRacingEvents()
+        const nodeList = await this.getAllRacingEvents()
         if (nodeList.length > 0) {
             bru.setEnvVar("validRacingEventId", nodeList[0].data.id)
         } else {
-            const newNode = await createRacingEvent()
+            const newNode = await this.createRacingEvent()
             bru.setEnvVar("validRacingEventId", newNode.data.id)
         } //
     }
 }
 
-exports.ensureValidRacingEventExists = ensureValidRacingEventExists
-
-async function ensureValidSecondRacingEventExists() {
-    const nodeList = await getAllRacingEvents()
+exports.ensureValidSecondRacingEventExists = async function ensureValidSecondRacingEventExists() {
+    const nodeList = await this.getAllRacingEvents()
     if (nodeList.length > 1) {
         bru.setEnvVar("validSecongRacingEventId", nodeList[nodeList.length - 1].data.id)
     } else {
-        const newNode = await createRacingEvent()
+        const newNode = await this.createRacingEvent()
         bru.setEnvVar("validSecondRacingEventId", newNode.data.id)
     }
 }
 
-exports.ensureValidSecondRacingEventExists = ensureValidSecondRacingEventExists
-
-async function createRacingEvent() {
+exports.createRacingEvent = async function createRacingEvent() {
     return submitPostRequest("/racing-events", {
         name: 'GP Monaco 2025',
     })
 }
 
-exports.createRacingEvent = createRacingEvent
-
-async function getAllRacingEvents() {
+exports.getAllRacingEvents = async function getAllRacingEvents() {
     return submitGetRequest("/racing-events")
 }
 
-exports.getAllRacingEvents = getAllRacingEvents
-
-async function ensureRacingEventBelongsToRacingSeriesRelationshipExists() {
-    await ensureValidRacingEventExists()
+exports.ensureRacingEventBelongsToRacingSeriesRelationshipExists = async function ensureRacingEventBelongsToRacingSeriesRelationshipExists() {
+    await this.ensureValidRacingEventExists()
     await ensureValidRacingSeriesExists()
-    await createRacingEventBelongsToRacingSeriesRelationship(bru.getEnvVar('validRacingEventId'), bru.getEnvVar('validRacingSeriesId'))
+    await this.createRacingEventBelongsToRacingSeriesRelationship(bru.getEnvVar('validRacingEventId'), bru.getEnvVar('validRacingSeriesId'))
 }
 
-exports.ensureRacingEventBelongsToRacingSeriesRelationshipExists = ensureRacingEventBelongsToRacingSeriesRelationshipExists
-
-async function createRacingEventBelongsToRacingSeriesRelationship(racingEventId, racingSeriesId) {
+exports.createRacingEventBelongsToRacingSeriesRelationship = async function createRacingEventBelongsToRacingSeriesRelationship(racingEventId, racingSeriesId) {
     return submitPostRequest("/racing-events/" + racingEventId + "/belongs-to-racing-series/" + racingSeriesId)
 }
 
-exports.createRacingEventBelongsToRacingSeriesRelationship = createRacingEventBelongsToRacingSeriesRelationship
-
-async function ensureRacingEventIsFollowedByEventRelationshipExists() {
-    await ensureValidRacingEventExists()
-    await ensureValidSecondRacingEventExists()
-    await createRacingEventIsFollowedByEventRelationship(bru.getEnvVar('validRacingEventId'), bru.getEnvVar('validSecondRacingEventId'))
+exports.ensureRacingEventIsFollowedByEventRelationshipExists = async function ensureRacingEventIsFollowedByEventRelationshipExists() {
+    await this.ensureValidRacingEventExists()
+    await this.ensureValidSecondRacingEventExists()
+    await this.createRacingEventIsFollowedByEventRelationship(bru.getEnvVar('validRacingEventId'), bru.getEnvVar('validSecondRacingEventId'))
 }
 
-exports.ensureRacingEventIsFollowedByEventRelationshipExists = ensureRacingEventIsFollowedByEventRelationshipExists
-
-async function createRacingEventIsFollowedByEventRelationship(racingEventId, partnerId) {
+exports.createRacingEventIsFollowedByEventRelationship = async function createRacingEventIsFollowedByEventRelationship(racingEventId, partnerId) {
     return submitPostRequest("/racing-events/" + racingEventId + "/is-followed-by-event/" + partnerId)
 }
 
-exports.createRacingEventIsFollowedByEventRelationship = createRacingEventIsFollowedByEventRelationship
-
-async function ensureRacingEventFollowsEventRelationshipExists() {
-    await ensureValidRacingEventExists()
-    await ensureValidSecondRacingEventExists()
-    await createRacingEventFollowsEventRelationship(bru.getEnvVar('validRacingEventId'), bru.getEnvVar('validSecondRacingEventId'))
+exports.ensureRacingEventFollowsEventRelationshipExists = async function ensureRacingEventFollowsEventRelationshipExists() {
+    await this.ensureValidRacingEventExists()
+    await this.ensureValidSecondRacingEventExists()
+    await this.createRacingEventFollowsEventRelationship(bru.getEnvVar('validRacingEventId'), bru.getEnvVar('validSecondRacingEventId'))
 }
 
-exports.ensureRacingEventFollowsEventRelationshipExists = ensureRacingEventFollowsEventRelationshipExists
-
-async function createRacingEventFollowsEventRelationship(racingEventId, partnerId) {
+exports.createRacingEventFollowsEventRelationship = async function createRacingEventFollowsEventRelationship(racingEventId, partnerId) {
     return submitPostRequest("/racing-events/" + racingEventId + "/follows-event/" + partnerId)
 }
 
-exports.createRacingEventFollowsEventRelationship = createRacingEventFollowsEventRelationship
-
-async function ensureRacingEventTookPlaceAtRaceTrackRelationshipExists() {
-    await ensureValidRacingEventExists()
+exports.ensureRacingEventTookPlaceAtRaceTrackRelationshipExists = async function ensureRacingEventTookPlaceAtRaceTrackRelationshipExists() {
+    await this.ensureValidRacingEventExists()
     await ensureValidRaceTrackExists()
-    await createRacingEventTookPlaceAtRaceTrackRelationship(bru.getEnvVar('validRacingEventId'), bru.getEnvVar('validRaceTrackId'))
+    await this.createRacingEventTookPlaceAtRaceTrackRelationship(bru.getEnvVar('validRacingEventId'), bru.getEnvVar('validRaceTrackId'))
 }
 
-exports.ensureRacingEventTookPlaceAtRaceTrackRelationshipExists = ensureRacingEventTookPlaceAtRaceTrackRelationshipExists
-
-async function createRacingEventTookPlaceAtRaceTrackRelationship(racingEventId, raceTrackId) {
+exports.createRacingEventTookPlaceAtRaceTrackRelationship = async function createRacingEventTookPlaceAtRaceTrackRelationship(racingEventId, raceTrackId) {
     return submitPostRequest("/racing-events/" + racingEventId + "/took-place-at-race-track/" + raceTrackId)
 }
 
-exports.createRacingEventTookPlaceAtRaceTrackRelationship = createRacingEventTookPlaceAtRaceTrackRelationship
-
-async function ensureRacingEventUsedTheTrackLayoutRelationshipExists() {
-    await ensureValidRacingEventExists()
+exports.ensureRacingEventUsedTheTrackLayoutRelationshipExists = async function ensureRacingEventUsedTheTrackLayoutRelationshipExists() {
+    await this.ensureValidRacingEventExists()
     await ensureValidTrackLayoutExists()
-    await createRacingEventUsedTheTrackLayoutRelationship(bru.getEnvVar('validRacingEventId'), bru.getEnvVar('validTrackLayoutId'))
+    await this.createRacingEventUsedTheTrackLayoutRelationship(bru.getEnvVar('validRacingEventId'), bru.getEnvVar('validTrackLayoutId'))
 }
 
-exports.ensureRacingEventUsedTheTrackLayoutRelationshipExists = ensureRacingEventUsedTheTrackLayoutRelationshipExists
-
-async function createRacingEventUsedTheTrackLayoutRelationship(racingEventId, trackLayoutId) {
+exports.createRacingEventUsedTheTrackLayoutRelationship = async function createRacingEventUsedTheTrackLayoutRelationship(racingEventId, trackLayoutId) {
     return submitPostRequest("/racing-events/" + racingEventId + "/used-the-track-layout/" + trackLayoutId)
 }
 
-exports.createRacingEventUsedTheTrackLayoutRelationship = createRacingEventUsedTheTrackLayoutRelationship
-
-async function ensureRacingEventHasRacingSessionRelationshipExists() {
-    await ensureValidRacingEventExists()
+exports.ensureRacingEventHasRacingSessionRelationshipExists = async function ensureRacingEventHasRacingSessionRelationshipExists() {
+    await this.ensureValidRacingEventExists()
     await ensureValidRacingSessionExists()
-    await createRacingEventHasRacingSessionRelationship(bru.getEnvVar('validRacingEventId'), bru.getEnvVar('validRacingSessionId'))
+    await this.createRacingEventHasRacingSessionRelationship(bru.getEnvVar('validRacingEventId'), bru.getEnvVar('validRacingSessionId'))
 }
 
-exports.ensureRacingEventHasRacingSessionRelationshipExists = ensureRacingEventHasRacingSessionRelationshipExists
-
-async function createRacingEventHasRacingSessionRelationship(racingEventId, racingSessionId) {
+exports.createRacingEventHasRacingSessionRelationship = async function createRacingEventHasRacingSessionRelationship(racingEventId, racingSessionId) {
     return submitPostRequest("/racing-events/" + racingEventId + "/has-racing-session/" + racingSessionId)
 }
 
-exports.createRacingEventHasRacingSessionRelationship = createRacingEventHasRacingSessionRelationship
-
-async function ensureRacingEventHasImageRelationshipExists() {
-    await ensureValidRacingEventExists()
+exports.ensureRacingEventHasImageRelationshipExists = async function ensureRacingEventHasImageRelationshipExists() {
+    await this.ensureValidRacingEventExists()
     await ensureValidImageExists()
-    await createRacingEventHasImageRelationship(bru.getEnvVar('validRacingEventId'), bru.getEnvVar('validImageId'))
+    await this.createRacingEventHasImageRelationship(bru.getEnvVar('validRacingEventId'), bru.getEnvVar('validImageId'))
 }
 
-exports.ensureRacingEventHasImageRelationshipExists = ensureRacingEventHasImageRelationshipExists
-
-async function createRacingEventHasImageRelationship(racingEventId, imageId) {
+exports.createRacingEventHasImageRelationship = async function createRacingEventHasImageRelationship(racingEventId, imageId) {
     return submitPostRequest("/racing-events/" + racingEventId + "/has-image/" + imageId)
 }
 
-exports.createRacingEventHasImageRelationship = createRacingEventHasImageRelationship
-
-async function ensureRacingEventHasPrimeImageRelationshipExists() {
-    await ensureValidRacingEventExists()
+exports.ensureRacingEventHasPrimeImageRelationshipExists = async function ensureRacingEventHasPrimeImageRelationshipExists() {
+    await this.ensureValidRacingEventExists()
     await ensureValidImageExists()
-    await createRacingEventHasPrimeImageRelationship(bru.getEnvVar('validRacingEventId'), bru.getEnvVar('validImageId'))
+    await this.createRacingEventHasPrimeImageRelationship(bru.getEnvVar('validRacingEventId'), bru.getEnvVar('validImageId'))
 }
 
-exports.ensureRacingEventHasPrimeImageRelationshipExists = ensureRacingEventHasPrimeImageRelationshipExists
-
-async function createRacingEventHasPrimeImageRelationship(racingEventId, imageId) {
+exports.createRacingEventHasPrimeImageRelationship = async function createRacingEventHasPrimeImageRelationship(racingEventId, imageId) {
     return submitPostRequest("/racing-events/" + racingEventId + "/has-prime-image/" + imageId)
 }
-
-exports.createRacingEventHasPrimeImageRelationship = createRacingEventHasPrimeImageRelationship

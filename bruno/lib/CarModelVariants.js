@@ -4,100 +4,74 @@ const {ensureValidSessionResultExists} = require("./SessionResults")
 const {ensureValidLapTimeExists} = require("./LapTimes")
 const {ensureValidImageExists} = require("./Images")
 
-async function ensureValidCarModelVariantExists() {
+exports.ensureValidCarModelVariantExists = async function ensureValidCarModelVariantExists() {
     if (!bru.getEnvVar('validCarModelVariantId')) {
-        const nodeList = await getAllCarModelVariants()
+        const nodeList = await this.getAllCarModelVariants()
         if (nodeList.length > 0) {
             bru.setEnvVar("validCarModelVariantId", nodeList[0].data.id)
         } else {
-            const newNode = await createCarModelVariant()
+            const newNode = await this.createCarModelVariant()
             bru.setEnvVar("validCarModelVariantId", newNode.data.id)
         } //
     }
 }
 
-exports.ensureValidCarModelVariantExists = ensureValidCarModelVariantExists
-
-async function createCarModelVariant() {
+exports.createCarModelVariant = async function createCarModelVariant() {
     return submitPostRequest("/car-model-variants", {
         name: 'BMW M3',
     })
 }
 
-exports.createCarModelVariant = createCarModelVariant
-
-async function getAllCarModelVariants() {
+exports.getAllCarModelVariants = async function getAllCarModelVariants() {
     return submitGetRequest("/car-model-variants")
 }
 
-exports.getAllCarModelVariants = getAllCarModelVariants
-
-async function ensureCarModelVariantIsVariantOfRelationshipExists() {
-    await ensureValidCarModelVariantExists()
+exports.ensureCarModelVariantIsVariantOfRelationshipExists = async function ensureCarModelVariantIsVariantOfRelationshipExists() {
+    await this.ensureValidCarModelVariantExists()
     await ensureValidCarModelExists()
-    await createCarModelVariantIsVariantOfRelationship(bru.getEnvVar('validCarModelVariantId'), bru.getEnvVar('validCarModelId'))
+    await this.createCarModelVariantIsVariantOfRelationship(bru.getEnvVar('validCarModelVariantId'), bru.getEnvVar('validCarModelId'))
 }
 
-exports.ensureCarModelVariantIsVariantOfRelationshipExists = ensureCarModelVariantIsVariantOfRelationshipExists
-
-async function createCarModelVariantIsVariantOfRelationship(carModelVariantId, carModelId) {
+exports.createCarModelVariantIsVariantOfRelationship = async function createCarModelVariantIsVariantOfRelationship(carModelVariantId, carModelId) {
     return submitPostRequest("/car-model-variants/" + carModelVariantId + "/is-variant-of/" + carModelId)
 }
 
-exports.createCarModelVariantIsVariantOfRelationship = createCarModelVariantIsVariantOfRelationship
-
-async function ensureCarModelVariantAchievedSessionResultRelationshipExists() {
-    await ensureValidCarModelVariantExists()
+exports.ensureCarModelVariantAchievedSessionResultRelationshipExists = async function ensureCarModelVariantAchievedSessionResultRelationshipExists() {
+    await this.ensureValidCarModelVariantExists()
     await ensureValidSessionResultExists()
-    await createCarModelVariantAchievedSessionResultRelationship(bru.getEnvVar('validCarModelVariantId'), bru.getEnvVar('validSessionResultId'))
+    await this.createCarModelVariantAchievedSessionResultRelationship(bru.getEnvVar('validCarModelVariantId'), bru.getEnvVar('validSessionResultId'))
 }
 
-exports.ensureCarModelVariantAchievedSessionResultRelationshipExists = ensureCarModelVariantAchievedSessionResultRelationshipExists
-
-async function createCarModelVariantAchievedSessionResultRelationship(carModelVariantId, sessionResultId) {
+exports.createCarModelVariantAchievedSessionResultRelationship = async function createCarModelVariantAchievedSessionResultRelationship(carModelVariantId, sessionResultId) {
     return submitPostRequest("/car-model-variants/" + carModelVariantId + "/achieved-session-result/" + sessionResultId)
 }
 
-exports.createCarModelVariantAchievedSessionResultRelationship = createCarModelVariantAchievedSessionResultRelationship
-
-async function ensureCarModelVariantAchievedLapTimeRelationshipExists() {
-    await ensureValidCarModelVariantExists()
+exports.ensureCarModelVariantAchievedLapTimeRelationshipExists = async function ensureCarModelVariantAchievedLapTimeRelationshipExists() {
+    await this.ensureValidCarModelVariantExists()
     await ensureValidLapTimeExists()
-    await createCarModelVariantAchievedLapTimeRelationship(bru.getEnvVar('validCarModelVariantId'), bru.getEnvVar('validLapTimeId'))
+    await this.createCarModelVariantAchievedLapTimeRelationship(bru.getEnvVar('validCarModelVariantId'), bru.getEnvVar('validLapTimeId'))
 }
 
-exports.ensureCarModelVariantAchievedLapTimeRelationshipExists = ensureCarModelVariantAchievedLapTimeRelationshipExists
-
-async function createCarModelVariantAchievedLapTimeRelationship(carModelVariantId, lapTimeId) {
+exports.createCarModelVariantAchievedLapTimeRelationship = async function createCarModelVariantAchievedLapTimeRelationship(carModelVariantId, lapTimeId) {
     return submitPostRequest("/car-model-variants/" + carModelVariantId + "/achieved-lap-time/" + lapTimeId)
 }
 
-exports.createCarModelVariantAchievedLapTimeRelationship = createCarModelVariantAchievedLapTimeRelationship
-
-async function ensureCarModelVariantHasImageRelationshipExists() {
-    await ensureValidCarModelVariantExists()
+exports.ensureCarModelVariantHasImageRelationshipExists = async function ensureCarModelVariantHasImageRelationshipExists() {
+    await this.ensureValidCarModelVariantExists()
     await ensureValidImageExists()
-    await createCarModelVariantHasImageRelationship(bru.getEnvVar('validCarModelVariantId'), bru.getEnvVar('validImageId'))
+    await this.createCarModelVariantHasImageRelationship(bru.getEnvVar('validCarModelVariantId'), bru.getEnvVar('validImageId'))
 }
 
-exports.ensureCarModelVariantHasImageRelationshipExists = ensureCarModelVariantHasImageRelationshipExists
-
-async function createCarModelVariantHasImageRelationship(carModelVariantId, imageId) {
+exports.createCarModelVariantHasImageRelationship = async function createCarModelVariantHasImageRelationship(carModelVariantId, imageId) {
     return submitPostRequest("/car-model-variants/" + carModelVariantId + "/has-image/" + imageId)
 }
 
-exports.createCarModelVariantHasImageRelationship = createCarModelVariantHasImageRelationship
-
-async function ensureCarModelVariantHasPrimeImageRelationshipExists() {
-    await ensureValidCarModelVariantExists()
+exports.ensureCarModelVariantHasPrimeImageRelationshipExists = async function ensureCarModelVariantHasPrimeImageRelationshipExists() {
+    await this.ensureValidCarModelVariantExists()
     await ensureValidImageExists()
-    await createCarModelVariantHasPrimeImageRelationship(bru.getEnvVar('validCarModelVariantId'), bru.getEnvVar('validImageId'))
+    await this.createCarModelVariantHasPrimeImageRelationship(bru.getEnvVar('validCarModelVariantId'), bru.getEnvVar('validImageId'))
 }
 
-exports.ensureCarModelVariantHasPrimeImageRelationshipExists = ensureCarModelVariantHasPrimeImageRelationshipExists
-
-async function createCarModelVariantHasPrimeImageRelationship(carModelVariantId, imageId) {
+exports.createCarModelVariantHasPrimeImageRelationship = async function createCarModelVariantHasPrimeImageRelationship(carModelVariantId, imageId) {
     return submitPostRequest("/car-model-variants/" + carModelVariantId + "/has-prime-image/" + imageId)
 }
-
-exports.createCarModelVariantHasPrimeImageRelationship = createCarModelVariantHasPrimeImageRelationship

@@ -3,86 +3,64 @@ const {ensureValidRacingEventExists} = require("./RacingEvents")
 const {ensureValidImageExists} = require("./Images")
 const {ensureValidSessionResultExists} = require("./SessionResults")
 
-async function ensureValidRacingSessionExists() {
+exports.ensureValidRacingSessionExists = async function ensureValidRacingSessionExists() {
     if (!bru.getEnvVar('validRacingSessionId')) {
-        const nodeList = await getAllRacingSessions()
+        const nodeList = await this.getAllRacingSessions()
         if (nodeList.length > 0) {
             bru.setEnvVar("validRacingSessionId", nodeList[0].data.id)
         } else {
-            const newNode = await createRacingSession()
+            const newNode = await this.createRacingSession()
             bru.setEnvVar("validRacingSessionId", newNode.data.id)
         } //
     }
 }
 
-exports.ensureValidRacingSessionExists = ensureValidRacingSessionExists
-
-async function getAllRacingSessions() {
+exports.getAllRacingSessions = async function getAllRacingSessions() {
     return submitGetRequest("/racing-sessions")
 }
 
-exports.getAllRacingSessions = getAllRacingSessions
-
-async function createRacingSession() {
+exports.createRacingSession = async function createRacingSession() {
     return submitPostRequest("/racing-sessions", {
         name: 'Grand Prix',
     })
 }
 
-exports.createRacingSession = createRacingSession
-
-async function ensureRacingSessionBelongsToRacingEventRelationshipExists() {
-    await ensureValidRacingSessionExists()
+exports.ensureRacingSessionBelongsToRacingEventRelationshipExists = async function ensureRacingSessionBelongsToRacingEventRelationshipExists() {
+    await this.ensureValidRacingSessionExists()
     await ensureValidRacingEventExists()
-    await createRacingSessionBelongsToRacingEventRelationship(bru.getEnvVar('validRacingSessionId'), bru.getEnvVar('validRacingEventId'))
+    await this.createRacingSessionBelongsToRacingEventRelationship(bru.getEnvVar('validRacingSessionId'), bru.getEnvVar('validRacingEventId'))
 }
 
-exports.ensureRacingSessionBelongsToRacingEventRelationshipExists = ensureRacingSessionBelongsToRacingEventRelationshipExists
-
-async function createRacingSessionBelongsToRacingEventRelationship(racingSessionId, racingEventId) {
+exports.createRacingSessionBelongsToRacingEventRelationship = async function createRacingSessionBelongsToRacingEventRelationship(racingSessionId, racingEventId) {
     return submitPostRequest("/racing-sessions/" + racingSessionId + "/belongs-to-racing-event/" + racingEventId)
 }
 
-exports.createRacingSessionBelongsToRacingEventRelationship = createRacingSessionBelongsToRacingEventRelationship
-
-async function ensureRacingSessionHasImageRelationshipExists() {
-    await ensureValidRacingSessionExists()
+exports.ensureRacingSessionHasImageRelationshipExists = async function ensureRacingSessionHasImageRelationshipExists() {
+    await this.ensureValidRacingSessionExists()
     await ensureValidImageExists()
-    await createRacingSessionHasImageRelationship(bru.getEnvVar('validRacingSessionId'), bru.getEnvVar('validImageId'))
+    await this.createRacingSessionHasImageRelationship(bru.getEnvVar('validRacingSessionId'), bru.getEnvVar('validImageId'))
 }
 
-exports.ensureRacingSessionHasImageRelationshipExists = ensureRacingSessionHasImageRelationshipExists
-
-async function createRacingSessionHasImageRelationship(racingSessionId, imageId) {
+exports.createRacingSessionHasImageRelationship = async function createRacingSessionHasImageRelationship(racingSessionId, imageId) {
     return submitPostRequest("/racing-sessions/" + racingSessionId + "/has-image/" + imageId)
 }
 
-exports.createRacingSessionHasImageRelationship = createRacingSessionHasImageRelationship
-
-async function ensureRacingSessionHasPrimeImageRelationshipExists() {
-    await ensureValidRacingSessionExists()
+exports.ensureRacingSessionHasPrimeImageRelationshipExists = async function ensureRacingSessionHasPrimeImageRelationshipExists() {
+    await this.ensureValidRacingSessionExists()
     await ensureValidImageExists()
-    await createRacingSessionHasPrimeImageRelationship(bru.getEnvVar('validRacingSessionId'), bru.getEnvVar('validImageId'))
+    await this.createRacingSessionHasPrimeImageRelationship(bru.getEnvVar('validRacingSessionId'), bru.getEnvVar('validImageId'))
 }
 
-exports.ensureRacingSessionHasPrimeImageRelationshipExists = ensureRacingSessionHasPrimeImageRelationshipExists
-
-async function createRacingSessionHasPrimeImageRelationship(racingSessionId, imageId) {
+exports.createRacingSessionHasPrimeImageRelationship = async function createRacingSessionHasPrimeImageRelationship(racingSessionId, imageId) {
     return submitPostRequest("/racing-sessions/" + racingSessionId + "/has-prime-image/" + imageId)
 }
 
-exports.createRacingSessionHasPrimeImageRelationship = createRacingSessionHasPrimeImageRelationship
-
-async function ensureRacingSessionHasSessionResultRelationshipExists() {
-    await ensureValidRacingSessionExists()
+exports.ensureRacingSessionHasSessionResultRelationshipExists = async function ensureRacingSessionHasSessionResultRelationshipExists() {
+    await this.ensureValidRacingSessionExists()
     await ensureValidSessionResultExists()
-    await createRacingSessionHasSessionResultRelationship(bru.getEnvVar('validRacingSessionId'), bru.getEnvVar('validSessionResultId'))
+    await this.createRacingSessionHasSessionResultRelationship(bru.getEnvVar('validRacingSessionId'), bru.getEnvVar('validSessionResultId'))
 }
 
-exports.ensureRacingSessionHasSessionResultRelationshipExists = ensureRacingSessionHasSessionResultRelationshipExists
-
-async function createRacingSessionHasSessionResultRelationship(racingSessionId, sessionResultId) {
+exports.createRacingSessionHasSessionResultRelationship = async function createRacingSessionHasSessionResultRelationship(racingSessionId, sessionResultId) {
     return submitPostRequest("/racing-sessions/" + racingSessionId + "/has-session-result/" + sessionResultId)
 }
-
-exports.createRacingSessionHasSessionResultRelationship = createRacingSessionHasSessionResultRelationship
