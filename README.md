@@ -66,6 +66,26 @@
 * from the command line those secrets can be created via:
     * `kubectl create secret generic db-credentials --from-literal=password='123456789' --namespace=prod`
 
+## SSL Certificate
+
+At the moment, an SSL certificate is not mandatory to run the application -
+be it locally, in minikube or in the production system.
+Should there be a certificate then the app will start an HTTP and an HTTPS server in parallel.
+When there is no certificate then only the HTTP server is started.
+
+In a local environment the application expects the certificate files in the folder `certificates`,
+named `tls.crt` and `tls.key`.
+
+In Minikube and GKE the certificate is expected as a "Kubernetes Secret" with the name `ssl-certificate`.
+It can be created on the command line via:
+
+```
+kubectl create secret tls ssl-certificate \
+  --cert=more-cars-rest-api.cert \ 
+  --key=more-cars-rest-api.key \
+  --namespace=testing
+```
+
 ## Tests
 
 ### API Validation

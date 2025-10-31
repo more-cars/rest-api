@@ -16,17 +16,34 @@ function startHttpServer() {
 }
 
 function startHttpsServer() {
-    if (!fs.existsSync(__dirname + '/../deployment/certificates/server.key') || !fs.existsSync(__dirname + '/../deployment/certificates/server.cert')) {
+    const HTTPS_PORT = 3443
+    const privateKey = getSslCertificateKey()
+    const certificate = getSslCertificate()
+
+    if (!privateKey || !certificate) {
         console.error(`[HTTPS] More Cars API could not be started. No SSL certificate found.`)
+
         return
     }
-
-    const HTTPS_PORT = 3443
-    const privateKey = fs.readFileSync(__dirname + '/../deployment/certificates/server.key', 'utf8')
-    const certificate = fs.readFileSync(__dirname + '/../deployment/certificates/server.cert', 'utf8')
 
     const httpsServer = https.createServer({key: privateKey, cert: certificate}, app)
     httpsServer.listen(HTTPS_PORT, () => {
         console.log(`[HTTPS] More Cars API started and running at https://localhost:${HTTPS_PORT}`)
     })
+}
+
+function getSslCertificateKey() {
+    const key = __dirname + '/../certificates/tls.key'
+
+    if (fs.existsSync(key)) {
+        return fs.readFileSync(key)
+    }
+}
+
+function getSslCertificate() {
+    const cert = __dirname + '/../certificates/tls.crt'
+
+    if (fs.existsSync(cert)) {
+        return fs.readFileSync(cert)
+    }
 }
