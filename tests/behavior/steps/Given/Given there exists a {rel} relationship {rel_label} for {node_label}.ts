@@ -1,7 +1,7 @@
 import {Given, world} from "@cucumber/cucumber"
 import axios from "axios"
 import type {BaseNode} from "../../../../src/db/types/BaseNode"
-import type {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getTargetNodeTypeForRelationship} from "../../../_toolbox/getTargetNodeTypeForRelationship"
 import {seedNode} from "../../../_toolbox/dbSeeding/seedNode"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
@@ -11,7 +11,13 @@ Given('there exists a {string} relationship {string} for {string}',
     async (relationshipName: string, relationshipLabel: string, startNodeLabel: string) => {
         const startNode: BaseNode = world.recallNode(startNodeLabel).data
         const startNodeType: NodeTypeEnum = world.recallNode(startNodeLabel).nodeType
-        const endNodeType = getTargetNodeTypeForRelationship(startNodeType, relationshipName)
+        let endNodeType
+        if (startNodeType === NodeTypeEnum.LAP_TIME && relationshipName === 'achieved with car model variant') {
+            endNodeType = NodeTypeEnum.CAR_MODEL_VARIANT
+        } else {
+            // TODO needs to use a controller-level mapper (not a model-level mapper) -> then the if-else construct will become obsolete
+            endNodeType = getTargetNodeTypeForRelationship(startNodeType, relationshipName)
+        }
         const endNode = await seedNode(endNodeType)
         const nodePathFragment = getBasePathFragmentForNodeType(world.recallNode(startNodeLabel).nodeType)
 

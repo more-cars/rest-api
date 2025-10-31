@@ -14,7 +14,7 @@ When('the user (tries to )create(s) a {string} {string} with the following data'
                     data[row.key] = row.value
                     break
                 case 'number':
-                    data[row.key] = parseInt(row.value)
+                    data[row.key] = parseFloat(row.value)
                     break
                 case 'boolean':
                     data[row.key] = (row.value.toLowerCase() === 'true')
