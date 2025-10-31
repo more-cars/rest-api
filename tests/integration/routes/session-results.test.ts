@@ -70,7 +70,7 @@ describe('Session Results', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get all ›has-lap-time‹ Relationships', async () => {
+    test('Get all ›has-lap-time‹ relationships', async () => {
         await request(app)
             .get('/session-results/123/has-lap-time')
 
@@ -118,7 +118,7 @@ describe('Session Results', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get all ›has-image‹ Relationships', async () => {
+    test('Get all ›has-image‹ relationships', async () => {
         await request(app)
             .get('/session-results/123/has-image')
 

@@ -166,7 +166,7 @@ describe('Racing Events', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get all ›has-racing-session‹ Relationships', async () => {
+    test('Get all ›has-racing-session‹ relationships', async () => {
         await request(app)
             .get('/racing-events/123/has-racing-session')
 
@@ -190,7 +190,7 @@ describe('Racing Events', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get all ›has-image‹ Relationships', async () => {
+    test('Get all ›has-image‹ relationships', async () => {
         await request(app)
             .get('/racing-events/123/has-image')
 

@@ -70,7 +70,7 @@ describe('Car Model Variants', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get all ›achieved-session-result‹ Relationships', async () => {
+    test('Get all ›achieved-session-result‹ relationships', async () => {
         await request(app)
             .get('/car-model-variants/123/achieved-session-result')
 
@@ -94,7 +94,7 @@ describe('Car Model Variants', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get all ›achieved-lap-time‹ Relationships', async () => {
+    test('Get all ›achieved-lap-time‹ relationships', async () => {
         await request(app)
             .get('/car-model-variants/123/achieved-lap-time')
 
@@ -118,7 +118,7 @@ describe('Car Model Variants', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get all ›has-image‹ Relationships', async () => {
+    test('Get all ›has-image‹ relationships', async () => {
         await request(app)
             .get('/car-model-variants/123/has-image')
 

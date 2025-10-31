@@ -70,7 +70,7 @@ describe('Track Layouts', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get all ›was-used-by-racing-event‹ Relationships', async () => {
+    test('Get all ›was-used-by-racing-event‹ relationships', async () => {
         await request(app)
             .get('/track-layouts/123/was-used-by-racing-event')
 
@@ -94,7 +94,7 @@ describe('Track Layouts', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get all ›has-lap-time‹ Relationships', async () => {
+    test('Get all ›has-lap-time‹ relationships', async () => {
         await request(app)
             .get('/track-layouts/123/has-lap-time')
 
@@ -118,7 +118,7 @@ describe('Track Layouts', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get all ›has-image‹ Relationships', async () => {
+    test('Get all ›has-image‹ relationships', async () => {
         await request(app)
             .get('/track-layouts/123/has-image')
 

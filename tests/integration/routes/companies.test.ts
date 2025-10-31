@@ -39,7 +39,7 @@ describe('Companies', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Create ›has-brand‹ Relationship', async () => {
+    test('Create ›has-brand‹ relationship', async () => {
         await request(app)
             .post('/companies/123/has-brand/456')
 
@@ -47,7 +47,7 @@ describe('Companies', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get all ›has-brand‹ Relationships', async () => {
+    test('Get all ›has-brand‹ relationships', async () => {
         await request(app)
             .get('/companies/123/has-brand')
 
@@ -55,7 +55,7 @@ describe('Companies', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Delete ›has-brand‹ Relationship', async () => {
+    test('Delete ›has-brand‹ relationship', async () => {
         await request(app)
             .delete('/companies/123/has-brand/456')
 
@@ -63,7 +63,7 @@ describe('Companies', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Create ›has-image‹ Relationship', async () => {
+    test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/companies/123/has-image/456')
 
@@ -71,7 +71,7 @@ describe('Companies', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get all ›has-image‹ Relationships', async () => {
+    test('Get all ›has-image‹ relationships', async () => {
         await request(app)
             .get('/companies/123/has-image')
 
@@ -79,7 +79,7 @@ describe('Companies', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Delete ›has-image‹ Relationship', async () => {
+    test('Delete ›has-image‹ relationship', async () => {
         await request(app)
             .delete('/companies/123/has-image/456')
 
@@ -87,7 +87,7 @@ describe('Companies', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Create ›has-prime-image‹ Relationship', async () => {
+    test('Create ›has-prime-image‹ relationship', async () => {
         await request(app)
             .post('/companies/123/has-prime-image/456')
 
@@ -95,7 +95,7 @@ describe('Companies', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get ›has-prime-image‹ Relationship', async () => {
+    test('Get ›has-prime-image‹ relationship', async () => {
         await request(app)
             .get('/companies/123/has-prime-image')
 
@@ -103,7 +103,7 @@ describe('Companies', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Delete ›has-prime-image‹ Relationship', async () => {
+    test('Delete ›has-prime-image‹ relationship', async () => {
         await request(app)
             .delete('/companies/123/has-prime-image/456')
 

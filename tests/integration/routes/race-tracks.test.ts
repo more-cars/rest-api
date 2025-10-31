@@ -46,7 +46,7 @@ describe('Race Tracks', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get all ›has-layout‹ Relationships', async () => {
+    test('Get all ›has-layout‹ relationships', async () => {
         await request(app)
             .get('/race-tracks/123/has-layout')
 
@@ -70,7 +70,7 @@ describe('Race Tracks', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get all ›hosted-racing-event‹ Relationships', async () => {
+    test('Get all ›hosted-racing-event‹ relationships', async () => {
         await request(app)
             .get('/race-tracks/123/hosted-racing-event')
 
@@ -94,7 +94,7 @@ describe('Race Tracks', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get all ›has-image‹ Relationships', async () => {
+    test('Get all ›has-image‹ relationships', async () => {
         await request(app)
             .get('/race-tracks/123/has-image')
 

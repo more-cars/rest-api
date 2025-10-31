@@ -62,7 +62,7 @@ describe('Brands', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Create ›has-car-model‹ Relationship', async () => {
+    test('Create ›has-car-model‹ relationship', async () => {
         await request(app)
             .post('/brands/123/has-car-model/456')
 
@@ -70,7 +70,7 @@ describe('Brands', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get "has Car Model" Relationship', async () => {
+    test('Get specific ›has-car-model‹ relationship', async () => {
         await request(app)
             .get('/brands/123/has-car-model/456')
 
@@ -78,7 +78,7 @@ describe('Brands', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get "has Car Model" Relationships', async () => {
+    test('Get all ›has-car-model‹ relationships', async () => {
         await request(app)
             .get('/brands/123/has-car-model')
 
@@ -94,7 +94,7 @@ describe('Brands', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Create "has Image" Relationship', async () => {
+    test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/brands/123/has-image/456')
 
@@ -102,7 +102,7 @@ describe('Brands', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get "has Image" Relationship', async () => {
+    test('Get specific ›has-image‹ relationship', async () => {
         await request(app)
             .get('/brands/123/has-image/456')
 
@@ -110,7 +110,7 @@ describe('Brands', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get "has Image" Relationships', async () => {
+    test('Get all ›has-image‹ relationships', async () => {
         await request(app)
             .get('/brands/123/has-image')
 

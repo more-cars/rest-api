@@ -38,7 +38,7 @@ describe('Images', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Create "belongs to Node" Relationship', async () => {
+    test('Create ›belongs-to-node‹ relationship', async () => {
         await request(app)
             .post('/images/123/belongs-to-node/456')
 
@@ -46,7 +46,7 @@ describe('Images', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get "belongs to Node" Relationship', async () => {
+    test('Get specific ›belongs-to-node‹ relationship', async () => {
         await request(app)
             .get('/images/123/belongs-to-node/456')
 
@@ -54,7 +54,7 @@ describe('Images', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get "belongs to Node" Relationships', async () => {
+    test('Get all ›belongs-to-node‹ relationships', async () => {
         await request(app)
             .get('/images/123/belongs-to-node')
 
@@ -70,7 +70,7 @@ describe('Images', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get "belongs to Node type" Relationships', async () => {
+    test('Get all ›belongs-to-node-type‹ relationships', async () => {
         await request(app)
             .get('/images/123/belongs-to-node-type')
 
@@ -86,7 +86,7 @@ describe('Images', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get all ›is-prime-image-of-node‹ Relationships', async () => {
+    test('Get all ›is-prime-image-of-node‹ relationships', async () => {
         await request(app)
             .get('/images/123/is-prime-image-of-node')
 

@@ -6,7 +6,7 @@ skip_if: Get all ›<%= h.changeCase.kebab(relationshipName) %>‹ Relationships
 ---
     })
 
-    test('Get all ›<%= h.changeCase.kebab(relationshipName) %>‹ Relationships', async () => {
+    test('Get all ›<%= h.changeCase.kebab(relationshipName) %>‹ relationships', async () => {
         await request(app)
             .get('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/123/<%= h.changeCase.kebab(relationshipName) %>')
 
