@@ -5,7 +5,7 @@ const agent = new https.Agent({
     rejectUnauthorized: false
 })
 
-exports.submitPostRequest = async function submitPostRequest(path, data) {
+exports.submitPostRequest = async function (path, data) {
     const response = await axios.post(bru.getEnvVar('baseUrl') + path, data, {
         validateStatus: function (status) {
             return status < 400
@@ -16,7 +16,7 @@ exports.submitPostRequest = async function submitPostRequest(path, data) {
     return response.data
 }
 
-exports.submitGetRequest = async function submitGetRequest(path) {
+exports.submitGetRequest = async function (path) {
     const response = await axios.get(bru.getEnvVar('baseUrl') + path, {
         httpsAgent: agent,
     })

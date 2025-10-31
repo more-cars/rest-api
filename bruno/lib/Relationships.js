@@ -2,7 +2,7 @@ const {submitPostRequest} = require("./request")
 const {createBrand} = require("./Brands")
 const {createCarModel} = require("./CarModels")
 
-exports.ensureValidRelationshipExists = async function ensureValidRelationshipExists() {
+exports.ensureValidRelationshipExists = async function () {
     if (!bru.getEnvVar('validRelationshipId')) {
         const startNode = await createBrand()
         const endNode = await createCarModel()
@@ -12,6 +12,6 @@ exports.ensureValidRelationshipExists = async function ensureValidRelationshipEx
     }
 }
 
-exports.createRelationship = async function createRelationship(brandId, carModelId) {
+exports.createRelationship = async function (brandId, carModelId) {
     return submitPostRequest("/brands/" + brandId + "/has-car-model/" + carModelId)
 }

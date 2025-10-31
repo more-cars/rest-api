@@ -2,7 +2,7 @@ const {submitPostRequest, submitGetRequest} = require("./request")
 const {ensureValidRacingEventExists} = require("./RacingEvents")
 const {ensureValidImageExists} = require("./Images")
 
-exports.ensureValidRacingSeriesExists = async function ensureValidRacingSeriesExists() {
+exports.ensureValidRacingSeriesExists = async function () {
     if (!bru.getEnvVar('validRacingSeriesId')) {
         const nodeList = await this.getAllRacingSeries()
         if (nodeList.length > 0) {
@@ -14,42 +14,42 @@ exports.ensureValidRacingSeriesExists = async function ensureValidRacingSeriesEx
     }
 }
 
-exports.createRacingSeries = async function createRacingSeries() {
+exports.createRacingSeries = async function () {
     return submitPostRequest("/racing-series", {
         name: 'Formula 1',
     })
 }
 
-exports.getAllRacingSeries = async function getAllRacingSeries() {
+exports.getAllRacingSeries = async function () {
     return submitGetRequest("/racing-series")
 }
 
-exports.ensureRacingSeriesHasRacingEventRelationshipExists = async function ensureRacingSeriesHasRacingEventRelationshipExists() {
+exports.ensureRacingSeriesHasRacingEventRelationshipExists = async function () {
     await this.ensureValidRacingSeriesExists()
     await ensureValidRacingEventExists()
     await this.createRacingSeriesHasRacingEventRelationship(bru.getEnvVar('validRacingSeriesId'), bru.getEnvVar('validRacingEventId'))
 }
 
-exports.createRacingSeriesHasRacingEventRelationship = async function createRacingSeriesHasRacingEventRelationship(racingSeriesId, racingEventId) {
+exports.createRacingSeriesHasRacingEventRelationship = async function (racingSeriesId, racingEventId) {
     return submitPostRequest("/racing-series/" + racingSeriesId + "/has-racing-event/" + racingEventId)
 }
 
-exports.ensureRacingSeriesHasImageRelationshipExists = async function ensureRacingSeriesHasImageRelationshipExists() {
+exports.ensureRacingSeriesHasImageRelationshipExists = async function () {
     await this.ensureValidRacingSeriesExists()
     await ensureValidImageExists()
     await this.createRacingSeriesHasImageRelationship(bru.getEnvVar('validRacingSeriesId'), bru.getEnvVar('validImageId'))
 }
 
-exports.createRacingSeriesHasImageRelationship = async function createRacingSeriesHasImageRelationship(racingSeriesId, imageId) {
+exports.createRacingSeriesHasImageRelationship = async function (racingSeriesId, imageId) {
     return submitPostRequest("/racing-series/" + racingSeriesId + "/has-image/" + imageId)
 }
 
-exports.ensureRacingSeriesHasPrimeImageRelationshipExists = async function ensureRacingSeriesHasPrimeImageRelationshipExists() {
+exports.ensureRacingSeriesHasPrimeImageRelationshipExists = async function () {
     await this.ensureValidRacingSeriesExists()
     await ensureValidImageExists()
     await this.createRacingSeriesHasPrimeImageRelationship(bru.getEnvVar('validRacingSeriesId'), bru.getEnvVar('validImageId'))
 }
 
-exports.createRacingSeriesHasPrimeImageRelationship = async function createRacingSeriesHasPrimeImageRelationship(racingSeriesId, imageId) {
+exports.createRacingSeriesHasPrimeImageRelationship = async function (racingSeriesId, imageId) {
     return submitPostRequest("/racing-series/" + racingSeriesId + "/has-prime-image/" + imageId)
 }

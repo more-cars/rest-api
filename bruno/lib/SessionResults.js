@@ -4,7 +4,7 @@ const {ensureValidLapTimeExists} = require("./LapTimes")
 const {ensureValidImageExists} = require("./Images")
 const {ensureValidCarModelVariantExists} = require("./CarModelVariants")
 
-exports.ensureValidSessionResultExists = async function ensureValidSessionResultExists() {
+exports.ensureValidSessionResultExists = async function () {
     if (!bru.getEnvVar('validSessionResultId')) {
         const nodeList = await this.getAllSessionResults()
         if (nodeList.length > 0) {
@@ -16,63 +16,63 @@ exports.ensureValidSessionResultExists = async function ensureValidSessionResult
     }
 }
 
-exports.createSessionResult = async function createSessionResult() {
+exports.createSessionResult = async function () {
     return submitPostRequest("/session-results", {
         position: 1,
         driver_name: 'Lewis Hamilton',
     })
 }
 
-exports.getAllSessionResults = async function getAllSessionResults() {
+exports.getAllSessionResults = async function () {
     return submitGetRequest("/session-results")
 }
 
-exports.ensureSessionResultBelongsToRacingSessionRelationshipExists = async function ensureSessionResultBelongsToRacingSessionRelationshipExists() {
+exports.ensureSessionResultBelongsToRacingSessionRelationshipExists = async function () {
     await this.ensureValidSessionResultExists()
     await ensureValidRacingSessionExists()
     await this.createSessionResultBelongsToRacingSessionRelationship(bru.getEnvVar('validSessionResultId'), bru.getEnvVar('validRacingSessionId'))
 }
 
-exports.createSessionResultBelongsToRacingSessionRelationship = async function createSessionResultBelongsToRacingSessionRelationship(sessionResultId, racingSessionId) {
+exports.createSessionResultBelongsToRacingSessionRelationship = async function (sessionResultId, racingSessionId) {
     return submitPostRequest("/session-results/" + sessionResultId + "/belongs-to-racing-session/" + racingSessionId)
 }
 
-exports.ensureSessionResultHasLapTimeRelationshipExists = async function ensureSessionResultHasLapTimeRelationshipExists() {
+exports.ensureSessionResultHasLapTimeRelationshipExists = async function () {
     await this.ensureValidSessionResultExists()
     await ensureValidLapTimeExists()
     await this.createSessionResultHasLapTimeRelationship(bru.getEnvVar('validSessionResultId'), bru.getEnvVar('validLapTimeId'))
 }
 
-exports.createSessionResultHasLapTimeRelationship = async function createSessionResultHasLapTimeRelationship(sessionResultId, lapTimeId) {
+exports.createSessionResultHasLapTimeRelationship = async function (sessionResultId, lapTimeId) {
     return submitPostRequest("/session-results/" + sessionResultId + "/has-lap-time/" + lapTimeId)
 }
 
-exports.ensureSessionResultHasImageRelationshipExists = async function ensureSessionResultHasImageRelationshipExists() {
+exports.ensureSessionResultHasImageRelationshipExists = async function () {
     await this.ensureValidSessionResultExists()
     await ensureValidImageExists()
     await this.createSessionResultHasImageRelationship(bru.getEnvVar('validSessionResultId'), bru.getEnvVar('validImageId'))
 }
 
-exports.createSessionResultHasImageRelationship = async function createSessionResultHasImageRelationship(sessionResultId, imageId) {
+exports.createSessionResultHasImageRelationship = async function (sessionResultId, imageId) {
     return submitPostRequest("/session-results/" + sessionResultId + "/has-image/" + imageId)
 }
 
-exports.ensureSessionResultHasPrimeImageRelationshipExists = async function ensureSessionResultHasPrimeImageRelationshipExists() {
+exports.ensureSessionResultHasPrimeImageRelationshipExists = async function () {
     await this.ensureValidSessionResultExists()
     await ensureValidImageExists()
     await this.createSessionResultHasPrimeImageRelationship(bru.getEnvVar('validSessionResultId'), bru.getEnvVar('validImageId'))
 }
 
-exports.createSessionResultHasPrimeImageRelationship = async function createSessionResultHasPrimeImageRelationship(sessionResultId, imageId) {
+exports.createSessionResultHasPrimeImageRelationship = async function (sessionResultId, imageId) {
     return submitPostRequest("/session-results/" + sessionResultId + "/has-prime-image/" + imageId)
 }
 
-exports.ensureSessionResultAchievedWithCarModelVariantRelationshipExists = async function ensureSessionResultAchievedWithCarModelVariantRelationshipExists() {
+exports.ensureSessionResultAchievedWithCarModelVariantRelationshipExists = async function () {
     await this.ensureValidSessionResultExists()
     await ensureValidCarModelVariantExists()
     await this.createSessionResultAchievedWithCarModelVariantRelationship(bru.getEnvVar('validSessionResultId'), bru.getEnvVar('validCarModelVariantId'))
 }
 
-exports.createSessionResultAchievedWithCarModelVariantRelationship = async function createSessionResultAchievedWithCarModelVariantRelationship(sessionResultId, carModelVariantId) {
+exports.createSessionResultAchievedWithCarModelVariantRelationship = async function (sessionResultId, carModelVariantId) {
     return submitPostRequest("/session-results/" + sessionResultId + "/achieved-with-car-model-variant/" + carModelVariantId)
 }
