@@ -216,6 +216,10 @@ export class Image {
     }
 
     static async createIsPrimeImageOfNodeRelationship(imageId: number, nodeId: number) {
+        if (imageId === nodeId) {
+            throw new SemanticError(`Image #${imageId} cannot be connected to itself`)
+        }
+
         const image = await Image.findById(imageId)
         if (!image) {
             throw new NodeNotFoundError(imageId)
@@ -224,6 +228,10 @@ export class Image {
         const node = await Node.findById(nodeId)
         if (!node) {
             throw new NodeNotFoundError(nodeId)
+        }
+
+        if (await partnerNodeIsAnImage(nodeId)) {
+            throw new SemanticError(`Image #${imageId} cannot be connected to another image`)
         }
 
         const existingRelation = await getSpecificRel(imageId, nodeId, RelationshipType.ImageIsPrimeImageOfNode)
