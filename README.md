@@ -80,9 +80,12 @@ In Minikube and GKE the certificate is expected as a "Kubernetes Secret" with th
 It can be created on the command line via:
 
 ```
+kubectl delete secret ssl-certificate \
+  --ignore-not-found \
+  --namespace=testing && \
 kubectl create secret tls ssl-certificate \
-  --cert=more-cars-rest-api.cert \ 
-  --key=more-cars-rest-api.key \
+  --cert=fullchain.pem \
+  --key=privkey.pem \
   --namespace=testing
 ```
 
