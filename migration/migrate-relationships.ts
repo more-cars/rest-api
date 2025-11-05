@@ -43,6 +43,8 @@ async function migrateRelationshipsOfType() {
         format: `{bar} | ${newStartNodeType} ${newRelationshipType} ${newEndNodeType} | ETA: {eta}s | {value}/{total}`
     })
 
+    console.log(`Starting migration of ${records.length} '${newRelationshipType}' relationships`)
+
     progress.start(records.length, 0)
     for (const record of records) {
         const oldRelationship = record.get('rel')
@@ -61,6 +63,8 @@ async function migrateRelationshipsOfType() {
         progress.increment(1)
     }
     progress.stop()
+
+    console.log(`Migration finished`)
 }
 
 async function determineStartNodeType() {

@@ -21,6 +21,8 @@ async function migrateNodesOfType() {
         format: `{bar} | ${newNodeType} | ETA: {eta}s | {value}/{total}`
     })
 
+    console.log(`Starting migration of ${records.length} '${newNodeType}' nodes`)
+
     progress.start(records.length, 0)
     for (const record of records) {
         const oldNode = record.get('node')
@@ -29,6 +31,8 @@ async function migrateNodesOfType() {
         progress.increment(1)
     }
     progress.stop()
+
+    console.log(`Migration finished`)
 }
 
 function determineNodeType() {
