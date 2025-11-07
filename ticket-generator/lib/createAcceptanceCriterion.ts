@@ -57,6 +57,7 @@ function getMappedResponseCode(responseCode: string) {
         ['403', '10420'],
         ['404', '10255'],
         ['422', '10256'],
+        ['426', '10421'],
         ['N/A', '10353'],
     ])
 
