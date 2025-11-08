@@ -1,11 +1,11 @@
 import {afterAll, beforeAll, describe, expect, test} from 'vitest'
 import request from "supertest"
-import {app} from "../../src/app"
+import {app} from "../../../src/app"
 
-describe('Basic auth is activated', () => {
+describe('Basic authentication is deactivated', () => {
     beforeAll(async () => {
-        process.env.BASIC_AUTH_USERNAME = 'username'
-        process.env.BASIC_AUTH_PASSWORD = 'password'
+        process.env.BASIC_AUTH_USERNAME = ''
+        process.env.BASIC_AUTH_PASSWORD = ''
     })
 
     afterAll(async () => {
@@ -18,24 +18,10 @@ describe('Basic auth is activated', () => {
             .get('/')
 
         expect(response.statusCode)
-            .toEqual(401)
+            .toEqual(200)
     })
 
-    test('Request with incorrect credentials', async () => {
-        const username = 'test'
-        const password = 'test'
-
-        const token = Buffer.from(`${username}:${password}`).toString('base64')
-
-        const response = await request(app)
-            .get('/')
-            .set('Authorization', 'Basic ' + token)
-
-        expect(response.statusCode)
-            .toEqual(401)
-    })
-
-    test('Request with correct credentials', async () => {
+    test('Request with unnecessary credentials', async () => {
         const username = 'username'
         const password = 'password'
 
