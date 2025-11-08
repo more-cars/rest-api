@@ -12,6 +12,7 @@ function startHttpServer() {
     const httpServer = http.createServer(app)
     httpServer.listen(HTTP_PORT, () => {
         console.log(`[HTTP] More Cars API started and running at http://localhost:${HTTP_PORT}`)
+        console.log(`[HTTP] Alias http://api.more-cars.internal:${HTTP_PORT}`)
     })
 }
 
@@ -29,6 +30,7 @@ function startHttpsServer() {
     const httpsServer = https.createServer({key: privateKey, cert: certificate}, app)
     httpsServer.listen(HTTPS_PORT, () => {
         console.log(`[HTTPS] More Cars API started and running at https://localhost:${HTTPS_PORT}`)
+        console.log(`[HTTPS] Alias https://api.more-cars.internal:${HTTPS_PORT}`)
     })
 }
 
