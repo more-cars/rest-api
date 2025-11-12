@@ -18,10 +18,39 @@ spec:
           image: neo4j:5.23.0
           env:
             - name: NEO4J_AUTH
-              value: neo4j/123456789
+              value: 'neo4j/123456789'
+            ######################################
+            - name: NEO4J_server_https_enabled
+              value: 'true'
+            ######################################
+            - name: NEO4J_dbms_ssl_policy_https_enabled
+              value: 'true'
+            - name: NEO4J_dbms_ssl_policy_https_base__directory
+              value: '/certificates'
+            - name: NEO4J_dbms_ssl_policy_https_private__key
+              value: 'tls.key'
+            - name: NEO4J_dbms_ssl_policy_https_public__certificate
+              value: 'tls.crt'
+            ######################################
+            - name: NEO4J_server_bolt_enabled
+              value: 'true'
+            - name: NEO4J_dbms_ssl_policy_bolt_enabled
+              value: 'true'
+            - name: NEO4J_dbms_ssl_policy_bolt_base__directory
+              value: '/certificates'
+            - name: NEO4J_dbms_ssl_policy_bolt_private__key
+              value: 'tls.key'
+            - name: NEO4J_dbms_ssl_policy_bolt_public__certificate
+              value: 'tls.crt'
+            ######################################
+            - name: dbms.ssl.policy.bolt.client_auth
+              value: 'NONE'
           volumeMounts:
-            - mountPath: /data
-              name: api-db-volume
+            - name: api-db-volume
+              mountPath: /data
+            - name: cert-volume
+              mountPath: /certificates
+              readOnly: true
           resources:
             requests:
               cpu: "100m"
@@ -30,3 +59,6 @@ spec:
         - name: api-db-volume
           persistentVolumeClaim:
             claimName: api-db-pvc
+        - name: cert-volume
+          secret:
+            secretName: certificate-db
