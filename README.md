@@ -59,12 +59,27 @@
 
 ## Databases
 
-* all databases (except in local environment) require a password
-* the deployments are configured to expect the password as a "Kubernetes Secret"
-    * name: `db-credentials`
-    * key-value pair: `password=the_password`
-* from the command line those secrets can be created via:
-    * `kubectl create secret generic db-credentials --from-literal=password='123456789' --namespace=prod`
+All databases (except in local environment) require a password.
+The deployment scripts are configured to expect it to be provided via a "Kubernetes Secret"
+with the name `db-credentials`,
+containing the key-value pair `password=the_password`.
+
+From the command line those secrets can be created via:
+
+```
+kubectl delete secret db-credentials \
+  --ignore-not-found \
+  --namespace=testing && \
+kubectl create secret generic db-credentials \
+  --from-literal=password='newpassword' \
+  --namespace=testing
+```
+
+To change the password in the database connect to the respective pod (`docker exec -it ...`).
+Run `cypher-shell -u neo4j` and enter the current password.
+Type `ALTER USER neo4j SET PASSWORD 'newpassword';` with the new password.
+Enter.
+Done.
 
 ## SSL Certificate
 
