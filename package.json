@@ -43,7 +43,7 @@
   "name": "@more-cars/rest-api",
   "repository": "https://github.com/more-cars/rest-api",
   "scripts": {
-    "start": "npx ts-node src/server.ts",
+    "start": "NODE_ENV=production npx ts-node src/server.ts",
     "local:app:start": "node --watch --env-file=.env -r ts-node/register src/server.ts",
     "local:db:start": "docker run --rm --env NEO4J_AUTH=none --publish=7474:7474 --publish=7687:7687 neo4j:5.23.0",
     "app:deploy": "./deployment/deploy-app.sh",
