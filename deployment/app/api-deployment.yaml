@@ -19,7 +19,7 @@ spec:
           #image: docker.io/dennisgerike/more-cars-api:latest
           image: ghcr.io/more-cars/rest-api:latest
           volumeMounts:
-            - name: ssl-cert-volume
+            - name: cert-volume
               mountPath: /app/certificates
               readOnly: true
           env:
@@ -47,6 +47,6 @@ spec:
               cpu: "50m"
               memory: "500Mi"
       volumes:
-        - name: ssl-cert-volume
+        - name: cert-volume
           secret:
-            secretName: ssl-certificate
+            secretName: certificate-api

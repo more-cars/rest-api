@@ -91,16 +91,16 @@ When there is no certificate then only the HTTP server is started.
 In a local environment the application expects the certificate files in the folder `certificates`,
 named `tls.crt` and `tls.key`.
 
-In Minikube and GKE the certificate is expected as a "Kubernetes Secret" with the name `ssl-certificate`.
+In Minikube and GKE the certificate is expected as a "Kubernetes Secret" with the name `certificate-api`.
 It can be created on the command line via:
 
 ```
-kubectl delete secret ssl-certificate \
+kubectl delete secret certificate-api \
   --ignore-not-found \
   --namespace=testing && \
-kubectl create secret tls ssl-certificate \
-  --cert=fullchain.pem \
-  --key=privkey.pem \
+kubectl create secret tls certificate-api \
+  --cert=certificates/tls.crt \
+  --key=certificates/tls.key \
   --namespace=testing
 ```
 
