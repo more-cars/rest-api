@@ -19,15 +19,29 @@ export async function getRelationshipCollection(nodeId: number, relationshipName
     await driver.close()
 
     records.forEach(record => {
-        const relationship: Relationship = record.get('r')
-        const partnerNode: Node = record.get('b')
+        const startNode: Node = record.get('a')
+        const relation: Relationship = record.get('r')
+        const endNode: Node = record.get('b')
+
         relationships.push({
-            start_node_id: nodeIsRelationshipTarget ? partnerNode.properties.mc_id : nodeId,
-            end_node_id: nodeIsRelationshipTarget ? nodeId : partnerNode.properties.mc_id,
-            relationship_id: relationship.properties.mc_id,
+            id: relation.properties.mc_id,
+            type: relationshipName,
+            start_node_id: nodeIsRelationshipTarget ? endNode.properties.mc_id : nodeId,
+            start_node: Object.assign({}, startNode.properties, {
+                id: startNode.properties.mc_id,
+                created_at: startNode.properties.created_at,
+                updated_at: startNode.properties.updated_at,
+            }),
+            end_node_id: nodeIsRelationshipTarget ? nodeId : endNode.properties.mc_id,
+            end_node: Object.assign({}, endNode.properties, {
+                id: endNode.properties.mc_id,
+                created_at: endNode.properties.created_at,
+                updated_at: endNode.properties.updated_at,
+            }),
+            relationship_id: relation.properties.mc_id,
             relationship_name: relationshipName,
-            created_at: relationship.properties.created_at,
-            updated_at: relationship.properties.updated_at,
+            created_at: relation.properties.created_at,
+            updated_at: relation.properties.updated_at,
         })
     })
 

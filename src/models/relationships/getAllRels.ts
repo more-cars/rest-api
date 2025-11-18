@@ -3,7 +3,6 @@ import type {DbRelationship} from "../../db/types/DbRelationship"
 import {getDbRelationshipType} from "./getDbRelationshipType"
 import {getRelationshipCollection} from "../../db/relationships/getRelationshipCollection"
 import type {GenericRelation} from "./types/GenericRelation"
-import {Node} from "../Node"
 
 export async function getAllRels(nodeId: number, relationshipType: RelationshipType) {
     const dbRelationshipType: DbRelationship = getDbRelationshipType(relationshipType)
@@ -17,10 +16,10 @@ export async function getAllRels(nodeId: number, relationshipType: RelationshipT
 
     for (const relationship of relationships) {
         mappedRelationships.push({
-            id: relationship.id || relationship.relationship_id,
+            id: relationship.id,
             type: relationshipType,
-            origin: await Node.findById(relationship.start_node_id),
-            destination: await Node.findById(relationship.end_node_id),
+            origin: relationship.start_node,
+            destination: relationship.end_node,
             created_at: relationship.created_at,
             updated_at: relationship.updated_at,
         } as GenericRelation)

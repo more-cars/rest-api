@@ -11,6 +11,6 @@ test('database query for fetching all relationships', async () => {
         expect(query)
             .toEqual(
                 "MATCH (a {mc_id: " + startNodeId + "})-[r:" + relationshipType + "]-(b)\n" +
-                "RETURN r, b")
+                "RETURN a, r, b")
     })
 })
