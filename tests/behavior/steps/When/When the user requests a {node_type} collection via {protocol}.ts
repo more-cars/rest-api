@@ -3,7 +3,6 @@ import axios from "axios"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
 import type {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
 import assert from "assert"
-import https from "https"
 
 When('the user requests a {string} collection via {string}',
     async (nodeType: string, protocol: string) => {
@@ -29,11 +28,8 @@ When('the user requests a {string} collection via {string}',
 
         const path = getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeTypeEnum)
 
-        const agent = new https.Agent({
-            rejectUnauthorized: false
-        })
         const response = await axios
-            .get(`${apiUrl}/${path}`, {httpsAgent: agent})
+            .get(`${apiUrl}/${path}`)
 
         world.rememberResponse(response)
     })
