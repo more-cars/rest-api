@@ -7,6 +7,6 @@ export async function deleteExistingData(override: string | undefined) {
 
     return confirm({
         message: 'Delete all existing nodes resp. relationships of the selected type from the target database before migration?',
-        default: true,
+        default: false,
     })
 }
