@@ -10,7 +10,7 @@ export async function createRel(originId: number, destinationId: number, relatio
     // TODO replace quick'n'dirty with proper solution
     const isReverseRelationship =
         relationshipType.includes('BELONGS_TO_') ||
-        relationshipType.includes('IS_') ||
+        relationshipType.includes('FOLLOWS_') ||
         relationshipType.includes('ACHIEVED_WITH_') ||
         relationshipType.includes('ACHIEVED_ON_') ||
         relationshipType.includes('WAS_')
