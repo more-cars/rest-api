@@ -2,7 +2,7 @@ import * as fs from 'fs'
 
 const hostsPath = '/etc/hosts'
 
-function addToHosts(ip: string, domain: string) {
+function addHostname(ip: string, domain: string) {
     const entry = `${ip} ${domain}\n`
 
     fs.readFile(hostsPath, 'utf8', (err, data) => {
@@ -25,5 +25,5 @@ function addToHosts(ip: string, domain: string) {
     })
 }
 
-addToHosts('127.0.0.1', 'api.more-cars.internal')
-addToHosts('127.0.0.1', 'db.more-cars.internal')
+addHostname('127.0.0.1', 'api.more-cars.internal')
+addHostname('127.0.0.1', 'db.more-cars.internal')

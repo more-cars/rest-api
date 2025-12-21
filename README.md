@@ -206,11 +206,12 @@ When developing and debugging the app it is recommended to use the command `npm 
 This will activate a file watcher which listens to all modules that are used by the app.
 Whenever one of them is updated the app will automatically restart to reflect those changes.
 
-In both cases, the application is available at `localhost:3000` or `127.0.0.1:3000`.
+In both cases, the application is available at `localhost:3000` and `127.0.0.1:3000`.
 For better readability and easier handling within the different tools the app should be given a proper domain name.
 This can be achieved by manually adding the necessary information to the `/etc/hosts/` file
-or by running `npm run local:hosts:add` (requires sudo privileges).
+or by running `npm run local:hostnames:add` (requires sudo privileges).
 This will make the app available under the domain name `api.more-cars.internal`.
+It also adds a hostname for the database: `db.more-cars.internal`.
 
 ## Deployments
 
