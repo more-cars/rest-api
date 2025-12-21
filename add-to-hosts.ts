@@ -26,3 +26,4 @@ function addToHosts(ip: string, domain: string) {
 }
 
 addToHosts('127.0.0.1', 'api.more-cars.internal')
+addToHosts('127.0.0.1', 'db.more-cars.internal')
