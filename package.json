@@ -80,7 +80,7 @@
     "tests:developer:coverage": "npx vitest run -c tests/vite.config.ts --coverage",
     "tests:smoke:gui": "bruno",
     "tests:smoke:cli": "./tests/smoke/run-tests.sh",
-    "tests:behavior": "npx cucumber-js",
+    "tests:behavior": "node --env-file=.env -r ts-node/register tests/behavior/check-dependencies.ts true && npx cucumber-js",
     "tests:behavior:single": "node --env-file=.env -r ts-node/register tests/behavior/run-single-test.ts",
     "tests:performance": "./tests/performance/run-tests.sh",
     "tests:sync-scripts": "vitest run -c tests/sync-scripts/vite.config.ts",
