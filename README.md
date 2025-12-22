@@ -60,11 +60,13 @@
 ## Databases
 
 All databases (except in local environment) require a password.
-The deployment scripts are configured to expect it to be provided via a "Kubernetes Secret"
-with the name `db-credentials`,
+The deployment scripts expect it as "Kubernetes Secret" with the name `db-credentials`,
 containing the key-value pair `password=the_password`.
+In Minikube this secret is automatically added when deploying the app for the first time.
+For the GKE environments this needs to be done manually.
 
-From the command line those secrets can be created via:
+Changing the (initial) password requires two steps.
+First, override the secret in Kubernetes:
 
 ```
 kubectl delete secret db-credentials \
@@ -75,7 +77,8 @@ kubectl create secret generic db-credentials \
   --namespace=testing
 ```
 
-To change the password in the database connect to the respective pod (`docker exec -it ...`).
+Then, change the password in the database.
+Connect to the respective Neo4j pod (`docker exec -it ...`).
 Run `cypher-shell -u neo4j` and enter the current password.
 Type `ALTER USER neo4j SET PASSWORD 'newpassword';` with the new password.
 Enter.

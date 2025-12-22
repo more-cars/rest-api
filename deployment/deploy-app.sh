@@ -19,6 +19,7 @@ if [ "$TARGET_CLUSTER" = minikube ]; then
   npx ts-node "$SCRIPT_PATH"/lib/create-patch-file.ts
   kubectl config use-context morecars
   kubectl config set-context --current --namespace="$TARGET_ENVIRONMENT"
+  "$SCRIPT_PATH"/lib/store-db-password-as-k8s-secret.sh 123456789 "$TARGET_ENVIRONMENT" # does not override the secret when it already exists
   kubectl apply -k "$SCRIPT_PATH"/overlays/"$TARGET_ENVIRONMENT"/app
 elif [ "$TARGET_CLUSTER" = gke ]; then
   npx ts-node "$SCRIPT_PATH"/lib/create-patch-file.ts
