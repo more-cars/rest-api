@@ -6,8 +6,3 @@ resources:
   - namespace.yaml
 
 namespace: dev
-
-images:
-  - name: docker.io/dennisgerike/more-cars-api
-    newName: localhost/mc-api
-    newTag: dev

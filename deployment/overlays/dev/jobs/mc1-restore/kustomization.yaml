@@ -5,8 +5,3 @@ resources:
   - ../../../../jobs/mc1-restore
 
 namespace: dev
-
-images:
-  - name: docker.io/dennisgerike/more-cars-api
-    newName: localhost/mc-api
-    newTag: dev
