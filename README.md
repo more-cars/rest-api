@@ -87,24 +87,34 @@ Done.
 ## SSL Certificate
 
 At the moment, an SSL certificate is not mandatory to run the application -
-be it locally, in minikube or in the production system.
+be it locally, in Minikube or in the production system.
 Should there be a certificate then the app will start an HTTP and an HTTPS server in parallel.
 When there is no certificate then only the HTTP server is started.
 
 In a local environment the application expects the certificate files in the folder `certificates`,
 named `tls.crt` and `tls.key`.
 
-In Minikube and GKE the certificate is expected as a "Kubernetes Secret" with the name `certificate-api`.
-It can be created on the command line via:
+In Minikube a dummy certificate is automatically added when deploying the app for the first time.
+There should be no need to replace it, because it is not possible to create a valid one for local environments anyway.
+
+For GKE the certificate needs to be added manually:
+
+```
+./deployment/lib/store-certificate-as-k8s-secret.sh api <NAMESPACE> <CERTIFICATE_PATH>
+```
+
+This will create a "Kubernetes Secret" with the name `certificate-api` in the given namespace (e.g. `testing`).
+
+To replace or renew the certificate the following commands can be used:
 
 ```
 kubectl delete secret certificate-api \
   --ignore-not-found \
-  --namespace=testing && \
+  --namespace=<NAMESPACE> && \
 kubectl create secret tls certificate-api \
-  --cert=certificates/tls.crt \
-  --key=certificates/tls.key \
-  --namespace=testing
+  --cert=<CERTIFICATE_PATH>/tls.crt \
+  --key=<CERTIFICATE_PATH>/tls.key \
+  --namespace=<NAMESPACE>
 ```
 
 ## Tests
