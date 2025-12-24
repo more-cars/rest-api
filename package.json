@@ -46,7 +46,7 @@
     "start": "NODE_ENV=production npx ts-node src/server.ts",
     "local:app:start": "./deployment/local-app-start.sh",
     "local:db:start": "./deployment/local-db-start.sh",
-    "local:hostnames:add": "./deployment/add-hostnames.sh",
+    "local:hostnames:add": "./deployment/add-local-hostnames.sh",
     "app:deploy": "./deployment/deploy-app.sh",
     "app:undeploy": "./deployment/undeploy-app.sh",
     "db:migrate": "./migration/run-migration.sh",

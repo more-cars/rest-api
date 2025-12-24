@@ -1,9 +1,16 @@
 import * as fs from 'fs'
 
-const hostsPath = '/etc/hosts'
+(() => {
+    const domain = process.argv[2]
+    const ip = process.argv[3]
 
-function addHostname(ip: string, domain: string) {
+    if (!domain || !ip) {
+
+        return
+    }
+
     const entry = `${ip} ${domain}\n`
+    const hostsPath = '/etc/hosts'
 
     fs.readFile(hostsPath, 'utf8', (err, data) => {
         if (err) {
@@ -23,7 +30,4 @@ function addHostname(ip: string, domain: string) {
             })
         }
     })
-}
-
-addHostname('127.0.0.1', 'api.more-cars.internal')
-addHostname('127.0.0.1', 'db.more-cars.internal')
+})()

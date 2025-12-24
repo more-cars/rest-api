@@ -25,6 +25,9 @@ if [ "$TARGET_CLUSTER" = minikube ]; then
   "$SCRIPT_PATH"/lib/store-db-password-as-k8s-secret.sh 123456789 "$TARGET_ENVIRONMENT"
   "$SCRIPT_PATH"/lib/store-certificate-as-k8s-secret.sh api "$TARGET_ENVIRONMENT" "$SCRIPT_PATH"/dummy-certs
   "$SCRIPT_PATH"/lib/store-certificate-as-k8s-secret.sh db "$TARGET_ENVIRONMENT" "$SCRIPT_PATH"/dummy-certs
+
+  # adding all hostnames for the selected environment (if they don't exist yet)
+  "$SCRIPT_PATH"/add-minikube-hostnames.sh "$TARGET_ENVIRONMENT"
 elif [ "$TARGET_CLUSTER" = gke ]; then
   npx ts-node "$SCRIPT_PATH"/lib/create-patch-file.ts
   gcloud container clusters get-credentials more-cars --region=europe-west1-b
