@@ -7,6 +7,13 @@ createApiDeploymentPatchFile()
         fs.writeFileSync(path + filename, JSON.stringify(data, null, 2))
     })
 
+createOpenApiDeploymentPatchFile()
+    .then((data) => {
+        const path = __dirname + '/../app/'
+        const filename = 'openapi-spec-deployment.patch.json'
+        fs.writeFileSync(path + filename, JSON.stringify(data, null, 2))
+    })
+
 createIngressPatchFile()
     .then((data) => {
         const path = __dirname + '/../app/'
@@ -24,6 +31,21 @@ async function createApiDeploymentPatchFile() {
             "path": "/spec/template/spec/containers/0/image",
             "value": `ghcr.io/more-cars/${packageName}:${packageVersion}`
         }
+    ]
+}
+
+async function createOpenApiDeploymentPatchFile() {
+    const targetEnvironment = process.env.TARGET_ENVIRONMENT
+
+    return [
+        {
+            "op": "replace",
+            "path": "/spec/template/spec/containers/0/env/0",
+            "value": {
+                "name": "URL",
+                "value": `https://${targetEnvironment}.api.more-cars.internal`,
+            },
+        },
     ]
 }
 

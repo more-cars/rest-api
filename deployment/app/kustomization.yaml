@@ -22,6 +22,10 @@ patches:
     target:
       kind: Deployment
       name: api-deployment
+  - path: openapi-spec-deployment.patch.json
+    target:
+      kind: Deployment
+      name: openapi-spec-deployment
   - path: ingress.patch.json
     target:
       kind: Ingress
