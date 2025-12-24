@@ -14,10 +14,17 @@ createOpenApiDeploymentPatchFile()
         fs.writeFileSync(path + filename, JSON.stringify(data, null, 2))
     })
 
-createIngressPatchFile()
+createApiIngressPatchFile()
     .then((data) => {
         const path = __dirname + '/../app/'
         const filename = 'ingress.patch.json'
+        fs.writeFileSync(path + filename, JSON.stringify(data, null, 2))
+    })
+
+createDbIngressPatchFile()
+    .then((data) => {
+        const path = __dirname + '/../app/'
+        const filename = 'db-ingress.patch.json'
         fs.writeFileSync(path + filename, JSON.stringify(data, null, 2))
     })
 
@@ -49,7 +56,7 @@ async function createOpenApiDeploymentPatchFile() {
     ]
 }
 
-async function createIngressPatchFile() {
+async function createApiIngressPatchFile() {
     const targetEnvironment = process.env.TARGET_ENVIRONMENT
 
     return [
@@ -65,11 +72,6 @@ async function createIngressPatchFile() {
         },
         {
             "op": "replace",
-            "path": "/spec/rules/2/host",
-            "value": targetEnvironment + ".db.more-cars.internal",
-        },
-        {
-            "op": "replace",
             "path": "/spec/tls/0/hosts/0",
             "value": targetEnvironment + ".api.more-cars.internal",
         },
@@ -78,10 +80,28 @@ async function createIngressPatchFile() {
             "path": "/spec/tls/1/hosts/0",
             "value": targetEnvironment + ".swagger.more-cars.internal",
         },
+    ]
+}
+
+
+async function createDbIngressPatchFile() {
+    const targetEnvironment = process.env.TARGET_ENVIRONMENT
+
+    return [
         {
             "op": "replace",
-            "path": "/spec/tls/2/hosts/0",
+            "path": "/spec/rules/0/host",
             "value": targetEnvironment + ".db.more-cars.internal",
-        }
+        },
+        {
+            "op": "replace",
+            "path": "/spec/tls/0/hosts/0",
+            "value": targetEnvironment + ".db.more-cars.internal",
+        },
+        {
+            "op": "replace",
+            "path": "/metadata/annotations/nginx.ingress.kubernetes.io~1permanent-redirect",
+            "value": "https://" + targetEnvironment + ".db.more-cars.internal:30473",
+        },
     ]
 }

@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-db-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/permanent-redirect: https://testing.db.more-cars.internal:30473
+spec:
+  tls:
+    - hosts:
+        - testing.db.more-cars.internal
+      secretName: certificate-db
+  rules:
+    - host: testing.db.more-cars.internal
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: placeholder
+                port:
+                  number: 80

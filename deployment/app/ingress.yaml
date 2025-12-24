@@ -10,9 +10,6 @@ spec:
     - hosts:
         - testing.swagger.more-cars.internal
       secretName: certificate-api
-    - hosts:
-        - testing.db.more-cars.internal
-      secretName: certificate-db
   rules:
     - host: testing.api.more-cars.internal
       http:
@@ -32,15 +29,5 @@ spec:
             backend:
               service:
                 name: openapi-spec-service
-                port:
-                  number: 80
-    - host: testing.db.more-cars.internal
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: db-facade
                 port:
                   number: 80

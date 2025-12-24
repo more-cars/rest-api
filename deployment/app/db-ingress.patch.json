@@ -1,0 +1,17 @@
+[
+  {
+    "op": "replace",
+    "path": "/spec/rules/0/host",
+    "value": "testing.db.more-cars.internal"
+  },
+  {
+    "op": "replace",
+    "path": "/spec/tls/0/hosts/0",
+    "value": "testing.db.more-cars.internal"
+  },
+  {
+    "op": "replace",
+    "path": "/metadata/annotations/nginx.ingress.kubernetes.io~1permanent-redirect",
+    "value": "https://testing.db.more-cars.internal:30473"
+  }
+]
