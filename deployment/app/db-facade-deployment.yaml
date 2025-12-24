@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-facade
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-facade
+  template:
+    metadata:
+      labels:
+        app: db-facade
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          volumeMounts:
+            - name: content
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: content
+          configMap:
+            name: db-facade

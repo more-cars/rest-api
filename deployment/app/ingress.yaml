@@ -1,0 +1,43 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-ingress
+  namespace: testing
+spec:
+  tls:
+    - hosts:
+        - testing.api.more-cars.internal
+        - testing.swagger.more-cars.internal
+        - testing.db.more-cars.internal
+      secretName: certificate-api
+  rules:
+    - host: testing.api.more-cars.internal
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: api-service
+                port:
+                  number: 80
+    - host: testing.swagger.more-cars.internal
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: openapi-spec-service
+                port:
+                  number: 80
+    - host: testing.db.more-cars.internal
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: db-facade
+                port:
+                  number: 80

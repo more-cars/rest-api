@@ -3,19 +3,19 @@ kind: Service
 metadata:
   name: api-db-service
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: api-db
   ports:
     - name: https
       port: 7473
-      protocol: TCP
+      nodePort: 30473
       targetPort: 7473
     - name: http
       port: 7474
-      protocol: TCP
+      nodePort: 30474
       targetPort: 7474
     - name: bolt
       port: 7687
-      protocol: TCP
+      nodePort: 30687
       targetPort: 7687

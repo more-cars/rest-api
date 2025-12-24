@@ -19,7 +19,7 @@ spec:
           image: swaggerapi/swagger-ui:v5.18.2
           env:
             - name: URL
-              value: http://$(API_SERVICE_SERVICE_HOST)
+              value: https://testing.api.more-cars.internal
           resources:
             requests:
               cpu: "10m"

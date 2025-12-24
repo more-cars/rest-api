@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: openapi-spec-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: openapi-spec
   ports:
