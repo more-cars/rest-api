@@ -1,9 +1,9 @@
 import fs from "node:fs"
 
-createPatchFile()
+createDeploymentPatchFile()
     .then((data) => {
         const path = __dirname + '/../app/'
-        const filename = 'patch.json'
+        const filename = 'deployment.patch.json'
         fs.writeFileSync(path + filename, JSON.stringify(data, null, 2))
     })
 
@@ -14,7 +14,7 @@ createIngressPatchFile()
         fs.writeFileSync(path + filename, JSON.stringify(data, null, 2))
     })
 
-async function createPatchFile() {
+async function createDeploymentPatchFile() {
     const packageName = process.env.PACKAGE_NAME
     const packageVersion = process.env.PACKAGE_VERSION
 

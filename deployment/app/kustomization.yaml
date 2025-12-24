@@ -18,7 +18,7 @@ resources:
   - mc1/db-mc1-deployment.yaml
 
 patches:
-  - path: patch.json
+  - path: deployment.patch.json
     target:
       kind: Deployment
       name: api-deployment
