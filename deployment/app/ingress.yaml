@@ -2,14 +2,17 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: api-ingress
-  namespace: testing
 spec:
   tls:
     - hosts:
         - testing.api.more-cars.internal
-        - testing.swagger.more-cars.internal
-        - testing.db.more-cars.internal
       secretName: certificate-api
+    - hosts:
+        - testing.swagger.more-cars.internal
+      secretName: certificate-api
+    - hosts:
+        - testing.db.more-cars.internal
+      secretName: certificate-db
   rules:
     - host: testing.api.more-cars.internal
       http:

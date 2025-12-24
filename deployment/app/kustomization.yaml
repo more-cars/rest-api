@@ -22,3 +22,7 @@ patches:
     target:
       kind: Deployment
       name: api-deployment
+  - path: ingress.patch.json
+    target:
+      kind: Ingress
+      name: api-ingress
