@@ -1,5 +1,8 @@
 #!/bin/sh
 
+SCRIPT=$(readlink -f "$0")
+SCRIPT_PATH=$(dirname "$SCRIPT")
+
 create_env_file () {
 cat <<EOF >.env
 DB_HOST=db.more-cars.internal
@@ -12,6 +15,16 @@ if ! [ -f .env ]; then
   echo "🪛 Creating a new .env file from scratch"
   create_env_file
   echo "✔️ .env file created"
+  echo
+fi
+
+if ! [ -f certificates/tls.crt ]; then
+  echo "⚠️ No SSL certificate found"
+  echo "🪛 Creating a certificate"
+  mkdir -p "$SCRIPT_PATH"/../certificates
+  cp "$SCRIPT_PATH"/dummy-certs/tls.crt "$SCRIPT_PATH"/../certificates/tls.crt
+  cp "$SCRIPT_PATH"/dummy-certs/tls.key "$SCRIPT_PATH"/../certificates/tls.key
+  echo "✔️ SSL certificate created"
   echo
 fi
 
