@@ -1,5 +1,6 @@
 import fs from "node:fs"
 import {getHostname} from "./getHostname.ts"
+import {getDatabasePortNumber} from "./getDatabasePortNumber.ts"
 
 createApiDeploymentPatchFile()
     .then((data) => {
@@ -92,6 +93,7 @@ async function createDbIngressPatchFile() {
     const targetEnvironment = process.env.TARGET_ENVIRONMENT || 'prod'
     const targetCluster = process.env.TARGET_CLUSTER || 'gke'
     const hostname = getHostname(targetCluster, targetEnvironment, 'db')
+    const port = getDatabasePortNumber(targetEnvironment, 'https')
 
     return [
         {
@@ -107,7 +109,7 @@ async function createDbIngressPatchFile() {
         {
             "op": "replace",
             "path": "/metadata/annotations/nginx.ingress.kubernetes.io~1permanent-redirect",
-            "value": "https://" + hostname + ":30473",
+            "value": `https://${hostname}:${port}`,
         },
     ]
 }
