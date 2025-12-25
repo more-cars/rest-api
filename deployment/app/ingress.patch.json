@@ -2,21 +2,21 @@
   {
     "op": "replace",
     "path": "/spec/rules/0/host",
-    "value": "testing.api.more-cars.internal"
+    "value": "prod.api.more-cars.internal"
   },
   {
     "op": "replace",
     "path": "/spec/rules/1/host",
-    "value": "testing.swagger.more-cars.internal"
+    "value": "prod.swagger.more-cars.internal"
   },
   {
     "op": "replace",
     "path": "/spec/tls/0/hosts/0",
-    "value": "testing.api.more-cars.internal"
+    "value": "prod.api.more-cars.internal"
   },
   {
     "op": "replace",
     "path": "/spec/tls/1/hosts/0",
-    "value": "testing.swagger.more-cars.internal"
+    "value": "prod.swagger.more-cars.internal"
   }
 ]

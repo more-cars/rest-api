@@ -1,5 +1,5 @@
 import fs from "node:fs"
-import {getHostname} from "./getHostname.ts";
+import {getHostname} from "./getHostname.ts"
 
 createApiDeploymentPatchFile()
     .then((data) => {

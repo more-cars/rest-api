@@ -5,13 +5,13 @@ metadata:
 spec:
   tls:
     - hosts:
-        - testing.api.more-cars.internal
+        - prod.api.more-cars.internal
       secretName: certificate-api
     - hosts:
-        - testing.swagger.more-cars.internal
+        - prod.swagger.more-cars.internal
       secretName: certificate-api
   rules:
-    - host: testing.api.more-cars.internal
+    - host: prod.api.more-cars.internal
       http:
         paths:
           - path: /
@@ -21,7 +21,7 @@ spec:
                 name: api-service
                 port:
                   number: 80
-    - host: testing.swagger.more-cars.internal
+    - host: prod.swagger.more-cars.internal
       http:
         paths:
           - path: /
