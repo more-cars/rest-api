@@ -6,3 +6,18 @@ resources:
   - namespace.yaml
 
 namespace: dev
+
+patches:
+  - target:
+      kind: Service
+      name: api-db-service
+    patch: |-
+      - op: replace
+        path: /spec/ports/0/nodePort
+        value: 32473
+      - op: replace
+        path: /spec/ports/1/nodePort
+        value: 32474
+      - op: replace
+        path: /spec/ports/2/nodePort
+        value: 32687
