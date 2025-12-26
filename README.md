@@ -41,8 +41,6 @@
 * run `npm run app:deploy` to deploy and start the application
     * this deploys the app, the database and the API specification (SwaggerUI)
     * a wizard will ask for the target environment (dev, testing or prod)
-* run `npm run minikube:open-tunnel` to allow the services to be accessible from outside the cluster
-    * requires sudo privileges
 * go to the "services" section in the kubernetes dashboard
     * search for `api-service`
     * the column `external endpoints` contains the URL to access the app

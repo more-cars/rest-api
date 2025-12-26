@@ -55,7 +55,6 @@
     "docker:login:github": "docker login ghcr.io",
     "minikube:install": "deployment/minikube-install.sh",
     "minikube:start": "deployment/minikube-cluster-start.sh",
-    "minikube:open-tunnel": "deployment/minikube-tunnel-start.sh",
     "minikube:stop": "deployment/minikube-cluster-stop.sh",
     "minikube:delete": "deployment/minikube-cluster-delete.sh",
     "generate-tickets:node:create": "HYGEN_TMPLS=ticket-generator hygen features create-node && node --env-file=.env -r ts-node/register ticket-generator/create-tickets-for-create-node.ts",
