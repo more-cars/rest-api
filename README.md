@@ -2,17 +2,35 @@
 
 ## Quickstart
 
-* install Node.js, npm and Docker
-    * see [Minikube](#minikube-local-dev-cluster) section for a Kubernetes-based environment
-* clone the repository: https://github.com/more-cars/rest-api.git
-* run `npm run local:db:start` to start Neo4j as a local Docker container
-    * it should be available at http://localhost:7474 (no credentials needed)
-* copy the `.env.template` file and save it as `.env`
-    * specify the location of the database: `DB_HOST=localhost`
-    * password is not needed
-* run `npm install` to install all required dependencies and tools
-* run `npm run local:app:start` to start the app locally
-    * it should be available at http://localhost:3000
+This quickstart manual shows the fastest way to get the app running, with the least amount of tools.
+For an alternative Kubernetes setup check out the [Minikube](#minikube-local-dev-cluster) section.
+
+**Requirements**
+
+* Node.js (version >= 24) & npm
+* Docker
+* Any OS should work (but tested only on Linux)
+
+**Installation**
+
+* Clone or download the repository from https://github.com/more-cars/rest-api.git
+* Run `npm run local:db:start` to start the database in a local Docker container
+    * when opening http://localhost:7474 the "Neo4j browser" should be shown
+    * optional: log in -> no credentials needed -> just click "Connect"
+* Run `npm install` to install all required dependencies and tools
+* Run `npm run local:app:start` to start the app locally
+    * it should be available now at http://localhost:3000 (http) and https://localhost:3443 (https)
+    * an `.env` should have been created automatically in the project's root folder
+        * it should contain the location of the database -> default: `DB_HOST=localhost`
+        * it should contain the password for the database -> default: `DB_PASSWORD=123456789`
+        * optional: change those values when you want to use a different database (e.g. from the Minikube cluster)
+* Optional: Using "pretty" hostnames instead of `localhost`:
+    * run `npm run local:hostnames:add`
+    * this makes the REST API available at http://api.more-cars.internal:3000/ (http)
+      and https://api.more-cars.internal:3443/ (https)
+    * this makes the API specification available at http://swagger.more-cars.internal:3000/ (http)
+      and https://swagger.more-cars.internal:3443/ (https)
+    * this makes the database available at http://db.more-cars.internal:7474/ (http)
 
 ## Minikube (Local Dev Cluster)
 
