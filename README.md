@@ -50,10 +50,8 @@
 
 ## Docker Images
 
-* run `npm run docker:build-image` to create a docker image of the application
-    * it can be used for local deployments or as "real" release candidates for production
-* run `npm run docker:tag-image:dev` to tag the image as a development image
-* run `npm run docker:tag-image` to tag the image as a production image
+All docker images are managed automatically in the pipeline (see files in folder `.github/workflows`).
+There should be no need to create, tag or push them locally.
 
 ## Databases
 

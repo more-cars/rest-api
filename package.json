@@ -51,8 +51,6 @@
     "app:undeploy": "./deployment/undeploy-app.sh",
     "db:migrate": "./migration/run-migration.sh",
     "db:restore": "./migration/restore-mc1-database.sh",
-    "docker:login:dockerhub": "docker login docker.io",
-    "docker:login:github": "docker login ghcr.io",
     "minikube:install": "deployment/minikube-install.sh",
     "minikube:start": "deployment/minikube-cluster-start.sh",
     "minikube:stop": "deployment/minikube-cluster-stop.sh",
