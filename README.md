@@ -1,9 +1,9 @@
 # More Cars - REST API
 
-## Quickstart
+## Quickstart (local dev environment)
 
 This quickstart manual shows the fastest way to get the app running, with the least amount of tools.
-For an alternative Kubernetes setup check out the [Minikube](#minikube-local-dev-cluster) section.
+For an alternative Kubernetes setup check out the [Minikube](#minikube-local-kubernetes-cluster) section.
 
 **Requirements**
 
@@ -32,39 +32,49 @@ For an alternative Kubernetes setup check out the [Minikube](#minikube-local-dev
       and https://swagger.more-cars.internal:3443/ (https)
     * this makes the database available at http://db.more-cars.internal:7474/ (http)
 
-## Minikube (Local Dev Cluster)
+## Minikube (local Kubernetes cluster)
+
+Minikube is a quick and simple option to create a local Kubernetes cluster.
+See documentation for more information: https://minikube.sigs.k8s.io/docs/.
+The Minikube cluster uses exactly the same Kubernetes configuration files as the "real" Kubernetes cluster in GKE
+(see `deployment/app` and `deployment/overlays` folder).
+This allows to test situations that might happen in the production environment,
+but cannot be recreated in a local dev environment.
 
 ### Start cluster
 
-* run `npm run minikube:install` to install the latest version of minikube
+* Run `npm run minikube:install` to install the latest version of Minikube
     * requires sudo privileges
-    * can be run multiple times
-        * if a newer version is available it will be installed
-* run `npm run minikube:start` to start a local minikube cluster
-    * this should open the kubernetes dashboard in the browser (wait ~30-60 seconds)
-* run `npm run minikube:stop` to stop the minikube cluster
-    * can also be achieved by aborting the `minikube:start` terminal (`ctrl` + `c` or `command` + `c`)
-* run `npm run minikube:delete` to destroy the minikube cluster
-    * changes to the memory or cpu settings require a "delete" (a restart is not sufficient)
-    * a new cluster can be created with `npm run minikube:start`
-        * the IP addresses of all services will change (starting and stopping preserves the IP addresses)
+    * the script can be re-run multiple times
+        * when a newer version is available it will override the installed one
+        * when there is no newer version then the installed one remains untouched
+* Run `npm run minikube:start` to start a local minikube cluster
+    * this should automatically open the Kubernetes dashboard in the browser (might take a few minutes)
+    * memory and CPU settings can be adjusted in the file `deployment/minikube-cluster-start.sh`
+* Run `npm run minikube:stop` to stop the Minikube cluster
+    * aborting the `minikube:start` terminal (`ctrl` + `c` or `command` + `c`) will NOT stop the cluster
+* Run `npm run minikube:delete` to destroy the Minikube cluster
+    * changes to the memory or CPU settings require a hard delete (a restart is not sufficient)
+    * a new cluster can be created by running `npm run minikube:start` again
 
 ### Start application
 
-* make sure the minikube cluster is running (see [Minikube](#minikube-local-dev-cluster) section)
-* run `npm run docker:build-image` to crate a docker image of the application
-    * the image will be built based on the code that is currently on the disk (not what is checked in)
-* run `npm run docker:tag-image:dev` to mark this image as a (temporary) dev version
-* run `npm run minikube:import-dev-image` to push the image into the minikube cluster
-* run `npm run app:deploy` to deploy and start the application
-    * this deploys the app, the database and the API specification (SwaggerUI)
-    * a wizard will ask for the target environment (dev, testing or prod)
-* go to the "services" section in the kubernetes dashboard
-    * search for `api-service`
-    * the column `external endpoints` contains the URL to access the app
-    * follow that link to make sure the app is running properly
-* run `npm run app:undeploy` to remove the whole application from the cluster
-    * run `npm run app:deploy` to recreate the application from scratch again (empty database, fresh pods, etc.)
+* Make sure the Minikube cluster is running (see [Minikube](#start-cluster) section)
+* Run `npm run app:deploy`
+    * a wizard will start
+        * select `minikube`, `dev`, `rest-api` and `latest`
+    * this will deploy the app, the API specification and the database in Minikube
+    * it will start all needed services
+    * it will create the necessary host entries in the local `/etc/hosts` file
+        * needs to be confirmed via password
+            * abort if you want to do it manually or you when you use a different hosts file
+    * the app should now be available at https://dev.api.more-cars.internal
+        * accept the browser's security risk warning (all local environments use a dummy SSL certificate)
+    * the API specificaiton should now be available at https://dev.swagger.more-cars.internal
+    * the database should now be available at https://dev.db.more-cars.internal
+* Run `npm run app:undeploy` to completely remove the app from the Minikube cluster
+    * a wizard will ask for the concrete cluster and environment that should be deleted
+    * run `npm run app:deploy` to create a fresh version of the app again
 
 ## Docker Images
 
