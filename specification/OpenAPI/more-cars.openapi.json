@@ -14175,7 +14175,10 @@
       "FilterValue": {
         "in": "query",
         "name": "filter_value",
-        "description": "Specifies the value against which the filter property is compared against."
+        "description": "Specifies the value against which the filter property is compared against.",
+        "schema": {
+          "type": "string"
+        }
       },
       "FilterOperator": {
         "in": "query",
