@@ -90,6 +90,7 @@
     },
     "/companies": {
       "get": {
+        "operationId": "getCompanies",
         "tags": [
           "Companies"
         ],
@@ -178,6 +179,7 @@
     },
     "/companies/{company-id}": {
       "get": {
+        "operationId": "getCompanyById",
         "tags": [
           "Companies"
         ],
@@ -656,6 +658,7 @@
     },
     "/brands": {
       "get": {
+        "operationId": "getBrands",
         "tags": [
           "Brands"
         ],
@@ -744,6 +747,7 @@
     },
     "/brands/{brand-id}": {
       "get": {
+        "operationId": "getBrandById",
         "tags": [
           "Brands"
         ],
@@ -1453,6 +1457,7 @@
     },
     "/car-models": {
       "get": {
+        "operationId": "getCarModels",
         "tags": [
           "Car Models"
         ],
@@ -1541,6 +1546,7 @@
     },
     "/car-models/{car-model-id}": {
       "get": {
+        "operationId": "getCarModelById",
         "tags": [
           "Car Models"
         ],
@@ -2520,6 +2526,7 @@
     },
     "/car-model-variants": {
       "get": {
+        "operationId": "getCarModelVariants",
         "tags": [
           "Car Model Variants"
         ],
@@ -2608,6 +2615,7 @@
     },
     "/car-model-variants/{car-model-variant-id}": {
       "get": {
+        "operationId": "getCarModelVariantById",
         "tags": [
           "Car Model Variants"
         ],
@@ -3356,6 +3364,7 @@
     },
     "/images": {
       "get": {
+        "operationId": "getImages",
         "tags": [
           "Images"
         ],
@@ -3444,6 +3453,7 @@
     },
     "/images/{image-id}": {
       "get": {
+        "operationId": "getImageById",
         "tags": [
           "Images"
         ],
@@ -3916,6 +3926,7 @@
     },
     "/race-tracks": {
       "get": {
+        "operationId": "getRaceTracks",
         "tags": [
           "Race Tracks"
         ],
@@ -4004,6 +4015,7 @@
     },
     "/race-tracks/{race-track-id}": {
       "get": {
+        "operationId": "getRaceTrackById",
         "tags": [
           "Race Tracks"
         ],
@@ -4617,6 +4629,7 @@
     },
     "/track-layouts": {
       "get": {
+        "operationId": "getTrackLayouts",
         "tags": [
           "Track Layouts"
         ],
@@ -4705,6 +4718,7 @@
     },
     "/track-layouts/{track-layout-id}": {
       "get": {
+        "operationId": "getTrackLayoutById",
         "tags": [
           "Track Layouts"
         ],
@@ -5453,6 +5467,7 @@
     },
     "/racing-series": {
       "get": {
+        "operationId": "getRacingSeries",
         "tags": [
           "Racing Series"
         ],
@@ -5541,6 +5556,7 @@
     },
     "/racing-series/{racing-series-id}": {
       "get": {
+        "operationId": "getRacingSeriesById",
         "tags": [
           "Racing Series"
         ],
@@ -6019,6 +6035,7 @@
     },
     "/racing-events": {
       "get": {
+        "operationId": "getRacingEvents",
         "tags": [
           "Racing Events"
         ],
@@ -6107,6 +6124,7 @@
     },
     "/racing-events/{racing-event-id}": {
       "get": {
+        "operationId": "getRacingEventById",
         "tags": [
           "Racing Events"
         ],
@@ -7260,6 +7278,7 @@
     },
     "/racing-sessions": {
       "get": {
+        "operationId": "getRacingSessions",
         "tags": [
           "Racing Sessions"
         ],
@@ -7348,6 +7367,7 @@
     },
     "/racing-sessions/{racing-session-id}": {
       "get": {
+        "operationId": "getRacingSessionById",
         "tags": [
           "Racing Sessions"
         ],
@@ -7961,6 +7981,7 @@
     },
     "/session-results": {
       "get": {
+        "operationId": "getSessionResults",
         "tags": [
           "Session Results"
         ],
@@ -8049,6 +8070,7 @@
     },
     "/session-results/{session-result-id}": {
       "get": {
+        "operationId": "getSessionResultById",
         "tags": [
           "Session Results"
         ],
@@ -8797,6 +8819,7 @@
     },
     "/lap-times": {
       "get": {
+        "operationId": "getLapTimes",
         "tags": [
           "Lap Times"
         ],
@@ -8885,6 +8908,7 @@
     },
     "/lap-times/{lap-time-id}": {
       "get": {
+        "operationId": "getLapTimeById",
         "tags": [
           "Lap Times"
         ],
@@ -9633,6 +9657,7 @@
     },
     "/relationships/{relationship-id}": {
       "get": {
+        "operationId": "getRelationshipById",
         "tags": [
           "Relationships"
         ],
