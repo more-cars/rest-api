@@ -5,6 +5,7 @@ after: <%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/{<%= h.c
 skip_if: Get the ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship between the `<%= h.changeCase.title(startNodeType) %>` and `<%= h.changeCase.title(endNodeType) %>`
 ---
       "get": {
+        "operationId": "getSpecific<%= h.changeCase.pascal(nodeType) %><%= h.changeCase.pascal(relationshipName) %>Rel",
         "tags": [
           "<%= h.changeCase.title(h.inflection.pluralize(startNodeType)) %>"
         ],

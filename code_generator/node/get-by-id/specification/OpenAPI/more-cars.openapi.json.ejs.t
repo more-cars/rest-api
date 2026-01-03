@@ -6,6 +6,7 @@ skip_if: Get `<%= h.changeCase.title(nodeType) %>` by ID
 ---
     "/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/{<%= h.changeCase.kebab(nodeType) %>-id}": {
       "get": {
+        "operationId": "get<%= h.changeCase.pascal(nodeType) %>ById",
         "tags": [
           "<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>"
         ],

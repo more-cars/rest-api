@@ -5,6 +5,7 @@ after: "/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>"\: \{
 skip_if: Get all `<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>`
 ---
       "get": {
+        "operationId": "get<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>",
         "tags": [
           "<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>"
         ],

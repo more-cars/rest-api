@@ -6,6 +6,7 @@ skip_if: Get all ›<%= h.changeCase.kebab(relationshipName) %>‹ relationships
 ---
     "/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/{<%= h.changeCase.kebab(startNodeType) %>-id}/<%= h.changeCase.kebab(relationshipName) %>": {
       "get": {
+        "operationId": "get<%= h.changeCase.pascal(nodeType) %><%= h.changeCase.pascal(relationshipName) %>Rel",
         "tags": [
           "<%= h.changeCase.title(h.inflection.pluralize(startNodeType)) %>"
         ],
