@@ -253,6 +253,7 @@
     },
     "/companies/{company-id}/has-brand": {
       "get": {
+        "operationId": "getCompanyHasBrandRel",
         "tags": [
           "Companies"
         ],
@@ -388,6 +389,7 @@
     },
     "/companies/{company-id}/has-image": {
       "get": {
+        "operationId": "getCompanyHasImageRel",
         "tags": [
           "Companies"
         ],
@@ -523,6 +525,7 @@
     },
     "/companies/{company-id}/has-prime-image": {
       "get": {
+        "operationId": "getCompanyHasPrimeImageRel",
         "tags": [
           "Companies"
         ],
@@ -821,6 +824,7 @@
     },
     "/brands/{brand-id}/belongs-to-company": {
       "get": {
+        "operationId": "getBrandBelongsToCompanyRel",
         "tags": [
           "Brands"
         ],
@@ -956,6 +960,7 @@
     },
     "/brands/{brand-id}/has-car-model": {
       "get": {
+        "operationId": "getBrandHasCarModelRel",
         "tags": [
           "Brands"
         ],
@@ -997,6 +1002,7 @@
     },
     "/brands/{brand-id}/has-car-model/{car-model-id}": {
       "get": {
+        "operationId": "getSpecificBrandHasCarModelRel",
         "tags": [
           "Brands"
         ],
@@ -1139,6 +1145,7 @@
     },
     "/brands/{brand-id}/has-image": {
       "get": {
+        "operationId": "getBrandHasImageRel",
         "tags": [
           "Brands"
         ],
@@ -1180,6 +1187,7 @@
     },
     "/brands/{brand-id}/has-image/{image-id}": {
       "get": {
+        "operationId": "getSpecificBrandHasImageRel",
         "tags": [
           "Brands"
         ],
@@ -1322,6 +1330,7 @@
     },
     "/brands/{brand-id}/has-prime-image": {
       "get": {
+        "operationId": "getBrandHasPrimeImageRel",
         "tags": [
           "Brands"
         ],
@@ -1620,6 +1629,7 @@
     },
     "/car-models/{car-model-id}/belongs-to-brand": {
       "get": {
+        "operationId": "getCarModelBelongsToBrandRel",
         "tags": [
           "Car Models"
         ],
@@ -1755,6 +1765,7 @@
     },
     "/car-models/{car-model-id}/has-successor": {
       "get": {
+        "operationId": "getCarModelHasSuccessorRel",
         "tags": [
           "Car Models"
         ],
@@ -1890,6 +1901,7 @@
     },
     "/car-models/{car-model-id}/is-successor-of": {
       "get": {
+        "operationId": "getCarModelIsSuccessorOfRel",
         "tags": [
           "Car Models"
         ],
@@ -2025,6 +2037,7 @@
     },
     "/car-models/{car-model-id}/has-variant": {
       "get": {
+        "operationId": "getCarModelHasVariantRel",
         "tags": [
           "Car Models"
         ],
@@ -2160,6 +2173,7 @@
     },
     "/car-models/{car-model-id}/has-image": {
       "get": {
+        "operationId": "getCarModelHasImageRel",
         "tags": [
           "Car Models"
         ],
@@ -2201,6 +2215,7 @@
     },
     "/car-models/{car-model-id}/has-image/{image-id}": {
       "get": {
+        "operationId": "getSpecificCarModelHasImageRel",
         "tags": [
           "Car Models"
         ],
@@ -2343,6 +2358,7 @@
     },
     "/car-models/{car-model-id}/has-prime-image": {
       "get": {
+        "operationId": "getCarModelHasPrimeImageRel",
         "tags": [
           "Car Models"
         ],
@@ -2384,6 +2400,7 @@
     },
     "/car-models/{car-model-id}/has-prime-image/{image-id}": {
       "get": {
+        "operationId": "getSpecificCarModelHasPrimeImageRel",
         "tags": [
           "Car Models"
         ],
@@ -2689,6 +2706,7 @@
     },
     "/car-model-variants/{car-model-variant-id}/is-variant-of": {
       "get": {
+        "operationId": "getCarModelVariantIsVariantOfRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -2824,6 +2842,7 @@
     },
     "/car-model-variants/{car-model-variant-id}/achieved-session-result": {
       "get": {
+        "operationId": "getCarModelVariantAchievedSessionResultRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -2959,6 +2978,7 @@
     },
     "/car-model-variants/{car-model-variant-id}/achieved-lap-time": {
       "get": {
+        "operationId": "getCarModelVariantAchievedLapTimeRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -3094,6 +3114,7 @@
     },
     "/car-model-variants/{car-model-variant-id}/has-image": {
       "get": {
+        "operationId": "getCarModelVariantHasImageRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -3229,6 +3250,7 @@
     },
     "/car-model-variants/{car-model-variant-id}/has-prime-image": {
       "get": {
+        "operationId": "getCarModelVariantHasPrimeImageRel",
         "tags": [
           "Car Model Variants"
         ],
@@ -3527,6 +3549,7 @@
     },
     "/images/{image-id}/belongs-to-node": {
       "get": {
+        "operationId": "getImageBelongsToNodeRel",
         "tags": [
           "Images"
         ],
@@ -3578,6 +3601,7 @@
     },
     "/images/{image-id}/belongs-to-node/{partner-node-id}": {
       "get": {
+        "operationId": "getSpecificImageBelongsToNodeRel",
         "tags": [
           "Images"
         ],
@@ -3740,6 +3764,7 @@
     },
     "/images/{image-id}/belongs-to-node-type": {
       "get": {
+        "operationId": "getImageBelongsToNodeTypeRel",
         "tags": [
           "Images"
         ],
@@ -3791,6 +3816,7 @@
     },
     "/images/{image-id}/is-prime-image-of-node": {
       "get": {
+        "operationId": "getImageIsPrimeImageOfNodeRel",
         "tags": [
           "Images"
         ],
@@ -4089,6 +4115,7 @@
     },
     "/race-tracks/{race-track-id}/has-layout": {
       "get": {
+        "operationId": "getRaceTrackHasLayoutRel",
         "tags": [
           "Race Tracks"
         ],
@@ -4224,6 +4251,7 @@
     },
     "/race-tracks/{race-track-id}/hosted-racing-event": {
       "get": {
+        "operationId": "getRaceTrackHostedRacingEventRel",
         "tags": [
           "Race Tracks"
         ],
@@ -4359,6 +4387,7 @@
     },
     "/race-tracks/{race-track-id}/has-image": {
       "get": {
+        "operationId": "getRaceTrackHasImageRel",
         "tags": [
           "Race Tracks"
         ],
@@ -4494,6 +4523,7 @@
     },
     "/race-tracks/{race-track-id}/has-prime-image": {
       "get": {
+        "operationId": "getRaceTrackHasPrimeImageRel",
         "tags": [
           "Race Tracks"
         ],
@@ -4792,6 +4822,7 @@
     },
     "/track-layouts/{track-layout-id}/belongs-to-race-track": {
       "get": {
+        "operationId": "getTrackLayoutBelongsToRaceTrackRel",
         "tags": [
           "Track Layouts"
         ],
@@ -4927,6 +4958,7 @@
     },
     "/track-layouts/{track-layout-id}/was-used-by-racing-event": {
       "get": {
+        "operationId": "getTrackLayoutWasUsedByRacingEventRel",
         "tags": [
           "Track Layouts"
         ],
@@ -5062,6 +5094,7 @@
     },
     "/track-layouts/{track-layout-id}/has-lap-time": {
       "get": {
+        "operationId": "getTrackLayoutHasLapTimeRel",
         "tags": [
           "Track Layouts"
         ],
@@ -5197,6 +5230,7 @@
     },
     "/track-layouts/{track-layout-id}/has-image": {
       "get": {
+        "operationId": "getTrackLayoutHasImageRel",
         "tags": [
           "Track Layouts"
         ],
@@ -5332,6 +5366,7 @@
     },
     "/track-layouts/{track-layout-id}/has-prime-image": {
       "get": {
+        "operationId": "getTrackLayoutHasPrimeImageRel",
         "tags": [
           "Track Layouts"
         ],
@@ -5630,6 +5665,7 @@
     },
     "/racing-series/{racing-series-id}/has-racing-event": {
       "get": {
+        "operationId": "getRacingSeriesHasRacingEventRel",
         "tags": [
           "Racing Series"
         ],
@@ -5765,6 +5801,7 @@
     },
     "/racing-series/{racing-series-id}/has-image": {
       "get": {
+        "operationId": "getRacingSeriesHasImageRel",
         "tags": [
           "Racing Series"
         ],
@@ -5900,6 +5937,7 @@
     },
     "/racing-series/{racing-series-id}/has-prime-image": {
       "get": {
+        "operationId": "getRacingSeriesHasPrimeImageRel",
         "tags": [
           "Racing Series"
         ],
@@ -6198,6 +6236,7 @@
     },
     "/racing-events/{racing-event-id}/belongs-to-racing-series": {
       "get": {
+        "operationId": "getRacingEventBelongsToRacingSeriesRel",
         "tags": [
           "Racing Events"
         ],
@@ -6333,6 +6372,7 @@
     },
     "/racing-events/{racing-event-id}/is-followed-by-event": {
       "get": {
+        "operationId": "getRacingEventIsFollowedByEventRel",
         "tags": [
           "Racing Events"
         ],
@@ -6468,6 +6508,7 @@
     },
     "/racing-events/{racing-event-id}/follows-event": {
       "get": {
+        "operationId": "getRacingEventFollowsEventRel",
         "tags": [
           "Racing Events"
         ],
@@ -6603,6 +6644,7 @@
     },
     "/racing-events/{racing-event-id}/took-place-at-race-track": {
       "get": {
+        "operationId": "getRacingEventTookPlaceAtRaceTrackRel",
         "tags": [
           "Racing Events"
         ],
@@ -6738,6 +6780,7 @@
     },
     "/racing-events/{racing-event-id}/used-the-track-layout": {
       "get": {
+        "operationId": "getRacingEventUsedTheTrackLayoutRel",
         "tags": [
           "Racing Events"
         ],
@@ -6873,6 +6916,7 @@
     },
     "/racing-events/{racing-event-id}/has-racing-session": {
       "get": {
+        "operationId": "getRacingEventHasRacingSessionRel",
         "tags": [
           "Racing Events"
         ],
@@ -7008,6 +7052,7 @@
     },
     "/racing-events/{racing-event-id}/has-image": {
       "get": {
+        "operationId": "getRacingEventHasImageRel",
         "tags": [
           "Racing Events"
         ],
@@ -7143,6 +7188,7 @@
     },
     "/racing-events/{racing-event-id}/has-prime-image": {
       "get": {
+        "operationId": "getRacingEventHasPrimeImageRel",
         "tags": [
           "Racing Events"
         ],
@@ -7441,6 +7487,7 @@
     },
     "/racing-sessions/{racing-session-id}/belongs-to-racing-event": {
       "get": {
+        "operationId": "getRacingSessionBelongsToRacingEventRel",
         "tags": [
           "Racing Sessions"
         ],
@@ -7576,6 +7623,7 @@
     },
     "/racing-sessions/{racing-session-id}/has-session-result": {
       "get": {
+        "operationId": "getRacingSessionHasSessionResultRel",
         "tags": [
           "Racing Sessions"
         ],
@@ -7711,6 +7759,7 @@
     },
     "/racing-sessions/{racing-session-id}/has-image": {
       "get": {
+        "operationId": "getRacingSessionHasImageRel",
         "tags": [
           "Racing Sessions"
         ],
@@ -7846,6 +7895,7 @@
     },
     "/racing-sessions/{racing-session-id}/has-prime-image": {
       "get": {
+        "operationId": "getRacingSessionHasPrimeImageRel",
         "tags": [
           "Racing Sessions"
         ],
@@ -8144,6 +8194,7 @@
     },
     "/session-results/{session-result-id}/belongs-to-racing-session": {
       "get": {
+        "operationId": "getSessionResultBelongsToRacingSessionRel",
         "tags": [
           "Session Results"
         ],
@@ -8279,6 +8330,7 @@
     },
     "/session-results/{session-result-id}/has-lap-time": {
       "get": {
+        "operationId": "getSessionResultHasLapTimeRel",
         "tags": [
           "Session Results"
         ],
@@ -8414,6 +8466,7 @@
     },
     "/session-results/{session-result-id}/achieved-with-car-model-variant": {
       "get": {
+        "operationId": "getSessionResultAchievedWithCarModelVariantRel",
         "tags": [
           "Session Results"
         ],
@@ -8549,6 +8602,7 @@
     },
     "/session-results/{session-result-id}/has-image": {
       "get": {
+        "operationId": "getSessionResultHasImageRel",
         "tags": [
           "Session Results"
         ],
@@ -8684,6 +8738,7 @@
     },
     "/session-results/{session-result-id}/has-prime-image": {
       "get": {
+        "operationId": "getSessionResultHasPrimeImageRel",
         "tags": [
           "Session Results"
         ],
@@ -8982,6 +9037,7 @@
     },
     "/lap-times/{lap-time-id}/belongs-to-session-result": {
       "get": {
+        "operationId": "getLapTimeBelongsToSessionResultRel",
         "tags": [
           "Lap Times"
         ],
@@ -9117,6 +9173,7 @@
     },
     "/lap-times/{lap-time-id}/achieved-on-track-layout": {
       "get": {
+        "operationId": "getLapTimeAchievedOnTrackLayoutRel",
         "tags": [
           "Lap Times"
         ],
@@ -9252,6 +9309,7 @@
     },
     "/lap-times/{lap-time-id}/achieved-with-car-model-variant": {
       "get": {
+        "operationId": "getLapTimeAchievedWithCarModelVariantRel",
         "tags": [
           "Lap Times"
         ],
@@ -9387,6 +9445,7 @@
     },
     "/lap-times/{lap-time-id}/has-image": {
       "get": {
+        "operationId": "getLapTimeHasImageRel",
         "tags": [
           "Lap Times"
         ],
@@ -9522,6 +9581,7 @@
     },
     "/lap-times/{lap-time-id}/has-prime-image": {
       "get": {
+        "operationId": "getLapTimeHasPrimeImageRel",
         "tags": [
           "Lap Times"
         ],
