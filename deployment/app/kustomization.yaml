@@ -2,13 +2,14 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - ingress.yaml
+  - api-http-route.yaml
   - api-service.yaml
   - api-deployment.yaml
-  - db-ingress.yaml
+  - db-http-route.yaml
   - db-service.yaml
   - db-pvc.yaml
   - db-deployment.yaml
+  - openapi-spec-http-route.yaml
   - openapi-spec-service.yaml
   - openapi-spec-deployment.yaml
   - mc1/db-mc1-pvc.yaml
@@ -24,11 +25,15 @@ patches:
     target:
       kind: Deployment
       name: openapi-spec-deployment
-  - path: ingress.patch.json
+  - path: api-http-route.patch.json
     target:
-      kind: Ingress
-      name: api-ingress
-  - path: db-ingress.patch.json
+      kind: HTTPRoute
+      name: api
+  - path: openapi-spec-http-route.patch.json
     target:
-      kind: Ingress
-      name: api-db-ingress
+      kind: HTTPRoute
+      name: openapi-spec
+  - path: db-http-route.patch.json
+    target:
+      kind: HTTPRoute
+      name: db

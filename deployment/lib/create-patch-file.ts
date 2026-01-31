@@ -1,6 +1,5 @@
 import fs from "node:fs"
 import {getHostname} from "./getHostname.ts"
-import {getDatabasePortNumber} from "./getDatabasePortNumber.ts"
 
 createApiDeploymentPatchFile()
     .then((data) => {
@@ -16,17 +15,24 @@ createOpenApiDeploymentPatchFile()
         fs.writeFileSync(path + filename, JSON.stringify(data, null, 2))
     })
 
-createApiIngressPatchFile()
+createApiHttpRoutePatchFile()
     .then((data) => {
         const path = __dirname + '/../app/'
-        const filename = 'ingress.patch.json'
+        const filename = 'api-http-route.patch.json'
         fs.writeFileSync(path + filename, JSON.stringify(data, null, 2))
     })
 
-createDbIngressPatchFile()
+createOpenapiSpecHttpRoutePatchFile()
     .then((data) => {
         const path = __dirname + '/../app/'
-        const filename = 'db-ingress.patch.json'
+        const filename = 'openapi-spec-http-route.patch.json'
+        fs.writeFileSync(path + filename, JSON.stringify(data, null, 2))
+    })
+
+createDbHttpRoutePatchFile()
+    .then((data) => {
+        const path = __dirname + '/../app/'
+        const filename = 'db-http-route.patch.json'
         fs.writeFileSync(path + filename, JSON.stringify(data, null, 2))
     })
 
@@ -60,56 +66,41 @@ async function createOpenApiDeploymentPatchFile() {
     ]
 }
 
-async function createApiIngressPatchFile() {
+async function createApiHttpRoutePatchFile() {
     const targetEnvironment = process.env.TARGET_ENVIRONMENT || 'prod'
     const targetCluster = process.env.TARGET_CLUSTER || 'gke'
 
     return [
         {
             "op": "replace",
-            "path": "/spec/rules/0/host",
+            "path": "/spec/hostnames/0",
             "value": getHostname(targetCluster, targetEnvironment, 'api'),
         },
+    ]
+}
+
+async function createOpenapiSpecHttpRoutePatchFile() {
+    const targetEnvironment = process.env.TARGET_ENVIRONMENT || 'prod'
+    const targetCluster = process.env.TARGET_CLUSTER || 'gke'
+
+    return [
         {
             "op": "replace",
-            "path": "/spec/rules/1/host",
-            "value": getHostname(targetCluster, targetEnvironment, 'swagger'),
-        },
-        {
-            "op": "replace",
-            "path": "/spec/tls/0/hosts/0",
-            "value": getHostname(targetCluster, targetEnvironment, 'api'),
-        },
-        {
-            "op": "replace",
-            "path": "/spec/tls/1/hosts/0",
+            "path": "/spec/hostnames/0",
             "value": getHostname(targetCluster, targetEnvironment, 'swagger'),
         },
     ]
 }
 
-
-async function createDbIngressPatchFile() {
+async function createDbHttpRoutePatchFile() {
     const targetEnvironment = process.env.TARGET_ENVIRONMENT || 'prod'
     const targetCluster = process.env.TARGET_CLUSTER || 'gke'
-    const hostname = getHostname(targetCluster, targetEnvironment, 'db')
-    const port = getDatabasePortNumber(targetEnvironment, 'https')
 
     return [
         {
             "op": "replace",
-            "path": "/spec/rules/0/host",
-            "value": hostname,
-        },
-        {
-            "op": "replace",
-            "path": "/spec/tls/0/hosts/0",
-            "value": hostname,
-        },
-        {
-            "op": "replace",
-            "path": "/metadata/annotations/nginx.ingress.kubernetes.io~1permanent-redirect",
-            "value": `https://${hostname}:${port}`,
+            "path": "/spec/hostnames/0",
+            "value": getHostname(targetCluster, targetEnvironment, 'db'),
         },
     ]
 }
