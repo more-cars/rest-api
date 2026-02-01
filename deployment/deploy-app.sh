@@ -21,10 +21,8 @@ if [ "$TARGET_CLUSTER" = minikube ]; then
   kubectl config set-context --current --namespace="$TARGET_ENVIRONMENT"
   kubectl apply -k "$SCRIPT_PATH"/overlays/"$TARGET_ENVIRONMENT"/app
 
-  # storing the passwords and certificates as kubernetes secrets (if they don't exist yet)
+  # storing the passwords as kubernetes secrets (if they don't exist yet)
   "$SCRIPT_PATH"/lib/store-db-password-as-k8s-secret.sh 123456789 "$TARGET_ENVIRONMENT"
-  "$SCRIPT_PATH"/lib/store-certificate-as-k8s-secret.sh api "$TARGET_ENVIRONMENT" "$SCRIPT_PATH"/dummy-certs
-  "$SCRIPT_PATH"/lib/store-certificate-as-k8s-secret.sh db "$TARGET_ENVIRONMENT" "$SCRIPT_PATH"/dummy-certs
 
   # adding all hostnames for the selected environment (if they don't exist yet)
   "$SCRIPT_PATH"/add-minikube-hostnames.sh "$TARGET_ENVIRONMENT"

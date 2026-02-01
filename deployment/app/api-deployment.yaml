@@ -18,10 +18,6 @@ spec:
         - name: more-cars-api
           #image: docker.io/dennisgerike/more-cars-api:latest
           image: ghcr.io/more-cars/rest-api:latest
-          volumeMounts:
-            - name: cert-volume
-              mountPath: /app/certificates
-              readOnly: true
           env:
             - name: DB_HOST
               value: $(API_DB_SERVICE_SERVICE_HOST)
@@ -46,7 +42,3 @@ spec:
             requests:
               cpu: "50m"
               memory: "500Mi"
-      volumes:
-        - name: cert-volume
-          secret:
-            secretName: certificate-api
