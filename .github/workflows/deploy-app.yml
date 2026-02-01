@@ -48,7 +48,7 @@ jobs:
         id: deployment
         with:
           token: '${{ github.token }}'
-          environment-url: http://api.${{ inputs.environment }}.fast-cars.info
+          environment-url: https://api.${{ inputs.environment }}.fast-cars.info
           environment: ${{ inputs.environment }}
 
       - name: Performing the deployment in GKE
@@ -64,7 +64,7 @@ jobs:
         uses: chrnorm/deployment-status@v2
         with:
           token: '${{ github.token }}'
-          environment-url: http://api.${{ inputs.environment }}.fast-cars.info
+          environment-url: https://api.${{ inputs.environment }}.fast-cars.info
           state: 'success'
           deployment-id: ${{ steps.deployment.outputs.deployment_id }}
 
@@ -73,6 +73,6 @@ jobs:
         uses: chrnorm/deployment-status@v2
         with:
           token: '${{ github.token }}'
-          environment-url: http://api.${{ inputs.environment }}.fast-cars.info
+          environment-url: https://api.${{ inputs.environment }}.fast-cars.info
           state: 'failure'
           deployment-id: ${{ steps.deployment.outputs.deployment_id }}
