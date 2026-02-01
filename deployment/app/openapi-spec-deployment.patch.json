@@ -4,7 +4,7 @@
     "path": "/spec/template/spec/containers/0/env/0",
     "value": {
       "name": "URL",
-      "value": "https://prod.api.more-cars.internal"
+      "value": "https://api.prod.more-cars.internal"
     }
   }
 ]

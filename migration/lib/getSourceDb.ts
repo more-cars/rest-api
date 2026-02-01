@@ -17,11 +17,11 @@ async function promptUser() {
 
     choices.push(
         {value: 'mc1db.more-cars.internal'},
-        {value: 'dev.mc1db.more-cars.internal'},
-        {value: 'testing.mc1db.more-cars.internal'},
-        {value: 'prod.mc1db.more-cars.internal'},
-        {value: 'testing.mc1db.fast-cars.info'},
-        {value: 'prod.mc1db.fast-cars.info'},
+        {value: 'mc1db.dev.more-cars.internal'},
+        {value: 'mc1db.testing.more-cars.internal'},
+        {value: 'mc1db.prod.more-cars.internal'},
+        {value: 'mc1db.testing.fast-cars.info'},
+        {value: 'mc1db.prod.fast-cars.info'},
     )
 
     return select({

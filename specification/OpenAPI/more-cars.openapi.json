@@ -11,23 +11,23 @@
       "description": "Local"
     },
     {
-      "url": "http://dev.api.more-cars.internal",
+      "url": "http://api.dev.more-cars.internal",
       "description": "Local Minikube - DEV"
     },
     {
-      "url": "http://testing.api.more-cars.internal",
+      "url": "http://api.testing.more-cars.internal",
       "description": "Local Minikube - Testing"
     },
     {
-      "url": "http://prod.api.more-cars.internal",
+      "url": "http://api.prod.more-cars.internal",
       "description": "Local Minikube - Production"
     },
     {
-      "url": "http://testing.api.fast-cars.info",
+      "url": "http://api.testing.fast-cars.info",
       "description": "Testing"
     },
     {
-      "url": "http://prod.api.fast-cars.info",
+      "url": "http://api.prod.fast-cars.info",
       "description": "Production"
     }
   ],

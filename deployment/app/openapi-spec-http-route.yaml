@@ -8,7 +8,7 @@ spec:
       sectionName: more-cars
 
   hostnames:
-    - default.swagger.more-cars.internal
+    - swagger.default.more-cars.internal
 
   rules:
     - matches:

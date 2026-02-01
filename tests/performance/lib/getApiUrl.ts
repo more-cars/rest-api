@@ -9,13 +9,13 @@ export function getApiUrl(testRunner: string, targetCluster: string, targetEnvir
                 ['local', 'http://localhost:3000'], // environment
             ])],
             ['minikube', new Map([
-                ['dev', 'http://dev.api.more-cars.internal'],
-                ['testing', 'http://testing.api.more-cars.internal'],
-                ['prod', 'http://prod.api.more-cars.internal'],
+                ['dev', 'http://api.dev.more-cars.internal'],
+                ['testing', 'http://api.testing.more-cars.internal'],
+                ['prod', 'http://api.prod.more-cars.internal'],
             ])],
             ['gke', new Map([
-                ['testing', 'http://testing.api.fast-cars.info'],
-                ['prod', 'http://prod.api.fast-cars.info'],
+                ['testing', 'http://api.testing.fast-cars.info'],
+                ['prod', 'http://api.prod.fast-cars.info'],
             ])],
         ])],
         ['minikube', new Map([ // runner

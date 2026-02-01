@@ -27,6 +27,6 @@ jobs:
       - name: Run Behavior Tests
         run: npm run tests:behavior
         env:
-          API_URL: http://${{ inputs.environment }}.api.fast-cars.info
-          DB_HOST: ${{ inputs.environment }}.db.fast-cars.info
+          API_URL: http://api.${{ inputs.environment }}.fast-cars.info
+          DB_HOST: db.${{ inputs.environment }}.fast-cars.info
           DB_PASSWORD: 123456789

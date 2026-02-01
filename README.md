@@ -68,10 +68,10 @@ but cannot be recreated in a local dev environment.
     * it will create the necessary host entries in the local `/etc/hosts` file
         * needs to be confirmed via password
             * abort if you want to do it manually or you when you use a different hosts file
-    * the app should now be available at https://dev.api.more-cars.internal
+    * the app should now be available at https://api.dev.more-cars.internal
         * accept the browser's security risk warning (all local environments use a dummy SSL certificate)
-    * the API specificaiton should now be available at https://dev.swagger.more-cars.internal
-    * the database should now be available at https://dev.db.more-cars.internal
+    * the API specificaiton should now be available at https://swagger.dev.more-cars.internal
+    * the database should now be available at https://db.dev.more-cars.internal
 * Run `npm run app:undeploy` to completely remove the app from the Minikube cluster
     * a wizard will ask for the concrete cluster and environment that should be deleted
     * run `npm run app:deploy` to create a fresh version of the app again

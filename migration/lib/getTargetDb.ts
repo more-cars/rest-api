@@ -9,13 +9,13 @@ export function getTargetDb(migrationRunner: string, targetCluster: string, targ
                 ['local', 'localhost'], // environment
             ])],
             ['minikube', new Map([
-                ['dev', 'dev.db.more-cars.internal'],
-                ['testing', 'testing.db.more-cars.internal'],
-                ['prod', 'prod.db.more-cars.internal'],
+                ['dev', 'db.dev.more-cars.internal'],
+                ['testing', 'db.testing.more-cars.internal'],
+                ['prod', 'db.prod.more-cars.internal'],
             ])],
             ['gke', new Map([
-                ['testing', 'testing.db.fast-cars.info'],
-                ['prod', 'prod.db.fast-cars.info'],
+                ['testing', 'db.testing.fast-cars.info'],
+                ['prod', 'db.prod.fast-cars.info'],
             ])],
         ])],
         ['minikube', new Map([ // runner
