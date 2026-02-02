@@ -26,10 +26,14 @@ patches:
     target:
       kind: Deployment
       name: openapi-spec-deployment
+  - path: api-http-route.patch.json
+    target:
+      kind: HTTPRoute
+      name: api-http
   - path: api-https-route.patch.json
     target:
       kind: HTTPRoute
-      name: api
+      name: api-https
   - path: openapi-spec-http-route.patch.json
     target:
       kind: HTTPRoute
