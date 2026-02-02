@@ -3,13 +3,10 @@ kind: Service
 metadata:
   name: api-db-service
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: api-db
   ports:
-    - name: https
-      port: 7473
-      targetPort: 7473
     - name: http
       port: 7474
       targetPort: 7474
