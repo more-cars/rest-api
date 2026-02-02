@@ -22,6 +22,13 @@ createApiHttpRoutePatchFile()
         fs.writeFileSync(path + filename, JSON.stringify(data, null, 2))
     })
 
+createApiHttpsRoutePatchFile()
+    .then((data) => {
+        const path = __dirname + '/../app/'
+        const filename = 'api-https-route.patch.json'
+        fs.writeFileSync(path + filename, JSON.stringify(data, null, 2))
+    })
+
 createOpenapiSpecHttpRoutePatchFile()
     .then((data) => {
         const path = __dirname + '/../app/'
@@ -67,6 +74,19 @@ async function createOpenApiDeploymentPatchFile() {
 }
 
 async function createApiHttpRoutePatchFile() {
+    const targetEnvironment = process.env.TARGET_ENVIRONMENT || 'prod'
+    const targetCluster = process.env.TARGET_CLUSTER || 'gke'
+
+    return [
+        {
+            "op": "replace",
+            "path": "/spec/hostnames/0",
+            "value": getHostname(targetCluster, targetEnvironment, 'api'),
+        },
+    ]
+}
+
+async function createApiHttpsRoutePatchFile() {
     const targetEnvironment = process.env.TARGET_ENVIRONMENT || 'prod'
     const targetCluster = process.env.TARGET_CLUSTER || 'gke'
 

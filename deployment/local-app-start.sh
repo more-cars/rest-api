@@ -18,16 +18,6 @@ if ! [ -f .env ]; then
   echo
 fi
 
-if ! [ -f certificates/tls.crt ]; then
-  echo "⚠️ No SSL certificate found"
-  echo "🪛 Creating a certificate"
-  mkdir -p "$SCRIPT_PATH"/../certificates
-  cp "$SCRIPT_PATH"/dummy-certs/tls.crt "$SCRIPT_PATH"/../certificates/tls.crt
-  cp "$SCRIPT_PATH"/dummy-certs/tls.key "$SCRIPT_PATH"/../certificates/tls.key
-  echo "✔️ SSL certificate created"
-  echo
-fi
-
 hostname_exists() {
   if ! getent hosts $1 >/dev/null 2>&1; then
       RED='\033[0;33m'

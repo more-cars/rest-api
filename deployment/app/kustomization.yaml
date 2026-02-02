@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - api-http-route.yaml
+  - api-https-route.yaml
   - api-service.yaml
   - api-deployment.yaml
   - db-http-route.yaml
@@ -25,7 +26,7 @@ patches:
     target:
       kind: Deployment
       name: openapi-spec-deployment
-  - path: api-http-route.patch.json
+  - path: api-https-route.patch.json
     target:
       kind: HTTPRoute
       name: api

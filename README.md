@@ -5,13 +5,13 @@
 This quickstart manual shows the fastest way to get the app running, with the least amount of tools.
 For an alternative Kubernetes setup check out the [Minikube](#minikube-local-kubernetes-cluster) section.
 
-**Requirements**
+### Requirements
 
 * Node.js (version >= 24) & npm
 * Docker
 * Any OS should work (but tested only on Linux)
 
-**Installation**
+### Installation
 
 * Clone or download the repository from https://github.com/more-cars/rest-api.git
 * Run `npm run local:db:start` to start the database in a local Docker container
@@ -19,18 +19,16 @@ For an alternative Kubernetes setup check out the [Minikube](#minikube-local-kub
     * optional: log in -> no credentials needed -> just click "Connect"
 * Run `npm install` to install all required dependencies and tools
 * Run `npm run local:app:start` to start the app locally
-    * it should be available now at http://localhost:3000 (http) and https://localhost:3443 (https)
+    * it should be available now at http://localhost:3000
     * an `.env` should have been created automatically in the project's root folder
         * it should contain the location of the database -> default: `DB_HOST=localhost`
         * it should contain the password for the database -> default: `DB_PASSWORD=123456789`
         * optional: change those values when you want to use a different database (e.g. from the Minikube cluster)
 * Optional: Using "pretty" hostnames instead of `localhost`:
     * run `npm run local:hostnames:add`
-    * this makes the REST API available at http://api.more-cars.internal:3000/ (http)
-      and https://api.more-cars.internal:3443/ (https)
-    * this makes the API specification available at http://swagger.more-cars.internal:3000/ (http)
-      and https://swagger.more-cars.internal:3443/ (https)
-    * this makes the database available at http://db.more-cars.internal:7474/ (http)
+    * this makes the REST API available at http://api.more-cars.internal:3000/
+    * this makes the API specification available at http://swagger.more-cars.internal:3000/
+    * this makes the database available at http://db.more-cars.internal:7474/
 
 ## Minikube (local Kubernetes cluster)
 
@@ -69,7 +67,7 @@ but cannot be recreated in a local dev environment.
         * needs to be confirmed via password
             * abort if you want to do it manually or you when you use a different hosts file
     * the app should now be available at https://api.dev.more-cars.internal
-        * accept the browser's security risk warning (all local environments use a dummy SSL certificate)
+        * accept the browser's security risk warning (the gateways in the local cluster use dummy certificates)
     * the API specificaiton should now be available at https://swagger.dev.more-cars.internal
     * the database should now be available at https://db.dev.more-cars.internal
 * Run `npm run app:undeploy` to completely remove the app from the Minikube cluster
@@ -107,39 +105,6 @@ Run `cypher-shell -u neo4j` and enter the current password.
 Type `ALTER USER neo4j SET PASSWORD 'newpassword';` with the new password.
 Enter.
 Done.
-
-## SSL Certificate
-
-At the moment, an SSL certificate is not mandatory to run the application -
-be it locally, in Minikube or in the production system.
-Should there be a certificate then the app will start an HTTP and an HTTPS server in parallel.
-When there is no certificate then only the HTTP server is started.
-
-In a local environment the application expects the certificate files in the folder `certificates`,
-named `tls.crt` and `tls.key`.
-
-In Minikube a dummy certificate is automatically added when deploying the app for the first time.
-There should be no need to replace it, because it is not possible to create a valid one for local environments anyway.
-
-For GKE the certificate needs to be added manually:
-
-```
-./deployment/lib/store-certificate-as-k8s-secret.sh api <NAMESPACE> <CERTIFICATE_PATH>
-```
-
-This will create a "Kubernetes Secret" with the name `certificate-api` in the given namespace (e.g. `testing`).
-
-To replace or renew the certificate the following commands can be used:
-
-```
-kubectl delete secret certificate-api \
-  --ignore-not-found \
-  --namespace=<NAMESPACE> && \
-kubectl create secret tls certificate-api \
-  --cert=<CERTIFICATE_PATH>/tls.crt \
-  --key=<CERTIFICATE_PATH>/tls.key \
-  --namespace=<NAMESPACE>
-```
 
 ## Tests
 
