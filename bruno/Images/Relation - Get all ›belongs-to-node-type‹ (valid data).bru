@@ -31,5 +31,8 @@ assert {
 }
 
 script:pre-request {
-  await lib.Images.ensureImageBelongsToNodeRelationshipExists()
+  const lib = require ('./lib/lib')
+  await lib.Images.ensureValidImageExists()
+  await lib.Brands.ensureValidBrandExists()
+  await lib.Images.ensureImageBelongsToNodeRelationshipExists(bru.getEnvVar('validImageId'), bru.getEnvVar('validBrandId'))
 }

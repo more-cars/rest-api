@@ -30,5 +30,8 @@ assert {
 }
 
 script:pre-request {
-  await lib.LapTimes.ensureLapTimeHasImageRelationshipExists()
+  const lib = require ('./lib/lib')
+  await lib.LapTimes.ensureValidLapTimeExists()
+  await lib.Images.ensureValidImageExists()
+  await lib.LapTimes.ensureLapTimeHasImageRelationshipExists(bru.getEnvVar('validLapTimeId'), bru.getEnvVar('validImageId'))
 }

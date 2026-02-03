@@ -30,5 +30,8 @@ assert {
 }
 
 script:pre-request {
-  await lib.Companies.ensureCompanyHasImageRelationshipExists()
+  const lib = require ('./lib/lib')
+  await lib.Companies.ensureValidCompanyExists()
+  await lib.Images.ensureValidImageExists()
+  await lib.Companies.ensureCompanyHasImageRelationshipExists(bru.getEnvVar('validCompanyId'), bru.getEnvVar('validImageId'))
 }

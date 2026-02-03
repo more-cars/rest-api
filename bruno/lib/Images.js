@@ -1,5 +1,4 @@
 const {submitPostRequest, submitGetRequest} = require("./request")
-const {ensureValidCarModelExists} = require("./CarModels")
 
 exports.ensureValidImageExists = async function () {
     if (!bru.getEnvVar('validImageId')) {
@@ -34,22 +33,10 @@ exports.getAllImages = async function () {
     return submitGetRequest("/images")
 }
 
-exports.ensureImageBelongsToNodeRelationshipExists = async function () {
-    await this.ensureValidImageExists()
-    await ensureValidCarModelExists()
-    await this.createImageBelongsToNodeRelationship(bru.getEnvVar('validImageId'), bru.getEnvVar('validCarModelId'))
-}
-
-exports.createImageBelongsToNodeRelationship = async function (imageId, nodeId) {
+exports.ensureImageBelongsToNodeRelationshipExists = async function (imageId, nodeId) {
     return submitPostRequest("/images/" + imageId + "/belongs-to-node/" + nodeId)
 }
 
-exports.ensureImageIsPrimeImageOfNodeRelationshipExists = async function () {
-    await this.ensureValidImageExists()
-    await ensureValidCarModelExists()
-    await this.createImageIsPrimeImageOfNodeRelationship(bru.getEnvVar('validImageId'), bru.getEnvVar('validNodeId'))
-}
-
-exports.createImageIsPrimeImageOfNodeRelationship = async function (imageId, nodeId) {
+exports.ensureImageIsPrimeImageOfNodeRelationshipExists = async function (imageId, nodeId) {
     return submitPostRequest("/images/" + imageId + "/is-prime-image-of-node/" + nodeId)
 }

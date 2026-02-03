@@ -20,5 +20,6 @@ assert {
 }
 
 script:pre-request {
+  const lib = require ('./lib/lib')
   lib.tools.generateInvalidId('RaceTrack')
 }

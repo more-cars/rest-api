@@ -1,6 +1,4 @@
 const {submitPostRequest, submitGetRequest} = require("./request")
-const {ensureValidBrandExists} = require("./Brands")
-const {ensureValidImageExists} = require("./Images")
 
 exports.ensureValidCompanyExists = async function () {
     if (!bru.getEnvVar('validCompanyId')) {
@@ -24,32 +22,14 @@ exports.getAllCompanies = async function () {
     return submitGetRequest("/companies")
 }
 
-exports.createCompanyHasBrandRelationship = async function (companyId, brandId) {
+exports.ensureCompanyHasBrandRelationshipExists = async function (companyId, brandId) {
     return submitPostRequest("/companies/" + companyId + "/has-brand/" + brandId)
 }
 
-exports.ensureCompanyHasBrandRelationshipExists = async function () {
-    await this.ensureValidCompanyExists()
-    await ensureValidBrandExists()
-    await this.createCompanyHasBrandRelationship(bru.getEnvVar('validCompanyId'), bru.getEnvVar('validBrandId'))
-}
-
-exports.createCompanyHasImageRelationship = async function (companyId, imageId) {
+exports.ensureCompanyHasImageRelationshipExists = async function (companyId, imageId) {
     return submitPostRequest("/companies/" + companyId + "/has-image/" + imageId)
 }
 
-exports.ensureCompanyHasImageRelationshipExists = async function () {
-    await this.ensureValidCompanyExists()
-    await ensureValidImageExists()
-    await this.createCompanyHasImageRelationship(bru.getEnvVar('validCompanyId'), bru.getEnvVar('validImageId'))
-}
-
-exports.createCompanyHasPrimeImageRelationship = async function (companyId, imageId) {
+exports.ensureCompanyHasPrimeImageRelationshipExists = async function (companyId, imageId) {
     return submitPostRequest("/companies/" + companyId + "/has-prime-image/" + imageId)
-}
-
-exports.ensureCompanyHasPrimeImageRelationshipExists = async function () {
-    await this.ensureValidCompanyExists()
-    await ensureValidImageExists()
-    await this.createCompanyHasPrimeImageRelationship(bru.getEnvVar('validCompanyId'), bru.getEnvVar('validImageId'))
 }

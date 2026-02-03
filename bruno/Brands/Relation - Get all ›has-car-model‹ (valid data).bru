@@ -30,5 +30,8 @@ assert {
 }
 
 script:pre-request {
-  await lib.Brands.ensureBrandHasCarModelRelationshipExists()
+  const lib = require ('./lib/lib')
+  await lib.Brands.ensureValidBrandExists()
+  await lib.CarModels.ensureValidCarModelExists()
+  await lib.Brands.ensureBrandHasCarModelRelationshipExists(bru.getEnvVar('validBrandId'), bru.getEnvVar('validCarModelId'))
 }

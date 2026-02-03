@@ -19,5 +19,8 @@ assert {
 }
 
 script:pre-request {
-  await lib.RaceTracks.ensureRaceTrackHasPrimeImageRelationshipExists()
+  const lib = require ('./lib/lib')
+  await lib.RaceTracks.ensureValidRaceTrackExists()
+  await lib.Images.ensureValidImageExists()
+  await lib.RaceTracks.ensureRaceTrackHasPrimeImageRelationshipExists(bru.getEnvVar('validRaceTrackId'), bru.getEnvVar('validImageId'))
 }

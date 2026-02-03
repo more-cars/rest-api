@@ -19,5 +19,8 @@ assert {
 }
 
 script:pre-request {
-  await lib.RacingSessions.ensureRacingSessionHasPrimeImageRelationshipExists()
+  const lib = require ('./lib/lib')
+  await lib.RacingSessions.ensureValidRacingSessionExists()
+  await lib.Images.ensureValidImageExists()
+  await lib.RacingSessions.ensureRacingSessionHasPrimeImageRelationshipExists(bru.getEnvVar('validRacingSessionId'), bru.getEnvVar('validImageId'))
 }

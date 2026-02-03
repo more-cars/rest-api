@@ -19,5 +19,6 @@ assert {
   res.body: isString
 }
 script:pre-request {
+  const lib = require ('./lib/lib')
   lib.tools.generateInvalidId('CarModelVariant')
 }

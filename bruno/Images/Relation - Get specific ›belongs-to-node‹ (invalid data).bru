@@ -20,9 +20,11 @@ assert {
 }
 
 script:pre-request {
+  const lib = require ('./lib/lib')
   await lib.Brands.ensureValidBrandExists()
 }
 
 script:pre-request {
+  const lib = require ('./lib/lib')
   lib.tools.generateInvalidId('Image')
 }

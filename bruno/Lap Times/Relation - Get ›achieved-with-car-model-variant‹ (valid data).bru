@@ -27,5 +27,8 @@ assert {
 }
 
 script:pre-request {
-  await lib.LapTimes.ensureLapTimeAchievedWithCarModelVariantRelationshipExists()
+  const lib = require ('./lib/lib')
+  await lib.LapTimes.ensureValidLapTimeExists()
+  await lib.CarModelVariants.ensureValidCarModelVariantExists()
+  await lib.LapTimes.ensureLapTimeAchievedWithCarModelVariantRelationshipExists(bru.getEnvVar('validLapTimeId'), bru.getEnvVar('validCarModelVariantId'))
 }

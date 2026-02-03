@@ -27,6 +27,7 @@ assert {
 }
 
 script:pre-request {
+  const lib = require ('./lib/lib')
   await lib.TrackLayouts.ensureValidTrackLayoutExists()
   await lib.RaceTracks.ensureValidRaceTrackExists()
 }

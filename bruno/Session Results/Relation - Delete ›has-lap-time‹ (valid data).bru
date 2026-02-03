@@ -19,5 +19,8 @@ assert {
 }
 
 script:pre-request {
-  await lib.SessionResults.ensureSessionResultHasLapTimeRelationshipExists()
+  const lib = require ('./lib/lib')
+  await lib.SessionResults.ensureValidSessionResultExists()
+  await lib.LapTimes.ensureValidLapTimeExists()
+  await lib.SessionResults.ensureSessionResultHasLapTimeRelationshipExists(bru.getEnvVar('validSessionResultId'), bru.getEnvVar('validLapTimeId'))
 }

@@ -19,5 +19,8 @@ assert {
 }
 
 script:pre-request {
-  await lib.Brands.ensureBrandBelongsToCompanyRelationshipExists()
+  const lib = require ('./lib/lib')
+  await lib.Brands.ensureValidBrandExists()
+  await lib.Companies.ensureValidCompanyExists()
+  await lib.Brands.ensureBrandBelongsToCompanyRelationshipExists(bru.getEnvVar('validBrandId'), bru.getEnvVar('validCompanyId'))
 }

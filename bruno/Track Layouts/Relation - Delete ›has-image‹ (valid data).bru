@@ -19,5 +19,8 @@ assert {
 }
 
 script:pre-request {
-  await lib.TrackLayouts.ensureTrackLayoutHasImageRelationshipExists()
+  const lib = require ('./lib/lib')
+  await lib.TrackLayouts.ensureValidTrackLayoutExists()
+  await lib.Images.ensureValidImageExists()
+  await lib.TrackLayouts.ensureTrackLayoutHasImageRelationshipExists(bru.getEnvVar('validTrackLayoutId'), bru.getEnvVar('validImageId'))
 }

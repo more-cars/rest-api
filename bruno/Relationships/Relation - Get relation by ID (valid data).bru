@@ -27,5 +27,7 @@ assert {
 }
 
 script:pre-request {
-  await lib.Relationships.ensureValidRelationshipExists()
+  await lib.Brands.ensureValidBrandExists()
+  await lib.CarModels.ensureValidCarModelExists()
+  await lib.Relationships.ensureValidRelationshipExists(bru.getEnvVar('validBrandId'), bru.getEnvVar('validCarModelId'))
 }

@@ -19,5 +19,8 @@ assert {
 }
 
 script:pre-request {
-  await lib.CarModelVariants.ensureCarModelVariantHasPrimeImageRelationshipExists()
+  const lib = require ('./lib/lib')
+  await lib.CarModelVariants.ensureValidCarModelVariantExists()
+  await lib.Images.ensureValidImageExists()
+  await lib.CarModelVariants.ensureCarModelVariantHasPrimeImageRelationshipExists(bru.getEnvVar('validCarModelVariantId'), bru.getEnvVar('validImageId'))
 }

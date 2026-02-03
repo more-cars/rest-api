@@ -1,6 +1,4 @@
 const {submitPostRequest, submitGetRequest} = require("./request")
-const {ensureValidRacingEventExists} = require("./RacingEvents")
-const {ensureValidImageExists} = require("./Images")
 
 exports.ensureValidRacingSeriesExists = async function () {
     if (!bru.getEnvVar('validRacingSeriesId')) {
@@ -24,32 +22,14 @@ exports.getAllRacingSeries = async function () {
     return submitGetRequest("/racing-series")
 }
 
-exports.ensureRacingSeriesHasRacingEventRelationshipExists = async function () {
-    await this.ensureValidRacingSeriesExists()
-    await ensureValidRacingEventExists()
-    await this.createRacingSeriesHasRacingEventRelationship(bru.getEnvVar('validRacingSeriesId'), bru.getEnvVar('validRacingEventId'))
-}
-
-exports.createRacingSeriesHasRacingEventRelationship = async function (racingSeriesId, racingEventId) {
+exports.ensureRacingSeriesHasRacingEventRelationshipExists = async function (racingSeriesId, racingEventId) {
     return submitPostRequest("/racing-series/" + racingSeriesId + "/has-racing-event/" + racingEventId)
 }
 
-exports.ensureRacingSeriesHasImageRelationshipExists = async function () {
-    await this.ensureValidRacingSeriesExists()
-    await ensureValidImageExists()
-    await this.createRacingSeriesHasImageRelationship(bru.getEnvVar('validRacingSeriesId'), bru.getEnvVar('validImageId'))
-}
-
-exports.createRacingSeriesHasImageRelationship = async function (racingSeriesId, imageId) {
+exports.ensureRacingSeriesHasImageRelationshipExists = async function (racingSeriesId, imageId) {
     return submitPostRequest("/racing-series/" + racingSeriesId + "/has-image/" + imageId)
 }
 
-exports.ensureRacingSeriesHasPrimeImageRelationshipExists = async function () {
-    await this.ensureValidRacingSeriesExists()
-    await ensureValidImageExists()
-    await this.createRacingSeriesHasPrimeImageRelationship(bru.getEnvVar('validRacingSeriesId'), bru.getEnvVar('validImageId'))
-}
-
-exports.createRacingSeriesHasPrimeImageRelationship = async function (racingSeriesId, imageId) {
+exports.ensureRacingSeriesHasPrimeImageRelationshipExists = async function (racingSeriesId, imageId) {
     return submitPostRequest("/racing-series/" + racingSeriesId + "/has-prime-image/" + imageId)
 }

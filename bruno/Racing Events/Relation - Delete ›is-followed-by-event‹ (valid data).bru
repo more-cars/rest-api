@@ -19,5 +19,8 @@ assert {
 }
 
 script:pre-request {
-  await lib.RacingEvents.ensureRacingEventIsFollowedByEventRelationshipExists()
+  const lib = require ('./lib/lib')
+  await lib.RacingEvents.ensureValidRacingEventExists()
+  await lib.RacingEvents.ensureValidSecondRacingEventExists()
+  await lib.RacingEvents.ensureRacingEventIsFollowedByEventRelationshipExists(bru.getEnvVar('validRacingEventId'), bru.getEnvVar('validSecondRacingEventId'))
 }

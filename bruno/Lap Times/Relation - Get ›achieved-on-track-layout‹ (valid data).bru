@@ -27,5 +27,8 @@ assert {
 }
 
 script:pre-request {
-  await lib.LapTimes.ensureLapTimeAchievedOnTrackLayoutRelationshipExists()
+  const lib = require ('./lib/lib')
+  await lib.LapTimes.ensureValidLapTimeExists()
+  await lib.TrackLayouts.ensureValidTrackLayoutExists()
+  await lib.LapTimes.ensureLapTimeAchievedOnTrackLayoutRelationshipExists(bru.getEnvVar('validLapTimeId'), )bru.getEnvVar('validTrackLayoutId')
 }

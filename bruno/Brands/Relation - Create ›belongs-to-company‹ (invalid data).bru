@@ -9,7 +9,7 @@ meta {
 }
 
 post {
-  url: {{baseUrl}}/brands/{{invalidBrandId}}/belongs-to-company/{{invalidCompanyId}}
+  url: {{baseUrl}}/brands/{{invalidBrandId}}/belongs-to-company/{{invalidSecondCompanyId}}
   body: none
   auth: none
 }
@@ -20,6 +20,7 @@ assert {
 }
 
 script:pre-request {
+  const lib = require ('./lib/lib')
   lib.tools.generateInvalidId('Brand')
   lib.tools.generateSecondInvalidId('Company')
 }

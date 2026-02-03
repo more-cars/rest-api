@@ -30,5 +30,8 @@ assert {
 }
 
 script:pre-request {
-  await lib.CarModelVariants.ensureCarModelVariantAchievedSessionResultRelationshipExists()
+  const lib = require ('./lib/lib')
+  await lib.CarModelVariants.ensureValidCarModelVariantExists()
+  await lib.SessionResults.ensureValidSessionResultExists()
+  await lib.CarModelVariants.ensureCarModelVariantAchievedSessionResultRelationshipExists(bru.getEnvVar('validCarModelVariantId'), bru.getEnvVar('validSessionResultId'))
 }

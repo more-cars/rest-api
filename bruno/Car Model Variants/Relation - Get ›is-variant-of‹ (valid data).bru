@@ -27,5 +27,8 @@ assert {
 }
 
 script:pre-request {
-  await lib.CarModelVariants.ensureCarModelVariantIsVariantOfRelationshipExists()
+  const lib = require ('./lib/lib')
+  await lib.CarModelVariants.ensureValidCarModelVariantExists()
+  await lib.CarModels.ensureValidCarModelExists()
+  await lib.CarModelVariants.ensureCarModelVariantIsVariantOfRelationshipExists(bru.getEnvVar('validCarModelVariantId'), bru.getEnvVar('validCarModelId'))
 }

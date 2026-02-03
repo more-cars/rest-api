@@ -27,5 +27,8 @@ assert {
 }
 
 script:pre-request {
-  await lib.CarModels.ensureCarModelHasSuccessorRelationshipExists()
+  const lib = require ('./lib/lib')
+  await lib.CarModels.ensureValidCarModelExists()
+  await lib.CarModels.ensureValidSecondCarModelExists()
+  await lib.CarModels.ensureCarModelHasSuccessorRelationshipExists(bru.getEnvVar('validCarModelId'), bru.getEnvVar('validSecondCarModelId'))
 }

@@ -27,6 +27,7 @@ assert {
 }
 
 script:pre-request {
+  const lib = require ('./lib/lib')
   await lib.LapTimes.ensureValidLapTimeExists()
   await lib.SessionResults.ensureValidSessionResultExists()
 }
