@@ -1,7 +1,6 @@
 info:
   name: Create Brand (ignored data)
   type: http
-  seq: 1
   tags:
     - create
     - node
