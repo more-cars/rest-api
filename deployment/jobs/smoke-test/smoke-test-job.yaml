@@ -22,10 +22,10 @@ spec:
               if [ "$REPORTS_ENABLED" = true ]; then
                 mkdir -p "$REPORTS_PATH"
                 cd bruno
-                npx bru run --insecure --env-var baseUrl=$API_URL --reporter-json ../"$REPORTS_PATH"/report.json --reporter-junit ../"$REPORTS_PATH"/report.xml --reporter-html ../"$REPORTS_PATH"/report.html
+                npx bru run --sandbox=developer --env-var baseUrl=$API_URL --reporter-json ../"$REPORTS_PATH"/report.json --reporter-junit ../"$REPORTS_PATH"/report.xml --reporter-html ../"$REPORTS_PATH"/report.html
               else
                 cd bruno
-                npx bru run --insecure --env-var baseUrl=$API_URL
+                npx bru run --sandbox=developer --env-var baseUrl=$API_URL
               fi
               
               # Bruno will return with exit code 1 should any of the tests fail.
