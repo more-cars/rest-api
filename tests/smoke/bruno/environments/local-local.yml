@@ -1,0 +1,4 @@
+name: local-local
+variables:
+  - name: baseUrl
+    value: http://api.more-cars.internal:3000

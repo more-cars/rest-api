@@ -1,0 +1,32 @@
+info:
+  name: Create Brand (ignored data)
+  type: http
+  seq: 1
+  tags:
+    - create
+    - node
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/brands"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "DKW",
+        "created_at": "nope",
+        "updated_at": "nonono"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body.data.created_at
+      operator: neq
+      value: nope
+    - expression: res.body.data.updated_at
+      operator: neq
+      value: nonono
