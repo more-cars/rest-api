@@ -23,6 +23,7 @@ runtime:
     - expression: res.body.data[0].data.id
       operator: gte
       value: "12000000"
+
   scripts:
     - type: before-request
       code: |-

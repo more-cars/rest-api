@@ -35,8 +35,12 @@ runtime:
       value: "{{validCarModelId}}"
     - expression: res.body.data.created_at
       operator: isString
+    - expression: res.body.data.created_at
+      operator: isNotEmpty
     - expression: res.body.data.updated_at
       operator: isString
+    - expression: res.body.data.updated_at
+      operator: isNotEmpty
 
   scripts:
     - type: before-request
