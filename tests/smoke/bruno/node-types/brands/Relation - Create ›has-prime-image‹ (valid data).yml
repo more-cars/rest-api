@@ -1,20 +1,20 @@
 info:
-  name: Get ›belongs-to-company‹ relation (valid data)
+  name: Create ›has-prime-image‹ relation (valid data)
   type: http
   tags:
-    - get
+    - create
     - relation
     - valid
 
 http:
-  method: GET
-  url: "{{baseUrl}}/brands/{{validBrandId}}/belongs-to-company"
+  method: POST
+  url: "{{baseUrl}}/brands/{{validBrandId}}/has-prime-image/{{validImageId}}"
 
 runtime:
   assertions:
     - expression: res.status
       operator: eq
-      value: "200"
+      value: "201"
     - expression: res.body
       operator: isJson
     - expression: res.body.data
@@ -24,15 +24,15 @@ runtime:
       value: "12000000"
     - expression: res.body.data.relationship_name
       operator: eq
-      value: "belongs-to-company"
+      value: "has-prime-image"
     - expression: res.body.data.relationship_partner
       operator: isJson
     - expression: res.body.data.relationship_partner.node_type
       operator: eq
-      value: "company"
+      value: "image"
     - expression: res.body.data.relationship_partner.data.id
       operator: eq
-      value: "{{validCompanyId}}"
+      value: "{{validImageId}}"
     - expression: res.body.data.created_at
       operator: isString
     - expression: res.body.data.created_at
@@ -46,7 +46,6 @@ runtime:
     - type: before-request
       code: |-
         const Brands = require('./lib/node-types/Brands.js')
-        const Companies = require('./lib/node-types/Companies.js')
+        const Images = require('./lib/node-types/Images.js')
         await Brands.createBrand()
-        await Companies.createCompany()
-        await Brands.createBrandBelongsToCompanyRelationship()
+        await Images.createImage()

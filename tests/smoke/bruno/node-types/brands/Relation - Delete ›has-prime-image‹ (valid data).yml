@@ -1,0 +1,26 @@
+info:
+  name: Delete ›has-prime-image‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/brands/{{validBrandId}}/has-prime-image/{{validImageId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+
+  scripts:
+    - type: before-request
+      code: |-
+        const Brands = require('./lib/node-types/Brands.js')
+        const Images = require('./lib/node-types/Images.js')
+        await Brands.createBrand()
+        await Images.createImage()
+        await Brands.createBrandHasPrimeImageRelationship()
