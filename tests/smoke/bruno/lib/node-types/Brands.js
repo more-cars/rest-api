@@ -17,3 +17,7 @@ exports.createBrandBelongsToCompanyRelationship = async function () {
 exports.createBrandHasCarModelRelationship = async function () {
     await post("/brands/" + bru.getEnvVar('validBrandId') + "/has-car-model/" + bru.getEnvVar('validCarModelId'))
 }
+
+exports.createBrandHasImageRelationship = async function () {
+    await post("/brands/" + bru.getEnvVar('validBrandId') + "/has-image/" + bru.getEnvVar('validImageId'))
+}
