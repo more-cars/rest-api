@@ -13,3 +13,7 @@ exports.createBrand = async function () {
 exports.createBrandBelongsToCompanyRelationship = async function () {
     await post("/brands/" + bru.getEnvVar('validBrandId') + "/belongs-to-company/" + bru.getEnvVar('validCompanyId'))
 }
+
+exports.createBrandHasCarModelRelationship = async function () {
+    await post("/brands/" + bru.getEnvVar('validBrandId') + "/has-car-model/" + bru.getEnvVar('validCarModelId'))
+}

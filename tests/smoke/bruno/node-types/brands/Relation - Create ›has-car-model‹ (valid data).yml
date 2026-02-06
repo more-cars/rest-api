@@ -1,5 +1,5 @@
 info:
-  name: Create ›belongs-to-company‹ relation (valid data)
+  name: Create ›has-car-model‹ relation (valid data)
   type: http
   tags:
     - create
@@ -8,7 +8,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/brands/{{validBrandId}}/belongs-to-company/{{validCompanyId}}"
+  url: "{{baseUrl}}/brands/{{validBrandId}}/has-car-model/{{validCarModelId}}"
 
 runtime:
   assertions:
@@ -24,15 +24,15 @@ runtime:
       value: "12000000"
     - expression: res.body.data.relationship_name
       operator: eq
-      value: "belongs-to-company"
+      value: "has-car-model"
     - expression: res.body.data.relationship_partner
       operator: isJson
     - expression: res.body.data.relationship_partner.node_type
       operator: eq
-      value: "company"
+      value: "car-model"
     - expression: res.body.data.relationship_partner.data.id
       operator: eq
-      value: "{{validCompanyId}}"
+      value: "{{validCarModelId}}"
     - expression: res.body.data.created_at
       operator: isString
     - expression: res.body.data.updated_at
@@ -42,6 +42,6 @@ runtime:
     - type: before-request
       code: |-
         const Brands = require('./lib/node-types/Brands.js')
-        const Companies = require('./lib/node-types/Companies.js')
+        const CarModels = require('./lib/node-types/CarModels.js')
         await Brands.createBrand()
-        await Companies.createCompany()
+        await CarModels.createCarModel()
