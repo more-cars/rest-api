@@ -7,5 +7,5 @@ request: { }
 bundled: false
 extensions:
   ignore:
+    - lib
     - node_modules
-    - .git
