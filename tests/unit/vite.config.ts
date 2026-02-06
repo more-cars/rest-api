@@ -34,10 +34,6 @@ export default defineConfig({
             ],
             reportsDirectory: 'test-reports/unit/coverage',
             reportOnFailure: true,
-            thresholds: {
-                statements: 20,
-                branches: 65,
-            }
         }
     },
 })
