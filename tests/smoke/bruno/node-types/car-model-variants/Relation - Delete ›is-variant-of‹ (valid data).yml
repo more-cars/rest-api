@@ -1,0 +1,25 @@
+info:
+  name: Delete ›is-variant-of‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/car-model-variants/{{validCarModelVariantId}}/is-variant-of/{{validCarModelId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const CarModelVariants = require('./lib/node-types/CarModelVariants.js')
+        const CarModels = require('./lib/node-types/CarModels.js')
+        await CarModelVariants.createCarModelVariant()
+        await CarModels.createCarModel()
+        await CarModelVariants.createIsVariantOfRelationship()

@@ -1,0 +1,27 @@
+info:
+  name: Delete ›achieved-lap-time‹ relation (invalid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - invalid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/car-model-variants/{{invalidCarModelVariantId}}/achieved-lap-time/{{invalidLapTimeId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "404"
+    - expression: res.body
+      operator: isString
+    - expression: res.body
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const Ids = require('./lib/Ids.js')
+        await Ids.generateInvalidId('CarModelVariant')
+        await Ids.generateInvalidId('LapTime')

@@ -1,0 +1,25 @@
+info:
+  name: Delete ›achieved-lap-time‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/car-model-variants/{{validCarModelVariantId}}/achieved-lap-time/{{validLapTimeId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const CarModelVariants = require('./lib/node-types/CarModelVariants.js')
+        const LapTimes = require('./lib/node-types/LapTimes.js')
+        await CarModelVariants.createCarModelVariant()
+        await LapTimes.createLapTime()
+        await CarModelVariants.createAchievedLapTimeRelationship()
