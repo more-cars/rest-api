@@ -1,6 +1,6 @@
 const {post} = require("../apiRequest.js")
 
-exports.createLapTime = async function () {
+exports.create = async function () {
     const response = await post("/lap-times", {
         time: 'Dummy Lap Time',
         driver_name: 'Dummy Lap Time',

@@ -1,8 +1,8 @@
 const {post} = require("../apiRequest.js")
 
-exports.createBrand = async function () {
+exports.create = async function () {
     const response = await post("/brands", {
-        name: 'Dummy Brand'
+        name: 'Dummy Brand',
     })
     const brand = response.data
     bru.setEnvVar('validBrandId', brand.id)
@@ -10,18 +10,18 @@ exports.createBrand = async function () {
     return brand
 }
 
-exports.createBrandBelongsToCompanyRelationship = async function () {
+exports.createBelongsToCompanyRelationship = async function () {
     await post("/brands/" + bru.getEnvVar('validBrandId') + "/belongs-to-company/" + bru.getEnvVar('validCompanyId'))
 }
 
-exports.createBrandHasCarModelRelationship = async function () {
+exports.createHasCarModelRelationship = async function () {
     await post("/brands/" + bru.getEnvVar('validBrandId') + "/has-car-model/" + bru.getEnvVar('validCarModelId'))
 }
 
-exports.createBrandHasImageRelationship = async function () {
+exports.createHasImageRelationship = async function () {
     await post("/brands/" + bru.getEnvVar('validBrandId') + "/has-image/" + bru.getEnvVar('validImageId'))
 }
 
-exports.createBrandHasPrimeImageRelationship = async function () {
+exports.createHasPrimeImageRelationship = async function () {
     await post("/brands/" + bru.getEnvVar('validBrandId') + "/has-prime-image/" + bru.getEnvVar('validImageId'))
 }

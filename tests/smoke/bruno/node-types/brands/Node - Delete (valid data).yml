@@ -21,7 +21,7 @@ runtime:
     - type: before-request
       code: |-
         const Brands = require('./lib/node-types/Brands.js')
-        await Brands.createBrand()
+        await Brands.create()
     - type: after-response
       code: |-
         const Ids = require('./lib/Ids.js')

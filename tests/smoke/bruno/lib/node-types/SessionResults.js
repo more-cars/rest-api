@@ -1,6 +1,6 @@
 const {post} = require("../apiRequest.js")
 
-exports.createSessionResult = async function () {
+exports.create = async function () {
     const response = await post("/session-results", {
         position: 1,
         driver_name: 'Dummy Session Result',

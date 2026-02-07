@@ -46,5 +46,5 @@ runtime:
       code: |-
         const Brands = require('./lib/node-types/Brands.js')
         const Companies = require('./lib/node-types/Companies.js')
-        await Brands.createBrand()
-        await Companies.createCompany()
+        await Brands.create()
+        await Companies.create()

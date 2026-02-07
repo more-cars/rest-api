@@ -47,6 +47,6 @@ runtime:
       code: |-
         const CarModelVariants = require('./lib/node-types/CarModelVariants.js')
         const Images = require('./lib/node-types/Images.js')
-        await CarModelVariants.createCarModelVariant()
-        await Images.createImage()
+        await CarModelVariants.create()
+        await Images.create()
         await CarModelVariants.createHasImageRelationship()

@@ -47,6 +47,6 @@ runtime:
       code: |-
         const CarModelVariants = require('./lib/node-types/CarModelVariants.js')
         const SessionResults = require('./lib/node-types/SessionResults.js')
-        await CarModelVariants.createCarModelVariant()
-        await SessionResults.createSessionResult()
+        await CarModelVariants.create()
+        await SessionResults.create()
         await CarModelVariants.createAchievedSessionResultRelationship()

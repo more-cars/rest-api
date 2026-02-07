@@ -1,6 +1,6 @@
 const {post} = require("../apiRequest.js")
 
-exports.createImage = async function () {
+exports.create = async function () {
     const response = await post("/images", {
         image_provider: "picci",
         external_id: "123456",

@@ -1,6 +1,6 @@
 const {post} = require("../apiRequest.js")
 
-exports.createCarModelVariant = async function () {
+exports.create = async function () {
     const response = await post("/car-model-variants", {
         name: 'Dummy Car Model Variant',
     })

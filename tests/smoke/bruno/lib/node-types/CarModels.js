@@ -1,8 +1,8 @@
 const {post} = require("../apiRequest.js")
 
-exports.createCarModel = async function () {
+exports.create = async function () {
     const response = await post("/car-models", {
-        name: 'Dummy Car Model'
+        name: 'Dummy Car Model',
     })
     const carModel = response.data
     bru.setEnvVar('validCarModelId', carModel.id)

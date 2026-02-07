@@ -47,6 +47,6 @@ runtime:
       code: |-
         const Brands = require('./lib/node-types/Brands.js')
         const CarModels = require('./lib/node-types/CarModels.js')
-        await Brands.createBrand()
-        await CarModels.createCarModel()
-        await Brands.createBrandHasCarModelRelationship()
+        await Brands.create()
+        await CarModels.create()
+        await Brands.createHasCarModelRelationship()

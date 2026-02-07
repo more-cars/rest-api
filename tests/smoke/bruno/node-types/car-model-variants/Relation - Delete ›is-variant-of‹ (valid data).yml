@@ -20,6 +20,6 @@ runtime:
       code: |-
         const CarModelVariants = require('./lib/node-types/CarModelVariants.js')
         const CarModels = require('./lib/node-types/CarModels.js')
-        await CarModelVariants.createCarModelVariant()
-        await CarModels.createCarModel()
+        await CarModelVariants.create()
+        await CarModels.create()
         await CarModelVariants.createIsVariantOfRelationship()

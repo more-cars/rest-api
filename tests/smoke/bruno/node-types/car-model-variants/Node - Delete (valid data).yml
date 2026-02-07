@@ -21,7 +21,7 @@ runtime:
     - type: before-request
       code: |-
         const CarModelVariants = require('./lib/node-types/CarModelVariants.js')
-        await CarModelVariants.createCarModelVariant()
+        await CarModelVariants.create()
     - type: after-response
       code: |-
         const Ids = require('./lib/Ids.js')
