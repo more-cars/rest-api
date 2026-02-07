@@ -19,7 +19,6 @@ runtime:
       operator: isString
     - expression: res.body
       operator: isNotEmpty
-
   scripts:
     - type: before-request
       code: |-

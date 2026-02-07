@@ -42,7 +42,6 @@ runtime:
       operator: isString
     - expression: res.body.data[0].data.updated_at
       operator: isNotEmpty
-
   scripts:
     - type: before-request
       code: |-
