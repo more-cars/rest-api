@@ -10,17 +10,6 @@ export default defineConfig(({mode}) => ({
         include: [
             'tests/integration/**/*.test.ts',
         ],
-        // The integration tests work on the same database (only partially mocked).
-        // Therefore, they cannot run in parallel.
-        // The following options make sure that the tests run strictly sequential.
-        // Using "forks" here, because the default option "threads" always creates parallel tests (even when disabled).
-        pool: "forks",
-        poolOptions: {
-            forks: {
-                singleFork: true,
-            },
-        },
-        fileParallelism: false,
         // giving vitest access to all environment variables, so the tests can for example find the database
         env: loadEnv(mode, rootDir, ''),
         reporters: [
@@ -46,4 +35,12 @@ export default defineConfig(({mode}) => ({
             reportOnFailure: true,
         }
     },
+    // The integration tests work on the same database (only partially mocked).
+    // Therefore, they cannot run in parallel.
+    // The following options make sure that the tests run strictly sequential.
+    pool: 'forks',
+    isolate: true,
+    maxWorkers: 1,
+    maxConcurrency: 1,
+    fileParallelism: false,
 }))
