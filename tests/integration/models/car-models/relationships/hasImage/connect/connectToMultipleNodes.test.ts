@@ -1,11 +1,11 @@
 import {expect, test} from 'vitest'
-import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 
 test('A CAR MODEL can have multiple ›has-image‹ relationships', async () => {
-    const carModel = await seedCarModel()
+    const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
     const imagesAmount = 3
     const images = await seedNodes(NodeTypeEnum.IMAGE, imagesAmount)
 

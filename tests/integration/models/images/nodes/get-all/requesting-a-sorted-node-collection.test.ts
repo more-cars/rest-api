@@ -3,7 +3,7 @@ import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllN
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {ImageNode} from "../../../../../../src/models/images/types/ImageNode"
 import {Image} from "../../../../../../src/models/images/Image"
-import {seedImage} from "../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
+import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all IMAGE nodes" request returns the nodes in correct order', () => {
     test('when there exist NO image nodes', async () => {
@@ -18,9 +18,9 @@ describe('A sorted "get all IMAGE nodes" request returns the nodes in correct or
 
     test('when there exist image nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
-        const nodeA = await seedImage({name: 'A Node'})
-        const nodeB = await seedImage({name: 'B Node'})
-        const nodeC = await seedImage({name: 'C Node'})
+        const nodeA = await seedNode(NodeTypeEnum.IMAGE, {name: 'A Node'}) as ImageNode
+        const nodeB = await seedNode(NodeTypeEnum.IMAGE, {name: 'B Node'}) as ImageNode
+        const nodeC = await seedNode(NodeTypeEnum.IMAGE, {name: 'C Node'}) as ImageNode
 
         const ascNodes = await Image.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

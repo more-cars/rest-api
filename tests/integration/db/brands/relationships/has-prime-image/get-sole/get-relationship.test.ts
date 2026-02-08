@@ -1,11 +1,9 @@
 import {describe, expect, test} from 'vitest'
-import {
-    getRelationshipCollection
-} from "../../../../../../../src/db/relationships/getRelationshipCollection"
+import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
-import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
-import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 
 describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
@@ -21,7 +19,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const brand = await seedBrand()
+        const brand = await seedNode(NodeTypeEnum.BRAND)
 
         const relationships = await getRelationshipCollection(
             brand.id,

@@ -1,11 +1,12 @@
 import {expect, test} from 'vitest'
-import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›is-successor-of‹ relationship with nodes that do not exist', async () => {
-    const carModel = await seedCarModel()
-    const partner = await seedCarModel()
+    const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
+    const partner = await seedNode(NodeTypeEnum.CAR_MODEL)
 
     await expect(CarModel.createIsSuccessorOfRelationship(-42, partner.id))
         .rejects

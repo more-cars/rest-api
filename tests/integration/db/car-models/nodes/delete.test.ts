@@ -1,6 +1,7 @@
 import {expect, test} from 'vitest'
 import {deleteNode} from "../../../../../src/db/nodes/deleteNode"
-import {seedCarModel} from "../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 test('Deleting an CAR MODEL that does not exist should return "false"', async () => {
     const success = await deleteNode(-42)
@@ -10,7 +11,7 @@ test('Deleting an CAR MODEL that does not exist should return "false"', async ()
 })
 
 test('Deleting an CAR MODEL that does exist should return "true"', async () => {
-    const node = await seedCarModel()
+    const node = await seedNode(NodeTypeEnum.CAR_MODEL)
     const success = await deleteNode(node.id)
 
     expect(success)

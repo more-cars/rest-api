@@ -1,7 +1,8 @@
 import {describe, expect, test} from 'vitest'
 import {RacingSeries} from "../../../../../src/models/racing-series/RacingSeries"
-import {seedRacingSeries} from "../../../../_toolbox/dbSeeding/racing-series/nodes/seedRacingSeries"
 import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
+import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 describe('Deleting a RACING SERIES', () => {
     test('that does not exist', async () => {
@@ -11,7 +12,7 @@ describe('Deleting a RACING SERIES', () => {
     })
 
     test('that exists', async () => {
-        const node = await seedRacingSeries()
+        const node = await seedNode(NodeTypeEnum.RACING_SERIES)
         await expect(RacingSeries.delete(node.id))
             .resolves
             .not.toThrow(NodeNotFoundError)

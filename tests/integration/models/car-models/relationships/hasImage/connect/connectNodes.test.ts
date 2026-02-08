@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
-import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
-import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 import {CarModelRelationship} from "../../../../../../../src/models/car-models/types/CarModelRelationship"
 
 test('Creating a "Car Model has Image" relationship', async () => {
-    const carModel = await seedCarModel()
-    const image = await seedImage()
+    const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
+    const image = await seedNode(NodeTypeEnum.IMAGE)
 
     const createdRelationship = await CarModel.createHasImageRelationship(carModel.id, image.id)
 

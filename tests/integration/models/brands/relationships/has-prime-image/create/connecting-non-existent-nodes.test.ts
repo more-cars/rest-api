@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
-import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
-import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {Brand} from "../../../../../../../src/models/brands/Brand"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›has-prime-image‹ relationship with nodes that do not exist', async () => {
-    const brand = await seedBrand()
-    const image = await seedImage()
+    const brand = await seedNode(NodeTypeEnum.BRAND)
+    const image = await seedNode(NodeTypeEnum.IMAGE)
 
     await expect(Brand.createHasPrimeImageRelationship(-42, image.id))
         .rejects

@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
-import {seedImage} from "../../../../_toolbox/dbSeeding/images/nodes/seedImage"
+import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getNodeById} from "../../../../../src/db/nodes/images/getNodeById"
-import {ImageNode} from "../../../../../src/db/nodes/images/types/ImageNode"
 import {ImageSchema} from "../../../../_toolbox/schemas/ImageSchema"
 import {validateJson} from "../../../../_toolbox/validateJson"
 
@@ -14,7 +14,7 @@ test('Querying an image that does not exist should return "false"', async () => 
 })
 
 test('Querying an existing brand should return a db node with correct schema', async () => {
-    const existingNode: ImageNode = await seedImage()
+    const existingNode = await seedNode(NodeTypeEnum.IMAGE)
     const requestedNode = await getNodeById(existingNode.id)
 
     expect(validateJson(requestedNode, ImageSchema))

@@ -4,7 +4,7 @@ import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTy
 import type {ImageNode} from "../../../../../../src/models/images/types/ImageNode"
 import {Image} from "../../../../../../src/models/images/Image"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
-import {seedImage} from "../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
+import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all IMAGE nodes" request returns only the matching nodes', () => {
     test('when there exist NO image nodes', async () => {
@@ -23,9 +23,9 @@ describe('A filtered "get all IMAGE nodes" request returns only the matching nod
 
     test('when there exist image nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
-        const nodeA = await seedImage({name: 'A Node'})
-        await seedImage({name: 'B Node'})
-        await seedImage({name: 'C Node'})
+        const nodeA = await seedNode(NodeTypeEnum.IMAGE, {name: 'A Node'}) as ImageNode
+        await seedNode(NodeTypeEnum.IMAGE, {name: 'B Node'})
+        await seedNode(NodeTypeEnum.IMAGE, {name: 'C Node'})
 
         const filteredNodes = await Image.findAll({
             filterByProperty: 'name',

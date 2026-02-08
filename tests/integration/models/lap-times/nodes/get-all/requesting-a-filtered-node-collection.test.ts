@@ -4,7 +4,7 @@ import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTy
 import type {LapTimeNode} from "../../../../../../src/models/lap-times/types/LapTimeNode"
 import {LapTime} from "../../../../../../src/models/lap-times/LapTime"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
-import {seedLapTime} from "../../../../../_toolbox/dbSeeding/lap-times/nodes/seedLapTime"
+import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all LAP TIME nodes" request returns only the matching nodes', () => {
     test('when there exist NO Lap Time nodes', async () => {
@@ -23,9 +23,9 @@ describe('A filtered "get all LAP TIME nodes" request returns only the matching 
 
     test('when there exist Lap Time nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
-        const nodeA = await seedLapTime({driver_name: 'A Node'})
-        await seedLapTime({driver_name: 'B Node'})
-        await seedLapTime({driver_name: 'C Node'})
+        const nodeA = await seedNode(NodeTypeEnum.LAP_TIME, {time: 'A', driver_name: 'A Node'}) as LapTimeNode
+        await seedNode(NodeTypeEnum.LAP_TIME, {time: 'B', driver_name: 'B Node'})
+        await seedNode(NodeTypeEnum.LAP_TIME, {time: 'C', driver_name: 'C Node'})
 
         const filteredNodes = await LapTime.findAll({
             filterByProperty: 'driver_name',

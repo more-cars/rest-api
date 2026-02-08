@@ -1,13 +1,13 @@
 import {expect, test} from 'vitest'
-import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
-import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 
 test('Requesting a relationship list for all CAR MODELs that are connected to the BRAND', async () => {
-    const brand = await seedBrand()
+    const brand = await seedNode(NodeTypeEnum.BRAND)
     const carModels = await seedNodes(NodeTypeEnum.CAR_MODEL, 3)
 
     for (const carModel of carModels) {

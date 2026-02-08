@@ -1,6 +1,7 @@
 import {expect, test} from 'vitest'
 import {deleteNode} from "../../../../../src/db/nodes/deleteNode"
-import {seedRaceTrack} from "../../../../_toolbox/dbSeeding/race-tracks/nodes/seedRaceTrack"
+import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 test('Expecting response "false" when trying to delete a non-existing RACE TRACK', async () => {
     const success = await deleteNode(-42)
@@ -10,7 +11,7 @@ test('Expecting response "false" when trying to delete a non-existing RACE TRACK
 })
 
 test('Expecting response "true" when deleting an existing RACE TRACK', async () => {
-    const node = await seedRaceTrack()
+    const node = await seedNode(NodeTypeEnum.RACE_TRACK)
     const success = await deleteNode(node.id)
 
     expect(success)

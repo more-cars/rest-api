@@ -1,12 +1,11 @@
 import {expect, test} from 'vitest'
-import {seedCompany} from "../../../../../../_toolbox/dbSeeding/companies/nodes/seedCompany"
-import {
-    getRelationshipCollection
-} from "../../../../../../../src/db/relationships/getRelationshipCollection"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 test('Expecting an empty list when the relationship does not exist', async () => {
-    const company = await seedCompany()
+    const company = await seedNode(NodeTypeEnum.COMPANY)
 
     const relationships = await getRelationshipCollection(
         company.id,

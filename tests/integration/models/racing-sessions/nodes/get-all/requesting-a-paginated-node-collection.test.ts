@@ -3,7 +3,7 @@ import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllN
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {RacingSessionNode} from "../../../../../../src/models/racing-sessions/types/RacingSessionNode"
 import {RacingSession} from "../../../../../../src/models/racing-sessions/RacingSession"
-import {seedRacingSession} from "../../../../../_toolbox/dbSeeding/racing-sessions/nodes/seedRacingSession"
+import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all RACING SESSION nodes" request returns the nodes in correct order', () => {
     test('when there exist NO racing session nodes', async () => {
@@ -18,9 +18,9 @@ describe('A sorted "get all RACING SESSION nodes" request returns the nodes in c
 
     test('when there exist racing session nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_SESSION)
-        const nodeA = await seedRacingSession({name: 'A Node'})
-        const nodeB = await seedRacingSession({name: 'B Node'})
-        const nodeC = await seedRacingSession({name: 'C Node'})
+        const nodeA = await seedNode(NodeTypeEnum.RACING_SESSION, {name: 'A Node'}) as RacingSessionNode
+        const nodeB = await seedNode(NodeTypeEnum.RACING_SESSION, {name: 'B Node'}) as RacingSessionNode
+        const nodeC = await seedNode(NodeTypeEnum.RACING_SESSION, {name: 'C Node'}) as RacingSessionNode
 
         const ascNodes = await RacingSession.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

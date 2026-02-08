@@ -1,13 +1,13 @@
 import {expect, test} from 'vitest'
-import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {Image} from "../../../../../../../src/models/images/Image"
-import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 
 test('An image can be connected to multiple nodes of the same type', async () => {
-    const imageNode = await seedImage()
-    const brandNode1 = await seedBrand()
-    const brandNode2 = await seedBrand()
-    const brandNode3 = await seedBrand()
+    const imageNode = await seedNode(NodeTypeEnum.IMAGE)
+    const brandNode1 = await seedNode(NodeTypeEnum.BRAND)
+    const brandNode2 = await seedNode(NodeTypeEnum.BRAND)
+    const brandNode3 = await seedNode(NodeTypeEnum.BRAND)
 
     const createdRelationship1 = await Image.createBelongsToNodeRelationship(imageNode.id, brandNode1.id)
     expect(createdRelationship1).not.toBeFalsy()

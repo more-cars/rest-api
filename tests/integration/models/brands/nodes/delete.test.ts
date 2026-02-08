@@ -1,7 +1,8 @@
 import {describe, expect, test} from 'vitest'
 import {Brand} from "../../../../../src/models/brands/Brand"
 import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
-import {seedBrand} from "../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
+import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 describe('Deleting a BRAND', () => {
     test('that does not exist', async () => {
@@ -11,7 +12,7 @@ describe('Deleting a BRAND', () => {
     })
 
     test('that exists', async () => {
-        const node = await seedBrand()
+        const node = await seedNode(NodeTypeEnum.BRAND)
         await expect(Brand.delete(node.id))
             .resolves
             .not.toThrow(NodeNotFoundError)

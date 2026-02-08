@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
-import {seedCompany} from "../../../../../../_toolbox/dbSeeding/companies/nodes/seedCompany"
-import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {Company} from "../../../../../../../src/models/companies/Company"
 import {CompanyRelationship} from "../../../../../../../src/models/companies/types/CompanyRelationship"
 
 test('Creating a ›has-prime-image‹ relationship with valid data', async () => {
-    const company = await seedCompany()
-    const image = await seedImage()
+    const company = await seedNode(NodeTypeEnum.COMPANY)
+    const image = await seedNode(NodeTypeEnum.IMAGE)
 
     const createdRelationship = await Company.createHasPrimeImageRelationship(company.id, image.id)
 

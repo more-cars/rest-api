@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {getNodeById} from "../../../../../src/db/nodes/companies/getNodeById"
-import {seedCompany} from "../../../../_toolbox/dbSeeding/companies/nodes/seedCompany"
-import {CompanyNode} from "../../../../../src/db/nodes/companies/types/CompanyNode"
+import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {CompanySchema} from "../../../../_toolbox/schemas/CompanySchema"
 import {validateJson} from "../../../../_toolbox/validateJson"
 
@@ -14,7 +14,7 @@ test('Querying a COMPANY that does not exist should return "false"', async () =>
 })
 
 test('Querying an existing COMPANY should return a db node with correct schema', async () => {
-    const createdNode: CompanyNode = await seedCompany()
+    const createdNode = await seedNode(NodeTypeEnum.COMPANY)
     const companyNode = await getNodeById(createdNode.id)
 
     expect(validateJson(companyNode, CompanySchema))

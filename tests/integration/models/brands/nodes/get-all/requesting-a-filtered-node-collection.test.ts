@@ -4,7 +4,7 @@ import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTy
 import type {BrandNode} from "../../../../../../src/models/brands/types/BrandNode"
 import {Brand} from "../../../../../../src/models/brands/Brand"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
-import {seedBrand} from "../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
+import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all BRAND nodes" request returns only the matching nodes', () => {
     test('when there exist NO brand nodes', async () => {
@@ -23,9 +23,9 @@ describe('A filtered "get all BRAND nodes" request returns only the matching nod
 
     test('when there exist brand nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.BRAND)
-        const nodeA = await seedBrand({name: 'A Node'})
-        await seedBrand({name: 'B Node'})
-        await seedBrand({name: 'C Node'})
+        const nodeA = await seedNode(NodeTypeEnum.BRAND, {name: 'A Node'}) as BrandNode
+        await seedNode(NodeTypeEnum.BRAND, {name: 'B Node'})
+        await seedNode(NodeTypeEnum.BRAND, {name: 'C Node'})
 
         const filteredNodes = await Brand.findAll({
             filterByProperty: 'name',

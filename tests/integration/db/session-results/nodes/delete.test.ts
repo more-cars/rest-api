@@ -1,6 +1,7 @@
 import {expect, test} from 'vitest'
 import {deleteNode} from "../../../../../src/db/nodes/deleteNode"
-import {seedSessionResult} from "../../../../_toolbox/dbSeeding/session-results/nodes/seedSessionResult"
+import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 test('Expecting response "false" when trying to delete a non-existing SESSION RESULT', async () => {
     const success = await deleteNode(-42)
@@ -10,7 +11,7 @@ test('Expecting response "false" when trying to delete a non-existing SESSION RE
 })
 
 test('Expecting response "true" when deleting an existing SESSION RESULT', async () => {
-    const node = await seedSessionResult()
+    const node = await seedNode(NodeTypeEnum.SESSION_RESULT)
     const success = await deleteNode(node.id)
 
     expect(success)

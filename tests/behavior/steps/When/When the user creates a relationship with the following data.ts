@@ -1,12 +1,12 @@
 import {DataTable, When, world} from "@cucumber/cucumber"
 import axios from "axios"
-import {seedBrand} from "../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
-import {seedCarModel} from "../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {seedNode} from "../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 When('the user creates a relationship with the following data',
     async (dataTable: DataTable) => {
-        const brand = await seedBrand()
-        const carModel = await seedCarModel()
+        const brand = await seedNode(NodeTypeEnum.BRAND)
+        const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
         const rows = dataTable.hashes()
         const data: any = {}
 

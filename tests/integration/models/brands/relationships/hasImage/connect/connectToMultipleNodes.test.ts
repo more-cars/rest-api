@@ -1,11 +1,11 @@
 import {expect, test} from 'vitest'
-import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {Brand} from "../../../../../../../src/models/brands/Brand"
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 test('A BRAND can have multiple ›has-image‹ relationships', async () => {
-    const brand = await seedBrand()
+    const brand = await seedNode(NodeTypeEnum.BRAND)
     const imagesAmount = 3
     const images = await seedNodes(NodeTypeEnum.IMAGE, imagesAmount)
 

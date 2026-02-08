@@ -3,7 +3,7 @@ import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllN
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {BrandNode} from "../../../../../../src/models/brands/types/BrandNode"
 import {Brand} from "../../../../../../src/models/brands/Brand"
-import {seedBrand} from "../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
+import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all BRAND nodes" request returns the nodes in correct order', () => {
     test('when there exist NO brand nodes', async () => {
@@ -18,9 +18,9 @@ describe('A sorted "get all BRAND nodes" request returns the nodes in correct or
 
     test('when there exist brand nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.BRAND)
-        const nodeA = await seedBrand({name: 'A Node'})
-        const nodeB = await seedBrand({name: 'B Node'})
-        const nodeC = await seedBrand({name: 'C Node'})
+        const nodeA = await seedNode(NodeTypeEnum.BRAND, {name: 'A Node'}) as BrandNode
+        const nodeB = await seedNode(NodeTypeEnum.BRAND, {name: 'B Node'}) as BrandNode
+        const nodeC = await seedNode(NodeTypeEnum.BRAND, {name: 'C Node'}) as BrandNode
 
         const ascNodes = await Brand.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

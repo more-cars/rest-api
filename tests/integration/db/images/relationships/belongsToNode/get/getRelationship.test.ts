@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
-import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/images/relationships/seedRelationship"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
@@ -37,15 +37,15 @@ test('Get a "Image belongs to Node" relationship when both nodes exist', async (
 
 test('Trying to get image relationship when image node does not exist', async () => {
     const imageNode = {id: -42}
-    const partnerNode = await seedCarModel()
+    const partnerNode = await seedNode(NodeTypeEnum.CAR_MODEL)
     const relationship = await getSpecificRelationship(partnerNode.id, imageNode.id, DbRelationship.NodeHasImage)
 
     expect(relationship).toBeFalsy()
 })
 
 test('Trying to get image relationship when partner node does not exist', async () => {
-    const imageNode = await seedImage()
-    const partnerNode = await seedCarModel()
+    const imageNode = await seedNode(NodeTypeEnum.IMAGE)
+    const partnerNode = await seedNode(NodeTypeEnum.CAR_MODEL)
     const relationship = await getSpecificRelationship(partnerNode.id, imageNode.id, DbRelationship.NodeHasImage)
 
     expect(relationship).toBeFalsy()
@@ -60,8 +60,8 @@ test('Trying to get image relationship when both nodes do not exist', async () =
 })
 
 test('Trying to get image relationship when there is none', async () => {
-    const imageNode = await seedImage()
-    const partnerNode = await seedCarModel()
+    const imageNode = await seedNode(NodeTypeEnum.IMAGE)
+    const partnerNode = await seedNode(NodeTypeEnum.CAR_MODEL)
     const relationship = await getSpecificRelationship(partnerNode.id, imageNode.id, DbRelationship.NodeHasImage)
 
     expect(relationship).toBeFalsy()

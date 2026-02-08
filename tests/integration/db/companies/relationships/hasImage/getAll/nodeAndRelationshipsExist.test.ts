@@ -1,14 +1,12 @@
 import {expect, test} from 'vitest'
-import {seedCompany} from "../../../../../../_toolbox/dbSeeding/companies/nodes/seedCompany"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
-import {
-    getRelationshipCollection
-} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 
 test('Node and relationships exist', async () => {
-    const company = await seedCompany()
+    const company = await seedNode(NodeTypeEnum.COMPANY)
     await seedRelationshipForStartNode(company.id, NodeTypeEnum.IMAGE, DbRelationship.CompanyHasImage)
     await seedRelationshipForStartNode(company.id, NodeTypeEnum.IMAGE, DbRelationship.CompanyHasImage)
 

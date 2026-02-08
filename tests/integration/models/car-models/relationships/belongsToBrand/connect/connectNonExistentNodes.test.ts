@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
-import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
-import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›belongs-to-brand‹ relationship with nodes that do not exist', async () => {
-    const carModel = await seedCarModel()
-    const brand = await seedBrand()
+    const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
+    const brand = await seedNode(NodeTypeEnum.BRAND)
 
     await expect(CarModel.createBelongsToBrandRelationship(-42, brand.id))
         .rejects

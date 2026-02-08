@@ -1,6 +1,7 @@
 import {expect, test} from 'vitest'
 import {Company} from "../../../../../src/models/companies/Company"
-import {seedCompany} from "../../../../_toolbox/dbSeeding/companies/nodes/seedCompany"
+import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 test('Fetching a COMPANY that does not exist should return "false"', async () => {
     const expectedCompany = false
@@ -11,7 +12,7 @@ test('Fetching a COMPANY that does not exist should return "false"', async () =>
 })
 
 test('When the COMPANY exists it should be returned', async () => {
-    const expectedCompany = await seedCompany()
+    const expectedCompany = await seedNode(NodeTypeEnum.COMPANY)
     const actualCompany = await Company.findById(expectedCompany.id)
 
     expect(actualCompany)

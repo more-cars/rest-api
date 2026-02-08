@@ -1,7 +1,8 @@
 import {describe, expect, test} from 'vitest'
 import {SessionResult} from "../../../../../src/models/session-results/SessionResult"
-import {seedSessionResult} from "../../../../_toolbox/dbSeeding/session-results/nodes/seedSessionResult"
 import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
+import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 describe('Deleting a SESSION RESULT', () => {
     test('that does not exist', async () => {
@@ -11,7 +12,7 @@ describe('Deleting a SESSION RESULT', () => {
     })
 
     test('that exists', async () => {
-        const node = await seedSessionResult()
+        const node = await seedNode(NodeTypeEnum.SESSION_RESULT)
         await expect(SessionResult.delete(node.id))
             .resolves
             .not.toThrow(NodeNotFoundError)

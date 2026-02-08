@@ -4,7 +4,7 @@ import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTy
 import type {CompanyNode} from "../../../../../../src/models/companies/types/CompanyNode"
 import {Company} from "../../../../../../src/models/companies/Company"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
-import {seedCompany} from "../../../../../_toolbox/dbSeeding/companies/nodes/seedCompany"
+import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all COMPANY nodes" request returns only the matching nodes', () => {
     test('when there exist NO company nodes', async () => {
@@ -23,9 +23,9 @@ describe('A filtered "get all COMPANY nodes" request returns only the matching n
 
     test('when there exist company nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.COMPANY)
-        const nodeA = await seedCompany({name: 'A Node'})
-        await seedCompany({name: 'B Node'})
-        await seedCompany({name: 'C Node'})
+        const nodeA = await seedNode(NodeTypeEnum.COMPANY, {name: 'A Node'}) as CompanyNode
+        await seedNode(NodeTypeEnum.COMPANY, {name: 'B Node'})
+        await seedNode(NodeTypeEnum.COMPANY, {name: 'C Node'})
 
         const filteredNodes = await Company.findAll({
             filterByProperty: 'name',

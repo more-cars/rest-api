@@ -1,12 +1,12 @@
 import {describe, expect, test} from 'vitest'
-import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
-import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 describe('Requesting a specific ›has-image‹ relationship', () => {
     test('with a CAR MODEL that does not exist', async () => {
-        const image = await seedImage()
+        const image = await seedNode(NodeTypeEnum.IMAGE)
 
         await expect(CarModel.getSpecificHasImageRelationship(-42, image.id))
             .rejects
@@ -14,7 +14,7 @@ describe('Requesting a specific ›has-image‹ relationship', () => {
     })
 
     test('with an IMAGE that does not exist', async () => {
-        const carModel = await seedCarModel()
+        const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
 
         await expect(CarModel.getSpecificHasImageRelationship(carModel.id, -43))
             .rejects

@@ -1,11 +1,9 @@
 import {describe, expect, test} from 'vitest'
-import {
-    getRelationshipCollection
-} from "../../../../../../../src/db/relationships/getRelationshipCollection"
+import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
-import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
-import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 
 describe('Requesting a ›has-successor‹ relationship', () => {
     test('node and relationship exist', async () => {
@@ -21,7 +19,7 @@ describe('Requesting a ›has-successor‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const carModel = await seedCarModel()
+        const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
 
         const relationships = await getRelationshipCollection(
             carModel.id,

@@ -4,7 +4,7 @@ import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTy
 import type {RacingSessionNode} from "../../../../../../src/models/racing-sessions/types/RacingSessionNode"
 import {RacingSession} from "../../../../../../src/models/racing-sessions/RacingSession"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
-import {seedRacingSession} from "../../../../../_toolbox/dbSeeding/racing-sessions/nodes/seedRacingSession"
+import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all RACING SESSION nodes" request returns only the matching nodes', () => {
     test('when there exist NO Racing Session nodes', async () => {
@@ -23,9 +23,9 @@ describe('A filtered "get all RACING SESSION nodes" request returns only the mat
 
     test('when there exist Racing Session nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_SESSION)
-        const nodeA = await seedRacingSession({name: 'A Node'})
-        await seedRacingSession({name: 'B Node'})
-        await seedRacingSession({name: 'C Node'})
+        const nodeA = await seedNode(NodeTypeEnum.RACING_SESSION, {name: 'A Node'}) as RacingSessionNode
+        await seedNode(NodeTypeEnum.RACING_SESSION, {name: 'B Node'})
+        await seedNode(NodeTypeEnum.RACING_SESSION, {name: 'C Node'})
 
         const filteredNodes = await RacingSession.findAll({
             filterByProperty: 'name',

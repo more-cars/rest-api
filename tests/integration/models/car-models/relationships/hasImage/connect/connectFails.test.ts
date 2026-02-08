@@ -1,6 +1,6 @@
 import {expect, test, vi} from 'vitest'
-import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
-import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 
 test('A completely valid request, but the database call fails for some reason', async () => {
@@ -10,8 +10,8 @@ test('A completely valid request, but the database call fails for some reason', 
         }
     })
 
-    const carModel = await seedCarModel()
-    const image = await seedImage()
+    const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
+    const image = await seedNode(NodeTypeEnum.IMAGE)
 
     await expect(CarModel.createHasImageRelationship(carModel.id, image.id))
         .rejects

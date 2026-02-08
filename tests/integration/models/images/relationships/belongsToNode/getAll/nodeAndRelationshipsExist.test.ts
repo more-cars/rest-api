@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
-import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {Image} from "../../../../../../../src/models/images/Image"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 test('IMAGE exists and has ›belongs-to-node‹ relationships', async () => {
-    const image = await seedImage()
+    const image = await seedNode(NodeTypeEnum.IMAGE)
     await seedRelationshipForStartNode(image.id, NodeTypeEnum.BRAND, DbRelationship.NodeHasImage)
     await seedRelationshipForStartNode(image.id, NodeTypeEnum.BRAND, DbRelationship.NodeHasImage)
 

@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
-import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
-import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 import {RelationshipAlreadyExistsError} from "../../../../../../../src/models/types/RelationshipAlreadyExistsError"
 
 test('Trying to create the same ›has-prime-image‹ relationship again', async () => {
-    const carModel = await seedCarModel()
-    const image = await seedImage()
+    const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
+    const image = await seedNode(NodeTypeEnum.IMAGE)
 
     await expect(CarModel.createHasPrimeImageRelationship(carModel.id, image.id))
         .resolves

@@ -4,10 +4,9 @@ to: tests/integration/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeT
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {deleteAll<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>} from "../../../../../_toolbox/dbSeeding/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/nodes/deleteAll<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>"
 import type {<%= h.changeCase.pascal(nodeType) %>Node} from "../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node"
 import {<%= h.changeCase.pascal(nodeType) %>} from "../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"
-import {seed<%= h.changeCase.pascal(nodeType) %>} from "../../../../../_toolbox/dbSeeding/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/nodes/seed<%= h.changeCase.pascal(nodeType) %>"
+import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all <%= h.changeCase.upper(nodeType) %> nodes" request returns the nodes in correct order', () => {
     test('when there exist NO <%= h.changeCase.lower(nodeType) %> nodes', async () => {
@@ -22,9 +21,9 @@ describe('A sorted "get all <%= h.changeCase.upper(nodeType) %> nodes" request r
 
     test('when there exist <%= h.changeCase.lower(nodeType) %> nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>)
-        const nodeA = await seed<%= h.changeCase.pascal(nodeType) %>({name: 'A Node'})
-        const nodeB = await seed<%= h.changeCase.pascal(nodeType) %>({name: 'B Node'})
-        const nodeC = await seed<%= h.changeCase.pascal(nodeType) %>({name: 'C Node'})
+        const nodeA = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>, {name: 'A Node'}) as <%= h.changeCase.pascal(nodeType) %>Node
+        const nodeB = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>, {name: 'B Node'}) as <%= h.changeCase.pascal(nodeType) %>Node
+        const nodeC = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>, {name: 'C Node'}) as <%= h.changeCase.pascal(nodeType) %>Node
 
         const ascNodes = await <%= h.changeCase.pascal(nodeType) %>.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

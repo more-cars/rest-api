@@ -3,7 +3,7 @@ import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllN
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {LapTimeNode} from "../../../../../../src/models/lap-times/types/LapTimeNode"
 import {LapTime} from "../../../../../../src/models/lap-times/LapTime"
-import {seedLapTime} from "../../../../../_toolbox/dbSeeding/lap-times/nodes/seedLapTime"
+import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all LAP TIME nodes" request returns the nodes in correct order', () => {
     test('when there exist NO lap time nodes', async () => {
@@ -18,9 +18,9 @@ describe('A sorted "get all LAP TIME nodes" request returns the nodes in correct
 
     test('when there exist lap time nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
-        const nodeA = await seedLapTime({driver_name: 'A Node'})
-        const nodeB = await seedLapTime({driver_name: 'B Node'})
-        const nodeC = await seedLapTime({driver_name: 'C Node'})
+        const nodeA = await seedNode(NodeTypeEnum.LAP_TIME, {time: 'A', driver_name: 'A Node'}) as LapTimeNode
+        const nodeB = await seedNode(NodeTypeEnum.LAP_TIME, {time: 'B', driver_name: 'B Node'}) as LapTimeNode
+        const nodeC = await seedNode(NodeTypeEnum.LAP_TIME, {time: 'C', driver_name: 'C Node'}) as LapTimeNode
 
         const ascNodes = await LapTime.findAll({sortByProperty: 'driver_name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

@@ -1,16 +1,18 @@
 import {expect, test} from 'vitest'
-import {seedImage} from "../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
+import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {Image} from "../../../../../../src/models/images/Image"
 import {
     seedRelationshipsForSpecificImage
 } from "../../../../../_toolbox/dbSeeding/images/relationships/seedRelationshipsForSpecificImage"
 import {DbRelationship} from "../../../../../../src/db/types/DbRelationship"
 import assert from "assert"
+import {ImageNode} from "../../../../../../src/db/nodes/images/types/ImageNode"
 
 test('Get all "Image belongs to Node type" relationships for specific image', async () => {
-    const imageNode = await seedImage()
+    const imageNode = await seedNode(NodeTypeEnum.IMAGE)
     const amount = 7
-    await seedRelationshipsForSpecificImage(imageNode, amount)
+    await seedRelationshipsForSpecificImage(imageNode as ImageNode, amount)
 
     const fetchedRelationships = await Image.getBelongsToNodeTypeRelationships(imageNode.id)
 
@@ -34,7 +36,7 @@ test('Get all "Image belongs to Node type" relationships for specific image', as
 })
 
 test('Expecting empty lists when there are no relationships', async () => {
-    const imageNode = await seedImage()
+    const imageNode = await seedNode(NodeTypeEnum.IMAGE)
     const fetchedRelationships = await Image.getBelongsToNodeTypeRelationships(imageNode.id)
 
     if (!fetchedRelationships) {

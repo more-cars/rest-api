@@ -4,7 +4,7 @@ import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTy
 import type {RacingSeriesNode} from "../../../../../../src/models/racing-series/types/RacingSeriesNode"
 import {RacingSeries} from "../../../../../../src/models/racing-series/RacingSeries"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
-import {seedRacingSeries} from "../../../../../_toolbox/dbSeeding/racing-series/nodes/seedRacingSeries"
+import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all RACING SERIES nodes" request returns only the matching nodes', () => {
     test('when there exist NO Racing Series nodes', async () => {
@@ -23,9 +23,9 @@ describe('A filtered "get all RACING SERIES nodes" request returns only the matc
 
     test('when there exist Racing Series nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_SERIES)
-        const nodeA = await seedRacingSeries({name: 'A Node'})
-        await seedRacingSeries({name: 'B Node'})
-        await seedRacingSeries({name: 'C Node'})
+        const nodeA = await seedNode(NodeTypeEnum.RACING_SERIES, {name: 'A Node'}) as RacingSeriesNode
+        await seedNode(NodeTypeEnum.RACING_SERIES, {name: 'B Node'})
+        await seedNode(NodeTypeEnum.RACING_SERIES, {name: 'C Node'})
 
         const filteredNodes = await RacingSeries.findAll({
             filterByProperty: 'name',

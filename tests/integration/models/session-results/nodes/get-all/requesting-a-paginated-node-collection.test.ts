@@ -3,7 +3,7 @@ import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllN
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {SessionResultNode} from "../../../../../../src/models/session-results/types/SessionResultNode"
 import {SessionResult} from "../../../../../../src/models/session-results/SessionResult"
-import {seedSessionResult} from "../../../../../_toolbox/dbSeeding/session-results/nodes/seedSessionResult"
+import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all SESSION RESULT nodes" request returns the nodes in correct order', () => {
     test('when there exist NO session result nodes', async () => {
@@ -18,9 +18,9 @@ describe('A sorted "get all SESSION RESULT nodes" request returns the nodes in c
 
     test('when there exist session result nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
-        const nodeA = await seedSessionResult({position: 1})
-        const nodeB = await seedSessionResult({position: 2})
-        const nodeC = await seedSessionResult({position: 3})
+        const nodeA = await seedNode(NodeTypeEnum.SESSION_RESULT, {position: 1}) as SessionResultNode
+        const nodeB = await seedNode(NodeTypeEnum.SESSION_RESULT, {position: 2}) as SessionResultNode
+        const nodeC = await seedNode(NodeTypeEnum.SESSION_RESULT, {position: 3}) as SessionResultNode
 
         const ascNodes = await SessionResult.findAll({sortByProperty: 'position', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

@@ -1,9 +1,10 @@
 import {expect, test} from 'vitest'
-import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 
 test('CAR MODEL exists, but has no ›has-image‹ relationships', async () => {
-    const carModel = await seedCarModel()
+    const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
 
     const relationships = await CarModel.getAllHasImageRelationships(carModel.id)
 

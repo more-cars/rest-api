@@ -4,7 +4,7 @@ import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTy
 import type {RaceTrackNode} from "../../../../../../src/models/race-tracks/types/RaceTrackNode"
 import {RaceTrack} from "../../../../../../src/models/race-tracks/RaceTrack"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
-import {seedRaceTrack} from "../../../../../_toolbox/dbSeeding/race-tracks/nodes/seedRaceTrack"
+import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all RACE TRACK nodes" request returns only the matching nodes', () => {
     test('when there exist NO Race Track nodes', async () => {
@@ -23,9 +23,9 @@ describe('A filtered "get all RACE TRACK nodes" request returns only the matchin
 
     test('when there exist Race Track nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACE_TRACK)
-        const nodeA = await seedRaceTrack({name: 'A Node'})
-        await seedRaceTrack({name: 'B Node'})
-        await seedRaceTrack({name: 'C Node'})
+        const nodeA = await seedNode(NodeTypeEnum.RACE_TRACK, {name: 'A Node'}) as RaceTrackNode
+        await seedNode(NodeTypeEnum.RACE_TRACK, {name: 'B Node'})
+        await seedNode(NodeTypeEnum.RACE_TRACK, {name: 'C Node'})
 
         const filteredNodes = await RaceTrack.findAll({
             filterByProperty: 'name',

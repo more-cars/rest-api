@@ -1,7 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
-import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
 import {CompanyRelationship} from "../../../../../../../src/models/companies/types/CompanyRelationship"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
@@ -32,7 +31,7 @@ describe('Creating a ›belongs-to-company‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const brand = await seedBrand()
+        const brand = await seedNode(NodeTypeEnum.BRAND)
 
         const createdRelationship = await createRelationship(
             brand.id,

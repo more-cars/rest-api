@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
-import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
-import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {Brand} from "../../../../../../../src/models/brands/Brand"
 import {BrandRelationship} from "../../../../../../../src/models/brands/types/BrandRelationship"
 
 test('Creating a ›has-car-model‹ relationship with valid data', async () => {
-    const brand = await seedBrand()
-    const carModel = await seedCarModel()
+    const brand = await seedNode(NodeTypeEnum.BRAND)
+    const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
 
     const createdRelationship = await Brand.createHasCarModelRelationship(brand.id, carModel.id)
 

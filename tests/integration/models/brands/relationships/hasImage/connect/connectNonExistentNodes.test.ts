@@ -1,12 +1,12 @@
 import {describe, expect, test} from 'vitest'
-import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {Brand} from "../../../../../../../src/models/brands/Brand"
-import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 describe('Creating a ›has-image‹ relationship', () => {
     test('with a BRAND that does not exist', async () => {
-        const image = await seedImage()
+        const image = await seedNode(NodeTypeEnum.IMAGE)
 
         await expect(Brand.createHasImageRelationship(-42, image.id))
             .rejects
@@ -14,7 +14,7 @@ describe('Creating a ›has-image‹ relationship', () => {
     })
 
     test('with an IMAGE that does not exist', async () => {
-        const brand = await seedBrand()
+        const brand = await seedNode(NodeTypeEnum.BRAND)
 
         await expect(Brand.createHasImageRelationship(brand.id, -43))
             .rejects

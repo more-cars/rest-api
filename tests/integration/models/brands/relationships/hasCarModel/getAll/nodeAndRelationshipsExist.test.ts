@@ -1,11 +1,11 @@
 import {expect, test} from 'vitest'
-import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {Brand} from "../../../../../../../src/models/brands/Brand"
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 test('BRAND exists and has ›has-car-model‹ relationships', async () => {
-    const brand = await seedBrand()
+    const brand = await seedNode(NodeTypeEnum.BRAND)
     const carModels = await seedNodes(NodeTypeEnum.CAR_MODEL, 3)
 
     for (const carModel of carModels) {

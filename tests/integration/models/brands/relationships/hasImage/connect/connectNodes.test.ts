@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
-import {seedBrand} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {Brand} from "../../../../../../../src/models/brands/Brand"
 import {BrandRelationship} from "../../../../../../../src/models/brands/types/BrandRelationship"
-import {seedImage} from "../../../../../../_toolbox/dbSeeding/images/nodes/seedImage"
 
 test('Creating a "Brand has Image" relationship when both nodes exist', async () => {
-    const brand = await seedBrand()
-    const image = await seedImage()
+    const brand = await seedNode(NodeTypeEnum.BRAND)
+    const image = await seedNode(NodeTypeEnum.IMAGE)
 
     const createdRelationship = await Brand.createHasImageRelationship(brand.id, image.id)
 

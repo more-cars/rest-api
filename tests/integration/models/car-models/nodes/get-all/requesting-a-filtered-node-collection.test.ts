@@ -4,7 +4,7 @@ import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTy
 import type {CarModelNode} from "../../../../../../src/models/car-models/types/CarModelNode"
 import {CarModel} from "../../../../../../src/models/car-models/CarModel"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
-import {seedCarModel} from "../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all CAR MODEL nodes" request returns only the matching nodes', () => {
     test('when there exist NO car model nodes', async () => {
@@ -23,9 +23,9 @@ describe('A filtered "get all CAR MODEL nodes" request returns only the matching
 
     test('when there exist car model nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL)
-        const nodeA = await seedCarModel({name: 'A Node'})
-        await seedCarModel({name: 'B Node'})
-        await seedCarModel({name: 'C Node'})
+        const nodeA = await seedNode(NodeTypeEnum.CAR_MODEL, {name: 'A Node'}) as CarModelNode
+        await seedNode(NodeTypeEnum.CAR_MODEL, {name: 'B Node'})
+        await seedNode(NodeTypeEnum.CAR_MODEL, {name: 'C Node'})
 
         const filteredNodes = await CarModel.findAll({
             filterByProperty: 'name',

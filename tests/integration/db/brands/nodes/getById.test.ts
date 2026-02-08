@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {getNodeById} from "../../../../../src/db/nodes/brands/getNodeById"
-import {seedBrand} from "../../../../_toolbox/dbSeeding/brands/nodes/seedBrand"
-import {BrandNode} from "../../../../../src/db/nodes/brands/types/BrandNode"
+import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {BrandSchema} from "../../../../_toolbox/schemas/BrandSchema"
 import {validateJson} from "../../../../_toolbox/validateJson"
 
@@ -14,7 +14,7 @@ test('Querying a brand that does not exist should return "false"', async () => {
 })
 
 test('Querying an existing brand should return a db node with correct schema', async () => {
-    const createdNode: BrandNode = await seedBrand()
+    const createdNode = await seedNode(NodeTypeEnum.BRAND)
     const brandNode = await getNodeById(createdNode.id)
 
     expect(validateJson(brandNode, BrandSchema))

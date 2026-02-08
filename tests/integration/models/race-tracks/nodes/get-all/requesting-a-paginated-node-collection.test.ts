@@ -3,7 +3,7 @@ import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllN
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {RaceTrackNode} from "../../../../../../src/models/race-tracks/types/RaceTrackNode"
 import {RaceTrack} from "../../../../../../src/models/race-tracks/RaceTrack"
-import {seedRaceTrack} from "../../../../../_toolbox/dbSeeding/race-tracks/nodes/seedRaceTrack"
+import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all RACE TRACK nodes" request returns the nodes in correct order', () => {
     test('when there exist NO race track nodes', async () => {
@@ -18,9 +18,9 @@ describe('A sorted "get all RACE TRACK nodes" request returns the nodes in corre
 
     test('when there exist race track nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACE_TRACK)
-        const nodeA = await seedRaceTrack({name: 'A Node'})
-        const nodeB = await seedRaceTrack({name: 'B Node'})
-        const nodeC = await seedRaceTrack({name: 'C Node'})
+        const nodeA = await seedNode(NodeTypeEnum.RACE_TRACK, {name: 'A Node'}) as RaceTrackNode
+        const nodeB = await seedNode(NodeTypeEnum.RACE_TRACK, {name: 'B Node'}) as RaceTrackNode
+        const nodeC = await seedNode(NodeTypeEnum.RACE_TRACK, {name: 'C Node'}) as RaceTrackNode
 
         const ascNodes = await RaceTrack.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

@@ -1,7 +1,8 @@
 import {describe, expect, test} from 'vitest'
 import {TrackLayout} from "../../../../../src/models/track-layouts/TrackLayout"
-import {seedTrackLayout} from "../../../../_toolbox/dbSeeding/track-layouts/nodes/seedTrackLayout"
 import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
+import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 describe('Deleting a TRACK LAYOUT', () => {
     test('that does not exist', async () => {
@@ -11,7 +12,7 @@ describe('Deleting a TRACK LAYOUT', () => {
     })
 
     test('that exists', async () => {
-        const node = await seedTrackLayout()
+        const node = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
         await expect(TrackLayout.delete(node.id))
             .resolves
             .not.toThrow(NodeNotFoundError)

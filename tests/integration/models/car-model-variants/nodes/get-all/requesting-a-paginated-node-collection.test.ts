@@ -3,7 +3,7 @@ import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllN
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {CarModelVariantNode} from "../../../../../../src/models/car-model-variants/types/CarModelVariantNode"
 import {CarModelVariant} from "../../../../../../src/models/car-model-variants/CarModelVariant"
-import {seedCarModelVariant} from "../../../../../_toolbox/dbSeeding/car-model-variants/nodes/seedCarModelVariant"
+import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all CAR MODEL VARIANT nodes" request returns the nodes in correct order', () => {
     test('when there exist NO car model variant nodes', async () => {
@@ -18,9 +18,9 @@ describe('A sorted "get all CAR MODEL VARIANT nodes" request returns the nodes i
 
     test('when there exist car model variant nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL_VARIANT)
-        const nodeA = await seedCarModelVariant({name: 'A Node'})
-        const nodeB = await seedCarModelVariant({name: 'B Node'})
-        const nodeC = await seedCarModelVariant({name: 'C Node'})
+        const nodeA = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT, {name: 'A Node'}) as CarModelVariantNode
+        const nodeB = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT, {name: 'B Node'}) as CarModelVariantNode
+        const nodeC = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT, {name: 'C Node'}) as CarModelVariantNode
 
         const ascNodes = await CarModelVariant.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

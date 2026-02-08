@@ -1,7 +1,8 @@
 import {describe, expect, test} from 'vitest'
 import {CarModel} from "../../../../../src/models/car-models/CarModel"
 import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
-import {seedCarModel} from "../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
+import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 describe('Deleting a Car Model', () => {
     test('that does not exist', async () => {
@@ -11,7 +12,7 @@ describe('Deleting a Car Model', () => {
     })
 
     test('that exists', async () => {
-        const node = await seedCarModel()
+        const node = await seedNode(NodeTypeEnum.CAR_MODEL)
         await expect(CarModel.delete(node.id))
             .resolves
             .not.toThrow(NodeNotFoundError)
