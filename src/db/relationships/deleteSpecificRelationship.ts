@@ -17,7 +17,6 @@ export async function deleteSpecificRelationship(
     })
 
     await session.close()
-    await driver.close()
 
     return result
 }

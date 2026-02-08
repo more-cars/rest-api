@@ -13,5 +13,4 @@ export async function deleteAllCompanies() {
     })
 
     await session.close()
-    await driver.close()
 }

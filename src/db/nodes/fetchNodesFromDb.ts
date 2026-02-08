@@ -25,7 +25,6 @@ export async function fetchNodesFromDb(nodeType: NodeTypeLabel, params: Collecti
     })
 
     await session.close()
-    await driver.close()
 
     records.forEach(record => {
         nodes.push(record.get('node'))

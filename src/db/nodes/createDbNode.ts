@@ -26,7 +26,6 @@ export async function createDbNode(nodeType: NodeTypeLabel, query: string): Prom
     dbNode = await addTimestampsToNode(elementId, timestamp, timestamp)
 
     await session.close()
-    await driver.close()
 
     return dbNode
 }

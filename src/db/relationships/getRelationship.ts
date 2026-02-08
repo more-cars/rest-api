@@ -19,7 +19,6 @@ export async function getRelationship(startNodeId: number, relationshipName: DbR
     }
 
     await session.close()
-    await driver.close()
 
     const sourceNode: Node = records[0].get('a')
     const relation: Relationship = records[0].get('r')

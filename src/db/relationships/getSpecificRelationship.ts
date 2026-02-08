@@ -26,7 +26,6 @@ export async function getSpecificRelationship(
     }
 
     await session.close()
-    await driver.close()
 
     const fetchedDbRel: Relationship = records[0].get('r')
 

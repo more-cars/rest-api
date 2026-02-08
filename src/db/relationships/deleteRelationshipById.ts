@@ -20,7 +20,6 @@ export async function deleteRelationshipById(relationshipId: number): Promise<bo
     })
 
     await session.close()
-    await driver.close()
 
     return summary.counters.updates().relationshipsDeleted > 0
 }

@@ -16,5 +16,4 @@ export async function deleteAll<%= h.changeCase.pascal(h.inflection.pluralize(no
     })
 
     await session.close()
-    await driver.close()
 }

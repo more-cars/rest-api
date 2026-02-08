@@ -13,7 +13,6 @@ export async function fetchNodeFromDb(id: number, nodeType: NodeTypeLabel): Prom
     })
 
     await session.close()
-    await driver.close()
 
     if (records.length === 0) {
         return false

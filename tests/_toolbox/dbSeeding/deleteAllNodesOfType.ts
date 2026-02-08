@@ -17,5 +17,4 @@ export async function deleteAllNodesOfType(nodeType: NodeTypeEnum) {
     })
 
     await session.close()
-    await driver.close()
 }

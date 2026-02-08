@@ -17,5 +17,4 @@ export async function deleteAllImages() {
     })
 
     await session.close()
-    await driver.close()
 }

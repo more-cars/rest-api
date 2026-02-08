@@ -16,7 +16,6 @@ export async function getRelationshipCollection(nodeId: number, relationshipName
     })
 
     await session.close()
-    await driver.close()
 
     records.forEach(record => {
         const startNode: Node = record.get('a')

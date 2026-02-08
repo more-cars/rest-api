@@ -13,7 +13,6 @@ export async function getRelationshipById(relationshipId: number) {
     })
 
     await session.close()
-    await driver.close()
 
     if (records.length === 0) {
         return false

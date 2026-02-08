@@ -12,7 +12,6 @@ export async function addTimestampsToRelationship(elementId: string, createdAt: 
     })
 
     await session.close()
-    await driver.close()
 
     return dbRel
 }

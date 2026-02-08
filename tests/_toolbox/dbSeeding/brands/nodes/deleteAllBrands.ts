@@ -17,5 +17,4 @@ export async function deleteAllBrands() {
     })
 
     await session.close()
-    await driver.close()
 }

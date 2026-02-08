@@ -17,7 +17,6 @@ export async function addMoreCarsIdToNode(
     })
 
     await session.close()
-    await driver.close()
 
     return dbNode
 }

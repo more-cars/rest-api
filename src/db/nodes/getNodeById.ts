@@ -14,7 +14,6 @@ export async function getNodeById(id: number): Promise<false | BaseNode> {
     })
 
     await session.close()
-    await driver.close()
 
     if (records.length === 0) {
         return false

@@ -13,5 +13,4 @@ export async function deleteAllLapTimes() {
     })
 
     await session.close()
-    await driver.close()
 }

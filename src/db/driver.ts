@@ -1,15 +1,21 @@
-import neo4j from "neo4j-driver"
+import neo4j, {Driver} from "neo4j-driver"
+
+let driver: Driver | null = null
 
 export function getDriver() {
-    const user = 'neo4j'
-    const password = getDatabasePassword()
-    const databaseUrl = getDatabaseUrl()
+    if (!driver) {
+        const user = 'neo4j'
+        const password = getDatabasePassword()
+        const databaseUrl = getDatabaseUrl()
 
-    return neo4j.driver(
-        databaseUrl,
-        neo4j.auth.basic(user, password),
-        {disableLosslessIntegers: true} // see https://github.com/neo4j/neo4j-javascript-driver?tab=readme-ov-file#enabling-native-numbers
-    )
+        driver = neo4j.driver(
+            databaseUrl,
+            neo4j.auth.basic(user, password),
+            {disableLosslessIntegers: true} // see https://github.com/neo4j/neo4j-javascript-driver?tab=readme-ov-file#enabling-native-numbers
+        )
+    }
+
+    return driver
 }
 
 function getDatabaseUrl() {

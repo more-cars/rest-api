@@ -13,5 +13,4 @@ export async function deleteAllTrackLayouts() {
     })
 
     await session.close()
-    await driver.close()
 }

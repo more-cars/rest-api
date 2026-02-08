@@ -15,5 +15,4 @@ export async function deleteAllRelationshipsOfType(relationshipType: DbRelations
     })
 
     await session.close()
-    await driver.close()
 }

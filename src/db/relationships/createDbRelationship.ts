@@ -33,7 +33,6 @@ export async function createDbRelationship(startNodeId: number, endNodeId: numbe
     dbRelationship = await addTimestampsToRelationship(elementId, timestamp, timestamp)
 
     await session.close()
-    await driver.close()
 
     return dbRelationship
 }

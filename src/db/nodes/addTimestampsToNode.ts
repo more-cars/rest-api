@@ -12,7 +12,6 @@ export async function addTimestampsToNode(elementId: string, createdAt: string, 
     })
 
     await session.close()
-    await driver.close()
 
     return dbNode
 }

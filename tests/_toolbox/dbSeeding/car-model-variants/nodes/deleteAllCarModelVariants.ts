@@ -13,5 +13,4 @@ export async function deleteAllCarModelVariants() {
     })
 
     await session.close()
-    await driver.close()
 }

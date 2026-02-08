@@ -19,7 +19,6 @@ export async function addMoreCarsIdToRelationship(elementId: string, moreCarsId:
     })
 
     await session.close()
-    await driver.close()
 
     return dbRel
 }

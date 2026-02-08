@@ -12,7 +12,6 @@ export async function deleteNode(id: number): Promise<boolean> {
     })
 
     await session.close()
-    await driver.close()
 
     return result
 }

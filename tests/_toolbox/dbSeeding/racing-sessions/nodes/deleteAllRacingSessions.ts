@@ -13,5 +13,4 @@ export async function deleteAllRacingSessions() {
     })
 
     await session.close()
-    await driver.close()
 }

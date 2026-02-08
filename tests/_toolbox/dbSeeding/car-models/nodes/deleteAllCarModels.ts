@@ -17,5 +17,4 @@ export async function deleteAllCarModels() {
     })
 
     await session.close()
-    await driver.close()
 }
