@@ -1,14 +1,23 @@
 import http from 'http'
 import {app} from "./app"
 
-startHttpServer()
+const PORT = 3000
+const server = http.createServer(app)
 
-function startHttpServer() {
-    const HTTP_PORT = 3000
+server.listen(PORT, () => {
+    console.log(`🟢 More Cars API started`)
+    console.log(`🟢 Available at http://localhost:${PORT}`)
+    console.log(`🟢 Alias URL (if configured): http://api.more-cars.internal:${PORT}`)
+})
 
-    const httpServer = http.createServer(app)
-    httpServer.listen(HTTP_PORT, () => {
-        console.log(`[HTTP] More Cars API started and running at http://localhost:${HTTP_PORT}`)
-        console.log(`[HTTP] Alias http://api.more-cars.internal:${HTTP_PORT}`)
+function shutdown(signal: string) {
+    console.log(`🟡 Received signal ${signal}. Shutting down...`)
+
+    server.close(() => {
+        console.log('🟥 Application terminated')
+        process.exit(0)
     })
 }
+
+process.on('SIGINT', shutdown)
+process.on('SIGTERM', shutdown)
