@@ -1,37 +1,29 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import type {SessionResultNode} from "../../../../../../src/models/session-results/types/SessionResultNode"
+import {SessionResultNode} from "../../../../../../src/models/session-results/types/SessionResultNode"
 import {SessionResult} from "../../../../../../src/models/session-results/SessionResult"
-import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
+import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
-describe('A sorted "get all SESSION RESULT nodes" request returns the nodes in correct order', () => {
+describe('A paginated "get all SESSION RESULT nodes" request returns the correct number of nodes', () => {
     test('when there exist NO session result nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
 
         const expectedNodes: Array<SessionResultNode> = []
-        const actualNodes = await SessionResult.findAll({sortByProperty: 'position', sortDirection: 'desc'})
+        const actualNodes = await SessionResult.findAll({page: 1})
 
-        expect(actualNodes)
-            .toEqual(expectedNodes)
+        expect(expectedNodes)
+            .toEqual(actualNodes)
     })
 
     test('when there exist session result nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
-        const nodeA = await seedNode(NodeTypeEnum.SESSION_RESULT, {position: 1}) as SessionResultNode
-        const nodeB = await seedNode(NodeTypeEnum.SESSION_RESULT, {position: 2}) as SessionResultNode
-        const nodeC = await seedNode(NodeTypeEnum.SESSION_RESULT, {position: 3}) as SessionResultNode
+        const amount = Math.ceil(Math.random() * 20)
+        await seedNodes(NodeTypeEnum.SESSION_RESULT, amount)
 
-        const ascNodes = await SessionResult.findAll({sortByProperty: 'position', sortDirection: 'asc'})
-        expect(ascNodes.length).toEqual(3)
-        expect(ascNodes[0].position === nodeA.position)
-        expect(ascNodes[1].position === nodeB.position)
-        expect(ascNodes[2].position === nodeC.position)
+        const actualNodes = await SessionResult.findAll({page: 1})
 
-        const descNodes = await SessionResult.findAll({sortByProperty: 'position', sortDirection: 'desc'})
-        expect(descNodes.length).toEqual(3)
-        expect(descNodes[0].position === nodeC.position)
-        expect(descNodes[1].position === nodeB.position)
-        expect(descNodes[2].position === nodeA.position)
+        expect(actualNodes.length)
+            .toEqual(amount)
     })
 })

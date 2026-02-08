@@ -1,37 +1,29 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import type {CarModelVariantNode} from "../../../../../../src/models/car-model-variants/types/CarModelVariantNode"
+import {CarModelVariantNode} from "../../../../../../src/models/car-model-variants/types/CarModelVariantNode"
 import {CarModelVariant} from "../../../../../../src/models/car-model-variants/CarModelVariant"
-import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
+import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
-describe('A sorted "get all CAR MODEL VARIANT nodes" request returns the nodes in correct order', () => {
+describe('A paginated "get all CAR MODEL VARIANT nodes" request returns the correct number of nodes', () => {
     test('when there exist NO car model variant nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL_VARIANT)
 
         const expectedNodes: Array<CarModelVariantNode> = []
-        const actualNodes = await CarModelVariant.findAll({sortByProperty: 'name', sortDirection: 'desc'})
+        const actualNodes = await CarModelVariant.findAll({page: 1})
 
-        expect(actualNodes)
-            .toEqual(expectedNodes)
+        expect(expectedNodes)
+            .toEqual(actualNodes)
     })
 
     test('when there exist car model variant nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL_VARIANT)
-        const nodeA = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT, {name: 'A Node'}) as CarModelVariantNode
-        const nodeB = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT, {name: 'B Node'}) as CarModelVariantNode
-        const nodeC = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT, {name: 'C Node'}) as CarModelVariantNode
+        const amount = Math.ceil(Math.random() * 20)
+        await seedNodes(NodeTypeEnum.CAR_MODEL_VARIANT, amount)
 
-        const ascNodes = await CarModelVariant.findAll({sortByProperty: 'name', sortDirection: 'asc'})
-        expect(ascNodes.length).toEqual(3)
-        expect(ascNodes[0].name === nodeA.name)
-        expect(ascNodes[1].name === nodeB.name)
-        expect(ascNodes[2].name === nodeC.name)
+        const actualNodes = await CarModelVariant.findAll({page: 1})
 
-        const descNodes = await CarModelVariant.findAll({sortByProperty: 'name', sortDirection: 'desc'})
-        expect(descNodes.length).toEqual(3)
-        expect(descNodes[0].name === nodeC.name)
-        expect(descNodes[1].name === nodeB.name)
-        expect(descNodes[2].name === nodeA.name)
+        expect(actualNodes.length)
+            .toEqual(amount)
     })
 })

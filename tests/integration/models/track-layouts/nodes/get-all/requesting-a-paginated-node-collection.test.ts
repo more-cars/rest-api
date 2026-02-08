@@ -1,37 +1,29 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import type {TrackLayoutNode} from "../../../../../../src/models/track-layouts/types/TrackLayoutNode"
+import {TrackLayoutNode} from "../../../../../../src/models/track-layouts/types/TrackLayoutNode"
 import {TrackLayout} from "../../../../../../src/models/track-layouts/TrackLayout"
-import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
+import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
-describe('A sorted "get all TRACK LAYOUT nodes" request returns the nodes in correct order', () => {
+describe('A paginated "get all TRACK LAYOUT nodes" request returns the correct number of nodes', () => {
     test('when there exist NO track layout nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
 
         const expectedNodes: Array<TrackLayoutNode> = []
-        const actualNodes = await TrackLayout.findAll({sortByProperty: 'name', sortDirection: 'desc'})
+        const actualNodes = await TrackLayout.findAll({page: 1})
 
-        expect(actualNodes)
-            .toEqual(expectedNodes)
+        expect(expectedNodes)
+            .toEqual(actualNodes)
     })
 
     test('when there exist track layout nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
-        const nodeA = await seedNode(NodeTypeEnum.TRACK_LAYOUT, {name: 'A Node'}) as TrackLayoutNode
-        const nodeB = await seedNode(NodeTypeEnum.TRACK_LAYOUT, {name: 'B Node'}) as TrackLayoutNode
-        const nodeC = await seedNode(NodeTypeEnum.TRACK_LAYOUT, {name: 'C Node'}) as TrackLayoutNode
+        const amount = Math.ceil(Math.random() * 20)
+        await seedNodes(NodeTypeEnum.TRACK_LAYOUT, amount)
 
-        const ascNodes = await TrackLayout.findAll({sortByProperty: 'name', sortDirection: 'asc'})
-        expect(ascNodes.length).toEqual(3)
-        expect(ascNodes[0].name === nodeA.name)
-        expect(ascNodes[1].name === nodeB.name)
-        expect(ascNodes[2].name === nodeC.name)
+        const actualNodes = await TrackLayout.findAll({page: 1})
 
-        const descNodes = await TrackLayout.findAll({sortByProperty: 'name', sortDirection: 'desc'})
-        expect(descNodes.length).toEqual(3)
-        expect(descNodes[0].name === nodeC.name)
-        expect(descNodes[1].name === nodeB.name)
-        expect(descNodes[2].name === nodeA.name)
+        expect(actualNodes.length)
+            .toEqual(amount)
     })
 })

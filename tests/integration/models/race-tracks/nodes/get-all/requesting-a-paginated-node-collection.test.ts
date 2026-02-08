@@ -1,37 +1,29 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import type {RaceTrackNode} from "../../../../../../src/models/race-tracks/types/RaceTrackNode"
+import {RaceTrackNode} from "../../../../../../src/models/race-tracks/types/RaceTrackNode"
 import {RaceTrack} from "../../../../../../src/models/race-tracks/RaceTrack"
-import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
+import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
-describe('A sorted "get all RACE TRACK nodes" request returns the nodes in correct order', () => {
-    test('when there exist NO race track nodes', async () => {
+describe('A paginated "get all RACE TRACK nodes" request returns the correct number of nodes', () => {
+    test('when there exist NO lap time nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACE_TRACK)
 
         const expectedNodes: Array<RaceTrackNode> = []
-        const actualNodes = await RaceTrack.findAll({sortByProperty: 'name', sortDirection: 'desc'})
+        const actualNodes = await RaceTrack.findAll({page: 1})
 
-        expect(actualNodes)
-            .toEqual(expectedNodes)
+        expect(expectedNodes)
+            .toEqual(actualNodes)
     })
 
-    test('when there exist race track nodes', async () => {
+    test('when there exist lap time nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACE_TRACK)
-        const nodeA = await seedNode(NodeTypeEnum.RACE_TRACK, {name: 'A Node'}) as RaceTrackNode
-        const nodeB = await seedNode(NodeTypeEnum.RACE_TRACK, {name: 'B Node'}) as RaceTrackNode
-        const nodeC = await seedNode(NodeTypeEnum.RACE_TRACK, {name: 'C Node'}) as RaceTrackNode
+        const amount = Math.ceil(Math.random() * 20)
+        await seedNodes(NodeTypeEnum.RACE_TRACK, amount)
 
-        const ascNodes = await RaceTrack.findAll({sortByProperty: 'name', sortDirection: 'asc'})
-        expect(ascNodes.length).toEqual(3)
-        expect(ascNodes[0].name === nodeA.name)
-        expect(ascNodes[1].name === nodeB.name)
-        expect(ascNodes[2].name === nodeC.name)
+        const actualNodes = await RaceTrack.findAll({page: 1})
 
-        const descNodes = await RaceTrack.findAll({sortByProperty: 'name', sortDirection: 'desc'})
-        expect(descNodes.length).toEqual(3)
-        expect(descNodes[0].name === nodeC.name)
-        expect(descNodes[1].name === nodeB.name)
-        expect(descNodes[2].name === nodeA.name)
+        expect(actualNodes.length)
+            .toEqual(amount)
     })
 })

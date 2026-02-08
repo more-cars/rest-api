@@ -1,5 +1,5 @@
 ---
-to: tests/integration/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/nodes/get-all/requesting-a-paginated-node-collection.test.ts
+to: tests/integration/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/nodes/get-all/requesting-a-sorted-node-collection.test.ts
 ---
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
