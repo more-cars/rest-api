@@ -5,7 +5,7 @@ import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeE
 import {CarModelSchema} from "../../../../_toolbox/schemas/CarModelSchema"
 import {validateJson} from "../../../../_toolbox/validateJson"
 
-test('Querying a brand that does not exist should return "false"', async () => {
+test('Querying a CAR MODEL that does not exist should return "false"', async () => {
     const expectedCarModelNode = false
     const actualCarModelNode = await getNodeById(-42)
 
@@ -13,7 +13,7 @@ test('Querying a brand that does not exist should return "false"', async () => {
         .toBe(expectedCarModelNode)
 })
 
-test('Querying an existing brand should return a db node with correct schema', async () => {
+test('Querying an existing CAR MODEL should return a db node with correct schema', async () => {
     const createdNode = await seedNode(NodeTypeEnum.CAR_MODEL)
     const carModelNode = await getNodeById(createdNode.id)
 

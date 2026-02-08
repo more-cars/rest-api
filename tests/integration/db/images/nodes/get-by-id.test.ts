@@ -5,7 +5,7 @@ import {getNodeById} from "../../../../../src/db/nodes/images/getNodeById"
 import {ImageSchema} from "../../../../_toolbox/schemas/ImageSchema"
 import {validateJson} from "../../../../_toolbox/validateJson"
 
-test('Querying an image that does not exist should return "false"', async () => {
+test('Querying an IMAGE that does not exist should return "false"', async () => {
     const expectedNode = false
     const actualNode = await getNodeById(-42)
 
@@ -13,7 +13,7 @@ test('Querying an image that does not exist should return "false"', async () => 
         .toBe(expectedNode)
 })
 
-test('Querying an existing brand should return a db node with correct schema', async () => {
+test('Querying an existing IMAGE should return a db node with correct schema', async () => {
     const existingNode = await seedNode(NodeTypeEnum.IMAGE)
     const requestedNode = await getNodeById(existingNode.id)
 
