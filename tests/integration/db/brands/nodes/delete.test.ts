@@ -3,14 +3,14 @@ import {deleteNode} from "../../../../../src/db/nodes/deleteNode"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
-test('Deleting an BRAND that does not exist should return "false"', async () => {
+test('Expecting response "false" when trying to delete a non-existing BRAND', async () => {
     const success = await deleteNode(-42)
 
     expect(success)
         .toBe(false)
 })
 
-test('Deleting an BRAND that does exist should return "true"', async () => {
+test('Expecting response "true" when deleting an existing BRAND', async () => {
     const node = await seedNode(NodeTypeEnum.BRAND)
     const success = await deleteNode(node.id)
 
