@@ -7,7 +7,7 @@ import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTy
 import {deleteAll<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>} from "../../../../../_toolbox/dbSeeding/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/nodes/deleteAll<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>"
 import type {<%= h.changeCase.pascal(nodeType) %>Node} from "../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node"
 import {<%= h.changeCase.pascal(nodeType) %>} from "../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"
-import {seed<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>} from "../../../../../_toolbox/dbSeeding/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/nodes/seed<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>"
+import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('Each page of a "get all <%= h.changeCase.upper(nodeType) %> nodes" request returns the correct number of nodes', () => {
     test.each([
@@ -29,7 +29,7 @@ describe('Each page of a "get all <%= h.changeCase.upper(nodeType) %> nodes" req
         [5, 2, 0],
     ])('when there exist $0 <%= h.changeCase.lower(nodeType) %> nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
         await deleteAllNodesOfType(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>)
-        await seed<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>(totalNodeAmount)
+        await seedNodes(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>, totalNodeAmount)
 
         const actualNodes = await <%= h.changeCase.pascal(nodeType) %>.findAll({page})
 

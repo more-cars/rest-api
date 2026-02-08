@@ -3,7 +3,7 @@ import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllN
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {BrandNode} from "../../../../../../src/models/brands/types/BrandNode"
 import {Brand} from "../../../../../../src/models/brands/Brand"
-import {seedBrands} from "../../../../../_toolbox/dbSeeding/brands/nodes/seedBrands"
+import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A paginated "get all BRAND nodes" request returns the correct number of nodes', () => {
     test('when there exist NO brand nodes', async () => {
@@ -19,7 +19,7 @@ describe('A paginated "get all BRAND nodes" request returns the correct number o
     test('when there exist brand nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.BRAND)
         const amount = Math.ceil(Math.random() * 20)
-        await seedBrands(amount)
+        await seedNodes(NodeTypeEnum.BRAND, amount)
 
         const actualNodes = await Brand.findAll({page: 1})
 

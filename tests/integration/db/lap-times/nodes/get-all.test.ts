@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {LapTimeNode} from "../../../../../src/db/nodes/lap-times/types/LapTimeNode"
-import {seedLapTimes} from "../../../../_toolbox/dbSeeding/lap-times/nodes/seedLapTimes"
+import {seedNodes} from "../../../../_toolbox/dbSeeding/seedNodes"
 import {getAllNodesOfType} from "../../../../../src/db/nodes/lap-times/getAllNodesOfType"
 
 test('When there are no LAP TIMES then an empty array should be returned', async () => {
@@ -18,7 +18,7 @@ test('When there are no LAP TIMES then an empty array should be returned', async
 test('When LAP TIMES exist then all of them should be returned', async () => {
     await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
     const amount = Math.ceil(Math.random() * 50)
-    await seedLapTimes(amount)
+    await seedNodes(NodeTypeEnum.LAP_TIME, amount)
 
     const actualLapTimes = await getAllNodesOfType()
 

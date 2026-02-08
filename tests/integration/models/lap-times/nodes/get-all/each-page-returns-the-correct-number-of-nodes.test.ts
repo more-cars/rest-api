@@ -3,7 +3,7 @@ import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllN
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {LapTimeNode} from "../../../../../../src/models/lap-times/types/LapTimeNode"
 import {LapTime} from "../../../../../../src/models/lap-times/LapTime"
-import {seedLapTimes} from "../../../../../_toolbox/dbSeeding/lap-times/nodes/seedLapTimes"
+import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('Each page of a "get all LAP TIME nodes" request returns the correct number of nodes', () => {
     test.each([
@@ -25,7 +25,7 @@ describe('Each page of a "get all LAP TIME nodes" request returns the correct nu
         [5, 2, 0],
     ])('when there exist $0 lap time nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
         await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
-        await seedLapTimes(totalNodeAmount)
+        await seedNodes(NodeTypeEnum.LAP_TIME, totalNodeAmount)
 
         const actualNodes = await LapTime.findAll({page})
 

@@ -3,7 +3,7 @@ import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllN
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {RacingSeriesNode} from "../../../../../../src/models/racing-series/types/RacingSeriesNode"
 import {RacingSeries} from "../../../../../../src/models/racing-series/RacingSeries"
-import {seedRacingSeriess} from "../../../../../_toolbox/dbSeeding/racing-series/nodes/seedRacingSeriess"
+import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('Each page of a "get all RACING SERIES nodes" request returns the correct number of nodes', () => {
     test.each([
@@ -25,7 +25,7 @@ describe('Each page of a "get all RACING SERIES nodes" request returns the corre
         [5, 2, 0],
     ])('when there exist $0 racing series nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_SERIES)
-        await seedRacingSeriess(totalNodeAmount)
+        await seedNodes(NodeTypeEnum.RACING_SERIES, totalNodeAmount)
 
         const actualNodes = await RacingSeries.findAll({page})
 

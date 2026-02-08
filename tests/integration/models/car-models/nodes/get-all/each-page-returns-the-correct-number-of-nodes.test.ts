@@ -1,7 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import type {CarModelNode} from "../../../../../../src/models/car-models/types/CarModelNode"
 import {CarModel} from "../../../../../../src/models/car-models/CarModel"
-import {seedCarModels} from "../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModels"
+import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
@@ -25,7 +25,7 @@ describe('Each page of a "get all CAR MODEL nodes" request returns the correct n
         [5, 2, 0],
     ])('when there exist $0 car model nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL)
-        await seedCarModels(totalNodeAmount)
+        await seedNodes(NodeTypeEnum.CAR_MODEL, totalNodeAmount)
 
         const expectedNodes = await CarModel.findAll({page})
 

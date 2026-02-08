@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {RacingEventNode} from "../../../../../src/db/nodes/racing-events/types/RacingEventNode"
-import {seedRacingEvents} from "../../../../_toolbox/dbSeeding/racing-events/nodes/seedRacingEvents"
+import {seedNodes} from "../../../../_toolbox/dbSeeding/seedNodes"
 import {getAllNodesOfType} from "../../../../../src/db/nodes/racing-events/getAllNodesOfType"
 
 test('When there are no RACING EVENTS then an empty array should be returned', async () => {
@@ -18,7 +18,7 @@ test('When there are no RACING EVENTS then an empty array should be returned', a
 test('When RACING EVENTS exist then all of them should be returned', async () => {
     await deleteAllNodesOfType(NodeTypeEnum.RACING_EVENT)
     const amount = Math.ceil(Math.random() * 50)
-    await seedRacingEvents(amount)
+    await seedNodes(NodeTypeEnum.RACING_EVENT, amount)
 
     const actualRacingEvents = await getAllNodesOfType()
 

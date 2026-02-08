@@ -3,7 +3,7 @@ import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllN
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {SessionResultNode} from "../../../../../../src/models/session-results/types/SessionResultNode"
 import {SessionResult} from "../../../../../../src/models/session-results/SessionResult"
-import {seedSessionResults} from "../../../../../_toolbox/dbSeeding/session-results/nodes/seedSessionResults"
+import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('Each page of a "get all SESSION RESULT nodes" request returns the correct number of nodes', () => {
     test.each([
@@ -25,7 +25,7 @@ describe('Each page of a "get all SESSION RESULT nodes" request returns the corr
         [5, 2, 0],
     ])('when there exist $0 session result nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
         await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
-        await seedSessionResults(totalNodeAmount)
+        await seedNodes(NodeTypeEnum.SESSION_RESULT, totalNodeAmount)
 
         const actualNodes = await SessionResult.findAll({page})
 

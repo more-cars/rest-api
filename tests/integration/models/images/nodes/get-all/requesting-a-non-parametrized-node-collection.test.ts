@@ -3,7 +3,7 @@ import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllN
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {ImageNode} from "../../../../../../src/models/images/types/ImageNode"
 import {Image} from "../../../../../../src/models/images/Image"
-import {seedImages} from "../../../../../_toolbox/dbSeeding/images/nodes/seedImages"
+import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A non-parametrized "get all COMPANY nodes" request returns the correct number of nodes', () => {
     test('when there exist NO company nodes', async () => {
@@ -19,7 +19,7 @@ describe('A non-parametrized "get all COMPANY nodes" request returns the correct
     test('when there exist company nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
         const amount = Math.ceil(Math.random() * 20)
-        await seedImages(amount)
+        await seedNodes(NodeTypeEnum.IMAGE, amount)
 
         const actualNodes = await Image.findAll()
 

@@ -3,7 +3,7 @@ import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllN
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {ImageNode} from "../../../../../../src/models/images/types/ImageNode"
 import {Image} from "../../../../../../src/models/images/Image"
-import {seedImages} from "../../../../../_toolbox/dbSeeding/images/nodes/seedImages"
+import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('Each page of a "get all COMPANY nodes" request returns the correct number of nodes', () => {
     test.each([
@@ -25,7 +25,7 @@ describe('Each page of a "get all COMPANY nodes" request returns the correct num
         [5, 2, 0],
     ])('when there exist $0 company nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
         await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
-        await seedImages(totalNodeAmount)
+        await seedNodes(NodeTypeEnum.IMAGE, totalNodeAmount)
 
         const actualNodes = await Image.findAll({page})
 

@@ -3,7 +3,7 @@ import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllN
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {CarModelNode} from "../../../../../../src/models/car-models/types/CarModelNode"
 import {CarModel} from "../../../../../../src/models/car-models/CarModel"
-import {seedCarModels} from "../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModels"
+import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A paginated "get all CAR MODEL nodes" request returns the correct number of nodes', () => {
     test('when there exist NO car model nodes', async () => {
@@ -19,7 +19,7 @@ describe('A paginated "get all CAR MODEL nodes" request returns the correct numb
     test('when there exist car model nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL)
         const amount = Math.ceil(Math.random() * 20)
-        await seedCarModels(amount)
+        await seedNodes(NodeTypeEnum.CAR_MODEL, amount)
 
         const actualNodes = await CarModel.findAll({page: 1})
 

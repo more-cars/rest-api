@@ -1,13 +1,12 @@
 import {expect, test} from 'vitest'
-import {seedBrands} from "../../../../_toolbox/dbSeeding/brands/nodes/seedBrands"
-import {seedCarModels} from "../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModels"
-import {seedImages} from "../../../../_toolbox/dbSeeding/images/nodes/seedImages"
+import {seedNodes} from "../../../../_toolbox/dbSeeding/seedNodes"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {removeDuplicates} from "../../../../_toolbox/removeDuplicates"
 
 test('Each node is created with a different ID', async () => {
-    const brands = await seedBrands(20)
-    const carModels = await seedCarModels(20)
-    const images = await seedImages(20); // DO NOT REMOVE THIS SEMICOLON!
+    const brands = await seedNodes(NodeTypeEnum.BRAND, 20)
+    const carModels = await seedNodes(NodeTypeEnum.CAR_MODEL, 20)
+    const images = await seedNodes(NodeTypeEnum.IMAGE, 20); // DO NOT REMOVE THIS SEMICOLON!
 
     [brands, carModels, images].forEach(nodes => {
         const extractedIds = nodes.map(node => node.id)

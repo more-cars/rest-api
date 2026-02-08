@@ -3,7 +3,7 @@ import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllN
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {BrandNode} from "../../../../../../src/models/brands/types/BrandNode"
 import {Brand} from "../../../../../../src/models/brands/Brand"
-import {seedBrands} from "../../../../../_toolbox/dbSeeding/brands/nodes/seedBrands"
+import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('Each page of a "get all BRAND nodes" request returns the correct number of nodes', () => {
     test.each([
@@ -25,7 +25,7 @@ describe('Each page of a "get all BRAND nodes" request returns the correct numbe
         [5, 2, 0],
     ])('when there exist $0 brand nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
         await deleteAllNodesOfType(NodeTypeEnum.BRAND)
-        await seedBrands(totalNodeAmount)
+        await seedNodes(NodeTypeEnum.BRAND, totalNodeAmount)
 
         const actualNodes = await Brand.findAll({page})
 

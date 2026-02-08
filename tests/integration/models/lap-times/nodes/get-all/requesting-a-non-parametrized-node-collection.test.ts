@@ -3,7 +3,7 @@ import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllN
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {LapTimeNode} from "../../../../../../src/models/lap-times/types/LapTimeNode"
 import {LapTime} from "../../../../../../src/models/lap-times/LapTime"
-import {seedLapTimes} from "../../../../../_toolbox/dbSeeding/lap-times/nodes/seedLapTimes"
+import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A non-parametrized "get all LAP TIME nodes" request returns the correct number of nodes', () => {
     test('when there exist NO lap time nodes', async () => {
@@ -19,7 +19,7 @@ describe('A non-parametrized "get all LAP TIME nodes" request returns the correc
     test('when there exist lap time nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
         const amount = Math.ceil(Math.random() * 20)
-        await seedLapTimes(amount)
+        await seedNodes(NodeTypeEnum.LAP_TIME, amount)
 
         const actualNodes = await LapTime.findAll()
 

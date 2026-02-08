@@ -3,7 +3,7 @@ import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllN
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {TrackLayoutNode} from "../../../../../../src/models/track-layouts/types/TrackLayoutNode"
 import {TrackLayout} from "../../../../../../src/models/track-layouts/TrackLayout"
-import {seedTrackLayouts} from "../../../../../_toolbox/dbSeeding/track-layouts/nodes/seedTrackLayouts"
+import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('Each page of a "get all TRACK LAYOUT nodes" request returns the correct number of nodes', () => {
     test.each([
@@ -25,7 +25,7 @@ describe('Each page of a "get all TRACK LAYOUT nodes" request returns the correc
         [5, 2, 0],
     ])('when there exist $0 track layout nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
         await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
-        await seedTrackLayouts(totalNodeAmount)
+        await seedNodes(NodeTypeEnum.TRACK_LAYOUT, totalNodeAmount)
 
         const actualNodes = await TrackLayout.findAll({page})
 

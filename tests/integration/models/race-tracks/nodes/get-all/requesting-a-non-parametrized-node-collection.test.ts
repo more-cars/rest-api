@@ -3,7 +3,7 @@ import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllN
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {RaceTrackNode} from "../../../../../../src/models/race-tracks/types/RaceTrackNode"
 import {RaceTrack} from "../../../../../../src/models/race-tracks/RaceTrack"
-import {seedRaceTracks} from "../../../../../_toolbox/dbSeeding/race-tracks/nodes/seedRaceTracks"
+import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A non-parametrized "get all RACE TRACK nodes" request returns the correct number of nodes', () => {
     test('when there exist NO race track nodes', async () => {
@@ -19,7 +19,7 @@ describe('A non-parametrized "get all RACE TRACK nodes" request returns the corr
     test('when there exist race track nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACE_TRACK)
         const amount = Math.ceil(Math.random() * 20)
-        await seedRaceTracks(amount)
+        await seedNodes(NodeTypeEnum.RACE_TRACK, amount)
 
         const actualNodes = await RaceTrack.findAll()
 

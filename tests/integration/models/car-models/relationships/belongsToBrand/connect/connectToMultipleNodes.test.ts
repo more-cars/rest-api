@@ -1,16 +1,15 @@
 import {expect, test} from 'vitest'
-import {seedBrands} from "../../../../../../_toolbox/dbSeeding/brands/nodes/seedBrands"
+import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedCarModel} from "../../../../../../_toolbox/dbSeeding/car-models/nodes/seedCarModel"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
-import {
-    getRelationshipCollection
-} from "../../../../../../../src/db/relationships/getRelationshipCollection"
+import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 test('A CAR MODEL cannot have multiple ›belongs-to-brand‹ relationships', async () => {
     const carModel = await seedCarModel()
     const brandsAmount = 3
-    const brands = await seedBrands(brandsAmount)
+    const brands = await seedNodes(NodeTypeEnum.BRAND, brandsAmount)
 
     for (const brand of brands) {
         await CarModel.createBelongsToBrandRelationship(carModel.id, brand.id)
