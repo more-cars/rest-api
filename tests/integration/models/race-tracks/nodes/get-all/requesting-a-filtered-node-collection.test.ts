@@ -1,5 +1,6 @@
 import {describe, expect, test} from 'vitest'
-import {deleteAllRaceTracks} from "../../../../../_toolbox/dbSeeding/race-tracks/nodes/deleteAllRaceTracks"
+import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
+import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {RaceTrackNode} from "../../../../../../src/models/race-tracks/types/RaceTrackNode"
 import {RaceTrack} from "../../../../../../src/models/race-tracks/RaceTrack"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
@@ -7,7 +8,7 @@ import {seedRaceTrack} from "../../../../../_toolbox/dbSeeding/race-tracks/nodes
 
 describe('A filtered "get all RACE TRACK nodes" request returns only the matching nodes', () => {
     test('when there exist NO Race Track nodes', async () => {
-        await deleteAllRaceTracks()
+        await deleteAllNodesOfType(NodeTypeEnum.RACE_TRACK)
 
         const expectedNodes: Array<RaceTrackNode> = []
         const actualNodes = await RaceTrack.findAll({
@@ -21,7 +22,7 @@ describe('A filtered "get all RACE TRACK nodes" request returns only the matchin
     })
 
     test('when there exist Race Track nodes', async () => {
-        await deleteAllRaceTracks()
+        await deleteAllNodesOfType(NodeTypeEnum.RACE_TRACK)
         const nodeA = await seedRaceTrack({name: 'A Node'})
         await seedRaceTrack({name: 'B Node'})
         await seedRaceTrack({name: 'C Node'})

@@ -1,12 +1,13 @@
 import {describe, expect, test} from 'vitest'
-import {deleteAllLapTimes} from "../../../../../_toolbox/dbSeeding/lap-times/nodes/deleteAllLapTimes"
+import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
+import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {LapTimeNode} from "../../../../../../src/models/lap-times/types/LapTimeNode"
 import {LapTime} from "../../../../../../src/models/lap-times/LapTime"
 import {seedLapTimes} from "../../../../../_toolbox/dbSeeding/lap-times/nodes/seedLapTimes"
 
 describe('A non-parametrized "get all LAP TIME nodes" request returns the correct number of nodes', () => {
     test('when there exist NO lap time nodes', async () => {
-        await deleteAllLapTimes()
+        await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
 
         const expectedNodes: Array<LapTimeNode> = []
         const actualNodes = await LapTime.findAll()
@@ -16,7 +17,7 @@ describe('A non-parametrized "get all LAP TIME nodes" request returns the correc
     })
 
     test('when there exist lap time nodes', async () => {
-        await deleteAllLapTimes()
+        await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
         const amount = Math.ceil(Math.random() * 20)
         await seedLapTimes(amount)
 

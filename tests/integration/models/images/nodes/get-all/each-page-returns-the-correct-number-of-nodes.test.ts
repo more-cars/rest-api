@@ -1,5 +1,6 @@
 import {describe, expect, test} from 'vitest'
-import {deleteAllImages} from "../../../../../_toolbox/dbSeeding/images/nodes/deleteAllImages"
+import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
+import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {ImageNode} from "../../../../../../src/models/images/types/ImageNode"
 import {Image} from "../../../../../../src/models/images/Image"
 import {seedImages} from "../../../../../_toolbox/dbSeeding/images/nodes/seedImages"
@@ -10,7 +11,7 @@ describe('Each page of a "get all COMPANY nodes" request returns the correct num
         [2],
         [99],
     ])('when there exist NO company nodes (page=$0)', async (page) => {
-        await deleteAllImages()
+        await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
 
         const expectedNodes: Array<ImageNode> = []
         const actualNodes = await Image.findAll({page})
@@ -23,7 +24,7 @@ describe('Each page of a "get all COMPANY nodes" request returns the correct num
         [20, 1, 20],
         [5, 2, 0],
     ])('when there exist $0 company nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
-        await deleteAllImages()
+        await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
         await seedImages(totalNodeAmount)
 
         const actualNodes = await Image.findAll({page})

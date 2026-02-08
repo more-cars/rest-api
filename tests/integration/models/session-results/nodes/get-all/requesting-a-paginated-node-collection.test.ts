@@ -1,12 +1,13 @@
 import {describe, expect, test} from 'vitest'
-import {deleteAllSessionResults} from "../../../../../_toolbox/dbSeeding/session-results/nodes/deleteAllSessionResults"
+import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
+import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {SessionResultNode} from "../../../../../../src/models/session-results/types/SessionResultNode"
 import {SessionResult} from "../../../../../../src/models/session-results/SessionResult"
 import {seedSessionResult} from "../../../../../_toolbox/dbSeeding/session-results/nodes/seedSessionResult"
 
 describe('A sorted "get all SESSION RESULT nodes" request returns the nodes in correct order', () => {
     test('when there exist NO session result nodes', async () => {
-        await deleteAllSessionResults()
+        await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
 
         const expectedNodes: Array<SessionResultNode> = []
         const actualNodes = await SessionResult.findAll({sortByProperty: 'position', sortDirection: 'desc'})
@@ -16,7 +17,7 @@ describe('A sorted "get all SESSION RESULT nodes" request returns the nodes in c
     })
 
     test('when there exist session result nodes', async () => {
-        await deleteAllSessionResults()
+        await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
         const nodeA = await seedSessionResult({position: 1})
         const nodeB = await seedSessionResult({position: 2})
         const nodeC = await seedSessionResult({position: 3})

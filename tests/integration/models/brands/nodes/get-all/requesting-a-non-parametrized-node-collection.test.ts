@@ -1,12 +1,13 @@
 import {describe, expect, test} from 'vitest'
-import {deleteAllBrands} from "../../../../../_toolbox/dbSeeding/brands/nodes/deleteAllBrands"
+import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
+import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {BrandNode} from "../../../../../../src/models/brands/types/BrandNode"
 import {Brand} from "../../../../../../src/models/brands/Brand"
 import {seedBrands} from "../../../../../_toolbox/dbSeeding/brands/nodes/seedBrands"
 
 describe('A non-parametrized "get all BRAND nodes" request returns the correct number of nodes', () => {
     test('when there exist NO brand nodes', async () => {
-        await deleteAllBrands()
+        await deleteAllNodesOfType(NodeTypeEnum.BRAND)
 
         const expectedNodes: Array<BrandNode> = []
         const actualNodes = await Brand.findAll()
@@ -16,7 +17,7 @@ describe('A non-parametrized "get all BRAND nodes" request returns the correct n
     })
 
     test('when there exist brand nodes', async () => {
-        await deleteAllBrands()
+        await deleteAllNodesOfType(NodeTypeEnum.BRAND)
         const amount = Math.ceil(Math.random() * 20)
         await seedBrands(amount)
 

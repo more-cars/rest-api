@@ -1,5 +1,6 @@
 import {describe, expect, test} from 'vitest'
-import {deleteAllLapTimes} from "../../../../../_toolbox/dbSeeding/lap-times/nodes/deleteAllLapTimes"
+import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
+import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {LapTimeNode} from "../../../../../../src/models/lap-times/types/LapTimeNode"
 import {LapTime} from "../../../../../../src/models/lap-times/LapTime"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
@@ -7,7 +8,7 @@ import {seedLapTime} from "../../../../../_toolbox/dbSeeding/lap-times/nodes/see
 
 describe('A filtered "get all LAP TIME nodes" request returns only the matching nodes', () => {
     test('when there exist NO Lap Time nodes', async () => {
-        await deleteAllLapTimes()
+        await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
 
         const expectedNodes: Array<LapTimeNode> = []
         const actualNodes = await LapTime.findAll({
@@ -21,7 +22,7 @@ describe('A filtered "get all LAP TIME nodes" request returns only the matching 
     })
 
     test('when there exist Lap Time nodes', async () => {
-        await deleteAllLapTimes()
+        await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
         const nodeA = await seedLapTime({driver_name: 'A Node'})
         await seedLapTime({driver_name: 'B Node'})
         await seedLapTime({driver_name: 'C Node'})

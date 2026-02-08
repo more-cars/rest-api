@@ -1,5 +1,6 @@
 import {describe, expect, test} from 'vitest'
-import {deleteAllRacingSessions} from "../../../../../_toolbox/dbSeeding/racing-sessions/nodes/deleteAllRacingSessions"
+import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
+import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {RacingSessionNode} from "../../../../../../src/models/racing-sessions/types/RacingSessionNode"
 import {RacingSession} from "../../../../../../src/models/racing-sessions/RacingSession"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
@@ -7,7 +8,7 @@ import {seedRacingSession} from "../../../../../_toolbox/dbSeeding/racing-sessio
 
 describe('A filtered "get all RACING SESSION nodes" request returns only the matching nodes', () => {
     test('when there exist NO Racing Session nodes', async () => {
-        await deleteAllRacingSessions()
+        await deleteAllNodesOfType(NodeTypeEnum.RACING_SESSION)
 
         const expectedNodes: Array<RacingSessionNode> = []
         const actualNodes = await RacingSession.findAll({
@@ -21,7 +22,7 @@ describe('A filtered "get all RACING SESSION nodes" request returns only the mat
     })
 
     test('when there exist Racing Session nodes', async () => {
-        await deleteAllRacingSessions()
+        await deleteAllNodesOfType(NodeTypeEnum.RACING_SESSION)
         const nodeA = await seedRacingSession({name: 'A Node'})
         await seedRacingSession({name: 'B Node'})
         await seedRacingSession({name: 'C Node'})

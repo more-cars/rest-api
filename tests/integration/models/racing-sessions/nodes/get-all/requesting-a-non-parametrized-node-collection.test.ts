@@ -1,12 +1,13 @@
 import {describe, expect, test} from 'vitest'
-import {deleteAllRacingSessions} from "../../../../../_toolbox/dbSeeding/racing-sessions/nodes/deleteAllRacingSessions"
+import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
+import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {RacingSessionNode} from "../../../../../../src/models/racing-sessions/types/RacingSessionNode"
 import {RacingSession} from "../../../../../../src/models/racing-sessions/RacingSession"
 import {seedRacingSessions} from "../../../../../_toolbox/dbSeeding/racing-sessions/nodes/seedRacingSessions"
 
 describe('A non-parametrized "get all RACING SESSION nodes" request returns the correct number of nodes', () => {
     test('when there exist NO racing session nodes', async () => {
-        await deleteAllRacingSessions()
+        await deleteAllNodesOfType(NodeTypeEnum.RACING_SESSION)
 
         const expectedNodes: Array<RacingSessionNode> = []
         const actualNodes = await RacingSession.findAll()
@@ -16,7 +17,7 @@ describe('A non-parametrized "get all RACING SESSION nodes" request returns the 
     })
 
     test('when there exist racing session nodes', async () => {
-        await deleteAllRacingSessions()
+        await deleteAllNodesOfType(NodeTypeEnum.RACING_SESSION)
         const amount = Math.ceil(Math.random() * 20)
         await seedRacingSessions(amount)
 

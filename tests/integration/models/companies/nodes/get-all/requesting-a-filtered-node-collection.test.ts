@@ -1,5 +1,6 @@
 import {describe, expect, test} from 'vitest'
-import {deleteAllCompanies} from "../../../../../_toolbox/dbSeeding/companies/nodes/deleteAllCompanies"
+import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
+import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {CompanyNode} from "../../../../../../src/models/companies/types/CompanyNode"
 import {Company} from "../../../../../../src/models/companies/Company"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
@@ -7,7 +8,7 @@ import {seedCompany} from "../../../../../_toolbox/dbSeeding/companies/nodes/see
 
 describe('A filtered "get all COMPANY nodes" request returns only the matching nodes', () => {
     test('when there exist NO company nodes', async () => {
-        await deleteAllCompanies()
+        await deleteAllNodesOfType(NodeTypeEnum.COMPANY)
 
         const expectedNodes: Array<CompanyNode> = []
         const actualNodes = await Company.findAll({
@@ -21,7 +22,7 @@ describe('A filtered "get all COMPANY nodes" request returns only the matching n
     })
 
     test('when there exist company nodes', async () => {
-        await deleteAllCompanies()
+        await deleteAllNodesOfType(NodeTypeEnum.COMPANY)
         const nodeA = await seedCompany({name: 'A Node'})
         await seedCompany({name: 'B Node'})
         await seedCompany({name: 'C Node'})

@@ -1,5 +1,6 @@
 import {describe, expect, test} from 'vitest'
-import {deleteAllTrackLayouts} from "../../../../../_toolbox/dbSeeding/track-layouts/nodes/deleteAllTrackLayouts"
+import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
+import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {TrackLayoutNode} from "../../../../../../src/models/track-layouts/types/TrackLayoutNode"
 import {TrackLayout} from "../../../../../../src/models/track-layouts/TrackLayout"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
@@ -7,7 +8,7 @@ import {seedTrackLayout} from "../../../../../_toolbox/dbSeeding/track-layouts/n
 
 describe('A filtered "get all TRACK LAYOUT nodes" request returns only the matching nodes', () => {
     test('when there exist NO Track Layout nodes', async () => {
-        await deleteAllTrackLayouts()
+        await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
 
         const expectedNodes: Array<TrackLayoutNode> = []
         const actualNodes = await TrackLayout.findAll({
@@ -21,7 +22,7 @@ describe('A filtered "get all TRACK LAYOUT nodes" request returns only the match
     })
 
     test('when there exist Track Layout nodes', async () => {
-        await deleteAllTrackLayouts()
+        await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
         const nodeA = await seedTrackLayout({name: 'A Node'})
         await seedTrackLayout({name: 'B Node'})
         await seedTrackLayout({name: 'C Node'})
