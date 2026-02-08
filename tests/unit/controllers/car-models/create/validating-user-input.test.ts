@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
-import {CreateCarModelRawInput} from "../../../../../src/controllers/carModels/types/CreateCarModelRawInput"
-import {validate} from "../../../../../src/controllers/carModels/create"
+import {CreateCarModelRawInput} from "../../../../../src/controllers/car-models/types/CreateCarModelRawInput"
+import {validate} from "../../../../../src/controllers/car-models/create"
 
 describe('Validating user input', () => {
     test('mandatory fields are missing', async () => {

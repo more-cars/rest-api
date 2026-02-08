@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../src/controllers/carModels/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../src/controllers/car-models/marshalling/unmarshalInputData"
 
 /**
  * Unmarshalling does NOT perform any validation.

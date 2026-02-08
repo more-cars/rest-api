@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../src/controllers/carModels/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../src/controllers/car-models/marshalling/unmarshalInputData"
 
 /**
  * Missing optional fields are automatically added as "undefined".
