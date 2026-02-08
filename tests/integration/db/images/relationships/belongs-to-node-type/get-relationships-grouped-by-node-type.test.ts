@@ -1,32 +1,30 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {
-    seedRelationshipsForSpecificImage
-} from "../../../../../_toolbox/dbSeeding/images/relationships/seedRelationshipsForSpecificImage"
+import {seedRelationshipForStartNode} from "../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {
     fetchImageRelationshipsForNodeType
 } from "../../../../../../src/db/nodes/images/getBelongsToNodeTypeRelationships"
 import {DbRelationship} from "../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../src/db/NodeTypeLabel"
-import {ImageNode} from "../../../../../../src/db/nodes/images/types/ImageNode"
 
 test('Get all "Image belongs to Node type" relationships for specific image', async () => {
     const imageNode = await seedNode(NodeTypeEnum.IMAGE)
-    const amount = 5
-    await seedRelationshipsForSpecificImage(imageNode as ImageNode, amount)
+    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.BRAND, DbRelationship.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.CAR_MODEL, DbRelationship.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.CAR_MODEL, DbRelationship.ImageBelongsToNode)
 
-    const companyRelationships = await fetchImageRelationshipsForNodeType(NodeTypeLabel.Brand, imageNode.id)
+    const companyRelationships = await fetchImageRelationshipsForNodeType(NodeTypeLabel.Company, imageNode.id)
     expect(companyRelationships)
         .toHaveLength(0)
 
     const brandRelationships = await fetchImageRelationshipsForNodeType(NodeTypeLabel.Brand, imageNode.id)
     expect(brandRelationships)
-        .toHaveLength(0)
+        .toHaveLength(1)
 
     const carModelRelationships = await fetchImageRelationshipsForNodeType(NodeTypeLabel.CarModel, imageNode.id)
     expect(carModelRelationships)
-        .toHaveLength(amount)
+        .toHaveLength(2)
 
     carModelRelationships.forEach(relationship => {
         expect(relationship.start_node_id)

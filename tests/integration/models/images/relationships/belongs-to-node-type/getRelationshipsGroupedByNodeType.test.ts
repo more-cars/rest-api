@@ -2,17 +2,16 @@ import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {Image} from "../../../../../../src/models/images/Image"
-import {
-    seedRelationshipsForSpecificImage
-} from "../../../../../_toolbox/dbSeeding/images/relationships/seedRelationshipsForSpecificImage"
+import {seedRelationshipForStartNode} from "../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {DbRelationship} from "../../../../../../src/db/types/DbRelationship"
 import assert from "assert"
-import {ImageNode} from "../../../../../../src/db/nodes/images/types/ImageNode"
 
 test('Get all "Image belongs to Node type" relationships for specific image', async () => {
     const imageNode = await seedNode(NodeTypeEnum.IMAGE)
-    const amount = 7
-    await seedRelationshipsForSpecificImage(imageNode as ImageNode, amount)
+    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.CAR_MODEL, DbRelationship.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.CAR_MODEL, DbRelationship.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.CAR_MODEL, DbRelationship.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.CAR_MODEL, DbRelationship.ImageBelongsToNode)
 
     const fetchedRelationships = await Image.getBelongsToNodeTypeRelationships(imageNode.id)
 
@@ -25,7 +24,7 @@ test('Get all "Image belongs to Node type" relationships for specific image', as
     expect(fetchedRelationships.brands)
         .toHaveLength(0)
     expect(fetchedRelationships.car_models)
-        .toHaveLength(amount)
+        .toHaveLength(4)
 
     fetchedRelationships.car_models.forEach(relationship => {
         expect(relationship.origin.id)
