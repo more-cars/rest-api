@@ -118,9 +118,6 @@ To verify that the specification is a valid OpenAPI document run `npm run tests:
 
 * run `npm run tests:unit` to execute all unit tests
     * test report is created in folder `test-reports/unit`
-* run `npm run tests:unit:coverage` to execute all unit tests and generate a code coverage report
-    * test report is created in folder `test-reports/unit`
-    * coverage report is created in folder `test-reports/unit/code-coverage`
 * run `npm run tests:integration` to execute all integration tests
     * a wizard will ask for the required parameters
     * by default the test report is created in folder `test-reports/integration`

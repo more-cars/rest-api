@@ -15,13 +15,4 @@ jobs:
       - name: Install Node.js dependencies
         run: npm ci
       - name: Run Unit Tests
-        run: npm run tests:unit:coverage
-      - name: Publish Unit Test Report
-        uses: dorny/test-reporter@v2
-        if: ${{ !cancelled() }}
-        with:
-          name: Unit Tests
-          path: test-reports/unit/report.xml
-          reporter: jest-junit
-          badge-title: 'Unit Tests'
-          list-tests: 'none'
+        run: npm run tests:unit
