@@ -25,6 +25,6 @@ test.each([
 
 test('base ID is too large', async () => {
     expect(() => {
-        generateMoreCarsId(78000000)
+        generateMoreCarsId(88000000)
     }).toThrow(OutOfRangeError)
 })
