@@ -70,7 +70,6 @@
     "tests:behavior": "node --env-file=.env -r ts-node/register tests/behavior/check-dependencies.ts true && npx cucumber-js",
     "tests:behavior:single": "node --env-file=.env -r ts-node/register tests/behavior/run-single-test.ts",
     "tests:performance": "./tests/performance/run-tests.sh",
-    "tests:sync-scripts": "vitest run -c tests/sync-scripts/vite.config.ts",
     "stats:lines-of-code:src": "sloc src/",
     "stats:lines-of-code:test": "sloc tests/"
   },
