@@ -15,4 +15,4 @@ jobs:
       - name: Install Node.js dependencies
         run: npm ci
       - name: Run Code Linter
-        run: npm run tests:lint
+        run: npm run tests:lint:src
