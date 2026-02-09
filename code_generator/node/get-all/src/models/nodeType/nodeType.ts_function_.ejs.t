@@ -7,7 +7,7 @@ skip_if: async findAll
     },
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<<%= h.changeCase.pascal(nodeType) %>Node[]> {
-        const nodes: Array<<%= h.changeCase.pascal(nodeType) %>Node> = []
+        const nodes: <%= h.changeCase.pascal(nodeType) %>Node[] = []
         const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {

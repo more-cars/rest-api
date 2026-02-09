@@ -13,7 +13,7 @@ describe('Each page of a "get all SESSION RESULT nodes" request returns the corr
     ])('when there exist no SESSION RESULT nodes (page=$0)', async (page) => {
         await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
 
-        const expectedNodes: Array<SessionResultNode> = []
+        const expectedNodes: SessionResultNode[] = []
         const actualNodes = await SessionResult.findAll({page})
 
         expect(actualNodes)

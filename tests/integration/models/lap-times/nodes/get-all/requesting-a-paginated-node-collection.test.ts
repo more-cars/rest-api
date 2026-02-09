@@ -9,7 +9,7 @@ describe('A paginated "get all LAP TIME nodes" request returns the correct numbe
     test('when there exist no LAP TIME nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
 
-        const expectedNodes: Array<LapTimeNode> = []
+        const expectedNodes: LapTimeNode[] = []
         const actualNodes = await LapTime.findAll({page: 1})
 
         expect(expectedNodes)

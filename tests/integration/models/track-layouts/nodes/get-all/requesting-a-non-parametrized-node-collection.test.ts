@@ -9,7 +9,7 @@ describe('A non-parametrized "get all TRACK LAYOUT nodes" request returns the co
     test('when there exist no TRACK LAYOUT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
 
-        const expectedNodes: Array<TrackLayoutNode> = []
+        const expectedNodes: TrackLayoutNode[] = []
         const actualNodes = await TrackLayout.findAll()
 
         expect(actualNodes)

@@ -9,7 +9,7 @@ describe('A paginated "get all SESSION RESULT nodes" request returns the correct
     test('when there exist no SESSION RESULT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
 
-        const expectedNodes: Array<SessionResultNode> = []
+        const expectedNodes: SessionResultNode[] = []
         const actualNodes = await SessionResult.findAll({page: 1})
 
         expect(expectedNodes)

@@ -9,7 +9,7 @@ describe('A non-parametrized "get all CAR MODEL nodes" request returns the corre
     test('when there exist no CAR MODEL nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL)
 
-        const expectedNodes: Array<CarModelNode> = []
+        const expectedNodes: CarModelNode[] = []
         const actualNodes = await CarModel.findAll()
 
         expect(actualNodes)

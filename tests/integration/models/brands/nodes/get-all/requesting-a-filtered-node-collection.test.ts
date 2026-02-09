@@ -10,7 +10,7 @@ describe('A filtered "get all BRAND nodes" request returns only the matching nod
     test('when there exist no BRAND nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.BRAND)
 
-        const expectedNodes: Array<BrandNode> = []
+        const expectedNodes: BrandNode[] = []
         const actualNodes = await Brand.findAll({
             filterByProperty: 'name',
             filterValue: 'test',

@@ -10,7 +10,7 @@ describe('A filtered "get all LAP TIME nodes" request returns only the matching 
     test('when there exist no LAP TIME nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
 
-        const expectedNodes: Array<LapTimeNode> = []
+        const expectedNodes: LapTimeNode[] = []
         const actualNodes = await LapTime.findAll({
             filterByProperty: 'name',
             filterValue: 'test',

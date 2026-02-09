@@ -9,7 +9,7 @@ describe('A paginated "get all RACE TRACK nodes" request returns the correct num
     test('when there exist no RACE TRACK nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACE_TRACK)
 
-        const expectedNodes: Array<RaceTrackNode> = []
+        const expectedNodes: RaceTrackNode[] = []
         const actualNodes = await RaceTrack.findAll({page: 1})
 
         expect(expectedNodes)

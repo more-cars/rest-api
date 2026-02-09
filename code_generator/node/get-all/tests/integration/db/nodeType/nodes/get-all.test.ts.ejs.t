@@ -11,7 +11,7 @@ import {getAllNodesOfType} from "../../../../../src/db/nodes/<%= h.changeCase.ke
 test('When there are no <%= h.changeCase.upper(h.inflection.pluralize(nodeType)) %> then an empty array should be returned', async () => {
     await deleteAllNodesOfType(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>)
 
-    const expected<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>: Array<<%= h.changeCase.pascal(nodeType) %>Node> = []
+    const expected<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>: <%= h.changeCase.pascal(nodeType) %>Node[] = []
     const actual<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %> = await getAllNodesOfType()
 
     expect(actual<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>)

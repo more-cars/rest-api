@@ -9,7 +9,7 @@ describe('A sorted "get all RACING SESSION nodes" request returns the nodes in c
     test('when there exist no RACING SESSION nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_SESSION)
 
-        const expectedNodes: Array<RacingSessionNode> = []
+        const expectedNodes: RacingSessionNode[] = []
         const actualNodes = await RacingSession.findAll({sortByProperty: 'name', sortDirection: 'desc'})
 
         expect(actualNodes)

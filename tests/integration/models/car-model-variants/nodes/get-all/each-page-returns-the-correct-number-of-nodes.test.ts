@@ -13,7 +13,7 @@ describe('Each page of a "get all CAR MODEL VARIANT nodes" request returns the c
     ])('when there exist no CAR MODEL VARIANT nodes (page=$0)', async (page) => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL_VARIANT)
 
-        const expectedNodes: Array<CarModelVariantNode> = []
+        const expectedNodes: CarModelVariantNode[] = []
         const actualNodes = await CarModelVariant.findAll({page})
 
         expect(actualNodes)

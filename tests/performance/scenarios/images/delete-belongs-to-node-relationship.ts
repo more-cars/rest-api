@@ -49,7 +49,7 @@ export function setup() {
     }
 }
 
-export default function (data: { imageId: number, partnerNodes: Array<number> }) {
+export default function (data: { imageId: number, partnerNodes: number[] }) {
     const partnerNodeId = data.partnerNodes[exec.scenario.iterationInTest]
     const url = `${__ENV.API_URL}/images/${data.imageId}/belongs-to-node/${partnerNodeId}`
 

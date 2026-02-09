@@ -48,7 +48,7 @@ export function setup() {
     }
 }
 
-export default function (data: { raceTrackId: number, images: Array<number> }) {
+export default function (data: { raceTrackId: number, images: number[] }) {
     const imageId = data.images[exec.scenario.iterationInTest]
     const url = `${__ENV.API_URL}/race-tracks/${data.raceTrackId}/has-prime-image/${imageId}`
 

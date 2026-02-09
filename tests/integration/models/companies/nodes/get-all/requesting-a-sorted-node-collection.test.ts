@@ -9,7 +9,7 @@ describe('A sorted "get all COMPANY nodes" request returns the nodes in correct 
     test('when there exist no COMPANY nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.COMPANY)
 
-        const expectedNodes: Array<CompanyNode> = []
+        const expectedNodes: CompanyNode[] = []
         const actualNodes = await Company.findAll({sortByProperty: 'name', sortDirection: 'desc'})
 
         expect(actualNodes)

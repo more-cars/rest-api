@@ -48,7 +48,7 @@ export function setup() {
     }
 }
 
-export default function (data: { racingEventId: number, racingSeriesIds: Array<number> }) {
+export default function (data: { racingEventId: number, racingSeriesIds: number[] }) {
     const racingSeriesId = data.racingSeriesIds[exec.scenario.iterationInTest]
     const url = `${__ENV.API_URL}/racing-events/${data.racingEventId}/belongs-to-racing-series/${racingSeriesId}`
 

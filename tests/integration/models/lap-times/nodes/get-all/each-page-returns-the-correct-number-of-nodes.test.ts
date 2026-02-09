@@ -13,7 +13,7 @@ describe('Each page of a "get all LAP TIME nodes" request returns the correct nu
     ])('when there exist no LAP TIME nodes (page=$0)', async (page) => {
         await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
 
-        const expectedNodes: Array<LapTimeNode> = []
+        const expectedNodes: LapTimeNode[] = []
         const actualNodes = await LapTime.findAll({page})
 
         expect(actualNodes)

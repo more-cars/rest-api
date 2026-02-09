@@ -49,7 +49,7 @@ export function setup() {
     }
 }
 
-export default function (data: { brandId: number, carModels: Array<number> }) {
+export default function (data: { brandId: number, carModels: number[] }) {
     const carModelId = data.carModels[exec.scenario.iterationInTest]
     const url = `${__ENV.API_URL}/brands/${data.brandId}/has-car-model/${carModelId}`
 

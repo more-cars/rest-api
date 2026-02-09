@@ -12,7 +12,7 @@ describe('A paginated "get all <%= h.changeCase.upper(nodeType) %> nodes" reques
     test('when there exist no <%= h.changeCase.upper(nodeType) %> nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>)
 
-        const expectedNodes: Array<<%= h.changeCase.pascal(nodeType) %>Node> = []
+        const expectedNodes: <%= h.changeCase.pascal(nodeType) %>Node[] = []
         const actualNodes = await <%= h.changeCase.pascal(nodeType) %>.findAll({page: 1})
 
         expect(actualNodes)

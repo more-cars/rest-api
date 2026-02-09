@@ -13,7 +13,7 @@ describe('Each page of a "get all TRACK LAYOUT nodes" request returns the correc
     ])('when there exist no TRACK LAYOUT nodes (page=$0)', async (page) => {
         await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
 
-        const expectedNodes: Array<TrackLayoutNode> = []
+        const expectedNodes: TrackLayoutNode[] = []
         const actualNodes = await TrackLayout.findAll({page})
 
         expect(actualNodes)

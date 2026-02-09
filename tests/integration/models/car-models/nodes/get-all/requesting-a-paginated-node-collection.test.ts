@@ -9,7 +9,7 @@ describe('A paginated "get all CAR MODEL nodes" request returns the correct numb
     test('when there exist no CAR MODEL nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL)
 
-        const expectedNodes: Array<CarModelNode> = []
+        const expectedNodes: CarModelNode[] = []
         const actualNodes = await CarModel.findAll({page: 1})
 
         expect(expectedNodes)

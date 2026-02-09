@@ -8,7 +8,7 @@ import {getAllNodesOfType} from "../../../../../src/db/nodes/session-results/get
 test('When there are no SESSION RESULTS then an empty array should be returned', async () => {
     await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
 
-    const expectedSessionResults: Array<SessionResultNode> = []
+    const expectedSessionResults: SessionResultNode[] = []
     const actualSessionResults = await getAllNodesOfType()
 
     expect(actualSessionResults)

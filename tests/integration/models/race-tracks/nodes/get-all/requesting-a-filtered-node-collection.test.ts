@@ -10,7 +10,7 @@ describe('A filtered "get all RACE TRACK nodes" request returns only the matchin
     test('when there exist no RACE TRACK nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACE_TRACK)
 
-        const expectedNodes: Array<RaceTrackNode> = []
+        const expectedNodes: RaceTrackNode[] = []
         const actualNodes = await RaceTrack.findAll({
             filterByProperty: 'name',
             filterValue: 'test',

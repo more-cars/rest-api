@@ -9,7 +9,7 @@ describe('A sorted "get all LAP TIME nodes" request returns the nodes in correct
     test('when there exist no LAP TIME nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
 
-        const expectedNodes: Array<LapTimeNode> = []
+        const expectedNodes: LapTimeNode[] = []
         const actualNodes = await LapTime.findAll({sortByProperty: 'name', sortDirection: 'desc'})
 
         expect(actualNodes)

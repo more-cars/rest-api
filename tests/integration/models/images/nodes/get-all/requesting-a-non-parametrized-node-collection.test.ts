@@ -9,7 +9,7 @@ describe('A non-parametrized "get IMAGE COMPANY nodes" request returns the corre
     test('when there exist no IMAGE nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
 
-        const expectedNodes: Array<ImageNode> = []
+        const expectedNodes: ImageNode[] = []
         const actualNodes = await Image.findAll()
 
         expect(actualNodes)

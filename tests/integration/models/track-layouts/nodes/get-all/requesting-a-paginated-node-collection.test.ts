@@ -9,7 +9,7 @@ describe('A paginated "get all TRACK LAYOUT nodes" request returns the correct n
     test('when there exist no TRACK LAYOUT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
 
-        const expectedNodes: Array<TrackLayoutNode> = []
+        const expectedNodes: TrackLayoutNode[] = []
         const actualNodes = await TrackLayout.findAll({page: 1})
 
         expect(expectedNodes)

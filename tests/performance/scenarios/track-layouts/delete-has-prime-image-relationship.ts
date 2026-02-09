@@ -48,7 +48,7 @@ export function setup() {
     }
 }
 
-export default function (data: { trackLayoutId: number, images: Array<number> }) {
+export default function (data: { trackLayoutId: number, images: number[] }) {
     const imageId = data.images[exec.scenario.iterationInTest]
     const url = `${__ENV.API_URL}/track-layouts/${data.trackLayoutId}/has-prime-image/${imageId}`
 

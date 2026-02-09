@@ -9,7 +9,7 @@ describe('A sorted "get all SESSION RESULT nodes" request returns the nodes in c
     test('when there exist no SESSION RESULT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
 
-        const expectedNodes: Array<SessionResultNode> = []
+        const expectedNodes: SessionResultNode[] = []
         const actualNodes = await SessionResult.findAll({sortByProperty: 'position', sortDirection: 'desc'})
 
         expect(actualNodes)

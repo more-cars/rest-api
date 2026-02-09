@@ -9,7 +9,7 @@ describe('A non-parametrized "get all RACING SERIES nodes" request returns the c
     test('when there exist no RACING SERIES nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_SERIES)
 
-        const expectedNodes: Array<RacingSeriesNode> = []
+        const expectedNodes: RacingSeriesNode[] = []
         const actualNodes = await RacingSeries.findAll()
 
         expect(actualNodes)

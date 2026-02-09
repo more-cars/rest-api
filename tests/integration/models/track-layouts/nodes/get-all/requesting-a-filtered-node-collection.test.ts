@@ -10,7 +10,7 @@ describe('A filtered "get all TRACK LAYOUT nodes" request returns only the match
     test('when there exist no TRACK LAYOUT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
 
-        const expectedNodes: Array<TrackLayoutNode> = []
+        const expectedNodes: TrackLayoutNode[] = []
         const actualNodes = await TrackLayout.findAll({
             filterByProperty: 'name',
             filterValue: 'test',

@@ -10,7 +10,7 @@ describe('A filtered "get all RACING SESSION nodes" request returns only the mat
     test('when there exist no RACING SESSION nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_SESSION)
 
-        const expectedNodes: Array<RacingSessionNode> = []
+        const expectedNodes: RacingSessionNode[] = []
         const actualNodes = await RacingSession.findAll({
             filterByProperty: 'name',
             filterValue: 'test',

@@ -9,7 +9,7 @@ describe('A sorted "get all IMAGE nodes" request returns the nodes in correct or
     test('when there exist no IMAGE nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
 
-        const expectedNodes: Array<ImageNode> = []
+        const expectedNodes: ImageNode[] = []
         const actualNodes = await Image.findAll({sortByProperty: 'name', sortDirection: 'desc'})
 
         expect(actualNodes)

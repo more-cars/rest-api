@@ -9,7 +9,7 @@ describe('A sorted "get all RACING EVENT nodes" request returns the nodes in cor
     test('when there exist no RACING EVENT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_EVENT)
 
-        const expectedNodes: Array<RacingEventNode> = []
+        const expectedNodes: RacingEventNode[] = []
         const actualNodes = await RacingEvent.findAll({sortByProperty: 'name', sortDirection: 'desc'})
 
         expect(actualNodes)

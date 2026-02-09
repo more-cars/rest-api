@@ -48,7 +48,7 @@ export function setup() {
     }
 }
 
-export default function (data: { carModelId: number, partnerNodes: Array<number> }) {
+export default function (data: { carModelId: number, partnerNodes: number[] }) {
     const partnerNodeId = data.partnerNodes[exec.scenario.iterationInTest]
     const url = `${__ENV.API_URL}/car-models/${data.carModelId}/has-successor/${partnerNodeId}`
 

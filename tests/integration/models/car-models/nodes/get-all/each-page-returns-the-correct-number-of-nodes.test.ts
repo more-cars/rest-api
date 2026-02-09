@@ -13,7 +13,7 @@ describe('Each page of a "get all CAR MODEL nodes" request returns the correct n
     ])('when there exist no CAR MODEL nodes (page=$0)', async (page) => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL)
 
-        const expectedNodes: Array<CarModelNode> = []
+        const expectedNodes: CarModelNode[] = []
         const actualNodes = await CarModel.findAll({page})
 
         expect(actualNodes)

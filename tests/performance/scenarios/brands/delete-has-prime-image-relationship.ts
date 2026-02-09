@@ -49,7 +49,7 @@ export function setup() {
     }
 }
 
-export default function (data: { brandId: number, images: Array<number> }) {
+export default function (data: { brandId: number, images: number[] }) {
     const imageId = data.images[exec.scenario.iterationInTest]
     const url = `${__ENV.API_URL}/brands/${data.brandId}/has-prime-image/${imageId}`
 

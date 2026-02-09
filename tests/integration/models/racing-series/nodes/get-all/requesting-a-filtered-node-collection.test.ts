@@ -10,7 +10,7 @@ describe('A filtered "get all RACING SERIES nodes" request returns only the matc
     test('when there exist no RACING SERIES nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_SERIES)
 
-        const expectedNodes: Array<RacingSeriesNode> = []
+        const expectedNodes: RacingSeriesNode[] = []
         const actualNodes = await RacingSeries.findAll({
             filterByProperty: 'name',
             filterValue: 'test',

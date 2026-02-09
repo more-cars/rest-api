@@ -13,7 +13,7 @@ describe('Each page of a "get all COMPANY nodes" request returns the correct num
     ])('when there exist no COMPANY nodes (page=$0)', async (page) => {
         await deleteAllNodesOfType(NodeTypeEnum.COMPANY)
 
-        const expectedNodes: Array<CompanyNode> = []
+        const expectedNodes: CompanyNode[] = []
         const actualNodes = await Company.findAll({page})
 
         expect(actualNodes)

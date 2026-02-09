@@ -9,7 +9,7 @@ describe('A non-parametrized "get all RACE TRACK nodes" request returns the corr
     test('when there exist no RACE TRACK nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACE_TRACK)
 
-        const expectedNodes: Array<RaceTrackNode> = []
+        const expectedNodes: RaceTrackNode[] = []
         const actualNodes = await RaceTrack.findAll()
 
         expect(actualNodes)

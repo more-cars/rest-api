@@ -10,7 +10,7 @@ describe('A filtered "get all SESSION RESULT nodes" request returns only the mat
     test('when there exist no SESSION RESULT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
 
-        const expectedNodes: Array<SessionResultNode> = []
+        const expectedNodes: SessionResultNode[] = []
         const actualNodes = await SessionResult.findAll({
             filterByProperty: 'position',
             filterValue: 1,

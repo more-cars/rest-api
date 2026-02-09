@@ -9,7 +9,7 @@ describe('A non-parametrized "get all BRAND nodes" request returns the correct n
     test('when there exist no BRAND nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.BRAND)
 
-        const expectedNodes: Array<BrandNode> = []
+        const expectedNodes: BrandNode[] = []
         const actualNodes = await Brand.findAll()
 
         expect(actualNodes)

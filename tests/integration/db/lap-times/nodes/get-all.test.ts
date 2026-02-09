@@ -8,7 +8,7 @@ import {getAllNodesOfType} from "../../../../../src/db/nodes/lap-times/getAllNod
 test('When there are no LAP TIMES then an empty array should be returned', async () => {
     await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
 
-    const expectedLapTimes: Array<LapTimeNode> = []
+    const expectedLapTimes: LapTimeNode[] = []
     const actualLapTimes = await getAllNodesOfType()
 
     expect(actualLapTimes)

@@ -48,7 +48,7 @@ export function setup() {
     }
 }
 
-export default function (data: { raceTrackId: number, trackLayouts: Array<number> }) {
+export default function (data: { raceTrackId: number, trackLayouts: number[] }) {
     const trackLayoutId = data.trackLayouts[exec.scenario.iterationInTest]
     const url = `${__ENV.API_URL}/race-tracks/${data.raceTrackId}/has-layout/${trackLayoutId}`
 

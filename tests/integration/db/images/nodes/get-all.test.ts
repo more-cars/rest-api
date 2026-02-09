@@ -8,7 +8,7 @@ import {getAllNodesOfType} from "../../../../../src/db/nodes/images/getAllNodesO
 test('When there are no IMAGES then an empty array should be returned', async () => {
     await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
 
-    const expectedNodes: Array<ImageNode> = []
+    const expectedNodes: ImageNode[] = []
     const actualNodes = await getAllNodesOfType()
 
     expect(actualNodes)

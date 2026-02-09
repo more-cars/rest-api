@@ -9,7 +9,7 @@ describe('A paginated "get all COMPANY nodes" request returns the correct number
     test('when there exist no COMPANY nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.COMPANY)
 
-        const expectedNodes: Array<CompanyNode> = []
+        const expectedNodes: CompanyNode[] = []
         const actualNodes = await Company.findAll({page: 1})
 
         expect(actualNodes)

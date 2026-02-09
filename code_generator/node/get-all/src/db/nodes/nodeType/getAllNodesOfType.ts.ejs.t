@@ -8,8 +8,8 @@ import {fetchNodesFromDb} from "../fetchNodesFromDb"
 import {NodeTypeLabel} from "../../NodeTypeLabel"
 import {mapDbNodeTo<%= h.changeCase.pascal(nodeType) %>Node} from "./mapDbNodeTo<%= h.changeCase.pascal(nodeType) %>Node"
 
-export async function getAllNodesOfType(constraints: NodeCollectionConstraints = {}): Promise<Array<<%= h.changeCase.pascal(nodeType) %>Node>> {
-    const nodes: Array<<%= h.changeCase.pascal(nodeType) %>Node> = []
+export async function getAllNodesOfType(constraints: NodeCollectionConstraints = {}): Promise<<%= h.changeCase.pascal(nodeType) %>Node[]> {
+    const nodes: <%= h.changeCase.pascal(nodeType) %>Node[] = []
     const dbParams = getDbQueryCollectionParams(constraints)
     const dbNodes = await fetchNodesFromDb(NodeTypeLabel.<%= h.changeCase.pascal(nodeType) %>, dbParams)
 

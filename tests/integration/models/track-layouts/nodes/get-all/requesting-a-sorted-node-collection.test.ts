@@ -9,7 +9,7 @@ describe('A sorted "get all TRACK LAYOUT nodes" request returns the nodes in cor
     test('when there exist no TRACK LAYOUT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
 
-        const expectedNodes: Array<TrackLayoutNode> = []
+        const expectedNodes: TrackLayoutNode[] = []
         const actualNodes = await TrackLayout.findAll({sortByProperty: 'name', sortDirection: 'desc'})
 
         expect(actualNodes)

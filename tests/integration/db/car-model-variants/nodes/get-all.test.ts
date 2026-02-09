@@ -8,7 +8,7 @@ import {getAllNodesOfType} from "../../../../../src/db/nodes/car-model-variants/
 test('When there are no CAR MODEL VARIANTS then an empty array should be returned', async () => {
     await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL_VARIANT)
 
-    const expectedCarModelVariants: Array<CarModelVariantNode> = []
+    const expectedCarModelVariants: CarModelVariantNode[] = []
     const actualCarModelVariants = await getAllNodesOfType()
 
     expect(actualCarModelVariants)

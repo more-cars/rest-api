@@ -13,7 +13,7 @@ describe('Each page of a "get all IMAGE nodes" request returns the correct numbe
     ])('when there exist no IMAGE nodes (page=$0)', async (page) => {
         await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
 
-        const expectedNodes: Array<ImageNode> = []
+        const expectedNodes: ImageNode[] = []
         const actualNodes = await Image.findAll({page})
 
         expect(actualNodes)

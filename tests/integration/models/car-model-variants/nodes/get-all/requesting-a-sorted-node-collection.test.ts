@@ -9,7 +9,7 @@ describe('A sorted "get all CAR MODEL VARIANT nodes" request returns the nodes i
     test('when there exist no CAR MODEL VARIANT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL_VARIANT)
 
-        const expectedNodes: Array<CarModelVariantNode> = []
+        const expectedNodes: CarModelVariantNode[] = []
         const actualNodes = await CarModelVariant.findAll({sortByProperty: 'name', sortDirection: 'desc'})
 
         expect(actualNodes)

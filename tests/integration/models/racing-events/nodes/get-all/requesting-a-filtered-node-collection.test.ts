@@ -10,7 +10,7 @@ describe('A filtered "get all RACING EVENT nodes" request returns only the match
     test('when there exist no RACING EVENT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_EVENT)
 
-        const expectedNodes: Array<RacingEventNode> = []
+        const expectedNodes: RacingEventNode[] = []
         const actualNodes = await RacingEvent.findAll({
             filterByProperty: 'name',
             filterValue: 'test',

@@ -13,7 +13,7 @@ describe('Each page of a "get all RACING SERIES nodes" request returns the corre
     ])('when there exist no RACING SERIES nodes (page=$0)', async (page) => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_SERIES)
 
-        const expectedNodes: Array<RacingSeriesNode> = []
+        const expectedNodes: RacingSeriesNode[] = []
         const actualNodes = await RacingSeries.findAll({page})
 
         expect(actualNodes)

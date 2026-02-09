@@ -8,7 +8,7 @@ import {getAllNodesOfType} from "../../../../../src/db/nodes/track-layouts/getAl
 test('When there are no TRACK LAYOUTS then an empty array should be returned', async () => {
     await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
 
-    const expectedTrackLayouts: Array<TrackLayoutNode> = []
+    const expectedTrackLayouts: TrackLayoutNode[] = []
     const actualTrackLayouts = await getAllNodesOfType()
 
     expect(actualTrackLayouts)
