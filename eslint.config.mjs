@@ -6,10 +6,12 @@ import tseslint from 'typescript-eslint'
 
 export default defineConfig(
     eslint.configs.recommended,
-    tseslint.configs.recommended,
+    tseslint.configs.strict,
+    tseslint.configs.stylistic,
     {
         rules: {
-            "@typescript-eslint/no-duplicate-enum-values": "off"
+            "@typescript-eslint/no-duplicate-enum-values": "off",
+            "@typescript-eslint/consistent-type-definitions": ["error", "type"],
         }
     }
 )
