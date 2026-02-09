@@ -1,8 +1,8 @@
 import type {BaseNode} from "../db/types/BaseNode"
 import {getNodeById} from "../db/nodes/getNodeById"
 
-export class Node {
-    static async findById(id: number): Promise<false | BaseNode> {
+export const Node = {
+    async findById(id: number): Promise<false | BaseNode> {
         const node = await getNodeById(id)
 
         if (!node) {
@@ -12,5 +12,5 @@ export class Node {
         // TODO map db properties to model properties
 
         return node
-    }
+    },
 }

@@ -1,12 +1,12 @@
 ---
 inject: true
 to: src/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>.ts
-before: \}\n\}
-skip_if: static async get<%= h.changeCase.pascal(relationshipName) %>Relationship
+before: \},\n\}
+skip_if: async get<%= h.changeCase.pascal(relationshipName) %>Relationship
 ---
-    }
+    },
 
-    static async get<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id: number) {
+    async get<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id: number) {
         const <%= h.changeCase.camel(startNodeType) %> = await <%= h.changeCase.pascal(startNodeType) %>.findById(<%= h.changeCase.camel(startNodeType) %>Id)
         if (!<%= h.changeCase.camel(startNodeType) %>) {
             throw new NodeNotFoundError(<%= h.changeCase.camel(startNodeType) %>Id)

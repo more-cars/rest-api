@@ -1,10 +1,10 @@
 ---
 inject: true
 to: src/controllers/<%= h.changeCase.pascal(nodeType) %>Controller.ts
-before: \}\n\}
-skip_if: await getAll
+before: \},\n\}
+skip_if: async getAll
 ---
-    }
+    },
 
-    static async getAll(req: express.Request, res: express.Response) {
+    async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)

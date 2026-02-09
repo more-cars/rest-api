@@ -2,8 +2,8 @@ import {faker} from "@faker-js/faker"
 import type {InputSessionResultCreate} from "../../../../src/db/nodes/session-results/types/InputSessionResultCreate"
 import type {SessionResultNode} from "../../../../src/models/session-results/types/SessionResultNode"
 
-export class FakeSessionResult {
-    static dbInput() {
+export const FakeSessionResult = {
+    dbInput() {
         return {
             position: faker.number.int({min: 1, max: 99}),
             race_number: faker.number.int({min: 1, max: 99}).toString(),
@@ -14,9 +14,9 @@ export class FakeSessionResult {
             status: faker.word.noun(),
             points: faker.number.int({min: 1, max: 99}),
         } as InputSessionResultCreate
-    }
+    },
 
-    static modelOutput() {
+    modelOutput() {
         return {
             id: faker.number.int({min: 12_000_000, max: 20_000_000}),
             position: faker.number.int({min: 1, max: 99}),
@@ -30,5 +30,5 @@ export class FakeSessionResult {
             created_at: faker.date.past().toISOString(),
             updated_at: faker.date.past().toISOString(),
         } as SessionResultNode
-    }
+    },
 }

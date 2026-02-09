@@ -1,10 +1,10 @@
 ---
 inject: true
 to: src/controllers/<%= h.changeCase.pascal(nodeType) %>Controller.ts
-before: \}\n\}
-skip_if: await getById
+before: \},\n\}
+skip_if: async getById
 ---
-    }
+    },
 
-    static async getById(req: express.Request, res: express.Response) {
+    async getById(req: express.Request, res: express.Response) {
         await getById(req, res)

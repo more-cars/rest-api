@@ -18,76 +18,76 @@ import {createHasPrimeImageRelation} from "./brands/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./brands/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./brands/deleteHasPrimeImageRelation"
 
-export class BrandController {
-    static async create(req: express.Request, res: express.Response) {
+export const BrandController = {
+    async create(req: express.Request, res: express.Response) {
         await create(req, res)
-    }
+    },
 
-    static async getById(req: express.Request, res: express.Response) {
+    async getById(req: express.Request, res: express.Response) {
         await getById(req, res)
-    }
+    },
 
-    static async getAll(req: express.Request, res: express.Response) {
+    async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
-    }
+    },
 
-    static async delete(req: express.Request, res: express.Response) {
+    async delete(req: express.Request, res: express.Response) {
         await deleteNode(req, res)
-    }
+    },
 
-    static async createBelongsToCompanyRelation(req: express.Request, res: express.Response) {
+    async createBelongsToCompanyRelation(req: express.Request, res: express.Response) {
         await createBelongsToCompanyRelation(req, res)
-    }
+    },
 
-    static async getBelongsToCompanyRelation(req: express.Request, res: express.Response) {
+    async getBelongsToCompanyRelation(req: express.Request, res: express.Response) {
         await getBelongsToCompanyRelation(req, res)
-    }
+    },
 
-    static async deleteBelongsToCompanyRelation(req: express.Request, res: express.Response) {
+    async deleteBelongsToCompanyRelation(req: express.Request, res: express.Response) {
         await deleteBelongsToCompanyRelation(req, res)
-    }
+    },
 
-    static async createHasCarModelRelation(req: express.Request, res: express.Response) {
+    async createHasCarModelRelation(req: express.Request, res: express.Response) {
         await createHasCarModelRelation(req, res)
-    }
+    },
 
-    static async getSpecificHasCarModelRelation(req: express.Request, res: express.Response) {
+    async getSpecificHasCarModelRelation(req: express.Request, res: express.Response) {
         await getSpecificHasCarModelRelation(req, res)
-    }
+    },
 
-    static async getAllHasCarModelRelations(req: express.Request, res: express.Response) {
+    async getAllHasCarModelRelations(req: express.Request, res: express.Response) {
         await getAllHasCarModelRelations(req, res)
-    }
+    },
 
-    static async deleteHasCarModelRelation(req: express.Request, res: express.Response) {
+    async deleteHasCarModelRelation(req: express.Request, res: express.Response) {
         await deleteHasCarModelRelation(req, res)
-    }
+    },
 
-    static async createHasImageRelation(req: express.Request, res: express.Response) {
+    async createHasImageRelation(req: express.Request, res: express.Response) {
         await createHasImageRelation(req, res)
-    }
+    },
 
-    static async getSpecificHasImageRelation(req: express.Request, res: express.Response) {
+    async getSpecificHasImageRelation(req: express.Request, res: express.Response) {
         await getSpecificHasImageRelation(req, res)
-    }
+    },
 
-    static async getAllHasImageRelations(req: express.Request, res: express.Response) {
+    async getAllHasImageRelations(req: express.Request, res: express.Response) {
         await getAllHasImageRelations(req, res)
-    }
+    },
 
-    static async deleteHasImageRelation(req: express.Request, res: express.Response) {
+    async deleteHasImageRelation(req: express.Request, res: express.Response) {
         await deleteHasImageRelation(req, res)
-    }
+    },
 
-    static async createHasPrimeImageRelation(req: express.Request, res: express.Response) {
+    async createHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await createHasPrimeImageRelation(req, res)
-    }
+    },
 
-    static async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
+    async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await getHasPrimeImageRelation(req, res)
-    }
+    },
 
-    static async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
+    async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
-    }
+    },
 }

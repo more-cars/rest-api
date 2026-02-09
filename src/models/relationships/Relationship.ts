@@ -4,8 +4,8 @@ import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {Node} from "../Node"
 import {GenericRelation} from "./types/GenericRelation"
 
-export class Relationship {
-    static async findById(id: number) {
+export const Relationship = {
+    async findById(id: number) {
         const dbRelationship = await getRelationshipById(id)
 
         if (!dbRelationship) {
@@ -30,5 +30,5 @@ export class Relationship {
             created_at: dbRelationship.created_at,
             updated_at: dbRelationship.updated_at,
         } as GenericRelation
-    }
+    },
 }

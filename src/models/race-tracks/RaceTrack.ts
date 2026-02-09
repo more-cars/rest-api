@@ -24,16 +24,16 @@ import {getRel} from "../relationships/getRel"
 import {RacingEvent} from "../racing-events/RacingEvent"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 
-export class RaceTrack {
-    static async create(data: CreateRaceTrackInput): Promise<RaceTrackNode> {
+export const RaceTrack = {
+    async create(data: CreateRaceTrackInput): Promise<RaceTrackNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
         const output = convertOutputData(result)
 
         return output
-    }
+    },
 
-    static async findById(id: number): Promise<false | RaceTrackNode> {
+    async findById(id: number): Promise<false | RaceTrackNode> {
         const node = await getNodeById(id)
 
         if (!node) {
@@ -41,9 +41,9 @@ export class RaceTrack {
         }
 
         return convertOutputData(node)
-    }
+    },
 
-    static async findAll(options: NodeCollectionConstraints = {}): Promise<RaceTrackNode[]> {
+    async findAll(options: NodeCollectionConstraints = {}): Promise<RaceTrackNode[]> {
         const nodes: Array<RaceTrackNode> = []
         const nodesDb = await getAllNodesOfType(options)
 
@@ -52,18 +52,18 @@ export class RaceTrack {
         })
 
         return nodes
-    }
+    },
 
-    static async delete(raceTrackId: number): Promise<void> {
+    async delete(raceTrackId: number): Promise<void> {
         const node = await RaceTrack.findById(raceTrackId)
         if (!node) {
             throw new NodeNotFoundError(raceTrackId)
         }
 
         await deleteNode(raceTrackId)
-    }
+    },
 
-    static async createHasLayoutRelationship(raceTrackId: number, trackLayoutId: number) {
+    async createHasLayoutRelationship(raceTrackId: number, trackLayoutId: number) {
 
         const raceTrack = await RaceTrack.findById(raceTrackId)
         if (!raceTrack) {
@@ -88,18 +88,18 @@ export class RaceTrack {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getAllHasLayoutRelationships(raceTrackId: number) {
+    async getAllHasLayoutRelationships(raceTrackId: number) {
         const raceTrack = await RaceTrack.findById(raceTrackId)
         if (!raceTrack) {
             throw new NodeNotFoundError(raceTrackId)
         }
 
         return getAllRels(raceTrackId, RelationshipType.RaceTrackHasLayout)
-    }
+    },
 
-    static async deleteHasLayoutRelationship(raceTrackId: number, trackLayoutId: number) {
+    async deleteHasLayoutRelationship(raceTrackId: number, trackLayoutId: number) {
         const raceTrack = await RaceTrack.findById(raceTrackId)
         if (!raceTrack) {
             throw new NodeNotFoundError(raceTrackId)
@@ -116,9 +116,9 @@ export class RaceTrack {
         }
 
         await deleteSpecificRel(raceTrackId, trackLayoutId, RelationshipType.RaceTrackHasLayout)
-    }
+    },
 
-    static async createHostedRacingEventRelationship(raceTrackId: number, racingEventId: number) {
+    async createHostedRacingEventRelationship(raceTrackId: number, racingEventId: number) {
 
         const raceTrack = await RaceTrack.findById(raceTrackId)
         if (!raceTrack) {
@@ -143,18 +143,18 @@ export class RaceTrack {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getAllHostedRacingEventRelationships(raceTrackId: number) {
+    async getAllHostedRacingEventRelationships(raceTrackId: number) {
         const raceTrack = await RaceTrack.findById(raceTrackId)
         if (!raceTrack) {
             throw new NodeNotFoundError(raceTrackId)
         }
 
         return getAllRels(raceTrackId, RelationshipType.RaceTrackHostedRacingEvent)
-    }
+    },
 
-    static async deleteHostedRacingEventRelationship(raceTrackId: number, racingEventId: number) {
+    async deleteHostedRacingEventRelationship(raceTrackId: number, racingEventId: number) {
         const raceTrack = await RaceTrack.findById(raceTrackId)
         if (!raceTrack) {
             throw new NodeNotFoundError(raceTrackId)
@@ -171,9 +171,9 @@ export class RaceTrack {
         }
 
         await deleteSpecificRel(raceTrackId, racingEventId, RelationshipType.RaceTrackHostedRacingEvent)
-    }
+    },
 
-    static async createHasImageRelationship(raceTrackId: number, imageId: number) {
+    async createHasImageRelationship(raceTrackId: number, imageId: number) {
 
         const raceTrack = await RaceTrack.findById(raceTrackId)
         if (!raceTrack) {
@@ -196,18 +196,18 @@ export class RaceTrack {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getAllHasImageRelationships(raceTrackId: number) {
+    async getAllHasImageRelationships(raceTrackId: number) {
         const raceTrack = await RaceTrack.findById(raceTrackId)
         if (!raceTrack) {
             throw new NodeNotFoundError(raceTrackId)
         }
 
         return getAllRels(raceTrackId, RelationshipType.RaceTrackHasImage)
-    }
+    },
 
-    static async deleteHasImageRelationship(raceTrackId: number, imageId: number) {
+    async deleteHasImageRelationship(raceTrackId: number, imageId: number) {
         const raceTrack = await RaceTrack.findById(raceTrackId)
         if (!raceTrack) {
             throw new NodeNotFoundError(raceTrackId)
@@ -224,9 +224,9 @@ export class RaceTrack {
         }
 
         await deleteSpecificRel(raceTrackId, imageId, RelationshipType.RaceTrackHasImage)
-    }
+    },
 
-    static async createHasPrimeImageRelationship(raceTrackId: number, imageId: number) {
+    async createHasPrimeImageRelationship(raceTrackId: number, imageId: number) {
 
         const raceTrack = await RaceTrack.findById(raceTrackId)
         if (!raceTrack) {
@@ -251,9 +251,9 @@ export class RaceTrack {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getHasPrimeImageRelationship(raceTrackId: number) {
+    async getHasPrimeImageRelationship(raceTrackId: number) {
         const raceTrack = await RaceTrack.findById(raceTrackId)
         if (!raceTrack) {
             throw new NodeNotFoundError(raceTrackId)
@@ -265,9 +265,9 @@ export class RaceTrack {
         }
 
         return relationship
-    }
+    },
 
-    static async deleteHasPrimeImageRelationship(raceTrackId: number, imageId: number) {
+    async deleteHasPrimeImageRelationship(raceTrackId: number, imageId: number) {
         const raceTrack = await RaceTrack.findById(raceTrackId)
         if (!raceTrack) {
             throw new NodeNotFoundError(raceTrackId)
@@ -284,5 +284,5 @@ export class RaceTrack {
         }
 
         await deleteSpecificRel(raceTrackId, imageId, RelationshipType.RaceTrackHasPrimeImage)
-    }
+    },
 }

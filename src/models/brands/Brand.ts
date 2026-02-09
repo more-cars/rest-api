@@ -24,16 +24,16 @@ import {createRel} from "../relationships/createRel"
 import {getAllRels} from "../relationships/getAllRels"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 
-export class Brand {
-    static async create(data: CreateBrandInput): Promise<BrandNode> {
+export const Brand = {
+    async create(data: CreateBrandInput): Promise<BrandNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
         const output = convertOutputData(result)
 
         return output
-    }
+    },
 
-    static async findById(id: number): Promise<false | BrandNode> {
+    async findById(id: number): Promise<false | BrandNode> {
         const node = await getNodeById(id)
 
         if (!node) {
@@ -41,9 +41,9 @@ export class Brand {
         }
 
         return convertOutputData(node)
-    }
+    },
 
-    static async findAll(options: NodeCollectionConstraints = {}): Promise<BrandNode[]> {
+    async findAll(options: NodeCollectionConstraints = {}): Promise<BrandNode[]> {
         const nodes: Array<BrandNode> = []
         const nodesDb = await getAllNodesOfType(options)
 
@@ -52,18 +52,18 @@ export class Brand {
         })
 
         return nodes
-    }
+    },
 
-    static async delete(brandId: number): Promise<void> {
+    async delete(brandId: number): Promise<void> {
         const node = await Brand.findById(brandId)
         if (!node) {
             throw new NodeNotFoundError(brandId)
         }
 
         await deleteNode(brandId)
-    }
+    },
 
-    static async createBelongsToCompanyRelationship(brandId: number, companyId: number) {
+    async createBelongsToCompanyRelationship(brandId: number, companyId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -87,9 +87,9 @@ export class Brand {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getBelongsToCompanyRelationship(brandId: number) {
+    async getBelongsToCompanyRelationship(brandId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -101,9 +101,9 @@ export class Brand {
         }
 
         return relationship
-    }
+    },
 
-    static async deleteBelongsToCompanyRelationship(brandId: number, companyId: number) {
+    async deleteBelongsToCompanyRelationship(brandId: number, companyId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -120,9 +120,9 @@ export class Brand {
         }
 
         await deleteSpecificRel(brandId, companyId, RelationshipType.BrandBelongsToCompany)
-    }
+    },
 
-    static async createHasCarModelRelationship(brandId: number, carModelId: number) {
+    async createHasCarModelRelationship(brandId: number, carModelId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -146,9 +146,9 @@ export class Brand {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getSpecificHasCarModelRelationship(brandId: number, carModelId: number) {
+    async getSpecificHasCarModelRelationship(brandId: number, carModelId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -165,18 +165,18 @@ export class Brand {
         }
 
         return relationship
-    }
+    },
 
-    static async getAllHasCarModelRelationships(brandId: number) {
+    async getAllHasCarModelRelationships(brandId: number) {
         const brand = await this.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
         }
 
         return getAllRels(brandId, RelationshipType.BrandHasCarModel)
-    }
+    },
 
-    static async deleteHasCarModelRelationship(brandId: number, carModelId: number) {
+    async deleteHasCarModelRelationship(brandId: number, carModelId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -193,9 +193,9 @@ export class Brand {
         }
 
         await deleteSpecificRel(brandId, carModelId, RelationshipType.BrandHasCarModel)
-    }
+    },
 
-    static async createHasImageRelationship(brandId: number, imageId: number) {
+    async createHasImageRelationship(brandId: number, imageId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -217,9 +217,9 @@ export class Brand {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getSpecificHasImageRelationship(brandId: number, imageId: number) {
+    async getSpecificHasImageRelationship(brandId: number, imageId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -236,9 +236,9 @@ export class Brand {
         }
 
         return relationship
-    }
+    },
 
-    static async getAllHasImageRelationships(brandId: number) {
+    async getAllHasImageRelationships(brandId: number) {
         const brand = await this.findById(brandId)
 
         if (!brand) {
@@ -246,9 +246,9 @@ export class Brand {
         }
 
         return getAllRels(brandId, RelationshipType.BrandHasImage)
-    }
+    },
 
-    static async deleteHasImageRelationship(brandId: number, imageId: number) {
+    async deleteHasImageRelationship(brandId: number, imageId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -265,9 +265,9 @@ export class Brand {
         }
 
         await deleteSpecificRel(brandId, imageId, RelationshipType.BrandHasImage)
-    }
+    },
 
-    static async createHasPrimeImageRelationship(brandId: number, imageId: number) {
+    async createHasPrimeImageRelationship(brandId: number, imageId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -291,9 +291,9 @@ export class Brand {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getHasPrimeImageRelationship(brandId: number) {
+    async getHasPrimeImageRelationship(brandId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -305,9 +305,9 @@ export class Brand {
         }
 
         return relationship
-    }
+    },
 
-    static async deleteHasPrimeImageRelationship(brandId: number, imageId: number) {
+    async deleteHasPrimeImageRelationship(brandId: number, imageId: number) {
         const brand = await Brand.findById(brandId)
         if (!brand) {
             throw new NodeNotFoundError(brandId)
@@ -324,5 +324,5 @@ export class Brand {
         }
 
         await deleteSpecificRel(brandId, imageId, RelationshipType.BrandHasPrimeImage)
-    }
+    },
 }

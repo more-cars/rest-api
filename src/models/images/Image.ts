@@ -28,17 +28,17 @@ import {mapDbRelationshipToModelRelationship} from "../relationships/mapDbRelati
 import {DbRelationship} from "../../db/types/DbRelationship"
 import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
 
-export class Image {
-    static async create(data: CreateImageInput): Promise<ImageNode> {
+export const Image = {
+    async create(data: CreateImageInput): Promise<ImageNode> {
         const generatedData = getGeneratedData()
         const input = convertInputData(Object.assign(data, generatedData))
         const result = await createNode(input)
         const output = convertOutputData(result)
 
         return output
-    }
+    },
 
-    static async findById(id: number): Promise<false | ImageNode> {
+    async findById(id: number): Promise<false | ImageNode> {
         const node = await getNodeById(id)
 
         if (!node) {
@@ -46,9 +46,9 @@ export class Image {
         }
 
         return convertOutputData(node)
-    }
+    },
 
-    static async findAll(options: NodeCollectionConstraints = {}): Promise<ImageNode[]> {
+    async findAll(options: NodeCollectionConstraints = {}): Promise<ImageNode[]> {
         const nodes: Array<ImageNode> = []
         const nodesDb = await getAllNodesOfType(options)
 
@@ -57,18 +57,18 @@ export class Image {
         })
 
         return nodes
-    }
+    },
 
-    static async delete(imageId: number): Promise<void> {
+    async delete(imageId: number): Promise<void> {
         const node = await Image.findById(imageId)
         if (!node) {
             throw new NodeNotFoundError(imageId)
         }
 
         await deleteNode(imageId)
-    }
+    },
 
-    static async createBelongsToNodeRelationship(imageId: number, partnerId: number) {
+    async createBelongsToNodeRelationship(imageId: number, partnerId: number) {
         if (imageId === partnerId) {
             throw new SemanticError(`Image #${imageId} cannot be connected to itself`)
         }
@@ -98,9 +98,9 @@ export class Image {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getSpecificBelongsToNodeRelationship(imageId: number, partnerId: number) {
+    async getSpecificBelongsToNodeRelationship(imageId: number, partnerId: number) {
         const image = await getNodeById(imageId)
         if (!image) {
             throw new NodeNotFoundError(imageId)
@@ -117,18 +117,18 @@ export class Image {
         }
 
         return relationship
-    }
+    },
 
-    static async getAllBelongsToNodeRelationships(imageId: number) {
+    async getAllBelongsToNodeRelationships(imageId: number) {
         const image = await Image.findById(imageId)
         if (!image) {
             throw new NodeNotFoundError(imageId)
         }
 
         return getAllRels(imageId, RelationshipType.ImageBelongsToNode)
-    }
+    },
 
-    static async deleteBelongsToNodeRelationship(imageId: number, partnerNodeId: number) {
+    async deleteBelongsToNodeRelationship(imageId: number, partnerNodeId: number) {
         const image = await Image.findById(imageId)
         if (!image) {
             throw new NodeNotFoundError(imageId)
@@ -145,9 +145,9 @@ export class Image {
         }
 
         await deleteSpecificRel(imageId, partnerNodeId, RelationshipType.ImageBelongsToNode)
-    }
+    },
 
-    static async getBelongsToNodeTypeRelationships(imageId: number) {
+    async getBelongsToNodeTypeRelationships(imageId: number) {
         if (!await getNodeById(imageId)) {
             return false
         }
@@ -213,9 +213,9 @@ export class Image {
         belongsToNodeTypeRelationships.racing_events = mappedRelationships
 
         return belongsToNodeTypeRelationships
-    }
+    },
 
-    static async createIsPrimeImageOfNodeRelationship(imageId: number, nodeId: number) {
+    async createIsPrimeImageOfNodeRelationship(imageId: number, nodeId: number) {
         if (imageId === nodeId) {
             throw new SemanticError(`Image #${imageId} cannot be connected to itself`)
         }
@@ -247,18 +247,18 @@ export class Image {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getAllIsPrimeImageOfNodeRelationships(imageId: number) {
+    async getAllIsPrimeImageOfNodeRelationships(imageId: number) {
         const image = await Image.findById(imageId)
         if (!image) {
             throw new NodeNotFoundError(imageId)
         }
 
         return getAllRels(imageId, RelationshipType.ImageIsPrimeImageOfNode)
-    }
+    },
 
-    static async deleteIsPrimeImageOfNodeRelationship(imageId: number, nodeId: number) {
+    async deleteIsPrimeImageOfNodeRelationship(imageId: number, nodeId: number) {
         const image = await Image.findById(imageId)
         if (!image) {
             throw new NodeNotFoundError(imageId)
@@ -275,7 +275,7 @@ export class Image {
         }
 
         await deleteSpecificRel(imageId, nodeId, RelationshipType.ImageIsPrimeImageOfNode)
-    }
+    },
 }
 
 /**

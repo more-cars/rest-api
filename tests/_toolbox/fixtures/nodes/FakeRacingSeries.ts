@@ -2,8 +2,8 @@ import {faker} from "@faker-js/faker"
 import type {InputRacingSeriesCreate} from "../../../../src/db/nodes/racing-series/types/InputRacingSeriesCreate"
 import type {RacingSeriesNode} from "../../../../src/models/racing-series/types/RacingSeriesNode"
 
-export class FakeRacingSeries {
-    static dbInput() {
+export const FakeRacingSeries = {
+    dbInput() {
         return {
             name: faker.word.noun(),
             short_name: faker.word.noun(),
@@ -12,9 +12,9 @@ export class FakeRacingSeries {
             organized_by: faker.word.noun(),
             vehicle_type: faker.word.noun(),
         } as InputRacingSeriesCreate
-    }
+    },
 
-    static modelOutput() {
+    modelOutput() {
         return {
             id: faker.number.int({min: 12_000_000, max: 20_000_000}),
             name: faker.word.noun(),
@@ -26,5 +26,5 @@ export class FakeRacingSeries {
             created_at: faker.date.past().toISOString(),
             updated_at: faker.date.past().toISOString(),
         } as RacingSeriesNode
-    }
+    },
 }

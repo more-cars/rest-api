@@ -1,10 +1,10 @@
 ---
 inject: true
 to: src/controllers/<%= h.changeCase.pascal(startNodeType) %>Controller.ts
-before: \}\n\}
-skip_if: static async create<%= h.changeCase.pascal(relationshipName) %>Relation
+before: \},\n\}
+skip_if: async create<%= h.changeCase.pascal(relationshipName) %>Relation
 ---
-    }
+    },
 
-    static async create<%= h.changeCase.pascal(relationshipName) %>Relation(req: express.Request, res: express.Response) {
+    async create<%= h.changeCase.pascal(relationshipName) %>Relation(req: express.Request, res: express.Response) {
         await create<%= h.changeCase.pascal(relationshipName) %>Relation(req, res)

@@ -2,15 +2,15 @@ import {faker} from "@faker-js/faker"
 import type {InputImageCreate} from "../../../../src/db/nodes/images/types/InputImageCreate"
 import type {ImageNode} from "../../../../src/models/images/types/ImageNode"
 
-export class FakeImage {
-    static dbInput() {
+export const FakeImage = {
+    dbInput() {
         return {
             external_id: faker.string.uuid(),
             image_provider: faker.lorem.word(),
         } as InputImageCreate
-    }
+    },
 
-    static modelOutput() {
+    modelOutput() {
         return {
             id: faker.number.int({min: 12_000_000, max: 20_000_000}),
             external_id: faker.string.uuid(),
@@ -31,5 +31,5 @@ export class FakeImage {
             created_at: faker.date.past().toISOString(),
             updated_at: faker.date.past().toISOString(),
         } as ImageNode
-    }
+    },
 }

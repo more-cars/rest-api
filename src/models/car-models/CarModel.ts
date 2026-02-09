@@ -25,16 +25,16 @@ import {getAllRels} from "../relationships/getAllRels"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 
-export class CarModel {
-    static async create(data: CreateCarModelInput): Promise<CarModelNode> {
+export const CarModel = {
+    async create(data: CreateCarModelInput): Promise<CarModelNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
         const output = convertOutputData(result)
 
         return output
-    }
+    },
 
-    static async findById(id: number): Promise<false | CarModelNode> {
+    async findById(id: number): Promise<false | CarModelNode> {
         const node = await getNodeById(id)
 
         if (!node) {
@@ -42,9 +42,9 @@ export class CarModel {
         }
 
         return convertOutputData(node)
-    }
+    },
 
-    static async findAll(options: NodeCollectionConstraints = {}): Promise<CarModelNode[]> {
+    async findAll(options: NodeCollectionConstraints = {}): Promise<CarModelNode[]> {
         const nodes: Array<CarModelNode> = []
         const nodesDb = await getAllNodesOfType(options)
 
@@ -53,18 +53,18 @@ export class CarModel {
         })
 
         return nodes
-    }
+    },
 
-    static async delete(carModelId: number): Promise<void> {
+    async delete(carModelId: number): Promise<void> {
         const node = await CarModel.findById(carModelId)
         if (!node) {
             throw new NodeNotFoundError(carModelId)
         }
 
         await deleteNode(carModelId)
-    }
+    },
 
-    static async createBelongsToBrandRelationship(carModelId: number, brandId: number) {
+    async createBelongsToBrandRelationship(carModelId: number, brandId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -88,9 +88,9 @@ export class CarModel {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getBelongsToBrandRelationship(carModelId: number) {
+    async getBelongsToBrandRelationship(carModelId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -102,9 +102,9 @@ export class CarModel {
         }
 
         return relationship
-    }
+    },
 
-    static async deleteBelongsToBrandRelationship(carModelId: number, brandId: number) {
+    async deleteBelongsToBrandRelationship(carModelId: number, brandId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -121,9 +121,9 @@ export class CarModel {
         }
 
         await deleteSpecificRel(carModelId, brandId, RelationshipType.CarModelBelongsToBrand)
-    }
+    },
 
-    static async createHasSuccessorRelationship(carModelId: number, partnerId: number) {
+    async createHasSuccessorRelationship(carModelId: number, partnerId: number) {
         if (carModelId === partnerId) {
             throw new SemanticError(`Car Model #${carModelId} cannot be connected to itself`)
         }
@@ -152,9 +152,9 @@ export class CarModel {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getHasSuccessorRelationship(carModelId: number) {
+    async getHasSuccessorRelationship(carModelId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -166,9 +166,9 @@ export class CarModel {
         }
 
         return relationship
-    }
+    },
 
-    static async deleteHasSuccessorRelationship(carModelId: number, partnerId: number) {
+    async deleteHasSuccessorRelationship(carModelId: number, partnerId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -185,9 +185,9 @@ export class CarModel {
         }
 
         await deleteSpecificRel(carModelId, partnerId, RelationshipType.CarModelHasSuccessor)
-    }
+    },
 
-    static async createIsSuccessorOfRelationship(carModelId: number, partnerId: number) {
+    async createIsSuccessorOfRelationship(carModelId: number, partnerId: number) {
         if (carModelId === partnerId) {
             throw new SemanticError(`Car Model #${carModelId} cannot be connected to itself`)
         }
@@ -216,9 +216,9 @@ export class CarModel {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getIsSuccessorOfRelationship(carModelId: number) {
+    async getIsSuccessorOfRelationship(carModelId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -230,9 +230,9 @@ export class CarModel {
         }
 
         return relationship
-    }
+    },
 
-    static async deleteIsSuccessorOfRelationship(carModelId: number, partnerId: number) {
+    async deleteIsSuccessorOfRelationship(carModelId: number, partnerId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -249,9 +249,9 @@ export class CarModel {
         }
 
         await deleteSpecificRel(carModelId, partnerId, RelationshipType.CarModelIsSuccessorOf)
-    }
+    },
 
-    static async createHasVariantRelationship(carModelId: number, carModelVariantId: number) {
+    async createHasVariantRelationship(carModelId: number, carModelVariantId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -275,18 +275,18 @@ export class CarModel {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getAllHasVariantRelationships(carModelId: number) {
+    async getAllHasVariantRelationships(carModelId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
         }
 
         return getAllRels(carModelId, RelationshipType.CarModelHasVariant)
-    }
+    },
 
-    static async deleteHasVariantRelationship(carModelId: number, carModelVariantId: number) {
+    async deleteHasVariantRelationship(carModelId: number, carModelVariantId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -303,9 +303,9 @@ export class CarModel {
         }
 
         await deleteSpecificRel(carModelId, carModelVariantId, RelationshipType.CarModelHasVariant)
-    }
+    },
 
-    static async createHasImageRelationship(carModelId: number, imageId: number) {
+    async createHasImageRelationship(carModelId: number, imageId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -327,9 +327,9 @@ export class CarModel {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getSpecificHasImageRelationship(carModelId: number, imageId: number) {
+    async getSpecificHasImageRelationship(carModelId: number, imageId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -346,18 +346,18 @@ export class CarModel {
         }
 
         return relationship
-    }
+    },
 
-    static async getAllHasImageRelationships(carModelId: number) {
+    async getAllHasImageRelationships(carModelId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
         }
 
         return getAllRels(carModelId, RelationshipType.CarModelHasImage)
-    }
+    },
 
-    static async deleteHasImageRelationship(carModelId: number, imageId: number) {
+    async deleteHasImageRelationship(carModelId: number, imageId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -374,9 +374,9 @@ export class CarModel {
         }
 
         await deleteSpecificRel(carModelId, imageId, RelationshipType.CarModelHasImage)
-    }
+    },
 
-    static async createHasPrimeImageRelationship(carModelId: number, imageId: number) {
+    async createHasPrimeImageRelationship(carModelId: number, imageId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -400,9 +400,9 @@ export class CarModel {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getHasPrimeImageRelationship(carModelId: number) {
+    async getHasPrimeImageRelationship(carModelId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -414,9 +414,9 @@ export class CarModel {
         }
 
         return relationship
-    }
+    },
 
-    static async getSpecificHasPrimeImageRelationship(carModelId: number, imageId: number) {
+    async getSpecificHasPrimeImageRelationship(carModelId: number, imageId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -433,9 +433,9 @@ export class CarModel {
         }
 
         return relationship
-    }
+    },
 
-    static async deleteHasPrimeImageRelationship(carModelId: number, imageId: number) {
+    async deleteHasPrimeImageRelationship(carModelId: number, imageId: number) {
         const carModel = await CarModel.findById(carModelId)
         if (!carModel) {
             throw new NodeNotFoundError(carModelId)
@@ -452,5 +452,5 @@ export class CarModel {
         }
 
         await deleteSpecificRel(carModelId, imageId, RelationshipType.CarModelHasPrimeImage)
-    }
+    },
 }

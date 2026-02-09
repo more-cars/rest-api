@@ -25,16 +25,16 @@ import {RacingEvent} from "../racing-events/RacingEvent"
 import {LapTime} from "../lap-times/LapTime"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 
-export class TrackLayout {
-    static async create(data: CreateTrackLayoutInput): Promise<TrackLayoutNode> {
+export const TrackLayout = {
+    async create(data: CreateTrackLayoutInput): Promise<TrackLayoutNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
         const output = convertOutputData(result)
 
         return output
-    }
+    },
 
-    static async findById(id: number): Promise<false | TrackLayoutNode> {
+    async findById(id: number): Promise<false | TrackLayoutNode> {
         const node = await getNodeById(id)
 
         if (!node) {
@@ -42,9 +42,9 @@ export class TrackLayout {
         }
 
         return convertOutputData(node)
-    }
+    },
 
-    static async findAll(options: NodeCollectionConstraints = {}): Promise<TrackLayoutNode[]> {
+    async findAll(options: NodeCollectionConstraints = {}): Promise<TrackLayoutNode[]> {
         const nodes: Array<TrackLayoutNode> = []
         const nodesDb = await getAllNodesOfType(options)
 
@@ -53,18 +53,18 @@ export class TrackLayout {
         })
 
         return nodes
-    }
+    },
 
-    static async delete(trackLayoutId: number): Promise<void> {
+    async delete(trackLayoutId: number): Promise<void> {
         const node = await TrackLayout.findById(trackLayoutId)
         if (!node) {
             throw new NodeNotFoundError(trackLayoutId)
         }
 
         await deleteNode(trackLayoutId)
-    }
+    },
 
-    static async createBelongsToRaceTrackRelationship(trackLayoutId: number, raceTrackId: number) {
+    async createBelongsToRaceTrackRelationship(trackLayoutId: number, raceTrackId: number) {
 
         const trackLayout = await TrackLayout.findById(trackLayoutId)
         if (!trackLayout) {
@@ -89,9 +89,9 @@ export class TrackLayout {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getBelongsToRaceTrackRelationship(trackLayoutId: number) {
+    async getBelongsToRaceTrackRelationship(trackLayoutId: number) {
         const trackLayout = await TrackLayout.findById(trackLayoutId)
         if (!trackLayout) {
             throw new NodeNotFoundError(trackLayoutId)
@@ -103,9 +103,9 @@ export class TrackLayout {
         }
 
         return relationship
-    }
+    },
 
-    static async deleteBelongsToRaceTrackRelationship(trackLayoutId: number, raceTrackId: number) {
+    async deleteBelongsToRaceTrackRelationship(trackLayoutId: number, raceTrackId: number) {
         const trackLayout = await TrackLayout.findById(trackLayoutId)
         if (!trackLayout) {
             throw new NodeNotFoundError(trackLayoutId)
@@ -122,9 +122,9 @@ export class TrackLayout {
         }
 
         await deleteSpecificRel(trackLayoutId, raceTrackId, RelationshipType.TrackLayoutBelongsToRaceTrack)
-    }
+    },
 
-    static async createWasUsedByRacingEventRelationship(trackLayoutId: number, racingEventId: number) {
+    async createWasUsedByRacingEventRelationship(trackLayoutId: number, racingEventId: number) {
 
         const trackLayout = await TrackLayout.findById(trackLayoutId)
         if (!trackLayout) {
@@ -149,18 +149,18 @@ export class TrackLayout {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getAllWasUsedByRacingEventRelationships(trackLayoutId: number) {
+    async getAllWasUsedByRacingEventRelationships(trackLayoutId: number) {
         const trackLayout = await TrackLayout.findById(trackLayoutId)
         if (!trackLayout) {
             throw new NodeNotFoundError(trackLayoutId)
         }
 
         return getAllRels(trackLayoutId, RelationshipType.TrackLayoutWasUsedByRacingEvent)
-    }
+    },
 
-    static async deleteWasUsedByRacingEventRelationship(trackLayoutId: number, racingEventId: number) {
+    async deleteWasUsedByRacingEventRelationship(trackLayoutId: number, racingEventId: number) {
         const trackLayout = await TrackLayout.findById(trackLayoutId)
         if (!trackLayout) {
             throw new NodeNotFoundError(trackLayoutId)
@@ -177,9 +177,9 @@ export class TrackLayout {
         }
 
         await deleteSpecificRel(trackLayoutId, racingEventId, RelationshipType.TrackLayoutWasUsedByRacingEvent)
-    }
+    },
 
-    static async createHasLapTimeRelationship(trackLayoutId: number, lapTimeId: number) {
+    async createHasLapTimeRelationship(trackLayoutId: number, lapTimeId: number) {
 
         const trackLayout = await TrackLayout.findById(trackLayoutId)
         if (!trackLayout) {
@@ -204,18 +204,18 @@ export class TrackLayout {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getAllHasLapTimeRelationships(trackLayoutId: number) {
+    async getAllHasLapTimeRelationships(trackLayoutId: number) {
         const trackLayout = await TrackLayout.findById(trackLayoutId)
         if (!trackLayout) {
             throw new NodeNotFoundError(trackLayoutId)
         }
 
         return getAllRels(trackLayoutId, RelationshipType.TrackLayoutHasLapTime)
-    }
+    },
 
-    static async deleteHasLapTimeRelationship(trackLayoutId: number, lapTimeId: number) {
+    async deleteHasLapTimeRelationship(trackLayoutId: number, lapTimeId: number) {
         const trackLayout = await TrackLayout.findById(trackLayoutId)
         if (!trackLayout) {
             throw new NodeNotFoundError(trackLayoutId)
@@ -232,9 +232,9 @@ export class TrackLayout {
         }
 
         await deleteSpecificRel(trackLayoutId, lapTimeId, RelationshipType.TrackLayoutHasLapTime)
-    }
+    },
 
-    static async createHasImageRelationship(trackLayoutId: number, imageId: number) {
+    async createHasImageRelationship(trackLayoutId: number, imageId: number) {
 
         const trackLayout = await TrackLayout.findById(trackLayoutId)
         if (!trackLayout) {
@@ -257,18 +257,18 @@ export class TrackLayout {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getAllHasImageRelationships(trackLayoutId: number) {
+    async getAllHasImageRelationships(trackLayoutId: number) {
         const trackLayout = await TrackLayout.findById(trackLayoutId)
         if (!trackLayout) {
             throw new NodeNotFoundError(trackLayoutId)
         }
 
         return getAllRels(trackLayoutId, RelationshipType.TrackLayoutHasImage)
-    }
+    },
 
-    static async deleteHasImageRelationship(trackLayoutId: number, imageId: number) {
+    async deleteHasImageRelationship(trackLayoutId: number, imageId: number) {
         const trackLayout = await TrackLayout.findById(trackLayoutId)
         if (!trackLayout) {
             throw new NodeNotFoundError(trackLayoutId)
@@ -285,9 +285,9 @@ export class TrackLayout {
         }
 
         await deleteSpecificRel(trackLayoutId, imageId, RelationshipType.TrackLayoutHasImage)
-    }
+    },
 
-    static async createHasPrimeImageRelationship(trackLayoutId: number, imageId: number) {
+    async createHasPrimeImageRelationship(trackLayoutId: number, imageId: number) {
 
         const trackLayout = await TrackLayout.findById(trackLayoutId)
         if (!trackLayout) {
@@ -312,9 +312,9 @@ export class TrackLayout {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getHasPrimeImageRelationship(trackLayoutId: number) {
+    async getHasPrimeImageRelationship(trackLayoutId: number) {
         const trackLayout = await TrackLayout.findById(trackLayoutId)
         if (!trackLayout) {
             throw new NodeNotFoundError(trackLayoutId)
@@ -326,9 +326,9 @@ export class TrackLayout {
         }
 
         return relationship
-    }
+    },
 
-    static async deleteHasPrimeImageRelationship(trackLayoutId: number, imageId: number) {
+    async deleteHasPrimeImageRelationship(trackLayoutId: number, imageId: number) {
         const trackLayout = await TrackLayout.findById(trackLayoutId)
         if (!trackLayout) {
             throw new NodeNotFoundError(trackLayoutId)
@@ -345,5 +345,5 @@ export class TrackLayout {
         }
 
         await deleteSpecificRel(trackLayoutId, imageId, RelationshipType.TrackLayoutHasPrimeImage)
-    }
+    },
 }

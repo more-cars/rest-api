@@ -25,16 +25,16 @@ import {getAllRels} from "../relationships/getAllRels"
 import {LapTime} from "../lap-times/LapTime"
 import {Image} from "../images/Image"
 
-export class CarModelVariant {
-    static async create(data: CreateCarModelVariantInput): Promise<CarModelVariantNode> {
+export const CarModelVariant = {
+    async create(data: CreateCarModelVariantInput): Promise<CarModelVariantNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
         const output = convertOutputData(result)
 
         return output
-    }
+    },
 
-    static async findById(id: number): Promise<false | CarModelVariantNode> {
+    async findById(id: number): Promise<false | CarModelVariantNode> {
         const node = await getNodeById(id)
 
         if (!node) {
@@ -42,9 +42,9 @@ export class CarModelVariant {
         }
 
         return convertOutputData(node)
-    }
+    },
 
-    static async findAll(options: NodeCollectionConstraints = {}): Promise<CarModelVariantNode[]> {
+    async findAll(options: NodeCollectionConstraints = {}): Promise<CarModelVariantNode[]> {
         const nodes: Array<CarModelVariantNode> = []
         const nodesDb = await getAllNodesOfType(options)
 
@@ -53,18 +53,18 @@ export class CarModelVariant {
         })
 
         return nodes
-    }
+    },
 
-    static async delete(carModelVariantId: number): Promise<void> {
+    async delete(carModelVariantId: number): Promise<void> {
         const node = await CarModelVariant.findById(carModelVariantId)
         if (!node) {
             throw new NodeNotFoundError(carModelVariantId)
         }
 
         await deleteNode(carModelVariantId)
-    }
+    },
 
-    static async createIsVariantOfRelationship(carModelVariantId: number, carModelId: number) {
+    async createIsVariantOfRelationship(carModelVariantId: number, carModelId: number) {
 
         const carModelVariant = await CarModelVariant.findById(carModelVariantId)
         if (!carModelVariant) {
@@ -89,9 +89,9 @@ export class CarModelVariant {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getIsVariantOfRelationship(carModelVariantId: number) {
+    async getIsVariantOfRelationship(carModelVariantId: number) {
         const carModelVariant = await CarModelVariant.findById(carModelVariantId)
         if (!carModelVariant) {
             throw new NodeNotFoundError(carModelVariantId)
@@ -103,9 +103,9 @@ export class CarModelVariant {
         }
 
         return relationship
-    }
+    },
 
-    static async deleteIsVariantOfRelationship(carModelVariantId: number, carModelId: number) {
+    async deleteIsVariantOfRelationship(carModelVariantId: number, carModelId: number) {
         const carModelVariant = await CarModelVariant.findById(carModelVariantId)
         if (!carModelVariant) {
             throw new NodeNotFoundError(carModelVariantId)
@@ -122,9 +122,9 @@ export class CarModelVariant {
         }
 
         await deleteSpecificRel(carModelVariantId, carModelId, RelationshipType.CarModelVariantIsVariantOf)
-    }
+    },
 
-    static async createAchievedSessionResultRelationship(carModelVariantId: number, sessionResultId: number) {
+    async createAchievedSessionResultRelationship(carModelVariantId: number, sessionResultId: number) {
         const carModelVariant = await CarModelVariant.findById(carModelVariantId)
         if (!carModelVariant) {
             throw new NodeNotFoundError(carModelVariantId)
@@ -148,18 +148,18 @@ export class CarModelVariant {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getAllAchievedSessionResultRelationships(carModelVariantId: number) {
+    async getAllAchievedSessionResultRelationships(carModelVariantId: number) {
         const carModelVariant = await CarModelVariant.findById(carModelVariantId)
         if (!carModelVariant) {
             throw new NodeNotFoundError(carModelVariantId)
         }
 
         return getAllRels(carModelVariantId, RelationshipType.CarModelVariantAchievedSessionResult)
-    }
+    },
 
-    static async deleteAchievedSessionResultRelationship(carModelVariantId: number, sessionResultId: number) {
+    async deleteAchievedSessionResultRelationship(carModelVariantId: number, sessionResultId: number) {
         const carModelVariant = await CarModelVariant.findById(carModelVariantId)
         if (!carModelVariant) {
             throw new NodeNotFoundError(carModelVariantId)
@@ -176,9 +176,9 @@ export class CarModelVariant {
         }
 
         await deleteSpecificRel(carModelVariantId, sessionResultId, RelationshipType.CarModelVariantAchievedSessionResult)
-    }
+    },
 
-    static async createAchievedLapTimeRelationship(carModelVariantId: number, lapTimeId: number) {
+    async createAchievedLapTimeRelationship(carModelVariantId: number, lapTimeId: number) {
         const carModelVariant = await CarModelVariant.findById(carModelVariantId)
         if (!carModelVariant) {
             throw new NodeNotFoundError(carModelVariantId)
@@ -202,18 +202,18 @@ export class CarModelVariant {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getAllAchievedLapTimeRelationships(carModelVariantId: number) {
+    async getAllAchievedLapTimeRelationships(carModelVariantId: number) {
         const carModelVariant = await CarModelVariant.findById(carModelVariantId)
         if (!carModelVariant) {
             throw new NodeNotFoundError(carModelVariantId)
         }
 
         return getAllRels(carModelVariantId, RelationshipType.CarModelVariantAchievedLapTime)
-    }
+    },
 
-    static async deleteAchievedLapTimeRelationship(carModelVariantId: number, lapTimeId: number) {
+    async deleteAchievedLapTimeRelationship(carModelVariantId: number, lapTimeId: number) {
         const carModelVariant = await CarModelVariant.findById(carModelVariantId)
         if (!carModelVariant) {
             throw new NodeNotFoundError(carModelVariantId)
@@ -230,9 +230,9 @@ export class CarModelVariant {
         }
 
         await deleteSpecificRel(carModelVariantId, lapTimeId, RelationshipType.CarModelVariantAchievedLapTime)
-    }
+    },
 
-    static async createHasImageRelationship(carModelVariantId: number, imageId: number) {
+    async createHasImageRelationship(carModelVariantId: number, imageId: number) {
         const carModelVariant = await CarModelVariant.findById(carModelVariantId)
         if (!carModelVariant) {
             throw new NodeNotFoundError(carModelVariantId)
@@ -254,18 +254,18 @@ export class CarModelVariant {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getAllHasImageRelationships(carModelVariantId: number) {
+    async getAllHasImageRelationships(carModelVariantId: number) {
         const carModelVariant = await CarModelVariant.findById(carModelVariantId)
         if (!carModelVariant) {
             throw new NodeNotFoundError(carModelVariantId)
         }
 
         return getAllRels(carModelVariantId, RelationshipType.CarModelVariantHasImage)
-    }
+    },
 
-    static async deleteHasImageRelationship(carModelVariantId: number, imageId: number) {
+    async deleteHasImageRelationship(carModelVariantId: number, imageId: number) {
         const carModelVariant = await CarModelVariant.findById(carModelVariantId)
         if (!carModelVariant) {
             throw new NodeNotFoundError(carModelVariantId)
@@ -282,9 +282,9 @@ export class CarModelVariant {
         }
 
         await deleteSpecificRel(carModelVariantId, imageId, RelationshipType.CarModelVariantHasImage)
-    }
+    },
 
-    static async createHasPrimeImageRelationship(carModelVariantId: number, imageId: number) {
+    async createHasPrimeImageRelationship(carModelVariantId: number, imageId: number) {
         const carModelVariant = await CarModelVariant.findById(carModelVariantId)
         if (!carModelVariant) {
             throw new NodeNotFoundError(carModelVariantId)
@@ -308,9 +308,9 @@ export class CarModelVariant {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getHasPrimeImageRelationship(carModelVariantId: number) {
+    async getHasPrimeImageRelationship(carModelVariantId: number) {
         const carModelVariant = await CarModelVariant.findById(carModelVariantId)
         if (!carModelVariant) {
             throw new NodeNotFoundError(carModelVariantId)
@@ -322,9 +322,9 @@ export class CarModelVariant {
         }
 
         return relationship
-    }
+    },
 
-    static async deleteHasPrimeImageRelationship(carModelVariantId: number, imageId: number) {
+    async deleteHasPrimeImageRelationship(carModelVariantId: number, imageId: number) {
         const carModelVariant = await CarModelVariant.findById(carModelVariantId)
         if (!carModelVariant) {
             throw new NodeNotFoundError(carModelVariantId)
@@ -341,5 +341,5 @@ export class CarModelVariant {
         }
 
         await deleteSpecificRel(carModelVariantId, imageId, RelationshipType.CarModelVariantHasPrimeImage)
-    }
+    },
 }

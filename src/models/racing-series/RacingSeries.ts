@@ -23,16 +23,16 @@ import {Image} from "../images/Image"
 import {getRel} from "../relationships/getRel"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 
-export class RacingSeries {
-    static async create(data: CreateRacingSeriesInput): Promise<RacingSeriesNode> {
+export const RacingSeries = {
+    async create(data: CreateRacingSeriesInput): Promise<RacingSeriesNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
         const output = convertOutputData(result)
 
         return output
-    }
+    },
 
-    static async findById(id: number): Promise<false | RacingSeriesNode> {
+    async findById(id: number): Promise<false | RacingSeriesNode> {
         const node = await getNodeById(id)
 
         if (!node) {
@@ -40,9 +40,9 @@ export class RacingSeries {
         }
 
         return convertOutputData(node)
-    }
+    },
 
-    static async findAll(options: NodeCollectionConstraints = {}): Promise<RacingSeriesNode[]> {
+    async findAll(options: NodeCollectionConstraints = {}): Promise<RacingSeriesNode[]> {
         const nodes: Array<RacingSeriesNode> = []
         const nodesDb = await getAllNodesOfType(options)
 
@@ -51,18 +51,18 @@ export class RacingSeries {
         })
 
         return nodes
-    }
+    },
 
-    static async delete(racingSeriesId: number): Promise<void> {
+    async delete(racingSeriesId: number): Promise<void> {
         const node = await RacingSeries.findById(racingSeriesId)
         if (!node) {
             throw new NodeNotFoundError(racingSeriesId)
         }
 
         await deleteNode(racingSeriesId)
-    }
+    },
 
-    static async createHasRacingEventRelationship(racingSeriesId: number, racingEventId: number) {
+    async createHasRacingEventRelationship(racingSeriesId: number, racingEventId: number) {
 
         const racingSeries = await RacingSeries.findById(racingSeriesId)
         if (!racingSeries) {
@@ -87,18 +87,18 @@ export class RacingSeries {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getAllHasRacingEventRelationships(racingSeriesId: number) {
+    async getAllHasRacingEventRelationships(racingSeriesId: number) {
         const racingSeries = await RacingSeries.findById(racingSeriesId)
         if (!racingSeries) {
             throw new NodeNotFoundError(racingSeriesId)
         }
 
         return getAllRels(racingSeriesId, RelationshipType.RacingSeriesHasRacingEvent)
-    }
+    },
 
-    static async deleteHasRacingEventRelationship(racingSeriesId: number, racingEventId: number) {
+    async deleteHasRacingEventRelationship(racingSeriesId: number, racingEventId: number) {
         const racingSeries = await RacingSeries.findById(racingSeriesId)
         if (!racingSeries) {
             throw new NodeNotFoundError(racingSeriesId)
@@ -115,9 +115,9 @@ export class RacingSeries {
         }
 
         await deleteSpecificRel(racingSeriesId, racingEventId, RelationshipType.RacingSeriesHasRacingEvent)
-    }
+    },
 
-    static async createHasImageRelationship(racingSeriesId: number, imageId: number) {
+    async createHasImageRelationship(racingSeriesId: number, imageId: number) {
 
         const racingSeries = await RacingSeries.findById(racingSeriesId)
         if (!racingSeries) {
@@ -140,18 +140,18 @@ export class RacingSeries {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getAllHasImageRelationships(racingSeriesId: number) {
+    async getAllHasImageRelationships(racingSeriesId: number) {
         const racingSeries = await RacingSeries.findById(racingSeriesId)
         if (!racingSeries) {
             throw new NodeNotFoundError(racingSeriesId)
         }
 
         return getAllRels(racingSeriesId, RelationshipType.RacingSeriesHasImage)
-    }
+    },
 
-    static async deleteHasImageRelationship(racingSeriesId: number, imageId: number) {
+    async deleteHasImageRelationship(racingSeriesId: number, imageId: number) {
         const racingSeries = await RacingSeries.findById(racingSeriesId)
         if (!racingSeries) {
             throw new NodeNotFoundError(racingSeriesId)
@@ -168,9 +168,9 @@ export class RacingSeries {
         }
 
         await deleteSpecificRel(racingSeriesId, imageId, RelationshipType.RacingSeriesHasImage)
-    }
+    },
 
-    static async createHasPrimeImageRelationship(racingSeriesId: number, imageId: number) {
+    async createHasPrimeImageRelationship(racingSeriesId: number, imageId: number) {
 
         const racingSeries = await RacingSeries.findById(racingSeriesId)
         if (!racingSeries) {
@@ -195,9 +195,9 @@ export class RacingSeries {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getHasPrimeImageRelationship(racingSeriesId: number) {
+    async getHasPrimeImageRelationship(racingSeriesId: number) {
         const racingSeries = await RacingSeries.findById(racingSeriesId)
         if (!racingSeries) {
             throw new NodeNotFoundError(racingSeriesId)
@@ -209,9 +209,9 @@ export class RacingSeries {
         }
 
         return relationship
-    }
+    },
 
-    static async deleteHasPrimeImageRelationship(racingSeriesId: number, imageId: number) {
+    async deleteHasPrimeImageRelationship(racingSeriesId: number, imageId: number) {
         const racingSeries = await RacingSeries.findById(racingSeriesId)
         if (!racingSeries) {
             throw new NodeNotFoundError(racingSeriesId)
@@ -228,5 +228,5 @@ export class RacingSeries {
         }
 
         await deleteSpecificRel(racingSeriesId, imageId, RelationshipType.RacingSeriesHasPrimeImage)
-    }
+    },
 }

@@ -12,52 +12,52 @@ import {createIsPrimeImageOfNodeRelation} from "./images/createIsPrimeImageOfNod
 import {getAllIsPrimeImageOfNodeRelations} from "./images/getAllIsPrimeImageOfNodeRelations"
 import {deleteIsPrimeImageOfNodeRelation} from "./images/deleteIsPrimeImageOfNodeRelation"
 
-export class ImageController {
-    static async create(req: express.Request, res: express.Response) {
+export const ImageController = {
+    async create(req: express.Request, res: express.Response) {
         await create(req, res)
-    }
+    },
 
-    static async getById(req: express.Request, res: express.Response) {
+    async getById(req: express.Request, res: express.Response) {
         await getById(req, res)
-    }
+    },
 
-    static async getAll(req: express.Request, res: express.Response) {
+    async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
-    }
+    },
 
-    static async delete(req: express.Request, res: express.Response) {
+    async delete(req: express.Request, res: express.Response) {
         await deleteNode(req, res)
-    }
+    },
 
-    static async createBelongsToNodeRelation(req: express.Request, res: express.Response) {
+    async createBelongsToNodeRelation(req: express.Request, res: express.Response) {
         await createBelongsToNodeRelation(req, res)
-    }
+    },
 
-    static async getSpecificBelongsToNodeRelation(req: express.Request, res: express.Response) {
+    async getSpecificBelongsToNodeRelation(req: express.Request, res: express.Response) {
         await getSpecificBelongsToNodeRelation(req, res)
-    }
+    },
 
-    static async getAllBelongsToNodeRelations(req: express.Request, res: express.Response) {
+    async getAllBelongsToNodeRelations(req: express.Request, res: express.Response) {
         await getAllBelongsToNodeRelations(req, res)
-    }
+    },
 
-    static async deleteBelongsToNodeRelation(req: express.Request, res: express.Response) {
+    async deleteBelongsToNodeRelation(req: express.Request, res: express.Response) {
         await deleteBelongsToNodeRelation(req, res)
-    }
+    },
 
-    static async getAllBelongsToNodeTypeRelations(req: express.Request, res: express.Response) {
+    async getAllBelongsToNodeTypeRelations(req: express.Request, res: express.Response) {
         await getAllBelongsToNodeTypeRelations(req, res)
-    }
+    },
 
-    static async createIsPrimeImageOfNodeRelation(req: express.Request, res: express.Response) {
+    async createIsPrimeImageOfNodeRelation(req: express.Request, res: express.Response) {
         await createIsPrimeImageOfNodeRelation(req, res)
-    }
+    },
 
-    static async getAllIsPrimeImageOfNodeRelations(req: express.Request, res: express.Response) {
+    async getAllIsPrimeImageOfNodeRelations(req: express.Request, res: express.Response) {
         await getAllIsPrimeImageOfNodeRelations(req, res)
-    }
+    },
 
-    static async deleteIsPrimeImageOfNodeRelation(req: express.Request, res: express.Response) {
+    async deleteIsPrimeImageOfNodeRelation(req: express.Request, res: express.Response) {
         await deleteIsPrimeImageOfNodeRelation(req, res)
-    }
+    },
 }

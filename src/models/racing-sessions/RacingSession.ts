@@ -24,16 +24,16 @@ import {getAllRels} from "../relationships/getAllRels"
 import {SessionResult} from "../session-results/SessionResult"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 
-export class RacingSession {
-    static async create(data: CreateRacingSessionInput): Promise<RacingSessionNode> {
+export const RacingSession = {
+    async create(data: CreateRacingSessionInput): Promise<RacingSessionNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
         const output = convertOutputData(result)
 
         return output
-    }
+    },
 
-    static async findById(id: number): Promise<false | RacingSessionNode> {
+    async findById(id: number): Promise<false | RacingSessionNode> {
         const node = await getNodeById(id)
 
         if (!node) {
@@ -41,9 +41,9 @@ export class RacingSession {
         }
 
         return convertOutputData(node)
-    }
+    },
 
-    static async findAll(options: NodeCollectionConstraints = {}): Promise<RacingSessionNode[]> {
+    async findAll(options: NodeCollectionConstraints = {}): Promise<RacingSessionNode[]> {
         const nodes: Array<RacingSessionNode> = []
         const nodesDb = await getAllNodesOfType(options)
 
@@ -52,18 +52,18 @@ export class RacingSession {
         })
 
         return nodes
-    }
+    },
 
-    static async delete(racingSessionId: number): Promise<void> {
+    async delete(racingSessionId: number): Promise<void> {
         const node = await RacingSession.findById(racingSessionId)
         if (!node) {
             throw new NodeNotFoundError(racingSessionId)
         }
 
         await deleteNode(racingSessionId)
-    }
+    },
 
-    static async createBelongsToRacingEventRelationship(racingSessionId: number, racingEventId: number) {
+    async createBelongsToRacingEventRelationship(racingSessionId: number, racingEventId: number) {
 
         const racingSession = await RacingSession.findById(racingSessionId)
         if (!racingSession) {
@@ -88,9 +88,9 @@ export class RacingSession {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getBelongsToRacingEventRelationship(racingSessionId: number) {
+    async getBelongsToRacingEventRelationship(racingSessionId: number) {
         const racingSession = await RacingSession.findById(racingSessionId)
         if (!racingSession) {
             throw new NodeNotFoundError(racingSessionId)
@@ -102,9 +102,9 @@ export class RacingSession {
         }
 
         return relationship
-    }
+    },
 
-    static async deleteBelongsToRacingEventRelationship(racingSessionId: number, racingEventId: number) {
+    async deleteBelongsToRacingEventRelationship(racingSessionId: number, racingEventId: number) {
         const racingSession = await RacingSession.findById(racingSessionId)
         if (!racingSession) {
             throw new NodeNotFoundError(racingSessionId)
@@ -121,9 +121,9 @@ export class RacingSession {
         }
 
         await deleteSpecificRel(racingSessionId, racingEventId, RelationshipType.RacingSessionBelongsToRacingEvent)
-    }
+    },
 
-    static async createHasSessionResultRelationship(racingSessionId: number, sessionResultId: number) {
+    async createHasSessionResultRelationship(racingSessionId: number, sessionResultId: number) {
 
         const racingSession = await RacingSession.findById(racingSessionId)
         if (!racingSession) {
@@ -148,18 +148,18 @@ export class RacingSession {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getAllHasSessionResultRelationships(racingSessionId: number) {
+    async getAllHasSessionResultRelationships(racingSessionId: number) {
         const racingSession = await RacingSession.findById(racingSessionId)
         if (!racingSession) {
             throw new NodeNotFoundError(racingSessionId)
         }
 
         return getAllRels(racingSessionId, RelationshipType.RacingSessionHasSessionResult)
-    }
+    },
 
-    static async deleteHasSessionResultRelationship(racingSessionId: number, sessionResultId: number) {
+    async deleteHasSessionResultRelationship(racingSessionId: number, sessionResultId: number) {
         const racingSession = await RacingSession.findById(racingSessionId)
         if (!racingSession) {
             throw new NodeNotFoundError(racingSessionId)
@@ -176,9 +176,9 @@ export class RacingSession {
         }
 
         await deleteSpecificRel(racingSessionId, sessionResultId, RelationshipType.RacingSessionHasSessionResult)
-    }
+    },
 
-    static async createHasImageRelationship(racingSessionId: number, imageId: number) {
+    async createHasImageRelationship(racingSessionId: number, imageId: number) {
         const racingSession = await RacingSession.findById(racingSessionId)
         if (!racingSession) {
             throw new NodeNotFoundError(racingSessionId)
@@ -200,18 +200,18 @@ export class RacingSession {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getAllHasImageRelationships(racingSessionId: number) {
+    async getAllHasImageRelationships(racingSessionId: number) {
         const racingSession = await RacingSession.findById(racingSessionId)
         if (!racingSession) {
             throw new NodeNotFoundError(racingSessionId)
         }
 
         return getAllRels(racingSessionId, RelationshipType.RacingSessionHasImage)
-    }
+    },
 
-    static async deleteHasImageRelationship(racingSessionId: number, imageId: number) {
+    async deleteHasImageRelationship(racingSessionId: number, imageId: number) {
         const racingSession = await RacingSession.findById(racingSessionId)
         if (!racingSession) {
             throw new NodeNotFoundError(racingSessionId)
@@ -228,9 +228,9 @@ export class RacingSession {
         }
 
         await deleteSpecificRel(racingSessionId, imageId, RelationshipType.RacingSessionHasImage)
-    }
+    },
 
-    static async createHasPrimeImageRelationship(racingSessionId: number, imageId: number) {
+    async createHasPrimeImageRelationship(racingSessionId: number, imageId: number) {
 
         const racingSession = await RacingSession.findById(racingSessionId)
         if (!racingSession) {
@@ -255,9 +255,9 @@ export class RacingSession {
         }
 
         return createdRelationship
-    }
+    },
 
-    static async getHasPrimeImageRelationship(racingSessionId: number) {
+    async getHasPrimeImageRelationship(racingSessionId: number) {
         const racingSession = await RacingSession.findById(racingSessionId)
         if (!racingSession) {
             throw new NodeNotFoundError(racingSessionId)
@@ -269,9 +269,9 @@ export class RacingSession {
         }
 
         return relationship
-    }
+    },
 
-    static async deleteHasPrimeImageRelationship(racingSessionId: number, imageId: number) {
+    async deleteHasPrimeImageRelationship(racingSessionId: number, imageId: number) {
         const racingSession = await RacingSession.findById(racingSessionId)
         if (!racingSession) {
             throw new NodeNotFoundError(racingSessionId)
@@ -288,5 +288,5 @@ export class RacingSession {
         }
 
         await deleteSpecificRel(racingSessionId, imageId, RelationshipType.RacingSessionHasPrimeImage)
-    }
+    },
 }

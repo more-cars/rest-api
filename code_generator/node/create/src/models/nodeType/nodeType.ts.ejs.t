@@ -7,12 +7,12 @@ import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../db/nodes/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/createNode"
 import {convertOutputData} from "./create/convertOutputData"
 
-export class <%= h.changeCase.pascal(nodeType) %> {
-    static async create(data: Create<%= h.changeCase.pascal(nodeType) %>Input): Promise<<%= h.changeCase.pascal(nodeType) %>Node> {
+export const <%= h.changeCase.pascal(nodeType) %> = {
+    async create(data: Create<%= h.changeCase.pascal(nodeType) %>Input): Promise<<%= h.changeCase.pascal(nodeType) %>Node> {
         const input = convertInputData(data)
         const result = await createNode(input)
         const output = convertOutputData(result)
 
         return output
-    }
+    },
 }

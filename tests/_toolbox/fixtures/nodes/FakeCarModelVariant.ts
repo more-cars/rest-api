@@ -4,8 +4,8 @@ import type {
 } from "../../../../src/db/nodes/car-model-variants/types/InputCarModelVariantCreate"
 import type {CarModelVariantNode} from "../../../../src/models/car-model-variants/types/CarModelVariantNode"
 
-export class FakeCarModelVariant {
-    static dbInput() {
+export const FakeCarModelVariant = {
+    dbInput() {
         return {
             name: faker.vehicle.vehicle(),
             internal_code: faker.word.noun(),
@@ -44,9 +44,9 @@ export class FakeCarModelVariant {
             top_speed_unit: faker.science.unit().symbol,
             total_production: faker.number.int({min: 1000, max: 1000000}),
         } as InputCarModelVariantCreate
-    }
+    },
 
-    static modelOutput() {
+    modelOutput() {
         return {
             id: faker.number.int({min: 12_000_000, max: 20_000_000}),
             name: faker.vehicle.vehicle(),
@@ -88,5 +88,5 @@ export class FakeCarModelVariant {
             created_at: faker.date.past().toISOString(),
             updated_at: faker.date.past().toISOString(),
         } as CarModelVariantNode
-    }
+    },
 }

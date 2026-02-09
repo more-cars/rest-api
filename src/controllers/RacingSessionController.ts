@@ -16,68 +16,68 @@ import {createHasPrimeImageRelation} from "./racing-sessions/createHasPrimeImage
 import {getHasPrimeImageRelation} from "./racing-sessions/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./racing-sessions/deleteHasPrimeImageRelation"
 
-export class RacingSessionController {
-    static async create(req: express.Request, res: express.Response) {
+export const RacingSessionController = {
+    async create(req: express.Request, res: express.Response) {
         await create(req, res)
-    }
+    },
 
-    static async getById(req: express.Request, res: express.Response) {
+    async getById(req: express.Request, res: express.Response) {
         await getById(req, res)
-    }
+    },
 
-    static async getAll(req: express.Request, res: express.Response) {
+    async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
-    }
+    },
 
-    static async delete(req: express.Request, res: express.Response) {
+    async delete(req: express.Request, res: express.Response) {
         await deleteNode(req, res)
-    }
+    },
 
-    static async createBelongsToRacingEventRelation(req: express.Request, res: express.Response) {
+    async createBelongsToRacingEventRelation(req: express.Request, res: express.Response) {
         await createBelongsToRacingEventRelation(req, res)
-    }
+    },
 
-    static async getBelongsToRacingEventRelation(req: express.Request, res: express.Response) {
+    async getBelongsToRacingEventRelation(req: express.Request, res: express.Response) {
         await getBelongsToRacingEventRelation(req, res)
-    }
+    },
 
-    static async deleteBelongsToRacingEventRelation(req: express.Request, res: express.Response) {
+    async deleteBelongsToRacingEventRelation(req: express.Request, res: express.Response) {
         await deleteBelongsToRacingEventRelation(req, res)
-    }
+    },
 
-    static async createHasSessionResultRelation(req: express.Request, res: express.Response) {
+    async createHasSessionResultRelation(req: express.Request, res: express.Response) {
         await createHasSessionResultRelation(req, res)
-    }
+    },
 
-    static async getAllHasSessionResultRelations(req: express.Request, res: express.Response) {
+    async getAllHasSessionResultRelations(req: express.Request, res: express.Response) {
         await getAllHasSessionResultRelations(req, res)
-    }
+    },
 
-    static async deleteHasSessionResultRelation(req: express.Request, res: express.Response) {
+    async deleteHasSessionResultRelation(req: express.Request, res: express.Response) {
         await deleteHasSessionResultRelation(req, res)
-    }
+    },
 
-    static async createHasImageRelation(req: express.Request, res: express.Response) {
+    async createHasImageRelation(req: express.Request, res: express.Response) {
         await createHasImageRelation(req, res)
-    }
+    },
 
-    static async getAllHasImageRelations(req: express.Request, res: express.Response) {
+    async getAllHasImageRelations(req: express.Request, res: express.Response) {
         await getAllHasImageRelations(req, res)
-    }
+    },
 
-    static async deleteHasImageRelation(req: express.Request, res: express.Response) {
+    async deleteHasImageRelation(req: express.Request, res: express.Response) {
         await deleteHasImageRelation(req, res)
-    }
+    },
 
-    static async createHasPrimeImageRelation(req: express.Request, res: express.Response) {
+    async createHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await createHasPrimeImageRelation(req, res)
-    }
+    },
 
-    static async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
+    async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await getHasPrimeImageRelation(req, res)
-    }
+    },
 
-    static async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
+    async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
-    }
+    },
 }

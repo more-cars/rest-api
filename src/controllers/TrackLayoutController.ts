@@ -19,80 +19,80 @@ import {createHasPrimeImageRelation} from "./track-layouts/createHasPrimeImageRe
 import {getHasPrimeImageRelation} from "./track-layouts/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./track-layouts/deleteHasPrimeImageRelation"
 
-export class TrackLayoutController {
-    static async create(req: express.Request, res: express.Response) {
+export const TrackLayoutController = {
+    async create(req: express.Request, res: express.Response) {
         await create(req, res)
-    }
+    },
 
-    static async getById(req: express.Request, res: express.Response) {
+    async getById(req: express.Request, res: express.Response) {
         await getById(req, res)
-    }
+    },
 
-    static async getAll(req: express.Request, res: express.Response) {
+    async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
-    }
+    },
 
-    static async delete(req: express.Request, res: express.Response) {
+    async delete(req: express.Request, res: express.Response) {
         await deleteNode(req, res)
-    }
+    },
 
-    static async createBelongsToRaceTrackRelation(req: express.Request, res: express.Response) {
+    async createBelongsToRaceTrackRelation(req: express.Request, res: express.Response) {
         await createBelongsToRaceTrackRelation(req, res)
-    }
+    },
 
-    static async getBelongsToRaceTrackRelation(req: express.Request, res: express.Response) {
+    async getBelongsToRaceTrackRelation(req: express.Request, res: express.Response) {
         await getBelongsToRaceTrackRelation(req, res)
-    }
+    },
 
-    static async deleteBelongsToRaceTrackRelation(req: express.Request, res: express.Response) {
+    async deleteBelongsToRaceTrackRelation(req: express.Request, res: express.Response) {
         await deleteBelongsToRaceTrackRelation(req, res)
-    }
+    },
 
-    static async createWasUsedByRacingEventRelation(req: express.Request, res: express.Response) {
+    async createWasUsedByRacingEventRelation(req: express.Request, res: express.Response) {
         await createWasUsedByRacingEventRelation(req, res)
-    }
+    },
 
-    static async getAllWasUsedByRacingEventRelations(req: express.Request, res: express.Response) {
+    async getAllWasUsedByRacingEventRelations(req: express.Request, res: express.Response) {
         await getAllWasUsedByRacingEventRelations(req, res)
-    }
+    },
 
-    static async deleteWasUsedByRacingEventRelation(req: express.Request, res: express.Response) {
+    async deleteWasUsedByRacingEventRelation(req: express.Request, res: express.Response) {
         await deleteWasUsedByRacingEventRelation(req, res)
-    }
+    },
 
-    static async createHasLapTimeRelation(req: express.Request, res: express.Response) {
+    async createHasLapTimeRelation(req: express.Request, res: express.Response) {
         await createHasLapTimeRelation(req, res)
-    }
+    },
 
-    static async createHasImageRelation(req: express.Request, res: express.Response) {
+    async createHasImageRelation(req: express.Request, res: express.Response) {
         await createHasImageRelation(req, res)
-    }
+    },
 
-    static async getAllHasImageRelations(req: express.Request, res: express.Response) {
+    async getAllHasImageRelations(req: express.Request, res: express.Response) {
         await getAllHasImageRelations(req, res)
-    }
+    },
 
-    static async deleteHasImageRelation(req: express.Request, res: express.Response) {
+    async deleteHasImageRelation(req: express.Request, res: express.Response) {
         await deleteHasImageRelation(req, res)
-    }
+    },
 
-    static async createHasPrimeImageRelation(req: express.Request, res: express.Response) {
+    async createHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await createHasPrimeImageRelation(req, res)
-    }
+    },
 
-    static async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
+    async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await getHasPrimeImageRelation(req, res)
-    }
+    },
 
-    static async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
+    async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
-    }
+    },
 
-    static async getAllHasLapTimeRelations(req: express.Request, res: express.Response) {
+    async getAllHasLapTimeRelations(req: express.Request, res: express.Response) {
         await getAllHasLapTimeRelations(req, res)
-    }
+    },
 
-    static async deleteHasLapTimeRelation(req: express.Request, res: express.Response) {
+    async deleteHasLapTimeRelation(req: express.Request, res: express.Response) {
         await deleteHasLapTimeRelation(req, res)
-    }
+    },
 }

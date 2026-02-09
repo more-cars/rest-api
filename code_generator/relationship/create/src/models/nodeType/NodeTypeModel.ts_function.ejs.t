@@ -1,12 +1,12 @@
 ---
 inject: true
 to: src/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>.ts
-before: \}\n\}
-skip_if: static async create<%= h.changeCase.pascal(relationshipName) %>Relationship
+before: \},\n\}
+skip_if: async create<%= h.changeCase.pascal(relationshipName) %>Relationship
 ---
-    }
+    },
 
-    static async create<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id: number, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id: number) {
+    async create<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id: number, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id: number) {
 <% if (startNodeType === endNodeType) { -%>
         if (<%= h.changeCase.camel(startNodeType) %>Id === partnerId) {
             throw new SemanticError(`<%= h.changeCase.title(startNodeType) %> #${<%= h.changeCase.camel(startNodeType) %>Id} cannot be connected to itself`)

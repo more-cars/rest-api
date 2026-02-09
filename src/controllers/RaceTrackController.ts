@@ -16,68 +16,68 @@ import {createHasPrimeImageRelation} from "./race-tracks/createHasPrimeImageRela
 import {getHasPrimeImageRelation} from "./race-tracks/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./race-tracks/deleteHasPrimeImageRelation"
 
-export class RaceTrackController {
-    static async create(req: express.Request, res: express.Response) {
+export const RaceTrackController = {
+    async create(req: express.Request, res: express.Response) {
         await create(req, res)
-    }
+    },
 
-    static async getById(req: express.Request, res: express.Response) {
+    async getById(req: express.Request, res: express.Response) {
         await getById(req, res)
-    }
+    },
 
-    static async getAll(req: express.Request, res: express.Response) {
+    async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
-    }
+    },
 
-    static async delete(req: express.Request, res: express.Response) {
+    async delete(req: express.Request, res: express.Response) {
         await deleteNode(req, res)
-    }
+    },
 
-    static async createHasLayoutRelation(req: express.Request, res: express.Response) {
+    async createHasLayoutRelation(req: express.Request, res: express.Response) {
         await createHasLayoutRelation(req, res)
-    }
+    },
 
-    static async getAllHasLayoutRelations(req: express.Request, res: express.Response) {
+    async getAllHasLayoutRelations(req: express.Request, res: express.Response) {
         await getAllHasLayoutRelations(req, res)
-    }
+    },
 
-    static async deleteHasLayoutRelation(req: express.Request, res: express.Response) {
+    async deleteHasLayoutRelation(req: express.Request, res: express.Response) {
         await deleteHasLayoutRelation(req, res)
-    }
+    },
 
-    static async createHostedRacingEventRelation(req: express.Request, res: express.Response) {
+    async createHostedRacingEventRelation(req: express.Request, res: express.Response) {
         await createHostedRacingEventRelation(req, res)
-    }
+    },
 
-    static async getAllHostedRacingEventRelations(req: express.Request, res: express.Response) {
+    async getAllHostedRacingEventRelations(req: express.Request, res: express.Response) {
         await getAllHostedRacingEventRelations(req, res)
-    }
+    },
 
-    static async deleteHostedRacingEventRelation(req: express.Request, res: express.Response) {
+    async deleteHostedRacingEventRelation(req: express.Request, res: express.Response) {
         await deleteHostedRacingEventRelation(req, res)
-    }
+    },
 
-    static async createHasImageRelation(req: express.Request, res: express.Response) {
+    async createHasImageRelation(req: express.Request, res: express.Response) {
         await createHasImageRelation(req, res)
-    }
+    },
 
-    static async getAllHasImageRelations(req: express.Request, res: express.Response) {
+    async getAllHasImageRelations(req: express.Request, res: express.Response) {
         await getAllHasImageRelations(req, res)
-    }
+    },
 
-    static async deleteHasImageRelation(req: express.Request, res: express.Response) {
+    async deleteHasImageRelation(req: express.Request, res: express.Response) {
         await deleteHasImageRelation(req, res)
-    }
+    },
 
-    static async createHasPrimeImageRelation(req: express.Request, res: express.Response) {
+    async createHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await createHasPrimeImageRelation(req, res)
-    }
+    },
 
-    static async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
+    async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await getHasPrimeImageRelation(req, res)
-    }
+    },
 
-    static async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
+    async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
-    }
+    },
 }
