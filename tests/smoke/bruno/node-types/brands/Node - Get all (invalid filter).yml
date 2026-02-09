@@ -1,7 +1,6 @@
 info:
   name: Get all Brands (invalid filter)
   type: http
-  seq: 1
   tags:
     - get
     - node
