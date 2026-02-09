@@ -13,8 +13,8 @@ export async function fetchNodesFromDb(nodeType: NodeTypeLabel, params: Collecti
     filterOperator: DbFilterOperator.not_equal,
     offset: 0,
     limit: 100,
-}): Promise<Array<Node>> {
-    const nodes: Array<Node> = []
+}): Promise<Node[]> {
+    const nodes: Node[] = []
 
     const driver: Driver = getDriver()
     const session: Session = driver.session({defaultAccessMode: neo4j.session.READ})

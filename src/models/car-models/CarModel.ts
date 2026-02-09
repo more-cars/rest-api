@@ -45,7 +45,7 @@ export const CarModel = {
     },
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<CarModelNode[]> {
-        const nodes: Array<CarModelNode> = []
+        const nodes: CarModelNode[] = []
         const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {

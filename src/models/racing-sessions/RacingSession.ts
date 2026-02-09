@@ -44,7 +44,7 @@ export const RacingSession = {
     },
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<RacingSessionNode[]> {
-        const nodes: Array<RacingSessionNode> = []
+        const nodes: RacingSessionNode[] = []
         const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {

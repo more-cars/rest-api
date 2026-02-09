@@ -5,8 +5,8 @@ import {fetchNodesFromDb} from "../fetchNodesFromDb"
 import {NodeTypeLabel} from "../../NodeTypeLabel"
 import {mapDbNodeToCarModelNode} from "./mapDbNodeToCarModelNode"
 
-export async function getAllNodesOfType(constraints: NodeCollectionConstraints = {}): Promise<Array<CarModelNode>> {
-    const nodes: Array<CarModelNode> = []
+export async function getAllNodesOfType(constraints: NodeCollectionConstraints = {}): Promise<CarModelNode[]> {
+    const nodes: CarModelNode[] = []
     const dbParams = getDbQueryCollectionParams(constraints)
     const dbNodes = await fetchNodesFromDb(NodeTypeLabel.CarModel, dbParams)
 

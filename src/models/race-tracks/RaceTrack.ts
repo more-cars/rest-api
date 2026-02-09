@@ -44,7 +44,7 @@ export const RaceTrack = {
     },
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<RaceTrackNode[]> {
-        const nodes: Array<RaceTrackNode> = []
+        const nodes: RaceTrackNode[] = []
         const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {

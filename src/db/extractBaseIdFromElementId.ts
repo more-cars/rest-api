@@ -3,7 +3,7 @@
  * Extracts the last part of the element id (the number after the final colon).
  */
 export function extractBaseIdFromElementId(elementId: string): number {
-    const parts: Array<string> = elementId.split(':')
+    const parts: string[] = elementId.split(':')
     const baseId = parseInt(parts[2])
 
     return baseId

@@ -45,7 +45,7 @@ export const LapTime = {
     },
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<LapTimeNode[]> {
-        const nodes: Array<LapTimeNode> = []
+        const nodes: LapTimeNode[] = []
         const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {

@@ -5,8 +5,8 @@ import {fetchNodesFromDb} from "../fetchNodesFromDb"
 import {NodeTypeLabel} from "../../NodeTypeLabel"
 import {mapDbNodeToTrackLayoutNode} from "./mapDbNodeToTrackLayoutNode"
 
-export async function getAllNodesOfType(constraints: NodeCollectionConstraints = {}): Promise<Array<TrackLayoutNode>> {
-    const nodes: Array<TrackLayoutNode> = []
+export async function getAllNodesOfType(constraints: NodeCollectionConstraints = {}): Promise<TrackLayoutNode[]> {
+    const nodes: TrackLayoutNode[] = []
     const dbParams = getDbQueryCollectionParams(constraints)
     const dbNodes = await fetchNodesFromDb(NodeTypeLabel.TrackLayout, dbParams)
 

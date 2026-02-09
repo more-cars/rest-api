@@ -45,7 +45,7 @@ export const TrackLayout = {
     },
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<TrackLayoutNode[]> {
-        const nodes: Array<TrackLayoutNode> = []
+        const nodes: TrackLayoutNode[] = []
         const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {

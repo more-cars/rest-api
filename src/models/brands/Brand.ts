@@ -44,7 +44,7 @@ export const Brand = {
     },
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<BrandNode[]> {
-        const nodes: Array<BrandNode> = []
+        const nodes: BrandNode[] = []
         const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {

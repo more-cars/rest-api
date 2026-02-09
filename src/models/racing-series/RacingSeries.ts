@@ -43,7 +43,7 @@ export const RacingSeries = {
     },
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<RacingSeriesNode[]> {
-        const nodes: Array<RacingSeriesNode> = []
+        const nodes: RacingSeriesNode[] = []
         const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {

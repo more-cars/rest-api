@@ -43,7 +43,7 @@ export const Company = {
     },
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<CompanyNode[]> {
-        const nodes: Array<CompanyNode> = []
+        const nodes: CompanyNode[] = []
         const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {

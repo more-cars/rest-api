@@ -4,8 +4,8 @@ import {BaseRelationship} from "../types/BaseRelationship"
 import {DbRelationship} from "../types/DbRelationship"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
-export async function getRelationshipCollection(nodeId: number, relationshipName: DbRelationship, nodeIsRelationshipTarget = false): Promise<Array<BaseRelationship>> {
-    const relationships: Array<BaseRelationship> = []
+export async function getRelationshipCollection(nodeId: number, relationshipName: DbRelationship, nodeIsRelationshipTarget = false): Promise<BaseRelationship[]> {
+    const relationships: BaseRelationship[] = []
 
     const driver: Driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.READ})

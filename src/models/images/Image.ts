@@ -49,7 +49,7 @@ export const Image = {
     },
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<ImageNode[]> {
-        const nodes: Array<ImageNode> = []
+        const nodes: ImageNode[] = []
         const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {
