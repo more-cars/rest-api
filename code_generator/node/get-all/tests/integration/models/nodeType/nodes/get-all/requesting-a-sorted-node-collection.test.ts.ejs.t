@@ -9,7 +9,7 @@ import {<%= h.changeCase.pascal(nodeType) %>} from "../../../../../../src/models
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all <%= h.changeCase.upper(nodeType) %> nodes" request returns the nodes in correct order', () => {
-    test('when there exist NO <%= h.changeCase.lower(nodeType) %> nodes', async () => {
+    test('when there exist no <%= h.changeCase.upper(nodeType) %> nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>)
 
         const expectedNodes: Array<<%= h.changeCase.pascal(nodeType) %>Node> = []
@@ -19,7 +19,7 @@ describe('A sorted "get all <%= h.changeCase.upper(nodeType) %> nodes" request r
             .toEqual(expectedNodes)
     })
 
-    test('when there exist <%= h.changeCase.lower(nodeType) %> nodes', async () => {
+    test('when there exist <%= h.changeCase.upper(nodeType) %> nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>)
         const nodeA = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>, {name: 'A Node'}) as <%= h.changeCase.pascal(nodeType) %>Node
         const nodeB = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>, {name: 'B Node'}) as <%= h.changeCase.pascal(nodeType) %>Node

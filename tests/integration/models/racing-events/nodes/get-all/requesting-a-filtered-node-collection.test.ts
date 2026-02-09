@@ -7,7 +7,7 @@ import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all RACING EVENT nodes" request returns only the matching nodes', () => {
-    test('when there exist NO Racing Event nodes', async () => {
+    test('when there exist no RACING EVENT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_EVENT)
 
         const expectedNodes: Array<RacingEventNode> = []
@@ -21,7 +21,7 @@ describe('A filtered "get all RACING EVENT nodes" request returns only the match
             .toEqual(expectedNodes)
     })
 
-    test('when there exist Racing Event nodes', async () => {
+    test('when there exist RACING EVENT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_EVENT)
         const nodeA = await seedNode(NodeTypeEnum.RACING_EVENT, {name: 'A Node'}) as RacingEventNode
         await seedNode(NodeTypeEnum.RACING_EVENT, {name: 'B Node'})

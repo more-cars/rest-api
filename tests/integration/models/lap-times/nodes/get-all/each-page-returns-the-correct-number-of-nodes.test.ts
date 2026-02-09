@@ -10,7 +10,7 @@ describe('Each page of a "get all LAP TIME nodes" request returns the correct nu
         [1],
         [2],
         [99],
-    ])('when there exist NO lap time nodes (page=$0)', async (page) => {
+    ])('when there exist no LAP TIME nodes (page=$0)', async (page) => {
         await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
 
         const expectedNodes: Array<LapTimeNode> = []
@@ -23,7 +23,7 @@ describe('Each page of a "get all LAP TIME nodes" request returns the correct nu
     test.each([
         [20, 1, 20],
         [5, 2, 0],
-    ])('when there exist $0 lap time nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
+    ])('when there exist $0 LAP TIME nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
         await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
         await seedNodes(NodeTypeEnum.LAP_TIME, totalNodeAmount)
 

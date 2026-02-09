@@ -6,7 +6,7 @@ import {RacingSeries} from "../../../../../../src/models/racing-series/RacingSer
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A non-parametrized "get all RACING SERIES nodes" request returns the correct number of nodes', () => {
-    test('when there exist NO racing series nodes', async () => {
+    test('when there exist no RACING SERIES nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_SERIES)
 
         const expectedNodes: Array<RacingSeriesNode> = []

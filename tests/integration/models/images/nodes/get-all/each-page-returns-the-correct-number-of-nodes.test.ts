@@ -5,12 +5,12 @@ import type {ImageNode} from "../../../../../../src/models/images/types/ImageNod
 import {Image} from "../../../../../../src/models/images/Image"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
-describe('Each page of a "get all COMPANY nodes" request returns the correct number of nodes', () => {
+describe('Each page of a "get all IMAGE nodes" request returns the correct number of nodes', () => {
     test.each([
         [1],
         [2],
         [99],
-    ])('when there exist NO company nodes (page=$0)', async (page) => {
+    ])('when there exist no IMAGE nodes (page=$0)', async (page) => {
         await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
 
         const expectedNodes: Array<ImageNode> = []
@@ -23,7 +23,7 @@ describe('Each page of a "get all COMPANY nodes" request returns the correct num
     test.each([
         [20, 1, 20],
         [5, 2, 0],
-    ])('when there exist $0 company nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
+    ])('when there exist $0 IMAGE nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
         await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
         await seedNodes(NodeTypeEnum.IMAGE, totalNodeAmount)
 

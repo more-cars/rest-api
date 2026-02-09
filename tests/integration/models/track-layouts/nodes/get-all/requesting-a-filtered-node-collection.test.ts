@@ -7,7 +7,7 @@ import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all TRACK LAYOUT nodes" request returns only the matching nodes', () => {
-    test('when there exist NO Track Layout nodes', async () => {
+    test('when there exist no TRACK LAYOUT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
 
         const expectedNodes: Array<TrackLayoutNode> = []
@@ -21,7 +21,7 @@ describe('A filtered "get all TRACK LAYOUT nodes" request returns only the match
             .toEqual(expectedNodes)
     })
 
-    test('when there exist Track Layout nodes', async () => {
+    test('when there exist TRACK LAYOUT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
         const nodeA = await seedNode(NodeTypeEnum.TRACK_LAYOUT, {name: 'A Node'}) as TrackLayoutNode
         await seedNode(NodeTypeEnum.TRACK_LAYOUT, {name: 'B Node'})

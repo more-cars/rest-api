@@ -10,7 +10,7 @@ describe('Each page of a "get all CAR MODEL nodes" request returns the correct n
         [1],
         [2],
         [99],
-    ])('when there exist NO car model nodes (page=$0)', async (page) => {
+    ])('when there exist no CAR MODEL nodes (page=$0)', async (page) => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL)
 
         const expectedNodes: Array<CarModelNode> = []
@@ -23,7 +23,7 @@ describe('Each page of a "get all CAR MODEL nodes" request returns the correct n
     test.each([
         [20, 1, 20],
         [5, 2, 0],
-    ])('when there exist $0 car model nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
+    ])('when there exist $0 CAR MODEL nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL)
         await seedNodes(NodeTypeEnum.CAR_MODEL, totalNodeAmount)
 

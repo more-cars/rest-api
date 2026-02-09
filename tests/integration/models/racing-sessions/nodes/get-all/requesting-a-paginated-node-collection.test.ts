@@ -6,7 +6,7 @@ import {RacingSession} from "../../../../../../src/models/racing-sessions/Racing
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A paginated "get all RACING SESSION nodes" request returns the correct number of nodes', () => {
-    test('when there exist NO racing session nodes', async () => {
+    test('when there exist no RACING SESSION nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_SESSION)
 
         const expectedNodes: Array<RacingSessionNode> = []
@@ -16,7 +16,7 @@ describe('A paginated "get all RACING SESSION nodes" request returns the correct
             .toEqual(actualNodes)
     })
 
-    test('when there exist racing session nodes', async () => {
+    test('when there exist RACING SESSION nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_SESSION)
         const amount = Math.ceil(Math.random() * 20)
         await seedNodes(NodeTypeEnum.RACING_SESSION, amount)

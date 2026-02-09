@@ -6,7 +6,7 @@ import {LapTime} from "../../../../../../src/models/lap-times/LapTime"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A non-parametrized "get all LAP TIME nodes" request returns the correct number of nodes', () => {
-    test('when there exist NO lap time nodes', async () => {
+    test('when there exist no LAP TIME nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
 
         const expectedNodes: Array<LapTimeNode> = []
@@ -16,7 +16,7 @@ describe('A non-parametrized "get all LAP TIME nodes" request returns the correc
             .toEqual(expectedNodes)
     })
 
-    test('when there exist lap time nodes', async () => {
+    test('when there exist LAP TIME nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
         const amount = Math.ceil(Math.random() * 20)
         await seedNodes(NodeTypeEnum.LAP_TIME, amount)

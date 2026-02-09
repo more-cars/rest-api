@@ -6,7 +6,7 @@ import {CarModelVariant} from "../../../../../../src/models/car-model-variants/C
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all CAR MODEL VARIANT nodes" request returns the nodes in correct order', () => {
-    test('when there exist NO car model variant nodes', async () => {
+    test('when there exist no CAR MODEL VARIANT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL_VARIANT)
 
         const expectedNodes: Array<CarModelVariantNode> = []
@@ -16,7 +16,7 @@ describe('A sorted "get all CAR MODEL VARIANT nodes" request returns the nodes i
             .toEqual(expectedNodes)
     })
 
-    test('when there exist car model variant nodes', async () => {
+    test('when there exist CAR MODEL VARIANT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL_VARIANT)
         const nodeA = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT, {name: 'A Node'}) as CarModelVariantNode
         const nodeB = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT, {name: 'B Node'}) as CarModelVariantNode

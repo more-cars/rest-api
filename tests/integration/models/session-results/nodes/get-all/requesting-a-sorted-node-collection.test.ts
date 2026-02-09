@@ -6,7 +6,7 @@ import {SessionResult} from "../../../../../../src/models/session-results/Sessio
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all SESSION RESULT nodes" request returns the nodes in correct order', () => {
-    test('when there exist NO session result nodes', async () => {
+    test('when there exist no SESSION RESULT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
 
         const expectedNodes: Array<SessionResultNode> = []
@@ -16,7 +16,7 @@ describe('A sorted "get all SESSION RESULT nodes" request returns the nodes in c
             .toEqual(expectedNodes)
     })
 
-    test('when there exist session result nodes', async () => {
+    test('when there exist SESSION RESULT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
         const nodeA = await seedNode(NodeTypeEnum.SESSION_RESULT, {position: 1}) as SessionResultNode
         const nodeB = await seedNode(NodeTypeEnum.SESSION_RESULT, {position: 2}) as SessionResultNode

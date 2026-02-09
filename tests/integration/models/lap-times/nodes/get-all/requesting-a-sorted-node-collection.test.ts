@@ -6,7 +6,7 @@ import {LapTime} from "../../../../../../src/models/lap-times/LapTime"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all LAP TIME nodes" request returns the nodes in correct order', () => {
-    test('when there exist NO lap time nodes', async () => {
+    test('when there exist no LAP TIME nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
 
         const expectedNodes: Array<LapTimeNode> = []
@@ -16,7 +16,7 @@ describe('A sorted "get all LAP TIME nodes" request returns the nodes in correct
             .toEqual(expectedNodes)
     })
 
-    test('when there exist lap time nodes', async () => {
+    test('when there exist LAP TIME nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
         const nodeA = await seedNode(NodeTypeEnum.LAP_TIME, {time: 'A', driver_name: 'A Node'}) as LapTimeNode
         const nodeB = await seedNode(NodeTypeEnum.LAP_TIME, {time: 'B', driver_name: 'B Node'}) as LapTimeNode

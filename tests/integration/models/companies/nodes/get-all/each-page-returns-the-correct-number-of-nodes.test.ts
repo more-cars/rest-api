@@ -10,7 +10,7 @@ describe('Each page of a "get all COMPANY nodes" request returns the correct num
         [1],
         [2],
         [99],
-    ])('when there exist NO company nodes (page=$0)', async (page) => {
+    ])('when there exist no COMPANY nodes (page=$0)', async (page) => {
         await deleteAllNodesOfType(NodeTypeEnum.COMPANY)
 
         const expectedNodes: Array<CompanyNode> = []
@@ -23,7 +23,7 @@ describe('Each page of a "get all COMPANY nodes" request returns the correct num
     test.each([
         [20, 1, 20],
         [5, 2, 0],
-    ])('when there exist $0 company nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
+    ])('when there exist $0 COMPANY nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
         await deleteAllNodesOfType(NodeTypeEnum.COMPANY)
         await seedNodes(NodeTypeEnum.COMPANY, totalNodeAmount)
 

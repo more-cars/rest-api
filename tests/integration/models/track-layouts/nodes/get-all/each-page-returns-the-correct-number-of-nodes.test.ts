@@ -10,7 +10,7 @@ describe('Each page of a "get all TRACK LAYOUT nodes" request returns the correc
         [1],
         [2],
         [99],
-    ])('when there exist NO track layout nodes (page=$0)', async (page) => {
+    ])('when there exist no TRACK LAYOUT nodes (page=$0)', async (page) => {
         await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
 
         const expectedNodes: Array<TrackLayoutNode> = []
@@ -23,7 +23,7 @@ describe('Each page of a "get all TRACK LAYOUT nodes" request returns the correc
     test.each([
         [20, 1, 20],
         [5, 2, 0],
-    ])('when there exist $0 track layout nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
+    ])('when there exist $0 TRACK LAYOUT nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
         await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
         await seedNodes(NodeTypeEnum.TRACK_LAYOUT, totalNodeAmount)
 

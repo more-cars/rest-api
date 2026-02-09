@@ -6,7 +6,7 @@ import {Brand} from "../../../../../../src/models/brands/Brand"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all BRAND nodes" request returns the nodes in correct order', () => {
-    test('when there exist NO brand nodes', async () => {
+    test('when there exist no BRAND nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.BRAND)
 
         const expectedNodes: Array<BrandNode> = []
@@ -16,7 +16,7 @@ describe('A sorted "get all BRAND nodes" request returns the nodes in correct or
             .toEqual(expectedNodes)
     })
 
-    test('when there exist brand nodes', async () => {
+    test('when there exist BRAND nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.BRAND)
         const nodeA = await seedNode(NodeTypeEnum.BRAND, {name: 'A Node'}) as BrandNode
         const nodeB = await seedNode(NodeTypeEnum.BRAND, {name: 'B Node'}) as BrandNode

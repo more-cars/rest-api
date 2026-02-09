@@ -6,7 +6,7 @@ import {RacingSession} from "../../../../../../src/models/racing-sessions/Racing
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all RACING SESSION nodes" request returns the nodes in correct order', () => {
-    test('when there exist NO racing session nodes', async () => {
+    test('when there exist no RACING SESSION nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_SESSION)
 
         const expectedNodes: Array<RacingSessionNode> = []
@@ -16,7 +16,7 @@ describe('A sorted "get all RACING SESSION nodes" request returns the nodes in c
             .toEqual(expectedNodes)
     })
 
-    test('when there exist racing session nodes', async () => {
+    test('when there exist RACING SESSION nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_SESSION)
         const nodeA = await seedNode(NodeTypeEnum.RACING_SESSION, {name: 'A Node'}) as RacingSessionNode
         const nodeB = await seedNode(NodeTypeEnum.RACING_SESSION, {name: 'B Node'}) as RacingSessionNode

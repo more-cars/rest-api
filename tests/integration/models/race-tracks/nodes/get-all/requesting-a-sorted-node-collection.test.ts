@@ -6,7 +6,7 @@ import {RaceTrack} from "../../../../../../src/models/race-tracks/RaceTrack"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all RACE TRACK nodes" request returns the nodes in correct order', () => {
-    test('when there exist NO race track nodes', async () => {
+    test('when there exist no RACE TRACK nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACE_TRACK)
 
         const expectedNodes: Array<RaceTrackNode> = []
@@ -16,7 +16,7 @@ describe('A sorted "get all RACE TRACK nodes" request returns the nodes in corre
             .toEqual(expectedNodes)
     })
 
-    test('when there exist race track nodes', async () => {
+    test('when there exist RACE TRACK nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACE_TRACK)
         const nodeA = await seedNode(NodeTypeEnum.RACE_TRACK, {name: 'A Node'}) as RaceTrackNode
         const nodeB = await seedNode(NodeTypeEnum.RACE_TRACK, {name: 'B Node'}) as RaceTrackNode

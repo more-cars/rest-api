@@ -10,7 +10,7 @@ describe('Each page of a "get all RACING SERIES nodes" request returns the corre
         [1],
         [2],
         [99],
-    ])('when there exist NO racing series nodes (page=$0)', async (page) => {
+    ])('when there exist no RACING SERIES nodes (page=$0)', async (page) => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_SERIES)
 
         const expectedNodes: Array<RacingSeriesNode> = []
@@ -23,7 +23,7 @@ describe('Each page of a "get all RACING SERIES nodes" request returns the corre
     test.each([
         [20, 1, 20],
         [5, 2, 0],
-    ])('when there exist $0 racing series nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
+    ])('when there exist $0 RACING SERIES nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_SERIES)
         await seedNodes(NodeTypeEnum.RACING_SERIES, totalNodeAmount)
 

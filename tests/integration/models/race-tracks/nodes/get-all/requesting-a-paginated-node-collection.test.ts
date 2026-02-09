@@ -6,7 +6,7 @@ import {RaceTrack} from "../../../../../../src/models/race-tracks/RaceTrack"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A paginated "get all RACE TRACK nodes" request returns the correct number of nodes', () => {
-    test('when there exist NO lap time nodes', async () => {
+    test('when there exist no RACE TRACK nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACE_TRACK)
 
         const expectedNodes: Array<RaceTrackNode> = []
@@ -16,7 +16,7 @@ describe('A paginated "get all RACE TRACK nodes" request returns the correct num
             .toEqual(actualNodes)
     })
 
-    test('when there exist lap time nodes', async () => {
+    test('when there exist RACE TRACK nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACE_TRACK)
         const amount = Math.ceil(Math.random() * 20)
         await seedNodes(NodeTypeEnum.RACE_TRACK, amount)

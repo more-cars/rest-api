@@ -7,7 +7,7 @@ import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all CAR MODEL VARIANT nodes" request returns only the matching nodes', () => {
-    test('when there exist NO Car Model Variant nodes', async () => {
+    test('when there exist no CAR MODEL VARIANT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL_VARIANT)
 
         const expectedNodes: Array<CarModelVariantNode> = []
@@ -21,7 +21,7 @@ describe('A filtered "get all CAR MODEL VARIANT nodes" request returns only the 
             .toEqual(expectedNodes)
     })
 
-    test('when there exist Car Model Variant nodes', async () => {
+    test('when there exist CAR MODEL VARIANT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL_VARIANT)
         const nodeA = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT, {name: 'A Node'}) as CarModelVariantNode
         await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT, {name: 'B Node'})

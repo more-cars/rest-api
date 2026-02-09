@@ -10,7 +10,7 @@ describe('Each page of a "get all CAR MODEL VARIANT nodes" request returns the c
         [1],
         [2],
         [99],
-    ])('when there exist NO car model variant nodes (page=$0)', async (page) => {
+    ])('when there exist no CAR MODEL VARIANT nodes (page=$0)', async (page) => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL_VARIANT)
 
         const expectedNodes: Array<CarModelVariantNode> = []
@@ -23,7 +23,7 @@ describe('Each page of a "get all CAR MODEL VARIANT nodes" request returns the c
     test.each([
         [20, 1, 20],
         [5, 2, 0],
-    ])('when there exist $0 car model variant nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
+    ])('when there exist $0 CAR MODEL VARIANT nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL_VARIANT)
         await seedNodes(NodeTypeEnum.CAR_MODEL_VARIANT, totalNodeAmount)
 

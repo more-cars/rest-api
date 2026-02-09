@@ -6,7 +6,7 @@ import {RacingEvent} from "../../../../../../src/models/racing-events/RacingEven
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all RACING EVENT nodes" request returns the nodes in correct order', () => {
-    test('when there exist NO racing event nodes', async () => {
+    test('when there exist no RACING EVENT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_EVENT)
 
         const expectedNodes: Array<RacingEventNode> = []
@@ -16,7 +16,7 @@ describe('A sorted "get all RACING EVENT nodes" request returns the nodes in cor
             .toEqual(expectedNodes)
     })
 
-    test('when there exist racing event nodes', async () => {
+    test('when there exist RACING EVENT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_EVENT)
         const nodeA = await seedNode(NodeTypeEnum.RACING_EVENT, {name: 'A Node'}) as RacingEventNode
         const nodeB = await seedNode(NodeTypeEnum.RACING_EVENT, {name: 'B Node'}) as RacingEventNode

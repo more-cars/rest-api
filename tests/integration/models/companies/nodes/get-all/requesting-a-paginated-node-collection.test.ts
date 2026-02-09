@@ -6,7 +6,7 @@ import {Company} from "../../../../../../src/models/companies/Company"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A paginated "get all COMPANY nodes" request returns the correct number of nodes', () => {
-    test('when there exist NO company nodes', async () => {
+    test('when there exist no COMPANY nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.COMPANY)
 
         const expectedNodes: Array<CompanyNode> = []
@@ -16,7 +16,7 @@ describe('A paginated "get all COMPANY nodes" request returns the correct number
             .toEqual(expectedNodes)
     })
 
-    test('when there exist company nodes', async () => {
+    test('when there exist COMPANY nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.COMPANY)
         const amount = Math.ceil(Math.random() * 20)
         await seedNodes(NodeTypeEnum.COMPANY, amount)

@@ -6,7 +6,7 @@ import {TrackLayout} from "../../../../../../src/models/track-layouts/TrackLayou
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all TRACK LAYOUT nodes" request returns the nodes in correct order', () => {
-    test('when there exist NO track layout nodes', async () => {
+    test('when there exist no TRACK LAYOUT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
 
         const expectedNodes: Array<TrackLayoutNode> = []
@@ -16,7 +16,7 @@ describe('A sorted "get all TRACK LAYOUT nodes" request returns the nodes in cor
             .toEqual(expectedNodes)
     })
 
-    test('when there exist track layout nodes', async () => {
+    test('when there exist TRACK LAYOUT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
         const nodeA = await seedNode(NodeTypeEnum.TRACK_LAYOUT, {name: 'A Node'}) as TrackLayoutNode
         const nodeB = await seedNode(NodeTypeEnum.TRACK_LAYOUT, {name: 'B Node'}) as TrackLayoutNode

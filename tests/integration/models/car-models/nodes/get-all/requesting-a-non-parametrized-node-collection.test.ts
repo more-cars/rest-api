@@ -6,7 +6,7 @@ import {CarModel} from "../../../../../../src/models/car-models/CarModel"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A non-parametrized "get all CAR MODEL nodes" request returns the correct number of nodes', () => {
-    test('when there exist NO car model nodes', async () => {
+    test('when there exist no CAR MODEL nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL)
 
         const expectedNodes: Array<CarModelNode> = []
@@ -16,7 +16,7 @@ describe('A non-parametrized "get all CAR MODEL nodes" request returns the corre
             .toEqual(expectedNodes)
     })
 
-    test('when there exist car model nodes', async () => {
+    test('when there exist CAR MODEL nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL)
         const amount = Math.ceil(Math.random() * 20)
         await seedNodes(NodeTypeEnum.CAR_MODEL, amount)

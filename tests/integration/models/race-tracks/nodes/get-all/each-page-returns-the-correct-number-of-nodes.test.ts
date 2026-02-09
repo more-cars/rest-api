@@ -10,7 +10,7 @@ describe('Each page of a "get all RACE TRACK nodes" request returns the correct 
         [1],
         [2],
         [99],
-    ])('when there exist NO race track nodes (page=$0)', async (page) => {
+    ])('when there exist no RACE TRACK nodes (page=$0)', async (page) => {
         await deleteAllNodesOfType(NodeTypeEnum.RACE_TRACK)
 
         const expectedNodes: Array<RaceTrackNode> = []
@@ -23,7 +23,7 @@ describe('Each page of a "get all RACE TRACK nodes" request returns the correct 
     test.each([
         [20, 1, 20],
         [5, 2, 0],
-    ])('when there exist $0 race track nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
+    ])('when there exist $0 RACE TRACK nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
         await deleteAllNodesOfType(NodeTypeEnum.RACE_TRACK)
         await seedNodes(NodeTypeEnum.RACE_TRACK, totalNodeAmount)
 

@@ -6,7 +6,7 @@ import {Image} from "../../../../../../src/models/images/Image"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all IMAGE nodes" request returns the nodes in correct order', () => {
-    test('when there exist NO image nodes', async () => {
+    test('when there exist no IMAGE nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
 
         const expectedNodes: Array<ImageNode> = []
@@ -16,7 +16,7 @@ describe('A sorted "get all IMAGE nodes" request returns the nodes in correct or
             .toEqual(expectedNodes)
     })
 
-    test('when there exist image nodes', async () => {
+    test('when there exist IMAGE nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
         const nodeA = await seedNode(NodeTypeEnum.IMAGE, {name: 'A Node'}) as ImageNode
         const nodeB = await seedNode(NodeTypeEnum.IMAGE, {name: 'B Node'}) as ImageNode

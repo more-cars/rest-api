@@ -5,8 +5,8 @@ import type {ImageNode} from "../../../../../../src/models/images/types/ImageNod
 import {Image} from "../../../../../../src/models/images/Image"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
-describe('A non-parametrized "get all COMPANY nodes" request returns the correct number of nodes', () => {
-    test('when there exist NO company nodes', async () => {
+describe('A non-parametrized "get IMAGE COMPANY nodes" request returns the correct number of nodes', () => {
+    test('when there exist no IMAGE nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
 
         const expectedNodes: Array<ImageNode> = []
@@ -16,7 +16,7 @@ describe('A non-parametrized "get all COMPANY nodes" request returns the correct
             .toEqual(expectedNodes)
     })
 
-    test('when there exist company nodes', async () => {
+    test('when there exist IMAGE nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
         const amount = Math.ceil(Math.random() * 20)
         await seedNodes(NodeTypeEnum.IMAGE, amount)

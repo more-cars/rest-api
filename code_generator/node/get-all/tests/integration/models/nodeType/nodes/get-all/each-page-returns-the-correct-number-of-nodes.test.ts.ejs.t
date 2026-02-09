@@ -14,7 +14,7 @@ describe('Each page of a "get all <%= h.changeCase.upper(nodeType) %> nodes" req
         [1],
         [2],
         [99],
-    ])('when there exist NO <%= h.changeCase.lower(nodeType) %> nodes (page=$0)', async (page) => {
+    ])('when there exist no <%= h.changeCase.upper(nodeType) %> nodes (page=$0)', async (page) => {
         await deleteAllNodesOfType(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>)
 
         const expectedNodes: Array<<%= h.changeCase.pascal(nodeType) %>Node> = []
@@ -27,7 +27,7 @@ describe('Each page of a "get all <%= h.changeCase.upper(nodeType) %> nodes" req
     test.each([
         [20, 1, 20],
         [5, 2, 0],
-    ])('when there exist $0 <%= h.changeCase.lower(nodeType) %> nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
+    ])('when there exist $0 <%= h.changeCase.upper(nodeType) %> nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
         await deleteAllNodesOfType(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>)
         await seedNodes(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>, totalNodeAmount)
 

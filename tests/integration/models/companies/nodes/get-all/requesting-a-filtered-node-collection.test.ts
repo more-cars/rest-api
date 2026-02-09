@@ -7,7 +7,7 @@ import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all COMPANY nodes" request returns only the matching nodes', () => {
-    test('when there exist NO company nodes', async () => {
+    test('when there exist no COMPANY nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.COMPANY)
 
         const expectedNodes: Array<CompanyNode> = []
@@ -21,7 +21,7 @@ describe('A filtered "get all COMPANY nodes" request returns only the matching n
             .toEqual(expectedNodes)
     })
 
-    test('when there exist company nodes', async () => {
+    test('when there exist COMPANY nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.COMPANY)
         const nodeA = await seedNode(NodeTypeEnum.COMPANY, {name: 'A Node'}) as CompanyNode
         await seedNode(NodeTypeEnum.COMPANY, {name: 'B Node'})

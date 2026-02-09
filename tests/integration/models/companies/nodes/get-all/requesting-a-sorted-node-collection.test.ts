@@ -6,7 +6,7 @@ import {Company} from "../../../../../../src/models/companies/Company"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all COMPANY nodes" request returns the nodes in correct order', () => {
-    test('when there exist NO company nodes', async () => {
+    test('when there exist no COMPANY nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.COMPANY)
 
         const expectedNodes: Array<CompanyNode> = []
@@ -16,7 +16,7 @@ describe('A sorted "get all COMPANY nodes" request returns the nodes in correct 
             .toEqual(expectedNodes)
     })
 
-    test('when there exist company nodes', async () => {
+    test('when there exist COMPANY nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.COMPANY)
         const nodeA = await seedNode(NodeTypeEnum.COMPANY, {name: 'A Node'}) as CompanyNode
         const nodeB = await seedNode(NodeTypeEnum.COMPANY, {name: 'B Node'}) as CompanyNode

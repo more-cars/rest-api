@@ -7,7 +7,7 @@ import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all SESSION RESULT nodes" request returns only the matching nodes', () => {
-    test('when there exist NO Session Result nodes', async () => {
+    test('when there exist no SESSION RESULT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
 
         const expectedNodes: Array<SessionResultNode> = []
@@ -21,7 +21,7 @@ describe('A filtered "get all SESSION RESULT nodes" request returns only the mat
             .toEqual(expectedNodes)
     })
 
-    test('when there exist Session Result nodes', async () => {
+    test('when there exist SESSION RESULT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
         const nodeA = await seedNode(NodeTypeEnum.SESSION_RESULT, {position: 1}) as SessionResultNode
         await seedNode(NodeTypeEnum.SESSION_RESULT, {position: 2})

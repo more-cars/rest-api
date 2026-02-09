@@ -7,7 +7,7 @@ import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all RACING SERIES nodes" request returns only the matching nodes', () => {
-    test('when there exist NO Racing Series nodes', async () => {
+    test('when there exist no RACING SERIES nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_SERIES)
 
         const expectedNodes: Array<RacingSeriesNode> = []
@@ -21,7 +21,7 @@ describe('A filtered "get all RACING SERIES nodes" request returns only the matc
             .toEqual(expectedNodes)
     })
 
-    test('when there exist Racing Series nodes', async () => {
+    test('when there exist RACING SERIES nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.RACING_SERIES)
         const nodeA = await seedNode(NodeTypeEnum.RACING_SERIES, {name: 'A Node'}) as RacingSeriesNode
         await seedNode(NodeTypeEnum.RACING_SERIES, {name: 'B Node'})

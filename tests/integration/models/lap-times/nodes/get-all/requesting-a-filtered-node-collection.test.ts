@@ -7,7 +7,7 @@ import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all LAP TIME nodes" request returns only the matching nodes', () => {
-    test('when there exist NO Lap Time nodes', async () => {
+    test('when there exist no LAP TIME nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
 
         const expectedNodes: Array<LapTimeNode> = []
@@ -21,7 +21,7 @@ describe('A filtered "get all LAP TIME nodes" request returns only the matching 
             .toEqual(expectedNodes)
     })
 
-    test('when there exist Lap Time nodes', async () => {
+    test('when there exist LAP TIME nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
         const nodeA = await seedNode(NodeTypeEnum.LAP_TIME, {time: 'A', driver_name: 'A Node'}) as LapTimeNode
         await seedNode(NodeTypeEnum.LAP_TIME, {time: 'B', driver_name: 'B Node'})

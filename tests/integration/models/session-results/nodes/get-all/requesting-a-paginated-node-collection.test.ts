@@ -6,7 +6,7 @@ import {SessionResult} from "../../../../../../src/models/session-results/Sessio
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A paginated "get all SESSION RESULT nodes" request returns the correct number of nodes', () => {
-    test('when there exist NO session result nodes', async () => {
+    test('when there exist no SESSION RESULT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
 
         const expectedNodes: Array<SessionResultNode> = []
@@ -16,7 +16,7 @@ describe('A paginated "get all SESSION RESULT nodes" request returns the correct
             .toEqual(actualNodes)
     })
 
-    test('when there exist session result nodes', async () => {
+    test('when there exist SESSION RESULT nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
         const amount = Math.ceil(Math.random() * 20)
         await seedNodes(NodeTypeEnum.SESSION_RESULT, amount)

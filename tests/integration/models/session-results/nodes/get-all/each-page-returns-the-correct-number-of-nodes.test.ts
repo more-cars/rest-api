@@ -10,7 +10,7 @@ describe('Each page of a "get all SESSION RESULT nodes" request returns the corr
         [1],
         [2],
         [99],
-    ])('when there exist NO session result nodes (page=$0)', async (page) => {
+    ])('when there exist no SESSION RESULT nodes (page=$0)', async (page) => {
         await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
 
         const expectedNodes: Array<SessionResultNode> = []
@@ -23,7 +23,7 @@ describe('Each page of a "get all SESSION RESULT nodes" request returns the corr
     test.each([
         [20, 1, 20],
         [5, 2, 0],
-    ])('when there exist $0 session result nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
+    ])('when there exist $0 SESSION RESULT nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
         await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
         await seedNodes(NodeTypeEnum.SESSION_RESULT, totalNodeAmount)
 

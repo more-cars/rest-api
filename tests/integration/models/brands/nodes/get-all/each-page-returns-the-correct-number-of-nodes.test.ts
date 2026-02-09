@@ -10,7 +10,7 @@ describe('Each page of a "get all BRAND nodes" request returns the correct numbe
         [1],
         [2],
         [99],
-    ])('when there exist NO brand nodes (page=$0)', async (page) => {
+    ])('when there exist no BRAND nodes (page=$0)', async (page) => {
         await deleteAllNodesOfType(NodeTypeEnum.BRAND)
 
         const expectedNodes: Array<BrandNode> = []
@@ -23,7 +23,7 @@ describe('Each page of a "get all BRAND nodes" request returns the correct numbe
     test.each([
         [20, 1, 20],
         [5, 2, 0],
-    ])('when there exist $0 brand nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
+    ])('when there exist $0 BRAND nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
         await deleteAllNodesOfType(NodeTypeEnum.BRAND)
         await seedNodes(NodeTypeEnum.BRAND, totalNodeAmount)
 

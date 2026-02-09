@@ -7,7 +7,7 @@ import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all IMAGE nodes" request returns only the matching nodes', () => {
-    test('when there exist NO image nodes', async () => {
+    test('when there exist no IMAGE nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
 
         const expectedNodes: Array<ImageNode> = []
@@ -21,7 +21,7 @@ describe('A filtered "get all IMAGE nodes" request returns only the matching nod
             .toEqual(expectedNodes)
     })
 
-    test('when there exist image nodes', async () => {
+    test('when there exist IMAGE nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
         const nodeA = await seedNode(NodeTypeEnum.IMAGE, {name: 'A Node'}) as ImageNode
         await seedNode(NodeTypeEnum.IMAGE, {name: 'B Node'})
