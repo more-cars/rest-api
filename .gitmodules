@@ -1,3 +1,6 @@
 [submodule "rest-api-specification"]
 	path = rest-api-specification
 	url = https://github.com/more-cars/rest-api-specification.git
+[submodule "rest-api-ticket-generator"]
+	path = rest-api-ticket-generator
+	url = https://github.com/more-cars/rest-api-ticket-generator.git
