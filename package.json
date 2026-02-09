@@ -62,7 +62,6 @@
     "tests:lint:src": "npx eslint src",
     "tests:lint:tests": "npx eslint tests",
     "tests:unit": "npx vitest run -c tests/unit/vite.config.ts",
-    "tests:unit:coverage": "npx vitest run -c tests/unit/vite.config.ts --coverage",
     "tests:integration": "./tests/integration/run-tests.sh",
     "tests:developer": "npx vitest run -c tests/vite.config.ts",
     "tests:developer:coverage": "npx vitest run -c tests/vite.config.ts --coverage",
