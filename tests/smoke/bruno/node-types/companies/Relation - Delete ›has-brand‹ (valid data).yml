@@ -1,0 +1,25 @@
+info:
+  name: Delete ›has-brand‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/companies/{{validCompanyId}}/has-brand/{{validBrandId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const Companies = require('./lib/node-types/Companies.js')
+        const Brands = require('./lib/node-types/Brands.js')
+        await Companies.create()
+        await Brands.create()
+        await Companies.createHasBrandRelationship()
