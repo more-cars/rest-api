@@ -56,8 +56,6 @@
     "minikube:start": "deployment/minikube-cluster-start.sh",
     "minikube:stop": "deployment/minikube-cluster-stop.sh",
     "minikube:delete": "deployment/minikube-cluster-delete.sh",
-    "generate-tickets:node:create": "HYGEN_TMPLS=ticket-generator hygen features create-node && node --env-file=.env -r ts-node/register ticket-generator/create-tickets-for-create-node.ts",
-    "generate-tickets": "node --env-file=.env -r ts-node/register ticket-generator/create-tickets.ts",
     "generate-code:node:create": "HYGEN_TMPLS=code_generator hygen node create",
     "generate-code": "node --env-file=.env -r ts-node/register code_generator/generate-code-for-feature.ts",
     "tests:validate-api-schema": "npx ts-node tests/api-validation/schema-validation.ts",
