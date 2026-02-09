@@ -12,7 +12,7 @@ test.each([
     100000,
     1000000,
     10000000,
-    77999999, // this is the largest base ID that can be used to stay within the 8-digit limit
+    87999999, // this is the largest base ID that can be used to stay within the 8-digit limit
 ])('valid ID is generated', async (baseId: number) => {
     const id = generateMoreCarsId(baseId)
 

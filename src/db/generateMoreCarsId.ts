@@ -7,8 +7,8 @@ import {OutOfRangeError} from "./types/OutOfRangeError"
  * ⚠️ Uniqueness is not ensured. The caller is responsible for providing valid IDs.
  */
 export function generateMoreCarsId(baseId: number): number {
-    if (baseId > 77999999) {
-        throw new OutOfRangeError(`The provided ID "${baseId}" is too large. "77999999" is the allowed maximum.`)
+    if (baseId > 87999999) {
+        throw new OutOfRangeError(`The provided ID "${baseId}" is too large. "87999999" is the allowed maximum.`)
     }
 
     return baseId + 12000000
