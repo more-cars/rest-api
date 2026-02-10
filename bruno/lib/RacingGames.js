@@ -1,4 +1,5 @@
 const {submitPostRequest, submitGetRequest} = require("./request")
+const {ensureValidCarModelVariantExists} = require("./CarModelVariants")
 
 exports.ensureValidRacingGameExists = async function () {
     if (!bru.getEnvVar('validRacingGameId')) {
@@ -20,4 +21,14 @@ exports.createRacingGame = async function () {
 
 exports.getAllRacingGames = async function () {
     return submitGetRequest("/racing-games")
+}
+
+exports.ensureRacingGameFeaturesCarModelVariantRelationshipExists = async function () {
+    await this.ensureValidRacingGameExists()
+    await ensureValidCarModelVariantExists()
+    await this.createRacingGameFeaturesCarModelVariantRelationship(bru.getEnvVar('validRacingGameId'), bru.getEnvVar('validCarModelVariantId'))
+}
+
+exports.createRacingGameFeaturesCarModelVariantRelationship = async function (racingGameId, carModelVariantId) {
+    return submitPostRequest("/racing-games/" + racingGameId + "/features-car-model-variant/" + carModelVariantId)
 }

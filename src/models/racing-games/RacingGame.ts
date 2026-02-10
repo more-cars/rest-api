@@ -8,6 +8,13 @@ import {getAllNodesOfType} from "../../db/nodes/racing-games/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
+import {createRel} from "../relationships/createRel"
+import {CarModelVariant} from "../car-model-variants/CarModelVariant"
+import {getSpecificRel} from "../relationships/getSpecificRel"
+import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
+import {RelationshipType} from "../relationships/types/RelationshipType"
+import {RacingGameRelationship} from "./types/RacingGameRelationship"
+
 
 export const RacingGame = {
     async create(data: CreateRacingGameInput): Promise<RacingGameNode> {
@@ -46,5 +53,30 @@ export const RacingGame = {
         }
 
         await deleteNode(racingGameId)
+    },
+
+    async createFeaturesCarModelVariantRelationship(racingGameId: number, carModelVariantId: number) {
+        const racingGame = await RacingGame.findById(racingGameId)
+        if (!racingGame) {
+            throw new NodeNotFoundError(racingGameId)
+        }
+
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const existingRelation = await getSpecificRel(racingGameId, carModelVariantId, RelationshipType.RacingGameFeaturesCarModelVariant)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(RacingGameRelationship.featuresCarModelVariant, racingGameId, carModelVariantId)
+        }
+
+
+        const createdRelationship = await createRel(racingGameId, carModelVariantId, RelationshipType.RacingGameFeaturesCarModelVariant)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }

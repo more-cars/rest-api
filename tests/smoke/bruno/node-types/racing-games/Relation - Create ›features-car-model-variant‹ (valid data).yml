@@ -1,0 +1,50 @@
+info:
+  name: Create ›features-car-model-variant‹ relation (valid data)
+  type: http
+  tags:
+    - create
+    - relation
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/racing-games/{{validRacingGameId}}/features-car-model-variant/{{validCarModelVariantId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data
+      operator: isJson
+    - expression: res.body.data.relationship_id
+      operator: gte
+      value: "12000000"
+    - expression: res.body.data.relationship_name
+      operator: eq
+      value: "features-car-model-variant"
+    - expression: res.body.data.relationship_partner
+      operator: isJson
+    - expression: res.body.data.relationship_partner.node_type
+      operator: eq
+      value: "car-model-variant"
+    - expression: res.body.data.relationship_partner.data.id
+      operator: eq
+      value: "{{validCarModelVariantId}}"
+    - expression: res.body.data.created_at
+      operator: isString
+    - expression: res.body.data.created_at
+      operator: isNotEmpty
+    - expression: res.body.data.updated_at
+      operator: isString
+    - expression: res.body.data.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const RacingGames = require('./lib/node-types/RacingGames.js')
+        const CarModelVariants = require('./lib/node-types/CarModelVariants.js')
+        await RacingGames.create()
+        await CarModelVariants.create()

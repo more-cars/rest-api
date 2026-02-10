@@ -37,4 +37,12 @@ describe('Racing Games', () => {
         expect(RacingGameController.delete)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›features-car-model-variant‹ relationship', async () => {
+        await request(app)
+            .post('/racing-games/123/features-car-model-variant/456')
+
+        expect(RacingGameController.createFeaturesCarModelVariantRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

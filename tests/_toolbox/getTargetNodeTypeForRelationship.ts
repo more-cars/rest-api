@@ -130,6 +130,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
 
     relationships.set(
         NodeTypeEnum.RACING_GAME, new Map([
+            [RelationshipType.RacingGameFeaturesCarModelVariant, NodeTypeEnum.CAR_MODEL_VARIANT],
         ]))
 
     const match = relationships.get(startNodeType)?.get(relationshipName as RelationshipType)
