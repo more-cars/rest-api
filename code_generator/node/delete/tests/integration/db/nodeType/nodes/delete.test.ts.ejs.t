@@ -14,7 +14,6 @@ test('Expecting response "false" when trying to delete a non-existing <%= h.chan
 })
 
 test('Expecting response "true" when deleting an existing <%= h.changeCase.upper(nodeType) %>', async () => {
-    const node = await seed<%= h.changeCase.pascal(nodeType) %>()
     const node = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>)
     const success = await deleteNode(node.id)
 
