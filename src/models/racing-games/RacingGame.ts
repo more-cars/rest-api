@@ -14,8 +14,9 @@ import {getSpecificRel} from "../relationships/getSpecificRel"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
 import {RelationshipType} from "../relationships/types/RelationshipType"
 import {RacingGameRelationship} from "./types/RacingGameRelationship"
-
 import {getAllRels} from "../relationships/getAllRels"
+import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
+import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 
 export const RacingGame = {
     async create(data: CreateRacingGameInput): Promise<RacingGameNode> {
@@ -88,5 +89,24 @@ export const RacingGame = {
         }
 
         return getAllRels(racingGameId, RelationshipType.RacingGameFeaturesCarModelVariant)
+    },
+
+    async deleteFeaturesCarModelVariantRelationship(racingGameId: number, carModelVariantId: number) {
+        const racingGame = await RacingGame.findById(racingGameId)
+        if (!racingGame) {
+            throw new NodeNotFoundError(racingGameId)
+        }
+
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const relationship = await getSpecificRel(racingGameId, carModelVariantId, RelationshipType.RacingGameFeaturesCarModelVariant)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(RacingGameRelationship.featuresCarModelVariant, racingGameId, carModelVariantId)
+        }
+
+        await deleteSpecificRel(racingGameId, carModelVariantId, RelationshipType.RacingGameFeaturesCarModelVariant)
     },
 }

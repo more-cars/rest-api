@@ -9971,6 +9971,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Racing Games"
+        ],
+        "summary": "Deletes the ›features-car-model-variant‹ relationship between the `Racing Game` and the `Car Model Variant`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-game-id",
+            "description": "ID of the `Racing Game`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›features-car-model-variant‹ relationship between `Racing Game` and `Car Model Variant` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›features-car-model-variant‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/relationships/{relationship-id}": {
