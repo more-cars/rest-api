@@ -45,4 +45,12 @@ describe('Racing Games', () => {
         expect(RacingGameController.createFeaturesCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›features-car-model-variant‹ relationships', async () => {
+        await request(app)
+            .get('/racing-games/123/features-car-model-variant')
+
+        expect(RacingGameController.getAllFeaturesCarModelVariantRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })

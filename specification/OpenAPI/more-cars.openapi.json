@@ -9878,6 +9878,48 @@
         }
       }
     },
+    "/racing-games/{racing-game-id}/features-car-model-variant": {
+      "get": {
+        "operationId": "getRacingGameFeaturesCarModelVariantRel",
+        "tags": [
+          "Racing Games"
+        ],
+        "summary": "Get all ›features-car-model-variant‹ relationships for the `Racing Game`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-game-id",
+            "description": "ID of the `Racing Game`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›features-car-model-variant‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RacingGameFeaturesCarModelVariantCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Racing Game` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/racing-games/{racing-game-id}/features-car-model-variant/{car-model-variant-id}": {
       "post": {
         "tags": [
@@ -14512,6 +14554,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/RacingGameFeaturesCarModelVariant"
+          }
+        }
+      },
+      "RacingGameFeaturesCarModelVariantCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RacingGameFeaturesCarModelVariantResponse"
+            }
           }
         }
       },

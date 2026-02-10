@@ -4,6 +4,7 @@ import {getById} from "./racing-games/getById"
 import {getAll} from "./racing-games/getAll"
 import {deleteNode} from "./racing-games/deleteNode"
 import {createFeaturesCarModelVariantRelation} from "./racing-games/createFeaturesCarModelVariantRelation"
+import {getAllFeaturesCarModelVariantRelations} from "./racing-games/getAllFeaturesCarModelVariantRelations"
 
 export const RacingGameController = {
     async create(req: express.Request, res: express.Response) {
@@ -24,5 +25,9 @@ export const RacingGameController = {
 
     async createFeaturesCarModelVariantRelation(req: express.Request, res: express.Response) {
         await createFeaturesCarModelVariantRelation(req, res)
+    },
+
+    async getAllFeaturesCarModelVariantRelations(req: express.Request, res: express.Response) {
+        await getAllFeaturesCarModelVariantRelations(req, res)
     },
 }

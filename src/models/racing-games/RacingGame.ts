@@ -15,6 +15,7 @@ import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExists
 import {RelationshipType} from "../relationships/types/RelationshipType"
 import {RacingGameRelationship} from "./types/RacingGameRelationship"
 
+import {getAllRels} from "../relationships/getAllRels"
 
 export const RacingGame = {
     async create(data: CreateRacingGameInput): Promise<RacingGameNode> {
@@ -78,5 +79,14 @@ export const RacingGame = {
         }
 
         return createdRelationship
+    },
+
+    async getAllFeaturesCarModelVariantRelationships(racingGameId: number) {
+        const racingGame = await RacingGame.findById(racingGameId)
+        if (!racingGame) {
+            throw new NodeNotFoundError(racingGameId)
+        }
+
+        return getAllRels(racingGameId, RelationshipType.RacingGameFeaturesCarModelVariant)
     },
 }
