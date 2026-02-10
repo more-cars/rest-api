@@ -6,5 +6,6 @@ const router = express.Router()
 router.post('/racing-games', RacingGameController.create)
 router.get('/racing-games/:id', RacingGameController.getById)
 router.get('/racing-games', RacingGameController.getAll)
+router.delete('/racing-games/:id', RacingGameController.delete)
 
 export default router

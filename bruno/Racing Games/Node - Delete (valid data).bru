@@ -1,0 +1,28 @@
+meta {
+  name: Delete Racing Game (valid data)
+  type: http
+  tags: [
+    delete
+    node
+    valid
+  ]
+}
+
+delete {
+  url: {{baseUrl}}/racing-games/{{validRacingGameId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 204
+  res.body: isEmpty
+}
+
+script:pre-request {
+  await lib.RacingGames.ensureValidRacingGameExists()
+}
+
+script:post-response {
+  bru.setEnvVar("validRacingGameId", null)
+}

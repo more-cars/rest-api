@@ -9844,6 +9844,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Racing Games"
+        ],
+        "summary": "Delete `Racing Game`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-game-id",
+            "description": "ID of the `Racing Game`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Racing Game` successfully deleted."
+          },
+          "404": {
+            "description": "Deletion request failed. A `Racing Game` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/relationships/{relationship-id}": {
