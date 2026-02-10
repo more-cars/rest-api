@@ -1,0 +1,28 @@
+info:
+  name: Create Race Track (minimal data)
+  type: http
+  tags:
+    - create
+    - node
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/race-tracks"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Lausitzring"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data.id
+      operator: gte
+      value: "12000000"

@@ -1,0 +1,23 @@
+info:
+  name: Create Race Track (invalid data)
+  type: http
+  tags:
+    - create
+    - node
+    - invalid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/race-tracks"
+  body:
+    type: json
+    data: |-
+      {}
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "400"
+    - expression: res.body
+      operator: isString

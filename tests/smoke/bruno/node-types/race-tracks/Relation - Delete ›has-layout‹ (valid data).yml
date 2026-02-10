@@ -1,0 +1,25 @@
+info:
+  name: Delete ›has-layout‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/race-tracks/{{validRaceTrackId}}/has-layout/{{validTrackLayoutId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const RaceTracks = require('./lib/node-types/RaceTracks.js')
+        const TrackLayouts = require('./lib/node-types/TrackLayouts.js')
+        await RaceTracks.create()
+        await TrackLayouts.create()
+        await RaceTracks.createHasLayoutRelationship()

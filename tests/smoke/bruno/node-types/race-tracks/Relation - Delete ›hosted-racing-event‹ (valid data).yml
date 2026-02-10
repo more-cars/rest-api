@@ -1,0 +1,25 @@
+info:
+  name: Delete ›hosted-racing-event‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/race-tracks/{{validRaceTrackId}}/hosted-racing-event/{{validRacingEventId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const RaceTracks = require('./lib/node-types/RaceTracks.js')
+        const RacingEvents = require('./lib/node-types/RacingEvents.js')
+        await RaceTracks.create()
+        await RacingEvents.create()
+        await RaceTracks.createHostedRacingEventRelationship()

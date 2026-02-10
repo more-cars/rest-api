@@ -1,0 +1,25 @@
+info:
+  name: Delete ›has-prime-image‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/race-tracks/{{validRaceTrackId}}/has-prime-image/{{validImageId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const RaceTracks = require('./lib/node-types/RaceTracks.js')
+        const Images = require('./lib/node-types/Images.js')
+        await RaceTracks.create()
+        await Images.create()
+        await RaceTracks.createHasPrimeImageRelationship()
