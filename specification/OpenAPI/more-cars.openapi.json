@@ -9745,6 +9745,48 @@
         }
       }
     },
+    "/racing-games/{racing-game-id}": {
+      "get": {
+        "operationId": "getRacingGameById",
+        "tags": [
+          "Racing Games"
+        ],
+        "summary": "Get `Racing Game` by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-game-id",
+            "description": "ID of the `Racing Game`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Racing Game` successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RacingGameResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. A `Racing Game` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/relationships/{relationship-id}": {
       "get": {
         "operationId": "getRelationshipById",

@@ -1,0 +1,27 @@
+meta {
+  name: Get Racing Game by ID (valid data)
+  type: http
+  tags: [
+    get
+    node
+    valid
+  ]
+}
+
+get {
+  url: {{baseUrl}}/racing-games/{{validRacingGameId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 200
+  res.body: isJson
+  res.body.data.id: {{validRacingGameId}}
+  res.body.data.created_at: isNotEmpty
+  res.body.data.updated_at: isNotEmpty
+}
+
+script:pre-request {
+  await lib.RacingGames.ensureValidRacingGameExists()
+}

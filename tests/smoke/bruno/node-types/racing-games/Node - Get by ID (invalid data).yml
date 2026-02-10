@@ -1,0 +1,26 @@
+info:
+  name: Get Racing Game by ID (invalid data)
+  type: http
+  tags:
+    - get
+    - node
+    - invalid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/racing-games/{{invalidRacingGameId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "404"
+    - expression: res.body
+      operator: isString
+    - expression: res.body
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const Ids = require('./lib/Ids.js')
+        await Ids.generateInvalidId('RacingGame')

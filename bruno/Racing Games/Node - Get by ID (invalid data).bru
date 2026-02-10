@@ -1,0 +1,24 @@
+meta {
+  name: Get Racing Game by ID (invalid data)
+  type: http
+  tags: [
+    get
+    node
+    invalid
+  ]
+}
+
+get {
+  url: {{baseUrl}}/racing-games/{{invalidRacingGameId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
+
+script:pre-request {
+  lib.tools.generateInvalidId('RacingGame')
+}
