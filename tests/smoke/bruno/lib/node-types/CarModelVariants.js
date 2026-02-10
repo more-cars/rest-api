@@ -1,11 +1,11 @@
 const {post} = require("../apiRequest.js")
 
-exports.create = async function () {
+exports.create = async function (prefix = '') {
     const response = await post("/car-model-variants", {
         name: 'Dummy Car Model Variant',
     })
     const carModelVariant = response.data
-    bru.setEnvVar('validCarModelVariantId', carModelVariant.id)
+    bru.setEnvVar('valid' + prefix + 'CarModelVariantId', carModelVariant.id)
 
     return carModelVariant
 }
