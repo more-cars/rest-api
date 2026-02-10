@@ -50,5 +50,3 @@ test('Input data is semantically invalid', async () => {
     expect(response.statusCode)
         .toBe(500)
 })
-
-

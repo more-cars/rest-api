@@ -1,0 +1,27 @@
+meta {
+  name: Create Racing Game (minimal data)
+  type: http
+  tags: [
+    create
+    node
+    valid
+  ]
+}
+
+post {
+  url: {{baseUrl}}/racing-games
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Forza Motorsport 7"
+  }
+}
+
+assert {
+  res.status: 201
+  res.body: isJson
+  res.body.data.id: gte 12000000
+}

@@ -1,0 +1,37 @@
+meta {
+  name: Create Racing Game (valid data)
+  type: http
+  tags: [
+    create
+    node
+    valid
+  ]
+}
+
+post {
+  url: {{baseUrl}}/racing-games
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Forza Motorsport 7",
+    "release_year": 2017,
+    "developer": "Turn 10 Studios",
+    "publisher": "Microsoft Studios"
+  }
+}
+
+assert {
+  res.status: 201
+  res.body: isJson
+  res.body.data.id: gte 12000000
+}
+
+tests {
+  test("both timestamps should be identical", function () {
+    const data = res.getBody()
+    expect(data.data.created_at).to.eql(data.data.updated_at)
+  })
+}

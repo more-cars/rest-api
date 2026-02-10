@@ -2,7 +2,7 @@
   {
     "op": "replace",
     "path": "/metadata/name",
-    "value": "migrate-nodes-1761825963"
+    "value": "migrate-nodes-1770725944"
   },
   {
     "op": "replace",
@@ -14,7 +14,7 @@
     "path": "/spec/template/spec/containers/0/env/-",
     "value": {
       "name": "MIGRATE_NODE_TYPE",
-      "value": "Brand"
+      "value": "RacingGame"
     }
   },
   {
@@ -22,7 +22,7 @@
     "path": "/spec/template/spec/containers/0/env/-",
     "value": {
       "name": "DELETE_EXISTING_DATA",
-      "value": "true"
+      "value": "false"
     }
   }
 ]

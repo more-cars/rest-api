@@ -27,7 +27,7 @@ http:
         }
     }
 -%>
-<%- JSON.stringify(props, null, 2).split('\n').map(line => '  ' + line).join('\n') %>
+<%- JSON.stringify(props, null, 2).split('\n').map(line => '      ' + line).join('\n') %>
 
 runtime:
   assertions:

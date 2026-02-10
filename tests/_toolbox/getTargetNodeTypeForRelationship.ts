@@ -128,6 +128,10 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
             [RelationshipType.LapTimeHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
 
+    relationships.set(
+        NodeTypeEnum.RACING_GAME, new Map([
+        ]))
+
     const match = relationships.get(startNodeType)?.get(relationshipName as RelationshipType)
 
     if (!match) {

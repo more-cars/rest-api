@@ -10,5 +10,6 @@ export enum NodeTypeEnum {
     RACING_SESSION = "racing session",
     SESSION_RESULT = "session result",
     LAP_TIME = "lap time",
+    RACING_GAME = "racing game",
     IMAGE = 'image',
 }

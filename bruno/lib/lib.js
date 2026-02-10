@@ -9,6 +9,7 @@ exports.RacingEvents = require('./RacingEvents.js')
 exports.RacingSessions = require('./RacingSessions.js')
 exports.SessionResults = require('./SessionResults.js')
 exports.LapTimes = require('./LapTimes.js')
+exports.RacingGames = require('./RacingGames.js')
 exports.Images = require('./Images.js')
 exports.Relationships = require('./Relationships.js')
 

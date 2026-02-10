@@ -8,7 +8,7 @@ import {validate} from "../../../../../src/controllers/<%= h.changeCase.kebab(h.
 describe('Validating user input', () => {
     test('mandatory fields are missing', async () => {
         const data: Create<%= h.changeCase.pascal(nodeType) %>RawInput = {
-<% for (prop in properties) { %>
+<% for (prop in properties) { -%>
 <%   if (properties[prop].mandatory) { -%>
             <%= prop %>: undefined,
 <%   } else if (properties[prop].datatype === 'string') { -%>
@@ -27,14 +27,14 @@ describe('Validating user input', () => {
 
     test('optional fields are missing', async () => {
         const data: Create<%= h.changeCase.pascal(nodeType) %>RawInput = {
-<% for (prop in properties) { %>
-<%   if (!properties[prop].mandatory) { %>
+<% for (prop in properties) { -%>
+<%   if (!properties[prop].mandatory) { -%>
             <%= prop %>: undefined,
-<%   } else if (properties[prop].datatype === 'string') { %>
+<%   } else if (properties[prop].datatype === 'string') { -%>
             <%= prop %>: "<%= properties[prop].example %>",
 <%   } else { %>
             <%= prop %>: <%= properties[prop].example %>,
-<%   } %>
+<%   } -%>
 <% } -%>
         }
 
@@ -46,12 +46,12 @@ describe('Validating user input', () => {
 
     test('providing valid input', async () => {
         const data: Create<%= h.changeCase.pascal(nodeType) %>RawInput = {
-<% for (prop in properties) { %>
-<%   if (properties[prop].datatype === 'string') { %>
+<% for (prop in properties) { -%>
+<%   if (properties[prop].datatype === 'string') { -%>
             <%= prop %>: "<%= properties[prop].example %>",
-<%   } else { %>
+<%   } else { -%>
             <%= prop %>: <%= properties[prop].example || null %>,
-<%   } %>
+<%   } -%>
 <% } -%>
         }
 
