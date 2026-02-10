@@ -27,8 +27,8 @@ describe('A filtered "get all <%= h.changeCase.upper(nodeType) %> nodes" request
     test('when there exist <%= h.changeCase.upper(nodeType) %> nodes', async () => {
         await deleteAllNodesOfType(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>)
         const nodeA = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>, {name: 'A Node'}) as <%= h.changeCase.pascal(nodeType) %>Node
-        await seed<%= h.changeCase.pascal(nodeType) %>({name: 'B Node'})
-        await seed<%= h.changeCase.pascal(nodeType) %>({name: 'C Node'})
+        await seedNode(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>, {name: 'B Node'})
+        await seedNode(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>, {name: 'C Node'})
 
         const filteredNodes = await <%= h.changeCase.pascal(nodeType) %>.findAll({
             filterByProperty: 'name',
