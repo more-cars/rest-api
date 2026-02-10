@@ -9716,6 +9716,65 @@
       }
     },
     "/racing-games": {
+      "get": {
+        "operationId": "getRacingGames",
+        "tags": [
+          "Racing Games"
+        ],
+        "summary": "Get all `Racing Games`",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Page"
+          },
+          {
+            "in": "query",
+            "name": "sort_by_property",
+            "description": "Returns the `Racing Game` collection, ordered by the specified property.",
+            "schema": {
+              "$ref": "#/components/schemas/RacingGameProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/SortDirection"
+          },
+          {
+            "in": "query",
+            "name": "filter_by_property",
+            "description": "Specifies by which node property the `Racing Game` collection should be filtered.",
+            "schema": {
+              "$ref": "#/components/schemas/RacingGameProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/FilterValue"
+          },
+          {
+            "$ref": "#/components/parameters/FilterOperator"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Racing Game` collection successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RacingGameCollectionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Racing Games"
@@ -14256,10 +14315,10 @@
       },
       "RacingGame": {
         "type": "object",
-        "required":         [
+        "required": [
           "name"
         ],
-        "properties":         {
+        "properties": {
           "id": {
             "type": "integer",
             "readOnly": true,
@@ -14310,9 +14369,20 @@
           }
         }
       },
+      "RacingGameCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RacingGameResponse"
+            }
+          }
+        }
+      },
       "RacingGameProperties": {
         "type": "string",
-        "enum":         [
+        "enum": [
           "id",
           "created_at",
           "updated_at",
