@@ -1,0 +1,24 @@
+info:
+  name: Delete ›is-successor-of‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/car-models/{{validCarModelId}}/is-successor-of/{{validSecondCarModelId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const CarModels = require('./lib/node-types/CarModels.js')
+        await CarModels.create()
+        await CarModels.create('Second')
+        await CarModels.createIsSuccessorOfRelationship()

@@ -1,0 +1,40 @@
+info:
+  name: Create Car Model (valid data)
+  type: http
+  tags:
+    - create
+    - node
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/car-models"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Corvette",
+        "built_from": 1997,
+        "built_to": 2004,
+        "generation": 5,
+        "internal_code": "C5",
+        "total_production": 248715
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data.id
+      operator: gte
+      value: "12000000"
+  scripts:
+    - type: tests
+      code: |-
+        test("both timestamps should be identical", function () {
+          const data = res.getBody()
+          expect(data.data.created_at).to.eql(data.data.updated_at)
+        })

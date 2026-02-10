@@ -1,0 +1,28 @@
+info:
+  name: Delete Car Model (valid data)
+  type: http
+  tags:
+    - delete
+    - node
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/car-models/{{validCarModelId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+    - expression: res.body
+      operator: isEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const CarModels = require('./lib/node-types/CarModels.js')
+        await CarModels.create()
+    - type: after-response
+      code: |-
+        const Ids = require('./lib/Ids.js')
+        Ids.forgetId('CarModel')

@@ -1,0 +1,31 @@
+info:
+  name: Create Car Model (ignored data)
+  type: http
+  tags:
+    - create
+    - node
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/car-models"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Tigra",
+        "created_at": "nope",
+        "updated_at": "nonono"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body.data.created_at
+      operator: neq
+      value: nope
+    - expression: res.body.data.updated_at
+      operator: neq
+      value: nonono

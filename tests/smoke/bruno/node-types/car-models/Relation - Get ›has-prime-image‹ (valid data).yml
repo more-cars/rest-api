@@ -1,0 +1,51 @@
+info:
+  name: Get ›has-prime-image‹ relation (valid data)
+  type: http
+  tags:
+    - get
+    - relation
+    - valid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/car-models/{{validCarModelId}}/has-prime-image"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data
+      operator: isJson
+    - expression: res.body.data.relationship_id
+      operator: gte
+      value: "12000000"
+    - expression: res.body.data.relationship_name
+      operator: eq
+      value: "has-prime-image"
+    - expression: res.body.data.relationship_partner
+      operator: isJson
+    - expression: res.body.data.relationship_partner.node_type
+      operator: eq
+      value: "image"
+    - expression: res.body.data.relationship_partner.data.id
+      operator: eq
+      value: "{{validImageId}}"
+    - expression: res.body.data.created_at
+      operator: isString
+    - expression: res.body.data.created_at
+      operator: isNotEmpty
+    - expression: res.body.data.updated_at
+      operator: isString
+    - expression: res.body.data.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const CarModels = require('./lib/node-types/CarModels.js')
+        const Images = require('./lib/node-types/Images.js')
+        await CarModels.create()
+        await Images.create()
+        await CarModels.createHasPrimeImageRelationship()
