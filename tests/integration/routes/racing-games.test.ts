@@ -101,4 +101,12 @@ describe('Racing Games', () => {
         expect(RacingGameController.getAllHasImageRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-image‹ relationship', async () => {
+        await request(app)
+            .delete('/racing-games/123/has-image/456')
+
+        expect(RacingGameController.deleteHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
