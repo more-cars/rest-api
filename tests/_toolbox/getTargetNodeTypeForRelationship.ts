@@ -133,6 +133,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
             [RelationshipType.RacingGameFeaturesCarModelVariant, NodeTypeEnum.CAR_MODEL_VARIANT],
             [RelationshipType.RacingGameFeaturesTrackLayout, NodeTypeEnum.TRACK_LAYOUT],
             [RelationshipType.RacingGameHasImage, NodeTypeEnum.IMAGE],
+            [RelationshipType.RacingGameHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
 
     const match = relationships.get(startNodeType)?.get(relationshipName as RelationshipType)

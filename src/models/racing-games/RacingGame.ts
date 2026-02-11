@@ -19,7 +19,9 @@ import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {TrackLayout} from "../track-layouts/TrackLayout"
 import {Image} from "../images/Image"
-
+import {DbRelationship} from "../../db/types/DbRelationship"
+import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
+import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 
 export const RacingGame = {
     async create(data: CreateRacingGameInput): Promise<RacingGameNode> {
@@ -217,5 +219,31 @@ export const RacingGame = {
         }
 
         await deleteSpecificRel(racingGameId, imageId, RelationshipType.RacingGameHasImage)
+    },
+
+    async createHasPrimeImageRelationship(racingGameId: number, imageId: number) {
+        const racingGame = await RacingGame.findById(racingGameId)
+        if (!racingGame) {
+            throw new NodeNotFoundError(racingGameId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const existingRelation = await getSpecificRel(racingGameId, imageId, RelationshipType.RacingGameHasPrimeImage)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(RacingGameRelationship.hasPrimeImage, racingGameId, imageId)
+        }
+        await deleteDeprecatedRel(racingGameId, DbRelationship.RacingGameHasPrimeImage, NodeTypeLabel.Image)
+
+
+        const createdRelationship = await createRel(racingGameId, imageId, RelationshipType.RacingGameHasPrimeImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }

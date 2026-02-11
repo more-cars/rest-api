@@ -12,6 +12,7 @@ import {deleteFeaturesTrackLayoutRelation} from "./racing-games/deleteFeaturesTr
 import {createHasImageRelation} from "./racing-games/createHasImageRelation"
 import {getAllHasImageRelations} from "./racing-games/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./racing-games/deleteHasImageRelation"
+import {createHasPrimeImageRelation} from "./racing-games/createHasPrimeImageRelation"
 
 export const RacingGameController = {
     async create(req: express.Request, res: express.Response) {
@@ -64,5 +65,9 @@ export const RacingGameController = {
 
     async deleteHasImageRelation(req: express.Request, res: express.Response) {
         await deleteHasImageRelation(req, res)
+    },
+
+    async createHasPrimeImageRelation(req: express.Request, res: express.Response) {
+        await createHasPrimeImageRelation(req, res)
     },
 }

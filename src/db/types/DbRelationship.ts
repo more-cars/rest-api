@@ -65,4 +65,5 @@ export enum DbRelationship {
     RacingGameFeaturesCarModelVariant = 'FEATURES_CAR_MODEL_VARIANT',
     RacingGameFeaturesTrackLayout = 'FEATURES_TRACK_LAYOUT',
     RacingGameHasImage = 'HAS_IMAGE',
+    RacingGameHasPrimeImage = 'HAS_PRIME_IMAGE',
 }

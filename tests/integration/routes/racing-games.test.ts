@@ -109,4 +109,12 @@ describe('Racing Games', () => {
         expect(RacingGameController.deleteHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .post('/racing-games/123/has-prime-image/456')
+
+        expect(RacingGameController.createHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

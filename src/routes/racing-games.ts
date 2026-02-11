@@ -16,5 +16,6 @@ router.delete('/racing-games/:racingGameId/features-track-layout/:trackLayoutId'
 router.post('/racing-games/:racingGameId/has-image/:imageId', RacingGameController.createHasImageRelation)
 router.get('/racing-games/:racingGameId/has-image', RacingGameController.getAllHasImageRelations)
 router.delete('/racing-games/:racingGameId/has-image/:imageId', RacingGameController.deleteHasImageRelation)
+router.post('/racing-games/:racingGameId/has-prime-image/:imageId', RacingGameController.createHasPrimeImageRelation)
 
 export default router
