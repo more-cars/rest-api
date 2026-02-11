@@ -1,0 +1,50 @@
+info:
+  name: Create ›features-track-layout‹ relation (valid data)
+  type: http
+  tags:
+    - create
+    - relation
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/racing-games/{{validRacingGameId}}/features-track-layout/{{validTrackLayoutId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data
+      operator: isJson
+    - expression: res.body.data.relationship_id
+      operator: gte
+      value: "12000000"
+    - expression: res.body.data.relationship_name
+      operator: eq
+      value: "features-track-layout"
+    - expression: res.body.data.relationship_partner
+      operator: isJson
+    - expression: res.body.data.relationship_partner.node_type
+      operator: eq
+      value: "track-layout"
+    - expression: res.body.data.relationship_partner.data.id
+      operator: eq
+      value: "{{validTrackLayoutId}}"
+    - expression: res.body.data.created_at
+      operator: isString
+    - expression: res.body.data.created_at
+      operator: isNotEmpty
+    - expression: res.body.data.updated_at
+      operator: isString
+    - expression: res.body.data.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const RacingGames = require('./lib/node-types/RacingGames.js')
+        const TrackLayouts = require('./lib/node-types/TrackLayouts.js')
+        await RacingGames.create()
+        await TrackLayouts.create()

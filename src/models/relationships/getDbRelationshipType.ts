@@ -57,6 +57,7 @@ export function getDbRelationshipType(relationshipType: RelationshipType): DbRel
         [RelationshipType.LapTimeHasImage, DbRelationship.LapTimeHasImage],
         [RelationshipType.LapTimeHasPrimeImage, DbRelationship.LapTimeHasPrimeImage],
         [RelationshipType.RacingGameFeaturesCarModelVariant, DbRelationship.RacingGameFeaturesCarModelVariant],
+        [RelationshipType.RacingGameFeaturesTrackLayout, DbRelationship.RacingGameFeaturesTrackLayout],
         [RelationshipType.ImageBelongsToNode, DbRelationship.ImageBelongsToNode],
         [RelationshipType.ImageIsPrimeImageOfNode, DbRelationship.ImageIsPrimeImageOfNode],
     ])

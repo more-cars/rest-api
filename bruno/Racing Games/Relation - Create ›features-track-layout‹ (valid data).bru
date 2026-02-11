@@ -1,0 +1,32 @@
+meta {
+  name: Create ›features-track-layout‹ relation (valid data)
+  type: http
+  tags: [
+    create
+    relation
+    valid
+  ]
+}
+
+post {
+  url: {{baseUrl}}/racing-games/{{validRacingGameId}}/features-track-layout/{{validTrackLayoutId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 201
+  res.body: isJson
+  res.body.data.relationship_id: gte 12000000
+  res.body.data.relationship_name: features-track-layout
+  res.body.data.relationship_partner: isJson
+  res.body.data.relationship_partner.node_type: track-layout
+  res.body.data.relationship_partner.data.id: {{validTrackLayoutId}}
+  res.body.data.created_at: isString
+  res.body.data.updated_at: isString
+}
+
+script:pre-request {
+  await lib.RacingGames.ensureValidRacingGameExists()
+  await lib.TrackLayouts.ensureValidTrackLayoutExists()
+}

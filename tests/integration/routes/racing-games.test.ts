@@ -61,4 +61,12 @@ describe('Racing Games', () => {
         expect(RacingGameController.deleteFeaturesCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›features-track-layout‹ relationship', async () => {
+        await request(app)
+            .post('/racing-games/123/features-track-layout/456')
+
+        expect(RacingGameController.createFeaturesTrackLayoutRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

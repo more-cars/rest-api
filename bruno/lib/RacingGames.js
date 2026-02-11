@@ -32,3 +32,13 @@ exports.ensureRacingGameFeaturesCarModelVariantRelationshipExists = async functi
 exports.createRacingGameFeaturesCarModelVariantRelationship = async function (racingGameId, carModelVariantId) {
     return submitPostRequest("/racing-games/" + racingGameId + "/features-car-model-variant/" + carModelVariantId)
 }
+
+exports.ensureRacingGameFeaturesTrackLayoutRelationshipExists = async function () {
+    await this.ensureValidRacingGameExists()
+    await ensureValidTrackLayoutExists()
+    await this.createRacingGameFeaturesTrackLayoutRelationship(bru.getEnvVar('validRacingGameId'), bru.getEnvVar('validTrackLayoutId'))
+}
+
+exports.createRacingGameFeaturesTrackLayoutRelationship = async function (racingGameId, trackLayoutId) {
+    return submitPostRequest("/racing-games/" + racingGameId + "/features-track-layout/" + trackLayoutId)
+}

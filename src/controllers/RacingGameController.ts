@@ -6,6 +6,7 @@ import {deleteNode} from "./racing-games/deleteNode"
 import {createFeaturesCarModelVariantRelation} from "./racing-games/createFeaturesCarModelVariantRelation"
 import {getAllFeaturesCarModelVariantRelations} from "./racing-games/getAllFeaturesCarModelVariantRelations"
 import {deleteFeaturesCarModelVariantRelation} from "./racing-games/deleteFeaturesCarModelVariantRelation"
+import {createFeaturesTrackLayoutRelation} from "./racing-games/createFeaturesTrackLayoutRelation"
 
 export const RacingGameController = {
     async create(req: express.Request, res: express.Response) {
@@ -34,5 +35,9 @@ export const RacingGameController = {
 
     async deleteFeaturesCarModelVariantRelation(req: express.Request, res: express.Response) {
         await deleteFeaturesCarModelVariantRelation(req, res)
+    },
+
+    async createFeaturesTrackLayoutRelation(req: express.Request, res: express.Response) {
+        await createFeaturesTrackLayoutRelation(req, res)
     },
 }
