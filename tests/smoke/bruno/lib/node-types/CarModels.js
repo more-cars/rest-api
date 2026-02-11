@@ -1,15 +1,5 @@
 const {post} = require("../apiRequest.js")
 
-exports.create = async function (prefix = '') {
-    const response = await post("/car-models", {
-        name: 'Dummy Car Model',
-    })
-    const carModel = response.data
-    bru.setEnvVar('valid' + prefix + 'CarModelId', carModel.id)
-
-    return carModel
-}
-
 exports.createBelongsToBrandRelationship = async function () {
     await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/belongs-to-brand/" + bru.getEnvVar('validBrandId'))
 }
@@ -32,4 +22,14 @@ exports.createHasImageRelationship = async function () {
 
 exports.createHasPrimeImageRelationship = async function () {
     await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/has-prime-image/" + bru.getEnvVar('validImageId'))
+}
+
+exports.create = async function (prefix = '') {
+    const response = await post("/car-models", {
+        name: 'Dummy Car Model',
+    })
+    const carModel = response.data
+    bru.setEnvVar('valid' + prefix + 'CarModelId', carModel.id)
+
+    return carModel
 }

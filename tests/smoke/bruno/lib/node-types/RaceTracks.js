@@ -1,15 +1,5 @@
 const {post} = require("../apiRequest.js")
 
-exports.create = async function (prefix = '') {
-    const response = await post("/race-tracks", {
-        name: 'Dummy Race Track',
-    })
-    const raceTrack = response.data
-    bru.setEnvVar('valid' + prefix + 'RaceTrackId', raceTrack.id)
-
-    return raceTrack
-}
-
 exports.createHasLayoutRelationship = async function () {
     await post("/race-tracks/" + bru.getEnvVar('validRaceTrackId') + "/has-layout/" + bru.getEnvVar('validTrackLayoutId'))
 }
@@ -24,4 +14,14 @@ exports.createHasImageRelationship = async function () {
 
 exports.createHasPrimeImageRelationship = async function () {
     await post("/race-tracks/" + bru.getEnvVar('validRaceTrackId') + "/has-prime-image/" + bru.getEnvVar('validImageId'))
+}
+
+exports.create = async function (prefix = '') {
+    const response = await post("/race-tracks", {
+        name: 'Dummy Race Track',
+    })
+    const raceTrack = response.data
+    bru.setEnvVar('valid' + prefix + 'RaceTrackId', raceTrack.id)
+
+    return raceTrack
 }
