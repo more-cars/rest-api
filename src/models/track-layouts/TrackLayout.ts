@@ -381,4 +381,23 @@ export const TrackLayout = {
 
         return getAllRels(trackLayoutId, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
     },
+
+    async deleteIsFeaturedInRacingGameRelationship(trackLayoutId: number, racingGameId: number) {
+        const trackLayout = await TrackLayout.findById(trackLayoutId)
+        if (!trackLayout) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        const racingGame = await RacingGame.findById(racingGameId)
+        if (!racingGame) {
+            throw new NodeNotFoundError(racingGameId)
+        }
+
+        const relationship = await getSpecificRel(trackLayoutId, racingGameId, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(TrackLayoutRelationship.isFeaturedInRacingGame, trackLayoutId, racingGameId)
+        }
+
+        await deleteSpecificRel(trackLayoutId, racingGameId, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
+    },
 }

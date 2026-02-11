@@ -5457,6 +5457,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Track Layouts"
+        ],
+        "summary": "Deletes the ›is-featured-in-racing-game‹ relationship between the `Track Layout` and the `Racing Game`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "track-layout-id",
+            "description": "ID of the `Track Layout`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "racing-game-id",
+            "description": "ID of the `Racing Game`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›is-featured-in-racing-game‹ relationship between `Track Layout` and `Racing Game` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›is-featured-in-racing-game‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/track-layouts/{track-layout-id}/has-image": {
