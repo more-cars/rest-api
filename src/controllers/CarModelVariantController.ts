@@ -12,13 +12,14 @@ import {deleteAchievedSessionResultRelation} from "./car-model-variants/deleteAc
 import {createAchievedLapTimeRelation} from "./car-model-variants/createAchievedLapTimeRelation"
 import {getAllAchievedLapTimeRelations} from "./car-model-variants/getAllAchievedLapTimeRelations"
 import {deleteAchievedLapTimeRelation} from "./car-model-variants/deleteAchievedLapTimeRelation"
+import {createIsFeaturedInRacingGameRelation} from "./car-model-variants/createIsFeaturedInRacingGameRelation"
+import {getAllIsFeaturedInRacingGameRelations} from "./car-model-variants/getAllIsFeaturedInRacingGameRelations"
 import {createHasImageRelation} from "./car-model-variants/createHasImageRelation"
 import {getAllHasImageRelations} from "./car-model-variants/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./car-model-variants/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./car-model-variants/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./car-model-variants/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./car-model-variants/deleteHasPrimeImageRelation"
-import {createIsFeaturedInRacingGameRelation} from "./car-model-variants/createIsFeaturedInRacingGameRelation"
 
 export const CarModelVariantController = {
     async create(req: express.Request, res: express.Response) {
@@ -75,6 +76,10 @@ export const CarModelVariantController = {
 
     async createIsFeaturedInRacingGameRelation(req: express.Request, res: express.Response) {
         await createIsFeaturedInRacingGameRelation(req, res)
+    },
+
+    async getAllIsFeaturedInRacingGameRelations(req: express.Request, res: express.Response) {
+        await getAllIsFeaturedInRacingGameRelations(req, res)
     },
 
     async createHasImageRelation(req: express.Request, res: express.Response) {

@@ -368,4 +368,13 @@ export const CarModelVariant = {
 
         return createdRelationship
     },
+
+    async getAllIsFeaturedInRacingGameRelationships(carModelVariantId: number) {
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        return getAllRels(carModelVariantId, RelationshipType.CarModelVariantIsFeaturedInRacingGame)
+    },
 }

@@ -110,6 +110,22 @@ describe('Car Model Variants', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Create ›is-featured-in-racing-game‹ relationship', async () => {
+        await request(app)
+            .post('/car-model-variants/123/is-featured-in-racing-game/456')
+
+        expect(CarModelVariantController.createIsFeaturedInRacingGameRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get all ›is-featured-in-racing-game‹ relationships', async () => {
+        await request(app)
+            .get('/car-model-variants/123/is-featured-in-racing-game')
+
+        expect(CarModelVariantController.getAllIsFeaturedInRacingGameRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/car-model-variants/123/has-image/456')
@@ -155,14 +171,6 @@ describe('Car Model Variants', () => {
             .delete('/car-model-variants/123/has-prime-image/456')
 
         expect(CarModelVariantController.deleteHasPrimeImageRelation)
-            .toHaveBeenCalledTimes(1)
-    })
-
-    test('Create ›is-featured-in-racing-game‹ relationship', async () => {
-        await request(app)
-            .post('/car-model-variants/123/is-featured-in-racing-game/456')
-
-        expect(CarModelVariantController.createIsFeaturedInRacingGameRelation)
             .toHaveBeenCalledTimes(1)
     })
 })
