@@ -24,6 +24,7 @@ import {SessionResult} from "../session-results/SessionResult"
 import {getAllRels} from "../relationships/getAllRels"
 import {LapTime} from "../lap-times/LapTime"
 import {Image} from "../images/Image"
+import {RacingGame} from "../racing-games/RacingGame"
 
 export const CarModelVariant = {
     async create(data: CreateCarModelVariantInput): Promise<CarModelVariantNode> {
@@ -341,5 +342,30 @@ export const CarModelVariant = {
         }
 
         await deleteSpecificRel(carModelVariantId, imageId, RelationshipType.CarModelVariantHasPrimeImage)
+    },
+
+    async createIsFeaturedInRacingGameRelationship(carModelVariantId: number, racingGameId: number) {
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const racingGame = await RacingGame.findById(racingGameId)
+        if (!racingGame) {
+            throw new NodeNotFoundError(racingGameId)
+        }
+
+        const existingRelation = await getSpecificRel(carModelVariantId, racingGameId, RelationshipType.CarModelVariantIsFeaturedInRacingGame)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(CarModelVariantRelationship.isFeaturedInRacingGame, carModelVariantId, racingGameId)
+        }
+
+
+        const createdRelationship = await createRel(carModelVariantId, racingGameId, RelationshipType.CarModelVariantIsFeaturedInRacingGame)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }

@@ -62,6 +62,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
             [RelationshipType.CarModelVariantIsVariantOf, NodeTypeEnum.CAR_MODEL],
             [RelationshipType.CarModelVariantAchievedSessionResult, NodeTypeEnum.SESSION_RESULT],
             [RelationshipType.CarModelVariantAchievedLapTime, NodeTypeEnum.LAP_TIME],
+            [RelationshipType.CarModelVariantIsFeaturedInRacingGame, NodeTypeEnum.RACING_GAME],
             [RelationshipType.CarModelVariantHasImage, NodeTypeEnum.IMAGE],
             [RelationshipType.CarModelVariantHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))

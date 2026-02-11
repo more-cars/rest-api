@@ -157,4 +157,12 @@ describe('Car Model Variants', () => {
         expect(CarModelVariantController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›is-featured-in-racing-game‹ relationship', async () => {
+        await request(app)
+            .post('/car-model-variants/123/is-featured-in-racing-game/456')
+
+        expect(CarModelVariantController.createIsFeaturedInRacingGameRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

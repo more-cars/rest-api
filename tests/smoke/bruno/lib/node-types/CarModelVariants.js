@@ -1,5 +1,9 @@
 const {post} = require("../apiRequest.js")
 
+exports.createIsFeaturedInRacingGameRelationship = async function () {
+    await post("/car-model-variants/" + bru.getEnvVar('validCarModelVariantId') + "/is-featured-in-racing-game/" + bru.getEnvVar('validRacingGameId'))
+}
+
 exports.create = async function (prefix = '') {
     const response = await post("/car-model-variants", {
         name: 'Dummy Car Model Variant',

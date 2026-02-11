@@ -34,6 +34,10 @@ exports.ensureCarModelVariantAchievedLapTimeRelationshipExists = async function 
     return submitPostRequest("/car-model-variants/" + carModelVariantId + "/achieved-lap-time/" + lapTimeId)
 }
 
+exports.createCarModelVariantIsFeaturedInRacingGameRelationship = async function (carModelVariantId, racingGameId) {
+    return submitPostRequest("/car-model-variants/" + carModelVariantId + "/is-featured-in-racing-game/" + racingGameId)
+}
+
 exports.ensureCarModelVariantHasImageRelationshipExists = async function (carModelVariantId, imageId) {
     return submitPostRequest("/car-model-variants/" + carModelVariantId + "/has-image/" + imageId)
 }
