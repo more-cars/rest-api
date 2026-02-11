@@ -3,8 +3,9 @@ to: tests/integration/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeT
 ---
 import {describe, expect, test} from 'vitest'
 import {<%= h.changeCase.pascal(nodeType) %>} from "../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"
-import {seed<%= h.changeCase.pascal(nodeType) %>} from "../../../../_toolbox/dbSeeding/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/nodes/seed<%= h.changeCase.pascal(nodeType) %>"
 import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
+import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 describe('Deleting a <%= h.changeCase.upper(nodeType) %>', () => {
     test('that does not exist', async () => {
@@ -14,7 +15,7 @@ describe('Deleting a <%= h.changeCase.upper(nodeType) %>', () => {
     })
 
     test('that exists', async () => {
-        const node = await seed<%= h.changeCase.pascal(nodeType) %>()
+        const node = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>)
         await expect(<%= h.changeCase.pascal(nodeType) %>.delete(node.id))
             .resolves
             .not.toThrow(NodeNotFoundError)
