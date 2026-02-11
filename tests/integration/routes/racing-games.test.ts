@@ -85,4 +85,12 @@ describe('Racing Games', () => {
         expect(RacingGameController.deleteFeaturesTrackLayoutRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-image‹ relationship', async () => {
+        await request(app)
+            .post('/racing-games/123/has-image/456')
+
+        expect(RacingGameController.createHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

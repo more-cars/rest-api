@@ -18,6 +18,7 @@ import {getAllRels} from "../relationships/getAllRels"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {TrackLayout} from "../track-layouts/TrackLayout"
+import {Image} from "../images/Image"
 
 
 export const RacingGame = {
@@ -163,5 +164,30 @@ export const RacingGame = {
         }
 
         await deleteSpecificRel(racingGameId, trackLayoutId, RelationshipType.RacingGameFeaturesTrackLayout)
+    },
+
+    async createHasImageRelationship(racingGameId: number, imageId: number) {
+        const racingGame = await RacingGame.findById(racingGameId)
+        if (!racingGame) {
+            throw new NodeNotFoundError(racingGameId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const existingRelation = await getSpecificRel(racingGameId, imageId, RelationshipType.RacingGameHasImage)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(RacingGameRelationship.hasImage, racingGameId, imageId)
+        }
+
+
+        const createdRelationship = await createRel(racingGameId, imageId, RelationshipType.RacingGameHasImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }

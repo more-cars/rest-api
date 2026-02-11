@@ -1,5 +1,6 @@
 const {submitPostRequest, submitGetRequest} = require("./request")
 const {ensureValidCarModelVariantExists} = require("./CarModelVariants")
+const {ensureValidTrackLayoutExists} = require("./TrackLayouts")
 
 exports.ensureValidRacingGameExists = async function () {
     if (!bru.getEnvVar('validRacingGameId')) {
@@ -41,4 +42,14 @@ exports.ensureRacingGameFeaturesTrackLayoutRelationshipExists = async function (
 
 exports.createRacingGameFeaturesTrackLayoutRelationship = async function (racingGameId, trackLayoutId) {
     return submitPostRequest("/racing-games/" + racingGameId + "/features-track-layout/" + trackLayoutId)
+}
+
+exports.ensureRacingGameHasImageRelationshipExists = async function () {
+    await this.ensureValidRacingGameExists()
+    await ensureValidImageExists()
+    await this.createRacingGameHasImageRelationship(bru.getEnvVar('validRacingGameId'), bru.getEnvVar('validImageId'))
+}
+
+exports.createRacingGameHasImageRelationship = async function (racingGameId, imageId) {
+    return submitPostRequest("/racing-games/" + racingGameId + "/has-image/" + imageId)
 }
