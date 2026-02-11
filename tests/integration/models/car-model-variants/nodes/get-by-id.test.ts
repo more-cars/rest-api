@@ -2,7 +2,6 @@ import {expect, test} from 'vitest'
 import {CarModelVariant} from "../../../../../src/models/car-model-variants/CarModelVariant"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import type {CarModelVariantNode} from "../../../../../src/models/car-model-variants/types/CarModelVariantNode"
 
 test('Fetching a CAR MODEL VARIANT that does not exist should return "false"', async () => {
     const expectedCarModelVariant = false
@@ -13,7 +12,7 @@ test('Fetching a CAR MODEL VARIANT that does not exist should return "false"', a
 })
 
 test('When the CAR MODEL VARIANT exists it should be returned', async () => {
-    const expectedCarModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT) as CarModelVariantNode
+    const expectedCarModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)
     const actualCarModelVariant = await CarModelVariant.findById(expectedCarModelVariant.id)
 
     expect(actualCarModelVariant)
