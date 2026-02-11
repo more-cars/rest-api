@@ -190,4 +190,13 @@ export const RacingGame = {
 
         return createdRelationship
     },
+
+    async getAllHasImageRelationships(racingGameId: number) {
+        const racingGame = await RacingGame.findById(racingGameId)
+        if (!racingGame) {
+            throw new NodeNotFoundError(racingGameId)
+        }
+
+        return getAllRels(racingGameId, RelationshipType.RacingGameHasImage)
+    },
 }

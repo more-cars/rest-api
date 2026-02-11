@@ -1,0 +1,34 @@
+meta {
+  name: Get all ›has-image‹ relations (valid data)
+  type: http
+  tags: [
+    get
+    relation
+    collection
+    valid
+  ]
+}
+
+get {
+  url: {{baseUrl}}/racing-games/{{validRacingGameId}}/has-image
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 200
+  res.body: isJson
+  res.body.data: isArray
+  res.body.data[0].data: isJson
+  res.body.data[0].data.relationship_id: gte 12000000
+  res.body.data[0].data.relationship_name: has-image
+  res.body.data[0].data.relationship_partner: isJson
+  res.body.data[0].data.relationship_partner.node_type: image
+  res.body.data[0].data.relationship_partner.data.id: gte 12000000
+  res.body.data[0].data.created_at: isString
+  res.body.data[0].data.updated_at: isString
+}
+
+script:pre-request {
+  await lib.RacingGames.ensureRacingGameHasImageRelationshipExists()
+}

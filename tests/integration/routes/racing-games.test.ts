@@ -93,4 +93,12 @@ describe('Racing Games', () => {
         expect(RacingGameController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›has-image‹ relationships', async () => {
+        await request(app)
+            .get('/racing-games/123/has-image')
+
+        expect(RacingGameController.getAllHasImageRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })
