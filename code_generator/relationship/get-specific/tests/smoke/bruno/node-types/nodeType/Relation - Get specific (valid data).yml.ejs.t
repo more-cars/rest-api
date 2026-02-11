@@ -1,8 +1,8 @@
 ---
-to: tests/smoke/bruno/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/Relation - Get ›<%= h.changeCase.kebab(relationshipName) %>‹ (valid data).yml
+to: tests/smoke/bruno/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/Relation - Get specific ›<%= h.changeCase.kebab(relationshipName) %>‹ (valid data).yml
 ---
 info:
-  name: Get ›<%= h.changeCase.kebab(relationshipName) %>‹ relation (valid data)
+  name: Get specific ›<%= h.changeCase.kebab(relationshipName) %>‹ relation (valid data)
   type: http
   tags:
     - get
@@ -11,7 +11,7 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/{{valid<%= h.changeCase.pascal(startNodeType) %>Id}}/<%= h.changeCase.kebab(relationshipName) %>"
+  url: "{{baseUrl}}/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/{{valid<%= h.changeCase.pascal(startNodeType) %>Id}}/<%= h.changeCase.kebab(relationshipName) %>/{{valid<%= h.changeCase.pascal(endNodeType) %>Id}}"
 
 runtime:
   assertions:
@@ -51,4 +51,4 @@ runtime:
         const <%= h.changeCase.pascal(h.inflection.pluralize(endNodeType)) %> = require('./lib/node-types/<%= h.changeCase.pascal(h.inflection.pluralize(endNodeType)) %>.js')
         await <%= h.changeCase.pascal(h.inflection.pluralize(startNodeType)) %>.create()
         await <%= h.changeCase.pascal(h.inflection.pluralize(endNodeType)) %>.create()
-        await <%= h.changeCase.pascal(h.inflection.pluralize(startNodeType)) %>.create<%= h.changeCase.pascal(endNodeType) %>Relationship()
+        await <%= h.changeCase.pascal(h.inflection.pluralize(startNodeType)) %>.create<%= h.changeCase.pascal(relationshipName) %>Relationship()
