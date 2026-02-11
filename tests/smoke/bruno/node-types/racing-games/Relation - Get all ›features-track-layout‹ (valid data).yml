@@ -49,4 +49,4 @@ runtime:
         const TrackLayouts = require('./lib/node-types/TrackLayouts.js')
         await RacingGames.create()
         await TrackLayouts.create()
-        await RacingGames.createsFeaturesTrackLayoutRelationship()
+        await RacingGames.createFeaturesTrackLayoutRelationship()

@@ -10,11 +10,11 @@ exports.create = async function (prefix = '') {
     return raceTrack
 }
 
-exports.createBelongsToCompanyRelationship = async function () {
+exports.createHasLayoutRelationship = async function () {
     await post("/race-tracks/" + bru.getEnvVar('validRaceTrackId') + "/has-layout/" + bru.getEnvVar('validTrackLayoutId'))
 }
 
-exports.createHasCarModelRelationship = async function () {
+exports.createHostedRacingEventRelationship = async function () {
     await post("/race-tracks/" + bru.getEnvVar('validRaceTrackId') + "/hosted-racing-event/" + bru.getEnvVar('validRacingEventId'))
 }
 
