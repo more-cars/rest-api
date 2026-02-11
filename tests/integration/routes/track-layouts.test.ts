@@ -118,6 +118,14 @@ describe('Track Layouts', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Get all ›is-featured-in-racing-game‹ relationships', async () => {
+        await request(app)
+            .get('/track-layouts/123/is-featured-in-racing-game')
+
+        expect(TrackLayoutController.getAllIsFeaturedInRacingGameRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/track-layouts/123/has-image/456')

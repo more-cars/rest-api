@@ -5364,6 +5364,48 @@
         }
       }
     },
+    "/track-layouts/{track-layout-id}/is-featured-in-racing-game": {
+      "get": {
+        "operationId": "getTrackLayoutIsFeaturedInRacingGameRel",
+        "tags": [
+          "Track Layouts"
+        ],
+        "summary": "Get all ›is-featured-in-racing-game‹ relationships for the `Track Layout`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "track-layout-id",
+            "description": "ID of the `Track Layout`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›is-featured-in-racing-game‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrackLayoutIsFeaturedInRacingGameCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Track Layout` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/track-layouts/{track-layout-id}/is-featured-in-racing-game/{racing-game-id}": {
       "post": {
         "tags": [
@@ -13369,6 +13411,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/TrackLayoutIsFeaturedInRacingGame"
+          }
+        }
+      },
+      "TrackLayoutIsFeaturedInRacingGameCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TrackLayoutIsFeaturedInRacingGameResponse"
+            }
           }
         }
       },

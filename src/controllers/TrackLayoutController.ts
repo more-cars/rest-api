@@ -13,6 +13,7 @@ import {createHasLapTimeRelation} from "./track-layouts/createHasLapTimeRelation
 import {getAllHasLapTimeRelations} from "./track-layouts/getAllHasLapTimeRelations"
 import {deleteHasLapTimeRelation} from "./track-layouts/deleteHasLapTimeRelation"
 import {createIsFeaturedInRacingGameRelation} from "./track-layouts/createIsFeaturedInRacingGameRelation"
+import {getAllIsFeaturedInRacingGameRelations} from "./track-layouts/getAllIsFeaturedInRacingGameRelations"
 import {createHasImageRelation} from "./track-layouts/createHasImageRelation"
 import {getAllHasImageRelations} from "./track-layouts/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./track-layouts/deleteHasImageRelation"
@@ -75,6 +76,10 @@ export const TrackLayoutController = {
 
     async createIsFeaturedInRacingGameRelation(req: express.Request, res: express.Response) {
         await createIsFeaturedInRacingGameRelation(req, res)
+    },
+
+    async getAllIsFeaturedInRacingGameRelations(req: express.Request, res: express.Response) {
+        await getAllIsFeaturedInRacingGameRelations(req, res)
     },
 
     async createHasImageRelation(req: express.Request, res: express.Response) {

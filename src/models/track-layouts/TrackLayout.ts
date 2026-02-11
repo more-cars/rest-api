@@ -372,4 +372,13 @@ export const TrackLayout = {
 
         return createdRelationship
     },
+
+    async getAllIsFeaturedInRacingGameRelationships(trackLayoutId: number) {
+        const trackLayout = await TrackLayout.findById(trackLayoutId)
+        if (!trackLayout) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        return getAllRels(trackLayoutId, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
+    },
 }
