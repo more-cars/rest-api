@@ -77,4 +77,12 @@ describe('Racing Games', () => {
         expect(RacingGameController.getAllFeaturesTrackLayoutRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›features-track-layout‹ relationship', async () => {
+        await request(app)
+            .delete('/racing-games/123/features-track-layout/456')
+
+        expect(RacingGameController.deleteFeaturesTrackLayoutRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
