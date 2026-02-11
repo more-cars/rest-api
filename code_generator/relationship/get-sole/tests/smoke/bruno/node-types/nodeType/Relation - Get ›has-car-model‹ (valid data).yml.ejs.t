@@ -11,7 +11,7 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/{{validBrandId}}/<%= h.changeCase.kebab(relationshipName) %>"
+  url: "{{baseUrl}}/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/{{valid<%= h.changeCase.pascal(startNodeType) %>Id}}/<%= h.changeCase.kebab(relationshipName) %>"
 
 runtime:
   assertions:
