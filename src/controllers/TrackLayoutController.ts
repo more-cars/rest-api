@@ -12,6 +12,7 @@ import {deleteWasUsedByRacingEventRelation} from "./track-layouts/deleteWasUsedB
 import {createHasLapTimeRelation} from "./track-layouts/createHasLapTimeRelation"
 import {getAllHasLapTimeRelations} from "./track-layouts/getAllHasLapTimeRelations"
 import {deleteHasLapTimeRelation} from "./track-layouts/deleteHasLapTimeRelation"
+import {createIsFeaturedInRacingGameRelation} from "./track-layouts/createIsFeaturedInRacingGameRelation"
 import {createHasImageRelation} from "./track-layouts/createHasImageRelation"
 import {getAllHasImageRelations} from "./track-layouts/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./track-layouts/deleteHasImageRelation"
@@ -64,6 +65,18 @@ export const TrackLayoutController = {
         await createHasLapTimeRelation(req, res)
     },
 
+    async getAllHasLapTimeRelations(req: express.Request, res: express.Response) {
+        await getAllHasLapTimeRelations(req, res)
+    },
+
+    async deleteHasLapTimeRelation(req: express.Request, res: express.Response) {
+        await deleteHasLapTimeRelation(req, res)
+    },
+
+    async createIsFeaturedInRacingGameRelation(req: express.Request, res: express.Response) {
+        await createIsFeaturedInRacingGameRelation(req, res)
+    },
+
     async createHasImageRelation(req: express.Request, res: express.Response) {
         await createHasImageRelation(req, res)
     },
@@ -86,13 +99,5 @@ export const TrackLayoutController = {
 
     async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
-    },
-
-    async getAllHasLapTimeRelations(req: express.Request, res: express.Response) {
-        await getAllHasLapTimeRelations(req, res)
-    },
-
-    async deleteHasLapTimeRelation(req: express.Request, res: express.Response) {
-        await deleteHasLapTimeRelation(req, res)
     },
 }

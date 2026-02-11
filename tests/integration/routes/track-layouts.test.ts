@@ -110,6 +110,14 @@ describe('Track Layouts', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Create ›is-featured-in-racing-game‹ relationship', async () => {
+        await request(app)
+            .post('/track-layouts/123/is-featured-in-racing-game/456')
+
+        expect(TrackLayoutController.createIsFeaturedInRacingGameRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/track-layouts/123/has-image/456')

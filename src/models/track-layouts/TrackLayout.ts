@@ -24,6 +24,7 @@ import {getAllRels} from "../relationships/getAllRels"
 import {RacingEvent} from "../racing-events/RacingEvent"
 import {LapTime} from "../lap-times/LapTime"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
+import {RacingGame} from "../racing-games/RacingGame"
 
 export const TrackLayout = {
     async create(data: CreateTrackLayoutInput): Promise<TrackLayoutNode> {
@@ -345,5 +346,30 @@ export const TrackLayout = {
         }
 
         await deleteSpecificRel(trackLayoutId, imageId, RelationshipType.TrackLayoutHasPrimeImage)
+    },
+
+    async createIsFeaturedInRacingGameRelationship(trackLayoutId: number, racingGameId: number) {
+        const trackLayout = await TrackLayout.findById(trackLayoutId)
+        if (!trackLayout) {
+            throw new NodeNotFoundError(trackLayoutId)
+        }
+
+        const racingGame = await RacingGame.findById(racingGameId)
+        if (!racingGame) {
+            throw new NodeNotFoundError(racingGameId)
+        }
+
+        const existingRelation = await getSpecificRel(trackLayoutId, racingGameId, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(TrackLayoutRelationship.isFeaturedInRacingGame, trackLayoutId, racingGameId)
+        }
+
+
+        const createdRelationship = await createRel(trackLayoutId, racingGameId, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }

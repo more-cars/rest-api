@@ -12,6 +12,10 @@ exports.createHasLapTimeRelationship = async function () {
     await post("/track-layouts/" + bru.getEnvVar('validTrackLayoutId') + "/has-lap-time/" + bru.getEnvVar('validLapTimeId'))
 }
 
+exports.createIsFeaturedInRacingGameRelationship = async function () {
+    await post("/track-layouts/" + bru.getEnvVar('validTrackLayoutId') + "/is-featured-in-racing-game/" + bru.getEnvVar('validRacingGameId'))
+}
+
 exports.createHasImageRelationship = async function () {
     await post("/track-layouts/" + bru.getEnvVar('validTrackLayoutId') + "/has-image/" + bru.getEnvVar('validImageId'))
 }

@@ -41,3 +41,7 @@ exports.ensureTrackLayoutHasPrimeImageRelationshipExists = async function (track
 exports.ensureTrackLayoutHasLapTimeRelationshipExists = async function (trackLayoutId, lapTimeId) {
     return submitPostRequest("/track-layouts/" + trackLayoutId + "/has-lap-time/" + lapTimeId)
 }
+
+exports.createTrackLayoutIsFeaturedInRacingGameRelationship = async function (trackLayoutId, racingGameId) {
+    return submitPostRequest("/track-layouts/" + trackLayoutId + "/is-featured-in-racing-game/" + racingGameId)
+}
