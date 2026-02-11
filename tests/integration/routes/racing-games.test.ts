@@ -117,4 +117,12 @@ describe('Racing Games', () => {
         expect(RacingGameController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .get('/racing-games/123/has-prime-image')
+
+        expect(RacingGameController.getHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

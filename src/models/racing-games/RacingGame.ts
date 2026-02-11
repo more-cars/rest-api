@@ -22,6 +22,7 @@ import {Image} from "../images/Image"
 import {DbRelationship} from "../../db/types/DbRelationship"
 import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
+import {getRel} from "../relationships/getRel"
 
 export const RacingGame = {
     async create(data: CreateRacingGameInput): Promise<RacingGameNode> {
@@ -245,5 +246,19 @@ export const RacingGame = {
         }
 
         return createdRelationship
+    },
+
+    async getHasPrimeImageRelationship(racingGameId: number) {
+        const racingGame = await RacingGame.findById(racingGameId)
+        if (!racingGame) {
+            throw new NodeNotFoundError(racingGameId)
+        }
+
+        const relationship = await getRel(racingGameId, RelationshipType.RacingGameHasPrimeImage, NodeTypeLabel.Image)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(RacingGameRelationship.hasPrimeImage, racingGameId, null)
+        }
+
+        return relationship
     },
 }
