@@ -14,6 +14,7 @@ import {getAllHasImageRelations} from "./racing-games/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./racing-games/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./racing-games/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./racing-games/getHasPrimeImageRelation"
+import {deleteHasPrimeImageRelation} from "./racing-games/deleteHasPrimeImageRelation"
 
 export const RacingGameController = {
     async create(req: express.Request, res: express.Response) {
@@ -74,5 +75,9 @@ export const RacingGameController = {
 
     async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await getHasPrimeImageRelation(req, res)
+    },
+
+    async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
+        await deleteHasPrimeImageRelation(req, res)
     },
 }

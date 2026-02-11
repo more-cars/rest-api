@@ -261,4 +261,23 @@ export const RacingGame = {
 
         return relationship
     },
+
+    async deleteHasPrimeImageRelationship(racingGameId: number, imageId: number) {
+        const racingGame = await RacingGame.findById(racingGameId)
+        if (!racingGame) {
+            throw new NodeNotFoundError(racingGameId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const relationship = await getSpecificRel(racingGameId, imageId, RelationshipType.RacingGameHasPrimeImage)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(RacingGameRelationship.hasPrimeImage, racingGameId, imageId)
+        }
+
+        await deleteSpecificRel(racingGameId, imageId, RelationshipType.RacingGameHasPrimeImage)
+    },
 }
