@@ -377,4 +377,23 @@ export const CarModelVariant = {
 
         return getAllRels(carModelVariantId, RelationshipType.CarModelVariantIsFeaturedInRacingGame)
     },
+
+    async deleteIsFeaturedInRacingGameRelationship(carModelVariantId: number, racingGameId: number) {
+        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
+        if (!carModelVariant) {
+            throw new NodeNotFoundError(carModelVariantId)
+        }
+
+        const racingGame = await RacingGame.findById(racingGameId)
+        if (!racingGame) {
+            throw new NodeNotFoundError(racingGameId)
+        }
+
+        const relationship = await getSpecificRel(carModelVariantId, racingGameId, RelationshipType.CarModelVariantIsFeaturedInRacingGame)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(CarModelVariantRelationship.isFeaturedInRacingGame, carModelVariantId, racingGameId)
+        }
+
+        await deleteSpecificRel(carModelVariantId, racingGameId, RelationshipType.CarModelVariantIsFeaturedInRacingGame)
+    },
 }

@@ -1,0 +1,25 @@
+meta {
+  name: Delete ›is-featured-in-racing-game‹ relation (invalid data)
+  type: http
+  tags: [
+    delete
+    relation
+    invalid
+  ]
+}
+
+delete {
+  url: {{baseUrl}}/car-model-variants/{{invalidCarModelVariantId}}/is-featured-in-racing-game/{{invalidRacingGameId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
+
+script:pre-request {
+  lib.tools.generateInvalidId('CarModelVariant')
+  lib.tools.generateInvalidId('RacingGame')
+}

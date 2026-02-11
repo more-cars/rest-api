@@ -14,6 +14,7 @@ import {getAllAchievedLapTimeRelations} from "./car-model-variants/getAllAchieve
 import {deleteAchievedLapTimeRelation} from "./car-model-variants/deleteAchievedLapTimeRelation"
 import {createIsFeaturedInRacingGameRelation} from "./car-model-variants/createIsFeaturedInRacingGameRelation"
 import {getAllIsFeaturedInRacingGameRelations} from "./car-model-variants/getAllIsFeaturedInRacingGameRelations"
+import {deleteIsFeaturedInRacingGameRelation} from "./car-model-variants/deleteIsFeaturedInRacingGameRelation"
 import {createHasImageRelation} from "./car-model-variants/createHasImageRelation"
 import {getAllHasImageRelations} from "./car-model-variants/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./car-model-variants/deleteHasImageRelation"
@@ -80,6 +81,10 @@ export const CarModelVariantController = {
 
     async getAllIsFeaturedInRacingGameRelations(req: express.Request, res: express.Response) {
         await getAllIsFeaturedInRacingGameRelations(req, res)
+    },
+
+    async deleteIsFeaturedInRacingGameRelation(req: express.Request, res: express.Response) {
+        await deleteIsFeaturedInRacingGameRelation(req, res)
     },
 
     async createHasImageRelation(req: express.Request, res: express.Response) {

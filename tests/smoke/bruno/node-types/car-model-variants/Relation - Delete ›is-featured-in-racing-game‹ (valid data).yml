@@ -1,0 +1,25 @@
+info:
+  name: Delete ›is-featured-in-racing-game‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/car-model-variants/{{validCarModelVariantId}}/is-featured-in-racing-game/{{validRacingGameId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const CarModelVariants = require('./lib/node-types/CarModelVariants.js')
+        const RacingGames = require('./lib/node-types/RacingGames.js')
+        await CarModelVariants.create()
+        await RacingGames.create()
+        await CarModelVariants.createIsFeaturedInRacingGameRelationship()
