@@ -11,5 +11,6 @@ router.post('/racing-games/:racingGameId/features-car-model-variant/:carModelVar
 router.get('/racing-games/:racingGameId/features-car-model-variant', RacingGameController.getAllFeaturesCarModelVariantRelations)
 router.delete('/racing-games/:racingGameId/features-car-model-variant/:carModelVariantId', RacingGameController.deleteFeaturesCarModelVariantRelation)
 router.post('/racing-games/:racingGameId/features-track-layout/:trackLayoutId', RacingGameController.createFeaturesTrackLayoutRelation)
+router.get('/racing-games/:racingGameId/features-track-layout', RacingGameController.getAllFeaturesTrackLayoutRelations)
 
 export default router

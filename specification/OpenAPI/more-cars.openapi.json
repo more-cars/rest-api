@@ -10014,6 +10014,48 @@
         }
       }
     },
+    "/racing-games/{racing-game-id}/features-track-layout": {
+      "get": {
+        "operationId": "getRacingGameFeaturesTrackLayoutRel",
+        "tags": [
+          "Racing Games"
+        ],
+        "summary": "Get all ›features-track-layout‹ relationships for the `Racing Game`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-game-id",
+            "description": "ID of the `Racing Game`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›features-track-layout‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RacingGameFeaturesTrackLayoutCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Racing Game` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/racing-games/{racing-game-id}/features-track-layout/{track-layout-id}": {
       "post": {
         "tags": [
@@ -14709,6 +14751,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/RacingGameFeaturesTrackLayout"
+          }
+        }
+      },
+      "RacingGameFeaturesTrackLayoutCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RacingGameFeaturesTrackLayoutResponse"
+            }
           }
         }
       },
