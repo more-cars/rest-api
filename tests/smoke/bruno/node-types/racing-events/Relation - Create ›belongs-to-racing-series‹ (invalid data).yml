@@ -1,0 +1,27 @@
+info:
+  name: Create ›belongs-to-racing-series‹ relation (invalid data)
+  type: http
+  tags:
+    - create
+    - relation
+    - invalid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/racing-events/{{invalidRacingEventId}}/belongs-to-racing-series/{{invalidRacingSeriesId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "404"
+    - expression: res.body
+      operator: isString
+    - expression: res.body
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const Ids = require('./lib/Ids.js')
+        await Ids.generateInvalidId('RacingEvent')
+        await Ids.generateInvalidId('RacingSeries')

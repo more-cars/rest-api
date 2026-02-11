@@ -1,0 +1,52 @@
+info:
+  name: Get all ›has-racing-session‹ relations (valid data)
+  type: http
+  tags:
+    - get
+    - relation
+    - collection
+    - valid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/racing-events/{{validRacingEventId}}/has-racing-session"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data
+      operator: isArray
+    - expression: res.body.data[0].data.relationship_id
+      operator: gte
+      value: "12000000"
+    - expression: res.body.data[0].data.relationship_name
+      operator: eq
+      value: "has-racing-session"
+    - expression: res.body.data[0].data.relationship_partner
+      operator: isJson
+    - expression: res.body.data[0].data.relationship_partner.node_type
+      operator: eq
+      value: "racing-session"
+    - expression: res.body.data[0].data.relationship_partner.data.id
+      operator: eq
+      value: "{{validRacingSessionId}}"
+    - expression: res.body.data[0].data.created_at
+      operator: isString
+    - expression: res.body.data[0].data.created_at
+      operator: isNotEmpty
+    - expression: res.body.data[0].data.updated_at
+      operator: isString
+    - expression: res.body.data[0].data.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const RacingEvents = require('./lib/node-types/RacingEvents.js')
+        const RacingSessions = require('./lib/node-types/RacingSessions.js')
+        await RacingEvents.create()
+        await RacingSessions.create()
+        await RacingEvents.createHasRacingSessionRelationship()

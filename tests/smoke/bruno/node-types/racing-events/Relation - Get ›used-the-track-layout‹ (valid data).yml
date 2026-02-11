@@ -1,0 +1,51 @@
+info:
+  name: Get ›used-the-track-layout‹ relation (valid data)
+  type: http
+  tags:
+    - get
+    - relation
+    - valid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/racing-events/{{validRacingEventId}}/used-the-track-layout"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data
+      operator: isJson
+    - expression: res.body.data.relationship_id
+      operator: gte
+      value: "12000000"
+    - expression: res.body.data.relationship_name
+      operator: eq
+      value: "used-the-track-layout"
+    - expression: res.body.data.relationship_partner
+      operator: isJson
+    - expression: res.body.data.relationship_partner.node_type
+      operator: eq
+      value: "track-layout"
+    - expression: res.body.data.relationship_partner.data.id
+      operator: eq
+      value: "{{validTrackLayoutId}}"
+    - expression: res.body.data.created_at
+      operator: isString
+    - expression: res.body.data.created_at
+      operator: isNotEmpty
+    - expression: res.body.data.updated_at
+      operator: isString
+    - expression: res.body.data.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const RacingEvents = require('./lib/node-types/RacingEvents.js')
+        const TrackLayouts = require('./lib/node-types/TrackLayouts.js')
+        await RacingEvents.create()
+        await TrackLayouts.create()
+        await RacingEvents.createUsedTheTrackLayoutRelationship()

@@ -1,0 +1,25 @@
+info:
+  name: Delete ›used-the-track-layout‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/racing-events/{{validRacingEventId}}/used-the-track-layout/{{validTrackLayoutId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const RacingEvents = require('./lib/node-types/RacingEvents.js')
+        const TrackLayouts = require('./lib/node-types/TrackLayouts.js')
+        await RacingEvents.create()
+        await TrackLayouts.create()
+        await RacingEvents.createUsedTheTrackLayoutRelationship()

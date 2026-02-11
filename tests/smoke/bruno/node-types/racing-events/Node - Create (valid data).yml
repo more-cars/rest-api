@@ -1,0 +1,38 @@
+info:
+  name: Create Racing Event (valid data)
+  type: http
+  tags:
+    - create
+    - node
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/racing-events"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "GP Monaco 2025",
+        "round": 8,
+        "date_from": "2025-05-25",
+        "date_to": "2025-05-27"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data.id
+      operator: gte
+      value: "12000000"
+  scripts:
+    - type: tests
+      code: |-
+        test("both timestamps should be identical", function () {
+          const data = res.getBody()
+          expect(data.data.created_at).to.eql(data.data.updated_at)
+        })

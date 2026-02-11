@@ -1,0 +1,25 @@
+info:
+  name: Delete ›belongs-to-racing-series‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/racing-events/{{validRacingEventId}}/belongs-to-racing-series/{{validRacingSeriesId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const RacingEvents = require('./lib/node-types/RacingEvents.js')
+        const RacingSeries = require('./lib/node-types/RacingSeries.js')
+        await RacingEvents.create()
+        await RacingSeries.create()
+        await RacingEvents.createBelongsToRacingSeriesRelationship()

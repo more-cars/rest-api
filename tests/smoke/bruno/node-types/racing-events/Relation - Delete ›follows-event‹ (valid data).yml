@@ -1,0 +1,24 @@
+info:
+  name: Delete ›follows-event‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/racing-events/{{validRacingEventId}}/follows-event/{{validSecondRacingEventId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const RacingEvents = require('./lib/node-types/RacingEvents.js')
+        await RacingEvents.create()
+        await RacingEvents.create('Second')
+        await RacingEvents.createFollowsEventRelationship()
