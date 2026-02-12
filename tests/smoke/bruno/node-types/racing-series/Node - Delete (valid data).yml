@@ -1,0 +1,28 @@
+info:
+  name: Delete Racing Series (valid data)
+  type: http
+  tags:
+    - delete
+    - node
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/racing-series/{{validRacingSeriesId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+    - expression: res.body
+      operator: isEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const RacingSeries = require('./lib/node-types/RacingSeries.js')
+        await RacingSeries.create()
+    - type: after-response
+      code: |-
+        const Ids = require('./lib/Ids.js')
+        Ids.forgetId('RacingSeries')

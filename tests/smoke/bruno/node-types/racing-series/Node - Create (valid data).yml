@@ -1,0 +1,40 @@
+info:
+  name: Create Racing Series (valid data)
+  type: http
+  tags:
+    - create
+    - node
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/racing-series"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Formula 1",
+        "short_name": "F1",
+        "founded": 1950,
+        "defunct": null,
+        "organized_by": "FIA",
+        "vehicle_type": "formula racing cars"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data.id
+      operator: gte
+      value: "12000000"
+  scripts:
+    - type: tests
+      code: |-
+        test("both timestamps should be identical", function () {
+          const data = res.getBody()
+          expect(data.data.created_at).to.eql(data.data.updated_at)
+        })

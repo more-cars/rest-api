@@ -1,6 +1,6 @@
 const {post} = require("../apiRequest")
 
-exports.createBelongsToRacingSeriesHasLayoutRelationship = async function () {
+exports.createBelongsToRacingSeriesRelationship = async function () {
     await post("/racing-events/" + bru.getEnvVar('validRacingEventId') + "/belongs-to-racing-series/" + bru.getEnvVar('validRacingSeriesId'))
 }
 
