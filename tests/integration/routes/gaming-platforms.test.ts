@@ -29,4 +29,12 @@ describe('Gaming Platforms', () => {
         expect(GamingPlatformController.getAll)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete Node', async () => {
+        await request(app)
+            .delete('/gaming-platforms/123')
+
+        expect(GamingPlatformController.delete)
+            .toHaveBeenCalledTimes(1)
+    })
 })

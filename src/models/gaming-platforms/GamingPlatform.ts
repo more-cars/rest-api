@@ -6,6 +6,8 @@ import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/gaming-platforms/getNodeById"
 import {getAllNodesOfType} from "../../db/nodes/gaming-platforms/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
+import {deleteNode} from "../../db/nodes/deleteNode"
+import {NodeNotFoundError} from "../types/NodeNotFoundError"
 
 export const GamingPlatform = {
     async create(data: CreateGamingPlatformInput): Promise<GamingPlatformNode> {
@@ -35,5 +37,14 @@ export const GamingPlatform = {
         })
 
         return nodes
+    },
+
+    async delete(gamingPlatformId: number): Promise<void> {
+        const node = await GamingPlatform.findById(gamingPlatformId)
+        if (!node) {
+            throw new NodeNotFoundError(gamingPlatformId)
+        }
+
+        await deleteNode(gamingPlatformId)
     },
 }

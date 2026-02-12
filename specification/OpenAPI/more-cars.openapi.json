@@ -10823,6 +10823,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Gaming Platforms"
+        ],
+        "summary": "Delete `Gaming Platform`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gaming-platform-id",
+            "description": "ID of the `Gaming Platform`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Gaming Platform` successfully deleted."
+          },
+          "404": {
+            "description": "Deletion request failed. A `Gaming Platform` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/relationships/{relationship-id}": {
@@ -15729,10 +15761,10 @@
       },
       "GamingPlatform": {
         "type": "object",
-        "required":         [
+        "required": [
           "name"
         ],
-        "properties":         {
+        "properties": {
           "id": {
             "type": "integer",
             "readOnly": true,
@@ -15791,7 +15823,7 @@
       },
       "GamingPlatformProperties": {
         "type": "string",
-        "enum":         [
+        "enum": [
           "id",
           "created_at",
           "updated_at",
