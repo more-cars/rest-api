@@ -1,0 +1,18 @@
+import {expect, test} from 'vitest'
+import {createNode} from "../../../../../../src/db/nodes/gaming-platforms/createNode"
+
+test('Single quotes in strings are correctly escaped and unescaped', async () => {
+    const data = {
+        name: "'PlayStation 5''",
+        release_year: 2020,
+        manufacturer: "'Sony''",
+    }
+
+    const createdNode = await createNode(data)
+
+    expect(createdNode.name)
+        .toEqual("'PlayStation 5''")
+
+    expect(createdNode.manufacturer)
+        .toEqual("'Sony''")
+})

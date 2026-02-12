@@ -12,6 +12,7 @@ import {seedRacingSession} from "./racing-sessions/nodes/seedRacingSession"
 import {seedSessionResult} from "./session-results/nodes/seedSessionResult"
 import {seedLapTime} from "./lap-times/nodes/seedLapTime"
 import {seedRacingGame} from "./racing-games/nodes/seedRacingGame"
+import {seedGamingPlatform} from "./gaming-platforms/nodes/seedGamingPlatform"
 import {seedImage} from "./images/nodes/seedImage"
 
 export async function seedNode(nodeType: NodeTypeEnum, customFakeData: object = {}) {
@@ -40,6 +41,8 @@ export async function seedNode(nodeType: NodeTypeEnum, customFakeData: object = 
             return seedLapTime(customFakeData)
         case NodeTypeEnum.RACING_GAME:
             return seedRacingGame(customFakeData)
+        case NodeTypeEnum.GAMING_PLATFORM:
+            return seedGamingPlatform(customFakeData)
         case NodeTypeEnum.IMAGE:
             return seedImage(customFakeData)
         default:

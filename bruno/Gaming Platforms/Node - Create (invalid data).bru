@@ -1,0 +1,24 @@
+meta {
+  name: Create Gaming Platform (invalid data)
+  type: http
+  tags: [
+    create
+    node
+    invalid
+  ]
+}
+
+post {
+  url: {{baseUrl}}/gaming-platforms
+  body: json
+  auth: none
+}
+
+body:json {
+  {}
+}
+
+assert {
+  res.status: 400
+  res.body: isString
+}

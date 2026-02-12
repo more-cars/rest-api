@@ -14,6 +14,7 @@ import racingSessions from "./routes/racing-sessions"
 import sessionResults from "./routes/session-results"
 import lapTimes from "./routes/lap-times"
 import racingGames from "./routes/racing-games"
+import gamingPlatforms from "./routes/gaming-platforms"
 import images from "./routes/images"
 import relationships from "./routes/relationships"
 import {basicAuthentication} from "./basicAuthentication"
@@ -45,6 +46,7 @@ app.use('/', racingSessions)
 app.use('/', sessionResults)
 app.use('/', lapTimes)
 app.use('/', racingGames)
+app.use('/', gamingPlatforms)
 app.use('/', images)
 app.use('/', relationships)
 

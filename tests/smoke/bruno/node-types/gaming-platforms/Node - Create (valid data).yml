@@ -1,0 +1,37 @@
+info:
+  name: Create Gaming Platform (valid data)
+  type: http
+  tags:
+    - create
+    - node
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/gaming-platforms"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "PlayStation 5",
+        "release_year": 2020,
+        "manufacturer": "Sony"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data.id
+      operator: gte
+      value: "12000000"
+  scripts:
+    - type: tests
+      code: |-
+        test("both timestamps should be identical", function () {
+          const data = res.getBody()
+          expect(data.data.created_at).to.eql(data.data.updated_at)
+        })
