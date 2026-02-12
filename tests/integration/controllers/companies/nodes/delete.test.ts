@@ -26,3 +26,15 @@ test('Deleting the node when it actually exists', async () => {
     expect(response.statusCode)
         .toBe(204)
 })
+
+test('Input is valid, but something breaks on the way', async () => {
+    Company.delete = vi.fn().mockImplementation(() => {
+        throw new Error()
+    })
+
+    const response = await request(app)
+        .delete('/companies/987654321') // the actual ID is irrelevant here
+
+    expect(response.statusCode)
+        .toBe(500)
+})
