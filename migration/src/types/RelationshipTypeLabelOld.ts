@@ -14,6 +14,8 @@ export enum RelationshipTypeLabelOld {
     RacingEventHasRacingSession = "HAS_RACING_EVENT_SESSION",
     RacingSessionHasSessionResult = "HAS_RACE_RESULT",
     SessionResultHasLapTime = "ACHIEVED_IN_RACE_RESULT",
+    RacingGameFeaturesCarModelVariant = "FEATURES_CAR_MODEL_VARIANT",
+    RacingGameFeaturesTrackLayout = "FEATURES_RACE_TRACK_VARIANT",
     NodeHasImage = "HAS_IMAGE",
     NodeHasPrimeImage = "IS_MAIN_IMAGE_OF_NODE",
 }

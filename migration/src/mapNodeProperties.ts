@@ -12,6 +12,7 @@ import {mapRacingEvent} from "./mappings/mapRacingEvent"
 import {mapRacingSession} from "./mappings/mapRacingSession"
 import {mapSessionResult} from "./mappings/mapSessionResult"
 import {mapLapTime} from "./mappings/mapLapTime"
+import {mapRacingGame} from "./mappings/mapRacingGame"
 import {mapImage} from "./mappings/mapImage"
 
 export function mapNodeProperties(oldNode: Node, nodeType: NodeTypeLabel) {
@@ -38,6 +39,8 @@ export function mapNodeProperties(oldNode: Node, nodeType: NodeTypeLabel) {
             return mapSessionResult(oldNode)
         case NodeTypeLabel.LapTime:
             return mapLapTime(oldNode)
+        case NodeTypeLabel.RacingGame:
+            return mapRacingGame(oldNode)
         case NodeTypeLabel.Image:
             return mapImage(oldNode)
         default:

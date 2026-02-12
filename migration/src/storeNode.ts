@@ -10,6 +10,7 @@ import type {InputRacingEventCreate} from "../../src/db/nodes/racing-events/type
 import type {InputRacingSessionCreate} from "../../src/db/nodes/racing-sessions/types/InputRacingSessionCreate"
 import type {InputSessionResultCreate} from "../../src/db/nodes/session-results/types/InputSessionResultCreate"
 import type {InputLapTimeCreate} from "../../src/db/nodes/lap-times/types/InputLapTimeCreate"
+import type {InputRacingGameCreate} from "../../src/db/nodes/racing-games/types/InputRacingGameCreate"
 import type {InputImageCreate} from "../../src/db/nodes/images/types/InputImageCreate"
 import {NodeTypeLabel} from "../../src/db/NodeTypeLabel"
 import {createNodeQuery as createCompanyQuery} from "../../src/db/nodes/companies/createNode"
@@ -23,6 +24,7 @@ import {createNodeQuery as createRacingEventQuery} from "../../src/db/nodes/raci
 import {createNodeQuery as createRacingSessionQuery} from "../../src/db/nodes/racing-sessions/createNode"
 import {createNodeQuery as createSessionResultQuery} from "../../src/db/nodes/session-results/createNode"
 import {createNodeQuery as createLapTimeQuery} from "../../src/db/nodes/lap-times/createNode"
+import {createNodeQuery as createRacingGameQuery} from "../../src/db/nodes/racing-games/createNode"
 import {createNodeQuery as createImageQuery} from "../../src/db/nodes/images/createNode"
 import {createDbNode} from "../../src/db/nodes/createDbNode"
 import {addMoreCarsIdToNode} from "../../src/db/nodes/addMoreCarsIdToNode"
@@ -40,6 +42,7 @@ type InputTypes =
     InputRacingSessionCreate |
     InputSessionResultCreate |
     InputLapTimeCreate |
+    InputRacingGameCreate |
     InputImageCreate
 
 
@@ -79,6 +82,9 @@ export async function storeNode(data: InputTypes, newNodeType: NodeTypeLabel, ol
             break
         case NodeTypeLabel.LapTime:
             query = createLapTimeQuery(data as InputLapTimeCreate)
+            break
+        case NodeTypeLabel.RacingGame:
+            query = createRacingGameQuery(data as InputRacingGameCreate)
             break
         case NodeTypeLabel.Image:
             query = createImageQuery(data as InputImageCreate)

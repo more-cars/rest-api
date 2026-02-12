@@ -48,6 +48,11 @@ export function getAllPotentialPartnerNodeTypes() {
             NodeTypeLabel.LapTime,
             NodeTypeLabel.Image,
         ]],
+        [NodeTypeLabel.RacingGame, [
+            NodeTypeLabel.CarModelVariant,
+            NodeTypeLabel.TrackLayout,
+            NodeTypeLabel.Image,
+        ]],
         [NodeTypeLabel.LapTime, [
             NodeTypeLabel.Image,
         ]],
