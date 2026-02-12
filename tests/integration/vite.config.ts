@@ -20,20 +20,6 @@ export default defineConfig(({mode}) => ({
                 classnameTemplate: ''
             }],
         ],
-        coverage: {
-            provider: 'v8',
-            include: ['src/**'],
-            exclude: [
-                'src/server.ts',
-                'src/db/driver-mc1.ts',
-            ],
-            reporter: [
-                'text',
-                'html',
-            ],
-            reportsDirectory: 'test-reports/integration/coverage',
-            reportOnFailure: true,
-        }
     },
     // The integration tests work on the same database (only partially mocked).
     // Therefore, they cannot run in parallel.

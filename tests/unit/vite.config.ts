@@ -17,23 +17,5 @@ export default defineConfig({
                 classnameTemplate: '',
             }],
         ],
-        coverage: {
-            provider: 'v8',
-            include: ['src/**'],
-            exclude: [
-                'src/*.ts',
-                'src/**/types/**',
-                'src/routes/**',
-                'src/controllers/*.ts',
-                'src/controllers/*/*Relation',
-                'src/db/driver-mc1.ts',
-            ],
-            reporter: [
-                'text',
-                'html',
-            ],
-            reportsDirectory: 'test-reports/unit/coverage',
-            reportOnFailure: true,
-        }
     },
 })
