@@ -1,0 +1,35 @@
+import {describe, expect, test} from 'vitest'
+import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
+import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import type {GamingPlatformNode} from "../../../../../../src/models/gaming-platforms/types/GamingPlatformNode"
+import {GamingPlatform} from "../../../../../../src/models/gaming-platforms/GamingPlatform"
+import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
+
+describe('Each page of a "get all GAMING PLATFORM nodes" request returns the correct number of nodes', () => {
+    test.each([
+        [1],
+        [2],
+        [99],
+    ])('when there exist no GAMING PLATFORM nodes (page=$0)', async (page) => {
+        await deleteAllNodesOfType(NodeTypeEnum.GAMING_PLATFORM)
+
+        const expectedNodes: GamingPlatformNode[] = []
+        const actualNodes = await GamingPlatform.findAll({page})
+
+        expect(actualNodes)
+            .toEqual(expectedNodes)
+    })
+
+    test.each([
+        [20, 1, 20],
+        [5, 2, 0],
+    ])('when there exist $0 GAMING PLATFORM nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
+        await deleteAllNodesOfType(NodeTypeEnum.GAMING_PLATFORM)
+        await seedNodes(NodeTypeEnum.GAMING_PLATFORM, totalNodeAmount)
+
+        const actualNodes = await GamingPlatform.findAll({page})
+
+        expect(actualNodes.length)
+            .toEqual(expectedNodeAmountOnPage)
+    })
+})

@@ -10695,6 +10695,65 @@
       }
     },
     "/gaming-platforms": {
+      "get": {
+        "operationId": "getGamingPlatforms",
+        "tags": [
+          "Gaming Platforms"
+        ],
+        "summary": "Get all `Gaming Platforms`",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Page"
+          },
+          {
+            "in": "query",
+            "name": "sort_by_property",
+            "description": "Returns the `Gaming Platform` collection, ordered by the specified property.",
+            "schema": {
+              "$ref": "#/components/schemas/GamingPlatformProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/SortDirection"
+          },
+          {
+            "in": "query",
+            "name": "filter_by_property",
+            "description": "Specifies by which node property the `Gaming Platform` collection should be filtered.",
+            "schema": {
+              "$ref": "#/components/schemas/GamingPlatformProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/FilterValue"
+          },
+          {
+            "$ref": "#/components/parameters/FilterOperator"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Gaming Platform` collection successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GamingPlatformCollectionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Gaming Platforms"
@@ -15716,6 +15775,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/GamingPlatform"
+          }
+        }
+      },
+      "GamingPlatformCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GamingPlatformResponse"
+            }
           }
         }
       },

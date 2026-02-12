@@ -4,6 +4,8 @@ import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../db/nodes/gaming-platforms/createNode"
 import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/gaming-platforms/getNodeById"
+import {getAllNodesOfType} from "../../db/nodes/gaming-platforms/getAllNodesOfType"
+import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
 
 export const GamingPlatform = {
     async create(data: CreateGamingPlatformInput): Promise<GamingPlatformNode> {
@@ -22,5 +24,16 @@ export const GamingPlatform = {
         }
 
         return convertOutputData(node)
+    },
+
+    async findAll(options: NodeCollectionConstraints = {}): Promise<GamingPlatformNode[]> {
+        const nodes: GamingPlatformNode[] = []
+        const nodesDb = await getAllNodesOfType(options)
+
+        nodesDb.forEach(node => {
+            nodes.push(convertOutputData(node))
+        })
+
+        return nodes
     },
 }

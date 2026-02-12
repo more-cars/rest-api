@@ -1,0 +1,22 @@
+meta {
+  name: Get all Gaming Platforms (valid filter)
+  type: http
+  tags: [
+    get
+    node
+    collection
+    filter
+    valid
+  ]
+}
+
+get {
+  url: {{baseUrl}}/gaming-platforms?filter_by_property=id&filter_value=1234&filter_operator=gte
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 200
+  res.body.data: isArray
+}

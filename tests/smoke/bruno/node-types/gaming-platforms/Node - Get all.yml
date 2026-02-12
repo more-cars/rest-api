@@ -1,0 +1,30 @@
+info:
+  name: Get all Gaming Platforms
+  type: http
+  tags:
+    - get
+    - node
+    - collection
+    - valid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/gaming-platforms"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body.data
+      operator: isArray
+    - expression: res.body.data[0].data
+      operator: isJson
+    - expression: res.body.data[0].data.id
+      operator: gte
+      value: "12000000"
+  scripts:
+    - type: before-request
+      code: |-
+        const GamingPlatforms = require('./lib/node-types/GamingPlatforms.js')
+        await GamingPlatforms.create()

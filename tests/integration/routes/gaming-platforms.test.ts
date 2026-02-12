@@ -21,4 +21,12 @@ describe('Gaming Platforms', () => {
         expect(GamingPlatformController.getById)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all Nodes', async () => {
+        await request(app)
+            .get('/gaming-platforms')
+
+        expect(GamingPlatformController.getAll)
+            .toHaveBeenCalledTimes(1)
+    })
 })
