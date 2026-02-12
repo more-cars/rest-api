@@ -13,6 +13,12 @@ export const FakeCompany = {
         } as InputCompanyCreate
     },
 
+    dbInputMinimal() {
+        return {
+            name: faker.word.noun(),
+        } as InputCompanyCreate
+    },
+
     modelOutput() {
         return {
             id: faker.number.int({min: 12_000_000, max: 20_000_000}),

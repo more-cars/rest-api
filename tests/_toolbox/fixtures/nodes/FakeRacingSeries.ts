@@ -14,6 +14,13 @@ export const FakeRacingSeries = {
         } as InputRacingSeriesCreate
     },
 
+    dbInputMinimal() {
+        return {
+            name: faker.word.noun(),
+        } as InputRacingSeriesCreate
+    },
+
+
     modelOutput() {
         return {
             id: faker.number.int({min: 12_000_000, max: 20_000_000}),

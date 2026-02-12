@@ -20,6 +20,22 @@ export const Fake<%= h.changeCase.pascal(nodeType) %> = {
         } as Input<%= h.changeCase.pascal(nodeType) %>Create
     },
 
+    dbInputMinimal() {
+        return {
+<% for (prop in properties) { -%>
+<%    if (properties[prop].mandatory) { -%>
+<%      if (properties[prop].datatype === 'string') { -%>
+            <%= prop %>: faker.word.noun(),
+<%      } else if (properties[prop].datatype === 'number') { -%>
+            <%= prop %>: faker.number.int({min: 1000, max: 3000}),
+<%      } else if (properties[prop].datatype === 'boolean') { -%>
+            <%= prop %>: faker.datatype.boolean(),
+<%      } -%>
+<%    } -%>
+<% } -%>
+        } as Input<%= h.changeCase.pascal(nodeType) %>Create
+    },
+
     modelOutput() {
         return {
             id: faker.number.int({min: 12_000_000, max: 20_000_000}),

@@ -16,6 +16,13 @@ export const FakeSessionResult = {
         } as InputSessionResultCreate
     },
 
+    dbInputMinimal() {
+        return {
+            position: faker.number.int({min: 1, max: 99}),
+            driver_name: faker.person.fullName(),
+        } as InputSessionResultCreate
+    },
+
     modelOutput() {
         return {
             id: faker.number.int({min: 12_000_000, max: 20_000_000}),

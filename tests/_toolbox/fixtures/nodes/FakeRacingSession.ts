@@ -15,6 +15,12 @@ export const FakeRacingSession = {
         } as InputRacingSessionCreate
     },
 
+    dbInputMinimal() {
+        return {
+            name: faker.word.noun(),
+        } as InputRacingSessionCreate
+    },
+
     modelOutput() {
         return {
             id: faker.number.int({min: 12_000_000, max: 20_000_000}),

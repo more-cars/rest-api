@@ -1,11 +1,21 @@
-import {expect, test} from 'vitest'
+import {describe, expect, test} from 'vitest'
 import {FakeCompany} from "../../../../../_toolbox/fixtures/nodes/FakeCompany"
 import {createNode} from "../../../../../../src/db/nodes/companies/createNode"
 
-test('Creating node with valid data', async () => {
-    const inputData = FakeCompany.dbInput()
-    const createdNode = await createNode(inputData)
+describe('Creating node', () => {
+    test('with valid data', async () => {
+        const inputData = FakeCompany.dbInput()
+        const createdNode = await createNode(inputData)
 
-    expect(createdNode)
-        .toEqual(expect.objectContaining(inputData))
+        expect(createdNode)
+            .toEqual(expect.objectContaining(inputData))
+    })
+
+    test('with valid minimum data', async () => {
+        const inputData = FakeCompany.dbInputMinimal()
+        const createdNode = await createNode(inputData)
+
+        expect(createdNode)
+            .toEqual(expect.objectContaining(inputData))
+    })
 })

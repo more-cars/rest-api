@@ -11,6 +11,13 @@ export const FakeLapTime = {
         } as InputLapTimeCreate
     },
 
+    dbInputMinimal() {
+        return {
+            time: faker.word.noun(),
+            driver_name: faker.person.fullName(),
+        } as InputLapTimeCreate
+    },
+
     modelOutput() {
         return {
             id: faker.number.int({min: 12_000_000, max: 20_000_000}),

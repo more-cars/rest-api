@@ -12,6 +12,12 @@ export const FakeRacingGame = {
         } as InputRacingGameCreate
     },
 
+    dbInputMinimal() {
+        return {
+            name: faker.commerce.productName(),
+        } as InputRacingGameCreate
+    },
+
     modelOutput() {
         return {
             id: faker.number.int({min: 12_000_000, max: 20_000_000}),
