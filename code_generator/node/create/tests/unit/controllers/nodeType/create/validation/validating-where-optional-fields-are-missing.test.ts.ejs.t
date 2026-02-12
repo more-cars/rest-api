@@ -1,5 +1,5 @@
 ---
-to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create/validation/validatingWhereOptionalFieldsAreMissing.test.ts
+to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create/validation/validating-where-optional-fields-are-missing.test.ts
 ---
 <%
     props = []

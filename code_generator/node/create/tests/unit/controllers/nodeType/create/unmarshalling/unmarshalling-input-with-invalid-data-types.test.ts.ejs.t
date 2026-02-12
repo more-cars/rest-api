@@ -1,5 +1,5 @@
 ---
-to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create/unmarshalling/unmarshallingInputWithInvalidDataTypes.test.ts
+to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create/unmarshalling/unmarshalling-input-with-invalid-data-types.test.ts
 ---
 <%
     props = []
