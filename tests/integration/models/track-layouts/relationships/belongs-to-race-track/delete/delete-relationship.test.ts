@@ -18,14 +18,14 @@ describe('Deleting a ›belongs-to-race-track‹ relationship', () => {
     })
 
     test('RACE TRACK node does not exist', async () => {
-        const raceTrack = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
+        const raceTrack = await seedNode(NodeTypeEnum.RACE_TRACK)
 
         await expect(TrackLayout.deleteBelongsToRaceTrackRelationship(-42, raceTrack.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('RACE TRACK node and RACE TRACK node do not exist', async () => {
+    test('TRACK LAYOUT node and RACE TRACK node do not exist', async () => {
         await expect(TrackLayout.deleteBelongsToRaceTrackRelationship(-42, -43))
             .rejects
             .toThrow(NodeNotFoundError)

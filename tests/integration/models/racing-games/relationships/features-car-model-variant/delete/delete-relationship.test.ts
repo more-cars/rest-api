@@ -18,14 +18,14 @@ describe('Deleting a ›features-car-model-variant‹ relationship', () => {
     })
 
     test('CAR MODEL VARIANT node does not exist', async () => {
-        const carModelVariant = await seedNode(NodeTypeEnum.RACING_GAME)
+        const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)
 
         await expect(RacingGame.deleteFeaturesCarModelVariantRelationship(-42, carModelVariant.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('CAR MODEL VARIANT node and CAR MODEL VARIANT node do not exist', async () => {
+    test('RACING GAME node and CAR MODEL VARIANT node do not exist', async () => {
         await expect(RacingGame.deleteFeaturesCarModelVariantRelationship(-42, -43))
             .rejects
             .toThrow(NodeNotFoundError)

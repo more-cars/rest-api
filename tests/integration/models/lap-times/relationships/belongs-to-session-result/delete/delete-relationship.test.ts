@@ -18,14 +18,14 @@ describe('Deleting a ›belongs-to-session-result‹ relationship', () => {
     })
 
     test('SESSION RESULT node does not exist', async () => {
-        const sessionResult = await seedNode(NodeTypeEnum.LAP_TIME)
+        const sessionResult = await seedNode(NodeTypeEnum.SESSION_RESULT)
 
         await expect(LapTime.deleteBelongsToSessionResultRelationship(-42, sessionResult.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('SESSION RESULT node and SESSION RESULT node do not exist', async () => {
+    test('LAP TIME node and SESSION RESULT node do not exist', async () => {
         await expect(LapTime.deleteBelongsToSessionResultRelationship(-42, -43))
             .rejects
             .toThrow(NodeNotFoundError)

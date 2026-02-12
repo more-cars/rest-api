@@ -21,14 +21,14 @@ describe('Deleting a ›<%= h.changeCase.kebab(relationshipName) %>‹ relations
     })
 
     test('<%= h.changeCase.upper(startNodeType === endNodeType ? 'partner' : endNodeType) %> node does not exist', async () => {
-        const <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %> = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>)
+        const <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %> = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(endNodeType) %>)
 
         await expect(<%= h.changeCase.pascal(startNodeType) %>.delete<%= h.changeCase.pascal(relationshipName) %>Relationship(-42, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('<%= h.changeCase.upper(endNodeType) %> node and <%= h.changeCase.upper(startNodeType === endNodeType ? 'partner' : endNodeType) %> node do not exist', async () => {
+    test('<%= h.changeCase.upper(startNodeType) %> node and <%= h.changeCase.upper(startNodeType === endNodeType ? 'partner' : endNodeType) %> node do not exist', async () => {
         await expect(<%= h.changeCase.pascal(startNodeType) %>.delete<%= h.changeCase.pascal(relationshipName) %>Relationship(-42, -43))
             .rejects
             .toThrow(NodeNotFoundError)

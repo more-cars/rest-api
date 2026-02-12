@@ -1,5 +1,4 @@
 import {describe, expect, test} from 'vitest'
-import {RacingSession} from "../../../../../../../src/models/racing-sessions/RacingSession"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
@@ -7,57 +6,58 @@ import {getSpecificRelationship} from "../../../../../../../src/db/relationships
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
+import {Company} from "../../../../../../../src/models/companies/Company"
 
-describe('Deleting a ›has-prime-image‹ relationship', () => {
-    test('RACING SESSION node does not exist', async () => {
-        const racingSession = await seedNode(NodeTypeEnum.RACING_SESSION)
+describe('Deleting a ›has-brand‹ relationship', () => {
+    test('COMPANY node does not exist', async () => {
+        const company = await seedNode(NodeTypeEnum.COMPANY)
 
-        await expect(RacingSession.deleteHasPrimeImageRelationship(racingSession.id, -43))
+        await expect(Company.deleteHasBrandRelationship(company.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
     test('IMAGE node does not exist', async () => {
-        const image = await seedNode(NodeTypeEnum.IMAGE)
+        const brand = await seedNode(NodeTypeEnum.BRAND)
 
-        await expect(RacingSession.deleteHasPrimeImageRelationship(-42, image.id))
+        await expect(Company.deleteHasBrandRelationship(-42, brand.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('RACING SESSION node and IMAGE node do not exist', async () => {
-        await expect(RacingSession.deleteHasPrimeImageRelationship(-42, -43))
+    test('COMPANY node and IMAGE node do not exist', async () => {
+        await expect(Company.deleteHasBrandRelationship(-42, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('both nodes exist, but have no ›has-prime-image‹ relationship', async () => {
-        const racingSession = await seedNode(NodeTypeEnum.RACING_SESSION)
-        const image = await seedNode(NodeTypeEnum.IMAGE)
+    test('both nodes exist, but have no ›has-brand‹ relationship', async () => {
+        const company = await seedNode(NodeTypeEnum.COMPANY)
+        const brand = await seedNode(NodeTypeEnum.BRAND)
 
-        await expect(RacingSession.deleteHasPrimeImageRelationship(racingSession.id, image.id))
+        await expect(Company.deleteHasBrandRelationship(company.id, brand.id))
             .rejects
             .toThrow(RelationshipNotFoundError)
     })
 
-    test('both nodes exist and have a ›has-prime-image‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.RACING_SESSION, NodeTypeEnum.IMAGE, DbRelationship.RacingSessionHasPrimeImage)
+    test('both nodes exist and have a ›has-brand‹ relationship', async () => {
+        const seededRelationship = await seedRelationship(NodeTypeEnum.COMPANY, NodeTypeEnum.BRAND, DbRelationship.CompanyHasBrand)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.RacingSessionHasPrimeImage,
+            DbRelationship.CompanyHasBrand,
         )
 
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await RacingSession.deleteHasPrimeImageRelationship(seededRelationship.start_node_id, seededRelationship.end_node_id)
+        await Company.deleteHasBrandRelationship(seededRelationship.start_node_id, seededRelationship.end_node_id)
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.RacingSessionHasPrimeImage,
+            DbRelationship.CompanyHasBrand,
         )
 
         expect(relationshipAfter)

@@ -18,14 +18,14 @@ describe('Deleting a ›was-used-by-racing-event‹ relationship', () => {
     })
 
     test('RACING EVENT node does not exist', async () => {
-        const racingEvent = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
+        const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
 
         await expect(TrackLayout.deleteWasUsedByRacingEventRelationship(-42, racingEvent.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('RACING EVENT node and RACING EVENT node do not exist', async () => {
+    test('TRACK LAYOUT node and RACING EVENT node do not exist', async () => {
         await expect(TrackLayout.deleteWasUsedByRacingEventRelationship(-42, -43))
             .rejects
             .toThrow(NodeNotFoundError)

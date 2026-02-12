@@ -18,14 +18,14 @@ describe('Deleting a ›features-track-layout‹ relationship', () => {
     })
 
     test('TRACK LAYOUT node does not exist', async () => {
-        const trackLayout = await seedNode(NodeTypeEnum.RACING_GAME)
+        const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
 
         await expect(RacingGame.deleteFeaturesTrackLayoutRelationship(-42, trackLayout.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('TRACK LAYOUT node and TRACK LAYOUT node do not exist', async () => {
+    test('RACING GAME node and TRACK LAYOUT node do not exist', async () => {
         await expect(RacingGame.deleteFeaturesTrackLayoutRelationship(-42, -43))
             .rejects
             .toThrow(NodeNotFoundError)

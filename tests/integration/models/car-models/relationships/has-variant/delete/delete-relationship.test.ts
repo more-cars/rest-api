@@ -18,14 +18,14 @@ describe('Deleting a ›has-variant‹ relationship', () => {
     })
 
     test('CAR MODEL VARIANT node does not exist', async () => {
-        const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL)
+        const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)
 
         await expect(CarModel.deleteHasVariantRelationship(-42, carModelVariant.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('CAR MODEL VARIANT node and CAR MODEL VARIANT node do not exist', async () => {
+    test('CAR MODEL node and CAR MODEL VARIANT node do not exist', async () => {
         await expect(CarModel.deleteHasVariantRelationship(-42, -43))
             .rejects
             .toThrow(NodeNotFoundError)

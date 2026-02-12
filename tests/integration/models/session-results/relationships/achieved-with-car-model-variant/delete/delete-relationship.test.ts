@@ -18,14 +18,14 @@ describe('Deleting a ›achieved-with-car-model-variant‹ relationship', () => 
     })
 
     test('CAR MODEL VARIANT node does not exist', async () => {
-        const carModelVariant = await seedNode(NodeTypeEnum.SESSION_RESULT)
+        const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)
 
         await expect(SessionResult.deleteAchievedWithCarModelVariantRelationship(-42, carModelVariant.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('CAR MODEL VARIANT node and CAR MODEL VARIANT node do not exist', async () => {
+    test('SESSION RESULT node and CAR MODEL VARIANT node do not exist', async () => {
         await expect(SessionResult.deleteAchievedWithCarModelVariantRelationship(-42, -43))
             .rejects
             .toThrow(NodeNotFoundError)

@@ -18,14 +18,14 @@ describe('Deleting a ›achieved-on-track-layout‹ relationship', () => {
     })
 
     test('TRACK LAYOUT node does not exist', async () => {
-        const trackLayout = await seedNode(NodeTypeEnum.LAP_TIME)
+        const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
 
         await expect(LapTime.deleteAchievedOnTrackLayoutRelationship(-42, trackLayout.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('TRACK LAYOUT node and TRACK LAYOUT node do not exist', async () => {
+    test('LAP TIME node and TRACK LAYOUT node do not exist', async () => {
         await expect(LapTime.deleteAchievedOnTrackLayoutRelationship(-42, -43))
             .rejects
             .toThrow(NodeNotFoundError)

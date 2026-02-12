@@ -18,14 +18,14 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
     })
 
     test('LAP TIME node does not exist', async () => {
-        const lapTime = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
+        const lapTime = await seedNode(NodeTypeEnum.LAP_TIME)
 
         await expect(TrackLayout.deleteHasLapTimeRelationship(-42, lapTime.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('LAP TIME node and LAP TIME node do not exist', async () => {
+    test('TRACK LAYOUT node and LAP TIME node do not exist', async () => {
         await expect(TrackLayout.deleteHasLapTimeRelationship(-42, -43))
             .rejects
             .toThrow(NodeNotFoundError)

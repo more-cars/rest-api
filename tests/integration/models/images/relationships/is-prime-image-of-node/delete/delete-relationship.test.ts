@@ -18,14 +18,14 @@ describe('Deleting a ›is-prime-image-of-node‹ relationship', () => {
     })
 
     test('NODE node does not exist', async () => {
-        const node = await seedNode(NodeTypeEnum.IMAGE)
+        const node = await seedNode(NodeTypeEnum.COMPANY)
 
         await expect(Image.deleteIsPrimeImageOfNodeRelationship(-42, node.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('NODE node and NODE node do not exist', async () => {
+    test('IMAGE node and NODE node do not exist', async () => {
         await expect(Image.deleteIsPrimeImageOfNodeRelationship(-42, -43))
             .rejects
             .toThrow(NodeNotFoundError)

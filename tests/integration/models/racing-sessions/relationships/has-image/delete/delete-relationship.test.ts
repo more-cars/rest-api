@@ -18,14 +18,14 @@ describe('Deleting a ›has-image‹ relationship', () => {
     })
 
     test('IMAGE node does not exist', async () => {
-        const image = await seedNode(NodeTypeEnum.RACING_SESSION)
+        const image = await seedNode(NodeTypeEnum.IMAGE)
 
         await expect(RacingSession.deleteHasImageRelationship(-42, image.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('IMAGE node and IMAGE node do not exist', async () => {
+    test('RACING SESSION node and IMAGE node do not exist', async () => {
         await expect(RacingSession.deleteHasImageRelationship(-42, -43))
             .rejects
             .toThrow(NodeNotFoundError)

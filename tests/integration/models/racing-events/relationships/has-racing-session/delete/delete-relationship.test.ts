@@ -18,14 +18,14 @@ describe('Deleting a ›has-racing-session‹ relationship', () => {
     })
 
     test('RACING SESSION node does not exist', async () => {
-        const racingSession = await seedNode(NodeTypeEnum.RACING_EVENT)
+        const racingSession = await seedNode(NodeTypeEnum.RACING_SESSION)
 
         await expect(RacingEvent.deleteHasRacingSessionRelationship(-42, racingSession.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('RACING SESSION node and RACING SESSION node do not exist', async () => {
+    test('RACING EVENT node and RACING SESSION node do not exist', async () => {
         await expect(RacingEvent.deleteHasRacingSessionRelationship(-42, -43))
             .rejects
             .toThrow(NodeNotFoundError)

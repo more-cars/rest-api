@@ -8,56 +8,56 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
-describe('Deleting a ›belongs-to-company‹ relationship', () => {
+describe('Deleting a ›has-car-model‹ relationship', () => {
     test('BRAND node does not exist', async () => {
         const brand = await seedNode(NodeTypeEnum.BRAND)
 
-        await expect(Brand.deleteBelongsToCompanyRelationship(brand.id, -43))
+        await expect(Brand.deleteHasCarModelRelationship(brand.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('COMPANY node does not exist', async () => {
-        const company = await seedNode(NodeTypeEnum.COMPANY)
+    test('CAR MODEL node does not exist', async () => {
+        const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
 
-        await expect(Brand.deleteBelongsToCompanyRelationship(-42, company.id))
+        await expect(Brand.deleteHasCarModelRelationship(-42, carModel.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('BRAND node and COMPANY node do not exist', async () => {
-        await expect(Brand.deleteBelongsToCompanyRelationship(-42, -43))
+    test('BRAND node and CAR MODEL node do not exist', async () => {
+        await expect(Brand.deleteHasCarModelRelationship(-42, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('both nodes exist, but have no ›belongs-to-company‹ relationship', async () => {
+    test('both nodes exist, but have no ›has-car-model‹ relationship', async () => {
         const brand = await seedNode(NodeTypeEnum.BRAND)
-        const company = await seedNode(NodeTypeEnum.COMPANY)
+        const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
 
-        await expect(Brand.deleteBelongsToCompanyRelationship(brand.id, company.id))
+        await expect(Brand.deleteHasCarModelRelationship(brand.id, carModel.id))
             .rejects
             .toThrow(RelationshipNotFoundError)
     })
 
-    test('both nodes exist and have a ›belongs-to-company‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.BRAND, NodeTypeEnum.COMPANY, DbRelationship.BrandBelongsToCompany)
+    test('both nodes exist and have a ›has-car-model‹ relationship', async () => {
+        const seededRelationship = await seedRelationship(NodeTypeEnum.BRAND, NodeTypeEnum.CAR_MODEL, DbRelationship.BrandHasCarModel)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.BrandBelongsToCompany,
+            DbRelationship.BrandHasCarModel,
         )
 
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await Brand.deleteBelongsToCompanyRelationship(seededRelationship.start_node_id, seededRelationship.end_node_id)
+        await Brand.deleteHasCarModelRelationship(seededRelationship.start_node_id, seededRelationship.end_node_id)
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.BrandBelongsToCompany,
+            DbRelationship.BrandHasCarModel,
         )
 
         expect(relationshipAfter)

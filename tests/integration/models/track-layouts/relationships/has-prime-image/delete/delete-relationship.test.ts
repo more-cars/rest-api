@@ -18,14 +18,14 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('IMAGE node does not exist', async () => {
-        const image = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
+        const image = await seedNode(NodeTypeEnum.IMAGE)
 
         await expect(TrackLayout.deleteHasPrimeImageRelationship(-42, image.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('IMAGE node and IMAGE node do not exist', async () => {
+    test('TRACK LAYOUT node and IMAGE node do not exist', async () => {
         await expect(TrackLayout.deleteHasPrimeImageRelationship(-42, -43))
             .rejects
             .toThrow(NodeNotFoundError)

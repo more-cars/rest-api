@@ -18,14 +18,14 @@ describe('Deleting a ›used-the-track-layout‹ relationship', () => {
     })
 
     test('TRACK LAYOUT node does not exist', async () => {
-        const trackLayout = await seedNode(NodeTypeEnum.RACING_EVENT)
+        const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
 
         await expect(RacingEvent.deleteUsedTheTrackLayoutRelationship(-42, trackLayout.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('TRACK LAYOUT node and TRACK LAYOUT node do not exist', async () => {
+    test('RACING EVENT node and TRACK LAYOUT node do not exist', async () => {
         await expect(RacingEvent.deleteUsedTheTrackLayoutRelationship(-42, -43))
             .rejects
             .toThrow(NodeNotFoundError)

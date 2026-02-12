@@ -18,14 +18,14 @@ describe('Deleting a ›took-place-at-race-track‹ relationship', () => {
     })
 
     test('RACE TRACK node does not exist', async () => {
-        const raceTrack = await seedNode(NodeTypeEnum.RACING_EVENT)
+        const raceTrack = await seedNode(NodeTypeEnum.RACE_TRACK)
 
         await expect(RacingEvent.deleteTookPlaceAtRaceTrackRelationship(-42, raceTrack.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
 
-    test('RACE TRACK node and RACE TRACK node do not exist', async () => {
+    test('RACING EVENT node and RACE TRACK node do not exist', async () => {
         await expect(RacingEvent.deleteTookPlaceAtRaceTrackRelationship(-42, -43))
             .rejects
             .toThrow(NodeNotFoundError)
