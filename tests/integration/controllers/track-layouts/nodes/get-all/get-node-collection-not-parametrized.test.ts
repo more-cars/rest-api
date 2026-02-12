@@ -34,4 +34,16 @@ describe('Expecting correct status code when requesting a plain node collection'
         expect(response.statusCode)
             .toBe(200)
     })
+
+    test('Input is valid, but something breaks on the way', async () => {
+        TrackLayout.findAll = vi.fn().mockImplementation(() => {
+            throw new Error()
+        })
+
+        const response = await request(app)
+            .get('/track-layouts')
+
+        expect(response.statusCode)
+            .toBe(500)
+    })
 })
