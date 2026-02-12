@@ -50,3 +50,24 @@ test('Request is invalid', async () => {
     expect(response.statusCode)
         .toBe(400)
 })
+
+test('Input is valid, but something breaks on the way', async () => {
+    <%= h.changeCase.pascal(nodeType) %>.create = vi.fn().mockImplementation(() => {
+        throw new Error()
+    })
+
+    const response = await request(app)
+        .post('/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>')
+        .send({
+<% for (prop in properties) { -%>
+<%    if (properties[prop].mandatory && properties[prop].datatype === 'string') { -%>
+            <%= prop %>: "<%= properties[prop].example %>",
+<%    } else if (properties[prop].mandatory) { -%>
+            <%= prop %>: <%= properties[prop].example -%>,
+<%    } -%>
+<% } -%>
+        })
+
+    expect(response.statusCode)
+        .toBe(500)
+})

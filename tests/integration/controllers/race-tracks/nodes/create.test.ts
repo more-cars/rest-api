@@ -36,4 +36,17 @@ test('Request is invalid', async () => {
         .toBe(400)
 })
 
+test('Input is valid, but something breaks on the way', async () => {
+    RaceTrack.create = vi.fn().mockImplementation(() => {
+        throw new Error()
+    })
 
+    const response = await request(app)
+        .post('/race-tracks')
+        .send({
+            name: "Lausitzring",
+        })
+
+    expect(response.statusCode)
+        .toBe(500)
+})

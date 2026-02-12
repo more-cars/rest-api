@@ -38,4 +38,18 @@ test('Request is invalid', async () => {
         .toBe(400)
 })
 
+test('Input is valid, but something breaks on the way', async () => {
+    LapTime.create = vi.fn().mockImplementation(() => {
+        throw new Error()
+    })
 
+    const response = await request(app)
+        .post('/lap-times')
+        .send({
+            time: "PT1M33.294S",
+            driver_name: "Klaus Ludwig",
+        })
+
+    expect(response.statusCode)
+        .toBe(500)
+})

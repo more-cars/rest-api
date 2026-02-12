@@ -57,3 +57,19 @@ test('Request is invalid', async () => {
     expect(response.statusCode)
         .toBe(400)
 })
+
+test('Input is valid, but something breaks on the way', async () => {
+    Image.create = vi.fn().mockImplementation(() => {
+        throw new Error()
+    })
+
+    const response = await request(app)
+        .post('/images')
+        .send({
+            image_provider: 'flickr',
+            external_id: '1234',
+        })
+
+    expect(response.statusCode)
+        .toBe(500)
+})

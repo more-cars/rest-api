@@ -35,3 +35,18 @@ test('Request is invalid', async () => {
     expect(response.statusCode)
         .toBe(400)
 })
+
+test('Input is valid, but something breaks on the way', async () => {
+    RacingGame.create = vi.fn().mockImplementation(() => {
+        throw new Error()
+    })
+
+    const response = await request(app)
+        .post('/racing-games')
+        .send({
+            name: "Forza Motorsport 7",
+        })
+
+    expect(response.statusCode)
+        .toBe(500)
+})

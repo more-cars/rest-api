@@ -36,4 +36,17 @@ test('Request is invalid', async () => {
         .toBe(400)
 })
 
+test('Input is valid, but something breaks on the way', async () => {
+    CarModelVariant.create = vi.fn().mockImplementation(() => {
+        throw new Error()
+    })
 
+    const response = await request(app)
+        .post('/car-model-variants')
+        .send({
+            name: "BMW M3",
+        })
+
+    expect(response.statusCode)
+        .toBe(500)
+})

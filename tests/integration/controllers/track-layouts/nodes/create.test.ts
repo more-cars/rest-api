@@ -36,4 +36,17 @@ test('Request is invalid', async () => {
         .toBe(400)
 })
 
+test('Input is valid, but something breaks on the way', async () => {
+    TrackLayout.create = vi.fn().mockImplementation(() => {
+        throw new Error()
+    })
 
+    const response = await request(app)
+        .post('/track-layouts')
+        .send({
+            name: "GP Circuit",
+        })
+
+    expect(response.statusCode)
+        .toBe(500)
+})
