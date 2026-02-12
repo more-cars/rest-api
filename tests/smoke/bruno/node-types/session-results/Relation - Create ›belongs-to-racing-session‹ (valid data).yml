@@ -1,0 +1,29 @@
+info:
+  name: Create ›belongs-to-racing-session‹ relation (valid data)
+  type: http
+  tags:
+    - create
+    - relation
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/session-results/{{validSessionResultId}}/belongs-to-racing-session/{{validRacingSessionId}}"
+
+  assert {
+res.status: 201
+res.body: isJson
+res.body.data.relationship_id: gte 12000000
+res.body.data.relationship_name: belongs-to-racing-session
+res.body.data.relationship_partner: isJson
+res.body.data.relationship_partner.node_type: racing-session
+res.body.data.relationship_partner.data.id: {{validRacingSessionId}}
+res.body.data.created_at: isString
+res.body.data.updated_at: isString
+}
+
+  script:pre-request {
+  const lib = require ('./lib/lib')
+  await lib.SessionResults.ensureValidSessionResultExists()
+  await lib.RacingSessions.ensureValidRacingSessionExists()
+}

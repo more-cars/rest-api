@@ -9,7 +9,7 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/racing-series/{{validRacingSeriesId}}/has-image"
+  url: "{{baseUrl}}/session-results/{{validSessionResultId}}/has-image"
 
 runtime:
   assertions:
@@ -45,8 +45,8 @@ runtime:
   scripts:
     - type: before-request
       code: |-
-        const RacingSeries = require('./lib/node-types/RacingSeries.js')
+        const SessionResults = require('./lib/node-types/SessionResults.js')
         const Images = require('./lib/node-types/Images.js')
-        await RacingSeries.create()
+        await SessionResults.create()
         await Images.create()
-        await RacingSeries.createHasImageRelationship()
+        await SessionResults.createHasImageRelationship()

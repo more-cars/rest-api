@@ -1,0 +1,25 @@
+info:
+  name: Delete ›achieved-with-car-model-variant‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/session-results/{{validSessionResultId}}/achieved-with-car-model-variant/{{validCarModelVariantId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const SessionResults = require('./lib/node-types/SessionResults.js')
+        const CarModelVariants = require('./lib/node-types/CarModelVariants.js')
+        await SessionResults.create()
+        await CarModelVariants.create()
+        await SessionResults.createAchievedWithCarModelVariantRelationship()

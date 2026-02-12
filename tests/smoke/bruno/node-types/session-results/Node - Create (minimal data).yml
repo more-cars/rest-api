@@ -1,0 +1,29 @@
+info:
+  name: Create Session Result (minimal data)
+  type: http
+  tags:
+    - create
+    - node
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/session-results"
+  body:
+    type: json
+    data: |-
+      {
+        "position": 1,
+        "driver_name": "Lewis Hamilton"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data.id
+      operator: gte
+      value: "12000000"
