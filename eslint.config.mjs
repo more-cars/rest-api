@@ -8,7 +8,10 @@ export default defineConfig(
     eslint.configs.recommended,
     tseslint.configs.strict,
     tseslint.configs.stylistic,
-    globalIgnores(["tests/**/*.js"]),
+    globalIgnores([
+        "tests/**/*.js",
+        "tests/performance"
+    ]),
     {
         rules: {
             "@typescript-eslint/no-duplicate-enum-values": "off",
