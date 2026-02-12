@@ -1,0 +1,25 @@
+info:
+  name: Delete ›has-session-result‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/racing-sessions/{{validRacingSessionId}}/has-session-result/{{validSessionResultId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const RacingSessions = require('./lib/node-types/RacingSessions.js')
+        const SessionResults = require('./lib/node-types/SessionResults.js')
+        await RacingSessions.create()
+        await SessionResults.create()
+        await RacingSessions.createHasSessionResultRelationship()

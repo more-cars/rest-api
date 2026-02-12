@@ -1,0 +1,23 @@
+info:
+  name: Get all Racing Sessions (invalid page)
+  type: http
+  tags:
+    - get
+    - node
+    - collection
+    - agination
+    - invalid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/racing-sessions?page=-2"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "400"
+    - expression: res.body
+      operator: isString
+    - expression: res.body
+      operator: isNotEmpty

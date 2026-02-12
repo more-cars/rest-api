@@ -1,0 +1,51 @@
+info:
+  name: Get ›belongs-to-racing-event‹ relation (valid data)
+  type: http
+  tags:
+    - get
+    - relation
+    - valid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/racing-sessions/{{validRacingSessionId}}/belongs-to-racing-event"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data
+      operator: isJson
+    - expression: res.body.data.relationship_id
+      operator: gte
+      value: "12000000"
+    - expression: res.body.data.relationship_name
+      operator: eq
+      value: "belongs-to-racing-event"
+    - expression: res.body.data.relationship_partner
+      operator: isJson
+    - expression: res.body.data.relationship_partner.node_type
+      operator: eq
+      value: "racing-event"
+    - expression: res.body.data.relationship_partner.data.id
+      operator: eq
+      value: "{{validRacingEventId}}"
+    - expression: res.body.data.created_at
+      operator: isString
+    - expression: res.body.data.created_at
+      operator: isNotEmpty
+    - expression: res.body.data.updated_at
+      operator: isString
+    - expression: res.body.data.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const RacingSessions = require('./lib/node-types/RacingSessions.js')
+        const RacingEvents = require('./lib/node-types/RacingEvents.js')
+        await RacingSessions.create()
+        await RacingEvents.create()
+        await RacingSessions.createBelongsToRacingEventRelationship()
