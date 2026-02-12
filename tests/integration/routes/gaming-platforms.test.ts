@@ -13,4 +13,12 @@ describe('Gaming Platforms', () => {
         expect(GamingPlatformController.create)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get Node by ID', async () => {
+        await request(app)
+            .get('/gaming-platforms/123')
+
+        expect(GamingPlatformController.getById)
+            .toHaveBeenCalledTimes(1)
+    })
 })

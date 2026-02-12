@@ -10724,6 +10724,48 @@
         }
       }
     },
+    "/gaming-platforms/{gaming-platform-id}": {
+      "get": {
+        "operationId": "getGamingPlatformById",
+        "tags": [
+          "Gaming Platforms"
+        ],
+        "summary": "Get `Gaming Platform` by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gaming-platform-id",
+            "description": "ID of the `Gaming Platform`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Gaming Platform` successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GamingPlatformResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. A `Gaming Platform` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/relationships/{relationship-id}": {
       "get": {
         "operationId": "getRelationshipById",

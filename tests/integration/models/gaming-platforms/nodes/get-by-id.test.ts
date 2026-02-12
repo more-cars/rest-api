@@ -1,0 +1,20 @@
+import {expect, test} from 'vitest'
+import {GamingPlatform} from "../../../../../src/models/gaming-platforms/GamingPlatform"
+import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
+
+test('Fetching a GAMING PLATFORM that does not exist should return "false"', async () => {
+    const expectedGamingPlatform = false
+    const actualGamingPlatform = await GamingPlatform.findById(-42)
+
+    expect(actualGamingPlatform)
+        .toEqual(expectedGamingPlatform)
+})
+
+test('When the GAMING PLATFORM exists it should be returned', async () => {
+    const expectedGamingPlatform = await seedNode(NodeTypeEnum.GAMING_PLATFORM)
+    const actualGamingPlatform = await GamingPlatform.findById(expectedGamingPlatform.id)
+
+    expect(actualGamingPlatform)
+        .toEqual(expectedGamingPlatform)
+})
