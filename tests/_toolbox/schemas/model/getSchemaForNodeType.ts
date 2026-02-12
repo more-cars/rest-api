@@ -43,8 +43,6 @@ export function getSchemaForNodeType(nodeType: NodeTypeEnum) {
             return RacingGameSchema
         case NodeTypeEnum.GAMING_PLATFORM:
             return GamingPlatformSchema
-        case NodeTypeEnum.GAMING_PLATFORM:
-            return GamingPlatformSchema
         case NodeTypeEnum.IMAGE:
             return ImageSchema
         default:
