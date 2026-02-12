@@ -28,7 +28,7 @@ test('Input data is structurally invalid', async () => {
         .toBe(400)
 })
 
-test('Input data is semantically invalid', async () => {
+test('Request is invalid', async () => {
     const response = await request(app)
         .post('/racing-series') // payload is missing
 
