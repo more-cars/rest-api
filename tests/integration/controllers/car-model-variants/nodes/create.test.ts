@@ -33,7 +33,7 @@ test('Request is invalid', async () => {
         .post('/car-model-variants') // payload is missing
 
     expect(response.statusCode)
-        .toBe(500)
+        .toBe(400)
 })
 
 

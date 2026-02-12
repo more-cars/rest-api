@@ -35,7 +35,7 @@ test('Request is invalid', async () => {
         .post('/session-results') // payload is missing
 
     expect(response.statusCode)
-        .toBe(500)
+        .toBe(400)
 })
 
 

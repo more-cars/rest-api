@@ -48,5 +48,5 @@ test('Request is invalid', async () => {
         .post('/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>') // payload is missing
 
     expect(response.statusCode)
-        .toBe(500)
+        .toBe(400)
 })

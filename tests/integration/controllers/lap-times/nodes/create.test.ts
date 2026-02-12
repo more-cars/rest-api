@@ -35,7 +35,7 @@ test('Request is invalid', async () => {
         .post('/lap-times') // payload is missing
 
     expect(response.statusCode)
-        .toBe(500)
+        .toBe(400)
 })
 
 
