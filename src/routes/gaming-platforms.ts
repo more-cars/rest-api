@@ -12,5 +12,6 @@ router.get('/gaming-platforms/:gamingPlatformId/features-racing-game', GamingPla
 router.delete('/gaming-platforms/:gamingPlatformId/features-racing-game/:racingGameId', GamingPlatformController.deleteFeaturesRacingGameRelation)
 router.post('/gaming-platforms/:gamingPlatformId/has-image/:imageId', GamingPlatformController.createHasImageRelation)
 router.get('/gaming-platforms/:gamingPlatformId/has-image', GamingPlatformController.getAllHasImageRelations)
+router.delete('/gaming-platforms/:gamingPlatformId/has-image/:imageId', GamingPlatformController.deleteHasImageRelation)
 
 export default router

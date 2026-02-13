@@ -145,4 +145,23 @@ export const GamingPlatform = {
 
         return getAllRels(gamingPlatformId, RelationshipType.GamingPlatformHasImage)
     },
+
+    async deleteHasImageRelationship(gamingPlatformId: number, imageId: number) {
+        const gamingPlatform = await GamingPlatform.findById(gamingPlatformId)
+        if (!gamingPlatform) {
+            throw new NodeNotFoundError(gamingPlatformId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const relationship = await getSpecificRel(gamingPlatformId, imageId, RelationshipType.GamingPlatformHasImage)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(GamingPlatformRelationship.hasImage, gamingPlatformId, imageId)
+        }
+
+        await deleteSpecificRel(gamingPlatformId, imageId, RelationshipType.GamingPlatformHasImage)
+    },
 }

@@ -77,4 +77,12 @@ describe('Gaming Platforms', () => {
         expect(GamingPlatformController.getAllHasImageRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-image‹ relationship', async () => {
+        await request(app)
+            .delete('/gaming-platforms/123/has-image/456')
+
+        expect(GamingPlatformController.deleteHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
