@@ -14,5 +14,6 @@ router.post('/gaming-platforms/:gamingPlatformId/has-image/:imageId', GamingPlat
 router.get('/gaming-platforms/:gamingPlatformId/has-image', GamingPlatformController.getAllHasImageRelations)
 router.delete('/gaming-platforms/:gamingPlatformId/has-image/:imageId', GamingPlatformController.deleteHasImageRelation)
 router.post('/gaming-platforms/:gamingPlatformId/has-prime-image/:imageId', GamingPlatformController.createHasPrimeImageRelation)
+router.get('/gaming-platforms/:gamingPlatformId/has-prime-image', GamingPlatformController.getHasPrimeImageRelation)
 
 export default router
