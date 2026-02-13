@@ -18,7 +18,9 @@ import {getAllRels} from "../relationships/getAllRels"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {Image} from "../images/Image"
-
+import {DbRelationship} from "../../db/types/DbRelationship"
+import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
+import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 
 export const GamingPlatform = {
     async create(data: CreateGamingPlatformInput): Promise<GamingPlatformNode> {
@@ -163,5 +165,31 @@ export const GamingPlatform = {
         }
 
         await deleteSpecificRel(gamingPlatformId, imageId, RelationshipType.GamingPlatformHasImage)
+    },
+
+    async createHasPrimeImageRelationship(gamingPlatformId: number, imageId: number) {
+        const gamingPlatform = await GamingPlatform.findById(gamingPlatformId)
+        if (!gamingPlatform) {
+            throw new NodeNotFoundError(gamingPlatformId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const existingRelation = await getSpecificRel(gamingPlatformId, imageId, RelationshipType.GamingPlatformHasPrimeImage)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(GamingPlatformRelationship.hasPrimeImage, gamingPlatformId, imageId)
+        }
+        await deleteDeprecatedRel(gamingPlatformId, DbRelationship.GamingPlatformHasPrimeImage, NodeTypeLabel.Image)
+
+
+        const createdRelationship = await createRel(gamingPlatformId, imageId, RelationshipType.GamingPlatformHasPrimeImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }

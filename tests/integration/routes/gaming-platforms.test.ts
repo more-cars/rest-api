@@ -85,4 +85,12 @@ describe('Gaming Platforms', () => {
         expect(GamingPlatformController.deleteHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .post('/gaming-platforms/123/has-prime-image/456')
+
+        expect(GamingPlatformController.createHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

@@ -142,6 +142,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
         NodeTypeEnum.GAMING_PLATFORM, new Map([
             [RelationshipType.GamingPlatformFeaturesRacingGame, NodeTypeEnum.RACING_GAME],
             [RelationshipType.GamingPlatformHasImage, NodeTypeEnum.IMAGE],
+            [RelationshipType.GamingPlatformHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
 
     const match = relationships.get(startNodeType)?.get(relationshipName as RelationshipType)
