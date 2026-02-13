@@ -6,6 +6,7 @@ import {deleteNode} from "./gaming-platforms/deleteNode"
 import {createFeaturesRacingGameRelation} from "./gaming-platforms/createFeaturesRacingGameRelation"
 import {getAllFeaturesRacingGameRelations} from "./gaming-platforms/getAllFeaturesRacingGameRelations"
 import {deleteFeaturesRacingGameRelation} from "./gaming-platforms/deleteFeaturesRacingGameRelation"
+import {createHasImageRelation} from "./gaming-platforms/createHasImageRelation"
 
 export const GamingPlatformController = {
     async create(req: express.Request, res: express.Response) {
@@ -34,5 +35,9 @@ export const GamingPlatformController = {
 
     async deleteFeaturesRacingGameRelation(req: express.Request, res: express.Response) {
         await deleteFeaturesRacingGameRelation(req, res)
+    },
+
+    async createHasImageRelation(req: express.Request, res: express.Response) {
+        await createHasImageRelation(req, res)
     },
 }

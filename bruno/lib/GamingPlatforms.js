@@ -25,3 +25,7 @@ exports.getAllGamingPlatforms = async function () {
 exports.createGamingPlatformFeaturesRacingGameRelationship = async function (gamingPlatformId, racingGameId) {
     return submitPostRequest("/gaming-platforms/" + gamingPlatformId + "/features-racing-game/" + racingGameId)
 }
+
+exports.createGamingPlatformHasImageRelationship = async function (gamingPlatformId, imageId) {
+    return submitPostRequest("/gaming-platforms/" + gamingPlatformId + "/has-image/" + imageId)
+}

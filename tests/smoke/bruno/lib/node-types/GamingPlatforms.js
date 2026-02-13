@@ -1,5 +1,9 @@
 const {post} = require("../apiRequest.js")
 
+exports.createHasImageRelationship = async function () {
+    await post("/gaming-platforms/" + bru.getEnvVar('validGamingPlatformId') + "/has-image/" + bru.getEnvVar('validImageId'))
+}
+
 exports.createFeaturesRacingGameRelationship = async function () {
     await post("/gaming-platforms/" + bru.getEnvVar('validGamingPlatformId') + "/features-racing-game/" + bru.getEnvVar('validRacingGameId'))
 }

@@ -17,6 +17,8 @@ import {GamingPlatformRelationship} from "./types/GamingPlatformRelationship"
 import {getAllRels} from "../relationships/getAllRels"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
+import {Image} from "../images/Image"
+
 
 export const GamingPlatform = {
     async create(data: CreateGamingPlatformInput): Promise<GamingPlatformNode> {
@@ -108,5 +110,30 @@ export const GamingPlatform = {
         }
 
         await deleteSpecificRel(gamingPlatformId, racingGameId, RelationshipType.GamingPlatformFeaturesRacingGame)
+    },
+
+    async createHasImageRelationship(gamingPlatformId: number, imageId: number) {
+        const gamingPlatform = await GamingPlatform.findById(gamingPlatformId)
+        if (!gamingPlatform) {
+            throw new NodeNotFoundError(gamingPlatformId)
+        }
+
+        const image = await Image.findById(imageId)
+        if (!image) {
+            throw new NodeNotFoundError(imageId)
+        }
+
+        const existingRelation = await getSpecificRel(gamingPlatformId, imageId, RelationshipType.GamingPlatformHasImage)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(GamingPlatformRelationship.hasImage, gamingPlatformId, imageId)
+        }
+
+
+        const createdRelationship = await createRel(gamingPlatformId, imageId, RelationshipType.GamingPlatformHasImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }
