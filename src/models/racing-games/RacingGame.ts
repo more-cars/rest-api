@@ -315,4 +315,23 @@ export const RacingGame = {
 
         return getAllRels(racingGameId, RelationshipType.RacingGameReleasedOnGamingPlatform)
     },
+
+    async deleteReleasedOnGamingPlatformRelationship(racingGameId: number, gamingPlatformId: number) {
+        const racingGame = await RacingGame.findById(racingGameId)
+        if (!racingGame) {
+            throw new NodeNotFoundError(racingGameId)
+        }
+
+        const gamingPlatform = await GamingPlatform.findById(gamingPlatformId)
+        if (!gamingPlatform) {
+            throw new NodeNotFoundError(gamingPlatformId)
+        }
+
+        const relationship = await getSpecificRel(racingGameId, gamingPlatformId, RelationshipType.RacingGameReleasedOnGamingPlatform)
+        if (!relationship) {
+            throw new RelationshipNotFoundError(RacingGameRelationship.releasedOnGamingPlatform, racingGameId, gamingPlatformId)
+        }
+
+        await deleteSpecificRel(racingGameId, gamingPlatformId, RelationshipType.RacingGameReleasedOnGamingPlatform)
+    },
 }

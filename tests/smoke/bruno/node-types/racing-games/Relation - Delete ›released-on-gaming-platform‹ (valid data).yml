@@ -1,0 +1,25 @@
+info:
+  name: Delete ›released-on-gaming-platform‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/racing-games/{{validRacingGameId}}/released-on-gaming-platform/{{validGamingPlatformId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const RacingGames = require('./lib/node-types/RacingGames.js')
+        const GamingPlatforms = require('./lib/node-types/GamingPlatforms.js')
+        await RacingGames.create()
+        await GamingPlatforms.create()
+        await RacingGames.createReleasedOnGamingPlatformRelationship()

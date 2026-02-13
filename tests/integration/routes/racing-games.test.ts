@@ -102,6 +102,14 @@ describe('Racing Games', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete ›released-on-gaming-platform‹ relationship', async () => {
+        await request(app)
+            .delete('/racing-games/123/released-on-gaming-platform/456')
+
+        expect(RacingGameController.deleteReleasedOnGamingPlatformRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/racing-games/123/has-image/456')
