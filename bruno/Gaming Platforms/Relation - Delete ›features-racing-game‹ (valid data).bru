@@ -1,0 +1,23 @@
+meta {
+  name: Delete ›features-racing-game‹ relation (valid data)
+  type: http
+  tags: [
+    delete
+    relation
+    valid
+  ]
+}
+
+delete {
+  url: {{baseUrl}}/gaming-platforms/{{validGamingPlatformId}}/features-racing-game/{{validRacingGameId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 204
+}
+
+script:pre-request {
+  await lib.GamingPlatforms.ensureGamingPlatformFeaturesRacingGameRelationshipExists()
+}

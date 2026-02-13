@@ -1,0 +1,25 @@
+meta {
+  name: Delete ›features-racing-game‹ relation (invalid data)
+  type: http
+  tags: [
+    delete
+    relation
+    invalid
+  ]
+}
+
+delete {
+  url: {{baseUrl}}/gaming-platforms/{{invalidGamingPlatformId}}/features-racing-game/{{invalidRacingGameId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
+
+script:pre-request {
+  lib.tools.generateInvalidId('GamingPlatform')
+  lib.tools.generateInvalidId('RacingGame')
+}

@@ -10950,6 +10950,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Gaming Platforms"
+        ],
+        "summary": "Deletes the ›features-racing-game‹ relationship between the `Gaming Platform` and the `Racing Game`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gaming-platform-id",
+            "description": "ID of the `Gaming Platform`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "racing-game-id",
+            "description": "ID of the `Racing Game`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›features-racing-game‹ relationship between `Gaming Platform` and `Racing Game` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›features-racing-game‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/relationships/{relationship-id}": {
