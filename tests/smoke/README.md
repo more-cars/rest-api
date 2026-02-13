@@ -32,10 +32,10 @@ They will create any required data on their own - be it a node, a relationship o
 E.g. for the request `Get Brand by ID` to work there actually needs to exist
 a brand in the database and Bruno needs to know the ID of it.
 There are `pre-request` sections in the scripts which will take care of such things.
-The referenced helper functions can be found in the `bruno/collection.bru` file.
+The referenced helper functions can be found in the `bruno/lib` folder.
 
 On the command line the test execution can be triggered via `npm run tests:smoke:cli`.
 The script will prompt for the required information and then run the tests.
 To avoid the prompting (e.g. when running in the pipeline)
 the information can also be prepared in form of environment variables.
-See `tests/smoke/run-tests.sh` to find out which those are.
+See `run-smoke-tests.sh` to find out which those are.

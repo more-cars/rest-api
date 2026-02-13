@@ -21,10 +21,12 @@ spec:
 
               if [ "$REPORTS_ENABLED" = true ]; then
                 mkdir -p "$REPORTS_PATH"
-                cd bruno
+                cd tests/smoke/bruno
+                npx bru run --sandbox=developer --env "$TARGET_CLUSTER"-"$TARGET_ENVIRONMENT" --reporter-json "$REPORTS_PATH"/report.json --reporter-junit "$REPORTS_PATH"/report.xml --reporter-html "$REPORTS_PATH"/report.html
                 npx bru run --sandbox=developer --env-var baseUrl=$API_URL --reporter-json ../"$REPORTS_PATH"/report.json --reporter-junit ../"$REPORTS_PATH"/report.xml --reporter-html ../"$REPORTS_PATH"/report.html
               else
-                cd bruno
+                cd tests/smoke/bruno
+                npx bru run --sandbox=developer --env "$TARGET_CLUSTER"-"$TARGET_ENVIRONMENT"
                 npx bru run --sandbox=developer --env-var baseUrl=$API_URL
               fi
               
