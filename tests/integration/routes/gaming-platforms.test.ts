@@ -69,4 +69,12 @@ describe('Gaming Platforms', () => {
         expect(GamingPlatformController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›has-image‹ relationships', async () => {
+        await request(app)
+            .get('/gaming-platforms/123/has-image')
+
+        expect(GamingPlatformController.getAllHasImageRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })

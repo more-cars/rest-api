@@ -136,4 +136,13 @@ export const GamingPlatform = {
 
         return createdRelationship
     },
+
+    async getAllHasImageRelationships(gamingPlatformId: number) {
+        const gamingPlatform = await GamingPlatform.findById(gamingPlatformId)
+        if (!gamingPlatform) {
+            throw new NodeNotFoundError(gamingPlatformId)
+        }
+
+        return getAllRels(gamingPlatformId, RelationshipType.GamingPlatformHasImage)
+    },
 }

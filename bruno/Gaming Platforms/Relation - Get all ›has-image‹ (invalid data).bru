@@ -1,0 +1,25 @@
+meta {
+  name: Get all ›has-image‹ relations (invalid data)
+  type: http
+  tags: [
+    get
+    relation
+    collection
+    invalid
+  ]
+}
+
+get {
+  url: {{baseUrl}}/gaming-platforms/{{invalidGamingPlatformId}}/has-image
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: 404
+  res.body: isString
+}
+
+script:pre-request {
+  lib.tools.generateInvalidId('GamingPlatform')
+}

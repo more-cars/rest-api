@@ -10993,6 +10993,48 @@
         }
       }
     },
+    "/gaming-platforms/{gaming-platform-id}/has-image": {
+      "get": {
+        "operationId": "getGamingPlatformHasImageRel",
+        "tags": [
+          "Gaming Platforms"
+        ],
+        "summary": "Get all ›has-image‹ relationships for the `Gaming Platform`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gaming-platform-id",
+            "description": "ID of the `Gaming Platform`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-image‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GamingPlatformHasImageCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Gaming Platform` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/gaming-platforms/{gaming-platform-id}/has-image/{image-id}": {
       "post": {
         "tags": [
@@ -16118,6 +16160,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/GamingPlatformHasImage"
+          }
+        }
+      },
+      "GamingPlatformHasImageCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GamingPlatformHasImageResponse"
+            }
           }
         }
       },
