@@ -4,6 +4,7 @@ import {getById} from "./gaming-platforms/getById"
 import {getAll} from "./gaming-platforms/getAll"
 import {deleteNode} from "./gaming-platforms/deleteNode"
 import {createFeaturesRacingGameRelation} from "./gaming-platforms/createFeaturesRacingGameRelation"
+import {getAllFeaturesRacingGameRelations} from "./gaming-platforms/getAllFeaturesRacingGameRelations"
 
 export const GamingPlatformController = {
     async create(req: express.Request, res: express.Response) {
@@ -24,5 +25,9 @@ export const GamingPlatformController = {
 
     async createFeaturesRacingGameRelation(req: express.Request, res: express.Response) {
         await createFeaturesRacingGameRelation(req, res)
+    },
+
+    async getAllFeaturesRacingGameRelations(req: express.Request, res: express.Response) {
+        await getAllFeaturesRacingGameRelations(req, res)
     },
 }

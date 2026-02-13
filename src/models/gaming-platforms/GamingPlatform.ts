@@ -14,7 +14,7 @@ import {getSpecificRel} from "../relationships/getSpecificRel"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
 import {RelationshipType} from "../relationships/types/RelationshipType"
 import {GamingPlatformRelationship} from "./types/GamingPlatformRelationship"
-
+import {getAllRels} from "../relationships/getAllRels"
 
 export const GamingPlatform = {
     async create(data: CreateGamingPlatformInput): Promise<GamingPlatformNode> {
@@ -78,5 +78,14 @@ export const GamingPlatform = {
         }
 
         return createdRelationship
+    },
+
+    async getAllFeaturesRacingGameRelationships(gamingPlatformId: number) {
+        const gamingPlatform = await GamingPlatform.findById(gamingPlatformId)
+        if (!gamingPlatform) {
+            throw new NodeNotFoundError(gamingPlatformId)
+        }
+
+        return getAllRels(gamingPlatformId, RelationshipType.GamingPlatformFeaturesRacingGame)
     },
 }

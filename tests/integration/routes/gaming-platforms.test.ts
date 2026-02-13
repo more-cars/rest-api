@@ -45,4 +45,12 @@ describe('Gaming Platforms', () => {
         expect(GamingPlatformController.createFeaturesRacingGameRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›features-racing-game‹ relationships', async () => {
+        await request(app)
+            .get('/gaming-platforms/123/features-racing-game')
+
+        expect(GamingPlatformController.getAllFeaturesRacingGameRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })

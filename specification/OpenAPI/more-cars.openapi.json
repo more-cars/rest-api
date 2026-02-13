@@ -10857,6 +10857,48 @@
         }
       }
     },
+    "/gaming-platforms/{gaming-platform-id}/features-racing-game": {
+      "get": {
+        "operationId": "getGamingPlatformFeaturesRacingGameRel",
+        "tags": [
+          "Gaming Platforms"
+        ],
+        "summary": "Get all ›features-racing-game‹ relationships for the `Gaming Platform`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gaming-platform-id",
+            "description": "ID of the `Gaming Platform`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›features-racing-game‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GamingPlatformFeaturesRacingGameCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Gaming Platform` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/gaming-platforms/{gaming-platform-id}/features-racing-game/{racing-game-id}": {
       "post": {
         "tags": [
@@ -15921,6 +15963,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/GamingPlatformFeaturesRacingGame"
+          }
+        }
+      },
+      "GamingPlatformFeaturesRacingGameCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GamingPlatformFeaturesRacingGameResponse"
+            }
           }
         }
       },
