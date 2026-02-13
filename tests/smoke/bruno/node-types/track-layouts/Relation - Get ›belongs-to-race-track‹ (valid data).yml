@@ -10,22 +10,42 @@ http:
   method: GET
   url: "{{baseUrl}}/track-layouts/{{validTrackLayoutId}}/belongs-to-race-track"
 
-
-  assert {
-res.status: 200
-res.body: isJson
-res.body.data.relationship_id: gte 12000000
-res.body.data.relationship_name: belongs-to-race-track
-res.body.data.relationship_partner: isJson
-res.body.data.relationship_partner.node_type: race-track
-res.body.data.relationship_partner.data.id: gte 12000000
-res.body.data.created_at: isString
-res.body.data.updated_at: isString
-}
-
-  script:pre-request {
-  const lib = require ('./lib/lib')
-  await lib.TrackLayouts.ensureValidTrackLayoutExists()
-  await lib.RaceTracks.ensureValidRaceTrackExists()
-  await lib.TrackLayouts.ensureTrackLayoutBelongsToRaceTrackRelationshipExists(bru.getEnvVar('validTrackLayoutId'), bru.getEnvVar('validRaceTrackId'))
-}
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data
+      operator: isJson
+    - expression: res.body.data.relationship_id
+      operator: gte
+      value: "12000000"
+    - expression: res.body.data.relationship_name
+      operator: eq
+      value: "belongs-to-race-track"
+    - expression: res.body.data.relationship_partner
+      operator: isJson
+    - expression: res.body.data.relationship_partner.node_type
+      operator: eq
+      value: "race-track"
+    - expression: res.body.data.relationship_partner.data.id
+      operator: eq
+      value: "{{validRaceTrackId}}"
+    - expression: res.body.data.created_at
+      operator: isString
+    - expression: res.body.data.created_at
+      operator: isNotEmpty
+    - expression: res.body.data.updated_at
+      operator: isString
+    - expression: res.body.data.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const TrackLayouts = require('./lib/node-types/TrackLayouts.js')
+        const RaceTracks = require('./lib/node-types/RaceTracks.js')
+        await TrackLayouts.create()
+        await RaceTracks.create()
+        await TrackLayouts.createBelongsToRaceTrackRelationship()

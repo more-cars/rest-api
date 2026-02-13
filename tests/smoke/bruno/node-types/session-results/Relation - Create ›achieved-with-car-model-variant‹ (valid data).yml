@@ -10,20 +10,41 @@ http:
   method: POST
   url: "{{baseUrl}}/session-results/{{validSessionResultId}}/achieved-with-car-model-variant/{{validCarModelVariantId}}"
 
-  assert {
-res.status: 201
-res.body: isJson
-res.body.data.relationship_id: gte 12000000
-res.body.data.relationship_name: achieved-with-car-model-variant
-res.body.data.relationship_partner: isJson
-res.body.data.relationship_partner.node_type: car-model-variant
-res.body.data.relationship_partner.data.id: {{validCarModelVariantId}}
-res.body.data.created_at: isString
-res.body.data.updated_at: isString
-}
-
-  script:pre-request {
-  const lib = require ('./lib/lib')
-  await lib.SessionResults.ensureValidSessionResultExists()
-  await lib.CarModelVariants.ensureValidCarModelVariantExists()
-}
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data
+      operator: isJson
+    - expression: res.body.data.relationship_id
+      operator: gte
+      value: "12000000"
+    - expression: res.body.data.relationship_name
+      operator: eq
+      value: "achieved-with-car-model-variant"
+    - expression: res.body.data.relationship_partner
+      operator: isJson
+    - expression: res.body.data.relationship_partner.node_type
+      operator: eq
+      value: "car-model-variant"
+    - expression: res.body.data.relationship_partner.data.id
+      operator: eq
+      value: "{{validCarModelVariantId}}"
+    - expression: res.body.data.created_at
+      operator: isString
+    - expression: res.body.data.created_at
+      operator: isNotEmpty
+    - expression: res.body.data.updated_at
+      operator: isString
+    - expression: res.body.data.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const SessionResults = require('./lib/node-types/SessionResults.js')
+        const CarModelVariants = require('./lib/node-types/CarModelVariants.js')
+        await SessionResults.create()
+        await CarModelVariants.create()

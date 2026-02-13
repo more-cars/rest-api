@@ -24,15 +24,4 @@ runtime:
       code: |-
         const Ids = require('./lib/Ids.js')
         await Ids.generateInvalidId('RacingEvent')
-        await Ids.generateInvalidId('')
-
-  assert {
-res.status: 404
-res.body: isString
-}
-
-  script:pre-request {
-  const lib = require ('./lib/lib')
-  lib.tools.generateInvalidId('RacingEvent')
-  lib.tools.generateInvalidId('RacingSeries')
-}
+        await Ids.generateInvalidId('RacingSeries')
