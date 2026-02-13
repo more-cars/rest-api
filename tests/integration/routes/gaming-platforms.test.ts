@@ -101,4 +101,12 @@ describe('Gaming Platforms', () => {
         expect(GamingPlatformController.getHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .delete('/gaming-platforms/123/has-prime-image/456')
+
+        expect(GamingPlatformController.deleteHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

@@ -11,6 +11,7 @@ import {getAllHasImageRelations} from "./gaming-platforms/getAllHasImageRelation
 import {deleteHasImageRelation} from "./gaming-platforms/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./gaming-platforms/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./gaming-platforms/getHasPrimeImageRelation"
+import {deleteHasPrimeImageRelation} from "./gaming-platforms/deleteHasPrimeImageRelation"
 
 export const GamingPlatformController = {
     async create(req: express.Request, res: express.Response) {
@@ -59,5 +60,9 @@ export const GamingPlatformController = {
 
     async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await getHasPrimeImageRelation(req, res)
+    },
+
+    async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
+        await deleteHasPrimeImageRelation(req, res)
     },
 }

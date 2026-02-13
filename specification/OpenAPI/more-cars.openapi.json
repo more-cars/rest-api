@@ -11222,6 +11222,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Gaming Platforms"
+        ],
+        "summary": "Deletes the ›has-prime-image‹ relationship between the `Gaming Platform` and the `Image`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gaming-platform-id",
+            "description": "ID of the `Gaming Platform`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-prime-image‹ relationship between `Gaming Platform` and `Image` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-prime-image‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/relationships/{relationship-id}": {
