@@ -8,6 +8,10 @@ exports.createFeaturesTrackLayoutRelationship = async function () {
     await post("/racing-games/" + bru.getEnvVar('validRacingGameId') + "/features-track-layout/" + bru.getEnvVar('validTrackLayoutId'))
 }
 
+exports.createReleasedOnGamingPlatformRelationship = async function () {
+    await post("/racing-games/" + bru.getEnvVar('validRacingGameId') + "/released-on-gaming-platform/" + bru.getEnvVar('validGamingPlatformId'))
+}
+
 exports.createHasImageRelationship = async function () {
     await post("/racing-games/" + bru.getEnvVar('validRacingGameId') + "/has-image/" + bru.getEnvVar('validImageId'))
 }

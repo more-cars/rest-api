@@ -23,6 +23,7 @@ import {DbRelationship} from "../../db/types/DbRelationship"
 import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {getRel} from "../relationships/getRel"
+import {GamingPlatform} from "../gaming-platforms/GamingPlatform"
 
 export const RacingGame = {
     async create(data: CreateRacingGameInput): Promise<RacingGameNode> {
@@ -279,5 +280,30 @@ export const RacingGame = {
         }
 
         await deleteSpecificRel(racingGameId, imageId, RelationshipType.RacingGameHasPrimeImage)
+    },
+
+    async createReleasedOnGamingPlatformRelationship(racingGameId: number, gamingPlatformId: number) {
+        const racingGame = await RacingGame.findById(racingGameId)
+        if (!racingGame) {
+            throw new NodeNotFoundError(racingGameId)
+        }
+
+        const gamingPlatform = await GamingPlatform.findById(gamingPlatformId)
+        if (!gamingPlatform) {
+            throw new NodeNotFoundError(gamingPlatformId)
+        }
+
+        const existingRelation = await getSpecificRel(racingGameId, gamingPlatformId, RelationshipType.RacingGameReleasedOnGamingPlatform)
+        if (existingRelation) {
+            throw new RelationshipAlreadyExistsError(RacingGameRelationship.releasedOnGamingPlatform, racingGameId, gamingPlatformId)
+        }
+
+
+        const createdRelationship = await createRel(racingGameId, gamingPlatformId, RelationshipType.RacingGameReleasedOnGamingPlatform)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }

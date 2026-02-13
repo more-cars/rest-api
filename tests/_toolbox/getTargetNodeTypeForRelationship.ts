@@ -134,6 +134,7 @@ export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, re
         NodeTypeEnum.RACING_GAME, new Map([
             [RelationshipType.RacingGameFeaturesCarModelVariant, NodeTypeEnum.CAR_MODEL_VARIANT],
             [RelationshipType.RacingGameFeaturesTrackLayout, NodeTypeEnum.TRACK_LAYOUT],
+            [RelationshipType.RacingGameReleasedOnGamingPlatform, NodeTypeEnum.GAMING_PLATFORM],
             [RelationshipType.RacingGameHasImage, NodeTypeEnum.IMAGE],
             [RelationshipType.RacingGameHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))

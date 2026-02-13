@@ -1,0 +1,45 @@
+import {describe, expect, test} from 'vitest'
+import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
+import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {RacingGameRelationship} from "../../../../../../../src/models/racing-games/types/RacingGameRelationship"
+
+describe('Creating a ›released-on-gaming-platform‹ relationship', () => {
+    test('with valid data', async () => {
+        const racingGame = await seedNode(NodeTypeEnum.RACING_GAME)
+        const gamingPlatform = await seedNode(NodeTypeEnum.GAMING_PLATFORM)
+
+        const createdRelationship = await createRelationship(
+            racingGame.id,
+            gamingPlatform.id,
+            DbRelationship.RacingGameReleasedOnGamingPlatform,
+        )
+
+        expect(createdRelationship)
+            .toHaveProperty('start_node_id', racingGame.id)
+        expect(createdRelationship)
+            .toHaveProperty('end_node_id', gamingPlatform.id)
+        expect(createdRelationship)
+            .toHaveProperty('relationship_id')
+        expect(createdRelationship)
+            .toHaveProperty('relationship_name', RacingGameRelationship.releasedOnGamingPlatform)
+        expect(createdRelationship)
+            .toHaveProperty('created_at')
+        expect(createdRelationship)
+            .toHaveProperty('updated_at')
+    })
+
+    test('with invalid data', async () => {
+        const racingGame = await seedNode(NodeTypeEnum.RACING_GAME)
+
+        const createdRelationship = await createRelationship(
+            racingGame.id,
+            -42,
+            DbRelationship.RacingGameReleasedOnGamingPlatform,
+        )
+
+        expect(createdRelationship)
+            .toEqual(false)
+    })
+})
