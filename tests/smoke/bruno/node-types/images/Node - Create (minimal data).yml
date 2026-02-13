@@ -1,0 +1,29 @@
+info:
+  name: Create Image (minimal data)
+  type: http
+  tags:
+    - create
+    - node
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/images"
+  body:
+    type: json
+    data: |-
+      {
+        "image_provider": "picci",
+        "external_id": "123456"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data.id
+      operator: gte
+      value: "12000000"

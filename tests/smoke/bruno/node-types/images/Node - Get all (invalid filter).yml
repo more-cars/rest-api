@@ -1,0 +1,23 @@
+info:
+  name: Get all Images (invalid filter)
+  type: http
+  tags:
+    - get
+    - node
+    - collection
+    - filter
+    - invalid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/images?filter_by_property=blubb"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "400"
+    - expression: res.body
+      operator: isString
+    - expression: res.body
+      operator: isNotEmpty

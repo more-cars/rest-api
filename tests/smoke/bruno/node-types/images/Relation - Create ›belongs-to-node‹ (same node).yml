@@ -1,0 +1,26 @@
+info:
+  name: Create ›belongs-to-node‹ relation (same node)
+  type: http
+  tags:
+    - create
+    - relation
+    - invalid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/images/{{validImageId}}/belongs-to-node/{{validImageId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "422"
+    - expression: res.body
+      operator: isString
+    - expression: res.body
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const Images = require('./lib/node-types/Images.js')
+        await Images.create()
