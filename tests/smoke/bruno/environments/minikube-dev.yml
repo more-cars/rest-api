@@ -1,0 +1,4 @@
+name: minikube-dev
+variables:
+  - name: baseUrl
+    value: https://api.dev.more-cars.internal

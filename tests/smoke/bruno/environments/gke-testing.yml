@@ -1,0 +1,4 @@
+name: gke-testing
+variables:
+  - name: baseUrl
+    value: https://api.testing.fast-cars.info

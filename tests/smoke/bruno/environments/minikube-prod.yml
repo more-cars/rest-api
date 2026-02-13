@@ -1,0 +1,4 @@
+name: minikube-prod
+variables:
+  - name: baseUrl
+    value: https://api.prod.more-cars.internal

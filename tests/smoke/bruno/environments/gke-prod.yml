@@ -1,0 +1,4 @@
+name: gke-prod
+variables:
+  - name: baseUrl
+    value: https://api.prod.fast-cars.info

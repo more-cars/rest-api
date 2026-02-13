@@ -1,0 +1,4 @@
+name: minikube-testing
+variables:
+  - name: baseUrl
+    value: https://api.testing.more-cars.internal
