@@ -1,0 +1,51 @@
+info:
+  name: Get relation by ID (valid data)
+  type: http
+  tags:
+    - get
+    - relation
+    - valid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/relationships/{{validRelationshipId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data
+      operator: isJson
+    - expression: res.body.data.relationship_id
+      operator: gte
+      value: "12000000"
+    - expression: res.body.data.relationship_name
+      operator: eq
+      value: "has-car-model"
+    - expression: res.body.data.relationship_partner
+      operator: isJson
+    - expression: res.body.data.relationship_partner.node_type
+      operator: eq
+      value: "car-model"
+    - expression: res.body.data.relationship_partner.data.id
+      operator: eq
+      value: "{{validCarModelId}}"
+    - expression: res.body.data.created_at
+      operator: isString
+    - expression: res.body.data.created_at
+      operator: isNotEmpty
+    - expression: res.body.data.updated_at
+      operator: isString
+    - expression: res.body.data.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const Brands = require('./lib/node-types/Brands.js')
+        const CarModels = require('./lib/node-types/CarModels.js')
+        await Brands.create()
+        await CarModels.create()
+        await Brands.createHasCarModelRelationship()
