@@ -1,0 +1,22 @@
+import {expect, test} from 'vitest'
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {GamingPlatform} from "../../../../../../../src/models/gaming-platforms/GamingPlatform"
+import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
+
+test('Trying to create a ›features-racing-game‹ relationship with nodes that do not exist', async () => {
+    const gamingPlatform = await seedNode(NodeTypeEnum.GAMING_PLATFORM)
+    const racingGame = await seedNode(NodeTypeEnum.RACING_GAME)
+
+    await expect(GamingPlatform.createFeaturesRacingGameRelationship(-42, racingGame.id))
+        .rejects
+        .toThrow(NodeNotFoundError)
+
+    await expect(GamingPlatform.createFeaturesRacingGameRelationship(gamingPlatform.id, -43))
+        .rejects
+        .toThrow(NodeNotFoundError)
+
+    await expect(GamingPlatform.createFeaturesRacingGameRelationship(-44, -45))
+        .rejects
+        .toThrow(NodeNotFoundError)
+})

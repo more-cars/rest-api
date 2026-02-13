@@ -57,6 +57,7 @@ export enum RelationshipType {
     RacingGameFeaturesTrackLayout = 'FEATURES_TRACK_LAYOUT',
     RacingGameHasImage = 'HAS_IMAGE',
     RacingGameHasPrimeImage = 'HAS_PRIME_IMAGE',
+    GamingPlatformFeaturesRacingGame = 'FEATURES_RACING_GAME',
     ImageBelongsToNode = 'BELONGS_TO_NODE',
     ImageIsPrimeImageOfNode = 'IS_PRIME_IMAGE_OF_NODE',
 }

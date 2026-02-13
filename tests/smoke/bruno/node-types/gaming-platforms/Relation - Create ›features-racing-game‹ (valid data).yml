@@ -1,0 +1,50 @@
+info:
+  name: Create ›features-racing-game‹ relation (valid data)
+  type: http
+  tags:
+    - create
+    - relation
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/gaming-platforms/{{validGamingPlatformId}}/features-racing-game/{{validRacingGameId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data
+      operator: isJson
+    - expression: res.body.data.relationship_id
+      operator: gte
+      value: "12000000"
+    - expression: res.body.data.relationship_name
+      operator: eq
+      value: "features-racing-game"
+    - expression: res.body.data.relationship_partner
+      operator: isJson
+    - expression: res.body.data.relationship_partner.node_type
+      operator: eq
+      value: "racing-game"
+    - expression: res.body.data.relationship_partner.data.id
+      operator: eq
+      value: "{{validRacingGameId}}"
+    - expression: res.body.data.created_at
+      operator: isString
+    - expression: res.body.data.created_at
+      operator: isNotEmpty
+    - expression: res.body.data.updated_at
+      operator: isString
+    - expression: res.body.data.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const GamingPlatforms = require('./lib/node-types/GamingPlatforms.js')
+        const RacingGames = require('./lib/node-types/RacingGames.js')
+        await GamingPlatforms.create()
+        await RacingGames.create()

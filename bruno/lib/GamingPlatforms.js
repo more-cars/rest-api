@@ -21,3 +21,7 @@ exports.createGamingPlatform = async function () {
 exports.getAllGamingPlatforms = async function () {
     return submitGetRequest("/gaming-platforms")
 }
+
+exports.createGamingPlatformFeaturesRacingGameRelationship = async function (gamingPlatformId, racingGameId) {
+    return submitPostRequest("/gaming-platforms/" + gamingPlatformId + "/features-racing-game/" + racingGameId)
+}

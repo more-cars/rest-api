@@ -37,4 +37,12 @@ describe('Gaming Platforms', () => {
         expect(GamingPlatformController.delete)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›features-racing-game‹ relationship', async () => {
+        await request(app)
+            .post('/gaming-platforms/123/features-racing-game/456')
+
+        expect(GamingPlatformController.createFeaturesRacingGameRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
