@@ -1,0 +1,51 @@
+info:
+  name: Get ›belongs-to-session-result‹ relation (valid data)
+  type: http
+  tags:
+    - get
+    - relation
+    - valid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/lap-times/{{validLapTimeId}}/belongs-to-session-result"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data
+      operator: isJson
+    - expression: res.body.data.relationship_id
+      operator: gte
+      value: "12000000"
+    - expression: res.body.data.relationship_name
+      operator: eq
+      value: "belongs-to-session-result"
+    - expression: res.body.data.relationship_partner
+      operator: isJson
+    - expression: res.body.data.relationship_partner.node_type
+      operator: eq
+      value: "session-result"
+    - expression: res.body.data.relationship_partner.data.id
+      operator: eq
+      value: "{{validSessionResultId}}"
+    - expression: res.body.data.created_at
+      operator: isString
+    - expression: res.body.data.created_at
+      operator: isNotEmpty
+    - expression: res.body.data.updated_at
+      operator: isString
+    - expression: res.body.data.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const LapTimes = require('./lib/node-types/LapTimes.js')
+        const SessionResults = require('./lib/node-types/SessionResults.js')
+        await LapTimes.create()
+        await SessionResults.create()
+        await LapTimes.createBelongsToSessionResultRelationship()

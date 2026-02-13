@@ -1,0 +1,23 @@
+info:
+  name: Get all Lap Times (invalid sort)
+  type: http
+  tags:
+    - get
+    - node
+    - collection
+    - sorting
+    - invalid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/lap-times?sort_by_property=blubb"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "400"
+    - expression: res.body
+      operator: isString
+    - expression: res.body
+      operator: isNotEmpty

@@ -1,0 +1,25 @@
+info:
+  name: Delete ›achieved-on-track-layout‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/lap-times/{{validLapTimeId}}/achieved-on-track-layout/{{validTrackLayoutId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const LapTimes = require('./lib/node-types/LapTimes.js')
+        const TrackLayouts = require('./lib/node-types/TrackLayouts.js')
+        await LapTimes.create()
+        await TrackLayouts.create()
+        await LapTimes.createAchievedOnTrackLayoutRelationship()

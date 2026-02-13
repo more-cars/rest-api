@@ -1,0 +1,25 @@
+info:
+  name: Delete ›belongs-to-session-result‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/lap-times/{{validLapTimeId}}/belongs-to-session-result/{{validSessionResultId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const LapTimes = require('./lib/node-types/LapTimes.js')
+        const SessionResults = require('./lib/node-types/SessionResults.js')
+        await LapTimes.create()
+        await SessionResults.create()
+        await LapTimes.createBelongsToSessionResultRelationship()
