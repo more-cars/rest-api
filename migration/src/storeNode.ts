@@ -11,6 +11,7 @@ import type {InputRacingSessionCreate} from "../../src/db/nodes/racing-sessions/
 import type {InputSessionResultCreate} from "../../src/db/nodes/session-results/types/InputSessionResultCreate"
 import type {InputLapTimeCreate} from "../../src/db/nodes/lap-times/types/InputLapTimeCreate"
 import type {InputRacingGameCreate} from "../../src/db/nodes/racing-games/types/InputRacingGameCreate"
+import type {InputGamingPlatformCreate} from "../../src/db/nodes/gaming-platforms/types/InputGamingPlatformCreate"
 import type {InputImageCreate} from "../../src/db/nodes/images/types/InputImageCreate"
 import {NodeTypeLabel} from "../../src/db/NodeTypeLabel"
 import {createNodeQuery as createCompanyQuery} from "../../src/db/nodes/companies/createNode"
@@ -25,6 +26,7 @@ import {createNodeQuery as createRacingSessionQuery} from "../../src/db/nodes/ra
 import {createNodeQuery as createSessionResultQuery} from "../../src/db/nodes/session-results/createNode"
 import {createNodeQuery as createLapTimeQuery} from "../../src/db/nodes/lap-times/createNode"
 import {createNodeQuery as createRacingGameQuery} from "../../src/db/nodes/racing-games/createNode"
+import {createNodeQuery as createGamingPlatformQuery} from "../../src/db/nodes/gaming-platforms/createNode"
 import {createNodeQuery as createImageQuery} from "../../src/db/nodes/images/createNode"
 import {createDbNode} from "../../src/db/nodes/createDbNode"
 import {addMoreCarsIdToNode} from "../../src/db/nodes/addMoreCarsIdToNode"
@@ -43,6 +45,7 @@ type InputTypes =
     InputSessionResultCreate |
     InputLapTimeCreate |
     InputRacingGameCreate |
+    InputGamingPlatformCreate |
     InputImageCreate
 
 
@@ -85,6 +88,9 @@ export async function storeNode(data: InputTypes, newNodeType: NodeTypeLabel, ol
             break
         case NodeTypeLabel.RacingGame:
             query = createRacingGameQuery(data as InputRacingGameCreate)
+            break
+        case NodeTypeLabel.GamingPlatform:
+            query = createGamingPlatformQuery(data as InputGamingPlatformCreate)
             break
         case NodeTypeLabel.Image:
             query = createImageQuery(data as InputImageCreate)

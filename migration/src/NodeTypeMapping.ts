@@ -14,5 +14,6 @@ export const NodeTypeMapping = new Map<NodeTypeLabel, NodeTypeLabelOld>([
     [NodeTypeLabel.SessionResult, NodeTypeLabelOld.SessionResult],
     [NodeTypeLabel.LapTime, NodeTypeLabelOld.LapTime],
     [NodeTypeLabel.RacingGame, NodeTypeLabelOld.RacingGame],
+    [NodeTypeLabel.GamingPlatform, NodeTypeLabelOld.GamingPlatform],
     [NodeTypeLabel.Image, NodeTypeLabelOld.Image],
 ])

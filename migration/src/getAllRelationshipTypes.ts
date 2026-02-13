@@ -251,8 +251,25 @@ export function getAllRelationshipTypes() {
                 ])
             ],
             [
-                NodeTypeLabel.Image, new Map(
-                [])
+                NodeTypeLabel.GamingPlatform, new Map(
+                [
+                    [
+                        NodeTypeLabel.RacingGame,
+                        [
+                            DbRelationship.GamingPlatformFeaturesRacingGame,
+                        ],
+                    ],
+                    [
+                        NodeTypeLabel.Image,
+                        [
+                            DbRelationship.GamingPlatformHasImage,
+                            DbRelationship.GamingPlatformHasPrimeImage,
+                        ],
+                    ],
+                ])
+            ],
+            [
+                NodeTypeLabel.Image, new Map([])
             ],
         ])
 }

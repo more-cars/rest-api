@@ -20,6 +20,7 @@ export const RelationshipTypeMapping = new Map<DbRelationship, RelationshipTypeL
     [DbRelationship.SessionResultHasLapTime, RelationshipTypeLabelOld.SessionResultHasLapTime],
     [DbRelationship.RacingGameFeaturesCarModelVariant, RelationshipTypeLabelOld.RacingGameFeaturesCarModelVariant],
     [DbRelationship.RacingGameFeaturesTrackLayout, RelationshipTypeLabelOld.RacingGameFeaturesTrackLayout],
+    [DbRelationship.GamingPlatformFeaturesRacingGame, RelationshipTypeLabelOld.GamingPlatformFeaturesRacingGame],
     [DbRelationship.NodeHasImage, RelationshipTypeLabelOld.NodeHasImage],
     [DbRelationship.NodeHasPrimeImage, RelationshipTypeLabelOld.NodeHasPrimeImage],
 ])

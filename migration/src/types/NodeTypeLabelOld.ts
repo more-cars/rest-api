@@ -11,5 +11,6 @@ export enum NodeTypeLabelOld {
     SessionResult = "raceresult",
     LapTime = "laptime",
     RacingGame = "racinggame",
+    GamingPlatform = "gamingplatform",
     Image = "image",
 }
