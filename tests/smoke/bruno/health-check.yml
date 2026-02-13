@@ -1,0 +1,13 @@
+info:
+  name: health-check
+  type: http
+
+http:
+  method: GET
+  url: "{{baseUrl}}/health"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
