@@ -24,6 +24,7 @@ import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {getRel} from "../relationships/getRel"
 import {GamingPlatform} from "../gaming-platforms/GamingPlatform"
+import {RelDirection} from "../relationships/types/RelDirection"
 
 export const RacingGame = {
     async create(data: CreateRacingGameInput): Promise<RacingGameNode> {
@@ -255,7 +256,7 @@ export const RacingGame = {
             throw new NodeNotFoundError(racingGameId)
         }
 
-        const relationship = await getRel(racingGameId, RelationshipType.RacingGameHasPrimeImage, NodeTypeLabel.Image)
+        const relationship = await getRel(racingGameId, RelationshipType.RacingGameHasPrimeImage, NodeTypeLabel.Image, RelDirection.FORWARD)
         if (!relationship) {
             throw new RelationshipNotFoundError(RacingGameRelationship.hasPrimeImage, racingGameId, null)
         }

@@ -24,6 +24,7 @@ import {Image} from "../images/Image"
 import {getAllRels} from "../relationships/getAllRels"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {CarModelVariant} from "../car-model-variants/CarModelVariant"
+import {RelDirection} from "../relationships/types/RelDirection"
 
 export const LapTime = {
     async create(data: CreateLapTimeInput): Promise<LapTimeNode> {
@@ -329,7 +330,7 @@ export const LapTime = {
             throw new NodeNotFoundError(lapTimeId)
         }
 
-        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeHasPrimeImage, NodeTypeLabel.Image)
+        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeHasPrimeImage, NodeTypeLabel.Image, RelDirection.FORWARD)
         if (!relationship) {
             throw new RelationshipNotFoundError(LapTimeRelationship.hasPrimeImage, lapTimeId, null)
         }

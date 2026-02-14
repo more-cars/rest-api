@@ -25,6 +25,7 @@ import {getAllRels} from "../relationships/getAllRels"
 import {LapTime} from "../lap-times/LapTime"
 import {Image} from "../images/Image"
 import {RacingGame} from "../racing-games/RacingGame"
+import {RelDirection} from "../relationships/types/RelDirection"
 
 export const CarModelVariant = {
     async create(data: CreateCarModelVariantInput): Promise<CarModelVariantNode> {
@@ -317,7 +318,7 @@ export const CarModelVariant = {
             throw new NodeNotFoundError(carModelVariantId)
         }
 
-        const relationship = await getRel(carModelVariantId, RelationshipType.CarModelVariantHasPrimeImage, NodeTypeLabel.Image)
+        const relationship = await getRel(carModelVariantId, RelationshipType.CarModelVariantHasPrimeImage, NodeTypeLabel.Image, RelDirection.FORWARD)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelVariantRelationship.hasPrimeImage, carModelVariantId, null)
         }

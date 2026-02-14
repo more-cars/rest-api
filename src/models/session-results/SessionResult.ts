@@ -24,6 +24,7 @@ import {getAllRels} from "../relationships/getAllRels"
 import {Image} from "../images/Image"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {CarModelVariant} from "../car-model-variants/CarModelVariant"
+import {RelDirection} from "../relationships/types/RelDirection"
 
 export const SessionResult = {
     async create(data: CreateSessionResultInput): Promise<SessionResultNode> {
@@ -324,7 +325,7 @@ export const SessionResult = {
             throw new NodeNotFoundError(sessionResultId)
         }
 
-        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultHasPrimeImage, NodeTypeLabel.Image)
+        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultHasPrimeImage, NodeTypeLabel.Image, RelDirection.FORWARD)
         if (!relationship) {
             throw new RelationshipNotFoundError(SessionResultRelationship.hasPrimeImage, sessionResultId, null)
         }

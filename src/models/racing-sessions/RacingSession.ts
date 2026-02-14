@@ -23,6 +23,7 @@ import {Image} from "../images/Image"
 import {getAllRels} from "../relationships/getAllRels"
 import {SessionResult} from "../session-results/SessionResult"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
+import {RelDirection} from "../relationships/types/RelDirection"
 
 export const RacingSession = {
     async create(data: CreateRacingSessionInput): Promise<RacingSessionNode> {
@@ -263,7 +264,7 @@ export const RacingSession = {
             throw new NodeNotFoundError(racingSessionId)
         }
 
-        const relationship = await getRel(racingSessionId, RelationshipType.RacingSessionHasPrimeImage, NodeTypeLabel.Image)
+        const relationship = await getRel(racingSessionId, RelationshipType.RacingSessionHasPrimeImage, NodeTypeLabel.Image, RelDirection.FORWARD)
         if (!relationship) {
             throw new RelationshipNotFoundError(RacingSessionRelationship.hasPrimeImage, racingSessionId, null)
         }

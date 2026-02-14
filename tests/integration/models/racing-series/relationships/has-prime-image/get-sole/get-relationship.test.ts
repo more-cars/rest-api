@@ -3,7 +3,7 @@ import {RacingSeries} from "../../../../../../../src/models/racing-series/Racing
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
+import {REL, seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../../../../_toolbox/schemas/model/RelationshipSchema"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
@@ -11,17 +11,19 @@ import {RelationshipNotFoundError} from "../../../../../../../src/models/types/R
 
 describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(NodeTypeEnum.RACING_SERIES, NodeTypeEnum.IMAGE, DbRelationship.RacingSeriesHasPrimeImage)
-        const actualRelationship = await RacingSeries.getHasPrimeImageRelationship(expectedRelationship.start_node_id)
+        const expectedRelationship = await seedRelationship(NodeTypeEnum.RACING_SERIES, NodeTypeEnum.IMAGE, DbRelationship.RacingSeriesHasPrimeImage, REL.FORWARD)
+        const expectedRacingSeriesId = expectedRelationship.start_node_id
+        const expectedImageId = expectedRelationship.end_node_id
+        const actualRelationship = await RacingSeries.getHasPrimeImageRelationship(expectedRacingSeriesId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))
             .toBeTruthy()
 
         expect(actualRelationship.origin.id)
-            .toBe(expectedRelationship.start_node_id)
+            .toBe(expectedRacingSeriesId)
 
         expect(actualRelationship.destination.id)
-            .toBe(expectedRelationship.end_node_id)
+            .toBe(expectedImageId)
     })
 
     test('node exists, but not the relationship', async () => {

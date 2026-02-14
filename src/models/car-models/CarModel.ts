@@ -24,6 +24,7 @@ import {createRel} from "../relationships/createRel"
 import {getAllRels} from "../relationships/getAllRels"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {CarModelVariant} from "../car-model-variants/CarModelVariant"
+import {RelDirection} from "../relationships/types/RelDirection"
 
 export const CarModel = {
     async create(data: CreateCarModelInput): Promise<CarModelNode> {

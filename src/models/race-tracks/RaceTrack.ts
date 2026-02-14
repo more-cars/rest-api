@@ -23,6 +23,7 @@ import {Image} from "../images/Image"
 import {getRel} from "../relationships/getRel"
 import {RacingEvent} from "../racing-events/RacingEvent"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
+import {RelDirection} from "../relationships/types/RelDirection"
 
 export const RaceTrack = {
     async create(data: CreateRaceTrackInput): Promise<RaceTrackNode> {
@@ -259,7 +260,7 @@ export const RaceTrack = {
             throw new NodeNotFoundError(raceTrackId)
         }
 
-        const relationship = await getRel(raceTrackId, RelationshipType.RaceTrackHasPrimeImage, NodeTypeLabel.Image)
+        const relationship = await getRel(raceTrackId, RelationshipType.RaceTrackHasPrimeImage, NodeTypeLabel.Image, RelDirection.FORWARD)
         if (!relationship) {
             throw new RelationshipNotFoundError(RaceTrackRelationship.hasPrimeImage, raceTrackId, null)
         }
