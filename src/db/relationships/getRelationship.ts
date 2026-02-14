@@ -20,11 +20,11 @@ export async function getRelationship(
         return result.records
     })
 
+    await session.close()
+
     if (records.length === 0) {
         return false
     }
-
-    await session.close()
 
     const sourceNode: Node = records[0].get('a')
     const relation: Relationship = records[0].get('r')
