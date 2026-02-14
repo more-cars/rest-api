@@ -1,11 +1,17 @@
 import neo4j, {Driver, Node, Relationship} from "neo4j-driver"
-import {getDriver} from "../driver"
-import {BaseRelationship} from "../types/BaseRelationship"
-import {DbRelationship} from "../types/DbRelationship"
-import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
+import type {DbRelationship} from "../types/DbRelationship"
 import type {NodeTypeLabel} from "../NodeTypeLabel"
+import {RelationshipDirection} from "../types/RelationshipDirection"
+import type {BaseRelationship} from "../types/BaseRelationship"
+import {getDriver} from "../driver"
+import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
-export async function getRelationship(startNodeId: number, relationshipName: DbRelationship, endNodeType: NodeTypeLabel, reverse = false): Promise<false | BaseRelationship> {
+export async function getRelationship(
+    startNodeId: number,
+    relationshipName: DbRelationship,
+    endNodeType: NodeTypeLabel,
+    reverse: RelationshipDirection,
+): Promise<false | BaseRelationship> {
     const driver: Driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
@@ -46,7 +52,7 @@ export async function getRelationship(startNodeId: number, relationshipName: DbR
     } as BaseRelationship
 }
 
-export function getRelationshipQuery(startNodeId: number, relationshipName: DbRelationship, endNodeLabel: NodeTypeLabel, reverse = false) {
+export function getRelationshipQuery(startNodeId: number, relationshipName: DbRelationship, endNodeLabel: NodeTypeLabel, reverse: RelationshipDirection = RelationshipDirection.FORWARD) {
     const templateName = reverse ? 'getRelationshipReversed' : 'getRelationship'
 
     return getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')
