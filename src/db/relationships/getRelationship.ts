@@ -52,7 +52,7 @@ export async function getRelationship(
     } as BaseRelationship
 }
 
-export function getRelationshipQuery(startNodeId: number, relationshipName: DbRelationship, endNodeLabel: NodeTypeLabel, reverse: RelationshipDirection = RelationshipDirection.FORWARD) {
+export function getRelationshipQuery(startNodeId: number, relationshipName: DbRelationship, endNodeLabel: NodeTypeLabel, reverse: RelationshipDirection) {
     const templateName = reverse ? 'getRelationshipReversed' : 'getRelationship'
 
     return getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')

@@ -8,7 +8,7 @@ import {RelationshipDirection} from "../../../../../src/db/types/RelationshipDir
 describe('Assembling database query for fetching a relationship', () => {
     test.each(getAllRelationshipTypes())('forward $0 relationship', async (relationshipType: DbRelationship) => {
         const startNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
-        const query = getRelationshipQuery(startNodeId, relationshipType, NodeTypeLabel.LapTime)
+        const query = getRelationshipQuery(startNodeId, relationshipType, NodeTypeLabel.LapTime, RelationshipDirection.FORWARD)
 
         expect(query)
             .toEqual(
