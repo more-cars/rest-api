@@ -1,23 +1,23 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {Brand} from "../../../../../../../src/models/brands/Brand"
-import {BrandRelationship} from "../../../../../../../src/models/brands/types/BrandRelationship"
+import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
+import {CarModelRelationship} from "../../../../../../../src/models/car-models/types/CarModelRelationship"
 
-test('Creating a "Brand has Image" relationship when both nodes exist', async () => {
-    const brand = await seedNode(NodeTypeEnum.BRAND)
+test('Creating a ›has-image‹ relationship with valid data', async () => {
+    const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
     const image = await seedNode(NodeTypeEnum.IMAGE)
 
-    const createdRelationship = await Brand.createHasImageRelationship(brand.id, image.id)
+    const createdRelationship = await CarModel.createHasImageRelationship(carModel.id, image.id)
 
     expect(createdRelationship.origin.id)
-        .toEqual(brand.id)
+        .toEqual(carModel.id)
     expect(createdRelationship.destination.id)
         .toEqual(image.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)
-        .toEqual(BrandRelationship.hasImage)
+        .toEqual(CarModelRelationship.hasImage)
     expect(createdRelationship.created_at)
         .toBeDefined()
     expect(createdRelationship.updated_at)
