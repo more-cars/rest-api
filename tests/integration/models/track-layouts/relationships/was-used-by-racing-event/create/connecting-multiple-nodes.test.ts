@@ -5,6 +5,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {TrackLayout} from "../../../../../../../src/models/track-layouts/TrackLayout"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A TRACK LAYOUT can have multiple ›was-used-by-racing-event‹ relationships', async () => {
     const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
@@ -15,7 +17,12 @@ test('A TRACK LAYOUT can have multiple ›was-used-by-racing-event‹ relationsh
         await TrackLayout.createWasUsedByRacingEventRelationship(trackLayout.id, racingEvent.id)
     }
 
-    const relationships = await getRelationshipCollection(trackLayout.id, DbRelationship.TrackLayoutWasUsedByRacingEvent)
+    const relationships = await getRelationshipCollection(
+        trackLayout.id,
+        DbRelationship.TrackLayoutWasUsedByRacingEvent,
+        NodeTypeLabel.RacingEvent,
+        RelationshipDirection.REVERSE,
+    )
 
     expect(relationships.length)
         .toBe(racingEventsAmount)

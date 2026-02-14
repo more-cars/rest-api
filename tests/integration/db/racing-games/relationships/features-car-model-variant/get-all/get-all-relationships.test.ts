@@ -4,6 +4,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 describe('Requesting all ›features-car-model-variant‹ relationships', () => {
     test('node and relationships exist', async () => {
@@ -14,6 +16,8 @@ describe('Requesting all ›features-car-model-variant‹ relationships', () => 
         const relationships = await getRelationshipCollection(
             racingGame.id,
             DbRelationship.RacingGameFeaturesCarModelVariant,
+            NodeTypeLabel.CarModelVariant,
+            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -26,6 +30,8 @@ describe('Requesting all ›features-car-model-variant‹ relationships', () => 
         const relationships = await getRelationshipCollection(
             racingGame.id,
             DbRelationship.RacingGameFeaturesCarModelVariant,
+            NodeTypeLabel.CarModelVariant,
+            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -36,6 +42,8 @@ describe('Requesting all ›features-car-model-variant‹ relationships', () => 
         const relationships = await getRelationshipCollection(
             -42,
             DbRelationship.RacingGameFeaturesCarModelVariant,
+            NodeTypeLabel.CarModelVariant,
+            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

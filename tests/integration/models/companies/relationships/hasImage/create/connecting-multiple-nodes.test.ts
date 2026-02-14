@@ -5,6 +5,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {Company} from "../../../../../../../src/models/companies/Company"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A COMPANY can have multiple ›has-image‹ relationships', async () => {
     const company = await seedNode(NodeTypeEnum.COMPANY)
@@ -15,7 +17,12 @@ test('A COMPANY can have multiple ›has-image‹ relationships', async () => {
         await Company.createHasImageRelationship(company.id, image.id)
     }
 
-    const relationships = await getRelationshipCollection(company.id, DbRelationship.CompanyHasImage)
+    const relationships = await getRelationshipCollection(
+        company.id,
+        DbRelationship.CompanyHasImage,
+        NodeTypeLabel.Image,
+        RelationshipDirection.FORWARD,
+    )
 
     expect(relationships.length)
         .toBe(imagesAmount)

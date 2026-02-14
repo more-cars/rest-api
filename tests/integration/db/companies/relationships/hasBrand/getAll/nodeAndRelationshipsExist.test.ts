@@ -4,6 +4,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('Node and relationships exist', async () => {
     const company = await seedNode(NodeTypeEnum.COMPANY)
@@ -13,6 +15,8 @@ test('Node and relationships exist', async () => {
     const relationships = await getRelationshipCollection(
         company.id,
         DbRelationship.CompanyHasBrand,
+        NodeTypeLabel.Brand,
+        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

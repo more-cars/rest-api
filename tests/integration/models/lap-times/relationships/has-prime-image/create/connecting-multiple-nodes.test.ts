@@ -5,6 +5,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {LapTime} from "../../../../../../../src/models/lap-times/LapTime"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A LAP TIME cannot have multiple ›has-prime-image‹ relationships', async () => {
     const lapTime = await seedNode(NodeTypeEnum.LAP_TIME)
@@ -15,7 +17,12 @@ test('A LAP TIME cannot have multiple ›has-prime-image‹ relationships', asyn
         await LapTime.createHasPrimeImageRelationship(lapTime.id, image.id)
     }
 
-    const relationships = await getRelationshipCollection(lapTime.id, DbRelationship.LapTimeHasPrimeImage)
+    const relationships = await getRelationshipCollection(
+        lapTime.id,
+        DbRelationship.LapTimeHasPrimeImage,
+        NodeTypeLabel.Image,
+        RelationshipDirection.FORWARD,
+    )
 
     expect(relationships.length)
         .toBe(1)

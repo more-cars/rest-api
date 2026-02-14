@@ -5,6 +5,8 @@ import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A CAR MODEL cannot have multiple ›has-prime-image‹ relationships', async () => {
     const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
@@ -15,7 +17,12 @@ test('A CAR MODEL cannot have multiple ›has-prime-image‹ relationships', asy
         await CarModel.createHasPrimeImageRelationship(carModel.id, image.id)
     }
 
-    const relationships = await getRelationshipCollection(carModel.id, DbRelationship.CarModelHasPrimeImage)
+    const relationships = await getRelationshipCollection(
+        carModel.id,
+        DbRelationship.CarModelHasPrimeImage,
+        NodeTypeLabel.Image,
+        RelationshipDirection.FORWARD,
+    )
 
     expect(relationships.length)
         .toBe(1)

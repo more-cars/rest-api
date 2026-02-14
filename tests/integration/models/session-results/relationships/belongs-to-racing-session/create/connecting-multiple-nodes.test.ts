@@ -5,6 +5,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {SessionResult} from "../../../../../../../src/models/session-results/SessionResult"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A SESSION RESULT cannot have multiple ›belongs-to-racing-session‹ relationships', async () => {
     const sessionResult = await seedNode(NodeTypeEnum.SESSION_RESULT)
@@ -15,7 +17,12 @@ test('A SESSION RESULT cannot have multiple ›belongs-to-racing-session‹ rela
         await SessionResult.createBelongsToRacingSessionRelationship(sessionResult.id, racingSession.id)
     }
 
-    const relationships = await getRelationshipCollection(sessionResult.id, DbRelationship.SessionResultBelongsToRacingSession)
+    const relationships = await getRelationshipCollection(
+        sessionResult.id,
+        DbRelationship.SessionResultBelongsToRacingSession,
+        NodeTypeLabel.RacingSession,
+        RelationshipDirection.REVERSE,
+    )
 
     expect(relationships.length)
         .toBe(1)

@@ -4,6 +4,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('Requesting the relationship between CAR MODEL and attached BRAND',
     async () => {
@@ -19,7 +21,8 @@ test('Requesting the relationship between CAR MODEL and attached BRAND',
         const relationships = await getRelationshipCollection(
             carModel.id,
             DbRelationship.BrandHasCarModel,
-            true,
+            NodeTypeLabel.CarModel,
+            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

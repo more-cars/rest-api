@@ -5,6 +5,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {RacingEvent} from "../../../../../../../src/models/racing-events/RacingEvent"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A RACING EVENT cannot have multiple ›took-place-at-race-track‹ relationships', async () => {
     const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
@@ -15,7 +17,12 @@ test('A RACING EVENT cannot have multiple ›took-place-at-race-track‹ relatio
         await RacingEvent.createTookPlaceAtRaceTrackRelationship(racingEvent.id, raceTrack.id)
     }
 
-    const relationships = await getRelationshipCollection(racingEvent.id, DbRelationship.RacingEventTookPlaceAtRaceTrack)
+    const relationships = await getRelationshipCollection(
+        racingEvent.id,
+        DbRelationship.RacingEventTookPlaceAtRaceTrack,
+        NodeTypeLabel.RaceTrack,
+        RelationshipDirection.FORWARD,
+    )
 
     expect(relationships.length)
         .toBe(1)

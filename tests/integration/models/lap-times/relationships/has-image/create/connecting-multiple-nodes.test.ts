@@ -5,6 +5,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {LapTime} from "../../../../../../../src/models/lap-times/LapTime"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A LAP TIME can have multiple ›has-image‹ relationships', async () => {
     const lapTime = await seedNode(NodeTypeEnum.LAP_TIME)
@@ -15,7 +17,12 @@ test('A LAP TIME can have multiple ›has-image‹ relationships', async () => {
         await LapTime.createHasImageRelationship(lapTime.id, image.id)
     }
 
-    const relationships = await getRelationshipCollection(lapTime.id, DbRelationship.LapTimeHasImage)
+    const relationships = await getRelationshipCollection(
+        lapTime.id,
+        DbRelationship.LapTimeHasImage,
+        NodeTypeLabel.Image,
+        RelationshipDirection.FORWARD,
+    )
 
     expect(relationships.length)
         .toBe(imagesAmount)

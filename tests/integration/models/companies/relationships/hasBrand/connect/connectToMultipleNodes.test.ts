@@ -5,6 +5,8 @@ import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {Company} from "../../../../../../../src/models/companies/Company"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A COMPANY can have multiple ›has-brand‹ relationships', async () => {
     const company = await seedNode(NodeTypeEnum.COMPANY)
@@ -15,7 +17,12 @@ test('A COMPANY can have multiple ›has-brand‹ relationships', async () => {
         await Company.createHasBrandRelationship(company.id, brand.id)
     }
 
-    const relationships = await getRelationshipCollection(company.id, DbRelationship.CompanyHasBrand)
+    const relationships = await getRelationshipCollection(
+        company.id,
+        DbRelationship.CompanyHasBrand,
+        NodeTypeLabel.Brand,
+        RelationshipDirection.FORWARD,
+    )
 
     expect(relationships.length)
         .toBe(brandsAmount)

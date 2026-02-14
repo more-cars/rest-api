@@ -4,6 +4,8 @@ import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelatio
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 describe('Requesting a ›achieved-on-track-layout‹ relationship', () => {
     test('node and relationship exist', async () => {
@@ -12,6 +14,8 @@ describe('Requesting a ›achieved-on-track-layout‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             relationship.start_node_id,
             DbRelationship.LapTimeAchievedOnTrackLayout,
+            NodeTypeLabel.TrackLayout,
+            RelationshipDirection.REVERSE,
         )
 
         expect(relationships.length)
@@ -24,6 +28,8 @@ describe('Requesting a ›achieved-on-track-layout‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             lapTime.id,
             DbRelationship.LapTimeAchievedOnTrackLayout,
+            NodeTypeLabel.TrackLayout,
+            RelationshipDirection.REVERSE,
         )
 
         expect(relationships.length)
@@ -34,6 +40,8 @@ describe('Requesting a ›achieved-on-track-layout‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             -42,
             DbRelationship.LapTimeAchievedOnTrackLayout,
+            NodeTypeLabel.TrackLayout,
+            RelationshipDirection.REVERSE,
         )
 
         expect(relationships.length)

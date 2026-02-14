@@ -4,6 +4,8 @@ import {getRelationshipCollection} from "../../../../../../../src/db/relationshi
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('Requesting the relationship between CAR MODEL and attached IMAGE',
     async () => {
@@ -19,6 +21,8 @@ test('Requesting the relationship between CAR MODEL and attached IMAGE',
         const relationships = await getRelationshipCollection(
             carModel.id,
             DbRelationship.NodeHasImage,
+            NodeTypeLabel.Image,
+            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

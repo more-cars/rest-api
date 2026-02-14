@@ -4,6 +4,8 @@ import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 describe('Requesting a ›belongs-to-company‹ relationship', () => {
     test('node and relationship exist', async () => {
@@ -12,6 +14,8 @@ describe('Requesting a ›belongs-to-company‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             relationship.start_node_id,
             DbRelationship.BrandBelongsToCompany,
+            NodeTypeLabel.Company,
+            RelationshipDirection.REVERSE,
         )
 
         expect(relationships.length)
@@ -24,6 +28,8 @@ describe('Requesting a ›belongs-to-company‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             brand.id,
             DbRelationship.BrandBelongsToCompany,
+            NodeTypeLabel.Company,
+            RelationshipDirection.REVERSE,
         )
 
         expect(relationships.length)
@@ -34,6 +40,8 @@ describe('Requesting a ›belongs-to-company‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             -42,
             DbRelationship.BrandBelongsToCompany,
+            NodeTypeLabel.Company,
+            RelationshipDirection.REVERSE,
         )
 
         expect(relationships.length)

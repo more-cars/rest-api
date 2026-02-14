@@ -5,6 +5,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {RaceTrack} from "../../../../../../../src/models/race-tracks/RaceTrack"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A RACE TRACK cannot have multiple ›has-prime-image‹ relationships', async () => {
     const raceTrack = await seedNode(NodeTypeEnum.RACE_TRACK)
@@ -15,7 +17,12 @@ test('A RACE TRACK cannot have multiple ›has-prime-image‹ relationships', as
         await RaceTrack.createHasPrimeImageRelationship(raceTrack.id, image.id)
     }
 
-    const relationships = await getRelationshipCollection(raceTrack.id, DbRelationship.RaceTrackHasPrimeImage)
+    const relationships = await getRelationshipCollection(
+        raceTrack.id,
+        DbRelationship.RaceTrackHasPrimeImage,
+        NodeTypeLabel.Image,
+        RelationshipDirection.FORWARD,
+    )
 
     expect(relationships.length)
         .toBe(1)

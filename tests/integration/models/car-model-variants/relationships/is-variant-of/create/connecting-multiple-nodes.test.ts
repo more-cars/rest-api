@@ -5,6 +5,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {CarModelVariant} from "../../../../../../../src/models/car-model-variants/CarModelVariant"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A CAR MODEL VARIANT cannot have multiple ›is-variant-of‹ relationships', async () => {
     const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)
@@ -15,7 +17,12 @@ test('A CAR MODEL VARIANT cannot have multiple ›is-variant-of‹ relationships
         await CarModelVariant.createIsVariantOfRelationship(carModelVariant.id, carModel.id)
     }
 
-    const relationships = await getRelationshipCollection(carModelVariant.id, DbRelationship.CarModelVariantIsVariantOf)
+    const relationships = await getRelationshipCollection(
+        carModelVariant.id,
+        DbRelationship.CarModelVariantIsVariantOf,
+        NodeTypeLabel.CarModel,
+        RelationshipDirection.REVERSE,
+    )
 
     expect(relationships.length)
         .toBe(1)

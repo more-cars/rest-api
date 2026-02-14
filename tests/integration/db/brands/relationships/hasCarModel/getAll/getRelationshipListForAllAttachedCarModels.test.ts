@@ -5,6 +5,8 @@ import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('Requesting a relationship list for all CAR MODELs that are connected to the BRAND', async () => {
     const brand = await seedNode(NodeTypeEnum.BRAND)
@@ -21,6 +23,8 @@ test('Requesting a relationship list for all CAR MODELs that are connected to th
     const relationships = await getRelationshipCollection(
         brand.id,
         DbRelationship.BrandHasCarModel,
+        NodeTypeLabel.CarModel,
+        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

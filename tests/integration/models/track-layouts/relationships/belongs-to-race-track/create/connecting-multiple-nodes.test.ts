@@ -5,6 +5,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {TrackLayout} from "../../../../../../../src/models/track-layouts/TrackLayout"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A TRACK LAYOUT cannot have multiple ›belongs-to-race-track‹ relationships', async () => {
     const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
@@ -15,7 +17,12 @@ test('A TRACK LAYOUT cannot have multiple ›belongs-to-race-track‹ relationsh
         await TrackLayout.createBelongsToRaceTrackRelationship(trackLayout.id, raceTrack.id)
     }
 
-    const relationships = await getRelationshipCollection(trackLayout.id, DbRelationship.TrackLayoutBelongsToRaceTrack)
+    const relationships = await getRelationshipCollection(
+        trackLayout.id,
+        DbRelationship.TrackLayoutBelongsToRaceTrack,
+        NodeTypeLabel.RaceTrack,
+        RelationshipDirection.REVERSE,
+    )
 
     expect(relationships.length)
         .toBe(1)

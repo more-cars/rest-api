@@ -5,6 +5,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {GamingPlatform} from "../../../../../../../src/models/gaming-platforms/GamingPlatform"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A GAMING PLATFORM can have multiple ›features-racing-game‹ relationships', async () => {
     const gamingPlatform = await seedNode(NodeTypeEnum.GAMING_PLATFORM)
@@ -15,7 +17,12 @@ test('A GAMING PLATFORM can have multiple ›features-racing-game‹ relationshi
         await GamingPlatform.createFeaturesRacingGameRelationship(gamingPlatform.id, racingGame.id)
     }
 
-    const relationships = await getRelationshipCollection(gamingPlatform.id, DbRelationship.GamingPlatformFeaturesRacingGame)
+    const relationships = await getRelationshipCollection(
+        gamingPlatform.id,
+        DbRelationship.GamingPlatformFeaturesRacingGame,
+        NodeTypeLabel.RacingGame,
+        RelationshipDirection.FORWARD,
+    )
 
     expect(relationships.length)
         .toBe(racingGamesAmount)

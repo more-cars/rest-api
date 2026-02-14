@@ -1,17 +1,24 @@
 import neo4j, {Driver, Node, Relationship} from "neo4j-driver"
 import {getDriver} from "../driver"
-import {BaseRelationship} from "../types/BaseRelationship"
 import {DbRelationship} from "../types/DbRelationship"
+import {RelationshipDirection} from "../types/RelationshipDirection"
+import {BaseRelationship} from "../types/BaseRelationship"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
+import type {NodeTypeLabel} from "../NodeTypeLabel"
 
-export async function getRelationshipCollection(nodeId: number, relationshipName: DbRelationship, nodeIsRelationshipTarget = false): Promise<BaseRelationship[]> {
+export async function getRelationshipCollection(
+    startNodeId: number,
+    relationshipName: DbRelationship,
+    endNodeType: NodeTypeLabel,
+    reverse: RelationshipDirection,
+): Promise<BaseRelationship[]> {
     const relationships: BaseRelationship[] = []
 
     const driver: Driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getRelationshipCollectionQuery(nodeId, relationshipName))
+        const result = await txc.run(getRelationshipCollectionQuery(startNodeId, relationshipName, endNodeType, reverse))
         return result.records
     })
 
@@ -25,13 +32,13 @@ export async function getRelationshipCollection(nodeId: number, relationshipName
         relationships.push({
             id: relation.properties.mc_id,
             type: relationshipName,
-            start_node_id: nodeIsRelationshipTarget ? endNode.properties.mc_id : nodeId,
+            start_node_id: startNodeId,
             start_node: Object.assign({}, startNode.properties, {
                 id: startNode.properties.mc_id,
                 created_at: startNode.properties.created_at,
                 updated_at: startNode.properties.updated_at,
             }),
-            end_node_id: nodeIsRelationshipTarget ? nodeId : endNode.properties.mc_id,
+            end_node_id: endNode.properties.mc_id,
             end_node: Object.assign({}, endNode.properties, {
                 id: endNode.properties.mc_id,
                 created_at: endNode.properties.created_at,
@@ -47,9 +54,12 @@ export async function getRelationshipCollection(nodeId: number, relationshipName
     return relationships
 }
 
-export function getRelationshipCollectionQuery(nodeId: number, relationshipName: DbRelationship) {
-    return getCypherQueryTemplate('relationships/_cypher/getRelationshipCollection.cypher')
+export function getRelationshipCollectionQuery(startNodeId: number, relationshipName: DbRelationship, endNodeLabel: NodeTypeLabel, reverse: RelationshipDirection) {
+    const templateName = reverse ? 'getRelationshipCollectionReversed' : 'getRelationshipCollection'
+
+    return getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')
         .trim()
-        .replace('$nodeId', nodeId.toString())
+        .replace('$startNodeId', startNodeId.toString())
         .replace('relationshipName', relationshipName)
+        .replace('$endNodeLabel', endNodeLabel)
 }

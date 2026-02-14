@@ -3,6 +3,8 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('Expecting an empty list when the relationships do not exist', async () => {
     const company = await seedNode(NodeTypeEnum.COMPANY)
@@ -10,6 +12,8 @@ test('Expecting an empty list when the relationships do not exist', async () => 
     const relationships = await getRelationshipCollection(
         company.id,
         DbRelationship.CompanyHasBrand,
+        NodeTypeLabel.Brand,
+        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

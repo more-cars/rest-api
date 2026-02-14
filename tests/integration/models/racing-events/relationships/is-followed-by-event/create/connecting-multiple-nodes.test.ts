@@ -5,6 +5,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {RacingEvent} from "../../../../../../../src/models/racing-events/RacingEvent"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A RACING EVENT cannot have multiple ›is-followed-by-event‹ relationships', async () => {
     const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
@@ -15,7 +17,12 @@ test('A RACING EVENT cannot have multiple ›is-followed-by-event‹ relationshi
         await RacingEvent.createIsFollowedByEventRelationship(racingEvent.id, partner.id)
     }
 
-    const relationships = await getRelationshipCollection(racingEvent.id, DbRelationship.RacingEventIsFollowedByEvent)
+    const relationships = await getRelationshipCollection(
+        racingEvent.id,
+        DbRelationship.RacingEventIsFollowedByEvent,
+        NodeTypeLabel.RacingEvent,
+        RelationshipDirection.FORWARD,
+    )
 
     expect(relationships.length)
         .toBe(1)

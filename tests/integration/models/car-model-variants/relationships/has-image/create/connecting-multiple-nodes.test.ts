@@ -5,6 +5,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {CarModelVariant} from "../../../../../../../src/models/car-model-variants/CarModelVariant"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A CAR MODEL VARIANT can have multiple ›has-image‹ relationships', async () => {
     const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)
@@ -15,7 +17,12 @@ test('A CAR MODEL VARIANT can have multiple ›has-image‹ relationships', asyn
         await CarModelVariant.createHasImageRelationship(carModelVariant.id, image.id)
     }
 
-    const relationships = await getRelationshipCollection(carModelVariant.id, DbRelationship.CarModelVariantHasImage)
+    const relationships = await getRelationshipCollection(
+        carModelVariant.id,
+        DbRelationship.CarModelVariantHasImage,
+        NodeTypeLabel.Image,
+        RelationshipDirection.FORWARD,
+    )
 
     expect(relationships.length)
         .toBe(imagesAmount)

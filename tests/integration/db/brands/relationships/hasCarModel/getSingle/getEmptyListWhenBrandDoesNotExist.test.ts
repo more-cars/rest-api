@@ -1,8 +1,8 @@
 import {expect, test} from 'vitest'
-import {
-    getRelationshipCollection
-} from "../../../../../../../src/db/relationships/getRelationshipCollection"
+import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 // The database does not perform any semantical checks, only syntax and data structures are checked.
 // An ID of "-42" is a valid input and so is the relationship name.
@@ -11,6 +11,8 @@ test('An empty list should be returned when the BRAND does not exist', async () 
     const relationships = await getRelationshipCollection(
         -42,
         DbRelationship.BrandHasCarModel,
+        NodeTypeLabel.CarModel,
+        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

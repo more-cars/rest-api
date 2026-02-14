@@ -5,6 +5,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {SessionResult} from "../../../../../../../src/models/session-results/SessionResult"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A SESSION RESULT can have multiple ›has-lap-time‹ relationships', async () => {
     const sessionResult = await seedNode(NodeTypeEnum.SESSION_RESULT)
@@ -15,7 +17,12 @@ test('A SESSION RESULT can have multiple ›has-lap-time‹ relationships', asyn
         await SessionResult.createHasLapTimeRelationship(sessionResult.id, lapTime.id)
     }
 
-    const relationships = await getRelationshipCollection(sessionResult.id, DbRelationship.SessionResultHasLapTime)
+    const relationships = await getRelationshipCollection(
+        sessionResult.id,
+        DbRelationship.SessionResultHasLapTime,
+        NodeTypeLabel.LapTime,
+        RelationshipDirection.FORWARD,
+    )
 
     expect(relationships.length)
         .toBe(lapTimesAmount)

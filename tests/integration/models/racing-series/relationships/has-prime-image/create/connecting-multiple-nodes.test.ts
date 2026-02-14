@@ -5,6 +5,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {RacingSeries} from "../../../../../../../src/models/racing-series/RacingSeries"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A RACING SERIES cannot have multiple ›has-prime-image‹ relationships', async () => {
     const racingSeries = await seedNode(NodeTypeEnum.RACING_SERIES)
@@ -15,7 +17,12 @@ test('A RACING SERIES cannot have multiple ›has-prime-image‹ relationships',
         await RacingSeries.createHasPrimeImageRelationship(racingSeries.id, image.id)
     }
 
-    const relationships = await getRelationshipCollection(racingSeries.id, DbRelationship.RacingSeriesHasPrimeImage)
+    const relationships = await getRelationshipCollection(
+        racingSeries.id,
+        DbRelationship.RacingSeriesHasPrimeImage,
+        NodeTypeLabel.Image,
+        RelationshipDirection.FORWARD,
+    )
 
     expect(relationships.length)
         .toBe(1)

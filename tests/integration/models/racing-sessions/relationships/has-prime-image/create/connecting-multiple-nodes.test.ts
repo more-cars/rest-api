@@ -5,6 +5,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {RacingSession} from "../../../../../../../src/models/racing-sessions/RacingSession"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A RACING SESSION cannot have multiple ›has-prime-image‹ relationships', async () => {
     const racingSession = await seedNode(NodeTypeEnum.RACING_SESSION)
@@ -15,7 +17,12 @@ test('A RACING SESSION cannot have multiple ›has-prime-image‹ relationships'
         await RacingSession.createHasPrimeImageRelationship(racingSession.id, image.id)
     }
 
-    const relationships = await getRelationshipCollection(racingSession.id, DbRelationship.RacingSessionHasPrimeImage)
+    const relationships = await getRelationshipCollection(
+        racingSession.id,
+        DbRelationship.RacingSessionHasPrimeImage,
+        NodeTypeLabel.Image,
+        RelationshipDirection.FORWARD,
+    )
 
     expect(relationships.length)
         .toBe(1)

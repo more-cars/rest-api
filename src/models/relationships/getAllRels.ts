@@ -1,28 +1,40 @@
 import type {RelationshipType} from "./types/RelationshipType"
-import type {DbRelationship} from "../../db/types/DbRelationship"
+import {getRelComposition} from "./getRelComposition"
 import {getDbRelationshipType} from "./getDbRelationshipType"
+import {getDbNodeType} from "./getDbNodeType"
 import {getRelationshipCollection} from "../../db/relationships/getRelationshipCollection"
+import {RelationshipDirection} from "../../db/types/RelationshipDirection"
 import type {GenericRelation} from "./types/GenericRelation"
+import type {BaseNode} from "../../db/types/BaseNode"
 
-export async function getAllRels(nodeId: number, relationshipType: RelationshipType) {
-    const dbRelationshipType: DbRelationship = getDbRelationshipType(relationshipType)
+export async function getAllRels(
+    startNodeId: number,
+    relationshipType: RelationshipType
+) {
+    const relComposition = getRelComposition(relationshipType)
+    const dbRelationshipType = getDbRelationshipType(relationshipType)
+    const modelEndNodeType = relComposition.endNodeType
+    const dbEndNodeType = getDbNodeType(modelEndNodeType)
+    const isReverseRel = relComposition.isReverseRelationship
 
-    const relationships = await getRelationshipCollection(
-        nodeId,
+    const dbRelationships = await getRelationshipCollection(
+        startNodeId,
         dbRelationshipType,
+        dbEndNodeType,
+        isReverseRel ? RelationshipDirection.REVERSE : RelationshipDirection.FORWARD,
     )
 
     const mappedRelationships: GenericRelation[] = []
 
-    for (const relationship of relationships) {
+    for (const dbRelationship of dbRelationships) {
         mappedRelationships.push({
-            id: relationship.id,
+            id: dbRelationship.relationship_id,
             type: relationshipType,
-            origin: relationship.start_node,
-            destination: relationship.end_node,
-            created_at: relationship.created_at,
-            updated_at: relationship.updated_at,
-        } as GenericRelation)
+            origin: dbRelationship.start_node as BaseNode, // TODO remove type assertion
+            destination: dbRelationship.end_node as BaseNode, // TODO remove type assertion
+            created_at: dbRelationship.created_at,
+            updated_at: dbRelationship.updated_at,
+        })
     }
 
     return mappedRelationships

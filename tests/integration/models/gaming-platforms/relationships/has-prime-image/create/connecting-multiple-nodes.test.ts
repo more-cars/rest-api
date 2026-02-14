@@ -5,6 +5,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {GamingPlatform} from "../../../../../../../src/models/gaming-platforms/GamingPlatform"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A GAMING PLATFORM cannot have multiple ›has-prime-image‹ relationships', async () => {
     const gamingPlatform = await seedNode(NodeTypeEnum.GAMING_PLATFORM)
@@ -15,7 +17,12 @@ test('A GAMING PLATFORM cannot have multiple ›has-prime-image‹ relationships
         await GamingPlatform.createHasPrimeImageRelationship(gamingPlatform.id, image.id)
     }
 
-    const relationships = await getRelationshipCollection(gamingPlatform.id, DbRelationship.GamingPlatformHasPrimeImage)
+    const relationships = await getRelationshipCollection(
+        gamingPlatform.id,
+        DbRelationship.GamingPlatformHasPrimeImage,
+        NodeTypeLabel.Image,
+        RelationshipDirection.FORWARD,
+    )
 
     expect(relationships.length)
         .toBe(1)

@@ -5,6 +5,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {Brand} from "../../../../../../../src/models/brands/Brand"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A BRAND can have multiple ›has-image‹ relationships', async () => {
     const brand = await seedNode(NodeTypeEnum.BRAND)
@@ -15,7 +17,7 @@ test('A BRAND can have multiple ›has-image‹ relationships', async () => {
         await Brand.createHasImageRelationship(brand.id, image.id)
     }
 
-    const relationships = await getRelationshipCollection(brand.id, DbRelationship.BrandHasImage)
+    const relationships = await getRelationshipCollection(brand.id, DbRelationship.BrandHasImage, NodeTypeLabel.Image, RelationshipDirection.FORWARD)
 
     expect(relationships.length)
         .toBe(imagesAmount)

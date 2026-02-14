@@ -5,6 +5,8 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {RaceTrack} from "../../../../../../../src/models/race-tracks/RaceTrack"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A RACE TRACK can have multiple ›has-image‹ relationships', async () => {
     const raceTrack = await seedNode(NodeTypeEnum.RACE_TRACK)
@@ -15,7 +17,12 @@ test('A RACE TRACK can have multiple ›has-image‹ relationships', async () =>
         await RaceTrack.createHasImageRelationship(raceTrack.id, image.id)
     }
 
-    const relationships = await getRelationshipCollection(raceTrack.id, DbRelationship.RaceTrackHasImage)
+    const relationships = await getRelationshipCollection(
+        raceTrack.id,
+        DbRelationship.RaceTrackHasImage,
+        NodeTypeLabel.Image,
+        RelationshipDirection.FORWARD,
+    )
 
     expect(relationships.length)
         .toBe(imagesAmount)
