@@ -98,7 +98,7 @@ export const SessionResult = {
             throw new NodeNotFoundError(sessionResultId)
         }
 
-        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultBelongsToRacingSession, NodeTypeLabel.RacingSession)
+        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultBelongsToRacingSession, NodeTypeLabel.RacingSession, RelDirection.REVERSE)
         if (!relationship) {
             throw new RelationshipNotFoundError(SessionResultRelationship.belongsToRacingSession, sessionResultId, null)
         }
@@ -212,7 +212,7 @@ export const SessionResult = {
             throw new NodeNotFoundError(sessionResultId)
         }
 
-        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant)
+        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant, RelDirection.REVERSE)
         if (!relationship) {
             throw new RelationshipNotFoundError(SessionResultRelationship.achievedWithCarModelVariant, sessionResultId, null)
         }

@@ -99,7 +99,7 @@ export const CarModelVariant = {
             throw new NodeNotFoundError(carModelVariantId)
         }
 
-        const relationship = await getRel(carModelVariantId, RelationshipType.CarModelVariantIsVariantOf, NodeTypeLabel.CarModel)
+        const relationship = await getRel(carModelVariantId, RelationshipType.CarModelVariantIsVariantOf, NodeTypeLabel.CarModel, RelDirection.REVERSE)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelVariantRelationship.isVariantOf, carModelVariantId, null)
         }

@@ -97,7 +97,7 @@ export const CarModel = {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getRel(carModelId, RelationshipType.CarModelBelongsToBrand, NodeTypeLabel.Brand)
+        const relationship = await getRel(carModelId, RelationshipType.CarModelBelongsToBrand, NodeTypeLabel.Brand, RelDirection.REVERSE)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.belongsToBrand, carModelId)
         }
@@ -161,7 +161,7 @@ export const CarModel = {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getRel(carModelId, RelationshipType.CarModelHasSuccessor, NodeTypeLabel.CarModel)
+        const relationship = await getRel(carModelId, RelationshipType.CarModelHasSuccessor, NodeTypeLabel.CarModel, RelDirection.FORWARD)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.hasSuccessor, carModelId, null)
         }
@@ -225,7 +225,7 @@ export const CarModel = {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getRel(carModelId, RelationshipType.CarModelIsSuccessorOf, NodeTypeLabel.CarModel)
+        const relationship = await getRel(carModelId, RelationshipType.CarModelIsSuccessorOf, NodeTypeLabel.CarModel, RelDirection.REVERSE)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.isSuccessorOf, carModelId, null)
         }

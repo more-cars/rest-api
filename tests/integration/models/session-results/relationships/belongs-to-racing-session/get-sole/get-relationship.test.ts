@@ -3,7 +3,7 @@ import {SessionResult} from "../../../../../../../src/models/session-results/Ses
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
+import {REL, seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../../../../_toolbox/schemas/model/RelationshipSchema"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
@@ -11,17 +11,19 @@ import {RelationshipNotFoundError} from "../../../../../../../src/models/types/R
 
 describe('Requesting a ›belongs-to-racing-session‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(NodeTypeEnum.SESSION_RESULT, NodeTypeEnum.RACING_SESSION, DbRelationship.SessionResultBelongsToRacingSession)
-        const actualRelationship = await SessionResult.getBelongsToRacingSessionRelationship(expectedRelationship.start_node_id)
+        const expectedRelationship = await seedRelationship(NodeTypeEnum.SESSION_RESULT, NodeTypeEnum.RACING_SESSION, DbRelationship.SessionResultBelongsToRacingSession, REL.REVERSE)
+        const expectedSessionResultId = expectedRelationship.end_node_id
+        const expectedRacingSessionId = expectedRelationship.start_node_id
+        const actualRelationship = await SessionResult.getBelongsToRacingSessionRelationship(expectedSessionResultId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))
             .toBeTruthy()
 
         expect(actualRelationship.origin.id)
-            .toBe(expectedRelationship.start_node_id)
+            .toBe(expectedSessionResultId)
 
         expect(actualRelationship.destination.id)
-            .toBe(expectedRelationship.end_node_id)
+            .toBe(expectedRacingSessionId)
     })
 
     test('node exists, but not the relationship', async () => {

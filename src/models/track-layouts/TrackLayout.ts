@@ -99,7 +99,7 @@ export const TrackLayout = {
             throw new NodeNotFoundError(trackLayoutId)
         }
 
-        const relationship = await getRel(trackLayoutId, RelationshipType.TrackLayoutBelongsToRaceTrack, NodeTypeLabel.RaceTrack)
+        const relationship = await getRel(trackLayoutId, RelationshipType.TrackLayoutBelongsToRaceTrack, NodeTypeLabel.RaceTrack, RelDirection.REVERSE)
         if (!relationship) {
             throw new RelationshipNotFoundError(TrackLayoutRelationship.belongsToRaceTrack, trackLayoutId, null)
         }

@@ -100,7 +100,7 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingEventId)
         }
 
-        const relationship = await getRel(racingEventId, RelationshipType.RacingEventBelongsToRacingSeries, NodeTypeLabel.RacingSeries)
+        const relationship = await getRel(racingEventId, RelationshipType.RacingEventBelongsToRacingSeries, NodeTypeLabel.RacingSeries, RelDirection.REVERSE)
         if (!relationship) {
             throw new RelationshipNotFoundError(RacingEventRelationship.belongsToRacingSeries, racingEventId, null)
         }
@@ -165,7 +165,7 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingEventId)
         }
 
-        const relationship = await getRel(racingEventId, RelationshipType.RacingEventIsFollowedByEvent, NodeTypeLabel.RacingEvent)
+        const relationship = await getRel(racingEventId, RelationshipType.RacingEventIsFollowedByEvent, NodeTypeLabel.RacingEvent, RelDirection.REVERSE)
         if (!relationship) {
             throw new RelationshipNotFoundError(RacingEventRelationship.isFollowedByEvent, racingEventId, null)
         }
@@ -230,7 +230,7 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingEventId)
         }
 
-        const relationship = await getRel(racingEventId, RelationshipType.RacingEventFollowsEvent, NodeTypeLabel.RacingEvent)
+        const relationship = await getRel(racingEventId, RelationshipType.RacingEventFollowsEvent, NodeTypeLabel.RacingEvent, RelDirection.FORWARD)
         if (!relationship) {
             throw new RelationshipNotFoundError(RacingEventRelationship.followsEvent, racingEventId, null)
         }
@@ -290,7 +290,7 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingEventId)
         }
 
-        const relationship = await getRel(racingEventId, RelationshipType.RacingEventTookPlaceAtRaceTrack, NodeTypeLabel.RaceTrack)
+        const relationship = await getRel(racingEventId, RelationshipType.RacingEventTookPlaceAtRaceTrack, NodeTypeLabel.RaceTrack, RelDirection.FORWARD)
         if (!relationship) {
             throw new RelationshipNotFoundError(RacingEventRelationship.tookPlaceAtRaceTrack, racingEventId, null)
         }
@@ -350,7 +350,7 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingEventId)
         }
 
-        const relationship = await getRel(racingEventId, RelationshipType.RacingEventUsedTheTrackLayout, NodeTypeLabel.TrackLayout)
+        const relationship = await getRel(racingEventId, RelationshipType.RacingEventUsedTheTrackLayout, NodeTypeLabel.TrackLayout, RelDirection.FORWARD)
         if (!relationship) {
             throw new RelationshipNotFoundError(RacingEventRelationship.usedTheTrackLayout, racingEventId, null)
         }

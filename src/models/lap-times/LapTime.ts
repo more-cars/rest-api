@@ -98,7 +98,7 @@ export const LapTime = {
             throw new NodeNotFoundError(lapTimeId)
         }
 
-        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeBelongsToSessionResult, NodeTypeLabel.SessionResult)
+        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeBelongsToSessionResult, NodeTypeLabel.SessionResult, RelDirection.REVERSE)
         if (!relationship) {
             throw new RelationshipNotFoundError(LapTimeRelationship.belongsToSessionResult, lapTimeId, null)
         }
@@ -158,7 +158,7 @@ export const LapTime = {
             throw new NodeNotFoundError(lapTimeId)
         }
 
-        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeAchievedOnTrackLayout, NodeTypeLabel.TrackLayout)
+        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeAchievedOnTrackLayout, NodeTypeLabel.TrackLayout, RelDirection.REVERSE)
         if (!relationship) {
             throw new RelationshipNotFoundError(LapTimeRelationship.achievedOnTrackLayout, lapTimeId, null)
         }
@@ -217,7 +217,7 @@ export const LapTime = {
             throw new NodeNotFoundError(lapTimeId)
         }
 
-        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant)
+        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant, RelDirection.REVERSE)
         if (!relationship) {
             throw new RelationshipNotFoundError(LapTimeRelationship.achievedWithCarModelVariant, lapTimeId, null)
         }

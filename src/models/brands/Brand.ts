@@ -96,7 +96,7 @@ export const Brand = {
             throw new NodeNotFoundError(brandId)
         }
 
-        const relationship = await getRel(brandId, RelationshipType.BrandBelongsToCompany, NodeTypeLabel.Company)
+        const relationship = await getRel(brandId, RelationshipType.BrandBelongsToCompany, NodeTypeLabel.Company, RelDirection.REVERSE)
         if (!relationship) {
             throw new RelationshipNotFoundError(BrandRelationship.belongsToCompany, brandId, null)
         }

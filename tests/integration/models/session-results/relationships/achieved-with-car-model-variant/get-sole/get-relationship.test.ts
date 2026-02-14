@@ -3,7 +3,7 @@ import {SessionResult} from "../../../../../../../src/models/session-results/Ses
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
+import {REL, seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../../../../_toolbox/schemas/model/RelationshipSchema"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
@@ -11,17 +11,19 @@ import {RelationshipNotFoundError} from "../../../../../../../src/models/types/R
 
 describe('Requesting a ›achieved-with-car-model-variant‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL_VARIANT, NodeTypeEnum.SESSION_RESULT, DbRelationship.SessionResultAchievedWithCarModelVariant)
-        const actualRelationship = await SessionResult.getAchievedWithCarModelVariantRelationship(expectedRelationship.end_node_id)
+        const expectedRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL_VARIANT, NodeTypeEnum.SESSION_RESULT, DbRelationship.SessionResultAchievedWithCarModelVariant, REL.REVERSE)
+        const expectedCarModelVariantId = expectedRelationship.end_node_id
+        const expectedSessionResultId = expectedRelationship.start_node_id
+        const actualRelationship = await SessionResult.getAchievedWithCarModelVariantRelationship(expectedCarModelVariantId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))
             .toBeTruthy()
 
         expect(actualRelationship.origin.id)
-            .toBe(expectedRelationship.end_node_id)
+            .toBe(expectedCarModelVariantId)
 
         expect(actualRelationship.destination.id)
-            .toBe(expectedRelationship.start_node_id)
+            .toBe(expectedSessionResultId)
     })
 
     test('node exists, but not the relationship', async () => {

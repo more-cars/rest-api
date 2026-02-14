@@ -97,7 +97,7 @@ export const RacingSession = {
             throw new NodeNotFoundError(racingSessionId)
         }
 
-        const relationship = await getRel(racingSessionId, RelationshipType.RacingSessionBelongsToRacingEvent, NodeTypeLabel.RacingEvent)
+        const relationship = await getRel(racingSessionId, RelationshipType.RacingSessionBelongsToRacingEvent, NodeTypeLabel.RacingEvent, RelDirection.REVERSE)
         if (!relationship) {
             throw new RelationshipNotFoundError(RacingSessionRelationship.belongsToRacingEvent, racingSessionId, null)
         }
