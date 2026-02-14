@@ -5,12 +5,12 @@ import {DbRelationship} from "../types/DbRelationship"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import type {NodeTypeLabel} from "../NodeTypeLabel"
 
-export async function getRelationship(startNodeId: number, relationshipName: DbRelationship, endNodeType: NodeTypeLabel): Promise<false | BaseRelationship> {
+export async function getRelationship(startNodeId: number, relationshipName: DbRelationship, endNodeType: NodeTypeLabel, reverse = false): Promise<false | BaseRelationship> {
     const driver: Driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getRelationshipQuery(startNodeId, relationshipName, endNodeType))
+        const result = await txc.run(getRelationshipQuery(startNodeId, relationshipName, endNodeType, reverse))
         return result.records
     })
 
@@ -46,8 +46,10 @@ export async function getRelationship(startNodeId: number, relationshipName: DbR
     } as BaseRelationship
 }
 
-export function getRelationshipQuery(startNodeId: number, relationshipName: DbRelationship, endNodeLabel: NodeTypeLabel) {
-    return getCypherQueryTemplate('relationships/_cypher/getRelationship.cypher')
+export function getRelationshipQuery(startNodeId: number, relationshipName: DbRelationship, endNodeLabel: NodeTypeLabel, reverse = false) {
+    const templateName = reverse ? 'getRelationshipReversed' : 'getRelationship'
+
+    return getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')
         .trim()
         .replace('$startNodeId', startNodeId.toString())
         .replace('relationshipName', relationshipName)
