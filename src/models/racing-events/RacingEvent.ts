@@ -26,7 +26,6 @@ import {Image} from "../images/Image"
 import {getAllRels} from "../relationships/getAllRels"
 import {RacingSession} from "../racing-sessions/RacingSession"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
-import {RelDirection} from "../relationships/types/RelDirection"
 
 export const RacingEvent = {
     async create(data: CreateRacingEventInput): Promise<RacingEventNode> {
@@ -100,7 +99,7 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingEventId)
         }
 
-        const relationship = await getRel(racingEventId, RelationshipType.RacingEventBelongsToRacingSeries, NodeTypeLabel.RacingSeries, RelDirection.REVERSE)
+        const relationship = await getRel(racingEventId, RelationshipType.RacingEventBelongsToRacingSeries)
         if (!relationship) {
             throw new RelationshipNotFoundError(RacingEventRelationship.belongsToRacingSeries, racingEventId, null)
         }
@@ -165,7 +164,7 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingEventId)
         }
 
-        const relationship = await getRel(racingEventId, RelationshipType.RacingEventIsFollowedByEvent, NodeTypeLabel.RacingEvent, RelDirection.REVERSE)
+        const relationship = await getRel(racingEventId, RelationshipType.RacingEventIsFollowedByEvent)
         if (!relationship) {
             throw new RelationshipNotFoundError(RacingEventRelationship.isFollowedByEvent, racingEventId, null)
         }
@@ -230,7 +229,7 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingEventId)
         }
 
-        const relationship = await getRel(racingEventId, RelationshipType.RacingEventFollowsEvent, NodeTypeLabel.RacingEvent, RelDirection.FORWARD)
+        const relationship = await getRel(racingEventId, RelationshipType.RacingEventFollowsEvent)
         if (!relationship) {
             throw new RelationshipNotFoundError(RacingEventRelationship.followsEvent, racingEventId, null)
         }
@@ -290,7 +289,7 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingEventId)
         }
 
-        const relationship = await getRel(racingEventId, RelationshipType.RacingEventTookPlaceAtRaceTrack, NodeTypeLabel.RaceTrack, RelDirection.FORWARD)
+        const relationship = await getRel(racingEventId, RelationshipType.RacingEventTookPlaceAtRaceTrack)
         if (!relationship) {
             throw new RelationshipNotFoundError(RacingEventRelationship.tookPlaceAtRaceTrack, racingEventId, null)
         }
@@ -350,7 +349,7 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingEventId)
         }
 
-        const relationship = await getRel(racingEventId, RelationshipType.RacingEventUsedTheTrackLayout, NodeTypeLabel.TrackLayout, RelDirection.FORWARD)
+        const relationship = await getRel(racingEventId, RelationshipType.RacingEventUsedTheTrackLayout)
         if (!relationship) {
             throw new RelationshipNotFoundError(RacingEventRelationship.usedTheTrackLayout, racingEventId, null)
         }
@@ -518,7 +517,7 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingEventId)
         }
 
-        const relationship = await getRel(racingEventId, RelationshipType.RacingEventHasPrimeImage, NodeTypeLabel.Image, RelDirection.FORWARD)
+        const relationship = await getRel(racingEventId, RelationshipType.RacingEventHasPrimeImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(RacingEventRelationship.hasPrimeImage, racingEventId, null)
         }

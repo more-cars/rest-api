@@ -1,25 +1,27 @@
 import type {RelationshipType} from "./types/RelationshipType"
-import type {NodeTypeLabel} from "../../db/NodeTypeLabel"
-import {RelDirection} from "./types/RelDirection"
+import {getRelComposition} from "./getRelComposition"
 import type {DbRelationship} from "../../db/types/DbRelationship"
 import {getDbRelationshipType} from "./getDbRelationshipType"
+import {getDbNodeType} from "./getDbNodeType"
 import {getRelationship} from "../../db/relationships/getRelationship"
-import type {GenericRelation} from "./types/GenericRelation"
 import {RelationshipDirection} from "../../db/types/RelationshipDirection"
+import type {GenericRelation} from "./types/GenericRelation"
 
 export async function getRel(
     startNodeId: number,
     relationshipType: RelationshipType,
-    destinationType: NodeTypeLabel,
-    reverse: RelDirection = RelDirection.FORWARD
 ) {
+    const relComposition = getRelComposition(relationshipType)
     const dbRelationshipType: DbRelationship = getDbRelationshipType(relationshipType)
+    const modelEndNodeType = relComposition.endNodeType
+    const dbEndNodeType = getDbNodeType(modelEndNodeType)
+    const isReverseRelationship = relComposition.isReverseRelationship
 
     const dbRelationship = await getRelationship(
         startNodeId,
         dbRelationshipType,
-        destinationType,
-        reverse ? RelationshipDirection.REVERSE : RelationshipDirection.FORWARD,
+        dbEndNodeType,
+        isReverseRelationship ? RelationshipDirection.REVERSE : RelationshipDirection.FORWARD,
     )
 
     if (!dbRelationship) {

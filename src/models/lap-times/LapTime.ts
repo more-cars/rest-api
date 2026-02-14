@@ -24,7 +24,6 @@ import {Image} from "../images/Image"
 import {getAllRels} from "../relationships/getAllRels"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {CarModelVariant} from "../car-model-variants/CarModelVariant"
-import {RelDirection} from "../relationships/types/RelDirection"
 
 export const LapTime = {
     async create(data: CreateLapTimeInput): Promise<LapTimeNode> {
@@ -98,7 +97,7 @@ export const LapTime = {
             throw new NodeNotFoundError(lapTimeId)
         }
 
-        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeBelongsToSessionResult, NodeTypeLabel.SessionResult, RelDirection.REVERSE)
+        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeBelongsToSessionResult)
         if (!relationship) {
             throw new RelationshipNotFoundError(LapTimeRelationship.belongsToSessionResult, lapTimeId, null)
         }
@@ -158,7 +157,7 @@ export const LapTime = {
             throw new NodeNotFoundError(lapTimeId)
         }
 
-        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeAchievedOnTrackLayout, NodeTypeLabel.TrackLayout, RelDirection.REVERSE)
+        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeAchievedOnTrackLayout)
         if (!relationship) {
             throw new RelationshipNotFoundError(LapTimeRelationship.achievedOnTrackLayout, lapTimeId, null)
         }
@@ -217,7 +216,7 @@ export const LapTime = {
             throw new NodeNotFoundError(lapTimeId)
         }
 
-        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant, RelDirection.REVERSE)
+        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeAchievedWithCarModelVariant)
         if (!relationship) {
             throw new RelationshipNotFoundError(LapTimeRelationship.achievedWithCarModelVariant, lapTimeId, null)
         }
@@ -330,7 +329,7 @@ export const LapTime = {
             throw new NodeNotFoundError(lapTimeId)
         }
 
-        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeHasPrimeImage, NodeTypeLabel.Image, RelDirection.FORWARD)
+        const relationship = await getRel(lapTimeId, RelationshipType.LapTimeHasPrimeImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(LapTimeRelationship.hasPrimeImage, lapTimeId, null)
         }

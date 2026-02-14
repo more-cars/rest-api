@@ -22,7 +22,6 @@ import {DbRelationship} from "../../db/types/DbRelationship"
 import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {getRel} from "../relationships/getRel"
-import {RelDirection} from "../relationships/types/RelDirection"
 
 export const GamingPlatform = {
     async create(data: CreateGamingPlatformInput): Promise<GamingPlatformNode> {
@@ -201,7 +200,7 @@ export const GamingPlatform = {
             throw new NodeNotFoundError(gamingPlatformId)
         }
 
-        const relationship = await getRel(gamingPlatformId, RelationshipType.GamingPlatformHasPrimeImage, NodeTypeLabel.Image, RelDirection.FORWARD)
+        const relationship = await getRel(gamingPlatformId, RelationshipType.GamingPlatformHasPrimeImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(GamingPlatformRelationship.hasPrimeImage, gamingPlatformId, null)
         }

@@ -200,7 +200,7 @@ export const Company = {
             throw new NodeNotFoundError(companyId)
         }
 
-        const relationship = await getRel(companyId, RelationshipType.CompanyHasPrimeImage, NodeTypeLabel.Image)
+        const relationship = await getRel(companyId, RelationshipType.CompanyHasPrimeImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(CompanyRelationship.hasPrimeImage, companyId, null)
         }

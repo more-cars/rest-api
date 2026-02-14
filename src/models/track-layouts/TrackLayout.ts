@@ -25,7 +25,6 @@ import {RacingEvent} from "../racing-events/RacingEvent"
 import {LapTime} from "../lap-times/LapTime"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {RacingGame} from "../racing-games/RacingGame"
-import {RelDirection} from "../relationships/types/RelDirection"
 
 export const TrackLayout = {
     async create(data: CreateTrackLayoutInput): Promise<TrackLayoutNode> {
@@ -99,7 +98,7 @@ export const TrackLayout = {
             throw new NodeNotFoundError(trackLayoutId)
         }
 
-        const relationship = await getRel(trackLayoutId, RelationshipType.TrackLayoutBelongsToRaceTrack, NodeTypeLabel.RaceTrack, RelDirection.REVERSE)
+        const relationship = await getRel(trackLayoutId, RelationshipType.TrackLayoutBelongsToRaceTrack)
         if (!relationship) {
             throw new RelationshipNotFoundError(TrackLayoutRelationship.belongsToRaceTrack, trackLayoutId, null)
         }
@@ -322,7 +321,7 @@ export const TrackLayout = {
             throw new NodeNotFoundError(trackLayoutId)
         }
 
-        const relationship = await getRel(trackLayoutId, RelationshipType.TrackLayoutHasPrimeImage, NodeTypeLabel.Image, RelDirection.FORWARD)
+        const relationship = await getRel(trackLayoutId, RelationshipType.TrackLayoutHasPrimeImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(TrackLayoutRelationship.hasPrimeImage, trackLayoutId, null)
         }

@@ -24,7 +24,6 @@ import {getAllRels} from "../relationships/getAllRels"
 import {Image} from "../images/Image"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {CarModelVariant} from "../car-model-variants/CarModelVariant"
-import {RelDirection} from "../relationships/types/RelDirection"
 
 export const SessionResult = {
     async create(data: CreateSessionResultInput): Promise<SessionResultNode> {
@@ -98,7 +97,7 @@ export const SessionResult = {
             throw new NodeNotFoundError(sessionResultId)
         }
 
-        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultBelongsToRacingSession, NodeTypeLabel.RacingSession, RelDirection.REVERSE)
+        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultBelongsToRacingSession)
         if (!relationship) {
             throw new RelationshipNotFoundError(SessionResultRelationship.belongsToRacingSession, sessionResultId, null)
         }
@@ -212,7 +211,7 @@ export const SessionResult = {
             throw new NodeNotFoundError(sessionResultId)
         }
 
-        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant, RelDirection.REVERSE)
+        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultAchievedWithCarModelVariant)
         if (!relationship) {
             throw new RelationshipNotFoundError(SessionResultRelationship.achievedWithCarModelVariant, sessionResultId, null)
         }
@@ -325,7 +324,7 @@ export const SessionResult = {
             throw new NodeNotFoundError(sessionResultId)
         }
 
-        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultHasPrimeImage, NodeTypeLabel.Image, RelDirection.FORWARD)
+        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultHasPrimeImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(SessionResultRelationship.hasPrimeImage, sessionResultId, null)
         }

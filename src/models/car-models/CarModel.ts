@@ -24,7 +24,6 @@ import {createRel} from "../relationships/createRel"
 import {getAllRels} from "../relationships/getAllRels"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {CarModelVariant} from "../car-model-variants/CarModelVariant"
-import {RelDirection} from "../relationships/types/RelDirection"
 
 export const CarModel = {
     async create(data: CreateCarModelInput): Promise<CarModelNode> {
@@ -97,7 +96,7 @@ export const CarModel = {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getRel(carModelId, RelationshipType.CarModelBelongsToBrand, NodeTypeLabel.Brand, RelDirection.REVERSE)
+        const relationship = await getRel(carModelId, RelationshipType.CarModelBelongsToBrand)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.belongsToBrand, carModelId)
         }
@@ -161,7 +160,7 @@ export const CarModel = {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getRel(carModelId, RelationshipType.CarModelHasSuccessor, NodeTypeLabel.CarModel, RelDirection.FORWARD)
+        const relationship = await getRel(carModelId, RelationshipType.CarModelHasSuccessor)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.hasSuccessor, carModelId, null)
         }
@@ -225,7 +224,7 @@ export const CarModel = {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getRel(carModelId, RelationshipType.CarModelIsSuccessorOf, NodeTypeLabel.CarModel, RelDirection.REVERSE)
+        const relationship = await getRel(carModelId, RelationshipType.CarModelIsSuccessorOf)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.isSuccessorOf, carModelId, null)
         }
@@ -409,7 +408,7 @@ export const CarModel = {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getRel(carModelId, RelationshipType.CarModelHasPrimeImage, NodeTypeLabel.Image)
+        const relationship = await getRel(carModelId, RelationshipType.CarModelHasPrimeImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(CarModelRelationship.hasPrimeImage, carModelId, null)
         }

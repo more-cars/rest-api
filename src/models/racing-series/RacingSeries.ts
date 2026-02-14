@@ -22,7 +22,6 @@ import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {Image} from "../images/Image"
 import {getRel} from "../relationships/getRel"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
-import {RelDirection} from "../relationships/types/RelDirection"
 
 export const RacingSeries = {
     async create(data: CreateRacingSeriesInput): Promise<RacingSeriesNode> {
@@ -204,7 +203,7 @@ export const RacingSeries = {
             throw new NodeNotFoundError(racingSeriesId)
         }
 
-        const relationship = await getRel(racingSeriesId, RelationshipType.RacingSeriesHasPrimeImage, NodeTypeLabel.Image, RelDirection.FORWARD)
+        const relationship = await getRel(racingSeriesId, RelationshipType.RacingSeriesHasPrimeImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(RacingSeriesRelationship.hasPrimeImage, racingSeriesId, null)
         }

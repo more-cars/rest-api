@@ -23,7 +23,6 @@ import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {createRel} from "../relationships/createRel"
 import {getAllRels} from "../relationships/getAllRels"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
-import {RelDirection} from "../relationships/types/RelDirection"
 
 export const Brand = {
     async create(data: CreateBrandInput): Promise<BrandNode> {
@@ -96,7 +95,7 @@ export const Brand = {
             throw new NodeNotFoundError(brandId)
         }
 
-        const relationship = await getRel(brandId, RelationshipType.BrandBelongsToCompany, NodeTypeLabel.Company, RelDirection.REVERSE)
+        const relationship = await getRel(brandId, RelationshipType.BrandBelongsToCompany)
         if (!relationship) {
             throw new RelationshipNotFoundError(BrandRelationship.belongsToCompany, brandId, null)
         }
@@ -300,7 +299,7 @@ export const Brand = {
             throw new NodeNotFoundError(brandId)
         }
 
-        const relationship = await getRel(brandId, RelationshipType.BrandHasPrimeImage, NodeTypeLabel.Image, RelDirection.FORWARD)
+        const relationship = await getRel(brandId, RelationshipType.BrandHasPrimeImage)
         if (!relationship) {
             throw new RelationshipNotFoundError(BrandRelationship.hasPrimeImage, brandId, null)
         }
