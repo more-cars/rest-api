@@ -1,29 +1,32 @@
 import type {RelationshipType} from "./types/RelationshipType"
-import type {DbRelationship} from "../../db/types/DbRelationship"
-import {getDbRelationshipType} from "./getDbRelationshipType"
 import {getSpecificRelationship} from "../../db/relationships/getSpecificRelationship"
-import {Node} from "../Node"
+import {getDbRelationshipType} from "./getDbRelationshipType"
 import type {GenericRelation} from "./types/GenericRelation"
+import type {BaseNode} from "../../db/types/BaseNode"
 
-export async function getSpecificRel(originId: number, destinationId: number, relationshipType: RelationshipType) {
-    const dbRelationshipType: DbRelationship = getDbRelationshipType(relationshipType)
-
+export async function getSpecificRel(
+    originId: number,
+    destinationId: number,
+    relationshipType: RelationshipType,
+) {
     const dbRelationship = await getSpecificRelationship(
         originId,
         destinationId,
-        dbRelationshipType,
+        getDbRelationshipType(relationshipType),
     )
 
     if (!dbRelationship) {
         return false
     }
 
-    return {
-        id: dbRelationship.id || dbRelationship.relationship_id,
+    const modelRelationship: GenericRelation = {
+        id: dbRelationship.relationship_id,
         type: relationshipType,
-        origin: await Node.findById(originId),
-        destination: await Node.findById(destinationId),
+        origin: dbRelationship.start_node as BaseNode, // TODO remove type assertion
+        destination: dbRelationship.end_node as BaseNode, // TODO remove type assertion
         created_at: dbRelationship.created_at,
-        updated_at: dbRelationship.updated_at
-    } as GenericRelation
+        updated_at: dbRelationship.updated_at,
+    }
+
+    return modelRelationship
 }
