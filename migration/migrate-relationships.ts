@@ -6,7 +6,7 @@ import {RelationshipTypeLabelOld} from "./src/types/RelationshipTypeLabelOld"
 import {deleteAllRelationshipsOfType} from "../tests/_toolbox/dbSeeding/deleteAllRelationshipsOfType"
 import {isRelationshipReversedInOldDb} from "./src/isRelationshipReversedInOldDb"
 import {fetchOldRelationshipsOfType} from "./src/fetchOldRelationshipsOfType"
-import {createDbRelationship} from "../src/db/relationships/createDbRelationship"
+import {createRelationship} from "../src/db/relationships/createRelationship"
 import {addMoreCarsIdToRelationship} from "../src/db/relationships/addMoreCarsIdToRelationship"
 import {addTimestampsToRelationship} from "../src/db/relationships/addTimestampsToRelationship"
 import {NodeTypeLabel} from "../src/db/NodeTypeLabel"
@@ -50,9 +50,9 @@ async function migrateRelationshipsOfType() {
         const oldRelationship = record.get('rel')
         let newRelationship
         if (isRelationshipReversedInOldDb(newRelationshipType)) {
-            newRelationship = await createDbRelationship(parseInt(oldRelationship.end) + 10_000_000, parseInt(oldRelationship.start) + 10_000_000, newRelationshipType)
+            newRelationship = await createRelationship(parseInt(oldRelationship.end) + 10_000_000, parseInt(oldRelationship.start) + 10_000_000, newRelationshipType)
         } else {
-            newRelationship = await createDbRelationship(parseInt(oldRelationship.start) + 10_000_000, parseInt(oldRelationship.end) + 10_000_000, newRelationshipType)
+            newRelationship = await createRelationship(parseInt(oldRelationship.start) + 10_000_000, parseInt(oldRelationship.end) + 10_000_000, newRelationshipType)
         }
         if (newRelationship) {
             await addMoreCarsIdToRelationship(newRelationship.elementId, parseInt(oldRelationship.elementId) + 10_000_000)

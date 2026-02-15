@@ -1,7 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {getAllDbRelationshipNames} from "../../../../_toolbox/getAllDbRelationshipNames"
 import {DbRelationshipName} from "../../../../../src/db/types/DbRelationshipName"
-import {createRelationshipQuery} from "../../../../../src/db/relationships/createDbRelationship"
+import {createRelationshipQuery} from "../../../../../src/db/relationships/createRelationship"
 import {RelationshipDirection} from "../../../../../src/db/types/RelationshipDirection"
 
 describe('Assembling database query for creating a relationship', () => {
