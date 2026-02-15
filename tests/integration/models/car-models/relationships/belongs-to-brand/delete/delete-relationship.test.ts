@@ -41,7 +41,7 @@ describe('Deleting a ›belongs-to-brand‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›belongs-to-brand‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.IMAGE, DbRelationship.CarModelBelongsToBrand)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.BRAND, DbRelationship.CarModelBelongsToBrand)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,

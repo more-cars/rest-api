@@ -9,8 +9,8 @@ import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
         const company = await seedNode(NodeTypeEnum.COMPANY)
-        await seedRelationshipForStartNode(company.id, NodeTypeEnum.COMPANY, DbRelationship.CompanyHasImage)
-        await seedRelationshipForStartNode(company.id, NodeTypeEnum.COMPANY, DbRelationship.CompanyHasImage)
+        await seedRelationshipForStartNode(company.id, NodeTypeEnum.IMAGE, DbRelationship.CompanyHasImage)
+        await seedRelationshipForStartNode(company.id, NodeTypeEnum.IMAGE, DbRelationship.CompanyHasImage)
 
         const relationships = await getRelationshipCollection(
             company.id,
