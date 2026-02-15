@@ -5,7 +5,6 @@ import {createRelationship} from "../../../../../../../src/db/relationships/crea
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('Requesting the relationship between BRAND and attached CAR MODEL',
     async () => {

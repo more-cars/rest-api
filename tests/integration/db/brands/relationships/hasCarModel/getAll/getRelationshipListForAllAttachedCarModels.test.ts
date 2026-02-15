@@ -6,7 +6,6 @@ import {createRelationship} from "../../../../../../../src/db/relationships/crea
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('Requesting a relationship list for all CAR MODELs that are connected to the BRAND', async () => {
     const brand = await seedNode(NodeTypeEnum.BRAND)

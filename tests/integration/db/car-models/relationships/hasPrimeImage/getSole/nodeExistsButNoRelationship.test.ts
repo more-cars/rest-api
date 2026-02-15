@@ -4,7 +4,6 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('Expecting an empty list when the relationship does not exist', async () => {
     const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)

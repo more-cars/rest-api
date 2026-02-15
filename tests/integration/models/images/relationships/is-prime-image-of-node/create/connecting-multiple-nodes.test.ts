@@ -6,7 +6,6 @@ import {Image} from "../../../../../../../src/models/images/Image"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A IMAGE can have multiple ›is-prime-image-of-node‹ relationships', async () => {
     const image = await seedNode(NodeTypeEnum.IMAGE)

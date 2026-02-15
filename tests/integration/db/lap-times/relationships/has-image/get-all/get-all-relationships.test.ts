@@ -5,7 +5,6 @@ import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {

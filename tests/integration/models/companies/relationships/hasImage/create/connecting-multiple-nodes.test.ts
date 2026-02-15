@@ -6,7 +6,6 @@ import {Company} from "../../../../../../../src/models/companies/Company"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A COMPANY can have multiple ›has-image‹ relationships', async () => {
     const company = await seedNode(NodeTypeEnum.COMPANY)

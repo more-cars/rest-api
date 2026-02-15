@@ -6,7 +6,6 @@ import {LapTime} from "../../../../../../../src/models/lap-times/LapTime"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A LAP TIME cannot have multiple ›has-prime-image‹ relationships', async () => {
     const lapTime = await seedNode(NodeTypeEnum.LAP_TIME)

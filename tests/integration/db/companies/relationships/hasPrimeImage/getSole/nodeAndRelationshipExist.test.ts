@@ -4,7 +4,6 @@ import {getRelationshipCollection} from "../../../../../../../src/db/relationshi
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('Node and relationship exist', async () => {
     const relationship = await seedRelationship(NodeTypeEnum.COMPANY, NodeTypeEnum.IMAGE, DbRelationship.CompanyHasPrimeImage)

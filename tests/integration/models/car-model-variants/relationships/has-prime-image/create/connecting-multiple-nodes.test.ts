@@ -6,7 +6,6 @@ import {CarModelVariant} from "../../../../../../../src/models/car-model-variant
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A CAR MODEL VARIANT cannot have multiple ›has-prime-image‹ relationships', async () => {
     const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)

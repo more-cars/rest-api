@@ -6,7 +6,6 @@ import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A BRAND can have multiple ›has-car-model‹ relationships', async () => {
     const brand = await seedNode(NodeTypeEnum.BRAND)

@@ -6,7 +6,6 @@ import {GamingPlatform} from "../../../../../../../src/models/gaming-platforms/G
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A GAMING PLATFORM can have multiple ›features-racing-game‹ relationships', async () => {
     const gamingPlatform = await seedNode(NodeTypeEnum.GAMING_PLATFORM)

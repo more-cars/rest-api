@@ -5,7 +5,6 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 describe('Requesting a ›has-successor‹ relationship', () => {
     test('node and relationship exist', async () => {
