@@ -3,21 +3,14 @@ import type {DbRelationship} from "../../db/types/DbRelationship"
 import {getDbRelationshipType} from "./getDbRelationshipType"
 import {createRelationship} from "../../db/relationships/createRelationship"
 import type {GenericRelation} from "./types/GenericRelation"
-import {Node} from "../Node"
+import type {BaseNode} from "../../db/types/BaseNode"
 
-export async function createRel(originId: number, destinationId: number, relationshipType: RelationshipType) {
-    const dbRelationshipType: DbRelationship = getDbRelationshipType(relationshipType)
-    // TODO replace quick'n'dirty with proper solution
-    const isReverseRelationship =
-        relationshipType.includes('BELONGS_TO_') ||
-        relationshipType.includes('FOLLOWS_') ||
-        relationshipType.includes('ACHIEVED_WITH_') ||
-        relationshipType.includes('ACHIEVED_ON_') ||
-        relationshipType.includes('WAS_')
+export async function createRel(originId: number, destinationId: number, relType: RelationshipType) {
+    const dbRelationshipType: DbRelationship = getDbRelationshipType(relType)
 
     const dbRelationship = await createRelationship(
-        isReverseRelationship ? destinationId : originId,
-        isReverseRelationship ? originId : destinationId,
+        originId,
+        destinationId,
         dbRelationshipType,
     )
 
@@ -25,12 +18,14 @@ export async function createRel(originId: number, destinationId: number, relatio
         return false
     }
 
-    return {
+    const modelRel: GenericRelation = {
         id: dbRelationship.id || dbRelationship.relationship_id,
-        type: relationshipType,
-        origin: await Node.findById(originId),
-        destination: await Node.findById(destinationId),
+        type: relType,
+        origin: dbRelationship.start_node as BaseNode, // TODO remove type assertion
+        destination: dbRelationship.end_node as BaseNode, // TODO remove type assertion
         created_at: dbRelationship.created_at,
         updated_at: dbRelationship.updated_at
-    } as GenericRelation
+    }
+
+    return modelRel
 }
