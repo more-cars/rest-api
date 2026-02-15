@@ -2,29 +2,31 @@
 to: tests/integration/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/relationships/<%= h.changeCase.kebab(relationshipName) %>/get-sole/get-relationship.test.ts
 ---
 import {describe, expect, test} from 'vitest'
-import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
-import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../../../../_toolbox/schemas/model/RelationshipSchema"
-import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
+import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 describe('Requesting a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>, NodeTypeEnum.<%= h.changeCase.constant(endNodeType) %>, DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
-        const actualRelationship = await <%= h.changeCase.pascal(startNodeType) %>.get<%= h.changeCase.pascal(relationshipName) %>Relationship(expectedRelationship.start_node_id)
+        const expected<%= h.changeCase.pascal(startNodeType) %>Id = expectedRelationship.start_node_id
+        const expected<%= h.changeCase.pascal(endNodeType) %>Id = expectedRelationship.end_node_id
+        const actualRelationship = await <%= h.changeCase.pascal(startNodeType) %>.get<%= h.changeCase.pascal(relationshipName) %>Relationship(expected<%= h.changeCase.pascal(startNodeType) %>Id)
 
         expect(validateJson(actualRelationship, RelationshipSchema))
             .toBeTruthy()
 
         expect(actualRelationship.origin.id)
-            .toBe(expectedRelationship.start_node_id)
+            .toBe(expected<%= h.changeCase.pascal(startNodeType) %>Id)
 
         expect(actualRelationship.destination.id)
-            .toBe(expectedRelationship.end_node_id)
+            .toBe(expected<%= h.changeCase.pascal(endNodeType) %>Id)
     })
 
     test('node exists, but not the relationship', async () => {
