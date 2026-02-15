@@ -3,7 +3,6 @@ import {createRelationship} from "../../../../../../../src/db/relationships/crea
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {CarModelRelationship} from "../../../../../../../src/models/car-models/types/CarModelRelationship"
 
 describe('Creating a ›is-variant-of‹ relationship', () => {
     test('with valid data', async () => {
@@ -11,19 +10,19 @@ describe('Creating a ›is-variant-of‹ relationship', () => {
         const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
 
         const createdRelationship = await createRelationship(
-            carModel.id,
             carModelVariant.id,
+            carModel.id,
             DbRelationship.CarModelVariantIsVariantOf,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node_id', carModel.id)
+            .toHaveProperty('start_node_id', carModelVariant.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node_id', carModelVariant.id)
+            .toHaveProperty('end_node_id', carModel.id)
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', CarModelRelationship.hasVariant)
+            .toHaveProperty('relationship_name', DbRelationship.CarModelVariantIsVariantOf)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)

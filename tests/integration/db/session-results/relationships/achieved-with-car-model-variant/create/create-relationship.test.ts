@@ -3,9 +3,6 @@ import {createRelationship} from "../../../../../../../src/db/relationships/crea
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {
-    CarModelVariantRelationship
-} from "../../../../../../../src/models/car-model-variants/types/CarModelVariantRelationship"
 
 describe('Creating a ›achieved-with-car-model-variant‹ relationship', () => {
     test('with valid data', async () => {
@@ -13,19 +10,19 @@ describe('Creating a ›achieved-with-car-model-variant‹ relationship', () => 
         const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)
 
         const createdRelationship = await createRelationship(
-            carModelVariant.id,
             sessionResult.id,
+            carModelVariant.id,
             DbRelationship.SessionResultAchievedWithCarModelVariant,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node_id', carModelVariant.id)
+            .toHaveProperty('start_node_id', sessionResult.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node_id', sessionResult.id)
+            .toHaveProperty('end_node_id', carModelVariant.id)
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', CarModelVariantRelationship.achievedSessionResult)
+            .toHaveProperty('relationship_name', DbRelationship.SessionResultAchievedWithCarModelVariant)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)

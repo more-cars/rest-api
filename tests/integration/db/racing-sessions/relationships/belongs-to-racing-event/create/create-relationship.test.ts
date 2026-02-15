@@ -3,7 +3,6 @@ import {createRelationship} from "../../../../../../../src/db/relationships/crea
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {RacingEventRelationship} from "../../../../../../../src/models/racing-events/types/RacingEventRelationship"
 
 describe('Creating a ›belongs-to-racing-event‹ relationship', () => {
     test('with valid data', async () => {
@@ -11,19 +10,19 @@ describe('Creating a ›belongs-to-racing-event‹ relationship', () => {
         const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
 
         const createdRelationship = await createRelationship(
-            racingEvent.id,
             racingSession.id,
+            racingEvent.id,
             DbRelationship.RacingSessionBelongsToRacingEvent,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node_id', racingEvent.id)
+            .toHaveProperty('start_node_id', racingSession.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node_id', racingSession.id)
+            .toHaveProperty('end_node_id', racingEvent.id)
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', RacingEventRelationship.hasRacingSession)
+            .toHaveProperty('relationship_name', DbRelationship.RacingSessionBelongsToRacingEvent)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)

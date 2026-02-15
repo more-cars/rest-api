@@ -3,7 +3,6 @@ import {createRelationship} from "../../../../../../../src/db/relationships/crea
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {RacingEventRelationship} from "../../../../../../../src/models/racing-events/types/RacingEventRelationship"
 
 describe('Creating a ›is-followed-by-event‹ relationship', () => {
     test('with valid data', async () => {
@@ -23,7 +22,7 @@ describe('Creating a ›is-followed-by-event‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', RacingEventRelationship.isFollowedByEvent)
+            .toHaveProperty('relationship_name', DbRelationship.RacingEventIsFollowedByEvent)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)

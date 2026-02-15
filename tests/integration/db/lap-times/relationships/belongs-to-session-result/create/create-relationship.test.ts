@@ -3,9 +3,6 @@ import {createRelationship} from "../../../../../../../src/db/relationships/crea
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {
-    SessionResultRelationship
-} from "../../../../../../../src/models/session-results/types/SessionResultRelationship"
 
 describe('Creating a ›belongs-to-session-result‹ relationship', () => {
     test('with valid data', async () => {
@@ -13,19 +10,19 @@ describe('Creating a ›belongs-to-session-result‹ relationship', () => {
         const sessionResult = await seedNode(NodeTypeEnum.SESSION_RESULT)
 
         const createdRelationship = await createRelationship(
-            sessionResult.id,
             lapTime.id,
+            sessionResult.id,
             DbRelationship.LapTimeBelongsToSessionResult,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node_id', sessionResult.id)
+            .toHaveProperty('start_node_id', lapTime.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node_id', lapTime.id)
+            .toHaveProperty('end_node_id', sessionResult.id)
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', SessionResultRelationship.hasLapTime)
+            .toHaveProperty('relationship_name', DbRelationship.LapTimeBelongsToSessionResult)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)

@@ -3,7 +3,6 @@ import {createRelationship} from "../../../../../../../src/db/relationships/crea
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {RacingGameRelationship} from "../../../../../../../src/models/racing-games/types/RacingGameRelationship"
 
 describe('Creating a ›released-on-gaming-platform‹ relationship', () => {
     test('with valid data', async () => {
@@ -23,7 +22,7 @@ describe('Creating a ›released-on-gaming-platform‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', RacingGameRelationship.releasedOnGamingPlatform)
+            .toHaveProperty('relationship_name', DbRelationship.RacingGameReleasedOnGamingPlatform)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)

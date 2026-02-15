@@ -3,7 +3,6 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
-import {CompanyRelationship} from "../../../../../../../src/models/companies/types/CompanyRelationship"
 
 describe('Creating a ›has-image‹ relationship', () => {
     test('with valid data', async () => {
@@ -23,7 +22,7 @@ describe('Creating a ›has-image‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', CompanyRelationship.hasImage)
+            .toHaveProperty('relationship_name', DbRelationship.CompanyHasImage)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)

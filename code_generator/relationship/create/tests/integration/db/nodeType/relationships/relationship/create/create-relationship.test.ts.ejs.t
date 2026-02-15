@@ -2,11 +2,10 @@
 to: tests/integration/db/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/relationships/<%= h.changeCase.kebab(relationshipName) %>/create/create-relationship.test.ts
 ---
 import {describe, expect, test} from 'vitest'
-import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {<%= h.changeCase.pascal(startNodeType) %>Relationship} from "../../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/types/<%= h.changeCase.pascal(startNodeType) %>Relationship"
+import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
+import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 describe('Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship', () => {
     test('with valid data', async () => {
@@ -26,7 +25,7 @@ describe('Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relations
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', <%= h.changeCase.pascal(startNodeType) %>Relationship.<%= h.changeCase.camel(relationshipName) %>)
+            .toHaveProperty('relationship_name', DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)

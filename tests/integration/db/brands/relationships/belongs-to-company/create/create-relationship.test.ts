@@ -1,9 +1,8 @@
 import {describe, expect, test} from 'vitest'
-import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
-import {CompanyRelationship} from "../../../../../../../src/models/companies/types/CompanyRelationship"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
+import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 
 describe('Creating a ›belongs-to-company‹ relationship', () => {
     test('with valid data', async () => {
@@ -11,19 +10,19 @@ describe('Creating a ›belongs-to-company‹ relationship', () => {
         const company = await seedNode(NodeTypeEnum.COMPANY)
 
         const createdRelationship = await createRelationship(
-            company.id,
             brand.id,
+            company.id,
             DbRelationship.BrandBelongsToCompany,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node_id', company.id)
+            .toHaveProperty('start_node_id', brand.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node_id', brand.id)
+            .toHaveProperty('end_node_id', company.id)
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', CompanyRelationship.hasBrand)
+            .toHaveProperty('relationship_name', DbRelationship.BrandBelongsToCompany)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)
