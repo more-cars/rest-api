@@ -1,29 +1,29 @@
 import {describe, expect, test} from 'vitest'
-import {getAllRelationshipTypes} from "../../../../_toolbox/getAllRelationshipTypes"
-import {DbRelationship} from "../../../../../src/db/types/DbRelationship"
+import {getAllDbRelationshipNames} from "../../../../_toolbox/getAllDbRelationshipNames"
+import {DbRelationshipName} from "../../../../../src/db/types/DbRelationshipName"
 import {getRelationshipQuery} from "../../../../../src/db/relationships/getRelationship"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 import {RelationshipDirection} from "../../../../../src/db/types/RelationshipDirection"
 
 describe('Assembling database query for fetching a relationship', () => {
-    test.each(getAllRelationshipTypes())('forward $0 relationship', async (relationshipType: DbRelationship) => {
+    test.each(getAllDbRelationshipNames())('forward $0 relationship', async (relationshipName: DbRelationshipName) => {
         const startNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
-        const query = getRelationshipQuery(startNodeId, relationshipType, NodeTypeLabel.LapTime, RelationshipDirection.FORWARD)
+        const query = getRelationshipQuery(startNodeId, relationshipName, NodeTypeLabel.LapTime, RelationshipDirection.FORWARD)
 
         expect(query)
             .toEqual(
-                "MATCH (a {mc_id: " + startNodeId + "})-[r:" + relationshipType + "]->(b:LapTime)\n" +
+                "MATCH (a {mc_id: " + startNodeId + "})-[r:" + relationshipName + "]->(b:LapTime)\n" +
                 "RETURN a, r, b\n" +
                 "  LIMIT 1")
     })
 
-    test.each(getAllRelationshipTypes())('reverse $0 relationship', async (relationshipType: DbRelationship) => {
+    test.each(getAllDbRelationshipNames())('reverse $0 relationship', async (relationshipName: DbRelationshipName) => {
         const startNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
-        const query = getRelationshipQuery(startNodeId, relationshipType, NodeTypeLabel.LapTime, RelationshipDirection.REVERSE)
+        const query = getRelationshipQuery(startNodeId, relationshipName, NodeTypeLabel.LapTime, RelationshipDirection.REVERSE)
 
         expect(query)
             .toEqual(
-                "MATCH (a {mc_id: " + startNodeId + "})<-[r:" + relationshipType + "]-(b:LapTime)\n" +
+                "MATCH (a {mc_id: " + startNodeId + "})<-[r:" + relationshipName + "]-(b:LapTime)\n" +
                 "RETURN a, r, b\n" +
                 "  LIMIT 1")
     })

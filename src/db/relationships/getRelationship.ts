@@ -1,22 +1,27 @@
 import neo4j, {Driver, Node, Relationship} from "neo4j-driver"
 import type {DbRelationship} from "../types/DbRelationship"
 import type {NodeTypeLabel} from "../NodeTypeLabel"
-import {RelationshipDirection} from "../types/RelationshipDirection"
 import type {BaseRelationship} from "../types/BaseRelationship"
+import {getRelationshipSpecification} from "./getRelationshipSpecification"
+import {RelationshipDirection} from "../types/RelationshipDirection"
 import {getDriver} from "../driver"
+import {DbRelationshipName} from "../types/DbRelationshipName"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 export async function getRelationship(
     startNodeId: number,
-    relationshipName: DbRelationship,
+    relationshipType: DbRelationship,
     endNodeType: NodeTypeLabel,
-    reverse: RelationshipDirection,
 ): Promise<false | BaseRelationship> {
+    const relationshipSpecs = getRelationshipSpecification(relationshipType)
+    const dbRelationshipName = relationshipSpecs.relationshipName
+    const relationshipDirection = relationshipSpecs.isReverseRelationship ? RelationshipDirection.REVERSE : RelationshipDirection.FORWARD
+
     const driver: Driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getRelationshipQuery(startNodeId, relationshipName, endNodeType, reverse))
+        const result = await txc.run(getRelationshipQuery(startNodeId, dbRelationshipName, endNodeType, relationshipDirection))
         return result.records
     })
 
@@ -27,12 +32,12 @@ export async function getRelationship(
     }
 
     const sourceNode: Node = records[0].get('a')
-    const relation: Relationship = records[0].get('r')
+    const dbRelation: Relationship = records[0].get('r')
     const endNode: Node = records[0].get('b')
 
-    return {
-        id: relation.properties.mc_id,
-        type: relationshipName,
+    const relation: BaseRelationship = {
+        id: dbRelation.properties.mc_id,
+        type: relationshipType,
         start_node_id: startNodeId,
         start_node: Object.assign({}, sourceNode.properties, {
             id: sourceNode.properties.mc_id,
@@ -45,14 +50,16 @@ export async function getRelationship(
             created_at: endNode.properties.created_at,
             updated_at: endNode.properties.updated_at,
         }),
-        relationship_id: relation.properties.mc_id,
-        relationship_name: relationshipName,
-        created_at: relation.properties.created_at,
-        updated_at: relation.properties.updated_at,
-    } as BaseRelationship
+        relationship_id: dbRelation.properties.mc_id,
+        relationship_name: relationshipType,
+        created_at: dbRelation.properties.created_at,
+        updated_at: dbRelation.properties.updated_at,
+    }
+
+    return relation
 }
 
-export function getRelationshipQuery(startNodeId: number, relationshipName: DbRelationship, endNodeLabel: NodeTypeLabel, reverse: RelationshipDirection) {
+export function getRelationshipQuery(startNodeId: number, relationshipName: DbRelationshipName, endNodeLabel: NodeTypeLabel, reverse: RelationshipDirection) {
     const templateName = reverse ? 'getRelationshipReversed' : 'getRelationship'
 
     return getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')
