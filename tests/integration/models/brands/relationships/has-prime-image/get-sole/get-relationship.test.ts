@@ -1,17 +1,17 @@
 import {describe, expect, test} from 'vitest'
-import {Brand} from "../../../../../../../src/models/brands/Brand"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
-import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {REL, seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
+import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {Brand} from "../../../../../../../src/models/brands/Brand"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../../../../_toolbox/schemas/model/RelationshipSchema"
-import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
+import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(NodeTypeEnum.BRAND, NodeTypeEnum.IMAGE, DbRelationship.BrandHasPrimeImage, REL.FORWARD)
+        const expectedRelationship = await seedRelationship(NodeTypeEnum.BRAND, NodeTypeEnum.IMAGE, DbRelationship.BrandHasPrimeImage)
         const expectedBrandId = expectedRelationship.start_node_id
         const expectedImageId = expectedRelationship.end_node_id
         const actualRelationship = await Brand.getHasPrimeImageRelationship(expectedBrandId)

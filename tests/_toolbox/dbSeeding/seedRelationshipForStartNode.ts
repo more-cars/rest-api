@@ -6,10 +6,10 @@ import {createRelationship} from "../../../src/db/relationships/createRelationsh
 export async function seedRelationshipForStartNode(
     startNodeId: number,
     endNodeType: NodeTypeEnum,
-    relationshipName: DbRelationship
+    relationshipType: DbRelationship,
 ) {
     const endNode = await seedNode(endNodeType)
-    const relationship = await createRelationship(startNodeId, endNode.id, relationshipName)
+    const relationship = await createRelationship(startNodeId, endNode.id, relationshipType)
 
     if (!relationship) {
         throw new Error('Relationship could not be created')
