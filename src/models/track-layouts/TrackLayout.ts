@@ -9,7 +9,6 @@ import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {createRel} from "../relationships/createRel"
-import {DbRelationship} from "../../db/types/DbRelationship"
 import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
 import {RaceTrack} from "../race-tracks/RaceTrack"
 import {getSpecificRel} from "../relationships/getSpecificRel"
@@ -82,7 +81,7 @@ export const TrackLayout = {
             throw new RelationshipAlreadyExistsError(TrackLayoutRelationship.belongsToRaceTrack, trackLayoutId, raceTrackId)
         }
 
-        await deleteDeprecatedRel(trackLayoutId, DbRelationship.TrackLayoutBelongsToRaceTrack, NodeTypeLabel.RaceTrack)
+        await deleteDeprecatedRel(trackLayoutId, RelationshipType.TrackLayoutBelongsToRaceTrack, NodeTypeLabel.RaceTrack)
 
         const createdRelationship = await createRel(trackLayoutId, raceTrackId, RelationshipType.TrackLayoutBelongsToRaceTrack)
         if (!createdRelationship) {
@@ -142,7 +141,7 @@ export const TrackLayout = {
             throw new RelationshipAlreadyExistsError(TrackLayoutRelationship.wasUsedByRacingEvent, trackLayoutId, racingEventId)
         }
 
-        await deleteDeprecatedRel(racingEventId, DbRelationship.TrackLayoutWasUsedByRacingEvent, NodeTypeLabel.TrackLayout)
+        await deleteDeprecatedRel(racingEventId, RelationshipType.TrackLayoutWasUsedByRacingEvent, NodeTypeLabel.TrackLayout)
 
         const createdRelationship = await createRel(trackLayoutId, racingEventId, RelationshipType.TrackLayoutWasUsedByRacingEvent)
         if (!createdRelationship) {
@@ -197,7 +196,7 @@ export const TrackLayout = {
             throw new RelationshipAlreadyExistsError(TrackLayoutRelationship.hasLapTime, trackLayoutId, lapTimeId)
         }
 
-        await deleteDeprecatedRel(lapTimeId, DbRelationship.TrackLayoutHasLapTime, NodeTypeLabel.TrackLayout)
+        await deleteDeprecatedRel(lapTimeId, RelationshipType.TrackLayoutHasLapTime, NodeTypeLabel.TrackLayout)
 
         const createdRelationship = await createRel(trackLayoutId, lapTimeId, RelationshipType.TrackLayoutHasLapTime)
         if (!createdRelationship) {
@@ -305,7 +304,7 @@ export const TrackLayout = {
             throw new RelationshipAlreadyExistsError(TrackLayoutRelationship.hasPrimeImage, trackLayoutId, imageId)
         }
 
-        await deleteDeprecatedRel(trackLayoutId, DbRelationship.TrackLayoutHasPrimeImage, NodeTypeLabel.Image)
+        await deleteDeprecatedRel(trackLayoutId, RelationshipType.TrackLayoutHasPrimeImage, NodeTypeLabel.Image)
 
         const createdRelationship = await createRel(trackLayoutId, imageId, RelationshipType.TrackLayoutHasPrimeImage)
         if (!createdRelationship) {

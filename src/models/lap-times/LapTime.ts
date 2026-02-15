@@ -9,7 +9,6 @@ import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {createRel} from "../relationships/createRel"
-import {DbRelationship} from "../../db/types/DbRelationship"
 import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
 import {SessionResult} from "../session-results/SessionResult"
 import {getSpecificRel} from "../relationships/getSpecificRel"
@@ -81,7 +80,7 @@ export const LapTime = {
             throw new RelationshipAlreadyExistsError(LapTimeRelationship.belongsToSessionResult, lapTimeId, sessionResultId)
         }
 
-        await deleteDeprecatedRel(lapTimeId, DbRelationship.LapTimeBelongsToSessionResult, NodeTypeLabel.SessionResult)
+        await deleteDeprecatedRel(lapTimeId, RelationshipType.LapTimeBelongsToSessionResult, NodeTypeLabel.SessionResult)
 
         const createdRelationship = await createRel(lapTimeId, sessionResultId, RelationshipType.LapTimeBelongsToSessionResult)
         if (!createdRelationship) {
@@ -141,7 +140,7 @@ export const LapTime = {
             throw new RelationshipAlreadyExistsError(LapTimeRelationship.achievedOnTrackLayout, lapTimeId, trackLayoutId)
         }
 
-        await deleteDeprecatedRel(lapTimeId, DbRelationship.LapTimeAchievedOnTrackLayout, NodeTypeLabel.TrackLayout)
+        await deleteDeprecatedRel(lapTimeId, RelationshipType.LapTimeAchievedOnTrackLayout, NodeTypeLabel.TrackLayout)
 
         const createdRelationship = await createRel(lapTimeId, trackLayoutId, RelationshipType.LapTimeAchievedOnTrackLayout)
         if (!createdRelationship) {
@@ -200,7 +199,7 @@ export const LapTime = {
             throw new RelationshipAlreadyExistsError(LapTimeRelationship.achievedWithCarModelVariant, lapTimeId, carModelVariantId)
         }
 
-        await deleteDeprecatedRel(lapTimeId, DbRelationship.LapTimeAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant)
+        await deleteDeprecatedRel(lapTimeId, RelationshipType.LapTimeAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant)
 
         const createdRelationship = await createRel(lapTimeId, carModelVariantId, RelationshipType.LapTimeAchievedWithCarModelVariant)
         if (!createdRelationship) {
@@ -313,7 +312,7 @@ export const LapTime = {
             throw new RelationshipAlreadyExistsError(LapTimeRelationship.hasPrimeImage, lapTimeId, imageId)
         }
 
-        await deleteDeprecatedRel(lapTimeId, DbRelationship.LapTimeHasPrimeImage, NodeTypeLabel.Image)
+        await deleteDeprecatedRel(lapTimeId, RelationshipType.LapTimeHasPrimeImage, NodeTypeLabel.Image)
 
         const createdRelationship = await createRel(lapTimeId, imageId, RelationshipType.LapTimeHasPrimeImage)
         if (!createdRelationship) {

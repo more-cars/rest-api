@@ -9,7 +9,6 @@ import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {createRel} from "../relationships/createRel"
-import {DbRelationship} from "../../db/types/DbRelationship"
 import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
 import {RacingSession} from "../racing-sessions/RacingSession"
 import {getSpecificRel} from "../relationships/getSpecificRel"
@@ -81,7 +80,7 @@ export const SessionResult = {
             throw new RelationshipAlreadyExistsError(SessionResultRelationship.belongsToRacingSession, sessionResultId, racingSessionId)
         }
 
-        await deleteDeprecatedRel(sessionResultId, DbRelationship.SessionResultBelongsToRacingSession, NodeTypeLabel.RacingSession)
+        await deleteDeprecatedRel(sessionResultId, RelationshipType.SessionResultBelongsToRacingSession, NodeTypeLabel.RacingSession)
 
         const createdRelationship = await createRel(sessionResultId, racingSessionId, RelationshipType.SessionResultBelongsToRacingSession)
         if (!createdRelationship) {
@@ -141,7 +140,7 @@ export const SessionResult = {
             throw new RelationshipAlreadyExistsError(SessionResultRelationship.hasLapTime, sessionResultId, lapTimeId)
         }
 
-        await deleteDeprecatedRel(lapTimeId, DbRelationship.SessionResultHasLapTime, NodeTypeLabel.SessionResult)
+        await deleteDeprecatedRel(lapTimeId, RelationshipType.SessionResultHasLapTime, NodeTypeLabel.SessionResult)
 
         const createdRelationship = await createRel(sessionResultId, lapTimeId, RelationshipType.SessionResultHasLapTime)
         if (!createdRelationship) {
@@ -195,7 +194,7 @@ export const SessionResult = {
             throw new RelationshipAlreadyExistsError(SessionResultRelationship.achievedWithCarModelVariant, sessionResultId, carModelVariantId)
         }
 
-        await deleteDeprecatedRel(sessionResultId, DbRelationship.SessionResultAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant)
+        await deleteDeprecatedRel(sessionResultId, RelationshipType.SessionResultAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant)
 
         const createdRelationship = await createRel(sessionResultId, carModelVariantId, RelationshipType.SessionResultAchievedWithCarModelVariant)
         if (!createdRelationship) {
@@ -308,7 +307,7 @@ export const SessionResult = {
             throw new RelationshipAlreadyExistsError(SessionResultRelationship.hasPrimeImage, sessionResultId, imageId)
         }
 
-        await deleteDeprecatedRel(sessionResultId, DbRelationship.SessionResultHasPrimeImage, NodeTypeLabel.Image)
+        await deleteDeprecatedRel(sessionResultId, RelationshipType.SessionResultHasPrimeImage, NodeTypeLabel.Image)
 
         const createdRelationship = await createRel(sessionResultId, imageId, RelationshipType.SessionResultHasPrimeImage)
         if (!createdRelationship) {

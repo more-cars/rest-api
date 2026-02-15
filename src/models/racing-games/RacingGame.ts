@@ -19,7 +19,6 @@ import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {TrackLayout} from "../track-layouts/TrackLayout"
 import {Image} from "../images/Image"
-import {DbRelationship} from "../../db/types/DbRelationship"
 import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {getRel} from "../relationships/getRel"
@@ -238,7 +237,7 @@ export const RacingGame = {
         if (existingRelation) {
             throw new RelationshipAlreadyExistsError(RacingGameRelationship.hasPrimeImage, racingGameId, imageId)
         }
-        await deleteDeprecatedRel(racingGameId, DbRelationship.RacingGameHasPrimeImage, NodeTypeLabel.Image)
+        await deleteDeprecatedRel(racingGameId, RelationshipType.RacingGameHasPrimeImage, NodeTypeLabel.Image)
 
 
         const createdRelationship = await createRel(racingGameId, imageId, RelationshipType.RacingGameHasPrimeImage)

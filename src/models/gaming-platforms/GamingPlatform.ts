@@ -18,7 +18,6 @@ import {getAllRels} from "../relationships/getAllRels"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {Image} from "../images/Image"
-import {DbRelationship} from "../../db/types/DbRelationship"
 import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {getRel} from "../relationships/getRel"
@@ -183,7 +182,7 @@ export const GamingPlatform = {
         if (existingRelation) {
             throw new RelationshipAlreadyExistsError(GamingPlatformRelationship.hasPrimeImage, gamingPlatformId, imageId)
         }
-        await deleteDeprecatedRel(gamingPlatformId, DbRelationship.GamingPlatformHasPrimeImage, NodeTypeLabel.Image)
+        await deleteDeprecatedRel(gamingPlatformId, RelationshipType.GamingPlatformHasPrimeImage, NodeTypeLabel.Image)
 
 
         const createdRelationship = await createRel(gamingPlatformId, imageId, RelationshipType.GamingPlatformHasPrimeImage)

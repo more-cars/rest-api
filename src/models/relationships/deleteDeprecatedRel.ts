@@ -1,16 +1,21 @@
-import {DbRelationship} from "../../db/types/DbRelationship"
+import type {RelationshipType} from "./types/RelationshipType"
 import type {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {getRelationship} from "../../db/relationships/getRelationship"
+import {getDbRelationshipType} from "./getDbRelationshipType"
 import {deleteRelationshipById} from "../../db/relationships/deleteRelationshipById"
 
-export async function deleteDeprecatedRel(originId: number, relationshipType: DbRelationship, destinationType: NodeTypeLabel) {
-    const relationship = await getRelationship(
+export async function deleteDeprecatedRel(
+    originId: number,
+    relationshipType: RelationshipType,
+    destinationType: NodeTypeLabel,
+) {
+    const dbRelationship = await getRelationship(
         originId,
-        relationshipType,
+        getDbRelationshipType(relationshipType),
         destinationType,
     )
 
-    if (relationship) {
-        await deleteRelationshipById(relationship.relationship_id)
+    if (dbRelationship) {
+        await deleteRelationshipById(dbRelationship.relationship_id)
     }
 }
