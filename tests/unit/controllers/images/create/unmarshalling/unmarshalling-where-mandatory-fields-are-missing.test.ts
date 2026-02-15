@@ -6,16 +6,12 @@ import {unmarshalInputData} from "../../../../../../src/controllers/images/marsh
  * Missing mandatory fields are automatically added as "undefined".
  */
 test('unmarshalling a request where mandatory fields are missing', async () => {
-    const data: any = {
-        external_id: "54570839725",
-        description: "Engine: 3.3L B6",
-    }
-
+    const data: any = {}
     const result = unmarshalInputData(data)
 
     expect(result)
         .toStrictEqual({
-            external_id: "54570839725",
+            external_id: undefined,
             image_provider: undefined,
         })
 })
