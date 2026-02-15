@@ -12,8 +12,8 @@ import {RelationshipNotFoundError} from "../../../../../../../src/models/types/R
 describe('Requesting a ›belongs-to-brand‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.BRAND, DbRelationship.CarModelBelongsToBrand)
-        const expectedCarModelId = expectedRelationship.end_node_id
-        const expectedBrandId = expectedRelationship.start_node_id
+        const expectedCarModelId = expectedRelationship.start_node_id
+        const expectedBrandId = expectedRelationship.end_node_id
         const actualRelationship = await CarModel.getBelongsToBrandRelationship(expectedCarModelId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))

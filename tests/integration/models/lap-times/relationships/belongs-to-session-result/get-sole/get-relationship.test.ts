@@ -12,8 +12,8 @@ import {RelationshipNotFoundError} from "../../../../../../../src/models/types/R
 describe('Requesting a ›belongs-to-session-result‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.SESSION_RESULT, DbRelationship.LapTimeBelongsToSessionResult)
-        const expectedLapTimeId = expectedRelationship.end_node_id
-        const expectedSessionResultId = expectedRelationship.start_node_id
+        const expectedLapTimeId = expectedRelationship.start_node_id
+        const expectedSessionResultId = expectedRelationship.end_node_id
         const actualRelationship = await LapTime.getBelongsToSessionResultRelationship(expectedLapTimeId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))

@@ -41,7 +41,7 @@ describe('Deleting a ›achieved-with-car-model-variant‹ relationship', () => 
     })
 
     test('both nodes exist and have a ›achieved-with-car-model-variant‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL_VARIANT, NodeTypeEnum.SESSION_RESULT, DbRelationship.SessionResultAchievedWithCarModelVariant)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.SESSION_RESULT, NodeTypeEnum.CAR_MODEL_VARIANT, DbRelationship.SessionResultAchievedWithCarModelVariant)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
@@ -52,7 +52,7 @@ describe('Deleting a ›achieved-with-car-model-variant‹ relationship', () => 
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await SessionResult.deleteAchievedWithCarModelVariantRelationship(seededRelationship.end_node_id, seededRelationship.start_node_id)
+        await SessionResult.deleteAchievedWithCarModelVariantRelationship(seededRelationship.start_node_id, seededRelationship.end_node_id)
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node_id,

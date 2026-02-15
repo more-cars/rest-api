@@ -12,8 +12,8 @@ import {RelationshipNotFoundError} from "../../../../../../../src/models/types/R
 describe('Requesting a ›belongs-to-racing-session‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.SESSION_RESULT, NodeTypeEnum.RACING_SESSION, DbRelationship.SessionResultBelongsToRacingSession)
-        const expectedSessionResultId = expectedRelationship.end_node_id
-        const expectedRacingSessionId = expectedRelationship.start_node_id
+        const expectedSessionResultId = expectedRelationship.start_node_id
+        const expectedRacingSessionId = expectedRelationship.end_node_id
         const actualRelationship = await SessionResult.getBelongsToRacingSessionRelationship(expectedSessionResultId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))

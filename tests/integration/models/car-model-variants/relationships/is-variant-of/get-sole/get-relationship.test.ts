@@ -12,8 +12,8 @@ import {RelationshipNotFoundError} from "../../../../../../../src/models/types/R
 describe('Requesting a ›is-variant-of‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL_VARIANT, NodeTypeEnum.CAR_MODEL, DbRelationship.CarModelVariantIsVariantOf)
-        const expectedCarModelVariantId = expectedRelationship.end_node_id
-        const expectedCarModelId = expectedRelationship.start_node_id
+        const expectedCarModelVariantId = expectedRelationship.start_node_id
+        const expectedCarModelId = expectedRelationship.end_node_id
         const actualRelationship = await CarModelVariant.getIsVariantOfRelationship(expectedCarModelVariantId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))

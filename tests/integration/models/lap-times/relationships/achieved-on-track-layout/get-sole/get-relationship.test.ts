@@ -12,8 +12,8 @@ import {RelationshipNotFoundError} from "../../../../../../../src/models/types/R
 describe('Requesting a ›achieved-on-track-layout‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.TRACK_LAYOUT, DbRelationship.LapTimeAchievedOnTrackLayout)
-        const expectedLapTimeId = expectedRelationship.end_node_id
-        const expectedTrackLayoutId = expectedRelationship.start_node_id
+        const expectedLapTimeId = expectedRelationship.start_node_id
+        const expectedTrackLayoutId = expectedRelationship.end_node_id
         const actualRelationship = await LapTime.getAchievedOnTrackLayoutRelationship(expectedLapTimeId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))

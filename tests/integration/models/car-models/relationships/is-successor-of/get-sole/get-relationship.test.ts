@@ -12,8 +12,8 @@ import {RelationshipNotFoundError} from "../../../../../../../src/models/types/R
 describe('Requesting a ›is-successor-of‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.CAR_MODEL, DbRelationship.CarModelIsSuccessorOf)
-        const expectedCarModelId = expectedRelationship.end_node_id
-        const expectedPredecessorId = expectedRelationship.start_node_id
+        const expectedCarModelId = expectedRelationship.start_node_id
+        const expectedPredecessorId = expectedRelationship.end_node_id
         const actualRelationship = await CarModel.getIsSuccessorOfRelationship(expectedCarModelId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))
