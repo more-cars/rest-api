@@ -13,4 +13,5 @@ export enum NodeTypeLabel {
     RacingGame = "RacingGame",
     GamingPlatform = "GamingPlatform",
     Image = "Image",
+    Node = "Node",
 }
