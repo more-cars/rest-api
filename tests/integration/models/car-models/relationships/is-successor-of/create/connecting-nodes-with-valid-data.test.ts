@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
-import {CarModelRelationship} from "../../../../../../../src/models/car-models/types/CarModelRelationship"
+import {RelationshipType} from "../../../../../../../src/models/relationships/types/RelationshipType"
 
 test('Creating a ›is-successor-of‹ relationship with valid data', async () => {
     const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
@@ -17,7 +17,7 @@ test('Creating a ›is-successor-of‹ relationship with valid data', async () =
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)
-        .toEqual(CarModelRelationship.isSuccessorOf)
+        .toEqual(RelationshipType.CarModelIsSuccessorOf)
     expect(createdRelationship.created_at)
         .toBeDefined()
     expect(createdRelationship.updated_at)

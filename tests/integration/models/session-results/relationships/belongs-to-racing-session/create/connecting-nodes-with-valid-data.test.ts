@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {SessionResult} from "../../../../../../../src/models/session-results/SessionResult"
-import {SessionResultRelationship} from "../../../../../../../src/models/session-results/types/SessionResultRelationship"
+import {RelationshipType} from "../../../../../../../src/models/relationships/types/RelationshipType"
 
 test('Creating a ›belongs-to-racing-session‹ relationship with valid data', async () => {
     const sessionResult = await seedNode(NodeTypeEnum.SESSION_RESULT)
@@ -17,7 +17,7 @@ test('Creating a ›belongs-to-racing-session‹ relationship with valid data', 
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)
-        .toEqual(SessionResultRelationship.belongsToRacingSession)
+        .toEqual(RelationshipType.SessionResultBelongsToRacingSession)
     expect(createdRelationship.created_at)
         .toBeDefined()
     expect(createdRelationship.updated_at)

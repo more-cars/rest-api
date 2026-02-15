@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {GamingPlatform} from "../../../../../../../src/models/gaming-platforms/GamingPlatform"
-import {GamingPlatformRelationship} from "../../../../../../../src/models/gaming-platforms/types/GamingPlatformRelationship"
+import {RelationshipType} from "../../../../../../../src/models/relationships/types/RelationshipType"
 
 test('Creating a ›features-racing-game‹ relationship with valid data', async () => {
     const gamingPlatform = await seedNode(NodeTypeEnum.GAMING_PLATFORM)
@@ -17,7 +17,7 @@ test('Creating a ›features-racing-game‹ relationship with valid data', async
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)
-        .toEqual(GamingPlatformRelationship.featuresRacingGame)
+        .toEqual(RelationshipType.GamingPlatformFeaturesRacingGame)
     expect(createdRelationship.created_at)
         .toBeDefined()
     expect(createdRelationship.updated_at)

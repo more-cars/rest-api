@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {RacingEvent} from "../../../../../../../src/models/racing-events/RacingEvent"
-import {RacingEventRelationship} from "../../../../../../../src/models/racing-events/types/RacingEventRelationship"
+import {RelationshipType} from "../../../../../../../src/models/relationships/types/RelationshipType"
 
 test('Creating a ›used-the-track-layout‹ relationship with valid data', async () => {
     const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
@@ -17,7 +17,7 @@ test('Creating a ›used-the-track-layout‹ relationship with valid data', asyn
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)
-        .toEqual(RacingEventRelationship.usedTheTrackLayout)
+        .toEqual(RelationshipType.RacingEventUsedTheTrackLayout)
     expect(createdRelationship.created_at)
         .toBeDefined()
     expect(createdRelationship.updated_at)

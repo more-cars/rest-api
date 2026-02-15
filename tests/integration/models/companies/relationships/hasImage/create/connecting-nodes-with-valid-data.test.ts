@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {Company} from "../../../../../../../src/models/companies/Company"
-import {CompanyRelationship} from "../../../../../../../src/models/companies/types/CompanyRelationship"
+import {RelationshipType} from "../../../../../../../src/models/relationships/types/RelationshipType"
 
 test('Creating a ›has-image‹ relationship with valid data', async () => {
     const company = await seedNode(NodeTypeEnum.COMPANY)
@@ -17,7 +17,7 @@ test('Creating a ›has-image‹ relationship with valid data', async () => {
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)
-        .toEqual(CompanyRelationship.hasImage)
+        .toEqual(RelationshipType.CompanyHasImage)
     expect(createdRelationship.created_at)
         .toBeDefined()
     expect(createdRelationship.updated_at)
