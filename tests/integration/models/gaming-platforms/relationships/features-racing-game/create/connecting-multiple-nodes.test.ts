@@ -21,7 +21,6 @@ test('A GAMING PLATFORM can have multiple ›features-racing-game‹ relationshi
         gamingPlatform.id,
         DbRelationship.GamingPlatformFeaturesRacingGame,
         NodeTypeLabel.RacingGame,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

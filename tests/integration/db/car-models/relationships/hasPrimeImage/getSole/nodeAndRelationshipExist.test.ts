@@ -13,7 +13,6 @@ test('Node and relationship exist', async () => {
         relationship.start_node_id,
         DbRelationship.CarModelHasPrimeImage,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

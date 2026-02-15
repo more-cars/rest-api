@@ -4,7 +4,6 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('An empty list should be returned when no CAR MODEL is connected to the BRAND', async () => {
     const brand = await seedNode(NodeTypeEnum.BRAND)
@@ -13,7 +12,6 @@ test('An empty list should be returned when no CAR MODEL is connected to the BRA
         brand.id,
         DbRelationship.BrandHasCarModel,
         NodeTypeLabel.CarModel,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

@@ -9,7 +9,6 @@ test('An empty list should be returned when the BRAND does not exist', async () 
         -42,
         DbRelationship.NodeHasImage,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

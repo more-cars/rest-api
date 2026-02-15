@@ -17,7 +17,6 @@ describe('Requesting all ›has-image‹ relationships', () => {
             raceTrack.id,
             DbRelationship.RaceTrackHasImage,
             NodeTypeLabel.Image,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -31,7 +30,6 @@ describe('Requesting all ›has-image‹ relationships', () => {
             raceTrack.id,
             DbRelationship.RaceTrackHasImage,
             NodeTypeLabel.Image,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -43,7 +41,6 @@ describe('Requesting all ›has-image‹ relationships', () => {
             -42,
             DbRelationship.RaceTrackHasImage,
             NodeTypeLabel.Image,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

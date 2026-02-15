@@ -6,7 +6,6 @@ import {RacingSession} from "../../../../../../../src/models/racing-sessions/Rac
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A RACING SESSION cannot have multiple ›has-prime-image‹ relationships', async () => {
     const racingSession = await seedNode(NodeTypeEnum.RACING_SESSION)
@@ -21,7 +20,6 @@ test('A RACING SESSION cannot have multiple ›has-prime-image‹ relationships'
         racingSession.id,
         DbRelationship.RacingSessionHasPrimeImage,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

@@ -21,7 +21,6 @@ test('A CAR MODEL cannot have multiple ›has-successor‹ relationships', async
         carModel.id,
         DbRelationship.CarModelHasSuccessor,
         NodeTypeLabel.CarModel,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

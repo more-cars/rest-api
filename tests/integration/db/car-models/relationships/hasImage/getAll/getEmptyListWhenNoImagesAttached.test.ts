@@ -13,7 +13,6 @@ test('An empty list should be returned when no IMAGE is connected to the CAR MOD
         carModel.id,
         DbRelationship.NodeHasImage,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

@@ -21,7 +21,6 @@ test('A RACING GAME can have multiple ›has-image‹ relationships', async () =
         racingGame.id,
         DbRelationship.RacingGameHasImage,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

@@ -21,7 +21,6 @@ test('A CAR MODEL VARIANT cannot have multiple ›has-prime-image‹ relationshi
         carModelVariant.id,
         DbRelationship.CarModelVariantHasPrimeImage,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

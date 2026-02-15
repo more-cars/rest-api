@@ -21,7 +21,6 @@ test('A BRAND can have multiple ›has-car-model‹ relationships', async () => 
         brand.id,
         DbRelationship.BrandHasCarModel,
         NodeTypeLabel.CarModel,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

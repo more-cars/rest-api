@@ -14,7 +14,6 @@ test('An empty list should be returned when no BRAND is connected to the CAR MOD
             carModel.id,
             DbRelationship.BrandHasCarModel,
             NodeTypeLabel.CarModel,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

@@ -5,7 +5,6 @@ import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 describe('Requesting all ›achieved-lap-time‹ relationships', () => {
     test('node and relationships exist', async () => {
@@ -17,7 +16,6 @@ describe('Requesting all ›achieved-lap-time‹ relationships', () => {
             carModelVariant.id,
             DbRelationship.CarModelVariantAchievedLapTime,
             NodeTypeLabel.LapTime,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -31,7 +29,6 @@ describe('Requesting all ›achieved-lap-time‹ relationships', () => {
             carModelVariant.id,
             DbRelationship.CarModelVariantAchievedLapTime,
             NodeTypeLabel.LapTime,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -43,7 +40,6 @@ describe('Requesting all ›achieved-lap-time‹ relationships', () => {
             -42,
             DbRelationship.CarModelVariantAchievedLapTime,
             NodeTypeLabel.LapTime,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

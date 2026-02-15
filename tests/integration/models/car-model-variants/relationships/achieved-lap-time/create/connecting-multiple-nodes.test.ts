@@ -6,7 +6,6 @@ import {CarModelVariant} from "../../../../../../../src/models/car-model-variant
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A CAR MODEL VARIANT can have multiple ›achieved-lap-time‹ relationships', async () => {
     const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)
@@ -17,7 +16,7 @@ test('A CAR MODEL VARIANT can have multiple ›achieved-lap-time‹ relationship
         await CarModelVariant.createAchievedLapTimeRelationship(carModelVariant.id, lapTime.id)
     }
 
-    const relationships = await getRelationshipCollection(carModelVariant.id, DbRelationship.CarModelVariantAchievedLapTime, NodeTypeLabel.LapTime, RelationshipDirection.FORWARD)
+    const relationships = await getRelationshipCollection(carModelVariant.id, DbRelationship.CarModelVariantAchievedLapTime, NodeTypeLabel.LapTime)
 
     expect(relationships.length)
         .toBe(lapTimesAmount)

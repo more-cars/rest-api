@@ -21,7 +21,6 @@ test('A RACING EVENT cannot have multiple ›is-followed-by-event‹ relationshi
         racingEvent.id,
         DbRelationship.RacingEventIsFollowedByEvent,
         NodeTypeLabel.RacingEvent,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

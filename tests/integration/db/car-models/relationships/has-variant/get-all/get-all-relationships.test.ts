@@ -17,7 +17,6 @@ describe('Requesting all ›has-variant‹ relationships', () => {
             carModel.id,
             DbRelationship.CarModelHasVariant,
             NodeTypeLabel.CarModelVariant,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -31,7 +30,6 @@ describe('Requesting all ›has-variant‹ relationships', () => {
             carModel.id,
             DbRelationship.CarModelHasVariant,
             NodeTypeLabel.CarModelVariant,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -43,7 +41,6 @@ describe('Requesting all ›has-variant‹ relationships', () => {
             -42,
             DbRelationship.CarModelHasVariant,
             NodeTypeLabel.CarModelVariant,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

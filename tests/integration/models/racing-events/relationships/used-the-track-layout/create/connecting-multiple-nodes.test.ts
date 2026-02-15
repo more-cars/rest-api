@@ -21,7 +21,6 @@ test('A RACING EVENT cannot have multiple ›used-the-track-layout‹ relationsh
         racingEvent.id,
         DbRelationship.RacingEventUsedTheTrackLayout,
         NodeTypeLabel.TrackLayout,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

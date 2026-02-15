@@ -18,7 +18,6 @@ describe('Requesting all ›is-prime-image-of-node‹ relationships', () => {
             image.id,
             DbRelationship.ImageIsPrimeImageOfNode,
             NodeTypeLabel.Image,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -32,7 +31,6 @@ describe('Requesting all ›is-prime-image-of-node‹ relationships', () => {
             image.id,
             DbRelationship.ImageIsPrimeImageOfNode,
             NodeTypeLabel.Image,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -44,7 +42,6 @@ describe('Requesting all ›is-prime-image-of-node‹ relationships', () => {
             -42,
             DbRelationship.ImageIsPrimeImageOfNode,
             NodeTypeLabel.Image,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

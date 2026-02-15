@@ -17,7 +17,6 @@ describe('Requesting all ›has-racing-session‹ relationships', () => {
             racingEvent.id,
             DbRelationship.RacingEventHasRacingSession,
             NodeTypeLabel.RacingSession,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -31,7 +30,6 @@ describe('Requesting all ›has-racing-session‹ relationships', () => {
             racingEvent.id,
             DbRelationship.RacingEventHasRacingSession,
             NodeTypeLabel.RacingSession,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -43,7 +41,6 @@ describe('Requesting all ›has-racing-session‹ relationships', () => {
             -42,
             DbRelationship.RacingEventHasRacingSession,
             NodeTypeLabel.RacingSession,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

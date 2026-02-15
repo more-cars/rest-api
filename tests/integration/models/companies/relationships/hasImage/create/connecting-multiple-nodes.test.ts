@@ -21,7 +21,6 @@ test('A COMPANY can have multiple ›has-image‹ relationships', async () => {
         company.id,
         DbRelationship.CompanyHasImage,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

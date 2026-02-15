@@ -21,7 +21,6 @@ test('A CAR MODEL can have multiple ›has-variant‹ relationships', async () =
         carModel.id,
         DbRelationship.CarModelHasVariant,
         NodeTypeLabel.CarModelVariant,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

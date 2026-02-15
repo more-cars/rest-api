@@ -17,7 +17,6 @@ describe('Requesting all ›has-lap-time‹ relationships', () => {
             sessionResult.id,
             DbRelationship.SessionResultHasLapTime,
             NodeTypeLabel.LapTime,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -31,7 +30,6 @@ describe('Requesting all ›has-lap-time‹ relationships', () => {
             sessionResult.id,
             DbRelationship.SessionResultHasLapTime,
             NodeTypeLabel.LapTime,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -43,7 +41,6 @@ describe('Requesting all ›has-lap-time‹ relationships', () => {
             -42,
             DbRelationship.SessionResultHasLapTime,
             NodeTypeLabel.LapTime,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

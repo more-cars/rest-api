@@ -14,7 +14,6 @@ test('An empty list should be returned when no IMAGE is connected to the BRAND',
             brand.id,
             DbRelationship.NodeHasImage,
             NodeTypeLabel.Image,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

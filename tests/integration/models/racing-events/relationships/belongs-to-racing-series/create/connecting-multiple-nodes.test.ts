@@ -6,7 +6,6 @@ import {RacingEvent} from "../../../../../../../src/models/racing-events/RacingE
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A RACING EVENT cannot have multiple ›belongs-to-racing-series‹ relationships', async () => {
     const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
@@ -21,7 +20,6 @@ test('A RACING EVENT cannot have multiple ›belongs-to-racing-series‹ relatio
         racingEvent.id,
         DbRelationship.RacingEventBelongsToRacingSeries,
         NodeTypeLabel.RacingSeries,
-        RelationshipDirection.REVERSE,
     )
 
     expect(relationships.length)

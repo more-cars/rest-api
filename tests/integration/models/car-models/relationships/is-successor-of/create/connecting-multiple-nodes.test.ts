@@ -6,7 +6,6 @@ import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A CAR MODEL cannot have multiple ›is-successor-of‹ relationships', async () => {
     const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
@@ -21,7 +20,6 @@ test('A CAR MODEL cannot have multiple ›is-successor-of‹ relationships', asy
         carModel.id,
         DbRelationship.CarModelIsSuccessorOf,
         NodeTypeLabel.CarModel,
-        RelationshipDirection.REVERSE,
     )
 
     expect(relationships.length)

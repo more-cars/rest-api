@@ -21,7 +21,6 @@ test('A GAMING PLATFORM can have multiple ›has-image‹ relationships', async 
         gamingPlatform.id,
         DbRelationship.GamingPlatformHasImage,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

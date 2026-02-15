@@ -15,7 +15,6 @@ describe('Requesting a ›is-followed-by-event‹ relationship', () => {
             relationship.start_node_id,
             DbRelationship.RacingEventIsFollowedByEvent,
             NodeTypeLabel.RacingEvent,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -29,7 +28,6 @@ describe('Requesting a ›is-followed-by-event‹ relationship', () => {
             racingEvent.id,
             DbRelationship.RacingEventIsFollowedByEvent,
             NodeTypeLabel.RacingEvent,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -41,7 +39,6 @@ describe('Requesting a ›is-followed-by-event‹ relationship', () => {
             -42,
             DbRelationship.RacingEventIsFollowedByEvent,
             NodeTypeLabel.RacingEvent,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

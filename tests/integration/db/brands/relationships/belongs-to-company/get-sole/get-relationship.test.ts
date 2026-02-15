@@ -5,7 +5,6 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 describe('Requesting a ›belongs-to-company‹ relationship', () => {
     test('node and relationship exist', async () => {
@@ -15,7 +14,6 @@ describe('Requesting a ›belongs-to-company‹ relationship', () => {
             relationship.start_node_id,
             DbRelationship.BrandBelongsToCompany,
             NodeTypeLabel.Company,
-            RelationshipDirection.REVERSE,
         )
 
         expect(relationships.length)
@@ -29,7 +27,6 @@ describe('Requesting a ›belongs-to-company‹ relationship', () => {
             brand.id,
             DbRelationship.BrandBelongsToCompany,
             NodeTypeLabel.Company,
-            RelationshipDirection.REVERSE,
         )
 
         expect(relationships.length)
@@ -41,7 +38,6 @@ describe('Requesting a ›belongs-to-company‹ relationship', () => {
             -42,
             DbRelationship.BrandBelongsToCompany,
             NodeTypeLabel.Company,
-            RelationshipDirection.REVERSE,
         )
 
         expect(relationships.length)

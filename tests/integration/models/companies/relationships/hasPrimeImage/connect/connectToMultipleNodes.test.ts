@@ -21,7 +21,6 @@ test('A COMPANY cannot have multiple ›has-prime-image‹ relationships', async
         company.id,
         DbRelationship.CompanyHasPrimeImage,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

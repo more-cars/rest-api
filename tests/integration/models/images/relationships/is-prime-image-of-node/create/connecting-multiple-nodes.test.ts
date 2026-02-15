@@ -21,7 +21,6 @@ test('A IMAGE can have multiple ›is-prime-image-of-node‹ relationships', asy
         image.id,
         DbRelationship.ImageIsPrimeImageOfNode,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

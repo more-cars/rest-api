@@ -5,7 +5,6 @@ import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
@@ -17,7 +16,6 @@ describe('Requesting all ›has-image‹ relationships', () => {
             gamingPlatform.id,
             DbRelationship.GamingPlatformHasImage,
             NodeTypeLabel.Image,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -31,7 +29,6 @@ describe('Requesting all ›has-image‹ relationships', () => {
             gamingPlatform.id,
             DbRelationship.GamingPlatformHasImage,
             NodeTypeLabel.Image,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -43,7 +40,6 @@ describe('Requesting all ›has-image‹ relationships', () => {
             -42,
             DbRelationship.GamingPlatformHasImage,
             NodeTypeLabel.Image,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

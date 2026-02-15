@@ -5,7 +5,6 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 describe('Requesting a ›is-variant-of‹ relationship', () => {
     test('node and relationship exist', async () => {
@@ -15,7 +14,6 @@ describe('Requesting a ›is-variant-of‹ relationship', () => {
             relationship.start_node_id,
             DbRelationship.CarModelVariantIsVariantOf,
             NodeTypeLabel.CarModelVariant,
-            RelationshipDirection.REVERSE,
         )
 
         expect(relationships.length)
@@ -29,7 +27,6 @@ describe('Requesting a ›is-variant-of‹ relationship', () => {
             carModelVariant.id,
             DbRelationship.CarModelVariantIsVariantOf,
             NodeTypeLabel.CarModelVariant,
-            RelationshipDirection.REVERSE,
         )
 
         expect(relationships.length)
@@ -41,7 +38,6 @@ describe('Requesting a ›is-variant-of‹ relationship', () => {
             -42,
             DbRelationship.CarModelVariantIsVariantOf,
             NodeTypeLabel.CarModelVariant,
-            RelationshipDirection.REVERSE,
         )
 
         expect(relationships.length)

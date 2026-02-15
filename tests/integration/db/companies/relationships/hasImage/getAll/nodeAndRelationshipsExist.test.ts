@@ -16,7 +16,6 @@ test('Node and relationships exist', async () => {
         company.id,
         DbRelationship.CompanyHasImage,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

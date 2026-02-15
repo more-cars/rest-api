@@ -9,7 +9,6 @@ test('Expecting an empty list when the Company does not exist', async () => {
         -42,
         DbRelationship.CompanyHasImage,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

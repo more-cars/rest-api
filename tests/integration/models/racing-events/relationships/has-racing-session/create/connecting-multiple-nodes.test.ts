@@ -21,7 +21,6 @@ test('A RACING EVENT can have multiple ›has-racing-session‹ relationships', 
         racingEvent.id,
         DbRelationship.RacingEventHasRacingSession,
         NodeTypeLabel.RacingSession,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

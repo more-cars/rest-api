@@ -21,7 +21,6 @@ test('A RACE TRACK cannot have multiple ›has-prime-image‹ relationships', as
         raceTrack.id,
         DbRelationship.RaceTrackHasPrimeImage,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

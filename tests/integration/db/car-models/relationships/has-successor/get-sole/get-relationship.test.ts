@@ -15,7 +15,6 @@ describe('Requesting a ›has-successor‹ relationship', () => {
             relationship.start_node_id,
             DbRelationship.CarModelHasSuccessor,
             NodeTypeLabel.CarModel,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -29,7 +28,6 @@ describe('Requesting a ›has-successor‹ relationship', () => {
             carModel.id,
             DbRelationship.CarModelHasSuccessor,
             NodeTypeLabel.CarModel,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -41,7 +39,6 @@ describe('Requesting a ›has-successor‹ relationship', () => {
             -42,
             DbRelationship.CarModelHasSuccessor,
             NodeTypeLabel.CarModel,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

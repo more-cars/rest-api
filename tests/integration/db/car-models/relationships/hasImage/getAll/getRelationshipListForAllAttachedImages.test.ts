@@ -24,7 +24,6 @@ test('Requesting a relationship list for all IMAGEs that are connected to the BR
         carModel.id,
         DbRelationship.NodeHasImage,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

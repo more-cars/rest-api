@@ -6,7 +6,6 @@ import {LapTime} from "../../../../../../../src/models/lap-times/LapTime"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A LAP TIME cannot have multiple ›belongs-to-session-result‹ relationships', async () => {
     const lapTime = await seedNode(NodeTypeEnum.LAP_TIME)
@@ -21,7 +20,6 @@ test('A LAP TIME cannot have multiple ›belongs-to-session-result‹ relationsh
         lapTime.id,
         DbRelationship.LapTimeBelongsToSessionResult,
         NodeTypeLabel.SessionResult,
-        RelationshipDirection.REVERSE,
     )
 
     expect(relationships.length)

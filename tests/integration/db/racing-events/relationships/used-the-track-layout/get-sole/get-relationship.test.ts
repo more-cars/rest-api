@@ -15,7 +15,6 @@ describe('Requesting a ›used-the-track-layout‹ relationship', () => {
             relationship.start_node_id,
             DbRelationship.RacingEventUsedTheTrackLayout,
             NodeTypeLabel.TrackLayout,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -29,7 +28,6 @@ describe('Requesting a ›used-the-track-layout‹ relationship', () => {
             racingEvent.id,
             DbRelationship.RacingEventUsedTheTrackLayout,
             NodeTypeLabel.TrackLayout,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -41,7 +39,6 @@ describe('Requesting a ›used-the-track-layout‹ relationship', () => {
             -42,
             DbRelationship.RacingEventUsedTheTrackLayout,
             NodeTypeLabel.TrackLayout,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

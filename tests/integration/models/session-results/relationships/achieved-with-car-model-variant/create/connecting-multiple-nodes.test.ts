@@ -6,7 +6,6 @@ import {SessionResult} from "../../../../../../../src/models/session-results/Ses
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A SESSION RESULT cannot have multiple ›achieved-with-car-model-variant‹ relationships', async () => {
     const sessionResult = await seedNode(NodeTypeEnum.SESSION_RESULT)
@@ -21,7 +20,6 @@ test('A SESSION RESULT cannot have multiple ›achieved-with-car-model-variant�
         sessionResult.id,
         DbRelationship.SessionResultAchievedWithCarModelVariant,
         NodeTypeLabel.CarModelVariant,
-        RelationshipDirection.REVERSE,
     )
 
     expect(relationships.length)

@@ -17,7 +17,6 @@ describe('Requesting all ›has-image‹ relationships', () => {
             trackLayout.id,
             DbRelationship.TrackLayoutHasImage,
             NodeTypeLabel.Image,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -31,7 +30,6 @@ describe('Requesting all ›has-image‹ relationships', () => {
             trackLayout.id,
             DbRelationship.TrackLayoutHasImage,
             NodeTypeLabel.Image,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -43,7 +41,6 @@ describe('Requesting all ›has-image‹ relationships', () => {
             -42,
             DbRelationship.TrackLayoutHasImage,
             NodeTypeLabel.Image,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

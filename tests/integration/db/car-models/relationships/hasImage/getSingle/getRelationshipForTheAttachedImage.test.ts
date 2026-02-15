@@ -22,7 +22,6 @@ test('Requesting the relationship between CAR MODEL and attached IMAGE',
             carModel.id,
             DbRelationship.NodeHasImage,
             NodeTypeLabel.Image,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

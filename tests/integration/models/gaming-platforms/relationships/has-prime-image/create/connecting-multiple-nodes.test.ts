@@ -21,7 +21,6 @@ test('A GAMING PLATFORM cannot have multiple ›has-prime-image‹ relationships
         gamingPlatform.id,
         DbRelationship.GamingPlatformHasPrimeImage,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

@@ -17,7 +17,6 @@ describe('Requesting all ›features-car-model-variant‹ relationships', () => 
             racingGame.id,
             DbRelationship.RacingGameFeaturesCarModelVariant,
             NodeTypeLabel.CarModelVariant,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -31,7 +30,6 @@ describe('Requesting all ›features-car-model-variant‹ relationships', () => 
             racingGame.id,
             DbRelationship.RacingGameFeaturesCarModelVariant,
             NodeTypeLabel.CarModelVariant,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -43,7 +41,6 @@ describe('Requesting all ›features-car-model-variant‹ relationships', () => 
             -42,
             DbRelationship.RacingGameFeaturesCarModelVariant,
             NodeTypeLabel.CarModelVariant,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

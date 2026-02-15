@@ -17,7 +17,6 @@ describe('Requesting all ›features-racing-game‹ relationships', () => {
             gamingPlatform.id,
             DbRelationship.GamingPlatformFeaturesRacingGame,
             NodeTypeLabel.RacingGame,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -31,7 +30,6 @@ describe('Requesting all ›features-racing-game‹ relationships', () => {
             gamingPlatform.id,
             DbRelationship.GamingPlatformFeaturesRacingGame,
             NodeTypeLabel.RacingGame,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -43,7 +41,6 @@ describe('Requesting all ›features-racing-game‹ relationships', () => {
             -42,
             DbRelationship.GamingPlatformFeaturesRacingGame,
             NodeTypeLabel.RacingGame,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

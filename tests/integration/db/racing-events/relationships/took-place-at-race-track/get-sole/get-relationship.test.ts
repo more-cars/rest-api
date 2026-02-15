@@ -15,7 +15,6 @@ describe('Requesting a ›took-place-at-race-track‹ relationship', () => {
             relationship.start_node_id,
             DbRelationship.RacingEventTookPlaceAtRaceTrack,
             NodeTypeLabel.RaceTrack,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -29,7 +28,6 @@ describe('Requesting a ›took-place-at-race-track‹ relationship', () => {
             racingEvent.id,
             DbRelationship.RacingEventTookPlaceAtRaceTrack,
             NodeTypeLabel.RaceTrack,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -41,7 +39,6 @@ describe('Requesting a ›took-place-at-race-track‹ relationship', () => {
             -42,
             DbRelationship.RacingEventTookPlaceAtRaceTrack,
             NodeTypeLabel.RaceTrack,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

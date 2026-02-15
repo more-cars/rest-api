@@ -13,7 +13,6 @@ test('Expecting an empty list when the relationship does not exist', async () =>
         carModel.id,
         DbRelationship.CarModelHasPrimeImage,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

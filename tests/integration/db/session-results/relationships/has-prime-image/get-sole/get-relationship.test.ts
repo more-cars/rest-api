@@ -15,7 +15,6 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
             relationship.start_node_id,
             DbRelationship.SessionResultHasPrimeImage,
             NodeTypeLabel.Image,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -29,7 +28,6 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
             sessionResult.id,
             DbRelationship.SessionResultHasPrimeImage,
             NodeTypeLabel.Image,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -41,7 +39,6 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
             -42,
             DbRelationship.SessionResultHasPrimeImage,
             NodeTypeLabel.Image,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

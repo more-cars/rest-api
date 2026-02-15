@@ -21,7 +21,6 @@ test('A LAP TIME cannot have multiple ›has-prime-image‹ relationships', asyn
         lapTime.id,
         DbRelationship.LapTimeHasPrimeImage,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

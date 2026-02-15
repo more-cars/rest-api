@@ -17,7 +17,6 @@ describe('Requesting all ›features-track-layout‹ relationships', () => {
             racingGame.id,
             DbRelationship.RacingGameFeaturesTrackLayout,
             NodeTypeLabel.TrackLayout,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -31,7 +30,6 @@ describe('Requesting all ›features-track-layout‹ relationships', () => {
             racingGame.id,
             DbRelationship.RacingGameFeaturesTrackLayout,
             NodeTypeLabel.TrackLayout,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -43,7 +41,6 @@ describe('Requesting all ›features-track-layout‹ relationships', () => {
             -42,
             DbRelationship.RacingGameFeaturesTrackLayout,
             NodeTypeLabel.TrackLayout,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

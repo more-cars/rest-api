@@ -17,7 +17,6 @@ describe('Requesting all ›has-lap-time‹ relationships', () => {
             trackLayout.id,
             DbRelationship.TrackLayoutHasLapTime,
             NodeTypeLabel.LapTime,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -31,7 +30,6 @@ describe('Requesting all ›has-lap-time‹ relationships', () => {
             trackLayout.id,
             DbRelationship.TrackLayoutHasLapTime,
             NodeTypeLabel.LapTime,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -43,7 +41,6 @@ describe('Requesting all ›has-lap-time‹ relationships', () => {
             -42,
             DbRelationship.TrackLayoutHasLapTime,
             NodeTypeLabel.LapTime,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

@@ -21,7 +21,6 @@ test('A RACE TRACK can have multiple ›has-layout‹ relationships', async () =
         raceTrack.id,
         DbRelationship.RaceTrackHasLayout,
         NodeTypeLabel.TrackLayout,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

@@ -21,7 +21,6 @@ test('A CAR MODEL can have multiple ›has-image‹ relationships', async () => 
         carModel.id,
         DbRelationship.CarModelHasImage,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

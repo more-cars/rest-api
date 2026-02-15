@@ -21,7 +21,6 @@ test('A RACING EVENT can have multiple ›has-image‹ relationships', async () 
         racingEvent.id,
         DbRelationship.RacingEventHasImage,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

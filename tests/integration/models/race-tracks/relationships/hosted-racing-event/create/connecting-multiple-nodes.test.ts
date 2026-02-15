@@ -6,7 +6,6 @@ import {RaceTrack} from "../../../../../../../src/models/race-tracks/RaceTrack"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A RACE TRACK can have multiple ›hosted-racing-event‹ relationships', async () => {
     const raceTrack = await seedNode(NodeTypeEnum.RACE_TRACK)
@@ -21,7 +20,6 @@ test('A RACE TRACK can have multiple ›hosted-racing-event‹ relationships', a
         raceTrack.id,
         DbRelationship.RaceTrackHostedRacingEvent,
         NodeTypeLabel.RacingEvent,
-        RelationshipDirection.REVERSE,
     )
 
     expect(relationships.length)

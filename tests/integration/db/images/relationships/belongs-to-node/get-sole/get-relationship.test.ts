@@ -5,7 +5,6 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 describe('Requesting a ›belongs-to-node‹ relationship', () => {
     test('node and relationship exist', async () => {
@@ -15,7 +14,6 @@ describe('Requesting a ›belongs-to-node‹ relationship', () => {
             relationship.start_node_id,
             DbRelationship.ImageBelongsToNode,
             NodeTypeLabel.Brand,
-            RelationshipDirection.REVERSE,
         )
 
         expect(relationships.length)
@@ -29,7 +27,6 @@ describe('Requesting a ›belongs-to-node‹ relationship', () => {
             image.id,
             DbRelationship.ImageBelongsToNode,
             NodeTypeLabel.Brand,
-            RelationshipDirection.REVERSE,
         )
 
         expect(relationships.length)
@@ -41,7 +38,6 @@ describe('Requesting a ›belongs-to-node‹ relationship', () => {
             -42,
             DbRelationship.ImageBelongsToNode,
             NodeTypeLabel.Brand,
-            RelationshipDirection.REVERSE,
         )
 
         expect(relationships.length)

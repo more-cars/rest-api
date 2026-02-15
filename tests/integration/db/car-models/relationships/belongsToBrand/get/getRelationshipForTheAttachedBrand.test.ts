@@ -5,7 +5,6 @@ import {createRelationship} from "../../../../../../../src/db/relationships/crea
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('Requesting the relationship between CAR MODEL and attached BRAND',
     async () => {
@@ -13,24 +12,23 @@ test('Requesting the relationship between CAR MODEL and attached BRAND',
         const brand = await seedNode(NodeTypeEnum.BRAND)
 
         await createRelationship(
-            brand.id,
             carModel.id,
-            DbRelationship.BrandHasCarModel,
+            brand.id,
+            DbRelationship.CarModelBelongsToBrand,
         )
 
         const relationships = await getRelationshipCollection(
             carModel.id,
-            DbRelationship.BrandHasCarModel,
-            NodeTypeLabel.CarModel,
-            RelationshipDirection.FORWARD,
+            DbRelationship.CarModelBelongsToBrand,
+            NodeTypeLabel.Brand,
         )
 
         expect(relationships.length)
             .toBe(1)
 
         expect(relationships[0].start_node_id)
-            .toBe(brand.id)
+            .toBe(carModel.id)
 
         expect(relationships[0].end_node_id)
-            .toBe(carModel.id)
+            .toBe(brand.id)
     })

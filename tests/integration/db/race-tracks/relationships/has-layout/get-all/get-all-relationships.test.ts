@@ -17,7 +17,6 @@ describe('Requesting all ›has-layout‹ relationships', () => {
             raceTrack.id,
             DbRelationship.RaceTrackHasLayout,
             NodeTypeLabel.TrackLayout,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -31,7 +30,6 @@ describe('Requesting all ›has-layout‹ relationships', () => {
             raceTrack.id,
             DbRelationship.RaceTrackHasLayout,
             NodeTypeLabel.TrackLayout,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)
@@ -43,7 +41,6 @@ describe('Requesting all ›has-layout‹ relationships', () => {
             -42,
             DbRelationship.RaceTrackHasLayout,
             NodeTypeLabel.TrackLayout,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

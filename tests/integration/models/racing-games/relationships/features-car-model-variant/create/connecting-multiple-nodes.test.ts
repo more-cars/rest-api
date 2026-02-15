@@ -21,7 +21,6 @@ test('A RACING GAME can have multiple ›features-car-model-variant‹ relations
         racingGame.id,
         DbRelationship.RacingGameFeaturesCarModelVariant,
         NodeTypeLabel.CarModelVariant,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

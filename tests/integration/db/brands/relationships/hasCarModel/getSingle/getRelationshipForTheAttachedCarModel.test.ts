@@ -22,7 +22,6 @@ test('Requesting the relationship between BRAND and attached CAR MODEL',
             brand.id,
             DbRelationship.BrandHasCarModel,
             NodeTypeLabel.CarModel,
-            RelationshipDirection.FORWARD,
         )
 
         expect(relationships.length)

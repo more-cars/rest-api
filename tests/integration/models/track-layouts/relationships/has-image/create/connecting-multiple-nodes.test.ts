@@ -6,7 +6,6 @@ import {TrackLayout} from "../../../../../../../src/models/track-layouts/TrackLa
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A TRACK LAYOUT can have multiple ›has-image‹ relationships', async () => {
     const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
@@ -21,7 +20,6 @@ test('A TRACK LAYOUT can have multiple ›has-image‹ relationships', async () 
         trackLayout.id,
         DbRelationship.TrackLayoutHasImage,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

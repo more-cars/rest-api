@@ -1,24 +1,29 @@
 import neo4j, {Driver, Node, Relationship} from "neo4j-driver"
 import {getDriver} from "../driver"
-import {DbRelationship} from "../types/DbRelationship"
-import {RelationshipDirection} from "../types/RelationshipDirection"
-import {BaseRelationship} from "../types/BaseRelationship"
-import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
+import type {DbRelationship} from "../types/DbRelationship"
 import type {NodeTypeLabel} from "../NodeTypeLabel"
+import type {BaseRelationship} from "../types/BaseRelationship"
+import {getRelationshipSpecification} from "./getRelationshipSpecification"
+import {RelationshipDirection} from "../types/RelationshipDirection"
+import type {DbRelationshipName} from "../types/DbRelationshipName"
+import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 export async function getRelationshipCollection(
     startNodeId: number,
-    relationshipName: DbRelationship,
+    relationshipType: DbRelationship,
     endNodeType: NodeTypeLabel,
-    reverse: RelationshipDirection,
 ): Promise<BaseRelationship[]> {
+    const relationshipSpecs = getRelationshipSpecification(relationshipType)
+    const dbRelationshipName = relationshipSpecs.relationshipName
+    const relationshipDirection = relationshipSpecs.isReverseRelationship ? RelationshipDirection.REVERSE : RelationshipDirection.FORWARD
+
     const relationships: BaseRelationship[] = []
 
     const driver: Driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getRelationshipCollectionQuery(startNodeId, relationshipName, endNodeType, reverse))
+        const result = await txc.run(getRelationshipCollectionQuery(startNodeId, dbRelationshipName, endNodeType, relationshipDirection))
         return result.records
     })
 
@@ -31,7 +36,7 @@ export async function getRelationshipCollection(
 
         relationships.push({
             id: relation.properties.mc_id,
-            type: relationshipName,
+            type: relationshipType,
             start_node_id: startNodeId,
             start_node: Object.assign({}, startNode.properties, {
                 id: startNode.properties.mc_id,
@@ -45,7 +50,7 @@ export async function getRelationshipCollection(
                 updated_at: endNode.properties.updated_at,
             }),
             relationship_id: relation.properties.mc_id,
-            relationship_name: relationshipName,
+            relationship_name: relationshipType,
             created_at: relation.properties.created_at,
             updated_at: relation.properties.updated_at,
         })
@@ -54,7 +59,7 @@ export async function getRelationshipCollection(
     return relationships
 }
 
-export function getRelationshipCollectionQuery(startNodeId: number, relationshipName: DbRelationship, endNodeLabel: NodeTypeLabel, reverse: RelationshipDirection) {
+export function getRelationshipCollectionQuery(startNodeId: number, relationshipName: DbRelationshipName, endNodeLabel: NodeTypeLabel, reverse: RelationshipDirection) {
     const templateName = reverse ? 'getRelationshipCollectionReversed' : 'getRelationshipCollection'
 
     return getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')

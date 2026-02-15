@@ -3,7 +3,6 @@ import {getRelComposition} from "./getRelComposition"
 import {getDbRelationshipType} from "./getDbRelationshipType"
 import {getDbNodeType} from "./getDbNodeType"
 import {getRelationshipCollection} from "../../db/relationships/getRelationshipCollection"
-import {RelationshipDirection} from "../../db/types/RelationshipDirection"
 import type {GenericRelation} from "./types/GenericRelation"
 import type {BaseNode} from "../../db/types/BaseNode"
 
@@ -15,13 +14,11 @@ export async function getAllRels(
     const dbRelationshipType = getDbRelationshipType(relationshipType)
     const modelEndNodeType = relComposition.endNodeType
     const dbEndNodeType = getDbNodeType(modelEndNodeType)
-    const isReverseRel = relComposition.isReverseRelationship
 
     const dbRelationships = await getRelationshipCollection(
         startNodeId,
         dbRelationshipType,
         dbEndNodeType,
-        isReverseRel ? RelationshipDirection.REVERSE : RelationshipDirection.FORWARD,
     )
 
     const mappedRelationships: GenericRelation[] = []

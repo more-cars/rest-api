@@ -6,7 +6,6 @@ import {RacingSeries} from "../../../../../../../src/models/racing-series/Racing
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
-import {RelationshipDirection} from "../../../../../../../src/db/types/RelationshipDirection"
 
 test('A RACING SERIES can have multiple ›has-image‹ relationships', async () => {
     const racingSeries = await seedNode(NodeTypeEnum.RACING_SERIES)
@@ -21,7 +20,6 @@ test('A RACING SERIES can have multiple ›has-image‹ relationships', async ()
         racingSeries.id,
         DbRelationship.RacingSeriesHasImage,
         NodeTypeLabel.Image,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

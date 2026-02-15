@@ -21,7 +21,6 @@ test('A RACING EVENT cannot have multiple ›took-place-at-race-track‹ relatio
         racingEvent.id,
         DbRelationship.RacingEventTookPlaceAtRaceTrack,
         NodeTypeLabel.RaceTrack,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)

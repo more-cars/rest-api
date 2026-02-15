@@ -21,7 +21,6 @@ test('A RACING GAME can have multiple ›features-track-layout‹ relationships'
         racingGame.id,
         DbRelationship.RacingGameFeaturesTrackLayout,
         NodeTypeLabel.TrackLayout,
-        RelationshipDirection.FORWARD,
     )
 
     expect(relationships.length)
