@@ -1,20 +1,33 @@
-import {expect, test} from 'vitest'
-import {getAllRelationshipTypes} from "../../../../_toolbox/getAllRelationshipTypes"
-import {DbRelationship} from "../../../../../src/db/types/DbRelationship"
+import {describe, expect, test} from 'vitest'
+import {getAllDbRelationshipNames} from "../../../../_toolbox/getAllDbRelationshipNames"
+import {DbRelationshipName} from "../../../../../src/db/types/DbRelationshipName"
 import {createRelationshipQuery} from "../../../../../src/db/relationships/createDbRelationship"
+import {RelationshipDirection} from "../../../../../src/db/types/RelationshipDirection"
 
-test('database query for creating a relationship', async () => {
-    getAllRelationshipTypes().forEach((relationshipType: DbRelationship) => {
+describe('Assembling database query for creating a relationship', () => {
+    test.each(getAllDbRelationshipNames())('forward $0 relationship', async (relationshipName: DbRelationshipName) => {
         const startNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
         const endNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
-        const query = createRelationshipQuery(startNodeId, relationshipType, endNodeId)
+        const query = createRelationshipQuery(startNodeId, relationshipName, endNodeId, RelationshipDirection.FORWARD)
 
         expect(query)
             .toEqual(
                 "MATCH (a {mc_id: " + startNodeId + "}), (b {mc_id: " + endNodeId + "})\n" +
-                "CREATE (a)-[r:" + relationshipType + "]->(b)\n" +
-                "RETURN r\n" +
+                "CREATE (a)-[r:" + relationshipName + "]->(b)\n" +
+                "RETURN a, r, b\n" +
+                "  LIMIT 1")
+    })
+
+    test.each(getAllDbRelationshipNames())('forward $0 relationship', async (relationshipName: DbRelationshipName) => {
+        const startNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
+        const endNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
+        const query = createRelationshipQuery(startNodeId, relationshipName, endNodeId, RelationshipDirection.REVERSE)
+
+        expect(query)
+            .toEqual(
+                "MATCH (a {mc_id: " + startNodeId + "}), (b {mc_id: " + endNodeId + "})\n" +
+                "CREATE (a)<-[r:" + relationshipName + "]-(b)\n" +
+                "RETURN a, r, b\n" +
                 "  LIMIT 1")
     })
 })
-
