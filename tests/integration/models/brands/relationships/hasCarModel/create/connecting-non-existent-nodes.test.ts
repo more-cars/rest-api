@@ -1,10 +1,10 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {Brand} from "../../../../../../../src/models/brands/Brand"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
+import {Brand} from "../../../../../../../src/models/brands/Brand"
 
-test('Expecting an error when any of the nodes does not exist', async () => {
+test('Trying to create a ›has-car-model‹ relationship with nodes that do not exist', async () => {
     const brand = await seedNode(NodeTypeEnum.BRAND)
     const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
 

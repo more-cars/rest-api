@@ -1,11 +1,11 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {Brand} from "../../../../../../../src/models/brands/Brand"
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {Brand} from "../../../../../../../src/models/brands/Brand"
 
 test('A BRAND can have multiple ›has-car-model‹ relationships', async () => {
     const brand = await seedNode(NodeTypeEnum.BRAND)
@@ -16,11 +16,7 @@ test('A BRAND can have multiple ›has-car-model‹ relationships', async () => 
         await Brand.createHasCarModelRelationship(brand.id, carModel.id)
     }
 
-    const relationships = await getRelationshipCollection(
-        brand.id,
-        DbRelationship.BrandHasCarModel,
-        NodeTypeLabel.CarModel,
-    )
+    const relationships = await getRelationshipCollection(brand.id, DbRelationship.BrandHasCarModel, NodeTypeLabel.CarModel)
 
     expect(relationships.length)
         .toBe(carModelAmount)
