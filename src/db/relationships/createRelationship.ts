@@ -1,4 +1,4 @@
-import neo4j, {Driver, Relationship} from "neo4j-driver"
+import neo4j, {Driver, Node, Relationship} from "neo4j-driver"
 import {DbRelationship} from "../types/DbRelationship"
 import {BaseRelationship} from "../types/BaseRelationship"
 import {getRelationshipSpecification} from "./getRelationshipSpecification"
@@ -8,7 +8,6 @@ import {generateMoreCarsId} from "../generateMoreCarsId"
 import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId"
 import {addMoreCarsIdToRelationship} from "./addMoreCarsIdToRelationship"
 import {addTimestampsToRelationship} from "./addTimestampsToRelationship"
-import {mapNeo4jRelationshipToDbRelationship} from "./mapNeo4jRelationshipToDbRelationship"
 import {DbRelationshipName} from "../types/DbRelationshipName"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
@@ -35,7 +34,9 @@ export async function createRelationship(
         return false
     }
 
+    const sourceNode: Node = records[0].get('a')
     let dbRelationship: Relationship = records[0].get('r')
+    const endNode: Node = records[0].get('b')
 
     // 2. Adding a custom More Cars ID for that relationship
     const elementId = dbRelationship.elementId
@@ -48,7 +49,28 @@ export async function createRelationship(
 
     await session.close()
 
-    return mapNeo4jRelationshipToDbRelationship(startNodeId, endNodeId, relationshipType, dbRelationship)
+    const relationship: BaseRelationship = {
+        id: dbRelationship.properties.mc_id,
+        type: relationshipType,
+        start_node_id: startNodeId,
+        start_node: Object.assign({}, sourceNode.properties, {
+            id: sourceNode.properties.mc_id,
+            created_at: sourceNode.properties.created_at,
+            updated_at: sourceNode.properties.updated_at,
+        }),
+        end_node_id: endNode.properties.mc_id,
+        end_node: Object.assign({}, endNode.properties, {
+            id: endNode.properties.mc_id,
+            created_at: endNode.properties.created_at,
+            updated_at: endNode.properties.updated_at,
+        }),
+        relationship_id: dbRelationship.properties.mc_id,
+        relationship_name: relationshipType,
+        created_at: dbRelationship.properties.created_at,
+        updated_at: dbRelationship.properties.updated_at,
+    }
+
+    return relationship
 }
 
 export function createRelationshipQuery(startNodeId: number, relationshipName: DbRelationshipName, endNodeId: number, reverse: RelationshipDirection) {
