@@ -50,8 +50,8 @@ async function migrateRelationshipsOfType() {
             newRelationship = await createRelationship(parseInt(oldRelationship.start) + 10_000_000, parseInt(oldRelationship.end) + 10_000_000, newRelationshipType)
         }
         if (newRelationship) {
-            await addMoreCarsIdToRelationship(newRelationship.elementId, parseInt(oldRelationship.elementId) + 10_000_000)
-            await addTimestampsToRelationship(newRelationship.elementId, oldRelationship.properties.created_at, oldRelationship.properties.updated_at)
+            await addMoreCarsIdToRelationship(newRelationship.elementId as string, parseInt(oldRelationship.elementId) + 10_000_000)
+            await addTimestampsToRelationship(newRelationship.elementId as string, oldRelationship.properties.created_at, oldRelationship.properties.updated_at)
         } else {
             console.error('Relationship could not be migrated: #', oldRelationship.elementId)
         }

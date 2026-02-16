@@ -2,6 +2,7 @@ import type {BaseNode} from "./BaseNode"
 
 export type BaseRelationship = {
     id?: number
+    elementId?: string
     type?: string
     start_node_id: number
     start_node?: BaseNode
