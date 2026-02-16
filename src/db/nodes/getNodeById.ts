@@ -26,9 +26,7 @@ export async function getNodeById(id: number): Promise<false | BaseNode> {
 }
 
 export function getNodeByIdQuery(id: number) {
-    let query = getCypherQueryTemplate('nodes/_cypher/getNodeById.cypher')
+    return getCypherQueryTemplate('nodes/_cypher/getNodeById.cypher')
         .trim()
         .replace('$id', id.toString())
-
-    return query
 }
