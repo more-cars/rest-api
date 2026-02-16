@@ -4,6 +4,7 @@ import {DbRelationshipName} from "../../../../../src/db/types/DbRelationshipName
 import {getRelationshipQuery} from "../../../../../src/db/relationships/getRelationship"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 import {RelationshipDirection} from "../../../../../src/db/types/RelationshipDirection"
+import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 describe('Assembling database query for fetching a relationship', () => {
     test.each(getAllDbRelationshipNames())('forward $0 relationship', async (relationshipName: DbRelationshipName) => {
@@ -12,7 +13,7 @@ describe('Assembling database query for fetching a relationship', () => {
 
         expect(query)
             .toEqual(
-                "MATCH (a {mc_id: " + startNodeId + "})-[r:" + relationshipName + "]->(b:LapTime)\n" +
+                "MATCH (a {mc_id: " + startNodeId + "})-[r:" + relationshipName + "]->(b:LapTime_" + appInstanceId + ")\n" +
                 "RETURN a, r, b\n" +
                 "  LIMIT 1")
     })
@@ -23,7 +24,7 @@ describe('Assembling database query for fetching a relationship', () => {
 
         expect(query)
             .toEqual(
-                "MATCH (a {mc_id: " + startNodeId + "})<-[r:" + relationshipName + "]-(b:LapTime)\n" +
+                "MATCH (a {mc_id: " + startNodeId + "})<-[r:" + relationshipName + "]-(b:LapTime_" + appInstanceId + ")\n" +
                 "RETURN a, r, b\n" +
                 "  LIMIT 1")
     })
