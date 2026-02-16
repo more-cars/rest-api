@@ -40,12 +40,4 @@ export default defineConfig(({mode}) => ({
             }
         }
     },
-    // The integration tests work on the same database (only partially mocked).
-    // Therefore, they cannot run in parallel.
-    // The following options make sure that the tests run strictly sequential.
-    pool: 'forks',
-    isolate: true,
-    maxWorkers: 1,
-    maxConcurrency: 1,
-    fileParallelism: false,
 }))
