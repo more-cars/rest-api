@@ -1,4 +1,4 @@
-MATCH (node:nodeLabel)
+MATCH (node)
   WHERE elementId(node) = '$elementId'
 SET node.mc_id = $moreCarsId
 RETURN node

@@ -19,7 +19,7 @@ export async function createDbNode(nodeType: NodeTypeLabel, query: string): Prom
     // 2. Adding a custom More Cars ID for that node
     const elementId = dbNode.elementId
     const moreCarsId = generateMoreCarsId(extractBaseIdFromElementId(elementId))
-    dbNode = await addMoreCarsIdToNode(elementId, moreCarsId, nodeType)
+    dbNode = await addMoreCarsIdToNode(elementId, moreCarsId)
 
     // 3. Adding timestamps
     const timestamp = new Date().toISOString()
