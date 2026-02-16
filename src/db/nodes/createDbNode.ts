@@ -11,8 +11,39 @@ import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 import {NodeSpecification} from "../types/NodeSpecification"
 import {PropertySpecification} from "../types/PropertySpecification"
 import {escapeSingleQuotes} from "./escapeSingleQuotes"
+import type {InputCompanyCreate} from "./companies/types/InputCompanyCreate"
+import type {InputBrandCreate} from "./brands/types/InputBrandCreate"
+import type {InputCarModelCreate} from "./car-models/types/InputCarModelCreate"
+import type {InputCarModelVariantCreate} from "./car-model-variants/types/InputCarModelVariantCreate"
+import type {InputRaceTrackCreate} from "./race-tracks/types/InputRaceTrackCreate"
+import type {InputTrackLayoutCreate} from "./track-layouts/types/InputTrackLayoutCreate"
+import type {InputRacingSeriesCreate} from "./racing-series/types/InputRacingSeriesCreate"
+import type {InputRacingEventCreate} from "./racing-events/types/InputRacingEventCreate"
+import type {InputRacingSessionCreate} from "./racing-sessions/types/InputRacingSessionCreate"
+import type {InputSessionResultCreate} from "./session-results/types/InputSessionResultCreate"
+import type {InputLapTimeCreate} from "./lap-times/types/InputLapTimeCreate"
+import type {InputRacingGameCreate} from "./racing-games/types/InputRacingGameCreate"
+import type {InputGamingPlatformCreate} from "./gaming-platforms/types/InputGamingPlatformCreate"
+import type {InputImageCreate} from "./images/types/InputImageCreate"
 
-export async function createDbNode(nodeType: NodeTypeLabel, data: any): Promise<Node> {
+// TODO find a more elegant solution to describe the allowed input data
+type InputTypes =
+    InputCompanyCreate |
+    InputBrandCreate |
+    InputCarModelCreate |
+    InputCarModelVariantCreate |
+    InputRaceTrackCreate |
+    InputTrackLayoutCreate |
+    InputRacingSeriesCreate |
+    InputRacingEventCreate |
+    InputRacingSessionCreate |
+    InputSessionResultCreate |
+    InputLapTimeCreate |
+    InputRacingGameCreate |
+    InputGamingPlatformCreate |
+    InputImageCreate
+
+export async function createDbNode(nodeType: NodeTypeLabel, data: InputTypes): Promise<Node> {
     const driver: Driver = getDriver()
     const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
@@ -36,7 +67,7 @@ export async function createDbNode(nodeType: NodeTypeLabel, data: any): Promise<
     return dbNode
 }
 
-export function createNodeQuery(nodeType: NodeTypeLabel, data: any) {
+export function createNodeQuery(nodeType: NodeTypeLabel, data: InputTypes) {
     const nodeSpecs = getNodeSpecification(nodeType)
     const properties = getCypherFormattedPropertyList(nodeSpecs, data)
 
@@ -50,7 +81,7 @@ export function createNodeQuery(nodeType: NodeTypeLabel, data: any) {
     return template
 }
 
-function getCypherFormattedPropertyList(nodeSpecs: NodeSpecification, data: any) {
+function getCypherFormattedPropertyList(nodeSpecs: NodeSpecification, data: InputTypes) {
     const lines: string[] = []
 
     nodeSpecs.properties.forEach((property, index) => {
@@ -60,6 +91,7 @@ function getCypherFormattedPropertyList(nodeSpecs: NodeSpecification, data: any)
         line.push(indentation)
         line.push(property.name)
         line.push(': ')
+        // @ts-expect-error TS7053 TS7053
         line.push(getCypherFormattedPropertyValue(data[property.name], property))
 
         if (index + 1 < nodeSpecs.properties.length) {
