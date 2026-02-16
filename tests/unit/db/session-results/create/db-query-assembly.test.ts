@@ -2,6 +2,7 @@ import {expect, test} from 'vitest'
 import {InputSessionResultCreate} from "../../../../../src/db/nodes/session-results/types/InputSessionResultCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a SESSION RESULT node', async () => {
     const data: InputSessionResultCreate = {
@@ -19,7 +20,7 @@ test('database query for creating a SESSION RESULT node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:SessionResult {\n" +
+            "CREATE (node:SessionResult_" + appInstanceId + " {\n" +
             "  position: 1,\n" +
             "  race_number: '44',\n" +
             "  driver_name: 'Lewis Hamilton',\n" +

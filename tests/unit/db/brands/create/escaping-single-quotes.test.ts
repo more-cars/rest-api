@@ -2,6 +2,7 @@ import {expect, test} from 'vitest'
 import {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
     const data: InputBrandCreate = {
@@ -16,7 +17,7 @@ test('single quotes are correctly escaped', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:Brand {\n" +
+            "CREATE (node:Brand_" + appInstanceId + " {\n" +
             "  name: 'Test\\'s Brand',\n" +
             "  full_name: 'Test\\'s Brand Full\\' Name',\n" +
             "  founded: null,\n" +

@@ -1,11 +1,12 @@
 import {NodeTypeLabel} from "../NodeTypeLabel"
 import type {CollectionQueryParams} from "../types/CollectionQueryParams"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
+import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 
 export function getAllNodesOfTypeQuery(nodeLabel: NodeTypeLabel, params: CollectionQueryParams) {
     return getCypherQueryTemplate('nodes/_cypher/getAllNodesOfType.cypher')
         .trim()
-        .replace(':nodeLabel', `:${nodeLabel}`)
+        .replace(':nodeLabel', `:${getNamespacedNodeTypeLabel(nodeLabel)}`)
         .replace('$sortByProperty', `${params.sortByProperty}`)
         .replace('$sortDirection', `${params.sortDirection}`)
         .replace('$filterByProperty', `${params.filterByProperty}`)

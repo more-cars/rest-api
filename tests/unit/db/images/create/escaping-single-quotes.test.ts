@@ -2,6 +2,7 @@ import {expect, test} from 'vitest'
 import {InputImageCreate} from "../../../../../src/db/nodes/images/types/InputImageCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
     const data: InputImageCreate = {
@@ -25,7 +26,7 @@ test('single quotes are correctly escaped', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:Image {\n" +
+            "CREATE (node:Image_" + appInstanceId + " {\n" +
             "  image_provider: 'flic\\'kr',\n" +
             "  external_id: '\\'54570839725\\'',\n" +
             "  name: '1989 Po\\'rsche 911 Turbo',\n" +

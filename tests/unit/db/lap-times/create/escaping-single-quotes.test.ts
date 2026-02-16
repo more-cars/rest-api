@@ -2,6 +2,7 @@ import {expect, test} from 'vitest'
 import {InputLapTimeCreate} from "../../../../../src/db/nodes/lap-times/types/InputLapTimeCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
     const data: InputLapTimeCreate = {
@@ -14,7 +15,7 @@ test('single quotes are correctly escaped', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:LapTime {\n" +
+            "CREATE (node:LapTime_" + appInstanceId + " {\n" +
             "  time: '\\'PT1M33.294S',\n" +
             "  driver_name: '\\'Klaus Ludwig',\n" +
             "  date: '\\'1996-08-03'\n" +

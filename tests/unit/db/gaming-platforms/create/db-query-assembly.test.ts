@@ -2,6 +2,7 @@ import {expect, test} from 'vitest'
 import {InputGamingPlatformCreate} from "../../../../../src/db/nodes/gaming-platforms/types/InputGamingPlatformCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a GAMING PLATFORM node', async () => {
     const data: InputGamingPlatformCreate = {
@@ -14,7 +15,7 @@ test('database query for creating a GAMING PLATFORM node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:GamingPlatform {\n" +
+            "CREATE (node:GamingPlatform_" + appInstanceId + " {\n" +
             "  name: 'PlayStation 5',\n" +
             "  release_year: 2020,\n" +
             "  manufacturer: 'Sony'\n" +

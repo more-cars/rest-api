@@ -2,6 +2,7 @@ import {expect, test} from 'vitest'
 import {InputCompanyCreate} from "../../../../../src/db/nodes/companies/types/InputCompanyCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a COMPANY node', async () => {
     const data: InputCompanyCreate = {
@@ -16,7 +17,7 @@ test('database query for creating a COMPANY node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:Company {\n" +
+            "CREATE (node:Company_" + appInstanceId + " {\n" +
             "  name: 'BMW AG',\n" +
             "  founded: 1916,\n" +
             "  defunct: null,\n" +

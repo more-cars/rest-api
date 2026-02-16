@@ -2,6 +2,7 @@ import {expect, test} from 'vitest'
 import {InputRaceTrackCreate} from "../../../../../src/db/nodes/race-tracks/types/InputRaceTrackCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a RACE TRACK node', async () => {
     const data: InputRaceTrackCreate = {
@@ -17,7 +18,7 @@ test('database query for creating a RACE TRACK node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:RaceTrack {\n" +
+            "CREATE (node:RaceTrack_" + appInstanceId + " {\n" +
             "  name: 'Lausitzring',\n" +
             "  opened: 2000,\n" +
             "  closed: null,\n" +

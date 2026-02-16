@@ -2,6 +2,7 @@ import {expect, test} from 'vitest'
 import {InputImageCreate} from "../../../../../src/db/nodes/images/types/InputImageCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating an IMAGE node', async () => {
     const data: InputImageCreate = {
@@ -25,7 +26,7 @@ test('database query for creating an IMAGE node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:Image {\n" +
+            "CREATE (node:Image_" + appInstanceId + " {\n" +
             "  image_provider: 'flickr',\n" +
             "  external_id: '54570839725',\n" +
             "  name: '1989 Porsche 911 Turbo',\n" +

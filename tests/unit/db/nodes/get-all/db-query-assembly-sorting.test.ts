@@ -3,6 +3,7 @@ import {getAllNodeTypes} from "../../../../_toolbox/getAllNodeTypes"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 import {getAllNodesOfTypeQuery} from "../../../../../src/db/nodes/getAllNodesOfTypeQuery"
 import {DbFilterOperator} from "../../../../../src/db/types/DbFilterOperator"
+import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 describe('database query for fetching all nodes of a type - sorting', () => {
     test.each([
@@ -24,7 +25,7 @@ describe('database query for fetching all nodes of a type - sorting', () => {
 
             expect(query)
                 .toEqual(
-                    "MATCH (node:" + nodeType + ")\n" +
+                    "MATCH (node:" + nodeType + "_" + appInstanceId + ")\n" +
                     "WHERE node.dummy = 'dummy'\n" +
                     "RETURN node\n" +
                     "  ORDER BY node." + sortByProperty + " " + sortDirection + "\n" +

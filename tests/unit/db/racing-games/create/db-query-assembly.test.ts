@@ -2,6 +2,7 @@ import {expect, test} from 'vitest'
 import {InputRacingGameCreate} from "../../../../../src/db/nodes/racing-games/types/InputRacingGameCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a RACING GAME node', async () => {
     const data: InputRacingGameCreate = {
@@ -15,7 +16,7 @@ test('database query for creating a RACING GAME node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:RacingGame {\n" +
+            "CREATE (node:RacingGame_" + appInstanceId + " {\n" +
             "  name: 'Forza Motorsport 7',\n" +
             "  release_year: 2017,\n" +
             "  developer: 'Turn 10 Studios',\n" +

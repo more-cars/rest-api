@@ -2,6 +2,7 @@ import {expect, test} from 'vitest'
 import {InputTrackLayoutCreate} from "../../../../../src/db/nodes/track-layouts/types/InputTrackLayoutCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
     const data: InputTrackLayoutCreate = {
@@ -20,7 +21,7 @@ test('single quotes are correctly escaped', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:TrackLayout {\n" +
+            "CREATE (node:TrackLayout_" + appInstanceId + " {\n" +
             "  name: '\\'GP Circuit',\n" +
             "  year_from: null,\n" +
             "  year_to: null,\n" +

@@ -7,6 +7,7 @@ import {addMoreCarsIdToNode} from "./addMoreCarsIdToNode"
 import {addTimestampsToNode} from "./addTimestampsToNode"
 import {getNodeSpecification} from "./getNodeSpecification"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
+import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 import {NodeSpecification} from "../types/NodeSpecification"
 import {PropertySpecification} from "../types/PropertySpecification"
 import {escapeSingleQuotes} from "./escapeSingleQuotes"
@@ -43,7 +44,7 @@ export function createNodeQuery(nodeType: NodeTypeLabel, data: any) {
         .trim()
 
     template = template
-        .replace('$NODE_TYPE_LABEL', nodeSpecs.label)
+        .replace('$NODE_TYPE_LABEL', getNamespacedNodeTypeLabel(nodeSpecs.label))
         .replace('$NODE_PROPERTIES', properties)
 
     return template

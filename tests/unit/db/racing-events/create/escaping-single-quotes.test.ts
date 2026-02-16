@@ -2,6 +2,7 @@ import {expect, test} from 'vitest'
 import {InputRacingEventCreate} from "../../../../../src/db/nodes/racing-events/types/InputRacingEventCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
     const data: InputRacingEventCreate = {
@@ -15,7 +16,7 @@ test('single quotes are correctly escaped', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:RacingEvent {\n" +
+            "CREATE (node:RacingEvent_" + appInstanceId + " {\n" +
             "  name: '\\'GP Monaco 2025',\n" +
             "  round: null,\n" +
             "  date_from: '\\'2025-05-25',\n" +

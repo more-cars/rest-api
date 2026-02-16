@@ -2,6 +2,7 @@ import {expect, test} from 'vitest'
 import {InputCarModelVariantCreate} from "../../../../../src/db/nodes/car-model-variants/types/InputCarModelVariantCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a CAR MODEL VARIANT node', async () => {
     const data: InputCarModelVariantCreate = {
@@ -47,7 +48,7 @@ test('database query for creating a CAR MODEL VARIANT node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:CarModelVariant {\n" +
+            "CREATE (node:CarModelVariant_" + appInstanceId + " {\n" +
             "  name: 'BMW M3',\n" +
             "  internal_code: 'E46',\n" +
             "  built_from: 2000,\n" +

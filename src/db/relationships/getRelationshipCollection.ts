@@ -7,6 +7,7 @@ import {getRelationshipSpecification} from "./getRelationshipSpecification"
 import {RelationshipDirection} from "../types/RelationshipDirection"
 import type {DbRelationshipName} from "../types/DbRelationshipName"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
+import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 
 export async function getRelationshipCollection(
     startNodeId: number,
@@ -66,5 +67,5 @@ export function getRelationshipCollectionQuery(startNodeId: number, relationship
         .trim()
         .replace('$startNodeId', startNodeId.toString())
         .replace('relationshipName', relationshipName)
-        .replace('$endNodeLabel', endNodeLabel)
+        .replace('$endNodeLabel', getNamespacedNodeTypeLabel(endNodeLabel))
 }

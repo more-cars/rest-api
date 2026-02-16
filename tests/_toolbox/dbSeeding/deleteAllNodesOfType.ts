@@ -2,6 +2,7 @@ import neo4j, {Driver, Session} from "neo4j-driver"
 import {NodeTypeEnum} from "../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getDriver} from "../../../src/db/driver"
 import {pascalCase} from "change-case"
+import {getNamespacedNodeTypeLabel} from "../../../src/db/getNamespacedNodeTypeLabel"
 
 export async function deleteAllNodesOfType(nodeType: NodeTypeEnum) {
     const driver: Driver = getDriver()
@@ -11,7 +12,7 @@ export async function deleteAllNodesOfType(nodeType: NodeTypeEnum) {
 
     await session.executeWrite(async txc => {
         await txc.run(`
-            MATCH (node:${dbNodeType})
+            MATCH (node:${getNamespacedNodeTypeLabel(dbNodeType)})
             DETACH DELETE node
         `)
     })

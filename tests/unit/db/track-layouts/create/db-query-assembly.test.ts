@@ -2,6 +2,7 @@ import {expect, test} from 'vitest'
 import {InputTrackLayoutCreate} from "../../../../../src/db/nodes/track-layouts/types/InputTrackLayoutCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a TRACK LAYOUT node', async () => {
     const data: InputTrackLayoutCreate = {
@@ -20,7 +21,7 @@ test('database query for creating a TRACK LAYOUT node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:TrackLayout {\n" +
+            "CREATE (node:TrackLayout_" + appInstanceId + " {\n" +
             "  name: 'GP Circuit',\n" +
             "  year_from: 1967,\n" +
             "  year_to: 1999,\n" +
