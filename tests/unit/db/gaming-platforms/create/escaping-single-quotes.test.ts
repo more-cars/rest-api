@@ -1,6 +1,7 @@
 import {expect, test} from 'vitest'
 import {InputGamingPlatformCreate} from "../../../../../src/db/nodes/gaming-platforms/types/InputGamingPlatformCreate"
-import {createNodeQuery} from "../../../../../src/db/nodes/gaming-platforms/createNode"
+import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
+import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
     const data: InputGamingPlatformCreate = {
@@ -9,7 +10,7 @@ test('single quotes are correctly escaped', async () => {
         manufacturer: "'Sony"
     }
 
-    const query = createNodeQuery(data)
+    const query = createNodeQuery(NodeTypeLabel.GamingPlatform, data)
 
     expect(query)
         .toEqual(

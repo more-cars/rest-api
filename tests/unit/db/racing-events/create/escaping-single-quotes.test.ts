@@ -1,6 +1,7 @@
 import {expect, test} from 'vitest'
 import {InputRacingEventCreate} from "../../../../../src/db/nodes/racing-events/types/InputRacingEventCreate"
-import {createNodeQuery} from "../../../../../src/db/nodes/racing-events/createNode"
+import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
+import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
     const data: InputRacingEventCreate = {
@@ -10,7 +11,7 @@ test('single quotes are correctly escaped', async () => {
         date_to: "'2025-05-27"
     }
 
-    const query = createNodeQuery(data)
+    const query = createNodeQuery(NodeTypeLabel.RacingEvent, data)
 
     expect(query)
         .toEqual(

@@ -1,6 +1,7 @@
 import {expect, test} from 'vitest'
 import {InputCompanyCreate} from "../../../../../src/db/nodes/companies/types/InputCompanyCreate"
-import {createNodeQuery} from "../../../../../src/db/nodes/companies/createNode"
+import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
+import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
     const data: InputCompanyCreate = {
@@ -11,7 +12,7 @@ test('single quotes are correctly escaped', async () => {
         legal_headquarters_location: "'Munich"
     }
 
-    const query = createNodeQuery(data)
+    const query = createNodeQuery(NodeTypeLabel.Company, data)
 
     expect(query)
         .toEqual(

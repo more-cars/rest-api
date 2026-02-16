@@ -1,6 +1,7 @@
 import {expect, test} from 'vitest'
 import {InputRacingSeriesCreate} from "../../../../../src/db/nodes/racing-series/types/InputRacingSeriesCreate"
-import {createNodeQuery} from "../../../../../src/db/nodes/racing-series/createNode"
+import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
+import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
     const data: InputRacingSeriesCreate = {
@@ -12,7 +13,7 @@ test('single quotes are correctly escaped', async () => {
         vehicle_type: "'formula racing cars"
     }
 
-    const query = createNodeQuery(data)
+    const query = createNodeQuery(NodeTypeLabel.RacingSeries, data)
 
     expect(query)
         .toEqual(

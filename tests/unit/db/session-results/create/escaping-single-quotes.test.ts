@@ -1,6 +1,7 @@
 import {expect, test} from 'vitest'
 import {InputSessionResultCreate} from "../../../../../src/db/nodes/session-results/types/InputSessionResultCreate"
-import {createNodeQuery} from "../../../../../src/db/nodes/session-results/createNode"
+import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
+import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
     const data: InputSessionResultCreate = {
@@ -14,7 +15,7 @@ test('single quotes are correctly escaped', async () => {
         points: null
     }
 
-    const query = createNodeQuery(data)
+    const query = createNodeQuery(NodeTypeLabel.SessionResult, data)
 
     expect(query)
         .toEqual(

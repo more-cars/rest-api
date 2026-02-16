@@ -9,6 +9,7 @@ import {getNodeSpecification} from "./getNodeSpecification"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {NodeSpecification} from "../types/NodeSpecification"
 import {PropertySpecification} from "../types/PropertySpecification"
+import {escapeSingleQuotes} from "./escapeSingleQuotes"
 
 export async function createDbNode(nodeType: NodeTypeLabel, data: any): Promise<Node> {
     const driver: Driver = getDriver()
@@ -76,7 +77,7 @@ function getCypherFormattedPropertyValue(value: string, propertySpecification: P
     }
 
     if (propertySpecification.datatype === 'string') {
-        return "'" + value + "'"
+        return "'" + escapeSingleQuotes(value) + "'"
     }
 
     return value
