@@ -1,10 +1,9 @@
 import {CarModelVariantNode} from "./types/CarModelVariantNode"
 import {fetchNodeFromDb} from "../fetchNodeFromDb"
-import {NodeTypeLabel} from "../../NodeTypeLabel"
 import {mapDbNodeToCarModelVariantNode} from "./mapDbNodeToCarModelVariantNode"
 
 export async function getNodeById(id: number): Promise<false | CarModelVariantNode> {
-    const node = await fetchNodeFromDb(id, NodeTypeLabel.CarModelVariant)
+    const node = await fetchNodeFromDb(id)
 
     if (!node) {
         return false

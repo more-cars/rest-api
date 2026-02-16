@@ -1,10 +1,9 @@
-import {NodeTypeLabel} from "../NodeTypeLabel"
 import neo4j, {Driver, Node, Session} from "neo4j-driver"
 import {getDriver} from "../driver"
 import {getNodeByIdQuery} from "./getNodeById"
 import {getDenamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 
-export async function fetchNodeFromDb(id: number, nodeType: NodeTypeLabel): Promise<false | Node> {
+export async function fetchNodeFromDb(id: number): Promise<false | Node> {
     const driver: Driver = getDriver()
     const session: Session = driver.session({defaultAccessMode: neo4j.session.READ})
 
