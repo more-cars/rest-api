@@ -9,7 +9,6 @@ import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints
 import {getAllNodesOfType} from "../../db/nodes/images/getAllNodesOfType"
 import {deleteNode} from "../../db/nodes/deleteNode"
 import type {ImageBelongsToNodeTypeRelationships} from "./types/ImageBelongsToNodeTypeRelationships"
-import {fetchImageRelationshipsForNodeType} from "../../db/nodes/images/getBelongsToNodeTypeRelationships"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {SemanticError} from "../types/SemanticError"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
@@ -25,6 +24,8 @@ import type {GenericRelation} from "../relationships/types/GenericRelation"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {mapDbRelationshipToModelRelationship} from "../relationships/mapDbRelationshipToModelRelationship"
 import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
+import {getRelationshipCollection} from "../../db/relationships/getRelationshipCollection"
+import {DbRelationship} from "../../db/types/DbRelationship"
 
 export const Image = {
     async create(data: CreateImageInput): Promise<ImageNode> {
@@ -150,13 +151,13 @@ export const Image = {
             return false
         }
 
-        const companyRels = await fetchImageRelationshipsForNodeType(NodeTypeLabel.Company, imageId)
-        const brandRels = await fetchImageRelationshipsForNodeType(NodeTypeLabel.Brand, imageId)
-        const carModelRels = await fetchImageRelationshipsForNodeType(NodeTypeLabel.CarModel, imageId)
-        const raceTrackRels = await fetchImageRelationshipsForNodeType(NodeTypeLabel.RaceTrack, imageId)
-        const trackLayoutRels = await fetchImageRelationshipsForNodeType(NodeTypeLabel.TrackLayout, imageId)
-        const racingSeriesRels = await fetchImageRelationshipsForNodeType(NodeTypeLabel.RacingSeries, imageId)
-        const racingEventsRels = await fetchImageRelationshipsForNodeType(NodeTypeLabel.RacingEvent, imageId)
+        const companyRels = await getRelationshipCollection(imageId, DbRelationship.ImageBelongsToNode, NodeTypeLabel.Company)
+        const brandRels = await getRelationshipCollection(imageId, DbRelationship.ImageBelongsToNode, NodeTypeLabel.Brand)
+        const carModelRels = await getRelationshipCollection(imageId, DbRelationship.ImageBelongsToNode, NodeTypeLabel.CarModel)
+        const raceTrackRels = await getRelationshipCollection(imageId, DbRelationship.ImageBelongsToNode, NodeTypeLabel.RaceTrack)
+        const trackLayoutRels = await getRelationshipCollection(imageId, DbRelationship.ImageBelongsToNode, NodeTypeLabel.TrackLayout)
+        const racingSeriesRels = await getRelationshipCollection(imageId, DbRelationship.ImageBelongsToNode, NodeTypeLabel.RacingSeries)
+        const racingEventsRels = await getRelationshipCollection(imageId, DbRelationship.ImageBelongsToNode, NodeTypeLabel.RacingEvent)
 
         const belongsToNodeTypeRelationships: ImageBelongsToNodeTypeRelationships = {
             companies: [],
