@@ -20,12 +20,7 @@ async function migrateRelationshipsOfType() {
     const newEndNodeType = await determineEndNodeType()
     const oldEndNodeType = NodeTypeMapping.get(newEndNodeType) as NodeTypeLabelOld
     const newRelationshipType = await determineRelationshipType()
-    let oldRelationshipType
-    if (newStartNodeType === 'TrackLayout' && newRelationshipType === 'HAS_LAP_TIME') { // TODO make mapping unique
-        oldRelationshipType = RelationshipTypeLabelOld.TrackLayoutHasLapTime
-    } else {
-        oldRelationshipType = RelationshipTypeMapping.get(newRelationshipType) as RelationshipTypeLabelOld
-    }
+    const oldRelationshipType = RelationshipTypeMapping.get(newRelationshipType) as RelationshipTypeLabelOld
 
     const deleteRelationships = await determineDeleteRelationships()
     if (deleteRelationships) {
