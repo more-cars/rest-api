@@ -8,7 +8,7 @@ import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 describe('Requesting a ›belongs-to-race-track‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const relationship = await seedRelationship(NodeTypeEnum.RACE_TRACK, NodeTypeEnum.TRACK_LAYOUT, DbRelationship.TrackLayoutBelongsToRaceTrack)
+        const relationship = await seedRelationship(NodeTypeEnum.TRACK_LAYOUT, NodeTypeEnum.RACE_TRACK, DbRelationship.TrackLayoutBelongsToRaceTrack)
 
         const relationships = await getRelationshipCollection(
             relationship.start_node_id,
