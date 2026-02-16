@@ -5,7 +5,6 @@ import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../db/nodes/images/createNode"
 import {convertOutputData} from "./create/convertOutputData"
 import {getNodeById} from "../../db/nodes/images/getNodeById"
-import {getNodeById as getAnyNodeById} from "../../db/nodes/getNodeById"
 import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints"
 import {getAllNodesOfType} from "../../db/nodes/images/getAllNodesOfType"
 import {deleteNode} from "../../db/nodes/deleteNode"
@@ -77,7 +76,7 @@ export const Image = {
             throw new NodeNotFoundError(imageId)
         }
 
-        const partner = await getAnyNodeById(partnerId)
+        const partner = await Node.findById(partnerId)
         if (!partner) {
             throw new NodeNotFoundError(partnerId)
         }
@@ -105,7 +104,7 @@ export const Image = {
             throw new NodeNotFoundError(imageId)
         }
 
-        const partner = await getAnyNodeById(partnerId)
+        const partner = await Node.findById(partnerId)
         if (!partner) {
             throw new NodeNotFoundError(partnerId)
         }
