@@ -5,6 +5,7 @@ import {Image} from "../../../../../../src/models/images/Image"
 import {seedRelationshipForStartNode} from "../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {DbRelationship} from "../../../../../../src/db/types/DbRelationship"
 import assert from "assert"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 test('Get all "Image belongs to Node type" relationships for specific image', async () => {
     const imageNode = await seedNode(NodeTypeEnum.IMAGE)
@@ -30,7 +31,7 @@ test('Get all "Image belongs to Node type" relationships for specific image', as
         expect(relationship.origin.id)
             .toBe(imageNode.id)
         expect(relationship.type)
-            .toBe(DbRelationship.NodeHasImage)
+            .toBe(RelationshipType.ImageBelongsToNode)
     })
 })
 
