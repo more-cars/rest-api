@@ -1,7 +1,6 @@
 import neo4j, {Driver, Session} from "neo4j-driver"
 import {getDriver} from "../driver"
 import {BaseNode} from "../types/BaseNode"
-import {NodeTypeLabel} from "../NodeTypeLabel"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 export async function getNodeById(id: number): Promise<false | BaseNode> {
@@ -26,16 +25,10 @@ export async function getNodeById(id: number): Promise<false | BaseNode> {
     return node
 }
 
-export function getNodeByIdQuery(id: number, nodeLabel: false | NodeTypeLabel = false) {
+export function getNodeByIdQuery(id: number) {
     let query = getCypherQueryTemplate('nodes/_cypher/getNodeById.cypher')
         .trim()
         .replace('$id', id.toString())
-
-    if (nodeLabel) {
-        query = query.replace(':nodeLabel', `:${nodeLabel}`)
-    } else {
-        query = query.replace(':nodeLabel', '')
-    }
 
     return query
 }
