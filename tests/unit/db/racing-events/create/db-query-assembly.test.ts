@@ -1,6 +1,7 @@
 import {expect, test} from 'vitest'
-import {createNodeQuery} from "../../../../../src/db/nodes/racing-events/createNode"
 import {InputRacingEventCreate} from "../../../../../src/db/nodes/racing-events/types/InputRacingEventCreate"
+import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
+import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 
 test('database query for creating a RACING EVENT node', async () => {
     const data: InputRacingEventCreate = {
@@ -10,7 +11,7 @@ test('database query for creating a RACING EVENT node', async () => {
         date_to: "2025-05-27"
     }
 
-    const query = createNodeQuery(data)
+    const query = createNodeQuery(NodeTypeLabel.RacingEvent, data)
 
     expect(query)
         .toEqual(

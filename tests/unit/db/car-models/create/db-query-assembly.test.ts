@@ -1,6 +1,7 @@
 import {expect, test} from 'vitest'
-import {createNodeQuery} from "../../../../../src/db/nodes/car-models/createNode"
 import {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
+import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
+import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 
 test('database query for creating a CAR MODEL node', async () => {
     const data: InputCarModelCreate = {
@@ -11,16 +12,16 @@ test('database query for creating a CAR MODEL node', async () => {
         internal_code: "F131",
         total_production: 16365,
     }
-    const query = createNodeQuery(data)
+    const query = createNodeQuery(NodeTypeLabel.CarModel, data)
 
     expect(query)
         .toEqual(
             "CREATE (node:CarModel {\n" +
-            "  name:             '360 Modena',\n" +
-            "  built_from:       1999,\n" +
-            "  built_to:         2005,\n" +
-            "  generation:       null,\n" +
-            "  internal_code:    'F131',\n" +
+            "  name: '360 Modena',\n" +
+            "  built_from: 1999,\n" +
+            "  built_to: 2005,\n" +
+            "  generation: null,\n" +
+            "  internal_code: 'F131',\n" +
             "  total_production: 16365\n" +
             "})\n" +
             "RETURN node\n" +

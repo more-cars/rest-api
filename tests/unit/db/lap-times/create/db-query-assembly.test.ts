@@ -1,6 +1,7 @@
 import {expect, test} from 'vitest'
-import {createNodeQuery} from "../../../../../src/db/nodes/lap-times/createNode"
 import {InputLapTimeCreate} from "../../../../../src/db/nodes/lap-times/types/InputLapTimeCreate"
+import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
+import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 
 test('database query for creating a LAP TIME node', async () => {
     const data: InputLapTimeCreate = {
@@ -9,7 +10,7 @@ test('database query for creating a LAP TIME node', async () => {
         date: "1996-08-03"
     }
 
-    const query = createNodeQuery(data)
+    const query = createNodeQuery(NodeTypeLabel.LapTime, data)
 
     expect(query)
         .toEqual(

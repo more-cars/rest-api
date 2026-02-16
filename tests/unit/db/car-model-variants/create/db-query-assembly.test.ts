@@ -1,6 +1,7 @@
 import {expect, test} from 'vitest'
-import {createNodeQuery} from "../../../../../src/db/nodes/car-model-variants/createNode"
 import {InputCarModelVariantCreate} from "../../../../../src/db/nodes/car-model-variants/types/InputCarModelVariantCreate"
+import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
+import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 
 test('database query for creating a CAR MODEL VARIANT node', async () => {
     const data: InputCarModelVariantCreate = {
@@ -42,7 +43,7 @@ test('database query for creating a CAR MODEL VARIANT node', async () => {
         total_production: 50000
     }
 
-    const query = createNodeQuery(data)
+    const query = createNodeQuery(NodeTypeLabel.CarModelVariant, data)
 
     expect(query)
         .toEqual(

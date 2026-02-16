@@ -1,6 +1,7 @@
 import {expect, test} from 'vitest'
-import {createNodeQuery} from "../../../../../src/db/nodes/racing-games/createNode"
 import {InputRacingGameCreate} from "../../../../../src/db/nodes/racing-games/types/InputRacingGameCreate"
+import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
+import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 
 test('database query for creating a RACING GAME node', async () => {
     const data: InputRacingGameCreate = {
@@ -10,7 +11,7 @@ test('database query for creating a RACING GAME node', async () => {
         publisher: "Microsoft Studios"
     }
 
-    const query = createNodeQuery(data)
+    const query = createNodeQuery(NodeTypeLabel.RacingGame, data)
 
     expect(query)
         .toEqual(

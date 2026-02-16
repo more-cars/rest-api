@@ -1,6 +1,7 @@
 import {expect, test} from 'vitest'
-import {createNodeQuery} from "../../../../../src/db/nodes/track-layouts/createNode"
 import {InputTrackLayoutCreate} from "../../../../../src/db/nodes/track-layouts/types/InputTrackLayoutCreate"
+import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
+import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 
 test('database query for creating a TRACK LAYOUT node', async () => {
     const data: InputTrackLayoutCreate = {
@@ -15,7 +16,7 @@ test('database query for creating a TRACK LAYOUT node', async () => {
         surface: "asphalt"
     }
 
-    const query = createNodeQuery(data)
+    const query = createNodeQuery(NodeTypeLabel.TrackLayout, data)
 
     expect(query)
         .toEqual(

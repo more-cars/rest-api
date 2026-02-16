@@ -1,6 +1,7 @@
 import {expect, test} from 'vitest'
-import {createNodeQuery} from "../../../../../src/db/nodes/session-results/createNode"
 import {InputSessionResultCreate} from "../../../../../src/db/nodes/session-results/types/InputSessionResultCreate"
+import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
+import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 
 test('database query for creating a SESSION RESULT node', async () => {
     const data: InputSessionResultCreate = {
@@ -14,7 +15,7 @@ test('database query for creating a SESSION RESULT node', async () => {
         points: 25
     }
 
-    const query = createNodeQuery(data)
+    const query = createNodeQuery(NodeTypeLabel.SessionResult, data)
 
     expect(query)
         .toEqual(

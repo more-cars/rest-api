@@ -1,6 +1,7 @@
 import {expect, test} from 'vitest'
-import {createNodeQuery} from "../../../../../src/db/nodes/brands/createNode"
 import {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
+import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
+import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 
 test('database query for creating a BRAND node', async () => {
     const data: InputBrandCreate = {
@@ -11,17 +12,17 @@ test('database query for creating a BRAND node', async () => {
         wmi: null,
         hsn: "0005",
     }
-    const query = createNodeQuery(data)
+    const query = createNodeQuery(NodeTypeLabel.Brand, data)
 
     expect(query)
         .toEqual(
             "CREATE (node:Brand {\n" +
-            "  name:      'Test Brand',\n" +
+            "  name: 'Test Brand',\n" +
             "  full_name: 'Test Brand Full Name',\n" +
-            "  founded:   null,\n" +
-            "  defunct:   2020,\n" +
-            "  wmi:       null,\n" +
-            "  hsn:       '0005'\n" +
+            "  founded: null,\n" +
+            "  defunct: 2020,\n" +
+            "  wmi: null,\n" +
+            "  hsn: '0005'\n" +
             "})\n" +
             "RETURN node\n" +
             "  LIMIT 1")
