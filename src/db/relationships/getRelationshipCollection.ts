@@ -12,7 +12,7 @@ import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 export async function getRelationshipCollection(
     startNodeId: number,
     relationshipType: DbRelationship,
-    endNodeType: NodeTypeLabel,
+    endNodeType?: NodeTypeLabel,
 ): Promise<BaseRelationship[]> {
     const relationshipSpecs = getRelationshipSpecification(relationshipType)
     const dbRelationshipName = relationshipSpecs.relationshipName
@@ -24,7 +24,7 @@ export async function getRelationshipCollection(
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getRelationshipCollectionQuery(startNodeId, dbRelationshipName, endNodeType, relationshipDirection))
+        const result = await txc.run(getRelationshipCollectionQuery(startNodeId, dbRelationshipName, relationshipDirection, endNodeType))
         return result.records
     })
 
@@ -60,12 +60,19 @@ export async function getRelationshipCollection(
     return relationships
 }
 
-export function getRelationshipCollectionQuery(startNodeId: number, relationshipName: DbRelationshipName, endNodeLabel: NodeTypeLabel, reverse: RelationshipDirection) {
+export function getRelationshipCollectionQuery(startNodeId: number, relationshipName: DbRelationshipName, reverse: RelationshipDirection, endNodeType?: NodeTypeLabel) {
     const templateName = reverse ? 'getRelationshipCollectionReversed' : 'getRelationshipCollection'
 
-    return getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')
+    let template = getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')
         .trim()
         .replace('$startNodeId', startNodeId.toString())
         .replace('relationshipName', relationshipName)
-        .replace('$endNodeLabel', getNamespacedNodeTypeLabel(endNodeLabel))
+
+    if (endNodeType) {
+        template = template.replace('$endNodeLabel', getNamespacedNodeTypeLabel(endNodeType))
+    } else {
+        template = template.replace(':$endNodeLabel', '')
+    }
+
+    return template
 }

@@ -4,7 +4,6 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
-import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 describe('Requesting all ›is-prime-image-of-node‹ relationships', () => {
     test('node and relationships exist', async () => {
@@ -16,7 +15,6 @@ describe('Requesting all ›is-prime-image-of-node‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             image.id,
             DbRelationship.ImageIsPrimeImageOfNode,
-            NodeTypeLabel.Image,
         )
 
         expect(relationships.length)
@@ -29,7 +27,6 @@ describe('Requesting all ›is-prime-image-of-node‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             image.id,
             DbRelationship.ImageIsPrimeImageOfNode,
-            NodeTypeLabel.Image,
         )
 
         expect(relationships.length)
@@ -40,7 +37,6 @@ describe('Requesting all ›is-prime-image-of-node‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             -42,
             DbRelationship.ImageIsPrimeImageOfNode,
-            NodeTypeLabel.Image,
         )
 
         expect(relationships.length)

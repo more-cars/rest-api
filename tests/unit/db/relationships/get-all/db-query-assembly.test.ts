@@ -9,7 +9,7 @@ import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 describe('Assembling database query for fetching all relationships', () => {
     test.each(getAllDbRelationshipNames())('forward $0 relationship', async (relationshipName: DbRelationshipName) => {
         const startNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
-        const query = getRelationshipCollectionQuery(startNodeId, relationshipName, NodeTypeLabel.LapTime, RelationshipDirection.FORWARD)
+        const query = getRelationshipCollectionQuery(startNodeId, relationshipName, RelationshipDirection.FORWARD, NodeTypeLabel.LapTime)
 
         expect(query)
             .toEqual(
@@ -19,7 +19,7 @@ describe('Assembling database query for fetching all relationships', () => {
 
     test.each(getAllDbRelationshipNames())('reverse $0 relationship', async (relationshipName: DbRelationshipName) => {
         const startNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
-        const query = getRelationshipCollectionQuery(startNodeId, relationshipName, NodeTypeLabel.LapTime, RelationshipDirection.REVERSE)
+        const query = getRelationshipCollectionQuery(startNodeId, relationshipName, RelationshipDirection.REVERSE, NodeTypeLabel.LapTime)
 
         expect(query)
             .toEqual(
