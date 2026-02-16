@@ -1,14 +1,14 @@
 import neo4j, {Driver, Node, Session} from "neo4j-driver"
 import {getDriver} from "../driver"
-import {getNodeByIdQuery} from "./getNodeById"
+import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {getDenamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 
-export async function fetchNodeFromDb(id: number): Promise<false | Node> {
+export async function fetchNodeById(id: number): Promise<false | Node> {
     const driver: Driver = getDriver()
     const session: Session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getNodeByIdQuery(id))
+        const result = await txc.run(fetchNodeByIdQuery(id))
         return result.records
     })
 
@@ -22,4 +22,10 @@ export async function fetchNodeFromDb(id: number): Promise<false | Node> {
     node.labels = [getDenamespacedNodeTypeLabel(node.labels[0])]
 
     return node
+}
+
+export function fetchNodeByIdQuery(id: number) {
+    return getCypherQueryTemplate('nodes/_cypher/getNodeById.cypher')
+        .trim()
+        .replace('$id', id.toString())
 }

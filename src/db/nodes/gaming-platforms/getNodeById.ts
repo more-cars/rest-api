@@ -1,9 +1,9 @@
 import {GamingPlatformNode} from "./types/GamingPlatformNode"
-import {fetchNodeFromDb} from "../fetchNodeFromDb"
+import {fetchNodeById} from "../fetchNodeById"
 import {mapDbNodeToGamingPlatformNode} from "./mapDbNodeToGamingPlatformNode"
 
 export async function getNodeById(id: number): Promise<false | GamingPlatformNode> {
-    const node = await fetchNodeFromDb(id)
+    const node = await fetchNodeById(id)
 
     if (!node) {
         return false

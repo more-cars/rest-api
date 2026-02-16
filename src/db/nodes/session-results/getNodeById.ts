@@ -1,9 +1,9 @@
 import {SessionResultNode} from "./types/SessionResultNode"
-import {fetchNodeFromDb} from "../fetchNodeFromDb"
+import {fetchNodeById} from "../fetchNodeById"
 import {mapDbNodeToSessionResultNode} from "./mapDbNodeToSessionResultNode"
 
 export async function getNodeById(id: number): Promise<false | SessionResultNode> {
-    const node = await fetchNodeFromDb(id)
+    const node = await fetchNodeById(id)
 
     if (!node) {
         return false

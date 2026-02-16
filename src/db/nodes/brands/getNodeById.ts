@@ -1,9 +1,9 @@
 import {BrandNode} from "./types/BrandNode"
-import {fetchNodeFromDb} from "../fetchNodeFromDb"
+import {fetchNodeById} from "../fetchNodeById"
 import {mapDbNodeToBrandNode} from "./mapDbNodeToBrandNode"
 
 export async function getNodeById(id: number): Promise<false | BrandNode> {
-    const node = await fetchNodeFromDb(id)
+    const node = await fetchNodeById(id)
 
     if (!node) {
         return false

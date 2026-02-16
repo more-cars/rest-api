@@ -1,9 +1,9 @@
 import {RacingEventNode} from "./types/RacingEventNode"
-import {fetchNodeFromDb} from "../fetchNodeFromDb"
+import {fetchNodeById} from "../fetchNodeById"
 import {mapDbNodeToRacingEventNode} from "./mapDbNodeToRacingEventNode"
 
 export async function getNodeById(id: number): Promise<false | RacingEventNode> {
-    const node = await fetchNodeFromDb(id)
+    const node = await fetchNodeById(id)
 
     if (!node) {
         return false

@@ -1,9 +1,9 @@
 import {TrackLayoutNode} from "./types/TrackLayoutNode"
-import {fetchNodeFromDb} from "../fetchNodeFromDb"
+import {fetchNodeById} from "../fetchNodeById"
 import {mapDbNodeToTrackLayoutNode} from "./mapDbNodeToTrackLayoutNode"
 
 export async function getNodeById(id: number): Promise<false | TrackLayoutNode> {
-    const node = await fetchNodeFromDb(id)
+    const node = await fetchNodeById(id)
 
     if (!node) {
         return false
