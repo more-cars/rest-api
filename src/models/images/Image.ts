@@ -26,6 +26,7 @@ import {mapDbRelationshipToModelRelationship} from "../relationships/mapDbRelati
 import {getRelationshipCollection} from "../../db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../db/types/DbRelationship"
 import {deleteIncomingRel} from "../relationships/deleteIncomingRel"
+import {BaseNode} from "../../db/types/BaseNode"
 
 export const Image = {
     async create(data: CreateImageInput): Promise<ImageNode> {
@@ -82,7 +83,7 @@ export const Image = {
             throw new NodeNotFoundError(partnerId)
         }
 
-        if (await partnerNodeIsAnImage(partnerId)) {
+        if (nodeIsAnImageNode(partner)) {
             throw new SemanticError(`Image #${imageId} cannot be connected to another image`)
         }
 
@@ -229,7 +230,7 @@ export const Image = {
             throw new NodeNotFoundError(nodeId)
         }
 
-        if (await partnerNodeIsAnImage(nodeId)) {
+        if (nodeIsAnImageNode(node)) {
             throw new SemanticError(`Image #${imageId} cannot be connected to another image`)
         }
 
@@ -300,6 +301,6 @@ function getGeneratedData(): CreateImageGeneratedInput {
     return generatedData
 }
 
-async function partnerNodeIsAnImage(nodeId: number): Promise<boolean> {
-    return await getNodeById(nodeId) !== false
+function nodeIsAnImageNode(node: BaseNode) {
+    return 'image_url_original' in node
 }
