@@ -17,7 +17,7 @@ export default defineConfig(({mode}) => ({
             ['junit', {
                 outputFile: 'test-reports/integration/report.xml',
                 suiteName: 'Integration Tests',
-                classnameTemplate: ''
+                classnameTemplate: '',
             }],
         ],
     },

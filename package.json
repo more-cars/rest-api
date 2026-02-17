@@ -62,7 +62,7 @@
     "tests:lint:src": "npx eslint src",
     "tests:lint:tests": "npx eslint tests",
     "tests:unit": "npx vitest run -c tests/unit/vite.config.ts",
-    "tests:integration": "./tests/integration/run-tests.sh",
+    "tests:integration": "npx vitest run -c tests/integration/vite.config.ts",
     "tests:developer": "./tests/developer/run-tests.sh",
     "tests:smoke:gui": "bruno",
     "tests:smoke:cli": "./tests/smoke/run-smoke-tests.sh",
