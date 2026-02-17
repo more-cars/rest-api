@@ -13,8 +13,9 @@ export default defineConfig(({mode}) => ({
         ],
         // giving vitest access to all environment variables, so the tests can for example find the database
         env: loadEnv(mode, rootDir, ''),
+        silent: true,
         reporters: [
-            'default',
+            ['dot'],
             ['junit', {
                 outputFile: 'test-reports/developer/report.xml',
                 suiteName: 'Developer Tests',
@@ -30,7 +31,6 @@ export default defineConfig(({mode}) => ({
                 '*.cypher',
             ],
             reporter: [
-                'text',
                 'html',
             ],
             reportsDirectory: 'test-reports/developer/coverage',
