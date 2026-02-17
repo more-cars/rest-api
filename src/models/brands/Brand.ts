@@ -8,7 +8,6 @@ import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints
 import {getAllNodesOfType} from "../../db/nodes/brands/getAllNodesOfType"
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {CarModel} from "../car-models/CarModel"
-import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
 import {Image} from "../images/Image"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
@@ -22,6 +21,8 @@ import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {createRel} from "../relationships/createRel"
 import {getAllRels} from "../relationships/getAllRels"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
+import {deleteIncomingRel} from "../relationships/deleteIncomingRel"
+import {deleteOutgoingRel} from "../relationships/deleteOutgoingRel"
 
 export const Brand = {
     async create(data: CreateBrandInput): Promise<BrandNode> {
@@ -78,7 +79,7 @@ export const Brand = {
             throw new RelationshipAlreadyExistsError(BrandRelationship.belongsToCompany, brandId, companyId)
         }
 
-        await deleteDeprecatedRel(brandId, RelationshipType.BrandBelongsToCompany, NodeTypeLabel.Company)
+        await deleteOutgoingRel(brandId, RelationshipType.BrandBelongsToCompany, NodeTypeLabel.Company)
 
         const createdRelationship = await createRel(brandId, companyId, RelationshipType.BrandBelongsToCompany)
         if (!createdRelationship) {
@@ -137,7 +138,7 @@ export const Brand = {
             throw new RelationshipAlreadyExistsError(BrandRelationship.hasCarModel, brandId, carModelId)
         }
 
-        await deleteDeprecatedRel(carModelId, RelationshipType.BrandHasCarModel, NodeTypeLabel.Brand)
+        await deleteIncomingRel(carModelId, RelationshipType.BrandHasCarModel, NodeTypeLabel.Brand)
 
         const createdRelationship = await createRel(brandId, carModelId, RelationshipType.BrandHasCarModel)
         if (!createdRelationship) {
@@ -282,7 +283,7 @@ export const Brand = {
             throw new RelationshipAlreadyExistsError(BrandRelationship.hasPrimeImage, brandId, imageId)
         }
 
-        await deleteDeprecatedRel(brandId, RelationshipType.BrandHasPrimeImage, NodeTypeLabel.Image)
+        await deleteOutgoingRel(brandId, RelationshipType.BrandHasPrimeImage, NodeTypeLabel.Image)
 
         const createdRelationship = await createRel(brandId, imageId, RelationshipType.BrandHasPrimeImage)
         if (!createdRelationship) {

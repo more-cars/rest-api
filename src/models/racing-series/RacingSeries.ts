@@ -9,7 +9,6 @@ import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {createRel} from "../relationships/createRel"
-import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
 import {RacingEvent} from "../racing-events/RacingEvent"
 import {getSpecificRel} from "../relationships/getSpecificRel"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
@@ -21,6 +20,8 @@ import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {Image} from "../images/Image"
 import {getRel} from "../relationships/getRel"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
+import {deleteIncomingRel} from "../relationships/deleteIncomingRel"
+import {deleteOutgoingRel} from "../relationships/deleteOutgoingRel"
 
 export const RacingSeries = {
     async create(data: CreateRacingSeriesInput): Promise<RacingSeriesNode> {
@@ -78,7 +79,7 @@ export const RacingSeries = {
             throw new RelationshipAlreadyExistsError(RacingSeriesRelationship.hasRacingEvent, racingSeriesId, racingEventId)
         }
 
-        await deleteDeprecatedRel(racingEventId, RelationshipType.RacingSeriesHasRacingEvent, NodeTypeLabel.RacingSeries)
+        await deleteIncomingRel(racingEventId, RelationshipType.RacingSeriesHasRacingEvent, NodeTypeLabel.RacingSeries)
 
         const createdRelationship = await createRel(racingSeriesId, racingEventId, RelationshipType.RacingSeriesHasRacingEvent)
         if (!createdRelationship) {
@@ -186,7 +187,7 @@ export const RacingSeries = {
             throw new RelationshipAlreadyExistsError(RacingSeriesRelationship.hasPrimeImage, racingSeriesId, imageId)
         }
 
-        await deleteDeprecatedRel(racingSeriesId, RelationshipType.RacingSeriesHasPrimeImage, NodeTypeLabel.Image)
+        await deleteOutgoingRel(racingSeriesId, RelationshipType.RacingSeriesHasPrimeImage, NodeTypeLabel.Image)
 
         const createdRelationship = await createRel(racingSeriesId, imageId, RelationshipType.RacingSeriesHasPrimeImage)
         if (!createdRelationship) {

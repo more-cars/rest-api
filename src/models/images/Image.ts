@@ -23,9 +23,9 @@ import {getAllRels} from "../relationships/getAllRels"
 import type {GenericRelation} from "../relationships/types/GenericRelation"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {mapDbRelationshipToModelRelationship} from "../relationships/mapDbRelationshipToModelRelationship"
-import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
 import {getRelationshipCollection} from "../../db/relationships/getRelationshipCollection"
 import {DbRelationship} from "../../db/types/DbRelationship"
+import {deleteIncomingRel} from "../relationships/deleteIncomingRel"
 
 export const Image = {
     async create(data: CreateImageInput): Promise<ImageNode> {
@@ -238,7 +238,7 @@ export const Image = {
             throw new RelationshipAlreadyExistsError(ImageRelationship.isPrimeImageOfNode, imageId, nodeId)
         }
 
-        await deleteDeprecatedRel(nodeId, RelationshipType.ImageIsPrimeImageOfNode, NodeTypeLabel.Image)
+        await deleteIncomingRel(nodeId, RelationshipType.ImageIsPrimeImageOfNode, NodeTypeLabel.Image)
 
         const createdRelationship = await createRel(imageId, nodeId, RelationshipType.ImageIsPrimeImageOfNode)
         if (!createdRelationship) {

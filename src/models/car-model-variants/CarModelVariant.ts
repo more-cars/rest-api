@@ -9,7 +9,6 @@ import type {NodeCollectionConstraints} from "../types/NodeCollectionConstraints
 import {deleteNode} from "../../db/nodes/deleteNode"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {createRel} from "../relationships/createRel"
-import {deleteDeprecatedRel} from "../relationships/deleteDeprecatedRel"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {CarModel} from "../car-models/CarModel"
 import {getSpecificRel} from "../relationships/getSpecificRel"
@@ -24,6 +23,8 @@ import {getAllRels} from "../relationships/getAllRels"
 import {LapTime} from "../lap-times/LapTime"
 import {Image} from "../images/Image"
 import {RacingGame} from "../racing-games/RacingGame"
+import {deleteOutgoingRel} from "../relationships/deleteOutgoingRel"
+import {deleteIncomingRel} from "../relationships/deleteIncomingRel"
 
 export const CarModelVariant = {
     async create(data: CreateCarModelVariantInput): Promise<CarModelVariantNode> {
@@ -81,7 +82,7 @@ export const CarModelVariant = {
             throw new RelationshipAlreadyExistsError(CarModelVariantRelationship.isVariantOf, carModelVariantId, carModelId)
         }
 
-        await deleteDeprecatedRel(carModelVariantId, RelationshipType.CarModelVariantIsVariantOf, NodeTypeLabel.CarModel)
+        await deleteOutgoingRel(carModelVariantId, RelationshipType.CarModelVariantIsVariantOf, NodeTypeLabel.CarModel)
 
         const createdRelationship = await createRel(carModelVariantId, carModelId, RelationshipType.CarModelVariantIsVariantOf)
         if (!createdRelationship) {
@@ -140,7 +141,7 @@ export const CarModelVariant = {
             throw new RelationshipAlreadyExistsError(CarModelVariantRelationship.achievedSessionResult, carModelVariantId, sessionResultId)
         }
 
-        await deleteDeprecatedRel(sessionResultId, RelationshipType.CarModelVariantAchievedSessionResult, NodeTypeLabel.CarModelVariant)
+        await deleteIncomingRel(sessionResultId, RelationshipType.CarModelVariantAchievedSessionResult, NodeTypeLabel.CarModelVariant)
 
         const createdRelationship = await createRel(carModelVariantId, sessionResultId, RelationshipType.CarModelVariantAchievedSessionResult)
         if (!createdRelationship) {
@@ -194,7 +195,7 @@ export const CarModelVariant = {
             throw new RelationshipAlreadyExistsError(CarModelVariantRelationship.achievedLapTime, carModelVariantId, lapTimeId)
         }
 
-        await deleteDeprecatedRel(lapTimeId, RelationshipType.CarModelVariantAchievedLapTime, NodeTypeLabel.CarModelVariant)
+        await deleteIncomingRel(lapTimeId, RelationshipType.CarModelVariantAchievedLapTime, NodeTypeLabel.CarModelVariant)
 
         const createdRelationship = await createRel(carModelVariantId, lapTimeId, RelationshipType.CarModelVariantAchievedLapTime)
         if (!createdRelationship) {
@@ -300,7 +301,7 @@ export const CarModelVariant = {
             throw new RelationshipAlreadyExistsError(CarModelVariantRelationship.hasPrimeImage, carModelVariantId, imageId)
         }
 
-        await deleteDeprecatedRel(carModelVariantId, RelationshipType.CarModelVariantHasPrimeImage, NodeTypeLabel.Image)
+        await deleteOutgoingRel(carModelVariantId, RelationshipType.CarModelVariantHasPrimeImage, NodeTypeLabel.Image)
 
         const createdRelationship = await createRel(carModelVariantId, imageId, RelationshipType.CarModelVariantHasPrimeImage)
         if (!createdRelationship) {
