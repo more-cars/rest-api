@@ -24,7 +24,7 @@ skip_if: async create<%= h.changeCase.pascal(relationshipName) %>Relationship
 
         const existingRelation = await getSpecificRel(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id, RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(<%= h.changeCase.pascal(startNodeType) %>Relationship.<%= h.changeCase.camel(relationshipName) %>, <%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id)
+            throw new RelationshipAlreadyExistsError(RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>, <%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id)
         }
 <% if (cardinality === '1:1' || cardinality === 'n:1') { -%>
         await deleteDeprecatedRel(<%= h.changeCase.camel(startNodeType) %>Id, RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>, NodeTypeLabel.<%= h.changeCase.pascal(endNodeType) %>)

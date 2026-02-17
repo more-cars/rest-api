@@ -12,7 +12,6 @@ import type {ImageBelongsToNodeTypeRelationships} from "./types/ImageBelongsToNo
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {SemanticError} from "../types/SemanticError"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
-import {ImageRelationship} from "./types/ImageRelationship"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {Node} from "../Node"
 import {getSpecificRel} from "../relationships/getSpecificRel"
@@ -89,7 +88,7 @@ export const Image = {
 
         const existingRelationship = await getSpecificRel(imageId, partnerId, RelationshipType.ImageBelongsToNode)
         if (existingRelationship) {
-            throw new RelationshipAlreadyExistsError(ImageRelationship.belongsToNode, imageId, partnerId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.ImageBelongsToNode, imageId, partnerId)
         }
 
         const createdRelationship = await createRel(imageId, partnerId, RelationshipType.ImageBelongsToNode)
@@ -113,7 +112,7 @@ export const Image = {
 
         const relationship = await getSpecificRel(imageId, partnerId, RelationshipType.ImageBelongsToNode)
         if (!relationship) {
-            throw new RelationshipNotFoundError(ImageRelationship.belongsToNode, imageId, partnerId)
+            throw new RelationshipNotFoundError(RelationshipType.ImageBelongsToNode, imageId, partnerId)
         }
 
         return relationship
@@ -141,7 +140,7 @@ export const Image = {
 
         const relationship = await getSpecificRel(imageId, partnerNodeId, RelationshipType.ImageBelongsToNode)
         if (!relationship) {
-            throw new RelationshipNotFoundError(ImageRelationship.belongsToNode, imageId, partnerNodeId)
+            throw new RelationshipNotFoundError(RelationshipType.ImageBelongsToNode, imageId, partnerNodeId)
         }
 
         await deleteSpecificRel(imageId, partnerNodeId, RelationshipType.ImageBelongsToNode)
@@ -236,7 +235,7 @@ export const Image = {
 
         const existingRelation = await getSpecificRel(imageId, nodeId, RelationshipType.ImageIsPrimeImageOfNode)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(ImageRelationship.isPrimeImageOfNode, imageId, nodeId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.ImageIsPrimeImageOfNode, imageId, nodeId)
         }
 
         await deleteIncomingRel(nodeId, RelationshipType.ImageIsPrimeImageOfNode, NodeTypeLabel.Image)
@@ -271,7 +270,7 @@ export const Image = {
 
         const relationship = await getSpecificRel(imageId, nodeId, RelationshipType.ImageIsPrimeImageOfNode)
         if (!relationship) {
-            throw new RelationshipNotFoundError(ImageRelationship.isPrimeImageOfNode, imageId, nodeId)
+            throw new RelationshipNotFoundError(RelationshipType.ImageIsPrimeImageOfNode, imageId, nodeId)
         }
 
         await deleteSpecificRel(imageId, nodeId, RelationshipType.ImageIsPrimeImageOfNode)

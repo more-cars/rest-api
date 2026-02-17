@@ -13,7 +13,6 @@ import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 import {getSpecificRel} from "../relationships/getSpecificRel"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
 import {RelationshipType} from "../relationships/types/RelationshipType"
-import {RacingGameRelationship} from "./types/RacingGameRelationship"
 import {getAllRels} from "../relationships/getAllRels"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
@@ -76,7 +75,7 @@ export const RacingGame = {
 
         const existingRelation = await getSpecificRel(racingGameId, carModelVariantId, RelationshipType.RacingGameFeaturesCarModelVariant)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RacingGameRelationship.featuresCarModelVariant, racingGameId, carModelVariantId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.RacingGameFeaturesCarModelVariant, racingGameId, carModelVariantId)
         }
 
 
@@ -110,7 +109,7 @@ export const RacingGame = {
 
         const relationship = await getSpecificRel(racingGameId, carModelVariantId, RelationshipType.RacingGameFeaturesCarModelVariant)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RacingGameRelationship.featuresCarModelVariant, racingGameId, carModelVariantId)
+            throw new RelationshipNotFoundError(RelationshipType.RacingGameFeaturesCarModelVariant, racingGameId, carModelVariantId)
         }
 
         await deleteSpecificRel(racingGameId, carModelVariantId, RelationshipType.RacingGameFeaturesCarModelVariant)
@@ -129,7 +128,7 @@ export const RacingGame = {
 
         const existingRelation = await getSpecificRel(racingGameId, trackLayoutId, RelationshipType.RacingGameFeaturesTrackLayout)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RacingGameRelationship.featuresTrackLayout, racingGameId, trackLayoutId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.RacingGameFeaturesTrackLayout, racingGameId, trackLayoutId)
         }
 
 
@@ -163,7 +162,7 @@ export const RacingGame = {
 
         const relationship = await getSpecificRel(racingGameId, trackLayoutId, RelationshipType.RacingGameFeaturesTrackLayout)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RacingGameRelationship.featuresTrackLayout, racingGameId, trackLayoutId)
+            throw new RelationshipNotFoundError(RelationshipType.RacingGameFeaturesTrackLayout, racingGameId, trackLayoutId)
         }
 
         await deleteSpecificRel(racingGameId, trackLayoutId, RelationshipType.RacingGameFeaturesTrackLayout)
@@ -182,7 +181,7 @@ export const RacingGame = {
 
         const existingRelation = await getSpecificRel(racingGameId, imageId, RelationshipType.RacingGameHasImage)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RacingGameRelationship.hasImage, racingGameId, imageId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.RacingGameHasImage, racingGameId, imageId)
         }
 
 
@@ -216,7 +215,7 @@ export const RacingGame = {
 
         const relationship = await getSpecificRel(racingGameId, imageId, RelationshipType.RacingGameHasImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RacingGameRelationship.hasImage, racingGameId, imageId)
+            throw new RelationshipNotFoundError(RelationshipType.RacingGameHasImage, racingGameId, imageId)
         }
 
         await deleteSpecificRel(racingGameId, imageId, RelationshipType.RacingGameHasImage)
@@ -235,7 +234,7 @@ export const RacingGame = {
 
         const existingRelation = await getSpecificRel(racingGameId, imageId, RelationshipType.RacingGameHasPrimeImage)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RacingGameRelationship.hasPrimeImage, racingGameId, imageId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.RacingGameHasPrimeImage, racingGameId, imageId)
         }
         await deleteOutgoingRel(racingGameId, RelationshipType.RacingGameHasPrimeImage, NodeTypeLabel.Image)
 
@@ -256,7 +255,7 @@ export const RacingGame = {
 
         const relationship = await getRel(racingGameId, RelationshipType.RacingGameHasPrimeImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RacingGameRelationship.hasPrimeImage, racingGameId, null)
+            throw new RelationshipNotFoundError(RelationshipType.RacingGameHasPrimeImage, racingGameId, null)
         }
 
         return relationship
@@ -275,7 +274,7 @@ export const RacingGame = {
 
         const relationship = await getSpecificRel(racingGameId, imageId, RelationshipType.RacingGameHasPrimeImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RacingGameRelationship.hasPrimeImage, racingGameId, imageId)
+            throw new RelationshipNotFoundError(RelationshipType.RacingGameHasPrimeImage, racingGameId, imageId)
         }
 
         await deleteSpecificRel(racingGameId, imageId, RelationshipType.RacingGameHasPrimeImage)
@@ -294,7 +293,7 @@ export const RacingGame = {
 
         const existingRelation = await getSpecificRel(racingGameId, gamingPlatformId, RelationshipType.RacingGameReleasedOnGamingPlatform)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RacingGameRelationship.releasedOnGamingPlatform, racingGameId, gamingPlatformId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.RacingGameReleasedOnGamingPlatform, racingGameId, gamingPlatformId)
         }
 
 
@@ -328,7 +327,7 @@ export const RacingGame = {
 
         const relationship = await getSpecificRel(racingGameId, gamingPlatformId, RelationshipType.RacingGameReleasedOnGamingPlatform)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RacingGameRelationship.releasedOnGamingPlatform, racingGameId, gamingPlatformId)
+            throw new RelationshipNotFoundError(RelationshipType.RacingGameReleasedOnGamingPlatform, racingGameId, gamingPlatformId)
         }
 
         await deleteSpecificRel(racingGameId, gamingPlatformId, RelationshipType.RacingGameReleasedOnGamingPlatform)

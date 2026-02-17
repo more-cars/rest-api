@@ -13,7 +13,6 @@ import {RaceTrack} from "../race-tracks/RaceTrack"
 import {getSpecificRel} from "../relationships/getSpecificRel"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
 import {RelationshipType} from "../relationships/types/RelationshipType"
-import {TrackLayoutRelationship} from "./types/TrackLayoutRelationship"
 import {getRel} from "../relationships/getRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
@@ -79,7 +78,7 @@ export const TrackLayout = {
 
         const existingRelation = await getSpecificRel(trackLayoutId, raceTrackId, RelationshipType.TrackLayoutBelongsToRaceTrack)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(TrackLayoutRelationship.belongsToRaceTrack, trackLayoutId, raceTrackId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.TrackLayoutBelongsToRaceTrack, trackLayoutId, raceTrackId)
         }
 
         await deleteOutgoingRel(trackLayoutId, RelationshipType.TrackLayoutBelongsToRaceTrack, NodeTypeLabel.RaceTrack)
@@ -100,7 +99,7 @@ export const TrackLayout = {
 
         const relationship = await getRel(trackLayoutId, RelationshipType.TrackLayoutBelongsToRaceTrack)
         if (!relationship) {
-            throw new RelationshipNotFoundError(TrackLayoutRelationship.belongsToRaceTrack, trackLayoutId, null)
+            throw new RelationshipNotFoundError(RelationshipType.TrackLayoutBelongsToRaceTrack, trackLayoutId, null)
         }
 
         return relationship
@@ -119,7 +118,7 @@ export const TrackLayout = {
 
         const relationship = await getSpecificRel(trackLayoutId, raceTrackId, RelationshipType.TrackLayoutBelongsToRaceTrack)
         if (!relationship) {
-            throw new RelationshipNotFoundError(TrackLayoutRelationship.belongsToRaceTrack, trackLayoutId, raceTrackId)
+            throw new RelationshipNotFoundError(RelationshipType.TrackLayoutBelongsToRaceTrack, trackLayoutId, raceTrackId)
         }
 
         await deleteSpecificRel(trackLayoutId, raceTrackId, RelationshipType.TrackLayoutBelongsToRaceTrack)
@@ -139,7 +138,7 @@ export const TrackLayout = {
 
         const existingRelation = await getSpecificRel(trackLayoutId, racingEventId, RelationshipType.TrackLayoutWasUsedByRacingEvent)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(TrackLayoutRelationship.wasUsedByRacingEvent, trackLayoutId, racingEventId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.TrackLayoutWasUsedByRacingEvent, trackLayoutId, racingEventId)
         }
 
         await deleteIncomingRel(racingEventId, RelationshipType.TrackLayoutWasUsedByRacingEvent, NodeTypeLabel.TrackLayout)
@@ -174,7 +173,7 @@ export const TrackLayout = {
 
         const relationship = await getSpecificRel(trackLayoutId, racingEventId, RelationshipType.TrackLayoutWasUsedByRacingEvent)
         if (!relationship) {
-            throw new RelationshipNotFoundError(TrackLayoutRelationship.wasUsedByRacingEvent, trackLayoutId, racingEventId)
+            throw new RelationshipNotFoundError(RelationshipType.TrackLayoutWasUsedByRacingEvent, trackLayoutId, racingEventId)
         }
 
         await deleteSpecificRel(trackLayoutId, racingEventId, RelationshipType.TrackLayoutWasUsedByRacingEvent)
@@ -194,7 +193,7 @@ export const TrackLayout = {
 
         const existingRelation = await getSpecificRel(trackLayoutId, lapTimeId, RelationshipType.TrackLayoutHasLapTime)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(TrackLayoutRelationship.hasLapTime, trackLayoutId, lapTimeId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.TrackLayoutHasLapTime, trackLayoutId, lapTimeId)
         }
 
         await deleteIncomingRel(lapTimeId, RelationshipType.TrackLayoutHasLapTime, NodeTypeLabel.TrackLayout)
@@ -229,7 +228,7 @@ export const TrackLayout = {
 
         const relationship = await getSpecificRel(trackLayoutId, lapTimeId, RelationshipType.TrackLayoutHasLapTime)
         if (!relationship) {
-            throw new RelationshipNotFoundError(TrackLayoutRelationship.hasLapTime, trackLayoutId, lapTimeId)
+            throw new RelationshipNotFoundError(RelationshipType.TrackLayoutHasLapTime, trackLayoutId, lapTimeId)
         }
 
         await deleteSpecificRel(trackLayoutId, lapTimeId, RelationshipType.TrackLayoutHasLapTime)
@@ -249,7 +248,7 @@ export const TrackLayout = {
 
         const existingRelation = await getSpecificRel(trackLayoutId, imageId, RelationshipType.TrackLayoutHasImage)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(TrackLayoutRelationship.hasImage, trackLayoutId, imageId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.TrackLayoutHasImage, trackLayoutId, imageId)
         }
 
         const createdRelationship = await createRel(trackLayoutId, imageId, RelationshipType.TrackLayoutHasImage)
@@ -282,7 +281,7 @@ export const TrackLayout = {
 
         const relationship = await getSpecificRel(trackLayoutId, imageId, RelationshipType.TrackLayoutHasImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(TrackLayoutRelationship.hasImage, trackLayoutId, imageId)
+            throw new RelationshipNotFoundError(RelationshipType.TrackLayoutHasImage, trackLayoutId, imageId)
         }
 
         await deleteSpecificRel(trackLayoutId, imageId, RelationshipType.TrackLayoutHasImage)
@@ -302,7 +301,7 @@ export const TrackLayout = {
 
         const existingRelation = await getSpecificRel(trackLayoutId, imageId, RelationshipType.TrackLayoutHasPrimeImage)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(TrackLayoutRelationship.hasPrimeImage, trackLayoutId, imageId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.TrackLayoutHasPrimeImage, trackLayoutId, imageId)
         }
 
         await deleteOutgoingRel(trackLayoutId, RelationshipType.TrackLayoutHasPrimeImage, NodeTypeLabel.Image)
@@ -323,7 +322,7 @@ export const TrackLayout = {
 
         const relationship = await getRel(trackLayoutId, RelationshipType.TrackLayoutHasPrimeImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(TrackLayoutRelationship.hasPrimeImage, trackLayoutId, null)
+            throw new RelationshipNotFoundError(RelationshipType.TrackLayoutHasPrimeImage, trackLayoutId, null)
         }
 
         return relationship
@@ -342,7 +341,7 @@ export const TrackLayout = {
 
         const relationship = await getSpecificRel(trackLayoutId, imageId, RelationshipType.TrackLayoutHasPrimeImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(TrackLayoutRelationship.hasPrimeImage, trackLayoutId, imageId)
+            throw new RelationshipNotFoundError(RelationshipType.TrackLayoutHasPrimeImage, trackLayoutId, imageId)
         }
 
         await deleteSpecificRel(trackLayoutId, imageId, RelationshipType.TrackLayoutHasPrimeImage)
@@ -361,7 +360,7 @@ export const TrackLayout = {
 
         const existingRelation = await getSpecificRel(trackLayoutId, racingGameId, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(TrackLayoutRelationship.isFeaturedInRacingGame, trackLayoutId, racingGameId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.TrackLayoutIsFeaturedInRacingGame, trackLayoutId, racingGameId)
         }
 
 
@@ -395,7 +394,7 @@ export const TrackLayout = {
 
         const relationship = await getSpecificRel(trackLayoutId, racingGameId, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
         if (!relationship) {
-            throw new RelationshipNotFoundError(TrackLayoutRelationship.isFeaturedInRacingGame, trackLayoutId, racingGameId)
+            throw new RelationshipNotFoundError(RelationshipType.TrackLayoutIsFeaturedInRacingGame, trackLayoutId, racingGameId)
         }
 
         await deleteSpecificRel(trackLayoutId, racingGameId, RelationshipType.TrackLayoutIsFeaturedInRacingGame)

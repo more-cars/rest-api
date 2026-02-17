@@ -11,7 +11,6 @@ import {CarModel} from "../car-models/CarModel"
 import {Image} from "../images/Image"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
-import {BrandRelationship} from "./types/BrandRelationship"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {Company} from "../companies/Company"
 import {getRel} from "../relationships/getRel"
@@ -76,7 +75,7 @@ export const Brand = {
 
         const existingRelation = await getSpecificRel(brandId, companyId, RelationshipType.BrandBelongsToCompany)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(BrandRelationship.belongsToCompany, brandId, companyId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.BrandBelongsToCompany, brandId, companyId)
         }
 
         await deleteOutgoingRel(brandId, RelationshipType.BrandBelongsToCompany, NodeTypeLabel.Company)
@@ -97,7 +96,7 @@ export const Brand = {
 
         const relationship = await getRel(brandId, RelationshipType.BrandBelongsToCompany)
         if (!relationship) {
-            throw new RelationshipNotFoundError(BrandRelationship.belongsToCompany, brandId, null)
+            throw new RelationshipNotFoundError(RelationshipType.BrandBelongsToCompany, brandId, null)
         }
 
         return relationship
@@ -116,7 +115,7 @@ export const Brand = {
 
         const relationship = await getSpecificRel(brandId, companyId, RelationshipType.BrandBelongsToCompany)
         if (!relationship) {
-            throw new RelationshipNotFoundError(BrandRelationship.belongsToCompany, brandId, companyId)
+            throw new RelationshipNotFoundError(RelationshipType.BrandBelongsToCompany, brandId, companyId)
         }
 
         await deleteSpecificRel(brandId, companyId, RelationshipType.BrandBelongsToCompany)
@@ -135,7 +134,7 @@ export const Brand = {
 
         const existingRelationship = await getSpecificRel(brandId, carModelId, RelationshipType.BrandHasCarModel)
         if (existingRelationship) {
-            throw new RelationshipAlreadyExistsError(BrandRelationship.hasCarModel, brandId, carModelId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.BrandHasCarModel, brandId, carModelId)
         }
 
         await deleteIncomingRel(carModelId, RelationshipType.BrandHasCarModel, NodeTypeLabel.Brand)
@@ -161,7 +160,7 @@ export const Brand = {
 
         const relationship = await getSpecificRel(brandId, carModelId, RelationshipType.BrandHasCarModel)
         if (!relationship) {
-            throw new RelationshipNotFoundError(BrandRelationship.hasCarModel, brandId, carModelId)
+            throw new RelationshipNotFoundError(RelationshipType.BrandHasCarModel, brandId, carModelId)
         }
 
         return relationship
@@ -189,7 +188,7 @@ export const Brand = {
 
         const relationship = await getSpecificRel(brandId, carModelId, RelationshipType.BrandHasCarModel)
         if (!relationship) {
-            throw new RelationshipNotFoundError(BrandRelationship.hasCarModel, brandId, carModelId)
+            throw new RelationshipNotFoundError(RelationshipType.BrandHasCarModel, brandId, carModelId)
         }
 
         await deleteSpecificRel(brandId, carModelId, RelationshipType.BrandHasCarModel)
@@ -208,7 +207,7 @@ export const Brand = {
 
         const existingRelationship = await getSpecificRel(brandId, imageId, RelationshipType.BrandHasImage)
         if (existingRelationship) {
-            throw new RelationshipAlreadyExistsError(BrandRelationship.hasImage, brandId, imageId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.BrandHasImage, brandId, imageId)
         }
 
         const createdRelationship = await createRel(brandId, imageId, RelationshipType.BrandHasImage)
@@ -232,7 +231,7 @@ export const Brand = {
 
         const relationship = await getSpecificRel(brandId, imageId, RelationshipType.BrandHasImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(BrandRelationship.hasImage, brandId, imageId)
+            throw new RelationshipNotFoundError(RelationshipType.BrandHasImage, brandId, imageId)
         }
 
         return relationship
@@ -261,7 +260,7 @@ export const Brand = {
 
         const relationship = await getSpecificRel(brandId, imageId, RelationshipType.BrandHasImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(BrandRelationship.hasImage, brandId, imageId)
+            throw new RelationshipNotFoundError(RelationshipType.BrandHasImage, brandId, imageId)
         }
 
         await deleteSpecificRel(brandId, imageId, RelationshipType.BrandHasImage)
@@ -280,7 +279,7 @@ export const Brand = {
 
         const existingRelation = await getSpecificRel(brandId, imageId, RelationshipType.BrandHasPrimeImage)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(BrandRelationship.hasPrimeImage, brandId, imageId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.BrandHasPrimeImage, brandId, imageId)
         }
 
         await deleteOutgoingRel(brandId, RelationshipType.BrandHasPrimeImage, NodeTypeLabel.Image)
@@ -301,7 +300,7 @@ export const Brand = {
 
         const relationship = await getRel(brandId, RelationshipType.BrandHasPrimeImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(BrandRelationship.hasPrimeImage, brandId, null)
+            throw new RelationshipNotFoundError(RelationshipType.BrandHasPrimeImage, brandId, null)
         }
 
         return relationship
@@ -320,7 +319,7 @@ export const Brand = {
 
         const relationship = await getSpecificRel(brandId, imageId, RelationshipType.BrandHasPrimeImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(BrandRelationship.hasPrimeImage, brandId, imageId)
+            throw new RelationshipNotFoundError(RelationshipType.BrandHasPrimeImage, brandId, imageId)
         }
 
         await deleteSpecificRel(brandId, imageId, RelationshipType.BrandHasPrimeImage)

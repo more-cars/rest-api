@@ -10,7 +10,6 @@ import {deleteNode} from "../../db/nodes/deleteNode"
 import {Brand} from "../brands/Brand"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
-import {CompanyRelationship} from "./types/CompanyRelationship"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {Image} from "../images/Image"
 import {getRel} from "../relationships/getRel"
@@ -75,7 +74,7 @@ export const Company = {
 
         const existingRelationship = await getSpecificRel(companyId, brandId, RelationshipType.CompanyHasBrand)
         if (existingRelationship) {
-            throw new RelationshipAlreadyExistsError(CompanyRelationship.hasBrand, companyId, brandId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.CompanyHasBrand, companyId, brandId)
         }
 
         await deleteIncomingRel(brandId, RelationshipType.CompanyHasBrand, NodeTypeLabel.Company)
@@ -110,7 +109,7 @@ export const Company = {
 
         const relationship = await getSpecificRel(companyId, brandId, RelationshipType.CompanyHasBrand)
         if (!relationship) {
-            throw new RelationshipNotFoundError(CompanyRelationship.hasBrand, companyId, brandId)
+            throw new RelationshipNotFoundError(RelationshipType.CompanyHasBrand, companyId, brandId)
         }
 
         await deleteSpecificRel(companyId, brandId, RelationshipType.CompanyHasBrand)
@@ -129,7 +128,7 @@ export const Company = {
 
         const existingRelationship = await getSpecificRel(companyId, imageId, RelationshipType.CompanyHasImage)
         if (existingRelationship) {
-            throw new RelationshipAlreadyExistsError(CompanyRelationship.hasImage, companyId, imageId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.CompanyHasImage, companyId, imageId)
         }
 
         const createdRelationship = await createRel(companyId, imageId, RelationshipType.CompanyHasImage)
@@ -162,7 +161,7 @@ export const Company = {
 
         const relationship = await getSpecificRel(companyId, imageId, RelationshipType.CompanyHasImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(CompanyRelationship.hasImage, companyId, imageId)
+            throw new RelationshipNotFoundError(RelationshipType.CompanyHasImage, companyId, imageId)
         }
 
         await deleteSpecificRel(companyId, imageId, RelationshipType.CompanyHasImage)
@@ -181,7 +180,7 @@ export const Company = {
 
         const existingRelationship = await getSpecificRel(companyId, imageId, RelationshipType.CompanyHasPrimeImage)
         if (existingRelationship) {
-            throw new RelationshipAlreadyExistsError(CompanyRelationship.hasPrimeImage, companyId, imageId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.CompanyHasPrimeImage, companyId, imageId)
         }
 
         await deleteOutgoingRel(companyId, RelationshipType.CompanyHasPrimeImage, NodeTypeLabel.Image)
@@ -202,7 +201,7 @@ export const Company = {
 
         const relationship = await getRel(companyId, RelationshipType.CompanyHasPrimeImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(CompanyRelationship.hasPrimeImage, companyId, null)
+            throw new RelationshipNotFoundError(RelationshipType.CompanyHasPrimeImage, companyId, null)
         }
 
         return relationship
@@ -221,7 +220,7 @@ export const Company = {
 
         const relationship = await getSpecificRel(companyId, imageId, RelationshipType.CompanyHasPrimeImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(CompanyRelationship.hasPrimeImage, companyId, imageId)
+            throw new RelationshipNotFoundError(RelationshipType.CompanyHasPrimeImage, companyId, imageId)
         }
 
         await deleteSpecificRel(companyId, imageId, RelationshipType.CompanyHasPrimeImage)

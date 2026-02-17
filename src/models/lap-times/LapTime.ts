@@ -13,7 +13,6 @@ import {SessionResult} from "../session-results/SessionResult"
 import {getSpecificRel} from "../relationships/getSpecificRel"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
 import {RelationshipType} from "../relationships/types/RelationshipType"
-import {LapTimeRelationship} from "./types/LapTimeRelationship"
 import {getRel} from "../relationships/getRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
@@ -77,7 +76,7 @@ export const LapTime = {
 
         const existingRelation = await getSpecificRel(lapTimeId, sessionResultId, RelationshipType.LapTimeBelongsToSessionResult)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(LapTimeRelationship.belongsToSessionResult, lapTimeId, sessionResultId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.LapTimeBelongsToSessionResult, lapTimeId, sessionResultId)
         }
 
         await deleteOutgoingRel(lapTimeId, RelationshipType.LapTimeBelongsToSessionResult, NodeTypeLabel.SessionResult)
@@ -98,7 +97,7 @@ export const LapTime = {
 
         const relationship = await getRel(lapTimeId, RelationshipType.LapTimeBelongsToSessionResult)
         if (!relationship) {
-            throw new RelationshipNotFoundError(LapTimeRelationship.belongsToSessionResult, lapTimeId, null)
+            throw new RelationshipNotFoundError(RelationshipType.LapTimeBelongsToSessionResult, lapTimeId, null)
         }
 
         return relationship
@@ -117,7 +116,7 @@ export const LapTime = {
 
         const relationship = await getSpecificRel(lapTimeId, sessionResultId, RelationshipType.LapTimeBelongsToSessionResult)
         if (!relationship) {
-            throw new RelationshipNotFoundError(LapTimeRelationship.belongsToSessionResult, lapTimeId, sessionResultId)
+            throw new RelationshipNotFoundError(RelationshipType.LapTimeBelongsToSessionResult, lapTimeId, sessionResultId)
         }
 
         await deleteSpecificRel(lapTimeId, sessionResultId, RelationshipType.LapTimeBelongsToSessionResult)
@@ -137,7 +136,7 @@ export const LapTime = {
 
         const existingRelation = await getSpecificRel(lapTimeId, trackLayoutId, RelationshipType.LapTimeAchievedOnTrackLayout)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(LapTimeRelationship.achievedOnTrackLayout, lapTimeId, trackLayoutId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.LapTimeAchievedOnTrackLayout, lapTimeId, trackLayoutId)
         }
 
         await deleteOutgoingRel(lapTimeId, RelationshipType.LapTimeAchievedOnTrackLayout, NodeTypeLabel.TrackLayout)
@@ -158,7 +157,7 @@ export const LapTime = {
 
         const relationship = await getRel(lapTimeId, RelationshipType.LapTimeAchievedOnTrackLayout)
         if (!relationship) {
-            throw new RelationshipNotFoundError(LapTimeRelationship.achievedOnTrackLayout, lapTimeId, null)
+            throw new RelationshipNotFoundError(RelationshipType.LapTimeAchievedOnTrackLayout, lapTimeId, null)
         }
 
         return relationship
@@ -177,7 +176,7 @@ export const LapTime = {
 
         const relationship = await getSpecificRel(lapTimeId, trackLayoutId, RelationshipType.LapTimeAchievedOnTrackLayout)
         if (!relationship) {
-            throw new RelationshipNotFoundError(LapTimeRelationship.achievedOnTrackLayout, lapTimeId, trackLayoutId)
+            throw new RelationshipNotFoundError(RelationshipType.LapTimeAchievedOnTrackLayout, lapTimeId, trackLayoutId)
         }
 
         await deleteSpecificRel(lapTimeId, trackLayoutId, RelationshipType.LapTimeAchievedOnTrackLayout)
@@ -196,7 +195,7 @@ export const LapTime = {
 
         const existingRelation = await getSpecificRel(lapTimeId, carModelVariantId, RelationshipType.LapTimeAchievedWithCarModelVariant)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(LapTimeRelationship.achievedWithCarModelVariant, lapTimeId, carModelVariantId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.LapTimeAchievedWithCarModelVariant, lapTimeId, carModelVariantId)
         }
 
         await deleteOutgoingRel(lapTimeId, RelationshipType.LapTimeAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant)
@@ -217,7 +216,7 @@ export const LapTime = {
 
         const relationship = await getRel(lapTimeId, RelationshipType.LapTimeAchievedWithCarModelVariant)
         if (!relationship) {
-            throw new RelationshipNotFoundError(LapTimeRelationship.achievedWithCarModelVariant, lapTimeId, null)
+            throw new RelationshipNotFoundError(RelationshipType.LapTimeAchievedWithCarModelVariant, lapTimeId, null)
         }
 
         return relationship
@@ -236,7 +235,7 @@ export const LapTime = {
 
         const relationship = await getSpecificRel(lapTimeId, carModelVariantId, RelationshipType.LapTimeAchievedWithCarModelVariant)
         if (!relationship) {
-            throw new RelationshipNotFoundError(LapTimeRelationship.achievedWithCarModelVariant, lapTimeId, carModelVariantId)
+            throw new RelationshipNotFoundError(RelationshipType.LapTimeAchievedWithCarModelVariant, lapTimeId, carModelVariantId)
         }
 
         await deleteSpecificRel(lapTimeId, carModelVariantId, RelationshipType.LapTimeAchievedWithCarModelVariant)
@@ -256,7 +255,7 @@ export const LapTime = {
 
         const existingRelation = await getSpecificRel(lapTimeId, imageId, RelationshipType.LapTimeHasImage)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(LapTimeRelationship.hasImage, lapTimeId, imageId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.LapTimeHasImage, lapTimeId, imageId)
         }
 
         const createdRelationship = await createRel(lapTimeId, imageId, RelationshipType.LapTimeHasImage)
@@ -289,7 +288,7 @@ export const LapTime = {
 
         const relationship = await getSpecificRel(lapTimeId, imageId, RelationshipType.LapTimeHasImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(LapTimeRelationship.hasImage, lapTimeId, imageId)
+            throw new RelationshipNotFoundError(RelationshipType.LapTimeHasImage, lapTimeId, imageId)
         }
 
         await deleteSpecificRel(lapTimeId, imageId, RelationshipType.LapTimeHasImage)
@@ -309,7 +308,7 @@ export const LapTime = {
 
         const existingRelation = await getSpecificRel(lapTimeId, imageId, RelationshipType.LapTimeHasPrimeImage)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(LapTimeRelationship.hasPrimeImage, lapTimeId, imageId)
+            throw new RelationshipAlreadyExistsError(RelationshipType.LapTimeHasPrimeImage, lapTimeId, imageId)
         }
 
         await deleteOutgoingRel(lapTimeId, RelationshipType.LapTimeHasPrimeImage, NodeTypeLabel.Image)
@@ -330,7 +329,7 @@ export const LapTime = {
 
         const relationship = await getRel(lapTimeId, RelationshipType.LapTimeHasPrimeImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(LapTimeRelationship.hasPrimeImage, lapTimeId, null)
+            throw new RelationshipNotFoundError(RelationshipType.LapTimeHasPrimeImage, lapTimeId, null)
         }
 
         return relationship
@@ -349,7 +348,7 @@ export const LapTime = {
 
         const relationship = await getSpecificRel(lapTimeId, imageId, RelationshipType.LapTimeHasPrimeImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(LapTimeRelationship.hasPrimeImage, lapTimeId, imageId)
+            throw new RelationshipNotFoundError(RelationshipType.LapTimeHasPrimeImage, lapTimeId, imageId)
         }
 
         await deleteSpecificRel(lapTimeId, imageId, RelationshipType.LapTimeHasPrimeImage)
