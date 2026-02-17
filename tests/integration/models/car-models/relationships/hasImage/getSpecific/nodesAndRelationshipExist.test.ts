@@ -7,7 +7,7 @@ import {RelationshipSchema} from "../../../../../../_toolbox/schemas/model/Relat
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 test('Both nodes and a ›has-image‹ relationship exist', async () => {
-    const expectedRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.IMAGE, DbRelationship.NodeHasImage)
+    const expectedRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.IMAGE, DbRelationship.CarModelHasImage)
     const actualRelationship = await CarModel.getSpecificHasImageRelationship(expectedRelationship.start_node_id, expectedRelationship.end_node_id)
 
     expect(validateJson(actualRelationship, RelationshipSchema))
