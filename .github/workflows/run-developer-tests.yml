@@ -1,4 +1,4 @@
-name: Run Integration Tests
+name: Run Developer Tests
 
 on:
   workflow_call:
@@ -12,11 +12,14 @@ on:
         default: latest
       code_coverage:
         type: boolean
-        default: false
+        default: true
+      reports_path:
+        type: string
+        default: ./test-reports/developer
 
 jobs:
-  run-integration-tests:
-    name: Run Integration Tests
+  run-developer-tests:
+    name: Run Developer Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -41,11 +44,12 @@ jobs:
         with:
           install_components: 'gke-gcloud-auth-plugin'
 
-      - name: Create Integration Test Job in GKE
-        run: npm run tests:integration
+      - name: Create Developer Tests Job in GKE
+        run: npm run tests:developer
         env:
           TEST_RUNNER: gke
           TARGET_CLUSTER: gke
           TARGET_ENVIRONMENT: ${{ inputs.environment }}
           TEST_VERSION: ${{ inputs.version }}
           CODE_COVERAGE_ENABLED: ${{ inputs.code_coverage }}
+          REPORTS_PATH: ${{ inputs.reports_path }}

@@ -10,3 +10,9 @@ jobs:
       environment: testing
       version: ${{ github.sha }}
     secrets: inherit
+  run-developer-tests:
+    uses: ./.github/workflows/run-developer-tests.yml
+    with:
+      environment: testing
+      version: ${{ github.sha }}
+    secrets: inherit

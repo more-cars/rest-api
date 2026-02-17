@@ -2,6 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - ../../../../jobs/integration-test
+  - ../../../../jobs/developer-tests
 
-namespace: testing
+namespace: prod
