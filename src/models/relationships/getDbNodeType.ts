@@ -3,6 +3,7 @@ import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 
 export function getDbNodeType(nodeType: NodeType) {
     const mapping = new Map<NodeType, NodeTypeLabel>([
+        [NodeType.NODE, NodeTypeLabel.Node],
         [NodeType.IMAGE, NodeTypeLabel.Image],
         [NodeType.COMPANY, NodeTypeLabel.Company],
         [NodeType.BRAND, NodeTypeLabel.Brand],
@@ -21,7 +22,7 @@ export function getDbNodeType(nodeType: NodeType) {
 
     const dbNodeType = mapping.get(nodeType)
 
-    if (!dbNodeType) {
+    if (dbNodeType === null || dbNodeType === undefined) {
         throw new Error(`No mapping found for node type ${nodeType}`)
     }
 
