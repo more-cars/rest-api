@@ -14,7 +14,7 @@ import type {InputRacingGameCreate} from "../../src/db/nodes/racing-games/types/
 import type {InputGamingPlatformCreate} from "../../src/db/nodes/gaming-platforms/types/InputGamingPlatformCreate"
 import type {InputImageCreate} from "../../src/db/nodes/images/types/InputImageCreate"
 import {NodeTypeLabel} from "../../src/db/NodeTypeLabel"
-import {createDbNode, createNodeQuery} from "../../src/db/nodes/createDbNode"
+import {createDbNode} from "../../src/db/nodes/createDbNode"
 import {addMoreCarsIdToNode} from "../../src/db/nodes/addMoreCarsIdToNode"
 import {addTimestampsToNode} from "../../src/db/nodes/addTimestampsToNode"
 
@@ -36,10 +36,8 @@ type InputTypes =
 
 
 export async function storeNode(data: InputTypes, newNodeType: NodeTypeLabel, oldNode: Node): Promise<void> {
-    let query = createNodeQuery(newNodeType, data)
-
     try {
-        const createdNode: Node = await createDbNode(newNodeType, query)
+        const createdNode: Node = await createDbNode(newNodeType, data)
         await addMoreCarsIdToNode(
             createdNode.elementId,
             parseInt(oldNode.elementId) + 10_000_000
