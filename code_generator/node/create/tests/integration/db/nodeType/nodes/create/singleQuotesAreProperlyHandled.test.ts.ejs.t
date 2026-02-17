@@ -1,5 +1,5 @@
 ---
-to: tests/integration/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/nodes/create/singleQuotesAreProperlyHandled.test.ts
+to: tests/integration/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/nodes/create/single-quotes-are-properly-handled.test.ts
 ---
 import {expect, test} from 'vitest'
 import {createNode} from "../../../../../../src/db/nodes/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/createNode"
