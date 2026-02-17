@@ -30,9 +30,9 @@ spec:
               npm ci
 
               if [ "$CODE_COVERAGE_ENABLED" = true ]; then
-                npx vitest run -c tests/developer/vite.config.ts --coverage
+                npx vitest run -c tests/developer/vite.config.ts --coverage --maxWorkers=1 --fileParallelism=false
               else
-                npx vitest run -c tests/developer/vite.config.ts
+                npx vitest run -c tests/developer/vite.config.ts --maxWorkers=1 --fileParallelism=false
               fi
 
               # Vitest will return with exit code 1 should any of the tests fail.
