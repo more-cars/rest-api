@@ -1,7 +1,7 @@
 import {defineConfig} from 'vitest/config'
 import {loadEnv} from 'vite'
 
-const rootDir = __dirname + '/../'
+const rootDir = __dirname + '/../../'
 
 export default defineConfig(({mode}) => ({
     test: {
@@ -27,6 +27,7 @@ export default defineConfig(({mode}) => ({
             exclude: [
                 'src/server.ts',
                 'src/db/driver-mc1.ts',
+                '*.cypher',
             ],
             reporter: [
                 'text',
@@ -35,8 +36,8 @@ export default defineConfig(({mode}) => ({
             reportsDirectory: 'test-reports/developer/coverage',
             reportOnFailure: true,
             thresholds: {
-                statements: 98,
-                branches: 96,
+                statements: 99,
+                branches: 98,
             }
         }
     },
