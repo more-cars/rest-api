@@ -1,11 +1,11 @@
 import {expect, test} from 'vitest'
-import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {Image} from "../../../../../../src/models/images/Image"
-import {seedRelationshipForStartNode} from "../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
-import {DbRelationship} from "../../../../../../src/db/types/DbRelationship"
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {Image} from "../../../../../../../src/models/images/Image"
+import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
+import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
 import assert from "assert"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelationshipType} from "../../../../../../../src/models/relationships/types/RelationshipType"
 
 test('Get all "Image belongs to Node type" relationships for specific image', async () => {
     const imageNode = await seedNode(NodeTypeEnum.IMAGE)

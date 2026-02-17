@@ -6,13 +6,13 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 
 test('Trying to create a ›belongs-to-node‹ relationship with nodes that do not exist', async () => {
     const image = await seedNode(NodeTypeEnum.IMAGE)
-    const company = await seedNode(NodeTypeEnum.COMPANY)
+    const brand = await seedNode(NodeTypeEnum.BRAND)
 
-    await expect(Image.createBelongsToNodeRelationship(-42, image.id))
+    await expect(Image.createBelongsToNodeRelationship(-42, brand.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(Image.createBelongsToNodeRelationship(company.id, -43))
+    await expect(Image.createBelongsToNodeRelationship(image.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

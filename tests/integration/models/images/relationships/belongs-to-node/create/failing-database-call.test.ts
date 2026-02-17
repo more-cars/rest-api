@@ -3,7 +3,7 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {Image} from "../../../../../../../src/models/images/Image"
 
-test('A completely valid request, but the database call fails for some reason', async () => {
+test('A completely valid request, but the database call fails (e.g. one of the nodes was deleted just a moment ago)', async () => {
     vi.mock("../../../../../../../src/db/relationships/createRelationship", async () => {
         return {
             createRelationship: () => false
@@ -11,9 +11,9 @@ test('A completely valid request, but the database call fails for some reason', 
     })
 
     const image = await seedNode(NodeTypeEnum.IMAGE)
-    const partnerNode = await seedNode(NodeTypeEnum.CAR_MODEL)
+    const brand = await seedNode(NodeTypeEnum.BRAND)
 
-    await expect(Image.createBelongsToNodeRelationship(image.id, partnerNode.id))
+    await expect(Image.createBelongsToNodeRelationship(image.id, brand.id))
         .rejects
         .toThrow(Error)
 })

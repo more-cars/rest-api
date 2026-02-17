@@ -6,13 +6,13 @@ import {RelationshipAlreadyExistsError} from "../../../../../../../src/models/ty
 
 test('Trying to create the same ›belongs-to-node‹ relationship again', async () => {
     const image = await seedNode(NodeTypeEnum.IMAGE)
-    const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
+    const brand = await seedNode(NodeTypeEnum.BRAND)
 
-    await expect(Image.createBelongsToNodeRelationship(image.id, carModel.id))
+    await expect(Image.createBelongsToNodeRelationship(image.id, brand.id))
         .resolves
         .not.toThrow(RelationshipAlreadyExistsError)
 
-    await expect(Image.createBelongsToNodeRelationship(image.id, carModel.id))
+    await expect(Image.createBelongsToNodeRelationship(image.id, brand.id))
         .rejects
         .toThrow(RelationshipAlreadyExistsError)
 })

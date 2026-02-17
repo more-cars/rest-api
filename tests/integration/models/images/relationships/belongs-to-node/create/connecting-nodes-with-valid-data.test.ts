@@ -6,14 +6,14 @@ import {RelationshipType} from "../../../../../../../src/models/relationships/ty
 
 test('Creating a ›belongs-to-node‹ relationship with valid data', async () => {
     const image = await seedNode(NodeTypeEnum.IMAGE)
-    const partnerNode = await seedNode(NodeTypeEnum.CAR_MODEL)
+    const brand = await seedNode(NodeTypeEnum.BRAND)
 
-    const createdRelationship = await Image.createBelongsToNodeRelationship(image.id, partnerNode.id)
+    const createdRelationship = await Image.createBelongsToNodeRelationship(image.id, brand.id)
 
     expect(createdRelationship.origin.id)
         .toEqual(image.id)
     expect(createdRelationship.destination.id)
-        .toEqual(partnerNode.id)
+        .toEqual(brand.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)
