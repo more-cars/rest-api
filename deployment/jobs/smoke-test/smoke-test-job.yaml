@@ -14,6 +14,10 @@ spec:
           env:
             - name: API_URL
               value: http://$(API_SERVICE_SERVICE_HOST)
+          resources:
+            requests:
+              cpu: "300m"
+              memory: "500Mi"
           command: [ "/bin/sh", "-c" ]
           args:
             - |
