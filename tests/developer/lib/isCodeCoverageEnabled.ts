@@ -15,7 +15,7 @@ export async function isCodeCoverageEnabled(override: string | undefined): Promi
 async function promptUser() {
     return select({
         message: 'Should a code coverage report be generated?',
-        default: true,
+        default: false,
         choices: [
             {
                 value: true,
