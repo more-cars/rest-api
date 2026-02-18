@@ -1,13 +1,13 @@
-import type {RelationshipCollectionResponse} from "../../relationships/types/RelationshipCollectionResponse"
+import type {RelationCollectionResponse} from "../../relationships/types/RelationCollectionResponse"
 
 export type ImageBelongsToNodeTypeResponse = {
     data: {
-        "companies": RelationshipCollectionResponse
-        "brands": RelationshipCollectionResponse
-        "car_models": RelationshipCollectionResponse
-        "race_tracks": RelationshipCollectionResponse
-        "track_layouts": RelationshipCollectionResponse
-        "racing_series": RelationshipCollectionResponse
-        "racing_events": RelationshipCollectionResponse
+        "companies": RelationCollectionResponse
+        "brands": RelationCollectionResponse
+        "car_models": RelationCollectionResponse
+        "race_tracks": RelationCollectionResponse
+        "track_layouts": RelationCollectionResponse
+        "racing_series": RelationCollectionResponse
+        "racing_events": RelationCollectionResponse
     }
 }

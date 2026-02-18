@@ -1,5 +1,5 @@
 import type {RelationResponse} from "./RelationResponse"
 
-export type RelationshipCollectionResponse = {
+export type RelationCollectionResponse = {
     data: RelationResponse[]
 }
