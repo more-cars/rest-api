@@ -1,5 +1,5 @@
 import express from "express"
-import {openApiSpecification} from "./apiSpec/openApiSpecification"
+import {openApiSpecification} from "./api-spec/openApiSpecification"
 
 export const ApiSpecController = {
     async apiSpec(req: express.Request, res: express.Response) {
