@@ -4,12 +4,13 @@ import {app} from '../../../../../../src/app'
 import {RacingEvent} from "../../../../../../src/models/racing-events/RacingEvent"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Requesting the ›took-place-at-race-track‹ relationship', () => {
     test('Providing valid data', async () => {
         RacingEvent.getTookPlaceAtRaceTrackRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: 'took-place-at-race-track',
+            type: RelationshipType.RacingEventTookPlaceAtRaceTrack,
         })
 
         const response = await request(app)

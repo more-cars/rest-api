@@ -4,12 +4,13 @@ import {app} from '../../../../../../src/app'
 import {CarModel} from "../../../../../../src/models/car-models/CarModel"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Creating a ›has-prime-image‹ relationship', () => {
     test('Providing valid data', async () => {
         CarModel.createHasPrimeImageRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: 'has-prime-image',
+            type: RelationshipType.CarModelHasPrimeImage,
         })
 
         const response = await request(app)

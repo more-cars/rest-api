@@ -3,19 +3,20 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {CarModelVariant} from "../../../../../../src/models/car-model-variants/CarModelVariant"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Requesting all ›achieved-session-result‹ relationships', () => {
     test('Providing valid data', async () => {
         CarModelVariant.getAllAchievedSessionResultRelationships = vi.fn().mockReturnValue([
             {
                 id: 4,
-                type: 'achieved-session-result',
+                type: RelationshipType.CarModelVariantAchievedSessionResult,
             }, {
                 id: 5,
-                type: 'achieved-session-result',
+                type: RelationshipType.CarModelVariantAchievedSessionResult,
             }, {
                 id: 6,
-                type: 'achieved-session-result',
+                type: RelationshipType.CarModelVariantAchievedSessionResult,
             }
         ])
 

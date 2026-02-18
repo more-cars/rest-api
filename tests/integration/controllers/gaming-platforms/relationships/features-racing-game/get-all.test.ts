@@ -3,19 +3,20 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {GamingPlatform} from "../../../../../../src/models/gaming-platforms/GamingPlatform"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Requesting all ›features-racing-game‹ relationships', () => {
     test('Providing valid data', async () => {
         GamingPlatform.getAllFeaturesRacingGameRelationships = vi.fn().mockReturnValue([
             {
                 id: 4,
-                type: 'features-racing-game',
+                type: RelationshipType.GamingPlatformFeaturesRacingGame,
             }, {
                 id: 5,
-                type: 'features-racing-game',
+                type: RelationshipType.GamingPlatformFeaturesRacingGame,
             }, {
                 id: 6,
-                type: 'features-racing-game',
+                type: RelationshipType.GamingPlatformFeaturesRacingGame,
             }
         ])
 

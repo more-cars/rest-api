@@ -4,12 +4,13 @@ import {app} from '../../../../../../src/app'
 import {CarModelVariant} from "../../../../../../src/models/car-model-variants/CarModelVariant"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Creating a ›achieved-session-result‹ relationship', () => {
     test('Providing valid data', async () => {
         CarModelVariant.createAchievedSessionResultRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: 'achieved-session-result',
+            type: RelationshipType.CarModelVariantAchievedSessionResult,
         })
 
         const response = await request(app)

@@ -4,12 +4,13 @@ import {app} from '../../../../../../src/app'
 import {Company} from "../../../../../../src/models/companies/Company"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Requesting the ›has-prime-image‹ relationship', () => {
     test('Providing valid data', async () => {
         Company.getHasPrimeImageRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: 'has-prime-image',
+            type: RelationshipType.CompanyHasPrimeImage,
         })
 
         const response = await request(app)

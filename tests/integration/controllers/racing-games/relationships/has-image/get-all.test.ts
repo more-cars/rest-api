@@ -3,19 +3,20 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {RacingGame} from "../../../../../../src/models/racing-games/RacingGame"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('Providing valid data', async () => {
         RacingGame.getAllHasImageRelationships = vi.fn().mockReturnValue([
             {
                 id: 4,
-                type: 'has-image',
+                type: RelationshipType.RacingGameHasImage,
             }, {
                 id: 5,
-                type: 'has-image',
+                type: RelationshipType.RacingGameHasImage,
             }, {
                 id: 6,
-                type: 'has-image',
+                type: RelationshipType.RacingGameHasImage,
             }
         ])
 

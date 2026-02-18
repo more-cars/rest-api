@@ -1,12 +1,10 @@
 import {expect, test} from 'vitest'
-import type {
-    ImageBelongsToNodeTypeRelationships
-} from "../../../../../../src/models/images/types/ImageBelongsToNodeTypeRelationships"
-import {
-    marshalBelongsToNodeTypeRelationships
-} from "../../../../../../src/controllers/images/marshalling/marshalBelongsToNodeTypeRelationships"
+import type {ImageBelongsToNodeTypeRelationships} from "../../../../../../src/models/images/types/ImageBelongsToNodeTypeRelationships"
+import {marshalBelongsToNodeTypeRelationships} from "../../../../../../src/controllers/images/marshalling/marshalBelongsToNodeTypeRelationships"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {kebabCase} from "change-case"
+import {RelationType} from "../../../../../../src/controllers/relationships/types/RelationType"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 test('marshalling a ›belongs-to-node-type‹ relationship collection', async () => {
     const relationships: ImageBelongsToNodeTypeRelationships = {
@@ -26,37 +24,37 @@ test('marshalling a ›belongs-to-node-type‹ relationship collection', async (
             data: {
                 companies: {
                     data: [{
-                        data: getMarshalledRelation(NodeTypeEnum.COMPANY)
+                        data: getExpectedMarshalledRelation(NodeTypeEnum.COMPANY)
                     }],
                 },
                 brands: {
                     data: [{
-                        data: getMarshalledRelation(NodeTypeEnum.BRAND)
+                        data: getExpectedMarshalledRelation(NodeTypeEnum.BRAND)
                     }],
                 },
                 car_models: {
                     data: [{
-                        data: getMarshalledRelation(NodeTypeEnum.CAR_MODEL)
+                        data: getExpectedMarshalledRelation(NodeTypeEnum.CAR_MODEL)
                     }]
                 },
                 race_tracks: {
                     data: [{
-                        data: getMarshalledRelation(NodeTypeEnum.RACE_TRACK)
+                        data: getExpectedMarshalledRelation(NodeTypeEnum.RACE_TRACK)
                     }]
                 },
                 track_layouts: {
                     data: [{
-                        data: getMarshalledRelation(NodeTypeEnum.TRACK_LAYOUT)
+                        data: getExpectedMarshalledRelation(NodeTypeEnum.TRACK_LAYOUT)
                     }]
                 },
                 racing_series: {
                     data: [{
-                        data: getMarshalledRelation(NodeTypeEnum.RACING_SERIES)
+                        data: getExpectedMarshalledRelation(NodeTypeEnum.RACING_SERIES)
                     }]
                 },
                 racing_events: {
                     data: [{
-                        data: getMarshalledRelation(NodeTypeEnum.RACING_EVENT)
+                        data: getExpectedMarshalledRelation(NodeTypeEnum.RACING_EVENT)
                     }]
                 },
             }
@@ -66,7 +64,7 @@ test('marshalling a ›belongs-to-node-type‹ relationship collection', async (
 function getRelationshipModel(nodeType: NodeTypeEnum) {
     return {
         id: 1,
-        type: 'BELONGS_TO_' + nodeType,
+        type: RelationshipType.ImageBelongsToNode,
         origin: {
             id: 2,
             created_at: "dummy",
@@ -82,10 +80,10 @@ function getRelationshipModel(nodeType: NodeTypeEnum) {
     }
 }
 
-function getMarshalledRelation(nodeType: NodeTypeEnum) {
+function getExpectedMarshalledRelation(nodeType: NodeTypeEnum) {
     return {
         relationship_id: 1,
-        relationship_name: 'belongs-to-' + kebabCase(nodeType),
+        relationship_name: RelationType.ImageBelongsToNode,
         relationship_partner: {
             node_type: kebabCase(nodeType),
             data: {

@@ -4,12 +4,13 @@ import {app} from '../../../../../../src/app'
 import {TrackLayout} from "../../../../../../src/models/track-layouts/TrackLayout"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Creating a ›was-used-by-racing-event‹ relationship', () => {
     test('Providing valid data', async () => {
         TrackLayout.createWasUsedByRacingEventRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: 'was-used-by-racing-event',
+            type: RelationshipType.TrackLayoutWasUsedByRacingEvent,
         })
 
         const response = await request(app)

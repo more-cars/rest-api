@@ -4,12 +4,13 @@ import {app} from '../../../../../../src/app'
 import {RacingGame} from "../../../../../../src/models/racing-games/RacingGame"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Creating a ›features-track-layout‹ relationship', () => {
     test('Providing valid data', async () => {
         RacingGame.createFeaturesTrackLayoutRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: 'features-track-layout',
+            type: RelationshipType.RacingGameFeaturesTrackLayout,
         })
 
         const response = await request(app)

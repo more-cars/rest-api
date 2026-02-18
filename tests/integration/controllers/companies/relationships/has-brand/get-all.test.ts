@@ -3,19 +3,20 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {Company} from "../../../../../../src/models/companies/Company"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Requesting all ›has-brand‹ relationships', () => {
     test('Providing valid data', async () => {
         Company.getAllHasBrandRelationships = vi.fn().mockReturnValue([
             {
                 id: 4,
-                type: 'has-brand',
+                type: RelationshipType.CompanyHasBrand,
             }, {
                 id: 5,
-                type: 'has-brand',
+                type: RelationshipType.CompanyHasBrand,
             }, {
                 id: 6,
-                type: 'has-brand',
+                type: RelationshipType.CompanyHasBrand,
             }
         ])
 

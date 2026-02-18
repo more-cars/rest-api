@@ -4,12 +4,13 @@ import {app} from '../../../../../../src/app'
 import {CarModelVariant} from "../../../../../../src/models/car-model-variants/CarModelVariant"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Requesting the ›is-variant-of‹ relationship', () => {
     test('Providing valid data', async () => {
         CarModelVariant.getIsVariantOfRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: 'is-variant-of',
+            type: RelationshipType.CarModelVariantIsVariantOf,
         })
 
         const response = await request(app)

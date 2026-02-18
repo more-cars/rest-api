@@ -4,12 +4,13 @@ import {app} from '../../../../../../src/app'
 import {RaceTrack} from "../../../../../../src/models/race-tracks/RaceTrack"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Creating a ›has-layout‹ relationship', () => {
     test('Providing valid data', async () => {
         RaceTrack.createHasLayoutRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: 'has-layout',
+            type: RelationshipType.RaceTrackHasLayout,
         })
 
         const response = await request(app)

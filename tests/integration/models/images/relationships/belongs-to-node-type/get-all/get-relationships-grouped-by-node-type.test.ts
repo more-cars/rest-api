@@ -1,11 +1,11 @@
+import assert from "assert"
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {Image} from "../../../../../../../src/models/images/Image"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
-import assert from "assert"
-import {RelationshipType} from "../../../../../../../src/models/relationships/types/RelationshipType"
+import {RelationType} from "../../../../../../../src/controllers/relationships/types/RelationType"
 
 test('Get all "Image belongs to Node type" relationships for specific image', async () => {
     const imageNode = await seedNode(NodeTypeEnum.IMAGE)
@@ -31,7 +31,7 @@ test('Get all "Image belongs to Node type" relationships for specific image', as
         expect(relationship.origin.id)
             .toBe(imageNode.id)
         expect(relationship.type)
-            .toBe(RelationshipType.ImageBelongsToNode)
+            .toBe(RelationType.ImageBelongsToNode)
     })
 })
 

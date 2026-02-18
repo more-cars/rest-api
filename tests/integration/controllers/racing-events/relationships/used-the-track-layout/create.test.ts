@@ -4,12 +4,13 @@ import {app} from '../../../../../../src/app'
 import {RacingEvent} from "../../../../../../src/models/racing-events/RacingEvent"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Creating a ›used-the-track-layout‹ relationship', () => {
     test('Providing valid data', async () => {
         RacingEvent.createUsedTheTrackLayoutRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: 'used-the-track-layout',
+            type: RelationshipType.RacingEventUsedTheTrackLayout,
         })
 
         const response = await request(app)

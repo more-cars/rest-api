@@ -4,12 +4,13 @@ import {app} from '../../../../../../src/app'
 import {Brand} from "../../../../../../src/models/brands/Brand"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Requesting a specific ›has-car-model‹ relationship', () => {
     test('Providing valid data', async () => {
         Brand.getSpecificHasCarModelRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: 'has-car-model',
+            type: RelationshipType.BrandHasCarModel,
         })
 
         const response = await request(app)

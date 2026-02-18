@@ -2,6 +2,7 @@ import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {RacingEvent} from "../../../../../../src/models/racing-events/RacingEvent"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 
 describe('Requesting all ›has-image‹ relationships', () => {
@@ -9,13 +10,13 @@ describe('Requesting all ›has-image‹ relationships', () => {
         RacingEvent.getAllHasImageRelationships = vi.fn().mockReturnValue([
             {
                 id: 4,
-                type: 'has-image',
+                type: RelationshipType.RacingEventHasImage,
             }, {
                 id: 5,
-                type: 'has-image',
+                type: RelationshipType.RacingEventHasImage,
             }, {
                 id: 6,
-                type: 'has-image',
+                type: RelationshipType.RacingEventHasImage,
             }
         ])
 

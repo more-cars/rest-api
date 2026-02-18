@@ -3,19 +3,20 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {RacingGame} from "../../../../../../src/models/racing-games/RacingGame"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Requesting all ›features-track-layout‹ relationships', () => {
     test('Providing valid data', async () => {
         RacingGame.getAllFeaturesTrackLayoutRelationships = vi.fn().mockReturnValue([
             {
                 id: 4,
-                type: 'features-track-layout',
+                type: RelationshipType.RacingGameFeaturesTrackLayout,
             }, {
                 id: 5,
-                type: 'features-track-layout',
+                type: RelationshipType.RacingGameFeaturesTrackLayout,
             }, {
                 id: 6,
-                type: 'features-track-layout',
+                type: RelationshipType.RacingGameFeaturesTrackLayout,
             }
         ])
 

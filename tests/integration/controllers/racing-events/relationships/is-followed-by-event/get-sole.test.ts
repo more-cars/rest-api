@@ -4,12 +4,13 @@ import {app} from '../../../../../../src/app'
 import {RacingEvent} from "../../../../../../src/models/racing-events/RacingEvent"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Requesting the ›is-followed-by-event‹ relationship', () => {
     test('Providing valid data', async () => {
         RacingEvent.getIsFollowedByEventRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: 'is-followed-by-event',
+            type: RelationshipType.RacingEventIsFollowedByEvent,
         })
 
         const response = await request(app)

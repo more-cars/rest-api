@@ -4,12 +4,13 @@ import {app} from '../../../../../../src/app'
 import {TrackLayout} from "../../../../../../src/models/track-layouts/TrackLayout"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Requesting the ›belongs-to-race-track‹ relationship', () => {
     test('Providing valid data', async () => {
         TrackLayout.getBelongsToRaceTrackRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: 'belongs-to-race-track',
+            type: RelationshipType.TrackLayoutBelongsToRaceTrack,
         })
 
         const response = await request(app)

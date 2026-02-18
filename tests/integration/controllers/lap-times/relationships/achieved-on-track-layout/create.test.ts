@@ -4,12 +4,13 @@ import {app} from '../../../../../../src/app'
 import {LapTime} from "../../../../../../src/models/lap-times/LapTime"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Creating a ›achieved-on-track-layout‹ relationship', () => {
     test('Providing valid data', async () => {
         LapTime.createAchievedOnTrackLayoutRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: 'achieved-on-track-layout',
+            type: RelationshipType.LapTimeAchievedOnTrackLayout,
         })
 
         const response = await request(app)

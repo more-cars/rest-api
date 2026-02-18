@@ -4,12 +4,13 @@ import {app} from '../../../../../../src/app'
 import {RaceTrack} from "../../../../../../src/models/race-tracks/RaceTrack"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Requesting the ›has-prime-image‹ relationship', () => {
     test('Providing valid data', async () => {
         RaceTrack.getHasPrimeImageRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: 'has-prime-image',
+            type: RelationshipType.RaceTrackHasPrimeImage,
         })
 
         const response = await request(app)

@@ -4,12 +4,13 @@ import {app} from '../../../../../../src/app'
 import {TrackLayout} from "../../../../../../src/models/track-layouts/TrackLayout"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Creating a ›has-lap-time‹ relationship', () => {
     test('Providing valid data', async () => {
         TrackLayout.createHasLapTimeRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: 'has-lap-time',
+            type: RelationshipType.TrackLayoutHasLapTime,
         })
 
         const response = await request(app)

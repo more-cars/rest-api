@@ -3,19 +3,20 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {CarModelVariant} from "../../../../../../src/models/car-model-variants/CarModelVariant"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Requesting all ›is-featured-in-racing-game‹ relationships', () => {
     test('Providing valid data', async () => {
         CarModelVariant.getAllIsFeaturedInRacingGameRelationships = vi.fn().mockReturnValue([
             {
                 id: 4,
-                type: 'is-featured-in-racing-game',
+                type: RelationshipType.CarModelVariantIsFeaturedInRacingGame,
             }, {
                 id: 5,
-                type: 'is-featured-in-racing-game',
+                type: RelationshipType.CarModelVariantIsFeaturedInRacingGame,
             }, {
                 id: 6,
-                type: 'is-featured-in-racing-game',
+                type: RelationshipType.CarModelVariantIsFeaturedInRacingGame,
             }
         ])
 

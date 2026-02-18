@@ -3,19 +3,20 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {CarModel} from "../../../../../../src/models/car-models/CarModel"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Requesting all ›has-variant‹ relationships', () => {
     test('Providing valid data', async () => {
         CarModel.getAllHasVariantRelationships = vi.fn().mockReturnValue([
             {
                 id: 4,
-                type: 'has-variant',
+                type: RelationshipType.CarModelHasVariant,
             }, {
                 id: 5,
-                type: 'has-variant',
+                type: RelationshipType.CarModelHasVariant,
             }, {
                 id: 6,
-                type: 'has-variant',
+                type: RelationshipType.CarModelHasVariant,
             }
         ])
 

@@ -1,7 +1,9 @@
+import {RelationType} from "./RelationType"
+
 export type RelationshipResponse = {
     data: {
         relationship_id: number
-        relationship_name: string
+        relationship_name: RelationType
         relationship_partner: {
             node_type: string
             data: object

@@ -4,12 +4,13 @@ import {app} from '../../../../../../src/app'
 import {LapTime} from "../../../../../../src/models/lap-times/LapTime"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Creating a ›has-image‹ relationship', () => {
     test('Providing valid data', async () => {
         LapTime.createHasImageRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: 'has-image',
+            type: RelationshipType.LapTimeHasImage,
         })
 
         const response = await request(app)

@@ -4,12 +4,13 @@ import {app} from '../../../../../../src/app'
 import {RaceTrack} from "../../../../../../src/models/race-tracks/RaceTrack"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Creating a ›hosted-racing-event‹ relationship', () => {
     test('Providing valid data', async () => {
         RaceTrack.createHostedRacingEventRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: 'hosted-racing-event',
+            type: RelationshipType.RaceTrackHostedRacingEvent,
         })
 
         const response = await request(app)

@@ -5,31 +5,31 @@ import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum
 import type {BaseNode} from "../../../../src/controllers/nodes/types/BaseNode"
 import type {GenericRelation} from "../../../../src/models/relationships/types/GenericRelation"
 import {marshalRelations} from "../../../../src/controllers/relationships/marshalRelations"
-import {dasherize} from "inflection"
+import {mapModelRelationToControllerRelation} from "../../../../src/controllers/relationships/mapModelRelationToControllerRelation"
 
 test('marshalling a relation collection', async () => {
-    getAllModelRelationshipTypes().forEach((modelRelationshipType) => {
+    getAllModelRelationshipTypes().forEach((relationshipType) => {
         const origin = FakeNodeInput(NodeTypeEnum.BRAND) as unknown as BaseNode
         const destination = FakeNodeInput(NodeTypeEnum.CAR_MODEL) as unknown as BaseNode
-        const relation: GenericRelation = {
+        const relationship: GenericRelation = {
             id: 3,
-            type: modelRelationshipType,
+            type: relationshipType,
             origin,
             destination,
             created_at: "2023-10-01T00:00:00.001Z",
             updated_at: "2023-10-01T00:00:00.001Z",
         }
-        const relations = [relation, relation, relation]
+        const relationships = [relationship, relationship, relationship]
 
-        const marshalledData = marshalRelations(relations, NodeTypeEnum.CAR_MODEL)
+        const marshalledRelations = marshalRelations(relationships, NodeTypeEnum.CAR_MODEL)
 
-        expect(marshalledData.data.length)
+        expect(marshalledRelations.data.length)
             .toEqual(3)
 
         const expectedRelation = {
             data: {
                 relationship_id: 3,
-                relationship_name: dasherize(modelRelationshipType.toLowerCase()),
+                relationship_name: mapModelRelationToControllerRelation(relationshipType),
                 relationship_partner: {
                     node_type: "car-model",
                     data: destination,
@@ -39,13 +39,13 @@ test('marshalling a relation collection', async () => {
             }
         }
 
-        expect(marshalledData.data[0])
+        expect(marshalledRelations.data[0])
             .toStrictEqual(expectedRelation)
 
-        expect(marshalledData.data[1])
+        expect(marshalledRelations.data[1])
             .toStrictEqual(expectedRelation)
 
-        expect(marshalledData.data[2])
+        expect(marshalledRelations.data[2])
             .toStrictEqual(expectedRelation)
     })
 })

@@ -4,12 +4,13 @@ import {app} from '../../../../../../src/app'
 import {GamingPlatform} from "../../../../../../src/models/gaming-platforms/GamingPlatform"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Creating a ›has-image‹ relationship', () => {
     test('Providing valid data', async () => {
         GamingPlatform.createHasImageRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: 'has-image',
+            type: RelationshipType.GamingPlatformHasImage,
         })
 
         const response = await request(app)

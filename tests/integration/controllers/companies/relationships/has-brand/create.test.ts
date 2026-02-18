@@ -4,12 +4,13 @@ import {app} from '../../../../../../src/app'
 import {Company} from "../../../../../../src/models/companies/Company"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Creating a ›has-brand‹ relationship', () => {
     test('Providing valid data', async () => {
         Company.createHasBrandRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: 'has-brand',
+            type: RelationshipType.CompanyHasBrand,
         })
 
         const response = await request(app)

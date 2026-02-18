@@ -4,12 +4,13 @@ import {app} from '../../../../../../src/app'
 import {CarModel} from "../../../../../../src/models/car-models/CarModel"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
 
 describe('Requesting the ›has-successor‹ relationship', () => {
     test('Providing valid data', async () => {
         CarModel.getHasSuccessorRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: 'has-successor',
+            type: RelationshipType.CarModelHasSuccessor,
         })
 
         const response = await request(app)

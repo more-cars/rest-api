@@ -1,14 +1,15 @@
-import {dasherize} from "inflection"
 import type {GenericRelation} from "../../models/relationships/types/GenericRelation"
 import type {NodeTypeEnum} from "../nodes/types/NodeTypeEnum"
-import {marshalSingleNode} from "../nodes/marshalSingleNode"
 import type {RelationshipResponse} from "./types/RelationshipResponse"
+import {mapModelRelationToControllerRelation} from "./mapModelRelationToControllerRelation"
+import {dasherize} from "inflection"
+import {marshalSingleNode} from "../nodes/marshalSingleNode"
 
 export function marshalRelation(relation: GenericRelation, partnerNodeType: NodeTypeEnum) {
-    return {
+    const marshalledData: RelationshipResponse = {
         data: {
             relationship_id: relation.id,
-            relationship_name: dasherize(relation.type.toLowerCase()),
+            relationship_name: mapModelRelationToControllerRelation(relation.type),
             relationship_partner: {
                 node_type: dasherize(partnerNodeType),
                 data: marshalSingleNode(relation.destination).data,
@@ -16,5 +17,7 @@ export function marshalRelation(relation: GenericRelation, partnerNodeType: Node
             created_at: relation.created_at,
             updated_at: relation.updated_at,
         },
-    } as RelationshipResponse
+    }
+
+    return marshalledData
 }
