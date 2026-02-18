@@ -12,4 +12,4 @@ skip_if: async getAll<%= h.changeCase.pascal(relationshipName) %>Relationships
             throw new NodeNotFoundError(<%= h.changeCase.camel(startNodeType) %>Id)
         }
 
-        return getAllRels(<%= h.changeCase.camel(startNodeType) %>Id, RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
+        return getAllRels(<%= h.changeCase.camel(startNodeType) %>Id, RelType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)

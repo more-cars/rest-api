@@ -12,9 +12,9 @@ skip_if: async get<%= h.changeCase.pascal(relationshipName) %>Relationship
             throw new NodeNotFoundError(<%= h.changeCase.camel(startNodeType) %>Id)
         }
 
-        const relationship = await getRel(<%= h.changeCase.camel(startNodeType) %>Id, RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>, NodeTypeLabel.<%= h.changeCase.pascal(endNodeType) %>)
+        const relationship = await getRel(<%= h.changeCase.camel(startNodeType) %>Id, RelType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>, NodeTypeLabel.<%= h.changeCase.pascal(endNodeType) %>)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>, <%= h.changeCase.camel(startNodeType) %>Id, null)
+            throw new RelationshipNotFoundError(RelType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>, <%= h.changeCase.camel(startNodeType) %>Id, null)
         }
 
         return relationship
