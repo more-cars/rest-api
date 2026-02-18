@@ -1,7 +1,7 @@
 import {Rel} from "./types/Rel"
 import type {BaseRelationship} from "../../db/types/BaseRelationship"
 
-export async function mapDbRelationshipToModelRelationship(relationship: BaseRelationship) {
+export async function convertDbRelToModelRel(relationship: BaseRelationship) {
     return {
         id: relationship.id || relationship.relationship_id,
         type: relationship.type || relationship.relationship_name,

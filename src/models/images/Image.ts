@@ -21,7 +21,7 @@ import {createRel} from "../relationships/createRel"
 import {getAllRels} from "../relationships/getAllRels"
 import type {Rel} from "../relationships/types/Rel"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
-import {mapDbRelationshipToModelRelationship} from "../relationships/mapDbRelationshipToModelRelationship"
+import {convertDbRelToModelRel} from "../relationships/convertDbRelToModelRel"
 import {getRelationshipCollection} from "../../db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../db/types/RelationshipType"
 import {deleteIncomingRel} from "../relationships/deleteIncomingRel"
@@ -171,43 +171,43 @@ export const Image = {
 
         let mappedRelationships: Rel[] = []
         for (const relationship of companyRels) {
-            mappedRelationships.push(await mapDbRelationshipToModelRelationship(relationship))
+            mappedRelationships.push(await convertDbRelToModelRel(relationship))
         }
         belongsToNodeTypeRelationships.companies = mappedRelationships
 
         mappedRelationships = []
         for (const relationship of brandRels) {
-            mappedRelationships.push(await mapDbRelationshipToModelRelationship(relationship))
+            mappedRelationships.push(await convertDbRelToModelRel(relationship))
         }
         belongsToNodeTypeRelationships.brands = mappedRelationships
 
         mappedRelationships = []
         for (const relationship of carModelRels) {
-            mappedRelationships.push(await mapDbRelationshipToModelRelationship(relationship))
+            mappedRelationships.push(await convertDbRelToModelRel(relationship))
         }
         belongsToNodeTypeRelationships.car_models = mappedRelationships
 
         mappedRelationships = []
         for (const relationship of raceTrackRels) {
-            mappedRelationships.push(await mapDbRelationshipToModelRelationship(relationship))
+            mappedRelationships.push(await convertDbRelToModelRel(relationship))
         }
         belongsToNodeTypeRelationships.race_tracks = mappedRelationships
 
         mappedRelationships = []
         for (const relationship of trackLayoutRels) {
-            mappedRelationships.push(await mapDbRelationshipToModelRelationship(relationship))
+            mappedRelationships.push(await convertDbRelToModelRel(relationship))
         }
         belongsToNodeTypeRelationships.track_layouts = mappedRelationships
 
         mappedRelationships = []
         for (const relationship of racingSeriesRels) {
-            mappedRelationships.push(await mapDbRelationshipToModelRelationship(relationship))
+            mappedRelationships.push(await convertDbRelToModelRel(relationship))
         }
         belongsToNodeTypeRelationships.racing_series = mappedRelationships
 
         mappedRelationships = []
         for (const relationship of racingEventsRels) {
-            mappedRelationships.push(await mapDbRelationshipToModelRelationship(relationship))
+            mappedRelationships.push(await convertDbRelToModelRel(relationship))
         }
         belongsToNodeTypeRelationships.racing_events = mappedRelationships
 
