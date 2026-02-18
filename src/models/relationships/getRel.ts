@@ -1,6 +1,6 @@
 import type {RelType} from "./types/RelType"
 import {getRelComposition} from "./getRelComposition"
-import {getDbRelationshipType} from "./getDbRelationshipType"
+import {mapModelRelTypeToDbRelType} from "./mapModelRelTypeToDbRelType"
 import {getDbNodeType} from "./getDbNodeType"
 import {getRelationship} from "../../db/relationships/getRelationship"
 import type {Rel} from "./types/Rel"
@@ -11,7 +11,7 @@ export async function getRel(
     relationshipType: RelType,
 ) {
     const relComposition = getRelComposition(relationshipType)
-    const dbRelationshipType = getDbRelationshipType(relationshipType)
+    const dbRelationshipType = mapModelRelTypeToDbRelType(relationshipType)
     const modelEndNodeType = relComposition.endNodeType
     const dbEndNodeType = getDbNodeType(modelEndNodeType)
 

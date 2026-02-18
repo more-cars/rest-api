@@ -2,7 +2,7 @@ import {RelType} from "./types/RelType"
 import {RelationshipType} from "../../db/types/RelationshipType"
 import {RelTypeNotFoundError} from "../types/RelTypeNotFoundError"
 
-export function getDbRelationshipType(relationshipType: RelType): RelationshipType {
+export function mapModelRelTypeToDbRelType(relationshipType: RelType): RelationshipType {
     const mapping = new Map<RelType, RelationshipType>([
         [RelType.CompanyHasBrand, RelationshipType.CompanyHasBrand],
         [RelType.CompanyHasImage, RelationshipType.CompanyHasImage],

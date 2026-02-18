@@ -1,7 +1,7 @@
 import type {RelType} from "./types/RelType"
 import type {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {getRelationship} from "../../db/relationships/getRelationship"
-import {getDbRelationshipType} from "./getDbRelationshipType"
+import {mapModelRelTypeToDbRelType} from "./mapModelRelTypeToDbRelType"
 import {deleteRelationshipById} from "../../db/relationships/deleteRelationshipById"
 
 export async function deleteOutgoingRel(
@@ -11,7 +11,7 @@ export async function deleteOutgoingRel(
 ) {
     const dbRelationship = await getRelationship(
         originId,
-        getDbRelationshipType(relationshipType),
+        mapModelRelTypeToDbRelType(relationshipType),
         destinationType,
     )
 
