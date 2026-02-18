@@ -1,7 +1,7 @@
 import {Relationship} from "neo4j-driver"
 import {BaseRelationship} from "../types/BaseRelationship"
 
-export function mapNeo4jRelationshipToDbRelationship(
+export function convertNeo4jRelationshipToDbRelationship(
     startNodeId: number,
     endNodeId: number,
     relationshipName: string,
