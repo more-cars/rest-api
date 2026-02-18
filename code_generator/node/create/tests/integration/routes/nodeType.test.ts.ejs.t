@@ -7,7 +7,7 @@ import {app} from "../../../src/app"
 import {<%= h.changeCase.pascal(nodeType) %>Controller} from "../../../src/controllers/<%= h.changeCase.pascal(nodeType) %>Controller"
 
 describe('<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>', () => {
-    vi.mock("../../../src/controllers/<%= h.changeCase.pascal(nodeType) %>Controller.ts", {spy: true})
+    vi.mock("../../../src/controllers/node-types/<%= h.changeCase.pascal(nodeType) %>Controller.ts", {spy: true})
 
     test('Create Node', async () => {
         await request(app)

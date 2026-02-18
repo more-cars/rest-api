@@ -4,7 +4,7 @@ import {app} from "../../../src/app"
 import {GamingPlatformController} from "../../../src/controllers/node-types/GamingPlatformController"
 
 describe('Gaming Platforms', () => {
-    vi.mock("../../../src/controllers/GamingPlatformController.ts", {spy: true})
+    vi.mock("../../../src/controllers/node-types/GamingPlatformController.ts", {spy: true})
 
     test('Create Node', async () => {
         await request(app)

@@ -4,7 +4,7 @@ import {app} from "../../../src/app"
 import {LapTimeController} from "../../../src/controllers/node-types/LapTimeController"
 
 describe('Lap Times', () => {
-    vi.mock("../../../src/controllers/LapTimeController.ts", {spy: true})
+    vi.mock("../../../src/controllers/node-types/LapTimeController.ts", {spy: true})
 
     test('Create Node', async () => {
         await request(app)

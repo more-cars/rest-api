@@ -4,7 +4,7 @@ import {app} from "../../../src/app"
 import {RelationshipController} from "../../../src/controllers/RelationshipController"
 
 describe('Relationships', () => {
-    vi.mock("../../../src/controllers/RelationshipController.ts", {spy: true})
+    vi.mock("../../../src/controllers/node-types/RelationshipController.ts", {spy: true})
 
     test('Get relationship by ID', async () => {
         await request(app)

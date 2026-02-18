@@ -4,7 +4,7 @@ import {app} from "../../../src/app"
 import {CarModelVariantController} from "../../../src/controllers/node-types/CarModelVariantController"
 
 describe('Car Model Variants', () => {
-    vi.mock("../../../src/controllers/CarModelVariantController.ts", {spy: true})
+    vi.mock("../../../src/controllers/node-types/CarModelVariantController.ts", {spy: true})
 
     test('Create Node', async () => {
         await request(app)

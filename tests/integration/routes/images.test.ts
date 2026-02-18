@@ -4,7 +4,7 @@ import {app} from "../../../src/app"
 import {ImageController} from "../../../src/controllers/node-types/ImageController"
 
 describe('Images', () => {
-    vi.mock("../../../src/controllers/ImageController.ts", {spy: true})
+    vi.mock("../../../src/controllers/node-types/ImageController.ts", {spy: true})
 
     test('Create Node', async () => {
         await request(app)

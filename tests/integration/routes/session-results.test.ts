@@ -4,7 +4,7 @@ import {app} from "../../../src/app"
 import {SessionResultController} from "../../../src/controllers/node-types/SessionResultController"
 
 describe('Session Results', () => {
-    vi.mock("../../../src/controllers/SessionResultController.ts", {spy: true})
+    vi.mock("../../../src/controllers/node-types/SessionResultController.ts", {spy: true})
 
     test('Create Node', async () => {
         await request(app)

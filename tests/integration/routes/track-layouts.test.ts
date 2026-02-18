@@ -4,7 +4,7 @@ import {app} from "../../../src/app"
 import {TrackLayoutController} from "../../../src/controllers/node-types/TrackLayoutController"
 
 describe('Track Layouts', () => {
-    vi.mock("../../../src/controllers/TrackLayoutController.ts", {spy: true})
+    vi.mock("../../../src/controllers/node-types/TrackLayoutController.ts", {spy: true})
 
     test('Create Node', async () => {
         await request(app)

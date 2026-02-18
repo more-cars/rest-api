@@ -4,7 +4,7 @@ import {app} from "../../../src/app"
 import {RacingGameController} from "../../../src/controllers/node-types/RacingGameController"
 
 describe('Racing Games', () => {
-    vi.mock("../../../src/controllers/RacingGameController.ts", {spy: true})
+    vi.mock("../../../src/controllers/node-types/RacingGameController.ts", {spy: true})
 
     test('Create Node', async () => {
         await request(app)

@@ -4,7 +4,7 @@ import {app} from "../../../src/app"
 import {ApiSpecController} from "../../../src/controllers/ApiSpecController"
 
 describe('Get API Spec', () => {
-    vi.mock("../../../src/controllers/ApiSpecController.ts", {spy: true})
+    vi.mock("../../../src/controllers/node-types/ApiSpecController.ts", {spy: true})
 
     test('Get OpenAPI specification', async () => {
         await request(app)
