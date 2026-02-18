@@ -11,13 +11,7 @@ Given('there exists a {string} relationship {string} for {string}',
     async (relationshipName: string, relationshipLabel: string, startNodeLabel: string) => {
         const startNode: BaseNode = world.recallNode(startNodeLabel).data
         const startNodeType: NodeTypeEnum = world.recallNode(startNodeLabel).nodeType
-        let endNodeType
-        if (startNodeType === NodeTypeEnum.LAP_TIME && relationshipName === 'achieved with car model variant') {
-            endNodeType = NodeTypeEnum.CAR_MODEL_VARIANT
-        } else {
-            // TODO needs to use a controller-level mapper (not a model-level mapper) -> then the if-else construct will become obsolete
-            endNodeType = getTargetNodeTypeForRelationship(startNodeType, relationshipName)
-        }
+        const endNodeType = getTargetNodeTypeForRelationship(startNodeType, relationshipName)
         const endNode = await seedNode(endNodeType)
         const nodePathFragment = getBasePathFragmentForNodeType(world.recallNode(startNodeLabel).nodeType)
 
