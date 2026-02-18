@@ -2,7 +2,7 @@ import type {RelType} from "./types/RelType"
 import type {DbRelationship} from "../../db/types/DbRelationship"
 import {getDbRelationshipType} from "./getDbRelationshipType"
 import {createRelationship} from "../../db/relationships/createRelationship"
-import type {GenericRelation} from "./types/GenericRelation"
+import type {Rel} from "./types/Rel"
 import type {BaseNode} from "../../db/types/BaseNode"
 
 export async function createRel(originId: number, destinationId: number, relType: RelType) {
@@ -18,7 +18,7 @@ export async function createRel(originId: number, destinationId: number, relType
         return false
     }
 
-    const modelRel: GenericRelation = {
+    const modelRel: Rel = {
         id: dbRelationship.id || dbRelationship.relationship_id,
         type: relType,
         origin: dbRelationship.start_node as BaseNode, // TODO remove type assertion

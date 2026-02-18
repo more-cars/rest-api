@@ -1,11 +1,11 @@
-import type {GenericRelation} from "../../relationships/types/GenericRelation"
+import type {Rel} from "../../relationships/types/Rel"
 
 export type ImageBelongsToNodeTypeRelationships = {
-    companies: GenericRelation[]
-    brands: GenericRelation[]
-    car_models: GenericRelation[]
-    race_tracks: GenericRelation[]
-    track_layouts: GenericRelation[]
-    racing_series: GenericRelation[]
-    racing_events: GenericRelation[]
+    companies: Rel[]
+    brands: Rel[]
+    car_models: Rel[]
+    race_tracks: Rel[]
+    track_layouts: Rel[]
+    racing_series: Rel[]
+    racing_events: Rel[]
 }

@@ -19,7 +19,7 @@ import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {RelType} from "../relationships/types/RelType"
 import {createRel} from "../relationships/createRel"
 import {getAllRels} from "../relationships/getAllRels"
-import type {GenericRelation} from "../relationships/types/GenericRelation"
+import type {Rel} from "../relationships/types/Rel"
 import {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {mapDbRelationshipToModelRelationship} from "../relationships/mapDbRelationshipToModelRelationship"
 import {getRelationshipCollection} from "../../db/relationships/getRelationshipCollection"
@@ -169,7 +169,7 @@ export const Image = {
             racing_events: [],
         }
 
-        let mappedRelationships: GenericRelation[] = []
+        let mappedRelationships: Rel[] = []
         for (const relationship of companyRels) {
             mappedRelationships.push(await mapDbRelationshipToModelRelationship(relationship))
         }

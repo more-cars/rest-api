@@ -3,7 +3,7 @@ import {getRelComposition} from "./getRelComposition"
 import {getDbRelationshipType} from "./getDbRelationshipType"
 import {getDbNodeType} from "./getDbNodeType"
 import {getRelationshipCollection} from "../../db/relationships/getRelationshipCollection"
-import type {GenericRelation} from "./types/GenericRelation"
+import type {Rel} from "./types/Rel"
 import type {BaseNode} from "../../db/types/BaseNode"
 
 export async function getAllRels(
@@ -21,7 +21,7 @@ export async function getAllRels(
         dbEndNodeType,
     )
 
-    const mappedRelationships: GenericRelation[] = []
+    const mappedRelationships: Rel[] = []
 
     for (const dbRelationship of dbRelationships) {
         mappedRelationships.push({

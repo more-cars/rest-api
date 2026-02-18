@@ -3,7 +3,7 @@ import {getRelComposition} from "./getRelComposition"
 import {getDbRelationshipType} from "./getDbRelationshipType"
 import {getDbNodeType} from "./getDbNodeType"
 import {getRelationship} from "../../db/relationships/getRelationship"
-import type {GenericRelation} from "./types/GenericRelation"
+import type {Rel} from "./types/Rel"
 import type {BaseNode} from "../../db/types/BaseNode"
 
 export async function getRel(
@@ -25,7 +25,7 @@ export async function getRel(
         return false
     }
 
-    const modelRelationship: GenericRelation = {
+    const modelRelationship: Rel = {
         id: dbRelationship.relationship_id,
         type: relationshipType,
         origin: dbRelationship.start_node as BaseNode, // TODO remove type assertion

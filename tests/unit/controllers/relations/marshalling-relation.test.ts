@@ -3,7 +3,7 @@ import {getAllModelRelationshipTypes} from "../../../_toolbox/getAllModelRelatio
 import {FakeNodeInput} from '../../../_toolbox/fixtures/nodes/FakeNodeInput'
 import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {BaseNode} from "../../../../src/controllers/nodes/types/BaseNode"
-import type {GenericRelation} from "../../../../src/models/relationships/types/GenericRelation"
+import type {Rel} from "../../../../src/models/relationships/types/Rel"
 import {marshalRelation} from "../../../../src/controllers/relationships/marshalRelation"
 import {mapModelRelationToControllerRelation} from "../../../../src/controllers/relationships/mapModelRelationToControllerRelation"
 
@@ -11,7 +11,7 @@ test('marshalling a relation', async () => {
     getAllModelRelationshipTypes().forEach((relationshipType) => {
         const origin = FakeNodeInput(NodeTypeEnum.BRAND) as unknown as BaseNode
         const destination = FakeNodeInput(NodeTypeEnum.CAR_MODEL) as unknown as BaseNode
-        const relationship: GenericRelation = {
+        const relationship: Rel = {
             id: 3,
             type: relationshipType,
             origin,

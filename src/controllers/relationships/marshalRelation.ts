@@ -1,11 +1,11 @@
-import type {GenericRelation} from "../../models/relationships/types/GenericRelation"
+import type {Rel} from "../../models/relationships/types/Rel"
 import type {NodeTypeEnum} from "../nodes/types/NodeTypeEnum"
 import type {RelationshipResponse} from "./types/RelationshipResponse"
 import {mapModelRelationToControllerRelation} from "./mapModelRelationToControllerRelation"
 import {dasherize} from "inflection"
 import {marshalSingleNode} from "../nodes/marshalSingleNode"
 
-export function marshalRelation(relation: GenericRelation, partnerNodeType: NodeTypeEnum) {
+export function marshalRelation(relation: Rel, partnerNodeType: NodeTypeEnum) {
     const marshalledData: RelationshipResponse = {
         data: {
             relationship_id: relation.id,

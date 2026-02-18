@@ -1,4 +1,4 @@
-import {GenericRelation} from "./types/GenericRelation"
+import {Rel} from "./types/Rel"
 import type {BaseRelationship} from "../../db/types/BaseRelationship"
 
 export async function mapDbRelationshipToModelRelationship(relationship: BaseRelationship) {
@@ -9,5 +9,5 @@ export async function mapDbRelationshipToModelRelationship(relationship: BaseRel
         destination: relationship.end_node,
         created_at: relationship.created_at,
         updated_at: relationship.updated_at,
-    } as GenericRelation
+    } as Rel
 }

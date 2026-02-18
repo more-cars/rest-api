@@ -1,7 +1,7 @@
 import type {RelType} from "./RelType"
 import {BaseNode} from "../../../db/types/BaseNode"
 
-export type GenericRelation = {
+export type Rel = {
     id: number
     type: RelType
     origin: BaseNode

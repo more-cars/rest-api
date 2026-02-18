@@ -2,7 +2,7 @@ import {getRelationshipById} from "../../db/relationships/getRelationshipById"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {Node} from "../Node"
-import {GenericRelation} from "./types/GenericRelation"
+import {Rel} from "./types/Rel"
 
 export const Relationship = {
     async findById(id: number) {
@@ -29,6 +29,6 @@ export const Relationship = {
             destination: destination,
             created_at: dbRelationship.created_at,
             updated_at: dbRelationship.updated_at,
-        } as GenericRelation
+        } as Rel
     },
 }
