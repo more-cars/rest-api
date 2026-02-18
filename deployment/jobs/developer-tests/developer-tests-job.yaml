@@ -21,8 +21,8 @@ spec:
                   key: password
           resources:
             requests:
-              cpu: "300m"
-              memory: "300Mi"
+              cpu: "500m"
+              memory: "500Mi"
           command: [ "/bin/sh", "-c" ]
           args:
             - |
