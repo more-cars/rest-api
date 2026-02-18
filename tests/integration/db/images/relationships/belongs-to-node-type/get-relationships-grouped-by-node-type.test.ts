@@ -2,19 +2,19 @@ import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
-import {DbRelationship} from "../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../src/db/types/RelationshipType"
 import {NodeTypeLabel} from "../../../../../../src/db/NodeTypeLabel"
 import {getRelationshipCollection} from "../../../../../../src/db/relationships/getRelationshipCollection"
 
 test('Get all "Image belongs to Node type" relationships for specific image', async () => {
     const imageNode = await seedNode(NodeTypeEnum.IMAGE)
-    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.BRAND, DbRelationship.ImageBelongsToNode)
-    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.CAR_MODEL, DbRelationship.ImageBelongsToNode)
-    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.CAR_MODEL, DbRelationship.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.BRAND, RelationshipType.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.CAR_MODEL, RelationshipType.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.CAR_MODEL, RelationshipType.ImageBelongsToNode)
 
     const companyRelationships = await getRelationshipCollection(
         imageNode.id,
-        DbRelationship.ImageBelongsToNode,
+        RelationshipType.ImageBelongsToNode,
         NodeTypeLabel.Company,
     )
     expect(companyRelationships)
@@ -22,7 +22,7 @@ test('Get all "Image belongs to Node type" relationships for specific image', as
 
     const brandRelationships = await getRelationshipCollection(
         imageNode.id,
-        DbRelationship.ImageBelongsToNode,
+        RelationshipType.ImageBelongsToNode,
         NodeTypeLabel.Brand,
     )
     expect(brandRelationships)
@@ -30,7 +30,7 @@ test('Get all "Image belongs to Node type" relationships for specific image', as
 
     const carModelRelationships = await getRelationshipCollection(
         imageNode.id,
-        DbRelationship.ImageBelongsToNode,
+        RelationshipType.ImageBelongsToNode,
         NodeTypeLabel.CarModel,
     )
     expect(carModelRelationships)
@@ -40,7 +40,7 @@ test('Get all "Image belongs to Node type" relationships for specific image', as
         expect(relationship.start_node_id)
             .toBe(imageNode.id)
         expect(relationship.relationship_name)
-            .toBe(DbRelationship.ImageBelongsToNode)
+            .toBe(RelationshipType.ImageBelongsToNode)
     })
 })
 
@@ -49,7 +49,7 @@ test('Expecting empty lists when there are no such relationships', async () => {
 
     const companyRelationships = await getRelationshipCollection(
         imageNode.id,
-        DbRelationship.ImageBelongsToNode,
+        RelationshipType.ImageBelongsToNode,
         NodeTypeLabel.Company,
     )
     expect(companyRelationships)
@@ -57,7 +57,7 @@ test('Expecting empty lists when there are no such relationships', async () => {
 
     const brandRelationships = await getRelationshipCollection(
         imageNode.id,
-        DbRelationship.ImageBelongsToNode,
+        RelationshipType.ImageBelongsToNode,
         NodeTypeLabel.Brand,
     )
     expect(brandRelationships)
@@ -65,7 +65,7 @@ test('Expecting empty lists when there are no such relationships', async () => {
 
     const carModelRelationships = await getRelationshipCollection(
         imageNode.id,
-        DbRelationship.ImageBelongsToNode,
+        RelationshipType.ImageBelongsToNode,
         NodeTypeLabel.CarModel,
     )
     expect(carModelRelationships)
@@ -75,7 +75,7 @@ test('Expecting empty lists when there are no such relationships', async () => {
 test('Expecting empty lists when there is no such image', async () => {
     const companyRelationships = await getRelationshipCollection(
         -41,
-        DbRelationship.ImageBelongsToNode,
+        RelationshipType.ImageBelongsToNode,
         NodeTypeLabel.Company,
     )
     expect(companyRelationships)
@@ -83,7 +83,7 @@ test('Expecting empty lists when there is no such image', async () => {
 
     const brandRelationships = await getRelationshipCollection(
         -42,
-        DbRelationship.ImageBelongsToNode,
+        RelationshipType.ImageBelongsToNode,
         NodeTypeLabel.Brand,
     )
     expect(brandRelationships)
@@ -91,7 +91,7 @@ test('Expecting empty lists when there is no such image', async () => {
 
     const carModelRelationships = await getRelationshipCollection(
         -43,
-        DbRelationship.ImageBelongsToNode,
+        RelationshipType.ImageBelongsToNode,
         NodeTypeLabel.CarModel,
     )
     expect(carModelRelationships)

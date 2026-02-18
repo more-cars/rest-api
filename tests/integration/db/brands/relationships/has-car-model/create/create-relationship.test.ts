@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
@@ -12,7 +12,7 @@ describe('Creating a ›has-car-model‹ relationship', () => {
         const createdRelationship = await createRelationship(
             brand.id,
             carModel.id,
-            DbRelationship.BrandHasCarModel,
+            RelationshipType.BrandHasCarModel,
         )
 
         expect(createdRelationship)
@@ -22,7 +22,7 @@ describe('Creating a ›has-car-model‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', DbRelationship.BrandHasCarModel)
+            .toHaveProperty('relationship_name', RelationshipType.BrandHasCarModel)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)
@@ -35,7 +35,7 @@ describe('Creating a ›has-car-model‹ relationship', () => {
         const createdRelationship = await createRelationship(
             brand.id,
             -42,
-            DbRelationship.BrandHasCarModel,
+            RelationshipType.BrandHasCarModel,
         )
 
         expect(createdRelationship)

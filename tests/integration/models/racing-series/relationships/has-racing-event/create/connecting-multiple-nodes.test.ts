@@ -4,7 +4,7 @@ import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {RacingSeries} from "../../../../../../../src/models/racing-series/RacingSeries"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 test('A RACING SERIES can have multiple ›has-racing-event‹ relationships', async () => {
@@ -18,7 +18,7 @@ test('A RACING SERIES can have multiple ›has-racing-event‹ relationships', a
 
     const relationships = await getRelationshipCollection(
         racingSeries.id,
-        DbRelationship.RacingSeriesHasRacingEvent,
+        RelationshipType.RacingSeriesHasRacingEvent,
         NodeTypeLabel.RacingEvent,
     )
 

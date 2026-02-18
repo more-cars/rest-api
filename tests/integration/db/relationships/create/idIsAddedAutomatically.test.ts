@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {createRelationship} from "../../../../../src/db/relationships/createRelationship"
-import {DbRelationship} from "../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../src/db/types/RelationshipType"
 import assert from "assert"
 import {FakeNodeInput} from "../../../../_toolbox/fixtures/nodes/FakeNodeInput"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
@@ -12,7 +12,7 @@ import {createNode as createCarModelNode} from "../../../../../src/db/nodes/car-
 test('ID is added when creating a relationship', async () => {
     const brand = await createBrandNode(FakeNodeInput(NodeTypeEnum.BRAND) as InputBrandCreate)
     const carModel = await createCarModelNode(FakeNodeInput(NodeTypeEnum.CAR_MODEL) as InputCarModelCreate)
-    const relationship = await createRelationship(brand.id, carModel.id, DbRelationship.BrandHasCarModel)
+    const relationship = await createRelationship(brand.id, carModel.id, RelationshipType.BrandHasCarModel)
 
     if (!relationship) {
         assert.fail('Relationship creation failed')

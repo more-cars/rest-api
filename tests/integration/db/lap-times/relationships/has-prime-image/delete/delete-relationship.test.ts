@@ -4,16 +4,16 @@ import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelatio
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {deleteSpecificRelationship} from "../../../../../../../src/db/relationships/deleteSpecificRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 describe('Trying to delete a ›has-prime-image‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.IMAGE, DbRelationship.LapTimeHasPrimeImage)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.IMAGE, RelationshipType.LapTimeHasPrimeImage)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.LapTimeHasPrimeImage,
+            RelationshipType.LapTimeHasPrimeImage,
         )
 
         expect(relationshipBefore)
@@ -22,13 +22,13 @@ describe('Trying to delete a ›has-prime-image‹ relationship', () => {
         await deleteSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.LapTimeHasPrimeImage,
+            RelationshipType.LapTimeHasPrimeImage,
         )
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.LapTimeHasPrimeImage,
+            RelationshipType.LapTimeHasPrimeImage,
         )
 
         expect(relationshipAfter)
@@ -42,7 +42,7 @@ describe('Trying to delete a ›has-prime-image‹ relationship', () => {
         const relationship = await deleteSpecificRelationship(
             lapTime.id,
             image.id,
-            DbRelationship.LapTimeHasPrimeImage,
+            RelationshipType.LapTimeHasPrimeImage,
         )
 
         expect(relationship)
@@ -53,7 +53,7 @@ describe('Trying to delete a ›has-prime-image‹ relationship', () => {
         const relationship = await deleteSpecificRelationship(
             -42,
             -43,
-            DbRelationship.LapTimeHasPrimeImage,
+            RelationshipType.LapTimeHasPrimeImage,
         )
 
         expect(relationship)

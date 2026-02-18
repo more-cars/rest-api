@@ -1,9 +1,9 @@
 import {NodeTypeLabel} from "../../src/db/NodeTypeLabel";
-import {DbRelationship} from "../../src/db/types/DbRelationship";
+import {RelationshipType} from "../../src/db/types/RelationshipType";
 
 // This considers only the outgoing relationships (has-relationships, not the belongs-to relationships).
 export function getAllRelationshipTypes() {
-    return new Map<NodeTypeLabel, Map<NodeTypeLabel, DbRelationship[]>>(
+    return new Map<NodeTypeLabel, Map<NodeTypeLabel, RelationshipType[]>>(
         [
             [
                 NodeTypeLabel.Company, new Map(
@@ -11,14 +11,14 @@ export function getAllRelationshipTypes() {
                     [
                         NodeTypeLabel.Brand,
                         [
-                            DbRelationship.CompanyHasBrand,
+                            RelationshipType.CompanyHasBrand,
                         ],
                     ],
                     [
                         NodeTypeLabel.Image,
                         [
-                            DbRelationship.CompanyHasImage,
-                            DbRelationship.CompanyHasPrimeImage,
+                            RelationshipType.CompanyHasImage,
+                            RelationshipType.CompanyHasPrimeImage,
                         ],
                     ],
                 ])
@@ -29,14 +29,14 @@ export function getAllRelationshipTypes() {
                     [
                         NodeTypeLabel.CarModel,
                         [
-                            DbRelationship.BrandHasCarModel,
+                            RelationshipType.BrandHasCarModel,
                         ],
                     ],
                     [
                         NodeTypeLabel.Image,
                         [
-                            DbRelationship.BrandHasImage,
-                            DbRelationship.BrandHasPrimeImage,
+                            RelationshipType.BrandHasImage,
+                            RelationshipType.BrandHasPrimeImage,
                         ],
                     ],
                 ])
@@ -47,20 +47,20 @@ export function getAllRelationshipTypes() {
                     [
                         NodeTypeLabel.CarModel,
                         [
-                            DbRelationship.CarModelHasSuccessor,
+                            RelationshipType.CarModelHasSuccessor,
                         ],
                     ],
                     [
                         NodeTypeLabel.CarModelVariant,
                         [
-                            DbRelationship.CarModelHasVariant,
+                            RelationshipType.CarModelHasVariant,
                         ],
                     ],
                     [
                         NodeTypeLabel.Image,
                         [
-                            DbRelationship.CarModelHasImage,
-                            DbRelationship.CarModelHasPrimeImage,
+                            RelationshipType.CarModelHasImage,
+                            RelationshipType.CarModelHasPrimeImage,
                         ],
                     ],
                 ])
@@ -71,20 +71,20 @@ export function getAllRelationshipTypes() {
                     [
                         NodeTypeLabel.SessionResult,
                         [
-                            DbRelationship.CarModelVariantAchievedSessionResult,
+                            RelationshipType.CarModelVariantAchievedSessionResult,
                         ],
                     ],
                     [
                         NodeTypeLabel.LapTime,
                         [
-                            DbRelationship.CarModelVariantAchievedLapTime,
+                            RelationshipType.CarModelVariantAchievedLapTime,
                         ],
                     ],
                     [
                         NodeTypeLabel.Image,
                         [
-                            DbRelationship.CarModelVariantHasImage,
-                            DbRelationship.CarModelVariantHasPrimeImage,
+                            RelationshipType.CarModelVariantHasImage,
+                            RelationshipType.CarModelVariantHasPrimeImage,
                         ],
                     ],
                 ])
@@ -95,14 +95,14 @@ export function getAllRelationshipTypes() {
                     [
                         NodeTypeLabel.TrackLayout,
                         [
-                            DbRelationship.RaceTrackHasLayout,
+                            RelationshipType.RaceTrackHasLayout,
                         ],
                     ],
                     [
                         NodeTypeLabel.Image,
                         [
-                            DbRelationship.RaceTrackHasImage,
-                            DbRelationship.RaceTrackHasPrimeImage,
+                            RelationshipType.RaceTrackHasImage,
+                            RelationshipType.RaceTrackHasPrimeImage,
                         ],
                     ],
                 ]),
@@ -113,13 +113,13 @@ export function getAllRelationshipTypes() {
                     [
                         NodeTypeLabel.LapTime,
                         [
-                            DbRelationship.TrackLayoutHasLapTime,
+                            RelationshipType.TrackLayoutHasLapTime,
                         ],
                     ], [
                     NodeTypeLabel.Image,
                     [
-                        DbRelationship.TrackLayoutHasImage,
-                        DbRelationship.TrackLayoutHasPrimeImage,
+                        RelationshipType.TrackLayoutHasImage,
+                        RelationshipType.TrackLayoutHasPrimeImage,
                     ],
                 ],
                 ])
@@ -130,14 +130,14 @@ export function getAllRelationshipTypes() {
                     [
                         NodeTypeLabel.RacingEvent,
                         [
-                            DbRelationship.RacingSeriesHasRacingEvent,
+                            RelationshipType.RacingSeriesHasRacingEvent,
                         ],
                     ],
                     [
                         NodeTypeLabel.Image,
                         [
-                            DbRelationship.RacingSeriesHasImage,
-                            DbRelationship.RacingSeriesHasPrimeImage,
+                            RelationshipType.RacingSeriesHasImage,
+                            RelationshipType.RacingSeriesHasPrimeImage,
                         ],
                     ],
                 ])
@@ -148,32 +148,32 @@ export function getAllRelationshipTypes() {
                     [
                         NodeTypeLabel.RacingEvent,
                         [
-                            DbRelationship.RacingEventIsFollowedByEvent,
+                            RelationshipType.RacingEventIsFollowedByEvent,
                         ],
                     ],
                     [
                         NodeTypeLabel.RaceTrack,
                         [
-                            DbRelationship.RacingEventTookPlaceAtRaceTrack,
+                            RelationshipType.RacingEventTookPlaceAtRaceTrack,
                         ],
                     ],
                     [
                         NodeTypeLabel.TrackLayout,
                         [
-                            DbRelationship.RacingEventUsedTheTrackLayout,
+                            RelationshipType.RacingEventUsedTheTrackLayout,
                         ],
                     ],
                     [
                         NodeTypeLabel.RacingSession,
                         [
-                            DbRelationship.RacingEventHasRacingSession,
+                            RelationshipType.RacingEventHasRacingSession,
                         ],
                     ],
                     [
                         NodeTypeLabel.Image,
                         [
-                            DbRelationship.RacingEventHasImage,
-                            DbRelationship.RacingEventHasPrimeImage,
+                            RelationshipType.RacingEventHasImage,
+                            RelationshipType.RacingEventHasPrimeImage,
                         ],
                     ],
                 ])
@@ -184,14 +184,14 @@ export function getAllRelationshipTypes() {
                     [
                         NodeTypeLabel.SessionResult,
                         [
-                            DbRelationship.RacingSessionHasSessionResult,
+                            RelationshipType.RacingSessionHasSessionResult,
                         ],
                     ],
                     [
                         NodeTypeLabel.Image,
                         [
-                            DbRelationship.RacingSessionHasImage,
-                            DbRelationship.RacingSessionHasPrimeImage,
+                            RelationshipType.RacingSessionHasImage,
+                            RelationshipType.RacingSessionHasPrimeImage,
                         ],
                     ],
                 ])
@@ -202,14 +202,14 @@ export function getAllRelationshipTypes() {
                     [
                         NodeTypeLabel.LapTime,
                         [
-                            DbRelationship.SessionResultHasLapTime,
+                            RelationshipType.SessionResultHasLapTime,
                         ],
                     ],
                     [
                         NodeTypeLabel.Image,
                         [
-                            DbRelationship.SessionResultHasImage,
-                            DbRelationship.SessionResultHasPrimeImage,
+                            RelationshipType.SessionResultHasImage,
+                            RelationshipType.SessionResultHasPrimeImage,
                         ],
                     ],
                 ])
@@ -220,8 +220,8 @@ export function getAllRelationshipTypes() {
                     [
                         NodeTypeLabel.Image,
                         [
-                            DbRelationship.LapTimeHasImage,
-                            DbRelationship.LapTimeHasPrimeImage,
+                            RelationshipType.LapTimeHasImage,
+                            RelationshipType.LapTimeHasPrimeImage,
                         ],
                     ],
                 ])
@@ -232,20 +232,20 @@ export function getAllRelationshipTypes() {
                     [
                         NodeTypeLabel.CarModelVariant,
                         [
-                            DbRelationship.RacingGameFeaturesCarModelVariant,
+                            RelationshipType.RacingGameFeaturesCarModelVariant,
                         ],
                     ],
                     [
                         NodeTypeLabel.TrackLayout,
                         [
-                            DbRelationship.RacingGameFeaturesTrackLayout,
+                            RelationshipType.RacingGameFeaturesTrackLayout,
                         ],
                     ],
                     [
                         NodeTypeLabel.Image,
                         [
-                            DbRelationship.RacingGameHasImage,
-                            DbRelationship.RacingGameHasPrimeImage,
+                            RelationshipType.RacingGameHasImage,
+                            RelationshipType.RacingGameHasPrimeImage,
                         ],
                     ],
                 ])
@@ -256,14 +256,14 @@ export function getAllRelationshipTypes() {
                     [
                         NodeTypeLabel.RacingGame,
                         [
-                            DbRelationship.GamingPlatformFeaturesRacingGame,
+                            RelationshipType.GamingPlatformFeaturesRacingGame,
                         ],
                     ],
                     [
                         NodeTypeLabel.Image,
                         [
-                            DbRelationship.GamingPlatformHasImage,
-                            DbRelationship.GamingPlatformHasPrimeImage,
+                            RelationshipType.GamingPlatformHasImage,
+                            RelationshipType.GamingPlatformHasPrimeImage,
                         ],
                     ],
                 ])

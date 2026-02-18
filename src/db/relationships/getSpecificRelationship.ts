@@ -1,5 +1,5 @@
 import neo4j, {Node, Relationship} from "neo4j-driver"
-import type {DbRelationship} from "../types/DbRelationship"
+import type {RelationshipType} from "../types/RelationshipType"
 import type {BaseRelationship} from "../types/BaseRelationship"
 import {getRelationshipSpecification} from "./getRelationshipSpecification"
 import {RelationshipDirection} from "../types/RelationshipDirection"
@@ -10,7 +10,7 @@ import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 export async function getSpecificRelationship(
     startNodeId: number,
     endNodeId: number,
-    relationshipType: DbRelationship,
+    relationshipType: RelationshipType,
 ): Promise<false | BaseRelationship> {
     const relationshipSpecs = getRelationshipSpecification(relationshipType)
     const dbRelationshipName = relationshipSpecs.relationshipName

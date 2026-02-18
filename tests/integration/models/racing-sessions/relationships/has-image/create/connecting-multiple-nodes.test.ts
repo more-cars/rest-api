@@ -4,7 +4,7 @@ import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {RacingSession} from "../../../../../../../src/models/racing-sessions/RacingSession"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 test('A RACING SESSION can have multiple ›has-image‹ relationships', async () => {
@@ -18,7 +18,7 @@ test('A RACING SESSION can have multiple ›has-image‹ relationships', async (
 
     const relationships = await getRelationshipCollection(
         racingSession.id,
-        DbRelationship.RacingSessionHasImage,
+        RelationshipType.RacingSessionHasImage,
         NodeTypeLabel.Image,
     )
 

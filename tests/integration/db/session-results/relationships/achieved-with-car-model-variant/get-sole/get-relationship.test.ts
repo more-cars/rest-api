@@ -3,16 +3,16 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 describe('Requesting a ›achieved-with-car-model-variant‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const relationship = await seedRelationship(NodeTypeEnum.SESSION_RESULT, NodeTypeEnum.CAR_MODEL_VARIANT, DbRelationship.SessionResultAchievedWithCarModelVariant)
+        const relationship = await seedRelationship(NodeTypeEnum.SESSION_RESULT, NodeTypeEnum.CAR_MODEL_VARIANT, RelationshipType.SessionResultAchievedWithCarModelVariant)
 
         const relationships = await getRelationshipCollection(
             relationship.start_node_id,
-            DbRelationship.SessionResultAchievedWithCarModelVariant,
+            RelationshipType.SessionResultAchievedWithCarModelVariant,
             NodeTypeLabel.CarModelVariant,
         )
 
@@ -25,7 +25,7 @@ describe('Requesting a ›achieved-with-car-model-variant‹ relationship', () =
 
         const relationships = await getRelationshipCollection(
             sessionResult.id,
-            DbRelationship.SessionResultAchievedWithCarModelVariant,
+            RelationshipType.SessionResultAchievedWithCarModelVariant,
             NodeTypeLabel.CarModelVariant,
         )
 
@@ -36,7 +36,7 @@ describe('Requesting a ›achieved-with-car-model-variant‹ relationship', () =
     test('neither node, nor relationship exist', async () => {
         const relationships = await getRelationshipCollection(
             -42,
-            DbRelationship.SessionResultAchievedWithCarModelVariant,
+            RelationshipType.SessionResultAchievedWithCarModelVariant,
             NodeTypeLabel.CarModelVariant,
         )
 

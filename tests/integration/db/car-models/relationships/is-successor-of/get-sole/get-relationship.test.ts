@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
@@ -8,11 +8,11 @@ import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 describe('Requesting a ›is-successor-of‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const relationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.CAR_MODEL, DbRelationship.CarModelIsSuccessorOf)
+        const relationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.CAR_MODEL, RelationshipType.CarModelIsSuccessorOf)
 
         const relationships = await getRelationshipCollection(
             relationship.start_node_id,
-            DbRelationship.CarModelIsSuccessorOf,
+            RelationshipType.CarModelIsSuccessorOf,
             NodeTypeLabel.CarModel,
         )
 
@@ -25,7 +25,7 @@ describe('Requesting a ›is-successor-of‹ relationship', () => {
 
         const relationships = await getRelationshipCollection(
             carModel.id,
-            DbRelationship.CarModelIsSuccessorOf,
+            RelationshipType.CarModelIsSuccessorOf,
             NodeTypeLabel.CarModel,
         )
 
@@ -36,7 +36,7 @@ describe('Requesting a ›is-successor-of‹ relationship', () => {
     test('neither node, nor relationship exist', async () => {
         const relationships = await getRelationshipCollection(
             -42,
-            DbRelationship.CarModelIsSuccessorOf,
+            RelationshipType.CarModelIsSuccessorOf,
             NodeTypeLabel.CarModel,
         )
 

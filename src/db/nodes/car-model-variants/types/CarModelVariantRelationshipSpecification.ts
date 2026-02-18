@@ -1,40 +1,40 @@
 import {RelationshipSpecification} from "../../../types/RelationshipSpecification"
-import {DbRelationship} from "../../../types/DbRelationship"
+import {RelationshipType} from "../../../types/RelationshipType"
 import {NodeTypeLabel} from "../../../NodeTypeLabel"
 import {RelationshipTypeNeo4j} from "../../../types/RelationshipTypeNeo4j"
 
 export const CarModelVariantRelationshipSpecification: RelationshipSpecification[] = [
-    [DbRelationship.CarModelVariantIsVariantOf, {
+    [RelationshipType.CarModelVariantIsVariantOf, {
         startNodeLabel: NodeTypeLabel.CarModelVariant,
         endNodeLabel: NodeTypeLabel.CarModel,
         relationshipName: RelationshipTypeNeo4j.CarModelVariantIsVariantOf,
         isReverseRelationship: true,
     }],
-    [DbRelationship.CarModelVariantAchievedSessionResult, {
+    [RelationshipType.CarModelVariantAchievedSessionResult, {
         startNodeLabel: NodeTypeLabel.CarModelVariant,
         endNodeLabel: NodeTypeLabel.SessionResult,
         relationshipName: RelationshipTypeNeo4j.CarModelVariantAchievedSessionResult,
         isReverseRelationship: false,
     }],
-    [DbRelationship.CarModelVariantAchievedLapTime, {
+    [RelationshipType.CarModelVariantAchievedLapTime, {
         startNodeLabel: NodeTypeLabel.CarModelVariant,
         endNodeLabel: NodeTypeLabel.LapTime,
         relationshipName: RelationshipTypeNeo4j.CarModelVariantAchievedLapTime,
         isReverseRelationship: false,
     }],
-    [DbRelationship.CarModelVariantIsFeaturedInRacingGame, {
+    [RelationshipType.CarModelVariantIsFeaturedInRacingGame, {
         startNodeLabel: NodeTypeLabel.CarModelVariant,
         endNodeLabel: NodeTypeLabel.RacingGame,
         relationshipName: RelationshipTypeNeo4j.CarModelVariantIsFeaturedInRacingGame,
         isReverseRelationship: true,
     }],
-    [DbRelationship.CarModelVariantHasImage, {
+    [RelationshipType.CarModelVariantHasImage, {
         startNodeLabel: NodeTypeLabel.CarModelVariant,
         endNodeLabel: NodeTypeLabel.Image,
         relationshipName: RelationshipTypeNeo4j.CarModelVariantHasImage,
         isReverseRelationship: false,
     }],
-    [DbRelationship.CarModelVariantHasPrimeImage, {
+    [RelationshipType.CarModelVariantHasPrimeImage, {
         startNodeLabel: NodeTypeLabel.CarModelVariant,
         endNodeLabel: NodeTypeLabel.Image,
         relationshipName: RelationshipTypeNeo4j.CarModelVariantHasPrimeImage,

@@ -2,15 +2,15 @@ import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {Brand} from "../../../../../../../src/models/brands/Brand"
 
 describe('Requesting all ›has-car-model‹ relationships', () => {
     test('node and relationships exist', async () => {
         const brand = await seedNode(NodeTypeEnum.BRAND)
-        await seedRelationshipForStartNode(brand.id, NodeTypeEnum.CAR_MODEL, DbRelationship.BrandHasCarModel)
-        await seedRelationshipForStartNode(brand.id, NodeTypeEnum.CAR_MODEL, DbRelationship.BrandHasCarModel)
+        await seedRelationshipForStartNode(brand.id, NodeTypeEnum.CAR_MODEL, RelationshipType.BrandHasCarModel)
+        await seedRelationshipForStartNode(brand.id, NodeTypeEnum.CAR_MODEL, RelationshipType.BrandHasCarModel)
 
         const relationships = await Brand.getAllHasCarModelRelationships(brand.id)
 

@@ -3,17 +3,17 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {deleteSpecificRelationship} from "../../../../../../../src/db/relationships/deleteSpecificRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 describe('Trying to delete a ›is-successor-of‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.CAR_MODEL, DbRelationship.CarModelIsSuccessorOf)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.CAR_MODEL, RelationshipType.CarModelIsSuccessorOf)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.CarModelIsSuccessorOf,
+            RelationshipType.CarModelIsSuccessorOf,
         )
 
         expect(relationshipBefore)
@@ -22,13 +22,13 @@ describe('Trying to delete a ›is-successor-of‹ relationship', () => {
         await deleteSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.CarModelIsSuccessorOf,
+            RelationshipType.CarModelIsSuccessorOf,
         )
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.CarModelIsSuccessorOf,
+            RelationshipType.CarModelIsSuccessorOf,
         )
 
         expect(relationshipAfter)
@@ -42,7 +42,7 @@ describe('Trying to delete a ›is-successor-of‹ relationship', () => {
         const relationship = await deleteSpecificRelationship(
             carModel.id,
             partner.id,
-            DbRelationship.CarModelIsSuccessorOf,
+            RelationshipType.CarModelIsSuccessorOf,
         )
 
         expect(relationship)
@@ -53,7 +53,7 @@ describe('Trying to delete a ›is-successor-of‹ relationship', () => {
         const relationship = await deleteSpecificRelationship(
             -42,
             -43,
-            DbRelationship.CarModelIsSuccessorOf,
+            RelationshipType.CarModelIsSuccessorOf,
         )
 
         expect(relationship)

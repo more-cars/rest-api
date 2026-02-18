@@ -3,18 +3,18 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 describe('Requesting all ›is-featured-in-racing-game‹ relationships', () => {
     test('node and relationships exist', async () => {
         const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)
-        await seedRelationshipForStartNode(carModelVariant.id, NodeTypeEnum.RACING_GAME, DbRelationship.CarModelVariantIsFeaturedInRacingGame)
-        await seedRelationshipForStartNode(carModelVariant.id, NodeTypeEnum.RACING_GAME, DbRelationship.CarModelVariantIsFeaturedInRacingGame)
+        await seedRelationshipForStartNode(carModelVariant.id, NodeTypeEnum.RACING_GAME, RelationshipType.CarModelVariantIsFeaturedInRacingGame)
+        await seedRelationshipForStartNode(carModelVariant.id, NodeTypeEnum.RACING_GAME, RelationshipType.CarModelVariantIsFeaturedInRacingGame)
 
         const relationships = await getRelationshipCollection(
             carModelVariant.id,
-            DbRelationship.CarModelVariantIsFeaturedInRacingGame,
+            RelationshipType.CarModelVariantIsFeaturedInRacingGame,
             NodeTypeLabel.RacingGame,
         )
 
@@ -27,7 +27,7 @@ describe('Requesting all ›is-featured-in-racing-game‹ relationships', () => 
 
         const relationships = await getRelationshipCollection(
             carModelVariant.id,
-            DbRelationship.CarModelVariantIsFeaturedInRacingGame,
+            RelationshipType.CarModelVariantIsFeaturedInRacingGame,
             NodeTypeLabel.RacingGame,
         )
 
@@ -38,7 +38,7 @@ describe('Requesting all ›is-featured-in-racing-game‹ relationships', () => 
     test('neither node, nor relationships exist', async () => {
         const relationships = await getRelationshipCollection(
             -42,
-            DbRelationship.CarModelVariantIsFeaturedInRacingGame,
+            RelationshipType.CarModelVariantIsFeaturedInRacingGame,
             NodeTypeLabel.RacingGame,
         )
 

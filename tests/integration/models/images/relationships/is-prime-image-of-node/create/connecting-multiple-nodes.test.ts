@@ -4,7 +4,7 @@ import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {Image} from "../../../../../../../src/models/images/Image"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 test('A IMAGE can have multiple ›is-prime-image-of-node‹ relationships', async () => {
     const image = await seedNode(NodeTypeEnum.IMAGE)
@@ -17,7 +17,7 @@ test('A IMAGE can have multiple ›is-prime-image-of-node‹ relationships', asy
 
     const relationships = await getRelationshipCollection(
         image.id,
-        DbRelationship.ImageIsPrimeImageOfNode,
+        RelationshipType.ImageIsPrimeImageOfNode,
     )
 
     expect(relationships.length)

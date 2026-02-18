@@ -1,13 +1,13 @@
-import {DbRelationship} from "../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../src/db/types/RelationshipType"
 
-export function isRelationshipReversedInOldDb(newRelationshipType: DbRelationship) {
+export function isRelationshipReversedInOldDb(newRelationshipType: RelationshipType) {
     return [
-        DbRelationship.CarModelHasSuccessor,
-        DbRelationship.CarModelVariantAchievedLapTime,
-        DbRelationship.CarModelVariantAchievedSessionResult,
-        DbRelationship.TrackLayoutHasLapTime,
-        DbRelationship.RacingEventIsFollowedByEvent,
-        DbRelationship.SessionResultHasLapTime,
-        DbRelationship.NodeHasPrimeImage,
+        RelationshipType.CarModelHasSuccessor,
+        RelationshipType.CarModelVariantAchievedLapTime,
+        RelationshipType.CarModelVariantAchievedSessionResult,
+        RelationshipType.TrackLayoutHasLapTime,
+        RelationshipType.RacingEventIsFollowedByEvent,
+        RelationshipType.SessionResultHasLapTime,
+        RelationshipType.NodeHasPrimeImage,
     ].includes(newRelationshipType)
 }

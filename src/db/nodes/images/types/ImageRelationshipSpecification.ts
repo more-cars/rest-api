@@ -1,16 +1,16 @@
 import {RelationshipSpecification} from "../../../types/RelationshipSpecification"
-import {DbRelationship} from "../../../types/DbRelationship"
+import {RelationshipType} from "../../../types/RelationshipType"
 import {NodeTypeLabel} from "../../../NodeTypeLabel"
 import {RelationshipTypeNeo4j} from "../../../types/RelationshipTypeNeo4j"
 
 export const ImageRelationshipSpecification: RelationshipSpecification[] = [
-    [DbRelationship.ImageBelongsToNode, {
+    [RelationshipType.ImageBelongsToNode, {
         startNodeLabel: NodeTypeLabel.Image,
         endNodeLabel: NodeTypeLabel.Node,
         relationshipName: RelationshipTypeNeo4j.ImageBelongsToNode,
         isReverseRelationship: true,
     }],
-    [DbRelationship.ImageIsPrimeImageOfNode, {
+    [RelationshipType.ImageIsPrimeImageOfNode, {
         startNodeLabel: NodeTypeLabel.Image,
         endNodeLabel: NodeTypeLabel.Node,
         relationshipName: RelationshipTypeNeo4j.ImageIsPrimeImageOfNode,

@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {SessionResult} from "../../../../../../../src/models/session-results/SessionResult"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
@@ -11,7 +11,7 @@ import {RelationshipNotFoundError} from "../../../../../../../src/models/types/R
 
 describe('Requesting a ›achieved-with-car-model-variant‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(NodeTypeEnum.SESSION_RESULT, NodeTypeEnum.CAR_MODEL_VARIANT, DbRelationship.SessionResultAchievedWithCarModelVariant)
+        const expectedRelationship = await seedRelationship(NodeTypeEnum.SESSION_RESULT, NodeTypeEnum.CAR_MODEL_VARIANT, RelationshipType.SessionResultAchievedWithCarModelVariant)
         const expectedCarModelVariantId = expectedRelationship.start_node_id
         const expectedSessionResultId = expectedRelationship.end_node_id
         const actualRelationship = await SessionResult.getAchievedWithCarModelVariantRelationship(expectedCarModelVariantId)

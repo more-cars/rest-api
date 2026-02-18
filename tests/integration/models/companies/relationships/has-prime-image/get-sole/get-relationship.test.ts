@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {Company} from "../../../../../../../src/models/companies/Company"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
@@ -11,7 +11,7 @@ import {RelationshipNotFoundError} from "../../../../../../../src/models/types/R
 
 describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(NodeTypeEnum.COMPANY, NodeTypeEnum.IMAGE, DbRelationship.CompanyHasPrimeImage)
+        const expectedRelationship = await seedRelationship(NodeTypeEnum.COMPANY, NodeTypeEnum.IMAGE, RelationshipType.CompanyHasPrimeImage)
         const actualRelationship = await Company.getHasPrimeImageRelationship(expectedRelationship.start_node_id)
 
         expect(validateJson(actualRelationship, RelationshipSchema))

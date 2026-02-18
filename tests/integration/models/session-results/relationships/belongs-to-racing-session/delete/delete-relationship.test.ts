@@ -4,7 +4,7 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
 
@@ -41,12 +41,12 @@ describe('Deleting a ›belongs-to-racing-session‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›belongs-to-racing-session‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.SESSION_RESULT, NodeTypeEnum.RACING_SESSION, DbRelationship.SessionResultBelongsToRacingSession)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.SESSION_RESULT, NodeTypeEnum.RACING_SESSION, RelationshipType.SessionResultBelongsToRacingSession)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.SessionResultBelongsToRacingSession,
+            RelationshipType.SessionResultBelongsToRacingSession,
         )
 
         expect(relationshipBefore)
@@ -57,7 +57,7 @@ describe('Deleting a ›belongs-to-racing-session‹ relationship', () => {
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.SessionResultBelongsToRacingSession,
+            RelationshipType.SessionResultBelongsToRacingSession,
         )
 
         expect(relationshipAfter)

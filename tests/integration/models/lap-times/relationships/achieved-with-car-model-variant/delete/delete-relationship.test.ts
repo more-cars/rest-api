@@ -4,7 +4,7 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
 
@@ -41,12 +41,12 @@ describe('Deleting a ›achieved-with-car-model-variant‹ relationship', () => 
     })
 
     test('both nodes exist and have a ›achieved-with-car-model-variant‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.CAR_MODEL_VARIANT, DbRelationship.LapTimeAchievedWithCarModelVariant)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.CAR_MODEL_VARIANT, RelationshipType.LapTimeAchievedWithCarModelVariant)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.LapTimeAchievedWithCarModelVariant,
+            RelationshipType.LapTimeAchievedWithCarModelVariant,
         )
 
         expect(relationshipBefore)
@@ -57,7 +57,7 @@ describe('Deleting a ›achieved-with-car-model-variant‹ relationship', () => 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.LapTimeAchievedWithCarModelVariant,
+            RelationshipType.LapTimeAchievedWithCarModelVariant,
         )
 
         expect(relationshipAfter)

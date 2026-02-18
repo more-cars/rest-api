@@ -5,7 +5,7 @@ import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 describe('Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship', () => {
     test('with valid data', async () => {
@@ -15,7 +15,7 @@ describe('Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relations
         const createdRelationship = await createRelationship(
             <%= h.changeCase.camel(startNodeType) %>.id,
             <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>.id,
-            DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
+            RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
         )
 
         expect(createdRelationship)
@@ -25,7 +25,7 @@ describe('Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relations
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
+            .toHaveProperty('relationship_name', RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)
@@ -38,7 +38,7 @@ describe('Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relations
         const createdRelationship = await createRelationship(
             <%= h.changeCase.camel(startNodeType) %>.id,
             -42,
-            DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
+            RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
         )
 
         expect(createdRelationship)

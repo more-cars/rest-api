@@ -4,7 +4,7 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
 
@@ -41,12 +41,12 @@ describe('Deleting a ›is-featured-in-racing-game‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›is-featured-in-racing-game‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL_VARIANT, NodeTypeEnum.RACING_GAME, DbRelationship.CarModelVariantIsFeaturedInRacingGame)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL_VARIANT, NodeTypeEnum.RACING_GAME, RelationshipType.CarModelVariantIsFeaturedInRacingGame)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.CarModelVariantIsFeaturedInRacingGame,
+            RelationshipType.CarModelVariantIsFeaturedInRacingGame,
         )
 
         expect(relationshipBefore)
@@ -57,7 +57,7 @@ describe('Deleting a ›is-featured-in-racing-game‹ relationship', () => {
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.CarModelVariantIsFeaturedInRacingGame,
+            RelationshipType.CarModelVariantIsFeaturedInRacingGame,
         )
 
         expect(relationshipAfter)

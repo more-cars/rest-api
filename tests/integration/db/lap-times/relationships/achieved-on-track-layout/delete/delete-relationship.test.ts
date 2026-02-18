@@ -4,16 +4,16 @@ import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelatio
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {deleteSpecificRelationship} from "../../../../../../../src/db/relationships/deleteSpecificRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 describe('Trying to delete a ›achieved-on-track-layout‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.TRACK_LAYOUT, DbRelationship.LapTimeAchievedOnTrackLayout)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.TRACK_LAYOUT, RelationshipType.LapTimeAchievedOnTrackLayout)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.LapTimeAchievedOnTrackLayout,
+            RelationshipType.LapTimeAchievedOnTrackLayout,
         )
 
         expect(relationshipBefore)
@@ -22,13 +22,13 @@ describe('Trying to delete a ›achieved-on-track-layout‹ relationship', () =>
         await deleteSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.LapTimeAchievedOnTrackLayout,
+            RelationshipType.LapTimeAchievedOnTrackLayout,
         )
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.LapTimeAchievedOnTrackLayout,
+            RelationshipType.LapTimeAchievedOnTrackLayout,
         )
 
         expect(relationshipAfter)
@@ -42,7 +42,7 @@ describe('Trying to delete a ›achieved-on-track-layout‹ relationship', () =>
         const relationship = await deleteSpecificRelationship(
             lapTime.id,
             trackLayout.id,
-            DbRelationship.LapTimeAchievedOnTrackLayout,
+            RelationshipType.LapTimeAchievedOnTrackLayout,
         )
 
         expect(relationship)
@@ -53,7 +53,7 @@ describe('Trying to delete a ›achieved-on-track-layout‹ relationship', () =>
         const relationship = await deleteSpecificRelationship(
             -42,
             -43,
-            DbRelationship.LapTimeAchievedOnTrackLayout,
+            RelationshipType.LapTimeAchievedOnTrackLayout,
         )
 
         expect(relationship)

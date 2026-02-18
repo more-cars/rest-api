@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 describe('Creating a ›is-successor-of‹ relationship', () => {
     test('with valid data', async () => {
@@ -12,7 +12,7 @@ describe('Creating a ›is-successor-of‹ relationship', () => {
         const createdRelationship = await createRelationship(
             carModel.id,
             partner.id,
-            DbRelationship.CarModelIsSuccessorOf,
+            RelationshipType.CarModelIsSuccessorOf,
         )
 
         expect(createdRelationship)
@@ -22,7 +22,7 @@ describe('Creating a ›is-successor-of‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', DbRelationship.CarModelIsSuccessorOf)
+            .toHaveProperty('relationship_name', RelationshipType.CarModelIsSuccessorOf)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)
@@ -35,7 +35,7 @@ describe('Creating a ›is-successor-of‹ relationship', () => {
         const createdRelationship = await createRelationship(
             carModel.id,
             -42,
-            DbRelationship.CarModelIsSuccessorOf,
+            RelationshipType.CarModelIsSuccessorOf,
         )
 
         expect(createdRelationship)

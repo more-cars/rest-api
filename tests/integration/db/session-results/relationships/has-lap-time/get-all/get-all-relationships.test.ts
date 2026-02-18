@@ -3,18 +3,18 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 describe('Requesting all ›has-lap-time‹ relationships', () => {
     test('node and relationships exist', async () => {
         const sessionResult = await seedNode(NodeTypeEnum.SESSION_RESULT)
-        await seedRelationshipForStartNode(sessionResult.id, NodeTypeEnum.LAP_TIME, DbRelationship.SessionResultHasLapTime)
-        await seedRelationshipForStartNode(sessionResult.id, NodeTypeEnum.LAP_TIME, DbRelationship.SessionResultHasLapTime)
+        await seedRelationshipForStartNode(sessionResult.id, NodeTypeEnum.LAP_TIME, RelationshipType.SessionResultHasLapTime)
+        await seedRelationshipForStartNode(sessionResult.id, NodeTypeEnum.LAP_TIME, RelationshipType.SessionResultHasLapTime)
 
         const relationships = await getRelationshipCollection(
             sessionResult.id,
-            DbRelationship.SessionResultHasLapTime,
+            RelationshipType.SessionResultHasLapTime,
             NodeTypeLabel.LapTime,
         )
 
@@ -27,7 +27,7 @@ describe('Requesting all ›has-lap-time‹ relationships', () => {
 
         const relationships = await getRelationshipCollection(
             sessionResult.id,
-            DbRelationship.SessionResultHasLapTime,
+            RelationshipType.SessionResultHasLapTime,
             NodeTypeLabel.LapTime,
         )
 
@@ -38,7 +38,7 @@ describe('Requesting all ›has-lap-time‹ relationships', () => {
     test('neither node, nor relationships exist', async () => {
         const relationships = await getRelationshipCollection(
             -42,
-            DbRelationship.SessionResultHasLapTime,
+            RelationshipType.SessionResultHasLapTime,
             NodeTypeLabel.LapTime,
         )
 

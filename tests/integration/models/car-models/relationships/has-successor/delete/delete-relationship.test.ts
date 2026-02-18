@@ -3,7 +3,7 @@ import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
@@ -41,12 +41,12 @@ describe('Deleting a ›has-successor‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-successor‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.CAR_MODEL, DbRelationship.CarModelHasSuccessor)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.CAR_MODEL, RelationshipType.CarModelHasSuccessor)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.CarModelHasSuccessor,
+            RelationshipType.CarModelHasSuccessor,
         )
 
         expect(relationshipBefore)
@@ -57,7 +57,7 @@ describe('Deleting a ›has-successor‹ relationship', () => {
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.CarModelHasSuccessor,
+            RelationshipType.CarModelHasSuccessor,
         )
 
         expect(relationshipAfter)

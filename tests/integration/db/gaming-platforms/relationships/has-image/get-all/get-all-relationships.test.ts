@@ -3,18 +3,18 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
         const gamingPlatform = await seedNode(NodeTypeEnum.GAMING_PLATFORM)
-        await seedRelationshipForStartNode(gamingPlatform.id, NodeTypeEnum.IMAGE, DbRelationship.GamingPlatformHasImage)
-        await seedRelationshipForStartNode(gamingPlatform.id, NodeTypeEnum.IMAGE, DbRelationship.GamingPlatformHasImage)
+        await seedRelationshipForStartNode(gamingPlatform.id, NodeTypeEnum.IMAGE, RelationshipType.GamingPlatformHasImage)
+        await seedRelationshipForStartNode(gamingPlatform.id, NodeTypeEnum.IMAGE, RelationshipType.GamingPlatformHasImage)
 
         const relationships = await getRelationshipCollection(
             gamingPlatform.id,
-            DbRelationship.GamingPlatformHasImage,
+            RelationshipType.GamingPlatformHasImage,
             NodeTypeLabel.Image,
         )
 
@@ -27,7 +27,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
 
         const relationships = await getRelationshipCollection(
             gamingPlatform.id,
-            DbRelationship.GamingPlatformHasImage,
+            RelationshipType.GamingPlatformHasImage,
             NodeTypeLabel.Image,
         )
 
@@ -38,7 +38,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
     test('neither node, nor relationships exist', async () => {
         const relationships = await getRelationshipCollection(
             -42,
-            DbRelationship.GamingPlatformHasImage,
+            RelationshipType.GamingPlatformHasImage,
             NodeTypeLabel.Image,
         )
 

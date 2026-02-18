@@ -4,16 +4,16 @@ import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelatio
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {deleteSpecificRelationship} from "../../../../../../../src/db/relationships/deleteSpecificRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 describe('Trying to delete a ›features-car-model-variant‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.RACING_GAME, NodeTypeEnum.CAR_MODEL_VARIANT, DbRelationship.RacingGameFeaturesCarModelVariant)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.RACING_GAME, NodeTypeEnum.CAR_MODEL_VARIANT, RelationshipType.RacingGameFeaturesCarModelVariant)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.RacingGameFeaturesCarModelVariant,
+            RelationshipType.RacingGameFeaturesCarModelVariant,
         )
 
         expect(relationshipBefore)
@@ -22,13 +22,13 @@ describe('Trying to delete a ›features-car-model-variant‹ relationship', () 
         await deleteSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.RacingGameFeaturesCarModelVariant,
+            RelationshipType.RacingGameFeaturesCarModelVariant,
         )
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.RacingGameFeaturesCarModelVariant,
+            RelationshipType.RacingGameFeaturesCarModelVariant,
         )
 
         expect(relationshipAfter)
@@ -42,7 +42,7 @@ describe('Trying to delete a ›features-car-model-variant‹ relationship', () 
         const relationship = await deleteSpecificRelationship(
             racingGame.id,
             carModelVariant.id,
-            DbRelationship.RacingGameFeaturesCarModelVariant,
+            RelationshipType.RacingGameFeaturesCarModelVariant,
         )
 
         expect(relationship)
@@ -53,7 +53,7 @@ describe('Trying to delete a ›features-car-model-variant‹ relationship', () 
         const relationship = await deleteSpecificRelationship(
             -42,
             -43,
-            DbRelationship.RacingGameFeaturesCarModelVariant,
+            RelationshipType.RacingGameFeaturesCarModelVariant,
         )
 
         expect(relationship)

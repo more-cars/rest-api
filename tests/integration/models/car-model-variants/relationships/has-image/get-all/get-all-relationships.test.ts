@@ -3,14 +3,14 @@ import {CarModelVariant} from "../../../../../../../src/models/car-model-variant
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
         const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)
-        await seedRelationshipForStartNode(carModelVariant.id, NodeTypeEnum.IMAGE, DbRelationship.CarModelVariantHasImage)
-        await seedRelationshipForStartNode(carModelVariant.id, NodeTypeEnum.IMAGE, DbRelationship.CarModelVariantHasImage)
+        await seedRelationshipForStartNode(carModelVariant.id, NodeTypeEnum.IMAGE, RelationshipType.CarModelVariantHasImage)
+        await seedRelationshipForStartNode(carModelVariant.id, NodeTypeEnum.IMAGE, RelationshipType.CarModelVariantHasImage)
 
         const relationships = await CarModelVariant.getAllHasImageRelationships(carModelVariant.id)
 

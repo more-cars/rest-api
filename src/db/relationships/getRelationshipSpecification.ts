@@ -1,4 +1,4 @@
-import {DbRelationship} from "../types/DbRelationship"
+import {RelationshipType} from "../types/RelationshipType"
 import {RelationshipTypeNeo4j} from "../types/RelationshipTypeNeo4j"
 import {NodeTypeLabel} from "../NodeTypeLabel"
 import {ImageRelationshipSpecification} from "../nodes/images/types/ImageRelationshipSpecification"
@@ -16,8 +16,8 @@ import {LapTimeRelationshipSpecification} from "../nodes/lap-times/types/LapTime
 import {RacingGameRelationshipSpecification} from "../nodes/racing-games/types/RacingGameRelationshipSpecification"
 import {GamingPlatformRelationshipSpecification} from "../nodes/gaming-platforms/types/GamingPlatformRelationshipSpecification"
 
-export function getRelationshipSpecification(relationshipType: DbRelationship) {
-    const mapping = new Map<DbRelationship, {
+export function getRelationshipSpecification(relationshipType: RelationshipType) {
+    const mapping = new Map<RelationshipType, {
         startNodeLabel: NodeTypeLabel,
         endNodeLabel: NodeTypeLabel,
         relationshipName: RelationshipTypeNeo4j,

@@ -3,14 +3,14 @@ import {TrackLayout} from "../../../../../../../src/models/track-layouts/TrackLa
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
         const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
-        await seedRelationshipForStartNode(trackLayout.id, NodeTypeEnum.IMAGE, DbRelationship.TrackLayoutHasImage)
-        await seedRelationshipForStartNode(trackLayout.id, NodeTypeEnum.IMAGE, DbRelationship.TrackLayoutHasImage)
+        await seedRelationshipForStartNode(trackLayout.id, NodeTypeEnum.IMAGE, RelationshipType.TrackLayoutHasImage)
+        await seedRelationshipForStartNode(trackLayout.id, NodeTypeEnum.IMAGE, RelationshipType.TrackLayoutHasImage)
 
         const relationships = await TrackLayout.getAllHasImageRelationships(trackLayout.id)
 

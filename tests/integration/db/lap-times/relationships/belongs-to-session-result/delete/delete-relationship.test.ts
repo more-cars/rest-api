@@ -4,16 +4,16 @@ import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelatio
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {deleteSpecificRelationship} from "../../../../../../../src/db/relationships/deleteSpecificRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 describe('Trying to delete a ›belongs-to-session-result‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.SESSION_RESULT, DbRelationship.LapTimeBelongsToSessionResult)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.SESSION_RESULT, RelationshipType.LapTimeBelongsToSessionResult)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.LapTimeBelongsToSessionResult,
+            RelationshipType.LapTimeBelongsToSessionResult,
         )
 
         expect(relationshipBefore)
@@ -22,13 +22,13 @@ describe('Trying to delete a ›belongs-to-session-result‹ relationship', () =
         await deleteSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.LapTimeBelongsToSessionResult,
+            RelationshipType.LapTimeBelongsToSessionResult,
         )
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.LapTimeBelongsToSessionResult,
+            RelationshipType.LapTimeBelongsToSessionResult,
         )
 
         expect(relationshipAfter)
@@ -42,7 +42,7 @@ describe('Trying to delete a ›belongs-to-session-result‹ relationship', () =
         const relationship = await deleteSpecificRelationship(
             lapTime.id,
             sessionResult.id,
-            DbRelationship.LapTimeBelongsToSessionResult,
+            RelationshipType.LapTimeBelongsToSessionResult,
         )
 
         expect(relationship)
@@ -53,7 +53,7 @@ describe('Trying to delete a ›belongs-to-session-result‹ relationship', () =
         const relationship = await deleteSpecificRelationship(
             -42,
             -43,
-            DbRelationship.LapTimeBelongsToSessionResult,
+            RelationshipType.LapTimeBelongsToSessionResult,
         )
 
         expect(relationship)

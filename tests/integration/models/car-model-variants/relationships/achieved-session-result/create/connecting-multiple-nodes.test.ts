@@ -4,7 +4,7 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {CarModelVariant} from "../../../../../../../src/models/car-model-variants/CarModelVariant"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 test('A CAR MODEL VARIANT can have multiple ›achieved-session-result‹ relationships', async () => {
@@ -16,7 +16,7 @@ test('A CAR MODEL VARIANT can have multiple ›achieved-session-result‹ relati
         await CarModelVariant.createAchievedSessionResultRelationship(carModelVariant.id, sessionResult.id)
     }
 
-    const relationships = await getRelationshipCollection(carModelVariant.id, DbRelationship.CarModelVariantAchievedSessionResult, NodeTypeLabel.SessionResult)
+    const relationships = await getRelationshipCollection(carModelVariant.id, RelationshipType.CarModelVariantAchievedSessionResult, NodeTypeLabel.SessionResult)
 
     expect(relationships.length)
         .toBe(sessionResultsAmount)

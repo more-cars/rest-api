@@ -3,7 +3,7 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
 import {Company} from "../../../../../../../src/models/companies/Company"
@@ -41,12 +41,12 @@ describe('Deleting a ›has-brand‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-brand‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.COMPANY, NodeTypeEnum.BRAND, DbRelationship.CompanyHasBrand)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.COMPANY, NodeTypeEnum.BRAND, RelationshipType.CompanyHasBrand)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.CompanyHasBrand,
+            RelationshipType.CompanyHasBrand,
         )
 
         expect(relationshipBefore)
@@ -57,7 +57,7 @@ describe('Deleting a ›has-brand‹ relationship', () => {
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.CompanyHasBrand,
+            RelationshipType.CompanyHasBrand,
         )
 
         expect(relationshipAfter)

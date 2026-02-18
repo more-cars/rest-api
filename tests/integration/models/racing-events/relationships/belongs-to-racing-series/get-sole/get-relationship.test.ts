@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {RacingEvent} from "../../../../../../../src/models/racing-events/RacingEvent"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
@@ -11,7 +11,7 @@ import {RelationshipNotFoundError} from "../../../../../../../src/models/types/R
 
 describe('Requesting a ›belongs-to-racing-series‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(NodeTypeEnum.RACING_EVENT, NodeTypeEnum.RACING_SERIES, DbRelationship.RacingEventBelongsToRacingSeries)
+        const expectedRelationship = await seedRelationship(NodeTypeEnum.RACING_EVENT, NodeTypeEnum.RACING_SERIES, RelationshipType.RacingEventBelongsToRacingSeries)
         const expectedRacingEventId = expectedRelationship.start_node_id
         const expectedRacingSeriesId = expectedRelationship.end_node_id
         const actualRelationship = await RacingEvent.getBelongsToRacingSeriesRelationship(expectedRacingEventId)

@@ -5,7 +5,7 @@ import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 test('Expecting an empty list when the relationship does not exist', async () => {
     const <%= h.changeCase.camel(startNodeType) %> = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>)
@@ -14,7 +14,7 @@ test('Expecting an empty list when the relationship does not exist', async () =>
     const relationship = await getSpecificRelationship(
         <%= h.changeCase.camel(startNodeType) %>.id,
         <%= h.changeCase.camel(endNodeType) %>.id,
-        DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
+        RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
     )
 
     expect(relationship)

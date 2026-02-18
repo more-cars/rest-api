@@ -3,14 +3,14 @@ import {SessionResult} from "../../../../../../../src/models/session-results/Ses
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
         const sessionResult = await seedNode(NodeTypeEnum.SESSION_RESULT)
-        await seedRelationshipForStartNode(sessionResult.id, NodeTypeEnum.IMAGE, DbRelationship.SessionResultHasImage)
-        await seedRelationshipForStartNode(sessionResult.id, NodeTypeEnum.IMAGE, DbRelationship.SessionResultHasImage)
+        await seedRelationshipForStartNode(sessionResult.id, NodeTypeEnum.IMAGE, RelationshipType.SessionResultHasImage)
+        await seedRelationshipForStartNode(sessionResult.id, NodeTypeEnum.IMAGE, RelationshipType.SessionResultHasImage)
 
         const relationships = await SessionResult.getAllHasImageRelationships(sessionResult.id)
 

@@ -4,7 +4,7 @@ import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {RaceTrack} from "../../../../../../../src/models/race-tracks/RaceTrack"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 test('A RACE TRACK can have multiple ›has-layout‹ relationships', async () => {
@@ -18,7 +18,7 @@ test('A RACE TRACK can have multiple ›has-layout‹ relationships', async () =
 
     const relationships = await getRelationshipCollection(
         raceTrack.id,
-        DbRelationship.RaceTrackHasLayout,
+        RelationshipType.RaceTrackHasLayout,
         NodeTypeLabel.TrackLayout,
     )
 

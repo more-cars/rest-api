@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
@@ -12,7 +12,7 @@ describe('Creating a ›has-image‹ relationship', () => {
         const createdRelationship = await createRelationship(
             lapTime.id,
             image.id,
-            DbRelationship.LapTimeHasImage,
+            RelationshipType.LapTimeHasImage,
         )
 
         expect(createdRelationship)
@@ -22,7 +22,7 @@ describe('Creating a ›has-image‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', DbRelationship.LapTimeHasImage)
+            .toHaveProperty('relationship_name', RelationshipType.LapTimeHasImage)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)
@@ -35,7 +35,7 @@ describe('Creating a ›has-image‹ relationship', () => {
         const createdRelationship = await createRelationship(
             lapTime.id,
             -42,
-            DbRelationship.LapTimeHasImage,
+            RelationshipType.LapTimeHasImage,
         )
 
         expect(createdRelationship)

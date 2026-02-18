@@ -1,22 +1,22 @@
 import {RelationshipSpecification} from "../../../types/RelationshipSpecification"
-import {DbRelationship} from "../../../types/DbRelationship"
+import {RelationshipType} from "../../../types/RelationshipType"
 import {NodeTypeLabel} from "../../../NodeTypeLabel"
 import {RelationshipTypeNeo4j} from "../../../types/RelationshipTypeNeo4j"
 
 export const RacingSeriesRelationshipSpecification: RelationshipSpecification[] = [
-    [DbRelationship.RacingSeriesHasRacingEvent, {
+    [RelationshipType.RacingSeriesHasRacingEvent, {
         startNodeLabel: NodeTypeLabel.RacingSeries,
         endNodeLabel: NodeTypeLabel.RacingEvent,
         relationshipName: RelationshipTypeNeo4j.RacingSeriesHasRacingEvent,
         isReverseRelationship: false,
     }],
-    [DbRelationship.RacingSeriesHasImage, {
+    [RelationshipType.RacingSeriesHasImage, {
         startNodeLabel: NodeTypeLabel.RacingSeries,
         endNodeLabel: NodeTypeLabel.Image,
         relationshipName: RelationshipTypeNeo4j.RacingSeriesHasImage,
         isReverseRelationship: false,
     }],
-    [DbRelationship.RacingSeriesHasPrimeImage, {
+    [RelationshipType.RacingSeriesHasPrimeImage, {
         startNodeLabel: NodeTypeLabel.RacingSeries,
         endNodeLabel: NodeTypeLabel.Image,
         relationshipName: RelationshipTypeNeo4j.RacingSeriesHasPrimeImage,

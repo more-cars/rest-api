@@ -4,16 +4,16 @@ import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelatio
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {deleteSpecificRelationship} from "../../../../../../../src/db/relationships/deleteSpecificRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 describe('Trying to delete a ›belongs-to-brand‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.BRAND, DbRelationship.CarModelBelongsToBrand)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.BRAND, RelationshipType.CarModelBelongsToBrand)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.CarModelBelongsToBrand,
+            RelationshipType.CarModelBelongsToBrand,
         )
 
         expect(relationshipBefore)
@@ -22,13 +22,13 @@ describe('Trying to delete a ›belongs-to-brand‹ relationship', () => {
         await deleteSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.CarModelBelongsToBrand,
+            RelationshipType.CarModelBelongsToBrand,
         )
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.CarModelBelongsToBrand,
+            RelationshipType.CarModelBelongsToBrand,
         )
 
         expect(relationshipAfter)
@@ -42,7 +42,7 @@ describe('Trying to delete a ›belongs-to-brand‹ relationship', () => {
         const relationship = await deleteSpecificRelationship(
             carModel.id,
             brand.id,
-            DbRelationship.CarModelBelongsToBrand,
+            RelationshipType.CarModelBelongsToBrand,
         )
 
         expect(relationship)
@@ -53,7 +53,7 @@ describe('Trying to delete a ›belongs-to-brand‹ relationship', () => {
         const relationship = await deleteSpecificRelationship(
             -42,
             -43,
-            DbRelationship.CarModelBelongsToBrand,
+            RelationshipType.CarModelBelongsToBrand,
         )
 
         expect(relationship)

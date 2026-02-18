@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
@@ -11,7 +11,7 @@ import {RelationshipNotFoundError} from "../../../../../../../src/models/types/R
 
 describe('Requesting a ›belongs-to-brand‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.BRAND, DbRelationship.CarModelBelongsToBrand)
+        const expectedRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.BRAND, RelationshipType.CarModelBelongsToBrand)
         const expectedCarModelId = expectedRelationship.start_node_id
         const expectedBrandId = expectedRelationship.end_node_id
         const actualRelationship = await CarModel.getBelongsToBrandRelationship(expectedCarModelId)

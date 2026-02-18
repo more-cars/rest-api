@@ -4,16 +4,16 @@ import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelatio
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {deleteSpecificRelationship} from "../../../../../../../src/db/relationships/deleteSpecificRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 describe('Trying to delete a ›has-racing-event‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.RACING_SERIES, NodeTypeEnum.RACING_EVENT, DbRelationship.RacingSeriesHasRacingEvent)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.RACING_SERIES, NodeTypeEnum.RACING_EVENT, RelationshipType.RacingSeriesHasRacingEvent)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.RacingSeriesHasRacingEvent,
+            RelationshipType.RacingSeriesHasRacingEvent,
         )
 
         expect(relationshipBefore)
@@ -22,13 +22,13 @@ describe('Trying to delete a ›has-racing-event‹ relationship', () => {
         await deleteSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.RacingSeriesHasRacingEvent,
+            RelationshipType.RacingSeriesHasRacingEvent,
         )
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.RacingSeriesHasRacingEvent,
+            RelationshipType.RacingSeriesHasRacingEvent,
         )
 
         expect(relationshipAfter)
@@ -42,7 +42,7 @@ describe('Trying to delete a ›has-racing-event‹ relationship', () => {
         const relationship = await deleteSpecificRelationship(
             racingSeries.id,
             racingEvent.id,
-            DbRelationship.RacingSeriesHasRacingEvent,
+            RelationshipType.RacingSeriesHasRacingEvent,
         )
 
         expect(relationship)
@@ -53,7 +53,7 @@ describe('Trying to delete a ›has-racing-event‹ relationship', () => {
         const relationship = await deleteSpecificRelationship(
             -42,
             -43,
-            DbRelationship.RacingSeriesHasRacingEvent,
+            RelationshipType.RacingSeriesHasRacingEvent,
         )
 
         expect(relationship)

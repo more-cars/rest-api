@@ -1,9 +1,9 @@
 import {NodeTypeLabel} from "../NodeTypeLabel"
-import {DbRelationship} from "./DbRelationship"
+import {RelationshipType} from "./RelationshipType"
 import {RelationshipTypeNeo4j} from "./RelationshipTypeNeo4j"
 
 export type RelationshipSpecification = [
-    DbRelationship, {
+    RelationshipType, {
         startNodeLabel: NodeTypeLabel
         endNodeLabel: NodeTypeLabel
         relationshipName: RelationshipTypeNeo4j

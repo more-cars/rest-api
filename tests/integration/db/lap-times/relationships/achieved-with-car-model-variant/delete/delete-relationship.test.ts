@@ -4,16 +4,16 @@ import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelatio
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {deleteSpecificRelationship} from "../../../../../../../src/db/relationships/deleteSpecificRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 describe('Trying to delete a ›achieved-with-car-model-variant‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.CAR_MODEL_VARIANT, DbRelationship.LapTimeAchievedWithCarModelVariant)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.CAR_MODEL_VARIANT, RelationshipType.LapTimeAchievedWithCarModelVariant)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.LapTimeAchievedWithCarModelVariant,
+            RelationshipType.LapTimeAchievedWithCarModelVariant,
         )
 
         expect(relationshipBefore)
@@ -22,13 +22,13 @@ describe('Trying to delete a ›achieved-with-car-model-variant‹ relationship'
         await deleteSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.LapTimeAchievedWithCarModelVariant,
+            RelationshipType.LapTimeAchievedWithCarModelVariant,
         )
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.LapTimeAchievedWithCarModelVariant,
+            RelationshipType.LapTimeAchievedWithCarModelVariant,
         )
 
         expect(relationshipAfter)
@@ -42,7 +42,7 @@ describe('Trying to delete a ›achieved-with-car-model-variant‹ relationship'
         const relationship = await deleteSpecificRelationship(
             lapTime.id,
             carModelVariant.id,
-            DbRelationship.LapTimeAchievedWithCarModelVariant,
+            RelationshipType.LapTimeAchievedWithCarModelVariant,
         )
 
         expect(relationship)
@@ -53,7 +53,7 @@ describe('Trying to delete a ›achieved-with-car-model-variant‹ relationship'
         const relationship = await deleteSpecificRelationship(
             -42,
             -43,
-            DbRelationship.LapTimeAchievedWithCarModelVariant,
+            RelationshipType.LapTimeAchievedWithCarModelVariant,
         )
 
         expect(relationship)

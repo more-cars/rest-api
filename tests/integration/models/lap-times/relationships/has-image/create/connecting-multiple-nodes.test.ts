@@ -4,7 +4,7 @@ import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {LapTime} from "../../../../../../../src/models/lap-times/LapTime"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 test('A LAP TIME can have multiple ›has-image‹ relationships', async () => {
@@ -18,7 +18,7 @@ test('A LAP TIME can have multiple ›has-image‹ relationships', async () => {
 
     const relationships = await getRelationshipCollection(
         lapTime.id,
-        DbRelationship.LapTimeHasImage,
+        RelationshipType.LapTimeHasImage,
         NodeTypeLabel.Image,
     )
 

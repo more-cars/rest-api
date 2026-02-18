@@ -3,14 +3,14 @@ import {RaceTrack} from "../../../../../../../src/models/race-tracks/RaceTrack"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
         const raceTrack = await seedNode(NodeTypeEnum.RACE_TRACK)
-        await seedRelationshipForStartNode(raceTrack.id, NodeTypeEnum.IMAGE, DbRelationship.RaceTrackHasImage)
-        await seedRelationshipForStartNode(raceTrack.id, NodeTypeEnum.IMAGE, DbRelationship.RaceTrackHasImage)
+        await seedRelationshipForStartNode(raceTrack.id, NodeTypeEnum.IMAGE, RelationshipType.RaceTrackHasImage)
+        await seedRelationshipForStartNode(raceTrack.id, NodeTypeEnum.IMAGE, RelationshipType.RaceTrackHasImage)
 
         const relationships = await RaceTrack.getAllHasImageRelationships(raceTrack.id)
 

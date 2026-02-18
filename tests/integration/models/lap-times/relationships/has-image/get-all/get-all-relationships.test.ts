@@ -3,14 +3,14 @@ import {LapTime} from "../../../../../../../src/models/lap-times/LapTime"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
         const lapTime = await seedNode(NodeTypeEnum.LAP_TIME)
-        await seedRelationshipForStartNode(lapTime.id, NodeTypeEnum.IMAGE, DbRelationship.LapTimeHasImage)
-        await seedRelationshipForStartNode(lapTime.id, NodeTypeEnum.IMAGE, DbRelationship.LapTimeHasImage)
+        await seedRelationshipForStartNode(lapTime.id, NodeTypeEnum.IMAGE, RelationshipType.LapTimeHasImage)
+        await seedRelationshipForStartNode(lapTime.id, NodeTypeEnum.IMAGE, RelationshipType.LapTimeHasImage)
 
         const relationships = await LapTime.getAllHasImageRelationships(lapTime.id)
 

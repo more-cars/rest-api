@@ -1,4 +1,4 @@
-export enum DbRelationship {
+export enum RelationshipType {
     NodeHasImage = 'NODE_HAS_IMAGE',
     NodeHasPrimeImage = 'NODE_HAS_PRIME_IMAGE',
     ImageBelongsToNode = 'IMAGE_BELONGS_TO_NODE',

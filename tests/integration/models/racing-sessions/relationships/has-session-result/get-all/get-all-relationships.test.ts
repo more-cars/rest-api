@@ -3,14 +3,14 @@ import {RacingSession} from "../../../../../../../src/models/racing-sessions/Rac
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 describe('Requesting all ›has-session-result‹ relationships', () => {
     test('node and relationships exist', async () => {
         const racingSession = await seedNode(NodeTypeEnum.RACING_SESSION)
-        await seedRelationshipForStartNode(racingSession.id, NodeTypeEnum.SESSION_RESULT, DbRelationship.RacingSessionHasSessionResult)
-        await seedRelationshipForStartNode(racingSession.id, NodeTypeEnum.SESSION_RESULT, DbRelationship.RacingSessionHasSessionResult)
+        await seedRelationshipForStartNode(racingSession.id, NodeTypeEnum.SESSION_RESULT, RelationshipType.RacingSessionHasSessionResult)
+        await seedRelationshipForStartNode(racingSession.id, NodeTypeEnum.SESSION_RESULT, RelationshipType.RacingSessionHasSessionResult)
 
         const relationships = await RacingSession.getAllHasSessionResultRelationships(racingSession.id)
 

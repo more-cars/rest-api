@@ -2,15 +2,15 @@ import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {Brand} from "../../../../../../../src/models/brands/Brand"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
         const brand = await seedNode(NodeTypeEnum.BRAND)
-        await seedRelationshipForStartNode(brand.id, NodeTypeEnum.IMAGE, DbRelationship.BrandHasImage)
-        await seedRelationshipForStartNode(brand.id, NodeTypeEnum.IMAGE, DbRelationship.BrandHasImage)
+        await seedRelationshipForStartNode(brand.id, NodeTypeEnum.IMAGE, RelationshipType.BrandHasImage)
+        await seedRelationshipForStartNode(brand.id, NodeTypeEnum.IMAGE, RelationshipType.BrandHasImage)
 
         const relationships = await Brand.getAllHasImageRelationships(brand.id)
 

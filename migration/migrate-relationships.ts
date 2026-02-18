@@ -10,7 +10,7 @@ import {createRelationship} from "../src/db/relationships/createRelationship"
 import {addMoreCarsIdToRelationship} from "../src/db/relationships/addMoreCarsIdToRelationship"
 import {addTimestampsToRelationship} from "../src/db/relationships/addTimestampsToRelationship"
 import {NodeTypeLabel} from "../src/db/NodeTypeLabel"
-import {DbRelationship} from "../src/db/types/DbRelationship"
+import {RelationshipType} from "../src/db/types/RelationshipType"
 
 migrateRelationshipsOfType().then(() => true)
 
@@ -89,7 +89,7 @@ async function determineRelationshipType() {
         throw new Error('Start node type missing')
     }
 
-    return relationshipType as DbRelationship
+    return relationshipType as RelationshipType
 }
 
 async function determineDeleteRelationships() {

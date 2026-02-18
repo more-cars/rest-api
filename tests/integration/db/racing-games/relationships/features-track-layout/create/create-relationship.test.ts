@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
@@ -12,7 +12,7 @@ describe('Creating a ›features-track-layout‹ relationship', () => {
         const createdRelationship = await createRelationship(
             racingGame.id,
             trackLayout.id,
-            DbRelationship.RacingGameFeaturesTrackLayout,
+            RelationshipType.RacingGameFeaturesTrackLayout,
         )
 
         expect(createdRelationship)
@@ -22,7 +22,7 @@ describe('Creating a ›features-track-layout‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', DbRelationship.RacingGameFeaturesTrackLayout)
+            .toHaveProperty('relationship_name', RelationshipType.RacingGameFeaturesTrackLayout)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)
@@ -35,7 +35,7 @@ describe('Creating a ›features-track-layout‹ relationship', () => {
         const createdRelationship = await createRelationship(
             racingGame.id,
             -42,
-            DbRelationship.RacingGameFeaturesTrackLayout,
+            RelationshipType.RacingGameFeaturesTrackLayout,
         )
 
         expect(createdRelationship)

@@ -1,19 +1,19 @@
 import {describe, expect, test} from 'vitest'
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {deleteSpecificRelationship} from "../../../../../../../src/db/relationships/deleteSpecificRelationship"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('Trying to delete a ›belongs-to-session-result‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.IMAGE, NodeTypeEnum.CAR_MODEL, DbRelationship.ImageBelongsToNode)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.IMAGE, NodeTypeEnum.CAR_MODEL, RelationshipType.ImageBelongsToNode)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.ImageBelongsToNode,
+            RelationshipType.ImageBelongsToNode,
         )
 
         expect(relationshipBefore)
@@ -22,13 +22,13 @@ describe('Trying to delete a ›belongs-to-session-result‹ relationship', () =
         await deleteSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.ImageBelongsToNode,
+            RelationshipType.ImageBelongsToNode,
         )
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.ImageBelongsToNode,
+            RelationshipType.ImageBelongsToNode,
         )
 
         expect(relationshipAfter)
@@ -42,7 +42,7 @@ describe('Trying to delete a ›belongs-to-session-result‹ relationship', () =
         const relationship = await deleteSpecificRelationship(
             lapTime.id,
             sessionResult.id,
-            DbRelationship.ImageBelongsToNode,
+            RelationshipType.ImageBelongsToNode,
         )
 
         expect(relationship)
@@ -53,7 +53,7 @@ describe('Trying to delete a ›belongs-to-session-result‹ relationship', () =
         const relationship = await deleteSpecificRelationship(
             -42,
             -43,
-            DbRelationship.ImageBelongsToNode,
+            RelationshipType.ImageBelongsToNode,
         )
 
         expect(relationship)

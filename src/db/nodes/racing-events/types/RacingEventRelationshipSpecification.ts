@@ -1,52 +1,52 @@
 import {RelationshipSpecification} from "../../../types/RelationshipSpecification"
-import {DbRelationship} from "../../../types/DbRelationship"
+import {RelationshipType} from "../../../types/RelationshipType"
 import {NodeTypeLabel} from "../../../NodeTypeLabel"
 import {RelationshipTypeNeo4j} from "../../../types/RelationshipTypeNeo4j"
 
 export const RacingEventRelationshipSpecification: RelationshipSpecification[] = [
-    [DbRelationship.RacingEventBelongsToRacingSeries, {
+    [RelationshipType.RacingEventBelongsToRacingSeries, {
         startNodeLabel: NodeTypeLabel.RacingEvent,
         endNodeLabel: NodeTypeLabel.RacingSeries,
         relationshipName: RelationshipTypeNeo4j.RacingEventBelongsToRacingSeries,
         isReverseRelationship: true,
     }],
-    [DbRelationship.RacingEventIsFollowedByEvent, {
+    [RelationshipType.RacingEventIsFollowedByEvent, {
         startNodeLabel: NodeTypeLabel.RacingEvent,
         endNodeLabel: NodeTypeLabel.RacingEvent,
         relationshipName: RelationshipTypeNeo4j.RacingEventIsFollowedByEvent,
         isReverseRelationship: false,
     }],
-    [DbRelationship.RacingEventFollowsEvent, {
+    [RelationshipType.RacingEventFollowsEvent, {
         startNodeLabel: NodeTypeLabel.RacingEvent,
         endNodeLabel: NodeTypeLabel.RacingEvent,
         relationshipName: RelationshipTypeNeo4j.RacingEventFollowsEvent,
         isReverseRelationship: true,
     }],
-    [DbRelationship.RacingEventTookPlaceAtRaceTrack, {
+    [RelationshipType.RacingEventTookPlaceAtRaceTrack, {
         startNodeLabel: NodeTypeLabel.RacingEvent,
         endNodeLabel: NodeTypeLabel.RaceTrack,
         relationshipName: RelationshipTypeNeo4j.RacingEventTookPlaceAtRaceTrack,
         isReverseRelationship: false,
     }],
-    [DbRelationship.RacingEventUsedTheTrackLayout, {
+    [RelationshipType.RacingEventUsedTheTrackLayout, {
         startNodeLabel: NodeTypeLabel.RacingEvent,
         endNodeLabel: NodeTypeLabel.TrackLayout,
         relationshipName: RelationshipTypeNeo4j.RacingEventUsedTheTrackLayout,
         isReverseRelationship: false,
     }],
-    [DbRelationship.RacingEventHasRacingSession, {
+    [RelationshipType.RacingEventHasRacingSession, {
         startNodeLabel: NodeTypeLabel.RacingEvent,
         endNodeLabel: NodeTypeLabel.RacingSession,
         relationshipName: RelationshipTypeNeo4j.RacingEventHasRacingSession,
         isReverseRelationship: false,
     }],
-    [DbRelationship.RacingEventHasImage, {
+    [RelationshipType.RacingEventHasImage, {
         startNodeLabel: NodeTypeLabel.RacingEvent,
         endNodeLabel: NodeTypeLabel.Image,
         relationshipName: RelationshipTypeNeo4j.RacingEventHasImage,
         isReverseRelationship: false,
     }],
-    [DbRelationship.RacingEventHasPrimeImage, {
+    [RelationshipType.RacingEventHasPrimeImage, {
         startNodeLabel: NodeTypeLabel.RacingEvent,
         endNodeLabel: NodeTypeLabel.Image,
         relationshipName: RelationshipTypeNeo4j.RacingEventHasPrimeImage,

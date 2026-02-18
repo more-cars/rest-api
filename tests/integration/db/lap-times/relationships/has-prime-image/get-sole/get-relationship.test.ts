@@ -3,16 +3,16 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const relationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.IMAGE, DbRelationship.LapTimeHasPrimeImage)
+        const relationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.IMAGE, RelationshipType.LapTimeHasPrimeImage)
 
         const relationships = await getRelationshipCollection(
             relationship.start_node_id,
-            DbRelationship.LapTimeHasPrimeImage,
+            RelationshipType.LapTimeHasPrimeImage,
             NodeTypeLabel.Image,
         )
 
@@ -25,7 +25,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
 
         const relationships = await getRelationshipCollection(
             lapTime.id,
-            DbRelationship.LapTimeHasPrimeImage,
+            RelationshipType.LapTimeHasPrimeImage,
             NodeTypeLabel.Image,
         )
 
@@ -36,7 +36,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('neither node, nor relationship exist', async () => {
         const relationships = await getRelationshipCollection(
             -42,
-            DbRelationship.LapTimeHasPrimeImage,
+            RelationshipType.LapTimeHasPrimeImage,
             NodeTypeLabel.Image,
         )
 

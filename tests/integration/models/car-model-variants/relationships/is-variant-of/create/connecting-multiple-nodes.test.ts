@@ -4,7 +4,7 @@ import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {CarModelVariant} from "../../../../../../../src/models/car-model-variants/CarModelVariant"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 test('A CAR MODEL VARIANT cannot have multiple ›is-variant-of‹ relationships', async () => {
@@ -18,7 +18,7 @@ test('A CAR MODEL VARIANT cannot have multiple ›is-variant-of‹ relationships
 
     const relationships = await getRelationshipCollection(
         carModelVariant.id,
-        DbRelationship.CarModelVariantIsVariantOf,
+        RelationshipType.CarModelVariantIsVariantOf,
         NodeTypeLabel.CarModel,
     )
 

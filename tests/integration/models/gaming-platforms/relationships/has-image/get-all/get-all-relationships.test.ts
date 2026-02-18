@@ -3,14 +3,14 @@ import {GamingPlatform} from "../../../../../../../src/models/gaming-platforms/G
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
         const gamingPlatform = await seedNode(NodeTypeEnum.GAMING_PLATFORM)
-        await seedRelationshipForStartNode(gamingPlatform.id, NodeTypeEnum.IMAGE, DbRelationship.GamingPlatformHasImage)
-        await seedRelationshipForStartNode(gamingPlatform.id, NodeTypeEnum.IMAGE, DbRelationship.GamingPlatformHasImage)
+        await seedRelationshipForStartNode(gamingPlatform.id, NodeTypeEnum.IMAGE, RelationshipType.GamingPlatformHasImage)
+        await seedRelationshipForStartNode(gamingPlatform.id, NodeTypeEnum.IMAGE, RelationshipType.GamingPlatformHasImage)
 
         const relationships = await GamingPlatform.getAllHasImageRelationships(gamingPlatform.id)
 

@@ -4,7 +4,7 @@ import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {GamingPlatform} from "../../../../../../../src/models/gaming-platforms/GamingPlatform"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 test('A GAMING PLATFORM can have multiple ›features-racing-game‹ relationships', async () => {
@@ -18,7 +18,7 @@ test('A GAMING PLATFORM can have multiple ›features-racing-game‹ relationshi
 
     const relationships = await getRelationshipCollection(
         gamingPlatform.id,
-        DbRelationship.GamingPlatformFeaturesRacingGame,
+        RelationshipType.GamingPlatformFeaturesRacingGame,
         NodeTypeLabel.RacingGame,
     )
 

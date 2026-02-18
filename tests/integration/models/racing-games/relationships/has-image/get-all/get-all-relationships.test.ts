@@ -3,14 +3,14 @@ import {RacingGame} from "../../../../../../../src/models/racing-games/RacingGam
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
         const racingGame = await seedNode(NodeTypeEnum.RACING_GAME)
-        await seedRelationshipForStartNode(racingGame.id, NodeTypeEnum.IMAGE, DbRelationship.RacingGameHasImage)
-        await seedRelationshipForStartNode(racingGame.id, NodeTypeEnum.IMAGE, DbRelationship.RacingGameHasImage)
+        await seedRelationshipForStartNode(racingGame.id, NodeTypeEnum.IMAGE, RelationshipType.RacingGameHasImage)
+        await seedRelationshipForStartNode(racingGame.id, NodeTypeEnum.IMAGE, RelationshipType.RacingGameHasImage)
 
         const relationships = await RacingGame.getAllHasImageRelationships(racingGame.id)
 

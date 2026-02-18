@@ -4,15 +4,15 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {Image} from "../../../../../../../src/models/images/Image"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {RelationType} from "../../../../../../../src/controllers/relationships/types/RelationType"
 
 test('Get all "Image belongs to Node type" relationships for specific image', async () => {
     const imageNode = await seedNode(NodeTypeEnum.IMAGE)
-    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.CAR_MODEL, DbRelationship.ImageBelongsToNode)
-    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.CAR_MODEL, DbRelationship.ImageBelongsToNode)
-    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.CAR_MODEL, DbRelationship.ImageBelongsToNode)
-    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.CAR_MODEL, DbRelationship.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.CAR_MODEL, RelationshipType.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.CAR_MODEL, RelationshipType.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.CAR_MODEL, RelationshipType.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.id, NodeTypeEnum.CAR_MODEL, RelationshipType.ImageBelongsToNode)
 
     const fetchedRelationships = await Image.getBelongsToNodeTypeRelationships(imageNode.id)
 

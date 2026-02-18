@@ -4,16 +4,16 @@ import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelatio
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {deleteSpecificRelationship} from "../../../../../../../src/db/relationships/deleteSpecificRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 describe('Trying to delete a ›features-track-layout‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.RACING_GAME, NodeTypeEnum.TRACK_LAYOUT, DbRelationship.RacingGameFeaturesTrackLayout)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.RACING_GAME, NodeTypeEnum.TRACK_LAYOUT, RelationshipType.RacingGameFeaturesTrackLayout)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.RacingGameFeaturesTrackLayout,
+            RelationshipType.RacingGameFeaturesTrackLayout,
         )
 
         expect(relationshipBefore)
@@ -22,13 +22,13 @@ describe('Trying to delete a ›features-track-layout‹ relationship', () => {
         await deleteSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.RacingGameFeaturesTrackLayout,
+            RelationshipType.RacingGameFeaturesTrackLayout,
         )
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.RacingGameFeaturesTrackLayout,
+            RelationshipType.RacingGameFeaturesTrackLayout,
         )
 
         expect(relationshipAfter)
@@ -42,7 +42,7 @@ describe('Trying to delete a ›features-track-layout‹ relationship', () => {
         const relationship = await deleteSpecificRelationship(
             racingGame.id,
             trackLayout.id,
-            DbRelationship.RacingGameFeaturesTrackLayout,
+            RelationshipType.RacingGameFeaturesTrackLayout,
         )
 
         expect(relationship)
@@ -53,7 +53,7 @@ describe('Trying to delete a ›features-track-layout‹ relationship', () => {
         const relationship = await deleteSpecificRelationship(
             -42,
             -43,
-            DbRelationship.RacingGameFeaturesTrackLayout,
+            RelationshipType.RacingGameFeaturesTrackLayout,
         )
 
         expect(relationship)

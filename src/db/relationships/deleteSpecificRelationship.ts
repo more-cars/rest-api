@@ -1,5 +1,5 @@
 import neo4j from "neo4j-driver"
-import {DbRelationship} from "../types/DbRelationship"
+import {RelationshipType} from "../types/RelationshipType"
 import {getRelationshipSpecification} from "./getRelationshipSpecification"
 import {RelationshipDirection} from "../types/RelationshipDirection"
 import {getDriver} from "../driver"
@@ -9,7 +9,7 @@ import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 export async function deleteSpecificRelationship(
     startNodeId: number,
     endNodeId: number,
-    relationshipType: DbRelationship,
+    relationshipType: RelationshipType,
 ): Promise<boolean> {
     const relationshipSpecs = getRelationshipSpecification(relationshipType)
     const dbRelationshipName = relationshipSpecs.relationshipName

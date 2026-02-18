@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
@@ -12,7 +12,7 @@ describe('Creating a ›is-followed-by-event‹ relationship', () => {
         const createdRelationship = await createRelationship(
             racingEvent.id,
             partner.id,
-            DbRelationship.RacingEventIsFollowedByEvent,
+            RelationshipType.RacingEventIsFollowedByEvent,
         )
 
         expect(createdRelationship)
@@ -22,7 +22,7 @@ describe('Creating a ›is-followed-by-event‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('relationship_id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', DbRelationship.RacingEventIsFollowedByEvent)
+            .toHaveProperty('relationship_name', RelationshipType.RacingEventIsFollowedByEvent)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)
@@ -35,7 +35,7 @@ describe('Creating a ›is-followed-by-event‹ relationship', () => {
         const createdRelationship = await createRelationship(
             racingEvent.id,
             -42,
-            DbRelationship.RacingEventIsFollowedByEvent,
+            RelationshipType.RacingEventIsFollowedByEvent,
         )
 
         expect(createdRelationship)

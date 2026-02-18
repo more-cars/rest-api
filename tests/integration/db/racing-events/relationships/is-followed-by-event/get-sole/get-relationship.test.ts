@@ -3,16 +3,16 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 describe('Requesting a ›is-followed-by-event‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const relationship = await seedRelationship(NodeTypeEnum.RACING_EVENT, NodeTypeEnum.RACING_EVENT, DbRelationship.RacingEventIsFollowedByEvent)
+        const relationship = await seedRelationship(NodeTypeEnum.RACING_EVENT, NodeTypeEnum.RACING_EVENT, RelationshipType.RacingEventIsFollowedByEvent)
 
         const relationships = await getRelationshipCollection(
             relationship.start_node_id,
-            DbRelationship.RacingEventIsFollowedByEvent,
+            RelationshipType.RacingEventIsFollowedByEvent,
             NodeTypeLabel.RacingEvent,
         )
 
@@ -25,7 +25,7 @@ describe('Requesting a ›is-followed-by-event‹ relationship', () => {
 
         const relationships = await getRelationshipCollection(
             racingEvent.id,
-            DbRelationship.RacingEventIsFollowedByEvent,
+            RelationshipType.RacingEventIsFollowedByEvent,
             NodeTypeLabel.RacingEvent,
         )
 
@@ -36,7 +36,7 @@ describe('Requesting a ›is-followed-by-event‹ relationship', () => {
     test('neither node, nor relationship exist', async () => {
         const relationships = await getRelationshipCollection(
             -42,
-            DbRelationship.RacingEventIsFollowedByEvent,
+            RelationshipType.RacingEventIsFollowedByEvent,
             NodeTypeLabel.RacingEvent,
         )
 

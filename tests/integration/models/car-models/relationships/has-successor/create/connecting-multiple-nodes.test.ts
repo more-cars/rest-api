@@ -4,7 +4,7 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 test('A CAR MODEL cannot have multiple ›has-successor‹ relationships', async () => {
@@ -18,7 +18,7 @@ test('A CAR MODEL cannot have multiple ›has-successor‹ relationships', async
 
     const relationships = await getRelationshipCollection(
         carModel.id,
-        DbRelationship.CarModelHasSuccessor,
+        RelationshipType.CarModelHasSuccessor,
         NodeTypeLabel.CarModel,
     )
 

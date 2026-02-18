@@ -3,15 +3,15 @@ import {Image} from "../../../../../../../src/models/images/Image"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 describe('Requesting all ›is-prime-image-of-node‹ relationships', () => {
     test('node and relationships exist', async () => {
         const image = await seedNode(NodeTypeEnum.IMAGE)
-        await seedRelationshipForStartNode(image.id, NodeTypeEnum.COMPANY, DbRelationship.ImageIsPrimeImageOfNode)
-        await seedRelationshipForStartNode(image.id, NodeTypeEnum.CAR_MODEL, DbRelationship.ImageIsPrimeImageOfNode)
-        await seedRelationshipForStartNode(image.id, NodeTypeEnum.BRAND, DbRelationship.ImageIsPrimeImageOfNode)
+        await seedRelationshipForStartNode(image.id, NodeTypeEnum.COMPANY, RelationshipType.ImageIsPrimeImageOfNode)
+        await seedRelationshipForStartNode(image.id, NodeTypeEnum.CAR_MODEL, RelationshipType.ImageIsPrimeImageOfNode)
+        await seedRelationshipForStartNode(image.id, NodeTypeEnum.BRAND, RelationshipType.ImageIsPrimeImageOfNode)
 
         const relationships = await Image.getAllIsPrimeImageOfNodeRelationships(image.id)
 

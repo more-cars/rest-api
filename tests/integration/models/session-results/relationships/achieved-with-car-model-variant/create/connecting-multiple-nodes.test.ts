@@ -4,7 +4,7 @@ import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {SessionResult} from "../../../../../../../src/models/session-results/SessionResult"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 test('A SESSION RESULT cannot have multiple ›achieved-with-car-model-variant‹ relationships', async () => {
@@ -18,7 +18,7 @@ test('A SESSION RESULT cannot have multiple ›achieved-with-car-model-variant�
 
     const relationships = await getRelationshipCollection(
         sessionResult.id,
-        DbRelationship.SessionResultAchievedWithCarModelVariant,
+        RelationshipType.SessionResultAchievedWithCarModelVariant,
         NodeTypeLabel.CarModelVariant,
     )
 

@@ -6,20 +6,20 @@ import {FakeNodeInput} from "../../../../_toolbox/fixtures/nodes/FakeNodeInput"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
 import type {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
-import {DbRelationship} from "../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../src/db/types/RelationshipType"
 import {createRelationship} from "../../../../../src/db/relationships/createRelationship"
 import {getSpecificRelationship} from "../../../../../src/db/relationships/getSpecificRelationship"
 
 test('ID is always contained in response', async () => {
     const carModel = await createCarModelNode(FakeNodeInput(NodeTypeEnum.CAR_MODEL) as InputCarModelCreate)
     const brand = await createBrandNode(FakeNodeInput(NodeTypeEnum.BRAND) as InputBrandCreate)
-    const expectedRelationship = await createRelationship(brand.id, carModel.id, DbRelationship.BrandHasCarModel)
+    const expectedRelationship = await createRelationship(brand.id, carModel.id, RelationshipType.BrandHasCarModel)
 
     if (!expectedRelationship) {
         assert.fail('Relationship creation failed')
     }
 
-    const requestedRelationship = await getSpecificRelationship(brand.id, carModel.id, DbRelationship.BrandHasCarModel)
+    const requestedRelationship = await getSpecificRelationship(brand.id, carModel.id, RelationshipType.BrandHasCarModel)
 
     if (!requestedRelationship) {
         assert.fail('Relationship retrieval failed')

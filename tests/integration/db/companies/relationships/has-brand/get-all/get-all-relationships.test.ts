@@ -3,18 +3,18 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 describe('Requesting all ›has-brand‹ relationships', () => {
     test('node and relationships exist', async () => {
         const company = await seedNode(NodeTypeEnum.COMPANY)
-        await seedRelationshipForStartNode(company.id, NodeTypeEnum.BRAND, DbRelationship.CompanyHasBrand)
-        await seedRelationshipForStartNode(company.id, NodeTypeEnum.BRAND, DbRelationship.CompanyHasBrand)
+        await seedRelationshipForStartNode(company.id, NodeTypeEnum.BRAND, RelationshipType.CompanyHasBrand)
+        await seedRelationshipForStartNode(company.id, NodeTypeEnum.BRAND, RelationshipType.CompanyHasBrand)
 
         const relationships = await getRelationshipCollection(
             company.id,
-            DbRelationship.CompanyHasBrand,
+            RelationshipType.CompanyHasBrand,
             NodeTypeLabel.Brand,
         )
 
@@ -27,7 +27,7 @@ describe('Requesting all ›has-brand‹ relationships', () => {
 
         const relationships = await getRelationshipCollection(
             company.id,
-            DbRelationship.CompanyHasBrand,
+            RelationshipType.CompanyHasBrand,
             NodeTypeLabel.Brand,
         )
 
@@ -38,7 +38,7 @@ describe('Requesting all ›has-brand‹ relationships', () => {
     test('neither node, nor relationships exist', async () => {
         const relationships = await getRelationshipCollection(
             -42,
-            DbRelationship.CompanyHasBrand,
+            RelationshipType.CompanyHasBrand,
             NodeTypeLabel.Brand,
         )
 

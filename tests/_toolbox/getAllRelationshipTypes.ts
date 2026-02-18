@@ -1,5 +1,5 @@
-import {DbRelationship} from "../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../src/db/types/RelationshipType"
 
 export function getAllRelationshipTypes() {
-    return Array.from(new Set(Object.values(DbRelationship) as string[])) as DbRelationship[]
+    return Array.from(new Set(Object.values(RelationshipType) as string[])) as RelationshipType[]
 }

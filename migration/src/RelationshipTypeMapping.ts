@@ -1,26 +1,26 @@
-import {DbRelationship} from "../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../src/db/types/RelationshipType"
 import {RelationshipTypeLabelOld} from "./types/RelationshipTypeLabelOld"
 
 // mapping of all relationship types to find out their names in the old database
-export const RelationshipTypeMapping = new Map<DbRelationship, RelationshipTypeLabelOld>([
-    [DbRelationship.CompanyHasBrand, RelationshipTypeLabelOld.CompanyHasBrand],
-    [DbRelationship.BrandHasCarModel, RelationshipTypeLabelOld.BrandHasCarModel],
-    [DbRelationship.CarModelHasSuccessor, RelationshipTypeLabelOld.CarModelHasSuccessor],
-    [DbRelationship.CarModelHasVariant, RelationshipTypeLabelOld.CarModelHasVariant],
-    [DbRelationship.CarModelVariantAchievedSessionResult, RelationshipTypeLabelOld.CarModelVariantAchievedSessionResult],
-    [DbRelationship.CarModelVariantAchievedLapTime, RelationshipTypeLabelOld.CarModelVariantAchievedLapTime],
-    [DbRelationship.RaceTrackHasLayout, RelationshipTypeLabelOld.RaceTrackHasLayout],
-    [DbRelationship.TrackLayoutHasLapTime, RelationshipTypeLabelOld.TrackLayoutHasLapTime],
-    [DbRelationship.RacingSeriesHasRacingEvent, RelationshipTypeLabelOld.RacingSeriesHasRacingEvent],
-    [DbRelationship.RacingEventIsFollowedByEvent, RelationshipTypeLabelOld.RacingEventIsFollowedByEvent],
-    [DbRelationship.RacingEventTookPlaceAtRaceTrack, RelationshipTypeLabelOld.RacingEventTookPlaceAtRaceTrack],
-    [DbRelationship.RacingEventUsedTheTrackLayout, RelationshipTypeLabelOld.RacingEventUsedTheTrackLayout],
-    [DbRelationship.RacingEventHasRacingSession, RelationshipTypeLabelOld.RacingEventHasRacingSession],
-    [DbRelationship.RacingSessionHasSessionResult, RelationshipTypeLabelOld.RacingSessionHasSessionResult],
-    [DbRelationship.SessionResultHasLapTime, RelationshipTypeLabelOld.SessionResultHasLapTime],
-    [DbRelationship.RacingGameFeaturesCarModelVariant, RelationshipTypeLabelOld.RacingGameFeaturesCarModelVariant],
-    [DbRelationship.RacingGameFeaturesTrackLayout, RelationshipTypeLabelOld.RacingGameFeaturesTrackLayout],
-    [DbRelationship.GamingPlatformFeaturesRacingGame, RelationshipTypeLabelOld.GamingPlatformFeaturesRacingGame],
-    [DbRelationship.NodeHasImage, RelationshipTypeLabelOld.NodeHasImage],
-    [DbRelationship.NodeHasPrimeImage, RelationshipTypeLabelOld.NodeHasPrimeImage],
+export const RelationshipTypeMapping = new Map<RelationshipType, RelationshipTypeLabelOld>([
+    [RelationshipType.CompanyHasBrand, RelationshipTypeLabelOld.CompanyHasBrand],
+    [RelationshipType.BrandHasCarModel, RelationshipTypeLabelOld.BrandHasCarModel],
+    [RelationshipType.CarModelHasSuccessor, RelationshipTypeLabelOld.CarModelHasSuccessor],
+    [RelationshipType.CarModelHasVariant, RelationshipTypeLabelOld.CarModelHasVariant],
+    [RelationshipType.CarModelVariantAchievedSessionResult, RelationshipTypeLabelOld.CarModelVariantAchievedSessionResult],
+    [RelationshipType.CarModelVariantAchievedLapTime, RelationshipTypeLabelOld.CarModelVariantAchievedLapTime],
+    [RelationshipType.RaceTrackHasLayout, RelationshipTypeLabelOld.RaceTrackHasLayout],
+    [RelationshipType.TrackLayoutHasLapTime, RelationshipTypeLabelOld.TrackLayoutHasLapTime],
+    [RelationshipType.RacingSeriesHasRacingEvent, RelationshipTypeLabelOld.RacingSeriesHasRacingEvent],
+    [RelationshipType.RacingEventIsFollowedByEvent, RelationshipTypeLabelOld.RacingEventIsFollowedByEvent],
+    [RelationshipType.RacingEventTookPlaceAtRaceTrack, RelationshipTypeLabelOld.RacingEventTookPlaceAtRaceTrack],
+    [RelationshipType.RacingEventUsedTheTrackLayout, RelationshipTypeLabelOld.RacingEventUsedTheTrackLayout],
+    [RelationshipType.RacingEventHasRacingSession, RelationshipTypeLabelOld.RacingEventHasRacingSession],
+    [RelationshipType.RacingSessionHasSessionResult, RelationshipTypeLabelOld.RacingSessionHasSessionResult],
+    [RelationshipType.SessionResultHasLapTime, RelationshipTypeLabelOld.SessionResultHasLapTime],
+    [RelationshipType.RacingGameFeaturesCarModelVariant, RelationshipTypeLabelOld.RacingGameFeaturesCarModelVariant],
+    [RelationshipType.RacingGameFeaturesTrackLayout, RelationshipTypeLabelOld.RacingGameFeaturesTrackLayout],
+    [RelationshipType.GamingPlatformFeaturesRacingGame, RelationshipTypeLabelOld.GamingPlatformFeaturesRacingGame],
+    [RelationshipType.NodeHasImage, RelationshipTypeLabelOld.NodeHasImage],
+    [RelationshipType.NodeHasPrimeImage, RelationshipTypeLabelOld.NodeHasPrimeImage],
 ])

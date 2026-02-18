@@ -1,9 +1,9 @@
 import neo4j, {Driver, Session} from "neo4j-driver"
 import {getDriver} from "../../../src/db/driver"
-import type {DbRelationship} from "../../../src/db/types/DbRelationship"
+import type {RelationshipType} from "../../../src/db/types/RelationshipType"
 import type {NodeTypeLabel} from "../../../src/db/NodeTypeLabel"
 
-export async function deleteAllRelationshipsOfType(relationshipType: DbRelationship, startNodeType: NodeTypeLabel, endNodeType: NodeTypeLabel) {
+export async function deleteAllRelationshipsOfType(relationshipType: RelationshipType, startNodeType: NodeTypeLabel, endNodeType: NodeTypeLabel) {
     const driver: Driver = getDriver()
     const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 

@@ -3,16 +3,16 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 describe('Requesting a ›belongs-to-racing-event‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const relationship = await seedRelationship(NodeTypeEnum.RACING_SESSION, NodeTypeEnum.RACING_EVENT, DbRelationship.RacingSessionBelongsToRacingEvent)
+        const relationship = await seedRelationship(NodeTypeEnum.RACING_SESSION, NodeTypeEnum.RACING_EVENT, RelationshipType.RacingSessionBelongsToRacingEvent)
 
         const relationships = await getRelationshipCollection(
             relationship.start_node_id,
-            DbRelationship.RacingSessionBelongsToRacingEvent,
+            RelationshipType.RacingSessionBelongsToRacingEvent,
             NodeTypeLabel.RacingEvent,
         )
 
@@ -25,7 +25,7 @@ describe('Requesting a ›belongs-to-racing-event‹ relationship', () => {
 
         const relationships = await getRelationshipCollection(
             racingSession.id,
-            DbRelationship.RacingSessionBelongsToRacingEvent,
+            RelationshipType.RacingSessionBelongsToRacingEvent,
             NodeTypeLabel.RacingEvent,
         )
 
@@ -36,7 +36,7 @@ describe('Requesting a ›belongs-to-racing-event‹ relationship', () => {
     test('neither node, nor relationship exist', async () => {
         const relationships = await getRelationshipCollection(
             -42,
-            DbRelationship.RacingSessionBelongsToRacingEvent,
+            RelationshipType.RacingSessionBelongsToRacingEvent,
             NodeTypeLabel.RacingEvent,
         )
 

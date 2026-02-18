@@ -4,16 +4,16 @@ import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelatio
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {deleteSpecificRelationship} from "../../../../../../../src/db/relationships/deleteSpecificRelationship"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 describe('Trying to delete a ›released-on-gaming-platform‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.RACING_GAME, NodeTypeEnum.GAMING_PLATFORM, DbRelationship.RacingGameReleasedOnGamingPlatform)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.RACING_GAME, NodeTypeEnum.GAMING_PLATFORM, RelationshipType.RacingGameReleasedOnGamingPlatform)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.RacingGameReleasedOnGamingPlatform,
+            RelationshipType.RacingGameReleasedOnGamingPlatform,
         )
 
         expect(relationshipBefore)
@@ -22,13 +22,13 @@ describe('Trying to delete a ›released-on-gaming-platform‹ relationship', ()
         await deleteSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.RacingGameReleasedOnGamingPlatform,
+            RelationshipType.RacingGameReleasedOnGamingPlatform,
         )
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node_id,
             seededRelationship.end_node_id,
-            DbRelationship.RacingGameReleasedOnGamingPlatform,
+            RelationshipType.RacingGameReleasedOnGamingPlatform,
         )
 
         expect(relationshipAfter)
@@ -42,7 +42,7 @@ describe('Trying to delete a ›released-on-gaming-platform‹ relationship', ()
         const relationship = await deleteSpecificRelationship(
             racingGame.id,
             gamingPlatform.id,
-            DbRelationship.RacingGameReleasedOnGamingPlatform,
+            RelationshipType.RacingGameReleasedOnGamingPlatform,
         )
 
         expect(relationship)
@@ -53,7 +53,7 @@ describe('Trying to delete a ›released-on-gaming-platform‹ relationship', ()
         const relationship = await deleteSpecificRelationship(
             -42,
             -43,
-            DbRelationship.RacingGameReleasedOnGamingPlatform,
+            RelationshipType.RacingGameReleasedOnGamingPlatform,
         )
 
         expect(relationship)

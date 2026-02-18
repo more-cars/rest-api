@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {TrackLayout} from "../../../../../../../src/models/track-layouts/TrackLayout"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
@@ -11,7 +11,7 @@ import {RelationshipNotFoundError} from "../../../../../../../src/models/types/R
 
 describe('Requesting a ›belongs-to-race-track‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(NodeTypeEnum.TRACK_LAYOUT, NodeTypeEnum.RACE_TRACK, DbRelationship.TrackLayoutBelongsToRaceTrack)
+        const expectedRelationship = await seedRelationship(NodeTypeEnum.TRACK_LAYOUT, NodeTypeEnum.RACE_TRACK, RelationshipType.TrackLayoutBelongsToRaceTrack)
         const expectedTrackLayoutId = expectedRelationship.start_node_id
         const expectedRaceTrackId = expectedRelationship.end_node_id
         const actualRelationship = await TrackLayout.getBelongsToRaceTrackRelationship(expectedTrackLayoutId)

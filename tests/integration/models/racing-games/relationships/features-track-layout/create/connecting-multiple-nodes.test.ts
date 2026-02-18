@@ -4,7 +4,7 @@ import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {RacingGame} from "../../../../../../../src/models/racing-games/RacingGame"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 test('A RACING GAME can have multiple ›features-track-layout‹ relationships', async () => {
@@ -18,7 +18,7 @@ test('A RACING GAME can have multiple ›features-track-layout‹ relationships'
 
     const relationships = await getRelationshipCollection(
         racingGame.id,
-        DbRelationship.RacingGameFeaturesTrackLayout,
+        RelationshipType.RacingGameFeaturesTrackLayout,
         NodeTypeLabel.TrackLayout,
     )
 

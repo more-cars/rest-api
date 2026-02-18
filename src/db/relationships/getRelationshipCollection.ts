@@ -1,6 +1,6 @@
 import neo4j, {Driver, Node, Relationship} from "neo4j-driver"
 import {getDriver} from "../driver"
-import type {DbRelationship} from "../types/DbRelationship"
+import type {RelationshipType} from "../types/RelationshipType"
 import type {NodeTypeLabel} from "../NodeTypeLabel"
 import type {BaseRelationship} from "../types/BaseRelationship"
 import {getRelationshipSpecification} from "./getRelationshipSpecification"
@@ -11,7 +11,7 @@ import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 
 export async function getRelationshipCollection(
     startNodeId: number,
-    relationshipType: DbRelationship,
+    relationshipType: RelationshipType,
     endNodeType?: NodeTypeLabel,
 ): Promise<BaseRelationship[]> {
     const relationshipSpecs = getRelationshipSpecification(relationshipType)

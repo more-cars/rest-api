@@ -1,40 +1,40 @@
 import {RelationshipSpecification} from "../../../types/RelationshipSpecification"
-import {DbRelationship} from "../../../types/DbRelationship"
+import {RelationshipType} from "../../../types/RelationshipType"
 import {NodeTypeLabel} from "../../../NodeTypeLabel"
 import {RelationshipTypeNeo4j} from "../../../types/RelationshipTypeNeo4j"
 
 export const CarModelRelationshipSpecification: RelationshipSpecification[] = [
-    [DbRelationship.CarModelBelongsToBrand, {
+    [RelationshipType.CarModelBelongsToBrand, {
         startNodeLabel: NodeTypeLabel.CarModel,
         endNodeLabel: NodeTypeLabel.Brand,
         relationshipName: RelationshipTypeNeo4j.CarModelBelongsToBrand,
         isReverseRelationship: true,
     }],
-    [DbRelationship.CarModelHasSuccessor, {
+    [RelationshipType.CarModelHasSuccessor, {
         startNodeLabel: NodeTypeLabel.CarModel,
         endNodeLabel: NodeTypeLabel.CarModel,
         relationshipName: RelationshipTypeNeo4j.CarModelHasSuccessor,
         isReverseRelationship: false,
     }],
-    [DbRelationship.CarModelIsSuccessorOf, {
+    [RelationshipType.CarModelIsSuccessorOf, {
         startNodeLabel: NodeTypeLabel.CarModel,
         endNodeLabel: NodeTypeLabel.CarModel,
         relationshipName: RelationshipTypeNeo4j.CarModelIsSuccessorOf,
         isReverseRelationship: true,
     }],
-    [DbRelationship.CarModelHasVariant, {
+    [RelationshipType.CarModelHasVariant, {
         startNodeLabel: NodeTypeLabel.CarModel,
         endNodeLabel: NodeTypeLabel.CarModelVariant,
         relationshipName: RelationshipTypeNeo4j.CarModelHasVariant,
         isReverseRelationship: false,
     }],
-    [DbRelationship.CarModelHasImage, {
+    [RelationshipType.CarModelHasImage, {
         startNodeLabel: NodeTypeLabel.CarModel,
         endNodeLabel: NodeTypeLabel.Image,
         relationshipName: RelationshipTypeNeo4j.CarModelHasImage,
         isReverseRelationship: false,
     }],
-    [DbRelationship.CarModelHasPrimeImage, {
+    [RelationshipType.CarModelHasPrimeImage, {
         startNodeLabel: NodeTypeLabel.CarModel,
         endNodeLabel: NodeTypeLabel.Image,
         relationshipName: RelationshipTypeNeo4j.CarModelHasPrimeImage,

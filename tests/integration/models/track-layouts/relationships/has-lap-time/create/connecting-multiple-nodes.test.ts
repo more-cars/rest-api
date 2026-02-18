@@ -4,7 +4,7 @@ import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {TrackLayout} from "../../../../../../../src/models/track-layouts/TrackLayout"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {DbRelationship} from "../../../../../../../src/db/types/DbRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 test('A TRACK LAYOUT can have multiple ›has-lap-time‹ relationships', async () => {
@@ -18,7 +18,7 @@ test('A TRACK LAYOUT can have multiple ›has-lap-time‹ relationships', async 
 
     const relationships = await getRelationshipCollection(
         trackLayout.id,
-        DbRelationship.TrackLayoutHasLapTime,
+        RelationshipType.TrackLayoutHasLapTime,
         NodeTypeLabel.LapTime,
     )
 
