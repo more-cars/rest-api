@@ -1,5 +1,5 @@
 import express from "express"
-import {Image} from "../../../models/images/Image"
+import {Image} from "../../../models/node-types/images/Image"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../models/types/RelationshipNotFoundError"
 import {sendResponse204} from "../../responses/sendResponse204"

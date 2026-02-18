@@ -6,7 +6,7 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
+import {CarModel} from "../../../../../../../src/models/node-types/car-models/CarModel"
 
 describe('Deleting a ›belongs-to-brand‹ relationship', () => {
     test('CAR MODEL node does not exist', async () => {

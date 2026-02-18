@@ -1,8 +1,8 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import type {LapTimeNode} from "../../../../../../src/models/lap-times/types/LapTimeNode"
-import {LapTime} from "../../../../../../src/models/lap-times/LapTime"
+import type {LapTimeNode} from "../../../../../../src/models/node-types/lap-times/types/LapTimeNode"
+import {LapTime} from "../../../../../../src/models/node-types/lap-times/LapTime"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 

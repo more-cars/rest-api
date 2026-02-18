@@ -1,8 +1,8 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import type {BrandNode} from "../../../../../../src/models/brands/types/BrandNode"
-import {Brand} from "../../../../../../src/models/brands/Brand"
+import type {BrandNode} from "../../../../../../src/models/node-types/brands/types/BrandNode"
+import {Brand} from "../../../../../../src/models/node-types/brands/Brand"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all BRAND nodes" request returns the nodes in correct order', () => {

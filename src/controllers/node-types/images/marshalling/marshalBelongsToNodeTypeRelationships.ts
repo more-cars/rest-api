@@ -1,4 +1,4 @@
-import type {ImageBelongsToNodeTypeRelationships} from "../../../../models/images/types/ImageBelongsToNodeTypeRelationships"
+import type {ImageBelongsToNodeTypeRelationships} from "../../../../models/node-types/images/types/ImageBelongsToNodeTypeRelationships"
 import type {ImageBelongsToNodeTypeResponse} from "../types/ImageBelongsToNodeTypeResponse"
 import {marshalRelation} from "../../../relations/marshalRelation"
 import {NodeTypeEnum} from "../../../nodes/types/NodeTypeEnum"

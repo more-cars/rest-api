@@ -1,5 +1,5 @@
 import express from "express"
-import {Brand} from "../../../models/brands/Brand"
+import {Brand} from "../../../models/node-types/brands/Brand"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {sendResponse204} from "../../responses/sendResponse204"
 import {sendResponse404} from "../../responses/sendResponse404"

@@ -1,8 +1,8 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import type {GamingPlatformNode} from "../../../../../../src/models/gaming-platforms/types/GamingPlatformNode"
-import {GamingPlatform} from "../../../../../../src/models/gaming-platforms/GamingPlatform"
+import type {GamingPlatformNode} from "../../../../../../src/models/node-types/gaming-platforms/types/GamingPlatformNode"
+import {GamingPlatform} from "../../../../../../src/models/node-types/gaming-platforms/GamingPlatform"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all GAMING PLATFORM nodes" request returns the nodes in correct order', () => {

@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {FakeTrackLayout} from "../../../../_toolbox/fixtures/nodes/FakeTrackLayout"
-import {TrackLayout} from "../../../../../src/models/track-layouts/TrackLayout"
+import {TrackLayout} from "../../../../../src/models/node-types/track-layouts/TrackLayout"
 
 test('Expecting node to be created when provided with valid data', async () => {
     const inputData = FakeTrackLayout.dbInput()

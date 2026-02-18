@@ -1,5 +1,5 @@
 import {describe, expect, test} from 'vitest'
-import {CreateRaceTrackInput} from "../../../../../src/models/race-tracks/types/CreateRaceTrackInput"
+import {CreateRaceTrackInput} from "../../../../../src/models/node-types/race-tracks/types/CreateRaceTrackInput"
 import {sanitize} from "../../../../../src/controllers/node-types/race-tracks/create"
 
 describe('Sanitizing user input', () => {

@@ -1,5 +1,5 @@
 import express from "express"
-import {Image} from "../../../models/images/Image"
+import {Image} from "../../../models/node-types/images/Image"
 import {marshalBelongsToNodeTypeRelationships} from "./marshalling/marshalBelongsToNodeTypeRelationships"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"

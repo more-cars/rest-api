@@ -1,7 +1,7 @@
 import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from '../../../../../../src/app'
-import {RacingEvent} from "../../../../../../src/models/racing-events/RacingEvent"
+import {RacingEvent} from "../../../../../../src/models/node-types/racing-events/RacingEvent"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 

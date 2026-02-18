@@ -1,6 +1,6 @@
 import {faker} from "@faker-js/faker"
 import type {InputCarModelCreate} from "../../../../src/db/nodes/car-models/types/InputCarModelCreate"
-import type {CarModelNode} from "../../../../src/models/car-models/types/CarModelNode"
+import type {CarModelNode} from "../../../../src/models/node-types/car-models/types/CarModelNode"
 
 export const FakeCarModel = {
     dbInput() {

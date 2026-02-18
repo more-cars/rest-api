@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import type {ImageBelongsToNodeTypeRelationships} from "../../../../../../src/models/images/types/ImageBelongsToNodeTypeRelationships"
+import type {ImageBelongsToNodeTypeRelationships} from "../../../../../../src/models/node-types/images/types/ImageBelongsToNodeTypeRelationships"
 import {
     marshalBelongsToNodeTypeRelationships
 } from "../../../../../../src/controllers/node-types/images/marshalling/marshalBelongsToNodeTypeRelationships"

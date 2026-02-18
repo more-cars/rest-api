@@ -1,8 +1,6 @@
 import {faker} from "@faker-js/faker"
-import type {
-    InputCarModelVariantCreate
-} from "../../../../src/db/nodes/car-model-variants/types/InputCarModelVariantCreate"
-import type {CarModelVariantNode} from "../../../../src/models/car-model-variants/types/CarModelVariantNode"
+import type {InputCarModelVariantCreate} from "../../../../src/db/nodes/car-model-variants/types/InputCarModelVariantCreate"
+import type {CarModelVariantNode} from "../../../../src/models/node-types/car-model-variants/types/CarModelVariantNode"
 
 export const FakeCarModelVariant = {
     dbInput() {

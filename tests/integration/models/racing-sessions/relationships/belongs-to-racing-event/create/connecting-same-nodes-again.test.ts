@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {RacingSession} from "../../../../../../../src/models/racing-sessions/RacingSession"
+import {RacingSession} from "../../../../../../../src/models/node-types/racing-sessions/RacingSession"
 import {RelationshipAlreadyExistsError} from "../../../../../../../src/models/types/RelationshipAlreadyExistsError"
 
 test('Trying to create the same ›belongs-to-racing-event‹ relationship again', async () => {

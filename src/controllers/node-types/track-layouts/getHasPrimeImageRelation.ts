@@ -1,5 +1,5 @@
 import express from "express"
-import {TrackLayout} from "../../../models/track-layouts/TrackLayout"
+import {TrackLayout} from "../../../models/node-types/track-layouts/TrackLayout"
 import {marshalRelation} from "../../relations/marshalRelation"
 import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"

@@ -1,5 +1,5 @@
 import {describe, expect, test} from 'vitest'
-import {RaceTrack} from "../../../../../../../src/models/race-tracks/RaceTrack"
+import {RaceTrack} from "../../../../../../../src/models/node-types/race-tracks/RaceTrack"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"

@@ -1,5 +1,5 @@
 import express from "express"
-import {SessionResult} from "../../../models/session-results/SessionResult"
+import {SessionResult} from "../../../models/node-types/session-results/SessionResult"
 import {marshalRelations} from "../../relations/marshalRelations"
 import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"

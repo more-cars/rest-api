@@ -1,5 +1,5 @@
 import express from "express"
-import {RaceTrack} from "../../../models/race-tracks/RaceTrack"
+import {RaceTrack} from "../../../models/node-types/race-tracks/RaceTrack"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
 import availableProperties from "../../../../specification/properties/RaceTrack.json"
 import {InvalidPaginationParams} from "../../../models/types/InvalidPaginationParams"

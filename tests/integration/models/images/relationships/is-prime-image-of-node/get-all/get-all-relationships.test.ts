@@ -1,5 +1,5 @@
 import {describe, expect, test} from 'vitest'
-import {Image} from "../../../../../../../src/models/images/Image"
+import {Image} from "../../../../../../../src/models/node-types/images/Image"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"

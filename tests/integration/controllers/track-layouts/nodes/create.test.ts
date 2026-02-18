@@ -1,7 +1,7 @@
 import {expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from "../../../../../src/app.ts"
-import {TrackLayout} from "../../../../../src/models/track-layouts/TrackLayout"
+import {TrackLayout} from "../../../../../src/models/node-types/track-layouts/TrackLayout"
 
 test('Input data is valid', async () => {
     TrackLayout.create = vi.fn().mockReturnValue({

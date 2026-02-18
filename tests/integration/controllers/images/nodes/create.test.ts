@@ -1,7 +1,7 @@
 import {expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from "../../../../../src/app.ts"
-import {Image} from "../../../../../src/models/images/Image"
+import {Image} from "../../../../../src/models/node-types/images/Image"
 
 test('Input data is valid', async () => {
     Image.create = vi.fn().mockReturnValue({

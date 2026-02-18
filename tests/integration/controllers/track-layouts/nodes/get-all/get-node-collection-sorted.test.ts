@@ -1,5 +1,5 @@
 import {describe, expect, test, vi} from "vitest"
-import {TrackLayout} from "../../../../../../src/models/track-layouts/TrackLayout"
+import {TrackLayout} from "../../../../../../src/models/node-types/track-layouts/TrackLayout"
 import request from "supertest"
 import {app} from "../../../../../../src/app"
 

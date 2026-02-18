@@ -2,7 +2,7 @@ import assert from "assert"
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {Image} from "../../../../../../../src/models/images/Image"
+import {Image} from "../../../../../../../src/models/node-types/images/Image"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {RelationType} from "../../../../../../../src/controllers/relations/types/RelationType"

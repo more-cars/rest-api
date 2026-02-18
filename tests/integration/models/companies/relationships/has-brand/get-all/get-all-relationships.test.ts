@@ -4,7 +4,7 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
-import {Company} from "../../../../../../../src/models/companies/Company"
+import {Company} from "../../../../../../../src/models/node-types/companies/Company"
 
 describe('Requesting all ›has-brand‹ relationships', () => {
     test('node and relationships exist', async () => {

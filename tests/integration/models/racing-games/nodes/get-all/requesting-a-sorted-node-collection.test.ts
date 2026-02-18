@@ -1,8 +1,8 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import type {RacingGameNode} from "../../../../../../src/models/racing-games/types/RacingGameNode"
-import {RacingGame} from "../../../../../../src/models/racing-games/RacingGame"
+import type {RacingGameNode} from "../../../../../../src/models/node-types/racing-games/types/RacingGameNode"
+import {RacingGame} from "../../../../../../src/models/node-types/racing-games/RacingGame"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all RACING GAME nodes" request returns the nodes in correct order', () => {

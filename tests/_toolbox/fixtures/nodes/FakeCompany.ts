@@ -1,6 +1,6 @@
 import {faker} from "@faker-js/faker"
 import type {InputCompanyCreate} from "../../../../src/db/nodes/companies/types/InputCompanyCreate"
-import type {CompanyNode} from "../../../../src/models/companies/types/CompanyNode"
+import type {CompanyNode} from "../../../../src/models/node-types/companies/types/CompanyNode"
 
 export const FakeCompany = {
     dbInput() {

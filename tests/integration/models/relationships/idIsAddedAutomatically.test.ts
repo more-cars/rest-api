@@ -6,7 +6,7 @@ import {FakeNodeInput} from "../../../_toolbox/fixtures/nodes/FakeNodeInput"
 import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {InputBrandCreate} from "../../../../src/db/nodes/brands/types/InputBrandCreate"
 import type {InputCarModelCreate} from "../../../../src/db/nodes/car-models/types/InputCarModelCreate"
-import {Brand} from "../../../../src/models/brands/Brand"
+import {Brand} from "../../../../src/models/node-types/brands/Brand"
 
 test('ID is added when creating a relationship', async () => {
     const brand = await createBrandNode(FakeNodeInput(NodeTypeEnum.BRAND) as InputBrandCreate)

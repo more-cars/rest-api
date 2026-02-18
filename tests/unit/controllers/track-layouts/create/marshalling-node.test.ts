@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {TrackLayoutNode} from "../../../../../src/models/track-layouts/types/TrackLayoutNode"
+import {TrackLayoutNode} from "../../../../../src/models/node-types/track-layouts/types/TrackLayoutNode"
 import {marshalNode} from "../../../../../src/controllers/node-types/track-layouts/marshalling/marshalNode"
 
 test("marshalling a TRACK LAYOUT node", async () => {

@@ -1,5 +1,5 @@
 import {describe, expect, test} from 'vitest'
-import {Brand} from "../../../../../../../src/models/brands/Brand"
+import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"

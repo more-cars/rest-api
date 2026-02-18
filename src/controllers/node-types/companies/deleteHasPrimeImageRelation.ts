@@ -1,5 +1,5 @@
 import express from "express"
-import {Company} from "../../../models/companies/Company"
+import {Company} from "../../../models/node-types/companies/Company"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../models/types/RelationshipNotFoundError"
 import {sendResponse204} from "../../responses/sendResponse204"

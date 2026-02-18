@@ -1,7 +1,7 @@
 import {expect, test, vi} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {Image} from "../../../../../../../src/models/images/Image"
+import {Image} from "../../../../../../../src/models/node-types/images/Image"
 
 test('A completely valid request, but the database call fails (e.g. one of the nodes was deleted just a moment ago)', async () => {
     vi.mock("../../../../../../../src/db/relationships/createRelationship", async () => {

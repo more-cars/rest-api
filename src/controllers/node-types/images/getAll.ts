@@ -1,5 +1,5 @@
 import express from "express"
-import {Image} from "../../../models/images/Image"
+import {Image} from "../../../models/node-types/images/Image"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
 import availableProperties from "../../../../specification/properties/Image.json"
 import {InvalidPaginationParams} from "../../../models/types/InvalidPaginationParams"

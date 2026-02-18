@@ -1,5 +1,5 @@
 import {describe, expect, test} from 'vitest'
-import {CreateSessionResultInput} from "../../../../../src/models/session-results/types/CreateSessionResultInput"
+import {CreateSessionResultInput} from "../../../../../src/models/node-types/session-results/types/CreateSessionResultInput"
 import {sanitize} from "../../../../../src/controllers/node-types/session-results/create"
 
 describe('Sanitizing user input', () => {

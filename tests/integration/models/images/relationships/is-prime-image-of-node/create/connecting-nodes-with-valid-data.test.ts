@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {Image} from "../../../../../../../src/models/images/Image"
+import {Image} from "../../../../../../../src/models/node-types/images/Image"
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›is-prime-image-of-node‹ relationship with valid data', async () => {

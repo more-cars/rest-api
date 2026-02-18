@@ -1,5 +1,5 @@
 import {describe, expect, test} from 'vitest'
-import {CreateLapTimeInput} from "../../../../../src/models/lap-times/types/CreateLapTimeInput"
+import {CreateLapTimeInput} from "../../../../../src/models/node-types/lap-times/types/CreateLapTimeInput"
 import {sanitize} from "../../../../../src/controllers/node-types/lap-times/create"
 
 describe('Sanitizing user input', () => {

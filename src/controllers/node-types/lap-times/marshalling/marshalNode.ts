@@ -1,4 +1,4 @@
-import {LapTimeNode} from "../../../../models/lap-times/types/LapTimeNode"
+import {LapTimeNode} from "../../../../models/node-types/lap-times/types/LapTimeNode"
 import {marshalSingleNode} from "../../../nodes/marshalSingleNode"
 import {LapTimeResponse} from "../types/LapTimeResponse"
 

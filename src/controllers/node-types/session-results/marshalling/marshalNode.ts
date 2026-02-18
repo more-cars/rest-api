@@ -1,4 +1,4 @@
-import {SessionResultNode} from "../../../../models/session-results/types/SessionResultNode"
+import {SessionResultNode} from "../../../../models/node-types/session-results/types/SessionResultNode"
 import {marshalSingleNode} from "../../../nodes/marshalSingleNode"
 import {SessionResultResponse} from "../types/SessionResultResponse"
 

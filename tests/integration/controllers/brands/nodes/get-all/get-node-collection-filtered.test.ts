@@ -1,5 +1,5 @@
 import {describe, expect, test, vi} from "vitest"
-import {Brand} from "../../../../../../src/models/brands/Brand"
+import {Brand} from "../../../../../../src/models/node-types/brands/Brand"
 import request from "supertest"
 import {app} from "../../../../../../src/app"
 

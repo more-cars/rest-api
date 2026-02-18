@@ -1,8 +1,8 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import type {CompanyNode} from "../../../../../../src/models/companies/types/CompanyNode"
-import {Company} from "../../../../../../src/models/companies/Company"
+import type {CompanyNode} from "../../../../../../src/models/node-types/companies/types/CompanyNode"
+import {Company} from "../../../../../../src/models/node-types/companies/Company"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 

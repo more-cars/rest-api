@@ -1,5 +1,5 @@
 import express from "express"
-import {GamingPlatform} from "../../../models/gaming-platforms/GamingPlatform"
+import {GamingPlatform} from "../../../models/node-types/gaming-platforms/GamingPlatform"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
 import availableProperties from "../../../../specification/properties/GamingPlatform.json"
 import {InvalidPaginationParams} from "../../../models/types/InvalidPaginationParams"

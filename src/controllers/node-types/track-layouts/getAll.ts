@@ -1,5 +1,5 @@
 import express from "express"
-import {TrackLayout} from "../../../models/track-layouts/TrackLayout"
+import {TrackLayout} from "../../../models/node-types/track-layouts/TrackLayout"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
 import availableProperties from "../../../../specification/properties/TrackLayout.json"
 import {InvalidPaginationParams} from "../../../models/types/InvalidPaginationParams"

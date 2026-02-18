@@ -4,7 +4,7 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
-import {Brand} from "../../../../../../../src/models/brands/Brand"
+import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 
 describe('Requesting all ›has-car-model‹ relationships', () => {
     test('node and relationships exist', async () => {

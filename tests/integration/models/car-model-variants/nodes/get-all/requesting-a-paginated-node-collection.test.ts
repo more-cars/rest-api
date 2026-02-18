@@ -1,8 +1,8 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {CarModelVariantNode} from "../../../../../../src/models/car-model-variants/types/CarModelVariantNode"
-import {CarModelVariant} from "../../../../../../src/models/car-model-variants/CarModelVariant"
+import {CarModelVariantNode} from "../../../../../../src/models/node-types/car-model-variants/types/CarModelVariantNode"
+import {CarModelVariant} from "../../../../../../src/models/node-types/car-model-variants/CarModelVariant"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A paginated "get all CAR MODEL VARIANT nodes" request returns the correct number of nodes', () => {

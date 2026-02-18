@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {FakeRaceTrack} from "../../../../_toolbox/fixtures/nodes/FakeRaceTrack"
-import {RaceTrack} from "../../../../../src/models/race-tracks/RaceTrack"
+import {RaceTrack} from "../../../../../src/models/node-types/race-tracks/RaceTrack"
 
 test('Expecting node to be created when provided with valid data', async () => {
     const inputData = FakeRaceTrack.dbInput()

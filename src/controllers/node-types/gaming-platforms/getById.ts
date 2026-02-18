@@ -1,5 +1,5 @@
 import express from "express"
-import {GamingPlatform} from "../../../models/gaming-platforms/GamingPlatform"
+import {GamingPlatform} from "../../../models/node-types/gaming-platforms/GamingPlatform"
 import {marshalNode} from "./marshalling/marshalNode"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"

@@ -1,7 +1,7 @@
 import {expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from "../../../../../src/app.ts"
-import {RacingSeries} from "../../../../../src/models/racing-series/RacingSeries"
+import {RacingSeries} from "../../../../../src/models/node-types/racing-series/RacingSeries"
 
 test('Input data is valid', async () => {
     RacingSeries.create = vi.fn().mockReturnValue({

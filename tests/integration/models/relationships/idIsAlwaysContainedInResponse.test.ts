@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import assert from "assert"
-import {CarModel} from "../../../../src/models/car-models/CarModel"
-import {Brand} from "../../../../src/models/brands/Brand"
+import {CarModel} from "../../../../src/models/node-types/car-models/CarModel"
+import {Brand} from "../../../../src/models/node-types/brands/Brand"
 import {FakeNodeInput} from "../../../_toolbox/fixtures/nodes/FakeNodeInput"
 import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {InputBrandCreate} from "../../../../src/db/nodes/brands/types/InputBrandCreate"

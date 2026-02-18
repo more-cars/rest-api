@@ -1,4 +1,4 @@
-import {CarModelVariantNode} from "../../../../models/car-model-variants/types/CarModelVariantNode"
+import {CarModelVariantNode} from "../../../../models/node-types/car-model-variants/types/CarModelVariantNode"
 import {marshalSingleNode} from "../../../nodes/marshalSingleNode"
 import {CarModelVariantResponse} from "../types/CarModelVariantResponse"
 

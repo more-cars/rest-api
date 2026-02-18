@@ -1,5 +1,5 @@
 import express from "express"
-import {LapTime} from "../../../models/lap-times/LapTime"
+import {LapTime} from "../../../models/node-types/lap-times/LapTime"
 import {marshalNode} from "./marshalling/marshalNode"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"

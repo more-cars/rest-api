@@ -1,6 +1,6 @@
 import {faker} from "@faker-js/faker"
 import type {InputLapTimeCreate} from "../../../../src/db/nodes/lap-times/types/InputLapTimeCreate"
-import type {LapTimeNode} from "../../../../src/models/lap-times/types/LapTimeNode"
+import type {LapTimeNode} from "../../../../src/models/node-types/lap-times/types/LapTimeNode"
 
 export const FakeLapTime = {
     dbInput() {

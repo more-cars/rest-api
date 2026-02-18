@@ -1,8 +1,8 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import type {ImageNode} from "../../../../../../src/models/images/types/ImageNode"
-import {Image} from "../../../../../../src/models/images/Image"
+import type {ImageNode} from "../../../../../../src/models/node-types/images/types/ImageNode"
+import {Image} from "../../../../../../src/models/node-types/images/Image"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all IMAGE nodes" request returns the nodes in correct order', () => {

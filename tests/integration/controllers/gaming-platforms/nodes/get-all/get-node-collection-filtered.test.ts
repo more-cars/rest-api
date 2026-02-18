@@ -1,5 +1,5 @@
 import {describe, expect, test, vi} from "vitest"
-import {GamingPlatform} from "../../../../../../src/models/gaming-platforms/GamingPlatform"
+import {GamingPlatform} from "../../../../../../src/models/node-types/gaming-platforms/GamingPlatform"
 import request from "supertest"
 import {app} from "../../../../../../src/app"
 

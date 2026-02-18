@@ -1,6 +1,6 @@
 import {faker} from "@faker-js/faker"
 import type {InputGamingPlatformCreate} from "../../../../src/db/nodes/gaming-platforms/types/InputGamingPlatformCreate"
-import type {GamingPlatformNode} from "../../../../src/models/gaming-platforms/types/GamingPlatformNode"
+import type {GamingPlatformNode} from "../../../../src/models/node-types/gaming-platforms/types/GamingPlatformNode"
 
 export const FakeGamingPlatform = {
     dbInput() {

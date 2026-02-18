@@ -1,5 +1,5 @@
 import {describe, expect, test} from 'vitest'
-import {RacingGame} from "../../../../../../../src/models/racing-games/RacingGame"
+import {RacingGame} from "../../../../../../../src/models/node-types/racing-games/RacingGame"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"

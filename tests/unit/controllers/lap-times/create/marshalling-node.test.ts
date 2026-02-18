@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {LapTimeNode} from "../../../../../src/models/lap-times/types/LapTimeNode"
+import {LapTimeNode} from "../../../../../src/models/node-types/lap-times/types/LapTimeNode"
 import {marshalNode} from "../../../../../src/controllers/node-types/lap-times/marshalling/marshalNode"
 
 test("marshalling a LAP TIME node", async () => {

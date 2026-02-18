@@ -1,5 +1,5 @@
 import express from "express"
-import {Brand} from "../../../models/brands/Brand"
+import {Brand} from "../../../models/node-types/brands/Brand"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
 import availableProperties from "../../../../specification/properties/Brand.json"
 import {InvalidPaginationParams} from "../../../models/types/InvalidPaginationParams"

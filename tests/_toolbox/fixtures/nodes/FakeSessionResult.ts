@@ -1,6 +1,6 @@
 import {faker} from "@faker-js/faker"
 import type {InputSessionResultCreate} from "../../../../src/db/nodes/session-results/types/InputSessionResultCreate"
-import type {SessionResultNode} from "../../../../src/models/session-results/types/SessionResultNode"
+import type {SessionResultNode} from "../../../../src/models/node-types/session-results/types/SessionResultNode"
 
 export const FakeSessionResult = {
     dbInput() {

@@ -1,7 +1,7 @@
 import {expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from "../../../../../src/app.ts"
-import {RacingSession} from "../../../../../src/models/racing-sessions/RacingSession"
+import {RacingSession} from "../../../../../src/models/node-types/racing-sessions/RacingSession"
 import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
 
 test('Expecting an error when the node does not exist', async () => {

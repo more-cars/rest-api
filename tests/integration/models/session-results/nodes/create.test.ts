@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {FakeSessionResult} from "../../../../_toolbox/fixtures/nodes/FakeSessionResult"
-import {SessionResult} from "../../../../../src/models/session-results/SessionResult"
+import {SessionResult} from "../../../../../src/models/node-types/session-results/SessionResult"
 
 test('Expecting node to be created when provided with valid data', async () => {
     const inputData = FakeSessionResult.dbInput()

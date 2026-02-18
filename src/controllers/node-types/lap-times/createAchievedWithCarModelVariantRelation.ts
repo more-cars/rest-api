@@ -1,5 +1,5 @@
 import express from "express"
-import {LapTime} from "../../../models/lap-times/LapTime"
+import {LapTime} from "../../../models/node-types/lap-times/LapTime"
 import {marshalRelation} from "../../relations/marshalRelation"
 import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"

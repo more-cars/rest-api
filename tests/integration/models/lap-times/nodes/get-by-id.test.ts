@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {LapTime} from "../../../../../src/models/lap-times/LapTime"
+import {LapTime} from "../../../../../src/models/node-types/lap-times/LapTime"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 

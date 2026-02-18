@@ -1,5 +1,5 @@
 import express from "express"
-import {SessionResult} from "../../../models/session-results/SessionResult"
+import {SessionResult} from "../../../models/node-types/session-results/SessionResult"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {sendResponse204} from "../../responses/sendResponse204"
 import {sendResponse404} from "../../responses/sendResponse404"

@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {CarModelNode} from "../../../../../src/models/car-models/types/CarModelNode"
+import {CarModelNode} from "../../../../../src/models/node-types/car-models/types/CarModelNode"
 import {seedNodes} from "../../../../_toolbox/dbSeeding/seedNodes"
 import {getAllNodesOfType} from "../../../../../src/db/nodes/car-models/getAllNodesOfType"
 

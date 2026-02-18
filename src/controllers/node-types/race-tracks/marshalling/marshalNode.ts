@@ -1,4 +1,4 @@
-import {RaceTrackNode} from "../../../../models/race-tracks/types/RaceTrackNode"
+import {RaceTrackNode} from "../../../../models/node-types/race-tracks/types/RaceTrackNode"
 import {marshalSingleNode} from "../../../nodes/marshalSingleNode"
 import {RaceTrackResponse} from "../types/RaceTrackResponse"
 

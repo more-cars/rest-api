@@ -1,5 +1,5 @@
 import express from "express"
-import {CarModelVariant} from "../../../models/car-model-variants/CarModelVariant"
+import {CarModelVariant} from "../../../models/node-types/car-model-variants/CarModelVariant"
 import {marshalNode} from "./marshalling/marshalNode"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"

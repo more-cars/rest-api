@@ -1,4 +1,4 @@
-import {GamingPlatformNode} from "../../../../models/gaming-platforms/types/GamingPlatformNode"
+import {GamingPlatformNode} from "../../../../models/node-types/gaming-platforms/types/GamingPlatformNode"
 import {marshalSingleNode} from "../../../nodes/marshalSingleNode"
 import {GamingPlatformResponse} from "../types/GamingPlatformResponse"
 

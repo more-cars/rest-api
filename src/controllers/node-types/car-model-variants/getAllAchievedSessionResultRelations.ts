@@ -1,5 +1,5 @@
 import express from "express"
-import {CarModelVariant} from "../../../models/car-model-variants/CarModelVariant"
+import {CarModelVariant} from "../../../models/node-types/car-model-variants/CarModelVariant"
 import {marshalRelations} from "../../relations/marshalRelations"
 import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"

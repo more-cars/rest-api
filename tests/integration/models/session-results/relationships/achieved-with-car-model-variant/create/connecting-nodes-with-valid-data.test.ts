@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {SessionResult} from "../../../../../../../src/models/session-results/SessionResult"
+import {SessionResult} from "../../../../../../../src/models/node-types/session-results/SessionResult"
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›achieved-with-car-model-variant‹ relationship with valid data', async () => {

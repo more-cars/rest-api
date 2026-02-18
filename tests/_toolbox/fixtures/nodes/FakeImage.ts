@@ -1,6 +1,6 @@
 import {faker} from "@faker-js/faker"
 import type {InputImageCreate} from "../../../../src/db/nodes/images/types/InputImageCreate"
-import type {ImageNode} from "../../../../src/models/images/types/ImageNode"
+import type {ImageNode} from "../../../../src/models/node-types/images/types/ImageNode"
 
 export const FakeImage = {
     dbInput() {

@@ -1,7 +1,7 @@
 import {expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from "../../../../../src/app.ts"
-import {LapTime} from "../../../../../src/models/lap-times/LapTime"
+import {LapTime} from "../../../../../src/models/node-types/lap-times/LapTime"
 
 test('Input data is valid', async () => {
     LapTime.create = vi.fn().mockReturnValue({

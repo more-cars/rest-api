@@ -1,5 +1,5 @@
 import {describe, expect, test} from 'vitest'
-import {Brand} from "../../../../../src/models/brands/Brand"
+import {Brand} from "../../../../../src/models/node-types/brands/Brand"
 import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"

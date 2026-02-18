@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {FakeRacingGame} from "../../../../_toolbox/fixtures/nodes/FakeRacingGame"
-import {RacingGame} from "../../../../../src/models/racing-games/RacingGame"
+import {RacingGame} from "../../../../../src/models/node-types/racing-games/RacingGame"
 
 test('Expecting node to be created when provided with valid data', async () => {
     const inputData = FakeRacingGame.dbInput()

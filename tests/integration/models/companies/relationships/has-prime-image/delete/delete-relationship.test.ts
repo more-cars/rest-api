@@ -6,7 +6,7 @@ import {getSpecificRelationship} from "../../../../../../../src/db/relationships
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
-import {Company} from "../../../../../../../src/models/companies/Company"
+import {Company} from "../../../../../../../src/models/node-types/companies/Company"
 
 describe('Deleting a ›has-prime-image‹ relationship', () => {
     test('COMPANY node does not exist', async () => {

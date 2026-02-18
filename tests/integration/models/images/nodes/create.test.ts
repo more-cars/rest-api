@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {FakeImage} from "../../../../_toolbox/fixtures/nodes/FakeImage"
-import {Image} from "../../../../../src/models/images/Image"
+import {Image} from "../../../../../src/models/node-types/images/Image"
 
 test('When providing valid data the new node can be created', async () => {
     const inputData = FakeImage.dbInput()

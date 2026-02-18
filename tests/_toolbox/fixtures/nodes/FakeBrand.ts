@@ -1,6 +1,6 @@
 import {faker} from "@faker-js/faker"
 import type {InputBrandCreate} from "../../../../src/db/nodes/brands/types/InputBrandCreate"
-import type {BrandNode} from "../../../../src/models/brands/types/BrandNode"
+import type {BrandNode} from "../../../../src/models/node-types/brands/types/BrandNode"
 
 export const FakeBrand = {
     dbInput() {

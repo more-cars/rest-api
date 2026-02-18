@@ -1,5 +1,5 @@
 import {describe, expect, test, vi} from "vitest"
-import {Image} from "../../../../../../src/models/images/Image"
+import {Image} from "../../../../../../src/models/node-types/images/Image"
 import request from "supertest"
 import {app} from "../../../../../../src/app"
 

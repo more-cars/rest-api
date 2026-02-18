@@ -1,5 +1,5 @@
 import {describe, expect, test, vi} from "vitest"
-import {RacingSeries} from "../../../../../../src/models/racing-series/RacingSeries"
+import {RacingSeries} from "../../../../../../src/models/node-types/racing-series/RacingSeries"
 import request from "supertest"
 import {app} from "../../../../../../src/app"
 

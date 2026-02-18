@@ -1,5 +1,5 @@
 import express from "express"
-import {TrackLayout} from "../../../models/track-layouts/TrackLayout"
+import {TrackLayout} from "../../../models/node-types/track-layouts/TrackLayout"
 import {marshalNode} from "./marshalling/marshalNode"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"

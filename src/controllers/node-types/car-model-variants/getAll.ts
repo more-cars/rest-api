@@ -1,5 +1,5 @@
 import express from "express"
-import {CarModelVariant} from "../../../models/car-model-variants/CarModelVariant"
+import {CarModelVariant} from "../../../models/node-types/car-model-variants/CarModelVariant"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
 import availableProperties from "../../../../specification/properties/CarModelVariant.json"
 import {InvalidPaginationParams} from "../../../models/types/InvalidPaginationParams"

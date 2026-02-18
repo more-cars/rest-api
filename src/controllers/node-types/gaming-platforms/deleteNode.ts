@@ -1,5 +1,5 @@
 import express from "express"
-import {GamingPlatform} from "../../../models/gaming-platforms/GamingPlatform"
+import {GamingPlatform} from "../../../models/node-types/gaming-platforms/GamingPlatform"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {sendResponse204} from "../../responses/sendResponse204"
 import {sendResponse404} from "../../responses/sendResponse404"

@@ -6,7 +6,7 @@ import {getSpecificRelationship} from "../../../../../../../src/db/relationships
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
-import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
+import {CarModel} from "../../../../../../../src/models/node-types/car-models/CarModel"
 
 describe('Deleting a ›has-prime-image‹ relationship', () => {
     test('CAR MODEL node does not exist', async () => {

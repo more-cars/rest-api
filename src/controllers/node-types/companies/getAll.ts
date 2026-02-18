@@ -1,5 +1,5 @@
 import express from "express"
-import {Company} from "../../../models/companies/Company"
+import {Company} from "../../../models/node-types/companies/Company"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
 import availableProperties from "../../../../specification/properties/Company.json"
 import {InvalidPaginationParams} from "../../../models/types/InvalidPaginationParams"

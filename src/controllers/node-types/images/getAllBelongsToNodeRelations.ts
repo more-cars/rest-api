@@ -1,5 +1,5 @@
 import express from "express"
-import {Image} from "../../../models/images/Image"
+import {Image} from "../../../models/node-types/images/Image"
 import {marshalRelations} from "../../relations/marshalRelations"
 import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"

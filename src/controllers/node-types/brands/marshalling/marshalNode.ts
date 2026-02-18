@@ -1,4 +1,4 @@
-import {BrandNode} from "../../../../models/brands/types/BrandNode"
+import {BrandNode} from "../../../../models/node-types/brands/types/BrandNode"
 import {marshalSingleNode} from "../../../nodes/marshalSingleNode"
 import {BrandResponse} from "../types/BrandResponse"
 

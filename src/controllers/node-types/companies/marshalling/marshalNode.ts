@@ -1,4 +1,4 @@
-import {CompanyNode} from "../../../../models/companies/types/CompanyNode"
+import {CompanyNode} from "../../../../models/node-types/companies/types/CompanyNode"
 import {marshalSingleNode} from "../../../nodes/marshalSingleNode"
 import type {CompanyResponse} from "../types/CompanyResponse"
 

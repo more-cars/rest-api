@@ -1,5 +1,5 @@
 import {describe, expect, test} from 'vitest'
-import {CreateBrandInput} from "../../../../../src/models/brands/types/CreateBrandInput"
+import {CreateBrandInput} from "../../../../../src/models/node-types/brands/types/CreateBrandInput"
 import {sanitize} from "../../../../../src/controllers/node-types/brands/create"
 
 describe('Sanitizing user input', () => {

@@ -1,5 +1,5 @@
 import express from "express"
-import {GamingPlatform} from "../../../models/gaming-platforms/GamingPlatform"
+import {GamingPlatform} from "../../../models/node-types/gaming-platforms/GamingPlatform"
 import {marshalRelation} from "../../relations/marshalRelation"
 import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"

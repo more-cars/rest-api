@@ -1,5 +1,5 @@
 import express from "express"
-import {RacingSession} from "../../../models/racing-sessions/RacingSession"
+import {RacingSession} from "../../../models/node-types/racing-sessions/RacingSession"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {sendResponse204} from "../../responses/sendResponse204"
 import {sendResponse404} from "../../responses/sendResponse404"

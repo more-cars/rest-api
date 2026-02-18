@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
-import type {CompanyNode} from "../../../../../../src/models/companies/types/CompanyNode"
-import {Company} from "../../../../../../src/models/companies/Company"
+import type {CompanyNode} from "../../../../../../src/models/node-types/companies/types/CompanyNode"
+import {Company} from "../../../../../../src/models/node-types/companies/Company"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"

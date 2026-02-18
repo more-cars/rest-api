@@ -1,8 +1,8 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import type {LapTimeNode} from "../../../../../../src/models/lap-times/types/LapTimeNode"
-import {LapTime} from "../../../../../../src/models/lap-times/LapTime"
+import type {LapTimeNode} from "../../../../../../src/models/node-types/lap-times/types/LapTimeNode"
+import {LapTime} from "../../../../../../src/models/node-types/lap-times/LapTime"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('Each page of a "get all LAP TIME nodes" request returns the correct number of nodes', () => {

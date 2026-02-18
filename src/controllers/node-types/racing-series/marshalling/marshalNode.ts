@@ -1,4 +1,4 @@
-import {RacingSeriesNode} from "../../../../models/racing-series/types/RacingSeriesNode"
+import {RacingSeriesNode} from "../../../../models/node-types/racing-series/types/RacingSeriesNode"
 import {marshalSingleNode} from "../../../nodes/marshalSingleNode"
 import {RacingSeriesResponse} from "../types/RacingSeriesResponse"
 

@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {RaceTrack} from "../../../../../../../src/models/race-tracks/RaceTrack"
+import {RaceTrack} from "../../../../../../../src/models/node-types/race-tracks/RaceTrack"
 import {RelationshipAlreadyExistsError} from "../../../../../../../src/models/types/RelationshipAlreadyExistsError"
 
 test('Trying to create the same ›has-layout‹ relationship again', async () => {

@@ -1,5 +1,5 @@
 import express from "express"
-import {RaceTrack} from "../../../models/race-tracks/RaceTrack"
+import {RaceTrack} from "../../../models/node-types/race-tracks/RaceTrack"
 import {marshalNode} from "./marshalling/marshalNode"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"

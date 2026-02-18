@@ -1,6 +1,6 @@
 import {faker} from "@faker-js/faker"
 import type {InputRacingGameCreate} from "../../../../src/db/nodes/racing-games/types/InputRacingGameCreate"
-import type {RacingGameNode} from "../../../../src/models/racing-games/types/RacingGameNode"
+import type {RacingGameNode} from "../../../../src/models/node-types/racing-games/types/RacingGameNode"
 
 export const FakeRacingGame = {
     dbInput() {

@@ -3,7 +3,7 @@ import {seedRelationship} from "../../../../_toolbox/dbSeeding/seedRelationship"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {RelationshipType} from "../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
-import {Brand} from "../../../../../src/models/brands/Brand"
+import {Brand} from "../../../../../src/models/node-types/brands/Brand"
 import {getRelationshipById} from "../../../../../src/db/relationships/getRelationshipById"
 
 describe('Creating a 1:n relationship', () => {

@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {SessionResult} from "../../../../../../../src/models/session-results/SessionResult"
+import {SessionResult} from "../../../../../../../src/models/node-types/session-results/SessionResult"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›has-lap-time‹ relationship with nodes that do not exist', async () => {

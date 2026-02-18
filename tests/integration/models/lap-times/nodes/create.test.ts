@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {FakeLapTime} from "../../../../_toolbox/fixtures/nodes/FakeLapTime"
-import {LapTime} from "../../../../../src/models/lap-times/LapTime"
+import {LapTime} from "../../../../../src/models/node-types/lap-times/LapTime"
 
 test('Expecting node to be created when provided with valid data', async () => {
     const inputData = FakeLapTime.dbInput()

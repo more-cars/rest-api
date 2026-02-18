@@ -1,5 +1,5 @@
 import {describe, expect, test} from 'vitest'
-import {CreateTrackLayoutInput} from "../../../../../src/models/track-layouts/types/CreateTrackLayoutInput"
+import {CreateTrackLayoutInput} from "../../../../../src/models/node-types/track-layouts/types/CreateTrackLayoutInput"
 import {sanitize} from "../../../../../src/controllers/node-types/track-layouts/create"
 
 describe('Sanitizing user input', () => {

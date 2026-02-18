@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {CarModel} from "../../../../../src/models/car-models/CarModel"
+import {CarModel} from "../../../../../src/models/node-types/car-models/CarModel"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 

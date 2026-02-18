@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {TrackLayout} from "../../../../../src/models/track-layouts/TrackLayout"
+import {TrackLayout} from "../../../../../src/models/node-types/track-layouts/TrackLayout"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 

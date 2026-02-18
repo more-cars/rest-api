@@ -1,4 +1,4 @@
-import {ImageNode} from "../../../../models/images/types/ImageNode"
+import {ImageNode} from "../../../../models/node-types/images/types/ImageNode"
 import {marshalSingleNode} from "../../../nodes/marshalSingleNode"
 import {ImageResponse} from "../types/ImageResponse"
 

@@ -1,5 +1,5 @@
 import express from "express"
-import {SessionResult} from "../../../models/session-results/SessionResult"
+import {SessionResult} from "../../../models/node-types/session-results/SessionResult"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
 import availableProperties from "../../../../specification/properties/SessionResult.json"
 import {InvalidPaginationParams} from "../../../models/types/InvalidPaginationParams"

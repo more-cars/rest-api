@@ -1,4 +1,4 @@
-import {CarModelNode} from "../../../../models/car-models/types/CarModelNode"
+import {CarModelNode} from "../../../../models/node-types/car-models/types/CarModelNode"
 import {marshalSingleNode} from "../../../nodes/marshalSingleNode"
 import {CarModelResponse} from "../types/CarModelResponse"
 

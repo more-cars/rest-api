@@ -3,7 +3,7 @@ import {seedRelationship} from "../../../../_toolbox/dbSeeding/seedRelationship"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {RelationshipType} from "../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
-import {RacingEvent} from "../../../../../src/models/racing-events/RacingEvent"
+import {RacingEvent} from "../../../../../src/models/node-types/racing-events/RacingEvent"
 import {getRelationshipById} from "../../../../../src/db/relationships/getRelationshipById"
 
 describe('Creating a n:1 relationship', () => {

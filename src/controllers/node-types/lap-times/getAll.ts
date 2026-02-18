@@ -1,5 +1,5 @@
 import express from "express"
-import {LapTime} from "../../../models/lap-times/LapTime"
+import {LapTime} from "../../../models/node-types/lap-times/LapTime"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
 import availableProperties from "../../../../specification/properties/LapTime.json"
 import {InvalidPaginationParams} from "../../../models/types/InvalidPaginationParams"

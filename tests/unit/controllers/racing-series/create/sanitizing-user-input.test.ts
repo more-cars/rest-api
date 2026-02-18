@@ -1,5 +1,5 @@
 import {describe, expect, test} from 'vitest'
-import {CreateRacingSeriesInput} from "../../../../../src/models/racing-series/types/CreateRacingSeriesInput"
+import {CreateRacingSeriesInput} from "../../../../../src/models/node-types/racing-series/types/CreateRacingSeriesInput"
 import {sanitize} from "../../../../../src/controllers/node-types/racing-series/create"
 
 describe('Sanitizing user input', () => {

@@ -1,7 +1,7 @@
 import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from "../../../../../../src/app.ts"
-import {RacingSession} from "../../../../../../src/models/racing-sessions/RacingSession"
+import {RacingSession} from "../../../../../../src/models/node-types/racing-sessions/RacingSession"
 
 describe('Expecting correct status code when requesting a plain node collection', () => {
     test('when no nodes exist', async () => {

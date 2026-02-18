@@ -1,8 +1,8 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {RacingEventNode} from "../../../../../../src/models/racing-events/types/RacingEventNode"
-import {RacingEvent} from "../../../../../../src/models/racing-events/RacingEvent"
+import {RacingEventNode} from "../../../../../../src/models/node-types/racing-events/types/RacingEventNode"
+import {RacingEvent} from "../../../../../../src/models/node-types/racing-events/RacingEvent"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A paginated "get all RACING EVENT nodes" request returns the correct number of nodes', () => {

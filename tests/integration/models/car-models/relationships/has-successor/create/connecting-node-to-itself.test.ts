@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {CarModel} from "../../../../../../../src/models/car-models/CarModel"
+import {CarModel} from "../../../../../../../src/models/node-types/car-models/CarModel"
 import {SemanticError} from "../../../../../../../src/models/types/SemanticError"
 
 test('Trying to connect a CAR MODEL to itself', async () => {

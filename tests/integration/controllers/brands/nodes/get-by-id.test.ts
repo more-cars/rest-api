@@ -1,7 +1,7 @@
 import {expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from "../../../../../src/app.ts"
-import {Brand} from "../../../../../src/models/brands/Brand"
+import {Brand} from "../../../../../src/models/node-types/brands/Brand"
 
 test('Node does not exist', async () => {
     Brand.findById = vi.fn().mockReturnValue(false)

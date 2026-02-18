@@ -1,8 +1,8 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import type {RacingEventNode} from "../../../../../../src/models/racing-events/types/RacingEventNode"
-import {RacingEvent} from "../../../../../../src/models/racing-events/RacingEvent"
+import type {RacingEventNode} from "../../../../../../src/models/node-types/racing-events/types/RacingEventNode"
+import {RacingEvent} from "../../../../../../src/models/node-types/racing-events/RacingEvent"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 

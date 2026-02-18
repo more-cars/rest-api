@@ -1,5 +1,5 @@
 import express from "express"
-import {RacingSession} from "../../../models/racing-sessions/RacingSession"
+import {RacingSession} from "../../../models/node-types/racing-sessions/RacingSession"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
 import availableProperties from "../../../../specification/properties/RacingSession.json"
 import {InvalidPaginationParams} from "../../../models/types/InvalidPaginationParams"

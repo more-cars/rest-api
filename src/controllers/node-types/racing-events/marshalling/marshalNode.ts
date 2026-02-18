@@ -1,4 +1,4 @@
-import {RacingEventNode} from "../../../../models/racing-events/types/RacingEventNode"
+import {RacingEventNode} from "../../../../models/node-types/racing-events/types/RacingEventNode"
 import {marshalSingleNode} from "../../../nodes/marshalSingleNode"
 import {RacingEventResponse} from "../types/RacingEventResponse"
 

@@ -1,5 +1,5 @@
 import express from "express"
-import {TrackLayout} from "../../../models/track-layouts/TrackLayout"
+import {TrackLayout} from "../../../models/node-types/track-layouts/TrackLayout"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../models/types/RelationshipNotFoundError"
 import {sendResponse204} from "../../responses/sendResponse204"

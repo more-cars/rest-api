@@ -1,5 +1,5 @@
 import {describe, expect, test} from 'vitest'
-import {RacingSession} from "../../../../../src/models/racing-sessions/RacingSession"
+import {RacingSession} from "../../../../../src/models/node-types/racing-sessions/RacingSession"
 import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"

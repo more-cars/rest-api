@@ -1,6 +1,6 @@
 import {faker} from "@faker-js/faker"
 import type {InputTrackLayoutCreate} from "../../../../src/db/nodes/track-layouts/types/InputTrackLayoutCreate"
-import type {TrackLayoutNode} from "../../../../src/models/track-layouts/types/TrackLayoutNode"
+import type {TrackLayoutNode} from "../../../../src/models/node-types/track-layouts/types/TrackLayoutNode"
 
 export const FakeTrackLayout = {
     dbInput() {

@@ -1,5 +1,5 @@
 import {describe, expect, test} from 'vitest'
-import {CreateGamingPlatformInput} from "../../../../../src/models/gaming-platforms/types/CreateGamingPlatformInput"
+import {CreateGamingPlatformInput} from "../../../../../src/models/node-types/gaming-platforms/types/CreateGamingPlatformInput"
 import {sanitize} from "../../../../../src/controllers/node-types/gaming-platforms/create"
 
 describe('Sanitizing user input', () => {

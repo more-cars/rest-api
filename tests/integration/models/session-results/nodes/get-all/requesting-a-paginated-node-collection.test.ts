@@ -1,8 +1,8 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {SessionResultNode} from "../../../../../../src/models/session-results/types/SessionResultNode"
-import {SessionResult} from "../../../../../../src/models/session-results/SessionResult"
+import {SessionResultNode} from "../../../../../../src/models/node-types/session-results/types/SessionResultNode"
+import {SessionResult} from "../../../../../../src/models/node-types/session-results/SessionResult"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A paginated "get all SESSION RESULT nodes" request returns the correct number of nodes', () => {

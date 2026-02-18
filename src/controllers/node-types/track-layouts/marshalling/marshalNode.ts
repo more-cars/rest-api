@@ -1,4 +1,4 @@
-import {TrackLayoutNode} from "../../../../models/track-layouts/types/TrackLayoutNode"
+import {TrackLayoutNode} from "../../../../models/node-types/track-layouts/types/TrackLayoutNode"
 import {marshalSingleNode} from "../../../nodes/marshalSingleNode"
 import {TrackLayoutResponse} from "../types/TrackLayoutResponse"
 
