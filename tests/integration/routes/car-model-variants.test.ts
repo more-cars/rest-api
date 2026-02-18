@@ -1,7 +1,7 @@
 import {describe, expect, test, vi} from "vitest"
 import request from "supertest"
 import {app} from "../../../src/app"
-import {CarModelVariantController} from "../../../src/controllers/CarModelVariantController"
+import {CarModelVariantController} from "../../../src/controllers/node-types/CarModelVariantController"
 
 describe('Car Model Variants', () => {
     vi.mock("../../../src/controllers/CarModelVariantController.ts", {spy: true})

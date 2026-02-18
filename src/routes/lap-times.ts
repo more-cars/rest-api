@@ -1,5 +1,5 @@
 import express from "express"
-import {LapTimeController} from "../controllers/LapTimeController"
+import {LapTimeController} from "../controllers/node-types/LapTimeController"
 
 const router = express.Router()
 

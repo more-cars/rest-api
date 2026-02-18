@@ -1,7 +1,7 @@
 import {describe, expect, test, vi} from "vitest"
 import request from "supertest"
 import {app} from "../../../src/app"
-import {SessionResultController} from "../../../src/controllers/SessionResultController"
+import {SessionResultController} from "../../../src/controllers/node-types/SessionResultController"
 
 describe('Session Results', () => {
     vi.mock("../../../src/controllers/SessionResultController.ts", {spy: true})

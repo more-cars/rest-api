@@ -1,5 +1,5 @@
 import express from "express"
-import {BrandController} from "../controllers/BrandController"
+import {BrandController} from "../controllers/node-types/BrandController"
 
 const router = express.Router()
 

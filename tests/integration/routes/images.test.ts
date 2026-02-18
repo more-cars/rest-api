@@ -1,7 +1,7 @@
 import {describe, expect, test, vi} from "vitest"
 import request from "supertest"
 import {app} from "../../../src/app"
-import {ImageController} from "../../../src/controllers/ImageController"
+import {ImageController} from "../../../src/controllers/node-types/ImageController"
 
 describe('Images', () => {
     vi.mock("../../../src/controllers/ImageController.ts", {spy: true})

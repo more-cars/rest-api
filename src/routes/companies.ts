@@ -1,5 +1,5 @@
 import express from "express"
-import {CompanyController} from "../controllers/CompanyController"
+import {CompanyController} from "../controllers/node-types/CompanyController"
 
 const router = express.Router()
 

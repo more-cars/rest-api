@@ -1,7 +1,7 @@
 import {describe, expect, test, vi} from "vitest"
 import request from "supertest"
 import {app} from "../../../src/app"
-import {TrackLayoutController} from "../../../src/controllers/TrackLayoutController"
+import {TrackLayoutController} from "../../../src/controllers/node-types/TrackLayoutController"
 
 describe('Track Layouts', () => {
     vi.mock("../../../src/controllers/TrackLayoutController.ts", {spy: true})
