@@ -1,12 +1,12 @@
 import {NodeTypeLabel} from "../NodeTypeLabel"
 import {DbRelationship} from "./DbRelationship"
-import {DbRelationshipName} from "./DbRelationshipName"
+import {RelationshipTypeNeo4j} from "./RelationshipTypeNeo4j"
 
 export type RelationshipSpecification = [
     DbRelationship, {
         startNodeLabel: NodeTypeLabel
         endNodeLabel: NodeTypeLabel
-        relationshipName: DbRelationshipName
+        relationshipName: RelationshipTypeNeo4j
         isReverseRelationship: boolean
     }
 ]

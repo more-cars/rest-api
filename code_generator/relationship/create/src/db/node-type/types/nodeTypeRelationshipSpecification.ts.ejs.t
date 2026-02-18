@@ -8,5 +8,5 @@ skip_if: import {<%= h.changeCase.pascal(startNodeType) %>RelationshipSpecificat
     [DbRelationship.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>, {
         startNodeLabel: NodeTypeLabel.<%= h.changeCase.pascal(startNodeType) %>,
         endNodeLabel: NodeTypeLabel.<%= h.changeCase.pascal(endNodeType) %>,
-        relationshipName: DbRelationshipName.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
+        relationshipName: RelationshipTypeNeo4j.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
         isReverseRelationship: false,

@@ -5,7 +5,7 @@ import type {NodeTypeLabel} from "../NodeTypeLabel"
 import type {BaseRelationship} from "../types/BaseRelationship"
 import {getRelationshipSpecification} from "./getRelationshipSpecification"
 import {RelationshipDirection} from "../types/RelationshipDirection"
-import type {DbRelationshipName} from "../types/DbRelationshipName"
+import type {RelationshipTypeNeo4j} from "../types/RelationshipTypeNeo4j"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 
@@ -60,7 +60,7 @@ export async function getRelationshipCollection(
     return relationships
 }
 
-export function getRelationshipCollectionQuery(startNodeId: number, relationshipName: DbRelationshipName, reverse: RelationshipDirection, endNodeType?: NodeTypeLabel) {
+export function getRelationshipCollectionQuery(startNodeId: number, relationshipName: RelationshipTypeNeo4j, reverse: RelationshipDirection, endNodeType?: NodeTypeLabel) {
     const templateName = reverse ? 'getRelationshipCollectionReversed' : 'getRelationshipCollection'
 
     let template = getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')

@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {getAllDbRelationshipNames} from "../../../../_toolbox/getAllDbRelationshipNames"
-import {DbRelationshipName} from "../../../../../src/db/types/DbRelationshipName"
+import {RelationshipTypeNeo4j} from "../../../../../src/db/types/RelationshipTypeNeo4j"
 import {getRelationshipCollectionQuery} from "../../../../../src/db/relationships/getRelationshipCollection"
 import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
 import {RelationshipDirection} from "../../../../../src/db/types/RelationshipDirection"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 describe('Assembling database query for fetching all relationships', () => {
-    test.each(getAllDbRelationshipNames())('forward $0 relationship', async (relationshipName: DbRelationshipName) => {
+    test.each(getAllDbRelationshipNames())('forward $0 relationship', async (relationshipName: RelationshipTypeNeo4j) => {
         const startNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
         const query = getRelationshipCollectionQuery(startNodeId, relationshipName, RelationshipDirection.FORWARD, NodeTypeLabel.LapTime)
 
@@ -17,7 +17,7 @@ describe('Assembling database query for fetching all relationships', () => {
                 "RETURN a, r, b")
     })
 
-    test.each(getAllDbRelationshipNames())('reverse $0 relationship', async (relationshipName: DbRelationshipName) => {
+    test.each(getAllDbRelationshipNames())('reverse $0 relationship', async (relationshipName: RelationshipTypeNeo4j) => {
         const startNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
         const query = getRelationshipCollectionQuery(startNodeId, relationshipName, RelationshipDirection.REVERSE, NodeTypeLabel.LapTime)
 

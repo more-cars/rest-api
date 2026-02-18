@@ -1,37 +1,37 @@
 import {RelationshipSpecification} from "../../../types/RelationshipSpecification"
 import {DbRelationship} from "../../../types/DbRelationship"
 import {NodeTypeLabel} from "../../../NodeTypeLabel"
-import {DbRelationshipName} from "../../../types/DbRelationshipName"
+import {RelationshipTypeNeo4j} from "../../../types/RelationshipTypeNeo4j"
 
 export const SessionResultRelationshipSpecification: RelationshipSpecification[] = [
     [DbRelationship.SessionResultBelongsToRacingSession, {
         startNodeLabel: NodeTypeLabel.SessionResult,
         endNodeLabel: NodeTypeLabel.RacingSession,
-        relationshipName: DbRelationshipName.SessionResultBelongsToRacingSession,
+        relationshipName: RelationshipTypeNeo4j.SessionResultBelongsToRacingSession,
         isReverseRelationship: true,
     }],
     [DbRelationship.SessionResultHasLapTime, {
         startNodeLabel: NodeTypeLabel.SessionResult,
         endNodeLabel: NodeTypeLabel.LapTime,
-        relationshipName: DbRelationshipName.SessionResultHasLapTime,
+        relationshipName: RelationshipTypeNeo4j.SessionResultHasLapTime,
         isReverseRelationship: false,
     }],
     [DbRelationship.SessionResultAchievedWithCarModelVariant, {
         startNodeLabel: NodeTypeLabel.SessionResult,
         endNodeLabel: NodeTypeLabel.CarModelVariant,
-        relationshipName: DbRelationshipName.SessionResultAchievedWithCarModelVariant,
+        relationshipName: RelationshipTypeNeo4j.SessionResultAchievedWithCarModelVariant,
         isReverseRelationship: true,
     }],
     [DbRelationship.SessionResultHasImage, {
         startNodeLabel: NodeTypeLabel.SessionResult,
         endNodeLabel: NodeTypeLabel.Image,
-        relationshipName: DbRelationshipName.SessionResultHasImage,
+        relationshipName: RelationshipTypeNeo4j.SessionResultHasImage,
         isReverseRelationship: false,
     }],
     [DbRelationship.SessionResultHasPrimeImage, {
         startNodeLabel: NodeTypeLabel.SessionResult,
         endNodeLabel: NodeTypeLabel.Image,
-        relationshipName: DbRelationshipName.SessionResultHasPrimeImage,
+        relationshipName: RelationshipTypeNeo4j.SessionResultHasPrimeImage,
         isReverseRelationship: false,
     }],
 ]

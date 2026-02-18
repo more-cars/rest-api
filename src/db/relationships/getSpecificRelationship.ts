@@ -4,7 +4,7 @@ import type {BaseRelationship} from "../types/BaseRelationship"
 import {getRelationshipSpecification} from "./getRelationshipSpecification"
 import {RelationshipDirection} from "../types/RelationshipDirection"
 import {getDriver} from "../driver"
-import type {DbRelationshipName} from "../types/DbRelationshipName"
+import type {RelationshipTypeNeo4j} from "../types/RelationshipTypeNeo4j"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 export async function getSpecificRelationship(
@@ -58,7 +58,7 @@ export async function getSpecificRelationship(
     return relationship
 }
 
-export function getSpecificRelationshipQuery(startNodeId: number, relationshipName: DbRelationshipName, endNodeId: number, reverse: RelationshipDirection) {
+export function getSpecificRelationshipQuery(startNodeId: number, relationshipName: RelationshipTypeNeo4j, endNodeId: number, reverse: RelationshipDirection) {
     const templateName = reverse ? 'getSpecificRelationshipReversed' : 'getSpecificRelationship'
 
     return getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')

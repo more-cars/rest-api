@@ -8,7 +8,7 @@ import {generateMoreCarsId} from "../generateMoreCarsId"
 import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId"
 import {addMoreCarsIdToRelationship} from "./addMoreCarsIdToRelationship"
 import {addTimestampsToRelationship} from "./addTimestampsToRelationship"
-import {DbRelationshipName} from "../types/DbRelationshipName"
+import {RelationshipTypeNeo4j} from "../types/RelationshipTypeNeo4j"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 export async function createRelationship(
@@ -74,7 +74,7 @@ export async function createRelationship(
     return relationship
 }
 
-export function createRelationshipQuery(startNodeId: number, relationshipName: DbRelationshipName, endNodeId: number, reverse: RelationshipDirection) {
+export function createRelationshipQuery(startNodeId: number, relationshipName: RelationshipTypeNeo4j, endNodeId: number, reverse: RelationshipDirection) {
     const templateName = reverse ? 'createRelationshipReversed' : 'createRelationship'
 
     return getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')

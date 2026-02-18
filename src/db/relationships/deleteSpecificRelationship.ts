@@ -3,7 +3,7 @@ import {DbRelationship} from "../types/DbRelationship"
 import {getRelationshipSpecification} from "./getRelationshipSpecification"
 import {RelationshipDirection} from "../types/RelationshipDirection"
 import {getDriver} from "../driver"
-import {DbRelationshipName} from "../types/DbRelationshipName"
+import {RelationshipTypeNeo4j} from "../types/RelationshipTypeNeo4j"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 export async function deleteSpecificRelationship(
@@ -28,7 +28,7 @@ export async function deleteSpecificRelationship(
     return result
 }
 
-export function deleteSpecificRelationshipQuery(startNodeId: number, relationshipName: DbRelationshipName, endNodeId: number, reverse: RelationshipDirection) {
+export function deleteSpecificRelationshipQuery(startNodeId: number, relationshipName: RelationshipTypeNeo4j, endNodeId: number, reverse: RelationshipDirection) {
     const templateName = reverse ? 'deleteSpecificRelationshipReversed' : 'deleteSpecificRelationship'
 
     return getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')

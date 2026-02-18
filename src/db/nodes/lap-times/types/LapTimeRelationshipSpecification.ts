@@ -1,37 +1,37 @@
 import {RelationshipSpecification} from "../../../types/RelationshipSpecification"
 import {DbRelationship} from "../../../types/DbRelationship"
 import {NodeTypeLabel} from "../../../NodeTypeLabel"
-import {DbRelationshipName} from "../../../types/DbRelationshipName"
+import {RelationshipTypeNeo4j} from "../../../types/RelationshipTypeNeo4j"
 
 export const LapTimeRelationshipSpecification: RelationshipSpecification[] = [
     [DbRelationship.LapTimeBelongsToSessionResult, {
         startNodeLabel: NodeTypeLabel.LapTime,
         endNodeLabel: NodeTypeLabel.SessionResult,
-        relationshipName: DbRelationshipName.LapTimeBelongsToSessionResult,
+        relationshipName: RelationshipTypeNeo4j.LapTimeBelongsToSessionResult,
         isReverseRelationship: true,
     }],
     [DbRelationship.LapTimeAchievedOnTrackLayout, {
         startNodeLabel: NodeTypeLabel.LapTime,
         endNodeLabel: NodeTypeLabel.TrackLayout,
-        relationshipName: DbRelationshipName.LapTimeAchievedOnTrackLayout,
+        relationshipName: RelationshipTypeNeo4j.LapTimeAchievedOnTrackLayout,
         isReverseRelationship: true,
     }],
     [DbRelationship.LapTimeAchievedWithCarModelVariant, {
         startNodeLabel: NodeTypeLabel.LapTime,
         endNodeLabel: NodeTypeLabel.CarModelVariant,
-        relationshipName: DbRelationshipName.LapTimeAchievedWithCarModelVariant,
+        relationshipName: RelationshipTypeNeo4j.LapTimeAchievedWithCarModelVariant,
         isReverseRelationship: true,
     }],
     [DbRelationship.LapTimeHasImage, {
         startNodeLabel: NodeTypeLabel.LapTime,
         endNodeLabel: NodeTypeLabel.Image,
-        relationshipName: DbRelationshipName.LapTimeHasImage,
+        relationshipName: RelationshipTypeNeo4j.LapTimeHasImage,
         isReverseRelationship: false,
     }],
     [DbRelationship.LapTimeHasPrimeImage, {
         startNodeLabel: NodeTypeLabel.LapTime,
         endNodeLabel: NodeTypeLabel.Image,
-        relationshipName: DbRelationshipName.LapTimeHasPrimeImage,
+        relationshipName: RelationshipTypeNeo4j.LapTimeHasPrimeImage,
         isReverseRelationship: false,
     }],
 ]

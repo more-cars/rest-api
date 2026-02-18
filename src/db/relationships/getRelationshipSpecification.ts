@@ -1,5 +1,5 @@
 import {DbRelationship} from "../types/DbRelationship"
-import {DbRelationshipName} from "../types/DbRelationshipName"
+import {RelationshipTypeNeo4j} from "../types/RelationshipTypeNeo4j"
 import {NodeTypeLabel} from "../NodeTypeLabel"
 import {ImageRelationshipSpecification} from "../nodes/images/types/ImageRelationshipSpecification"
 import {CompanyRelationshipSpecification} from "../nodes/companies/types/CompanyRelationshipSpecification"
@@ -20,7 +20,7 @@ export function getRelationshipSpecification(relationshipType: DbRelationship) {
     const mapping = new Map<DbRelationship, {
         startNodeLabel: NodeTypeLabel,
         endNodeLabel: NodeTypeLabel,
-        relationshipName: DbRelationshipName,
+        relationshipName: RelationshipTypeNeo4j,
         isReverseRelationship: boolean,
     }>(ImageRelationshipSpecification.concat(
         CompanyRelationshipSpecification,
