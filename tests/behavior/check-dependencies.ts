@@ -4,7 +4,7 @@ const attemptAutofix = process.argv[2] === "true" || false
 
 checkDependencies(attemptAutofix).then(() => true)
 
-async function checkDependencies(autofix: boolean = false) {
+async function checkDependencies(autofix = false) {
     if (!process.env.API_URL) {
         console.log('⚠️ Environment variable `API_URL` is missing.')
 
