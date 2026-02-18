@@ -3,7 +3,7 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {RacingSession} from "../../../../../../src/models/node-types/racing-sessions/RacingSession"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Creating a ›has-session-result‹ relationship', () => {
@@ -49,7 +49,7 @@ describe('Creating a ›has-session-result‹ relationship', () => {
     test('Trying to create the same relationship again', async () => {
         vi.spyOn(RacingSession, 'createHasSessionResultRelationship')
             .mockImplementation(async () => {
-                throw new RelationshipAlreadyExistsError('has-session-result', 123, 567)
+                throw new RelAlreadyExistsError('has-session-result', 123, 567)
             })
 
         const response = await request(app)

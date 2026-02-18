@@ -3,7 +3,7 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {CarModelVariant} from "../../../../../../src/models/node-types/car-model-variants/CarModelVariant"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Creating a ›is-variant-of‹ relationship', () => {
@@ -49,7 +49,7 @@ describe('Creating a ›is-variant-of‹ relationship', () => {
     test('Trying to create the same relationship again', async () => {
         vi.spyOn(CarModelVariant, 'createIsVariantOfRelationship')
             .mockImplementation(async () => {
-                throw new RelationshipAlreadyExistsError('is-variant-of', 123, 567)
+                throw new RelAlreadyExistsError('is-variant-of', 123, 567)
             })
 
         const response = await request(app)

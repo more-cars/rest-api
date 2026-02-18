@@ -3,7 +3,7 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {RacingSeries} from "../../../../../../src/models/node-types/racing-series/RacingSeries"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Creating a ›has-image‹ relationship', () => {
@@ -49,7 +49,7 @@ describe('Creating a ›has-image‹ relationship', () => {
     test('Trying to create the same relationship again', async () => {
         vi.spyOn(RacingSeries, 'createHasImageRelationship')
             .mockImplementation(async () => {
-                throw new RelationshipAlreadyExistsError('has-image', 123, 567)
+                throw new RelAlreadyExistsError('has-image', 123, 567)
             })
 
         const response = await request(app)

@@ -3,7 +3,7 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {CarModelVariant} from "../../../../../../src/models/node-types/car-model-variants/CarModelVariant"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Requesting the ›has-prime-image‹ relationship', () => {
@@ -23,7 +23,7 @@ describe('Requesting the ›has-prime-image‹ relationship', () => {
     test('Providing valid data, but no relationships exist', async () => {
         vi.spyOn(CarModelVariant, 'getHasPrimeImageRelationship')
             .mockImplementation(async () => {
-                throw new RelationshipNotFoundError('has prime image', 123)
+                throw new RelNotFoundError('has prime image', 123)
             })
 
         const response = await request(app)

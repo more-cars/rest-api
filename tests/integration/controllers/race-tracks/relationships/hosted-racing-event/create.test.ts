@@ -3,7 +3,7 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {RaceTrack} from "../../../../../../src/models/node-types/race-tracks/RaceTrack"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Creating a ›hosted-racing-event‹ relationship', () => {
@@ -49,7 +49,7 @@ describe('Creating a ›hosted-racing-event‹ relationship', () => {
     test('Trying to create the same relationship again', async () => {
         vi.spyOn(RaceTrack, 'createHostedRacingEventRelationship')
             .mockImplementation(async () => {
-                throw new RelationshipAlreadyExistsError('hosted-racing-event', 123, 567)
+                throw new RelAlreadyExistsError('hosted-racing-event', 123, 567)
             })
 
         const response = await request(app)

@@ -5,7 +5,7 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoundError"
 import {Company} from "../../../../../../../src/models/node-types/companies/Company"
 
 describe('Deleting a ›has-image‹ relationship', () => {
@@ -37,7 +37,7 @@ describe('Deleting a ›has-image‹ relationship', () => {
 
         await expect(Company.deleteHasImageRelationship(company.id, image.id))
             .rejects
-            .toThrow(RelationshipNotFoundError)
+            .toThrow(RelNotFoundError)
     })
 
     test('both nodes exist and have a ›has-image‹ relationship', async () => {

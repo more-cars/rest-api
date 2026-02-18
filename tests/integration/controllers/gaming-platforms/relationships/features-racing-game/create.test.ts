@@ -3,7 +3,7 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {GamingPlatform} from "../../../../../../src/models/node-types/gaming-platforms/GamingPlatform"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Creating a ›features-racing-game‹ relationship', () => {
@@ -49,7 +49,7 @@ describe('Creating a ›features-racing-game‹ relationship', () => {
     test('Trying to create the same relationship again', async () => {
         vi.spyOn(GamingPlatform, 'createFeaturesRacingGameRelationship')
             .mockImplementation(async () => {
-                throw new RelationshipAlreadyExistsError('features-racing-game', 123, 567)
+                throw new RelAlreadyExistsError('features-racing-game', 123, 567)
             })
 
         const response = await request(app)

@@ -3,7 +3,7 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {CarModel} from "../../../../../../src/models/node-types/car-models/CarModel"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Requesting the ›belongs-to-brand‹ relationship', () => {
@@ -23,7 +23,7 @@ describe('Requesting the ›belongs-to-brand‹ relationship', () => {
     test('Providing valid data, but no relationships exist', async () => {
         vi.spyOn(CarModel, 'getBelongsToBrandRelationship')
             .mockImplementation(async () => {
-                throw new RelationshipNotFoundError('belongs-to-brand', 123)
+                throw new RelNotFoundError('belongs-to-brand', 123)
             })
 
         const response = await request(app)

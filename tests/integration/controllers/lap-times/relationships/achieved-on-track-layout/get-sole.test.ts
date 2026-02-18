@@ -3,7 +3,7 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {LapTime} from "../../../../../../src/models/node-types/lap-times/LapTime"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Requesting the ›achieved-on-track-layout‹ relationship', () => {
@@ -23,7 +23,7 @@ describe('Requesting the ›achieved-on-track-layout‹ relationship', () => {
     test('Providing valid data, but no relationships exist', async () => {
         vi.spyOn(LapTime, 'getAchievedOnTrackLayoutRelationship')
             .mockImplementation(async () => {
-                throw new RelationshipNotFoundError('achieved on track layout', 123)
+                throw new RelNotFoundError('achieved on track layout', 123)
             })
 
         const response = await request(app)

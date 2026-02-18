@@ -3,7 +3,7 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {LapTime} from "../../../../../../src/models/node-types/lap-times/LapTime"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 
 describe('Deleting a ›has-image‹ relationship', () => {
     test('Providing valid data', async () => {
@@ -32,7 +32,7 @@ describe('Deleting a ›has-image‹ relationship', () => {
     test('Providing invalid data (non-existent relationship)', async () => {
         vi.spyOn(LapTime, 'deleteHasImageRelationship')
             .mockImplementation(async () => {
-                throw new RelationshipNotFoundError('has-image', 123, 567)
+                throw new RelNotFoundError('has-image', 123, 567)
             })
 
         const response = await request(app)

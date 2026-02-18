@@ -4,7 +4,7 @@ import {RelationshipType} from "../../../../../src/db/types/RelationshipType"
 import {Relationship} from "../../../../../src/models/relationships/Relationship"
 import {validateJson} from "../../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../../_toolbox/schemas/model/RelationshipSchema"
-import {RelationshipNotFoundError} from "../../../../../src/models/types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../../../../src/models/types/RelNotFoundError"
 import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 describe('Requesting a relationship', () => {
@@ -25,6 +25,6 @@ describe('Requesting a relationship', () => {
     test('relationship does not exist', async () => {
         await expect(Relationship.findById(-42))
             .rejects
-            .toThrow(RelationshipNotFoundError)
+            .toThrow(RelNotFoundError)
     })
 })

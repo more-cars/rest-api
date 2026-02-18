@@ -6,7 +6,7 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoundError"
 
 describe('Deleting a ›is-variant-of‹ relationship', () => {
     test('CAR MODEL VARIANT node does not exist', async () => {
@@ -37,7 +37,7 @@ describe('Deleting a ›is-variant-of‹ relationship', () => {
 
         await expect(CarModelVariant.deleteIsVariantOfRelationship(carModelVariant.id, carModel.id))
             .rejects
-            .toThrow(RelationshipNotFoundError)
+            .toThrow(RelNotFoundError)
     })
 
     test('both nodes exist and have a ›is-variant-of‹ relationship', async () => {

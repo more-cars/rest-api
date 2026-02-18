@@ -3,7 +3,7 @@ import {RacingEvent} from "../../../models/node-types/racing-events/RacingEvent"
 import {marshalRelation} from "../../relations/marshalRelation"
 import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
-import {RelationshipAlreadyExistsError} from "../../../models/types/RelationshipAlreadyExistsError"
+import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 import {SemanticError} from "../../../models/types/SemanticError"
 import {sendResponse422} from "../../responses/sendResponse422"
 import {sendResponse201} from "../../responses/sendResponse201"
@@ -25,7 +25,7 @@ export async function createIsFollowedByEventRelation(req: express.Request, res:
             return sendResponse404(res)
         } else if (e instanceof SemanticError) {
             return sendResponse422(res)
-        } else if (e instanceof RelationshipAlreadyExistsError) {
+        } else if (e instanceof RelAlreadyExistsError) {
             return sendResponse304(res)
         } else {
             console.error(e)

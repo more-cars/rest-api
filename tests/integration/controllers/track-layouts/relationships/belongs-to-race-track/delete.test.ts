@@ -3,7 +3,7 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {TrackLayout} from "../../../../../../src/models/node-types/track-layouts/TrackLayout"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 
 describe('Deleting a ›belongs-to-race-track‹ relationship', () => {
     test('Providing valid data', async () => {
@@ -32,7 +32,7 @@ describe('Deleting a ›belongs-to-race-track‹ relationship', () => {
     test('Providing invalid data (non-existent relationship)', async () => {
         vi.spyOn(TrackLayout, 'deleteBelongsToRaceTrackRelationship')
             .mockImplementation(async () => {
-                throw new RelationshipNotFoundError('belongs-to-race-track', 123, 567)
+                throw new RelNotFoundError('belongs-to-race-track', 123, 567)
             })
 
         const response = await request(app)

@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {RacingGame} from "../../../../../../../src/models/node-types/racing-games/RacingGame"
-import {RelationshipAlreadyExistsError} from "../../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›features-car-model-variant‹ relationship again', async () => {
     const racingGame = await seedNode(NodeTypeEnum.RACING_GAME)
@@ -10,9 +10,9 @@ test('Trying to create the same ›features-car-model-variant‹ relationship ag
 
     await expect(RacingGame.createFeaturesCarModelVariantRelationship(racingGame.id, carModelVariant.id))
         .resolves
-        .not.toThrow(RelationshipAlreadyExistsError)
+        .not.toThrow(RelAlreadyExistsError)
 
     await expect(RacingGame.createFeaturesCarModelVariantRelationship(racingGame.id, carModelVariant.id))
         .rejects
-        .toThrow(RelationshipAlreadyExistsError)
+        .toThrow(RelAlreadyExistsError)
 })

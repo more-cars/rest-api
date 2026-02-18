@@ -6,7 +6,7 @@ import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../../../../_toolbox/schemas/model/RelationshipSchema"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoundError"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 describe('Requesting a ›has-prime-image‹ relationship', () => {
@@ -31,7 +31,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
 
         await expect(Brand.getHasPrimeImageRelationship(brand.id))
             .rejects
-            .toThrow(RelationshipNotFoundError)
+            .toThrow(RelNotFoundError)
     })
 
     test('neither node, nor relationship exist', async () => {

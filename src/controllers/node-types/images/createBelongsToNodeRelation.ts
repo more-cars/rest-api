@@ -3,7 +3,7 @@ import {Image} from "../../../models/node-types/images/Image"
 import {marshalRelation} from "../../relations/marshalRelation"
 import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
-import {RelationshipAlreadyExistsError} from "../../../models/types/RelationshipAlreadyExistsError"
+import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 import {SemanticError} from "../../../models/types/SemanticError"
 import {sendResponse201} from "../../responses/sendResponse201"
 import {sendResponse304} from "../../responses/sendResponse304"
@@ -25,7 +25,7 @@ export async function createBelongsToNodeRelation(req: express.Request, res: exp
             return sendResponse404(res)
         } else if (e instanceof SemanticError) {
             return sendResponse422(res)
-        } else if (e instanceof RelationshipAlreadyExistsError) {
+        } else if (e instanceof RelAlreadyExistsError) {
             return sendResponse304(res)
         } else {
             console.error(e)

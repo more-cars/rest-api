@@ -3,7 +3,7 @@ import request from 'supertest'
 import {app} from '../../../../src/app'
 import {Relationship} from "../../../../src/models/relationships/Relationship"
 import {NodeNotFoundError} from "../../../../src/models/types/NodeNotFoundError"
-import {RelationshipNotFoundError} from "../../../../src/models/types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../../../src/models/types/RelNotFoundError"
 
 describe('Requesting a relationship by ID', () => {
     test('Providing valid data', async () => {
@@ -35,7 +35,7 @@ describe('Requesting a relationship by ID', () => {
     test('Relationship does not exist', async () => {
         vi.spyOn(Relationship, 'findById')
             .mockImplementation(async () => {
-                throw new RelationshipNotFoundError('rel', 7)
+                throw new RelNotFoundError('rel', 7)
             })
 
         const response = await request(app)

@@ -6,7 +6,7 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoundError"
 
 describe('Deleting a ›has-prime-image‹ relationship', () => {
     test('RACING SERIES node does not exist', async () => {
@@ -37,7 +37,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
 
         await expect(RacingSeries.deleteHasPrimeImageRelationship(racingSeries.id, image.id))
             .rejects
-            .toThrow(RelationshipNotFoundError)
+            .toThrow(RelNotFoundError)
     })
 
     test('both nodes exist and have a ›has-prime-image‹ relationship', async () => {

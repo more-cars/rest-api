@@ -1,6 +1,6 @@
 import {RelType} from "./types/RelType"
 import {RelationshipType} from "../../db/types/RelationshipType"
-import {RelationshipTypeNotFoundError} from "../types/RelationshipTypeNotFoundError"
+import {RelTypeNotFoundError} from "../types/RelTypeNotFoundError"
 
 export function getDbRelationshipType(relationshipType: RelType): RelationshipType {
     const mapping = new Map<RelType, RelationshipType>([
@@ -73,7 +73,7 @@ export function getDbRelationshipType(relationshipType: RelType): RelationshipTy
     const mappedRel = mapping.get(relationshipType)
 
     if (!mappedRel) {
-        throw new RelationshipTypeNotFoundError(relationshipType)
+        throw new RelTypeNotFoundError(relationshipType)
     }
 
     return mappedRel

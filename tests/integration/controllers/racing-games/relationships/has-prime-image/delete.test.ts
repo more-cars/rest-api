@@ -3,7 +3,7 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {RacingGame} from "../../../../../../src/models/node-types/racing-games/RacingGame"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 
 describe('Deleting a ›has-prime-image‹ relationship', () => {
     test('Providing valid data', async () => {
@@ -32,7 +32,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     test('Providing invalid data (non-existent relationship)', async () => {
         vi.spyOn(RacingGame, 'deleteHasPrimeImageRelationship')
             .mockImplementation(async () => {
-                throw new RelationshipNotFoundError('has-prime-image', 123, 567)
+                throw new RelNotFoundError('has-prime-image', 123, 567)
             })
 
         const response = await request(app)

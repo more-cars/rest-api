@@ -3,7 +3,7 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {Company} from "../../../../../../src/models/node-types/companies/Company"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 
 describe('Deleting a ›has-brand‹ relationship', () => {
     test('Providing valid data', async () => {
@@ -32,7 +32,7 @@ describe('Deleting a ›has-brand‹ relationship', () => {
     test('Providing invalid data (non-existent relationship)', async () => {
         vi.spyOn(Company, 'deleteHasBrandRelationship')
             .mockImplementation(async () => {
-                throw new RelationshipNotFoundError('has-brand', 123, 567)
+                throw new RelNotFoundError('has-brand', 123, 567)
             })
 
         const response = await request(app)

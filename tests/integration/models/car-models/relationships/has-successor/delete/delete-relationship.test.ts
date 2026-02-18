@@ -5,7 +5,7 @@ import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelatio
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoundError"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 
 describe('Deleting a ›has-successor‹ relationship', () => {
@@ -37,7 +37,7 @@ describe('Deleting a ›has-successor‹ relationship', () => {
 
         await expect(CarModel.deleteHasSuccessorRelationship(carModel.id, partner.id))
             .rejects
-            .toThrow(RelationshipNotFoundError)
+            .toThrow(RelNotFoundError)
     })
 
     test('both nodes exist and have a ›has-successor‹ relationship', async () => {

@@ -1,7 +1,7 @@
 import express from "express"
 import {CarModelVariant} from "../../../models/node-types/car-model-variants/CarModelVariant"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
-import {RelationshipNotFoundError} from "../../../models/types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../../models/types/RelNotFoundError"
 import {sendResponse204} from "../../responses/sendResponse204"
 import {sendResponse404} from "../../responses/sendResponse404"
 import {sendResponse500} from "../../responses/sendResponse500"
@@ -17,7 +17,7 @@ export async function deleteIsVariantOfRelation(req: express.Request, res: expre
     } catch (e) {
         if (e instanceof NodeNotFoundError) {
             return sendResponse404(res)
-        } else if (e instanceof RelationshipNotFoundError) {
+        } else if (e instanceof RelNotFoundError) {
             return sendResponse404(res)
         } else {
             console.error(e)

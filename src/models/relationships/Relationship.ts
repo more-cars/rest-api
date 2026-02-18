@@ -1,5 +1,5 @@
 import {getRelationshipById} from "../../db/relationships/getRelationshipById"
-import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../types/RelNotFoundError"
 import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {Node} from "../Node"
 import {Rel} from "./types/Rel"
@@ -9,7 +9,7 @@ export const Relationship = {
         const dbRelationship = await getRelationshipById(id)
 
         if (!dbRelationship) {
-            throw new RelationshipNotFoundError('-', 0)
+            throw new RelNotFoundError('-', 0)
         }
 
         const destination = await Node.findById(dbRelationship.end_node_id)

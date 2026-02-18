@@ -3,7 +3,7 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {LapTime} from "../../../../../../src/models/node-types/lap-times/LapTime"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Requesting the ›belongs-to-session-result‹ relationship', () => {
@@ -23,7 +23,7 @@ describe('Requesting the ›belongs-to-session-result‹ relationship', () => {
     test('Providing valid data, but no relationships exist', async () => {
         vi.spyOn(LapTime, 'getBelongsToSessionResultRelationship')
             .mockImplementation(async () => {
-                throw new RelationshipNotFoundError('belongs to session result', 123)
+                throw new RelNotFoundError('belongs to session result', 123)
             })
 
         const response = await request(app)

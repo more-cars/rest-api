@@ -7,7 +7,7 @@ import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelatio
 import {validateJson} from "../../../../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../../../../_toolbox/schemas/model/RelationshipSchema"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoundError"
 
 describe('Requesting a ›belongs-to-racing-event‹ relationship', () => {
     test('node and relationship exist', async () => {
@@ -31,7 +31,7 @@ describe('Requesting a ›belongs-to-racing-event‹ relationship', () => {
 
         await expect(RacingSession.getBelongsToRacingEventRelationship(racingSession.id))
             .rejects
-            .toThrow(RelationshipNotFoundError)
+            .toThrow(RelNotFoundError)
     })
 
     test('neither node, nor relationship exist', async () => {

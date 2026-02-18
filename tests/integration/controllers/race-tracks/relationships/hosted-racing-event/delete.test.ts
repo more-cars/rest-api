@@ -3,7 +3,7 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {RaceTrack} from "../../../../../../src/models/node-types/race-tracks/RaceTrack"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 
 describe('Deleting a ›hosted-racing-event‹ relationship', () => {
     test('Providing valid data', async () => {
@@ -32,7 +32,7 @@ describe('Deleting a ›hosted-racing-event‹ relationship', () => {
     test('Providing invalid data (non-existent relationship)', async () => {
         vi.spyOn(RaceTrack, 'deleteHostedRacingEventRelationship')
             .mockImplementation(async () => {
-                throw new RelationshipNotFoundError('hosted-racing-event', 123, 567)
+                throw new RelNotFoundError('hosted-racing-event', 123, 567)
             })
 
         const response = await request(app)

@@ -3,7 +3,7 @@ import {RaceTrack} from "../../../models/node-types/race-tracks/RaceTrack"
 import {marshalRelation} from "../../relations/marshalRelation"
 import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
-import {RelationshipAlreadyExistsError} from "../../../models/types/RelationshipAlreadyExistsError"
+import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 
 import {sendResponse201} from "../../responses/sendResponse201"
 import {sendResponse304} from "../../responses/sendResponse304"
@@ -23,7 +23,7 @@ export async function createHasImageRelation(req: express.Request, res: express.
         if (e instanceof NodeNotFoundError) {
             return sendResponse404(res)
 
-        } else if (e instanceof RelationshipAlreadyExistsError) {
+        } else if (e instanceof RelAlreadyExistsError) {
             return sendResponse304(res)
         } else {
             console.error(e)

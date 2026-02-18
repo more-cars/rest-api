@@ -3,7 +3,7 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {Image} from "../../../../../../src/models/node-types/images/Image"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Requesting a specific ›belongs-to-node‹ relationship', () => {
@@ -36,7 +36,7 @@ describe('Requesting a specific ›belongs-to-node‹ relationship', () => {
     test('Providing invalid data (relationship does not exist)', async () => {
         vi.spyOn(Image, 'getSpecificBelongsToNodeRelationship')
             .mockImplementation(async () => {
-                throw new RelationshipNotFoundError('belongs-to-node', 123)
+                throw new RelNotFoundError('belongs-to-node', 123)
             })
 
         const response = await request(app)

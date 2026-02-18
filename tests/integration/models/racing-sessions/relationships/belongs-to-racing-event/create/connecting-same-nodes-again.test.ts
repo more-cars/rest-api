@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {RacingSession} from "../../../../../../../src/models/node-types/racing-sessions/RacingSession"
-import {RelationshipAlreadyExistsError} from "../../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›belongs-to-racing-event‹ relationship again', async () => {
     const racingSession = await seedNode(NodeTypeEnum.RACING_SESSION)
@@ -10,9 +10,9 @@ test('Trying to create the same ›belongs-to-racing-event‹ relationship again
 
     await expect(RacingSession.createBelongsToRacingEventRelationship(racingSession.id, racingEvent.id))
         .resolves
-        .not.toThrow(RelationshipAlreadyExistsError)
+        .not.toThrow(RelAlreadyExistsError)
 
     await expect(RacingSession.createBelongsToRacingEventRelationship(racingSession.id, racingEvent.id))
         .rejects
-        .toThrow(RelationshipAlreadyExistsError)
+        .toThrow(RelAlreadyExistsError)
 })

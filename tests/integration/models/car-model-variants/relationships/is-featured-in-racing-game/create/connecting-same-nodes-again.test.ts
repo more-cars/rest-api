@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {CarModelVariant} from "../../../../../../../src/models/node-types/car-model-variants/CarModelVariant"
-import {RelationshipAlreadyExistsError} from "../../../../../../../src/models/types/RelationshipAlreadyExistsError"
+import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›is-featured-in-racing-game‹ relationship again', async () => {
     const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)
@@ -10,9 +10,9 @@ test('Trying to create the same ›is-featured-in-racing-game‹ relationship ag
 
     await expect(CarModelVariant.createIsFeaturedInRacingGameRelationship(carModelVariant.id, racingGame.id))
         .resolves
-        .not.toThrow(RelationshipAlreadyExistsError)
+        .not.toThrow(RelAlreadyExistsError)
 
     await expect(CarModelVariant.createIsFeaturedInRacingGameRelationship(carModelVariant.id, racingGame.id))
         .rejects
-        .toThrow(RelationshipAlreadyExistsError)
+        .toThrow(RelAlreadyExistsError)
 })
