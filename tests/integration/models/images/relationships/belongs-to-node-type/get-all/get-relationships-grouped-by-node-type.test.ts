@@ -5,7 +5,7 @@ import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/Nod
 import {Image} from "../../../../../../../src/models/images/Image"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {RelationType} from "../../../../../../../src/controllers/relationships/types/RelationType"
+import {RelationType} from "../../../../../../../src/controllers/relations/types/RelationType"
 
 test('Get all "Image belongs to Node type" relationships for specific image', async () => {
     const imageNode = await seedNode(NodeTypeEnum.IMAGE)

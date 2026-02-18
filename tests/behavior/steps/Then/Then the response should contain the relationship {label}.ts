@@ -1,6 +1,6 @@
 import {Then, world} from "@cucumber/cucumber"
 import assert from "assert"
-import type {RelationResponse} from "../../../../src/controllers/relationships/types/RelationResponse"
+import type {RelationResponse} from "../../../../src/controllers/relations/types/RelationResponse"
 
 Then('the response should contain the relationship {string}',
     (label: string) => {

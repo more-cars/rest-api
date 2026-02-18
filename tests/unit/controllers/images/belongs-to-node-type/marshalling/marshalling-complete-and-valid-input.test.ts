@@ -5,7 +5,7 @@ import {
 } from "../../../../../../src/controllers/node-types/images/marshalling/marshalBelongsToNodeTypeRelationships"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {kebabCase} from "change-case"
-import {RelationType} from "../../../../../../src/controllers/relationships/types/RelationType"
+import {RelationType} from "../../../../../../src/controllers/relations/types/RelationType"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 test('marshalling a ›belongs-to-node-type‹ relationship collection', async () => {

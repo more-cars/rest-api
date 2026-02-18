@@ -1,4 +1,4 @@
-import type {RelationCollectionResponse} from "../../../relationships/types/RelationCollectionResponse"
+import type {RelationCollectionResponse} from "../../../relations/types/RelationCollectionResponse"
 
 export type ImageBelongsToNodeTypeResponse = {
     data: {

@@ -1,6 +1,6 @@
 import express from "express"
 import {CarModelVariant} from "../../../models/car-model-variants/CarModelVariant"
-import {marshalRelation} from "../../relationships/marshalRelation"
+import {marshalRelation} from "../../relations/marshalRelation"
 import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../models/types/RelationshipNotFoundError"

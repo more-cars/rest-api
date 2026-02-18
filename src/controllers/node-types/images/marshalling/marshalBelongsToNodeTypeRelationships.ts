@@ -1,6 +1,6 @@
 import type {ImageBelongsToNodeTypeRelationships} from "../../../../models/images/types/ImageBelongsToNodeTypeRelationships"
 import type {ImageBelongsToNodeTypeResponse} from "../types/ImageBelongsToNodeTypeResponse"
-import {marshalRelation} from "../../../relationships/marshalRelation"
+import {marshalRelation} from "../../../relations/marshalRelation"
 import {NodeTypeEnum} from "../../../nodes/types/NodeTypeEnum"
 
 export function marshalBelongsToNodeTypeRelationships(relationships: ImageBelongsToNodeTypeRelationships) {

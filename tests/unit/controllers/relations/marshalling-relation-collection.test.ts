@@ -4,8 +4,8 @@ import {FakeNodeInput} from "../../../_toolbox/fixtures/nodes/FakeNodeInput"
 import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
 import type {BaseNode} from "../../../../src/controllers/nodes/types/BaseNode"
 import type {Rel} from "../../../../src/models/relationships/types/Rel"
-import {marshalRelations} from "../../../../src/controllers/relationships/marshalRelations"
-import {mapModelRelationToControllerRelation} from "../../../../src/controllers/relationships/mapModelRelationToControllerRelation"
+import {marshalRelations} from "../../../../src/controllers/relations/marshalRelations"
+import {mapModelRelationToControllerRelation} from "../../../../src/controllers/relations/mapModelRelationToControllerRelation"
 
 test('marshalling a relation collection', async () => {
     getAllModelRelationshipTypes().forEach((relationshipType) => {
