@@ -1,5 +1,5 @@
-import type {RelationshipResponse} from "./RelationshipResponse"
+import type {RelationResponse} from "./RelationResponse"
 
 export type RelationshipCollectionResponse = {
-    data: RelationshipResponse[]
+    data: RelationResponse[]
 }

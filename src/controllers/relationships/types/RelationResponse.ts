@@ -1,6 +1,6 @@
 import {RelationType} from "./RelationType"
 
-export type RelationshipResponse = {
+export type RelationResponse = {
     data: {
         relationship_id: number
         relationship_name: RelationType
