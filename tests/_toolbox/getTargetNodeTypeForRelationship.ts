@@ -1,10 +1,10 @@
 import {NodeTypeEnum} from "../../src/controllers/nodes/types/NodeTypeEnum"
 import {RelType} from "../../src/models/relationships/types/RelType"
-import {constantCase} from "change-case"
+import {snakeCase} from "change-case"
 
 export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, relationshipName: string) {
     const relationships = new Map<NodeTypeEnum, Map<RelType, NodeTypeEnum>>()
-    relationshipName = constantCase(relationshipName)
+    relationshipName = snakeCase(startNodeType + ' ' + relationshipName)
 
     relationships.set(
         NodeTypeEnum.IMAGE, new Map([
