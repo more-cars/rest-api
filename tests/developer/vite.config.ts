@@ -15,7 +15,6 @@ export default defineConfig(({mode}) => ({
         env: loadEnv(mode, rootDir, ''),
         silent: true,
         reporters: [
-            ['dot'],
             ['junit', {
                 outputFile: 'test-reports/developer/report.xml',
                 suiteName: 'Developer Tests',
