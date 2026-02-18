@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateRacingSeriesRawInput} from "../../../../../../src/controllers/racing-series/types/CreateRacingSeriesRawInput"
-import {validate} from "../../../../../../src/controllers/racing-series/create"
+import {CreateRacingSeriesRawInput} from "../../../../../../src/controllers/node-types/racing-series/types/CreateRacingSeriesRawInput"
+import {validate} from "../../../../../../src/controllers/node-types/racing-series/create"
 
 test('validating a valid request where optional fields are missing', async () => {
     const data: CreateRacingSeriesRawInput = {

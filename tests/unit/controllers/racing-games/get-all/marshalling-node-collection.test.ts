@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {FakeRacingGame} from "../../../../_toolbox/fixtures/nodes/FakeRacingGame"
-import {marshalNodes} from "../../../../../src/controllers/racing-games/marshalling/marshalNodes"
+import {marshalNodes} from "../../../../../src/controllers/node-types/racing-games/marshalling/marshalNodes"
 
 test("marshalling a collection of RACING GAME nodes", async () => {
     const fakeNode1 = FakeRacingGame.modelOutput()

@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateBrandRawInput} from "../../../../../../src/controllers/brands/types/CreateBrandRawInput"
-import {validate} from "../../../../../../src/controllers/brands/create"
+import {CreateBrandRawInput} from "../../../../../../src/controllers/node-types/brands/types/CreateBrandRawInput"
+import {validate} from "../../../../../../src/controllers/node-types/brands/create"
 
 test.each([
     [true, "Bayerische Motoren Werke", 1916, 2345, "WBA", "0005"],

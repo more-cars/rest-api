@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {CreateCarModelVariantInput} from "../../../../../src/models/car-model-variants/types/CreateCarModelVariantInput"
-import {sanitize} from "../../../../../src/controllers/car-model-variants/create"
+import {sanitize} from "../../../../../src/controllers/node-types/car-model-variants/create"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {

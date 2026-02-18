@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {CreateImageInput} from "../../../../../src/models/images/types/CreateImageInput"
-import {sanitize} from "../../../../../src/controllers/images/create"
+import {sanitize} from "../../../../../src/controllers/node-types/images/create"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {

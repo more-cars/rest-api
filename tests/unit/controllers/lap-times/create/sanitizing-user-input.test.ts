@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {CreateLapTimeInput} from "../../../../../src/models/lap-times/types/CreateLapTimeInput"
-import {sanitize} from "../../../../../src/controllers/lap-times/create"
+import {sanitize} from "../../../../../src/controllers/node-types/lap-times/create"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {

@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {CreateSessionResultInput} from "../../../../../src/models/session-results/types/CreateSessionResultInput"
-import {sanitize} from "../../../../../src/controllers/session-results/create"
+import {sanitize} from "../../../../../src/controllers/node-types/session-results/create"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {

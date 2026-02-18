@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {FakeCompany} from "../../../../_toolbox/fixtures/nodes/FakeCompany"
-import {marshalNodes} from "../../../../../src/controllers/companies/marshalling/marshalNodes"
+import {marshalNodes} from "../../../../../src/controllers/node-types/companies/marshalling/marshalNodes"
 
 test("marshalling a collection of COMPANY nodes", async () => {
     const fakeNode1 = FakeCompany.modelOutput()

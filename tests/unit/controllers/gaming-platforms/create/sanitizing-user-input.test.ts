@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {CreateGamingPlatformInput} from "../../../../../src/models/gaming-platforms/types/CreateGamingPlatformInput"
-import {sanitize} from "../../../../../src/controllers/gaming-platforms/create"
+import {sanitize} from "../../../../../src/controllers/node-types/gaming-platforms/create"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {

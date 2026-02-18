@@ -1,0 +1,47 @@
+import {CarModelVariantNode} from "../../../../models/car-model-variants/types/CarModelVariantNode"
+import {marshalSingleNode} from "../../../nodes/marshalSingleNode"
+import {CarModelVariantResponse} from "../types/CarModelVariantResponse"
+
+export function marshalNode(node: CarModelVariantNode) {
+    return marshalSingleNode({
+        id: node.id,
+        name: node.name,
+        internal_code: node.internal_code ?? null,
+        built_from: node.built_from ?? null,
+        built_to: node.built_to ?? null,
+        body_style: node.body_style ?? null,
+        drag_coefficient: node.drag_coefficient ?? null,
+        doors: node.doors ?? null,
+        weight: node.weight ?? null,
+        weight_unit: node.weight_unit ?? null,
+        max_power: node.max_power ?? null,
+        max_power_unit: node.max_power_unit ?? null,
+        max_torque: node.max_torque ?? null,
+        max_torque_unit: node.max_torque_unit ?? null,
+        cylinders: node.cylinders ?? null,
+        engine_configuration: node.engine_configuration ?? null,
+        displacement: node.displacement ?? null,
+        displacement_unit: node.displacement_unit ?? null,
+        air_induction: node.air_induction ?? null,
+        engine_type: node.engine_type ?? null,
+        energy_source: node.energy_source ?? null,
+        energy_source_2: node.energy_source_2 ?? null,
+        consumption: node.consumption ?? null,
+        consumption_unit: node.consumption_unit ?? null,
+        consumption_2: node.consumption_2 ?? null,
+        consumption_2_unit: node.consumption_2_unit ?? null,
+        energy_capacity: node.energy_capacity ?? null,
+        energy_capacity_unit: node.energy_capacity_unit ?? null,
+        energy_capacity_2: node.energy_capacity_2 ?? null,
+        energy_capacity_2_unit: node.energy_capacity_2_unit ?? null,
+        transmission: node.transmission ?? null,
+        gears: node.gears ?? null,
+        drivetrain: node.drivetrain ?? null,
+        sprint_time_0_100_kmh: node.sprint_time_0_100_kmh ?? null,
+        top_speed: node.top_speed ?? null,
+        top_speed_unit: node.top_speed_unit ?? null,
+        total_production: node.total_production ?? null,
+        created_at: node.created_at,
+        updated_at: node.updated_at,
+    }) as CarModelVariantResponse
+}

@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateRacingSeriesRawInput} from "../../../../../../src/controllers/racing-series/types/CreateRacingSeriesRawInput"
-import {validate} from "../../../../../../src/controllers/racing-series/create"
+import {CreateRacingSeriesRawInput} from "../../../../../../src/controllers/node-types/racing-series/types/CreateRacingSeriesRawInput"
+import {validate} from "../../../../../../src/controllers/node-types/racing-series/create"
 
 test.each([
     [true, "F1", 1950, 2345, "FIA", "formula racing cars"],

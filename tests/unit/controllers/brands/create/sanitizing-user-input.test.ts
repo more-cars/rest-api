@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {CreateBrandInput} from "../../../../../src/models/brands/types/CreateBrandInput"
-import {sanitize} from "../../../../../src/controllers/brands/create"
+import {sanitize} from "../../../../../src/controllers/node-types/brands/create"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {

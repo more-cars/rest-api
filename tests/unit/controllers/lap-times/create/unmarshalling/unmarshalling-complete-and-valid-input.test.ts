@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../src/controllers/lap-times/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../src/controllers/node-types/lap-times/marshalling/unmarshalInputData"
 
 test('unmarshalling a complete and valid request', async () => {
     const data: any = {

@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateRaceTrackRawInput} from "../../../../../../src/controllers/race-tracks/types/CreateRaceTrackRawInput"
-import {validate} from "../../../../../../src/controllers/race-tracks/create"
+import {CreateRaceTrackRawInput} from "../../../../../../src/controllers/node-types/race-tracks/types/CreateRaceTrackRawInput"
+import {validate} from "../../../../../../src/controllers/node-types/race-tracks/create"
 
 test('validating a complete and valid request', async () => {
     const data: CreateRaceTrackRawInput = {

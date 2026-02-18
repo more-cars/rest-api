@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateCarModelVariantRawInput} from "../../../../../../src/controllers/car-model-variants/types/CreateCarModelVariantRawInput"
-import {validate} from "../../../../../../src/controllers/car-model-variants/create"
+import {CreateCarModelVariantRawInput} from "../../../../../../src/controllers/node-types/car-model-variants/types/CreateCarModelVariantRawInput"
+import {validate} from "../../../../../../src/controllers/node-types/car-model-variants/create"
 
 test.each([
     [true, "E46", 2000, 2006, "coupe", 0.31, 2, 1549, "kg", 343, "PS", 365, "Nm", 6, "inline", 3246, "ccm", "naturally aspirated", "otto", "petrol", "nope", 11.9, "l", 0.0, "nope", 63, "l", 0.0, "nope", "sequential", 6, "rwd", 5.2, 250, "km/h", 50000],

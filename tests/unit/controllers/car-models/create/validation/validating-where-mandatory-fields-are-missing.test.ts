@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateCarModelRawInput} from "../../../../../../src/controllers/car-models/types/CreateCarModelRawInput"
-import {validate} from "../../../../../../src/controllers/car-models/create"
+import {CreateCarModelRawInput} from "../../../../../../src/controllers/node-types/car-models/types/CreateCarModelRawInput"
+import {validate} from "../../../../../../src/controllers/node-types/car-models/create"
 
 test('validating a request where mandatory fields are missing', async () => {
     const data: CreateCarModelRawInput = {

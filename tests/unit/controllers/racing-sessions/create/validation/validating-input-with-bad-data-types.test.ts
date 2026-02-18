@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateRacingSessionRawInput} from "../../../../../../src/controllers/racing-sessions/types/CreateRacingSessionRawInput"
-import {validate} from "../../../../../../src/controllers/racing-sessions/create"
+import {CreateRacingSessionRawInput} from "../../../../../../src/controllers/node-types/racing-sessions/types/CreateRacingSessionRawInput"
+import {validate} from "../../../../../../src/controllers/node-types/racing-sessions/create"
 
 test.each([
     [true, "2025-05-20", "14:00", 120, "min", 58, "laps"],

@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {FakeTrackLayout} from "../../../../_toolbox/fixtures/nodes/FakeTrackLayout"
-import {marshalNodes} from "../../../../../src/controllers/track-layouts/marshalling/marshalNodes"
+import {marshalNodes} from "../../../../../src/controllers/node-types/track-layouts/marshalling/marshalNodes"
 
 test("marshalling a collection of TRACK LAYOUT nodes", async () => {
     const fakeNode1 = FakeTrackLayout.modelOutput()

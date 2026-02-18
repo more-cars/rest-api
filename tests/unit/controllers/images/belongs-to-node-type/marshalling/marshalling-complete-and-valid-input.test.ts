@@ -1,6 +1,8 @@
 import {expect, test} from 'vitest'
 import type {ImageBelongsToNodeTypeRelationships} from "../../../../../../src/models/images/types/ImageBelongsToNodeTypeRelationships"
-import {marshalBelongsToNodeTypeRelationships} from "../../../../../../src/controllers/images/marshalling/marshalBelongsToNodeTypeRelationships"
+import {
+    marshalBelongsToNodeTypeRelationships
+} from "../../../../../../src/controllers/node-types/images/marshalling/marshalBelongsToNodeTypeRelationships"
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {kebabCase} from "change-case"
 import {RelationType} from "../../../../../../src/controllers/relationships/types/RelationType"

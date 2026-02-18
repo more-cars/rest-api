@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {FakeLapTime} from "../../../../_toolbox/fixtures/nodes/FakeLapTime"
-import {marshalNodes} from "../../../../../src/controllers/lap-times/marshalling/marshalNodes"
+import {marshalNodes} from "../../../../../src/controllers/node-types/lap-times/marshalling/marshalNodes"
 
 test("marshalling a collection of LAP TIME nodes", async () => {
     const fakeNode1 = FakeLapTime.modelOutput()

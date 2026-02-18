@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateRaceTrackRawInput} from "../../../../../../src/controllers/race-tracks/types/CreateRaceTrackRawInput"
-import {validate} from "../../../../../../src/controllers/race-tracks/create"
+import {CreateRaceTrackRawInput} from "../../../../../../src/controllers/node-types/race-tracks/types/CreateRaceTrackRawInput"
+import {validate} from "../../../../../../src/controllers/node-types/race-tracks/create"
 
 test.each([
     [true, 2000, 2345, "permanent race track", "Klettwitz", "51°32'0\"N 13°55'10\"E"],

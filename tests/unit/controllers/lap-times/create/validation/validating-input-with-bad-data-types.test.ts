@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateLapTimeRawInput} from "../../../../../../src/controllers/lap-times/types/CreateLapTimeRawInput"
-import {validate} from "../../../../../../src/controllers/lap-times/create"
+import {CreateLapTimeRawInput} from "../../../../../../src/controllers/node-types/lap-times/types/CreateLapTimeRawInput"
+import {validate} from "../../../../../../src/controllers/node-types/lap-times/create"
 
 test.each([
     [true, "Klaus Ludwig", "WBA"],

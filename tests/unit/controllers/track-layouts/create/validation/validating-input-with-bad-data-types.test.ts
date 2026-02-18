@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateTrackLayoutRawInput} from "../../../../../../src/controllers/track-layouts/types/CreateTrackLayoutRawInput"
-import {validate} from "../../../../../../src/controllers/track-layouts/create"
+import {CreateTrackLayoutRawInput} from "../../../../../../src/controllers/node-types/track-layouts/types/CreateTrackLayoutRawInput"
+import {validate} from "../../../../../../src/controllers/node-types/track-layouts/create"
 
 test.each([
     [true, 1967, 1999, 7.004, "km", "clockwise", 71, "m", "asphalt"],

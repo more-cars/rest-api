@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {CreateRacingEventInput} from "../../../../../src/models/racing-events/types/CreateRacingEventInput"
-import {sanitize} from "../../../../../src/controllers/racing-events/create"
+import {sanitize} from "../../../../../src/controllers/node-types/racing-events/create"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {

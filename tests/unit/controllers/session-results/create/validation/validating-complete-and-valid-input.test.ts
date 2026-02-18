@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateSessionResultRawInput} from "../../../../../../src/controllers/session-results/types/CreateSessionResultRawInput"
-import {validate} from "../../../../../../src/controllers/session-results/create"
+import {CreateSessionResultRawInput} from "../../../../../../src/controllers/node-types/session-results/types/CreateSessionResultRawInput"
+import {validate} from "../../../../../../src/controllers/node-types/session-results/create"
 
 test('validating a complete and valid request', async () => {
     const data: CreateSessionResultRawInput = {

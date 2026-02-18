@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../src/controllers/brands/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../src/controllers/node-types/brands/marshalling/unmarshalInputData"
 
 /**
  * Requests are NOT rejected when they contain too much information.

@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateCompanyRawInput} from "../../../../../../src/controllers/companies/types/CreateCompanyRawInput"
-import {validate} from "../../../../../../src/controllers/companies/create"
+import {CreateCompanyRawInput} from "../../../../../../src/controllers/node-types/companies/types/CreateCompanyRawInput"
+import {validate} from "../../../../../../src/controllers/node-types/companies/create"
 
 test.each([
     [true, 1916, 2345, "Munich", "Munich"],

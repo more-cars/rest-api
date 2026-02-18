@@ -1,13 +1,13 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../src/controllers/racing-series/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../src/controllers/node-types/racing-series/marshalling/unmarshalInputData"
 
 /**
  * Missing optional fields are automatically added as "undefined".
  */
 test('unmarshalling a valid request where optional fields are missing', async () => {
     const data: any = {
-  name: "Formula 1"
-}
+        name: "Formula 1"
+    }
 
     const result = unmarshalInputData(data)
 

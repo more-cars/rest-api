@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {RacingEventNode} from "../../../../../src/models/racing-events/types/RacingEventNode"
-import {marshalNode} from "../../../../../src/controllers/racing-events/marshalling/marshalNode"
+import {marshalNode} from "../../../../../src/controllers/node-types/racing-events/marshalling/marshalNode"
 
 test("marshalling a RACING EVENT node", async () => {
     const node: RacingEventNode = {

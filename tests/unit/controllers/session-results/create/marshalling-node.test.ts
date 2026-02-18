@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {SessionResultNode} from "../../../../../src/models/session-results/types/SessionResultNode"
-import {marshalNode} from "../../../../../src/controllers/session-results/marshalling/marshalNode"
+import {marshalNode} from "../../../../../src/controllers/node-types/session-results/marshalling/marshalNode"
 
 test("marshalling a SESSION RESULT node", async () => {
     const node: SessionResultNode = {

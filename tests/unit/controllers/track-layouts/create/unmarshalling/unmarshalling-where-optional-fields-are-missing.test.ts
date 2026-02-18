@@ -1,13 +1,13 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../src/controllers/track-layouts/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../src/controllers/node-types/track-layouts/marshalling/unmarshalInputData"
 
 /**
  * Missing optional fields are automatically added as "undefined".
  */
 test('unmarshalling a valid request where optional fields are missing', async () => {
     const data: any = {
-  name: "GP Circuit"
-}
+        name: "GP Circuit"
+    }
 
     const result = unmarshalInputData(data)
 

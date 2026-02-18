@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateCarModelVariantRawInput} from "../../../../../../src/controllers/car-model-variants/types/CreateCarModelVariantRawInput"
-import {validate} from "../../../../../../src/controllers/car-model-variants/create"
+import {CreateCarModelVariantRawInput} from "../../../../../../src/controllers/node-types/car-model-variants/types/CreateCarModelVariantRawInput"
+import {validate} from "../../../../../../src/controllers/node-types/car-model-variants/create"
 
 test('validating a complete and valid request', async () => {
     const data: CreateCarModelVariantRawInput = {

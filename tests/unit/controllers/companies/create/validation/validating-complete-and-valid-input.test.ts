@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateCompanyRawInput} from "../../../../../../src/controllers/companies/types/CreateCompanyRawInput"
-import {validate} from "../../../../../../src/controllers/companies/create"
+import {CreateCompanyRawInput} from "../../../../../../src/controllers/node-types/companies/types/CreateCompanyRawInput"
+import {validate} from "../../../../../../src/controllers/node-types/companies/create"
 
 test('validating a complete and valid request', async () => {
     const data: CreateCompanyRawInput = {

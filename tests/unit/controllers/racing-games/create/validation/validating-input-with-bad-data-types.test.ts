@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateRacingGameRawInput} from "../../../../../../src/controllers/racing-games/types/CreateRacingGameRawInput"
-import {validate} from "../../../../../../src/controllers/racing-games/create"
+import {CreateRacingGameRawInput} from "../../../../../../src/controllers/node-types/racing-games/types/CreateRacingGameRawInput"
+import {validate} from "../../../../../../src/controllers/node-types/racing-games/create"
 
 test.each([
     [true, 2017, "Turn 10 Studios", "Microsoft Studios"],
