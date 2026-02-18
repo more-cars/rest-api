@@ -1,8 +1,8 @@
-import neo4j, {Driver, Node, Relationship} from "neo4j-driver"
+import neo4j, {Driver, Node, Relationship as Neo4jRelationship} from "neo4j-driver"
 import {getDriver} from "../driver"
 import type {RelationshipType} from "../types/RelationshipType"
 import type {NodeTypeLabel} from "../NodeTypeLabel"
-import type {BaseRelationship} from "../types/BaseRelationship"
+import type {Relationship} from "../types/Relationship"
 import {getRelationshipSpecification} from "./getRelationshipSpecification"
 import {RelationshipDirection} from "../types/RelationshipDirection"
 import type {RelationshipTypeNeo4j} from "../types/RelationshipTypeNeo4j"
@@ -13,12 +13,12 @@ export async function getRelationshipCollection(
     startNodeId: number,
     relationshipType: RelationshipType,
     endNodeType?: NodeTypeLabel,
-): Promise<BaseRelationship[]> {
+): Promise<Relationship[]> {
     const relationshipSpecs = getRelationshipSpecification(relationshipType)
     const dbRelationshipName = relationshipSpecs.relationshipName
     const relationshipDirection = relationshipSpecs.isReverseRelationship ? RelationshipDirection.REVERSE : RelationshipDirection.FORWARD
 
-    const relationships: BaseRelationship[] = []
+    const relationships: Relationship[] = []
 
     const driver: Driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
@@ -32,7 +32,7 @@ export async function getRelationshipCollection(
 
     records.forEach(record => {
         const startNode: Node = record.get('a')
-        const relation: Relationship = record.get('r')
+        const relation: Neo4jRelationship = record.get('r')
         const endNode: Node = record.get('b')
 
         relationships.push({

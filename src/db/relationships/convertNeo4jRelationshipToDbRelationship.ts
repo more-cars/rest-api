@@ -1,11 +1,11 @@
-import {Relationship} from "neo4j-driver"
-import {BaseRelationship} from "../types/BaseRelationship"
+import {Relationship as Neo4jRelationship} from "neo4j-driver"
+import {Relationship} from "../types/Relationship"
 
 export function convertNeo4jRelationshipToDbRelationship(
     startNodeId: number,
     endNodeId: number,
     relationshipName: string,
-    dbRelationship: Relationship,
+    dbRelationship: Neo4jRelationship,
 ) {
     return {
         start_node_id: startNodeId,
@@ -14,5 +14,5 @@ export function convertNeo4jRelationshipToDbRelationship(
         relationship_name: relationshipName,
         created_at: dbRelationship.properties.created_at,
         updated_at: dbRelationship.properties.updated_at,
-    } as BaseRelationship
+    } as Relationship
 }

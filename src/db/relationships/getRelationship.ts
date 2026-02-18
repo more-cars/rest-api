@@ -1,7 +1,7 @@
-import neo4j, {Driver, Node, Relationship} from "neo4j-driver"
+import neo4j, {Driver, Node, Relationship as Neo4jRelationship} from "neo4j-driver"
 import type {RelationshipType} from "../types/RelationshipType"
 import type {NodeTypeLabel} from "../NodeTypeLabel"
-import type {BaseRelationship} from "../types/BaseRelationship"
+import type {Relationship} from "../types/Relationship"
 import {getRelationshipSpecification} from "./getRelationshipSpecification"
 import {RelationshipDirection} from "../types/RelationshipDirection"
 import {getDriver} from "../driver"
@@ -13,7 +13,7 @@ export async function getRelationship(
     startNodeId: number,
     relationshipType: RelationshipType,
     endNodeType: NodeTypeLabel,
-): Promise<false | BaseRelationship> {
+): Promise<false | Relationship> {
     const relationshipSpecs = getRelationshipSpecification(relationshipType)
     const dbRelationshipName = relationshipSpecs.relationshipName
     const relationshipDirection = relationshipSpecs.isReverseRelationship ? RelationshipDirection.REVERSE : RelationshipDirection.FORWARD
@@ -33,10 +33,10 @@ export async function getRelationship(
     }
 
     const sourceNode: Node = records[0].get('a')
-    const dbRelation: Relationship = records[0].get('r')
+    const dbRelation: Neo4jRelationship = records[0].get('r')
     const endNode: Node = records[0].get('b')
 
-    const relation: BaseRelationship = {
+    const relation: Relationship = {
         id: dbRelation.properties.mc_id,
         type: relationshipType,
         start_node_id: startNodeId,

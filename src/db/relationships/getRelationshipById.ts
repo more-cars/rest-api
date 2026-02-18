@@ -1,6 +1,6 @@
-import neo4j, {Driver, type Node, type Relationship} from "neo4j-driver"
+import neo4j, {Driver, Node, Relationship as Neo4jRelationship} from "neo4j-driver"
 import {getDriver} from "../driver"
-import type {BaseRelationship} from "../types/BaseRelationship"
+import type {Relationship} from "../types/Relationship"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 export async function getRelationshipById(relationshipId: number) {
@@ -19,7 +19,7 @@ export async function getRelationshipById(relationshipId: number) {
     }
 
     const startNode: Node = records[0].get('a')
-    const relationship: Relationship = records[0].get('r')
+    const relationship: Neo4jRelationship = records[0].get('r')
     const endNode: Node = records[0].get('b')
 
     return {
@@ -29,7 +29,7 @@ export async function getRelationshipById(relationshipId: number) {
         relationship_name: relationship.type,
         created_at: relationship.properties.created_at,
         updated_at: relationship.properties.updated_at,
-    } as BaseRelationship
+    } as Relationship
 }
 
 export function getRelationshipByIdQuery(relationshipId: number) {

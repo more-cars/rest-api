@@ -1,6 +1,6 @@
-import neo4j, {Driver, Node, Relationship} from "neo4j-driver"
+import neo4j, {Driver, Node, Relationship as Neo4jRelationship} from "neo4j-driver"
 import {RelationshipType} from "../types/RelationshipType"
-import {BaseRelationship} from "../types/BaseRelationship"
+import {Relationship} from "../types/Relationship"
 import {getRelationshipSpecification} from "./getRelationshipSpecification"
 import {RelationshipDirection} from "../types/RelationshipDirection"
 import {getDriver} from "../driver"
@@ -15,7 +15,7 @@ export async function createRelationship(
     startNodeId: number,
     endNodeId: number,
     relationshipType: RelationshipType
-): Promise<false | BaseRelationship> {
+): Promise<false | Relationship> {
     const relationshipSpecs = getRelationshipSpecification(relationshipType)
     const dbRelationshipName = relationshipSpecs.relationshipName
     const relationshipDirection = relationshipSpecs.isReverseRelationship ? RelationshipDirection.REVERSE : RelationshipDirection.FORWARD
@@ -35,7 +35,7 @@ export async function createRelationship(
     }
 
     const sourceNode: Node = records[0].get('a')
-    let dbRelationship: Relationship = records[0].get('r')
+    let dbRelationship: Neo4jRelationship = records[0].get('r')
     const endNode: Node = records[0].get('b')
 
     // 2. Adding a custom More Cars ID for that relationship
@@ -49,7 +49,7 @@ export async function createRelationship(
 
     await session.close()
 
-    const relationship: BaseRelationship = {
+    const relationship: Relationship = {
         id: dbRelationship.properties.mc_id,
         elementId: elementId, // TODO temporary field, can be removed after the migration
         type: relationshipType,

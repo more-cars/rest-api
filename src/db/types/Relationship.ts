@@ -1,6 +1,6 @@
 import type {BaseNode} from "./BaseNode"
 
-export type BaseRelationship = {
+export type Relationship = {
     id?: number
     elementId?: string
     type?: string
