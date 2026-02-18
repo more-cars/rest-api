@@ -4,7 +4,7 @@ import {app} from "../../../src/app"
 import {HealthController} from "../../../src/controllers/HealthController"
 
 describe('Health', () => {
-    vi.mock("../../../src/controllers/node-types/HealthController.ts", {spy: true})
+    vi.mock("../../../src/controllers/HealthController.ts", {spy: true})
 
     test('Get health', async () => {
         await request(app)
