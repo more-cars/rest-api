@@ -1,4 +1,4 @@
-export enum RelationshipType {
+export enum RelType {
     CompanyHasBrand = 'company_has_brand',
     CompanyHasImage = 'company_has_image',
     CompanyHasPrimeImage = 'company_has_prime_image',

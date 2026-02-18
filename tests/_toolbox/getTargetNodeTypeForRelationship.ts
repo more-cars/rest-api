@@ -1,152 +1,152 @@
 import {NodeTypeEnum} from "../../src/controllers/nodes/types/NodeTypeEnum"
-import {RelationshipType} from "../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../src/models/relationships/types/RelType"
 import {constantCase} from "change-case"
 
 export function getTargetNodeTypeForRelationship(startNodeType: NodeTypeEnum, relationshipName: string) {
-    const relationships = new Map<NodeTypeEnum, Map<RelationshipType, NodeTypeEnum>>()
+    const relationships = new Map<NodeTypeEnum, Map<RelType, NodeTypeEnum>>()
     relationshipName = constantCase(relationshipName)
 
     relationships.set(
         NodeTypeEnum.IMAGE, new Map([
-            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.COMPANY],
-            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.BRAND],
-            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.CAR_MODEL],
-            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.CAR_MODEL_VARIANT],
-            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.RACE_TRACK],
-            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.TRACK_LAYOUT],
-            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.RACING_SERIES],
-            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.RACING_EVENT],
-            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.RACING_SESSION],
-            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.SESSION_RESULT],
-            [RelationshipType.ImageBelongsToNode, NodeTypeEnum.LAP_TIME],
-            [RelationshipType.ImageIsPrimeImageOfNode, NodeTypeEnum.COMPANY],
-            [RelationshipType.ImageIsPrimeImageOfNode, NodeTypeEnum.BRAND],
-            [RelationshipType.ImageIsPrimeImageOfNode, NodeTypeEnum.CAR_MODEL],
-            [RelationshipType.ImageIsPrimeImageOfNode, NodeTypeEnum.CAR_MODEL_VARIANT],
-            [RelationshipType.ImageIsPrimeImageOfNode, NodeTypeEnum.RACE_TRACK],
-            [RelationshipType.ImageIsPrimeImageOfNode, NodeTypeEnum.TRACK_LAYOUT],
-            [RelationshipType.ImageIsPrimeImageOfNode, NodeTypeEnum.RACING_SERIES],
-            [RelationshipType.ImageIsPrimeImageOfNode, NodeTypeEnum.RACING_EVENT],
-            [RelationshipType.ImageIsPrimeImageOfNode, NodeTypeEnum.RACING_SESSION],
-            [RelationshipType.ImageIsPrimeImageOfNode, NodeTypeEnum.SESSION_RESULT],
-            [RelationshipType.ImageIsPrimeImageOfNode, NodeTypeEnum.LAP_TIME],
+            [RelType.ImageBelongsToNode, NodeTypeEnum.COMPANY],
+            [RelType.ImageBelongsToNode, NodeTypeEnum.BRAND],
+            [RelType.ImageBelongsToNode, NodeTypeEnum.CAR_MODEL],
+            [RelType.ImageBelongsToNode, NodeTypeEnum.CAR_MODEL_VARIANT],
+            [RelType.ImageBelongsToNode, NodeTypeEnum.RACE_TRACK],
+            [RelType.ImageBelongsToNode, NodeTypeEnum.TRACK_LAYOUT],
+            [RelType.ImageBelongsToNode, NodeTypeEnum.RACING_SERIES],
+            [RelType.ImageBelongsToNode, NodeTypeEnum.RACING_EVENT],
+            [RelType.ImageBelongsToNode, NodeTypeEnum.RACING_SESSION],
+            [RelType.ImageBelongsToNode, NodeTypeEnum.SESSION_RESULT],
+            [RelType.ImageBelongsToNode, NodeTypeEnum.LAP_TIME],
+            [RelType.ImageIsPrimeImageOfNode, NodeTypeEnum.COMPANY],
+            [RelType.ImageIsPrimeImageOfNode, NodeTypeEnum.BRAND],
+            [RelType.ImageIsPrimeImageOfNode, NodeTypeEnum.CAR_MODEL],
+            [RelType.ImageIsPrimeImageOfNode, NodeTypeEnum.CAR_MODEL_VARIANT],
+            [RelType.ImageIsPrimeImageOfNode, NodeTypeEnum.RACE_TRACK],
+            [RelType.ImageIsPrimeImageOfNode, NodeTypeEnum.TRACK_LAYOUT],
+            [RelType.ImageIsPrimeImageOfNode, NodeTypeEnum.RACING_SERIES],
+            [RelType.ImageIsPrimeImageOfNode, NodeTypeEnum.RACING_EVENT],
+            [RelType.ImageIsPrimeImageOfNode, NodeTypeEnum.RACING_SESSION],
+            [RelType.ImageIsPrimeImageOfNode, NodeTypeEnum.SESSION_RESULT],
+            [RelType.ImageIsPrimeImageOfNode, NodeTypeEnum.LAP_TIME],
         ]))
 
     relationships.set(
         NodeTypeEnum.COMPANY, new Map([
-            [RelationshipType.CompanyHasBrand, NodeTypeEnum.BRAND],
-            [RelationshipType.CompanyHasImage, NodeTypeEnum.IMAGE],
-            [RelationshipType.CompanyHasPrimeImage, NodeTypeEnum.IMAGE],
+            [RelType.CompanyHasBrand, NodeTypeEnum.BRAND],
+            [RelType.CompanyHasImage, NodeTypeEnum.IMAGE],
+            [RelType.CompanyHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
 
     relationships.set(
         NodeTypeEnum.BRAND, new Map([
-            [RelationshipType.BrandBelongsToCompany, NodeTypeEnum.COMPANY],
-            [RelationshipType.BrandHasCarModel, NodeTypeEnum.CAR_MODEL],
-            [RelationshipType.BrandHasImage, NodeTypeEnum.IMAGE],
-            [RelationshipType.BrandHasPrimeImage, NodeTypeEnum.IMAGE],
+            [RelType.BrandBelongsToCompany, NodeTypeEnum.COMPANY],
+            [RelType.BrandHasCarModel, NodeTypeEnum.CAR_MODEL],
+            [RelType.BrandHasImage, NodeTypeEnum.IMAGE],
+            [RelType.BrandHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
 
     relationships.set(
         NodeTypeEnum.CAR_MODEL, new Map([
-            [RelationshipType.CarModelBelongsToBrand, NodeTypeEnum.BRAND],
-            [RelationshipType.CarModelHasSuccessor, NodeTypeEnum.CAR_MODEL],
-            [RelationshipType.CarModelIsSuccessorOf, NodeTypeEnum.CAR_MODEL],
-            [RelationshipType.CarModelHasVariant, NodeTypeEnum.CAR_MODEL_VARIANT],
-            [RelationshipType.CarModelHasImage, NodeTypeEnum.IMAGE],
-            [RelationshipType.CarModelHasPrimeImage, NodeTypeEnum.IMAGE],
+            [RelType.CarModelBelongsToBrand, NodeTypeEnum.BRAND],
+            [RelType.CarModelHasSuccessor, NodeTypeEnum.CAR_MODEL],
+            [RelType.CarModelIsSuccessorOf, NodeTypeEnum.CAR_MODEL],
+            [RelType.CarModelHasVariant, NodeTypeEnum.CAR_MODEL_VARIANT],
+            [RelType.CarModelHasImage, NodeTypeEnum.IMAGE],
+            [RelType.CarModelHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
 
     relationships.set(
         NodeTypeEnum.CAR_MODEL_VARIANT, new Map([
-            [RelationshipType.CarModelVariantIsVariantOf, NodeTypeEnum.CAR_MODEL],
-            [RelationshipType.CarModelVariantAchievedSessionResult, NodeTypeEnum.SESSION_RESULT],
-            [RelationshipType.CarModelVariantAchievedLapTime, NodeTypeEnum.LAP_TIME],
-            [RelationshipType.CarModelVariantIsFeaturedInRacingGame, NodeTypeEnum.RACING_GAME],
-            [RelationshipType.CarModelVariantHasImage, NodeTypeEnum.IMAGE],
-            [RelationshipType.CarModelVariantHasPrimeImage, NodeTypeEnum.IMAGE],
+            [RelType.CarModelVariantIsVariantOf, NodeTypeEnum.CAR_MODEL],
+            [RelType.CarModelVariantAchievedSessionResult, NodeTypeEnum.SESSION_RESULT],
+            [RelType.CarModelVariantAchievedLapTime, NodeTypeEnum.LAP_TIME],
+            [RelType.CarModelVariantIsFeaturedInRacingGame, NodeTypeEnum.RACING_GAME],
+            [RelType.CarModelVariantHasImage, NodeTypeEnum.IMAGE],
+            [RelType.CarModelVariantHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
 
     relationships.set(
         NodeTypeEnum.RACE_TRACK, new Map([
-            [RelationshipType.RaceTrackHasLayout, NodeTypeEnum.TRACK_LAYOUT],
-            [RelationshipType.RaceTrackHostedRacingEvent, NodeTypeEnum.RACING_EVENT],
-            [RelationshipType.RaceTrackHasImage, NodeTypeEnum.IMAGE],
-            [RelationshipType.RaceTrackHasPrimeImage, NodeTypeEnum.IMAGE],
+            [RelType.RaceTrackHasLayout, NodeTypeEnum.TRACK_LAYOUT],
+            [RelType.RaceTrackHostedRacingEvent, NodeTypeEnum.RACING_EVENT],
+            [RelType.RaceTrackHasImage, NodeTypeEnum.IMAGE],
+            [RelType.RaceTrackHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
 
     relationships.set(
         NodeTypeEnum.TRACK_LAYOUT, new Map([
-            [RelationshipType.TrackLayoutBelongsToRaceTrack, NodeTypeEnum.RACE_TRACK],
-            [RelationshipType.TrackLayoutWasUsedByRacingEvent, NodeTypeEnum.RACING_EVENT],
-            [RelationshipType.TrackLayoutHasLapTime, NodeTypeEnum.LAP_TIME],
-            [RelationshipType.TrackLayoutIsFeaturedInRacingGame, NodeTypeEnum.RACING_GAME],
-            [RelationshipType.TrackLayoutHasImage, NodeTypeEnum.IMAGE],
-            [RelationshipType.TrackLayoutHasPrimeImage, NodeTypeEnum.IMAGE],
+            [RelType.TrackLayoutBelongsToRaceTrack, NodeTypeEnum.RACE_TRACK],
+            [RelType.TrackLayoutWasUsedByRacingEvent, NodeTypeEnum.RACING_EVENT],
+            [RelType.TrackLayoutHasLapTime, NodeTypeEnum.LAP_TIME],
+            [RelType.TrackLayoutIsFeaturedInRacingGame, NodeTypeEnum.RACING_GAME],
+            [RelType.TrackLayoutHasImage, NodeTypeEnum.IMAGE],
+            [RelType.TrackLayoutHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
 
     relationships.set(
         NodeTypeEnum.RACING_SERIES, new Map([
-            [RelationshipType.RacingSeriesHasRacingEvent, NodeTypeEnum.RACING_EVENT],
-            [RelationshipType.RacingSeriesHasImage, NodeTypeEnum.IMAGE],
-            [RelationshipType.RacingSeriesHasPrimeImage, NodeTypeEnum.IMAGE],
+            [RelType.RacingSeriesHasRacingEvent, NodeTypeEnum.RACING_EVENT],
+            [RelType.RacingSeriesHasImage, NodeTypeEnum.IMAGE],
+            [RelType.RacingSeriesHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
 
     relationships.set(
         NodeTypeEnum.RACING_EVENT, new Map([
-            [RelationshipType.RacingEventBelongsToRacingSeries, NodeTypeEnum.RACING_SERIES],
-            [RelationshipType.RacingEventFollowsEvent, NodeTypeEnum.RACING_EVENT],
-            [RelationshipType.RacingEventIsFollowedByEvent, NodeTypeEnum.RACING_EVENT],
-            [RelationshipType.RacingEventTookPlaceAtRaceTrack, NodeTypeEnum.RACE_TRACK],
-            [RelationshipType.RacingEventUsedTheTrackLayout, NodeTypeEnum.TRACK_LAYOUT],
-            [RelationshipType.RacingEventHasRacingSession, NodeTypeEnum.RACING_SESSION],
-            [RelationshipType.RacingEventHasImage, NodeTypeEnum.IMAGE],
-            [RelationshipType.RacingEventHasPrimeImage, NodeTypeEnum.IMAGE],
+            [RelType.RacingEventBelongsToRacingSeries, NodeTypeEnum.RACING_SERIES],
+            [RelType.RacingEventFollowsEvent, NodeTypeEnum.RACING_EVENT],
+            [RelType.RacingEventIsFollowedByEvent, NodeTypeEnum.RACING_EVENT],
+            [RelType.RacingEventTookPlaceAtRaceTrack, NodeTypeEnum.RACE_TRACK],
+            [RelType.RacingEventUsedTheTrackLayout, NodeTypeEnum.TRACK_LAYOUT],
+            [RelType.RacingEventHasRacingSession, NodeTypeEnum.RACING_SESSION],
+            [RelType.RacingEventHasImage, NodeTypeEnum.IMAGE],
+            [RelType.RacingEventHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
 
     relationships.set(
         NodeTypeEnum.RACING_SESSION, new Map([
-            [RelationshipType.RacingSessionBelongsToRacingEvent, NodeTypeEnum.RACING_EVENT],
-            [RelationshipType.RacingSessionHasSessionResult, NodeTypeEnum.SESSION_RESULT],
-            [RelationshipType.RacingSessionHasImage, NodeTypeEnum.IMAGE],
-            [RelationshipType.RacingSessionHasPrimeImage, NodeTypeEnum.IMAGE],
+            [RelType.RacingSessionBelongsToRacingEvent, NodeTypeEnum.RACING_EVENT],
+            [RelType.RacingSessionHasSessionResult, NodeTypeEnum.SESSION_RESULT],
+            [RelType.RacingSessionHasImage, NodeTypeEnum.IMAGE],
+            [RelType.RacingSessionHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
 
     relationships.set(
         NodeTypeEnum.SESSION_RESULT, new Map([
-            [RelationshipType.SessionResultBelongsToRacingSession, NodeTypeEnum.RACING_SESSION],
-            [RelationshipType.SessionResultHasLapTime, NodeTypeEnum.LAP_TIME],
-            [RelationshipType.SessionResultAchievedWithCarModelVariant, NodeTypeEnum.CAR_MODEL_VARIANT],
-            [RelationshipType.SessionResultHasImage, NodeTypeEnum.IMAGE],
-            [RelationshipType.SessionResultHasPrimeImage, NodeTypeEnum.IMAGE],
+            [RelType.SessionResultBelongsToRacingSession, NodeTypeEnum.RACING_SESSION],
+            [RelType.SessionResultHasLapTime, NodeTypeEnum.LAP_TIME],
+            [RelType.SessionResultAchievedWithCarModelVariant, NodeTypeEnum.CAR_MODEL_VARIANT],
+            [RelType.SessionResultHasImage, NodeTypeEnum.IMAGE],
+            [RelType.SessionResultHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
 
     relationships.set(
         NodeTypeEnum.LAP_TIME, new Map([
-            [RelationshipType.LapTimeBelongsToSessionResult, NodeTypeEnum.SESSION_RESULT],
-            [RelationshipType.LapTimeAchievedOnTrackLayout, NodeTypeEnum.TRACK_LAYOUT],
-            [RelationshipType.LapTimeAchievedWithCarModelVariant, NodeTypeEnum.CAR_MODEL_VARIANT],
-            [RelationshipType.LapTimeHasImage, NodeTypeEnum.IMAGE],
-            [RelationshipType.LapTimeHasPrimeImage, NodeTypeEnum.IMAGE],
+            [RelType.LapTimeBelongsToSessionResult, NodeTypeEnum.SESSION_RESULT],
+            [RelType.LapTimeAchievedOnTrackLayout, NodeTypeEnum.TRACK_LAYOUT],
+            [RelType.LapTimeAchievedWithCarModelVariant, NodeTypeEnum.CAR_MODEL_VARIANT],
+            [RelType.LapTimeHasImage, NodeTypeEnum.IMAGE],
+            [RelType.LapTimeHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
 
     relationships.set(
         NodeTypeEnum.RACING_GAME, new Map([
-            [RelationshipType.RacingGameFeaturesCarModelVariant, NodeTypeEnum.CAR_MODEL_VARIANT],
-            [RelationshipType.RacingGameFeaturesTrackLayout, NodeTypeEnum.TRACK_LAYOUT],
-            [RelationshipType.RacingGameReleasedOnGamingPlatform, NodeTypeEnum.GAMING_PLATFORM],
-            [RelationshipType.RacingGameHasImage, NodeTypeEnum.IMAGE],
-            [RelationshipType.RacingGameHasPrimeImage, NodeTypeEnum.IMAGE],
+            [RelType.RacingGameFeaturesCarModelVariant, NodeTypeEnum.CAR_MODEL_VARIANT],
+            [RelType.RacingGameFeaturesTrackLayout, NodeTypeEnum.TRACK_LAYOUT],
+            [RelType.RacingGameReleasedOnGamingPlatform, NodeTypeEnum.GAMING_PLATFORM],
+            [RelType.RacingGameHasImage, NodeTypeEnum.IMAGE],
+            [RelType.RacingGameHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
 
     relationships.set(
         NodeTypeEnum.GAMING_PLATFORM, new Map([
-            [RelationshipType.GamingPlatformFeaturesRacingGame, NodeTypeEnum.RACING_GAME],
-            [RelationshipType.GamingPlatformHasImage, NodeTypeEnum.IMAGE],
-            [RelationshipType.GamingPlatformHasPrimeImage, NodeTypeEnum.IMAGE],
+            [RelType.GamingPlatformFeaturesRacingGame, NodeTypeEnum.RACING_GAME],
+            [RelType.GamingPlatformHasImage, NodeTypeEnum.IMAGE],
+            [RelType.GamingPlatformHasPrimeImage, NodeTypeEnum.IMAGE],
         ]))
 
-    const match = relationships.get(startNodeType)?.get(relationshipName as RelationshipType)
+    const match = relationships.get(startNodeType)?.get(relationshipName as RelType)
 
     if (!match) {
         throw new Error(`TEST ERROR: No mapping found for relationship ${relationshipName}`)

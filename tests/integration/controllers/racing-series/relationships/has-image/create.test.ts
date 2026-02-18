@@ -4,13 +4,13 @@ import {app} from '../../../../../../src/app'
 import {RacingSeries} from "../../../../../../src/models/racing-series/RacingSeries"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Creating a ›has-image‹ relationship', () => {
     test('Providing valid data', async () => {
         RacingSeries.createHasImageRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: RelationshipType.RacingSeriesHasImage,
+            type: RelType.RacingSeriesHasImage,
         })
 
         const response = await request(app)

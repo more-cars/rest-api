@@ -12,7 +12,7 @@ import {createRel} from "../relationships/createRel"
 import {RacingSession} from "../racing-sessions/RacingSession"
 import {getSpecificRel} from "../relationships/getSpecificRel"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
-import {RelationshipType} from "../relationships/types/RelationshipType"
+import {RelType} from "../relationships/types/RelType"
 import {getRel} from "../relationships/getRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
@@ -75,14 +75,14 @@ export const SessionResult = {
             throw new NodeNotFoundError(racingSessionId)
         }
 
-        const existingRelation = await getSpecificRel(sessionResultId, racingSessionId, RelationshipType.SessionResultBelongsToRacingSession)
+        const existingRelation = await getSpecificRel(sessionResultId, racingSessionId, RelType.SessionResultBelongsToRacingSession)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.SessionResultBelongsToRacingSession, sessionResultId, racingSessionId)
+            throw new RelationshipAlreadyExistsError(RelType.SessionResultBelongsToRacingSession, sessionResultId, racingSessionId)
         }
 
-        await deleteOutgoingRel(sessionResultId, RelationshipType.SessionResultBelongsToRacingSession, NodeTypeLabel.RacingSession)
+        await deleteOutgoingRel(sessionResultId, RelType.SessionResultBelongsToRacingSession, NodeTypeLabel.RacingSession)
 
-        const createdRelationship = await createRel(sessionResultId, racingSessionId, RelationshipType.SessionResultBelongsToRacingSession)
+        const createdRelationship = await createRel(sessionResultId, racingSessionId, RelType.SessionResultBelongsToRacingSession)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -96,9 +96,9 @@ export const SessionResult = {
             throw new NodeNotFoundError(sessionResultId)
         }
 
-        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultBelongsToRacingSession)
+        const relationship = await getRel(sessionResultId, RelType.SessionResultBelongsToRacingSession)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.SessionResultBelongsToRacingSession, sessionResultId, null)
+            throw new RelationshipNotFoundError(RelType.SessionResultBelongsToRacingSession, sessionResultId, null)
         }
 
         return relationship
@@ -115,12 +115,12 @@ export const SessionResult = {
             throw new NodeNotFoundError(racingSessionId)
         }
 
-        const relationship = await getSpecificRel(sessionResultId, racingSessionId, RelationshipType.SessionResultBelongsToRacingSession)
+        const relationship = await getSpecificRel(sessionResultId, racingSessionId, RelType.SessionResultBelongsToRacingSession)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.SessionResultBelongsToRacingSession, sessionResultId, racingSessionId)
+            throw new RelationshipNotFoundError(RelType.SessionResultBelongsToRacingSession, sessionResultId, racingSessionId)
         }
 
-        await deleteSpecificRel(sessionResultId, racingSessionId, RelationshipType.SessionResultBelongsToRacingSession)
+        await deleteSpecificRel(sessionResultId, racingSessionId, RelType.SessionResultBelongsToRacingSession)
     },
 
     async createHasLapTimeRelationship(sessionResultId: number, lapTimeId: number) {
@@ -135,14 +135,14 @@ export const SessionResult = {
             throw new NodeNotFoundError(lapTimeId)
         }
 
-        const existingRelation = await getSpecificRel(sessionResultId, lapTimeId, RelationshipType.SessionResultHasLapTime)
+        const existingRelation = await getSpecificRel(sessionResultId, lapTimeId, RelType.SessionResultHasLapTime)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.SessionResultHasLapTime, sessionResultId, lapTimeId)
+            throw new RelationshipAlreadyExistsError(RelType.SessionResultHasLapTime, sessionResultId, lapTimeId)
         }
 
-        await deleteIncomingRel(lapTimeId, RelationshipType.SessionResultHasLapTime, NodeTypeLabel.SessionResult)
+        await deleteIncomingRel(lapTimeId, RelType.SessionResultHasLapTime, NodeTypeLabel.SessionResult)
 
-        const createdRelationship = await createRel(sessionResultId, lapTimeId, RelationshipType.SessionResultHasLapTime)
+        const createdRelationship = await createRel(sessionResultId, lapTimeId, RelType.SessionResultHasLapTime)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -156,7 +156,7 @@ export const SessionResult = {
             throw new NodeNotFoundError(sessionResultId)
         }
 
-        return getAllRels(sessionResultId, RelationshipType.SessionResultHasLapTime)
+        return getAllRels(sessionResultId, RelType.SessionResultHasLapTime)
     },
 
     async deleteHasLapTimeRelationship(sessionResultId: number, lapTimeId: number) {
@@ -170,12 +170,12 @@ export const SessionResult = {
             throw new NodeNotFoundError(lapTimeId)
         }
 
-        const relationship = await getSpecificRel(sessionResultId, lapTimeId, RelationshipType.SessionResultHasLapTime)
+        const relationship = await getSpecificRel(sessionResultId, lapTimeId, RelType.SessionResultHasLapTime)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.SessionResultHasLapTime, sessionResultId, lapTimeId)
+            throw new RelationshipNotFoundError(RelType.SessionResultHasLapTime, sessionResultId, lapTimeId)
         }
 
-        await deleteSpecificRel(sessionResultId, lapTimeId, RelationshipType.SessionResultHasLapTime)
+        await deleteSpecificRel(sessionResultId, lapTimeId, RelType.SessionResultHasLapTime)
     },
 
     async createAchievedWithCarModelVariantRelationship(sessionResultId: number, carModelVariantId: number) {
@@ -189,14 +189,14 @@ export const SessionResult = {
             throw new NodeNotFoundError(carModelVariantId)
         }
 
-        const existingRelation = await getSpecificRel(sessionResultId, carModelVariantId, RelationshipType.SessionResultAchievedWithCarModelVariant)
+        const existingRelation = await getSpecificRel(sessionResultId, carModelVariantId, RelType.SessionResultAchievedWithCarModelVariant)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.SessionResultAchievedWithCarModelVariant, sessionResultId, carModelVariantId)
+            throw new RelationshipAlreadyExistsError(RelType.SessionResultAchievedWithCarModelVariant, sessionResultId, carModelVariantId)
         }
 
-        await deleteOutgoingRel(sessionResultId, RelationshipType.SessionResultAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant)
+        await deleteOutgoingRel(sessionResultId, RelType.SessionResultAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant)
 
-        const createdRelationship = await createRel(sessionResultId, carModelVariantId, RelationshipType.SessionResultAchievedWithCarModelVariant)
+        const createdRelationship = await createRel(sessionResultId, carModelVariantId, RelType.SessionResultAchievedWithCarModelVariant)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -210,9 +210,9 @@ export const SessionResult = {
             throw new NodeNotFoundError(sessionResultId)
         }
 
-        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultAchievedWithCarModelVariant)
+        const relationship = await getRel(sessionResultId, RelType.SessionResultAchievedWithCarModelVariant)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.SessionResultAchievedWithCarModelVariant, sessionResultId, null)
+            throw new RelationshipNotFoundError(RelType.SessionResultAchievedWithCarModelVariant, sessionResultId, null)
         }
 
         return relationship
@@ -229,12 +229,12 @@ export const SessionResult = {
             throw new NodeNotFoundError(carModelVariantId)
         }
 
-        const relationship = await getSpecificRel(sessionResultId, carModelVariantId, RelationshipType.SessionResultAchievedWithCarModelVariant)
+        const relationship = await getSpecificRel(sessionResultId, carModelVariantId, RelType.SessionResultAchievedWithCarModelVariant)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.SessionResultAchievedWithCarModelVariant, sessionResultId, carModelVariantId)
+            throw new RelationshipNotFoundError(RelType.SessionResultAchievedWithCarModelVariant, sessionResultId, carModelVariantId)
         }
 
-        await deleteSpecificRel(sessionResultId, carModelVariantId, RelationshipType.SessionResultAchievedWithCarModelVariant)
+        await deleteSpecificRel(sessionResultId, carModelVariantId, RelType.SessionResultAchievedWithCarModelVariant)
     },
 
     async createHasImageRelationship(sessionResultId: number, imageId: number) {
@@ -249,12 +249,12 @@ export const SessionResult = {
             throw new NodeNotFoundError(imageId)
         }
 
-        const existingRelation = await getSpecificRel(sessionResultId, imageId, RelationshipType.SessionResultHasImage)
+        const existingRelation = await getSpecificRel(sessionResultId, imageId, RelType.SessionResultHasImage)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.SessionResultHasImage, sessionResultId, imageId)
+            throw new RelationshipAlreadyExistsError(RelType.SessionResultHasImage, sessionResultId, imageId)
         }
 
-        const createdRelationship = await createRel(sessionResultId, imageId, RelationshipType.SessionResultHasImage)
+        const createdRelationship = await createRel(sessionResultId, imageId, RelType.SessionResultHasImage)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -268,7 +268,7 @@ export const SessionResult = {
             throw new NodeNotFoundError(sessionResultId)
         }
 
-        return getAllRels(sessionResultId, RelationshipType.SessionResultHasImage)
+        return getAllRels(sessionResultId, RelType.SessionResultHasImage)
     },
 
     async deleteHasImageRelationship(sessionResultId: number, imageId: number) {
@@ -282,12 +282,12 @@ export const SessionResult = {
             throw new NodeNotFoundError(imageId)
         }
 
-        const relationship = await getSpecificRel(sessionResultId, imageId, RelationshipType.SessionResultHasImage)
+        const relationship = await getSpecificRel(sessionResultId, imageId, RelType.SessionResultHasImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.SessionResultHasImage, sessionResultId, imageId)
+            throw new RelationshipNotFoundError(RelType.SessionResultHasImage, sessionResultId, imageId)
         }
 
-        await deleteSpecificRel(sessionResultId, imageId, RelationshipType.SessionResultHasImage)
+        await deleteSpecificRel(sessionResultId, imageId, RelType.SessionResultHasImage)
     },
 
     async createHasPrimeImageRelationship(sessionResultId: number, imageId: number) {
@@ -302,14 +302,14 @@ export const SessionResult = {
             throw new NodeNotFoundError(imageId)
         }
 
-        const existingRelation = await getSpecificRel(sessionResultId, imageId, RelationshipType.SessionResultHasPrimeImage)
+        const existingRelation = await getSpecificRel(sessionResultId, imageId, RelType.SessionResultHasPrimeImage)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.SessionResultHasPrimeImage, sessionResultId, imageId)
+            throw new RelationshipAlreadyExistsError(RelType.SessionResultHasPrimeImage, sessionResultId, imageId)
         }
 
-        await deleteOutgoingRel(sessionResultId, RelationshipType.SessionResultHasPrimeImage, NodeTypeLabel.Image)
+        await deleteOutgoingRel(sessionResultId, RelType.SessionResultHasPrimeImage, NodeTypeLabel.Image)
 
-        const createdRelationship = await createRel(sessionResultId, imageId, RelationshipType.SessionResultHasPrimeImage)
+        const createdRelationship = await createRel(sessionResultId, imageId, RelType.SessionResultHasPrimeImage)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -323,9 +323,9 @@ export const SessionResult = {
             throw new NodeNotFoundError(sessionResultId)
         }
 
-        const relationship = await getRel(sessionResultId, RelationshipType.SessionResultHasPrimeImage)
+        const relationship = await getRel(sessionResultId, RelType.SessionResultHasPrimeImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.SessionResultHasPrimeImage, sessionResultId, null)
+            throw new RelationshipNotFoundError(RelType.SessionResultHasPrimeImage, sessionResultId, null)
         }
 
         return relationship
@@ -342,11 +342,11 @@ export const SessionResult = {
             throw new NodeNotFoundError(imageId)
         }
 
-        const relationship = await getSpecificRel(sessionResultId, imageId, RelationshipType.SessionResultHasPrimeImage)
+        const relationship = await getSpecificRel(sessionResultId, imageId, RelType.SessionResultHasPrimeImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.SessionResultHasPrimeImage, sessionResultId, imageId)
+            throw new RelationshipNotFoundError(RelType.SessionResultHasPrimeImage, sessionResultId, imageId)
         }
 
-        await deleteSpecificRel(sessionResultId, imageId, RelationshipType.SessionResultHasPrimeImage)
+        await deleteSpecificRel(sessionResultId, imageId, RelType.SessionResultHasPrimeImage)
     },
 }

@@ -1,24 +1,24 @@
-import {RelationshipType} from "../../relationships/types/RelationshipType"
+import {RelType} from "../../relationships/types/RelType"
 import {NodeType} from "../../types/NodeType"
 import {RelComposition} from "../../relationships/types/RelComposition"
 
 export const BrandRelComposition: RelComposition[] = [
-    [RelationshipType.BrandBelongsToCompany, {
+    [RelType.BrandBelongsToCompany, {
         startNodeType: NodeType.BRAND,
         endNodeType: NodeType.COMPANY,
         isReverseRelationship: true,
     }],
-    [RelationshipType.BrandHasCarModel, {
+    [RelType.BrandHasCarModel, {
         startNodeType: NodeType.BRAND,
         endNodeType: NodeType.CAR_MODEL,
         isReverseRelationship: false,
     }],
-    [RelationshipType.BrandHasImage, {
+    [RelType.BrandHasImage, {
         startNodeType: NodeType.BRAND,
         endNodeType: NodeType.IMAGE,
         isReverseRelationship: false,
     }],
-    [RelationshipType.BrandHasPrimeImage, {
+    [RelType.BrandHasPrimeImage, {
         startNodeType: NodeType.BRAND,
         endNodeType: NodeType.IMAGE,
         isReverseRelationship: false,

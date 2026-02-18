@@ -4,13 +4,13 @@ import {app} from '../../../../../../src/app'
 import {GamingPlatform} from "../../../../../../src/models/gaming-platforms/GamingPlatform"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Creating a ›has-prime-image‹ relationship', () => {
     test('Providing valid data', async () => {
         GamingPlatform.createHasPrimeImageRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: RelationshipType.GamingPlatformHasPrimeImage,
+            type: RelType.GamingPlatformHasPrimeImage,
         })
 
         const response = await request(app)

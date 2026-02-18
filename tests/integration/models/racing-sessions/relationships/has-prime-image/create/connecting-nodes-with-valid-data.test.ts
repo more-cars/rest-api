@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {RacingSession} from "../../../../../../../src/models/racing-sessions/RacingSession"
-import {RelationshipType} from "../../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›has-prime-image‹ relationship with valid data', async () => {
     const racingSession = await seedNode(NodeTypeEnum.RACING_SESSION)
@@ -17,7 +17,7 @@ test('Creating a ›has-prime-image‹ relationship with valid data', async () =
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)
-        .toEqual(RelationshipType.RacingSessionHasPrimeImage)
+        .toEqual(RelType.RacingSessionHasPrimeImage)
     expect(createdRelationship.created_at)
         .toBeDefined()
     expect(createdRelationship.updated_at)

@@ -1,29 +1,29 @@
-import {RelationshipType} from "../../relationships/types/RelationshipType"
+import {RelType} from "../../relationships/types/RelType"
 import {NodeType} from "../../types/NodeType"
 import {RelComposition} from "../../relationships/types/RelComposition"
 
 export const LapTimeRelComposition: RelComposition[] = [
-    [RelationshipType.LapTimeBelongsToSessionResult, {
+    [RelType.LapTimeBelongsToSessionResult, {
         startNodeType: NodeType.LAP_TIME,
         endNodeType: NodeType.SESSION_RESULT,
         isReverseRelationship: true,
     }],
-    [RelationshipType.LapTimeAchievedOnTrackLayout, {
+    [RelType.LapTimeAchievedOnTrackLayout, {
         startNodeType: NodeType.LAP_TIME,
         endNodeType: NodeType.TRACK_LAYOUT,
         isReverseRelationship: true,
     }],
-    [RelationshipType.LapTimeAchievedWithCarModelVariant, {
+    [RelType.LapTimeAchievedWithCarModelVariant, {
         startNodeType: NodeType.LAP_TIME,
         endNodeType: NodeType.CAR_MODEL_VARIANT,
         isReverseRelationship: true,
     }],
-    [RelationshipType.LapTimeHasImage, {
+    [RelType.LapTimeHasImage, {
         startNodeType: NodeType.LAP_TIME,
         endNodeType: NodeType.IMAGE,
         isReverseRelationship: false,
     }],
-    [RelationshipType.LapTimeHasPrimeImage, {
+    [RelType.LapTimeHasPrimeImage, {
         startNodeType: NodeType.LAP_TIME,
         endNodeType: NodeType.IMAGE,
         isReverseRelationship: false,

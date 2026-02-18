@@ -3,20 +3,20 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {RacingGame} from "../../../../../../src/models/racing-games/RacingGame"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Requesting all ›released-on-gaming-platform‹ relationships', () => {
     test('Providing valid data', async () => {
         RacingGame.getAllReleasedOnGamingPlatformRelationships = vi.fn().mockReturnValue([
             {
                 id: 4,
-                type: RelationshipType.RacingGameReleasedOnGamingPlatform,
+                type: RelType.RacingGameReleasedOnGamingPlatform,
             }, {
                 id: 5,
-                type: RelationshipType.RacingGameReleasedOnGamingPlatform,
+                type: RelType.RacingGameReleasedOnGamingPlatform,
             }, {
                 id: 6,
-                type: RelationshipType.RacingGameReleasedOnGamingPlatform,
+                type: RelType.RacingGameReleasedOnGamingPlatform,
             }
         ])
 

@@ -1,11 +1,11 @@
-import type {RelationshipType} from "./types/RelationshipType"
+import type {RelType} from "./types/RelType"
 import type {DbRelationship} from "../../db/types/DbRelationship"
 import {getDbRelationshipType} from "./getDbRelationshipType"
 import {createRelationship} from "../../db/relationships/createRelationship"
 import type {GenericRelation} from "./types/GenericRelation"
 import type {BaseNode} from "../../db/types/BaseNode"
 
-export async function createRel(originId: number, destinationId: number, relType: RelationshipType) {
+export async function createRel(originId: number, destinationId: number, relType: RelType) {
     const dbRelationshipType: DbRelationship = getDbRelationshipType(relType)
 
     const dbRelationship = await createRelationship(

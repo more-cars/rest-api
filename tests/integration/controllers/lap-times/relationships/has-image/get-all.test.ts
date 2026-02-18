@@ -3,20 +3,20 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {LapTime} from "../../../../../../src/models/lap-times/LapTime"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('Providing valid data', async () => {
         LapTime.getAllHasImageRelationships = vi.fn().mockReturnValue([
             {
                 id: 4,
-                type: RelationshipType.LapTimeHasImage,
+                type: RelType.LapTimeHasImage,
             }, {
                 id: 5,
-                type: RelationshipType.LapTimeHasImage,
+                type: RelType.LapTimeHasImage,
             }, {
                 id: 6,
-                type: RelationshipType.LapTimeHasImage,
+                type: RelType.LapTimeHasImage,
             }
         ])
 

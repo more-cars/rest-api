@@ -4,13 +4,13 @@ import {app} from '../../../../../../src/app'
 import {RacingSession} from "../../../../../../src/models/racing-sessions/RacingSession"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Creating a ›has-session-result‹ relationship', () => {
     test('Providing valid data', async () => {
         RacingSession.createHasSessionResultRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: RelationshipType.RacingSessionHasSessionResult,
+            type: RelType.RacingSessionHasSessionResult,
         })
 
         const response = await request(app)

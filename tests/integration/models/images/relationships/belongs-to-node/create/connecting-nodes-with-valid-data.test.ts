@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {Image} from "../../../../../../../src/models/images/Image"
-import {RelationshipType} from "../../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›belongs-to-node‹ relationship with valid data', async () => {
     const image = await seedNode(NodeTypeEnum.IMAGE)
@@ -17,7 +17,7 @@ test('Creating a ›belongs-to-node‹ relationship with valid data', async () =
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)
-        .toEqual(RelationshipType.ImageBelongsToNode)
+        .toEqual(RelType.ImageBelongsToNode)
     expect(createdRelationship.created_at)
         .toBeDefined()
     expect(createdRelationship.updated_at)

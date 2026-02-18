@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {Brand} from "../../../../../../../src/models/brands/Brand"
-import {RelationshipType} from "../../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›has-car-model‹ relationship with valid data', async () => {
     const brand = await seedNode(NodeTypeEnum.BRAND)
@@ -17,7 +17,7 @@ test('Creating a ›has-car-model‹ relationship with valid data', async () => 
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)
-        .toEqual(RelationshipType.BrandHasCarModel)
+        .toEqual(RelType.BrandHasCarModel)
     expect(createdRelationship.created_at)
         .toBeDefined()
     expect(createdRelationship.updated_at)

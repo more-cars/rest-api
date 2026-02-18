@@ -4,13 +4,13 @@ import {app} from '../../../../../../src/app'
 import {RacingGame} from "../../../../../../src/models/racing-games/RacingGame"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Creating a ›released-on-gaming-platform‹ relationship', () => {
     test('Providing valid data', async () => {
         RacingGame.createReleasedOnGamingPlatformRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: RelationshipType.RacingGameReleasedOnGamingPlatform,
+            type: RelType.RacingGameReleasedOnGamingPlatform,
         })
 
         const response = await request(app)

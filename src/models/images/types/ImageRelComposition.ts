@@ -1,14 +1,14 @@
-import {RelationshipType} from "../../relationships/types/RelationshipType"
+import {RelType} from "../../relationships/types/RelType"
 import {NodeType} from "../../types/NodeType"
 import {RelComposition} from "../../relationships/types/RelComposition"
 
 export const ImageRelComposition: RelComposition[] = [
-    [RelationshipType.ImageBelongsToNode, {
+    [RelType.ImageBelongsToNode, {
         startNodeType: NodeType.IMAGE,
         endNodeType: NodeType.NODE,
         isReverseRelationship: true,
     }],
-    [RelationshipType.ImageIsPrimeImageOfNode, {
+    [RelType.ImageIsPrimeImageOfNode, {
         startNodeType: NodeType.IMAGE,
         endNodeType: NodeType.NODE,
         isReverseRelationship: false,

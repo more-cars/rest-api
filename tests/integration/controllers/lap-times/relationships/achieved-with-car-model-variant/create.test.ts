@@ -4,13 +4,13 @@ import {app} from '../../../../../../src/app'
 import {LapTime} from "../../../../../../src/models/lap-times/LapTime"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Creating a ›achieved-with-car-model-variant‹ relationship', () => {
     test('Providing valid data', async () => {
         LapTime.createAchievedWithCarModelVariantRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: RelationshipType.LapTimeAchievedWithCarModelVariant,
+            type: RelType.LapTimeAchievedWithCarModelVariant,
         })
 
         const response = await request(app)

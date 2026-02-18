@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {LapTime} from "../../../../../../../src/models/lap-times/LapTime"
-import {RelationshipType} from "../../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›achieved-with-car-model-variant‹ relationship with valid data', async () => {
     const lapTime = await seedNode(NodeTypeEnum.LAP_TIME)
@@ -17,7 +17,7 @@ test('Creating a ›achieved-with-car-model-variant‹ relationship with valid d
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)
-        .toEqual(RelationshipType.LapTimeAchievedWithCarModelVariant)
+        .toEqual(RelType.LapTimeAchievedWithCarModelVariant)
     expect(createdRelationship.created_at)
         .toBeDefined()
     expect(createdRelationship.updated_at)

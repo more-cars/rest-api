@@ -4,7 +4,7 @@ import {marshalBelongsToNodeTypeRelationships} from "../../../../../../src/contr
 import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {kebabCase} from "change-case"
 import {RelationType} from "../../../../../../src/controllers/relationships/types/RelationType"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 test('marshalling a ›belongs-to-node-type‹ relationship collection', async () => {
     const relationships: ImageBelongsToNodeTypeRelationships = {
@@ -64,7 +64,7 @@ test('marshalling a ›belongs-to-node-type‹ relationship collection', async (
 function getRelationshipModel(nodeType: NodeTypeEnum) {
     return {
         id: 1,
-        type: RelationshipType.ImageBelongsToNode,
+        type: RelType.ImageBelongsToNode,
         origin: {
             id: 2,
             created_at: "dummy",

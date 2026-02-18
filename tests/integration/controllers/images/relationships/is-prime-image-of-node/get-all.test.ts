@@ -3,20 +3,20 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {Image} from "../../../../../../src/models/images/Image"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Requesting all ›is-prime-image-of-node‹ relationships', () => {
     test('Providing valid data', async () => {
         Image.getAllIsPrimeImageOfNodeRelationships = vi.fn().mockReturnValue([
             {
                 id: 4,
-                type: RelationshipType.ImageIsPrimeImageOfNode,
+                type: RelType.ImageIsPrimeImageOfNode,
             }, {
                 id: 5,
-                type: RelationshipType.ImageIsPrimeImageOfNode,
+                type: RelType.ImageIsPrimeImageOfNode,
             }, {
                 id: 6,
-                type: RelationshipType.ImageIsPrimeImageOfNode,
+                type: RelType.ImageIsPrimeImageOfNode,
             }
         ])
 

@@ -1,8 +1,8 @@
 import {NodeType} from "../../types/NodeType"
-import {RelationshipType} from "./RelationshipType"
+import {RelType} from "./RelType"
 
 export type RelComposition = [
-    RelationshipType, {
+    RelType, {
         startNodeType: NodeType
         endNodeType: NodeType
         isReverseRelationship: boolean

@@ -4,13 +4,13 @@ import {app} from '../../../../../../src/app'
 import {SessionResult} from "../../../../../../src/models/session-results/SessionResult"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Requesting the ›belongs-to-racing-session‹ relationship', () => {
     test('Providing valid data', async () => {
         SessionResult.getBelongsToRacingSessionRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: RelationshipType.SessionResultBelongsToRacingSession,
+            type: RelType.SessionResultBelongsToRacingSession,
         })
 
         const response = await request(app)

@@ -2,7 +2,7 @@ import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {RacingEvent} from "../../../../../../src/models/racing-events/RacingEvent"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 
@@ -10,7 +10,7 @@ describe('Requesting the ›has-prime-image‹ relationship', () => {
     test('Providing valid data', async () => {
         RacingEvent.getHasPrimeImageRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: RelationshipType.RacingEventHasPrimeImage,
+            type: RelType.RacingEventHasPrimeImage,
         })
 
         const response = await request(app)

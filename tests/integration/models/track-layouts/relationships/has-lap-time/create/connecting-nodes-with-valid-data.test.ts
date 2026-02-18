@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {TrackLayout} from "../../../../../../../src/models/track-layouts/TrackLayout"
-import {RelationshipType} from "../../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›has-lap-time‹ relationship with valid data', async () => {
     const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
@@ -17,7 +17,7 @@ test('Creating a ›has-lap-time‹ relationship with valid data', async () => {
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)
-        .toEqual(RelationshipType.TrackLayoutHasLapTime)
+        .toEqual(RelType.TrackLayoutHasLapTime)
     expect(createdRelationship.created_at)
         .toBeDefined()
     expect(createdRelationship.updated_at)

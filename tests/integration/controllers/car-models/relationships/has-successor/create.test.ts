@@ -5,13 +5,13 @@ import {CarModel} from "../../../../../../src/models/car-models/CarModel"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
 import {SemanticError} from "../../../../../../src/models/types/SemanticError"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Creating a ›has-successor‹ relationship', () => {
     test('Providing valid data', async () => {
         CarModel.createHasSuccessorRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: RelationshipType.CarModelHasSuccessor,
+            type: RelType.CarModelHasSuccessor,
         })
 
         const response = await request(app)

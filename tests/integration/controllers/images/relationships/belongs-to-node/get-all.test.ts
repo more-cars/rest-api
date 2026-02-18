@@ -3,20 +3,20 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {Image} from "../../../../../../src/models/images/Image"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Requesting all ›belongs-to-node‹ relationships', () => {
     test('Providing valid data', async () => {
         Image.getAllBelongsToNodeRelationships = vi.fn().mockReturnValue([
             {
                 id: 4,
-                type: RelationshipType.ImageBelongsToNode,
+                type: RelType.ImageBelongsToNode,
             }, {
                 id: 5,
-                type: RelationshipType.ImageBelongsToNode,
+                type: RelType.ImageBelongsToNode,
             }, {
                 id: 6,
-                type: RelationshipType.ImageBelongsToNode,
+                type: RelType.ImageBelongsToNode,
             }
         ])
 

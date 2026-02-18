@@ -1,34 +1,34 @@
-import {RelationshipType} from "../../relationships/types/RelationshipType"
+import {RelType} from "../../relationships/types/RelType"
 import {NodeType} from "../../types/NodeType"
 import {RelComposition} from "../../relationships/types/RelComposition"
 
 export const CarModelRelComposition: RelComposition[] = [
-    [RelationshipType.CarModelBelongsToBrand, {
+    [RelType.CarModelBelongsToBrand, {
         startNodeType: NodeType.CAR_MODEL,
         endNodeType: NodeType.BRAND,
         isReverseRelationship: true,
     }],
-    [RelationshipType.CarModelHasSuccessor, {
+    [RelType.CarModelHasSuccessor, {
         startNodeType: NodeType.CAR_MODEL,
         endNodeType: NodeType.CAR_MODEL,
         isReverseRelationship: false,
     }],
-    [RelationshipType.CarModelIsSuccessorOf, {
+    [RelType.CarModelIsSuccessorOf, {
         startNodeType: NodeType.CAR_MODEL,
         endNodeType: NodeType.CAR_MODEL,
         isReverseRelationship: true,
     }],
-    [RelationshipType.CarModelHasVariant, {
+    [RelType.CarModelHasVariant, {
         startNodeType: NodeType.CAR_MODEL,
         endNodeType: NodeType.CAR_MODEL_VARIANT,
         isReverseRelationship: false,
     }],
-    [RelationshipType.CarModelHasImage, {
+    [RelType.CarModelHasImage, {
         startNodeType: NodeType.CAR_MODEL,
         endNodeType: NodeType.IMAGE,
         isReverseRelationship: false,
     }],
-    [RelationshipType.CarModelHasPrimeImage, {
+    [RelType.CarModelHasPrimeImage, {
         startNodeType: NodeType.CAR_MODEL,
         endNodeType: NodeType.IMAGE,
         isReverseRelationship: false,

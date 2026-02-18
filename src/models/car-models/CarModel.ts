@@ -14,7 +14,7 @@ import {NodeNotFoundError} from "../types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
 import {SemanticError} from "../types/SemanticError"
-import {RelationshipType} from "../relationships/types/RelationshipType"
+import {RelType} from "../relationships/types/RelType"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
 import {getSpecificRel} from "../relationships/getSpecificRel"
 import {createRel} from "../relationships/createRel"
@@ -74,14 +74,14 @@ export const CarModel = {
             throw new NodeNotFoundError(brandId)
         }
 
-        const existingRelationship = await getSpecificRel(carModelId, brandId, RelationshipType.CarModelBelongsToBrand)
+        const existingRelationship = await getSpecificRel(carModelId, brandId, RelType.CarModelBelongsToBrand)
         if (existingRelationship) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.CarModelBelongsToBrand, carModelId, brandId)
+            throw new RelationshipAlreadyExistsError(RelType.CarModelBelongsToBrand, carModelId, brandId)
         }
 
-        await deleteOutgoingRel(carModelId, RelationshipType.CarModelBelongsToBrand, NodeTypeLabel.Brand)
+        await deleteOutgoingRel(carModelId, RelType.CarModelBelongsToBrand, NodeTypeLabel.Brand)
 
-        const createdRelationship = await createRel(carModelId, brandId, RelationshipType.CarModelBelongsToBrand)
+        const createdRelationship = await createRel(carModelId, brandId, RelType.CarModelBelongsToBrand)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -95,9 +95,9 @@ export const CarModel = {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getRel(carModelId, RelationshipType.CarModelBelongsToBrand)
+        const relationship = await getRel(carModelId, RelType.CarModelBelongsToBrand)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.CarModelBelongsToBrand, carModelId)
+            throw new RelationshipNotFoundError(RelType.CarModelBelongsToBrand, carModelId)
         }
 
         return relationship
@@ -114,12 +114,12 @@ export const CarModel = {
             throw new NodeNotFoundError(brandId)
         }
 
-        const relationship = await getSpecificRel(carModelId, brandId, RelationshipType.CarModelBelongsToBrand)
+        const relationship = await getSpecificRel(carModelId, brandId, RelType.CarModelBelongsToBrand)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.CarModelBelongsToBrand, carModelId, brandId)
+            throw new RelationshipNotFoundError(RelType.CarModelBelongsToBrand, carModelId, brandId)
         }
 
-        await deleteSpecificRel(carModelId, brandId, RelationshipType.CarModelBelongsToBrand)
+        await deleteSpecificRel(carModelId, brandId, RelType.CarModelBelongsToBrand)
     },
 
     async createHasSuccessorRelationship(carModelId: number, partnerId: number) {
@@ -137,15 +137,15 @@ export const CarModel = {
             throw new NodeNotFoundError(partnerId)
         }
 
-        const existingRelation = await getSpecificRel(carModelId, partnerId, RelationshipType.CarModelHasSuccessor)
+        const existingRelation = await getSpecificRel(carModelId, partnerId, RelType.CarModelHasSuccessor)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.CarModelHasSuccessor, carModelId, partnerId)
+            throw new RelationshipAlreadyExistsError(RelType.CarModelHasSuccessor, carModelId, partnerId)
         }
 
-        await deleteOutgoingRel(carModelId, RelationshipType.CarModelHasSuccessor, NodeTypeLabel.CarModel)
-        await deleteIncomingRel(partnerId, RelationshipType.CarModelHasSuccessor, NodeTypeLabel.CarModel)
+        await deleteOutgoingRel(carModelId, RelType.CarModelHasSuccessor, NodeTypeLabel.CarModel)
+        await deleteIncomingRel(partnerId, RelType.CarModelHasSuccessor, NodeTypeLabel.CarModel)
 
-        const createdRelationship = await createRel(carModelId, partnerId, RelationshipType.CarModelHasSuccessor)
+        const createdRelationship = await createRel(carModelId, partnerId, RelType.CarModelHasSuccessor)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -159,9 +159,9 @@ export const CarModel = {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getRel(carModelId, RelationshipType.CarModelHasSuccessor)
+        const relationship = await getRel(carModelId, RelType.CarModelHasSuccessor)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.CarModelHasSuccessor, carModelId, null)
+            throw new RelationshipNotFoundError(RelType.CarModelHasSuccessor, carModelId, null)
         }
 
         return relationship
@@ -178,12 +178,12 @@ export const CarModel = {
             throw new NodeNotFoundError(partnerId)
         }
 
-        const relationship = await getSpecificRel(carModelId, partnerId, RelationshipType.CarModelHasSuccessor)
+        const relationship = await getSpecificRel(carModelId, partnerId, RelType.CarModelHasSuccessor)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.CarModelHasSuccessor, carModelId, partnerId)
+            throw new RelationshipNotFoundError(RelType.CarModelHasSuccessor, carModelId, partnerId)
         }
 
-        await deleteSpecificRel(carModelId, partnerId, RelationshipType.CarModelHasSuccessor)
+        await deleteSpecificRel(carModelId, partnerId, RelType.CarModelHasSuccessor)
     },
 
     async createIsSuccessorOfRelationship(carModelId: number, partnerId: number) {
@@ -201,15 +201,15 @@ export const CarModel = {
             throw new NodeNotFoundError(partnerId)
         }
 
-        const existingRelation = await getSpecificRel(carModelId, partnerId, RelationshipType.CarModelIsSuccessorOf)
+        const existingRelation = await getSpecificRel(carModelId, partnerId, RelType.CarModelIsSuccessorOf)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.CarModelIsSuccessorOf, carModelId, partnerId)
+            throw new RelationshipAlreadyExistsError(RelType.CarModelIsSuccessorOf, carModelId, partnerId)
         }
 
-        await deleteOutgoingRel(carModelId, RelationshipType.CarModelIsSuccessorOf, NodeTypeLabel.CarModel)
-        await deleteIncomingRel(partnerId, RelationshipType.CarModelIsSuccessorOf, NodeTypeLabel.CarModel)
+        await deleteOutgoingRel(carModelId, RelType.CarModelIsSuccessorOf, NodeTypeLabel.CarModel)
+        await deleteIncomingRel(partnerId, RelType.CarModelIsSuccessorOf, NodeTypeLabel.CarModel)
 
-        const createdRelationship = await createRel(carModelId, partnerId, RelationshipType.CarModelIsSuccessorOf)
+        const createdRelationship = await createRel(carModelId, partnerId, RelType.CarModelIsSuccessorOf)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -223,9 +223,9 @@ export const CarModel = {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getRel(carModelId, RelationshipType.CarModelIsSuccessorOf)
+        const relationship = await getRel(carModelId, RelType.CarModelIsSuccessorOf)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.CarModelIsSuccessorOf, carModelId, null)
+            throw new RelationshipNotFoundError(RelType.CarModelIsSuccessorOf, carModelId, null)
         }
 
         return relationship
@@ -242,12 +242,12 @@ export const CarModel = {
             throw new NodeNotFoundError(partnerId)
         }
 
-        const relationship = await getSpecificRel(carModelId, partnerId, RelationshipType.CarModelIsSuccessorOf)
+        const relationship = await getSpecificRel(carModelId, partnerId, RelType.CarModelIsSuccessorOf)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.CarModelIsSuccessorOf, carModelId, partnerId)
+            throw new RelationshipNotFoundError(RelType.CarModelIsSuccessorOf, carModelId, partnerId)
         }
 
-        await deleteSpecificRel(carModelId, partnerId, RelationshipType.CarModelIsSuccessorOf)
+        await deleteSpecificRel(carModelId, partnerId, RelType.CarModelIsSuccessorOf)
     },
 
     async createHasVariantRelationship(carModelId: number, carModelVariantId: number) {
@@ -261,14 +261,14 @@ export const CarModel = {
             throw new NodeNotFoundError(carModelVariantId)
         }
 
-        const existingRelation = await getSpecificRel(carModelId, carModelVariantId, RelationshipType.CarModelHasVariant)
+        const existingRelation = await getSpecificRel(carModelId, carModelVariantId, RelType.CarModelHasVariant)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.CarModelHasVariant, carModelId, carModelVariantId)
+            throw new RelationshipAlreadyExistsError(RelType.CarModelHasVariant, carModelId, carModelVariantId)
         }
 
-        await deleteIncomingRel(carModelVariantId, RelationshipType.CarModelHasVariant, NodeTypeLabel.CarModel)
+        await deleteIncomingRel(carModelVariantId, RelType.CarModelHasVariant, NodeTypeLabel.CarModel)
 
-        const createdRelationship = await createRel(carModelId, carModelVariantId, RelationshipType.CarModelHasVariant)
+        const createdRelationship = await createRel(carModelId, carModelVariantId, RelType.CarModelHasVariant)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -282,7 +282,7 @@ export const CarModel = {
             throw new NodeNotFoundError(carModelId)
         }
 
-        return getAllRels(carModelId, RelationshipType.CarModelHasVariant)
+        return getAllRels(carModelId, RelType.CarModelHasVariant)
     },
 
     async deleteHasVariantRelationship(carModelId: number, carModelVariantId: number) {
@@ -296,12 +296,12 @@ export const CarModel = {
             throw new NodeNotFoundError(carModelVariantId)
         }
 
-        const relationship = await getSpecificRel(carModelId, carModelVariantId, RelationshipType.CarModelHasVariant)
+        const relationship = await getSpecificRel(carModelId, carModelVariantId, RelType.CarModelHasVariant)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.CarModelHasVariant, carModelId, carModelVariantId)
+            throw new RelationshipNotFoundError(RelType.CarModelHasVariant, carModelId, carModelVariantId)
         }
 
-        await deleteSpecificRel(carModelId, carModelVariantId, RelationshipType.CarModelHasVariant)
+        await deleteSpecificRel(carModelId, carModelVariantId, RelType.CarModelHasVariant)
     },
 
     async createHasImageRelationship(carModelId: number, imageId: number) {
@@ -315,12 +315,12 @@ export const CarModel = {
             throw new NodeNotFoundError(imageId)
         }
 
-        const existingRelationship = await getSpecificRel(carModelId, imageId, RelationshipType.CarModelHasImage)
+        const existingRelationship = await getSpecificRel(carModelId, imageId, RelType.CarModelHasImage)
         if (existingRelationship) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.CarModelHasImage, carModelId, imageId)
+            throw new RelationshipAlreadyExistsError(RelType.CarModelHasImage, carModelId, imageId)
         }
 
-        const createdRelationship = await createRel(carModelId, imageId, RelationshipType.CarModelHasImage)
+        const createdRelationship = await createRel(carModelId, imageId, RelType.CarModelHasImage)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -339,9 +339,9 @@ export const CarModel = {
             throw new NodeNotFoundError(imageId)
         }
 
-        const relationship = await getSpecificRel(carModelId, imageId, RelationshipType.CarModelHasImage)
+        const relationship = await getSpecificRel(carModelId, imageId, RelType.CarModelHasImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.CarModelHasImage, carModelId, imageId)
+            throw new RelationshipNotFoundError(RelType.CarModelHasImage, carModelId, imageId)
         }
 
         return relationship
@@ -353,7 +353,7 @@ export const CarModel = {
             throw new NodeNotFoundError(carModelId)
         }
 
-        return getAllRels(carModelId, RelationshipType.CarModelHasImage)
+        return getAllRels(carModelId, RelType.CarModelHasImage)
     },
 
     async deleteHasImageRelationship(carModelId: number, imageId: number) {
@@ -367,12 +367,12 @@ export const CarModel = {
             throw new NodeNotFoundError(imageId)
         }
 
-        const relationship = await getSpecificRel(carModelId, imageId, RelationshipType.CarModelHasImage)
+        const relationship = await getSpecificRel(carModelId, imageId, RelType.CarModelHasImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.CarModelHasImage, carModelId, imageId)
+            throw new RelationshipNotFoundError(RelType.CarModelHasImage, carModelId, imageId)
         }
 
-        await deleteSpecificRel(carModelId, imageId, RelationshipType.CarModelHasImage)
+        await deleteSpecificRel(carModelId, imageId, RelType.CarModelHasImage)
     },
 
     async createHasPrimeImageRelationship(carModelId: number, imageId: number) {
@@ -386,14 +386,14 @@ export const CarModel = {
             throw new NodeNotFoundError(imageId)
         }
 
-        const existingRelationship = await getSpecificRel(carModelId, imageId, RelationshipType.CarModelHasPrimeImage)
+        const existingRelationship = await getSpecificRel(carModelId, imageId, RelType.CarModelHasPrimeImage)
         if (existingRelationship) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.CarModelHasPrimeImage, carModelId, imageId)
+            throw new RelationshipAlreadyExistsError(RelType.CarModelHasPrimeImage, carModelId, imageId)
         }
 
-        await deleteOutgoingRel(carModelId, RelationshipType.CarModelHasPrimeImage, NodeTypeLabel.Image)
+        await deleteOutgoingRel(carModelId, RelType.CarModelHasPrimeImage, NodeTypeLabel.Image)
 
-        const createdRelationship = await createRel(carModelId, imageId, RelationshipType.CarModelHasPrimeImage)
+        const createdRelationship = await createRel(carModelId, imageId, RelType.CarModelHasPrimeImage)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -407,9 +407,9 @@ export const CarModel = {
             throw new NodeNotFoundError(carModelId)
         }
 
-        const relationship = await getRel(carModelId, RelationshipType.CarModelHasPrimeImage)
+        const relationship = await getRel(carModelId, RelType.CarModelHasPrimeImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.CarModelHasPrimeImage, carModelId, null)
+            throw new RelationshipNotFoundError(RelType.CarModelHasPrimeImage, carModelId, null)
         }
 
         return relationship
@@ -426,9 +426,9 @@ export const CarModel = {
             throw new NodeNotFoundError(imageId)
         }
 
-        const relationship = await getSpecificRel(carModelId, imageId, RelationshipType.CarModelHasPrimeImage)
+        const relationship = await getSpecificRel(carModelId, imageId, RelType.CarModelHasPrimeImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.CarModelHasPrimeImage, carModelId, imageId)
+            throw new RelationshipNotFoundError(RelType.CarModelHasPrimeImage, carModelId, imageId)
         }
 
         return relationship
@@ -445,11 +445,11 @@ export const CarModel = {
             throw new NodeNotFoundError(imageId)
         }
 
-        const relationship = await getSpecificRel(carModelId, imageId, RelationshipType.CarModelHasPrimeImage)
+        const relationship = await getSpecificRel(carModelId, imageId, RelType.CarModelHasPrimeImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.CarModelHasPrimeImage, carModelId, imageId)
+            throw new RelationshipNotFoundError(RelType.CarModelHasPrimeImage, carModelId, imageId)
         }
 
-        await deleteSpecificRel(carModelId, imageId, RelationshipType.CarModelHasPrimeImage)
+        await deleteSpecificRel(carModelId, imageId, RelType.CarModelHasPrimeImage)
     },
 }

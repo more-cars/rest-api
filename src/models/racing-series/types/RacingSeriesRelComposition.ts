@@ -1,19 +1,19 @@
-import {RelationshipType} from "../../relationships/types/RelationshipType"
+import {RelType} from "../../relationships/types/RelType"
 import {NodeType} from "../../types/NodeType"
 import {RelComposition} from "../../relationships/types/RelComposition"
 
 export const RacingSeriesRelComposition: RelComposition[] = [
-    [RelationshipType.RacingSeriesHasRacingEvent, {
+    [RelType.RacingSeriesHasRacingEvent, {
         startNodeType: NodeType.RACING_SERIES,
         endNodeType: NodeType.RACING_EVENT,
         isReverseRelationship: false,
     }],
-    [RelationshipType.RacingSeriesHasImage, {
+    [RelType.RacingSeriesHasImage, {
         startNodeType: NodeType.RACING_SERIES,
         endNodeType: NodeType.IMAGE,
         isReverseRelationship: false,
     }],
-    [RelationshipType.RacingSeriesHasPrimeImage, {
+    [RelType.RacingSeriesHasPrimeImage, {
         startNodeType: NodeType.RACING_SERIES,
         endNodeType: NodeType.IMAGE,
         isReverseRelationship: false,

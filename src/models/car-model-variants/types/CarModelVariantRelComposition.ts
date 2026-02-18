@@ -1,34 +1,34 @@
-import {RelationshipType} from "../../relationships/types/RelationshipType"
+import {RelType} from "../../relationships/types/RelType"
 import {NodeType} from "../../types/NodeType"
 import {RelComposition} from "../../relationships/types/RelComposition"
 
 export const CarModelVariantRelComposition: RelComposition[] = [
-    [RelationshipType.CarModelVariantIsVariantOf, {
+    [RelType.CarModelVariantIsVariantOf, {
         startNodeType: NodeType.CAR_MODEL_VARIANT,
         endNodeType: NodeType.CAR_MODEL,
         isReverseRelationship: true,
     }],
-    [RelationshipType.CarModelVariantAchievedSessionResult, {
+    [RelType.CarModelVariantAchievedSessionResult, {
         startNodeType: NodeType.CAR_MODEL_VARIANT,
         endNodeType: NodeType.SESSION_RESULT,
         isReverseRelationship: false,
     }],
-    [RelationshipType.CarModelVariantAchievedLapTime, {
+    [RelType.CarModelVariantAchievedLapTime, {
         startNodeType: NodeType.CAR_MODEL_VARIANT,
         endNodeType: NodeType.LAP_TIME,
         isReverseRelationship: false,
     }],
-    [RelationshipType.CarModelVariantIsFeaturedInRacingGame, {
+    [RelType.CarModelVariantIsFeaturedInRacingGame, {
         startNodeType: NodeType.CAR_MODEL_VARIANT,
         endNodeType: NodeType.RACING_GAME,
         isReverseRelationship: true,
     }],
-    [RelationshipType.CarModelVariantHasImage, {
+    [RelType.CarModelVariantHasImage, {
         startNodeType: NodeType.CAR_MODEL_VARIANT,
         endNodeType: NodeType.IMAGE,
         isReverseRelationship: false,
     }],
-    [RelationshipType.CarModelVariantHasPrimeImage, {
+    [RelType.CarModelVariantHasPrimeImage, {
         startNodeType: NodeType.CAR_MODEL_VARIANT,
         endNodeType: NodeType.IMAGE,
         isReverseRelationship: false,

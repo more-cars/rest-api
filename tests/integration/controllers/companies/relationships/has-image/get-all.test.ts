@@ -3,20 +3,20 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {Company} from "../../../../../../src/models/companies/Company"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('Providing valid data', async () => {
         Company.getAllHasImageRelationships = vi.fn().mockReturnValue([
             {
                 id: 4,
-                type: RelationshipType.CompanyHasImage,
+                type: RelType.CompanyHasImage,
             }, {
                 id: 5,
-                type: RelationshipType.CompanyHasImage,
+                type: RelType.CompanyHasImage,
             }, {
                 id: 6,
-                type: RelationshipType.CompanyHasImage,
+                type: RelType.CompanyHasImage,
             }
         ])
 

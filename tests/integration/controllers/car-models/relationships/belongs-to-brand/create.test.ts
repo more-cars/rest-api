@@ -4,13 +4,13 @@ import {app} from '../../../../../../src/app'
 import {CarModel} from "../../../../../../src/models/car-models/CarModel"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Creating a ›belongs-to-brand‹ relationship', () => {
     test('Providing valid data', async () => {
         CarModel.createBelongsToBrandRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: RelationshipType.CarModelBelongsToBrand,
+            type: RelType.CarModelBelongsToBrand,
         })
 
         const response = await request(app)

@@ -1,4 +1,4 @@
-import {RelationshipType} from "./types/RelationshipType"
+import {RelType} from "./types/RelType"
 import {NodeType} from "../types/NodeType"
 import {ImageRelComposition} from "../images/types/ImageRelComposition"
 import {CompanyRelComposition} from "../companies/types/CompanyRelComposition"
@@ -15,8 +15,8 @@ import {LapTimeRelComposition} from "../lap-times/types/LapTimeRelComposition"
 import {RacingGameRelComposition} from "../racing-games/types/RacingGameRelComposition"
 import {GamingPlatformRelComposition} from "../gaming-platforms/types/GamingPlatformRelComposition"
 
-export function getRelComposition(relationshipType: RelationshipType) {
-    const mapping = new Map<RelationshipType, {
+export function getRelComposition(relationshipType: RelType) {
+    const mapping = new Map<RelType, {
         startNodeType: NodeType,
         endNodeType: NodeType,
         isReverseRelationship: boolean,

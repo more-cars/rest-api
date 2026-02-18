@@ -4,13 +4,13 @@ import {app} from '../../../../../../src/app'
 import {Brand} from "../../../../../../src/models/brands/Brand"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Requesting a specific ›has-image‹ relationship', () => {
     test('Providing valid data', async () => {
         Brand.getSpecificHasImageRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: RelationshipType.BrandHasImage,
+            type: RelType.BrandHasImage,
         })
 
         const response = await request(app)

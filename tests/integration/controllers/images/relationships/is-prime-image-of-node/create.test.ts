@@ -4,13 +4,13 @@ import {app} from '../../../../../../src/app'
 import {Image} from "../../../../../../src/models/images/Image"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelationshipAlreadyExistsError} from "../../../../../../src/models/types/RelationshipAlreadyExistsError"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Creating a ›is-prime-image-of-node‹ relationship', () => {
     test('Providing valid data', async () => {
         Image.createIsPrimeImageOfNodeRelationship = vi.fn().mockReturnValue({
             id: 4,
-            type: RelationshipType.ImageIsPrimeImageOfNode,
+            type: RelType.ImageIsPrimeImageOfNode,
         })
 
         const response = await request(app)

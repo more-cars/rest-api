@@ -1,4 +1,4 @@
-import type {RelationshipType} from "./types/RelationshipType"
+import type {RelType} from "./types/RelType"
 import type {NodeTypeLabel} from "../../db/NodeTypeLabel"
 import {getRelationship} from "../../db/relationships/getRelationship"
 import {getDbRelationshipType} from "./getDbRelationshipType"
@@ -6,7 +6,7 @@ import {deleteRelationshipById} from "../../db/relationships/deleteRelationshipB
 
 export async function deleteOutgoingRel(
     originId: number,
-    relationshipType: RelationshipType,
+    relationshipType: RelType,
     destinationType: NodeTypeLabel,
 ) {
     const dbRelationship = await getRelationship(

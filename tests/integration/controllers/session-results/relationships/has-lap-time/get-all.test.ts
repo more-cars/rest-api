@@ -3,20 +3,20 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {SessionResult} from "../../../../../../src/models/session-results/SessionResult"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Requesting all ›has-lap-time‹ relationships', () => {
     test('Providing valid data', async () => {
         SessionResult.getAllHasLapTimeRelationships = vi.fn().mockReturnValue([
             {
                 id: 4,
-                type: RelationshipType.SessionResultHasLapTime,
+                type: RelType.SessionResultHasLapTime,
             }, {
                 id: 5,
-                type: RelationshipType.SessionResultHasLapTime,
+                type: RelType.SessionResultHasLapTime,
             }, {
                 id: 6,
-                type: RelationshipType.SessionResultHasLapTime,
+                type: RelType.SessionResultHasLapTime,
             }
         ])
 

@@ -1,34 +1,34 @@
-import {RelationshipType} from "../../relationships/types/RelationshipType"
+import {RelType} from "../../relationships/types/RelType"
 import {NodeType} from "../../types/NodeType"
 import {RelComposition} from "../../relationships/types/RelComposition"
 
 export const TrackLayoutRelComposition: RelComposition[] = [
-    [RelationshipType.TrackLayoutBelongsToRaceTrack, {
+    [RelType.TrackLayoutBelongsToRaceTrack, {
         startNodeType: NodeType.TRACK_LAYOUT,
         endNodeType: NodeType.RACE_TRACK,
         isReverseRelationship: true,
     }],
-    [RelationshipType.TrackLayoutWasUsedByRacingEvent, {
+    [RelType.TrackLayoutWasUsedByRacingEvent, {
         startNodeType: NodeType.TRACK_LAYOUT,
         endNodeType: NodeType.RACING_EVENT,
         isReverseRelationship: true,
     }],
-    [RelationshipType.TrackLayoutHasLapTime, {
+    [RelType.TrackLayoutHasLapTime, {
         startNodeType: NodeType.TRACK_LAYOUT,
         endNodeType: NodeType.LAP_TIME,
         isReverseRelationship: false,
     }],
-    [RelationshipType.TrackLayoutIsFeaturedInRacingGame, {
+    [RelType.TrackLayoutIsFeaturedInRacingGame, {
         startNodeType: NodeType.TRACK_LAYOUT,
         endNodeType: NodeType.RACING_GAME,
         isReverseRelationship: true,
     }],
-    [RelationshipType.TrackLayoutHasImage, {
+    [RelType.TrackLayoutHasImage, {
         startNodeType: NodeType.TRACK_LAYOUT,
         endNodeType: NodeType.IMAGE,
         isReverseRelationship: false,
     }],
-    [RelationshipType.TrackLayoutHasPrimeImage, {
+    [RelType.TrackLayoutHasPrimeImage, {
         startNodeType: NodeType.TRACK_LAYOUT,
         endNodeType: NodeType.IMAGE,
         isReverseRelationship: false,

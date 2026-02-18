@@ -16,7 +16,7 @@ import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {Node} from "../Node"
 import {getSpecificRel} from "../relationships/getSpecificRel"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
-import {RelationshipType} from "../relationships/types/RelationshipType"
+import {RelType} from "../relationships/types/RelType"
 import {createRel} from "../relationships/createRel"
 import {getAllRels} from "../relationships/getAllRels"
 import type {GenericRelation} from "../relationships/types/GenericRelation"
@@ -86,12 +86,12 @@ export const Image = {
             throw new SemanticError(`Image #${imageId} cannot be connected to another image`)
         }
 
-        const existingRelationship = await getSpecificRel(imageId, partnerId, RelationshipType.ImageBelongsToNode)
+        const existingRelationship = await getSpecificRel(imageId, partnerId, RelType.ImageBelongsToNode)
         if (existingRelationship) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.ImageBelongsToNode, imageId, partnerId)
+            throw new RelationshipAlreadyExistsError(RelType.ImageBelongsToNode, imageId, partnerId)
         }
 
-        const createdRelationship = await createRel(imageId, partnerId, RelationshipType.ImageBelongsToNode)
+        const createdRelationship = await createRel(imageId, partnerId, RelType.ImageBelongsToNode)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -110,9 +110,9 @@ export const Image = {
             throw new NodeNotFoundError(partnerId)
         }
 
-        const relationship = await getSpecificRel(imageId, partnerId, RelationshipType.ImageBelongsToNode)
+        const relationship = await getSpecificRel(imageId, partnerId, RelType.ImageBelongsToNode)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.ImageBelongsToNode, imageId, partnerId)
+            throw new RelationshipNotFoundError(RelType.ImageBelongsToNode, imageId, partnerId)
         }
 
         return relationship
@@ -124,7 +124,7 @@ export const Image = {
             throw new NodeNotFoundError(imageId)
         }
 
-        return getAllRels(imageId, RelationshipType.ImageBelongsToNode)
+        return getAllRels(imageId, RelType.ImageBelongsToNode)
     },
 
     async deleteBelongsToNodeRelationship(imageId: number, partnerNodeId: number) {
@@ -138,12 +138,12 @@ export const Image = {
             throw new NodeNotFoundError(partnerNodeId)
         }
 
-        const relationship = await getSpecificRel(imageId, partnerNodeId, RelationshipType.ImageBelongsToNode)
+        const relationship = await getSpecificRel(imageId, partnerNodeId, RelType.ImageBelongsToNode)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.ImageBelongsToNode, imageId, partnerNodeId)
+            throw new RelationshipNotFoundError(RelType.ImageBelongsToNode, imageId, partnerNodeId)
         }
 
-        await deleteSpecificRel(imageId, partnerNodeId, RelationshipType.ImageBelongsToNode)
+        await deleteSpecificRel(imageId, partnerNodeId, RelType.ImageBelongsToNode)
     },
 
     async getBelongsToNodeTypeRelationships(imageId: number) {
@@ -233,14 +233,14 @@ export const Image = {
             throw new SemanticError(`Image #${imageId} cannot be connected to another image`)
         }
 
-        const existingRelation = await getSpecificRel(imageId, nodeId, RelationshipType.ImageIsPrimeImageOfNode)
+        const existingRelation = await getSpecificRel(imageId, nodeId, RelType.ImageIsPrimeImageOfNode)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.ImageIsPrimeImageOfNode, imageId, nodeId)
+            throw new RelationshipAlreadyExistsError(RelType.ImageIsPrimeImageOfNode, imageId, nodeId)
         }
 
-        await deleteIncomingRel(nodeId, RelationshipType.ImageIsPrimeImageOfNode, NodeTypeLabel.Image)
+        await deleteIncomingRel(nodeId, RelType.ImageIsPrimeImageOfNode, NodeTypeLabel.Image)
 
-        const createdRelationship = await createRel(imageId, nodeId, RelationshipType.ImageIsPrimeImageOfNode)
+        const createdRelationship = await createRel(imageId, nodeId, RelType.ImageIsPrimeImageOfNode)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -254,7 +254,7 @@ export const Image = {
             throw new NodeNotFoundError(imageId)
         }
 
-        return getAllRels(imageId, RelationshipType.ImageIsPrimeImageOfNode)
+        return getAllRels(imageId, RelType.ImageIsPrimeImageOfNode)
     },
 
     async deleteIsPrimeImageOfNodeRelationship(imageId: number, nodeId: number) {
@@ -268,12 +268,12 @@ export const Image = {
             throw new NodeNotFoundError(nodeId)
         }
 
-        const relationship = await getSpecificRel(imageId, nodeId, RelationshipType.ImageIsPrimeImageOfNode)
+        const relationship = await getSpecificRel(imageId, nodeId, RelType.ImageIsPrimeImageOfNode)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.ImageIsPrimeImageOfNode, imageId, nodeId)
+            throw new RelationshipNotFoundError(RelType.ImageIsPrimeImageOfNode, imageId, nodeId)
         }
 
-        await deleteSpecificRel(imageId, nodeId, RelationshipType.ImageIsPrimeImageOfNode)
+        await deleteSpecificRel(imageId, nodeId, RelType.ImageIsPrimeImageOfNode)
     },
 }
 

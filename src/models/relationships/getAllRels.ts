@@ -1,4 +1,4 @@
-import type {RelationshipType} from "./types/RelationshipType"
+import type {RelType} from "./types/RelType"
 import {getRelComposition} from "./getRelComposition"
 import {getDbRelationshipType} from "./getDbRelationshipType"
 import {getDbNodeType} from "./getDbNodeType"
@@ -8,7 +8,7 @@ import type {BaseNode} from "../../db/types/BaseNode"
 
 export async function getAllRels(
     startNodeId: number,
-    relationshipType: RelationshipType
+    relationshipType: RelType
 ) {
     const relComposition = getRelComposition(relationshipType)
     const dbRelationshipType = getDbRelationshipType(relationshipType)

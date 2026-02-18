@@ -3,20 +3,20 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {RacingSession} from "../../../../../../src/models/racing-sessions/RacingSession"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Requesting all ›has-session-result‹ relationships', () => {
     test('Providing valid data', async () => {
         RacingSession.getAllHasSessionResultRelationships = vi.fn().mockReturnValue([
             {
                 id: 4,
-                type: RelationshipType.RacingSessionHasSessionResult,
+                type: RelType.RacingSessionHasSessionResult,
             }, {
                 id: 5,
-                type: RelationshipType.RacingSessionHasSessionResult,
+                type: RelType.RacingSessionHasSessionResult,
             }, {
                 id: 6,
-                type: RelationshipType.RacingSessionHasSessionResult,
+                type: RelType.RacingSessionHasSessionResult,
             }
         ])
 

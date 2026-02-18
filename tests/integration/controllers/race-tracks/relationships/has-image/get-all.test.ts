@@ -3,20 +3,20 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {RaceTrack} from "../../../../../../src/models/race-tracks/RaceTrack"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('Providing valid data', async () => {
         RaceTrack.getAllHasImageRelationships = vi.fn().mockReturnValue([
             {
                 id: 4,
-                type: RelationshipType.RaceTrackHasImage,
+                type: RelType.RaceTrackHasImage,
             }, {
                 id: 5,
-                type: RelationshipType.RaceTrackHasImage,
+                type: RelType.RaceTrackHasImage,
             }, {
                 id: 6,
-                type: RelationshipType.RaceTrackHasImage,
+                type: RelType.RaceTrackHasImage,
             }
         ])
 

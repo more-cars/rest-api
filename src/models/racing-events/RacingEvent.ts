@@ -12,7 +12,7 @@ import {createRel} from "../relationships/createRel"
 import {RacingSeries} from "../racing-series/RacingSeries"
 import {getSpecificRel} from "../relationships/getSpecificRel"
 import {RelationshipAlreadyExistsError} from "../types/RelationshipAlreadyExistsError"
-import {RelationshipType} from "../relationships/types/RelationshipType"
+import {RelType} from "../relationships/types/RelType"
 import {getRel} from "../relationships/getRel"
 import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
 import {deleteSpecificRel} from "../relationships/deleteSpecificRel"
@@ -77,14 +77,14 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingSeriesId)
         }
 
-        const existingRelation = await getSpecificRel(racingEventId, racingSeriesId, RelationshipType.RacingEventBelongsToRacingSeries)
+        const existingRelation = await getSpecificRel(racingEventId, racingSeriesId, RelType.RacingEventBelongsToRacingSeries)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.RacingEventBelongsToRacingSeries, racingEventId, racingSeriesId)
+            throw new RelationshipAlreadyExistsError(RelType.RacingEventBelongsToRacingSeries, racingEventId, racingSeriesId)
         }
 
-        await deleteOutgoingRel(racingEventId, RelationshipType.RacingEventBelongsToRacingSeries, NodeTypeLabel.RacingSeries)
+        await deleteOutgoingRel(racingEventId, RelType.RacingEventBelongsToRacingSeries, NodeTypeLabel.RacingSeries)
 
-        const createdRelationship = await createRel(racingEventId, racingSeriesId, RelationshipType.RacingEventBelongsToRacingSeries)
+        const createdRelationship = await createRel(racingEventId, racingSeriesId, RelType.RacingEventBelongsToRacingSeries)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -98,9 +98,9 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingEventId)
         }
 
-        const relationship = await getRel(racingEventId, RelationshipType.RacingEventBelongsToRacingSeries)
+        const relationship = await getRel(racingEventId, RelType.RacingEventBelongsToRacingSeries)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.RacingEventBelongsToRacingSeries, racingEventId, null)
+            throw new RelationshipNotFoundError(RelType.RacingEventBelongsToRacingSeries, racingEventId, null)
         }
 
         return relationship
@@ -117,12 +117,12 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingSeriesId)
         }
 
-        const relationship = await getSpecificRel(racingEventId, racingSeriesId, RelationshipType.RacingEventBelongsToRacingSeries)
+        const relationship = await getSpecificRel(racingEventId, racingSeriesId, RelType.RacingEventBelongsToRacingSeries)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.RacingEventBelongsToRacingSeries, racingEventId, racingSeriesId)
+            throw new RelationshipNotFoundError(RelType.RacingEventBelongsToRacingSeries, racingEventId, racingSeriesId)
         }
 
-        await deleteSpecificRel(racingEventId, racingSeriesId, RelationshipType.RacingEventBelongsToRacingSeries)
+        await deleteSpecificRel(racingEventId, racingSeriesId, RelType.RacingEventBelongsToRacingSeries)
     },
 
     async createIsFollowedByEventRelationship(racingEventId: number, partnerId: number) {
@@ -141,15 +141,15 @@ export const RacingEvent = {
             throw new NodeNotFoundError(partnerId)
         }
 
-        const existingRelation = await getSpecificRel(racingEventId, partnerId, RelationshipType.RacingEventIsFollowedByEvent)
+        const existingRelation = await getSpecificRel(racingEventId, partnerId, RelType.RacingEventIsFollowedByEvent)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.RacingEventIsFollowedByEvent, racingEventId, partnerId)
+            throw new RelationshipAlreadyExistsError(RelType.RacingEventIsFollowedByEvent, racingEventId, partnerId)
         }
 
-        await deleteOutgoingRel(racingEventId, RelationshipType.RacingEventIsFollowedByEvent, NodeTypeLabel.RacingEvent)
-        await deleteIncomingRel(partnerId, RelationshipType.RacingEventIsFollowedByEvent, NodeTypeLabel.RacingEvent)
+        await deleteOutgoingRel(racingEventId, RelType.RacingEventIsFollowedByEvent, NodeTypeLabel.RacingEvent)
+        await deleteIncomingRel(partnerId, RelType.RacingEventIsFollowedByEvent, NodeTypeLabel.RacingEvent)
 
-        const createdRelationship = await createRel(racingEventId, partnerId, RelationshipType.RacingEventIsFollowedByEvent)
+        const createdRelationship = await createRel(racingEventId, partnerId, RelType.RacingEventIsFollowedByEvent)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -163,9 +163,9 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingEventId)
         }
 
-        const relationship = await getRel(racingEventId, RelationshipType.RacingEventIsFollowedByEvent)
+        const relationship = await getRel(racingEventId, RelType.RacingEventIsFollowedByEvent)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.RacingEventIsFollowedByEvent, racingEventId, null)
+            throw new RelationshipNotFoundError(RelType.RacingEventIsFollowedByEvent, racingEventId, null)
         }
 
         return relationship
@@ -182,12 +182,12 @@ export const RacingEvent = {
             throw new NodeNotFoundError(partnerId)
         }
 
-        const relationship = await getSpecificRel(racingEventId, partnerId, RelationshipType.RacingEventIsFollowedByEvent)
+        const relationship = await getSpecificRel(racingEventId, partnerId, RelType.RacingEventIsFollowedByEvent)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.RacingEventIsFollowedByEvent, racingEventId, partnerId)
+            throw new RelationshipNotFoundError(RelType.RacingEventIsFollowedByEvent, racingEventId, partnerId)
         }
 
-        await deleteSpecificRel(racingEventId, partnerId, RelationshipType.RacingEventIsFollowedByEvent)
+        await deleteSpecificRel(racingEventId, partnerId, RelType.RacingEventIsFollowedByEvent)
     },
 
     async createFollowsEventRelationship(racingEventId: number, partnerId: number) {
@@ -206,15 +206,15 @@ export const RacingEvent = {
             throw new NodeNotFoundError(partnerId)
         }
 
-        const existingRelation = await getSpecificRel(racingEventId, partnerId, RelationshipType.RacingEventFollowsEvent)
+        const existingRelation = await getSpecificRel(racingEventId, partnerId, RelType.RacingEventFollowsEvent)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.RacingEventFollowsEvent, racingEventId, partnerId)
+            throw new RelationshipAlreadyExistsError(RelType.RacingEventFollowsEvent, racingEventId, partnerId)
         }
 
-        await deleteOutgoingRel(racingEventId, RelationshipType.RacingEventFollowsEvent, NodeTypeLabel.RacingEvent)
-        await deleteIncomingRel(partnerId, RelationshipType.RacingEventFollowsEvent, NodeTypeLabel.RacingEvent)
+        await deleteOutgoingRel(racingEventId, RelType.RacingEventFollowsEvent, NodeTypeLabel.RacingEvent)
+        await deleteIncomingRel(partnerId, RelType.RacingEventFollowsEvent, NodeTypeLabel.RacingEvent)
 
-        const createdRelationship = await createRel(racingEventId, partnerId, RelationshipType.RacingEventFollowsEvent)
+        const createdRelationship = await createRel(racingEventId, partnerId, RelType.RacingEventFollowsEvent)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -228,9 +228,9 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingEventId)
         }
 
-        const relationship = await getRel(racingEventId, RelationshipType.RacingEventFollowsEvent)
+        const relationship = await getRel(racingEventId, RelType.RacingEventFollowsEvent)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.RacingEventFollowsEvent, racingEventId, null)
+            throw new RelationshipNotFoundError(RelType.RacingEventFollowsEvent, racingEventId, null)
         }
 
         return relationship
@@ -247,12 +247,12 @@ export const RacingEvent = {
             throw new NodeNotFoundError(partnerId)
         }
 
-        const relationship = await getSpecificRel(racingEventId, partnerId, RelationshipType.RacingEventFollowsEvent)
+        const relationship = await getSpecificRel(racingEventId, partnerId, RelType.RacingEventFollowsEvent)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.RacingEventFollowsEvent, racingEventId, partnerId)
+            throw new RelationshipNotFoundError(RelType.RacingEventFollowsEvent, racingEventId, partnerId)
         }
 
-        await deleteSpecificRel(racingEventId, partnerId, RelationshipType.RacingEventFollowsEvent)
+        await deleteSpecificRel(racingEventId, partnerId, RelType.RacingEventFollowsEvent)
     },
 
     async createTookPlaceAtRaceTrackRelationship(racingEventId: number, raceTrackId: number) {
@@ -267,14 +267,14 @@ export const RacingEvent = {
             throw new NodeNotFoundError(raceTrackId)
         }
 
-        const existingRelation = await getSpecificRel(racingEventId, raceTrackId, RelationshipType.RacingEventTookPlaceAtRaceTrack)
+        const existingRelation = await getSpecificRel(racingEventId, raceTrackId, RelType.RacingEventTookPlaceAtRaceTrack)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.RacingEventTookPlaceAtRaceTrack, racingEventId, raceTrackId)
+            throw new RelationshipAlreadyExistsError(RelType.RacingEventTookPlaceAtRaceTrack, racingEventId, raceTrackId)
         }
 
-        await deleteOutgoingRel(racingEventId, RelationshipType.RacingEventTookPlaceAtRaceTrack, NodeTypeLabel.RaceTrack)
+        await deleteOutgoingRel(racingEventId, RelType.RacingEventTookPlaceAtRaceTrack, NodeTypeLabel.RaceTrack)
 
-        const createdRelationship = await createRel(racingEventId, raceTrackId, RelationshipType.RacingEventTookPlaceAtRaceTrack)
+        const createdRelationship = await createRel(racingEventId, raceTrackId, RelType.RacingEventTookPlaceAtRaceTrack)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -288,9 +288,9 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingEventId)
         }
 
-        const relationship = await getRel(racingEventId, RelationshipType.RacingEventTookPlaceAtRaceTrack)
+        const relationship = await getRel(racingEventId, RelType.RacingEventTookPlaceAtRaceTrack)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.RacingEventTookPlaceAtRaceTrack, racingEventId, null)
+            throw new RelationshipNotFoundError(RelType.RacingEventTookPlaceAtRaceTrack, racingEventId, null)
         }
 
         return relationship
@@ -307,12 +307,12 @@ export const RacingEvent = {
             throw new NodeNotFoundError(raceTrackId)
         }
 
-        const relationship = await getSpecificRel(racingEventId, raceTrackId, RelationshipType.RacingEventTookPlaceAtRaceTrack)
+        const relationship = await getSpecificRel(racingEventId, raceTrackId, RelType.RacingEventTookPlaceAtRaceTrack)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.RacingEventTookPlaceAtRaceTrack, racingEventId, raceTrackId)
+            throw new RelationshipNotFoundError(RelType.RacingEventTookPlaceAtRaceTrack, racingEventId, raceTrackId)
         }
 
-        await deleteSpecificRel(racingEventId, raceTrackId, RelationshipType.RacingEventTookPlaceAtRaceTrack)
+        await deleteSpecificRel(racingEventId, raceTrackId, RelType.RacingEventTookPlaceAtRaceTrack)
     },
 
     async createUsedTheTrackLayoutRelationship(racingEventId: number, trackLayoutId: number) {
@@ -327,14 +327,14 @@ export const RacingEvent = {
             throw new NodeNotFoundError(trackLayoutId)
         }
 
-        const existingRelation = await getSpecificRel(racingEventId, trackLayoutId, RelationshipType.RacingEventUsedTheTrackLayout)
+        const existingRelation = await getSpecificRel(racingEventId, trackLayoutId, RelType.RacingEventUsedTheTrackLayout)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.RacingEventUsedTheTrackLayout, racingEventId, trackLayoutId)
+            throw new RelationshipAlreadyExistsError(RelType.RacingEventUsedTheTrackLayout, racingEventId, trackLayoutId)
         }
 
-        await deleteOutgoingRel(racingEventId, RelationshipType.RacingEventUsedTheTrackLayout, NodeTypeLabel.TrackLayout)
+        await deleteOutgoingRel(racingEventId, RelType.RacingEventUsedTheTrackLayout, NodeTypeLabel.TrackLayout)
 
-        const createdRelationship = await createRel(racingEventId, trackLayoutId, RelationshipType.RacingEventUsedTheTrackLayout)
+        const createdRelationship = await createRel(racingEventId, trackLayoutId, RelType.RacingEventUsedTheTrackLayout)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -348,9 +348,9 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingEventId)
         }
 
-        const relationship = await getRel(racingEventId, RelationshipType.RacingEventUsedTheTrackLayout)
+        const relationship = await getRel(racingEventId, RelType.RacingEventUsedTheTrackLayout)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.RacingEventUsedTheTrackLayout, racingEventId, null)
+            throw new RelationshipNotFoundError(RelType.RacingEventUsedTheTrackLayout, racingEventId, null)
         }
 
         return relationship
@@ -367,12 +367,12 @@ export const RacingEvent = {
             throw new NodeNotFoundError(trackLayoutId)
         }
 
-        const relationship = await getSpecificRel(racingEventId, trackLayoutId, RelationshipType.RacingEventUsedTheTrackLayout)
+        const relationship = await getSpecificRel(racingEventId, trackLayoutId, RelType.RacingEventUsedTheTrackLayout)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.RacingEventUsedTheTrackLayout, racingEventId, trackLayoutId)
+            throw new RelationshipNotFoundError(RelType.RacingEventUsedTheTrackLayout, racingEventId, trackLayoutId)
         }
 
-        await deleteSpecificRel(racingEventId, trackLayoutId, RelationshipType.RacingEventUsedTheTrackLayout)
+        await deleteSpecificRel(racingEventId, trackLayoutId, RelType.RacingEventUsedTheTrackLayout)
     },
 
     async createHasRacingSessionRelationship(racingEventId: number, racingSessionId: number) {
@@ -387,14 +387,14 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingSessionId)
         }
 
-        const existingRelation = await getSpecificRel(racingEventId, racingSessionId, RelationshipType.RacingEventHasRacingSession)
+        const existingRelation = await getSpecificRel(racingEventId, racingSessionId, RelType.RacingEventHasRacingSession)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.RacingEventHasRacingSession, racingEventId, racingSessionId)
+            throw new RelationshipAlreadyExistsError(RelType.RacingEventHasRacingSession, racingEventId, racingSessionId)
         }
 
-        await deleteIncomingRel(racingSessionId, RelationshipType.RacingEventHasRacingSession, NodeTypeLabel.RacingEvent)
+        await deleteIncomingRel(racingSessionId, RelType.RacingEventHasRacingSession, NodeTypeLabel.RacingEvent)
 
-        const createdRelationship = await createRel(racingEventId, racingSessionId, RelationshipType.RacingEventHasRacingSession)
+        const createdRelationship = await createRel(racingEventId, racingSessionId, RelType.RacingEventHasRacingSession)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -408,7 +408,7 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingEventId)
         }
 
-        return getAllRels(racingEventId, RelationshipType.RacingEventHasRacingSession)
+        return getAllRels(racingEventId, RelType.RacingEventHasRacingSession)
     },
 
     async deleteHasRacingSessionRelationship(racingEventId: number, racingSessionId: number) {
@@ -422,12 +422,12 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingSessionId)
         }
 
-        const relationship = await getSpecificRel(racingEventId, racingSessionId, RelationshipType.RacingEventHasRacingSession)
+        const relationship = await getSpecificRel(racingEventId, racingSessionId, RelType.RacingEventHasRacingSession)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.RacingEventHasRacingSession, racingEventId, racingSessionId)
+            throw new RelationshipNotFoundError(RelType.RacingEventHasRacingSession, racingEventId, racingSessionId)
         }
 
-        await deleteSpecificRel(racingEventId, racingSessionId, RelationshipType.RacingEventHasRacingSession)
+        await deleteSpecificRel(racingEventId, racingSessionId, RelType.RacingEventHasRacingSession)
     },
 
     async createHasImageRelationship(racingEventId: number, imageId: number) {
@@ -442,12 +442,12 @@ export const RacingEvent = {
             throw new NodeNotFoundError(imageId)
         }
 
-        const existingRelation = await getSpecificRel(racingEventId, imageId, RelationshipType.RacingEventHasImage)
+        const existingRelation = await getSpecificRel(racingEventId, imageId, RelType.RacingEventHasImage)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.RacingEventHasImage, racingEventId, imageId)
+            throw new RelationshipAlreadyExistsError(RelType.RacingEventHasImage, racingEventId, imageId)
         }
 
-        const createdRelationship = await createRel(racingEventId, imageId, RelationshipType.RacingEventHasImage)
+        const createdRelationship = await createRel(racingEventId, imageId, RelType.RacingEventHasImage)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -461,7 +461,7 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingEventId)
         }
 
-        return getAllRels(racingEventId, RelationshipType.RacingEventHasImage)
+        return getAllRels(racingEventId, RelType.RacingEventHasImage)
     },
 
     async deleteHasImageRelationship(racingEventId: number, imageId: number) {
@@ -475,12 +475,12 @@ export const RacingEvent = {
             throw new NodeNotFoundError(imageId)
         }
 
-        const relationship = await getSpecificRel(racingEventId, imageId, RelationshipType.RacingEventHasImage)
+        const relationship = await getSpecificRel(racingEventId, imageId, RelType.RacingEventHasImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.RacingEventHasImage, racingEventId, imageId)
+            throw new RelationshipNotFoundError(RelType.RacingEventHasImage, racingEventId, imageId)
         }
 
-        await deleteSpecificRel(racingEventId, imageId, RelationshipType.RacingEventHasImage)
+        await deleteSpecificRel(racingEventId, imageId, RelType.RacingEventHasImage)
     },
 
     async createHasPrimeImageRelationship(racingEventId: number, imageId: number) {
@@ -495,14 +495,14 @@ export const RacingEvent = {
             throw new NodeNotFoundError(imageId)
         }
 
-        const existingRelation = await getSpecificRel(racingEventId, imageId, RelationshipType.RacingEventHasPrimeImage)
+        const existingRelation = await getSpecificRel(racingEventId, imageId, RelType.RacingEventHasPrimeImage)
         if (existingRelation) {
-            throw new RelationshipAlreadyExistsError(RelationshipType.RacingEventHasPrimeImage, racingEventId, imageId)
+            throw new RelationshipAlreadyExistsError(RelType.RacingEventHasPrimeImage, racingEventId, imageId)
         }
 
-        await deleteOutgoingRel(racingEventId, RelationshipType.RacingEventHasPrimeImage, NodeTypeLabel.Image)
+        await deleteOutgoingRel(racingEventId, RelType.RacingEventHasPrimeImage, NodeTypeLabel.Image)
 
-        const createdRelationship = await createRel(racingEventId, imageId, RelationshipType.RacingEventHasPrimeImage)
+        const createdRelationship = await createRel(racingEventId, imageId, RelType.RacingEventHasPrimeImage)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
@@ -516,9 +516,9 @@ export const RacingEvent = {
             throw new NodeNotFoundError(racingEventId)
         }
 
-        const relationship = await getRel(racingEventId, RelationshipType.RacingEventHasPrimeImage)
+        const relationship = await getRel(racingEventId, RelType.RacingEventHasPrimeImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.RacingEventHasPrimeImage, racingEventId, null)
+            throw new RelationshipNotFoundError(RelType.RacingEventHasPrimeImage, racingEventId, null)
         }
 
         return relationship
@@ -535,11 +535,11 @@ export const RacingEvent = {
             throw new NodeNotFoundError(imageId)
         }
 
-        const relationship = await getSpecificRel(racingEventId, imageId, RelationshipType.RacingEventHasPrimeImage)
+        const relationship = await getSpecificRel(racingEventId, imageId, RelType.RacingEventHasPrimeImage)
         if (!relationship) {
-            throw new RelationshipNotFoundError(RelationshipType.RacingEventHasPrimeImage, racingEventId, imageId)
+            throw new RelationshipNotFoundError(RelType.RacingEventHasPrimeImage, racingEventId, imageId)
         }
 
-        await deleteSpecificRel(racingEventId, imageId, RelationshipType.RacingEventHasPrimeImage)
+        await deleteSpecificRel(racingEventId, imageId, RelType.RacingEventHasPrimeImage)
     },
 }

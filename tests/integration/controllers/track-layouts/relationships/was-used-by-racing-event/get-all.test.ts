@@ -3,20 +3,20 @@ import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {TrackLayout} from "../../../../../../src/models/track-layouts/TrackLayout"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipType} from "../../../../../../src/models/relationships/types/RelationshipType"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Requesting all ›was-used-by-racing-event‹ relationships', () => {
     test('Providing valid data', async () => {
         TrackLayout.getAllWasUsedByRacingEventRelationships = vi.fn().mockReturnValue([
             {
                 id: 4,
-                type: RelationshipType.TrackLayoutWasUsedByRacingEvent,
+                type: RelType.TrackLayoutWasUsedByRacingEvent,
             }, {
                 id: 5,
-                type: RelationshipType.TrackLayoutWasUsedByRacingEvent,
+                type: RelType.TrackLayoutWasUsedByRacingEvent,
             }, {
                 id: 6,
-                type: RelationshipType.TrackLayoutWasUsedByRacingEvent,
+                type: RelType.TrackLayoutWasUsedByRacingEvent,
             }
         ])
 
