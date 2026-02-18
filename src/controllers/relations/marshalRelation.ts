@@ -1,7 +1,7 @@
 import type {Rel} from "../../models/relationships/types/Rel"
 import type {NodeTypeEnum} from "../nodes/types/NodeTypeEnum"
 import type {RelationResponse} from "./types/RelationResponse"
-import {mapModelRelationToControllerRelation} from "./mapModelRelationToControllerRelation"
+import {mapModelRelationTypeToControllerRelationType} from "./mapModelRelationTypeToControllerRelationType"
 import {dasherize} from "inflection"
 import {marshalSingleNode} from "../nodes/marshalSingleNode"
 
@@ -9,7 +9,7 @@ export function marshalRelation(relation: Rel, partnerNodeType: NodeTypeEnum) {
     const marshalledData: RelationResponse = {
         data: {
             relationship_id: relation.id,
-            relationship_name: mapModelRelationToControllerRelation(relation.type),
+            relationship_name: mapModelRelationTypeToControllerRelationType(relation.type),
             relationship_partner: {
                 node_type: dasherize(partnerNodeType),
                 data: marshalSingleNode(relation.destination).data,

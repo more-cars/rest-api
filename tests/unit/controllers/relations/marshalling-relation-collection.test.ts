@@ -5,7 +5,7 @@ import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum
 import type {BaseNode} from "../../../../src/controllers/nodes/types/BaseNode"
 import type {Rel} from "../../../../src/models/relationships/types/Rel"
 import {marshalRelations} from "../../../../src/controllers/relations/marshalRelations"
-import {mapModelRelationToControllerRelation} from "../../../../src/controllers/relations/mapModelRelationToControllerRelation"
+import {mapModelRelationTypeToControllerRelationType} from "../../../../src/controllers/relations/mapModelRelationTypeToControllerRelationType"
 
 test('marshalling a relation collection', async () => {
     getAllModelRelationshipTypes().forEach((relationshipType) => {
@@ -29,7 +29,7 @@ test('marshalling a relation collection', async () => {
         const expectedRelation = {
             data: {
                 relationship_id: 3,
-                relationship_name: mapModelRelationToControllerRelation(relationshipType),
+                relationship_name: mapModelRelationTypeToControllerRelationType(relationshipType),
                 relationship_partner: {
                     node_type: "car-model",
                     data: destination,

@@ -5,7 +5,7 @@ import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum
 import type {BaseNode} from "../../../../src/controllers/nodes/types/BaseNode"
 import type {Rel} from "../../../../src/models/relationships/types/Rel"
 import {marshalRelation} from "../../../../src/controllers/relations/marshalRelation"
-import {mapModelRelationToControllerRelation} from "../../../../src/controllers/relations/mapModelRelationToControllerRelation"
+import {mapModelRelationTypeToControllerRelationType} from "../../../../src/controllers/relations/mapModelRelationTypeToControllerRelationType"
 
 test('marshalling a relation', async () => {
     getAllModelRelationshipTypes().forEach((relationshipType) => {
@@ -26,7 +26,7 @@ test('marshalling a relation', async () => {
             .toStrictEqual({
                 data: {
                     relationship_id: 3,
-                    relationship_name: mapModelRelationToControllerRelation(relationshipType),
+                    relationship_name: mapModelRelationTypeToControllerRelationType(relationshipType),
                     relationship_partner: {
                         node_type: "car-model",
                         data: destination,
