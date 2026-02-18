@@ -1,8 +1,8 @@
-import {getRelationshipById} from "../../db/relationships/getRelationshipById"
-import {RelNotFoundError} from "../types/RelNotFoundError"
-import {NodeNotFoundError} from "../types/NodeNotFoundError"
-import {Node} from "../Node"
-import {Rel} from "./types/Rel"
+import {getRelationshipById} from "../db/relationships/getRelationshipById"
+import {RelNotFoundError} from "./types/RelNotFoundError"
+import {NodeNotFoundError} from "./types/NodeNotFoundError"
+import {Node} from "./Node"
+import {Rel} from "./relationships/types/Rel"
 
 export const Relationship = {
     async findById(id: number) {

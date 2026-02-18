@@ -1,7 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {seedRelationship} from "../../../../_toolbox/dbSeeding/seedRelationship"
 import {RelationshipType} from "../../../../../src/db/types/RelationshipType"
-import {Relationship} from "../../../../../src/models/relationships/Relationship"
+import {Relationship} from "../../../../../src/models/Relationship"
 import {validateJson} from "../../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../../_toolbox/schemas/model/RelationshipSchema"
 import {RelNotFoundError} from "../../../../../src/models/types/RelNotFoundError"
