@@ -1,4 +1,4 @@
-export enum DbRelationshipName {
+export enum RelationshipTypeNeo4j {
     NodeHasImage = 'HAS_IMAGE',
     NodeHasPrimeImage = 'HAS_PRIME_IMAGE',
     ImageBelongsToNode = 'HAS_IMAGE',
