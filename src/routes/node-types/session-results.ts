@@ -1,5 +1,5 @@
 import express from "express"
-import {SessionResultController} from "../controllers/node-types/SessionResultController"
+import {SessionResultController} from "../../controllers/node-types/SessionResultController"
 
 const router = express.Router()
 

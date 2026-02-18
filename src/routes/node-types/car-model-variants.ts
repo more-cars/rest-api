@@ -1,5 +1,5 @@
 import express from "express"
-import {CarModelVariantController} from "../controllers/node-types/CarModelVariantController"
+import {CarModelVariantController} from "../../controllers/node-types/CarModelVariantController"
 
 const router = express.Router()
 
