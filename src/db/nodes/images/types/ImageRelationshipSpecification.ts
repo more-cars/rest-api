@@ -14,6 +14,6 @@ export const ImageRelationshipSpecification: RelationshipSpecification[] = [
         startNodeLabel: NodeTypeLabel.Image,
         endNodeLabel: NodeTypeLabel.Node,
         relationshipName: RelationshipTypeNeo4j.ImageIsPrimeImageOfNode,
-        isReverseRelationship: false,
+        isReverseRelationship: true,
     }],
 ]
