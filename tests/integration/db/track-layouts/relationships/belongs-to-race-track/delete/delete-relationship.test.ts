@@ -8,7 +8,7 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 
 describe('Trying to delete a ›belongs-to-race-track‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.RACE_TRACK, NodeTypeEnum.TRACK_LAYOUT, RelationshipType.TrackLayoutBelongsToRaceTrack)
+        const seededRelationship = await seedRelationship(NodeTypeEnum.TRACK_LAYOUT, NodeTypeEnum.RACE_TRACK, RelationshipType.TrackLayoutBelongsToRaceTrack)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,
