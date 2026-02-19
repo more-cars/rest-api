@@ -3,6 +3,7 @@ import {RelNotFoundError} from "./types/RelNotFoundError"
 import {NodeNotFoundError} from "./types/NodeNotFoundError"
 import {Node} from "./Node"
 import {Rel} from "./relationships/types/Rel"
+import {mapDbRelationshipTypeToModelRelationshipType} from "./relationships/mapDbRelTypeToModelRelType"
 
 export const Relationship = {
     async findById(id: number) {
@@ -22,13 +23,15 @@ export const Relationship = {
             throw new NodeNotFoundError(dbRelationship.start_node_id)
         }
 
-        return {
+        const rel: Rel = {
             id: dbRelationship.id || dbRelationship.relationship_id,
-            type: dbRelationship.type || dbRelationship.relationship_name, // TODO convert db relationship to model relationship (might also be an inverse relation)
+            type: mapDbRelationshipTypeToModelRelationshipType(dbRelationship.type),
             origin: origin,
             destination: destination,
             created_at: dbRelationship.created_at,
             updated_at: dbRelationship.updated_at,
-        } as Rel
+        }
+
+        return rel
     },
 }
