@@ -2,6 +2,7 @@ import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from '../../../../src/app'
 import {Relationship} from "../../../../src/models/Relationship"
+import {RelType} from "../../../../src/models/relationships/types/RelType"
 import {NodeNotFoundError} from "../../../../src/models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../../src/models/types/RelNotFoundError"
 
@@ -9,7 +10,7 @@ describe('Requesting a relationship by ID', () => {
     test('Providing valid data', async () => {
         Relationship.findById = vi.fn().mockReturnValue({
             id: 4,
-            type: 'rel',
+            type: RelType.BrandBelongsToCompany,
         })
 
         const response = await request(app)
