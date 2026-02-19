@@ -22,7 +22,7 @@ describe('Creating a ›features-track-layout‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', RelationshipType.RacingGameFeaturesTrackLayout)
+            .toHaveProperty('type', RelationshipType.RacingGameFeaturesTrackLayout)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)

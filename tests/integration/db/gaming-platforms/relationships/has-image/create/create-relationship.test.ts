@@ -22,7 +22,7 @@ describe('Creating a ›has-image‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', RelationshipType.GamingPlatformHasImage)
+            .toHaveProperty('type', RelationshipType.GamingPlatformHasImage)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)

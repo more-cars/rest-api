@@ -22,7 +22,7 @@ describe('Creating a ›has-layout‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', RelationshipType.RaceTrackHasLayout)
+            .toHaveProperty('type', RelationshipType.RaceTrackHasLayout)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)

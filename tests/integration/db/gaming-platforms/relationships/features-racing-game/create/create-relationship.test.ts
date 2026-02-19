@@ -22,7 +22,7 @@ describe('Creating a ›features-racing-game‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', RelationshipType.GamingPlatformFeaturesRacingGame)
+            .toHaveProperty('type', RelationshipType.GamingPlatformFeaturesRacingGame)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)

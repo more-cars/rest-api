@@ -22,7 +22,7 @@ describe('Creating a ›achieved-lap-time‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', RelationshipType.CarModelVariantAchievedLapTime)
+            .toHaveProperty('type', RelationshipType.CarModelVariantAchievedLapTime)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)

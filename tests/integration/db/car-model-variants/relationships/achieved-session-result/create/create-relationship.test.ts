@@ -22,7 +22,7 @@ describe('Creating a ›achieved-session-result‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', RelationshipType.CarModelVariantAchievedSessionResult)
+            .toHaveProperty('type', RelationshipType.CarModelVariantAchievedSessionResult)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)

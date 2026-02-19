@@ -9,7 +9,6 @@ export type Relationship = {
     start_node?: BaseNode
     end_node_id: number
     end_node?: BaseNode
-    relationship_name: RelationshipType
     created_at: string
     updated_at: string
 }

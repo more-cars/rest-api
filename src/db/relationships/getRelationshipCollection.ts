@@ -32,11 +32,11 @@ export async function getRelationshipCollection(
 
     records.forEach(record => {
         const startNode: Node = record.get('a')
-        const relation: Neo4jRelationship = record.get('r')
+        const dbRelationship: Neo4jRelationship = record.get('r')
         const endNode: Node = record.get('b')
 
         relationships.push({
-            id: relation.properties.mc_id,
+            id: dbRelationship.properties.mc_id,
             type: relationshipType,
             start_node_id: startNodeId,
             start_node: Object.assign({}, startNode.properties, {
@@ -50,9 +50,8 @@ export async function getRelationshipCollection(
                 created_at: endNode.properties.created_at,
                 updated_at: endNode.properties.updated_at,
             }),
-            relationship_name: relationshipType,
-            created_at: relation.properties.created_at,
-            updated_at: relation.properties.updated_at,
+            created_at: dbRelationship.properties.created_at,
+            updated_at: dbRelationship.properties.updated_at,
         })
     })
 

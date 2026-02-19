@@ -22,7 +22,7 @@ describe('Creating a ›has-prime-image‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', RelationshipType.CarModelVariantHasPrimeImage)
+            .toHaveProperty('type', RelationshipType.CarModelVariantHasPrimeImage)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)

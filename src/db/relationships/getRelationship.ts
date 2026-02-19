@@ -33,11 +33,11 @@ export async function getRelationship(
     }
 
     const sourceNode: Node = records[0].get('a')
-    const dbRelation: Neo4jRelationship = records[0].get('r')
+    const dbRelationship: Neo4jRelationship = records[0].get('r')
     const endNode: Node = records[0].get('b')
 
-    const relation: Relationship = {
-        id: dbRelation.properties.mc_id,
+    const relationship: Relationship = {
+        id: dbRelationship.properties.mc_id,
         type: relationshipType,
         start_node_id: startNodeId,
         start_node: Object.assign({}, sourceNode.properties, {
@@ -51,12 +51,11 @@ export async function getRelationship(
             created_at: endNode.properties.created_at,
             updated_at: endNode.properties.updated_at,
         }),
-        relationship_name: relationshipType,
-        created_at: dbRelation.properties.created_at,
-        updated_at: dbRelation.properties.updated_at,
+        created_at: dbRelationship.properties.created_at,
+        updated_at: dbRelationship.properties.updated_at,
     }
 
-    return relation
+    return relationship
 }
 
 export function getRelationshipQuery(startNodeId: number, relationshipName: RelationshipTypeNeo4j, endNodeLabel: NodeTypeLabel, reverse: RelationshipDirection) {

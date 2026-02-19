@@ -22,7 +22,7 @@ describe('Creating a ›belongs-to-node‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', RelationshipType.ImageBelongsToNode)
+            .toHaveProperty('type', RelationshipType.ImageBelongsToNode)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)

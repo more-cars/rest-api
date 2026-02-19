@@ -22,7 +22,7 @@ describe('Creating a ›belongs-to-race-track‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
-            .toHaveProperty('relationship_name', RelationshipType.TrackLayoutBelongsToRaceTrack)
+            .toHaveProperty('type', RelationshipType.TrackLayoutBelongsToRaceTrack)
         expect(createdRelationship)
             .toHaveProperty('created_at')
         expect(createdRelationship)
