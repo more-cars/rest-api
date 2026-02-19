@@ -1,6 +1,6 @@
 import type {RelType} from "./types/RelType"
 import {getSpecificRelationship} from "../../db/relationships/getSpecificRelationship"
-import {mapModelRelTypeToDbRelType} from "./mapModelRelTypeToDbRelType"
+import {mapModelRelTypeToDbRelationshipType} from "./mapModelRelTypeToDbRelationshipType"
 import type {Rel} from "./types/Rel"
 import type {BaseNode} from "../../db/types/BaseNode"
 
@@ -12,7 +12,7 @@ export async function getSpecificRel(
     const dbRelationship = await getSpecificRelationship(
         originId,
         destinationId,
-        mapModelRelTypeToDbRelType(relationshipType),
+        mapModelRelTypeToDbRelationshipType(relationshipType),
     )
 
     if (!dbRelationship) {

@@ -1,12 +1,12 @@
 import type {RelType} from "./types/RelType"
 import type {RelationshipType} from "../../db/types/RelationshipType"
-import {mapModelRelTypeToDbRelType} from "./mapModelRelTypeToDbRelType"
+import {mapModelRelTypeToDbRelationshipType} from "./mapModelRelTypeToDbRelationshipType"
 import {createRelationship} from "../../db/relationships/createRelationship"
 import type {Rel} from "./types/Rel"
 import type {BaseNode} from "../../db/types/BaseNode"
 
 export async function createRel(originId: number, destinationId: number, relType: RelType) {
-    const dbRelationshipType: RelationshipType = mapModelRelTypeToDbRelType(relType)
+    const dbRelationshipType: RelationshipType = mapModelRelTypeToDbRelationshipType(relType)
 
     const dbRelationship = await createRelationship(
         originId,

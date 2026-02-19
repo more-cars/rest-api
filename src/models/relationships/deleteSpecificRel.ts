@@ -1,9 +1,9 @@
 import type {RelType} from "./types/RelType"
-import {mapModelRelTypeToDbRelType} from "./mapModelRelTypeToDbRelType"
+import {mapModelRelTypeToDbRelationshipType} from "./mapModelRelTypeToDbRelationshipType"
 import {deleteSpecificRelationship} from "../../db/relationships/deleteSpecificRelationship"
 
-export async function deleteSpecificRel(originId: number, destinationId: number, relationshipType: RelType) {
-    const dbRelationshipType = mapModelRelTypeToDbRelType(relationshipType)
+export async function deleteSpecificRel(originId: number, destinationId: number, relType: RelType) {
+    const dbRelationshipType = mapModelRelTypeToDbRelationshipType(relType)
 
     return deleteSpecificRelationship(
         originId,

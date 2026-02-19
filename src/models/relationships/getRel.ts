@@ -1,6 +1,6 @@
 import type {RelType} from "./types/RelType"
 import {getRelComposition} from "./getRelComposition"
-import {mapModelRelTypeToDbRelType} from "./mapModelRelTypeToDbRelType"
+import {mapModelRelTypeToDbRelationshipType} from "./mapModelRelTypeToDbRelationshipType"
 import {getDbNodeType} from "./getDbNodeType"
 import {getRelationship} from "../../db/relationships/getRelationship"
 import type {Rel} from "./types/Rel"
@@ -8,10 +8,10 @@ import type {BaseNode} from "../../db/types/BaseNode"
 
 export async function getRel(
     startNodeId: number,
-    relationshipType: RelType,
+    relType: RelType,
 ) {
-    const relComposition = getRelComposition(relationshipType)
-    const dbRelationshipType = mapModelRelTypeToDbRelType(relationshipType)
+    const relComposition = getRelComposition(relType)
+    const dbRelationshipType = mapModelRelTypeToDbRelationshipType(relType)
     const modelEndNodeType = relComposition.endNodeType
     const dbEndNodeType = getDbNodeType(modelEndNodeType)
 
@@ -25,14 +25,14 @@ export async function getRel(
         return false
     }
 
-    const modelRelationship: Rel = {
+    const rel: Rel = {
         id: dbRelationship.relationship_id,
-        type: relationshipType,
-        origin: dbRelationship.start_node as BaseNode, // TODO remove type assertion
-        destination: dbRelationship.end_node as BaseNode, // TODO remove type assertion
+        type: relType,
+        origin: dbRelationship.start_node as BaseNode, // TODO return model node instead of db node
+        destination: dbRelationship.end_node as BaseNode, // TODO return model node instead of db node
         created_at: dbRelationship.created_at,
         updated_at: dbRelationship.updated_at,
     }
 
-    return modelRelationship
+    return rel
 }

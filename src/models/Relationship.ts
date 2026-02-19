@@ -3,7 +3,7 @@ import {RelNotFoundError} from "./types/RelNotFoundError"
 import {NodeNotFoundError} from "./types/NodeNotFoundError"
 import {Node} from "./Node"
 import {Rel} from "./relationships/types/Rel"
-import {mapDbRelationshipTypeToModelRelationshipType} from "./relationships/mapDbRelTypeToModelRelType"
+import {mapDbRelationshipTypeToModelRelType} from "./relationships/mapDbRelationshipTypeToModelRelType"
 
 export const Relationship = {
     async findById(id: number) {
@@ -25,7 +25,7 @@ export const Relationship = {
 
         const rel: Rel = {
             id: dbRelationship.id || dbRelationship.relationship_id,
-            type: mapDbRelationshipTypeToModelRelationshipType(dbRelationship.type),
+            type: mapDbRelationshipTypeToModelRelType(dbRelationship.type),
             origin: origin,
             destination: destination,
             created_at: dbRelationship.created_at,
