@@ -8,6 +8,7 @@ import {RelationshipDirection} from "../types/RelationshipDirection"
 import type {RelationshipTypeNeo4j} from "../types/RelationshipTypeNeo4j"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
+import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationshipToDbRelationship"
 
 export async function getRelationshipCollection(
     startNodeId: number,
@@ -35,22 +36,7 @@ export async function getRelationshipCollection(
         const dbRelationship: Neo4jRelationship = record.get('r')
         const endNode: Node = record.get('b')
 
-        relationships.push({
-            id: dbRelationship.properties.mc_id,
-            type: relationshipType,
-            start_node: Object.assign({}, startNode.properties, {
-                id: startNode.properties.mc_id,
-                created_at: startNode.properties.created_at,
-                updated_at: startNode.properties.updated_at,
-            }),
-            end_node: Object.assign({}, endNode.properties, {
-                id: endNode.properties.mc_id,
-                created_at: endNode.properties.created_at,
-                updated_at: endNode.properties.updated_at,
-            }),
-            created_at: dbRelationship.properties.created_at,
-            updated_at: dbRelationship.properties.updated_at,
-        })
+        relationships.push(convertNeo4jRelationshipToDbRelationship(dbRelationship, startNode, endNode))
     })
 
     return relationships

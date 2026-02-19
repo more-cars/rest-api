@@ -10,6 +10,7 @@ import {addMoreCarsIdToRelationship} from "./addMoreCarsIdToRelationship"
 import {addTimestampsToRelationship} from "./addTimestampsToRelationship"
 import {RelationshipTypeNeo4j} from "../types/RelationshipTypeNeo4j"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
+import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationshipToDbRelationship"
 
 export async function createRelationship(
     startNodeId: number,
@@ -34,7 +35,7 @@ export async function createRelationship(
         return false
     }
 
-    const sourceNode: Node = records[0].get('a')
+    const startNode: Node = records[0].get('a')
     let dbRelationship: Neo4jRelationship = records[0].get('r')
     const endNode: Node = records[0].get('b')
 
@@ -49,25 +50,7 @@ export async function createRelationship(
 
     await session.close()
 
-    const relationship: Relationship = {
-        id: dbRelationship.properties.mc_id,
-        elementId: elementId, // TODO temporary field, can be removed after the migration
-        type: relationshipType,
-        start_node: Object.assign({}, sourceNode.properties, {
-            id: sourceNode.properties.mc_id,
-            created_at: sourceNode.properties.created_at,
-            updated_at: sourceNode.properties.updated_at,
-        }),
-        end_node: Object.assign({}, endNode.properties, {
-            id: endNode.properties.mc_id,
-            created_at: endNode.properties.created_at,
-            updated_at: endNode.properties.updated_at,
-        }),
-        created_at: dbRelationship.properties.created_at,
-        updated_at: dbRelationship.properties.updated_at,
-    }
-
-    return relationship
+    return convertNeo4jRelationshipToDbRelationship(dbRelationship, startNode, endNode)
 }
 
 export function createRelationshipQuery(startNodeId: number, relationshipName: RelationshipTypeNeo4j, endNodeId: number, reverse: RelationshipDirection) {

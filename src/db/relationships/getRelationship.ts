@@ -8,6 +8,7 @@ import {getDriver} from "../driver"
 import {RelationshipTypeNeo4j} from "../types/RelationshipTypeNeo4j"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
+import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationshipToDbRelationship"
 
 export async function getRelationship(
     startNodeId: number,
@@ -32,28 +33,11 @@ export async function getRelationship(
         return false
     }
 
-    const sourceNode: Node = records[0].get('a')
+    const startNode: Node = records[0].get('a')
     const dbRelationship: Neo4jRelationship = records[0].get('r')
     const endNode: Node = records[0].get('b')
 
-    const relationship: Relationship = {
-        id: dbRelationship.properties.mc_id,
-        type: relationshipType,
-        start_node: Object.assign({}, sourceNode.properties, {
-            id: sourceNode.properties.mc_id,
-            created_at: sourceNode.properties.created_at,
-            updated_at: sourceNode.properties.updated_at,
-        }),
-        end_node: Object.assign({}, endNode.properties, {
-            id: endNode.properties.mc_id,
-            created_at: endNode.properties.created_at,
-            updated_at: endNode.properties.updated_at,
-        }),
-        created_at: dbRelationship.properties.created_at,
-        updated_at: dbRelationship.properties.updated_at,
-    }
-
-    return relationship
+    return convertNeo4jRelationshipToDbRelationship(dbRelationship, startNode, endNode)
 }
 
 export function getRelationshipQuery(startNodeId: number, relationshipName: RelationshipTypeNeo4j, endNodeLabel: NodeTypeLabel, reverse: RelationshipDirection) {
