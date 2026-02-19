@@ -11,7 +11,7 @@ describe('Trying to delete a ›has-image‹ relationship', () => {
         const seededRelationship = await seedRelationship(NodeTypeEnum.GAMING_PLATFORM, NodeTypeEnum.IMAGE, RelationshipType.GamingPlatformHasImage)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.GamingPlatformHasImage,
         )
@@ -20,13 +20,13 @@ describe('Trying to delete a ›has-image‹ relationship', () => {
             .toBeTruthy()
 
         await deleteSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.GamingPlatformHasImage,
         )
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.GamingPlatformHasImage,
         )

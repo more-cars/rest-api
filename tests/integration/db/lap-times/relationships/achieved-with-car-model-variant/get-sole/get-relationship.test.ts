@@ -11,7 +11,7 @@ describe('Requesting a ›achieved-with-car-model-variant‹ relationship', () =
         const relationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.CAR_MODEL_VARIANT, RelationshipType.LapTimeAchievedWithCarModelVariant)
 
         const relationships = await getRelationshipCollection(
-            relationship.start_node_id,
+            relationship.start_node.id,
             RelationshipType.LapTimeAchievedWithCarModelVariant,
             NodeTypeLabel.CarModelVariant,
         )

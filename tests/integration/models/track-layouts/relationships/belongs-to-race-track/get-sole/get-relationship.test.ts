@@ -12,7 +12,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 describe('Requesting a ›belongs-to-race-track‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.TRACK_LAYOUT, NodeTypeEnum.RACE_TRACK, RelationshipType.TrackLayoutBelongsToRaceTrack)
-        const expectedTrackLayoutId = expectedRelationship.start_node_id
+        const expectedTrackLayoutId = expectedRelationship.start_node.id
         const expectedRaceTrackId = expectedRelationship.end_node_id
         const actualRelationship = await TrackLayout.getBelongsToRaceTrackRelationship(expectedTrackLayoutId)
 

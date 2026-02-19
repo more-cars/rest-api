@@ -16,7 +16,7 @@ describe('Creating a ›has-prime-image‹ relationship', () => {
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node_id', trackLayout.id)
+            .toHaveProperty('start_node.id', trackLayout.id)
         expect(createdRelationship)
             .toHaveProperty('end_node_id', image.id)
         expect(createdRelationship)

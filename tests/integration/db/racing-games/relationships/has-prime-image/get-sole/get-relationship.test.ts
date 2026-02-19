@@ -11,7 +11,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
         const relationship = await seedRelationship(NodeTypeEnum.RACING_GAME, NodeTypeEnum.IMAGE, RelationshipType.RacingGameHasPrimeImage)
 
         const relationships = await getRelationshipCollection(
-            relationship.start_node_id,
+            relationship.start_node.id,
             RelationshipType.RacingGameHasPrimeImage,
             NodeTypeLabel.Image,
         )

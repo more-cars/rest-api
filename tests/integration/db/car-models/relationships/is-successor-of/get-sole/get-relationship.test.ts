@@ -11,7 +11,7 @@ describe('Requesting a ›is-successor-of‹ relationship', () => {
         const relationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.CAR_MODEL, RelationshipType.CarModelIsSuccessorOf)
 
         const relationships = await getRelationshipCollection(
-            relationship.start_node_id,
+            relationship.start_node.id,
             RelationshipType.CarModelIsSuccessorOf,
             NodeTypeLabel.CarModel,
         )

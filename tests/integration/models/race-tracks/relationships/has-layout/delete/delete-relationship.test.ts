@@ -44,7 +44,7 @@ describe('Deleting a ›has-layout‹ relationship', () => {
         const seededRelationship = await seedRelationship(NodeTypeEnum.RACE_TRACK, NodeTypeEnum.TRACK_LAYOUT, RelationshipType.RaceTrackHasLayout)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.RaceTrackHasLayout,
         )
@@ -52,10 +52,10 @@ describe('Deleting a ›has-layout‹ relationship', () => {
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await RaceTrack.deleteHasLayoutRelationship(seededRelationship.start_node_id, seededRelationship.end_node_id)
+        await RaceTrack.deleteHasLayoutRelationship(seededRelationship.start_node.id, seededRelationship.end_node_id)
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.RaceTrackHasLayout,
         )

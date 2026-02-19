@@ -16,7 +16,7 @@ describe('Requesting a relationship', () => {
             .toBeTruthy()
 
         expect(actualRelationship.origin.id)
-            .toBe(expectedRelationship.start_node_id)
+            .toBe(expectedRelationship.start_node.id)
 
         expect(actualRelationship.destination.id)
             .toBe(expectedRelationship.end_node_id)

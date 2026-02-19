@@ -11,7 +11,7 @@ describe('Trying to delete a ›belongs-to-session-result‹ relationship', () =
         const seededRelationship = await seedRelationship(NodeTypeEnum.IMAGE, NodeTypeEnum.CAR_MODEL, RelationshipType.ImageBelongsToNode)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.ImageBelongsToNode,
         )
@@ -20,13 +20,13 @@ describe('Trying to delete a ›belongs-to-session-result‹ relationship', () =
             .toBeTruthy()
 
         await deleteSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.ImageBelongsToNode,
         )
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.ImageBelongsToNode,
         )

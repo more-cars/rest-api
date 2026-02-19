@@ -11,7 +11,7 @@ describe('Trying to delete a ›is-featured-in-racing-game‹ relationship', () 
         const seededRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL_VARIANT, NodeTypeEnum.RACING_GAME, RelationshipType.CarModelVariantIsFeaturedInRacingGame)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.CarModelVariantIsFeaturedInRacingGame,
         )
@@ -20,13 +20,13 @@ describe('Trying to delete a ›is-featured-in-racing-game‹ relationship', () 
             .toBeTruthy()
 
         await deleteSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.CarModelVariantIsFeaturedInRacingGame,
         )
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.CarModelVariantIsFeaturedInRacingGame,
         )

@@ -11,7 +11,7 @@ describe('Requesting a ›is-followed-by-event‹ relationship', () => {
         const relationship = await seedRelationship(NodeTypeEnum.RACING_EVENT, NodeTypeEnum.RACING_EVENT, RelationshipType.RacingEventIsFollowedByEvent)
 
         const relationships = await getRelationshipCollection(
-            relationship.start_node_id,
+            relationship.start_node.id,
             RelationshipType.RacingEventIsFollowedByEvent,
             NodeTypeLabel.RacingEvent,
         )

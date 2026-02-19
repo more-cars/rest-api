@@ -44,7 +44,7 @@ describe('Deleting a ›has-car-model‹ relationship', () => {
         const seededRelationship = await seedRelationship(NodeTypeEnum.BRAND, NodeTypeEnum.CAR_MODEL, RelationshipType.BrandHasCarModel)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.BrandHasCarModel,
         )
@@ -52,10 +52,10 @@ describe('Deleting a ›has-car-model‹ relationship', () => {
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await Brand.deleteHasCarModelRelationship(seededRelationship.start_node_id, seededRelationship.end_node_id)
+        await Brand.deleteHasCarModelRelationship(seededRelationship.start_node.id, seededRelationship.end_node_id)
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.BrandHasCarModel,
         )

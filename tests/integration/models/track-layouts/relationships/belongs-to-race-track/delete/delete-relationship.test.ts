@@ -44,7 +44,7 @@ describe('Deleting a ›belongs-to-race-track‹ relationship', () => {
         const seededRelationship = await seedRelationship(NodeTypeEnum.TRACK_LAYOUT, NodeTypeEnum.RACE_TRACK, RelationshipType.TrackLayoutBelongsToRaceTrack)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.TrackLayoutBelongsToRaceTrack,
         )
@@ -52,10 +52,10 @@ describe('Deleting a ›belongs-to-race-track‹ relationship', () => {
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await TrackLayout.deleteBelongsToRaceTrackRelationship(seededRelationship.start_node_id, seededRelationship.end_node_id)
+        await TrackLayout.deleteBelongsToRaceTrackRelationship(seededRelationship.start_node.id, seededRelationship.end_node_id)
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.TrackLayoutBelongsToRaceTrack,
         )

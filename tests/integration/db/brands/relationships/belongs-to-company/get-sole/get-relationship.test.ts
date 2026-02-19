@@ -11,7 +11,7 @@ describe('Requesting a ›belongs-to-company‹ relationship', () => {
         const relationship = await seedRelationship(NodeTypeEnum.BRAND, NodeTypeEnum.COMPANY, RelationshipType.BrandBelongsToCompany)
 
         const relationships = await getRelationshipCollection(
-            relationship.start_node_id,
+            relationship.start_node.id,
             RelationshipType.BrandBelongsToCompany,
             NodeTypeLabel.Company,
         )

@@ -16,7 +16,7 @@ describe('Creating a ›achieved-with-car-model-variant‹ relationship', () => 
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node_id', sessionResult.id)
+            .toHaveProperty('start_node.id', sessionResult.id)
         expect(createdRelationship)
             .toHaveProperty('end_node_id', carModelVariant.id)
         expect(createdRelationship)

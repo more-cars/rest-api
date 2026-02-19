@@ -39,7 +39,6 @@ export async function getRelationshipByEndNode(
     const relationship: Relationship = {
         id: dbRelationship.properties.mc_id,
         type: relationshipType,
-        start_node_id: sourceNode.properties.mc_id,
         start_node: Object.assign({}, sourceNode.properties, {
             id: sourceNode.properties.mc_id,
             created_at: sourceNode.properties.created_at,

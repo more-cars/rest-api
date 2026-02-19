@@ -12,7 +12,7 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.BRAND, NodeTypeEnum.IMAGE, RelationshipType.BrandHasPrimeImage)
-        const expectedBrandId = expectedRelationship.start_node_id
+        const expectedBrandId = expectedRelationship.start_node.id
         const expectedImageId = expectedRelationship.end_node_id
         const actualRelationship = await Brand.getHasPrimeImageRelationship(expectedBrandId)
 

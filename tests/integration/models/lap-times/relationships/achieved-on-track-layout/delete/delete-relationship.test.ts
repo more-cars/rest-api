@@ -44,7 +44,7 @@ describe('Deleting a ›achieved-on-track-layout‹ relationship', () => {
         const seededRelationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.TRACK_LAYOUT, RelationshipType.LapTimeAchievedOnTrackLayout)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.LapTimeAchievedOnTrackLayout,
         )
@@ -52,10 +52,10 @@ describe('Deleting a ›achieved-on-track-layout‹ relationship', () => {
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await LapTime.deleteAchievedOnTrackLayoutRelationship(seededRelationship.start_node_id, seededRelationship.end_node_id)
+        await LapTime.deleteAchievedOnTrackLayoutRelationship(seededRelationship.start_node.id, seededRelationship.end_node_id)
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.LapTimeAchievedOnTrackLayout,
         )

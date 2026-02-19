@@ -11,7 +11,7 @@ describe('Requesting a ›belongs-to-racing-event‹ relationship', () => {
         const relationship = await seedRelationship(NodeTypeEnum.RACING_SESSION, NodeTypeEnum.RACING_EVENT, RelationshipType.RacingSessionBelongsToRacingEvent)
 
         const relationships = await getRelationshipCollection(
-            relationship.start_node_id,
+            relationship.start_node.id,
             RelationshipType.RacingSessionBelongsToRacingEvent,
             NodeTypeLabel.RacingEvent,
         )

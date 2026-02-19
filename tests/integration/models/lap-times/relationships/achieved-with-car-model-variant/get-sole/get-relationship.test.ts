@@ -12,7 +12,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 describe('Requesting a ›achieved-with-car-model-variant‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.CAR_MODEL_VARIANT, RelationshipType.LapTimeAchievedWithCarModelVariant)
-        const expectedLapTimeId = expectedRelationship.start_node_id
+        const expectedLapTimeId = expectedRelationship.start_node.id
         const expectedCarModelVariantId = expectedRelationship.end_node_id
         const actualRelationship = await LapTime.getAchievedWithCarModelVariantRelationship(expectedLapTimeId)
 

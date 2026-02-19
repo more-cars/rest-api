@@ -44,7 +44,7 @@ describe('Deleting a ›belongs-to-node‹ relationship', () => {
         const seededRelationship = await seedRelationship(NodeTypeEnum.IMAGE, NodeTypeEnum.COMPANY, RelationshipType.ImageBelongsToNode)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.ImageBelongsToNode,
         )
@@ -52,10 +52,10 @@ describe('Deleting a ›belongs-to-node‹ relationship', () => {
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await Image.deleteBelongsToNodeRelationship(seededRelationship.start_node_id, seededRelationship.end_node_id)
+        await Image.deleteBelongsToNodeRelationship(seededRelationship.start_node.id, seededRelationship.end_node_id)
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.ImageBelongsToNode,
         )

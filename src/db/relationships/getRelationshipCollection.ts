@@ -38,7 +38,6 @@ export async function getRelationshipCollection(
         relationships.push({
             id: dbRelationship.properties.mc_id,
             type: relationshipType,
-            start_node_id: startNodeId,
             start_node: Object.assign({}, startNode.properties, {
                 id: startNode.properties.mc_id,
                 created_at: startNode.properties.created_at,

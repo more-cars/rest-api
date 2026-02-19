@@ -16,7 +16,7 @@ describe('Creating a n:1 relationship', () => {
         expect(newRelationship.id)
             .not.to.equal(foreignRelationship.id)
         expect(newRelationship.origin.id)
-            .not.to.equal(foreignRelationship.start_node_id)
+            .not.to.equal(foreignRelationship.start_node.id)
         expect(newRelationship.destination.id)
             .to.equal(foreignRelationship.end_node_id)
 

@@ -44,7 +44,7 @@ describe('Deleting a ›belongs-to-racing-series‹ relationship', () => {
         const seededRelationship = await seedRelationship(NodeTypeEnum.RACING_EVENT, NodeTypeEnum.RACING_SERIES, RelationshipType.RacingEventBelongsToRacingSeries)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.RacingEventBelongsToRacingSeries,
         )
@@ -52,10 +52,10 @@ describe('Deleting a ›belongs-to-racing-series‹ relationship', () => {
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await RacingEvent.deleteBelongsToRacingSeriesRelationship(seededRelationship.start_node_id, seededRelationship.end_node_id)
+        await RacingEvent.deleteBelongsToRacingSeriesRelationship(seededRelationship.start_node.id, seededRelationship.end_node_id)
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.RacingEventBelongsToRacingSeries,
         )

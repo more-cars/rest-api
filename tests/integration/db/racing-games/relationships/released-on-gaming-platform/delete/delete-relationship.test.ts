@@ -11,7 +11,7 @@ describe('Trying to delete a ›released-on-gaming-platform‹ relationship', ()
         const seededRelationship = await seedRelationship(NodeTypeEnum.RACING_GAME, NodeTypeEnum.GAMING_PLATFORM, RelationshipType.RacingGameReleasedOnGamingPlatform)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.RacingGameReleasedOnGamingPlatform,
         )
@@ -20,13 +20,13 @@ describe('Trying to delete a ›released-on-gaming-platform‹ relationship', ()
             .toBeTruthy()
 
         await deleteSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.RacingGameReleasedOnGamingPlatform,
         )
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.RacingGameReleasedOnGamingPlatform,
         )

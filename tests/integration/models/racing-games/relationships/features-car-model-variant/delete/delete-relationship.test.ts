@@ -44,7 +44,7 @@ describe('Deleting a ›features-car-model-variant‹ relationship', () => {
         const seededRelationship = await seedRelationship(NodeTypeEnum.RACING_GAME, NodeTypeEnum.CAR_MODEL_VARIANT, RelationshipType.RacingGameFeaturesCarModelVariant)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.RacingGameFeaturesCarModelVariant,
         )
@@ -52,10 +52,10 @@ describe('Deleting a ›features-car-model-variant‹ relationship', () => {
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await RacingGame.deleteFeaturesCarModelVariantRelationship(seededRelationship.start_node_id, seededRelationship.end_node_id)
+        await RacingGame.deleteFeaturesCarModelVariantRelationship(seededRelationship.start_node.id, seededRelationship.end_node_id)
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.RacingGameFeaturesCarModelVariant,
         )

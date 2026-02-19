@@ -44,7 +44,7 @@ describe('Deleting a ›has-successor‹ relationship', () => {
         const seededRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.CAR_MODEL, RelationshipType.CarModelHasSuccessor)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.CarModelHasSuccessor,
         )
@@ -52,10 +52,10 @@ describe('Deleting a ›has-successor‹ relationship', () => {
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await CarModel.deleteHasSuccessorRelationship(seededRelationship.start_node_id, seededRelationship.end_node_id)
+        await CarModel.deleteHasSuccessorRelationship(seededRelationship.start_node.id, seededRelationship.end_node_id)
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.CarModelHasSuccessor,
         )

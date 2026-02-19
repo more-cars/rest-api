@@ -44,7 +44,7 @@ describe('Deleting a ›is-followed-by-event‹ relationship', () => {
         const seededRelationship = await seedRelationship(NodeTypeEnum.RACING_EVENT, NodeTypeEnum.RACING_EVENT, RelationshipType.RacingEventIsFollowedByEvent)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.RacingEventIsFollowedByEvent,
         )
@@ -52,10 +52,10 @@ describe('Deleting a ›is-followed-by-event‹ relationship', () => {
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await RacingEvent.deleteIsFollowedByEventRelationship(seededRelationship.start_node_id, seededRelationship.end_node_id)
+        await RacingEvent.deleteIsFollowedByEventRelationship(seededRelationship.start_node.id, seededRelationship.end_node_id)
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.RacingEventIsFollowedByEvent,
         )

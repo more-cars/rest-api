@@ -31,7 +31,11 @@ export async function getRelationshipById(relationshipId: number) {
     const relationship: Relationship = {
         id: dbRelationship.properties.mc_id,
         type: mapNeo4jRelationshipTypeToDbRelationshipType(dbRelationship.type as RelationshipTypeNeo4j, startNodeLabel),
-        start_node_id: startNode.properties.mc_id,
+        start_node: Object.assign({}, startNode.properties, {
+            id: startNode.properties.mc_id,
+            created_at: startNode.properties.created_at,
+            updated_at: startNode.properties.updated_at,
+        }),
         end_node_id: endNode.properties.mc_id,
         created_at: dbRelationship.properties.created_at,
         updated_at: dbRelationship.properties.updated_at,

@@ -12,7 +12,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 describe('Requesting a ›is-successor-of‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.CAR_MODEL, RelationshipType.CarModelIsSuccessorOf)
-        const expectedCarModelId = expectedRelationship.start_node_id
+        const expectedCarModelId = expectedRelationship.start_node.id
         const expectedPredecessorId = expectedRelationship.end_node_id
         const actualRelationship = await CarModel.getIsSuccessorOfRelationship(expectedCarModelId)
 

@@ -12,7 +12,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 describe('Requesting a ›achieved-on-track-layout‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.TRACK_LAYOUT, RelationshipType.LapTimeAchievedOnTrackLayout)
-        const expectedLapTimeId = expectedRelationship.start_node_id
+        const expectedLapTimeId = expectedRelationship.start_node.id
         const expectedTrackLayoutId = expectedRelationship.end_node_id
         const actualRelationship = await LapTime.getAchievedOnTrackLayoutRelationship(expectedLapTimeId)
 

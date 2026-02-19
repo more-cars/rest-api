@@ -16,7 +16,7 @@ describe('Creating a ›belongs-to-racing-session‹ relationship', () => {
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node_id', sessionResult.id)
+            .toHaveProperty('start_node.id', sessionResult.id)
         expect(createdRelationship)
             .toHaveProperty('end_node_id', racingSession.id)
         expect(createdRelationship)

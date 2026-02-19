@@ -53,7 +53,6 @@ export async function createRelationship(
         id: dbRelationship.properties.mc_id,
         elementId: elementId, // TODO temporary field, can be removed after the migration
         type: relationshipType,
-        start_node_id: startNodeId,
         start_node: Object.assign({}, sourceNode.properties, {
             id: sourceNode.properties.mc_id,
             created_at: sourceNode.properties.created_at,

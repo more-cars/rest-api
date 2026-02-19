@@ -11,7 +11,7 @@ describe('Trying to delete a ›achieved-with-car-model-variant‹ relationship'
         const seededRelationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.CAR_MODEL_VARIANT, RelationshipType.LapTimeAchievedWithCarModelVariant)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.LapTimeAchievedWithCarModelVariant,
         )
@@ -20,13 +20,13 @@ describe('Trying to delete a ›achieved-with-car-model-variant‹ relationship'
             .toBeTruthy()
 
         await deleteSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.LapTimeAchievedWithCarModelVariant,
         )
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.LapTimeAchievedWithCarModelVariant,
         )

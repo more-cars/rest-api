@@ -44,7 +44,7 @@ describe('Deleting a ›is-variant-of‹ relationship', () => {
         const seededRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL_VARIANT, NodeTypeEnum.CAR_MODEL, RelationshipType.CarModelVariantIsVariantOf)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.CarModelVariantIsVariantOf,
         )
@@ -52,10 +52,10 @@ describe('Deleting a ›is-variant-of‹ relationship', () => {
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await CarModelVariant.deleteIsVariantOfRelationship(seededRelationship.start_node_id, seededRelationship.end_node_id)
+        await CarModelVariant.deleteIsVariantOfRelationship(seededRelationship.start_node.id, seededRelationship.end_node_id)
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.CarModelVariantIsVariantOf,
         )

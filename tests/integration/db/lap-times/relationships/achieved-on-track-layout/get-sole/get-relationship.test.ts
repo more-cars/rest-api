@@ -11,7 +11,7 @@ describe('Requesting a ›achieved-on-track-layout‹ relationship', () => {
         const relationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.TRACK_LAYOUT, RelationshipType.LapTimeAchievedOnTrackLayout)
 
         const relationships = await getRelationshipCollection(
-            relationship.start_node_id,
+            relationship.start_node.id,
             RelationshipType.LapTimeAchievedOnTrackLayout,
             NodeTypeLabel.TrackLayout,
         )

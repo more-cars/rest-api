@@ -11,7 +11,7 @@ describe('Requesting a ›is-variant-of‹ relationship', () => {
         const relationship = await seedRelationship(NodeTypeEnum.CAR_MODEL_VARIANT, NodeTypeEnum.CAR_MODEL, RelationshipType.CarModelVariantIsVariantOf)
 
         const relationships = await getRelationshipCollection(
-            relationship.start_node_id,
+            relationship.start_node.id,
             RelationshipType.CarModelVariantIsVariantOf,
             NodeTypeLabel.CarModel,
         )

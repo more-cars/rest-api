@@ -44,7 +44,7 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
         const seededRelationship = await seedRelationship(NodeTypeEnum.TRACK_LAYOUT, NodeTypeEnum.LAP_TIME, RelationshipType.TrackLayoutHasLapTime)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.TrackLayoutHasLapTime,
         )
@@ -52,10 +52,10 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await TrackLayout.deleteHasLapTimeRelationship(seededRelationship.start_node_id, seededRelationship.end_node_id)
+        await TrackLayout.deleteHasLapTimeRelationship(seededRelationship.start_node.id, seededRelationship.end_node_id)
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node_id,
+            seededRelationship.start_node.id,
             seededRelationship.end_node_id,
             RelationshipType.TrackLayoutHasLapTime,
         )
