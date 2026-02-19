@@ -5,6 +5,7 @@ import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {mapNeo4jRelationshipTypeToDbRelationshipType} from "./mapNeo4jRelationshipTypeToDbRelationshipType"
 import {RelationshipTypeNeo4j} from "../types/RelationshipTypeNeo4j"
 import {NodeTypeLabel} from "../NodeTypeLabel"
+import {getDenamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 
 export async function getRelationshipById(relationshipId: number) {
     const driver: Driver = getDriver()
@@ -25,9 +26,11 @@ export async function getRelationshipById(relationshipId: number) {
     const dbRelationship: Neo4jRelationship = records[0].get('r')
     const endNode: Node = records[0].get('b')
 
+    const startNodeLabel = getDenamespacedNodeTypeLabel(startNode.labels[0]) as NodeTypeLabel
+
     const relationship: Relationship = {
         id: dbRelationship.properties.mc_id,
-        type: mapNeo4jRelationshipTypeToDbRelationshipType(dbRelationship.type as RelationshipTypeNeo4j, startNode.labels[0] as NodeTypeLabel),
+        type: mapNeo4jRelationshipTypeToDbRelationshipType(dbRelationship.type as RelationshipTypeNeo4j, startNodeLabel),
         start_node_id: startNode.properties.mc_id,
         end_node_id: endNode.properties.mc_id,
         created_at: dbRelationship.properties.created_at,
