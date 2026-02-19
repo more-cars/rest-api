@@ -7,7 +7,7 @@ create_env_file () {
 cat <<EOF >.env
 DB_HOST=db.more-cars.internal
 DB_PASSWORD=123456789
-DB_NAMESPACE=default
+API_NAMESPACE=default
 EOF
 }
 

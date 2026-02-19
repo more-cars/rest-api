@@ -19,7 +19,7 @@ spec:
           #image: docker.io/dennisgerike/more-cars-api:latest
           image: ghcr.io/more-cars/rest-api:latest
           env:
-            - name: DB_NAMESPACE
+            - name: API_NAMESPACE
               value: default
             - name: DB_HOST
               value: $(API_DB_SERVICE_SERVICE_HOST)
