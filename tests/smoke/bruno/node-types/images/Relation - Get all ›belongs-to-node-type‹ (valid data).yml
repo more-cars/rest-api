@@ -25,7 +25,7 @@ runtime:
       value: "12000000"
     - expression: res.body.data.brands.data[0].data.relationship_name
       operator: eq
-      value: "belongs-to-node-type"
+      value: "belongs-to-node"
     - expression: res.body.data.brands.data[0].data.relationship_partner
       operator: isJson
     - expression: res.body.data.brands.data[0].data.relationship_partner.node_type
