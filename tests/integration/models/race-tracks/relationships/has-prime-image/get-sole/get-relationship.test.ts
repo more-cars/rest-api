@@ -13,7 +13,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.RACE_TRACK, NodeTypeEnum.IMAGE, RelationshipType.RaceTrackHasPrimeImage)
         const expectedRaceTrackId = expectedRelationship.start_node.id
-        const expectedImageId = expectedRelationship.end_node_id
+        const expectedImageId = expectedRelationship.end_node.id
         const actualRelationship = await RaceTrack.getHasPrimeImageRelationship(expectedRaceTrackId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))

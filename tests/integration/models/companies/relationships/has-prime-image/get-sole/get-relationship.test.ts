@@ -21,7 +21,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
             .toBe(expectedRelationship.start_node.id)
 
         expect(actualRelationship.destination.id)
-            .toBe(expectedRelationship.end_node_id)
+            .toBe(expectedRelationship.end_node.id)
     })
 
     test('node exists, but not the relationship', async () => {

@@ -12,7 +12,7 @@ describe('Trying to delete a ›is-variant-of‹ relationship', () => {
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.CarModelVariantIsVariantOf,
         )
 
@@ -21,13 +21,13 @@ describe('Trying to delete a ›is-variant-of‹ relationship', () => {
 
         await deleteSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.CarModelVariantIsVariantOf,
         )
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.CarModelVariantIsVariantOf,
         )
 

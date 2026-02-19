@@ -45,18 +45,18 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.SessionResultHasLapTime,
         )
 
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await SessionResult.deleteHasLapTimeRelationship(seededRelationship.start_node.id, seededRelationship.end_node_id)
+        await SessionResult.deleteHasLapTimeRelationship(seededRelationship.start_node.id, seededRelationship.end_node.id)
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.SessionResultHasLapTime,
         )
 

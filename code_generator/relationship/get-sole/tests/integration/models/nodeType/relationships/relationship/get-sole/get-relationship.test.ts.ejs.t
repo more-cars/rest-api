@@ -16,7 +16,7 @@ describe('Requesting a ›<%= h.changeCase.kebab(relationshipName) %>‹ relatio
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>, NodeTypeEnum.<%= h.changeCase.constant(endNodeType) %>, RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
         const expected<%= h.changeCase.pascal(startNodeType) %>Id = expectedRelationship.start_node.id
-        const expected<%= h.changeCase.pascal(endNodeType) %>Id = expectedRelationship.end_node_id
+        const expected<%= h.changeCase.pascal(endNodeType) %>Id = expectedRelationship.end_node.id
         const actualRelationship = await <%= h.changeCase.pascal(startNodeType) %>.get<%= h.changeCase.pascal(relationshipName) %>Relationship(expected<%= h.changeCase.pascal(startNodeType) %>Id)
 
         expect(validateJson(actualRelationship, RelationshipSchema))

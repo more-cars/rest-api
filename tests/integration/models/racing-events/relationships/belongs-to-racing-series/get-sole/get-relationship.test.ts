@@ -13,7 +13,7 @@ describe('Requesting a ›belongs-to-racing-series‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.RACING_EVENT, NodeTypeEnum.RACING_SERIES, RelationshipType.RacingEventBelongsToRacingSeries)
         const expectedRacingEventId = expectedRelationship.start_node.id
-        const expectedRacingSeriesId = expectedRelationship.end_node_id
+        const expectedRacingSeriesId = expectedRelationship.end_node.id
         const actualRelationship = await RacingEvent.getBelongsToRacingSeriesRelationship(expectedRacingEventId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))

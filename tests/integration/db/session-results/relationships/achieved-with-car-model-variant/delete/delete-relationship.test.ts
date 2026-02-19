@@ -12,7 +12,7 @@ describe('Trying to delete a ›achieved-with-car-model-variant‹ relationship'
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.SessionResultAchievedWithCarModelVariant,
         )
 
@@ -21,13 +21,13 @@ describe('Trying to delete a ›achieved-with-car-model-variant‹ relationship'
 
         await deleteSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.SessionResultAchievedWithCarModelVariant,
         )
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.SessionResultAchievedWithCarModelVariant,
         )
 

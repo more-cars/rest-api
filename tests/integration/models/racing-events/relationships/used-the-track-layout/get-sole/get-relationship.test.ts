@@ -13,7 +13,7 @@ describe('Requesting a ›used-the-track-layout‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.RACING_EVENT, NodeTypeEnum.TRACK_LAYOUT, RelationshipType.RacingEventUsedTheTrackLayout)
         const expectedRacingEventId = expectedRelationship.start_node.id
-        const expectedTrackLayoutId = expectedRelationship.end_node_id
+        const expectedTrackLayoutId = expectedRelationship.end_node.id
         const actualRelationship = await RacingEvent.getUsedTheTrackLayoutRelationship(expectedRacingEventId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))

@@ -6,8 +6,7 @@ export type Relationship = {
     elementId?: string
     type: RelationshipType
     start_node: BaseNode
-    end_node_id: number
-    end_node?: BaseNode
+    end_node: BaseNode
     created_at: string
     updated_at: string
 }

@@ -43,7 +43,6 @@ export async function getRelationshipCollection(
                 created_at: startNode.properties.created_at,
                 updated_at: startNode.properties.updated_at,
             }),
-            end_node_id: endNode.properties.mc_id,
             end_node: Object.assign({}, endNode.properties, {
                 id: endNode.properties.mc_id,
                 created_at: endNode.properties.created_at,

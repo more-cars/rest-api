@@ -45,18 +45,18 @@ describe('Deleting a ›belongs-to-company‹ relationship', () => {
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.BrandBelongsToCompany,
         )
 
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await Brand.deleteBelongsToCompanyRelationship(seededRelationship.start_node.id, seededRelationship.end_node_id)
+        await Brand.deleteBelongsToCompanyRelationship(seededRelationship.start_node.id, seededRelationship.end_node.id)
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.BrandBelongsToCompany,
         )
 

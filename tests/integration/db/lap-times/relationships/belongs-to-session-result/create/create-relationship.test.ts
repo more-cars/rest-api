@@ -18,7 +18,7 @@ describe('Creating a ›belongs-to-session-result‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('start_node.id', lapTime.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node_id', sessionResult.id)
+            .toHaveProperty('end_node.id', sessionResult.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)

@@ -12,7 +12,7 @@ test('Both nodes and the relationship exist', async () => {
 
     const actualRelationship = await getSpecificRelationship(
         expectedrelationship.start_node.id,
-        expectedRelationship.end_node_id,
+        expectedRelationship.end_node.id,
         RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
     )
 

@@ -12,7 +12,7 @@ describe('Trying to delete a ›belongs-to-race-track‹ relationship', () => {
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.TrackLayoutBelongsToRaceTrack,
         )
 
@@ -21,13 +21,13 @@ describe('Trying to delete a ›belongs-to-race-track‹ relationship', () => {
 
         await deleteSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.TrackLayoutBelongsToRaceTrack,
         )
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.TrackLayoutBelongsToRaceTrack,
         )
 

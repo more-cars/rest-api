@@ -13,7 +13,7 @@ describe('Requesting a ›achieved-with-car-model-variant‹ relationship', () =
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.SESSION_RESULT, NodeTypeEnum.CAR_MODEL_VARIANT, RelationshipType.SessionResultAchievedWithCarModelVariant)
         const expectedCarModelVariantId = expectedRelationship.start_node.id
-        const expectedSessionResultId = expectedRelationship.end_node_id
+        const expectedSessionResultId = expectedRelationship.end_node.id
         const actualRelationship = await SessionResult.getAchievedWithCarModelVariantRelationship(expectedCarModelVariantId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))

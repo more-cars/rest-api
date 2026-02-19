@@ -19,7 +19,7 @@ describe('Requesting a relationship', () => {
             .toBe(expectedRelationship.start_node.id)
 
         expect(actualRelationship.destination.id)
-            .toBe(expectedRelationship.end_node_id)
+            .toBe(expectedRelationship.end_node.id)
     })
 
     test('relationship does not exist', async () => {

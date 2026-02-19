@@ -12,7 +12,7 @@ describe('Trying to delete a ›is-successor-of‹ relationship', () => {
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.CarModelIsSuccessorOf,
         )
 
@@ -21,13 +21,13 @@ describe('Trying to delete a ›is-successor-of‹ relationship', () => {
 
         await deleteSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.CarModelIsSuccessorOf,
         )
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.CarModelIsSuccessorOf,
         )
 

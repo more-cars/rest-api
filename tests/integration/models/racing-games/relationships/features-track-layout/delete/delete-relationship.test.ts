@@ -45,18 +45,18 @@ describe('Deleting a ›features-track-layout‹ relationship', () => {
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.RacingGameFeaturesTrackLayout,
         )
 
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await RacingGame.deleteFeaturesTrackLayoutRelationship(seededRelationship.start_node.id, seededRelationship.end_node_id)
+        await RacingGame.deleteFeaturesTrackLayoutRelationship(seededRelationship.start_node.id, seededRelationship.end_node.id)
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.RacingGameFeaturesTrackLayout,
         )
 

@@ -13,7 +13,7 @@ describe('Requesting a ›is-successor-of‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.CAR_MODEL, RelationshipType.CarModelIsSuccessorOf)
         const expectedCarModelId = expectedRelationship.start_node.id
-        const expectedPredecessorId = expectedRelationship.end_node_id
+        const expectedPredecessorId = expectedRelationship.end_node.id
         const actualRelationship = await CarModel.getIsSuccessorOfRelationship(expectedCarModelId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))

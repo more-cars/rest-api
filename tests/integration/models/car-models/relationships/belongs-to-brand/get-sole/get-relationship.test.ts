@@ -13,7 +13,7 @@ describe('Requesting a ›belongs-to-brand‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.BRAND, RelationshipType.CarModelBelongsToBrand)
         const expectedCarModelId = expectedRelationship.start_node.id
-        const expectedBrandId = expectedRelationship.end_node_id
+        const expectedBrandId = expectedRelationship.end_node.id
         const actualRelationship = await CarModel.getBelongsToBrandRelationship(expectedCarModelId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))

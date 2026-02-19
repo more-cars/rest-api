@@ -36,7 +36,11 @@ export async function getRelationshipById(relationshipId: number) {
             created_at: startNode.properties.created_at,
             updated_at: startNode.properties.updated_at,
         }),
-        end_node_id: endNode.properties.mc_id,
+        end_node: Object.assign({}, endNode.properties, {
+            id: endNode.properties.mc_id,
+            created_at: endNode.properties.created_at,
+            updated_at: endNode.properties.updated_at,
+        }),
         created_at: dbRelationship.properties.created_at,
         updated_at: dbRelationship.properties.updated_at,
     }

@@ -11,7 +11,7 @@ import {<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relatio
 
 test('Both nodes and a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship exist', async () => {
     const expectedRelationship = await seedRelationship(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>, NodeTypeEnum.<%= h.changeCase.constant(endNodeType) %>, RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
-    const actualRelationship = await <%= h.changeCase.pascal(startNodeType) %>.has<%= h.changeCase.pascal(relationshipName) %>Relationship(expectedrelationship.start_node.id, expectedRelationship.end_node_id)
+    const actualRelationship = await <%= h.changeCase.pascal(startNodeType) %>.has<%= h.changeCase.pascal(relationshipName) %>Relationship(expectedrelationship.start_node.id, expectedRelationship.end_node.id)
 
     expect(validateJson(actualRelationship, <%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>Schema))
         .toBeTruthy()
@@ -20,5 +20,5 @@ test('Both nodes and a ›<%= h.changeCase.kebab(relationshipName) %>‹ relatio
         .toBe(expectedRelationship.start_node.id)
 
     expect(actualRelationship.destination.id)
-        .toBe(expectedRelationship.end_node_id)
+        .toBe(expectedRelationship.end_node.id)
 })

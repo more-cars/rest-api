@@ -13,9 +13,9 @@ export const Relationship = {
             throw new RelNotFoundError('-', 0)
         }
 
-        const destination = await Node.findById(dbRelationship.end_node_id)
+        const destination = await Node.findById(dbRelationship.end_node.id)
         if (!destination) {
-            throw new NodeNotFoundError(dbRelationship.end_node_id)
+            throw new NodeNotFoundError(dbRelationship.end_node.id)
         }
 
         const origin = await Node.findById(dbRelationship.start_node.id)

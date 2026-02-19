@@ -12,7 +12,7 @@ describe('Trying to delete a ›has-prime-image‹ relationship', () => {
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.CompanyHasPrimeImage,
         )
 
@@ -21,13 +21,13 @@ describe('Trying to delete a ›has-prime-image‹ relationship', () => {
 
         await deleteSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.CompanyHasPrimeImage,
         )
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.CompanyHasPrimeImage,
         )
 

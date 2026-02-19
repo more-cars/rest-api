@@ -9,7 +9,7 @@ import {getRelationshipById} from "../../../../../src/db/relationships/getRelati
 describe('Creating a m:n relationship', () => {
     test('expecting the destination node to NOT lose its already existing relationship', async () => {
         const foreignRelationship = await seedRelationship(NodeTypeEnum.COMPANY, NodeTypeEnum.IMAGE, RelationshipType.CompanyHasImage)
-        const destinationId = foreignRelationship.end_node_id
+        const destinationId = foreignRelationship.end_node.id
         const originId = (await seedNode(NodeTypeEnum.COMPANY)).id
 
         const newRelationship = await Company.createHasImageRelationship(originId, destinationId)
@@ -18,7 +18,7 @@ describe('Creating a m:n relationship', () => {
         expect(newRelationship.origin.id)
             .not.to.equal(foreignRelationship.start_node.id)
         expect(newRelationship.destination.id)
-            .to.equal(foreignRelationship.end_node_id)
+            .to.equal(foreignRelationship.end_node.id)
 
         const refetchedForeignRelationship = await getRelationshipById(foreignRelationship.id)
         expect(refetchedForeignRelationship)

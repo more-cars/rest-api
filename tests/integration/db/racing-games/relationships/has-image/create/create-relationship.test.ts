@@ -18,7 +18,7 @@ describe('Creating a ›has-image‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('start_node.id', racingGame.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node_id', image.id)
+            .toHaveProperty('end_node.id', image.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)

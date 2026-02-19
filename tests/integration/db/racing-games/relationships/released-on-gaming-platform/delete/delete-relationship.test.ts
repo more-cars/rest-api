@@ -12,7 +12,7 @@ describe('Trying to delete a ›released-on-gaming-platform‹ relationship', ()
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.RacingGameReleasedOnGamingPlatform,
         )
 
@@ -21,13 +21,13 @@ describe('Trying to delete a ›released-on-gaming-platform‹ relationship', ()
 
         await deleteSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.RacingGameReleasedOnGamingPlatform,
         )
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.RacingGameReleasedOnGamingPlatform,
         )
 

@@ -45,18 +45,18 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.GamingPlatformHasPrimeImage,
         )
 
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await GamingPlatform.deleteHasPrimeImageRelationship(seededRelationship.start_node.id, seededRelationship.end_node_id)
+        await GamingPlatform.deleteHasPrimeImageRelationship(seededRelationship.start_node.id, seededRelationship.end_node.id)
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.GamingPlatformHasPrimeImage,
         )
 

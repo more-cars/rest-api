@@ -13,7 +13,7 @@ describe('Requesting a ›is-followed-by-event‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.RACING_EVENT, NodeTypeEnum.RACING_EVENT, RelationshipType.RacingEventIsFollowedByEvent)
         const expectedRacingEventId = expectedRelationship.start_node.id
-        const expectedSuccessorId = expectedRelationship.end_node_id
+        const expectedSuccessorId = expectedRelationship.end_node.id
         const actualRelationship = await RacingEvent.getIsFollowedByEventRelationship(expectedRacingEventId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))

@@ -45,18 +45,18 @@ describe('Deleting a ›achieved-lap-time‹ relationship', () => {
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.CarModelVariantAchievedLapTime,
         )
 
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await CarModelVariant.deleteAchievedLapTimeRelationship(seededRelationship.start_node.id, seededRelationship.end_node_id)
+        await CarModelVariant.deleteAchievedLapTimeRelationship(seededRelationship.start_node.id, seededRelationship.end_node.id)
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.CarModelVariantAchievedLapTime,
         )
 

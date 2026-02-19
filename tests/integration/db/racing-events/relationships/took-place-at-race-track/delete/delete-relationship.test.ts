@@ -12,7 +12,7 @@ describe('Trying to delete a ›took-place-at-race-track‹ relationship', () =>
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.RacingEventTookPlaceAtRaceTrack,
         )
 
@@ -21,13 +21,13 @@ describe('Trying to delete a ›took-place-at-race-track‹ relationship', () =>
 
         await deleteSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.RacingEventTookPlaceAtRaceTrack,
         )
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.RacingEventTookPlaceAtRaceTrack,
         )
 

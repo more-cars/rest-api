@@ -13,7 +13,7 @@ describe('Requesting a ›belongs-to-race-track‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.TRACK_LAYOUT, NodeTypeEnum.RACE_TRACK, RelationshipType.TrackLayoutBelongsToRaceTrack)
         const expectedTrackLayoutId = expectedRelationship.start_node.id
-        const expectedRaceTrackId = expectedRelationship.end_node_id
+        const expectedRaceTrackId = expectedRelationship.end_node.id
         const actualRelationship = await TrackLayout.getBelongsToRaceTrackRelationship(expectedTrackLayoutId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))

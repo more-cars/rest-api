@@ -14,7 +14,6 @@ export function convertNeo4jRelationshipToDbRelationship(
         type: relationshipType,
         start_node: startNode,
         end_node: endNode,
-        end_node_id: endNode.id,
         created_at: dbRelationship.properties.created_at,
         updated_at: dbRelationship.properties.updated_at,
     }

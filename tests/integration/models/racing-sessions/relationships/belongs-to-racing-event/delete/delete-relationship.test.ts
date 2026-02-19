@@ -45,18 +45,18 @@ describe('Deleting a ›belongs-to-racing-event‹ relationship', () => {
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.RacingSessionBelongsToRacingEvent,
         )
 
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await RacingSession.deleteBelongsToRacingEventRelationship(seededRelationship.start_node.id, seededRelationship.end_node_id)
+        await RacingSession.deleteBelongsToRacingEventRelationship(seededRelationship.start_node.id, seededRelationship.end_node.id)
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.RacingSessionBelongsToRacingEvent,
         )
 

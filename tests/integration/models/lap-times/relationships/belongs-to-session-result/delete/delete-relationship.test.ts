@@ -45,18 +45,18 @@ describe('Deleting a ›belongs-to-session-result‹ relationship', () => {
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.LapTimeBelongsToSessionResult,
         )
 
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await LapTime.deleteBelongsToSessionResultRelationship(seededRelationship.start_node.id, seededRelationship.end_node_id)
+        await LapTime.deleteBelongsToSessionResultRelationship(seededRelationship.start_node.id, seededRelationship.end_node.id)
 
         const relationshipAfter = await getSpecificRelationship(
             seededRelationship.start_node.id,
-            seededRelationship.end_node_id,
+            seededRelationship.end_node.id,
             RelationshipType.LapTimeBelongsToSessionResult,
         )
 

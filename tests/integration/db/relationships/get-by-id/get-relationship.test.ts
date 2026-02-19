@@ -16,8 +16,8 @@ describe('Requesting a relationship', () => {
             expect(actualRelationship.start_node.id)
                 .toBe(expectedRelationship.start_node.id)
 
-            expect(actualRelationship.end_node_id)
-                .toBe(expectedRelationship.end_node_id)
+            expect(actualRelationship.end_node.id)
+                .toBe(expectedRelationship.end_node.id)
         }
     })
 

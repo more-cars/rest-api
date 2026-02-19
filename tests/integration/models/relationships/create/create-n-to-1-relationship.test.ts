@@ -9,7 +9,7 @@ import {getRelationshipById} from "../../../../../src/db/relationships/getRelati
 describe('Creating a n:1 relationship', () => {
     test('expecting the destination node to NOT lose its already existing relationship', async () => {
         const foreignRelationship = await seedRelationship(NodeTypeEnum.RACING_EVENT, NodeTypeEnum.RACING_SERIES, RelationshipType.RacingEventBelongsToRacingSeries)
-        const destinationId = foreignRelationship.end_node_id
+        const destinationId = foreignRelationship.end_node.id
         const originId = (await seedNode(NodeTypeEnum.RACING_EVENT)).id
 
         const newRelationship = await RacingEvent.createBelongsToRacingSeriesRelationship(originId, destinationId)
@@ -18,7 +18,7 @@ describe('Creating a n:1 relationship', () => {
         expect(newRelationship.origin.id)
             .not.to.equal(foreignRelationship.start_node.id)
         expect(newRelationship.destination.id)
-            .to.equal(foreignRelationship.end_node_id)
+            .to.equal(foreignRelationship.end_node.id)
 
         const refetchedForeignRelationship = await getRelationshipById(foreignRelationship.id)
         expect(refetchedForeignRelationship)
