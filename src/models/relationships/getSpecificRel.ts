@@ -20,7 +20,7 @@ export async function getSpecificRel(
     }
 
     const modelRelationship: Rel = {
-        id: dbRelationship.relationship_id,
+        id: dbRelationship.id,
         type: relationshipType,
         origin: dbRelationship.start_node as BaseNode, // TODO remove type assertion
         destination: dbRelationship.end_node as BaseNode, // TODO remove type assertion

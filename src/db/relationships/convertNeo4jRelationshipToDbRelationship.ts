@@ -8,9 +8,9 @@ export function convertNeo4jRelationshipToDbRelationship(
     dbRelationship: Neo4jRelationship,
 ) {
     return {
+        id: dbRelationship.properties.mc_id,
         start_node_id: startNodeId,
         end_node_id: endNodeId,
-        relationship_id: dbRelationship.properties.mc_id,
         relationship_name: relationshipName,
         created_at: dbRelationship.properties.created_at,
         updated_at: dbRelationship.properties.updated_at,

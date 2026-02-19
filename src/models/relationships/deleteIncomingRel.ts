@@ -16,6 +16,6 @@ export async function deleteIncomingRel(
     )
 
     if (dbRelationship) {
-        await deleteRelationshipById(dbRelationship.relationship_id)
+        await deleteRelationshipById(dbRelationship.id)
     }
 }

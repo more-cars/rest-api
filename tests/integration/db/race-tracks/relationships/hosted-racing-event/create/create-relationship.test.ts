@@ -20,7 +20,7 @@ describe('Creating a ›hosted-racing-event‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('end_node_id', racingEvent.id)
         expect(createdRelationship)
-            .toHaveProperty('relationship_id')
+            .toHaveProperty('id')
         expect(createdRelationship)
             .toHaveProperty('relationship_name', RelationshipType.RaceTrackHostedRacingEvent)
         expect(createdRelationship)

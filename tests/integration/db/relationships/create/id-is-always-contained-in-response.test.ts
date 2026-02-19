@@ -25,6 +25,6 @@ test('ID is always contained in response', async () => {
         assert.fail('Relationship retrieval failed')
     }
 
-    expect(requestedRelationship.relationship_id)
-        .toBe(expectedRelationship.relationship_id)
+    expect(requestedRelationship.id)
+        .toBe(expectedRelationship.id)
 })

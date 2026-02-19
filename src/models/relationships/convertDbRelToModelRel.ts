@@ -5,7 +5,7 @@ import {BaseNode} from "../../db/types/BaseNode"
 
 export async function convertDbRelToModelRel(relationship: Relationship) {
     const rel: Rel = {
-        id: relationship.id || relationship.relationship_id,
+        id: relationship.id,
         type: mapDbRelationshipTypeToModelRelType(relationship.type),
         origin: relationship.start_node as BaseNode, // TODO return model node instead of db node
         destination: relationship.end_node as BaseNode, // TODO return model node instead of db node

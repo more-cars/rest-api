@@ -20,7 +20,7 @@ describe('Creating a ›released-on-gaming-platform‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('end_node_id', gamingPlatform.id)
         expect(createdRelationship)
-            .toHaveProperty('relationship_id')
+            .toHaveProperty('id')
         expect(createdRelationship)
             .toHaveProperty('relationship_name', RelationshipType.RacingGameReleasedOnGamingPlatform)
         expect(createdRelationship)

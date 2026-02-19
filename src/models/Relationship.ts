@@ -24,7 +24,7 @@ export const Relationship = {
         }
 
         const rel: Rel = {
-            id: dbRelationship.id || dbRelationship.relationship_id,
+            id: dbRelationship.id,
             type: mapDbRelationshipTypeToModelRelType(dbRelationship.type),
             origin: origin,
             destination: destination,

@@ -23,9 +23,9 @@ export async function getRelationshipById(relationshipId: number) {
     const endNode: Node = records[0].get('b')
 
     return {
+        id: relationship.properties.mc_id,
         start_node_id: startNode.properties.mc_id,
         end_node_id: endNode.properties.mc_id,
-        relationship_id: relationship.properties.mc_id,
         relationship_name: relationship.type,
         created_at: relationship.properties.created_at,
         updated_at: relationship.properties.updated_at,

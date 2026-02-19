@@ -20,7 +20,7 @@ describe('Creating a ›is-prime-image-of-node‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('end_node_id', node.id)
         expect(createdRelationship)
-            .toHaveProperty('relationship_id')
+            .toHaveProperty('id')
         expect(createdRelationship)
             .toHaveProperty('relationship_name', RelationshipType.ImageIsPrimeImageOfNode)
         expect(createdRelationship)

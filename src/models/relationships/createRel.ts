@@ -19,7 +19,7 @@ export async function createRel(originId: number, destinationId: number, relType
     }
 
     const modelRel: Rel = {
-        id: dbRelationship.id || dbRelationship.relationship_id,
+        id: dbRelationship.id,
         type: relType,
         origin: dbRelationship.start_node as BaseNode, // TODO remove type assertion
         destination: dbRelationship.end_node as BaseNode, // TODO remove type assertion

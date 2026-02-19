@@ -25,7 +25,7 @@ export async function getAllRels(
 
     for (const dbRelationship of dbRelationships) {
         rels.push({
-            id: dbRelationship.relationship_id,
+            id: dbRelationship.id,
             type: relType,
             origin: dbRelationship.start_node as BaseNode, // TODO remove type assertion
             destination: dbRelationship.end_node as BaseNode, // TODO remove type assertion

@@ -10,7 +10,7 @@ import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeE
 describe('Requesting a relationship', () => {
     test('relationship exists', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.BRAND, NodeTypeEnum.CAR_MODEL, RelationshipType.BrandHasCarModel)
-        const actualRelationship = await Relationship.findById(expectedRelationship.relationship_id)
+        const actualRelationship = await Relationship.findById(expectedRelationship.id)
 
         expect(validateJson(actualRelationship, RelationshipSchema))
             .toBeTruthy()

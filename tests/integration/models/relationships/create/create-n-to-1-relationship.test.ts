@@ -14,13 +14,13 @@ describe('Creating a n:1 relationship', () => {
 
         const newRelationship = await RacingEvent.createBelongsToRacingSeriesRelationship(originId, destinationId)
         expect(newRelationship.id)
-            .not.to.equal(foreignRelationship.relationship_id)
+            .not.to.equal(foreignRelationship.id)
         expect(newRelationship.origin.id)
             .not.to.equal(foreignRelationship.start_node_id)
         expect(newRelationship.destination.id)
             .to.equal(foreignRelationship.end_node_id)
 
-        const refetchedForeignRelationship = await getRelationshipById(foreignRelationship.relationship_id)
+        const refetchedForeignRelationship = await getRelationshipById(foreignRelationship.id)
         expect(refetchedForeignRelationship)
             .toBeTruthy()
     })

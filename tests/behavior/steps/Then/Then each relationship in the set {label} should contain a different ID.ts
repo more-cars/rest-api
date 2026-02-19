@@ -7,7 +7,7 @@ Then('each relationship in the set {string} should contain a different ID',
     (label: string) => {
         const relationships = world.recallRelationship(label)
 
-        const extractedIds = relationships.map((relationship: Relationship) => relationship.relationship_id)
+        const extractedIds = relationships.map((relationship: Relationship) => relationship.id)
         const deduplicatedIds = removeDuplicates(extractedIds)
 
         assert.equal(extractedIds.length, deduplicatedIds.length)

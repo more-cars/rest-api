@@ -20,7 +20,7 @@ describe('Creating a ›is-successor-of‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('end_node_id', partner.id)
         expect(createdRelationship)
-            .toHaveProperty('relationship_id')
+            .toHaveProperty('id')
         expect(createdRelationship)
             .toHaveProperty('relationship_name', RelationshipType.CarModelIsSuccessorOf)
         expect(createdRelationship)

@@ -65,7 +65,6 @@ export async function createRelationship(
             created_at: endNode.properties.created_at,
             updated_at: endNode.properties.updated_at,
         }),
-        relationship_id: dbRelationship.properties.mc_id,
         relationship_name: relationshipType,
         created_at: dbRelationship.properties.created_at,
         updated_at: dbRelationship.properties.updated_at,

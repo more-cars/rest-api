@@ -20,7 +20,7 @@ describe('Creating a ›belongs-to-company‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('end_node_id', company.id)
         expect(createdRelationship)
-            .toHaveProperty('relationship_id')
+            .toHaveProperty('id')
         expect(createdRelationship)
             .toHaveProperty('relationship_name', RelationshipType.BrandBelongsToCompany)
         expect(createdRelationship)

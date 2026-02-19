@@ -18,8 +18,8 @@ test('ID is added when creating a relationship', async () => {
         assert.fail('Relationship creation failed')
     }
 
-    expect(relationship.relationship_id)
+    expect(relationship.id)
         .toBeGreaterThanOrEqual(12000000)
-    expect(relationship.relationship_id)
+    expect(relationship.id)
         .toBeLessThanOrEqual(99999999)
 })

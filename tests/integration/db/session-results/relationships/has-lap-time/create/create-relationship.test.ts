@@ -20,7 +20,7 @@ describe('Creating a ›has-lap-time‹ relationship', () => {
         expect(createdRelationship)
             .toHaveProperty('end_node_id', lapTime.id)
         expect(createdRelationship)
-            .toHaveProperty('relationship_id')
+            .toHaveProperty('id')
         expect(createdRelationship)
             .toHaveProperty('relationship_name', RelationshipType.SessionResultHasLapTime)
         expect(createdRelationship)

@@ -19,11 +19,11 @@ describe('Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relations
         )
 
         expect(createdRelationship)
+            .toHaveProperty('id')
+        expect(createdRelationship)
             .toHaveProperty('start_node_id', <%= h.changeCase.camel(startNodeType) %>.id)
         expect(createdRelationship)
             .toHaveProperty('end_node_id', <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>.id)
-        expect(createdRelationship)
-            .toHaveProperty('relationship_id')
         expect(createdRelationship)
             .toHaveProperty('relationship_name', RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
         expect(createdRelationship)

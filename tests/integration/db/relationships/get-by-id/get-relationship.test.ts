@@ -8,7 +8,7 @@ import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeE
 describe('Requesting a relationship', () => {
     test('relationship exists', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.BRAND, NodeTypeEnum.CAR_MODEL, RelationshipType.BrandHasCarModel)
-        const actualRelationship = await getRelationshipById(expectedRelationship.relationship_id)
+        const actualRelationship = await getRelationshipById(expectedRelationship.id)
 
         if (!actualRelationship) {
             assert.fail('Could not fetch relationship')

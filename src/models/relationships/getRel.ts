@@ -26,7 +26,7 @@ export async function getRel(
     }
 
     const rel: Rel = {
-        id: dbRelationship.relationship_id,
+        id: dbRelationship.id,
         type: relType,
         origin: dbRelationship.start_node as BaseNode, // TODO return model node instead of db node
         destination: dbRelationship.end_node as BaseNode, // TODO return model node instead of db node

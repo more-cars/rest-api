@@ -51,7 +51,6 @@ export async function getRelationshipByEndNode(
             created_at: endNode.properties.created_at,
             updated_at: endNode.properties.updated_at,
         }),
-        relationship_id: dbRelation.properties.mc_id,
         relationship_name: relationshipType,
         created_at: dbRelation.properties.created_at,
         updated_at: dbRelation.properties.updated_at,
