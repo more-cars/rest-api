@@ -6,7 +6,7 @@ test('Expecting node to be created when provided with valid data', async () => {
     const inputData = FakeRacingSeries.dbInput()
     const createdNode = await RacingSeries.create(inputData)
 
-    expect(createdNode)
+    expect(createdNode.attributes)
         .toEqual(expect.objectContaining(inputData))
 })
 
@@ -20,6 +20,6 @@ test('Trying to override read-only properties', async () => {
     const data = Object.assign(validData, readOnlyData)
     const createdNode = await RacingSeries.create(data)
 
-    expect(createdNode)
+    expect(createdNode.attributes)
         .not.toEqual(expect.objectContaining(readOnlyData))
 })

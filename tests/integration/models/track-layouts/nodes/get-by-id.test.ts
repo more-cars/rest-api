@@ -15,6 +15,6 @@ test('When the TRACK LAYOUT exists it should be returned', async () => {
     const expectedTrackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
     const actualTrackLayout = await TrackLayout.findById(expectedTrackLayout.properties.id)
 
-    expect(actualTrackLayout)
+    expect(actualTrackLayout.attributes)
         .toEqual(expectedTrackLayout.properties)
 })

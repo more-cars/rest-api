@@ -15,6 +15,6 @@ test('When the LAP TIME exists it should be returned', async () => {
     const expectedLapTime = await seedNode(ControllerNodeType.LAP_TIME)
     const actualLapTime = await LapTime.findById(expectedLapTime.properties.id)
 
-    expect(actualLapTime)
+    expect(actualLapTime.attributes)
         .toEqual(expectedLapTime.properties)
 })

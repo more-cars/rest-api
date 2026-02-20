@@ -15,6 +15,6 @@ test('When the RACING EVENT exists it should be returned', async () => {
     const expectedRacingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
     const actualRacingEvent = await RacingEvent.findById(expectedRacingEvent.properties.id)
 
-    expect(actualRacingEvent)
+    expect(actualRacingEvent.attributes)
         .toEqual(expectedRacingEvent.properties)
 })

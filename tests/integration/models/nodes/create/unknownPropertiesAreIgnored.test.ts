@@ -16,7 +16,7 @@ test('Unknown properties are ignored', async () => {
         "my_property": "NOT_ALLOWED_TO_ADD"
     })
     createdNode = await CarModel.create(carModelData)
-    expect(createdNode)
+    expect(createdNode.attributes)
         .not.toContain("my_property")
 
     // BRAND
@@ -24,7 +24,7 @@ test('Unknown properties are ignored', async () => {
         "my_property": "NOT_ALLOWED_TO_ADD"
     })
     createdNode = await Brand.create(brandData)
-    expect(createdNode)
+    expect(createdNode.attributes)
         .not.toContain("my_property")
 
 
@@ -33,6 +33,6 @@ test('Unknown properties are ignored', async () => {
         "my_property": "NOT_ALLOWED_TO_ADD"
     })
     createdNode = await Image.create(imageData)
-    expect(createdNode)
+    expect(createdNode.attributes)
         .not.toContain("my_property")
 })

@@ -15,6 +15,6 @@ test('When the CAR MODEL VARIANT exists it should be returned', async () => {
     const expectedCarModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
     const actualCarModelVariant = await CarModelVariant.findById(expectedCarModelVariant.properties.id)
 
-    expect(actualCarModelVariant)
+    expect(actualCarModelVariant.attributes)
         .toEqual(expectedCarModelVariant.properties)
 })

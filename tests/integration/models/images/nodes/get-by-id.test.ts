@@ -15,7 +15,7 @@ test('When the image exists it should be returned', async () => {
     const expectedNode = await seedNode(ControllerNodeType.IMAGE)
     const actualNode = await Image.findById(expectedNode.properties.id)
 
-    expect(actualNode)
+    expect(actualNode.attributes)
         .toEqual(expectedNode.properties)
 })
 

@@ -15,6 +15,6 @@ test('When the BRAND exists it should be returned', async () => {
     const expectedBrand = await seedNode(ControllerNodeType.BRAND)
     const actualBrand = await Brand.findById(expectedBrand.properties.id)
 
-    expect(actualBrand)
+    expect(actualBrand.attributes)
         .toEqual(expectedBrand.properties)
 })

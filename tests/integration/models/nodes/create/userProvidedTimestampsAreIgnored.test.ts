@@ -13,26 +13,26 @@ test('Timestamps provided by the user are ignored', async () => {
     const brandData = FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate
     const createdBrand = await Brand.create(brandData)
 
-    expect(createdBrand).toHaveProperty('created_at')
-    expect(createdBrand).not.toHaveProperty('created_at', "blubb")
-    expect(createdBrand).toHaveProperty('updated_at')
-    expect(createdBrand).not.toHaveProperty('updated_at', "blobb")
+    expect(createdBrand.attributes).toHaveProperty('created_at')
+    expect(createdBrand.attributes).not.toHaveProperty('created_at', "blubb")
+    expect(createdBrand.attributes).toHaveProperty('updated_at')
+    expect(createdBrand.attributes).not.toHaveProperty('updated_at', "blobb")
 
     // CAR MODEL
     const carModelData = FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate
     const createdCarModel = await CarModel.create(carModelData)
 
-    expect(createdCarModel).toHaveProperty('created_at')
-    expect(createdCarModel).not.toHaveProperty('created_at', "blubb")
-    expect(createdCarModel).toHaveProperty('updated_at')
-    expect(createdCarModel).not.toHaveProperty('updated_at', "blobb")
+    expect(createdCarModel.attributes).toHaveProperty('created_at')
+    expect(createdCarModel.attributes).not.toHaveProperty('created_at', "blubb")
+    expect(createdCarModel.attributes).toHaveProperty('updated_at')
+    expect(createdCarModel.attributes).not.toHaveProperty('updated_at', "blobb")
 
     // IMAGE
     const imageData: InputImageCreate = FakeNodeInput(ControllerNodeType.IMAGE) as InputImageCreate
     const createdImage = await Image.create(imageData)
 
-    expect(createdImage).toHaveProperty('created_at')
-    expect(createdImage).not.toHaveProperty('created_at', "blubb")
-    expect(createdImage).toHaveProperty('updated_at')
-    expect(createdImage).not.toHaveProperty('updated_at', "blobb")
+    expect(createdImage.attributes).toHaveProperty('created_at')
+    expect(createdImage.attributes).not.toHaveProperty('created_at', "blubb")
+    expect(createdImage.attributes).toHaveProperty('updated_at')
+    expect(createdImage.attributes).not.toHaveProperty('updated_at', "blobb")
 })

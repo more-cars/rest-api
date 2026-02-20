@@ -6,7 +6,7 @@ test('When providing valid data the new node can be created', async () => {
     const inputData = FakeImage.dbInput()
     const createdNode = await Image.create(inputData)
 
-    expect(createdNode)
+    expect(createdNode.attributes)
         .toEqual(expect.objectContaining(inputData))
 })
 
@@ -33,6 +33,6 @@ test('Read-only properties cannot be overridden', async () => {
     const data = Object.assign(validData, readOnlyData)
     const createdNode = await Image.create(data)
 
-    expect(createdNode)
+    expect(createdNode.attributes)
         .not.toEqual(expect.objectContaining(readOnlyData))
 })

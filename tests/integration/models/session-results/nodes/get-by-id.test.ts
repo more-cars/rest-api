@@ -15,6 +15,6 @@ test('When the SESSION RESULT exists it should be returned', async () => {
     const expectedSessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
     const actualSessionResult = await SessionResult.findById(expectedSessionResult.properties.id)
 
-    expect(actualSessionResult)
+    expect(actualSessionResult.attributes)
         .toEqual(expectedSessionResult.properties)
 })

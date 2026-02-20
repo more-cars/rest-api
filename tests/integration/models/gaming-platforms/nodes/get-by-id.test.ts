@@ -15,6 +15,6 @@ test('When the GAMING PLATFORM exists it should be returned', async () => {
     const expectedGamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
     const actualGamingPlatform = await GamingPlatform.findById(expectedGamingPlatform.properties.id)
 
-    expect(actualGamingPlatform)
+    expect(actualGamingPlatform.attributes)
         .toEqual(expectedGamingPlatform.properties)
 })

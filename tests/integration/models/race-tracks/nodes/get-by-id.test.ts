@@ -15,6 +15,6 @@ test('When the RACE TRACK exists it should be returned', async () => {
     const expectedRaceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
     const actualRaceTrack = await RaceTrack.findById(expectedRaceTrack.properties.id)
 
-    expect(actualRaceTrack)
+    expect(actualRaceTrack.attributes)
         .toEqual(expectedRaceTrack.properties)
 })
