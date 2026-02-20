@@ -1,10 +1,10 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {Image} from "../../../../../../../src/models/node-types/images/Image"
 
 test('Attaching an image to itself is not allowed', async () => {
-    const imageNode = await seedNode(NodeTypeEnum.IMAGE)
+    const imageNode = await seedNode(ControllerNodeType.IMAGE)
 
     await expect(Image.createBelongsToNodeRelationship(imageNode.id, imageNode.id))
         .rejects

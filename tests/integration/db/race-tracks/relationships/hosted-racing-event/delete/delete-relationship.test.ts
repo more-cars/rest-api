@@ -1,14 +1,14 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {deleteSpecificRelationship} from "../../../../../../../src/db/relationships/deleteSpecificRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 describe('Trying to delete a ›hosted-racing-event‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.RACE_TRACK, NodeTypeEnum.RACING_EVENT, RelationshipType.RaceTrackHostedRacingEvent)
+        const seededRelationship = await seedRelationship(ControllerNodeType.RACE_TRACK, ControllerNodeType.RACING_EVENT, RelationshipType.RaceTrackHostedRacingEvent)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,
@@ -36,8 +36,8 @@ describe('Trying to delete a ›hosted-racing-event‹ relationship', () => {
     })
 
     test('nodes exists, but not the relationship', async () => {
-        const raceTrack = await seedNode(NodeTypeEnum.RACE_TRACK)
-        const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
+        const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
+        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
         const relationship = await deleteSpecificRelationship(
             raceTrack.id,

@@ -6,11 +6,11 @@ import {getSpecificRelationship} from "../../../../../../../src/db/relationships
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoundError"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 
 describe('Deleting a ›has-car-model‹ relationship', () => {
     test('BRAND node does not exist', async () => {
-        const brand = await seedNode(NodeTypeEnum.BRAND)
+        const brand = await seedNode(ControllerNodeType.BRAND)
 
         await expect(Brand.deleteHasCarModelRelationship(brand.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›has-car-model‹ relationship', () => {
     })
 
     test('CAR MODEL node does not exist', async () => {
-        const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
+        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
 
         await expect(Brand.deleteHasCarModelRelationship(-42, carModel.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›has-car-model‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›has-car-model‹ relationship', async () => {
-        const brand = await seedNode(NodeTypeEnum.BRAND)
-        const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
+        const brand = await seedNode(ControllerNodeType.BRAND)
+        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
 
         await expect(Brand.deleteHasCarModelRelationship(brand.id, carModel.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›has-car-model‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-car-model‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.BRAND, NodeTypeEnum.CAR_MODEL, RelationshipType.BrandHasCarModel)
+        const seededRelationship = await seedRelationship(ControllerNodeType.BRAND, ControllerNodeType.CAR_MODEL, RelationshipType.BrandHasCarModel)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,

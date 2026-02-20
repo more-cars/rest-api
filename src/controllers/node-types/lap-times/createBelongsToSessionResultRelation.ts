@@ -1,7 +1,7 @@
 import express from "express"
 import {LapTime} from "../../../models/node-types/lap-times/LapTime"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 import {sendResponse201} from "../../responses/sendResponse201"
@@ -15,7 +15,7 @@ export async function createBelongsToSessionResultRelation(req: express.Request,
 
     try {
         const relation = await LapTime.createBelongsToSessionResultRelationship(lapTimeId, sessionResultId)
-        const marshalledData = marshalRelation(relation, NodeTypeEnum.SESSION_RESULT)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.SESSION_RESULT)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

@@ -1,11 +1,11 @@
 import type {Rel} from "../../models/relationships/types/Rel"
-import type {NodeTypeEnum} from "../nodes/types/NodeTypeEnum"
+import type {ControllerNodeType} from "../nodes/types/ControllerNodeType"
 import type {RelationResponse} from "./types/RelationResponse"
 import {mapModelRelationTypeToControllerRelationType} from "./mapModelRelationTypeToControllerRelationType"
 import {marshalSingleNode} from "../nodes/marshalSingleNode"
 import {mapControllerNodeTypeToResponseNodeType} from "../nodes/mapControllerNodeTypeToResponseNodeType"
 
-export function marshalRelation(relation: Rel, partnerNodeType: NodeTypeEnum) {
+export function marshalRelation(relation: Rel, partnerNodeType: ControllerNodeType) {
     const marshalledData: RelationResponse = {
         data: {
             relationship_id: relation.id,

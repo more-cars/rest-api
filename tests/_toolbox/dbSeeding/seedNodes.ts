@@ -1,7 +1,7 @@
-import {NodeTypeEnum} from "../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedNode} from "./seedNode"
 
-export async function seedNodes(nodeType: NodeTypeEnum, amount: number) {
+export async function seedNodes(nodeType: ControllerNodeType, amount: number) {
     const nodes: any[] = []
 
     for (let i = 0; i < amount; i++) {

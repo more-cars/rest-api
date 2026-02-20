@@ -2,14 +2,14 @@ import {Then, world} from "@cucumber/cucumber"
 import assert from "assert"
 import type {DbNode} from "../../../../src/db/types/DbNode"
 import {getSchemaForNodeType} from "../../../_toolbox/schemas/model/getSchemaForNodeType"
-import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
 import {validateJson} from "../../../_toolbox/validateJson"
 
 Then('the response should return the {string} {string}',
     (nodeType: string, label: string) => {
         const expectedNode: DbNode = world.recallNode(label).data
         const actualNode = world.recallResponse().data.data
-        const schema = getSchemaForNodeType(nodeType.toLowerCase() as NodeTypeEnum)
+        const schema = getSchemaForNodeType(nodeType.toLowerCase() as ControllerNodeType)
 
         assert.ok(validateJson(actualNode, schema))
 

@@ -1,7 +1,7 @@
 import express from "express"
 import {TrackLayout} from "../../../models/node-types/track-layouts/TrackLayout"
 import {marshalRelations} from "../../relations/marshalRelations"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"
@@ -12,7 +12,7 @@ export async function getAllIsFeaturedInRacingGameRelations(req: express.Request
 
     try {
         const relations = await TrackLayout.getAllIsFeaturedInRacingGameRelationships(trackLayoutId)
-        const marshalledData = marshalRelations(relations, NodeTypeEnum.RACING_GAME)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.RACING_GAME)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

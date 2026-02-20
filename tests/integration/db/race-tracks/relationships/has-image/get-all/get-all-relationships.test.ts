@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
@@ -8,9 +8,9 @@ import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const raceTrack = await seedNode(NodeTypeEnum.RACE_TRACK)
-        await seedRelationshipForStartNode(raceTrack.id, NodeTypeEnum.IMAGE, RelationshipType.RaceTrackHasImage)
-        await seedRelationshipForStartNode(raceTrack.id, NodeTypeEnum.IMAGE, RelationshipType.RaceTrackHasImage)
+        const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
+        await seedRelationshipForStartNode(raceTrack.id, ControllerNodeType.IMAGE, RelationshipType.RaceTrackHasImage)
+        await seedRelationshipForStartNode(raceTrack.id, ControllerNodeType.IMAGE, RelationshipType.RaceTrackHasImage)
 
         const relationships = await getRelationshipCollection(
             raceTrack.id,
@@ -23,7 +23,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const raceTrack = await seedNode(NodeTypeEnum.RACE_TRACK)
+        const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
 
         const relationships = await getRelationshipCollection(
             raceTrack.id,

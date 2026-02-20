@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {LapTimeNode} from "../../../../../../src/models/node-types/lap-times/types/LapTimeNode"
 import {LapTime} from "../../../../../../src/models/node-types/lap-times/LapTime"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
@@ -8,7 +8,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all LAP TIME nodes" request returns only the matching nodes', () => {
     test('when there exist no LAP TIME nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
+        await deleteAllNodesOfType(ControllerNodeType.LAP_TIME)
 
         const expectedNodes: LapTimeNode[] = []
         const actualNodes = await LapTime.findAll({
@@ -22,10 +22,10 @@ describe('A filtered "get all LAP TIME nodes" request returns only the matching 
     })
 
     test('when there exist LAP TIME nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
-        const nodeA = await seedNode(NodeTypeEnum.LAP_TIME, {time: 'A', driver_name: 'A Node'}) as LapTimeNode
-        await seedNode(NodeTypeEnum.LAP_TIME, {time: 'B', driver_name: 'B Node'})
-        await seedNode(NodeTypeEnum.LAP_TIME, {time: 'C', driver_name: 'C Node'})
+        await deleteAllNodesOfType(ControllerNodeType.LAP_TIME)
+        const nodeA = await seedNode(ControllerNodeType.LAP_TIME, {time: 'A', driver_name: 'A Node'}) as LapTimeNode
+        await seedNode(ControllerNodeType.LAP_TIME, {time: 'B', driver_name: 'B Node'})
+        await seedNode(ControllerNodeType.LAP_TIME, {time: 'C', driver_name: 'C Node'})
 
         const filteredNodes = await LapTime.findAll({
             filterByProperty: 'driver_name',

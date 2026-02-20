@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 describe('Creating a ›was-used-by-racing-event‹ relationship', () => {
     test('with valid data', async () => {
-        const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
-        const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
+        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
         const createdRelationship = await createRelationship(
             trackLayout.id,
@@ -30,7 +30,7 @@ describe('Creating a ›was-used-by-racing-event‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
+        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
         const createdRelationship = await createRelationship(
             trackLayout.id,

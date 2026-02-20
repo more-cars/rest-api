@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {SessionResultNode} from "../../../../../../src/models/node-types/session-results/types/SessionResultNode"
 import {SessionResult} from "../../../../../../src/models/node-types/session-results/SessionResult"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all SESSION RESULT nodes" request returns the nodes in correct order', () => {
     test('when there exist no SESSION RESULT nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
+        await deleteAllNodesOfType(ControllerNodeType.SESSION_RESULT)
 
         const expectedNodes: SessionResultNode[] = []
         const actualNodes = await SessionResult.findAll({sortByProperty: 'position', sortDirection: 'desc'})
@@ -17,10 +17,10 @@ describe('A sorted "get all SESSION RESULT nodes" request returns the nodes in c
     })
 
     test('when there exist SESSION RESULT nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
-        const nodeA = await seedNode(NodeTypeEnum.SESSION_RESULT, {position: 1}) as SessionResultNode
-        const nodeB = await seedNode(NodeTypeEnum.SESSION_RESULT, {position: 2}) as SessionResultNode
-        const nodeC = await seedNode(NodeTypeEnum.SESSION_RESULT, {position: 3}) as SessionResultNode
+        await deleteAllNodesOfType(ControllerNodeType.SESSION_RESULT)
+        const nodeA = await seedNode(ControllerNodeType.SESSION_RESULT, {position: 1}) as SessionResultNode
+        const nodeB = await seedNode(ControllerNodeType.SESSION_RESULT, {position: 2}) as SessionResultNode
+        const nodeC = await seedNode(ControllerNodeType.SESSION_RESULT, {position: 3}) as SessionResultNode
 
         const ascNodes = await SessionResult.findAll({sortByProperty: 'position', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

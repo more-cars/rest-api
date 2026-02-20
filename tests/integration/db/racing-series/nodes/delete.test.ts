@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {deleteNode} from "../../../../../src/db/nodes/deleteNode"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
 
 test('Expecting response "false" when trying to delete a non-existing RACING SERIES', async () => {
     const success = await deleteNode(-42)
@@ -11,7 +11,7 @@ test('Expecting response "false" when trying to delete a non-existing RACING SER
 })
 
 test('Expecting response "true" when deleting an existing RACING SERIES', async () => {
-    const node = await seedNode(NodeTypeEnum.RACING_SERIES)
+    const node = await seedNode(ControllerNodeType.RACING_SERIES)
     const success = await deleteNode(node.id)
 
     expect(success)

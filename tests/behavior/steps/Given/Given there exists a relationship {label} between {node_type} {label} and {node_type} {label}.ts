@@ -2,14 +2,14 @@ import {Given, world} from "@cucumber/cucumber"
 import axios from "axios"
 import type {DbNode} from "../../../../src/db/types/DbNode"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
-import type {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
+import type {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getBasePathFragmentForRelationship} from "../../../_toolbox/dbSeeding/getBasePathFragmentForRelationship"
 
 Given('there exists a(n) relationship {string} between {string} {string} and {string} {string}',
     async (relationshipLabel: string, startNodeType: string, startNodeLabel: string, endNodeType: string, endNodeLabel: string) => {
-        const nodePathFragment = getBasePathFragmentForNodeType(startNodeType.toLowerCase() as NodeTypeEnum)
+        const nodePathFragment = getBasePathFragmentForNodeType(startNodeType.toLowerCase() as ControllerNodeType)
         const startNode: DbNode = world.recallNode(startNodeLabel).data
-        const relationshipName = getBasePathFragmentForRelationship(startNodeType.toLowerCase() as NodeTypeEnum, endNodeType.toLowerCase() as NodeTypeEnum)
+        const relationshipName = getBasePathFragmentForRelationship(startNodeType.toLowerCase() as ControllerNodeType, endNodeType.toLowerCase() as ControllerNodeType)
         const endNode = world.recallNode(endNodeLabel).data
 
         const response = await axios

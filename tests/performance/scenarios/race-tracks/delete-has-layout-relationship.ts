@@ -4,7 +4,7 @@ import {check} from "k6"
 import {Trend} from "k6/metrics"
 import {createNode} from "../../_testdata/createNode.ts"
 import {createRelationship} from "../../_testdata/createRelationship.ts"
-import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
 
 const trendDuration = new Trend('duration', true)
 
@@ -28,13 +28,13 @@ export const options = {
 }
 
 export function setup() {
-    const raceTrackId = createNode(NodeTypeEnum.RACE_TRACK)
+    const raceTrackId = createNode(ControllerNodeType.RACE_TRACK)
     const trackLayouts = []
 
     for (let i = 0; i < 310; i++) {
-        const trackLayout = createNode(NodeTypeEnum.TRACK_LAYOUT)
+        const trackLayout = createNode(ControllerNodeType.TRACK_LAYOUT)
         createRelationship(
-            NodeTypeEnum.RACE_TRACK,
+            ControllerNodeType.RACE_TRACK,
             raceTrackId,
             trackLayout,
             'has layout',

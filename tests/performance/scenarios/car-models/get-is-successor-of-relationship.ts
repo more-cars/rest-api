@@ -3,7 +3,7 @@ import {check} from "k6"
 import {Trend} from "k6/metrics"
 import {createCarModel} from "../../_testdata/createCarModel.ts"
 import {createRelationship} from "../../_testdata/createRelationship.ts"
-import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
 
 const trendDuration = new Trend('duration', true)
 
@@ -30,7 +30,7 @@ export function setup() {
     const carModelId = createCarModel()
     const partnerNodeId = createCarModel()
     createRelationship(
-        NodeTypeEnum.CAR_MODEL,
+        ControllerNodeType.CAR_MODEL,
         carModelId,
         partnerNodeId,
         'is successor of',

@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {BrandNode} from "../../../../../../src/models/node-types/brands/types/BrandNode"
 import {Brand} from "../../../../../../src/models/node-types/brands/Brand"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all BRAND nodes" request returns the nodes in correct order', () => {
     test('when there exist no BRAND nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.BRAND)
+        await deleteAllNodesOfType(ControllerNodeType.BRAND)
 
         const expectedNodes: BrandNode[] = []
         const actualNodes = await Brand.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,10 +17,10 @@ describe('A sorted "get all BRAND nodes" request returns the nodes in correct or
     })
 
     test('when there exist BRAND nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.BRAND)
-        const nodeA = await seedNode(NodeTypeEnum.BRAND, {name: 'A Node'}) as BrandNode
-        const nodeB = await seedNode(NodeTypeEnum.BRAND, {name: 'B Node'}) as BrandNode
-        const nodeC = await seedNode(NodeTypeEnum.BRAND, {name: 'C Node'}) as BrandNode
+        await deleteAllNodesOfType(ControllerNodeType.BRAND)
+        const nodeA = await seedNode(ControllerNodeType.BRAND, {name: 'A Node'}) as BrandNode
+        const nodeB = await seedNode(ControllerNodeType.BRAND, {name: 'B Node'}) as BrandNode
+        const nodeC = await seedNode(ControllerNodeType.BRAND, {name: 'C Node'}) as BrandNode
 
         const ascNodes = await Brand.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

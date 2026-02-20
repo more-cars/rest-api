@@ -2,12 +2,12 @@ import {describe, expect, test} from 'vitest'
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 
 describe('Creating a ›has-prime-image‹ relationship', () => {
     test('with valid data', async () => {
-        const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
-        const image = await seedNode(NodeTypeEnum.IMAGE)
+        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+        const image = await seedNode(ControllerNodeType.IMAGE)
 
         const createdRelationship = await createRelationship(
             racingEvent.id,
@@ -30,7 +30,7 @@ describe('Creating a ›has-prime-image‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
+        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
         const createdRelationship = await createRelationship(
             racingEvent.id,

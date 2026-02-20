@@ -2,12 +2,12 @@ import {describe, expect, test} from 'vitest'
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 
 describe('Creating a ›has-successor‹ relationship', () => {
     test('with valid data', async () => {
-        const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
-        const partnerNode = await seedNode(NodeTypeEnum.CAR_MODEL)
+        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
+        const partnerNode = await seedNode(ControllerNodeType.CAR_MODEL)
 
         const createdRelationship = await createRelationship(
             carModel.id,
@@ -30,7 +30,7 @@ describe('Creating a ›has-successor‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
+        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
 
         const createdRelationship = await createRelationship(
             carModel.id,

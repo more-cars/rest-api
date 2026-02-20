@@ -1,7 +1,7 @@
 import type {ImageBelongsToNodeTypeRelationships} from "../../../../models/node-types/images/types/ImageBelongsToNodeTypeRelationships"
 import type {ImageBelongsToNodeTypeResponse} from "../types/ImageBelongsToNodeTypeResponse"
 import {marshalRelation} from "../../../relations/marshalRelation"
-import {NodeTypeEnum} from "../../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../nodes/types/ControllerNodeType"
 
 export function marshalBelongsToNodeTypeRelationships(relationships: ImageBelongsToNodeTypeRelationships) {
     // TODO this solution is not scalable
@@ -18,31 +18,31 @@ export function marshalBelongsToNodeTypeRelationships(relationships: ImageBelong
     }
 
     relationships.companies.forEach((relationship) => {
-        marshalledData.data.companies.data.push(marshalRelation(relationship, NodeTypeEnum.COMPANY))
+        marshalledData.data.companies.data.push(marshalRelation(relationship, ControllerNodeType.COMPANY))
     })
 
     relationships.brands.forEach((relationship) => {
-        marshalledData.data.brands.data.push(marshalRelation(relationship, NodeTypeEnum.BRAND))
+        marshalledData.data.brands.data.push(marshalRelation(relationship, ControllerNodeType.BRAND))
     })
 
     relationships.car_models.forEach((relationship) => {
-        marshalledData.data.car_models.data.push(marshalRelation(relationship, NodeTypeEnum.CAR_MODEL))
+        marshalledData.data.car_models.data.push(marshalRelation(relationship, ControllerNodeType.CAR_MODEL))
     })
 
     relationships.race_tracks.forEach((relationship) => {
-        marshalledData.data.race_tracks.data.push(marshalRelation(relationship, NodeTypeEnum.RACE_TRACK))
+        marshalledData.data.race_tracks.data.push(marshalRelation(relationship, ControllerNodeType.RACE_TRACK))
     })
 
     relationships.track_layouts.forEach((relationship) => {
-        marshalledData.data.track_layouts.data.push(marshalRelation(relationship, NodeTypeEnum.TRACK_LAYOUT))
+        marshalledData.data.track_layouts.data.push(marshalRelation(relationship, ControllerNodeType.TRACK_LAYOUT))
     })
 
     relationships.racing_series.forEach((relationship) => {
-        marshalledData.data.racing_series.data.push(marshalRelation(relationship, NodeTypeEnum.RACING_SERIES))
+        marshalledData.data.racing_series.data.push(marshalRelation(relationship, ControllerNodeType.RACING_SERIES))
     })
 
     relationships.racing_events.forEach((relationship) => {
-        marshalledData.data.racing_events.data.push(marshalRelation(relationship, NodeTypeEnum.RACING_EVENT))
+        marshalledData.data.racing_events.data.push(marshalRelation(relationship, ControllerNodeType.RACING_EVENT))
     })
 
     return marshalledData

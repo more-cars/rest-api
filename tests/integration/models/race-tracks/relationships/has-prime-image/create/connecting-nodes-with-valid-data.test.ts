@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {RaceTrack} from "../../../../../../../src/models/node-types/race-tracks/RaceTrack"
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›has-prime-image‹ relationship with valid data', async () => {
-    const raceTrack = await seedNode(NodeTypeEnum.RACE_TRACK)
-    const image = await seedNode(NodeTypeEnum.IMAGE)
+    const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
+    const image = await seedNode(ControllerNodeType.IMAGE)
 
     const createdRelationship = await RaceTrack.createHasPrimeImageRelationship(raceTrack.id, image.id)
 

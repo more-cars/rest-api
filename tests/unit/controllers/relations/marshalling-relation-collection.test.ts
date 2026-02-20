@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {getAllModelRelationshipTypes} from "../../../_toolbox/getAllModelRelationshipTypes"
 import {FakeNodeInput} from "../../../_toolbox/fixtures/nodes/FakeNodeInput"
-import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {ControllerNode} from "../../../../src/controllers/nodes/types/ControllerNode"
 import type {Rel} from "../../../../src/models/relationships/types/Rel"
 import {marshalRelations} from "../../../../src/controllers/relations/marshalRelations"
@@ -9,8 +9,8 @@ import {mapModelRelationTypeToControllerRelationType} from "../../../../src/cont
 
 test('marshalling a relation collection', async () => {
     getAllModelRelationshipTypes().forEach((relationshipType) => {
-        const origin = FakeNodeInput(NodeTypeEnum.BRAND) as unknown as ControllerNode
-        const destination = FakeNodeInput(NodeTypeEnum.CAR_MODEL) as unknown as ControllerNode
+        const origin = FakeNodeInput(ControllerNodeType.BRAND) as unknown as ControllerNode
+        const destination = FakeNodeInput(ControllerNodeType.CAR_MODEL) as unknown as ControllerNode
         const relationship: Rel = {
             id: 3,
             type: relationshipType,
@@ -21,7 +21,7 @@ test('marshalling a relation collection', async () => {
         }
         const relationships = [relationship, relationship, relationship]
 
-        const marshalledRelations = marshalRelations(relationships, NodeTypeEnum.CAR_MODEL)
+        const marshalledRelations = marshalRelations(relationships, ControllerNodeType.CAR_MODEL)
 
         expect(marshalledRelations.data.length)
             .toEqual(3)

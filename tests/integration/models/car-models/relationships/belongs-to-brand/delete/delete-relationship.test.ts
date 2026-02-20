@@ -5,12 +5,12 @@ import {getSpecificRelationship} from "../../../../../../../src/db/relationships
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoundError"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {CarModel} from "../../../../../../../src/models/node-types/car-models/CarModel"
 
 describe('Deleting a ›belongs-to-brand‹ relationship', () => {
     test('CAR MODEL node does not exist', async () => {
-        const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
+        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
 
         await expect(CarModel.deleteBelongsToBrandRelationship(carModel.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›belongs-to-brand‹ relationship', () => {
     })
 
     test('BRAND node does not exist', async () => {
-        const brand = await seedNode(NodeTypeEnum.BRAND)
+        const brand = await seedNode(ControllerNodeType.BRAND)
 
         await expect(CarModel.deleteBelongsToBrandRelationship(-42, brand.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›belongs-to-brand‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›belongs-to-brand‹ relationship', async () => {
-        const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
-        const brand = await seedNode(NodeTypeEnum.BRAND)
+        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
+        const brand = await seedNode(ControllerNodeType.BRAND)
 
         await expect(CarModel.deleteBelongsToBrandRelationship(carModel.id, brand.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›belongs-to-brand‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›belongs-to-brand‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL, NodeTypeEnum.BRAND, RelationshipType.CarModelBelongsToBrand)
+        const seededRelationship = await seedRelationship(ControllerNodeType.CAR_MODEL, ControllerNodeType.BRAND, RelationshipType.CarModelBelongsToBrand)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,

@@ -1,7 +1,7 @@
 import express from "express"
 import {LapTime} from "../../../models/node-types/lap-times/LapTime"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../models/types/RelNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
@@ -13,7 +13,7 @@ export async function getAchievedWithCarModelVariantRelation(req: express.Reques
 
     try {
         const relation = await LapTime.getAchievedWithCarModelVariantRelationship(lapTimeId)
-        const marshalledData = marshalRelation(relation, NodeTypeEnum.CAR_MODEL_VARIANT)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.CAR_MODEL_VARIANT)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

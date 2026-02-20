@@ -3,20 +3,20 @@ import type {ImageBelongsToNodeTypeRelationships} from "../../../../../../src/mo
 import {
     marshalBelongsToNodeTypeRelationships
 } from "../../../../../../src/controllers/node-types/images/marshalling/marshalBelongsToNodeTypeRelationships"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {kebabCase} from "change-case"
 import {RelationType} from "../../../../../../src/controllers/relations/types/RelationType"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 test('marshalling a ›belongs-to-node-type‹ relationship collection', async () => {
     const relationships: ImageBelongsToNodeTypeRelationships = {
-        companies: [getRelationshipModel(NodeTypeEnum.COMPANY)],
-        brands: [getRelationshipModel(NodeTypeEnum.BRAND)],
-        car_models: [getRelationshipModel(NodeTypeEnum.CAR_MODEL)],
-        race_tracks: [getRelationshipModel(NodeTypeEnum.RACE_TRACK)],
-        track_layouts: [getRelationshipModel(NodeTypeEnum.TRACK_LAYOUT)],
-        racing_series: [getRelationshipModel(NodeTypeEnum.RACING_SERIES)],
-        racing_events: [getRelationshipModel(NodeTypeEnum.RACING_EVENT)],
+        companies: [getRelationshipModel(ControllerNodeType.COMPANY)],
+        brands: [getRelationshipModel(ControllerNodeType.BRAND)],
+        car_models: [getRelationshipModel(ControllerNodeType.CAR_MODEL)],
+        race_tracks: [getRelationshipModel(ControllerNodeType.RACE_TRACK)],
+        track_layouts: [getRelationshipModel(ControllerNodeType.TRACK_LAYOUT)],
+        racing_series: [getRelationshipModel(ControllerNodeType.RACING_SERIES)],
+        racing_events: [getRelationshipModel(ControllerNodeType.RACING_EVENT)],
     }
 
     const mappedNode = marshalBelongsToNodeTypeRelationships(relationships)
@@ -26,44 +26,44 @@ test('marshalling a ›belongs-to-node-type‹ relationship collection', async (
             data: {
                 companies: {
                     data: [{
-                        data: getExpectedMarshalledRelation(NodeTypeEnum.COMPANY)
+                        data: getExpectedMarshalledRelation(ControllerNodeType.COMPANY)
                     }],
                 },
                 brands: {
                     data: [{
-                        data: getExpectedMarshalledRelation(NodeTypeEnum.BRAND)
+                        data: getExpectedMarshalledRelation(ControllerNodeType.BRAND)
                     }],
                 },
                 car_models: {
                     data: [{
-                        data: getExpectedMarshalledRelation(NodeTypeEnum.CAR_MODEL)
+                        data: getExpectedMarshalledRelation(ControllerNodeType.CAR_MODEL)
                     }]
                 },
                 race_tracks: {
                     data: [{
-                        data: getExpectedMarshalledRelation(NodeTypeEnum.RACE_TRACK)
+                        data: getExpectedMarshalledRelation(ControllerNodeType.RACE_TRACK)
                     }]
                 },
                 track_layouts: {
                     data: [{
-                        data: getExpectedMarshalledRelation(NodeTypeEnum.TRACK_LAYOUT)
+                        data: getExpectedMarshalledRelation(ControllerNodeType.TRACK_LAYOUT)
                     }]
                 },
                 racing_series: {
                     data: [{
-                        data: getExpectedMarshalledRelation(NodeTypeEnum.RACING_SERIES)
+                        data: getExpectedMarshalledRelation(ControllerNodeType.RACING_SERIES)
                     }]
                 },
                 racing_events: {
                     data: [{
-                        data: getExpectedMarshalledRelation(NodeTypeEnum.RACING_EVENT)
+                        data: getExpectedMarshalledRelation(ControllerNodeType.RACING_EVENT)
                     }]
                 },
             }
         })
 })
 
-function getRelationshipModel(nodeType: NodeTypeEnum) {
+function getRelationshipModel(nodeType: ControllerNodeType) {
     return {
         id: 1,
         type: RelType.ImageBelongsToNode,
@@ -82,7 +82,7 @@ function getRelationshipModel(nodeType: NodeTypeEnum) {
     }
 }
 
-function getExpectedMarshalledRelation(nodeType: NodeTypeEnum) {
+function getExpectedMarshalledRelation(nodeType: ControllerNodeType) {
     return {
         relationship_id: 1,
         relationship_name: RelationType.ImageBelongsToNode,

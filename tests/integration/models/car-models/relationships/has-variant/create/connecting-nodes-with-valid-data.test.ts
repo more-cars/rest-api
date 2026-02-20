@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {CarModel} from "../../../../../../../src/models/node-types/car-models/CarModel"
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›has-variant‹ relationship with valid data', async () => {
-    const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
-    const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)
+    const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
+    const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
     const createdRelationship = await CarModel.createHasVariantRelationship(carModel.id, carModelVariant.id)
 

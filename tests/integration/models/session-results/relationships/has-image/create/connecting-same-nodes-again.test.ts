@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {SessionResult} from "../../../../../../../src/models/node-types/session-results/SessionResult"
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›has-image‹ relationship again', async () => {
-    const sessionResult = await seedNode(NodeTypeEnum.SESSION_RESULT)
-    const image = await seedNode(NodeTypeEnum.IMAGE)
+    const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+    const image = await seedNode(ControllerNodeType.IMAGE)
 
     await expect(SessionResult.createHasImageRelationship(sessionResult.id, image.id))
         .resolves

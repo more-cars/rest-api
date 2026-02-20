@@ -1,7 +1,7 @@
 import express from "express"
 import {CarModel} from "../../../models/node-types/car-models/CarModel"
 import {marshalRelations} from "../../relations/marshalRelations"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"
@@ -12,7 +12,7 @@ export async function getAllHasVariantRelations(req: express.Request, res: expre
 
     try {
         const relations = await CarModel.getAllHasVariantRelationships(carModelId)
-        const marshalledData = marshalRelations(relations, NodeTypeEnum.CAR_MODEL_VARIANT)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.CAR_MODEL_VARIANT)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

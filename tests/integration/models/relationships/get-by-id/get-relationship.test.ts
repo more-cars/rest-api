@@ -5,11 +5,11 @@ import {Relationship} from "../../../../../src/models/Relationship"
 import {validateJson} from "../../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../../_toolbox/schemas/model/RelationshipSchema"
 import {RelNotFoundError} from "../../../../../src/models/types/RelNotFoundError"
-import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
 
 describe('Requesting a relationship', () => {
     test('relationship exists', async () => {
-        const expectedRelationship = await seedRelationship(NodeTypeEnum.BRAND, NodeTypeEnum.CAR_MODEL, RelationshipType.BrandHasCarModel)
+        const expectedRelationship = await seedRelationship(ControllerNodeType.BRAND, ControllerNodeType.CAR_MODEL, RelationshipType.BrandHasCarModel)
         const actualRelationship = await Relationship.findById(expectedRelationship.id)
 
         expect(validateJson(actualRelationship, RelationshipSchema))

@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {SessionResult} from "../../../../../../../src/models/node-types/session-results/SessionResult"
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›has-lap-time‹ relationship with valid data', async () => {
-    const sessionResult = await seedNode(NodeTypeEnum.SESSION_RESULT)
-    const lapTime = await seedNode(NodeTypeEnum.LAP_TIME)
+    const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+    const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
     const createdRelationship = await SessionResult.createHasLapTimeRelationship(sessionResult.id, lapTime.id)
 

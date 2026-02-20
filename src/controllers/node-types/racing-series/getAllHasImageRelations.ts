@@ -1,7 +1,7 @@
 import express from "express"
 import {RacingSeries} from "../../../models/node-types/racing-series/RacingSeries"
 import {marshalRelations} from "../../relations/marshalRelations"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"
@@ -12,7 +12,7 @@ export async function getAllHasImageRelations(req: express.Request, res: express
 
     try {
         const relations = await RacingSeries.getAllHasImageRelationships(racingSeriesId)
-        const marshalledData = marshalRelations(relations, NodeTypeEnum.IMAGE)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.IMAGE)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

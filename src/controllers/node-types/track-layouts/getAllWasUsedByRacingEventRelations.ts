@@ -1,7 +1,7 @@
 import express from "express"
 import {TrackLayout} from "../../../models/node-types/track-layouts/TrackLayout"
 import {marshalRelations} from "../../relations/marshalRelations"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"
@@ -12,7 +12,7 @@ export async function getAllWasUsedByRacingEventRelations(req: express.Request, 
 
     try {
         const relations = await TrackLayout.getAllWasUsedByRacingEventRelationships(trackLayoutId)
-        const marshalledData = marshalRelations(relations, NodeTypeEnum.RACING_EVENT)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.RACING_EVENT)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

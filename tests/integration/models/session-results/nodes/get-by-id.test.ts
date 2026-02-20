@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {SessionResult} from "../../../../../src/models/node-types/session-results/SessionResult"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
 
 test('Fetching a SESSION RESULT that does not exist should return "false"', async () => {
     const expectedSessionResult = false
@@ -12,7 +12,7 @@ test('Fetching a SESSION RESULT that does not exist should return "false"', asyn
 })
 
 test('When the SESSION RESULT exists it should be returned', async () => {
-    const expectedSessionResult = await seedNode(NodeTypeEnum.SESSION_RESULT)
+    const expectedSessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
     const actualSessionResult = await SessionResult.findById(expectedSessionResult.id)
 
     expect(actualSessionResult)

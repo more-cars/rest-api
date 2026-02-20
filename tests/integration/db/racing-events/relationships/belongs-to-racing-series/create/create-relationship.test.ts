@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 describe('Creating a ›belongs-to-racing-series‹ relationship', () => {
     test('with valid data', async () => {
-        const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
-        const racingSeries = await seedNode(NodeTypeEnum.RACING_SERIES)
+        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+        const racingSeries = await seedNode(ControllerNodeType.RACING_SERIES)
 
         const createdRelationship = await createRelationship(
             racingEvent.id,
@@ -30,7 +30,7 @@ describe('Creating a ›belongs-to-racing-series‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
+        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
         const createdRelationship = await createRelationship(
             racingEvent.id,

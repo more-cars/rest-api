@@ -1,7 +1,7 @@
 import express from "express"
 import {RacingEvent} from "../../../models/node-types/racing-events/RacingEvent"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 import {sendResponse201} from "../../responses/sendResponse201"
@@ -15,7 +15,7 @@ export async function createHasImageRelation(req: express.Request, res: express.
 
     try {
         const relation = await RacingEvent.createHasImageRelationship(racingEventId, imageId)
-        const marshalledData = marshalRelation(relation, NodeTypeEnum.IMAGE)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.IMAGE)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

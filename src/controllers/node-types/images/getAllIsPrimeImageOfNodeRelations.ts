@@ -1,7 +1,7 @@
 import express from "express"
 import {Image} from "../../../models/node-types/images/Image"
 import {marshalRelations} from "../../relations/marshalRelations"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"
@@ -12,7 +12,7 @@ export async function getAllIsPrimeImageOfNodeRelations(req: express.Request, re
 
     try {
         const relations = await Image.getAllIsPrimeImageOfNodeRelationships(imageId)
-        const marshalledData = marshalRelations(relations, NodeTypeEnum.BRAND) // TODO determine correct partner node type
+        const marshalledData = marshalRelations(relations, ControllerNodeType.BRAND) // TODO determine correct partner node type
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

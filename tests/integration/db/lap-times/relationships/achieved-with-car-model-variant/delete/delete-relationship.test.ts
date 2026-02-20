@@ -1,14 +1,14 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {deleteSpecificRelationship} from "../../../../../../../src/db/relationships/deleteSpecificRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 describe('Trying to delete a ›achieved-with-car-model-variant‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.CAR_MODEL_VARIANT, RelationshipType.LapTimeAchievedWithCarModelVariant)
+        const seededRelationship = await seedRelationship(ControllerNodeType.LAP_TIME, ControllerNodeType.CAR_MODEL_VARIANT, RelationshipType.LapTimeAchievedWithCarModelVariant)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,
@@ -36,8 +36,8 @@ describe('Trying to delete a ›achieved-with-car-model-variant‹ relationship'
     })
 
     test('nodes exists, but not the relationship', async () => {
-        const lapTime = await seedNode(NodeTypeEnum.LAP_TIME)
-        const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)
+        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
         const relationship = await deleteSpecificRelationship(
             lapTime.id,

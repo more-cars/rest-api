@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
@@ -11,7 +11,7 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 
 describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(NodeTypeEnum.BRAND, NodeTypeEnum.IMAGE, RelationshipType.BrandHasPrimeImage)
+        const expectedRelationship = await seedRelationship(ControllerNodeType.BRAND, ControllerNodeType.IMAGE, RelationshipType.BrandHasPrimeImage)
         const expectedBrandId = expectedRelationship.start_node.id
         const expectedImageId = expectedRelationship.end_node.id
         const actualRelationship = await Brand.getHasPrimeImageRelationship(expectedBrandId)
@@ -27,7 +27,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const brand = await seedNode(NodeTypeEnum.BRAND)
+        const brand = await seedNode(ControllerNodeType.BRAND)
 
         await expect(Brand.getHasPrimeImageRelationship(brand.id))
             .rejects

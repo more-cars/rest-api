@@ -1,6 +1,6 @@
 import {setWorldConstructor, World} from "@cucumber/cucumber"
 import axios from "axios"
-import type {NodeTypeEnum} from "../../../src/controllers/nodes/types/NodeTypeEnum"
+import type {ControllerNodeType} from "../../../src/controllers/nodes/types/ControllerNodeType"
 
 // By default, Axios fails every request that returns with a status code >= 400.
 // But for the tests we only want them to fail when a server error occurred (status code >= 500).
@@ -20,7 +20,7 @@ class CustomWorld extends World {
         super(options)
     }
 
-    rememberNode(data: any, label: string, nodeType: NodeTypeEnum) {
+    rememberNode(data: any, label: string, nodeType: ControllerNodeType) {
         this.nodes.set(label, {data, nodeType})
     }
 
@@ -28,7 +28,7 @@ class CustomWorld extends World {
         return this.nodes.get(label)
     }
 
-    rememberNodeCollection(data: any[], label: string, nodeType: NodeTypeEnum) {
+    rememberNodeCollection(data: any[], label: string, nodeType: ControllerNodeType) {
         this.nodeCollections.set(label, {data, nodeType})
     }
 

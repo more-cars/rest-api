@@ -1,7 +1,7 @@
 import express from "express"
 import {RacingSeries} from "../../../models/node-types/racing-series/RacingSeries"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 
@@ -16,7 +16,7 @@ export async function createHasPrimeImageRelation(req: express.Request, res: exp
 
     try {
         const relation = await RacingSeries.createHasPrimeImageRelationship(racingSeriesId, imageId)
-        const marshalledData = marshalRelation(relation, NodeTypeEnum.IMAGE)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.IMAGE)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

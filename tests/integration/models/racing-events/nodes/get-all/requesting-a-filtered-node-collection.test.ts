@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {RacingEventNode} from "../../../../../../src/models/node-types/racing-events/types/RacingEventNode"
 import {RacingEvent} from "../../../../../../src/models/node-types/racing-events/RacingEvent"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
@@ -8,7 +8,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all RACING EVENT nodes" request returns only the matching nodes', () => {
     test('when there exist no RACING EVENT nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.RACING_EVENT)
+        await deleteAllNodesOfType(ControllerNodeType.RACING_EVENT)
 
         const expectedNodes: RacingEventNode[] = []
         const actualNodes = await RacingEvent.findAll({
@@ -22,10 +22,10 @@ describe('A filtered "get all RACING EVENT nodes" request returns only the match
     })
 
     test('when there exist RACING EVENT nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.RACING_EVENT)
-        const nodeA = await seedNode(NodeTypeEnum.RACING_EVENT, {name: 'A Node'}) as RacingEventNode
-        await seedNode(NodeTypeEnum.RACING_EVENT, {name: 'B Node'})
-        await seedNode(NodeTypeEnum.RACING_EVENT, {name: 'C Node'})
+        await deleteAllNodesOfType(ControllerNodeType.RACING_EVENT)
+        const nodeA = await seedNode(ControllerNodeType.RACING_EVENT, {name: 'A Node'}) as RacingEventNode
+        await seedNode(ControllerNodeType.RACING_EVENT, {name: 'B Node'})
+        await seedNode(ControllerNodeType.RACING_EVENT, {name: 'C Node'})
 
         const filteredNodes = await RacingEvent.findAll({
             filterByProperty: 'name',

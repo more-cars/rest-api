@@ -1,7 +1,7 @@
 import express from "express"
 import {RacingSeries} from "../../../models/node-types/racing-series/RacingSeries"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 
@@ -16,7 +16,7 @@ export async function createHasRacingEventRelation(req: express.Request, res: ex
 
     try {
         const relation = await RacingSeries.createHasRacingEventRelationship(racingSeriesId, racingEventId)
-        const marshalledData = marshalRelation(relation, NodeTypeEnum.RACING_EVENT)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.RACING_EVENT)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

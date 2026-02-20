@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {GamingPlatformNode} from "../../../../../../src/models/node-types/gaming-platforms/types/GamingPlatformNode"
 import {GamingPlatform} from "../../../../../../src/models/node-types/gaming-platforms/GamingPlatform"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all GAMING PLATFORM nodes" request returns the nodes in correct order', () => {
     test('when there exist no GAMING PLATFORM nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.GAMING_PLATFORM)
+        await deleteAllNodesOfType(ControllerNodeType.GAMING_PLATFORM)
 
         const expectedNodes: GamingPlatformNode[] = []
         const actualNodes = await GamingPlatform.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,10 +17,10 @@ describe('A sorted "get all GAMING PLATFORM nodes" request returns the nodes in 
     })
 
     test('when there exist GAMING PLATFORM nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.GAMING_PLATFORM)
-        const nodeA = await seedNode(NodeTypeEnum.GAMING_PLATFORM, {name: 'A Node'}) as GamingPlatformNode
-        const nodeB = await seedNode(NodeTypeEnum.GAMING_PLATFORM, {name: 'B Node'}) as GamingPlatformNode
-        const nodeC = await seedNode(NodeTypeEnum.GAMING_PLATFORM, {name: 'C Node'}) as GamingPlatformNode
+        await deleteAllNodesOfType(ControllerNodeType.GAMING_PLATFORM)
+        const nodeA = await seedNode(ControllerNodeType.GAMING_PLATFORM, {name: 'A Node'}) as GamingPlatformNode
+        const nodeB = await seedNode(ControllerNodeType.GAMING_PLATFORM, {name: 'B Node'}) as GamingPlatformNode
+        const nodeC = await seedNode(ControllerNodeType.GAMING_PLATFORM, {name: 'C Node'}) as GamingPlatformNode
 
         const ascNodes = await GamingPlatform.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

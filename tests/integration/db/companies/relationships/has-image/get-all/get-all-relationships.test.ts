@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
@@ -8,9 +8,9 @@ import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const company = await seedNode(NodeTypeEnum.COMPANY)
-        await seedRelationshipForStartNode(company.id, NodeTypeEnum.IMAGE, RelationshipType.CompanyHasImage)
-        await seedRelationshipForStartNode(company.id, NodeTypeEnum.IMAGE, RelationshipType.CompanyHasImage)
+        const company = await seedNode(ControllerNodeType.COMPANY)
+        await seedRelationshipForStartNode(company.id, ControllerNodeType.IMAGE, RelationshipType.CompanyHasImage)
+        await seedRelationshipForStartNode(company.id, ControllerNodeType.IMAGE, RelationshipType.CompanyHasImage)
 
         const relationships = await getRelationshipCollection(
             company.id,
@@ -23,7 +23,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const company = await seedNode(NodeTypeEnum.COMPANY)
+        const company = await seedNode(ControllerNodeType.COMPANY)
 
         const relationships = await getRelationshipCollection(
             company.id,

@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {CarModel} from "../../../../../src/models/node-types/car-models/CarModel"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
 
 test('Fetching a car model that does not exist should return "false"', async () => {
     const expectedCarModel = false
@@ -12,7 +12,7 @@ test('Fetching a car model that does not exist should return "false"', async () 
 })
 
 test('When the car model exists it should be returned', async () => {
-    const expectedCarModel = await seedNode(NodeTypeEnum.CAR_MODEL)
+    const expectedCarModel = await seedNode(ControllerNodeType.CAR_MODEL)
     const actualCarModel = await CarModel.findById(expectedCarModel.id)
 
     expect(actualCarModel)

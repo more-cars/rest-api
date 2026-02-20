@@ -1,7 +1,7 @@
 import express from "express"
 import {CarModel} from "../../../models/node-types/car-models/CarModel"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../models/types/RelNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
@@ -14,7 +14,7 @@ export async function getSpecificHasImageRelation(req: express.Request, res: exp
 
     try {
         const relation = await CarModel.getSpecificHasImageRelationship(carModelId, imageId)
-        const marshalledData = marshalRelation(relation, NodeTypeEnum.IMAGE)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.IMAGE)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

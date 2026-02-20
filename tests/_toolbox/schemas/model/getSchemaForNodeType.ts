@@ -1,5 +1,5 @@
 import assert from "assert"
-import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
 import {CompanySchema} from "../CompanySchema"
 import {BrandSchema} from "../BrandSchema"
 import {CarModelSchema} from "../CarModelSchema"
@@ -15,35 +15,35 @@ import {RacingGameSchema} from "../RacingGameSchema"
 import {GamingPlatformSchema} from "../GamingPlatformSchema"
 import {ImageSchema} from "../ImageSchema"
 
-export function getSchemaForNodeType(nodeType: NodeTypeEnum) {
+export function getSchemaForNodeType(nodeType: ControllerNodeType) {
     switch (nodeType) {
-        case NodeTypeEnum.COMPANY:
+        case ControllerNodeType.COMPANY:
             return CompanySchema
-        case NodeTypeEnum.BRAND:
+        case ControllerNodeType.BRAND:
             return BrandSchema
-        case NodeTypeEnum.CAR_MODEL:
+        case ControllerNodeType.CAR_MODEL:
             return CarModelSchema
-        case NodeTypeEnum.CAR_MODEL_VARIANT:
+        case ControllerNodeType.CAR_MODEL_VARIANT:
             return CarModelVariantSchema
-        case NodeTypeEnum.RACE_TRACK:
+        case ControllerNodeType.RACE_TRACK:
             return RaceTrackSchema
-        case NodeTypeEnum.TRACK_LAYOUT:
+        case ControllerNodeType.TRACK_LAYOUT:
             return TrackLayoutSchema
-        case NodeTypeEnum.RACING_SERIES:
+        case ControllerNodeType.RACING_SERIES:
             return RacingSeriesSchema
-        case NodeTypeEnum.RACING_EVENT:
+        case ControllerNodeType.RACING_EVENT:
             return RacingEventSchema
-        case NodeTypeEnum.RACING_SESSION:
+        case ControllerNodeType.RACING_SESSION:
             return RacingSessionSchema
-        case NodeTypeEnum.SESSION_RESULT:
+        case ControllerNodeType.SESSION_RESULT:
             return SessionResultSchema
-        case NodeTypeEnum.LAP_TIME:
+        case ControllerNodeType.LAP_TIME:
             return LapTimeSchema
-        case NodeTypeEnum.RACING_GAME:
+        case ControllerNodeType.RACING_GAME:
             return RacingGameSchema
-        case NodeTypeEnum.GAMING_PLATFORM:
+        case ControllerNodeType.GAMING_PLATFORM:
             return GamingPlatformSchema
-        case NodeTypeEnum.IMAGE:
+        case ControllerNodeType.IMAGE:
             return ImageSchema
         default:
             assert.fail(`Node type "${nodeType}" is invalid or unknown`)

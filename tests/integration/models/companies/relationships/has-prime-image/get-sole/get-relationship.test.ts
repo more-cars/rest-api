@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {Company} from "../../../../../../../src/models/node-types/companies/Company"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../../../../_toolbox/schemas/model/RelationshipSchema"
@@ -11,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(NodeTypeEnum.COMPANY, NodeTypeEnum.IMAGE, RelationshipType.CompanyHasPrimeImage)
+        const expectedRelationship = await seedRelationship(ControllerNodeType.COMPANY, ControllerNodeType.IMAGE, RelationshipType.CompanyHasPrimeImage)
         const actualRelationship = await Company.getHasPrimeImageRelationship(expectedRelationship.start_node.id)
 
         expect(validateJson(actualRelationship, RelationshipSchema))
@@ -25,7 +25,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const company = await seedNode(NodeTypeEnum.COMPANY)
+        const company = await seedNode(ControllerNodeType.COMPANY)
 
         await expect(Company.getHasPrimeImageRelationship(company.id))
             .rejects

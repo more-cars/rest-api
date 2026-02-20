@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {FakeNodeInput} from "../../../../_toolbox/fixtures/nodes/FakeNodeInput"
-import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
 import type {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
 import {CarModel} from "../../../../../src/models/node-types/car-models/CarModel"
@@ -12,7 +12,7 @@ test('Unknown properties are ignored', async () => {
     let createdNode
 
     // CAR MODEL
-    const carModelData = Object.assign({}, FakeNodeInput(NodeTypeEnum.CAR_MODEL) as InputCarModelCreate, {
+    const carModelData = Object.assign({}, FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate, {
         "my_property": "NOT_ALLOWED_TO_ADD"
     })
     createdNode = await CarModel.create(carModelData)
@@ -20,7 +20,7 @@ test('Unknown properties are ignored', async () => {
         .not.toContain("my_property")
 
     // BRAND
-    const brandData = Object.assign({}, FakeNodeInput(NodeTypeEnum.BRAND) as InputBrandCreate, {
+    const brandData = Object.assign({}, FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate, {
         "my_property": "NOT_ALLOWED_TO_ADD"
     })
     createdNode = await Brand.create(brandData)
@@ -29,7 +29,7 @@ test('Unknown properties are ignored', async () => {
 
 
     // IMAGE
-    const imageData = Object.assign({}, FakeNodeInput(NodeTypeEnum.IMAGE) as InputImageCreate, {
+    const imageData = Object.assign({}, FakeNodeInput(ControllerNodeType.IMAGE) as InputImageCreate, {
         "my_property": "NOT_ALLOWED_TO_ADD"
     })
     createdNode = await Image.create(imageData)

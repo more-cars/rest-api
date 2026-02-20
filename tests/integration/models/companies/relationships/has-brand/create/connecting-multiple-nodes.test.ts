@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {Company} from "../../../../../../../src/models/node-types/companies/Company"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 test('A COMPANY can have multiple ›has-brand‹ relationships', async () => {
-    const company = await seedNode(NodeTypeEnum.COMPANY)
+    const company = await seedNode(ControllerNodeType.COMPANY)
     const brandsAmount = 3
-    const brands = await seedNodes(NodeTypeEnum.BRAND, brandsAmount)
+    const brands = await seedNodes(ControllerNodeType.BRAND, brandsAmount)
 
     for (const brand of brands) {
         await Company.createHasBrandRelationship(company.id, brand.id)

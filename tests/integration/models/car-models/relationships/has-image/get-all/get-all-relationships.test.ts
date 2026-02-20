@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
@@ -8,9 +8,9 @@ import {CarModel} from "../../../../../../../src/models/node-types/car-models/Ca
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
-        await seedRelationshipForStartNode(carModel.id, NodeTypeEnum.IMAGE, RelationshipType.CarModelHasImage)
-        await seedRelationshipForStartNode(carModel.id, NodeTypeEnum.IMAGE, RelationshipType.CarModelHasImage)
+        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
+        await seedRelationshipForStartNode(carModel.id, ControllerNodeType.IMAGE, RelationshipType.CarModelHasImage)
+        await seedRelationshipForStartNode(carModel.id, ControllerNodeType.IMAGE, RelationshipType.CarModelHasImage)
 
         const relationships = await CarModel.getAllHasImageRelationships(carModel.id)
 
@@ -19,7 +19,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const brand = await seedNode(NodeTypeEnum.CAR_MODEL)
+        const brand = await seedNode(ControllerNodeType.CAR_MODEL)
 
         const relationships = await CarModel.getAllHasImageRelationships(brand.id)
 

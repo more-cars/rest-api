@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {LapTimeNode} from "../../../../../../src/models/node-types/lap-times/types/LapTimeNode"
 import {LapTime} from "../../../../../../src/models/node-types/lap-times/LapTime"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all LAP TIME nodes" request returns the nodes in correct order', () => {
     test('when there exist no LAP TIME nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
+        await deleteAllNodesOfType(ControllerNodeType.LAP_TIME)
 
         const expectedNodes: LapTimeNode[] = []
         const actualNodes = await LapTime.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,10 +17,10 @@ describe('A sorted "get all LAP TIME nodes" request returns the nodes in correct
     })
 
     test('when there exist LAP TIME nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.LAP_TIME)
-        const nodeA = await seedNode(NodeTypeEnum.LAP_TIME, {time: 'A', driver_name: 'A Node'}) as LapTimeNode
-        const nodeB = await seedNode(NodeTypeEnum.LAP_TIME, {time: 'B', driver_name: 'B Node'}) as LapTimeNode
-        const nodeC = await seedNode(NodeTypeEnum.LAP_TIME, {time: 'C', driver_name: 'C Node'}) as LapTimeNode
+        await deleteAllNodesOfType(ControllerNodeType.LAP_TIME)
+        const nodeA = await seedNode(ControllerNodeType.LAP_TIME, {time: 'A', driver_name: 'A Node'}) as LapTimeNode
+        const nodeB = await seedNode(ControllerNodeType.LAP_TIME, {time: 'B', driver_name: 'B Node'}) as LapTimeNode
+        const nodeC = await seedNode(ControllerNodeType.LAP_TIME, {time: 'C', driver_name: 'C Node'}) as LapTimeNode
 
         const ascNodes = await LapTime.findAll({sortByProperty: 'driver_name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

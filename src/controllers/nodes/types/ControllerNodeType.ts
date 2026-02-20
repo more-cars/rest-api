@@ -1,4 +1,4 @@
-export enum NodeTypeEnum {
+export enum ControllerNodeType {
     COMPANY = 'company',
     BRAND = 'brand',
     CAR_MODEL = 'car model',

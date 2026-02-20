@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {RacingSession} from "../../../../../../../src/models/node-types/racing-sessions/RacingSession"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../../../../_toolbox/schemas/model/RelationshipSchema"
@@ -11,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(NodeTypeEnum.RACING_SESSION, NodeTypeEnum.IMAGE, RelationshipType.RacingSessionHasPrimeImage)
+        const expectedRelationship = await seedRelationship(ControllerNodeType.RACING_SESSION, ControllerNodeType.IMAGE, RelationshipType.RacingSessionHasPrimeImage)
         const expectedRacingSessionId = expectedRelationship.start_node.id
         const expectedImageId = expectedRelationship.end_node.id
         const actualRelationship = await RacingSession.getHasPrimeImageRelationship(expectedRacingSessionId)
@@ -27,7 +27,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const racingSession = await seedNode(NodeTypeEnum.RACING_SESSION)
+        const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
 
         await expect(RacingSession.getHasPrimeImageRelationship(racingSession.id))
             .rejects

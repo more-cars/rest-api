@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {SessionResultNode} from "../../../../../../src/models/node-types/session-results/types/SessionResultNode"
 import {SessionResult} from "../../../../../../src/models/node-types/session-results/SessionResult"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
@@ -8,7 +8,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all SESSION RESULT nodes" request returns only the matching nodes', () => {
     test('when there exist no SESSION RESULT nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
+        await deleteAllNodesOfType(ControllerNodeType.SESSION_RESULT)
 
         const expectedNodes: SessionResultNode[] = []
         const actualNodes = await SessionResult.findAll({
@@ -22,10 +22,10 @@ describe('A filtered "get all SESSION RESULT nodes" request returns only the mat
     })
 
     test('when there exist SESSION RESULT nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.SESSION_RESULT)
-        const nodeA = await seedNode(NodeTypeEnum.SESSION_RESULT, {position: 1}) as SessionResultNode
-        await seedNode(NodeTypeEnum.SESSION_RESULT, {position: 2})
-        await seedNode(NodeTypeEnum.SESSION_RESULT, {position: 3})
+        await deleteAllNodesOfType(ControllerNodeType.SESSION_RESULT)
+        const nodeA = await seedNode(ControllerNodeType.SESSION_RESULT, {position: 1}) as SessionResultNode
+        await seedNode(ControllerNodeType.SESSION_RESULT, {position: 2})
+        await seedNode(ControllerNodeType.SESSION_RESULT, {position: 3})
 
         const filteredNodes = await SessionResult.findAll({
             filterByProperty: 'position',

@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {CarModel} from "../../../../../../../src/models/node-types/car-models/CarModel"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 test('A CAR MODEL cannot have multiple ›has-successor‹ relationships', async () => {
-    const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
+    const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
     const partnerNodesAmount = 3
-    const partnerNodes = await seedNodes(NodeTypeEnum.CAR_MODEL, partnerNodesAmount)
+    const partnerNodes = await seedNodes(ControllerNodeType.CAR_MODEL, partnerNodesAmount)
 
     for (const partnerNode of partnerNodes) {
         await CarModel.createHasSuccessorRelationship(carModel.id, partnerNode.id)

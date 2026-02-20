@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {RacingSession} from "../../../../../../../src/models/node-types/racing-sessions/RacingSession"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›belongs-to-racing-event‹ relationship', () => {
     test('RACING SESSION node does not exist', async () => {
-        const racingSession = await seedNode(NodeTypeEnum.RACING_SESSION)
+        const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
 
         await expect(RacingSession.deleteBelongsToRacingEventRelationship(racingSession.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›belongs-to-racing-event‹ relationship', () => {
     })
 
     test('RACING EVENT node does not exist', async () => {
-        const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
+        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
         await expect(RacingSession.deleteBelongsToRacingEventRelationship(-42, racingEvent.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›belongs-to-racing-event‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›belongs-to-racing-event‹ relationship', async () => {
-        const racingSession = await seedNode(NodeTypeEnum.RACING_SESSION)
-        const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
+        const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
+        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
         await expect(RacingSession.deleteBelongsToRacingEventRelationship(racingSession.id, racingEvent.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›belongs-to-racing-event‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›belongs-to-racing-event‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.RACING_SESSION, NodeTypeEnum.RACING_EVENT, RelationshipType.RacingSessionBelongsToRacingEvent)
+        const seededRelationship = await seedRelationship(ControllerNodeType.RACING_SESSION, ControllerNodeType.RACING_EVENT, RelationshipType.RacingSessionBelongsToRacingEvent)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,

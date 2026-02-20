@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {CarModelVariantNode} from "../../../../../../src/models/node-types/car-model-variants/types/CarModelVariantNode"
 import {CarModelVariant} from "../../../../../../src/models/node-types/car-model-variants/CarModelVariant"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all CAR MODEL VARIANT nodes" request returns the nodes in correct order', () => {
     test('when there exist no CAR MODEL VARIANT nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL_VARIANT)
+        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL_VARIANT)
 
         const expectedNodes: CarModelVariantNode[] = []
         const actualNodes = await CarModelVariant.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,10 +17,10 @@ describe('A sorted "get all CAR MODEL VARIANT nodes" request returns the nodes i
     })
 
     test('when there exist CAR MODEL VARIANT nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL_VARIANT)
-        const nodeA = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT, {name: 'A Node'}) as CarModelVariantNode
-        const nodeB = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT, {name: 'B Node'}) as CarModelVariantNode
-        const nodeC = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT, {name: 'C Node'}) as CarModelVariantNode
+        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL_VARIANT)
+        const nodeA = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT, {name: 'A Node'}) as CarModelVariantNode
+        const nodeB = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT, {name: 'B Node'}) as CarModelVariantNode
+        const nodeC = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT, {name: 'C Node'}) as CarModelVariantNode
 
         const ascNodes = await CarModelVariant.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

@@ -1,7 +1,7 @@
 import {When, world} from "@cucumber/cucumber"
 import axios from "axios"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
-import type {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
+import type {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
 import assert from "assert"
 
 When('the user requests a {string} collection via {string}',
@@ -26,7 +26,7 @@ When('the user requests a {string} collection via {string}',
             apiUrl.replace(':3443', ':3000')
         }
 
-        const path = getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeTypeEnum)
+        const path = getBasePathFragmentForNodeType(nodeType.toLowerCase() as ControllerNodeType)
 
         const response = await axios
             .get(`${apiUrl}/${path}`)

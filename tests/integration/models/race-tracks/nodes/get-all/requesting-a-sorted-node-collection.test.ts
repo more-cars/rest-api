@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {RaceTrackNode} from "../../../../../../src/models/node-types/race-tracks/types/RaceTrackNode"
 import {RaceTrack} from "../../../../../../src/models/node-types/race-tracks/RaceTrack"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all RACE TRACK nodes" request returns the nodes in correct order', () => {
     test('when there exist no RACE TRACK nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.RACE_TRACK)
+        await deleteAllNodesOfType(ControllerNodeType.RACE_TRACK)
 
         const expectedNodes: RaceTrackNode[] = []
         const actualNodes = await RaceTrack.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,10 +17,10 @@ describe('A sorted "get all RACE TRACK nodes" request returns the nodes in corre
     })
 
     test('when there exist RACE TRACK nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.RACE_TRACK)
-        const nodeA = await seedNode(NodeTypeEnum.RACE_TRACK, {name: 'A Node'}) as RaceTrackNode
-        const nodeB = await seedNode(NodeTypeEnum.RACE_TRACK, {name: 'B Node'}) as RaceTrackNode
-        const nodeC = await seedNode(NodeTypeEnum.RACE_TRACK, {name: 'C Node'}) as RaceTrackNode
+        await deleteAllNodesOfType(ControllerNodeType.RACE_TRACK)
+        const nodeA = await seedNode(ControllerNodeType.RACE_TRACK, {name: 'A Node'}) as RaceTrackNode
+        const nodeB = await seedNode(ControllerNodeType.RACE_TRACK, {name: 'B Node'}) as RaceTrackNode
+        const nodeC = await seedNode(ControllerNodeType.RACE_TRACK, {name: 'C Node'}) as RaceTrackNode
 
         const ascNodes = await RaceTrack.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

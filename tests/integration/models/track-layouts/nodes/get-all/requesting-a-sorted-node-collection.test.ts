@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {TrackLayoutNode} from "../../../../../../src/models/node-types/track-layouts/types/TrackLayoutNode"
 import {TrackLayout} from "../../../../../../src/models/node-types/track-layouts/TrackLayout"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all TRACK LAYOUT nodes" request returns the nodes in correct order', () => {
     test('when there exist no TRACK LAYOUT nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
+        await deleteAllNodesOfType(ControllerNodeType.TRACK_LAYOUT)
 
         const expectedNodes: TrackLayoutNode[] = []
         const actualNodes = await TrackLayout.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,10 +17,10 @@ describe('A sorted "get all TRACK LAYOUT nodes" request returns the nodes in cor
     })
 
     test('when there exist TRACK LAYOUT nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
-        const nodeA = await seedNode(NodeTypeEnum.TRACK_LAYOUT, {name: 'A Node'}) as TrackLayoutNode
-        const nodeB = await seedNode(NodeTypeEnum.TRACK_LAYOUT, {name: 'B Node'}) as TrackLayoutNode
-        const nodeC = await seedNode(NodeTypeEnum.TRACK_LAYOUT, {name: 'C Node'}) as TrackLayoutNode
+        await deleteAllNodesOfType(ControllerNodeType.TRACK_LAYOUT)
+        const nodeA = await seedNode(ControllerNodeType.TRACK_LAYOUT, {name: 'A Node'}) as TrackLayoutNode
+        const nodeB = await seedNode(ControllerNodeType.TRACK_LAYOUT, {name: 'B Node'}) as TrackLayoutNode
+        const nodeC = await seedNode(ControllerNodeType.TRACK_LAYOUT, {name: 'C Node'}) as TrackLayoutNode
 
         const ascNodes = await TrackLayout.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

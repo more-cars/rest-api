@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {RacingGameNode} from "../../../../../../src/models/node-types/racing-games/types/RacingGameNode"
 import {RacingGame} from "../../../../../../src/models/node-types/racing-games/RacingGame"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all RACING GAME nodes" request returns the nodes in correct order', () => {
     test('when there exist no RACING GAME nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.RACING_GAME)
+        await deleteAllNodesOfType(ControllerNodeType.RACING_GAME)
 
         const expectedNodes: RacingGameNode[] = []
         const actualNodes = await RacingGame.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,10 +17,10 @@ describe('A sorted "get all RACING GAME nodes" request returns the nodes in corr
     })
 
     test('when there exist RACING GAME nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.RACING_GAME)
-        const nodeA = await seedNode(NodeTypeEnum.RACING_GAME, {name: 'A Node'}) as RacingGameNode
-        const nodeB = await seedNode(NodeTypeEnum.RACING_GAME, {name: 'B Node'}) as RacingGameNode
-        const nodeC = await seedNode(NodeTypeEnum.RACING_GAME, {name: 'C Node'}) as RacingGameNode
+        await deleteAllNodesOfType(ControllerNodeType.RACING_GAME)
+        const nodeA = await seedNode(ControllerNodeType.RACING_GAME, {name: 'A Node'}) as RacingGameNode
+        const nodeB = await seedNode(ControllerNodeType.RACING_GAME, {name: 'B Node'}) as RacingGameNode
+        const nodeC = await seedNode(ControllerNodeType.RACING_GAME, {name: 'C Node'}) as RacingGameNode
 
         const ascNodes = await RacingGame.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

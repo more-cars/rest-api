@@ -1,7 +1,7 @@
 import {DataTable, When, world} from "@cucumber/cucumber"
 import axios from "axios"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
-import type {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
+import type {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
 
 When('the user (tries to )create(s) a {string} {string} with the following data',
     async (nodeType: string, label: string, dataTable: DataTable) => {
@@ -23,7 +23,7 @@ When('the user (tries to )create(s) a {string} {string} with the following data'
         })
 
         const response = await axios
-            .post(`${process.env.API_URL}/${getBasePathFragmentForNodeType(nodeType.toLowerCase() as NodeTypeEnum)}`, data)
+            .post(`${process.env.API_URL}/${getBasePathFragmentForNodeType(nodeType.toLowerCase() as ControllerNodeType)}`, data)
             .catch(error => {
                 console.error(error)
             })

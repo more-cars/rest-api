@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {RacingEvent} from "../../../../../../../src/models/node-types/racing-events/RacingEvent"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›took-place-at-race-track‹ relationship with nodes that do not exist', async () => {
-    const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
-    const raceTrack = await seedNode(NodeTypeEnum.RACE_TRACK)
+    const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+    const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
 
     await expect(RacingEvent.createTookPlaceAtRaceTrackRelationship(-42, raceTrack.id))
         .rejects

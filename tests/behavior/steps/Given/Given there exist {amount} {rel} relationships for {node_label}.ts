@@ -1,5 +1,5 @@
 import {Given, world} from "@cucumber/cucumber"
-import type {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
+import type {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {DbNode} from "../../../../src/db/types/DbNode"
 import {getTargetNodeTypeForRelationship} from "../../../_toolbox/getTargetNodeTypeForRelationship"
 import {seedNode} from "../../../_toolbox/dbSeeding/seedNode"
@@ -10,7 +10,7 @@ import {dasherize} from "inflection"
 Given('there exist {int} {string} relationships for {string}',
     async (amount: number, relationshipName: string, startNodeLabel: string) => {
         const startNode: DbNode = world.recallNode(startNodeLabel).data
-        const startNodeType: NodeTypeEnum = world.recallNode(startNodeLabel).nodeType
+        const startNodeType: ControllerNodeType = world.recallNode(startNodeLabel).nodeType
         const endNodeType = getTargetNodeTypeForRelationship(startNodeType, relationshipName)
         const nodePathFragment = getBasePathFragmentForNodeType(world.recallNode(startNodeLabel).nodeType)
 

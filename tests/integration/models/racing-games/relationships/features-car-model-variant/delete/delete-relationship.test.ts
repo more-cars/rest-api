@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {RacingGame} from "../../../../../../../src/models/node-types/racing-games/RacingGame"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›features-car-model-variant‹ relationship', () => {
     test('RACING GAME node does not exist', async () => {
-        const racingGame = await seedNode(NodeTypeEnum.RACING_GAME)
+        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
         await expect(RacingGame.deleteFeaturesCarModelVariantRelationship(racingGame.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›features-car-model-variant‹ relationship', () => {
     })
 
     test('CAR MODEL VARIANT node does not exist', async () => {
-        const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)
+        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
         await expect(RacingGame.deleteFeaturesCarModelVariantRelationship(-42, carModelVariant.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›features-car-model-variant‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›features-car-model-variant‹ relationship', async () => {
-        const racingGame = await seedNode(NodeTypeEnum.RACING_GAME)
-        const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)
+        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
+        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
         await expect(RacingGame.deleteFeaturesCarModelVariantRelationship(racingGame.id, carModelVariant.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›features-car-model-variant‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›features-car-model-variant‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.RACING_GAME, NodeTypeEnum.CAR_MODEL_VARIANT, RelationshipType.RacingGameFeaturesCarModelVariant)
+        const seededRelationship = await seedRelationship(ControllerNodeType.RACING_GAME, ControllerNodeType.CAR_MODEL_VARIANT, RelationshipType.RacingGameFeaturesCarModelVariant)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,

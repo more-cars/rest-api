@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {CarModelVariantNode} from "../../../../../../src/models/node-types/car-model-variants/types/CarModelVariantNode"
 import {CarModelVariant} from "../../../../../../src/models/node-types/car-model-variants/CarModelVariant"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
@@ -8,7 +8,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all CAR MODEL VARIANT nodes" request returns only the matching nodes', () => {
     test('when there exist no CAR MODEL VARIANT nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL_VARIANT)
+        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL_VARIANT)
 
         const expectedNodes: CarModelVariantNode[] = []
         const actualNodes = await CarModelVariant.findAll({
@@ -22,10 +22,10 @@ describe('A filtered "get all CAR MODEL VARIANT nodes" request returns only the 
     })
 
     test('when there exist CAR MODEL VARIANT nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL_VARIANT)
-        const nodeA = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT, {name: 'A Node'}) as CarModelVariantNode
-        await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT, {name: 'B Node'})
-        await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT, {name: 'C Node'})
+        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL_VARIANT)
+        const nodeA = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT, {name: 'A Node'}) as CarModelVariantNode
+        await seedNode(ControllerNodeType.CAR_MODEL_VARIANT, {name: 'B Node'})
+        await seedNode(ControllerNodeType.CAR_MODEL_VARIANT, {name: 'C Node'})
 
         const filteredNodes = await CarModelVariant.findAll({
             filterByProperty: 'name',

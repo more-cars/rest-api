@@ -1,6 +1,6 @@
 import {expect, test, vi} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {RacingEvent} from "../../../../../../../src/models/node-types/racing-events/RacingEvent"
 
 test('A completely valid request, but the database call fails (e.g. one of the nodes was deleted just a moment ago)', async () => {
@@ -10,8 +10,8 @@ test('A completely valid request, but the database call fails (e.g. one of the n
         }
     })
 
-    const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
-    const racingSeries = await seedNode(NodeTypeEnum.RACING_SERIES)
+    const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+    const racingSeries = await seedNode(ControllerNodeType.RACING_SERIES)
 
     await expect(RacingEvent.createBelongsToRacingSeriesRelationship(racingEvent.id, racingSeries.id))
         .rejects

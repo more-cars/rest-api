@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {RacingEventNode} from "../../../../../../src/models/node-types/racing-events/types/RacingEventNode"
 import {RacingEvent} from "../../../../../../src/models/node-types/racing-events/RacingEvent"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all RACING EVENT nodes" request returns the nodes in correct order', () => {
     test('when there exist no RACING EVENT nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.RACING_EVENT)
+        await deleteAllNodesOfType(ControllerNodeType.RACING_EVENT)
 
         const expectedNodes: RacingEventNode[] = []
         const actualNodes = await RacingEvent.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,10 +17,10 @@ describe('A sorted "get all RACING EVENT nodes" request returns the nodes in cor
     })
 
     test('when there exist RACING EVENT nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.RACING_EVENT)
-        const nodeA = await seedNode(NodeTypeEnum.RACING_EVENT, {name: 'A Node'}) as RacingEventNode
-        const nodeB = await seedNode(NodeTypeEnum.RACING_EVENT, {name: 'B Node'}) as RacingEventNode
-        const nodeC = await seedNode(NodeTypeEnum.RACING_EVENT, {name: 'C Node'}) as RacingEventNode
+        await deleteAllNodesOfType(ControllerNodeType.RACING_EVENT)
+        const nodeA = await seedNode(ControllerNodeType.RACING_EVENT, {name: 'A Node'}) as RacingEventNode
+        const nodeB = await seedNode(ControllerNodeType.RACING_EVENT, {name: 'B Node'}) as RacingEventNode
+        const nodeC = await seedNode(ControllerNodeType.RACING_EVENT, {name: 'C Node'}) as RacingEventNode
 
         const ascNodes = await RacingEvent.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

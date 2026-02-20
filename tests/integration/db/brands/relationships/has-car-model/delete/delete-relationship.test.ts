@@ -1,14 +1,14 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {deleteSpecificRelationship} from "../../../../../../../src/db/relationships/deleteSpecificRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 describe('Trying to delete a ›has-car-model‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.BRAND, NodeTypeEnum.CAR_MODEL, RelationshipType.BrandHasCarModel)
+        const seededRelationship = await seedRelationship(ControllerNodeType.BRAND, ControllerNodeType.CAR_MODEL, RelationshipType.BrandHasCarModel)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,
@@ -36,8 +36,8 @@ describe('Trying to delete a ›has-car-model‹ relationship', () => {
     })
 
     test('nodes exists, but not the relationship', async () => {
-        const brand = await seedNode(NodeTypeEnum.BRAND)
-        const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
+        const brand = await seedNode(ControllerNodeType.BRAND)
+        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
 
         const relationship = await deleteSpecificRelationship(
             brand.id,

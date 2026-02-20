@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {RacingSession} from "../../../../../../../src/models/node-types/racing-sessions/RacingSession"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›has-image‹ relationship', () => {
     test('RACING SESSION node does not exist', async () => {
-        const racingSession = await seedNode(NodeTypeEnum.RACING_SESSION)
+        const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
 
         await expect(RacingSession.deleteHasImageRelationship(racingSession.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›has-image‹ relationship', () => {
     })
 
     test('IMAGE node does not exist', async () => {
-        const image = await seedNode(NodeTypeEnum.IMAGE)
+        const image = await seedNode(ControllerNodeType.IMAGE)
 
         await expect(RacingSession.deleteHasImageRelationship(-42, image.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›has-image‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›has-image‹ relationship', async () => {
-        const racingSession = await seedNode(NodeTypeEnum.RACING_SESSION)
-        const image = await seedNode(NodeTypeEnum.IMAGE)
+        const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
+        const image = await seedNode(ControllerNodeType.IMAGE)
 
         await expect(RacingSession.deleteHasImageRelationship(racingSession.id, image.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›has-image‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-image‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.RACING_SESSION, NodeTypeEnum.IMAGE, RelationshipType.RacingSessionHasImage)
+        const seededRelationship = await seedRelationship(ControllerNodeType.RACING_SESSION, ControllerNodeType.IMAGE, RelationshipType.RacingSessionHasImage)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,

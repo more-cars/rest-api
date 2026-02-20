@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {CarModelVariantNode} from "../../../../../src/db/nodes/car-model-variants/types/CarModelVariantNode"
 import {seedNodes} from "../../../../_toolbox/dbSeeding/seedNodes"
 import {getAllNodesOfType} from "../../../../../src/db/nodes/car-model-variants/getAllNodesOfType"
 
 test('When there are no CAR MODEL VARIANTS then an empty array should be returned', async () => {
-    await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL_VARIANT)
+    await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL_VARIANT)
 
     const expectedCarModelVariants: CarModelVariantNode[] = []
     const actualCarModelVariants = await getAllNodesOfType()
@@ -16,9 +16,9 @@ test('When there are no CAR MODEL VARIANTS then an empty array should be returne
 })
 
 test('When CAR MODEL VARIANTS exist then all of them should be returned', async () => {
-    await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL_VARIANT)
+    await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL_VARIANT)
     const amount = Math.ceil(Math.random() * 50)
-    await seedNodes(NodeTypeEnum.CAR_MODEL_VARIANT, amount)
+    await seedNodes(ControllerNodeType.CAR_MODEL_VARIANT, amount)
 
     const actualCarModelVariants = await getAllNodesOfType()
 

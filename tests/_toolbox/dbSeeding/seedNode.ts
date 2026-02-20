@@ -1,5 +1,5 @@
 import assert from "assert"
-import {NodeTypeEnum} from "../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedCompany} from "./companies/nodes/seedCompany"
 import {seedBrand} from "./brands/nodes/seedBrand"
 import {seedCarModel} from "./car-models/nodes/seedCarModel"
@@ -15,35 +15,35 @@ import {seedRacingGame} from "./racing-games/nodes/seedRacingGame"
 import {seedGamingPlatform} from "./gaming-platforms/nodes/seedGamingPlatform"
 import {seedImage} from "./images/nodes/seedImage"
 
-export async function seedNode(nodeType: NodeTypeEnum, customFakeData: object = {}) {
+export async function seedNode(nodeType: ControllerNodeType, customFakeData: object = {}) {
     switch (nodeType) {
-        case NodeTypeEnum.COMPANY:
+        case ControllerNodeType.COMPANY:
             return seedCompany(customFakeData)
-        case NodeTypeEnum.BRAND:
+        case ControllerNodeType.BRAND:
             return seedBrand(customFakeData)
-        case NodeTypeEnum.CAR_MODEL:
+        case ControllerNodeType.CAR_MODEL:
             return seedCarModel(customFakeData)
-        case NodeTypeEnum.CAR_MODEL_VARIANT:
+        case ControllerNodeType.CAR_MODEL_VARIANT:
             return seedCarModelVariant(customFakeData)
-        case NodeTypeEnum.RACE_TRACK:
+        case ControllerNodeType.RACE_TRACK:
             return seedRaceTrack(customFakeData)
-        case NodeTypeEnum.TRACK_LAYOUT:
+        case ControllerNodeType.TRACK_LAYOUT:
             return seedTrackLayout(customFakeData)
-        case NodeTypeEnum.RACING_SERIES:
+        case ControllerNodeType.RACING_SERIES:
             return seedRacingSeries(customFakeData)
-        case NodeTypeEnum.RACING_EVENT:
+        case ControllerNodeType.RACING_EVENT:
             return seedRacingEvent(customFakeData)
-        case NodeTypeEnum.RACING_SESSION:
+        case ControllerNodeType.RACING_SESSION:
             return seedRacingSession(customFakeData)
-        case NodeTypeEnum.SESSION_RESULT:
+        case ControllerNodeType.SESSION_RESULT:
             return seedSessionResult(customFakeData)
-        case NodeTypeEnum.LAP_TIME:
+        case ControllerNodeType.LAP_TIME:
             return seedLapTime(customFakeData)
-        case NodeTypeEnum.RACING_GAME:
+        case ControllerNodeType.RACING_GAME:
             return seedRacingGame(customFakeData)
-        case NodeTypeEnum.GAMING_PLATFORM:
+        case ControllerNodeType.GAMING_PLATFORM:
             return seedGamingPlatform(customFakeData)
-        case NodeTypeEnum.IMAGE:
+        case ControllerNodeType.IMAGE:
             return seedImage(customFakeData)
         default:
             assert.fail(`Node type "${nodeType}" is invalid or unknown`)

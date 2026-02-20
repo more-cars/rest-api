@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {CarModelNode} from "../../../../../../src/models/node-types/car-models/types/CarModelNode"
 import {CarModel} from "../../../../../../src/models/node-types/car-models/CarModel"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all CAR MODEL nodes" request returns the nodes in correct order', () => {
     test('when there exist no CAR MODEL nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL)
+        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL)
 
         const expectedNodes: CarModelNode[] = []
         const actualNodes = await CarModel.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,10 +17,10 @@ describe('A sorted "get all CAR MODEL nodes" request returns the nodes in correc
     })
 
     test('when there exist CAR MODEL nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL)
-        const nodeA = await seedNode(NodeTypeEnum.CAR_MODEL, {name: 'A Node'}) as CarModelNode
-        const nodeB = await seedNode(NodeTypeEnum.CAR_MODEL, {name: 'B Node'}) as CarModelNode
-        const nodeC = await seedNode(NodeTypeEnum.CAR_MODEL, {name: 'C Node'}) as CarModelNode
+        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL)
+        const nodeA = await seedNode(ControllerNodeType.CAR_MODEL, {name: 'A Node'}) as CarModelNode
+        const nodeB = await seedNode(ControllerNodeType.CAR_MODEL, {name: 'B Node'}) as CarModelNode
+        const nodeC = await seedNode(ControllerNodeType.CAR_MODEL, {name: 'C Node'}) as CarModelNode
 
         const ascNodes = await CarModel.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

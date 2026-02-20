@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {RaceTrack} from "../../../../../../../src/models/node-types/race-tracks/RaceTrack"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../../../../_toolbox/schemas/model/RelationshipSchema"
@@ -11,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(NodeTypeEnum.RACE_TRACK, NodeTypeEnum.IMAGE, RelationshipType.RaceTrackHasPrimeImage)
+        const expectedRelationship = await seedRelationship(ControllerNodeType.RACE_TRACK, ControllerNodeType.IMAGE, RelationshipType.RaceTrackHasPrimeImage)
         const expectedRaceTrackId = expectedRelationship.start_node.id
         const expectedImageId = expectedRelationship.end_node.id
         const actualRelationship = await RaceTrack.getHasPrimeImageRelationship(expectedRaceTrackId)
@@ -27,7 +27,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const raceTrack = await seedNode(NodeTypeEnum.RACE_TRACK)
+        const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
 
         await expect(RaceTrack.getHasPrimeImageRelationship(raceTrack.id))
             .rejects

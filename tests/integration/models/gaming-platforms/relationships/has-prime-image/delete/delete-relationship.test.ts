@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {GamingPlatform} from "../../../../../../../src/models/node-types/gaming-platforms/GamingPlatform"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›has-prime-image‹ relationship', () => {
     test('GAMING PLATFORM node does not exist', async () => {
-        const gamingPlatform = await seedNode(NodeTypeEnum.GAMING_PLATFORM)
+        const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
 
         await expect(GamingPlatform.deleteHasPrimeImageRelationship(gamingPlatform.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('IMAGE node does not exist', async () => {
-        const image = await seedNode(NodeTypeEnum.IMAGE)
+        const image = await seedNode(ControllerNodeType.IMAGE)
 
         await expect(GamingPlatform.deleteHasPrimeImageRelationship(-42, image.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›has-prime-image‹ relationship', async () => {
-        const gamingPlatform = await seedNode(NodeTypeEnum.GAMING_PLATFORM)
-        const image = await seedNode(NodeTypeEnum.IMAGE)
+        const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
+        const image = await seedNode(ControllerNodeType.IMAGE)
 
         await expect(GamingPlatform.deleteHasPrimeImageRelationship(gamingPlatform.id, image.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-prime-image‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.GAMING_PLATFORM, NodeTypeEnum.IMAGE, RelationshipType.GamingPlatformHasPrimeImage)
+        const seededRelationship = await seedRelationship(ControllerNodeType.GAMING_PLATFORM, ControllerNodeType.IMAGE, RelationshipType.GamingPlatformHasPrimeImage)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,

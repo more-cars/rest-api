@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {ImageNode} from "../../../../../../src/models/node-types/images/types/ImageNode"
 import {Image} from "../../../../../../src/models/node-types/images/Image"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
@@ -8,7 +8,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all IMAGE nodes" request returns only the matching nodes', () => {
     test('when there exist no IMAGE nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
+        await deleteAllNodesOfType(ControllerNodeType.IMAGE)
 
         const expectedNodes: ImageNode[] = []
         const actualNodes = await Image.findAll({
@@ -22,10 +22,10 @@ describe('A filtered "get all IMAGE nodes" request returns only the matching nod
     })
 
     test('when there exist IMAGE nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
-        const nodeA = await seedNode(NodeTypeEnum.IMAGE, {name: 'A Node'}) as ImageNode
-        await seedNode(NodeTypeEnum.IMAGE, {name: 'B Node'})
-        await seedNode(NodeTypeEnum.IMAGE, {name: 'C Node'})
+        await deleteAllNodesOfType(ControllerNodeType.IMAGE)
+        const nodeA = await seedNode(ControllerNodeType.IMAGE, {name: 'A Node'}) as ImageNode
+        await seedNode(ControllerNodeType.IMAGE, {name: 'B Node'})
+        await seedNode(ControllerNodeType.IMAGE, {name: 'C Node'})
 
         const filteredNodes = await Image.findAll({
             filterByProperty: 'name',

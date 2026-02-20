@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {CompanyNode} from "../../../../../../src/models/node-types/companies/types/CompanyNode"
 import {Company} from "../../../../../../src/models/node-types/companies/Company"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all COMPANY nodes" request returns the nodes in correct order', () => {
     test('when there exist no COMPANY nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.COMPANY)
+        await deleteAllNodesOfType(ControllerNodeType.COMPANY)
 
         const expectedNodes: CompanyNode[] = []
         const actualNodes = await Company.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,10 +17,10 @@ describe('A sorted "get all COMPANY nodes" request returns the nodes in correct 
     })
 
     test('when there exist COMPANY nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.COMPANY)
-        const nodeA = await seedNode(NodeTypeEnum.COMPANY, {name: 'A Node'}) as CompanyNode
-        const nodeB = await seedNode(NodeTypeEnum.COMPANY, {name: 'B Node'}) as CompanyNode
-        const nodeC = await seedNode(NodeTypeEnum.COMPANY, {name: 'C Node'}) as CompanyNode
+        await deleteAllNodesOfType(ControllerNodeType.COMPANY)
+        const nodeA = await seedNode(ControllerNodeType.COMPANY, {name: 'A Node'}) as CompanyNode
+        const nodeB = await seedNode(ControllerNodeType.COMPANY, {name: 'B Node'}) as CompanyNode
+        const nodeC = await seedNode(ControllerNodeType.COMPANY, {name: 'C Node'}) as CompanyNode
 
         const ascNodes = await Company.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

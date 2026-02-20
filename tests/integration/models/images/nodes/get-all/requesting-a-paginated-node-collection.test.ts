@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {ImageNode} from "../../../../../../src/models/node-types/images/types/ImageNode"
 import {Image} from "../../../../../../src/models/node-types/images/Image"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A paginated "get all IMAGE nodes" request returns the correct number of nodes', () => {
     test('when there exist no IMAGE nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
+        await deleteAllNodesOfType(ControllerNodeType.IMAGE)
 
         const expectedNodes: ImageNode[] = []
         const actualNodes = await Image.findAll({page: 1})
@@ -17,9 +17,9 @@ describe('A paginated "get all IMAGE nodes" request returns the correct number o
     })
 
     test('when there exist IMAGE nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.IMAGE)
+        await deleteAllNodesOfType(ControllerNodeType.IMAGE)
         const amount = Math.ceil(Math.random() * 20)
-        await seedNodes(NodeTypeEnum.IMAGE, amount)
+        await seedNodes(ControllerNodeType.IMAGE, amount)
 
         const actualNodes = await Image.findAll({page: 1})
 

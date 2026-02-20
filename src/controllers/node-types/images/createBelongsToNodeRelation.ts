@@ -1,7 +1,7 @@
 import express from "express"
 import {Image} from "../../../models/node-types/images/Image"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 import {SemanticError} from "../../../models/types/SemanticError"
@@ -17,7 +17,7 @@ export async function createBelongsToNodeRelation(req: express.Request, res: exp
 
     try {
         const relation = await Image.createBelongsToNodeRelationship(imageId, partnerNodeId)
-        const marshalledData = marshalRelation(relation, NodeTypeEnum.BRAND) // TODO determine correct partner node type
+        const marshalledData = marshalRelation(relation, ControllerNodeType.BRAND) // TODO determine correct partner node type
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

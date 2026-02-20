@@ -1,7 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
@@ -10,7 +10,7 @@ import {Company} from "../../../../../../../src/models/node-types/companies/Comp
 
 describe('Deleting a ›has-prime-image‹ relationship', () => {
     test('COMPANY node does not exist', async () => {
-        const company = await seedNode(NodeTypeEnum.COMPANY)
+        const company = await seedNode(ControllerNodeType.COMPANY)
 
         await expect(Company.deleteHasPrimeImageRelationship(company.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('IMAGE node does not exist', async () => {
-        const image = await seedNode(NodeTypeEnum.IMAGE)
+        const image = await seedNode(ControllerNodeType.IMAGE)
 
         await expect(Company.deleteHasPrimeImageRelationship(-42, image.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›has-prime-image‹ relationship', async () => {
-        const company = await seedNode(NodeTypeEnum.COMPANY)
-        const image = await seedNode(NodeTypeEnum.IMAGE)
+        const company = await seedNode(ControllerNodeType.COMPANY)
+        const image = await seedNode(ControllerNodeType.IMAGE)
 
         await expect(Company.deleteHasPrimeImageRelationship(company.id, image.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-prime-image‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.COMPANY, NodeTypeEnum.IMAGE, RelationshipType.CompanyHasPrimeImage)
+        const seededRelationship = await seedRelationship(ControllerNodeType.COMPANY, ControllerNodeType.IMAGE, RelationshipType.CompanyHasPrimeImage)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,

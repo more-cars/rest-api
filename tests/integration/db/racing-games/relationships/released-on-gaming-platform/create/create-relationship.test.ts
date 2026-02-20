@@ -2,12 +2,12 @@ import {describe, expect, test} from 'vitest'
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 
 describe('Creating a ›released-on-gaming-platform‹ relationship', () => {
     test('with valid data', async () => {
-        const racingGame = await seedNode(NodeTypeEnum.RACING_GAME)
-        const gamingPlatform = await seedNode(NodeTypeEnum.GAMING_PLATFORM)
+        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
+        const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
 
         const createdRelationship = await createRelationship(
             racingGame.id,
@@ -30,7 +30,7 @@ describe('Creating a ›released-on-gaming-platform‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const racingGame = await seedNode(NodeTypeEnum.RACING_GAME)
+        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
         const createdRelationship = await createRelationship(
             racingGame.id,

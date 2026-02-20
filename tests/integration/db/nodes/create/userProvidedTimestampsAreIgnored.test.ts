@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {FakeNodeInput} from "../../../../_toolbox/fixtures/nodes/FakeNodeInput"
-import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
 import type {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
 import type {InputImageCreate} from "../../../../../src/db/nodes/images/types/InputImageCreate"
@@ -11,7 +11,7 @@ import FakeImageFull from "../../../../_toolbox/fixtures/nodes/FakeImageFull"
 
 test('Timestamps provided by the user are ignored', async () => {
     // BRAND
-    const brandData = FakeNodeInput(NodeTypeEnum.BRAND) as InputBrandCreate
+    const brandData = FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate
     const createdBrand = await createBrandNode(brandData)
 
     expect(createdBrand).toHaveProperty('created_at')
@@ -20,7 +20,7 @@ test('Timestamps provided by the user are ignored', async () => {
     expect(createdBrand).not.toHaveProperty('updated_at', "blobb")
 
     // CAR MODEL
-    const carModelData = FakeNodeInput(NodeTypeEnum.CAR_MODEL) as InputCarModelCreate
+    const carModelData = FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate
     const createdCarModel = await createCarModelNode(carModelData)
 
     expect(createdCarModel).toHaveProperty('created_at')

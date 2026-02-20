@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {LapTime} from "../../../../../../../src/models/node-types/lap-times/LapTime"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›achieved-on-track-layout‹ relationship', () => {
     test('LAP TIME node does not exist', async () => {
-        const lapTime = await seedNode(NodeTypeEnum.LAP_TIME)
+        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
         await expect(LapTime.deleteAchievedOnTrackLayoutRelationship(lapTime.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›achieved-on-track-layout‹ relationship', () => {
     })
 
     test('TRACK LAYOUT node does not exist', async () => {
-        const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
+        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
         await expect(LapTime.deleteAchievedOnTrackLayoutRelationship(-42, trackLayout.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›achieved-on-track-layout‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›achieved-on-track-layout‹ relationship', async () => {
-        const lapTime = await seedNode(NodeTypeEnum.LAP_TIME)
-        const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
+        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
         await expect(LapTime.deleteAchievedOnTrackLayoutRelationship(lapTime.id, trackLayout.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›achieved-on-track-layout‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›achieved-on-track-layout‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.LAP_TIME, NodeTypeEnum.TRACK_LAYOUT, RelationshipType.LapTimeAchievedOnTrackLayout)
+        const seededRelationship = await seedRelationship(ControllerNodeType.LAP_TIME, ControllerNodeType.TRACK_LAYOUT, RelationshipType.LapTimeAchievedOnTrackLayout)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,

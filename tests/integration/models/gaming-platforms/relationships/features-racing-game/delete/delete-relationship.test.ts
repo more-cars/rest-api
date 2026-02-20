@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {GamingPlatform} from "../../../../../../../src/models/node-types/gaming-platforms/GamingPlatform"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›features-racing-game‹ relationship', () => {
     test('GAMING PLATFORM node does not exist', async () => {
-        const gamingPlatform = await seedNode(NodeTypeEnum.GAMING_PLATFORM)
+        const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
 
         await expect(GamingPlatform.deleteFeaturesRacingGameRelationship(gamingPlatform.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›features-racing-game‹ relationship', () => {
     })
 
     test('RACING GAME node does not exist', async () => {
-        const racingGame = await seedNode(NodeTypeEnum.RACING_GAME)
+        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
         await expect(GamingPlatform.deleteFeaturesRacingGameRelationship(-42, racingGame.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›features-racing-game‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›features-racing-game‹ relationship', async () => {
-        const gamingPlatform = await seedNode(NodeTypeEnum.GAMING_PLATFORM)
-        const racingGame = await seedNode(NodeTypeEnum.RACING_GAME)
+        const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
+        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
         await expect(GamingPlatform.deleteFeaturesRacingGameRelationship(gamingPlatform.id, racingGame.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›features-racing-game‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›features-racing-game‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.GAMING_PLATFORM, NodeTypeEnum.RACING_GAME, RelationshipType.GamingPlatformFeaturesRacingGame)
+        const seededRelationship = await seedRelationship(ControllerNodeType.GAMING_PLATFORM, ControllerNodeType.RACING_GAME, RelationshipType.GamingPlatformFeaturesRacingGame)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,

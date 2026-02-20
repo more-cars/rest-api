@@ -1,7 +1,7 @@
 import express from "express"
 import {Image} from "../../../models/node-types/images/Image"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../models/types/RelNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
@@ -14,7 +14,7 @@ export async function getSpecificBelongsToNodeRelation(req: express.Request, res
 
     try {
         const relation = await Image.getSpecificBelongsToNodeRelationship(imageId, partnerNodeId)
-        const marshalledData = marshalRelation(relation, NodeTypeEnum.BRAND) // TODO provide correct partner node type
+        const marshalledData = marshalRelation(relation, ControllerNodeType.BRAND) // TODO provide correct partner node type
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

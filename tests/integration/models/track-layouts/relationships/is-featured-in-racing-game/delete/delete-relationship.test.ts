@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {TrackLayout} from "../../../../../../../src/models/node-types/track-layouts/TrackLayout"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›is-featured-in-racing-game‹ relationship', () => {
     test('TRACK LAYOUT node does not exist', async () => {
-        const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
+        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
         await expect(TrackLayout.deleteIsFeaturedInRacingGameRelationship(trackLayout.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›is-featured-in-racing-game‹ relationship', () => {
     })
 
     test('RACING GAME node does not exist', async () => {
-        const racingGame = await seedNode(NodeTypeEnum.RACING_GAME)
+        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
         await expect(TrackLayout.deleteIsFeaturedInRacingGameRelationship(-42, racingGame.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›is-featured-in-racing-game‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›is-featured-in-racing-game‹ relationship', async () => {
-        const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
-        const racingGame = await seedNode(NodeTypeEnum.RACING_GAME)
+        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
         await expect(TrackLayout.deleteIsFeaturedInRacingGameRelationship(trackLayout.id, racingGame.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›is-featured-in-racing-game‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›is-featured-in-racing-game‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.TRACK_LAYOUT, NodeTypeEnum.RACING_GAME, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
+        const seededRelationship = await seedRelationship(ControllerNodeType.TRACK_LAYOUT, ControllerNodeType.RACING_GAME, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,

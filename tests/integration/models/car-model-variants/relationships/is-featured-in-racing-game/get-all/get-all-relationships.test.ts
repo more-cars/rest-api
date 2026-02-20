@@ -1,16 +1,16 @@
 import {describe, expect, test} from 'vitest'
 import {CarModelVariant} from "../../../../../../../src/models/node-types/car-model-variants/CarModelVariant"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 describe('Requesting all ›is-featured-in-racing-game‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)
-        await seedRelationshipForStartNode(carModelVariant.id, NodeTypeEnum.RACING_GAME, RelationshipType.CarModelVariantIsFeaturedInRacingGame)
-        await seedRelationshipForStartNode(carModelVariant.id, NodeTypeEnum.RACING_GAME, RelationshipType.CarModelVariantIsFeaturedInRacingGame)
+        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
+        await seedRelationshipForStartNode(carModelVariant.id, ControllerNodeType.RACING_GAME, RelationshipType.CarModelVariantIsFeaturedInRacingGame)
+        await seedRelationshipForStartNode(carModelVariant.id, ControllerNodeType.RACING_GAME, RelationshipType.CarModelVariantIsFeaturedInRacingGame)
 
         const relationships = await CarModelVariant.getAllIsFeaturedInRacingGameRelationships(carModelVariant.id)
 
@@ -19,7 +19,7 @@ describe('Requesting all ›is-featured-in-racing-game‹ relationships', () => 
     })
 
     test('node exists, but no relationships', async () => {
-        const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)
+        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
         const relationships = await CarModelVariant.getAllIsFeaturedInRacingGameRelationships(carModelVariant.id)
 

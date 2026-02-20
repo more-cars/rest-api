@@ -1,16 +1,16 @@
 import {describe, expect, test} from 'vitest'
 import {TrackLayout} from "../../../../../../../src/models/node-types/track-layouts/TrackLayout"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 describe('Requesting all ›is-featured-in-racing-game‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
-        await seedRelationshipForStartNode(trackLayout.id, NodeTypeEnum.RACING_GAME, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
-        await seedRelationshipForStartNode(trackLayout.id, NodeTypeEnum.RACING_GAME, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
+        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+        await seedRelationshipForStartNode(trackLayout.id, ControllerNodeType.RACING_GAME, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
+        await seedRelationshipForStartNode(trackLayout.id, ControllerNodeType.RACING_GAME, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
 
         const relationships = await TrackLayout.getAllIsFeaturedInRacingGameRelationships(trackLayout.id)
 
@@ -19,7 +19,7 @@ describe('Requesting all ›is-featured-in-racing-game‹ relationships', () => 
     })
 
     test('node exists, but no relationships', async () => {
-        const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
+        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
         const relationships = await TrackLayout.getAllIsFeaturedInRacingGameRelationships(trackLayout.id)
 

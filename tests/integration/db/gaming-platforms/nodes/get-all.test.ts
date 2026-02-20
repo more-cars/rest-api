@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {GamingPlatformNode} from "../../../../../src/db/nodes/gaming-platforms/types/GamingPlatformNode"
 import {seedNodes} from "../../../../_toolbox/dbSeeding/seedNodes"
 import {getAllNodesOfType} from "../../../../../src/db/nodes/gaming-platforms/getAllNodesOfType"
 
 test('When there are no GAMING PLATFORMS then an empty array should be returned', async () => {
-    await deleteAllNodesOfType(NodeTypeEnum.GAMING_PLATFORM)
+    await deleteAllNodesOfType(ControllerNodeType.GAMING_PLATFORM)
 
     const expectedGamingPlatforms: GamingPlatformNode[] = []
     const actualGamingPlatforms = await getAllNodesOfType()
@@ -16,9 +16,9 @@ test('When there are no GAMING PLATFORMS then an empty array should be returned'
 })
 
 test('When GAMING PLATFORMS exist then all of them should be returned', async () => {
-    await deleteAllNodesOfType(NodeTypeEnum.GAMING_PLATFORM)
+    await deleteAllNodesOfType(ControllerNodeType.GAMING_PLATFORM)
     const amount = Math.ceil(Math.random() * 50)
-    await seedNodes(NodeTypeEnum.GAMING_PLATFORM, amount)
+    await seedNodes(ControllerNodeType.GAMING_PLATFORM, amount)
 
     const actualGamingPlatforms = await getAllNodesOfType()
 

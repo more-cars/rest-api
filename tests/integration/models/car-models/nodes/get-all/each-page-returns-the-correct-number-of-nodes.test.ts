@@ -3,7 +3,7 @@ import type {CarModelNode} from "../../../../../../src/models/node-types/car-mod
 import {CarModel} from "../../../../../../src/models/node-types/car-models/CarModel"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 
 describe('Each page of a "get all CAR MODEL nodes" request returns the correct number of nodes', () => {
     test.each([
@@ -11,7 +11,7 @@ describe('Each page of a "get all CAR MODEL nodes" request returns the correct n
         [2],
         [99],
     ])('when there exist no CAR MODEL nodes (page=$0)', async (page) => {
-        await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL)
+        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL)
 
         const expectedNodes: CarModelNode[] = []
         const actualNodes = await CarModel.findAll({page})
@@ -24,8 +24,8 @@ describe('Each page of a "get all CAR MODEL nodes" request returns the correct n
         [20, 1, 20],
         [5, 2, 0],
     ])('when there exist $0 CAR MODEL nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
-        await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL)
-        await seedNodes(NodeTypeEnum.CAR_MODEL, totalNodeAmount)
+        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL)
+        await seedNodes(ControllerNodeType.CAR_MODEL, totalNodeAmount)
 
         const expectedNodes = await CarModel.findAll({page})
 

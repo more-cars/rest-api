@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {CarModelNode} from "../../../../../../src/models/node-types/car-models/types/CarModelNode"
 import {CarModel} from "../../../../../../src/models/node-types/car-models/CarModel"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
@@ -8,7 +8,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all CAR MODEL nodes" request returns only the matching nodes', () => {
     test('when there exist no CAR MODEL nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL)
+        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL)
 
         const expectedNodes: CarModelNode[] = []
         const actualNodes = await CarModel.findAll({
@@ -22,10 +22,10 @@ describe('A filtered "get all CAR MODEL nodes" request returns only the matching
     })
 
     test('when there exist CAR MODEL nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.CAR_MODEL)
-        const nodeA = await seedNode(NodeTypeEnum.CAR_MODEL, {name: 'A Node'}) as CarModelNode
-        await seedNode(NodeTypeEnum.CAR_MODEL, {name: 'B Node'})
-        await seedNode(NodeTypeEnum.CAR_MODEL, {name: 'C Node'})
+        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL)
+        const nodeA = await seedNode(ControllerNodeType.CAR_MODEL, {name: 'A Node'}) as CarModelNode
+        await seedNode(ControllerNodeType.CAR_MODEL, {name: 'B Node'})
+        await seedNode(ControllerNodeType.CAR_MODEL, {name: 'C Node'})
 
         const filteredNodes = await CarModel.findAll({
             filterByProperty: 'name',

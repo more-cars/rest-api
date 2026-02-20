@@ -2,12 +2,12 @@ import {describe, expect, test} from 'vitest'
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 
 describe('Creating a ›has-lap-time‹ relationship', () => {
     test('with valid data', async () => {
-        const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
-        const lapTime = await seedNode(NodeTypeEnum.LAP_TIME)
+        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
         const createdRelationship = await createRelationship(
             trackLayout.id,
@@ -30,7 +30,7 @@ describe('Creating a ›has-lap-time‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const trackLayout = await seedNode(NodeTypeEnum.TRACK_LAYOUT)
+        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
         const createdRelationship = await createRelationship(
             trackLayout.id,

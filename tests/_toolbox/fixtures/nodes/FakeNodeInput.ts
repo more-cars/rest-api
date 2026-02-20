@@ -1,5 +1,5 @@
 import assert from "assert"
-import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
 import {FakeCompany} from "./FakeCompany"
 import {FakeBrand} from "./FakeBrand"
 import {FakeCarModel} from "./FakeCarModel"
@@ -15,35 +15,35 @@ import {FakeRacingGame} from "./FakeRacingGame"
 import {FakeGamingPlatform} from "./FakeGamingPlatform"
 import {FakeImage} from "./FakeImage"
 
-export function FakeNodeInput(nodeType: NodeTypeEnum) {
+export function FakeNodeInput(nodeType: ControllerNodeType) {
     switch (nodeType) {
-        case NodeTypeEnum.COMPANY:
+        case ControllerNodeType.COMPANY:
             return FakeCompany.dbInput()
-        case NodeTypeEnum.BRAND:
+        case ControllerNodeType.BRAND:
             return FakeBrand.dbInput()
-        case NodeTypeEnum.CAR_MODEL:
+        case ControllerNodeType.CAR_MODEL:
             return FakeCarModel.dbInput()
-        case NodeTypeEnum.CAR_MODEL_VARIANT:
+        case ControllerNodeType.CAR_MODEL_VARIANT:
             return FakeCarModelVariant.dbInput()
-        case NodeTypeEnum.RACE_TRACK:
+        case ControllerNodeType.RACE_TRACK:
             return FakeRaceTrack.dbInput()
-        case NodeTypeEnum.TRACK_LAYOUT:
+        case ControllerNodeType.TRACK_LAYOUT:
             return FakeTrackLayout.dbInput()
-        case NodeTypeEnum.RACING_SERIES:
+        case ControllerNodeType.RACING_SERIES:
             return FakeRacingSeries.dbInput()
-        case NodeTypeEnum.RACING_EVENT:
+        case ControllerNodeType.RACING_EVENT:
             return FakeRacingEvent.dbInput()
-        case NodeTypeEnum.RACING_SESSION:
+        case ControllerNodeType.RACING_SESSION:
             return FakeRacingSession.dbInput()
-        case NodeTypeEnum.SESSION_RESULT:
+        case ControllerNodeType.SESSION_RESULT:
             return FakeSessionResult.dbInput()
-        case NodeTypeEnum.LAP_TIME:
+        case ControllerNodeType.LAP_TIME:
             return FakeLapTime.dbInput()
-        case NodeTypeEnum.RACING_GAME:
+        case ControllerNodeType.RACING_GAME:
             return FakeRacingGame.dbInput()
-        case NodeTypeEnum.GAMING_PLATFORM:
+        case ControllerNodeType.GAMING_PLATFORM:
             return FakeGamingPlatform.dbInput()
-        case NodeTypeEnum.IMAGE:
+        case ControllerNodeType.IMAGE:
             return FakeImage.dbInput()
         default:
             assert.fail(`Node type "${nodeType}" is invalid or unknown`)

@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {CarModelVariant} from "../../../../../../../src/models/node-types/car-model-variants/CarModelVariant"
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›achieved-session-result‹ relationship with valid data', async () => {
-    const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)
-    const sessionResult = await seedNode(NodeTypeEnum.SESSION_RESULT)
+    const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
+    const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
     const createdRelationship = await CarModelVariant.createAchievedSessionResultRelationship(carModelVariant.id, sessionResult.id)
 

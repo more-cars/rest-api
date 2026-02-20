@@ -1,7 +1,7 @@
 import express from "express"
 import {RacingGame} from "../../../models/node-types/racing-games/RacingGame"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 import {sendResponse201} from "../../responses/sendResponse201"
@@ -15,7 +15,7 @@ export async function createReleasedOnGamingPlatformRelation(req: express.Reques
 
     try {
         const relation = await RacingGame.createReleasedOnGamingPlatformRelationship(racingGameId, gamingPlatformId)
-        const marshalledData = marshalRelation(relation, NodeTypeEnum.GAMING_PLATFORM)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.GAMING_PLATFORM)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

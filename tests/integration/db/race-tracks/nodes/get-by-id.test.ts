@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {getNodeById} from "../../../../../src/db/nodes/race-tracks/getNodeById"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {RaceTrackSchema} from "../../../../_toolbox/schemas/RaceTrackSchema"
 import {validateJson} from "../../../../_toolbox/validateJson"
 
@@ -14,7 +14,7 @@ test('Querying a RACE TRACK that does not exist should return "false"', async ()
 })
 
 test('Querying an existing RACE TRACK should return a db node with correct schema', async () => {
-    const createdNode = await seedNode(NodeTypeEnum.RACE_TRACK)
+    const createdNode = await seedNode(ControllerNodeType.RACE_TRACK)
     const raceTrackNode = await getNodeById(createdNode.id)
 
     expect(validateJson(raceTrackNode, RaceTrackSchema))

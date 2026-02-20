@@ -1,7 +1,7 @@
 import express from "express"
 import {RacingGame} from "../../../models/node-types/racing-games/RacingGame"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 
@@ -16,7 +16,7 @@ export async function createFeaturesCarModelVariantRelation(req: express.Request
 
     try {
         const relation = await RacingGame.createFeaturesCarModelVariantRelationship(racingGameId, carModelVariantId)
-        const marshalledData = marshalRelation(relation, NodeTypeEnum.CAR_MODEL_VARIANT)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.CAR_MODEL_VARIANT)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

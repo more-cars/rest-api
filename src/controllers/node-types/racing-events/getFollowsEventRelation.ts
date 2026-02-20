@@ -1,7 +1,7 @@
 import express from "express"
 import {RacingEvent} from "../../../models/node-types/racing-events/RacingEvent"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../models/types/RelNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
@@ -13,7 +13,7 @@ export async function getFollowsEventRelation(req: express.Request, res: express
 
     try {
         const relation = await RacingEvent.getFollowsEventRelationship(racingEventId)
-        const marshalledData = marshalRelation(relation, NodeTypeEnum.RACING_EVENT)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.RACING_EVENT)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

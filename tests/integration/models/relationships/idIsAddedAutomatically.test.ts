@@ -3,14 +3,14 @@ import {createNode as createBrandNode} from "../../../../src/db/nodes/brands/cre
 import {createNode as createCarModelNode} from "../../../../src/db/nodes/car-models/createNode"
 import assert from "assert"
 import {FakeNodeInput} from "../../../_toolbox/fixtures/nodes/FakeNodeInput"
-import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {InputBrandCreate} from "../../../../src/db/nodes/brands/types/InputBrandCreate"
 import type {InputCarModelCreate} from "../../../../src/db/nodes/car-models/types/InputCarModelCreate"
 import {Brand} from "../../../../src/models/node-types/brands/Brand"
 
 test('ID is added when creating a relationship', async () => {
-    const brand = await createBrandNode(FakeNodeInput(NodeTypeEnum.BRAND) as InputBrandCreate)
-    const carModel = await createCarModelNode(FakeNodeInput(NodeTypeEnum.CAR_MODEL) as InputCarModelCreate)
+    const brand = await createBrandNode(FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate)
+    const carModel = await createCarModelNode(FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate)
     const relationship = await Brand.createHasCarModelRelationship(brand.id, carModel.id)
 
     if (!relationship) {

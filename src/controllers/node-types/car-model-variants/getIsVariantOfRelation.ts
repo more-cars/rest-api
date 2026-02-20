@@ -1,7 +1,7 @@
 import express from "express"
 import {CarModelVariant} from "../../../models/node-types/car-model-variants/CarModelVariant"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../models/types/RelNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
@@ -13,7 +13,7 @@ export async function getIsVariantOfRelation(req: express.Request, res: express.
 
     try {
         const relation = await CarModelVariant.getIsVariantOfRelationship(carModelVariantId)
-        const marshalledData = marshalRelation(relation, NodeTypeEnum.CAR_MODEL)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.CAR_MODEL)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

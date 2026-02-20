@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {CarModel} from "../../../../../../../src/models/node-types/car-models/CarModel"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
 
 test('A CAR MODEL cannot have multiple ›has-prime-image‹ relationships', async () => {
-    const carModel = await seedNode(NodeTypeEnum.CAR_MODEL)
+    const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
     const imagesAmount = 3
-    const images = await seedNodes(NodeTypeEnum.IMAGE, imagesAmount)
+    const images = await seedNodes(ControllerNodeType.IMAGE, imagesAmount)
 
     for (const image of images) {
         await CarModel.createHasPrimeImageRelationship(carModel.id, image.id)

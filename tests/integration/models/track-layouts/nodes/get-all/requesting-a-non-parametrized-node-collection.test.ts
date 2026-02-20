@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {TrackLayoutNode} from "../../../../../../src/models/node-types/track-layouts/types/TrackLayoutNode"
 import {TrackLayout} from "../../../../../../src/models/node-types/track-layouts/TrackLayout"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A non-parametrized "get all TRACK LAYOUT nodes" request returns the correct number of nodes', () => {
     test('when there exist no TRACK LAYOUT nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
+        await deleteAllNodesOfType(ControllerNodeType.TRACK_LAYOUT)
 
         const expectedNodes: TrackLayoutNode[] = []
         const actualNodes = await TrackLayout.findAll()
@@ -17,9 +17,9 @@ describe('A non-parametrized "get all TRACK LAYOUT nodes" request returns the co
     })
 
     test('when there exist TRACK LAYOUT nodes', async () => {
-        await deleteAllNodesOfType(NodeTypeEnum.TRACK_LAYOUT)
+        await deleteAllNodesOfType(ControllerNodeType.TRACK_LAYOUT)
         const amount = Math.ceil(Math.random() * 20)
-        await seedNodes(NodeTypeEnum.TRACK_LAYOUT, amount)
+        await seedNodes(ControllerNodeType.TRACK_LAYOUT, amount)
 
         const actualNodes = await TrackLayout.findAll()
 

@@ -1,7 +1,7 @@
 import express from "express"
 import {SessionResult} from "../../../models/node-types/session-results/SessionResult"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 import {sendResponse201} from "../../responses/sendResponse201"
@@ -15,7 +15,7 @@ export async function createBelongsToRacingSessionRelation(req: express.Request,
 
     try {
         const relation = await SessionResult.createBelongsToRacingSessionRelationship(sessionResultId, racingSessionId)
-        const marshalledData = marshalRelation(relation, NodeTypeEnum.RACING_SESSION)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.RACING_SESSION)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

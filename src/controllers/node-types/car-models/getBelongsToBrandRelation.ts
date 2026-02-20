@@ -1,7 +1,7 @@
 import express from "express"
 import {CarModel} from "../../../models/node-types/car-models/CarModel"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../models/types/RelNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
@@ -13,7 +13,7 @@ export async function getBelongsToBrandRelation(req: express.Request, res: expre
 
     try {
         const relation = await CarModel.getBelongsToBrandRelationship(carModelId)
-        const marshalledData = marshalRelation(relation, NodeTypeEnum.BRAND)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.BRAND)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

@@ -3,7 +3,7 @@ import {check} from "k6"
 import {Trend} from "k6/metrics"
 import {createNode} from "../../_testdata/createNode.ts"
 import {createRelationship} from "../../_testdata/createRelationship.ts"
-import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
 
 const trendDuration = new Trend('duration', true)
 
@@ -27,10 +27,10 @@ export const options = {
 }
 
 export function setup() {
-    const carModelVariantId = createNode(NodeTypeEnum.CAR_MODEL_VARIANT)
-    const lapTimeId = createNode(NodeTypeEnum.LAP_TIME)
+    const carModelVariantId = createNode(ControllerNodeType.CAR_MODEL_VARIANT)
+    const lapTimeId = createNode(ControllerNodeType.LAP_TIME)
     createRelationship(
-        NodeTypeEnum.CAR_MODEL_VARIANT,
+        ControllerNodeType.CAR_MODEL_VARIANT,
         carModelVariantId,
         lapTimeId,
         'achieved lap time',

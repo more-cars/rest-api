@@ -1,7 +1,7 @@
 import express from "express"
 import {RacingSession} from "../../../models/node-types/racing-sessions/RacingSession"
 import {marshalRelations} from "../../relations/marshalRelations"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"
@@ -12,7 +12,7 @@ export async function getAllHasSessionResultRelations(req: express.Request, res:
 
     try {
         const relations = await RacingSession.getAllHasSessionResultRelationships(racingSessionId)
-        const marshalledData = marshalRelations(relations, NodeTypeEnum.SESSION_RESULT)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.SESSION_RESULT)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

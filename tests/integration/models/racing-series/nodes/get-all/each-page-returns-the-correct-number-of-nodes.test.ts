@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {NodeTypeEnum} from "../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {RacingSeriesNode} from "../../../../../../src/models/node-types/racing-series/types/RacingSeriesNode"
 import {RacingSeries} from "../../../../../../src/models/node-types/racing-series/RacingSeries"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
@@ -11,7 +11,7 @@ describe('Each page of a "get all RACING SERIES nodes" request returns the corre
         [2],
         [99],
     ])('when there exist no RACING SERIES nodes (page=$0)', async (page) => {
-        await deleteAllNodesOfType(NodeTypeEnum.RACING_SERIES)
+        await deleteAllNodesOfType(ControllerNodeType.RACING_SERIES)
 
         const expectedNodes: RacingSeriesNode[] = []
         const actualNodes = await RacingSeries.findAll({page})
@@ -24,8 +24,8 @@ describe('Each page of a "get all RACING SERIES nodes" request returns the corre
         [20, 1, 20],
         [5, 2, 0],
     ])('when there exist $0 RACING SERIES nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
-        await deleteAllNodesOfType(NodeTypeEnum.RACING_SERIES)
-        await seedNodes(NodeTypeEnum.RACING_SERIES, totalNodeAmount)
+        await deleteAllNodesOfType(ControllerNodeType.RACING_SERIES)
+        await seedNodes(ControllerNodeType.RACING_SERIES, totalNodeAmount)
 
         const actualNodes = await RacingSeries.findAll({page})
 

@@ -4,7 +4,7 @@ import {check} from "k6"
 import {Trend} from "k6/metrics"
 import {createNode} from "../../_testdata/createNode.ts"
 import {createRelationship} from "../../_testdata/createRelationship.ts"
-import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
 
 const trendDuration = new Trend('duration', true)
 
@@ -28,13 +28,13 @@ export const options = {
 }
 
 export function setup() {
-    const sessionResultId = createNode(NodeTypeEnum.SESSION_RESULT)
+    const sessionResultId = createNode(ControllerNodeType.SESSION_RESULT)
     const racingSessionIds = []
 
     for (let i = 0; i < 310; i++) {
-        const racingSession = createNode(NodeTypeEnum.RACING_SESSION)
+        const racingSession = createNode(ControllerNodeType.RACING_SESSION)
         createRelationship(
-            NodeTypeEnum.SESSION_RESULT,
+            ControllerNodeType.SESSION_RESULT,
             sessionResultId,
             racingSession,
             'belongs to racing session',

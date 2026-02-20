@@ -1,7 +1,7 @@
 import express from "express"
 import {TrackLayout} from "../../../models/node-types/track-layouts/TrackLayout"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 
@@ -16,7 +16,7 @@ export async function createBelongsToRaceTrackRelation(req: express.Request, res
 
     try {
         const relation = await TrackLayout.createBelongsToRaceTrackRelationship(trackLayoutId, raceTrackId)
-        const marshalledData = marshalRelation(relation, NodeTypeEnum.RACE_TRACK)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.RACE_TRACK)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

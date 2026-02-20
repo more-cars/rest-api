@@ -1,10 +1,10 @@
 import neo4j, {Driver, Session} from "neo4j-driver"
-import {NodeTypeEnum} from "../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../src/controllers/nodes/types/ControllerNodeType"
 import {getDriver} from "../../../src/db/driver"
 import {pascalCase} from "change-case"
 import {getNamespacedNodeTypeLabel} from "../../../src/db/getNamespacedNodeTypeLabel"
 
-export async function deleteAllNodesOfType(nodeType: NodeTypeEnum) {
+export async function deleteAllNodesOfType(nodeType: ControllerNodeType) {
     const driver: Driver = getDriver()
     const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 

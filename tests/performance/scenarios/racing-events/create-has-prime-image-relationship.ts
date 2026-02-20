@@ -2,7 +2,7 @@ import http from 'k6/http'
 import {check} from "k6"
 import {Trend} from "k6/metrics"
 import {createNode} from "../../_testdata/createNode.ts"
-import {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum.ts"
+import {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType.ts"
 
 const trendDuration = new Trend('duration', true)
 
@@ -26,8 +26,8 @@ export const options = {
 }
 
 export function setup() {
-    const racingEventId = createNode(NodeTypeEnum.RACING_EVENT)
-    const imageId = createNode(NodeTypeEnum.IMAGE)
+    const racingEventId = createNode(ControllerNodeType.RACING_EVENT)
+    const imageId = createNode(ControllerNodeType.IMAGE)
 
     return {
         racingEventId,

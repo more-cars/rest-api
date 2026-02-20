@@ -1,16 +1,16 @@
 import {describe, expect, test} from 'vitest'
 import {RacingEvent} from "../../../../../../../src/models/node-types/racing-events/RacingEvent"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 describe('Requesting all ›has-racing-session‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
-        await seedRelationshipForStartNode(racingEvent.id, NodeTypeEnum.RACING_SESSION, RelationshipType.RacingEventHasRacingSession)
-        await seedRelationshipForStartNode(racingEvent.id, NodeTypeEnum.RACING_SESSION, RelationshipType.RacingEventHasRacingSession)
+        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+        await seedRelationshipForStartNode(racingEvent.id, ControllerNodeType.RACING_SESSION, RelationshipType.RacingEventHasRacingSession)
+        await seedRelationshipForStartNode(racingEvent.id, ControllerNodeType.RACING_SESSION, RelationshipType.RacingEventHasRacingSession)
 
         const relationships = await RacingEvent.getAllHasRacingSessionRelationships(racingEvent.id)
 
@@ -19,7 +19,7 @@ describe('Requesting all ›has-racing-session‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const racingEvent = await seedNode(NodeTypeEnum.RACING_EVENT)
+        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
         const relationships = await RacingEvent.getAllHasRacingSessionRelationships(racingEvent.id)
 

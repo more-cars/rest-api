@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {LapTime} from "../../../../../src/models/node-types/lap-times/LapTime"
 import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
 
 describe('Deleting a LAP TIME', () => {
     test('that does not exist', async () => {
@@ -12,7 +12,7 @@ describe('Deleting a LAP TIME', () => {
     })
 
     test('that exists', async () => {
-        const node = await seedNode(NodeTypeEnum.LAP_TIME)
+        const node = await seedNode(ControllerNodeType.LAP_TIME)
         await expect(LapTime.delete(node.id))
             .resolves
             .not.toThrow(NodeNotFoundError)

@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../../../../_toolbox/schemas/model/RelationshipSchema"
@@ -11,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Requesting a ›belongs-to-company‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(NodeTypeEnum.BRAND, NodeTypeEnum.COMPANY, RelationshipType.BrandBelongsToCompany)
+        const expectedRelationship = await seedRelationship(ControllerNodeType.BRAND, ControllerNodeType.COMPANY, RelationshipType.BrandBelongsToCompany)
         const expectedBrandId = expectedRelationship.start_node.id
         const expectedCompanyId = expectedRelationship.end_node.id
         const actualRelationship = await Brand.getBelongsToCompanyRelationship(expectedBrandId)
@@ -27,7 +27,7 @@ describe('Requesting a ›belongs-to-company‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const brand = await seedNode(NodeTypeEnum.BRAND)
+        const brand = await seedNode(ControllerNodeType.BRAND)
 
         await expect(Brand.getBelongsToCompanyRelationship(brand.id))
             .rejects

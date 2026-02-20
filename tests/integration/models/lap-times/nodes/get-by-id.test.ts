@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {LapTime} from "../../../../../src/models/node-types/lap-times/LapTime"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
-import {NodeTypeEnum} from "../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
 
 test('Fetching a LAP TIME that does not exist should return "false"', async () => {
     const expectedLapTime = false
@@ -12,7 +12,7 @@ test('Fetching a LAP TIME that does not exist should return "false"', async () =
 })
 
 test('When the LAP TIME exists it should be returned', async () => {
-    const expectedLapTime = await seedNode(NodeTypeEnum.LAP_TIME)
+    const expectedLapTime = await seedNode(ControllerNodeType.LAP_TIME)
     const actualLapTime = await LapTime.findById(expectedLapTime.id)
 
     expect(actualLapTime)

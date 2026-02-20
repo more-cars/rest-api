@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {CarModelVariant} from "../../../../../../../src/models/node-types/car-model-variants/CarModelVariant"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›achieved-session-result‹ relationship', () => {
     test('CAR MODEL VARIANT node does not exist', async () => {
-        const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)
+        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
         await expect(CarModelVariant.deleteAchievedSessionResultRelationship(carModelVariant.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›achieved-session-result‹ relationship', () => {
     })
 
     test('SESSION RESULT node does not exist', async () => {
-        const sessionResult = await seedNode(NodeTypeEnum.SESSION_RESULT)
+        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
         await expect(CarModelVariant.deleteAchievedSessionResultRelationship(-42, sessionResult.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›achieved-session-result‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›achieved-session-result‹ relationship', async () => {
-        const carModelVariant = await seedNode(NodeTypeEnum.CAR_MODEL_VARIANT)
-        const sessionResult = await seedNode(NodeTypeEnum.SESSION_RESULT)
+        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
+        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
         await expect(CarModelVariant.deleteAchievedSessionResultRelationship(carModelVariant.id, sessionResult.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›achieved-session-result‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›achieved-session-result‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(NodeTypeEnum.CAR_MODEL_VARIANT, NodeTypeEnum.SESSION_RESULT, RelationshipType.CarModelVariantAchievedSessionResult)
+        const seededRelationship = await seedRelationship(ControllerNodeType.CAR_MODEL_VARIANT, ControllerNodeType.SESSION_RESULT, RelationshipType.CarModelVariantAchievedSessionResult)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.id,

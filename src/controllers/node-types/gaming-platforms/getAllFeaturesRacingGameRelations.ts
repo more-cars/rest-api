@@ -1,7 +1,7 @@
 import express from "express"
 import {GamingPlatform} from "../../../models/node-types/gaming-platforms/GamingPlatform"
 import {marshalRelations} from "../../relations/marshalRelations"
-import {NodeTypeEnum} from "../../nodes/types/NodeTypeEnum"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"
@@ -12,7 +12,7 @@ export async function getAllFeaturesRacingGameRelations(req: express.Request, re
 
     try {
         const relations = await GamingPlatform.getAllFeaturesRacingGameRelationships(gamingPlatformId)
-        const marshalledData = marshalRelations(relations, NodeTypeEnum.RACING_GAME)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.RACING_GAME)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {
