@@ -1,7 +1,7 @@
 import {NodeType} from "../types/NodeType"
 import {DbNodeType} from "../../db/types/DbNodeType"
 
-export function getDbNodeType(nodeType: NodeType) {
+export function mapModelNodeTypeToDbNodeType(nodeType: NodeType) {
     const mapping = new Map<NodeType, DbNodeType>([
         [NodeType.NODE, DbNodeType.Node],
         [NodeType.IMAGE, DbNodeType.Image],
