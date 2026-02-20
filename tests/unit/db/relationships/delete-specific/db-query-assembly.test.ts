@@ -1,14 +1,16 @@
 import {describe, expect, test} from 'vitest'
-import {getAllDbRelationshipNames} from "../../../../_toolbox/getAllDbRelationshipNames"
-import {RelationshipTypeNeo4j} from "../../../../../src/db/types/RelationshipTypeNeo4j"
+import {getAllDbRelationshipTypes} from "../../../../_toolbox/getAllDbRelationshipTypes"
+import {RelationshipType} from "../../../../../src/db/types/RelationshipType"
 import {deleteSpecificRelationshipQuery} from '../../../../../src/db/relationships/deleteSpecificRelationship'
 import {RelationshipDirection} from "../../../../../src/db/types/RelationshipDirection"
+import {mapDbRelationshipTypeToNeo4jRelationshipType} from "../../../../../src/db/relationships/mapDbRelationshipTypeToNeo4jRelationshipType"
 
 describe('Assembling database query for deleting a relationship', () => {
-    test.each(getAllDbRelationshipNames())('forward $0 relationship', async (relationshipName: RelationshipTypeNeo4j) => {
+    test.each(getAllDbRelationshipTypes())('forward $0 relationship', async (relationshipType: RelationshipType) => {
         const startNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
         const endNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
-        const query = deleteSpecificRelationshipQuery(startNodeId, relationshipName, endNodeId, RelationshipDirection.FORWARD)
+        const query = deleteSpecificRelationshipQuery(startNodeId, relationshipType, endNodeId, RelationshipDirection.FORWARD)
+        const relationshipName = mapDbRelationshipTypeToNeo4jRelationshipType(relationshipType)
 
         expect(query)
             .toEqual(
@@ -16,10 +18,11 @@ describe('Assembling database query for deleting a relationship', () => {
                 "DELETE r")
     })
 
-    test.each(getAllDbRelationshipNames())('reverse $0 relationship', async (relationshipName: RelationshipTypeNeo4j) => {
+    test.each(getAllDbRelationshipTypes())('reverse $0 relationship', async (relationshipType: RelationshipType) => {
         const startNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
         const endNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
-        const query = deleteSpecificRelationshipQuery(startNodeId, relationshipName, endNodeId, RelationshipDirection.REVERSE)
+        const query = deleteSpecificRelationshipQuery(startNodeId, relationshipType, endNodeId, RelationshipDirection.REVERSE)
+        const relationshipName = mapDbRelationshipTypeToNeo4jRelationshipType(relationshipType)
 
         expect(query)
             .toEqual(

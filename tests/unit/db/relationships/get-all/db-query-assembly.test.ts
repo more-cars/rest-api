@@ -1,15 +1,17 @@
 import {describe, expect, test} from 'vitest'
-import {getAllDbRelationshipNames} from "../../../../_toolbox/getAllDbRelationshipNames"
-import {RelationshipTypeNeo4j} from "../../../../../src/db/types/RelationshipTypeNeo4j"
+import {getAllDbRelationshipTypes} from "../../../../_toolbox/getAllDbRelationshipTypes"
+import {RelationshipType} from "../../../../../src/db/types/RelationshipType"
 import {getRelationshipCollectionQuery} from "../../../../../src/db/relationships/getRelationshipCollection"
-import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {RelationshipDirection} from "../../../../../src/db/types/RelationshipDirection"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
+import {mapDbRelationshipTypeToNeo4jRelationshipType} from "../../../../../src/db/relationships/mapDbRelationshipTypeToNeo4jRelationshipType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 describe('Assembling database query for fetching all relationships', () => {
-    test.each(getAllDbRelationshipNames())('forward $0 relationship', async (relationshipName: RelationshipTypeNeo4j) => {
+    test.each(getAllDbRelationshipTypes())('forward $0 relationship', async (relationshipType: RelationshipType) => {
         const startNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
-        const query = getRelationshipCollectionQuery(startNodeId, relationshipName, RelationshipDirection.FORWARD, DbNodeType.LapTime)
+        const query = getRelationshipCollectionQuery(startNodeId, relationshipType, RelationshipDirection.FORWARD, DbNodeType.LapTime)
+        const relationshipName = mapDbRelationshipTypeToNeo4jRelationshipType(relationshipType)
 
         expect(query)
             .toEqual(
@@ -17,9 +19,10 @@ describe('Assembling database query for fetching all relationships', () => {
                 "RETURN a, r, b")
     })
 
-    test.each(getAllDbRelationshipNames())('reverse $0 relationship', async (relationshipName: RelationshipTypeNeo4j) => {
+    test.each(getAllDbRelationshipTypes())('reverse $0 relationship', async (relationshipType: RelationshipType) => {
         const startNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
-        const query = getRelationshipCollectionQuery(startNodeId, relationshipName, RelationshipDirection.REVERSE, DbNodeType.LapTime)
+        const query = getRelationshipCollectionQuery(startNodeId, relationshipType, RelationshipDirection.REVERSE, DbNodeType.LapTime)
+        const relationshipName = mapDbRelationshipTypeToNeo4jRelationshipType(relationshipType)
 
         expect(query)
             .toEqual(

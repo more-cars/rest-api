@@ -1,5 +1,4 @@
 import {RelationshipType} from "../types/RelationshipType"
-import {RelationshipTypeNeo4j} from "../types/RelationshipTypeNeo4j"
 import {DbNodeType} from "../types/DbNodeType"
 import {ImageRelationshipSpecification} from "../nodes/images/types/ImageRelationshipSpecification"
 import {CompanyRelationshipSpecification} from "../nodes/companies/types/CompanyRelationshipSpecification"
@@ -20,7 +19,6 @@ export function getRelationshipSpecification(relationshipType: RelationshipType)
     const mapping = new Map<RelationshipType, {
         startNodeType: DbNodeType,
         endNodeType: DbNodeType,
-        relationshipName: RelationshipTypeNeo4j,
         isReverseRelationship: boolean,
     }>(ImageRelationshipSpecification.concat(
         CompanyRelationshipSpecification,
