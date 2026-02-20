@@ -2,11 +2,15 @@ import {expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from "../../../../../src/app.ts"
 import {TrackLayout} from "../../../../../src/models/node-types/track-layouts/TrackLayout"
+import {ModelNodeType} from "../../../../../src/models/types/ModelNodeType"
 
 test('Input data is valid', async () => {
     TrackLayout.create = vi.fn().mockReturnValue({
-        id: 12345,
-        name: "GP Circuit",
+        node_type: ModelNodeType.TrackLayout,
+        attributes: {
+            id: 12345,
+            name: "GP Circuit",
+        },
     })
 
     const response = await request(app)

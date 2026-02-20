@@ -2,12 +2,16 @@ import {expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from "../../../../../src/app.ts"
 import {SessionResult} from "../../../../../src/models/node-types/session-results/SessionResult"
+import {ModelNodeType} from "../../../../../src/models/types/ModelNodeType"
 
 test('Input data is valid', async () => {
     SessionResult.create = vi.fn().mockReturnValue({
-        id: 12345,
-        position: 1,
-        driver_name: "Lewis Hamilton",
+        node_type: ModelNodeType.SessionResult,
+        attributes: {
+            id: 12345,
+            position: 1,
+            driver_name: "Lewis Hamilton",
+        },
     })
 
     const response = await request(app)
