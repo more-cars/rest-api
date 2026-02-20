@@ -1,7 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
-import type {CompanyNode} from "../../../../../../src/models/node-types/companies/types/CompanyNode"
+import type {CompanyNode} from "../../../../../../src/db/nodes/companies/types/CompanyNode"
 import {Company} from "../../../../../../src/models/node-types/companies/Company"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 

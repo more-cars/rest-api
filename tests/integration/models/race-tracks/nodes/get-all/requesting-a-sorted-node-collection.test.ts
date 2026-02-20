@@ -1,7 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
-import type {RaceTrackNode} from "../../../../../../src/models/node-types/race-tracks/types/RaceTrackNode"
+import type {RaceTrackNode} from "../../../../../../src/db/nodes/race-tracks/types/RaceTrackNode"
 import {RaceTrack} from "../../../../../../src/models/node-types/race-tracks/RaceTrack"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 

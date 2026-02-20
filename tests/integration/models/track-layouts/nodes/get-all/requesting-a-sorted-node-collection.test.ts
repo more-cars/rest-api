@@ -1,7 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
-import type {TrackLayoutNode} from "../../../../../../src/models/node-types/track-layouts/types/TrackLayoutNode"
+import type {TrackLayoutNode} from "../../../../../../src/db/nodes/track-layouts/types/TrackLayoutNode"
 import {TrackLayout} from "../../../../../../src/models/node-types/track-layouts/TrackLayout"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
