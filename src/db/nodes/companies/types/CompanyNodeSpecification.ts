@@ -1,7 +1,9 @@
 import {NodeSpecification} from "../../../types/NodeSpecification"
 import {Neo4jNodeType} from "../../../types/Neo4jNodeType"
+import {DbNodeType} from "../../../types/DbNodeType"
 
 export const CompanyNodeSpecification: NodeSpecification = {
+    type: DbNodeType.Company,
     label: Neo4jNodeType.Company,
     properties: [
         {

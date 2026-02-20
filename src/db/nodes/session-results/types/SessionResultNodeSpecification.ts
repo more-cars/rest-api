@@ -1,7 +1,9 @@
 import {NodeSpecification} from "../../../types/NodeSpecification"
 import {Neo4jNodeType} from "../../../types/Neo4jNodeType"
+import {DbNodeType} from "../../../types/DbNodeType"
 
 export const SessionResultNodeSpecification: NodeSpecification = {
+    type: DbNodeType.SessionResult,
     label: Neo4jNodeType.SessionResult,
     properties: [
         {
