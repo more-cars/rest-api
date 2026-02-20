@@ -13,4 +13,14 @@ export const ImageRelationshipSpecification: RelationshipSpecification[] = [
         endNodeType: DbNodeType.Node,
         isReverseRelationship: true,
     }],
+    [RelationshipType.NodeHasImage, {
+        startNodeType: DbNodeType.Node,
+        endNodeType: DbNodeType.Image,
+        isReverseRelationship: false,
+    }],
+    [RelationshipType.NodeHasPrimeImage, {
+        startNodeType: DbNodeType.Node,
+        endNodeType: DbNodeType.Image,
+        isReverseRelationship: false,
+    }],
 ]
