@@ -15,6 +15,6 @@ test('When the COMPANY exists it should be returned', async () => {
     const expectedCompany = await seedNode(ControllerNodeType.COMPANY)
     const actualCompany = await Company.findById(expectedCompany.properties.id)
 
-    expect(actualCompany)
+    expect(actualCompany.attributes)
         .toEqual(expectedCompany.properties)
 })
