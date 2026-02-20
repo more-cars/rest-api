@@ -1,8 +1,8 @@
 import type {NodeCollectionResponse} from "./types/NodeCollectionResponse"
-import type {BaseNode} from "./types/BaseNode"
+import type {ControllerNode} from "./types/ControllerNode"
 import {marshalSingleNode} from "./marshalSingleNode"
 
-export function marshalNodeCollection(nodes: BaseNode[]) {
+export function marshalNodeCollection(nodes: ControllerNode[]) {
     const response: NodeCollectionResponse = {
         data: []
     }
