@@ -13,10 +13,10 @@ describe('Requesting a relationship', () => {
         if (!actualRelationship) {
             assert.fail('Could not fetch relationship')
         } else {
-            expect(actualrelationship.start_node.properties.id)
+            expect(actualRelationship.start_node.properties.id)
                 .toBe(expectedRelationship.start_node.properties.id)
 
-            expect(actualRelationship.end_node.id)
+            expect(actualRelationship.end_node.properties.id)
                 .toBe(expectedRelationship.end_node.properties.id)
         }
     })
