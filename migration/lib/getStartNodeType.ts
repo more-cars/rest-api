@@ -1,10 +1,10 @@
 import {select} from "@inquirer/prompts"
 import {getAllNodeTypes} from "../../tests/_toolbox/getAllNodeTypes"
-import type {Neo4jNodeType} from "../../src/db/types/Neo4jNodeType"
+import type {DbNodeType} from "../../src/db/types/DbNodeType"
 
 export async function getStartNodeType(override: string | undefined) {
     if (override && override !== "") {
-        return override as Neo4jNodeType
+        return override as DbNodeType
     }
 
     const nodeOptions = getAllNodeTypes()

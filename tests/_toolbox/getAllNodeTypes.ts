@@ -1,5 +1,5 @@
-import {Neo4jNodeType} from "../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../src/db/types/DbNodeType"
 
 export function getAllNodeTypes() {
-    return Array.from(new Set(Object.values(Neo4jNodeType) as string[])) as Neo4jNodeType[]
+    return Array.from(new Set(Object.values(DbNodeType) as string[])) as DbNodeType[]
 }

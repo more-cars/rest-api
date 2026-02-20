@@ -1,9 +1,9 @@
 import {select} from "@inquirer/prompts"
-import {Neo4jNodeType} from "../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../src/db/types/DbNodeType"
 import {getAllRelationshipTypes} from "../src/getAllRelationshipTypes"
 import type {RelationshipType} from "../../src/db/types/RelationshipType"
 
-export async function getRelationshipType(startNodeType: Neo4jNodeType, endNodeType: Neo4jNodeType, override: string | undefined) {
+export async function getRelationshipType(startNodeType: DbNodeType, endNodeType: DbNodeType, override: string | undefined) {
     if (override && override !== "") {
         return override
     }

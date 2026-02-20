@@ -1,64 +1,64 @@
-import {Neo4jNodeType} from "../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../src/db/types/DbNodeType"
 
 // This considers only the outgoing relationships (has-relationships, not the belongs-to relationships).
 export function getAllPotentialPartnerNodeTypes() {
-    return new Map<Neo4jNodeType, Neo4jNodeType[]>([
-        [Neo4jNodeType.Company, [
-            Neo4jNodeType.Brand,
-            Neo4jNodeType.Image,
+    return new Map<DbNodeType, DbNodeType[]>([
+        [DbNodeType.Company, [
+            DbNodeType.Brand,
+            DbNodeType.Image,
         ]],
-        [Neo4jNodeType.Brand, [
-            Neo4jNodeType.CarModel,
-            Neo4jNodeType.Image,
+        [DbNodeType.Brand, [
+            DbNodeType.CarModel,
+            DbNodeType.Image,
         ]],
-        [Neo4jNodeType.CarModel, [
-            Neo4jNodeType.CarModel,
-            Neo4jNodeType.CarModelVariant,
-            Neo4jNodeType.Image,
+        [DbNodeType.CarModel, [
+            DbNodeType.CarModel,
+            DbNodeType.CarModelVariant,
+            DbNodeType.Image,
         ]],
-        [Neo4jNodeType.CarModelVariant, [
-            Neo4jNodeType.SessionResult,
-            Neo4jNodeType.LapTime,
-            Neo4jNodeType.Image,
+        [DbNodeType.CarModelVariant, [
+            DbNodeType.SessionResult,
+            DbNodeType.LapTime,
+            DbNodeType.Image,
         ]],
-        [Neo4jNodeType.RaceTrack, [
-            Neo4jNodeType.TrackLayout,
-            Neo4jNodeType.Image,
+        [DbNodeType.RaceTrack, [
+            DbNodeType.TrackLayout,
+            DbNodeType.Image,
         ]],
-        [Neo4jNodeType.TrackLayout, [
-            Neo4jNodeType.LapTime,
-            Neo4jNodeType.Image,
+        [DbNodeType.TrackLayout, [
+            DbNodeType.LapTime,
+            DbNodeType.Image,
         ]],
-        [Neo4jNodeType.RacingSeries, [
-            Neo4jNodeType.RacingEvent,
-            Neo4jNodeType.Image,
+        [DbNodeType.RacingSeries, [
+            DbNodeType.RacingEvent,
+            DbNodeType.Image,
         ]],
-        [Neo4jNodeType.RacingEvent, [
-            Neo4jNodeType.RacingEvent,
-            Neo4jNodeType.RaceTrack,
-            Neo4jNodeType.TrackLayout,
-            Neo4jNodeType.RacingSession,
-            Neo4jNodeType.Image,
+        [DbNodeType.RacingEvent, [
+            DbNodeType.RacingEvent,
+            DbNodeType.RaceTrack,
+            DbNodeType.TrackLayout,
+            DbNodeType.RacingSession,
+            DbNodeType.Image,
         ]],
-        [Neo4jNodeType.RacingSession, [
-            Neo4jNodeType.SessionResult,
-            Neo4jNodeType.Image,
+        [DbNodeType.RacingSession, [
+            DbNodeType.SessionResult,
+            DbNodeType.Image,
         ]],
-        [Neo4jNodeType.SessionResult, [
-            Neo4jNodeType.LapTime,
-            Neo4jNodeType.Image,
+        [DbNodeType.SessionResult, [
+            DbNodeType.LapTime,
+            DbNodeType.Image,
         ]],
-        [Neo4jNodeType.RacingGame, [
-            Neo4jNodeType.CarModelVariant,
-            Neo4jNodeType.TrackLayout,
-            Neo4jNodeType.Image,
+        [DbNodeType.RacingGame, [
+            DbNodeType.CarModelVariant,
+            DbNodeType.TrackLayout,
+            DbNodeType.Image,
         ]],
-        [Neo4jNodeType.GamingPlatform, [
-            Neo4jNodeType.RacingGame,
-            Neo4jNodeType.Image,
+        [DbNodeType.GamingPlatform, [
+            DbNodeType.RacingGame,
+            DbNodeType.Image,
         ]],
-        [Neo4jNodeType.LapTime, [
-            Neo4jNodeType.Image,
+        [DbNodeType.LapTime, [
+            DbNodeType.Image,
         ]],
     ])
 }

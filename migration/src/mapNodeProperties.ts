@@ -1,6 +1,6 @@
 import assert from "assert"
 import type {Node} from "neo4j-driver"
-import {Neo4jNodeType} from "../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../src/db/types/DbNodeType"
 import {mapCompany} from "./mappings/mapCompany"
 import {mapBrand} from "./mappings/mapBrand"
 import {mapCarModel} from "./mappings/mapCarModel"
@@ -16,35 +16,35 @@ import {mapRacingGame} from "./mappings/mapRacingGame"
 import {mapGamingPlatform} from "./mappings/mapGamingPlatform"
 import {mapImage} from "./mappings/mapImage"
 
-export function mapNodeProperties(oldNode: Node, nodeType: Neo4jNodeType) {
+export function mapNodeProperties(oldNode: Node, nodeType: DbNodeType) {
     switch (nodeType) {
-        case Neo4jNodeType.Company:
+        case DbNodeType.Company:
             return mapCompany(oldNode)
-        case Neo4jNodeType.Brand:
+        case DbNodeType.Brand:
             return mapBrand(oldNode)
-        case Neo4jNodeType.CarModel:
+        case DbNodeType.CarModel:
             return mapCarModel(oldNode)
-        case Neo4jNodeType.CarModelVariant:
+        case DbNodeType.CarModelVariant:
             return mapCarModelVariant(oldNode)
-        case Neo4jNodeType.RaceTrack:
+        case DbNodeType.RaceTrack:
             return mapRaceTrack(oldNode)
-        case Neo4jNodeType.TrackLayout:
+        case DbNodeType.TrackLayout:
             return mapTrackLayout(oldNode)
-        case Neo4jNodeType.RacingSeries:
+        case DbNodeType.RacingSeries:
             return mapRacingSeries(oldNode)
-        case Neo4jNodeType.RacingEvent:
+        case DbNodeType.RacingEvent:
             return mapRacingEvent(oldNode)
-        case Neo4jNodeType.RacingSession:
+        case DbNodeType.RacingSession:
             return mapRacingSession(oldNode)
-        case Neo4jNodeType.SessionResult:
+        case DbNodeType.SessionResult:
             return mapSessionResult(oldNode)
-        case Neo4jNodeType.LapTime:
+        case DbNodeType.LapTime:
             return mapLapTime(oldNode)
-        case Neo4jNodeType.RacingGame:
+        case DbNodeType.RacingGame:
             return mapRacingGame(oldNode)
-        case Neo4jNodeType.GamingPlatform:
+        case DbNodeType.GamingPlatform:
             return mapGamingPlatform(oldNode)
-        case Neo4jNodeType.Image:
+        case DbNodeType.Image:
             return mapImage(oldNode)
         default:
             assert.fail(`Node type "${nodeType}" is invalid or unknown`)

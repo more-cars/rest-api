@@ -2,13 +2,13 @@ import type {NodeCollectionConstraints} from "../../../models/types/NodeCollecti
 import type {CompanyNode} from "./types/CompanyNode"
 import {getDbQueryCollectionParams} from "../getDbQueryCollectionParams"
 import {fetchNodesFromDb} from "../fetchNodesFromDb"
-import {Neo4jNodeType} from "../../types/Neo4jNodeType"
+import {DbNodeType} from "../../types/DbNodeType"
 import {mapDbNodeToCompanyNode} from "./mapDbNodeToCompanyNode"
 
 export async function getAllNodesOfType(constraints: NodeCollectionConstraints = {}): Promise<CompanyNode[]> {
     const nodes: CompanyNode[] = []
     const dbParams = getDbQueryCollectionParams(constraints)
-    const dbNodes = await fetchNodesFromDb(Neo4jNodeType.Company, dbParams)
+    const dbNodes = await fetchNodesFromDb(DbNodeType.Company, dbParams)
 
     dbNodes.forEach((dbNode) => {
         nodes.push(mapDbNodeToCompanyNode(dbNode))

@@ -1,19 +1,19 @@
-import {Neo4jNodeType} from "../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../src/db/types/DbNodeType"
 import {NodeTypeLabelOld} from "./types/NodeTypeLabelOld"
 
-export const NodeTypeMapping = new Map<Neo4jNodeType, NodeTypeLabelOld>([
-    [Neo4jNodeType.Company, NodeTypeLabelOld.Company],
-    [Neo4jNodeType.Brand, NodeTypeLabelOld.Brand],
-    [Neo4jNodeType.CarModel, NodeTypeLabelOld.CarModel],
-    [Neo4jNodeType.CarModelVariant, NodeTypeLabelOld.CarModelVariant],
-    [Neo4jNodeType.RaceTrack, NodeTypeLabelOld.RaceTrack],
-    [Neo4jNodeType.TrackLayout, NodeTypeLabelOld.TrackLayout],
-    [Neo4jNodeType.RacingSeries, NodeTypeLabelOld.RacingSeries],
-    [Neo4jNodeType.RacingEvent, NodeTypeLabelOld.RacingEvent],
-    [Neo4jNodeType.RacingSession, NodeTypeLabelOld.RacingSession],
-    [Neo4jNodeType.SessionResult, NodeTypeLabelOld.SessionResult],
-    [Neo4jNodeType.LapTime, NodeTypeLabelOld.LapTime],
-    [Neo4jNodeType.RacingGame, NodeTypeLabelOld.RacingGame],
-    [Neo4jNodeType.GamingPlatform, NodeTypeLabelOld.GamingPlatform],
-    [Neo4jNodeType.Image, NodeTypeLabelOld.Image],
+export const NodeTypeMapping = new Map<DbNodeType, NodeTypeLabelOld>([
+    [DbNodeType.Company, NodeTypeLabelOld.Company],
+    [DbNodeType.Brand, NodeTypeLabelOld.Brand],
+    [DbNodeType.CarModel, NodeTypeLabelOld.CarModel],
+    [DbNodeType.CarModelVariant, NodeTypeLabelOld.CarModelVariant],
+    [DbNodeType.RaceTrack, NodeTypeLabelOld.RaceTrack],
+    [DbNodeType.TrackLayout, NodeTypeLabelOld.TrackLayout],
+    [DbNodeType.RacingSeries, NodeTypeLabelOld.RacingSeries],
+    [DbNodeType.RacingEvent, NodeTypeLabelOld.RacingEvent],
+    [DbNodeType.RacingSession, NodeTypeLabelOld.RacingSession],
+    [DbNodeType.SessionResult, NodeTypeLabelOld.SessionResult],
+    [DbNodeType.LapTime, NodeTypeLabelOld.LapTime],
+    [DbNodeType.RacingGame, NodeTypeLabelOld.RacingGame],
+    [DbNodeType.GamingPlatform, NodeTypeLabelOld.GamingPlatform],
+    [DbNodeType.Image, NodeTypeLabelOld.Image],
 ])

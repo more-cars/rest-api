@@ -2,13 +2,13 @@ import type {NodeCollectionConstraints} from "../../../models/types/NodeCollecti
 import type {RacingEventNode} from "./types/RacingEventNode"
 import {getDbQueryCollectionParams} from "../getDbQueryCollectionParams"
 import {fetchNodesFromDb} from "../fetchNodesFromDb"
-import {Neo4jNodeType} from "../../types/Neo4jNodeType"
+import {DbNodeType} from "../../types/DbNodeType"
 import {mapDbNodeToRacingEventNode} from "./mapDbNodeToRacingEventNode"
 
 export async function getAllNodesOfType(constraints: NodeCollectionConstraints = {}): Promise<RacingEventNode[]> {
     const nodes: RacingEventNode[] = []
     const dbParams = getDbQueryCollectionParams(constraints)
-    const dbNodes = await fetchNodesFromDb(Neo4jNodeType.RacingEvent, dbParams)
+    const dbNodes = await fetchNodesFromDb(DbNodeType.RacingEvent, dbParams)
 
     dbNodes.forEach((dbNode) => {
         nodes.push(mapDbNodeToRacingEventNode(dbNode))

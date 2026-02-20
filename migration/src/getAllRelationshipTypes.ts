@@ -1,21 +1,21 @@
-import {Neo4jNodeType} from "../../src/db/types/Neo4jNodeType";
+import {DbNodeType} from "../../src/db/types/DbNodeType";
 import {RelationshipType} from "../../src/db/types/RelationshipType";
 
 // This considers only the outgoing relationships (has-relationships, not the belongs-to relationships).
 export function getAllRelationshipTypes() {
-    return new Map<Neo4jNodeType, Map<Neo4jNodeType, RelationshipType[]>>(
+    return new Map<DbNodeType, Map<DbNodeType, RelationshipType[]>>(
         [
             [
-                Neo4jNodeType.Company, new Map(
+                DbNodeType.Company, new Map(
                 [
                     [
-                        Neo4jNodeType.Brand,
+                        DbNodeType.Brand,
                         [
                             RelationshipType.CompanyHasBrand,
                         ],
                     ],
                     [
-                        Neo4jNodeType.Image,
+                        DbNodeType.Image,
                         [
                             RelationshipType.CompanyHasImage,
                             RelationshipType.CompanyHasPrimeImage,
@@ -24,16 +24,16 @@ export function getAllRelationshipTypes() {
                 ])
             ],
             [
-                Neo4jNodeType.Brand, new Map(
+                DbNodeType.Brand, new Map(
                 [
                     [
-                        Neo4jNodeType.CarModel,
+                        DbNodeType.CarModel,
                         [
                             RelationshipType.BrandHasCarModel,
                         ],
                     ],
                     [
-                        Neo4jNodeType.Image,
+                        DbNodeType.Image,
                         [
                             RelationshipType.BrandHasImage,
                             RelationshipType.BrandHasPrimeImage,
@@ -42,22 +42,22 @@ export function getAllRelationshipTypes() {
                 ])
             ],
             [
-                Neo4jNodeType.CarModel, new Map(
+                DbNodeType.CarModel, new Map(
                 [
                     [
-                        Neo4jNodeType.CarModel,
+                        DbNodeType.CarModel,
                         [
                             RelationshipType.CarModelHasSuccessor,
                         ],
                     ],
                     [
-                        Neo4jNodeType.CarModelVariant,
+                        DbNodeType.CarModelVariant,
                         [
                             RelationshipType.CarModelHasVariant,
                         ],
                     ],
                     [
-                        Neo4jNodeType.Image,
+                        DbNodeType.Image,
                         [
                             RelationshipType.CarModelHasImage,
                             RelationshipType.CarModelHasPrimeImage,
@@ -66,22 +66,22 @@ export function getAllRelationshipTypes() {
                 ])
             ],
             [
-                Neo4jNodeType.CarModelVariant, new Map(
+                DbNodeType.CarModelVariant, new Map(
                 [
                     [
-                        Neo4jNodeType.SessionResult,
+                        DbNodeType.SessionResult,
                         [
                             RelationshipType.CarModelVariantAchievedSessionResult,
                         ],
                     ],
                     [
-                        Neo4jNodeType.LapTime,
+                        DbNodeType.LapTime,
                         [
                             RelationshipType.CarModelVariantAchievedLapTime,
                         ],
                     ],
                     [
-                        Neo4jNodeType.Image,
+                        DbNodeType.Image,
                         [
                             RelationshipType.CarModelVariantHasImage,
                             RelationshipType.CarModelVariantHasPrimeImage,
@@ -90,16 +90,16 @@ export function getAllRelationshipTypes() {
                 ])
             ],
             [
-                Neo4jNodeType.RaceTrack, new Map(
+                DbNodeType.RaceTrack, new Map(
                 [
                     [
-                        Neo4jNodeType.TrackLayout,
+                        DbNodeType.TrackLayout,
                         [
                             RelationshipType.RaceTrackHasLayout,
                         ],
                     ],
                     [
-                        Neo4jNodeType.Image,
+                        DbNodeType.Image,
                         [
                             RelationshipType.RaceTrackHasImage,
                             RelationshipType.RaceTrackHasPrimeImage,
@@ -108,15 +108,15 @@ export function getAllRelationshipTypes() {
                 ]),
             ],
             [
-                Neo4jNodeType.TrackLayout, new Map(
+                DbNodeType.TrackLayout, new Map(
                 [
                     [
-                        Neo4jNodeType.LapTime,
+                        DbNodeType.LapTime,
                         [
                             RelationshipType.TrackLayoutHasLapTime,
                         ],
                     ], [
-                    Neo4jNodeType.Image,
+                    DbNodeType.Image,
                     [
                         RelationshipType.TrackLayoutHasImage,
                         RelationshipType.TrackLayoutHasPrimeImage,
@@ -125,16 +125,16 @@ export function getAllRelationshipTypes() {
                 ])
             ],
             [
-                Neo4jNodeType.RacingSeries, new Map(
+                DbNodeType.RacingSeries, new Map(
                 [
                     [
-                        Neo4jNodeType.RacingEvent,
+                        DbNodeType.RacingEvent,
                         [
                             RelationshipType.RacingSeriesHasRacingEvent,
                         ],
                     ],
                     [
-                        Neo4jNodeType.Image,
+                        DbNodeType.Image,
                         [
                             RelationshipType.RacingSeriesHasImage,
                             RelationshipType.RacingSeriesHasPrimeImage,
@@ -143,34 +143,34 @@ export function getAllRelationshipTypes() {
                 ])
             ],
             [
-                Neo4jNodeType.RacingEvent, new Map(
+                DbNodeType.RacingEvent, new Map(
                 [
                     [
-                        Neo4jNodeType.RacingEvent,
+                        DbNodeType.RacingEvent,
                         [
                             RelationshipType.RacingEventIsFollowedByEvent,
                         ],
                     ],
                     [
-                        Neo4jNodeType.RaceTrack,
+                        DbNodeType.RaceTrack,
                         [
                             RelationshipType.RacingEventTookPlaceAtRaceTrack,
                         ],
                     ],
                     [
-                        Neo4jNodeType.TrackLayout,
+                        DbNodeType.TrackLayout,
                         [
                             RelationshipType.RacingEventUsedTheTrackLayout,
                         ],
                     ],
                     [
-                        Neo4jNodeType.RacingSession,
+                        DbNodeType.RacingSession,
                         [
                             RelationshipType.RacingEventHasRacingSession,
                         ],
                     ],
                     [
-                        Neo4jNodeType.Image,
+                        DbNodeType.Image,
                         [
                             RelationshipType.RacingEventHasImage,
                             RelationshipType.RacingEventHasPrimeImage,
@@ -179,16 +179,16 @@ export function getAllRelationshipTypes() {
                 ])
             ],
             [
-                Neo4jNodeType.RacingSession, new Map(
+                DbNodeType.RacingSession, new Map(
                 [
                     [
-                        Neo4jNodeType.SessionResult,
+                        DbNodeType.SessionResult,
                         [
                             RelationshipType.RacingSessionHasSessionResult,
                         ],
                     ],
                     [
-                        Neo4jNodeType.Image,
+                        DbNodeType.Image,
                         [
                             RelationshipType.RacingSessionHasImage,
                             RelationshipType.RacingSessionHasPrimeImage,
@@ -197,16 +197,16 @@ export function getAllRelationshipTypes() {
                 ])
             ],
             [
-                Neo4jNodeType.SessionResult, new Map(
+                DbNodeType.SessionResult, new Map(
                 [
                     [
-                        Neo4jNodeType.LapTime,
+                        DbNodeType.LapTime,
                         [
                             RelationshipType.SessionResultHasLapTime,
                         ],
                     ],
                     [
-                        Neo4jNodeType.Image,
+                        DbNodeType.Image,
                         [
                             RelationshipType.SessionResultHasImage,
                             RelationshipType.SessionResultHasPrimeImage,
@@ -215,10 +215,10 @@ export function getAllRelationshipTypes() {
                 ])
             ],
             [
-                Neo4jNodeType.LapTime, new Map(
+                DbNodeType.LapTime, new Map(
                 [
                     [
-                        Neo4jNodeType.Image,
+                        DbNodeType.Image,
                         [
                             RelationshipType.LapTimeHasImage,
                             RelationshipType.LapTimeHasPrimeImage,
@@ -227,22 +227,22 @@ export function getAllRelationshipTypes() {
                 ])
             ],
             [
-                Neo4jNodeType.RacingGame, new Map(
+                DbNodeType.RacingGame, new Map(
                 [
                     [
-                        Neo4jNodeType.CarModelVariant,
+                        DbNodeType.CarModelVariant,
                         [
                             RelationshipType.RacingGameFeaturesCarModelVariant,
                         ],
                     ],
                     [
-                        Neo4jNodeType.TrackLayout,
+                        DbNodeType.TrackLayout,
                         [
                             RelationshipType.RacingGameFeaturesTrackLayout,
                         ],
                     ],
                     [
-                        Neo4jNodeType.Image,
+                        DbNodeType.Image,
                         [
                             RelationshipType.RacingGameHasImage,
                             RelationshipType.RacingGameHasPrimeImage,
@@ -251,16 +251,16 @@ export function getAllRelationshipTypes() {
                 ])
             ],
             [
-                Neo4jNodeType.GamingPlatform, new Map(
+                DbNodeType.GamingPlatform, new Map(
                 [
                     [
-                        Neo4jNodeType.RacingGame,
+                        DbNodeType.RacingGame,
                         [
                             RelationshipType.GamingPlatformFeaturesRacingGame,
                         ],
                     ],
                     [
-                        Neo4jNodeType.Image,
+                        DbNodeType.Image,
                         [
                             RelationshipType.GamingPlatformHasImage,
                             RelationshipType.GamingPlatformHasPrimeImage,
@@ -269,7 +269,7 @@ export function getAllRelationshipTypes() {
                 ])
             ],
             [
-                Neo4jNodeType.Image, new Map([])
+                DbNodeType.Image, new Map([])
             ],
         ])
 }

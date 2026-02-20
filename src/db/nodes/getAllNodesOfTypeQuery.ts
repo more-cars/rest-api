@@ -1,9 +1,9 @@
-import {Neo4jNodeType} from "../types/Neo4jNodeType"
+import {DbNodeType} from "../types/DbNodeType"
 import type {CollectionQueryParams} from "../types/CollectionQueryParams"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 
-export function getAllNodesOfTypeQuery(nodeLabel: Neo4jNodeType, params: CollectionQueryParams) {
+export function getAllNodesOfTypeQuery(nodeLabel: DbNodeType, params: CollectionQueryParams) {
     return getCypherQueryTemplate('nodes/_cypher/getAllNodesOfType.cypher')
         .trim()
         .replace(':nodeLabel', `:${getNamespacedNodeTypeLabel(nodeLabel)}`)

@@ -23,7 +23,7 @@ describe('Assembling database query for fetching all relationships', () => {
 
         expect(query)
             .toEqual(
-                "MATCH (a {mc_id: " + startNodeId + "})<-[r:" + relationshipName + "]-(b:LapTime" + appInstanceId + ")\n" +
+                "MATCH (a {mc_id: " + startNodeId + "})<-[r:" + relationshipName + "]-(b:LapTime_" + appInstanceId + ")\n" +
                 "RETURN a, r, b")
     })
 })

@@ -1,13 +1,13 @@
 import {select} from "@inquirer/prompts"
-import {Neo4jNodeType} from "../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../src/db/types/DbNodeType"
 import {getAllPotentialPartnerNodeTypes} from "../src/getAllPotentialPartnerNodeTypes"
 
-export async function getEndNodeType(startNodeType: Neo4jNodeType, override: string | undefined) {
+export async function getEndNodeType(startNodeType: DbNodeType, override: string | undefined) {
     if (override && override !== "") {
-        return override as Neo4jNodeType
+        return override as DbNodeType
     }
 
-    const nodeOptions = getAllPotentialPartnerNodeTypes().get(startNodeType) as Neo4jNodeType[]
+    const nodeOptions = getAllPotentialPartnerNodeTypes().get(startNodeType) as DbNodeType[]
     const choices = []
 
     for (const node of nodeOptions) {
