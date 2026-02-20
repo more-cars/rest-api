@@ -18,11 +18,12 @@ export function mapDbNodeTypeToNeo4jNodeType(nodeTypeLabel: DbNodeType): Neo4jNo
         [DbNodeType.RacingGame, Neo4jNodeType.RacingGame],
         [DbNodeType.GamingPlatform, Neo4jNodeType.GamingPlatform],
         [DbNodeType.Image, Neo4jNodeType.Image],
+        [DbNodeType.Node, Neo4jNodeType.Node],
     ])
 
     const mappedNodeType = mapping.get(nodeTypeLabel)
 
-    if (!mappedNodeType) {
+    if (mappedNodeType === null || mappedNodeType === undefined) {
         throw new NodeTypeNotFoundError(nodeTypeLabel)
     }
 
