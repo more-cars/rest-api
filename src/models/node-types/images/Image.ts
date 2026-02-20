@@ -25,7 +25,7 @@ import {convertDbRelToModelRel} from "../../relationships/convertDbRelToModelRel
 import {getRelationshipCollection} from "../../../db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../db/types/RelationshipType"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
-import {BaseNode} from "../../../db/types/BaseNode"
+import {DbNode} from "../../../db/types/DbNode"
 
 export const Image = {
     async create(data: CreateImageInput): Promise<ImageNode> {
@@ -300,6 +300,6 @@ function getGeneratedData(): CreateImageGeneratedInput {
     return generatedData
 }
 
-function nodeIsAnImageNode(node: BaseNode) {
+function nodeIsAnImageNode(node: DbNode) {
     return 'image_url_original' in node
 }

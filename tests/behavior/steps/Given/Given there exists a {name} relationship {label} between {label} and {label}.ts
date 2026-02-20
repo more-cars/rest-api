@@ -1,12 +1,12 @@
 import {Given, world} from "@cucumber/cucumber"
 import axios from "axios"
-import type {BaseNode} from "../../../../src/db/types/BaseNode"
+import type {DbNode} from "../../../../src/db/types/DbNode"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
 import {dasherize} from "inflection"
 
 Given('there exists a {string} relationship {string} between {string} and {string}',
     async (relationshipName: string, relationshipLabel: string, startNodeLabel: string, endNodeLabel: string) => {
-        const startNode: BaseNode = world.recallNode(startNodeLabel).data
+        const startNode: DbNode = world.recallNode(startNodeLabel).data
         const endNode = world.recallNode(endNodeLabel).data
         const nodePathFragment = getBasePathFragmentForNodeType(world.recallNode(startNodeLabel).nodeType)
 

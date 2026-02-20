@@ -1,8 +1,8 @@
-import type {BaseNode} from "../db/types/BaseNode"
+import type {DbNode} from "../db/types/DbNode"
 import {fetchNodeById} from "../db/nodes/fetchNodeById"
 
 export const Node = {
-    async findById(id: number): Promise<false | BaseNode> {
+    async findById(id: number): Promise<false | DbNode> {
         const node = await fetchNodeById(id)
 
         if (!node) {
@@ -13,6 +13,6 @@ export const Node = {
         const properties = node.properties
         properties.id = properties.mc_id
 
-        return node.properties as BaseNode
+        return node.properties as DbNode
     },
 }

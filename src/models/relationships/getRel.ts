@@ -4,7 +4,7 @@ import {mapModelRelTypeToDbRelationshipType} from "./mapModelRelTypeToDbRelation
 import {getDbNodeType} from "./getDbNodeType"
 import {getRelationship} from "../../db/relationships/getRelationship"
 import type {Rel} from "./types/Rel"
-import type {BaseNode} from "../../db/types/BaseNode"
+import type {DbNode} from "../../db/types/DbNode"
 
 export async function getRel(
     startNodeId: number,
@@ -28,8 +28,8 @@ export async function getRel(
     const rel: Rel = {
         id: dbRelationship.id,
         type: relType,
-        origin: dbRelationship.start_node as BaseNode, // TODO return model node instead of db node
-        destination: dbRelationship.end_node as BaseNode, // TODO return model node instead of db node
+        origin: dbRelationship.start_node as DbNode, // TODO return model node instead of db node
+        destination: dbRelationship.end_node as DbNode, // TODO return model node instead of db node
         created_at: dbRelationship.created_at,
         updated_at: dbRelationship.updated_at,
     }

@@ -1,11 +1,11 @@
 import type {RelType} from "./RelType"
-import {BaseNode} from "../../../db/types/BaseNode"
+import {DbNode} from "../../../db/types/DbNode"
 
 export type Rel = {
     id: number
     type: RelType
-    origin: BaseNode
-    destination: BaseNode
+    origin: DbNode
+    destination: DbNode
     created_at: string
     updated_at: string
 }

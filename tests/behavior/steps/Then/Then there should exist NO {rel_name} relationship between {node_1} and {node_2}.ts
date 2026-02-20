@@ -3,11 +3,11 @@ import axios from "axios"
 import assert from "assert"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
 import {dasherize} from "inflection"
-import type {BaseNode} from "../../../../src/db/types/BaseNode"
+import type {DbNode} from "../../../../src/db/types/DbNode"
 
 Then('there should exist NO {string} relationship between {string} and {string}',
     async (relationshipName: string, startNodeLabel: string, endNodeLabel: string) => {
-        const startNode: BaseNode = world.recallNode(startNodeLabel).data
+        const startNode: DbNode = world.recallNode(startNodeLabel).data
         const endNode = world.recallNode(endNodeLabel).data
         const nodePathFragment = getBasePathFragmentForNodeType(world.recallNode(startNodeLabel).nodeType)
 

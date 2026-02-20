@@ -4,7 +4,7 @@ import {mapModelRelTypeToDbRelationshipType} from "./mapModelRelTypeToDbRelation
 import {getDbNodeType} from "./getDbNodeType"
 import {getRelationshipCollection} from "../../db/relationships/getRelationshipCollection"
 import type {Rel} from "./types/Rel"
-import type {BaseNode} from "../../db/types/BaseNode"
+import type {DbNode} from "../../db/types/DbNode"
 
 export async function getAllRels(
     startNodeId: number,
@@ -27,8 +27,8 @@ export async function getAllRels(
         rels.push({
             id: dbRelationship.id,
             type: relType,
-            origin: dbRelationship.start_node as BaseNode, // TODO remove type assertion
-            destination: dbRelationship.end_node as BaseNode, // TODO remove type assertion
+            origin: dbRelationship.start_node as DbNode, // TODO remove type assertion
+            destination: dbRelationship.end_node as DbNode, // TODO remove type assertion
             created_at: dbRelationship.created_at,
             updated_at: dbRelationship.updated_at,
         })

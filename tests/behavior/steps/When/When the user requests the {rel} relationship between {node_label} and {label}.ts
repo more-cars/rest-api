@@ -1,17 +1,15 @@
 import {When, world} from "@cucumber/cucumber"
 import axios from "axios"
-import {BaseNode} from "../../../../src/db/types/BaseNode"
+import {DbNode} from "../../../../src/db/types/DbNode"
 import type {NodeTypeEnum} from "../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
-import {
-    getBasePathFragmentForRelationshipName
-} from "../../../_toolbox/dbSeeding/getBasePathFragmentForRelationshipName"
+import {getBasePathFragmentForRelationshipName} from "../../../_toolbox/dbSeeding/getBasePathFragmentForRelationshipName"
 
 When('the user requests the {string} relationship between {string} and {string}',
     async (relationshipName: string, startNodeLabel: string, endNodeLabel: string) => {
-        const startNode: BaseNode = world.recallNode(startNodeLabel).data
+        const startNode: DbNode = world.recallNode(startNodeLabel).data
         const startNodeType: NodeTypeEnum = world.recallNode(startNodeLabel).nodeType
-        const endNode: BaseNode = world.recallNode(endNodeLabel).data
+        const endNode: DbNode = world.recallNode(endNodeLabel).data
         const nodePathFragment = getBasePathFragmentForNodeType(startNodeType)
         const relPathFragment = getBasePathFragmentForRelationshipName(relationshipName)
 
