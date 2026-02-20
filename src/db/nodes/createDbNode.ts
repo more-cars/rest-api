@@ -25,6 +25,7 @@ import type {InputRacingGameCreate} from "./racing-games/types/InputRacingGameCr
 import type {InputGamingPlatformCreate} from "./gaming-platforms/types/InputGamingPlatformCreate"
 import type {InputImageCreate} from "./images/types/InputImageCreate"
 import {DbNodeType} from "../types/DbNodeType"
+import {mapDbNodeTypeToNeo4jNodeType} from "./mapDbNodeTypeToNeo4jNodeType"
 
 // TODO find a more elegant solution to describe the allowed input data
 type InputTypes =
@@ -69,13 +70,14 @@ export async function createDbNode(nodeType: DbNodeType, data: InputTypes): Prom
 
 export function createNodeQuery(nodeType: DbNodeType, data: InputTypes) {
     const nodeSpecs = getNodeSpecification(nodeType)
+    const nodeTypeLabel = getNamespacedNodeTypeLabel(mapDbNodeTypeToNeo4jNodeType(nodeSpecs.type))
     const properties = getCypherFormattedPropertyList(nodeSpecs, data)
 
     let template = getCypherQueryTemplate('nodes/_cypher/createNode.cypher')
         .trim()
 
     template = template
-        .replace('$NODE_TYPE_LABEL', getNamespacedNodeTypeLabel(nodeSpecs.label))
+        .replace('$NODE_TYPE_LABEL', nodeTypeLabel)
         .replace('$NODE_PROPERTIES', properties)
 
     return template
