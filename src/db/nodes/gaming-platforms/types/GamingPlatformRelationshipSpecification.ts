@@ -1,24 +1,24 @@
 import {RelationshipSpecification} from "../../../types/RelationshipSpecification"
 import {RelationshipType} from "../../../types/RelationshipType"
-import {Neo4jNodeType} from "../../../types/Neo4jNodeType"
+import {DbNodeType} from "../../../types/DbNodeType"
 import {RelationshipTypeNeo4j} from "../../../types/RelationshipTypeNeo4j"
 
 export const GamingPlatformRelationshipSpecification: RelationshipSpecification[] = [
     [RelationshipType.GamingPlatformFeaturesRacingGame, {
-        startNodeLabel: Neo4jNodeType.GamingPlatform,
-        endNodeLabel: Neo4jNodeType.RacingGame,
+        startNodeType: DbNodeType.GamingPlatform,
+        endNodeType: DbNodeType.RacingGame,
         relationshipName: RelationshipTypeNeo4j.GamingPlatformFeaturesRacingGame,
         isReverseRelationship: false,
     }],
     [RelationshipType.GamingPlatformHasImage, {
-        startNodeLabel: Neo4jNodeType.GamingPlatform,
-        endNodeLabel: Neo4jNodeType.Image,
+        startNodeType: DbNodeType.GamingPlatform,
+        endNodeType: DbNodeType.Image,
         relationshipName: RelationshipTypeNeo4j.GamingPlatformHasImage,
         isReverseRelationship: false,
     }],
     [RelationshipType.GamingPlatformHasPrimeImage, {
-        startNodeLabel: Neo4jNodeType.GamingPlatform,
-        endNodeLabel: Neo4jNodeType.Image,
+        startNodeType: DbNodeType.GamingPlatform,
+        endNodeType: DbNodeType.Image,
         relationshipName: RelationshipTypeNeo4j.GamingPlatformHasPrimeImage,
         isReverseRelationship: false,
     }],

@@ -1,6 +1,6 @@
 import {RelationshipType} from "../types/RelationshipType"
 import {RelationshipTypeNeo4j} from "../types/RelationshipTypeNeo4j"
-import {Neo4jNodeType} from "../types/Neo4jNodeType"
+import {DbNodeType} from "../types/DbNodeType"
 import {ImageRelationshipSpecification} from "../nodes/images/types/ImageRelationshipSpecification"
 import {CompanyRelationshipSpecification} from "../nodes/companies/types/CompanyRelationshipSpecification"
 import {BrandRelationshipSpecification} from "../nodes/brands/types/BrandRelationshipSpecification"
@@ -18,8 +18,8 @@ import {GamingPlatformRelationshipSpecification} from "../nodes/gaming-platforms
 
 export function getRelationshipSpecification(relationshipType: RelationshipType) {
     const mapping = new Map<RelationshipType, {
-        startNodeLabel: Neo4jNodeType,
-        endNodeLabel: Neo4jNodeType,
+        startNodeType: DbNodeType,
+        endNodeType: DbNodeType,
         relationshipName: RelationshipTypeNeo4j,
         isReverseRelationship: boolean,
     }>(ImageRelationshipSpecification.concat(
