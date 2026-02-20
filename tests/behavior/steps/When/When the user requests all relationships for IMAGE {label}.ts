@@ -7,7 +7,7 @@ When('the user requests all relationships for IMAGE {string}',
         const imageNode: ImageNode = world.recallNode(imageLabel).data
 
         const response = await axios
-            .get(`${process.env.API_URL}/images/${imageNode.id}/belongs-to-node`)
+            .get(`${process.env.API_URL}/images/${imageNode.attributes.id}/belongs-to-node`)
             .catch(error => {
                 console.error(error)
             })

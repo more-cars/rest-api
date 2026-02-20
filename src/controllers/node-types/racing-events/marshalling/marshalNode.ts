@@ -4,12 +4,12 @@ import {RacingEventResponse} from "../types/RacingEventResponse"
 
 export function marshalNode(node: RacingEventNode) {
     return marshalSingleNode({
-        id: node.id,
-        name: node.name,
-        round: node.round ?? null,
-        date_from: node.date_from ?? null,
-        date_to: node.date_to ?? null,
-        created_at: node.created_at,
-        updated_at: node.updated_at,
+        id: node.attributes.id,
+        name: node.attributes.name,
+        round: node.attributes.round ?? null,
+        date_from: node.attributes.date_from ?? null,
+        date_to: node.attributes.date_to ?? null,
+        created_at: node.attributes.created_at,
+        updated_at: node.attributes.updated_at,
     }) as RacingEventResponse
 }

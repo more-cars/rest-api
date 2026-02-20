@@ -4,14 +4,14 @@ import {RacingSeriesResponse} from "../types/RacingSeriesResponse"
 
 export function marshalNode(node: RacingSeriesNode) {
     return marshalSingleNode({
-        id: node.id,
-        name: node.name,
-        short_name: node.short_name ?? null,
-        founded: node.founded ?? null,
-        defunct: node.defunct ?? null,
-        organized_by: node.organized_by ?? null,
-        vehicle_type: node.vehicle_type ?? null,
-        created_at: node.created_at,
-        updated_at: node.updated_at,
+        id: node.attributes.id,
+        name: node.attributes.name,
+        short_name: node.attributes.short_name ?? null,
+        founded: node.attributes.founded ?? null,
+        defunct: node.attributes.defunct ?? null,
+        organized_by: node.attributes.organized_by ?? null,
+        vehicle_type: node.attributes.vehicle_type ?? null,
+        created_at: node.attributes.created_at,
+        updated_at: node.attributes.updated_at,
     }) as RacingSeriesResponse
 }

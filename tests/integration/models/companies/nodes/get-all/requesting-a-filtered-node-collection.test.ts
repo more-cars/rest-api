@@ -24,16 +24,17 @@ describe('A filtered "get all COMPANY nodes" request returns only the matching n
     test('when there exist COMPANY nodes', async () => {
         await deleteAllNodesOfType(ControllerNodeType.COMPANY)
         const nodeA = await seedNode(ControllerNodeType.COMPANY, {
-            name: 'A Node'}) as unknown as CompanyNode
-            await seedNode(ControllerNodeType.COMPANY, {name: 'B Node'})
-            await seedNode(ControllerNodeType.COMPANY, {name: 'C Node'})
+            name: 'A Node'
+        }) as unknown as CompanyNode
+        await seedNode(ControllerNodeType.COMPANY, {name: 'B Node'})
+        await seedNode(ControllerNodeType.COMPANY, {name: 'C Node'})
 
-            const filteredNodes = await Company.findAll({
-                filterByProperty: 'name',
-                filterValue: 'A Node',
-                filterOperator: FilterOperator.equal
-            })
-            expect(filteredNodes.length).toEqual(1)
-        expect(filteredNodes[0].name === nodeA.name)
+        const filteredNodes = await Company.findAll({
+            filterByProperty: 'name',
+            filterValue: 'A Node',
+            filterOperator: FilterOperator.equal
+        })
+        expect(filteredNodes.length).toEqual(1)
+        expect(filteredNodes[0].attributes.name === nodeA.attributes.name)
     })
-    })
+})

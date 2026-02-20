@@ -33,6 +33,6 @@ describe('A filtered "get all CAR MODEL VARIANT nodes" request returns only the 
             filterOperator: FilterOperator.equal
         })
         expect(filteredNodes.length).toEqual(1)
-        expect(filteredNodes[0].name === nodeA.name)
+        expect(filteredNodes[0].attributes.name === nodeA.attributes.name)
     })
 })

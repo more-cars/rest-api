@@ -24,16 +24,17 @@ describe('A filtered "get all GAMING PLATFORM nodes" request returns only the ma
     test('when there exist GAMING PLATFORM nodes', async () => {
         await deleteAllNodesOfType(ControllerNodeType.GAMING_PLATFORM)
         const nodeA = await seedNode(ControllerNodeType.GAMING_PLATFORM, {
-            name: 'A Node'}) as unknown as GamingPlatformNode
-            await seedNode(ControllerNodeType.GAMING_PLATFORM, {name: 'B Node'})
-            await seedNode(ControllerNodeType.GAMING_PLATFORM, {name: 'C Node'})
+            name: 'A Node'
+        }) as unknown as GamingPlatformNode
+        await seedNode(ControllerNodeType.GAMING_PLATFORM, {name: 'B Node'})
+        await seedNode(ControllerNodeType.GAMING_PLATFORM, {name: 'C Node'})
 
-            const filteredNodes = await GamingPlatform.findAll({
-                filterByProperty: 'name',
-                filterValue: 'A Node',
-                filterOperator: FilterOperator.equal
-            })
-            expect(filteredNodes.length).toEqual(1)
-        expect(filteredNodes[0].name === nodeA.name)
+        const filteredNodes = await GamingPlatform.findAll({
+            filterByProperty: 'name',
+            filterValue: 'A Node',
+            filterOperator: FilterOperator.equal
+        })
+        expect(filteredNodes.length).toEqual(1)
+        expect(filteredNodes[0].attributes.name === nodeA.attributes.name)
     })
-    })
+})

@@ -10,20 +10,20 @@ import {Image} from "../../../../../src/models/node-types/images/Image"
 
 test('ID is added when creating a node', async () => {
     const createdBrand = await Brand.create(FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate)
-    expect(createdBrand.id)
+    expect(createdBrand.attributes.id)
         .toBeGreaterThanOrEqual(12000000)
-    expect(createdBrand.id)
+    expect(createdBrand.attributes.id)
         .toBeLessThanOrEqual(99999999)
 
     const createdCarModel = await CarModel.create(FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate)
-    expect(createdCarModel.id)
+    expect(createdCarModel.attributes.id)
         .toBeGreaterThanOrEqual(12000000)
-    expect(createdCarModel.id)
+    expect(createdCarModel.attributes.id)
         .toBeLessThanOrEqual(99999999)
 
     const createdImage = await Image.create(FakeNodeInput(ControllerNodeType.IMAGE) as InputImageCreate)
-    expect(createdImage.id)
+    expect(createdImage.attributes.id)
         .toBeGreaterThanOrEqual(12000000)
-    expect(createdImage.id)
+    expect(createdImage.attributes.id)
         .toBeLessThanOrEqual(99999999)
 })

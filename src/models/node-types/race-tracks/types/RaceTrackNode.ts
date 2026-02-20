@@ -1,13 +1,18 @@
+import {ModelNodeType} from "../../../types/ModelNodeType"
+
 export type RaceTrackNode = {
-    id: number
+    node_type: ModelNodeType.RaceTrack,
+    attributes: {
+        id: number
 
-    name: string
-    opened: number | null
-    closed: number | null
-    type: string | null
-    location: string | null
-    geo_position: string | null
+        name: string
+        opened: number | null
+        closed: number | null
+        type: string | null
+        location: string | null
+        geo_position: string | null
 
-    created_at: string
-    updated_at: string
+        created_at: string
+        updated_at: string
+    }
 }

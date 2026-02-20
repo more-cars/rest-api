@@ -18,23 +18,20 @@ describe('A sorted "get all CAR MODEL VARIANT nodes" request returns the nodes i
 
     test('when there exist CAR MODEL VARIANT nodes', async () => {
         await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL_VARIANT)
-        const nodeA = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT, {
-            name: 'A Node'}) as unknown as CarModelVariantNode
-            const nodeB = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT, {
-                name: 'B Node'}) as unknown as CarModelVariantNode
-                const nodeC = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT, {
-                    name: 'C Node'}) as unknown as CarModelVariantNode
+        const nodeA = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT, {name: 'A Node'}) as unknown as CarModelVariantNode
+        const nodeB = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT, {name: 'B Node'}) as unknown as CarModelVariantNode
+        const nodeC = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT, {name: 'C Node'}) as unknown as CarModelVariantNode
 
-                    const ascNodes = await CarModelVariant.findAll({sortByProperty: 'name', sortDirection: 'asc'})
-                    expect(ascNodes.length).toEqual(3)
-                expect(ascNodes[0].name === nodeA.name)
-            expect(ascNodes[1].name === nodeB.name)
-        expect(ascNodes[2].name === nodeC.name)
+        const ascNodes = await CarModelVariant.findAll({sortByProperty: 'name', sortDirection: 'asc'})
+        expect(ascNodes.length).toEqual(3)
+        expect(ascNodes[0].attributes.name === nodeA.attributes.name)
+        expect(ascNodes[1].attributes.name === nodeB.attributes.name)
+        expect(ascNodes[2].attributes.name === nodeC.attributes.name)
 
         const descNodes = await CarModelVariant.findAll({sortByProperty: 'name', sortDirection: 'desc'})
         expect(descNodes.length).toEqual(3)
-        expect(descNodes[0].name === nodeC.name)
-        expect(descNodes[1].name === nodeB.name)
-        expect(descNodes[2].name === nodeA.name)
+        expect(descNodes[0].attributes.name === nodeC.attributes.name)
+        expect(descNodes[1].attributes.name === nodeB.attributes.name)
+        expect(descNodes[2].attributes.name === nodeA.attributes.name)
     })
-    })
+})

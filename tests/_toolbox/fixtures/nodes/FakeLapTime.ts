@@ -1,6 +1,7 @@
 import {faker} from "@faker-js/faker"
 import type {InputLapTimeCreate} from "../../../../src/db/nodes/lap-times/types/InputLapTimeCreate"
 import type {LapTimeNode} from "../../../../src/models/node-types/lap-times/types/LapTimeNode"
+import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 
 export const FakeLapTime = {
     dbInput() {
@@ -19,13 +20,18 @@ export const FakeLapTime = {
     },
 
     modelOutput() {
-        return {
-            id: faker.number.int({min: 12_000_000, max: 20_000_000}),
-            time: faker.word.noun(),
-            driver_name: faker.person.fullName(),
-            date: faker.date.past().toISOString().substring(0, 10),
-            created_at: faker.date.past().toISOString(),
-            updated_at: faker.date.past().toISOString(),
-        } as LapTimeNode
+        const output: LapTimeNode = {
+            node_type: ModelNodeType.LapTime,
+            attributes: {
+                id: faker.number.int({min: 12_000_000, max: 20_000_000}),
+                time: faker.word.noun(),
+                driver_name: faker.person.fullName(),
+                date: faker.date.past().toISOString().substring(0, 10),
+                created_at: faker.date.past().toISOString(),
+                updated_at: faker.date.past().toISOString(),
+            }
+        }
+
+        return output
     },
 }

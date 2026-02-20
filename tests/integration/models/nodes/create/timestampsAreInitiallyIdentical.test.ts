@@ -10,14 +10,14 @@ import type {InputImageCreate} from "../../../../../src/db/nodes/images/types/In
 
 test('Timestamps are identical when creating a node', async () => {
     const createdBrand = await Brand.create(FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate)
-    expect(createdBrand.created_at)
-        .toEqual(createdBrand.updated_at)
+    expect(createdBrand.attributes.created_at)
+        .toEqual(createdBrand.attributes.updated_at)
 
     const createdCarModel = await CarModel.create(FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate)
-    expect(createdCarModel.created_at)
-        .toEqual(createdCarModel.updated_at)
+    expect(createdCarModel.attributes.created_at)
+        .toEqual(createdCarModel.attributes.updated_at)
 
     const createdImage = await Image.create(FakeNodeInput(ControllerNodeType.IMAGE) as InputImageCreate)
-    expect(createdImage.created_at)
-        .toEqual(createdImage.updated_at)
+    expect(createdImage.attributes.created_at)
+        .toEqual(createdImage.attributes.updated_at)
 })

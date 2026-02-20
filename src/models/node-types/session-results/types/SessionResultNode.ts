@@ -1,15 +1,20 @@
+import {ModelNodeType} from "../../../types/ModelNodeType"
+
 export type SessionResultNode = {
-    id: number
+    node_type: ModelNodeType.SessionResult,
+    attributes: {
+        id: number
 
-    position: number
-    race_number: string | null
-    driver_name: string
-    team_name: string | null
-    race_time: string | null
-    laps: number | null
-    status: string | null
-    points: number | null
+        position: number
+        race_number: string | null
+        driver_name: string
+        team_name: string | null
+        race_time: string | null
+        laps: number | null
+        status: string | null
+        points: number | null
 
-    created_at: string
-    updated_at: string
+        created_at: string
+        updated_at: string
+    }
 }

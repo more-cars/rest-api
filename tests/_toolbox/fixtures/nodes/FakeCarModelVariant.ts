@@ -1,6 +1,7 @@
 import {faker} from "@faker-js/faker"
 import type {InputCarModelVariantCreate} from "../../../../src/db/nodes/car-model-variants/types/InputCarModelVariantCreate"
 import type {CarModelVariantNode} from "../../../../src/models/node-types/car-model-variants/types/CarModelVariantNode"
+import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 
 export const FakeCarModelVariant = {
     dbInput() {
@@ -51,46 +52,51 @@ export const FakeCarModelVariant = {
     },
 
     modelOutput() {
-        return {
-            id: faker.number.int({min: 12_000_000, max: 20_000_000}),
-            name: faker.vehicle.vehicle(),
-            internal_code: faker.vehicle.vrm(),
-            built_from: faker.number.int({min: 1000, max: 3000}),
-            built_to: faker.number.int({min: 1000, max: 3000}),
-            body_style: faker.vehicle.type(),
-            drag_coefficient: faker.number.float({min: 0.1, max: 0.5, multipleOf: 0.01}),
-            doors: faker.number.int({min: 1, max: 10}),
-            weight: faker.number.int({min: 1000, max: 10000}),
-            weight_unit: faker.science.unit().symbol,
-            max_power: faker.number.int({min: 100, max: 1000}),
-            max_power_unit: faker.science.unit().symbol,
-            max_torque: faker.number.int({min: 100, max: 1000}),
-            max_torque_unit: faker.science.unit().symbol,
-            cylinders: faker.number.int({min: 1, max: 20}),
-            engine_configuration: faker.word.noun(),
-            displacement: faker.number.int({min: 500, max: 5000}),
-            displacement_unit: faker.science.unit().symbol,
-            air_induction: faker.word.noun(),
-            engine_type: faker.word.noun(),
-            energy_source: faker.vehicle.fuel(),
-            energy_source_2: faker.vehicle.fuel(),
-            consumption: faker.number.int({min: 1, max: 100}),
-            consumption_unit: faker.science.unit().symbol,
-            consumption_2: faker.number.int({min: 1, max: 100}),
-            consumption_2_unit: faker.science.unit().symbol,
-            energy_capacity: faker.number.int({min: 10, max: 100}),
-            energy_capacity_unit: faker.science.unit().symbol,
-            energy_capacity_2: faker.number.int({min: 10, max: 100}),
-            energy_capacity_2_unit: faker.science.unit().symbol,
-            transmission: faker.word.noun(),
-            gears: faker.number.int({min: 1, max: 10}),
-            drivetrain: faker.word.noun(),
-            sprint_time_0_100_kmh: faker.number.int({min: 1, max: 100}),
-            top_speed: faker.number.int({min: 100, max: 500}),
-            top_speed_unit: faker.science.unit().symbol,
-            total_production: faker.number.int({min: 1000, max: 1000000}),
-            created_at: faker.date.past().toISOString(),
-            updated_at: faker.date.past().toISOString(),
-        } as CarModelVariantNode
+        const output: CarModelVariantNode = {
+            node_type: ModelNodeType.CarModelVariant,
+            attributes: {
+                id: faker.number.int({min: 12_000_000, max: 20_000_000}),
+                name: faker.vehicle.vehicle(),
+                internal_code: faker.vehicle.vrm(),
+                built_from: faker.number.int({min: 1000, max: 3000}),
+                built_to: faker.number.int({min: 1000, max: 3000}),
+                body_style: faker.vehicle.type(),
+                drag_coefficient: faker.number.float({min: 0.1, max: 0.5, multipleOf: 0.01}),
+                doors: faker.number.int({min: 1, max: 10}),
+                weight: faker.number.int({min: 1000, max: 10000}),
+                weight_unit: faker.science.unit().symbol,
+                max_power: faker.number.int({min: 100, max: 1000}),
+                max_power_unit: faker.science.unit().symbol,
+                max_torque: faker.number.int({min: 100, max: 1000}),
+                max_torque_unit: faker.science.unit().symbol,
+                cylinders: faker.number.int({min: 1, max: 20}),
+                engine_configuration: faker.word.noun(),
+                displacement: faker.number.int({min: 500, max: 5000}),
+                displacement_unit: faker.science.unit().symbol,
+                air_induction: faker.word.noun(),
+                engine_type: faker.word.noun(),
+                energy_source: faker.vehicle.fuel(),
+                energy_source_2: faker.vehicle.fuel(),
+                consumption: faker.number.int({min: 1, max: 100}),
+                consumption_unit: faker.science.unit().symbol,
+                consumption_2: faker.number.int({min: 1, max: 100}),
+                consumption_2_unit: faker.science.unit().symbol,
+                energy_capacity: faker.number.int({min: 10, max: 100}),
+                energy_capacity_unit: faker.science.unit().symbol,
+                energy_capacity_2: faker.number.int({min: 10, max: 100}),
+                energy_capacity_2_unit: faker.science.unit().symbol,
+                transmission: faker.word.noun(),
+                gears: faker.number.int({min: 1, max: 10}),
+                drivetrain: faker.word.noun(),
+                sprint_time_0_100_kmh: faker.number.int({min: 1, max: 100}),
+                top_speed: faker.number.int({min: 100, max: 500}),
+                top_speed_unit: faker.science.unit().symbol,
+                total_production: faker.number.int({min: 1000, max: 1000000}),
+                created_at: faker.date.past().toISOString(),
+                updated_at: faker.date.past().toISOString(),
+            }
+        }
+
+        return output
     },
 }

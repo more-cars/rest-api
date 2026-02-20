@@ -1,10 +1,15 @@
+import {ModelNodeType} from "../../../types/ModelNodeType"
+
 export type GamingPlatformNode = {
-    id: number
+    node_type: ModelNodeType.GamingPlatform,
+    attributes: {
+        id: number
 
-    name: string
-    release_year: number | null
-    manufacturer: string | null
+        name: string
+        release_year: number | null
+        manufacturer: string | null
 
-    created_at: string
-    updated_at: string
+        created_at: string
+        updated_at: string
+    }
 }

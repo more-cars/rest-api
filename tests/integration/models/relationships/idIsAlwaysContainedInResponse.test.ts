@@ -10,13 +10,13 @@ import type {InputCarModelCreate} from "../../../../src/db/nodes/car-models/type
 test('ID is always contained in response', async () => {
     const carModel = await CarModel.create(FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate)
     const brand = await Brand.create(FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate)
-    const expectedRelationship = await CarModel.createBelongsToBrandRelationship(carModel.id, brand.id)
+    const expectedRelationship = await CarModel.createBelongsToBrandRelationship(carModel.attributes.id, brand.attributes.id)
 
     if (!expectedRelationship) {
         assert.fail('Relationship creation failed')
     }
 
-    const requestedRelationship = await CarModel.getBelongsToBrandRelationship(carModel.id)
+    const requestedRelationship = await CarModel.getBelongsToBrandRelationship(carModel.attributes.id)
 
     if (!requestedRelationship) {
         assert.fail('Relationship retrieval failed')

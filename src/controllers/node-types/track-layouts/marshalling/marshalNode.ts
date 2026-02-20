@@ -4,17 +4,17 @@ import {TrackLayoutResponse} from "../types/TrackLayoutResponse"
 
 export function marshalNode(node: TrackLayoutNode) {
     return marshalSingleNode({
-        id: node.id,
-        name: node.name,
-        year_from: node.year_from ?? null,
-        year_to: node.year_to ?? null,
-        length: node.length ?? null,
-        length_unit: node.length_unit ?? null,
-        direction: node.direction ?? null,
-        elevation_change: node.elevation_change ?? null,
-        elevation_change_unit: node.elevation_change_unit ?? null,
-        surface: node.surface ?? null,
-        created_at: node.created_at,
-        updated_at: node.updated_at,
+        id: node.attributes.id,
+        name: node.attributes.name,
+        year_from: node.attributes.year_from ?? null,
+        year_to: node.attributes.year_to ?? null,
+        length: node.attributes.length ?? null,
+        length_unit: node.attributes.length_unit ?? null,
+        direction: node.attributes.direction ?? null,
+        elevation_change: node.attributes.elevation_change ?? null,
+        elevation_change_unit: node.attributes.elevation_change_unit ?? null,
+        surface: node.attributes.surface ?? null,
+        created_at: node.attributes.created_at,
+        updated_at: node.attributes.updated_at,
     }) as TrackLayoutResponse
 }

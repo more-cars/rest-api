@@ -1,11 +1,16 @@
+import {ModelNodeType} from "../../../types/ModelNodeType"
+
 export type RacingEventNode = {
-    id: number
+    node_type: ModelNodeType.RacingEvent,
+    attributes: {
+        id: number
 
-    name: string
-    round: number | null
-    date_from: string | null
-    date_to: string | null
+        name: string
+        round: number | null
+        date_from: string | null
+        date_to: string | null
 
-    created_at: string
-    updated_at: string
+        created_at: string
+        updated_at: string
+    }
 }
