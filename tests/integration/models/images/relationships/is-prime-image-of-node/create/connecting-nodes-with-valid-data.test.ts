@@ -10,9 +10,9 @@ test('Creating a ›is-prime-image-of-node‹ relationship with valid data', asy
 
     const createdRelationship = await Image.createIsPrimeImageOfNodeRelationship(image.id, node.id)
 
-    expect(createdRelationship.origin.id)
+    expect(createdRelationship.origin.properties.id)
         .toEqual(image.id)
-    expect(createdRelationship.destination.id)
+    expect(createdRelationship.destination.properties.id)
         .toEqual(node.id)
     expect(createdRelationship.id)
         .toBeDefined()

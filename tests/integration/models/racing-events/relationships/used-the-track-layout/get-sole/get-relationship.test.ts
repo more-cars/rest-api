@@ -12,17 +12,17 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 describe('Requesting a ›used-the-track-layout‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(ControllerNodeType.RACING_EVENT, ControllerNodeType.TRACK_LAYOUT, RelationshipType.RacingEventUsedTheTrackLayout)
-        const expectedRacingEventId = expectedRelationship.start_node.id
-        const expectedTrackLayoutId = expectedRelationship.end_node.id
+        const expectedRacingEventId = expectedRelationship.start_node.properties.id
+        const expectedTrackLayoutId = expectedRelationship.end_node.properties.id
         const actualRelationship = await RacingEvent.getUsedTheTrackLayoutRelationship(expectedRacingEventId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))
             .toBeTruthy()
 
-        expect(actualRelationship.origin.id)
+        expect(actualRelationship.origin.properties.id)
             .toBe(expectedRacingEventId)
 
-        expect(actualRelationship.destination.id)
+        expect(actualRelationship.destination.properties.id)
             .toBe(expectedTrackLayoutId)
     })
 

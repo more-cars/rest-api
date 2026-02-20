@@ -11,8 +11,8 @@ describe('Trying to delete a ›belongs-to-session-result‹ relationship', () =
         const seededRelationship = await seedRelationship(ControllerNodeType.LAP_TIME, ControllerNodeType.SESSION_RESULT, RelationshipType.LapTimeBelongsToSessionResult)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.LapTimeBelongsToSessionResult,
         )
 
@@ -20,14 +20,14 @@ describe('Trying to delete a ›belongs-to-session-result‹ relationship', () =
             .toBeTruthy()
 
         await deleteSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.LapTimeBelongsToSessionResult,
         )
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.LapTimeBelongsToSessionResult,
         )
 

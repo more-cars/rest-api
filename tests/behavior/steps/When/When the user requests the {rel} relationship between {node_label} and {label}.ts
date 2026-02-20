@@ -14,7 +14,7 @@ When('the user requests the {string} relationship between {string} and {string}'
         const relPathFragment = getBasePathFragmentForRelationshipName(relationshipName)
 
         const response = await axios
-            .get(`${process.env.API_URL}/${nodePathFragment}/${startNode.id}/${relPathFragment}/${endNode.id}`)
+            .get(`${process.env.API_URL}/${nodePathFragment}/${startNode.properties.id}/${relPathFragment}/${endNode.properties.id}`)
             .catch(error => {
                 console.error(error)
             })

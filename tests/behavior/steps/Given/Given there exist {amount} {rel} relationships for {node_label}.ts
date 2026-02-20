@@ -18,7 +18,7 @@ Given('there exist {int} {string} relationships for {string}',
             const endNode = await seedNode(endNodeType)
 
             await axios
-                .post(`${process.env.API_URL}/${nodePathFragment}/${startNode.id}/${dasherize(relationshipName)}/${endNode.id}`)
+                .post(`${process.env.API_URL}/${nodePathFragment}/${startNode.properties.id}/${dasherize(relationshipName)}/${endNode.id}`)
                 .catch(error => {
                     console.error(error)
                 })

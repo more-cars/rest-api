@@ -44,19 +44,19 @@ describe('Deleting a ›belongs-to-brand‹ relationship', () => {
         const seededRelationship = await seedRelationship(ControllerNodeType.CAR_MODEL, ControllerNodeType.BRAND, RelationshipType.CarModelBelongsToBrand)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.CarModelBelongsToBrand,
         )
 
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await CarModel.deleteBelongsToBrandRelationship(seededRelationship.start_node.id, seededRelationship.end_node.id)
+        await CarModel.deleteBelongsToBrandRelationship(seededRelationship.start_node.properties.id, seededRelationship.end_node.properties.id)
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.CarModelBelongsToBrand,
         )
 

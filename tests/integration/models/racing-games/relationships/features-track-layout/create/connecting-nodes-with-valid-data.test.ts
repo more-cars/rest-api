@@ -10,9 +10,9 @@ test('Creating a ›features-track-layout‹ relationship with valid data', asyn
 
     const createdRelationship = await RacingGame.createFeaturesTrackLayoutRelationship(racingGame.id, trackLayout.id)
 
-    expect(createdRelationship.origin.id)
+    expect(createdRelationship.origin.properties.id)
         .toEqual(racingGame.id)
-    expect(createdRelationship.destination.id)
+    expect(createdRelationship.destination.properties.id)
         .toEqual(trackLayout.id)
     expect(createdRelationship.id)
         .toBeDefined()

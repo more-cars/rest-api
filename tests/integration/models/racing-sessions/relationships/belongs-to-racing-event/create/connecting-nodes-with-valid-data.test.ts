@@ -10,9 +10,9 @@ test('Creating a ›belongs-to-racing-event‹ relationship with valid data', as
 
     const createdRelationship = await RacingSession.createBelongsToRacingEventRelationship(racingSession.id, racingEvent.id)
 
-    expect(createdRelationship.origin.id)
+    expect(createdRelationship.origin.properties.id)
         .toEqual(racingSession.id)
-    expect(createdRelationship.destination.id)
+    expect(createdRelationship.destination.properties.id)
         .toEqual(racingEvent.id)
     expect(createdRelationship.id)
         .toBeDefined()

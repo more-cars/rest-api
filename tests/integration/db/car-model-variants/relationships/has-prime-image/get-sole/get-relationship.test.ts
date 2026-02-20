@@ -11,7 +11,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
         const relationship = await seedRelationship(ControllerNodeType.CAR_MODEL_VARIANT, ControllerNodeType.IMAGE, RelationshipType.CarModelVariantHasPrimeImage)
 
         const relationships = await getRelationshipCollection(
-            relationship.start_node.id,
+            relationship.start_node.properties.id,
             RelationshipType.CarModelVariantHasPrimeImage,
             DbNodeType.Image,
         )

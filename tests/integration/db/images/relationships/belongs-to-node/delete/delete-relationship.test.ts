@@ -11,8 +11,8 @@ describe('Trying to delete a ›belongs-to-session-result‹ relationship', () =
         const seededRelationship = await seedRelationship(ControllerNodeType.IMAGE, ControllerNodeType.CAR_MODEL, RelationshipType.ImageBelongsToNode)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.ImageBelongsToNode,
         )
 
@@ -20,14 +20,14 @@ describe('Trying to delete a ›belongs-to-session-result‹ relationship', () =
             .toBeTruthy()
 
         await deleteSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.ImageBelongsToNode,
         )
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.ImageBelongsToNode,
         )
 

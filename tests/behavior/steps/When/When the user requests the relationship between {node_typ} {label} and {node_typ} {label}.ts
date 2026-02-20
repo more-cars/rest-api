@@ -13,7 +13,7 @@ When('the user requests the relationship between {string} {string} and {string} 
         const endNode: DbNode = world.recallNode(endNodeLabel).data
 
         const response = await axios
-            .get(`${process.env.API_URL}/${nodePathFragment}/${startNode.id}/${relationshipName}/${endNode.id}`)
+            .get(`${process.env.API_URL}/${nodePathFragment}/${startNode.properties.id}/${relationshipName}/${endNode.properties.id}`)
             .catch(error => {
                 console.error(error)
             })

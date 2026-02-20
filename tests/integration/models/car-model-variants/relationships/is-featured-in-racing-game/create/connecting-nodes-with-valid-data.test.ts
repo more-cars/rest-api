@@ -10,9 +10,9 @@ test('Creating a ›is-featured-in-racing-game‹ relationship with valid data',
 
     const createdRelationship = await CarModelVariant.createIsFeaturedInRacingGameRelationship(carModelVariant.id, racingGame.id)
 
-    expect(createdRelationship.origin.id)
+    expect(createdRelationship.origin.properties.id)
         .toEqual(carModelVariant.id)
-    expect(createdRelationship.destination.id)
+    expect(createdRelationship.destination.properties.id)
         .toEqual(racingGame.id)
     expect(createdRelationship.id)
         .toBeDefined()

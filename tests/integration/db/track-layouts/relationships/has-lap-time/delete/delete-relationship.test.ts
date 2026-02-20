@@ -11,8 +11,8 @@ describe('Trying to delete a ›has-lap-time‹ relationship', () => {
         const seededRelationship = await seedRelationship(ControllerNodeType.TRACK_LAYOUT, ControllerNodeType.LAP_TIME, RelationshipType.TrackLayoutHasLapTime)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.TrackLayoutHasLapTime,
         )
 
@@ -20,14 +20,14 @@ describe('Trying to delete a ›has-lap-time‹ relationship', () => {
             .toBeTruthy()
 
         await deleteSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.TrackLayoutHasLapTime,
         )
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.TrackLayoutHasLapTime,
         )
 

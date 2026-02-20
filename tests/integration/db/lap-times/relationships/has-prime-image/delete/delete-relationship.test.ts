@@ -11,8 +11,8 @@ describe('Trying to delete a ›has-prime-image‹ relationship', () => {
         const seededRelationship = await seedRelationship(ControllerNodeType.LAP_TIME, ControllerNodeType.IMAGE, RelationshipType.LapTimeHasPrimeImage)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.LapTimeHasPrimeImage,
         )
 
@@ -20,14 +20,14 @@ describe('Trying to delete a ›has-prime-image‹ relationship', () => {
             .toBeTruthy()
 
         await deleteSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.LapTimeHasPrimeImage,
         )
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.LapTimeHasPrimeImage,
         )
 

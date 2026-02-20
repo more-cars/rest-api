@@ -11,8 +11,8 @@ describe('Trying to delete a ›has-layout‹ relationship', () => {
         const seededRelationship = await seedRelationship(ControllerNodeType.RACE_TRACK, ControllerNodeType.TRACK_LAYOUT, RelationshipType.RaceTrackHasLayout)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.RaceTrackHasLayout,
         )
 
@@ -20,14 +20,14 @@ describe('Trying to delete a ›has-layout‹ relationship', () => {
             .toBeTruthy()
 
         await deleteSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.RaceTrackHasLayout,
         )
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.RaceTrackHasLayout,
         )
 

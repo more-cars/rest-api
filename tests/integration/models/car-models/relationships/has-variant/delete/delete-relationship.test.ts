@@ -44,19 +44,19 @@ describe('Deleting a ›has-variant‹ relationship', () => {
         const seededRelationship = await seedRelationship(ControllerNodeType.CAR_MODEL, ControllerNodeType.CAR_MODEL_VARIANT, RelationshipType.CarModelHasVariant)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.CarModelHasVariant,
         )
 
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await CarModel.deleteHasVariantRelationship(seededRelationship.start_node.id, seededRelationship.end_node.id)
+        await CarModel.deleteHasVariantRelationship(seededRelationship.start_node.properties.id, seededRelationship.end_node.properties.id)
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.CarModelHasVariant,
         )
 

@@ -15,17 +15,17 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 describe('Requesting a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>, NodeTypeEnum.<%= h.changeCase.constant(endNodeType) %>, RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
-        const expected<%= h.changeCase.pascal(startNodeType) %>Id = expectedRelationship.start_node.id
-        const expected<%= h.changeCase.pascal(endNodeType) %>Id = expectedRelationship.end_node.id
+        const expected<%= h.changeCase.pascal(startNodeType) %>Id = expectedRelationship.start_node.properties.id
+        const expected<%= h.changeCase.pascal(endNodeType) %>Id = expectedRelationship.end_node.properties.id
         const actualRelationship = await <%= h.changeCase.pascal(startNodeType) %>.get<%= h.changeCase.pascal(relationshipName) %>Relationship(expected<%= h.changeCase.pascal(startNodeType) %>Id)
 
         expect(validateJson(actualRelationship, RelationshipSchema))
             .toBeTruthy()
 
-        expect(actualRelationship.origin.id)
+        expect(actualRelationship.origin.properties.id)
             .toBe(expected<%= h.changeCase.pascal(startNodeType) %>Id)
 
-        expect(actualRelationship.destination.id)
+        expect(actualRelationship.destination.properties.id)
             .toBe(expected<%= h.changeCase.pascal(endNodeType) %>Id)
     })
 

@@ -11,8 +11,8 @@ describe('Trying to delete a ›is-featured-in-racing-game‹ relationship', () 
         const seededRelationship = await seedRelationship(ControllerNodeType.TRACK_LAYOUT, ControllerNodeType.RACING_GAME, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.TrackLayoutIsFeaturedInRacingGame,
         )
 
@@ -20,14 +20,14 @@ describe('Trying to delete a ›is-featured-in-racing-game‹ relationship', () 
             .toBeTruthy()
 
         await deleteSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.TrackLayoutIsFeaturedInRacingGame,
         )
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.TrackLayoutIsFeaturedInRacingGame,
         )
 

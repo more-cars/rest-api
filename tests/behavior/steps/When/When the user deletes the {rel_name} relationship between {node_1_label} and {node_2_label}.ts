@@ -14,7 +14,7 @@ When('the user deletes the {string} relationship between {string} and {string}',
         const relPathFragment = getBasePathFragmentForRelationshipName(relationshipName)
 
         const response = await axios
-            .delete(`${process.env.API_URL}/${nodePathFragment}/${startNode.id}/${relPathFragment}/${endNode.id}`)
+            .delete(`${process.env.API_URL}/${nodePathFragment}/${startNode.properties.id}/${relPathFragment}/${endNode.properties.id}`)
             .catch(error => {
                 console.error(error)
             })

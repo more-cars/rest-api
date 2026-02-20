@@ -44,19 +44,19 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
         const seededRelationship = await seedRelationship(ControllerNodeType.CAR_MODEL_VARIANT, ControllerNodeType.IMAGE, RelationshipType.CarModelVariantHasPrimeImage)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.CarModelVariantHasPrimeImage,
         )
 
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await CarModelVariant.deleteHasPrimeImageRelationship(seededRelationship.start_node.id, seededRelationship.end_node.id)
+        await CarModelVariant.deleteHasPrimeImageRelationship(seededRelationship.start_node.properties.id, seededRelationship.end_node.properties.id)
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.CarModelVariantHasPrimeImage,
         )
 

@@ -16,9 +16,9 @@ describe('Creating a ›has-car-model‹ relationship', () => {
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node.id', brand.id)
+            .toHaveProperty('start_node.properties.id', brand.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node.id', carModel.id)
+            .toHaveProperty('end_node.properties.id', carModel.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)

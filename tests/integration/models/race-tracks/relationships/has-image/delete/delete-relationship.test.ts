@@ -44,19 +44,19 @@ describe('Deleting a ›has-image‹ relationship', () => {
         const seededRelationship = await seedRelationship(ControllerNodeType.RACE_TRACK, ControllerNodeType.IMAGE, RelationshipType.RaceTrackHasImage)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.RaceTrackHasImage,
         )
 
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await RaceTrack.deleteHasImageRelationship(seededRelationship.start_node.id, seededRelationship.end_node.id)
+        await RaceTrack.deleteHasImageRelationship(seededRelationship.start_node.properties.id, seededRelationship.end_node.properties.id)
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.RaceTrackHasImage,
         )
 

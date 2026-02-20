@@ -10,9 +10,9 @@ test('Creating a ›has-image‹ relationship with valid data', async () => {
 
     const createdRelationship = await RaceTrack.createHasImageRelationship(raceTrack.id, image.id)
 
-    expect(createdRelationship.origin.id)
+    expect(createdRelationship.origin.properties.id)
         .toEqual(raceTrack.id)
-    expect(createdRelationship.destination.id)
+    expect(createdRelationship.destination.properties.id)
         .toEqual(image.id)
     expect(createdRelationship.id)
         .toBeDefined()

@@ -12,7 +12,7 @@ Then('there should exist NO {string} relationship between {string} and {string}'
         const nodePathFragment = getBasePathFragmentForNodeType(world.recallNode(startNodeLabel).nodeType)
 
         const response = await axios
-            .get(`${process.env.API_URL}/${nodePathFragment}/${startNode.id}/${dasherize(relationshipName)}`)
+            .get(`${process.env.API_URL}/${nodePathFragment}/${startNode.properties.id}/${dasherize(relationshipName)}`)
             .catch(error => {
                 console.error(error)
             })

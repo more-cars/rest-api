@@ -12,17 +12,17 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 describe('Requesting a ›belongs-to-brand‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(ControllerNodeType.CAR_MODEL, ControllerNodeType.BRAND, RelationshipType.CarModelBelongsToBrand)
-        const expectedCarModelId = expectedRelationship.start_node.id
-        const expectedBrandId = expectedRelationship.end_node.id
+        const expectedCarModelId = expectedRelationship.start_node.properties.id
+        const expectedBrandId = expectedRelationship.end_node.properties.id
         const actualRelationship = await CarModel.getBelongsToBrandRelationship(expectedCarModelId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))
             .toBeTruthy()
 
-        expect(actualRelationship.origin.id)
+        expect(actualRelationship.origin.properties.id)
             .toBe(expectedCarModelId)
 
-        expect(actualRelationship.destination.id)
+        expect(actualRelationship.destination.properties.id)
             .toBe(expectedBrandId)
     })
 

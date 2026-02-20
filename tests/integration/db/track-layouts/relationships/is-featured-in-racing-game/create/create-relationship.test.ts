@@ -16,9 +16,9 @@ describe('Creating a ›is-featured-in-racing-game‹ relationship', () => {
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node.id', trackLayout.id)
+            .toHaveProperty('start_node.properties.id', trackLayout.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node.id', racingGame.id)
+            .toHaveProperty('end_node.properties.id', racingGame.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)

@@ -11,7 +11,7 @@ describe('Requesting a ›used-the-track-layout‹ relationship', () => {
         const relationship = await seedRelationship(ControllerNodeType.RACING_EVENT, ControllerNodeType.TRACK_LAYOUT, RelationshipType.RacingEventUsedTheTrackLayout)
 
         const relationships = await getRelationshipCollection(
-            relationship.start_node.id,
+            relationship.start_node.properties.id,
             RelationshipType.RacingEventUsedTheTrackLayout,
             DbNodeType.TrackLayout,
         )

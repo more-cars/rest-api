@@ -13,7 +13,7 @@ When('the user connects {string} {string} to {string} {string}',
         const endNode: DbNode = world.recallNode(endNodeLabel).data
 
         const response = await axios
-            .post(`${process.env.API_URL}/${nodePathFragment}/${startNode.id}/${relationshipName}/${endNode.id}`)
+            .post(`${process.env.API_URL}/${nodePathFragment}/${startNode.properties.id}/${relationshipName}/${endNode.properties.id}`)
             .catch(error => {
                 console.error(error)
             })

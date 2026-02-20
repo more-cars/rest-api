@@ -44,19 +44,19 @@ describe('Deleting a ›is-successor-of‹ relationship', () => {
         const seededRelationship = await seedRelationship(ControllerNodeType.CAR_MODEL, ControllerNodeType.CAR_MODEL, RelationshipType.CarModelIsSuccessorOf)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.CarModelIsSuccessorOf,
         )
 
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await CarModel.deleteIsSuccessorOfRelationship(seededRelationship.start_node.id, seededRelationship.end_node.id)
+        await CarModel.deleteIsSuccessorOfRelationship(seededRelationship.start_node.properties.id, seededRelationship.end_node.properties.id)
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.CarModelIsSuccessorOf,
         )
 

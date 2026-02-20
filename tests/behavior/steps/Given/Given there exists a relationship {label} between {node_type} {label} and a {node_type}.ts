@@ -14,7 +14,7 @@ Given('there exists a(n) relationship {string} between {string} {string} and a(n
         const endNode = await seedNode(endNodeType.toLowerCase() as ControllerNodeType)
 
         const response = await axios
-            .post(`${process.env.API_URL}/${nodePathFragment}/${startNode.id}/${relationshipName}/${endNode.id}`)
+            .post(`${process.env.API_URL}/${nodePathFragment}/${startNode.properties.id}/${relationshipName}/${endNode.id}`)
             .catch(error => {
                 console.error(error)
             })

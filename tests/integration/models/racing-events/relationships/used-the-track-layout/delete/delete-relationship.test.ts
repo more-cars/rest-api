@@ -44,19 +44,19 @@ describe('Deleting a ›used-the-track-layout‹ relationship', () => {
         const seededRelationship = await seedRelationship(ControllerNodeType.RACING_EVENT, ControllerNodeType.TRACK_LAYOUT, RelationshipType.RacingEventUsedTheTrackLayout)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.RacingEventUsedTheTrackLayout,
         )
 
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await RacingEvent.deleteUsedTheTrackLayoutRelationship(seededRelationship.start_node.id, seededRelationship.end_node.id)
+        await RacingEvent.deleteUsedTheTrackLayoutRelationship(seededRelationship.start_node.properties.id, seededRelationship.end_node.properties.id)
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.RacingEventUsedTheTrackLayout,
         )
 

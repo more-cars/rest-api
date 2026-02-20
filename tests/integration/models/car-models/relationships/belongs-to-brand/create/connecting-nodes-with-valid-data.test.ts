@@ -10,9 +10,9 @@ test('Creating a "Car Model belongs to Brand" relationship when both nodes exist
 
     const createdRelationship = await CarModel.createBelongsToBrandRelationship(carModel.id, brand.id)
 
-    expect(createdRelationship.origin.id)
+    expect(createdRelationship.origin.properties.id)
         .toEqual(carModel.id)
-    expect(createdRelationship.destination.id)
+    expect(createdRelationship.destination.properties.id)
         .toEqual(brand.id)
     expect(createdRelationship.id)
         .toBeDefined()

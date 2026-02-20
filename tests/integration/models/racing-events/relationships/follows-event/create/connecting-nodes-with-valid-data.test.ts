@@ -10,9 +10,9 @@ test('Creating a ›follows-event‹ relationship with valid data', async () => 
 
     const createdRelationship = await RacingEvent.createFollowsEventRelationship(racingEvent.id, partner.id)
 
-    expect(createdRelationship.origin.id)
+    expect(createdRelationship.origin.properties.id)
         .toEqual(racingEvent.id)
-    expect(createdRelationship.destination.id)
+    expect(createdRelationship.destination.properties.id)
         .toEqual(partner.id)
     expect(createdRelationship.id)
         .toBeDefined()

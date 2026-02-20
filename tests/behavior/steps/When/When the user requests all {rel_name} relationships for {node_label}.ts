@@ -13,7 +13,7 @@ When('the user requests all {string} relationships for {string}',
         const relPathFragment = getBasePathFragmentForRelationshipName(relationshipName)
 
         const response = await axios
-            .get(`${process.env.API_URL}/${nodePathFragment}/${startNode.id}/${relPathFragment}`)
+            .get(`${process.env.API_URL}/${nodePathFragment}/${startNode.properties.id}/${relPathFragment}`)
             .catch(error => {
                 console.error(error)
             })

@@ -11,7 +11,7 @@ describe('Requesting a ›belongs-to-session-result‹ relationship', () => {
         const relationship = await seedRelationship(ControllerNodeType.LAP_TIME, ControllerNodeType.SESSION_RESULT, RelationshipType.LapTimeBelongsToSessionResult)
 
         const relationships = await getRelationshipCollection(
-            relationship.start_node.id,
+            relationship.start_node.properties.id,
             RelationshipType.LapTimeBelongsToSessionResult,
             DbNodeType.SessionResult,
         )

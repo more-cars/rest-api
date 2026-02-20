@@ -37,7 +37,7 @@ test('Get all "Image belongs to Node type" relationships for specific image', as
         .toHaveLength(2)
 
     carModelRelationships.forEach(relationship => {
-        expect(relationship.start_node.id)
+        expect(relationship.start_node.properties.id)
             .toBe(imageNode.id)
         expect(relationship.type)
             .toBe(RelationshipType.ImageBelongsToNode)

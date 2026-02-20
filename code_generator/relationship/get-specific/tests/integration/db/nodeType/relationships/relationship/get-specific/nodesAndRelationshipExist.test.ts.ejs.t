@@ -11,8 +11,8 @@ test('Both nodes and the relationship exist', async () => {
     const expectedRelationship = await seedRelationship(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>, NodeTypeEnum.<%= h.changeCase.constant(endNodeType) %>, RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
 
     const actualRelationship = await getSpecificRelationship(
-        expectedrelationship.start_node.id,
-        expectedRelationship.end_node.id,
+        expectedrelationship.start_node.properties.id,
+        expectedRelationship.end_node.properties.id,
         RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
     )
 

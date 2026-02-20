@@ -13,14 +13,14 @@ export const Relationship = {
             throw new RelNotFoundError('-', 0)
         }
 
-        const destination = await Node.findById(dbRelationship.end_node.id)
+        const destination = await Node.findById(dbRelationship.end_node.properties.id)
         if (!destination) {
-            throw new NodeNotFoundError(dbRelationship.end_node.id)
+            throw new NodeNotFoundError(dbRelationship.end_node.properties.id)
         }
 
-        const origin = await Node.findById(dbRelationship.start_node.id)
+        const origin = await Node.findById(dbRelationship.start_node.properties.id)
         if (!origin) {
-            throw new NodeNotFoundError(dbRelationship.start_node.id)
+            throw new NodeNotFoundError(dbRelationship.start_node.properties.id)
         }
 
         const rel: Rel = {

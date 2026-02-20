@@ -44,19 +44,19 @@ describe('Deleting a ›is-prime-image-of-node‹ relationship', () => {
         const seededRelationship = await seedRelationship(ControllerNodeType.IMAGE, ControllerNodeType.COMPANY, RelationshipType.ImageIsPrimeImageOfNode)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.ImageIsPrimeImageOfNode,
         )
 
         expect(relationshipBefore)
             .toBeTruthy()
 
-        await Image.deleteIsPrimeImageOfNodeRelationship(seededRelationship.start_node.id, seededRelationship.end_node.id)
+        await Image.deleteIsPrimeImageOfNodeRelationship(seededRelationship.start_node.properties.id, seededRelationship.end_node.properties.id)
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.ImageIsPrimeImageOfNode,
         )
 

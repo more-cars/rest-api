@@ -12,17 +12,17 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 describe('Requesting a ›belongs-to-session-result‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(ControllerNodeType.LAP_TIME, ControllerNodeType.SESSION_RESULT, RelationshipType.LapTimeBelongsToSessionResult)
-        const expectedLapTimeId = expectedRelationship.start_node.id
-        const expectedSessionResultId = expectedRelationship.end_node.id
+        const expectedLapTimeId = expectedRelationship.start_node.properties.id
+        const expectedSessionResultId = expectedRelationship.end_node.properties.id
         const actualRelationship = await LapTime.getBelongsToSessionResultRelationship(expectedLapTimeId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))
             .toBeTruthy()
 
-        expect(actualRelationship.origin.id)
+        expect(actualRelationship.origin.properties.id)
             .toBe(expectedLapTimeId)
 
-        expect(actualRelationship.destination.id)
+        expect(actualRelationship.destination.properties.id)
             .toBe(expectedSessionResultId)
     })
 

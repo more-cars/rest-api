@@ -9,16 +9,16 @@ import {getRelationshipById} from "../../../../../src/db/relationships/getRelati
 describe('Creating a 1:1 relationship', () => {
     test('expecting the destination node to lose its already existing relationship', async () => {
         const foreignRelationship = await seedRelationship(ControllerNodeType.RACING_EVENT, ControllerNodeType.RACING_EVENT, RelationshipType.RacingEventIsFollowedByEvent)
-        const destinationId = foreignRelationship.end_node.id
+        const destinationId = foreignRelationship.end_node.properties.id
         const originId = (await seedNode(ControllerNodeType.RACING_EVENT)).id
 
         const newRelationship = await RacingEvent.createIsFollowedByEventRelationship(originId, destinationId)
         expect(newRelationship.id)
             .not.to.equal(foreignRelationship.id)
-        expect(newRelationship.origin.id)
-            .not.to.equal(foreignRelationship.start_node.id)
-        expect(newRelationship.destination.id)
-            .to.equal(foreignRelationship.end_node.id)
+        expect(newRelationship.origin.properties.id)
+            .not.to.equal(foreignRelationship.start_node.properties.id)
+        expect(newRelationship.destination.properties.id)
+            .to.equal(foreignRelationship.end_node.properties.id)
 
         const refetchedForeignRelationship = await getRelationshipById(foreignRelationship.id)
         expect(refetchedForeignRelationship)

@@ -10,9 +10,9 @@ test('Creating a ›has-prime-image‹ relationship with valid data', async () =
 
     const createdRelationship = await Company.createHasPrimeImageRelationship(company.id, image.id)
 
-    expect(createdRelationship.origin.id)
+    expect(createdRelationship.origin.properties.id)
         .toEqual(company.id)
-    expect(createdRelationship.destination.id)
+    expect(createdRelationship.destination.properties.id)
         .toEqual(image.id)
     expect(createdRelationship.id)
         .toBeDefined()

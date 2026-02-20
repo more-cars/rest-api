@@ -12,7 +12,7 @@ Then('there should exist a {string} relationship between {string} and {string}',
         const nodePathFragment = getBasePathFragmentForNodeType(world.recallNode(startNodeLabel).nodeType)
 
         const response = await axios
-            .get(`${process.env.API_URL}/${nodePathFragment}/${startNode.id}/${dasherize(relationshipName)}`)
+            .get(`${process.env.API_URL}/${nodePathFragment}/${startNode.properties.id}/${dasherize(relationshipName)}`)
             .catch(error => {
                 console.error(error)
             })
@@ -32,9 +32,9 @@ Then('there should exist a {string} relationship between {string} and {string}',
                 }
             })
 
-            assert.equal(success, true, `None of the returned relationships contains the node #${endNode.id}.`)
+            assert.equal(success, true, `None of the returned relationships contains the node #${endNode.properties.id}.`)
         } else if ('relationship_partner' in response.data.data) {
-            assert.equal(response.data.data.relationship_partner.data.id, endNode.id, `The returned relationship does not contain the node #${endNode.id}.`)
+            assert.equal(response.data.data.relationship_partner.data.id, endNode.id, `The returned relationship does not contain the node #${endNode.properties.id}.`)
         } else {
             assert.fail('respond did not return any relationship')
         }

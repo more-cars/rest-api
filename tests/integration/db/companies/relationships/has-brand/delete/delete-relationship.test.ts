@@ -11,8 +11,8 @@ describe('Trying to delete a ›has-brand‹ relationship', () => {
         const seededRelationship = await seedRelationship(ControllerNodeType.COMPANY, ControllerNodeType.BRAND, RelationshipType.CompanyHasBrand)
 
         const relationshipBefore = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.CompanyHasBrand,
         )
 
@@ -20,14 +20,14 @@ describe('Trying to delete a ›has-brand‹ relationship', () => {
             .toBeTruthy()
 
         await deleteSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.CompanyHasBrand,
         )
 
         const relationshipAfter = await getSpecificRelationship(
-            seededRelationship.start_node.id,
-            seededRelationship.end_node.id,
+            seededRelationship.start_node.properties.id,
+            seededRelationship.end_node.properties.id,
             RelationshipType.CompanyHasBrand,
         )
 

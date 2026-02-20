@@ -10,9 +10,9 @@ test('Creating a ›achieved-with-car-model-variant‹ relationship with valid d
 
     const createdRelationship = await LapTime.createAchievedWithCarModelVariantRelationship(lapTime.id, carModelVariant.id)
 
-    expect(createdRelationship.origin.id)
+    expect(createdRelationship.origin.properties.id)
         .toEqual(lapTime.id)
-    expect(createdRelationship.destination.id)
+    expect(createdRelationship.destination.properties.id)
         .toEqual(carModelVariant.id)
     expect(createdRelationship.id)
         .toBeDefined()

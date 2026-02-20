@@ -11,7 +11,7 @@ describe('Requesting a ›belongs-to-node‹ relationship', () => {
         const relationship = await seedRelationship(ControllerNodeType.IMAGE, ControllerNodeType.BRAND, RelationshipType.ImageBelongsToNode)
 
         const relationships = await getRelationshipCollection(
-            relationship.start_node.id,
+            relationship.start_node.properties.id,
             RelationshipType.ImageBelongsToNode,
             DbNodeType.Brand,
         )

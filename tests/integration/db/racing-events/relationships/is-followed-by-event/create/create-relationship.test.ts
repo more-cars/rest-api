@@ -16,9 +16,9 @@ describe('Creating a ›is-followed-by-event‹ relationship', () => {
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node.id', racingEvent.id)
+            .toHaveProperty('start_node.properties.id', racingEvent.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node.id', partner.id)
+            .toHaveProperty('end_node.properties.id', partner.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)

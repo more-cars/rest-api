@@ -12,17 +12,17 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
         const expectedRelationship = await seedRelationship(ControllerNodeType.TRACK_LAYOUT, ControllerNodeType.IMAGE, RelationshipType.TrackLayoutHasPrimeImage)
-        const expectedTrackLayoutId = expectedRelationship.start_node.id
-        const expectedImageId = expectedRelationship.end_node.id
+        const expectedTrackLayoutId = expectedRelationship.start_node.properties.id
+        const expectedImageId = expectedRelationship.end_node.properties.id
         const actualRelationship = await TrackLayout.getHasPrimeImageRelationship(expectedTrackLayoutId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))
             .toBeTruthy()
 
-        expect(actualRelationship.origin.id)
+        expect(actualRelationship.origin.properties.id)
             .toBe(expectedTrackLayoutId)
 
-        expect(actualRelationship.destination.id)
+        expect(actualRelationship.destination.properties.id)
             .toBe(expectedImageId)
     })
 

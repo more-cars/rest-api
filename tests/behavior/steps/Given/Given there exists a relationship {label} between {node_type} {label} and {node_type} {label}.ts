@@ -13,7 +13,7 @@ Given('there exists a(n) relationship {string} between {string} {string} and {st
         const endNode = world.recallNode(endNodeLabel).data
 
         const response = await axios
-            .post(`${process.env.API_URL}/${nodePathFragment}/${startNode.id}/${relationshipName}/${endNode.id}`)
+            .post(`${process.env.API_URL}/${nodePathFragment}/${startNode.properties.id}/${relationshipName}/${endNode.properties.id}`)
             .catch(error => {
                 console.error(error)
             })
