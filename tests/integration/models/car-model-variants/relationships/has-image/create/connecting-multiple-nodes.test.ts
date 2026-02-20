@@ -5,7 +5,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 import {CarModelVariant} from "../../../../../../../src/models/node-types/car-model-variants/CarModelVariant"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A CAR MODEL VARIANT can have multiple ›has-image‹ relationships', async () => {
     const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
@@ -19,7 +19,7 @@ test('A CAR MODEL VARIANT can have multiple ›has-image‹ relationships', asyn
     const relationships = await getRelationshipCollection(
         carModelVariant.id,
         RelationshipType.CarModelVariantHasImage,
-        Neo4jNodeType.Image,
+        DbNodeType.Image,
     )
 
     expect(relationships.length)

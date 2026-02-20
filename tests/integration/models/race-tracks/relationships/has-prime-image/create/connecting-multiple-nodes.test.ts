@@ -5,7 +5,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 import {RaceTrack} from "../../../../../../../src/models/node-types/race-tracks/RaceTrack"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A RACE TRACK cannot have multiple ›has-prime-image‹ relationships', async () => {
     const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
@@ -19,7 +19,7 @@ test('A RACE TRACK cannot have multiple ›has-prime-image‹ relationships', as
     const relationships = await getRelationshipCollection(
         raceTrack.id,
         RelationshipType.RaceTrackHasPrimeImage,
-        Neo4jNodeType.Image,
+        DbNodeType.Image,
     )
 
     expect(relationships.length)

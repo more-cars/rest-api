@@ -4,7 +4,7 @@ import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelatio
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Requesting a ›belongs-to-brand‹ relationship', () => {
     test('node and relationship exist', async () => {
@@ -13,7 +13,7 @@ describe('Requesting a ›belongs-to-brand‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             relationship.start_node.id,
             RelationshipType.CarModelBelongsToBrand,
-            Neo4jNodeType.Brand,
+            DbNodeType.Brand,
         )
 
         expect(relationships.length)
@@ -26,7 +26,7 @@ describe('Requesting a ›belongs-to-brand‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             carModel.id,
             RelationshipType.CarModelBelongsToBrand,
-            Neo4jNodeType.Brand,
+            DbNodeType.Brand,
         )
 
         expect(relationships.length)
@@ -37,7 +37,7 @@ describe('Requesting a ›belongs-to-brand‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.CarModelBelongsToBrand,
-            Neo4jNodeType.Brand,
+            DbNodeType.Brand,
         )
 
         expect(relationships.length)

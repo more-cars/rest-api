@@ -4,7 +4,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Requesting all ›achieved-session-result‹ relationships', () => {
     test('node and relationships exist', async () => {
@@ -15,7 +15,7 @@ describe('Requesting all ›achieved-session-result‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             carModelVariant.id,
             RelationshipType.CarModelVariantAchievedSessionResult,
-            Neo4jNodeType.SessionResult,
+            DbNodeType.SessionResult,
         )
 
         expect(relationships.length)
@@ -28,7 +28,7 @@ describe('Requesting all ›achieved-session-result‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             carModelVariant.id,
             RelationshipType.CarModelVariantAchievedSessionResult,
-            Neo4jNodeType.SessionResult,
+            DbNodeType.SessionResult,
         )
 
         expect(relationships.length)
@@ -39,7 +39,7 @@ describe('Requesting all ›achieved-session-result‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.CarModelVariantAchievedSessionResult,
-            Neo4jNodeType.SessionResult,
+            DbNodeType.SessionResult,
         )
 
         expect(relationships.length)

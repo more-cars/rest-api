@@ -5,7 +5,7 @@ import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {CarModel} from "../../../../../../../src/models/node-types/car-models/CarModel"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A CAR MODEL cannot have multiple ›belongs-to-brand‹ relationships', async () => {
     const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
@@ -19,7 +19,7 @@ test('A CAR MODEL cannot have multiple ›belongs-to-brand‹ relationships', as
     const relationships = await getRelationshipCollection(
         carModel.id,
         RelationshipType.CarModelBelongsToBrand,
-        Neo4jNodeType.Brand,
+        DbNodeType.Brand,
     )
 
     expect(relationships.length)

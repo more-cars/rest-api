@@ -5,7 +5,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 import {LapTime} from "../../../../../../../src/models/node-types/lap-times/LapTime"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A LAP TIME cannot have multiple ›achieved-on-track-layout‹ relationships', async () => {
     const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
@@ -19,7 +19,7 @@ test('A LAP TIME cannot have multiple ›achieved-on-track-layout‹ relationshi
     const relationships = await getRelationshipCollection(
         lapTime.id,
         RelationshipType.LapTimeAchievedOnTrackLayout,
-        Neo4jNodeType.TrackLayout,
+        DbNodeType.TrackLayout,
     )
 
     expect(relationships.length)

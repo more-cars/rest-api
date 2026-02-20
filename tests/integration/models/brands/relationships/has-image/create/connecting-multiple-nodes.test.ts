@@ -5,7 +5,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A BRAND can have multiple ›has-image‹ relationships', async () => {
     const brand = await seedNode(ControllerNodeType.BRAND)
@@ -16,7 +16,7 @@ test('A BRAND can have multiple ›has-image‹ relationships', async () => {
         await Brand.createHasImageRelationship(brand.id, image.id)
     }
 
-    const relationships = await getRelationshipCollection(brand.id, RelationshipType.BrandHasImage, Neo4jNodeType.Image)
+    const relationships = await getRelationshipCollection(brand.id, RelationshipType.BrandHasImage, DbNodeType.Image)
 
     expect(relationships.length)
         .toBe(imagesAmount)

@@ -5,7 +5,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 import {CarModel} from "../../../../../../../src/models/node-types/car-models/CarModel"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A CAR MODEL cannot have multiple ›is-successor-of‹ relationships', async () => {
     const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
@@ -19,7 +19,7 @@ test('A CAR MODEL cannot have multiple ›is-successor-of‹ relationships', asy
     const relationships = await getRelationshipCollection(
         carModel.id,
         RelationshipType.CarModelIsSuccessorOf,
-        Neo4jNodeType.CarModel,
+        DbNodeType.CarModel,
     )
 
     expect(relationships.length)

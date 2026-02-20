@@ -5,7 +5,7 @@ import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A BRAND cannot have multiple ›has-prime-image‹ relationships', async () => {
     const brand = await seedNode(ControllerNodeType.BRAND)
@@ -16,7 +16,7 @@ test('A BRAND cannot have multiple ›has-prime-image‹ relationships', async (
         await Brand.createHasPrimeImageRelationship(brand.id, image.id)
     }
 
-    const relationships = await getRelationshipCollection(brand.id, RelationshipType.BrandHasPrimeImage, Neo4jNodeType.Image)
+    const relationships = await getRelationshipCollection(brand.id, RelationshipType.BrandHasPrimeImage, DbNodeType.Image)
 
     expect(relationships.length)
         .toBe(1)

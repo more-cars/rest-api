@@ -5,7 +5,7 @@ import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {Company} from "../../../../../../../src/models/node-types/companies/Company"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A COMPANY can have multiple ›has-brand‹ relationships', async () => {
     const company = await seedNode(ControllerNodeType.COMPANY)
@@ -19,7 +19,7 @@ test('A COMPANY can have multiple ›has-brand‹ relationships', async () => {
     const relationships = await getRelationshipCollection(
         company.id,
         RelationshipType.CompanyHasBrand,
-        Neo4jNodeType.Brand,
+        DbNodeType.Brand,
     )
 
     expect(relationships.length)

@@ -5,7 +5,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 import {GamingPlatform} from "../../../../../../../src/models/node-types/gaming-platforms/GamingPlatform"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A GAMING PLATFORM cannot have multiple ›has-prime-image‹ relationships', async () => {
     const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
@@ -19,7 +19,7 @@ test('A GAMING PLATFORM cannot have multiple ›has-prime-image‹ relationships
     const relationships = await getRelationshipCollection(
         gamingPlatform.id,
         RelationshipType.GamingPlatformHasPrimeImage,
-        Neo4jNodeType.Image,
+        DbNodeType.Image,
     )
 
     expect(relationships.length)
