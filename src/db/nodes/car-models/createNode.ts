@@ -1,11 +1,11 @@
 import {InputCarModelCreate} from "./types/InputCarModelCreate"
 import {CarModelNode} from "./types/CarModelNode"
 import {createDbNode} from "../createDbNode"
-import {Neo4jNodeType} from "../../types/Neo4jNodeType"
+import {DbNodeType} from "../../types/DbNodeType"
 import {mapDbNodeToCarModelNode} from "./mapDbNodeToCarModelNode"
 
 export async function createNode(data: InputCarModelCreate): Promise<CarModelNode> {
-    const node = await createDbNode(Neo4jNodeType.CarModel, data)
+    const node = await createDbNode(DbNodeType.CarModel, data)
 
     return mapDbNodeToCarModelNode(node)
 }

@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {InputTrackLayoutCreate} from "../../../../../src/db/nodes/track-layouts/types/InputTrackLayoutCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
-import {Neo4jNodeType} from "../../../../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
@@ -17,7 +17,7 @@ test('single quotes are correctly escaped', async () => {
         surface: "'asphalt"
     }
 
-    const query = createNodeQuery(Neo4jNodeType.TrackLayout, data)
+    const query = createNodeQuery(DbNodeType.TrackLayout, data)
 
     expect(query)
         .toEqual(

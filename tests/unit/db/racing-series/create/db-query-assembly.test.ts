@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {InputRacingSeriesCreate} from "../../../../../src/db/nodes/racing-series/types/InputRacingSeriesCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
-import {Neo4jNodeType} from "../../../../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a RACING SERIES node', async () => {
@@ -14,7 +14,7 @@ test('database query for creating a RACING SERIES node', async () => {
         vehicle_type: "formula racing cars"
     }
 
-    const query = createNodeQuery(Neo4jNodeType.RacingSeries, data)
+    const query = createNodeQuery(DbNodeType.RacingSeries, data)
 
     expect(query)
         .toEqual(

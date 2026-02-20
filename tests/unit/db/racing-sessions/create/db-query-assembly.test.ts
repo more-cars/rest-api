@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {InputRacingSessionCreate} from "../../../../../src/db/nodes/racing-sessions/types/InputRacingSessionCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
-import {Neo4jNodeType} from "../../../../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a RACING SESSION node', async () => {
@@ -15,7 +15,7 @@ test('database query for creating a RACING SESSION node', async () => {
         distance_unit: "laps"
     }
 
-    const query = createNodeQuery(Neo4jNodeType.RacingSession, data)
+    const query = createNodeQuery(DbNodeType.RacingSession, data)
 
     expect(query)
         .toEqual(

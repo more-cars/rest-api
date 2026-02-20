@@ -1,11 +1,11 @@
 import {InputSessionResultCreate} from "./types/InputSessionResultCreate"
 import {SessionResultNode} from "./types/SessionResultNode"
 import {createDbNode} from "../createDbNode"
-import {Neo4jNodeType} from "../../types/Neo4jNodeType"
+import {DbNodeType} from "../../types/DbNodeType"
 import {mapDbNodeToSessionResultNode} from "./mapDbNodeToSessionResultNode"
 
 export async function createNode(data: InputSessionResultCreate): Promise<SessionResultNode> {
-    const node = await createDbNode(Neo4jNodeType.SessionResult, data)
+    const node = await createDbNode(DbNodeType.SessionResult, data)
 
     return mapDbNodeToSessionResultNode(node)
 }

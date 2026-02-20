@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
-import {Neo4jNodeType} from "../../../../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a BRAND node', async () => {
@@ -13,7 +13,7 @@ test('database query for creating a BRAND node', async () => {
         wmi: null,
         hsn: "0005",
     }
-    const query = createNodeQuery(Neo4jNodeType.Brand, data)
+    const query = createNodeQuery(DbNodeType.Brand, data)
 
     expect(query)
         .toEqual(

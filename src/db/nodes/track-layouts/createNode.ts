@@ -1,11 +1,11 @@
 import {InputTrackLayoutCreate} from "./types/InputTrackLayoutCreate"
 import {TrackLayoutNode} from "./types/TrackLayoutNode"
 import {createDbNode} from "../createDbNode"
-import {Neo4jNodeType} from "../../types/Neo4jNodeType"
+import {DbNodeType} from "../../types/DbNodeType"
 import {mapDbNodeToTrackLayoutNode} from "./mapDbNodeToTrackLayoutNode"
 
 export async function createNode(data: InputTrackLayoutCreate): Promise<TrackLayoutNode> {
-    const node = await createDbNode(Neo4jNodeType.TrackLayout, data)
+    const node = await createDbNode(DbNodeType.TrackLayout, data)
 
     return mapDbNodeToTrackLayoutNode(node)
 }

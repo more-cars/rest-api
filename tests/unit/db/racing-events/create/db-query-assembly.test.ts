@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {InputRacingEventCreate} from "../../../../../src/db/nodes/racing-events/types/InputRacingEventCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
-import {Neo4jNodeType} from "../../../../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a RACING EVENT node', async () => {
@@ -12,7 +12,7 @@ test('database query for creating a RACING EVENT node', async () => {
         date_to: "2025-05-27"
     }
 
-    const query = createNodeQuery(Neo4jNodeType.RacingEvent, data)
+    const query = createNodeQuery(DbNodeType.RacingEvent, data)
 
     expect(query)
         .toEqual(

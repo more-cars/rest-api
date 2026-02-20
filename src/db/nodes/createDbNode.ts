@@ -1,5 +1,4 @@
 import neo4j, {Driver, Node, Session} from "neo4j-driver"
-import {Neo4jNodeType} from "../types/Neo4jNodeType"
 import {getDriver} from "../driver"
 import {generateMoreCarsId} from "../generateMoreCarsId"
 import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId"
@@ -25,6 +24,7 @@ import type {InputLapTimeCreate} from "./lap-times/types/InputLapTimeCreate"
 import type {InputRacingGameCreate} from "./racing-games/types/InputRacingGameCreate"
 import type {InputGamingPlatformCreate} from "./gaming-platforms/types/InputGamingPlatformCreate"
 import type {InputImageCreate} from "./images/types/InputImageCreate"
+import {DbNodeType} from "../types/DbNodeType"
 
 // TODO find a more elegant solution to describe the allowed input data
 type InputTypes =
@@ -43,7 +43,7 @@ type InputTypes =
     InputGamingPlatformCreate |
     InputImageCreate
 
-export async function createDbNode(nodeType: Neo4jNodeType, data: InputTypes): Promise<Node> {
+export async function createDbNode(nodeType: DbNodeType, data: InputTypes): Promise<Node> {
     const driver: Driver = getDriver()
     const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
@@ -67,7 +67,7 @@ export async function createDbNode(nodeType: Neo4jNodeType, data: InputTypes): P
     return dbNode
 }
 
-export function createNodeQuery(nodeType: Neo4jNodeType, data: InputTypes) {
+export function createNodeQuery(nodeType: DbNodeType, data: InputTypes) {
     const nodeSpecs = getNodeSpecification(nodeType)
     const properties = getCypherFormattedPropertyList(nodeSpecs, data)
 

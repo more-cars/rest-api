@@ -1,11 +1,11 @@
 import {InputRaceTrackCreate} from "./types/InputRaceTrackCreate"
 import {RaceTrackNode} from "./types/RaceTrackNode"
 import {createDbNode} from "../createDbNode"
-import {Neo4jNodeType} from "../../types/Neo4jNodeType"
+import {DbNodeType} from "../../types/DbNodeType"
 import {mapDbNodeToRaceTrackNode} from "./mapDbNodeToRaceTrackNode"
 
 export async function createNode(data: InputRaceTrackCreate): Promise<RaceTrackNode> {
-    const node = await createDbNode(Neo4jNodeType.RaceTrack, data)
+    const node = await createDbNode(DbNodeType.RaceTrack, data)
 
     return mapDbNodeToRaceTrackNode(node)
 }

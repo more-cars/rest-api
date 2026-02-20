@@ -1,4 +1,4 @@
-import {Neo4jNodeType} from "../types/Neo4jNodeType"
+import {DbNodeType} from "../types/DbNodeType"
 import {NodeSpecification} from "../types/NodeSpecification"
 import {CompanyNodeSpecification} from "./companies/types/CompanyNodeSpecification"
 import {BrandNodeSpecification} from "./brands/types/BrandNodeSpecification"
@@ -15,22 +15,22 @@ import {RacingGameNodeSpecification} from "./racing-games/types/RacingGameNodeSp
 import {GamingPlatformNodeSpecification} from "./gaming-platforms/types/GamingPlatformNodeSpecification"
 import {ImageNodeSpecification} from "./images/types/ImageNodeSpecification"
 
-export function getNodeSpecification(nodeType: Neo4jNodeType) {
-    const mapping = new Map<Neo4jNodeType, NodeSpecification>([
-        [Neo4jNodeType.Company, CompanyNodeSpecification],
-        [Neo4jNodeType.Brand, BrandNodeSpecification],
-        [Neo4jNodeType.CarModel, CarModelNodeSpecification],
-        [Neo4jNodeType.CarModelVariant, CarModelVariantNodeSpecification],
-        [Neo4jNodeType.RaceTrack, RaceTrackNodeSpecification],
-        [Neo4jNodeType.TrackLayout, TrackLayoutNodeSpecification],
-        [Neo4jNodeType.RacingSeries, RacingSeriesNodeSpecification],
-        [Neo4jNodeType.RacingEvent, RacingEventNodeSpecification],
-        [Neo4jNodeType.RacingSession, RacingSessionNodeSpecification],
-        [Neo4jNodeType.SessionResult, SessionResultNodeSpecification],
-        [Neo4jNodeType.LapTime, LapTimeNodeSpecification],
-        [Neo4jNodeType.RacingGame, RacingGameNodeSpecification],
-        [Neo4jNodeType.GamingPlatform, GamingPlatformNodeSpecification],
-        [Neo4jNodeType.Image, ImageNodeSpecification],
+export function getNodeSpecification(nodeType: DbNodeType) {
+    const mapping = new Map<DbNodeType, NodeSpecification>([
+        [DbNodeType.Company, CompanyNodeSpecification],
+        [DbNodeType.Brand, BrandNodeSpecification],
+        [DbNodeType.CarModel, CarModelNodeSpecification],
+        [DbNodeType.CarModelVariant, CarModelVariantNodeSpecification],
+        [DbNodeType.RaceTrack, RaceTrackNodeSpecification],
+        [DbNodeType.TrackLayout, TrackLayoutNodeSpecification],
+        [DbNodeType.RacingSeries, RacingSeriesNodeSpecification],
+        [DbNodeType.RacingEvent, RacingEventNodeSpecification],
+        [DbNodeType.RacingSession, RacingSessionNodeSpecification],
+        [DbNodeType.SessionResult, SessionResultNodeSpecification],
+        [DbNodeType.LapTime, LapTimeNodeSpecification],
+        [DbNodeType.RacingGame, RacingGameNodeSpecification],
+        [DbNodeType.GamingPlatform, GamingPlatformNodeSpecification],
+        [DbNodeType.Image, ImageNodeSpecification],
     ])
 
     const spec = mapping.get(nodeType)

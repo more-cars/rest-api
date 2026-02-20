@@ -1,11 +1,11 @@
 import {InputImageCreate} from "./types/InputImageCreate"
 import {ImageNode} from "./types/ImageNode"
 import {createDbNode} from "../createDbNode"
-import {Neo4jNodeType} from "../../types/Neo4jNodeType"
+import {DbNodeType} from "../../types/DbNodeType"
 import {mapDbNodeToImageNode} from "./mapDbNodeToImageNode"
 
 export async function createNode(data: InputImageCreate): Promise<ImageNode> {
-    const node = await createDbNode(Neo4jNodeType.Image, data)
+    const node = await createDbNode(DbNodeType.Image, data)
 
     return mapDbNodeToImageNode(node)
 }

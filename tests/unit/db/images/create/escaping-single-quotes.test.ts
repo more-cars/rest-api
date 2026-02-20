@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {InputImageCreate} from "../../../../../src/db/nodes/images/types/InputImageCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
-import {Neo4jNodeType} from "../../../../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
@@ -22,7 +22,7 @@ test('single quotes are correctly escaped', async () => {
         image_url_s: "''https://live.staticflickr.com/65535/54570839725_652073f374_n.jpg",
         image_url_xs: "''https://live.staticflickr.com/65535/54570839725_652073f374_t.jpg",
     }
-    const query = createNodeQuery(Neo4jNodeType.Image, data)
+    const query = createNodeQuery(DbNodeType.Image, data)
 
     expect(query)
         .toEqual(

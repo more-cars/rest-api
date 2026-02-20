@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {InputGamingPlatformCreate} from "../../../../../src/db/nodes/gaming-platforms/types/InputGamingPlatformCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
-import {Neo4jNodeType} from "../../../../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a GAMING PLATFORM node', async () => {
@@ -11,7 +11,7 @@ test('database query for creating a GAMING PLATFORM node', async () => {
         manufacturer: "Sony"
     }
 
-    const query = createNodeQuery(Neo4jNodeType.GamingPlatform, data)
+    const query = createNodeQuery(DbNodeType.GamingPlatform, data)
 
     expect(query)
         .toEqual(

@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {InputCompanyCreate} from "../../../../../src/db/nodes/companies/types/InputCompanyCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
-import {Neo4jNodeType} from "../../../../../src/db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
@@ -13,7 +13,7 @@ test('single quotes are correctly escaped', async () => {
         legal_headquarters_location: "'Munich"
     }
 
-    const query = createNodeQuery(Neo4jNodeType.Company, data)
+    const query = createNodeQuery(DbNodeType.Company, data)
 
     expect(query)
         .toEqual(
