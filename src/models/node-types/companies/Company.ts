@@ -18,7 +18,7 @@ import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {getSpecificRel} from "../../relationships/getSpecificRel"
 import {createRel} from "../../relationships/createRel"
 import {getAllRels} from "../../relationships/getAllRels"
-import {Neo4jNodeType} from "../../../db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../db/types/DbNodeType"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 
@@ -77,7 +77,7 @@ export const Company = {
             throw new RelAlreadyExistsError(RelType.CompanyHasBrand, companyId, brandId)
         }
 
-        await deleteIncomingRel(brandId, RelType.CompanyHasBrand, Neo4jNodeType.Company)
+        await deleteIncomingRel(brandId, RelType.CompanyHasBrand, DbNodeType.Company)
 
         const createdRelationship = await createRel(companyId, brandId, RelType.CompanyHasBrand)
         if (!createdRelationship) {
@@ -183,7 +183,7 @@ export const Company = {
             throw new RelAlreadyExistsError(RelType.CompanyHasPrimeImage, companyId, imageId)
         }
 
-        await deleteOutgoingRel(companyId, RelType.CompanyHasPrimeImage, Neo4jNodeType.Image)
+        await deleteOutgoingRel(companyId, RelType.CompanyHasPrimeImage, DbNodeType.Image)
 
         const createdRelationship = await createRel(companyId, imageId, RelType.CompanyHasPrimeImage)
         if (!createdRelationship) {

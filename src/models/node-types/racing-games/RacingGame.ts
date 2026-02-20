@@ -18,7 +18,7 @@ import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
 import {TrackLayout} from "../track-layouts/TrackLayout"
 import {Image} from "../images/Image"
-import {Neo4jNodeType} from "../../../db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getRel} from "../../relationships/getRel"
 import {GamingPlatform} from "../gaming-platforms/GamingPlatform"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
@@ -236,7 +236,7 @@ export const RacingGame = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.RacingGameHasPrimeImage, racingGameId, imageId)
         }
-        await deleteOutgoingRel(racingGameId, RelType.RacingGameHasPrimeImage, Neo4jNodeType.Image)
+        await deleteOutgoingRel(racingGameId, RelType.RacingGameHasPrimeImage, DbNodeType.Image)
 
 
         const createdRelationship = await createRel(racingGameId, imageId, RelType.RacingGameHasPrimeImage)

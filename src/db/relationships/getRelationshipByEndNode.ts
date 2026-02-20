@@ -1,6 +1,6 @@
 import neo4j, {Driver, Node, Relationship as Neo4jRelationship} from "neo4j-driver"
 import type {RelationshipType} from "../types/RelationshipType"
-import type {Neo4jNodeType} from "../types/Neo4jNodeType"
+import type {DbNodeType} from "../types/DbNodeType"
 import type {Relationship} from "../types/Relationship"
 import {getRelationshipSpecification} from "./getRelationshipSpecification"
 import {RelationshipDirection} from "../types/RelationshipDirection"
@@ -13,7 +13,7 @@ import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationsh
 export async function getRelationshipByEndNode(
     endNodeId: number,
     relationshipType: RelationshipType,
-    startNodeType: Neo4jNodeType,
+    startNodeType: DbNodeType,
 ): Promise<false | Relationship> {
     const relationshipSpecs = getRelationshipSpecification(relationshipType)
     const dbRelationshipName = relationshipSpecs.relationshipName
@@ -40,7 +40,7 @@ export async function getRelationshipByEndNode(
     return convertNeo4jRelationshipToDbRelationship(dbRelationship, startNode, endNode)
 }
 
-export function getRelationshipQuery(endNodeId: number, relationshipName: RelationshipTypeNeo4j, startNodeLabel: Neo4jNodeType, reverse: RelationshipDirection) {
+export function getRelationshipQuery(endNodeId: number, relationshipName: RelationshipTypeNeo4j, startNodeLabel: DbNodeType, reverse: RelationshipDirection) {
     const templateName = reverse ? 'getRelationshipByEndNodeReversed' : 'getRelationshipByEndNode'
 
     return getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')

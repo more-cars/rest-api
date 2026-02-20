@@ -19,7 +19,7 @@ import {getSpecificRel} from "../../relationships/getSpecificRel"
 import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {createRel} from "../../relationships/createRel"
 import {getAllRels} from "../../relationships/getAllRels"
-import {Neo4jNodeType} from "../../../db/types/Neo4jNodeType"
+import {DbNodeType} from "../../../db/types/DbNodeType"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 
@@ -78,7 +78,7 @@ export const Brand = {
             throw new RelAlreadyExistsError(RelType.BrandBelongsToCompany, brandId, companyId)
         }
 
-        await deleteOutgoingRel(brandId, RelType.BrandBelongsToCompany, Neo4jNodeType.Company)
+        await deleteOutgoingRel(brandId, RelType.BrandBelongsToCompany, DbNodeType.Company)
 
         const createdRelationship = await createRel(brandId, companyId, RelType.BrandBelongsToCompany)
         if (!createdRelationship) {
@@ -137,7 +137,7 @@ export const Brand = {
             throw new RelAlreadyExistsError(RelType.BrandHasCarModel, brandId, carModelId)
         }
 
-        await deleteIncomingRel(carModelId, RelType.BrandHasCarModel, Neo4jNodeType.Brand)
+        await deleteIncomingRel(carModelId, RelType.BrandHasCarModel, DbNodeType.Brand)
 
         const createdRelationship = await createRel(brandId, carModelId, RelType.BrandHasCarModel)
         if (!createdRelationship) {
@@ -282,7 +282,7 @@ export const Brand = {
             throw new RelAlreadyExistsError(RelType.BrandHasPrimeImage, brandId, imageId)
         }
 
-        await deleteOutgoingRel(brandId, RelType.BrandHasPrimeImage, Neo4jNodeType.Image)
+        await deleteOutgoingRel(brandId, RelType.BrandHasPrimeImage, DbNodeType.Image)
 
         const createdRelationship = await createRel(brandId, imageId, RelType.BrandHasPrimeImage)
         if (!createdRelationship) {
