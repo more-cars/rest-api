@@ -6,28 +6,40 @@ export const RelationshipSchema = {
         origin: {
             type: "object",
             properties: {
-                id: {type: "integer"},
-                created_at: {type: "string"},
-                updated_at: {type: "string"},
+                node_type: {type: "string"},
+                properties: {
+                    type: "object",
+                    properties: {
+                        id: {type: "integer"},
+                        created_at: {type: "string"},
+                        updated_at: {type: "string"},
+                    },
+                    required: [
+                        "id",
+                        "created_at",
+                        "updated_at",
+                    ],
+                },
             },
-            required: [
-                "id",
-                "created_at",
-                "updated_at",
-            ],
         },
         destination: {
             type: "object",
             properties: {
-                id: {type: "integer"},
-                created_at: {type: "string"},
-                updated_at: {type: "string"},
+                node_type: {type: "string"},
+                properties: {
+                    type: "object",
+                    properties: {
+                        id: {type: "integer"},
+                        created_at: {type: "string"},
+                        updated_at: {type: "string"},
+                    },
+                    required: [
+                        "id",
+                        "created_at",
+                        "updated_at",
+                    ],
+                },
             },
-            required: [
-                "id",
-                "created_at",
-                "updated_at",
-            ],
         },
         created_at: {type: "string"},
         updated_at: {type: "string"},
