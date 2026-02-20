@@ -1,4 +1,4 @@
-export enum NodeTypeLabel {
+export enum Neo4jNodeType {
     Company = "Company",
     Brand = "Brand",
     CarModel = "CarModel",

@@ -9,7 +9,7 @@ import {fetchOldRelationshipsOfType} from "./src/fetchOldRelationshipsOfType"
 import {createRelationship} from "../src/db/relationships/createRelationship"
 import {addMoreCarsIdToRelationship} from "../src/db/relationships/addMoreCarsIdToRelationship"
 import {addTimestampsToRelationship} from "../src/db/relationships/addTimestampsToRelationship"
-import {NodeTypeLabel} from "../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../src/db/types/Neo4jNodeType"
 import {RelationshipType} from "../src/db/types/RelationshipType"
 
 migrateRelationshipsOfType().then(() => true)
@@ -69,7 +69,7 @@ async function determineStartNodeType() {
         throw new Error('Start node type missing')
     }
 
-    return startNodeType as NodeTypeLabel
+    return startNodeType as Neo4jNodeType
 }
 
 async function determineEndNodeType() {
@@ -79,7 +79,7 @@ async function determineEndNodeType() {
         throw new Error('End node type missing')
     }
 
-    return endNodeType as NodeTypeLabel
+    return endNodeType as Neo4jNodeType
 }
 
 async function determineRelationshipType() {

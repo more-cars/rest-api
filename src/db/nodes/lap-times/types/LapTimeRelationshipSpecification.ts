@@ -1,36 +1,36 @@
 import {RelationshipSpecification} from "../../../types/RelationshipSpecification"
 import {RelationshipType} from "../../../types/RelationshipType"
-import {NodeTypeLabel} from "../../../NodeTypeLabel"
+import {Neo4jNodeType} from "../../../types/Neo4jNodeType"
 import {RelationshipTypeNeo4j} from "../../../types/RelationshipTypeNeo4j"
 
 export const LapTimeRelationshipSpecification: RelationshipSpecification[] = [
     [RelationshipType.LapTimeBelongsToSessionResult, {
-        startNodeLabel: NodeTypeLabel.LapTime,
-        endNodeLabel: NodeTypeLabel.SessionResult,
+        startNodeLabel: Neo4jNodeType.LapTime,
+        endNodeLabel: Neo4jNodeType.SessionResult,
         relationshipName: RelationshipTypeNeo4j.LapTimeBelongsToSessionResult,
         isReverseRelationship: true,
     }],
     [RelationshipType.LapTimeAchievedOnTrackLayout, {
-        startNodeLabel: NodeTypeLabel.LapTime,
-        endNodeLabel: NodeTypeLabel.TrackLayout,
+        startNodeLabel: Neo4jNodeType.LapTime,
+        endNodeLabel: Neo4jNodeType.TrackLayout,
         relationshipName: RelationshipTypeNeo4j.LapTimeAchievedOnTrackLayout,
         isReverseRelationship: true,
     }],
     [RelationshipType.LapTimeAchievedWithCarModelVariant, {
-        startNodeLabel: NodeTypeLabel.LapTime,
-        endNodeLabel: NodeTypeLabel.CarModelVariant,
+        startNodeLabel: Neo4jNodeType.LapTime,
+        endNodeLabel: Neo4jNodeType.CarModelVariant,
         relationshipName: RelationshipTypeNeo4j.LapTimeAchievedWithCarModelVariant,
         isReverseRelationship: true,
     }],
     [RelationshipType.LapTimeHasImage, {
-        startNodeLabel: NodeTypeLabel.LapTime,
-        endNodeLabel: NodeTypeLabel.Image,
+        startNodeLabel: Neo4jNodeType.LapTime,
+        endNodeLabel: Neo4jNodeType.Image,
         relationshipName: RelationshipTypeNeo4j.LapTimeHasImage,
         isReverseRelationship: false,
     }],
     [RelationshipType.LapTimeHasPrimeImage, {
-        startNodeLabel: NodeTypeLabel.LapTime,
-        endNodeLabel: NodeTypeLabel.Image,
+        startNodeLabel: Neo4jNodeType.LapTime,
+        endNodeLabel: Neo4jNodeType.Image,
         relationshipName: RelationshipTypeNeo4j.LapTimeHasPrimeImage,
         isReverseRelationship: false,
     }],

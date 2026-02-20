@@ -5,7 +5,7 @@ import {fetchOldNodesOfType} from "./src/fetchOldNodesOfType"
 import cliProgress from "cli-progress"
 import {mapNodeProperties} from "./src/mapNodeProperties"
 import {storeNode} from "./src/storeNode"
-import type {NodeTypeLabel} from "../src/db/NodeTypeLabel"
+import type {Neo4jNodeType} from "../src/db/types/Neo4jNodeType"
 
 async function migrateNodesOfType() {
     const newNodeType = determineNodeType()
@@ -42,7 +42,7 @@ function determineNodeType() {
         throw new Error('Node type missing')
     }
 
-    return nodeType as NodeTypeLabel
+    return nodeType as Neo4jNodeType
 }
 
 function determineDeleteNodes() {

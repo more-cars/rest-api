@@ -4,7 +4,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
 
 describe('Requesting all ›has-session-result‹ relationships', () => {
     test('node and relationships exist', async () => {
@@ -15,7 +15,7 @@ describe('Requesting all ›has-session-result‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             racingSession.id,
             RelationshipType.RacingSessionHasSessionResult,
-            NodeTypeLabel.SessionResult,
+            Neo4jNodeType.SessionResult,
         )
 
         expect(relationships.length)
@@ -28,7 +28,7 @@ describe('Requesting all ›has-session-result‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             racingSession.id,
             RelationshipType.RacingSessionHasSessionResult,
-            NodeTypeLabel.SessionResult,
+            Neo4jNodeType.SessionResult,
         )
 
         expect(relationships.length)
@@ -39,7 +39,7 @@ describe('Requesting all ›has-session-result‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.RacingSessionHasSessionResult,
-            NodeTypeLabel.SessionResult,
+            Neo4jNodeType.SessionResult,
         )
 
         expect(relationships.length)

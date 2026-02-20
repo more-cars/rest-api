@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {InputRaceTrackCreate} from "../../../../../src/db/nodes/race-tracks/types/InputRaceTrackCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
-import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../src/db/types/Neo4jNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
@@ -14,7 +14,7 @@ test('single quotes are correctly escaped', async () => {
         geo_position: "'51°32'0\"N 13°55'10\"E"
     }
 
-    const query = createNodeQuery(NodeTypeLabel.RaceTrack, data)
+    const query = createNodeQuery(Neo4jNodeType.RaceTrack, data)
 
     expect(query)
         .toEqual(

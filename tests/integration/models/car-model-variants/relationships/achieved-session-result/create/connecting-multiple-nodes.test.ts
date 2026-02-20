@@ -5,7 +5,7 @@ import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {CarModelVariant} from "../../../../../../../src/models/node-types/car-model-variants/CarModelVariant"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
 
 test('A CAR MODEL VARIANT can have multiple ›achieved-session-result‹ relationships', async () => {
     const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
@@ -16,7 +16,7 @@ test('A CAR MODEL VARIANT can have multiple ›achieved-session-result‹ relati
         await CarModelVariant.createAchievedSessionResultRelationship(carModelVariant.id, sessionResult.id)
     }
 
-    const relationships = await getRelationshipCollection(carModelVariant.id, RelationshipType.CarModelVariantAchievedSessionResult, NodeTypeLabel.SessionResult)
+    const relationships = await getRelationshipCollection(carModelVariant.id, RelationshipType.CarModelVariantAchievedSessionResult, Neo4jNodeType.SessionResult)
 
     expect(relationships.length)
         .toBe(sessionResultsAmount)

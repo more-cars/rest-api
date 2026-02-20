@@ -4,7 +4,7 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
-import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
 
 describe('Requesting a ›has-successor‹ relationship', () => {
     test('node and relationship exist', async () => {
@@ -13,7 +13,7 @@ describe('Requesting a ›has-successor‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             relationship.start_node.id,
             RelationshipType.CarModelHasSuccessor,
-            NodeTypeLabel.CarModel,
+            Neo4jNodeType.CarModel,
         )
 
         expect(relationships.length)
@@ -26,7 +26,7 @@ describe('Requesting a ›has-successor‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             carModel.id,
             RelationshipType.CarModelHasSuccessor,
-            NodeTypeLabel.CarModel,
+            Neo4jNodeType.CarModel,
         )
 
         expect(relationships.length)
@@ -37,7 +37,7 @@ describe('Requesting a ›has-successor‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.CarModelHasSuccessor,
-            NodeTypeLabel.CarModel,
+            Neo4jNodeType.CarModel,
         )
 
         expect(relationships.length)

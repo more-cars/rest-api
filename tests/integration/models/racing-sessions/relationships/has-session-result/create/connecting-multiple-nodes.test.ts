@@ -5,7 +5,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 import {RacingSession} from "../../../../../../../src/models/node-types/racing-sessions/RacingSession"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
 
 test('A RACING SESSION can have multiple ›has-session-result‹ relationships', async () => {
     const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
@@ -19,7 +19,7 @@ test('A RACING SESSION can have multiple ›has-session-result‹ relationships'
     const relationships = await getRelationshipCollection(
         racingSession.id,
         RelationshipType.RacingSessionHasSessionResult,
-        NodeTypeLabel.SessionResult,
+        Neo4jNodeType.SessionResult,
     )
 
     expect(relationships.length)

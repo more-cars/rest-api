@@ -5,7 +5,7 @@ import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {Company} from "../../../../../../../src/models/node-types/companies/Company"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
 
 test('A COMPANY cannot have multiple ›has-prime-image‹ relationships', async () => {
     const company = await seedNode(ControllerNodeType.COMPANY)
@@ -16,7 +16,7 @@ test('A COMPANY cannot have multiple ›has-prime-image‹ relationships', async
         await Company.createHasPrimeImageRelationship(company.id, image.id)
     }
 
-    const relationships = await getRelationshipCollection(company.id, RelationshipType.CompanyHasPrimeImage, NodeTypeLabel.Image)
+    const relationships = await getRelationshipCollection(company.id, RelationshipType.CompanyHasPrimeImage, Neo4jNodeType.Image)
 
     expect(relationships.length)
         .toBe(1)

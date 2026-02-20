@@ -1,24 +1,24 @@
 import {RelationshipSpecification} from "../../../types/RelationshipSpecification"
 import {RelationshipType} from "../../../types/RelationshipType"
-import {NodeTypeLabel} from "../../../NodeTypeLabel"
+import {Neo4jNodeType} from "../../../types/Neo4jNodeType"
 import {RelationshipTypeNeo4j} from "../../../types/RelationshipTypeNeo4j"
 
 export const CompanyRelationshipSpecification: RelationshipSpecification[] = [
     [RelationshipType.CompanyHasBrand, {
-        startNodeLabel: NodeTypeLabel.Company,
-        endNodeLabel: NodeTypeLabel.Brand,
+        startNodeLabel: Neo4jNodeType.Company,
+        endNodeLabel: Neo4jNodeType.Brand,
         relationshipName: RelationshipTypeNeo4j.CompanyHasBrand,
         isReverseRelationship: false,
     }],
     [RelationshipType.CompanyHasImage, {
-        startNodeLabel: NodeTypeLabel.Company,
-        endNodeLabel: NodeTypeLabel.Image,
+        startNodeLabel: Neo4jNodeType.Company,
+        endNodeLabel: Neo4jNodeType.Image,
         relationshipName: RelationshipTypeNeo4j.CompanyHasImage,
         isReverseRelationship: false,
     }],
     [RelationshipType.CompanyHasPrimeImage, {
-        startNodeLabel: NodeTypeLabel.Company,
-        endNodeLabel: NodeTypeLabel.Image,
+        startNodeLabel: Neo4jNodeType.Company,
+        endNodeLabel: Neo4jNodeType.Image,
         relationshipName: RelationshipTypeNeo4j.CompanyHasPrimeImage,
         isReverseRelationship: false,
     }],

@@ -1,36 +1,36 @@
 import {RelationshipSpecification} from "../../../types/RelationshipSpecification"
 import {RelationshipType} from "../../../types/RelationshipType"
-import {NodeTypeLabel} from "../../../NodeTypeLabel"
+import {Neo4jNodeType} from "../../../types/Neo4jNodeType"
 import {RelationshipTypeNeo4j} from "../../../types/RelationshipTypeNeo4j"
 
 export const SessionResultRelationshipSpecification: RelationshipSpecification[] = [
     [RelationshipType.SessionResultBelongsToRacingSession, {
-        startNodeLabel: NodeTypeLabel.SessionResult,
-        endNodeLabel: NodeTypeLabel.RacingSession,
+        startNodeLabel: Neo4jNodeType.SessionResult,
+        endNodeLabel: Neo4jNodeType.RacingSession,
         relationshipName: RelationshipTypeNeo4j.SessionResultBelongsToRacingSession,
         isReverseRelationship: true,
     }],
     [RelationshipType.SessionResultHasLapTime, {
-        startNodeLabel: NodeTypeLabel.SessionResult,
-        endNodeLabel: NodeTypeLabel.LapTime,
+        startNodeLabel: Neo4jNodeType.SessionResult,
+        endNodeLabel: Neo4jNodeType.LapTime,
         relationshipName: RelationshipTypeNeo4j.SessionResultHasLapTime,
         isReverseRelationship: false,
     }],
     [RelationshipType.SessionResultAchievedWithCarModelVariant, {
-        startNodeLabel: NodeTypeLabel.SessionResult,
-        endNodeLabel: NodeTypeLabel.CarModelVariant,
+        startNodeLabel: Neo4jNodeType.SessionResult,
+        endNodeLabel: Neo4jNodeType.CarModelVariant,
         relationshipName: RelationshipTypeNeo4j.SessionResultAchievedWithCarModelVariant,
         isReverseRelationship: true,
     }],
     [RelationshipType.SessionResultHasImage, {
-        startNodeLabel: NodeTypeLabel.SessionResult,
-        endNodeLabel: NodeTypeLabel.Image,
+        startNodeLabel: Neo4jNodeType.SessionResult,
+        endNodeLabel: Neo4jNodeType.Image,
         relationshipName: RelationshipTypeNeo4j.SessionResultHasImage,
         isReverseRelationship: false,
     }],
     [RelationshipType.SessionResultHasPrimeImage, {
-        startNodeLabel: NodeTypeLabel.SessionResult,
-        endNodeLabel: NodeTypeLabel.Image,
+        startNodeLabel: Neo4jNodeType.SessionResult,
+        endNodeLabel: Neo4jNodeType.Image,
         relationshipName: RelationshipTypeNeo4j.SessionResultHasPrimeImage,
         isReverseRelationship: false,
     }],

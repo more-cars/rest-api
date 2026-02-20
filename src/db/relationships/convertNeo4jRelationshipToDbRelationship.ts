@@ -1,6 +1,6 @@
 import {Node, Relationship as Neo4jRelationship} from "neo4j-driver"
 import {getDenamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
-import {NodeTypeLabel} from "../NodeTypeLabel"
+import {Neo4jNodeType} from "../types/Neo4jNodeType"
 import {mapNeo4jRelationshipTypeToDbRelationshipType} from "./mapNeo4jRelationshipTypeToDbRelationshipType"
 import {RelationshipDirection} from "../types/RelationshipDirection"
 import {RelationshipTypeNeo4j} from "../types/RelationshipTypeNeo4j"
@@ -11,7 +11,7 @@ export function convertNeo4jRelationshipToDbRelationship(
     startNode: Node,
     endNode: Node,
 ) {
-    const startNodeLabel = getDenamespacedNodeTypeLabel(startNode.labels[0]) as NodeTypeLabel
+    const startNodeLabel = getDenamespacedNodeTypeLabel(startNode.labels[0]) as Neo4jNodeType
     const elementId = dbRelationship.elementId
 
     const relationshipType = mapNeo4jRelationshipTypeToDbRelationshipType(

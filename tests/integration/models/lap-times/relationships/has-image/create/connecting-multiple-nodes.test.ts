@@ -5,7 +5,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 import {LapTime} from "../../../../../../../src/models/node-types/lap-times/LapTime"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
 
 test('A LAP TIME can have multiple ›has-image‹ relationships', async () => {
     const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
@@ -19,7 +19,7 @@ test('A LAP TIME can have multiple ›has-image‹ relationships', async () => {
     const relationships = await getRelationshipCollection(
         lapTime.id,
         RelationshipType.LapTimeHasImage,
-        NodeTypeLabel.Image,
+        Neo4jNodeType.Image,
     )
 
     expect(relationships.length)

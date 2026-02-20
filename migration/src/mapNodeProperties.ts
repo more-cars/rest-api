@@ -1,6 +1,6 @@
 import assert from "assert"
 import type {Node} from "neo4j-driver"
-import {NodeTypeLabel} from "../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../src/db/types/Neo4jNodeType"
 import {mapCompany} from "./mappings/mapCompany"
 import {mapBrand} from "./mappings/mapBrand"
 import {mapCarModel} from "./mappings/mapCarModel"
@@ -16,35 +16,35 @@ import {mapRacingGame} from "./mappings/mapRacingGame"
 import {mapGamingPlatform} from "./mappings/mapGamingPlatform"
 import {mapImage} from "./mappings/mapImage"
 
-export function mapNodeProperties(oldNode: Node, nodeType: NodeTypeLabel) {
+export function mapNodeProperties(oldNode: Node, nodeType: Neo4jNodeType) {
     switch (nodeType) {
-        case NodeTypeLabel.Company:
+        case Neo4jNodeType.Company:
             return mapCompany(oldNode)
-        case NodeTypeLabel.Brand:
+        case Neo4jNodeType.Brand:
             return mapBrand(oldNode)
-        case NodeTypeLabel.CarModel:
+        case Neo4jNodeType.CarModel:
             return mapCarModel(oldNode)
-        case NodeTypeLabel.CarModelVariant:
+        case Neo4jNodeType.CarModelVariant:
             return mapCarModelVariant(oldNode)
-        case NodeTypeLabel.RaceTrack:
+        case Neo4jNodeType.RaceTrack:
             return mapRaceTrack(oldNode)
-        case NodeTypeLabel.TrackLayout:
+        case Neo4jNodeType.TrackLayout:
             return mapTrackLayout(oldNode)
-        case NodeTypeLabel.RacingSeries:
+        case Neo4jNodeType.RacingSeries:
             return mapRacingSeries(oldNode)
-        case NodeTypeLabel.RacingEvent:
+        case Neo4jNodeType.RacingEvent:
             return mapRacingEvent(oldNode)
-        case NodeTypeLabel.RacingSession:
+        case Neo4jNodeType.RacingSession:
             return mapRacingSession(oldNode)
-        case NodeTypeLabel.SessionResult:
+        case Neo4jNodeType.SessionResult:
             return mapSessionResult(oldNode)
-        case NodeTypeLabel.LapTime:
+        case Neo4jNodeType.LapTime:
             return mapLapTime(oldNode)
-        case NodeTypeLabel.RacingGame:
+        case Neo4jNodeType.RacingGame:
             return mapRacingGame(oldNode)
-        case NodeTypeLabel.GamingPlatform:
+        case Neo4jNodeType.GamingPlatform:
             return mapGamingPlatform(oldNode)
-        case NodeTypeLabel.Image:
+        case Neo4jNodeType.Image:
             return mapImage(oldNode)
         default:
             assert.fail(`Node type "${nodeType}" is invalid or unknown`)

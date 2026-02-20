@@ -1,7 +1,7 @@
 import neo4j, {Driver, Node, Relationship as Neo4jRelationship} from "neo4j-driver"
 import {getDriver} from "../driver"
 import type {RelationshipType} from "../types/RelationshipType"
-import type {NodeTypeLabel} from "../NodeTypeLabel"
+import type {Neo4jNodeType} from "../types/Neo4jNodeType"
 import type {Relationship} from "../types/Relationship"
 import {getRelationshipSpecification} from "./getRelationshipSpecification"
 import {RelationshipDirection} from "../types/RelationshipDirection"
@@ -13,7 +13,7 @@ import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationsh
 export async function getRelationshipCollection(
     startNodeId: number,
     relationshipType: RelationshipType,
-    endNodeType?: NodeTypeLabel,
+    endNodeType?: Neo4jNodeType,
 ): Promise<Relationship[]> {
     const relationshipSpecs = getRelationshipSpecification(relationshipType)
     const dbRelationshipName = relationshipSpecs.relationshipName
@@ -42,7 +42,7 @@ export async function getRelationshipCollection(
     return relationships
 }
 
-export function getRelationshipCollectionQuery(startNodeId: number, relationshipName: RelationshipTypeNeo4j, reverse: RelationshipDirection, endNodeType?: NodeTypeLabel) {
+export function getRelationshipCollectionQuery(startNodeId: number, relationshipName: RelationshipTypeNeo4j, reverse: RelationshipDirection, endNodeType?: Neo4jNodeType) {
     const templateName = reverse ? 'getRelationshipCollectionReversed' : 'getRelationshipCollection'
 
     let template = getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')

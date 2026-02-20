@@ -4,7 +4,7 @@ import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelatio
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
-import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
 
 describe('Requesting a ›belongs-to-node‹ relationship', () => {
     test('node and relationship exist', async () => {
@@ -13,7 +13,7 @@ describe('Requesting a ›belongs-to-node‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             relationship.start_node.id,
             RelationshipType.ImageBelongsToNode,
-            NodeTypeLabel.Brand,
+            Neo4jNodeType.Brand,
         )
 
         expect(relationships.length)
@@ -26,7 +26,7 @@ describe('Requesting a ›belongs-to-node‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             image.id,
             RelationshipType.ImageBelongsToNode,
-            NodeTypeLabel.Brand,
+            Neo4jNodeType.Brand,
         )
 
         expect(relationships.length)
@@ -37,7 +37,7 @@ describe('Requesting a ›belongs-to-node‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.ImageBelongsToNode,
-            NodeTypeLabel.Brand,
+            Neo4jNodeType.Brand,
         )
 
         expect(relationships.length)

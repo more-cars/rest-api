@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {getAllNodeTypes} from "../../../../_toolbox/getAllNodeTypes"
-import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../src/db/types/Neo4jNodeType"
 import {getAllNodesOfTypeQuery} from "../../../../../src/db/nodes/getAllNodesOfTypeQuery"
 import {DbFilterOperator} from "../../../../../src/db/types/DbFilterOperator"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
@@ -12,7 +12,7 @@ describe('database query for fetching all nodes of a type - sorting', () => {
         ['mc_id', 'DESC'],
         ['name', 'DESC'],
     ])('sorting by $0 $1', async (sortByProperty, sortDirection) => {
-        getAllNodeTypes().forEach((nodeType: NodeTypeLabel) => {
+        getAllNodeTypes().forEach((nodeType: Neo4jNodeType) => {
             const query = getAllNodesOfTypeQuery(nodeType, {
                 sortByProperty,
                 sortDirection,

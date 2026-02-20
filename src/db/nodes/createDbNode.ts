@@ -1,5 +1,5 @@
 import neo4j, {Driver, Node, Session} from "neo4j-driver"
-import {NodeTypeLabel} from "../NodeTypeLabel"
+import {Neo4jNodeType} from "../types/Neo4jNodeType"
 import {getDriver} from "../driver"
 import {generateMoreCarsId} from "../generateMoreCarsId"
 import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId"
@@ -43,7 +43,7 @@ type InputTypes =
     InputGamingPlatformCreate |
     InputImageCreate
 
-export async function createDbNode(nodeType: NodeTypeLabel, data: InputTypes): Promise<Node> {
+export async function createDbNode(nodeType: Neo4jNodeType, data: InputTypes): Promise<Node> {
     const driver: Driver = getDriver()
     const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
@@ -67,7 +67,7 @@ export async function createDbNode(nodeType: NodeTypeLabel, data: InputTypes): P
     return dbNode
 }
 
-export function createNodeQuery(nodeType: NodeTypeLabel, data: InputTypes) {
+export function createNodeQuery(nodeType: Neo4jNodeType, data: InputTypes) {
     const nodeSpecs = getNodeSpecification(nodeType)
     const properties = getCypherFormattedPropertyList(nodeSpecs, data)
 

@@ -19,7 +19,7 @@ import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {Image} from "../images/Image"
 import {getAllRels} from "../../relationships/getAllRels"
 import {SessionResult} from "../session-results/SessionResult"
-import {NodeTypeLabel} from "../../../db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../db/types/Neo4jNodeType"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 
@@ -79,7 +79,7 @@ export const RacingSession = {
             throw new RelAlreadyExistsError(RelType.RacingSessionBelongsToRacingEvent, racingSessionId, racingEventId)
         }
 
-        await deleteOutgoingRel(racingSessionId, RelType.RacingSessionBelongsToRacingEvent, NodeTypeLabel.RacingEvent)
+        await deleteOutgoingRel(racingSessionId, RelType.RacingSessionBelongsToRacingEvent, Neo4jNodeType.RacingEvent)
 
         const createdRelationship = await createRel(racingSessionId, racingEventId, RelType.RacingSessionBelongsToRacingEvent)
         if (!createdRelationship) {
@@ -139,7 +139,7 @@ export const RacingSession = {
             throw new RelAlreadyExistsError(RelType.RacingSessionHasSessionResult, racingSessionId, sessionResultId)
         }
 
-        await deleteIncomingRel(sessionResultId, RelType.RacingSessionHasSessionResult, NodeTypeLabel.RacingSession)
+        await deleteIncomingRel(sessionResultId, RelType.RacingSessionHasSessionResult, Neo4jNodeType.RacingSession)
 
         const createdRelationship = await createRel(racingSessionId, sessionResultId, RelType.RacingSessionHasSessionResult)
         if (!createdRelationship) {
@@ -246,7 +246,7 @@ export const RacingSession = {
             throw new RelAlreadyExistsError(RelType.RacingSessionHasPrimeImage, racingSessionId, imageId)
         }
 
-        await deleteOutgoingRel(racingSessionId, RelType.RacingSessionHasPrimeImage, NodeTypeLabel.Image)
+        await deleteOutgoingRel(racingSessionId, RelType.RacingSessionHasPrimeImage, Neo4jNodeType.Image)
 
         const createdRelationship = await createRel(racingSessionId, imageId, RelType.RacingSessionHasPrimeImage)
         if (!createdRelationship) {

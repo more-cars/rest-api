@@ -1,8 +1,8 @@
 import {NodeSpecification} from "../../../types/NodeSpecification"
-import {NodeTypeLabel} from "../../../NodeTypeLabel"
+import {Neo4jNodeType} from "../../../types/Neo4jNodeType"
 
 export const ImageNodeSpecification: NodeSpecification = {
-    label: NodeTypeLabel.Image,
+    label: Neo4jNodeType.Image,
     properties: [
         {
             name: 'image_provider',

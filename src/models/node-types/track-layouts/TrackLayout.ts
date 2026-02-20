@@ -20,7 +20,7 @@ import {Image} from "../images/Image"
 import {getAllRels} from "../../relationships/getAllRels"
 import {RacingEvent} from "../racing-events/RacingEvent"
 import {LapTime} from "../lap-times/LapTime"
-import {NodeTypeLabel} from "../../../db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../db/types/Neo4jNodeType"
 import {RacingGame} from "../racing-games/RacingGame"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
@@ -81,7 +81,7 @@ export const TrackLayout = {
             throw new RelAlreadyExistsError(RelType.TrackLayoutBelongsToRaceTrack, trackLayoutId, raceTrackId)
         }
 
-        await deleteOutgoingRel(trackLayoutId, RelType.TrackLayoutBelongsToRaceTrack, NodeTypeLabel.RaceTrack)
+        await deleteOutgoingRel(trackLayoutId, RelType.TrackLayoutBelongsToRaceTrack, Neo4jNodeType.RaceTrack)
 
         const createdRelationship = await createRel(trackLayoutId, raceTrackId, RelType.TrackLayoutBelongsToRaceTrack)
         if (!createdRelationship) {
@@ -141,7 +141,7 @@ export const TrackLayout = {
             throw new RelAlreadyExistsError(RelType.TrackLayoutWasUsedByRacingEvent, trackLayoutId, racingEventId)
         }
 
-        await deleteIncomingRel(racingEventId, RelType.TrackLayoutWasUsedByRacingEvent, NodeTypeLabel.TrackLayout)
+        await deleteIncomingRel(racingEventId, RelType.TrackLayoutWasUsedByRacingEvent, Neo4jNodeType.TrackLayout)
 
         const createdRelationship = await createRel(trackLayoutId, racingEventId, RelType.TrackLayoutWasUsedByRacingEvent)
         if (!createdRelationship) {
@@ -196,7 +196,7 @@ export const TrackLayout = {
             throw new RelAlreadyExistsError(RelType.TrackLayoutHasLapTime, trackLayoutId, lapTimeId)
         }
 
-        await deleteIncomingRel(lapTimeId, RelType.TrackLayoutHasLapTime, NodeTypeLabel.TrackLayout)
+        await deleteIncomingRel(lapTimeId, RelType.TrackLayoutHasLapTime, Neo4jNodeType.TrackLayout)
 
         const createdRelationship = await createRel(trackLayoutId, lapTimeId, RelType.TrackLayoutHasLapTime)
         if (!createdRelationship) {
@@ -304,7 +304,7 @@ export const TrackLayout = {
             throw new RelAlreadyExistsError(RelType.TrackLayoutHasPrimeImage, trackLayoutId, imageId)
         }
 
-        await deleteOutgoingRel(trackLayoutId, RelType.TrackLayoutHasPrimeImage, NodeTypeLabel.Image)
+        await deleteOutgoingRel(trackLayoutId, RelType.TrackLayoutHasPrimeImage, Neo4jNodeType.Image)
 
         const createdRelationship = await createRel(trackLayoutId, imageId, RelType.TrackLayoutHasPrimeImage)
         if (!createdRelationship) {

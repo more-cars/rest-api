@@ -5,7 +5,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 import {SessionResult} from "../../../../../../../src/models/node-types/session-results/SessionResult"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
 
 test('A SESSION RESULT cannot have multiple ›achieved-with-car-model-variant‹ relationships', async () => {
     const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
@@ -19,7 +19,7 @@ test('A SESSION RESULT cannot have multiple ›achieved-with-car-model-variant�
     const relationships = await getRelationshipCollection(
         sessionResult.id,
         RelationshipType.SessionResultAchievedWithCarModelVariant,
-        NodeTypeLabel.CarModelVariant,
+        Neo4jNodeType.CarModelVariant,
     )
 
     expect(relationships.length)

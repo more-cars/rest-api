@@ -1,42 +1,42 @@
 import {RelationshipSpecification} from "../../../types/RelationshipSpecification"
 import {RelationshipType} from "../../../types/RelationshipType"
-import {NodeTypeLabel} from "../../../NodeTypeLabel"
+import {Neo4jNodeType} from "../../../types/Neo4jNodeType"
 import {RelationshipTypeNeo4j} from "../../../types/RelationshipTypeNeo4j"
 
 export const TrackLayoutRelationshipSpecification: RelationshipSpecification[] = [
     [RelationshipType.TrackLayoutBelongsToRaceTrack, {
-        startNodeLabel: NodeTypeLabel.TrackLayout,
-        endNodeLabel: NodeTypeLabel.RaceTrack,
+        startNodeLabel: Neo4jNodeType.TrackLayout,
+        endNodeLabel: Neo4jNodeType.RaceTrack,
         relationshipName: RelationshipTypeNeo4j.TrackLayoutBelongsToRaceTrack,
         isReverseRelationship: true,
     }],
     [RelationshipType.TrackLayoutWasUsedByRacingEvent, {
-        startNodeLabel: NodeTypeLabel.TrackLayout,
-        endNodeLabel: NodeTypeLabel.RacingEvent,
+        startNodeLabel: Neo4jNodeType.TrackLayout,
+        endNodeLabel: Neo4jNodeType.RacingEvent,
         relationshipName: RelationshipTypeNeo4j.TrackLayoutWasUsedByRacingEvent,
         isReverseRelationship: true,
     }],
     [RelationshipType.TrackLayoutHasLapTime, {
-        startNodeLabel: NodeTypeLabel.TrackLayout,
-        endNodeLabel: NodeTypeLabel.LapTime,
+        startNodeLabel: Neo4jNodeType.TrackLayout,
+        endNodeLabel: Neo4jNodeType.LapTime,
         relationshipName: RelationshipTypeNeo4j.TrackLayoutHasLapTime,
         isReverseRelationship: false,
     }],
     [RelationshipType.TrackLayoutIsFeaturedInRacingGame, {
-        startNodeLabel: NodeTypeLabel.TrackLayout,
-        endNodeLabel: NodeTypeLabel.RacingGame,
+        startNodeLabel: Neo4jNodeType.TrackLayout,
+        endNodeLabel: Neo4jNodeType.RacingGame,
         relationshipName: RelationshipTypeNeo4j.TrackLayoutIsFeaturedInRacingGame,
         isReverseRelationship: true,
     }],
     [RelationshipType.TrackLayoutHasImage, {
-        startNodeLabel: NodeTypeLabel.TrackLayout,
-        endNodeLabel: NodeTypeLabel.Image,
+        startNodeLabel: Neo4jNodeType.TrackLayout,
+        endNodeLabel: Neo4jNodeType.Image,
         relationshipName: RelationshipTypeNeo4j.TrackLayoutHasImage,
         isReverseRelationship: false,
     }],
     [RelationshipType.TrackLayoutHasPrimeImage, {
-        startNodeLabel: NodeTypeLabel.TrackLayout,
-        endNodeLabel: NodeTypeLabel.Image,
+        startNodeLabel: Neo4jNodeType.TrackLayout,
+        endNodeLabel: Neo4jNodeType.Image,
         relationshipName: RelationshipTypeNeo4j.TrackLayoutHasPrimeImage,
         isReverseRelationship: false,
     }],

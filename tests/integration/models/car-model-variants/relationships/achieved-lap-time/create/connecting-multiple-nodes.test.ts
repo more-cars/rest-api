@@ -5,7 +5,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 import {CarModelVariant} from "../../../../../../../src/models/node-types/car-model-variants/CarModelVariant"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
 
 test('A CAR MODEL VARIANT can have multiple ›achieved-lap-time‹ relationships', async () => {
     const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
@@ -16,7 +16,7 @@ test('A CAR MODEL VARIANT can have multiple ›achieved-lap-time‹ relationship
         await CarModelVariant.createAchievedLapTimeRelationship(carModelVariant.id, lapTime.id)
     }
 
-    const relationships = await getRelationshipCollection(carModelVariant.id, RelationshipType.CarModelVariantAchievedLapTime, NodeTypeLabel.LapTime)
+    const relationships = await getRelationshipCollection(carModelVariant.id, RelationshipType.CarModelVariantAchievedLapTime, Neo4jNodeType.LapTime)
 
     expect(relationships.length)
         .toBe(lapTimesAmount)

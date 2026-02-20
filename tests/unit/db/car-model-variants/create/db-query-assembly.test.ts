@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {InputCarModelVariantCreate} from "../../../../../src/db/nodes/car-model-variants/types/InputCarModelVariantCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
-import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../src/db/types/Neo4jNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a CAR MODEL VARIANT node', async () => {
@@ -44,7 +44,7 @@ test('database query for creating a CAR MODEL VARIANT node', async () => {
         total_production: 50000
     }
 
-    const query = createNodeQuery(NodeTypeLabel.CarModelVariant, data)
+    const query = createNodeQuery(Neo4jNodeType.CarModelVariant, data)
 
     expect(query)
         .toEqual(

@@ -4,7 +4,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
 import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 
 test('A BRAND can have multiple ›has-car-model‹ relationships', async () => {
@@ -16,7 +16,7 @@ test('A BRAND can have multiple ›has-car-model‹ relationships', async () => 
         await Brand.createHasCarModelRelationship(brand.id, carModel.id)
     }
 
-    const relationships = await getRelationshipCollection(brand.id, RelationshipType.BrandHasCarModel, NodeTypeLabel.CarModel)
+    const relationships = await getRelationshipCollection(brand.id, RelationshipType.BrandHasCarModel, Neo4jNodeType.CarModel)
 
     expect(relationships.length)
         .toBe(carModelAmount)

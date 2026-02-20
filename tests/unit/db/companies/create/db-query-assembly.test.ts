@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {InputCompanyCreate} from "../../../../../src/db/nodes/companies/types/InputCompanyCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
-import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../src/db/types/Neo4jNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a COMPANY node', async () => {
@@ -13,7 +13,7 @@ test('database query for creating a COMPANY node', async () => {
         legal_headquarters_location: "Munich"
     }
 
-    const query = createNodeQuery(NodeTypeLabel.Company, data)
+    const query = createNodeQuery(Neo4jNodeType.Company, data)
 
     expect(query)
         .toEqual(

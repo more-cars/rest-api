@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {InputTrackLayoutCreate} from "../../../../../src/db/nodes/track-layouts/types/InputTrackLayoutCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
-import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../src/db/types/Neo4jNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a TRACK LAYOUT node', async () => {
@@ -17,7 +17,7 @@ test('database query for creating a TRACK LAYOUT node', async () => {
         surface: "asphalt"
     }
 
-    const query = createNodeQuery(NodeTypeLabel.TrackLayout, data)
+    const query = createNodeQuery(Neo4jNodeType.TrackLayout, data)
 
     expect(query)
         .toEqual(

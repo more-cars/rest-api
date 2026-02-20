@@ -4,7 +4,7 @@ import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelatio
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
 
 describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
@@ -13,7 +13,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             relationship.start_node.id,
             RelationshipType.CarModelHasPrimeImage,
-            NodeTypeLabel.Image,
+            Neo4jNodeType.Image,
         )
 
         expect(relationships.length)
@@ -26,7 +26,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             carModel.id,
             RelationshipType.CarModelHasPrimeImage,
-            NodeTypeLabel.Image,
+            Neo4jNodeType.Image,
         )
 
         expect(relationships.length)
@@ -37,7 +37,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.CarModelHasPrimeImage,
-            NodeTypeLabel.Image,
+            Neo4jNodeType.Image,
         )
 
         expect(relationships.length)

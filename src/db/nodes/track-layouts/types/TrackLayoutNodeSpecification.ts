@@ -1,8 +1,8 @@
 import {NodeSpecification} from "../../../types/NodeSpecification"
-import {NodeTypeLabel} from "../../../NodeTypeLabel"
+import {Neo4jNodeType} from "../../../types/Neo4jNodeType"
 
 export const TrackLayoutNodeSpecification: NodeSpecification = {
-    label: NodeTypeLabel.TrackLayout,
+    label: Neo4jNodeType.TrackLayout,
     properties: [
         {
             name: 'name',

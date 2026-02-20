@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {InputImageCreate} from "../../../../../src/db/nodes/images/types/InputImageCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
-import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../src/db/types/Neo4jNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating an IMAGE node', async () => {
@@ -22,7 +22,7 @@ test('database query for creating an IMAGE node', async () => {
         image_url_s: "https://live.staticflickr.com/65535/54570839725_652073f374_n.jpg",
         image_url_xs: "https://live.staticflickr.com/65535/54570839725_652073f374_t.jpg",
     }
-    const query = createNodeQuery(NodeTypeLabel.Image, data)
+    const query = createNodeQuery(Neo4jNodeType.Image, data)
 
     expect(query)
         .toEqual(

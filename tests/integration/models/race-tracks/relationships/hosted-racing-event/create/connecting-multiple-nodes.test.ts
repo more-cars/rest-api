@@ -5,7 +5,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 import {RaceTrack} from "../../../../../../../src/models/node-types/race-tracks/RaceTrack"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
 
 test('A RACE TRACK can have multiple ›hosted-racing-event‹ relationships', async () => {
     const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
@@ -19,7 +19,7 @@ test('A RACE TRACK can have multiple ›hosted-racing-event‹ relationships', a
     const relationships = await getRelationshipCollection(
         raceTrack.id,
         RelationshipType.RaceTrackHostedRacingEvent,
-        NodeTypeLabel.RacingEvent,
+        Neo4jNodeType.RacingEvent,
     )
 
     expect(relationships.length)

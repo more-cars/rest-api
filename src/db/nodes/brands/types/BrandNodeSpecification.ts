@@ -1,8 +1,8 @@
 import {NodeSpecification} from "../../../types/NodeSpecification"
-import {NodeTypeLabel} from "../../../NodeTypeLabel"
+import {Neo4jNodeType} from "../../../types/Neo4jNodeType"
 
 export const BrandNodeSpecification: NodeSpecification = {
-    label: NodeTypeLabel.Brand,
+    label: Neo4jNodeType.Brand,
     properties: [
         {
             name: 'name',

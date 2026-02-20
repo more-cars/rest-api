@@ -1,23 +1,23 @@
 import {NodeType} from "../types/NodeType"
-import {NodeTypeLabel} from "../../db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../db/types/Neo4jNodeType"
 
 export function getDbNodeType(nodeType: NodeType) {
-    const mapping = new Map<NodeType, NodeTypeLabel>([
-        [NodeType.NODE, NodeTypeLabel.Node],
-        [NodeType.IMAGE, NodeTypeLabel.Image],
-        [NodeType.COMPANY, NodeTypeLabel.Company],
-        [NodeType.BRAND, NodeTypeLabel.Brand],
-        [NodeType.CAR_MODEL, NodeTypeLabel.CarModel],
-        [NodeType.CAR_MODEL_VARIANT, NodeTypeLabel.CarModelVariant],
-        [NodeType.RACE_TRACK, NodeTypeLabel.RaceTrack],
-        [NodeType.TRACK_LAYOUT, NodeTypeLabel.TrackLayout],
-        [NodeType.RACING_SERIES, NodeTypeLabel.RacingSeries],
-        [NodeType.RACING_EVENT, NodeTypeLabel.RacingEvent],
-        [NodeType.RACING_SESSION, NodeTypeLabel.RacingSession],
-        [NodeType.SESSION_RESULT, NodeTypeLabel.SessionResult],
-        [NodeType.LAP_TIME, NodeTypeLabel.LapTime],
-        [NodeType.RACING_GAME, NodeTypeLabel.RacingGame],
-        [NodeType.GAMING_PLATFORM, NodeTypeLabel.GamingPlatform],
+    const mapping = new Map<NodeType, Neo4jNodeType>([
+        [NodeType.NODE, Neo4jNodeType.Node],
+        [NodeType.IMAGE, Neo4jNodeType.Image],
+        [NodeType.COMPANY, Neo4jNodeType.Company],
+        [NodeType.BRAND, Neo4jNodeType.Brand],
+        [NodeType.CAR_MODEL, Neo4jNodeType.CarModel],
+        [NodeType.CAR_MODEL_VARIANT, Neo4jNodeType.CarModelVariant],
+        [NodeType.RACE_TRACK, Neo4jNodeType.RaceTrack],
+        [NodeType.TRACK_LAYOUT, Neo4jNodeType.TrackLayout],
+        [NodeType.RACING_SERIES, Neo4jNodeType.RacingSeries],
+        [NodeType.RACING_EVENT, Neo4jNodeType.RacingEvent],
+        [NodeType.RACING_SESSION, Neo4jNodeType.RacingSession],
+        [NodeType.SESSION_RESULT, Neo4jNodeType.SessionResult],
+        [NodeType.LAP_TIME, Neo4jNodeType.LapTime],
+        [NodeType.RACING_GAME, Neo4jNodeType.RacingGame],
+        [NodeType.GAMING_PLATFORM, Neo4jNodeType.GamingPlatform],
     ])
 
     const dbNodeType = mapping.get(nodeType)

@@ -20,7 +20,7 @@ import {RelType} from "../../relationships/types/RelType"
 import {createRel} from "../../relationships/createRel"
 import {getAllRels} from "../../relationships/getAllRels"
 import type {Rel} from "../../relationships/types/Rel"
-import {NodeTypeLabel} from "../../../db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../db/types/Neo4jNodeType"
 import {convertDbRelToModelRel} from "../../relationships/convertDbRelToModelRel"
 import {getRelationshipCollection} from "../../../db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../db/types/RelationshipType"
@@ -151,13 +151,13 @@ export const Image = {
             return false
         }
 
-        const companyRels = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, NodeTypeLabel.Company)
-        const brandRels = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, NodeTypeLabel.Brand)
-        const carModelRels = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, NodeTypeLabel.CarModel)
-        const raceTrackRels = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, NodeTypeLabel.RaceTrack)
-        const trackLayoutRels = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, NodeTypeLabel.TrackLayout)
-        const racingSeriesRels = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, NodeTypeLabel.RacingSeries)
-        const racingEventsRels = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, NodeTypeLabel.RacingEvent)
+        const companyRels = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, Neo4jNodeType.Company)
+        const brandRels = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, Neo4jNodeType.Brand)
+        const carModelRels = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, Neo4jNodeType.CarModel)
+        const raceTrackRels = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, Neo4jNodeType.RaceTrack)
+        const trackLayoutRels = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, Neo4jNodeType.TrackLayout)
+        const racingSeriesRels = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, Neo4jNodeType.RacingSeries)
+        const racingEventsRels = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, Neo4jNodeType.RacingEvent)
 
         const belongsToNodeTypeRelationships: ImageBelongsToNodeTypeRelationships = {
             companies: [],
@@ -238,7 +238,7 @@ export const Image = {
             throw new RelAlreadyExistsError(RelType.ImageIsPrimeImageOfNode, imageId, nodeId)
         }
 
-        await deleteIncomingRel(nodeId, RelType.ImageIsPrimeImageOfNode, NodeTypeLabel.Image)
+        await deleteIncomingRel(nodeId, RelType.ImageIsPrimeImageOfNode, Neo4jNodeType.Image)
 
         const createdRelationship = await createRel(imageId, nodeId, RelType.ImageIsPrimeImageOfNode)
         if (!createdRelationship) {

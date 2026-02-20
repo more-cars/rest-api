@@ -19,7 +19,7 @@ import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {LapTime} from "../lap-times/LapTime"
 import {getAllRels} from "../../relationships/getAllRels"
 import {Image} from "../images/Image"
-import {NodeTypeLabel} from "../../../db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../db/types/Neo4jNodeType"
 import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
@@ -80,7 +80,7 @@ export const SessionResult = {
             throw new RelAlreadyExistsError(RelType.SessionResultBelongsToRacingSession, sessionResultId, racingSessionId)
         }
 
-        await deleteOutgoingRel(sessionResultId, RelType.SessionResultBelongsToRacingSession, NodeTypeLabel.RacingSession)
+        await deleteOutgoingRel(sessionResultId, RelType.SessionResultBelongsToRacingSession, Neo4jNodeType.RacingSession)
 
         const createdRelationship = await createRel(sessionResultId, racingSessionId, RelType.SessionResultBelongsToRacingSession)
         if (!createdRelationship) {
@@ -140,7 +140,7 @@ export const SessionResult = {
             throw new RelAlreadyExistsError(RelType.SessionResultHasLapTime, sessionResultId, lapTimeId)
         }
 
-        await deleteIncomingRel(lapTimeId, RelType.SessionResultHasLapTime, NodeTypeLabel.SessionResult)
+        await deleteIncomingRel(lapTimeId, RelType.SessionResultHasLapTime, Neo4jNodeType.SessionResult)
 
         const createdRelationship = await createRel(sessionResultId, lapTimeId, RelType.SessionResultHasLapTime)
         if (!createdRelationship) {
@@ -194,7 +194,7 @@ export const SessionResult = {
             throw new RelAlreadyExistsError(RelType.SessionResultAchievedWithCarModelVariant, sessionResultId, carModelVariantId)
         }
 
-        await deleteOutgoingRel(sessionResultId, RelType.SessionResultAchievedWithCarModelVariant, NodeTypeLabel.CarModelVariant)
+        await deleteOutgoingRel(sessionResultId, RelType.SessionResultAchievedWithCarModelVariant, Neo4jNodeType.CarModelVariant)
 
         const createdRelationship = await createRel(sessionResultId, carModelVariantId, RelType.SessionResultAchievedWithCarModelVariant)
         if (!createdRelationship) {
@@ -307,7 +307,7 @@ export const SessionResult = {
             throw new RelAlreadyExistsError(RelType.SessionResultHasPrimeImage, sessionResultId, imageId)
         }
 
-        await deleteOutgoingRel(sessionResultId, RelType.SessionResultHasPrimeImage, NodeTypeLabel.Image)
+        await deleteOutgoingRel(sessionResultId, RelType.SessionResultHasPrimeImage, Neo4jNodeType.Image)
 
         const createdRelationship = await createRel(sessionResultId, imageId, RelType.SessionResultHasPrimeImage)
         if (!createdRelationship) {

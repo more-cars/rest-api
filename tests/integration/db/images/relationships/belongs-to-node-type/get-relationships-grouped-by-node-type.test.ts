@@ -3,7 +3,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationshipForStartNode} from "../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {RelationshipType} from "../../../../../../src/db/types/RelationshipType"
-import {NodeTypeLabel} from "../../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../../src/db/types/Neo4jNodeType"
 import {getRelationshipCollection} from "../../../../../../src/db/relationships/getRelationshipCollection"
 
 test('Get all "Image belongs to Node type" relationships for specific image', async () => {
@@ -15,7 +15,7 @@ test('Get all "Image belongs to Node type" relationships for specific image', as
     const companyRelationships = await getRelationshipCollection(
         imageNode.id,
         RelationshipType.ImageBelongsToNode,
-        NodeTypeLabel.Company,
+        Neo4jNodeType.Company,
     )
     expect(companyRelationships)
         .toHaveLength(0)
@@ -23,7 +23,7 @@ test('Get all "Image belongs to Node type" relationships for specific image', as
     const brandRelationships = await getRelationshipCollection(
         imageNode.id,
         RelationshipType.ImageBelongsToNode,
-        NodeTypeLabel.Brand,
+        Neo4jNodeType.Brand,
     )
     expect(brandRelationships)
         .toHaveLength(1)
@@ -31,7 +31,7 @@ test('Get all "Image belongs to Node type" relationships for specific image', as
     const carModelRelationships = await getRelationshipCollection(
         imageNode.id,
         RelationshipType.ImageBelongsToNode,
-        NodeTypeLabel.CarModel,
+        Neo4jNodeType.CarModel,
     )
     expect(carModelRelationships)
         .toHaveLength(2)
@@ -50,7 +50,7 @@ test('Expecting empty lists when there are no such relationships', async () => {
     const companyRelationships = await getRelationshipCollection(
         imageNode.id,
         RelationshipType.ImageBelongsToNode,
-        NodeTypeLabel.Company,
+        Neo4jNodeType.Company,
     )
     expect(companyRelationships)
         .toHaveLength(0)
@@ -58,7 +58,7 @@ test('Expecting empty lists when there are no such relationships', async () => {
     const brandRelationships = await getRelationshipCollection(
         imageNode.id,
         RelationshipType.ImageBelongsToNode,
-        NodeTypeLabel.Brand,
+        Neo4jNodeType.Brand,
     )
     expect(brandRelationships)
         .toHaveLength(0)
@@ -66,7 +66,7 @@ test('Expecting empty lists when there are no such relationships', async () => {
     const carModelRelationships = await getRelationshipCollection(
         imageNode.id,
         RelationshipType.ImageBelongsToNode,
-        NodeTypeLabel.CarModel,
+        Neo4jNodeType.CarModel,
     )
     expect(carModelRelationships)
         .toHaveLength(0)
@@ -76,7 +76,7 @@ test('Expecting empty lists when there is no such image', async () => {
     const companyRelationships = await getRelationshipCollection(
         -41,
         RelationshipType.ImageBelongsToNode,
-        NodeTypeLabel.Company,
+        Neo4jNodeType.Company,
     )
     expect(companyRelationships)
         .toHaveLength(0)
@@ -84,7 +84,7 @@ test('Expecting empty lists when there is no such image', async () => {
     const brandRelationships = await getRelationshipCollection(
         -42,
         RelationshipType.ImageBelongsToNode,
-        NodeTypeLabel.Brand,
+        Neo4jNodeType.Brand,
     )
     expect(brandRelationships)
         .toHaveLength(0)
@@ -92,7 +92,7 @@ test('Expecting empty lists when there is no such image', async () => {
     const carModelRelationships = await getRelationshipCollection(
         -43,
         RelationshipType.ImageBelongsToNode,
-        NodeTypeLabel.CarModel,
+        Neo4jNodeType.CarModel,
     )
     expect(carModelRelationships)
         .toHaveLength(0)

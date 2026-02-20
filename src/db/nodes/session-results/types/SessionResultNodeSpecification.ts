@@ -1,8 +1,8 @@
 import {NodeSpecification} from "../../../types/NodeSpecification"
-import {NodeTypeLabel} from "../../../NodeTypeLabel"
+import {Neo4jNodeType} from "../../../types/Neo4jNodeType"
 
 export const SessionResultNodeSpecification: NodeSpecification = {
-    label: NodeTypeLabel.SessionResult,
+    label: Neo4jNodeType.SessionResult,
     properties: [
         {
             name: 'position',

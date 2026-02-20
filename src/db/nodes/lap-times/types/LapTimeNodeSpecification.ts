@@ -1,8 +1,8 @@
 import {NodeSpecification} from "../../../types/NodeSpecification"
-import {NodeTypeLabel} from "../../../NodeTypeLabel"
+import {Neo4jNodeType} from "../../../types/Neo4jNodeType"
 
 export const LapTimeNodeSpecification: NodeSpecification = {
-    label: NodeTypeLabel.LapTime,
+    label: Neo4jNodeType.LapTime,
     properties: [
         {
             name: 'time',

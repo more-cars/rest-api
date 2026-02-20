@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {InputSessionResultCreate} from "../../../../../src/db/nodes/session-results/types/InputSessionResultCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
-import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../src/db/types/Neo4jNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a SESSION RESULT node', async () => {
@@ -16,7 +16,7 @@ test('database query for creating a SESSION RESULT node', async () => {
         points: 25
     }
 
-    const query = createNodeQuery(NodeTypeLabel.SessionResult, data)
+    const query = createNodeQuery(Neo4jNodeType.SessionResult, data)
 
     expect(query)
         .toEqual(

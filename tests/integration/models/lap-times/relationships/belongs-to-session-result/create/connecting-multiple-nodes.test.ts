@@ -5,7 +5,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 import {LapTime} from "../../../../../../../src/models/node-types/lap-times/LapTime"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
 
 test('A LAP TIME cannot have multiple ›belongs-to-session-result‹ relationships', async () => {
     const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
@@ -19,7 +19,7 @@ test('A LAP TIME cannot have multiple ›belongs-to-session-result‹ relationsh
     const relationships = await getRelationshipCollection(
         lapTime.id,
         RelationshipType.LapTimeBelongsToSessionResult,
-        NodeTypeLabel.SessionResult,
+        Neo4jNodeType.SessionResult,
     )
 
     expect(relationships.length)

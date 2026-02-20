@@ -1,7 +1,7 @@
-import {NodeTypeLabel} from "../NodeTypeLabel"
+import {Neo4jNodeType} from "./Neo4jNodeType"
 import {PropertySpecification} from "./PropertySpecification"
 
 export type NodeSpecification = {
-    label: NodeTypeLabel
+    label: Neo4jNodeType
     properties: PropertySpecification[],
 }

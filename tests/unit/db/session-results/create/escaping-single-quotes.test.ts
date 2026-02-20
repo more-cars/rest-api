@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {InputSessionResultCreate} from "../../../../../src/db/nodes/session-results/types/InputSessionResultCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
-import {NodeTypeLabel} from "../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../src/db/types/Neo4jNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
@@ -16,7 +16,7 @@ test('single quotes are correctly escaped', async () => {
         points: null
     }
 
-    const query = createNodeQuery(NodeTypeLabel.SessionResult, data)
+    const query = createNodeQuery(Neo4jNodeType.SessionResult, data)
 
     expect(query)
         .toEqual(

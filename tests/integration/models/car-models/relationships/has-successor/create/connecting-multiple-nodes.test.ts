@@ -5,7 +5,7 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {CarModel} from "../../../../../../../src/models/node-types/car-models/CarModel"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
 
 test('A CAR MODEL cannot have multiple ›has-successor‹ relationships', async () => {
     const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
@@ -19,7 +19,7 @@ test('A CAR MODEL cannot have multiple ›has-successor‹ relationships', async
     const relationships = await getRelationshipCollection(
         carModel.id,
         RelationshipType.CarModelHasSuccessor,
-        NodeTypeLabel.CarModel,
+        Neo4jNodeType.CarModel,
     )
 
     expect(relationships.length)

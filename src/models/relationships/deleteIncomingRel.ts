@@ -1,5 +1,5 @@
 import type {RelType} from "./types/RelType"
-import type {NodeTypeLabel} from "../../db/NodeTypeLabel"
+import type {Neo4jNodeType} from "../../db/types/Neo4jNodeType"
 import {mapModelRelTypeToDbRelationshipType} from "./mapModelRelTypeToDbRelationshipType"
 import {deleteRelationshipById} from "../../db/relationships/deleteRelationshipById"
 import {getRelationshipByEndNode} from "../../db/relationships/getRelationshipByEndNode"
@@ -7,7 +7,7 @@ import {getRelationshipByEndNode} from "../../db/relationships/getRelationshipBy
 export async function deleteIncomingRel(
     destinationId: number,
     relType: RelType,
-    originType: NodeTypeLabel,
+    originType: Neo4jNodeType,
 ) {
     const dbRelationship = await getRelationshipByEndNode(
         destinationId,

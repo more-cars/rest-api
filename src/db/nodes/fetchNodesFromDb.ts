@@ -1,11 +1,11 @@
 import neo4j, {Driver, Node, Session} from "neo4j-driver"
 import {getDriver} from "../driver"
-import type {NodeTypeLabel} from "../NodeTypeLabel"
+import type {Neo4jNodeType} from "../types/Neo4jNodeType"
 import type {CollectionQueryParams} from "../types/CollectionQueryParams"
 import {DbFilterOperator} from "../types/DbFilterOperator"
 import {getAllNodesOfTypeQuery} from "./getAllNodesOfTypeQuery"
 
-export async function fetchNodesFromDb(nodeType: NodeTypeLabel, params: CollectionQueryParams = {
+export async function fetchNodesFromDb(nodeType: Neo4jNodeType, params: CollectionQueryParams = {
     sortByProperty: 'mc_id',
     sortDirection: 'ASC',
     filterByProperty: 'mc_id',

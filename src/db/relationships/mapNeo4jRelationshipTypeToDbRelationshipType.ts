@@ -1,23 +1,23 @@
-import {NodeTypeLabel} from "../NodeTypeLabel"
+import {Neo4jNodeType} from "../types/Neo4jNodeType"
 import {RelationshipDirection} from "../types/RelationshipDirection"
 import {RelationshipTypeNeo4j} from "../types/RelationshipTypeNeo4j"
 import {RelationshipType} from "../types/RelationshipType"
 import {RelationshipTypeNotFoundError} from "../types/RelationshipTypeNotFoundError"
 
 export function mapNeo4jRelationshipTypeToDbRelationshipType(
-    startNodeLabel: NodeTypeLabel,
+    startNodeLabel: Neo4jNodeType,
     relationshipDirection: RelationshipDirection,
     neo4jRelationshipType: RelationshipTypeNeo4j,
 ): RelationshipType {
-    const mapping = new Map<NodeTypeLabel, Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>>([
-        [NodeTypeLabel.Company, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+    const mapping = new Map<Neo4jNodeType, Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>>([
+        [Neo4jNodeType.Company, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.FORWARD, new Map([
                 [RelationshipTypeNeo4j.CompanyHasBrand, RelationshipType.CompanyHasBrand],
                 [RelationshipTypeNeo4j.CompanyHasImage, RelationshipType.CompanyHasImage],
                 [RelationshipTypeNeo4j.CompanyHasPrimeImage, RelationshipType.CompanyHasPrimeImage],
             ])],
         ])],
-        [NodeTypeLabel.Brand, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+        [Neo4jNodeType.Brand, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
                 [RelationshipTypeNeo4j.BrandBelongsToCompany, RelationshipType.BrandBelongsToCompany],
             ])],
@@ -27,7 +27,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.BrandHasPrimeImage, RelationshipType.BrandHasPrimeImage],
             ])],
         ])],
-        [NodeTypeLabel.CarModel, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+        [Neo4jNodeType.CarModel, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
                 [RelationshipTypeNeo4j.CarModelBelongsToBrand, RelationshipType.CarModelBelongsToBrand],
                 [RelationshipTypeNeo4j.CarModelIsSuccessorOf, RelationshipType.CarModelIsSuccessorOf],
@@ -39,7 +39,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.CarModelHasPrimeImage, RelationshipType.CarModelHasPrimeImage],
             ])],
         ])],
-        [NodeTypeLabel.CarModelVariant, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+        [Neo4jNodeType.CarModelVariant, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
                 [RelationshipTypeNeo4j.CarModelVariantIsVariantOf, RelationshipType.CarModelVariantIsVariantOf],
                 [RelationshipTypeNeo4j.CarModelVariantIsFeaturedInRacingGame, RelationshipType.CarModelVariantIsFeaturedInRacingGame],
@@ -51,7 +51,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.CarModelVariantHasPrimeImage, RelationshipType.CarModelVariantHasPrimeImage],
             ])],
         ])],
-        [NodeTypeLabel.RaceTrack, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+        [Neo4jNodeType.RaceTrack, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
                 [RelationshipTypeNeo4j.RaceTrackHostedRacingEvent, RelationshipType.RaceTrackHostedRacingEvent],
             ])],
@@ -61,7 +61,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.RaceTrackHasPrimeImage, RelationshipType.RaceTrackHasPrimeImage],
             ])],
         ])],
-        [NodeTypeLabel.TrackLayout, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+        [Neo4jNodeType.TrackLayout, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
                 [RelationshipTypeNeo4j.TrackLayoutBelongsToRaceTrack, RelationshipType.TrackLayoutBelongsToRaceTrack],
                 [RelationshipTypeNeo4j.TrackLayoutWasUsedByRacingEvent, RelationshipType.TrackLayoutWasUsedByRacingEvent],
@@ -73,7 +73,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.TrackLayoutHasPrimeImage, RelationshipType.TrackLayoutHasPrimeImage],
             ])],
         ])],
-        [NodeTypeLabel.RacingSeries, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+        [Neo4jNodeType.RacingSeries, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
                 //
             ])],
@@ -83,7 +83,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.RacingSeriesHasPrimeImage, RelationshipType.RacingSeriesHasPrimeImage],
             ])],
         ])],
-        [NodeTypeLabel.RacingEvent, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+        [Neo4jNodeType.RacingEvent, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
                 [RelationshipTypeNeo4j.RacingEventBelongsToRacingSeries, RelationshipType.RacingEventBelongsToRacingSeries],
                 [RelationshipTypeNeo4j.RacingEventFollowsEvent, RelationshipType.RacingEventFollowsEvent],
@@ -98,7 +98,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.RacingEventHasPrimeImage, RelationshipType.RacingEventHasPrimeImage],
             ])],
         ])],
-        [NodeTypeLabel.RacingSession, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+        [Neo4jNodeType.RacingSession, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
                 [RelationshipTypeNeo4j.RacingSessionBelongsToRacingEvent, RelationshipType.RacingSessionBelongsToRacingEvent],
             ])],
@@ -108,7 +108,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.RacingSessionHasPrimeImage, RelationshipType.RacingSessionHasPrimeImage],
             ])],
         ])],
-        [NodeTypeLabel.SessionResult, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+        [Neo4jNodeType.SessionResult, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
                 [RelationshipTypeNeo4j.SessionResultBelongsToRacingSession, RelationshipType.SessionResultBelongsToRacingSession],
                 [RelationshipTypeNeo4j.SessionResultAchievedWithCarModelVariant, RelationshipType.SessionResultAchievedWithCarModelVariant],
@@ -119,7 +119,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.SessionResultHasPrimeImage, RelationshipType.SessionResultHasPrimeImage],
             ])],
         ])],
-        [NodeTypeLabel.LapTime, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+        [Neo4jNodeType.LapTime, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
                 [RelationshipTypeNeo4j.LapTimeBelongsToSessionResult, RelationshipType.LapTimeBelongsToSessionResult],
                 [RelationshipTypeNeo4j.LapTimeAchievedOnTrackLayout, RelationshipType.LapTimeAchievedOnTrackLayout],
@@ -130,7 +130,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.LapTimeHasPrimeImage, RelationshipType.LapTimeHasPrimeImage],
             ])],
         ])],
-        [NodeTypeLabel.RacingGame, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+        [Neo4jNodeType.RacingGame, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
                 [RelationshipTypeNeo4j.RacingGameReleasedOnGamingPlatform, RelationshipType.RacingGameReleasedOnGamingPlatform],
             ])],
@@ -141,7 +141,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.RacingGameHasPrimeImage, RelationshipType.RacingGameHasPrimeImage],
             ])],
         ])],
-        [NodeTypeLabel.GamingPlatform, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+        [Neo4jNodeType.GamingPlatform, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([])],
             [RelationshipDirection.FORWARD, new Map([
                 [RelationshipTypeNeo4j.GamingPlatformFeaturesRacingGame, RelationshipType.GamingPlatformFeaturesRacingGame],
@@ -149,7 +149,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.GamingPlatformHasPrimeImage, RelationshipType.GamingPlatformHasPrimeImage],
             ])],
         ])],
-        [NodeTypeLabel.Image, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+        [Neo4jNodeType.Image, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
                 [RelationshipTypeNeo4j.ImageBelongsToNode, RelationshipType.ImageBelongsToNode],
                 [RelationshipTypeNeo4j.ImageIsPrimeImageOfNode, RelationshipType.ImageIsPrimeImageOfNode],

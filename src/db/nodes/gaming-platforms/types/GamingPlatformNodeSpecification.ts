@@ -1,8 +1,8 @@
 import {NodeSpecification} from "../../../types/NodeSpecification"
-import {NodeTypeLabel} from "../../../NodeTypeLabel"
+import {Neo4jNodeType} from "../../../types/Neo4jNodeType"
 
 export const GamingPlatformNodeSpecification: NodeSpecification = {
-    label: NodeTypeLabel.GamingPlatform,
+    label: Neo4jNodeType.GamingPlatform,
     properties: [
         {
             name: 'name',

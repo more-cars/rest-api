@@ -1,30 +1,30 @@
 import {RelationshipSpecification} from "../../../types/RelationshipSpecification"
 import {RelationshipType} from "../../../types/RelationshipType"
-import {NodeTypeLabel} from "../../../NodeTypeLabel"
+import {Neo4jNodeType} from "../../../types/Neo4jNodeType"
 import {RelationshipTypeNeo4j} from "../../../types/RelationshipTypeNeo4j"
 
 export const RaceTrackRelationshipSpecification: RelationshipSpecification[] = [
     [RelationshipType.RaceTrackHasLayout, {
-        startNodeLabel: NodeTypeLabel.RaceTrack,
-        endNodeLabel: NodeTypeLabel.TrackLayout,
+        startNodeLabel: Neo4jNodeType.RaceTrack,
+        endNodeLabel: Neo4jNodeType.TrackLayout,
         relationshipName: RelationshipTypeNeo4j.RaceTrackHasLayout,
         isReverseRelationship: false,
     }],
     [RelationshipType.RaceTrackHostedRacingEvent, {
-        startNodeLabel: NodeTypeLabel.RaceTrack,
-        endNodeLabel: NodeTypeLabel.RacingEvent,
+        startNodeLabel: Neo4jNodeType.RaceTrack,
+        endNodeLabel: Neo4jNodeType.RacingEvent,
         relationshipName: RelationshipTypeNeo4j.RaceTrackHostedRacingEvent,
         isReverseRelationship: true,
     }],
     [RelationshipType.RaceTrackHasImage, {
-        startNodeLabel: NodeTypeLabel.RaceTrack,
-        endNodeLabel: NodeTypeLabel.Image,
+        startNodeLabel: Neo4jNodeType.RaceTrack,
+        endNodeLabel: Neo4jNodeType.Image,
         relationshipName: RelationshipTypeNeo4j.RaceTrackHasImage,
         isReverseRelationship: false,
     }],
     [RelationshipType.RaceTrackHasPrimeImage, {
-        startNodeLabel: NodeTypeLabel.RaceTrack,
-        endNodeLabel: NodeTypeLabel.Image,
+        startNodeLabel: Neo4jNodeType.RaceTrack,
+        endNodeLabel: Neo4jNodeType.Image,
         relationshipName: RelationshipTypeNeo4j.RaceTrackHasPrimeImage,
         isReverseRelationship: false,
     }],

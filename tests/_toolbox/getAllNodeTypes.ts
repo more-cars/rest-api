@@ -1,5 +1,5 @@
-import {NodeTypeLabel} from "../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../src/db/types/Neo4jNodeType"
 
 export function getAllNodeTypes() {
-    return Array.from(new Set(Object.values(NodeTypeLabel) as string[])) as NodeTypeLabel[]
+    return Array.from(new Set(Object.values(Neo4jNodeType) as string[])) as Neo4jNodeType[]
 }

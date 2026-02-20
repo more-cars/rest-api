@@ -5,7 +5,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 import {RacingGame} from "../../../../../../../src/models/node-types/racing-games/RacingGame"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {NodeTypeLabel} from "../../../../../../../src/db/NodeTypeLabel"
+import {Neo4jNodeType} from "../../../../../../../src/db/types/Neo4jNodeType"
 
 test('A RACING GAME can have multiple ›features-track-layout‹ relationships', async () => {
     const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
@@ -19,7 +19,7 @@ test('A RACING GAME can have multiple ›features-track-layout‹ relationships'
     const relationships = await getRelationshipCollection(
         racingGame.id,
         RelationshipType.RacingGameFeaturesTrackLayout,
-        NodeTypeLabel.TrackLayout,
+        Neo4jNodeType.TrackLayout,
     )
 
     expect(relationships.length)
