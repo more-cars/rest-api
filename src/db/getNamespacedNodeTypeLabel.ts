@@ -1,4 +1,4 @@
-export const appInstanceId = process.env.DB_NAMESPACE || (Math.ceil(Math.random() * 10_000_000) + 10_000_000).toString(16)
+export const appInstanceId = process.env.API_NAMESPACE || (Math.ceil(Math.random() * 10_000_000) + 10_000_000).toString(16)
 
 export function getNamespacedNodeTypeLabel(nodeTypeLabel: string) {
     return nodeTypeLabel + '_' + appInstanceId
