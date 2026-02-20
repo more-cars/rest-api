@@ -1,0 +1,17 @@
+export enum DbNodeType {
+    Company = "Company",
+    Brand = "Brand",
+    CarModel = "CarModel",
+    CarModelVariant = "CarModelVariant",
+    RaceTrack = "RaceTrack",
+    TrackLayout = "TrackLayout",
+    RacingSeries = "RacingSeries",
+    RacingEvent = "RacingEvent",
+    RacingSession = "RacingSession",
+    SessionResult = "SessionResult",
+    LapTime = "LapTime",
+    RacingGame = "RacingGame",
+    GamingPlatform = "GamingPlatform",
+    Image = "Image",
+    Node = "",
+}
