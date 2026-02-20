@@ -1,0 +1,17 @@
+export enum ModelNodeType {
+    Company = "company",
+    Brand = "brand",
+    CarModel = "car_model",
+    CarModelVariant = "car_model_variant",
+    RaceTrack = "race_track",
+    TrackLayout = "track_layout",
+    RacingSeries = "racing_series",
+    RacingEvent = "racing_event",
+    RacingSession = "racing_session",
+    SessionResult = "session_result",
+    LapTime = "lap_time",
+    RacingGame = "racing_game",
+    GamingPlatform = "gaming_platform",
+    Image = "image",
+    Node = "",
+}
