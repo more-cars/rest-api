@@ -2,6 +2,7 @@ import {expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from "../../../../../src/app.ts"
 import {RacingGame} from "../../../../../src/models/node-types/racing-games/RacingGame"
+import {ModelNodeType} from "../../../../../src/models/types/ModelNodeType"
 
 test('Node does not exist', async () => {
     RacingGame.findById = vi.fn().mockReturnValue(false)
@@ -15,7 +16,10 @@ test('Node does not exist', async () => {
 
 test('Node does exist', async () => {
     RacingGame.findById = vi.fn().mockReturnValue({
-        id: 12345
+        node_type: ModelNodeType.RacingGame,
+        attributes: {
+            id: 12345,
+        },
     })
 
     const response = await request(app)
