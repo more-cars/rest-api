@@ -9,7 +9,7 @@ test('Each node is created with a different ID', async () => {
     const images = await seedNodes(ControllerNodeType.IMAGE, 20); // DO NOT REMOVE THIS SEMICOLON!
 
     [brands, carModels, images].forEach(nodes => {
-        const extractedIds = nodes.map(node => node.id)
+        const extractedIds = nodes.map(node => node.properties.id)
         const deduplicatedIds = removeDuplicates(extractedIds)
 
         expect(extractedIds.length)

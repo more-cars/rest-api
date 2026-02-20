@@ -10,20 +10,20 @@ import FakeImageFull from "../../../../_toolbox/fixtures/nodes/FakeImageFull"
 
 test('Timestamps are added when creating a node', async () => {
     const createdBrand = await createBrandNode(FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate)
-    expect(createdBrand)
+    expect(createdBrand.properties)
         .toHaveProperty('created_at')
-    expect(createdBrand)
+    expect(createdBrand.properties)
         .toHaveProperty('updated_at')
 
     const createdCarModel = await createCarModelNode(FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate)
-    expect(createdCarModel)
+    expect(createdCarModel.properties)
         .toHaveProperty('created_at')
-    expect(createdCarModel)
+    expect(createdCarModel.properties)
         .toHaveProperty('updated_at')
 
     const createdImage = await createImageNode(FakeImageFull)
-    expect(createdImage)
+    expect(createdImage.properties)
         .toHaveProperty('created_at')
-    expect(createdImage)
+    expect(createdImage.properties)
         .toHaveProperty('updated_at')
 })

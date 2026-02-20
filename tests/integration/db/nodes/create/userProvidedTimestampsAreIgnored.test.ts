@@ -14,26 +14,26 @@ test('Timestamps provided by the user are ignored', async () => {
     const brandData = FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate
     const createdBrand = await createBrandNode(brandData)
 
-    expect(createdBrand).toHaveProperty('created_at')
-    expect(createdBrand).not.toHaveProperty('created_at', "blubb")
-    expect(createdBrand).toHaveProperty('updated_at')
-    expect(createdBrand).not.toHaveProperty('updated_at', "blobb")
+    expect(createdBrand.properties).toHaveProperty('created_at')
+    expect(createdBrand.properties).not.toHaveProperty('created_at', "blubb")
+    expect(createdBrand.properties).toHaveProperty('updated_at')
+    expect(createdBrand.properties).not.toHaveProperty('updated_at', "blobb")
 
     // CAR MODEL
     const carModelData = FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate
     const createdCarModel = await createCarModelNode(carModelData)
 
-    expect(createdCarModel).toHaveProperty('created_at')
-    expect(createdCarModel).not.toHaveProperty('created_at', "blubb")
-    expect(createdCarModel).toHaveProperty('updated_at')
-    expect(createdCarModel).not.toHaveProperty('updated_at', "blobb")
+    expect(createdCarModel.properties).toHaveProperty('created_at')
+    expect(createdCarModel.properties).not.toHaveProperty('created_at', "blubb")
+    expect(createdCarModel.properties).toHaveProperty('updated_at')
+    expect(createdCarModel.properties).not.toHaveProperty('updated_at', "blobb")
 
     // IMAGE
     const imageData: InputImageCreate = FakeImageFull
     const createdImage = await createImageNode(imageData)
 
-    expect(createdImage).toHaveProperty('created_at')
-    expect(createdImage).not.toHaveProperty('created_at', "blubb")
-    expect(createdImage).toHaveProperty('updated_at')
-    expect(createdImage).not.toHaveProperty('updated_at', "blobb")
+    expect(createdImage.properties).toHaveProperty('created_at')
+    expect(createdImage.properties).not.toHaveProperty('created_at', "blubb")
+    expect(createdImage.properties).toHaveProperty('updated_at')
+    expect(createdImage.properties).not.toHaveProperty('updated_at', "blobb")
 })
