@@ -4,7 +4,6 @@ import type {RelationshipType} from "../types/RelationshipType"
 import type {DbNodeType} from "../types/DbNodeType"
 import type {Relationship} from "../types/Relationship"
 import {getRelationshipSpecification} from "./getRelationshipSpecification"
-import {RelationshipDirection} from "../types/RelationshipDirection"
 import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationshipToDbRelationship"
 import {mapDbRelationshipTypeToNeo4jRelationshipType} from "./mapDbRelationshipTypeToNeo4jRelationshipType"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
@@ -15,16 +14,13 @@ export async function getRelationshipCollection(
     relationshipType: RelationshipType,
     endNodeType?: DbNodeType,
 ): Promise<Relationship[]> {
-    const relationshipSpecs = getRelationshipSpecification(relationshipType)
-    const relationshipDirection = relationshipSpecs.isReverseRelationship ? RelationshipDirection.REVERSE : RelationshipDirection.FORWARD
-
     const relationships: Relationship[] = []
 
     const driver: Driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getRelationshipCollectionQuery(startNodeId, relationshipType, relationshipDirection, endNodeType))
+        const result = await txc.run(getRelationshipCollectionQuery(startNodeId, relationshipType, endNodeType))
         return result.records
     })
 
@@ -41,8 +37,9 @@ export async function getRelationshipCollection(
     return relationships
 }
 
-export function getRelationshipCollectionQuery(startNodeId: number, relationshipType: RelationshipType, reverse: RelationshipDirection, endNodeType?: DbNodeType) {
-    const templateName = reverse ? 'getRelationshipCollectionReversed' : 'getRelationshipCollection'
+export function getRelationshipCollectionQuery(startNodeId: number, relationshipType: RelationshipType, endNodeType?: DbNodeType) {
+    const relationshipSpecs = getRelationshipSpecification(relationshipType)
+    const templateName = relationshipSpecs.isReverseRelationship ? 'getRelationshipCollectionReversed' : 'getRelationshipCollection'
     const relationshipName = mapDbRelationshipTypeToNeo4jRelationshipType(relationshipType)
 
     let template = getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')

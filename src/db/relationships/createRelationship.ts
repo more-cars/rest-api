@@ -2,7 +2,6 @@ import neo4j, {Driver, Node, Relationship as Neo4jRelationship} from "neo4j-driv
 import {RelationshipType} from "../types/RelationshipType"
 import {Relationship} from "../types/Relationship"
 import {getRelationshipSpecification} from "./getRelationshipSpecification"
-import {RelationshipDirection} from "../types/RelationshipDirection"
 import {getDriver} from "../driver"
 import {generateMoreCarsId} from "../generateMoreCarsId"
 import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId"
@@ -17,15 +16,12 @@ export async function createRelationship(
     endNodeId: number,
     relationshipType: RelationshipType
 ): Promise<false | Relationship> {
-    const relationshipSpecs = getRelationshipSpecification(relationshipType)
-    const relationshipDirection = relationshipSpecs.isReverseRelationship ? RelationshipDirection.REVERSE : RelationshipDirection.FORWARD
-
     const driver: Driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
     // 1. Creating the rel in the database
     const records = await session.executeWrite(async txc => {
-        const result = await txc.run(createRelationshipQuery(startNodeId, relationshipType, endNodeId, relationshipDirection))
+        const result = await txc.run(createRelationshipQuery(startNodeId, relationshipType, endNodeId))
         return result.records
     })
 
@@ -52,8 +48,9 @@ export async function createRelationship(
     return convertNeo4jRelationshipToDbRelationship(dbRelationship, startNode, endNode)
 }
 
-export function createRelationshipQuery(startNodeId: number, relationshipType: RelationshipType, endNodeId: number, reverse: RelationshipDirection) {
-    const templateName = reverse ? 'createRelationshipReversed' : 'createRelationship'
+export function createRelationshipQuery(startNodeId: number, relationshipType: RelationshipType, endNodeId: number) {
+    const relationshipSpecs = getRelationshipSpecification(relationshipType)
+    const templateName = relationshipSpecs.isReverseRelationship ? 'createRelationshipReversed' : 'createRelationship'
     const relationshipName = mapDbRelationshipTypeToNeo4jRelationshipType(relationshipType)
 
     return getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')

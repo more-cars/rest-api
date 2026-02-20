@@ -3,7 +3,6 @@ import type {RelationshipType} from "../types/RelationshipType"
 import type {DbNodeType} from "../types/DbNodeType"
 import type {Relationship} from "../types/Relationship"
 import {getRelationshipSpecification} from "./getRelationshipSpecification"
-import {RelationshipDirection} from "../types/RelationshipDirection"
 import {getDriver} from "../driver"
 import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationshipToDbRelationship"
 import {mapDbRelationshipTypeToNeo4jRelationshipType} from "./mapDbRelationshipTypeToNeo4jRelationshipType"
@@ -15,14 +14,11 @@ export async function getRelationshipByEndNode(
     relationshipType: RelationshipType,
     startNodeType: DbNodeType,
 ): Promise<false | Relationship> {
-    const relationshipSpecs = getRelationshipSpecification(relationshipType)
-    const relationshipDirection = relationshipSpecs.isReverseRelationship ? RelationshipDirection.REVERSE : RelationshipDirection.FORWARD
-
     const driver: Driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getRelationshipQuery(endNodeId, relationshipType, startNodeType, relationshipDirection))
+        const result = await txc.run(getRelationshipQuery(endNodeId, relationshipType, startNodeType))
         return result.records
     })
 
@@ -39,8 +35,9 @@ export async function getRelationshipByEndNode(
     return convertNeo4jRelationshipToDbRelationship(dbRelationship, startNode, endNode)
 }
 
-export function getRelationshipQuery(endNodeId: number, relationshipType: RelationshipType, startNodeType: DbNodeType, reverse: RelationshipDirection) {
-    const templateName = reverse ? 'getRelationshipByEndNodeReversed' : 'getRelationshipByEndNode'
+export function getRelationshipQuery(endNodeId: number, relationshipType: RelationshipType, startNodeType: DbNodeType) {
+    const relationshipSpecs = getRelationshipSpecification(relationshipType)
+    const templateName = relationshipSpecs.isReverseRelationship ? 'getRelationshipByEndNodeReversed' : 'getRelationshipByEndNode'
     const relationshipName = mapDbRelationshipTypeToNeo4jRelationshipType(relationshipType)
     const startNodeLabel = getNamespacedNodeTypeLabel(startNodeType)
 
