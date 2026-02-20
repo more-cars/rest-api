@@ -8,11 +8,11 @@ test('Trying to create a ›features-racing-game‹ relationship with nodes that
     const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
     const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
-    await expect(GamingPlatform.createFeaturesRacingGameRelationship(-42, racingGame.id))
+    await expect(GamingPlatform.createFeaturesRacingGameRelationship(-42, racingGame.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(GamingPlatform.createFeaturesRacingGameRelationship(gamingPlatform.id, -43))
+    await expect(GamingPlatform.createFeaturesRacingGameRelationship(gamingPlatform.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

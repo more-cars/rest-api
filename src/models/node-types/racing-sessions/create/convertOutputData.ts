@@ -3,15 +3,15 @@ import {RacingSessionNode} from "../types/RacingSessionNode"
 
 export function convertOutputData(data: RacingSessionNodeInput): RacingSessionNode {
     return {
-        id: data.id,
-        name: data.name,
-        start_date: data.start_date,
-        start_time: data.start_time,
-        duration: data.duration,
-        duration_unit: data.duration_unit,
-        distance: data.distance,
-        distance_unit: data.distance_unit,
-        created_at: data.created_at,
-        updated_at: data.updated_at,
+        id: data.properties.id,
+        name: data.properties.name,
+        start_date: data.properties.start_date,
+        start_time: data.properties.start_time,
+        duration: data.properties.duration,
+        duration_unit: data.properties.duration_unit,
+        distance: data.properties.distance,
+        distance_unit: data.properties.distance_unit,
+        created_at: data.properties.created_at,
+        updated_at: data.properties.updated_at,
     } as RacingSessionNode
 }

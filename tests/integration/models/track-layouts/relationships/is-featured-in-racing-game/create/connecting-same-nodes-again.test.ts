@@ -8,11 +8,11 @@ test('Trying to create the same ›is-featured-in-racing-game‹ relationship ag
     const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
     const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
-    await expect(TrackLayout.createIsFeaturedInRacingGameRelationship(trackLayout.id, racingGame.id))
+    await expect(TrackLayout.createIsFeaturedInRacingGameRelationship(trackLayout.properties.id, racingGame.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(TrackLayout.createIsFeaturedInRacingGameRelationship(trackLayout.id, racingGame.id))
+    await expect(TrackLayout.createIsFeaturedInRacingGameRelationship(trackLayout.properties.id, racingGame.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })

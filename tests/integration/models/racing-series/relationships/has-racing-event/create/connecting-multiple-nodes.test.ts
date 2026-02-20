@@ -13,11 +13,11 @@ test('A RACING SERIES can have multiple ›has-racing-event‹ relationships', a
     const racingEvents = await seedNodes(ControllerNodeType.RACING_EVENT, racingEventsAmount)
 
     for (const racingEvent of racingEvents) {
-        await RacingSeries.createHasRacingEventRelationship(racingSeries.id, racingEvent.id)
+        await RacingSeries.createHasRacingEventRelationship(racingSeries.properties.id, racingEvent.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        racingSeries.id,
+        racingSeries.properties.id,
         RelationshipType.RacingSeriesHasRacingEvent,
         DbNodeType.RacingEvent,
     )

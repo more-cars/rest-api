@@ -13,10 +13,10 @@ test('A CAR MODEL VARIANT can have multiple ›achieved-session-result‹ relati
     const sessionResults = await seedNodes(ControllerNodeType.SESSION_RESULT, sessionResultsAmount)
 
     for (const sessionResult of sessionResults) {
-        await CarModelVariant.createAchievedSessionResultRelationship(carModelVariant.id, sessionResult.id)
+        await CarModelVariant.createAchievedSessionResultRelationship(carModelVariant.properties.id, sessionResult.properties.id)
     }
 
-    const relationships = await getRelationshipCollection(carModelVariant.id, RelationshipType.CarModelVariantAchievedSessionResult, DbNodeType.SessionResult)
+    const relationships = await getRelationshipCollection(carModelVariant.properties.id, RelationshipType.CarModelVariantAchievedSessionResult, DbNodeType.SessionResult)
 
     expect(relationships.length)
         .toBe(sessionResultsAmount)

@@ -13,11 +13,11 @@ test('A CAR MODEL VARIANT can have multiple ›is-featured-in-racing-game‹ rel
     const racingGames = await seedNodes(ControllerNodeType.RACING_GAME, racingGamesAmount)
 
     for (const racingGame of racingGames) {
-        await CarModelVariant.createIsFeaturedInRacingGameRelationship(carModelVariant.id, racingGame.id)
+        await CarModelVariant.createIsFeaturedInRacingGameRelationship(carModelVariant.properties.id, racingGame.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        carModelVariant.id,
+        carModelVariant.properties.id,
         RelationshipType.CarModelVariantIsFeaturedInRacingGame,
         DbNodeType.RacingGame,
     )

@@ -1,22 +1,28 @@
 import {Node} from "neo4j-driver"
 import {TrackLayoutNode} from "./types/TrackLayoutNode"
+import {DbNodeType} from "../../types/DbNodeType"
 
-export function mapDbNodeToTrackLayoutNode(dbNode: Node): TrackLayoutNode {
-    return {
-        // system data
-        id: dbNode.properties.mc_id,
-        created_at: dbNode.properties.created_at,
-        updated_at: dbNode.properties.updated_at,
+export function mapDbNodeToTrackLayoutNode(neo4jNode: Node): TrackLayoutNode {
+    const node: TrackLayoutNode = {
+        node_type: DbNodeType.TrackLayout,
+        properties: {
+            // system data
+            id: neo4jNode.properties.mc_id,
+            created_at: neo4jNode.properties.created_at,
+            updated_at: neo4jNode.properties.updated_at,
 
-        // user data
-        name: dbNode.properties.name,
-        year_from: dbNode.properties.year_from,
-        year_to: dbNode.properties.year_to,
-        length: dbNode.properties.length,
-        length_unit: dbNode.properties.length_unit,
-        direction: dbNode.properties.direction,
-        elevation_change: dbNode.properties.elevation_change,
-        elevation_change_unit: dbNode.properties.elevation_change_unit,
-        surface: dbNode.properties.surface,
-    } as TrackLayoutNode
+            // user data
+            name: neo4jNode.properties.name,
+            year_from: neo4jNode.properties.year_from,
+            year_to: neo4jNode.properties.year_to,
+            length: neo4jNode.properties.length,
+            length_unit: neo4jNode.properties.length_unit,
+            direction: neo4jNode.properties.direction,
+            elevation_change: neo4jNode.properties.elevation_change,
+            elevation_change_unit: neo4jNode.properties.elevation_change_unit,
+            surface: neo4jNode.properties.surface,
+        }
+    }
+
+    return node
 }

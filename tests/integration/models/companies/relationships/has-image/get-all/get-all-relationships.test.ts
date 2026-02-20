@@ -9,10 +9,10 @@ import {Company} from "../../../../../../../src/models/node-types/companies/Comp
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
         const company = await seedNode(ControllerNodeType.COMPANY)
-        await seedRelationshipForStartNode(company.id, ControllerNodeType.IMAGE, RelationshipType.CompanyHasImage)
-        await seedRelationshipForStartNode(company.id, ControllerNodeType.IMAGE, RelationshipType.CompanyHasImage)
+        await seedRelationshipForStartNode(company.properties.id, ControllerNodeType.IMAGE, RelationshipType.CompanyHasImage)
+        await seedRelationshipForStartNode(company.properties.id, ControllerNodeType.IMAGE, RelationshipType.CompanyHasImage)
 
-        const relationships = await Company.getAllHasImageRelationships(company.id)
+        const relationships = await Company.getAllHasImageRelationships(company.properties.id)
 
         expect(relationships.length)
             .toBe(2)
@@ -21,7 +21,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
     test('node exists, but no relationships', async () => {
         const company = await seedNode(ControllerNodeType.COMPANY)
 
-        const relationships = await Company.getAllHasImageRelationships(company.id)
+        const relationships = await Company.getAllHasImageRelationships(company.properties.id)
 
         expect(relationships.length)
             .toBe(0)

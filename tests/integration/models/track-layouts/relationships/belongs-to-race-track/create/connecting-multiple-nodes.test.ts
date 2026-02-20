@@ -13,11 +13,11 @@ test('A TRACK LAYOUT cannot have multiple ›belongs-to-race-track‹ relationsh
     const raceTracks = await seedNodes(ControllerNodeType.RACE_TRACK, raceTracksAmount)
 
     for (const raceTrack of raceTracks) {
-        await TrackLayout.createBelongsToRaceTrackRelationship(trackLayout.id, raceTrack.id)
+        await TrackLayout.createBelongsToRaceTrackRelationship(trackLayout.properties.id, raceTrack.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        trackLayout.id,
+        trackLayout.properties.id,
         RelationshipType.TrackLayoutBelongsToRaceTrack,
         DbNodeType.RaceTrack,
     )

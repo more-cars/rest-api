@@ -13,7 +13,7 @@ test('A completely valid request, but the database call fails (e.g. one of the n
     const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
     const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-    await expect(RacingEvent.createUsedTheTrackLayoutRelationship(racingEvent.id, trackLayout.id))
+    await expect(RacingEvent.createUsedTheTrackLayoutRelationship(racingEvent.properties.id, trackLayout.properties.id))
         .rejects
         .toThrow(Error)
 })

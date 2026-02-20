@@ -10,15 +10,15 @@ describe('Creating a ›has-successor‹ relationship', () => {
         const partnerNode = await seedNode(ControllerNodeType.CAR_MODEL)
 
         const createdRelationship = await createRelationship(
-            carModel.id,
-            partnerNode.id,
+            carModel.properties.id,
+            partnerNode.properties.id,
             RelationshipType.CarModelHasSuccessor,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node.properties.id', carModel.id)
+            .toHaveProperty('start_node.properties.id', carModel.properties.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node.properties.id', partnerNode.id)
+            .toHaveProperty('end_node.properties.id', partnerNode.properties.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
@@ -33,7 +33,7 @@ describe('Creating a ›has-successor‹ relationship', () => {
         const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
 
         const createdRelationship = await createRelationship(
-            carModel.id,
+            carModel.properties.id,
             -42,
             RelationshipType.CarModelHasSuccessor,
         )

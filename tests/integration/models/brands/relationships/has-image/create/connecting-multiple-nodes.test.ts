@@ -13,10 +13,10 @@ test('A BRAND can have multiple ›has-image‹ relationships', async () => {
     const images = await seedNodes(ControllerNodeType.IMAGE, imagesAmount)
 
     for (const image of images) {
-        await Brand.createHasImageRelationship(brand.id, image.id)
+        await Brand.createHasImageRelationship(brand.properties.id, image.properties.id)
     }
 
-    const relationships = await getRelationshipCollection(brand.id, RelationshipType.BrandHasImage, DbNodeType.Image)
+    const relationships = await getRelationshipCollection(brand.properties.id, RelationshipType.BrandHasImage, DbNodeType.Image)
 
     expect(relationships.length)
         .toBe(imagesAmount)

@@ -8,11 +8,11 @@ test('Trying to create the same ›belongs-to-racing-series‹ relationship agai
     const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
     const racingSeries = await seedNode(ControllerNodeType.RACING_SERIES)
 
-    await expect(RacingEvent.createBelongsToRacingSeriesRelationship(racingEvent.id, racingSeries.id))
+    await expect(RacingEvent.createBelongsToRacingSeriesRelationship(racingEvent.properties.id, racingSeries.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(RacingEvent.createBelongsToRacingSeriesRelationship(racingEvent.id, racingSeries.id))
+    await expect(RacingEvent.createBelongsToRacingSeriesRelationship(racingEvent.properties.id, racingSeries.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })

@@ -8,11 +8,11 @@ test('Trying to create a ›features-track-layout‹ relationship with nodes tha
     const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
     const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-    await expect(RacingGame.createFeaturesTrackLayoutRelationship(-42, trackLayout.id))
+    await expect(RacingGame.createFeaturesTrackLayoutRelationship(-42, trackLayout.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(RacingGame.createFeaturesTrackLayoutRelationship(racingGame.id, -43))
+    await expect(RacingGame.createFeaturesTrackLayoutRelationship(racingGame.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

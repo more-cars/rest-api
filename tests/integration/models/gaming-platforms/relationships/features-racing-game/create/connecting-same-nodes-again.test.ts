@@ -8,11 +8,11 @@ test('Trying to create the same ›features-racing-game‹ relationship again', 
     const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
     const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
-    await expect(GamingPlatform.createFeaturesRacingGameRelationship(gamingPlatform.id, racingGame.id))
+    await expect(GamingPlatform.createFeaturesRacingGameRelationship(gamingPlatform.properties.id, racingGame.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(GamingPlatform.createFeaturesRacingGameRelationship(gamingPlatform.id, racingGame.id))
+    await expect(GamingPlatform.createFeaturesRacingGameRelationship(gamingPlatform.properties.id, racingGame.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })

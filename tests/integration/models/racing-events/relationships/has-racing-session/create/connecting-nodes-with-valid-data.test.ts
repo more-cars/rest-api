@@ -8,12 +8,12 @@ test('Creating a ›has-racing-session‹ relationship with valid data', async (
     const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
     const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
 
-    const createdRelationship = await RacingEvent.createHasRacingSessionRelationship(racingEvent.id, racingSession.id)
+    const createdRelationship = await RacingEvent.createHasRacingSessionRelationship(racingEvent.properties.id, racingSession.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(racingEvent.id)
+        .toEqual(racingEvent.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(racingSession.id)
+        .toEqual(racingSession.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

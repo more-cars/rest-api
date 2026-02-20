@@ -13,11 +13,11 @@ test('A TRACK LAYOUT can have multiple ›has-lap-time‹ relationships', async 
     const lapTimes = await seedNodes(ControllerNodeType.LAP_TIME, lapTimesAmount)
 
     for (const lapTime of lapTimes) {
-        await TrackLayout.createHasLapTimeRelationship(trackLayout.id, lapTime.id)
+        await TrackLayout.createHasLapTimeRelationship(trackLayout.properties.id, lapTime.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        trackLayout.id,
+        trackLayout.properties.id,
         RelationshipType.TrackLayoutHasLapTime,
         DbNodeType.LapTime,
     )

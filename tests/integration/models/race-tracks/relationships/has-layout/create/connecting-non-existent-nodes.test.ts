@@ -8,11 +8,11 @@ test('Trying to create a ›has-layout‹ relationship with nodes that do not ex
     const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
     const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-    await expect(RaceTrack.createHasLayoutRelationship(-42, trackLayout.id))
+    await expect(RaceTrack.createHasLayoutRelationship(-42, trackLayout.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(RaceTrack.createHasLayoutRelationship(raceTrack.id, -43))
+    await expect(RaceTrack.createHasLayoutRelationship(raceTrack.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

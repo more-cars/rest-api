@@ -12,7 +12,7 @@ describe('Deleting a ›is-followed-by-event‹ relationship', () => {
     test('RACING EVENT node does not exist', async () => {
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
-        await expect(RacingEvent.deleteIsFollowedByEventRelationship(racingEvent.id, -43))
+        await expect(RacingEvent.deleteIsFollowedByEventRelationship(racingEvent.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›is-followed-by-event‹ relationship', () => {
     test('PARTNER node does not exist', async () => {
         const partner = await seedNode(ControllerNodeType.RACING_EVENT)
 
-        await expect(RacingEvent.deleteIsFollowedByEventRelationship(-42, partner.id))
+        await expect(RacingEvent.deleteIsFollowedByEventRelationship(-42, partner.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›is-followed-by-event‹ relationship', () => {
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
         const partner = await seedNode(ControllerNodeType.RACING_EVENT)
 
-        await expect(RacingEvent.deleteIsFollowedByEventRelationship(racingEvent.id, partner.id))
+        await expect(RacingEvent.deleteIsFollowedByEventRelationship(racingEvent.properties.id, partner.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

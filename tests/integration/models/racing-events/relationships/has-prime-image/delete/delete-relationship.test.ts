@@ -12,7 +12,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     test('RACING EVENT node does not exist', async () => {
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
-        await expect(RacingEvent.deleteHasPrimeImageRelationship(racingEvent.id, -43))
+        await expect(RacingEvent.deleteHasPrimeImageRelationship(racingEvent.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     test('IMAGE node does not exist', async () => {
         const image = await seedNode(ControllerNodeType.IMAGE)
 
-        await expect(RacingEvent.deleteHasPrimeImageRelationship(-42, image.id))
+        await expect(RacingEvent.deleteHasPrimeImageRelationship(-42, image.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
         const image = await seedNode(ControllerNodeType.IMAGE)
 
-        await expect(RacingEvent.deleteHasPrimeImageRelationship(racingEvent.id, image.id))
+        await expect(RacingEvent.deleteHasPrimeImageRelationship(racingEvent.properties.id, image.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

@@ -7,7 +7,7 @@ describe('Creating node', () => {
         const inputData = FakeCompany.dbInput()
         const createdNode = await createNode(inputData)
 
-        expect(createdNode)
+        expect(createdNode.properties)
             .toEqual(expect.objectContaining(inputData))
     })
 
@@ -15,7 +15,7 @@ describe('Creating node', () => {
         const inputData = FakeCompany.dbInputMinimal()
         const createdNode = await createNode(inputData)
 
-        expect(createdNode)
+        expect(createdNode.properties)
             .toEqual(expect.objectContaining(inputData))
     })
 })

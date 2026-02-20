@@ -12,7 +12,7 @@ describe('Deleting a ›features-track-layout‹ relationship', () => {
     test('RACING GAME node does not exist', async () => {
         const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
-        await expect(RacingGame.deleteFeaturesTrackLayoutRelationship(racingGame.id, -43))
+        await expect(RacingGame.deleteFeaturesTrackLayoutRelationship(racingGame.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›features-track-layout‹ relationship', () => {
     test('TRACK LAYOUT node does not exist', async () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-        await expect(RacingGame.deleteFeaturesTrackLayoutRelationship(-42, trackLayout.id))
+        await expect(RacingGame.deleteFeaturesTrackLayoutRelationship(-42, trackLayout.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›features-track-layout‹ relationship', () => {
         const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-        await expect(RacingGame.deleteFeaturesTrackLayoutRelationship(racingGame.id, trackLayout.id))
+        await expect(RacingGame.deleteFeaturesTrackLayoutRelationship(racingGame.properties.id, trackLayout.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

@@ -9,10 +9,10 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
         const racingSeries = await seedNode(ControllerNodeType.RACING_SERIES)
-        await seedRelationshipForStartNode(racingSeries.id, ControllerNodeType.IMAGE, RelationshipType.RacingSeriesHasImage)
-        await seedRelationshipForStartNode(racingSeries.id, ControllerNodeType.IMAGE, RelationshipType.RacingSeriesHasImage)
+        await seedRelationshipForStartNode(racingSeries.properties.id, ControllerNodeType.IMAGE, RelationshipType.RacingSeriesHasImage)
+        await seedRelationshipForStartNode(racingSeries.properties.id, ControllerNodeType.IMAGE, RelationshipType.RacingSeriesHasImage)
 
-        const relationships = await RacingSeries.getAllHasImageRelationships(racingSeries.id)
+        const relationships = await RacingSeries.getAllHasImageRelationships(racingSeries.properties.id)
 
         expect(relationships.length)
             .toBe(2)
@@ -21,7 +21,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
     test('node exists, but no relationships', async () => {
         const racingSeries = await seedNode(ControllerNodeType.RACING_SERIES)
 
-        const relationships = await RacingSeries.getAllHasImageRelationships(racingSeries.id)
+        const relationships = await RacingSeries.getAllHasImageRelationships(racingSeries.properties.id)
 
         expect(relationships.length)
             .toBe(0)

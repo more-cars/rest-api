@@ -8,11 +8,11 @@ test('Trying to create the same ›belongs-to-racing-session‹ relationship aga
     const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
     const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
 
-    await expect(SessionResult.createBelongsToRacingSessionRelationship(sessionResult.id, racingSession.id))
+    await expect(SessionResult.createBelongsToRacingSessionRelationship(sessionResult.properties.id, racingSession.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(SessionResult.createBelongsToRacingSessionRelationship(sessionResult.id, racingSession.id))
+    await expect(SessionResult.createBelongsToRacingSessionRelationship(sessionResult.properties.id, racingSession.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })

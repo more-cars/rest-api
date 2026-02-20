@@ -13,13 +13,13 @@ import {getSpecificRelationship} from "../../../../../src/db/relationships/getSp
 test('ID is always contained in response', async () => {
     const carModel = await createCarModelNode(FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate)
     const brand = await createBrandNode(FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate)
-    const expectedRelationship = await createRelationship(brand.id, carModel.id, RelationshipType.BrandHasCarModel)
+    const expectedRelationship = await createRelationship(brand.properties.id, carModel.properties.id, RelationshipType.BrandHasCarModel)
 
     if (!expectedRelationship) {
         assert.fail('Relationship creation failed')
     }
 
-    const requestedRelationship = await getSpecificRelationship(brand.id, carModel.id, RelationshipType.BrandHasCarModel)
+    const requestedRelationship = await getSpecificRelationship(brand.properties.id, carModel.properties.id, RelationshipType.BrandHasCarModel)
 
     if (!requestedRelationship) {
         assert.fail('Relationship retrieval failed')

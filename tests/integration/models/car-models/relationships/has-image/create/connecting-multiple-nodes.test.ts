@@ -13,11 +13,11 @@ test('A CAR MODEL can have multiple ›has-image‹ relationships', async () => 
     const images = await seedNodes(ControllerNodeType.IMAGE, imagesAmount)
 
     for (const image of images) {
-        await CarModel.createHasImageRelationship(carModel.id, image.id)
+        await CarModel.createHasImageRelationship(carModel.properties.id, image.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        carModel.id,
+        carModel.properties.id,
         RelationshipType.CarModelHasImage,
         DbNodeType.Image,
     )

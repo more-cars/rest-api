@@ -13,8 +13,8 @@ test('Fetching a GAMING PLATFORM that does not exist should return "false"', asy
 
 test('When the GAMING PLATFORM exists it should be returned', async () => {
     const expectedGamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
-    const actualGamingPlatform = await GamingPlatform.findById(expectedGamingPlatform.id)
+    const actualGamingPlatform = await GamingPlatform.findById(expectedGamingPlatform.properties.id)
 
     expect(actualGamingPlatform)
-        .toEqual(expectedGamingPlatform)
+        .toEqual(expectedGamingPlatform.properties)
 })

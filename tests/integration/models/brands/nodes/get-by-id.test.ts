@@ -13,8 +13,8 @@ test('Fetching a BRAND that does not exist should return "false"', async () => {
 
 test('When the BRAND exists it should be returned', async () => {
     const expectedBrand = await seedNode(ControllerNodeType.BRAND)
-    const actualBrand = await Brand.findById(expectedBrand.id)
+    const actualBrand = await Brand.findById(expectedBrand.properties.id)
 
     expect(actualBrand)
-        .toEqual(expectedBrand)
+        .toEqual(expectedBrand.properties)
 })

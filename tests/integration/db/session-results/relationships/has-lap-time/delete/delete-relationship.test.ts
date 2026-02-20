@@ -40,8 +40,8 @@ describe('Trying to delete a ›has-lap-time‹ relationship', () => {
         const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
         const relationship = await deleteSpecificRelationship(
-            sessionResult.id,
-            lapTime.id,
+            sessionResult.properties.id,
+            lapTime.properties.id,
             RelationshipType.SessionResultHasLapTime,
         )
 

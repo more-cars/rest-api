@@ -8,12 +8,12 @@ test('Creating a ›has-car-model‹ relationship with valid data', async () => 
     const brand = await seedNode(ControllerNodeType.BRAND)
     const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
 
-    const createdRelationship = await Brand.createHasCarModelRelationship(brand.id, carModel.id)
+    const createdRelationship = await Brand.createHasCarModelRelationship(brand.properties.id, carModel.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(brand.id)
+        .toEqual(brand.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(carModel.id)
+        .toEqual(carModel.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

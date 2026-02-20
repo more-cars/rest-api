@@ -10,15 +10,15 @@ describe('Creating a ›used-the-track-layout‹ relationship', () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
         const createdRelationship = await createRelationship(
-            racingEvent.id,
-            trackLayout.id,
+            racingEvent.properties.id,
+            trackLayout.properties.id,
             RelationshipType.RacingEventUsedTheTrackLayout,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node.properties.id', racingEvent.id)
+            .toHaveProperty('start_node.properties.id', racingEvent.properties.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node.properties.id', trackLayout.id)
+            .toHaveProperty('end_node.properties.id', trackLayout.properties.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
@@ -33,7 +33,7 @@ describe('Creating a ›used-the-track-layout‹ relationship', () => {
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
         const createdRelationship = await createRelationship(
-            racingEvent.id,
+            racingEvent.properties.id,
             -42,
             RelationshipType.RacingEventUsedTheTrackLayout,
         )

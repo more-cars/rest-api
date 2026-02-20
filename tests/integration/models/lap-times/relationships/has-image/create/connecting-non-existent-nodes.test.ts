@@ -8,11 +8,11 @@ test('Trying to create a ›has-image‹ relationship with nodes that do not exi
     const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
     const image = await seedNode(ControllerNodeType.IMAGE)
 
-    await expect(LapTime.createHasImageRelationship(-42, image.id))
+    await expect(LapTime.createHasImageRelationship(-42, image.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(LapTime.createHasImageRelationship(lapTime.id, -43))
+    await expect(LapTime.createHasImageRelationship(lapTime.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

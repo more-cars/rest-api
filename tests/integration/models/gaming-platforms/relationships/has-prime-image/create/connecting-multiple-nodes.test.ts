@@ -13,11 +13,11 @@ test('A GAMING PLATFORM cannot have multiple ›has-prime-image‹ relationships
     const images = await seedNodes(ControllerNodeType.IMAGE, imagesAmount)
 
     for (const image of images) {
-        await GamingPlatform.createHasPrimeImageRelationship(gamingPlatform.id, image.id)
+        await GamingPlatform.createHasPrimeImageRelationship(gamingPlatform.properties.id, image.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        gamingPlatform.id,
+        gamingPlatform.properties.id,
         RelationshipType.GamingPlatformHasPrimeImage,
         DbNodeType.Image,
     )

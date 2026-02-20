@@ -8,11 +8,11 @@ test('Trying to create the same ›follows-event‹ relationship again', async (
     const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
     const partner = await seedNode(ControllerNodeType.RACING_EVENT)
 
-    await expect(RacingEvent.createFollowsEventRelationship(racingEvent.id, partner.id))
+    await expect(RacingEvent.createFollowsEventRelationship(racingEvent.properties.id, partner.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(RacingEvent.createFollowsEventRelationship(racingEvent.id, partner.id))
+    await expect(RacingEvent.createFollowsEventRelationship(racingEvent.properties.id, partner.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })

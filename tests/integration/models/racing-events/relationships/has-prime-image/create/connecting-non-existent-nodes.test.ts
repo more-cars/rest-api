@@ -8,11 +8,11 @@ test('Trying to create a ›has-prime-image‹ relationship with nodes that do n
     const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
     const image = await seedNode(ControllerNodeType.IMAGE)
 
-    await expect(RacingEvent.createHasPrimeImageRelationship(-42, image.id))
+    await expect(RacingEvent.createHasPrimeImageRelationship(-42, image.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(RacingEvent.createHasPrimeImageRelationship(racingEvent.id, -43))
+    await expect(RacingEvent.createHasPrimeImageRelationship(racingEvent.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

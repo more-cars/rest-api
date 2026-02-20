@@ -12,7 +12,7 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
     test('TRACK LAYOUT node does not exist', async () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-        await expect(TrackLayout.deleteHasLapTimeRelationship(trackLayout.id, -43))
+        await expect(TrackLayout.deleteHasLapTimeRelationship(trackLayout.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
     test('LAP TIME node does not exist', async () => {
         const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
-        await expect(TrackLayout.deleteHasLapTimeRelationship(-42, lapTime.id))
+        await expect(TrackLayout.deleteHasLapTimeRelationship(-42, lapTime.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
         const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
-        await expect(TrackLayout.deleteHasLapTimeRelationship(trackLayout.id, lapTime.id))
+        await expect(TrackLayout.deleteHasLapTimeRelationship(trackLayout.properties.id, lapTime.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

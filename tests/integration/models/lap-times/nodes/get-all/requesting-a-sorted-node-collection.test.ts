@@ -18,14 +18,17 @@ describe('A sorted "get all LAP TIME nodes" request returns the nodes in correct
 
     test('when there exist LAP TIME nodes', async () => {
         await deleteAllNodesOfType(ControllerNodeType.LAP_TIME)
-        const nodeA = await seedNode(ControllerNodeType.LAP_TIME, {time: 'A', driver_name: 'A Node'}) as LapTimeNode
-        const nodeB = await seedNode(ControllerNodeType.LAP_TIME, {time: 'B', driver_name: 'B Node'}) as LapTimeNode
-        const nodeC = await seedNode(ControllerNodeType.LAP_TIME, {time: 'C', driver_name: 'C Node'}) as LapTimeNode
+        const nodeA = await seedNode(ControllerNodeType.LAP_TIME, {
+            time: 'A', driver_name: 'A Node'}) as unknown as LapTimeNode
+            const nodeB = await seedNode(ControllerNodeType.LAP_TIME, {
+                time: 'B', driver_name: 'B Node'}) as unknown as LapTimeNode
+                const nodeC = await seedNode(ControllerNodeType.LAP_TIME, {
+                    time: 'C', driver_name: 'C Node'}) as unknown as LapTimeNode
 
-        const ascNodes = await LapTime.findAll({sortByProperty: 'driver_name', sortDirection: 'asc'})
-        expect(ascNodes.length).toEqual(3)
-        expect(ascNodes[0].driver_name === nodeA.driver_name)
-        expect(ascNodes[1].driver_name === nodeB.driver_name)
+                    const ascNodes = await LapTime.findAll({sortByProperty: 'driver_name', sortDirection: 'asc'})
+                    expect(ascNodes.length).toEqual(3)
+                expect(ascNodes[0].driver_name === nodeA.driver_name)
+            expect(ascNodes[1].driver_name === nodeB.driver_name)
         expect(ascNodes[2].driver_name === nodeC.driver_name)
 
         const descNodes = await LapTime.findAll({sortByProperty: 'driver_name', sortDirection: 'desc'})
@@ -34,4 +37,4 @@ describe('A sorted "get all LAP TIME nodes" request returns the nodes in correct
         expect(descNodes[1].driver_name === nodeB.driver_name)
         expect(descNodes[2].driver_name === nodeA.driver_name)
     })
-})
+    })

@@ -12,7 +12,7 @@ test('Expecting response "false" when trying to delete a non-existing BRAND', as
 
 test('Expecting response "true" when deleting an existing BRAND', async () => {
     const node = await seedNode(ControllerNodeType.BRAND)
-    const success = await deleteNode(node.id)
+    const success = await deleteNode(node.properties.id)
 
     expect(success)
         .toBe(true)

@@ -29,7 +29,7 @@ describe('Requesting a ›belongs-to-race-track‹ relationship', () => {
     test('node exists, but not the relationship', async () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-        await expect(TrackLayout.getBelongsToRaceTrackRelationship(trackLayout.id))
+        await expect(TrackLayout.getBelongsToRaceTrackRelationship(trackLayout.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

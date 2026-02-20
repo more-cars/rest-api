@@ -12,7 +12,7 @@ describe('Deleting a ›belongs-to-node‹ relationship', () => {
     test('IMAGE node does not exist', async () => {
         const image = await seedNode(ControllerNodeType.IMAGE)
 
-        await expect(Image.deleteBelongsToNodeRelationship(image.id, -43))
+        await expect(Image.deleteBelongsToNodeRelationship(image.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›belongs-to-node‹ relationship', () => {
     test('PARTNER node does not exist', async () => {
         const company = await seedNode(ControllerNodeType.COMPANY)
 
-        await expect(Image.deleteBelongsToNodeRelationship(-42, company.id))
+        await expect(Image.deleteBelongsToNodeRelationship(-42, company.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›belongs-to-node‹ relationship', () => {
         const image = await seedNode(ControllerNodeType.IMAGE)
         const company = await seedNode(ControllerNodeType.COMPANY)
 
-        await expect(Image.deleteBelongsToNodeRelationship(image.id, company.id))
+        await expect(Image.deleteBelongsToNodeRelationship(image.properties.id, company.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

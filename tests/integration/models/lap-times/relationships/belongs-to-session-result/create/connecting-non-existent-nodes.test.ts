@@ -8,11 +8,11 @@ test('Trying to create a ›belongs-to-session-result‹ relationship with nodes
     const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
     const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
-    await expect(LapTime.createBelongsToSessionResultRelationship(-42, sessionResult.id))
+    await expect(LapTime.createBelongsToSessionResultRelationship(-42, sessionResult.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(LapTime.createBelongsToSessionResultRelationship(lapTime.id, -43))
+    await expect(LapTime.createBelongsToSessionResultRelationship(lapTime.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

@@ -9,10 +9,10 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 describe('Requesting all ›hosted-racing-event‹ relationships', () => {
     test('node and relationships exist', async () => {
         const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
-        await seedRelationshipForStartNode(raceTrack.id, ControllerNodeType.RACING_EVENT, RelationshipType.RaceTrackHostedRacingEvent)
-        await seedRelationshipForStartNode(raceTrack.id, ControllerNodeType.RACING_EVENT, RelationshipType.RaceTrackHostedRacingEvent)
+        await seedRelationshipForStartNode(raceTrack.properties.id, ControllerNodeType.RACING_EVENT, RelationshipType.RaceTrackHostedRacingEvent)
+        await seedRelationshipForStartNode(raceTrack.properties.id, ControllerNodeType.RACING_EVENT, RelationshipType.RaceTrackHostedRacingEvent)
 
-        const relationships = await RaceTrack.getAllHostedRacingEventRelationships(raceTrack.id)
+        const relationships = await RaceTrack.getAllHostedRacingEventRelationships(raceTrack.properties.id)
 
         expect(relationships.length)
             .toBe(2)
@@ -21,7 +21,7 @@ describe('Requesting all ›hosted-racing-event‹ relationships', () => {
     test('node exists, but no relationships', async () => {
         const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
 
-        const relationships = await RaceTrack.getAllHostedRacingEventRelationships(raceTrack.id)
+        const relationships = await RaceTrack.getAllHostedRacingEventRelationships(raceTrack.properties.id)
 
         expect(relationships.length)
             .toBe(0)

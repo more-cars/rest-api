@@ -13,11 +13,11 @@ test('A TRACK LAYOUT can have multiple ›has-image‹ relationships', async () 
     const images = await seedNodes(ControllerNodeType.IMAGE, imagesAmount)
 
     for (const image of images) {
-        await TrackLayout.createHasImageRelationship(trackLayout.id, image.id)
+        await TrackLayout.createHasImageRelationship(trackLayout.properties.id, image.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        trackLayout.id,
+        trackLayout.properties.id,
         RelationshipType.TrackLayoutHasImage,
         DbNodeType.Image,
     )

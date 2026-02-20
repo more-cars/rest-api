@@ -12,7 +12,7 @@ describe('Deleting a ›used-the-track-layout‹ relationship', () => {
     test('RACING EVENT node does not exist', async () => {
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
-        await expect(RacingEvent.deleteUsedTheTrackLayoutRelationship(racingEvent.id, -43))
+        await expect(RacingEvent.deleteUsedTheTrackLayoutRelationship(racingEvent.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›used-the-track-layout‹ relationship', () => {
     test('TRACK LAYOUT node does not exist', async () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-        await expect(RacingEvent.deleteUsedTheTrackLayoutRelationship(-42, trackLayout.id))
+        await expect(RacingEvent.deleteUsedTheTrackLayoutRelationship(-42, trackLayout.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›used-the-track-layout‹ relationship', () => {
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-        await expect(RacingEvent.deleteUsedTheTrackLayoutRelationship(racingEvent.id, trackLayout.id))
+        await expect(RacingEvent.deleteUsedTheTrackLayoutRelationship(racingEvent.properties.id, trackLayout.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

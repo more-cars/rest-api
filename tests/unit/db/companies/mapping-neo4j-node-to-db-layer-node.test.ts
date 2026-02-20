@@ -23,13 +23,16 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
 
     expect(mappedNode)
         .toStrictEqual({
-            id: 1,
-            created_at: "2025-05-14T11:05:07.793Z",
-            updated_at: "2025-05-14T11:05:07.793Z",
-            name: "BMW AG",
-            founded: 1916,
-            defunct: null,
-            headquarters_location: "Munich",
-            legal_headquarters_location: "Munich",
+            node_type: "Company",
+            properties: {
+                id: 1,
+                created_at: "2025-05-14T11:05:07.793Z",
+                updated_at: "2025-05-14T11:05:07.793Z",
+                name: "BMW AG",
+                founded: 1916,
+                defunct: null,
+                headquarters_location: "Munich",
+                legal_headquarters_location: "Munich",
+            }
         })
 })

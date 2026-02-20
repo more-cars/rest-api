@@ -8,11 +8,11 @@ test('Trying to create the same ›took-place-at-race-track‹ relationship agai
     const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
     const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
 
-    await expect(RacingEvent.createTookPlaceAtRaceTrackRelationship(racingEvent.id, raceTrack.id))
+    await expect(RacingEvent.createTookPlaceAtRaceTrackRelationship(racingEvent.properties.id, raceTrack.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(RacingEvent.createTookPlaceAtRaceTrackRelationship(racingEvent.id, raceTrack.id))
+    await expect(RacingEvent.createTookPlaceAtRaceTrackRelationship(racingEvent.properties.id, raceTrack.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })

@@ -12,7 +12,7 @@ describe('Deleting a ›belongs-to-company‹ relationship', () => {
     test('BRAND node does not exist', async () => {
         const brand = await seedNode(ControllerNodeType.BRAND)
 
-        await expect(Brand.deleteBelongsToCompanyRelationship(brand.id, -43))
+        await expect(Brand.deleteBelongsToCompanyRelationship(brand.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›belongs-to-company‹ relationship', () => {
     test('COMPANY node does not exist', async () => {
         const company = await seedNode(ControllerNodeType.COMPANY)
 
-        await expect(Brand.deleteBelongsToCompanyRelationship(-42, company.id))
+        await expect(Brand.deleteBelongsToCompanyRelationship(-42, company.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›belongs-to-company‹ relationship', () => {
         const brand = await seedNode(ControllerNodeType.BRAND)
         const company = await seedNode(ControllerNodeType.COMPANY)
 
-        await expect(Brand.deleteBelongsToCompanyRelationship(brand.id, company.id))
+        await expect(Brand.deleteBelongsToCompanyRelationship(brand.properties.id, company.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

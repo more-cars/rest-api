@@ -13,11 +13,11 @@ test('A CAR MODEL VARIANT cannot have multiple ›is-variant-of‹ relationships
     const carModels = await seedNodes(ControllerNodeType.CAR_MODEL, carModelsAmount)
 
     for (const carModel of carModels) {
-        await CarModelVariant.createIsVariantOfRelationship(carModelVariant.id, carModel.id)
+        await CarModelVariant.createIsVariantOfRelationship(carModelVariant.properties.id, carModel.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        carModelVariant.id,
+        carModelVariant.properties.id,
         RelationshipType.CarModelVariantIsVariantOf,
         DbNodeType.CarModel,
     )

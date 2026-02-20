@@ -21,48 +21,48 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
     }
     const createdNode = await createNode(data)
 
-    expect(createdNode.external_id)
+    expect(createdNode.properties.external_id)
         .toEqual("Ö_3'A123456789")
 
-    expect(createdNode.image_provider)
+    expect(createdNode.properties.image_provider)
         .toEqual("flickr's")
 
-    expect(createdNode.name)
+    expect(createdNode.properties.name)
         .toEqual("'''")
 
-    expect(createdNode.description)
+    expect(createdNode.properties.description)
         .toEqual("$A'1")
 
-    expect(createdNode.creator)
+    expect(createdNode.properties.creator)
         .toEqual("B''2$")
 
-    expect(createdNode.license)
+    expect(createdNode.properties.license)
         .toEqual("C'''3$\"")
 
-    expect(createdNode.tags)
+    expect(createdNode.properties.tags)
         .toEqual("D''''4")
 
-    expect(createdNode.source)
+    expect(createdNode.properties.source)
         .toEqual("E'''''5")
 
-    expect(createdNode.image_url_original)
+    expect(createdNode.properties.image_url_original)
         .toEqual("abcd'ef")
 
-    expect(createdNode.image_url_xxl)
+    expect(createdNode.properties.image_url_xxl)
         .toEqual("ab'cd'ef")
 
-    expect(createdNode.image_url_xl)
+    expect(createdNode.properties.image_url_xl)
         .toEqual("ab'cd''ef")
 
-    expect(createdNode.image_url_l)
+    expect(createdNode.properties.image_url_l)
         .toEqual("ab''cd'ef")
 
-    expect(createdNode.image_url_m)
+    expect(createdNode.properties.image_url_m)
         .toEqual("ab'cd'ef")
 
-    expect(createdNode.image_url_s)
+    expect(createdNode.properties.image_url_s)
         .toEqual("ab''cd'ef")
 
-    expect(createdNode.image_url_xs)
+    expect(createdNode.properties.image_url_xs)
         .toEqual("ab'''cd'ef")
 })

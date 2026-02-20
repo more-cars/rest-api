@@ -13,10 +13,10 @@ test('A COMPANY cannot have multiple ›has-prime-image‹ relationships', async
     const images = await seedNodes(ControllerNodeType.IMAGE, imagesAmount)
 
     for (const image of images) {
-        await Company.createHasPrimeImageRelationship(company.id, image.id)
+        await Company.createHasPrimeImageRelationship(company.properties.id, image.properties.id)
     }
 
-    const relationships = await getRelationshipCollection(company.id, RelationshipType.CompanyHasPrimeImage, DbNodeType.Image)
+    const relationships = await getRelationshipCollection(company.properties.id, RelationshipType.CompanyHasPrimeImage, DbNodeType.Image)
 
     expect(relationships.length)
         .toBe(1)

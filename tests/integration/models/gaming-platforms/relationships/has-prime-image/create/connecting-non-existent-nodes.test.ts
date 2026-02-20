@@ -8,11 +8,11 @@ test('Trying to create a ›has-prime-image‹ relationship with nodes that do n
     const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
     const image = await seedNode(ControllerNodeType.IMAGE)
 
-    await expect(GamingPlatform.createHasPrimeImageRelationship(-42, image.id))
+    await expect(GamingPlatform.createHasPrimeImageRelationship(-42, image.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(GamingPlatform.createHasPrimeImageRelationship(gamingPlatform.id, -43))
+    await expect(GamingPlatform.createHasPrimeImageRelationship(gamingPlatform.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

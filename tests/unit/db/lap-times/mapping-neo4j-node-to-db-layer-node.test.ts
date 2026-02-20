@@ -21,11 +21,14 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
 
     expect(mappedNode)
         .toStrictEqual({
-            id: 1,
-            created_at: "2025-05-14T11:05:07.793Z",
-            updated_at: "2025-05-14T11:05:07.793Z",
-            time: "PT1M33.294S",
-            driver_name: "Klaus Ludwig",
-            date: "1996-08-03",
+            node_type: "LapTime",
+            properties: {
+                id: 1,
+                created_at: "2025-05-14T11:05:07.793Z",
+                updated_at: "2025-05-14T11:05:07.793Z",
+                time: "PT1M33.294S",
+                driver_name: "Klaus Ludwig",
+                date: "1996-08-03",
+            }
         })
 })

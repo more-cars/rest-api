@@ -8,11 +8,11 @@ test('Trying to create a ›has-prime-image‹ relationship with nodes that do n
     const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
     const image = await seedNode(ControllerNodeType.IMAGE)
 
-    await expect(TrackLayout.createHasPrimeImageRelationship(-42, image.id))
+    await expect(TrackLayout.createHasPrimeImageRelationship(-42, image.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(TrackLayout.createHasPrimeImageRelationship(trackLayout.id, -43))
+    await expect(TrackLayout.createHasPrimeImageRelationship(trackLayout.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

@@ -12,12 +12,12 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
 
     const createdNode = await createNode(data)
 
-    expect(createdNode.name)
+    expect(createdNode.properties.name)
         .toEqual("'BMW AG''")
 
-    expect(createdNode.headquarters_location)
+    expect(createdNode.properties.headquarters_location)
         .toEqual("'Munich''")
 
-    expect(createdNode.legal_headquarters_location)
+    expect(createdNode.properties.legal_headquarters_location)
         .toEqual("'Munich''")
 })

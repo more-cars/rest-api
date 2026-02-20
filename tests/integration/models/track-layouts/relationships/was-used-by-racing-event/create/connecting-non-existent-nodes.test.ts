@@ -8,11 +8,11 @@ test('Trying to create a ›was-used-by-racing-event‹ relationship with nodes 
     const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
     const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
-    await expect(TrackLayout.createWasUsedByRacingEventRelationship(-42, racingEvent.id))
+    await expect(TrackLayout.createWasUsedByRacingEventRelationship(-42, racingEvent.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(TrackLayout.createWasUsedByRacingEventRelationship(trackLayout.id, -43))
+    await expect(TrackLayout.createWasUsedByRacingEventRelationship(trackLayout.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

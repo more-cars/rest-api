@@ -10,15 +10,15 @@ describe('Creating a ›belongs-to-node‹ relationship', () => {
         const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
 
         const createdRelationship = await createRelationship(
-            image.id,
-            carModel.id,
+            image.properties.id,
+            carModel.properties.id,
             RelationshipType.ImageBelongsToNode,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node.properties.id', image.id)
+            .toHaveProperty('start_node.properties.id', image.properties.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node.properties.id', carModel.id)
+            .toHaveProperty('end_node.properties.id', carModel.properties.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
@@ -33,7 +33,7 @@ describe('Creating a ›belongs-to-node‹ relationship', () => {
         const image = await seedNode(ControllerNodeType.IMAGE)
 
         const createdRelationship = await createRelationship(
-            image.id,
+            image.properties.id,
             -42,
             RelationshipType.CompanyHasImage,
         )

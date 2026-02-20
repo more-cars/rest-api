@@ -12,7 +12,7 @@ describe('Deleting a ›achieved-with-car-model-variant‹ relationship', () => 
     test('SESSION RESULT node does not exist', async () => {
         const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
-        await expect(SessionResult.deleteAchievedWithCarModelVariantRelationship(sessionResult.id, -43))
+        await expect(SessionResult.deleteAchievedWithCarModelVariantRelationship(sessionResult.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›achieved-with-car-model-variant‹ relationship', () => 
     test('CAR MODEL VARIANT node does not exist', async () => {
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
-        await expect(SessionResult.deleteAchievedWithCarModelVariantRelationship(-42, carModelVariant.id))
+        await expect(SessionResult.deleteAchievedWithCarModelVariantRelationship(-42, carModelVariant.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›achieved-with-car-model-variant‹ relationship', () => 
         const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
-        await expect(SessionResult.deleteAchievedWithCarModelVariantRelationship(sessionResult.id, carModelVariant.id))
+        await expect(SessionResult.deleteAchievedWithCarModelVariantRelationship(sessionResult.properties.id, carModelVariant.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

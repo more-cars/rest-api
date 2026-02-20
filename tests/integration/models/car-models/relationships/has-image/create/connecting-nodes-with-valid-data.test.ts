@@ -8,12 +8,12 @@ test('Creating a ›has-image‹ relationship with valid data', async () => {
     const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
     const image = await seedNode(ControllerNodeType.IMAGE)
 
-    const createdRelationship = await CarModel.createHasImageRelationship(carModel.id, image.id)
+    const createdRelationship = await CarModel.createHasImageRelationship(carModel.properties.id, image.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(carModel.id)
+        .toEqual(carModel.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(image.id)
+        .toEqual(image.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

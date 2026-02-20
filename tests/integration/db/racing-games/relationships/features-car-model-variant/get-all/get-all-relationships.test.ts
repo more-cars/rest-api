@@ -9,11 +9,11 @@ import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 describe('Requesting all ›features-car-model-variant‹ relationships', () => {
     test('node and relationships exist', async () => {
         const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
-        await seedRelationshipForStartNode(racingGame.id, ControllerNodeType.CAR_MODEL_VARIANT, RelationshipType.RacingGameFeaturesCarModelVariant)
-        await seedRelationshipForStartNode(racingGame.id, ControllerNodeType.CAR_MODEL_VARIANT, RelationshipType.RacingGameFeaturesCarModelVariant)
+        await seedRelationshipForStartNode(racingGame.properties.id, ControllerNodeType.CAR_MODEL_VARIANT, RelationshipType.RacingGameFeaturesCarModelVariant)
+        await seedRelationshipForStartNode(racingGame.properties.id, ControllerNodeType.CAR_MODEL_VARIANT, RelationshipType.RacingGameFeaturesCarModelVariant)
 
         const relationships = await getRelationshipCollection(
-            racingGame.id,
+            racingGame.properties.id,
             RelationshipType.RacingGameFeaturesCarModelVariant,
             DbNodeType.CarModelVariant,
         )
@@ -26,7 +26,7 @@ describe('Requesting all ›features-car-model-variant‹ relationships', () => 
         const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
         const relationships = await getRelationshipCollection(
-            racingGame.id,
+            racingGame.properties.id,
             RelationshipType.RacingGameFeaturesCarModelVariant,
             DbNodeType.CarModelVariant,
         )

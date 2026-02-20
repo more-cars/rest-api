@@ -29,7 +29,7 @@ describe('Requesting a ›belongs-to-brand‹ relationship', () => {
     test('node exists, but not the relationship', async () => {
         const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
 
-        await expect(CarModel.getBelongsToBrandRelationship(carModel.id))
+        await expect(CarModel.getBelongsToBrandRelationship(carModel.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

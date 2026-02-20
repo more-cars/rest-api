@@ -9,12 +9,12 @@ import {RelType} from "../../../../../../../src/models/relationships/types/RelTy
 
 test('Get all "Image belongs to Node type" relationships for specific image', async () => {
     const imageNode = await seedNode(ControllerNodeType.IMAGE)
-    await seedRelationshipForStartNode(imageNode.id, ControllerNodeType.CAR_MODEL, RelationshipType.ImageBelongsToNode)
-    await seedRelationshipForStartNode(imageNode.id, ControllerNodeType.CAR_MODEL, RelationshipType.ImageBelongsToNode)
-    await seedRelationshipForStartNode(imageNode.id, ControllerNodeType.CAR_MODEL, RelationshipType.ImageBelongsToNode)
-    await seedRelationshipForStartNode(imageNode.id, ControllerNodeType.CAR_MODEL, RelationshipType.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.properties.id, ControllerNodeType.CAR_MODEL, RelationshipType.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.properties.id, ControllerNodeType.CAR_MODEL, RelationshipType.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.properties.id, ControllerNodeType.CAR_MODEL, RelationshipType.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.properties.id, ControllerNodeType.CAR_MODEL, RelationshipType.ImageBelongsToNode)
 
-    const fetchedRelationships = await Image.getBelongsToNodeTypeRelationships(imageNode.id)
+    const fetchedRelationships = await Image.getBelongsToNodeTypeRelationships(imageNode.properties.id)
 
     if (!fetchedRelationships) {
         assert.fail('Could not fetch relationships')
@@ -29,7 +29,7 @@ test('Get all "Image belongs to Node type" relationships for specific image', as
 
     fetchedRelationships.car_models.forEach(relationship => {
         expect(relationship.origin.properties.id)
-            .toBe(imageNode.id)
+            .toBe(imageNode.properties.id)
         expect(relationship.type)
             .toBe(RelType.ImageBelongsToNode)
     })
@@ -37,7 +37,7 @@ test('Get all "Image belongs to Node type" relationships for specific image', as
 
 test('Expecting empty lists when there are no relationships', async () => {
     const imageNode = await seedNode(ControllerNodeType.IMAGE)
-    const fetchedRelationships = await Image.getBelongsToNodeTypeRelationships(imageNode.id)
+    const fetchedRelationships = await Image.getBelongsToNodeTypeRelationships(imageNode.properties.id)
 
     if (!fetchedRelationships) {
         assert.fail('Could not fetch relationships')

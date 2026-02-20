@@ -9,10 +9,10 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 describe('Requesting all ›is-featured-in-racing-game‹ relationships', () => {
     test('node and relationships exist', async () => {
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
-        await seedRelationshipForStartNode(carModelVariant.id, ControllerNodeType.RACING_GAME, RelationshipType.CarModelVariantIsFeaturedInRacingGame)
-        await seedRelationshipForStartNode(carModelVariant.id, ControllerNodeType.RACING_GAME, RelationshipType.CarModelVariantIsFeaturedInRacingGame)
+        await seedRelationshipForStartNode(carModelVariant.properties.id, ControllerNodeType.RACING_GAME, RelationshipType.CarModelVariantIsFeaturedInRacingGame)
+        await seedRelationshipForStartNode(carModelVariant.properties.id, ControllerNodeType.RACING_GAME, RelationshipType.CarModelVariantIsFeaturedInRacingGame)
 
-        const relationships = await CarModelVariant.getAllIsFeaturedInRacingGameRelationships(carModelVariant.id)
+        const relationships = await CarModelVariant.getAllIsFeaturedInRacingGameRelationships(carModelVariant.properties.id)
 
         expect(relationships.length)
             .toBe(2)
@@ -21,7 +21,7 @@ describe('Requesting all ›is-featured-in-racing-game‹ relationships', () => 
     test('node exists, but no relationships', async () => {
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
-        const relationships = await CarModelVariant.getAllIsFeaturedInRacingGameRelationships(carModelVariant.id)
+        const relationships = await CarModelVariant.getAllIsFeaturedInRacingGameRelationships(carModelVariant.properties.id)
 
         expect(relationships.length)
             .toBe(0)

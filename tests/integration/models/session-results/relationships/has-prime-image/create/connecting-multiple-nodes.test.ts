@@ -13,11 +13,11 @@ test('A SESSION RESULT cannot have multiple ›has-prime-image‹ relationships'
     const images = await seedNodes(ControllerNodeType.IMAGE, imagesAmount)
 
     for (const image of images) {
-        await SessionResult.createHasPrimeImageRelationship(sessionResult.id, image.id)
+        await SessionResult.createHasPrimeImageRelationship(sessionResult.properties.id, image.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        sessionResult.id,
+        sessionResult.properties.id,
         RelationshipType.SessionResultHasPrimeImage,
         DbNodeType.Image,
     )

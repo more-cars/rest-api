@@ -15,7 +15,7 @@ test('Querying a CAR MODEL VARIANT that does not exist should return "false"', a
 
 test('Querying an existing CAR MODEL VARIANT should return a db node with correct schema', async () => {
     const createdNode = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
-    const carModelVariantNode = await getNodeById(createdNode.id)
+    const carModelVariantNode = await getNodeById(createdNode.properties.id)
 
     expect(validateJson(carModelVariantNode, CarModelVariantSchema))
         .toBeTruthy()

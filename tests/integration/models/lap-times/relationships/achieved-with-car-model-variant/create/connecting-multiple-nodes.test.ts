@@ -13,11 +13,11 @@ test('A LAP TIME cannot have multiple ›achieved-with-car-model-variant‹ rela
     const carModelVariants = await seedNodes(ControllerNodeType.CAR_MODEL_VARIANT, carModelVariantsAmount)
 
     for (const carModelVariant of carModelVariants) {
-        await LapTime.createAchievedWithCarModelVariantRelationship(lapTime.id, carModelVariant.id)
+        await LapTime.createAchievedWithCarModelVariantRelationship(lapTime.properties.id, carModelVariant.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        lapTime.id,
+        lapTime.properties.id,
         RelationshipType.LapTimeAchievedWithCarModelVariant,
         DbNodeType.CarModelVariant,
     )

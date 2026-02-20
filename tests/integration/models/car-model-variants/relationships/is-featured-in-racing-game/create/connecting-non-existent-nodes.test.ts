@@ -8,11 +8,11 @@ test('Trying to create a ›is-featured-in-racing-game‹ relationship with node
     const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
     const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
-    await expect(CarModelVariant.createIsFeaturedInRacingGameRelationship(-42, racingGame.id))
+    await expect(CarModelVariant.createIsFeaturedInRacingGameRelationship(-42, racingGame.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(CarModelVariant.createIsFeaturedInRacingGameRelationship(carModelVariant.id, -43))
+    await expect(CarModelVariant.createIsFeaturedInRacingGameRelationship(carModelVariant.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

@@ -10,7 +10,7 @@ describe('Creating a m:n relationship', () => {
     test('expecting the destination node to NOT lose its already existing relationship', async () => {
         const foreignRelationship = await seedRelationship(ControllerNodeType.COMPANY, ControllerNodeType.IMAGE, RelationshipType.CompanyHasImage)
         const destinationId = foreignRelationship.end_node.properties.id
-        const originId = (await seedNode(ControllerNodeType.COMPANY)).id
+        const originId = (await seedNode(ControllerNodeType.COMPANY)).properties.id
 
         const newRelationship = await Company.createHasImageRelationship(originId, destinationId)
         expect(newRelationship.id)

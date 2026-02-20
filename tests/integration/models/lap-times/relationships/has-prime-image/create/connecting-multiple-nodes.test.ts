@@ -13,11 +13,11 @@ test('A LAP TIME cannot have multiple ›has-prime-image‹ relationships', asyn
     const images = await seedNodes(ControllerNodeType.IMAGE, imagesAmount)
 
     for (const image of images) {
-        await LapTime.createHasPrimeImageRelationship(lapTime.id, image.id)
+        await LapTime.createHasPrimeImageRelationship(lapTime.properties.id, image.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        lapTime.id,
+        lapTime.properties.id,
         RelationshipType.LapTimeHasPrimeImage,
         DbNodeType.Image,
     )

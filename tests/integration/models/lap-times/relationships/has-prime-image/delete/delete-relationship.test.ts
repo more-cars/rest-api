@@ -12,7 +12,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     test('LAP TIME node does not exist', async () => {
         const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
-        await expect(LapTime.deleteHasPrimeImageRelationship(lapTime.id, -43))
+        await expect(LapTime.deleteHasPrimeImageRelationship(lapTime.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     test('IMAGE node does not exist', async () => {
         const image = await seedNode(ControllerNodeType.IMAGE)
 
-        await expect(LapTime.deleteHasPrimeImageRelationship(-42, image.id))
+        await expect(LapTime.deleteHasPrimeImageRelationship(-42, image.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
         const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
         const image = await seedNode(ControllerNodeType.IMAGE)
 
-        await expect(LapTime.deleteHasPrimeImageRelationship(lapTime.id, image.id))
+        await expect(LapTime.deleteHasPrimeImageRelationship(lapTime.properties.id, image.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

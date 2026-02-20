@@ -8,12 +8,12 @@ test('Creating a ›has-lap-time‹ relationship with valid data', async () => {
     const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
     const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
-    const createdRelationship = await SessionResult.createHasLapTimeRelationship(sessionResult.id, lapTime.id)
+    const createdRelationship = await SessionResult.createHasLapTimeRelationship(sessionResult.properties.id, lapTime.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(sessionResult.id)
+        .toEqual(sessionResult.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(lapTime.id)
+        .toEqual(lapTime.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

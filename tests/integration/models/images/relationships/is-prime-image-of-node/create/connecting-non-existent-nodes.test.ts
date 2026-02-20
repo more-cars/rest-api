@@ -8,11 +8,11 @@ test('Trying to create a ›is-prime-image-of-node‹ relationship with nodes th
     const image = await seedNode(ControllerNodeType.IMAGE)
     const node = await seedNode(ControllerNodeType.COMPANY)
 
-    await expect(Image.createIsPrimeImageOfNodeRelationship(-42, node.id))
+    await expect(Image.createIsPrimeImageOfNodeRelationship(-42, node.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(Image.createIsPrimeImageOfNodeRelationship(image.id, -43))
+    await expect(Image.createIsPrimeImageOfNodeRelationship(image.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

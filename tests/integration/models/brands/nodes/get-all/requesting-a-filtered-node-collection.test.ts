@@ -23,7 +23,7 @@ describe('A filtered "get all BRAND nodes" request returns only the matching nod
 
     test('when there exist BRAND nodes', async () => {
         await deleteAllNodesOfType(ControllerNodeType.BRAND)
-        const nodeA = await seedNode(ControllerNodeType.BRAND, {name: 'A Node'}) as BrandNode
+        const nodeA = await seedNode(ControllerNodeType.BRAND, {name: 'A Node'}) as unknown as BrandNode
         await seedNode(ControllerNodeType.BRAND, {name: 'B Node'})
         await seedNode(ControllerNodeType.BRAND, {name: 'C Node'})
 

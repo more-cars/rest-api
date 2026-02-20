@@ -29,7 +29,7 @@ describe('Requesting a ›used-the-track-layout‹ relationship', () => {
     test('node exists, but not the relationship', async () => {
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
-        await expect(RacingEvent.getUsedTheTrackLayoutRelationship(racingEvent.id))
+        await expect(RacingEvent.getUsedTheTrackLayoutRelationship(racingEvent.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

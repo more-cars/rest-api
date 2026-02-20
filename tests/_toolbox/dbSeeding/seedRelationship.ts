@@ -11,8 +11,8 @@ export async function seedRelationship(
     const startNode = await seedNode(startNodeType)
     const endNode = await seedNode(endNodeType)
     const relationship = await createRelationship(
-        startNode.id,
-        endNode.id,
+        startNode.properties.id,
+        endNode.properties.id,
         relationshipType,
     )
 

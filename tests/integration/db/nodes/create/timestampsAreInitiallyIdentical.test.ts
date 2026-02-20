@@ -10,14 +10,14 @@ import FakeImageFull from "../../../../_toolbox/fixtures/nodes/FakeImageFull"
 
 test('Timestamps are identical when creating a node', async () => {
     const createdBrand = await createBrandNode(FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate)
-    expect(createdBrand.created_at)
-        .toEqual(createdBrand.updated_at)
+    expect(createdBrand.properties.created_at)
+        .toEqual(createdBrand.properties.updated_at)
 
     const createdCarModel = await createCarModelNode(FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate)
-    expect(createdCarModel.created_at)
-        .toEqual(createdCarModel.updated_at)
+    expect(createdCarModel.properties.created_at)
+        .toEqual(createdCarModel.properties.updated_at)
 
     const createdImage = await createImageNode(FakeImageFull)
-    expect(createdImage.created_at)
-        .toEqual(createdImage.updated_at)
+    expect(createdImage.properties.created_at)
+        .toEqual(createdImage.properties.updated_at)
 })

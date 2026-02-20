@@ -10,15 +10,15 @@ describe('Creating a ›has-prime-image‹ relationship', () => {
         const image = await seedNode(ControllerNodeType.IMAGE)
 
         const createdRelationship = await createRelationship(
-            trackLayout.id,
-            image.id,
+            trackLayout.properties.id,
+            image.properties.id,
             RelationshipType.TrackLayoutHasPrimeImage,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node.properties.id', trackLayout.id)
+            .toHaveProperty('start_node.properties.id', trackLayout.properties.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node.properties.id', image.id)
+            .toHaveProperty('end_node.properties.id', image.properties.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
@@ -33,7 +33,7 @@ describe('Creating a ›has-prime-image‹ relationship', () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
         const createdRelationship = await createRelationship(
-            trackLayout.id,
+            trackLayout.properties.id,
             -42,
             RelationshipType.TrackLayoutHasPrimeImage,
         )

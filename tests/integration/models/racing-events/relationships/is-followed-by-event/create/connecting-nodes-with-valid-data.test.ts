@@ -8,12 +8,12 @@ test('Creating a ›is-followed-by-event‹ relationship with valid data', async
     const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
     const partner = await seedNode(ControllerNodeType.RACING_EVENT)
 
-    const createdRelationship = await RacingEvent.createIsFollowedByEventRelationship(racingEvent.id, partner.id)
+    const createdRelationship = await RacingEvent.createIsFollowedByEventRelationship(racingEvent.properties.id, partner.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(racingEvent.id)
+        .toEqual(racingEvent.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(partner.id)
+        .toEqual(partner.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

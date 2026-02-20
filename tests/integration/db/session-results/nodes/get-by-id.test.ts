@@ -15,7 +15,7 @@ test('Querying a SESSION RESULT that does not exist should return "false"', asyn
 
 test('Querying an existing SESSION RESULT should return a db node with correct schema', async () => {
     const createdNode = await seedNode(ControllerNodeType.SESSION_RESULT)
-    const sessionResultNode = await getNodeById(createdNode.id)
+    const sessionResultNode = await getNodeById(createdNode.properties.id)
 
     expect(validateJson(sessionResultNode, SessionResultSchema))
         .toBeTruthy()

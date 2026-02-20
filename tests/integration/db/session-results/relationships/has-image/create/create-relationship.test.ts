@@ -10,15 +10,15 @@ describe('Creating a ›has-image‹ relationship', () => {
         const image = await seedNode(ControllerNodeType.IMAGE)
 
         const createdRelationship = await createRelationship(
-            sessionResult.id,
-            image.id,
+            sessionResult.properties.id,
+            image.properties.id,
             RelationshipType.SessionResultHasImage,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node.properties.id', sessionResult.id)
+            .toHaveProperty('start_node.properties.id', sessionResult.properties.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node.properties.id', image.id)
+            .toHaveProperty('end_node.properties.id', image.properties.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
@@ -33,7 +33,7 @@ describe('Creating a ›has-image‹ relationship', () => {
         const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
         const createdRelationship = await createRelationship(
-            sessionResult.id,
+            sessionResult.properties.id,
             -42,
             RelationshipType.SessionResultHasImage,
         )

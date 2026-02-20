@@ -12,7 +12,7 @@ describe('Deleting a ›has-variant‹ relationship', () => {
     test('CAR MODEL node does not exist', async () => {
         const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
 
-        await expect(CarModel.deleteHasVariantRelationship(carModel.id, -43))
+        await expect(CarModel.deleteHasVariantRelationship(carModel.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›has-variant‹ relationship', () => {
     test('CAR MODEL VARIANT node does not exist', async () => {
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
-        await expect(CarModel.deleteHasVariantRelationship(-42, carModelVariant.id))
+        await expect(CarModel.deleteHasVariantRelationship(-42, carModelVariant.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›has-variant‹ relationship', () => {
         const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
-        await expect(CarModel.deleteHasVariantRelationship(carModel.id, carModelVariant.id))
+        await expect(CarModel.deleteHasVariantRelationship(carModel.properties.id, carModelVariant.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

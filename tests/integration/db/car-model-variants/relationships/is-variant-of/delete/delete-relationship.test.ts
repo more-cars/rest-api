@@ -40,8 +40,8 @@ describe('Trying to delete a ›is-variant-of‹ relationship', () => {
         const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
 
         const relationship = await deleteSpecificRelationship(
-            carModelVariant.id,
-            carModel.id,
+            carModelVariant.properties.id,
+            carModel.properties.id,
             RelationshipType.CarModelVariantIsVariantOf,
         )
 

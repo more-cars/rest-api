@@ -12,7 +12,7 @@ describe('Deleting a ›belongs-to-racing-series‹ relationship', () => {
     test('RACING EVENT node does not exist', async () => {
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
-        await expect(RacingEvent.deleteBelongsToRacingSeriesRelationship(racingEvent.id, -43))
+        await expect(RacingEvent.deleteBelongsToRacingSeriesRelationship(racingEvent.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›belongs-to-racing-series‹ relationship', () => {
     test('RACING SERIES node does not exist', async () => {
         const racingSeries = await seedNode(ControllerNodeType.RACING_SERIES)
 
-        await expect(RacingEvent.deleteBelongsToRacingSeriesRelationship(-42, racingSeries.id))
+        await expect(RacingEvent.deleteBelongsToRacingSeriesRelationship(-42, racingSeries.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›belongs-to-racing-series‹ relationship', () => {
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
         const racingSeries = await seedNode(ControllerNodeType.RACING_SERIES)
 
-        await expect(RacingEvent.deleteBelongsToRacingSeriesRelationship(racingEvent.id, racingSeries.id))
+        await expect(RacingEvent.deleteBelongsToRacingSeriesRelationship(racingEvent.properties.id, racingSeries.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

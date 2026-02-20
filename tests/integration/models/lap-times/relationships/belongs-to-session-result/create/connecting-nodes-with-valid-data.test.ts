@@ -8,12 +8,12 @@ test('Creating a ›belongs-to-session-result‹ relationship with valid data', 
     const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
     const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
-    const createdRelationship = await LapTime.createBelongsToSessionResultRelationship(lapTime.id, sessionResult.id)
+    const createdRelationship = await LapTime.createBelongsToSessionResultRelationship(lapTime.properties.id, sessionResult.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(lapTime.id)
+        .toEqual(lapTime.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(sessionResult.id)
+        .toEqual(sessionResult.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

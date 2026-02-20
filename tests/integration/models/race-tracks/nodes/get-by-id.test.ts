@@ -13,8 +13,8 @@ test('Fetching a RACE TRACK that does not exist should return "false"', async ()
 
 test('When the RACE TRACK exists it should be returned', async () => {
     const expectedRaceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
-    const actualRaceTrack = await RaceTrack.findById(expectedRaceTrack.id)
+    const actualRaceTrack = await RaceTrack.findById(expectedRaceTrack.properties.id)
 
     expect(actualRaceTrack)
-        .toEqual(expectedRaceTrack)
+        .toEqual(expectedRaceTrack.properties)
 })

@@ -8,11 +8,11 @@ test('Trying to create the same ›has-image‹ relationship again', async () =>
     const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
     const image = await seedNode(ControllerNodeType.IMAGE)
 
-    await expect(RaceTrack.createHasImageRelationship(raceTrack.id, image.id))
+    await expect(RaceTrack.createHasImageRelationship(raceTrack.properties.id, image.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(RaceTrack.createHasImageRelationship(raceTrack.id, image.id))
+    await expect(RaceTrack.createHasImageRelationship(raceTrack.properties.id, image.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })

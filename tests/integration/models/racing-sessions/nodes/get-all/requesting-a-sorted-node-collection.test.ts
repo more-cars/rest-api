@@ -18,14 +18,17 @@ describe('A sorted "get all RACING SESSION nodes" request returns the nodes in c
 
     test('when there exist RACING SESSION nodes', async () => {
         await deleteAllNodesOfType(ControllerNodeType.RACING_SESSION)
-        const nodeA = await seedNode(ControllerNodeType.RACING_SESSION, {name: 'A Node'}) as RacingSessionNode
-        const nodeB = await seedNode(ControllerNodeType.RACING_SESSION, {name: 'B Node'}) as RacingSessionNode
-        const nodeC = await seedNode(ControllerNodeType.RACING_SESSION, {name: 'C Node'}) as RacingSessionNode
+        const nodeA = await seedNode(ControllerNodeType.RACING_SESSION, {
+            name: 'A Node'}) as unknown as RacingSessionNode
+            const nodeB = await seedNode(ControllerNodeType.RACING_SESSION, {
+                name: 'B Node'}) as unknown as RacingSessionNode
+                const nodeC = await seedNode(ControllerNodeType.RACING_SESSION, {
+                    name: 'C Node'}) as unknown as RacingSessionNode
 
-        const ascNodes = await RacingSession.findAll({sortByProperty: 'name', sortDirection: 'asc'})
-        expect(ascNodes.length).toEqual(3)
-        expect(ascNodes[0].name === nodeA.name)
-        expect(ascNodes[1].name === nodeB.name)
+                    const ascNodes = await RacingSession.findAll({sortByProperty: 'name', sortDirection: 'asc'})
+                    expect(ascNodes.length).toEqual(3)
+                expect(ascNodes[0].name === nodeA.name)
+            expect(ascNodes[1].name === nodeB.name)
         expect(ascNodes[2].name === nodeC.name)
 
         const descNodes = await RacingSession.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -34,4 +37,4 @@ describe('A sorted "get all RACING SESSION nodes" request returns the nodes in c
         expect(descNodes[1].name === nodeB.name)
         expect(descNodes[2].name === nodeA.name)
     })
-})
+    })

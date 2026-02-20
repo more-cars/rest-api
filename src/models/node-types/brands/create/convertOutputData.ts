@@ -3,14 +3,14 @@ import {BrandNode} from "../types/BrandNode"
 
 export function convertOutputData(data: BrandNodeInput): BrandNode {
     return {
-        id: data.id,
-        name: data.name,
-        full_name: data.full_name,
-        founded: data.founded,
-        defunct: data.defunct,
-        wmi: data.wmi,
-        hsn: data.hsn,
-        created_at: data.created_at,
-        updated_at: data.updated_at,
+        id: data.properties.id,
+        name: data.properties.name,
+        full_name: data.properties.full_name,
+        founded: data.properties.founded,
+        defunct: data.properties.defunct,
+        wmi: data.properties.wmi,
+        hsn: data.properties.hsn,
+        created_at: data.properties.created_at,
+        updated_at: data.properties.updated_at,
     } as BrandNode
 }

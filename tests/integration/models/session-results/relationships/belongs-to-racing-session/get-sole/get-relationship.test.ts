@@ -29,7 +29,7 @@ describe('Requesting a ›belongs-to-racing-session‹ relationship', () => {
     test('node exists, but not the relationship', async () => {
         const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
-        await expect(SessionResult.getBelongsToRacingSessionRelationship(sessionResult.id))
+        await expect(SessionResult.getBelongsToRacingSessionRelationship(sessionResult.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

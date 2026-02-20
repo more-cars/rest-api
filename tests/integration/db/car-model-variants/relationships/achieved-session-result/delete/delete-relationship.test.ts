@@ -40,8 +40,8 @@ describe('Trying to delete a ›achieved-session-result‹ relationship', () => 
         const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
         const relationship = await deleteSpecificRelationship(
-            carModelVariant.id,
-            sessionResult.id,
+            carModelVariant.properties.id,
+            sessionResult.properties.id,
             RelationshipType.CarModelVariantAchievedSessionResult,
         )
 

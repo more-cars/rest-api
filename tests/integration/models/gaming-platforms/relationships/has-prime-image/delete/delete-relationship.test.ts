@@ -12,7 +12,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     test('GAMING PLATFORM node does not exist', async () => {
         const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
 
-        await expect(GamingPlatform.deleteHasPrimeImageRelationship(gamingPlatform.id, -43))
+        await expect(GamingPlatform.deleteHasPrimeImageRelationship(gamingPlatform.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     test('IMAGE node does not exist', async () => {
         const image = await seedNode(ControllerNodeType.IMAGE)
 
-        await expect(GamingPlatform.deleteHasPrimeImageRelationship(-42, image.id))
+        await expect(GamingPlatform.deleteHasPrimeImageRelationship(-42, image.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
         const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
         const image = await seedNode(ControllerNodeType.IMAGE)
 
-        await expect(GamingPlatform.deleteHasPrimeImageRelationship(gamingPlatform.id, image.id))
+        await expect(GamingPlatform.deleteHasPrimeImageRelationship(gamingPlatform.properties.id, image.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

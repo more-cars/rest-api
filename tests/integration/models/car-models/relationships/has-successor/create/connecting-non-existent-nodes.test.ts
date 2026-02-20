@@ -8,11 +8,11 @@ test('Trying to create a ›has-successor‹ relationship with nodes that do not
     const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
     const partnerNode = await seedNode(ControllerNodeType.CAR_MODEL)
 
-    await expect(CarModel.createHasSuccessorRelationship(-42, partnerNode.id))
+    await expect(CarModel.createHasSuccessorRelationship(-42, partnerNode.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(CarModel.createHasSuccessorRelationship(carModel.id, -43))
+    await expect(CarModel.createHasSuccessorRelationship(carModel.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

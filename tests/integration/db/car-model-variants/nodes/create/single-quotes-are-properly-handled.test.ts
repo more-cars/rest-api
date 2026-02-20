@@ -43,51 +43,51 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
 
     const createdNode = await createNode(data)
 
-    expect(createdNode.name)
+    expect(createdNode.properties.name)
         .toEqual("'BMW M3''")
 
-    expect(createdNode.internal_code)
+    expect(createdNode.properties.internal_code)
         .toEqual("'E46''")
 
-    expect(createdNode.body_style)
+    expect(createdNode.properties.body_style)
         .toEqual("'coupe''")
 
-    expect(createdNode.weight_unit)
+    expect(createdNode.properties.weight_unit)
         .toEqual("'kg''")
 
-    expect(createdNode.max_power_unit)
+    expect(createdNode.properties.max_power_unit)
         .toEqual("'PS''")
 
-    expect(createdNode.max_torque_unit)
+    expect(createdNode.properties.max_torque_unit)
         .toEqual("'Nm''")
 
-    expect(createdNode.engine_configuration)
+    expect(createdNode.properties.engine_configuration)
         .toEqual("'inline''")
 
-    expect(createdNode.displacement_unit)
+    expect(createdNode.properties.displacement_unit)
         .toEqual("'ccm''")
 
-    expect(createdNode.air_induction)
+    expect(createdNode.properties.air_induction)
         .toEqual("'naturally aspirated''")
 
-    expect(createdNode.engine_type)
+    expect(createdNode.properties.engine_type)
         .toEqual("'otto''")
 
-    expect(createdNode.energy_source)
+    expect(createdNode.properties.energy_source)
         .toEqual("'petrol''")
 
-    expect(createdNode.consumption_unit)
+    expect(createdNode.properties.consumption_unit)
         .toEqual("'l''")
 
-    expect(createdNode.energy_capacity_unit)
+    expect(createdNode.properties.energy_capacity_unit)
         .toEqual("'l''")
 
-    expect(createdNode.transmission)
+    expect(createdNode.properties.transmission)
         .toEqual("'sequential''")
 
-    expect(createdNode.drivetrain)
+    expect(createdNode.properties.drivetrain)
         .toEqual("'rwd''")
 
-    expect(createdNode.top_speed_unit)
+    expect(createdNode.properties.top_speed_unit)
         .toEqual("'km/h''")
 })

@@ -8,11 +8,11 @@ test('Trying to create a ›belongs-to-race-track‹ relationship with nodes tha
     const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
     const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
 
-    await expect(TrackLayout.createBelongsToRaceTrackRelationship(-42, raceTrack.id))
+    await expect(TrackLayout.createBelongsToRaceTrackRelationship(-42, raceTrack.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(TrackLayout.createBelongsToRaceTrackRelationship(trackLayout.id, -43))
+    await expect(TrackLayout.createBelongsToRaceTrackRelationship(trackLayout.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

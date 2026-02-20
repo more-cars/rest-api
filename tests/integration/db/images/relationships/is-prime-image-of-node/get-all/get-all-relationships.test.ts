@@ -8,12 +8,12 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 describe('Requesting all ›is-prime-image-of-node‹ relationships', () => {
     test('node and relationships exist', async () => {
         const image = await seedNode(ControllerNodeType.IMAGE)
-        await seedRelationshipForStartNode(image.id, ControllerNodeType.COMPANY, RelationshipType.ImageIsPrimeImageOfNode)
-        await seedRelationshipForStartNode(image.id, ControllerNodeType.CAR_MODEL, RelationshipType.ImageIsPrimeImageOfNode)
-        await seedRelationshipForStartNode(image.id, ControllerNodeType.BRAND, RelationshipType.ImageIsPrimeImageOfNode)
+        await seedRelationshipForStartNode(image.properties.id, ControllerNodeType.COMPANY, RelationshipType.ImageIsPrimeImageOfNode)
+        await seedRelationshipForStartNode(image.properties.id, ControllerNodeType.CAR_MODEL, RelationshipType.ImageIsPrimeImageOfNode)
+        await seedRelationshipForStartNode(image.properties.id, ControllerNodeType.BRAND, RelationshipType.ImageIsPrimeImageOfNode)
 
         const relationships = await getRelationshipCollection(
-            image.id,
+            image.properties.id,
             RelationshipType.ImageIsPrimeImageOfNode,
         )
 
@@ -25,7 +25,7 @@ describe('Requesting all ›is-prime-image-of-node‹ relationships', () => {
         const image = await seedNode(ControllerNodeType.IMAGE)
 
         const relationships = await getRelationshipCollection(
-            image.id,
+            image.properties.id,
             RelationshipType.ImageIsPrimeImageOfNode,
         )
 

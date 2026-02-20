@@ -12,7 +12,7 @@ describe('Deleting a ›is-successor-of‹ relationship', () => {
     test('CAR MODEL node does not exist', async () => {
         const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
 
-        await expect(CarModel.deleteIsSuccessorOfRelationship(carModel.id, -43))
+        await expect(CarModel.deleteIsSuccessorOfRelationship(carModel.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›is-successor-of‹ relationship', () => {
     test('PARTNER node does not exist', async () => {
         const partner = await seedNode(ControllerNodeType.CAR_MODEL)
 
-        await expect(CarModel.deleteIsSuccessorOfRelationship(-42, partner.id))
+        await expect(CarModel.deleteIsSuccessorOfRelationship(-42, partner.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›is-successor-of‹ relationship', () => {
         const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
         const partner = await seedNode(ControllerNodeType.CAR_MODEL)
 
-        await expect(CarModel.deleteIsSuccessorOfRelationship(carModel.id, partner.id))
+        await expect(CarModel.deleteIsSuccessorOfRelationship(carModel.properties.id, partner.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

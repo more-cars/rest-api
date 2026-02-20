@@ -9,10 +9,10 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
-        await seedRelationshipForStartNode(trackLayout.id, ControllerNodeType.IMAGE, RelationshipType.TrackLayoutHasImage)
-        await seedRelationshipForStartNode(trackLayout.id, ControllerNodeType.IMAGE, RelationshipType.TrackLayoutHasImage)
+        await seedRelationshipForStartNode(trackLayout.properties.id, ControllerNodeType.IMAGE, RelationshipType.TrackLayoutHasImage)
+        await seedRelationshipForStartNode(trackLayout.properties.id, ControllerNodeType.IMAGE, RelationshipType.TrackLayoutHasImage)
 
-        const relationships = await TrackLayout.getAllHasImageRelationships(trackLayout.id)
+        const relationships = await TrackLayout.getAllHasImageRelationships(trackLayout.properties.id)
 
         expect(relationships.length)
             .toBe(2)
@@ -21,7 +21,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
     test('node exists, but no relationships', async () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-        const relationships = await TrackLayout.getAllHasImageRelationships(trackLayout.id)
+        const relationships = await TrackLayout.getAllHasImageRelationships(trackLayout.properties.id)
 
         expect(relationships.length)
             .toBe(0)

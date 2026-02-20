@@ -8,11 +8,11 @@ test('Trying to create the same ›was-used-by-racing-event‹ relationship agai
     const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
     const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
-    await expect(TrackLayout.createWasUsedByRacingEventRelationship(trackLayout.id, racingEvent.id))
+    await expect(TrackLayout.createWasUsedByRacingEventRelationship(trackLayout.properties.id, racingEvent.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(TrackLayout.createWasUsedByRacingEventRelationship(trackLayout.id, racingEvent.id))
+    await expect(TrackLayout.createWasUsedByRacingEventRelationship(trackLayout.properties.id, racingEvent.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })

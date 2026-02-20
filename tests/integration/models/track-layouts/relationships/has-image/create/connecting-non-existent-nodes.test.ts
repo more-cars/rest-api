@@ -8,11 +8,11 @@ test('Trying to create a ›has-image‹ relationship with nodes that do not exi
     const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
     const image = await seedNode(ControllerNodeType.IMAGE)
 
-    await expect(TrackLayout.createHasImageRelationship(-42, image.id))
+    await expect(TrackLayout.createHasImageRelationship(-42, image.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(TrackLayout.createHasImageRelationship(trackLayout.id, -43))
+    await expect(TrackLayout.createHasImageRelationship(trackLayout.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

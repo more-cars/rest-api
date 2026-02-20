@@ -13,7 +13,7 @@ describe('Deleting a TRACK LAYOUT', () => {
 
     test('that exists', async () => {
         const node = await seedNode(ControllerNodeType.TRACK_LAYOUT)
-        await expect(TrackLayout.delete(node.id))
+        await expect(TrackLayout.delete(node.properties.id))
             .resolves
             .not.toThrow(NodeNotFoundError)
     })

@@ -13,11 +13,11 @@ test('A LAP TIME cannot have multiple ›belongs-to-session-result‹ relationsh
     const sessionResults = await seedNodes(ControllerNodeType.SESSION_RESULT, sessionResultsAmount)
 
     for (const sessionResult of sessionResults) {
-        await LapTime.createBelongsToSessionResultRelationship(lapTime.id, sessionResult.id)
+        await LapTime.createBelongsToSessionResultRelationship(lapTime.properties.id, sessionResult.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        lapTime.id,
+        lapTime.properties.id,
         RelationshipType.LapTimeBelongsToSessionResult,
         DbNodeType.SessionResult,
     )

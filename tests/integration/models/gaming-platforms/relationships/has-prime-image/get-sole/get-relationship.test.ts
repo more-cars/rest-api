@@ -29,7 +29,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node exists, but not the relationship', async () => {
         const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
 
-        await expect(GamingPlatform.getHasPrimeImageRelationship(gamingPlatform.id))
+        await expect(GamingPlatform.getHasPrimeImageRelationship(gamingPlatform.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

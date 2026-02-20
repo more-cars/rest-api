@@ -29,7 +29,7 @@ describe('Requesting a ›is-successor-of‹ relationship', () => {
     test('node exists, but not the relationship', async () => {
         const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
 
-        await expect(CarModel.getIsSuccessorOfRelationship(carModel.id))
+        await expect(CarModel.getIsSuccessorOfRelationship(carModel.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

@@ -12,7 +12,7 @@ describe('Deleting a ›belongs-to-session-result‹ relationship', () => {
     test('LAP TIME node does not exist', async () => {
         const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
-        await expect(LapTime.deleteBelongsToSessionResultRelationship(lapTime.id, -43))
+        await expect(LapTime.deleteBelongsToSessionResultRelationship(lapTime.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›belongs-to-session-result‹ relationship', () => {
     test('SESSION RESULT node does not exist', async () => {
         const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
-        await expect(LapTime.deleteBelongsToSessionResultRelationship(-42, sessionResult.id))
+        await expect(LapTime.deleteBelongsToSessionResultRelationship(-42, sessionResult.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›belongs-to-session-result‹ relationship', () => {
         const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
         const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
-        await expect(LapTime.deleteBelongsToSessionResultRelationship(lapTime.id, sessionResult.id))
+        await expect(LapTime.deleteBelongsToSessionResultRelationship(lapTime.properties.id, sessionResult.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

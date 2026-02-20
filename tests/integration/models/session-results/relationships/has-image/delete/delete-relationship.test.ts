@@ -12,7 +12,7 @@ describe('Deleting a ›has-image‹ relationship', () => {
     test('SESSION RESULT node does not exist', async () => {
         const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
-        await expect(SessionResult.deleteHasImageRelationship(sessionResult.id, -43))
+        await expect(SessionResult.deleteHasImageRelationship(sessionResult.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›has-image‹ relationship', () => {
     test('IMAGE node does not exist', async () => {
         const image = await seedNode(ControllerNodeType.IMAGE)
 
-        await expect(SessionResult.deleteHasImageRelationship(-42, image.id))
+        await expect(SessionResult.deleteHasImageRelationship(-42, image.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›has-image‹ relationship', () => {
         const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
         const image = await seedNode(ControllerNodeType.IMAGE)
 
-        await expect(SessionResult.deleteHasImageRelationship(sessionResult.id, image.id))
+        await expect(SessionResult.deleteHasImageRelationship(sessionResult.properties.id, image.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

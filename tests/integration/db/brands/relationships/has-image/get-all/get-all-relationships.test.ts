@@ -9,11 +9,11 @@ import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
         const brand = await seedNode(ControllerNodeType.BRAND)
-        await seedRelationshipForStartNode(brand.id, ControllerNodeType.IMAGE, RelationshipType.BrandHasImage)
-        await seedRelationshipForStartNode(brand.id, ControllerNodeType.IMAGE, RelationshipType.BrandHasImage)
+        await seedRelationshipForStartNode(brand.properties.id, ControllerNodeType.IMAGE, RelationshipType.BrandHasImage)
+        await seedRelationshipForStartNode(brand.properties.id, ControllerNodeType.IMAGE, RelationshipType.BrandHasImage)
 
         const relationships = await getRelationshipCollection(
-            brand.id,
+            brand.properties.id,
             RelationshipType.BrandHasImage,
             DbNodeType.Image,
         )
@@ -26,7 +26,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
         const brand = await seedNode(ControllerNodeType.BRAND)
 
         const relationships = await getRelationshipCollection(
-            brand.id,
+            brand.properties.id,
             RelationshipType.BrandHasImage,
             DbNodeType.Image,
         )

@@ -3,13 +3,13 @@ import {CompanyNode} from "../types/CompanyNode"
 
 export function convertOutputData(data: CompanyNodeInput): CompanyNode {
     return {
-        id: data.id,
-        name: data.name,
-        founded: data.founded,
-        defunct: data.defunct,
-        headquarters_location: data.headquarters_location,
-        legal_headquarters_location: data.legal_headquarters_location,
-        created_at: data.created_at,
-        updated_at: data.updated_at,
+        id: data.properties.id,
+        name: data.properties.name,
+        founded: data.properties.founded,
+        defunct: data.properties.defunct,
+        headquarters_location: data.properties.headquarters_location,
+        legal_headquarters_location: data.properties.legal_headquarters_location,
+        created_at: data.properties.created_at,
+        updated_at: data.properties.updated_at,
     } as CompanyNode
 }

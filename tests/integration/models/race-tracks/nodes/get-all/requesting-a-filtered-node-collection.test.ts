@@ -23,16 +23,17 @@ describe('A filtered "get all RACE TRACK nodes" request returns only the matchin
 
     test('when there exist RACE TRACK nodes', async () => {
         await deleteAllNodesOfType(ControllerNodeType.RACE_TRACK)
-        const nodeA = await seedNode(ControllerNodeType.RACE_TRACK, {name: 'A Node'}) as RaceTrackNode
-        await seedNode(ControllerNodeType.RACE_TRACK, {name: 'B Node'})
-        await seedNode(ControllerNodeType.RACE_TRACK, {name: 'C Node'})
+        const nodeA = await seedNode(ControllerNodeType.RACE_TRACK, {
+            name: 'A Node'}) as unknown as RaceTrackNode
+            await seedNode(ControllerNodeType.RACE_TRACK, {name: 'B Node'})
+            await seedNode(ControllerNodeType.RACE_TRACK, {name: 'C Node'})
 
-        const filteredNodes = await RaceTrack.findAll({
-            filterByProperty: 'name',
-            filterValue: 'A Node',
-            filterOperator: FilterOperator.equal
-        })
-        expect(filteredNodes.length).toEqual(1)
+            const filteredNodes = await RaceTrack.findAll({
+                filterByProperty: 'name',
+                filterValue: 'A Node',
+                filterOperator: FilterOperator.equal
+            })
+            expect(filteredNodes.length).toEqual(1)
         expect(filteredNodes[0].name === nodeA.name)
     })
-})
+    })

@@ -9,11 +9,11 @@ import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 describe('Requesting all ›has-layout‹ relationships', () => {
     test('node and relationships exist', async () => {
         const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
-        await seedRelationshipForStartNode(raceTrack.id, ControllerNodeType.TRACK_LAYOUT, RelationshipType.RaceTrackHasLayout)
-        await seedRelationshipForStartNode(raceTrack.id, ControllerNodeType.TRACK_LAYOUT, RelationshipType.RaceTrackHasLayout)
+        await seedRelationshipForStartNode(raceTrack.properties.id, ControllerNodeType.TRACK_LAYOUT, RelationshipType.RaceTrackHasLayout)
+        await seedRelationshipForStartNode(raceTrack.properties.id, ControllerNodeType.TRACK_LAYOUT, RelationshipType.RaceTrackHasLayout)
 
         const relationships = await getRelationshipCollection(
-            raceTrack.id,
+            raceTrack.properties.id,
             RelationshipType.RaceTrackHasLayout,
             DbNodeType.TrackLayout,
         )
@@ -26,7 +26,7 @@ describe('Requesting all ›has-layout‹ relationships', () => {
         const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
 
         const relationships = await getRelationshipCollection(
-            raceTrack.id,
+            raceTrack.properties.id,
             RelationshipType.RaceTrackHasLayout,
             DbNodeType.TrackLayout,
         )

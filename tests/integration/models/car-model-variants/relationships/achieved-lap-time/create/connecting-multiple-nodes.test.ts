@@ -13,10 +13,10 @@ test('A CAR MODEL VARIANT can have multiple ›achieved-lap-time‹ relationship
     const lapTimes = await seedNodes(ControllerNodeType.LAP_TIME, lapTimesAmount)
 
     for (const lapTime of lapTimes) {
-        await CarModelVariant.createAchievedLapTimeRelationship(carModelVariant.id, lapTime.id)
+        await CarModelVariant.createAchievedLapTimeRelationship(carModelVariant.properties.id, lapTime.properties.id)
     }
 
-    const relationships = await getRelationshipCollection(carModelVariant.id, RelationshipType.CarModelVariantAchievedLapTime, DbNodeType.LapTime)
+    const relationships = await getRelationshipCollection(carModelVariant.properties.id, RelationshipType.CarModelVariantAchievedLapTime, DbNodeType.LapTime)
 
     expect(relationships.length)
         .toBe(lapTimesAmount)

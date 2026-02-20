@@ -8,11 +8,11 @@ test('Trying to create the same ›has-lap-time‹ relationship again', async ()
     const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
     const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
-    await expect(TrackLayout.createHasLapTimeRelationship(trackLayout.id, lapTime.id))
+    await expect(TrackLayout.createHasLapTimeRelationship(trackLayout.properties.id, lapTime.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(TrackLayout.createHasLapTimeRelationship(trackLayout.id, lapTime.id))
+    await expect(TrackLayout.createHasLapTimeRelationship(trackLayout.properties.id, lapTime.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })

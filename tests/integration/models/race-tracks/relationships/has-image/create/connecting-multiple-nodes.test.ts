@@ -13,11 +13,11 @@ test('A RACE TRACK can have multiple ›has-image‹ relationships', async () =>
     const images = await seedNodes(ControllerNodeType.IMAGE, imagesAmount)
 
     for (const image of images) {
-        await RaceTrack.createHasImageRelationship(raceTrack.id, image.id)
+        await RaceTrack.createHasImageRelationship(raceTrack.properties.id, image.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        raceTrack.id,
+        raceTrack.properties.id,
         RelationshipType.RaceTrackHasImage,
         DbNodeType.Image,
     )

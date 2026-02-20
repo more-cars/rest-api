@@ -8,12 +8,12 @@ test('Creating a ›is-prime-image-of-node‹ relationship with valid data', asy
     const image = await seedNode(ControllerNodeType.IMAGE)
     const node = await seedNode(ControllerNodeType.COMPANY)
 
-    const createdRelationship = await Image.createIsPrimeImageOfNodeRelationship(image.id, node.id)
+    const createdRelationship = await Image.createIsPrimeImageOfNodeRelationship(image.properties.id, node.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(image.id)
+        .toEqual(image.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(node.id)
+        .toEqual(node.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

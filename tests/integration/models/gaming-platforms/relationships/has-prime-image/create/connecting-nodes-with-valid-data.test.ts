@@ -8,12 +8,12 @@ test('Creating a ›has-prime-image‹ relationship with valid data', async () =
     const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
     const image = await seedNode(ControllerNodeType.IMAGE)
 
-    const createdRelationship = await GamingPlatform.createHasPrimeImageRelationship(gamingPlatform.id, image.id)
+    const createdRelationship = await GamingPlatform.createHasPrimeImageRelationship(gamingPlatform.properties.id, image.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(gamingPlatform.id)
+        .toEqual(gamingPlatform.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(image.id)
+        .toEqual(image.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

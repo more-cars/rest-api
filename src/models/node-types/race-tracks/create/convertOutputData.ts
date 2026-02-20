@@ -3,14 +3,14 @@ import {RaceTrackNode} from "../types/RaceTrackNode"
 
 export function convertOutputData(data: RaceTrackNodeInput): RaceTrackNode {
     return {
-        id: data.id,
-        name: data.name,
-        opened: data.opened,
-        closed: data.closed,
-        type: data.type,
-        location: data.location,
-        geo_position: data.geo_position,
-        created_at: data.created_at,
-        updated_at: data.updated_at,
+        id: data.properties.id,
+        name: data.properties.name,
+        opened: data.properties.opened,
+        closed: data.properties.closed,
+        type: data.properties.type,
+        location: data.properties.location,
+        geo_position: data.properties.geo_position,
+        created_at: data.properties.created_at,
+        updated_at: data.properties.updated_at,
     } as RaceTrackNode
 }

@@ -8,11 +8,11 @@ test('Trying to create a ›has-session-result‹ relationship with nodes that d
     const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
     const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
-    await expect(RacingSession.createHasSessionResultRelationship(-42, sessionResult.id))
+    await expect(RacingSession.createHasSessionResultRelationship(-42, sessionResult.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(RacingSession.createHasSessionResultRelationship(racingSession.id, -43))
+    await expect(RacingSession.createHasSessionResultRelationship(racingSession.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

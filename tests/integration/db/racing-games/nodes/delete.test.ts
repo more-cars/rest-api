@@ -12,7 +12,7 @@ test('Expecting response "false" when trying to delete a non-existing RACING GAM
 
 test('Expecting response "true" when deleting an existing RACING GAME', async () => {
     const node = await seedNode(ControllerNodeType.RACING_GAME)
-    const success = await deleteNode(node.id)
+    const success = await deleteNode(node.properties.id)
 
     expect(success)
         .toBe(true)

@@ -29,7 +29,7 @@ describe('Requesting a ›achieved-with-car-model-variant‹ relationship', () =
     test('node exists, but not the relationship', async () => {
         const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
-        await expect(SessionResult.getAchievedWithCarModelVariantRelationship(sessionResult.id))
+        await expect(SessionResult.getAchievedWithCarModelVariantRelationship(sessionResult.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

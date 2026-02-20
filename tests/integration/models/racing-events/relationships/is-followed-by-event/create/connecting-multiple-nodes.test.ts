@@ -13,11 +13,11 @@ test('A RACING EVENT cannot have multiple ›is-followed-by-event‹ relationshi
     const partners = await seedNodes(ControllerNodeType.RACING_EVENT, partnersAmount)
 
     for (const partner of partners) {
-        await RacingEvent.createIsFollowedByEventRelationship(racingEvent.id, partner.id)
+        await RacingEvent.createIsFollowedByEventRelationship(racingEvent.properties.id, partner.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        racingEvent.id,
+        racingEvent.properties.id,
         RelationshipType.RacingEventIsFollowedByEvent,
         DbNodeType.RacingEvent,
     )

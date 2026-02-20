@@ -24,7 +24,7 @@ describe('Requesting a ›achieved-on-track-layout‹ relationship', () => {
         const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
         const relationships = await getRelationshipCollection(
-            lapTime.id,
+            lapTime.properties.id,
             RelationshipType.LapTimeAchievedOnTrackLayout,
             DbNodeType.TrackLayout,
         )

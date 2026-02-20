@@ -9,10 +9,10 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 describe('Requesting all ›has-variant‹ relationships', () => {
     test('node and relationships exist', async () => {
         const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
-        await seedRelationshipForStartNode(carModel.id, ControllerNodeType.CAR_MODEL_VARIANT, RelationshipType.CarModelHasVariant)
-        await seedRelationshipForStartNode(carModel.id, ControllerNodeType.CAR_MODEL_VARIANT, RelationshipType.CarModelHasVariant)
+        await seedRelationshipForStartNode(carModel.properties.id, ControllerNodeType.CAR_MODEL_VARIANT, RelationshipType.CarModelHasVariant)
+        await seedRelationshipForStartNode(carModel.properties.id, ControllerNodeType.CAR_MODEL_VARIANT, RelationshipType.CarModelHasVariant)
 
-        const relationships = await CarModel.getAllHasVariantRelationships(carModel.id)
+        const relationships = await CarModel.getAllHasVariantRelationships(carModel.properties.id)
 
         expect(relationships.length)
             .toBe(2)
@@ -21,7 +21,7 @@ describe('Requesting all ›has-variant‹ relationships', () => {
     test('node exists, but no relationships', async () => {
         const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
 
-        const relationships = await CarModel.getAllHasVariantRelationships(carModel.id)
+        const relationships = await CarModel.getAllHasVariantRelationships(carModel.properties.id)
 
         expect(relationships.length)
             .toBe(0)

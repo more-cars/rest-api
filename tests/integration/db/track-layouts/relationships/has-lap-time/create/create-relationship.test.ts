@@ -10,15 +10,15 @@ describe('Creating a ›has-lap-time‹ relationship', () => {
         const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
         const createdRelationship = await createRelationship(
-            trackLayout.id,
-            lapTime.id,
+            trackLayout.properties.id,
+            lapTime.properties.id,
             RelationshipType.TrackLayoutHasLapTime,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node.properties.id', trackLayout.id)
+            .toHaveProperty('start_node.properties.id', trackLayout.properties.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node.properties.id', lapTime.id)
+            .toHaveProperty('end_node.properties.id', lapTime.properties.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
@@ -33,7 +33,7 @@ describe('Creating a ›has-lap-time‹ relationship', () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
         const createdRelationship = await createRelationship(
-            trackLayout.id,
+            trackLayout.properties.id,
             -42,
             RelationshipType.TrackLayoutHasLapTime,
         )

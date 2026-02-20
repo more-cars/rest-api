@@ -13,11 +13,11 @@ test('A CAR MODEL cannot have multiple ›has-successor‹ relationships', async
     const partnerNodes = await seedNodes(ControllerNodeType.CAR_MODEL, partnerNodesAmount)
 
     for (const partnerNode of partnerNodes) {
-        await CarModel.createHasSuccessorRelationship(carModel.id, partnerNode.id)
+        await CarModel.createHasSuccessorRelationship(carModel.properties.id, partnerNode.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        carModel.id,
+        carModel.properties.id,
         RelationshipType.CarModelHasSuccessor,
         DbNodeType.CarModel,
     )

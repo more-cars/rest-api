@@ -8,11 +8,11 @@ test('Trying to create a ›follows-event‹ relationship with nodes that do not
     const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
     const partner = await seedNode(ControllerNodeType.RACING_EVENT)
 
-    await expect(RacingEvent.createFollowsEventRelationship(-42, partner.id))
+    await expect(RacingEvent.createFollowsEventRelationship(-42, partner.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(RacingEvent.createFollowsEventRelationship(racingEvent.id, -43))
+    await expect(RacingEvent.createFollowsEventRelationship(racingEvent.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

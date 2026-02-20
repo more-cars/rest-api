@@ -13,11 +13,11 @@ test('A RACING GAME cannot have multiple ›has-prime-image‹ relationships', a
     const images = await seedNodes(ControllerNodeType.IMAGE, imagesAmount)
 
     for (const image of images) {
-        await RacingGame.createHasPrimeImageRelationship(racingGame.id, image.id)
+        await RacingGame.createHasPrimeImageRelationship(racingGame.properties.id, image.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        racingGame.id,
+        racingGame.properties.id,
         RelationshipType.RacingGameHasPrimeImage,
         DbNodeType.Image,
     )

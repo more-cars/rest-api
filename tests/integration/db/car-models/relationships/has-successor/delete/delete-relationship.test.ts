@@ -40,8 +40,8 @@ describe('Trying to delete a ›has-successor‹ relationship', () => {
         const partner = await seedNode(ControllerNodeType.CAR_MODEL)
 
         const relationship = await deleteSpecificRelationship(
-            carModel.id,
-            partner.id,
+            carModel.properties.id,
+            partner.properties.id,
             RelationshipType.CarModelHasSuccessor,
         )
 

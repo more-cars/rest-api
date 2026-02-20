@@ -9,11 +9,11 @@ import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 describe('Requesting all ›is-featured-in-racing-game‹ relationships', () => {
     test('node and relationships exist', async () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
-        await seedRelationshipForStartNode(trackLayout.id, ControllerNodeType.RACING_GAME, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
-        await seedRelationshipForStartNode(trackLayout.id, ControllerNodeType.RACING_GAME, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
+        await seedRelationshipForStartNode(trackLayout.properties.id, ControllerNodeType.RACING_GAME, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
+        await seedRelationshipForStartNode(trackLayout.properties.id, ControllerNodeType.RACING_GAME, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
 
         const relationships = await getRelationshipCollection(
-            trackLayout.id,
+            trackLayout.properties.id,
             RelationshipType.TrackLayoutIsFeaturedInRacingGame,
             DbNodeType.RacingGame,
         )
@@ -26,7 +26,7 @@ describe('Requesting all ›is-featured-in-racing-game‹ relationships', () => 
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
         const relationships = await getRelationshipCollection(
-            trackLayout.id,
+            trackLayout.properties.id,
             RelationshipType.TrackLayoutIsFeaturedInRacingGame,
             DbNodeType.RacingGame,
         )

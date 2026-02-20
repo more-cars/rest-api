@@ -1,19 +1,25 @@
 import {Node} from "neo4j-driver"
 import {RaceTrackNode} from "./types/RaceTrackNode"
+import {DbNodeType} from "../../types/DbNodeType"
 
-export function mapDbNodeToRaceTrackNode(dbNode: Node): RaceTrackNode {
-    return {
-        // system data
-        id: dbNode.properties.mc_id,
-        created_at: dbNode.properties.created_at,
-        updated_at: dbNode.properties.updated_at,
+export function mapDbNodeToRaceTrackNode(neo4jNode: Node): RaceTrackNode {
+    const node: RaceTrackNode = {
+        node_type: DbNodeType.RaceTrack,
+        properties: {
+            // system data
+            id: neo4jNode.properties.mc_id,
+            created_at: neo4jNode.properties.created_at,
+            updated_at: neo4jNode.properties.updated_at,
 
-        // user data
-        name: dbNode.properties.name,
-        opened: dbNode.properties.opened,
-        closed: dbNode.properties.closed,
-        type: dbNode.properties.type,
-        location: dbNode.properties.location,
-        geo_position: dbNode.properties.geo_position,
-    } as RaceTrackNode
+            // user data
+            name: neo4jNode.properties.name,
+            opened: neo4jNode.properties.opened,
+            closed: neo4jNode.properties.closed,
+            type: neo4jNode.properties.type,
+            location: neo4jNode.properties.location,
+            geo_position: neo4jNode.properties.geo_position,
+        }
+    }
+
+    return node
 }

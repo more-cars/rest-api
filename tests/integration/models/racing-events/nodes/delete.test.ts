@@ -13,7 +13,7 @@ describe('Deleting a RACING EVENT', () => {
 
     test('that exists', async () => {
         const node = await seedNode(ControllerNodeType.RACING_EVENT)
-        await expect(RacingEvent.delete(node.id))
+        await expect(RacingEvent.delete(node.properties.id))
             .resolves
             .not.toThrow(NodeNotFoundError)
     })

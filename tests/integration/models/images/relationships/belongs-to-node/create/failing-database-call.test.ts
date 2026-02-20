@@ -13,7 +13,7 @@ test('A completely valid request, but the database call fails (e.g. one of the n
     const image = await seedNode(ControllerNodeType.IMAGE)
     const brand = await seedNode(ControllerNodeType.BRAND)
 
-    await expect(Image.createBelongsToNodeRelationship(image.id, brand.id))
+    await expect(Image.createBelongsToNodeRelationship(image.properties.id, brand.properties.id))
         .rejects
         .toThrow(Error)
 })

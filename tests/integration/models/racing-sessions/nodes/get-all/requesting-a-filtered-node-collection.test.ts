@@ -23,16 +23,17 @@ describe('A filtered "get all RACING SESSION nodes" request returns only the mat
 
     test('when there exist RACING SESSION nodes', async () => {
         await deleteAllNodesOfType(ControllerNodeType.RACING_SESSION)
-        const nodeA = await seedNode(ControllerNodeType.RACING_SESSION, {name: 'A Node'}) as RacingSessionNode
-        await seedNode(ControllerNodeType.RACING_SESSION, {name: 'B Node'})
-        await seedNode(ControllerNodeType.RACING_SESSION, {name: 'C Node'})
+        const nodeA = await seedNode(ControllerNodeType.RACING_SESSION, {
+            name: 'A Node'}) as unknown as unknown as RacingSessionNode
+            await seedNode(ControllerNodeType.RACING_SESSION, {name: 'B Node'})
+            await seedNode(ControllerNodeType.RACING_SESSION, {name: 'C Node'})
 
-        const filteredNodes = await RacingSession.findAll({
-            filterByProperty: 'name',
-            filterValue: 'A Node',
-            filterOperator: FilterOperator.equal
-        })
-        expect(filteredNodes.length).toEqual(1)
+            const filteredNodes = await RacingSession.findAll({
+                filterByProperty: 'name',
+                filterValue: 'A Node',
+                filterOperator: FilterOperator.equal
+            })
+            expect(filteredNodes.length).toEqual(1)
         expect(filteredNodes[0].name === nodeA.name)
     })
-})
+    })

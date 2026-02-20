@@ -3,14 +3,14 @@ import {RacingSeriesNode} from "../types/RacingSeriesNode"
 
 export function convertOutputData(data: RacingSeriesNodeInput): RacingSeriesNode {
     return {
-        id: data.id,
-        name: data.name,
-        short_name: data.short_name,
-        founded: data.founded,
-        defunct: data.defunct,
-        organized_by: data.organized_by,
-        vehicle_type: data.vehicle_type,
-        created_at: data.created_at,
-        updated_at: data.updated_at,
+        id: data.properties.id,
+        name: data.properties.name,
+        short_name: data.properties.short_name,
+        founded: data.properties.founded,
+        defunct: data.properties.defunct,
+        organized_by: data.properties.organized_by,
+        vehicle_type: data.properties.vehicle_type,
+        created_at: data.properties.created_at,
+        updated_at: data.properties.updated_at,
     } as RacingSeriesNode
 }

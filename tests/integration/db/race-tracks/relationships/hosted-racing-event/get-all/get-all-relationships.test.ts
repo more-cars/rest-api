@@ -9,11 +9,11 @@ import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 describe('Requesting all ›hosted-racing-event‹ relationships', () => {
     test('node and relationships exist', async () => {
         const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
-        await seedRelationshipForStartNode(raceTrack.id, ControllerNodeType.RACING_EVENT, RelationshipType.RaceTrackHostedRacingEvent)
-        await seedRelationshipForStartNode(raceTrack.id, ControllerNodeType.RACING_EVENT, RelationshipType.RaceTrackHostedRacingEvent)
+        await seedRelationshipForStartNode(raceTrack.properties.id, ControllerNodeType.RACING_EVENT, RelationshipType.RaceTrackHostedRacingEvent)
+        await seedRelationshipForStartNode(raceTrack.properties.id, ControllerNodeType.RACING_EVENT, RelationshipType.RaceTrackHostedRacingEvent)
 
         const relationships = await getRelationshipCollection(
-            raceTrack.id,
+            raceTrack.properties.id,
             RelationshipType.RaceTrackHostedRacingEvent,
             DbNodeType.RacingEvent,
         )
@@ -26,7 +26,7 @@ describe('Requesting all ›hosted-racing-event‹ relationships', () => {
         const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
 
         const relationships = await getRelationshipCollection(
-            raceTrack.id,
+            raceTrack.properties.id,
             RelationshipType.RaceTrackHostedRacingEvent,
             DbNodeType.RacingEvent,
         )

@@ -8,11 +8,11 @@ test('Trying to create a ›belongs-to-brand‹ relationship with nodes that do 
     const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
     const brand = await seedNode(ControllerNodeType.BRAND)
 
-    await expect(CarModel.createBelongsToBrandRelationship(-42, brand.id))
+    await expect(CarModel.createBelongsToBrandRelationship(-42, brand.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(CarModel.createBelongsToBrandRelationship(carModel.id, -43))
+    await expect(CarModel.createBelongsToBrandRelationship(carModel.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

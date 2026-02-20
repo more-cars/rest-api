@@ -10,7 +10,7 @@ describe('Creating a n:1 relationship', () => {
     test('expecting the destination node to NOT lose its already existing relationship', async () => {
         const foreignRelationship = await seedRelationship(ControllerNodeType.RACING_EVENT, ControllerNodeType.RACING_SERIES, RelationshipType.RacingEventBelongsToRacingSeries)
         const destinationId = foreignRelationship.end_node.properties.id
-        const originId = (await seedNode(ControllerNodeType.RACING_EVENT)).id
+        const originId = (await seedNode(ControllerNodeType.RACING_EVENT)).properties.id
 
         const newRelationship = await RacingEvent.createBelongsToRacingSeriesRelationship(originId, destinationId)
         expect(newRelationship.id)

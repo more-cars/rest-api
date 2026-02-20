@@ -8,11 +8,11 @@ test('Trying to create a ›is-successor-of‹ relationship with nodes that do n
     const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
     const partner = await seedNode(ControllerNodeType.CAR_MODEL)
 
-    await expect(CarModel.createIsSuccessorOfRelationship(-42, partner.id))
+    await expect(CarModel.createIsSuccessorOfRelationship(-42, partner.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(CarModel.createIsSuccessorOfRelationship(carModel.id, -43))
+    await expect(CarModel.createIsSuccessorOfRelationship(carModel.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

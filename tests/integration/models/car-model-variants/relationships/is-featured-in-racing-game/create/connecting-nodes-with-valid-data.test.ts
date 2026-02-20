@@ -8,12 +8,12 @@ test('Creating a ›is-featured-in-racing-game‹ relationship with valid data',
     const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
     const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
-    const createdRelationship = await CarModelVariant.createIsFeaturedInRacingGameRelationship(carModelVariant.id, racingGame.id)
+    const createdRelationship = await CarModelVariant.createIsFeaturedInRacingGameRelationship(carModelVariant.properties.id, racingGame.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(carModelVariant.id)
+        .toEqual(carModelVariant.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(racingGame.id)
+        .toEqual(racingGame.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

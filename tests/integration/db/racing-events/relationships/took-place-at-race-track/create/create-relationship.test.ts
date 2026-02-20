@@ -10,15 +10,15 @@ describe('Creating a ›took-place-at-race-track‹ relationship', () => {
         const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
 
         const createdRelationship = await createRelationship(
-            racingEvent.id,
-            raceTrack.id,
+            racingEvent.properties.id,
+            raceTrack.properties.id,
             RelationshipType.RacingEventTookPlaceAtRaceTrack,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node.properties.id', racingEvent.id)
+            .toHaveProperty('start_node.properties.id', racingEvent.properties.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node.properties.id', raceTrack.id)
+            .toHaveProperty('end_node.properties.id', raceTrack.properties.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
@@ -33,7 +33,7 @@ describe('Creating a ›took-place-at-race-track‹ relationship', () => {
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
         const createdRelationship = await createRelationship(
-            racingEvent.id,
+            racingEvent.properties.id,
             -42,
             RelationshipType.RacingEventTookPlaceAtRaceTrack,
         )

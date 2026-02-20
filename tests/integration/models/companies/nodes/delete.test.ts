@@ -13,7 +13,7 @@ describe('Deleting a COMPANY', () => {
 
     test('that exists', async () => {
         const node = await seedNode(ControllerNodeType.COMPANY)
-        await expect(Company.delete(node.id))
+        await expect(Company.delete(node.properties.id))
             .resolves
             .not.toThrow(NodeNotFoundError)
     })

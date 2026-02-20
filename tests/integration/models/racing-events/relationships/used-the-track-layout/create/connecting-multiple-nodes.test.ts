@@ -13,11 +13,11 @@ test('A RACING EVENT cannot have multiple ›used-the-track-layout‹ relationsh
     const trackLayouts = await seedNodes(ControllerNodeType.TRACK_LAYOUT, trackLayoutsAmount)
 
     for (const trackLayout of trackLayouts) {
-        await RacingEvent.createUsedTheTrackLayoutRelationship(racingEvent.id, trackLayout.id)
+        await RacingEvent.createUsedTheTrackLayoutRelationship(racingEvent.properties.id, trackLayout.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        racingEvent.id,
+        racingEvent.properties.id,
         RelationshipType.RacingEventUsedTheTrackLayout,
         DbNodeType.TrackLayout,
     )

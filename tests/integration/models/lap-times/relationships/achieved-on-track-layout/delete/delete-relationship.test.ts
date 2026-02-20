@@ -12,7 +12,7 @@ describe('Deleting a ›achieved-on-track-layout‹ relationship', () => {
     test('LAP TIME node does not exist', async () => {
         const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
-        await expect(LapTime.deleteAchievedOnTrackLayoutRelationship(lapTime.id, -43))
+        await expect(LapTime.deleteAchievedOnTrackLayoutRelationship(lapTime.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›achieved-on-track-layout‹ relationship', () => {
     test('TRACK LAYOUT node does not exist', async () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-        await expect(LapTime.deleteAchievedOnTrackLayoutRelationship(-42, trackLayout.id))
+        await expect(LapTime.deleteAchievedOnTrackLayoutRelationship(-42, trackLayout.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›achieved-on-track-layout‹ relationship', () => {
         const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-        await expect(LapTime.deleteAchievedOnTrackLayoutRelationship(lapTime.id, trackLayout.id))
+        await expect(LapTime.deleteAchievedOnTrackLayoutRelationship(lapTime.properties.id, trackLayout.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

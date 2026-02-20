@@ -7,7 +7,7 @@ test('Attaching an image to another image is not allowed', async () => {
     const imageNode1 = await seedNode(ControllerNodeType.IMAGE)
     const imageNode2 = await seedNode(ControllerNodeType.IMAGE)
 
-    await expect(Image.createBelongsToNodeRelationship(imageNode1.id, imageNode2.id))
+    await expect(Image.createBelongsToNodeRelationship(imageNode1.properties.id, imageNode2.properties.id))
         .rejects
         .toThrow(Error)
 })

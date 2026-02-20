@@ -13,7 +13,7 @@ describe('Deleting an IMAGE', () => {
 
     test('that exists', async () => {
         const node = await seedNode(ControllerNodeType.IMAGE)
-        await expect(Image.delete(node.id))
+        await expect(Image.delete(node.properties.id))
             .resolves
             .not.toThrow(NodeNotFoundError)
     })

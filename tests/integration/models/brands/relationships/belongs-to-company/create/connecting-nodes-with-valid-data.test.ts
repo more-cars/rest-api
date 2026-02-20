@@ -8,12 +8,12 @@ test('Creating a ›belongs-to-company‹ relationship with valid data', async (
     const brand = await seedNode(ControllerNodeType.BRAND)
     const company = await seedNode(ControllerNodeType.COMPANY)
 
-    const createdRelationship = await Brand.createBelongsToCompanyRelationship(brand.id, company.id)
+    const createdRelationship = await Brand.createBelongsToCompanyRelationship(brand.properties.id, company.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(brand.id)
+        .toEqual(brand.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(company.id)
+        .toEqual(company.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

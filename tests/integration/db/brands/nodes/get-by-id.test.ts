@@ -15,7 +15,7 @@ test('Querying a BRAND that does not exist should return "false"', async () => {
 
 test('Querying an existing BRAND should return a db node with correct schema', async () => {
     const createdNode = await seedNode(ControllerNodeType.BRAND)
-    const brandNode = await getNodeById(createdNode.id)
+    const brandNode = await getNodeById(createdNode.properties.id)
 
     expect(validateJson(brandNode, BrandSchema))
         .toBeTruthy()

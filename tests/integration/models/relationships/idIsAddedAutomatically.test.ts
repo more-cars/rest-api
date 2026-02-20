@@ -11,7 +11,7 @@ import {Brand} from "../../../../src/models/node-types/brands/Brand"
 test('ID is added when creating a relationship', async () => {
     const brand = await createBrandNode(FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate)
     const carModel = await createCarModelNode(FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate)
-    const relationship = await Brand.createHasCarModelRelationship(brand.id, carModel.id)
+    const relationship = await Brand.createHasCarModelRelationship(brand.properties.id, carModel.properties.id)
 
     if (!relationship) {
         assert.fail('Relationship creation failed')

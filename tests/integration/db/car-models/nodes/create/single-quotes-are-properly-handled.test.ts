@@ -12,9 +12,9 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
     }
     const createdNode = await createNode(data)
 
-    expect(createdNode.name)
+    expect(createdNode.properties.name)
         .toEqual("Penny's")
 
-    expect(createdNode.internal_code)
+    expect(createdNode.properties.internal_code)
         .toEqual("'E99'''A'")
 })

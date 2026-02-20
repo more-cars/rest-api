@@ -13,11 +13,11 @@ test('A RACING SESSION can have multiple ›has-session-result‹ relationships'
     const sessionResults = await seedNodes(ControllerNodeType.SESSION_RESULT, sessionResultsAmount)
 
     for (const sessionResult of sessionResults) {
-        await RacingSession.createHasSessionResultRelationship(racingSession.id, sessionResult.id)
+        await RacingSession.createHasSessionResultRelationship(racingSession.properties.id, sessionResult.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        racingSession.id,
+        racingSession.properties.id,
         RelationshipType.RacingSessionHasSessionResult,
         DbNodeType.SessionResult,
     )

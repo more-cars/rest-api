@@ -12,7 +12,7 @@ describe('Deleting a ›is-variant-of‹ relationship', () => {
     test('CAR MODEL VARIANT node does not exist', async () => {
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
-        await expect(CarModelVariant.deleteIsVariantOfRelationship(carModelVariant.id, -43))
+        await expect(CarModelVariant.deleteIsVariantOfRelationship(carModelVariant.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›is-variant-of‹ relationship', () => {
     test('CAR MODEL node does not exist', async () => {
         const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
 
-        await expect(CarModelVariant.deleteIsVariantOfRelationship(-42, carModel.id))
+        await expect(CarModelVariant.deleteIsVariantOfRelationship(-42, carModel.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›is-variant-of‹ relationship', () => {
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
         const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
 
-        await expect(CarModelVariant.deleteIsVariantOfRelationship(carModelVariant.id, carModel.id))
+        await expect(CarModelVariant.deleteIsVariantOfRelationship(carModelVariant.properties.id, carModel.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

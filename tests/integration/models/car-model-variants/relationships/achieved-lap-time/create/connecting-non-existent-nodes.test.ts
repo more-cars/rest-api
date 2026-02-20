@@ -8,11 +8,11 @@ test('Trying to create a ›achieved-lap-time‹ relationship with nodes that do
     const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
     const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
-    await expect(CarModelVariant.createAchievedLapTimeRelationship(-42, lapTime.id))
+    await expect(CarModelVariant.createAchievedLapTimeRelationship(-42, lapTime.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(CarModelVariant.createAchievedLapTimeRelationship(carModelVariant.id, -43))
+    await expect(CarModelVariant.createAchievedLapTimeRelationship(carModelVariant.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

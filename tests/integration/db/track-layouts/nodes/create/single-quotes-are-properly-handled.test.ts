@@ -16,18 +16,18 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
 
     const createdNode = await createNode(data)
 
-    expect(createdNode.name)
+    expect(createdNode.properties.name)
         .toEqual("'GP Circuit''")
 
-    expect(createdNode.length_unit)
+    expect(createdNode.properties.length_unit)
         .toEqual("'km''")
 
-    expect(createdNode.direction)
+    expect(createdNode.properties.direction)
         .toEqual("'clockwise''")
 
-    expect(createdNode.elevation_change_unit)
+    expect(createdNode.properties.elevation_change_unit)
         .toEqual("'m''")
 
-    expect(createdNode.surface)
+    expect(createdNode.properties.surface)
         .toEqual("'asphalt''")
 })

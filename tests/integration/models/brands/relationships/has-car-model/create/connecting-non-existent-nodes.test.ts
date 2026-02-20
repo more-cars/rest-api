@@ -8,11 +8,11 @@ test('Trying to create a ›has-car-model‹ relationship with nodes that do not
     const brand = await seedNode(ControllerNodeType.BRAND)
     const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
 
-    await expect(Brand.createHasCarModelRelationship(-42, carModel.id))
+    await expect(Brand.createHasCarModelRelationship(-42, carModel.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(Brand.createHasCarModelRelationship(brand.id, -43))
+    await expect(Brand.createHasCarModelRelationship(brand.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

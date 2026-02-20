@@ -8,11 +8,11 @@ test('Trying to create the same ›achieved-on-track-layout‹ relationship agai
     const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
     const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-    await expect(LapTime.createAchievedOnTrackLayoutRelationship(lapTime.id, trackLayout.id))
+    await expect(LapTime.createAchievedOnTrackLayoutRelationship(lapTime.properties.id, trackLayout.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(LapTime.createAchievedOnTrackLayoutRelationship(lapTime.id, trackLayout.id))
+    await expect(LapTime.createAchievedOnTrackLayoutRelationship(lapTime.properties.id, trackLayout.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })

@@ -12,7 +12,7 @@ describe('Deleting a ›achieved-lap-time‹ relationship', () => {
     test('CAR MODEL VARIANT node does not exist', async () => {
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
-        await expect(CarModelVariant.deleteAchievedLapTimeRelationship(carModelVariant.id, -43))
+        await expect(CarModelVariant.deleteAchievedLapTimeRelationship(carModelVariant.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›achieved-lap-time‹ relationship', () => {
     test('LAP TIME node does not exist', async () => {
         const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
-        await expect(CarModelVariant.deleteAchievedLapTimeRelationship(-42, lapTime.id))
+        await expect(CarModelVariant.deleteAchievedLapTimeRelationship(-42, lapTime.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›achieved-lap-time‹ relationship', () => {
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
         const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
-        await expect(CarModelVariant.deleteAchievedLapTimeRelationship(carModelVariant.id, lapTime.id))
+        await expect(CarModelVariant.deleteAchievedLapTimeRelationship(carModelVariant.properties.id, lapTime.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

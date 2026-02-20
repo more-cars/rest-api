@@ -24,7 +24,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
         const relationships = await getRelationshipCollection(
-            trackLayout.id,
+            trackLayout.properties.id,
             RelationshipType.TrackLayoutHasPrimeImage,
             DbNodeType.Image,
         )

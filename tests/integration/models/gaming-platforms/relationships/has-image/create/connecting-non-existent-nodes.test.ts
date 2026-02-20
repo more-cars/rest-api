@@ -8,11 +8,11 @@ test('Trying to create a ›has-image‹ relationship with nodes that do not exi
     const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
     const image = await seedNode(ControllerNodeType.IMAGE)
 
-    await expect(GamingPlatform.createHasImageRelationship(-42, image.id))
+    await expect(GamingPlatform.createHasImageRelationship(-42, image.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(GamingPlatform.createHasImageRelationship(gamingPlatform.id, -43))
+    await expect(GamingPlatform.createHasImageRelationship(gamingPlatform.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

@@ -8,11 +8,11 @@ test('Trying to create the same ›belongs-to-node‹ relationship again', async
     const image = await seedNode(ControllerNodeType.IMAGE)
     const brand = await seedNode(ControllerNodeType.BRAND)
 
-    await expect(Image.createBelongsToNodeRelationship(image.id, brand.id))
+    await expect(Image.createBelongsToNodeRelationship(image.properties.id, brand.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(Image.createBelongsToNodeRelationship(image.id, brand.id))
+    await expect(Image.createBelongsToNodeRelationship(image.properties.id, brand.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })

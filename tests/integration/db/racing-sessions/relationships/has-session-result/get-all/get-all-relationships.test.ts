@@ -9,11 +9,11 @@ import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 describe('Requesting all ›has-session-result‹ relationships', () => {
     test('node and relationships exist', async () => {
         const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
-        await seedRelationshipForStartNode(racingSession.id, ControllerNodeType.SESSION_RESULT, RelationshipType.RacingSessionHasSessionResult)
-        await seedRelationshipForStartNode(racingSession.id, ControllerNodeType.SESSION_RESULT, RelationshipType.RacingSessionHasSessionResult)
+        await seedRelationshipForStartNode(racingSession.properties.id, ControllerNodeType.SESSION_RESULT, RelationshipType.RacingSessionHasSessionResult)
+        await seedRelationshipForStartNode(racingSession.properties.id, ControllerNodeType.SESSION_RESULT, RelationshipType.RacingSessionHasSessionResult)
 
         const relationships = await getRelationshipCollection(
-            racingSession.id,
+            racingSession.properties.id,
             RelationshipType.RacingSessionHasSessionResult,
             DbNodeType.SessionResult,
         )
@@ -26,7 +26,7 @@ describe('Requesting all ›has-session-result‹ relationships', () => {
         const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
 
         const relationships = await getRelationshipCollection(
-            racingSession.id,
+            racingSession.properties.id,
             RelationshipType.RacingSessionHasSessionResult,
             DbNodeType.SessionResult,
         )

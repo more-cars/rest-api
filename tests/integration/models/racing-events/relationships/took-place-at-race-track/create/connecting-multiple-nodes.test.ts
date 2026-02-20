@@ -13,11 +13,11 @@ test('A RACING EVENT cannot have multiple ›took-place-at-race-track‹ relatio
     const raceTracks = await seedNodes(ControllerNodeType.RACE_TRACK, raceTracksAmount)
 
     for (const raceTrack of raceTracks) {
-        await RacingEvent.createTookPlaceAtRaceTrackRelationship(racingEvent.id, raceTrack.id)
+        await RacingEvent.createTookPlaceAtRaceTrackRelationship(racingEvent.properties.id, raceTrack.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        racingEvent.id,
+        racingEvent.properties.id,
         RelationshipType.RacingEventTookPlaceAtRaceTrack,
         DbNodeType.RaceTrack,
     )

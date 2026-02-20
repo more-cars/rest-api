@@ -15,7 +15,7 @@ test('Querying a RACING SERIES that does not exist should return "false"', async
 
 test('Querying an existing RACING SERIES should return a db node with correct schema', async () => {
     const createdNode = await seedNode(ControllerNodeType.RACING_SERIES)
-    const racingSeriesNode = await getNodeById(createdNode.id)
+    const racingSeriesNode = await getNodeById(createdNode.properties.id)
 
     expect(validateJson(racingSeriesNode, RacingSeriesSchema))
         .toBeTruthy()

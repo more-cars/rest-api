@@ -8,11 +8,11 @@ test('Trying to create the same ›achieved-session-result‹ relationship again
     const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
     const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
-    await expect(CarModelVariant.createAchievedSessionResultRelationship(carModelVariant.id, sessionResult.id))
+    await expect(CarModelVariant.createAchievedSessionResultRelationship(carModelVariant.properties.id, sessionResult.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(CarModelVariant.createAchievedSessionResultRelationship(carModelVariant.id, sessionResult.id))
+    await expect(CarModelVariant.createAchievedSessionResultRelationship(carModelVariant.properties.id, sessionResult.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })

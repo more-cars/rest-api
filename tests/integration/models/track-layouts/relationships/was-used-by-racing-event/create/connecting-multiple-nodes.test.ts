@@ -13,11 +13,11 @@ test('A TRACK LAYOUT can have multiple ›was-used-by-racing-event‹ relationsh
     const racingEvents = await seedNodes(ControllerNodeType.RACING_EVENT, racingEventsAmount)
 
     for (const racingEvent of racingEvents) {
-        await TrackLayout.createWasUsedByRacingEventRelationship(trackLayout.id, racingEvent.id)
+        await TrackLayout.createWasUsedByRacingEventRelationship(trackLayout.properties.id, racingEvent.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        trackLayout.id,
+        trackLayout.properties.id,
         RelationshipType.TrackLayoutWasUsedByRacingEvent,
         DbNodeType.RacingEvent,
     )

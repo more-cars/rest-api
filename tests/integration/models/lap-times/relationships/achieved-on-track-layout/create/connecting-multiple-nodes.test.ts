@@ -13,11 +13,11 @@ test('A LAP TIME cannot have multiple ›achieved-on-track-layout‹ relationshi
     const trackLayouts = await seedNodes(ControllerNodeType.TRACK_LAYOUT, trackLayoutsAmount)
 
     for (const trackLayout of trackLayouts) {
-        await LapTime.createAchievedOnTrackLayoutRelationship(lapTime.id, trackLayout.id)
+        await LapTime.createAchievedOnTrackLayoutRelationship(lapTime.properties.id, trackLayout.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        lapTime.id,
+        lapTime.properties.id,
         RelationshipType.LapTimeAchievedOnTrackLayout,
         DbNodeType.TrackLayout,
     )

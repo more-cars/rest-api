@@ -12,7 +12,7 @@ describe('Deleting a ›features-racing-game‹ relationship', () => {
     test('GAMING PLATFORM node does not exist', async () => {
         const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
 
-        await expect(GamingPlatform.deleteFeaturesRacingGameRelationship(gamingPlatform.id, -43))
+        await expect(GamingPlatform.deleteFeaturesRacingGameRelationship(gamingPlatform.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›features-racing-game‹ relationship', () => {
     test('RACING GAME node does not exist', async () => {
         const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
-        await expect(GamingPlatform.deleteFeaturesRacingGameRelationship(-42, racingGame.id))
+        await expect(GamingPlatform.deleteFeaturesRacingGameRelationship(-42, racingGame.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›features-racing-game‹ relationship', () => {
         const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
         const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
-        await expect(GamingPlatform.deleteFeaturesRacingGameRelationship(gamingPlatform.id, racingGame.id))
+        await expect(GamingPlatform.deleteFeaturesRacingGameRelationship(gamingPlatform.properties.id, racingGame.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

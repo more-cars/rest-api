@@ -13,11 +13,11 @@ test('A RACING GAME can have multiple ›features-car-model-variant‹ relations
     const carModelVariants = await seedNodes(ControllerNodeType.CAR_MODEL_VARIANT, carModelVariantsAmount)
 
     for (const carModelVariant of carModelVariants) {
-        await RacingGame.createFeaturesCarModelVariantRelationship(racingGame.id, carModelVariant.id)
+        await RacingGame.createFeaturesCarModelVariantRelationship(racingGame.properties.id, carModelVariant.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        racingGame.id,
+        racingGame.properties.id,
         RelationshipType.RacingGameFeaturesCarModelVariant,
         DbNodeType.CarModelVariant,
     )

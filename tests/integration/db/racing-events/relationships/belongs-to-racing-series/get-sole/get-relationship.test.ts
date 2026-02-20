@@ -24,7 +24,7 @@ describe('Requesting a ›belongs-to-racing-series‹ relationship', () => {
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
         const relationships = await getRelationshipCollection(
-            racingEvent.id,
+            racingEvent.properties.id,
             RelationshipType.RacingEventBelongsToRacingSeries,
             DbNodeType.RacingSeries,
         )

@@ -13,10 +13,10 @@ test('A BRAND can have multiple ›has-car-model‹ relationships', async () => 
     const carModels = await seedNodes(ControllerNodeType.CAR_MODEL, carModelAmount)
 
     for (const carModel of carModels) {
-        await Brand.createHasCarModelRelationship(brand.id, carModel.id)
+        await Brand.createHasCarModelRelationship(brand.properties.id, carModel.properties.id)
     }
 
-    const relationships = await getRelationshipCollection(brand.id, RelationshipType.BrandHasCarModel, DbNodeType.CarModel)
+    const relationships = await getRelationshipCollection(brand.properties.id, RelationshipType.BrandHasCarModel, DbNodeType.CarModel)
 
     expect(relationships.length)
         .toBe(carModelAmount)

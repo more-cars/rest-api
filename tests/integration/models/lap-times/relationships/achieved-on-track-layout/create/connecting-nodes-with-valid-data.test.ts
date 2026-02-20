@@ -8,12 +8,12 @@ test('Creating a ›achieved-on-track-layout‹ relationship with valid data', a
     const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
     const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-    const createdRelationship = await LapTime.createAchievedOnTrackLayoutRelationship(lapTime.id, trackLayout.id)
+    const createdRelationship = await LapTime.createAchievedOnTrackLayoutRelationship(lapTime.properties.id, trackLayout.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(lapTime.id)
+        .toEqual(lapTime.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(trackLayout.id)
+        .toEqual(trackLayout.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

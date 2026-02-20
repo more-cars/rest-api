@@ -29,7 +29,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node exists, but not the relationship', async () => {
         const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
 
-        await expect(RaceTrack.getHasPrimeImageRelationship(raceTrack.id))
+        await expect(RaceTrack.getHasPrimeImageRelationship(raceTrack.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

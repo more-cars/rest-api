@@ -8,12 +8,12 @@ test('Creating a ›has-brand‹ relationship with valid data', async () => {
     const company = await seedNode(ControllerNodeType.COMPANY)
     const brand = await seedNode(ControllerNodeType.BRAND)
 
-    const createdRelationship = await Company.createHasBrandRelationship(company.id, brand.id)
+    const createdRelationship = await Company.createHasBrandRelationship(company.properties.id, brand.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(company.id)
+        .toEqual(company.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(brand.id)
+        .toEqual(brand.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

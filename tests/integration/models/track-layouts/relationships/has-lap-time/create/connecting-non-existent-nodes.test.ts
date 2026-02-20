@@ -8,11 +8,11 @@ test('Trying to create a ›has-lap-time‹ relationship with nodes that do not 
     const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
     const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
-    await expect(TrackLayout.createHasLapTimeRelationship(-42, lapTime.id))
+    await expect(TrackLayout.createHasLapTimeRelationship(-42, lapTime.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(TrackLayout.createHasLapTimeRelationship(trackLayout.id, -43))
+    await expect(TrackLayout.createHasLapTimeRelationship(trackLayout.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

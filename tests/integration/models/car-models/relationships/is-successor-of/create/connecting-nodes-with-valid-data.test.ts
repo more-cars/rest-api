@@ -8,12 +8,12 @@ test('Creating a ›is-successor-of‹ relationship with valid data', async () =
     const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
     const partner = await seedNode(ControllerNodeType.CAR_MODEL)
 
-    const createdRelationship = await CarModel.createIsSuccessorOfRelationship(carModel.id, partner.id)
+    const createdRelationship = await CarModel.createIsSuccessorOfRelationship(carModel.properties.id, partner.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(carModel.id)
+        .toEqual(carModel.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(partner.id)
+        .toEqual(partner.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

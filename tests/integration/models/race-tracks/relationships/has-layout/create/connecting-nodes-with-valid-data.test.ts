@@ -8,12 +8,12 @@ test('Creating a ›has-layout‹ relationship with valid data', async () => {
     const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
     const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-    const createdRelationship = await RaceTrack.createHasLayoutRelationship(raceTrack.id, trackLayout.id)
+    const createdRelationship = await RaceTrack.createHasLayoutRelationship(raceTrack.properties.id, trackLayout.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(raceTrack.id)
+        .toEqual(raceTrack.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(trackLayout.id)
+        .toEqual(trackLayout.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

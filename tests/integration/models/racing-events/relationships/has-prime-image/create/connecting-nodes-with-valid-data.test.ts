@@ -8,12 +8,12 @@ test('Creating a ›has-prime-image‹ relationship with valid data', async () =
     const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
     const image = await seedNode(ControllerNodeType.IMAGE)
 
-    const createdRelationship = await RacingEvent.createHasPrimeImageRelationship(racingEvent.id, image.id)
+    const createdRelationship = await RacingEvent.createHasPrimeImageRelationship(racingEvent.properties.id, image.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(racingEvent.id)
+        .toEqual(racingEvent.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(image.id)
+        .toEqual(image.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

@@ -9,10 +9,10 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
         const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
-        await seedRelationshipForStartNode(racingGame.id, ControllerNodeType.IMAGE, RelationshipType.RacingGameHasImage)
-        await seedRelationshipForStartNode(racingGame.id, ControllerNodeType.IMAGE, RelationshipType.RacingGameHasImage)
+        await seedRelationshipForStartNode(racingGame.properties.id, ControllerNodeType.IMAGE, RelationshipType.RacingGameHasImage)
+        await seedRelationshipForStartNode(racingGame.properties.id, ControllerNodeType.IMAGE, RelationshipType.RacingGameHasImage)
 
-        const relationships = await RacingGame.getAllHasImageRelationships(racingGame.id)
+        const relationships = await RacingGame.getAllHasImageRelationships(racingGame.properties.id)
 
         expect(relationships.length)
             .toBe(2)
@@ -21,7 +21,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
     test('node exists, but no relationships', async () => {
         const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
-        const relationships = await RacingGame.getAllHasImageRelationships(racingGame.id)
+        const relationships = await RacingGame.getAllHasImageRelationships(racingGame.properties.id)
 
         expect(relationships.length)
             .toBe(0)

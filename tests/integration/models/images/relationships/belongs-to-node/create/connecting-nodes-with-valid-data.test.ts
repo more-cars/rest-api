@@ -8,12 +8,12 @@ test('Creating a ›belongs-to-node‹ relationship with valid data', async () =
     const image = await seedNode(ControllerNodeType.IMAGE)
     const brand = await seedNode(ControllerNodeType.BRAND)
 
-    const createdRelationship = await Image.createBelongsToNodeRelationship(image.id, brand.id)
+    const createdRelationship = await Image.createBelongsToNodeRelationship(image.properties.id, brand.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(image.id)
+        .toEqual(image.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(brand.id)
+        .toEqual(brand.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

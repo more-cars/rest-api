@@ -24,7 +24,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
         const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
 
         const relationships = await getRelationshipCollection(
-            gamingPlatform.id,
+            gamingPlatform.properties.id,
             RelationshipType.GamingPlatformHasPrimeImage,
             DbNodeType.Image,
         )

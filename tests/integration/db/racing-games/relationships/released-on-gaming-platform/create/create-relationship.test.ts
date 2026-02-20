@@ -10,15 +10,15 @@ describe('Creating a ›released-on-gaming-platform‹ relationship', () => {
         const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
 
         const createdRelationship = await createRelationship(
-            racingGame.id,
-            gamingPlatform.id,
+            racingGame.properties.id,
+            gamingPlatform.properties.id,
             RelationshipType.RacingGameReleasedOnGamingPlatform,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node.properties.id', racingGame.id)
+            .toHaveProperty('start_node.properties.id', racingGame.properties.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node.properties.id', gamingPlatform.id)
+            .toHaveProperty('end_node.properties.id', gamingPlatform.properties.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
@@ -33,7 +33,7 @@ describe('Creating a ›released-on-gaming-platform‹ relationship', () => {
         const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
         const createdRelationship = await createRelationship(
-            racingGame.id,
+            racingGame.properties.id,
             -42,
             RelationshipType.RacingGameReleasedOnGamingPlatform,
         )

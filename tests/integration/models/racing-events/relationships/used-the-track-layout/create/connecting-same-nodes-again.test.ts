@@ -8,11 +8,11 @@ test('Trying to create the same ›used-the-track-layout‹ relationship again',
     const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
     const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-    await expect(RacingEvent.createUsedTheTrackLayoutRelationship(racingEvent.id, trackLayout.id))
+    await expect(RacingEvent.createUsedTheTrackLayoutRelationship(racingEvent.properties.id, trackLayout.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(RacingEvent.createUsedTheTrackLayoutRelationship(racingEvent.id, trackLayout.id))
+    await expect(RacingEvent.createUsedTheTrackLayoutRelationship(racingEvent.properties.id, trackLayout.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })

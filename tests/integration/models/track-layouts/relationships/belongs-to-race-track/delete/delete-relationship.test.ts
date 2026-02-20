@@ -12,7 +12,7 @@ describe('Deleting a ›belongs-to-race-track‹ relationship', () => {
     test('TRACK LAYOUT node does not exist', async () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-        await expect(TrackLayout.deleteBelongsToRaceTrackRelationship(trackLayout.id, -43))
+        await expect(TrackLayout.deleteBelongsToRaceTrackRelationship(trackLayout.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›belongs-to-race-track‹ relationship', () => {
     test('RACE TRACK node does not exist', async () => {
         const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
 
-        await expect(TrackLayout.deleteBelongsToRaceTrackRelationship(-42, raceTrack.id))
+        await expect(TrackLayout.deleteBelongsToRaceTrackRelationship(-42, raceTrack.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›belongs-to-race-track‹ relationship', () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
         const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
 
-        await expect(TrackLayout.deleteBelongsToRaceTrackRelationship(trackLayout.id, raceTrack.id))
+        await expect(TrackLayout.deleteBelongsToRaceTrackRelationship(trackLayout.properties.id, raceTrack.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

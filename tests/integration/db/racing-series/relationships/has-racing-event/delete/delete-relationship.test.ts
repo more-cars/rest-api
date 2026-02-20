@@ -40,8 +40,8 @@ describe('Trying to delete a ›has-racing-event‹ relationship', () => {
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
         const relationship = await deleteSpecificRelationship(
-            racingSeries.id,
-            racingEvent.id,
+            racingSeries.properties.id,
+            racingEvent.properties.id,
             RelationshipType.RacingSeriesHasRacingEvent,
         )
 

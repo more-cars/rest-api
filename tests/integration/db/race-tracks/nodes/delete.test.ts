@@ -12,7 +12,7 @@ test('Expecting response "false" when trying to delete a non-existing RACE TRACK
 
 test('Expecting response "true" when deleting an existing RACE TRACK', async () => {
     const node = await seedNode(ControllerNodeType.RACE_TRACK)
-    const success = await deleteNode(node.id)
+    const success = await deleteNode(node.properties.id)
 
     expect(success)
         .toBe(true)

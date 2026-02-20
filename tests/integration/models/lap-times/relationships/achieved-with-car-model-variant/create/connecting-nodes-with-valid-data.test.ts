@@ -8,12 +8,12 @@ test('Creating a ›achieved-with-car-model-variant‹ relationship with valid d
     const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
     const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
-    const createdRelationship = await LapTime.createAchievedWithCarModelVariantRelationship(lapTime.id, carModelVariant.id)
+    const createdRelationship = await LapTime.createAchievedWithCarModelVariantRelationship(lapTime.properties.id, carModelVariant.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(lapTime.id)
+        .toEqual(lapTime.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(carModelVariant.id)
+        .toEqual(carModelVariant.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

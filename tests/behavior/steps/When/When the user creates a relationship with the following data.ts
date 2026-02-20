@@ -15,7 +15,7 @@ When('the user creates a relationship with the following data',
         })
 
         const response = await axios
-            .post(`${process.env.API_URL}/brands/${brand.id}/has-car-model/${carModel.id}`, data)
+            .post(`${process.env.API_URL}/brands/${brand.properties.id}/has-car-model/${carModel.properties.id}`, data)
             .catch(error => {
                 console.error(error)
             })

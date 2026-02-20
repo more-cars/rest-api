@@ -29,7 +29,7 @@ describe('Requesting a ›is-variant-of‹ relationship', () => {
     test('node exists, but not the relationship', async () => {
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
-        await expect(CarModelVariant.getIsVariantOfRelationship(carModelVariant.id))
+        await expect(CarModelVariant.getIsVariantOfRelationship(carModelVariant.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

@@ -12,7 +12,7 @@ describe('Deleting a ›achieved-with-car-model-variant‹ relationship', () => 
     test('LAP TIME node does not exist', async () => {
         const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
-        await expect(LapTime.deleteAchievedWithCarModelVariantRelationship(lapTime.id, -43))
+        await expect(LapTime.deleteAchievedWithCarModelVariantRelationship(lapTime.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›achieved-with-car-model-variant‹ relationship', () => 
     test('CAR MODEL VARIANT node does not exist', async () => {
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
-        await expect(LapTime.deleteAchievedWithCarModelVariantRelationship(-42, carModelVariant.id))
+        await expect(LapTime.deleteAchievedWithCarModelVariantRelationship(-42, carModelVariant.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›achieved-with-car-model-variant‹ relationship', () => 
         const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
-        await expect(LapTime.deleteAchievedWithCarModelVariantRelationship(lapTime.id, carModelVariant.id))
+        await expect(LapTime.deleteAchievedWithCarModelVariantRelationship(lapTime.properties.id, carModelVariant.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

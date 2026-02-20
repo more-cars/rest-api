@@ -22,12 +22,15 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
 
     expect(mappedNode)
         .toStrictEqual({
-            id: 1,
-            created_at: "2025-05-14T11:05:07.793Z",
-            updated_at: "2025-05-14T11:05:07.793Z",
-            name: "GP Monaco 2025",
-            round: 8,
-            date_from: "2025-05-25",
-            date_to: "2025-05-27",
+            node_type: "RacingEvent",
+            properties: {
+                id: 1,
+                created_at: "2025-05-14T11:05:07.793Z",
+                updated_at: "2025-05-14T11:05:07.793Z",
+                name: "GP Monaco 2025",
+                round: 8,
+                date_from: "2025-05-25",
+                date_to: "2025-05-27",
+            }
         })
 })

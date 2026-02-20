@@ -10,12 +10,12 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
 
     const createdNode = await createNode(data)
 
-    expect(createdNode.time)
+    expect(createdNode.properties.time)
         .toEqual("'PT1M33.294S''")
 
-    expect(createdNode.driver_name)
+    expect(createdNode.properties.driver_name)
         .toEqual("'Klaus Ludwig''")
 
-    expect(createdNode.date)
+    expect(createdNode.properties.date)
         .toEqual("'1996-08-03''")
 })

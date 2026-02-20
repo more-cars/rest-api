@@ -8,11 +8,11 @@ test('Trying to create a ›is-featured-in-racing-game‹ relationship with node
     const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
     const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
-    await expect(TrackLayout.createIsFeaturedInRacingGameRelationship(-42, racingGame.id))
+    await expect(TrackLayout.createIsFeaturedInRacingGameRelationship(-42, racingGame.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(TrackLayout.createIsFeaturedInRacingGameRelationship(trackLayout.id, -43))
+    await expect(TrackLayout.createIsFeaturedInRacingGameRelationship(trackLayout.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

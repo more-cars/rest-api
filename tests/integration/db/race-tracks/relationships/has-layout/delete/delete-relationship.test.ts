@@ -40,8 +40,8 @@ describe('Trying to delete a ›has-layout‹ relationship', () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
         const relationship = await deleteSpecificRelationship(
-            raceTrack.id,
-            trackLayout.id,
+            raceTrack.properties.id,
+            trackLayout.properties.id,
             RelationshipType.RaceTrackHasLayout,
         )
 

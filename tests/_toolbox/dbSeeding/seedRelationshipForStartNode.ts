@@ -9,7 +9,7 @@ export async function seedRelationshipForStartNode(
     relationshipType: RelationshipType,
 ) {
     const endNode = await seedNode(endNodeType)
-    const relationship = await createRelationship(startNodeId, endNode.id, relationshipType)
+    const relationship = await createRelationship(startNodeId, endNode.properties.id, relationshipType)
 
     if (!relationship) {
         throw new Error('Relationship could not be created')

@@ -10,17 +10,17 @@ describe('Creating a ›was-used-by-racing-event‹ relationship', () => {
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
         const createdRelationship = await createRelationship(
-            trackLayout.id,
-            racingEvent.id,
+            trackLayout.properties.id,
+            racingEvent.properties.id,
             RelationshipType.TrackLayoutWasUsedByRacingEvent,
         )
 
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
-            .toHaveProperty('start_node.properties.id', trackLayout.id)
+            .toHaveProperty('start_node.properties.id', trackLayout.properties.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node.properties.id', racingEvent.id)
+            .toHaveProperty('end_node.properties.id', racingEvent.properties.id)
         expect(createdRelationship)
             .toHaveProperty('type', RelationshipType.TrackLayoutWasUsedByRacingEvent)
         expect(createdRelationship)
@@ -33,7 +33,7 @@ describe('Creating a ›was-used-by-racing-event‹ relationship', () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
         const createdRelationship = await createRelationship(
-            trackLayout.id,
+            trackLayout.properties.id,
             -42,
             RelationshipType.TrackLayoutWasUsedByRacingEvent,
         )

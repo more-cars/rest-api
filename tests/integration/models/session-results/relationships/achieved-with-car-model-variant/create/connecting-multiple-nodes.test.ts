@@ -13,11 +13,11 @@ test('A SESSION RESULT cannot have multiple â€ºachieved-with-car-model-variantâ€
     const carModelVariants = await seedNodes(ControllerNodeType.CAR_MODEL_VARIANT, carModelVariantsAmount)
 
     for (const carModelVariant of carModelVariants) {
-        await SessionResult.createAchievedWithCarModelVariantRelationship(sessionResult.id, carModelVariant.id)
+        await SessionResult.createAchievedWithCarModelVariantRelationship(sessionResult.properties.id, carModelVariant.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        sessionResult.id,
+        sessionResult.properties.id,
         RelationshipType.SessionResultAchievedWithCarModelVariant,
         DbNodeType.CarModelVariant,
     )

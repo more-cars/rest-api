@@ -8,11 +8,11 @@ test('Trying to create the same ›belongs-to-race-track‹ relationship again',
     const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
     const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
 
-    await expect(TrackLayout.createBelongsToRaceTrackRelationship(trackLayout.id, raceTrack.id))
+    await expect(TrackLayout.createBelongsToRaceTrackRelationship(trackLayout.properties.id, raceTrack.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(TrackLayout.createBelongsToRaceTrackRelationship(trackLayout.id, raceTrack.id))
+    await expect(TrackLayout.createBelongsToRaceTrackRelationship(trackLayout.properties.id, raceTrack.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })

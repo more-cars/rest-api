@@ -12,7 +12,7 @@ describe('Deleting a ›hosted-racing-event‹ relationship', () => {
     test('RACE TRACK node does not exist', async () => {
         const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
 
-        await expect(RaceTrack.deleteHostedRacingEventRelationship(raceTrack.id, -43))
+        await expect(RaceTrack.deleteHostedRacingEventRelationship(raceTrack.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›hosted-racing-event‹ relationship', () => {
     test('RACING EVENT node does not exist', async () => {
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
-        await expect(RaceTrack.deleteHostedRacingEventRelationship(-42, racingEvent.id))
+        await expect(RaceTrack.deleteHostedRacingEventRelationship(-42, racingEvent.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›hosted-racing-event‹ relationship', () => {
         const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
-        await expect(RaceTrack.deleteHostedRacingEventRelationship(raceTrack.id, racingEvent.id))
+        await expect(RaceTrack.deleteHostedRacingEventRelationship(raceTrack.properties.id, racingEvent.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

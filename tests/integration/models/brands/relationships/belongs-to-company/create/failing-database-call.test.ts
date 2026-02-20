@@ -13,7 +13,7 @@ test('A completely valid request, but the database call fails (e.g. one of the n
     const brand = await seedNode(ControllerNodeType.BRAND)
     const company = await seedNode(ControllerNodeType.COMPANY)
 
-    await expect(Brand.createBelongsToCompanyRelationship(brand.id, company.id))
+    await expect(Brand.createBelongsToCompanyRelationship(brand.properties.id, company.properties.id))
         .rejects
         .toThrow(Error)
 })

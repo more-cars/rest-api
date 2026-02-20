@@ -9,10 +9,10 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 describe('Requesting all ›features-racing-game‹ relationships', () => {
     test('node and relationships exist', async () => {
         const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
-        await seedRelationshipForStartNode(gamingPlatform.id, ControllerNodeType.RACING_GAME, RelationshipType.GamingPlatformFeaturesRacingGame)
-        await seedRelationshipForStartNode(gamingPlatform.id, ControllerNodeType.RACING_GAME, RelationshipType.GamingPlatformFeaturesRacingGame)
+        await seedRelationshipForStartNode(gamingPlatform.properties.id, ControllerNodeType.RACING_GAME, RelationshipType.GamingPlatformFeaturesRacingGame)
+        await seedRelationshipForStartNode(gamingPlatform.properties.id, ControllerNodeType.RACING_GAME, RelationshipType.GamingPlatformFeaturesRacingGame)
 
-        const relationships = await GamingPlatform.getAllFeaturesRacingGameRelationships(gamingPlatform.id)
+        const relationships = await GamingPlatform.getAllFeaturesRacingGameRelationships(gamingPlatform.properties.id)
 
         expect(relationships.length)
             .toBe(2)
@@ -21,7 +21,7 @@ describe('Requesting all ›features-racing-game‹ relationships', () => {
     test('node exists, but no relationships', async () => {
         const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
 
-        const relationships = await GamingPlatform.getAllFeaturesRacingGameRelationships(gamingPlatform.id)
+        const relationships = await GamingPlatform.getAllFeaturesRacingGameRelationships(gamingPlatform.properties.id)
 
         expect(relationships.length)
             .toBe(0)

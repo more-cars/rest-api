@@ -13,7 +13,7 @@ test('A completely valid request, but the database call fails (e.g. one of the n
     const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
     const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
-    await expect(RacingSession.createHasSessionResultRelationship(racingSession.id, sessionResult.id))
+    await expect(RacingSession.createHasSessionResultRelationship(racingSession.properties.id, sessionResult.properties.id))
         .rejects
         .toThrow(Error)
 })

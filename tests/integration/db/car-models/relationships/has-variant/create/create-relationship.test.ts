@@ -10,15 +10,15 @@ describe('Creating a ›has-variant‹ relationship', () => {
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
         const createdRelationship = await createRelationship(
-            carModel.id,
-            carModelVariant.id,
+            carModel.properties.id,
+            carModelVariant.properties.id,
             RelationshipType.CarModelHasVariant,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node.properties.id', carModel.id)
+            .toHaveProperty('start_node.properties.id', carModel.properties.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node.properties.id', carModelVariant.id)
+            .toHaveProperty('end_node.properties.id', carModelVariant.properties.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
@@ -33,7 +33,7 @@ describe('Creating a ›has-variant‹ relationship', () => {
         const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
 
         const createdRelationship = await createRelationship(
-            carModel.id,
+            carModel.properties.id,
             -42,
             RelationshipType.CarModelHasVariant,
         )

@@ -10,15 +10,15 @@ describe('Creating a ›has-image‹ relationship', () => {
         const image = await seedNode(ControllerNodeType.IMAGE)
 
         const createdRelationship = await createRelationship(
-            carModelVariant.id,
-            image.id,
+            carModelVariant.properties.id,
+            image.properties.id,
             RelationshipType.CarModelVariantHasImage,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node.properties.id', carModelVariant.id)
+            .toHaveProperty('start_node.properties.id', carModelVariant.properties.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node.properties.id', image.id)
+            .toHaveProperty('end_node.properties.id', image.properties.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
@@ -33,7 +33,7 @@ describe('Creating a ›has-image‹ relationship', () => {
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
         const createdRelationship = await createRelationship(
-            carModelVariant.id,
+            carModelVariant.properties.id,
             -42,
             RelationshipType.CarModelVariantHasImage,
         )

@@ -13,8 +13,8 @@ test('Fetching a RACING GAME that does not exist should return "false"', async (
 
 test('When the RACING GAME exists it should be returned', async () => {
     const expectedRacingGame = await seedNode(ControllerNodeType.RACING_GAME)
-    const actualRacingGame = await RacingGame.findById(expectedRacingGame.id)
+    const actualRacingGame = await RacingGame.findById(expectedRacingGame.properties.id)
 
     expect(actualRacingGame)
-        .toEqual(expectedRacingGame)
+        .toEqual(expectedRacingGame.properties)
 })

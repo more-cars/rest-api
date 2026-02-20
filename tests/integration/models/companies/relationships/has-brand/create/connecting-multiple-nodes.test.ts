@@ -13,11 +13,11 @@ test('A COMPANY can have multiple ›has-brand‹ relationships', async () => {
     const brands = await seedNodes(ControllerNodeType.BRAND, brandsAmount)
 
     for (const brand of brands) {
-        await Company.createHasBrandRelationship(company.id, brand.id)
+        await Company.createHasBrandRelationship(company.properties.id, brand.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        company.id,
+        company.properties.id,
         RelationshipType.CompanyHasBrand,
         DbNodeType.Brand,
     )

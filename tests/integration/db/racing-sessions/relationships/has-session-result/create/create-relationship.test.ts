@@ -10,15 +10,15 @@ describe('Creating a ›has-session-result‹ relationship', () => {
         const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
         const createdRelationship = await createRelationship(
-            racingSession.id,
-            sessionResult.id,
+            racingSession.properties.id,
+            sessionResult.properties.id,
             RelationshipType.RacingSessionHasSessionResult,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node.properties.id', racingSession.id)
+            .toHaveProperty('start_node.properties.id', racingSession.properties.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node.properties.id', sessionResult.id)
+            .toHaveProperty('end_node.properties.id', sessionResult.properties.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
@@ -33,7 +33,7 @@ describe('Creating a ›has-session-result‹ relationship', () => {
         const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
 
         const createdRelationship = await createRelationship(
-            racingSession.id,
+            racingSession.properties.id,
             -42,
             RelationshipType.RacingSessionHasSessionResult,
         )

@@ -8,11 +8,11 @@ test('Trying to create a ›belongs-to-racing-session‹ relationship with nodes
     const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
     const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
 
-    await expect(SessionResult.createBelongsToRacingSessionRelationship(-42, racingSession.id))
+    await expect(SessionResult.createBelongsToRacingSessionRelationship(-42, racingSession.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(SessionResult.createBelongsToRacingSessionRelationship(sessionResult.id, -43))
+    await expect(SessionResult.createBelongsToRacingSessionRelationship(sessionResult.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

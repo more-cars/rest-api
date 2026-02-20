@@ -24,7 +24,7 @@ describe('Requesting a ›achieved-with-car-model-variant‹ relationship', () =
         const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
         const relationships = await getRelationshipCollection(
-            sessionResult.id,
+            sessionResult.properties.id,
             RelationshipType.SessionResultAchievedWithCarModelVariant,
             DbNodeType.CarModelVariant,
         )

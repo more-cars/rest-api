@@ -12,11 +12,11 @@ test('A IMAGE can have multiple ›belongs-to-node‹ relationships', async () =
     const brands = await seedNodes(ControllerNodeType.BRAND, brandsAmount)
 
     for (const brand of brands) {
-        await Image.createBelongsToNodeRelationship(image.id, brand.id)
+        await Image.createBelongsToNodeRelationship(image.properties.id, brand.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        image.id,
+        image.properties.id,
         RelationshipType.ImageBelongsToNode,
     )
 

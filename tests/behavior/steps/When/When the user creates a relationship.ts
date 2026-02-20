@@ -9,7 +9,7 @@ When('the user creates a relationship',
         const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
 
         const response = await axios
-            .post(`${process.env.API_URL}/brands/${brand.id}/has-car-model/${carModel.id}`)
+            .post(`${process.env.API_URL}/brands/${brand.properties.id}/has-car-model/${carModel.properties.id}`)
             .catch(error => {
                 console.error(error)
             })

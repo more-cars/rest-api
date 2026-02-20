@@ -23,16 +23,17 @@ describe('A filtered "get all RACING SERIES nodes" request returns only the matc
 
     test('when there exist RACING SERIES nodes', async () => {
         await deleteAllNodesOfType(ControllerNodeType.RACING_SERIES)
-        const nodeA = await seedNode(ControllerNodeType.RACING_SERIES, {name: 'A Node'}) as RacingSeriesNode
-        await seedNode(ControllerNodeType.RACING_SERIES, {name: 'B Node'})
-        await seedNode(ControllerNodeType.RACING_SERIES, {name: 'C Node'})
+        const nodeA = await seedNode(ControllerNodeType.RACING_SERIES, {
+            name: 'A Node'}) as unknown as RacingSeriesNode
+            await seedNode(ControllerNodeType.RACING_SERIES, {name: 'B Node'})
+            await seedNode(ControllerNodeType.RACING_SERIES, {name: 'C Node'})
 
-        const filteredNodes = await RacingSeries.findAll({
-            filterByProperty: 'name',
-            filterValue: 'A Node',
-            filterOperator: FilterOperator.equal
-        })
-        expect(filteredNodes.length).toEqual(1)
+            const filteredNodes = await RacingSeries.findAll({
+                filterByProperty: 'name',
+                filterValue: 'A Node',
+                filterOperator: FilterOperator.equal
+            })
+            expect(filteredNodes.length).toEqual(1)
         expect(filteredNodes[0].name === nodeA.name)
     })
-})
+    })

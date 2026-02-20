@@ -8,11 +8,11 @@ test('Trying to create a ›achieved-session-result‹ relationship with nodes t
     const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
     const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
-    await expect(CarModelVariant.createAchievedSessionResultRelationship(-42, sessionResult.id))
+    await expect(CarModelVariant.createAchievedSessionResultRelationship(-42, sessionResult.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(CarModelVariant.createAchievedSessionResultRelationship(carModelVariant.id, -43))
+    await expect(CarModelVariant.createAchievedSessionResultRelationship(carModelVariant.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

@@ -8,11 +8,11 @@ test('Trying to create the same ›hosted-racing-event‹ relationship again', a
     const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
     const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
-    await expect(RaceTrack.createHostedRacingEventRelationship(raceTrack.id, racingEvent.id))
+    await expect(RaceTrack.createHostedRacingEventRelationship(raceTrack.properties.id, racingEvent.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(RaceTrack.createHostedRacingEventRelationship(raceTrack.id, racingEvent.id))
+    await expect(RaceTrack.createHostedRacingEventRelationship(raceTrack.properties.id, racingEvent.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })

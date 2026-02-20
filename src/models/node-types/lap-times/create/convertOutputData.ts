@@ -3,11 +3,11 @@ import {LapTimeNode} from "../types/LapTimeNode"
 
 export function convertOutputData(data: LapTimeNodeInput): LapTimeNode {
     return {
-        id: data.id,
-        time: data.time,
-        driver_name: data.driver_name,
-        date: data.date,
-        created_at: data.created_at,
-        updated_at: data.updated_at,
+        id: data.properties.id,
+        time: data.properties.time,
+        driver_name: data.properties.driver_name,
+        date: data.properties.date,
+        created_at: data.properties.created_at,
+        updated_at: data.properties.updated_at,
     } as LapTimeNode
 }

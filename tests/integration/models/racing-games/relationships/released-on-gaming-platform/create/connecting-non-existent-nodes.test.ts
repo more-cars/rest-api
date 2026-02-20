@@ -8,11 +8,11 @@ test('Trying to create a ›released-on-gaming-platform‹ relationship with nod
     const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
     const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
 
-    await expect(RacingGame.createReleasedOnGamingPlatformRelationship(-42, gamingPlatform.id))
+    await expect(RacingGame.createReleasedOnGamingPlatformRelationship(-42, gamingPlatform.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(RacingGame.createReleasedOnGamingPlatformRelationship(racingGame.id, -43))
+    await expect(RacingGame.createReleasedOnGamingPlatformRelationship(racingGame.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

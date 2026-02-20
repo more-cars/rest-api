@@ -12,7 +12,7 @@ describe('Deleting a ›features-car-model-variant‹ relationship', () => {
     test('RACING GAME node does not exist', async () => {
         const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
-        await expect(RacingGame.deleteFeaturesCarModelVariantRelationship(racingGame.id, -43))
+        await expect(RacingGame.deleteFeaturesCarModelVariantRelationship(racingGame.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›features-car-model-variant‹ relationship', () => {
     test('CAR MODEL VARIANT node does not exist', async () => {
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
-        await expect(RacingGame.deleteFeaturesCarModelVariantRelationship(-42, carModelVariant.id))
+        await expect(RacingGame.deleteFeaturesCarModelVariantRelationship(-42, carModelVariant.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›features-car-model-variant‹ relationship', () => {
         const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
-        await expect(RacingGame.deleteFeaturesCarModelVariantRelationship(racingGame.id, carModelVariant.id))
+        await expect(RacingGame.deleteFeaturesCarModelVariantRelationship(racingGame.properties.id, carModelVariant.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

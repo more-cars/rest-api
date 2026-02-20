@@ -1,20 +1,24 @@
 import {Node} from "neo4j-driver"
 import {BrandNode} from "./types/BrandNode"
+import {DbNodeType} from "../../types/DbNodeType"
 
-export function mapDbNodeToBrandNode(dbNode: Node): BrandNode {
+export function mapDbNodeToBrandNode(neo4jNode: Node): BrandNode {
     const node: BrandNode = {
-        // system data
-        id: dbNode.properties.mc_id,
-        created_at: dbNode.properties.created_at,
-        updated_at: dbNode.properties.updated_at,
+        node_type: DbNodeType.Brand,
+        properties: {
+            // system data
+            id: neo4jNode.properties.mc_id,
+            created_at: neo4jNode.properties.created_at,
+            updated_at: neo4jNode.properties.updated_at,
 
-        // user data
-        name: dbNode.properties.name,
-        full_name: dbNode.properties.full_name,
-        founded: dbNode.properties.founded,
-        defunct: dbNode.properties.defunct,
-        wmi: dbNode.properties.wmi,
-        hsn: dbNode.properties.hsn,
+            // user data
+            name: neo4jNode.properties.name,
+            full_name: neo4jNode.properties.full_name,
+            founded: neo4jNode.properties.founded,
+            defunct: neo4jNode.properties.defunct,
+            wmi: neo4jNode.properties.wmi,
+            hsn: neo4jNode.properties.hsn,
+        }
     }
 
     return node

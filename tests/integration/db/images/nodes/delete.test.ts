@@ -12,7 +12,7 @@ test('Expecting response "false" when trying to delete a non-existing IMAGE', as
 
 test('Expecting response "true" when deleting an existing IMAGE', async () => {
     const node = await seedNode(ControllerNodeType.IMAGE)
-    const success = await deleteNode(node.id)
+    const success = await deleteNode(node.properties.id)
 
     expect(success)
         .toBe(true)

@@ -18,9 +18,9 @@ describe('A sorted "get all COMPANY nodes" request returns the nodes in correct 
 
     test('when there exist COMPANY nodes', async () => {
         await deleteAllNodesOfType(ControllerNodeType.COMPANY)
-        const nodeA = await seedNode(ControllerNodeType.COMPANY, {name: 'A Node'}) as CompanyNode
-        const nodeB = await seedNode(ControllerNodeType.COMPANY, {name: 'B Node'}) as CompanyNode
-        const nodeC = await seedNode(ControllerNodeType.COMPANY, {name: 'C Node'}) as CompanyNode
+        const nodeA = await seedNode(ControllerNodeType.COMPANY, {name: 'A Node'}) as unknown as CompanyNode
+        const nodeB = await seedNode(ControllerNodeType.COMPANY, {name: 'B Node'}) as unknown as CompanyNode
+        const nodeC = await seedNode(ControllerNodeType.COMPANY, {name: 'C Node'}) as unknown as CompanyNode
 
         const ascNodes = await Company.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

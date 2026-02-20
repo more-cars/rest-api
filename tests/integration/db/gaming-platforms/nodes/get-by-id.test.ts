@@ -15,7 +15,7 @@ test('Querying a GAMING PLATFORM that does not exist should return "false"', asy
 
 test('Querying an existing GAMING PLATFORM should return a db node with correct schema', async () => {
     const createdNode = await seedNode(ControllerNodeType.GAMING_PLATFORM)
-    const gamingPlatformNode = await getNodeById(createdNode.id)
+    const gamingPlatformNode = await getNodeById(createdNode.properties.id)
 
     expect(validateJson(gamingPlatformNode, GamingPlatformSchema))
         .toBeTruthy()

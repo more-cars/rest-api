@@ -10,20 +10,20 @@ import FakeImageFull from "../../../../_toolbox/fixtures/nodes/FakeImageFull"
 
 test('ID is added when creating a node', async () => {
     const createdBrand = await createBrandNode(FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate)
-    expect(createdBrand.id)
+    expect(createdBrand.properties.id)
         .toBeGreaterThanOrEqual(12000000)
-    expect(createdBrand.id)
+    expect(createdBrand.properties.id)
         .toBeLessThanOrEqual(99999999)
 
     const createdCarModel = await createCarModelNode(FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate)
-    expect(createdCarModel.id)
+    expect(createdCarModel.properties.id)
         .toBeGreaterThanOrEqual(12000000)
-    expect(createdCarModel.id)
+    expect(createdCarModel.properties.id)
         .toBeLessThanOrEqual(99999999)
 
     const createdImage = await createImageNode(FakeImageFull)
-    expect(createdImage.id)
+    expect(createdImage.properties.id)
         .toBeGreaterThanOrEqual(12000000)
-    expect(createdImage.id)
+    expect(createdImage.properties.id)
         .toBeLessThanOrEqual(99999999)
 })

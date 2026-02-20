@@ -8,11 +8,11 @@ test('Trying to create the same ›achieved-with-car-model-variant‹ relationsh
     const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
     const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
-    await expect(LapTime.createAchievedWithCarModelVariantRelationship(lapTime.id, carModelVariant.id))
+    await expect(LapTime.createAchievedWithCarModelVariantRelationship(lapTime.properties.id, carModelVariant.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(LapTime.createAchievedWithCarModelVariantRelationship(lapTime.id, carModelVariant.id))
+    await expect(LapTime.createAchievedWithCarModelVariantRelationship(lapTime.properties.id, carModelVariant.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })

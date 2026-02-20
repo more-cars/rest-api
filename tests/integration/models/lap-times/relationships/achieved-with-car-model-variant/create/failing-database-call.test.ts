@@ -13,7 +13,7 @@ test('A completely valid request, but the database call fails (e.g. one of the n
     const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
     const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
-    await expect(LapTime.createAchievedWithCarModelVariantRelationship(lapTime.id, carModelVariant.id))
+    await expect(LapTime.createAchievedWithCarModelVariantRelationship(lapTime.properties.id, carModelVariant.properties.id))
         .rejects
         .toThrow(Error)
 })

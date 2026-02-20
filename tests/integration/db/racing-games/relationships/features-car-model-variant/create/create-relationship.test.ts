@@ -10,15 +10,15 @@ describe('Creating a ›features-car-model-variant‹ relationship', () => {
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
         const createdRelationship = await createRelationship(
-            racingGame.id,
-            carModelVariant.id,
+            racingGame.properties.id,
+            carModelVariant.properties.id,
             RelationshipType.RacingGameFeaturesCarModelVariant,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node.properties.id', racingGame.id)
+            .toHaveProperty('start_node.properties.id', racingGame.properties.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node.properties.id', carModelVariant.id)
+            .toHaveProperty('end_node.properties.id', carModelVariant.properties.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
@@ -33,7 +33,7 @@ describe('Creating a ›features-car-model-variant‹ relationship', () => {
         const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
         const createdRelationship = await createRelationship(
-            racingGame.id,
+            racingGame.properties.id,
             -42,
             RelationshipType.RacingGameFeaturesCarModelVariant,
         )

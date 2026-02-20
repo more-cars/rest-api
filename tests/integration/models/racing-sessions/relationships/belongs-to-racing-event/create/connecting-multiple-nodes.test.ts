@@ -13,11 +13,11 @@ test('A RACING SESSION cannot have multiple ›belongs-to-racing-event‹ relati
     const racingEvents = await seedNodes(ControllerNodeType.RACING_EVENT, racingEventsAmount)
 
     for (const racingEvent of racingEvents) {
-        await RacingSession.createBelongsToRacingEventRelationship(racingSession.id, racingEvent.id)
+        await RacingSession.createBelongsToRacingEventRelationship(racingSession.properties.id, racingEvent.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        racingSession.id,
+        racingSession.properties.id,
         RelationshipType.RacingSessionBelongsToRacingEvent,
         DbNodeType.RacingEvent,
     )

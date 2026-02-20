@@ -40,8 +40,8 @@ describe('Trying to delete a ›achieved-with-car-model-variant‹ relationship'
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
         const relationship = await deleteSpecificRelationship(
-            lapTime.id,
-            carModelVariant.id,
+            lapTime.properties.id,
+            carModelVariant.properties.id,
             RelationshipType.LapTimeAchievedWithCarModelVariant,
         )
 

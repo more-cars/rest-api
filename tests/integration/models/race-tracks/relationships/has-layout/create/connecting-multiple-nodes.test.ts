@@ -13,11 +13,11 @@ test('A RACE TRACK can have multiple ›has-layout‹ relationships', async () =
     const trackLayouts = await seedNodes(ControllerNodeType.TRACK_LAYOUT, trackLayoutsAmount)
 
     for (const trackLayout of trackLayouts) {
-        await RaceTrack.createHasLayoutRelationship(raceTrack.id, trackLayout.id)
+        await RaceTrack.createHasLayoutRelationship(raceTrack.properties.id, trackLayout.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        raceTrack.id,
+        raceTrack.properties.id,
         RelationshipType.RaceTrackHasLayout,
         DbNodeType.TrackLayout,
     )

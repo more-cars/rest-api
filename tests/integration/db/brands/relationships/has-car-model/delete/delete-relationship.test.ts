@@ -40,8 +40,8 @@ describe('Trying to delete a ›has-car-model‹ relationship', () => {
         const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
 
         const relationship = await deleteSpecificRelationship(
-            brand.id,
-            carModel.id,
+            brand.properties.id,
+            carModel.properties.id,
             RelationshipType.BrandHasCarModel,
         )
 

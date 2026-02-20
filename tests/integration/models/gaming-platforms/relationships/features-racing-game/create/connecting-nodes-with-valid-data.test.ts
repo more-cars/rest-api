@@ -8,12 +8,12 @@ test('Creating a ›features-racing-game‹ relationship with valid data', async
     const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
     const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
 
-    const createdRelationship = await GamingPlatform.createFeaturesRacingGameRelationship(gamingPlatform.id, racingGame.id)
+    const createdRelationship = await GamingPlatform.createFeaturesRacingGameRelationship(gamingPlatform.properties.id, racingGame.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(gamingPlatform.id)
+        .toEqual(gamingPlatform.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(racingGame.id)
+        .toEqual(racingGame.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

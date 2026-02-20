@@ -13,7 +13,7 @@ When('the user connects a(n) {string} to a(n) {string}',
         const endNode = await seedNode(endNodeType.toLowerCase() as ControllerNodeType)
 
         const response = await axios
-            .post(`${process.env.API_URL}/${nodePathFragment}/${startNode.id}/${relationshipName}/${endNode.id}`)
+            .post(`${process.env.API_URL}/${nodePathFragment}/${startNode.properties.id}/${relationshipName}/${endNode.properties.id}`)
             .catch(error => {
                 console.error(error)
             })

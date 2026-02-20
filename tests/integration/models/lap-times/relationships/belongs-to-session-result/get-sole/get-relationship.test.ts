@@ -29,7 +29,7 @@ describe('Requesting a ›belongs-to-session-result‹ relationship', () => {
     test('node exists, but not the relationship', async () => {
         const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
-        await expect(LapTime.getBelongsToSessionResultRelationship(lapTime.id))
+        await expect(LapTime.getBelongsToSessionResultRelationship(lapTime.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

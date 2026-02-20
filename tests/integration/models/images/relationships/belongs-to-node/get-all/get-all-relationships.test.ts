@@ -9,10 +9,10 @@ import {Image} from "../../../../../../../src/models/node-types/images/Image"
 describe('Requesting all ›belongs-to-node‹ relationships', () => {
     test('node and relationships exist', async () => {
         const image = await seedNode(ControllerNodeType.IMAGE)
-        await seedRelationshipForStartNode(image.id, ControllerNodeType.BRAND, RelationshipType.ImageBelongsToNode)
-        await seedRelationshipForStartNode(image.id, ControllerNodeType.BRAND, RelationshipType.ImageBelongsToNode)
+        await seedRelationshipForStartNode(image.properties.id, ControllerNodeType.BRAND, RelationshipType.ImageBelongsToNode)
+        await seedRelationshipForStartNode(image.properties.id, ControllerNodeType.BRAND, RelationshipType.ImageBelongsToNode)
 
-        const relationships = await Image.getAllBelongsToNodeRelationships(image.id)
+        const relationships = await Image.getAllBelongsToNodeRelationships(image.properties.id)
 
         expect(relationships.length)
             .toBe(2)
@@ -21,7 +21,7 @@ describe('Requesting all ›belongs-to-node‹ relationships', () => {
     test('node exists, but no relationships', async () => {
         const image = await seedNode(ControllerNodeType.IMAGE)
 
-        const relationships = await Image.getAllBelongsToNodeRelationships(image.id)
+        const relationships = await Image.getAllBelongsToNodeRelationships(image.properties.id)
 
         expect(relationships.length)
             .toBe(0)

@@ -13,11 +13,11 @@ test('A RACE TRACK can have multiple ›hosted-racing-event‹ relationships', a
     const racingEvents = await seedNodes(ControllerNodeType.RACING_EVENT, racingEventsAmount)
 
     for (const racingEvent of racingEvents) {
-        await RaceTrack.createHostedRacingEventRelationship(raceTrack.id, racingEvent.id)
+        await RaceTrack.createHostedRacingEventRelationship(raceTrack.properties.id, racingEvent.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        raceTrack.id,
+        raceTrack.properties.id,
         RelationshipType.RaceTrackHostedRacingEvent,
         DbNodeType.RacingEvent,
     )

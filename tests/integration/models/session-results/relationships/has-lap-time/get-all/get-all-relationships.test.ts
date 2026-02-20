@@ -9,10 +9,10 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 describe('Requesting all ›has-lap-time‹ relationships', () => {
     test('node and relationships exist', async () => {
         const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
-        await seedRelationshipForStartNode(sessionResult.id, ControllerNodeType.LAP_TIME, RelationshipType.SessionResultHasLapTime)
-        await seedRelationshipForStartNode(sessionResult.id, ControllerNodeType.LAP_TIME, RelationshipType.SessionResultHasLapTime)
+        await seedRelationshipForStartNode(sessionResult.properties.id, ControllerNodeType.LAP_TIME, RelationshipType.SessionResultHasLapTime)
+        await seedRelationshipForStartNode(sessionResult.properties.id, ControllerNodeType.LAP_TIME, RelationshipType.SessionResultHasLapTime)
 
-        const relationships = await SessionResult.getAllHasLapTimeRelationships(sessionResult.id)
+        const relationships = await SessionResult.getAllHasLapTimeRelationships(sessionResult.properties.id)
 
         expect(relationships.length)
             .toBe(2)
@@ -21,7 +21,7 @@ describe('Requesting all ›has-lap-time‹ relationships', () => {
     test('node exists, but no relationships', async () => {
         const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
-        const relationships = await SessionResult.getAllHasLapTimeRelationships(sessionResult.id)
+        const relationships = await SessionResult.getAllHasLapTimeRelationships(sessionResult.properties.id)
 
         expect(relationships.length)
             .toBe(0)

@@ -12,7 +12,7 @@ describe('Deleting a ›was-used-by-racing-event‹ relationship', () => {
     test('TRACK LAYOUT node does not exist', async () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-        await expect(TrackLayout.deleteWasUsedByRacingEventRelationship(trackLayout.id, -43))
+        await expect(TrackLayout.deleteWasUsedByRacingEventRelationship(trackLayout.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›was-used-by-racing-event‹ relationship', () => {
     test('RACING EVENT node does not exist', async () => {
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
-        await expect(TrackLayout.deleteWasUsedByRacingEventRelationship(-42, racingEvent.id))
+        await expect(TrackLayout.deleteWasUsedByRacingEventRelationship(-42, racingEvent.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›was-used-by-racing-event‹ relationship', () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
-        await expect(TrackLayout.deleteWasUsedByRacingEventRelationship(trackLayout.id, racingEvent.id))
+        await expect(TrackLayout.deleteWasUsedByRacingEventRelationship(trackLayout.properties.id, racingEvent.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

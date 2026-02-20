@@ -10,15 +10,15 @@ describe('Creating a ›has-prime-image‹ relationship', () => {
         const image = await seedNode(ControllerNodeType.IMAGE)
 
         const createdRelationship = await createRelationship(
-            racingEvent.id,
-            image.id,
+            racingEvent.properties.id,
+            image.properties.id,
             RelationshipType.RacingEventHasPrimeImage,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node.properties.id', racingEvent.id)
+            .toHaveProperty('start_node.properties.id', racingEvent.properties.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node.properties.id', image.id)
+            .toHaveProperty('end_node.properties.id', image.properties.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
@@ -33,7 +33,7 @@ describe('Creating a ›has-prime-image‹ relationship', () => {
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
         const createdRelationship = await createRelationship(
-            racingEvent.id,
+            racingEvent.properties.id,
             -42,
             RelationshipType.RacingEventHasPrimeImage,
         )

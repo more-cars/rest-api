@@ -8,12 +8,12 @@ test('Creating a ›features-track-layout‹ relationship with valid data', asyn
     const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
     const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-    const createdRelationship = await RacingGame.createFeaturesTrackLayoutRelationship(racingGame.id, trackLayout.id)
+    const createdRelationship = await RacingGame.createFeaturesTrackLayoutRelationship(racingGame.properties.id, trackLayout.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(racingGame.id)
+        .toEqual(racingGame.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(trackLayout.id)
+        .toEqual(trackLayout.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

@@ -13,11 +13,11 @@ test('A CAR MODEL can have multiple ›has-variant‹ relationships', async () =
     const carModelVariants = await seedNodes(ControllerNodeType.CAR_MODEL_VARIANT, carModelVariantsAmount)
 
     for (const carModelVariant of carModelVariants) {
-        await CarModel.createHasVariantRelationship(carModel.id, carModelVariant.id)
+        await CarModel.createHasVariantRelationship(carModel.properties.id, carModelVariant.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        carModel.id,
+        carModel.properties.id,
         RelationshipType.CarModelHasVariant,
         DbNodeType.CarModelVariant,
     )

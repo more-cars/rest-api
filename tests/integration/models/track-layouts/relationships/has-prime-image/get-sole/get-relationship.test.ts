@@ -29,7 +29,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node exists, but not the relationship', async () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-        await expect(TrackLayout.getHasPrimeImageRelationship(trackLayout.id))
+        await expect(TrackLayout.getHasPrimeImageRelationship(trackLayout.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

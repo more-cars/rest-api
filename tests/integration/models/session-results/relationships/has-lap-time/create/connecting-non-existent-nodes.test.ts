@@ -8,11 +8,11 @@ test('Trying to create a ›has-lap-time‹ relationship with nodes that do not 
     const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
     const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
-    await expect(SessionResult.createHasLapTimeRelationship(-42, lapTime.id))
+    await expect(SessionResult.createHasLapTimeRelationship(-42, lapTime.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(SessionResult.createHasLapTimeRelationship(sessionResult.id, -43))
+    await expect(SessionResult.createHasLapTimeRelationship(sessionResult.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

@@ -18,14 +18,17 @@ describe('A sorted "get all IMAGE nodes" request returns the nodes in correct or
 
     test('when there exist IMAGE nodes', async () => {
         await deleteAllNodesOfType(ControllerNodeType.IMAGE)
-        const nodeA = await seedNode(ControllerNodeType.IMAGE, {name: 'A Node'}) as ImageNode
-        const nodeB = await seedNode(ControllerNodeType.IMAGE, {name: 'B Node'}) as ImageNode
-        const nodeC = await seedNode(ControllerNodeType.IMAGE, {name: 'C Node'}) as ImageNode
+        const nodeA = await seedNode(ControllerNodeType.IMAGE, {
+            name: 'A Node'}) as unknown as ImageNode
+            const nodeB = await seedNode(ControllerNodeType.IMAGE, {
+                name: 'B Node'}) as unknown as ImageNode
+                const nodeC = await seedNode(ControllerNodeType.IMAGE, {
+                    name: 'C Node'}) as unknown as ImageNode
 
-        const ascNodes = await Image.findAll({sortByProperty: 'name', sortDirection: 'asc'})
-        expect(ascNodes.length).toEqual(3)
-        expect(ascNodes[0].name === nodeA.name)
-        expect(ascNodes[1].name === nodeB.name)
+                    const ascNodes = await Image.findAll({sortByProperty: 'name', sortDirection: 'asc'})
+                    expect(ascNodes.length).toEqual(3)
+                expect(ascNodes[0].name === nodeA.name)
+            expect(ascNodes[1].name === nodeB.name)
         expect(ascNodes[2].name === nodeC.name)
 
         const descNodes = await Image.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -34,4 +37,4 @@ describe('A sorted "get all IMAGE nodes" request returns the nodes in correct or
         expect(descNodes[1].name === nodeB.name)
         expect(descNodes[2].name === nodeA.name)
     })
-})
+    })

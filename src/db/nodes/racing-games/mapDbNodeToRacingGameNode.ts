@@ -1,17 +1,23 @@
 import {Node} from "neo4j-driver"
 import {RacingGameNode} from "./types/RacingGameNode"
+import {DbNodeType} from "../../types/DbNodeType"
 
-export function mapDbNodeToRacingGameNode(dbNode: Node): RacingGameNode {
-    return {
-        // system data
-        id: dbNode.properties.mc_id,
-        created_at: dbNode.properties.created_at,
-        updated_at: dbNode.properties.updated_at,
+export function mapDbNodeToRacingGameNode(neo4jNode: Node): RacingGameNode {
+    const node: RacingGameNode = {
+        node_type: DbNodeType.RacingGame,
+        properties: {
+            // system data
+            id: neo4jNode.properties.mc_id,
+            created_at: neo4jNode.properties.created_at,
+            updated_at: neo4jNode.properties.updated_at,
 
-        // user data
-        name: dbNode.properties.name,
-        release_year: dbNode.properties.release_year,
-        developer: dbNode.properties.developer,
-        publisher: dbNode.properties.publisher,
-    } as RacingGameNode
+            // user data
+            name: neo4jNode.properties.name,
+            release_year: neo4jNode.properties.release_year,
+            developer: neo4jNode.properties.developer,
+            publisher: neo4jNode.properties.publisher,
+        }
+    }
+
+    return node
 }

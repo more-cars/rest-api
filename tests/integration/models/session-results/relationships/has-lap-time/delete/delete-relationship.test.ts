@@ -12,7 +12,7 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
     test('SESSION RESULT node does not exist', async () => {
         const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
-        await expect(SessionResult.deleteHasLapTimeRelationship(sessionResult.id, -43))
+        await expect(SessionResult.deleteHasLapTimeRelationship(sessionResult.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
     test('LAP TIME node does not exist', async () => {
         const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
-        await expect(SessionResult.deleteHasLapTimeRelationship(-42, lapTime.id))
+        await expect(SessionResult.deleteHasLapTimeRelationship(-42, lapTime.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
         const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
         const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
-        await expect(SessionResult.deleteHasLapTimeRelationship(sessionResult.id, lapTime.id))
+        await expect(SessionResult.deleteHasLapTimeRelationship(sessionResult.properties.id, lapTime.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

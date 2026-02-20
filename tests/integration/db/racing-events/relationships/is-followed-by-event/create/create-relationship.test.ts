@@ -10,15 +10,15 @@ describe('Creating a ›is-followed-by-event‹ relationship', () => {
         const partner = await seedNode(ControllerNodeType.RACING_EVENT)
 
         const createdRelationship = await createRelationship(
-            racingEvent.id,
-            partner.id,
+            racingEvent.properties.id,
+            partner.properties.id,
             RelationshipType.RacingEventIsFollowedByEvent,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node.properties.id', racingEvent.id)
+            .toHaveProperty('start_node.properties.id', racingEvent.properties.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node.properties.id', partner.id)
+            .toHaveProperty('end_node.properties.id', partner.properties.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
@@ -33,7 +33,7 @@ describe('Creating a ›is-followed-by-event‹ relationship', () => {
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
         const createdRelationship = await createRelationship(
-            racingEvent.id,
+            racingEvent.properties.id,
             -42,
             RelationshipType.RacingEventIsFollowedByEvent,
         )

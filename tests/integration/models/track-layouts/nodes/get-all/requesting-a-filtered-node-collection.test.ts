@@ -23,16 +23,17 @@ describe('A filtered "get all TRACK LAYOUT nodes" request returns only the match
 
     test('when there exist TRACK LAYOUT nodes', async () => {
         await deleteAllNodesOfType(ControllerNodeType.TRACK_LAYOUT)
-        const nodeA = await seedNode(ControllerNodeType.TRACK_LAYOUT, {name: 'A Node'}) as TrackLayoutNode
-        await seedNode(ControllerNodeType.TRACK_LAYOUT, {name: 'B Node'})
-        await seedNode(ControllerNodeType.TRACK_LAYOUT, {name: 'C Node'})
+        const nodeA = await seedNode(ControllerNodeType.TRACK_LAYOUT, {
+            name: 'A Node'}) as unknown as TrackLayoutNode
+            await seedNode(ControllerNodeType.TRACK_LAYOUT, {name: 'B Node'})
+            await seedNode(ControllerNodeType.TRACK_LAYOUT, {name: 'C Node'})
 
-        const filteredNodes = await TrackLayout.findAll({
-            filterByProperty: 'name',
-            filterValue: 'A Node',
-            filterOperator: FilterOperator.equal
-        })
-        expect(filteredNodes.length).toEqual(1)
+            const filteredNodes = await TrackLayout.findAll({
+                filterByProperty: 'name',
+                filterValue: 'A Node',
+                filterOperator: FilterOperator.equal
+            })
+            expect(filteredNodes.length).toEqual(1)
         expect(filteredNodes[0].name === nodeA.name)
     })
-})
+    })

@@ -8,11 +8,11 @@ test('Trying to create the same ›has-prime-image‹ relationship again', async
     const brand = await seedNode(ControllerNodeType.BRAND)
     const image = await seedNode(ControllerNodeType.IMAGE)
 
-    await expect(Brand.createHasPrimeImageRelationship(brand.id, image.id))
+    await expect(Brand.createHasPrimeImageRelationship(brand.properties.id, image.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(Brand.createHasPrimeImageRelationship(brand.id, image.id))
+    await expect(Brand.createHasPrimeImageRelationship(brand.properties.id, image.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })

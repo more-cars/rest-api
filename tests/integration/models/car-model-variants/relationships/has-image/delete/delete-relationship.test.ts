@@ -12,7 +12,7 @@ describe('Deleting a ›has-image‹ relationship', () => {
     test('CAR MODEL VARIANT node does not exist', async () => {
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
-        await expect(CarModelVariant.deleteHasImageRelationship(carModelVariant.id, -43))
+        await expect(CarModelVariant.deleteHasImageRelationship(carModelVariant.properties.id, -43))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -20,7 +20,7 @@ describe('Deleting a ›has-image‹ relationship', () => {
     test('IMAGE node does not exist', async () => {
         const image = await seedNode(ControllerNodeType.IMAGE)
 
-        await expect(CarModelVariant.deleteHasImageRelationship(-42, image.id))
+        await expect(CarModelVariant.deleteHasImageRelationship(-42, image.properties.id))
             .rejects
             .toThrow(NodeNotFoundError)
     })
@@ -35,7 +35,7 @@ describe('Deleting a ›has-image‹ relationship', () => {
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
         const image = await seedNode(ControllerNodeType.IMAGE)
 
-        await expect(CarModelVariant.deleteHasImageRelationship(carModelVariant.id, image.id))
+        await expect(CarModelVariant.deleteHasImageRelationship(carModelVariant.properties.id, image.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

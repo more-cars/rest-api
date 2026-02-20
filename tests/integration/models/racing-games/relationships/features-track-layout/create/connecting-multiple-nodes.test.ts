@@ -13,11 +13,11 @@ test('A RACING GAME can have multiple ›features-track-layout‹ relationships'
     const trackLayouts = await seedNodes(ControllerNodeType.TRACK_LAYOUT, trackLayoutsAmount)
 
     for (const trackLayout of trackLayouts) {
-        await RacingGame.createFeaturesTrackLayoutRelationship(racingGame.id, trackLayout.id)
+        await RacingGame.createFeaturesTrackLayoutRelationship(racingGame.properties.id, trackLayout.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        racingGame.id,
+        racingGame.properties.id,
         RelationshipType.RacingGameFeaturesTrackLayout,
         DbNodeType.TrackLayout,
     )

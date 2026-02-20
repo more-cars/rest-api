@@ -23,16 +23,17 @@ describe('A filtered "get all LAP TIME nodes" request returns only the matching 
 
     test('when there exist LAP TIME nodes', async () => {
         await deleteAllNodesOfType(ControllerNodeType.LAP_TIME)
-        const nodeA = await seedNode(ControllerNodeType.LAP_TIME, {time: 'A', driver_name: 'A Node'}) as LapTimeNode
-        await seedNode(ControllerNodeType.LAP_TIME, {time: 'B', driver_name: 'B Node'})
-        await seedNode(ControllerNodeType.LAP_TIME, {time: 'C', driver_name: 'C Node'})
+        const nodeA = await seedNode(ControllerNodeType.LAP_TIME, {
+            time: 'A', driver_name: 'A Node'}) as unknown as LapTimeNode
+            await seedNode(ControllerNodeType.LAP_TIME, {time: 'B', driver_name: 'B Node'})
+            await seedNode(ControllerNodeType.LAP_TIME, {time: 'C', driver_name: 'C Node'})
 
-        const filteredNodes = await LapTime.findAll({
-            filterByProperty: 'driver_name',
-            filterValue: 'A Node',
-            filterOperator: FilterOperator.equal
-        })
-        expect(filteredNodes.length).toEqual(1)
+            const filteredNodes = await LapTime.findAll({
+                filterByProperty: 'driver_name',
+                filterValue: 'A Node',
+                filterOperator: FilterOperator.equal
+            })
+            expect(filteredNodes.length).toEqual(1)
         expect(filteredNodes[0].driver_name === nodeA.driver_name)
     })
-})
+    })

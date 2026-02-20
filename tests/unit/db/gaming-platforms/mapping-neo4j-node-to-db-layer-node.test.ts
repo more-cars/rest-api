@@ -21,11 +21,14 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
 
     expect(mappedNode)
         .toStrictEqual({
-            id: 1,
-            created_at: "2025-05-14T11:05:07.793Z",
-            updated_at: "2025-05-14T11:05:07.793Z",
-            name: "PlayStation 5",
-            release_year: 2020,
-            manufacturer: "Sony",
+            node_type: "GamingPlatform",
+            properties: {
+                id: 1,
+                created_at: "2025-05-14T11:05:07.793Z",
+                updated_at: "2025-05-14T11:05:07.793Z",
+                name: "PlayStation 5",
+                release_year: 2020,
+                manufacturer: "Sony",
+            }
         })
 })

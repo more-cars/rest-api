@@ -10,15 +10,15 @@ describe('Creating a ›has-prime-image‹ relationship', () => {
         const image = await seedNode(ControllerNodeType.IMAGE)
 
         const createdRelationship = await createRelationship(
-            gamingPlatform.id,
-            image.id,
+            gamingPlatform.properties.id,
+            image.properties.id,
             RelationshipType.GamingPlatformHasPrimeImage,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node.properties.id', gamingPlatform.id)
+            .toHaveProperty('start_node.properties.id', gamingPlatform.properties.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node.properties.id', image.id)
+            .toHaveProperty('end_node.properties.id', image.properties.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
@@ -33,7 +33,7 @@ describe('Creating a ›has-prime-image‹ relationship', () => {
         const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
 
         const createdRelationship = await createRelationship(
-            gamingPlatform.id,
+            gamingPlatform.properties.id,
             -42,
             RelationshipType.GamingPlatformHasPrimeImage,
         )

@@ -23,16 +23,17 @@ describe('A filtered "get all RACING GAME nodes" request returns only the matchi
 
     test('when there exist RACING GAME nodes', async () => {
         await deleteAllNodesOfType(ControllerNodeType.RACING_GAME)
-        const nodeA = await seedNode(ControllerNodeType.RACING_GAME, {name: 'A Node'}) as RacingGameNode
-        await seedNode(ControllerNodeType.RACING_GAME, {name: 'B Node'})
-        await seedNode(ControllerNodeType.RACING_GAME, {name: 'C Node'})
+        const nodeA = await seedNode(ControllerNodeType.RACING_GAME, {
+            name: 'A Node'}) as unknown as RacingGameNode
+            await seedNode(ControllerNodeType.RACING_GAME, {name: 'B Node'})
+            await seedNode(ControllerNodeType.RACING_GAME, {name: 'C Node'})
 
-        const filteredNodes = await RacingGame.findAll({
-            filterByProperty: 'name',
-            filterValue: 'A Node',
-            filterOperator: FilterOperator.equal
-        })
-        expect(filteredNodes.length).toEqual(1)
+            const filteredNodes = await RacingGame.findAll({
+                filterByProperty: 'name',
+                filterValue: 'A Node',
+                filterOperator: FilterOperator.equal
+            })
+            expect(filteredNodes.length).toEqual(1)
         expect(filteredNodes[0].name === nodeA.name)
     })
-})
+    })

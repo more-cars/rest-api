@@ -1,20 +1,26 @@
 import {Node} from "neo4j-driver"
 import {RacingSessionNode} from "./types/RacingSessionNode"
+import {DbNodeType} from "../../types/DbNodeType"
 
-export function mapDbNodeToRacingSessionNode(dbNode: Node): RacingSessionNode {
-    return {
-        // system data
-        id: dbNode.properties.mc_id,
-        created_at: dbNode.properties.created_at,
-        updated_at: dbNode.properties.updated_at,
+export function mapDbNodeToRacingSessionNode(neo4jNode: Node): RacingSessionNode {
+    const node: RacingSessionNode = {
+        node_type: DbNodeType.RacingSession,
+        properties: {
+            // system data
+            id: neo4jNode.properties.mc_id,
+            created_at: neo4jNode.properties.created_at,
+            updated_at: neo4jNode.properties.updated_at,
 
-        // user data
-        name: dbNode.properties.name,
-        start_date: dbNode.properties.start_date,
-        start_time: dbNode.properties.start_time,
-        duration: dbNode.properties.duration,
-        duration_unit: dbNode.properties.duration_unit,
-        distance: dbNode.properties.distance,
-        distance_unit: dbNode.properties.distance_unit,
-    } as RacingSessionNode
+            // user data
+            name: neo4jNode.properties.name,
+            start_date: neo4jNode.properties.start_date,
+            start_time: neo4jNode.properties.start_time,
+            duration: neo4jNode.properties.duration,
+            duration_unit: neo4jNode.properties.duration_unit,
+            distance: neo4jNode.properties.distance,
+            distance_unit: neo4jNode.properties.distance_unit,
+        }
+    }
+
+    return node
 }

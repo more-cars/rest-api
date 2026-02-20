@@ -8,12 +8,12 @@ test('Creating a ›used-the-track-layout‹ relationship with valid data', asyn
     const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
     const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-    const createdRelationship = await RacingEvent.createUsedTheTrackLayoutRelationship(racingEvent.id, trackLayout.id)
+    const createdRelationship = await RacingEvent.createUsedTheTrackLayoutRelationship(racingEvent.properties.id, trackLayout.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(racingEvent.id)
+        .toEqual(racingEvent.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(trackLayout.id)
+        .toEqual(trackLayout.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

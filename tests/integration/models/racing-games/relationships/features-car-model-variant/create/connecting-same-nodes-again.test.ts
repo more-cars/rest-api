@@ -8,11 +8,11 @@ test('Trying to create the same ›features-car-model-variant‹ relationship ag
     const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
     const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
-    await expect(RacingGame.createFeaturesCarModelVariantRelationship(racingGame.id, carModelVariant.id))
+    await expect(RacingGame.createFeaturesCarModelVariantRelationship(racingGame.properties.id, carModelVariant.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(RacingGame.createFeaturesCarModelVariantRelationship(racingGame.id, carModelVariant.id))
+    await expect(RacingGame.createFeaturesCarModelVariantRelationship(racingGame.properties.id, carModelVariant.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })

@@ -10,15 +10,15 @@ describe('Creating a ›achieved-lap-time‹ relationship', () => {
         const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
 
         const createdRelationship = await createRelationship(
-            carModelVariant.id,
-            lapTime.id,
+            carModelVariant.properties.id,
+            lapTime.properties.id,
             RelationshipType.CarModelVariantAchievedLapTime,
         )
 
         expect(createdRelationship)
-            .toHaveProperty('start_node.properties.id', carModelVariant.id)
+            .toHaveProperty('start_node.properties.id', carModelVariant.properties.id)
         expect(createdRelationship)
-            .toHaveProperty('end_node.properties.id', lapTime.id)
+            .toHaveProperty('end_node.properties.id', lapTime.properties.id)
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
@@ -33,7 +33,7 @@ describe('Creating a ›achieved-lap-time‹ relationship', () => {
         const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
         const createdRelationship = await createRelationship(
-            carModelVariant.id,
+            carModelVariant.properties.id,
             -42,
             RelationshipType.CarModelVariantAchievedLapTime,
         )

@@ -13,9 +13,9 @@ test('Fetching an image that does not exist should return "false"', async () => 
 
 test('When the image exists it should be returned', async () => {
     const expectedNode = await seedNode(ControllerNodeType.IMAGE)
-    const actualNode = await Image.findById(expectedNode.id)
+    const actualNode = await Image.findById(expectedNode.properties.id)
 
     expect(actualNode)
-        .toEqual(expectedNode)
+        .toEqual(expectedNode.properties)
 })
 

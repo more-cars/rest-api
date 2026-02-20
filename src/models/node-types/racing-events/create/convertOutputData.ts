@@ -3,12 +3,12 @@ import {RacingEventNode} from "../types/RacingEventNode"
 
 export function convertOutputData(data: RacingEventNodeInput): RacingEventNode {
     return {
-        id: data.id,
-        name: data.name,
-        round: data.round,
-        date_from: data.date_from,
-        date_to: data.date_to,
-        created_at: data.created_at,
-        updated_at: data.updated_at,
+        id: data.properties.id,
+        name: data.properties.name,
+        round: data.properties.round,
+        date_from: data.properties.date_from,
+        date_to: data.properties.date_to,
+        created_at: data.properties.created_at,
+        updated_at: data.properties.updated_at,
     } as RacingEventNode
 }

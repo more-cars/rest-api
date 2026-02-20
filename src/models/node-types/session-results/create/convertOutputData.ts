@@ -3,16 +3,16 @@ import {SessionResultNode} from "../types/SessionResultNode"
 
 export function convertOutputData(data: SessionResultNodeInput): SessionResultNode {
     return {
-        id: data.id,
-        position: data.position,
-        race_number: data.race_number,
-        driver_name: data.driver_name,
-        team_name: data.team_name,
-        race_time: data.race_time,
-        laps: data.laps,
-        status: data.status,
-        points: data.points,
-        created_at: data.created_at,
-        updated_at: data.updated_at,
+        id: data.properties.id,
+        position: data.properties.position,
+        race_number: data.properties.race_number,
+        driver_name: data.properties.driver_name,
+        team_name: data.properties.team_name,
+        race_time: data.properties.race_time,
+        laps: data.properties.laps,
+        status: data.properties.status,
+        points: data.properties.points,
+        created_at: data.properties.created_at,
+        updated_at: data.properties.updated_at,
     } as SessionResultNode
 }

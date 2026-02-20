@@ -8,11 +8,11 @@ test('Trying to create the same ›has-session-result‹ relationship again', as
     const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
     const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
-    await expect(RacingSession.createHasSessionResultRelationship(racingSession.id, sessionResult.id))
+    await expect(RacingSession.createHasSessionResultRelationship(racingSession.properties.id, sessionResult.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(RacingSession.createHasSessionResultRelationship(racingSession.id, sessionResult.id))
+    await expect(RacingSession.createHasSessionResultRelationship(racingSession.properties.id, sessionResult.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })

@@ -12,11 +12,11 @@ test('A IMAGE can have multiple ›is-prime-image-of-node‹ relationships', asy
     const nodes = await seedNodes(ControllerNodeType.COMPANY, nodesAmount)
 
     for (const node of nodes) {
-        await Image.createIsPrimeImageOfNodeRelationship(image.id, node.id)
+        await Image.createIsPrimeImageOfNodeRelationship(image.properties.id, node.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        image.id,
+        image.properties.id,
         RelationshipType.ImageIsPrimeImageOfNode,
     )
 

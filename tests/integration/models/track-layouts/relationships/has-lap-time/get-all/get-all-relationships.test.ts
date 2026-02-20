@@ -9,10 +9,10 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 describe('Requesting all ›has-lap-time‹ relationships', () => {
     test('node and relationships exist', async () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
-        await seedRelationshipForStartNode(trackLayout.id, ControllerNodeType.LAP_TIME, RelationshipType.TrackLayoutHasLapTime)
-        await seedRelationshipForStartNode(trackLayout.id, ControllerNodeType.LAP_TIME, RelationshipType.TrackLayoutHasLapTime)
+        await seedRelationshipForStartNode(trackLayout.properties.id, ControllerNodeType.LAP_TIME, RelationshipType.TrackLayoutHasLapTime)
+        await seedRelationshipForStartNode(trackLayout.properties.id, ControllerNodeType.LAP_TIME, RelationshipType.TrackLayoutHasLapTime)
 
-        const relationships = await TrackLayout.getAllHasLapTimeRelationships(trackLayout.id)
+        const relationships = await TrackLayout.getAllHasLapTimeRelationships(trackLayout.properties.id)
 
         expect(relationships.length)
             .toBe(2)
@@ -21,7 +21,7 @@ describe('Requesting all ›has-lap-time‹ relationships', () => {
     test('node exists, but no relationships', async () => {
         const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
 
-        const relationships = await TrackLayout.getAllHasLapTimeRelationships(trackLayout.id)
+        const relationships = await TrackLayout.getAllHasLapTimeRelationships(trackLayout.properties.id)
 
         expect(relationships.length)
             .toBe(0)

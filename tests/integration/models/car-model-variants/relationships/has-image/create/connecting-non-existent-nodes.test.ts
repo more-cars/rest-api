@@ -8,11 +8,11 @@ test('Trying to create a ›has-image‹ relationship with nodes that do not exi
     const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
     const image = await seedNode(ControllerNodeType.IMAGE)
 
-    await expect(CarModelVariant.createHasImageRelationship(-42, image.id))
+    await expect(CarModelVariant.createHasImageRelationship(-42, image.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(CarModelVariant.createHasImageRelationship(carModelVariant.id, -43))
+    await expect(CarModelVariant.createHasImageRelationship(carModelVariant.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

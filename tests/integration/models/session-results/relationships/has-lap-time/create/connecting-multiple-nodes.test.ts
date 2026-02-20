@@ -13,11 +13,11 @@ test('A SESSION RESULT can have multiple ›has-lap-time‹ relationships', asyn
     const lapTimes = await seedNodes(ControllerNodeType.LAP_TIME, lapTimesAmount)
 
     for (const lapTime of lapTimes) {
-        await SessionResult.createHasLapTimeRelationship(sessionResult.id, lapTime.id)
+        await SessionResult.createHasLapTimeRelationship(sessionResult.properties.id, lapTime.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        sessionResult.id,
+        sessionResult.properties.id,
         RelationshipType.SessionResultHasLapTime,
         DbNodeType.LapTime,
     )

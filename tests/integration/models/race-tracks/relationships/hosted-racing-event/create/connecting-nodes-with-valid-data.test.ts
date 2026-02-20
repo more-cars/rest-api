@@ -8,12 +8,12 @@ test('Creating a ›hosted-racing-event‹ relationship with valid data', async 
     const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
     const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
-    const createdRelationship = await RaceTrack.createHostedRacingEventRelationship(raceTrack.id, racingEvent.id)
+    const createdRelationship = await RaceTrack.createHostedRacingEventRelationship(raceTrack.properties.id, racingEvent.properties.id)
 
     expect(createdRelationship.origin.properties.id)
-        .toEqual(raceTrack.id)
+        .toEqual(raceTrack.properties.id)
     expect(createdRelationship.destination.properties.id)
-        .toEqual(racingEvent.id)
+        .toEqual(racingEvent.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)

@@ -1,16 +1,22 @@
 import {Node} from "neo4j-driver"
 import {LapTimeNode} from "./types/LapTimeNode"
+import {DbNodeType} from "../../types/DbNodeType"
 
-export function mapDbNodeToLapTimeNode(dbNode: Node): LapTimeNode {
-    return {
-        // system data
-        id: dbNode.properties.mc_id,
-        created_at: dbNode.properties.created_at,
-        updated_at: dbNode.properties.updated_at,
+export function mapDbNodeToLapTimeNode(neo4jNode: Node): LapTimeNode {
+    const node: LapTimeNode = {
+        node_type: DbNodeType.LapTime,
+        properties: {
+            // system data
+            id: neo4jNode.properties.mc_id,
+            created_at: neo4jNode.properties.created_at,
+            updated_at: neo4jNode.properties.updated_at,
 
-        // user data
-        time: dbNode.properties.time,
-        driver_name: dbNode.properties.driver_name,
-        date: dbNode.properties.date,
-    } as LapTimeNode
+            // user data
+            time: neo4jNode.properties.time,
+            driver_name: neo4jNode.properties.driver_name,
+            date: neo4jNode.properties.date,
+        }
+    }
+
+    return node
 }

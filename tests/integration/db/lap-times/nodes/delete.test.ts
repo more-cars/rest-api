@@ -12,7 +12,7 @@ test('Expecting response "false" when trying to delete a non-existing LAP TIME',
 
 test('Expecting response "true" when deleting an existing LAP TIME', async () => {
     const node = await seedNode(ControllerNodeType.LAP_TIME)
-    const success = await deleteNode(node.id)
+    const success = await deleteNode(node.properties.id)
 
     expect(success)
         .toBe(true)

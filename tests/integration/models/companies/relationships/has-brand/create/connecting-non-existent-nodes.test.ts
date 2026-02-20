@@ -8,11 +8,11 @@ test('Trying to create a ›has-brand‹ relationship with nodes that do not exi
     const company = await seedNode(ControllerNodeType.COMPANY)
     const brand = await seedNode(ControllerNodeType.BRAND)
 
-    await expect(Company.createHasBrandRelationship(-42, brand.id))
+    await expect(Company.createHasBrandRelationship(-42, brand.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(Company.createHasBrandRelationship(company.id, -43))
+    await expect(Company.createHasBrandRelationship(company.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

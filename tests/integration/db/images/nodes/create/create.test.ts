@@ -5,6 +5,6 @@ import FakeImageFull from "../../../../../_toolbox/fixtures/nodes/FakeImageFull"
 test('Creating node with valid data', async () => {
     const createdNode = await createNode(FakeImageFull)
 
-    expect(createdNode)
+    expect(createdNode.properties)
         .toEqual(expect.objectContaining(FakeImageFull))
 })

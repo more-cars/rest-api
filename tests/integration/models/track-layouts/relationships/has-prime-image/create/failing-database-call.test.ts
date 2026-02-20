@@ -13,7 +13,7 @@ test('A completely valid request, but the database call fails (e.g. one of the n
     const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
     const image = await seedNode(ControllerNodeType.IMAGE)
 
-    await expect(TrackLayout.createHasPrimeImageRelationship(trackLayout.id, image.id))
+    await expect(TrackLayout.createHasPrimeImageRelationship(trackLayout.properties.id, image.properties.id))
         .rejects
         .toThrow(Error)
 })

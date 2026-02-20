@@ -8,11 +8,11 @@ test('Trying to create a ›has-image‹ relationship with nodes that do not exi
     const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
     const image = await seedNode(ControllerNodeType.IMAGE)
 
-    await expect(RaceTrack.createHasImageRelationship(-42, image.id))
+    await expect(RaceTrack.createHasImageRelationship(-42, image.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(RaceTrack.createHasImageRelationship(raceTrack.id, -43))
+    await expect(RaceTrack.createHasImageRelationship(raceTrack.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

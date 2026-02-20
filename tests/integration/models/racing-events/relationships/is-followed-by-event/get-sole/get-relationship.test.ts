@@ -29,7 +29,7 @@ describe('Requesting a ›is-followed-by-event‹ relationship', () => {
     test('node exists, but not the relationship', async () => {
         const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
 
-        await expect(RacingEvent.getIsFollowedByEventRelationship(racingEvent.id))
+        await expect(RacingEvent.getIsFollowedByEventRelationship(racingEvent.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })

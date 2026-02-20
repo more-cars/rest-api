@@ -13,11 +13,11 @@ test('A CAR MODEL cannot have multiple ›belongs-to-brand‹ relationships', as
     const brands = await seedNodes(ControllerNodeType.BRAND, brandsAmount)
 
     for (const brand of brands) {
-        await CarModel.createBelongsToBrandRelationship(carModel.id, brand.id)
+        await CarModel.createBelongsToBrandRelationship(carModel.properties.id, brand.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        carModel.id,
+        carModel.properties.id,
         RelationshipType.CarModelBelongsToBrand,
         DbNodeType.Brand,
     )

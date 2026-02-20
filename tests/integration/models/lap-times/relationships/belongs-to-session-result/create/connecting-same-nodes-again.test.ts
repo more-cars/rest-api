@@ -8,11 +8,11 @@ test('Trying to create the same ›belongs-to-session-result‹ relationship aga
     const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
     const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
 
-    await expect(LapTime.createBelongsToSessionResultRelationship(lapTime.id, sessionResult.id))
+    await expect(LapTime.createBelongsToSessionResultRelationship(lapTime.properties.id, sessionResult.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(LapTime.createBelongsToSessionResultRelationship(lapTime.id, sessionResult.id))
+    await expect(LapTime.createBelongsToSessionResultRelationship(lapTime.properties.id, sessionResult.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })

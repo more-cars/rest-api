@@ -13,8 +13,8 @@ test('Fetching a CAR MODEL VARIANT that does not exist should return "false"', a
 
 test('When the CAR MODEL VARIANT exists it should be returned', async () => {
     const expectedCarModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
-    const actualCarModelVariant = await CarModelVariant.findById(expectedCarModelVariant.id)
+    const actualCarModelVariant = await CarModelVariant.findById(expectedCarModelVariant.properties.id)
 
     expect(actualCarModelVariant)
-        .toEqual(expectedCarModelVariant)
+        .toEqual(expectedCarModelVariant.properties)
 })

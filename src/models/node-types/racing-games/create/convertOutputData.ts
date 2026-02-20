@@ -3,12 +3,12 @@ import {RacingGameNode} from "../types/RacingGameNode"
 
 export function convertOutputData(data: RacingGameNodeInput): RacingGameNode {
     return {
-        id: data.id,
-        name: data.name,
-        release_year: data.release_year,
-        developer: data.developer,
-        publisher: data.publisher,
-        created_at: data.created_at,
-        updated_at: data.updated_at,
+        id: data.properties.id,
+        name: data.properties.name,
+        release_year: data.properties.release_year,
+        developer: data.properties.developer,
+        publisher: data.properties.publisher,
+        created_at: data.properties.created_at,
+        updated_at: data.properties.updated_at,
     } as RacingGameNode
 }

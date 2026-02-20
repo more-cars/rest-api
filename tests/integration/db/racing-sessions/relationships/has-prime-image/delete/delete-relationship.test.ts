@@ -40,8 +40,8 @@ describe('Trying to delete a ›has-prime-image‹ relationship', () => {
         const image = await seedNode(ControllerNodeType.IMAGE)
 
         const relationship = await deleteSpecificRelationship(
-            racingSession.id,
-            image.id,
+            racingSession.properties.id,
+            image.properties.id,
             RelationshipType.RacingSessionHasPrimeImage,
         )
 

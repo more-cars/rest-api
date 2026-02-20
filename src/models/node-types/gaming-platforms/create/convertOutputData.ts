@@ -3,11 +3,11 @@ import {GamingPlatformNode} from "../types/GamingPlatformNode"
 
 export function convertOutputData(data: GamingPlatformNodeInput): GamingPlatformNode {
     return {
-        id: data.id,
-        name: data.name,
-        release_year: data.release_year,
-        manufacturer: data.manufacturer,
-        created_at: data.created_at,
-        updated_at: data.updated_at,
+        id: data.properties.id,
+        name: data.properties.name,
+        release_year: data.properties.release_year,
+        manufacturer: data.properties.manufacturer,
+        created_at: data.properties.created_at,
+        updated_at: data.properties.updated_at,
     } as GamingPlatformNode
 }

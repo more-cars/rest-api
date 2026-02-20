@@ -8,11 +8,11 @@ test('Trying to create a ›has-variant‹ relationship with nodes that do not e
     const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
     const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
 
-    await expect(CarModel.createHasVariantRelationship(-42, carModelVariant.id))
+    await expect(CarModel.createHasVariantRelationship(-42, carModelVariant.properties.id))
         .rejects
         .toThrow(NodeNotFoundError)
 
-    await expect(CarModel.createHasVariantRelationship(carModel.id, -43))
+    await expect(CarModel.createHasVariantRelationship(carModel.properties.id, -43))
         .rejects
         .toThrow(NodeNotFoundError)
 

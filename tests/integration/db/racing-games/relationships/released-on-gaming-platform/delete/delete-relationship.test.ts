@@ -40,8 +40,8 @@ describe('Trying to delete a ›released-on-gaming-platform‹ relationship', ()
         const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
 
         const relationship = await deleteSpecificRelationship(
-            racingGame.id,
-            gamingPlatform.id,
+            racingGame.properties.id,
+            gamingPlatform.properties.id,
             RelationshipType.RacingGameReleasedOnGamingPlatform,
         )
 

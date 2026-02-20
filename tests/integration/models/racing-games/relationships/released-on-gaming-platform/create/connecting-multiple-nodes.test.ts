@@ -13,11 +13,11 @@ test('A RACING GAME can have multiple ›released-on-gaming-platform‹ relation
     const gamingPlatforms = await seedNodes(ControllerNodeType.GAMING_PLATFORM, gamingPlatformsAmount)
 
     for (const gamingPlatform of gamingPlatforms) {
-        await RacingGame.createReleasedOnGamingPlatformRelationship(racingGame.id, gamingPlatform.id)
+        await RacingGame.createReleasedOnGamingPlatformRelationship(racingGame.properties.id, gamingPlatform.properties.id)
     }
 
     const relationships = await getRelationshipCollection(
-        racingGame.id,
+        racingGame.properties.id,
         RelationshipType.RacingGameReleasedOnGamingPlatform,
         DbNodeType.GamingPlatform,
     )

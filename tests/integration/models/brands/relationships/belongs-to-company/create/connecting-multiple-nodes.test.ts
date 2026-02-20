@@ -13,10 +13,10 @@ test('A BRAND cannot have multiple ›belongs-to-company‹ relationships', asyn
     const companies = await seedNodes(ControllerNodeType.COMPANY, companiesAmount)
 
     for (const company of companies) {
-        await Brand.createBelongsToCompanyRelationship(brand.id, company.id)
+        await Brand.createBelongsToCompanyRelationship(brand.properties.id, company.properties.id)
     }
 
-    const relationships = await getRelationshipCollection(brand.id, RelationshipType.BrandBelongsToCompany, DbNodeType.Company)
+    const relationships = await getRelationshipCollection(brand.properties.id, RelationshipType.BrandBelongsToCompany, DbNodeType.Company)
 
     expect(relationships.length)
         .toBe(1)

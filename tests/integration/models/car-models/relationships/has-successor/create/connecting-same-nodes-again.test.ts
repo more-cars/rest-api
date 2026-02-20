@@ -8,11 +8,11 @@ test('Trying to create the same ›has-successor‹ relationship again', async (
     const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
     const partnerNode = await seedNode(ControllerNodeType.CAR_MODEL)
 
-    await expect(CarModel.createHasSuccessorRelationship(carModel.id, partnerNode.id))
+    await expect(CarModel.createHasSuccessorRelationship(carModel.properties.id, partnerNode.properties.id))
         .resolves
         .not.toThrow(RelAlreadyExistsError)
 
-    await expect(CarModel.createHasSuccessorRelationship(carModel.id, partnerNode.id))
+    await expect(CarModel.createHasSuccessorRelationship(carModel.properties.id, partnerNode.properties.id))
         .rejects
         .toThrow(RelAlreadyExistsError)
 })
