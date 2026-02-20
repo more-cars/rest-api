@@ -35,6 +35,6 @@ describe('A filtered "get all LAP TIME nodes" request returns only the matching 
             filterOperator: FilterOperator.equal
         })
         expect(filteredNodes.length).toEqual(1)
-        expect(filteredNodes[0].attributes.driver_name === nodeA.attributes.driver_name)
+        expect(filteredNodes[0].attributes.driver_name === nodeA.properties.driver_name)
     })
 })

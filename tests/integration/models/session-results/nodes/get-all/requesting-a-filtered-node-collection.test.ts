@@ -33,6 +33,6 @@ describe('A filtered "get all SESSION RESULT nodes" request returns only the mat
             filterOperator: FilterOperator.equal
         })
         expect(filteredNodes.length).toEqual(1)
-        expect(filteredNodes[0].attributes.position === nodeA.attributes.position)
+        expect(filteredNodes[0].attributes.position === nodeA.properties.position)
     })
 })

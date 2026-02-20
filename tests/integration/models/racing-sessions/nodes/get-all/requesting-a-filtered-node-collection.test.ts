@@ -35,6 +35,6 @@ describe('A filtered "get all RACING SESSION nodes" request returns only the mat
             filterOperator: FilterOperator.equal
         })
         expect(filteredNodes.length).toEqual(1)
-        expect(filteredNodes[0].attributes.name === nodeA.attributes.name)
+        expect(filteredNodes[0].attributes.name === nodeA.properties.name)
     })
 })
