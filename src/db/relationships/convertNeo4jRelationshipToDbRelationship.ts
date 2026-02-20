@@ -5,7 +5,7 @@ import {mapNeo4jRelationshipTypeToDbRelationshipType} from "./mapNeo4jRelationsh
 import {RelationshipDirection} from "../types/RelationshipDirection"
 import {RelationshipTypeNeo4j} from "../types/RelationshipTypeNeo4j"
 import {Relationship} from "../types/Relationship"
-import {DbNodeType} from "../types/DbNodeType"
+import {mapNeo4jNodeTypeToDbNodeType} from "../nodes/mapNeo4jNodeTypeToDbNodeType"
 
 export function convertNeo4jRelationshipToDbRelationship(
     dbRelationship: Neo4jRelationship,
@@ -13,7 +13,7 @@ export function convertNeo4jRelationshipToDbRelationship(
     endNode: Node,
 ) {
     const startNodeLabel = getDenamespacedNodeTypeLabel(startNode.labels[0]) as Neo4jNodeType
-    const elementId = dbRelationship.elementId
+    const endNodeLabel = getDenamespacedNodeTypeLabel(endNode.labels[0]) as Neo4jNodeType
 
     const relationshipType = mapNeo4jRelationshipTypeToDbRelationshipType(
         startNodeLabel,
@@ -26,10 +26,10 @@ export function convertNeo4jRelationshipToDbRelationship(
 
     const relationship: Relationship = {
         id: dbRelationship.properties.mc_id,
-        elementId: elementId,
+        elementId: dbRelationship.elementId,
         type: relationshipType,
         start_node: {
-            node_type: DbNodeType.Node,
+            node_type: mapNeo4jNodeTypeToDbNodeType(startNodeLabel),
             properties: Object.assign({}, startNode.properties, {
                 id: startNode.properties.mc_id,
                 created_at: startNode.properties.created_at,
@@ -37,7 +37,7 @@ export function convertNeo4jRelationshipToDbRelationship(
             }),
         },
         end_node: {
-            node_type: DbNodeType.Node,
+            node_type: mapNeo4jNodeTypeToDbNodeType(endNodeLabel),
             properties: Object.assign({}, endNode.properties, {
                 id: endNode.properties.mc_id,
                 created_at: endNode.properties.created_at,
