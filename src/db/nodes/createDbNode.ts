@@ -70,7 +70,7 @@ export async function createDbNode(nodeType: DbNodeType, data: InputTypes): Prom
 
 export function createNodeQuery(nodeType: DbNodeType, data: InputTypes) {
     const nodeSpecs = getNodeSpecification(nodeType)
-    const nodeTypeLabel = getNamespacedNodeTypeLabel(mapDbNodeTypeToNeo4jNodeType(nodeSpecs.type))
+    const nodeTypeLabel = getNamespacedNodeTypeLabel(mapDbNodeTypeToNeo4jNodeType(nodeType))
     const properties = getCypherFormattedPropertyList(nodeSpecs, data)
 
     let template = getCypherQueryTemplate('nodes/_cypher/createNode.cypher')

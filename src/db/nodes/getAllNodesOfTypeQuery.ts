@@ -1,12 +1,15 @@
 import {DbNodeType} from "../types/DbNodeType"
 import type {CollectionQueryParams} from "../types/CollectionQueryParams"
-import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
+import {mapDbNodeTypeToNeo4jNodeType} from "./mapDbNodeTypeToNeo4jNodeType"
+import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
-export function getAllNodesOfTypeQuery(nodeLabel: DbNodeType, params: CollectionQueryParams) {
+export function getAllNodesOfTypeQuery(nodeType: DbNodeType, params: CollectionQueryParams) {
+    const nodeTypeLabel = getNamespacedNodeTypeLabel(mapDbNodeTypeToNeo4jNodeType(nodeType))
+
     return getCypherQueryTemplate('nodes/_cypher/getAllNodesOfType.cypher')
         .trim()
-        .replace(':nodeLabel', `:${getNamespacedNodeTypeLabel(nodeLabel)}`)
+        .replace(':nodeLabel', `:${nodeTypeLabel}`)
         .replace('$sortByProperty', `${params.sortByProperty}`)
         .replace('$sortDirection', `${params.sortDirection}`)
         .replace('$filterByProperty', `${params.filterByProperty}`)
