@@ -3,7 +3,7 @@ import {CarModelNode} from "./types/CarModelNode"
 import {DbNodeType} from "../../types/DbNodeType"
 
 export function mapDbNodeToCarModelNode(neo4jNode: Node): CarModelNode {
-    const node: CarModelNode = {
+    return {
         node_type: DbNodeType.CarModel,
         properties: {
             // system data
@@ -18,8 +18,6 @@ export function mapDbNodeToCarModelNode(neo4jNode: Node): CarModelNode {
             generation: neo4jNode.properties.generation,
             internal_code: neo4jNode.properties.internal_code,
             total_production: neo4jNode.properties.total_production,
-        }
-    }
-
-    return node
+        },
+    } satisfies CarModelNode
 }

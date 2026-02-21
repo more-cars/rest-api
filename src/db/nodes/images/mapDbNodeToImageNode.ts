@@ -3,7 +3,7 @@ import {ImageNode} from "./types/ImageNode"
 import {DbNodeType} from "../../types/DbNodeType"
 
 export function mapDbNodeToImageNode(neo4jNode: Node): ImageNode {
-    const node: ImageNode = {
+    return {
         node_type: DbNodeType.Image,
         properties: {
             // system data
@@ -29,8 +29,6 @@ export function mapDbNodeToImageNode(neo4jNode: Node): ImageNode {
             image_url_m: neo4jNode.properties.image_url_m,
             image_url_s: neo4jNode.properties.image_url_s,
             image_url_xs: neo4jNode.properties.image_url_xs,
-        }
-    }
-
-    return node
+        },
+    } satisfies ImageNode
 }

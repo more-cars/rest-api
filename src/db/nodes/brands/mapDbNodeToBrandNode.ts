@@ -3,7 +3,7 @@ import {BrandNode} from "./types/BrandNode"
 import {DbNodeType} from "../../types/DbNodeType"
 
 export function mapDbNodeToBrandNode(neo4jNode: Node): BrandNode {
-    const node: BrandNode = {
+    return {
         node_type: DbNodeType.Brand,
         properties: {
             // system data
@@ -18,8 +18,6 @@ export function mapDbNodeToBrandNode(neo4jNode: Node): BrandNode {
             defunct: neo4jNode.properties.defunct,
             wmi: neo4jNode.properties.wmi,
             hsn: neo4jNode.properties.hsn,
-        }
-    }
-
-    return node
+        },
+    } satisfies BrandNode
 }

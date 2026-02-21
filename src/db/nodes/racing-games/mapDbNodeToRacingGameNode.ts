@@ -3,7 +3,7 @@ import {RacingGameNode} from "./types/RacingGameNode"
 import {DbNodeType} from "../../types/DbNodeType"
 
 export function mapDbNodeToRacingGameNode(neo4jNode: Node): RacingGameNode {
-    const node: RacingGameNode = {
+    return {
         node_type: DbNodeType.RacingGame,
         properties: {
             // system data
@@ -16,8 +16,6 @@ export function mapDbNodeToRacingGameNode(neo4jNode: Node): RacingGameNode {
             release_year: neo4jNode.properties.release_year,
             developer: neo4jNode.properties.developer,
             publisher: neo4jNode.properties.publisher,
-        }
-    }
-
-    return node
+        },
+    } satisfies RacingGameNode
 }

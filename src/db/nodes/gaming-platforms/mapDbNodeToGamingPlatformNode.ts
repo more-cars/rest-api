@@ -3,7 +3,7 @@ import {GamingPlatformNode} from "./types/GamingPlatformNode"
 import {DbNodeType} from "../../types/DbNodeType"
 
 export function mapDbNodeToGamingPlatformNode(neo4jNode: Node): GamingPlatformNode {
-    const node: GamingPlatformNode = {
+    return {
         node_type: DbNodeType.GamingPlatform,
         properties: {
             // system data
@@ -15,8 +15,6 @@ export function mapDbNodeToGamingPlatformNode(neo4jNode: Node): GamingPlatformNo
             name: neo4jNode.properties.name,
             release_year: neo4jNode.properties.release_year,
             manufacturer: neo4jNode.properties.manufacturer,
-        }
-    }
-
-    return node
+        },
+    } satisfies GamingPlatformNode
 }

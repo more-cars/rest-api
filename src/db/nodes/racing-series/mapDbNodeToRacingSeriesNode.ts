@@ -3,7 +3,7 @@ import {RacingSeriesNode} from "./types/RacingSeriesNode"
 import {DbNodeType} from "../../types/DbNodeType"
 
 export function mapDbNodeToRacingSeriesNode(neo4jNode: Node): RacingSeriesNode {
-    const node: RacingSeriesNode = {
+    return {
         node_type: DbNodeType.RacingSeries,
         properties: {
             // system data
@@ -18,8 +18,6 @@ export function mapDbNodeToRacingSeriesNode(neo4jNode: Node): RacingSeriesNode {
             defunct: neo4jNode.properties.defunct,
             organized_by: neo4jNode.properties.organized_by,
             vehicle_type: neo4jNode.properties.vehicle_type,
-        }
-    }
-
-    return node
+        },
+    } satisfies RacingSeriesNode
 }

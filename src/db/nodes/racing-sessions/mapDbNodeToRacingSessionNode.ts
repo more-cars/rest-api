@@ -3,7 +3,7 @@ import {RacingSessionNode} from "./types/RacingSessionNode"
 import {DbNodeType} from "../../types/DbNodeType"
 
 export function mapDbNodeToRacingSessionNode(neo4jNode: Node): RacingSessionNode {
-    const node: RacingSessionNode = {
+    return {
         node_type: DbNodeType.RacingSession,
         properties: {
             // system data
@@ -19,8 +19,6 @@ export function mapDbNodeToRacingSessionNode(neo4jNode: Node): RacingSessionNode
             duration_unit: neo4jNode.properties.duration_unit,
             distance: neo4jNode.properties.distance,
             distance_unit: neo4jNode.properties.distance_unit,
-        }
-    }
-
-    return node
+        },
+    } satisfies RacingSessionNode
 }

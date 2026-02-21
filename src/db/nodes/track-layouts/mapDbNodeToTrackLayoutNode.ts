@@ -3,7 +3,7 @@ import {TrackLayoutNode} from "./types/TrackLayoutNode"
 import {DbNodeType} from "../../types/DbNodeType"
 
 export function mapDbNodeToTrackLayoutNode(neo4jNode: Node): TrackLayoutNode {
-    const node: TrackLayoutNode = {
+    return {
         node_type: DbNodeType.TrackLayout,
         properties: {
             // system data
@@ -21,8 +21,6 @@ export function mapDbNodeToTrackLayoutNode(neo4jNode: Node): TrackLayoutNode {
             elevation_change: neo4jNode.properties.elevation_change,
             elevation_change_unit: neo4jNode.properties.elevation_change_unit,
             surface: neo4jNode.properties.surface,
-        }
-    }
-
-    return node
+        },
+    } satisfies TrackLayoutNode
 }

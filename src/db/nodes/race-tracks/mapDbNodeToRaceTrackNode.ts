@@ -3,7 +3,7 @@ import {RaceTrackNode} from "./types/RaceTrackNode"
 import {DbNodeType} from "../../types/DbNodeType"
 
 export function mapDbNodeToRaceTrackNode(neo4jNode: Node): RaceTrackNode {
-    const node: RaceTrackNode = {
+    return {
         node_type: DbNodeType.RaceTrack,
         properties: {
             // system data
@@ -18,8 +18,6 @@ export function mapDbNodeToRaceTrackNode(neo4jNode: Node): RaceTrackNode {
             type: neo4jNode.properties.type,
             location: neo4jNode.properties.location,
             geo_position: neo4jNode.properties.geo_position,
-        }
-    }
-
-    return node
+        },
+    } satisfies RaceTrackNode
 }

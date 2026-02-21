@@ -3,7 +3,7 @@ import {SessionResultNode} from "./types/SessionResultNode"
 import {DbNodeType} from "../../types/DbNodeType"
 
 export function mapDbNodeToSessionResultNode(neo4jNode: Node): SessionResultNode {
-    const node: SessionResultNode = {
+    return {
         node_type: DbNodeType.SessionResult,
         properties: {
             // system data
@@ -20,8 +20,6 @@ export function mapDbNodeToSessionResultNode(neo4jNode: Node): SessionResultNode
             laps: neo4jNode.properties.laps,
             status: neo4jNode.properties.status,
             points: neo4jNode.properties.points,
-        }
-    }
-
-    return node
+        },
+    } satisfies SessionResultNode
 }

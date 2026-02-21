@@ -3,7 +3,7 @@ import {LapTimeNode} from "./types/LapTimeNode"
 import {DbNodeType} from "../../types/DbNodeType"
 
 export function mapDbNodeToLapTimeNode(neo4jNode: Node): LapTimeNode {
-    const node: LapTimeNode = {
+    return {
         node_type: DbNodeType.LapTime,
         properties: {
             // system data
@@ -15,8 +15,6 @@ export function mapDbNodeToLapTimeNode(neo4jNode: Node): LapTimeNode {
             time: neo4jNode.properties.time,
             driver_name: neo4jNode.properties.driver_name,
             date: neo4jNode.properties.date,
-        }
-    }
-
-    return node
+        },
+    } satisfies LapTimeNode
 }

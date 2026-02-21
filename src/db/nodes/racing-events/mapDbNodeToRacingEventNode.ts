@@ -3,7 +3,7 @@ import {RacingEventNode} from "./types/RacingEventNode"
 import {DbNodeType} from "../../types/DbNodeType"
 
 export function mapDbNodeToRacingEventNode(neo4jNode: Node): RacingEventNode {
-    const node: RacingEventNode = {
+    return {
         node_type: DbNodeType.RacingEvent,
         properties: {
             // system data
@@ -16,9 +16,7 @@ export function mapDbNodeToRacingEventNode(neo4jNode: Node): RacingEventNode {
             round: neo4jNode.properties.round,
             date_from: neo4jNode.properties.date_from,
             date_to: neo4jNode.properties.date_to,
-        }
-    }
-
-    return node
+        },
+    } satisfies RacingEventNode
 }
 
