@@ -1,7 +1,7 @@
 import express from "express"
 import {RaceTrack} from "../../../models/node-types/race-tracks/RaceTrack"
+import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
 import {marshalRelations} from "../../relations/marshalRelations"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"
@@ -11,8 +11,9 @@ export async function getAllHasImageRelations(req: express.Request, res: express
     const raceTrackId = parseInt(req.params.raceTrackId)
 
     try {
-        const relations = await RaceTrack.getAllHasImageRelationships(raceTrackId)
-        const marshalledData = marshalRelations(relations, ControllerNodeType.Image)
+        const modelRelations = await RaceTrack.getAllHasImageRelationships(raceTrackId)
+        const relations = modelRelations.map(relation => convertModelRelationToControllerRelation(relation))
+        const marshalledData = marshalRelations(relations)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

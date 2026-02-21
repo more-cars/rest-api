@@ -1,7 +1,7 @@
 import express from "express"
 import {TrackLayout} from "../../../models/node-types/track-layouts/TrackLayout"
+import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
 import {marshalRelations} from "../../relations/marshalRelations"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"
@@ -11,8 +11,9 @@ export async function getAllIsFeaturedInRacingGameRelations(req: express.Request
     const trackLayoutId = parseInt(req.params.trackLayoutId)
 
     try {
-        const relations = await TrackLayout.getAllIsFeaturedInRacingGameRelationships(trackLayoutId)
-        const marshalledData = marshalRelations(relations, ControllerNodeType.RacingGame)
+        const modelRelations = await TrackLayout.getAllIsFeaturedInRacingGameRelationships(trackLayoutId)
+        const relations = modelRelations.map(relation => convertModelRelationToControllerRelation(relation))
+        const marshalledData = marshalRelations(relations)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

@@ -1,7 +1,7 @@
 import express from "express"
 import {Image} from "../../../models/node-types/images/Image"
+import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
 import {marshalRelations} from "../../relations/marshalRelations"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"
@@ -11,8 +11,9 @@ export async function getAllBelongsToNodeRelations(req: express.Request, res: ex
     const imageId = parseInt(req.params.imageId)
 
     try {
-        const relations = await Image.getAllBelongsToNodeRelationships(imageId)
-        const marshalledData = marshalRelations(relations, ControllerNodeType.Brand) // TODO provide correct partner node type
+        const modelRelations = await Image.getAllBelongsToNodeRelationships(imageId)
+        const relations = modelRelations.map(relation => convertModelRelationToControllerRelation(relation))
+        const marshalledData = marshalRelations(relations)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

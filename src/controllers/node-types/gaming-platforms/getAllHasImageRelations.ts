@@ -1,7 +1,7 @@
 import express from "express"
 import {GamingPlatform} from "../../../models/node-types/gaming-platforms/GamingPlatform"
+import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
 import {marshalRelations} from "../../relations/marshalRelations"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"
@@ -11,8 +11,9 @@ export async function getAllHasImageRelations(req: express.Request, res: express
     const gamingPlatformId = parseInt(req.params.gamingPlatformId)
 
     try {
-        const relations = await GamingPlatform.getAllHasImageRelationships(gamingPlatformId)
-        const marshalledData = marshalRelations(relations, ControllerNodeType.Image)
+        const modelRelations = await GamingPlatform.getAllHasImageRelationships(gamingPlatformId)
+        const relations = modelRelations.map(relation => convertModelRelationToControllerRelation(relation))
+        const marshalledData = marshalRelations(relations)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

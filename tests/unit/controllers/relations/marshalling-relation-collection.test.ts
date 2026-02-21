@@ -21,7 +21,7 @@ test('marshalling a relation collection', async () => {
         }
         const relationships = [relationship, relationship, relationship]
 
-        const marshalledRelations = marshalRelations(relationships, ControllerNodeType.CarModel)
+        const marshalledRelations = marshalRelations(relationships)
 
         expect(marshalledRelations.data.length)
             .toEqual(3)
