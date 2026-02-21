@@ -4,16 +4,19 @@ to: src/db/nodes/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/map
 import {Node} from "neo4j-driver"
 import {<%= h.changeCase.pascal(nodeType) %>Node} from "./types/<%= h.changeCase.pascal(nodeType) %>Node"
 
-export function mapDbNodeTo<%= h.changeCase.pascal(nodeType) %>Node(dbNode: Node): <%= h.changeCase.pascal(nodeType) %>Node {
+export function mapDbNodeTo<%= h.changeCase.pascal(nodeType) %>Node(neo4jNode: Node): <%= h.changeCase.pascal(nodeType) %>Node {
     return {
-        // system data
-        id: dbNode.properties.mc_id,
-        created_at: dbNode.properties.created_at,
-        updated_at: dbNode.properties.updated_at,
-
-        // user data
+        node_type: DbNodeType.<%= h.changeCase.pascal(nodeType) %>,
+        properties: {
+            // system data
+            id: neo4jNode.properties.mc_id,
+            created_at: neo4jNode.properties.created_at,
+            updated_at: neo4jNode.properties.updated_at,
+    
+            // user data
 <% for (prop in properties) { -%>
-        <%= prop %>: dbNode.properties.<%= prop -%>,
+            <%= prop %>: neo4jNode.properties.<%= prop -%>,
 <% } -%>
-    } as <%= h.changeCase.pascal(nodeType) %>Node
+        },
+    } satisfies <%= h.changeCase.pascal(nodeType) %>Node
 }

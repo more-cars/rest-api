@@ -5,14 +5,13 @@ import {Create<%= h.changeCase.pascal(nodeType) %>Input} from "./types/Create<%=
 import {<%= h.changeCase.pascal(nodeType) %>Node} from "./types/<%= h.changeCase.pascal(nodeType) %>Node"
 import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../db/nodes/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/createNode"
-import {convert<%= h.changeCase.pascal(nodeType) %>DbNodeToModelNode} from "./create/convert<%= h.changeCase.pascal(nodeType) %>DbNodeToModelNode"
+import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 
 export const <%= h.changeCase.pascal(nodeType) %> = {
     async create(data: Create<%= h.changeCase.pascal(nodeType) %>Input): Promise<<%= h.changeCase.pascal(nodeType) %>Node> {
         const input = convertInputData(data)
         const result = await createNode(input)
-        const output = convert<%= h.changeCase.pascal(nodeType) %>DbNodeToModelNode(result)
 
-        return output
+        return convertDbNodeToModelNode(result) as <%= h.changeCase.pascal(nodeType) %>Node
     },
 }
