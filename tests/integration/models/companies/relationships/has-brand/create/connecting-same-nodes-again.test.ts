@@ -5,8 +5,8 @@ import {Company} from "../../../../../../../src/models/node-types/companies/Comp
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›has-brand‹ relationship again', async () => {
-    const company = await seedNode(ControllerNodeType.COMPANY)
-    const brand = await seedNode(ControllerNodeType.BRAND)
+    const company = await seedNode(ControllerNodeType.Company)
+    const brand = await seedNode(ControllerNodeType.Brand)
 
     await expect(Company.createHasBrandRelationship(company.properties.id, brand.properties.id))
         .resolves

@@ -12,7 +12,7 @@ test('Fetching a TRACK LAYOUT that does not exist should return "false"', async 
 })
 
 test('When the TRACK LAYOUT exists it should be returned', async () => {
-    const expectedTrackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+    const expectedTrackLayout = await seedNode(ControllerNodeType.TrackLayout)
     const actualTrackLayout = await TrackLayout.findById(expectedTrackLayout.properties.id)
 
     expect(actualTrackLayout.attributes)

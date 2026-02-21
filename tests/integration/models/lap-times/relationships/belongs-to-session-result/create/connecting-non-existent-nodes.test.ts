@@ -5,8 +5,8 @@ import {LapTime} from "../../../../../../../src/models/node-types/lap-times/LapT
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›belongs-to-session-result‹ relationship with nodes that do not exist', async () => {
-    const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
-    const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+    const lapTime = await seedNode(ControllerNodeType.LapTime)
+    const sessionResult = await seedNode(ControllerNodeType.SessionResult)
 
     await expect(LapTime.createBelongsToSessionResultRelationship(-42, sessionResult.properties.id))
         .rejects

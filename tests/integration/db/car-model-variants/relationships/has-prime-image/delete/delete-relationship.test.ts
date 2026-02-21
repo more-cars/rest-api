@@ -8,7 +8,7 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 
 describe('Trying to delete a ›has-prime-image‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.CAR_MODEL_VARIANT, ControllerNodeType.IMAGE, RelationshipType.CarModelVariantHasPrimeImage)
+        const seededRelationship = await seedRelationship(ControllerNodeType.CarModelVariant, ControllerNodeType.Image, RelationshipType.CarModelVariantHasPrimeImage)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,
@@ -36,8 +36,8 @@ describe('Trying to delete a ›has-prime-image‹ relationship', () => {
     })
 
     test('nodes exists, but not the relationship', async () => {
-        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
-        const image = await seedNode(ControllerNodeType.IMAGE)
+        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+        const image = await seedNode(ControllerNodeType.Image)
 
         const relationship = await deleteSpecificRelationship(
             carModelVariant.properties.id,

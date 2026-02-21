@@ -8,9 +8,9 @@ import {getRelationshipById} from "../../../../../src/db/relationships/getRelati
 
 describe('Creating a n:1 relationship', () => {
     test('expecting the destination node to NOT lose its already existing relationship', async () => {
-        const foreignRelationship = await seedRelationship(ControllerNodeType.RACING_EVENT, ControllerNodeType.RACING_SERIES, RelationshipType.RacingEventBelongsToRacingSeries)
+        const foreignRelationship = await seedRelationship(ControllerNodeType.RacingEvent, ControllerNodeType.RacingSeries, RelationshipType.RacingEventBelongsToRacingSeries)
         const destinationId = foreignRelationship.end_node.properties.id
-        const originId = (await seedNode(ControllerNodeType.RACING_EVENT)).properties.id
+        const originId = (await seedNode(ControllerNodeType.RacingEvent)).properties.id
 
         const newRelationship = await RacingEvent.createBelongsToRacingSeriesRelationship(originId, destinationId)
         expect(newRelationship.id)

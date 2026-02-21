@@ -31,7 +31,7 @@ export function setup() {
     const carModelId = createCarModel()
     const imageId = createImage()
     createRelationship(
-        ControllerNodeType.CAR_MODEL,
+        ControllerNodeType.CarModel,
         carModelId,
         imageId,
         'has prime image',

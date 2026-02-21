@@ -5,8 +5,8 @@ import {RacingGame} from "../../../../../../../src/models/node-types/racing-game
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›features-track-layout‹ relationship with valid data', async () => {
-    const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+    const racingGame = await seedNode(ControllerNodeType.RacingGame)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
     const createdRelationship = await RacingGame.createFeaturesTrackLayoutRelationship(racingGame.properties.id, trackLayout.properties.id)
 

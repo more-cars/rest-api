@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A GAMING PLATFORM can have multiple ›has-image‹ relationships', async () => {
-    const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
+    const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
     const imagesAmount = 3
-    const images = await seedNodes(ControllerNodeType.IMAGE, imagesAmount)
+    const images = await seedNodes(ControllerNodeType.Image, imagesAmount)
 
     for (const image of images) {
         await GamingPlatform.createHasImageRelationship(gamingPlatform.properties.id, image.properties.id)

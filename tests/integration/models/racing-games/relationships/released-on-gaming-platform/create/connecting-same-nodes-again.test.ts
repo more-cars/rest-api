@@ -5,8 +5,8 @@ import {RacingGame} from "../../../../../../../src/models/node-types/racing-game
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›released-on-gaming-platform‹ relationship again', async () => {
-    const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
-    const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
+    const racingGame = await seedNode(ControllerNodeType.RacingGame)
+    const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
 
     await expect(RacingGame.createReleasedOnGamingPlatformRelationship(racingGame.properties.id, gamingPlatform.properties.id))
         .resolves

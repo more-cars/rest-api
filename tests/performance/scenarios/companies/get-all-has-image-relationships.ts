@@ -31,7 +31,7 @@ export function setup() {
     const companyId = createCompany()
     const imageId = createImage()
     createRelationship(
-        ControllerNodeType.COMPANY,
+        ControllerNodeType.Company,
         companyId,
         imageId,
         'has image',

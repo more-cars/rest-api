@@ -5,8 +5,8 @@ import {RacingSeries} from "../../../../../../../src/models/node-types/racing-se
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›has-racing-event‹ relationship with nodes that do not exist', async () => {
-    const racingSeries = await seedNode(ControllerNodeType.RACING_SERIES)
-    const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+    const racingSeries = await seedNode(ControllerNodeType.RacingSeries)
+    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
 
     await expect(RacingSeries.createHasRacingEventRelationship(-42, racingEvent.properties.id))
         .rejects

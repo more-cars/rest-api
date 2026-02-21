@@ -15,7 +15,7 @@ export async function createAchievedOnTrackLayoutRelation(req: express.Request, 
 
     try {
         const relation = await LapTime.createAchievedOnTrackLayoutRelationship(lapTimeId, trackLayoutId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.TRACK_LAYOUT)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.TrackLayout)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

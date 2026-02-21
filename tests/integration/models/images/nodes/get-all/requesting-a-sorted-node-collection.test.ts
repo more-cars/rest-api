@@ -7,7 +7,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all IMAGE nodes" request returns the nodes in correct order', () => {
     test('when there exist no IMAGE nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.IMAGE)
+        await deleteAllNodesOfType(ControllerNodeType.Image)
 
         const expectedNodes: ImageNode[] = []
         const actualNodes = await Image.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,14 +17,14 @@ describe('A sorted "get all IMAGE nodes" request returns the nodes in correct or
     })
 
     test('when there exist IMAGE nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.IMAGE)
-        const nodeA = await seedNode(ControllerNodeType.IMAGE, {
+        await deleteAllNodesOfType(ControllerNodeType.Image)
+        const nodeA = await seedNode(ControllerNodeType.Image, {
             name: 'A Node'
         }) as unknown as ImageNode
-        const nodeB = await seedNode(ControllerNodeType.IMAGE, {
+        const nodeB = await seedNode(ControllerNodeType.Image, {
             name: 'B Node'
         }) as unknown as ImageNode
-        const nodeC = await seedNode(ControllerNodeType.IMAGE, {
+        const nodeC = await seedNode(ControllerNodeType.Image, {
             name: 'C Node'
         }) as unknown as ImageNode
 

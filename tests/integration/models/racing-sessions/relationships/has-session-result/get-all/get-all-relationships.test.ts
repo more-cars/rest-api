@@ -8,9 +8,9 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 
 describe('Requesting all ›has-session-result‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
-        await seedRelationshipForStartNode(racingSession.properties.id, ControllerNodeType.SESSION_RESULT, RelationshipType.RacingSessionHasSessionResult)
-        await seedRelationshipForStartNode(racingSession.properties.id, ControllerNodeType.SESSION_RESULT, RelationshipType.RacingSessionHasSessionResult)
+        const racingSession = await seedNode(ControllerNodeType.RacingSession)
+        await seedRelationshipForStartNode(racingSession.properties.id, ControllerNodeType.SessionResult, RelationshipType.RacingSessionHasSessionResult)
+        await seedRelationshipForStartNode(racingSession.properties.id, ControllerNodeType.SessionResult, RelationshipType.RacingSessionHasSessionResult)
 
         const relationships = await RacingSession.getAllHasSessionResultRelationships(racingSession.properties.id)
 
@@ -19,7 +19,7 @@ describe('Requesting all ›has-session-result‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
+        const racingSession = await seedNode(ControllerNodeType.RacingSession)
 
         const relationships = await RacingSession.getAllHasSessionResultRelationships(racingSession.properties.id)
 

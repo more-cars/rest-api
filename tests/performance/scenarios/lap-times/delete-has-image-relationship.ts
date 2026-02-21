@@ -28,13 +28,13 @@ export const options = {
 }
 
 export function setup() {
-    const lapTimeId = createNode(ControllerNodeType.LAP_TIME)
+    const lapTimeId = createNode(ControllerNodeType.LapTime)
     const imageIds = []
 
     for (let i = 0; i < 310; i++) {
-        const image = createNode(ControllerNodeType.IMAGE)
+        const image = createNode(ControllerNodeType.Image)
         createRelationship(
-            ControllerNodeType.LAP_TIME,
+            ControllerNodeType.LapTime,
             lapTimeId,
             image,
             'has image',

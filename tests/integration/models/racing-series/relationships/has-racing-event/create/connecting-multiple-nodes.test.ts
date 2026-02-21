@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A RACING SERIES can have multiple ›has-racing-event‹ relationships', async () => {
-    const racingSeries = await seedNode(ControllerNodeType.RACING_SERIES)
+    const racingSeries = await seedNode(ControllerNodeType.RacingSeries)
     const racingEventsAmount = 3
-    const racingEvents = await seedNodes(ControllerNodeType.RACING_EVENT, racingEventsAmount)
+    const racingEvents = await seedNodes(ControllerNodeType.RacingEvent, racingEventsAmount)
 
     for (const racingEvent of racingEvents) {
         await RacingSeries.createHasRacingEventRelationship(racingSeries.properties.id, racingEvent.properties.id)

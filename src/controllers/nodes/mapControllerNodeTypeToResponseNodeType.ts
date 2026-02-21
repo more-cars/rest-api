@@ -4,20 +4,20 @@ import {NodeTypeNotFoundError} from "./types/NodeTypeNotFoundError"
 
 export function mapControllerNodeTypeToResponseNodeType(controllerNodeType: ControllerNodeType): ResponseNodeType {
     const mapping = new Map<ControllerNodeType, ResponseNodeType>([
-        [ControllerNodeType.COMPANY, ResponseNodeType.COMPANY],
-        [ControllerNodeType.BRAND, ResponseNodeType.BRAND],
-        [ControllerNodeType.CAR_MODEL, ResponseNodeType.CAR_MODEL],
-        [ControllerNodeType.CAR_MODEL_VARIANT, ResponseNodeType.CAR_MODEL_VARIANT],
-        [ControllerNodeType.RACE_TRACK, ResponseNodeType.RACE_TRACK],
-        [ControllerNodeType.TRACK_LAYOUT, ResponseNodeType.TRACK_LAYOUT],
-        [ControllerNodeType.RACING_SERIES, ResponseNodeType.RACING_SERIES],
-        [ControllerNodeType.RACING_EVENT, ResponseNodeType.RACING_EVENT],
-        [ControllerNodeType.RACING_SESSION, ResponseNodeType.RACING_SESSION],
-        [ControllerNodeType.SESSION_RESULT, ResponseNodeType.SESSION_RESULT],
-        [ControllerNodeType.LAP_TIME, ResponseNodeType.LAP_TIME],
-        [ControllerNodeType.RACING_GAME, ResponseNodeType.RACING_GAME],
-        [ControllerNodeType.GAMING_PLATFORM, ResponseNodeType.GAMING_PLATFORM],
-        [ControllerNodeType.IMAGE, ResponseNodeType.IMAGE],
+        [ControllerNodeType.Company, ResponseNodeType.COMPANY],
+        [ControllerNodeType.Brand, ResponseNodeType.BRAND],
+        [ControllerNodeType.CarModel, ResponseNodeType.CAR_MODEL],
+        [ControllerNodeType.CarModelVariant, ResponseNodeType.CAR_MODEL_VARIANT],
+        [ControllerNodeType.RaceTrack, ResponseNodeType.RACE_TRACK],
+        [ControllerNodeType.TrackLayout, ResponseNodeType.TRACK_LAYOUT],
+        [ControllerNodeType.RacingSeries, ResponseNodeType.RACING_SERIES],
+        [ControllerNodeType.RacingEvent, ResponseNodeType.RACING_EVENT],
+        [ControllerNodeType.RacingSession, ResponseNodeType.RACING_SESSION],
+        [ControllerNodeType.SessionResult, ResponseNodeType.SESSION_RESULT],
+        [ControllerNodeType.LapTime, ResponseNodeType.LAP_TIME],
+        [ControllerNodeType.RacingGame, ResponseNodeType.RACING_GAME],
+        [ControllerNodeType.GamingPlatform, ResponseNodeType.GAMING_PLATFORM],
+        [ControllerNodeType.Image, ResponseNodeType.IMAGE],
     ])
 
     const mappedNodeType = mapping.get(controllerNodeType)

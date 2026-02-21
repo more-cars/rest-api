@@ -10,7 +10,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 
 describe('Deleting a ›belongs-to-company‹ relationship', () => {
     test('BRAND node does not exist', async () => {
-        const brand = await seedNode(ControllerNodeType.BRAND)
+        const brand = await seedNode(ControllerNodeType.Brand)
 
         await expect(Brand.deleteBelongsToCompanyRelationship(brand.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›belongs-to-company‹ relationship', () => {
     })
 
     test('COMPANY node does not exist', async () => {
-        const company = await seedNode(ControllerNodeType.COMPANY)
+        const company = await seedNode(ControllerNodeType.Company)
 
         await expect(Brand.deleteBelongsToCompanyRelationship(-42, company.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›belongs-to-company‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›belongs-to-company‹ relationship', async () => {
-        const brand = await seedNode(ControllerNodeType.BRAND)
-        const company = await seedNode(ControllerNodeType.COMPANY)
+        const brand = await seedNode(ControllerNodeType.Brand)
+        const company = await seedNode(ControllerNodeType.Company)
 
         await expect(Brand.deleteBelongsToCompanyRelationship(brand.properties.id, company.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›belongs-to-company‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›belongs-to-company‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.BRAND, ControllerNodeType.COMPANY, RelationshipType.BrandBelongsToCompany)
+        const seededRelationship = await seedRelationship(ControllerNodeType.Brand, ControllerNodeType.Company, RelationshipType.BrandBelongsToCompany)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

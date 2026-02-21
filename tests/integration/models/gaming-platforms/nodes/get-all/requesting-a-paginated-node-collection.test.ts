@@ -7,7 +7,7 @@ import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A paginated "get all GAMING PLATFORM nodes" request returns the correct number of nodes', () => {
     test('when there exist no GAMING PLATFORM nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.GAMING_PLATFORM)
+        await deleteAllNodesOfType(ControllerNodeType.GamingPlatform)
 
         const expectedNodes: GamingPlatformNode[] = []
         const actualNodes = await GamingPlatform.findAll({page: 1})
@@ -17,9 +17,9 @@ describe('A paginated "get all GAMING PLATFORM nodes" request returns the correc
     })
 
     test('when there exist GAMING PLATFORM nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.GAMING_PLATFORM)
+        await deleteAllNodesOfType(ControllerNodeType.GamingPlatform)
         const amount = Math.ceil(Math.random() * 20)
-        await seedNodes(ControllerNodeType.GAMING_PLATFORM, amount)
+        await seedNodes(ControllerNodeType.GamingPlatform, amount)
 
         const actualNodes = await GamingPlatform.findAll({page: 1})
 

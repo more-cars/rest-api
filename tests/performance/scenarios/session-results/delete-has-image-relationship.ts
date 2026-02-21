@@ -28,13 +28,13 @@ export const options = {
 }
 
 export function setup() {
-    const sessionResultId = createNode(ControllerNodeType.SESSION_RESULT)
+    const sessionResultId = createNode(ControllerNodeType.SessionResult)
     const imageIds = []
 
     for (let i = 0; i < 310; i++) {
-        const image = createNode(ControllerNodeType.IMAGE)
+        const image = createNode(ControllerNodeType.Image)
         createRelationship(
-            ControllerNodeType.SESSION_RESULT,
+            ControllerNodeType.SessionResult,
             sessionResultId,
             image,
             'has image',

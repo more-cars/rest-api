@@ -5,8 +5,8 @@ import {RacingEvent} from "../../../../../../../src/models/node-types/racing-eve
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›has-prime-image‹ relationship with valid data', async () => {
-    const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+    const image = await seedNode(ControllerNodeType.Image)
 
     const createdRelationship = await RacingEvent.createHasPrimeImageRelationship(racingEvent.properties.id, image.properties.id)
 

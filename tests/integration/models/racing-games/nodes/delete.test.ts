@@ -12,7 +12,7 @@ describe('Deleting a RACING GAME', () => {
     })
 
     test('that exists', async () => {
-        const node = await seedNode(ControllerNodeType.RACING_GAME)
+        const node = await seedNode(ControllerNodeType.RacingGame)
         await expect(RacingGame.delete(node.properties.id))
             .resolves
             .not.toThrow(NodeNotFoundError)

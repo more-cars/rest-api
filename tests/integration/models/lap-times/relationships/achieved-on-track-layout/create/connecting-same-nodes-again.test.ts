@@ -5,8 +5,8 @@ import {LapTime} from "../../../../../../../src/models/node-types/lap-times/LapT
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›achieved-on-track-layout‹ relationship again', async () => {
-    const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+    const lapTime = await seedNode(ControllerNodeType.LapTime)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
     await expect(LapTime.createAchievedOnTrackLayoutRelationship(lapTime.properties.id, trackLayout.properties.id))
         .resolves

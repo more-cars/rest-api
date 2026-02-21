@@ -8,7 +8,7 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 
 describe('Trying to delete a ›has-layout‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.RACE_TRACK, ControllerNodeType.TRACK_LAYOUT, RelationshipType.RaceTrackHasLayout)
+        const seededRelationship = await seedRelationship(ControllerNodeType.RaceTrack, ControllerNodeType.TrackLayout, RelationshipType.RaceTrackHasLayout)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,
@@ -36,8 +36,8 @@ describe('Trying to delete a ›has-layout‹ relationship', () => {
     })
 
     test('nodes exists, but not the relationship', async () => {
-        const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
-        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+        const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
+        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
         const relationship = await deleteSpecificRelationship(
             raceTrack.properties.id,

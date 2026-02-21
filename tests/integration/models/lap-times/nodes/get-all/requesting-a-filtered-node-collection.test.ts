@@ -8,7 +8,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all LAP TIME nodes" request returns only the matching nodes', () => {
     test('when there exist no LAP TIME nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.LAP_TIME)
+        await deleteAllNodesOfType(ControllerNodeType.LapTime)
 
         const expectedNodes: LapTimeNode[] = []
         const actualNodes = await LapTime.findAll({
@@ -22,12 +22,12 @@ describe('A filtered "get all LAP TIME nodes" request returns only the matching 
     })
 
     test('when there exist LAP TIME nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.LAP_TIME)
-        const nodeA = await seedNode(ControllerNodeType.LAP_TIME, {
+        await deleteAllNodesOfType(ControllerNodeType.LapTime)
+        const nodeA = await seedNode(ControllerNodeType.LapTime, {
             time: 'A', driver_name: 'A Node'
         }) as unknown as LapTimeNode
-        await seedNode(ControllerNodeType.LAP_TIME, {time: 'B', driver_name: 'B Node'})
-        await seedNode(ControllerNodeType.LAP_TIME, {time: 'C', driver_name: 'C Node'})
+        await seedNode(ControllerNodeType.LapTime, {time: 'B', driver_name: 'B Node'})
+        await seedNode(ControllerNodeType.LapTime, {time: 'C', driver_name: 'C Node'})
 
         const filteredNodes = await LapTime.findAll({
             filterByProperty: 'driver_name',

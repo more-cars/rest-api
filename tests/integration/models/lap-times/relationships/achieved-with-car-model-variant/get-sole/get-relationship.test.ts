@@ -11,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Requesting a ›achieved-with-car-model-variant‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(ControllerNodeType.LAP_TIME, ControllerNodeType.CAR_MODEL_VARIANT, RelationshipType.LapTimeAchievedWithCarModelVariant)
+        const expectedRelationship = await seedRelationship(ControllerNodeType.LapTime, ControllerNodeType.CarModelVariant, RelationshipType.LapTimeAchievedWithCarModelVariant)
         const expectedLapTimeId = expectedRelationship.start_node.properties.id
         const expectedCarModelVariantId = expectedRelationship.end_node.properties.id
         const actualRelationship = await LapTime.getAchievedWithCarModelVariantRelationship(expectedLapTimeId)
@@ -27,7 +27,7 @@ describe('Requesting a ›achieved-with-car-model-variant‹ relationship', () =
     })
 
     test('node exists, but not the relationship', async () => {
-        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+        const lapTime = await seedNode(ControllerNodeType.LapTime)
 
         await expect(LapTime.getAchievedWithCarModelVariantRelationship(lapTime.properties.id))
             .rejects

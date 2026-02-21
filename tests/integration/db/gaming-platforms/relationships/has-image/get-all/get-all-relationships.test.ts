@@ -8,9 +8,9 @@ import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
-        await seedRelationshipForStartNode(gamingPlatform.properties.id, ControllerNodeType.IMAGE, RelationshipType.GamingPlatformHasImage)
-        await seedRelationshipForStartNode(gamingPlatform.properties.id, ControllerNodeType.IMAGE, RelationshipType.GamingPlatformHasImage)
+        const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
+        await seedRelationshipForStartNode(gamingPlatform.properties.id, ControllerNodeType.Image, RelationshipType.GamingPlatformHasImage)
+        await seedRelationshipForStartNode(gamingPlatform.properties.id, ControllerNodeType.Image, RelationshipType.GamingPlatformHasImage)
 
         const relationships = await getRelationshipCollection(
             gamingPlatform.properties.id,
@@ -23,7 +23,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
+        const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
 
         const relationships = await getRelationshipCollection(
             gamingPlatform.properties.id,

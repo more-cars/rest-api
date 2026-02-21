@@ -5,8 +5,8 @@ import {TrackLayout} from "../../../../../../../src/models/node-types/track-layo
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›was-used-by-racing-event‹ relationship with valid data', async () => {
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
-    const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
+    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
 
     const createdRelationship = await TrackLayout.createWasUsedByRacingEventRelationship(trackLayout.properties.id, racingEvent.properties.id)
 

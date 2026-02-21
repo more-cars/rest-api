@@ -28,13 +28,13 @@ export const options = {
 }
 
 export function setup() {
-    const carModelVariantId = createNode(ControllerNodeType.CAR_MODEL_VARIANT)
+    const carModelVariantId = createNode(ControllerNodeType.CarModelVariant)
     const lapTimeIds = []
 
     for (let i = 0; i < 310; i++) {
-        const lapTime = createNode(ControllerNodeType.LAP_TIME)
+        const lapTime = createNode(ControllerNodeType.LapTime)
         createRelationship(
-            ControllerNodeType.CAR_MODEL_VARIANT,
+            ControllerNodeType.CarModelVariant,
             carModelVariantId,
             lapTime,
             'achieved lap time',

@@ -1,8 +1,9 @@
 import express from "express"
 import {unmarshalInputData} from "./marshalling/unmarshalInputData"
-import {marshalNode} from "./marshalling/marshalNode"
 import {CreateRaceTrackInput} from "../../../models/node-types/race-tracks/types/CreateRaceTrackInput"
 import {RaceTrack} from "../../../models/node-types/race-tracks/RaceTrack"
+import {convertRaceTrackModelNodeToControllerNode} from "./convertRaceTrackModelNodeToControllerNode"
+import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import type {CreateRaceTrackRawInput} from "./types/CreateRaceTrackRawInput"
 import {isMandatoryString} from "../../validators/isMandatoryString"
 import {isOptionalString} from "../../validators/isOptionalString"
@@ -21,8 +22,9 @@ export async function create(req: express.Request, res: express.Response) {
     const sanitizedData = sanitize(data as CreateRaceTrackInput)
 
     try {
-        const createdNode = await RaceTrack.create(sanitizedData)
-        const marshalledData = marshalNode(createdNode)
+        const modelNode = await RaceTrack.create(sanitizedData)
+        const node = convertRaceTrackModelNodeToControllerNode(modelNode)
+        const marshalledData = marshalSingleNode(node.fields)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

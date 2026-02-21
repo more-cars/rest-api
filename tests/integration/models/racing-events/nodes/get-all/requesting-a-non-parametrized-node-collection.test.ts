@@ -7,7 +7,7 @@ import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A non-parametrized "get all RACING EVENT nodes" request returns the correct number of nodes', () => {
     test('when there exist no RACING EVENT nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RACING_EVENT)
+        await deleteAllNodesOfType(ControllerNodeType.RacingEvent)
 
         const expectedNodes: RacingEventNode[] = []
         const actualNodes = await RacingEvent.findAll()
@@ -17,9 +17,9 @@ describe('A non-parametrized "get all RACING EVENT nodes" request returns the co
     })
 
     test('when there exist RACING EVENT nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RACING_EVENT)
+        await deleteAllNodesOfType(ControllerNodeType.RacingEvent)
         const amount = Math.ceil(Math.random() * 20)
-        await seedNodes(ControllerNodeType.RACING_EVENT, amount)
+        await seedNodes(ControllerNodeType.RacingEvent, amount)
 
         const actualNodes = await RacingEvent.findAll()
 

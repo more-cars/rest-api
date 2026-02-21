@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A SESSION RESULT can have multiple ›has-lap-time‹ relationships', async () => {
-    const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+    const sessionResult = await seedNode(ControllerNodeType.SessionResult)
     const lapTimesAmount = 3
-    const lapTimes = await seedNodes(ControllerNodeType.LAP_TIME, lapTimesAmount)
+    const lapTimes = await seedNodes(ControllerNodeType.LapTime, lapTimesAmount)
 
     for (const lapTime of lapTimes) {
         await SessionResult.createHasLapTimeRelationship(sessionResult.properties.id, lapTime.properties.id)

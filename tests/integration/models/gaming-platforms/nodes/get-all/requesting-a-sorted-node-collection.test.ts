@@ -7,7 +7,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all GAMING PLATFORM nodes" request returns the nodes in correct order', () => {
     test('when there exist no GAMING PLATFORM nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.GAMING_PLATFORM)
+        await deleteAllNodesOfType(ControllerNodeType.GamingPlatform)
 
         const expectedNodes: GamingPlatformNode[] = []
         const actualNodes = await GamingPlatform.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,14 +17,14 @@ describe('A sorted "get all GAMING PLATFORM nodes" request returns the nodes in 
     })
 
     test('when there exist GAMING PLATFORM nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.GAMING_PLATFORM)
-        const nodeA = await seedNode(ControllerNodeType.GAMING_PLATFORM, {
+        await deleteAllNodesOfType(ControllerNodeType.GamingPlatform)
+        const nodeA = await seedNode(ControllerNodeType.GamingPlatform, {
             name: 'A Node'
         }) as unknown as GamingPlatformNode
-        const nodeB = await seedNode(ControllerNodeType.GAMING_PLATFORM, {
+        const nodeB = await seedNode(ControllerNodeType.GamingPlatform, {
             name: 'B Node'
         }) as unknown as GamingPlatformNode
-        const nodeC = await seedNode(ControllerNodeType.GAMING_PLATFORM, {
+        const nodeC = await seedNode(ControllerNodeType.GamingPlatform, {
             name: 'C Node'
         }) as unknown as GamingPlatformNode
 

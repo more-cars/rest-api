@@ -28,13 +28,13 @@ export const options = {
 }
 
 export function setup() {
-    const imageId = createNode(ControllerNodeType.IMAGE)
+    const imageId = createNode(ControllerNodeType.Image)
     const nodeIds = []
 
     for (let i = 0; i < 310; i++) {
-        const node = createNode(ControllerNodeType.COMPANY)
+        const node = createNode(ControllerNodeType.Company)
         createRelationship(
-            ControllerNodeType.IMAGE,
+            ControllerNodeType.Image,
             imageId,
             node,
             'is prime image of node',

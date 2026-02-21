@@ -5,8 +5,8 @@ import {RaceTrack} from "../../../../../../../src/models/node-types/race-tracks/
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›hosted-racing-event‹ relationship again', async () => {
-    const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
-    const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+    const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
+    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
 
     await expect(RaceTrack.createHostedRacingEventRelationship(raceTrack.properties.id, racingEvent.properties.id))
         .resolves

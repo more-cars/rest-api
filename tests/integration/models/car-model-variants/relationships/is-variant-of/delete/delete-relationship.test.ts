@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›is-variant-of‹ relationship', () => {
     test('CAR MODEL VARIANT node does not exist', async () => {
-        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
+        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
 
         await expect(CarModelVariant.deleteIsVariantOfRelationship(carModelVariant.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›is-variant-of‹ relationship', () => {
     })
 
     test('CAR MODEL node does not exist', async () => {
-        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
+        const carModel = await seedNode(ControllerNodeType.CarModel)
 
         await expect(CarModelVariant.deleteIsVariantOfRelationship(-42, carModel.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›is-variant-of‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›is-variant-of‹ relationship', async () => {
-        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
-        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
+        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+        const carModel = await seedNode(ControllerNodeType.CarModel)
 
         await expect(CarModelVariant.deleteIsVariantOfRelationship(carModelVariant.properties.id, carModel.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›is-variant-of‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›is-variant-of‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.CAR_MODEL_VARIANT, ControllerNodeType.CAR_MODEL, RelationshipType.CarModelVariantIsVariantOf)
+        const seededRelationship = await seedRelationship(ControllerNodeType.CarModelVariant, ControllerNodeType.CarModel, RelationshipType.CarModelVariantIsVariantOf)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

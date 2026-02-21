@@ -1,8 +1,9 @@
 import express from "express"
 import {unmarshalInputData} from "./marshalling/unmarshalInputData"
-import {marshalNode} from "./marshalling/marshalNode"
 import {CreateGamingPlatformInput} from "../../../models/node-types/gaming-platforms/types/CreateGamingPlatformInput"
 import {GamingPlatform} from "../../../models/node-types/gaming-platforms/GamingPlatform"
+import {convertGamingPlatformNodeToControllerNode} from "./convertGamingPlatformNodeToControllerNode"
+import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import type {CreateGamingPlatformRawInput} from "./types/CreateGamingPlatformRawInput"
 import {isMandatoryString} from "../../validators/isMandatoryString"
 import {isOptionalString} from "../../validators/isOptionalString"
@@ -21,8 +22,9 @@ export async function create(req: express.Request, res: express.Response) {
     const sanitizedData = sanitize(data as CreateGamingPlatformInput)
 
     try {
-        const createdNode = await GamingPlatform.create(sanitizedData)
-        const marshalledData = marshalNode(createdNode)
+        const modelNode = await GamingPlatform.create(sanitizedData)
+        const node = convertGamingPlatformNodeToControllerNode(modelNode)
+        const marshalledData = marshalSingleNode(node.fields)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

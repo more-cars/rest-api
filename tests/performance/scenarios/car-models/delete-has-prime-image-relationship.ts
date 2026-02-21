@@ -35,7 +35,7 @@ export function setup() {
     for (let i = 0; i < 310; i++) {
         const image = createImage()
         createRelationship(
-            ControllerNodeType.CAR_MODEL,
+            ControllerNodeType.CarModel,
             carModelId,
             image,
             'has prime image',

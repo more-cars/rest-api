@@ -26,8 +26,8 @@ export const options = {
 }
 
 export function setup() {
-    const imageId = createNode(ControllerNodeType.IMAGE)
-    const nodeId = createNode(ControllerNodeType.COMPANY)
+    const imageId = createNode(ControllerNodeType.Image)
+    const nodeId = createNode(ControllerNodeType.Company)
 
     return {
         imageId,

@@ -5,8 +5,8 @@ import {CarModelVariant} from "../../../../../../../src/models/node-types/car-mo
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›has-image‹ relationship with valid data', async () => {
-    const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+    const image = await seedNode(ControllerNodeType.Image)
 
     const createdRelationship = await CarModelVariant.createHasImageRelationship(carModelVariant.properties.id, image.properties.id)
 

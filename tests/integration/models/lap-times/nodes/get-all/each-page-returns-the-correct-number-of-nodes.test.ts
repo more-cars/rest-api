@@ -11,7 +11,7 @@ describe('Each page of a "get all LAP TIME nodes" request returns the correct nu
         [2],
         [99],
     ])('when there exist no LAP TIME nodes (page=$0)', async (page) => {
-        await deleteAllNodesOfType(ControllerNodeType.LAP_TIME)
+        await deleteAllNodesOfType(ControllerNodeType.LapTime)
 
         const expectedNodes: LapTimeNode[] = []
         const actualNodes = await LapTime.findAll({page})
@@ -24,8 +24,8 @@ describe('Each page of a "get all LAP TIME nodes" request returns the correct nu
         [20, 1, 20],
         [5, 2, 0],
     ])('when there exist $0 LAP TIME nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
-        await deleteAllNodesOfType(ControllerNodeType.LAP_TIME)
-        await seedNodes(ControllerNodeType.LAP_TIME, totalNodeAmount)
+        await deleteAllNodesOfType(ControllerNodeType.LapTime)
+        await seedNodes(ControllerNodeType.LapTime, totalNodeAmount)
 
         const actualNodes = await LapTime.findAll({page})
 

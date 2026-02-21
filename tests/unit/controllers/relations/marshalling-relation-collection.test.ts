@@ -9,8 +9,8 @@ import {mapModelRelationTypeToControllerRelationType} from "../../../../src/cont
 
 test('marshalling a relation collection', async () => {
     getAllModelRelationshipTypes().forEach((relationshipType) => {
-        const origin = FakeNodeInput(ControllerNodeType.BRAND) as unknown as ControllerNode
-        const destination = FakeNodeInput(ControllerNodeType.CAR_MODEL) as unknown as ControllerNode
+        const origin = FakeNodeInput(ControllerNodeType.Brand) as unknown as ControllerNode
+        const destination = FakeNodeInput(ControllerNodeType.CarModel) as unknown as ControllerNode
         const relationship: Rel = {
             id: 3,
             type: relationshipType,
@@ -21,7 +21,7 @@ test('marshalling a relation collection', async () => {
         }
         const relationships = [relationship, relationship, relationship]
 
-        const marshalledRelations = marshalRelations(relationships, ControllerNodeType.CAR_MODEL)
+        const marshalledRelations = marshalRelations(relationships, ControllerNodeType.CarModel)
 
         expect(marshalledRelations.data.length)
             .toEqual(3)

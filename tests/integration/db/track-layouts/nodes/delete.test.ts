@@ -11,7 +11,7 @@ test('Expecting response "false" when trying to delete a non-existing TRACK LAYO
 })
 
 test('Expecting response "true" when deleting an existing TRACK LAYOUT', async () => {
-    const node = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+    const node = await seedNode(ControllerNodeType.TrackLayout)
     const success = await deleteNode(node.properties.id)
 
     expect(success)

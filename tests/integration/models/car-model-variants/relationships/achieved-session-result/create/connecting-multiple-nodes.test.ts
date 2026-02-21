@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A CAR MODEL VARIANT can have multiple ›achieved-session-result‹ relationships', async () => {
-    const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
+    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
     const sessionResultsAmount = 3
-    const sessionResults = await seedNodes(ControllerNodeType.SESSION_RESULT, sessionResultsAmount)
+    const sessionResults = await seedNodes(ControllerNodeType.SessionResult, sessionResultsAmount)
 
     for (const sessionResult of sessionResults) {
         await CarModelVariant.createAchievedSessionResultRelationship(carModelVariant.properties.id, sessionResult.properties.id)

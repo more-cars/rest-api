@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›is-followed-by-event‹ relationship', () => {
     test('RACING EVENT node does not exist', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
 
         await expect(RacingEvent.deleteIsFollowedByEventRelationship(racingEvent.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›is-followed-by-event‹ relationship', () => {
     })
 
     test('PARTNER node does not exist', async () => {
-        const partner = await seedNode(ControllerNodeType.RACING_EVENT)
+        const partner = await seedNode(ControllerNodeType.RacingEvent)
 
         await expect(RacingEvent.deleteIsFollowedByEventRelationship(-42, partner.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›is-followed-by-event‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›is-followed-by-event‹ relationship', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
-        const partner = await seedNode(ControllerNodeType.RACING_EVENT)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+        const partner = await seedNode(ControllerNodeType.RacingEvent)
 
         await expect(RacingEvent.deleteIsFollowedByEventRelationship(racingEvent.properties.id, partner.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›is-followed-by-event‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›is-followed-by-event‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.RACING_EVENT, ControllerNodeType.RACING_EVENT, RelationshipType.RacingEventIsFollowedByEvent)
+        const seededRelationship = await seedRelationship(ControllerNodeType.RacingEvent, ControllerNodeType.RacingEvent, RelationshipType.RacingEventIsFollowedByEvent)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

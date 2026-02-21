@@ -26,8 +26,8 @@ export const options = {
 }
 
 export function setup() {
-    const sessionResultId = createNode(ControllerNodeType.SESSION_RESULT)
-    const lapTimeId = createNode(ControllerNodeType.LAP_TIME)
+    const sessionResultId = createNode(ControllerNodeType.SessionResult)
+    const lapTimeId = createNode(ControllerNodeType.LapTime)
 
     return {
         sessionResultId,

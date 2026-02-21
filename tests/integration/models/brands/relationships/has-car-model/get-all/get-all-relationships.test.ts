@@ -8,9 +8,9 @@ import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 
 describe('Requesting all ›has-car-model‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const brand = await seedNode(ControllerNodeType.BRAND)
-        await seedRelationshipForStartNode(brand.properties.id, ControllerNodeType.CAR_MODEL, RelationshipType.BrandHasCarModel)
-        await seedRelationshipForStartNode(brand.properties.id, ControllerNodeType.CAR_MODEL, RelationshipType.BrandHasCarModel)
+        const brand = await seedNode(ControllerNodeType.Brand)
+        await seedRelationshipForStartNode(brand.properties.id, ControllerNodeType.CarModel, RelationshipType.BrandHasCarModel)
+        await seedRelationshipForStartNode(brand.properties.id, ControllerNodeType.CarModel, RelationshipType.BrandHasCarModel)
 
         const relationships = await Brand.getAllHasCarModelRelationships(brand.properties.id)
 
@@ -19,7 +19,7 @@ describe('Requesting all ›has-car-model‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const brand = await seedNode(ControllerNodeType.BRAND)
+        const brand = await seedNode(ControllerNodeType.Brand)
 
         const relationships = await Brand.getAllHasCarModelRelationships(brand.properties.id)
 

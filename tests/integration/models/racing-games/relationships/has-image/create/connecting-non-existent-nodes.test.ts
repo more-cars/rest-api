@@ -5,8 +5,8 @@ import {RacingGame} from "../../../../../../../src/models/node-types/racing-game
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›has-image‹ relationship with nodes that do not exist', async () => {
-    const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const racingGame = await seedNode(ControllerNodeType.RacingGame)
+    const image = await seedNode(ControllerNodeType.Image)
 
     await expect(RacingGame.createHasImageRelationship(-42, image.properties.id))
         .rejects

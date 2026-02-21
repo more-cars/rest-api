@@ -12,7 +12,7 @@ describe('Deleting a LAP TIME', () => {
     })
 
     test('that exists', async () => {
-        const node = await seedNode(ControllerNodeType.LAP_TIME)
+        const node = await seedNode(ControllerNodeType.LapTime)
         await expect(LapTime.delete(node.properties.id))
             .resolves
             .not.toThrow(NodeNotFoundError)

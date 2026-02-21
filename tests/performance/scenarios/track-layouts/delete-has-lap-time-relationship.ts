@@ -28,13 +28,13 @@ export const options = {
 }
 
 export function setup() {
-    const trackLayoutId = createNode(ControllerNodeType.TRACK_LAYOUT)
+    const trackLayoutId = createNode(ControllerNodeType.TrackLayout)
     const lapTimeIds = []
 
     for (let i = 0; i < 310; i++) {
-        const lapTime = createNode(ControllerNodeType.LAP_TIME)
+        const lapTime = createNode(ControllerNodeType.LapTime)
         createRelationship(
-            ControllerNodeType.TRACK_LAYOUT,
+            ControllerNodeType.TrackLayout,
             trackLayoutId,
             lapTime,
             'has lap time',

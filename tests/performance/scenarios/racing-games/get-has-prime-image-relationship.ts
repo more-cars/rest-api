@@ -27,10 +27,10 @@ export const options = {
 }
 
 export function setup() {
-    const racingGameId = createNode(ControllerNodeType.RACING_GAME)
-    const imageId = createNode(ControllerNodeType.IMAGE)
+    const racingGameId = createNode(ControllerNodeType.RacingGame)
+    const imageId = createNode(ControllerNodeType.Image)
     createRelationship(
-        ControllerNodeType.RACING_GAME,
+        ControllerNodeType.RacingGame,
         racingGameId,
         imageId,
         'has prime image',

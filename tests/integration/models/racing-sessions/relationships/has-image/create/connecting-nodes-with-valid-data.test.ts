@@ -5,8 +5,8 @@ import {RacingSession} from "../../../../../../../src/models/node-types/racing-s
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›has-image‹ relationship with valid data', async () => {
-    const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const racingSession = await seedNode(ControllerNodeType.RacingSession)
+    const image = await seedNode(ControllerNodeType.Image)
 
     const createdRelationship = await RacingSession.createHasImageRelationship(racingSession.properties.id, image.properties.id)
 

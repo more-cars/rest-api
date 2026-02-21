@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A LAP TIME cannot have multiple ›achieved-on-track-layout‹ relationships', async () => {
-    const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+    const lapTime = await seedNode(ControllerNodeType.LapTime)
     const trackLayoutsAmount = 3
-    const trackLayouts = await seedNodes(ControllerNodeType.TRACK_LAYOUT, trackLayoutsAmount)
+    const trackLayouts = await seedNodes(ControllerNodeType.TrackLayout, trackLayoutsAmount)
 
     for (const trackLayout of trackLayouts) {
         await LapTime.createAchievedOnTrackLayoutRelationship(lapTime.properties.id, trackLayout.properties.id)

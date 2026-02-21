@@ -12,7 +12,7 @@ test('Fetching a COMPANY that does not exist should return "false"', async () =>
 })
 
 test('When the COMPANY exists it should be returned', async () => {
-    const expectedCompany = await seedNode(ControllerNodeType.COMPANY)
+    const expectedCompany = await seedNode(ControllerNodeType.Company)
     const actualCompany = await Company.findById(expectedCompany.properties.id)
 
     expect(actualCompany.attributes)

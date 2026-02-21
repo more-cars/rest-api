@@ -26,8 +26,8 @@ export const options = {
 }
 
 export function setup() {
-    const racingSessionId = createNode(ControllerNodeType.RACING_SESSION)
-    const imageId = createNode(ControllerNodeType.IMAGE)
+    const racingSessionId = createNode(ControllerNodeType.RacingSession)
+    const imageId = createNode(ControllerNodeType.Image)
 
     return {
         racingSessionId,

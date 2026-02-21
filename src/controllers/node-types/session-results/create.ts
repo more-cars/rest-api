@@ -1,8 +1,9 @@
 import express from "express"
 import {unmarshalInputData} from "./marshalling/unmarshalInputData"
-import {marshalNode} from "./marshalling/marshalNode"
 import {CreateSessionResultInput} from "../../../models/node-types/session-results/types/CreateSessionResultInput"
 import {SessionResult} from "../../../models/node-types/session-results/SessionResult"
+import {convertSessionResultModelNodeToControllerNode} from "./convertSessionResultModelNodeToControllerNode"
+import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import type {CreateSessionResultRawInput} from "./types/CreateSessionResultRawInput"
 import {isMandatoryString} from "../../validators/isMandatoryString"
 import {isOptionalString} from "../../validators/isOptionalString"
@@ -22,8 +23,9 @@ export async function create(req: express.Request, res: express.Response) {
     const sanitizedData = sanitize(data as CreateSessionResultInput)
 
     try {
-        const createdNode = await SessionResult.create(sanitizedData)
-        const marshalledData = marshalNode(createdNode)
+        const modelNode = await SessionResult.create(sanitizedData)
+        const node = convertSessionResultModelNodeToControllerNode(modelNode)
+        const marshalledData = marshalSingleNode(node.fields)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

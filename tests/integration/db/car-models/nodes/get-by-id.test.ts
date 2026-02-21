@@ -14,7 +14,7 @@ test('Querying a CAR MODEL that does not exist should return "false"', async () 
 })
 
 test('Querying an existing CAR MODEL should return a db node with correct schema', async () => {
-    const createdNode = await seedNode(ControllerNodeType.CAR_MODEL)
+    const createdNode = await seedNode(ControllerNodeType.CarModel)
     const carModelNode = await getNodeById(createdNode.properties.id)
 
     expect(validateJson(carModelNode, CarModelSchema))

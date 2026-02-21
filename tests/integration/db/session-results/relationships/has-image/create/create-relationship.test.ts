@@ -6,8 +6,8 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 
 describe('Creating a ›has-image‹ relationship', () => {
     test('with valid data', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
-        const image = await seedNode(ControllerNodeType.IMAGE)
+        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+        const image = await seedNode(ControllerNodeType.Image)
 
         const createdRelationship = await createRelationship(
             sessionResult.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›has-image‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
 
         const createdRelationship = await createRelationship(
             sessionResult.properties.id,

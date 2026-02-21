@@ -10,8 +10,8 @@ test('A completely valid request, but the database call fails (e.g. one of the n
         }
     })
 
-    const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+    const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
     await expect(RaceTrack.createHasLayoutRelationship(raceTrack.properties.id, trackLayout.properties.id))
         .rejects

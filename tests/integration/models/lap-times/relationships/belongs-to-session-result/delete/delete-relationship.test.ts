@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›belongs-to-session-result‹ relationship', () => {
     test('LAP TIME node does not exist', async () => {
-        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+        const lapTime = await seedNode(ControllerNodeType.LapTime)
 
         await expect(LapTime.deleteBelongsToSessionResultRelationship(lapTime.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›belongs-to-session-result‹ relationship', () => {
     })
 
     test('SESSION RESULT node does not exist', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
 
         await expect(LapTime.deleteBelongsToSessionResultRelationship(-42, sessionResult.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›belongs-to-session-result‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›belongs-to-session-result‹ relationship', async () => {
-        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
-        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+        const lapTime = await seedNode(ControllerNodeType.LapTime)
+        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
 
         await expect(LapTime.deleteBelongsToSessionResultRelationship(lapTime.properties.id, sessionResult.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›belongs-to-session-result‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›belongs-to-session-result‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.LAP_TIME, ControllerNodeType.SESSION_RESULT, RelationshipType.LapTimeBelongsToSessionResult)
+        const seededRelationship = await seedRelationship(ControllerNodeType.LapTime, ControllerNodeType.SessionResult, RelationshipType.LapTimeBelongsToSessionResult)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

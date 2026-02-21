@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A RACING GAME can have multiple ›released-on-gaming-platform‹ relationships', async () => {
-    const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
+    const racingGame = await seedNode(ControllerNodeType.RacingGame)
     const gamingPlatformsAmount = 3
-    const gamingPlatforms = await seedNodes(ControllerNodeType.GAMING_PLATFORM, gamingPlatformsAmount)
+    const gamingPlatforms = await seedNodes(ControllerNodeType.GamingPlatform, gamingPlatformsAmount)
 
     for (const gamingPlatform of gamingPlatforms) {
         await RacingGame.createReleasedOnGamingPlatformRelationship(racingGame.properties.id, gamingPlatform.properties.id)

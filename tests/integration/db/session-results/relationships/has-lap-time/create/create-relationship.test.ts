@@ -6,8 +6,8 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 
 describe('Creating a ›has-lap-time‹ relationship', () => {
     test('with valid data', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
-        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+        const lapTime = await seedNode(ControllerNodeType.LapTime)
 
         const createdRelationship = await createRelationship(
             sessionResult.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›has-lap-time‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
 
         const createdRelationship = await createRelationship(
             sessionResult.properties.id,

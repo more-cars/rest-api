@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A GAMING PLATFORM cannot have multiple ›has-prime-image‹ relationships', async () => {
-    const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
+    const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
     const imagesAmount = 3
-    const images = await seedNodes(ControllerNodeType.IMAGE, imagesAmount)
+    const images = await seedNodes(ControllerNodeType.Image, imagesAmount)
 
     for (const image of images) {
         await GamingPlatform.createHasPrimeImageRelationship(gamingPlatform.properties.id, image.properties.id)

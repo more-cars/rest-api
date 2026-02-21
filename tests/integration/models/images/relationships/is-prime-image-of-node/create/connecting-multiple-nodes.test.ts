@@ -7,9 +7,9 @@ import {getRelationshipCollection} from "../../../../../../../src/db/relationshi
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 test('A IMAGE can have multiple ›is-prime-image-of-node‹ relationships', async () => {
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const image = await seedNode(ControllerNodeType.Image)
     const nodesAmount = 3
-    const nodes = await seedNodes(ControllerNodeType.COMPANY, nodesAmount)
+    const nodes = await seedNodes(ControllerNodeType.Company, nodesAmount)
 
     for (const node of nodes) {
         await Image.createIsPrimeImageOfNodeRelationship(image.properties.id, node.properties.id)

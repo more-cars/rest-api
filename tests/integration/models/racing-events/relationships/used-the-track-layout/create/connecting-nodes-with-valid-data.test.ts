@@ -5,8 +5,8 @@ import {RacingEvent} from "../../../../../../../src/models/node-types/racing-eve
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›used-the-track-layout‹ relationship with valid data', async () => {
-    const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
     const createdRelationship = await RacingEvent.createUsedTheTrackLayoutRelationship(racingEvent.properties.id, trackLayout.properties.id)
 

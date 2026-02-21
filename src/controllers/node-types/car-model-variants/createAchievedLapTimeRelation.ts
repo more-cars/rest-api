@@ -15,7 +15,7 @@ export async function createAchievedLapTimeRelation(req: express.Request, res: e
 
     try {
         const relation = await CarModelVariant.createAchievedLapTimeRelationship(carModelVariantId, lapTimeId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.LAP_TIME)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.LapTime)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

@@ -5,8 +5,8 @@ import {Company} from "../../../../../../../src/models/node-types/companies/Comp
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›has-brand‹ relationship with valid data', async () => {
-    const company = await seedNode(ControllerNodeType.COMPANY)
-    const brand = await seedNode(ControllerNodeType.BRAND)
+    const company = await seedNode(ControllerNodeType.Company)
+    const brand = await seedNode(ControllerNodeType.Brand)
 
     const createdRelationship = await Company.createHasBrandRelationship(company.properties.id, brand.properties.id)
 

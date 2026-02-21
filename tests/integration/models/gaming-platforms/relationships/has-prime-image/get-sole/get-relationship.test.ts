@@ -11,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(ControllerNodeType.GAMING_PLATFORM, ControllerNodeType.IMAGE, RelationshipType.GamingPlatformHasPrimeImage)
+        const expectedRelationship = await seedRelationship(ControllerNodeType.GamingPlatform, ControllerNodeType.Image, RelationshipType.GamingPlatformHasPrimeImage)
         const expectedGamingPlatformId = expectedRelationship.start_node.properties.id
         const expectedImageId = expectedRelationship.end_node.properties.id
         const actualRelationship = await GamingPlatform.getHasPrimeImageRelationship(expectedGamingPlatformId)
@@ -27,7 +27,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
+        const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
 
         await expect(GamingPlatform.getHasPrimeImageRelationship(gamingPlatform.properties.id))
             .rejects

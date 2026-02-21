@@ -11,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Requesting a ›belongs-to-race-track‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(ControllerNodeType.TRACK_LAYOUT, ControllerNodeType.RACE_TRACK, RelationshipType.TrackLayoutBelongsToRaceTrack)
+        const expectedRelationship = await seedRelationship(ControllerNodeType.TrackLayout, ControllerNodeType.RaceTrack, RelationshipType.TrackLayoutBelongsToRaceTrack)
         const expectedTrackLayoutId = expectedRelationship.start_node.properties.id
         const expectedRaceTrackId = expectedRelationship.end_node.properties.id
         const actualRelationship = await TrackLayout.getBelongsToRaceTrackRelationship(expectedTrackLayoutId)
@@ -27,7 +27,7 @@ describe('Requesting a ›belongs-to-race-track‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
         await expect(TrackLayout.getBelongsToRaceTrackRelationship(trackLayout.properties.id))
             .rejects

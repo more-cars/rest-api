@@ -30,7 +30,7 @@ export const options = {
 export function setup() {
     const startNodeId = createBrand()
     const endNodeId = createCarModel()
-    const relationshipId = createRelationship(ControllerNodeType.BRAND, startNodeId, endNodeId, 'has-car-model')
+    const relationshipId = createRelationship(ControllerNodeType.Brand, startNodeId, endNodeId, 'has-car-model')
 
     return {id: relationshipId}
 }

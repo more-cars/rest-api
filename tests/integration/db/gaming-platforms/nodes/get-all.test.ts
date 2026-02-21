@@ -6,7 +6,7 @@ import {seedNodes} from "../../../../_toolbox/dbSeeding/seedNodes"
 import {getAllNodesOfType} from "../../../../../src/db/nodes/gaming-platforms/getAllNodesOfType"
 
 test('When there are no GAMING PLATFORMS then an empty array should be returned', async () => {
-    await deleteAllNodesOfType(ControllerNodeType.GAMING_PLATFORM)
+    await deleteAllNodesOfType(ControllerNodeType.GamingPlatform)
 
     const expectedGamingPlatforms: GamingPlatformNode[] = []
     const actualGamingPlatforms = await getAllNodesOfType()
@@ -16,9 +16,9 @@ test('When there are no GAMING PLATFORMS then an empty array should be returned'
 })
 
 test('When GAMING PLATFORMS exist then all of them should be returned', async () => {
-    await deleteAllNodesOfType(ControllerNodeType.GAMING_PLATFORM)
+    await deleteAllNodesOfType(ControllerNodeType.GamingPlatform)
     const amount = Math.ceil(Math.random() * 50)
-    await seedNodes(ControllerNodeType.GAMING_PLATFORM, amount)
+    await seedNodes(ControllerNodeType.GamingPlatform, amount)
 
     const actualGamingPlatforms = await getAllNodesOfType()
 

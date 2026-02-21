@@ -6,8 +6,8 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 
 describe('Creating a ›is-successor-of‹ relationship', () => {
     test('with valid data', async () => {
-        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
-        const partner = await seedNode(ControllerNodeType.CAR_MODEL)
+        const carModel = await seedNode(ControllerNodeType.CarModel)
+        const partner = await seedNode(ControllerNodeType.CarModel)
 
         const createdRelationship = await createRelationship(
             carModel.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›is-successor-of‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
+        const carModel = await seedNode(ControllerNodeType.CarModel)
 
         const createdRelationship = await createRelationship(
             carModel.properties.id,

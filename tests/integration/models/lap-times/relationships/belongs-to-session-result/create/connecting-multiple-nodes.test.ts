@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A LAP TIME cannot have multiple ›belongs-to-session-result‹ relationships', async () => {
-    const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+    const lapTime = await seedNode(ControllerNodeType.LapTime)
     const sessionResultsAmount = 3
-    const sessionResults = await seedNodes(ControllerNodeType.SESSION_RESULT, sessionResultsAmount)
+    const sessionResults = await seedNodes(ControllerNodeType.SessionResult, sessionResultsAmount)
 
     for (const sessionResult of sessionResults) {
         await LapTime.createBelongsToSessionResultRelationship(lapTime.properties.id, sessionResult.properties.id)

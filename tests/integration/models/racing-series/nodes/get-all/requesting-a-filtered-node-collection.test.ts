@@ -8,7 +8,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all RACING SERIES nodes" request returns only the matching nodes', () => {
     test('when there exist no RACING SERIES nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RACING_SERIES)
+        await deleteAllNodesOfType(ControllerNodeType.RacingSeries)
 
         const expectedNodes: RacingSeriesNode[] = []
         const actualNodes = await RacingSeries.findAll({
@@ -22,12 +22,12 @@ describe('A filtered "get all RACING SERIES nodes" request returns only the matc
     })
 
     test('when there exist RACING SERIES nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RACING_SERIES)
-        const nodeA = await seedNode(ControllerNodeType.RACING_SERIES, {
+        await deleteAllNodesOfType(ControllerNodeType.RacingSeries)
+        const nodeA = await seedNode(ControllerNodeType.RacingSeries, {
             name: 'A Node'
         }) as unknown as RacingSeriesNode
-        await seedNode(ControllerNodeType.RACING_SERIES, {name: 'B Node'})
-        await seedNode(ControllerNodeType.RACING_SERIES, {name: 'C Node'})
+        await seedNode(ControllerNodeType.RacingSeries, {name: 'B Node'})
+        await seedNode(ControllerNodeType.RacingSeries, {name: 'C Node'})
 
         const filteredNodes = await RacingSeries.findAll({
             filterByProperty: 'name',

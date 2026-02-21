@@ -9,13 +9,13 @@ import type {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/t
 import FakeImageFull from "../../../../_toolbox/fixtures/nodes/FakeImageFull"
 
 test('Timestamps are added when creating a node', async () => {
-    const createdBrand = await createBrandNode(FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate)
+    const createdBrand = await createBrandNode(FakeNodeInput(ControllerNodeType.Brand) as InputBrandCreate)
     expect(createdBrand.properties)
         .toHaveProperty('created_at')
     expect(createdBrand.properties)
         .toHaveProperty('updated_at')
 
-    const createdCarModel = await createCarModelNode(FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate)
+    const createdCarModel = await createCarModelNode(FakeNodeInput(ControllerNodeType.CarModel) as InputCarModelCreate)
     expect(createdCarModel.properties)
         .toHaveProperty('created_at')
     expect(createdCarModel.properties)

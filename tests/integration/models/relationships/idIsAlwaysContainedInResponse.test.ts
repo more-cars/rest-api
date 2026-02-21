@@ -8,8 +8,8 @@ import type {InputBrandCreate} from "../../../../src/db/nodes/brands/types/Input
 import type {InputCarModelCreate} from "../../../../src/db/nodes/car-models/types/InputCarModelCreate"
 
 test('ID is always contained in response', async () => {
-    const carModel = await CarModel.create(FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate)
-    const brand = await Brand.create(FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate)
+    const carModel = await CarModel.create(FakeNodeInput(ControllerNodeType.CarModel) as InputCarModelCreate)
+    const brand = await Brand.create(FakeNodeInput(ControllerNodeType.Brand) as InputBrandCreate)
     const expectedRelationship = await CarModel.createBelongsToBrandRelationship(carModel.attributes.id, brand.attributes.id)
 
     if (!expectedRelationship) {

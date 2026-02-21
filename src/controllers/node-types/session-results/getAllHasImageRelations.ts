@@ -12,7 +12,7 @@ export async function getAllHasImageRelations(req: express.Request, res: express
 
     try {
         const relations = await SessionResult.getAllHasImageRelationships(sessionResultId)
-        const marshalledData = marshalRelations(relations, ControllerNodeType.IMAGE)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.Image)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

@@ -8,7 +8,7 @@ import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const relationship = await seedRelationship(ControllerNodeType.RACING_GAME, ControllerNodeType.IMAGE, RelationshipType.RacingGameHasPrimeImage)
+        const relationship = await seedRelationship(ControllerNodeType.RacingGame, ControllerNodeType.Image, RelationshipType.RacingGameHasPrimeImage)
 
         const relationships = await getRelationshipCollection(
             relationship.start_node.properties.id,
@@ -21,7 +21,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
+        const racingGame = await seedNode(ControllerNodeType.RacingGame)
 
         const relationships = await getRelationshipCollection(
             racingGame.properties.id,

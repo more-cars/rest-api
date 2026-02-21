@@ -7,7 +7,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all TRACK LAYOUT nodes" request returns the nodes in correct order', () => {
     test('when there exist no TRACK LAYOUT nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.TRACK_LAYOUT)
+        await deleteAllNodesOfType(ControllerNodeType.TrackLayout)
 
         const expectedNodes: TrackLayoutNode[] = []
         const actualNodes = await TrackLayout.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,10 +17,10 @@ describe('A sorted "get all TRACK LAYOUT nodes" request returns the nodes in cor
     })
 
     test('when there exist TRACK LAYOUT nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.TRACK_LAYOUT)
-        const nodeA = await seedNode(ControllerNodeType.TRACK_LAYOUT, {name: 'A Node'}) as unknown as TrackLayoutNode
-        const nodeB = await seedNode(ControllerNodeType.TRACK_LAYOUT, {name: 'B Node'}) as unknown as TrackLayoutNode
-        const nodeC = await seedNode(ControllerNodeType.TRACK_LAYOUT, {name: 'C Node'}) as unknown as TrackLayoutNode
+        await deleteAllNodesOfType(ControllerNodeType.TrackLayout)
+        const nodeA = await seedNode(ControllerNodeType.TrackLayout, {name: 'A Node'}) as unknown as TrackLayoutNode
+        const nodeB = await seedNode(ControllerNodeType.TrackLayout, {name: 'B Node'}) as unknown as TrackLayoutNode
+        const nodeC = await seedNode(ControllerNodeType.TrackLayout, {name: 'C Node'}) as unknown as TrackLayoutNode
 
         const ascNodes = await TrackLayout.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

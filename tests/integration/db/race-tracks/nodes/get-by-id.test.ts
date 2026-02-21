@@ -14,7 +14,7 @@ test('Querying a RACE TRACK that does not exist should return "false"', async ()
 })
 
 test('Querying an existing RACE TRACK should return a db node with correct schema', async () => {
-    const createdNode = await seedNode(ControllerNodeType.RACE_TRACK)
+    const createdNode = await seedNode(ControllerNodeType.RaceTrack)
     const raceTrackNode = await getNodeById(createdNode.properties.id)
 
     expect(validateJson(raceTrackNode, RaceTrackSchema))

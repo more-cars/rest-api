@@ -7,143 +7,143 @@ export function getTargetNodeTypeForRelationship(startNodeType: ControllerNodeTy
     relationshipName = snakeCase(startNodeType + ' ' + relationshipName)
 
     relationships.set(
-        ControllerNodeType.IMAGE, new Map([
-            [RelType.ImageBelongsToNode, ControllerNodeType.COMPANY],
-            [RelType.ImageBelongsToNode, ControllerNodeType.BRAND],
-            [RelType.ImageBelongsToNode, ControllerNodeType.CAR_MODEL],
-            [RelType.ImageBelongsToNode, ControllerNodeType.CAR_MODEL_VARIANT],
-            [RelType.ImageBelongsToNode, ControllerNodeType.RACE_TRACK],
-            [RelType.ImageBelongsToNode, ControllerNodeType.TRACK_LAYOUT],
-            [RelType.ImageBelongsToNode, ControllerNodeType.RACING_SERIES],
-            [RelType.ImageBelongsToNode, ControllerNodeType.RACING_EVENT],
-            [RelType.ImageBelongsToNode, ControllerNodeType.RACING_SESSION],
-            [RelType.ImageBelongsToNode, ControllerNodeType.SESSION_RESULT],
-            [RelType.ImageBelongsToNode, ControllerNodeType.LAP_TIME],
-            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.COMPANY],
-            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.BRAND],
-            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.CAR_MODEL],
-            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.CAR_MODEL_VARIANT],
-            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.RACE_TRACK],
-            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.TRACK_LAYOUT],
-            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.RACING_SERIES],
-            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.RACING_EVENT],
-            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.RACING_SESSION],
-            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.SESSION_RESULT],
-            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.LAP_TIME],
+        ControllerNodeType.Image, new Map([
+            [RelType.ImageBelongsToNode, ControllerNodeType.Company],
+            [RelType.ImageBelongsToNode, ControllerNodeType.Brand],
+            [RelType.ImageBelongsToNode, ControllerNodeType.CarModel],
+            [RelType.ImageBelongsToNode, ControllerNodeType.CarModelVariant],
+            [RelType.ImageBelongsToNode, ControllerNodeType.RaceTrack],
+            [RelType.ImageBelongsToNode, ControllerNodeType.TrackLayout],
+            [RelType.ImageBelongsToNode, ControllerNodeType.RacingSeries],
+            [RelType.ImageBelongsToNode, ControllerNodeType.RacingEvent],
+            [RelType.ImageBelongsToNode, ControllerNodeType.RacingSession],
+            [RelType.ImageBelongsToNode, ControllerNodeType.SessionResult],
+            [RelType.ImageBelongsToNode, ControllerNodeType.LapTime],
+            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.Company],
+            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.Brand],
+            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.CarModel],
+            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.CarModelVariant],
+            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.RaceTrack],
+            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.TrackLayout],
+            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.RacingSeries],
+            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.RacingEvent],
+            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.RacingSession],
+            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.SessionResult],
+            [RelType.ImageIsPrimeImageOfNode, ControllerNodeType.LapTime],
         ]))
 
     relationships.set(
-        ControllerNodeType.COMPANY, new Map([
-            [RelType.CompanyHasBrand, ControllerNodeType.BRAND],
-            [RelType.CompanyHasImage, ControllerNodeType.IMAGE],
-            [RelType.CompanyHasPrimeImage, ControllerNodeType.IMAGE],
+        ControllerNodeType.Company, new Map([
+            [RelType.CompanyHasBrand, ControllerNodeType.Brand],
+            [RelType.CompanyHasImage, ControllerNodeType.Image],
+            [RelType.CompanyHasPrimeImage, ControllerNodeType.Image],
         ]))
 
     relationships.set(
-        ControllerNodeType.BRAND, new Map([
-            [RelType.BrandBelongsToCompany, ControllerNodeType.COMPANY],
-            [RelType.BrandHasCarModel, ControllerNodeType.CAR_MODEL],
-            [RelType.BrandHasImage, ControllerNodeType.IMAGE],
-            [RelType.BrandHasPrimeImage, ControllerNodeType.IMAGE],
+        ControllerNodeType.Brand, new Map([
+            [RelType.BrandBelongsToCompany, ControllerNodeType.Company],
+            [RelType.BrandHasCarModel, ControllerNodeType.CarModel],
+            [RelType.BrandHasImage, ControllerNodeType.Image],
+            [RelType.BrandHasPrimeImage, ControllerNodeType.Image],
         ]))
 
     relationships.set(
-        ControllerNodeType.CAR_MODEL, new Map([
-            [RelType.CarModelBelongsToBrand, ControllerNodeType.BRAND],
-            [RelType.CarModelHasSuccessor, ControllerNodeType.CAR_MODEL],
-            [RelType.CarModelIsSuccessorOf, ControllerNodeType.CAR_MODEL],
-            [RelType.CarModelHasVariant, ControllerNodeType.CAR_MODEL_VARIANT],
-            [RelType.CarModelHasImage, ControllerNodeType.IMAGE],
-            [RelType.CarModelHasPrimeImage, ControllerNodeType.IMAGE],
+        ControllerNodeType.CarModel, new Map([
+            [RelType.CarModelBelongsToBrand, ControllerNodeType.Brand],
+            [RelType.CarModelHasSuccessor, ControllerNodeType.CarModel],
+            [RelType.CarModelIsSuccessorOf, ControllerNodeType.CarModel],
+            [RelType.CarModelHasVariant, ControllerNodeType.CarModelVariant],
+            [RelType.CarModelHasImage, ControllerNodeType.Image],
+            [RelType.CarModelHasPrimeImage, ControllerNodeType.Image],
         ]))
 
     relationships.set(
-        ControllerNodeType.CAR_MODEL_VARIANT, new Map([
-            [RelType.CarModelVariantIsVariantOf, ControllerNodeType.CAR_MODEL],
-            [RelType.CarModelVariantAchievedSessionResult, ControllerNodeType.SESSION_RESULT],
-            [RelType.CarModelVariantAchievedLapTime, ControllerNodeType.LAP_TIME],
-            [RelType.CarModelVariantIsFeaturedInRacingGame, ControllerNodeType.RACING_GAME],
-            [RelType.CarModelVariantHasImage, ControllerNodeType.IMAGE],
-            [RelType.CarModelVariantHasPrimeImage, ControllerNodeType.IMAGE],
+        ControllerNodeType.CarModelVariant, new Map([
+            [RelType.CarModelVariantIsVariantOf, ControllerNodeType.CarModel],
+            [RelType.CarModelVariantAchievedSessionResult, ControllerNodeType.SessionResult],
+            [RelType.CarModelVariantAchievedLapTime, ControllerNodeType.LapTime],
+            [RelType.CarModelVariantIsFeaturedInRacingGame, ControllerNodeType.RacingGame],
+            [RelType.CarModelVariantHasImage, ControllerNodeType.Image],
+            [RelType.CarModelVariantHasPrimeImage, ControllerNodeType.Image],
         ]))
 
     relationships.set(
-        ControllerNodeType.RACE_TRACK, new Map([
-            [RelType.RaceTrackHasLayout, ControllerNodeType.TRACK_LAYOUT],
-            [RelType.RaceTrackHostedRacingEvent, ControllerNodeType.RACING_EVENT],
-            [RelType.RaceTrackHasImage, ControllerNodeType.IMAGE],
-            [RelType.RaceTrackHasPrimeImage, ControllerNodeType.IMAGE],
+        ControllerNodeType.RaceTrack, new Map([
+            [RelType.RaceTrackHasLayout, ControllerNodeType.TrackLayout],
+            [RelType.RaceTrackHostedRacingEvent, ControllerNodeType.RacingEvent],
+            [RelType.RaceTrackHasImage, ControllerNodeType.Image],
+            [RelType.RaceTrackHasPrimeImage, ControllerNodeType.Image],
         ]))
 
     relationships.set(
-        ControllerNodeType.TRACK_LAYOUT, new Map([
-            [RelType.TrackLayoutBelongsToRaceTrack, ControllerNodeType.RACE_TRACK],
-            [RelType.TrackLayoutWasUsedByRacingEvent, ControllerNodeType.RACING_EVENT],
-            [RelType.TrackLayoutHasLapTime, ControllerNodeType.LAP_TIME],
-            [RelType.TrackLayoutIsFeaturedInRacingGame, ControllerNodeType.RACING_GAME],
-            [RelType.TrackLayoutHasImage, ControllerNodeType.IMAGE],
-            [RelType.TrackLayoutHasPrimeImage, ControllerNodeType.IMAGE],
+        ControllerNodeType.TrackLayout, new Map([
+            [RelType.TrackLayoutBelongsToRaceTrack, ControllerNodeType.RaceTrack],
+            [RelType.TrackLayoutWasUsedByRacingEvent, ControllerNodeType.RacingEvent],
+            [RelType.TrackLayoutHasLapTime, ControllerNodeType.LapTime],
+            [RelType.TrackLayoutIsFeaturedInRacingGame, ControllerNodeType.RacingGame],
+            [RelType.TrackLayoutHasImage, ControllerNodeType.Image],
+            [RelType.TrackLayoutHasPrimeImage, ControllerNodeType.Image],
         ]))
 
     relationships.set(
-        ControllerNodeType.RACING_SERIES, new Map([
-            [RelType.RacingSeriesHasRacingEvent, ControllerNodeType.RACING_EVENT],
-            [RelType.RacingSeriesHasImage, ControllerNodeType.IMAGE],
-            [RelType.RacingSeriesHasPrimeImage, ControllerNodeType.IMAGE],
+        ControllerNodeType.RacingSeries, new Map([
+            [RelType.RacingSeriesHasRacingEvent, ControllerNodeType.RacingEvent],
+            [RelType.RacingSeriesHasImage, ControllerNodeType.Image],
+            [RelType.RacingSeriesHasPrimeImage, ControllerNodeType.Image],
         ]))
 
     relationships.set(
-        ControllerNodeType.RACING_EVENT, new Map([
-            [RelType.RacingEventBelongsToRacingSeries, ControllerNodeType.RACING_SERIES],
-            [RelType.RacingEventFollowsEvent, ControllerNodeType.RACING_EVENT],
-            [RelType.RacingEventIsFollowedByEvent, ControllerNodeType.RACING_EVENT],
-            [RelType.RacingEventTookPlaceAtRaceTrack, ControllerNodeType.RACE_TRACK],
-            [RelType.RacingEventUsedTheTrackLayout, ControllerNodeType.TRACK_LAYOUT],
-            [RelType.RacingEventHasRacingSession, ControllerNodeType.RACING_SESSION],
-            [RelType.RacingEventHasImage, ControllerNodeType.IMAGE],
-            [RelType.RacingEventHasPrimeImage, ControllerNodeType.IMAGE],
+        ControllerNodeType.RacingEvent, new Map([
+            [RelType.RacingEventBelongsToRacingSeries, ControllerNodeType.RacingSeries],
+            [RelType.RacingEventFollowsEvent, ControllerNodeType.RacingEvent],
+            [RelType.RacingEventIsFollowedByEvent, ControllerNodeType.RacingEvent],
+            [RelType.RacingEventTookPlaceAtRaceTrack, ControllerNodeType.RaceTrack],
+            [RelType.RacingEventUsedTheTrackLayout, ControllerNodeType.TrackLayout],
+            [RelType.RacingEventHasRacingSession, ControllerNodeType.RacingSession],
+            [RelType.RacingEventHasImage, ControllerNodeType.Image],
+            [RelType.RacingEventHasPrimeImage, ControllerNodeType.Image],
         ]))
 
     relationships.set(
-        ControllerNodeType.RACING_SESSION, new Map([
-            [RelType.RacingSessionBelongsToRacingEvent, ControllerNodeType.RACING_EVENT],
-            [RelType.RacingSessionHasSessionResult, ControllerNodeType.SESSION_RESULT],
-            [RelType.RacingSessionHasImage, ControllerNodeType.IMAGE],
-            [RelType.RacingSessionHasPrimeImage, ControllerNodeType.IMAGE],
+        ControllerNodeType.RacingSession, new Map([
+            [RelType.RacingSessionBelongsToRacingEvent, ControllerNodeType.RacingEvent],
+            [RelType.RacingSessionHasSessionResult, ControllerNodeType.SessionResult],
+            [RelType.RacingSessionHasImage, ControllerNodeType.Image],
+            [RelType.RacingSessionHasPrimeImage, ControllerNodeType.Image],
         ]))
 
     relationships.set(
-        ControllerNodeType.SESSION_RESULT, new Map([
-            [RelType.SessionResultBelongsToRacingSession, ControllerNodeType.RACING_SESSION],
-            [RelType.SessionResultHasLapTime, ControllerNodeType.LAP_TIME],
-            [RelType.SessionResultAchievedWithCarModelVariant, ControllerNodeType.CAR_MODEL_VARIANT],
-            [RelType.SessionResultHasImage, ControllerNodeType.IMAGE],
-            [RelType.SessionResultHasPrimeImage, ControllerNodeType.IMAGE],
+        ControllerNodeType.SessionResult, new Map([
+            [RelType.SessionResultBelongsToRacingSession, ControllerNodeType.RacingSession],
+            [RelType.SessionResultHasLapTime, ControllerNodeType.LapTime],
+            [RelType.SessionResultAchievedWithCarModelVariant, ControllerNodeType.CarModelVariant],
+            [RelType.SessionResultHasImage, ControllerNodeType.Image],
+            [RelType.SessionResultHasPrimeImage, ControllerNodeType.Image],
         ]))
 
     relationships.set(
-        ControllerNodeType.LAP_TIME, new Map([
-            [RelType.LapTimeBelongsToSessionResult, ControllerNodeType.SESSION_RESULT],
-            [RelType.LapTimeAchievedOnTrackLayout, ControllerNodeType.TRACK_LAYOUT],
-            [RelType.LapTimeAchievedWithCarModelVariant, ControllerNodeType.CAR_MODEL_VARIANT],
-            [RelType.LapTimeHasImage, ControllerNodeType.IMAGE],
-            [RelType.LapTimeHasPrimeImage, ControllerNodeType.IMAGE],
+        ControllerNodeType.LapTime, new Map([
+            [RelType.LapTimeBelongsToSessionResult, ControllerNodeType.SessionResult],
+            [RelType.LapTimeAchievedOnTrackLayout, ControllerNodeType.TrackLayout],
+            [RelType.LapTimeAchievedWithCarModelVariant, ControllerNodeType.CarModelVariant],
+            [RelType.LapTimeHasImage, ControllerNodeType.Image],
+            [RelType.LapTimeHasPrimeImage, ControllerNodeType.Image],
         ]))
 
     relationships.set(
-        ControllerNodeType.RACING_GAME, new Map([
-            [RelType.RacingGameFeaturesCarModelVariant, ControllerNodeType.CAR_MODEL_VARIANT],
-            [RelType.RacingGameFeaturesTrackLayout, ControllerNodeType.TRACK_LAYOUT],
-            [RelType.RacingGameReleasedOnGamingPlatform, ControllerNodeType.GAMING_PLATFORM],
-            [RelType.RacingGameHasImage, ControllerNodeType.IMAGE],
-            [RelType.RacingGameHasPrimeImage, ControllerNodeType.IMAGE],
+        ControllerNodeType.RacingGame, new Map([
+            [RelType.RacingGameFeaturesCarModelVariant, ControllerNodeType.CarModelVariant],
+            [RelType.RacingGameFeaturesTrackLayout, ControllerNodeType.TrackLayout],
+            [RelType.RacingGameReleasedOnGamingPlatform, ControllerNodeType.GamingPlatform],
+            [RelType.RacingGameHasImage, ControllerNodeType.Image],
+            [RelType.RacingGameHasPrimeImage, ControllerNodeType.Image],
         ]))
 
     relationships.set(
-        ControllerNodeType.GAMING_PLATFORM, new Map([
-            [RelType.GamingPlatformFeaturesRacingGame, ControllerNodeType.RACING_GAME],
-            [RelType.GamingPlatformHasImage, ControllerNodeType.IMAGE],
-            [RelType.GamingPlatformHasPrimeImage, ControllerNodeType.IMAGE],
+        ControllerNodeType.GamingPlatform, new Map([
+            [RelType.GamingPlatformFeaturesRacingGame, ControllerNodeType.RacingGame],
+            [RelType.GamingPlatformHasImage, ControllerNodeType.Image],
+            [RelType.GamingPlatformHasPrimeImage, ControllerNodeType.Image],
         ]))
 
     const match = relationships.get(startNodeType)?.get(relationshipName as RelType)

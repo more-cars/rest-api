@@ -5,8 +5,8 @@ import {RacingEvent} from "../../../../../../../src/models/node-types/racing-eve
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›has-image‹ relationship with nodes that do not exist', async () => {
-    const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+    const image = await seedNode(ControllerNodeType.Image)
 
     await expect(RacingEvent.createHasImageRelationship(-42, image.properties.id))
         .rejects

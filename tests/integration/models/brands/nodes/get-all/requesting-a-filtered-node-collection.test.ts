@@ -8,7 +8,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all BRAND nodes" request returns only the matching nodes', () => {
     test('when there exist no BRAND nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.BRAND)
+        await deleteAllNodesOfType(ControllerNodeType.Brand)
 
         const expectedNodes: BrandNode[] = []
         const actualNodes = await Brand.findAll({
@@ -22,10 +22,10 @@ describe('A filtered "get all BRAND nodes" request returns only the matching nod
     })
 
     test('when there exist BRAND nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.BRAND)
-        const nodeA = await seedNode(ControllerNodeType.BRAND, {name: 'A Node'}) as unknown as BrandNode
-        await seedNode(ControllerNodeType.BRAND, {name: 'B Node'})
-        await seedNode(ControllerNodeType.BRAND, {name: 'C Node'})
+        await deleteAllNodesOfType(ControllerNodeType.Brand)
+        const nodeA = await seedNode(ControllerNodeType.Brand, {name: 'A Node'}) as unknown as BrandNode
+        await seedNode(ControllerNodeType.Brand, {name: 'B Node'})
+        await seedNode(ControllerNodeType.Brand, {name: 'C Node'})
 
         const filteredNodes = await Brand.findAll({
             filterByProperty: 'name',

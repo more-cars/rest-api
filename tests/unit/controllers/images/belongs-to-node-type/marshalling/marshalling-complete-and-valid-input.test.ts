@@ -1,8 +1,6 @@
 import {expect, test} from 'vitest'
 import type {ImageBelongsToNodeTypeRelationships} from "../../../../../../src/models/node-types/images/types/ImageBelongsToNodeTypeRelationships"
-import {
-    marshalBelongsToNodeTypeRelationships
-} from "../../../../../../src/controllers/node-types/images/marshalling/marshalBelongsToNodeTypeRelationships"
+import {marshalBelongsToNodeTypeRelationships} from "../../../../../../src/controllers/node-types/images/marshalling/marshalBelongsToNodeTypeRelationships"
 import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {kebabCase} from "change-case"
 import {RelationType} from "../../../../../../src/controllers/relations/types/RelationType"
@@ -10,13 +8,13 @@ import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 test('marshalling a ›belongs-to-node-type‹ relationship collection', async () => {
     const relationships: ImageBelongsToNodeTypeRelationships = {
-        companies: [getRelationshipModel(ControllerNodeType.COMPANY)],
-        brands: [getRelationshipModel(ControllerNodeType.BRAND)],
-        car_models: [getRelationshipModel(ControllerNodeType.CAR_MODEL)],
-        race_tracks: [getRelationshipModel(ControllerNodeType.RACE_TRACK)],
-        track_layouts: [getRelationshipModel(ControllerNodeType.TRACK_LAYOUT)],
-        racing_series: [getRelationshipModel(ControllerNodeType.RACING_SERIES)],
-        racing_events: [getRelationshipModel(ControllerNodeType.RACING_EVENT)],
+        companies: [getRelationshipModel(ControllerNodeType.Company)],
+        brands: [getRelationshipModel(ControllerNodeType.Brand)],
+        car_models: [getRelationshipModel(ControllerNodeType.CarModel)],
+        race_tracks: [getRelationshipModel(ControllerNodeType.RaceTrack)],
+        track_layouts: [getRelationshipModel(ControllerNodeType.TrackLayout)],
+        racing_series: [getRelationshipModel(ControllerNodeType.RacingSeries)],
+        racing_events: [getRelationshipModel(ControllerNodeType.RacingEvent)],
     }
 
     const mappedNode = marshalBelongsToNodeTypeRelationships(relationships)
@@ -26,37 +24,37 @@ test('marshalling a ›belongs-to-node-type‹ relationship collection', async (
             data: {
                 companies: {
                     data: [{
-                        data: getExpectedMarshalledRelation(ControllerNodeType.COMPANY)
+                        data: getExpectedMarshalledRelation(ControllerNodeType.Company)
                     }],
                 },
                 brands: {
                     data: [{
-                        data: getExpectedMarshalledRelation(ControllerNodeType.BRAND)
+                        data: getExpectedMarshalledRelation(ControllerNodeType.Brand)
                     }],
                 },
                 car_models: {
                     data: [{
-                        data: getExpectedMarshalledRelation(ControllerNodeType.CAR_MODEL)
+                        data: getExpectedMarshalledRelation(ControllerNodeType.CarModel)
                     }]
                 },
                 race_tracks: {
                     data: [{
-                        data: getExpectedMarshalledRelation(ControllerNodeType.RACE_TRACK)
+                        data: getExpectedMarshalledRelation(ControllerNodeType.RaceTrack)
                     }]
                 },
                 track_layouts: {
                     data: [{
-                        data: getExpectedMarshalledRelation(ControllerNodeType.TRACK_LAYOUT)
+                        data: getExpectedMarshalledRelation(ControllerNodeType.TrackLayout)
                     }]
                 },
                 racing_series: {
                     data: [{
-                        data: getExpectedMarshalledRelation(ControllerNodeType.RACING_SERIES)
+                        data: getExpectedMarshalledRelation(ControllerNodeType.RacingSeries)
                     }]
                 },
                 racing_events: {
                     data: [{
-                        data: getExpectedMarshalledRelation(ControllerNodeType.RACING_EVENT)
+                        data: getExpectedMarshalledRelation(ControllerNodeType.RacingEvent)
                     }]
                 },
             }

@@ -12,7 +12,7 @@ export async function getAllHasLayoutRelations(req: express.Request, res: expres
 
     try {
         const relations = await RaceTrack.getAllHasLayoutRelationships(raceTrackId)
-        const marshalledData = marshalRelations(relations, ControllerNodeType.TRACK_LAYOUT)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.TrackLayout)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

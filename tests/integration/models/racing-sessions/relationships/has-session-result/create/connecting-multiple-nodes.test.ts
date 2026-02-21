@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A RACING SESSION can have multiple ›has-session-result‹ relationships', async () => {
-    const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
+    const racingSession = await seedNode(ControllerNodeType.RacingSession)
     const sessionResultsAmount = 3
-    const sessionResults = await seedNodes(ControllerNodeType.SESSION_RESULT, sessionResultsAmount)
+    const sessionResults = await seedNodes(ControllerNodeType.SessionResult, sessionResultsAmount)
 
     for (const sessionResult of sessionResults) {
         await RacingSession.createHasSessionResultRelationship(racingSession.properties.id, sessionResult.properties.id)

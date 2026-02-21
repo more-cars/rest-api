@@ -8,9 +8,9 @@ import {CarModel} from "../../../../../../../src/models/node-types/car-models/Ca
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
-        await seedRelationshipForStartNode(carModel.properties.id, ControllerNodeType.IMAGE, RelationshipType.CarModelHasImage)
-        await seedRelationshipForStartNode(carModel.properties.id, ControllerNodeType.IMAGE, RelationshipType.CarModelHasImage)
+        const carModel = await seedNode(ControllerNodeType.CarModel)
+        await seedRelationshipForStartNode(carModel.properties.id, ControllerNodeType.Image, RelationshipType.CarModelHasImage)
+        await seedRelationshipForStartNode(carModel.properties.id, ControllerNodeType.Image, RelationshipType.CarModelHasImage)
 
         const relationships = await CarModel.getAllHasImageRelationships(carModel.properties.id)
 
@@ -19,7 +19,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const brand = await seedNode(ControllerNodeType.CAR_MODEL)
+        const brand = await seedNode(ControllerNodeType.CarModel)
 
         const relationships = await CarModel.getAllHasImageRelationships(brand.properties.id)
 

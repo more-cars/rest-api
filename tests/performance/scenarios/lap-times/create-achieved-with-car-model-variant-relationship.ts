@@ -26,8 +26,8 @@ export const options = {
 }
 
 export function setup() {
-    const lapTimeId = createNode(ControllerNodeType.LAP_TIME)
-    const carModelVariantId = createNode(ControllerNodeType.CAR_MODEL_VARIANT)
+    const lapTimeId = createNode(ControllerNodeType.LapTime)
+    const carModelVariantId = createNode(ControllerNodeType.CarModelVariant)
 
     return {
         lapTimeId,

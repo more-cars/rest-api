@@ -5,8 +5,8 @@ import {TrackLayout} from "../../../../../../../src/models/node-types/track-layo
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›has-lap-time‹ relationship with nodes that do not exist', async () => {
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
-    const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
+    const lapTime = await seedNode(ControllerNodeType.LapTime)
 
     await expect(TrackLayout.createHasLapTimeRelationship(-42, lapTime.properties.id))
         .rejects

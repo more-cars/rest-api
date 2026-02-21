@@ -15,7 +15,7 @@ export async function createHasPrimeImageRelation(req: express.Request, res: exp
 
     try {
         const relation = await GamingPlatform.createHasPrimeImageRelationship(gamingPlatformId, imageId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.IMAGE)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.Image)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

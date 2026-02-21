@@ -15,7 +15,7 @@ export async function createHasVariantRelation(req: express.Request, res: expres
 
     try {
         const relation = await CarModel.createHasVariantRelationship(carModelId, carModelVariantId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.CAR_MODEL_VARIANT)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.CarModelVariant)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

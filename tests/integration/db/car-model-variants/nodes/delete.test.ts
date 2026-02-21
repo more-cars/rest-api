@@ -11,7 +11,7 @@ test('Expecting response "false" when trying to delete a non-existing CAR MODEL 
 })
 
 test('Expecting response "true" when deleting an existing CAR MODEL VARIANT', async () => {
-    const node = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
+    const node = await seedNode(ControllerNodeType.CarModelVariant)
     const success = await deleteNode(node.properties.id)
 
     expect(success)

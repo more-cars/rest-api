@@ -6,8 +6,8 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 
 describe('Creating a ›has-session-result‹ relationship', () => {
     test('with valid data', async () => {
-        const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
-        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+        const racingSession = await seedNode(ControllerNodeType.RacingSession)
+        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
 
         const createdRelationship = await createRelationship(
             racingSession.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›has-session-result‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
+        const racingSession = await seedNode(ControllerNodeType.RacingSession)
 
         const createdRelationship = await createRelationship(
             racingSession.properties.id,

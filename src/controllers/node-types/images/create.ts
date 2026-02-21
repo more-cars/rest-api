@@ -1,8 +1,9 @@
 import express from "express"
 import {unmarshalInputData} from "./marshalling/unmarshalInputData"
-import {marshalNode} from "./marshalling/marshalNode"
 import {CreateImageInput} from "../../../models/node-types/images/types/CreateImageInput"
 import {Image} from "../../../models/node-types/images/Image"
+import {convertImageModelNodeToControllerNode} from "./convertImageModelNodeToControllerNode"
+import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import type {CreateImageRawInput} from "./types/CreateImageRawInput"
 import {isMandatoryString} from "../../validators/isMandatoryString"
 import {sendResponse201} from "../../responses/sendResponse201"
@@ -19,8 +20,9 @@ export async function create(req: express.Request, res: express.Response) {
     const sanitizedData = sanitize(data as CreateImageInput)
 
     try {
-        const createdNode = await Image.create(sanitizedData)
-        const marshalledData = marshalNode(createdNode)
+        const modelNode = await Image.create(sanitizedData)
+        const node = convertImageModelNodeToControllerNode(modelNode)
+        const marshalledData = marshalSingleNode(node.fields)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

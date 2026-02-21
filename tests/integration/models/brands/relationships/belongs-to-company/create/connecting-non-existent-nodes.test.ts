@@ -5,8 +5,8 @@ import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›belongs-to-company‹ relationship with nodes that do not exist', async () => {
-    const brand = await seedNode(ControllerNodeType.BRAND)
-    const company = await seedNode(ControllerNodeType.COMPANY)
+    const brand = await seedNode(ControllerNodeType.Brand)
+    const company = await seedNode(ControllerNodeType.Company)
 
     await expect(Brand.createBelongsToCompanyRelationship(-42, company.properties.id))
         .rejects

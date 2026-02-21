@@ -4,7 +4,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 import {Image} from "../../../../../../../src/models/node-types/images/Image"
 
 test('Attaching an image to itself is not allowed', async () => {
-    const imageNode = await seedNode(ControllerNodeType.IMAGE)
+    const imageNode = await seedNode(ControllerNodeType.Image)
 
     await expect(Image.createBelongsToNodeRelationship(imageNode.properties.id, imageNode.properties.id))
         .rejects

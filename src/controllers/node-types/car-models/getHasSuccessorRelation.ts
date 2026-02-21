@@ -13,7 +13,7 @@ export async function getHasSuccessorRelation(req: express.Request, res: express
 
     try {
         const relation = await CarModel.getHasSuccessorRelationship(carModelId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.CAR_MODEL)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.CarModel)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

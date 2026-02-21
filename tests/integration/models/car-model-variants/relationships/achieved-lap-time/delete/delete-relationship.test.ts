@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›achieved-lap-time‹ relationship', () => {
     test('CAR MODEL VARIANT node does not exist', async () => {
-        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
+        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
 
         await expect(CarModelVariant.deleteAchievedLapTimeRelationship(carModelVariant.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›achieved-lap-time‹ relationship', () => {
     })
 
     test('LAP TIME node does not exist', async () => {
-        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+        const lapTime = await seedNode(ControllerNodeType.LapTime)
 
         await expect(CarModelVariant.deleteAchievedLapTimeRelationship(-42, lapTime.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›achieved-lap-time‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›achieved-lap-time‹ relationship', async () => {
-        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
-        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+        const lapTime = await seedNode(ControllerNodeType.LapTime)
 
         await expect(CarModelVariant.deleteAchievedLapTimeRelationship(carModelVariant.properties.id, lapTime.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›achieved-lap-time‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›achieved-lap-time‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.CAR_MODEL_VARIANT, ControllerNodeType.LAP_TIME, RelationshipType.CarModelVariantAchievedLapTime)
+        const seededRelationship = await seedRelationship(ControllerNodeType.CarModelVariant, ControllerNodeType.LapTime, RelationshipType.CarModelVariantAchievedLapTime)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

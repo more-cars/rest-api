@@ -11,7 +11,7 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 
 describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(ControllerNodeType.BRAND, ControllerNodeType.IMAGE, RelationshipType.BrandHasPrimeImage)
+        const expectedRelationship = await seedRelationship(ControllerNodeType.Brand, ControllerNodeType.Image, RelationshipType.BrandHasPrimeImage)
         const expectedBrandId = expectedRelationship.start_node.properties.id
         const expectedImageId = expectedRelationship.end_node.properties.id
         const actualRelationship = await Brand.getHasPrimeImageRelationship(expectedBrandId)
@@ -27,7 +27,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const brand = await seedNode(ControllerNodeType.BRAND)
+        const brand = await seedNode(ControllerNodeType.Brand)
 
         await expect(Brand.getHasPrimeImageRelationship(brand.properties.id))
             .rejects

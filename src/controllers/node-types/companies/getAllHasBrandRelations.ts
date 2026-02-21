@@ -12,7 +12,7 @@ export async function getAllHasBrandRelations(req: express.Request, res: express
 
     try {
         const relations = await Company.getAllHasBrandRelationships(companyId)
-        const marshalledData = marshalRelations(relations, ControllerNodeType.BRAND)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.Brand)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

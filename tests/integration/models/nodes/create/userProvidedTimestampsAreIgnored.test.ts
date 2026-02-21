@@ -10,7 +10,7 @@ import {Image} from "../../../../../src/models/node-types/images/Image"
 
 test('Timestamps provided by the user are ignored', async () => {
     // BRAND
-    const brandData = FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate
+    const brandData = FakeNodeInput(ControllerNodeType.Brand) as InputBrandCreate
     const createdBrand = await Brand.create(brandData)
 
     expect(createdBrand.attributes).toHaveProperty('created_at')
@@ -19,7 +19,7 @@ test('Timestamps provided by the user are ignored', async () => {
     expect(createdBrand.attributes).not.toHaveProperty('updated_at', "blobb")
 
     // CAR MODEL
-    const carModelData = FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate
+    const carModelData = FakeNodeInput(ControllerNodeType.CarModel) as InputCarModelCreate
     const createdCarModel = await CarModel.create(carModelData)
 
     expect(createdCarModel.attributes).toHaveProperty('created_at')
@@ -28,7 +28,7 @@ test('Timestamps provided by the user are ignored', async () => {
     expect(createdCarModel.attributes).not.toHaveProperty('updated_at', "blobb")
 
     // IMAGE
-    const imageData: InputImageCreate = FakeNodeInput(ControllerNodeType.IMAGE) as InputImageCreate
+    const imageData: InputImageCreate = FakeNodeInput(ControllerNodeType.Image) as InputImageCreate
     const createdImage = await Image.create(imageData)
 
     expect(createdImage.attributes).toHaveProperty('created_at')

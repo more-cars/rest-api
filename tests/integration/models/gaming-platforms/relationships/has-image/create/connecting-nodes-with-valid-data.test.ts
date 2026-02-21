@@ -5,8 +5,8 @@ import {GamingPlatform} from "../../../../../../../src/models/node-types/gaming-
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›has-image‹ relationship with valid data', async () => {
-    const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
+    const image = await seedNode(ControllerNodeType.Image)
 
     const createdRelationship = await GamingPlatform.createHasImageRelationship(gamingPlatform.properties.id, image.properties.id)
 

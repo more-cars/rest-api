@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A TRACK LAYOUT can have multiple ›was-used-by-racing-event‹ relationships', async () => {
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
     const racingEventsAmount = 3
-    const racingEvents = await seedNodes(ControllerNodeType.RACING_EVENT, racingEventsAmount)
+    const racingEvents = await seedNodes(ControllerNodeType.RacingEvent, racingEventsAmount)
 
     for (const racingEvent of racingEvents) {
         await TrackLayout.createWasUsedByRacingEventRelationship(trackLayout.properties.id, racingEvent.properties.id)

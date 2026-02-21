@@ -15,7 +15,7 @@ export async function createBelongsToRacingSessionRelation(req: express.Request,
 
     try {
         const relation = await SessionResult.createBelongsToRacingSessionRelationship(sessionResultId, racingSessionId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.RACING_SESSION)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.RacingSession)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

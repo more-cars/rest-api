@@ -12,7 +12,7 @@ export async function getAllHasLapTimeRelations(req: express.Request, res: expre
 
     try {
         const relations = await TrackLayout.getAllHasLapTimeRelationships(trackLayoutId)
-        const marshalledData = marshalRelations(relations, ControllerNodeType.LAP_TIME)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.LapTime)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

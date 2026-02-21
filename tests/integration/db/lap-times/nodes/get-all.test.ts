@@ -6,7 +6,7 @@ import {seedNodes} from "../../../../_toolbox/dbSeeding/seedNodes"
 import {getAllNodesOfType} from "../../../../../src/db/nodes/lap-times/getAllNodesOfType"
 
 test('When there are no LAP TIMES then an empty array should be returned', async () => {
-    await deleteAllNodesOfType(ControllerNodeType.LAP_TIME)
+    await deleteAllNodesOfType(ControllerNodeType.LapTime)
 
     const expectedLapTimes: LapTimeNode[] = []
     const actualLapTimes = await getAllNodesOfType()
@@ -16,9 +16,9 @@ test('When there are no LAP TIMES then an empty array should be returned', async
 })
 
 test('When LAP TIMES exist then all of them should be returned', async () => {
-    await deleteAllNodesOfType(ControllerNodeType.LAP_TIME)
+    await deleteAllNodesOfType(ControllerNodeType.LapTime)
     const amount = Math.ceil(Math.random() * 50)
-    await seedNodes(ControllerNodeType.LAP_TIME, amount)
+    await seedNodes(ControllerNodeType.LapTime, amount)
 
     const actualLapTimes = await getAllNodesOfType()
 

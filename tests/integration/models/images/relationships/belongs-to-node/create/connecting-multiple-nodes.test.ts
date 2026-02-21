@@ -7,9 +7,9 @@ import {getRelationshipCollection} from "../../../../../../../src/db/relationshi
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 test('A IMAGE can have multiple ›belongs-to-node‹ relationships', async () => {
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const image = await seedNode(ControllerNodeType.Image)
     const brandsAmount = 3
-    const brands = await seedNodes(ControllerNodeType.BRAND, brandsAmount)
+    const brands = await seedNodes(ControllerNodeType.Brand, brandsAmount)
 
     for (const brand of brands) {
         await Image.createBelongsToNodeRelationship(image.properties.id, brand.properties.id)

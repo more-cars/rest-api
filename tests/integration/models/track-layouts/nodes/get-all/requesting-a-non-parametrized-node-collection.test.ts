@@ -7,7 +7,7 @@ import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A non-parametrized "get all TRACK LAYOUT nodes" request returns the correct number of nodes', () => {
     test('when there exist no TRACK LAYOUT nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.TRACK_LAYOUT)
+        await deleteAllNodesOfType(ControllerNodeType.TrackLayout)
 
         const expectedNodes: TrackLayoutNode[] = []
         const actualNodes = await TrackLayout.findAll()
@@ -17,9 +17,9 @@ describe('A non-parametrized "get all TRACK LAYOUT nodes" request returns the co
     })
 
     test('when there exist TRACK LAYOUT nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.TRACK_LAYOUT)
+        await deleteAllNodesOfType(ControllerNodeType.TrackLayout)
         const amount = Math.ceil(Math.random() * 20)
-        await seedNodes(ControllerNodeType.TRACK_LAYOUT, amount)
+        await seedNodes(ControllerNodeType.TrackLayout, amount)
 
         const actualNodes = await TrackLayout.findAll()
 

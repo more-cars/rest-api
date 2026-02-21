@@ -15,7 +15,7 @@ export async function createBelongsToSessionResultRelation(req: express.Request,
 
     try {
         const relation = await LapTime.createBelongsToSessionResultRelationship(lapTimeId, sessionResultId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.SESSION_RESULT)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.SessionResult)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

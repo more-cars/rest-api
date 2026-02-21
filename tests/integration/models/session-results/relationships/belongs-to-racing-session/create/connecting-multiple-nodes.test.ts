@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A SESSION RESULT cannot have multiple ›belongs-to-racing-session‹ relationships', async () => {
-    const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+    const sessionResult = await seedNode(ControllerNodeType.SessionResult)
     const racingSessionsAmount = 3
-    const racingSessions = await seedNodes(ControllerNodeType.RACING_SESSION, racingSessionsAmount)
+    const racingSessions = await seedNodes(ControllerNodeType.RacingSession, racingSessionsAmount)
 
     for (const racingSession of racingSessions) {
         await SessionResult.createBelongsToRacingSessionRelationship(sessionResult.properties.id, racingSession.properties.id)

@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›is-featured-in-racing-game‹ relationship', () => {
     test('CAR MODEL VARIANT node does not exist', async () => {
-        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
+        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
 
         await expect(CarModelVariant.deleteIsFeaturedInRacingGameRelationship(carModelVariant.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›is-featured-in-racing-game‹ relationship', () => {
     })
 
     test('RACING GAME node does not exist', async () => {
-        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
+        const racingGame = await seedNode(ControllerNodeType.RacingGame)
 
         await expect(CarModelVariant.deleteIsFeaturedInRacingGameRelationship(-42, racingGame.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›is-featured-in-racing-game‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›is-featured-in-racing-game‹ relationship', async () => {
-        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
-        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
+        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+        const racingGame = await seedNode(ControllerNodeType.RacingGame)
 
         await expect(CarModelVariant.deleteIsFeaturedInRacingGameRelationship(carModelVariant.properties.id, racingGame.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›is-featured-in-racing-game‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›is-featured-in-racing-game‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.CAR_MODEL_VARIANT, ControllerNodeType.RACING_GAME, RelationshipType.CarModelVariantIsFeaturedInRacingGame)
+        const seededRelationship = await seedRelationship(ControllerNodeType.CarModelVariant, ControllerNodeType.RacingGame, RelationshipType.CarModelVariantIsFeaturedInRacingGame)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

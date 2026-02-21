@@ -1,8 +1,9 @@
 import express from "express"
 import {unmarshalInputData} from "./marshalling/unmarshalInputData"
-import {marshalNode} from "./marshalling/marshalNode"
 import {CreateCompanyInput} from "../../../models/node-types/companies/types/CreateCompanyInput"
 import {Company} from "../../../models/node-types/companies/Company"
+import {convertCompanyModelNodeToControllerNode} from "./convertCompanyModelNodeToControllerNode"
+import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import type {CreateCompanyRawInput} from "./types/CreateCompanyRawInput"
 import {isMandatoryString} from "../../validators/isMandatoryString"
 import {isOptionalString} from "../../validators/isOptionalString"
@@ -21,8 +22,9 @@ export async function create(req: express.Request, res: express.Response) {
     const sanitizedData = sanitize(data as CreateCompanyInput)
 
     try {
-        const createdNode = await Company.create(sanitizedData)
-        const marshalledData = marshalNode(createdNode)
+        const modelNode = await Company.create(sanitizedData)
+        const node = convertCompanyModelNodeToControllerNode(modelNode)
+        const marshalledData = marshalSingleNode(node.fields)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

@@ -27,10 +27,10 @@ export const options = {
 }
 
 export function setup() {
-    const racingGameId = createNode(ControllerNodeType.RACING_GAME)
-    const gamingPlatformId = createNode(ControllerNodeType.GAMING_PLATFORM)
+    const racingGameId = createNode(ControllerNodeType.RacingGame)
+    const gamingPlatformId = createNode(ControllerNodeType.GamingPlatform)
     createRelationship(
-        ControllerNodeType.RACING_GAME,
+        ControllerNodeType.RacingGame,
         racingGameId,
         gamingPlatformId,
         'released on gaming platform',

@@ -28,13 +28,13 @@ export const options = {
 }
 
 export function setup() {
-    const raceTrackId = createNode(ControllerNodeType.RACE_TRACK)
+    const raceTrackId = createNode(ControllerNodeType.RaceTrack)
     const trackLayouts = []
 
     for (let i = 0; i < 310; i++) {
-        const trackLayout = createNode(ControllerNodeType.TRACK_LAYOUT)
+        const trackLayout = createNode(ControllerNodeType.TrackLayout)
         createRelationship(
-            ControllerNodeType.RACE_TRACK,
+            ControllerNodeType.RaceTrack,
             raceTrackId,
             trackLayout,
             'has layout',

@@ -10,7 +10,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 
 describe('Deleting a ›has-successor‹ relationship', () => {
     test('CAR MODEL node does not exist', async () => {
-        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
+        const carModel = await seedNode(ControllerNodeType.CarModel)
 
         await expect(CarModel.deleteHasSuccessorRelationship(carModel.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›has-successor‹ relationship', () => {
     })
 
     test('PARTNER node does not exist', async () => {
-        const partner = await seedNode(ControllerNodeType.CAR_MODEL)
+        const partner = await seedNode(ControllerNodeType.CarModel)
 
         await expect(CarModel.deleteHasSuccessorRelationship(-42, partner.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›has-successor‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›has-successor‹ relationship', async () => {
-        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
-        const partner = await seedNode(ControllerNodeType.CAR_MODEL)
+        const carModel = await seedNode(ControllerNodeType.CarModel)
+        const partner = await seedNode(ControllerNodeType.CarModel)
 
         await expect(CarModel.deleteHasSuccessorRelationship(carModel.properties.id, partner.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›has-successor‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-successor‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.CAR_MODEL, ControllerNodeType.CAR_MODEL, RelationshipType.CarModelHasSuccessor)
+        const seededRelationship = await seedRelationship(ControllerNodeType.CarModel, ControllerNodeType.CarModel, RelationshipType.CarModelHasSuccessor)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

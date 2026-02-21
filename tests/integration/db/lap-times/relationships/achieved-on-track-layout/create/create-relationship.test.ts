@@ -6,8 +6,8 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 
 describe('Creating a ›achieved-on-track-layout‹ relationship', () => {
     test('with valid data', async () => {
-        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
-        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+        const lapTime = await seedNode(ControllerNodeType.LapTime)
+        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
         const createdRelationship = await createRelationship(
             lapTime.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›achieved-on-track-layout‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+        const lapTime = await seedNode(ControllerNodeType.LapTime)
 
         const createdRelationship = await createRelationship(
             lapTime.properties.id,

@@ -13,7 +13,7 @@ export async function getAchievedWithCarModelVariantRelation(req: express.Reques
 
     try {
         const relation = await LapTime.getAchievedWithCarModelVariantRelationship(lapTimeId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.CAR_MODEL_VARIANT)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.CarModelVariant)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

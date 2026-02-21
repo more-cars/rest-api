@@ -1,18 +1,20 @@
 import express from "express"
 import {SessionResult} from "../../../models/node-types/session-results/SessionResult"
-import {marshalNode} from "./marshalling/marshalNode"
+import {convertSessionResultModelNodeToControllerNode} from "./convertSessionResultModelNodeToControllerNode"
+import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"
 
 export async function getById(req: express.Request, res: express.Response) {
     const nodeId = parseInt(req.params.id)
-    const node = await SessionResult.findById(nodeId)
+    const modelNode = await SessionResult.findById(nodeId)
 
-    if (!node) {
+    if (!modelNode) {
         return sendResponse404(res)
     }
 
-    const marshalledData = marshalNode(node)
+    const node = convertSessionResultModelNodeToControllerNode(modelNode)
+    const marshalledData = marshalSingleNode(node.fields)
 
     return sendResponse200(marshalledData, res)
 }

@@ -6,8 +6,8 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 
 describe('Creating a ›has-successor‹ relationship', () => {
     test('with valid data', async () => {
-        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
-        const partnerNode = await seedNode(ControllerNodeType.CAR_MODEL)
+        const carModel = await seedNode(ControllerNodeType.CarModel)
+        const partnerNode = await seedNode(ControllerNodeType.CarModel)
 
         const createdRelationship = await createRelationship(
             carModel.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›has-successor‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
+        const carModel = await seedNode(ControllerNodeType.CarModel)
 
         const createdRelationship = await createRelationship(
             carModel.properties.id,

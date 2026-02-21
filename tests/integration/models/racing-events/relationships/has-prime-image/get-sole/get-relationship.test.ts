@@ -11,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(ControllerNodeType.RACING_EVENT, ControllerNodeType.IMAGE, RelationshipType.RacingEventHasPrimeImage)
+        const expectedRelationship = await seedRelationship(ControllerNodeType.RacingEvent, ControllerNodeType.Image, RelationshipType.RacingEventHasPrimeImage)
         const expectedRacingEventId = expectedRelationship.start_node.properties.id
         const expectedImageId = expectedRelationship.end_node.properties.id
         const actualRelationship = await RacingEvent.getHasPrimeImageRelationship(expectedRacingEventId)
@@ -27,7 +27,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
 
         await expect(RacingEvent.getHasPrimeImageRelationship(racingEvent.properties.id))
             .rejects

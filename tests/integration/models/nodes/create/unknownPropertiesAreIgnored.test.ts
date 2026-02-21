@@ -12,7 +12,7 @@ test('Unknown properties are ignored', async () => {
     let createdNode
 
     // CAR MODEL
-    const carModelData = Object.assign({}, FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate, {
+    const carModelData = Object.assign({}, FakeNodeInput(ControllerNodeType.CarModel) as InputCarModelCreate, {
         "my_property": "NOT_ALLOWED_TO_ADD"
     })
     createdNode = await CarModel.create(carModelData)
@@ -20,7 +20,7 @@ test('Unknown properties are ignored', async () => {
         .not.toContain("my_property")
 
     // BRAND
-    const brandData = Object.assign({}, FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate, {
+    const brandData = Object.assign({}, FakeNodeInput(ControllerNodeType.Brand) as InputBrandCreate, {
         "my_property": "NOT_ALLOWED_TO_ADD"
     })
     createdNode = await Brand.create(brandData)
@@ -29,7 +29,7 @@ test('Unknown properties are ignored', async () => {
 
 
     // IMAGE
-    const imageData = Object.assign({}, FakeNodeInput(ControllerNodeType.IMAGE) as InputImageCreate, {
+    const imageData = Object.assign({}, FakeNodeInput(ControllerNodeType.Image) as InputImageCreate, {
         "my_property": "NOT_ALLOWED_TO_ADD"
     })
     createdNode = await Image.create(imageData)

@@ -26,8 +26,8 @@ export const options = {
 }
 
 export function setup() {
-    const racingGameId = createNode(ControllerNodeType.RACING_GAME)
-    const imageId = createNode(ControllerNodeType.IMAGE)
+    const racingGameId = createNode(ControllerNodeType.RacingGame)
+    const imageId = createNode(ControllerNodeType.Image)
 
     return {
         racingGameId,

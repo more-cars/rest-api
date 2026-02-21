@@ -5,8 +5,8 @@ import {Company} from "../../../../../../../src/models/node-types/companies/Comp
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›has-image‹ relationship with valid data', async () => {
-    const company = await seedNode(ControllerNodeType.COMPANY)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const company = await seedNode(ControllerNodeType.Company)
+    const image = await seedNode(ControllerNodeType.Image)
 
     const createdRelationship = await Company.createHasImageRelationship(company.properties.id, image.properties.id)
 

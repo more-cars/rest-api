@@ -12,7 +12,7 @@ test('Fetching a LAP TIME that does not exist should return "false"', async () =
 })
 
 test('When the LAP TIME exists it should be returned', async () => {
-    const expectedLapTime = await seedNode(ControllerNodeType.LAP_TIME)
+    const expectedLapTime = await seedNode(ControllerNodeType.LapTime)
     const actualLapTime = await LapTime.findById(expectedLapTime.properties.id)
 
     expect(actualLapTime.attributes)

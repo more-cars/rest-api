@@ -11,7 +11,7 @@ test('Expecting response "false" when trying to delete a non-existing COMPANY', 
 })
 
 test('Expecting response "true" when deleting an existing COMPANY', async () => {
-    const node = await seedNode(ControllerNodeType.COMPANY)
+    const node = await seedNode(ControllerNodeType.Company)
     const success = await deleteNode(node.properties.id)
 
     expect(success)

@@ -5,8 +5,8 @@ import {RacingSession} from "../../../../../../../src/models/node-types/racing-s
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›has-prime-image‹ relationship again', async () => {
-    const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const racingSession = await seedNode(ControllerNodeType.RacingSession)
+    const image = await seedNode(ControllerNodeType.Image)
 
     await expect(RacingSession.createHasPrimeImageRelationship(racingSession.properties.id, image.properties.id))
         .resolves

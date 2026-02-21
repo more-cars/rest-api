@@ -1,11 +1,12 @@
 import express from "express"
-import {Brand} from "../../../models/node-types/brands/Brand"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
 import availableProperties from "../../../../specification/properties/Brand.json"
+import {Brand} from "../../../models/node-types/brands/Brand"
+import {convertBrandModelNodeToControllerNode} from "./convertBrandModelNodeToControllerNode"
+import {marshalNodeCollection} from "../../nodes/marshalNodeCollection"
 import {InvalidPaginationParams} from "../../../models/types/InvalidPaginationParams"
 import {InvalidSortingParams} from "../../../models/types/InvalidSortingParams"
 import {InvalidFilterParams} from "../../../models/types/InvalidFilterParams"
-import {marshalNodes} from "./marshalling/marshalNodes"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
@@ -13,8 +14,9 @@ import {sendResponse500} from "../../responses/sendResponse500"
 export async function getAll(req: express.Request, res: express.Response) {
     try {
         const params = extractCollectionConstraintParameters(req, availableProperties)
-        const nodes = await Brand.findAll(params)
-        const marshalledData = marshalNodes(nodes)
+        const modelNodes = await Brand.findAll(params)
+        const nodes = modelNodes.map(node => convertBrandModelNodeToControllerNode(node))
+        const marshalledData = marshalNodeCollection(nodes)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

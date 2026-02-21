@@ -11,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Requesting a ›has-successor‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(ControllerNodeType.CAR_MODEL, ControllerNodeType.CAR_MODEL, RelationshipType.CarModelHasSuccessor)
+        const expectedRelationship = await seedRelationship(ControllerNodeType.CarModel, ControllerNodeType.CarModel, RelationshipType.CarModelHasSuccessor)
         const expectedCarModelId = expectedRelationship.start_node.properties.id
         const expectedSuccessorId = expectedRelationship.end_node.properties.id
         const actualRelationship = await CarModel.getHasSuccessorRelationship(expectedCarModelId)
@@ -27,7 +27,7 @@ describe('Requesting a ›has-successor‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
+        const carModel = await seedNode(ControllerNodeType.CarModel)
 
         await expect(CarModel.getHasSuccessorRelationship(carModel.properties.id))
             .rejects

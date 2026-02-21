@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A CAR MODEL VARIANT cannot have multiple ›is-variant-of‹ relationships', async () => {
-    const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
+    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
     const carModelsAmount = 3
-    const carModels = await seedNodes(ControllerNodeType.CAR_MODEL, carModelsAmount)
+    const carModels = await seedNodes(ControllerNodeType.CarModel, carModelsAmount)
 
     for (const carModel of carModels) {
         await CarModelVariant.createIsVariantOfRelationship(carModelVariant.properties.id, carModel.properties.id)

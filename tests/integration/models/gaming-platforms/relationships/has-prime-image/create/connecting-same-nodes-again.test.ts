@@ -5,8 +5,8 @@ import {GamingPlatform} from "../../../../../../../src/models/node-types/gaming-
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›has-prime-image‹ relationship again', async () => {
-    const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
+    const image = await seedNode(ControllerNodeType.Image)
 
     await expect(GamingPlatform.createHasPrimeImageRelationship(gamingPlatform.properties.id, image.properties.id))
         .resolves

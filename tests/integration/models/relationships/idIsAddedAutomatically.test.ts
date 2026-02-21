@@ -9,8 +9,8 @@ import type {InputCarModelCreate} from "../../../../src/db/nodes/car-models/type
 import {Brand} from "../../../../src/models/node-types/brands/Brand"
 
 test('ID is added when creating a relationship', async () => {
-    const brand = await createBrandNode(FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate)
-    const carModel = await createCarModelNode(FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate)
+    const brand = await createBrandNode(FakeNodeInput(ControllerNodeType.Brand) as InputBrandCreate)
+    const carModel = await createCarModelNode(FakeNodeInput(ControllerNodeType.CarModel) as InputCarModelCreate)
     const relationship = await Brand.createHasCarModelRelationship(brand.properties.id, carModel.properties.id)
 
     if (!relationship) {

@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›achieved-with-car-model-variant‹ relationship', () => {
     test('LAP TIME node does not exist', async () => {
-        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+        const lapTime = await seedNode(ControllerNodeType.LapTime)
 
         await expect(LapTime.deleteAchievedWithCarModelVariantRelationship(lapTime.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›achieved-with-car-model-variant‹ relationship', () => 
     })
 
     test('CAR MODEL VARIANT node does not exist', async () => {
-        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
+        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
 
         await expect(LapTime.deleteAchievedWithCarModelVariantRelationship(-42, carModelVariant.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›achieved-with-car-model-variant‹ relationship', () => 
     })
 
     test('both nodes exist, but have no ›achieved-with-car-model-variant‹ relationship', async () => {
-        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
-        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
+        const lapTime = await seedNode(ControllerNodeType.LapTime)
+        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
 
         await expect(LapTime.deleteAchievedWithCarModelVariantRelationship(lapTime.properties.id, carModelVariant.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›achieved-with-car-model-variant‹ relationship', () => 
     })
 
     test('both nodes exist and have a ›achieved-with-car-model-variant‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.LAP_TIME, ControllerNodeType.CAR_MODEL_VARIANT, RelationshipType.LapTimeAchievedWithCarModelVariant)
+        const seededRelationship = await seedRelationship(ControllerNodeType.LapTime, ControllerNodeType.CarModelVariant, RelationshipType.LapTimeAchievedWithCarModelVariant)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

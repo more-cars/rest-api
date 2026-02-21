@@ -6,7 +6,7 @@ import {seedNodes} from "../../../../_toolbox/dbSeeding/seedNodes"
 import {getAllNodesOfType} from "../../../../../src/db/nodes/racing-series/getAllNodesOfType"
 
 test('When there are no RACING SERIES then an empty array should be returned', async () => {
-    await deleteAllNodesOfType(ControllerNodeType.RACING_SERIES)
+    await deleteAllNodesOfType(ControllerNodeType.RacingSeries)
 
     const expectedRacingSeries: RacingSeriesNode[] = []
     const actualRacingSeries = await getAllNodesOfType()
@@ -16,9 +16,9 @@ test('When there are no RACING SERIES then an empty array should be returned', a
 })
 
 test('When RACING SERIES exist then all of them should be returned', async () => {
-    await deleteAllNodesOfType(ControllerNodeType.RACING_SERIES)
+    await deleteAllNodesOfType(ControllerNodeType.RacingSeries)
     const amount = Math.ceil(Math.random() * 50)
-    await seedNodes(ControllerNodeType.RACING_SERIES, amount)
+    await seedNodes(ControllerNodeType.RacingSeries, amount)
 
     const actualRacingSeries = await getAllNodesOfType()
 

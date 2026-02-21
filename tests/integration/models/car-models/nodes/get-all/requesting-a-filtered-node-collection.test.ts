@@ -8,7 +8,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all CAR MODEL nodes" request returns only the matching nodes', () => {
     test('when there exist no CAR MODEL nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL)
+        await deleteAllNodesOfType(ControllerNodeType.CarModel)
 
         const expectedNodes: CarModelNode[] = []
         const actualNodes = await CarModel.findAll({
@@ -22,10 +22,10 @@ describe('A filtered "get all CAR MODEL nodes" request returns only the matching
     })
 
     test('when there exist CAR MODEL nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL)
-        const nodeA = await seedNode(ControllerNodeType.CAR_MODEL, {name: 'A Node'}) as unknown as CarModelNode
-        await seedNode(ControllerNodeType.CAR_MODEL, {name: 'B Node'})
-        await seedNode(ControllerNodeType.CAR_MODEL, {name: 'C Node'})
+        await deleteAllNodesOfType(ControllerNodeType.CarModel)
+        const nodeA = await seedNode(ControllerNodeType.CarModel, {name: 'A Node'}) as unknown as CarModelNode
+        await seedNode(ControllerNodeType.CarModel, {name: 'B Node'})
+        await seedNode(ControllerNodeType.CarModel, {name: 'C Node'})
 
         const filteredNodes = await CarModel.findAll({
             filterByProperty: 'name',

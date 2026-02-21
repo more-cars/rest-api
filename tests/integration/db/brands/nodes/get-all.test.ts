@@ -6,7 +6,7 @@ import {seedNodes} from "../../../../_toolbox/dbSeeding/seedNodes"
 import {getAllNodesOfType} from "../../../../../src/db/nodes/brands/getAllNodesOfType"
 
 test('When there are no BRANDS then an empty array should be returned', async () => {
-    await deleteAllNodesOfType(ControllerNodeType.BRAND)
+    await deleteAllNodesOfType(ControllerNodeType.Brand)
 
     const expectedBrands: BrandNode[] = []
     const actualBrands = await getAllNodesOfType()
@@ -16,9 +16,9 @@ test('When there are no BRANDS then an empty array should be returned', async ()
 })
 
 test('When BRANDS exist then all of them should be returned', async () => {
-    await deleteAllNodesOfType(ControllerNodeType.BRAND)
+    await deleteAllNodesOfType(ControllerNodeType.Brand)
     const amount = Math.ceil(Math.random() * 50)
-    await seedNodes(ControllerNodeType.BRAND, amount)
+    await seedNodes(ControllerNodeType.Brand, amount)
 
     const actualBrands = await getAllNodesOfType()
 

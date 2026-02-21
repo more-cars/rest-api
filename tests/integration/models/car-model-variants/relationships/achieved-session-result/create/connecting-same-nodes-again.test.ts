@@ -5,8 +5,8 @@ import {CarModelVariant} from "../../../../../../../src/models/node-types/car-mo
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›achieved-session-result‹ relationship again', async () => {
-    const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
-    const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+    const sessionResult = await seedNode(ControllerNodeType.SessionResult)
 
     await expect(CarModelVariant.createAchievedSessionResultRelationship(carModelVariant.properties.id, sessionResult.properties.id))
         .resolves

@@ -14,7 +14,7 @@ export async function getSpecificHasCarModelRelation(req: express.Request, res: 
 
     try {
         const relation = await Brand.getSpecificHasCarModelRelationship(brandId, carModelId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.CAR_MODEL)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.CarModel)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

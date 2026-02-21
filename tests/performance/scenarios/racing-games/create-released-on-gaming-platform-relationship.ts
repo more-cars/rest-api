@@ -26,8 +26,8 @@ export const options = {
 }
 
 export function setup() {
-    const racingGameId = createNode(ControllerNodeType.RACING_GAME)
-    const gamingPlatformId = createNode(ControllerNodeType.GAMING_PLATFORM)
+    const racingGameId = createNode(ControllerNodeType.RacingGame)
+    const gamingPlatformId = createNode(ControllerNodeType.GamingPlatform)
 
     return {
         racingGameId,

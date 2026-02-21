@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›is-prime-image-of-node‹ relationship', () => {
     test('IMAGE node does not exist', async () => {
-        const image = await seedNode(ControllerNodeType.IMAGE)
+        const image = await seedNode(ControllerNodeType.Image)
 
         await expect(Image.deleteIsPrimeImageOfNodeRelationship(image.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›is-prime-image-of-node‹ relationship', () => {
     })
 
     test('NODE node does not exist', async () => {
-        const node = await seedNode(ControllerNodeType.COMPANY)
+        const node = await seedNode(ControllerNodeType.Company)
 
         await expect(Image.deleteIsPrimeImageOfNodeRelationship(-42, node.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›is-prime-image-of-node‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›is-prime-image-of-node‹ relationship', async () => {
-        const image = await seedNode(ControllerNodeType.IMAGE)
-        const node = await seedNode(ControllerNodeType.COMPANY)
+        const image = await seedNode(ControllerNodeType.Image)
+        const node = await seedNode(ControllerNodeType.Company)
 
         await expect(Image.deleteIsPrimeImageOfNodeRelationship(image.properties.id, node.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›is-prime-image-of-node‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›is-prime-image-of-node‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.IMAGE, ControllerNodeType.COMPANY, RelationshipType.ImageIsPrimeImageOfNode)
+        const seededRelationship = await seedRelationship(ControllerNodeType.Image, ControllerNodeType.Company, RelationshipType.ImageIsPrimeImageOfNode)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

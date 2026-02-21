@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A CAR MODEL VARIANT can have multiple ›achieved-lap-time‹ relationships', async () => {
-    const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
+    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
     const lapTimesAmount = 3
-    const lapTimes = await seedNodes(ControllerNodeType.LAP_TIME, lapTimesAmount)
+    const lapTimes = await seedNodes(ControllerNodeType.LapTime, lapTimesAmount)
 
     for (const lapTime of lapTimes) {
         await CarModelVariant.createAchievedLapTimeRelationship(carModelVariant.properties.id, lapTime.properties.id)

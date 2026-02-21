@@ -30,7 +30,7 @@ export function setup() {
     const carModelId = createCarModel()
     const partnerNodeId = createCarModel()
     createRelationship(
-        ControllerNodeType.CAR_MODEL,
+        ControllerNodeType.CarModel,
         carModelId,
         partnerNodeId,
         'is successor of',

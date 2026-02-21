@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A RACING EVENT can have multiple ›has-image‹ relationships', async () => {
-    const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
     const imagesAmount = 3
-    const images = await seedNodes(ControllerNodeType.IMAGE, imagesAmount)
+    const images = await seedNodes(ControllerNodeType.Image, imagesAmount)
 
     for (const image of images) {
         await RacingEvent.createHasImageRelationship(racingEvent.properties.id, image.properties.id)

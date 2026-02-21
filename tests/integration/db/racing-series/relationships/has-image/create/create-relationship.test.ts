@@ -6,8 +6,8 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 
 describe('Creating a ›has-image‹ relationship', () => {
     test('with valid data', async () => {
-        const racingSeries = await seedNode(ControllerNodeType.RACING_SERIES)
-        const image = await seedNode(ControllerNodeType.IMAGE)
+        const racingSeries = await seedNode(ControllerNodeType.RacingSeries)
+        const image = await seedNode(ControllerNodeType.Image)
 
         const createdRelationship = await createRelationship(
             racingSeries.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›has-image‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const racingSeries = await seedNode(ControllerNodeType.RACING_SERIES)
+        const racingSeries = await seedNode(ControllerNodeType.RacingSeries)
 
         const createdRelationship = await createRelationship(
             racingSeries.properties.id,

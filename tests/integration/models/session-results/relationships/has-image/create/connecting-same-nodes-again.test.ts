@@ -5,8 +5,8 @@ import {SessionResult} from "../../../../../../../src/models/node-types/session-
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›has-image‹ relationship again', async () => {
-    const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+    const image = await seedNode(ControllerNodeType.Image)
 
     await expect(SessionResult.createHasImageRelationship(sessionResult.properties.id, image.properties.id))
         .resolves

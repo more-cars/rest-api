@@ -5,8 +5,8 @@ import {RaceTrack} from "../../../../../../../src/models/node-types/race-tracks/
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›has-image‹ relationship with valid data', async () => {
-    const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
+    const image = await seedNode(ControllerNodeType.Image)
 
     const createdRelationship = await RaceTrack.createHasImageRelationship(raceTrack.properties.id, image.properties.id)
 

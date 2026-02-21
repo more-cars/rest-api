@@ -1,18 +1,20 @@
 import express from "express"
 import {RaceTrack} from "../../../models/node-types/race-tracks/RaceTrack"
-import {marshalNode} from "./marshalling/marshalNode"
+import {convertRaceTrackModelNodeToControllerNode} from "./convertRaceTrackModelNodeToControllerNode"
+import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"
 
 export async function getById(req: express.Request, res: express.Response) {
     const nodeId = parseInt(req.params.id)
-    const node = await RaceTrack.findById(nodeId)
+    const modelNode = await RaceTrack.findById(nodeId)
 
-    if (!node) {
+    if (!modelNode) {
         return sendResponse404(res)
     }
 
-    const marshalledData = marshalNode(node)
+    const node = convertRaceTrackModelNodeToControllerNode(modelNode)
+    const marshalledData = marshalSingleNode(node.fields)
 
     return sendResponse200(marshalledData, res)
 }

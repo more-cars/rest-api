@@ -5,8 +5,8 @@ import {RacingEvent} from "../../../../../../../src/models/node-types/racing-eve
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›belongs-to-racing-series‹ relationship with nodes that do not exist', async () => {
-    const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
-    const racingSeries = await seedNode(ControllerNodeType.RACING_SERIES)
+    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+    const racingSeries = await seedNode(ControllerNodeType.RacingSeries)
 
     await expect(RacingEvent.createBelongsToRacingSeriesRelationship(-42, racingSeries.properties.id))
         .rejects

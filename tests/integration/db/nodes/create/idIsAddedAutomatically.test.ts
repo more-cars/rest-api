@@ -9,13 +9,13 @@ import type {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/t
 import FakeImageFull from "../../../../_toolbox/fixtures/nodes/FakeImageFull"
 
 test('ID is added when creating a node', async () => {
-    const createdBrand = await createBrandNode(FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate)
+    const createdBrand = await createBrandNode(FakeNodeInput(ControllerNodeType.Brand) as InputBrandCreate)
     expect(createdBrand.properties.id)
         .toBeGreaterThanOrEqual(12000000)
     expect(createdBrand.properties.id)
         .toBeLessThanOrEqual(99999999)
 
-    const createdCarModel = await createCarModelNode(FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate)
+    const createdCarModel = await createCarModelNode(FakeNodeInput(ControllerNodeType.CarModel) as InputCarModelCreate)
     expect(createdCarModel.properties.id)
         .toBeGreaterThanOrEqual(12000000)
     expect(createdCarModel.properties.id)

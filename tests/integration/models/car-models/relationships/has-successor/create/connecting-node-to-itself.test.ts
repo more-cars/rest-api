@@ -5,7 +5,7 @@ import {CarModel} from "../../../../../../../src/models/node-types/car-models/Ca
 import {SemanticError} from "../../../../../../../src/models/types/SemanticError"
 
 test('Trying to connect a CAR MODEL to itself', async () => {
-    const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
+    const carModel = await seedNode(ControllerNodeType.CarModel)
 
     await expect(CarModel.createHasSuccessorRelationship(carModel.properties.id, carModel.properties.id))
         .rejects

@@ -5,8 +5,8 @@ import {SessionResult} from "../../../../../../../src/models/node-types/session-
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›has-image‹ relationship with nodes that do not exist', async () => {
-    const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+    const image = await seedNode(ControllerNodeType.Image)
 
     await expect(SessionResult.createHasImageRelationship(-42, image.properties.id))
         .rejects

@@ -8,7 +8,7 @@ import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Requesting a ›belongs-to-racing-event‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const relationship = await seedRelationship(ControllerNodeType.RACING_SESSION, ControllerNodeType.RACING_EVENT, RelationshipType.RacingSessionBelongsToRacingEvent)
+        const relationship = await seedRelationship(ControllerNodeType.RacingSession, ControllerNodeType.RacingEvent, RelationshipType.RacingSessionBelongsToRacingEvent)
 
         const relationships = await getRelationshipCollection(
             relationship.start_node.properties.id,
@@ -21,7 +21,7 @@ describe('Requesting a ›belongs-to-racing-event‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
+        const racingSession = await seedNode(ControllerNodeType.RacingSession)
 
         const relationships = await getRelationshipCollection(
             racingSession.properties.id,

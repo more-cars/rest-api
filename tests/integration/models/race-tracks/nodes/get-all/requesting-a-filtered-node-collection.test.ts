@@ -8,7 +8,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all RACE TRACK nodes" request returns only the matching nodes', () => {
     test('when there exist no RACE TRACK nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RACE_TRACK)
+        await deleteAllNodesOfType(ControllerNodeType.RaceTrack)
 
         const expectedNodes: RaceTrackNode[] = []
         const actualNodes = await RaceTrack.findAll({
@@ -22,12 +22,12 @@ describe('A filtered "get all RACE TRACK nodes" request returns only the matchin
     })
 
     test('when there exist RACE TRACK nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RACE_TRACK)
-        const nodeA = await seedNode(ControllerNodeType.RACE_TRACK, {
+        await deleteAllNodesOfType(ControllerNodeType.RaceTrack)
+        const nodeA = await seedNode(ControllerNodeType.RaceTrack, {
             name: 'A Node'
         }) as unknown as RaceTrackNode
-        await seedNode(ControllerNodeType.RACE_TRACK, {name: 'B Node'})
-        await seedNode(ControllerNodeType.RACE_TRACK, {name: 'C Node'})
+        await seedNode(ControllerNodeType.RaceTrack, {name: 'B Node'})
+        await seedNode(ControllerNodeType.RaceTrack, {name: 'C Node'})
 
         const filteredNodes = await RaceTrack.findAll({
             filterByProperty: 'name',

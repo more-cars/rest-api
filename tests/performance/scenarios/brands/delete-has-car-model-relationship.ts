@@ -35,7 +35,7 @@ export function setup() {
     for (let i = 0; i < 310; i++) {
         const carModel = createCarModel()
         createRelationship(
-            ControllerNodeType.BRAND,
+            ControllerNodeType.Brand,
             brandId,
             carModel,
             'has car model',

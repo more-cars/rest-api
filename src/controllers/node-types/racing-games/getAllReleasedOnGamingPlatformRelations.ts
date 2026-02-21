@@ -12,7 +12,7 @@ export async function getAllReleasedOnGamingPlatformRelations(req: express.Reque
 
     try {
         const relations = await RacingGame.getAllReleasedOnGamingPlatformRelationships(racingGameId)
-        const marshalledData = marshalRelations(relations, ControllerNodeType.GAMING_PLATFORM)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.GamingPlatform)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

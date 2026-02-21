@@ -15,7 +15,7 @@ export async function createHasBrandRelation(req: express.Request, res: express.
 
     try {
         const relation = await Company.createHasBrandRelationship(companyId, brandId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.BRAND)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.Brand)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

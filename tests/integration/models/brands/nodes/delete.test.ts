@@ -12,7 +12,7 @@ describe('Deleting a BRAND', () => {
     })
 
     test('that exists', async () => {
-        const node = await seedNode(ControllerNodeType.BRAND)
+        const node = await seedNode(ControllerNodeType.Brand)
         await expect(Brand.delete(node.properties.id))
             .resolves
             .not.toThrow(NodeNotFoundError)

@@ -31,7 +31,7 @@ export function setup() {
     const companyId = createCompany()
     const brandId = createBrand()
     createRelationship(
-        ControllerNodeType.COMPANY,
+        ControllerNodeType.Company,
         companyId,
         brandId,
         'has brand',

@@ -7,7 +7,7 @@ import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A paginated "get all LAP TIME nodes" request returns the correct number of nodes', () => {
     test('when there exist no LAP TIME nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.LAP_TIME)
+        await deleteAllNodesOfType(ControllerNodeType.LapTime)
 
         const expectedNodes: LapTimeNode[] = []
         const actualNodes = await LapTime.findAll({page: 1})
@@ -17,9 +17,9 @@ describe('A paginated "get all LAP TIME nodes" request returns the correct numbe
     })
 
     test('when there exist LAP TIME nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.LAP_TIME)
+        await deleteAllNodesOfType(ControllerNodeType.LapTime)
         const amount = Math.ceil(Math.random() * 20)
-        await seedNodes(ControllerNodeType.LAP_TIME, amount)
+        await seedNodes(ControllerNodeType.LapTime, amount)
 
         const actualNodes = await LapTime.findAll({page: 1})
 

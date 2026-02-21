@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›is-featured-in-racing-game‹ relationship', () => {
     test('TRACK LAYOUT node does not exist', async () => {
-        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
         await expect(TrackLayout.deleteIsFeaturedInRacingGameRelationship(trackLayout.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›is-featured-in-racing-game‹ relationship', () => {
     })
 
     test('RACING GAME node does not exist', async () => {
-        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
+        const racingGame = await seedNode(ControllerNodeType.RacingGame)
 
         await expect(TrackLayout.deleteIsFeaturedInRacingGameRelationship(-42, racingGame.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›is-featured-in-racing-game‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›is-featured-in-racing-game‹ relationship', async () => {
-        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
-        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
+        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
+        const racingGame = await seedNode(ControllerNodeType.RacingGame)
 
         await expect(TrackLayout.deleteIsFeaturedInRacingGameRelationship(trackLayout.properties.id, racingGame.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›is-featured-in-racing-game‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›is-featured-in-racing-game‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.TRACK_LAYOUT, ControllerNodeType.RACING_GAME, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
+        const seededRelationship = await seedRelationship(ControllerNodeType.TrackLayout, ControllerNodeType.RacingGame, RelationshipType.TrackLayoutIsFeaturedInRacingGame)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

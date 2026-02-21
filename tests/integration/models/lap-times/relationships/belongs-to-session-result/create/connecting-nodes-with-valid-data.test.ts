@@ -5,8 +5,8 @@ import {LapTime} from "../../../../../../../src/models/node-types/lap-times/LapT
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›belongs-to-session-result‹ relationship with valid data', async () => {
-    const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
-    const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+    const lapTime = await seedNode(ControllerNodeType.LapTime)
+    const sessionResult = await seedNode(ControllerNodeType.SessionResult)
 
     const createdRelationship = await LapTime.createBelongsToSessionResultRelationship(lapTime.properties.id, sessionResult.properties.id)
 

@@ -31,7 +31,7 @@ export function setup() {
     const brandId = createBrand()
     const imageId = createImage()
     createRelationship(
-        ControllerNodeType.BRAND,
+        ControllerNodeType.Brand,
         brandId,
         imageId,
         'has prime image',

@@ -7,10 +7,10 @@ import {getRelationshipCollection} from "../../../../../../../src/db/relationshi
 
 describe('Requesting all ›belongs-to-node‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const image = await seedNode(ControllerNodeType.IMAGE)
-        await seedRelationshipForStartNode(image.properties.id, ControllerNodeType.COMPANY, RelationshipType.ImageBelongsToNode)
-        await seedRelationshipForStartNode(image.properties.id, ControllerNodeType.CAR_MODEL, RelationshipType.ImageBelongsToNode)
-        await seedRelationshipForStartNode(image.properties.id, ControllerNodeType.BRAND, RelationshipType.ImageBelongsToNode)
+        const image = await seedNode(ControllerNodeType.Image)
+        await seedRelationshipForStartNode(image.properties.id, ControllerNodeType.Company, RelationshipType.ImageBelongsToNode)
+        await seedRelationshipForStartNode(image.properties.id, ControllerNodeType.CarModel, RelationshipType.ImageBelongsToNode)
+        await seedRelationshipForStartNode(image.properties.id, ControllerNodeType.Brand, RelationshipType.ImageBelongsToNode)
 
         const relationships = await getRelationshipCollection(
             image.properties.id,
@@ -22,7 +22,7 @@ describe('Requesting all ›belongs-to-node‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const image = await seedNode(ControllerNodeType.IMAGE)
+        const image = await seedNode(ControllerNodeType.Image)
 
         const relationships = await getRelationshipCollection(
             image.properties.id,

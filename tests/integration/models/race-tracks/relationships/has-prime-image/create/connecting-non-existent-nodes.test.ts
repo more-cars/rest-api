@@ -5,8 +5,8 @@ import {RaceTrack} from "../../../../../../../src/models/node-types/race-tracks/
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›has-prime-image‹ relationship with nodes that do not exist', async () => {
-    const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
+    const image = await seedNode(ControllerNodeType.Image)
 
     await expect(RaceTrack.createHasPrimeImageRelationship(-42, image.properties.id))
         .rejects

@@ -11,7 +11,7 @@ describe('Each page of a "get all BRAND nodes" request returns the correct numbe
         [2],
         [99],
     ])('when there exist no BRAND nodes (page=$0)', async (page) => {
-        await deleteAllNodesOfType(ControllerNodeType.BRAND)
+        await deleteAllNodesOfType(ControllerNodeType.Brand)
 
         const expectedNodes: BrandNode[] = []
         const actualNodes = await Brand.findAll({page})
@@ -24,8 +24,8 @@ describe('Each page of a "get all BRAND nodes" request returns the correct numbe
         [20, 1, 20],
         [5, 2, 0],
     ])('when there exist $0 BRAND nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
-        await deleteAllNodesOfType(ControllerNodeType.BRAND)
-        await seedNodes(ControllerNodeType.BRAND, totalNodeAmount)
+        await deleteAllNodesOfType(ControllerNodeType.Brand)
+        await seedNodes(ControllerNodeType.Brand, totalNodeAmount)
 
         const actualNodes = await Brand.findAll({page})
 

@@ -8,7 +8,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all GAMING PLATFORM nodes" request returns only the matching nodes', () => {
     test('when there exist no GAMING PLATFORM nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.GAMING_PLATFORM)
+        await deleteAllNodesOfType(ControllerNodeType.GamingPlatform)
 
         const expectedNodes: GamingPlatformNode[] = []
         const actualNodes = await GamingPlatform.findAll({
@@ -22,12 +22,12 @@ describe('A filtered "get all GAMING PLATFORM nodes" request returns only the ma
     })
 
     test('when there exist GAMING PLATFORM nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.GAMING_PLATFORM)
-        const nodeA = await seedNode(ControllerNodeType.GAMING_PLATFORM, {
+        await deleteAllNodesOfType(ControllerNodeType.GamingPlatform)
+        const nodeA = await seedNode(ControllerNodeType.GamingPlatform, {
             name: 'A Node'
         }) as unknown as GamingPlatformNode
-        await seedNode(ControllerNodeType.GAMING_PLATFORM, {name: 'B Node'})
-        await seedNode(ControllerNodeType.GAMING_PLATFORM, {name: 'C Node'})
+        await seedNode(ControllerNodeType.GamingPlatform, {name: 'B Node'})
+        await seedNode(ControllerNodeType.GamingPlatform, {name: 'C Node'})
 
         const filteredNodes = await GamingPlatform.findAll({
             filterByProperty: 'name',

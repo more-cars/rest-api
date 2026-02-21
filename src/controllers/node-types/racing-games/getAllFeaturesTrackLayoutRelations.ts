@@ -12,7 +12,7 @@ export async function getAllFeaturesTrackLayoutRelations(req: express.Request, r
 
     try {
         const relations = await RacingGame.getAllFeaturesTrackLayoutRelationships(racingGameId)
-        const marshalledData = marshalRelations(relations, ControllerNodeType.TRACK_LAYOUT)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.TrackLayout)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

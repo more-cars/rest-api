@@ -15,7 +15,7 @@ export async function createAchievedSessionResultRelation(req: express.Request, 
 
     try {
         const relation = await CarModelVariant.createAchievedSessionResultRelationship(carModelVariantId, sessionResultId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.SESSION_RESULT)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.SessionResult)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

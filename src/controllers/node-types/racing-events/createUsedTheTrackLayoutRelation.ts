@@ -15,7 +15,7 @@ export async function createUsedTheTrackLayoutRelation(req: express.Request, res
 
     try {
         const relation = await RacingEvent.createUsedTheTrackLayoutRelationship(racingEventId, trackLayoutId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.TRACK_LAYOUT)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.TrackLayout)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

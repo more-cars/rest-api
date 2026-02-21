@@ -1,0 +1,50 @@
+import type {CarModelVariantNode as ModelCarModelVariantNode} from "../../../models/node-types/car-model-variants/types/CarModelVariantNode"
+import type {CarModelVariantNode} from "./types/CarModelVariantNode"
+import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
+
+export function convertCarModelVariantModelNodeToControllerNode(modelNode: ModelCarModelVariantNode): CarModelVariantNode {
+    return {
+        node_type: ControllerNodeType.CarModelVariant,
+        fields: {
+            id: modelNode.attributes.id,
+            name: modelNode.attributes.name,
+            internal_code: modelNode.attributes.internal_code ?? null,
+            built_from: modelNode.attributes.built_from ?? null,
+            built_to: modelNode.attributes.built_to ?? null,
+            body_style: modelNode.attributes.body_style ?? null,
+            drag_coefficient: modelNode.attributes.drag_coefficient ?? null,
+            doors: modelNode.attributes.doors ?? null,
+            weight: modelNode.attributes.weight ?? null,
+            weight_unit: modelNode.attributes.weight_unit ?? null,
+            max_power: modelNode.attributes.max_power ?? null,
+            max_power_unit: modelNode.attributes.max_power_unit ?? null,
+            max_torque: modelNode.attributes.max_torque ?? null,
+            max_torque_unit: modelNode.attributes.max_torque_unit ?? null,
+            cylinders: modelNode.attributes.cylinders ?? null,
+            engine_configuration: modelNode.attributes.engine_configuration ?? null,
+            displacement: modelNode.attributes.displacement ?? null,
+            displacement_unit: modelNode.attributes.displacement_unit ?? null,
+            air_induction: modelNode.attributes.air_induction ?? null,
+            engine_type: modelNode.attributes.engine_type ?? null,
+            energy_source: modelNode.attributes.energy_source ?? null,
+            energy_source_2: modelNode.attributes.energy_source_2 ?? null,
+            consumption: modelNode.attributes.consumption ?? null,
+            consumption_unit: modelNode.attributes.consumption_unit ?? null,
+            consumption_2: modelNode.attributes.consumption_2 ?? null,
+            consumption_2_unit: modelNode.attributes.consumption_2_unit ?? null,
+            energy_capacity: modelNode.attributes.energy_capacity ?? null,
+            energy_capacity_unit: modelNode.attributes.energy_capacity_unit ?? null,
+            energy_capacity_2: modelNode.attributes.energy_capacity_2 ?? null,
+            energy_capacity_2_unit: modelNode.attributes.energy_capacity_2_unit ?? null,
+            transmission: modelNode.attributes.transmission ?? null,
+            gears: modelNode.attributes.gears ?? null,
+            drivetrain: modelNode.attributes.drivetrain ?? null,
+            sprint_time_0_100_kmh: modelNode.attributes.sprint_time_0_100_kmh ?? null,
+            top_speed: modelNode.attributes.top_speed ?? null,
+            top_speed_unit: modelNode.attributes.top_speed_unit ?? null,
+            total_production: modelNode.attributes.total_production ?? null,
+            created_at: modelNode.attributes.created_at,
+            updated_at: modelNode.attributes.updated_at,
+        },
+    } satisfies CarModelVariantNode
+}

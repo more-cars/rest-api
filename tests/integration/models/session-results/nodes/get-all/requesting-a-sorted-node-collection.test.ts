@@ -7,7 +7,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all SESSION RESULT nodes" request returns the nodes in correct order', () => {
     test('when there exist no SESSION RESULT nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.SESSION_RESULT)
+        await deleteAllNodesOfType(ControllerNodeType.SessionResult)
 
         const expectedNodes: SessionResultNode[] = []
         const actualNodes = await SessionResult.findAll({sortByProperty: 'position', sortDirection: 'desc'})
@@ -17,10 +17,10 @@ describe('A sorted "get all SESSION RESULT nodes" request returns the nodes in c
     })
 
     test('when there exist SESSION RESULT nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.SESSION_RESULT)
-        const nodeA = await seedNode(ControllerNodeType.SESSION_RESULT, {position: 1}) as unknown as SessionResultNode
-        const nodeB = await seedNode(ControllerNodeType.SESSION_RESULT, {position: 2}) as unknown as SessionResultNode
-        const nodeC = await seedNode(ControllerNodeType.SESSION_RESULT, {position: 3}) as unknown as SessionResultNode
+        await deleteAllNodesOfType(ControllerNodeType.SessionResult)
+        const nodeA = await seedNode(ControllerNodeType.SessionResult, {position: 1}) as unknown as SessionResultNode
+        const nodeB = await seedNode(ControllerNodeType.SessionResult, {position: 2}) as unknown as SessionResultNode
+        const nodeC = await seedNode(ControllerNodeType.SessionResult, {position: 3}) as unknown as SessionResultNode
 
         const ascNodes = await SessionResult.findAll({sortByProperty: 'position', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

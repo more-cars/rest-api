@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A CAR MODEL cannot have multiple ›is-successor-of‹ relationships', async () => {
-    const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
+    const carModel = await seedNode(ControllerNodeType.CarModel)
     const partnersAmount = 3
-    const partners = await seedNodes(ControllerNodeType.CAR_MODEL, partnersAmount)
+    const partners = await seedNodes(ControllerNodeType.CarModel, partnersAmount)
 
     for (const partner of partners) {
         await CarModel.createIsSuccessorOfRelationship(carModel.properties.id, partner.properties.id)

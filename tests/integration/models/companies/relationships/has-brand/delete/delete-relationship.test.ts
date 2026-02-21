@@ -10,7 +10,7 @@ import {Company} from "../../../../../../../src/models/node-types/companies/Comp
 
 describe('Deleting a ›has-brand‹ relationship', () => {
     test('COMPANY node does not exist', async () => {
-        const company = await seedNode(ControllerNodeType.COMPANY)
+        const company = await seedNode(ControllerNodeType.Company)
 
         await expect(Company.deleteHasBrandRelationship(company.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›has-brand‹ relationship', () => {
     })
 
     test('IMAGE node does not exist', async () => {
-        const brand = await seedNode(ControllerNodeType.BRAND)
+        const brand = await seedNode(ControllerNodeType.Brand)
 
         await expect(Company.deleteHasBrandRelationship(-42, brand.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›has-brand‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›has-brand‹ relationship', async () => {
-        const company = await seedNode(ControllerNodeType.COMPANY)
-        const brand = await seedNode(ControllerNodeType.BRAND)
+        const company = await seedNode(ControllerNodeType.Company)
+        const brand = await seedNode(ControllerNodeType.Brand)
 
         await expect(Company.deleteHasBrandRelationship(company.properties.id, brand.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›has-brand‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-brand‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.COMPANY, ControllerNodeType.BRAND, RelationshipType.CompanyHasBrand)
+        const seededRelationship = await seedRelationship(ControllerNodeType.Company, ControllerNodeType.Brand, RelationshipType.CompanyHasBrand)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

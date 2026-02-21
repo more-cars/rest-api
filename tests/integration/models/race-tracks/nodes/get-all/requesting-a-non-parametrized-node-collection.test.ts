@@ -7,7 +7,7 @@ import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A non-parametrized "get all RACE TRACK nodes" request returns the correct number of nodes', () => {
     test('when there exist no RACE TRACK nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RACE_TRACK)
+        await deleteAllNodesOfType(ControllerNodeType.RaceTrack)
 
         const expectedNodes: RaceTrackNode[] = []
         const actualNodes = await RaceTrack.findAll()
@@ -17,9 +17,9 @@ describe('A non-parametrized "get all RACE TRACK nodes" request returns the corr
     })
 
     test('when there exist RACE TRACK nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RACE_TRACK)
+        await deleteAllNodesOfType(ControllerNodeType.RaceTrack)
         const amount = Math.ceil(Math.random() * 20)
-        await seedNodes(ControllerNodeType.RACE_TRACK, amount)
+        await seedNodes(ControllerNodeType.RaceTrack, amount)
 
         const actualNodes = await RaceTrack.findAll()
 

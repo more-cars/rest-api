@@ -11,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Requesting a ›belongs-to-racing-session‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(ControllerNodeType.SESSION_RESULT, ControllerNodeType.RACING_SESSION, RelationshipType.SessionResultBelongsToRacingSession)
+        const expectedRelationship = await seedRelationship(ControllerNodeType.SessionResult, ControllerNodeType.RacingSession, RelationshipType.SessionResultBelongsToRacingSession)
         const expectedSessionResultId = expectedRelationship.start_node.properties.id
         const expectedRacingSessionId = expectedRelationship.end_node.properties.id
         const actualRelationship = await SessionResult.getBelongsToRacingSessionRelationship(expectedSessionResultId)
@@ -27,7 +27,7 @@ describe('Requesting a ›belongs-to-racing-session‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
 
         await expect(SessionResult.getBelongsToRacingSessionRelationship(sessionResult.properties.id))
             .rejects

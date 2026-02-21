@@ -5,8 +5,8 @@ import {TrackLayout} from "../../../../../../../src/models/node-types/track-layo
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›has-prime-image‹ relationship with nodes that do not exist', async () => {
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
+    const image = await seedNode(ControllerNodeType.Image)
 
     await expect(TrackLayout.createHasPrimeImageRelationship(-42, image.properties.id))
         .rejects

@@ -7,10 +7,10 @@ import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 import {getRelationshipCollection} from "../../../../../../src/db/relationships/getRelationshipCollection"
 
 test('Get all "Image belongs to Node type" relationships for specific image', async () => {
-    const imageNode = await seedNode(ControllerNodeType.IMAGE)
-    await seedRelationshipForStartNode(imageNode.properties.id, ControllerNodeType.BRAND, RelationshipType.ImageBelongsToNode)
-    await seedRelationshipForStartNode(imageNode.properties.id, ControllerNodeType.CAR_MODEL, RelationshipType.ImageBelongsToNode)
-    await seedRelationshipForStartNode(imageNode.properties.id, ControllerNodeType.CAR_MODEL, RelationshipType.ImageBelongsToNode)
+    const imageNode = await seedNode(ControllerNodeType.Image)
+    await seedRelationshipForStartNode(imageNode.properties.id, ControllerNodeType.Brand, RelationshipType.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.properties.id, ControllerNodeType.CarModel, RelationshipType.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.properties.id, ControllerNodeType.CarModel, RelationshipType.ImageBelongsToNode)
 
     const companyRelationships = await getRelationshipCollection(
         imageNode.properties.id,
@@ -45,7 +45,7 @@ test('Get all "Image belongs to Node type" relationships for specific image', as
 })
 
 test('Expecting empty lists when there are no such relationships', async () => {
-    const imageNode = await seedNode(ControllerNodeType.IMAGE)
+    const imageNode = await seedNode(ControllerNodeType.Image)
 
     const companyRelationships = await getRelationshipCollection(
         imageNode.properties.id,

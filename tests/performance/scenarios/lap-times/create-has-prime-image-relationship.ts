@@ -26,8 +26,8 @@ export const options = {
 }
 
 export function setup() {
-    const lapTimeId = createNode(ControllerNodeType.LAP_TIME)
-    const imageId = createNode(ControllerNodeType.IMAGE)
+    const lapTimeId = createNode(ControllerNodeType.LapTime)
+    const imageId = createNode(ControllerNodeType.Image)
 
     return {
         lapTimeId,

@@ -15,7 +15,7 @@ export async function createBelongsToCompanyRelation(req: express.Request, res: 
 
     try {
         const relation = await Brand.createBelongsToCompanyRelationship(brandId, companyId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.COMPANY)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.Company)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

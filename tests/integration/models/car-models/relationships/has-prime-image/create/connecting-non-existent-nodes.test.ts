@@ -5,8 +5,8 @@ import {CarModel} from "../../../../../../../src/models/node-types/car-models/Ca
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›has-prime-image‹ relationship with nodes that do not exist', async () => {
-    const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const carModel = await seedNode(ControllerNodeType.CarModel)
+    const image = await seedNode(ControllerNodeType.Image)
 
     await expect(CarModel.createHasPrimeImageRelationship(-42, image.properties.id))
         .rejects

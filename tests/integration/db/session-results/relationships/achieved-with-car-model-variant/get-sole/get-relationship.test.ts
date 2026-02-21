@@ -8,7 +8,7 @@ import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Requesting a ›achieved-with-car-model-variant‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const relationship = await seedRelationship(ControllerNodeType.SESSION_RESULT, ControllerNodeType.CAR_MODEL_VARIANT, RelationshipType.SessionResultAchievedWithCarModelVariant)
+        const relationship = await seedRelationship(ControllerNodeType.SessionResult, ControllerNodeType.CarModelVariant, RelationshipType.SessionResultAchievedWithCarModelVariant)
 
         const relationships = await getRelationshipCollection(
             relationship.start_node.properties.id,
@@ -21,7 +21,7 @@ describe('Requesting a ›achieved-with-car-model-variant‹ relationship', () =
     })
 
     test('node exists, but not the relationship', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
 
         const relationships = await getRelationshipCollection(
             sessionResult.properties.id,

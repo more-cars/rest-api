@@ -8,7 +8,7 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 
 describe('Trying to delete a ›has-image‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.GAMING_PLATFORM, ControllerNodeType.IMAGE, RelationshipType.GamingPlatformHasImage)
+        const seededRelationship = await seedRelationship(ControllerNodeType.GamingPlatform, ControllerNodeType.Image, RelationshipType.GamingPlatformHasImage)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,
@@ -36,8 +36,8 @@ describe('Trying to delete a ›has-image‹ relationship', () => {
     })
 
     test('nodes exists, but not the relationship', async () => {
-        const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
-        const image = await seedNode(ControllerNodeType.IMAGE)
+        const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
+        const image = await seedNode(ControllerNodeType.Image)
 
         const relationship = await deleteSpecificRelationship(
             gamingPlatform.properties.id,

@@ -5,8 +5,8 @@ import {GamingPlatform} from "../../../../../../../src/models/node-types/gaming-
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›has-prime-image‹ relationship with nodes that do not exist', async () => {
-    const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
+    const image = await seedNode(ControllerNodeType.Image)
 
     await expect(GamingPlatform.createHasPrimeImageRelationship(-42, image.properties.id))
         .rejects

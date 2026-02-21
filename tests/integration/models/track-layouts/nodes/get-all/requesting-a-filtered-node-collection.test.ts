@@ -8,7 +8,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all TRACK LAYOUT nodes" request returns only the matching nodes', () => {
     test('when there exist no TRACK LAYOUT nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.TRACK_LAYOUT)
+        await deleteAllNodesOfType(ControllerNodeType.TrackLayout)
 
         const expectedNodes: TrackLayoutNode[] = []
         const actualNodes = await TrackLayout.findAll({
@@ -22,12 +22,12 @@ describe('A filtered "get all TRACK LAYOUT nodes" request returns only the match
     })
 
     test('when there exist TRACK LAYOUT nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.TRACK_LAYOUT)
-        const nodeA = await seedNode(ControllerNodeType.TRACK_LAYOUT, {
+        await deleteAllNodesOfType(ControllerNodeType.TrackLayout)
+        const nodeA = await seedNode(ControllerNodeType.TrackLayout, {
             name: 'A Node'
         }) as unknown as TrackLayoutNode
-        await seedNode(ControllerNodeType.TRACK_LAYOUT, {name: 'B Node'})
-        await seedNode(ControllerNodeType.TRACK_LAYOUT, {name: 'C Node'})
+        await seedNode(ControllerNodeType.TrackLayout, {name: 'B Node'})
+        await seedNode(ControllerNodeType.TrackLayout, {name: 'C Node'})
 
         const filteredNodes = await TrackLayout.findAll({
             filterByProperty: 'name',

@@ -1,8 +1,9 @@
 import express from "express"
 import {unmarshalInputData} from "./marshalling/unmarshalInputData"
-import {marshalNode} from "./marshalling/marshalNode"
 import {CreateTrackLayoutInput} from "../../../models/node-types/track-layouts/types/CreateTrackLayoutInput"
 import {TrackLayout} from "../../../models/node-types/track-layouts/TrackLayout"
+import {convertTrackLayoutModelNodeToControllerNode} from "./convertTrackLayoutModelNodeToControllerNode"
+import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import type {CreateTrackLayoutRawInput} from "./types/CreateTrackLayoutRawInput"
 import {isMandatoryString} from "../../validators/isMandatoryString"
 import {isOptionalString} from "../../validators/isOptionalString"
@@ -21,8 +22,9 @@ export async function create(req: express.Request, res: express.Response) {
     const sanitizedData = sanitize(data as CreateTrackLayoutInput)
 
     try {
-        const createdNode = await TrackLayout.create(sanitizedData)
-        const marshalledData = marshalNode(createdNode)
+        const modelNode = await TrackLayout.create(sanitizedData)
+        const node = convertTrackLayoutModelNodeToControllerNode(modelNode)
+        const marshalledData = marshalSingleNode(node.fields)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

@@ -6,8 +6,8 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 
 describe('Creating a ›achieved-session-result‹ relationship', () => {
     test('with valid data', async () => {
-        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
-        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
 
         const createdRelationship = await createRelationship(
             carModelVariant.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›achieved-session-result‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
+        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
 
         const createdRelationship = await createRelationship(
             carModelVariant.properties.id,

@@ -11,8 +11,8 @@ import {createRelationship} from "../../../../../src/db/relationships/createRela
 import {getSpecificRelationship} from "../../../../../src/db/relationships/getSpecificRelationship"
 
 test('ID is always contained in response', async () => {
-    const carModel = await createCarModelNode(FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate)
-    const brand = await createBrandNode(FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate)
+    const carModel = await createCarModelNode(FakeNodeInput(ControllerNodeType.CarModel) as InputCarModelCreate)
+    const brand = await createBrandNode(FakeNodeInput(ControllerNodeType.Brand) as InputBrandCreate)
     const expectedRelationship = await createRelationship(brand.properties.id, carModel.properties.id, RelationshipType.BrandHasCarModel)
 
     if (!expectedRelationship) {

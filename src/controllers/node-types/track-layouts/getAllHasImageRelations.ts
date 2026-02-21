@@ -12,7 +12,7 @@ export async function getAllHasImageRelations(req: express.Request, res: express
 
     try {
         const relations = await TrackLayout.getAllHasImageRelationships(trackLayoutId)
-        const marshalledData = marshalRelations(relations, ControllerNodeType.IMAGE)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.Image)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

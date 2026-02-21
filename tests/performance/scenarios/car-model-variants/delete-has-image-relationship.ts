@@ -28,13 +28,13 @@ export const options = {
 }
 
 export function setup() {
-    const carModelVariantId = createNode(ControllerNodeType.CAR_MODEL_VARIANT)
+    const carModelVariantId = createNode(ControllerNodeType.CarModelVariant)
     const imageIds = []
 
     for (let i = 0; i < 310; i++) {
-        const image = createNode(ControllerNodeType.IMAGE)
+        const image = createNode(ControllerNodeType.Image)
         createRelationship(
-            ControllerNodeType.CAR_MODEL_VARIANT,
+            ControllerNodeType.CarModelVariant,
             carModelVariantId,
             image,
             'has image',

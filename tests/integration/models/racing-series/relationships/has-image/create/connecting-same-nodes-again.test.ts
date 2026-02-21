@@ -5,8 +5,8 @@ import {RacingSeries} from "../../../../../../../src/models/node-types/racing-se
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›has-image‹ relationship again', async () => {
-    const racingSeries = await seedNode(ControllerNodeType.RACING_SERIES)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const racingSeries = await seedNode(ControllerNodeType.RacingSeries)
+    const image = await seedNode(ControllerNodeType.Image)
 
     await expect(RacingSeries.createHasImageRelationship(racingSeries.properties.id, image.properties.id))
         .resolves

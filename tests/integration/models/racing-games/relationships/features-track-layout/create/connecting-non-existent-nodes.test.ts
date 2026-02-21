@@ -5,8 +5,8 @@ import {RacingGame} from "../../../../../../../src/models/node-types/racing-game
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›features-track-layout‹ relationship with nodes that do not exist', async () => {
-    const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+    const racingGame = await seedNode(ControllerNodeType.RacingGame)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
     await expect(RacingGame.createFeaturesTrackLayoutRelationship(-42, trackLayout.properties.id))
         .rejects

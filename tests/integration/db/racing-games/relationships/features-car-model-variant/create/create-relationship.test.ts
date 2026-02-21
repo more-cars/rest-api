@@ -6,8 +6,8 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 
 describe('Creating a ›features-car-model-variant‹ relationship', () => {
     test('with valid data', async () => {
-        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
-        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
+        const racingGame = await seedNode(ControllerNodeType.RacingGame)
+        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
 
         const createdRelationship = await createRelationship(
             racingGame.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›features-car-model-variant‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
+        const racingGame = await seedNode(ControllerNodeType.RacingGame)
 
         const createdRelationship = await createRelationship(
             racingGame.properties.id,

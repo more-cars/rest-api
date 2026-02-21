@@ -11,7 +11,7 @@ describe('Each page of a "get all CAR MODEL VARIANT nodes" request returns the c
         [2],
         [99],
     ])('when there exist no CAR MODEL VARIANT nodes (page=$0)', async (page) => {
-        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL_VARIANT)
+        await deleteAllNodesOfType(ControllerNodeType.CarModelVariant)
 
         const expectedNodes: CarModelVariantNode[] = []
         const actualNodes = await CarModelVariant.findAll({page})
@@ -24,8 +24,8 @@ describe('Each page of a "get all CAR MODEL VARIANT nodes" request returns the c
         [20, 1, 20],
         [5, 2, 0],
     ])('when there exist $0 CAR MODEL VARIANT nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
-        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL_VARIANT)
-        await seedNodes(ControllerNodeType.CAR_MODEL_VARIANT, totalNodeAmount)
+        await deleteAllNodesOfType(ControllerNodeType.CarModelVariant)
+        await seedNodes(ControllerNodeType.CarModelVariant, totalNodeAmount)
 
         const actualNodes = await CarModelVariant.findAll({page})
 

@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›has-image‹ relationship', () => {
     test('RACING EVENT node does not exist', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
 
         await expect(RacingEvent.deleteHasImageRelationship(racingEvent.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›has-image‹ relationship', () => {
     })
 
     test('IMAGE node does not exist', async () => {
-        const image = await seedNode(ControllerNodeType.IMAGE)
+        const image = await seedNode(ControllerNodeType.Image)
 
         await expect(RacingEvent.deleteHasImageRelationship(-42, image.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›has-image‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›has-image‹ relationship', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
-        const image = await seedNode(ControllerNodeType.IMAGE)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+        const image = await seedNode(ControllerNodeType.Image)
 
         await expect(RacingEvent.deleteHasImageRelationship(racingEvent.properties.id, image.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›has-image‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-image‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.RACING_EVENT, ControllerNodeType.IMAGE, RelationshipType.RacingEventHasImage)
+        const seededRelationship = await seedRelationship(ControllerNodeType.RacingEvent, ControllerNodeType.Image, RelationshipType.RacingEventHasImage)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

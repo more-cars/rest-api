@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›has-image‹ relationship', () => {
     test('SESSION RESULT node does not exist', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
 
         await expect(SessionResult.deleteHasImageRelationship(sessionResult.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›has-image‹ relationship', () => {
     })
 
     test('IMAGE node does not exist', async () => {
-        const image = await seedNode(ControllerNodeType.IMAGE)
+        const image = await seedNode(ControllerNodeType.Image)
 
         await expect(SessionResult.deleteHasImageRelationship(-42, image.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›has-image‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›has-image‹ relationship', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
-        const image = await seedNode(ControllerNodeType.IMAGE)
+        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+        const image = await seedNode(ControllerNodeType.Image)
 
         await expect(SessionResult.deleteHasImageRelationship(sessionResult.properties.id, image.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›has-image‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-image‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.SESSION_RESULT, ControllerNodeType.IMAGE, RelationshipType.SessionResultHasImage)
+        const seededRelationship = await seedRelationship(ControllerNodeType.SessionResult, ControllerNodeType.Image, RelationshipType.SessionResultHasImage)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

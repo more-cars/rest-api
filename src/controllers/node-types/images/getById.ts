@@ -1,18 +1,20 @@
 import express from "express"
 import {Image} from "../../../models/node-types/images/Image"
-import {marshalNode} from "./marshalling/marshalNode"
+import {convertImageModelNodeToControllerNode} from "./convertImageModelNodeToControllerNode"
+import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"
 
 export async function getById(req: express.Request, res: express.Response) {
     const nodeId = parseInt(req.params.id)
-    const node = await Image.findById(nodeId)
+    const modelNode = await Image.findById(nodeId)
 
-    if (!node) {
+    if (!modelNode) {
         return sendResponse404(res)
     }
 
-    const marshalledData = marshalNode(node)
+    const node = convertImageModelNodeToControllerNode(modelNode)
+    const marshalledData = marshalSingleNode(node.fields)
 
     return sendResponse200(marshalledData, res)
 }

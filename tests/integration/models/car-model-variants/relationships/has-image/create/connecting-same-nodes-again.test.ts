@@ -5,8 +5,8 @@ import {CarModelVariant} from "../../../../../../../src/models/node-types/car-mo
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›has-image‹ relationship again', async () => {
-    const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+    const image = await seedNode(ControllerNodeType.Image)
 
     await expect(CarModelVariant.createHasImageRelationship(carModelVariant.properties.id, image.properties.id))
         .resolves

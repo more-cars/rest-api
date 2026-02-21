@@ -5,8 +5,8 @@ import {RacingEvent} from "../../../../../../../src/models/node-types/racing-eve
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›has-racing-session‹ relationship again', async () => {
-    const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
-    const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
+    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+    const racingSession = await seedNode(ControllerNodeType.RacingSession)
 
     await expect(RacingEvent.createHasRacingSessionRelationship(racingEvent.properties.id, racingSession.properties.id))
         .resolves

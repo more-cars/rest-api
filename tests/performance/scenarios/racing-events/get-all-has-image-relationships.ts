@@ -27,10 +27,10 @@ export const options = {
 }
 
 export function setup() {
-    const racingEventId = createNode(ControllerNodeType.RACING_EVENT)
-    const imageId = createNode(ControllerNodeType.IMAGE)
+    const racingEventId = createNode(ControllerNodeType.RacingEvent)
+    const imageId = createNode(ControllerNodeType.Image)
     createRelationship(
-        ControllerNodeType.RACING_EVENT,
+        ControllerNodeType.RacingEvent,
         racingEventId,
         imageId,
         'has image',

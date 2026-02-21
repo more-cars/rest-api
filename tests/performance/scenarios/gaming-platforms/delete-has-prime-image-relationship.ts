@@ -28,13 +28,13 @@ export const options = {
 }
 
 export function setup() {
-    const gamingPlatformId = createNode(ControllerNodeType.GAMING_PLATFORM)
+    const gamingPlatformId = createNode(ControllerNodeType.GamingPlatform)
     const imageIds = []
 
     for (let i = 0; i < 310; i++) {
-        const image = createNode(ControllerNodeType.IMAGE)
+        const image = createNode(ControllerNodeType.Image)
         createRelationship(
-            ControllerNodeType.GAMING_PLATFORM,
+            ControllerNodeType.GamingPlatform,
             gamingPlatformId,
             image,
             'has prime image',

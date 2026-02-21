@@ -28,13 +28,13 @@ export const options = {
 }
 
 export function setup() {
-    const lapTimeId = createNode(ControllerNodeType.LAP_TIME)
+    const lapTimeId = createNode(ControllerNodeType.LapTime)
     const sessionResultIds = []
 
     for (let i = 0; i < 310; i++) {
-        const sessionResult = createNode(ControllerNodeType.SESSION_RESULT)
+        const sessionResult = createNode(ControllerNodeType.SessionResult)
         createRelationship(
-            ControllerNodeType.LAP_TIME,
+            ControllerNodeType.LapTime,
             lapTimeId,
             sessionResult,
             'belongs to session result',

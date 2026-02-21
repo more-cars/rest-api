@@ -8,7 +8,7 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 
 describe('Trying to delete a ›achieved-on-track-layout‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.LAP_TIME, ControllerNodeType.TRACK_LAYOUT, RelationshipType.LapTimeAchievedOnTrackLayout)
+        const seededRelationship = await seedRelationship(ControllerNodeType.LapTime, ControllerNodeType.TrackLayout, RelationshipType.LapTimeAchievedOnTrackLayout)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,
@@ -36,8 +36,8 @@ describe('Trying to delete a ›achieved-on-track-layout‹ relationship', () =>
     })
 
     test('nodes exists, but not the relationship', async () => {
-        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
-        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+        const lapTime = await seedNode(ControllerNodeType.LapTime)
+        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
         const relationship = await deleteSpecificRelationship(
             lapTime.properties.id,

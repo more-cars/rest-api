@@ -1,8 +1,9 @@
 import express from "express"
 import {unmarshalInputData} from "./marshalling/unmarshalInputData"
-import {marshalNode} from "./marshalling/marshalNode"
 import {CreateCarModelVariantInput} from "../../../models/node-types/car-model-variants/types/CreateCarModelVariantInput"
 import {CarModelVariant} from "../../../models/node-types/car-model-variants/CarModelVariant"
+import {convertCarModelVariantModelNodeToControllerNode} from "./convertCarModelVariantModelNodeToControllerNode"
+import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import type {CreateCarModelVariantRawInput} from "./types/CreateCarModelVariantRawInput"
 import {isMandatoryString} from "../../validators/isMandatoryString"
 import {isOptionalString} from "../../validators/isOptionalString"
@@ -21,8 +22,9 @@ export async function create(req: express.Request, res: express.Response) {
     const sanitizedData = sanitize(data as CreateCarModelVariantInput)
 
     try {
-        const createdNode = await CarModelVariant.create(sanitizedData)
-        const marshalledData = marshalNode(createdNode)
+        const modelNode = await CarModelVariant.create(sanitizedData)
+        const node = convertCarModelVariantModelNodeToControllerNode(modelNode)
+        const marshalledData = marshalSingleNode(node.fields)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

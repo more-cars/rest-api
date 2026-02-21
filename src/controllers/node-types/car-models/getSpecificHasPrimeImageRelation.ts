@@ -14,7 +14,7 @@ export async function getSpecificHasPrimeImageRelation(req: express.Request, res
 
     try {
         const relation = await CarModel.getSpecificHasPrimeImageRelationship(carModelId, imageId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.IMAGE)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.Image)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

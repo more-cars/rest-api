@@ -11,7 +11,7 @@ test('Expecting response "false" when trying to delete a non-existing SESSION RE
 })
 
 test('Expecting response "true" when deleting an existing SESSION RESULT', async () => {
-    const node = await seedNode(ControllerNodeType.SESSION_RESULT)
+    const node = await seedNode(ControllerNodeType.SessionResult)
     const success = await deleteNode(node.properties.id)
 
     expect(success)

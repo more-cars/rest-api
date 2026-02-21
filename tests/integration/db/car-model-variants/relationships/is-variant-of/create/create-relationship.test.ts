@@ -6,8 +6,8 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 
 describe('Creating a ›is-variant-of‹ relationship', () => {
     test('with valid data', async () => {
-        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
-        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
+        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+        const carModel = await seedNode(ControllerNodeType.CarModel)
 
         const createdRelationship = await createRelationship(
             carModelVariant.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›is-variant-of‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
+        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
 
         const createdRelationship = await createRelationship(
             -42,

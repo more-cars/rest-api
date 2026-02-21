@@ -27,10 +27,10 @@ export const options = {
 }
 
 export function setup() {
-    const trackLayoutId = createNode(ControllerNodeType.TRACK_LAYOUT)
-    const racingEventId = createNode(ControllerNodeType.RACING_EVENT)
+    const trackLayoutId = createNode(ControllerNodeType.TrackLayout)
+    const racingEventId = createNode(ControllerNodeType.RacingEvent)
     createRelationship(
-        ControllerNodeType.TRACK_LAYOUT,
+        ControllerNodeType.TrackLayout,
         trackLayoutId,
         racingEventId,
         'was used by racing event',

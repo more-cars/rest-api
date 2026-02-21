@@ -5,8 +5,8 @@ import {RacingEvent} from "../../../../../../../src/models/node-types/racing-eve
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›has-racing-session‹ relationship with valid data', async () => {
-    const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
-    const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
+    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+    const racingSession = await seedNode(ControllerNodeType.RacingSession)
 
     const createdRelationship = await RacingEvent.createHasRacingSessionRelationship(racingEvent.properties.id, racingSession.properties.id)
 

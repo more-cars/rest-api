@@ -8,9 +8,9 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 
 describe('Requesting all ›hosted-racing-event‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
-        await seedRelationshipForStartNode(raceTrack.properties.id, ControllerNodeType.RACING_EVENT, RelationshipType.RaceTrackHostedRacingEvent)
-        await seedRelationshipForStartNode(raceTrack.properties.id, ControllerNodeType.RACING_EVENT, RelationshipType.RaceTrackHostedRacingEvent)
+        const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
+        await seedRelationshipForStartNode(raceTrack.properties.id, ControllerNodeType.RacingEvent, RelationshipType.RaceTrackHostedRacingEvent)
+        await seedRelationshipForStartNode(raceTrack.properties.id, ControllerNodeType.RacingEvent, RelationshipType.RaceTrackHostedRacingEvent)
 
         const relationships = await RaceTrack.getAllHostedRacingEventRelationships(raceTrack.properties.id)
 
@@ -19,7 +19,7 @@ describe('Requesting all ›hosted-racing-event‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
+        const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
 
         const relationships = await RaceTrack.getAllHostedRacingEventRelationships(raceTrack.properties.id)
 

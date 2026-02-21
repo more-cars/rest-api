@@ -28,13 +28,13 @@ export const options = {
 }
 
 export function setup() {
-    const raceTrackId = createNode(ControllerNodeType.RACE_TRACK)
+    const raceTrackId = createNode(ControllerNodeType.RaceTrack)
     const images = []
 
     for (let i = 0; i < 310; i++) {
-        const image = createNode(ControllerNodeType.IMAGE)
+        const image = createNode(ControllerNodeType.Image)
         createRelationship(
-            ControllerNodeType.RACE_TRACK,
+            ControllerNodeType.RaceTrack,
             raceTrackId,
             image,
             'has image',

@@ -12,7 +12,7 @@ describe('Deleting a GAMING PLATFORM', () => {
     })
 
     test('that exists', async () => {
-        const node = await seedNode(ControllerNodeType.GAMING_PLATFORM)
+        const node = await seedNode(ControllerNodeType.GamingPlatform)
         await expect(GamingPlatform.delete(node.properties.id))
             .resolves
             .not.toThrow(NodeNotFoundError)

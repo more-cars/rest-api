@@ -5,8 +5,8 @@ import {TrackLayout} from "../../../../../../../src/models/node-types/track-layo
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›belongs-to-race-track‹ relationship with nodes that do not exist', async () => {
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
-    const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
+    const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
 
     await expect(TrackLayout.createBelongsToRaceTrackRelationship(-42, raceTrack.properties.id))
         .rejects

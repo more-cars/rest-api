@@ -7,7 +7,7 @@ import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A paginated "get all BRAND nodes" request returns the correct number of nodes', () => {
     test('when there exist no BRAND nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.BRAND)
+        await deleteAllNodesOfType(ControllerNodeType.Brand)
 
         const expectedNodes: BrandNode[] = []
         const actualNodes = await Brand.findAll({page: 1})
@@ -17,9 +17,9 @@ describe('A paginated "get all BRAND nodes" request returns the correct number o
     })
 
     test('when there exist BRAND nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.BRAND)
+        await deleteAllNodesOfType(ControllerNodeType.Brand)
         const amount = Math.ceil(Math.random() * 20)
-        await seedNodes(ControllerNodeType.BRAND, amount)
+        await seedNodes(ControllerNodeType.Brand, amount)
 
         const actualNodes = await Brand.findAll({page: 1})
 

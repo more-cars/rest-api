@@ -10,8 +10,8 @@ test('A completely valid request, but the database call fails (e.g. one of the n
         }
     })
 
-    const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
+    const image = await seedNode(ControllerNodeType.Image)
 
     await expect(GamingPlatform.createHasPrimeImageRelationship(gamingPlatform.properties.id, image.properties.id))
         .rejects

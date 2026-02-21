@@ -8,7 +8,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all COMPANY nodes" request returns only the matching nodes', () => {
     test('when there exist no COMPANY nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.COMPANY)
+        await deleteAllNodesOfType(ControllerNodeType.Company)
 
         const expectedNodes: CompanyNode[] = []
         const actualNodes = await Company.findAll({
@@ -22,12 +22,12 @@ describe('A filtered "get all COMPANY nodes" request returns only the matching n
     })
 
     test('when there exist COMPANY nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.COMPANY)
-        const nodeA = await seedNode(ControllerNodeType.COMPANY, {
+        await deleteAllNodesOfType(ControllerNodeType.Company)
+        const nodeA = await seedNode(ControllerNodeType.Company, {
             name: 'A Node'
         }) as unknown as CompanyNode
-        await seedNode(ControllerNodeType.COMPANY, {name: 'B Node'})
-        await seedNode(ControllerNodeType.COMPANY, {name: 'C Node'})
+        await seedNode(ControllerNodeType.Company, {name: 'B Node'})
+        await seedNode(ControllerNodeType.Company, {name: 'C Node'})
 
         const filteredNodes = await Company.findAll({
             filterByProperty: 'name',

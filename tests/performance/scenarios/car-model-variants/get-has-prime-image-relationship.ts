@@ -27,10 +27,10 @@ export const options = {
 }
 
 export function setup() {
-    const carModelVariantId = createNode(ControllerNodeType.CAR_MODEL_VARIANT)
-    const imageId = createNode(ControllerNodeType.IMAGE)
+    const carModelVariantId = createNode(ControllerNodeType.CarModelVariant)
+    const imageId = createNode(ControllerNodeType.Image)
     createRelationship(
-        ControllerNodeType.CAR_MODEL_VARIANT,
+        ControllerNodeType.CarModelVariant,
         carModelVariantId,
         imageId,
         'has prime image',

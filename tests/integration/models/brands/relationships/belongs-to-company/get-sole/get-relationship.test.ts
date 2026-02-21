@@ -11,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Requesting a ›belongs-to-company‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(ControllerNodeType.BRAND, ControllerNodeType.COMPANY, RelationshipType.BrandBelongsToCompany)
+        const expectedRelationship = await seedRelationship(ControllerNodeType.Brand, ControllerNodeType.Company, RelationshipType.BrandBelongsToCompany)
         const expectedBrandId = expectedRelationship.start_node.properties.id
         const expectedCompanyId = expectedRelationship.end_node.properties.id
         const actualRelationship = await Brand.getBelongsToCompanyRelationship(expectedBrandId)
@@ -27,7 +27,7 @@ describe('Requesting a ›belongs-to-company‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const brand = await seedNode(ControllerNodeType.BRAND)
+        const brand = await seedNode(ControllerNodeType.Brand)
 
         await expect(Brand.getBelongsToCompanyRelationship(brand.properties.id))
             .rejects

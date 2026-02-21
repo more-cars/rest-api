@@ -13,7 +13,7 @@ export async function getBelongsToRaceTrackRelation(req: express.Request, res: e
 
     try {
         const relation = await TrackLayout.getBelongsToRaceTrackRelationship(trackLayoutId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.RACE_TRACK)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.RaceTrack)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

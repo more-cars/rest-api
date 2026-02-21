@@ -6,8 +6,8 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 
 describe('Creating a ›follows-event‹ relationship', () => {
     test('with valid data', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
-        const partner = await seedNode(ControllerNodeType.RACING_EVENT)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+        const partner = await seedNode(ControllerNodeType.RacingEvent)
 
         const createdRelationship = await createRelationship(
             racingEvent.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›follows-event‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
 
         const createdRelationship = await createRelationship(
             racingEvent.properties.id,

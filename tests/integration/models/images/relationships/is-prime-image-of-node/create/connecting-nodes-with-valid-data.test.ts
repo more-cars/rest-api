@@ -5,8 +5,8 @@ import {Image} from "../../../../../../../src/models/node-types/images/Image"
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›is-prime-image-of-node‹ relationship with valid data', async () => {
-    const image = await seedNode(ControllerNodeType.IMAGE)
-    const node = await seedNode(ControllerNodeType.COMPANY)
+    const image = await seedNode(ControllerNodeType.Image)
+    const node = await seedNode(ControllerNodeType.Company)
 
     const createdRelationship = await Image.createIsPrimeImageOfNodeRelationship(image.properties.id, node.properties.id)
 

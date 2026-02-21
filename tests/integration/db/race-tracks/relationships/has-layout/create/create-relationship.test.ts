@@ -6,8 +6,8 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 
 describe('Creating a ›has-layout‹ relationship', () => {
     test('with valid data', async () => {
-        const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
-        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+        const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
+        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
         const createdRelationship = await createRelationship(
             raceTrack.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›has-layout‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
+        const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
 
         const createdRelationship = await createRelationship(
             raceTrack.properties.id,

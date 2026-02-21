@@ -16,7 +16,7 @@ export async function createFeaturesCarModelVariantRelation(req: express.Request
 
     try {
         const relation = await RacingGame.createFeaturesCarModelVariantRelationship(racingGameId, carModelVariantId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.CAR_MODEL_VARIANT)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.CarModelVariant)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

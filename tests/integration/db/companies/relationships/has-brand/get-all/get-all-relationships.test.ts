@@ -8,9 +8,9 @@ import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Requesting all ›has-brand‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const company = await seedNode(ControllerNodeType.COMPANY)
-        await seedRelationshipForStartNode(company.properties.id, ControllerNodeType.BRAND, RelationshipType.CompanyHasBrand)
-        await seedRelationshipForStartNode(company.properties.id, ControllerNodeType.BRAND, RelationshipType.CompanyHasBrand)
+        const company = await seedNode(ControllerNodeType.Company)
+        await seedRelationshipForStartNode(company.properties.id, ControllerNodeType.Brand, RelationshipType.CompanyHasBrand)
+        await seedRelationshipForStartNode(company.properties.id, ControllerNodeType.Brand, RelationshipType.CompanyHasBrand)
 
         const relationships = await getRelationshipCollection(
             company.properties.id,
@@ -23,7 +23,7 @@ describe('Requesting all ›has-brand‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const company = await seedNode(ControllerNodeType.COMPANY)
+        const company = await seedNode(ControllerNodeType.Company)
 
         const relationships = await getRelationshipCollection(
             company.properties.id,

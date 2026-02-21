@@ -11,7 +11,7 @@ import FakeImageFull from "../../../../_toolbox/fixtures/nodes/FakeImageFull"
 
 test('Timestamps provided by the user are ignored', async () => {
     // BRAND
-    const brandData = FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate
+    const brandData = FakeNodeInput(ControllerNodeType.Brand) as InputBrandCreate
     const createdBrand = await createBrandNode(brandData)
 
     expect(createdBrand.properties).toHaveProperty('created_at')
@@ -20,7 +20,7 @@ test('Timestamps provided by the user are ignored', async () => {
     expect(createdBrand.properties).not.toHaveProperty('updated_at', "blobb")
 
     // CAR MODEL
-    const carModelData = FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate
+    const carModelData = FakeNodeInput(ControllerNodeType.CarModel) as InputCarModelCreate
     const createdCarModel = await createCarModelNode(carModelData)
 
     expect(createdCarModel.properties).toHaveProperty('created_at')

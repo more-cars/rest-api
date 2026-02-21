@@ -5,8 +5,8 @@ import {CarModel} from "../../../../../../../src/models/node-types/car-models/Ca
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›is-successor-of‹ relationship again', async () => {
-    const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
-    const partner = await seedNode(ControllerNodeType.CAR_MODEL)
+    const carModel = await seedNode(ControllerNodeType.CarModel)
+    const partner = await seedNode(ControllerNodeType.CarModel)
 
     await expect(CarModel.createIsSuccessorOfRelationship(carModel.properties.id, partner.properties.id))
         .resolves

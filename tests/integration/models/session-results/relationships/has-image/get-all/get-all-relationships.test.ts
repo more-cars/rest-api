@@ -8,9 +8,9 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
-        await seedRelationshipForStartNode(sessionResult.properties.id, ControllerNodeType.IMAGE, RelationshipType.SessionResultHasImage)
-        await seedRelationshipForStartNode(sessionResult.properties.id, ControllerNodeType.IMAGE, RelationshipType.SessionResultHasImage)
+        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+        await seedRelationshipForStartNode(sessionResult.properties.id, ControllerNodeType.Image, RelationshipType.SessionResultHasImage)
+        await seedRelationshipForStartNode(sessionResult.properties.id, ControllerNodeType.Image, RelationshipType.SessionResultHasImage)
 
         const relationships = await SessionResult.getAllHasImageRelationships(sessionResult.properties.id)
 
@@ -19,7 +19,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
 
         const relationships = await SessionResult.getAllHasImageRelationships(sessionResult.properties.id)
 

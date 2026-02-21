@@ -8,9 +8,9 @@ import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Requesting all ›released-on-gaming-platform‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
-        await seedRelationshipForStartNode(racingGame.properties.id, ControllerNodeType.GAMING_PLATFORM, RelationshipType.RacingGameReleasedOnGamingPlatform)
-        await seedRelationshipForStartNode(racingGame.properties.id, ControllerNodeType.GAMING_PLATFORM, RelationshipType.RacingGameReleasedOnGamingPlatform)
+        const racingGame = await seedNode(ControllerNodeType.RacingGame)
+        await seedRelationshipForStartNode(racingGame.properties.id, ControllerNodeType.GamingPlatform, RelationshipType.RacingGameReleasedOnGamingPlatform)
+        await seedRelationshipForStartNode(racingGame.properties.id, ControllerNodeType.GamingPlatform, RelationshipType.RacingGameReleasedOnGamingPlatform)
 
         const relationships = await getRelationshipCollection(
             racingGame.properties.id,
@@ -23,7 +23,7 @@ describe('Requesting all ›released-on-gaming-platform‹ relationships', () =>
     })
 
     test('node exists, but no relationships', async () => {
-        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
+        const racingGame = await seedNode(ControllerNodeType.RacingGame)
 
         const relationships = await getRelationshipCollection(
             racingGame.properties.id,

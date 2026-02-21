@@ -28,13 +28,13 @@ export const options = {
 }
 
 export function setup() {
-    const carModelId = createNode(ControllerNodeType.CAR_MODEL)
+    const carModelId = createNode(ControllerNodeType.CarModel)
     const carModelVariantIds = []
 
     for (let i = 0; i < 310; i++) {
-        const carModelVariant = createNode(ControllerNodeType.CAR_MODEL_VARIANT)
+        const carModelVariant = createNode(ControllerNodeType.CarModelVariant)
         createRelationship(
-            ControllerNodeType.CAR_MODEL,
+            ControllerNodeType.CarModel,
             carModelId,
             carModelVariant,
             'has variant',

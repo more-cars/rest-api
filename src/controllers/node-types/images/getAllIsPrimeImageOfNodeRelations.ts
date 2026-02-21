@@ -12,7 +12,7 @@ export async function getAllIsPrimeImageOfNodeRelations(req: express.Request, re
 
     try {
         const relations = await Image.getAllIsPrimeImageOfNodeRelationships(imageId)
-        const marshalledData = marshalRelations(relations, ControllerNodeType.BRAND) // TODO determine correct partner node type
+        const marshalledData = marshalRelations(relations, ControllerNodeType.Brand) // TODO determine correct partner node type
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

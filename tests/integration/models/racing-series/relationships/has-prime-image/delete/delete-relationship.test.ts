@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›has-prime-image‹ relationship', () => {
     test('RACING SERIES node does not exist', async () => {
-        const racingSeries = await seedNode(ControllerNodeType.RACING_SERIES)
+        const racingSeries = await seedNode(ControllerNodeType.RacingSeries)
 
         await expect(RacingSeries.deleteHasPrimeImageRelationship(racingSeries.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('IMAGE node does not exist', async () => {
-        const image = await seedNode(ControllerNodeType.IMAGE)
+        const image = await seedNode(ControllerNodeType.Image)
 
         await expect(RacingSeries.deleteHasPrimeImageRelationship(-42, image.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›has-prime-image‹ relationship', async () => {
-        const racingSeries = await seedNode(ControllerNodeType.RACING_SERIES)
-        const image = await seedNode(ControllerNodeType.IMAGE)
+        const racingSeries = await seedNode(ControllerNodeType.RacingSeries)
+        const image = await seedNode(ControllerNodeType.Image)
 
         await expect(RacingSeries.deleteHasPrimeImageRelationship(racingSeries.properties.id, image.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-prime-image‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.RACING_SERIES, ControllerNodeType.IMAGE, RelationshipType.RacingSeriesHasPrimeImage)
+        const seededRelationship = await seedRelationship(ControllerNodeType.RacingSeries, ControllerNodeType.Image, RelationshipType.RacingSeriesHasPrimeImage)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

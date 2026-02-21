@@ -6,8 +6,8 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 
 describe('Creating a ›is-prime-image-of-node‹ relationship', () => {
     test('with valid data', async () => {
-        const image = await seedNode(ControllerNodeType.IMAGE)
-        const node = await seedNode(ControllerNodeType.COMPANY)
+        const image = await seedNode(ControllerNodeType.Image)
+        const node = await seedNode(ControllerNodeType.Company)
 
         const createdRelationship = await createRelationship(
             image.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›is-prime-image-of-node‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const image = await seedNode(ControllerNodeType.IMAGE)
+        const image = await seedNode(ControllerNodeType.Image)
 
         const createdRelationship = await createRelationship(
             -42,

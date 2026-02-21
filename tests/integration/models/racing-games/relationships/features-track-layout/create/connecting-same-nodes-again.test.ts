@@ -5,8 +5,8 @@ import {RacingGame} from "../../../../../../../src/models/node-types/racing-game
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›features-track-layout‹ relationship again', async () => {
-    const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+    const racingGame = await seedNode(ControllerNodeType.RacingGame)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
     await expect(RacingGame.createFeaturesTrackLayoutRelationship(racingGame.properties.id, trackLayout.properties.id))
         .resolves

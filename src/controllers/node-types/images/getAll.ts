@@ -1,11 +1,12 @@
 import express from "express"
-import {Image} from "../../../models/node-types/images/Image"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
 import availableProperties from "../../../../specification/properties/Image.json"
+import {Image} from "../../../models/node-types/images/Image"
+import {convertImageModelNodeToControllerNode} from "./convertImageModelNodeToControllerNode"
+import {marshalNodeCollection} from "../../nodes/marshalNodeCollection"
 import {InvalidPaginationParams} from "../../../models/types/InvalidPaginationParams"
 import {InvalidSortingParams} from "../../../models/types/InvalidSortingParams"
 import {InvalidFilterParams} from "../../../models/types/InvalidFilterParams"
-import {marshalNodes} from "./marshalling/marshalNodes"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
@@ -13,8 +14,9 @@ import {sendResponse500} from "../../responses/sendResponse500"
 export async function getAll(req: express.Request, res: express.Response) {
     try {
         const params = extractCollectionConstraintParameters(req, availableProperties)
-        const nodes = await Image.findAll(params)
-        const marshalledData = marshalNodes(nodes)
+        const modelNodes = await Image.findAll(params)
+        const nodes = modelNodes.map(node => convertImageModelNodeToControllerNode(node))
+        const marshalledData = marshalNodeCollection(nodes)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

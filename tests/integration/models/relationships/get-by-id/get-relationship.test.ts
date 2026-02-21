@@ -9,7 +9,7 @@ import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/Con
 
 describe('Requesting a relationship', () => {
     test('relationship exists', async () => {
-        const expectedRelationship = await seedRelationship(ControllerNodeType.BRAND, ControllerNodeType.CAR_MODEL, RelationshipType.BrandHasCarModel)
+        const expectedRelationship = await seedRelationship(ControllerNodeType.Brand, ControllerNodeType.CarModel, RelationshipType.BrandHasCarModel)
         const actualRelationship = await Relationship.findById(expectedRelationship.id)
 
         expect(validateJson(actualRelationship, RelationshipSchema))

@@ -5,8 +5,8 @@ import {CarModelVariant} from "../../../../../../../src/models/node-types/car-mo
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›achieved-lap-time‹ relationship with valid data', async () => {
-    const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
-    const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+    const lapTime = await seedNode(ControllerNodeType.LapTime)
 
     const createdRelationship = await CarModelVariant.createAchievedLapTimeRelationship(carModelVariant.properties.id, lapTime.properties.id)
 

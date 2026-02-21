@@ -5,8 +5,8 @@ import {Company} from "../../../../../../../src/models/node-types/companies/Comp
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›has-prime-image‹ relationship again', async () => {
-    const company = await seedNode(ControllerNodeType.COMPANY)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const company = await seedNode(ControllerNodeType.Company)
+    const image = await seedNode(ControllerNodeType.Image)
 
     await expect(Company.createHasPrimeImageRelationship(company.properties.id, image.properties.id))
         .resolves

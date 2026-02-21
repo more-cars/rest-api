@@ -5,8 +5,8 @@ import {SessionResult} from "../../../../../../../src/models/node-types/session-
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›achieved-with-car-model-variant‹ relationship with nodes that do not exist', async () => {
-    const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
-    const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
+    const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
 
     await expect(SessionResult.createAchievedWithCarModelVariantRelationship(-42, carModelVariant.properties.id))
         .rejects

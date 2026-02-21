@@ -7,7 +7,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all LAP TIME nodes" request returns the nodes in correct order', () => {
     test('when there exist no LAP TIME nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.LAP_TIME)
+        await deleteAllNodesOfType(ControllerNodeType.LapTime)
 
         const expectedNodes: LapTimeNode[] = []
         const actualNodes = await LapTime.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,10 +17,10 @@ describe('A sorted "get all LAP TIME nodes" request returns the nodes in correct
     })
 
     test('when there exist LAP TIME nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.LAP_TIME)
-        const nodeA = await seedNode(ControllerNodeType.LAP_TIME, {time: 'A', driver_name: 'A Node'}) as unknown as LapTimeNode
-        const nodeB = await seedNode(ControllerNodeType.LAP_TIME, {time: 'B', driver_name: 'B Node'}) as unknown as LapTimeNode
-        const nodeC = await seedNode(ControllerNodeType.LAP_TIME, {time: 'C', driver_name: 'C Node'}) as unknown as LapTimeNode
+        await deleteAllNodesOfType(ControllerNodeType.LapTime)
+        const nodeA = await seedNode(ControllerNodeType.LapTime, {time: 'A', driver_name: 'A Node'}) as unknown as LapTimeNode
+        const nodeB = await seedNode(ControllerNodeType.LapTime, {time: 'B', driver_name: 'B Node'}) as unknown as LapTimeNode
+        const nodeC = await seedNode(ControllerNodeType.LapTime, {time: 'C', driver_name: 'C Node'}) as unknown as LapTimeNode
 
         const ascNodes = await LapTime.findAll({sortByProperty: 'driver_name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

@@ -12,7 +12,7 @@ test('Fetching a SESSION RESULT that does not exist should return "false"', asyn
 })
 
 test('When the SESSION RESULT exists it should be returned', async () => {
-    const expectedSessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+    const expectedSessionResult = await seedNode(ControllerNodeType.SessionResult)
     const actualSessionResult = await SessionResult.findById(expectedSessionResult.properties.id)
 
     expect(actualSessionResult.attributes)

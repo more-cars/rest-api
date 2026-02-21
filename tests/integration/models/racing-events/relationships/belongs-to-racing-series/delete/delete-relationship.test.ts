@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›belongs-to-racing-series‹ relationship', () => {
     test('RACING EVENT node does not exist', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
 
         await expect(RacingEvent.deleteBelongsToRacingSeriesRelationship(racingEvent.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›belongs-to-racing-series‹ relationship', () => {
     })
 
     test('RACING SERIES node does not exist', async () => {
-        const racingSeries = await seedNode(ControllerNodeType.RACING_SERIES)
+        const racingSeries = await seedNode(ControllerNodeType.RacingSeries)
 
         await expect(RacingEvent.deleteBelongsToRacingSeriesRelationship(-42, racingSeries.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›belongs-to-racing-series‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›belongs-to-racing-series‹ relationship', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
-        const racingSeries = await seedNode(ControllerNodeType.RACING_SERIES)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+        const racingSeries = await seedNode(ControllerNodeType.RacingSeries)
 
         await expect(RacingEvent.deleteBelongsToRacingSeriesRelationship(racingEvent.properties.id, racingSeries.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›belongs-to-racing-series‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›belongs-to-racing-series‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.RACING_EVENT, ControllerNodeType.RACING_SERIES, RelationshipType.RacingEventBelongsToRacingSeries)
+        const seededRelationship = await seedRelationship(ControllerNodeType.RacingEvent, ControllerNodeType.RacingSeries, RelationshipType.RacingEventBelongsToRacingSeries)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

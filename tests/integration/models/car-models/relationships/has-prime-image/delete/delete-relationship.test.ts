@@ -10,7 +10,7 @@ import {CarModel} from "../../../../../../../src/models/node-types/car-models/Ca
 
 describe('Deleting a ›has-prime-image‹ relationship', () => {
     test('CAR MODEL node does not exist', async () => {
-        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
+        const carModel = await seedNode(ControllerNodeType.CarModel)
 
         await expect(CarModel.deleteHasPrimeImageRelationship(carModel.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('IMAGE node does not exist', async () => {
-        const image = await seedNode(ControllerNodeType.IMAGE)
+        const image = await seedNode(ControllerNodeType.Image)
 
         await expect(CarModel.deleteHasPrimeImageRelationship(-42, image.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›has-prime-image‹ relationship', async () => {
-        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
-        const image = await seedNode(ControllerNodeType.IMAGE)
+        const carModel = await seedNode(ControllerNodeType.CarModel)
+        const image = await seedNode(ControllerNodeType.Image)
 
         await expect(CarModel.deleteHasPrimeImageRelationship(carModel.properties.id, image.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-prime-image‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.CAR_MODEL, ControllerNodeType.IMAGE, RelationshipType.CarModelHasPrimeImage)
+        const seededRelationship = await seedRelationship(ControllerNodeType.CarModel, ControllerNodeType.Image, RelationshipType.CarModelHasPrimeImage)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

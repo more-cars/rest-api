@@ -5,8 +5,8 @@ import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›has-image‹ relationship with nodes that do not exist', async () => {
-    const brand = await seedNode(ControllerNodeType.BRAND)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const brand = await seedNode(ControllerNodeType.Brand)
+    const image = await seedNode(ControllerNodeType.Image)
 
     await expect(Brand.createHasImageRelationship(-42, image.properties.id))
         .rejects

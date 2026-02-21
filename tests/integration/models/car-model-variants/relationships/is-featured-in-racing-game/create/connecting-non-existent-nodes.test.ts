@@ -5,8 +5,8 @@ import {CarModelVariant} from "../../../../../../../src/models/node-types/car-mo
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›is-featured-in-racing-game‹ relationship with nodes that do not exist', async () => {
-    const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
-    const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
+    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+    const racingGame = await seedNode(ControllerNodeType.RacingGame)
 
     await expect(CarModelVariant.createIsFeaturedInRacingGameRelationship(-42, racingGame.properties.id))
         .rejects

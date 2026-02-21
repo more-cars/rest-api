@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A TRACK LAYOUT can have multiple ›has-lap-time‹ relationships', async () => {
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
     const lapTimesAmount = 3
-    const lapTimes = await seedNodes(ControllerNodeType.LAP_TIME, lapTimesAmount)
+    const lapTimes = await seedNodes(ControllerNodeType.LapTime, lapTimesAmount)
 
     for (const lapTime of lapTimes) {
         await TrackLayout.createHasLapTimeRelationship(trackLayout.properties.id, lapTime.properties.id)

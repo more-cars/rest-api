@@ -14,7 +14,7 @@ test('Querying a LAP TIME that does not exist should return "false"', async () =
 })
 
 test('Querying an existing LAP TIME should return a db node with correct schema', async () => {
-    const createdNode = await seedNode(ControllerNodeType.LAP_TIME)
+    const createdNode = await seedNode(ControllerNodeType.LapTime)
     const lapTimeNode = await getNodeById(createdNode.properties.id)
 
     expect(validateJson(lapTimeNode, LapTimeSchema))

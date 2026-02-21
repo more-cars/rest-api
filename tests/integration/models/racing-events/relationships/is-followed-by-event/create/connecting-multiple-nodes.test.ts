@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A RACING EVENT cannot have multiple ›is-followed-by-event‹ relationships', async () => {
-    const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
     const partnersAmount = 3
-    const partners = await seedNodes(ControllerNodeType.RACING_EVENT, partnersAmount)
+    const partners = await seedNodes(ControllerNodeType.RacingEvent, partnersAmount)
 
     for (const partner of partners) {
         await RacingEvent.createIsFollowedByEventRelationship(racingEvent.properties.id, partner.properties.id)

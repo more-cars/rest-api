@@ -1,8 +1,9 @@
 import express from "express"
 import {unmarshalInputData} from "./marshalling/unmarshalInputData"
-import {marshalNode} from "./marshalling/marshalNode"
 import {CreateLapTimeInput} from "../../../models/node-types/lap-times/types/CreateLapTimeInput"
 import {LapTime} from "../../../models/node-types/lap-times/LapTime"
+import {convertLapTimeModelNodeToControllerNode} from "./convertLapTimeModelNodeToControllerNode"
+import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import type {CreateLapTimeRawInput} from "./types/CreateLapTimeRawInput"
 import {isMandatoryString} from "../../validators/isMandatoryString"
 import {isOptionalString} from "../../validators/isOptionalString"
@@ -20,8 +21,9 @@ export async function create(req: express.Request, res: express.Response) {
     const sanitizedData = sanitize(data as CreateLapTimeInput)
 
     try {
-        const createdNode = await LapTime.create(sanitizedData)
-        const marshalledData = marshalNode(createdNode)
+        const modelNode = await LapTime.create(sanitizedData)
+        const node = convertLapTimeModelNodeToControllerNode(modelNode)
+        const marshalledData = marshalSingleNode(node.fields)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

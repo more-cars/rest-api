@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A RACE TRACK can have multiple ›hosted-racing-event‹ relationships', async () => {
-    const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
+    const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
     const racingEventsAmount = 3
-    const racingEvents = await seedNodes(ControllerNodeType.RACING_EVENT, racingEventsAmount)
+    const racingEvents = await seedNodes(ControllerNodeType.RacingEvent, racingEventsAmount)
 
     for (const racingEvent of racingEvents) {
         await RaceTrack.createHostedRacingEventRelationship(raceTrack.properties.id, racingEvent.properties.id)

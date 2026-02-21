@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A TRACK LAYOUT can have multiple ›has-image‹ relationships', async () => {
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
     const imagesAmount = 3
-    const images = await seedNodes(ControllerNodeType.IMAGE, imagesAmount)
+    const images = await seedNodes(ControllerNodeType.Image, imagesAmount)
 
     for (const image of images) {
         await TrackLayout.createHasImageRelationship(trackLayout.properties.id, image.properties.id)

@@ -5,8 +5,8 @@ import {RacingEvent} from "../../../../../../../src/models/node-types/racing-eve
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›is-followed-by-event‹ relationship again', async () => {
-    const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
-    const partner = await seedNode(ControllerNodeType.RACING_EVENT)
+    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+    const partner = await seedNode(ControllerNodeType.RacingEvent)
 
     await expect(RacingEvent.createIsFollowedByEventRelationship(racingEvent.properties.id, partner.properties.id))
         .resolves

@@ -15,7 +15,7 @@ export async function createHasImageRelation(req: express.Request, res: express.
 
     try {
         const relation = await CarModel.createHasImageRelationship(carModelId, imageId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.IMAGE)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.Image)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

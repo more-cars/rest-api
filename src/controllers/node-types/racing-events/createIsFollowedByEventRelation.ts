@@ -17,7 +17,7 @@ export async function createIsFollowedByEventRelation(req: express.Request, res:
 
     try {
         const relation = await RacingEvent.createIsFollowedByEventRelationship(racingEventId, partnerId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.RACING_EVENT)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.RacingEvent)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

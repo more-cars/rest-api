@@ -11,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Requesting a ›achieved-on-track-layout‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(ControllerNodeType.LAP_TIME, ControllerNodeType.TRACK_LAYOUT, RelationshipType.LapTimeAchievedOnTrackLayout)
+        const expectedRelationship = await seedRelationship(ControllerNodeType.LapTime, ControllerNodeType.TrackLayout, RelationshipType.LapTimeAchievedOnTrackLayout)
         const expectedLapTimeId = expectedRelationship.start_node.properties.id
         const expectedTrackLayoutId = expectedRelationship.end_node.properties.id
         const actualRelationship = await LapTime.getAchievedOnTrackLayoutRelationship(expectedLapTimeId)
@@ -27,7 +27,7 @@ describe('Requesting a ›achieved-on-track-layout‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+        const lapTime = await seedNode(ControllerNodeType.LapTime)
 
         await expect(LapTime.getAchievedOnTrackLayoutRelationship(lapTime.properties.id))
             .rejects

@@ -6,8 +6,8 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 
 describe('Creating a ›has-prime-image‹ relationship', () => {
     test('with valid data', async () => {
-        const brand = await seedNode(ControllerNodeType.BRAND)
-        const image = await seedNode(ControllerNodeType.IMAGE)
+        const brand = await seedNode(ControllerNodeType.Brand)
+        const image = await seedNode(ControllerNodeType.Image)
 
         const createdRelationship = await createRelationship(
             brand.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›has-prime-image‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const brand = await seedNode(ControllerNodeType.BRAND)
+        const brand = await seedNode(ControllerNodeType.Brand)
 
         const createdRelationship = await createRelationship(
             brand.properties.id,

@@ -7,7 +7,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all CAR MODEL nodes" request returns the nodes in correct order', () => {
     test('when there exist no CAR MODEL nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL)
+        await deleteAllNodesOfType(ControllerNodeType.CarModel)
 
         const expectedNodes: CarModelNode[] = []
         const actualNodes = await CarModel.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,10 +17,10 @@ describe('A sorted "get all CAR MODEL nodes" request returns the nodes in correc
     })
 
     test('when there exist CAR MODEL nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL)
-        const nodeA = await seedNode(ControllerNodeType.CAR_MODEL, {name: 'A Node'}) as unknown as unknown as CarModelNode
-        const nodeB = await seedNode(ControllerNodeType.CAR_MODEL, {name: 'B Node'}) as unknown as unknown as CarModelNode
-        const nodeC = await seedNode(ControllerNodeType.CAR_MODEL, {name: 'C Node'}) as unknown as unknown as CarModelNode
+        await deleteAllNodesOfType(ControllerNodeType.CarModel)
+        const nodeA = await seedNode(ControllerNodeType.CarModel, {name: 'A Node'}) as unknown as unknown as CarModelNode
+        const nodeB = await seedNode(ControllerNodeType.CarModel, {name: 'B Node'}) as unknown as unknown as CarModelNode
+        const nodeC = await seedNode(ControllerNodeType.CarModel, {name: 'C Node'}) as unknown as unknown as CarModelNode
 
         const ascNodes = await CarModel.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

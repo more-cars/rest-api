@@ -7,7 +7,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all RACING EVENT nodes" request returns the nodes in correct order', () => {
     test('when there exist no RACING EVENT nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RACING_EVENT)
+        await deleteAllNodesOfType(ControllerNodeType.RacingEvent)
 
         const expectedNodes: RacingEventNode[] = []
         const actualNodes = await RacingEvent.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,14 +17,14 @@ describe('A sorted "get all RACING EVENT nodes" request returns the nodes in cor
     })
 
     test('when there exist RACING EVENT nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RACING_EVENT)
-        const nodeA = await seedNode(ControllerNodeType.RACING_EVENT, {
+        await deleteAllNodesOfType(ControllerNodeType.RacingEvent)
+        const nodeA = await seedNode(ControllerNodeType.RacingEvent, {
             name: 'A Node'
         }) as unknown as RacingEventNode
-        const nodeB = await seedNode(ControllerNodeType.RACING_EVENT, {
+        const nodeB = await seedNode(ControllerNodeType.RacingEvent, {
             name: 'B Node'
         }) as unknown as RacingEventNode
-        const nodeC = await seedNode(ControllerNodeType.RACING_EVENT, {
+        const nodeC = await seedNode(ControllerNodeType.RacingEvent, {
             name: 'C Node'
         }) as unknown as RacingEventNode
 

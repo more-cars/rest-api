@@ -5,8 +5,8 @@ import {RacingEvent} from "../../../../../../../src/models/node-types/racing-eve
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›used-the-track-layout‹ relationship again', async () => {
-    const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
     await expect(RacingEvent.createUsedTheTrackLayoutRelationship(racingEvent.properties.id, trackLayout.properties.id))
         .resolves

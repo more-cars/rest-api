@@ -14,7 +14,7 @@ test('Querying a TRACK LAYOUT that does not exist should return "false"', async 
 })
 
 test('Querying an existing TRACK LAYOUT should return a db node with correct schema', async () => {
-    const createdNode = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+    const createdNode = await seedNode(ControllerNodeType.TrackLayout)
     const trackLayoutNode = await getNodeById(createdNode.properties.id)
 
     expect(validateJson(trackLayoutNode, TrackLayoutSchema))

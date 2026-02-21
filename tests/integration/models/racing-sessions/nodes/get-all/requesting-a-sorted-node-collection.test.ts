@@ -7,7 +7,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all RACING SESSION nodes" request returns the nodes in correct order', () => {
     test('when there exist no RACING SESSION nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RACING_SESSION)
+        await deleteAllNodesOfType(ControllerNodeType.RacingSession)
 
         const expectedNodes: RacingSessionNode[] = []
         const actualNodes = await RacingSession.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,14 +17,14 @@ describe('A sorted "get all RACING SESSION nodes" request returns the nodes in c
     })
 
     test('when there exist RACING SESSION nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RACING_SESSION)
-        const nodeA = await seedNode(ControllerNodeType.RACING_SESSION, {
+        await deleteAllNodesOfType(ControllerNodeType.RacingSession)
+        const nodeA = await seedNode(ControllerNodeType.RacingSession, {
             name: 'A Node'
         }) as unknown as RacingSessionNode
-        const nodeB = await seedNode(ControllerNodeType.RACING_SESSION, {
+        const nodeB = await seedNode(ControllerNodeType.RacingSession, {
             name: 'B Node'
         }) as unknown as RacingSessionNode
-        const nodeC = await seedNode(ControllerNodeType.RACING_SESSION, {
+        const nodeC = await seedNode(ControllerNodeType.RacingSession, {
             name: 'C Node'
         }) as unknown as RacingSessionNode
 

@@ -26,8 +26,8 @@ export const options = {
 }
 
 export function setup() {
-    const gamingPlatformId = createNode(ControllerNodeType.GAMING_PLATFORM)
-    const imageId = createNode(ControllerNodeType.IMAGE)
+    const gamingPlatformId = createNode(ControllerNodeType.GamingPlatform)
+    const imageId = createNode(ControllerNodeType.Image)
 
     return {
         gamingPlatformId,

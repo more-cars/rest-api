@@ -28,13 +28,13 @@ export const options = {
 }
 
 export function setup() {
-    const sessionResultId = createNode(ControllerNodeType.SESSION_RESULT)
+    const sessionResultId = createNode(ControllerNodeType.SessionResult)
     const carModelVariantIds = []
 
     for (let i = 0; i < 310; i++) {
-        const carModelVariant = createNode(ControllerNodeType.CAR_MODEL_VARIANT)
+        const carModelVariant = createNode(ControllerNodeType.CarModelVariant)
         createRelationship(
-            ControllerNodeType.SESSION_RESULT,
+            ControllerNodeType.SessionResult,
             sessionResultId,
             carModelVariant,
             'achieved with car model variant',

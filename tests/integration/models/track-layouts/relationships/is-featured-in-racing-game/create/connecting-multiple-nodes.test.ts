@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A TRACK LAYOUT can have multiple ›is-featured-in-racing-game‹ relationships', async () => {
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
     const racingGamesAmount = 3
-    const racingGames = await seedNodes(ControllerNodeType.RACING_GAME, racingGamesAmount)
+    const racingGames = await seedNodes(ControllerNodeType.RacingGame, racingGamesAmount)
 
     for (const racingGame of racingGames) {
         await TrackLayout.createIsFeaturedInRacingGameRelationship(trackLayout.properties.id, racingGame.properties.id)

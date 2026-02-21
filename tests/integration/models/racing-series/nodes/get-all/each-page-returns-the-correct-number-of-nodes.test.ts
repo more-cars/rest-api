@@ -11,7 +11,7 @@ describe('Each page of a "get all RACING SERIES nodes" request returns the corre
         [2],
         [99],
     ])('when there exist no RACING SERIES nodes (page=$0)', async (page) => {
-        await deleteAllNodesOfType(ControllerNodeType.RACING_SERIES)
+        await deleteAllNodesOfType(ControllerNodeType.RacingSeries)
 
         const expectedNodes: RacingSeriesNode[] = []
         const actualNodes = await RacingSeries.findAll({page})
@@ -24,8 +24,8 @@ describe('Each page of a "get all RACING SERIES nodes" request returns the corre
         [20, 1, 20],
         [5, 2, 0],
     ])('when there exist $0 RACING SERIES nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
-        await deleteAllNodesOfType(ControllerNodeType.RACING_SERIES)
-        await seedNodes(ControllerNodeType.RACING_SERIES, totalNodeAmount)
+        await deleteAllNodesOfType(ControllerNodeType.RacingSeries)
+        await seedNodes(ControllerNodeType.RacingSeries, totalNodeAmount)
 
         const actualNodes = await RacingSeries.findAll({page})
 

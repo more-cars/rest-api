@@ -5,8 +5,8 @@ import {CarModel} from "../../../../../../../src/models/node-types/car-models/Ca
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›has-variant‹ relationship with valid data', async () => {
-    const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
-    const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
+    const carModel = await seedNode(ControllerNodeType.CarModel)
+    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
 
     const createdRelationship = await CarModel.createHasVariantRelationship(carModel.properties.id, carModelVariant.properties.id)
 

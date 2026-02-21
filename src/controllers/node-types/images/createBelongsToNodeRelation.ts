@@ -17,7 +17,7 @@ export async function createBelongsToNodeRelation(req: express.Request, res: exp
 
     try {
         const relation = await Image.createBelongsToNodeRelationship(imageId, partnerNodeId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.BRAND) // TODO determine correct partner node type
+        const marshalledData = marshalRelation(relation, ControllerNodeType.Brand) // TODO determine correct partner node type
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

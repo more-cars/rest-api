@@ -7,7 +7,7 @@ import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A paginated "get all RACING GAME nodes" request returns the correct number of nodes', () => {
     test('when there exist no RACING GAME nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RACING_GAME)
+        await deleteAllNodesOfType(ControllerNodeType.RacingGame)
 
         const expectedNodes: RacingGameNode[] = []
         const actualNodes = await RacingGame.findAll({page: 1})
@@ -17,9 +17,9 @@ describe('A paginated "get all RACING GAME nodes" request returns the correct nu
     })
 
     test('when there exist RACING GAME nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RACING_GAME)
+        await deleteAllNodesOfType(ControllerNodeType.RacingGame)
         const amount = Math.ceil(Math.random() * 20)
-        await seedNodes(ControllerNodeType.RACING_GAME, amount)
+        await seedNodes(ControllerNodeType.RacingGame, amount)
 
         const actualNodes = await RacingGame.findAll({page: 1})
 

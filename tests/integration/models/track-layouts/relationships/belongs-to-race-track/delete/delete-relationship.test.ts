@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›belongs-to-race-track‹ relationship', () => {
     test('TRACK LAYOUT node does not exist', async () => {
-        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
         await expect(TrackLayout.deleteBelongsToRaceTrackRelationship(trackLayout.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›belongs-to-race-track‹ relationship', () => {
     })
 
     test('RACE TRACK node does not exist', async () => {
-        const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
+        const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
 
         await expect(TrackLayout.deleteBelongsToRaceTrackRelationship(-42, raceTrack.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›belongs-to-race-track‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›belongs-to-race-track‹ relationship', async () => {
-        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
-        const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
+        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
+        const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
 
         await expect(TrackLayout.deleteBelongsToRaceTrackRelationship(trackLayout.properties.id, raceTrack.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›belongs-to-race-track‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›belongs-to-race-track‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.TRACK_LAYOUT, ControllerNodeType.RACE_TRACK, RelationshipType.TrackLayoutBelongsToRaceTrack)
+        const seededRelationship = await seedRelationship(ControllerNodeType.TrackLayout, ControllerNodeType.RaceTrack, RelationshipType.TrackLayoutBelongsToRaceTrack)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

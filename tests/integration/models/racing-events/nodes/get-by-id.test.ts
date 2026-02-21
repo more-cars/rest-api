@@ -12,7 +12,7 @@ test('Fetching a RACING EVENT that does not exist should return "false"', async 
 })
 
 test('When the RACING EVENT exists it should be returned', async () => {
-    const expectedRacingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+    const expectedRacingEvent = await seedNode(ControllerNodeType.RacingEvent)
     const actualRacingEvent = await RacingEvent.findById(expectedRacingEvent.properties.id)
 
     expect(actualRacingEvent.attributes)

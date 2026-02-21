@@ -26,8 +26,8 @@ export const options = {
 }
 
 export function setup() {
-    const racingEventId = createNode(ControllerNodeType.RACING_EVENT)
-    const trackLayoutId = createNode(ControllerNodeType.TRACK_LAYOUT)
+    const racingEventId = createNode(ControllerNodeType.RacingEvent)
+    const trackLayoutId = createNode(ControllerNodeType.TrackLayout)
 
     return {
         racingEventId,

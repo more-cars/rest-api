@@ -6,8 +6,8 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 
 describe('Creating a ›has-brand‹ relationship', () => {
     test('with valid data', async () => {
-        const company = await seedNode(ControllerNodeType.COMPANY)
-        const brand = await seedNode(ControllerNodeType.BRAND)
+        const company = await seedNode(ControllerNodeType.Company)
+        const brand = await seedNode(ControllerNodeType.Brand)
 
         const createdRelationship = await createRelationship(
             company.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›has-brand‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const company = await seedNode(ControllerNodeType.COMPANY)
+        const company = await seedNode(ControllerNodeType.Company)
 
         const createdRelationship = await createRelationship(
             company.properties.id,

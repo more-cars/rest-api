@@ -1,11 +1,12 @@
 import express from "express"
-import {SessionResult} from "../../../models/node-types/session-results/SessionResult"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
 import availableProperties from "../../../../specification/properties/SessionResult.json"
+import {SessionResult} from "../../../models/node-types/session-results/SessionResult"
+import {convertSessionResultModelNodeToControllerNode} from "./convertSessionResultModelNodeToControllerNode"
+import {marshalNodeCollection} from "../../nodes/marshalNodeCollection"
 import {InvalidPaginationParams} from "../../../models/types/InvalidPaginationParams"
 import {InvalidSortingParams} from "../../../models/types/InvalidSortingParams"
 import {InvalidFilterParams} from "../../../models/types/InvalidFilterParams"
-import {marshalNodes} from "./marshalling/marshalNodes"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
@@ -13,8 +14,9 @@ import {sendResponse500} from "../../responses/sendResponse500"
 export async function getAll(req: express.Request, res: express.Response) {
     try {
         const params = extractCollectionConstraintParameters(req, availableProperties)
-        const nodes = await SessionResult.findAll(params)
-        const marshalledData = marshalNodes(nodes)
+        const modelNodes = await SessionResult.findAll(params)
+        const nodes = modelNodes.map(node => convertSessionResultModelNodeToControllerNode(node))
+        const marshalledData = marshalNodeCollection(nodes)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

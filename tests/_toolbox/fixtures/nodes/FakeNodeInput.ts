@@ -17,33 +17,33 @@ import {FakeImage} from "./FakeImage"
 
 export function FakeNodeInput(nodeType: ControllerNodeType) {
     switch (nodeType) {
-        case ControllerNodeType.COMPANY:
+        case ControllerNodeType.Company:
             return FakeCompany.dbInput()
-        case ControllerNodeType.BRAND:
+        case ControllerNodeType.Brand:
             return FakeBrand.dbInput()
-        case ControllerNodeType.CAR_MODEL:
+        case ControllerNodeType.CarModel:
             return FakeCarModel.dbInput()
-        case ControllerNodeType.CAR_MODEL_VARIANT:
+        case ControllerNodeType.CarModelVariant:
             return FakeCarModelVariant.dbInput()
-        case ControllerNodeType.RACE_TRACK:
+        case ControllerNodeType.RaceTrack:
             return FakeRaceTrack.dbInput()
-        case ControllerNodeType.TRACK_LAYOUT:
+        case ControllerNodeType.TrackLayout:
             return FakeTrackLayout.dbInput()
-        case ControllerNodeType.RACING_SERIES:
+        case ControllerNodeType.RacingSeries:
             return FakeRacingSeries.dbInput()
-        case ControllerNodeType.RACING_EVENT:
+        case ControllerNodeType.RacingEvent:
             return FakeRacingEvent.dbInput()
-        case ControllerNodeType.RACING_SESSION:
+        case ControllerNodeType.RacingSession:
             return FakeRacingSession.dbInput()
-        case ControllerNodeType.SESSION_RESULT:
+        case ControllerNodeType.SessionResult:
             return FakeSessionResult.dbInput()
-        case ControllerNodeType.LAP_TIME:
+        case ControllerNodeType.LapTime:
             return FakeLapTime.dbInput()
-        case ControllerNodeType.RACING_GAME:
+        case ControllerNodeType.RacingGame:
             return FakeRacingGame.dbInput()
-        case ControllerNodeType.GAMING_PLATFORM:
+        case ControllerNodeType.GamingPlatform:
             return FakeGamingPlatform.dbInput()
-        case ControllerNodeType.IMAGE:
+        case ControllerNodeType.Image:
             return FakeImage.dbInput()
         default:
             assert.fail(`Node type "${nodeType}" is invalid or unknown`)

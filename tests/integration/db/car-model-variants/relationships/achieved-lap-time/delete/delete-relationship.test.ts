@@ -8,7 +8,7 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 
 describe('Trying to delete a ›achieved-lap-time‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.CAR_MODEL_VARIANT, ControllerNodeType.LAP_TIME, RelationshipType.CarModelVariantAchievedLapTime)
+        const seededRelationship = await seedRelationship(ControllerNodeType.CarModelVariant, ControllerNodeType.LapTime, RelationshipType.CarModelVariantAchievedLapTime)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,
@@ -36,8 +36,8 @@ describe('Trying to delete a ›achieved-lap-time‹ relationship', () => {
     })
 
     test('nodes exists, but not the relationship', async () => {
-        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
-        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+        const lapTime = await seedNode(ControllerNodeType.LapTime)
 
         const relationship = await deleteSpecificRelationship(
             carModelVariant.properties.id,

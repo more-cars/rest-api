@@ -7,7 +7,7 @@ import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A paginated "get all IMAGE nodes" request returns the correct number of nodes', () => {
     test('when there exist no IMAGE nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.IMAGE)
+        await deleteAllNodesOfType(ControllerNodeType.Image)
 
         const expectedNodes: ImageNode[] = []
         const actualNodes = await Image.findAll({page: 1})
@@ -17,9 +17,9 @@ describe('A paginated "get all IMAGE nodes" request returns the correct number o
     })
 
     test('when there exist IMAGE nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.IMAGE)
+        await deleteAllNodesOfType(ControllerNodeType.Image)
         const amount = Math.ceil(Math.random() * 20)
-        await seedNodes(ControllerNodeType.IMAGE, amount)
+        await seedNodes(ControllerNodeType.Image, amount)
 
         const actualNodes = await Image.findAll({page: 1})
 

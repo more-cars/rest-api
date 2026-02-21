@@ -5,8 +5,8 @@ import {LapTime} from "../../../../../../../src/models/node-types/lap-times/LapT
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›has-prime-image‹ relationship with valid data', async () => {
-    const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const lapTime = await seedNode(ControllerNodeType.LapTime)
+    const image = await seedNode(ControllerNodeType.Image)
 
     const createdRelationship = await LapTime.createHasPrimeImageRelationship(lapTime.properties.id, image.properties.id)
 

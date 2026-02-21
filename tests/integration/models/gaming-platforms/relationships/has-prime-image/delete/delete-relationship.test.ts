@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›has-prime-image‹ relationship', () => {
     test('GAMING PLATFORM node does not exist', async () => {
-        const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
+        const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
 
         await expect(GamingPlatform.deleteHasPrimeImageRelationship(gamingPlatform.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('IMAGE node does not exist', async () => {
-        const image = await seedNode(ControllerNodeType.IMAGE)
+        const image = await seedNode(ControllerNodeType.Image)
 
         await expect(GamingPlatform.deleteHasPrimeImageRelationship(-42, image.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›has-prime-image‹ relationship', async () => {
-        const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
-        const image = await seedNode(ControllerNodeType.IMAGE)
+        const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
+        const image = await seedNode(ControllerNodeType.Image)
 
         await expect(GamingPlatform.deleteHasPrimeImageRelationship(gamingPlatform.properties.id, image.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-prime-image‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.GAMING_PLATFORM, ControllerNodeType.IMAGE, RelationshipType.GamingPlatformHasPrimeImage)
+        const seededRelationship = await seedRelationship(ControllerNodeType.GamingPlatform, ControllerNodeType.Image, RelationshipType.GamingPlatformHasPrimeImage)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

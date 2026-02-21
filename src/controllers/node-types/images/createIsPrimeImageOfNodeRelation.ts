@@ -17,7 +17,7 @@ export async function createIsPrimeImageOfNodeRelation(req: express.Request, res
 
     try {
         const relation = await Image.createIsPrimeImageOfNodeRelationship(imageId, nodeId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.BRAND) // TODO determine correct partner node type
+        const marshalledData = marshalRelation(relation, ControllerNodeType.Brand) // TODO determine correct partner node type
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

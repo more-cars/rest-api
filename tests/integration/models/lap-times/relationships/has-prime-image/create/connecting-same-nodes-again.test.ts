@@ -5,8 +5,8 @@ import {LapTime} from "../../../../../../../src/models/node-types/lap-times/LapT
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›has-prime-image‹ relationship again', async () => {
-    const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const lapTime = await seedNode(ControllerNodeType.LapTime)
+    const image = await seedNode(ControllerNodeType.Image)
 
     await expect(LapTime.createHasPrimeImageRelationship(lapTime.properties.id, image.properties.id))
         .resolves

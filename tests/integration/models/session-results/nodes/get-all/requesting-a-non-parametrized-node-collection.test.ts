@@ -7,7 +7,7 @@ import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A non-parametrized "get all SESSION RESULT nodes" request returns the correct number of nodes', () => {
     test('when there exist no SESSION RESULT nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.SESSION_RESULT)
+        await deleteAllNodesOfType(ControllerNodeType.SessionResult)
 
         const expectedNodes: SessionResultNode[] = []
         const actualNodes = await SessionResult.findAll()
@@ -17,9 +17,9 @@ describe('A non-parametrized "get all SESSION RESULT nodes" request returns the 
     })
 
     test('when there exist SESSION RESULT nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.SESSION_RESULT)
+        await deleteAllNodesOfType(ControllerNodeType.SessionResult)
         const amount = Math.ceil(Math.random() * 20)
-        await seedNodes(ControllerNodeType.SESSION_RESULT, amount)
+        await seedNodes(ControllerNodeType.SessionResult, amount)
 
         const actualNodes = await SessionResult.findAll()
 

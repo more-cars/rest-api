@@ -8,9 +8,9 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 
 describe('Requesting all ›has-lap-time‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
-        await seedRelationshipForStartNode(sessionResult.properties.id, ControllerNodeType.LAP_TIME, RelationshipType.SessionResultHasLapTime)
-        await seedRelationshipForStartNode(sessionResult.properties.id, ControllerNodeType.LAP_TIME, RelationshipType.SessionResultHasLapTime)
+        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+        await seedRelationshipForStartNode(sessionResult.properties.id, ControllerNodeType.LapTime, RelationshipType.SessionResultHasLapTime)
+        await seedRelationshipForStartNode(sessionResult.properties.id, ControllerNodeType.LapTime, RelationshipType.SessionResultHasLapTime)
 
         const relationships = await SessionResult.getAllHasLapTimeRelationships(sessionResult.properties.id)
 
@@ -19,7 +19,7 @@ describe('Requesting all ›has-lap-time‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
 
         const relationships = await SessionResult.getAllHasLapTimeRelationships(sessionResult.properties.id)
 

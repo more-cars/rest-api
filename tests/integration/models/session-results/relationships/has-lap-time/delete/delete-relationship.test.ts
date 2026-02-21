@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›has-lap-time‹ relationship', () => {
     test('SESSION RESULT node does not exist', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
 
         await expect(SessionResult.deleteHasLapTimeRelationship(sessionResult.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
     })
 
     test('LAP TIME node does not exist', async () => {
-        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+        const lapTime = await seedNode(ControllerNodeType.LapTime)
 
         await expect(SessionResult.deleteHasLapTimeRelationship(-42, lapTime.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›has-lap-time‹ relationship', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
-        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+        const lapTime = await seedNode(ControllerNodeType.LapTime)
 
         await expect(SessionResult.deleteHasLapTimeRelationship(sessionResult.properties.id, lapTime.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-lap-time‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.SESSION_RESULT, ControllerNodeType.LAP_TIME, RelationshipType.SessionResultHasLapTime)
+        const seededRelationship = await seedRelationship(ControllerNodeType.SessionResult, ControllerNodeType.LapTime, RelationshipType.SessionResultHasLapTime)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

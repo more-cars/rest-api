@@ -11,7 +11,7 @@ test('Expecting response "false" when trying to delete a non-existing RACING EVE
 })
 
 test('Expecting response "true" when deleting an existing RACING EVENT', async () => {
-    const node = await seedNode(ControllerNodeType.RACING_EVENT)
+    const node = await seedNode(ControllerNodeType.RacingEvent)
     const success = await deleteNode(node.properties.id)
 
     expect(success)

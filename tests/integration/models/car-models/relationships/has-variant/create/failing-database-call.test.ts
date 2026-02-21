@@ -10,8 +10,8 @@ test('A completely valid request, but the database call fails (e.g. one of the n
         }
     })
 
-    const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
-    const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
+    const carModel = await seedNode(ControllerNodeType.CarModel)
+    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
 
     await expect(CarModel.createHasVariantRelationship(carModel.properties.id, carModelVariant.properties.id))
         .rejects

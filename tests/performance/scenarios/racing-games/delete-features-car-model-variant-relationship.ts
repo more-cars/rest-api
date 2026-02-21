@@ -28,13 +28,13 @@ export const options = {
 }
 
 export function setup() {
-    const racingGameId = createNode(ControllerNodeType.RACING_GAME)
+    const racingGameId = createNode(ControllerNodeType.RacingGame)
     const carModelVariantIds = []
 
     for (let i = 0; i < 310; i++) {
-        const carModelVariant = createNode(ControllerNodeType.CAR_MODEL_VARIANT)
+        const carModelVariant = createNode(ControllerNodeType.CarModelVariant)
         createRelationship(
-            ControllerNodeType.RACING_GAME,
+            ControllerNodeType.RacingGame,
             racingGameId,
             carModelVariant,
             'features car model variant',

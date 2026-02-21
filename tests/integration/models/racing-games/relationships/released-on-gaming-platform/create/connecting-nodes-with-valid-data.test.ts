@@ -5,8 +5,8 @@ import {RacingGame} from "../../../../../../../src/models/node-types/racing-game
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›released-on-gaming-platform‹ relationship with valid data', async () => {
-    const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
-    const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
+    const racingGame = await seedNode(ControllerNodeType.RacingGame)
+    const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
 
     const createdRelationship = await RacingGame.createReleasedOnGamingPlatformRelationship(racingGame.properties.id, gamingPlatform.properties.id)
 

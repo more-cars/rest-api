@@ -34,7 +34,7 @@ export function setup() {
     for (let i = 0; i < 310; i++) {
         const carModel = createCarModel()
         createRelationship(
-            ControllerNodeType.CAR_MODEL,
+            ControllerNodeType.CarModel,
             carModelId,
             carModel,
             'has successor',

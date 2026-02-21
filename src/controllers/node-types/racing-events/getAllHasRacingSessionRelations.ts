@@ -12,7 +12,7 @@ export async function getAllHasRacingSessionRelations(req: express.Request, res:
 
     try {
         const relations = await RacingEvent.getAllHasRacingSessionRelationships(racingEventId)
-        const marshalledData = marshalRelations(relations, ControllerNodeType.RACING_SESSION)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.RacingSession)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

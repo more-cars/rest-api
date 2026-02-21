@@ -8,7 +8,7 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 
 describe('Trying to delete a ›belongs-to-company‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.BRAND, ControllerNodeType.COMPANY, RelationshipType.BrandBelongsToCompany)
+        const seededRelationship = await seedRelationship(ControllerNodeType.Brand, ControllerNodeType.Company, RelationshipType.BrandBelongsToCompany)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,
@@ -36,8 +36,8 @@ describe('Trying to delete a ›belongs-to-company‹ relationship', () => {
     })
 
     test('nodes exists, but not the relationship', async () => {
-        const brand = await seedNode(ControllerNodeType.BRAND)
-        const company = await seedNode(ControllerNodeType.COMPANY)
+        const brand = await seedNode(ControllerNodeType.Brand)
+        const company = await seedNode(ControllerNodeType.Company)
 
         const relationship = await deleteSpecificRelationship(
             brand.properties.id,

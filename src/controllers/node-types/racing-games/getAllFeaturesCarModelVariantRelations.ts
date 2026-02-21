@@ -12,7 +12,7 @@ export async function getAllFeaturesCarModelVariantRelations(req: express.Reques
 
     try {
         const relations = await RacingGame.getAllFeaturesCarModelVariantRelationships(racingGameId)
-        const marshalledData = marshalRelations(relations, ControllerNodeType.CAR_MODEL_VARIANT)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.CarModelVariant)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

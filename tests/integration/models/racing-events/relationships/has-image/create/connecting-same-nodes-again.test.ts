@@ -5,8 +5,8 @@ import {RacingEvent} from "../../../../../../../src/models/node-types/racing-eve
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›has-image‹ relationship again', async () => {
-    const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+    const image = await seedNode(ControllerNodeType.Image)
 
     await expect(RacingEvent.createHasImageRelationship(racingEvent.properties.id, image.properties.id))
         .resolves

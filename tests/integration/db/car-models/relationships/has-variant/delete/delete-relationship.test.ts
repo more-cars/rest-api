@@ -8,7 +8,7 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 
 describe('Trying to delete a ›has-variant‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.CAR_MODEL, ControllerNodeType.CAR_MODEL_VARIANT, RelationshipType.CarModelHasVariant)
+        const seededRelationship = await seedRelationship(ControllerNodeType.CarModel, ControllerNodeType.CarModelVariant, RelationshipType.CarModelHasVariant)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,
@@ -36,8 +36,8 @@ describe('Trying to delete a ›has-variant‹ relationship', () => {
     })
 
     test('nodes exists, but not the relationship', async () => {
-        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
-        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
+        const carModel = await seedNode(ControllerNodeType.CarModel)
+        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
 
         const relationship = await deleteSpecificRelationship(
             carModel.properties.id,

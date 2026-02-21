@@ -11,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Requesting a ›took-place-at-race-track‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(ControllerNodeType.RACING_EVENT, ControllerNodeType.RACE_TRACK, RelationshipType.RacingEventTookPlaceAtRaceTrack)
+        const expectedRelationship = await seedRelationship(ControllerNodeType.RacingEvent, ControllerNodeType.RaceTrack, RelationshipType.RacingEventTookPlaceAtRaceTrack)
         const expectedRacingEventId = expectedRelationship.start_node.properties.id
         const expectedRaceTrackId = expectedRelationship.end_node.properties.id
         const actualRelationship = await RacingEvent.getTookPlaceAtRaceTrackRelationship(expectedRacingEventId)
@@ -27,7 +27,7 @@ describe('Requesting a ›took-place-at-race-track‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
 
         await expect(RacingEvent.getTookPlaceAtRaceTrackRelationship(racingEvent.properties.id))
             .rejects

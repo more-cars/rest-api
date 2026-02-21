@@ -5,8 +5,8 @@ import {CarModelVariant} from "../../../../../../../src/models/node-types/car-mo
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›achieved-session-result‹ relationship with valid data', async () => {
-    const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
-    const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
+    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+    const sessionResult = await seedNode(ControllerNodeType.SessionResult)
 
     const createdRelationship = await CarModelVariant.createAchievedSessionResultRelationship(carModelVariant.properties.id, sessionResult.properties.id)
 

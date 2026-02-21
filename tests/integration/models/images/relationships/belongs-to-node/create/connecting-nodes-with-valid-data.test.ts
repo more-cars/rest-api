@@ -5,8 +5,8 @@ import {Image} from "../../../../../../../src/models/node-types/images/Image"
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›belongs-to-node‹ relationship with valid data', async () => {
-    const image = await seedNode(ControllerNodeType.IMAGE)
-    const brand = await seedNode(ControllerNodeType.BRAND)
+    const image = await seedNode(ControllerNodeType.Image)
+    const brand = await seedNode(ControllerNodeType.Brand)
 
     const createdRelationship = await Image.createBelongsToNodeRelationship(image.properties.id, brand.properties.id)
 

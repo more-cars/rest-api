@@ -11,7 +11,7 @@ describe('Each page of a "get all RACING SESSION nodes" request returns the corr
         [2],
         [99],
     ])('when there exist no RACING SESSION nodes (page=$0)', async (page) => {
-        await deleteAllNodesOfType(ControllerNodeType.RACING_SESSION)
+        await deleteAllNodesOfType(ControllerNodeType.RacingSession)
 
         const expectedNodes: RacingSessionNode[] = []
         const actualNodes = await RacingSession.findAll({page})
@@ -24,8 +24,8 @@ describe('Each page of a "get all RACING SESSION nodes" request returns the corr
         [20, 1, 20],
         [5, 2, 0],
     ])('when there exist $0 RACING SESSION nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
-        await deleteAllNodesOfType(ControllerNodeType.RACING_SESSION)
-        await seedNodes(ControllerNodeType.RACING_SESSION, totalNodeAmount)
+        await deleteAllNodesOfType(ControllerNodeType.RacingSession)
+        await seedNodes(ControllerNodeType.RacingSession, totalNodeAmount)
 
         const actualNodes = await RacingSession.findAll({page})
 

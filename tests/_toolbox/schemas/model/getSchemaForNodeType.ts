@@ -17,33 +17,33 @@ import {ImageSchema} from "../ImageSchema"
 
 export function getSchemaForNodeType(nodeType: ControllerNodeType) {
     switch (nodeType) {
-        case ControllerNodeType.COMPANY:
+        case ControllerNodeType.Company:
             return CompanySchema
-        case ControllerNodeType.BRAND:
+        case ControllerNodeType.Brand:
             return BrandSchema
-        case ControllerNodeType.CAR_MODEL:
+        case ControllerNodeType.CarModel:
             return CarModelSchema
-        case ControllerNodeType.CAR_MODEL_VARIANT:
+        case ControllerNodeType.CarModelVariant:
             return CarModelVariantSchema
-        case ControllerNodeType.RACE_TRACK:
+        case ControllerNodeType.RaceTrack:
             return RaceTrackSchema
-        case ControllerNodeType.TRACK_LAYOUT:
+        case ControllerNodeType.TrackLayout:
             return TrackLayoutSchema
-        case ControllerNodeType.RACING_SERIES:
+        case ControllerNodeType.RacingSeries:
             return RacingSeriesSchema
-        case ControllerNodeType.RACING_EVENT:
+        case ControllerNodeType.RacingEvent:
             return RacingEventSchema
-        case ControllerNodeType.RACING_SESSION:
+        case ControllerNodeType.RacingSession:
             return RacingSessionSchema
-        case ControllerNodeType.SESSION_RESULT:
+        case ControllerNodeType.SessionResult:
             return SessionResultSchema
-        case ControllerNodeType.LAP_TIME:
+        case ControllerNodeType.LapTime:
             return LapTimeSchema
-        case ControllerNodeType.RACING_GAME:
+        case ControllerNodeType.RacingGame:
             return RacingGameSchema
-        case ControllerNodeType.GAMING_PLATFORM:
+        case ControllerNodeType.GamingPlatform:
             return GamingPlatformSchema
-        case ControllerNodeType.IMAGE:
+        case ControllerNodeType.Image:
             return ImageSchema
         default:
             assert.fail(`Node type "${nodeType}" is invalid or unknown`)

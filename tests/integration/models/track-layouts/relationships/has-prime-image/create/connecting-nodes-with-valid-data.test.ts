@@ -5,8 +5,8 @@ import {TrackLayout} from "../../../../../../../src/models/node-types/track-layo
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›has-prime-image‹ relationship with valid data', async () => {
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
+    const image = await seedNode(ControllerNodeType.Image)
 
     const createdRelationship = await TrackLayout.createHasPrimeImageRelationship(trackLayout.properties.id, image.properties.id)
 

@@ -13,7 +13,7 @@ export async function getBelongsToBrandRelation(req: express.Request, res: expre
 
     try {
         const relation = await CarModel.getBelongsToBrandRelationship(carModelId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.BRAND)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.Brand)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

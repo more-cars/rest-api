@@ -5,8 +5,8 @@ import {TrackLayout} from "../../../../../../../src/models/node-types/track-layo
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›was-used-by-racing-event‹ relationship again', async () => {
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
-    const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
+    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
 
     await expect(TrackLayout.createWasUsedByRacingEventRelationship(trackLayout.properties.id, racingEvent.properties.id))
         .resolves

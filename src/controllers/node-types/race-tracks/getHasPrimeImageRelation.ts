@@ -13,7 +13,7 @@ export async function getHasPrimeImageRelation(req: express.Request, res: expres
 
     try {
         const relation = await RaceTrack.getHasPrimeImageRelationship(raceTrackId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.IMAGE)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.Image)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

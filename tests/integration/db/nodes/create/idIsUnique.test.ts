@@ -4,9 +4,9 @@ import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/Con
 import {removeDuplicates} from "../../../../_toolbox/removeDuplicates"
 
 test('Each node is created with a different ID', async () => {
-    const brands = await seedNodes(ControllerNodeType.BRAND, 20)
-    const carModels = await seedNodes(ControllerNodeType.CAR_MODEL, 20)
-    const images = await seedNodes(ControllerNodeType.IMAGE, 20); // DO NOT REMOVE THIS SEMICOLON!
+    const brands = await seedNodes(ControllerNodeType.Brand, 20)
+    const carModels = await seedNodes(ControllerNodeType.CarModel, 20)
+    const images = await seedNodes(ControllerNodeType.Image, 20); // DO NOT REMOVE THIS SEMICOLON!
 
     [brands, carModels, images].forEach(nodes => {
         const extractedIds = nodes.map(node => node.properties.id)

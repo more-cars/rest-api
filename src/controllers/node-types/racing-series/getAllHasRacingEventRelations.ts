@@ -12,7 +12,7 @@ export async function getAllHasRacingEventRelations(req: express.Request, res: e
 
     try {
         const relations = await RacingSeries.getAllHasRacingEventRelationships(racingSeriesId)
-        const marshalledData = marshalRelations(relations, ControllerNodeType.RACING_EVENT)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.RacingEvent)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

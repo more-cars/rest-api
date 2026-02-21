@@ -12,7 +12,7 @@ export async function getAllHasVariantRelations(req: express.Request, res: expre
 
     try {
         const relations = await CarModel.getAllHasVariantRelationships(carModelId)
-        const marshalledData = marshalRelations(relations, ControllerNodeType.CAR_MODEL_VARIANT)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.CarModelVariant)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

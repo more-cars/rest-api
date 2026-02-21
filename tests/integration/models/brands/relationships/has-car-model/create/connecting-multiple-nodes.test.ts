@@ -8,9 +8,9 @@ import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 
 test('A BRAND can have multiple ›has-car-model‹ relationships', async () => {
-    const brand = await seedNode(ControllerNodeType.BRAND)
+    const brand = await seedNode(ControllerNodeType.Brand)
     const carModelAmount = 3
-    const carModels = await seedNodes(ControllerNodeType.CAR_MODEL, carModelAmount)
+    const carModels = await seedNodes(ControllerNodeType.CarModel, carModelAmount)
 
     for (const carModel of carModels) {
         await Brand.createHasCarModelRelationship(brand.properties.id, carModel.properties.id)

@@ -15,7 +15,7 @@ export async function createReleasedOnGamingPlatformRelation(req: express.Reques
 
     try {
         const relation = await RacingGame.createReleasedOnGamingPlatformRelationship(racingGameId, gamingPlatformId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.GAMING_PLATFORM)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.GamingPlatform)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

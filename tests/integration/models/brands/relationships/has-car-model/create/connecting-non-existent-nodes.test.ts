@@ -5,8 +5,8 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 
 test('Trying to create a ›has-car-model‹ relationship with nodes that do not exist', async () => {
-    const brand = await seedNode(ControllerNodeType.BRAND)
-    const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
+    const brand = await seedNode(ControllerNodeType.Brand)
+    const carModel = await seedNode(ControllerNodeType.CarModel)
 
     await expect(Brand.createHasCarModelRelationship(-42, carModel.properties.id))
         .rejects

@@ -7,7 +7,7 @@ import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A paginated "get all CAR MODEL nodes" request returns the correct number of nodes', () => {
     test('when there exist no CAR MODEL nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL)
+        await deleteAllNodesOfType(ControllerNodeType.CarModel)
 
         const expectedNodes: CarModelNode[] = []
         const actualNodes = await CarModel.findAll({page: 1})
@@ -17,9 +17,9 @@ describe('A paginated "get all CAR MODEL nodes" request returns the correct numb
     })
 
     test('when there exist CAR MODEL nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL)
+        await deleteAllNodesOfType(ControllerNodeType.CarModel)
         const amount = Math.ceil(Math.random() * 20)
-        await seedNodes(ControllerNodeType.CAR_MODEL, amount)
+        await seedNodes(ControllerNodeType.CarModel, amount)
 
         const actualNodes = await CarModel.findAll({page: 1})
 

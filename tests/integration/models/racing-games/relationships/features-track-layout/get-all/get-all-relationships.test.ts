@@ -8,9 +8,9 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 
 describe('Requesting all ›features-track-layout‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
-        await seedRelationshipForStartNode(racingGame.properties.id, ControllerNodeType.TRACK_LAYOUT, RelationshipType.RacingGameFeaturesTrackLayout)
-        await seedRelationshipForStartNode(racingGame.properties.id, ControllerNodeType.TRACK_LAYOUT, RelationshipType.RacingGameFeaturesTrackLayout)
+        const racingGame = await seedNode(ControllerNodeType.RacingGame)
+        await seedRelationshipForStartNode(racingGame.properties.id, ControllerNodeType.TrackLayout, RelationshipType.RacingGameFeaturesTrackLayout)
+        await seedRelationshipForStartNode(racingGame.properties.id, ControllerNodeType.TrackLayout, RelationshipType.RacingGameFeaturesTrackLayout)
 
         const relationships = await RacingGame.getAllFeaturesTrackLayoutRelationships(racingGame.properties.id)
 
@@ -19,7 +19,7 @@ describe('Requesting all ›features-track-layout‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
+        const racingGame = await seedNode(ControllerNodeType.RacingGame)
 
         const relationships = await RacingGame.getAllFeaturesTrackLayoutRelationships(racingGame.properties.id)
 

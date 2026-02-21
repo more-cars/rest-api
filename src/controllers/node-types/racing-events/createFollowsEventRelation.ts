@@ -17,7 +17,7 @@ export async function createFollowsEventRelation(req: express.Request, res: expr
 
     try {
         const relation = await RacingEvent.createFollowsEventRelationship(racingEventId, partnerId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.RACING_EVENT)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.RacingEvent)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

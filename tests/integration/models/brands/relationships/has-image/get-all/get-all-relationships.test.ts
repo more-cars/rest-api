@@ -8,9 +8,9 @@ import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const brand = await seedNode(ControllerNodeType.BRAND)
-        await seedRelationshipForStartNode(brand.properties.id, ControllerNodeType.IMAGE, RelationshipType.BrandHasImage)
-        await seedRelationshipForStartNode(brand.properties.id, ControllerNodeType.IMAGE, RelationshipType.BrandHasImage)
+        const brand = await seedNode(ControllerNodeType.Brand)
+        await seedRelationshipForStartNode(brand.properties.id, ControllerNodeType.Image, RelationshipType.BrandHasImage)
+        await seedRelationshipForStartNode(brand.properties.id, ControllerNodeType.Image, RelationshipType.BrandHasImage)
 
         const relationships = await Brand.getAllHasImageRelationships(brand.properties.id)
 
@@ -19,7 +19,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const brand = await seedNode(ControllerNodeType.BRAND)
+        const brand = await seedNode(ControllerNodeType.Brand)
 
         const relationships = await Brand.getAllHasImageRelationships(brand.properties.id)
 

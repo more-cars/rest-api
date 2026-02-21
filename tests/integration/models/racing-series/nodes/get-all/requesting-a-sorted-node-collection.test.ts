@@ -7,7 +7,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all RACING SERIES nodes" request returns the nodes in correct order', () => {
     test('when there exist no RACING SERIES nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RACING_SERIES)
+        await deleteAllNodesOfType(ControllerNodeType.RacingSeries)
 
         const expectedNodes: RacingSeriesNode[] = []
         const actualNodes = await RacingSeries.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,14 +17,14 @@ describe('A sorted "get all RACING SERIES nodes" request returns the nodes in co
     })
 
     test('when there exist racing series nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RACING_SERIES)
-        const nodeA = await seedNode(ControllerNodeType.RACING_SERIES, {
+        await deleteAllNodesOfType(ControllerNodeType.RacingSeries)
+        const nodeA = await seedNode(ControllerNodeType.RacingSeries, {
             name: 'A Node'
         }) as unknown as RacingSeriesNode
-        const nodeB = await seedNode(ControllerNodeType.RACING_SERIES, {
+        const nodeB = await seedNode(ControllerNodeType.RacingSeries, {
             name: 'B Node'
         }) as unknown as RacingSeriesNode
-        const nodeC = await seedNode(ControllerNodeType.RACING_SERIES, {
+        const nodeC = await seedNode(ControllerNodeType.RacingSeries, {
             name: 'C Node'
         }) as unknown as RacingSeriesNode
 

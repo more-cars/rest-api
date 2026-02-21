@@ -8,7 +8,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A filtered "get all IMAGE nodes" request returns only the matching nodes', () => {
     test('when there exist no IMAGE nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.IMAGE)
+        await deleteAllNodesOfType(ControllerNodeType.Image)
 
         const expectedNodes: ImageNode[] = []
         const actualNodes = await Image.findAll({
@@ -22,12 +22,12 @@ describe('A filtered "get all IMAGE nodes" request returns only the matching nod
     })
 
     test('when there exist IMAGE nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.IMAGE)
-        const nodeA = await seedNode(ControllerNodeType.IMAGE, {
+        await deleteAllNodesOfType(ControllerNodeType.Image)
+        const nodeA = await seedNode(ControllerNodeType.Image, {
             name: 'A Node'
         }) as unknown as ImageNode
-        await seedNode(ControllerNodeType.IMAGE, {name: 'B Node'})
-        await seedNode(ControllerNodeType.IMAGE, {name: 'C Node'})
+        await seedNode(ControllerNodeType.Image, {name: 'B Node'})
+        await seedNode(ControllerNodeType.Image, {name: 'C Node'})
 
         const filteredNodes = await Image.findAll({
             filterByProperty: 'name',

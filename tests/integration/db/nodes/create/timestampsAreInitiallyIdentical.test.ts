@@ -9,11 +9,11 @@ import type {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/t
 import FakeImageFull from "../../../../_toolbox/fixtures/nodes/FakeImageFull"
 
 test('Timestamps are identical when creating a node', async () => {
-    const createdBrand = await createBrandNode(FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate)
+    const createdBrand = await createBrandNode(FakeNodeInput(ControllerNodeType.Brand) as InputBrandCreate)
     expect(createdBrand.properties.created_at)
         .toEqual(createdBrand.properties.updated_at)
 
-    const createdCarModel = await createCarModelNode(FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate)
+    const createdCarModel = await createCarModelNode(FakeNodeInput(ControllerNodeType.CarModel) as InputCarModelCreate)
     expect(createdCarModel.properties.created_at)
         .toEqual(createdCarModel.properties.updated_at)
 

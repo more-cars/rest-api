@@ -11,7 +11,7 @@ describe('Each page of a "get all GAMING PLATFORM nodes" request returns the cor
         [2],
         [99],
     ])('when there exist no GAMING PLATFORM nodes (page=$0)', async (page) => {
-        await deleteAllNodesOfType(ControllerNodeType.GAMING_PLATFORM)
+        await deleteAllNodesOfType(ControllerNodeType.GamingPlatform)
 
         const expectedNodes: GamingPlatformNode[] = []
         const actualNodes = await GamingPlatform.findAll({page})
@@ -24,8 +24,8 @@ describe('Each page of a "get all GAMING PLATFORM nodes" request returns the cor
         [20, 1, 20],
         [5, 2, 0],
     ])('when there exist $0 GAMING PLATFORM nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
-        await deleteAllNodesOfType(ControllerNodeType.GAMING_PLATFORM)
-        await seedNodes(ControllerNodeType.GAMING_PLATFORM, totalNodeAmount)
+        await deleteAllNodesOfType(ControllerNodeType.GamingPlatform)
+        await seedNodes(ControllerNodeType.GamingPlatform, totalNodeAmount)
 
         const actualNodes = await GamingPlatform.findAll({page})
 

@@ -10,7 +10,7 @@ import type {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/t
 import type {InputImageCreate} from "../../../../../src/db/nodes/images/types/InputImageCreate"
 
 test('Timestamps are added when creating a node', async () => {
-    const createdBrand = await Brand.create(FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate)
+    const createdBrand = await Brand.create(FakeNodeInput(ControllerNodeType.Brand) as InputBrandCreate)
     expect(createdBrand.attributes)
         .toHaveProperty('created_at')
     expect(moment(createdBrand.attributes.created_at).isValid())
@@ -20,7 +20,7 @@ test('Timestamps are added when creating a node', async () => {
     expect(moment(createdBrand.attributes.updated_at).isValid())
         .toEqual(true)
 
-    const createdCarModel = await CarModel.create(FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate)
+    const createdCarModel = await CarModel.create(FakeNodeInput(ControllerNodeType.CarModel) as InputCarModelCreate)
     expect(createdCarModel.attributes)
         .toHaveProperty('created_at')
     expect(moment(createdCarModel.attributes.created_at).isValid())
@@ -30,7 +30,7 @@ test('Timestamps are added when creating a node', async () => {
     expect(moment(createdCarModel.attributes.updated_at).isValid())
         .toEqual(true)
 
-    const createdImage = await Image.create(FakeNodeInput(ControllerNodeType.IMAGE) as InputImageCreate)
+    const createdImage = await Image.create(FakeNodeInput(ControllerNodeType.Image) as InputImageCreate)
     expect(createdImage.attributes)
         .toHaveProperty('created_at')
     expect(moment(createdImage.attributes.created_at).isValid())
@@ -42,15 +42,15 @@ test('Timestamps are added when creating a node', async () => {
 })
 
 test('Timestamps have valid dates', async () => {
-    const createdBrand = await Brand.create(FakeNodeInput(ControllerNodeType.BRAND) as InputBrandCreate)
+    const createdBrand = await Brand.create(FakeNodeInput(ControllerNodeType.Brand) as InputBrandCreate)
     expect(moment(createdBrand.attributes.created_at).isValid())
     expect(moment(createdBrand.attributes.updated_at).isValid())
 
-    const createdCarModel = await CarModel.create(FakeNodeInput(ControllerNodeType.CAR_MODEL) as InputCarModelCreate)
+    const createdCarModel = await CarModel.create(FakeNodeInput(ControllerNodeType.CarModel) as InputCarModelCreate)
     expect(moment(createdCarModel.attributes.created_at).isValid())
     expect(moment(createdCarModel.attributes.updated_at).isValid())
 
-    const createdImage = await Image.create(FakeNodeInput(ControllerNodeType.IMAGE) as InputImageCreate)
+    const createdImage = await Image.create(FakeNodeInput(ControllerNodeType.Image) as InputImageCreate)
     expect(moment(createdImage.attributes.created_at).isValid())
     expect(moment(createdImage.attributes.updated_at).isValid())
 })

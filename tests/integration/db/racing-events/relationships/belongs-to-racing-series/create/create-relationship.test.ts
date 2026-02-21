@@ -6,8 +6,8 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 
 describe('Creating a ›belongs-to-racing-series‹ relationship', () => {
     test('with valid data', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
-        const racingSeries = await seedNode(ControllerNodeType.RACING_SERIES)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+        const racingSeries = await seedNode(ControllerNodeType.RacingSeries)
 
         const createdRelationship = await createRelationship(
             racingEvent.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›belongs-to-racing-series‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
 
         const createdRelationship = await createRelationship(
             racingEvent.properties.id,

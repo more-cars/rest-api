@@ -5,8 +5,8 @@ import {CarModelVariant} from "../../../../../../../src/models/node-types/car-mo
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›achieved-lap-time‹ relationship with nodes that do not exist', async () => {
-    const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
-    const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+    const lapTime = await seedNode(ControllerNodeType.LapTime)
 
     await expect(CarModelVariant.createAchievedLapTimeRelationship(-42, lapTime.properties.id))
         .rejects

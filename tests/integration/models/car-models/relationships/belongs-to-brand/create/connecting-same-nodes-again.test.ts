@@ -5,8 +5,8 @@ import {CarModel} from "../../../../../../../src/models/node-types/car-models/Ca
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›belongs-to-brand‹ relationship again', async () => {
-    const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
-    const brand = await seedNode(ControllerNodeType.BRAND)
+    const carModel = await seedNode(ControllerNodeType.CarModel)
+    const brand = await seedNode(ControllerNodeType.Brand)
 
     await expect(CarModel.createBelongsToBrandRelationship(carModel.properties.id, brand.properties.id))
         .resolves

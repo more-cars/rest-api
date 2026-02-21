@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›has-racing-session‹ relationship', () => {
     test('RACING EVENT node does not exist', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
 
         await expect(RacingEvent.deleteHasRacingSessionRelationship(racingEvent.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›has-racing-session‹ relationship', () => {
     })
 
     test('RACING SESSION node does not exist', async () => {
-        const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
+        const racingSession = await seedNode(ControllerNodeType.RacingSession)
 
         await expect(RacingEvent.deleteHasRacingSessionRelationship(-42, racingSession.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›has-racing-session‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›has-racing-session‹ relationship', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
-        const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+        const racingSession = await seedNode(ControllerNodeType.RacingSession)
 
         await expect(RacingEvent.deleteHasRacingSessionRelationship(racingEvent.properties.id, racingSession.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›has-racing-session‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-racing-session‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.RACING_EVENT, ControllerNodeType.RACING_SESSION, RelationshipType.RacingEventHasRacingSession)
+        const seededRelationship = await seedRelationship(ControllerNodeType.RacingEvent, ControllerNodeType.RacingSession, RelationshipType.RacingEventHasRacingSession)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

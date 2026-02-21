@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›has-lap-time‹ relationship', () => {
     test('TRACK LAYOUT node does not exist', async () => {
-        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
         await expect(TrackLayout.deleteHasLapTimeRelationship(trackLayout.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
     })
 
     test('LAP TIME node does not exist', async () => {
-        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+        const lapTime = await seedNode(ControllerNodeType.LapTime)
 
         await expect(TrackLayout.deleteHasLapTimeRelationship(-42, lapTime.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›has-lap-time‹ relationship', async () => {
-        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
-        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
+        const lapTime = await seedNode(ControllerNodeType.LapTime)
 
         await expect(TrackLayout.deleteHasLapTimeRelationship(trackLayout.properties.id, lapTime.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-lap-time‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.TRACK_LAYOUT, ControllerNodeType.LAP_TIME, RelationshipType.TrackLayoutHasLapTime)
+        const seededRelationship = await seedRelationship(ControllerNodeType.TrackLayout, ControllerNodeType.LapTime, RelationshipType.TrackLayoutHasLapTime)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

@@ -7,7 +7,7 @@ import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 describe('A non-parametrized "get all CAR MODEL nodes" request returns the correct number of nodes', () => {
     test('when there exist no CAR MODEL nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL)
+        await deleteAllNodesOfType(ControllerNodeType.CarModel)
 
         const expectedNodes: CarModelNode[] = []
         const actualNodes = await CarModel.findAll()
@@ -17,9 +17,9 @@ describe('A non-parametrized "get all CAR MODEL nodes" request returns the corre
     })
 
     test('when there exist CAR MODEL nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL)
+        await deleteAllNodesOfType(ControllerNodeType.CarModel)
         const amount = Math.ceil(Math.random() * 20)
-        await seedNodes(ControllerNodeType.CAR_MODEL, amount)
+        await seedNodes(ControllerNodeType.CarModel, amount)
 
         const actualNodes = await CarModel.findAll()
 

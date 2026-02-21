@@ -10,8 +10,8 @@ test('A completely valid request, but the database call fails (e.g. one of the n
         }
     })
 
-    const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
-    const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+    const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+    const lapTime = await seedNode(ControllerNodeType.LapTime)
 
     await expect(SessionResult.createHasLapTimeRelationship(sessionResult.properties.id, lapTime.properties.id))
         .rejects

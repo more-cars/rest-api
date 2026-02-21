@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›was-used-by-racing-event‹ relationship', () => {
     test('TRACK LAYOUT node does not exist', async () => {
-        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
         await expect(TrackLayout.deleteWasUsedByRacingEventRelationship(trackLayout.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›was-used-by-racing-event‹ relationship', () => {
     })
 
     test('RACING EVENT node does not exist', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
 
         await expect(TrackLayout.deleteWasUsedByRacingEventRelationship(-42, racingEvent.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›was-used-by-racing-event‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›was-used-by-racing-event‹ relationship', async () => {
-        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
 
         await expect(TrackLayout.deleteWasUsedByRacingEventRelationship(trackLayout.properties.id, racingEvent.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›was-used-by-racing-event‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›was-used-by-racing-event‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.TRACK_LAYOUT, ControllerNodeType.RACING_EVENT, RelationshipType.TrackLayoutWasUsedByRacingEvent)
+        const seededRelationship = await seedRelationship(ControllerNodeType.TrackLayout, ControllerNodeType.RacingEvent, RelationshipType.TrackLayoutWasUsedByRacingEvent)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

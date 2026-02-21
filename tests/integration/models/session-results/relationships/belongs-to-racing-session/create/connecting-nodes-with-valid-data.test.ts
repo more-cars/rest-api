@@ -5,8 +5,8 @@ import {SessionResult} from "../../../../../../../src/models/node-types/session-
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›belongs-to-racing-session‹ relationship with valid data', async () => {
-    const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
-    const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
+    const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+    const racingSession = await seedNode(ControllerNodeType.RacingSession)
 
     const createdRelationship = await SessionResult.createBelongsToRacingSessionRelationship(sessionResult.properties.id, racingSession.properties.id)
 

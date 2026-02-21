@@ -11,7 +11,7 @@ describe('Each page of a "get all RACE TRACK nodes" request returns the correct 
         [2],
         [99],
     ])('when there exist no RACE TRACK nodes (page=$0)', async (page) => {
-        await deleteAllNodesOfType(ControllerNodeType.RACE_TRACK)
+        await deleteAllNodesOfType(ControllerNodeType.RaceTrack)
 
         const expectedNodes: RaceTrackNode[] = []
         const actualNodes = await RaceTrack.findAll({page})
@@ -24,8 +24,8 @@ describe('Each page of a "get all RACE TRACK nodes" request returns the correct 
         [20, 1, 20],
         [5, 2, 0],
     ])('when there exist $0 RACE TRACK nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
-        await deleteAllNodesOfType(ControllerNodeType.RACE_TRACK)
-        await seedNodes(ControllerNodeType.RACE_TRACK, totalNodeAmount)
+        await deleteAllNodesOfType(ControllerNodeType.RaceTrack)
+        await seedNodes(ControllerNodeType.RaceTrack, totalNodeAmount)
 
         const actualNodes = await RaceTrack.findAll({page})
 

@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A TRACK LAYOUT cannot have multiple ›belongs-to-race-track‹ relationships', async () => {
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
     const raceTracksAmount = 3
-    const raceTracks = await seedNodes(ControllerNodeType.RACE_TRACK, raceTracksAmount)
+    const raceTracks = await seedNodes(ControllerNodeType.RaceTrack, raceTracksAmount)
 
     for (const raceTrack of raceTracks) {
         await TrackLayout.createBelongsToRaceTrackRelationship(trackLayout.properties.id, raceTrack.properties.id)

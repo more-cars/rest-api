@@ -8,9 +8,9 @@ import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Requesting all ›has-variant‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
-        await seedRelationshipForStartNode(carModel.properties.id, ControllerNodeType.CAR_MODEL_VARIANT, RelationshipType.CarModelHasVariant)
-        await seedRelationshipForStartNode(carModel.properties.id, ControllerNodeType.CAR_MODEL_VARIANT, RelationshipType.CarModelHasVariant)
+        const carModel = await seedNode(ControllerNodeType.CarModel)
+        await seedRelationshipForStartNode(carModel.properties.id, ControllerNodeType.CarModelVariant, RelationshipType.CarModelHasVariant)
+        await seedRelationshipForStartNode(carModel.properties.id, ControllerNodeType.CarModelVariant, RelationshipType.CarModelHasVariant)
 
         const relationships = await getRelationshipCollection(
             carModel.properties.id,
@@ -23,7 +23,7 @@ describe('Requesting all ›has-variant‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
+        const carModel = await seedNode(ControllerNodeType.CarModel)
 
         const relationships = await getRelationshipCollection(
             carModel.properties.id,

@@ -5,8 +5,8 @@ import {ControllerNodeType} from "../../../../src/controllers/nodes/types/Contro
 
 When('the user creates a relationship',
     async () => {
-        const brand = await seedNode(ControllerNodeType.BRAND)
-        const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
+        const brand = await seedNode(ControllerNodeType.Brand)
+        const carModel = await seedNode(ControllerNodeType.CarModel)
 
         const response = await axios
             .post(`${process.env.API_URL}/brands/${brand.properties.id}/has-car-model/${carModel.properties.id}`)

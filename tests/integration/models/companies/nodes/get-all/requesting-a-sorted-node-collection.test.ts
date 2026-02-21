@@ -7,7 +7,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('A sorted "get all COMPANY nodes" request returns the nodes in correct order', () => {
     test('when there exist no COMPANY nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.COMPANY)
+        await deleteAllNodesOfType(ControllerNodeType.Company)
 
         const expectedNodes: CompanyNode[] = []
         const actualNodes = await Company.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,10 +17,10 @@ describe('A sorted "get all COMPANY nodes" request returns the nodes in correct 
     })
 
     test('when there exist COMPANY nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.COMPANY)
-        const nodeA = await seedNode(ControllerNodeType.COMPANY, {name: 'A Node'}) as unknown as CompanyNode
-        const nodeB = await seedNode(ControllerNodeType.COMPANY, {name: 'B Node'}) as unknown as CompanyNode
-        const nodeC = await seedNode(ControllerNodeType.COMPANY, {name: 'C Node'}) as unknown as CompanyNode
+        await deleteAllNodesOfType(ControllerNodeType.Company)
+        const nodeA = await seedNode(ControllerNodeType.Company, {name: 'A Node'}) as unknown as CompanyNode
+        const nodeB = await seedNode(ControllerNodeType.Company, {name: 'B Node'}) as unknown as CompanyNode
+        const nodeC = await seedNode(ControllerNodeType.Company, {name: 'C Node'}) as unknown as CompanyNode
 
         const ascNodes = await Company.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

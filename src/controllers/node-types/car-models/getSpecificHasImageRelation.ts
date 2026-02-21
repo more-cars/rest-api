@@ -14,7 +14,7 @@ export async function getSpecificHasImageRelation(req: express.Request, res: exp
 
     try {
         const relation = await CarModel.getSpecificHasImageRelationship(carModelId, imageId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.IMAGE)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.Image)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

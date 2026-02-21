@@ -5,8 +5,8 @@ import {CarModel} from "../../../../../../../src/models/node-types/car-models/Ca
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›has-successor‹ relationship with nodes that do not exist', async () => {
-    const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
-    const partnerNode = await seedNode(ControllerNodeType.CAR_MODEL)
+    const carModel = await seedNode(ControllerNodeType.CarModel)
+    const partnerNode = await seedNode(ControllerNodeType.CarModel)
 
     await expect(CarModel.createHasSuccessorRelationship(-42, partnerNode.properties.id))
         .rejects

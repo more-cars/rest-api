@@ -27,10 +27,10 @@ export const options = {
 }
 
 export function setup() {
-    const sessionResultId = createNode(ControllerNodeType.SESSION_RESULT)
-    const imageId = createNode(ControllerNodeType.IMAGE)
+    const sessionResultId = createNode(ControllerNodeType.SessionResult)
+    const imageId = createNode(ControllerNodeType.Image)
     createRelationship(
-        ControllerNodeType.SESSION_RESULT,
+        ControllerNodeType.SessionResult,
         sessionResultId,
         imageId,
         'has prime image',

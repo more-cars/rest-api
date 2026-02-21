@@ -11,7 +11,7 @@ describe('Each page of a "get all CAR MODEL nodes" request returns the correct n
         [2],
         [99],
     ])('when there exist no CAR MODEL nodes (page=$0)', async (page) => {
-        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL)
+        await deleteAllNodesOfType(ControllerNodeType.CarModel)
 
         const expectedNodes: CarModelNode[] = []
         const actualNodes = await CarModel.findAll({page})
@@ -24,8 +24,8 @@ describe('Each page of a "get all CAR MODEL nodes" request returns the correct n
         [20, 1, 20],
         [5, 2, 0],
     ])('when there exist $0 CAR MODEL nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
-        await deleteAllNodesOfType(ControllerNodeType.CAR_MODEL)
-        await seedNodes(ControllerNodeType.CAR_MODEL, totalNodeAmount)
+        await deleteAllNodesOfType(ControllerNodeType.CarModel)
+        await seedNodes(ControllerNodeType.CarModel, totalNodeAmount)
 
         const expectedNodes = await CarModel.findAll({page})
 

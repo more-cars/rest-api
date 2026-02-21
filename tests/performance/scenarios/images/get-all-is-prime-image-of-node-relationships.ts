@@ -27,10 +27,10 @@ export const options = {
 }
 
 export function setup() {
-    const imageId = createNode(ControllerNodeType.IMAGE)
-    const nodeId = createNode(ControllerNodeType.COMPANY)
+    const imageId = createNode(ControllerNodeType.Image)
+    const nodeId = createNode(ControllerNodeType.Company)
     createRelationship(
-        ControllerNodeType.IMAGE,
+        ControllerNodeType.Image,
         imageId,
         nodeId,
         'is prime image of node',

@@ -12,7 +12,7 @@ test('Fetching a car model that does not exist should return "false"', async () 
 })
 
 test('When the car model exists it should be returned', async () => {
-    const expectedCarModel = await seedNode(ControllerNodeType.CAR_MODEL)
+    const expectedCarModel = await seedNode(ControllerNodeType.CarModel)
     const actualCarModel = await CarModel.findById(expectedCarModel.properties.id)
 
     expect(actualCarModel.attributes)

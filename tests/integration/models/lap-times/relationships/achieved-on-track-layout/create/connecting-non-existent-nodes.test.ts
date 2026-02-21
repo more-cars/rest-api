@@ -5,8 +5,8 @@ import {LapTime} from "../../../../../../../src/models/node-types/lap-times/LapT
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›achieved-on-track-layout‹ relationship with nodes that do not exist', async () => {
-    const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+    const lapTime = await seedNode(ControllerNodeType.LapTime)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
     await expect(LapTime.createAchievedOnTrackLayoutRelationship(-42, trackLayout.properties.id))
         .rejects

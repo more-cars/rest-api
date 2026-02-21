@@ -10,8 +10,8 @@ test('A completely valid request, but the database call fails (e.g. one of the n
         }
     })
 
-    const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const lapTime = await seedNode(ControllerNodeType.LapTime)
+    const image = await seedNode(ControllerNodeType.Image)
 
     await expect(LapTime.createHasImageRelationship(lapTime.properties.id, image.properties.id))
         .rejects

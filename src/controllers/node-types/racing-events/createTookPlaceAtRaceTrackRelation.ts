@@ -16,7 +16,7 @@ export async function createTookPlaceAtRaceTrackRelation(req: express.Request, r
 
     try {
         const relation = await RacingEvent.createTookPlaceAtRaceTrackRelationship(racingEventId, raceTrackId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.RACE_TRACK)
+        const marshalledData = marshalRelation(relation, ControllerNodeType.RaceTrack)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

@@ -5,8 +5,8 @@ import {CarModel} from "../../../../../../../src/models/node-types/car-models/Ca
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›is-successor-of‹ relationship with valid data', async () => {
-    const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
-    const partner = await seedNode(ControllerNodeType.CAR_MODEL)
+    const carModel = await seedNode(ControllerNodeType.CarModel)
+    const partner = await seedNode(ControllerNodeType.CarModel)
 
     const createdRelationship = await CarModel.createIsSuccessorOfRelationship(carModel.properties.id, partner.properties.id)
 

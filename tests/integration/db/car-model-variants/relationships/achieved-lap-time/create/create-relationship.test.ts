@@ -6,8 +6,8 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 
 describe('Creating a ›achieved-lap-time‹ relationship', () => {
     test('with valid data', async () => {
-        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
-        const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
+        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+        const lapTime = await seedNode(ControllerNodeType.LapTime)
 
         const createdRelationship = await createRelationship(
             carModelVariant.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›achieved-lap-time‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
+        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
 
         const createdRelationship = await createRelationship(
             carModelVariant.properties.id,

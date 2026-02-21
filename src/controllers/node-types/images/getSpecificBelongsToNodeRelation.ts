@@ -14,7 +14,7 @@ export async function getSpecificBelongsToNodeRelation(req: express.Request, res
 
     try {
         const relation = await Image.getSpecificBelongsToNodeRelationship(imageId, partnerNodeId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.BRAND) // TODO provide correct partner node type
+        const marshalledData = marshalRelation(relation, ControllerNodeType.Brand) // TODO provide correct partner node type
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

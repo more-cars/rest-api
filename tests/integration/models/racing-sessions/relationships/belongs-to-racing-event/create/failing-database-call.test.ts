@@ -10,8 +10,8 @@ test('A completely valid request, but the database call fails (e.g. one of the n
         }
     })
 
-    const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
-    const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+    const racingSession = await seedNode(ControllerNodeType.RacingSession)
+    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
 
     await expect(RacingSession.createBelongsToRacingEventRelationship(racingSession.properties.id, racingEvent.properties.id))
         .rejects

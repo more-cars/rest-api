@@ -8,9 +8,9 @@ import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Requesting all ›was-used-by-racing-event‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
-        await seedRelationshipForStartNode(trackLayout.properties.id, ControllerNodeType.RACING_EVENT, RelationshipType.TrackLayoutWasUsedByRacingEvent)
-        await seedRelationshipForStartNode(trackLayout.properties.id, ControllerNodeType.RACING_EVENT, RelationshipType.TrackLayoutWasUsedByRacingEvent)
+        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
+        await seedRelationshipForStartNode(trackLayout.properties.id, ControllerNodeType.RacingEvent, RelationshipType.TrackLayoutWasUsedByRacingEvent)
+        await seedRelationshipForStartNode(trackLayout.properties.id, ControllerNodeType.RacingEvent, RelationshipType.TrackLayoutWasUsedByRacingEvent)
 
         const relationships = await getRelationshipCollection(
             trackLayout.properties.id,
@@ -23,7 +23,7 @@ describe('Requesting all ›was-used-by-racing-event‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
         const relationships = await getRelationshipCollection(
             trackLayout.properties.id,

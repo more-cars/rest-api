@@ -5,8 +5,8 @@ import {CarModelVariant} from "../../../../../../../src/models/node-types/car-mo
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›is-variant-of‹ relationship again', async () => {
-    const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
-    const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
+    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+    const carModel = await seedNode(ControllerNodeType.CarModel)
 
     await expect(CarModelVariant.createIsVariantOfRelationship(carModelVariant.properties.id, carModel.properties.id))
         .resolves

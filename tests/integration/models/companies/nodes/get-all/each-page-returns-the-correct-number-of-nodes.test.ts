@@ -11,7 +11,7 @@ describe('Each page of a "get all COMPANY nodes" request returns the correct num
         [2],
         [99],
     ])('when there exist no COMPANY nodes (page=$0)', async (page) => {
-        await deleteAllNodesOfType(ControllerNodeType.COMPANY)
+        await deleteAllNodesOfType(ControllerNodeType.Company)
 
         const expectedNodes: CompanyNode[] = []
         const actualNodes = await Company.findAll({page})
@@ -24,8 +24,8 @@ describe('Each page of a "get all COMPANY nodes" request returns the correct num
         [20, 1, 20],
         [5, 2, 0],
     ])('when there exist $0 COMPANY nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
-        await deleteAllNodesOfType(ControllerNodeType.COMPANY)
-        await seedNodes(ControllerNodeType.COMPANY, totalNodeAmount)
+        await deleteAllNodesOfType(ControllerNodeType.Company)
+        await seedNodes(ControllerNodeType.Company, totalNodeAmount)
 
         const actualNodes = await Company.findAll({page})
 

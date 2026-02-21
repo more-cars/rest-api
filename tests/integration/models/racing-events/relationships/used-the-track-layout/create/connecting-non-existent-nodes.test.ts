@@ -5,8 +5,8 @@ import {RacingEvent} from "../../../../../../../src/models/node-types/racing-eve
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›used-the-track-layout‹ relationship with nodes that do not exist', async () => {
-    const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
     await expect(RacingEvent.createUsedTheTrackLayoutRelationship(-42, trackLayout.properties.id))
         .rejects

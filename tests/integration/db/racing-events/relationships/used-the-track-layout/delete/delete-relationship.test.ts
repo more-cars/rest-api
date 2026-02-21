@@ -8,7 +8,7 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 
 describe('Trying to delete a ›used-the-track-layout‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.RACING_EVENT, ControllerNodeType.TRACK_LAYOUT, RelationshipType.RacingEventUsedTheTrackLayout)
+        const seededRelationship = await seedRelationship(ControllerNodeType.RacingEvent, ControllerNodeType.TrackLayout, RelationshipType.RacingEventUsedTheTrackLayout)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,
@@ -36,8 +36,8 @@ describe('Trying to delete a ›used-the-track-layout‹ relationship', () => {
     })
 
     test('nodes exists, but not the relationship', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
-        const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
         const relationship = await deleteSpecificRelationship(
             racingEvent.properties.id,

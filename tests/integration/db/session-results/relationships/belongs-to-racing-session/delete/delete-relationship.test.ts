@@ -8,7 +8,7 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 
 describe('Trying to delete a ›belongs-to-racing-session‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.SESSION_RESULT, ControllerNodeType.RACING_SESSION, RelationshipType.SessionResultBelongsToRacingSession)
+        const seededRelationship = await seedRelationship(ControllerNodeType.SessionResult, ControllerNodeType.RacingSession, RelationshipType.SessionResultBelongsToRacingSession)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,
@@ -36,8 +36,8 @@ describe('Trying to delete a ›belongs-to-racing-session‹ relationship', () =
     })
 
     test('nodes exists, but not the relationship', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SESSION_RESULT)
-        const racingSession = await seedNode(ControllerNodeType.RACING_SESSION)
+        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+        const racingSession = await seedNode(ControllerNodeType.RacingSession)
 
         const relationship = await deleteSpecificRelationship(
             sessionResult.properties.id,

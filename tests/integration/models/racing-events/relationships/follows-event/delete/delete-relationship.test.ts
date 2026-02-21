@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›follows-event‹ relationship', () => {
     test('RACING EVENT node does not exist', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
 
         await expect(RacingEvent.deleteFollowsEventRelationship(racingEvent.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›follows-event‹ relationship', () => {
     })
 
     test('PARTNER node does not exist', async () => {
-        const partner = await seedNode(ControllerNodeType.RACING_EVENT)
+        const partner = await seedNode(ControllerNodeType.RacingEvent)
 
         await expect(RacingEvent.deleteFollowsEventRelationship(-42, partner.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›follows-event‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›follows-event‹ relationship', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
-        const partner = await seedNode(ControllerNodeType.RACING_EVENT)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+        const partner = await seedNode(ControllerNodeType.RacingEvent)
 
         await expect(RacingEvent.deleteFollowsEventRelationship(racingEvent.properties.id, partner.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›follows-event‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›follows-event‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.RACING_EVENT, ControllerNodeType.RACING_EVENT, RelationshipType.RacingEventFollowsEvent)
+        const seededRelationship = await seedRelationship(ControllerNodeType.RacingEvent, ControllerNodeType.RacingEvent, RelationshipType.RacingEventFollowsEvent)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

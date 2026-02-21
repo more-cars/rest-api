@@ -5,8 +5,8 @@ import {LapTime} from "../../../../../../../src/models/node-types/lap-times/LapT
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›achieved-on-track-layout‹ relationship with valid data', async () => {
-    const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
-    const trackLayout = await seedNode(ControllerNodeType.TRACK_LAYOUT)
+    const lapTime = await seedNode(ControllerNodeType.LapTime)
+    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
 
     const createdRelationship = await LapTime.createAchievedOnTrackLayoutRelationship(lapTime.properties.id, trackLayout.properties.id)
 

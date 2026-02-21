@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A RACING EVENT cannot have multiple ›took-place-at-race-track‹ relationships', async () => {
-    const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
     const raceTracksAmount = 3
-    const raceTracks = await seedNodes(ControllerNodeType.RACE_TRACK, raceTracksAmount)
+    const raceTracks = await seedNodes(ControllerNodeType.RaceTrack, raceTracksAmount)
 
     for (const raceTrack of raceTracks) {
         await RacingEvent.createTookPlaceAtRaceTrackRelationship(racingEvent.properties.id, raceTrack.properties.id)

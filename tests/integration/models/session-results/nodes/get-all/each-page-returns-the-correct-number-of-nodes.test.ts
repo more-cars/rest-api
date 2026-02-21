@@ -11,7 +11,7 @@ describe('Each page of a "get all SESSION RESULT nodes" request returns the corr
         [2],
         [99],
     ])('when there exist no SESSION RESULT nodes (page=$0)', async (page) => {
-        await deleteAllNodesOfType(ControllerNodeType.SESSION_RESULT)
+        await deleteAllNodesOfType(ControllerNodeType.SessionResult)
 
         const expectedNodes: SessionResultNode[] = []
         const actualNodes = await SessionResult.findAll({page})
@@ -24,8 +24,8 @@ describe('Each page of a "get all SESSION RESULT nodes" request returns the corr
         [20, 1, 20],
         [5, 2, 0],
     ])('when there exist $0 SESSION RESULT nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
-        await deleteAllNodesOfType(ControllerNodeType.SESSION_RESULT)
-        await seedNodes(ControllerNodeType.SESSION_RESULT, totalNodeAmount)
+        await deleteAllNodesOfType(ControllerNodeType.SessionResult)
+        await seedNodes(ControllerNodeType.SessionResult, totalNodeAmount)
 
         const actualNodes = await SessionResult.findAll({page})
 

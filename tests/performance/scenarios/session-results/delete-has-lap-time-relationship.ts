@@ -28,13 +28,13 @@ export const options = {
 }
 
 export function setup() {
-    const sessionResultId = createNode(ControllerNodeType.SESSION_RESULT)
+    const sessionResultId = createNode(ControllerNodeType.SessionResult)
     const lapTimeIds = []
 
     for (let i = 0; i < 310; i++) {
-        const lapTime = createNode(ControllerNodeType.LAP_TIME)
+        const lapTime = createNode(ControllerNodeType.LapTime)
         createRelationship(
-            ControllerNodeType.SESSION_RESULT,
+            ControllerNodeType.SessionResult,
             sessionResultId,
             lapTime,
             'has lap time',

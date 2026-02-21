@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›released-on-gaming-platform‹ relationship', () => {
     test('RACING GAME node does not exist', async () => {
-        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
+        const racingGame = await seedNode(ControllerNodeType.RacingGame)
 
         await expect(RacingGame.deleteReleasedOnGamingPlatformRelationship(racingGame.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›released-on-gaming-platform‹ relationship', () => {
     })
 
     test('GAMING PLATFORM node does not exist', async () => {
-        const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
+        const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
 
         await expect(RacingGame.deleteReleasedOnGamingPlatformRelationship(-42, gamingPlatform.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›released-on-gaming-platform‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›released-on-gaming-platform‹ relationship', async () => {
-        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
-        const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
+        const racingGame = await seedNode(ControllerNodeType.RacingGame)
+        const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
 
         await expect(RacingGame.deleteReleasedOnGamingPlatformRelationship(racingGame.properties.id, gamingPlatform.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›released-on-gaming-platform‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›released-on-gaming-platform‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.RACING_GAME, ControllerNodeType.GAMING_PLATFORM, RelationshipType.RacingGameReleasedOnGamingPlatform)
+        const seededRelationship = await seedRelationship(ControllerNodeType.RacingGame, ControllerNodeType.GamingPlatform, RelationshipType.RacingGameReleasedOnGamingPlatform)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

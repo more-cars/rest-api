@@ -17,33 +17,33 @@ import {seedImage} from "./images/nodes/seedImage"
 
 export async function seedNode(nodeType: ControllerNodeType, customFakeData: object = {}) {
     switch (nodeType) {
-        case ControllerNodeType.COMPANY:
+        case ControllerNodeType.Company:
             return seedCompany(customFakeData)
-        case ControllerNodeType.BRAND:
+        case ControllerNodeType.Brand:
             return seedBrand(customFakeData)
-        case ControllerNodeType.CAR_MODEL:
+        case ControllerNodeType.CarModel:
             return seedCarModel(customFakeData)
-        case ControllerNodeType.CAR_MODEL_VARIANT:
+        case ControllerNodeType.CarModelVariant:
             return seedCarModelVariant(customFakeData)
-        case ControllerNodeType.RACE_TRACK:
+        case ControllerNodeType.RaceTrack:
             return seedRaceTrack(customFakeData)
-        case ControllerNodeType.TRACK_LAYOUT:
+        case ControllerNodeType.TrackLayout:
             return seedTrackLayout(customFakeData)
-        case ControllerNodeType.RACING_SERIES:
+        case ControllerNodeType.RacingSeries:
             return seedRacingSeries(customFakeData)
-        case ControllerNodeType.RACING_EVENT:
+        case ControllerNodeType.RacingEvent:
             return seedRacingEvent(customFakeData)
-        case ControllerNodeType.RACING_SESSION:
+        case ControllerNodeType.RacingSession:
             return seedRacingSession(customFakeData)
-        case ControllerNodeType.SESSION_RESULT:
+        case ControllerNodeType.SessionResult:
             return seedSessionResult(customFakeData)
-        case ControllerNodeType.LAP_TIME:
+        case ControllerNodeType.LapTime:
             return seedLapTime(customFakeData)
-        case ControllerNodeType.RACING_GAME:
+        case ControllerNodeType.RacingGame:
             return seedRacingGame(customFakeData)
-        case ControllerNodeType.GAMING_PLATFORM:
+        case ControllerNodeType.GamingPlatform:
             return seedGamingPlatform(customFakeData)
-        case ControllerNodeType.IMAGE:
+        case ControllerNodeType.Image:
             return seedImage(customFakeData)
         default:
             assert.fail(`Node type "${nodeType}" is invalid or unknown`)

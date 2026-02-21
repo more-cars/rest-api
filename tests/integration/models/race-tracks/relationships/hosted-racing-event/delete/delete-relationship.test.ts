@@ -10,7 +10,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›hosted-racing-event‹ relationship', () => {
     test('RACE TRACK node does not exist', async () => {
-        const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
+        const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
 
         await expect(RaceTrack.deleteHostedRacingEventRelationship(raceTrack.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›hosted-racing-event‹ relationship', () => {
     })
 
     test('RACING EVENT node does not exist', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
 
         await expect(RaceTrack.deleteHostedRacingEventRelationship(-42, racingEvent.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›hosted-racing-event‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›hosted-racing-event‹ relationship', async () => {
-        const raceTrack = await seedNode(ControllerNodeType.RACE_TRACK)
-        const racingEvent = await seedNode(ControllerNodeType.RACING_EVENT)
+        const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
+        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
 
         await expect(RaceTrack.deleteHostedRacingEventRelationship(raceTrack.properties.id, racingEvent.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›hosted-racing-event‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›hosted-racing-event‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.RACE_TRACK, ControllerNodeType.RACING_EVENT, RelationshipType.RaceTrackHostedRacingEvent)
+        const seededRelationship = await seedRelationship(ControllerNodeType.RaceTrack, ControllerNodeType.RacingEvent, RelationshipType.RaceTrackHostedRacingEvent)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

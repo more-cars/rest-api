@@ -10,7 +10,7 @@ import {Image} from "../../../../../../../src/models/node-types/images/Image"
 
 describe('Deleting a ›belongs-to-node‹ relationship', () => {
     test('IMAGE node does not exist', async () => {
-        const image = await seedNode(ControllerNodeType.IMAGE)
+        const image = await seedNode(ControllerNodeType.Image)
 
         await expect(Image.deleteBelongsToNodeRelationship(image.properties.id, -43))
             .rejects
@@ -18,7 +18,7 @@ describe('Deleting a ›belongs-to-node‹ relationship', () => {
     })
 
     test('PARTNER node does not exist', async () => {
-        const company = await seedNode(ControllerNodeType.COMPANY)
+        const company = await seedNode(ControllerNodeType.Company)
 
         await expect(Image.deleteBelongsToNodeRelationship(-42, company.properties.id))
             .rejects
@@ -32,8 +32,8 @@ describe('Deleting a ›belongs-to-node‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›belongs-to-node‹ relationship', async () => {
-        const image = await seedNode(ControllerNodeType.IMAGE)
-        const company = await seedNode(ControllerNodeType.COMPANY)
+        const image = await seedNode(ControllerNodeType.Image)
+        const company = await seedNode(ControllerNodeType.Company)
 
         await expect(Image.deleteBelongsToNodeRelationship(image.properties.id, company.properties.id))
             .rejects
@@ -41,7 +41,7 @@ describe('Deleting a ›belongs-to-node‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›belongs-to-node‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.IMAGE, ControllerNodeType.COMPANY, RelationshipType.ImageBelongsToNode)
+        const seededRelationship = await seedRelationship(ControllerNodeType.Image, ControllerNodeType.Company, RelationshipType.ImageBelongsToNode)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

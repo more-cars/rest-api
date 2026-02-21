@@ -5,8 +5,8 @@ import {LapTime} from "../../../../../../../src/models/node-types/lap-times/LapT
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›has-prime-image‹ relationship with nodes that do not exist', async () => {
-    const lapTime = await seedNode(ControllerNodeType.LAP_TIME)
-    const image = await seedNode(ControllerNodeType.IMAGE)
+    const lapTime = await seedNode(ControllerNodeType.LapTime)
+    const image = await seedNode(ControllerNodeType.Image)
 
     await expect(LapTime.createHasPrimeImageRelationship(-42, image.properties.id))
         .rejects

@@ -8,7 +8,7 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 
 describe('Trying to delete a ›features-racing-game‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.GAMING_PLATFORM, ControllerNodeType.RACING_GAME, RelationshipType.GamingPlatformFeaturesRacingGame)
+        const seededRelationship = await seedRelationship(ControllerNodeType.GamingPlatform, ControllerNodeType.RacingGame, RelationshipType.GamingPlatformFeaturesRacingGame)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,
@@ -36,8 +36,8 @@ describe('Trying to delete a ›features-racing-game‹ relationship', () => {
     })
 
     test('nodes exists, but not the relationship', async () => {
-        const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
-        const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
+        const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
+        const racingGame = await seedNode(ControllerNodeType.RacingGame)
 
         const relationship = await deleteSpecificRelationship(
             gamingPlatform.properties.id,

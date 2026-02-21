@@ -5,8 +5,8 @@ import {CarModelVariant} from "../../../../../../../src/models/node-types/car-mo
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›is-variant-of‹ relationship with nodes that do not exist', async () => {
-    const carModelVariant = await seedNode(ControllerNodeType.CAR_MODEL_VARIANT)
-    const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
+    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+    const carModel = await seedNode(ControllerNodeType.CarModel)
 
     await expect(CarModelVariant.createIsVariantOfRelationship(-42, carModel.properties.id))
         .rejects

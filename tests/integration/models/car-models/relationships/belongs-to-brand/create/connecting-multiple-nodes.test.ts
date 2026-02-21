@@ -8,9 +8,9 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A CAR MODEL cannot have multiple ›belongs-to-brand‹ relationships', async () => {
-    const carModel = await seedNode(ControllerNodeType.CAR_MODEL)
+    const carModel = await seedNode(ControllerNodeType.CarModel)
     const brandsAmount = 3
-    const brands = await seedNodes(ControllerNodeType.BRAND, brandsAmount)
+    const brands = await seedNodes(ControllerNodeType.Brand, brandsAmount)
 
     for (const brand of brands) {
         await CarModel.createBelongsToBrandRelationship(carModel.properties.id, brand.properties.id)

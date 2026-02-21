@@ -10,8 +10,8 @@ test('A completely valid request, but the database call fails (e.g. one of the n
         }
     })
 
-    const racingGame = await seedNode(ControllerNodeType.RACING_GAME)
-    const gamingPlatform = await seedNode(ControllerNodeType.GAMING_PLATFORM)
+    const racingGame = await seedNode(ControllerNodeType.RacingGame)
+    const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
 
     await expect(RacingGame.createReleasedOnGamingPlatformRelationship(racingGame.properties.id, gamingPlatform.properties.id))
         .rejects
