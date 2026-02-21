@@ -1,46 +1,46 @@
-import {RelType} from "../../../relationships/types/RelType"
-import {NodeType} from "../../../types/NodeType"
 import {RelComposition} from "../../../relationships/types/RelComposition"
+import {RelType} from "../../../relationships/types/RelType"
+import {ModelNodeType} from "../../../types/ModelNodeType"
 
 export const RacingEventRelComposition: RelComposition[] = [
     [RelType.RacingEventBelongsToRacingSeries, {
-        startNodeType: NodeType.RACING_EVENT,
-        endNodeType: NodeType.RACING_SERIES,
+        startNodeType: ModelNodeType.RacingEvent,
+        endNodeType: ModelNodeType.RacingSeries,
         isReverseRelationship: true,
     }],
     [RelType.RacingEventIsFollowedByEvent, {
-        startNodeType: NodeType.RACING_EVENT,
-        endNodeType: NodeType.RACING_EVENT,
+        startNodeType: ModelNodeType.RacingEvent,
+        endNodeType: ModelNodeType.RacingEvent,
         isReverseRelationship: false,
     }],
     [RelType.RacingEventFollowsEvent, {
-        startNodeType: NodeType.RACING_EVENT,
-        endNodeType: NodeType.RACING_EVENT,
+        startNodeType: ModelNodeType.RacingEvent,
+        endNodeType: ModelNodeType.RacingEvent,
         isReverseRelationship: true,
     }],
     [RelType.RacingEventTookPlaceAtRaceTrack, {
-        startNodeType: NodeType.RACING_EVENT,
-        endNodeType: NodeType.RACE_TRACK,
+        startNodeType: ModelNodeType.RacingEvent,
+        endNodeType: ModelNodeType.RaceTrack,
         isReverseRelationship: false,
     }],
     [RelType.RacingEventUsedTheTrackLayout, {
-        startNodeType: NodeType.RACING_EVENT,
-        endNodeType: NodeType.TRACK_LAYOUT,
+        startNodeType: ModelNodeType.RacingEvent,
+        endNodeType: ModelNodeType.TrackLayout,
         isReverseRelationship: false,
     }],
     [RelType.RacingEventHasRacingSession, {
-        startNodeType: NodeType.RACING_EVENT,
-        endNodeType: NodeType.RACING_SESSION,
+        startNodeType: ModelNodeType.RacingEvent,
+        endNodeType: ModelNodeType.RacingSession,
         isReverseRelationship: false,
     }],
     [RelType.RacingEventHasImage, {
-        startNodeType: NodeType.RACING_EVENT,
-        endNodeType: NodeType.IMAGE,
+        startNodeType: ModelNodeType.RacingEvent,
+        endNodeType: ModelNodeType.Image,
         isReverseRelationship: false,
     }],
     [RelType.RacingEventHasPrimeImage, {
-        startNodeType: NodeType.RACING_EVENT,
-        endNodeType: NodeType.IMAGE,
+        startNodeType: ModelNodeType.RacingEvent,
+        endNodeType: ModelNodeType.Image,
         isReverseRelationship: false,
     }],
 ]

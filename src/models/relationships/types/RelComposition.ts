@@ -1,10 +1,10 @@
-import {NodeType} from "../../types/NodeType"
-import {RelType} from "./RelType"
+import type {RelType} from "./RelType"
+import type {ModelNodeType} from "../../types/ModelNodeType"
 
 export type RelComposition = [
     RelType, {
-        startNodeType: NodeType
-        endNodeType: NodeType
+        startNodeType: ModelNodeType
+        endNodeType: ModelNodeType
         isReverseRelationship: boolean
     }
 ]

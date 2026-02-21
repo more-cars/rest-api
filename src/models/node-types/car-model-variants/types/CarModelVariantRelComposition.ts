@@ -1,36 +1,36 @@
-import {RelType} from "../../../relationships/types/RelType"
-import {NodeType} from "../../../types/NodeType"
 import {RelComposition} from "../../../relationships/types/RelComposition"
+import {RelType} from "../../../relationships/types/RelType"
+import {ModelNodeType} from "../../../types/ModelNodeType"
 
 export const CarModelVariantRelComposition: RelComposition[] = [
     [RelType.CarModelVariantIsVariantOf, {
-        startNodeType: NodeType.CAR_MODEL_VARIANT,
-        endNodeType: NodeType.CAR_MODEL,
+        startNodeType: ModelNodeType.CarModelVariant,
+        endNodeType: ModelNodeType.CarModel,
         isReverseRelationship: true,
     }],
     [RelType.CarModelVariantAchievedSessionResult, {
-        startNodeType: NodeType.CAR_MODEL_VARIANT,
-        endNodeType: NodeType.SESSION_RESULT,
+        startNodeType: ModelNodeType.CarModelVariant,
+        endNodeType: ModelNodeType.SessionResult,
         isReverseRelationship: false,
     }],
     [RelType.CarModelVariantAchievedLapTime, {
-        startNodeType: NodeType.CAR_MODEL_VARIANT,
-        endNodeType: NodeType.LAP_TIME,
+        startNodeType: ModelNodeType.CarModelVariant,
+        endNodeType: ModelNodeType.LapTime,
         isReverseRelationship: false,
     }],
     [RelType.CarModelVariantIsFeaturedInRacingGame, {
-        startNodeType: NodeType.CAR_MODEL_VARIANT,
-        endNodeType: NodeType.RACING_GAME,
+        startNodeType: ModelNodeType.CarModelVariant,
+        endNodeType: ModelNodeType.RacingGame,
         isReverseRelationship: true,
     }],
     [RelType.CarModelVariantHasImage, {
-        startNodeType: NodeType.CAR_MODEL_VARIANT,
-        endNodeType: NodeType.IMAGE,
+        startNodeType: ModelNodeType.CarModelVariant,
+        endNodeType: ModelNodeType.Image,
         isReverseRelationship: false,
     }],
     [RelType.CarModelVariantHasPrimeImage, {
-        startNodeType: NodeType.CAR_MODEL_VARIANT,
-        endNodeType: NodeType.IMAGE,
+        startNodeType: ModelNodeType.CarModelVariant,
+        endNodeType: ModelNodeType.Image,
         isReverseRelationship: false,
     }],
 ]

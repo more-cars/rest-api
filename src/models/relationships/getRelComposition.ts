@@ -1,5 +1,5 @@
-import {RelType} from "./types/RelType"
-import {NodeType} from "../types/NodeType"
+import type {RelType} from "./types/RelType"
+import type {ModelNodeType} from "../types/ModelNodeType"
 import {ImageRelComposition} from "../node-types/images/types/ImageRelComposition"
 import {CompanyRelComposition} from "../node-types/companies/types/CompanyRelComposition"
 import {BrandRelComposition} from "../node-types/brands/types/BrandRelComposition"
@@ -17,8 +17,8 @@ import {GamingPlatformRelComposition} from "../node-types/gaming-platforms/types
 
 export function getRelComposition(relationshipType: RelType) {
     const mapping = new Map<RelType, {
-        startNodeType: NodeType,
-        endNodeType: NodeType,
+        startNodeType: ModelNodeType,
+        endNodeType: ModelNodeType,
         isReverseRelationship: boolean,
     }>(ImageRelComposition.concat(
         CompanyRelComposition,

@@ -1,36 +1,36 @@
-import {RelType} from "../../../relationships/types/RelType"
-import {NodeType} from "../../../types/NodeType"
 import {RelComposition} from "../../../relationships/types/RelComposition"
+import {RelType} from "../../../relationships/types/RelType"
+import {ModelNodeType} from "../../../types/ModelNodeType"
 
 export const TrackLayoutRelComposition: RelComposition[] = [
     [RelType.TrackLayoutBelongsToRaceTrack, {
-        startNodeType: NodeType.TRACK_LAYOUT,
-        endNodeType: NodeType.RACE_TRACK,
+        startNodeType: ModelNodeType.TrackLayout,
+        endNodeType: ModelNodeType.RaceTrack,
         isReverseRelationship: true,
     }],
     [RelType.TrackLayoutWasUsedByRacingEvent, {
-        startNodeType: NodeType.TRACK_LAYOUT,
-        endNodeType: NodeType.RACING_EVENT,
+        startNodeType: ModelNodeType.TrackLayout,
+        endNodeType: ModelNodeType.RacingEvent,
         isReverseRelationship: true,
     }],
     [RelType.TrackLayoutHasLapTime, {
-        startNodeType: NodeType.TRACK_LAYOUT,
-        endNodeType: NodeType.LAP_TIME,
+        startNodeType: ModelNodeType.TrackLayout,
+        endNodeType: ModelNodeType.LapTime,
         isReverseRelationship: false,
     }],
     [RelType.TrackLayoutIsFeaturedInRacingGame, {
-        startNodeType: NodeType.TRACK_LAYOUT,
-        endNodeType: NodeType.RACING_GAME,
+        startNodeType: ModelNodeType.TrackLayout,
+        endNodeType: ModelNodeType.RacingGame,
         isReverseRelationship: true,
     }],
     [RelType.TrackLayoutHasImage, {
-        startNodeType: NodeType.TRACK_LAYOUT,
-        endNodeType: NodeType.IMAGE,
+        startNodeType: ModelNodeType.TrackLayout,
+        endNodeType: ModelNodeType.Image,
         isReverseRelationship: false,
     }],
     [RelType.TrackLayoutHasPrimeImage, {
-        startNodeType: NodeType.TRACK_LAYOUT,
-        endNodeType: NodeType.IMAGE,
+        startNodeType: ModelNodeType.TrackLayout,
+        endNodeType: ModelNodeType.Image,
         isReverseRelationship: false,
     }],
 ]

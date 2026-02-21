@@ -1,29 +1,29 @@
-import {NodeType} from "../types/NodeType"
+import {ModelNodeType} from "../types/ModelNodeType"
 import {DbNodeType} from "../../db/types/DbNodeType"
 
-export function mapModelNodeTypeToDbNodeType(nodeType: NodeType) {
-    const mapping = new Map<NodeType, DbNodeType>([
-        [NodeType.NODE, DbNodeType.Node],
-        [NodeType.IMAGE, DbNodeType.Image],
-        [NodeType.COMPANY, DbNodeType.Company],
-        [NodeType.BRAND, DbNodeType.Brand],
-        [NodeType.CAR_MODEL, DbNodeType.CarModel],
-        [NodeType.CAR_MODEL_VARIANT, DbNodeType.CarModelVariant],
-        [NodeType.RACE_TRACK, DbNodeType.RaceTrack],
-        [NodeType.TRACK_LAYOUT, DbNodeType.TrackLayout],
-        [NodeType.RACING_SERIES, DbNodeType.RacingSeries],
-        [NodeType.RACING_EVENT, DbNodeType.RacingEvent],
-        [NodeType.RACING_SESSION, DbNodeType.RacingSession],
-        [NodeType.SESSION_RESULT, DbNodeType.SessionResult],
-        [NodeType.LAP_TIME, DbNodeType.LapTime],
-        [NodeType.RACING_GAME, DbNodeType.RacingGame],
-        [NodeType.GAMING_PLATFORM, DbNodeType.GamingPlatform],
+export function mapModelNodeTypeToDbNodeType(modelNodeType: ModelNodeType) {
+    const mapping = new Map<ModelNodeType, DbNodeType>([
+        [ModelNodeType.Node, DbNodeType.Node],
+        [ModelNodeType.Image, DbNodeType.Image],
+        [ModelNodeType.Company, DbNodeType.Company],
+        [ModelNodeType.Brand, DbNodeType.Brand],
+        [ModelNodeType.CarModel, DbNodeType.CarModel],
+        [ModelNodeType.CarModelVariant, DbNodeType.CarModelVariant],
+        [ModelNodeType.RaceTrack, DbNodeType.RaceTrack],
+        [ModelNodeType.TrackLayout, DbNodeType.TrackLayout],
+        [ModelNodeType.RacingSeries, DbNodeType.RacingSeries],
+        [ModelNodeType.RacingEvent, DbNodeType.RacingEvent],
+        [ModelNodeType.RacingSession, DbNodeType.RacingSession],
+        [ModelNodeType.SessionResult, DbNodeType.SessionResult],
+        [ModelNodeType.LapTime, DbNodeType.LapTime],
+        [ModelNodeType.RacingGame, DbNodeType.RacingGame],
+        [ModelNodeType.GamingPlatform, DbNodeType.GamingPlatform],
     ])
 
-    const dbNodeType = mapping.get(nodeType)
+    const dbNodeType = mapping.get(modelNodeType)
 
     if (dbNodeType === null || dbNodeType === undefined) {
-        throw new Error(`No mapping found for node type ${nodeType}`)
+        throw new Error(`No mapping found for node type ${modelNodeType}`)
     }
 
     return dbNodeType

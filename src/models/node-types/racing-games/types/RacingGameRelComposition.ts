@@ -1,31 +1,31 @@
-import {RelType} from "../../../relationships/types/RelType"
-import {NodeType} from "../../../types/NodeType"
 import {RelComposition} from "../../../relationships/types/RelComposition"
+import {RelType} from "../../../relationships/types/RelType"
+import {ModelNodeType} from "../../../types/ModelNodeType"
 
 export const RacingGameRelComposition: RelComposition[] = [
     [RelType.RacingGameFeaturesCarModelVariant, {
-        startNodeType: NodeType.RACING_GAME,
-        endNodeType: NodeType.CAR_MODEL_VARIANT,
+        startNodeType: ModelNodeType.RacingGame,
+        endNodeType: ModelNodeType.CarModelVariant,
         isReverseRelationship: false,
     }],
     [RelType.RacingGameFeaturesTrackLayout, {
-        startNodeType: NodeType.RACING_GAME,
-        endNodeType: NodeType.TRACK_LAYOUT,
+        startNodeType: ModelNodeType.RacingGame,
+        endNodeType: ModelNodeType.TrackLayout,
         isReverseRelationship: false,
     }],
     [RelType.RacingGameReleasedOnGamingPlatform, {
-        startNodeType: NodeType.RACING_GAME,
-        endNodeType: NodeType.GAMING_PLATFORM,
+        startNodeType: ModelNodeType.RacingGame,
+        endNodeType: ModelNodeType.GamingPlatform,
         isReverseRelationship: true,
     }],
     [RelType.RacingGameHasImage, {
-        startNodeType: NodeType.RACING_GAME,
-        endNodeType: NodeType.IMAGE,
+        startNodeType: ModelNodeType.RacingGame,
+        endNodeType: ModelNodeType.Image,
         isReverseRelationship: false,
     }],
     [RelType.RacingGameHasPrimeImage, {
-        startNodeType: NodeType.RACING_GAME,
-        endNodeType: NodeType.IMAGE,
+        startNodeType: ModelNodeType.RacingGame,
+        endNodeType: ModelNodeType.Image,
         isReverseRelationship: false,
     }],
 ]

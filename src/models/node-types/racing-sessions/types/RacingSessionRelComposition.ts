@@ -1,26 +1,26 @@
-import {RelType} from "../../../relationships/types/RelType"
-import {NodeType} from "../../../types/NodeType"
 import {RelComposition} from "../../../relationships/types/RelComposition"
+import {RelType} from "../../../relationships/types/RelType"
+import {ModelNodeType} from "../../../types/ModelNodeType"
 
 export const RacingSessionRelComposition: RelComposition[] = [
     [RelType.RacingSessionBelongsToRacingEvent, {
-        startNodeType: NodeType.RACING_SESSION,
-        endNodeType: NodeType.RACING_EVENT,
+        startNodeType: ModelNodeType.RacingSession,
+        endNodeType: ModelNodeType.RacingEvent,
         isReverseRelationship: true,
     }],
     [RelType.RacingSessionHasSessionResult, {
-        startNodeType: NodeType.RACING_SESSION,
-        endNodeType: NodeType.SESSION_RESULT,
+        startNodeType: ModelNodeType.RacingSession,
+        endNodeType: ModelNodeType.SessionResult,
         isReverseRelationship: false,
     }],
     [RelType.RacingSessionHasImage, {
-        startNodeType: NodeType.RACING_SESSION,
-        endNodeType: NodeType.IMAGE,
+        startNodeType: ModelNodeType.RacingSession,
+        endNodeType: ModelNodeType.Image,
         isReverseRelationship: false,
     }],
     [RelType.RacingSessionHasPrimeImage, {
-        startNodeType: NodeType.RACING_SESSION,
-        endNodeType: NodeType.IMAGE,
+        startNodeType: ModelNodeType.RacingSession,
+        endNodeType: ModelNodeType.Image,
         isReverseRelationship: false,
     }],
 ]
