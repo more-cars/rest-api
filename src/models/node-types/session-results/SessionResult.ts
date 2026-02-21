@@ -19,7 +19,7 @@ import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {LapTime} from "../lap-times/LapTime"
 import {getAllRels} from "../../relationships/getAllRels"
 import {Image} from "../images/Image"
-import {DbNodeType} from "../../../db/types/DbNodeType"
+import {ModelNodeType} from "../../types/ModelNodeType"
 import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
@@ -79,7 +79,7 @@ export const SessionResult = {
             throw new RelAlreadyExistsError(RelType.SessionResultBelongsToRacingSession, sessionResultId, racingSessionId)
         }
 
-        await deleteOutgoingRel(sessionResultId, RelType.SessionResultBelongsToRacingSession, DbNodeType.RacingSession)
+        await deleteOutgoingRel(sessionResultId, RelType.SessionResultBelongsToRacingSession, ModelNodeType.RacingSession)
 
         const createdRelationship = await createRel(sessionResultId, racingSessionId, RelType.SessionResultBelongsToRacingSession)
         if (!createdRelationship) {
@@ -139,7 +139,7 @@ export const SessionResult = {
             throw new RelAlreadyExistsError(RelType.SessionResultHasLapTime, sessionResultId, lapTimeId)
         }
 
-        await deleteIncomingRel(lapTimeId, RelType.SessionResultHasLapTime, DbNodeType.SessionResult)
+        await deleteIncomingRel(lapTimeId, RelType.SessionResultHasLapTime, ModelNodeType.SessionResult)
 
         const createdRelationship = await createRel(sessionResultId, lapTimeId, RelType.SessionResultHasLapTime)
         if (!createdRelationship) {
@@ -193,7 +193,7 @@ export const SessionResult = {
             throw new RelAlreadyExistsError(RelType.SessionResultAchievedWithCarModelVariant, sessionResultId, carModelVariantId)
         }
 
-        await deleteOutgoingRel(sessionResultId, RelType.SessionResultAchievedWithCarModelVariant, DbNodeType.CarModelVariant)
+        await deleteOutgoingRel(sessionResultId, RelType.SessionResultAchievedWithCarModelVariant, ModelNodeType.CarModelVariant)
 
         const createdRelationship = await createRel(sessionResultId, carModelVariantId, RelType.SessionResultAchievedWithCarModelVariant)
         if (!createdRelationship) {
@@ -306,7 +306,7 @@ export const SessionResult = {
             throw new RelAlreadyExistsError(RelType.SessionResultHasPrimeImage, sessionResultId, imageId)
         }
 
-        await deleteOutgoingRel(sessionResultId, RelType.SessionResultHasPrimeImage, DbNodeType.Image)
+        await deleteOutgoingRel(sessionResultId, RelType.SessionResultHasPrimeImage, ModelNodeType.Image)
 
         const createdRelationship = await createRel(sessionResultId, imageId, RelType.SessionResultHasPrimeImage)
         if (!createdRelationship) {

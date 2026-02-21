@@ -17,7 +17,7 @@ import {getAllRels} from "../../relationships/getAllRels"
 import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
 import {Image} from "../images/Image"
-import {DbNodeType} from "../../../db/types/DbNodeType"
+import {ModelNodeType} from "../../types/ModelNodeType"
 import {getRel} from "../../relationships/getRel"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 
@@ -180,7 +180,7 @@ export const GamingPlatform = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.GamingPlatformHasPrimeImage, gamingPlatformId, imageId)
         }
-        await deleteOutgoingRel(gamingPlatformId, RelType.GamingPlatformHasPrimeImage, DbNodeType.Image)
+        await deleteOutgoingRel(gamingPlatformId, RelType.GamingPlatformHasPrimeImage, ModelNodeType.Image)
 
 
         const createdRelationship = await createRel(gamingPlatformId, imageId, RelType.GamingPlatformHasPrimeImage)

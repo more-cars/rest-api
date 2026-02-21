@@ -22,7 +22,7 @@ import {TrackLayout} from "../track-layouts/TrackLayout"
 import {Image} from "../images/Image"
 import {getAllRels} from "../../relationships/getAllRels"
 import {RacingSession} from "../racing-sessions/RacingSession"
-import {DbNodeType} from "../../../db/types/DbNodeType"
+import {ModelNodeType} from "../../types/ModelNodeType"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 
@@ -81,7 +81,7 @@ export const RacingEvent = {
             throw new RelAlreadyExistsError(RelType.RacingEventBelongsToRacingSeries, racingEventId, racingSeriesId)
         }
 
-        await deleteOutgoingRel(racingEventId, RelType.RacingEventBelongsToRacingSeries, DbNodeType.RacingSeries)
+        await deleteOutgoingRel(racingEventId, RelType.RacingEventBelongsToRacingSeries, ModelNodeType.RacingSeries)
 
         const createdRelationship = await createRel(racingEventId, racingSeriesId, RelType.RacingEventBelongsToRacingSeries)
         if (!createdRelationship) {
@@ -145,8 +145,8 @@ export const RacingEvent = {
             throw new RelAlreadyExistsError(RelType.RacingEventIsFollowedByEvent, racingEventId, partnerId)
         }
 
-        await deleteOutgoingRel(racingEventId, RelType.RacingEventIsFollowedByEvent, DbNodeType.RacingEvent)
-        await deleteIncomingRel(partnerId, RelType.RacingEventIsFollowedByEvent, DbNodeType.RacingEvent)
+        await deleteOutgoingRel(racingEventId, RelType.RacingEventIsFollowedByEvent, ModelNodeType.RacingEvent)
+        await deleteIncomingRel(partnerId, RelType.RacingEventIsFollowedByEvent, ModelNodeType.RacingEvent)
 
         const createdRelationship = await createRel(racingEventId, partnerId, RelType.RacingEventIsFollowedByEvent)
         if (!createdRelationship) {
@@ -210,8 +210,8 @@ export const RacingEvent = {
             throw new RelAlreadyExistsError(RelType.RacingEventFollowsEvent, racingEventId, partnerId)
         }
 
-        await deleteOutgoingRel(racingEventId, RelType.RacingEventFollowsEvent, DbNodeType.RacingEvent)
-        await deleteIncomingRel(partnerId, RelType.RacingEventFollowsEvent, DbNodeType.RacingEvent)
+        await deleteOutgoingRel(racingEventId, RelType.RacingEventFollowsEvent, ModelNodeType.RacingEvent)
+        await deleteIncomingRel(partnerId, RelType.RacingEventFollowsEvent, ModelNodeType.RacingEvent)
 
         const createdRelationship = await createRel(racingEventId, partnerId, RelType.RacingEventFollowsEvent)
         if (!createdRelationship) {
@@ -271,7 +271,7 @@ export const RacingEvent = {
             throw new RelAlreadyExistsError(RelType.RacingEventTookPlaceAtRaceTrack, racingEventId, raceTrackId)
         }
 
-        await deleteOutgoingRel(racingEventId, RelType.RacingEventTookPlaceAtRaceTrack, DbNodeType.RaceTrack)
+        await deleteOutgoingRel(racingEventId, RelType.RacingEventTookPlaceAtRaceTrack, ModelNodeType.RaceTrack)
 
         const createdRelationship = await createRel(racingEventId, raceTrackId, RelType.RacingEventTookPlaceAtRaceTrack)
         if (!createdRelationship) {
@@ -331,7 +331,7 @@ export const RacingEvent = {
             throw new RelAlreadyExistsError(RelType.RacingEventUsedTheTrackLayout, racingEventId, trackLayoutId)
         }
 
-        await deleteOutgoingRel(racingEventId, RelType.RacingEventUsedTheTrackLayout, DbNodeType.TrackLayout)
+        await deleteOutgoingRel(racingEventId, RelType.RacingEventUsedTheTrackLayout, ModelNodeType.TrackLayout)
 
         const createdRelationship = await createRel(racingEventId, trackLayoutId, RelType.RacingEventUsedTheTrackLayout)
         if (!createdRelationship) {
@@ -391,7 +391,7 @@ export const RacingEvent = {
             throw new RelAlreadyExistsError(RelType.RacingEventHasRacingSession, racingEventId, racingSessionId)
         }
 
-        await deleteIncomingRel(racingSessionId, RelType.RacingEventHasRacingSession, DbNodeType.RacingEvent)
+        await deleteIncomingRel(racingSessionId, RelType.RacingEventHasRacingSession, ModelNodeType.RacingEvent)
 
         const createdRelationship = await createRel(racingEventId, racingSessionId, RelType.RacingEventHasRacingSession)
         if (!createdRelationship) {
@@ -499,7 +499,7 @@ export const RacingEvent = {
             throw new RelAlreadyExistsError(RelType.RacingEventHasPrimeImage, racingEventId, imageId)
         }
 
-        await deleteOutgoingRel(racingEventId, RelType.RacingEventHasPrimeImage, DbNodeType.Image)
+        await deleteOutgoingRel(racingEventId, RelType.RacingEventHasPrimeImage, ModelNodeType.Image)
 
         const createdRelationship = await createRel(racingEventId, imageId, RelType.RacingEventHasPrimeImage)
         if (!createdRelationship) {

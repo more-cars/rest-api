@@ -1,7 +1,7 @@
 import type {RelType} from "./types/RelType"
 import {getRelComposition} from "./getRelComposition"
 import {mapModelRelTypeToDbRelationshipType} from "./mapModelRelTypeToDbRelationshipType"
-import {mapModelNodeTypeToDbNodeType} from "./mapModelNodeTypeToDbNodeType"
+import {mapModelNodeTypeToDbNodeType} from "../node-types/mapModelNodeTypeToDbNodeType"
 import {getRelationshipCollection} from "../../db/relationships/getRelationshipCollection"
 import type {Rel} from "./types/Rel"
 import {convertDbNodeToModelNode} from "../node-types/convertDbNodeToModelNode"

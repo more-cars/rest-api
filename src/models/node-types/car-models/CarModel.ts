@@ -19,7 +19,7 @@ import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {getSpecificRel} from "../../relationships/getSpecificRel"
 import {createRel} from "../../relationships/createRel"
 import {getAllRels} from "../../relationships/getAllRels"
-import {DbNodeType} from "../../../db/types/DbNodeType"
+import {ModelNodeType} from "../../types/ModelNodeType"
 import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
@@ -78,7 +78,7 @@ export const CarModel = {
             throw new RelAlreadyExistsError(RelType.CarModelBelongsToBrand, carModelId, brandId)
         }
 
-        await deleteOutgoingRel(carModelId, RelType.CarModelBelongsToBrand, DbNodeType.Brand)
+        await deleteOutgoingRel(carModelId, RelType.CarModelBelongsToBrand, ModelNodeType.Brand)
 
         const createdRelationship = await createRel(carModelId, brandId, RelType.CarModelBelongsToBrand)
         if (!createdRelationship) {
@@ -141,8 +141,8 @@ export const CarModel = {
             throw new RelAlreadyExistsError(RelType.CarModelHasSuccessor, carModelId, partnerId)
         }
 
-        await deleteOutgoingRel(carModelId, RelType.CarModelHasSuccessor, DbNodeType.CarModel)
-        await deleteIncomingRel(partnerId, RelType.CarModelHasSuccessor, DbNodeType.CarModel)
+        await deleteOutgoingRel(carModelId, RelType.CarModelHasSuccessor, ModelNodeType.CarModel)
+        await deleteIncomingRel(partnerId, RelType.CarModelHasSuccessor, ModelNodeType.CarModel)
 
         const createdRelationship = await createRel(carModelId, partnerId, RelType.CarModelHasSuccessor)
         if (!createdRelationship) {
@@ -205,8 +205,8 @@ export const CarModel = {
             throw new RelAlreadyExistsError(RelType.CarModelIsSuccessorOf, carModelId, partnerId)
         }
 
-        await deleteOutgoingRel(carModelId, RelType.CarModelIsSuccessorOf, DbNodeType.CarModel)
-        await deleteIncomingRel(partnerId, RelType.CarModelIsSuccessorOf, DbNodeType.CarModel)
+        await deleteOutgoingRel(carModelId, RelType.CarModelIsSuccessorOf, ModelNodeType.CarModel)
+        await deleteIncomingRel(partnerId, RelType.CarModelIsSuccessorOf, ModelNodeType.CarModel)
 
         const createdRelationship = await createRel(carModelId, partnerId, RelType.CarModelIsSuccessorOf)
         if (!createdRelationship) {
@@ -265,7 +265,7 @@ export const CarModel = {
             throw new RelAlreadyExistsError(RelType.CarModelHasVariant, carModelId, carModelVariantId)
         }
 
-        await deleteIncomingRel(carModelVariantId, RelType.CarModelHasVariant, DbNodeType.CarModel)
+        await deleteIncomingRel(carModelVariantId, RelType.CarModelHasVariant, ModelNodeType.CarModel)
 
         const createdRelationship = await createRel(carModelId, carModelVariantId, RelType.CarModelHasVariant)
         if (!createdRelationship) {
@@ -390,7 +390,7 @@ export const CarModel = {
             throw new RelAlreadyExistsError(RelType.CarModelHasPrimeImage, carModelId, imageId)
         }
 
-        await deleteOutgoingRel(carModelId, RelType.CarModelHasPrimeImage, DbNodeType.Image)
+        await deleteOutgoingRel(carModelId, RelType.CarModelHasPrimeImage, ModelNodeType.Image)
 
         const createdRelationship = await createRel(carModelId, imageId, RelType.CarModelHasPrimeImage)
         if (!createdRelationship) {
