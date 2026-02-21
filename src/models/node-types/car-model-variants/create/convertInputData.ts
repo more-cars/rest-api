@@ -2,7 +2,7 @@ import {CreateCarModelVariantInput} from "../types/CreateCarModelVariantInput"
 import {InputCarModelVariantCreate} from "../../../../db/nodes/car-model-variants/types/InputCarModelVariantCreate"
 
 export function convertInputData(data: CreateCarModelVariantInput): InputCarModelVariantCreate {
-    const convertedData: InputCarModelVariantCreate = {
+    return {
         name: data.name,
         internal_code: data.internal_code,
         built_from: data.built_from,
@@ -39,7 +39,5 @@ export function convertInputData(data: CreateCarModelVariantInput): InputCarMode
         top_speed: data.top_speed,
         top_speed_unit: data.top_speed_unit,
         total_production: data.total_production,
-    }
-
-    return convertedData
+    } satisfies InputCarModelVariantCreate
 }

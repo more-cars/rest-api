@@ -3,7 +3,7 @@ import {InputImageCreate} from "../../../../db/nodes/images/types/InputImageCrea
 import {CreateImageGeneratedInput} from "../types/CreateImageGeneratedInput"
 
 export function convertInputData(data: CreateImageInput & CreateImageGeneratedInput): InputImageCreate {
-    const convertedData: InputImageCreate = {
+    return {
         image_provider: data.image_provider,
         external_id: data.external_id,
         name: data.name,
@@ -19,7 +19,5 @@ export function convertInputData(data: CreateImageInput & CreateImageGeneratedIn
         image_url_m: data.image_url_m,
         image_url_s: data.image_url_s,
         image_url_xs: data.image_url_xs,
-    }
-
-    return convertedData
+    } satisfies InputImageCreate
 }

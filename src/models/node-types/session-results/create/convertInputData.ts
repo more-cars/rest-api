@@ -2,7 +2,7 @@ import {CreateSessionResultInput} from "../types/CreateSessionResultInput"
 import {InputSessionResultCreate} from "../../../../db/nodes/session-results/types/InputSessionResultCreate"
 
 export function convertInputData(data: CreateSessionResultInput): InputSessionResultCreate {
-    const convertedData: InputSessionResultCreate = {
+    return {
         position: data.position,
         race_number: data.race_number,
         driver_name: data.driver_name,
@@ -11,7 +11,5 @@ export function convertInputData(data: CreateSessionResultInput): InputSessionRe
         laps: data.laps,
         status: data.status,
         points: data.points,
-    }
-
-    return convertedData
+    } satisfies InputSessionResultCreate
 }
