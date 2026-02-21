@@ -1,13 +1,12 @@
 import {RaceTrackNode} from "./types/RaceTrackNode"
 import {fetchNodeById} from "../fetchNodeById"
-import {mapDbNodeToRaceTrackNode} from "./mapDbNodeToRaceTrackNode"
 
-export async function getNodeById(id: number): Promise<false | RaceTrackNode> {
+export async function getNodeById(id: number) {
     const node = await fetchNodeById(id)
 
     if (!node) {
         return false
     }
 
-    return mapDbNodeToRaceTrackNode(node)
+    return node as RaceTrackNode
 }
