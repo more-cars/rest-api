@@ -16,13 +16,5 @@
       "name": "MIGRATE_NODE_TYPE",
       "value": "RacingGame"
     }
-  },
-  {
-    "op": "add",
-    "path": "/spec/template/spec/containers/0/env/-",
-    "value": {
-      "name": "DELETE_EXISTING_DATA",
-      "value": "false"
-    }
   }
 ]

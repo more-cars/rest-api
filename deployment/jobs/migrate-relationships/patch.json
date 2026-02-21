@@ -32,13 +32,5 @@
       "name": "END_NODE_TYPE",
       "value": "LapTime"
     }
-  },
-  {
-    "op": "add",
-    "path": "/spec/template/spec/containers/0/env/-",
-    "value": {
-      "name": "DELETE_EXISTING_DATA",
-      "value": "true"
-    }
   }
 ]

@@ -19,7 +19,6 @@ echo "  Node type: $MIGRATE_NODE_TYPE"
 echo "  Relationship type: $MIGRATE_RELATIONSHIP_TYPE"
 echo "  Start node type: $START_NODE_TYPE"
 echo "  end node type: $END_NODE_TYPE"
-echo "  Delete old data: $DELETE_EXISTING_DATA"
 echo ----------------------------------------------------------
 
 if [ "$MIGRATION_RUNNER" = local ]; then

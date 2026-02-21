@@ -30,13 +30,5 @@ async function createPatchFile() {
                 "value": process.env.MIGRATE_NODE_TYPE
             }
         },
-        {
-            "op": "add",
-            "path": "/spec/template/spec/containers/0/env/-",
-            "value": {
-                "name": "DELETE_EXISTING_DATA",
-                "value": process.env.DELETE_EXISTING_DATA
-            }
-        }
     ]
 }

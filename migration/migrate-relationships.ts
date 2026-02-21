@@ -3,7 +3,6 @@ import {NodeTypeMapping} from "./src/NodeTypeMapping"
 import type {NodeTypeLabelOld} from "./src/types/NodeTypeLabelOld"
 import {RelationshipTypeMapping} from "./src/RelationshipTypeMapping"
 import {RelationshipTypeLabelOld} from "./src/types/RelationshipTypeLabelOld"
-import {deleteAllRelationshipsOfType} from "../tests/_toolbox/dbSeeding/deleteAllRelationshipsOfType"
 import {isRelationshipReversedInOldDb} from "./src/isRelationshipReversedInOldDb"
 import {fetchOldRelationshipsOfType} from "./src/fetchOldRelationshipsOfType"
 import {createRelationship} from "../src/db/relationships/createRelationship"
@@ -21,11 +20,6 @@ async function migrateRelationshipsOfType() {
     const oldEndNodeType = NodeTypeMapping.get(newEndNodeType) as NodeTypeLabelOld
     const newRelationshipType = await determineRelationshipType()
     const oldRelationshipType = RelationshipTypeMapping.get(newRelationshipType) as RelationshipTypeLabelOld
-
-    const deleteRelationships = await determineDeleteRelationships()
-    if (deleteRelationships) {
-        await deleteAllRelationshipsOfType(newRelationshipType, newStartNodeType, newEndNodeType)
-    }
 
     let records
     if (isRelationshipReversedInOldDb(newRelationshipType)) {
@@ -90,10 +84,4 @@ async function determineRelationshipType() {
     }
 
     return relationshipType as RelationshipType
-}
-
-async function determineDeleteRelationships() {
-    const deleteRels = process.env.DELETE_EXISTING_DATA
-
-    return deleteRels === 'true'
 }

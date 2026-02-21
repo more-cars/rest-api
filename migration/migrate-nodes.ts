@@ -1,6 +1,5 @@
 import {NodeTypeMapping} from "./src/NodeTypeMapping"
 import type {NodeTypeLabelOld} from "./src/types/NodeTypeLabelOld"
-import {deleteNodesOfType} from "./src/deleteNodesOfType"
 import {fetchOldNodesOfType} from "./src/fetchOldNodesOfType"
 import cliProgress from "cli-progress"
 import {mapNodeProperties} from "./src/mapNodeProperties"
@@ -10,11 +9,6 @@ import {DbNodeType} from "../src/db/types/DbNodeType"
 async function migrateNodesOfType() {
     const newNodeType = determineNodeType()
     const oldNodeType = NodeTypeMapping.get(newNodeType) as NodeTypeLabelOld
-
-    const deleteNodes = determineDeleteNodes()
-    if (deleteNodes) {
-        await deleteNodesOfType(newNodeType)
-    }
 
     const records = await fetchOldNodesOfType(oldNodeType)
     const progress = new cliProgress.SingleBar({
@@ -43,12 +37,6 @@ function determineNodeType() {
     }
 
     return nodeType as DbNodeType
-}
-
-function determineDeleteNodes() {
-    const deleteNodes = process.env.DELETE_EXISTING_DATA
-
-    return deleteNodes === 'true'
 }
 
 migrateNodesOfType().then(() => true)

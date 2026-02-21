@@ -11,7 +11,6 @@ import {getNodeType} from "./getNodeType"
 import {getStartNodeType} from "./getStartNodeType"
 import {getEndNodeType} from "./getEndNodeType"
 import {getRelationshipType} from "./getRelationshipType"
-import {deleteExistingData} from "./deleteExistingData"
 
 collectParams()
     .then((data) => {
@@ -38,8 +37,6 @@ async function collectParams() {
         relationshipType = await getRelationshipType(startNodeType, endNodeType, process.env.END_NODE_TYPE)
     }
 
-    const deleteData = await deleteExistingData(process.env.DELETE_EXISTING_DATA)
-
     return assembleEnvFileData({
         migrationRunner,
         targetCluster,
@@ -53,7 +50,6 @@ async function collectParams() {
         relationshipType: relationshipType || '',
         startNodeType: startNodeType || '',
         endNodeType: endNodeType || '',
-        deleteExistingData: deleteData,
     })
 }
 
@@ -71,7 +67,6 @@ export MIGRATE_NODE_TYPE=${params.nodeType}
 export MIGRATE_RELATIONSHIP_TYPE=${params.relationshipType}
 export START_NODE_TYPE=${params.startNodeType}
 export END_NODE_TYPE=${params.endNodeType}
-export DELETE_EXISTING_DATA=${params.deleteExistingData}
 `
 }
 
@@ -88,5 +83,4 @@ type MigrationConfig = {
     relationshipType: string,
     startNodeType: string,
     endNodeType: string,
-    deleteExistingData: boolean,
 }
