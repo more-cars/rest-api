@@ -2,6 +2,7 @@ import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from "../../../../../../src/app.ts"
 import {Company} from "../../../../../../src/models/node-types/companies/Company"
+import {FakeCompany} from "../../../../../_toolbox/fixtures/nodes/FakeCompany"
 
 describe('Expecting correct status code when requesting a plain node collection', () => {
     test('when no nodes exist', async () => {
@@ -16,16 +17,9 @@ describe('Expecting correct status code when requesting a plain node collection'
 
     test('when multiple nodes exist', async () => {
         Company.findAll = vi.fn().mockReturnValue([
-            {
-                id: 1,
-                name: "dummy",
-            }, {
-                id: 2,
-                name: "dummy",
-            }, {
-                id: 3,
-                name: "dummy",
-            }
+            FakeCompany.modelOutput(),
+            FakeCompany.modelOutput(),
+            FakeCompany.modelOutput(),
         ])
 
         const response = await request(app)
