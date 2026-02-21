@@ -2,7 +2,7 @@ import {CreateLapTimeInput} from "./types/CreateLapTimeInput"
 import {LapTimeNode} from "./types/LapTimeNode"
 import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../../db/nodes/lap-times/createNode"
-import {convertOutputData} from "./create/convertOutputData"
+import {convertLapTimeDbNodeToModelNode} from "./create/convertLapTimeDbNodeToModelNode"
 import {getNodeById} from "../../../db/nodes/lap-times/getNodeById"
 import {getAllNodesOfType} from "../../../db/nodes/lap-times/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
@@ -27,7 +27,7 @@ export const LapTime = {
     async create(data: CreateLapTimeInput): Promise<LapTimeNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
-        const output = convertOutputData(result)
+        const output = convertLapTimeDbNodeToModelNode(result)
 
         return output
     },
@@ -39,7 +39,7 @@ export const LapTime = {
             return false
         }
 
-        return convertOutputData(node)
+        return convertLapTimeDbNodeToModelNode(node)
     },
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<LapTimeNode[]> {
@@ -47,7 +47,7 @@ export const LapTime = {
         const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {
-            nodes.push(convertOutputData(node))
+            nodes.push(convertLapTimeDbNodeToModelNode(node))
         })
 
         return nodes

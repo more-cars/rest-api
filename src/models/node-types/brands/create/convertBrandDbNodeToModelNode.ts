@@ -2,7 +2,7 @@ import {BrandNode as DbBrandNode} from "../../../../db/nodes/brands/types/BrandN
 import {BrandNode} from "../types/BrandNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
-export function convertOutputData(data: DbBrandNode): BrandNode {
+export function convertBrandDbNodeToModelNode(data: DbBrandNode): BrandNode {
     const node: BrandNode = {
         node_type: ModelNodeType.Brand,
         attributes: {

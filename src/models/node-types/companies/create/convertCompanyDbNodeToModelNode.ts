@@ -2,7 +2,7 @@ import {CompanyNode as DbCompanyNode} from "../../../../db/nodes/companies/types
 import {CompanyNode} from "../types/CompanyNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
-export function convertOutputData(data: DbCompanyNode): CompanyNode {
+export function convertCompanyDbNodeToModelNode(data: DbCompanyNode): CompanyNode {
     const node: CompanyNode = {
         node_type: ModelNodeType.Company,
         attributes: {

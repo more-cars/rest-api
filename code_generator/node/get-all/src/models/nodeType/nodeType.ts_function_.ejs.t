@@ -11,7 +11,7 @@ skip_if: async findAll
         const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {
-            nodes.push(convertOutputData(node))
+            nodes.push(convert<%= h.changeCase.pascal(nodeType) %>DbNodeToModelNode(node))
         })
 
         return nodes

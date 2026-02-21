@@ -2,7 +2,7 @@ import {RacingGameNode as DbRacingGameNode} from "../../../../db/nodes/racing-ga
 import {RacingGameNode} from "../types/RacingGameNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
-export function convertOutputData(data: DbRacingGameNode): RacingGameNode {
+export function convertRacingGameDbNodeToModelNode(data: DbRacingGameNode): RacingGameNode {
     const node: RacingGameNode = {
         node_type: ModelNodeType.RacingGame,
         attributes: {

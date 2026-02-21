@@ -2,7 +2,7 @@ import {SessionResultNode as DbSessionResultNode} from "../../../../db/nodes/ses
 import {SessionResultNode} from "../types/SessionResultNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
-export function convertOutputData(data: DbSessionResultNode): SessionResultNode {
+export function convertSessionResultDbNodeToModelNode(data: DbSessionResultNode): SessionResultNode {
     const node: SessionResultNode = {
         node_type: ModelNodeType.SessionResult,
         attributes: {

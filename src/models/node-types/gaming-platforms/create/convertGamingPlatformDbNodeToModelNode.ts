@@ -2,7 +2,7 @@ import {GamingPlatformNode as DbGamingPlatformNode} from "../../../../db/nodes/g
 import {GamingPlatformNode} from "../types/GamingPlatformNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
-export function convertOutputData(data: DbGamingPlatformNode): GamingPlatformNode {
+export function convertGamingPlatformDbNodeToModelNode(data: DbGamingPlatformNode): GamingPlatformNode {
     const node: GamingPlatformNode = {
         node_type: ModelNodeType.GamingPlatform,
         attributes: {

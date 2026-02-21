@@ -2,7 +2,7 @@ import {CreateGamingPlatformInput} from "./types/CreateGamingPlatformInput"
 import {GamingPlatformNode} from "./types/GamingPlatformNode"
 import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../../db/nodes/gaming-platforms/createNode"
-import {convertOutputData} from "./create/convertOutputData"
+import {convertGamingPlatformDbNodeToModelNode} from "./create/convertGamingPlatformDbNodeToModelNode"
 import {getNodeById} from "../../../db/nodes/gaming-platforms/getNodeById"
 import {getAllNodesOfType} from "../../../db/nodes/gaming-platforms/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
@@ -25,7 +25,7 @@ export const GamingPlatform = {
     async create(data: CreateGamingPlatformInput): Promise<GamingPlatformNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
-        const output = convertOutputData(result)
+        const output = convertGamingPlatformDbNodeToModelNode(result)
 
         return output
     },
@@ -37,7 +37,7 @@ export const GamingPlatform = {
             return false
         }
 
-        return convertOutputData(node)
+        return convertGamingPlatformDbNodeToModelNode(node)
     },
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<GamingPlatformNode[]> {
@@ -45,7 +45,7 @@ export const GamingPlatform = {
         const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {
-            nodes.push(convertOutputData(node))
+            nodes.push(convertGamingPlatformDbNodeToModelNode(node))
         })
 
         return nodes

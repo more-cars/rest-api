@@ -2,7 +2,7 @@ import {TrackLayoutNode as TrackLayoutNodeInput} from "../../../../db/nodes/trac
 import {TrackLayoutNode} from "../types/TrackLayoutNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
-export function convertOutputData(data: TrackLayoutNodeInput): TrackLayoutNode {
+export function convertTrackLayoutDbNodeToModelNode(data: TrackLayoutNodeInput): TrackLayoutNode {
     const node: TrackLayoutNode = {
         node_type: ModelNodeType.TrackLayout,
         attributes: {

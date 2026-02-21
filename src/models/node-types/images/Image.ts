@@ -3,7 +3,7 @@ import {CreateImageInput} from "./types/CreateImageInput"
 import {CreateImageGeneratedInput} from "./types/CreateImageGeneratedInput"
 import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../../db/nodes/images/createNode"
-import {convertOutputData} from "./create/convertOutputData"
+import {convertImageDbNodeToModelNode} from "./create/convertImageDbNodeToModelNode"
 import {getNodeById} from "../../../db/nodes/images/getNodeById"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {getAllNodesOfType} from "../../../db/nodes/images/getAllNodesOfType"
@@ -32,7 +32,7 @@ export const Image = {
         const generatedData = getGeneratedData()
         const input = convertInputData(Object.assign(data, generatedData))
         const result = await createNode(input)
-        const output = convertOutputData(result)
+        const output = convertImageDbNodeToModelNode(result)
 
         return output
     },
@@ -44,7 +44,7 @@ export const Image = {
             return false
         }
 
-        return convertOutputData(node)
+        return convertImageDbNodeToModelNode(node)
     },
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<ImageNode[]> {
@@ -52,7 +52,7 @@ export const Image = {
         const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {
-            nodes.push(convertOutputData(node))
+            nodes.push(convertImageDbNodeToModelNode(node))
         })
 
         return nodes

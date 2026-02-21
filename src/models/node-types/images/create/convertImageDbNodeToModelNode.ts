@@ -2,7 +2,7 @@ import {ImageNode as DbImageNode} from "../../../../db/nodes/images/types/ImageN
 import {ImageNode} from "../types/ImageNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
-export function convertOutputData(data: DbImageNode): ImageNode {
+export function convertImageDbNodeToModelNode(data: DbImageNode): ImageNode {
     const node: ImageNode = {
         node_type: ModelNodeType.Image,
         attributes: {

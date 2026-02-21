@@ -13,4 +13,4 @@ skip_if: async findById
             return false
         }
 
-        return convertOutputData(node)
+        return convert<%= h.changeCase.pascal(nodeType) %>DbNodeToModelNode(node)

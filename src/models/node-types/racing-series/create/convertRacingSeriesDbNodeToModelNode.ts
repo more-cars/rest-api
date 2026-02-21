@@ -2,7 +2,7 @@ import {RacingSeriesNode as DbRacingSeriesNode} from "../../../../db/nodes/racin
 import {RacingSeriesNode} from "../types/RacingSeriesNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
-export function convertOutputData(data: DbRacingSeriesNode): RacingSeriesNode {
+export function convertRacingSeriesDbNodeToModelNode(data: DbRacingSeriesNode): RacingSeriesNode {
     const node: RacingSeriesNode = {
         node_type: ModelNodeType.RacingSeries,
         attributes: {

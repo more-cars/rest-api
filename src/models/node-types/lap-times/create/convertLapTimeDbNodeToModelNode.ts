@@ -2,7 +2,7 @@ import {LapTimeNode as DbLapTimeNode} from "../../../../db/nodes/lap-times/types
 import {LapTimeNode} from "../types/LapTimeNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
-export function convertOutputData(data: DbLapTimeNode): LapTimeNode {
+export function convertLapTimeDbNodeToModelNode(data: DbLapTimeNode): LapTimeNode {
     const node: LapTimeNode = {
         node_type: ModelNodeType.LapTime,
         attributes: {

@@ -2,7 +2,7 @@ import {BrandNode} from "./types/BrandNode"
 import {CreateBrandInput} from "./types/CreateBrandInput"
 import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../../db/nodes/brands/createNode"
-import {convertOutputData} from "./create/convertOutputData"
+import {convertBrandDbNodeToModelNode} from "./create/convertBrandDbNodeToModelNode"
 import {getNodeById} from "../../../db/nodes/brands/getNodeById"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {getAllNodesOfType} from "../../../db/nodes/brands/getAllNodesOfType"
@@ -27,7 +27,7 @@ export const Brand = {
     async create(data: CreateBrandInput): Promise<BrandNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
-        const output = convertOutputData(result)
+        const output = convertBrandDbNodeToModelNode(result)
 
         return output
     },
@@ -39,7 +39,7 @@ export const Brand = {
             return false
         }
 
-        return convertOutputData(node)
+        return convertBrandDbNodeToModelNode(node)
     },
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<BrandNode[]> {
@@ -47,7 +47,7 @@ export const Brand = {
         const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {
-            nodes.push(convertOutputData(node))
+            nodes.push(convertBrandDbNodeToModelNode(node))
         })
 
         return nodes

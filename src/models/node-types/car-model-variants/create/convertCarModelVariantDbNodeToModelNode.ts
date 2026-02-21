@@ -2,7 +2,7 @@ import {CarModelVariantNode as DbCarModelVariantNode} from "../../../../db/nodes
 import {CarModelVariantNode} from "../types/CarModelVariantNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
-export function convertOutputData(data: DbCarModelVariantNode): CarModelVariantNode {
+export function convertCarModelVariantDbNodeToModelNode(data: DbCarModelVariantNode): CarModelVariantNode {
     const node: CarModelVariantNode = {
         node_type: ModelNodeType.CarModelVariant,
         attributes: {
