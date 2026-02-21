@@ -1,6 +1,7 @@
-import {ModelNodeType} from "../../../types/ModelNodeType"
+import type {ModelNode} from "../../../types/ModelNode"
+import type {ModelNodeType} from "../../../types/ModelNodeType"
 
-export type SessionResultNode = {
+export interface SessionResultNode extends ModelNode {
     node_type: ModelNodeType.SessionResult,
     attributes: {
         id: number

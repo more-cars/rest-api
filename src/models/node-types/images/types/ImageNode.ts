@@ -1,6 +1,7 @@
-import {ModelNodeType} from "../../../types/ModelNodeType"
+import type {ModelNode} from "../../../types/ModelNode"
+import type {ModelNodeType} from "../../../types/ModelNodeType"
 
-export type ImageNode = {
+export interface ImageNode extends ModelNode {
     node_type: ModelNodeType.Image,
     attributes: {
         id: number
