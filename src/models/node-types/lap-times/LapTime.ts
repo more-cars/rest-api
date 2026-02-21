@@ -27,9 +27,8 @@ export const LapTime = {
     async create(data: CreateLapTimeInput): Promise<LapTimeNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
-        const output = convertLapTimeDbNodeToModelNode(result)
 
-        return output
+        return convertLapTimeDbNodeToModelNode(result)
     },
 
     async findById(id: number): Promise<false | LapTimeNode> {

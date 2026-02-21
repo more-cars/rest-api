@@ -26,9 +26,8 @@ export const Company = {
     async create(data: CreateCompanyInput): Promise<CompanyNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
-        const output = convertCompanyDbNodeToModelNode(result)
 
-        return output
+        return convertCompanyDbNodeToModelNode(result)
     },
 
     async findById(id: number): Promise<false | CompanyNode> {

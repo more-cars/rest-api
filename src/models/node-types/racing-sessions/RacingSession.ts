@@ -27,9 +27,8 @@ export const RacingSession = {
     async create(data: CreateRacingSessionInput): Promise<RacingSessionNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
-        const output = convertRacingSessionDbNodeToModelNode(result)
 
-        return output
+        return convertRacingSessionDbNodeToModelNode(result)
     },
 
     async findById(id: number): Promise<false | RacingSessionNode> {

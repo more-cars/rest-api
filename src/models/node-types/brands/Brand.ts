@@ -27,9 +27,8 @@ export const Brand = {
     async create(data: CreateBrandInput): Promise<BrandNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
-        const output = convertBrandDbNodeToModelNode(result)
 
-        return output
+        return convertBrandDbNodeToModelNode(result)
     },
 
     async findById(id: number): Promise<false | BrandNode> {

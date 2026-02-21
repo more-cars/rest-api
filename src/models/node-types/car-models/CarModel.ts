@@ -28,9 +28,8 @@ export const CarModel = {
     async create(data: CreateCarModelInput): Promise<CarModelNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
-        const output = convertCarModelDbNodeToModelNode(result)
 
-        return output
+        return convertCarModelDbNodeToModelNode(result)
     },
 
     async findById(id: number): Promise<false | CarModelNode> {

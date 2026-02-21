@@ -30,9 +30,8 @@ export const RacingEvent = {
     async create(data: CreateRacingEventInput): Promise<RacingEventNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
-        const output = convertRacingEventDbNodeToModelNode(result)
 
-        return output
+        return convertRacingEventDbNodeToModelNode(result)
     },
 
     async findById(id: number): Promise<false | RacingEventNode> {

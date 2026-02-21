@@ -29,9 +29,8 @@ export const TrackLayout = {
     async create(data: CreateTrackLayoutInput): Promise<TrackLayoutNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
-        const output = convertTrackLayoutDbNodeToModelNode(result)
 
-        return output
+        return convertTrackLayoutDbNodeToModelNode(result)
     },
 
     async findById(id: number): Promise<false | TrackLayoutNode> {

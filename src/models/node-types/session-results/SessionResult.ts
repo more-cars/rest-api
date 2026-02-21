@@ -28,9 +28,8 @@ export const SessionResult = {
     async create(data: CreateSessionResultInput): Promise<SessionResultNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
-        const output = convertSessionResultDbNodeToModelNode(result)
 
-        return output
+        return convertSessionResultDbNodeToModelNode(result)
     },
 
     async findById(id: number): Promise<false | SessionResultNode> {

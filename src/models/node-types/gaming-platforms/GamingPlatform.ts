@@ -25,9 +25,8 @@ export const GamingPlatform = {
     async create(data: CreateGamingPlatformInput): Promise<GamingPlatformNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
-        const output = convertGamingPlatformDbNodeToModelNode(result)
 
-        return output
+        return convertGamingPlatformDbNodeToModelNode(result)
     },
 
     async findById(id: number): Promise<false | GamingPlatformNode> {

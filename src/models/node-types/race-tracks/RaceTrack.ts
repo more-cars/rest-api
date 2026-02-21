@@ -27,9 +27,8 @@ export const RaceTrack = {
     async create(data: CreateRaceTrackInput): Promise<RaceTrackNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
-        const output = convertRaceTrackDbNodeToModelNode(result)
 
-        return output
+        return convertRaceTrackDbNodeToModelNode(result)
     },
 
     async findById(id: number): Promise<false | RaceTrackNode> {

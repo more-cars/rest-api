@@ -26,9 +26,8 @@ export const RacingSeries = {
     async create(data: CreateRacingSeriesInput): Promise<RacingSeriesNode> {
         const input = convertInputData(data)
         const result = await createNode(input)
-        const output = convertRacingSeriesDbNodeToModelNode(result)
 
-        return output
+        return convertRacingSeriesDbNodeToModelNode(result)
     },
 
     async findById(id: number): Promise<false | RacingSeriesNode> {

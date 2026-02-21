@@ -32,9 +32,8 @@ export const Image = {
         const generatedData = getGeneratedData()
         const input = convertInputData(Object.assign(data, generatedData))
         const result = await createNode(input)
-        const output = convertImageDbNodeToModelNode(result)
 
-        return output
+        return convertImageDbNodeToModelNode(result)
     },
 
     async findById(id: number): Promise<false | ImageNode> {
