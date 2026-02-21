@@ -1,10 +1,9 @@
 import express from "express"
 import {RacingSeries} from "../../../models/node-types/racing-series/RacingSeries"
+import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
-
 import {sendResponse201} from "../../responses/sendResponse201"
 import {sendResponse304} from "../../responses/sendResponse304"
 import {sendResponse404} from "../../responses/sendResponse404"
@@ -15,8 +14,9 @@ export async function createHasPrimeImageRelation(req: express.Request, res: exp
     const imageId = parseInt(req.params.imageId)
 
     try {
-        const relation = await RacingSeries.createHasPrimeImageRelationship(racingSeriesId, imageId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.Image)
+        const modelRelation = await RacingSeries.createHasPrimeImageRelationship(racingSeriesId, imageId)
+        const relation = convertModelRelationToControllerRelation(modelRelation)
+        const marshalledData = marshalRelation(relation)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

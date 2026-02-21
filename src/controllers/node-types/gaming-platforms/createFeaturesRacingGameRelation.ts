@@ -1,7 +1,7 @@
 import express from "express"
 import {GamingPlatform} from "../../../models/node-types/gaming-platforms/GamingPlatform"
+import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 import {sendResponse201} from "../../responses/sendResponse201"
@@ -14,8 +14,9 @@ export async function createFeaturesRacingGameRelation(req: express.Request, res
     const racingGameId = parseInt(req.params.racingGameId)
 
     try {
-        const relation = await GamingPlatform.createFeaturesRacingGameRelationship(gamingPlatformId, racingGameId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.RacingGame)
+        const modelRelation = await GamingPlatform.createFeaturesRacingGameRelationship(gamingPlatformId, racingGameId)
+        const relation = convertModelRelationToControllerRelation(modelRelation)
+        const marshalledData = marshalRelation(relation)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

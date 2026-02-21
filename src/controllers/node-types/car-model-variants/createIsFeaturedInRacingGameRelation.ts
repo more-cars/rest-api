@@ -1,7 +1,7 @@
 import express from "express"
 import {CarModelVariant} from "../../../models/node-types/car-model-variants/CarModelVariant"
+import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 import {sendResponse201} from "../../responses/sendResponse201"
@@ -14,8 +14,9 @@ export async function createIsFeaturedInRacingGameRelation(req: express.Request,
     const racingGameId = parseInt(req.params.racingGameId)
 
     try {
-        const relation = await CarModelVariant.createIsFeaturedInRacingGameRelationship(carModelVariantId, racingGameId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.RacingGame)
+        const modelRelation = await CarModelVariant.createIsFeaturedInRacingGameRelationship(carModelVariantId, racingGameId)
+        const relation = convertModelRelationToControllerRelation(modelRelation)
+        const marshalledData = marshalRelation(relation)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

@@ -1,7 +1,7 @@
 import express from "express"
 import {TrackLayout} from "../../../models/node-types/track-layouts/TrackLayout"
+import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 import {sendResponse201} from "../../responses/sendResponse201"
@@ -14,8 +14,9 @@ export async function createIsFeaturedInRacingGameRelation(req: express.Request,
     const racingGameId = parseInt(req.params.racingGameId)
 
     try {
-        const relation = await TrackLayout.createIsFeaturedInRacingGameRelationship(trackLayoutId, racingGameId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.RacingGame)
+        const modelRelation = await TrackLayout.createIsFeaturedInRacingGameRelationship(trackLayoutId, racingGameId)
+        const relation = convertModelRelationToControllerRelation(modelRelation)
+        const marshalledData = marshalRelation(relation)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

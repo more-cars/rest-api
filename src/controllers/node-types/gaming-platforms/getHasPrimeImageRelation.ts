@@ -1,7 +1,7 @@
 import express from "express"
 import {GamingPlatform} from "../../../models/node-types/gaming-platforms/GamingPlatform"
+import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../models/types/RelNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
@@ -12,8 +12,9 @@ export async function getHasPrimeImageRelation(req: express.Request, res: expres
     const gamingPlatformId = parseInt(req.params.gamingPlatformId)
 
     try {
-        const relation = await GamingPlatform.getHasPrimeImageRelationship(gamingPlatformId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.Image)
+        const modelRelation = await GamingPlatform.getHasPrimeImageRelationship(gamingPlatformId)
+        const relation = convertModelRelationToControllerRelation(modelRelation)
+        const marshalledData = marshalRelation(relation)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

@@ -1,7 +1,7 @@
 import express from "express"
 import {RaceTrack} from "../../../models/node-types/race-tracks/RaceTrack"
+import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 
@@ -15,8 +15,9 @@ export async function createHasLayoutRelation(req: express.Request, res: express
     const trackLayoutId = parseInt(req.params.trackLayoutId)
 
     try {
-        const relation = await RaceTrack.createHasLayoutRelationship(raceTrackId, trackLayoutId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.TrackLayout)
+        const modelRelation = await RaceTrack.createHasLayoutRelationship(raceTrackId, trackLayoutId)
+        const relation = convertModelRelationToControllerRelation(modelRelation)
+        const marshalledData = marshalRelation(relation)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

@@ -1,7 +1,7 @@
 import express from "express"
 import {RacingEvent} from "../../../models/node-types/racing-events/RacingEvent"
+import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 
@@ -15,8 +15,9 @@ export async function createTookPlaceAtRaceTrackRelation(req: express.Request, r
     const raceTrackId = parseInt(req.params.raceTrackId)
 
     try {
-        const relation = await RacingEvent.createTookPlaceAtRaceTrackRelationship(racingEventId, raceTrackId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.RaceTrack)
+        const modelRelation = await RacingEvent.createTookPlaceAtRaceTrackRelationship(racingEventId, raceTrackId)
+        const relation = convertModelRelationToControllerRelation(modelRelation)
+        const marshalledData = marshalRelation(relation)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

@@ -1,0 +1,14 @@
+import type {Rel} from "../../models/relationships/types/Rel"
+import {mapModelRelationTypeToControllerRelationType} from "./mapModelRelationTypeToControllerRelationType"
+import type {Relation} from "./types/Relation"
+import {convertModelNodeToControllerNode} from "../nodes/convertModelNodeToControllerNode"
+
+export function convertModelRelationToControllerRelation(modelRelation: Rel) {
+    return {
+        id: modelRelation.id,
+        type: mapModelRelationTypeToControllerRelationType(modelRelation.type),
+        partner_node: convertModelNodeToControllerNode(modelRelation.destination),
+        created_at: modelRelation.created_at,
+        updated_at: modelRelation.updated_at,
+    } satisfies Relation
+}

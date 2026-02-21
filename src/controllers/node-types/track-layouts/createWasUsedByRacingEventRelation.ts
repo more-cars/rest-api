@@ -1,7 +1,7 @@
 import express from "express"
 import {TrackLayout} from "../../../models/node-types/track-layouts/TrackLayout"
+import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 import {sendResponse201} from "../../responses/sendResponse201"
@@ -14,8 +14,9 @@ export async function createWasUsedByRacingEventRelation(req: express.Request, r
     const racingEventId = parseInt(req.params.racingEventId)
 
     try {
-        const relation = await TrackLayout.createWasUsedByRacingEventRelationship(trackLayoutId, racingEventId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.RacingEvent)
+        const modelRelation = await TrackLayout.createWasUsedByRacingEventRelationship(trackLayoutId, racingEventId)
+        const relation = convertModelRelationToControllerRelation(modelRelation)
+        const marshalledData = marshalRelation(relation)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

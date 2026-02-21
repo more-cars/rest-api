@@ -1,7 +1,7 @@
 import express from "express"
 import {TrackLayout} from "../../../models/node-types/track-layouts/TrackLayout"
+import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 import {sendResponse201} from "../../responses/sendResponse201"
@@ -14,8 +14,9 @@ export async function createHasLapTimeRelation(req: express.Request, res: expres
     const lapTimeId = parseInt(req.params.lapTimeId)
 
     try {
-        const relation = await TrackLayout.createHasLapTimeRelationship(trackLayoutId, lapTimeId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.LapTime)
+        const modelRelation = await TrackLayout.createHasLapTimeRelationship(trackLayoutId, lapTimeId)
+        const relation = convertModelRelationToControllerRelation(modelRelation)
+        const marshalledData = marshalRelation(relation)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

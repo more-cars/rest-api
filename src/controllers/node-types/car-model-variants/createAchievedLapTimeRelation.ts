@@ -1,7 +1,7 @@
 import express from "express"
 import {CarModelVariant} from "../../../models/node-types/car-model-variants/CarModelVariant"
+import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 import {sendResponse201} from "../../responses/sendResponse201"
@@ -14,8 +14,9 @@ export async function createAchievedLapTimeRelation(req: express.Request, res: e
     const lapTimeId = parseInt(req.params.lapTimeId)
 
     try {
-        const relation = await CarModelVariant.createAchievedLapTimeRelationship(carModelVariantId, lapTimeId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.LapTime)
+        const modelRelation = await CarModelVariant.createAchievedLapTimeRelationship(carModelVariantId, lapTimeId)
+        const relation = convertModelRelationToControllerRelation(modelRelation)
+        const marshalledData = marshalRelation(relation)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

@@ -1,7 +1,7 @@
 import express from "express"
 import {TrackLayout} from "../../../models/node-types/track-layouts/TrackLayout"
+import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../models/types/RelNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
@@ -12,8 +12,9 @@ export async function getBelongsToRaceTrackRelation(req: express.Request, res: e
     const trackLayoutId = parseInt(req.params.trackLayoutId)
 
     try {
-        const relation = await TrackLayout.getBelongsToRaceTrackRelationship(trackLayoutId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.RaceTrack)
+        const modelRelation = await TrackLayout.getBelongsToRaceTrackRelationship(trackLayoutId)
+        const relation = convertModelRelationToControllerRelation(modelRelation)
+        const marshalledData = marshalRelation(relation)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

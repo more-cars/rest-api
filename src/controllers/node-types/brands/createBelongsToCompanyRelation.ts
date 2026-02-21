@@ -1,7 +1,7 @@
 import express from "express"
 import {Brand} from "../../../models/node-types/brands/Brand"
+import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
 import {marshalRelation} from "../../relations/marshalRelation"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 import {sendResponse201} from "../../responses/sendResponse201"
@@ -14,8 +14,9 @@ export async function createBelongsToCompanyRelation(req: express.Request, res: 
     const companyId = parseInt(req.params.companyId)
 
     try {
-        const relation = await Brand.createBelongsToCompanyRelationship(brandId, companyId)
-        const marshalledData = marshalRelation(relation, ControllerNodeType.Company)
+        const modelRelation = await Brand.createBelongsToCompanyRelationship(brandId, companyId)
+        const relation = convertModelRelationToControllerRelation(modelRelation)
+        const marshalledData = marshalRelation(relation)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {
