@@ -1,18 +1,14 @@
-import type {DbNode} from "../db/types/DbNode"
 import {fetchNodeById} from "../db/nodes/fetchNodeById"
+import {convertDbNodeToModelNode} from "./node-types/convertDbNodeToModelNode"
 
 export const Node = {
-    async findById(id: number): Promise<false | DbNode> {
-        const node = await fetchNodeById(id)
+    async findById(id: number) {
+        const dbNode = await fetchNodeById(id)
 
-        if (!node) {
+        if (!dbNode) {
             return false
         }
 
-        // TODO Properly map all db properties to the correct model properties
-        const properties = node.properties
-        properties.id = properties.mc_id
-
-        return node.properties as DbNode
+        return convertDbNodeToModelNode(dbNode)
     },
 }
