@@ -19,10 +19,10 @@ describe('Requesting a ›belongs-to-racing-event‹ relationship', () => {
         expect(validateJson(actualRelationship, RelationshipSchema))
             .toBeTruthy()
 
-        expect(actualRelationship.origin.properties.id)
+        expect(actualRelationship.origin.attributes.id)
             .toBe(expectedRacingSessionId)
 
-        expect(actualRelationship.destination.properties.id)
+        expect(actualRelationship.destination.attributes.id)
             .toBe(expectedRacingEventId)
     })
 

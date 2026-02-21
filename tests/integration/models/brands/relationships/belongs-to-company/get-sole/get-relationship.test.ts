@@ -19,10 +19,10 @@ describe('Requesting a ›belongs-to-company‹ relationship', () => {
         expect(validateJson(actualRelationship, RelationshipSchema))
             .toBeTruthy()
 
-        expect(actualRelationship.origin.properties.id)
+        expect(actualRelationship.origin.attributes.id)
             .toBe(expectedBrandId)
 
-        expect(actualRelationship.destination.properties.id)
+        expect(actualRelationship.destination.attributes.id)
             .toBe(expectedCompanyId)
     })
 

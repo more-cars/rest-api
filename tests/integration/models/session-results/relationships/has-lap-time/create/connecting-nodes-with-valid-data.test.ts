@@ -10,9 +10,9 @@ test('Creating a ›has-lap-time‹ relationship with valid data', async () => {
 
     const createdRelationship = await SessionResult.createHasLapTimeRelationship(sessionResult.properties.id, lapTime.properties.id)
 
-    expect(createdRelationship.origin.properties.id)
+    expect(createdRelationship.origin.attributes.id)
         .toEqual(sessionResult.properties.id)
-    expect(createdRelationship.destination.properties.id)
+    expect(createdRelationship.destination.attributes.id)
         .toEqual(lapTime.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()

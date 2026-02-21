@@ -19,10 +19,10 @@ describe('Requesting a ›took-place-at-race-track‹ relationship', () => {
         expect(validateJson(actualRelationship, RelationshipSchema))
             .toBeTruthy()
 
-        expect(actualRelationship.origin.properties.id)
+        expect(actualRelationship.origin.attributes.id)
             .toBe(expectedRacingEventId)
 
-        expect(actualRelationship.destination.properties.id)
+        expect(actualRelationship.destination.attributes.id)
             .toBe(expectedRaceTrackId)
     })
 

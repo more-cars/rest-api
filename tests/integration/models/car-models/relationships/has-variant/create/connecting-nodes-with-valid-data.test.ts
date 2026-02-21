@@ -10,9 +10,9 @@ test('Creating a ›has-variant‹ relationship with valid data', async () => {
 
     const createdRelationship = await CarModel.createHasVariantRelationship(carModel.properties.id, carModelVariant.properties.id)
 
-    expect(createdRelationship.origin.properties.id)
+    expect(createdRelationship.origin.attributes.id)
         .toEqual(carModel.properties.id)
-    expect(createdRelationship.destination.properties.id)
+    expect(createdRelationship.destination.attributes.id)
         .toEqual(carModelVariant.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()

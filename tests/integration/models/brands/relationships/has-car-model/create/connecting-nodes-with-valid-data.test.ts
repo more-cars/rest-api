@@ -10,9 +10,9 @@ test('Creating a ›has-car-model‹ relationship with valid data', async () => 
 
     const createdRelationship = await Brand.createHasCarModelRelationship(brand.properties.id, carModel.properties.id)
 
-    expect(createdRelationship.origin.properties.id)
+    expect(createdRelationship.origin.attributes.id)
         .toEqual(brand.properties.id)
-    expect(createdRelationship.destination.properties.id)
+    expect(createdRelationship.destination.attributes.id)
         .toEqual(carModel.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()

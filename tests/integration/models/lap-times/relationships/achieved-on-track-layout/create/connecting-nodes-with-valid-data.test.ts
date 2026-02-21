@@ -10,9 +10,9 @@ test('Creating a ›achieved-on-track-layout‹ relationship with valid data', a
 
     const createdRelationship = await LapTime.createAchievedOnTrackLayoutRelationship(lapTime.properties.id, trackLayout.properties.id)
 
-    expect(createdRelationship.origin.properties.id)
+    expect(createdRelationship.origin.attributes.id)
         .toEqual(lapTime.properties.id)
-    expect(createdRelationship.destination.properties.id)
+    expect(createdRelationship.destination.attributes.id)
         .toEqual(trackLayout.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()

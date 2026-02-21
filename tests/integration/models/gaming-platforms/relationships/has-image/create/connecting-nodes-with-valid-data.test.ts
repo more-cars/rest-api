@@ -10,9 +10,9 @@ test('Creating a ›has-image‹ relationship with valid data', async () => {
 
     const createdRelationship = await GamingPlatform.createHasImageRelationship(gamingPlatform.properties.id, image.properties.id)
 
-    expect(createdRelationship.origin.properties.id)
+    expect(createdRelationship.origin.attributes.id)
         .toEqual(gamingPlatform.properties.id)
-    expect(createdRelationship.destination.properties.id)
+    expect(createdRelationship.destination.attributes.id)
         .toEqual(image.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()

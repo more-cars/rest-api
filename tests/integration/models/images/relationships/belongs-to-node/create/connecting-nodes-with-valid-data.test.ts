@@ -10,9 +10,9 @@ test('Creating a ›belongs-to-node‹ relationship with valid data', async () =
 
     const createdRelationship = await Image.createBelongsToNodeRelationship(image.properties.id, brand.properties.id)
 
-    expect(createdRelationship.origin.properties.id)
+    expect(createdRelationship.origin.attributes.id)
         .toEqual(image.properties.id)
-    expect(createdRelationship.destination.properties.id)
+    expect(createdRelationship.destination.attributes.id)
         .toEqual(brand.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()

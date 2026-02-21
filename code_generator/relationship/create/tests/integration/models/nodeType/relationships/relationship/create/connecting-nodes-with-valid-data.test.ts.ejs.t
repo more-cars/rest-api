@@ -13,9 +13,9 @@ test('Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship 
 
     const createdRelationship = await <%= h.changeCase.pascal(startNodeType) %>.create<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>.id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>.id)
 
-    expect(createdRelationship.origin.properties.id)
+    expect(createdRelationship.origin.attributes.id)
         .toEqual(<%= h.changeCase.camel(startNodeType) %>.id)
-    expect(createdRelationship.destination.properties.id)
+    expect(createdRelationship.destination.attributes.id)
         .toEqual(<%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>.id)
     expect(createdRelationship.id)
         .toBeDefined()

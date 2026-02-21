@@ -17,10 +17,10 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
         expect(validateJson(actualRelationship, RelationshipSchema))
             .toBeTruthy()
 
-        expect(actualRelationship.origin.properties.id)
+        expect(actualRelationship.origin.attributes.id)
             .toBe(expectedRelationship.start_node.properties.id)
 
-        expect(actualRelationship.destination.properties.id)
+        expect(actualRelationship.destination.attributes.id)
             .toBe(expectedRelationship.end_node.properties.id)
     })
 

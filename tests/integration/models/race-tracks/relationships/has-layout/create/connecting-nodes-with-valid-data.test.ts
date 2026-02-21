@@ -10,9 +10,9 @@ test('Creating a ›has-layout‹ relationship with valid data', async () => {
 
     const createdRelationship = await RaceTrack.createHasLayoutRelationship(raceTrack.properties.id, trackLayout.properties.id)
 
-    expect(createdRelationship.origin.properties.id)
+    expect(createdRelationship.origin.attributes.id)
         .toEqual(raceTrack.properties.id)
-    expect(createdRelationship.destination.properties.id)
+    expect(createdRelationship.destination.attributes.id)
         .toEqual(trackLayout.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()

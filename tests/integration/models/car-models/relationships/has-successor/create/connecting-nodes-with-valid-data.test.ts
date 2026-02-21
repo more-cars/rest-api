@@ -10,9 +10,9 @@ test('Creating a ›has-successor‹ relationship with valid data', async () => 
 
     const createdRelationship = await CarModel.createHasSuccessorRelationship(carModel.properties.id, partnerNode.properties.id)
 
-    expect(createdRelationship.origin.properties.id)
+    expect(createdRelationship.origin.attributes.id)
         .toEqual(carModel.properties.id)
-    expect(createdRelationship.destination.properties.id)
+    expect(createdRelationship.destination.attributes.id)
         .toEqual(partnerNode.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()

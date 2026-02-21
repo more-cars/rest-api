@@ -10,9 +10,9 @@ test('Creating a ›released-on-gaming-platform‹ relationship with valid data'
 
     const createdRelationship = await RacingGame.createReleasedOnGamingPlatformRelationship(racingGame.properties.id, gamingPlatform.properties.id)
 
-    expect(createdRelationship.origin.properties.id)
+    expect(createdRelationship.origin.attributes.id)
         .toEqual(racingGame.properties.id)
-    expect(createdRelationship.destination.properties.id)
+    expect(createdRelationship.destination.attributes.id)
         .toEqual(gamingPlatform.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()

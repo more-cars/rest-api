@@ -10,9 +10,9 @@ test('Creating a ›belongs-to-company‹ relationship with valid data', async (
 
     const createdRelationship = await Brand.createBelongsToCompanyRelationship(brand.properties.id, company.properties.id)
 
-    expect(createdRelationship.origin.properties.id)
+    expect(createdRelationship.origin.attributes.id)
         .toEqual(brand.properties.id)
-    expect(createdRelationship.destination.properties.id)
+    expect(createdRelationship.destination.attributes.id)
         .toEqual(company.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()

@@ -10,9 +10,9 @@ test('Creating a ›has-image‹ relationship with valid data', async () => {
 
     const createdRelationship = await Company.createHasImageRelationship(company.properties.id, image.properties.id)
 
-    expect(createdRelationship.origin.properties.id)
+    expect(createdRelationship.origin.attributes.id)
         .toEqual(company.properties.id)
-    expect(createdRelationship.destination.properties.id)
+    expect(createdRelationship.destination.attributes.id)
         .toEqual(image.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()

@@ -22,10 +22,10 @@ describe('Requesting a ›<%= h.changeCase.kebab(relationshipName) %>‹ relatio
         expect(validateJson(actualRelationship, RelationshipSchema))
             .toBeTruthy()
 
-        expect(actualRelationship.origin.properties.id)
+        expect(actualRelationship.origin.attributes.id)
             .toBe(expected<%= h.changeCase.pascal(startNodeType) %>Id)
 
-        expect(actualRelationship.destination.properties.id)
+        expect(actualRelationship.destination.attributes.id)
             .toBe(expected<%= h.changeCase.pascal(endNodeType) %>Id)
     })
 

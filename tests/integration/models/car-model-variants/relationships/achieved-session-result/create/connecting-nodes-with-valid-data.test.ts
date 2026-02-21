@@ -10,9 +10,9 @@ test('Creating a ›achieved-session-result‹ relationship with valid data', as
 
     const createdRelationship = await CarModelVariant.createAchievedSessionResultRelationship(carModelVariant.properties.id, sessionResult.properties.id)
 
-    expect(createdRelationship.origin.properties.id)
+    expect(createdRelationship.origin.attributes.id)
         .toEqual(carModelVariant.properties.id)
-    expect(createdRelationship.destination.properties.id)
+    expect(createdRelationship.destination.attributes.id)
         .toEqual(sessionResult.properties.id)
     expect(createdRelationship.id)
         .toBeDefined()

@@ -15,9 +15,9 @@ describe('Creating a 1:n relationship', () => {
         const newRelationship = await Brand.createHasCarModelRelationship(originId, destinationId)
         expect(newRelationship.id)
             .not.to.equal(foreignRelationship.id)
-        expect(newRelationship.origin.properties.id)
+        expect(newRelationship.origin.attributes.id)
             .not.to.equal(foreignRelationship.start_node.properties.id)
-        expect(newRelationship.destination.properties.id)
+        expect(newRelationship.destination.attributes.id)
             .to.equal(foreignRelationship.end_node.properties.id)
 
         const refetchedForeignRelationship = await getRelationshipById(foreignRelationship.id)
