@@ -2,7 +2,7 @@ import type {RelType} from "./types/RelType"
 import {getSpecificRelationship} from "../../db/relationships/getSpecificRelationship"
 import {mapModelRelTypeToDbRelationshipType} from "./mapModelRelTypeToDbRelationshipType"
 import type {Rel} from "./types/Rel"
-import type {DbNode} from "../../db/types/DbNode"
+import {convertDbNodeToModelNode} from "../node-types/convertDbNodeToModelNode"
 
 export async function getSpecificRel(
     originId: number,
@@ -22,8 +22,8 @@ export async function getSpecificRel(
     const modelRelationship: Rel = {
         id: dbRelationship.id,
         type: relationshipType,
-        origin: dbRelationship.start_node as DbNode, // TODO remove type assertion
-        destination: dbRelationship.end_node as DbNode, // TODO remove type assertion
+        origin: convertDbNodeToModelNode(dbRelationship.start_node),
+        destination: convertDbNodeToModelNode(dbRelationship.end_node),
         created_at: dbRelationship.created_at,
         updated_at: dbRelationship.updated_at,
     }

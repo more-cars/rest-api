@@ -1,16 +1,16 @@
 import type {Relationship} from "../../db/types/Relationship"
-import {Rel} from "./types/Rel"
+import type {Rel} from "./types/Rel"
 import {mapDbRelationshipTypeToModelRelType} from "./mapDbRelationshipTypeToModelRelType"
-import {DbNode} from "../../db/types/DbNode"
+import {convertDbNodeToModelNode} from "../node-types/convertDbNodeToModelNode"
 
-export async function convertDbRelToModelRel(relationship: Relationship) {
+export async function convertDbRelToModelRel(dbRelationship: Relationship) {
     const rel: Rel = {
-        id: relationship.id,
-        type: mapDbRelationshipTypeToModelRelType(relationship.type),
-        origin: relationship.start_node as DbNode, // TODO return model node instead of db node
-        destination: relationship.end_node as DbNode, // TODO return model node instead of db node
-        created_at: relationship.created_at,
-        updated_at: relationship.updated_at,
+        id: dbRelationship.id,
+        type: mapDbRelationshipTypeToModelRelType(dbRelationship.type),
+        origin: convertDbNodeToModelNode(dbRelationship.start_node),
+        destination: convertDbNodeToModelNode(dbRelationship.end_node),
+        created_at: dbRelationship.created_at,
+        updated_at: dbRelationship.updated_at,
     }
 
     return rel

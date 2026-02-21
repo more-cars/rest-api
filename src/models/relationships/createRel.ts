@@ -3,7 +3,7 @@ import type {RelationshipType} from "../../db/types/RelationshipType"
 import {mapModelRelTypeToDbRelationshipType} from "./mapModelRelTypeToDbRelationshipType"
 import {createRelationship} from "../../db/relationships/createRelationship"
 import type {Rel} from "./types/Rel"
-import type {DbNode} from "../../db/types/DbNode"
+import {convertDbNodeToModelNode} from "../node-types/convertDbNodeToModelNode"
 
 export async function createRel(originId: number, destinationId: number, relType: RelType) {
     const dbRelationshipType: RelationshipType = mapModelRelTypeToDbRelationshipType(relType)
@@ -21,8 +21,8 @@ export async function createRel(originId: number, destinationId: number, relType
     const modelRel: Rel = {
         id: dbRelationship.id,
         type: relType,
-        origin: dbRelationship.start_node as DbNode, // TODO remove type assertion
-        destination: dbRelationship.end_node as DbNode, // TODO remove type assertion
+        origin: convertDbNodeToModelNode(dbRelationship.start_node),
+        destination: convertDbNodeToModelNode(dbRelationship.end_node),
         created_at: dbRelationship.created_at,
         updated_at: dbRelationship.updated_at
     }

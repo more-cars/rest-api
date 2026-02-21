@@ -1,6 +1,6 @@
 import {DbNodeType} from "./DbNodeType"
 
-export type DbNode = {
+export interface DbNode {
     node_type: DbNodeType,
     properties: {
         id: number
