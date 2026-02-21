@@ -3,7 +3,7 @@ import {GamingPlatformNode} from "../types/GamingPlatformNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
 export function convertGamingPlatformDbNodeToModelNode(data: DbGamingPlatformNode): GamingPlatformNode {
-    const node: GamingPlatformNode = {
+    return {
         node_type: ModelNodeType.GamingPlatform,
         attributes: {
             id: data.properties.id,
@@ -12,8 +12,6 @@ export function convertGamingPlatformDbNodeToModelNode(data: DbGamingPlatformNod
             manufacturer: data.properties.manufacturer,
             created_at: data.properties.created_at,
             updated_at: data.properties.updated_at,
-        }
-    }
-
-    return node
+        },
+    } satisfies GamingPlatformNode
 }

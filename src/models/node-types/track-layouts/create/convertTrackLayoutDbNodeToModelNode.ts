@@ -3,7 +3,7 @@ import {TrackLayoutNode} from "../types/TrackLayoutNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
 export function convertTrackLayoutDbNodeToModelNode(data: TrackLayoutNodeInput): TrackLayoutNode {
-    const node: TrackLayoutNode = {
+    return {
         node_type: ModelNodeType.TrackLayout,
         attributes: {
             id: data.properties.id,
@@ -18,8 +18,6 @@ export function convertTrackLayoutDbNodeToModelNode(data: TrackLayoutNodeInput):
             surface: data.properties.surface,
             created_at: data.properties.created_at,
             updated_at: data.properties.updated_at,
-        }
-    }
-
-    return node
+        },
+    } satisfies TrackLayoutNode
 }

@@ -3,7 +3,7 @@ import {SessionResultNode} from "../types/SessionResultNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
 export function convertSessionResultDbNodeToModelNode(data: DbSessionResultNode): SessionResultNode {
-    const node: SessionResultNode = {
+    return {
         node_type: ModelNodeType.SessionResult,
         attributes: {
             id: data.properties.id,
@@ -17,8 +17,6 @@ export function convertSessionResultDbNodeToModelNode(data: DbSessionResultNode)
             points: data.properties.points,
             created_at: data.properties.created_at,
             updated_at: data.properties.updated_at,
-        }
-    }
-
-    return node
+        },
+    } satisfies SessionResultNode
 }

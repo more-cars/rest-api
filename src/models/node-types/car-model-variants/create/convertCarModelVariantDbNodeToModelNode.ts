@@ -3,7 +3,7 @@ import {CarModelVariantNode} from "../types/CarModelVariantNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
 export function convertCarModelVariantDbNodeToModelNode(data: DbCarModelVariantNode): CarModelVariantNode {
-    const node: CarModelVariantNode = {
+    return {
         node_type: ModelNodeType.CarModelVariant,
         attributes: {
             id: data.properties.id,
@@ -45,8 +45,6 @@ export function convertCarModelVariantDbNodeToModelNode(data: DbCarModelVariantN
             total_production: data.properties.total_production,
             created_at: data.properties.created_at,
             updated_at: data.properties.updated_at,
-        }
-    }
-
-    return node
+        },
+    } satisfies CarModelVariantNode
 }

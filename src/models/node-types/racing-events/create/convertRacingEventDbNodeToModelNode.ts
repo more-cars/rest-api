@@ -3,7 +3,7 @@ import {RacingEventNode} from "../types/RacingEventNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
 export function convertRacingEventDbNodeToModelNode(data: DbRacingEventNode): RacingEventNode {
-    const node: RacingEventNode = {
+    return {
         node_type: ModelNodeType.RacingEvent,
         attributes: {
             id: data.properties.id,
@@ -13,8 +13,6 @@ export function convertRacingEventDbNodeToModelNode(data: DbRacingEventNode): Ra
             date_to: data.properties.date_to,
             created_at: data.properties.created_at,
             updated_at: data.properties.updated_at,
-        }
-    }
-
-    return node
+        },
+    } satisfies RacingEventNode
 }

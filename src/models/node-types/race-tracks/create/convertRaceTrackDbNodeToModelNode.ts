@@ -3,7 +3,7 @@ import {RaceTrackNode} from "../types/RaceTrackNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
 export function convertRaceTrackDbNodeToModelNode(data: DbRaceTrackNode): RaceTrackNode {
-    const node: RaceTrackNode = {
+    return {
         node_type: ModelNodeType.RaceTrack,
         attributes: {
             id: data.properties.id,
@@ -15,8 +15,6 @@ export function convertRaceTrackDbNodeToModelNode(data: DbRaceTrackNode): RaceTr
             geo_position: data.properties.geo_position,
             created_at: data.properties.created_at,
             updated_at: data.properties.updated_at,
-        }
-    }
-
-    return node
+        },
+    } satisfies RaceTrackNode
 }

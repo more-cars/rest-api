@@ -3,7 +3,7 @@ import {BrandNode} from "../types/BrandNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
 export function convertBrandDbNodeToModelNode(data: DbBrandNode): BrandNode {
-    const node: BrandNode = {
+    return {
         node_type: ModelNodeType.Brand,
         attributes: {
             id: data.properties.id,
@@ -15,8 +15,6 @@ export function convertBrandDbNodeToModelNode(data: DbBrandNode): BrandNode {
             hsn: data.properties.hsn,
             created_at: data.properties.created_at,
             updated_at: data.properties.updated_at,
-        }
-    }
-
-    return node
+        },
+    } satisfies BrandNode
 }

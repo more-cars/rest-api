@@ -3,7 +3,7 @@ import {RacingSessionNode} from "../types/RacingSessionNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
 export function convertRacingSessionDbNodeToModelNode(data: DbRacingSessionNode): RacingSessionNode {
-    const node: RacingSessionNode = {
+    return {
         node_type: ModelNodeType.RacingSession,
         attributes: {
             id: data.properties.id,
@@ -16,9 +16,7 @@ export function convertRacingSessionDbNodeToModelNode(data: DbRacingSessionNode)
             distance_unit: data.properties.distance_unit,
             created_at: data.properties.created_at,
             updated_at: data.properties.updated_at,
-        }
-    }
-
-    return node
+        },
+    } satisfies RacingSessionNode
 }
 

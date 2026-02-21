@@ -3,7 +3,7 @@ import {ImageNode} from "../types/ImageNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
 export function convertImageDbNodeToModelNode(data: DbImageNode): ImageNode {
-    const node: ImageNode = {
+    return {
         node_type: ModelNodeType.Image,
         attributes: {
             id: data.properties.id,
@@ -24,8 +24,6 @@ export function convertImageDbNodeToModelNode(data: DbImageNode): ImageNode {
             image_url_xs: data.properties.image_url_xs,
             created_at: data.properties.created_at,
             updated_at: data.properties.updated_at,
-        }
-    }
-
-    return node
+        },
+    } satisfies ImageNode
 }

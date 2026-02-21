@@ -3,7 +3,7 @@ import {CompanyNode} from "../types/CompanyNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
 export function convertCompanyDbNodeToModelNode(data: DbCompanyNode): CompanyNode {
-    const node: CompanyNode = {
+    return {
         node_type: ModelNodeType.Company,
         attributes: {
             id: data.properties.id,
@@ -14,8 +14,6 @@ export function convertCompanyDbNodeToModelNode(data: DbCompanyNode): CompanyNod
             legal_headquarters_location: data.properties.legal_headquarters_location,
             created_at: data.properties.created_at,
             updated_at: data.properties.updated_at,
-        }
-    }
-
-    return node
+        },
+    } satisfies CompanyNode
 }

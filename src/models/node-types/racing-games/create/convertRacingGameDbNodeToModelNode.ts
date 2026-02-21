@@ -3,7 +3,7 @@ import {RacingGameNode} from "../types/RacingGameNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
 export function convertRacingGameDbNodeToModelNode(data: DbRacingGameNode): RacingGameNode {
-    const node: RacingGameNode = {
+    return {
         node_type: ModelNodeType.RacingGame,
         attributes: {
             id: data.properties.id,
@@ -13,8 +13,6 @@ export function convertRacingGameDbNodeToModelNode(data: DbRacingGameNode): Raci
             publisher: data.properties.publisher,
             created_at: data.properties.created_at,
             updated_at: data.properties.updated_at,
-        }
-    }
-
-    return node
+        },
+    } satisfies RacingGameNode
 }

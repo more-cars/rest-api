@@ -3,7 +3,7 @@ import {LapTimeNode} from "../types/LapTimeNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 
 export function convertLapTimeDbNodeToModelNode(data: DbLapTimeNode): LapTimeNode {
-    const node: LapTimeNode = {
+    return {
         node_type: ModelNodeType.LapTime,
         attributes: {
             id: data.properties.id,
@@ -12,8 +12,6 @@ export function convertLapTimeDbNodeToModelNode(data: DbLapTimeNode): LapTimeNod
             date: data.properties.date,
             created_at: data.properties.created_at,
             updated_at: data.properties.updated_at,
-        }
-    }
-
-    return node
+        },
+    } satisfies LapTimeNode
 }
