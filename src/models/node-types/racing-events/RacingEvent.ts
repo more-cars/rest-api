@@ -2,7 +2,7 @@ import {CreateRacingEventInput} from "./types/CreateRacingEventInput"
 import {RacingEventNode} from "./types/RacingEventNode"
 import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../../db/nodes/racing-events/createNode"
-import {convertRacingEventDbNodeToModelNode} from "./create/convertRacingEventDbNodeToModelNode"
+import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/nodes/racing-events/getNodeById"
 import {getAllNodesOfType} from "../../../db/nodes/racing-events/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
@@ -31,7 +31,7 @@ export const RacingEvent = {
         const input = convertInputData(data)
         const result = await createNode(input)
 
-        return convertRacingEventDbNodeToModelNode(result)
+        return convertDbNodeToModelNode(result) as RacingEventNode
     },
 
     async findById(id: number): Promise<false | RacingEventNode> {
@@ -41,7 +41,7 @@ export const RacingEvent = {
             return false
         }
 
-        return convertRacingEventDbNodeToModelNode(node)
+        return convertDbNodeToModelNode(node) as RacingEventNode
     },
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<RacingEventNode[]> {
@@ -49,7 +49,7 @@ export const RacingEvent = {
         const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {
-            nodes.push(convertRacingEventDbNodeToModelNode(node))
+            nodes.push(convertDbNodeToModelNode(node) as RacingEventNode)
         })
 
         return nodes

@@ -2,7 +2,7 @@ import {CreateTrackLayoutInput} from "./types/CreateTrackLayoutInput"
 import {TrackLayoutNode} from "./types/TrackLayoutNode"
 import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../../db/nodes/track-layouts/createNode"
-import {convertTrackLayoutDbNodeToModelNode} from "./create/convertTrackLayoutDbNodeToModelNode"
+import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/nodes/track-layouts/getNodeById"
 import {getAllNodesOfType} from "../../../db/nodes/track-layouts/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
@@ -30,7 +30,7 @@ export const TrackLayout = {
         const input = convertInputData(data)
         const result = await createNode(input)
 
-        return convertTrackLayoutDbNodeToModelNode(result)
+        return convertDbNodeToModelNode(result) as TrackLayoutNode
     },
 
     async findById(id: number): Promise<false | TrackLayoutNode> {
@@ -40,7 +40,7 @@ export const TrackLayout = {
             return false
         }
 
-        return convertTrackLayoutDbNodeToModelNode(node)
+        return convertDbNodeToModelNode(node) as TrackLayoutNode
     },
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<TrackLayoutNode[]> {
@@ -48,7 +48,7 @@ export const TrackLayout = {
         const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {
-            nodes.push(convertTrackLayoutDbNodeToModelNode(node))
+            nodes.push(convertDbNodeToModelNode(node) as TrackLayoutNode)
         })
 
         return nodes

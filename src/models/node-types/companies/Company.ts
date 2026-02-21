@@ -2,7 +2,7 @@ import {CreateCompanyInput} from "./types/CreateCompanyInput"
 import {CompanyNode} from "./types/CompanyNode"
 import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../../db/nodes/companies/createNode"
-import {convertCompanyDbNodeToModelNode} from "./create/convertCompanyDbNodeToModelNode"
+import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/nodes/companies/getNodeById"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {getAllNodesOfType} from "../../../db/nodes/companies/getAllNodesOfType"
@@ -27,7 +27,7 @@ export const Company = {
         const input = convertInputData(data)
         const result = await createNode(input)
 
-        return convertCompanyDbNodeToModelNode(result)
+        return convertDbNodeToModelNode(result) as CompanyNode
     },
 
     async findById(id: number): Promise<false | CompanyNode> {
@@ -37,7 +37,7 @@ export const Company = {
             return false
         }
 
-        return convertCompanyDbNodeToModelNode(node)
+        return convertDbNodeToModelNode(node) as CompanyNode
     },
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<CompanyNode[]> {
@@ -45,7 +45,7 @@ export const Company = {
         const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {
-            nodes.push(convertCompanyDbNodeToModelNode(node))
+            nodes.push(convertDbNodeToModelNode(node) as CompanyNode)
         })
 
         return nodes

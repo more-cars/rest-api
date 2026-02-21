@@ -3,7 +3,7 @@ import {CreateImageInput} from "./types/CreateImageInput"
 import {CreateImageGeneratedInput} from "./types/CreateImageGeneratedInput"
 import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../../db/nodes/images/createNode"
-import {convertImageDbNodeToModelNode} from "./create/convertImageDbNodeToModelNode"
+import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/nodes/images/getNodeById"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {getAllNodesOfType} from "../../../db/nodes/images/getAllNodesOfType"
@@ -26,7 +26,7 @@ import {convertDbRelToModelRel} from "../../relationships/convertDbRelToModelRel
 import {getRelationshipCollection} from "../../../db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../db/types/RelationshipType"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
-import {DbNode} from "../../../db/types/DbNode"
+import type {ModelNode} from "../../types/ModelNode"
 
 export const Image = {
     async create(data: CreateImageInput): Promise<ImageNode> {
@@ -34,7 +34,7 @@ export const Image = {
         const input = convertInputData(Object.assign(data, generatedData))
         const result = await createNode(input)
 
-        return convertImageDbNodeToModelNode(result)
+        return convertDbNodeToModelNode(result) as ImageNode
     },
 
     async findById(id: number): Promise<false | ImageNode> {
@@ -44,7 +44,7 @@ export const Image = {
             return false
         }
 
-        return convertImageDbNodeToModelNode(node)
+        return convertDbNodeToModelNode(node) as ImageNode
     },
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<ImageNode[]> {
@@ -52,7 +52,7 @@ export const Image = {
         const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {
-            nodes.push(convertImageDbNodeToModelNode(node))
+            nodes.push(convertDbNodeToModelNode(node) as ImageNode)
         })
 
         return nodes
@@ -300,6 +300,6 @@ function getGeneratedData(): CreateImageGeneratedInput {
     return generatedData
 }
 
-function nodeIsAnImageNode(node: DbNode) {
-    return 'image_url_original' in node
+function nodeIsAnImageNode(node: ModelNode) {
+    return 'image_url_original' in node.attributes
 }

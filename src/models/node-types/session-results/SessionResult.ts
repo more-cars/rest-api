@@ -2,7 +2,7 @@ import {CreateSessionResultInput} from "./types/CreateSessionResultInput"
 import {SessionResultNode} from "./types/SessionResultNode"
 import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../../db/nodes/session-results/createNode"
-import {convertSessionResultDbNodeToModelNode} from "./create/convertSessionResultDbNodeToModelNode"
+import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/nodes/session-results/getNodeById"
 import {getAllNodesOfType} from "../../../db/nodes/session-results/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
@@ -29,7 +29,7 @@ export const SessionResult = {
         const input = convertInputData(data)
         const result = await createNode(input)
 
-        return convertSessionResultDbNodeToModelNode(result)
+        return convertDbNodeToModelNode(result) as SessionResultNode
     },
 
     async findById(id: number): Promise<false | SessionResultNode> {
@@ -39,7 +39,7 @@ export const SessionResult = {
             return false
         }
 
-        return convertSessionResultDbNodeToModelNode(node)
+        return convertDbNodeToModelNode(node) as SessionResultNode
     },
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<SessionResultNode[]> {
@@ -47,7 +47,7 @@ export const SessionResult = {
         const nodesDb = await getAllNodesOfType(options)
 
         nodesDb.forEach(node => {
-            nodes.push(convertSessionResultDbNodeToModelNode(node))
+            nodes.push(convertDbNodeToModelNode(node) as SessionResultNode)
         })
 
         return nodes
