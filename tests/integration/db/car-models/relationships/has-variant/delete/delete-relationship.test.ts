@@ -1,5 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
@@ -8,7 +9,7 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 
 describe('Trying to delete a ›has-variant‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.CarModel, ControllerNodeType.CarModelVariant, RelationshipType.CarModelHasVariant)
+        const seededRelationship = await seedRelationship(DbNodeType.CarModel, DbNodeType.CarModelVariant, RelationshipType.CarModelHasVariant)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,
@@ -36,8 +37,8 @@ describe('Trying to delete a ›has-variant‹ relationship', () => {
     })
 
     test('nodes exists, but not the relationship', async () => {
-        const carModel = await seedNode(ControllerNodeType.CarModel)
-        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+        const carModel = await seedNode(DbNodeType.CarModel)
+        const carModelVariant = await seedNode(DbNodeType.CarModelVariant)
 
         const relationship = await deleteSpecificRelationship(
             carModel.properties.id,

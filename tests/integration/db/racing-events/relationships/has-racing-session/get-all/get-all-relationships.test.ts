@@ -1,16 +1,16 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Requesting all ›has-racing-session‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
-        await seedRelationshipForStartNode(racingEvent.properties.id, ControllerNodeType.RacingSession, RelationshipType.RacingEventHasRacingSession)
-        await seedRelationshipForStartNode(racingEvent.properties.id, ControllerNodeType.RacingSession, RelationshipType.RacingEventHasRacingSession)
+        const racingEvent = await seedNode(DbNodeType.RacingEvent)
+        await seedRelationshipForStartNode(racingEvent.properties.id, DbNodeType.RacingSession, RelationshipType.RacingEventHasRacingSession)
+        await seedRelationshipForStartNode(racingEvent.properties.id, DbNodeType.RacingSession, RelationshipType.RacingEventHasRacingSession)
 
         const relationships = await getRelationshipCollection(
             racingEvent.properties.id,
@@ -23,7 +23,7 @@ describe('Requesting all ›has-racing-session‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+        const racingEvent = await seedNode(DbNodeType.RacingEvent)
 
         const relationships = await getRelationshipCollection(
             racingEvent.properties.id,

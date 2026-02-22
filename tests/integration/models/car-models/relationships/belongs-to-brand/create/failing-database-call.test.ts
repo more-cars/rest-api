@@ -1,6 +1,6 @@
 import {expect, test, vi} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {CarModel} from "../../../../../../../src/models/node-types/car-models/CarModel"
 
 test('A completely valid request, but the database call fails for some reason', async () => {
@@ -10,8 +10,8 @@ test('A completely valid request, but the database call fails for some reason', 
         }
     })
 
-    const carModel = await seedNode(ControllerNodeType.CarModel)
-    const brand = await seedNode(ControllerNodeType.Brand)
+    const carModel = await seedNode(DbNodeType.CarModel)
+    const brand = await seedNode(DbNodeType.Brand)
 
     await expect(CarModel.createBelongsToBrandRelationship(carModel.properties.id, brand.properties.id))
         .rejects

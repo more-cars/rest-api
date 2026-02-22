@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {Image} from "../../../../../src/models/node-types/images/Image"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 
 test('Fetching an image that does not exist should return "false"', async () => {
     const expectedNode = false
@@ -12,7 +12,7 @@ test('Fetching an image that does not exist should return "false"', async () => 
 })
 
 test('When the image exists it should be returned', async () => {
-    const expectedNode = await seedNode(ControllerNodeType.Image)
+    const expectedNode = await seedNode(DbNodeType.Image)
     const actualNode = await Image.findById(expectedNode.properties.id)
 
     expect(actualNode.attributes)

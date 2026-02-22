@@ -1,6 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {RacingGame} from "../../../../../../../src/models/node-types/racing-games/RacingGame"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
@@ -8,9 +9,9 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 
 describe('Requesting all ›features-car-model-variant‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const racingGame = await seedNode(ControllerNodeType.RacingGame)
-        await seedRelationshipForStartNode(racingGame.properties.id, ControllerNodeType.CarModelVariant, RelationshipType.RacingGameFeaturesCarModelVariant)
-        await seedRelationshipForStartNode(racingGame.properties.id, ControllerNodeType.CarModelVariant, RelationshipType.RacingGameFeaturesCarModelVariant)
+        const racingGame = await seedNode(DbNodeType.RacingGame)
+        await seedRelationshipForStartNode(racingGame.properties.id, DbNodeType.CarModelVariant, RelationshipType.RacingGameFeaturesCarModelVariant)
+        await seedRelationshipForStartNode(racingGame.properties.id, DbNodeType.CarModelVariant, RelationshipType.RacingGameFeaturesCarModelVariant)
 
         const relationships = await RacingGame.getAllFeaturesCarModelVariantRelationships(racingGame.properties.id)
 
@@ -19,7 +20,7 @@ describe('Requesting all ›features-car-model-variant‹ relationships', () => 
     })
 
     test('node exists, but no relationships', async () => {
-        const racingGame = await seedNode(ControllerNodeType.RacingGame)
+        const racingGame = await seedNode(DbNodeType.RacingGame)
 
         const relationships = await RacingGame.getAllFeaturesCarModelVariantRelationships(racingGame.properties.id)
 

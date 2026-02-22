@@ -1,16 +1,16 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Requesting all ›has-layout‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
-        await seedRelationshipForStartNode(raceTrack.properties.id, ControllerNodeType.TrackLayout, RelationshipType.RaceTrackHasLayout)
-        await seedRelationshipForStartNode(raceTrack.properties.id, ControllerNodeType.TrackLayout, RelationshipType.RaceTrackHasLayout)
+        const raceTrack = await seedNode(DbNodeType.RaceTrack)
+        await seedRelationshipForStartNode(raceTrack.properties.id, DbNodeType.TrackLayout, RelationshipType.RaceTrackHasLayout)
+        await seedRelationshipForStartNode(raceTrack.properties.id, DbNodeType.TrackLayout, RelationshipType.RaceTrackHasLayout)
 
         const relationships = await getRelationshipCollection(
             raceTrack.properties.id,
@@ -23,7 +23,7 @@ describe('Requesting all ›has-layout‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
+        const raceTrack = await seedNode(DbNodeType.RaceTrack)
 
         const relationships = await getRelationshipCollection(
             raceTrack.properties.id,

@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {RacingSessionNode} from "../../../../../../src/db/nodes/racing-sessions/types/RacingSessionNode"
 import {RacingSession} from "../../../../../../src/models/node-types/racing-sessions/RacingSession"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 
 describe('A sorted "get all RACING SESSION nodes" request returns the nodes in correct order', () => {
     test('when there exist no RACING SESSION nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RacingSession)
+        await deleteAllNodesOfType(DbNodeType.RacingSession)
 
         const expectedNodes: RacingSessionNode[] = []
         const actualNodes = await RacingSession.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,14 +17,14 @@ describe('A sorted "get all RACING SESSION nodes" request returns the nodes in c
     })
 
     test('when there exist RACING SESSION nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RacingSession)
-        const nodeA = await seedNode(ControllerNodeType.RacingSession, {
+        await deleteAllNodesOfType(DbNodeType.RacingSession)
+        const nodeA = await seedNode(DbNodeType.RacingSession, {
             name: 'A Node'
         }) as unknown as RacingSessionNode
-        const nodeB = await seedNode(ControllerNodeType.RacingSession, {
+        const nodeB = await seedNode(DbNodeType.RacingSession, {
             name: 'B Node'
         }) as unknown as RacingSessionNode
-        const nodeC = await seedNode(ControllerNodeType.RacingSession, {
+        const nodeC = await seedNode(DbNodeType.RacingSession, {
             name: 'C Node'
         }) as unknown as RacingSessionNode
 

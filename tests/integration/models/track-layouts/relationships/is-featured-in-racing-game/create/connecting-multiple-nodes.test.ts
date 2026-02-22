@@ -1,16 +1,15 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {TrackLayout} from "../../../../../../../src/models/node-types/track-layouts/TrackLayout"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A TRACK LAYOUT can have multiple ›is-featured-in-racing-game‹ relationships', async () => {
-    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
+    const trackLayout = await seedNode(DbNodeType.TrackLayout)
     const racingGamesAmount = 3
-    const racingGames = await seedNodes(ControllerNodeType.RacingGame, racingGamesAmount)
+    const racingGames = await seedNodes(DbNodeType.RacingGame, racingGamesAmount)
 
     for (const racingGame of racingGames) {
         await TrackLayout.createIsFeaturedInRacingGameRelationship(trackLayout.properties.id, racingGame.properties.id)

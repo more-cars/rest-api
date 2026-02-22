@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 
 test('Trying to create a ›has-car-model‹ relationship with nodes that do not exist', async () => {
-    const brand = await seedNode(ControllerNodeType.Brand)
-    const carModel = await seedNode(ControllerNodeType.CarModel)
+    const brand = await seedNode(DbNodeType.Brand)
+    const carModel = await seedNode(DbNodeType.CarModel)
 
     await expect(Brand.createHasCarModelRelationship(-42, carModel.properties.id))
         .rejects

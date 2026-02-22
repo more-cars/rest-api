@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {GamingPlatformNode} from "../../../../../../src/db/nodes/gaming-platforms/types/GamingPlatformNode"
 import {GamingPlatform} from "../../../../../../src/models/node-types/gaming-platforms/GamingPlatform"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 
 describe('A sorted "get all GAMING PLATFORM nodes" request returns the nodes in correct order', () => {
     test('when there exist no GAMING PLATFORM nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.GamingPlatform)
+        await deleteAllNodesOfType(DbNodeType.GamingPlatform)
 
         const expectedNodes: GamingPlatformNode[] = []
         const actualNodes = await GamingPlatform.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,14 +17,14 @@ describe('A sorted "get all GAMING PLATFORM nodes" request returns the nodes in 
     })
 
     test('when there exist GAMING PLATFORM nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.GamingPlatform)
-        const nodeA = await seedNode(ControllerNodeType.GamingPlatform, {
+        await deleteAllNodesOfType(DbNodeType.GamingPlatform)
+        const nodeA = await seedNode(DbNodeType.GamingPlatform, {
             name: 'A Node'
         }) as unknown as GamingPlatformNode
-        const nodeB = await seedNode(ControllerNodeType.GamingPlatform, {
+        const nodeB = await seedNode(DbNodeType.GamingPlatform, {
             name: 'B Node'
         }) as unknown as GamingPlatformNode
-        const nodeC = await seedNode(ControllerNodeType.GamingPlatform, {
+        const nodeC = await seedNode(DbNodeType.GamingPlatform, {
             name: 'C Node'
         }) as unknown as GamingPlatformNode
 

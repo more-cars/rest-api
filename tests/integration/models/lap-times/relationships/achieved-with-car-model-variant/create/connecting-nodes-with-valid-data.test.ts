@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {LapTime} from "../../../../../../../src/models/node-types/lap-times/LapTime"
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›achieved-with-car-model-variant‹ relationship with valid data', async () => {
-    const lapTime = await seedNode(ControllerNodeType.LapTime)
-    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+    const lapTime = await seedNode(DbNodeType.LapTime)
+    const carModelVariant = await seedNode(DbNodeType.CarModelVariant)
 
     const createdRelationship = await LapTime.createAchievedWithCarModelVariantRelationship(lapTime.properties.id, carModelVariant.properties.id)
 

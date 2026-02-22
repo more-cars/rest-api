@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {GamingPlatform} from "../../../../../../../src/models/node-types/gaming-platforms/GamingPlatform"
 import {RelAlreadyExistsError} from "../../../../../../../src/models/types/RelAlreadyExistsError"
 
 test('Trying to create the same ›has-image‹ relationship again', async () => {
-    const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
-    const image = await seedNode(ControllerNodeType.Image)
+    const gamingPlatform = await seedNode(DbNodeType.GamingPlatform)
+    const image = await seedNode(DbNodeType.Image)
 
     await expect(GamingPlatform.createHasImageRelationship(gamingPlatform.properties.id, image.properties.id))
         .resolves

@@ -2,6 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {TrackLayout} from "../../../../../../../src/models/node-types/track-layouts/TrackLayout"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
@@ -11,7 +12,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(ControllerNodeType.TrackLayout, ControllerNodeType.Image, RelationshipType.TrackLayoutHasPrimeImage)
+        const expectedRelationship = await seedRelationship(DbNodeType.TrackLayout, DbNodeType.Image, RelationshipType.TrackLayoutHasPrimeImage)
         const expectedTrackLayoutId = expectedRelationship.start_node.properties.id
         const expectedImageId = expectedRelationship.end_node.properties.id
         const actualRelationship = await TrackLayout.getHasPrimeImageRelationship(expectedTrackLayoutId)
@@ -27,7 +28,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
+        const trackLayout = await seedNode(DbNodeType.TrackLayout)
 
         await expect(TrackLayout.getHasPrimeImageRelationship(trackLayout.properties.id))
             .rejects

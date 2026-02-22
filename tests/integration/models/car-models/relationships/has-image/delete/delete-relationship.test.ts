@@ -1,5 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
@@ -10,7 +11,7 @@ import {CarModel} from "../../../../../../../src/models/node-types/car-models/Ca
 
 describe('Deleting a ›has-image‹ relationship', () => {
     test('CAR MODEL node does not exist', async () => {
-        const carModel = await seedNode(ControllerNodeType.CarModel)
+        const carModel = await seedNode(DbNodeType.CarModel)
 
         await expect(CarModel.deleteHasImageRelationship(carModel.properties.id, -43))
             .rejects
@@ -18,7 +19,7 @@ describe('Deleting a ›has-image‹ relationship', () => {
     })
 
     test('IMAGE node does not exist', async () => {
-        const image = await seedNode(ControllerNodeType.Image)
+        const image = await seedNode(DbNodeType.Image)
 
         await expect(CarModel.deleteHasImageRelationship(-42, image.properties.id))
             .rejects
@@ -32,8 +33,8 @@ describe('Deleting a ›has-image‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›has-image‹ relationship', async () => {
-        const carModel = await seedNode(ControllerNodeType.CarModel)
-        const image = await seedNode(ControllerNodeType.Image)
+        const carModel = await seedNode(DbNodeType.CarModel)
+        const image = await seedNode(DbNodeType.Image)
 
         await expect(CarModel.deleteHasImageRelationship(carModel.properties.id, image.properties.id))
             .rejects
@@ -41,7 +42,7 @@ describe('Deleting a ›has-image‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-image‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.CarModel, ControllerNodeType.Image, RelationshipType.CarModelHasImage)
+        const seededRelationship = await seedRelationship(DbNodeType.CarModel, DbNodeType.Image, RelationshipType.CarModelHasImage)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

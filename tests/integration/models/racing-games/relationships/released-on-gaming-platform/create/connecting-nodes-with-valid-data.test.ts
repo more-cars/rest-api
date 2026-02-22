@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {RacingGame} from "../../../../../../../src/models/node-types/racing-games/RacingGame"
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›released-on-gaming-platform‹ relationship with valid data', async () => {
-    const racingGame = await seedNode(ControllerNodeType.RacingGame)
-    const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
+    const racingGame = await seedNode(DbNodeType.RacingGame)
+    const gamingPlatform = await seedNode(DbNodeType.GamingPlatform)
 
     const createdRelationship = await RacingGame.createReleasedOnGamingPlatformRelationship(racingGame.properties.id, gamingPlatform.properties.id)
 

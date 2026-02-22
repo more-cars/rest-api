@@ -1,5 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
@@ -7,10 +8,10 @@ import {getRelationshipCollection} from "../../../../../../../src/db/relationshi
 
 describe('Requesting all ›belongs-to-node‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const image = await seedNode(ControllerNodeType.Image)
-        await seedRelationshipForStartNode(image.properties.id, ControllerNodeType.Company, RelationshipType.ImageBelongsToNode)
-        await seedRelationshipForStartNode(image.properties.id, ControllerNodeType.CarModel, RelationshipType.ImageBelongsToNode)
-        await seedRelationshipForStartNode(image.properties.id, ControllerNodeType.Brand, RelationshipType.ImageBelongsToNode)
+        const image = await seedNode(DbNodeType.Image)
+        await seedRelationshipForStartNode(image.properties.id, DbNodeType.Company, RelationshipType.ImageBelongsToNode)
+        await seedRelationshipForStartNode(image.properties.id, DbNodeType.CarModel, RelationshipType.ImageBelongsToNode)
+        await seedRelationshipForStartNode(image.properties.id, DbNodeType.Brand, RelationshipType.ImageBelongsToNode)
 
         const relationships = await getRelationshipCollection(
             image.properties.id,
@@ -22,7 +23,7 @@ describe('Requesting all ›belongs-to-node‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const image = await seedNode(ControllerNodeType.Image)
+        const image = await seedNode(DbNodeType.Image)
 
         const relationships = await getRelationshipCollection(
             image.properties.id,

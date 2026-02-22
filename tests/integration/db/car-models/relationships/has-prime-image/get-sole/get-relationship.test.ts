@@ -1,14 +1,14 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const relationship = await seedRelationship(ControllerNodeType.CarModel, ControllerNodeType.Image, RelationshipType.CarModelHasPrimeImage)
+        const relationship = await seedRelationship(DbNodeType.CarModel, DbNodeType.Image, RelationshipType.CarModelHasPrimeImage)
 
         const relationships = await getRelationshipCollection(
             relationship.start_node.properties.id,
@@ -21,7 +21,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const carModel = await seedNode(ControllerNodeType.CarModel)
+        const carModel = await seedNode(DbNodeType.CarModel)
 
         const relationships = await getRelationshipCollection(
             carModel.properties.id,

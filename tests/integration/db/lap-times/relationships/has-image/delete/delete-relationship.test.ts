@@ -1,5 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
@@ -8,7 +9,7 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 
 describe('Trying to delete a ›has-image‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.LapTime, ControllerNodeType.Image, RelationshipType.LapTimeHasImage)
+        const seededRelationship = await seedRelationship(DbNodeType.LapTime, DbNodeType.Image, RelationshipType.LapTimeHasImage)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,
@@ -36,8 +37,8 @@ describe('Trying to delete a ›has-image‹ relationship', () => {
     })
 
     test('nodes exists, but not the relationship', async () => {
-        const lapTime = await seedNode(ControllerNodeType.LapTime)
-        const image = await seedNode(ControllerNodeType.Image)
+        const lapTime = await seedNode(DbNodeType.LapTime)
+        const image = await seedNode(DbNodeType.Image)
 
         const relationship = await deleteSpecificRelationship(
             lapTime.properties.id,

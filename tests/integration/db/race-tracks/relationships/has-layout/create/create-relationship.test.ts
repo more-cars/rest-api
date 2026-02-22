@@ -2,12 +2,12 @@ import {describe, expect, test} from 'vitest'
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Creating a ›has-layout‹ relationship', () => {
     test('with valid data', async () => {
-        const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
-        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
+        const raceTrack = await seedNode(DbNodeType.RaceTrack)
+        const trackLayout = await seedNode(DbNodeType.TrackLayout)
 
         const createdRelationship = await createRelationship(
             raceTrack.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›has-layout‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
+        const raceTrack = await seedNode(DbNodeType.RaceTrack)
 
         const createdRelationship = await createRelationship(
             raceTrack.properties.id,

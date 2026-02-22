@@ -1,6 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {RacingEvent} from "../../../../../../../src/models/node-types/racing-events/RacingEvent"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
@@ -8,9 +9,9 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
-        await seedRelationshipForStartNode(racingEvent.properties.id, ControllerNodeType.Image, RelationshipType.RacingEventHasImage)
-        await seedRelationshipForStartNode(racingEvent.properties.id, ControllerNodeType.Image, RelationshipType.RacingEventHasImage)
+        const racingEvent = await seedNode(DbNodeType.RacingEvent)
+        await seedRelationshipForStartNode(racingEvent.properties.id, DbNodeType.Image, RelationshipType.RacingEventHasImage)
+        await seedRelationshipForStartNode(racingEvent.properties.id, DbNodeType.Image, RelationshipType.RacingEventHasImage)
 
         const relationships = await RacingEvent.getAllHasImageRelationships(racingEvent.properties.id)
 
@@ -19,7 +20,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+        const racingEvent = await seedNode(DbNodeType.RacingEvent)
 
         const relationships = await RacingEvent.getAllHasImageRelationships(racingEvent.properties.id)
 

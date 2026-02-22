@@ -2,12 +2,12 @@ import {describe, expect, test} from 'vitest'
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Creating a ›achieved-with-car-model-variant‹ relationship', () => {
     test('with valid data', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
-        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+        const sessionResult = await seedNode(DbNodeType.SessionResult)
+        const carModelVariant = await seedNode(DbNodeType.CarModelVariant)
 
         const createdRelationship = await createRelationship(
             sessionResult.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›achieved-with-car-model-variant‹ relationship', () => 
     })
 
     test('with invalid data', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+        const sessionResult = await seedNode(DbNodeType.SessionResult)
 
         const createdRelationship = await createRelationship(
             sessionResult.properties.id,

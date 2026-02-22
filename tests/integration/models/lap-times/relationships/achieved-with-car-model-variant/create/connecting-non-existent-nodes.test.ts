@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {LapTime} from "../../../../../../../src/models/node-types/lap-times/LapTime"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›achieved-with-car-model-variant‹ relationship with nodes that do not exist', async () => {
-    const lapTime = await seedNode(ControllerNodeType.LapTime)
-    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+    const lapTime = await seedNode(DbNodeType.LapTime)
+    const carModelVariant = await seedNode(DbNodeType.CarModelVariant)
 
     await expect(LapTime.createAchievedWithCarModelVariantRelationship(-42, carModelVariant.properties.id))
         .rejects

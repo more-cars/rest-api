@@ -1,16 +1,15 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A BRAND can have multiple ›has-image‹ relationships', async () => {
-    const brand = await seedNode(ControllerNodeType.Brand)
+    const brand = await seedNode(DbNodeType.Brand)
     const imagesAmount = 3
-    const images = await seedNodes(ControllerNodeType.Image, imagesAmount)
+    const images = await seedNodes(DbNodeType.Image, imagesAmount)
 
     for (const image of images) {
         await Brand.createHasImageRelationship(brand.properties.id, image.properties.id)

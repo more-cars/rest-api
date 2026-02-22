@@ -1,16 +1,15 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {RacingGame} from "../../../../../../../src/models/node-types/racing-games/RacingGame"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A RACING GAME cannot have multiple ›has-prime-image‹ relationships', async () => {
-    const racingGame = await seedNode(ControllerNodeType.RacingGame)
+    const racingGame = await seedNode(DbNodeType.RacingGame)
     const imagesAmount = 3
-    const images = await seedNodes(ControllerNodeType.Image, imagesAmount)
+    const images = await seedNodes(DbNodeType.Image, imagesAmount)
 
     for (const image of images) {
         await RacingGame.createHasPrimeImageRelationship(racingGame.properties.id, image.properties.id)

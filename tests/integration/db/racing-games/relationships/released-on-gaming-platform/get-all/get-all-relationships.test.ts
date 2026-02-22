@@ -1,16 +1,16 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Requesting all ›released-on-gaming-platform‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const racingGame = await seedNode(ControllerNodeType.RacingGame)
-        await seedRelationshipForStartNode(racingGame.properties.id, ControllerNodeType.GamingPlatform, RelationshipType.RacingGameReleasedOnGamingPlatform)
-        await seedRelationshipForStartNode(racingGame.properties.id, ControllerNodeType.GamingPlatform, RelationshipType.RacingGameReleasedOnGamingPlatform)
+        const racingGame = await seedNode(DbNodeType.RacingGame)
+        await seedRelationshipForStartNode(racingGame.properties.id, DbNodeType.GamingPlatform, RelationshipType.RacingGameReleasedOnGamingPlatform)
+        await seedRelationshipForStartNode(racingGame.properties.id, DbNodeType.GamingPlatform, RelationshipType.RacingGameReleasedOnGamingPlatform)
 
         const relationships = await getRelationshipCollection(
             racingGame.properties.id,
@@ -23,7 +23,7 @@ describe('Requesting all ›released-on-gaming-platform‹ relationships', () =>
     })
 
     test('node exists, but no relationships', async () => {
-        const racingGame = await seedNode(ControllerNodeType.RacingGame)
+        const racingGame = await seedNode(DbNodeType.RacingGame)
 
         const relationships = await getRelationshipCollection(
             racingGame.properties.id,

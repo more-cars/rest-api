@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {RacingSeriesNode} from "../../../../../src/db/nodes/racing-series/types/RacingSeriesNode"
 import {seedNodes} from "../../../../_toolbox/dbSeeding/seedNodes"
 import {getAllNodesOfType} from "../../../../../src/db/nodes/racing-series/getAllNodesOfType"
 
 test('When there are no RACING SERIES then an empty array should be returned', async () => {
-    await deleteAllNodesOfType(ControllerNodeType.RacingSeries)
+    await deleteAllNodesOfType(DbNodeType.RacingSeries)
 
     const expectedRacingSeries: RacingSeriesNode[] = []
     const actualRacingSeries = await getAllNodesOfType()
@@ -16,9 +16,9 @@ test('When there are no RACING SERIES then an empty array should be returned', a
 })
 
 test('When RACING SERIES exist then all of them should be returned', async () => {
-    await deleteAllNodesOfType(ControllerNodeType.RacingSeries)
+    await deleteAllNodesOfType(DbNodeType.RacingSeries)
     const amount = Math.ceil(Math.random() * 50)
-    await seedNodes(ControllerNodeType.RacingSeries, amount)
+    await seedNodes(DbNodeType.RacingSeries, amount)
 
     const actualRacingSeries = await getAllNodesOfType()
 

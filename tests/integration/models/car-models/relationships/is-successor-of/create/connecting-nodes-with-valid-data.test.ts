@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {CarModel} from "../../../../../../../src/models/node-types/car-models/CarModel"
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›is-successor-of‹ relationship with valid data', async () => {
-    const carModel = await seedNode(ControllerNodeType.CarModel)
-    const partner = await seedNode(ControllerNodeType.CarModel)
+    const carModel = await seedNode(DbNodeType.CarModel)
+    const partner = await seedNode(DbNodeType.CarModel)
 
     const createdRelationship = await CarModel.createIsSuccessorOfRelationship(carModel.properties.id, partner.properties.id)
 

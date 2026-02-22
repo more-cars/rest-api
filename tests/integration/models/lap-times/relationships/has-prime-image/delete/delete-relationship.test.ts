@@ -1,6 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {LapTime} from "../../../../../../../src/models/node-types/lap-times/LapTime"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
@@ -10,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›has-prime-image‹ relationship', () => {
     test('LAP TIME node does not exist', async () => {
-        const lapTime = await seedNode(ControllerNodeType.LapTime)
+        const lapTime = await seedNode(DbNodeType.LapTime)
 
         await expect(LapTime.deleteHasPrimeImageRelationship(lapTime.properties.id, -43))
             .rejects
@@ -18,7 +19,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('IMAGE node does not exist', async () => {
-        const image = await seedNode(ControllerNodeType.Image)
+        const image = await seedNode(DbNodeType.Image)
 
         await expect(LapTime.deleteHasPrimeImageRelationship(-42, image.properties.id))
             .rejects
@@ -32,8 +33,8 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›has-prime-image‹ relationship', async () => {
-        const lapTime = await seedNode(ControllerNodeType.LapTime)
-        const image = await seedNode(ControllerNodeType.Image)
+        const lapTime = await seedNode(DbNodeType.LapTime)
+        const image = await seedNode(DbNodeType.Image)
 
         await expect(LapTime.deleteHasPrimeImageRelationship(lapTime.properties.id, image.properties.id))
             .rejects
@@ -41,7 +42,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-prime-image‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.LapTime, ControllerNodeType.Image, RelationshipType.LapTimeHasPrimeImage)
+        const seededRelationship = await seedRelationship(DbNodeType.LapTime, DbNodeType.Image, RelationshipType.LapTimeHasPrimeImage)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

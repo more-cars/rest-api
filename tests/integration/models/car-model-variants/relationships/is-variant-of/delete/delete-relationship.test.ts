@@ -1,6 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {CarModelVariant} from "../../../../../../../src/models/node-types/car-model-variants/CarModelVariant"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
@@ -10,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›is-variant-of‹ relationship', () => {
     test('CAR MODEL VARIANT node does not exist', async () => {
-        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+        const carModelVariant = await seedNode(DbNodeType.CarModelVariant)
 
         await expect(CarModelVariant.deleteIsVariantOfRelationship(carModelVariant.properties.id, -43))
             .rejects
@@ -18,7 +19,7 @@ describe('Deleting a ›is-variant-of‹ relationship', () => {
     })
 
     test('CAR MODEL node does not exist', async () => {
-        const carModel = await seedNode(ControllerNodeType.CarModel)
+        const carModel = await seedNode(DbNodeType.CarModel)
 
         await expect(CarModelVariant.deleteIsVariantOfRelationship(-42, carModel.properties.id))
             .rejects
@@ -32,8 +33,8 @@ describe('Deleting a ›is-variant-of‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›is-variant-of‹ relationship', async () => {
-        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
-        const carModel = await seedNode(ControllerNodeType.CarModel)
+        const carModelVariant = await seedNode(DbNodeType.CarModelVariant)
+        const carModel = await seedNode(DbNodeType.CarModel)
 
         await expect(CarModelVariant.deleteIsVariantOfRelationship(carModelVariant.properties.id, carModel.properties.id))
             .rejects
@@ -41,7 +42,7 @@ describe('Deleting a ›is-variant-of‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›is-variant-of‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.CarModelVariant, ControllerNodeType.CarModel, RelationshipType.CarModelVariantIsVariantOf)
+        const seededRelationship = await seedRelationship(DbNodeType.CarModelVariant, DbNodeType.CarModel, RelationshipType.CarModelVariantIsVariantOf)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

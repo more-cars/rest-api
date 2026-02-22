@@ -1,5 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
@@ -10,7 +11,7 @@ import {Image} from "../../../../../../../src/models/node-types/images/Image"
 
 describe('Deleting a ›belongs-to-node‹ relationship', () => {
     test('IMAGE node does not exist', async () => {
-        const image = await seedNode(ControllerNodeType.Image)
+        const image = await seedNode(DbNodeType.Image)
 
         await expect(Image.deleteBelongsToNodeRelationship(image.properties.id, -43))
             .rejects
@@ -18,7 +19,7 @@ describe('Deleting a ›belongs-to-node‹ relationship', () => {
     })
 
     test('PARTNER node does not exist', async () => {
-        const company = await seedNode(ControllerNodeType.Company)
+        const company = await seedNode(DbNodeType.Company)
 
         await expect(Image.deleteBelongsToNodeRelationship(-42, company.properties.id))
             .rejects
@@ -32,8 +33,8 @@ describe('Deleting a ›belongs-to-node‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›belongs-to-node‹ relationship', async () => {
-        const image = await seedNode(ControllerNodeType.Image)
-        const company = await seedNode(ControllerNodeType.Company)
+        const image = await seedNode(DbNodeType.Image)
+        const company = await seedNode(DbNodeType.Company)
 
         await expect(Image.deleteBelongsToNodeRelationship(image.properties.id, company.properties.id))
             .rejects
@@ -41,7 +42,7 @@ describe('Deleting a ›belongs-to-node‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›belongs-to-node‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.Image, ControllerNodeType.Company, RelationshipType.ImageBelongsToNode)
+        const seededRelationship = await seedRelationship(DbNodeType.Image, DbNodeType.Company, RelationshipType.ImageBelongsToNode)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

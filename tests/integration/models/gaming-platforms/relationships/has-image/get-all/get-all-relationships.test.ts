@@ -1,6 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {GamingPlatform} from "../../../../../../../src/models/node-types/gaming-platforms/GamingPlatform"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
@@ -8,9 +9,9 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
-        await seedRelationshipForStartNode(gamingPlatform.properties.id, ControllerNodeType.Image, RelationshipType.GamingPlatformHasImage)
-        await seedRelationshipForStartNode(gamingPlatform.properties.id, ControllerNodeType.Image, RelationshipType.GamingPlatformHasImage)
+        const gamingPlatform = await seedNode(DbNodeType.GamingPlatform)
+        await seedRelationshipForStartNode(gamingPlatform.properties.id, DbNodeType.Image, RelationshipType.GamingPlatformHasImage)
+        await seedRelationshipForStartNode(gamingPlatform.properties.id, DbNodeType.Image, RelationshipType.GamingPlatformHasImage)
 
         const relationships = await GamingPlatform.getAllHasImageRelationships(gamingPlatform.properties.id)
 
@@ -19,7 +20,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
+        const gamingPlatform = await seedNode(DbNodeType.GamingPlatform)
 
         const relationships = await GamingPlatform.getAllHasImageRelationships(gamingPlatform.properties.id)
 

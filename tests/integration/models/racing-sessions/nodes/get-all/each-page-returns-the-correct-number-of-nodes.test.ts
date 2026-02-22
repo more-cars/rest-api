@@ -4,6 +4,7 @@ import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/
 import type {RacingSessionNode} from "../../../../../../src/models/node-types/racing-sessions/types/RacingSessionNode"
 import {RacingSession} from "../../../../../../src/models/node-types/racing-sessions/RacingSession"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
+import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 
 describe('Each page of a "get all RACING SESSION nodes" request returns the correct number of nodes', () => {
     test.each([
@@ -11,7 +12,7 @@ describe('Each page of a "get all RACING SESSION nodes" request returns the corr
         [2],
         [99],
     ])('when there exist no RACING SESSION nodes (page=$0)', async (page) => {
-        await deleteAllNodesOfType(ControllerNodeType.RacingSession)
+        await deleteAllNodesOfType(DbNodeType.RacingSession)
 
         const expectedNodes: RacingSessionNode[] = []
         const actualNodes = await RacingSession.findAll({page})
@@ -24,8 +25,8 @@ describe('Each page of a "get all RACING SESSION nodes" request returns the corr
         [20, 1, 20],
         [5, 2, 0],
     ])('when there exist $0 RACING SESSION nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
-        await deleteAllNodesOfType(ControllerNodeType.RacingSession)
-        await seedNodes(ControllerNodeType.RacingSession, totalNodeAmount)
+        await deleteAllNodesOfType(DbNodeType.RacingSession)
+        await seedNodes(DbNodeType.RacingSession, totalNodeAmount)
 
         const actualNodes = await RacingSession.findAll({page})
 

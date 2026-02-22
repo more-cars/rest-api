@@ -1,14 +1,14 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {SessionResultNode} from "../../../../../../src/db/nodes/session-results/types/SessionResultNode"
 import {SessionResult} from "../../../../../../src/models/node-types/session-results/SessionResult"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 
 describe('A filtered "get all SESSION RESULT nodes" request returns only the matching nodes', () => {
     test('when there exist no SESSION RESULT nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.SessionResult)
+        await deleteAllNodesOfType(DbNodeType.SessionResult)
 
         const expectedNodes: SessionResultNode[] = []
         const actualNodes = await SessionResult.findAll({
@@ -22,10 +22,10 @@ describe('A filtered "get all SESSION RESULT nodes" request returns only the mat
     })
 
     test('when there exist SESSION RESULT nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.SessionResult)
-        const nodeA = await seedNode(ControllerNodeType.SessionResult, {position: 1}) as unknown as SessionResultNode
-        await seedNode(ControllerNodeType.SessionResult, {position: 2})
-        await seedNode(ControllerNodeType.SessionResult, {position: 3})
+        await deleteAllNodesOfType(DbNodeType.SessionResult)
+        const nodeA = await seedNode(DbNodeType.SessionResult, {position: 1}) as unknown as SessionResultNode
+        await seedNode(DbNodeType.SessionResult, {position: 2})
+        await seedNode(DbNodeType.SessionResult, {position: 3})
 
         const filteredNodes = await SessionResult.findAll({
             filterByProperty: 'position',

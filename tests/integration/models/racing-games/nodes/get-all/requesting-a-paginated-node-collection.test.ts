@@ -4,10 +4,11 @@ import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/
 import type {RacingGameNode} from "../../../../../../src/models/node-types/racing-games/types/RacingGameNode"
 import {RacingGame} from "../../../../../../src/models/node-types/racing-games/RacingGame"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
+import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 
 describe('A paginated "get all RACING GAME nodes" request returns the correct number of nodes', () => {
     test('when there exist no RACING GAME nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RacingGame)
+        await deleteAllNodesOfType(DbNodeType.RacingGame)
 
         const expectedNodes: RacingGameNode[] = []
         const actualNodes = await RacingGame.findAll({page: 1})
@@ -17,9 +18,9 @@ describe('A paginated "get all RACING GAME nodes" request returns the correct nu
     })
 
     test('when there exist RACING GAME nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RacingGame)
+        await deleteAllNodesOfType(DbNodeType.RacingGame)
         const amount = Math.ceil(Math.random() * 20)
-        await seedNodes(ControllerNodeType.RacingGame, amount)
+        await seedNodes(DbNodeType.RacingGame, amount)
 
         const actualNodes = await RacingGame.findAll({page: 1})
 

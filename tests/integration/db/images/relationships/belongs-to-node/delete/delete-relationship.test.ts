@@ -5,10 +5,11 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {deleteSpecificRelationship} from "../../../../../../../src/db/relationships/deleteSpecificRelationship"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Trying to delete a ›belongs-to-session-result‹ relationship', () => {
     test('nodes exist and have a relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.Image, ControllerNodeType.CarModel, RelationshipType.ImageBelongsToNode)
+        const seededRelationship = await seedRelationship(DbNodeType.Image, DbNodeType.CarModel, RelationshipType.ImageBelongsToNode)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,
@@ -36,8 +37,8 @@ describe('Trying to delete a ›belongs-to-session-result‹ relationship', () =
     })
 
     test('nodes exists, but not the relationship', async () => {
-        const lapTime = await seedNode(ControllerNodeType.Image)
-        const sessionResult = await seedNode(ControllerNodeType.CarModelVariant)
+        const lapTime = await seedNode(DbNodeType.Image)
+        const sessionResult = await seedNode(DbNodeType.CarModelVariant)
 
         const relationship = await deleteSpecificRelationship(
             lapTime.properties.id,

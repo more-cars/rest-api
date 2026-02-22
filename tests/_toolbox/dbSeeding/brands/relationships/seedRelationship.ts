@@ -1,12 +1,12 @@
 import {Relationship} from "../../../../../src/db/types/Relationship"
 import {seedNode} from "../../seedNode"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {createRelationship} from "../../../../../src/db/relationships/createRelationship"
 import {RelationshipType} from "../../../../../src/db/types/RelationshipType"
 
 export async function seedRelationship(): Promise<Relationship> {
-    const brandNode = await seedNode(ControllerNodeType.Brand)
-    const carModelNode = await seedNode(ControllerNodeType.CarModel)
+    const brandNode = await seedNode(DbNodeType.Brand)
+    const carModelNode = await seedNode(DbNodeType.CarModel)
     const relationship = await createRelationship(brandNode.properties.id, carModelNode.properties.id, RelationshipType.BrandHasCarModel)
 
     if (!relationship) {

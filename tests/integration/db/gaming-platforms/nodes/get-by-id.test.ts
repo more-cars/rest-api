@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {getNodeById} from "../../../../../src/db/nodes/gaming-platforms/getNodeById"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {GamingPlatformSchema} from "../../../../_toolbox/schemas/GamingPlatformSchema"
 import {validateJson} from "../../../../_toolbox/validateJson"
 
@@ -14,7 +14,7 @@ test('Querying a GAMING PLATFORM that does not exist should return "false"', asy
 })
 
 test('Querying an existing GAMING PLATFORM should return a db node with correct schema', async () => {
-    const createdNode = await seedNode(ControllerNodeType.GamingPlatform)
+    const createdNode = await seedNode(DbNodeType.GamingPlatform)
     const gamingPlatformNode = await getNodeById(createdNode.properties.id)
 
     expect(validateJson(gamingPlatformNode, GamingPlatformSchema))

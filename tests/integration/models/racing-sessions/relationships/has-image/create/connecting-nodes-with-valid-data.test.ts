@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {RacingSession} from "../../../../../../../src/models/node-types/racing-sessions/RacingSession"
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›has-image‹ relationship with valid data', async () => {
-    const racingSession = await seedNode(ControllerNodeType.RacingSession)
-    const image = await seedNode(ControllerNodeType.Image)
+    const racingSession = await seedNode(DbNodeType.RacingSession)
+    const image = await seedNode(DbNodeType.Image)
 
     const createdRelationship = await RacingSession.createHasImageRelationship(racingSession.properties.id, image.properties.id)
 

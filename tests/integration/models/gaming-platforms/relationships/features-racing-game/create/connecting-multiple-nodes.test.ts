@@ -1,16 +1,15 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {GamingPlatform} from "../../../../../../../src/models/node-types/gaming-platforms/GamingPlatform"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A GAMING PLATFORM can have multiple ›features-racing-game‹ relationships', async () => {
-    const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
+    const gamingPlatform = await seedNode(DbNodeType.GamingPlatform)
     const racingGamesAmount = 3
-    const racingGames = await seedNodes(ControllerNodeType.RacingGame, racingGamesAmount)
+    const racingGames = await seedNodes(DbNodeType.RacingGame, racingGamesAmount)
 
     for (const racingGame of racingGames) {
         await GamingPlatform.createFeaturesRacingGameRelationship(gamingPlatform.properties.id, racingGame.properties.id)

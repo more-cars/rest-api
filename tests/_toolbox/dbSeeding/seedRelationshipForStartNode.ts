@@ -1,11 +1,11 @@
-import type {ControllerNodeType} from "../../../src/controllers/nodes/types/ControllerNodeType"
+import type {DbNodeType} from "../../../src/db/types/DbNodeType"
 import type {RelationshipType} from "../../../src/db/types/RelationshipType"
 import {seedNode} from "./seedNode"
 import {createRelationship} from "../../../src/db/relationships/createRelationship"
 
 export async function seedRelationshipForStartNode(
     startNodeId: number,
-    endNodeType: ControllerNodeType,
+    endNodeType: DbNodeType,
     relationshipType: RelationshipType,
 ) {
     const endNode = await seedNode(endNodeType)

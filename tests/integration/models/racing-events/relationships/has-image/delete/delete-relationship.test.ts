@@ -1,6 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {RacingEvent} from "../../../../../../../src/models/node-types/racing-events/RacingEvent"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
@@ -10,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›has-image‹ relationship', () => {
     test('RACING EVENT node does not exist', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+        const racingEvent = await seedNode(DbNodeType.RacingEvent)
 
         await expect(RacingEvent.deleteHasImageRelationship(racingEvent.properties.id, -43))
             .rejects
@@ -18,7 +19,7 @@ describe('Deleting a ›has-image‹ relationship', () => {
     })
 
     test('IMAGE node does not exist', async () => {
-        const image = await seedNode(ControllerNodeType.Image)
+        const image = await seedNode(DbNodeType.Image)
 
         await expect(RacingEvent.deleteHasImageRelationship(-42, image.properties.id))
             .rejects
@@ -32,8 +33,8 @@ describe('Deleting a ›has-image‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›has-image‹ relationship', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
-        const image = await seedNode(ControllerNodeType.Image)
+        const racingEvent = await seedNode(DbNodeType.RacingEvent)
+        const image = await seedNode(DbNodeType.Image)
 
         await expect(RacingEvent.deleteHasImageRelationship(racingEvent.properties.id, image.properties.id))
             .rejects
@@ -41,7 +42,7 @@ describe('Deleting a ›has-image‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-image‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.RacingEvent, ControllerNodeType.Image, RelationshipType.RacingEventHasImage)
+        const seededRelationship = await seedRelationship(DbNodeType.RacingEvent, DbNodeType.Image, RelationshipType.RacingEventHasImage)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

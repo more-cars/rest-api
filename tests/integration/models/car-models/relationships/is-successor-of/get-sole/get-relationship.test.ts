@@ -2,6 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {CarModel} from "../../../../../../../src/models/node-types/car-models/CarModel"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
@@ -11,7 +12,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Requesting a ›is-successor-of‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(ControllerNodeType.CarModel, ControllerNodeType.CarModel, RelationshipType.CarModelIsSuccessorOf)
+        const expectedRelationship = await seedRelationship(DbNodeType.CarModel, DbNodeType.CarModel, RelationshipType.CarModelIsSuccessorOf)
         const expectedCarModelId = expectedRelationship.start_node.properties.id
         const expectedPredecessorId = expectedRelationship.end_node.properties.id
         const actualRelationship = await CarModel.getIsSuccessorOfRelationship(expectedCarModelId)
@@ -27,7 +28,7 @@ describe('Requesting a ›is-successor-of‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const carModel = await seedNode(ControllerNodeType.CarModel)
+        const carModel = await seedNode(DbNodeType.CarModel)
 
         await expect(CarModel.getIsSuccessorOfRelationship(carModel.properties.id))
             .rejects

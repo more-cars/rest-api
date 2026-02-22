@@ -1,5 +1,5 @@
 import assert from "assert"
-import {ControllerNodeType} from "../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../src/db/types/DbNodeType"
 import {seedCompany} from "./companies/nodes/seedCompany"
 import {seedBrand} from "./brands/nodes/seedBrand"
 import {seedCarModel} from "./car-models/nodes/seedCarModel"
@@ -15,37 +15,37 @@ import {seedRacingGame} from "./racing-games/nodes/seedRacingGame"
 import {seedGamingPlatform} from "./gaming-platforms/nodes/seedGamingPlatform"
 import {seedImage} from "./images/nodes/seedImage"
 
-export async function seedNode(nodeType: ControllerNodeType, customFakeData: object = {}) {
-    switch (nodeType) {
-        case ControllerNodeType.Company:
+export async function seedNode(dbNodeType: DbNodeType, customFakeData: object = {}) {
+    switch (dbNodeType) {
+        case DbNodeType.Company:
             return seedCompany(customFakeData)
-        case ControllerNodeType.Brand:
+        case DbNodeType.Brand:
             return seedBrand(customFakeData)
-        case ControllerNodeType.CarModel:
+        case DbNodeType.CarModel:
             return seedCarModel(customFakeData)
-        case ControllerNodeType.CarModelVariant:
+        case DbNodeType.CarModelVariant:
             return seedCarModelVariant(customFakeData)
-        case ControllerNodeType.RaceTrack:
+        case DbNodeType.RaceTrack:
             return seedRaceTrack(customFakeData)
-        case ControllerNodeType.TrackLayout:
+        case DbNodeType.TrackLayout:
             return seedTrackLayout(customFakeData)
-        case ControllerNodeType.RacingSeries:
+        case DbNodeType.RacingSeries:
             return seedRacingSeries(customFakeData)
-        case ControllerNodeType.RacingEvent:
+        case DbNodeType.RacingEvent:
             return seedRacingEvent(customFakeData)
-        case ControllerNodeType.RacingSession:
+        case DbNodeType.RacingSession:
             return seedRacingSession(customFakeData)
-        case ControllerNodeType.SessionResult:
+        case DbNodeType.SessionResult:
             return seedSessionResult(customFakeData)
-        case ControllerNodeType.LapTime:
+        case DbNodeType.LapTime:
             return seedLapTime(customFakeData)
-        case ControllerNodeType.RacingGame:
+        case DbNodeType.RacingGame:
             return seedRacingGame(customFakeData)
-        case ControllerNodeType.GamingPlatform:
+        case DbNodeType.GamingPlatform:
             return seedGamingPlatform(customFakeData)
-        case ControllerNodeType.Image:
+        case DbNodeType.Image:
             return seedImage(customFakeData)
         default:
-            assert.fail(`Node type "${nodeType}" is invalid or unknown`)
+            assert.fail(`Node type "${dbNodeType}" is invalid or unknown`)
     }
 }

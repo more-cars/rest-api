@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {RacingSeries} from "../../../../../src/models/node-types/racing-series/RacingSeries"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 
 test('Fetching a RACING SERIES that does not exist should return "false"', async () => {
     const expectedRacingSeries = false
@@ -12,7 +12,7 @@ test('Fetching a RACING SERIES that does not exist should return "false"', async
 })
 
 test('When the RACING SERIES exists it should be returned', async () => {
-    const expectedRacingSeries = await seedNode(ControllerNodeType.RacingSeries)
+    const expectedRacingSeries = await seedNode(DbNodeType.RacingSeries)
     const actualRacingSeries = await RacingSeries.findById(expectedRacingSeries.properties.id)
 
     expect(actualRacingSeries.attributes)

@@ -4,10 +4,11 @@ import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/
 import type {GamingPlatformNode} from "../../../../../../src/models/node-types/gaming-platforms/types/GamingPlatformNode"
 import {GamingPlatform} from "../../../../../../src/models/node-types/gaming-platforms/GamingPlatform"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
+import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 
 describe('A paginated "get all GAMING PLATFORM nodes" request returns the correct number of nodes', () => {
     test('when there exist no GAMING PLATFORM nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.GamingPlatform)
+        await deleteAllNodesOfType(DbNodeType.GamingPlatform)
 
         const expectedNodes: GamingPlatformNode[] = []
         const actualNodes = await GamingPlatform.findAll({page: 1})
@@ -17,9 +18,9 @@ describe('A paginated "get all GAMING PLATFORM nodes" request returns the correc
     })
 
     test('when there exist GAMING PLATFORM nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.GamingPlatform)
+        await deleteAllNodesOfType(DbNodeType.GamingPlatform)
         const amount = Math.ceil(Math.random() * 20)
-        await seedNodes(ControllerNodeType.GamingPlatform, amount)
+        await seedNodes(DbNodeType.GamingPlatform, amount)
 
         const actualNodes = await GamingPlatform.findAll({page: 1})
 

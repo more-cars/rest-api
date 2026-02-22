@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {RacingGame} from "../../../../../../../src/models/node-types/racing-games/RacingGame"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›features-track-layout‹ relationship with nodes that do not exist', async () => {
-    const racingGame = await seedNode(ControllerNodeType.RacingGame)
-    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
+    const racingGame = await seedNode(DbNodeType.RacingGame)
+    const trackLayout = await seedNode(DbNodeType.TrackLayout)
 
     await expect(RacingGame.createFeaturesTrackLayoutRelationship(-42, trackLayout.properties.id))
         .rejects

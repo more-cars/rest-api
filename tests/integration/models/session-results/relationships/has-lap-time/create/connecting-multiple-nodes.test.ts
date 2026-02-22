@@ -1,16 +1,15 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {SessionResult} from "../../../../../../../src/models/node-types/session-results/SessionResult"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A SESSION RESULT can have multiple ›has-lap-time‹ relationships', async () => {
-    const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+    const sessionResult = await seedNode(DbNodeType.SessionResult)
     const lapTimesAmount = 3
-    const lapTimes = await seedNodes(ControllerNodeType.LapTime, lapTimesAmount)
+    const lapTimes = await seedNodes(DbNodeType.LapTime, lapTimesAmount)
 
     for (const lapTime of lapTimes) {
         await SessionResult.createHasLapTimeRelationship(sessionResult.properties.id, lapTime.properties.id)

@@ -1,6 +1,6 @@
 import {expect, test, vi} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {TrackLayout} from "../../../../../../../src/models/node-types/track-layouts/TrackLayout"
 
 test('A completely valid request, but the database call fails (e.g. one of the nodes was deleted just a moment ago)', async () => {
@@ -10,8 +10,8 @@ test('A completely valid request, but the database call fails (e.g. one of the n
         }
     })
 
-    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
-    const lapTime = await seedNode(ControllerNodeType.LapTime)
+    const trackLayout = await seedNode(DbNodeType.TrackLayout)
+    const lapTime = await seedNode(DbNodeType.LapTime)
 
     await expect(TrackLayout.createHasLapTimeRelationship(trackLayout.properties.id, lapTime.properties.id))
         .rejects

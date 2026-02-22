@@ -1,6 +1,7 @@
 import assert from "assert"
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {Image} from "../../../../../../../src/models/node-types/images/Image"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
@@ -8,11 +9,11 @@ import {RelationshipType} from "../../../../../../../src/db/types/RelationshipTy
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Get all "Image belongs to Node type" relationships for specific image', async () => {
-    const imageNode = await seedNode(ControllerNodeType.Image)
-    await seedRelationshipForStartNode(imageNode.properties.id, ControllerNodeType.CarModel, RelationshipType.ImageBelongsToNode)
-    await seedRelationshipForStartNode(imageNode.properties.id, ControllerNodeType.CarModel, RelationshipType.ImageBelongsToNode)
-    await seedRelationshipForStartNode(imageNode.properties.id, ControllerNodeType.CarModel, RelationshipType.ImageBelongsToNode)
-    await seedRelationshipForStartNode(imageNode.properties.id, ControllerNodeType.CarModel, RelationshipType.ImageBelongsToNode)
+    const imageNode = await seedNode(DbNodeType.Image)
+    await seedRelationshipForStartNode(imageNode.properties.id, DbNodeType.CarModel, RelationshipType.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.properties.id, DbNodeType.CarModel, RelationshipType.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.properties.id, DbNodeType.CarModel, RelationshipType.ImageBelongsToNode)
+    await seedRelationshipForStartNode(imageNode.properties.id, DbNodeType.CarModel, RelationshipType.ImageBelongsToNode)
 
     const fetchedRelationships = await Image.getBelongsToNodeTypeRelationships(imageNode.properties.id)
 
@@ -36,7 +37,7 @@ test('Get all "Image belongs to Node type" relationships for specific image', as
 })
 
 test('Expecting empty lists when there are no relationships', async () => {
-    const imageNode = await seedNode(ControllerNodeType.Image)
+    const imageNode = await seedNode(DbNodeType.Image)
     const fetchedRelationships = await Image.getBelongsToNodeTypeRelationships(imageNode.properties.id)
 
     if (!fetchedRelationships) {

@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {RacingSession} from "../../../../../../../src/models/node-types/racing-sessions/RacingSession"
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›has-session-result‹ relationship with valid data', async () => {
-    const racingSession = await seedNode(ControllerNodeType.RacingSession)
-    const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+    const racingSession = await seedNode(DbNodeType.RacingSession)
+    const sessionResult = await seedNode(DbNodeType.SessionResult)
 
     const createdRelationship = await RacingSession.createHasSessionResultRelationship(racingSession.properties.id, sessionResult.properties.id)
 

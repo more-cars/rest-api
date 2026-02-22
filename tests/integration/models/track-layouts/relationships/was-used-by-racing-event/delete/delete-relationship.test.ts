@@ -1,6 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {TrackLayout} from "../../../../../../../src/models/node-types/track-layouts/TrackLayout"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
@@ -10,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›was-used-by-racing-event‹ relationship', () => {
     test('TRACK LAYOUT node does not exist', async () => {
-        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
+        const trackLayout = await seedNode(DbNodeType.TrackLayout)
 
         await expect(TrackLayout.deleteWasUsedByRacingEventRelationship(trackLayout.properties.id, -43))
             .rejects
@@ -18,7 +19,7 @@ describe('Deleting a ›was-used-by-racing-event‹ relationship', () => {
     })
 
     test('RACING EVENT node does not exist', async () => {
-        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+        const racingEvent = await seedNode(DbNodeType.RacingEvent)
 
         await expect(TrackLayout.deleteWasUsedByRacingEventRelationship(-42, racingEvent.properties.id))
             .rejects
@@ -32,8 +33,8 @@ describe('Deleting a ›was-used-by-racing-event‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›was-used-by-racing-event‹ relationship', async () => {
-        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
-        const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+        const trackLayout = await seedNode(DbNodeType.TrackLayout)
+        const racingEvent = await seedNode(DbNodeType.RacingEvent)
 
         await expect(TrackLayout.deleteWasUsedByRacingEventRelationship(trackLayout.properties.id, racingEvent.properties.id))
             .rejects
@@ -41,7 +42,7 @@ describe('Deleting a ›was-used-by-racing-event‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›was-used-by-racing-event‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.TrackLayout, ControllerNodeType.RacingEvent, RelationshipType.TrackLayoutWasUsedByRacingEvent)
+        const seededRelationship = await seedRelationship(DbNodeType.TrackLayout, DbNodeType.RacingEvent, RelationshipType.TrackLayoutWasUsedByRacingEvent)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

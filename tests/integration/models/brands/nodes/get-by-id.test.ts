@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {Brand} from "../../../../../src/models/node-types/brands/Brand"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 
 test('Fetching a BRAND that does not exist should return "false"', async () => {
     const expectedBrand = false
@@ -12,7 +12,7 @@ test('Fetching a BRAND that does not exist should return "false"', async () => {
 })
 
 test('When the BRAND exists it should be returned', async () => {
-    const expectedBrand = await seedNode(ControllerNodeType.Brand)
+    const expectedBrand = await seedNode(DbNodeType.Brand)
     const actualBrand = await Brand.findById(expectedBrand.properties.id)
 
     expect(actualBrand.attributes)

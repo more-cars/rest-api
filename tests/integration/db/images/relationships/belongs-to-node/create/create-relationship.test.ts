@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 describe('Creating a ›belongs-to-node‹ relationship', () => {
     test('with valid data', async () => {
-        const image = await seedNode(ControllerNodeType.Image)
-        const carModel = await seedNode(ControllerNodeType.CarModel)
+        const image = await seedNode(DbNodeType.Image)
+        const carModel = await seedNode(DbNodeType.CarModel)
 
         const createdRelationship = await createRelationship(
             image.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›belongs-to-node‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const image = await seedNode(ControllerNodeType.Image)
+        const image = await seedNode(DbNodeType.Image)
 
         const createdRelationship = await createRelationship(
             image.properties.id,

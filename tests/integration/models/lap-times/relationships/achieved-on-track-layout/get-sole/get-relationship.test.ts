@@ -2,6 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {LapTime} from "../../../../../../../src/models/node-types/lap-times/LapTime"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {validateJson} from "../../../../../../_toolbox/validateJson"
@@ -11,7 +12,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Requesting a ›achieved-on-track-layout‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(ControllerNodeType.LapTime, ControllerNodeType.TrackLayout, RelationshipType.LapTimeAchievedOnTrackLayout)
+        const expectedRelationship = await seedRelationship(DbNodeType.LapTime, DbNodeType.TrackLayout, RelationshipType.LapTimeAchievedOnTrackLayout)
         const expectedLapTimeId = expectedRelationship.start_node.properties.id
         const expectedTrackLayoutId = expectedRelationship.end_node.properties.id
         const actualRelationship = await LapTime.getAchievedOnTrackLayoutRelationship(expectedLapTimeId)
@@ -27,7 +28,7 @@ describe('Requesting a ›achieved-on-track-layout‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const lapTime = await seedNode(ControllerNodeType.LapTime)
+        const lapTime = await seedNode(DbNodeType.LapTime)
 
         await expect(LapTime.getAchievedOnTrackLayoutRelationship(lapTime.properties.id))
             .rejects

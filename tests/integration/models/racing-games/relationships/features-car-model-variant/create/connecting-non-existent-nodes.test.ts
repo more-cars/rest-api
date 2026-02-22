@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {RacingGame} from "../../../../../../../src/models/node-types/racing-games/RacingGame"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›features-car-model-variant‹ relationship with nodes that do not exist', async () => {
-    const racingGame = await seedNode(ControllerNodeType.RacingGame)
-    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+    const racingGame = await seedNode(DbNodeType.RacingGame)
+    const carModelVariant = await seedNode(DbNodeType.CarModelVariant)
 
     await expect(RacingGame.createFeaturesCarModelVariantRelationship(-42, carModelVariant.properties.id))
         .rejects

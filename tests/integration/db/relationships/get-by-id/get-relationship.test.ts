@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import assert from "assert"
 import {seedRelationship} from "../../../../_toolbox/dbSeeding/seedRelationship"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {RelationshipType} from "../../../../../src/db/types/RelationshipType"
 import {getRelationshipById} from "../../../../../src/db/relationships/getRelationshipById"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
 
 describe('Requesting a relationship', () => {
     test('relationship exists', async () => {
-        const expectedRelationship = await seedRelationship(ControllerNodeType.Brand, ControllerNodeType.CarModel, RelationshipType.BrandHasCarModel)
+        const expectedRelationship = await seedRelationship(DbNodeType.Brand, DbNodeType.CarModel, RelationshipType.BrandHasCarModel)
         const actualRelationship = await getRelationshipById(expectedRelationship.id)
 
         if (!actualRelationship) {

@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {LapTime} from "../../../../../../../src/models/node-types/lap-times/LapTime"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›has-image‹ relationship with nodes that do not exist', async () => {
-    const lapTime = await seedNode(ControllerNodeType.LapTime)
-    const image = await seedNode(ControllerNodeType.Image)
+    const lapTime = await seedNode(DbNodeType.LapTime)
+    const image = await seedNode(DbNodeType.Image)
 
     await expect(LapTime.createHasImageRelationship(-42, image.properties.id))
         .rejects

@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {RacingGame} from "../../../../../../../src/models/node-types/racing-games/RacingGame"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›has-image‹ relationship with nodes that do not exist', async () => {
-    const racingGame = await seedNode(ControllerNodeType.RacingGame)
-    const image = await seedNode(ControllerNodeType.Image)
+    const racingGame = await seedNode(DbNodeType.RacingGame)
+    const image = await seedNode(DbNodeType.Image)
 
     await expect(RacingGame.createHasImageRelationship(-42, image.properties.id))
         .rejects

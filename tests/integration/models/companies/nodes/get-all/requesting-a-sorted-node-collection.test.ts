@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {CompanyNode} from "../../../../../../src/db/nodes/companies/types/CompanyNode"
 import {Company} from "../../../../../../src/models/node-types/companies/Company"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 
 describe('A sorted "get all COMPANY nodes" request returns the nodes in correct order', () => {
     test('when there exist no COMPANY nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.Company)
+        await deleteAllNodesOfType(DbNodeType.Company)
 
         const expectedNodes: CompanyNode[] = []
         const actualNodes = await Company.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,10 +17,10 @@ describe('A sorted "get all COMPANY nodes" request returns the nodes in correct 
     })
 
     test('when there exist COMPANY nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.Company)
-        const nodeA = await seedNode(ControllerNodeType.Company, {name: 'A Node'}) as unknown as CompanyNode
-        const nodeB = await seedNode(ControllerNodeType.Company, {name: 'B Node'}) as unknown as CompanyNode
-        const nodeC = await seedNode(ControllerNodeType.Company, {name: 'C Node'}) as unknown as CompanyNode
+        await deleteAllNodesOfType(DbNodeType.Company)
+        const nodeA = await seedNode(DbNodeType.Company, {name: 'A Node'}) as unknown as CompanyNode
+        const nodeB = await seedNode(DbNodeType.Company, {name: 'B Node'}) as unknown as CompanyNode
+        const nodeC = await seedNode(DbNodeType.Company, {name: 'C Node'}) as unknown as CompanyNode
 
         const ascNodes = await Company.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {CarModelVariant} from "../../../../../../../src/models/node-types/car-model-variants/CarModelVariant"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›achieved-session-result‹ relationship with nodes that do not exist', async () => {
-    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
-    const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+    const carModelVariant = await seedNode(DbNodeType.CarModelVariant)
+    const sessionResult = await seedNode(DbNodeType.SessionResult)
 
     await expect(CarModelVariant.createAchievedSessionResultRelationship(-42, sessionResult.properties.id))
         .rejects

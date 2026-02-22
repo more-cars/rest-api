@@ -1,6 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {SessionResult} from "../../../../../../../src/models/node-types/session-results/SessionResult"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
@@ -8,9 +9,9 @@ import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFo
 
 describe('Requesting all ›has-lap-time‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
-        await seedRelationshipForStartNode(sessionResult.properties.id, ControllerNodeType.LapTime, RelationshipType.SessionResultHasLapTime)
-        await seedRelationshipForStartNode(sessionResult.properties.id, ControllerNodeType.LapTime, RelationshipType.SessionResultHasLapTime)
+        const sessionResult = await seedNode(DbNodeType.SessionResult)
+        await seedRelationshipForStartNode(sessionResult.properties.id, DbNodeType.LapTime, RelationshipType.SessionResultHasLapTime)
+        await seedRelationshipForStartNode(sessionResult.properties.id, DbNodeType.LapTime, RelationshipType.SessionResultHasLapTime)
 
         const relationships = await SessionResult.getAllHasLapTimeRelationships(sessionResult.properties.id)
 
@@ -19,7 +20,7 @@ describe('Requesting all ›has-lap-time‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+        const sessionResult = await seedNode(DbNodeType.SessionResult)
 
         const relationships = await SessionResult.getAllHasLapTimeRelationships(sessionResult.properties.id)
 

@@ -2,12 +2,12 @@ import {describe, expect, test} from 'vitest'
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Creating a ›is-prime-image-of-node‹ relationship', () => {
     test('with valid data', async () => {
-        const image = await seedNode(ControllerNodeType.Image)
-        const node = await seedNode(ControllerNodeType.Company)
+        const image = await seedNode(DbNodeType.Image)
+        const node = await seedNode(DbNodeType.Company)
 
         const createdRelationship = await createRelationship(
             image.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›is-prime-image-of-node‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const image = await seedNode(ControllerNodeType.Image)
+        const image = await seedNode(DbNodeType.Image)
 
         const createdRelationship = await createRelationship(
             -42,

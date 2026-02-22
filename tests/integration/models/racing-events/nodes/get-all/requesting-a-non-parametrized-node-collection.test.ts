@@ -4,10 +4,11 @@ import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/
 import type {RacingEventNode} from "../../../../../../src/models/node-types/racing-events/types/RacingEventNode"
 import {RacingEvent} from "../../../../../../src/models/node-types/racing-events/RacingEvent"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
+import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 
 describe('A non-parametrized "get all RACING EVENT nodes" request returns the correct number of nodes', () => {
     test('when there exist no RACING EVENT nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RacingEvent)
+        await deleteAllNodesOfType(DbNodeType.RacingEvent)
 
         const expectedNodes: RacingEventNode[] = []
         const actualNodes = await RacingEvent.findAll()
@@ -17,9 +18,9 @@ describe('A non-parametrized "get all RACING EVENT nodes" request returns the co
     })
 
     test('when there exist RACING EVENT nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RacingEvent)
+        await deleteAllNodesOfType(DbNodeType.RacingEvent)
         const amount = Math.ceil(Math.random() * 20)
-        await seedNodes(ControllerNodeType.RacingEvent, amount)
+        await seedNodes(DbNodeType.RacingEvent, amount)
 
         const actualNodes = await RacingEvent.findAll()
 

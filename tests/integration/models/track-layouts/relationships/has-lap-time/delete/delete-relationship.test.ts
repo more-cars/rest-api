@@ -1,6 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {TrackLayout} from "../../../../../../../src/models/node-types/track-layouts/TrackLayout"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
@@ -10,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›has-lap-time‹ relationship', () => {
     test('TRACK LAYOUT node does not exist', async () => {
-        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
+        const trackLayout = await seedNode(DbNodeType.TrackLayout)
 
         await expect(TrackLayout.deleteHasLapTimeRelationship(trackLayout.properties.id, -43))
             .rejects
@@ -18,7 +19,7 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
     })
 
     test('LAP TIME node does not exist', async () => {
-        const lapTime = await seedNode(ControllerNodeType.LapTime)
+        const lapTime = await seedNode(DbNodeType.LapTime)
 
         await expect(TrackLayout.deleteHasLapTimeRelationship(-42, lapTime.properties.id))
             .rejects
@@ -32,8 +33,8 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›has-lap-time‹ relationship', async () => {
-        const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
-        const lapTime = await seedNode(ControllerNodeType.LapTime)
+        const trackLayout = await seedNode(DbNodeType.TrackLayout)
+        const lapTime = await seedNode(DbNodeType.LapTime)
 
         await expect(TrackLayout.deleteHasLapTimeRelationship(trackLayout.properties.id, lapTime.properties.id))
             .rejects
@@ -41,7 +42,7 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-lap-time‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.TrackLayout, ControllerNodeType.LapTime, RelationshipType.TrackLayoutHasLapTime)
+        const seededRelationship = await seedRelationship(DbNodeType.TrackLayout, DbNodeType.LapTime, RelationshipType.TrackLayoutHasLapTime)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

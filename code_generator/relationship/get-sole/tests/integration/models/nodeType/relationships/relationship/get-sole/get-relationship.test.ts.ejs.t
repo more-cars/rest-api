@@ -9,6 +9,7 @@ import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../../sr
 import {validateJson} from "../../../../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../../../../_toolbox/schemas/model/RelationshipSchema"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {RelationshipNotFoundError} from "../../../../../../../src/models/types/RelationshipNotFoundError"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 

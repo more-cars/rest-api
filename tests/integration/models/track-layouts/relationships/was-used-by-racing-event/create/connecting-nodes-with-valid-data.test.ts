@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {TrackLayout} from "../../../../../../../src/models/node-types/track-layouts/TrackLayout"
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›was-used-by-racing-event‹ relationship with valid data', async () => {
-    const trackLayout = await seedNode(ControllerNodeType.TrackLayout)
-    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+    const trackLayout = await seedNode(DbNodeType.TrackLayout)
+    const racingEvent = await seedNode(DbNodeType.RacingEvent)
 
     const createdRelationship = await TrackLayout.createWasUsedByRacingEventRelationship(trackLayout.properties.id, racingEvent.properties.id)
 

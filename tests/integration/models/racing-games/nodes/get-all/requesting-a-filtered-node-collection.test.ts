@@ -1,14 +1,14 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {RacingGameNode} from "../../../../../../src/db/nodes/racing-games/types/RacingGameNode"
 import {RacingGame} from "../../../../../../src/models/node-types/racing-games/RacingGame"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 
 describe('A filtered "get all RACING GAME nodes" request returns only the matching nodes', () => {
     test('when there exist no RACING GAME nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RacingGame)
+        await deleteAllNodesOfType(DbNodeType.RacingGame)
 
         const expectedNodes: RacingGameNode[] = []
         const actualNodes = await RacingGame.findAll({
@@ -22,12 +22,12 @@ describe('A filtered "get all RACING GAME nodes" request returns only the matchi
     })
 
     test('when there exist RACING GAME nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RacingGame)
-        const nodeA = await seedNode(ControllerNodeType.RacingGame, {
+        await deleteAllNodesOfType(DbNodeType.RacingGame)
+        const nodeA = await seedNode(DbNodeType.RacingGame, {
             name: 'A Node'
         }) as unknown as RacingGameNode
-        await seedNode(ControllerNodeType.RacingGame, {name: 'B Node'})
-        await seedNode(ControllerNodeType.RacingGame, {name: 'C Node'})
+        await seedNode(DbNodeType.RacingGame, {name: 'B Node'})
+        await seedNode(DbNodeType.RacingGame, {name: 'C Node'})
 
         const filteredNodes = await RacingGame.findAll({
             filterByProperty: 'name',

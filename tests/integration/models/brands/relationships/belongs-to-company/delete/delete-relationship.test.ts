@@ -1,6 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
@@ -10,7 +11,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 
 describe('Deleting a ›belongs-to-company‹ relationship', () => {
     test('BRAND node does not exist', async () => {
-        const brand = await seedNode(ControllerNodeType.Brand)
+        const brand = await seedNode(DbNodeType.Brand)
 
         await expect(Brand.deleteBelongsToCompanyRelationship(brand.properties.id, -43))
             .rejects
@@ -18,7 +19,7 @@ describe('Deleting a ›belongs-to-company‹ relationship', () => {
     })
 
     test('COMPANY node does not exist', async () => {
-        const company = await seedNode(ControllerNodeType.Company)
+        const company = await seedNode(DbNodeType.Company)
 
         await expect(Brand.deleteBelongsToCompanyRelationship(-42, company.properties.id))
             .rejects
@@ -32,8 +33,8 @@ describe('Deleting a ›belongs-to-company‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›belongs-to-company‹ relationship', async () => {
-        const brand = await seedNode(ControllerNodeType.Brand)
-        const company = await seedNode(ControllerNodeType.Company)
+        const brand = await seedNode(DbNodeType.Brand)
+        const company = await seedNode(DbNodeType.Company)
 
         await expect(Brand.deleteBelongsToCompanyRelationship(brand.properties.id, company.properties.id))
             .rejects
@@ -41,7 +42,7 @@ describe('Deleting a ›belongs-to-company‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›belongs-to-company‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.Brand, ControllerNodeType.Company, RelationshipType.BrandBelongsToCompany)
+        const seededRelationship = await seedRelationship(DbNodeType.Brand, DbNodeType.Company, RelationshipType.BrandBelongsToCompany)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

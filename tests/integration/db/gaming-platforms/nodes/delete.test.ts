@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {deleteNode} from "../../../../../src/db/nodes/deleteNode"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 
 test('Expecting response "false" when trying to delete a non-existing GAMING PLATFORM', async () => {
     const success = await deleteNode(-42)
@@ -11,7 +11,7 @@ test('Expecting response "false" when trying to delete a non-existing GAMING PLA
 })
 
 test('Expecting response "true" when deleting an existing GAMING PLATFORM', async () => {
-    const node = await seedNode(ControllerNodeType.GamingPlatform)
+    const node = await seedNode(DbNodeType.GamingPlatform)
     const success = await deleteNode(node.properties.id)
 
     expect(success)

@@ -8,9 +8,13 @@ import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Requesting the ›has-prime-image‹ relationship', () => {
     test('Providing valid data', async () => {
-        SessionResult.getHasPrimeImageRelationship = vi.fn().mockReturnValue({
+        SessionResult.getHasPrimeImageRelationship = vi.fn().mockReturnValue({ // TODO provide FAKE REL
             id: 4,
             type: RelType.SessionResultHasPrimeImage,
+            origin: {},
+            destination: {},
+            created_at: "DUMMY",
+            updated_at: "DUMMY",
         })
 
         const response = await request(app)

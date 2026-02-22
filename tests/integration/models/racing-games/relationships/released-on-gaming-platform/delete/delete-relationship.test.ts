@@ -1,6 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {RacingGame} from "../../../../../../../src/models/node-types/racing-games/RacingGame"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
@@ -10,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›released-on-gaming-platform‹ relationship', () => {
     test('RACING GAME node does not exist', async () => {
-        const racingGame = await seedNode(ControllerNodeType.RacingGame)
+        const racingGame = await seedNode(DbNodeType.RacingGame)
 
         await expect(RacingGame.deleteReleasedOnGamingPlatformRelationship(racingGame.properties.id, -43))
             .rejects
@@ -18,7 +19,7 @@ describe('Deleting a ›released-on-gaming-platform‹ relationship', () => {
     })
 
     test('GAMING PLATFORM node does not exist', async () => {
-        const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
+        const gamingPlatform = await seedNode(DbNodeType.GamingPlatform)
 
         await expect(RacingGame.deleteReleasedOnGamingPlatformRelationship(-42, gamingPlatform.properties.id))
             .rejects
@@ -32,8 +33,8 @@ describe('Deleting a ›released-on-gaming-platform‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›released-on-gaming-platform‹ relationship', async () => {
-        const racingGame = await seedNode(ControllerNodeType.RacingGame)
-        const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
+        const racingGame = await seedNode(DbNodeType.RacingGame)
+        const gamingPlatform = await seedNode(DbNodeType.GamingPlatform)
 
         await expect(RacingGame.deleteReleasedOnGamingPlatformRelationship(racingGame.properties.id, gamingPlatform.properties.id))
             .rejects
@@ -41,7 +42,7 @@ describe('Deleting a ›released-on-gaming-platform‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›released-on-gaming-platform‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.RacingGame, ControllerNodeType.GamingPlatform, RelationshipType.RacingGameReleasedOnGamingPlatform)
+        const seededRelationship = await seedRelationship(DbNodeType.RacingGame, DbNodeType.GamingPlatform, RelationshipType.RacingGameReleasedOnGamingPlatform)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

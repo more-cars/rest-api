@@ -1,16 +1,15 @@
 import {expect, test} from 'vitest'
 import {getAllModelRelationshipTypes} from "../../../_toolbox/getAllModelRelationshipTypes"
-import {FakeNodeInput} from "../../../_toolbox/fixtures/nodes/FakeNodeInput"
-import {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
-import type {ControllerNode} from "../../../../src/controllers/nodes/types/ControllerNode"
 import type {Rel} from "../../../../src/models/relationships/types/Rel"
 import {marshalRelations} from "../../../../src/controllers/relations/marshalRelations"
 import {mapModelRelationTypeToControllerRelationType} from "../../../../src/controllers/relations/mapModelRelationTypeToControllerRelationType"
+import {FakeNodeType} from "../../../_toolbox/fixtures/nodes/FakeNodeType"
+import {DbNodeType} from "../../../../src/db/types/DbNodeType"
 
 test('marshalling a relation collection', async () => {
     getAllModelRelationshipTypes().forEach((relationshipType) => {
-        const origin = FakeNodeInput(ControllerNodeType.Brand) as unknown as ControllerNode
-        const destination = FakeNodeInput(ControllerNodeType.CarModel) as unknown as ControllerNode
+        const origin = FakeNodeType(DbNodeType.Brand).modelOutput()
+        const destination = FakeNodeType(DbNodeType.CarModel).modelOutput()
         const relationship: Rel = {
             id: 3,
             type: relationshipType,

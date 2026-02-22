@@ -1,6 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {RacingSeries} from "../../../../../../../src/models/node-types/racing-series/RacingSeries"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
@@ -10,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›has-prime-image‹ relationship', () => {
     test('RACING SERIES node does not exist', async () => {
-        const racingSeries = await seedNode(ControllerNodeType.RacingSeries)
+        const racingSeries = await seedNode(DbNodeType.RacingSeries)
 
         await expect(RacingSeries.deleteHasPrimeImageRelationship(racingSeries.properties.id, -43))
             .rejects
@@ -18,7 +19,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('IMAGE node does not exist', async () => {
-        const image = await seedNode(ControllerNodeType.Image)
+        const image = await seedNode(DbNodeType.Image)
 
         await expect(RacingSeries.deleteHasPrimeImageRelationship(-42, image.properties.id))
             .rejects
@@ -32,8 +33,8 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›has-prime-image‹ relationship', async () => {
-        const racingSeries = await seedNode(ControllerNodeType.RacingSeries)
-        const image = await seedNode(ControllerNodeType.Image)
+        const racingSeries = await seedNode(DbNodeType.RacingSeries)
+        const image = await seedNode(DbNodeType.Image)
 
         await expect(RacingSeries.deleteHasPrimeImageRelationship(racingSeries.properties.id, image.properties.id))
             .rejects
@@ -41,7 +42,7 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-prime-image‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.RacingSeries, ControllerNodeType.Image, RelationshipType.RacingSeriesHasPrimeImage)
+        const seededRelationship = await seedRelationship(DbNodeType.RacingSeries, DbNodeType.Image, RelationshipType.RacingSeriesHasPrimeImage)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

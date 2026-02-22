@@ -1,15 +1,15 @@
 import {describe, expect, test} from 'vitest'
 import {seedRelationship} from "../../../../_toolbox/dbSeeding/seedRelationship"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {RelationshipType} from "../../../../../src/db/types/RelationshipType"
 import {Relationship} from "../../../../../src/models/Relationship"
 import {validateJson} from "../../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../../_toolbox/schemas/model/RelationshipSchema"
 import {RelNotFoundError} from "../../../../../src/models/types/RelNotFoundError"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
 
 describe('Requesting a relationship', () => {
     test('relationship exists', async () => {
-        const expectedRelationship = await seedRelationship(ControllerNodeType.Brand, ControllerNodeType.CarModel, RelationshipType.BrandHasCarModel)
+        const expectedRelationship = await seedRelationship(DbNodeType.Brand, DbNodeType.CarModel, RelationshipType.BrandHasCarModel)
         const actualRelationship = await Relationship.findById(expectedRelationship.id)
 
         expect(validateJson(actualRelationship, RelationshipSchema))

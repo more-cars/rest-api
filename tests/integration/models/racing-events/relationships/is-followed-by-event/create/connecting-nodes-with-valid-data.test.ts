@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {RacingEvent} from "../../../../../../../src/models/node-types/racing-events/RacingEvent"
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›is-followed-by-event‹ relationship with valid data', async () => {
-    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
-    const partner = await seedNode(ControllerNodeType.RacingEvent)
+    const racingEvent = await seedNode(DbNodeType.RacingEvent)
+    const partner = await seedNode(DbNodeType.RacingEvent)
 
     const createdRelationship = await RacingEvent.createIsFollowedByEventRelationship(racingEvent.properties.id, partner.properties.id)
 

@@ -1,6 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
@@ -10,7 +11,7 @@ import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/typ
 
 describe('Deleting a ›has-car-model‹ relationship', () => {
     test('BRAND node does not exist', async () => {
-        const brand = await seedNode(ControllerNodeType.Brand)
+        const brand = await seedNode(DbNodeType.Brand)
 
         await expect(Brand.deleteHasCarModelRelationship(brand.properties.id, -43))
             .rejects
@@ -18,7 +19,7 @@ describe('Deleting a ›has-car-model‹ relationship', () => {
     })
 
     test('CAR MODEL node does not exist', async () => {
-        const carModel = await seedNode(ControllerNodeType.CarModel)
+        const carModel = await seedNode(DbNodeType.CarModel)
 
         await expect(Brand.deleteHasCarModelRelationship(-42, carModel.properties.id))
             .rejects
@@ -32,8 +33,8 @@ describe('Deleting a ›has-car-model‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›has-car-model‹ relationship', async () => {
-        const brand = await seedNode(ControllerNodeType.Brand)
-        const carModel = await seedNode(ControllerNodeType.CarModel)
+        const brand = await seedNode(DbNodeType.Brand)
+        const carModel = await seedNode(DbNodeType.CarModel)
 
         await expect(Brand.deleteHasCarModelRelationship(brand.properties.id, carModel.properties.id))
             .rejects
@@ -41,7 +42,7 @@ describe('Deleting a ›has-car-model‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›has-car-model‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.Brand, ControllerNodeType.CarModel, RelationshipType.BrandHasCarModel)
+        const seededRelationship = await seedRelationship(DbNodeType.Brand, DbNodeType.CarModel, RelationshipType.BrandHasCarModel)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

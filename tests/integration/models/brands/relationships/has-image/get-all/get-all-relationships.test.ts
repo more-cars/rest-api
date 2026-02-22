@@ -1,5 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
@@ -8,9 +9,9 @@ import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const brand = await seedNode(ControllerNodeType.Brand)
-        await seedRelationshipForStartNode(brand.properties.id, ControllerNodeType.Image, RelationshipType.BrandHasImage)
-        await seedRelationshipForStartNode(brand.properties.id, ControllerNodeType.Image, RelationshipType.BrandHasImage)
+        const brand = await seedNode(DbNodeType.Brand)
+        await seedRelationshipForStartNode(brand.properties.id, DbNodeType.Image, RelationshipType.BrandHasImage)
+        await seedRelationshipForStartNode(brand.properties.id, DbNodeType.Image, RelationshipType.BrandHasImage)
 
         const relationships = await Brand.getAllHasImageRelationships(brand.properties.id)
 
@@ -19,7 +20,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const brand = await seedNode(ControllerNodeType.Brand)
+        const brand = await seedNode(DbNodeType.Brand)
 
         const relationships = await Brand.getAllHasImageRelationships(brand.properties.id)
 

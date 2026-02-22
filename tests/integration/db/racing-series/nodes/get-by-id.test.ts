@@ -1,7 +1,7 @@
 import {expect, test} from 'vitest'
 import {getNodeById} from "../../../../../src/db/nodes/racing-series/getNodeById"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {RacingSeriesSchema} from "../../../../_toolbox/schemas/RacingSeriesSchema"
 import {validateJson} from "../../../../_toolbox/validateJson"
 
@@ -14,7 +14,7 @@ test('Querying a RACING SERIES that does not exist should return "false"', async
 })
 
 test('Querying an existing RACING SERIES should return a db node with correct schema', async () => {
-    const createdNode = await seedNode(ControllerNodeType.RacingSeries)
+    const createdNode = await seedNode(DbNodeType.RacingSeries)
     const racingSeriesNode = await getNodeById(createdNode.properties.id)
 
     expect(validateJson(racingSeriesNode, RacingSeriesSchema))

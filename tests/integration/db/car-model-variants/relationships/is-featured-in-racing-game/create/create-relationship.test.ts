@@ -2,12 +2,12 @@ import {describe, expect, test} from 'vitest'
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Creating a ›is-featured-in-racing-game‹ relationship', () => {
     test('with valid data', async () => {
-        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
-        const racingGame = await seedNode(ControllerNodeType.RacingGame)
+        const carModelVariant = await seedNode(DbNodeType.CarModelVariant)
+        const racingGame = await seedNode(DbNodeType.RacingGame)
 
         const createdRelationship = await createRelationship(
             carModelVariant.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›is-featured-in-racing-game‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+        const carModelVariant = await seedNode(DbNodeType.CarModelVariant)
 
         const createdRelationship = await createRelationship(
             carModelVariant.properties.id,

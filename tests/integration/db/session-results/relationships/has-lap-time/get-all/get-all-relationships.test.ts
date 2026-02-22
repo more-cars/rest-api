@@ -1,16 +1,16 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Requesting all ›has-lap-time‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
-        await seedRelationshipForStartNode(sessionResult.properties.id, ControllerNodeType.LapTime, RelationshipType.SessionResultHasLapTime)
-        await seedRelationshipForStartNode(sessionResult.properties.id, ControllerNodeType.LapTime, RelationshipType.SessionResultHasLapTime)
+        const sessionResult = await seedNode(DbNodeType.SessionResult)
+        await seedRelationshipForStartNode(sessionResult.properties.id, DbNodeType.LapTime, RelationshipType.SessionResultHasLapTime)
+        await seedRelationshipForStartNode(sessionResult.properties.id, DbNodeType.LapTime, RelationshipType.SessionResultHasLapTime)
 
         const relationships = await getRelationshipCollection(
             sessionResult.properties.id,
@@ -23,7 +23,7 @@ describe('Requesting all ›has-lap-time‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+        const sessionResult = await seedNode(DbNodeType.SessionResult)
 
         const relationships = await getRelationshipCollection(
             sessionResult.properties.id,

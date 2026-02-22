@@ -1,6 +1,6 @@
 import {expect, test, vi} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {Image} from "../../../../../../../src/models/node-types/images/Image"
 
 test('A completely valid request, but the database call fails (e.g. one of the nodes was deleted just a moment ago)', async () => {
@@ -10,8 +10,8 @@ test('A completely valid request, but the database call fails (e.g. one of the n
         }
     })
 
-    const image = await seedNode(ControllerNodeType.Image)
-    const node = await seedNode(ControllerNodeType.Company)
+    const image = await seedNode(DbNodeType.Image)
+    const node = await seedNode(DbNodeType.Company)
 
     await expect(Image.createIsPrimeImageOfNodeRelationship(image.properties.id, node.properties.id))
         .rejects

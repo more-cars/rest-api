@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {RaceTrack} from "../../../../../../../src/models/node-types/race-tracks/RaceTrack"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›hosted-racing-event‹ relationship with nodes that do not exist', async () => {
-    const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
-    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+    const raceTrack = await seedNode(DbNodeType.RaceTrack)
+    const racingEvent = await seedNode(DbNodeType.RacingEvent)
 
     await expect(RaceTrack.createHostedRacingEventRelationship(-42, racingEvent.properties.id))
         .rejects

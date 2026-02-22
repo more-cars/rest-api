@@ -1,16 +1,15 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 
 test('A BRAND can have multiple ›has-car-model‹ relationships', async () => {
-    const brand = await seedNode(ControllerNodeType.Brand)
+    const brand = await seedNode(DbNodeType.Brand)
     const carModelAmount = 3
-    const carModels = await seedNodes(ControllerNodeType.CarModel, carModelAmount)
+    const carModels = await seedNodes(DbNodeType.CarModel, carModelAmount)
 
     for (const carModel of carModels) {
         await Brand.createHasCarModelRelationship(brand.properties.id, carModel.properties.id)

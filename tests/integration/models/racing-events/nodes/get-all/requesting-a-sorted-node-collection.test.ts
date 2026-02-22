@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {RacingEventNode} from "../../../../../../src/db/nodes/racing-events/types/RacingEventNode"
 import {RacingEvent} from "../../../../../../src/models/node-types/racing-events/RacingEvent"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 
 describe('A sorted "get all RACING EVENT nodes" request returns the nodes in correct order', () => {
     test('when there exist no RACING EVENT nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RacingEvent)
+        await deleteAllNodesOfType(DbNodeType.RacingEvent)
 
         const expectedNodes: RacingEventNode[] = []
         const actualNodes = await RacingEvent.findAll({sortByProperty: 'name', sortDirection: 'desc'})
@@ -17,14 +17,14 @@ describe('A sorted "get all RACING EVENT nodes" request returns the nodes in cor
     })
 
     test('when there exist RACING EVENT nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.RacingEvent)
-        const nodeA = await seedNode(ControllerNodeType.RacingEvent, {
+        await deleteAllNodesOfType(DbNodeType.RacingEvent)
+        const nodeA = await seedNode(DbNodeType.RacingEvent, {
             name: 'A Node'
         }) as unknown as RacingEventNode
-        const nodeB = await seedNode(ControllerNodeType.RacingEvent, {
+        const nodeB = await seedNode(DbNodeType.RacingEvent, {
             name: 'B Node'
         }) as unknown as RacingEventNode
-        const nodeC = await seedNode(ControllerNodeType.RacingEvent, {
+        const nodeC = await seedNode(DbNodeType.RacingEvent, {
             name: 'C Node'
         }) as unknown as RacingEventNode
 

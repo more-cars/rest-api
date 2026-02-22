@@ -1,16 +1,16 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Requesting all ›has-brand‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const company = await seedNode(ControllerNodeType.Company)
-        await seedRelationshipForStartNode(company.properties.id, ControllerNodeType.Brand, RelationshipType.CompanyHasBrand)
-        await seedRelationshipForStartNode(company.properties.id, ControllerNodeType.Brand, RelationshipType.CompanyHasBrand)
+        const company = await seedNode(DbNodeType.Company)
+        await seedRelationshipForStartNode(company.properties.id, DbNodeType.Brand, RelationshipType.CompanyHasBrand)
+        await seedRelationshipForStartNode(company.properties.id, DbNodeType.Brand, RelationshipType.CompanyHasBrand)
 
         const relationships = await getRelationshipCollection(
             company.properties.id,
@@ -23,7 +23,7 @@ describe('Requesting all ›has-brand‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const company = await seedNode(ControllerNodeType.Company)
+        const company = await seedNode(DbNodeType.Company)
 
         const relationships = await getRelationshipCollection(
             company.properties.id,

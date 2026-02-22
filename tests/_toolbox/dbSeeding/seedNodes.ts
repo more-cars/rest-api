@@ -1,11 +1,11 @@
-import {ControllerNodeType} from "../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedNode} from "./seedNode"
+import type {DbNodeType} from "../../../src/db/types/DbNodeType"
 
-export async function seedNodes(nodeType: ControllerNodeType, amount: number) {
+export async function seedNodes(dbNodeType: DbNodeType, amount: number) {
     const nodes: any[] = []
 
     for (let i = 0; i < amount; i++) {
-        nodes.push(await seedNode(nodeType))
+        nodes.push(await seedNode(dbNodeType))
     }
 
     return nodes

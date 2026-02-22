@@ -1,16 +1,16 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
-        await seedRelationshipForStartNode(gamingPlatform.properties.id, ControllerNodeType.Image, RelationshipType.GamingPlatformHasImage)
-        await seedRelationshipForStartNode(gamingPlatform.properties.id, ControllerNodeType.Image, RelationshipType.GamingPlatformHasImage)
+        const gamingPlatform = await seedNode(DbNodeType.GamingPlatform)
+        await seedRelationshipForStartNode(gamingPlatform.properties.id, DbNodeType.Image, RelationshipType.GamingPlatformHasImage)
+        await seedRelationshipForStartNode(gamingPlatform.properties.id, DbNodeType.Image, RelationshipType.GamingPlatformHasImage)
 
         const relationships = await getRelationshipCollection(
             gamingPlatform.properties.id,
@@ -23,7 +23,7 @@ describe('Requesting all ›has-image‹ relationships', () => {
     })
 
     test('node exists, but no relationships', async () => {
-        const gamingPlatform = await seedNode(ControllerNodeType.GamingPlatform)
+        const gamingPlatform = await seedNode(DbNodeType.GamingPlatform)
 
         const relationships = await getRelationshipCollection(
             gamingPlatform.properties.id,

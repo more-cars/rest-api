@@ -4,10 +4,11 @@ import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/
 import type {BrandNode} from "../../../../../../src/models/node-types/brands/types/BrandNode"
 import {Brand} from "../../../../../../src/models/node-types/brands/Brand"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
+import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 
 describe('A paginated "get all BRAND nodes" request returns the correct number of nodes', () => {
     test('when there exist no BRAND nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.Brand)
+        await deleteAllNodesOfType(DbNodeType.Brand)
 
         const expectedNodes: BrandNode[] = []
         const actualNodes = await Brand.findAll({page: 1})
@@ -17,9 +18,9 @@ describe('A paginated "get all BRAND nodes" request returns the correct number o
     })
 
     test('when there exist BRAND nodes', async () => {
-        await deleteAllNodesOfType(ControllerNodeType.Brand)
+        await deleteAllNodesOfType(DbNodeType.Brand)
         const amount = Math.ceil(Math.random() * 20)
-        await seedNodes(ControllerNodeType.Brand, amount)
+        await seedNodes(DbNodeType.Brand, amount)
 
         const actualNodes = await Brand.findAll({page: 1})
 

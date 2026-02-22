@@ -2,12 +2,12 @@ import {describe, expect, test} from 'vitest'
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Creating a ›has-variant‹ relationship', () => {
     test('with valid data', async () => {
-        const carModel = await seedNode(ControllerNodeType.CarModel)
-        const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+        const carModel = await seedNode(DbNodeType.CarModel)
+        const carModelVariant = await seedNode(DbNodeType.CarModelVariant)
 
         const createdRelationship = await createRelationship(
             carModel.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›has-variant‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const carModel = await seedNode(ControllerNodeType.CarModel)
+        const carModel = await seedNode(DbNodeType.CarModel)
 
         const createdRelationship = await createRelationship(
             carModel.properties.id,

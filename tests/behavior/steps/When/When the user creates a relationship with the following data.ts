@@ -1,12 +1,12 @@
 import {DataTable, When, world} from "@cucumber/cucumber"
 import axios from "axios"
 import {seedNode} from "../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../src/db/types/DbNodeType"
 
 When('the user creates a relationship with the following data',
     async (dataTable: DataTable) => {
-        const brand = await seedNode(ControllerNodeType.Brand)
-        const carModel = await seedNode(ControllerNodeType.CarModel)
+        const brand = await seedNode(DbNodeType.Brand)
+        const carModel = await seedNode(DbNodeType.CarModel)
         const rows = dataTable.hashes()
         const data: any = {}
 

@@ -1,9 +1,9 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {LapTimeNode} from "../../../../../../src/models/node-types/lap-times/types/LapTimeNode"
 import {LapTime} from "../../../../../../src/models/node-types/lap-times/LapTime"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
+import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 
 describe('Each page of a "get all LAP TIME nodes" request returns the correct number of nodes', () => {
     test.each([
@@ -11,7 +11,7 @@ describe('Each page of a "get all LAP TIME nodes" request returns the correct nu
         [2],
         [99],
     ])('when there exist no LAP TIME nodes (page=$0)', async (page) => {
-        await deleteAllNodesOfType(ControllerNodeType.LapTime)
+        await deleteAllNodesOfType(DbNodeType.LapTime)
 
         const expectedNodes: LapTimeNode[] = []
         const actualNodes = await LapTime.findAll({page})
@@ -24,8 +24,8 @@ describe('Each page of a "get all LAP TIME nodes" request returns the correct nu
         [20, 1, 20],
         [5, 2, 0],
     ])('when there exist $0 LAP TIME nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
-        await deleteAllNodesOfType(ControllerNodeType.LapTime)
-        await seedNodes(ControllerNodeType.LapTime, totalNodeAmount)
+        await deleteAllNodesOfType(DbNodeType.LapTime)
+        await seedNodes(DbNodeType.LapTime, totalNodeAmount)
 
         const actualNodes = await LapTime.findAll({page})
 

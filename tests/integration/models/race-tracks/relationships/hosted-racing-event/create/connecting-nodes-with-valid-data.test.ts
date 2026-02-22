@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {RaceTrack} from "../../../../../../../src/models/node-types/race-tracks/RaceTrack"
 import {RelType} from "../../../../../../../src/models/relationships/types/RelType"
 
 test('Creating a ›hosted-racing-event‹ relationship with valid data', async () => {
-    const raceTrack = await seedNode(ControllerNodeType.RaceTrack)
-    const racingEvent = await seedNode(ControllerNodeType.RacingEvent)
+    const raceTrack = await seedNode(DbNodeType.RaceTrack)
+    const racingEvent = await seedNode(DbNodeType.RacingEvent)
 
     const createdRelationship = await RaceTrack.createHostedRacingEventRelationship(raceTrack.properties.id, racingEvent.properties.id)
 

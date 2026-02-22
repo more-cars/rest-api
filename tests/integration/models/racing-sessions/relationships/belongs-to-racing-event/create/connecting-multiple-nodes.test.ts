@@ -1,16 +1,15 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {RacingSession} from "../../../../../../../src/models/node-types/racing-sessions/RacingSession"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 test('A RACING SESSION cannot have multiple ›belongs-to-racing-event‹ relationships', async () => {
-    const racingSession = await seedNode(ControllerNodeType.RacingSession)
+    const racingSession = await seedNode(DbNodeType.RacingSession)
     const racingEventsAmount = 3
-    const racingEvents = await seedNodes(ControllerNodeType.RacingEvent, racingEventsAmount)
+    const racingEvents = await seedNodes(DbNodeType.RacingEvent, racingEventsAmount)
 
     for (const racingEvent of racingEvents) {
         await RacingSession.createBelongsToRacingEventRelationship(racingSession.properties.id, racingEvent.properties.id)

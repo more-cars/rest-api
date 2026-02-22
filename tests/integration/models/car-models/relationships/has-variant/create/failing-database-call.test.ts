@@ -1,6 +1,6 @@
 import {expect, test, vi} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {CarModel} from "../../../../../../../src/models/node-types/car-models/CarModel"
 
 test('A completely valid request, but the database call fails (e.g. one of the nodes was deleted just a moment ago)', async () => {
@@ -10,8 +10,8 @@ test('A completely valid request, but the database call fails (e.g. one of the n
         }
     })
 
-    const carModel = await seedNode(ControllerNodeType.CarModel)
-    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
+    const carModel = await seedNode(DbNodeType.CarModel)
+    const carModelVariant = await seedNode(DbNodeType.CarModelVariant)
 
     await expect(CarModel.createHasVariantRelationship(carModel.properties.id, carModelVariant.properties.id))
         .rejects

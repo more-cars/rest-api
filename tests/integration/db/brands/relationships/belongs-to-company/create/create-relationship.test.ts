@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 describe('Creating a ›belongs-to-company‹ relationship', () => {
     test('with valid data', async () => {
-        const brand = await seedNode(ControllerNodeType.Brand)
-        const company = await seedNode(ControllerNodeType.Company)
+        const brand = await seedNode(DbNodeType.Brand)
+        const company = await seedNode(DbNodeType.Company)
 
         const createdRelationship = await createRelationship(
             brand.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›belongs-to-company‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const brand = await seedNode(ControllerNodeType.Brand)
+        const brand = await seedNode(DbNodeType.Brand)
 
         const createdRelationship = await createRelationship(
             brand.properties.id,

@@ -1,14 +1,14 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
-import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Requesting a ›achieved-on-track-layout‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const relationship = await seedRelationship(ControllerNodeType.LapTime, ControllerNodeType.TrackLayout, RelationshipType.LapTimeAchievedOnTrackLayout)
+        const relationship = await seedRelationship(DbNodeType.LapTime, DbNodeType.TrackLayout, RelationshipType.LapTimeAchievedOnTrackLayout)
 
         const relationships = await getRelationshipCollection(
             relationship.start_node.properties.id,
@@ -21,7 +21,7 @@ describe('Requesting a ›achieved-on-track-layout‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const lapTime = await seedNode(ControllerNodeType.LapTime)
+        const lapTime = await seedNode(DbNodeType.LapTime)
 
         const relationships = await getRelationshipCollection(
             lapTime.properties.id,

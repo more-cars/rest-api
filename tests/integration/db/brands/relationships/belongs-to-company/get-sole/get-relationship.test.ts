@@ -2,13 +2,12 @@ import {describe, expect, test} from 'vitest'
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
-import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
+import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 
 describe('Requesting a ›belongs-to-company‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const relationship = await seedRelationship(ControllerNodeType.Brand, ControllerNodeType.Company, RelationshipType.BrandBelongsToCompany)
+        const relationship = await seedRelationship(DbNodeType.Brand, DbNodeType.Company, RelationshipType.BrandBelongsToCompany)
 
         const relationships = await getRelationshipCollection(
             relationship.start_node.properties.id,
@@ -21,7 +20,7 @@ describe('Requesting a ›belongs-to-company‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const brand = await seedNode(ControllerNodeType.Brand)
+        const brand = await seedNode(DbNodeType.Brand)
 
         const relationships = await getRelationshipCollection(
             brand.properties.id,

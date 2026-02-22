@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {getNodeById} from "../../../../../src/db/nodes/images/getNodeById"
 import {ImageSchema} from "../../../../_toolbox/schemas/ImageSchema"
 import {validateJson} from "../../../../_toolbox/validateJson"
@@ -14,7 +14,7 @@ test('Querying an IMAGE that does not exist should return "false"', async () => 
 })
 
 test('Querying an existing IMAGE should return a db node with correct schema', async () => {
-    const existingNode = await seedNode(ControllerNodeType.Image)
+    const existingNode = await seedNode(DbNodeType.Image)
     const requestedNode = await getNodeById(existingNode.properties.id)
 
     expect(validateJson(requestedNode, ImageSchema))

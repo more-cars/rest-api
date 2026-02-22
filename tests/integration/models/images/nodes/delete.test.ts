@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {Image} from "../../../../../src/models/node-types/images/Image"
 import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 
 describe('Deleting an IMAGE', () => {
     test('that does not exist', async () => {
@@ -12,7 +12,7 @@ describe('Deleting an IMAGE', () => {
     })
 
     test('that exists', async () => {
-        const node = await seedNode(ControllerNodeType.Image)
+        const node = await seedNode(DbNodeType.Image)
         await expect(Image.delete(node.properties.id))
             .resolves
             .not.toThrow(NodeNotFoundError)

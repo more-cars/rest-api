@@ -2,12 +2,12 @@ import {describe, expect, test} from 'vitest'
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Creating a ›has-lap-time‹ relationship', () => {
     test('with valid data', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
-        const lapTime = await seedNode(ControllerNodeType.LapTime)
+        const sessionResult = await seedNode(DbNodeType.SessionResult)
+        const lapTime = await seedNode(DbNodeType.LapTime)
 
         const createdRelationship = await createRelationship(
             sessionResult.properties.id,
@@ -30,7 +30,7 @@ describe('Creating a ›has-lap-time‹ relationship', () => {
     })
 
     test('with invalid data', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+        const sessionResult = await seedNode(DbNodeType.SessionResult)
 
         const createdRelationship = await createRelationship(
             sessionResult.properties.id,

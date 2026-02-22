@@ -1,6 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {LapTime} from "../../../../../../../src/models/node-types/lap-times/LapTime"
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
@@ -10,7 +11,7 @@ import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoun
 
 describe('Deleting a ›belongs-to-session-result‹ relationship', () => {
     test('LAP TIME node does not exist', async () => {
-        const lapTime = await seedNode(ControllerNodeType.LapTime)
+        const lapTime = await seedNode(DbNodeType.LapTime)
 
         await expect(LapTime.deleteBelongsToSessionResultRelationship(lapTime.properties.id, -43))
             .rejects
@@ -18,7 +19,7 @@ describe('Deleting a ›belongs-to-session-result‹ relationship', () => {
     })
 
     test('SESSION RESULT node does not exist', async () => {
-        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+        const sessionResult = await seedNode(DbNodeType.SessionResult)
 
         await expect(LapTime.deleteBelongsToSessionResultRelationship(-42, sessionResult.properties.id))
             .rejects
@@ -32,8 +33,8 @@ describe('Deleting a ›belongs-to-session-result‹ relationship', () => {
     })
 
     test('both nodes exist, but have no ›belongs-to-session-result‹ relationship', async () => {
-        const lapTime = await seedNode(ControllerNodeType.LapTime)
-        const sessionResult = await seedNode(ControllerNodeType.SessionResult)
+        const lapTime = await seedNode(DbNodeType.LapTime)
+        const sessionResult = await seedNode(DbNodeType.SessionResult)
 
         await expect(LapTime.deleteBelongsToSessionResultRelationship(lapTime.properties.id, sessionResult.properties.id))
             .rejects
@@ -41,7 +42,7 @@ describe('Deleting a ›belongs-to-session-result‹ relationship', () => {
     })
 
     test('both nodes exist and have a ›belongs-to-session-result‹ relationship', async () => {
-        const seededRelationship = await seedRelationship(ControllerNodeType.LapTime, ControllerNodeType.SessionResult, RelationshipType.LapTimeBelongsToSessionResult)
+        const seededRelationship = await seedRelationship(DbNodeType.LapTime, DbNodeType.SessionResult, RelationshipType.LapTimeBelongsToSessionResult)
 
         const relationshipBefore = await getSpecificRelationship(
             seededRelationship.start_node.properties.id,

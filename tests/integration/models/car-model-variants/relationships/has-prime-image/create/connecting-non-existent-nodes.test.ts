@@ -1,12 +1,12 @@
 import {expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {CarModelVariant} from "../../../../../../../src/models/node-types/car-model-variants/CarModelVariant"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 
 test('Trying to create a ›has-prime-image‹ relationship with nodes that do not exist', async () => {
-    const carModelVariant = await seedNode(ControllerNodeType.CarModelVariant)
-    const image = await seedNode(ControllerNodeType.Image)
+    const carModelVariant = await seedNode(DbNodeType.CarModelVariant)
+    const image = await seedNode(DbNodeType.Image)
 
     await expect(CarModelVariant.createHasPrimeImageRelationship(-42, image.properties.id))
         .rejects
