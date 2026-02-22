@@ -5,13 +5,11 @@ import {RacingGame} from "../../../../../../src/models/node-types/racing-games/R
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Creating a ›has-prime-image‹ relationship', () => {
     test('Providing valid data', async () => {
-        RacingGame.createHasPrimeImageRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.RacingGameHasPrimeImage,
-        })
+        RacingGame.createHasPrimeImageRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.RacingGameHasPrimeImage))
 
         const response = await request(app)
             .post('/racing-games/123/has-prime-image/567')

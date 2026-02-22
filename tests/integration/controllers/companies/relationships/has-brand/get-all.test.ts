@@ -4,20 +4,14 @@ import {app} from '../../../../../../src/app'
 import {Company} from "../../../../../../src/models/node-types/companies/Company"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting all ›has-brand‹ relationships', () => {
     test('Providing valid data', async () => {
         Company.getAllHasBrandRelationships = vi.fn().mockReturnValue([
-            {
-                id: 4,
-                type: RelType.CompanyHasBrand,
-            }, {
-                id: 5,
-                type: RelType.CompanyHasBrand,
-            }, {
-                id: 6,
-                type: RelType.CompanyHasBrand,
-            }
+            getFakeRel(RelType.CompanyHasBrand),
+            getFakeRel(RelType.CompanyHasBrand),
+            getFakeRel(RelType.CompanyHasBrand),
         ])
 
         const response = await request(app)

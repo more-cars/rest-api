@@ -5,13 +5,11 @@ import {SessionResult} from "../../../../../../src/models/node-types/session-res
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Creating a ›has-lap-time‹ relationship', () => {
     test('Providing valid data', async () => {
-        SessionResult.createHasLapTimeRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.SessionResultHasLapTime,
-        })
+        SessionResult.createHasLapTimeRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.SessionResultHasLapTime))
 
         const response = await request(app)
             .post('/session-results/123/has-lap-time/567')

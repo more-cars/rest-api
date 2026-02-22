@@ -5,13 +5,11 @@ import {RacingEvent} from "../../../../../../src/models/node-types/racing-events
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Creating a ›is-followed-by-event‹ relationship', () => {
     test('Providing valid data', async () => {
-        RacingEvent.createIsFollowedByEventRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.RacingEventIsFollowedByEvent,
-        })
+        RacingEvent.createIsFollowedByEventRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.RacingEventIsFollowedByEvent))
 
         const response = await request(app)
             .post('/racing-events/123/is-followed-by-event/567')

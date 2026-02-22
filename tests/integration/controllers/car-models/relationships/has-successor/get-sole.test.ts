@@ -5,13 +5,11 @@ import {CarModel} from "../../../../../../src/models/node-types/car-models/CarMo
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting the ›has-successor‹ relationship', () => {
     test('Providing valid data', async () => {
-        CarModel.getHasSuccessorRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.CarModelHasSuccessor,
-        })
+        CarModel.getHasSuccessorRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.CarModelHasSuccessor))
 
         const response = await request(app)
             .get('/car-models/123/has-successor')

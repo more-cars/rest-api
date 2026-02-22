@@ -5,13 +5,11 @@ import {TrackLayout} from "../../../../../../src/models/node-types/track-layouts
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Creating a ›has-lap-time‹ relationship', () => {
     test('Providing valid data', async () => {
-        TrackLayout.createHasLapTimeRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.TrackLayoutHasLapTime,
-        })
+        TrackLayout.createHasLapTimeRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.TrackLayoutHasLapTime))
 
         const response = await request(app)
             .post('/track-layouts/123/has-lap-time/567')

@@ -5,13 +5,11 @@ import {RacingSession} from "../../../../../../src/models/node-types/racing-sess
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting the ›belongs-to-racing-event‹ relationship', () => {
     test('Providing valid data', async () => {
-        RacingSession.getBelongsToRacingEventRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.RacingSessionBelongsToRacingEvent,
-        })
+        RacingSession.getBelongsToRacingEventRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.RacingSessionBelongsToRacingEvent))
 
         const response = await request(app)
             .get('/racing-sessions/123/belongs-to-racing-event')

@@ -5,13 +5,11 @@ import {RacingGame} from "../../../../../../src/models/node-types/racing-games/R
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Creating a ›features-car-model-variant‹ relationship', () => {
     test('Providing valid data', async () => {
-        RacingGame.createFeaturesCarModelVariantRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.RacingGameFeaturesCarModelVariant,
-        })
+        RacingGame.createFeaturesCarModelVariantRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.RacingGameFeaturesCarModelVariant))
 
         const response = await request(app)
             .post('/racing-games/123/features-car-model-variant/567')

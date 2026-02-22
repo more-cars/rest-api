@@ -6,13 +6,11 @@ import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFound
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {SemanticError} from "../../../../../../src/models/types/SemanticError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Creating a ›is-successor-of‹ relationship', () => {
     test('Providing valid data', async () => {
-        CarModel.createIsSuccessorOfRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.CarModelIsSuccessorOf,
-        })
+        CarModel.createIsSuccessorOfRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.CarModelIsSuccessorOf))
 
         const response = await request(app)
             .post('/car-models/123/is-successor-of/567')

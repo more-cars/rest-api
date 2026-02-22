@@ -5,13 +5,11 @@ import {Image} from "../../../../../../src/models/node-types/images/Image"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Creating a ›belongs-to-node‹ relationship', () => {
     test('Providing valid data', async () => {
-        Image.createBelongsToNodeRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.ImageBelongsToNode,
-        })
+        Image.createBelongsToNodeRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.ImageBelongsToNode))
 
         const response = await request(app)
             .post('/images/123/belongs-to-node/567')

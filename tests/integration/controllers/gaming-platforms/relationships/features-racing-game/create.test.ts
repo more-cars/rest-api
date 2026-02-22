@@ -5,13 +5,11 @@ import {GamingPlatform} from "../../../../../../src/models/node-types/gaming-pla
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Creating a ›features-racing-game‹ relationship', () => {
     test('Providing valid data', async () => {
-        GamingPlatform.createFeaturesRacingGameRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.GamingPlatformFeaturesRacingGame,
-        })
+        GamingPlatform.createFeaturesRacingGameRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.GamingPlatformFeaturesRacingGame))
 
         const response = await request(app)
             .post('/gaming-platforms/123/features-racing-game/567')

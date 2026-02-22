@@ -5,13 +5,11 @@ import {RacingSession} from "../../../../../../src/models/node-types/racing-sess
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Creating a ›has-session-result‹ relationship', () => {
     test('Providing valid data', async () => {
-        RacingSession.createHasSessionResultRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.RacingSessionHasSessionResult,
-        })
+        RacingSession.createHasSessionResultRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.RacingSessionHasSessionResult))
 
         const response = await request(app)
             .post('/racing-sessions/123/has-session-result/567')

@@ -5,13 +5,11 @@ import {CarModelVariant} from "../../../../../../src/models/node-types/car-model
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting the ›is-variant-of‹ relationship', () => {
     test('Providing valid data', async () => {
-        CarModelVariant.getIsVariantOfRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.CarModelVariantIsVariantOf,
-        })
+        CarModelVariant.getIsVariantOfRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.CarModelVariantIsVariantOf))
 
         const response = await request(app)
             .get('/car-model-variants/123/is-variant-of')

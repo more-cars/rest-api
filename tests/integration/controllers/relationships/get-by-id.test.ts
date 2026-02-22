@@ -5,13 +5,11 @@ import {Relationship} from "../../../../src/models/Relationship"
 import {RelType} from "../../../../src/models/relationships/types/RelType"
 import {NodeNotFoundError} from "../../../../src/models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../../src/models/types/RelNotFoundError"
+import {getFakeRel} from "../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting a relationship by ID', () => {
     test('Providing valid data', async () => {
-        Relationship.findById = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.BrandBelongsToCompany,
-        })
+        Relationship.findById = vi.fn().mockReturnValue(getFakeRel(RelType.BrandBelongsToCompany))
 
         const response = await request(app)
             .get('/relationships/123')

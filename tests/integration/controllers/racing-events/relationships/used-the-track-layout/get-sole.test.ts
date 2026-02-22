@@ -5,13 +5,11 @@ import {RacingEvent} from "../../../../../../src/models/node-types/racing-events
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting the ›used-the-track-layout‹ relationship', () => {
     test('Providing valid data', async () => {
-        RacingEvent.getUsedTheTrackLayoutRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.RacingEventUsedTheTrackLayout,
-        })
+        RacingEvent.getUsedTheTrackLayoutRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.RacingEventUsedTheTrackLayout))
 
         const response = await request(app)
             .get('/racing-events/123/used-the-track-layout')

@@ -4,20 +4,14 @@ import {app} from '../../../../../../src/app'
 import {RacingSession} from "../../../../../../src/models/node-types/racing-sessions/RacingSession"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting all ›has-session-result‹ relationships', () => {
     test('Providing valid data', async () => {
         RacingSession.getAllHasSessionResultRelationships = vi.fn().mockReturnValue([
-            {
-                id: 4,
-                type: RelType.RacingSessionHasSessionResult,
-            }, {
-                id: 5,
-                type: RelType.RacingSessionHasSessionResult,
-            }, {
-                id: 6,
-                type: RelType.RacingSessionHasSessionResult,
-            }
+            getFakeRel(RelType.RacingSessionHasSessionResult),
+            getFakeRel(RelType.RacingSessionHasSessionResult),
+            getFakeRel(RelType.RacingSessionHasSessionResult),
         ])
 
         const response = await request(app)

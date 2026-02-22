@@ -5,13 +5,11 @@ import {SessionResult} from "../../../../../../src/models/node-types/session-res
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Creating a ›belongs-to-racing-session‹ relationship', () => {
     test('Providing valid data', async () => {
-        SessionResult.createBelongsToRacingSessionRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.SessionResultBelongsToRacingSession,
-        })
+        SessionResult.createBelongsToRacingSessionRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.SessionResultBelongsToRacingSession))
 
         const response = await request(app)
             .post('/session-results/123/belongs-to-racing-session/567')

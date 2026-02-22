@@ -4,20 +4,14 @@ import {app} from '../../../../../../src/app'
 import {CarModelVariant} from "../../../../../../src/models/node-types/car-model-variants/CarModelVariant"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting all ›achieved-session-result‹ relationships', () => {
     test('Providing valid data', async () => {
         CarModelVariant.getAllAchievedSessionResultRelationships = vi.fn().mockReturnValue([
-            {
-                id: 4,
-                type: RelType.CarModelVariantAchievedSessionResult,
-            }, {
-                id: 5,
-                type: RelType.CarModelVariantAchievedSessionResult,
-            }, {
-                id: 6,
-                type: RelType.CarModelVariantAchievedSessionResult,
-            }
+            getFakeRel(RelType.CarModelVariantAchievedSessionResult),
+            getFakeRel(RelType.CarModelVariantAchievedSessionResult),
+            getFakeRel(RelType.CarModelVariantAchievedSessionResult),
         ])
 
         const response = await request(app)

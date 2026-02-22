@@ -5,13 +5,11 @@ import {Image} from "../../../../../../src/models/node-types/images/Image"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting a specific ›belongs-to-node‹ relationship', () => {
     test('Providing valid data', async () => {
-        Image.getSpecificBelongsToNodeRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.ImageBelongsToNode,
-        })
+        Image.getSpecificBelongsToNodeRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.ImageBelongsToNode))
 
         const response = await request(app)
             .get('/images/123/belongs-to-node/567')

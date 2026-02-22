@@ -4,20 +4,14 @@ import {app} from '../../../../../../src/app'
 import {CarModel} from "../../../../../../src/models/node-types/car-models/CarModel"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting all ›has-variant‹ relationships', () => {
     test('Providing valid data', async () => {
         CarModel.getAllHasVariantRelationships = vi.fn().mockReturnValue([
-            {
-                id: 4,
-                type: RelType.CarModelHasVariant,
-            }, {
-                id: 5,
-                type: RelType.CarModelHasVariant,
-            }, {
-                id: 6,
-                type: RelType.CarModelHasVariant,
-            }
+            getFakeRel(RelType.CarModelHasVariant),
+            getFakeRel(RelType.CarModelHasVariant),
+            getFakeRel(RelType.CarModelHasVariant),
         ])
 
         const response = await request(app)

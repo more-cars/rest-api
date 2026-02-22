@@ -4,20 +4,14 @@ import {app} from '../../../../../../src/app'
 import {RaceTrack} from "../../../../../../src/models/node-types/race-tracks/RaceTrack"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('Providing valid data', async () => {
         RaceTrack.getAllHasImageRelationships = vi.fn().mockReturnValue([
-            {
-                id: 4,
-                type: RelType.RaceTrackHasImage,
-            }, {
-                id: 5,
-                type: RelType.RaceTrackHasImage,
-            }, {
-                id: 6,
-                type: RelType.RaceTrackHasImage,
-            }
+            getFakeRel(RelType.RaceTrackHasImage),
+            getFakeRel(RelType.RaceTrackHasImage),
+            getFakeRel(RelType.RaceTrackHasImage),
         ])
 
         const response = await request(app)

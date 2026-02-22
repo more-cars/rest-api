@@ -5,13 +5,11 @@ import {CarModelVariant} from "../../../../../../src/models/node-types/car-model
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Creating a ›achieved-session-result‹ relationship', () => {
     test('Providing valid data', async () => {
-        CarModelVariant.createAchievedSessionResultRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.CarModelVariantAchievedSessionResult,
-        })
+        CarModelVariant.createAchievedSessionResultRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.CarModelVariantAchievedSessionResult))
 
         const response = await request(app)
             .post('/car-model-variants/123/achieved-session-result/567')

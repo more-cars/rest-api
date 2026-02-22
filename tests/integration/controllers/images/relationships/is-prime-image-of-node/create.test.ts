@@ -5,13 +5,11 @@ import {Image} from "../../../../../../src/models/node-types/images/Image"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Creating a ›is-prime-image-of-node‹ relationship', () => {
     test('Providing valid data', async () => {
-        Image.createIsPrimeImageOfNodeRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.ImageIsPrimeImageOfNode,
-        })
+        Image.createIsPrimeImageOfNodeRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.ImageIsPrimeImageOfNode))
 
         const response = await request(app)
             .post('/images/123/is-prime-image-of-node/567')

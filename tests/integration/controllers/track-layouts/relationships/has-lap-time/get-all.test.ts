@@ -4,20 +4,14 @@ import {app} from '../../../../../../src/app'
 import {TrackLayout} from "../../../../../../src/models/node-types/track-layouts/TrackLayout"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting all ›has-lap-time‹ relationships', () => {
     test('Providing valid data', async () => {
         TrackLayout.getAllHasLapTimeRelationships = vi.fn().mockReturnValue([
-            {
-                id: 4,
-                type: RelType.TrackLayoutHasLapTime,
-            }, {
-                id: 5,
-                type: RelType.TrackLayoutHasLapTime,
-            }, {
-                id: 6,
-                type: RelType.TrackLayoutHasLapTime,
-            }
+            getFakeRel(RelType.TrackLayoutHasLapTime),
+            getFakeRel(RelType.TrackLayoutHasLapTime),
+            getFakeRel(RelType.TrackLayoutHasLapTime),
         ])
 
         const response = await request(app)

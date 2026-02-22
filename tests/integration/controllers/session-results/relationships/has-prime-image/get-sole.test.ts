@@ -5,17 +5,11 @@ import {SessionResult} from "../../../../../../src/models/node-types/session-res
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting the ›has-prime-image‹ relationship', () => {
     test('Providing valid data', async () => {
-        SessionResult.getHasPrimeImageRelationship = vi.fn().mockReturnValue({ // TODO provide FAKE REL
-            id: 4,
-            type: RelType.SessionResultHasPrimeImage,
-            origin: {},
-            destination: {},
-            created_at: "DUMMY",
-            updated_at: "DUMMY",
-        })
+        SessionResult.getHasPrimeImageRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.SessionResultHasPrimeImage))
 
         const response = await request(app)
             .get('/session-results/123/has-prime-image')

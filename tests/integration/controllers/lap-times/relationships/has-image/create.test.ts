@@ -5,13 +5,11 @@ import {LapTime} from "../../../../../../src/models/node-types/lap-times/LapTime
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Creating a ›has-image‹ relationship', () => {
     test('Providing valid data', async () => {
-        LapTime.createHasImageRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.LapTimeHasImage,
-        })
+        LapTime.createHasImageRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.LapTimeHasImage))
 
         const response = await request(app)
             .post('/lap-times/123/has-image/567')

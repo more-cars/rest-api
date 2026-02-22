@@ -4,14 +4,12 @@ import {app} from '../../../../../../src/app'
 import {TrackLayout} from "../../../../../../src/models/node-types/track-layouts/TrackLayout"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Creating a ›was-used-by-racing-event‹ relationship', () => {
     test('Providing valid data', async () => {
-        TrackLayout.createWasUsedByRacingEventRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.TrackLayoutWasUsedByRacingEvent,
-        })
+        TrackLayout.createWasUsedByRacingEventRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.TrackLayoutWasUsedByRacingEvent))
 
         const response = await request(app)
             .post('/track-layouts/123/was-used-by-racing-event/567')

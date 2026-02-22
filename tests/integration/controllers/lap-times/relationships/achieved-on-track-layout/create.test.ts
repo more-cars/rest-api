@@ -5,13 +5,11 @@ import {LapTime} from "../../../../../../src/models/node-types/lap-times/LapTime
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Creating a ›achieved-on-track-layout‹ relationship', () => {
     test('Providing valid data', async () => {
-        LapTime.createAchievedOnTrackLayoutRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.LapTimeAchievedOnTrackLayout,
-        })
+        LapTime.createAchievedOnTrackLayoutRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.LapTimeAchievedOnTrackLayout))
 
         const response = await request(app)
             .post('/lap-times/123/achieved-on-track-layout/567')

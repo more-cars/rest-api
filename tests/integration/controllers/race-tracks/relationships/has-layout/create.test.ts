@@ -5,13 +5,11 @@ import {RaceTrack} from "../../../../../../src/models/node-types/race-tracks/Rac
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Creating a ›has-layout‹ relationship', () => {
     test('Providing valid data', async () => {
-        RaceTrack.createHasLayoutRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.RaceTrackHasLayout,
-        })
+        RaceTrack.createHasLayoutRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.RaceTrackHasLayout))
 
         const response = await request(app)
             .post('/race-tracks/123/has-layout/567')

@@ -5,13 +5,11 @@ import {RacingSession} from "../../../../../../src/models/node-types/racing-sess
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Creating a ›has-prime-image‹ relationship', () => {
     test('Providing valid data', async () => {
-        RacingSession.createHasPrimeImageRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.RacingSessionHasPrimeImage,
-        })
+        RacingSession.createHasPrimeImageRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.RacingSessionHasPrimeImage))
 
         const response = await request(app)
             .post('/racing-sessions/123/has-prime-image/567')

@@ -4,20 +4,14 @@ import {app} from '../../../../../../src/app'
 import {Image} from "../../../../../../src/models/node-types/images/Image"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting all ›is-prime-image-of-node‹ relationships', () => {
     test('Providing valid data', async () => {
         Image.getAllIsPrimeImageOfNodeRelationships = vi.fn().mockReturnValue([
-            {
-                id: 4,
-                type: RelType.ImageIsPrimeImageOfNode,
-            }, {
-                id: 5,
-                type: RelType.ImageIsPrimeImageOfNode,
-            }, {
-                id: 6,
-                type: RelType.ImageIsPrimeImageOfNode,
-            }
+            getFakeRel(RelType.ImageIsPrimeImageOfNode),
+            getFakeRel(RelType.ImageIsPrimeImageOfNode),
+            getFakeRel(RelType.ImageIsPrimeImageOfNode),
         ])
 
         const response = await request(app)

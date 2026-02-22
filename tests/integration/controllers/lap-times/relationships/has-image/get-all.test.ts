@@ -4,20 +4,14 @@ import {app} from '../../../../../../src/app'
 import {LapTime} from "../../../../../../src/models/node-types/lap-times/LapTime"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('Providing valid data', async () => {
         LapTime.getAllHasImageRelationships = vi.fn().mockReturnValue([
-            {
-                id: 4,
-                type: RelType.LapTimeHasImage,
-            }, {
-                id: 5,
-                type: RelType.LapTimeHasImage,
-            }, {
-                id: 6,
-                type: RelType.LapTimeHasImage,
-            }
+            getFakeRel(RelType.LapTimeHasImage),
+            getFakeRel(RelType.LapTimeHasImage),
+            getFakeRel(RelType.LapTimeHasImage),
         ])
 
         const response = await request(app)

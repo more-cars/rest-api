@@ -5,13 +5,11 @@ import {Company} from "../../../../../../src/models/node-types/companies/Company
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting the ›has-prime-image‹ relationship', () => {
     test('Providing valid data', async () => {
-        Company.getHasPrimeImageRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.CompanyHasPrimeImage,
-        })
+        Company.getHasPrimeImageRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.CompanyHasPrimeImage))
 
         const response = await request(app)
             .get('/companies/123/has-prime-image')

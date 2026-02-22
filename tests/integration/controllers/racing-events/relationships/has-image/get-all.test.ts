@@ -4,20 +4,14 @@ import {app} from '../../../../../../src/app'
 import {RacingEvent} from "../../../../../../src/models/node-types/racing-events/RacingEvent"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('Providing valid data', async () => {
         RacingEvent.getAllHasImageRelationships = vi.fn().mockReturnValue([
-            {
-                id: 4,
-                type: RelType.RacingEventHasImage,
-            }, {
-                id: 5,
-                type: RelType.RacingEventHasImage,
-            }, {
-                id: 6,
-                type: RelType.RacingEventHasImage,
-            }
+            getFakeRel(RelType.RacingEventHasImage),
+            getFakeRel(RelType.RacingEventHasImage),
+            getFakeRel(RelType.RacingEventHasImage),
         ])
 
         const response = await request(app)

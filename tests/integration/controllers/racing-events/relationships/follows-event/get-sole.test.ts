@@ -5,13 +5,11 @@ import {RacingEvent} from "../../../../../../src/models/node-types/racing-events
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting the ›follows-event‹ relationship', () => {
     test('Providing valid data', async () => {
-        RacingEvent.getFollowsEventRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.RacingEventFollowsEvent,
-        })
+        RacingEvent.getFollowsEventRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.RacingEventFollowsEvent))
 
         const response = await request(app)
             .get('/racing-events/123/follows-event')

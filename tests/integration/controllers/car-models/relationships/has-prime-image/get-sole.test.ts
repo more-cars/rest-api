@@ -5,13 +5,11 @@ import {CarModel} from "../../../../../../src/models/node-types/car-models/CarMo
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting the ›has-prime-image‹ relationship', () => {
     test('Providing valid data', async () => {
-        CarModel.getHasPrimeImageRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.CarModelHasPrimeImage,
-        })
+        CarModel.getHasPrimeImageRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.CarModelHasPrimeImage))
 
         const response = await request(app)
             .get('/car-models/123/has-prime-image')

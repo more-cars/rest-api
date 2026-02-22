@@ -5,13 +5,11 @@ import {Company} from "../../../../../../src/models/node-types/companies/Company
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Creating a ›has-brand‹ relationship', () => {
     test('Providing valid data', async () => {
-        Company.createHasBrandRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.CompanyHasBrand,
-        })
+        Company.createHasBrandRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.CompanyHasBrand))
 
         const response = await request(app)
             .post('/companies/123/has-brand/567')

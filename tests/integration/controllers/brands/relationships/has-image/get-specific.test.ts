@@ -5,13 +5,11 @@ import {Brand} from "../../../../../../src/models/node-types/brands/Brand"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting a specific ›has-image‹ relationship', () => {
     test('Providing valid data', async () => {
-        Brand.getSpecificHasImageRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.BrandHasImage,
-        })
+        Brand.getSpecificHasImageRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.BrandHasImage))
 
         const response = await request(app)
             .get('/brands/123/has-image/567')

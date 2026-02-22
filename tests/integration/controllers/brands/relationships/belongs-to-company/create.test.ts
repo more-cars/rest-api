@@ -5,13 +5,11 @@ import {Brand} from "../../../../../../src/models/node-types/brands/Brand"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Creating a ›belongs-to-company‹ relationship', () => {
     test('Providing valid data', async () => {
-        Brand.createBelongsToCompanyRelationship = vi.fn().mockReturnValue({
-            id: 4,
-            type: RelType.BrandBelongsToCompany,
-        })
+        Brand.createBelongsToCompanyRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.BrandBelongsToCompany))
 
         const response = await request(app)
             .post('/brands/123/belongs-to-company/567')

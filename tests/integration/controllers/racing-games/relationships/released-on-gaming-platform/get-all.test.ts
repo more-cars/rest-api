@@ -4,20 +4,14 @@ import {app} from '../../../../../../src/app'
 import {RacingGame} from "../../../../../../src/models/node-types/racing-games/RacingGame"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting all ›released-on-gaming-platform‹ relationships', () => {
     test('Providing valid data', async () => {
         RacingGame.getAllReleasedOnGamingPlatformRelationships = vi.fn().mockReturnValue([
-            {
-                id: 4,
-                type: RelType.RacingGameReleasedOnGamingPlatform,
-            }, {
-                id: 5,
-                type: RelType.RacingGameReleasedOnGamingPlatform,
-            }, {
-                id: 6,
-                type: RelType.RacingGameReleasedOnGamingPlatform,
-            }
+            getFakeRel(RelType.RacingGameReleasedOnGamingPlatform),
+            getFakeRel(RelType.RacingGameReleasedOnGamingPlatform),
+            getFakeRel(RelType.RacingGameReleasedOnGamingPlatform),
         ])
 
         const response = await request(app)

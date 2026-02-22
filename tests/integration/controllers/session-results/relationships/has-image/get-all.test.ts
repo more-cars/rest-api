@@ -4,20 +4,14 @@ import {app} from '../../../../../../src/app'
 import {SessionResult} from "../../../../../../src/models/node-types/session-results/SessionResult"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 
 describe('Requesting all ›has-image‹ relationships', () => {
     test('Providing valid data', async () => {
         SessionResult.getAllHasImageRelationships = vi.fn().mockReturnValue([
-            {
-                id: 4,
-                type: RelType.SessionResultHasImage,
-            }, {
-                id: 5,
-                type: RelType.SessionResultHasImage,
-            }, {
-                id: 6,
-                type: RelType.SessionResultHasImage,
-            }
+            getFakeRel(RelType.SessionResultHasImage),
+            getFakeRel(RelType.SessionResultHasImage),
+            getFakeRel(RelType.SessionResultHasImage),
         ])
 
         const response = await request(app)
