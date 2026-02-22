@@ -15,7 +15,7 @@ import {FakeRacingGame} from "./FakeRacingGame"
 import {FakeGamingPlatform} from "./FakeGamingPlatform"
 import {FakeImage} from "./FakeImage"
 
-export function getFakeModelNodeType(nodeType: ModelNodeType) {
+export function getFakeModelNode(nodeType: ModelNodeType) {
     switch (nodeType) {
         case ModelNodeType.Company:
             return FakeCompany.modelOutput()
