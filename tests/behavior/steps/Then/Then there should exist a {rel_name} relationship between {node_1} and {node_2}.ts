@@ -8,7 +8,7 @@ import type {DbNode} from "../../../../src/db/types/DbNode"
 Then('there should exist a {string} relationship between {string} and {string}',
     async (relationshipName: string, startNodeLabel: string, endNodeLabel: string) => {
         const startNode: DbNode = world.recallNode(startNodeLabel).data
-        const endNode = world.recallNode(endNodeLabel).data
+        const endNode: DbNode = world.recallNode(endNodeLabel).data
         const nodePathFragment = getBasePathFragmentForNodeType(world.recallNode(startNodeLabel).nodeType)
 
         const response = await axios
@@ -27,14 +27,14 @@ Then('there should exist a {string} relationship between {string} and {string}',
             let success = false
 
             response.data.data.forEach((relationship: any) => {
-                if (relationship.data.relationship_partner.data.id === endNode.id) {
+                if (relationship.data.relationship_partner.data.id === endNode.properties.id) {
                     success = true
                 }
             })
 
             assert.equal(success, true, `None of the returned relationships contains the node #${endNode.properties.id}.`)
         } else if ('relationship_partner' in response.data.data) {
-            assert.equal(response.data.data.relationship_partner.data.id, endNode.id, `The returned relationship does not contain the node #${endNode.properties.id}.`)
+            assert.equal(response.data.data.relationship_partner.data.id, endNode.properties.id, `The returned relationship does not contain the node #${endNode.properties.id}.`)
         } else {
             assert.fail('respond did not return any relationship')
         }
