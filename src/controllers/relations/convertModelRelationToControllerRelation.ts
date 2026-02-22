@@ -1,9 +1,9 @@
 import type {Rel} from "../../models/relationships/types/Rel"
-import {mapModelRelationTypeToControllerRelationType} from "./mapModelRelationTypeToControllerRelationType"
 import type {Relation} from "./types/Relation"
+import {mapModelRelationTypeToControllerRelationType} from "./mapModelRelationTypeToControllerRelationType"
 import {convertModelNodeToControllerNode} from "../nodes/convertModelNodeToControllerNode"
 
-export function convertModelRelationToControllerRelation(modelRelation: Rel) {
+export function convertModelRelationToControllerRelation(modelRelation: Rel): Relation {
     return {
         id: modelRelation.id,
         type: mapModelRelationTypeToControllerRelationType(modelRelation.type),

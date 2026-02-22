@@ -1,26 +1,27 @@
 import {expect, test} from 'vitest'
 import {getAllModelRelationshipTypes} from "../../../_toolbox/getAllModelRelationshipTypes"
 import type {Rel} from "../../../../src/models/relationships/types/Rel"
-import {marshalRelations} from "../../../../src/controllers/relations/marshalRelations"
-import {mapModelRelationTypeToControllerRelationType} from "../../../../src/controllers/relations/mapModelRelationTypeToControllerRelationType"
 import {FakeNodeType} from "../../../_toolbox/fixtures/nodes/FakeNodeType"
 import {DbNodeType} from "../../../../src/db/types/DbNodeType"
+import {convertModelRelationToControllerRelation} from "../../../../src/controllers/relations/convertModelRelationToControllerRelation"
+import {marshalRelations} from "../../../../src/controllers/relations/marshalRelations"
 
 test('marshalling a relation collection', async () => {
-    getAllModelRelationshipTypes().forEach((relationshipType) => {
+    getAllModelRelationshipTypes().forEach((relType) => {
         const origin = FakeNodeType(DbNodeType.Brand).modelOutput()
         const destination = FakeNodeType(DbNodeType.CarModel).modelOutput()
-        const relationship: Rel = {
+        const rel: Rel = {
             id: 3,
-            type: relationshipType,
+            type: relType,
             origin,
             destination,
             created_at: "2023-10-01T00:00:00.001Z",
             updated_at: "2023-10-01T00:00:00.001Z",
         }
-        const relationships = [relationship, relationship, relationship]
+        const relation = convertModelRelationToControllerRelation(rel)
+        const relations = [relation, relation, relation]
 
-        const marshalledRelations = marshalRelations(relationships)
+        const marshalledRelations = marshalRelations(relations)
 
         expect(marshalledRelations.data.length)
             .toEqual(3)
@@ -28,10 +29,10 @@ test('marshalling a relation collection', async () => {
         const expectedRelation = {
             data: {
                 relationship_id: 3,
-                relationship_name: mapModelRelationTypeToControllerRelationType(relationshipType),
+                relationship_name: relation.type,
                 relationship_partner: {
-                    node_type: "car-model",
-                    data: destination,
+                    node_type: "car model",
+                    data: destination.attributes,
                 },
                 created_at: "2023-10-01T00:00:00.001Z",
                 updated_at: "2023-10-01T00:00:00.001Z",
