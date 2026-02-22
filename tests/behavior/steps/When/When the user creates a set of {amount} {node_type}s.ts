@@ -3,14 +3,15 @@ import axios from "axios"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
 import type {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
 import {FakeNodeInput} from "../../../_toolbox/fixtures/nodes/FakeNodeInput"
+import {dasherize, pluralize} from "inflection"
 
 When('the user creates a set of {int} {string}s',
     async (amount: number, nodeType: string) => {
         const nodes = []
 
         for (let i = 0; i < amount; i++) {
-            const path = getBasePathFragmentForNodeType(nodeType.toLowerCase() as ControllerNodeType)
-            const data = FakeNodeInput(nodeType.toLowerCase() as ControllerNodeType)
+            const path = getBasePathFragmentForNodeType(dasherize(pluralize(nodeType.toLowerCase())) as ControllerNodeType)
+            const data = FakeNodeInput(dasherize(pluralize(nodeType.toLowerCase())) as ControllerNodeType)
 
             const response = await axios
                 .post(`${process.env.API_URL}/${path}`, data)
