@@ -45,6 +45,8 @@ export function getFakeModelNode(nodeType: ModelNodeType) {
             return FakeGamingPlatform.modelOutput()
         case ModelNodeType.Image:
             return FakeImage.modelOutput()
+        case ModelNodeType.Node:
+            return FakeCarModel.modelOutput()
         default:
             assert.fail(`Node type "${nodeType}" is invalid or unknown`)
     }
