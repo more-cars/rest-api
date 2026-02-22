@@ -14,6 +14,6 @@ async function runSingleTest() {
     console.log("Test scenario " + testKey + " started...")
 
     console.time(testKey)
-    await spawnShellCommand(`npx cucumber-js --tags "@TEST_MCA-${testId}"`)
+    await spawnShellCommand(`npx cucumber-js --tags "@TEST_MCA-${testId}" --force-exit`)
     console.timeEnd(testKey)
 }
