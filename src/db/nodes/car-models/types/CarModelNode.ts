@@ -1,7 +1,6 @@
-import {DbNode} from "../../../types/DbNode"
 import {DbNodeType} from "../../../types/DbNodeType"
 
-export interface CarModelNode extends DbNode {
+export type CarModelNode = {
     node_type: DbNodeType.CarModel,
     properties: {
         id: number

@@ -1,7 +1,6 @@
-import {DbNode} from "../../../types/DbNode"
 import {DbNodeType} from "../../../types/DbNodeType"
 
-export interface LapTimeNode extends DbNode {
+export type LapTimeNode = {
     node_type: DbNodeType.LapTime,
     properties: {
         id: number

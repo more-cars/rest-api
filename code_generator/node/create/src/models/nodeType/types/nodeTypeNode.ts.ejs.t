@@ -4,8 +4,8 @@ to: src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types
 import type {ModelNode} from "../../../types/ModelNode"
 import type {ModelNodeType} from "../../../types/ModelNodeType"
 
-export interface <%= h.changeCase.pascal(nodeType) %>Node extends ModelNode {
-    node_type: ModelNodeType.<%= h.changeCase.pascal(nodeType) %>,
+export type <%= h.changeCase.pascal(nodeType) %>Node = {
+    node_type: ModelNodeType.<%= h.changeCase.pascal(nodeType) %>
     attributes: {
         id: number
 

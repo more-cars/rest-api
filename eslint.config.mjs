@@ -15,7 +15,7 @@ export default defineConfig(
     {
         rules: {
             "@typescript-eslint/no-duplicate-enum-values": "off",
-            "@typescript-eslint/consistent-type-definitions": "off",
+            "@typescript-eslint/consistent-type-definitions": ["error", "type"],
         },
     }
 )

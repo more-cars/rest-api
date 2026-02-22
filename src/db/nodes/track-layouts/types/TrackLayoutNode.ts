@@ -1,7 +1,6 @@
-import {DbNode} from "../../../types/DbNode"
 import {DbNodeType} from "../../../types/DbNodeType"
 
-export interface TrackLayoutNode extends DbNode {
+export type TrackLayoutNode = {
     node_type: DbNodeType.TrackLayout,
     properties: {
         id: number

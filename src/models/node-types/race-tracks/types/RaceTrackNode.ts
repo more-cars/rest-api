@@ -1,7 +1,6 @@
-import type {ModelNode} from "../../../types/ModelNode"
 import type {ModelNodeType} from "../../../types/ModelNodeType"
 
-export interface RaceTrackNode extends ModelNode {
+export type RaceTrackNode = {
     node_type: ModelNodeType.RaceTrack,
     attributes: {
         id: number

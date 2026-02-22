@@ -1,6 +1,6 @@
 import type {ModelNodeType} from "./ModelNodeType"
 
-export interface ModelNode {
+export type ModelNode = {
     node_type: ModelNodeType,
     attributes: {
         id: number

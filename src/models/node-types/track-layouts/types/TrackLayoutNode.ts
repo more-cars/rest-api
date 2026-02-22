@@ -1,7 +1,6 @@
-import type {ModelNode} from "../../../types/ModelNode"
 import type {ModelNodeType} from "../../../types/ModelNodeType"
 
-export interface TrackLayoutNode extends ModelNode {
+export type TrackLayoutNode = {
     node_type: ModelNodeType.TrackLayout,
     attributes: {
         id: number

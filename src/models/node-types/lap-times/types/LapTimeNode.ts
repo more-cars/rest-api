@@ -1,7 +1,6 @@
-import type {ModelNode} from "../../../types/ModelNode"
 import type {ModelNodeType} from "../../../types/ModelNodeType"
 
-export interface LapTimeNode extends ModelNode {
+export type LapTimeNode = {
     node_type: ModelNodeType.LapTime,
     attributes: {
         id: number
