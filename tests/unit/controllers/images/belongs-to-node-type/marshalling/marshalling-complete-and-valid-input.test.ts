@@ -1,23 +1,29 @@
 import {expect, test} from 'vitest'
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import type {ImageBelongsToNodeTypeRelationships} from "../../../../../../src/models/node-types/images/types/ImageBelongsToNodeTypeRelationships"
 import {marshalBelongsToNodeTypeRelationships} from "../../../../../../src/controllers/node-types/images/marshalling/marshalBelongsToNodeTypeRelationships"
-import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
-import {kebabCase} from "change-case"
-import {RelationType} from "../../../../../../src/controllers/relations/types/RelationType"
-import {RelType} from "../../../../../../src/models/relationships/types/RelType"
-import type {Rel} from "../../../../../../src/models/relationships/types/Rel"
-import {ModelNodeType} from "../../../../../../src/models/types/ModelNodeType"
-import type {RelationResponse} from "../../../../../../src/controllers/relations/types/RelationResponse"
+import {convertModelRelationToControllerRelation} from "../../../../../../src/controllers/relations/convertModelRelationToControllerRelation"
+import {marshalRelation} from "../../../../../../src/controllers/relations/marshalRelation"
+import type {ImageBelongsToNodeTypeResponse} from "../../../../../../src/controllers/node-types/images/types/ImageBelongsToNodeTypeResponse"
 
 test('marshalling a ›belongs-to-node-type‹ relationship collection', async () => {
+    const companyRel = getFakeRel(RelType.CompanyHasImage)
+    const brandRel = getFakeRel(RelType.BrandHasImage)
+    const carModelRel = getFakeRel(RelType.CarModelHasImage)
+    const carModelVariantRel = getFakeRel(RelType.RaceTrackHasImage)
+    const trackLayoutRel = getFakeRel(RelType.TrackLayoutHasImage)
+    const racingSeriesRel = getFakeRel(RelType.RacingSeriesHasImage)
+    const racingEventRel = getFakeRel(RelType.RacingEventHasImage)
+
     const relationships: ImageBelongsToNodeTypeRelationships = {
-        companies: [getRelationshipModel(ModelNodeType.Company)],
-        brands: [getRelationshipModel(ModelNodeType.Brand)],
-        car_models: [getRelationshipModel(ModelNodeType.CarModel)],
-        race_tracks: [getRelationshipModel(ModelNodeType.RaceTrack)],
-        track_layouts: [getRelationshipModel(ModelNodeType.TrackLayout)],
-        racing_series: [getRelationshipModel(ModelNodeType.RacingSeries)],
-        racing_events: [getRelationshipModel(ModelNodeType.RacingEvent)],
+        companies: [companyRel],
+        brands: [brandRel],
+        car_models: [carModelRel],
+        race_tracks: [carModelVariantRel],
+        track_layouts: [trackLayoutRel],
+        racing_series: [racingSeriesRel],
+        racing_events: [racingEventRel],
     }
 
     const mappedNode = marshalBelongsToNodeTypeRelationships(relationships)
@@ -26,70 +32,26 @@ test('marshalling a ›belongs-to-node-type‹ relationship collection', async (
         .toStrictEqual({
             data: {
                 companies: {
-                    data: [getExpectedMarshalledRelation(ControllerNodeType.Company)],
+                    data: [marshalRelation(convertModelRelationToControllerRelation(companyRel))],
                 },
                 brands: {
-                    data: [getExpectedMarshalledRelation(ControllerNodeType.Brand)],
+                    data: [marshalRelation(convertModelRelationToControllerRelation(brandRel))],
                 },
                 car_models: {
-                    data: [getExpectedMarshalledRelation(ControllerNodeType.CarModel)]
+                    data: [marshalRelation(convertModelRelationToControllerRelation(carModelRel))],
                 },
                 race_tracks: {
-                    data: [getExpectedMarshalledRelation(ControllerNodeType.RaceTrack)]
+                    data: [marshalRelation(convertModelRelationToControllerRelation(carModelVariantRel))],
                 },
                 track_layouts: {
-                    data: [getExpectedMarshalledRelation(ControllerNodeType.TrackLayout)]
+                    data: [marshalRelation(convertModelRelationToControllerRelation(trackLayoutRel))],
                 },
                 racing_series: {
-                    data: [getExpectedMarshalledRelation(ControllerNodeType.RacingSeries)]
+                    data: [marshalRelation(convertModelRelationToControllerRelation(racingSeriesRel))],
                 },
                 racing_events: {
-                    data: [getExpectedMarshalledRelation(ControllerNodeType.RacingEvent)]
+                    data: [marshalRelation(convertModelRelationToControllerRelation(racingEventRel))],
                 },
             }
-        })
+        } satisfies ImageBelongsToNodeTypeResponse)
 })
-
-function getRelationshipModel(modelNodeType: ModelNodeType) {
-    return {
-        id: 1,
-        type: RelType.ImageBelongsToNode,
-        origin: {
-            node_type: modelNodeType,
-            attributes: {
-                id: 2,
-                created_at: "dummy",
-                updated_at: "dummy",
-            }
-        },
-        destination: {
-            node_type: modelNodeType,
-            attributes: {
-                id: 3,
-                created_at: "dummy",
-                updated_at: "dummy",
-            }
-        },
-        created_at: "2023-10-01T00:00:00.001Z",
-        updated_at: "2023-10-01T00:00:00.001Z",
-    } satisfies Rel
-}
-
-function getExpectedMarshalledRelation(nodeType: ControllerNodeType) {
-    return {
-        data: {
-            relationship_id: 1,
-            relationship_name: RelationType.ImageBelongsToNode,
-            relationship_partner: {
-                node_type: kebabCase(nodeType),
-                data: {
-                    id: 3,
-                    created_at: "dummy",
-                    updated_at: "dummy",
-                },
-            },
-            created_at: "2023-10-01T00:00:00.001Z",
-            updated_at: "2023-10-01T00:00:00.001Z",
-        }
-    } satisfies RelationResponse
-}
