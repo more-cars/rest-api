@@ -10,7 +10,11 @@ When('the user creates a(n) {string} with the following data',
 
         const properties = dataTable.hashes()
         properties.forEach((property) => {
-            data[property.key] = property.value
+            if (!isNaN(Number(property.value))) {
+                data[property.key] = Number(property.value)
+            } else {
+                data[property.key] = property.value
+            }
         })
 
         const response = await axios
