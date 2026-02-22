@@ -29,7 +29,7 @@ runtime:
       operator: isJson
     - expression: res.body.data.relationship_partner.node_type
       operator: eq
-      value: "gaming-platform"
+      value: "gaming-platforms"
     - expression: res.body.data.relationship_partner.data.id
       operator: eq
       value: "{{validGamingPlatformId}}"

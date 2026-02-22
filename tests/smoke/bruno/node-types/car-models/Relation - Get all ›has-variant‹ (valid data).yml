@@ -30,7 +30,7 @@ runtime:
       operator: isJson
     - expression: res.body.data[0].data.relationship_partner.node_type
       operator: eq
-      value: "car-model-variant"
+      value: "car-model-variants"
     - expression: res.body.data[0].data.relationship_partner.data.id
       operator: eq
       value: "{{validCarModelVariantId}}"

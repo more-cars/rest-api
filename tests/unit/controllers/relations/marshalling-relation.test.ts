@@ -28,7 +28,7 @@ test('marshalling a relation', async () => {
                     relationship_id: 3,
                     relationship_name: mapModelRelationTypeToControllerRelationType(relationshipType),
                     relationship_partner: {
-                        node_type: "car model",
+                        node_type: "car-models",
                         data: destination.attributes,
                     },
                     created_at: "2023-10-01T00:00:00.001Z",
