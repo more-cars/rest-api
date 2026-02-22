@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {getNodeById} from "../../../../../src/db/nodes/car-models/getNodeById"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
-import {CarModelSchema} from "../../../../_toolbox/schemas/CarModelSchema"
+import {CarModelSchema} from "../../../../_toolbox/schemas/db/CarModelSchema"
 import {validateJson} from "../../../../_toolbox/validateJson"
 
 test('Querying a CAR MODEL that does not exist should return "false"', async () => {

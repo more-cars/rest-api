@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {getNodeById} from "../../../../../src/db/nodes/companies/getNodeById"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
-import {CompanySchema} from "../../../../_toolbox/schemas/CompanySchema"
+import {CompanySchema} from "../../../../_toolbox/schemas/db/CompanySchema"
 import {validateJson} from "../../../../_toolbox/validateJson"
 
 test('Querying a COMPANY that does not exist should return "false"', async () => {

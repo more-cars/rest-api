@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {getNodeById} from "../../../../../src/db/nodes/lap-times/getNodeById"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
-import {LapTimeSchema} from "../../../../_toolbox/schemas/LapTimeSchema"
+import {LapTimeSchema} from "../../../../_toolbox/schemas/db/LapTimeSchema"
 import {validateJson} from "../../../../_toolbox/validateJson"
 
 test('Querying a LAP TIME that does not exist should return "false"', async () => {

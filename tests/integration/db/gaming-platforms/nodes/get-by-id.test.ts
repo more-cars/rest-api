@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {getNodeById} from "../../../../../src/db/nodes/gaming-platforms/getNodeById"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
-import {GamingPlatformSchema} from "../../../../_toolbox/schemas/GamingPlatformSchema"
+import {GamingPlatformSchema} from "../../../../_toolbox/schemas/db/GamingPlatformSchema"
 import {validateJson} from "../../../../_toolbox/validateJson"
 
 test('Querying a GAMING PLATFORM that does not exist should return "false"', async () => {

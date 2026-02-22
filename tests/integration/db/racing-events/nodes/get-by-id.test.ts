@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {getNodeById} from "../../../../../src/db/nodes/racing-events/getNodeById"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
-import {RacingEventSchema} from "../../../../_toolbox/schemas/RacingEventSchema"
+import {RacingEventSchema} from "../../../../_toolbox/schemas/db/RacingEventSchema"
 import {validateJson} from "../../../../_toolbox/validateJson"
 
 test('Querying a RACING EVENT that does not exist should return "false"', async () => {

@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {getNodeById} from "../../../../../src/db/nodes/session-results/getNodeById"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
-import {SessionResultSchema} from "../../../../_toolbox/schemas/SessionResultSchema"
+import {SessionResultSchema} from "../../../../_toolbox/schemas/db/SessionResultSchema"
 import {validateJson} from "../../../../_toolbox/validateJson"
 
 test('Querying a SESSION RESULT that does not exist should return "false"', async () => {

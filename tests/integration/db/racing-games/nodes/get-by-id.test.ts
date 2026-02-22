@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {getNodeById} from "../../../../../src/db/nodes/racing-games/getNodeById"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
-import {RacingGameSchema} from "../../../../_toolbox/schemas/RacingGameSchema"
+import {RacingGameSchema} from "../../../../_toolbox/schemas/db/RacingGameSchema"
 import {validateJson} from "../../../../_toolbox/validateJson"
 
 test('Querying a RACING GAME that does not exist should return "false"', async () => {

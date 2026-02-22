@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {getNodeById} from "../../../../../src/db/nodes/track-layouts/getNodeById"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
-import {TrackLayoutSchema} from "../../../../_toolbox/schemas/TrackLayoutSchema"
+import {TrackLayoutSchema} from "../../../../_toolbox/schemas/db/TrackLayoutSchema"
 import {validateJson} from "../../../../_toolbox/validateJson"
 
 test('Querying a TRACK LAYOUT that does not exist should return "false"', async () => {

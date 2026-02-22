@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {getNodeById} from "../../../../../src/db/nodes/brands/getNodeById"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
-import {BrandSchema} from "../../../../_toolbox/schemas/BrandSchema"
+import {BrandSchema} from "../../../../_toolbox/schemas/db/BrandSchema"
 import {validateJson} from "../../../../_toolbox/validateJson"
 
 test('Querying a BRAND that does not exist should return "false"', async () => {

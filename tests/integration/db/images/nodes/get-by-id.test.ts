@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {getNodeById} from "../../../../../src/db/nodes/images/getNodeById"
-import {ImageSchema} from "../../../../_toolbox/schemas/ImageSchema"
+import {ImageSchema} from "../../../../_toolbox/schemas/db/ImageSchema"
 import {validateJson} from "../../../../_toolbox/validateJson"
 
 test('Querying an IMAGE that does not exist should return "false"', async () => {
