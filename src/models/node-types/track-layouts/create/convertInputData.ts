@@ -1,5 +1,5 @@
 import {CreateTrackLayoutInput} from "../types/CreateTrackLayoutInput"
-import {InputTrackLayoutCreate} from "../../../../db/nodes/track-layouts/types/InputTrackLayoutCreate"
+import {InputTrackLayoutCreate} from "../../../../db/node-types/track-layouts/types/InputTrackLayoutCreate"
 
 export function convertInputData(data: CreateTrackLayoutInput): InputTrackLayoutCreate {
     return {

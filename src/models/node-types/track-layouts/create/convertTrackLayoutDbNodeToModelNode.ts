@@ -1,4 +1,4 @@
-import {TrackLayoutNode as TrackLayoutNodeInput} from "../../../../db/nodes/track-layouts/types/TrackLayoutNode"
+import {TrackLayoutNode as TrackLayoutNodeInput} from "../../../../db/node-types/track-layouts/types/TrackLayoutNode"
 import {TrackLayoutNode} from "../types/TrackLayoutNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 

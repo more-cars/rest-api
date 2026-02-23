@@ -1,5 +1,5 @@
 import {Node} from "neo4j-driver"
-import type {InputSessionResultCreate} from "../../../src/db/nodes/session-results/types/InputSessionResultCreate"
+import type {InputSessionResultCreate} from "../../../src/db/node-types/session-results/types/InputSessionResultCreate"
 
 export function mapSessionResult(oldNode: Node): InputSessionResultCreate {
     return {

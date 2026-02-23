@@ -1,5 +1,5 @@
 import {CreateCarModelInput} from "../types/CreateCarModelInput"
-import {InputCarModelCreate} from "../../../../db/nodes/car-models/types/InputCarModelCreate"
+import {InputCarModelCreate} from "../../../../db/node-types/car-models/types/InputCarModelCreate"
 
 export function convertInputData(data: CreateCarModelInput): InputCarModelCreate {
     return {

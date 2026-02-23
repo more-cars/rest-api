@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputCompanyCreate} from "../../../../src/db/nodes/companies/types/InputCompanyCreate"
+import type {InputCompanyCreate} from "../../../../src/db/node-types/companies/types/InputCompanyCreate"
 import type {CompanyNode} from "../../../../src/models/node-types/companies/types/CompanyNode"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 

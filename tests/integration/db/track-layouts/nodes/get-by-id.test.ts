@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {getNodeById} from "../../../../../src/db/nodes/track-layouts/getNodeById"
+import {getNodeById} from "../../../../../src/db/node-types/track-layouts/getNodeById"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {TrackLayoutSchema} from "../../../../_toolbox/schemas/db/TrackLayoutSchema"

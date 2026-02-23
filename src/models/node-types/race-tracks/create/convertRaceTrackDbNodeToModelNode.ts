@@ -1,4 +1,4 @@
-import {RaceTrackNode as DbRaceTrackNode} from "../../../../db/nodes/race-tracks/types/RaceTrackNode"
+import {RaceTrackNode as DbRaceTrackNode} from "../../../../db/node-types/race-tracks/types/RaceTrackNode"
 import {RaceTrackNode} from "../types/RaceTrackNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 

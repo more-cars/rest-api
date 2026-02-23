@@ -1,6 +1,6 @@
 import {faker} from "@faker-js/faker"
 import type {RaceTrackNode} from "../../../../src/models/node-types/race-tracks/types/RaceTrackNode"
-import type {InputRaceTrackCreate} from "../../../../src/db/nodes/race-tracks/types/InputRaceTrackCreate"
+import type {InputRaceTrackCreate} from "../../../../src/db/node-types/race-tracks/types/InputRaceTrackCreate"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 
 export const FakeRaceTrack = {

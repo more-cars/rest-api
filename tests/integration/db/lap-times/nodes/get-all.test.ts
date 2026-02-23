@@ -1,9 +1,9 @@
 import {expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
-import {LapTimeNode} from "../../../../../src/db/nodes/lap-times/types/LapTimeNode"
+import {LapTimeNode} from "../../../../../src/db/node-types/lap-times/types/LapTimeNode"
 import {seedNodes} from "../../../../_toolbox/dbSeeding/seedNodes"
-import {getAllNodesOfType} from "../../../../../src/db/nodes/lap-times/getAllNodesOfType"
+import {getAllNodesOfType} from "../../../../../src/db/node-types/lap-times/getAllNodesOfType"
 
 test('When there are no LAP TIMES then an empty array should be returned', async () => {
     await deleteAllNodesOfType(DbNodeType.LapTime)

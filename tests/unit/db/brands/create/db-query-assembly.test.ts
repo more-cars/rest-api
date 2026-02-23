@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
+import {InputBrandCreate} from "../../../../../src/db/node-types/brands/types/InputBrandCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"

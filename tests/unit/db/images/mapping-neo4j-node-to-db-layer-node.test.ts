@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {Integer, Node} from "neo4j-driver"
-import {mapDbNodeToImageNode} from "../../../../src/db/nodes/images/mapDbNodeToImageNode"
+import {mapDbNodeToImageNode} from "../../../../src/db/node-types/images/mapDbNodeToImageNode"
 
 test('the Neo4j node is correctly mapped to a More Cars node', async () => {
     const dbNode: Node = {

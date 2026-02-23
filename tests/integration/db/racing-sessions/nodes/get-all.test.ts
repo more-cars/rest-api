@@ -1,9 +1,9 @@
 import {expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
-import {RacingSessionNode} from "../../../../../src/db/nodes/racing-sessions/types/RacingSessionNode"
+import {RacingSessionNode} from "../../../../../src/db/node-types/racing-sessions/types/RacingSessionNode"
 import {seedNodes} from "../../../../_toolbox/dbSeeding/seedNodes"
-import {getAllNodesOfType} from "../../../../../src/db/nodes/racing-sessions/getAllNodesOfType"
+import {getAllNodesOfType} from "../../../../../src/db/node-types/racing-sessions/getAllNodesOfType"
 
 test('When there are no RACING SESSIONS then an empty array should be returned', async () => {
     await deleteAllNodesOfType(DbNodeType.RacingSession)

@@ -1,5 +1,5 @@
 import {CreateRaceTrackInput} from "../types/CreateRaceTrackInput"
-import {InputRaceTrackCreate} from "../../../../db/nodes/race-tracks/types/InputRaceTrackCreate"
+import {InputRaceTrackCreate} from "../../../../db/node-types/race-tracks/types/InputRaceTrackCreate"
 
 export function convertInputData(data: CreateRaceTrackInput): InputRaceTrackCreate {
     return {

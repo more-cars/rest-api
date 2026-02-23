@@ -1,4 +1,4 @@
-import {createNode} from "../../../../../src/db/nodes/racing-series/createNode"
+import {createNode} from "../../../../../src/db/node-types/racing-series/createNode"
 import {FakeRacingSeries} from "../../../fixtures/nodes/FakeRacingSeries"
 
 export async function seedRacingSeries(customFakeData: object = {}) {

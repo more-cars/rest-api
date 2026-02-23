@@ -1,5 +1,5 @@
 import {CreateRacingSessionInput} from "../types/CreateRacingSessionInput"
-import {InputRacingSessionCreate} from "../../../../db/nodes/racing-sessions/types/InputRacingSessionCreate"
+import {InputRacingSessionCreate} from "../../../../db/node-types/racing-sessions/types/InputRacingSessionCreate"
 
 export function convertInputData(data: CreateRacingSessionInput): InputRacingSessionCreate {
     return {

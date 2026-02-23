@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {createNode} from "../../../../../../src/db/nodes/images/createNode"
+import {createNode} from "../../../../../../src/db/node-types/images/createNode"
 import FakeImageFull from "../../../../../_toolbox/fixtures/nodes/FakeImageFull"
 
 test('Creating node with valid data', async () => {

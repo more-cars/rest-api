@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputImageCreate} from "../../../../src/db/nodes/images/types/InputImageCreate"
+import type {InputImageCreate} from "../../../../src/db/node-types/images/types/InputImageCreate"
 import type {ImageNode} from "../../../../src/models/node-types/images/types/ImageNode"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 

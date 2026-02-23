@@ -1,5 +1,5 @@
 import {CreateCompanyInput} from "../types/CreateCompanyInput"
-import {InputCompanyCreate} from "../../../../db/nodes/companies/types/InputCompanyCreate"
+import {InputCompanyCreate} from "../../../../db/node-types/companies/types/InputCompanyCreate"
 
 export function convertInputData(data: CreateCompanyInput): InputCompanyCreate {
     return {

@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {InputCarModelVariantCreate} from "../../../../../src/db/nodes/car-model-variants/types/InputCarModelVariantCreate"
+import {InputCarModelVariantCreate} from "../../../../../src/db/node-types/car-model-variants/types/InputCarModelVariantCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"

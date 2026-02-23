@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {InputLapTimeCreate} from "../../../../../src/db/nodes/lap-times/types/InputLapTimeCreate"
+import {InputLapTimeCreate} from "../../../../../src/db/node-types/lap-times/types/InputLapTimeCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"

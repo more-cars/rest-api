@@ -1,4 +1,4 @@
-import {SessionResultNode as DbSessionResultNode} from "../../../../db/nodes/session-results/types/SessionResultNode"
+import {SessionResultNode as DbSessionResultNode} from "../../../../db/node-types/session-results/types/SessionResultNode"
 import {SessionResultNode} from "../types/SessionResultNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 

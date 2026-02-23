@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputCarModelCreate} from "../../../../src/db/nodes/car-models/types/InputCarModelCreate"
+import type {InputCarModelCreate} from "../../../../src/db/node-types/car-models/types/InputCarModelCreate"
 import type {CarModelNode} from "../../../../src/models/node-types/car-models/types/CarModelNode"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 

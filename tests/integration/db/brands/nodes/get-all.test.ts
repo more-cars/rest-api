@@ -1,9 +1,9 @@
 import {expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
-import {BrandNode} from "../../../../../src/db/nodes/brands/types/BrandNode"
+import {BrandNode} from "../../../../../src/db/node-types/brands/types/BrandNode"
 import {seedNodes} from "../../../../_toolbox/dbSeeding/seedNodes"
-import {getAllNodesOfType} from "../../../../../src/db/nodes/brands/getAllNodesOfType"
+import {getAllNodesOfType} from "../../../../../src/db/node-types/brands/getAllNodesOfType"
 
 test('When there are no BRANDS then an empty array should be returned', async () => {
     await deleteAllNodesOfType(DbNodeType.Brand)

@@ -1,4 +1,4 @@
-import {createNode} from "../../../../../src/db/nodes/companies/createNode"
+import {createNode} from "../../../../../src/db/node-types/companies/createNode"
 import {FakeCompany} from "../../../fixtures/nodes/FakeCompany"
 
 export async function seedCompany(customFakeData: object = {}) {

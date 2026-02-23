@@ -1,9 +1,9 @@
 import {expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
-import {SessionResultNode} from "../../../../../src/db/nodes/session-results/types/SessionResultNode"
+import {SessionResultNode} from "../../../../../src/db/node-types/session-results/types/SessionResultNode"
 import {seedNodes} from "../../../../_toolbox/dbSeeding/seedNodes"
-import {getAllNodesOfType} from "../../../../../src/db/nodes/session-results/getAllNodesOfType"
+import {getAllNodesOfType} from "../../../../../src/db/node-types/session-results/getAllNodesOfType"
 
 test('When there are no SESSION RESULTS then an empty array should be returned', async () => {
     await deleteAllNodesOfType(DbNodeType.SessionResult)

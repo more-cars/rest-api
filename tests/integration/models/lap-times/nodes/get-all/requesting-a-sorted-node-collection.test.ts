@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import type {LapTimeNode} from "../../../../../../src/db/nodes/lap-times/types/LapTimeNode"
+import type {LapTimeNode} from "../../../../../../src/db/node-types/lap-times/types/LapTimeNode"
 import {LapTime} from "../../../../../../src/models/node-types/lap-times/LapTime"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"

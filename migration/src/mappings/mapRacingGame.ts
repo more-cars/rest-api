@@ -1,5 +1,5 @@
 import {Node} from "neo4j-driver"
-import {InputRacingGameCreate} from "../../../src/db/nodes/racing-games/types/InputRacingGameCreate"
+import {InputRacingGameCreate} from "../../../src/db/node-types/racing-games/types/InputRacingGameCreate"
 
 export function mapRacingGame(oldNode: Node): InputRacingGameCreate {
     return {

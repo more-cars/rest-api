@@ -1,5 +1,5 @@
 import {CreateSessionResultInput} from "../types/CreateSessionResultInput"
-import {InputSessionResultCreate} from "../../../../db/nodes/session-results/types/InputSessionResultCreate"
+import {InputSessionResultCreate} from "../../../../db/node-types/session-results/types/InputSessionResultCreate"
 
 export function convertInputData(data: CreateSessionResultInput): InputSessionResultCreate {
     return {

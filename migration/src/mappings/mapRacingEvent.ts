@@ -1,5 +1,5 @@
 import {Node} from "neo4j-driver"
-import type {InputRacingEventCreate} from "../../../src/db/nodes/racing-events/types/InputRacingEventCreate"
+import type {InputRacingEventCreate} from "../../../src/db/node-types/racing-events/types/InputRacingEventCreate"
 
 export function mapRacingEvent(oldNode: Node): InputRacingEventCreate {
     return {

@@ -1,5 +1,5 @@
 import {CreateGamingPlatformInput} from "../types/CreateGamingPlatformInput"
-import {InputGamingPlatformCreate} from "../../../../db/nodes/gaming-platforms/types/InputGamingPlatformCreate"
+import {InputGamingPlatformCreate} from "../../../../db/node-types/gaming-platforms/types/InputGamingPlatformCreate"
 
 export function convertInputData(data: CreateGamingPlatformInput): InputGamingPlatformCreate {
     return {

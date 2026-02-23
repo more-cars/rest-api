@@ -1,4 +1,4 @@
-import {createNode} from "../../../../../src/db/nodes/racing-sessions/createNode"
+import {createNode} from "../../../../../src/db/node-types/racing-sessions/createNode"
 import {FakeRacingSession} from "../../../fixtures/nodes/FakeRacingSession"
 
 export async function seedRacingSession(customFakeData: object = {}) {

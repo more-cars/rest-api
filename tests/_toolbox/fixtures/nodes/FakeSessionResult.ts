@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputSessionResultCreate} from "../../../../src/db/nodes/session-results/types/InputSessionResultCreate"
+import type {InputSessionResultCreate} from "../../../../src/db/node-types/session-results/types/InputSessionResultCreate"
 import type {SessionResultNode} from "../../../../src/models/node-types/session-results/types/SessionResultNode"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 

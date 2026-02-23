@@ -1,5 +1,5 @@
 import {Node} from "neo4j-driver"
-import type {InputTrackLayoutCreate} from "../../../src/db/nodes/track-layouts/types/InputTrackLayoutCreate"
+import type {InputTrackLayoutCreate} from "../../../src/db/node-types/track-layouts/types/InputTrackLayoutCreate"
 
 export function mapTrackLayout(oldNode: Node): InputTrackLayoutCreate {
     return {

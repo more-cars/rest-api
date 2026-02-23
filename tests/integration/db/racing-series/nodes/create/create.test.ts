@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {FakeRacingSeries} from "../../../../../_toolbox/fixtures/nodes/FakeRacingSeries"
-import {createNode} from "../../../../../../src/db/nodes/racing-series/createNode"
+import {createNode} from "../../../../../../src/db/node-types/racing-series/createNode"
 
 describe('Creating node', () => {
     test('with valid data', async () => {

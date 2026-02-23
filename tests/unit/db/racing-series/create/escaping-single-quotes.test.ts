@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {InputRacingSeriesCreate} from "../../../../../src/db/nodes/racing-series/types/InputRacingSeriesCreate"
+import {InputRacingSeriesCreate} from "../../../../../src/db/node-types/racing-series/types/InputRacingSeriesCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"

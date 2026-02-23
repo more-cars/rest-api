@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {getNodeById} from "../../../../../src/db/nodes/session-results/getNodeById"
+import {getNodeById} from "../../../../../src/db/node-types/session-results/getNodeById"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {SessionResultSchema} from "../../../../_toolbox/schemas/db/SessionResultSchema"

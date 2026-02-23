@@ -1,9 +1,9 @@
 import {expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
-import {ImageNode} from "../../../../../src/db/nodes/images/types/ImageNode"
+import {ImageNode} from "../../../../../src/db/node-types/images/types/ImageNode"
 import {seedNodes} from "../../../../_toolbox/dbSeeding/seedNodes"
-import {getAllNodesOfType} from "../../../../../src/db/nodes/images/getAllNodesOfType"
+import {getAllNodesOfType} from "../../../../../src/db/node-types/images/getAllNodesOfType"
 
 test('When there are no IMAGES then an empty array should be returned', async () => {
     await deleteAllNodesOfType(DbNodeType.Image)

@@ -1,4 +1,4 @@
-import {createNode} from "../../../../../src/db/nodes/racing-games/createNode"
+import {createNode} from "../../../../../src/db/node-types/racing-games/createNode"
 import {FakeRacingGame} from "../../../fixtures/nodes/FakeRacingGame"
 
 export async function seedRacingGame(customFakeData: object = {}) {

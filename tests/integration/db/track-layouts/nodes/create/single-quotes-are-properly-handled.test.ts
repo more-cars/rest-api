@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {createNode} from "../../../../../../src/db/nodes/track-layouts/createNode"
+import {createNode} from "../../../../../../src/db/node-types/track-layouts/createNode"
 
 test('Single quotes in strings are correctly escaped and unescaped', async () => {
     const data = {

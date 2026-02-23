@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {InputSessionResultCreate} from "../../../../../src/db/nodes/session-results/types/InputSessionResultCreate"
+import {InputSessionResultCreate} from "../../../../../src/db/node-types/session-results/types/InputSessionResultCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"

@@ -1,5 +1,5 @@
 import {CreateImageInput} from "../types/CreateImageInput"
-import {InputImageCreate} from "../../../../db/nodes/images/types/InputImageCreate"
+import {InputImageCreate} from "../../../../db/node-types/images/types/InputImageCreate"
 import {CreateImageGeneratedInput} from "../types/CreateImageGeneratedInput"
 
 export function convertInputData(data: CreateImageInput & CreateImageGeneratedInput): InputImageCreate {

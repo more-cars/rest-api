@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputTrackLayoutCreate} from "../../../../src/db/nodes/track-layouts/types/InputTrackLayoutCreate"
+import type {InputTrackLayoutCreate} from "../../../../src/db/node-types/track-layouts/types/InputTrackLayoutCreate"
 import type {TrackLayoutNode} from "../../../../src/models/node-types/track-layouts/types/TrackLayoutNode"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 

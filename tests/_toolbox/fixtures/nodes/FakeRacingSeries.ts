@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputRacingSeriesCreate} from "../../../../src/db/nodes/racing-series/types/InputRacingSeriesCreate"
+import type {InputRacingSeriesCreate} from "../../../../src/db/node-types/racing-series/types/InputRacingSeriesCreate"
 import type {RacingSeriesNode} from "../../../../src/models/node-types/racing-series/types/RacingSeriesNode"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 

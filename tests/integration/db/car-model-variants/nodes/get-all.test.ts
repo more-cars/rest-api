@@ -1,9 +1,9 @@
 import {expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
-import {CarModelVariantNode} from "../../../../../src/db/nodes/car-model-variants/types/CarModelVariantNode"
+import {CarModelVariantNode} from "../../../../../src/db/node-types/car-model-variants/types/CarModelVariantNode"
 import {seedNodes} from "../../../../_toolbox/dbSeeding/seedNodes"
-import {getAllNodesOfType} from "../../../../../src/db/nodes/car-model-variants/getAllNodesOfType"
+import {getAllNodesOfType} from "../../../../../src/db/node-types/car-model-variants/getAllNodesOfType"
 
 test('When there are no CAR MODEL VARIANTS then an empty array should be returned', async () => {
     await deleteAllNodesOfType(DbNodeType.CarModelVariant)

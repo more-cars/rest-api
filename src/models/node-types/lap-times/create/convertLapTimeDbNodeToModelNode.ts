@@ -1,4 +1,4 @@
-import {LapTimeNode as DbLapTimeNode} from "../../../../db/nodes/lap-times/types/LapTimeNode"
+import {LapTimeNode as DbLapTimeNode} from "../../../../db/node-types/lap-times/types/LapTimeNode"
 import {LapTimeNode} from "../types/LapTimeNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 

@@ -1,4 +1,4 @@
-import {createNode} from "../../../../../src/db/nodes/track-layouts/createNode"
+import {createNode} from "../../../../../src/db/node-types/track-layouts/createNode"
 import {FakeTrackLayout} from "../../../fixtures/nodes/FakeTrackLayout"
 
 export async function seedTrackLayout(customFakeData: object = {}) {

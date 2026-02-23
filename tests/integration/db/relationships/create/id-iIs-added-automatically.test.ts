@@ -4,10 +4,10 @@ import {RelationshipType} from "../../../../../src/db/types/RelationshipType"
 import assert from "assert"
 import {FakeNodeInput} from "../../../../_toolbox/fixtures/nodes/FakeNodeInput"
 import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
-import type {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
-import type {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
-import {createNode as createBrandNode} from "../../../../../src/db/nodes/brands/createNode"
-import {createNode as createCarModelNode} from "../../../../../src/db/nodes/car-models/createNode"
+import type {InputBrandCreate} from "../../../../../src/db/node-types/brands/types/InputBrandCreate"
+import type {InputCarModelCreate} from "../../../../../src/db/node-types/car-models/types/InputCarModelCreate"
+import {createNode as createBrandNode} from "../../../../../src/db/node-types/brands/createNode"
+import {createNode as createCarModelNode} from "../../../../../src/db/node-types/car-models/createNode"
 
 test('ID is added when creating a relationship', async () => {
     const brand = await createBrandNode(FakeNodeInput(ControllerNodeType.Brand) as InputBrandCreate)

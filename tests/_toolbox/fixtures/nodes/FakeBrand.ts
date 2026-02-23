@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputBrandCreate} from "../../../../src/db/nodes/brands/types/InputBrandCreate"
+import type {InputBrandCreate} from "../../../../src/db/node-types/brands/types/InputBrandCreate"
 import type {BrandNode} from "../../../../src/models/node-types/brands/types/BrandNode"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 

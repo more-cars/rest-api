@@ -5,9 +5,9 @@ import {CarModel} from "../../../../../src/models/node-types/car-models/CarModel
 import {Image} from "../../../../../src/models/node-types/images/Image"
 import {FakeNodeInput} from "../../../../_toolbox/fixtures/nodes/FakeNodeInput"
 import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
-import type {InputBrandCreate} from "../../../../../src/db/nodes/brands/types/InputBrandCreate"
-import type {InputCarModelCreate} from "../../../../../src/db/nodes/car-models/types/InputCarModelCreate"
-import type {InputImageCreate} from "../../../../../src/db/nodes/images/types/InputImageCreate"
+import type {InputBrandCreate} from "../../../../../src/db/node-types/brands/types/InputBrandCreate"
+import type {InputCarModelCreate} from "../../../../../src/db/node-types/car-models/types/InputCarModelCreate"
+import type {InputImageCreate} from "../../../../../src/db/node-types/images/types/InputImageCreate"
 
 test('Timestamps are added when creating a node', async () => {
     const createdBrand = await Brand.create(FakeNodeInput(ControllerNodeType.Brand) as InputBrandCreate)

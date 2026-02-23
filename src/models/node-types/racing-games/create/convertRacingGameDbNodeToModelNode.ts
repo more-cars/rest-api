@@ -1,4 +1,4 @@
-import {RacingGameNode as DbRacingGameNode} from "../../../../db/nodes/racing-games/types/RacingGameNode"
+import {RacingGameNode as DbRacingGameNode} from "../../../../db/node-types/racing-games/types/RacingGameNode"
 import {RacingGameNode} from "../types/RacingGameNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 

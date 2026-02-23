@@ -1,4 +1,4 @@
-import {CarModelNode as DbCarModelNode} from "../../../../db/nodes/car-models/types/CarModelNode"
+import {CarModelNode as DbCarModelNode} from "../../../../db/node-types/car-models/types/CarModelNode"
 import {CarModelNode} from "../types/CarModelNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 

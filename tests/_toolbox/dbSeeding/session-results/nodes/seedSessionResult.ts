@@ -1,4 +1,4 @@
-import {createNode} from "../../../../../src/db/nodes/session-results/createNode"
+import {createNode} from "../../../../../src/db/node-types/session-results/createNode"
 import {FakeSessionResult} from "../../../fixtures/nodes/FakeSessionResult"
 
 export async function seedSessionResult(customFakeData: object = {}) {

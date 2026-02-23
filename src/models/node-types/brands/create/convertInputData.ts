@@ -1,5 +1,5 @@
 import {CreateBrandInput} from "../types/CreateBrandInput"
-import {InputBrandCreate} from "../../../../db/nodes/brands/types/InputBrandCreate"
+import {InputBrandCreate} from "../../../../db/node-types/brands/types/InputBrandCreate"
 
 export function convertInputData(data: CreateBrandInput): InputBrandCreate {
     return {

@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {getNodeById} from "../../../../../src/db/nodes/gaming-platforms/getNodeById"
+import {getNodeById} from "../../../../../src/db/node-types/gaming-platforms/getNodeById"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {GamingPlatformSchema} from "../../../../_toolbox/schemas/db/GamingPlatformSchema"

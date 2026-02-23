@@ -1,5 +1,5 @@
 import {Node} from "neo4j-driver"
-import type {InputCompanyCreate} from "../../../src/db/nodes/companies/types/InputCompanyCreate"
+import type {InputCompanyCreate} from "../../../src/db/node-types/companies/types/InputCompanyCreate"
 
 export function mapCompany(oldNode: Node): InputCompanyCreate {
     return {

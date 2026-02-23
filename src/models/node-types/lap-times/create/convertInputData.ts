@@ -1,5 +1,5 @@
 import {CreateLapTimeInput} from "../types/CreateLapTimeInput"
-import {InputLapTimeCreate} from "../../../../db/nodes/lap-times/types/InputLapTimeCreate"
+import {InputLapTimeCreate} from "../../../../db/node-types/lap-times/types/InputLapTimeCreate"
 
 export function convertInputData(data: CreateLapTimeInput): InputLapTimeCreate {
     return {

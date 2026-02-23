@@ -1,4 +1,4 @@
-import {GamingPlatformNode as DbGamingPlatformNode} from "../../../../db/nodes/gaming-platforms/types/GamingPlatformNode"
+import {GamingPlatformNode as DbGamingPlatformNode} from "../../../../db/node-types/gaming-platforms/types/GamingPlatformNode"
 import {GamingPlatformNode} from "../types/GamingPlatformNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 

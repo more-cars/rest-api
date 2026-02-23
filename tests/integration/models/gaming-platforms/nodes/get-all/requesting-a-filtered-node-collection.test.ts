@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import type {GamingPlatformNode} from "../../../../../../src/db/nodes/gaming-platforms/types/GamingPlatformNode"
+import type {GamingPlatformNode} from "../../../../../../src/db/node-types/gaming-platforms/types/GamingPlatformNode"
 import {GamingPlatform} from "../../../../../../src/models/node-types/gaming-platforms/GamingPlatform"
 import {FilterOperator} from "../../../../../../src/models/types/FilterOperator"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"

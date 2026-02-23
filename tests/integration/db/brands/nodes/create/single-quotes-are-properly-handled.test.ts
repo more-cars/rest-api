@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {createNode} from "../../../../../../src/db/nodes/brands/createNode"
+import {createNode} from "../../../../../../src/db/node-types/brands/createNode"
 
 test('Single quotes in strings are correctly escaped and unescaped', async () => {
     const data = {
@@ -10,6 +10,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         wmi: "ABC'D''EF",
         hsn: "1'''2",
     }
+
     const createdNode = await createNode(data)
 
     expect(createdNode.properties.name)

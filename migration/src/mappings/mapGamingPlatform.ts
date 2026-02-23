@@ -1,5 +1,5 @@
 import {Node} from "neo4j-driver"
-import {InputGamingPlatformCreate} from "../../../src/db/nodes/gaming-platforms/types/InputGamingPlatformCreate"
+import {InputGamingPlatformCreate} from "../../../src/db/node-types/gaming-platforms/types/InputGamingPlatformCreate"
 
 export function mapGamingPlatform(oldNode: Node): InputGamingPlatformCreate {
     return {

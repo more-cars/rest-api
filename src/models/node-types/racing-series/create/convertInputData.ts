@@ -1,5 +1,5 @@
 import {CreateRacingSeriesInput} from "../types/CreateRacingSeriesInput"
-import {InputRacingSeriesCreate} from "../../../../db/nodes/racing-series/types/InputRacingSeriesCreate"
+import {InputRacingSeriesCreate} from "../../../../db/node-types/racing-series/types/InputRacingSeriesCreate"
 
 export function convertInputData(data: CreateRacingSeriesInput): InputRacingSeriesCreate {
     return {

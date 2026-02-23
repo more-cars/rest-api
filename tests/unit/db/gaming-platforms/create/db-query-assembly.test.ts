@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {InputGamingPlatformCreate} from "../../../../../src/db/nodes/gaming-platforms/types/InputGamingPlatformCreate"
+import {InputGamingPlatformCreate} from "../../../../../src/db/node-types/gaming-platforms/types/InputGamingPlatformCreate"
 import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"

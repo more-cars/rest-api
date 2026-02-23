@@ -1,4 +1,4 @@
-import {ImageNode as DbImageNode} from "../../../../db/nodes/images/types/ImageNode"
+import {ImageNode as DbImageNode} from "../../../../db/node-types/images/types/ImageNode"
 import {ImageNode} from "../types/ImageNode"
 import {ModelNodeType} from "../../../types/ModelNodeType"
 

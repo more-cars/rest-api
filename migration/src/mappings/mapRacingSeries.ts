@@ -1,5 +1,5 @@
 import {Node} from "neo4j-driver"
-import type {InputRacingSeriesCreate} from "../../../src/db/nodes/racing-series/types/InputRacingSeriesCreate"
+import type {InputRacingSeriesCreate} from "../../../src/db/node-types/racing-series/types/InputRacingSeriesCreate"
 
 export function mapRacingSeries(oldNode: Node): InputRacingSeriesCreate {
     return {

@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {FakeSessionResult} from "../../../../../_toolbox/fixtures/nodes/FakeSessionResult"
-import {createNode} from "../../../../../../src/db/nodes/session-results/createNode"
+import {createNode} from "../../../../../../src/db/node-types/session-results/createNode"
 
 describe('Creating node', () => {
     test('with valid data', async () => {

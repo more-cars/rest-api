@@ -1,5 +1,5 @@
 import {CreateRacingEventInput} from "../types/CreateRacingEventInput"
-import {InputRacingEventCreate} from "../../../../db/nodes/racing-events/types/InputRacingEventCreate"
+import {InputRacingEventCreate} from "../../../../db/node-types/racing-events/types/InputRacingEventCreate"
 
 export function convertInputData(data: CreateRacingEventInput): InputRacingEventCreate {
     return {

@@ -1,5 +1,5 @@
 import {Node} from "neo4j-driver"
-import type {InputRaceTrackCreate} from "../../../src/db/nodes/race-tracks/types/InputRaceTrackCreate"
+import type {InputRaceTrackCreate} from "../../../src/db/node-types/race-tracks/types/InputRaceTrackCreate"
 
 export function mapRaceTrack(oldNode: Node): InputRaceTrackCreate {
     return {

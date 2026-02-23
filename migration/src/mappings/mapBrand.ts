@@ -1,5 +1,5 @@
 import {Node} from "neo4j-driver"
-import {InputBrandCreate} from "../../../src/db/nodes/brands/types/InputBrandCreate"
+import {InputBrandCreate} from "../../../src/db/node-types/brands/types/InputBrandCreate"
 
 export function mapBrand(oldNode: Node): InputBrandCreate {
     return {

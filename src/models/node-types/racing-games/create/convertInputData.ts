@@ -1,5 +1,5 @@
 import {CreateRacingGameInput} from "../types/CreateRacingGameInput"
-import {InputRacingGameCreate} from "../../../../db/nodes/racing-games/types/InputRacingGameCreate"
+import {InputRacingGameCreate} from "../../../../db/node-types/racing-games/types/InputRacingGameCreate"
 
 export function convertInputData(data: CreateRacingGameInput): InputRacingGameCreate {
     return {

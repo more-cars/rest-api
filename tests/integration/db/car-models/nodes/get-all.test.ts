@@ -3,7 +3,7 @@ import {deleteAllNodesOfType} from "../../../../_toolbox/dbSeeding/deleteAllNode
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {CarModelNode} from "../../../../../src/models/node-types/car-models/types/CarModelNode"
 import {seedNodes} from "../../../../_toolbox/dbSeeding/seedNodes"
-import {getAllNodesOfType} from "../../../../../src/db/nodes/car-models/getAllNodesOfType"
+import {getAllNodesOfType} from "../../../../../src/db/node-types/car-models/getAllNodesOfType"
 
 test('When there are no CAR MODELS then an empty array should be returned', async () => {
     await deleteAllNodesOfType(DbNodeType.CarModel)
