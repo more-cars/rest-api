@@ -25,19 +25,21 @@ to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/cr
     }
 -%>
 import {expect, test} from 'vitest'
-import {createNodeQuery} from "../../../../../src/db/nodes/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/createNode"
-import {Input<%= h.changeCase.pascal(nodeType) %>Create} from "../../../../../src/db/nodes/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Input<%= h.changeCase.pascal(nodeType) %>Create"
+import {Input<%= h.changeCase.pascal(nodeType) %>Create} from "../../../../../src/db/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Input<%= h.changeCase.pascal(nodeType) %>Create"
+import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
+import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a <%= h.changeCase.upper(nodeType) %> node', async () => {
     const data: Input<%= h.changeCase.pascal(nodeType) %>Create = {
 <%- props_in.map(line => '        ' + line).join(',\n') %>
     }
 
-    const query = createNodeQuery(data)
+    const query = createNodeQuery(DbNodeType.<%= h.changeCase.pascal(nodeType) %>, data)
 
     expect(query)
         .toEqual(
-            "CREATE (node:<%= h.changeCase.pascal(nodeType) %> {\n" +
+            "CREATE (node:<%= h.changeCase.pascal(nodeType) %>_" + appInstanceId + " {\n" +
 <%- props_out.join(',\\n" +\n') %>\n" +
             "})\n" +
             "RETURN node\n" +

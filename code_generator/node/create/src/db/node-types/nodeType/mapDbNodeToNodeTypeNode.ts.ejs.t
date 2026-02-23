@@ -1,8 +1,9 @@
 ---
-to: src/db/nodes/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/mapDbNodeTo<%= h.changeCase.pascal(nodeType) %>Node.ts
+to: src/db/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/mapDbNodeTo<%= h.changeCase.pascal(nodeType) %>Node.ts
 ---
 import {Node} from "neo4j-driver"
 import {<%= h.changeCase.pascal(nodeType) %>Node} from "./types/<%= h.changeCase.pascal(nodeType) %>Node"
+import {DbNodeType} from "../../types/DbNodeType"
 
 export function mapDbNodeTo<%= h.changeCase.pascal(nodeType) %>Node(neo4jNode: Node): <%= h.changeCase.pascal(nodeType) %>Node {
     return {

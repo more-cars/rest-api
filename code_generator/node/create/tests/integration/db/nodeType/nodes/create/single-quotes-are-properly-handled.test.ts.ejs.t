@@ -2,7 +2,7 @@
 to: tests/integration/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/nodes/create/single-quotes-are-properly-handled.test.ts
 ---
 import {expect, test} from 'vitest'
-import {createNode} from "../../../../../../src/db/nodes/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/createNode"
+import {createNode} from "../../../../../../src/db/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/createNode"
 
 test('Single quotes in strings are correctly escaped and unescaped', async () => {
     const data = {

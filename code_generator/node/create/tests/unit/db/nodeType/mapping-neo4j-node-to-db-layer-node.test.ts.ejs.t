@@ -3,7 +3,7 @@ to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/ma
 ---
 import {expect, test} from 'vitest'
 import {Integer, Node} from "neo4j-driver"
-import {mapDbNodeTo<%= h.changeCase.pascal(nodeType) %>Node} from "../../../../src/db/nodes/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/mapDbNodeTo<%= h.changeCase.pascal(nodeType) %>Node"
+import {mapDbNodeTo<%= h.changeCase.pascal(nodeType) %>Node} from "../../../../src/db/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/mapDbNodeTo<%= h.changeCase.pascal(nodeType) %>Node"
 
 test('the Neo4j node is correctly mapped to a More Cars node', async () => {
     const dbNode: Node = {
@@ -30,17 +30,20 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
 
     expect(mappedNode)
         .toStrictEqual({
-            id: 1,
-            created_at: "2025-05-14T11:05:07.793Z",
-            updated_at: "2025-05-14T11:05:07.793Z",
+            node_type: "SessionResult",
+            properties: {
+                id: 1,
+                created_at: "2025-05-14T11:05:07.793Z",
+                updated_at: "2025-05-14T11:05:07.793Z",
 <% for (prop in properties) { -%>
 <%    if (properties[prop].datatype === 'string' && properties[prop].example) { -%>
-            <%= prop %>: "<%= properties[prop].example %>",
+                <%= prop %>: "<%= properties[prop].example %>",
 <%   } else if (!properties[prop].example) { -%>
-            <%= prop -%>: null,
+                <%= prop -%>: null,
 <%   } else { -%>
-            <%= prop %>: <%= properties[prop].example -%>,
+                <%= prop %>: <%= properties[prop].example -%>,
 <%   } -%>
 <% } -%>
+            }
         })
 })

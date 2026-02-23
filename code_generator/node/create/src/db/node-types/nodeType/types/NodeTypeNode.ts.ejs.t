@@ -1,5 +1,5 @@
 ---
-to: src/db/nodes/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node.ts
+to: src/db/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node.ts
 ---
 export type <%= h.changeCase.pascal(nodeType) %>Node = {
     id: number

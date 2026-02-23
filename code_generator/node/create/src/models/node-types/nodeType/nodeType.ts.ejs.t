@@ -1,10 +1,10 @@
 ---
-to: src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>.ts
+to: src/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>.ts
 ---
 import {Create<%= h.changeCase.pascal(nodeType) %>Input} from "./types/Create<%= h.changeCase.pascal(nodeType) %>Input"
 import {<%= h.changeCase.pascal(nodeType) %>Node} from "./types/<%= h.changeCase.pascal(nodeType) %>Node"
 import {convertInputData} from "./create/convertInputData"
-import {createNode} from "../../db/nodes/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/createNode"
+import {createNode} from "../../../db/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 
 export const <%= h.changeCase.pascal(nodeType) %> = {

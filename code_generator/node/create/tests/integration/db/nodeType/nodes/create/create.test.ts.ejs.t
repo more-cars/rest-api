@@ -3,14 +3,14 @@ to: tests/integration/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)
 ---
 import {describe, expect, test} from 'vitest'
 import {Fake<%= h.changeCase.pascal(nodeType) %>} from "../../../../../_toolbox/fixtures/nodes/Fake<%= h.changeCase.pascal(nodeType) %>"
-import {createNode} from "../../../../../../src/db/nodes/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/createNode"
+import {createNode} from "../../../../../../src/db/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/createNode"
 
 describe('Creating node', () => {
     test('with valid data', async () => {
         const inputData = Fake<%= h.changeCase.pascal(nodeType) %>.dbInput()
         const createdNode = await createNode(inputData)
 
-        expect(createdNode)
+        expect(createdNode.properties)
             .toEqual(expect.objectContaining(inputData))
     })
 
@@ -18,7 +18,7 @@ describe('Creating node', () => {
         const inputData = Fake<%= h.changeCase.pascal(nodeType) %>.dbInputMinimal()
         const createdNode = await createNode(inputData)
 
-        expect(createdNode)
+        expect(createdNode.properties)
             .toEqual(expect.objectContaining(inputData))
     })
 })
