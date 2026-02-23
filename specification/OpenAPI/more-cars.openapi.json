@@ -11582,7 +11582,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "company"
+                "example": "companies"
               },
               "data": {
                 "$ref": "#/components/schemas/Company"
@@ -11632,7 +11632,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "car-model"
+                "example": "car-models"
               },
               "data": {
                 "$ref": "#/components/schemas/CarModel"
@@ -11693,7 +11693,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -11754,7 +11754,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -11881,7 +11881,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "brand"
+                "example": "brands"
               },
               "data": {
                 "$ref": "#/components/schemas/Brand"
@@ -11931,7 +11931,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "car-model"
+                "example": "car-models"
               },
               "data": {
                 "$ref": "#/components/schemas/CarModel"
@@ -11981,7 +11981,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "car-model"
+                "example": "car-models"
               },
               "data": {
                 "$ref": "#/components/schemas/CarModel"
@@ -12031,7 +12031,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "car-model-variant"
+                "example": "car-model-variants"
               },
               "data": {
                 "$ref": "#/components/schemas/CarModelVariant"
@@ -12092,7 +12092,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -12153,7 +12153,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -12445,7 +12445,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "car-model"
+                "example": "car-models"
               },
               "data": {
                 "$ref": "#/components/schemas/CarModel"
@@ -12495,7 +12495,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "session-result"
+                "example": "session-results"
               },
               "data": {
                 "$ref": "#/components/schemas/SessionResult"
@@ -12556,7 +12556,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "lap-time"
+                "example": "lap-times"
               },
               "data": {
                 "$ref": "#/components/schemas/LapTime"
@@ -12617,7 +12617,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "racing-game"
+                "example": "racing-games"
               },
               "data": {
                 "$ref": "#/components/schemas/RacingGame"
@@ -12678,7 +12678,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -12739,7 +12739,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -12975,7 +12975,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "brand"
+                "example": "brands"
               },
               "data": {
                 "oneOf": [
@@ -13078,7 +13078,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "brand"
+                "example": "brands"
               },
               "data": {
                 "oneOf": [
@@ -13259,7 +13259,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "brand"
+                "example": "brands"
               },
               "data": {
                 "$ref": "#/components/schemas/Brand"
@@ -13320,7 +13320,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -13381,7 +13381,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -13508,7 +13508,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "track-layout"
+                "example": "track-layouts"
               },
               "data": {
                 "$ref": "#/components/schemas/TrackLayout"
@@ -13569,7 +13569,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -13630,7 +13630,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -13680,7 +13680,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "racing-event"
+                "example": "racing-events"
               },
               "data": {
                 "$ref": "#/components/schemas/RacingEvent"
@@ -13848,7 +13848,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "race-track"
+                "example": "race-tracks"
               },
               "data": {
                 "$ref": "#/components/schemas/RaceTrack"
@@ -13898,7 +13898,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "racing-event"
+                "example": "racing-events"
               },
               "data": {
                 "$ref": "#/components/schemas/RacingEvent"
@@ -13959,7 +13959,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "lap-time"
+                "example": "lap-times"
               },
               "data": {
                 "$ref": "#/components/schemas/LapTime"
@@ -14020,7 +14020,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -14081,7 +14081,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -14131,7 +14131,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "racing-game"
+                "example": "racing-games"
               },
               "data": {
                 "$ref": "#/components/schemas/RacingGame"
@@ -14287,7 +14287,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "racing-event"
+                "example": "racing-events"
               },
               "data": {
                 "$ref": "#/components/schemas/RacingEvent"
@@ -14348,7 +14348,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -14409,7 +14409,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -14591,7 +14591,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "racing-event"
+                "example": "racing-events"
               },
               "data": {
                 "$ref": "#/components/schemas/RacingEvent"
@@ -14641,7 +14641,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "racing-event"
+                "example": "racing-events"
               },
               "data": {
                 "$ref": "#/components/schemas/RacingEvent"
@@ -14691,7 +14691,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "race-track"
+                "example": "race-tracks"
               },
               "data": {
                 "$ref": "#/components/schemas/RaceTrack"
@@ -14741,7 +14741,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "track-layout"
+                "example": "track-layouts"
               },
               "data": {
                 "$ref": "#/components/schemas/TrackLayout"
@@ -14791,7 +14791,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "racing-session"
+                "example": "racing-sessions"
               },
               "data": {
                 "$ref": "#/components/schemas/RacingSession"
@@ -14852,7 +14852,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -14913,7 +14913,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -15058,7 +15058,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "racing-event"
+                "example": "racing-events"
               },
               "data": {
                 "$ref": "#/components/schemas/RacingEvent"
@@ -15108,7 +15108,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "session-result"
+                "example": "session-results"
               },
               "data": {
                 "$ref": "#/components/schemas/SessionResult"
@@ -15169,7 +15169,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -15230,7 +15230,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -15384,7 +15384,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "racing-session"
+                "example": "racing-sessions"
               },
               "data": {
                 "$ref": "#/components/schemas/RacingSession"
@@ -15434,7 +15434,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "lap-time"
+                "example": "lap-times"
               },
               "data": {
                 "$ref": "#/components/schemas/LapTime"
@@ -15495,7 +15495,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "car-model-variant"
+                "example": "car-model-variants"
               },
               "data": {
                 "$ref": "#/components/schemas/CarModelVariant"
@@ -15545,7 +15545,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -15606,7 +15606,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -15736,7 +15736,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "session-result"
+                "example": "session-results"
               },
               "data": {
                 "$ref": "#/components/schemas/SessionResult"
@@ -15786,7 +15786,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "track-layout"
+                "example": "track-layouts"
               },
               "data": {
                 "$ref": "#/components/schemas/TrackLayout"
@@ -15836,7 +15836,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "car-model-variant"
+                "example": "car-model-variants"
               },
               "data": {
                 "$ref": "#/components/schemas/CarModelVariant"
@@ -15886,7 +15886,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -15947,7 +15947,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -16076,7 +16076,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "car-model-variant"
+                "example": "car-model-variants"
               },
               "data": {
                 "$ref": "#/components/schemas/CarModelVariant"
@@ -16137,7 +16137,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "track-layout"
+                "example": "track-layouts"
               },
               "data": {
                 "$ref": "#/components/schemas/TrackLayout"
@@ -16198,7 +16198,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "gaming-platform"
+                "example": "gaming-platforms"
               },
               "data": {
                 "$ref": "#/components/schemas/GamingPlatform"
@@ -16248,7 +16248,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -16309,7 +16309,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -16445,7 +16445,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "racing-game"
+                "example": "racing-games"
               },
               "data": {
                 "$ref": "#/components/schemas/RacingGame"
@@ -16506,7 +16506,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -16567,7 +16567,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "image"
+                "example": "images"
               },
               "data": {
                 "$ref": "#/components/schemas/Image"
@@ -16629,7 +16629,7 @@
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "car-model"
+                "example": "car-models"
               },
               "data": {
                 "$ref": "#/components/schemas/Node"

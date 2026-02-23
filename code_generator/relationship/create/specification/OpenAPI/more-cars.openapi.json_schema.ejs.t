@@ -23,7 +23,7 @@ skip_if: \"<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(rela
             "properties": {
               "node_type": {
                 "type": "string",
-                "example": "<%= h.changeCase.kebab(endNodeType) %>"
+                "example": "<%= h.changeCase.kebab(h.inflection.pluralize(endNodeType)) %>"
               },
               "data": {
                 "$ref": "#/components/schemas/<%= h.changeCase.pascal(endNodeType) %>"
