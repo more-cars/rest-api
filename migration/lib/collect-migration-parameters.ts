@@ -32,9 +32,9 @@ async function collectParams() {
     if (dataType === 'nodes') {
         nodeType = await getNodeType(process.env.MIGRATE_NODE_TYPE)
     } else if (dataType === 'relationships') {
-        startNodeType = await getStartNodeType(process.env.MIGRATE_RELATIONSHIP_TYPE)
-        endNodeType = await getEndNodeType(startNodeType, process.env.START_NODE_TYPE)
-        relationshipType = await getRelationshipType(startNodeType, endNodeType, process.env.END_NODE_TYPE)
+        startNodeType = await getStartNodeType(process.env.START_NODE_TYPE)
+        endNodeType = await getEndNodeType(startNodeType, process.env.END_NODE_TYPE)
+        relationshipType = await getRelationshipType(startNodeType, endNodeType, process.env.MIGRATE_RELATIONSHIP_TYPE)
     }
 
     return assembleEnvFileData({
