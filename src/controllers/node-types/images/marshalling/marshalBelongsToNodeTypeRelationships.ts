@@ -10,10 +10,16 @@ export function marshalBelongsToNodeTypeRelationships(relationships: ImageBelong
             companies: {data: []},
             brands: {data: []},
             car_models: {data: []},
+            car_model_variants: {data: []},
             race_tracks: {data: []},
             track_layouts: {data: []},
             racing_series: {data: []},
             racing_events: {data: []},
+            racing_sessions: {data: []},
+            session_results: {data: []},
+            lap_times: {data: []},
+            racing_games: {data: []},
+            gaming_platforms: {data: []},
         }
     }
 
@@ -27,6 +33,10 @@ export function marshalBelongsToNodeTypeRelationships(relationships: ImageBelong
 
     relationships.car_models.forEach((relationship) => {
         marshalledData.data.car_models.data.push(marshalRelation(convertModelRelationToControllerRelation(relationship)))
+    })
+
+    relationships.car_model_variants.forEach((relationship) => {
+        marshalledData.data.car_model_variants.data.push(marshalRelation(convertModelRelationToControllerRelation(relationship)))
     })
 
     relationships.race_tracks.forEach((relationship) => {
@@ -43,6 +53,26 @@ export function marshalBelongsToNodeTypeRelationships(relationships: ImageBelong
 
     relationships.racing_events.forEach((relationship) => {
         marshalledData.data.racing_events.data.push(marshalRelation(convertModelRelationToControllerRelation(relationship)))
+    })
+
+    relationships.racing_sessions.forEach((relationship) => {
+        marshalledData.data.racing_sessions.data.push(marshalRelation(convertModelRelationToControllerRelation(relationship)))
+    })
+
+    relationships.session_results.forEach((relationship) => {
+        marshalledData.data.session_results.data.push(marshalRelation(convertModelRelationToControllerRelation(relationship)))
+    })
+
+    relationships.lap_times.forEach((relationship) => {
+        marshalledData.data.lap_times.data.push(marshalRelation(convertModelRelationToControllerRelation(relationship)))
+    })
+
+    relationships.racing_games.forEach((relationship) => {
+        marshalledData.data.racing_games.data.push(marshalRelation(convertModelRelationToControllerRelation(relationship)))
+    })
+
+    relationships.gaming_platforms.forEach((relationship) => {
+        marshalledData.data.gaming_platforms.data.push(marshalRelation(convertModelRelationToControllerRelation(relationship)))
     })
 
     return marshalledData
