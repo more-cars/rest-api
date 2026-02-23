@@ -18,6 +18,32 @@ runtime:
       value: "200"
     - expression: res.body
       operator: isJson
+    - expression: res.body.data.companies.data
+      operator: isArray
+    - expression: res.body.data.brands.data
+      operator: isArray
+    - expression: res.body.data.car_models.data
+      operator: isArray
+    - expression: res.body.data.car_model_variants.data
+      operator: isArray
+    - expression: res.body.data.race_tracks.data
+      operator: isArray
+    - expression: res.body.data.track_layouts.data
+      operator: isArray
+    - expression: res.body.data.racing_series.data
+      operator: isArray
+    - expression: res.body.data.racing_events.data
+      operator: isArray
+    - expression: res.body.data.racing_sessions.data
+      operator: isArray
+    - expression: res.body.data.session_results.data
+      operator: isArray
+    - expression: res.body.data.lap_times.data
+      operator: isArray
+    - expression: res.body.data.racing_games.data
+      operator: isArray
+    - expression: res.body.data.gaming_platforms.data
+      operator: isArray
     - expression: res.body.data.brands.data
       operator: isArray
     - expression: res.body.data.brands.data[0].data.relationship_id

@@ -9,10 +9,16 @@ describe('Requesting all ›belongs-to-node-type‹ relationships', () => {
             companies: [],
             brands: [],
             car_models: [],
+            car_model_variants: [],
             race_tracks: [],
             track_layouts: [],
             racing_series: [],
             racing_events: [],
+            racing_sessions: [],
+            session_results: [],
+            lap_times: [],
+            racing_games: [],
+            gaming_platforms: [],
         })
 
         const response = await request(app)

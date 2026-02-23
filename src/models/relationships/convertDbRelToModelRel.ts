@@ -3,7 +3,7 @@ import type {Rel} from "./types/Rel"
 import {mapDbRelationshipTypeToModelRelType} from "./mapDbRelationshipTypeToModelRelType"
 import {convertDbNodeToModelNode} from "../node-types/convertDbNodeToModelNode"
 
-export async function convertDbRelToModelRel(dbRelationship: Relationship) {
+export function convertDbRelToModelRel(dbRelationship: Relationship) {
     const rel: Rel = {
         id: dbRelationship.id,
         type: mapDbRelationshipTypeToModelRelType(dbRelationship.type),
