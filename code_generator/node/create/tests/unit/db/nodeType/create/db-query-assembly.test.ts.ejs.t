@@ -26,7 +26,7 @@ to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/cr
 -%>
 import {expect, test} from 'vitest'
 import {Input<%= h.changeCase.pascal(nodeType) %>Create} from "../../../../../src/db/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Input<%= h.changeCase.pascal(nodeType) %>Create"
-import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
+import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
@@ -35,7 +35,7 @@ test('database query for creating a <%= h.changeCase.upper(nodeType) %> node', a
 <%- props_in.map(line => '        ' + line).join(',\n') %>
     }
 
-    const query = createNodeQuery(DbNodeType.<%= h.changeCase.pascal(nodeType) %>, data)
+    const query = createNeo4jNode(DbNodeType.<%= h.changeCase.pascal(nodeType) %>, data)
 
     expect(query)
         .toEqual(

@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {InputGamingPlatformCreate} from "../../../../../src/db/node-types/gaming-platforms/types/InputGamingPlatformCreate"
-import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
+import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 

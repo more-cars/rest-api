@@ -44,28 +44,28 @@ type InputTypes =
     InputGamingPlatformCreate |
     InputImageCreate
 
-export async function createDbNode(nodeType: DbNodeType, data: InputTypes): Promise<Node> {
+export async function createNeo4jNode(nodeType: DbNodeType, data: InputTypes): Promise<Node> {
     const driver: Driver = getDriver()
     const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
     // 1. Creating the node in the database
-    let dbNode: Node = await session.executeWrite(async txc => {
+    let neo4jNode: Node = await session.executeWrite(async txc => {
         const result = await txc.run(createNodeQuery(nodeType, data))
         return result.records[0].get('node')
     })
 
     // 2. Adding a custom More Cars ID for that node
-    const elementId = dbNode.elementId
+    const elementId = neo4jNode.elementId
     const moreCarsId = generateMoreCarsId(extractBaseIdFromElementId(elementId))
-    dbNode = await addMoreCarsIdToNode(elementId, moreCarsId)
+    await addMoreCarsIdToNode(elementId, moreCarsId)
 
     // 3. Adding timestamps
     const timestamp = new Date().toISOString()
-    dbNode = await addTimestampsToNode(elementId, timestamp, timestamp)
+    neo4jNode = await addTimestampsToNode(elementId, timestamp, timestamp)
 
     await session.close()
 
-    return dbNode
+    return neo4jNode
 }
 
 export function createNodeQuery(nodeType: DbNodeType, data: InputTypes) {

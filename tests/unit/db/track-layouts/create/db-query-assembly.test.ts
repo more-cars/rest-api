@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {InputTrackLayoutCreate} from "../../../../../src/db/node-types/track-layouts/types/InputTrackLayoutCreate"
-import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
+import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
