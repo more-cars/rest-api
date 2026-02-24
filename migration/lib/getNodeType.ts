@@ -1,4 +1,4 @@
-import {getAllNodeTypes} from "../../tests/_toolbox/getAllNodeTypes"
+import {getAllDbNodeTypes} from "../../tests/_toolbox/getAllDbNodeTypes"
 import {select} from "@inquirer/prompts"
 
 export async function getNodeType(override: string | undefined) {
@@ -6,7 +6,7 @@ export async function getNodeType(override: string | undefined) {
         return override
     }
 
-    const choices = getAllNodeTypes()
+    const choices = getAllDbNodeTypes()
 
     const nodeType = await select({
         message: 'Migrating all nodes of which type?',
