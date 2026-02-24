@@ -219,5 +219,5 @@ export function sanitize(data: CreateCarModelVariantInput): CreateCarModelVarian
         top_speed: data.top_speed ? data.top_speed : null,
         top_speed_unit: data.top_speed_unit ? data.top_speed_unit.trim() : null,
         total_production: data.total_production ? data.total_production : null,
-    } as CreateCarModelVariantInput
+    } satisfies CreateCarModelVariantInput
 }

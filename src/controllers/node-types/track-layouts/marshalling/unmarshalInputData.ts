@@ -12,5 +12,5 @@ export function unmarshalInputData(data): CreateTrackLayoutRawInput {
         elevation_change: data?.elevation_change,
         elevation_change_unit: data?.elevation_change_unit,
         surface: data?.surface,
-    } as CreateTrackLayoutRawInput
+    } satisfies CreateTrackLayoutRawInput
 }

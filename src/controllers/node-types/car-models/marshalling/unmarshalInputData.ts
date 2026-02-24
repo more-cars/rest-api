@@ -9,5 +9,5 @@ export function unmarshalInputData(data): CreateCarModelRawInput {
         generation: data?.generation,
         internal_code: data?.internal_code,
         total_production: data?.total_production,
-    } as CreateCarModelRawInput
+    } satisfies CreateCarModelRawInput
 }

@@ -5,5 +5,5 @@ export function unmarshalInputData(data) {
     return {
         external_id: data?.external_id,
         image_provider: data?.image_provider,
-    } as CreateImageRawInput
+    } satisfies CreateImageRawInput
 }

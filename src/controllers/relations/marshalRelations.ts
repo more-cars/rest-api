@@ -10,5 +10,5 @@ export function marshalRelations(relationships: Relation[]) {
         items.push(marshalRelation(relationship))
     }
 
-    return {data: items} as RelationCollectionResponse
+    return {data: items} satisfies RelationCollectionResponse
 }

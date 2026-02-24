@@ -68,5 +68,5 @@ export function sanitize(data: CreateCarModelInput): CreateCarModelInput {
         generation: data.generation ? data.generation : null,
         internal_code: data.internal_code ? data.internal_code.trim() : null,
         total_production: data.total_production ? data.total_production : null,
-    } as CreateCarModelInput
+    } satisfies CreateCarModelInput
 }

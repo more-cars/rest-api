@@ -60,5 +60,5 @@ export function sanitize(data: CreateRacingGameInput): CreateRacingGameInput {
         release_year: data.release_year ? data.release_year : null,
         developer: data.developer ? data.developer.trim() : null,
         publisher: data.publisher ? data.publisher.trim() : null,
-    } as CreateRacingGameInput
+    } satisfies CreateRacingGameInput
 }

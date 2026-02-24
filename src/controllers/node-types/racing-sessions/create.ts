@@ -75,5 +75,5 @@ export function sanitize(data: CreateRacingSessionInput): CreateRacingSessionInp
         duration_unit: data.duration_unit ? data.duration_unit.trim() : null,
         distance: data.distance ? data.distance : null,
         distance_unit: data.distance_unit ? data.distance_unit.trim() : null,
-    } as CreateRacingSessionInput
+    } satisfies CreateRacingSessionInput
 }

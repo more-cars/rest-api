@@ -7,5 +7,5 @@ export function unmarshalInputData(data): CreateRacingEventRawInput {
         round: data?.round,
         date_from: data?.date_from,
         date_to: data?.date_to,
-    } as CreateRacingEventRawInput
+    } satisfies CreateRacingEventRawInput
 }

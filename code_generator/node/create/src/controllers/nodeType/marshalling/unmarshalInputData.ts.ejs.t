@@ -9,5 +9,5 @@ export function unmarshalInputData(data): Create<%= h.changeCase.pascal(nodeType
 <% for (prop in properties) { -%>
         <%= prop -%>: data?.<%= prop -%>,
 <% } -%>
-    } as Create<%= h.changeCase.pascal(nodeType) %>RawInput
+    } satisfies Create<%= h.changeCase.pascal(nodeType) %>RawInput
 }

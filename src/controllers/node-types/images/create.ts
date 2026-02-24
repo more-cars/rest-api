@@ -47,5 +47,5 @@ export function sanitize(data: CreateImageInput): CreateImageInput {
     return {
         external_id: data.external_id.trim(),
         image_provider: data.image_provider.trim(),
-    } as CreateImageInput
+    } satisfies CreateImageInput
 }

@@ -39,5 +39,5 @@ export function unmarshalInputData(data): CreateCarModelVariantRawInput {
         top_speed: data?.top_speed,
         top_speed_unit: data?.top_speed_unit,
         total_production: data?.total_production,
-    } as CreateCarModelVariantRawInput
+    } satisfies CreateCarModelVariantRawInput
 }

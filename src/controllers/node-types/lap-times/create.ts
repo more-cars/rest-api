@@ -53,5 +53,5 @@ export function sanitize(data: CreateLapTimeInput): CreateLapTimeInput {
         time: data.time.trim(),
         driver_name: data.driver_name.trim(),
         date: data.date ? data.date.trim() : null,
-    } as CreateLapTimeInput
+    } satisfies CreateLapTimeInput
 }

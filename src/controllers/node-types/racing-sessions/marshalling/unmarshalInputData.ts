@@ -10,5 +10,5 @@ export function unmarshalInputData(data): CreateRacingSessionRawInput {
         duration_unit: data?.duration_unit,
         distance: data?.distance,
         distance_unit: data?.distance_unit,
-    } as CreateRacingSessionRawInput
+    } satisfies CreateRacingSessionRawInput
 }

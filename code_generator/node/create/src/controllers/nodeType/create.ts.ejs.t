@@ -67,5 +67,5 @@ export function sanitize(data: Create<%= h.changeCase.pascal(nodeType) %>Input):
         <%= prop -%>: data.<%= prop -%> ? data.<%= prop -%> : null,
 <%   } -%>
 <% } -%>
-    } as Create<%= h.changeCase.pascal(nodeType) %>Input
+    } satisfies Create<%= h.changeCase.pascal(nodeType) %>Input
 }

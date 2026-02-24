@@ -70,5 +70,5 @@ export function sanitize(data: CreateRacingSeriesInput): CreateRacingSeriesInput
         defunct: data.defunct ? data.defunct : null,
         organized_by: data.organized_by ? data.organized_by.trim() : null,
         vehicle_type: data.vehicle_type ? data.vehicle_type.trim() : null,
-    } as CreateRacingSeriesInput
+    } satisfies CreateRacingSeriesInput
 }

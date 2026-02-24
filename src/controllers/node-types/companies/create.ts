@@ -64,5 +64,5 @@ export function sanitize(data: CreateCompanyInput): CreateCompanyInput {
         defunct: data.defunct ? data.defunct : null,
         headquarters_location: data.headquarters_location ? data.headquarters_location.trim() : null,
         legal_headquarters_location: data.legal_headquarters_location ? data.legal_headquarters_location.trim() : null,
-    } as CreateCompanyInput
+    } satisfies CreateCompanyInput
 }

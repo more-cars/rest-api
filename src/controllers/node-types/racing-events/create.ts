@@ -60,5 +60,5 @@ export function sanitize(data: CreateRacingEventInput): CreateRacingEventInput {
         round: data.round ? data.round : null,
         date_from: data.date_from ? data.date_from.trim() : null,
         date_to: data.date_to ? data.date_to.trim() : null,
-    } as CreateRacingEventInput
+    } satisfies CreateRacingEventInput
 }

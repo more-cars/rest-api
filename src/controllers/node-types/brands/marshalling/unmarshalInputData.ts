@@ -9,5 +9,5 @@ export function unmarshalInputData(data): CreateBrandRawInput {
         defunct: data?.defunct,
         wmi: data?.wmi,
         hsn: data?.hsn,
-    } as CreateBrandRawInput
+    } satisfies CreateBrandRawInput
 }

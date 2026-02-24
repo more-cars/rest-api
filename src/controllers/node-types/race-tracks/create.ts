@@ -70,5 +70,5 @@ export function sanitize(data: CreateRaceTrackInput): CreateRaceTrackInput {
         type: data.type ? data.type.trim() : null,
         location: data.location ? data.location.trim() : null,
         geo_position: data.geo_position ? data.geo_position.trim() : null,
-    } as CreateRaceTrackInput
+    } satisfies CreateRaceTrackInput
 }

@@ -69,5 +69,5 @@ export function sanitize(data: CreateBrandInput): CreateBrandInput {
         defunct: data.defunct ? data.defunct : null,
         wmi: data.wmi ? data.wmi.trim() : null,
         hsn: data.hsn ? data.hsn.trim() : null,
-    } as CreateBrandInput
+    } satisfies CreateBrandInput
 }

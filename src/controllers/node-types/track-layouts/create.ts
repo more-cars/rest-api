@@ -85,5 +85,5 @@ export function sanitize(data: CreateTrackLayoutInput): CreateTrackLayoutInput {
         elevation_change: data.elevation_change ? data.elevation_change : null,
         elevation_change_unit: data.elevation_change_unit ? data.elevation_change_unit.trim() : null,
         surface: data.surface ? data.surface.trim() : null,
-    } as CreateTrackLayoutInput
+    } satisfies CreateTrackLayoutInput
 }

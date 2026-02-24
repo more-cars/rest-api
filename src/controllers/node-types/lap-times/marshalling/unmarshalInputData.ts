@@ -6,5 +6,5 @@ export function unmarshalInputData(data): CreateLapTimeRawInput {
         time: data?.time,
         driver_name: data?.driver_name,
         date: data?.date,
-    } as CreateLapTimeRawInput
+    } satisfies CreateLapTimeRawInput
 }

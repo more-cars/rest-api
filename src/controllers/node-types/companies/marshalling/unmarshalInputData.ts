@@ -8,5 +8,5 @@ export function unmarshalInputData(data): CreateCompanyRawInput {
         defunct: data?.defunct,
         headquarters_location: data?.headquarters_location,
         legal_headquarters_location: data?.legal_headquarters_location,
-    } as CreateCompanyRawInput
+    } satisfies CreateCompanyRawInput
 }

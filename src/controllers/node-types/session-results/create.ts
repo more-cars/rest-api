@@ -81,5 +81,5 @@ export function sanitize(data: CreateSessionResultInput): CreateSessionResultInp
         laps: data.laps ? data.laps : null,
         status: data.status ? data.status.trim() : null,
         points: data.points ? data.points : null,
-    } as CreateSessionResultInput
+    } satisfies CreateSessionResultInput
 }

@@ -7,5 +7,5 @@ export function unmarshalInputData(data): CreateRacingGameRawInput {
         release_year: data?.release_year,
         developer: data?.developer,
         publisher: data?.publisher,
-    } as CreateRacingGameRawInput
+    } satisfies CreateRacingGameRawInput
 }

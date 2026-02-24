@@ -6,5 +6,5 @@ export function unmarshalInputData(data): CreateGamingPlatformRawInput {
         name: data?.name,
         release_year: data?.release_year,
         manufacturer: data?.manufacturer,
-    } as CreateGamingPlatformRawInput
+    } satisfies CreateGamingPlatformRawInput
 }

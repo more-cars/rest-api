@@ -55,5 +55,5 @@ export function sanitize(data: CreateGamingPlatformInput): CreateGamingPlatformI
         name: data.name.trim(),
         release_year: data.release_year ? data.release_year : null,
         manufacturer: data.manufacturer ? data.manufacturer.trim() : null,
-    } as CreateGamingPlatformInput
+    } satisfies CreateGamingPlatformInput
 }

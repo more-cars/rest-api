@@ -11,5 +11,5 @@ export function unmarshalInputData(data): CreateSessionResultRawInput {
         laps: data?.laps,
         status: data?.status,
         points: data?.points,
-    } as CreateSessionResultRawInput
+    } satisfies CreateSessionResultRawInput
 }
