@@ -1,6 +1,5 @@
 import {describe, expect, test} from 'vitest'
-import {getAllNodeTypes} from "../../../../_toolbox/getAllNodeTypes"
-import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
+import {getAllDbNodeTypes} from "../../../../_toolbox/getAllDbNodeTypes"
 import {getAllNodesOfTypeQuery} from "../../../../../src/db/nodes/getAllNodesOfTypeQuery"
 import {DbFilterOperator} from "../../../../../src/db/types/DbFilterOperator"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
@@ -11,7 +10,7 @@ describe('database query for fetching all nodes of a type - pagination', () => {
         [2, 100, 100],
         [10, 1000, 100],
     ])('page $0', async (page, offset, limit) => {
-        getAllNodeTypes().forEach((nodeType: DbNodeType) => {
+        getAllDbNodeTypes().forEach((nodeType) => {
             const query = getAllNodesOfTypeQuery(nodeType, {
                 sortByProperty: 'dummy',
                 sortDirection: 'dummy',

@@ -1,6 +1,5 @@
 import {describe, expect, test} from 'vitest'
-import {getAllNodeTypes} from "../../../../_toolbox/getAllNodeTypes"
-import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
+import {getAllDbNodeTypes} from "../../../../_toolbox/getAllDbNodeTypes"
 import {getAllNodesOfTypeQuery} from "../../../../../src/db/nodes/getAllNodesOfTypeQuery"
 import {DbFilterOperator} from "../../../../../src/db/types/DbFilterOperator"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
@@ -10,7 +9,7 @@ describe('database query for fetching all nodes of a type - combined params', ()
         ['mc_id', 'ASC', 'name', 'BMW', DbFilterOperator.equal, 0, 100],
         ['mc_id', 'ASC', 'max_power', '500', DbFilterOperator.greater_than, 0, 100],
     ])('combined params', async (sortByProperty, sortDirection, filterByProperty, filterValue, filterOperator, offset, limit) => {
-        getAllNodeTypes().forEach((nodeType: DbNodeType) => {
+        getAllDbNodeTypes().forEach((nodeType) => {
             const query = getAllNodesOfTypeQuery(nodeType, {
                 sortByProperty,
                 sortDirection,
