@@ -3,9 +3,12 @@ import request from 'supertest'
 import {app} from "../../../../../src/app.ts"
 import {RacingGame} from "../../../../../src/models/node-types/racing-games/RacingGame"
 import {ModelNodeType} from "../../../../../src/models/types/ModelNodeType"
+import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
 
 test('Node does not exist', async () => {
-    RacingGame.findById = vi.fn().mockReturnValue(false)
+    RacingGame.findById = vi.fn().mockImplementation(() => {
+        throw new NodeNotFoundError(-42)
+    })
 
     const response = await request(app)
         .get('/racing-games/-42')

@@ -1,20 +1,21 @@
-import {expect, test} from 'vitest'
+import {describe, expect, test} from 'vitest'
 import {RacingGame} from "../../../../../src/models/node-types/racing-games/RacingGame"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
+import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
 
-test('Fetching a RACING GAME that does not exist should return "false"', async () => {
-    const expectedRacingGame = false
-    const actualRacingGame = await RacingGame.findById(-42)
+describe('Fetching a RACING GAME', () => {
+    test('which does not exist', async () => {
+        await expect(RacingGame.findById(-42))
+            .rejects
+            .toThrow(NodeNotFoundError)
+    })
 
-    expect(actualRacingGame)
-        .toEqual(expectedRacingGame)
-})
+    test('which exists', async () => {
+        const expectedRacingGame = await seedNode(DbNodeType.RacingGame)
+        const actualRacingGame = await RacingGame.findById(expectedRacingGame.properties.id)
 
-test('When the RACING GAME exists it should be returned', async () => {
-    const expectedRacingGame = await seedNode(DbNodeType.RacingGame)
-    const actualRacingGame = await RacingGame.findById(expectedRacingGame.properties.id)
-
-    expect(actualRacingGame.attributes)
-        .toEqual(expectedRacingGame.properties)
+        expect(actualRacingGame.attributes)
+            .toEqual(expectedRacingGame.properties)
+    })
 })

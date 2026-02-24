@@ -29,11 +29,11 @@ export const GamingPlatform = {
         return convertDbNodeToModelNode(result) as GamingPlatformNode
     },
 
-    async findById(id: number): Promise<false | GamingPlatformNode> {
+    async findById(id: number): Promise<GamingPlatformNode> {
         const node = await getNodeById(id)
 
         if (!node) {
-            return false
+            throw new NodeNotFoundError(id)
         }
 
         return convertDbNodeToModelNode(node) as GamingPlatformNode

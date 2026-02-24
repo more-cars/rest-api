@@ -3,9 +3,12 @@ import request from 'supertest'
 import {app} from "../../../../../src/app.ts"
 import {TrackLayout} from "../../../../../src/models/node-types/track-layouts/TrackLayout"
 import {ModelNodeType} from "../../../../../src/models/types/ModelNodeType"
+import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
 
 test('Node does not exist', async () => {
-    TrackLayout.findById = vi.fn().mockReturnValue(false)
+    TrackLayout.findById = vi.fn().mockImplementation(() => {
+        throw new NodeNotFoundError(-42)
+    })
 
     const response = await request(app)
         .get('/track-layouts/-42')

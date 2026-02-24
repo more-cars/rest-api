@@ -1,20 +1,21 @@
-import {expect, test} from 'vitest'
+import {describe, expect, test} from 'vitest'
 import {Brand} from "../../../../../src/models/node-types/brands/Brand"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
+import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
 
-test('Fetching a BRAND that does not exist should return "false"', async () => {
-    const expectedBrand = false
-    const actualBrand = await Brand.findById(-42)
+describe('Fetching a BRAND', () => {
+    test('which does not exist', async () => {
+        await expect(Brand.findById(-42))
+            .rejects
+            .toThrow(NodeNotFoundError)
+    })
 
-    expect(actualBrand)
-        .toEqual(expectedBrand)
-})
+    test('which exists', async () => {
+        const expectedBrand = await seedNode(DbNodeType.Brand)
+        const actualBrand = await Brand.findById(expectedBrand.properties.id)
 
-test('When the BRAND exists it should be returned', async () => {
-    const expectedBrand = await seedNode(DbNodeType.Brand)
-    const actualBrand = await Brand.findById(expectedBrand.properties.id)
-
-    expect(actualBrand.attributes)
-        .toEqual(expectedBrand.properties)
+        expect(actualBrand.attributes)
+            .toEqual(expectedBrand.properties)
+    })
 })

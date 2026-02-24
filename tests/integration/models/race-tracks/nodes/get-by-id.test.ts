@@ -1,20 +1,21 @@
-import {expect, test} from 'vitest'
+import {describe, expect, test} from 'vitest'
 import {RaceTrack} from "../../../../../src/models/node-types/race-tracks/RaceTrack"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
+import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
 
-test('Fetching a RACE TRACK that does not exist should return "false"', async () => {
-    const expectedRaceTrack = false
-    const actualRaceTrack = await RaceTrack.findById(-42)
+describe('Fetching a RACE TRACK', () => {
+    test('which does not exist', async () => {
+        await expect(RaceTrack.findById(-42))
+            .rejects
+            .toThrow(NodeNotFoundError)
+    })
 
-    expect(actualRaceTrack)
-        .toEqual(expectedRaceTrack)
-})
+    test('which exists', async () => {
+        const expectedRaceTrack = await seedNode(DbNodeType.RaceTrack)
+        const actualRaceTrack = await RaceTrack.findById(expectedRaceTrack.properties.id)
 
-test('When the RACE TRACK exists it should be returned', async () => {
-    const expectedRaceTrack = await seedNode(DbNodeType.RaceTrack)
-    const actualRaceTrack = await RaceTrack.findById(expectedRaceTrack.properties.id)
-
-    expect(actualRaceTrack.attributes)
-        .toEqual(expectedRaceTrack.properties)
+        expect(actualRaceTrack.attributes)
+            .toEqual(expectedRaceTrack.properties)
+    })
 })

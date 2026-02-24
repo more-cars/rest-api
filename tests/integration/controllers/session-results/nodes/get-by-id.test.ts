@@ -3,9 +3,12 @@ import request from 'supertest'
 import {app} from "../../../../../src/app.ts"
 import {SessionResult} from "../../../../../src/models/node-types/session-results/SessionResult"
 import {ModelNodeType} from "../../../../../src/models/types/ModelNodeType"
+import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
 
 test('Node does not exist', async () => {
-    SessionResult.findById = vi.fn().mockReturnValue(false)
+    SessionResult.findById = vi.fn().mockImplementation(() => {
+        throw new NodeNotFoundError(-42)
+    })
 
     const response = await request(app)
         .get('/session-results/-42')

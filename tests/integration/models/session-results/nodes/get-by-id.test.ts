@@ -1,20 +1,21 @@
-import {expect, test} from 'vitest'
+import {describe, expect, test} from 'vitest'
 import {SessionResult} from "../../../../../src/models/node-types/session-results/SessionResult"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
+import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
 
-test('Fetching a SESSION RESULT that does not exist should return "false"', async () => {
-    const expectedSessionResult = false
-    const actualSessionResult = await SessionResult.findById(-42)
+describe('Fetching a SESSION RESULT', () => {
+    test('which does not exist', async () => {
+        await expect(SessionResult.findById(-42))
+            .rejects
+            .toThrow(NodeNotFoundError)
+    })
 
-    expect(actualSessionResult)
-        .toEqual(expectedSessionResult)
-})
+    test('which exists', async () => {
+        const expectedSessionResult = await seedNode(DbNodeType.SessionResult)
+        const actualSessionResult = await SessionResult.findById(expectedSessionResult.properties.id)
 
-test('When the SESSION RESULT exists it should be returned', async () => {
-    const expectedSessionResult = await seedNode(DbNodeType.SessionResult)
-    const actualSessionResult = await SessionResult.findById(expectedSessionResult.properties.id)
-
-    expect(actualSessionResult.attributes)
-        .toEqual(expectedSessionResult.properties)
+        expect(actualSessionResult.attributes)
+            .toEqual(expectedSessionResult.properties)
+    })
 })

@@ -31,11 +31,11 @@ export const RacingSession = {
         return convertDbNodeToModelNode(result) as RacingSessionNode
     },
 
-    async findById(id: number): Promise<false | RacingSessionNode> {
+    async findById(id: number): Promise<RacingSessionNode> {
         const node = await getNodeById(id)
 
         if (!node) {
-            return false
+            throw new NodeNotFoundError(id)
         }
 
         return convertDbNodeToModelNode(node) as RacingSessionNode

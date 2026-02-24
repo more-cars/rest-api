@@ -32,11 +32,11 @@ export const SessionResult = {
         return convertDbNodeToModelNode(result) as SessionResultNode
     },
 
-    async findById(id: number): Promise<false | SessionResultNode> {
+    async findById(id: number): Promise<SessionResultNode> {
         const node = await getNodeById(id)
 
         if (!node) {
-            return false
+            throw new NodeNotFoundError(id)
         }
 
         return convertDbNodeToModelNode(node) as SessionResultNode

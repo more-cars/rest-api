@@ -31,11 +31,11 @@ export const RaceTrack = {
         return convertDbNodeToModelNode(result) as RaceTrackNode
     },
 
-    async findById(id: number): Promise<false | RaceTrackNode> {
+    async findById(id: number): Promise<RaceTrackNode> {
         const node = await getNodeById(id)
 
         if (!node) {
-            return false
+            throw new NodeNotFoundError(id)
         }
 
         return convertDbNodeToModelNode(node) as RaceTrackNode

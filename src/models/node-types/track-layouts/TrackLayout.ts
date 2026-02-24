@@ -33,11 +33,11 @@ export const TrackLayout = {
         return convertDbNodeToModelNode(result) as TrackLayoutNode
     },
 
-    async findById(id: number): Promise<false | TrackLayoutNode> {
+    async findById(id: number): Promise<TrackLayoutNode> {
         const node = await getNodeById(id)
 
         if (!node) {
-            return false
+            throw new NodeNotFoundError(id)
         }
 
         return convertDbNodeToModelNode(node) as TrackLayoutNode

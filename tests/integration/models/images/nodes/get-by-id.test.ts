@@ -1,21 +1,22 @@
-import {expect, test} from 'vitest'
+import {describe, expect, test} from 'vitest'
 import {Image} from "../../../../../src/models/node-types/images/Image"
 import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
+import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
 
-test('Fetching an image that does not exist should return "false"', async () => {
-    const expectedNode = false
-    const actualNode = await Image.findById(-42)
+describe('Fetching a IMAGE', () => {
+    test('which does not exist', async () => {
+        await expect(Image.findById(-42))
+            .rejects
+            .toThrow(NodeNotFoundError)
+    })
 
-    expect(actualNode)
-        .toEqual(expectedNode)
-})
+    test('which exists', async () => {
+        const expectedNode = await seedNode(DbNodeType.Image)
+        const actualNode = await Image.findById(expectedNode.properties.id)
 
-test('When the image exists it should be returned', async () => {
-    const expectedNode = await seedNode(DbNodeType.Image)
-    const actualNode = await Image.findById(expectedNode.properties.id)
-
-    expect(actualNode.attributes)
-        .toEqual(expectedNode.properties)
+        expect(actualNode.attributes)
+            .toEqual(expectedNode.properties)
+    })
 })
 

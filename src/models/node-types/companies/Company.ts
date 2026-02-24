@@ -30,11 +30,11 @@ export const Company = {
         return convertDbNodeToModelNode(result) as CompanyNode
     },
 
-    async findById(id: number): Promise<false | CompanyNode> {
+    async findById(id: number): Promise<CompanyNode> {
         const node = await getNodeById(id)
 
         if (!node) {
-            return false
+            throw new NodeNotFoundError(id)
         }
 
         return convertDbNodeToModelNode(node) as CompanyNode

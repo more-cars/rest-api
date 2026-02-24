@@ -36,11 +36,11 @@ export const Image = {
         return convertDbNodeToModelNode(result) as ImageNode
     },
 
-    async findById(id: number): Promise<false | ImageNode> {
+    async findById(id: number): Promise<ImageNode> {
         const node = await getNodeById(id)
 
         if (!node) {
-            return false
+            throw new NodeNotFoundError(id)
         }
 
         return convertDbNodeToModelNode(node) as ImageNode

@@ -31,11 +31,11 @@ export const Brand = {
         return convertDbNodeToModelNode(result) as BrandNode
     },
 
-    async findById(id: number): Promise<false | BrandNode> {
+    async findById(id: number): Promise<BrandNode> {
         const node = await getNodeById(id)
 
         if (!node) {
-            return false
+            throw new NodeNotFoundError(id)
         }
 
         return convertDbNodeToModelNode(node) as BrandNode

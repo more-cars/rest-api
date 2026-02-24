@@ -31,11 +31,11 @@ export const LapTime = {
         return convertDbNodeToModelNode(result) as LapTimeNode
     },
 
-    async findById(id: number): Promise<false | LapTimeNode> {
+    async findById(id: number): Promise<LapTimeNode> {
         const node = await getNodeById(id)
 
         if (!node) {
-            return false
+            throw new NodeNotFoundError(id)
         }
 
         return convertDbNodeToModelNode(node) as LapTimeNode

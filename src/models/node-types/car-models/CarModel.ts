@@ -32,11 +32,11 @@ export const CarModel = {
         return convertDbNodeToModelNode(result) as CarModelNode
     },
 
-    async findById(id: number): Promise<false | CarModelNode> {
+    async findById(id: number): Promise<CarModelNode> {
         const node = await getNodeById(id)
 
         if (!node) {
-            return false
+            throw new NodeNotFoundError(id)
         }
 
         return convertDbNodeToModelNode(node) as CarModelNode
