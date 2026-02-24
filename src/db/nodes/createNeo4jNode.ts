@@ -13,7 +13,7 @@ import {escapeSingleQuotes} from "./escapeSingleQuotes"
 import type {InputNodeTypeCreate} from "../types/InputNodeTypeCreate"
 import {DbNodeType} from "../types/DbNodeType"
 import {mapDbNodeTypeToNeo4jNodeType} from "./mapDbNodeTypeToNeo4jNodeType"
-import {mapDbNodeTypeToNodeType} from "../../specification/mapNodeTypeToDbNodeType"
+import {mapDbNodeTypeToNodeType} from "../../specification/mapDbNodeTypeToNodeType"
 
 export async function createNeo4jNode(nodeType: DbNodeType, data: InputNodeTypeCreate): Promise<Node> {
     const driver: Driver = getDriver()
