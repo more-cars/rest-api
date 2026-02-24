@@ -1,5 +1,5 @@
 ---
-to: src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshalling/unmarshalInputData.ts
+to: src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshalling/unmarshalInputData.ts
 ---
 import {Create<%= h.changeCase.pascal(nodeType) %>RawInput} from "../types/Create<%= h.changeCase.pascal(nodeType) %>RawInput"
 

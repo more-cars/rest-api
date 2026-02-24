@@ -1,5 +1,5 @@
 ---
-to: src/controllers/<%= h.changeCase.pascal(nodeType) %>Controller.ts
+to: src/controllers/node-types/<%= h.changeCase.pascal(nodeType) %>Controller.ts
 ---
 import express from "express"
 import {create} from "./<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create"

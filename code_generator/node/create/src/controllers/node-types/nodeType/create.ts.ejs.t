@@ -1,18 +1,19 @@
 ---
-to: src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create.ts
+to: src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create.ts
 ---
 import express from "express"
 import {unmarshalInputData} from "./marshalling/unmarshalInputData"
-import {marshalNode} from "./marshalling/marshalNode"
-import {Create<%= h.changeCase.pascal(nodeType) %>Input} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Create<%= h.changeCase.pascal(nodeType) %>Input"
-import {<%= h.changeCase.pascal(nodeType) %>} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"
+import {Create<%= h.changeCase.pascal(nodeType) %>Input} from "../../../models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Create<%= h.changeCase.pascal(nodeType) %>Input"
+import {<%= h.changeCase.pascal(nodeType) %>} from "../../../models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"
+import {convert<%= h.changeCase.pascal(nodeType) %>ModelNodeToControllerNode} from "./convert<%= h.changeCase.pascal(nodeType) %>ModelNodeToControllerNode"
+import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import type {Create<%= h.changeCase.pascal(nodeType) %>RawInput} from "./types/Create<%= h.changeCase.pascal(nodeType) %>RawInput"
-import {isMandatoryString} from "../validators/isMandatoryString"
-import {isOptionalString} from "../validators/isOptionalString"
-import {isOptionalNumber} from "../validators/isOptionalNumber"
-import {sendResponse201} from "../responses/sendResponse201"
-import {sendResponse400} from "../responses/sendResponse400"
-import {sendResponse500} from "../responses/sendResponse500"
+import {isMandatoryString} from "../../validators/isMandatoryString"
+import {isOptionalString} from "../../validators/isOptionalString"
+import {isOptionalNumber} from "../../validators/isOptionalNumber"
+import {sendResponse201} from "../../responses/sendResponse201"
+import {sendResponse400} from "../../responses/sendResponse400"
+import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
     const data = unmarshalInputData(req.body)
@@ -24,8 +25,9 @@ export async function create(req: express.Request, res: express.Response) {
     const sanitizedData = sanitize(data as Create<%= h.changeCase.pascal(nodeType) %>Input)
 
     try {
-        const createdNode = await <%= h.changeCase.pascal(nodeType) %>.create(sanitizedData)
-        const marshalledData = marshalNode(createdNode)
+        const modelNode = await <%= h.changeCase.pascal(nodeType) %>.create(sanitizedData)
+        const node = convert<%= h.changeCase.pascal(nodeType) %>ModelNodeToControllerNode(modelNode)
+        const marshalledData = marshalSingleNode(node.fields)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

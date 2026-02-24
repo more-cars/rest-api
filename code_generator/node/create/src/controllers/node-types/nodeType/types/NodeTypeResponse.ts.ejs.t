@@ -1,5 +1,5 @@
 ---
-to: src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Response.ts
+to: src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Response.ts
 ---
 export type <%= h.changeCase.pascal(nodeType) %>Response = {
     data: {

@@ -1,7 +1,6 @@
 ---
-to: src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node.ts
+to: src/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node.ts
 ---
-import type {ModelNode} from "../../../types/ModelNode"
 import type {ModelNodeType} from "../../../types/ModelNodeType"
 
 export type <%= h.changeCase.pascal(nodeType) %>Node = {
