@@ -17,36 +17,28 @@ import {convertGamingPlatformNeo4jNodeToDbNode} from "../node-types/gaming-platf
 import {convertImageNeo4jNodeToDbNode} from "../node-types/images/convertImageNeo4jNodeToDbNode"
 
 export function convertNeo4jNodeToDbNode(neo4jNode: Node, nodeTypeLabel: Neo4jNodeType) {
-    switch (nodeTypeLabel) {
-        case Neo4jNodeType.Image:
-            return convertImageNeo4jNodeToDbNode(neo4jNode)
-        case Neo4jNodeType.Company:
-            return convertCompanyNeo4jNodeToDbNode(neo4jNode)
-        case Neo4jNodeType.Brand:
-            return convertBrandNeo4jNodeToDbNode(neo4jNode)
-        case Neo4jNodeType.CarModel:
-            return convertCarModelNeo4jNodeToDbNode(neo4jNode)
-        case Neo4jNodeType.CarModelVariant:
-            return convertCarModelVariantNeo4jNodeToDbNode(neo4jNode)
-        case Neo4jNodeType.RaceTrack:
-            return convertRaceTrackNeo4jNodeToDbNode(neo4jNode)
-        case Neo4jNodeType.TrackLayout:
-            return convertTrackLayoutNeo4jNodeToDbNode(neo4jNode)
-        case Neo4jNodeType.RacingSeries:
-            return convertRacingSeriesNeo4jNodeToDbNode(neo4jNode)
-        case Neo4jNodeType.RacingEvent:
-            return convertRacingEventNeo4jNodeToDbNode(neo4jNode)
-        case Neo4jNodeType.RacingSession:
-            return convertRacingSessionNeo4jNodeToDbNode(neo4jNode)
-        case Neo4jNodeType.SessionResult:
-            return convertSessionResultNeo4jNodeToDbNode(neo4jNode)
-        case Neo4jNodeType.LapTime:
-            return convertLapTimeNeo4jNodeToDbNode(neo4jNode)
-        case Neo4jNodeType.RacingGame:
-            return convertRacingGameNeo4jNodeToDbNode(neo4jNode)
-        case Neo4jNodeType.GamingPlatform:
-            return convertGamingPlatformNeo4jNodeToDbNode(neo4jNode)
-        default:
-            throw new NodeTypeNotFoundError(nodeTypeLabel)
+    const mapping = new Map<Neo4jNodeType, (neo4jNode: Node) => void>([
+        [Neo4jNodeType.Company, convertCompanyNeo4jNodeToDbNode],
+        [Neo4jNodeType.Brand, convertBrandNeo4jNodeToDbNode],
+        [Neo4jNodeType.CarModel, convertCarModelNeo4jNodeToDbNode],
+        [Neo4jNodeType.CarModelVariant, convertCarModelVariantNeo4jNodeToDbNode],
+        [Neo4jNodeType.RaceTrack, convertRaceTrackNeo4jNodeToDbNode],
+        [Neo4jNodeType.TrackLayout, convertTrackLayoutNeo4jNodeToDbNode],
+        [Neo4jNodeType.RacingSeries, convertRacingSeriesNeo4jNodeToDbNode],
+        [Neo4jNodeType.RacingEvent, convertRacingEventNeo4jNodeToDbNode],
+        [Neo4jNodeType.RacingSession, convertRacingSessionNeo4jNodeToDbNode],
+        [Neo4jNodeType.SessionResult, convertSessionResultNeo4jNodeToDbNode],
+        [Neo4jNodeType.LapTime, convertLapTimeNeo4jNodeToDbNode],
+        [Neo4jNodeType.RacingGame, convertRacingGameNeo4jNodeToDbNode],
+        [Neo4jNodeType.GamingPlatform, convertGamingPlatformNeo4jNodeToDbNode],
+        [Neo4jNodeType.Image, convertImageNeo4jNodeToDbNode],
+    ])
+
+    const convertFn = mapping.get(nodeTypeLabel)
+
+    if (!convertFn) {
+        throw new NodeTypeNotFoundError(nodeTypeLabel)
     }
+
+    return convertFn(neo4jNode)
 }
