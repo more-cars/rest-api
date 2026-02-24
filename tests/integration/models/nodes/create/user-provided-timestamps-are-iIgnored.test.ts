@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {getExhaustiveFakeInputDataForDbNode} from "../../../../_toolbox/fixtures/nodes/getExhaustiveFakeInputDataForDbNode"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import type {InputBrandCreate} from "../../../../../src/db/node-types/brands/types/InputBrandCreate"
 import type {InputCarModelCreate} from "../../../../../src/db/node-types/car-models/types/InputCarModelCreate"
 import type {InputImageCreate} from "../../../../../src/db/node-types/images/types/InputImageCreate"
@@ -10,7 +10,7 @@ import {Image} from "../../../../../src/models/node-types/images/Image"
 
 test('Timestamps provided by the user are ignored', async () => {
     // BRAND
-    const brandData = getExhaustiveFakeInputDataForDbNode(ControllerNodeType.Brand) as InputBrandCreate
+    const brandData = getExhaustiveFakeInputDataForDbNode(DbNodeType.Brand) as InputBrandCreate
     const createdBrand = await Brand.create(brandData)
 
     expect(createdBrand.attributes).toHaveProperty('created_at')
@@ -19,7 +19,7 @@ test('Timestamps provided by the user are ignored', async () => {
     expect(createdBrand.attributes).not.toHaveProperty('updated_at', "blobb")
 
     // CAR MODEL
-    const carModelData = getExhaustiveFakeInputDataForDbNode(ControllerNodeType.CarModel) as InputCarModelCreate
+    const carModelData = getExhaustiveFakeInputDataForDbNode(DbNodeType.CarModel) as InputCarModelCreate
     const createdCarModel = await CarModel.create(carModelData)
 
     expect(createdCarModel.attributes).toHaveProperty('created_at')
@@ -28,7 +28,7 @@ test('Timestamps provided by the user are ignored', async () => {
     expect(createdCarModel.attributes).not.toHaveProperty('updated_at', "blobb")
 
     // IMAGE
-    const imageData: InputImageCreate = getExhaustiveFakeInputDataForDbNode(ControllerNodeType.Image) as InputImageCreate
+    const imageData: InputImageCreate = getExhaustiveFakeInputDataForDbNode(DbNodeType.Image) as InputImageCreate
     const createdImage = await Image.create(imageData)
 
     expect(createdImage.attributes).toHaveProperty('created_at')

@@ -1,5 +1,5 @@
 import assert from "assert"
-import {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
+import {DbNodeType} from "../../../../src/db/types/DbNodeType"
 import {FakeCompany} from "./FakeCompany"
 import {FakeBrand} from "./FakeBrand"
 import {FakeCarModel} from "./FakeCarModel"
@@ -15,35 +15,35 @@ import {FakeRacingGame} from "./FakeRacingGame"
 import {FakeGamingPlatform} from "./FakeGamingPlatform"
 import {FakeImage} from "./FakeImage"
 
-export function getExhaustiveFakeInputDataForDbNode(nodeType: ControllerNodeType) {
+export function getExhaustiveFakeInputDataForDbNode(nodeType: DbNodeType) {
     switch (nodeType) {
-        case ControllerNodeType.Company:
+        case DbNodeType.Company:
             return FakeCompany.dbInput()
-        case ControllerNodeType.Brand:
+        case DbNodeType.Brand:
             return FakeBrand.dbInput()
-        case ControllerNodeType.CarModel:
+        case DbNodeType.CarModel:
             return FakeCarModel.dbInput()
-        case ControllerNodeType.CarModelVariant:
+        case DbNodeType.CarModelVariant:
             return FakeCarModelVariant.dbInput()
-        case ControllerNodeType.RaceTrack:
+        case DbNodeType.RaceTrack:
             return FakeRaceTrack.dbInput()
-        case ControllerNodeType.TrackLayout:
+        case DbNodeType.TrackLayout:
             return FakeTrackLayout.dbInput()
-        case ControllerNodeType.RacingSeries:
+        case DbNodeType.RacingSeries:
             return FakeRacingSeries.dbInput()
-        case ControllerNodeType.RacingEvent:
+        case DbNodeType.RacingEvent:
             return FakeRacingEvent.dbInput()
-        case ControllerNodeType.RacingSession:
+        case DbNodeType.RacingSession:
             return FakeRacingSession.dbInput()
-        case ControllerNodeType.SessionResult:
+        case DbNodeType.SessionResult:
             return FakeSessionResult.dbInput()
-        case ControllerNodeType.LapTime:
+        case DbNodeType.LapTime:
             return FakeLapTime.dbInput()
-        case ControllerNodeType.RacingGame:
+        case DbNodeType.RacingGame:
             return FakeRacingGame.dbInput()
-        case ControllerNodeType.GamingPlatform:
+        case DbNodeType.GamingPlatform:
             return FakeGamingPlatform.dbInput()
-        case ControllerNodeType.Image:
+        case DbNodeType.Image:
             return FakeImage.dbInput()
         default:
             assert.fail(`Node type "${nodeType}" is invalid or unknown`)
