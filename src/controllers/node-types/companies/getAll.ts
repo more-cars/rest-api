@@ -1,6 +1,7 @@
 import express from "express"
+import {getNamesOfAllNodeProperties} from "../../../specification/getNamesOfAllNodeProperties"
+import {NodeType} from "../../../specification/NodeType"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
-import availableProperties from "../../../../specification/properties/Company.json"
 import {Company} from "../../../models/node-types/companies/Company"
 import {convertCompanyModelNodeToControllerNode} from "./convertCompanyModelNodeToControllerNode"
 import {marshalNodeCollection} from "../../nodes/marshalNodeCollection"
@@ -13,6 +14,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function getAll(req: express.Request, res: express.Response) {
     try {
+        const availableProperties = getNamesOfAllNodeProperties(NodeType.Company)
         const params = extractCollectionConstraintParameters(req, availableProperties)
         const modelNodes = await Company.findAll(params)
         const nodes = modelNodes.map(node => convertCompanyModelNodeToControllerNode(node))

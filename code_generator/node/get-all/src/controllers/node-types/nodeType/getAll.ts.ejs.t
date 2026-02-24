@@ -1,9 +1,12 @@
+---
+to: src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/getAll.ts
+---
 import express from "express"
 import {getNamesOfAllNodeProperties} from "../../../specification/getNamesOfAllNodeProperties"
 import {NodeType} from "../../../specification/NodeType"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
-import {RacingGame} from "../../../models/node-types/racing-games/RacingGame"
-import {convertRacingGameModelNodeToControllerNode} from "./convertRacingGameModelNodeToControllerNode"
+import {<%= h.changeCase.pascal(nodeType) %>} from "../../../models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"
+import {convert<%= h.changeCase.pascal(nodeType) %>ModelNodeToControllerNode} from "./convert<%= h.changeCase.pascal(nodeType) %>ModelNodeToControllerNode"
 import {marshalNodeCollection} from "../../nodes/marshalNodeCollection"
 import {InvalidPaginationParams} from "../../../models/types/InvalidPaginationParams"
 import {InvalidSortingParams} from "../../../models/types/InvalidSortingParams"
@@ -14,12 +17,11 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function getAll(req: express.Request, res: express.Response) {
     try {
-        const availableProperties = getNamesOfAllNodeProperties(NodeType.RacingGame)
+        const availableProperties = getNamesOfAllNodeProperties(NodeType.<%= h.changeCase.pascal(nodeType) %>)
         const params = extractCollectionConstraintParameters(req, availableProperties)
-        const modelNodes = await RacingGame.findAll(params)
-        const nodes = modelNodes.map(node => convertRacingGameModelNodeToControllerNode(node))
+        const modelNodes = await <%= h.changeCase.pascal(nodeType) %>.findAll(params)
+        const nodes = modelNodes.map(node => convert<%= h.changeCase.pascal(nodeType) %>ModelNodeToControllerNode(node))
         const marshalledData = marshalNodeCollection(nodes)
-
         return sendResponse200(marshalledData, res)
     } catch (e) {
         if (e instanceof InvalidPaginationParams || e instanceof InvalidSortingParams || e instanceof InvalidFilterParams) {

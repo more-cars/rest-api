@@ -1,6 +1,7 @@
 import express from "express"
+import {getNamesOfAllNodeProperties} from "../../../specification/getNamesOfAllNodeProperties"
+import {NodeType} from "../../../specification/NodeType"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
-import availableProperties from "../../../../specification/properties/RacingSession.json"
 import {RacingSession} from "../../../models/node-types/racing-sessions/RacingSession"
 import {convertRacingSessionModelNodeToControllerNode} from "./convertRacingSessionModelNodeToControllerNode"
 import {marshalNodeCollection} from "../../nodes/marshalNodeCollection"
@@ -13,6 +14,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function getAll(req: express.Request, res: express.Response) {
     try {
+        const availableProperties = getNamesOfAllNodeProperties(NodeType.RacingSession)
         const params = extractCollectionConstraintParameters(req, availableProperties)
         const modelNodes = await RacingSession.findAll(params)
         const nodes = modelNodes.map(node => convertRacingSessionModelNodeToControllerNode(node))

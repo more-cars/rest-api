@@ -1,6 +1,7 @@
 import express from "express"
+import {getNamesOfAllNodeProperties} from "../../../specification/getNamesOfAllNodeProperties"
+import {NodeType} from "../../../specification/NodeType"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
-import availableProperties from "../../../../specification/properties/GamingPlatform.json"
 import {GamingPlatform} from "../../../models/node-types/gaming-platforms/GamingPlatform"
 import {convertGamingPlatformNodeToControllerNode} from "./convertGamingPlatformNodeToControllerNode"
 import {marshalNodeCollection} from "../../nodes/marshalNodeCollection"
@@ -13,6 +14,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function getAll(req: express.Request, res: express.Response) {
     try {
+        const availableProperties = getNamesOfAllNodeProperties(NodeType.GamingPlatform)
         const params = extractCollectionConstraintParameters(req, availableProperties)
         const modelNodes = await GamingPlatform.findAll(params)
         const nodes = modelNodes.map(node => convertGamingPlatformNodeToControllerNode(node))

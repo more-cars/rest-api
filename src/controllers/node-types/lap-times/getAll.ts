@@ -1,6 +1,7 @@
 import express from "express"
+import {getNamesOfAllNodeProperties} from "../../../specification/getNamesOfAllNodeProperties"
+import {NodeType} from "../../../specification/NodeType"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
-import availableProperties from "../../../../specification/properties/LapTime.json"
 import {LapTime} from "../../../models/node-types/lap-times/LapTime"
 import {convertLapTimeModelNodeToControllerNode} from "./convertLapTimeModelNodeToControllerNode"
 import {marshalNodeCollection} from "../../nodes/marshalNodeCollection"
@@ -13,6 +14,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function getAll(req: express.Request, res: express.Response) {
     try {
+        const availableProperties = getNamesOfAllNodeProperties(NodeType.LapTime)
         const params = extractCollectionConstraintParameters(req, availableProperties)
         const modelNodes = await LapTime.findAll(params)
         const nodes = modelNodes.map(node => convertLapTimeModelNodeToControllerNode(node))
