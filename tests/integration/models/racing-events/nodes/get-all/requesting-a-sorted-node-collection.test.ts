@@ -18,15 +18,9 @@ describe('A sorted "get all RACING EVENT nodes" request returns the nodes in cor
 
     test('when there exist RACING EVENT nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.RacingEvent)
-        const nodeA = await seedNode(DbNodeType.RacingEvent, {
-            name: 'A Node'
-        }) as unknown as RacingEventNode
-        const nodeB = await seedNode(DbNodeType.RacingEvent, {
-            name: 'B Node'
-        }) as unknown as RacingEventNode
-        const nodeC = await seedNode(DbNodeType.RacingEvent, {
-            name: 'C Node'
-        }) as unknown as RacingEventNode
+        const nodeA = await seedNode(DbNodeType.RacingEvent, {name: 'A Node'}) as RacingEventNode
+        const nodeB = await seedNode(DbNodeType.RacingEvent, {name: 'B Node'}) as RacingEventNode
+        const nodeC = await seedNode(DbNodeType.RacingEvent, {name: 'C Node'}) as RacingEventNode
 
         const ascNodes = await RacingEvent.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

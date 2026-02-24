@@ -23,9 +23,7 @@ describe('A filtered "get all GAMING PLATFORM nodes" request returns only the ma
 
     test('when there exist GAMING PLATFORM nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.GamingPlatform)
-        const nodeA = await seedNode(DbNodeType.GamingPlatform, {
-            name: 'A Node'
-        }) as unknown as GamingPlatformNode
+        const nodeA = await seedNode(DbNodeType.GamingPlatform, {name: 'A Node'}) as GamingPlatformNode
         await seedNode(DbNodeType.GamingPlatform, {name: 'B Node'})
         await seedNode(DbNodeType.GamingPlatform, {name: 'C Node'})
 

@@ -18,15 +18,9 @@ describe('A sorted "get all RACING SESSION nodes" request returns the nodes in c
 
     test('when there exist RACING SESSION nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.RacingSession)
-        const nodeA = await seedNode(DbNodeType.RacingSession, {
-            name: 'A Node'
-        }) as unknown as RacingSessionNode
-        const nodeB = await seedNode(DbNodeType.RacingSession, {
-            name: 'B Node'
-        }) as unknown as RacingSessionNode
-        const nodeC = await seedNode(DbNodeType.RacingSession, {
-            name: 'C Node'
-        }) as unknown as RacingSessionNode
+        const nodeA = await seedNode(DbNodeType.RacingSession, {name: 'A Node'}) as RacingSessionNode
+        const nodeB = await seedNode(DbNodeType.RacingSession, {name: 'B Node'}) as RacingSessionNode
+        const nodeC = await seedNode(DbNodeType.RacingSession, {name: 'C Node'}) as RacingSessionNode
 
         const ascNodes = await RacingSession.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

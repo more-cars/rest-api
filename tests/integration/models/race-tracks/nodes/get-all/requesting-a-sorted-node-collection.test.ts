@@ -18,15 +18,9 @@ describe('A sorted "get all RACE TRACK nodes" request returns the nodes in corre
 
     test('when there exist RACE TRACK nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.RaceTrack)
-        const nodeA = await seedNode(DbNodeType.RaceTrack, {
-            name: 'A Node'
-        }) as unknown as RaceTrackNode
-        const nodeB = await seedNode(DbNodeType.RaceTrack, {
-            name: 'B Node'
-        }) as unknown as RaceTrackNode
-        const nodeC = await seedNode(DbNodeType.RaceTrack, {
-            name: 'C Node'
-        }) as unknown as RaceTrackNode
+        const nodeA = await seedNode(DbNodeType.RaceTrack, {name: 'A Node'}) as RaceTrackNode
+        const nodeB = await seedNode(DbNodeType.RaceTrack, {name: 'B Node'}) as RaceTrackNode
+        const nodeC = await seedNode(DbNodeType.RaceTrack, {name: 'C Node'}) as RaceTrackNode
 
         const ascNodes = await RaceTrack.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

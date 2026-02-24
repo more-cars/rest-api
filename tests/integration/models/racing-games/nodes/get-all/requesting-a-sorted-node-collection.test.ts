@@ -18,15 +18,9 @@ describe('A sorted "get all RACING GAME nodes" request returns the nodes in corr
 
     test('when there exist RACING GAME nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.RacingGame)
-        const nodeA = await seedNode(DbNodeType.RacingGame, {
-            name: 'A Node'
-        }) as unknown as RacingGameNode
-        const nodeB = await seedNode(DbNodeType.RacingGame, {
-            name: 'B Node'
-        }) as unknown as RacingGameNode
-        const nodeC = await seedNode(DbNodeType.RacingGame, {
-            name: 'C Node'
-        }) as unknown as RacingGameNode
+        const nodeA = await seedNode(DbNodeType.RacingGame, {name: 'A Node'}) as RacingGameNode
+        const nodeB = await seedNode(DbNodeType.RacingGame, {name: 'B Node'}) as RacingGameNode
+        const nodeC = await seedNode(DbNodeType.RacingGame, {name: 'C Node'}) as RacingGameNode
 
         const ascNodes = await RacingGame.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

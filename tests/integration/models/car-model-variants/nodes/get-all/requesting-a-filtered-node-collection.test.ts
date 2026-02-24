@@ -23,7 +23,7 @@ describe('A filtered "get all CAR MODEL VARIANT nodes" request returns only the 
 
     test('when there exist CAR MODEL VARIANT nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.CarModelVariant)
-        const nodeA = await seedNode(DbNodeType.CarModelVariant, {name: 'A Node'}) as unknown as CarModelVariantNode
+        const nodeA = await seedNode(DbNodeType.CarModelVariant, {name: 'A Node'}) as CarModelVariantNode
         await seedNode(DbNodeType.CarModelVariant, {name: 'B Node'})
         await seedNode(DbNodeType.CarModelVariant, {name: 'C Node'})
 

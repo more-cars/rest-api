@@ -18,9 +18,9 @@ describe('A sorted "get all SESSION RESULT nodes" request returns the nodes in c
 
     test('when there exist SESSION RESULT nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.SessionResult)
-        const nodeA = await seedNode(DbNodeType.SessionResult, {position: 1}) as unknown as SessionResultNode
-        const nodeB = await seedNode(DbNodeType.SessionResult, {position: 2}) as unknown as SessionResultNode
-        const nodeC = await seedNode(DbNodeType.SessionResult, {position: 3}) as unknown as SessionResultNode
+        const nodeA = await seedNode(DbNodeType.SessionResult, {position: 1}) as SessionResultNode
+        const nodeB = await seedNode(DbNodeType.SessionResult, {position: 2}) as SessionResultNode
+        const nodeC = await seedNode(DbNodeType.SessionResult, {position: 3}) as SessionResultNode
 
         const ascNodes = await SessionResult.findAll({sortByProperty: 'position', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

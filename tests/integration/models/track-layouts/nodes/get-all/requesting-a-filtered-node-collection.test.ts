@@ -23,9 +23,7 @@ describe('A filtered "get all TRACK LAYOUT nodes" request returns only the match
 
     test('when there exist TRACK LAYOUT nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.TrackLayout)
-        const nodeA = await seedNode(DbNodeType.TrackLayout, {
-            name: 'A Node'
-        }) as unknown as TrackLayoutNode
+        const nodeA = await seedNode(DbNodeType.TrackLayout, {name: 'A Node'}) as TrackLayoutNode
         await seedNode(DbNodeType.TrackLayout, {name: 'B Node'})
         await seedNode(DbNodeType.TrackLayout, {name: 'C Node'})
 

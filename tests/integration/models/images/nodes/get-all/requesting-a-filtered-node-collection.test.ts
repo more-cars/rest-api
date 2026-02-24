@@ -23,9 +23,7 @@ describe('A filtered "get all IMAGE nodes" request returns only the matching nod
 
     test('when there exist IMAGE nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.Image)
-        const nodeA = await seedNode(DbNodeType.Image, {
-            name: 'A Node'
-        }) as unknown as ImageNode
+        const nodeA = await seedNode(DbNodeType.Image, {name: 'A Node'}) as ImageNode
         await seedNode(DbNodeType.Image, {name: 'B Node'})
         await seedNode(DbNodeType.Image, {name: 'C Node'})
 

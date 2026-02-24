@@ -23,9 +23,7 @@ describe('A filtered "get all LAP TIME nodes" request returns only the matching 
 
     test('when there exist LAP TIME nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.LapTime)
-        const nodeA = await seedNode(DbNodeType.LapTime, {
-            time: 'A', driver_name: 'A Node'
-        }) as unknown as LapTimeNode
+        const nodeA = await seedNode(DbNodeType.LapTime, {time: 'A', driver_name: 'A Node'}) as LapTimeNode
         await seedNode(DbNodeType.LapTime, {time: 'B', driver_name: 'B Node'})
         await seedNode(DbNodeType.LapTime, {time: 'C', driver_name: 'C Node'})
 

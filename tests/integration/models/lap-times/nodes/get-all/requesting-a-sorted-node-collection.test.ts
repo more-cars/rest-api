@@ -18,9 +18,9 @@ describe('A sorted "get all LAP TIME nodes" request returns the nodes in correct
 
     test('when there exist LAP TIME nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.LapTime)
-        const nodeA = await seedNode(DbNodeType.LapTime, {time: 'A', driver_name: 'A Node'}) as unknown as LapTimeNode
-        const nodeB = await seedNode(DbNodeType.LapTime, {time: 'B', driver_name: 'B Node'}) as unknown as LapTimeNode
-        const nodeC = await seedNode(DbNodeType.LapTime, {time: 'C', driver_name: 'C Node'}) as unknown as LapTimeNode
+        const nodeA = await seedNode(DbNodeType.LapTime, {time: 'A', driver_name: 'A Node'}) as LapTimeNode
+        const nodeB = await seedNode(DbNodeType.LapTime, {time: 'B', driver_name: 'B Node'}) as LapTimeNode
+        const nodeC = await seedNode(DbNodeType.LapTime, {time: 'C', driver_name: 'C Node'}) as LapTimeNode
 
         const ascNodes = await LapTime.findAll({sortByProperty: 'driver_name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

@@ -23,9 +23,7 @@ describe('A filtered "get all COMPANY nodes" request returns only the matching n
 
     test('when there exist COMPANY nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.Company)
-        const nodeA = await seedNode(DbNodeType.Company, {
-            name: 'A Node'
-        }) as unknown as CompanyNode
+        const nodeA = await seedNode(DbNodeType.Company, {name: 'A Node'}) as CompanyNode
         await seedNode(DbNodeType.Company, {name: 'B Node'})
         await seedNode(DbNodeType.Company, {name: 'C Node'})
 

@@ -18,15 +18,9 @@ describe('A sorted "get all GAMING PLATFORM nodes" request returns the nodes in 
 
     test('when there exist GAMING PLATFORM nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.GamingPlatform)
-        const nodeA = await seedNode(DbNodeType.GamingPlatform, {
-            name: 'A Node'
-        }) as unknown as GamingPlatformNode
-        const nodeB = await seedNode(DbNodeType.GamingPlatform, {
-            name: 'B Node'
-        }) as unknown as GamingPlatformNode
-        const nodeC = await seedNode(DbNodeType.GamingPlatform, {
-            name: 'C Node'
-        }) as unknown as GamingPlatformNode
+        const nodeA = await seedNode(DbNodeType.GamingPlatform, {name: 'A Node'}) as GamingPlatformNode
+        const nodeB = await seedNode(DbNodeType.GamingPlatform, {name: 'B Node'}) as GamingPlatformNode
+        const nodeC = await seedNode(DbNodeType.GamingPlatform, {name: 'C Node'}) as GamingPlatformNode
 
         const ascNodes = await GamingPlatform.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

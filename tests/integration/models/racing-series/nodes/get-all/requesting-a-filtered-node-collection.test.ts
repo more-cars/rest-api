@@ -23,9 +23,7 @@ describe('A filtered "get all RACING SERIES nodes" request returns only the matc
 
     test('when there exist RACING SERIES nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.RacingSeries)
-        const nodeA = await seedNode(DbNodeType.RacingSeries, {
-            name: 'A Node'
-        }) as unknown as RacingSeriesNode
+        const nodeA = await seedNode(DbNodeType.RacingSeries, {name: 'A Node'}) as RacingSeriesNode
         await seedNode(DbNodeType.RacingSeries, {name: 'B Node'})
         await seedNode(DbNodeType.RacingSeries, {name: 'C Node'})
 

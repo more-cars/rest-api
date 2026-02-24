@@ -18,15 +18,9 @@ describe('A sorted "get all IMAGE nodes" request returns the nodes in correct or
 
     test('when there exist IMAGE nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.Image)
-        const nodeA = await seedNode(DbNodeType.Image, {
-            name: 'A Node'
-        }) as unknown as ImageNode
-        const nodeB = await seedNode(DbNodeType.Image, {
-            name: 'B Node'
-        }) as unknown as ImageNode
-        const nodeC = await seedNode(DbNodeType.Image, {
-            name: 'C Node'
-        }) as unknown as ImageNode
+        const nodeA = await seedNode(DbNodeType.Image, {name: 'A Node'}) as ImageNode
+        const nodeB = await seedNode(DbNodeType.Image, {name: 'B Node'}) as ImageNode
+        const nodeC = await seedNode(DbNodeType.Image, {name: 'C Node'}) as ImageNode
 
         const ascNodes = await Image.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

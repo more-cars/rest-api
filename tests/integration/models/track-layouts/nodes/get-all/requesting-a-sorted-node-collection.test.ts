@@ -18,9 +18,9 @@ describe('A sorted "get all TRACK LAYOUT nodes" request returns the nodes in cor
 
     test('when there exist TRACK LAYOUT nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.TrackLayout)
-        const nodeA = await seedNode(DbNodeType.TrackLayout, {name: 'A Node'}) as unknown as TrackLayoutNode
-        const nodeB = await seedNode(DbNodeType.TrackLayout, {name: 'B Node'}) as unknown as TrackLayoutNode
-        const nodeC = await seedNode(DbNodeType.TrackLayout, {name: 'C Node'}) as unknown as TrackLayoutNode
+        const nodeA = await seedNode(DbNodeType.TrackLayout, {name: 'A Node'}) as TrackLayoutNode
+        const nodeB = await seedNode(DbNodeType.TrackLayout, {name: 'B Node'}) as TrackLayoutNode
+        const nodeC = await seedNode(DbNodeType.TrackLayout, {name: 'C Node'}) as TrackLayoutNode
 
         const ascNodes = await TrackLayout.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)

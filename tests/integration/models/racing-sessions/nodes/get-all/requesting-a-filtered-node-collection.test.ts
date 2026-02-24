@@ -23,9 +23,7 @@ describe('A filtered "get all RACING SESSION nodes" request returns only the mat
 
     test('when there exist RACING SESSION nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.RacingSession)
-        const nodeA = await seedNode(DbNodeType.RacingSession, {
-            name: 'A Node'
-        }) as unknown as unknown as RacingSessionNode
+        const nodeA = await seedNode(DbNodeType.RacingSession, {name: 'A Node'}) as RacingSessionNode
         await seedNode(DbNodeType.RacingSession, {name: 'B Node'})
         await seedNode(DbNodeType.RacingSession, {name: 'C Node'})
 

@@ -23,7 +23,7 @@ describe('A filtered "get all SESSION RESULT nodes" request returns only the mat
 
     test('when there exist SESSION RESULT nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.SessionResult)
-        const nodeA = await seedNode(DbNodeType.SessionResult, {position: 1}) as unknown as SessionResultNode
+        const nodeA = await seedNode(DbNodeType.SessionResult, {position: 1}) as SessionResultNode
         await seedNode(DbNodeType.SessionResult, {position: 2})
         await seedNode(DbNodeType.SessionResult, {position: 3})
 

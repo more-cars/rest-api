@@ -18,9 +18,9 @@ describe('A sorted "get all CAR MODEL VARIANT nodes" request returns the nodes i
 
     test('when there exist CAR MODEL VARIANT nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.CarModelVariant)
-        const nodeA = await seedNode(DbNodeType.CarModelVariant, {name: 'A Node'}) as unknown as CarModelVariantNode
-        const nodeB = await seedNode(DbNodeType.CarModelVariant, {name: 'B Node'}) as unknown as CarModelVariantNode
-        const nodeC = await seedNode(DbNodeType.CarModelVariant, {name: 'C Node'}) as unknown as CarModelVariantNode
+        const nodeA = await seedNode(DbNodeType.CarModelVariant, {name: 'A Node'}) as CarModelVariantNode
+        const nodeB = await seedNode(DbNodeType.CarModelVariant, {name: 'B Node'}) as CarModelVariantNode
+        const nodeC = await seedNode(DbNodeType.CarModelVariant, {name: 'C Node'}) as CarModelVariantNode
 
         const ascNodes = await CarModelVariant.findAll({sortByProperty: 'name', sortDirection: 'asc'})
         expect(ascNodes.length).toEqual(3)
