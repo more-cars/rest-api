@@ -10,41 +10,11 @@ import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 import {NodeSpecification} from "../types/NodeSpecification"
 import {PropertySpecification} from "../types/PropertySpecification"
 import {escapeSingleQuotes} from "./escapeSingleQuotes"
-import type {InputCompanyCreate} from "../node-types/companies/types/InputCompanyCreate"
-import type {InputBrandCreate} from "../node-types/brands/types/InputBrandCreate"
-import type {InputCarModelCreate} from "../node-types/car-models/types/InputCarModelCreate"
-import type {InputCarModelVariantCreate} from "../node-types/car-model-variants/types/InputCarModelVariantCreate"
-import type {InputRaceTrackCreate} from "../node-types/race-tracks/types/InputRaceTrackCreate"
-import type {InputTrackLayoutCreate} from "../node-types/track-layouts/types/InputTrackLayoutCreate"
-import type {InputRacingSeriesCreate} from "../node-types/racing-series/types/InputRacingSeriesCreate"
-import type {InputRacingEventCreate} from "../node-types/racing-events/types/InputRacingEventCreate"
-import type {InputRacingSessionCreate} from "../node-types/racing-sessions/types/InputRacingSessionCreate"
-import type {InputSessionResultCreate} from "../node-types/session-results/types/InputSessionResultCreate"
-import type {InputLapTimeCreate} from "../node-types/lap-times/types/InputLapTimeCreate"
-import type {InputRacingGameCreate} from "../node-types/racing-games/types/InputRacingGameCreate"
-import type {InputGamingPlatformCreate} from "../node-types/gaming-platforms/types/InputGamingPlatformCreate"
-import type {InputImageCreate} from "../node-types/images/types/InputImageCreate"
+import type {InputNodeTypeCreate} from "../types/InputNodeTypeCreate"
 import {DbNodeType} from "../types/DbNodeType"
 import {mapDbNodeTypeToNeo4jNodeType} from "./mapDbNodeTypeToNeo4jNodeType"
 
-// TODO find a more elegant solution to describe the allowed input data
-type InputTypes =
-    InputCompanyCreate |
-    InputBrandCreate |
-    InputCarModelCreate |
-    InputCarModelVariantCreate |
-    InputRaceTrackCreate |
-    InputTrackLayoutCreate |
-    InputRacingSeriesCreate |
-    InputRacingEventCreate |
-    InputRacingSessionCreate |
-    InputSessionResultCreate |
-    InputLapTimeCreate |
-    InputRacingGameCreate |
-    InputGamingPlatformCreate |
-    InputImageCreate
-
-export async function createNeo4jNode(nodeType: DbNodeType, data: InputTypes): Promise<Node> {
+export async function createNeo4jNode(nodeType: DbNodeType, data: InputNodeTypeCreate): Promise<Node> {
     const driver: Driver = getDriver()
     const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
@@ -68,7 +38,7 @@ export async function createNeo4jNode(nodeType: DbNodeType, data: InputTypes): P
     return neo4jNode
 }
 
-export function createNodeQuery(nodeType: DbNodeType, data: InputTypes) {
+export function createNodeQuery(nodeType: DbNodeType, data: InputNodeTypeCreate) {
     const nodeSpecs = getNodeSpecification(nodeType)
     const nodeTypeLabel = getNamespacedNodeTypeLabel(mapDbNodeTypeToNeo4jNodeType(nodeType))
     const properties = getCypherFormattedPropertyList(nodeSpecs, data)
@@ -83,7 +53,7 @@ export function createNodeQuery(nodeType: DbNodeType, data: InputTypes) {
     return template
 }
 
-function getCypherFormattedPropertyList(nodeSpecs: NodeSpecification, data: InputTypes) {
+function getCypherFormattedPropertyList(nodeSpecs: NodeSpecification, data: InputNodeTypeCreate) {
     const lines: string[] = []
 
     nodeSpecs.properties.forEach((property, index) => {
