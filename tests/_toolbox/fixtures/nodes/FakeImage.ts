@@ -8,6 +8,31 @@ export const FakeImage = {
         return {
             external_id: faker.string.uuid(),
             image_provider: faker.lorem.word(),
+            name: faker.commerce.productName(),
+            description: faker.commerce.productDescription(),
+            creator: faker.person.fullName(),
+            license: "CC BY",
+            tags: faker.lorem.words(5),
+            source: faker.internet.url(),
+            image_url_original: faker.image.url(),
+            image_url_xxl: faker.image.url(),
+            image_url_xl: faker.image.url(),
+            image_url_l: faker.image.url(),
+            image_url_m: faker.image.url(),
+            image_url_s: faker.image.url(),
+            image_url_xs: faker.image.url(),
+        } as InputImageCreate
+    },
+
+    dbInputMinimal() {
+        return {
+            image_provider: faker.lorem.word(),
+            external_id: faker.string.uuid(),
+            name: faker.commerce.productName(),
+            creator: faker.person.fullName(),
+            license: "CC BY",
+            source: faker.internet.url(),
+            image_url_original: faker.image.url(),
         } as InputImageCreate
     },
 

@@ -1,6 +1,6 @@
 import {createNode} from "../../../../../src/db/node-types/images/createNode"
-import FakeImageFull from "../../../fixtures/nodes/FakeImageFull"
+import {FakeImage} from "../../../fixtures/nodes/FakeImage"
 
 export async function seedImage(customFakeData: object = {}) {
-    return createNode(Object.assign({}, FakeImageFull, customFakeData))
+    return createNode(Object.assign({}, FakeImage.dbInput(), customFakeData))
 }

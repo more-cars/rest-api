@@ -6,7 +6,7 @@ import {getExhaustiveFakeInputDataForDbNode} from "../../../../_toolbox/fixtures
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import type {InputBrandCreate} from "../../../../../src/db/node-types/brands/types/InputBrandCreate"
 import type {InputCarModelCreate} from "../../../../../src/db/node-types/car-models/types/InputCarModelCreate"
-import FakeImageFull from "../../../../_toolbox/fixtures/nodes/FakeImageFull"
+import type {InputImageCreate} from "../../../../../src/db/node-types/images/types/InputImageCreate"
 
 test('ID is added when creating a node', async () => {
     const createdBrand = await createBrandNode(getExhaustiveFakeInputDataForDbNode(DbNodeType.Brand) as InputBrandCreate)
@@ -21,7 +21,7 @@ test('ID is added when creating a node', async () => {
     expect(createdCarModel.properties.id)
         .toBeLessThanOrEqual(99999999)
 
-    const createdImage = await createImageNode(FakeImageFull)
+    const createdImage = await createImageNode(getExhaustiveFakeInputDataForDbNode(DbNodeType.Image) as InputImageCreate)
     expect(createdImage.properties.id)
         .toBeGreaterThanOrEqual(12000000)
     expect(createdImage.properties.id)

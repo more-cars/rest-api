@@ -7,7 +7,6 @@ import type {InputImageCreate} from "../../../../../src/db/node-types/images/typ
 import {createNode as createBrandNode} from "../../../../../src/db/node-types/brands/createNode"
 import {createNode as createCarModelNode} from "../../../../../src/db/node-types/car-models/createNode"
 import {createNode as createImageNode} from "../../../../../src/db/node-types/images/createNode"
-import FakeImageFull from "../../../../_toolbox/fixtures/nodes/FakeImageFull"
 
 test('Timestamps provided by the user are ignored', async () => {
     // BRAND
@@ -29,7 +28,7 @@ test('Timestamps provided by the user are ignored', async () => {
     expect(createdCarModel.properties).not.toHaveProperty('updated_at', "blobb")
 
     // IMAGE
-    const imageData: InputImageCreate = FakeImageFull
+    const imageData = getExhaustiveFakeInputDataForDbNode(DbNodeType.Image) as InputImageCreate
     const createdImage = await createImageNode(imageData)
 
     expect(createdImage.properties).toHaveProperty('created_at')

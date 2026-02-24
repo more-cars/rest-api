@@ -1,10 +1,11 @@
 import {expect, test} from 'vitest'
+import {FakeImage} from "../../../../../_toolbox/fixtures/nodes/FakeImage"
 import {createNode} from "../../../../../../src/db/node-types/images/createNode"
-import FakeImageFull from "../../../../../_toolbox/fixtures/nodes/FakeImageFull"
 
 test('Creating node with valid data', async () => {
-    const createdNode = await createNode(FakeImageFull)
+    const inputData = FakeImage.dbInput()
+    const createdNode = await createNode(inputData)
 
     expect(createdNode.properties)
-        .toEqual(expect.objectContaining(FakeImageFull))
+        .toEqual(expect.objectContaining(inputData))
 })
