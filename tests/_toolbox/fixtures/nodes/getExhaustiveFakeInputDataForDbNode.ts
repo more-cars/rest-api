@@ -15,7 +15,7 @@ import {FakeRacingGame} from "./FakeRacingGame"
 import {FakeGamingPlatform} from "./FakeGamingPlatform"
 import {FakeImage} from "./FakeImage"
 
-export function FakeNodeInput(nodeType: ControllerNodeType) {
+export function getExhaustiveFakeInputDataForDbNode(nodeType: ControllerNodeType) {
     switch (nodeType) {
         case ControllerNodeType.Company:
             return FakeCompany.dbInput()
