@@ -1,22 +1,18 @@
 import {expect, test} from 'vitest'
 import assert from "assert"
-import {CarModel} from "../../../../src/models/node-types/car-models/CarModel"
-import {Brand} from "../../../../src/models/node-types/brands/Brand"
-import {getExhaustiveFakeInputDataForDbNode} from "../../../_toolbox/fixtures/nodes/getExhaustiveFakeInputDataForDbNode"
+import {seedRelationship} from "../../../_toolbox/dbSeeding/seedRelationship"
 import {DbNodeType} from "../../../../src/db/types/DbNodeType"
-import type {InputBrandCreate} from "../../../../src/db/node-types/brands/types/InputBrandCreate"
-import type {InputCarModelCreate} from "../../../../src/db/node-types/car-models/types/InputCarModelCreate"
+import {RelationshipType} from "../../../../src/db/types/RelationshipType"
+import {CarModel} from "../../../../src/models/node-types/car-models/CarModel"
 
 test('ID is always contained in response', async () => {
-    const carModel = await CarModel.create(getExhaustiveFakeInputDataForDbNode(DbNodeType.CarModel) as InputCarModelCreate)
-    const brand = await Brand.create(getExhaustiveFakeInputDataForDbNode(DbNodeType.Brand) as InputBrandCreate)
-    const expectedRelationship = await CarModel.createBelongsToBrandRelationship(carModel.attributes.id, brand.attributes.id)
+    const expectedRelationship = await seedRelationship(DbNodeType.CarModel, DbNodeType.Brand, RelationshipType.CarModelBelongsToBrand)
 
     if (!expectedRelationship) {
         assert.fail('Relationship creation failed')
     }
 
-    const requestedRelationship = await CarModel.getBelongsToBrandRelationship(carModel.attributes.id)
+    const requestedRelationship = await CarModel.getBelongsToBrandRelationship(expectedRelationship.start_node.properties.id)
 
     if (!requestedRelationship) {
         assert.fail('Relationship retrieval failed')
