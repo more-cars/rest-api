@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {Integer, Node} from "neo4j-driver"
-import {mapDbNodeToTrackLayoutNode} from "../../../../src/db/node-types/track-layouts/mapDbNodeToTrackLayoutNode"
+import {convertTrackLayoutNeo4jNodeToDbNode} from "../../../../src/db/node-types/track-layouts/convertTrackLayoutNeo4jNodeToDbNode"
 
 test('the Neo4j node is correctly mapped to a More Cars node', async () => {
     const dbNode: Node = {
@@ -20,10 +20,10 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             elevation_change_unit: "m",
             surface: "asphalt",
         },
-        elementId: ""
+        elementId: "",
     }
 
-    const mappedNode = mapDbNodeToTrackLayoutNode(dbNode)
+    const mappedNode = convertTrackLayoutNeo4jNodeToDbNode(dbNode)
 
     expect(mappedNode)
         .toStrictEqual({
@@ -41,6 +41,6 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
                 elevation_change: 71,
                 elevation_change_unit: "m",
                 surface: "asphalt",
-            }
+            },
         })
 })

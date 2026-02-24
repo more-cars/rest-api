@@ -2,10 +2,10 @@ import {InputCarModelVariantCreate} from "./types/InputCarModelVariantCreate"
 import {CarModelVariantNode} from "./types/CarModelVariantNode"
 import {createNeo4jNode} from "../../nodes/createNeo4jNode"
 import {DbNodeType} from "../../types/DbNodeType"
-import {mapDbNodeToCarModelVariantNode} from "./mapDbNodeToCarModelVariantNode"
+import {convertCarModelVariantNeo4jNodeToDbNode} from "./convertCarModelVariantNeo4jNodeToDbNode"
 
 export async function createNode(data: InputCarModelVariantCreate): Promise<CarModelVariantNode> {
     const node = await createNeo4jNode(DbNodeType.CarModelVariant, data)
 
-    return mapDbNodeToCarModelVariantNode(node)
+    return convertCarModelVariantNeo4jNodeToDbNode(node)
 }

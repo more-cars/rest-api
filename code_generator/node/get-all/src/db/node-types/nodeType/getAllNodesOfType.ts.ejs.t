@@ -6,7 +6,7 @@ import type {<%= h.changeCase.pascal(nodeType) %>Node} from "./types/<%= h.chang
 import {getDbQueryCollectionParams} from "../../nodes/getDbQueryCollectionParams"
 import {fetchNodesFromDb} from "../../nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../types/DbNodeType"
-import {mapDbNodeTo<%= h.changeCase.pascal(nodeType) %>Node} from "./mapDbNodeTo<%= h.changeCase.pascal(nodeType) %>Node"
+import {convert<%= h.changeCase.pascal(nodeType) %>Neo4jNodeToDbNode} from "./convert<%= h.changeCase.pascal(nodeType) %>Neo4jNodeToDbNode"
 
 export async function getAllNodesOfType(constraints: NodeCollectionConstraints = {}): Promise<<%= h.changeCase.pascal(nodeType) %>Node[]> {
     const nodes: <%= h.changeCase.pascal(nodeType) %>Node[] = []
@@ -14,7 +14,7 @@ export async function getAllNodesOfType(constraints: NodeCollectionConstraints =
     const dbNodes = await fetchNodesFromDb(DbNodeType.<%= h.changeCase.pascal(nodeType) %>, dbParams)
 
     dbNodes.forEach((dbNode) => {
-        nodes.push(mapDbNodeTo<%= h.changeCase.pascal(nodeType) %>Node(dbNode))
+        nodes.push(convert<%= h.changeCase.pascal(nodeType) %>Neo4jNodeToDbNode(dbNode))
     })
 
     return nodes

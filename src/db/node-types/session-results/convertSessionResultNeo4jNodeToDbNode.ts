@@ -2,7 +2,7 @@ import {Node} from "neo4j-driver"
 import {SessionResultNode} from "./types/SessionResultNode"
 import {DbNodeType} from "../../types/DbNodeType"
 
-export function mapDbNodeToSessionResultNode(neo4jNode: Node): SessionResultNode {
+export function convertSessionResultNeo4jNodeToDbNode(neo4jNode: Node): SessionResultNode {
     return {
         node_type: DbNodeType.SessionResult,
         properties: {

@@ -3,7 +3,7 @@ import type {RaceTrackNode} from "./types/RaceTrackNode"
 import {getDbQueryCollectionParams} from "../../nodes/getDbQueryCollectionParams"
 import {fetchNodesFromDb} from "../../nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../types/DbNodeType"
-import {mapDbNodeToRaceTrackNode} from "./mapDbNodeToRaceTrackNode"
+import {convertRaceTrackNeo4jNodeToDbNode} from "./convertRaceTrackNeo4jNodeToDbNode"
 
 export async function getAllNodesOfType(constraints: NodeCollectionConstraints = {}): Promise<RaceTrackNode[]> {
     const nodes: RaceTrackNode[] = []
@@ -11,7 +11,7 @@ export async function getAllNodesOfType(constraints: NodeCollectionConstraints =
     const dbNodes = await fetchNodesFromDb(DbNodeType.RaceTrack, dbParams)
 
     dbNodes.forEach((dbNode) => {
-        nodes.push(mapDbNodeToRaceTrackNode(dbNode))
+        nodes.push(convertRaceTrackNeo4jNodeToDbNode(dbNode))
     })
 
     return nodes

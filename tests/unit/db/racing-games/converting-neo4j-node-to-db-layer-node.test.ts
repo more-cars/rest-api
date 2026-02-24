@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {Integer, Node} from "neo4j-driver"
-import {mapDbNodeToRacingEventNode} from "../../../../src/db/node-types/racing-events/mapDbNodeToRacingEventNode"
+import {convertRacingGameNeo4jNodeToDbNode} from "../../../../src/db/node-types/racing-games/convertRacingGameNeo4jNodeToDbNode"
 
 test('the Neo4j node is correctly mapped to a More Cars node', async () => {
     const dbNode: Node = {
@@ -10,27 +10,27 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             mc_id: 1,
             created_at: "2025-05-14T11:05:07.793Z",
             updated_at: "2025-05-14T11:05:07.793Z",
-            name: "GP Monaco 2025",
-            round: 8,
-            date_from: "2025-05-25",
-            date_to: "2025-05-27",
+            name: "Forza Motorsport 7",
+            release_year: 2017,
+            developer: "Turn 10 Studios",
+            publisher: "Microsoft Studios",
         },
-        elementId: ""
+        elementId: "",
     }
 
-    const mappedNode = mapDbNodeToRacingEventNode(dbNode)
+    const mappedNode = convertRacingGameNeo4jNodeToDbNode(dbNode)
 
     expect(mappedNode)
         .toStrictEqual({
-            node_type: "RacingEvent",
+            node_type: "RacingGame",
             properties: {
                 id: 1,
                 created_at: "2025-05-14T11:05:07.793Z",
                 updated_at: "2025-05-14T11:05:07.793Z",
-                name: "GP Monaco 2025",
-                round: 8,
-                date_from: "2025-05-25",
-                date_to: "2025-05-27",
-            }
+                name: "Forza Motorsport 7",
+                release_year: 2017,
+                developer: "Turn 10 Studios",
+                publisher: "Microsoft Studios",
+            },
         })
 })

@@ -3,7 +3,7 @@ import {ImageNode} from "./types/ImageNode"
 import {getDbQueryCollectionParams} from "../../nodes/getDbQueryCollectionParams"
 import {fetchNodesFromDb} from "../../nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../types/DbNodeType"
-import {mapDbNodeToImageNode} from "./mapDbNodeToImageNode"
+import {convertImageNeo4jNodeToDbNode} from "./convertImageNeo4jNodeToDbNode"
 
 export async function getAllNodesOfType(constraints: NodeCollectionConstraints = {}): Promise<ImageNode[]> {
     const nodes: ImageNode[] = []
@@ -11,7 +11,7 @@ export async function getAllNodesOfType(constraints: NodeCollectionConstraints =
     const dbNodes = await fetchNodesFromDb(DbNodeType.Image, dbParams)
 
     dbNodes.forEach((dbNode) => {
-        nodes.push(mapDbNodeToImageNode(dbNode))
+        nodes.push(convertImageNeo4jNodeToDbNode(dbNode))
     })
 
     return nodes

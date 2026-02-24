@@ -3,7 +3,7 @@ import type {RacingSeriesNode} from "./types/RacingSeriesNode"
 import {getDbQueryCollectionParams} from "../../nodes/getDbQueryCollectionParams"
 import {fetchNodesFromDb} from "../../nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../types/DbNodeType"
-import {mapDbNodeToRacingSeriesNode} from "./mapDbNodeToRacingSeriesNode"
+import {convertRacingSeriesNeo4jNodeToDbNode} from "./convertRacingSeriesNeo4jNodeToDbNode"
 
 export async function getAllNodesOfType(constraints: NodeCollectionConstraints = {}): Promise<RacingSeriesNode[]> {
     const nodes: RacingSeriesNode[] = []
@@ -11,7 +11,7 @@ export async function getAllNodesOfType(constraints: NodeCollectionConstraints =
     const dbNodes = await fetchNodesFromDb(DbNodeType.RacingSeries, dbParams)
 
     dbNodes.forEach((dbNode) => {
-        nodes.push(mapDbNodeToRacingSeriesNode(dbNode))
+        nodes.push(convertRacingSeriesNeo4jNodeToDbNode(dbNode))
     })
 
     return nodes

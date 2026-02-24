@@ -3,7 +3,7 @@ import type {CarModelVariantNode} from "./types/CarModelVariantNode"
 import {getDbQueryCollectionParams} from "../../nodes/getDbQueryCollectionParams"
 import {fetchNodesFromDb} from "../../nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../types/DbNodeType"
-import {mapDbNodeToCarModelVariantNode} from "./mapDbNodeToCarModelVariantNode"
+import {convertCarModelVariantNeo4jNodeToDbNode} from "./convertCarModelVariantNeo4jNodeToDbNode"
 
 export async function getAllNodesOfType(constraints: NodeCollectionConstraints = {}): Promise<CarModelVariantNode[]> {
     const nodes: CarModelVariantNode[] = []
@@ -11,7 +11,7 @@ export async function getAllNodesOfType(constraints: NodeCollectionConstraints =
     const dbNodes = await fetchNodesFromDb(DbNodeType.CarModelVariant, dbParams)
 
     dbNodes.forEach((dbNode) => {
-        nodes.push(mapDbNodeToCarModelVariantNode(dbNode))
+        nodes.push(convertCarModelVariantNeo4jNodeToDbNode(dbNode))
     })
 
     return nodes

@@ -2,7 +2,7 @@ import {Node} from "neo4j-driver"
 import {LapTimeNode} from "./types/LapTimeNode"
 import {DbNodeType} from "../../types/DbNodeType"
 
-export function mapDbNodeToLapTimeNode(neo4jNode: Node): LapTimeNode {
+export function convertLapTimeNeo4jNodeToDbNode(neo4jNode: Node): LapTimeNode {
     return {
         node_type: DbNodeType.LapTime,
         properties: {

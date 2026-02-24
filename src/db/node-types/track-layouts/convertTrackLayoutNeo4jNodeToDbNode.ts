@@ -2,7 +2,7 @@ import {Node} from "neo4j-driver"
 import {TrackLayoutNode} from "./types/TrackLayoutNode"
 import {DbNodeType} from "../../types/DbNodeType"
 
-export function mapDbNodeToTrackLayoutNode(neo4jNode: Node): TrackLayoutNode {
+export function convertTrackLayoutNeo4jNodeToDbNode(neo4jNode: Node): TrackLayoutNode {
     return {
         node_type: DbNodeType.TrackLayout,
         properties: {

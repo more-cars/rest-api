@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {Integer, Node} from "neo4j-driver"
-import {mapDbNodeToGamingPlatformNode} from "../../../../src/db/node-types/gaming-platforms/mapDbNodeToGamingPlatformNode"
+import {convertRacingEventNeo4jNodeToDbNode} from "../../../../src/db/node-types/racing-events/convertRacingEventNeo4jNodeToDbNode"
 
 test('the Neo4j node is correctly mapped to a More Cars node', async () => {
     const dbNode: Node = {
@@ -10,25 +10,27 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             mc_id: 1,
             created_at: "2025-05-14T11:05:07.793Z",
             updated_at: "2025-05-14T11:05:07.793Z",
-            name: "PlayStation 5",
-            release_year: 2020,
-            manufacturer: "Sony",
+            name: "GP Monaco 2025",
+            round: 8,
+            date_from: "2025-05-25",
+            date_to: "2025-05-27",
         },
-        elementId: ""
+        elementId: "",
     }
 
-    const mappedNode = mapDbNodeToGamingPlatformNode(dbNode)
+    const mappedNode = convertRacingEventNeo4jNodeToDbNode(dbNode)
 
     expect(mappedNode)
         .toStrictEqual({
-            node_type: "GamingPlatform",
+            node_type: "RacingEvent",
             properties: {
                 id: 1,
                 created_at: "2025-05-14T11:05:07.793Z",
                 updated_at: "2025-05-14T11:05:07.793Z",
-                name: "PlayStation 5",
-                release_year: 2020,
-                manufacturer: "Sony",
-            }
+                name: "GP Monaco 2025",
+                round: 8,
+                date_from: "2025-05-25",
+                date_to: "2025-05-27",
+            },
         })
 })

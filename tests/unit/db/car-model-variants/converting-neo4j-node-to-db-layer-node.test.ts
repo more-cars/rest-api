@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {Integer, Node} from "neo4j-driver"
-import {mapDbNodeToCarModelVariantNode} from "../../../../src/db/node-types/car-model-variants/mapDbNodeToCarModelVariantNode"
+import {convertCarModelVariantNeo4jNodeToDbNode} from "../../../../src/db/node-types/car-model-variants/convertCarModelVariantNeo4jNodeToDbNode"
 
 test('the Neo4j node is correctly mapped to a More Cars node', async () => {
     const dbNode: Node = {
@@ -47,10 +47,10 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             top_speed_unit: "km/h",
             total_production: 50000,
         },
-        elementId: ""
+        elementId: "",
     }
 
-    const mappedNode = mapDbNodeToCarModelVariantNode(dbNode)
+    const mappedNode = convertCarModelVariantNeo4jNodeToDbNode(dbNode)
 
     expect(mappedNode)
         .toStrictEqual({
@@ -95,6 +95,6 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
                 top_speed: 250,
                 top_speed_unit: "km/h",
                 total_production: 50000,
-            }
+            },
         })
 })

@@ -2,7 +2,7 @@ import {Node} from "neo4j-driver"
 import {CompanyNode} from "./types/CompanyNode"
 import {DbNodeType} from "../../types/DbNodeType"
 
-export function mapDbNodeToCompanyNode(neo4jNode: Node): CompanyNode {
+export function convertCompanyNeo4jNodeToDbNode(neo4jNode: Node): CompanyNode {
     return {
         node_type: DbNodeType.Company,
         properties: {

@@ -2,7 +2,7 @@ import {Node} from "neo4j-driver"
 import {CarModelVariantNode} from "./types/CarModelVariantNode"
 import {DbNodeType} from "../../types/DbNodeType"
 
-export function mapDbNodeToCarModelVariantNode(neo4jNode: Node): CarModelVariantNode {
+export function convertCarModelVariantNeo4jNodeToDbNode(neo4jNode: Node): CarModelVariantNode {
     return {
         node_type: DbNodeType.CarModelVariant,
         properties: {

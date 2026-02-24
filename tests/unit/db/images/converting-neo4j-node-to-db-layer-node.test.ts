@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {Integer, Node} from "neo4j-driver"
-import {mapDbNodeToImageNode} from "../../../../src/db/node-types/images/mapDbNodeToImageNode"
+import {convertImageNeo4jNodeToDbNode} from "../../../../src/db/node-types/images/convertImageNeo4jNodeToDbNode"
 
 test('the Neo4j node is correctly mapped to a More Cars node', async () => {
     const dbNode: Node = {
@@ -26,10 +26,10 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             image_url_s: "https://live.staticflickr.com/65535/54570839725_652073f374_n.jpg",
             image_url_xs: "https://live.staticflickr.com/65535/54570839725_652073f374_t.jpg",
         },
-        elementId: ""
+        elementId: "",
     }
 
-    const mappedNode = mapDbNodeToImageNode(dbNode)
+    const mappedNode = convertImageNeo4jNodeToDbNode(dbNode)
 
     expect(mappedNode)
         .toStrictEqual({
@@ -53,6 +53,6 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
                 image_url_m: "https://live.staticflickr.com/65535/54570839725_652073f374_z.jpg",
                 image_url_s: "https://live.staticflickr.com/65535/54570839725_652073f374_n.jpg",
                 image_url_xs: "https://live.staticflickr.com/65535/54570839725_652073f374_t.jpg",
-            }
+            },
         })
 })

@@ -5,10 +5,10 @@ import {Input<%= h.changeCase.pascal(nodeType) %>Create} from "./types/Input<%= 
 import {<%= h.changeCase.pascal(nodeType) %>Node} from "./types/<%= h.changeCase.pascal(nodeType) %>Node"
 import {createNeo4jNode} from "../../nodes/createNeo4jNode"
 import {DbNodeType} from "../../types/DbNodeType"
-import {mapDbNodeTo<%= h.changeCase.pascal(nodeType) %>Node} from "./mapDbNodeTo<%= h.changeCase.pascal(nodeType) %>Node"
+import {convert<%= h.changeCase.pascal(nodeType) %>Neo4jNodeToDbNode} from "./convert<%= h.changeCase.pascal(nodeType) %>Neo4jNodeToDbNode"
 
 export async function createNode(data: Input<%= h.changeCase.pascal(nodeType) %>Create): Promise<<%= h.changeCase.pascal(nodeType) %>Node> {
     const node = await createNeo4jNode(DbNodeType.<%= h.changeCase.pascal(nodeType) %>, data)
 
-    return mapDbNodeTo<%= h.changeCase.pascal(nodeType) %>Node(node)
+    return convert<%= h.changeCase.pascal(nodeType) %>Neo4jNodeToDbNode(node)
 }

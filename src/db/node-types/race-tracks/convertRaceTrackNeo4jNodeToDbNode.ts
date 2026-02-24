@@ -2,7 +2,7 @@ import {Node} from "neo4j-driver"
 import {RaceTrackNode} from "./types/RaceTrackNode"
 import {DbNodeType} from "../../types/DbNodeType"
 
-export function mapDbNodeToRaceTrackNode(neo4jNode: Node): RaceTrackNode {
+export function convertRaceTrackNeo4jNodeToDbNode(neo4jNode: Node): RaceTrackNode {
     return {
         node_type: DbNodeType.RaceTrack,
         properties: {

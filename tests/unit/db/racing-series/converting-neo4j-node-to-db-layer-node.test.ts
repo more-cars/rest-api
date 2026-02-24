@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import {Integer, Node} from "neo4j-driver"
-import {mapDbNodeToCompanyNode} from "../../../../src/db/node-types/companies/mapDbNodeToCompanyNode"
+import {convertRacingSeriesNeo4jNodeToDbNode} from "../../../../src/db/node-types/racing-series/convertRacingSeriesNeo4jNodeToDbNode"
 
 test('the Neo4j node is correctly mapped to a More Cars node', async () => {
     const dbNode: Node = {
@@ -10,29 +10,31 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             mc_id: 1,
             created_at: "2025-05-14T11:05:07.793Z",
             updated_at: "2025-05-14T11:05:07.793Z",
-            name: "BMW AG",
-            founded: 1916,
+            name: "Formula 1",
+            short_name: "F1",
+            founded: 1950,
             defunct: null,
-            headquarters_location: "Munich",
-            legal_headquarters_location: "Munich",
+            organized_by: "FIA",
+            vehicle_type: "formula racing cars",
         },
-        elementId: ""
+        elementId: "",
     }
 
-    const mappedNode = mapDbNodeToCompanyNode(dbNode)
+    const mappedNode = convertRacingSeriesNeo4jNodeToDbNode(dbNode)
 
     expect(mappedNode)
         .toStrictEqual({
-            node_type: "Company",
+            node_type: "RacingSeries",
             properties: {
                 id: 1,
                 created_at: "2025-05-14T11:05:07.793Z",
                 updated_at: "2025-05-14T11:05:07.793Z",
-                name: "BMW AG",
-                founded: 1916,
+                name: "Formula 1",
+                short_name: "F1",
+                founded: 1950,
                 defunct: null,
-                headquarters_location: "Munich",
-                legal_headquarters_location: "Munich",
-            }
+                organized_by: "FIA",
+                vehicle_type: "formula racing cars",
+            },
         })
 })

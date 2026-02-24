@@ -3,7 +3,7 @@ import {CarModelNode} from "./types/CarModelNode"
 import {getDbQueryCollectionParams} from "../../nodes/getDbQueryCollectionParams"
 import {fetchNodesFromDb} from "../../nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../types/DbNodeType"
-import {mapDbNodeToCarModelNode} from "./mapDbNodeToCarModelNode"
+import {convertCarModelNeo4jNodeToDbNode} from "./convertCarModelNeo4jNodeToDbNode"
 
 export async function getAllNodesOfType(constraints: NodeCollectionConstraints = {}): Promise<CarModelNode[]> {
     const nodes: CarModelNode[] = []
@@ -11,7 +11,7 @@ export async function getAllNodesOfType(constraints: NodeCollectionConstraints =
     const dbNodes = await fetchNodesFromDb(DbNodeType.CarModel, dbParams)
 
     dbNodes.forEach((dbNode) => {
-        nodes.push(mapDbNodeToCarModelNode(dbNode))
+        nodes.push(convertCarModelNeo4jNodeToDbNode(dbNode))
     })
 
     return nodes

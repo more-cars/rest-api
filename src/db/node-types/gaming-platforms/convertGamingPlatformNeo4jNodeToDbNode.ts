@@ -1,10 +1,10 @@
 import {Node} from "neo4j-driver"
-import {RacingGameNode} from "./types/RacingGameNode"
+import {GamingPlatformNode} from "./types/GamingPlatformNode"
 import {DbNodeType} from "../../types/DbNodeType"
 
-export function mapDbNodeToRacingGameNode(neo4jNode: Node): RacingGameNode {
+export function convertGamingPlatformNeo4jNodeToDbNode(neo4jNode: Node): GamingPlatformNode {
     return {
-        node_type: DbNodeType.RacingGame,
+        node_type: DbNodeType.GamingPlatform,
         properties: {
             // system data
             id: neo4jNode.properties.mc_id,
@@ -14,8 +14,7 @@ export function mapDbNodeToRacingGameNode(neo4jNode: Node): RacingGameNode {
             // user data
             name: neo4jNode.properties.name,
             release_year: neo4jNode.properties.release_year,
-            developer: neo4jNode.properties.developer,
-            publisher: neo4jNode.properties.publisher,
+            manufacturer: neo4jNode.properties.manufacturer,
         },
-    } satisfies RacingGameNode
+    } satisfies GamingPlatformNode
 }

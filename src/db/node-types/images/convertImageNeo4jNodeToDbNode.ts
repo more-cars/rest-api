@@ -2,7 +2,7 @@ import {Node} from "neo4j-driver"
 import {ImageNode} from "./types/ImageNode"
 import {DbNodeType} from "../../types/DbNodeType"
 
-export function mapDbNodeToImageNode(neo4jNode: Node): ImageNode {
+export function convertImageNeo4jNodeToDbNode(neo4jNode: Node): ImageNode {
     return {
         node_type: DbNodeType.Image,
         properties: {

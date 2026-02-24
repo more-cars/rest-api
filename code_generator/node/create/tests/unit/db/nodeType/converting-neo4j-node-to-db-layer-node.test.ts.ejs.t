@@ -1,9 +1,9 @@
 ---
-to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/mapping-neo4j-node-to-db-layer-node.test.ts
+to: tests/unit/db/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/converting-neo4j-node-to-db-layer-node.test.ts
 ---
 import {expect, test} from 'vitest'
 import {Integer, Node} from "neo4j-driver"
-import {mapDbNodeTo<%= h.changeCase.pascal(nodeType) %>Node} from "../../../../src/db/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/mapDbNodeTo<%= h.changeCase.pascal(nodeType) %>Node"
+import {convert<%= h.changeCase.pascal(nodeType) %>Neo4jNodeToDbNode} from "../../../../src/db/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/convert<%= h.changeCase.pascal(nodeType) %>Neo4jNodeToDbNode"
 
 test('the Neo4j node is correctly mapped to a More Cars node', async () => {
     const dbNode: Node = {
@@ -23,10 +23,10 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
 <%   } -%>
 <% } -%>
         },
-        elementId: ""
+        elementId: "",
     }
 
-    const mappedNode = mapDbNodeTo<%= h.changeCase.pascal(nodeType) %>Node(dbNode)
+    const mappedNode = convert<%= h.changeCase.pascal(nodeType) %>Neo4jNodeToDbNode(dbNode)
 
     expect(mappedNode)
         .toStrictEqual({
@@ -44,6 +44,6 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
                 <%= prop %>: <%= properties[prop].example -%>,
 <%   } -%>
 <% } -%>
-            }
+            },
         })
 })
