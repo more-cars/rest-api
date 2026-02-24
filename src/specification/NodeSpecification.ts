@@ -1,7 +1,7 @@
-import {DbNodeType} from "./DbNodeType"
+import type {NodeType} from "./NodeType"
 import {PropertySpecification} from "./PropertySpecification"
 
 export type NodeSpecification = {
-    type: DbNodeType
+    type: NodeType
     properties: PropertySpecification[]
 }

@@ -1,8 +1,8 @@
-import {NodeSpecification} from "../../../types/NodeSpecification"
-import {DbNodeType} from "../../../types/DbNodeType"
+import {NodeSpecification} from "../NodeSpecification"
+import {NodeType} from "../NodeType"
 
 export const LapTimeNodeSpecification: NodeSpecification = {
-    type: DbNodeType.LapTime,
+    type: NodeType.LapTime,
     properties: [
         {
             name: 'time',

@@ -4,15 +4,16 @@ import {generateMoreCarsId} from "../generateMoreCarsId"
 import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId"
 import {addMoreCarsIdToNode} from "./addMoreCarsIdToNode"
 import {addTimestampsToNode} from "./addTimestampsToNode"
-import {getNodeSpecification} from "./getNodeSpecification"
+import {getNodeTypeSpecification} from "../../specification/getNodeTypeSpecification"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
-import {NodeSpecification} from "../types/NodeSpecification"
-import {PropertySpecification} from "../types/PropertySpecification"
+import type {NodeSpecification} from "../../specification/NodeSpecification"
+import type {PropertySpecification} from "../../specification/PropertySpecification"
 import {escapeSingleQuotes} from "./escapeSingleQuotes"
 import type {InputNodeTypeCreate} from "../types/InputNodeTypeCreate"
 import {DbNodeType} from "../types/DbNodeType"
 import {mapDbNodeTypeToNeo4jNodeType} from "./mapDbNodeTypeToNeo4jNodeType"
+import {mapDbNodeTypeToNodeType} from "../../specification/mapNodeTypeToDbNodeType"
 
 export async function createNeo4jNode(nodeType: DbNodeType, data: InputNodeTypeCreate): Promise<Node> {
     const driver: Driver = getDriver()
@@ -39,7 +40,7 @@ export async function createNeo4jNode(nodeType: DbNodeType, data: InputNodeTypeC
 }
 
 export function createNodeQuery(nodeType: DbNodeType, data: InputNodeTypeCreate) {
-    const nodeSpecs = getNodeSpecification(nodeType)
+    const nodeSpecs = getNodeTypeSpecification(mapDbNodeTypeToNodeType(nodeType))
     const nodeTypeLabel = getNamespacedNodeTypeLabel(mapDbNodeTypeToNeo4jNodeType(nodeType))
     const properties = getCypherFormattedPropertyList(nodeSpecs, data)
 

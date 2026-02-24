@@ -1,8 +1,8 @@
-import {NodeSpecification} from "../../../types/NodeSpecification"
-import {DbNodeType} from "../../../types/DbNodeType"
+import {NodeSpecification} from "../NodeSpecification"
+import {NodeType} from "../NodeType"
 
 export const RacingSessionNodeSpecification: NodeSpecification = {
-    type: DbNodeType.RacingSession,
+    type: NodeType.RacingSession,
     properties: [
         {
             name: 'name',

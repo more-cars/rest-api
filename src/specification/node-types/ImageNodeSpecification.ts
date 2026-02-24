@@ -1,8 +1,8 @@
-import {NodeSpecification} from "../../../types/NodeSpecification"
-import {DbNodeType} from "../../../types/DbNodeType"
+import {NodeSpecification} from "../NodeSpecification"
+import {NodeType} from "../NodeType"
 
 export const ImageNodeSpecification: NodeSpecification = {
-    type: DbNodeType.Image,
+    type: NodeType.Image,
     properties: [
         {
             name: 'image_provider',

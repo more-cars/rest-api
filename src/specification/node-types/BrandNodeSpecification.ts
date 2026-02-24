@@ -1,8 +1,8 @@
-import {NodeSpecification} from "../../../types/NodeSpecification"
-import {DbNodeType} from "../../../types/DbNodeType"
+import {NodeSpecification} from "../NodeSpecification"
+import {NodeType} from "../NodeType"
 
-export const RacingSeriesNodeSpecification: NodeSpecification = {
-    type: DbNodeType.RacingSeries,
+export const BrandNodeSpecification: NodeSpecification = {
+    type: NodeType.Brand,
     properties: [
         {
             name: 'name',
@@ -10,7 +10,7 @@ export const RacingSeriesNodeSpecification: NodeSpecification = {
             mandatory: true,
         },
         {
-            name: 'short_name',
+            name: 'full_name',
             datatype: 'string',
             mandatory: false,
         },
@@ -25,12 +25,12 @@ export const RacingSeriesNodeSpecification: NodeSpecification = {
             mandatory: false,
         },
         {
-            name: 'organized_by',
+            name: 'wmi',
             datatype: 'string',
             mandatory: false,
         },
         {
-            name: 'vehicle_type',
+            name: 'hsn',
             datatype: 'string',
             mandatory: false,
         },

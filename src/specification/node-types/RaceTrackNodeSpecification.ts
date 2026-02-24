@@ -1,8 +1,8 @@
-import {NodeSpecification} from "../../../types/NodeSpecification"
-import {DbNodeType} from "../../../types/DbNodeType"
+import {NodeSpecification} from "../NodeSpecification"
+import {NodeType} from "../NodeType"
 
-export const CarModelNodeSpecification: NodeSpecification = {
-    type: DbNodeType.CarModel,
+export const RaceTrackNodeSpecification: NodeSpecification = {
+    type: NodeType.RaceTrack,
     properties: [
         {
             name: 'name',
@@ -10,28 +10,28 @@ export const CarModelNodeSpecification: NodeSpecification = {
             mandatory: true,
         },
         {
-            name: 'built_from',
+            name: 'opened',
             datatype: 'number',
             mandatory: false,
         },
         {
-            name: 'built_to',
+            name: 'closed',
             datatype: 'number',
             mandatory: false,
         },
         {
-            name: 'generation',
-            datatype: 'number',
-            mandatory: false,
-        },
-        {
-            name: 'internal_code',
+            name: 'type',
             datatype: 'string',
             mandatory: false,
         },
         {
-            name: 'total_production',
-            datatype: 'number',
+            name: 'location',
+            datatype: 'string',
+            mandatory: false,
+        },
+        {
+            name: 'geo_position',
+            datatype: 'string',
             mandatory: false,
         },
     ],
