@@ -1,6 +1,8 @@
 import {expect, test} from 'vitest'
 import {Integer, Node} from "neo4j-driver"
 import {convertSessionResultNeo4jNodeToDbNode} from "../../../../src/db/node-types/session-results/convertSessionResultNeo4jNodeToDbNode"
+import {DbNodeType} from "../../../../src/db/types/DbNodeType"
+import type {SessionResultNode} from "../../../../src/db/node-types/session-results/types/SessionResultNode"
 
 test('the Neo4j node is correctly mapped to a More Cars node', async () => {
     const dbNode: Node = {
@@ -26,7 +28,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
 
     expect(mappedNode)
         .toStrictEqual({
-            node_type: "SessionResult",
+            node_type: DbNodeType.SessionResult,
             properties: {
                 id: 1,
                 created_at: "2025-05-14T11:05:07.793Z",
@@ -40,5 +42,5 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
                 status: "finished",
                 points: 25,
             },
-        })
+        } satisfies SessionResultNode)
 })

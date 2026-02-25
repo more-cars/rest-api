@@ -1,6 +1,8 @@
 import {expect, test} from 'vitest'
 import {Integer, Node} from "neo4j-driver"
 import {convertImageNeo4jNodeToDbNode} from "../../../../src/db/node-types/images/convertImageNeo4jNodeToDbNode"
+import {DbNodeType} from "../../../../src/db/types/DbNodeType"
+import type {ImageNode} from "../../../../src/db/node-types/images/types/ImageNode"
 
 test('the Neo4j node is correctly mapped to a More Cars node', async () => {
     const dbNode: Node = {
@@ -33,7 +35,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
 
     expect(mappedNode)
         .toStrictEqual({
-            node_type: "Image",
+            node_type: DbNodeType.Image,
             properties: {
                 id: 975725,
                 created_at: "2025-05-14T11:05:07.793Z",
@@ -54,5 +56,5 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
                 image_url_s: "https://live.staticflickr.com/65535/54570839725_652073f374_n.jpg",
                 image_url_xs: "https://live.staticflickr.com/65535/54570839725_652073f374_t.jpg",
             },
-        })
+        } satisfies ImageNode)
 })

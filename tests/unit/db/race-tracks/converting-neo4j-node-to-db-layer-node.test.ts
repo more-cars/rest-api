@@ -1,6 +1,8 @@
 import {expect, test} from 'vitest'
 import {Integer, Node} from "neo4j-driver"
 import {convertRaceTrackNeo4jNodeToDbNode} from "../../../../src/db/node-types/race-tracks/convertRaceTrackNeo4jNodeToDbNode"
+import {DbNodeType} from "../../../../src/db/types/DbNodeType"
+import type {RaceTrackNode} from "../../../../src/db/node-types/race-tracks/types/RaceTrackNode"
 
 test('the Neo4j node is correctly mapped to a More Cars node', async () => {
     const dbNode: Node = {
@@ -24,7 +26,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
 
     expect(mappedNode)
         .toStrictEqual({
-            node_type: "RaceTrack",
+            node_type: DbNodeType.RaceTrack,
             properties: {
                 id: 1,
                 created_at: "2025-05-14T11:05:07.793Z",
@@ -36,5 +38,5 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
                 location: "Klettwitz",
                 geo_position: "51°32&#39;0&#34;N 13°55&#39;10&#34;E",
             },
-        })
+        } satisfies RaceTrackNode)
 })

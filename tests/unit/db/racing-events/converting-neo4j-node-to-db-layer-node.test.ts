@@ -1,6 +1,8 @@
 import {expect, test} from 'vitest'
 import {Integer, Node} from "neo4j-driver"
 import {convertRacingEventNeo4jNodeToDbNode} from "../../../../src/db/node-types/racing-events/convertRacingEventNeo4jNodeToDbNode"
+import {DbNodeType} from "../../../../src/db/types/DbNodeType"
+import type {RacingEventNode} from "../../../../src/db/node-types/racing-events/types/RacingEventNode"
 
 test('the Neo4j node is correctly mapped to a More Cars node', async () => {
     const dbNode: Node = {
@@ -22,7 +24,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
 
     expect(mappedNode)
         .toStrictEqual({
-            node_type: "RacingEvent",
+            node_type: DbNodeType.RacingEvent,
             properties: {
                 id: 1,
                 created_at: "2025-05-14T11:05:07.793Z",
@@ -32,5 +34,5 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
                 date_from: "2025-05-25",
                 date_to: "2025-05-27",
             },
-        })
+        } satisfies RacingEventNode)
 })
