@@ -39,7 +39,7 @@ test('single quotes are correctly escaped', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:<%= h.changeCase.pascal(nodeType)_" + appInstanceId + " %> {\n" +
+            "CREATE (node:<%= h.changeCase.pascal(nodeType) %>_" + appInstanceId + " {\n" +
 <%- props_out.join(',\\n" +\n') %>\n" +
             "})\n" +
             "RETURN node\n" +

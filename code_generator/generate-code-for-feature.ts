@@ -11,6 +11,7 @@ async function generateCodeForFeature() {
     const featureParameters = await promptFeatureParameters(typeOfData, typeOfFeature)
     const cliParameters = convertToCliParameters(featureParameters)
     const hygenCommand = `HYGEN_OVERWRITE=1 HYGEN_TMPLS='${__dirname}' hygen ${typeOfData} ${typeOfFeature} ${cliParameters}`
+    console.log(hygenCommand)
     await spawnShellCommand(hygenCommand)
 }
 
