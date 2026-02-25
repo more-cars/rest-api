@@ -52,13 +52,14 @@ export const RaceTrack = {
         return nodes
     },
 
-    async delete(raceTrackId: number): Promise<void> {
-        const node = await RaceTrack.findById(raceTrackId)
+    async delete(id: number): Promise<void> {
+        const node = await getNodeById(id)
+
         if (!node) {
-            throw new NodeNotFoundError(raceTrackId)
+            throw new NodeNotFoundError(id)
         }
 
-        await deleteNode(raceTrackId)
+        await deleteNode(id)
     },
 
     async createHasLayoutRelationship(raceTrackId: number, trackLayoutId: number) {

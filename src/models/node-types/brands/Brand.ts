@@ -52,13 +52,14 @@ export const Brand = {
         return nodes
     },
 
-    async delete(brandId: number): Promise<void> {
-        const node = await Brand.findById(brandId)
+    async delete(id: number): Promise<void> {
+        const node = await getNodeById(id)
+
         if (!node) {
-            throw new NodeNotFoundError(brandId)
+            throw new NodeNotFoundError(id)
         }
 
-        await deleteNode(brandId)
+        await deleteNode(id)
     },
 
     async createBelongsToCompanyRelationship(brandId: number, companyId: number) {

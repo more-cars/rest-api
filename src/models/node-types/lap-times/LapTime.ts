@@ -52,13 +52,14 @@ export const LapTime = {
         return nodes
     },
 
-    async delete(lapTimeId: number): Promise<void> {
-        const node = await LapTime.findById(lapTimeId)
+    async delete(id: number): Promise<void> {
+        const node = await getNodeById(id)
+
         if (!node) {
-            throw new NodeNotFoundError(lapTimeId)
+            throw new NodeNotFoundError(id)
         }
 
-        await deleteNode(lapTimeId)
+        await deleteNode(id)
     },
 
     async createBelongsToSessionResultRelationship(lapTimeId: number, sessionResultId: number) {

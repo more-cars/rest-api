@@ -54,13 +54,14 @@ export const CarModelVariant = {
         return nodes
     },
 
-    async delete(carModelVariantId: number): Promise<void> {
-        const node = await CarModelVariant.findById(carModelVariantId)
+    async delete(id: number): Promise<void> {
+        const node = await getNodeById(id)
+
         if (!node) {
-            throw new NodeNotFoundError(carModelVariantId)
+            throw new NodeNotFoundError(id)
         }
 
-        await deleteNode(carModelVariantId)
+        await deleteNode(id)
     },
 
     async createIsVariantOfRelationship(carModelVariantId: number, carModelId: number) {

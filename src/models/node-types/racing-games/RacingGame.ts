@@ -52,13 +52,14 @@ export const RacingGame = {
         return nodes
     },
 
-    async delete(racingGameId: number): Promise<void> {
-        const node = await RacingGame.findById(racingGameId)
+    async delete(id: number): Promise<void> {
+        const node = await getNodeById(id)
+
         if (!node) {
-            throw new NodeNotFoundError(racingGameId)
+            throw new NodeNotFoundError(id)
         }
 
-        await deleteNode(racingGameId)
+        await deleteNode(id)
     },
 
     async createFeaturesCarModelVariantRelationship(racingGameId: number, carModelVariantId: number) {

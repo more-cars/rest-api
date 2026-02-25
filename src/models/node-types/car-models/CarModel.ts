@@ -53,13 +53,14 @@ export const CarModel = {
         return nodes
     },
 
-    async delete(carModelId: number): Promise<void> {
-        const node = await CarModel.findById(carModelId)
+    async delete(id: number): Promise<void> {
+        const node = await getNodeById(id)
+
         if (!node) {
-            throw new NodeNotFoundError(carModelId)
+            throw new NodeNotFoundError(id)
         }
 
-        await deleteNode(carModelId)
+        await deleteNode(id)
     },
 
     async createBelongsToBrandRelationship(carModelId: number, brandId: number) {

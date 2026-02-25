@@ -50,13 +50,14 @@ export const GamingPlatform = {
         return nodes
     },
 
-    async delete(gamingPlatformId: number): Promise<void> {
-        const node = await GamingPlatform.findById(gamingPlatformId)
+    async delete(id: number): Promise<void> {
+        const node = await getNodeById(id)
+
         if (!node) {
-            throw new NodeNotFoundError(gamingPlatformId)
+            throw new NodeNotFoundError(id)
         }
 
-        await deleteNode(gamingPlatformId)
+        await deleteNode(id)
     },
 
     async createFeaturesRacingGameRelationship(gamingPlatformId: number, racingGameId: number) {

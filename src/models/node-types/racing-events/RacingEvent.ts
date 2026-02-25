@@ -55,13 +55,14 @@ export const RacingEvent = {
         return nodes
     },
 
-    async delete(racingEventId: number): Promise<void> {
-        const node = await RacingEvent.findById(racingEventId)
+    async delete(id: number): Promise<void> {
+        const node = await getNodeById(id)
+
         if (!node) {
-            throw new NodeNotFoundError(racingEventId)
+            throw new NodeNotFoundError(id)
         }
 
-        await deleteNode(racingEventId)
+        await deleteNode(id)
     },
 
     async createBelongsToRacingSeriesRelationship(racingEventId: number, racingSeriesId: number) {

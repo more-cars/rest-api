@@ -57,13 +57,14 @@ export const Image = {
         return nodes
     },
 
-    async delete(imageId: number): Promise<void> {
-        const node = await Image.findById(imageId)
+    async delete(id: number): Promise<void> {
+        const node = await getNodeById(id)
+
         if (!node) {
-            throw new NodeNotFoundError(imageId)
+            throw new NodeNotFoundError(id)
         }
 
-        await deleteNode(imageId)
+        await deleteNode(id)
     },
 
     async createBelongsToNodeRelationship(imageId: number, partnerId: number) {
