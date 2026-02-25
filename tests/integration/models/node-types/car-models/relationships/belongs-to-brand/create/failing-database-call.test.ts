@@ -4,7 +4,7 @@ import {DbNodeType} from "../../../../../../../../src/db/types/DbNodeType"
 import {CarModel} from "../../../../../../../../src/models/node-types/car-models/CarModel"
 
 test('A completely valid request, but the database call fails for some reason', async () => {
-    vi.mock("../../../../../../../src/db/relationships/createRelationship", async () => {
+    vi.mock("../../../../../../../../src/db/relationships/createRelationship", async () => {
         return {
             createRelationship: () => false
         }
