@@ -1,6 +1,6 @@
 import type {CarModelVariantNode as ModelCarModelVariantNode} from "../../../models/node-types/car-model-variants/types/CarModelVariantNode"
 import type {CarModelVariantNode} from "./types/CarModelVariantNode"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../types/ControllerNodeType"
 
 export function convertCarModelVariantModelNodeToControllerNode(modelNode: ModelCarModelVariantNode): CarModelVariantNode {
     return {

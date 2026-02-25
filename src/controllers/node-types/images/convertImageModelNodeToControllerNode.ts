@@ -1,6 +1,6 @@
 import type {ImageNode as ModelImageNode} from "../../../models/node-types/images/types/ImageNode"
 import type {ImageNode} from "./types/ImageNode"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../types/ControllerNodeType"
 
 export function convertImageModelNodeToControllerNode(modelNode: ModelImageNode): ImageNode {
     return {

@@ -2,7 +2,7 @@ import {When, world} from "@cucumber/cucumber"
 import axios from "axios"
 import {dasherize, pluralize} from "inflection"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
-import type {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
+import type {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 import type {DbNodeType} from "../../../../src/db/types/DbNodeType"
 import {getExhaustiveFakeInputDataForDbNode} from "../../../_toolbox/fixtures/nodes/getExhaustiveFakeInputDataForDbNode"
 

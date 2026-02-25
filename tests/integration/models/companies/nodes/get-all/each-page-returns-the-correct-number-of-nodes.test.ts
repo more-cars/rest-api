@@ -4,7 +4,6 @@ import {Company} from "../../../../../../src/models/node-types/companies/Company
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 
 describe('Each page of a "get all COMPANY nodes" request returns the correct number of nodes', () => {
     test.each([

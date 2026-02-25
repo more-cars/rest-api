@@ -1,5 +1,5 @@
 import type {Rel} from "../../models/relationships/types/Rel"
-import type {Relation} from "./types/Relation"
+import type {Relation} from "../types/Relation"
 import {mapModelRelationTypeToControllerRelationType} from "./mapModelRelationTypeToControllerRelationType"
 import {convertModelNodeToControllerNode} from "../nodes/convertModelNodeToControllerNode"
 

@@ -1,6 +1,6 @@
 import type {CompanyNode as ModelCompanyNode} from "../../../models/node-types/companies/types/CompanyNode"
 import type {CompanyNode} from "./types/CompanyNode"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../types/ControllerNodeType"
 
 export function convertCompanyModelNodeToControllerNode(modelNode: ModelCompanyNode): CompanyNode {
     return {

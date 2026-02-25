@@ -1,7 +1,7 @@
 import {When, world} from "@cucumber/cucumber"
 import axios from "axios"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
-import type {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
+import type {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 import assert from "assert"
 
 When('the user requests a {string} collection via {string}',

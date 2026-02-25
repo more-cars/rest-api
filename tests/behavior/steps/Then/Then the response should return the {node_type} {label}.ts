@@ -3,7 +3,7 @@ import assert from "assert"
 import type {DbNode} from "../../../../src/db/types/DbNode"
 import {getResponseNodeSchema} from "../../../_toolbox/schemas/response/getResponseNodeSchema"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
-import {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 import {validateJson} from "../../../_toolbox/validateJson"
 
 Then('the response should return the {string} {string}',

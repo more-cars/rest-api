@@ -1,5 +1,4 @@
-import type {NodeCollectionResponse} from "../types/NodeCollectionResponse"
-import {marshalSingleNode} from "./marshalSingleNode"
+import {RelationType} from "./RelationType"
 import type {CompanyNode} from "../node-types/companies/types/CompanyNode"
 import type {BrandNode} from "../node-types/brands/types/BrandNode"
 import type {CarModelNode} from "../node-types/car-models/types/CarModelNode"
@@ -15,19 +14,10 @@ import type {RacingGameNode} from "../node-types/racing-games/types/RacingGameNo
 import type {GamingPlatformNode} from "../node-types/gaming-platforms/types/GamingPlatformNode"
 import type {ImageNode} from "../node-types/images/types/ImageNode"
 
-export function marshalNodeCollection(nodes: (
-    CompanyNode | CarModelNode | BrandNode | CarModelVariantNode |
-    RaceTrackNode | TrackLayoutNode |
-    RacingSeriesNode | RacingEventNode | RacingSessionNode | SessionResultNode | LapTimeNode |
-    RacingGameNode | GamingPlatformNode | ImageNode)[]
-) {
-    const response: NodeCollectionResponse = {
-        data: []
-    }
-
-    nodes.forEach((node) => {
-        response.data.push(marshalSingleNode(node.fields))
-    })
-
-    return response
+export type Relation = {
+    id: number
+    type: RelationType
+    partner_node: CompanyNode | BrandNode | CarModelNode | CarModelVariantNode | RaceTrackNode | TrackLayoutNode | RacingSeriesNode | RacingEventNode | RacingSessionNode | SessionResultNode | LapTimeNode | RacingGameNode | GamingPlatformNode | ImageNode
+    created_at: string
+    updated_at: string
 }

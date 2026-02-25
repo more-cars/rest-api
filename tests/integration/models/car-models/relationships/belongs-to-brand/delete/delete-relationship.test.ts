@@ -6,7 +6,6 @@ import {getSpecificRelationship} from "../../../../../../../src/db/relationships
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoundError"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {CarModel} from "../../../../../../../src/models/node-types/car-models/CarModel"
 
 describe('Deleting a ›belongs-to-brand‹ relationship', () => {

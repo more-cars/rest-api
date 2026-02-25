@@ -1,6 +1,5 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {SessionResultNode} from "../../../../../../src/models/node-types/session-results/types/SessionResultNode"
 import {SessionResult} from "../../../../../../src/models/node-types/session-results/SessionResult"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"

@@ -1,6 +1,6 @@
 import type {ModelNode} from "../../models/types/ModelNode"
 import {ModelNodeType} from "../../models/types/ModelNodeType"
-import {NodeTypeNotFoundError} from "./types/NodeTypeNotFoundError"
+import {NodeTypeNotFoundError} from "../types/NodeTypeNotFoundError"
 import {convertCompanyModelNodeToControllerNode} from "../node-types/companies/convertCompanyModelNodeToControllerNode"
 import {convertBrandModelNodeToControllerNode} from "../node-types/brands/convertBrandModelNodeToControllerNode"
 import {convertCarModelModelNodeToControllerNode} from "../node-types/car-models/convertCarModelModelNodeToControllerNode"

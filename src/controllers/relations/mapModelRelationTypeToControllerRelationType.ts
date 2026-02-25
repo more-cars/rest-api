@@ -1,6 +1,6 @@
 import {RelType} from "../../models/relationships/types/RelType"
-import {RelationType} from "./types/RelationType"
-import {RelationTypeNotFoundError} from "./types/RelationTypeNotFoundError"
+import {RelationType} from "../types/RelationType"
+import {RelationTypeNotFoundError} from "../types/RelationTypeNotFoundError"
 
 export function mapModelRelationTypeToControllerRelationType(modelRelationshipType: RelType): RelationType {
     const mapping = new Map<RelType, RelationType>([

@@ -1,4 +1,4 @@
-import {ControllerNodeType} from "../../../nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../../types/ControllerNodeType"
 
 export type ImageNode = {
     node_type: ControllerNodeType.Image

@@ -1,4 +1,4 @@
-import type {NodeResponse} from "./types/NodeResponse"
+import type {NodeResponse} from "../types/NodeResponse"
 
 export function marshalSingleNode(node: object) {
     return {

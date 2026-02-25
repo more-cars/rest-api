@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {TrackLayoutNode} from "../../../../../src/models/node-types/track-layouts/types/TrackLayoutNode"
 import {ModelNodeType} from "../../../../../src/models/types/ModelNodeType"
 import {convertTrackLayoutModelNodeToControllerNode} from "../../../../../src/controllers/node-types/track-layouts/convertTrackLayoutModelNodeToControllerNode"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../../../../src/controllers/types/ControllerNodeType"
 
 test("converting a TRACK LAYOUT node", async () => {
     const node: TrackLayoutNode = {

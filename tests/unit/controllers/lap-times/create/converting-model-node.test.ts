@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {LapTimeNode} from "../../../../../src/models/node-types/lap-times/types/LapTimeNode"
 import {ModelNodeType} from "../../../../../src/models/types/ModelNodeType"
 import {convertLapTimeModelNodeToControllerNode} from "../../../../../src/controllers/node-types/lap-times/convertLapTimeModelNodeToControllerNode"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../../../../src/controllers/types/ControllerNodeType"
 
 test("converting a LAP TIME node", async () => {
     const node: LapTimeNode = {

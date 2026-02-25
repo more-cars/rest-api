@@ -1,4 +1,4 @@
-import {ControllerNodeType} from "../../../nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../../types/ControllerNodeType"
 
 export type CompanyNode = {
     node_type: ControllerNodeType.Company

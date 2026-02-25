@@ -1,6 +1,6 @@
 import type {RacingGameNode as ModelRacingGameNode} from "../../../models/node-types/racing-games/types/RacingGameNode"
 import type {RacingGameNode} from "./types/RacingGameNode"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../types/ControllerNodeType"
 
 export function convertRacingGameModelNodeToControllerNode(modelNode: ModelRacingGameNode): RacingGameNode {
     return {

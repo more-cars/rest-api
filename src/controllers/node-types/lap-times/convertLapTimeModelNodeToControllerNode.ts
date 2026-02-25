@@ -1,6 +1,6 @@
 import type {LapTimeNode as ModelLapTimeNode} from "../../../models/node-types/lap-times/types/LapTimeNode"
 import type {LapTimeNode} from "./types/LapTimeNode"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../types/ControllerNodeType"
 
 export function convertLapTimeModelNodeToControllerNode(modelNode: ModelLapTimeNode): LapTimeNode {
     return {

@@ -2,7 +2,7 @@ import {Then, world} from "@cucumber/cucumber"
 import assert from "assert"
 import axios from "axios"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
-import type {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
+import type {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 
 Then('the {string} {string} should not exist anymore',
     async (nodeType: string, label: string) => {

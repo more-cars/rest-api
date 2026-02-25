@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {RacingSessionNode} from "../../../../../src/models/node-types/racing-sessions/types/RacingSessionNode"
 import {ModelNodeType} from "../../../../../src/models/types/ModelNodeType"
 import {convertRacingSessionModelNodeToControllerNode} from "../../../../../src/controllers/node-types/racing-sessions/convertRacingSessionModelNodeToControllerNode"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../../../../src/controllers/types/ControllerNodeType"
 
 test("converting a RACING SESSION node", async () => {
     const node: RacingSessionNode = {

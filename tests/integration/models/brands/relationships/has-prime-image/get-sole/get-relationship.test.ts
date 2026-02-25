@@ -1,6 +1,5 @@
 import {describe, expect, test} from 'vitest'
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {Brand} from "../../../../../../../src/models/node-types/brands/Brand"
 import {validateJson} from "../../../../../../_toolbox/validateJson"

@@ -1,6 +1,6 @@
 ---
 inject: true
-to: src/controllers/nodes/types/ControllerNodeType.ts
+to: src/controllers/types/ControllerNodeType.ts
 before: Image
 skip_if: <%= h.changeCase.pascal(nodeType) %>
 ---

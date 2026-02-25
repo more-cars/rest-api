@@ -7,7 +7,6 @@ import {getSpecificRelationship} from "../../../../../../../src/db/relationships
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../../../../../src/models/types/RelNotFoundError"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 
 describe('Deleting a ›has-successor‹ relationship', () => {
     test('CAR MODEL node does not exist', async () => {

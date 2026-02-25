@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {SessionResultNode} from "../../../../../src/models/node-types/session-results/types/SessionResultNode"
 import {ModelNodeType} from "../../../../../src/models/types/ModelNodeType"
 import {convertSessionResultModelNodeToControllerNode} from "../../../../../src/controllers/node-types/session-results/convertSessionResultModelNodeToControllerNode"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../../../../src/controllers/types/ControllerNodeType"
 
 test("converting a SESSION RESULT node", async () => {
     const node: SessionResultNode = {

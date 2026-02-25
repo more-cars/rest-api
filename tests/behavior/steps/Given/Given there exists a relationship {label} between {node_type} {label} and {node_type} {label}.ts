@@ -2,7 +2,7 @@ import {Given, world} from "@cucumber/cucumber"
 import axios from "axios"
 import type {DbNode} from "../../../../src/db/types/DbNode"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
-import type {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
+import type {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 import {getBasePathFragmentForRelationship} from "../../../_toolbox/dbSeeding/getBasePathFragmentForRelationship"
 
 Given('there exists a(n) relationship {string} between {string} {string} and {string} {string}',

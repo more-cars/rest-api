@@ -1,4 +1,4 @@
-import type {ControllerNodeType} from "../../../src/controllers/nodes/types/ControllerNodeType"
+import type {ControllerNodeType} from "../../../src/controllers/types/ControllerNodeType"
 import {dasherize} from "inflection"
 
 // TODO mapping doesn't work when there exist different relationships between the same nodes

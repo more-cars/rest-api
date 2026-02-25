@@ -1,6 +1,6 @@
 import type {TrackLayoutNode as ModelTrackLayoutNodeNode} from "../../../models/node-types/track-layouts/types/TrackLayoutNode"
 import type {TrackLayoutNode} from "./types/TrackLayoutNode"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../types/ControllerNodeType"
 
 export function convertTrackLayoutModelNodeToControllerNode(modelNode: ModelTrackLayoutNodeNode): TrackLayoutNode {
     return {

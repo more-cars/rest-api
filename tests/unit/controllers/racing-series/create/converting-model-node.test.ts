@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {RacingSeriesNode} from "../../../../../src/models/node-types/racing-series/types/RacingSeriesNode"
 import {ModelNodeType} from "../../../../../src/models/types/ModelNodeType"
 import {convertRacingSeriesModelNodeToControllerNode} from "../../../../../src/controllers/node-types/racing-series/convertRacingSeriesModelNodeToControllerNode"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../../../../src/controllers/types/ControllerNodeType"
 
 test("converting a RACING SERIES node", async () => {
     const node: RacingSeriesNode = {

@@ -1,7 +1,7 @@
 import {When, world} from "@cucumber/cucumber"
 import axios from "axios"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
-import {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 import {dasherize, pluralize} from "inflection"
 
 When('the user requests a {string} collection, sorted {string} by {string}',

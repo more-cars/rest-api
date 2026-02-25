@@ -1,7 +1,7 @@
 import {When, world} from "@cucumber/cucumber"
 import axios from "axios"
 import {seedNode} from "../../../_toolbox/dbSeeding/seedNode"
-import type {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
+import type {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
 import {getBasePathFragmentForRelationship} from "../../../_toolbox/dbSeeding/getBasePathFragmentForRelationship"
 import {pascalCase} from "change-case"

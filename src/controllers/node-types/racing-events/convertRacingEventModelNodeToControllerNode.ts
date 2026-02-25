@@ -1,6 +1,6 @@
 import type {RacingEventNode as ModelRacingEventNode} from "../../../models/node-types/racing-events/types/RacingEventNode"
 import type {RacingEventNode} from "./types/RacingEventNode"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../types/ControllerNodeType"
 
 export function convertRacingEventModelNodeToControllerNode(modelNode: ModelRacingEventNode): RacingEventNode {
     return {

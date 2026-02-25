@@ -1,6 +1,6 @@
 import type {BrandNode as ModelBrandNode} from "../../../models/node-types/brands/types/BrandNode"
 import type {BrandNode} from "./types/BrandNode"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../types/ControllerNodeType"
 
 export function convertBrandModelNodeToControllerNode(modelNode: ModelBrandNode): BrandNode {
     return {

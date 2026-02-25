@@ -1,5 +1,5 @@
 import assert from "assert"
-import {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 import {CompanySchema} from "../CompanySchema"
 import {BrandSchema} from "../BrandSchema"
 import {CarModelSchema} from "../CarModelSchema"

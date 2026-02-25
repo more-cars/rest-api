@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {BrandNode} from "../../../../../src/models/node-types/brands/types/BrandNode"
 import {ModelNodeType} from "../../../../../src/models/types/ModelNodeType"
 import {convertBrandModelNodeToControllerNode} from "../../../../../src/controllers/node-types/brands/convertBrandModelNodeToControllerNode"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../../../../src/controllers/types/ControllerNodeType"
 
 test("converting a BRAND node", async () => {
     const node: BrandNode = {

@@ -1,6 +1,6 @@
 import type {RacingSessionNode as ModelRacingSessionNode} from "../../../models/node-types/racing-sessions/types/RacingSessionNode"
 import type {RacingSessionNode} from "./types/RacingSessionNode"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../types/ControllerNodeType"
 
 export function convertRacingSessionModelNodeToControllerNode(modelNode: ModelRacingSessionNode): RacingSessionNode {
     return {

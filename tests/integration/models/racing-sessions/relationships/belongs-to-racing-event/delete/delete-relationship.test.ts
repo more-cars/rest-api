@@ -3,7 +3,6 @@ import {RacingSession} from "../../../../../../../src/models/node-types/racing-s
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {seedRelationship} from "../../../../../../_toolbox/dbSeeding/seedRelationship"
-import {ControllerNodeType} from "../../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import {getSpecificRelationship} from "../../../../../../../src/db/relationships/getSpecificRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 import {NodeNotFoundError} from "../../../../../../../src/models/types/NodeNotFoundError"

@@ -4,7 +4,6 @@ import {CarModelVariant} from "../../../../../../src/models/node-types/car-model
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 
 describe('Each page of a "get all CAR MODEL VARIANT nodes" request returns the correct number of nodes', () => {
     test.each([

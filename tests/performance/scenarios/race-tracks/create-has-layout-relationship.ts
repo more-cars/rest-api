@@ -2,7 +2,7 @@ import http from 'k6/http'
 import {check} from "k6"
 import {Trend} from "k6/metrics"
 import {createNode} from "../../_testdata/createNode.ts"
-import {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 
 const trendDuration = new Trend('duration', true)
 

@@ -1,6 +1,6 @@
 import type {SessionResultNode as ModelSessionResultNode} from "../../../models/node-types/session-results/types/SessionResultNode"
 import type {SessionResultNode} from "./types/SessionResultNode"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../types/ControllerNodeType"
 
 export function convertSessionResultModelNodeToControllerNode(modelNode: ModelSessionResultNode): SessionResultNode {
     return {

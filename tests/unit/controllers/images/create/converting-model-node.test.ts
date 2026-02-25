@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {ImageNode} from "../../../../../src/models/node-types/images/types/ImageNode"
 import {ModelNodeType} from "../../../../../src/models/types/ModelNodeType"
 import {convertImageModelNodeToControllerNode} from "../../../../../src/controllers/node-types/images/convertImageModelNodeToControllerNode"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../../../../src/controllers/types/ControllerNodeType"
 
 test("converting an IMAGE node", async () => {
     const node: ImageNode = {

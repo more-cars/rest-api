@@ -1,6 +1,5 @@
 import {describe, expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
-import {ControllerNodeType} from "../../../../../../src/controllers/nodes/types/ControllerNodeType"
 import type {CarModelNode} from "../../../../../../src/models/node-types/car-models/types/CarModelNode"
 import {CarModel} from "../../../../../../src/models/node-types/car-models/CarModel"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"

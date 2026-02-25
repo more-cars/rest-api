@@ -4,7 +4,7 @@ import {Trend} from "k6/metrics"
 import {createBrand} from "../../_testdata/createBrand.ts"
 import {createCompany} from "../../_testdata/createCompany.ts"
 import {createRelationship} from "../../_testdata/createRelationship.ts"
-import {ControllerNodeType} from "../../../../src/controllers/nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 
 const trendDuration = new Trend('duration', true)
 

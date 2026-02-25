@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {GamingPlatformNode} from "../../../../../src/models/node-types/gaming-platforms/types/GamingPlatformNode"
 import {ModelNodeType} from "../../../../../src/models/types/ModelNodeType"
 import {convertGamingPlatformNodeToControllerNode} from "../../../../../src/controllers/node-types/gaming-platforms/convertGamingPlatformNodeToControllerNode"
-import {ControllerNodeType} from "../../../../../src/controllers/nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../../../../src/controllers/types/ControllerNodeType"
 
 test("converting a GAMING PLATFORM node", async () => {
     const node: GamingPlatformNode = {

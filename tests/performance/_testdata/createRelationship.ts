@@ -1,5 +1,5 @@
 import http from "k6/http"
-import type {ControllerNodeType} from "../../../src/controllers/nodes/types/ControllerNodeType.ts"
+import type {ControllerNodeType} from "../../../src/controllers/types/ControllerNodeType.ts"
 import {getBasePathFragmentForNodeType} from "../../_toolbox/dbSeeding/getBasePathFragmentForNodeType.ts"
 import {dasherize} from "inflection"
 

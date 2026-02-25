@@ -1,5 +1,5 @@
-import type {Relation} from "./types/Relation"
-import type {RelationResponse} from "./types/RelationResponse"
+import type {Relation} from "../types/Relation"
+import type {RelationResponse} from "../types/RelationResponse"
 
 export function marshalRelation(relation: Relation) {
     const marshalledRelation: RelationResponse = {

@@ -1,6 +1,6 @@
 import type {RaceTrackNode as ModelRaceTrackNode} from "../../../models/node-types/race-tracks/types/RaceTrackNode"
 import type {RaceTrackNode} from "./types/RaceTrackNode"
-import {ControllerNodeType} from "../../nodes/types/ControllerNodeType"
+import {ControllerNodeType} from "../../types/ControllerNodeType"
 
 export function convertRaceTrackModelNodeToControllerNode(modelNode: ModelRaceTrackNode): RaceTrackNode {
     return {
