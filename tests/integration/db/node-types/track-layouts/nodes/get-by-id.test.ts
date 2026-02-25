@@ -1,0 +1,22 @@
+import {expect, test} from 'vitest'
+import {getNodeById} from "../../../../../../src/db/node-types/track-layouts/getNodeById"
+import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
+import {TrackLayoutSchema} from "../../../../../_toolbox/schemas/db/TrackLayoutSchema"
+import {validateJson} from "../../../../../_toolbox/validateJson"
+
+test('Querying a TRACK LAYOUT that does not exist should return "false"', async () => {
+    const expectedTrackLayoutNode = false
+    const actualTrackLayoutNode = await getNodeById(-42)
+
+    expect(actualTrackLayoutNode)
+        .toBe(expectedTrackLayoutNode)
+})
+
+test('Querying an existing TRACK LAYOUT should return a db node with correct schema', async () => {
+    const createdNode = await seedNode(DbNodeType.TrackLayout)
+    const trackLayoutNode = await getNodeById(createdNode.properties.id)
+
+    expect(validateJson(trackLayoutNode, TrackLayoutSchema))
+        .toBeTruthy()
+})
