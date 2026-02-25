@@ -1,5 +1,6 @@
 import type {ModelNode} from "../../models/types/ModelNode"
 import {ModelNodeType} from "../../models/types/ModelNodeType"
+import type {ControllerNode} from "../types/ControllerNode"
 import {NodeTypeNotFoundError} from "../types/NodeTypeNotFoundError"
 import {convertCompanyModelNodeToControllerNode} from "../node-types/companies/convertCompanyModelNodeToControllerNode"
 import {convertBrandModelNodeToControllerNode} from "../node-types/brands/convertBrandModelNodeToControllerNode"
@@ -30,7 +31,7 @@ import type {RacingGameNode} from "../../models/node-types/racing-games/types/Ra
 import type {GamingPlatformNode} from "../../models/node-types/gaming-platforms/types/GamingPlatformNode"
 import type {ImageNode} from "../../models/node-types/images/types/ImageNode"
 
-export function convertModelNodeToControllerNode(modelNode: ModelNode) {
+export function convertModelNodeToControllerNode(modelNode: ModelNode): ControllerNode {
     switch (modelNode.node_type) {
         case ModelNodeType.Company:
             return convertCompanyModelNodeToControllerNode(modelNode as CompanyNode)
