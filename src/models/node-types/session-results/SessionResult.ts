@@ -53,13 +53,14 @@ export const SessionResult = {
         return nodes
     },
 
-    async delete(sessionResultId: number): Promise<void> {
-        const node = await SessionResult.findById(sessionResultId)
+    async delete(id: number): Promise<void> {
+        const node = await getNodeById(id)
+
         if (!node) {
-            throw new NodeNotFoundError(sessionResultId)
+            throw new NodeNotFoundError(id)
         }
 
-        await deleteNode(sessionResultId)
+        await deleteNode(id)
     },
 
     async createBelongsToRacingSessionRelationship(sessionResultId: number, racingSessionId: number) {

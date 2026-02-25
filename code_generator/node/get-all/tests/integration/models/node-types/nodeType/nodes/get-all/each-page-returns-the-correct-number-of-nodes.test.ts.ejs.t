@@ -1,0 +1,38 @@
+---
+to: tests/integration/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/nodes/get-all/each-page-returns-the-correct-number-of-nodes.test.ts
+---
+import {describe, expect, test} from 'vitest'
+import {deleteAllNodesOfType} from "../../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
+import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
+import type {<%= h.changeCase.pascal(nodeType) %>Node} from "../../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node"
+import {<%= h.changeCase.pascal(nodeType) %>} from "../../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"
+import {seedNodes} from "../../../../../../_toolbox/dbSeeding/seedNodes"
+
+describe('Each page of a "get all <%= h.changeCase.upper(nodeType) %> nodes" request returns the correct number of nodes', () => {
+    test.each([
+        [1],
+        [2],
+        [99],
+    ])('when there exist no <%= h.changeCase.upper(nodeType) %> nodes (page=$0)', async (page) => {
+        await deleteAllNodesOfType(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>)
+
+        const expectedNodes: <%= h.changeCase.pascal(nodeType) %>Node[] = []
+        const actualNodes = await <%= h.changeCase.pascal(nodeType) %>.findAll({page})
+
+        expect(actualNodes)
+            .toEqual(expectedNodes)
+    })
+
+    test.each([
+        [20, 1, 20],
+        [5, 2, 0],
+    ])('when there exist $0 <%= h.changeCase.upper(nodeType) %> nodes (page=$1)', async (totalNodeAmount, page, expectedNodeAmountOnPage) => {
+        await deleteAllNodesOfType(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>)
+        await seedNodes(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>, totalNodeAmount)
+
+        const actualNodes = await <%= h.changeCase.pascal(nodeType) %>.findAll({page})
+
+        expect(actualNodes.length)
+            .toEqual(expectedNodeAmountOnPage)
+    })
+})
