@@ -62,16 +62,9 @@ export const RacingSeries = {
     },
 
     async createHasRacingEventRelationship(racingSeriesId: number, racingEventId: number) {
-
-        const racingSeries = await RacingSeries.findById(racingSeriesId)
-        if (!racingSeries) {
-            throw new NodeNotFoundError(racingSeriesId)
-        }
-
-        const racingEvent = await RacingEvent.findById(racingEventId)
-        if (!racingEvent) {
-            throw new NodeNotFoundError(racingEventId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSeries.findById(racingSeriesId)
+        await RacingEvent.findById(racingEventId)
 
         const existingRelation = await getSpecificRel(racingSeriesId, racingEventId, RelType.RacingSeriesHasRacingEvent)
         if (existingRelation) {
@@ -89,24 +82,16 @@ export const RacingSeries = {
     },
 
     async getAllHasRacingEventRelationships(racingSeriesId: number) {
-        const racingSeries = await RacingSeries.findById(racingSeriesId)
-        if (!racingSeries) {
-            throw new NodeNotFoundError(racingSeriesId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await RacingSeries.findById(racingSeriesId)
 
         return getAllRels(racingSeriesId, RelType.RacingSeriesHasRacingEvent)
     },
 
     async deleteHasRacingEventRelationship(racingSeriesId: number, racingEventId: number) {
-        const racingSeries = await RacingSeries.findById(racingSeriesId)
-        if (!racingSeries) {
-            throw new NodeNotFoundError(racingSeriesId)
-        }
-
-        const racingEvent = await RacingEvent.findById(racingEventId)
-        if (!racingEvent) {
-            throw new NodeNotFoundError(racingEventId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSeries.findById(racingSeriesId)
+        await RacingEvent.findById(racingEventId)
 
         const relationship = await getSpecificRel(racingSeriesId, racingEventId, RelType.RacingSeriesHasRacingEvent)
         if (!relationship) {
@@ -117,16 +102,9 @@ export const RacingSeries = {
     },
 
     async createHasImageRelationship(racingSeriesId: number, imageId: number) {
-
-        const racingSeries = await RacingSeries.findById(racingSeriesId)
-        if (!racingSeries) {
-            throw new NodeNotFoundError(racingSeriesId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSeries.findById(racingSeriesId)
+        await Image.findById(imageId)
 
         const existingRelation = await getSpecificRel(racingSeriesId, imageId, RelType.RacingSeriesHasImage)
         if (existingRelation) {
@@ -142,24 +120,16 @@ export const RacingSeries = {
     },
 
     async getAllHasImageRelationships(racingSeriesId: number) {
-        const racingSeries = await RacingSeries.findById(racingSeriesId)
-        if (!racingSeries) {
-            throw new NodeNotFoundError(racingSeriesId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await RacingSeries.findById(racingSeriesId)
 
         return getAllRels(racingSeriesId, RelType.RacingSeriesHasImage)
     },
 
     async deleteHasImageRelationship(racingSeriesId: number, imageId: number) {
-        const racingSeries = await RacingSeries.findById(racingSeriesId)
-        if (!racingSeries) {
-            throw new NodeNotFoundError(racingSeriesId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSeries.findById(racingSeriesId)
+        await Image.findById(imageId)
 
         const relationship = await getSpecificRel(racingSeriesId, imageId, RelType.RacingSeriesHasImage)
         if (!relationship) {
@@ -170,16 +140,9 @@ export const RacingSeries = {
     },
 
     async createHasPrimeImageRelationship(racingSeriesId: number, imageId: number) {
-
-        const racingSeries = await RacingSeries.findById(racingSeriesId)
-        if (!racingSeries) {
-            throw new NodeNotFoundError(racingSeriesId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSeries.findById(racingSeriesId)
+        await Image.findById(imageId)
 
         const existingRelation = await getSpecificRel(racingSeriesId, imageId, RelType.RacingSeriesHasPrimeImage)
         if (existingRelation) {
@@ -197,10 +160,8 @@ export const RacingSeries = {
     },
 
     async getHasPrimeImageRelationship(racingSeriesId: number) {
-        const racingSeries = await RacingSeries.findById(racingSeriesId)
-        if (!racingSeries) {
-            throw new NodeNotFoundError(racingSeriesId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await RacingSeries.findById(racingSeriesId)
 
         const relationship = await getRel(racingSeriesId, RelType.RacingSeriesHasPrimeImage)
         if (!relationship) {
@@ -211,15 +172,9 @@ export const RacingSeries = {
     },
 
     async deleteHasPrimeImageRelationship(racingSeriesId: number, imageId: number) {
-        const racingSeries = await RacingSeries.findById(racingSeriesId)
-        if (!racingSeries) {
-            throw new NodeNotFoundError(racingSeriesId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSeries.findById(racingSeriesId)
+        await Image.findById(imageId)
 
         const relationship = await getSpecificRel(racingSeriesId, imageId, RelType.RacingSeriesHasPrimeImage)
         if (!relationship) {

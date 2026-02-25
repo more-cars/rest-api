@@ -62,15 +62,9 @@ export const Company = {
     },
 
     async createHasBrandRelationship(companyId: number, brandId: number) {
-        const company = await Company.findById(companyId)
-        if (!company) {
-            throw new NodeNotFoundError(companyId)
-        }
-
-        const brand = await Brand.findById(brandId)
-        if (!brand) {
-            throw new NodeNotFoundError(brandId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await Company.findById(companyId)
+        await Brand.findById(brandId)
 
         const existingRelationship = await getSpecificRel(companyId, brandId, RelType.CompanyHasBrand)
         if (existingRelationship) {
@@ -88,24 +82,16 @@ export const Company = {
     },
 
     async getAllHasBrandRelationships(companyId: number) {
-        const company = await Company.findById(companyId)
-        if (!company) {
-            throw new NodeNotFoundError(companyId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await Company.findById(companyId)
 
         return getAllRels(companyId, RelType.CompanyHasBrand)
     },
 
     async deleteHasBrandRelationship(companyId: number, brandId: number) {
-        const company = await Company.findById(companyId)
-        if (!company) {
-            throw new NodeNotFoundError(companyId)
-        }
-
-        const brand = await Brand.findById(brandId)
-        if (!brand) {
-            throw new NodeNotFoundError(brandId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await Company.findById(companyId)
+        await Brand.findById(brandId)
 
         const relationship = await getSpecificRel(companyId, brandId, RelType.CompanyHasBrand)
         if (!relationship) {
@@ -116,15 +102,9 @@ export const Company = {
     },
 
     async createHasImageRelationship(companyId: number, imageId: number) {
-        const company = await Company.findById(companyId)
-        if (!company) {
-            throw new NodeNotFoundError(companyId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await Company.findById(companyId)
+        await Image.findById(imageId)
 
         const existingRelationship = await getSpecificRel(companyId, imageId, RelType.CompanyHasImage)
         if (existingRelationship) {
@@ -140,24 +120,16 @@ export const Company = {
     },
 
     async getAllHasImageRelationships(companyId: number) {
-        const company = await Company.findById(companyId)
-        if (!company) {
-            throw new NodeNotFoundError(companyId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await Company.findById(companyId)
 
         return getAllRels(companyId, RelType.CompanyHasImage)
     },
 
     async deleteHasImageRelationship(companyId: number, imageId: number) {
-        const company = await Company.findById(companyId)
-        if (!company) {
-            throw new NodeNotFoundError(companyId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await Company.findById(companyId)
+        await Image.findById(imageId)
 
         const relationship = await getSpecificRel(companyId, imageId, RelType.CompanyHasImage)
         if (!relationship) {
@@ -168,15 +140,9 @@ export const Company = {
     },
 
     async createHasPrimeImageRelationship(companyId: number, imageId: number) {
-        const company = await Company.findById(companyId)
-        if (!company) {
-            throw new NodeNotFoundError(companyId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await Company.findById(companyId)
+        await Image.findById(imageId)
 
         const existingRelationship = await getSpecificRel(companyId, imageId, RelType.CompanyHasPrimeImage)
         if (existingRelationship) {
@@ -194,10 +160,8 @@ export const Company = {
     },
 
     async getHasPrimeImageRelationship(companyId: number) {
-        const company = await Company.findById(companyId)
-        if (!company) {
-            throw new NodeNotFoundError(companyId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await Company.findById(companyId)
 
         const relationship = await getRel(companyId, RelType.CompanyHasPrimeImage)
         if (!relationship) {
@@ -208,15 +172,9 @@ export const Company = {
     },
 
     async deleteHasPrimeImageRelationship(companyId: number, imageId: number) {
-        const company = await Company.findById(companyId)
-        if (!company) {
-            throw new NodeNotFoundError(companyId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await Company.findById(companyId)
+        await Image.findById(imageId)
 
         const relationship = await getSpecificRel(companyId, imageId, RelType.CompanyHasPrimeImage)
         if (!relationship) {

@@ -61,15 +61,9 @@ export const GamingPlatform = {
     },
 
     async createFeaturesRacingGameRelationship(gamingPlatformId: number, racingGameId: number) {
-        const gamingPlatform = await GamingPlatform.findById(gamingPlatformId)
-        if (!gamingPlatform) {
-            throw new NodeNotFoundError(gamingPlatformId)
-        }
-
-        const racingGame = await RacingGame.findById(racingGameId)
-        if (!racingGame) {
-            throw new NodeNotFoundError(racingGameId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await GamingPlatform.findById(gamingPlatformId)
+        await RacingGame.findById(racingGameId)
 
         const existingRelation = await getSpecificRel(gamingPlatformId, racingGameId, RelType.GamingPlatformFeaturesRacingGame)
         if (existingRelation) {
@@ -86,24 +80,16 @@ export const GamingPlatform = {
     },
 
     async getAllFeaturesRacingGameRelationships(gamingPlatformId: number) {
-        const gamingPlatform = await GamingPlatform.findById(gamingPlatformId)
-        if (!gamingPlatform) {
-            throw new NodeNotFoundError(gamingPlatformId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await GamingPlatform.findById(gamingPlatformId)
 
         return getAllRels(gamingPlatformId, RelType.GamingPlatformFeaturesRacingGame)
     },
 
     async deleteFeaturesRacingGameRelationship(gamingPlatformId: number, racingGameId: number) {
-        const gamingPlatform = await GamingPlatform.findById(gamingPlatformId)
-        if (!gamingPlatform) {
-            throw new NodeNotFoundError(gamingPlatformId)
-        }
-
-        const racingGame = await RacingGame.findById(racingGameId)
-        if (!racingGame) {
-            throw new NodeNotFoundError(racingGameId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await GamingPlatform.findById(gamingPlatformId)
+        await RacingGame.findById(racingGameId)
 
         const relationship = await getSpecificRel(gamingPlatformId, racingGameId, RelType.GamingPlatformFeaturesRacingGame)
         if (!relationship) {
@@ -114,21 +100,14 @@ export const GamingPlatform = {
     },
 
     async createHasImageRelationship(gamingPlatformId: number, imageId: number) {
-        const gamingPlatform = await GamingPlatform.findById(gamingPlatformId)
-        if (!gamingPlatform) {
-            throw new NodeNotFoundError(gamingPlatformId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await GamingPlatform.findById(gamingPlatformId)
+        await Image.findById(imageId)
 
         const existingRelation = await getSpecificRel(gamingPlatformId, imageId, RelType.GamingPlatformHasImage)
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.GamingPlatformHasImage, gamingPlatformId, imageId)
         }
-
 
         const createdRelationship = await createRel(gamingPlatformId, imageId, RelType.GamingPlatformHasImage)
         if (!createdRelationship) {
@@ -139,24 +118,16 @@ export const GamingPlatform = {
     },
 
     async getAllHasImageRelationships(gamingPlatformId: number) {
-        const gamingPlatform = await GamingPlatform.findById(gamingPlatformId)
-        if (!gamingPlatform) {
-            throw new NodeNotFoundError(gamingPlatformId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await GamingPlatform.findById(gamingPlatformId)
 
         return getAllRels(gamingPlatformId, RelType.GamingPlatformHasImage)
     },
 
     async deleteHasImageRelationship(gamingPlatformId: number, imageId: number) {
-        const gamingPlatform = await GamingPlatform.findById(gamingPlatformId)
-        if (!gamingPlatform) {
-            throw new NodeNotFoundError(gamingPlatformId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await GamingPlatform.findById(gamingPlatformId)
+        await Image.findById(imageId)
 
         const relationship = await getSpecificRel(gamingPlatformId, imageId, RelType.GamingPlatformHasImage)
         if (!relationship) {
@@ -167,15 +138,9 @@ export const GamingPlatform = {
     },
 
     async createHasPrimeImageRelationship(gamingPlatformId: number, imageId: number) {
-        const gamingPlatform = await GamingPlatform.findById(gamingPlatformId)
-        if (!gamingPlatform) {
-            throw new NodeNotFoundError(gamingPlatformId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await GamingPlatform.findById(gamingPlatformId)
+        await Image.findById(imageId)
 
         const existingRelation = await getSpecificRel(gamingPlatformId, imageId, RelType.GamingPlatformHasPrimeImage)
         if (existingRelation) {
@@ -193,10 +158,8 @@ export const GamingPlatform = {
     },
 
     async getHasPrimeImageRelationship(gamingPlatformId: number) {
-        const gamingPlatform = await GamingPlatform.findById(gamingPlatformId)
-        if (!gamingPlatform) {
-            throw new NodeNotFoundError(gamingPlatformId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await GamingPlatform.findById(gamingPlatformId)
 
         const relationship = await getRel(gamingPlatformId, RelType.GamingPlatformHasPrimeImage)
         if (!relationship) {
@@ -207,15 +170,9 @@ export const GamingPlatform = {
     },
 
     async deleteHasPrimeImageRelationship(gamingPlatformId: number, imageId: number) {
-        const gamingPlatform = await GamingPlatform.findById(gamingPlatformId)
-        if (!gamingPlatform) {
-            throw new NodeNotFoundError(gamingPlatformId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await GamingPlatform.findById(gamingPlatformId)
+        await Image.findById(imageId)
 
         const relationship = await getSpecificRel(gamingPlatformId, imageId, RelType.GamingPlatformHasPrimeImage)
         if (!relationship) {

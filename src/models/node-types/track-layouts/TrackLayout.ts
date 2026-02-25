@@ -65,16 +65,9 @@ export const TrackLayout = {
     },
 
     async createBelongsToRaceTrackRelationship(trackLayoutId: number, raceTrackId: number) {
-
-        const trackLayout = await TrackLayout.findById(trackLayoutId)
-        if (!trackLayout) {
-            throw new NodeNotFoundError(trackLayoutId)
-        }
-
-        const raceTrack = await RaceTrack.findById(raceTrackId)
-        if (!raceTrack) {
-            throw new NodeNotFoundError(raceTrackId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
+        await RaceTrack.findById(raceTrackId)
 
         const existingRelation = await getSpecificRel(trackLayoutId, raceTrackId, RelType.TrackLayoutBelongsToRaceTrack)
         if (existingRelation) {
@@ -92,10 +85,8 @@ export const TrackLayout = {
     },
 
     async getBelongsToRaceTrackRelationship(trackLayoutId: number) {
-        const trackLayout = await TrackLayout.findById(trackLayoutId)
-        if (!trackLayout) {
-            throw new NodeNotFoundError(trackLayoutId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
 
         const relationship = await getRel(trackLayoutId, RelType.TrackLayoutBelongsToRaceTrack)
         if (!relationship) {
@@ -106,15 +97,9 @@ export const TrackLayout = {
     },
 
     async deleteBelongsToRaceTrackRelationship(trackLayoutId: number, raceTrackId: number) {
-        const trackLayout = await TrackLayout.findById(trackLayoutId)
-        if (!trackLayout) {
-            throw new NodeNotFoundError(trackLayoutId)
-        }
-
-        const raceTrack = await RaceTrack.findById(raceTrackId)
-        if (!raceTrack) {
-            throw new NodeNotFoundError(raceTrackId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
+        await RaceTrack.findById(raceTrackId)
 
         const relationship = await getSpecificRel(trackLayoutId, raceTrackId, RelType.TrackLayoutBelongsToRaceTrack)
         if (!relationship) {
@@ -125,16 +110,9 @@ export const TrackLayout = {
     },
 
     async createWasUsedByRacingEventRelationship(trackLayoutId: number, racingEventId: number) {
-
-        const trackLayout = await TrackLayout.findById(trackLayoutId)
-        if (!trackLayout) {
-            throw new NodeNotFoundError(trackLayoutId)
-        }
-
-        const racingEvent = await RacingEvent.findById(racingEventId)
-        if (!racingEvent) {
-            throw new NodeNotFoundError(racingEventId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
+        await RacingEvent.findById(racingEventId)
 
         const existingRelation = await getSpecificRel(trackLayoutId, racingEventId, RelType.TrackLayoutWasUsedByRacingEvent)
         if (existingRelation) {
@@ -152,24 +130,16 @@ export const TrackLayout = {
     },
 
     async getAllWasUsedByRacingEventRelationships(trackLayoutId: number) {
-        const trackLayout = await TrackLayout.findById(trackLayoutId)
-        if (!trackLayout) {
-            throw new NodeNotFoundError(trackLayoutId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
 
         return getAllRels(trackLayoutId, RelType.TrackLayoutWasUsedByRacingEvent)
     },
 
     async deleteWasUsedByRacingEventRelationship(trackLayoutId: number, racingEventId: number) {
-        const trackLayout = await TrackLayout.findById(trackLayoutId)
-        if (!trackLayout) {
-            throw new NodeNotFoundError(trackLayoutId)
-        }
-
-        const racingEvent = await RacingEvent.findById(racingEventId)
-        if (!racingEvent) {
-            throw new NodeNotFoundError(racingEventId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
+        await RacingEvent.findById(racingEventId)
 
         const relationship = await getSpecificRel(trackLayoutId, racingEventId, RelType.TrackLayoutWasUsedByRacingEvent)
         if (!relationship) {
@@ -180,16 +150,9 @@ export const TrackLayout = {
     },
 
     async createHasLapTimeRelationship(trackLayoutId: number, lapTimeId: number) {
-
-        const trackLayout = await TrackLayout.findById(trackLayoutId)
-        if (!trackLayout) {
-            throw new NodeNotFoundError(trackLayoutId)
-        }
-
-        const lapTime = await LapTime.findById(lapTimeId)
-        if (!lapTime) {
-            throw new NodeNotFoundError(lapTimeId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
+        await LapTime.findById(lapTimeId)
 
         const existingRelation = await getSpecificRel(trackLayoutId, lapTimeId, RelType.TrackLayoutHasLapTime)
         if (existingRelation) {
@@ -207,24 +170,16 @@ export const TrackLayout = {
     },
 
     async getAllHasLapTimeRelationships(trackLayoutId: number) {
-        const trackLayout = await TrackLayout.findById(trackLayoutId)
-        if (!trackLayout) {
-            throw new NodeNotFoundError(trackLayoutId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
 
         return getAllRels(trackLayoutId, RelType.TrackLayoutHasLapTime)
     },
 
     async deleteHasLapTimeRelationship(trackLayoutId: number, lapTimeId: number) {
-        const trackLayout = await TrackLayout.findById(trackLayoutId)
-        if (!trackLayout) {
-            throw new NodeNotFoundError(trackLayoutId)
-        }
-
-        const lapTime = await LapTime.findById(lapTimeId)
-        if (!lapTime) {
-            throw new NodeNotFoundError(lapTimeId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
+        await LapTime.findById(lapTimeId)
 
         const relationship = await getSpecificRel(trackLayoutId, lapTimeId, RelType.TrackLayoutHasLapTime)
         if (!relationship) {
@@ -235,16 +190,9 @@ export const TrackLayout = {
     },
 
     async createHasImageRelationship(trackLayoutId: number, imageId: number) {
-
-        const trackLayout = await TrackLayout.findById(trackLayoutId)
-        if (!trackLayout) {
-            throw new NodeNotFoundError(trackLayoutId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
+        await Image.findById(imageId)
 
         const existingRelation = await getSpecificRel(trackLayoutId, imageId, RelType.TrackLayoutHasImage)
         if (existingRelation) {
@@ -260,24 +208,16 @@ export const TrackLayout = {
     },
 
     async getAllHasImageRelationships(trackLayoutId: number) {
-        const trackLayout = await TrackLayout.findById(trackLayoutId)
-        if (!trackLayout) {
-            throw new NodeNotFoundError(trackLayoutId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
 
         return getAllRels(trackLayoutId, RelType.TrackLayoutHasImage)
     },
 
     async deleteHasImageRelationship(trackLayoutId: number, imageId: number) {
-        const trackLayout = await TrackLayout.findById(trackLayoutId)
-        if (!trackLayout) {
-            throw new NodeNotFoundError(trackLayoutId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
+        await Image.findById(imageId)
 
         const relationship = await getSpecificRel(trackLayoutId, imageId, RelType.TrackLayoutHasImage)
         if (!relationship) {
@@ -288,16 +228,9 @@ export const TrackLayout = {
     },
 
     async createHasPrimeImageRelationship(trackLayoutId: number, imageId: number) {
-
-        const trackLayout = await TrackLayout.findById(trackLayoutId)
-        if (!trackLayout) {
-            throw new NodeNotFoundError(trackLayoutId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
+        await Image.findById(imageId)
 
         const existingRelation = await getSpecificRel(trackLayoutId, imageId, RelType.TrackLayoutHasPrimeImage)
         if (existingRelation) {
@@ -315,10 +248,8 @@ export const TrackLayout = {
     },
 
     async getHasPrimeImageRelationship(trackLayoutId: number) {
-        const trackLayout = await TrackLayout.findById(trackLayoutId)
-        if (!trackLayout) {
-            throw new NodeNotFoundError(trackLayoutId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
 
         const relationship = await getRel(trackLayoutId, RelType.TrackLayoutHasPrimeImage)
         if (!relationship) {
@@ -329,15 +260,9 @@ export const TrackLayout = {
     },
 
     async deleteHasPrimeImageRelationship(trackLayoutId: number, imageId: number) {
-        const trackLayout = await TrackLayout.findById(trackLayoutId)
-        if (!trackLayout) {
-            throw new NodeNotFoundError(trackLayoutId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
+        await Image.findById(imageId)
 
         const relationship = await getSpecificRel(trackLayoutId, imageId, RelType.TrackLayoutHasPrimeImage)
         if (!relationship) {
@@ -348,15 +273,9 @@ export const TrackLayout = {
     },
 
     async createIsFeaturedInRacingGameRelationship(trackLayoutId: number, racingGameId: number) {
-        const trackLayout = await TrackLayout.findById(trackLayoutId)
-        if (!trackLayout) {
-            throw new NodeNotFoundError(trackLayoutId)
-        }
-
-        const racingGame = await RacingGame.findById(racingGameId)
-        if (!racingGame) {
-            throw new NodeNotFoundError(racingGameId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
+        await RacingGame.findById(racingGameId)
 
         const existingRelation = await getSpecificRel(trackLayoutId, racingGameId, RelType.TrackLayoutIsFeaturedInRacingGame)
         if (existingRelation) {
@@ -373,24 +292,16 @@ export const TrackLayout = {
     },
 
     async getAllIsFeaturedInRacingGameRelationships(trackLayoutId: number) {
-        const trackLayout = await TrackLayout.findById(trackLayoutId)
-        if (!trackLayout) {
-            throw new NodeNotFoundError(trackLayoutId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
 
         return getAllRels(trackLayoutId, RelType.TrackLayoutIsFeaturedInRacingGame)
     },
 
     async deleteIsFeaturedInRacingGameRelationship(trackLayoutId: number, racingGameId: number) {
-        const trackLayout = await TrackLayout.findById(trackLayoutId)
-        if (!trackLayout) {
-            throw new NodeNotFoundError(trackLayoutId)
-        }
-
-        const racingGame = await RacingGame.findById(racingGameId)
-        if (!racingGame) {
-            throw new NodeNotFoundError(racingGameId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
+        await RacingGame.findById(racingGameId)
 
         const relationship = await getSpecificRel(trackLayoutId, racingGameId, RelType.TrackLayoutIsFeaturedInRacingGame)
         if (!relationship) {

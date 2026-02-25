@@ -72,15 +72,9 @@ export const Image = {
             throw new SemanticError(`Image #${imageId} cannot be connected to itself`)
         }
 
-        const image = await getNodeById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
-
+        // checking that both nodes exist -> exception is thrown if not
+        await Image.findById(imageId)
         const partner = await Node.findById(partnerId)
-        if (!partner) {
-            throw new NodeNotFoundError(partnerId)
-        }
 
         if (nodeIsAnImageNode(partner)) {
             throw new SemanticError(`Image #${imageId} cannot be connected to another image`)
@@ -100,15 +94,9 @@ export const Image = {
     },
 
     async getSpecificBelongsToNodeRelationship(imageId: number, partnerId: number) {
-        const image = await getNodeById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
-
-        const partner = await Node.findById(partnerId)
-        if (!partner) {
-            throw new NodeNotFoundError(partnerId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await Image.findById(imageId)
+        await Node.findById(partnerId)
 
         const relationship = await getSpecificRel(imageId, partnerId, RelType.ImageBelongsToNode)
         if (!relationship) {
@@ -119,24 +107,16 @@ export const Image = {
     },
 
     async getAllBelongsToNodeRelationships(imageId: number) {
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await Image.findById(imageId)
 
         return getAllRels(imageId, RelType.ImageBelongsToNode)
     },
 
     async deleteBelongsToNodeRelationship(imageId: number, partnerNodeId: number) {
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
-
-        const partnerNode = await Node.findById(partnerNodeId)
-        if (!partnerNode) {
-            throw new NodeNotFoundError(partnerNodeId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await Image.findById(imageId)
+        await Node.findById(partnerNodeId)
 
         const relationship = await getSpecificRel(imageId, partnerNodeId, RelType.ImageBelongsToNode)
         if (!relationship) {
@@ -187,15 +167,9 @@ export const Image = {
             throw new SemanticError(`Image #${imageId} cannot be connected to itself`)
         }
 
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
-
+        // checking that both nodes exist -> exception is thrown if not
+        await Image.findById(imageId)
         const node = await Node.findById(nodeId)
-        if (!node) {
-            throw new NodeNotFoundError(nodeId)
-        }
 
         if (nodeIsAnImageNode(node)) {
             throw new SemanticError(`Image #${imageId} cannot be connected to another image`)
@@ -217,24 +191,16 @@ export const Image = {
     },
 
     async getAllIsPrimeImageOfNodeRelationships(imageId: number) {
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await Image.findById(imageId)
 
         return getAllRels(imageId, RelType.ImageIsPrimeImageOfNode)
     },
 
     async deleteIsPrimeImageOfNodeRelationship(imageId: number, nodeId: number) {
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
-
-        const node = await Node.findById(nodeId)
-        if (!node) {
-            throw new NodeNotFoundError(nodeId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await Image.findById(imageId)
+        await Node.findById(nodeId)
 
         const relationship = await getSpecificRel(imageId, nodeId, RelType.ImageIsPrimeImageOfNode)
         if (!relationship) {

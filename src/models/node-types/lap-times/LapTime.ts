@@ -63,16 +63,9 @@ export const LapTime = {
     },
 
     async createBelongsToSessionResultRelationship(lapTimeId: number, sessionResultId: number) {
-
-        const lapTime = await LapTime.findById(lapTimeId)
-        if (!lapTime) {
-            throw new NodeNotFoundError(lapTimeId)
-        }
-
-        const sessionResult = await SessionResult.findById(sessionResultId)
-        if (!sessionResult) {
-            throw new NodeNotFoundError(sessionResultId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await LapTime.findById(lapTimeId)
+        await SessionResult.findById(sessionResultId)
 
         const existingRelation = await getSpecificRel(lapTimeId, sessionResultId, RelType.LapTimeBelongsToSessionResult)
         if (existingRelation) {
@@ -90,10 +83,8 @@ export const LapTime = {
     },
 
     async getBelongsToSessionResultRelationship(lapTimeId: number) {
-        const lapTime = await LapTime.findById(lapTimeId)
-        if (!lapTime) {
-            throw new NodeNotFoundError(lapTimeId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await LapTime.findById(lapTimeId)
 
         const relationship = await getRel(lapTimeId, RelType.LapTimeBelongsToSessionResult)
         if (!relationship) {
@@ -104,15 +95,9 @@ export const LapTime = {
     },
 
     async deleteBelongsToSessionResultRelationship(lapTimeId: number, sessionResultId: number) {
-        const lapTime = await LapTime.findById(lapTimeId)
-        if (!lapTime) {
-            throw new NodeNotFoundError(lapTimeId)
-        }
-
-        const sessionResult = await SessionResult.findById(sessionResultId)
-        if (!sessionResult) {
-            throw new NodeNotFoundError(sessionResultId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await LapTime.findById(lapTimeId)
+        await SessionResult.findById(sessionResultId)
 
         const relationship = await getSpecificRel(lapTimeId, sessionResultId, RelType.LapTimeBelongsToSessionResult)
         if (!relationship) {
@@ -123,16 +108,9 @@ export const LapTime = {
     },
 
     async createAchievedOnTrackLayoutRelationship(lapTimeId: number, trackLayoutId: number) {
-
-        const lapTime = await LapTime.findById(lapTimeId)
-        if (!lapTime) {
-            throw new NodeNotFoundError(lapTimeId)
-        }
-
-        const trackLayout = await TrackLayout.findById(trackLayoutId)
-        if (!trackLayout) {
-            throw new NodeNotFoundError(trackLayoutId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await LapTime.findById(lapTimeId)
+        await TrackLayout.findById(trackLayoutId)
 
         const existingRelation = await getSpecificRel(lapTimeId, trackLayoutId, RelType.LapTimeAchievedOnTrackLayout)
         if (existingRelation) {
@@ -150,10 +128,8 @@ export const LapTime = {
     },
 
     async getAchievedOnTrackLayoutRelationship(lapTimeId: number) {
-        const lapTime = await LapTime.findById(lapTimeId)
-        if (!lapTime) {
-            throw new NodeNotFoundError(lapTimeId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await LapTime.findById(lapTimeId)
 
         const relationship = await getRel(lapTimeId, RelType.LapTimeAchievedOnTrackLayout)
         if (!relationship) {
@@ -164,15 +140,9 @@ export const LapTime = {
     },
 
     async deleteAchievedOnTrackLayoutRelationship(lapTimeId: number, trackLayoutId: number) {
-        const lapTime = await LapTime.findById(lapTimeId)
-        if (!lapTime) {
-            throw new NodeNotFoundError(lapTimeId)
-        }
-
-        const trackLayout = await TrackLayout.findById(trackLayoutId)
-        if (!trackLayout) {
-            throw new NodeNotFoundError(trackLayoutId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await LapTime.findById(lapTimeId)
+        await TrackLayout.findById(trackLayoutId)
 
         const relationship = await getSpecificRel(lapTimeId, trackLayoutId, RelType.LapTimeAchievedOnTrackLayout)
         if (!relationship) {
@@ -183,15 +153,9 @@ export const LapTime = {
     },
 
     async createAchievedWithCarModelVariantRelationship(lapTimeId: number, carModelVariantId: number) {
-        const lapTime = await LapTime.findById(lapTimeId)
-        if (!lapTime) {
-            throw new NodeNotFoundError(lapTimeId)
-        }
-
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await LapTime.findById(lapTimeId)
+        await CarModelVariant.findById(carModelVariantId)
 
         const existingRelation = await getSpecificRel(lapTimeId, carModelVariantId, RelType.LapTimeAchievedWithCarModelVariant)
         if (existingRelation) {
@@ -209,10 +173,8 @@ export const LapTime = {
     },
 
     async getAchievedWithCarModelVariantRelationship(lapTimeId: number) {
-        const lapTime = await LapTime.findById(lapTimeId)
-        if (!lapTime) {
-            throw new NodeNotFoundError(lapTimeId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await LapTime.findById(lapTimeId)
 
         const relationship = await getRel(lapTimeId, RelType.LapTimeAchievedWithCarModelVariant)
         if (!relationship) {
@@ -223,15 +185,9 @@ export const LapTime = {
     },
 
     async deleteAchievedWithCarModelVariantRelationship(lapTimeId: number, carModelVariantId: number) {
-        const lapTime = await LapTime.findById(lapTimeId)
-        if (!lapTime) {
-            throw new NodeNotFoundError(lapTimeId)
-        }
-
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await LapTime.findById(lapTimeId)
+        await CarModelVariant.findById(carModelVariantId)
 
         const relationship = await getSpecificRel(lapTimeId, carModelVariantId, RelType.LapTimeAchievedWithCarModelVariant)
         if (!relationship) {
@@ -242,16 +198,9 @@ export const LapTime = {
     },
 
     async createHasImageRelationship(lapTimeId: number, imageId: number) {
-
-        const lapTime = await LapTime.findById(lapTimeId)
-        if (!lapTime) {
-            throw new NodeNotFoundError(lapTimeId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await LapTime.findById(lapTimeId)
+        await Image.findById(imageId)
 
         const existingRelation = await getSpecificRel(lapTimeId, imageId, RelType.LapTimeHasImage)
         if (existingRelation) {
@@ -267,24 +216,16 @@ export const LapTime = {
     },
 
     async getAllHasImageRelationships(lapTimeId: number) {
-        const lapTime = await LapTime.findById(lapTimeId)
-        if (!lapTime) {
-            throw new NodeNotFoundError(lapTimeId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await LapTime.findById(lapTimeId)
 
         return getAllRels(lapTimeId, RelType.LapTimeHasImage)
     },
 
     async deleteHasImageRelationship(lapTimeId: number, imageId: number) {
-        const lapTime = await LapTime.findById(lapTimeId)
-        if (!lapTime) {
-            throw new NodeNotFoundError(lapTimeId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await LapTime.findById(lapTimeId)
+        await Image.findById(imageId)
 
         const relationship = await getSpecificRel(lapTimeId, imageId, RelType.LapTimeHasImage)
         if (!relationship) {
@@ -295,16 +236,9 @@ export const LapTime = {
     },
 
     async createHasPrimeImageRelationship(lapTimeId: number, imageId: number) {
-
-        const lapTime = await LapTime.findById(lapTimeId)
-        if (!lapTime) {
-            throw new NodeNotFoundError(lapTimeId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await LapTime.findById(lapTimeId)
+        await Image.findById(imageId)
 
         const existingRelation = await getSpecificRel(lapTimeId, imageId, RelType.LapTimeHasPrimeImage)
         if (existingRelation) {
@@ -322,10 +256,8 @@ export const LapTime = {
     },
 
     async getHasPrimeImageRelationship(lapTimeId: number) {
-        const lapTime = await LapTime.findById(lapTimeId)
-        if (!lapTime) {
-            throw new NodeNotFoundError(lapTimeId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await LapTime.findById(lapTimeId)
 
         const relationship = await getRel(lapTimeId, RelType.LapTimeHasPrimeImage)
         if (!relationship) {
@@ -336,15 +268,9 @@ export const LapTime = {
     },
 
     async deleteHasPrimeImageRelationship(lapTimeId: number, imageId: number) {
-        const lapTime = await LapTime.findById(lapTimeId)
-        if (!lapTime) {
-            throw new NodeNotFoundError(lapTimeId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await LapTime.findById(lapTimeId)
+        await Image.findById(imageId)
 
         const relationship = await getSpecificRel(lapTimeId, imageId, RelType.LapTimeHasPrimeImage)
         if (!relationship) {

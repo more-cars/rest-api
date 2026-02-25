@@ -65,16 +65,9 @@ export const CarModelVariant = {
     },
 
     async createIsVariantOfRelationship(carModelVariantId: number, carModelId: number) {
-
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
-
-        const carModel = await CarModel.findById(carModelId)
-        if (!carModel) {
-            throw new NodeNotFoundError(carModelId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await CarModel.findById(carModelId)
 
         const existingRelation = await getSpecificRel(carModelVariantId, carModelId, RelType.CarModelVariantIsVariantOf)
         if (existingRelation) {
@@ -92,10 +85,8 @@ export const CarModelVariant = {
     },
 
     async getIsVariantOfRelationship(carModelVariantId: number) {
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
 
         const relationship = await getRel(carModelVariantId, RelType.CarModelVariantIsVariantOf)
         if (!relationship) {
@@ -106,15 +97,9 @@ export const CarModelVariant = {
     },
 
     async deleteIsVariantOfRelationship(carModelVariantId: number, carModelId: number) {
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
-
-        const carModel = await CarModel.findById(carModelId)
-        if (!carModel) {
-            throw new NodeNotFoundError(carModelId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await CarModel.findById(carModelId)
 
         const relationship = await getSpecificRel(carModelVariantId, carModelId, RelType.CarModelVariantIsVariantOf)
         if (!relationship) {
@@ -125,15 +110,9 @@ export const CarModelVariant = {
     },
 
     async createAchievedSessionResultRelationship(carModelVariantId: number, sessionResultId: number) {
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
-
-        const sessionResult = await SessionResult.findById(sessionResultId)
-        if (!sessionResult) {
-            throw new NodeNotFoundError(sessionResultId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await SessionResult.findById(sessionResultId)
 
         const existingRelation = await getSpecificRel(carModelVariantId, sessionResultId, RelType.CarModelVariantAchievedSessionResult)
         if (existingRelation) {
@@ -151,24 +130,16 @@ export const CarModelVariant = {
     },
 
     async getAllAchievedSessionResultRelationships(carModelVariantId: number) {
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
 
         return getAllRels(carModelVariantId, RelType.CarModelVariantAchievedSessionResult)
     },
 
     async deleteAchievedSessionResultRelationship(carModelVariantId: number, sessionResultId: number) {
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
-
-        const sessionResult = await SessionResult.findById(sessionResultId)
-        if (!sessionResult) {
-            throw new NodeNotFoundError(sessionResultId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await SessionResult.findById(sessionResultId)
 
         const relationship = await getSpecificRel(carModelVariantId, sessionResultId, RelType.CarModelVariantAchievedSessionResult)
         if (!relationship) {
@@ -179,15 +150,9 @@ export const CarModelVariant = {
     },
 
     async createAchievedLapTimeRelationship(carModelVariantId: number, lapTimeId: number) {
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
-
-        const lapTime = await LapTime.findById(lapTimeId)
-        if (!lapTime) {
-            throw new NodeNotFoundError(lapTimeId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await LapTime.findById(lapTimeId)
 
         const existingRelation = await getSpecificRel(carModelVariantId, lapTimeId, RelType.CarModelVariantAchievedLapTime)
         if (existingRelation) {
@@ -205,24 +170,16 @@ export const CarModelVariant = {
     },
 
     async getAllAchievedLapTimeRelationships(carModelVariantId: number) {
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
 
         return getAllRels(carModelVariantId, RelType.CarModelVariantAchievedLapTime)
     },
 
     async deleteAchievedLapTimeRelationship(carModelVariantId: number, lapTimeId: number) {
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
-
-        const lapTime = await LapTime.findById(lapTimeId)
-        if (!lapTime) {
-            throw new NodeNotFoundError(lapTimeId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await LapTime.findById(lapTimeId)
 
         const relationship = await getSpecificRel(carModelVariantId, lapTimeId, RelType.CarModelVariantAchievedLapTime)
         if (!relationship) {
@@ -233,15 +190,9 @@ export const CarModelVariant = {
     },
 
     async createHasImageRelationship(carModelVariantId: number, imageId: number) {
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await Image.findById(imageId)
 
         const existingRelation = await getSpecificRel(carModelVariantId, imageId, RelType.CarModelVariantHasImage)
         if (existingRelation) {
@@ -257,24 +208,16 @@ export const CarModelVariant = {
     },
 
     async getAllHasImageRelationships(carModelVariantId: number) {
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
 
         return getAllRels(carModelVariantId, RelType.CarModelVariantHasImage)
     },
 
     async deleteHasImageRelationship(carModelVariantId: number, imageId: number) {
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await Image.findById(imageId)
 
         const relationship = await getSpecificRel(carModelVariantId, imageId, RelType.CarModelVariantHasImage)
         if (!relationship) {
@@ -285,15 +228,9 @@ export const CarModelVariant = {
     },
 
     async createHasPrimeImageRelationship(carModelVariantId: number, imageId: number) {
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await Image.findById(imageId)
 
         const existingRelation = await getSpecificRel(carModelVariantId, imageId, RelType.CarModelVariantHasPrimeImage)
         if (existingRelation) {
@@ -311,10 +248,8 @@ export const CarModelVariant = {
     },
 
     async getHasPrimeImageRelationship(carModelVariantId: number) {
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
 
         const relationship = await getRel(carModelVariantId, RelType.CarModelVariantHasPrimeImage)
         if (!relationship) {
@@ -325,15 +260,9 @@ export const CarModelVariant = {
     },
 
     async deleteHasPrimeImageRelationship(carModelVariantId: number, imageId: number) {
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await Image.findById(imageId)
 
         const relationship = await getSpecificRel(carModelVariantId, imageId, RelType.CarModelVariantHasPrimeImage)
         if (!relationship) {
@@ -344,15 +273,9 @@ export const CarModelVariant = {
     },
 
     async createIsFeaturedInRacingGameRelationship(carModelVariantId: number, racingGameId: number) {
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
-
-        const racingGame = await RacingGame.findById(racingGameId)
-        if (!racingGame) {
-            throw new NodeNotFoundError(racingGameId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await RacingGame.findById(racingGameId)
 
         const existingRelation = await getSpecificRel(carModelVariantId, racingGameId, RelType.CarModelVariantIsFeaturedInRacingGame)
         if (existingRelation) {
@@ -369,24 +292,16 @@ export const CarModelVariant = {
     },
 
     async getAllIsFeaturedInRacingGameRelationships(carModelVariantId: number) {
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
 
         return getAllRels(carModelVariantId, RelType.CarModelVariantIsFeaturedInRacingGame)
     },
 
     async deleteIsFeaturedInRacingGameRelationship(carModelVariantId: number, racingGameId: number) {
-        const carModelVariant = await CarModelVariant.findById(carModelVariantId)
-        if (!carModelVariant) {
-            throw new NodeNotFoundError(carModelVariantId)
-        }
-
-        const racingGame = await RacingGame.findById(racingGameId)
-        if (!racingGame) {
-            throw new NodeNotFoundError(racingGameId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await RacingGame.findById(racingGameId)
 
         const relationship = await getSpecificRel(carModelVariantId, racingGameId, RelType.CarModelVariantIsFeaturedInRacingGame)
         if (!relationship) {

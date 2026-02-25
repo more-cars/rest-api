@@ -63,15 +63,9 @@ export const Brand = {
     },
 
     async createBelongsToCompanyRelationship(brandId: number, companyId: number) {
-        const brand = await Brand.findById(brandId)
-        if (!brand) {
-            throw new NodeNotFoundError(brandId)
-        }
-
-        const company = await Company.findById(companyId)
-        if (!company) {
-            throw new NodeNotFoundError(companyId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await Brand.findById(brandId)
+        await Company.findById(companyId)
 
         const existingRelation = await getSpecificRel(brandId, companyId, RelType.BrandBelongsToCompany)
         if (existingRelation) {
@@ -89,10 +83,8 @@ export const Brand = {
     },
 
     async getBelongsToCompanyRelationship(brandId: number) {
-        const brand = await Brand.findById(brandId)
-        if (!brand) {
-            throw new NodeNotFoundError(brandId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await Brand.findById(brandId)
 
         const relationship = await getRel(brandId, RelType.BrandBelongsToCompany)
         if (!relationship) {
@@ -103,15 +95,9 @@ export const Brand = {
     },
 
     async deleteBelongsToCompanyRelationship(brandId: number, companyId: number) {
-        const brand = await Brand.findById(brandId)
-        if (!brand) {
-            throw new NodeNotFoundError(brandId)
-        }
-
-        const company = await Company.findById(companyId)
-        if (!company) {
-            throw new NodeNotFoundError(companyId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await Brand.findById(brandId)
+        await Company.findById(companyId)
 
         const relationship = await getSpecificRel(brandId, companyId, RelType.BrandBelongsToCompany)
         if (!relationship) {
@@ -122,15 +108,9 @@ export const Brand = {
     },
 
     async createHasCarModelRelationship(brandId: number, carModelId: number) {
-        const brand = await Brand.findById(brandId)
-        if (!brand) {
-            throw new NodeNotFoundError(brandId)
-        }
-
-        const carModel = await CarModel.findById(carModelId)
-        if (!carModel) {
-            throw new NodeNotFoundError(carModelId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await Brand.findById(brandId)
+        await CarModel.findById(carModelId)
 
         const existingRelationship = await getSpecificRel(brandId, carModelId, RelType.BrandHasCarModel)
         if (existingRelationship) {
@@ -148,15 +128,9 @@ export const Brand = {
     },
 
     async getSpecificHasCarModelRelationship(brandId: number, carModelId: number) {
-        const brand = await Brand.findById(brandId)
-        if (!brand) {
-            throw new NodeNotFoundError(brandId)
-        }
-
-        const carModel = await CarModel.findById(carModelId)
-        if (!carModel) {
-            throw new NodeNotFoundError(carModelId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await Brand.findById(brandId)
+        await CarModel.findById(carModelId)
 
         const relationship = await getSpecificRel(brandId, carModelId, RelType.BrandHasCarModel)
         if (!relationship) {
@@ -167,24 +141,16 @@ export const Brand = {
     },
 
     async getAllHasCarModelRelationships(brandId: number) {
-        const brand = await this.findById(brandId)
-        if (!brand) {
-            throw new NodeNotFoundError(brandId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await Brand.findById(brandId)
 
         return getAllRels(brandId, RelType.BrandHasCarModel)
     },
 
     async deleteHasCarModelRelationship(brandId: number, carModelId: number) {
-        const brand = await Brand.findById(brandId)
-        if (!brand) {
-            throw new NodeNotFoundError(brandId)
-        }
-
-        const carModel = await CarModel.findById(carModelId)
-        if (!carModel) {
-            throw new NodeNotFoundError(carModelId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await Brand.findById(brandId)
+        await CarModel.findById(carModelId)
 
         const relationship = await getSpecificRel(brandId, carModelId, RelType.BrandHasCarModel)
         if (!relationship) {
@@ -195,15 +161,9 @@ export const Brand = {
     },
 
     async createHasImageRelationship(brandId: number, imageId: number) {
-        const brand = await Brand.findById(brandId)
-        if (!brand) {
-            throw new NodeNotFoundError(brandId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await Brand.findById(brandId)
+        await Image.findById(imageId)
 
         const existingRelationship = await getSpecificRel(brandId, imageId, RelType.BrandHasImage)
         if (existingRelationship) {
@@ -219,15 +179,9 @@ export const Brand = {
     },
 
     async getSpecificHasImageRelationship(brandId: number, imageId: number) {
-        const brand = await Brand.findById(brandId)
-        if (!brand) {
-            throw new NodeNotFoundError(brandId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await Brand.findById(brandId)
+        await Image.findById(imageId)
 
         const relationship = await getSpecificRel(brandId, imageId, RelType.BrandHasImage)
         if (!relationship) {
@@ -238,25 +192,16 @@ export const Brand = {
     },
 
     async getAllHasImageRelationships(brandId: number) {
-        const brand = await this.findById(brandId)
-
-        if (!brand) {
-            throw new NodeNotFoundError(brandId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await Brand.findById(brandId)
 
         return getAllRels(brandId, RelType.BrandHasImage)
     },
 
     async deleteHasImageRelationship(brandId: number, imageId: number) {
-        const brand = await Brand.findById(brandId)
-        if (!brand) {
-            throw new NodeNotFoundError(brandId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await Brand.findById(brandId)
+        await Image.findById(imageId)
 
         const relationship = await getSpecificRel(brandId, imageId, RelType.BrandHasImage)
         if (!relationship) {
@@ -267,15 +212,9 @@ export const Brand = {
     },
 
     async createHasPrimeImageRelationship(brandId: number, imageId: number) {
-        const brand = await Brand.findById(brandId)
-        if (!brand) {
-            throw new NodeNotFoundError(brandId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await Brand.findById(brandId)
+        await Image.findById(imageId)
 
         const existingRelation = await getSpecificRel(brandId, imageId, RelType.BrandHasPrimeImage)
         if (existingRelation) {
@@ -293,10 +232,8 @@ export const Brand = {
     },
 
     async getHasPrimeImageRelationship(brandId: number) {
-        const brand = await Brand.findById(brandId)
-        if (!brand) {
-            throw new NodeNotFoundError(brandId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await Brand.findById(brandId)
 
         const relationship = await getRel(brandId, RelType.BrandHasPrimeImage)
         if (!relationship) {
@@ -307,15 +244,9 @@ export const Brand = {
     },
 
     async deleteHasPrimeImageRelationship(brandId: number, imageId: number) {
-        const brand = await Brand.findById(brandId)
-        if (!brand) {
-            throw new NodeNotFoundError(brandId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await Brand.findById(brandId)
+        await Image.findById(imageId)
 
         const relationship = await getSpecificRel(brandId, imageId, RelType.BrandHasPrimeImage)
         if (!relationship) {

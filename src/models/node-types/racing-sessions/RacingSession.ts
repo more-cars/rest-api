@@ -63,16 +63,9 @@ export const RacingSession = {
     },
 
     async createBelongsToRacingEventRelationship(racingSessionId: number, racingEventId: number) {
-
-        const racingSession = await RacingSession.findById(racingSessionId)
-        if (!racingSession) {
-            throw new NodeNotFoundError(racingSessionId)
-        }
-
-        const racingEvent = await RacingEvent.findById(racingEventId)
-        if (!racingEvent) {
-            throw new NodeNotFoundError(racingEventId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSession.findById(racingSessionId)
+        await RacingEvent.findById(racingEventId)
 
         const existingRelation = await getSpecificRel(racingSessionId, racingEventId, RelType.RacingSessionBelongsToRacingEvent)
         if (existingRelation) {
@@ -90,10 +83,8 @@ export const RacingSession = {
     },
 
     async getBelongsToRacingEventRelationship(racingSessionId: number) {
-        const racingSession = await RacingSession.findById(racingSessionId)
-        if (!racingSession) {
-            throw new NodeNotFoundError(racingSessionId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await RacingSession.findById(racingSessionId)
 
         const relationship = await getRel(racingSessionId, RelType.RacingSessionBelongsToRacingEvent)
         if (!relationship) {
@@ -104,15 +95,9 @@ export const RacingSession = {
     },
 
     async deleteBelongsToRacingEventRelationship(racingSessionId: number, racingEventId: number) {
-        const racingSession = await RacingSession.findById(racingSessionId)
-        if (!racingSession) {
-            throw new NodeNotFoundError(racingSessionId)
-        }
-
-        const racingEvent = await RacingEvent.findById(racingEventId)
-        if (!racingEvent) {
-            throw new NodeNotFoundError(racingEventId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSession.findById(racingSessionId)
+        await RacingEvent.findById(racingEventId)
 
         const relationship = await getSpecificRel(racingSessionId, racingEventId, RelType.RacingSessionBelongsToRacingEvent)
         if (!relationship) {
@@ -123,16 +108,9 @@ export const RacingSession = {
     },
 
     async createHasSessionResultRelationship(racingSessionId: number, sessionResultId: number) {
-
-        const racingSession = await RacingSession.findById(racingSessionId)
-        if (!racingSession) {
-            throw new NodeNotFoundError(racingSessionId)
-        }
-
-        const sessionResult = await SessionResult.findById(sessionResultId)
-        if (!sessionResult) {
-            throw new NodeNotFoundError(sessionResultId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSession.findById(racingSessionId)
+        await SessionResult.findById(sessionResultId)
 
         const existingRelation = await getSpecificRel(racingSessionId, sessionResultId, RelType.RacingSessionHasSessionResult)
         if (existingRelation) {
@@ -150,24 +128,16 @@ export const RacingSession = {
     },
 
     async getAllHasSessionResultRelationships(racingSessionId: number) {
-        const racingSession = await RacingSession.findById(racingSessionId)
-        if (!racingSession) {
-            throw new NodeNotFoundError(racingSessionId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await RacingSession.findById(racingSessionId)
 
         return getAllRels(racingSessionId, RelType.RacingSessionHasSessionResult)
     },
 
     async deleteHasSessionResultRelationship(racingSessionId: number, sessionResultId: number) {
-        const racingSession = await RacingSession.findById(racingSessionId)
-        if (!racingSession) {
-            throw new NodeNotFoundError(racingSessionId)
-        }
-
-        const sessionResult = await SessionResult.findById(sessionResultId)
-        if (!sessionResult) {
-            throw new NodeNotFoundError(sessionResultId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSession.findById(racingSessionId)
+        await SessionResult.findById(sessionResultId)
 
         const relationship = await getSpecificRel(racingSessionId, sessionResultId, RelType.RacingSessionHasSessionResult)
         if (!relationship) {
@@ -178,15 +148,9 @@ export const RacingSession = {
     },
 
     async createHasImageRelationship(racingSessionId: number, imageId: number) {
-        const racingSession = await RacingSession.findById(racingSessionId)
-        if (!racingSession) {
-            throw new NodeNotFoundError(racingSessionId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSession.findById(racingSessionId)
+        await Image.findById(imageId)
 
         const existingRelation = await getSpecificRel(racingSessionId, imageId, RelType.RacingSessionHasImage)
         if (existingRelation) {
@@ -202,24 +166,16 @@ export const RacingSession = {
     },
 
     async getAllHasImageRelationships(racingSessionId: number) {
-        const racingSession = await RacingSession.findById(racingSessionId)
-        if (!racingSession) {
-            throw new NodeNotFoundError(racingSessionId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await RacingSession.findById(racingSessionId)
 
         return getAllRels(racingSessionId, RelType.RacingSessionHasImage)
     },
 
     async deleteHasImageRelationship(racingSessionId: number, imageId: number) {
-        const racingSession = await RacingSession.findById(racingSessionId)
-        if (!racingSession) {
-            throw new NodeNotFoundError(racingSessionId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSession.findById(racingSessionId)
+        await Image.findById(imageId)
 
         const relationship = await getSpecificRel(racingSessionId, imageId, RelType.RacingSessionHasImage)
         if (!relationship) {
@@ -230,16 +186,9 @@ export const RacingSession = {
     },
 
     async createHasPrimeImageRelationship(racingSessionId: number, imageId: number) {
-
-        const racingSession = await RacingSession.findById(racingSessionId)
-        if (!racingSession) {
-            throw new NodeNotFoundError(racingSessionId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSession.findById(racingSessionId)
+        await Image.findById(imageId)
 
         const existingRelation = await getSpecificRel(racingSessionId, imageId, RelType.RacingSessionHasPrimeImage)
         if (existingRelation) {
@@ -257,10 +206,8 @@ export const RacingSession = {
     },
 
     async getHasPrimeImageRelationship(racingSessionId: number) {
-        const racingSession = await RacingSession.findById(racingSessionId)
-        if (!racingSession) {
-            throw new NodeNotFoundError(racingSessionId)
-        }
+        // checking that the node exists -> exception is thrown if not
+        await RacingSession.findById(racingSessionId)
 
         const relationship = await getRel(racingSessionId, RelType.RacingSessionHasPrimeImage)
         if (!relationship) {
@@ -271,15 +218,9 @@ export const RacingSession = {
     },
 
     async deleteHasPrimeImageRelationship(racingSessionId: number, imageId: number) {
-        const racingSession = await RacingSession.findById(racingSessionId)
-        if (!racingSession) {
-            throw new NodeNotFoundError(racingSessionId)
-        }
-
-        const image = await Image.findById(imageId)
-        if (!image) {
-            throw new NodeNotFoundError(imageId)
-        }
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSession.findById(racingSessionId)
+        await Image.findById(imageId)
 
         const relationship = await getSpecificRel(racingSessionId, imageId, RelType.RacingSessionHasPrimeImage)
         if (!relationship) {
