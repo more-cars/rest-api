@@ -1,5 +1,5 @@
 ---
-to: src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/getSpecific<%= h.changeCase.pascal(relationshipName) %>Relation.ts
+to: src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/getSpecific<%= h.changeCase.pascal(relationshipName) %>Relation.ts
 ---
 import express from "express"
 import {<%= h.changeCase.pascal(startNodeType) %>} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"

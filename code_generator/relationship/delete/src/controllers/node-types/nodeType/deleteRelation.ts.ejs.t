@@ -1,13 +1,13 @@
 ---
-to: src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/delete<%= h.changeCase.pascal(relationshipName) %>Relation.ts
+to: src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/delete<%= h.changeCase.pascal(relationshipName) %>Relation.ts
 ---
 import express from "express"
-import {<%= h.changeCase.pascal(startNodeType) %>} from "../../models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
-import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
-import {RelationshipNotFoundError} from "../../models/types/RelationshipNotFoundError"
-import {sendResponse204} from "../responses/sendResponse204"
-import {sendResponse404} from "../responses/sendResponse404"
-import {sendResponse500} from "../responses/sendResponse500"
+import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
+import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
+import {RelNotFoundError} from "../../../models/types/RelNotFoundError"
+import {sendResponse204} from "../../responses/sendResponse204"
+import {sendResponse404} from "../../responses/sendResponse404"
+import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function delete<%= h.changeCase.pascal(relationshipName) %>Relation(req: express.Request, res: express.Response) {
     const <%= h.changeCase.camel(startNodeType) %>Id = parseInt(req.params.<%= h.changeCase.camel(startNodeType) %>Id)
@@ -20,7 +20,7 @@ export async function delete<%= h.changeCase.pascal(relationshipName) %>Relation
     } catch (e) {
         if (e instanceof NodeNotFoundError) {
             return sendResponse404(res)
-        } else if (e instanceof RelationshipNotFoundError) {
+        } else if (e instanceof RelNotFoundError) {
             return sendResponse404(res)
         } else {
             console.error(e)
