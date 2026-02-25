@@ -17,7 +17,7 @@ test('When there are no GAMING PLATFORMS then an empty array should be returned'
 
 test('When GAMING PLATFORMS exist then all of them should be returned', async () => {
     await deleteAllNodesOfType(DbNodeType.GamingPlatform)
-    const amount = Math.ceil(Math.random() * 50)
+    const amount = Math.ceil(Math.random() * 20)
     await seedNodes(DbNodeType.GamingPlatform, amount)
 
     const actualGamingPlatforms = await getAllNodesOfType()

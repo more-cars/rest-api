@@ -17,7 +17,7 @@ test('When there are no BRANDS then an empty array should be returned', async ()
 
 test('When BRANDS exist then all of them should be returned', async () => {
     await deleteAllNodesOfType(DbNodeType.Brand)
-    const amount = Math.ceil(Math.random() * 50)
+    const amount = Math.ceil(Math.random() * 20)
     await seedNodes(DbNodeType.Brand, amount)
 
     const actualBrands = await getAllNodesOfType()

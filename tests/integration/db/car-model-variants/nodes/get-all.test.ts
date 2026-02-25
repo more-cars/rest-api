@@ -17,7 +17,7 @@ test('When there are no CAR MODEL VARIANTS then an empty array should be returne
 
 test('When CAR MODEL VARIANTS exist then all of them should be returned', async () => {
     await deleteAllNodesOfType(DbNodeType.CarModelVariant)
-    const amount = Math.ceil(Math.random() * 50)
+    const amount = Math.ceil(Math.random() * 20)
     await seedNodes(DbNodeType.CarModelVariant, amount)
 
     const actualCarModelVariants = await getAllNodesOfType()

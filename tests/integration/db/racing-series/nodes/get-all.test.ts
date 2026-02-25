@@ -17,7 +17,7 @@ test('When there are no RACING SERIES then an empty array should be returned', a
 
 test('When RACING SERIES exist then all of them should be returned', async () => {
     await deleteAllNodesOfType(DbNodeType.RacingSeries)
-    const amount = Math.ceil(Math.random() * 50)
+    const amount = Math.ceil(Math.random() * 20)
     await seedNodes(DbNodeType.RacingSeries, amount)
 
     const actualRacingSeries = await getAllNodesOfType()

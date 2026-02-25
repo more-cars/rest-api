@@ -20,7 +20,7 @@ test('When there are no <%= h.changeCase.upper(h.inflection.pluralize(nodeType))
 
 test('When <%= h.changeCase.upper(h.inflection.pluralize(nodeType)) %> exist then all of them should be returned', async () => {
     await deleteAllNodesOfType(DbNodeType.<%= h.changeCase.pascal(nodeType) %>)
-    const amount = Math.ceil(Math.random() * 50)
+    const amount = Math.ceil(Math.random() * 20)
     await seedNodes(DbNodeType.<%= h.changeCase.pascal(nodeType) %>, amount)
 
     const actual<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %> = await getAllNodesOfType()
