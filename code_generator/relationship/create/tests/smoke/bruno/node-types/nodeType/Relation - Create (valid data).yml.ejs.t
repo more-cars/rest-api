@@ -32,7 +32,7 @@ runtime:
       operator: isJson
     - expression: res.body.data.relationship_partner.node_type
       operator: eq
-      value: "<%= h.changeCase.kebab(endNodeType) %>"
+      value: "<%= h.changeCase.kebab(h.inflection.pluralize(endNodeType)) %>"
     - expression: res.body.data.relationship_partner.data.id
       operator: eq
       value: "{{valid<%= h.changeCase.pascal(endNodeType) %>Id}}"
