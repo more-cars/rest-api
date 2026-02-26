@@ -5,5 +5,6 @@ const router = express.Router()
 
 router.post('/magazines', MagazineController.create)
 router.get('/magazines/:id', MagazineController.getById)
+router.get('/magazines', MagazineController.getAll)
 
 export default router

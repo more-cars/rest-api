@@ -1,0 +1,21 @@
+info:
+  name: Get all Magazines (valid filter)
+  type: http
+  tags:
+    - get
+    - node
+    - collection
+    - filter
+    - valid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/magazines?filter_by_property=id&filter_value=1234&filter_operator=gte"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body.data
+      operator: isArray

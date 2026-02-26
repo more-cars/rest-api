@@ -11402,6 +11402,65 @@
       }
     },
     "/magazines": {
+      "get": {
+        "operationId": "getMagazines",
+        "tags": [
+          "Magazines"
+        ],
+        "summary": "Get all `Magazines`",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Page"
+          },
+          {
+            "in": "query",
+            "name": "sort_by_property",
+            "description": "Returns the `Magazine` collection, ordered by the specified property.",
+            "schema": {
+              "$ref": "#/components/schemas/MagazineProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/SortDirection"
+          },
+          {
+            "in": "query",
+            "name": "filter_by_property",
+            "description": "Specifies by which node property the `Magazine` collection should be filtered.",
+            "schema": {
+              "$ref": "#/components/schemas/MagazineProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/FilterValue"
+          },
+          {
+            "$ref": "#/components/parameters/FilterOperator"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Magazine` collection successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MagazineCollectionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Magazines"
@@ -16775,6 +16834,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/Magazine"
+          }
+        }
+      },
+      "MagazineCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MagazineResponse"
+            }
           }
         }
       },

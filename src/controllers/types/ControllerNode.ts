@@ -11,6 +11,7 @@ import type {SessionResultNode} from "../node-types/session-results/types/Sessio
 import type {LapTimeNode} from "../node-types/lap-times/types/LapTimeNode"
 import type {RacingGameNode} from "../node-types/racing-games/types/RacingGameNode"
 import type {GamingPlatformNode} from "../node-types/gaming-platforms/types/GamingPlatformNode"
+import type {MagazineNode} from "../node-types/magazines/types/MagazineNode"
 import type {ImageNode} from "../node-types/images/types/ImageNode"
 
 export type ControllerNode =
@@ -27,4 +28,5 @@ export type ControllerNode =
     LapTimeNode |
     RacingGameNode |
     GamingPlatformNode |
+    MagazineNode |
     ImageNode
