@@ -2,16 +2,10 @@ import {expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from "../../../../../src/app.ts"
 import {GamingPlatform} from "../../../../../src/models/node-types/gaming-platforms/GamingPlatform"
-import {ModelNodeType} from "../../../../../src/models/types/ModelNodeType"
+import {FakeGamingPlatform} from "../../../../_toolbox/fixtures/nodes/FakeGamingPlatform"
 
 test('Input data is valid', async () => {
-    GamingPlatform.create = vi.fn().mockReturnValue({
-        node_type: ModelNodeType.GamingPlatform,
-        attributes: {
-            id: 12345,
-            name: "PlayStation 5",
-        },
-    })
+    GamingPlatform.create = vi.fn().mockReturnValue(FakeGamingPlatform.modelOutput())
 
     const response = await request(app)
         .post('/gaming-platforms')

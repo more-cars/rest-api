@@ -2,17 +2,10 @@ import {expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from "../../../../../src/app.ts"
 import {LapTime} from "../../../../../src/models/node-types/lap-times/LapTime"
-import {ModelNodeType} from "../../../../../src/models/types/ModelNodeType"
+import {FakeLapTime} from "../../../../_toolbox/fixtures/nodes/FakeLapTime"
 
 test('Input data is valid', async () => {
-    LapTime.create = vi.fn().mockReturnValue({
-        node_type: ModelNodeType.RaceTrack,
-        attributes: {
-            id: 12345,
-            time: "PT1M33.294S",
-            driver_name: "Klaus Ludwig",
-        }
-    })
+    LapTime.create = vi.fn().mockReturnValue(FakeLapTime.modelOutput())
 
     const response = await request(app)
         .post('/lap-times')

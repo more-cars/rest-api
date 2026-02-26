@@ -2,16 +2,10 @@ import {expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from "../../../../../src/app.ts"
 import {Brand} from "../../../../../src/models/node-types/brands/Brand"
-import {ModelNodeType} from "../../../../../src/models/types/ModelNodeType"
+import {FakeBrand} from "../../../../_toolbox/fixtures/nodes/FakeBrand"
 
 test('Input data is valid', async () => {
-    Brand.create = vi.fn().mockReturnValue({
-        node_type: ModelNodeType.Brand,
-        attributes: {
-            id: 12345,
-            name: "BMW",
-        },
-    })
+    Brand.create = vi.fn().mockReturnValue(FakeBrand.modelOutput())
 
     const response = await request(app)
         .post('/brands')

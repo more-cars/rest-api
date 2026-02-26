@@ -2,16 +2,10 @@ import {expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from "../../../../../src/app.ts"
 import {Image} from "../../../../../src/models/node-types/images/Image"
-import {ModelNodeType} from "../../../../../src/models/types/ModelNodeType"
+import {FakeImage} from "../../../../_toolbox/fixtures/nodes/FakeImage"
 
 test('Input data is valid', async () => {
-    Image.create = vi.fn().mockReturnValue({
-        node_type: ModelNodeType.Image,
-        attributes: {
-            image_provider: 'flickr',
-            external_id: '1234',
-        },
-    })
+    Image.create = vi.fn().mockReturnValue(FakeImage.modelOutput())
 
     const response = await request(app)
         .post('/images')
