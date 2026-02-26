@@ -4,9 +4,9 @@ to: tests/integration/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(
 import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from '../../../../../../src/app'
-import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
+import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../src/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
-import {RelationshipNotFoundError} from "../../../../../../src/models/types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 
 describe('Deleting a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship', () => {
     test('Providing valid data', async () => {
@@ -35,7 +35,7 @@ describe('Deleting a ›<%= h.changeCase.kebab(relationshipName) %>‹ relations
     test('Providing invalid data (non-existent relationship)', async () => {
         vi.spyOn(<%= h.changeCase.pascal(startNodeType) %>, 'delete<%= h.changeCase.pascal(relationshipName) %>Relationship')
             .mockImplementation(async () => {
-                throw new RelationshipNotFoundError('<%= h.changeCase.kebab(relationshipName) %>', 123, 567)
+                throw new RelNotFoundError('<%= h.changeCase.kebab(relationshipName) %>', 123, 567)
             })
 
         const response = await request(app)
