@@ -9,7 +9,7 @@ test('Expecting node to be created when provided with valid data', async () => {
     const inputData = Fake<%= h.changeCase.pascal(nodeType) %>.dbInput()
     const createdNode = await <%= h.changeCase.pascal(nodeType) %>.create(inputData)
 
-    expect(createdNode)
+    expect(createdNode.attributes)
         .toEqual(expect.objectContaining(inputData))
 })
 

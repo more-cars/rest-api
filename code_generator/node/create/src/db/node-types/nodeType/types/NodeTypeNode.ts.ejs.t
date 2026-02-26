@@ -10,7 +10,7 @@ export type <%= h.changeCase.pascal(nodeType) %>Node = {
         created_at: string
         updated_at: string
 <% for (prop in properties) { -%>
-        <%= prop %>: <%= properties[prop].datatype %><% if (!properties[prop].mandatory) { %> | null<% } -%>
+        <%= prop %>: <%= properties[prop].datatype -%><% if (!properties[prop].mandatory) { %> | null<% } -%>
 <% } -%>
 
     }

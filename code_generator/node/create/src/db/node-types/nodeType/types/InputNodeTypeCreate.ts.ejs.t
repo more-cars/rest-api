@@ -3,7 +3,7 @@ to: src/db/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %
 ---
 export type Input<%= h.changeCase.pascal(nodeType) %>Create = {
 <% for (prop in properties) { -%>
-    <%= prop %>: <%= properties[prop].datatype %><% if (!properties[prop].mandatory) { %> | null<% } -%>
+    <%= prop %>: <%= properties[prop].datatype -%><% if (!properties[prop].mandatory) { %> | null<% } -%>
 <% } -%>
 
 }
