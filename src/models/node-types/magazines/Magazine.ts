@@ -14,8 +14,8 @@ import {getSpecificRel} from "../../relationships/getSpecificRel"
 import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
 import {RelType} from "../../relationships/types/RelType"
 import {getAllRels} from "../../relationships/getAllRels"
-import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
+import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 
 export const Magazine = {
     async create(data: CreateMagazineInput): Promise<MagazineNode> {
