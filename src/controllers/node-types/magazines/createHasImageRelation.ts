@@ -4,7 +4,6 @@ import {convertModelRelationToControllerRelation} from "../../relations/convertM
 import {marshalRelation} from "../../relations/marshalRelation"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
-
 import {sendResponse201} from "../../responses/sendResponse201"
 import {sendResponse304} from "../../responses/sendResponse304"
 import {sendResponse404} from "../../responses/sendResponse404"
