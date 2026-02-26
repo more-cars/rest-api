@@ -1,0 +1,25 @@
+info:
+  name: Delete ›has-image‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/magazines/{{validMagazineId}}/has-image/{{validImageId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const Magazines = require('./lib/node-types/Magazines.js')
+        const Images = require('./lib/node-types/Images.js')
+        await Magazines.create()
+        await Images.create()
+        await Magazines.createHasImageRelationship()

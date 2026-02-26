@@ -53,4 +53,12 @@ describe('Magazines', () => {
         expect(MagazineController.getAllHasImageRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-image‹ relationship', async () => {
+        await request(app)
+            .delete('/magazines/123/has-image/456')
+
+        expect(MagazineController.deleteHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
