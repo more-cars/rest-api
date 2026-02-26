@@ -1,6 +1,6 @@
 ---
 inject: true
-to: src/controllers/<%= h.changeCase.pascal(nodeType) %>Controller.ts
+to: src/controllers/node-types/<%= h.changeCase.pascal(nodeType) %>Controller.ts
 before: \},\n\}
 skip_if: async getAll
 ---

@@ -2,7 +2,7 @@
 to: tests/integration/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/nodes/get-all/get-node-collection-filtered.test.ts
 ---
 import {describe, expect, test, vi} from "vitest"
-import {<%= h.changeCase.pascal(nodeType) %>} from "../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"
+import {<%= h.changeCase.pascal(nodeType) %>} from "../../../../../../src/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"
 import request from "supertest"
 import {app} from "../../../../../../src/app"
 

@@ -22,6 +22,7 @@ export async function getAll(req: express.Request, res: express.Response) {
         const modelNodes = await <%= h.changeCase.pascal(nodeType) %>.findAll(params)
         const nodes = modelNodes.map(node => convert<%= h.changeCase.pascal(nodeType) %>ModelNodeToControllerNode(node))
         const marshalledData = marshalNodeCollection(nodes)
+
         return sendResponse200(marshalledData, res)
     } catch (e) {
         if (e instanceof InvalidPaginationParams || e instanceof InvalidSortingParams || e instanceof InvalidFilterParams) {
