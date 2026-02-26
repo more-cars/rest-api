@@ -1,4 +1,4 @@
-import {expect, test} from 'vitest'
+import {describe, expect, test} from 'vitest'
 import {getAllModelRelationshipTypes} from "../../../_toolbox/getAllModelRelationshipTypes"
 import type {Rel} from "../../../../src/models/relationships/types/Rel"
 import {FakeNodeType} from "../../../_toolbox/fixtures/nodes/FakeNodeType"
@@ -6,8 +6,10 @@ import {DbNodeType} from "../../../../src/db/types/DbNodeType"
 import {convertModelRelationToControllerRelation} from "../../../../src/controllers/relations/convertModelRelationToControllerRelation"
 import {marshalRelations} from "../../../../src/controllers/relations/marshalRelations"
 
-test('marshalling a relation collection', async () => {
-    getAllModelRelationshipTypes().forEach((relType) => {
+describe('Marshalling a relation collection', () => {
+    test.each(
+        getAllModelRelationshipTypes().map(relType => [relType])
+    )('when creating a relation from type $0', async (relType) => {
         const origin = FakeNodeType(DbNodeType.Brand).modelOutput()
         const destination = FakeNodeType(DbNodeType.CarModel).modelOutput()
         const rel: Rel = {
