@@ -1,7 +1,8 @@
 export const MagazineSchema = {
     type: "object",
     properties: {
-        data: {
+        node_type: {type: "string"},
+        properties: {
             type: "object",
             properties: {
                 id: {type: ["integer"]},

@@ -11431,6 +11431,48 @@
         }
       }
     },
+    "/magazines/{magazine-id}": {
+      "get": {
+        "operationId": "getMagazineById",
+        "tags": [
+          "Magazines"
+        ],
+        "summary": "Get `Magazine` by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "magazine-id",
+            "description": "ID of the `Magazine`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Magazine` successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MagazineResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. A `Magazine` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/relationships/{relationship-id}": {
       "get": {
         "operationId": "getRelationshipById",

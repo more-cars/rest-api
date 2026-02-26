@@ -20,6 +20,7 @@ export const BrandSchema = {
                 "created_at",
                 "updated_at",
             ],
+            additionalProperties: false,
         },
     },
     additionalProperties: false,

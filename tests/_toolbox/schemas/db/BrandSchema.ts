@@ -5,15 +5,15 @@ export const BrandSchema = {
         properties: {
             type: "object",
             properties: {
-                id: {type: "integer"},
+                id: {type: ["integer"]},
                 name: {type: "string"},
                 full_name: {type: ["string", "null"]},
                 founded: {type: ["integer", "null"]},
                 defunct: {type: ["integer", "null"]},
                 wmi: {type: ["string", "null"]},
                 hsn: {type: ["string", "null"]},
-                created_at: {type: "string"},
-                updated_at: {type: "string"},
+                created_at: {type: ["string"]},
+                updated_at: {type: ["string"]},
             },
             required: [
                 "id",
@@ -21,6 +21,7 @@ export const BrandSchema = {
                 "created_at",
                 "updated_at",
             ],
+            additionalProperties: false,
         },
     },
     additionalProperties: false,

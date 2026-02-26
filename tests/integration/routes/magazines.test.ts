@@ -13,4 +13,12 @@ describe('Magazines', () => {
         expect(MagazineController.create)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get Node by ID', async () => {
+        await request(app)
+            .get('/magazines/123')
+
+        expect(MagazineController.getById)
+            .toHaveBeenCalledTimes(1)
+    })
 })
