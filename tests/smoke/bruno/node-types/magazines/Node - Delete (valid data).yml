@@ -1,0 +1,28 @@
+info:
+  name: Delete Magazine (valid data)
+  type: http
+  tags:
+    - delete
+    - node
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/magazines/{{validMagazineId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+    - expression: res.body
+      operator: isEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const Magazines = require('./lib/node-types/Magazines.js')
+        await Magazines.create()
+    - type: after-response
+      code: |-
+        const Ids = require('./lib/Ids.js')
+        Ids.forgetId('Magazine')

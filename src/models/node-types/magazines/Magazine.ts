@@ -7,6 +7,7 @@ import {getNodeById} from "../../../db/node-types/magazines/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 import {getAllNodesOfType} from "../../../db/node-types/magazines/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
+import {deleteNode} from "../../../db/nodes/deleteNode"
 
 export const Magazine = {
     async create(data: CreateMagazineInput): Promise<MagazineNode> {
@@ -35,5 +36,15 @@ export const Magazine = {
         })
 
         return nodes
+    },
+
+    async delete(id: number): Promise<void> {
+        const node = await getNodeById(id)
+
+        if (!node) {
+            throw new NodeNotFoundError(id)
+        }
+
+        await deleteNode(id)
     },
 }

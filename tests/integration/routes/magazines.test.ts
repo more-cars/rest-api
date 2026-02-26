@@ -29,4 +29,12 @@ describe('Magazines', () => {
         expect(MagazineController.getAll)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete Node', async () => {
+        await request(app)
+            .delete('/magazines/123')
+
+        expect(MagazineController.delete)
+            .toHaveBeenCalledTimes(1)
+    })
 })
