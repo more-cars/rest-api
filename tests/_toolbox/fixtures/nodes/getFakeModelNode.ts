@@ -13,6 +13,7 @@ import {FakeSessionResult} from "./FakeSessionResult"
 import {FakeLapTime} from "./FakeLapTime"
 import {FakeRacingGame} from "./FakeRacingGame"
 import {FakeGamingPlatform} from "./FakeGamingPlatform"
+import {FakeMagazine} from "./FakeMagazine"
 import {FakeImage} from "./FakeImage"
 
 export function getFakeModelNode(nodeType: ModelNodeType) {
@@ -43,6 +44,8 @@ export function getFakeModelNode(nodeType: ModelNodeType) {
             return FakeRacingGame.modelOutput()
         case ModelNodeType.GamingPlatform:
             return FakeGamingPlatform.modelOutput()
+        case ModelNodeType.Magazine:
+            return FakeMagazine.modelOutput()
         case ModelNodeType.Image:
             return FakeImage.modelOutput()
         case ModelNodeType.Node:

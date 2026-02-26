@@ -8,6 +8,11 @@ import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 import {getAllNodesOfType} from "../../../db/node-types/magazines/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {deleteNode} from "../../../db/nodes/deleteNode"
+import {createRel} from "../../relationships/createRel"
+import {Image} from "../images/Image"
+import {getSpecificRel} from "../../relationships/getSpecificRel"
+import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
+import {RelType} from "../../relationships/types/RelType"
 
 export const Magazine = {
     async create(data: CreateMagazineInput): Promise<MagazineNode> {
@@ -46,5 +51,23 @@ export const Magazine = {
         }
 
         await deleteNode(id)
+    },
+
+    async createHasImageRelationship(magazineId: number, imageId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Magazine.findById(magazineId)
+        await Image.findById(imageId)
+
+        const existingRelation = await getSpecificRel(magazineId, imageId, RelType.MagazineHasImage)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.MagazineHasImage, magazineId, imageId)
+        }
+
+        const createdRelationship = await createRel(magazineId, imageId, RelType.MagazineHasImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }

@@ -14,6 +14,7 @@ import {SessionResultRelComposition} from "../node-types/session-results/types/S
 import {LapTimeRelComposition} from "../node-types/lap-times/types/LapTimeRelComposition"
 import {RacingGameRelComposition} from "../node-types/racing-games/types/RacingGameRelComposition"
 import {GamingPlatformRelComposition} from "../node-types/gaming-platforms/types/GamingPlatformRelComposition"
+import {MagazineRelComposition} from "../node-types/magazines/types/MagazineRelComposition"
 
 export function getRelComposition(relationshipType: RelType) {
     const mapping = new Map<RelType, {
@@ -34,6 +35,7 @@ export function getRelComposition(relationshipType: RelType) {
         LapTimeRelComposition,
         RacingGameRelComposition,
         GamingPlatformRelComposition,
+        MagazineRelComposition,
     ))
 
     const relationshipNodePartnerTypes = mapping.get(relationshipType)

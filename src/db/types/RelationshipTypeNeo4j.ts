@@ -65,4 +65,5 @@ export enum RelationshipTypeNeo4j {
     GamingPlatformFeaturesRacingGame = 'FEATURES_RACING_GAME',
     GamingPlatformHasImage = 'HAS_IMAGE',
     GamingPlatformHasPrimeImage = 'HAS_PRIME_IMAGE',
+    MagazineHasImage = 'HAS_IMAGE',
 }

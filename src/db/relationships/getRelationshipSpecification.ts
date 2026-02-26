@@ -14,14 +14,14 @@ import {SessionResultRelationshipSpecification} from "../node-types/session-resu
 import {LapTimeRelationshipSpecification} from "../node-types/lap-times/types/LapTimeRelationshipSpecification"
 import {RacingGameRelationshipSpecification} from "../node-types/racing-games/types/RacingGameRelationshipSpecification"
 import {GamingPlatformRelationshipSpecification} from "../node-types/gaming-platforms/types/GamingPlatformRelationshipSpecification"
+import {MagazineRelationshipSpecification} from "../node-types/magazines/types/MagazineRelationshipSpecification"
 
 export function getRelationshipSpecification(relationshipType: RelationshipType) {
     const mapping = new Map<RelationshipType, {
         startNodeType: DbNodeType,
         endNodeType: DbNodeType,
         isReverseRelationship: boolean,
-    }>(ImageRelationshipSpecification.concat(
-        CompanyRelationshipSpecification,
+    }>(CompanyRelationshipSpecification.concat(
         BrandRelationshipSpecification,
         CarModelRelationshipSpecification,
         CarModelVariantRelationshipSpecification,
@@ -34,6 +34,8 @@ export function getRelationshipSpecification(relationshipType: RelationshipType)
         LapTimeRelationshipSpecification,
         RacingGameRelationshipSpecification,
         GamingPlatformRelationshipSpecification,
+        MagazineRelationshipSpecification,
+        ImageRelationshipSpecification,
     ))
 
     const spec = mapping.get(relationshipType)

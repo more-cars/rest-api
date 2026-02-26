@@ -14,6 +14,7 @@ import {FakeLapTime} from "./FakeLapTime"
 import {FakeRacingGame} from "./FakeRacingGame"
 import {FakeGamingPlatform} from "./FakeGamingPlatform"
 import {FakeImage} from "./FakeImage"
+import {FakeMagazine} from "./FakeMagazine"
 
 export function getExhaustiveFakeInputDataForDbNode(nodeType: DbNodeType) {
     switch (nodeType) {
@@ -43,6 +44,8 @@ export function getExhaustiveFakeInputDataForDbNode(nodeType: DbNodeType) {
             return FakeRacingGame.dbInput()
         case DbNodeType.GamingPlatform:
             return FakeGamingPlatform.dbInput()
+        case DbNodeType.Magazine:
+            return FakeMagazine.dbInput()
         case DbNodeType.Image:
             return FakeImage.dbInput()
         default:

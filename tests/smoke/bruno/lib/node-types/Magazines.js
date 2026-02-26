@@ -1,5 +1,9 @@
 const {post} = require("../apiRequest.js")
 
+exports.createHasImageRelationship = async function () {
+    await post("/magazines/" + bru.getEnvVar('validMagazineId') + "/has-image/" + bru.getEnvVar('validImageId'))
+}
+
 exports.create = async function (prefix = '') {
     const response = await post("/magazines", {
         name: 'Dummy Magazine',
