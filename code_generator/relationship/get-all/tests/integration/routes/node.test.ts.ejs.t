@@ -2,7 +2,7 @@
 inject: true
 to: tests/integration/routes/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>.test.ts
 before: \}\)\n\}\)
-skip_if: Get all ›<%= h.changeCase.kebab(relationshipName) %>‹ Relationships
+skip_if: Get all ›<%= h.changeCase.kebab(relationshipName) %>‹ relationships
 ---
     })
 

@@ -1,6 +1,6 @@
 ---
 inject: true
-to: src/controllers/<%= h.changeCase.pascal(startNodeType) %>Controller.ts
+to: src/controllers/node-types/<%= h.changeCase.pascal(startNodeType) %>Controller.ts
 before: \},\n\}
 skip_if: async getAll<%= h.changeCase.pascal(relationshipName) %>Relations
 ---

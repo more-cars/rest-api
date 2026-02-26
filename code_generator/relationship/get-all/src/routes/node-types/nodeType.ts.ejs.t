@@ -1,6 +1,6 @@
 ---
 inject: true
-to: src/routes/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>.ts
+to: src/routes/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>.ts
 before: \nexport default router
 skip_if: <%= h.changeCase.pascal(startNodeType) %>Controller.getAll<%= h.changeCase.pascal(relationshipName) %>Relations
 ---

@@ -3,24 +3,18 @@ to: tests/integration/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(
 ---
 import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
-import {app} from '../../../../../../src/app'
-import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
+import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../src/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
+import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
+import {app} from '../../../../../../src/app'
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 
 describe('Requesting all ›<%= h.changeCase.kebab(relationshipName) %>‹ relationships', () => {
     test('Providing valid data', async () => {
         <%= h.changeCase.pascal(startNodeType) %>.getAll<%= h.changeCase.pascal(relationshipName) %>Relationships = vi.fn().mockReturnValue([
-            {
-                id: 4,
-                type: RelType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
-            }, {
-                id: 5,
-                type: RelType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
-            }, {
-                id: 6,
-                type: RelType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
-            }
+            getFakeRel(RelType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>),
+            getFakeRel(RelType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>),
+            getFakeRel(RelType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>),
         ])
 
         const response = await request(app)

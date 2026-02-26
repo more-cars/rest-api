@@ -4,19 +4,18 @@ to: tests/integration/db/node-types/<%= h.changeCase.kebab(h.inflection.pluraliz
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
-import {NodeTypeEnum} from "../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
 import {seedRelationshipForStartNode} from "../../../../../../_toolbox/dbSeeding/seedRelationshipForStartNode"
 import {getRelationshipCollection} from "../../../../../../../src/db/relationships/getRelationshipCollection"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
 describe('Requesting all ›<%= h.changeCase.kebab(relationshipName) %>‹ relationships', () => {
     test('node and relationships exist', async () => {
-        const <%= h.changeCase.camel(startNodeType) %> = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>)
-        await seedRelationshipForStartNode(<%= h.changeCase.camel(startNodeType) %>.id, NodeTypeEnum.<%= h.changeCase.constant(endNodeType) %>, RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
-        await seedRelationshipForStartNode(<%= h.changeCase.camel(startNodeType) %>.id, NodeTypeEnum.<%= h.changeCase.constant(endNodeType) %>, RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
+        const <%= h.changeCase.camel(startNodeType) %> = await seedNode(DbNodeType.<%= h.changeCase.pascal(startNodeType) %>)
+        await seedRelationshipForStartNode(<%= h.changeCase.camel(startNodeType) %>.properties.id, DbNodeType.<%= h.changeCase.pascal(endNodeType) %>, RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
+        await seedRelationshipForStartNode(<%= h.changeCase.camel(startNodeType) %>.properties.id, DbNodeType.<%= h.changeCase.pascal(endNodeType) %>, RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
 
         const relationships = await getRelationshipCollection(
-            <%= h.changeCase.camel(startNodeType) %>.id,
+            <%= h.changeCase.camel(startNodeType) %>.properties.id,
             RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
         )
 
@@ -25,10 +24,10 @@ describe('Requesting all ›<%= h.changeCase.kebab(relationshipName) %>‹ relat
     })
 
     test('node exists, but no relationships', async () => {
-        const <%= h.changeCase.camel(startNodeType) %> = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>)
+        const <%= h.changeCase.camel(startNodeType) %> = await seedNode(DbNodeType.<%= h.changeCase.pascal(startNodeType) %>)
 
         const relationships = await getRelationshipCollection(
-            <%= h.changeCase.camel(startNodeType) %>.id,
+            <%= h.changeCase.camel(startNodeType) %>.properties.id,
             RelationshipType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>,
         )
 

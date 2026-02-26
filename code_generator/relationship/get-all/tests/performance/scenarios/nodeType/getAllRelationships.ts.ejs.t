@@ -30,10 +30,10 @@ export const options = {
 }
 
 export function setup() {
-    const <%= h.changeCase.camel(startNodeType) %>Id = createNode(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>)
-    const <%= h.changeCase.camel(endNodeType) %>Id = createNode(NodeTypeEnum.<%= h.changeCase.constant(endNodeType) %>)
+    const <%= h.changeCase.camel(startNodeType) %>Id = createNode(ControllerNodeType.<%= h.changeCase.pascal(startNodeType) %>)
+    const <%= h.changeCase.camel(endNodeType) %>Id = createNode(ControllerNodeType.<%= h.changeCase.pascal(endNodeType) %>)
     createRelationship(
-        NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>,
+        ControllerNodeType.<%= h.changeCase.pascal(startNodeType) %>,
         <%= h.changeCase.camel(startNodeType) %>Id,
         <%= h.changeCase.camel(endNodeType) %>Id,
         '<%= h.changeCase.lower(relationshipName) %>',
