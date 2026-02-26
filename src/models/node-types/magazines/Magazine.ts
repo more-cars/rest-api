@@ -13,6 +13,7 @@ import {Image} from "../images/Image"
 import {getSpecificRel} from "../../relationships/getSpecificRel"
 import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
 import {RelType} from "../../relationships/types/RelType"
+import {getAllRels} from "../../relationships/getAllRels"
 
 export const Magazine = {
     async create(data: CreateMagazineInput): Promise<MagazineNode> {
@@ -69,5 +70,12 @@ export const Magazine = {
         }
 
         return createdRelationship
+    },
+
+    async getAllHasImageRelationships(magazineId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await Magazine.findById(magazineId)
+
+        return getAllRels(magazineId, RelType.MagazineHasImage)
     },
 }

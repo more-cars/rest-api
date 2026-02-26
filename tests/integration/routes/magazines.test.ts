@@ -45,4 +45,12 @@ describe('Magazines', () => {
         expect(MagazineController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›has-image‹ relationships', async () => {
+        await request(app)
+            .get('/magazines/123/has-image')
+
+        expect(MagazineController.getAllHasImageRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })

@@ -4,6 +4,7 @@ import {getById} from "./magazines/getById"
 import {getAll} from "./magazines/getAll"
 import {deleteNode} from "./magazines/deleteNode"
 import {createHasImageRelation} from "./magazines/createHasImageRelation"
+import {getAllHasImageRelations} from "./magazines/getAllHasImageRelations"
 
 export const MagazineController = {
     async create(req: express.Request, res: express.Response) {
@@ -24,5 +25,9 @@ export const MagazineController = {
 
     async createHasImageRelation(req: express.Request, res: express.Response) {
         await createHasImageRelation(req, res)
+    },
+
+    async getAllHasImageRelations(req: express.Request, res: express.Response) {
+        await getAllHasImageRelations(req, res)
     },
 }

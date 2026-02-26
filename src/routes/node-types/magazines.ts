@@ -8,5 +8,6 @@ router.get('/magazines/:id', MagazineController.getById)
 router.get('/magazines', MagazineController.getAll)
 router.delete('/magazines/:id', MagazineController.delete)
 router.post('/magazines/:magazineId/has-image/:imageId', MagazineController.createHasImageRelation)
+router.get('/magazines/:magazineId/has-image', MagazineController.getAllHasImageRelations)
 
 export default router
