@@ -8,7 +8,7 @@ to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeTyp
     }
 -%>
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshalling/unmarshalInputData"
 
 /**
  * Unmarshalling does NOT perform any validation.

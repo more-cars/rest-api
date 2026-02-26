@@ -1,8 +1,8 @@
 ---
 inject: true
 to: tests/_toolbox/dbSeeding/seedNode.ts
-before: case NodeTypeEnum.IMAGE
+before: "case DbNodeType.Image"
 skip_if: return seed<%= h.changeCase.pascal(nodeType) %>
 ---
-        case NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>:
+        case DbNodeType.<%= h.changeCase.pascal(nodeType) %>:
             return seed<%= h.changeCase.pascal(nodeType) %>(customFakeData)

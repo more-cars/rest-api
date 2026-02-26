@@ -25,8 +25,8 @@ to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeTyp
     }
 -%>
 import {describe, expect, test} from 'vitest'
-import {Create<%= h.changeCase.pascal(nodeType) %>Input} from "../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Create<%= h.changeCase.pascal(nodeType) %>Input"
-import {sanitize} from "../../../../../src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create"
+import {Create<%= h.changeCase.pascal(nodeType) %>Input} from "../../../../../src/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Create<%= h.changeCase.pascal(nodeType) %>Input"
+import {sanitize} from "../../../../../src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {

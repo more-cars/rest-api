@@ -4,7 +4,7 @@ to: tests/integration/routes/<%= h.changeCase.kebab(h.inflection.pluralize(nodeT
 import {describe, expect, test, vi} from "vitest"
 import request from "supertest"
 import {app} from "../../../src/app"
-import {<%= h.changeCase.pascal(nodeType) %>Controller} from "../../../src/controllers/<%= h.changeCase.pascal(nodeType) %>Controller"
+import {<%= h.changeCase.pascal(nodeType) %>Controller} from "../../../src/controllers/node-types/<%= h.changeCase.pascal(nodeType) %>Controller"
 
 describe('<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>', () => {
     vi.mock("../../../src/controllers/node-types/<%= h.changeCase.pascal(nodeType) %>Controller.ts", {spy: true})

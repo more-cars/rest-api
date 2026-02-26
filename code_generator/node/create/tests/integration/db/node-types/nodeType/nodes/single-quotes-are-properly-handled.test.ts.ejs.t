@@ -20,7 +20,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
     const createdNode = await createNode(data)
 <% for (prop in properties) { -%>
 <%    if (properties[prop].datatype === 'string' && properties[prop].example) { %>
-    expect(createdNode.<%= prop %>)
+    expect(createdNode.properties.<%= prop %>)
         .toEqual("'<%= properties[prop].example %>''")
 <%    } -%>
 <% } -%>

@@ -4,19 +4,11 @@ to: tests/integration/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(
 import {expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from "../../../../../src/app.ts"
-import {<%= h.changeCase.pascal(nodeType) %>} from "../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"
+import {<%= h.changeCase.pascal(nodeType) %>} from "../../../../../src/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"
+import {Fake<%= h.changeCase.pascal(nodeType) %>} from "../../../../_toolbox/fixtures/nodes/Fake<%= h.changeCase.pascal(nodeType) %>"
 
 test('Input data is valid', async () => {
-    <%= h.changeCase.pascal(nodeType) %>.create = vi.fn().mockReturnValue({
-        id: 12345,
-<% for (prop in properties) { -%>
-<%    if (properties[prop].mandatory && properties[prop].datatype === 'string') { -%>
-        <%= prop %>: "<%= properties[prop].example %>",
-<%    } else if (properties[prop].mandatory) { -%>
-        <%= prop %>: <%= properties[prop].example -%>,
-<%    } -%>
-<% } -%>
-    })
+    <%= h.changeCase.pascal(nodeType) %>.create = vi.fn().mockReturnValue(Fake<%= h.changeCase.pascal(nodeType) %>.modelOutput())
 
     const response = await request(app)
         .post('/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>')

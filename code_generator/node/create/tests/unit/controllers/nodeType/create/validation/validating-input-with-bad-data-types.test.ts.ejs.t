@@ -2,8 +2,8 @@
 to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create/validation/validating-input-with-bad-data-types.test.ts
 ---
 import {expect, test} from 'vitest'
-import {Create<%= h.changeCase.pascal(nodeType) %>RawInput} from "../../../../../../src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Create<%= h.changeCase.pascal(nodeType) %>RawInput"
-import {validate} from "../../../../../../src/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create"
+import {Create<%= h.changeCase.pascal(nodeType) %>RawInput} from "../../../../../../src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Create<%= h.changeCase.pascal(nodeType) %>RawInput"
+import {validate} from "../../../../../../src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create"
 
 test.each([
 <%

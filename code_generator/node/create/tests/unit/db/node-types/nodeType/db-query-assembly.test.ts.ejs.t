@@ -35,7 +35,7 @@ test('database query for creating a <%= h.changeCase.upper(nodeType) %> node', a
 <%- props_in.map(line => '        ' + line).join(',\n') %>
     }
 
-    const query = createNeo4jNode(DbNodeType.<%= h.changeCase.pascal(nodeType) %>, data)
+    const query = createNodeQuery(DbNodeType.<%= h.changeCase.pascal(nodeType) %>, data)
 
     expect(query)
         .toEqual(

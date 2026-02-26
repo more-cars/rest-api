@@ -1,5 +1,5 @@
 ---
-to: tests/_toolbox/schemas/<%= h.changeCase.pascal(nodeType) %>Schema.ts
+to: tests/_toolbox/schemas/response/<%= h.changeCase.pascal(nodeType) %>Schema.ts
 ---
 export const <%= h.changeCase.pascal(nodeType) %>Schema = {
     type: "object",

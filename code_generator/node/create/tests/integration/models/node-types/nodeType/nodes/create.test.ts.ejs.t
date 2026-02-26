@@ -3,7 +3,7 @@ to: tests/integration/models/node-types/<%= h.changeCase.kebab(h.inflection.plur
 ---
 import {expect, test} from 'vitest'
 import {Fake<%= h.changeCase.pascal(nodeType) %>} from "../../../../../_toolbox/fixtures/nodes/Fake<%= h.changeCase.pascal(nodeType) %>"
-import {<%= h.changeCase.pascal(nodeType) %>} from "../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"
+import {<%= h.changeCase.pascal(nodeType) %>} from "../../../../../../src/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"
 
 test('Expecting node to be created when provided with valid data', async () => {
     const inputData = Fake<%= h.changeCase.pascal(nodeType) %>.dbInput()
