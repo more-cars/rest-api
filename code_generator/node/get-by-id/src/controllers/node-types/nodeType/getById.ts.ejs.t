@@ -16,7 +16,7 @@ export async function getById(req: express.Request, res: express.Response) {
     try {
         const modelNode = await <%= h.changeCase.pascal(nodeType) %>.findById(nodeId)
         const node = convert<%= h.changeCase.pascal(nodeType) %>ModelNodeToControllerNode(modelNode)
-        const marshalledData = marshalNode(node.fields)
+        const marshalledData = marshalSingleNode(node.fields)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

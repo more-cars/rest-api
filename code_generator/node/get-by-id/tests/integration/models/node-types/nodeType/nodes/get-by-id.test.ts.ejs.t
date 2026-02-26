@@ -15,10 +15,10 @@ describe('Fetching a <%= h.changeCase.upper(nodeType) %>', () => {
     })
 
     test('which exists', async () => {
-        const expected<%= h.changeCase.pascal(nodeType) %> = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(nodeType) %>)
-        const actual<%= h.changeCase.pascal(nodeType) %> = await <%= h.changeCase.pascal(nodeType) %>.findById(expected<%= h.changeCase.pascal(nodeType) %>.id)
+        const expected<%= h.changeCase.pascal(nodeType) %> = await seedNode(DbNodeType.<%= h.changeCase.pascal(nodeType) %>)
+        const actual<%= h.changeCase.pascal(nodeType) %> = await <%= h.changeCase.pascal(nodeType) %>.findById(expected<%= h.changeCase.pascal(nodeType) %>.properties.id)
 
-        expect(actual<%= h.changeCase.pascal(nodeType) %>)
-            .toEqual(expected<%= h.changeCase.pascal(nodeType) %>)
+        expect(actual<%= h.changeCase.pascal(nodeType) %>.attributes)
+            .toEqual(expected<%= h.changeCase.pascal(nodeType) %>.properties)
     })
 })
