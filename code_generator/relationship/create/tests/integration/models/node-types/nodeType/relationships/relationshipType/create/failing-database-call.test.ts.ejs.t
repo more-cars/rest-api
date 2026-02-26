@@ -4,8 +4,7 @@ to: tests/integration/models/node-types/<%= h.changeCase.kebab(h.inflection.plur
 import {expect, test, vi} from 'vitest'
 import {seedNode} from "../../../../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../../../../src/db/types/DbNodeType"
-import {NodeTypeEnum} from "../../../../../../../../src/controllers/nodes/types/NodeTypeEnum"
-import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../../../src/models/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
+import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../../../src/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
 
 test('A completely valid request, but the database call fails (e.g. one of the nodes was deleted just a moment ago)', async () => {
     vi.mock("../../../../../../../src/db/relationships/createRelationship", async () => {
@@ -14,10 +13,10 @@ test('A completely valid request, but the database call fails (e.g. one of the n
         }
     })
 
-    const <%= h.changeCase.camel(startNodeType) %> = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(startNodeType) %>)
-    const <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %> = await seedNode(NodeTypeEnum.<%= h.changeCase.constant(endNodeType) %>)
+    const <%= h.changeCase.camel(startNodeType) %> = await seedNode(DbNodeType.<%= h.changeCase.pascal(startNodeType) %>)
+    const <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %> = await seedNode(DbNodeType.<%= h.changeCase.pascal(endNodeType) %>)
 
-    await expect(<%= h.changeCase.pascal(startNodeType) %>.create<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>.id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>.id))
+    await expect(<%= h.changeCase.pascal(startNodeType) %>.create<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>.properties.id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>.properties.id))
         .rejects
         .toThrow(Error)
 })

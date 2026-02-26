@@ -33,7 +33,7 @@ describe('Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relations
     })
 
     test('with invalid data', async () => {
-        const <%= h.changeCase.camel(startNodeType) %> = await seedNode(DbNodeType.<%= h.changeCase.constant(startNodeType) %>)
+        const <%= h.changeCase.camel(startNodeType) %> = await seedNode(DbNodeType.<%= h.changeCase.pascal(startNodeType) %>)
 
         const createdRelationship = await createRelationship(
             <%= h.changeCase.camel(startNodeType) %>.properties.id,

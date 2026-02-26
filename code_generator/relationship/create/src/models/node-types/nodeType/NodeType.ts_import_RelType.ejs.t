@@ -4,4 +4,4 @@ to: src/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(startNod
 before: \nexport const
 skip_if: import {RelType} from
 ---
-import {RelType} from "../relationships/types/RelType"
+import {RelType} from "../../relationships/types/RelType"
