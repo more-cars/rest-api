@@ -26,6 +26,8 @@ import {convertRacingGameDbNodeToModelNode} from "./racing-games/create/convertR
 import type {RacingGameNode} from "../../db/node-types/racing-games/types/RacingGameNode"
 import {convertGamingPlatformDbNodeToModelNode} from "./gaming-platforms/create/convertGamingPlatformDbNodeToModelNode"
 import type {GamingPlatformNode} from "../../db/node-types/gaming-platforms/types/GamingPlatformNode"
+import {convertMagazineDbNodeToModelNode} from "./magazines/create/convertMagazineDbNodeToModelNode"
+import type {MagazineNode} from "../../db/node-types/magazines/types/MagazineNode"
 import {convertImageDbNodeToModelNode} from "./images/create/convertImageDbNodeToModelNode"
 import type {ImageNode} from "../../db/node-types/images/types/ImageNode"
 import {NodeTypeNotFoundError} from "../types/NodeTypeNotFoundError"
@@ -58,6 +60,8 @@ export function convertDbNodeToModelNode(dbNode: DbNode) {
             return convertRacingGameDbNodeToModelNode(dbNode as RacingGameNode)
         case DbNodeType.GamingPlatform:
             return convertGamingPlatformDbNodeToModelNode(dbNode as GamingPlatformNode)
+        case DbNodeType.Magazine:
+            return convertMagazineDbNodeToModelNode(dbNode as MagazineNode)
         case DbNodeType.Image:
             return convertImageDbNodeToModelNode(dbNode as ImageNode)
         default:

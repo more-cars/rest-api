@@ -14,6 +14,7 @@ import {convertSessionResultNeo4jNodeToDbNode} from "../node-types/session-resul
 import {convertLapTimeNeo4jNodeToDbNode} from "../node-types/lap-times/convertLapTimeNeo4jNodeToDbNode"
 import {convertRacingGameNeo4jNodeToDbNode} from "../node-types/racing-games/convertRacingGameNeo4jNodeToDbNode"
 import {convertGamingPlatformNeo4jNodeToDbNode} from "../node-types/gaming-platforms/convertGamingPlatformNeo4jNodeToDbNode"
+import {convertMagazineNeo4jNodeToDbNode} from "../node-types/magazines/convertMagazineNeo4jNodeToDbNode"
 import {convertImageNeo4jNodeToDbNode} from "../node-types/images/convertImageNeo4jNodeToDbNode"
 
 export function convertNeo4jNodeToDbNode(neo4jNode: Node, nodeTypeLabel: Neo4jNodeType) {
@@ -31,6 +32,7 @@ export function convertNeo4jNodeToDbNode(neo4jNode: Node, nodeTypeLabel: Neo4jNo
         [Neo4jNodeType.LapTime, convertLapTimeNeo4jNodeToDbNode],
         [Neo4jNodeType.RacingGame, convertRacingGameNeo4jNodeToDbNode],
         [Neo4jNodeType.GamingPlatform, convertGamingPlatformNeo4jNodeToDbNode],
+        [Neo4jNodeType.Magazine, convertMagazineNeo4jNodeToDbNode],
         [Neo4jNodeType.Image, convertImageNeo4jNodeToDbNode],
     ])
 

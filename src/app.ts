@@ -15,6 +15,7 @@ import sessionResults from "./routes/node-types/session-results"
 import lapTimes from "./routes/node-types/lap-times"
 import racingGames from "./routes/node-types/racing-games"
 import gamingPlatforms from "./routes/node-types/gaming-platforms"
+import magazines from "./routes/node-types/magazines"
 import images from "./routes/node-types/images"
 import relationships from "./routes/relationships"
 import {basicAuthentication} from "./basicAuthentication"
@@ -47,6 +48,7 @@ app.use('/', sessionResults)
 app.use('/', lapTimes)
 app.use('/', racingGames)
 app.use('/', gamingPlatforms)
+app.use('/', magazines)
 app.use('/', images)
 app.use('/', relationships)
 

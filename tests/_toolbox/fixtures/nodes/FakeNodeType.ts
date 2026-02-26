@@ -13,6 +13,7 @@ import {FakeSessionResult} from "./FakeSessionResult"
 import {FakeLapTime} from "./FakeLapTime"
 import {FakeRacingGame} from "./FakeRacingGame"
 import {FakeGamingPlatform} from "./FakeGamingPlatform"
+import {FakeMagazine} from "./FakeMagazine"
 import {FakeImage} from "./FakeImage"
 
 export function FakeNodeType(nodeType: DbNodeType) {
@@ -43,6 +44,8 @@ export function FakeNodeType(nodeType: DbNodeType) {
             return FakeRacingGame
         case DbNodeType.GamingPlatform:
             return FakeGamingPlatform
+        case DbNodeType.Magazine:
+            return FakeMagazine
         case DbNodeType.Image:
             return FakeImage
         default:

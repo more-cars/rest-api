@@ -1,0 +1,46 @@
+info:
+  name: Create Magazine (valid data)
+  type: http
+  tags:
+    - create
+    - node
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/magazines"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Top Gear",
+        "founded": 1993,
+        "defunct": null,
+        "focus": "sports cars",
+        "publication_frequency": "monthly",
+        "single_copy_price": 5,
+        "single_copy_price_unit": "£",
+        "publication_format": "print",
+        "circulation": 150884,
+        "circulation_year": 2013,
+        "publisher": "Immediate Media Company",
+        "issn": "1350-9624"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data.id
+      operator: gte
+      value: "12000000"
+  scripts:
+    - type: tests
+      code: |-
+        test("both timestamps should be identical", function () {
+          const data = res.getBody()
+          expect(data.data.created_at).to.eql(data.data.updated_at)
+        })

@@ -13,6 +13,7 @@ import {seedSessionResult} from "./session-results/nodes/seedSessionResult"
 import {seedLapTime} from "./lap-times/nodes/seedLapTime"
 import {seedRacingGame} from "./racing-games/nodes/seedRacingGame"
 import {seedGamingPlatform} from "./gaming-platforms/nodes/seedGamingPlatform"
+import {seedMagazine} from "./magazines/nodes/seedMagazine"
 import {seedImage} from "./images/nodes/seedImage"
 
 export async function seedNode(dbNodeType: DbNodeType, customFakeData: object = {}) {
@@ -43,6 +44,8 @@ export async function seedNode(dbNodeType: DbNodeType, customFakeData: object = 
             return seedRacingGame(customFakeData)
         case DbNodeType.GamingPlatform:
             return seedGamingPlatform(customFakeData)
+        case DbNodeType.Magazine:
+            return seedMagazine(customFakeData)
         case DbNodeType.Image:
             return seedImage(customFakeData)
         default:

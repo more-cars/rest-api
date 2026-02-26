@@ -17,6 +17,7 @@ export function mapDbNodeTypeToNodeType(nodeType: DbNodeType): NodeType {
         [DbNodeType.LapTime, NodeType.LapTime],
         [DbNodeType.RacingGame, NodeType.RacingGame],
         [DbNodeType.GamingPlatform, NodeType.GamingPlatform],
+        [DbNodeType.Magazine, NodeType.Magazine],
         [DbNodeType.Image, NodeType.Image],
         [DbNodeType.Node, NodeType.Node],
     ])

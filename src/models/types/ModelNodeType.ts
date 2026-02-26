@@ -12,6 +12,7 @@ export enum ModelNodeType {
     LapTime = "lap_time",
     RacingGame = "racing_game",
     GamingPlatform = "gaming_platform",
+    Magazine = "magazine",
     Image = "image",
     Node = "",
 }
