@@ -11,7 +11,7 @@ Then('the response should return the {string} {string}',
         const expectedNode: DbNode = world.recallNode(label).data
         const actualNode = world.recallResponse().data
 
-        const schema = getResponseNodeSchema(getBasePathFragmentForNodeType(nodeType as ControllerNodeType) as ControllerNodeType)
+        const schema = getResponseNodeSchema(getBasePathFragmentForNodeType(nodeType) as ControllerNodeType)
 
         assert.ok(validateJson(actualNode, schema))
 

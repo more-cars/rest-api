@@ -7,7 +7,7 @@ import {getBasePathFragmentForRelationship} from "../../../_toolbox/dbSeeding/ge
 
 When('the user connects {string} {string} to {string} {string}',
     async (endNodeType: string, endNodeLabel: string, startNodeType: string, startNodeLabel: string) => {
-        const nodePathFragment = getBasePathFragmentForNodeType(startNodeType.toLowerCase() as ControllerNodeType)
+        const nodePathFragment = getBasePathFragmentForNodeType(startNodeType)
         const startNode: DbNode = world.recallNode(startNodeLabel).data
         const relationshipName = getBasePathFragmentForRelationship(startNodeType.toLowerCase() as ControllerNodeType, endNodeType.toLowerCase() as ControllerNodeType)
         const endNode: DbNode = world.recallNode(endNodeLabel).data

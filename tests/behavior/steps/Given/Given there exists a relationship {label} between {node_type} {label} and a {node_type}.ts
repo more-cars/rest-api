@@ -10,7 +10,7 @@ import type {DbNodeType} from "../../../../src/db/types/DbNodeType"
 
 Given('there exists a(n) relationship {string} between {string} {string} and a(n) {string}',
     async (relationshipLabel: string, startNodeType: string, startNodeLabel: string, endNodeType: string) => {
-        const nodePathFragment = getBasePathFragmentForNodeType(startNodeType.toLowerCase() as ControllerNodeType)
+        const nodePathFragment = getBasePathFragmentForNodeType(startNodeType)
         const startNode: DbNode = world.recallNode(startNodeLabel).data
         const relationshipName = getBasePathFragmentForRelationship(startNodeType.toLowerCase() as ControllerNodeType, endNodeType.toLowerCase() as ControllerNodeType)
         const endNode = await seedNode(pascalCase(endNodeType) as DbNodeType)

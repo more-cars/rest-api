@@ -1,12 +1,11 @@
 import {DataTable, When, world} from "@cucumber/cucumber"
 import axios from "axios"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
-import type {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 
 When('the user creates a(n) {string} with the following data',
     async (nodeType: string, dataTable: DataTable) => {
         const data: any = {}
-        const path = getBasePathFragmentForNodeType(nodeType.toLowerCase() as ControllerNodeType)
+        const path = getBasePathFragmentForNodeType(nodeType)
 
         const properties = dataTable.hashes()
         properties.forEach((property) => {

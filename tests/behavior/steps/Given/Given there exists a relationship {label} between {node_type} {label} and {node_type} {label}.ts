@@ -7,7 +7,7 @@ import {getBasePathFragmentForRelationship} from "../../../_toolbox/dbSeeding/ge
 
 Given('there exists a(n) relationship {string} between {string} {string} and {string} {string}',
     async (relationshipLabel: string, startNodeType: string, startNodeLabel: string, endNodeType: string, endNodeLabel: string) => {
-        const nodePathFragment = getBasePathFragmentForNodeType(startNodeType.toLowerCase() as ControllerNodeType)
+        const nodePathFragment = getBasePathFragmentForNodeType(startNodeType)
         const startNode: DbNode = world.recallNode(startNodeLabel).data
         const relationshipName = getBasePathFragmentForRelationship(startNodeType.toLowerCase() as ControllerNodeType, endNodeType.toLowerCase() as ControllerNodeType)
         const endNode = world.recallNode(endNodeLabel).data

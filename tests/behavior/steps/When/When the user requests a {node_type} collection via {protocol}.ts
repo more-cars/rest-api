@@ -1,7 +1,6 @@
 import {When, world} from "@cucumber/cucumber"
 import axios from "axios"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
-import type {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 import assert from "assert"
 
 When('the user requests a {string} collection via {string}',
@@ -26,7 +25,7 @@ When('the user requests a {string} collection via {string}',
             apiUrl.replace(':3443', ':3000')
         }
 
-        const path = getBasePathFragmentForNodeType(nodeType.toLowerCase() as ControllerNodeType)
+        const path = getBasePathFragmentForNodeType(nodeType)
 
         const response = await axios
             .get(`${apiUrl}/${path}`)

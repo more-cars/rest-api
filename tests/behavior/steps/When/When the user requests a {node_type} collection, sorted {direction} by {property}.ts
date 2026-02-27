@@ -6,9 +6,10 @@ import {dasherize, pluralize} from "inflection"
 
 When('the user requests a {string} collection, sorted {string} by {string}',
     async (nodeTypeName: string, sortDirection: string, sortByProperty: string) => {
-        const nodeType = dasherize(pluralize(nodeTypeName.toLowerCase())) as ControllerNodeType
-        const path = getBasePathFragmentForNodeType(nodeType)
+        const path = getBasePathFragmentForNodeType(nodeTypeName)
 
+        // TODO this is a temporary workaround -> the Gherkin scenarios should not assume that every node type has a property "name"
+        const nodeType = dasherize(pluralize(nodeTypeName.toLowerCase())) as ControllerNodeType
         if (nodeType === ControllerNodeType.SessionResult) {
             sortByProperty = 'position'
         } else if (nodeType === ControllerNodeType.LapTime) {

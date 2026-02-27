@@ -1,13 +1,12 @@
 import {When, world} from "@cucumber/cucumber"
 import axios from "axios"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
-import type {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
 import {convertStringToNodeType} from "../../lib/convertStringToNodeType"
 
 When('the user creates a(n) {string}',
     async (nodeType: string) => {
-        const path = getBasePathFragmentForNodeType(nodeType as ControllerNodeType)
+        const path = getBasePathFragmentForNodeType(nodeType)
         const data = getFakeNode(convertStringToNodeType(nodeType)).dbInput
 
         const response = await axios

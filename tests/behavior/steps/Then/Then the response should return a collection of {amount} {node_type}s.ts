@@ -9,7 +9,7 @@ Then('the response should return a collection of {int} {string}s',
     (amount: number, nodeType: string) => {
         assert.equal(world.recallResponse().data.data.length, amount)
 
-        const schema = getResponseNodeSchema(getBasePathFragmentForNodeType(nodeType as ControllerNodeType) as ControllerNodeType)
+        const schema = getResponseNodeSchema(getBasePathFragmentForNodeType(nodeType) as ControllerNodeType)
 
         world.recallResponse().data.data.forEach((item: any) => {
             assert.ok(validateJson(item, schema))

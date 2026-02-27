@@ -9,7 +9,7 @@ import type {DbNodeType} from "../../../../src/db/types/DbNodeType"
 
 When('the user connects a(n) {string} to a(n) {string}',
     async (startNodeType: string, endNodeType: string) => {
-        const nodePathFragment = getBasePathFragmentForNodeType(startNodeType.toLowerCase() as ControllerNodeType)
+        const nodePathFragment = getBasePathFragmentForNodeType(startNodeType)
         const startNode = await seedNode(pascalCase(startNodeType) as DbNodeType)
         const relationshipName = getBasePathFragmentForRelationship(startNodeType.toLowerCase() as ControllerNodeType, endNodeType.toLowerCase() as ControllerNodeType)
         const endNode = await seedNode(pascalCase(endNodeType) as DbNodeType)
