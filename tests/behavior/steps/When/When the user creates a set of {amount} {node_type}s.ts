@@ -1,11 +1,10 @@
 import {When, world} from "@cucumber/cucumber"
 import axios from "axios"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
-import {dasherize, pluralize} from "inflection"
+import {dasherize, pluralize, titleize} from "inflection"
 import type {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
-import {getExhaustiveFakeInputDataForDbNode} from "../../../_toolbox/fixtures/nodes/getExhaustiveFakeInputDataForDbNode"
-import {pascalCase} from "change-case"
-import type {DbNodeType} from "../../../../src/db/types/DbNodeType"
+import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
+import type {NodeType} from "../../../../src/specification/NodeType"
 
 When('the user creates a set of {int} {string}s',
     async (amount: number, nodeType: string) => {
@@ -13,7 +12,7 @@ When('the user creates a set of {int} {string}s',
 
         for (let i = 0; i < amount; i++) {
             const path = getBasePathFragmentForNodeType(dasherize(pluralize(nodeType.toLowerCase())) as ControllerNodeType)
-            const data = getExhaustiveFakeInputDataForDbNode(pascalCase(nodeType) as DbNodeType)
+            const data = getFakeNode(titleize(nodeType) as NodeType).dbInput
 
             const response = await axios
                 .post(`${process.env.API_URL}/${path}`, data)

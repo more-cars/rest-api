@@ -1,15 +1,15 @@
 import {When, world} from "@cucumber/cucumber"
 import axios from "axios"
+import {titleize} from "inflection"
 import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
 import type {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
-import {getExhaustiveFakeInputDataForDbNode} from "../../../_toolbox/fixtures/nodes/getExhaustiveFakeInputDataForDbNode"
-import {pascalCase} from "change-case"
-import type {DbNodeType} from "../../../../src/db/types/DbNodeType"
+import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
+import type {NodeType} from "../../../../src/specification/NodeType"
 
 When('the user creates a(n) {string}',
     async (nodeType: string) => {
         const path = getBasePathFragmentForNodeType(nodeType as ControllerNodeType)
-        const data = getExhaustiveFakeInputDataForDbNode(pascalCase(nodeType) as DbNodeType)
+        const data = getFakeNode(titleize(nodeType) as NodeType).dbInput
 
         const response = await axios
             .post(`${process.env.API_URL}/${path}`, data)

@@ -1,17 +1,15 @@
 import {expect, test} from 'vitest'
+import assert from "assert"
+import {createNode as createBrandNode} from "../../../../../src/db/node-types/brands/createNode"
+import {FakeBrand} from "../../../../_toolbox/fixtures/nodes/FakeBrand"
+import {createNode as createCarModelNode} from "../../../../../src/db/node-types/car-models/createNode"
+import {FakeCarModel} from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
 import {createRelationship} from "../../../../../src/db/relationships/createRelationship"
 import {RelationshipType} from "../../../../../src/db/types/RelationshipType"
-import assert from "assert"
-import {getExhaustiveFakeInputDataForDbNode} from "../../../../_toolbox/fixtures/nodes/getExhaustiveFakeInputDataForDbNode"
-import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
-import type {InputBrandCreate} from "../../../../../src/db/node-types/brands/types/InputBrandCreate"
-import type {InputCarModelCreate} from "../../../../../src/db/node-types/car-models/types/InputCarModelCreate"
-import {createNode as createBrandNode} from "../../../../../src/db/node-types/brands/createNode"
-import {createNode as createCarModelNode} from "../../../../../src/db/node-types/car-models/createNode"
 
 test('ID is added when creating a relationship', async () => {
-    const brand = await createBrandNode(getExhaustiveFakeInputDataForDbNode(DbNodeType.Brand) as InputBrandCreate)
-    const carModel = await createCarModelNode(getExhaustiveFakeInputDataForDbNode(DbNodeType.CarModel) as InputCarModelCreate)
+    const brand = await createBrandNode(FakeBrand.dbInput)
+    const carModel = await createCarModelNode(FakeCarModel.dbInput)
     const relationship = await createRelationship(brand.properties.id, carModel.properties.id, RelationshipType.BrandHasCarModel)
 
     if (!relationship) {

@@ -34,6 +34,7 @@ export function getFakeNode(nodeType: NodeType) {
         [NodeType.GamingPlatform, FakeGamingPlatform],
         [NodeType.Magazine, FakeMagazine],
         [NodeType.Image, FakeImage],
+        [NodeType.Node, FakeBrand],
     ])
 
     const fakeNode = mapping.get(nodeType)
