@@ -128,4 +128,17 @@ export const Magazine = {
 
         return relationship
     },
+
+    async deleteHasPrimeImageRelationship(magazineId: number, imageId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Magazine.findById(magazineId)
+        await Image.findById(imageId)
+
+        const relationship = await getSpecificRel(magazineId, imageId, RelType.MagazineHasPrimeImage)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.MagazineHasPrimeImage, magazineId, imageId)
+        }
+
+        await deleteSpecificRel(magazineId, imageId, RelType.MagazineHasPrimeImage)
+    },
 }

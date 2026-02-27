@@ -12,5 +12,6 @@ router.get('/magazines/:magazineId/has-image', MagazineController.getAllHasImage
 router.delete('/magazines/:magazineId/has-image/:imageId', MagazineController.deleteHasImageRelation)
 router.post('/magazines/:magazineId/has-prime-image/:imageId', MagazineController.createHasPrimeImageRelation)
 router.get('/magazines/:magazineId/has-prime-image', MagazineController.getHasPrimeImageRelation)
+router.delete('/magazines/:magazineId/has-prime-image/:imageId', MagazineController.deleteHasPrimeImageRelation)
 
 export default router
