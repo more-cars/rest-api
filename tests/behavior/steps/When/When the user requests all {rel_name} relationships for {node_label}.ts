@@ -1,9 +1,9 @@
 import {When, world} from "@cucumber/cucumber"
 import axios from "axios"
-import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
-import type {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 import type {DbNode} from "../../../../src/db/types/DbNode"
-import {getBasePathFragmentForRelationshipName} from "../../../_toolbox/dbSeeding/getBasePathFragmentForRelationshipName"
+import type {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
+import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
+import {getBasePathFragmentForRelationshipName} from "../../lib/getBasePathFragmentForRelationshipName"
 
 When('the user requests all {string} relationships for {string}',
     async (relationshipName: string, startNodeLabel: string) => {
