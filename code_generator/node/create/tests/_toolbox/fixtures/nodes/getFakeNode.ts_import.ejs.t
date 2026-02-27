@@ -1,6 +1,6 @@
 ---
 inject: true
-to: tests/_toolbox/fixtures/nodes/FakeNodeType.ts
+to: tests/_toolbox/fixtures/nodes/getFakeNode.ts
 before: import {FakeImage} from
 skip_if: import {Fake<%= h.changeCase.pascal(nodeType) %>} from
 ---
