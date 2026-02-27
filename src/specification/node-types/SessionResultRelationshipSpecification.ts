@@ -1,5 +1,5 @@
 import {RelationshipTypeSpecification} from "../RelationshipTypeSpecification"
-import {RelationshipType} from "../../db/types/RelationshipType"
+import {RelationshipType} from "../RelationshipType"
 import {DbNodeType} from "../../db/types/DbNodeType"
 
 export const SessionResultRelationshipSpecification: RelationshipTypeSpecification[] = [

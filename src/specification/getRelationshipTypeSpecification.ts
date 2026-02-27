@@ -1,4 +1,4 @@
-import {RelationshipType} from "../db/types/RelationshipType"
+import type {RelationshipType} from "./RelationshipType"
 import {DbNodeType} from "../db/types/DbNodeType"
 import {ImageRelationshipSpecification} from "./node-types/ImageRelationshipSpecification"
 import {CompanyRelationshipSpecification} from "./node-types/CompanyRelationshipSpecification"

@@ -4,6 +4,7 @@ import {getRelationshipTypeSpecification} from "../../specification/getRelations
 import {getDriver} from "../driver"
 import {mapDbRelationshipTypeToNeo4jRelationshipType} from "./mapDbRelationshipTypeToNeo4jRelationshipType"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
+import {mapDbRelationshipTypeToRelationshipType} from "../../specification/mapDbRelationshipTypeToRelationshipType"
 
 export async function deleteSpecificRelationship(
     startNodeId: number,
@@ -24,7 +25,7 @@ export async function deleteSpecificRelationship(
 }
 
 export function deleteSpecificRelationshipQuery(startNodeId: number, relationshipType: RelationshipType, endNodeId: number) {
-    const relationshipSpecs = getRelationshipTypeSpecification(relationshipType)
+    const relationshipSpecs = getRelationshipTypeSpecification(mapDbRelationshipTypeToRelationshipType(relationshipType))
     const templateName = relationshipSpecs.isReverseRelationship ? 'deleteSpecificRelationshipReversed' : 'deleteSpecificRelationship'
     const relationshipName = mapDbRelationshipTypeToNeo4jRelationshipType(relationshipType)
 

@@ -8,6 +8,7 @@ import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationsh
 import {mapDbRelationshipTypeToNeo4jRelationshipType} from "./mapDbRelationshipTypeToNeo4jRelationshipType"
 import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
+import {mapDbRelationshipTypeToRelationshipType} from "../../specification/mapDbRelationshipTypeToRelationshipType"
 
 export async function getRelationship(
     startNodeId: number,
@@ -36,7 +37,7 @@ export async function getRelationship(
 }
 
 export function getRelationshipQuery(startNodeId: number, relationshipType: RelationshipType, endNodeType: DbNodeType) {
-    const relationshipSpecs = getRelationshipTypeSpecification(relationshipType)
+    const relationshipSpecs = getRelationshipTypeSpecification(mapDbRelationshipTypeToRelationshipType(relationshipType))
     const templateName = relationshipSpecs.isReverseRelationship ? 'getRelationshipReversed' : 'getRelationship'
     const relationshipName = mapDbRelationshipTypeToNeo4jRelationshipType(relationshipType)
     const endNodeLabel = getNamespacedNodeTypeLabel(endNodeType)

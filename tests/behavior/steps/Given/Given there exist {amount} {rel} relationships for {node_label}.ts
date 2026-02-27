@@ -3,8 +3,8 @@ import axios from "axios"
 import {dasherize} from "inflection"
 import type {DbNode} from "../../../../src/db/types/DbNode"
 import {getRelationshipTypeSpecification} from "../../../../src/specification/getRelationshipTypeSpecification"
-import {constantCase} from "change-case"
-import {RelationshipType} from "../../../../src/db/types/RelationshipType"
+import {pascalCase} from "change-case"
+import type {RelationshipType} from "../../../../src/specification/RelationshipType"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {seedNode} from "../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../src/db/types/DbNodeType"
@@ -12,7 +12,7 @@ import {DbNodeType} from "../../../../src/db/types/DbNodeType"
 Given('there exist {int} {string} relationships for {string}',
     async (amount: number, relationshipName: string, startNodeLabel: string) => {
         const startNode: DbNode = world.recallNode(startNodeLabel).data
-        const relationship = getRelationshipTypeSpecification(constantCase(startNode.node_type + '_' + relationshipName) as RelationshipType)
+        const relationship = getRelationshipTypeSpecification(pascalCase(startNode.node_type + relationshipName) as RelationshipType)
         const endNodeType = relationship.endNodeType
         const nodePathFragment = getBasePathFragmentForNodeType(world.recallNode(startNodeLabel).nodeType)
 

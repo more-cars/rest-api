@@ -1,4 +1,4 @@
-import {RelationshipType} from "../db/types/RelationshipType"
+import type {RelationshipType} from "./RelationshipType"
 import {DbNodeType} from "../db/types/DbNodeType"
 
 export type RelationshipTypeSpecification = [

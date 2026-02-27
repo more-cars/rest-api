@@ -10,6 +10,7 @@ import {addTimestampsToRelationship} from "./addTimestampsToRelationship"
 import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationshipToDbRelationship"
 import {mapDbRelationshipTypeToNeo4jRelationshipType} from "./mapDbRelationshipTypeToNeo4jRelationshipType"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
+import {mapDbRelationshipTypeToRelationshipType} from "../../specification/mapDbRelationshipTypeToRelationshipType"
 
 export async function createRelationship(
     startNodeId: number,
@@ -49,7 +50,7 @@ export async function createRelationship(
 }
 
 export function createRelationshipQuery(startNodeId: number, relationshipType: RelationshipType, endNodeId: number) {
-    const relationshipSpecs = getRelationshipTypeSpecification(relationshipType)
+    const relationshipSpecs = getRelationshipTypeSpecification(mapDbRelationshipTypeToRelationshipType(relationshipType))
     const templateName = relationshipSpecs.isReverseRelationship ? 'createRelationshipReversed' : 'createRelationship'
     const relationshipName = mapDbRelationshipTypeToNeo4jRelationshipType(relationshipType)
 
