@@ -1,7 +1,6 @@
 import type {RelationshipType} from "./RelationshipType"
 import type {NodeType} from "./NodeType"
 import {RelationshipTypeMappingNotFoundError} from "./RelationshipTypeMappingNotFoundError"
-import {ImageRelationshipSpecification} from "./node-types/ImageRelationshipSpecification"
 import {CompanyRelationshipSpecification} from "./node-types/CompanyRelationshipSpecification"
 import {BrandRelationshipSpecification} from "./node-types/BrandRelationshipSpecification"
 import {CarModelRelationshipSpecification} from "./node-types/CarModelRelationshipSpecification"
@@ -16,6 +15,7 @@ import {LapTimeRelationshipSpecification} from "./node-types/LapTimeRelationship
 import {RacingGameRelationshipSpecification} from "./node-types/RacingGameRelationshipSpecification"
 import {GamingPlatformRelationshipSpecification} from "./node-types/GamingPlatformRelationshipSpecification"
 import {MagazineRelationshipSpecification} from "./node-types/MagazineRelationshipSpecification"
+import {ImageRelationshipSpecification} from "./node-types/ImageRelationshipSpecification"
 
 export function getRelationshipTypeSpecification(relationshipType: RelationshipType) {
     const mapping = new Map<RelationshipType, {

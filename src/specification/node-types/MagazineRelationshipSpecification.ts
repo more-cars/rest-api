@@ -8,5 +8,10 @@ export const MagazineRelationshipSpecification: RelationshipTypeSpecification[] 
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    [RelationshipType.MagazineHasPrimeImage, {
+        startNodeType: NodeType.Magazine,
+        endNodeType: NodeType.Image,
+        isReverseRelationship: false,
+    }],
     //
 ]

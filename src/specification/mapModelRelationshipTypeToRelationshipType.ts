@@ -67,6 +67,7 @@ export function mapModelRelationshipTypeToRelationshipType(relType: RelType): Re
         [RelType.GamingPlatformHasImage, RelationshipType.GamingPlatformHasImage],
         [RelType.GamingPlatformHasPrimeImage, RelationshipType.GamingPlatformHasPrimeImage],
         [RelType.MagazineHasImage, RelationshipType.MagazineHasImage],
+        [RelType.MagazineHasPrimeImage, RelationshipType.MagazineHasPrimeImage],
         [RelType.ImageBelongsToNode, RelationshipType.ImageBelongsToNode],
         [RelType.ImageIsPrimeImageOfNode, RelationshipType.ImageIsPrimeImageOfNode],
     ])

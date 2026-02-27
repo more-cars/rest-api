@@ -1,8 +1,6 @@
 export enum RelationshipType {
     NodeHasImage = 'Node Has Image',
     NodeHasPrimeImage = 'Node Has Prime Image',
-    ImageBelongsToNode = 'Image Belongs To Node',
-    ImageIsPrimeImageOfNode = 'Image Is Prime Image Of Node',
     CompanyHasBrand = 'Company Has Brand',
     CompanyHasImage = 'Company Has Image',
     CompanyHasPrimeImage = 'Company Has Prime Image',
@@ -66,4 +64,7 @@ export enum RelationshipType {
     GamingPlatformHasImage = 'Gaming Platform Has Image',
     GamingPlatformHasPrimeImage = 'Gaming Platform Has Prime Image',
     MagazineHasImage = 'Magazine Has Image',
+    MagazineHasPrimeImage = 'Magazine Has Prime Image',
+    ImageBelongsToNode = 'Image Belongs To Node',
+    ImageIsPrimeImageOfNode = 'Image Is Prime Image Of Node',
 }
