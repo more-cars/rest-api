@@ -1,6 +1,6 @@
 import {RelType} from "../models/relationships/types/RelType"
 import {RelationshipType} from "./RelationshipType"
-import {RelTypeNotFoundError} from "../models/types/RelTypeNotFoundError"
+import {RelationshipTypeMappingNotFoundError} from "./RelationshipTypeMappingNotFoundError"
 
 export function mapModelRelationshipTypeToRelationshipType(relType: RelType): RelationshipType {
     const mapping = new Map<RelType, RelationshipType>([
@@ -74,7 +74,7 @@ export function mapModelRelationshipTypeToRelationshipType(relType: RelType): Re
     const relationshipType = mapping.get(relType)
 
     if (!relationshipType) {
-        throw new RelTypeNotFoundError(relType)
+        throw new RelationshipTypeMappingNotFoundError(relType)
     }
 
     return relationshipType

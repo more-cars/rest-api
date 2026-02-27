@@ -1,6 +1,6 @@
 import {ModelNodeType} from "../models/types/ModelNodeType"
 import {NodeType} from "./NodeType"
-import {NodeTypeNotFoundError} from "../models/types/NodeTypeNotFoundError"
+import {NodeTypeMappingNotFoundError} from "./NodeTypeMappingNotFoundError"
 
 export function mapModelNodeTypeToNodeType(nodeType: ModelNodeType): NodeType {
     const mapping = new Map<ModelNodeType, NodeType>([
@@ -25,7 +25,7 @@ export function mapModelNodeTypeToNodeType(nodeType: ModelNodeType): NodeType {
     const mappedNodeType = mapping.get(nodeType)
 
     if (mappedNodeType === null || mappedNodeType === undefined) {
-        throw new NodeTypeNotFoundError(nodeType)
+        throw new NodeTypeMappingNotFoundError(nodeType)
     }
 
     return mappedNodeType

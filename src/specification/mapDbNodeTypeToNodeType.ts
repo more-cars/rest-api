@@ -1,6 +1,6 @@
 import {NodeType} from "./NodeType"
 import {DbNodeType} from "../db/types/DbNodeType"
-import {NodeTypeNotFoundError} from "../db/types/NodeTypeNotFoundError"
+import {NodeTypeMappingNotFoundError} from "./NodeTypeMappingNotFoundError"
 
 export function mapDbNodeTypeToNodeType(nodeType: DbNodeType): NodeType {
     const mapping = new Map<DbNodeType, NodeType>([
@@ -25,7 +25,7 @@ export function mapDbNodeTypeToNodeType(nodeType: DbNodeType): NodeType {
     const mappedNodeType = mapping.get(nodeType)
 
     if (mappedNodeType === null || mappedNodeType === undefined) {
-        throw new NodeTypeNotFoundError(nodeType)
+        throw new NodeTypeMappingNotFoundError(nodeType)
     }
 
     return mappedNodeType

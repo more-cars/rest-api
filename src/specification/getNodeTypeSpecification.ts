@@ -1,5 +1,6 @@
 import {NodeType} from "./NodeType"
 import {NodeSpecification} from "./NodeSpecification"
+import {NodeTypeMappingNotFoundError} from "./NodeTypeMappingNotFoundError"
 import {CompanyNodeSpecification} from "./node-types/CompanyNodeSpecification"
 import {BrandNodeSpecification} from "./node-types/BrandNodeSpecification"
 import {CarModelNodeSpecification} from "./node-types/CarModelNodeSpecification"
@@ -35,11 +36,11 @@ export function getNodeTypeSpecification(nodeType: NodeType) {
         [NodeType.Image, ImageNodeSpecification],
     ])
 
-    const spec = mapping.get(nodeType)
+    const nodeSpecification = mapping.get(nodeType)
 
-    if (!spec) {
-        throw new Error(`No mapping for node type ${nodeType} found`)
+    if (nodeSpecification === null || nodeSpecification === undefined) {
+        throw new NodeTypeMappingNotFoundError(nodeType)
     }
 
-    return spec
+    return nodeSpecification
 }

@@ -1,6 +1,6 @@
 import {RelationshipType as DbRelationshipType} from "../db/types/RelationshipType"
 import {RelationshipType} from "./RelationshipType"
-import {RelationshipTypeNotFoundError} from "../db/types/RelationshipTypeNotFoundError"
+import {RelationshipTypeMappingNotFoundError} from "./RelationshipTypeMappingNotFoundError"
 
 export function mapDbRelationshipTypeToRelationshipType(dbRelationshipType: DbRelationshipType): RelationshipType {
     const mapping = new Map<DbRelationshipType, RelationshipType>([
@@ -76,7 +76,7 @@ export function mapDbRelationshipTypeToRelationshipType(dbRelationshipType: DbRe
     const relationshipType = mapping.get(dbRelationshipType)
 
     if (!relationshipType) {
-        throw new RelationshipTypeNotFoundError(dbRelationshipType)
+        throw new RelationshipTypeMappingNotFoundError(dbRelationshipType)
     }
 
     return relationshipType
