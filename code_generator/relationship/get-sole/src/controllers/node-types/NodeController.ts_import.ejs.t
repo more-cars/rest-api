@@ -1,6 +1,6 @@
 ---
 inject: true
-to: src/controllers/<%= h.changeCase.pascal(startNodeType) %>Controller.ts
+to: src/controllers/node-types/<%= h.changeCase.pascal(startNodeType) %>Controller.ts
 before: \nexport const
 skip_if: import {get<%= h.changeCase.pascal(relationshipName) %>Relation}
 ---

@@ -2,6 +2,6 @@
 inject: true
 to: src/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>.ts
 before: \nexport const
-skip_if: import {RelationshipNotFoundError} from
+skip_if: import {RelNotFoundError} from
 ---
-import {RelationshipNotFoundError} from "../types/RelationshipNotFoundError"
+import {RelNotFoundError} from "../../types/RelNotFoundError"
