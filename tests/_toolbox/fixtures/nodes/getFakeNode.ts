@@ -1,5 +1,5 @@
 import assert from "assert"
-import {DbNodeType} from "../../../../src/db/types/DbNodeType"
+import {NodeType} from "../../../../src/specification/NodeType"
 import {FakeCompany} from "./FakeCompany"
 import {FakeBrand} from "./FakeBrand"
 import {FakeCarModel} from "./FakeCarModel"
@@ -16,37 +16,37 @@ import {FakeGamingPlatform} from "./FakeGamingPlatform"
 import {FakeMagazine} from "./FakeMagazine"
 import {FakeImage} from "./FakeImage"
 
-export function getFakeNode(nodeType: DbNodeType) {
+export function getFakeNode(nodeType: NodeType) {
     switch (nodeType) {
-        case DbNodeType.Company:
+        case NodeType.Company:
             return FakeCompany
-        case DbNodeType.Brand:
+        case NodeType.Brand:
             return FakeBrand
-        case DbNodeType.CarModel:
+        case NodeType.CarModel:
             return FakeCarModel
-        case DbNodeType.CarModelVariant:
+        case NodeType.CarModelVariant:
             return FakeCarModelVariant
-        case DbNodeType.RaceTrack:
+        case NodeType.RaceTrack:
             return FakeRaceTrack
-        case DbNodeType.TrackLayout:
+        case NodeType.TrackLayout:
             return FakeTrackLayout
-        case DbNodeType.RacingSeries:
+        case NodeType.RacingSeries:
             return FakeRacingSeries
-        case DbNodeType.RacingEvent:
+        case NodeType.RacingEvent:
             return FakeRacingEvent
-        case DbNodeType.RacingSession:
+        case NodeType.RacingSession:
             return FakeRacingSession
-        case DbNodeType.SessionResult:
+        case NodeType.SessionResult:
             return FakeSessionResult
-        case DbNodeType.LapTime:
+        case NodeType.LapTime:
             return FakeLapTime
-        case DbNodeType.RacingGame:
+        case NodeType.RacingGame:
             return FakeRacingGame
-        case DbNodeType.GamingPlatform:
+        case NodeType.GamingPlatform:
             return FakeGamingPlatform
-        case DbNodeType.Magazine:
+        case NodeType.Magazine:
             return FakeMagazine
-        case DbNodeType.Image:
+        case NodeType.Image:
             return FakeImage
         default:
             assert.fail(`Node type "${nodeType}" is invalid or unknown`)

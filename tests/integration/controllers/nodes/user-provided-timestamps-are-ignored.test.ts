@@ -1,16 +1,14 @@
 import {describe, expect, test} from 'vitest'
-import {DbNodeType} from "../../../../src/db/types/DbNodeType"
-import {getAllDbNodeTypes} from "../../../_toolbox/getAllDbNodeTypes"
+import {getAllNodeTypes} from "../../../_toolbox/getAllNodeTypes"
 import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
 import request from "supertest"
 import {app} from "../../../../src/app"
 import {getUrlFragmentForNodeType} from "../../../_toolbox/getUrlFragmentForNodeType"
-import {mapDbNodeTypeToNodeType} from "../../../../src/specification/mapDbNodeTypeToNodeType"
 
 describe('The user injects the timestamp fields illegally', () => {
     test.each(
-        getAllDbNodeTypes().map(nodeType => [nodeType]),
-    )('when creating a new node of type $0', async (nodeType: DbNodeType) => {
+        getAllNodeTypes().map(nodeType => [nodeType]),
+    )('when creating a new node of type $0', async (nodeType) => {
         if (!nodeType) {
             return
         }
@@ -22,7 +20,7 @@ describe('The user injects the timestamp fields illegally', () => {
         })
 
         const response = await request(app)
-            .post('/' + getUrlFragmentForNodeType(mapDbNodeTypeToNodeType(nodeType)))
+            .post('/' + getUrlFragmentForNodeType(nodeType))
             .send(manipulatedInput)
 
         expect(response.body.data).toHaveProperty('created_at')
