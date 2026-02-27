@@ -5,7 +5,7 @@ import type {DbNode} from "../../../../src/db/types/DbNode"
 import {getRelationshipSpecification} from "../../../../src/db/relationships/getRelationshipSpecification"
 import {constantCase} from "change-case"
 import {RelationshipType} from "../../../../src/db/types/RelationshipType"
-import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
+import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {seedNode} from "../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../src/db/types/DbNodeType"
 

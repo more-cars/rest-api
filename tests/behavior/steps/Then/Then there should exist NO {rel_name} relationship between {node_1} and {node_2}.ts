@@ -1,7 +1,7 @@
 import {Then, world} from "@cucumber/cucumber"
 import axios from "axios"
 import assert from "assert"
-import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
+import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {dasherize} from "inflection"
 import type {DbNode} from "../../../../src/db/types/DbNode"
 

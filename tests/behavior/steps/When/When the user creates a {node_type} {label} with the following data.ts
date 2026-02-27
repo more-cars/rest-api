@@ -1,6 +1,6 @@
 import {DataTable, When, world} from "@cucumber/cucumber"
 import axios from "axios"
-import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
+import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import type {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 
 When('the user (tries to )create(s) a {string} {string} with the following data',

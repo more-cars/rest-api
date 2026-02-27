@@ -1,7 +1,7 @@
 import {When, world} from "@cucumber/cucumber"
 import axios from "axios"
 import type {DbNode} from "../../../../src/db/types/DbNode"
-import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
+import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {dasherize} from "inflection"
 
 When('the user creates a {string} relationship between {string} and {string}',

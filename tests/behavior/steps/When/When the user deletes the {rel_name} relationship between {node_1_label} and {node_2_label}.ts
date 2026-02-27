@@ -2,7 +2,7 @@ import {When, world} from "@cucumber/cucumber"
 import axios from "axios"
 import {DbNode} from "../../../../src/db/types/DbNode"
 import type {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
-import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
+import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {getBasePathFragmentForRelationshipName} from "../../../_toolbox/dbSeeding/getBasePathFragmentForRelationshipName"
 
 When('the user deletes the {string} relationship between {string} and {string}',

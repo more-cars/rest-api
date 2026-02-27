@@ -1,7 +1,7 @@
 import {Given, world} from "@cucumber/cucumber"
 import axios from "axios"
 import type {DbNode} from "../../../../src/db/types/DbNode"
-import {getBasePathFragmentForNodeType} from "../../../_toolbox/dbSeeding/getBasePathFragmentForNodeType"
+import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import type {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 import {getBasePathFragmentForRelationship} from "../../../_toolbox/dbSeeding/getBasePathFragmentForRelationship"
 
