@@ -1,26 +1,26 @@
 import {RelationshipTypeSpecification} from "../RelationshipTypeSpecification"
 import {RelationshipType} from "../RelationshipType"
-import {DbNodeType} from "../../db/types/DbNodeType"
+import {NodeType} from "../NodeType"
 
 export const BrandRelationshipSpecification: RelationshipTypeSpecification[] = [
     [RelationshipType.BrandBelongsToCompany, {
-        startNodeType: DbNodeType.Brand,
-        endNodeType: DbNodeType.Company,
+        startNodeType: NodeType.Brand,
+        endNodeType: NodeType.Company,
         isReverseRelationship: true,
     }],
     [RelationshipType.BrandHasCarModel, {
-        startNodeType: DbNodeType.Brand,
-        endNodeType: DbNodeType.CarModel,
+        startNodeType: NodeType.Brand,
+        endNodeType: NodeType.CarModel,
         isReverseRelationship: false,
     }],
     [RelationshipType.BrandHasImage, {
-        startNodeType: DbNodeType.Brand,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.Brand,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
     [RelationshipType.BrandHasPrimeImage, {
-        startNodeType: DbNodeType.Brand,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.Brand,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
 ]

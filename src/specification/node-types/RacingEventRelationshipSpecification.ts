@@ -1,46 +1,46 @@
 import {RelationshipTypeSpecification} from "../RelationshipTypeSpecification"
 import {RelationshipType} from "../RelationshipType"
-import {DbNodeType} from "../../db/types/DbNodeType"
+import {NodeType} from "../NodeType"
 
 export const RacingEventRelationshipSpecification: RelationshipTypeSpecification[] = [
     [RelationshipType.RacingEventBelongsToRacingSeries, {
-        startNodeType: DbNodeType.RacingEvent,
-        endNodeType: DbNodeType.RacingSeries,
+        startNodeType: NodeType.RacingEvent,
+        endNodeType: NodeType.RacingSeries,
         isReverseRelationship: true,
     }],
     [RelationshipType.RacingEventIsFollowedByEvent, {
-        startNodeType: DbNodeType.RacingEvent,
-        endNodeType: DbNodeType.RacingEvent,
+        startNodeType: NodeType.RacingEvent,
+        endNodeType: NodeType.RacingEvent,
         isReverseRelationship: false,
     }],
     [RelationshipType.RacingEventFollowsEvent, {
-        startNodeType: DbNodeType.RacingEvent,
-        endNodeType: DbNodeType.RacingEvent,
+        startNodeType: NodeType.RacingEvent,
+        endNodeType: NodeType.RacingEvent,
         isReverseRelationship: true,
     }],
     [RelationshipType.RacingEventTookPlaceAtRaceTrack, {
-        startNodeType: DbNodeType.RacingEvent,
-        endNodeType: DbNodeType.RaceTrack,
+        startNodeType: NodeType.RacingEvent,
+        endNodeType: NodeType.RaceTrack,
         isReverseRelationship: false,
     }],
     [RelationshipType.RacingEventUsedTheTrackLayout, {
-        startNodeType: DbNodeType.RacingEvent,
-        endNodeType: DbNodeType.TrackLayout,
+        startNodeType: NodeType.RacingEvent,
+        endNodeType: NodeType.TrackLayout,
         isReverseRelationship: false,
     }],
     [RelationshipType.RacingEventHasRacingSession, {
-        startNodeType: DbNodeType.RacingEvent,
-        endNodeType: DbNodeType.RacingSession,
+        startNodeType: NodeType.RacingEvent,
+        endNodeType: NodeType.RacingSession,
         isReverseRelationship: false,
     }],
     [RelationshipType.RacingEventHasImage, {
-        startNodeType: DbNodeType.RacingEvent,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.RacingEvent,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
     [RelationshipType.RacingEventHasPrimeImage, {
-        startNodeType: DbNodeType.RacingEvent,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.RacingEvent,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
 ]

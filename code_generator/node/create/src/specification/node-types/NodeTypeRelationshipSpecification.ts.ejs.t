@@ -3,7 +3,7 @@ to: src/specification/node-types/<%= h.changeCase.pascal(nodeType) %>Relationshi
 ---
 import {RelationshipSpecification} from "../../db/types/RelationshipSpecification"
 import {RelationshipType} from "../RelationshipType"
-import {DbNodeType} from "../../db/types/DbNodeType"
+import {NodeType} from "../NodeType"
 
 export const <%= h.changeCase.pascal(nodeType) %>RelationshipSpecification: RelationshipSpecification[] = [
     //

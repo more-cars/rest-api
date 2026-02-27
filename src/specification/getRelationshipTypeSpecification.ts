@@ -1,5 +1,5 @@
 import type {RelationshipType} from "./RelationshipType"
-import {DbNodeType} from "../db/types/DbNodeType"
+import type {NodeType} from "./NodeType"
 import {ImageRelationshipSpecification} from "./node-types/ImageRelationshipSpecification"
 import {CompanyRelationshipSpecification} from "./node-types/CompanyRelationshipSpecification"
 import {BrandRelationshipSpecification} from "./node-types/BrandRelationshipSpecification"
@@ -18,8 +18,8 @@ import {MagazineRelationshipSpecification} from "./node-types/MagazineRelationsh
 
 export function getRelationshipTypeSpecification(relationshipType: RelationshipType) {
     const mapping = new Map<RelationshipType, {
-        startNodeType: DbNodeType,
-        endNodeType: DbNodeType,
+        startNodeType: NodeType,
+        endNodeType: NodeType,
         isReverseRelationship: boolean,
     }>(CompanyRelationshipSpecification.concat(
         BrandRelationshipSpecification,

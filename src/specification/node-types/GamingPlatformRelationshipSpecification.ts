@@ -1,21 +1,21 @@
 import {RelationshipTypeSpecification} from "../RelationshipTypeSpecification"
 import {RelationshipType} from "../RelationshipType"
-import {DbNodeType} from "../../db/types/DbNodeType"
+import {NodeType} from "../NodeType"
 
 export const GamingPlatformRelationshipSpecification: RelationshipTypeSpecification[] = [
     [RelationshipType.GamingPlatformFeaturesRacingGame, {
-        startNodeType: DbNodeType.GamingPlatform,
-        endNodeType: DbNodeType.RacingGame,
+        startNodeType: NodeType.GamingPlatform,
+        endNodeType: NodeType.RacingGame,
         isReverseRelationship: false,
     }],
     [RelationshipType.GamingPlatformHasImage, {
-        startNodeType: DbNodeType.GamingPlatform,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.GamingPlatform,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
     [RelationshipType.GamingPlatformHasPrimeImage, {
-        startNodeType: DbNodeType.GamingPlatform,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.GamingPlatform,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
 ]

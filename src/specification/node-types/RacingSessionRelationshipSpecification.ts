@@ -1,26 +1,26 @@
 import {RelationshipTypeSpecification} from "../RelationshipTypeSpecification"
 import {RelationshipType} from "../RelationshipType"
-import {DbNodeType} from "../../db/types/DbNodeType"
+import {NodeType} from "../NodeType"
 
 export const RacingSessionRelationshipSpecification: RelationshipTypeSpecification[] = [
     [RelationshipType.RacingSessionBelongsToRacingEvent, {
-        startNodeType: DbNodeType.RacingSession,
-        endNodeType: DbNodeType.RacingEvent,
+        startNodeType: NodeType.RacingSession,
+        endNodeType: NodeType.RacingEvent,
         isReverseRelationship: true,
     }],
     [RelationshipType.RacingSessionHasSessionResult, {
-        startNodeType: DbNodeType.RacingSession,
-        endNodeType: DbNodeType.SessionResult,
+        startNodeType: NodeType.RacingSession,
+        endNodeType: NodeType.SessionResult,
         isReverseRelationship: false,
     }],
     [RelationshipType.RacingSessionHasImage, {
-        startNodeType: DbNodeType.RacingSession,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.RacingSession,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
     [RelationshipType.RacingSessionHasPrimeImage, {
-        startNodeType: DbNodeType.RacingSession,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.RacingSession,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
 ]

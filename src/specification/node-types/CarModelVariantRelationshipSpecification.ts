@@ -1,36 +1,36 @@
 import {RelationshipTypeSpecification} from "../RelationshipTypeSpecification"
 import {RelationshipType} from "../RelationshipType"
-import {DbNodeType} from "../../db/types/DbNodeType"
+import {NodeType} from "../NodeType"
 
 export const CarModelVariantRelationshipSpecification: RelationshipTypeSpecification[] = [
     [RelationshipType.CarModelVariantIsVariantOf, {
-        startNodeType: DbNodeType.CarModelVariant,
-        endNodeType: DbNodeType.CarModel,
+        startNodeType: NodeType.CarModelVariant,
+        endNodeType: NodeType.CarModel,
         isReverseRelationship: true,
     }],
     [RelationshipType.CarModelVariantAchievedSessionResult, {
-        startNodeType: DbNodeType.CarModelVariant,
-        endNodeType: DbNodeType.SessionResult,
+        startNodeType: NodeType.CarModelVariant,
+        endNodeType: NodeType.SessionResult,
         isReverseRelationship: false,
     }],
     [RelationshipType.CarModelVariantAchievedLapTime, {
-        startNodeType: DbNodeType.CarModelVariant,
-        endNodeType: DbNodeType.LapTime,
+        startNodeType: NodeType.CarModelVariant,
+        endNodeType: NodeType.LapTime,
         isReverseRelationship: false,
     }],
     [RelationshipType.CarModelVariantIsFeaturedInRacingGame, {
-        startNodeType: DbNodeType.CarModelVariant,
-        endNodeType: DbNodeType.RacingGame,
+        startNodeType: NodeType.CarModelVariant,
+        endNodeType: NodeType.RacingGame,
         isReverseRelationship: true,
     }],
     [RelationshipType.CarModelVariantHasImage, {
-        startNodeType: DbNodeType.CarModelVariant,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.CarModelVariant,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
     [RelationshipType.CarModelVariantHasPrimeImage, {
-        startNodeType: DbNodeType.CarModelVariant,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.CarModelVariant,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
 ]

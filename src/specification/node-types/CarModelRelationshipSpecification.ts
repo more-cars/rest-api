@@ -1,36 +1,36 @@
 import {RelationshipTypeSpecification} from "../RelationshipTypeSpecification"
 import {RelationshipType} from "../RelationshipType"
-import {DbNodeType} from "../../db/types/DbNodeType"
+import {NodeType} from "../NodeType"
 
 export const CarModelRelationshipSpecification: RelationshipTypeSpecification[] = [
     [RelationshipType.CarModelBelongsToBrand, {
-        startNodeType: DbNodeType.CarModel,
-        endNodeType: DbNodeType.Brand,
+        startNodeType: NodeType.CarModel,
+        endNodeType: NodeType.Brand,
         isReverseRelationship: true,
     }],
     [RelationshipType.CarModelHasSuccessor, {
-        startNodeType: DbNodeType.CarModel,
-        endNodeType: DbNodeType.CarModel,
+        startNodeType: NodeType.CarModel,
+        endNodeType: NodeType.CarModel,
         isReverseRelationship: false,
     }],
     [RelationshipType.CarModelIsSuccessorOf, {
-        startNodeType: DbNodeType.CarModel,
-        endNodeType: DbNodeType.CarModel,
+        startNodeType: NodeType.CarModel,
+        endNodeType: NodeType.CarModel,
         isReverseRelationship: true,
     }],
     [RelationshipType.CarModelHasVariant, {
-        startNodeType: DbNodeType.CarModel,
-        endNodeType: DbNodeType.CarModelVariant,
+        startNodeType: NodeType.CarModel,
+        endNodeType: NodeType.CarModelVariant,
         isReverseRelationship: false,
     }],
     [RelationshipType.CarModelHasImage, {
-        startNodeType: DbNodeType.CarModel,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.CarModel,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
     [RelationshipType.CarModelHasPrimeImage, {
-        startNodeType: DbNodeType.CarModel,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.CarModel,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
 ]

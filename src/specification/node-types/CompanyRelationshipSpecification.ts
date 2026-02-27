@@ -1,21 +1,21 @@
 import {RelationshipTypeSpecification} from "../RelationshipTypeSpecification"
 import {RelationshipType} from "../RelationshipType"
-import {DbNodeType} from "../../db/types/DbNodeType"
+import {NodeType} from "../NodeType"
 
 export const CompanyRelationshipSpecification: RelationshipTypeSpecification[] = [
     [RelationshipType.CompanyHasBrand, {
-        startNodeType: DbNodeType.Company,
-        endNodeType: DbNodeType.Brand,
+        startNodeType: NodeType.Company,
+        endNodeType: NodeType.Brand,
         isReverseRelationship: false,
     }],
     [RelationshipType.CompanyHasImage, {
-        startNodeType: DbNodeType.Company,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.Company,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
     [RelationshipType.CompanyHasPrimeImage, {
-        startNodeType: DbNodeType.Company,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.Company,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
 ]

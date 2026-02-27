@@ -1,26 +1,26 @@
 import {RelationshipTypeSpecification} from "../RelationshipTypeSpecification"
 import {RelationshipType} from "../RelationshipType"
-import {DbNodeType} from "../../db/types/DbNodeType"
+import {NodeType} from "../NodeType"
 
 export const ImageRelationshipSpecification: RelationshipTypeSpecification[] = [
     [RelationshipType.ImageBelongsToNode, {
-        startNodeType: DbNodeType.Image,
-        endNodeType: DbNodeType.Node,
+        startNodeType: NodeType.Image,
+        endNodeType: NodeType.Node,
         isReverseRelationship: true,
     }],
     [RelationshipType.ImageIsPrimeImageOfNode, {
-        startNodeType: DbNodeType.Image,
-        endNodeType: DbNodeType.Node,
+        startNodeType: NodeType.Image,
+        endNodeType: NodeType.Node,
         isReverseRelationship: true,
     }],
     [RelationshipType.NodeHasImage, {
-        startNodeType: DbNodeType.Node,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.Node,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
     [RelationshipType.NodeHasPrimeImage, {
-        startNodeType: DbNodeType.Node,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.Node,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
 ]

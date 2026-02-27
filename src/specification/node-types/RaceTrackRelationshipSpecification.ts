@@ -1,26 +1,26 @@
 import {RelationshipTypeSpecification} from "../RelationshipTypeSpecification"
 import {RelationshipType} from "../RelationshipType"
-import {DbNodeType} from "../../db/types/DbNodeType"
+import {NodeType} from "../NodeType"
 
 export const RaceTrackRelationshipSpecification: RelationshipTypeSpecification[] = [
     [RelationshipType.RaceTrackHasLayout, {
-        startNodeType: DbNodeType.RaceTrack,
-        endNodeType: DbNodeType.TrackLayout,
+        startNodeType: NodeType.RaceTrack,
+        endNodeType: NodeType.TrackLayout,
         isReverseRelationship: false,
     }],
     [RelationshipType.RaceTrackHostedRacingEvent, {
-        startNodeType: DbNodeType.RaceTrack,
-        endNodeType: DbNodeType.RacingEvent,
+        startNodeType: NodeType.RaceTrack,
+        endNodeType: NodeType.RacingEvent,
         isReverseRelationship: true,
     }],
     [RelationshipType.RaceTrackHasImage, {
-        startNodeType: DbNodeType.RaceTrack,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.RaceTrack,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
     [RelationshipType.RaceTrackHasPrimeImage, {
-        startNodeType: DbNodeType.RaceTrack,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.RaceTrack,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
 ]

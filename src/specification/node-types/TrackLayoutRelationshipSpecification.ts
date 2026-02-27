@@ -1,36 +1,36 @@
 import {RelationshipTypeSpecification} from "../RelationshipTypeSpecification"
 import {RelationshipType} from "../RelationshipType"
-import {DbNodeType} from "../../db/types/DbNodeType"
+import {NodeType} from "../NodeType"
 
 export const TrackLayoutRelationshipSpecification: RelationshipTypeSpecification[] = [
     [RelationshipType.TrackLayoutBelongsToRaceTrack, {
-        startNodeType: DbNodeType.TrackLayout,
-        endNodeType: DbNodeType.RaceTrack,
+        startNodeType: NodeType.TrackLayout,
+        endNodeType: NodeType.RaceTrack,
         isReverseRelationship: true,
     }],
     [RelationshipType.TrackLayoutWasUsedByRacingEvent, {
-        startNodeType: DbNodeType.TrackLayout,
-        endNodeType: DbNodeType.RacingEvent,
+        startNodeType: NodeType.TrackLayout,
+        endNodeType: NodeType.RacingEvent,
         isReverseRelationship: true,
     }],
     [RelationshipType.TrackLayoutHasLapTime, {
-        startNodeType: DbNodeType.TrackLayout,
-        endNodeType: DbNodeType.LapTime,
+        startNodeType: NodeType.TrackLayout,
+        endNodeType: NodeType.LapTime,
         isReverseRelationship: false,
     }],
     [RelationshipType.TrackLayoutIsFeaturedInRacingGame, {
-        startNodeType: DbNodeType.TrackLayout,
-        endNodeType: DbNodeType.RacingGame,
+        startNodeType: NodeType.TrackLayout,
+        endNodeType: NodeType.RacingGame,
         isReverseRelationship: true,
     }],
     [RelationshipType.TrackLayoutHasImage, {
-        startNodeType: DbNodeType.TrackLayout,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.TrackLayout,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
     [RelationshipType.TrackLayoutHasPrimeImage, {
-        startNodeType: DbNodeType.TrackLayout,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.TrackLayout,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
 ]

@@ -1,31 +1,31 @@
 import {RelationshipTypeSpecification} from "../RelationshipTypeSpecification"
 import {RelationshipType} from "../RelationshipType"
-import {DbNodeType} from "../../db/types/DbNodeType"
+import {NodeType} from "../NodeType"
 
 export const LapTimeRelationshipSpecification: RelationshipTypeSpecification[] = [
     [RelationshipType.LapTimeBelongsToSessionResult, {
-        startNodeType: DbNodeType.LapTime,
-        endNodeType: DbNodeType.SessionResult,
+        startNodeType: NodeType.LapTime,
+        endNodeType: NodeType.SessionResult,
         isReverseRelationship: true,
     }],
     [RelationshipType.LapTimeAchievedOnTrackLayout, {
-        startNodeType: DbNodeType.LapTime,
-        endNodeType: DbNodeType.TrackLayout,
+        startNodeType: NodeType.LapTime,
+        endNodeType: NodeType.TrackLayout,
         isReverseRelationship: true,
     }],
     [RelationshipType.LapTimeAchievedWithCarModelVariant, {
-        startNodeType: DbNodeType.LapTime,
-        endNodeType: DbNodeType.CarModelVariant,
+        startNodeType: NodeType.LapTime,
+        endNodeType: NodeType.CarModelVariant,
         isReverseRelationship: true,
     }],
     [RelationshipType.LapTimeHasImage, {
-        startNodeType: DbNodeType.LapTime,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.LapTime,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
     [RelationshipType.LapTimeHasPrimeImage, {
-        startNodeType: DbNodeType.LapTime,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.LapTime,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
 ]

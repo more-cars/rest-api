@@ -1,31 +1,31 @@
 import {RelationshipTypeSpecification} from "../RelationshipTypeSpecification"
 import {RelationshipType} from "../RelationshipType"
-import {DbNodeType} from "../../db/types/DbNodeType"
+import {NodeType} from "../NodeType"
 
 export const SessionResultRelationshipSpecification: RelationshipTypeSpecification[] = [
     [RelationshipType.SessionResultBelongsToRacingSession, {
-        startNodeType: DbNodeType.SessionResult,
-        endNodeType: DbNodeType.RacingSession,
+        startNodeType: NodeType.SessionResult,
+        endNodeType: NodeType.RacingSession,
         isReverseRelationship: true,
     }],
     [RelationshipType.SessionResultHasLapTime, {
-        startNodeType: DbNodeType.SessionResult,
-        endNodeType: DbNodeType.LapTime,
+        startNodeType: NodeType.SessionResult,
+        endNodeType: NodeType.LapTime,
         isReverseRelationship: false,
     }],
     [RelationshipType.SessionResultAchievedWithCarModelVariant, {
-        startNodeType: DbNodeType.SessionResult,
-        endNodeType: DbNodeType.CarModelVariant,
+        startNodeType: NodeType.SessionResult,
+        endNodeType: NodeType.CarModelVariant,
         isReverseRelationship: true,
     }],
     [RelationshipType.SessionResultHasImage, {
-        startNodeType: DbNodeType.SessionResult,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.SessionResult,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
     [RelationshipType.SessionResultHasPrimeImage, {
-        startNodeType: DbNodeType.SessionResult,
-        endNodeType: DbNodeType.Image,
+        startNodeType: NodeType.SessionResult,
+        endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
 ]

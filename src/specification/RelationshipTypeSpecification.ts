@@ -1,10 +1,10 @@
 import type {RelationshipType} from "./RelationshipType"
-import {DbNodeType} from "../db/types/DbNodeType"
+import type {NodeType} from "./NodeType"
 
 export type RelationshipTypeSpecification = [
     RelationshipType, {
-        startNodeType: DbNodeType
-        endNodeType: DbNodeType
+        startNodeType: NodeType
+        endNodeType: NodeType
         isReverseRelationship: boolean
     }
 ]
