@@ -1,5 +1,6 @@
 import assert from "assert"
 import {NodeType} from "../../../../src/specification/NodeType"
+import type {FakeNode} from "./types/FakeNode"
 import {FakeCompany} from "./FakeCompany"
 import {FakeBrand} from "./FakeBrand"
 import {FakeCarModel} from "./FakeCarModel"
@@ -17,38 +18,29 @@ import {FakeMagazine} from "./FakeMagazine"
 import {FakeImage} from "./FakeImage"
 
 export function getFakeNode(nodeType: NodeType) {
-    switch (nodeType) {
-        case NodeType.Company:
-            return FakeCompany
-        case NodeType.Brand:
-            return FakeBrand
-        case NodeType.CarModel:
-            return FakeCarModel
-        case NodeType.CarModelVariant:
-            return FakeCarModelVariant
-        case NodeType.RaceTrack:
-            return FakeRaceTrack
-        case NodeType.TrackLayout:
-            return FakeTrackLayout
-        case NodeType.RacingSeries:
-            return FakeRacingSeries
-        case NodeType.RacingEvent:
-            return FakeRacingEvent
-        case NodeType.RacingSession:
-            return FakeRacingSession
-        case NodeType.SessionResult:
-            return FakeSessionResult
-        case NodeType.LapTime:
-            return FakeLapTime
-        case NodeType.RacingGame:
-            return FakeRacingGame
-        case NodeType.GamingPlatform:
-            return FakeGamingPlatform
-        case NodeType.Magazine:
-            return FakeMagazine
-        case NodeType.Image:
-            return FakeImage
-        default:
-            assert.fail(`Node type "${nodeType}" is invalid or unknown`)
+    const mapping = new Map<NodeType, FakeNode>([
+        [NodeType.Company, FakeCompany],
+        [NodeType.Brand, FakeBrand],
+        [NodeType.CarModel, FakeCarModel],
+        [NodeType.CarModelVariant, FakeCarModelVariant],
+        [NodeType.RaceTrack, FakeRaceTrack],
+        [NodeType.TrackLayout, FakeTrackLayout],
+        [NodeType.RacingSeries, FakeRacingSeries],
+        [NodeType.RacingEvent, FakeRacingEvent],
+        [NodeType.RacingSession, FakeRacingSession],
+        [NodeType.SessionResult, FakeSessionResult],
+        [NodeType.LapTime, FakeLapTime],
+        [NodeType.RacingGame, FakeRacingGame],
+        [NodeType.GamingPlatform, FakeGamingPlatform],
+        [NodeType.Magazine, FakeMagazine],
+        [NodeType.Image, FakeImage],
+    ])
+
+    const fakeNode = mapping.get(nodeType)
+
+    if (!fakeNode) {
+        assert.fail(`Node type "${nodeType}" is invalid or unknown`)
     }
+
+    return fakeNode
 }
