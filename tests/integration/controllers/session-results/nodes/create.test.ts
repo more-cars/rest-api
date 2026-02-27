@@ -5,7 +5,7 @@ import {SessionResult} from "../../../../../src/models/node-types/session-result
 import {FakeSessionResult} from "../../../../_toolbox/fixtures/nodes/FakeSessionResult"
 
 test('Input data is valid', async () => {
-    SessionResult.create = vi.fn().mockReturnValue(FakeSessionResult.modelOutput())
+    SessionResult.create = vi.fn().mockReturnValue(FakeSessionResult.modelOutput)
 
     const response = await request(app)
         .post('/session-results')

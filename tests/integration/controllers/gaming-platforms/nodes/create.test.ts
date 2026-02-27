@@ -5,7 +5,7 @@ import {GamingPlatform} from "../../../../../src/models/node-types/gaming-platfo
 import {FakeGamingPlatform} from "../../../../_toolbox/fixtures/nodes/FakeGamingPlatform"
 
 test('Input data is valid', async () => {
-    GamingPlatform.create = vi.fn().mockReturnValue(FakeGamingPlatform.modelOutput())
+    GamingPlatform.create = vi.fn().mockReturnValue(FakeGamingPlatform.modelOutput)
 
     const response = await request(app)
         .post('/gaming-platforms')

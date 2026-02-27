@@ -5,7 +5,7 @@ import {RacingSession} from "../../../../../src/models/node-types/racing-session
 import {FakeRacingSession} from "../../../../_toolbox/fixtures/nodes/FakeRacingSession"
 
 test('Input data is valid', async () => {
-    RacingSession.create = vi.fn().mockReturnValue(FakeRacingSession.modelOutput())
+    RacingSession.create = vi.fn().mockReturnValue(FakeRacingSession.modelOutput)
 
     const response = await request(app)
         .post('/racing-sessions')

@@ -17,9 +17,9 @@ describe('Expecting correct status code when requesting a plain node collection'
 
     test('when multiple nodes exist', async () => {
         LapTime.findAll = vi.fn().mockReturnValue([
-            FakeLapTime.modelOutput(),
-            FakeLapTime.modelOutput(),
-            FakeLapTime.modelOutput(),
+            FakeLapTime.modelOutput,
+            FakeLapTime.modelOutput,
+            FakeLapTime.modelOutput,
         ])
 
         const response = await request(app)

@@ -5,7 +5,7 @@ import {TrackLayout} from "../../../../../src/models/node-types/track-layouts/Tr
 import {FakeTrackLayout} from "../../../../_toolbox/fixtures/nodes/FakeTrackLayout"
 
 test('Input data is valid', async () => {
-    TrackLayout.create = vi.fn().mockReturnValue(FakeTrackLayout.modelOutput())
+    TrackLayout.create = vi.fn().mockReturnValue(FakeTrackLayout.modelOutput)
 
     const response = await request(app)
         .post('/track-layouts')

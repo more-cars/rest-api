@@ -20,9 +20,9 @@ describe('Expecting correct status code when requesting a plain node collection'
 
     test('when multiple nodes exist', async () => {
         <%= h.changeCase.pascal(nodeType) %>.findAll = vi.fn().mockReturnValue([
-            Fake<%= h.changeCase.pascal(nodeType) %>.modelOutput(),
-            Fake<%= h.changeCase.pascal(nodeType) %>.modelOutput(),
-            Fake<%= h.changeCase.pascal(nodeType) %>.modelOutput(),
+            Fake<%= h.changeCase.pascal(nodeType) %>.modelOutput,
+            Fake<%= h.changeCase.pascal(nodeType) %>.modelOutput,
+            Fake<%= h.changeCase.pascal(nodeType) %>.modelOutput,
         ])
 
         const response = await request(app)

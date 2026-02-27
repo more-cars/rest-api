@@ -8,7 +8,7 @@ import {<%= h.changeCase.pascal(nodeType) %>} from "../../../../../src/models/no
 import {Fake<%= h.changeCase.pascal(nodeType) %>} from "../../../../_toolbox/fixtures/nodes/Fake<%= h.changeCase.pascal(nodeType) %>"
 
 test('Input data is valid', async () => {
-    <%= h.changeCase.pascal(nodeType) %>.create = vi.fn().mockReturnValue(Fake<%= h.changeCase.pascal(nodeType) %>.modelOutput())
+    <%= h.changeCase.pascal(nodeType) %>.create = vi.fn().mockReturnValue(Fake<%= h.changeCase.pascal(nodeType) %>.modelOutput)
 
     const response = await request(app)
         .post('/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>')

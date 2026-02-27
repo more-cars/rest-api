@@ -17,9 +17,9 @@ describe('Expecting correct status code when requesting a plain node collection'
 
     test('when multiple nodes exist', async () => {
         GamingPlatform.findAll = vi.fn().mockReturnValue([
-            FakeGamingPlatform.modelOutput(),
-            FakeGamingPlatform.modelOutput(),
-            FakeGamingPlatform.modelOutput(),
+            FakeGamingPlatform.modelOutput,
+            FakeGamingPlatform.modelOutput,
+            FakeGamingPlatform.modelOutput,
         ])
 
         const response = await request(app)

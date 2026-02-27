@@ -3,7 +3,7 @@ import {FakeGamingPlatform} from "../../../../../_toolbox/fixtures/nodes/FakeGam
 import {GamingPlatform} from "../../../../../../src/models/node-types/gaming-platforms/GamingPlatform"
 
 test('Expecting node to be created when provided with valid data', async () => {
-    const inputData = FakeGamingPlatform.dbInput()
+    const inputData = FakeGamingPlatform.dbInput
     const createdNode = await GamingPlatform.create(inputData)
 
     expect(createdNode.attributes)
@@ -11,7 +11,7 @@ test('Expecting node to be created when provided with valid data', async () => {
 })
 
 test('Trying to override read-only properties', async () => {
-    const validData = FakeGamingPlatform.dbInput()
+    const validData = FakeGamingPlatform.dbInput
     const readOnlyData = {
         id: 9999,
         created_at: "NOT_ALLOWED_TO_OVERWRITE",

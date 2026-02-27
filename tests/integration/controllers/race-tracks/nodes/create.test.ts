@@ -5,7 +5,7 @@ import {RaceTrack} from "../../../../../src/models/node-types/race-tracks/RaceTr
 import {FakeRaceTrack} from "../../../../_toolbox/fixtures/nodes/FakeRaceTrack"
 
 test('Input data is valid', async () => {
-    RaceTrack.create = vi.fn().mockReturnValue(FakeRaceTrack.modelOutput())
+    RaceTrack.create = vi.fn().mockReturnValue(FakeRaceTrack.modelOutput)
 
     const response = await request(app)
         .post('/race-tracks')

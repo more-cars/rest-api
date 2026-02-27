@@ -2,5 +2,5 @@ import {createNode} from "../../../../../src/db/node-types/track-layouts/createN
 import {FakeTrackLayout} from "../../../fixtures/nodes/FakeTrackLayout"
 
 export async function seedTrackLayout(customFakeData: object = {}) {
-    return createNode(Object.assign({}, FakeTrackLayout.dbInput(), customFakeData))
+    return createNode(Object.assign({}, FakeTrackLayout.dbInput, customFakeData))
 }

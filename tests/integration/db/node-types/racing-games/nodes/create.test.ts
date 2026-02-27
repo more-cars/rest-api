@@ -4,7 +4,7 @@ import {createNode} from "../../../../../../src/db/node-types/racing-games/creat
 
 describe('Creating node', () => {
     test('with valid data', async () => {
-        const inputData = FakeRacingGame.dbInput()
+        const inputData = FakeRacingGame.dbInput
         const createdNode = await createNode(inputData)
 
         expect(createdNode.properties)
@@ -12,7 +12,7 @@ describe('Creating node', () => {
     })
 
     test('with valid minimum data', async () => {
-        const inputData = FakeRacingGame.dbInputMinimal()
+        const inputData = FakeRacingGame.dbInputMinimal
         const createdNode = await createNode(inputData)
 
         expect(createdNode.properties)

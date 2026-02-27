@@ -17,9 +17,9 @@ describe('Expecting correct status code when requesting a plain node collection'
 
     test('when multiple nodes exist', async () => {
         Image.findAll = vi.fn().mockReturnValue([
-            FakeImage.modelOutput(),
-            FakeImage.modelOutput(),
-            FakeImage.modelOutput(),
+            FakeImage.modelOutput,
+            FakeImage.modelOutput,
+            FakeImage.modelOutput,
         ])
 
         const response = await request(app)

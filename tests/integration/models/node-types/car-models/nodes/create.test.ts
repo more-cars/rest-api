@@ -3,7 +3,7 @@ import {FakeCarModel} from "../../../../../_toolbox/fixtures/nodes/FakeCarModel"
 import {CarModel} from "../../../../../../src/models/node-types/car-models/CarModel"
 
 test('When providing valid data the new node can be created', async () => {
-    const inputData = FakeCarModel.dbInput()
+    const inputData = FakeCarModel.dbInput
     const createdNode = await CarModel.create(inputData)
 
     expect(createdNode.attributes)
@@ -11,7 +11,7 @@ test('When providing valid data the new node can be created', async () => {
 })
 
 test('Read-only properties cannot be overridden', async () => {
-    const validData = FakeCarModel.dbInput()
+    const validData = FakeCarModel.dbInput
     const readOnlyData = {
         id: 9999,
         created_at: "NOT_ALLOWED_TO_OVERWRITE",

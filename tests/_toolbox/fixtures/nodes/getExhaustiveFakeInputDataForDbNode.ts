@@ -19,35 +19,35 @@ import {FakeMagazine} from "./FakeMagazine"
 export function getExhaustiveFakeInputDataForDbNode(nodeType: DbNodeType) {
     switch (nodeType) {
         case DbNodeType.Company:
-            return FakeCompany.dbInput()
+            return FakeCompany.dbInput
         case DbNodeType.Brand:
-            return FakeBrand.dbInput()
+            return FakeBrand.dbInput
         case DbNodeType.CarModel:
-            return FakeCarModel.dbInput()
+            return FakeCarModel.dbInput
         case DbNodeType.CarModelVariant:
-            return FakeCarModelVariant.dbInput()
+            return FakeCarModelVariant.dbInput
         case DbNodeType.RaceTrack:
-            return FakeRaceTrack.dbInput()
+            return FakeRaceTrack.dbInput
         case DbNodeType.TrackLayout:
-            return FakeTrackLayout.dbInput()
+            return FakeTrackLayout.dbInput
         case DbNodeType.RacingSeries:
-            return FakeRacingSeries.dbInput()
+            return FakeRacingSeries.dbInput
         case DbNodeType.RacingEvent:
-            return FakeRacingEvent.dbInput()
+            return FakeRacingEvent.dbInput
         case DbNodeType.RacingSession:
-            return FakeRacingSession.dbInput()
+            return FakeRacingSession.dbInput
         case DbNodeType.SessionResult:
-            return FakeSessionResult.dbInput()
+            return FakeSessionResult.dbInput
         case DbNodeType.LapTime:
-            return FakeLapTime.dbInput()
+            return FakeLapTime.dbInput
         case DbNodeType.RacingGame:
-            return FakeRacingGame.dbInput()
+            return FakeRacingGame.dbInput
         case DbNodeType.GamingPlatform:
-            return FakeGamingPlatform.dbInput()
+            return FakeGamingPlatform.dbInput
         case DbNodeType.Magazine:
-            return FakeMagazine.dbInput()
+            return FakeMagazine.dbInput
         case DbNodeType.Image:
-            return FakeImage.dbInput()
+            return FakeImage.dbInput
         default:
             assert.fail(`Node type "${nodeType}" is invalid or unknown`)
     }

@@ -2,5 +2,5 @@ import {createNode} from "../../../../../src/db/node-types/racing-series/createN
 import {FakeRacingSeries} from "../../../fixtures/nodes/FakeRacingSeries"
 
 export async function seedRacingSeries(customFakeData: object = {}) {
-    return createNode(Object.assign({}, FakeRacingSeries.dbInput(), customFakeData))
+    return createNode(Object.assign({}, FakeRacingSeries.dbInput, customFakeData))
 }

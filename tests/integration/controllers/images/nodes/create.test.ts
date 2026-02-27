@@ -5,7 +5,7 @@ import {Image} from "../../../../../src/models/node-types/images/Image"
 import {FakeImage} from "../../../../_toolbox/fixtures/nodes/FakeImage"
 
 test('Input data is valid', async () => {
-    Image.create = vi.fn().mockReturnValue(FakeImage.modelOutput())
+    Image.create = vi.fn().mockReturnValue(FakeImage.modelOutput)
 
     const response = await request(app)
         .post('/images')

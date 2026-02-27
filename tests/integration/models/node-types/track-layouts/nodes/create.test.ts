@@ -3,7 +3,7 @@ import {FakeTrackLayout} from "../../../../../_toolbox/fixtures/nodes/FakeTrackL
 import {TrackLayout} from "../../../../../../src/models/node-types/track-layouts/TrackLayout"
 
 test('Expecting node to be created when provided with valid data', async () => {
-    const inputData = FakeTrackLayout.dbInput()
+    const inputData = FakeTrackLayout.dbInput
     const createdNode = await TrackLayout.create(inputData)
 
     expect(createdNode.attributes)
@@ -11,7 +11,7 @@ test('Expecting node to be created when provided with valid data', async () => {
 })
 
 test('Trying to override read-only properties', async () => {
-    const validData = FakeTrackLayout.dbInput()
+    const validData = FakeTrackLayout.dbInput
     const readOnlyData = {
         id: 9999,
         created_at: "NOT_ALLOWED_TO_OVERWRITE",

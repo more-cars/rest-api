@@ -13,7 +13,7 @@ describe('The user injects the timestamp fields illegally', () => {
             return
         }
 
-        const manipulatedInput = Object.assign({}, getFakeNode(nodeType).dbInput(), {
+        const manipulatedInput = Object.assign({}, getFakeNode(nodeType).dbInput, {
             name: "TIMESTAMP TEST",
             created_at: "blubb",
             updated_at: "blobb",

@@ -10,8 +10,8 @@ describe('Marshalling a relation collection', () => {
     test.each(
         getAllModelRelationshipTypes().map(relType => [relType])
     )('when creating a relation from type $0', async (relType) => {
-        const origin = getFakeNode(NodeType.Brand).modelOutput()
-        const destination = getFakeNode(NodeType.CarModel).modelOutput()
+        const origin = getFakeNode(NodeType.Brand).modelOutput
+        const destination = getFakeNode(NodeType.CarModel).modelOutput
         const rel: Rel = {
             id: 3,
             type: relType,

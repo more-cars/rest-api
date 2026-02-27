@@ -5,5 +5,5 @@ import {createNode} from "../../../../../src/db/node-types/<%= h.changeCase.keba
 import {Fake<%= h.changeCase.pascal(nodeType) %>} from "../../../fixtures/nodes/Fake<%= h.changeCase.pascal(nodeType) %>"
 
 export async function seed<%= h.changeCase.pascal(nodeType) %>(customFakeData: object = {}) {
-    return createNode(Object.assign({}, Fake<%= h.changeCase.pascal(nodeType) %>.dbInput(), customFakeData))
+    return createNode(Object.assign({}, Fake<%= h.changeCase.pascal(nodeType) %>.dbInput, customFakeData))
 }

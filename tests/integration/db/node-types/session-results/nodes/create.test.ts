@@ -4,7 +4,7 @@ import {createNode} from "../../../../../../src/db/node-types/session-results/cr
 
 describe('Creating node', () => {
     test('with valid data', async () => {
-        const inputData = FakeSessionResult.dbInput()
+        const inputData = FakeSessionResult.dbInput
         const createdNode = await createNode(inputData)
 
         expect(createdNode.properties)
@@ -12,7 +12,7 @@ describe('Creating node', () => {
     })
 
     test('with valid minimum data', async () => {
-        const inputData = FakeSessionResult.dbInputMinimal()
+        const inputData = FakeSessionResult.dbInputMinimal
         const createdNode = await createNode(inputData)
 
         expect(createdNode.properties)

@@ -5,7 +5,7 @@ import {LapTime} from "../../../../../src/models/node-types/lap-times/LapTime"
 import {FakeLapTime} from "../../../../_toolbox/fixtures/nodes/FakeLapTime"
 
 test('Input data is valid', async () => {
-    LapTime.create = vi.fn().mockReturnValue(FakeLapTime.modelOutput())
+    LapTime.create = vi.fn().mockReturnValue(FakeLapTime.modelOutput)
 
     const response = await request(app)
         .post('/lap-times')

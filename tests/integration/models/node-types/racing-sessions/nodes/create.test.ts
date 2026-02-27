@@ -3,7 +3,7 @@ import {FakeRacingSession} from "../../../../../_toolbox/fixtures/nodes/FakeRaci
 import {RacingSession} from "../../../../../../src/models/node-types/racing-sessions/RacingSession"
 
 test('Expecting node to be created when provided with valid data', async () => {
-    const inputData = FakeRacingSession.dbInput()
+    const inputData = FakeRacingSession.dbInput
     const createdNode = await RacingSession.create(inputData)
 
     expect(createdNode.attributes)
@@ -11,7 +11,7 @@ test('Expecting node to be created when provided with valid data', async () => {
 })
 
 test('Trying to override read-only properties', async () => {
-    const validData = FakeRacingSession.dbInput()
+    const validData = FakeRacingSession.dbInput
     const readOnlyData = {
         id: 9999,
         created_at: "NOT_ALLOWED_TO_OVERWRITE",

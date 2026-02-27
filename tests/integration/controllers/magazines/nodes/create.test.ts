@@ -5,7 +5,7 @@ import {Magazine} from "../../../../../src/models/node-types/magazines/Magazine"
 import {FakeMagazine} from "../../../../_toolbox/fixtures/nodes/FakeMagazine"
 
 test('Input data is valid', async () => {
-    Magazine.create = vi.fn().mockReturnValue(FakeMagazine.modelOutput())
+    Magazine.create = vi.fn().mockReturnValue(FakeMagazine.modelOutput)
 
     const response = await request(app)
         .post('/magazines')

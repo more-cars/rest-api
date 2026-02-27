@@ -2,5 +2,5 @@ import {createNode} from "../../../../../src/db/node-types/racing-sessions/creat
 import {FakeRacingSession} from "../../../fixtures/nodes/FakeRacingSession"
 
 export async function seedRacingSession(customFakeData: object = {}) {
-    return createNode(Object.assign({}, FakeRacingSession.dbInput(), customFakeData))
+    return createNode(Object.assign({}, FakeRacingSession.dbInput, customFakeData))
 }

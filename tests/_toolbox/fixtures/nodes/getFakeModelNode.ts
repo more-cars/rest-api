@@ -19,37 +19,37 @@ import {FakeImage} from "./FakeImage"
 export function getFakeModelNode(nodeType: ModelNodeType) {
     switch (nodeType) {
         case ModelNodeType.Company:
-            return FakeCompany.modelOutput()
+            return FakeCompany.modelOutput
         case ModelNodeType.Brand:
-            return FakeBrand.modelOutput()
+            return FakeBrand.modelOutput
         case ModelNodeType.CarModel:
-            return FakeCarModel.modelOutput()
+            return FakeCarModel.modelOutput
         case ModelNodeType.CarModelVariant:
-            return FakeCarModelVariant.modelOutput()
+            return FakeCarModelVariant.modelOutput
         case ModelNodeType.RaceTrack:
-            return FakeRaceTrack.modelOutput()
+            return FakeRaceTrack.modelOutput
         case ModelNodeType.TrackLayout:
-            return FakeTrackLayout.modelOutput()
+            return FakeTrackLayout.modelOutput
         case ModelNodeType.RacingSeries:
-            return FakeRacingSeries.modelOutput()
+            return FakeRacingSeries.modelOutput
         case ModelNodeType.RacingEvent:
-            return FakeRacingEvent.modelOutput()
+            return FakeRacingEvent.modelOutput
         case ModelNodeType.RacingSession:
-            return FakeRacingSession.modelOutput()
+            return FakeRacingSession.modelOutput
         case ModelNodeType.SessionResult:
-            return FakeSessionResult.modelOutput()
+            return FakeSessionResult.modelOutput
         case ModelNodeType.LapTime:
-            return FakeLapTime.modelOutput()
+            return FakeLapTime.modelOutput
         case ModelNodeType.RacingGame:
-            return FakeRacingGame.modelOutput()
+            return FakeRacingGame.modelOutput
         case ModelNodeType.GamingPlatform:
-            return FakeGamingPlatform.modelOutput()
+            return FakeGamingPlatform.modelOutput
         case ModelNodeType.Magazine:
-            return FakeMagazine.modelOutput()
+            return FakeMagazine.modelOutput
         case ModelNodeType.Image:
-            return FakeImage.modelOutput()
+            return FakeImage.modelOutput
         case ModelNodeType.Node:
-            return FakeCarModel.modelOutput()
+            return FakeCarModel.modelOutput
         default:
             assert.fail(`Node type "${nodeType}" is invalid or unknown`)
     }
