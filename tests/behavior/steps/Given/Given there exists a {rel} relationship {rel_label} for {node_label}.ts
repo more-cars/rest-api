@@ -1,20 +1,19 @@
 import {Given, world} from "@cucumber/cucumber"
 import axios from "axios"
 import {dasherize} from "inflection"
-import {pascalCase} from "change-case"
 import type {DbNode} from "../../../../src/db/types/DbNode"
+import {convertStringToRelationshipType} from "../../lib/convertStringToRelationshipType"
 import {getRelationshipTypeSpecification} from "../../../../src/specification/getRelationshipTypeSpecification"
-import type {RelationshipType} from "../../../../src/specification/RelationshipType"
 import {seedNode} from "../../../_toolbox/dbSeeding/seedNode"
-import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {mapNodeTypeToDbNodeType} from "../../../../src/specification/mapNodeTypeToDbNodeType"
+import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 
 Given('there exists a {string} relationship {string} for {string}',
     async (relationshipName: string, relationshipLabel: string, startNodeLabel: string) => {
         const startNode: DbNode = world.recallNode(startNodeLabel).data
-        const startNodeType = world.recallNode(startNodeLabel).nodeType
-        const relationship = getRelationshipTypeSpecification(pascalCase(startNodeType + relationshipName) as RelationshipType)
-        const endNode = await seedNode(mapNodeTypeToDbNodeType(relationship.endNodeType))
+        const relationshipType = convertStringToRelationshipType(relationshipName, startNode.node_type)
+        const relationshipSpecification = getRelationshipTypeSpecification(relationshipType)
+        const endNode = await seedNode(mapNodeTypeToDbNodeType(relationshipSpecification.endNodeType))
         const nodePathFragment = getBasePathFragmentForNodeType(world.recallNode(startNodeLabel).nodeType)
 
         const response = await axios
