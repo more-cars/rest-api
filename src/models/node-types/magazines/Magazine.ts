@@ -18,14 +18,7 @@ import {RelNotFoundError} from "../../types/RelNotFoundError"
 import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {ModelNodeType} from "../../types/ModelNodeType"
-
-
-
-
-
-
-
-
+import {getRel} from "../../relationships/getRel"
 
 export const Magazine = {
     async create(data: CreateMagazineInput): Promise<MagazineNode> {
@@ -122,5 +115,17 @@ export const Magazine = {
         }
 
         return createdRelationship
+    },
+
+    async getHasPrimeImageRelationship(magazineId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await Magazine.findById(magazineId)
+
+        const relationship = await getRel(magazineId, RelType.MagazineHasPrimeImage)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.MagazineHasPrimeImage, magazineId, null)
+        }
+
+        return relationship
     },
 }

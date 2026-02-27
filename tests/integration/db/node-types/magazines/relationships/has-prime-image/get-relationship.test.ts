@@ -7,12 +7,11 @@ import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
 
 describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const relationship = await seedRelationship(DbNodeType.RaceTrack, DbNodeType.Image, RelationshipType.RaceTrackHasPrimeImage)
+        const relationship = await seedRelationship(DbNodeType.Magazine, DbNodeType.Image, RelationshipType.MagazineHasPrimeImage)
 
         const relationships = await getRelationshipCollection(
             relationship.start_node.properties.id,
-            RelationshipType.RaceTrackHasPrimeImage,
-            DbNodeType.Image,
+            RelationshipType.MagazineHasPrimeImage,
         )
 
         expect(relationships.length)
@@ -20,12 +19,11 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     })
 
     test('node exists, but not the relationship', async () => {
-        const raceTrack = await seedNode(DbNodeType.RaceTrack)
+        const magazine = await seedNode(DbNodeType.Magazine)
 
         const relationships = await getRelationshipCollection(
-            raceTrack.properties.id,
-            RelationshipType.RaceTrackHasPrimeImage,
-            DbNodeType.Image,
+            magazine.properties.id,
+            RelationshipType.MagazineHasPrimeImage,
         )
 
         expect(relationships.length)
@@ -35,8 +33,7 @@ describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('neither node, nor relationship exist', async () => {
         const relationships = await getRelationshipCollection(
             -42,
-            RelationshipType.RaceTrackHasPrimeImage,
-            DbNodeType.Image,
+            RelationshipType.MagazineHasPrimeImage,
         )
 
         expect(relationships.length)

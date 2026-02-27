@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {seedRelationship} from "../../../../../../../_toolbox/dbSeeding/seedRelationship"
 import {DbNodeType} from "../../../../../../../../src/db/types/DbNodeType"
 import {RelationshipType} from "../../../../../../../../src/db/types/RelationshipType"
-import {RaceTrack} from "../../../../../../../../src/models/node-types/race-tracks/RaceTrack"
+import {Magazine} from "../../../../../../../../src/models/node-types/magazines/Magazine"
 import {validateJson} from "../../../../../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../../../../../_toolbox/schemas/model/RelationshipSchema"
 import {seedNode} from "../../../../../../../_toolbox/dbSeeding/seedNode"
@@ -11,31 +11,31 @@ import {NodeNotFoundError} from "../../../../../../../../src/models/types/NodeNo
 
 describe('Requesting a ›has-prime-image‹ relationship', () => {
     test('node and relationship exist', async () => {
-        const expectedRelationship = await seedRelationship(DbNodeType.RaceTrack, DbNodeType.Image, RelationshipType.RaceTrackHasPrimeImage)
-        const expectedRaceTrackId = expectedRelationship.start_node.properties.id
+        const expectedRelationship = await seedRelationship(DbNodeType.Magazine, DbNodeType.Image, RelationshipType.MagazineHasPrimeImage)
+        const expectedMagazineId = expectedRelationship.start_node.properties.id
         const expectedImageId = expectedRelationship.end_node.properties.id
-        const actualRelationship = await RaceTrack.getHasPrimeImageRelationship(expectedRaceTrackId)
+        const actualRelationship = await Magazine.getHasPrimeImageRelationship(expectedMagazineId)
 
         expect(validateJson(actualRelationship, RelationshipSchema))
             .toBeTruthy()
 
         expect(actualRelationship.origin.attributes.id)
-            .toBe(expectedRaceTrackId)
+            .toBe(expectedMagazineId)
 
         expect(actualRelationship.destination.attributes.id)
             .toBe(expectedImageId)
     })
 
     test('node exists, but not the relationship', async () => {
-        const raceTrack = await seedNode(DbNodeType.RaceTrack)
+        const magazine = await seedNode(DbNodeType.Magazine)
 
-        await expect(RaceTrack.getHasPrimeImageRelationship(raceTrack.properties.id))
+        await expect(Magazine.getHasPrimeImageRelationship(magazine.properties.id))
             .rejects
             .toThrow(RelNotFoundError)
     })
 
     test('neither node, nor relationship exist', async () => {
-        await expect(RaceTrack.getHasPrimeImageRelationship(-42))
+        await expect(Magazine.getHasPrimeImageRelationship(-42))
             .rejects
             .toThrow(NodeNotFoundError)
     })
