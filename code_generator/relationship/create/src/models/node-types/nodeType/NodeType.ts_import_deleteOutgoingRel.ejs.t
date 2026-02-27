@@ -4,6 +4,6 @@ to: src/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(startNod
 before: \nexport const
 skip_if: import {deleteOutgoingRel} from
 ---
-<% if (cardinality === '1:1' || cardinality === 'n:1') { %>
-import {deleteOutgoingRel} from "../relationships/deleteOutgoingRel"
+<% if (cardinality === '1:1' || cardinality === 'n:1') { -%>
+import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 <% } -%>

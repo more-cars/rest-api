@@ -4,6 +4,6 @@ to: src/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(startNod
 before: \nexport const
 skip_if: import {SemanticError} from
 ---
-<% if (startNodeType === endNodeType) { %>
+<% if (startNodeType === endNodeType) { -%>
 import {SemanticError} from "../types/SemanticError"
 <% } -%>

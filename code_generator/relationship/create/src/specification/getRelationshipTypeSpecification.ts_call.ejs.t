@@ -1,6 +1,6 @@
 ---
 inject: true
-to: src/db/relationships/getRelationshipSpecification.ts
+to: src/specification/getRelationshipTypeSpecification.ts
 before: "ImageRelationshipSpecification,"
 skip_if: "<%= h.changeCase.pascal(startNodeType) %>RelationshipSpecification,"
 ---

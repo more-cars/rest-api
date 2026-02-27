@@ -1,7 +1,7 @@
 ---
 inject: true
 to: tests/smoke/bruno/lib/node-types/<%= h.changeCase.pascal(h.inflection.pluralize(startNodeType)) %>.js
-before: exports.create
+before: "exports.create "
 skip_if: exports.create<%= h.changeCase.pascal(relationshipName) %>Relationship
 ---
 exports.create<%= h.changeCase.pascal(relationshipName) %>Relationship = async function () {
