@@ -7,7 +7,7 @@ import {pascalCase} from "change-case"
 import type {RelationshipType} from "../../../../src/specification/RelationshipType"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {seedNode} from "../../../_toolbox/dbSeeding/seedNode"
-import {DbNodeType} from "../../../../src/db/types/DbNodeType"
+import {mapNodeTypeToDbNodeType} from "../../../../src/specification/mapNodeTypeToDbNodeType"
 
 Given('there exist {int} {string} relationships for {string}',
     async (amount: number, relationshipName: string, startNodeLabel: string) => {
@@ -17,7 +17,7 @@ Given('there exist {int} {string} relationships for {string}',
         const nodePathFragment = getBasePathFragmentForNodeType(world.recallNode(startNodeLabel).nodeType)
 
         for (let i = 0; i < amount; i++) {
-            const endNode = await seedNode(endNodeType || DbNodeType.Brand)
+            const endNode = await seedNode(mapNodeTypeToDbNodeType(endNodeType))
 
             await axios
                 .post(`${process.env.API_URL}/${nodePathFragment}/${startNode.properties.id}/${dasherize(relationshipName)}/${endNode.properties.id}`)
