@@ -1,8 +1,8 @@
-import {RelationshipSpecification} from "../../../types/RelationshipSpecification"
-import {RelationshipType} from "../../../types/RelationshipType"
-import {DbNodeType} from "../../../types/DbNodeType"
+import {RelationshipTypeSpecification} from "../RelationshipTypeSpecification"
+import {RelationshipType} from "../../db/types/RelationshipType"
+import {DbNodeType} from "../../db/types/DbNodeType"
 
-export const GamingPlatformRelationshipSpecification: RelationshipSpecification[] = [
+export const GamingPlatformRelationshipSpecification: RelationshipTypeSpecification[] = [
     [RelationshipType.GamingPlatformFeaturesRacingGame, {
         startNodeType: DbNodeType.GamingPlatform,
         endNodeType: DbNodeType.RacingGame,

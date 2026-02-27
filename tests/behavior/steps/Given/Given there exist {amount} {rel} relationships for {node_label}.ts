@@ -2,7 +2,7 @@ import {Given, world} from "@cucumber/cucumber"
 import axios from "axios"
 import {dasherize} from "inflection"
 import type {DbNode} from "../../../../src/db/types/DbNode"
-import {getRelationshipSpecification} from "../../../../src/db/relationships/getRelationshipSpecification"
+import {getRelationshipTypeSpecification} from "../../../../src/specification/getRelationshipTypeSpecification"
 import {constantCase} from "change-case"
 import {RelationshipType} from "../../../../src/db/types/RelationshipType"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
@@ -12,7 +12,7 @@ import {DbNodeType} from "../../../../src/db/types/DbNodeType"
 Given('there exist {int} {string} relationships for {string}',
     async (amount: number, relationshipName: string, startNodeLabel: string) => {
         const startNode: DbNode = world.recallNode(startNodeLabel).data
-        const relationship = getRelationshipSpecification(constantCase(startNode.node_type + '_' + relationshipName) as RelationshipType)
+        const relationship = getRelationshipTypeSpecification(constantCase(startNode.node_type + '_' + relationshipName) as RelationshipType)
         const endNodeType = relationship.endNodeType
         const nodePathFragment = getBasePathFragmentForNodeType(world.recallNode(startNodeLabel).nodeType)
 

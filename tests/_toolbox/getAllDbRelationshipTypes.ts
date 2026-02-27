@@ -1,6 +1,6 @@
 import {RelationshipType} from "../../src/db/types/RelationshipType"
 import {RelationshipDirection} from "../../src/db/types/RelationshipDirection"
-import {getRelationshipSpecification} from "../../src/db/relationships/getRelationshipSpecification"
+import {getRelationshipTypeSpecification} from "../../src/specification/getRelationshipTypeSpecification"
 
 export function getAllDbRelationshipTypes(direction: RelationshipDirection) {
     const allRelationshipTypes = Array.from(new Set(Object.values(RelationshipType) as string[])) as RelationshipType[]
@@ -9,7 +9,7 @@ export function getAllDbRelationshipTypes(direction: RelationshipDirection) {
         const filteredRelationshipTypes: RelationshipType[] = []
 
         allRelationshipTypes.forEach(relationshipType => {
-            const spec = getRelationshipSpecification(relationshipType)
+            const spec = getRelationshipTypeSpecification(relationshipType)
             if (!spec.isReverseRelationship) {
                 filteredRelationshipTypes.push(relationshipType)
             }
@@ -22,7 +22,7 @@ export function getAllDbRelationshipTypes(direction: RelationshipDirection) {
         const filteredRelationshipTypes: RelationshipType[] = []
 
         allRelationshipTypes.forEach(relationshipType => {
-            const spec = getRelationshipSpecification(relationshipType)
+            const spec = getRelationshipTypeSpecification(relationshipType)
             if (spec.isReverseRelationship) {
                 filteredRelationshipTypes.push(relationshipType)
             }

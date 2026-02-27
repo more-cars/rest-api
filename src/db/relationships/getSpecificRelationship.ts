@@ -1,7 +1,7 @@
 import neo4j, {Node, Relationship as Neo4jRelationship} from "neo4j-driver"
 import type {RelationshipType} from "../types/RelationshipType"
 import type {Relationship} from "../types/Relationship"
-import {getRelationshipSpecification} from "./getRelationshipSpecification"
+import {getRelationshipTypeSpecification} from "../../specification/getRelationshipTypeSpecification"
 import {getDriver} from "../driver"
 import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationshipToDbRelationship"
 import {mapDbRelationshipTypeToNeo4jRelationshipType} from "./mapDbRelationshipTypeToNeo4jRelationshipType"
@@ -34,7 +34,7 @@ export async function getSpecificRelationship(
 }
 
 export function getSpecificRelationshipQuery(startNodeId: number, relationshipType: RelationshipType, endNodeId: number) {
-    const relationshipSpecs = getRelationshipSpecification(relationshipType)
+    const relationshipSpecs = getRelationshipTypeSpecification(relationshipType)
     const templateName = relationshipSpecs.isReverseRelationship ? 'getSpecificRelationshipReversed' : 'getSpecificRelationship'
     const relationshipName = mapDbRelationshipTypeToNeo4jRelationshipType(relationshipType)
 

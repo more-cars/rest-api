@@ -1,8 +1,8 @@
-import {RelationshipSpecification} from "../../../types/RelationshipSpecification"
-import {RelationshipType} from "../../../types/RelationshipType"
-import {DbNodeType} from "../../../types/DbNodeType"
+import {RelationshipTypeSpecification} from "../RelationshipTypeSpecification"
+import {RelationshipType} from "../../db/types/RelationshipType"
+import {DbNodeType} from "../../db/types/DbNodeType"
 
-export const CarModelVariantRelationshipSpecification: RelationshipSpecification[] = [
+export const CarModelVariantRelationshipSpecification: RelationshipTypeSpecification[] = [
     [RelationshipType.CarModelVariantIsVariantOf, {
         startNodeType: DbNodeType.CarModelVariant,
         endNodeType: DbNodeType.CarModel,

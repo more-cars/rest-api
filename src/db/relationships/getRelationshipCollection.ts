@@ -3,7 +3,7 @@ import {getDriver} from "../driver"
 import type {RelationshipType} from "../types/RelationshipType"
 import type {DbNodeType} from "../types/DbNodeType"
 import type {Relationship} from "../types/Relationship"
-import {getRelationshipSpecification} from "./getRelationshipSpecification"
+import {getRelationshipTypeSpecification} from "../../specification/getRelationshipTypeSpecification"
 import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationshipToDbRelationship"
 import {mapDbRelationshipTypeToNeo4jRelationshipType} from "./mapDbRelationshipTypeToNeo4jRelationshipType"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
@@ -38,7 +38,7 @@ export async function getRelationshipCollection(
 }
 
 export function getRelationshipCollectionQuery(startNodeId: number, relationshipType: RelationshipType, endNodeType?: DbNodeType) {
-    const relationshipSpecs = getRelationshipSpecification(relationshipType)
+    const relationshipSpecs = getRelationshipTypeSpecification(relationshipType)
     const templateName = relationshipSpecs.isReverseRelationship ? 'getRelationshipCollectionReversed' : 'getRelationshipCollection'
     const relationshipName = mapDbRelationshipTypeToNeo4jRelationshipType(relationshipType)
 

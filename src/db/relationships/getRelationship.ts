@@ -2,7 +2,7 @@ import neo4j, {Driver, Node, Relationship as Neo4jRelationship} from "neo4j-driv
 import type {RelationshipType} from "../types/RelationshipType"
 import type {DbNodeType} from "../types/DbNodeType"
 import type {Relationship} from "../types/Relationship"
-import {getRelationshipSpecification} from "./getRelationshipSpecification"
+import {getRelationshipTypeSpecification} from "../../specification/getRelationshipTypeSpecification"
 import {getDriver} from "../driver"
 import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationshipToDbRelationship"
 import {mapDbRelationshipTypeToNeo4jRelationshipType} from "./mapDbRelationshipTypeToNeo4jRelationshipType"
@@ -36,7 +36,7 @@ export async function getRelationship(
 }
 
 export function getRelationshipQuery(startNodeId: number, relationshipType: RelationshipType, endNodeType: DbNodeType) {
-    const relationshipSpecs = getRelationshipSpecification(relationshipType)
+    const relationshipSpecs = getRelationshipTypeSpecification(relationshipType)
     const templateName = relationshipSpecs.isReverseRelationship ? 'getRelationshipReversed' : 'getRelationship'
     const relationshipName = mapDbRelationshipTypeToNeo4jRelationshipType(relationshipType)
     const endNodeLabel = getNamespacedNodeTypeLabel(endNodeType)

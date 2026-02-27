@@ -4,7 +4,7 @@ import type {DbNodeType} from "../types/DbNodeType"
 import type {Relationship} from "../types/Relationship"
 import {getDriver} from "../driver"
 import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationshipToDbRelationship"
-import {getRelationshipSpecification} from "./getRelationshipSpecification"
+import {getRelationshipTypeSpecification} from "../../specification/getRelationshipTypeSpecification"
 import {mapDbRelationshipTypeToNeo4jRelationshipType} from "./mapDbRelationshipTypeToNeo4jRelationshipType"
 import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 import {mapDbNodeTypeToNeo4jNodeType} from "../nodes/mapDbNodeTypeToNeo4jNodeType"
@@ -37,7 +37,7 @@ export async function getRelationshipByEndNode(
 }
 
 export function getRelationshipQuery(endNodeId: number, relationshipType: RelationshipType, startNodeType: DbNodeType) {
-    const relationshipSpecs = getRelationshipSpecification(relationshipType)
+    const relationshipSpecs = getRelationshipTypeSpecification(relationshipType)
     const templateName = relationshipSpecs.isReverseRelationship ? 'getRelationshipByEndNodeReversed' : 'getRelationshipByEndNode'
     const relationshipName = mapDbRelationshipTypeToNeo4jRelationshipType(relationshipType)
     const startNodeLabel = getNamespacedNodeTypeLabel(mapDbNodeTypeToNeo4jNodeType(startNodeType))
