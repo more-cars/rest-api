@@ -1,7 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {DbNodeType} from "../../../../src/db/types/DbNodeType"
 import {getAllDbNodeTypes} from "../../../_toolbox/getAllDbNodeTypes"
-import {FakeNodeType} from "../../../_toolbox/fixtures/nodes/FakeNodeType"
+import {FakeNode} from "../../../_toolbox/fixtures/nodes/FakeNode"
 import request from "supertest"
 import {app} from "../../../../src/app"
 import {getUrlFragmentForNodeType} from "../../../_toolbox/getUrlFragmentForNodeType"
@@ -15,7 +15,7 @@ describe('The user injects the timestamp fields illegally', () => {
             return
         }
 
-        const manipulatedInput = Object.assign({}, FakeNodeType(nodeType).dbInput(), {
+        const manipulatedInput = Object.assign({}, FakeNode(nodeType).dbInput(), {
             name: "TIMESTAMP TEST",
             created_at: "blubb",
             updated_at: "blobb",

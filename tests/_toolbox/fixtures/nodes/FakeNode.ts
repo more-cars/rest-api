@@ -16,7 +16,7 @@ import {FakeGamingPlatform} from "./FakeGamingPlatform"
 import {FakeMagazine} from "./FakeMagazine"
 import {FakeImage} from "./FakeImage"
 
-export function FakeNodeType(nodeType: DbNodeType) {
+export function FakeNode(nodeType: DbNodeType) {
     switch (nodeType) {
         case DbNodeType.Company:
             return FakeCompany

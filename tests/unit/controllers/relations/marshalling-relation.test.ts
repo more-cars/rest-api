@@ -3,7 +3,7 @@ import {getAllModelRelationshipTypes} from "../../../_toolbox/getAllModelRelatio
 import type {Rel} from "../../../../src/models/relationships/types/Rel"
 import {marshalRelation} from "../../../../src/controllers/relations/marshalRelation"
 import {mapModelRelationTypeToControllerRelationType} from "../../../../src/controllers/relations/mapModelRelationTypeToControllerRelationType"
-import {FakeNodeType} from "../../../_toolbox/fixtures/nodes/FakeNodeType"
+import {FakeNode} from "../../../_toolbox/fixtures/nodes/FakeNode"
 import {DbNodeType} from "../../../../src/db/types/DbNodeType"
 import {convertModelRelationToControllerRelation} from "../../../../src/controllers/relations/convertModelRelationToControllerRelation"
 
@@ -11,8 +11,8 @@ describe('Marshalling a relation', () => {
     test.each(
         getAllModelRelationshipTypes().map(relType => [relType])
     )('marshalling a relation $0', async (relType) => {
-        const origin = FakeNodeType(DbNodeType.Brand).modelOutput()
-        const destination = FakeNodeType(DbNodeType.CarModel).modelOutput()
+        const origin = FakeNode(DbNodeType.Brand).modelOutput()
+        const destination = FakeNode(DbNodeType.CarModel).modelOutput()
         const relationship: Rel = {
             id: 3,
             type: relType,
