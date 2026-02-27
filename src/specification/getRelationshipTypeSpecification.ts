@@ -1,5 +1,6 @@
 import type {RelationshipType} from "./RelationshipType"
 import type {NodeType} from "./NodeType"
+import {RelationshipTypeMappingNotFoundError} from "./RelationshipTypeMappingNotFoundError"
 import {ImageRelationshipSpecification} from "./node-types/ImageRelationshipSpecification"
 import {CompanyRelationshipSpecification} from "./node-types/CompanyRelationshipSpecification"
 import {BrandRelationshipSpecification} from "./node-types/BrandRelationshipSpecification"
@@ -38,11 +39,11 @@ export function getRelationshipTypeSpecification(relationshipType: RelationshipT
         ImageRelationshipSpecification,
     ))
 
-    const spec = mapping.get(relationshipType)
+    const relationshipSpecification = mapping.get(relationshipType)
 
-    if (!spec) {
-        throw new Error(`No mapping for relationship type ${relationshipType} found`)
+    if (!relationshipSpecification) {
+        throw new RelationshipTypeMappingNotFoundError(relationshipType)
     }
 
-    return spec
+    return relationshipSpecification
 }
