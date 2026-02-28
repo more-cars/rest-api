@@ -1,7 +1,7 @@
 import {DataTable, When, world} from "@cucumber/cucumber"
-import axios from "axios"
 import {seedNode} from "../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../src/db/types/DbNodeType"
+import {performApiRequest} from "../../lib/performApiRequest"
 
 When('the user creates a relationship with the following data',
     async (dataTable: DataTable) => {
@@ -14,11 +14,8 @@ When('the user creates a relationship with the following data',
             data[row.key] = row.value
         })
 
-        const response = await axios
-            .post(`${process.env.API_URL}/brands/${brand.properties.id}/has-car-model/${carModel.properties.id}`, data)
-            .catch(error => {
-                console.error(error)
-            })
+        const path = `/brands/${brand.properties.id}/has-car-model/${carModel.properties.id}`
 
+        const response = await performApiRequest(path, 'POST', data)
         world.rememberResponse(response)
     })

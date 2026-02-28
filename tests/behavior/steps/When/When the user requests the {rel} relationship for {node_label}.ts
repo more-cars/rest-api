@@ -1,21 +1,17 @@
 import {When, world} from "@cucumber/cucumber"
-import axios from "axios"
 import type {DbNode} from "../../../../src/db/types/DbNode"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {getBasePathFragmentForRelationshipName} from "../../lib/getBasePathFragmentForRelationshipName"
+import {performApiRequest} from "../../lib/performApiRequest"
 
 When('the user requests the {string} relationship for {string}',
     async (relationshipName: string, startNodeLabel: string) => {
         const startNode: DbNode = world.recallNode(startNodeLabel).data
         const startNodeType = world.recallNode(startNodeLabel).nodeType
-        const nodePathFragment = getBasePathFragmentForNodeType(startNodeType)
-        const relPathFragment = getBasePathFragmentForRelationshipName(relationshipName)
+        const nodePath = getBasePathFragmentForNodeType(startNodeType)
+        const relPath = getBasePathFragmentForRelationshipName(relationshipName)
+        const path = `/${nodePath}/${startNode.properties.id}/${relPath}`
 
-        const response = await axios
-            .get(`${process.env.API_URL}/${nodePathFragment}/${startNode.properties.id}/${relPathFragment}`)
-            .catch(error => {
-                console.error(error)
-            })
-
+        const response = await performApiRequest(path, 'GET')
         world.rememberResponse(response)
     })

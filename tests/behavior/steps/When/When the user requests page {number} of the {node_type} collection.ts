@@ -1,13 +1,12 @@
 import {When, world} from "@cucumber/cucumber"
-import axios from "axios"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
+import {performApiRequest} from "../../lib/performApiRequest"
 
 When('the user requests page {int} of the {string} collection',
     async (page: number, nodeType: string) => {
-        const path = getBasePathFragmentForNodeType(nodeType)
+        const nodePath = getBasePathFragmentForNodeType(nodeType)
+        const path = `/${nodePath}?page=${page}`
 
-        const response = await axios
-            .get(`${process.env.API_URL}/${path}?page=${page}`)
-
+        const response = await performApiRequest(path, 'GET')
         world.rememberResponse(response)
     })

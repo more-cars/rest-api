@@ -1,12 +1,11 @@
 import {When, world} from "@cucumber/cucumber"
-import axios from "axios"
+import {performApiRequest} from "../../lib/performApiRequest"
 
 When('the user requests the relationship {string}',
     async (label: string) => {
         const relationshipId = world.recallRelationship(label).relationship_id
+        const path = `/relationships/${relationshipId}`
 
-        const response = await axios
-            .get(`${process.env.API_URL}/relationships/${relationshipId}`)
-
+        const response = await performApiRequest(path, 'GET')
         world.rememberResponse(response)
     })

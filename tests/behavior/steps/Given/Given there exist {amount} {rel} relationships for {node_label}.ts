@@ -1,5 +1,4 @@
 import {Given, world} from "@cucumber/cucumber"
-import axios from "axios"
 import {dasherize} from "inflection"
 import type {DbNode} from "../../../../src/db/types/DbNode"
 import {convertStringToRelationshipType} from "../../lib/convertStringToRelationshipType"
@@ -7,6 +6,7 @@ import {getRelationshipTypeSpecification} from "../../../../src/specification/ge
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {seedNode} from "../../../_toolbox/dbSeeding/seedNode"
 import {mapNodeTypeToDbNodeType} from "../../../../src/specification/mapNodeTypeToDbNodeType"
+import {performApiRequest} from "../../lib/performApiRequest"
 
 Given('there exist {int} {string} relationships for {string}',
     async (amount: number, relationshipName: string, startNodeLabel: string) => {
@@ -14,15 +14,12 @@ Given('there exist {int} {string} relationships for {string}',
         const relationshipType = convertStringToRelationshipType(relationshipName, startNode.node_type)
         const relationshipSpecification = getRelationshipTypeSpecification(relationshipType)
         const endNodeType = relationshipSpecification.endNodeType
-        const nodePathFragment = getBasePathFragmentForNodeType(world.recallNode(startNodeLabel).nodeType)
+        const nodePath = getBasePathFragmentForNodeType(world.recallNode(startNodeLabel).nodeType)
 
         for (let i = 0; i < amount; i++) {
             const endNode = await seedNode(mapNodeTypeToDbNodeType(endNodeType))
+            const path = `/${nodePath}/${startNode.properties.id}/${dasherize(relationshipName)}/${endNode.properties.id}`
 
-            await axios
-                .post(`${process.env.API_URL}/${nodePathFragment}/${startNode.properties.id}/${dasherize(relationshipName)}/${endNode.properties.id}`)
-                .catch(error => {
-                    console.error(error)
-                })
+            await performApiRequest(path, 'POST')
         }
     })

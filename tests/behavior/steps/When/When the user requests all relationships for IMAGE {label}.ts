@@ -1,16 +1,12 @@
 import {When, world} from "@cucumber/cucumber"
-import axios from "axios"
 import {ImageNode} from "../../../../src/models/node-types/images/types/ImageNode"
+import {performApiRequest} from "../../lib/performApiRequest"
 
 When('the user requests all relationships for IMAGE {string}',
     async (imageLabel: string) => {
         const imageNode: ImageNode = world.recallNode(imageLabel).data
+        const path = `/images/${imageNode.attributes.id}/belongs-to-node`
 
-        const response = await axios
-            .get(`${process.env.API_URL}/images/${imageNode.attributes.id}/belongs-to-node`)
-            .catch(error => {
-                console.error(error)
-            })
-
+        const response = await performApiRequest(path, 'GET')
         world.rememberResponse(response)
     })

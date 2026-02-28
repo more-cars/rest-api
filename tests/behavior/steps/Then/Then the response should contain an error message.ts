@@ -1,8 +1,10 @@
 import {Then, world} from "@cucumber/cucumber"
 import assert from "assert"
+import type {ApiResponse} from "../../lib/ApiResponse"
 
 Then('the response should contain an error message', function () {
-    const responseData = world.recallResponse().data
+    const response = world.recallResponse() as ApiResponse
+    const data = response.body
 
-    assert(typeof responseData === "string", `"error message is not a string`)
+    assert(typeof data === "string", `"error message is not a string`)
 })

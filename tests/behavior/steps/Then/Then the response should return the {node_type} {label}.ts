@@ -5,11 +5,13 @@ import {getResponseNodeSchema} from "../../../_toolbox/schemas/response/getRespo
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 import {validateJson} from "../../../_toolbox/validateJson"
+import type {ApiResponse} from "../../lib/ApiResponse"
 
 Then('the response should return the {string} {string}',
     (nodeType: string, label: string) => {
         const expectedNode: DbNode = world.recallNode(label).data
-        const actualNode = world.recallResponse().data
+        const response = world.recallResponse() as ApiResponse
+        const actualNode = response.body
 
         const schema = getResponseNodeSchema(getBasePathFragmentForNodeType(nodeType) as ControllerNodeType)
 

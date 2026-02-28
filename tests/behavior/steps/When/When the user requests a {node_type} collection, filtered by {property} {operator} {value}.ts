@@ -1,13 +1,12 @@
 import {When, world} from "@cucumber/cucumber"
-import axios from "axios"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
+import {performApiRequest} from "../../lib/performApiRequest"
 
 When('the user requests a {string} collection, filtered by {string} {string} {string}',
     async (nodeType: string, filterByProperty: string, filterOperator: string, filterValue: string) => {
-        const path = getBasePathFragmentForNodeType(nodeType)
+        const nodePath = getBasePathFragmentForNodeType(nodeType)
+        const path = `/${nodePath}?filter_by_property=${filterByProperty}&filter_value=${filterValue}&filter_operator=${filterOperator}`
 
-        const response = await axios
-            .get(`${process.env.API_URL}/${path}?filter_by_property=${filterByProperty}&filter_value=${filterValue}&filter_operator=${filterOperator}`)
-
+        const response = await performApiRequest(path, 'GET')
         world.rememberResponse(response)
     })

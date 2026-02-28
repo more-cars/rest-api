@@ -1,5 +1,4 @@
 import {Given, world} from "@cucumber/cucumber"
-import axios from "axios"
 import {dasherize} from "inflection"
 import type {DbNode} from "../../../../src/db/types/DbNode"
 import {convertStringToRelationshipType} from "../../lib/convertStringToRelationshipType"
@@ -7,6 +6,7 @@ import {getRelationshipTypeSpecification} from "../../../../src/specification/ge
 import {seedNode} from "../../../_toolbox/dbSeeding/seedNode"
 import {mapNodeTypeToDbNodeType} from "../../../../src/specification/mapNodeTypeToDbNodeType"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
+import {performApiRequest} from "../../lib/performApiRequest"
 
 Given('there exists a {string} relationship {string} for {string}',
     async (relationshipName: string, relationshipLabel: string, startNodeLabel: string) => {
@@ -15,12 +15,8 @@ Given('there exists a {string} relationship {string} for {string}',
         const relationshipSpecification = getRelationshipTypeSpecification(relationshipType)
         const endNode = await seedNode(mapNodeTypeToDbNodeType(relationshipSpecification.endNodeType))
         const nodePathFragment = getBasePathFragmentForNodeType(world.recallNode(startNodeLabel).nodeType)
+        const path = `/${nodePathFragment}/${startNode.properties.id}/${dasherize(relationshipName)}/${endNode.properties.id}`
 
-        const response = await axios
-            .post(`${process.env.API_URL}/${nodePathFragment}/${startNode.properties.id}/${dasherize(relationshipName)}/${endNode.properties.id}`)
-            .catch(error => {
-                console.error(error)
-            })
-
-        world.rememberRelationship(response?.data.data, relationshipLabel)
+        const response = await performApiRequest(path, 'POST')
+        world.rememberRelationship(response.body.data, relationshipLabel)
     })

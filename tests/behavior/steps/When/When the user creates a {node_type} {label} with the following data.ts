@@ -1,6 +1,6 @@
 import {DataTable, When, world} from "@cucumber/cucumber"
-import axios from "axios"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
+import {performApiRequest} from "../../lib/performApiRequest"
 
 When('the user (tries to )create(s) a {string} {string} with the following data',
     async (nodeType: string, label: string, dataTable: DataTable) => {
@@ -21,12 +21,10 @@ When('the user (tries to )create(s) a {string} {string} with the following data'
             }
         })
 
-        const response = await axios
-            .post(`${process.env.API_URL}/${getBasePathFragmentForNodeType(nodeType)}`, data)
-            .catch(error => {
-                console.error(error)
-            })
+        const nodePath = getBasePathFragmentForNodeType(nodeType)
+        const path = `/${nodePath}`
 
+        const response = await performApiRequest(path, 'POST', data)
         world.rememberResponse(response)
-        world.rememberNode(response?.data.data, label, nodeType)
+        world.rememberNode(response.body.data, label, nodeType)
     })

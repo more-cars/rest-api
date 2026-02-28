@@ -1,13 +1,15 @@
 import {Then, world} from "@cucumber/cucumber"
 import assert from "assert"
 import type {RelationResponse} from "../../../../src/controllers/types/RelationResponse"
+import type {ApiResponse} from "../../lib/ApiResponse"
 
 Then('the response should contain the relationship {string}',
     (label: string) => {
         const rememberedRelationship = world.recallRelationship(label)
-        const responseData: RelationResponse[] = world.recallResponse().data.data
+        const response = world.recallResponse() as ApiResponse
+        const data = response.body.data as RelationResponse[]
 
-        const found = responseData.find((relationship) => {
+        const found = data.find((relationship) => {
             return JSON.stringify(relationship.data) === JSON.stringify(rememberedRelationship)
         })
 
