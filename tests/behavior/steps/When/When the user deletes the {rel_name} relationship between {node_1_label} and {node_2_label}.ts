@@ -1,4 +1,4 @@
-import {When, world} from "@cucumber/cucumber"
+import {When} from "@cucumber/cucumber"
 import {NodeManager} from "../../lib/NodeManager"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {getBasePathFragmentForRelationshipName} from "../../lib/getBasePathFragmentForRelationshipName"
@@ -12,6 +12,5 @@ When('the user deletes the {string} relationship between {string} and {string}',
         const relPath = getBasePathFragmentForRelationshipName(relationshipName)
         const path = `/${nodePath}/${startNode.fields.id}/${relPath}/${endNode.fields.id}`
 
-        const response = await performApiRequest(path, 'DELETE')
-        world.rememberResponse(response)
+        await performApiRequest(path, 'DELETE')
     })

@@ -1,10 +1,10 @@
 import {Then, world} from "@cucumber/cucumber"
 import assert from "assert"
-import type {ApiResponse} from "../../lib/ApiResponse"
+import {ResponseManager} from "../../lib/ResponseManager"
 
 Then('the response should contain a {string} group',
     (nodeType: string) => {
-        const response = world.recallResponse() as ApiResponse
+        const response = ResponseManager.getPreviousResponse()
         const data = response.body.data
 
         const groupKey = nodeType.toLowerCase().replace(' ', '_') + 's'

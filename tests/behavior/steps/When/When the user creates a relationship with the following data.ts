@@ -1,4 +1,4 @@
-import {DataTable, When, world} from "@cucumber/cucumber"
+import {DataTable, When} from "@cucumber/cucumber"
 import {NodeManager} from "../../lib/NodeManager"
 import {NodeType} from "../../../../src/specification/NodeType"
 import {performApiRequest} from "../../lib/performApiRequest"
@@ -16,6 +16,5 @@ When('the user creates a relationship with the following data',
 
         const path = `/brands/${startNode.fields.id}/has-car-model/${endNode.fields.id}`
 
-        const response = await performApiRequest(path, 'POST', data)
-        world.rememberResponse(response)
+        await performApiRequest(path, 'POST', data)
     })

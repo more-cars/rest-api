@@ -1,4 +1,4 @@
-import {When, world} from "@cucumber/cucumber"
+import {When} from "@cucumber/cucumber"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 import {dasherize, pluralize} from "inflection"
@@ -17,6 +17,5 @@ When('the user requests a {string} collection, sorted {string} by {string}',
         const nodePath = getBasePathFragmentForNodeType(nodeTypeName)
         const path = `/${nodePath}?sort_by_property=${sortByProperty}&sort_direction=${sortDirection}`
 
-        const response = await performApiRequest(path, 'GET')
-        world.rememberResponse(response)
+        await performApiRequest(path, 'GET')
     })

@@ -1,4 +1,4 @@
-import {When, world} from "@cucumber/cucumber"
+import {When} from "@cucumber/cucumber"
 import {NodeManager} from "../../lib/NodeManager"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {dasherize} from "inflection"
@@ -11,6 +11,5 @@ When('the user creates a {string} relationship between {string} and {string}',
         const nodePath = getBasePathFragmentForNodeType(startNode.node_type)
         const path = `/${nodePath}/${startNode.fields.id}/${dasherize(relationshipName)}/${endNode.fields.id}`
 
-        const response = await performApiRequest(path, 'POST')
-        world.rememberResponse(response)
+        await performApiRequest(path, 'POST')
     })

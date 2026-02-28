@@ -1,4 +1,4 @@
-import {DataTable, When, world} from "@cucumber/cucumber"
+import {DataTable, When} from "@cucumber/cucumber"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {performApiRequest} from "../../lib/performApiRequest"
 import {NodeManager} from "../../lib/NodeManager"
@@ -26,6 +26,5 @@ When('the user (tries to )create(s) a {string} {string} with the following data'
         const path = `/${nodePath}`
 
         const response = await performApiRequest(path, 'POST', data)
-        world.rememberResponse(response)
         NodeManager.cacheNode(nodeType, label, response.body.data)
     })

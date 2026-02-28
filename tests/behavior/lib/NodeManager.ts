@@ -1,9 +1,8 @@
-import {performApiRequest} from "./performApiRequest"
-import {world} from "@cucumber/cucumber"
-import {getBasePathFragmentForNodeType} from "./getBasePathFragmentForNodeType"
-import {getFakeNode} from "../../_toolbox/fixtures/nodes/getFakeNode"
-import {convertStringToControllerNodeType, convertStringToNodeType} from "./convertStringToNodeType"
 import type {ControllerNode} from "../../../src/controllers/types/ControllerNode"
+import {getFakeNode} from "../../_toolbox/fixtures/nodes/getFakeNode"
+import {getBasePathFragmentForNodeType} from "./getBasePathFragmentForNodeType"
+import {performApiRequest} from "./performApiRequest"
+import {convertStringToControllerNodeType, convertStringToNodeType} from "./convertStringToNodeType"
 
 const nodeCache = new Map<string, ControllerNode>()
 const nodeCollectionCache = new Map<string, ControllerNode[]>()
@@ -15,7 +14,6 @@ export const NodeManager = {
         const path = `/${nodeBasePath}`
 
         const response = await performApiRequest(path, 'POST', inputData)
-        world.rememberResponse(response)
 
         const node: ControllerNode = {
             node_type: convertStringToControllerNodeType(nodeType),

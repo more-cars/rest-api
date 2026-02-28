@@ -1,4 +1,4 @@
-import {When, world} from "@cucumber/cucumber"
+import {When} from "@cucumber/cucumber"
 import {NodeManager} from "../../lib/NodeManager"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {getBasePathFragmentForRelationshipName} from "../../lib/getBasePathFragmentForRelationshipName"
@@ -11,6 +11,5 @@ When('the user requests all {string} relationships for {string}',
         const relPath = getBasePathFragmentForRelationshipName(relationshipName)
         const path = `/${nodePath}/${startNode.fields.id}/${relPath}`
 
-        const response = await performApiRequest(path, 'GET')
-        world.rememberResponse(response)
+        await performApiRequest(path, 'GET')
     })

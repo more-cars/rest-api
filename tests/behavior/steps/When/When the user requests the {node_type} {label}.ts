@@ -1,4 +1,4 @@
-import {When, world} from "@cucumber/cucumber"
+import {When} from "@cucumber/cucumber"
 import {NodeManager} from "../../lib/NodeManager"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {performApiRequest} from "../../lib/performApiRequest"
@@ -9,6 +9,5 @@ When('the user requests the {string} {string}',
         const nodePath = getBasePathFragmentForNodeType(nodeType)
         const path = `/${nodePath}/${node.fields.id}`
 
-        const response = await performApiRequest(path, 'GET')
-        world.rememberResponse(response)
+        await performApiRequest(path, 'GET')
     })

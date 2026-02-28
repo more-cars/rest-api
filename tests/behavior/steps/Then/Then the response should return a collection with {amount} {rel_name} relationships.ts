@@ -1,11 +1,11 @@
 import {Then, world} from "@cucumber/cucumber"
 import assert from "assert"
 import {kebabCase} from "change-case"
-import type {ApiResponse} from "../../lib/ApiResponse"
+import {ResponseManager} from "../../lib/ResponseManager"
 
 Then('the response should return a collection with {int} {string} relationships',
     (amount: number, relationshipName: string) => {
-        const response = world.recallResponse() as ApiResponse
+        const response = ResponseManager.getPreviousResponse()
         const relationships = response.body.data
 
         assert.equal(relationships.length, amount)

@@ -1,4 +1,4 @@
-import {When, world} from "@cucumber/cucumber"
+import {When} from "@cucumber/cucumber"
 import {performApiRequest} from "../../lib/performApiRequest"
 import {RelationshipManager} from "../../lib/RelationshipManager"
 
@@ -7,6 +7,5 @@ When('the user requests the relationship {string}',
         const relationship = RelationshipManager.getRelationshipByLabel(label)
         const path = `/relationships/${relationship.data.relationship_id}`
 
-        const response = await performApiRequest(path, 'GET')
-        world.rememberResponse(response)
+        await performApiRequest(path, 'GET')
     })

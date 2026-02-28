@@ -1,10 +1,10 @@
 import {Then, world} from "@cucumber/cucumber"
 import assert from "assert"
-import type {ApiResponse} from "../../lib/ApiResponse"
+import {ResponseManager} from "../../lib/ResponseManager"
 
 Then('the properties {string} and {string} in the response should be identical',
     (property_1: string, property_2: string) => {
-        const response = world.recallResponse() as ApiResponse
+        const response = ResponseManager.getPreviousResponse()
         const data = response.body.data
 
         assert.equal(

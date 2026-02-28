@@ -1,11 +1,11 @@
-import {DataTable, Then, world} from "@cucumber/cucumber"
+import {DataTable, Then} from "@cucumber/cucumber"
 import assert from "assert"
 import moment from "moment/moment"
-import type {ApiResponse} from "../../lib/ApiResponse"
+import {ResponseManager} from "../../lib/ResponseManager"
 
 Then('for each item the following properties in the response should contain a valid timestamp',
     (dataTable: DataTable) => {
-        const response = world.recallResponse() as ApiResponse
+        const response = ResponseManager.getPreviousResponse()
         const data = response.body.data
 
         const rows = dataTable.hashes()

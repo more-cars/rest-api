@@ -1,4 +1,4 @@
-import {When, world} from "@cucumber/cucumber"
+import {When} from "@cucumber/cucumber"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
 import {convertStringToNodeType} from "../../lib/convertStringToNodeType"
@@ -10,6 +10,5 @@ When('the user creates a(n) {string}',
         const data = getFakeNode(convertStringToNodeType(nodeType)).dbInput
         const path = `/${nodePath}`
 
-        const response = await performApiRequest(path, 'POST', data)
-        world.rememberResponse(response)
+        await performApiRequest(path, 'POST', data)
     })

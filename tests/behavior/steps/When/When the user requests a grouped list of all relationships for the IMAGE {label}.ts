@@ -1,4 +1,4 @@
-import {When, world} from "@cucumber/cucumber"
+import {When} from "@cucumber/cucumber"
 import {performApiRequest} from "../../lib/performApiRequest"
 import {NodeManager} from "../../lib/NodeManager"
 
@@ -7,6 +7,5 @@ When('the user requests a grouped list of all relationships for the IMAGE {strin
         const image = NodeManager.getNodeByLabel(imageLabel)
         const path = `/images/${image.fields.id}/belongs-to-node-type`
 
-        const response = await performApiRequest(path, 'GET')
-        world.rememberResponse(response)
+        await performApiRequest(path, 'GET')
     })

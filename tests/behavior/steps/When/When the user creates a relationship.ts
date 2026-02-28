@@ -1,4 +1,4 @@
-import {When, world} from "@cucumber/cucumber"
+import {When} from "@cucumber/cucumber"
 import {performApiRequest} from "../../lib/performApiRequest"
 import {NodeManager} from "../../lib/NodeManager"
 import {NodeType} from "../../../../src/specification/NodeType"
@@ -10,6 +10,5 @@ When('the user creates a relationship',
 
         const path = `/brands/${startNode.fields.id}/has-car-model/${endNode.fields.id}`
 
-        const response = await performApiRequest(path, 'POST')
-        world.rememberResponse(response)
+        await performApiRequest(path, 'POST')
     })

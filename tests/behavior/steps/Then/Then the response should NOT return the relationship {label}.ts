@@ -1,12 +1,12 @@
 import {Then, world} from "@cucumber/cucumber"
 import assert from "assert"
-import type {ApiResponse} from "../../lib/ApiResponse"
+import {ResponseManager} from "../../lib/ResponseManager"
 import {RelationshipManager} from "../../lib/RelationshipManager"
 
 Then('the response should NOT return the relationship {string}',
     (label: string) => {
         const rememberedRelationship = RelationshipManager.getRelationshipByLabel(label)
-        const response = world.recallResponse() as ApiResponse
+        const response = ResponseManager.getPreviousResponse()
         const returnedRelationship = response.body
 
         assert.notDeepStrictEqual(

@@ -10,18 +10,8 @@ axios.defaults.validateStatus = function (status) {
 // Adding a handful of helper functions to the cucumber "world"
 // to simplify the test code and make it more stable.
 class CustomWorld extends World {
-    response: any
-
     constructor(options: any) {
         super(options)
-    }
-
-    rememberResponse(response: any) {
-        this.response = response
-    }
-
-    recallResponse() {
-        return this.response
     }
 }
 

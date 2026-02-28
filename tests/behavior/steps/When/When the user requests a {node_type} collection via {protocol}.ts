@@ -1,8 +1,9 @@
-import {When, world} from "@cucumber/cucumber"
+import {When} from "@cucumber/cucumber"
 import axios from "axios"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import assert from "assert"
 import type {ApiResponse} from "../../lib/ApiResponse"
+import {ResponseManager} from "../../lib/ResponseManager"
 
 When('the user requests a {string} collection via {string}',
     async (nodeType: string, protocol: string) => {
@@ -31,9 +32,11 @@ When('the user requests a {string} collection via {string}',
         const response = await axios
             .get(`${apiUrl}/${path}`)
 
-        world.rememberResponse({
+        const apiResponse = {
             status_code: response.status,
             body: response.data,
             headers: response.headers,
-        } satisfies ApiResponse)
+        } satisfies ApiResponse
+
+        ResponseManager.cacheResponse(apiResponse)
     })

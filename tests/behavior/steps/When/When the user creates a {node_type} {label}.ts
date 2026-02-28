@@ -1,4 +1,4 @@
-import {When, world} from "@cucumber/cucumber"
+import {When} from "@cucumber/cucumber"
 import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
 import {convertStringToNodeType} from "../../lib/convertStringToNodeType"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
@@ -12,6 +12,5 @@ When('the user creates a {string} {string}',
         const path = `/${nodePath}`
 
         const response = await performApiRequest(path, 'POST', data)
-        world.rememberResponse(response)
         NodeManager.cacheNode(nodeType, label, response.body.data)
     })

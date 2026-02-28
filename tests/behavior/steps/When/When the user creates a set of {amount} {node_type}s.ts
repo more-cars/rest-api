@@ -1,9 +1,9 @@
 import {When} from "@cucumber/cucumber"
+import type {ApiResponse} from "../../lib/ApiResponse"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
 import {convertStringToControllerNodeType, convertStringToNodeType} from "../../lib/convertStringToNodeType"
 import {performApiRequest} from "../../lib/performApiRequest"
-import type {ApiResponse} from "../../lib/ApiResponse"
 import {NodeManager} from "../../lib/NodeManager"
 
 When('the user creates a set {string} of {int} {string}s',

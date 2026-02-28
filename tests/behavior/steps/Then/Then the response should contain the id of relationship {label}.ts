@@ -1,12 +1,12 @@
 import {Then, world} from "@cucumber/cucumber"
 import assert from "assert"
 import {RelationshipManager} from "../../lib/RelationshipManager"
-import type {ApiResponse} from "../../lib/ApiResponse"
+import {ResponseManager} from "../../lib/ResponseManager"
 
 Then('the response should contain the id of relationship {string}',
     (label: string) => {
         const rememberedRelationship = RelationshipManager.getRelationshipByLabel(label)
-        const response = world.recallResponse() as ApiResponse
+        const response = ResponseManager.getPreviousResponse()
         const data = response.body.data
 
         assert.equal(
