@@ -1,13 +1,14 @@
 import {When, world} from "@cucumber/cucumber"
-import {seedNode} from "../../../_toolbox/dbSeeding/seedNode"
-import {DbNodeType} from "../../../../src/db/types/DbNodeType"
 import {performApiRequest} from "../../lib/performApiRequest"
+import {NodeManager} from "../../lib/NodeManager"
+import {NodeType} from "../../../../src/specification/NodeType"
 
 When('the user creates a relationship',
     async () => {
-        const brand = await seedNode(DbNodeType.Brand)
-        const carModel = await seedNode(DbNodeType.CarModel)
-        const path = `/brands/${brand.properties.id}/has-car-model/${carModel.properties.id}`
+        const startNode = await NodeManager.createNode(NodeType.Brand, '')
+        const endNode = await NodeManager.createNode(NodeType.CarModel, '')
+
+        const path = `/brands/${startNode.fields.id}/has-car-model/${endNode.fields.id}`
 
         const response = await performApiRequest(path, 'POST')
         world.rememberResponse(response)

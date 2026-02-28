@@ -16,10 +16,15 @@ export const NodeManager = {
 
         const response = await performApiRequest(path, 'POST', inputData)
         world.rememberResponse(response)
-        nodeCache.set(label, {
+
+        const node: ControllerNode = {
             node_type: convertStringToControllerNodeType(nodeType),
             fields: response.body.data,
-        })
+        }
+
+        nodeCache.set(label, node)
+
+        return node
     },
 
     cacheNode(nodeType: string, label: string, data: any) {
