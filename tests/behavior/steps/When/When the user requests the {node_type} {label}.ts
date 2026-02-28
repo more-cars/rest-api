@@ -1,13 +1,13 @@
 import {When, world} from "@cucumber/cucumber"
+import {NodeManager} from "../../lib/NodeManager"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
-import type {DbNode} from "../../../../src/db/types/DbNode"
 import {performApiRequest} from "../../lib/performApiRequest"
 
 When('the user requests the {string} {string}',
     async (nodeType: string, label: string) => {
-        const node: DbNode = world.recallNode(label).data
+        const node = NodeManager.getNodeByLabel(label)
         const nodePath = getBasePathFragmentForNodeType(nodeType)
-        const path = `/${nodePath}/${node.properties.id}`
+        const path = `/${nodePath}/${node.fields.id}`
 
         const response = await performApiRequest(path, 'GET')
         world.rememberResponse(response)

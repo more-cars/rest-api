@@ -20,14 +20,6 @@ class CustomWorld extends World {
         super(options)
     }
 
-    rememberNode(data: any, label: string, nodeType: ControllerNodeType) {
-        this.nodes.set(label, {data, nodeType})
-    }
-
-    recallNode(label: string) {
-        return this.nodes.get(label)
-    }
-
     rememberNodeCollection(data: any[], label: string, nodeType: ControllerNodeType) {
         this.nodeCollections.set(label, {data, nodeType})
     }

@@ -1,14 +1,9 @@
-import {Given, world} from "@cucumber/cucumber"
+import {Given} from "@cucumber/cucumber"
+import {NodeManager} from "../../lib/NodeManager"
 
 Given('{string} {string} does NOT exist',
     async (nodeType: string, label: string) => {
-        const node: any = {
-            node_type: 'blubb',
-            properties: {
-                id: -Math.ceil(Math.random() * 1000),
-                external_id: "Non-existing Image",
-            }
-        }
-
-        world.rememberNode(node, label, nodeType.toLowerCase())
+        NodeManager.cacheNode(nodeType, label, {
+            id: -Math.ceil(Math.random() * 1000),
+        })
     })

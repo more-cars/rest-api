@@ -1,16 +1,16 @@
-import {Then, world} from "@cucumber/cucumber"
+import {Then} from "@cucumber/cucumber"
 import assert from "assert"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {dasherize} from "inflection"
-import type {DbNode} from "../../../../src/db/types/DbNode"
+import {NodeManager} from "../../lib/NodeManager"
 import {performApiRequest} from "../../lib/performApiRequest"
 
 Then('there should exist NO {string} relationship between {string} and {string}',
     async (relationshipName: string, startNodeLabel: string, endNodeLabel: string) => {
-        const startNode: DbNode = world.recallNode(startNodeLabel).data
-        const endNode = world.recallNode(endNodeLabel).data
-        const nodePath = getBasePathFragmentForNodeType(world.recallNode(startNodeLabel).nodeType)
-        const path = `/${nodePath}/${startNode.properties.id}/${dasherize(relationshipName)}`
+        const startNode = NodeManager.getNodeByLabel(startNodeLabel)
+        const endNode = NodeManager.getNodeByLabel(endNodeLabel)
+        const nodePath = getBasePathFragmentForNodeType(startNode.node_type)
+        const path = `/${nodePath}/${startNode.fields.id}/${dasherize(relationshipName)}`
 
         const response = await performApiRequest(path, 'GET')
 
@@ -19,7 +19,7 @@ Then('there should exist NO {string} relationship between {string} and {string}'
         if (Array.isArray(response.body.data)) {
             assert.fail('NOT IMPLEMENTED') // TODO
         } else if ('relationship_partner' in response.body.data) {
-            assert.notEqual(response.body.data.relationship_partner.data.id, endNode.id)
+            assert.notEqual(response.body.data.relationship_partner.data.id, endNode.fields.id)
         } else {
             assert.ok(true)
         }

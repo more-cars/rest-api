@@ -1,6 +1,7 @@
 import {DataTable, When, world} from "@cucumber/cucumber"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {performApiRequest} from "../../lib/performApiRequest"
+import {NodeManager} from "../../lib/NodeManager"
 
 When('the user (tries to )create(s) a {string} {string} with the following data',
     async (nodeType: string, label: string, dataTable: DataTable) => {
@@ -26,5 +27,5 @@ When('the user (tries to )create(s) a {string} {string} with the following data'
 
         const response = await performApiRequest(path, 'POST', data)
         world.rememberResponse(response)
-        world.rememberNode(response.body.data, label, nodeType)
+        NodeManager.cacheNode(nodeType, label, response.body.data)
     })

@@ -1,15 +1,15 @@
-import {Then, world} from "@cucumber/cucumber"
+import {Then} from "@cucumber/cucumber"
 import assert from "assert"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {dasherize} from "inflection"
-import type {DbNode} from "../../../../src/db/types/DbNode"
+import {NodeManager} from "../../lib/NodeManager"
 import {performApiRequest} from "../../lib/performApiRequest"
 
 Then('there should exist exactly one {string} relationship for {string}',
     async (relationshipName: string, nodeLabel: string) => {
-        const node: DbNode = world.recallNode(nodeLabel).data
-        const nodePath = getBasePathFragmentForNodeType(world.recallNode(nodeLabel).nodeType)
-        const path = `/${nodePath}/${node.properties.id}/${dasherize(relationshipName)}`
+        const startNode = NodeManager.getNodeByLabel(nodeLabel)
+        const nodePath = getBasePathFragmentForNodeType(startNode.node_type)
+        const path = `/${nodePath}/${startNode.fields.id}/${dasherize(relationshipName)}`
 
         const response = await performApiRequest(path, 'GET')
 
