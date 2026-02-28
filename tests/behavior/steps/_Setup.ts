@@ -10,19 +10,10 @@ axios.defaults.validateStatus = function (status) {
 // Adding a handful of helper functions to the cucumber "world"
 // to simplify the test code and make it more stable.
 class CustomWorld extends World {
-    relationships = new Map<string, any>()
     response: any
 
     constructor(options: any) {
         super(options)
-    }
-
-    rememberRelationship(relationship: any, label: string) {
-        this.relationships.set(label, relationship)
-    }
-
-    recallRelationship(label: string) {
-        return this.relationships.get(label)
     }
 
     rememberResponse(response: any) {

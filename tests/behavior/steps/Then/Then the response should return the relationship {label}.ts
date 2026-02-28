@@ -1,19 +1,21 @@
 import {Then, world} from "@cucumber/cucumber"
 import assert from "assert"
+import {RelationshipManager} from "../../lib/RelationshipManager"
 import type {ApiResponse} from "../../lib/ApiResponse"
 
 Then('the response should return the relationship {string}',
     (label: string) => {
-        const expectedRelationship = world.recallRelationship(label)
+        const expectedRelationship = RelationshipManager.getRelationshipByLabel(label)
         const response = world.recallResponse() as ApiResponse
-        const actualRelationship = response.body.data
+        const actualRelationship = response.body
 
-        if ('start_node_id' in expectedRelationship) { // relationship was created via db seeder
-            assert.equal(expectedRelationship.relationship_id, actualRelationship.relationship_id)
-        } else {
-            assert.deepStrictEqual( // relationship was created via api
-                actualRelationship,
-                expectedRelationship,
-            )
-        }
+        assert.equal(
+            actualRelationship.data.relationship_id,
+            expectedRelationship.data.relationship_id,
+        )
+
+        assert.deepStrictEqual(
+            actualRelationship,
+            expectedRelationship,
+        )
     })
