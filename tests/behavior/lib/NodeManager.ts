@@ -6,6 +6,7 @@ import {convertStringToControllerNodeType, convertStringToNodeType} from "./conv
 import type {ControllerNode} from "../../../src/controllers/types/ControllerNode"
 
 const nodeCache = new Map<string, ControllerNode>()
+const nodeCollectionCache = new Map<string, ControllerNode[]>()
 
 export const NodeManager = {
     async createNode(nodeType: string, label: string, data?: any) {
@@ -21,6 +22,13 @@ export const NodeManager = {
         })
     },
 
+    cacheNode(nodeType: string, label: string, data: any) {
+        nodeCache.set(label, {
+            node_type: convertStringToControllerNodeType(nodeType),
+            fields: data,
+        })
+    },
+
     getNodeByLabel(label: string) {
         const node = nodeCache.get(label)
 
@@ -31,10 +39,17 @@ export const NodeManager = {
         return node
     },
 
-    cacheNode(nodeType: string, label: string, data: any) {
-        nodeCache.set(label, {
-            node_type: convertStringToControllerNodeType(nodeType),
-            fields: data,
-        })
+    cacheNodeCollection(nodes: ControllerNode[], label: string) {
+        nodeCollectionCache.set(label, nodes)
+    },
+
+    getNodeCollectionByLabel(label: string) {
+        const nodes = nodeCollectionCache.get(label)
+
+        if (!nodes) {
+            throw new Error(`No node collection found for label ${label}`)
+        }
+
+        return nodes
     }
 }

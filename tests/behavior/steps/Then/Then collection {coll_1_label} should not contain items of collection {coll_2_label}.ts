@@ -1,10 +1,11 @@
-import {Then, world} from "@cucumber/cucumber"
+import {Then} from "@cucumber/cucumber"
 import assert from "assert"
+import {NodeManager} from "../../lib/NodeManager"
 
 Then('collection {string} should not contain items of collection {string}',
     (collectionOneLabel: string, collectionTwoLabel: string) => {
-        const collectionOne = world.recallNodeCollection(collectionOneLabel).data
-        const collectionTwo = world.recallNodeCollection(collectionTwoLabel).data
+        const collectionOne = NodeManager.getNodeCollectionByLabel(collectionOneLabel)
+        const collectionTwo = NodeManager.getNodeCollectionByLabel(collectionTwoLabel)
 
         const collectionOneIds = collectionOne.map((node: any) => node.data.id)
         const collectionTwoIds = collectionTwo.map((node: any) => node.data.id)

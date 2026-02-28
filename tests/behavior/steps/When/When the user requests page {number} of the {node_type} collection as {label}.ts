@@ -1,6 +1,7 @@
 import {When, world} from "@cucumber/cucumber"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {performApiRequest} from "../../lib/performApiRequest"
+import {NodeManager} from "../../lib/NodeManager"
 
 When('the user requests page {int} of the {string} collection as {string}',
     async (page: number, nodeType: string, collectionLabel: string) => {
@@ -8,6 +9,6 @@ When('the user requests page {int} of the {string} collection as {string}',
         const path = `/${nodePath}?page=${page}`
 
         const response = await performApiRequest(path, 'GET')
-        world.rememberNodeCollection(response.body.data, collectionLabel, nodeType.toLowerCase())
+        NodeManager.cacheNodeCollection(response.body.data, collectionLabel)
         world.rememberResponse(response)
     })

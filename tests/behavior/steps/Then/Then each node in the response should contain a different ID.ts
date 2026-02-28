@@ -1,11 +1,12 @@
-import {Then, world} from "@cucumber/cucumber"
+import {Then} from "@cucumber/cucumber"
 import assert from "assert"
+import {NodeManager} from "../../lib/NodeManager"
 import {removeDuplicates} from "../../../_toolbox/removeDuplicates"
 
 Then('all nodes of set {string} should have a different ID',
     (label: string) => {
-        const nodes = world.recallNodeCollection(label)
-        const extractedIds = nodes.data.map((node: any) => node.id)
+        const nodes = NodeManager.getNodeCollectionByLabel(label)
+        const extractedIds = nodes.map((node) => node.fields.id)
         const deduplicatedIds = removeDuplicates(extractedIds)
 
         assert.equal(extractedIds.length, deduplicatedIds.length)

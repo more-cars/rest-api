@@ -1,9 +1,10 @@
-import {When, world} from "@cucumber/cucumber"
+import {When} from "@cucumber/cucumber"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
-import {convertStringToNodeType} from "../../lib/convertStringToNodeType"
+import {convertStringToControllerNodeType, convertStringToNodeType} from "../../lib/convertStringToNodeType"
 import {performApiRequest} from "../../lib/performApiRequest"
 import type {ApiResponse} from "../../lib/ApiResponse"
+import {NodeManager} from "../../lib/NodeManager"
 
 When('the user creates a set {string} of {int} {string}s',
     async (label: string, amount: number, nodeType: string) => {
@@ -18,5 +19,10 @@ When('the user creates a set {string} of {int} {string}s',
             nodeResponses.push(response)
         }
 
-        world.rememberNodeCollection(nodeResponses.map(response => response.body.data), label)
+        const nodeCollection = nodeResponses.map(response => ({
+            node_type: convertStringToControllerNodeType(nodeType),
+            fields: response.body.data,
+        }))
+
+        NodeManager.cacheNodeCollection(nodeCollection, label)
     })
