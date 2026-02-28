@@ -1,4 +1,4 @@
-import {Then, world} from "@cucumber/cucumber"
+import {Then} from "@cucumber/cucumber"
 import assert from "assert"
 import {kebabCase} from "change-case"
 import {ResponseManager} from "../../lib/ResponseManager"

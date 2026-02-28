@@ -1,4 +1,4 @@
-import {Then, world} from "@cucumber/cucumber"
+import {Then} from "@cucumber/cucumber"
 import assert from "assert"
 import {RelationshipManager} from "../../lib/RelationshipManager"
 import {ResponseManager} from "../../lib/ResponseManager"

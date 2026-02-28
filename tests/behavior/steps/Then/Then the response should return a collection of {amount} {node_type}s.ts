@@ -1,4 +1,4 @@
-import {Then, world} from "@cucumber/cucumber"
+import {Then} from "@cucumber/cucumber"
 import assert from "assert"
 import {getResponseNodeSchema} from "../../../_toolbox/schemas/response/getResponseNodeSchema"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
