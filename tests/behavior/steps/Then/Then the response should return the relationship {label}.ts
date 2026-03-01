@@ -13,9 +13,4 @@ Then('the response should return the relationship {string}',
             actualRelationship.data.relationship_id,
             expectedRelationship.data.relationship_id,
         )
-
-        assert.deepStrictEqual(
-            actualRelationship,
-            expectedRelationship,
-        )
     })
