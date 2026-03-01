@@ -15,6 +15,7 @@ import {LapTimeNodeSpecification} from "./node-types/LapTimeNodeSpecification"
 import {RacingGameNodeSpecification} from "./node-types/RacingGameNodeSpecification"
 import {GamingPlatformNodeSpecification} from "./node-types/GamingPlatformNodeSpecification"
 import {MagazineNodeSpecification} from "./node-types/MagazineNodeSpecification"
+import {MagazineIssueNodeSpecification} from "./node-types/MagazineIssueNodeSpecification"
 import {ImageNodeSpecification} from "./node-types/ImageNodeSpecification"
 
 export function getNodeTypeSpecification(nodeType: NodeType) {
@@ -33,6 +34,7 @@ export function getNodeTypeSpecification(nodeType: NodeType) {
         [NodeType.RacingGame, RacingGameNodeSpecification],
         [NodeType.GamingPlatform, GamingPlatformNodeSpecification],
         [NodeType.Magazine, MagazineNodeSpecification],
+        [NodeType.MagazineIssue, MagazineIssueNodeSpecification],
         [NodeType.Image, ImageNodeSpecification],
     ])
 

@@ -13,6 +13,7 @@ export enum Neo4jNodeType {
     RacingGame = "RacingGame",
     GamingPlatform = "GamingPlatform",
     Magazine = "Magazine",
+    MagazineIssue = "MagazineIssue",
     Image = "Image",
     Node = "",
 }

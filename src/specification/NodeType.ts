@@ -13,6 +13,7 @@ export enum NodeType {
     RacingGame = "Racing Game",
     GamingPlatform = "Gaming Platform",
     Magazine = "Magazine",
+    MagazineIssue = "Magazine Issue",
     Image = "Image",
     Node = "",
 }

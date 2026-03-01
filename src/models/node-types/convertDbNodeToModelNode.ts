@@ -28,6 +28,8 @@ import {convertGamingPlatformDbNodeToModelNode} from "./gaming-platforms/create/
 import type {GamingPlatformNode} from "../../db/node-types/gaming-platforms/types/GamingPlatformNode"
 import {convertMagazineDbNodeToModelNode} from "./magazines/create/convertMagazineDbNodeToModelNode"
 import type {MagazineNode} from "../../db/node-types/magazines/types/MagazineNode"
+import {convertMagazineIssueDbNodeToModelNode} from "./magazine-issues/create/convertMagazineIssueDbNodeToModelNode"
+import type {MagazineIssueNode} from "../../db/node-types/magazine-issues/types/MagazineIssueNode"
 import {convertImageDbNodeToModelNode} from "./images/create/convertImageDbNodeToModelNode"
 import type {ImageNode} from "../../db/node-types/images/types/ImageNode"
 import {NodeTypeNotFoundError} from "../types/NodeTypeNotFoundError"
@@ -62,6 +64,8 @@ export function convertDbNodeToModelNode(dbNode: DbNode) {
             return convertGamingPlatformDbNodeToModelNode(dbNode as GamingPlatformNode)
         case DbNodeType.Magazine:
             return convertMagazineDbNodeToModelNode(dbNode as MagazineNode)
+        case DbNodeType.MagazineIssue:
+            return convertMagazineIssueDbNodeToModelNode(dbNode as MagazineIssueNode)
         case DbNodeType.Image:
             return convertImageDbNodeToModelNode(dbNode as ImageNode)
         default:

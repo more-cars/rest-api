@@ -13,5 +13,6 @@ export enum ControllerNodeType {
     RacingGame = "racing-games",
     GamingPlatform = "gaming-platforms",
     Magazine = "magazines",
+    MagazineIssue = "magazine-issues",
     Image = 'images',
 }
