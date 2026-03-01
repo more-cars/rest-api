@@ -7,7 +7,6 @@ import {addTimestampsToNode} from "./addTimestampsToNode"
 import {getNodeTypeSpecification} from "../../specification/getNodeTypeSpecification"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
-import type {NodeSpecification} from "../../specification/NodeSpecification"
 import type {PropertySpecification} from "../../specification/PropertySpecification"
 import {escapeSingleQuotes} from "./escapeSingleQuotes"
 import type {InputNodeTypeCreate} from "../types/InputNodeTypeCreate"
@@ -42,7 +41,7 @@ export async function createNeo4jNode(nodeType: DbNodeType, data: InputNodeTypeC
 export function createNodeQuery(nodeType: DbNodeType, data: InputNodeTypeCreate) {
     const nodeSpecs = getNodeTypeSpecification(mapDbNodeTypeToNodeType(nodeType))
     const nodeTypeLabel = getNamespacedNodeTypeLabel(mapDbNodeTypeToNeo4jNodeType(nodeType))
-    const properties = getCypherFormattedPropertyList(nodeSpecs, data)
+    const properties = getCypherFormattedPropertyList(nodeSpecs.properties, data)
 
     let template = getCypherQueryTemplate('nodes/_cypher/createNode.cypher')
         .trim()
@@ -54,10 +53,10 @@ export function createNodeQuery(nodeType: DbNodeType, data: InputNodeTypeCreate)
     return template
 }
 
-function getCypherFormattedPropertyList(nodeSpecs: NodeSpecification, data: InputNodeTypeCreate) {
+function getCypherFormattedPropertyList(propertySpecs: PropertySpecification[], data: InputNodeTypeCreate) {
     const lines: string[] = []
 
-    nodeSpecs.properties.forEach((property, index) => {
+    propertySpecs.forEach((property, index) => {
         const line: string[] = []
         const indentation = '  '
 
@@ -67,7 +66,7 @@ function getCypherFormattedPropertyList(nodeSpecs: NodeSpecification, data: Inpu
         // @ts-expect-error TS7053 TS7053
         line.push(getCypherFormattedPropertyValue(data[property.name], property))
 
-        if (index + 1 < nodeSpecs.properties.length) {
+        if (index + 1 < propertySpecs.length) {
             line.push(',')
         }
 
