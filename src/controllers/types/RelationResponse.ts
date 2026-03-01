@@ -4,7 +4,7 @@ export type RelationResponse = {
     data: {
         relationship_id: number
         relationship_name: RelationType
-        relationship_partner: {
+        partner_node: {
             node_type: string
             data: object & {
                 id: number

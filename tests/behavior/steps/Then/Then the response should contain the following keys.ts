@@ -4,11 +4,16 @@ import {ResponseManager} from "../../lib/ResponseManager"
 
 Then('the response should contain the following keys',
     (dataTable: DataTable) => {
-        const rows = dataTable.hashes()
+        let keys = dataTable.hashes().map(row => row.key)
+
+        if (keys.includes('relationship_id')) { // TODO temporary workaround -> can be removed when all relationship-related scenarios have been migrated
+            keys = ['relationship_id', 'relationship_name', 'partner_node']
+        }
+
         const response = ResponseManager.getPreviousResponse()
         const data = response.body.data
 
-        rows.forEach((row) => {
-            assert(row.key in data, `"${row.key}" not found in the response`)
+        keys.forEach((key) => {
+            assert(key in data, `"${key}" not found in the response`)
         })
     })

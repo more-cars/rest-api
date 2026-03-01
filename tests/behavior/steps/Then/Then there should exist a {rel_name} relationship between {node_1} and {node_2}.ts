@@ -20,14 +20,14 @@ Then('there should exist a {string} relationship between {string} and {string}',
             let success = false
 
             response.body.data.forEach((relationship: any) => {
-                if (relationship.data.relationship_partner.data.id === endNode.fields.id) {
+                if (relationship.data.partner_node.data.id === endNode.fields.id) {
                     success = true
                 }
             })
 
             assert.equal(success, true, `None of the returned relationships contains the node #${endNode.fields.id}.`)
-        } else if ('relationship_partner' in response.body.data) {
-            assert.equal(response.body.data.relationship_partner.data.id, endNode.fields.id, `The returned relationship does not contain the node #${endNode.fields.id}.`)
+        } else if ('partner_node' in response.body.data) {
+            assert.equal(response.body.data.partner_node.data.id, endNode.fields.id, `The returned relationship does not contain the node #${endNode.fields.id}.`)
         } else {
             assert.fail('respond did not return any relationship')
         }

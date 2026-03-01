@@ -18,8 +18,8 @@ Then('there should exist NO {string} relationship between {string} and {string}'
 
         if (Array.isArray(response.body.data)) {
             assert.fail('NOT IMPLEMENTED') // TODO
-        } else if ('relationship_partner' in response.body.data) {
-            assert.notEqual(response.body.data.relationship_partner.data.id, endNode.fields.id)
+        } else if ('partner_node' in response.body.data) {
+            assert.notEqual(response.body.data.partner_node.data.id, endNode.fields.id)
         } else {
             assert.ok(true)
         }

@@ -28,12 +28,12 @@ runtime:
     - expression: res.body.data.relationship_name
       operator: eq
       value: "<%= h.changeCase.kebab(relationshipName) %>"
-    - expression: res.body.data.relationship_partner
+    - expression: res.body.data.partner_node
       operator: isJson
-    - expression: res.body.data.relationship_partner.node_type
+    - expression: res.body.data.partner_node.node_type
       operator: eq
       value: "<%= h.changeCase.kebab(endNodeType) %>"
-    - expression: res.body.data.relationship_partner.data.id
+    - expression: res.body.data.partner_node.data.id
       operator: eq
       value: "{{valid<%= h.changeCase.pascal(endNodeType) %>Id}}"
     - expression: res.body.data.created_at

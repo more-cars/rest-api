@@ -6,7 +6,7 @@ export function marshalRelation(relation: Relation) {
         data: {
             relationship_id: relation.id,
             relationship_name: relation.type,
-            relationship_partner: {
+            partner_node: {
                 node_type: relation.to_node.node_type,
                 data: relation.to_node.fields,
             },

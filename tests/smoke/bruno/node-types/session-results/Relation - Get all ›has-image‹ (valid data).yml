@@ -26,12 +26,12 @@ runtime:
     - expression: res.body.data[0].data.relationship_name
       operator: eq
       value: "has-image"
-    - expression: res.body.data[0].data.relationship_partner
+    - expression: res.body.data[0].data.partner_node
       operator: isJson
-    - expression: res.body.data[0].data.relationship_partner.node_type
+    - expression: res.body.data[0].data.partner_node.node_type
       operator: eq
       value: "images"
-    - expression: res.body.data[0].data.relationship_partner.data.id
+    - expression: res.body.data[0].data.partner_node.data.id
       operator: eq
       value: "{{validImageId}}"
     - expression: res.body.data[0].data.created_at

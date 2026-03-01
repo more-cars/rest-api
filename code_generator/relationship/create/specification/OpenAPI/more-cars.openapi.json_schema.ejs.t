@@ -18,7 +18,7 @@ skip_if: \"<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(rela
             "readOnly": true,
             "example": "<%= h.changeCase.kebab(relationshipName) %>"
           },
-          "relationship_partner": {
+          "partner_node": {
             "type": "object",
             "properties": {
               "node_type": {

@@ -9,7 +9,7 @@ Given('relationship {string} does NOT exist',
             data: {
                 relationship_id: -Math.ceil(Math.random() * 1000),
                 relationship_name: 'DUMMY' as RelationType,
-                relationship_partner: {
+                partner_node: {
                     node_type: 'DUMMY' as RelationType,
                     data: {
                         id: 1234,
