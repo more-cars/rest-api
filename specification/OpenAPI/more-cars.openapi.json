@@ -11965,6 +11965,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Magazine Issues"
+        ],
+        "summary": "Delete `Magazine Issue`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "magazine-issue-id",
+            "description": "ID of the `Magazine Issue`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Magazine Issue` successfully deleted."
+          },
+          "404": {
+            "description": "Deletion request failed. A `Magazine Issue` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/relationships/{relationship-id}": {
@@ -17417,10 +17449,10 @@
       },
       "MagazineIssue": {
         "type": "object",
-        "required":         [
+        "required": [
           "title"
         ],
-        "properties":         {
+        "properties": {
           "id": {
             "type": "integer",
             "readOnly": true,
@@ -17493,7 +17525,7 @@
       },
       "MagazineIssueProperties": {
         "type": "string",
-        "enum":         [
+        "enum": [
           "id",
           "created_at",
           "updated_at",
