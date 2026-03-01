@@ -25,6 +25,14 @@ runtime:
     - expression: res.body.data.relationship_name
       operator: eq
       value: "follows-event"
+    - expression: res.body.data.start_node
+      operator: isJson
+    - expression: res.body.data.start_node.node_type
+      operator: eq
+      value: "racing-events"
+    - expression: res.body.data.start_node.data.id
+      operator: eq
+      value: "{{validRacingEventId}}"
     - expression: res.body.data.partner_node
       operator: isJson
     - expression: res.body.data.partner_node.node_type

@@ -6,6 +6,10 @@ export function marshalRelation(relation: Relation) {
         data: {
             relationship_id: relation.id,
             relationship_name: relation.type,
+            start_node: {
+                node_type: relation.from_node.node_type,
+                data: relation.from_node.fields,
+            },
             partner_node: {
                 node_type: relation.to_node.node_type,
                 data: relation.to_node.fields,

@@ -32,6 +32,10 @@ describe('Marshalling a relation collection', () => {
             data: {
                 relationship_id: 3,
                 relationship_name: relation.type,
+                start_node: {
+                    node_type: "brands",
+                    data: origin.attributes,
+                },
                 partner_node: {
                     node_type: "car-models",
                     data: destination.attributes,

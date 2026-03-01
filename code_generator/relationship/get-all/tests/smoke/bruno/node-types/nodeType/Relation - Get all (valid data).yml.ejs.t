@@ -29,6 +29,14 @@ runtime:
     - expression: res.body.data[0].data.relationship_name
       operator: eq
       value: "<%= h.changeCase.kebab(relationshipName) %>"
+    - expression: res.body.data[0].data.start_node
+      operator: isJson
+    - expression: res.body.data[0].data.start_node.node_type
+      operator: eq
+      value: "<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>"
+    - expression: res.body.data[0].data.start_node.data.id
+      operator: eq
+      value: "{{valid<%= h.changeCase.pascal(startNodeType) %>Id}}"
     - expression: res.body.data[0].data.partner_node
       operator: isJson
     - expression: res.body.data[0].data.partner_node.node_type

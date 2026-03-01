@@ -29,6 +29,10 @@ describe('Marshalling a relation', () => {
                 data: {
                     relationship_id: 3,
                     relationship_name: mapModelRelationTypeToControllerRelationType(relType),
+                    start_node: {
+                        node_type: "brands",
+                        data: origin.attributes,
+                    },
                     partner_node: {
                         node_type: "car-models",
                         data: destination.attributes,
