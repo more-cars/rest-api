@@ -7,8 +7,8 @@ export function marshalRelation(relation: Relation) {
             relationship_id: relation.id,
             relationship_name: relation.type,
             relationship_partner: {
-                node_type: relation.partner_node.node_type,
-                data: relation.partner_node.fields,
+                node_type: relation.to_node.node_type,
+                data: relation.to_node.fields,
             },
             created_at: relation.created_at,
             updated_at: relation.updated_at,

@@ -4,7 +4,8 @@ import type {ControllerNode} from "./ControllerNode"
 export type Relation = {
     id: number
     type: RelationType
-    partner_node: ControllerNode
+    from_node: ControllerNode
+    to_node: ControllerNode
     created_at: string
     updated_at: string
 }

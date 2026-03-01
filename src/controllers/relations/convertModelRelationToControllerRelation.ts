@@ -7,7 +7,8 @@ export function convertModelRelationToControllerRelation(modelRelation: Rel): Re
     return {
         id: modelRelation.id,
         type: mapModelRelationTypeToControllerRelationType(modelRelation.type),
-        partner_node: convertModelNodeToControllerNode(modelRelation.destination),
+        from_node: convertModelNodeToControllerNode(modelRelation.origin),
+        to_node: convertModelNodeToControllerNode(modelRelation.destination),
         created_at: modelRelation.created_at,
         updated_at: modelRelation.updated_at,
     } satisfies Relation
