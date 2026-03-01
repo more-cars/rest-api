@@ -6,6 +6,8 @@ import {mapModelRelationTypeToControllerRelationType} from "../../../../src/cont
 import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
 import {NodeType} from "../../../../src/specification/NodeType"
 import {convertModelRelationToControllerRelation} from "../../../../src/controllers/relations/convertModelRelationToControllerRelation"
+import {validateJson} from "../../../_toolbox/validateJson"
+import {RelationshipSchema} from "../../../_toolbox/schemas/response/RelationshipSchema"
 
 describe('Marshalling a relation', () => {
     test.each(
@@ -24,6 +26,11 @@ describe('Marshalling a relation', () => {
 
         const marshalledRelation = marshalRelation(convertModelRelationToControllerRelation(relationship))
 
+        // schema check
+        expect(validateJson(marshalledRelation, RelationshipSchema))
+            .toBeTruthy()
+
+        // data check
         expect(marshalledRelation)
             .toStrictEqual({
                 data: {
