@@ -1,0 +1,35 @@
+info:
+  name: Get Magazine Issue by ID (valid data)
+  type: http
+  tags:
+    - get
+    - node
+    - valid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/magazine-issues/{{validMagazineIssueId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data.id
+      operator: eq
+      value: "{{validMagazineIssueId}}"
+    - expression: res.body.data.created_at
+      operator: isString
+    - expression: res.body.data.created_at
+      operator: isNotEmpty
+    - expression: res.body.data.updated_at
+      operator: isString
+    - expression: res.body.data.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const MagazineIssues = require('./lib/node-types/MagazineIssues.js')
+        await MagazineIssues.create()

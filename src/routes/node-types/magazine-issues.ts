@@ -4,5 +4,6 @@ import {MagazineIssueController} from "../../controllers/node-types/MagazineIssu
 const router = express.Router()
 
 router.post('/magazine-issues', MagazineIssueController.create)
+router.get('/magazine-issues/:id', MagazineIssueController.getById)
 
 export default router
