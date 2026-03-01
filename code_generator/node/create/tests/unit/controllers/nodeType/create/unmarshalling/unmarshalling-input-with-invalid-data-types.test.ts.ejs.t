@@ -10,10 +10,6 @@ to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeTyp
 import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshalling/unmarshalInputData"
 
-/**
- * Unmarshalling does NOT perform any validation.
- * Incorrect data types will be accepted, as long as the "keys" are correct.
- */
 test('unmarshalling a request where the data types are incorrect', async () => {
     const data: any = {
 <%- props.map(line => '        ' + line).join(',\n') %>,

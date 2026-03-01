@@ -25,9 +25,6 @@ to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeTyp
 import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshalling/unmarshalInputData"
 
-/**
- * Missing optional fields are automatically added as "undefined".
- */
 test('unmarshalling a valid request where optional fields are missing', async () => {
     const data: any = {
 <%- props_in.map(line => '        ' + line).join(',\n') %>,

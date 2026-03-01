@@ -2,24 +2,37 @@
 to: tests/unit/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create/unmarshalling/unmarshalling-where-mandatory-fields-are-missing.test.ts
 ---
 <%
-    props = []
+    props_in = []
     for (prop in properties) {
-        props.push(prop + ': undefined')
+        if (!properties[prop].mandatory && properties[prop].datatype === 'string') {
+            props_in.push(prop + ': "' + properties[prop].example + '"')
+        } else if (!properties[prop].mandatory) {
+            props_in.push(prop + ': ' + properties[prop].example)
+        }
+    }
+
+    props_out = []
+    for (prop in properties) {
+        if (properties[prop].mandatory && properties[prop].datatype === 'string') {
+            props_out.push(prop + ': "' + properties[prop].example + '"')
+        } else if (properties[prop].mandatory) {
+            props_out.push(prop + ': ' + properties[prop].example)
+        } else {
+            props_out.push(prop + ': undefined')
+        }
     }
 -%>
 import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshalling/unmarshalInputData"
 
-/**
- * Unmarshalling does NOT perform any validation.
- * Missing mandatory fields are automatically added as "undefined".
- */
 test('unmarshalling a request where mandatory fields are missing', async () => {
-    const data: any = {}
+    const data: any = {
+<%- props_in.map(line => '        ' + line).join(',\n') %>,
+    }
     const result = unmarshalInputData(data)
 
     expect(result)
         .toStrictEqual({
-<%- props.map(line => '            ' + line).join(',\n') %>,
+<%- props_out.map(line => '            ' + line).join(',\n') %>,
         })
 })
