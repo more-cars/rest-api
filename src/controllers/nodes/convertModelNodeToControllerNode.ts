@@ -14,7 +14,7 @@ import {convertRacingSessionModelNodeToControllerNode} from "../node-types/racin
 import {convertSessionResultModelNodeToControllerNode} from "../node-types/session-results/convertSessionResultModelNodeToControllerNode"
 import {convertLapTimeModelNodeToControllerNode} from "../node-types/lap-times/convertLapTimeModelNodeToControllerNode"
 import {convertRacingGameModelNodeToControllerNode} from "../node-types/racing-games/convertRacingGameModelNodeToControllerNode"
-import {convertGamingPlatformNodeToControllerNode} from "../node-types/gaming-platforms/convertGamingPlatformNodeToControllerNode"
+import {convertGamingPlatformModelNodeToControllerNode} from "../node-types/gaming-platforms/convertGamingPlatformModelNodeToControllerNode"
 import {convertMagazineModelNodeToControllerNode} from "../node-types/magazines/convertMagazineModelNodeToControllerNode"
 import {convertImageModelNodeToControllerNode} from "../node-types/images/convertImageModelNodeToControllerNode"
 import type {CompanyNode} from "../../models/node-types/companies/types/CompanyNode"
@@ -60,7 +60,7 @@ export function convertModelNodeToControllerNode(modelNode: ModelNode): Controll
         case ModelNodeType.RacingGame:
             return convertRacingGameModelNodeToControllerNode(modelNode as RacingGameNode)
         case ModelNodeType.GamingPlatform:
-            return convertGamingPlatformNodeToControllerNode(modelNode as GamingPlatformNode)
+            return convertGamingPlatformModelNodeToControllerNode(modelNode as GamingPlatformNode)
         case ModelNodeType.Magazine:
             return convertMagazineModelNodeToControllerNode(modelNode as MagazineNode)
         case ModelNodeType.Image:

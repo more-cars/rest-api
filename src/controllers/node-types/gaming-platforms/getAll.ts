@@ -3,7 +3,7 @@ import {getNamesOfAllNodeProperties} from "../../../specification/getNamesOfAllN
 import {NodeType} from "../../../specification/NodeType"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
 import {GamingPlatform} from "../../../models/node-types/gaming-platforms/GamingPlatform"
-import {convertGamingPlatformNodeToControllerNode} from "./convertGamingPlatformNodeToControllerNode"
+import {convertGamingPlatformModelNodeToControllerNode} from "./convertGamingPlatformModelNodeToControllerNode"
 import {marshalNodeCollection} from "../../nodes/marshalNodeCollection"
 import {InvalidPaginationParams} from "../../../models/types/InvalidPaginationParams"
 import {InvalidSortingParams} from "../../../models/types/InvalidSortingParams"
@@ -17,7 +17,7 @@ export async function getAll(req: express.Request, res: express.Response) {
         const availableProperties = getNamesOfAllNodeProperties(NodeType.GamingPlatform)
         const params = extractCollectionConstraintParameters(req, availableProperties)
         const modelNodes = await GamingPlatform.findAll(params)
-        const nodes = modelNodes.map(node => convertGamingPlatformNodeToControllerNode(node))
+        const nodes = modelNodes.map(node => convertGamingPlatformModelNodeToControllerNode(node))
         const marshalledData = marshalNodeCollection(nodes)
 
         return sendResponse200(marshalledData, res)

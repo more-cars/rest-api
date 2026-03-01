@@ -2,7 +2,7 @@ import type {GamingPlatformNode as ModelGamingPlatformNode} from "../../../model
 import type {GamingPlatformNode} from "./types/GamingPlatformNode"
 import {ControllerNodeType} from "../../types/ControllerNodeType"
 
-export function convertGamingPlatformNodeToControllerNode(modelNode: ModelGamingPlatformNode): GamingPlatformNode {
+export function convertGamingPlatformModelNodeToControllerNode(modelNode: ModelGamingPlatformNode): GamingPlatformNode {
     return {
         node_type: ControllerNodeType.GamingPlatform,
         fields: {

@@ -1,6 +1,6 @@
 import express from "express"
 import {GamingPlatform} from "../../../models/node-types/gaming-platforms/GamingPlatform"
-import {convertGamingPlatformNodeToControllerNode} from "./convertGamingPlatformNodeToControllerNode"
+import {convertGamingPlatformModelNodeToControllerNode} from "./convertGamingPlatformModelNodeToControllerNode"
 import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"
@@ -12,7 +12,7 @@ export async function getById(req: express.Request, res: express.Response) {
 
     try {
         const modelNode = await GamingPlatform.findById(nodeId)
-        const node = convertGamingPlatformNodeToControllerNode(modelNode)
+        const node = convertGamingPlatformModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node.fields)
 
         return sendResponse200(marshalledData, res)
