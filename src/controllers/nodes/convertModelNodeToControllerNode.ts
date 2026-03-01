@@ -15,6 +15,7 @@ import {convertSessionResultModelNodeToControllerNode} from "../node-types/sessi
 import {convertLapTimeModelNodeToControllerNode} from "../node-types/lap-times/convertLapTimeModelNodeToControllerNode"
 import {convertRacingGameModelNodeToControllerNode} from "../node-types/racing-games/convertRacingGameModelNodeToControllerNode"
 import {convertGamingPlatformNodeToControllerNode} from "../node-types/gaming-platforms/convertGamingPlatformNodeToControllerNode"
+import {convertMagazineModelNodeToControllerNode} from "../node-types/magazines/convertMagazineModelNodeToControllerNode"
 import {convertImageModelNodeToControllerNode} from "../node-types/images/convertImageModelNodeToControllerNode"
 import type {CompanyNode} from "../../models/node-types/companies/types/CompanyNode"
 import type {BrandNode} from "../../models/node-types/brands/types/BrandNode"
@@ -29,6 +30,7 @@ import type {SessionResultNode} from "../../models/node-types/session-results/ty
 import type {LapTimeNode} from "../../models/node-types/lap-times/types/LapTimeNode"
 import type {RacingGameNode} from "../../models/node-types/racing-games/types/RacingGameNode"
 import type {GamingPlatformNode} from "../../models/node-types/gaming-platforms/types/GamingPlatformNode"
+import type {MagazineNode} from "../../models/node-types/magazines/types/MagazineNode"
 import type {ImageNode} from "../../models/node-types/images/types/ImageNode"
 
 export function convertModelNodeToControllerNode(modelNode: ModelNode): ControllerNode {
@@ -59,6 +61,8 @@ export function convertModelNodeToControllerNode(modelNode: ModelNode): Controll
             return convertRacingGameModelNodeToControllerNode(modelNode as RacingGameNode)
         case ModelNodeType.GamingPlatform:
             return convertGamingPlatformNodeToControllerNode(modelNode as GamingPlatformNode)
+        case ModelNodeType.Magazine:
+            return convertMagazineModelNodeToControllerNode(modelNode as MagazineNode)
         case ModelNodeType.Image:
             return convertImageModelNodeToControllerNode(modelNode as ImageNode)
         default:
