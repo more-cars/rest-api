@@ -1,27 +1,35 @@
 import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../src/controllers/node-types/magazines/marshalling/unmarshalInputData"
 
-/**
- * Unmarshalling does NOT perform any validation.
- * Missing mandatory fields are automatically added as "undefined".
- */
 test('unmarshalling a request where mandatory fields are missing', async () => {
-    const data: any = {}
+    const data: any = {
+        founded: 1993,
+        defunct: null,
+        focus: "sports cars",
+        publication_frequency: "monthly",
+        single_copy_price: 5.99,
+        single_copy_price_unit: "£",
+        publication_format: "print",
+        circulation: 150884,
+        circulation_year: 2013,
+        publisher: "Immediate Media Company",
+        issn: "1350-9624",
+    }
     const result = unmarshalInputData(data)
 
     expect(result)
         .toStrictEqual({
             name: undefined,
-            founded: undefined,
-            defunct: undefined,
-            focus: undefined,
-            publication_frequency: undefined,
-            single_copy_price: undefined,
-            single_copy_price_unit: undefined,
-            publication_format: undefined,
-            circulation: undefined,
-            circulation_year: undefined,
-            publisher: undefined,
-            issn: undefined,
+            founded: 1993,
+            defunct: null,
+            focus: "sports cars",
+            publication_frequency: "monthly",
+            single_copy_price: 5.99,
+            single_copy_price_unit: "£",
+            publication_format: "print",
+            circulation: 150884,
+            circulation_year: 2013,
+            publisher: "Immediate Media Company",
+            issn: "1350-9624",
         })
 })

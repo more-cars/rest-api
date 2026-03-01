@@ -1,13 +1,13 @@
 import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../src/controllers/node-types/car-models/marshalling/unmarshalInputData"
 
-/**
- * Unmarshalling does NOT perform any validation.
- * Missing mandatory fields are automatically added as "undefined".
- */
 test('unmarshalling a request where mandatory fields are missing', async () => {
     const data: any = {
-        generation: 7,
+        built_from: 1999,
+        built_to: 2005,
+        generation: null,
+        internal_code: "F131",
+        total_production: 16365,
     }
 
     const result = unmarshalInputData(data)
@@ -15,10 +15,10 @@ test('unmarshalling a request where mandatory fields are missing', async () => {
     expect(result)
         .toStrictEqual({
             name: undefined,
-            built_from: undefined,
-            built_to: undefined,
-            generation: 7,
-            internal_code: undefined,
-            total_production: undefined,
+            built_from: 1999,
+            built_to: 2005,
+            generation: null,
+            internal_code: "F131",
+            total_production: 16365,
         })
 })

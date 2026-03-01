@@ -1,10 +1,6 @@
 import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../src/controllers/node-types/images/marshalling/unmarshalInputData"
 
-/**
- * Requests are NOT rejected when they contain too much information.
- * The extraneous fields are simply ignored.
- */
 test('unmarshalling a request where extraneous fields are contained', async () => {
     const data: any = {
         external_id: "54570839725",
