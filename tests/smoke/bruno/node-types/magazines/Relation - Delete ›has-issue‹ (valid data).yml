@@ -1,0 +1,25 @@
+info:
+  name: Delete ›has-issue‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/magazines/{{validMagazineId}}/has-issue/{{validMagazineIssueId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const Magazines = require('./lib/node-types/Magazines.js')
+        const MagazineIssues = require('./lib/node-types/MagazineIssues.js')
+        await Magazines.create()
+        await MagazineIssues.create()
+        await Magazines.createHasIssueRelationship()

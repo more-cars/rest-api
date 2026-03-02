@@ -54,6 +54,14 @@ describe('Magazines', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete ›has-issue‹ relationship', async () => {
+        await request(app)
+            .delete('/magazines/123/has-issue/456')
+
+        expect(MagazineController.deleteHasIssueRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/magazines/123/has-image/456')

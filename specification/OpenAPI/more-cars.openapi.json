@@ -11657,6 +11657,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Magazines"
+        ],
+        "summary": "Deletes the ›has-issue‹ relationship between the `Magazine` and the `Magazine Issue`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "magazine-id",
+            "description": "ID of the `Magazine`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "magazine-issue-id",
+            "description": "ID of the `Magazine Issue`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-issue‹ relationship between `Magazine` and `Magazine Issue` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-issue‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/magazines/{magazine-id}/has-image": {
