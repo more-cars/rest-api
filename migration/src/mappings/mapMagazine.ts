@@ -7,7 +7,7 @@ export function mapMagazine(oldNode: Node): InputMagazineCreate {
         founded: oldNode.properties.founded,
         defunct: oldNode.properties.defunct,
         focus: oldNode.properties.focus,
-        publication_frequency: oldNode.properties.issues_per_year,
+        publication_frequency: convertToFrequency(oldNode.properties.issues_per_year),
         single_copy_price: oldNode.properties.single_copy_price,
         single_copy_price_unit: oldNode.properties.single_copy_price_unit,
         publication_format: oldNode.properties.distribution,
@@ -15,5 +15,30 @@ export function mapMagazine(oldNode: Node): InputMagazineCreate {
         circulation_year: oldNode.properties.circulation_year,
         publisher: oldNode.properties.publisher,
         issn: oldNode.properties.issn,
+    }
+}
+
+function convertToFrequency(issues_per_year: number) {
+    switch (issues_per_year) {
+        case 1:
+            return 'yearly'
+        case 2:
+            return 'twice a year'
+        case 4:
+            return 'quarterly'
+        case 6:
+            return 'every two months'
+        case 9:
+            return 'every six weeks'
+        case 12:
+        case 13:
+            return 'monthly'
+        case 24:
+        case 26:
+            return 'twice per month'
+        case 52:
+            return 'weekly'
+        default:
+            return 'irregular'
     }
 }
