@@ -71,6 +71,7 @@ export function mapModelRelationshipTypeToRelationshipType(relType: RelType): Re
         [RelType.MagazineHasPrimeImage, RelationshipType.MagazineHasPrimeImage],
         [RelType.MagazineIssueBelongsToMagazine, RelationshipType.MagazineIssueBelongsToMagazine],
         [RelType.MagazineIssueHasImage, RelationshipType.MagazineIssueHasImage],
+        [RelType.MagazineIssueHasPrimeImage, RelationshipType.MagazineIssueHasPrimeImage],
         [RelType.ImageBelongsToNode, RelationshipType.ImageBelongsToNode],
         [RelType.ImageIsPrimeImageOfNode, RelationshipType.ImageIsPrimeImageOfNode],
     ])

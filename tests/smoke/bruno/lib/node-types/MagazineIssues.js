@@ -8,6 +8,10 @@ exports.createHasImageRelationship = async function () {
     await post("/magazine-issues/" + bru.getEnvVar('validMagazineIssueId') + "/has-image/" + bru.getEnvVar('validImageId'))
 }
 
+exports.createHasPrimeImageRelationship = async function () {
+    await post("/magazine-issues/" + bru.getEnvVar('validMagazineIssueId') + "/has-prime-image/" + bru.getEnvVar('validImageId'))
+}
+
 exports.create = async function (prefix = '') {
     const response = await post("/magazine-issues", {
         title: 'Dummy Magazine Issue',

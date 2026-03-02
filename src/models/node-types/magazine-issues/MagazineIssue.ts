@@ -142,4 +142,24 @@ export const MagazineIssue = {
 
         await deleteSpecificRel(magazineIssueId, imageId, RelType.MagazineIssueHasImage)
     },
+
+    async createHasPrimeImageRelationship(magazineIssueId: number, imageId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await MagazineIssue.findById(magazineIssueId)
+        await Image.findById(imageId)
+
+        const existingRelation = await getSpecificRel(magazineIssueId, imageId, RelType.MagazineIssueHasPrimeImage)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.MagazineIssueHasPrimeImage, magazineIssueId, imageId)
+        }
+        await deleteOutgoingRel(magazineIssueId, RelType.MagazineIssueHasPrimeImage, ModelNodeType.Image)
+
+
+        const createdRelationship = await createRel(magazineIssueId, imageId, RelType.MagazineIssueHasPrimeImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
 }
