@@ -57,6 +57,13 @@ export function getAllPotentialPartnerNodeTypes() {
             DbNodeType.RacingGame,
             DbNodeType.Image,
         ]],
+        [DbNodeType.Magazine, [
+            DbNodeType.MagazineIssue,
+            DbNodeType.Image,
+        ]],
+        [DbNodeType.MagazineIssue, [
+            DbNodeType.Image,
+        ]],
         [DbNodeType.LapTime, [
             DbNodeType.Image,
         ]],

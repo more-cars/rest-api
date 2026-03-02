@@ -1,4 +1,8 @@
 import type {Node} from "neo4j-driver"
+import {DbNodeType} from "../../src/db/types/DbNodeType"
+import {createNeo4jNode} from "../../src/db/nodes/createNeo4jNode"
+import {addMoreCarsIdToNode} from "../../src/db/nodes/addMoreCarsIdToNode"
+import {addTimestampsToNode} from "../../src/db/nodes/addTimestampsToNode"
 import type {InputCompanyCreate} from "../../src/db/node-types/companies/types/InputCompanyCreate"
 import type {InputBrandCreate} from "../../src/db/node-types/brands/types/InputBrandCreate"
 import type {InputCarModelCreate} from "../../src/db/node-types/car-models/types/InputCarModelCreate"
@@ -12,11 +16,9 @@ import type {InputSessionResultCreate} from "../../src/db/node-types/session-res
 import type {InputLapTimeCreate} from "../../src/db/node-types/lap-times/types/InputLapTimeCreate"
 import type {InputRacingGameCreate} from "../../src/db/node-types/racing-games/types/InputRacingGameCreate"
 import type {InputGamingPlatformCreate} from "../../src/db/node-types/gaming-platforms/types/InputGamingPlatformCreate"
+import type {InputMagazineCreate} from "../../src/db/node-types/magazines/types/InputMagazineCreate"
+import type {InputMagazineIssueCreate} from "../../src/db/node-types/magazine-issues/types/InputMagazineIssueCreate"
 import type {InputImageCreate} from "../../src/db/node-types/images/types/InputImageCreate"
-import {DbNodeType} from "../../src/db/types/DbNodeType"
-import {createNeo4jNode} from "../../src/db/nodes/createNeo4jNode"
-import {addMoreCarsIdToNode} from "../../src/db/nodes/addMoreCarsIdToNode"
-import {addTimestampsToNode} from "../../src/db/nodes/addTimestampsToNode"
 
 type InputTypes =
     InputCompanyCreate |
@@ -32,10 +34,12 @@ type InputTypes =
     InputLapTimeCreate |
     InputRacingGameCreate |
     InputGamingPlatformCreate |
+    InputMagazineCreate |
+    InputMagazineIssueCreate |
     InputImageCreate
 
 
-export async function storeNode(data: InputTypes, newNodeType: DbNodeType, oldNode: Node): Promise<void> {
+export async function storeNode(data: InputTypes, newNodeType: DbNodeType, oldNode: Node) {
     try {
         const createdNode: Node = await createNeo4jNode(newNodeType, data)
         await addMoreCarsIdToNode(

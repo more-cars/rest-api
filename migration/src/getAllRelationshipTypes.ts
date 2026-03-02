@@ -269,6 +269,36 @@ export function getAllRelationshipTypes() {
                 ])
             ],
             [
+                DbNodeType.Magazine, new Map(
+                [
+                    [
+                        DbNodeType.MagazineIssue,
+                        [
+                            RelationshipType.MagazineHasIssue,
+                        ],
+                    ],
+                    [
+                        DbNodeType.Image,
+                        [
+                            RelationshipType.NodeHasImage,
+                            RelationshipType.NodeHasPrimeImage,
+                        ],
+                    ],
+                ])
+            ],
+            [
+                DbNodeType.MagazineIssue, new Map(
+                [
+                    [
+                        DbNodeType.Image,
+                        [
+                            RelationshipType.NodeHasImage,
+                            RelationshipType.NodeHasPrimeImage,
+                        ],
+                    ],
+                ])
+            ],
+            [
                 DbNodeType.Image, new Map([])
             ],
         ])

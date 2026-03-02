@@ -17,6 +17,7 @@ export enum RelationshipTypeLabelOld {
     RacingGameFeaturesCarModelVariant = "FEATURES_CAR_MODEL_VARIANT",
     RacingGameFeaturesTrackLayout = "FEATURES_RACE_TRACK_VARIANT",
     GamingPlatformFeaturesRacingGame = "FEATURES_RACING_GAME",
+    MagazineHasIssue = "HAS_ISSUE",
     NodeHasImage = "HAS_IMAGE",
     NodeHasPrimeImage = "IS_MAIN_IMAGE_OF_NODE",
 }
