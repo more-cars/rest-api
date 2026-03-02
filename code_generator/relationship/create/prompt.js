@@ -15,11 +15,6 @@ module.exports = [
         message: "Node type of the relationship partner?",
     },
     {
-        type: 'input',
-        name: 'forwardRelationshipName',
-        message: "ONLY IF REVERSE RELATIONSHIP > Name of the inverse relationship?",
-    },
-    {
         message: "Cardinality of the relationship?",
         name: 'cardinality',
         type: 'select',
@@ -29,5 +24,10 @@ module.exports = [
             'n:1',
             'm:n',
         ],
+    },
+    {
+        type: 'input',
+        name: 'forwardRelationshipName',
+        message: "ONLY IF REVERSE RELATIONSHIP: Name of the inverse relationship?",
     },
 ]
