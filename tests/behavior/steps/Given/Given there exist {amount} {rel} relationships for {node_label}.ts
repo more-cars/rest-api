@@ -3,6 +3,7 @@ import {dasherize} from "inflection"
 import {NodeManager} from "../../lib/NodeManager"
 import {convertStringToRelationshipType} from "../../lib/convertStringToRelationshipType"
 import {getRelationshipTypeSpecification} from "../../../../src/specification/getRelationshipTypeSpecification"
+import {NodeType} from "../../../../src/specification/NodeType"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {performApiRequest} from "../../lib/performApiRequest"
 
@@ -11,7 +12,7 @@ Given('there exist {int} {string} relationships for {string}',
         const startNode = NodeManager.getNodeByLabel(startNodeLabel)
         const relationshipType = convertStringToRelationshipType(relationshipName, startNode.node_type)
         const relationshipSpecification = getRelationshipTypeSpecification(relationshipType)
-        const endNodeType = relationshipSpecification.endNodeType
+        const endNodeType = relationshipSpecification.endNodeType || NodeType.CarModel
         const nodePath = getBasePathFragmentForNodeType(startNode.node_type)
 
         for (let i = 0; i < amount; i++) {
