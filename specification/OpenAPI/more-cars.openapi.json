@@ -12500,6 +12500,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Magazine Issues"
+        ],
+        "summary": "Deletes the ›has-prime-image‹ relationship between the `Magazine Issue` and the `Image`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "magazine-issue-id",
+            "description": "ID of the `Magazine Issue`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-prime-image‹ relationship between `Magazine Issue` and `Image` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-prime-image‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/relationships/{relationship-id}": {
