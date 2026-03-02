@@ -6,6 +6,7 @@ import {deleteNode} from "./magazine-issues/deleteNode"
 import {createBelongsToMagazineRelation} from "./magazine-issues/createBelongsToMagazineRelation"
 import {getBelongsToMagazineRelation} from "./magazine-issues/getBelongsToMagazineRelation"
 import {deleteBelongsToMagazineRelation} from "./magazine-issues/deleteBelongsToMagazineRelation"
+import {createHasImageRelation} from "./magazine-issues/createHasImageRelation"
 
 export const MagazineIssueController = {
     async create(req: express.Request, res: express.Response) {
@@ -34,5 +35,9 @@ export const MagazineIssueController = {
 
     async deleteBelongsToMagazineRelation(req: express.Request, res: express.Response) {
         await deleteBelongsToMagazineRelation(req, res)
+    },
+
+    async createHasImageRelation(req: express.Request, res: express.Response) {
+        await createHasImageRelation(req, res)
     },
 }

@@ -65,6 +65,7 @@ export enum RelType {
     MagazineHasImage = 'magazine_has_image',
     MagazineHasPrimeImage = 'magazine_has_prime_image',
     MagazineIssueBelongsToMagazine = 'magazine_issue_belongs_to_magazine',
+    MagazineIssueHasImage = 'magazine_issue_has_image',
     ImageBelongsToNode = 'image_belongs_to_node',
     ImageIsPrimeImageOfNode = 'image_is_prime_image_of_node',
 }

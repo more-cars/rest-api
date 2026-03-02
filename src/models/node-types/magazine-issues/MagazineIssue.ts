@@ -18,6 +18,7 @@ import {RelType} from "../../relationships/types/RelType"
 import {getRel} from "../../relationships/getRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
 import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
+import {Image} from "../images/Image"
 
 export const MagazineIssue = {
     async create(data: CreateMagazineIssueInput): Promise<MagazineIssueNode> {
@@ -101,5 +102,23 @@ export const MagazineIssue = {
         }
 
         await deleteSpecificRel(magazineIssueId, magazineId, RelType.MagazineIssueBelongsToMagazine)
+    },
+
+    async createHasImageRelationship(magazineIssueId: number, imageId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await MagazineIssue.findById(magazineIssueId)
+        await Image.findById(imageId)
+
+        const existingRelation = await getSpecificRel(magazineIssueId, imageId, RelType.MagazineIssueHasImage)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.MagazineIssueHasImage, magazineIssueId, imageId)
+        }
+
+        const createdRelationship = await createRel(magazineIssueId, imageId, RelType.MagazineIssueHasImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }

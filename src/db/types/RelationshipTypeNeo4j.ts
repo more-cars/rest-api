@@ -66,7 +66,8 @@ export enum RelationshipTypeNeo4j {
     MagazineHasIssue = 'HAS_ISSUE',
     MagazineHasImage = 'HAS_IMAGE',
     MagazineHasPrimeImage = 'HAS_PRIME_IMAGE',
-    MagazineIssueBelongsToMagazine = 'BELONGS_TO_MAGAZINE',
+    MagazineIssueBelongsToMagazine = 'HAS_ISSUE',
+    MagazineIssueHasImage = 'HAS_IMAGE',
     ImageBelongsToNode = 'HAS_IMAGE',
     ImageIsPrimeImageOfNode = 'HAS_PRIME_IMAGE',
 }
