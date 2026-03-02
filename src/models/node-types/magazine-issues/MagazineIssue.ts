@@ -17,6 +17,7 @@ import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
 import {RelType} from "../../relationships/types/RelType"
 import {getRel} from "../../relationships/getRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
+import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 
 export const MagazineIssue = {
     async create(data: CreateMagazineIssueInput): Promise<MagazineIssueNode> {
@@ -87,5 +88,18 @@ export const MagazineIssue = {
         }
 
         return relationship
+    },
+
+    async deleteBelongsToMagazineRelationship(magazineIssueId: number, magazineId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await MagazineIssue.findById(magazineIssueId)
+        await Magazine.findById(magazineId)
+
+        const relationship = await getSpecificRel(magazineIssueId, magazineId, RelType.MagazineIssueBelongsToMagazine)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.MagazineIssueBelongsToMagazine, magazineIssueId, magazineId)
+        }
+
+        await deleteSpecificRel(magazineIssueId, magazineId, RelType.MagazineIssueBelongsToMagazine)
     },
 }
