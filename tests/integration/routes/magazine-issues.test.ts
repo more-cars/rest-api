@@ -37,4 +37,12 @@ describe('Magazine Issues', () => {
         expect(MagazineIssueController.delete)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›belongs-to-magazine‹ relationship', async () => {
+        await request(app)
+            .post('/magazine-issues/123/belongs-to-magazine/456')
+
+        expect(MagazineIssueController.createBelongsToMagazineRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

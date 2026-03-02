@@ -8,6 +8,14 @@ import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 import {getAllNodesOfType} from "../../../db/node-types/magazine-issues/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {deleteNode} from "../../../db/nodes/deleteNode"
+import {createRel} from "../../relationships/createRel"
+import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
+import {Magazine} from "../magazines/Magazine"
+import {getSpecificRel} from "../../relationships/getSpecificRel"
+import {ModelNodeType} from "../../types/ModelNodeType"
+import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
+import {RelType} from "../../relationships/types/RelType"
+
 
 export const MagazineIssue = {
     async create(data: CreateMagazineIssueInput): Promise<MagazineIssueNode> {
@@ -46,5 +54,25 @@ export const MagazineIssue = {
         }
 
         await deleteNode(id)
+    },
+
+    async createBelongsToMagazineRelationship(magazineIssueId: number, magazineId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await MagazineIssue.findById(magazineIssueId)
+        await Magazine.findById(magazineId)
+
+        const existingRelation = await getSpecificRel(magazineIssueId, magazineId, RelType.MagazineIssueBelongsToMagazine)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.MagazineIssueBelongsToMagazine, magazineIssueId, magazineId)
+        }
+        await deleteOutgoingRel(magazineIssueId, RelType.MagazineIssueBelongsToMagazine, ModelNodeType.Magazine)
+
+
+        const createdRelationship = await createRel(magazineIssueId, magazineId, RelType.MagazineIssueBelongsToMagazine)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }
