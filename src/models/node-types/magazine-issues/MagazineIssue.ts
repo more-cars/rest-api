@@ -162,4 +162,16 @@ export const MagazineIssue = {
 
         return createdRelationship
     },
+
+    async getHasPrimeImageRelationship(magazineIssueId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await MagazineIssue.findById(magazineIssueId)
+
+        const relationship = await getRel(magazineIssueId, RelType.MagazineIssueHasPrimeImage)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.MagazineIssueHasPrimeImage, magazineIssueId, null)
+        }
+
+        return relationship
+    },
 }

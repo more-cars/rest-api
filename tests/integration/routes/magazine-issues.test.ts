@@ -93,4 +93,12 @@ describe('Magazine Issues', () => {
         expect(MagazineIssueController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .get('/magazine-issues/123/has-prime-image')
+
+        expect(MagazineIssueController.getHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
