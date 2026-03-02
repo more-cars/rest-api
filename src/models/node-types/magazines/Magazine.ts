@@ -81,6 +81,13 @@ export const Magazine = {
         return createdRelationship
     },
 
+    async getAllHasIssueRelationships(magazineId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await Magazine.findById(magazineId)
+
+        return getAllRels(magazineId, RelType.MagazineHasIssue)
+    },
+
     async createHasImageRelationship(magazineId: number, imageId: number) {
         // checking that both nodes exist -> exception is thrown if not
         await Magazine.findById(magazineId)

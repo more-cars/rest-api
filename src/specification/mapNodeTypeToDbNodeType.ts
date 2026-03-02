@@ -4,6 +4,7 @@ import {NodeTypeMappingNotFoundError} from "./NodeTypeMappingNotFoundError"
 
 export function mapNodeTypeToDbNodeType(nodeType: NodeType): DbNodeType {
     const mapping = new Map<NodeType, DbNodeType>([
+        [NodeType.Node, DbNodeType.Node],
         [NodeType.Company, DbNodeType.Company],
         [NodeType.Brand, DbNodeType.Brand],
         [NodeType.CarModel, DbNodeType.CarModel],
@@ -18,8 +19,8 @@ export function mapNodeTypeToDbNodeType(nodeType: NodeType): DbNodeType {
         [NodeType.RacingGame, DbNodeType.RacingGame],
         [NodeType.GamingPlatform, DbNodeType.GamingPlatform],
         [NodeType.Magazine, DbNodeType.Magazine],
+        [NodeType.MagazineIssue, DbNodeType.MagazineIssue],
         [NodeType.Image, DbNodeType.Image],
-        [NodeType.Node, DbNodeType.Node],
     ])
 
     const mappedNodeType = mapping.get(nodeType)

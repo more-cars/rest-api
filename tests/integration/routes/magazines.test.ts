@@ -38,6 +38,22 @@ describe('Magazines', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Create ›has-issue‹ relationship', async () => {
+        await request(app)
+            .post('/magazines/123/has-issue/456')
+
+        expect(MagazineController.createHasIssueRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get all ›has-issue‹ relationships', async () => {
+        await request(app)
+            .get('/magazines/123/has-issue')
+
+        expect(MagazineController.getAllHasIssueRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/magazines/123/has-image/456')
@@ -83,14 +99,6 @@ describe('Magazines', () => {
             .delete('/magazines/123/has-prime-image/456')
 
         expect(MagazineController.deleteHasPrimeImageRelation)
-            .toHaveBeenCalledTimes(1)
-    })
-
-    test('Create ›has-issue‹ relationship', async () => {
-        await request(app)
-            .post('/magazines/123/has-issue/456')
-
-        expect(MagazineController.createHasIssueRelation)
             .toHaveBeenCalledTimes(1)
     })
 })
