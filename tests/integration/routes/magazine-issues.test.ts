@@ -45,4 +45,12 @@ describe('Magazine Issues', () => {
         expect(MagazineIssueController.createBelongsToMagazineRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›belongs-to-magazine‹ relationship', async () => {
+        await request(app)
+            .get('/magazine-issues/123/belongs-to-magazine')
+
+        expect(MagazineIssueController.getBelongsToMagazineRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

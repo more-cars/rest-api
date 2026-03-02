@@ -8,5 +8,6 @@ router.get('/magazine-issues/:id', MagazineIssueController.getById)
 router.get('/magazine-issues', MagazineIssueController.getAll)
 router.delete('/magazine-issues/:id', MagazineIssueController.delete)
 router.post('/magazine-issues/:magazineIssueId/belongs-to-magazine/:magazineId', MagazineIssueController.createBelongsToMagazineRelation)
+router.get('/magazine-issues/:magazineIssueId/belongs-to-magazine', MagazineIssueController.getBelongsToMagazineRelation)
 
 export default router
