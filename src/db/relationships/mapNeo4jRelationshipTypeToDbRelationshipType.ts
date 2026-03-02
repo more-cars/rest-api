@@ -11,7 +11,11 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
 ): RelationshipType {
     const mapping = new Map<Neo4jNodeType, Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>>([
         [Neo4jNodeType.Company, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+            [RelationshipDirection.REVERSE, new Map([
+                // Company - Reverse
+            ])],
             [RelationshipDirection.FORWARD, new Map([
+                // Company - Forward
                 [RelationshipTypeNeo4j.CompanyHasBrand, RelationshipType.CompanyHasBrand],
                 [RelationshipTypeNeo4j.CompanyHasImage, RelationshipType.CompanyHasImage],
                 [RelationshipTypeNeo4j.CompanyHasPrimeImage, RelationshipType.CompanyHasPrimeImage],
@@ -19,9 +23,11 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
         ])],
         [Neo4jNodeType.Brand, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
+                // Brand - Reverse
                 [RelationshipTypeNeo4j.BrandBelongsToCompany, RelationshipType.BrandBelongsToCompany],
             ])],
             [RelationshipDirection.FORWARD, new Map([
+                // Brand - Forward
                 [RelationshipTypeNeo4j.BrandHasCarModel, RelationshipType.BrandHasCarModel],
                 [RelationshipTypeNeo4j.BrandHasImage, RelationshipType.BrandHasImage],
                 [RelationshipTypeNeo4j.BrandHasPrimeImage, RelationshipType.BrandHasPrimeImage],
@@ -29,10 +35,12 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
         ])],
         [Neo4jNodeType.CarModel, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
+                // Car Model - Reverse
                 [RelationshipTypeNeo4j.CarModelBelongsToBrand, RelationshipType.CarModelBelongsToBrand],
                 [RelationshipTypeNeo4j.CarModelIsSuccessorOf, RelationshipType.CarModelIsSuccessorOf],
             ])],
             [RelationshipDirection.FORWARD, new Map([
+                // Car Model - Forward
                 [RelationshipTypeNeo4j.CarModelHasSuccessor, RelationshipType.CarModelHasSuccessor],
                 [RelationshipTypeNeo4j.CarModelHasVariant, RelationshipType.CarModelHasVariant],
                 [RelationshipTypeNeo4j.CarModelHasImage, RelationshipType.CarModelHasImage],
@@ -41,10 +49,12 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
         ])],
         [Neo4jNodeType.CarModelVariant, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
+                // Car Model Variant - Reverse
                 [RelationshipTypeNeo4j.CarModelVariantIsVariantOf, RelationshipType.CarModelVariantIsVariantOf],
                 [RelationshipTypeNeo4j.CarModelVariantIsFeaturedInRacingGame, RelationshipType.CarModelVariantIsFeaturedInRacingGame],
             ])],
             [RelationshipDirection.FORWARD, new Map([
+                // Car Model Variant - Forward
                 [RelationshipTypeNeo4j.CarModelVariantAchievedSessionResult, RelationshipType.CarModelVariantAchievedSessionResult],
                 [RelationshipTypeNeo4j.CarModelVariantAchievedLapTime, RelationshipType.CarModelVariantAchievedLapTime],
                 [RelationshipTypeNeo4j.CarModelVariantHasImage, RelationshipType.CarModelVariantHasImage],
@@ -53,9 +63,11 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
         ])],
         [Neo4jNodeType.RaceTrack, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
+                // Race Track - Reverse
                 [RelationshipTypeNeo4j.RaceTrackHostedRacingEvent, RelationshipType.RaceTrackHostedRacingEvent],
             ])],
             [RelationshipDirection.FORWARD, new Map([
+                // Race Track - Forward
                 [RelationshipTypeNeo4j.RaceTrackHasLayout, RelationshipType.RaceTrackHasLayout],
                 [RelationshipTypeNeo4j.RaceTrackHasImage, RelationshipType.RaceTrackHasImage],
                 [RelationshipTypeNeo4j.RaceTrackHasPrimeImage, RelationshipType.RaceTrackHasPrimeImage],
@@ -63,11 +75,13 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
         ])],
         [Neo4jNodeType.TrackLayout, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
+                // Track Layout - Reverse
                 [RelationshipTypeNeo4j.TrackLayoutBelongsToRaceTrack, RelationshipType.TrackLayoutBelongsToRaceTrack],
                 [RelationshipTypeNeo4j.TrackLayoutWasUsedByRacingEvent, RelationshipType.TrackLayoutWasUsedByRacingEvent],
                 [RelationshipTypeNeo4j.TrackLayoutIsFeaturedInRacingGame, RelationshipType.TrackLayoutIsFeaturedInRacingGame],
             ])],
             [RelationshipDirection.FORWARD, new Map([
+                // Track Layout - Forward
                 [RelationshipTypeNeo4j.TrackLayoutHasLapTime, RelationshipType.TrackLayoutHasLapTime],
                 [RelationshipTypeNeo4j.TrackLayoutHasImage, RelationshipType.TrackLayoutHasImage],
                 [RelationshipTypeNeo4j.TrackLayoutHasPrimeImage, RelationshipType.TrackLayoutHasPrimeImage],
@@ -75,9 +89,10 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
         ])],
         [Neo4jNodeType.RacingSeries, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
-                //
+                // Racing Series - Reverse
             ])],
             [RelationshipDirection.FORWARD, new Map([
+                // Racing Series - Forward
                 [RelationshipTypeNeo4j.RacingSeriesHasRacingEvent, RelationshipType.RacingSeriesHasRacingEvent],
                 [RelationshipTypeNeo4j.RacingSeriesHasImage, RelationshipType.RacingSeriesHasImage],
                 [RelationshipTypeNeo4j.RacingSeriesHasPrimeImage, RelationshipType.RacingSeriesHasPrimeImage],
@@ -85,11 +100,13 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
         ])],
         [Neo4jNodeType.RacingEvent, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
+                // Racing Event - Reverse
                 [RelationshipTypeNeo4j.RacingEventBelongsToRacingSeries, RelationshipType.RacingEventBelongsToRacingSeries],
                 [RelationshipTypeNeo4j.RacingEventFollowsEvent, RelationshipType.RacingEventFollowsEvent],
 
             ])],
             [RelationshipDirection.FORWARD, new Map([
+                // Racing Event - Forward
                 [RelationshipTypeNeo4j.RacingEventIsFollowedByEvent, RelationshipType.RacingEventIsFollowedByEvent],
                 [RelationshipTypeNeo4j.RacingEventTookPlaceAtRaceTrack, RelationshipType.RacingEventTookPlaceAtRaceTrack],
                 [RelationshipTypeNeo4j.RacingEventUsedTheTrackLayout, RelationshipType.RacingEventUsedTheTrackLayout],
@@ -100,9 +117,11 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
         ])],
         [Neo4jNodeType.RacingSession, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
+                // Racing Session - Reverse
                 [RelationshipTypeNeo4j.RacingSessionBelongsToRacingEvent, RelationshipType.RacingSessionBelongsToRacingEvent],
             ])],
             [RelationshipDirection.FORWARD, new Map([
+                // Racing Session - Forward
                 [RelationshipTypeNeo4j.RacingSessionHasSessionResult, RelationshipType.RacingSessionHasSessionResult],
                 [RelationshipTypeNeo4j.RacingSessionHasImage, RelationshipType.RacingSessionHasImage],
                 [RelationshipTypeNeo4j.RacingSessionHasPrimeImage, RelationshipType.RacingSessionHasPrimeImage],
@@ -110,10 +129,12 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
         ])],
         [Neo4jNodeType.SessionResult, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
+                // Session Result - Reverse
                 [RelationshipTypeNeo4j.SessionResultBelongsToRacingSession, RelationshipType.SessionResultBelongsToRacingSession],
                 [RelationshipTypeNeo4j.SessionResultAchievedWithCarModelVariant, RelationshipType.SessionResultAchievedWithCarModelVariant],
             ])],
             [RelationshipDirection.FORWARD, new Map([
+                // Session Result - Forward
                 [RelationshipTypeNeo4j.SessionResultHasLapTime, RelationshipType.SessionResultHasLapTime],
                 [RelationshipTypeNeo4j.SessionResultHasImage, RelationshipType.SessionResultHasImage],
                 [RelationshipTypeNeo4j.SessionResultHasPrimeImage, RelationshipType.SessionResultHasPrimeImage],
@@ -121,20 +142,24 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
         ])],
         [Neo4jNodeType.LapTime, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
+                // Lap Time - Reverse
                 [RelationshipTypeNeo4j.LapTimeBelongsToSessionResult, RelationshipType.LapTimeBelongsToSessionResult],
                 [RelationshipTypeNeo4j.LapTimeAchievedOnTrackLayout, RelationshipType.LapTimeAchievedOnTrackLayout],
                 [RelationshipTypeNeo4j.LapTimeAchievedWithCarModelVariant, RelationshipType.LapTimeAchievedWithCarModelVariant],
             ])],
             [RelationshipDirection.FORWARD, new Map([
+                // Lap Time - Forward
                 [RelationshipTypeNeo4j.LapTimeHasImage, RelationshipType.LapTimeHasImage],
                 [RelationshipTypeNeo4j.LapTimeHasPrimeImage, RelationshipType.LapTimeHasPrimeImage],
             ])],
         ])],
         [Neo4jNodeType.RacingGame, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
+                // Racing Game - Reverse
                 [RelationshipTypeNeo4j.RacingGameReleasedOnGamingPlatform, RelationshipType.RacingGameReleasedOnGamingPlatform],
             ])],
             [RelationshipDirection.FORWARD, new Map([
+                // Racing Game - Forward
                 [RelationshipTypeNeo4j.RacingGameFeaturesCarModelVariant, RelationshipType.RacingGameFeaturesCarModelVariant],
                 [RelationshipTypeNeo4j.RacingGameFeaturesTrackLayout, RelationshipType.RacingGameFeaturesTrackLayout],
                 [RelationshipTypeNeo4j.RacingGameHasImage, RelationshipType.RacingGameHasImage],
@@ -142,8 +167,11 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
             ])],
         ])],
         [Neo4jNodeType.GamingPlatform, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
-            [RelationshipDirection.REVERSE, new Map([])],
+            [RelationshipDirection.REVERSE, new Map([
+                // Gaming Platform - Reverse
+            ])],
             [RelationshipDirection.FORWARD, new Map([
+                // Gaming Platform - Forward
                 [RelationshipTypeNeo4j.GamingPlatformFeaturesRacingGame, RelationshipType.GamingPlatformFeaturesRacingGame],
                 [RelationshipTypeNeo4j.GamingPlatformHasImage, RelationshipType.GamingPlatformHasImage],
                 [RelationshipTypeNeo4j.GamingPlatformHasPrimeImage, RelationshipType.GamingPlatformHasPrimeImage],
@@ -161,11 +189,12 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
         ])],
         [Neo4jNodeType.Image, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
+                // Image - Reverse
                 [RelationshipTypeNeo4j.ImageBelongsToNode, RelationshipType.ImageBelongsToNode],
                 [RelationshipTypeNeo4j.ImageIsPrimeImageOfNode, RelationshipType.ImageIsPrimeImageOfNode],
             ])],
             [RelationshipDirection.FORWARD, new Map([
-                //
+                // Image - Forward
             ])],
         ])],
     ])
