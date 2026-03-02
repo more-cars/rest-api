@@ -85,4 +85,12 @@ describe('Magazines', () => {
         expect(MagazineController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-issue‹ relationship', async () => {
+        await request(app)
+            .post('/magazines/123/has-issue/456')
+
+        expect(MagazineController.createHasIssueRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

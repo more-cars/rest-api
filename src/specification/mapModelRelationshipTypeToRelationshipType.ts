@@ -66,6 +66,7 @@ export function mapModelRelationshipTypeToRelationshipType(relType: RelType): Re
         [RelType.GamingPlatformFeaturesRacingGame, RelationshipType.GamingPlatformFeaturesRacingGame],
         [RelType.GamingPlatformHasImage, RelationshipType.GamingPlatformHasImage],
         [RelType.GamingPlatformHasPrimeImage, RelationshipType.GamingPlatformHasPrimeImage],
+        [RelType.MagazineHasIssue, RelationshipType.MagazineHasIssue],
         [RelType.MagazineHasImage, RelationshipType.MagazineHasImage],
         [RelType.MagazineHasPrimeImage, RelationshipType.MagazineHasPrimeImage],
         [RelType.ImageBelongsToNode, RelationshipType.ImageBelongsToNode],

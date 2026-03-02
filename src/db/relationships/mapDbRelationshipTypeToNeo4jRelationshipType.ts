@@ -70,6 +70,7 @@ export function mapDbRelationshipTypeToNeo4jRelationshipType(
         [RelationshipType.GamingPlatformHasPrimeImage, RelationshipTypeNeo4j.GamingPlatformHasPrimeImage],
         [RelationshipType.ImageBelongsToNode, RelationshipTypeNeo4j.ImageBelongsToNode],
         [RelationshipType.ImageIsPrimeImageOfNode, RelationshipTypeNeo4j.ImageIsPrimeImageOfNode],
+        [RelationshipType.MagazineHasIssue, RelationshipTypeNeo4j.MagazineHasIssue],
         [RelationshipType.MagazineHasImage, RelationshipTypeNeo4j.MagazineHasImage],
         [RelationshipType.MagazineHasPrimeImage, RelationshipTypeNeo4j.MagazineHasPrimeImage],
         [RelationshipType.NodeHasImage, RelationshipTypeNeo4j.NodeHasImage],

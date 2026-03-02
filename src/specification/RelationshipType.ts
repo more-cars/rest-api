@@ -63,6 +63,7 @@ export enum RelationshipType {
     GamingPlatformFeaturesRacingGame = 'Gaming Platform Features Racing Game',
     GamingPlatformHasImage = 'Gaming Platform Has Image',
     GamingPlatformHasPrimeImage = 'Gaming Platform Has Prime Image',
+    MagazineHasIssue = 'Magazine Has Issue',
     MagazineHasImage = 'Magazine Has Image',
     MagazineHasPrimeImage = 'Magazine Has Prime Image',
     ImageBelongsToNode = 'Image Belongs To Node',

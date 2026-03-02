@@ -1,8 +1,6 @@
 export enum RelationshipTypeNeo4j {
     NodeHasImage = 'HAS_IMAGE',
     NodeHasPrimeImage = 'HAS_PRIME_IMAGE',
-    ImageBelongsToNode = 'HAS_IMAGE',
-    ImageIsPrimeImageOfNode = 'HAS_PRIME_IMAGE',
     CompanyHasBrand = 'HAS_BRAND',
     CompanyHasImage = 'HAS_IMAGE',
     CompanyHasPrimeImage = 'HAS_PRIME_IMAGE',
@@ -65,6 +63,9 @@ export enum RelationshipTypeNeo4j {
     GamingPlatformFeaturesRacingGame = 'FEATURES_RACING_GAME',
     GamingPlatformHasImage = 'HAS_IMAGE',
     GamingPlatformHasPrimeImage = 'HAS_PRIME_IMAGE',
+    MagazineHasIssue = 'HAS_ISSUE',
     MagazineHasImage = 'HAS_IMAGE',
     MagazineHasPrimeImage = 'HAS_PRIME_IMAGE',
+    ImageBelongsToNode = 'HAS_IMAGE',
+    ImageIsPrimeImageOfNode = 'HAS_PRIME_IMAGE',
 }

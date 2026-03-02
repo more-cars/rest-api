@@ -3,6 +3,11 @@ import {RelationshipType} from "../RelationshipType"
 import {NodeType} from "../NodeType"
 
 export const MagazineRelationshipSpecification: RelationshipTypeSpecification[] = [
+    [RelationshipType.MagazineHasIssue, {
+        startNodeType: NodeType.Magazine,
+        endNodeType: NodeType.MagazineIssue,
+        isReverseRelationship: false,
+    }],
     [RelationshipType.MagazineHasImage, {
         startNodeType: NodeType.Magazine,
         endNodeType: NodeType.Image,

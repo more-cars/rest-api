@@ -16,6 +16,7 @@ import {convertLapTimeModelNodeToControllerNode} from "../node-types/lap-times/c
 import {convertRacingGameModelNodeToControllerNode} from "../node-types/racing-games/convertRacingGameModelNodeToControllerNode"
 import {convertGamingPlatformModelNodeToControllerNode} from "../node-types/gaming-platforms/convertGamingPlatformModelNodeToControllerNode"
 import {convertMagazineModelNodeToControllerNode} from "../node-types/magazines/convertMagazineModelNodeToControllerNode"
+import {convertMagazineIssueModelNodeToControllerNode} from "../node-types/magazine-issues/convertMagazineIssueModelNodeToControllerNode"
 import {convertImageModelNodeToControllerNode} from "../node-types/images/convertImageModelNodeToControllerNode"
 import type {CompanyNode} from "../../models/node-types/companies/types/CompanyNode"
 import type {BrandNode} from "../../models/node-types/brands/types/BrandNode"
@@ -31,6 +32,7 @@ import type {LapTimeNode} from "../../models/node-types/lap-times/types/LapTimeN
 import type {RacingGameNode} from "../../models/node-types/racing-games/types/RacingGameNode"
 import type {GamingPlatformNode} from "../../models/node-types/gaming-platforms/types/GamingPlatformNode"
 import type {MagazineNode} from "../../models/node-types/magazines/types/MagazineNode"
+import type {MagazineIssueNode} from "../../models/node-types/magazine-issues/types/MagazineIssueNode"
 import type {ImageNode} from "../../models/node-types/images/types/ImageNode"
 
 export function convertModelNodeToControllerNode(modelNode: ModelNode): ControllerNode {
@@ -63,6 +65,8 @@ export function convertModelNodeToControllerNode(modelNode: ModelNode): Controll
             return convertGamingPlatformModelNodeToControllerNode(modelNode as GamingPlatformNode)
         case ModelNodeType.Magazine:
             return convertMagazineModelNodeToControllerNode(modelNode as MagazineNode)
+        case ModelNodeType.MagazineIssue:
+            return convertMagazineIssueModelNodeToControllerNode(modelNode as MagazineIssueNode)
         case ModelNodeType.Image:
             return convertImageModelNodeToControllerNode(modelNode as ImageNode)
         default:

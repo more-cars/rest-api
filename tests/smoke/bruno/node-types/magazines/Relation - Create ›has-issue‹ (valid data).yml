@@ -1,0 +1,58 @@
+info:
+  name: Create ›has-issue‹ relation (valid data)
+  type: http
+  tags:
+    - create
+    - relation
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/magazines/{{validMagazineId}}/has-issue/{{validMagazineIssueId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data
+      operator: isJson
+    - expression: res.body.data.relationship_id
+      operator: gte
+      value: "12000000"
+    - expression: res.body.data.relationship_name
+      operator: eq
+      value: "has-issue"
+    - expression: res.body.data.start_node
+      operator: isJson
+    - expression: res.body.data.start_node.node_type
+      operator: eq
+      value: "magazines"
+    - expression: res.body.data.start_node.data.id
+      operator: eq
+      value: "{{validMagazineId}}"
+    - expression: res.body.data.partner_node
+      operator: isJson
+    - expression: res.body.data.partner_node.node_type
+      operator: eq
+      value: "magazine-issues"
+    - expression: res.body.data.partner_node.data.id
+      operator: eq
+      value: "{{validMagazineIssueId}}"
+    - expression: res.body.data.created_at
+      operator: isString
+    - expression: res.body.data.created_at
+      operator: isNotEmpty
+    - expression: res.body.data.updated_at
+      operator: isString
+    - expression: res.body.data.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const Magazines = require('./lib/node-types/Magazines.js')
+        const MagazineIssues = require('./lib/node-types/MagazineIssues.js')
+        await Magazines.create()
+        await MagazineIssues.create()

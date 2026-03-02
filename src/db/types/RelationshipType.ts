@@ -1,8 +1,6 @@
 export enum RelationshipType {
     NodeHasImage = 'NODE_HAS_IMAGE',
     NodeHasPrimeImage = 'NODE_HAS_PRIME_IMAGE',
-    ImageBelongsToNode = 'IMAGE_BELONGS_TO_NODE',
-    ImageIsPrimeImageOfNode = 'IMAGE_IS_PRIME_IMAGE_OF_NODE',
     CompanyHasBrand = 'COMPANY_HAS_BRAND',
     CompanyHasImage = 'COMPANY_HAS_IMAGE',
     CompanyHasPrimeImage = 'COMPANY_HAS_PRIME_IMAGE',
@@ -65,6 +63,9 @@ export enum RelationshipType {
     GamingPlatformFeaturesRacingGame = 'GAMING_PLATFORM_FEATURES_RACING_GAME',
     GamingPlatformHasImage = 'GAMING_PLATFORM_HAS_IMAGE',
     GamingPlatformHasPrimeImage = 'GAMING_PLATFORM_HAS_PRIME_IMAGE',
+    MagazineHasIssue = 'MAGAZINE_HAS_ISSUE',
     MagazineHasImage = 'MAGAZINE_HAS_IMAGE',
     MagazineHasPrimeImage = 'MAGAZINE_HAS_PRIME_IMAGE',
+    ImageBelongsToNode = 'IMAGE_BELONGS_TO_NODE',
+    ImageIsPrimeImageOfNode = 'IMAGE_IS_PRIME_IMAGE_OF_NODE',
 }

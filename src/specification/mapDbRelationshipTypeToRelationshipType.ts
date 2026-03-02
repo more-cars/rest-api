@@ -4,6 +4,8 @@ import {RelationshipTypeMappingNotFoundError} from "./RelationshipTypeMappingNot
 
 export function mapDbRelationshipTypeToRelationshipType(dbRelationshipType: DbRelationshipType): RelationshipType {
     const mapping = new Map<DbRelationshipType, RelationshipType>([
+        [DbRelationshipType.NodeHasImage, RelationshipType.NodeHasImage],
+        [DbRelationshipType.NodeHasPrimeImage, RelationshipType.NodeHasPrimeImage],
         [DbRelationshipType.CompanyHasBrand, RelationshipType.CompanyHasBrand],
         [DbRelationshipType.CompanyHasImage, RelationshipType.CompanyHasImage],
         [DbRelationshipType.CompanyHasPrimeImage, RelationshipType.CompanyHasPrimeImage],
@@ -66,12 +68,11 @@ export function mapDbRelationshipTypeToRelationshipType(dbRelationshipType: DbRe
         [DbRelationshipType.GamingPlatformFeaturesRacingGame, RelationshipType.GamingPlatformFeaturesRacingGame],
         [DbRelationshipType.GamingPlatformHasImage, RelationshipType.GamingPlatformHasImage],
         [DbRelationshipType.GamingPlatformHasPrimeImage, RelationshipType.GamingPlatformHasPrimeImage],
+        [DbRelationshipType.MagazineHasIssue, RelationshipType.MagazineHasIssue],
         [DbRelationshipType.MagazineHasImage, RelationshipType.MagazineHasImage],
+        [DbRelationshipType.MagazineHasPrimeImage, RelationshipType.MagazineHasPrimeImage],
         [DbRelationshipType.ImageBelongsToNode, RelationshipType.ImageBelongsToNode],
         [DbRelationshipType.ImageIsPrimeImageOfNode, RelationshipType.ImageIsPrimeImageOfNode],
-        [DbRelationshipType.MagazineHasPrimeImage, RelationshipType.MagazineHasPrimeImage],
-        [DbRelationshipType.NodeHasImage, RelationshipType.NodeHasImage],
-        [DbRelationshipType.NodeHasPrimeImage, RelationshipType.NodeHasPrimeImage],
     ])
 
     const relationshipType = mapping.get(dbRelationshipType)

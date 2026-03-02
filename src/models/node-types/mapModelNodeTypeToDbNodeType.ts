@@ -4,7 +4,6 @@ import {DbNodeType} from "../../db/types/DbNodeType"
 export function mapModelNodeTypeToDbNodeType(modelNodeType: ModelNodeType) {
     const mapping = new Map<ModelNodeType, DbNodeType>([
         [ModelNodeType.Node, DbNodeType.Node],
-        [ModelNodeType.Image, DbNodeType.Image],
         [ModelNodeType.Company, DbNodeType.Company],
         [ModelNodeType.Brand, DbNodeType.Brand],
         [ModelNodeType.CarModel, DbNodeType.CarModel],
@@ -18,6 +17,8 @@ export function mapModelNodeTypeToDbNodeType(modelNodeType: ModelNodeType) {
         [ModelNodeType.LapTime, DbNodeType.LapTime],
         [ModelNodeType.RacingGame, DbNodeType.RacingGame],
         [ModelNodeType.GamingPlatform, DbNodeType.GamingPlatform],
+        [ModelNodeType.Magazine, DbNodeType.Magazine],
+        [ModelNodeType.Image, DbNodeType.Image],
     ])
 
     const dbNodeType = mapping.get(modelNodeType)
