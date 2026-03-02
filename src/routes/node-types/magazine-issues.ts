@@ -12,5 +12,6 @@ router.get('/magazine-issues/:magazineIssueId/belongs-to-magazine', MagazineIssu
 router.delete('/magazine-issues/:magazineIssueId/belongs-to-magazine/:magazineId', MagazineIssueController.deleteBelongsToMagazineRelation)
 router.post('/magazine-issues/:magazineIssueId/has-image/:imageId', MagazineIssueController.createHasImageRelation)
 router.get('/magazine-issues/:magazineIssueId/has-image', MagazineIssueController.getAllHasImageRelations)
+router.delete('/magazine-issues/:magazineIssueId/has-image/:imageId', MagazineIssueController.deleteHasImageRelation)
 
 export default router
