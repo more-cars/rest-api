@@ -1,4 +1,4 @@
-import {titleize} from "inflection"
+import {pluralize, titleize} from "inflection"
 import {kebabCase, pascalCase, snakeCase} from "change-case"
 import type {NodeType} from "../../../src/specification/NodeType"
 import type {ControllerNodeType} from "../../../src/controllers/types/ControllerNodeType"
@@ -11,7 +11,7 @@ export function convertStringToNodeType(rawNodeType: string) {
 }
 
 export function convertStringToControllerNodeType(rawNodeType: string) {
-    return kebabCase(rawNodeType) as ControllerNodeType
+    return kebabCase(pluralize(rawNodeType)) as ControllerNodeType
 }
 
 export function convertStringToModelNodeType(rawNodeType: string) {
