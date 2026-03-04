@@ -5,7 +5,7 @@ import {ResponseManager} from "../../lib/ResponseManager"
 Then('the following keys in the response object should be of value null',
     (dataTable: DataTable) => {
         const response = ResponseManager.getPreviousResponse()
-        const data = response.body.data
+        const data = response.body.attributes
 
         const rows = dataTable.hashes()
         rows.forEach((row) => {

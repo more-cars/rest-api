@@ -11,7 +11,7 @@ Then('the response should contain the following keys',
         }
 
         const response = ResponseManager.getPreviousResponse()
-        const data = response.body.data
+        const data = response.body.attributes
 
         keys.forEach((key) => {
             assert(key in data, `"${key}" not found in the response`)

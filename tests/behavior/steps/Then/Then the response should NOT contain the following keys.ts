@@ -5,7 +5,7 @@ import {ResponseManager} from "../../lib/ResponseManager"
 Then('the response should NOT contain the following keys',
     (dataTable: DataTable) => {
         const response = ResponseManager.getPreviousResponse()
-        const data = response.body.data
+        const data = response.body.attributes
 
         const rows = dataTable.hashes()
         rows.forEach((row) => {
