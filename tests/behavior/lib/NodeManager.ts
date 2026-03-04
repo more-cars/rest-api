@@ -25,11 +25,8 @@ export const NodeManager = {
         return node
     },
 
-    cacheNode(nodeType: string, label: string, data: any) {
-        nodeCache.set(label, {
-            node_type: convertStringToControllerNodeType(nodeType),
-            fields: data,
-        })
+    cacheNode(node: ControllerNode, label: string) {
+        nodeCache.set(label, node)
     },
 
     getNodeByLabel(label: string) {

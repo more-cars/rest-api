@@ -1,9 +1,10 @@
 import {Then} from "@cucumber/cucumber"
 import assert from "assert"
+import {ResponseManager} from "../../lib/ResponseManager"
 import {getResponseNodeSchema} from "../../../_toolbox/schemas/response/getResponseNodeSchema"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
-import {ResponseManager} from "../../lib/ResponseManager"
+import {validateJson} from "../../../_toolbox/validateJson"
 
 Then('the response should return a collection of {int} {string}s',
     (amount: number, nodeType: string) => {
@@ -14,7 +15,6 @@ Then('the response should return a collection of {int} {string}s',
         assert.equal(data.length, amount)
 
         data.forEach((item: any) => {
-            // TODO temporarily disabled, because a collection has a different schema than a single node
-            // assert.ok(validateJson(item, schema))
+            assert.ok(validateJson(item, schema))
         })
     })

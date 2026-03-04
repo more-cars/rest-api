@@ -2,6 +2,7 @@ import {DataTable, When} from "@cucumber/cucumber"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {performApiRequest} from "../../lib/performApiRequest"
 import {NodeManager} from "../../lib/NodeManager"
+import {convertNodeResponseToNode} from "../../lib/convertNodeResponseToNode"
 
 When('the user (tries to )create(s) a {string} {string} with the following data',
     async (nodeType: string, label: string, dataTable: DataTable) => {
@@ -26,5 +27,5 @@ When('the user (tries to )create(s) a {string} {string} with the following data'
         const path = `/${nodePath}`
 
         const response = await performApiRequest(path, 'POST', data)
-        NodeManager.cacheNode(nodeType, label, response.body.data)
+        NodeManager.cacheNode(convertNodeResponseToNode(response.body), label)
     })

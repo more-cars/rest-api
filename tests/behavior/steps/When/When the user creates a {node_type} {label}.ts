@@ -4,6 +4,7 @@ import {convertStringToNodeType} from "../../lib/convertStringToNodeType"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {performApiRequest} from "../../lib/performApiRequest"
 import {NodeManager} from "../../lib/NodeManager"
+import {convertNodeResponseToNode} from "../../lib/convertNodeResponseToNode"
 
 When('the user creates a {string} {string}',
     async (nodeType: string, label: string) => {
@@ -12,5 +13,5 @@ When('the user creates a {string} {string}',
         const path = `/${nodePath}`
 
         const response = await performApiRequest(path, 'POST', data)
-        NodeManager.cacheNode(nodeType, label, response.body.data)
+        NodeManager.cacheNode(convertNodeResponseToNode(response.body), label)
     })

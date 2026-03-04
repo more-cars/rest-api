@@ -7,10 +7,10 @@ Then('collection {string} should not contain items of collection {string}',
         const collectionOne = NodeManager.getNodeCollectionByLabel(collectionOneLabel)
         const collectionTwo = NodeManager.getNodeCollectionByLabel(collectionTwoLabel)
 
-        const collectionOneIds = collectionOne.map((node: any) => node.data.id)
-        const collectionTwoIds = collectionTwo.map((node: any) => node.data.id)
+        const collectionOneIds = collectionOne.map((node) => node.fields.id)
+        const collectionTwoIds = collectionTwo.map((node) => node.fields.id)
 
-        const areBothCollectionsDistinct = collectionOneIds.every((id: number) => !collectionTwoIds.includes(id))
+        const areBothCollectionsDistinct = collectionOneIds.every((id) => !collectionTwoIds.includes(id))
 
         assert.ok(areBothCollectionsDistinct)
     })

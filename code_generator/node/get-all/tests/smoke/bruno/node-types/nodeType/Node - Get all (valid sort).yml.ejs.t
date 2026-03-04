@@ -22,8 +22,8 @@ runtime:
       value: "200"
     - expression: res.body.data
       operator: isArray
-    - expression: res.body.data[0].data
+    - expression: res.body.data[0].attributes
       operator: isJson
-    - expression: res.body.data[0].data.id
+    - expression: res.body.data[0].id
       operator: gte
       value: "12000000"

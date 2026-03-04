@@ -7,5 +7,5 @@ Then('the response should contain a node with {string} {string} at position {int
         const response = ResponseManager.getPreviousResponse()
         const data = response.body.data
 
-        assert.equal(data[position - 1].data[property], propertyValue)
+        assert.equal(data[position - 1].attributes[property], propertyValue)
     })
