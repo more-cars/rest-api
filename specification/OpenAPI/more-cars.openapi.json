@@ -18308,6 +18308,17 @@
           }
         }
       },
+      "MagazineIssueHasImageCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MagazineIssueHasImageResponse"
+            }
+          }
+        }
+      },
       "MagazineIssueHasPrimeImage": {
         "type": "object",
         "required": [],
