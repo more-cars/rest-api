@@ -11,7 +11,7 @@ export function convertStringToNodeType(rawNodeType: string) {
 }
 
 export function convertStringToControllerNodeType(rawNodeType: string) {
-    return kebabCase(pluralize(rawNodeType)) as ControllerNodeType
+    return kebabCase(pluralize(rawNodeType.toLowerCase())) as ControllerNodeType
 }
 
 export function convertStringToModelNodeType(rawNodeType: string) {
