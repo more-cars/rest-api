@@ -1,10 +1,11 @@
 export const RaceTrackSchema = {
     type: "object",
     properties: {
-        data: {
+        type: {type: ["string"]},
+        id: {type: ["integer"]},
+        attributes: {
             type: "object",
             properties: {
-                id: {type: ["integer"]},
                 name: {type: ["string"]},
                 opened: {type: ["number", "null"]},
                 closed: {type: ["number", "null"]},
@@ -15,12 +16,17 @@ export const RaceTrackSchema = {
                 updated_at: {type: ["string"]},
             },
             required: [
-                "id",
                 "name",
                 "created_at",
                 "updated_at",
             ],
+            additionalProperties: false,
         },
     },
+    required: [
+        "type",
+        "id",
+        "attributes",
+    ],
     additionalProperties: false,
 }

@@ -25,8 +25,8 @@ exports.create = async function (prefix = '') {
         position: 1,
         driver_name: 'Dummy Session Result',
     })
-    const sessionResult = response.data
-    bru.setEnvVar('valid' + prefix + 'SessionResultId', sessionResult.id)
 
-    return sessionResult
+    bru.setEnvVar('valid' + prefix + 'SessionResultId', response.id)
+
+    return response.attributes
 }

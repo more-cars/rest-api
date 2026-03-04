@@ -1,6 +1,5 @@
 import type {ControllerNode} from "../types/ControllerNode"
 import type {NodeCollectionResponse} from "../types/NodeCollectionResponse"
-import {marshalSingleNode} from "./marshalSingleNode"
 
 export function marshalNodeCollection(nodes: ControllerNode[]
 ) {
@@ -9,7 +8,9 @@ export function marshalNodeCollection(nodes: ControllerNode[]
     }
 
     nodes.forEach((node) => {
-        response.data.push(marshalSingleNode(node.fields))
+        response.data.push({
+            data: node.fields
+        })
     })
 
     return response

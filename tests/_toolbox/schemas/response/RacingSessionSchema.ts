@@ -1,10 +1,11 @@
 export const RacingSessionSchema = {
     type: "object",
     properties: {
-        data: {
+        type: {type: ["string"]},
+        id: {type: ["integer"]},
+        attributes: {
             type: "object",
             properties: {
-                id: {type: ["integer"]},
                 name: {type: ["string"]},
                 start_date: {type: ["string", "null"]},
                 start_time: {type: ["string", "null"]},
@@ -16,12 +17,17 @@ export const RacingSessionSchema = {
                 updated_at: {type: ["string"]},
             },
             required: [
-                "id",
                 "name",
                 "created_at",
                 "updated_at",
             ],
+            additionalProperties: false,
         },
     },
+    required: [
+        "type",
+        "id",
+        "attributes",
+    ],
     additionalProperties: false,
 }

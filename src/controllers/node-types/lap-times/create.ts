@@ -23,7 +23,7 @@ export async function create(req: express.Request, res: express.Response) {
     try {
         const modelNode = await LapTime.create(sanitizedData)
         const node = convertLapTimeModelNodeToControllerNode(modelNode)
-        const marshalledData = marshalSingleNode(node.fields)
+        const marshalledData = marshalSingleNode(node)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

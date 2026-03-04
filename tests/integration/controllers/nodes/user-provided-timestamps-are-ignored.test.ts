@@ -23,9 +23,9 @@ describe('The user injects the timestamp fields illegally', () => {
             .post('/' + getUrlFragmentForNodeType(nodeType))
             .send(manipulatedInput)
 
-        expect(response.body.data).toHaveProperty('created_at')
-        expect(response.body.data).not.toHaveProperty('created_at', "blubb")
-        expect(response.body.data).toHaveProperty('updated_at')
-        expect(response.body.data).not.toHaveProperty('updated_at', "blobb")
+        expect(response.body.attributes).toHaveProperty('created_at')
+        expect(response.body.attributes).not.toHaveProperty('created_at', "blubb")
+        expect(response.body.attributes).toHaveProperty('updated_at')
+        expect(response.body.attributes).not.toHaveProperty('updated_at', "blobb")
     })
 })

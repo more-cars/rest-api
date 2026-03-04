@@ -13,7 +13,7 @@ export async function getById(req: express.Request, res: express.Response) {
     try {
         const modelNode = await RacingSeries.findById(nodeId)
         const node = convertRacingSeriesModelNodeToControllerNode(modelNode)
-        const marshalledData = marshalSingleNode(node.fields)
+        const marshalledData = marshalSingleNode(node)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

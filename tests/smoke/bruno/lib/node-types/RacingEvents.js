@@ -36,8 +36,8 @@ exports.create = async function (prefix = '') {
     const response = await post("/racing-events", {
         name: 'Dummy Racing Event',
     })
-    const racingEvent = response.data
-    bru.setEnvVar('valid' + prefix + 'RacingEventId', racingEvent.id)
 
-    return racingEvent
+    bru.setEnvVar('valid' + prefix + 'RacingEventId', response.id)
+
+    return response.attributes
 }

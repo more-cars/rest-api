@@ -24,7 +24,7 @@ export async function create(req: express.Request, res: express.Response) {
     try {
         const modelNode = await RacingEvent.create(sanitizedData)
         const node = convertRacingEventModelNodeToControllerNode(modelNode)
-        const marshalledData = marshalSingleNode(node.fields)
+        const marshalledData = marshalSingleNode(node)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

@@ -1,10 +1,11 @@
 export const TrackLayoutSchema = {
     type: "object",
     properties: {
-        data: {
+        type: {type: ["string"]},
+        id: {type: ["integer"]},
+        attributes: {
             type: "object",
             properties: {
-                id: {type: ["integer"]},
                 name: {type: ["string"]},
                 year_from: {type: ["number", "null"]},
                 year_to: {type: ["number", "null"]},
@@ -18,12 +19,17 @@ export const TrackLayoutSchema = {
                 updated_at: {type: ["string"]},
             },
             required: [
-                "id",
                 "name",
                 "created_at",
                 "updated_at",
             ],
+            additionalProperties: false,
         },
     },
+    required: [
+        "type",
+        "id",
+        "attributes",
+    ],
     additionalProperties: false,
 }

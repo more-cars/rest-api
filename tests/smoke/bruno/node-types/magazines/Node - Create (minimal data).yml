@@ -23,6 +23,6 @@ runtime:
       value: "201"
     - expression: res.body
       operator: isJson
-    - expression: res.body.data.id
+    - expression: res.body.id
       operator: gte
       value: "12000000"

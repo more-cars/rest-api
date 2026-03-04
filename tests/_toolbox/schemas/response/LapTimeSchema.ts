@@ -1,10 +1,11 @@
 export const LapTimeSchema = {
     type: "object",
     properties: {
-        data: {
+        type: {type: ["string"]},
+        id: {type: ["integer"]},
+        attributes: {
             type: "object",
             properties: {
-                id: {type: ["integer"]},
                 time: {type: ["string"]},
                 driver_name: {type: ["string"]},
                 date: {type: ["string", "null"]},
@@ -12,13 +13,18 @@ export const LapTimeSchema = {
                 updated_at: {type: ["string"]},
             },
             required: [
-                "id",
                 "time",
                 "driver_name",
                 "created_at",
                 "updated_at",
             ],
+            additionalProperties: false,
         },
     },
+    required: [
+        "type",
+        "id",
+        "attributes",
+    ],
     additionalProperties: false,
 }

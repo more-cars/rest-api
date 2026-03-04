@@ -28,8 +28,8 @@ exports.create = async function (prefix = '') {
     const response = await post("/track-layouts", {
         name: 'Dummy Track Layout',
     })
-    const trackLayout = response.data
-    bru.setEnvVar('valid' + prefix + 'TrackLayoutId', trackLayout.id)
 
-    return trackLayout
+    bru.setEnvVar('valid' + prefix + 'TrackLayoutId', response.id)
+
+    return response.attributes
 }

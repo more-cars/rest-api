@@ -25,8 +25,8 @@ exports.create = async function (prefix = '') {
         time: 'Dummy Lap Time',
         driver_name: 'Dummy Lap Time',
     })
-    const lapTime = response.data
-    bru.setEnvVar('valid' + prefix + 'LapTimeId', lapTime.id)
 
-    return lapTime
+    bru.setEnvVar('valid' + prefix + 'LapTimeId', response.id)
+
+    return response.attributes
 }

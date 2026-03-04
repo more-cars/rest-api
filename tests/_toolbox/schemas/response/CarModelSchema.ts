@@ -1,10 +1,11 @@
 export const CarModelSchema = {
     type: "object",
     properties: {
-        data: {
+        type: {type: ["string"]},
+        id: {type: ["integer"]},
+        attributes: {
             type: "object",
             properties: {
-                id: {type: ["integer"]},
                 name: {type: ["string"]},
                 built_from: {type: ["integer", "null"]},
                 built_to: {type: ["integer", "null"]},
@@ -15,12 +16,17 @@ export const CarModelSchema = {
                 updated_at: {type: ["string"]},
             },
             required: [
-                "id",
                 "name",
                 "created_at",
                 "updated_at",
             ],
+            additionalProperties: false,
         },
     },
+    required: [
+        "type",
+        "id",
+        "attributes",
+    ],
     additionalProperties: false,
 }

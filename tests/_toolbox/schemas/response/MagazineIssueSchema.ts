@@ -1,10 +1,11 @@
 export const MagazineIssueSchema = {
     type: "object",
     properties: {
-        data: {
+        type: {type: ["string"]},
+        id: {type: ["integer"]},
+        attributes: {
             type: "object",
             properties: {
-                id: {type: ["integer"]},
                 title: {type: ["string"]},
                 consecutive_number: {type: ["number", "null"]},
                 issue_number: {type: ["number", "null"]},
@@ -17,7 +18,6 @@ export const MagazineIssueSchema = {
                 updated_at: {type: ["string"]},
             },
             required: [
-                "id",
                 "title",
                 "created_at",
                 "updated_at",
@@ -26,7 +26,9 @@ export const MagazineIssueSchema = {
         },
     },
     required: [
-        "data",
+        "type",
+        "id",
+        "attributes",
     ],
     additionalProperties: false,
 }

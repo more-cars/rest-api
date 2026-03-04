@@ -25,7 +25,7 @@ runtime:
       value: "201"
     - expression: res.body
       operator: isJson
-    - expression: res.body.data.id
+    - expression: res.body.id
       operator: gte
       value: "12000000"
   scripts:
@@ -33,5 +33,5 @@ runtime:
       code: |-
         test("both timestamps should be identical", function () {
           const data = res.getBody()
-          expect(data.data.created_at).to.eql(data.data.updated_at)
+          expect(data.attributes.created_at).to.eql(data.attributes.updated_at)
         })

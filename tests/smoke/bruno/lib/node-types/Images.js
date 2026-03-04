@@ -13,8 +13,8 @@ exports.create = async function (prefix = '') {
         image_provider: "picci",
         external_id: "123456",
     })
-    const image = response.data
-    bru.setEnvVar('valid' + prefix + 'ImageId', image.id)
 
-    return image
+    bru.setEnvVar('valid' + prefix + 'ImageId', response.id)
+
+    return response.attributes
 }

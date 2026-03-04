@@ -1,11 +1,11 @@
 export const ImageSchema = {
     type: "object",
     properties: {
-        data: {
+        type: {type: ["string"]},
+        id: {type: ["integer"]},
+        attributes: {
             type: "object",
             properties: {
-                // system data
-                id: {type: ["integer"]},
                 created_at: {type: ["string"]},
                 updated_at: {type: ["string"]},
 
@@ -29,7 +29,6 @@ export const ImageSchema = {
                 image_url_xs: {type: ["string", "null"]},
             },
             required: [
-                "id",
                 "created_at",
                 "updated_at",
                 "image_provider",
@@ -40,7 +39,13 @@ export const ImageSchema = {
                 "source",
                 "image_url_original",
             ],
+            additionalProperties: false,
         },
     },
+    required: [
+        "type",
+        "id",
+        "attributes",
+    ],
     additionalProperties: false,
 }

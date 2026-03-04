@@ -24,9 +24,9 @@ runtime:
     - expression: res.status
       operator: eq
       value: "201"
-    - expression: res.body.data.created_at
+    - expression: res.body.attributes.created_at
       operator: neq
       value: nope
-    - expression: res.body.data.updated_at
+    - expression: res.body.attributes.updated_at
       operator: neq
       value: nonono

@@ -1,10 +1,11 @@
 export const RacingSeriesSchema = {
     type: "object",
     properties: {
-        data: {
+        type: {type: ["string"]},
+        id: {type: ["integer"]},
+        attributes: {
             type: "object",
             properties: {
-                id: {type: ["integer"]},
                 name: {type: ["string"]},
                 short_name: {type: ["string", "null"]},
                 founded: {type: ["number", "null"]},
@@ -15,12 +16,17 @@ export const RacingSeriesSchema = {
                 updated_at: {type: ["string"]},
             },
             required: [
-                "id",
                 "name",
                 "created_at",
                 "updated_at",
             ],
+            additionalProperties: false,
         },
     },
+    required: [
+        "type",
+        "id",
+        "attributes",
+    ],
     additionalProperties: false,
 }

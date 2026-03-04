@@ -20,16 +20,16 @@ runtime:
       value: "200"
     - expression: res.body
       operator: isJson
-    - expression: res.body.data.id
+    - expression: res.body.id
       operator: eq
       value: "{{valid<%= h.changeCase.pascal(nodeType) %>Id}}"
-    - expression: res.body.data.created_at
+    - expression: res.body.attributes.created_at
       operator: isString
-    - expression: res.body.data.created_at
+    - expression: res.body.attributes.created_at
       operator: isNotEmpty
-    - expression: res.body.data.updated_at
+    - expression: res.body.attributes.updated_at
       operator: isString
-    - expression: res.body.data.updated_at
+    - expression: res.body.attributes.updated_at
       operator: isNotEmpty
   scripts:
     - type: before-request

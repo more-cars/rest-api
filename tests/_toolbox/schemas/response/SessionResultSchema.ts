@@ -1,10 +1,11 @@
 export const SessionResultSchema = {
     type: "object",
     properties: {
-        data: {
+        type: {type: ["string"]},
+        id: {type: ["integer"]},
+        attributes: {
             type: "object",
             properties: {
-                id: {type: ["integer"]},
                 position: {type: ["number"]},
                 race_number: {type: ["string", "null"]},
                 driver_name: {type: ["string"]},
@@ -17,13 +18,18 @@ export const SessionResultSchema = {
                 updated_at: {type: ["string"]},
             },
             required: [
-                "id",
                 "position",
                 "driver_name",
                 "created_at",
                 "updated_at",
             ],
+            additionalProperties: false,
         },
     },
+    required: [
+        "type",
+        "id",
+        "attributes",
+    ],
     additionalProperties: false,
 }
