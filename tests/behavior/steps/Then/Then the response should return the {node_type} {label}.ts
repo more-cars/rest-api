@@ -18,7 +18,11 @@ Then('the response should return the {string} {string}',
         assert.ok(validateJson(actualNode, schema))
 
         for (const expectedProperty in expectedNode.fields) {
-            // @ts-expect-error TS7053
-            assert.equal(actualNode[expectedProperty], expectedNode[expectedProperty])
+            if (expectedProperty === 'id') {
+                assert.equal(actualNode.id, expectedNode.fields.id)
+            } else {
+                // @ts-expect-error TS7053
+                assert.equal(actualNode.attributes[expectedProperty], expectedNode.fields[expectedProperty])
+            }
         }
     })

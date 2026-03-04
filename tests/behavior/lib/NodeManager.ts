@@ -17,7 +17,7 @@ export const NodeManager = {
 
         const node: ControllerNode = {
             node_type: convertStringToControllerNodeType(nodeType),
-            fields: response.body.data,
+            fields: Object.assign({}, response.body.attributes, {id: response.body.id}),
         }
 
         nodeCache.set(label, node)
