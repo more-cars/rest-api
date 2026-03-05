@@ -27,5 +27,7 @@ When('the user (tries to )create(s) a {string} {string} with the following data'
         const path = `/${nodePath}`
 
         const response = await performApiRequest(path, 'POST', data)
-        NodeManager.cacheNode(convertNodeResponseToNode(response.body), label)
+        if (response.status_code < 400) {
+            NodeManager.cacheNode(convertNodeResponseToNode(response.body), label)
+        }
     })

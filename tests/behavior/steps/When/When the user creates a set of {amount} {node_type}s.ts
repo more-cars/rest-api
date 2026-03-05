@@ -20,7 +20,7 @@ When('the user creates a set {string} of {int} {string}s',
             nodeResponses.push(response)
         }
 
-        const nodeCollection = nodeResponses.map(response => convertNodeResponseToNode(response))
+        const nodeCollection = nodeResponses.map(response => convertNodeResponseToNode(response.body))
 
         NodeManager.cacheNodeCollection(nodeCollection, label)
     })
