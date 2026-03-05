@@ -18,6 +18,7 @@ export enum RelationshipTypeNeo4j {
     CarModelVariantIsVariantOf = 'HAS_VARIANT',
     CarModelVariantAchievedSessionResult = 'ACHIEVED_SESSION_RESULT',
     CarModelVariantAchievedLapTime = 'ACHIEVED_LAP_TIME',
+    CarModelVariantIsPresentedInMagazineIssue = 'PRESENTS_CAR_MODEL_VARIANT',
     CarModelVariantIsFeaturedInRacingGame = 'FEATURES_CAR_MODEL_VARIANT',
     CarModelVariantHasImage = 'HAS_IMAGE',
     CarModelVariantHasPrimeImage = 'HAS_PRIME_IMAGE',

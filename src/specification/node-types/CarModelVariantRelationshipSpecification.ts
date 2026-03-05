@@ -18,6 +18,11 @@ export const CarModelVariantRelationshipSpecification: RelationshipTypeSpecifica
         endNodeType: NodeType.LapTime,
         isReverseRelationship: false,
     }],
+    [RelationshipType.CarModelVariantIsPresentedInMagazineIssue, {
+        startNodeType: NodeType.CarModelVariant,
+        endNodeType: NodeType.MagazineIssue,
+        isReverseRelationship: true,
+    }],
     [RelationshipType.CarModelVariantIsFeaturedInRacingGame, {
         startNodeType: NodeType.CarModelVariant,
         endNodeType: NodeType.RacingGame,
@@ -33,4 +38,5 @@ export const CarModelVariantRelationshipSpecification: RelationshipTypeSpecifica
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    //
 ]

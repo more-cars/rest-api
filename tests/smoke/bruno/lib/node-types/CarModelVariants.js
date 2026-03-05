@@ -12,6 +12,10 @@ exports.createAchievedLapTimeRelationship = async function () {
     await post("/car-model-variants/" + bru.getEnvVar('validCarModelVariantId') + "/achieved-lap-time/" + bru.getEnvVar('validLapTimeId'))
 }
 
+exports.createIsPresentedInMagazineIssueRelationship = async function () {
+    await post("/car-model-variants/" + bru.getEnvVar('validCarModelVariantId') + "/is-presented-in-magazine-issue/" + bru.getEnvVar('validMagazineIssueId'))
+}
+
 exports.createIsFeaturedInRacingGameRelationship = async function () {
     await post("/car-model-variants/" + bru.getEnvVar('validCarModelVariantId') + "/is-featured-in-racing-game/" + bru.getEnvVar('validRacingGameId'))
 }

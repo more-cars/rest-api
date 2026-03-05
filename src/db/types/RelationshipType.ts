@@ -18,6 +18,7 @@ export enum RelationshipType {
     CarModelVariantIsVariantOf = 'CAR_MODEL_VARIANT_IS_VARIANT_OF',
     CarModelVariantAchievedSessionResult = 'CAR_MODEL_VARIANT_ACHIEVED_SESSION_RESULT',
     CarModelVariantAchievedLapTime = 'CAR_MODEL_VARIANT_ACHIEVED_LAP_TIME',
+    CarModelVariantIsPresentedInMagazineIssue = 'CAR_MODEL_VARIANT_IS_PRESENTED_IN_MAGAZINE_ISSUE',
     CarModelVariantIsFeaturedInRacingGame = 'CAR_MODEL_VARIANT_IS_FEATURED_IN_RACING_GAME',
     CarModelVariantHasImage = 'CAR_MODEL_VARIANT_HAS_IMAGE',
     CarModelVariantHasPrimeImage = 'CAR_MODEL_VARIANT_HAS_PRIME_IMAGE',

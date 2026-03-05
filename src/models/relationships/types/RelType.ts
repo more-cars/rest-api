@@ -16,6 +16,7 @@ export enum RelType {
     CarModelVariantIsVariantOf = 'car_model_variant_is_variant_of',
     CarModelVariantAchievedSessionResult = 'car_model_variant_achieved_session_result',
     CarModelVariantAchievedLapTime = 'car_model_variant_achieved_lap_time',
+    CarModelVariantIsPresentedInMagazineIssue = 'car_model_variant_is_presented_in_magazine_issue',
     CarModelVariantIsFeaturedInRacingGame = 'car_model_variant_is_featured_in_racing_game',
     CarModelVariantHasImage = 'car_model_variant_has_image',
     CarModelVariantHasPrimeImage = 'car_model_variant_has_prime_image',
