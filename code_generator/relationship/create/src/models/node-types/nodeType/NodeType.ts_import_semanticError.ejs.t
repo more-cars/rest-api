@@ -5,5 +5,5 @@ before: \nexport const
 skip_if: import {SemanticError} from
 ---
 <% if (startNodeType === endNodeType) { -%>
-import {SemanticError} from "../types/SemanticError"
+import {SemanticError} from "../../types/SemanticError"
 <% } -%>
