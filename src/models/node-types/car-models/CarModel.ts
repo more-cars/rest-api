@@ -275,6 +275,19 @@ export const CarModel = {
         return getAllRels(carModelId, RelType.CarModelCoveredByMagazineIssue)
     },
 
+    async deleteCoveredByMagazineIssueRelationship(carModelId: number, magazineIssueId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModel.findById(carModelId)
+        await MagazineIssue.findById(magazineIssueId)
+
+        const relationship = await getSpecificRel(carModelId, magazineIssueId, RelType.CarModelCoveredByMagazineIssue)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.CarModelCoveredByMagazineIssue, carModelId, magazineIssueId)
+        }
+
+        await deleteSpecificRel(carModelId, magazineIssueId, RelType.CarModelCoveredByMagazineIssue)
+    },
+
     async createHasImageRelationship(carModelId: number, imageId: number) {
         // checking that both nodes exist -> exception is thrown if not
         await CarModel.findById(carModelId)
