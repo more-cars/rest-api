@@ -12815,6 +12815,48 @@
         }
       }
     },
+    "/magazine-issues/{magazine-issue-id}/covers-racing-event": {
+      "get": {
+        "operationId": "getMagazineIssueCoversRacingEventRel",
+        "tags": [
+          "Magazine Issues"
+        ],
+        "summary": "Get all ›covers-racing-event‹ relationships for the `Magazine Issue`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "magazine-issue-id",
+            "description": "ID of the `Magazine Issue`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›covers-racing-event‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MagazineIssueCoversRacingEventCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Magazine Issue` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/magazine-issues/{magazine-issue-id}/covers-racing-event/{racing-event-id}": {
       "post": {
         "tags": [
@@ -19124,6 +19166,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/MagazineIssueCoversRacingEvent"
+          }
+        }
+      },
+      "MagazineIssueCoversRacingEventCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MagazineIssueCoversRacingEventResponse"
+            }
           }
         }
       },
