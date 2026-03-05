@@ -12,6 +12,10 @@ exports.createFollowedByIssueRelationship = async function () {
     await post("/magazine-issues/" + bru.getEnvVar('validMagazineIssueId') + "/followed-by-issue/" + bru.getEnvVar('validSecondMagazineIssueId'))
 }
 
+exports.createCoversCarModelRelationship = async function () {
+    await post("/magazine-issues/" + bru.getEnvVar('validMagazineIssueId') + "/covers-car-model/" + bru.getEnvVar('validCarModelId'))
+}
+
 exports.createHasImageRelationship = async function () {
     await post("/magazine-issues/" + bru.getEnvVar('validMagazineIssueId') + "/has-image/" + bru.getEnvVar('validImageId'))
 }

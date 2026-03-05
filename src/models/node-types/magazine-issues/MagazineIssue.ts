@@ -22,6 +22,7 @@ import {Image} from "../images/Image"
 import {getAllRels} from "../../relationships/getAllRels"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {SemanticError} from "../../types/SemanticError"
+import {CarModel} from "../car-models/CarModel"
 
 export const MagazineIssue = {
     async create(data: CreateMagazineIssueInput): Promise<MagazineIssueNode> {
@@ -201,6 +202,24 @@ export const MagazineIssue = {
         }
 
         await deleteSpecificRel(magazineIssueId, partnerId, RelType.MagazineIssueFollowedByIssue)
+    },
+
+    async createCoversCarModelRelationship(magazineIssueId: number, carModelId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await MagazineIssue.findById(magazineIssueId)
+        await CarModel.findById(carModelId)
+
+        const existingRelation = await getSpecificRel(magazineIssueId, carModelId, RelType.MagazineIssueCoversCarModel)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.MagazineIssueCoversCarModel, magazineIssueId, carModelId)
+        }
+
+        const createdRelationship = await createRel(magazineIssueId, carModelId, RelType.MagazineIssueCoversCarModel)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 
     async createHasImageRelationship(magazineIssueId: number, imageId: number) {

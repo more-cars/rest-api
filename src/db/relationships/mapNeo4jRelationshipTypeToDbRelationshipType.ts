@@ -197,6 +197,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
             [RelationshipDirection.FORWARD, new Map([
                 // Magazine Issue - Forward
                 [RelationshipTypeNeo4j.MagazineIssueFollowedByIssue, RelationshipType.MagazineIssueFollowedByIssue],
+                [RelationshipTypeNeo4j.MagazineIssueCoversCarModel, RelationshipType.MagazineIssueCoversCarModel],
                 [RelationshipTypeNeo4j.MagazineIssueHasImage, RelationshipType.MagazineIssueHasImage],
                 [RelationshipTypeNeo4j.MagazineIssueHasPrimeImage, RelationshipType.MagazineIssueHasPrimeImage],
             ])],

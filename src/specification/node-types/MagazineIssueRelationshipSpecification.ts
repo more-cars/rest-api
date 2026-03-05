@@ -18,6 +18,11 @@ export const MagazineIssueRelationshipSpecification: RelationshipTypeSpecificati
         endNodeType: NodeType.MagazineIssue,
         isReverseRelationship: false,
     }],
+    [RelationshipType.MagazineIssueCoversCarModel, {
+        startNodeType: NodeType.MagazineIssue,
+        endNodeType: NodeType.CarModel,
+        isReverseRelationship: false,
+    }],
     [RelationshipType.MagazineIssueHasImage, {
         startNodeType: NodeType.MagazineIssue,
         endNodeType: NodeType.Image,
