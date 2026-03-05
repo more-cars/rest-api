@@ -62,6 +62,30 @@ describe('Magazine Issues', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Create ›follows-issue‹ relationship', async () => {
+        await request(app)
+            .post('/magazine-issues/123/follows-issue/456')
+
+        expect(MagazineIssueController.createFollowsIssueRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get ›follows-issue‹ relationship', async () => {
+        await request(app)
+            .get('/magazine-issues/123/follows-issue')
+
+        expect(MagazineIssueController.getFollowsIssueRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Delete ›follows-issue‹ relationship', async () => {
+        await request(app)
+            .delete('/magazine-issues/123/follows-issue/456')
+
+        expect(MagazineIssueController.deleteFollowsIssueRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›followed-by-issue‹ relationship', async () => {
         await request(app)
             .post('/magazine-issues/123/followed-by-issue/456')
@@ -83,22 +107,6 @@ describe('Magazine Issues', () => {
             .delete('/magazine-issues/123/followed-by-issue/456')
 
         expect(MagazineIssueController.deleteFollowedByIssueRelation)
-            .toHaveBeenCalledTimes(1)
-    })
-
-    test('Create ›follows-issue‹ relationship', async () => {
-        await request(app)
-            .post('/magazine-issues/123/follows-issue/456')
-
-        expect(MagazineIssueController.createFollowsIssueRelation)
-            .toHaveBeenCalledTimes(1)
-    })
-
-    test('Get ›follows-issue‹ relationship', async () => {
-        await request(app)
-            .get('/magazine-issues/123/follows-issue')
-
-        expect(MagazineIssueController.getFollowsIssueRelation)
             .toHaveBeenCalledTimes(1)
     })
 

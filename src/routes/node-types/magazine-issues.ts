@@ -12,6 +12,7 @@ router.get('/magazine-issues/:magazineIssueId/belongs-to-magazine', MagazineIssu
 router.delete('/magazine-issues/:magazineIssueId/belongs-to-magazine/:magazineId', MagazineIssueController.deleteBelongsToMagazineRelation)
 router.post('/magazine-issues/:magazineIssueId/follows-issue/:partnerId', MagazineIssueController.createFollowsIssueRelation)
 router.get('/magazine-issues/:magazineIssueId/follows-issue', MagazineIssueController.getFollowsIssueRelation)
+router.delete('/magazine-issues/:magazineIssueId/follows-issue/:partnerId', MagazineIssueController.deleteFollowsIssueRelation)
 router.post('/magazine-issues/:magazineIssueId/followed-by-issue/:partnerId', MagazineIssueController.createFollowedByIssueRelation)
 router.get('/magazine-issues/:magazineIssueId/followed-by-issue', MagazineIssueController.getFollowedByIssueRelation)
 router.delete('/magazine-issues/:magazineIssueId/followed-by-issue/:partnerId', MagazineIssueController.deleteFollowedByIssueRelation)
