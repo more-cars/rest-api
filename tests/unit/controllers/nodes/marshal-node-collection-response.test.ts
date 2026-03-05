@@ -15,8 +15,9 @@ describe('Marshalling a node collection', () => {
         const nodeA = convertModelNodeToControllerNode(getFakeNode(nodeType).modelOutput)
         const nodeB = convertModelNodeToControllerNode(getFakeNode(nodeType).modelOutput)
         const nodeC = convertModelNodeToControllerNode(getFakeNode(nodeType).modelOutput)
+        const expectedTotalNodeCount = 173
 
-        const marshalledNodeCollection = marshalNodeCollection([nodeA, nodeB, nodeC])
+        const marshalledNodeCollection = marshalNodeCollection([nodeA, nodeB, nodeC], {total: expectedTotalNodeCount})
 
         expect(marshalledNodeCollection.data)
             .to.have.lengthOf(3)
@@ -29,5 +30,8 @@ describe('Marshalling a node collection', () => {
 
         expect(marshalledNodeCollection.data[2].id)
             .toEqual(nodeC.fields.id)
+
+        expect(marshalledNodeCollection.meta.total)
+            .toEqual(expectedTotalNodeCount)
     })
 })

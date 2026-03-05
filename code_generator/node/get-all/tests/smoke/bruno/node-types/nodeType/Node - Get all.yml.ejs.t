@@ -26,6 +26,8 @@ runtime:
     - expression: res.body.data[0].id
       operator: gte
       value: "12000000"
+    - expression: res.body.meta.total
+      operator: isNumber
   scripts:
     - type: before-request
       code: |-
