@@ -142,6 +142,22 @@ describe('Magazine Issues', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Get all ›presents-car-model-variant‹ relationships', async () => {
+        await request(app)
+            .get('/magazine-issues/123/presents-car-model-variant')
+
+        expect(MagazineIssueController.getAllPresentsCarModelVariantRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Delete ›presents-car-model-variant‹ relationship', async () => {
+        await request(app)
+            .delete('/magazine-issues/123/presents-car-model-variant/456')
+
+        expect(MagazineIssueController.deletePresentsCarModelVariantRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/magazine-issues/123/has-image/456')
@@ -187,14 +203,6 @@ describe('Magazine Issues', () => {
             .delete('/magazine-issues/123/has-prime-image/456')
 
         expect(MagazineIssueController.deleteHasPrimeImageRelation)
-            .toHaveBeenCalledTimes(1)
-    })
-
-    test('Get all ›presents-car-model-variant‹ relationships', async () => {
-        await request(app)
-            .get('/magazine-issues/123/presents-car-model-variant')
-
-        expect(MagazineIssueController.getAllPresentsCarModelVariantRelations)
             .toHaveBeenCalledTimes(1)
     })
 })

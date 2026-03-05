@@ -16,13 +16,14 @@ import {createCoversCarModelRelation} from "./magazine-issues/createCoversCarMod
 import {getAllCoversCarModelRelations} from "./magazine-issues/getAllCoversCarModelRelations"
 import {deleteCoversCarModelRelation} from "./magazine-issues/deleteCoversCarModelRelation"
 import {createPresentsCarModelVariantRelation} from "./magazine-issues/createPresentsCarModelVariantRelation"
+import {getAllPresentsCarModelVariantRelations} from "./magazine-issues/getAllPresentsCarModelVariantRelations"
+import {deletePresentsCarModelVariantRelation} from "./magazine-issues/deletePresentsCarModelVariantRelation"
 import {createHasImageRelation} from "./magazine-issues/createHasImageRelation"
 import {getAllHasImageRelations} from "./magazine-issues/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./magazine-issues/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./magazine-issues/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./magazine-issues/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./magazine-issues/deleteHasPrimeImageRelation"
-import {getAllPresentsCarModelVariantRelations} from "./magazine-issues/getAllPresentsCarModelVariantRelations"
 
 export const MagazineIssueController = {
     async create(req: express.Request, res: express.Response) {
@@ -93,6 +94,14 @@ export const MagazineIssueController = {
         await createPresentsCarModelVariantRelation(req, res)
     },
 
+    async getAllPresentsCarModelVariantRelations(req: express.Request, res: express.Response) {
+        await getAllPresentsCarModelVariantRelations(req, res)
+    },
+
+    async deletePresentsCarModelVariantRelation(req: express.Request, res: express.Response) {
+        await deletePresentsCarModelVariantRelation(req, res)
+    },
+
     async createHasImageRelation(req: express.Request, res: express.Response) {
         await createHasImageRelation(req, res)
     },
@@ -115,9 +124,5 @@ export const MagazineIssueController = {
 
     async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
-    },
-
-    async getAllPresentsCarModelVariantRelations(req: express.Request, res: express.Response) {
-        await getAllPresentsCarModelVariantRelations(req, res)
     },
 }

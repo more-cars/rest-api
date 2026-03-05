@@ -12772,6 +12772,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Magazine Issues"
+        ],
+        "summary": "Deletes the ›presents-car-model-variant‹ relationship between the `Magazine Issue` and the `Car Model Variant`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "magazine-issue-id",
+            "description": "ID of the `Magazine Issue`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›presents-car-model-variant‹ relationship between `Magazine Issue` and `Car Model Variant` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›presents-car-model-variant‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/magazine-issues/{magazine-issue-id}/has-image": {

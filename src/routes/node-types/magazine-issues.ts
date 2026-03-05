@@ -20,12 +20,13 @@ router.post('/magazine-issues/:magazineIssueId/covers-car-model/:carModelId', Ma
 router.get('/magazine-issues/:magazineIssueId/covers-car-model', MagazineIssueController.getAllCoversCarModelRelations)
 router.delete('/magazine-issues/:magazineIssueId/covers-car-model/:carModelId', MagazineIssueController.deleteCoversCarModelRelation)
 router.post('/magazine-issues/:magazineIssueId/presents-car-model-variant/:carModelVariantId', MagazineIssueController.createPresentsCarModelVariantRelation)
+router.get('/magazine-issues/:magazineIssueId/presents-car-model-variant', MagazineIssueController.getAllPresentsCarModelVariantRelations)
+router.delete('/magazine-issues/:magazineIssueId/presents-car-model-variant/:carModelVariantId', MagazineIssueController.deletePresentsCarModelVariantRelation)
 router.post('/magazine-issues/:magazineIssueId/has-image/:imageId', MagazineIssueController.createHasImageRelation)
 router.get('/magazine-issues/:magazineIssueId/has-image', MagazineIssueController.getAllHasImageRelations)
 router.delete('/magazine-issues/:magazineIssueId/has-image/:imageId', MagazineIssueController.deleteHasImageRelation)
 router.post('/magazine-issues/:magazineIssueId/has-prime-image/:imageId', MagazineIssueController.createHasPrimeImageRelation)
 router.get('/magazine-issues/:magazineIssueId/has-prime-image', MagazineIssueController.getHasPrimeImageRelation)
 router.delete('/magazine-issues/:magazineIssueId/has-prime-image/:imageId', MagazineIssueController.deleteHasPrimeImageRelation)
-router.get('/magazine-issues/:magazineIssueId/presents-car-model-variant', MagazineIssueController.getAllPresentsCarModelVariantRelations)
 
 export default router
