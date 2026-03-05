@@ -360,6 +360,13 @@ export const RacingEvent = {
         return createdRelationship
     },
 
+    async getAllCoveredByMagazineIssueRelationships(racingEventId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await RacingEvent.findById(racingEventId)
+
+        return getAllRels(racingEventId, RelType.RacingEventCoveredByMagazineIssue)
+    },
+
     async createHasImageRelationship(racingEventId: number, imageId: number) {
         // checking that both nodes exist -> exception is thrown if not
         await RacingEvent.findById(racingEventId)

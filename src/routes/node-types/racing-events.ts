@@ -26,6 +26,7 @@ router.post('/racing-events/:racingEventId/has-racing-session/:racingSessionId',
 router.get('/racing-events/:racingEventId/has-racing-session', RacingEventController.getAllHasRacingSessionRelations)
 router.delete('/racing-events/:racingEventId/has-racing-session/:racingSessionId', RacingEventController.deleteHasRacingSessionRelation)
 router.post('/racing-events/:racingEventId/covered-by-magazine-issue/:magazineIssueId', RacingEventController.createCoveredByMagazineIssueRelation)
+router.get('/racing-events/:racingEventId/covered-by-magazine-issue', RacingEventController.getAllCoveredByMagazineIssueRelations)
 router.post('/racing-events/:racingEventId/has-image/:imageId', RacingEventController.createHasImageRelation)
 router.get('/racing-events/:racingEventId/has-image', RacingEventController.getAllHasImageRelations)
 router.delete('/racing-events/:racingEventId/has-image/:imageId', RacingEventController.deleteHasImageRelation)

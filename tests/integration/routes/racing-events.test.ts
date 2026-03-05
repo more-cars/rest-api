@@ -190,6 +190,14 @@ describe('Racing Events', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Get all ›covered-by-magazine-issue‹ relationships', async () => {
+        await request(app)
+            .get('/racing-events/123/covered-by-magazine-issue')
+
+        expect(RacingEventController.getAllCoveredByMagazineIssueRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/racing-events/123/has-image/456')

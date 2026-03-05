@@ -22,6 +22,7 @@ import {createHasRacingSessionRelation} from "./racing-events/createHasRacingSes
 import {getAllHasRacingSessionRelations} from "./racing-events/getAllHasRacingSessionRelations"
 import {deleteHasRacingSessionRelation} from "./racing-events/deleteHasRacingSessionRelation"
 import {createCoveredByMagazineIssueRelation} from "./racing-events/createCoveredByMagazineIssueRelation"
+import {getAllCoveredByMagazineIssueRelations} from "./racing-events/getAllCoveredByMagazineIssueRelations"
 import {createHasImageRelation} from "./racing-events/createHasImageRelation"
 import {getAllHasImageRelations} from "./racing-events/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./racing-events/deleteHasImageRelation"
@@ -120,6 +121,10 @@ export const RacingEventController = {
 
     async createCoveredByMagazineIssueRelation(req: express.Request, res: express.Response) {
         await createCoveredByMagazineIssueRelation(req, res)
+    },
+
+    async getAllCoveredByMagazineIssueRelations(req: express.Request, res: express.Response) {
+        await getAllCoveredByMagazineIssueRelations(req, res)
     },
 
     async createHasImageRelation(req: express.Request, res: express.Response) {
