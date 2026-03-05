@@ -20,6 +20,10 @@ exports.createPresentsCarModelVariantRelationship = async function () {
     await post("/magazine-issues/" + bru.getEnvVar('validMagazineIssueId') + "/presents-car-model-variant/" + bru.getEnvVar('validCarModelVariantId'))
 }
 
+exports.createCoversRacingEventRelationship = async function () {
+    await post("/magazine-issues/" + bru.getEnvVar('validMagazineIssueId') + "/covers-racing-event/" + bru.getEnvVar('validRacingEventId'))
+}
+
 exports.createHasImageRelationship = async function () {
     await post("/magazine-issues/" + bru.getEnvVar('validMagazineIssueId') + "/has-image/" + bru.getEnvVar('validImageId'))
 }

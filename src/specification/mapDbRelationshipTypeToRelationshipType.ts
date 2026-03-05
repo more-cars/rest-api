@@ -76,6 +76,7 @@ export function mapDbRelationshipTypeToRelationshipType(dbRelationshipType: DbRe
         [DbRelationshipType.MagazineIssueFollowedByIssue, RelationshipType.MagazineIssueFollowedByIssue],
         [DbRelationshipType.MagazineIssueCoversCarModel, RelationshipType.MagazineIssueCoversCarModel],
         [DbRelationshipType.MagazineIssuePresentsCarModelVariant, RelationshipType.MagazineIssuePresentsCarModelVariant],
+        [DbRelationshipType.MagazineIssueCoversRacingEvent, RelationshipType.MagazineIssueCoversRacingEvent],
         [DbRelationshipType.MagazineIssueHasImage, RelationshipType.MagazineIssueHasImage],
         [DbRelationshipType.MagazineIssueHasPrimeImage, RelationshipType.MagazineIssueHasPrimeImage],
         [DbRelationshipType.ImageBelongsToNode, RelationshipType.ImageBelongsToNode],

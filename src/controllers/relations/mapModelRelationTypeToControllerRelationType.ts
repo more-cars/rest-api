@@ -75,6 +75,7 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.MagazineIssueFollowedByIssue, RelationType.MagazineIssueFollowedByIssue],
         [RelType.MagazineIssueCoversCarModel, RelationType.MagazineIssueCoversCarModel],
         [RelType.MagazineIssuePresentsCarModelVariant, RelationType.MagazineIssuePresentsCarModelVariant],
+        [RelType.MagazineIssueCoversRacingEvent, RelationType.MagazineIssueCoversRacingEvent],
         [RelType.MagazineIssueHasImage, RelationType.MagazineIssueHasImage],
         [RelType.MagazineIssueHasPrimeImage, RelationType.MagazineIssueHasPrimeImage],
         [RelType.ImageIsPrimeImageOfNode, RelationType.ImageIsPrimeImageOfNode],
