@@ -7687,6 +7687,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Racing Events"
+        ],
+        "summary": "Deletes the ›covered-by-magazine-issue‹ relationship between the `Racing Event` and the `Magazine Issue`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-event-id",
+            "description": "ID of the `Racing Event`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "magazine-issue-id",
+            "description": "ID of the `Magazine Issue`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›covered-by-magazine-issue‹ relationship between `Racing Event` and `Magazine Issue` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›covered-by-magazine-issue‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/racing-events/{racing-event-id}/has-image": {
