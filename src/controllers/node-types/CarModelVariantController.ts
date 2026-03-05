@@ -14,6 +14,7 @@ import {getAllAchievedLapTimeRelations} from "./car-model-variants/getAllAchieve
 import {deleteAchievedLapTimeRelation} from "./car-model-variants/deleteAchievedLapTimeRelation"
 import {createIsPresentedInMagazineIssueRelation} from "./car-model-variants/createIsPresentedInMagazineIssueRelation"
 import {getAllIsPresentedInMagazineIssueRelations} from "./car-model-variants/getAllIsPresentedInMagazineIssueRelations"
+import {deleteIsPresentedInMagazineIssueRelation} from "./car-model-variants/deleteIsPresentedInMagazineIssueRelation"
 import {createIsFeaturedInRacingGameRelation} from "./car-model-variants/createIsFeaturedInRacingGameRelation"
 import {getAllIsFeaturedInRacingGameRelations} from "./car-model-variants/getAllIsFeaturedInRacingGameRelations"
 import {deleteIsFeaturedInRacingGameRelation} from "./car-model-variants/deleteIsFeaturedInRacingGameRelation"
@@ -83,6 +84,10 @@ export const CarModelVariantController = {
 
     async getAllIsPresentedInMagazineIssueRelations(req: express.Request, res: express.Response) {
         await getAllIsPresentedInMagazineIssueRelations(req, res)
+    },
+
+    async deleteIsPresentedInMagazineIssueRelation(req: express.Request, res: express.Response) {
+        await deleteIsPresentedInMagazineIssueRelation(req, res)
     },
 
     async createIsFeaturedInRacingGameRelation(req: express.Request, res: express.Response) {
