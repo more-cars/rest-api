@@ -1,0 +1,25 @@
+info:
+  name: Delete ›covers-car-model‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/magazine-issues/{{validMagazineIssueId}}/covers-car-model/{{validCarModelId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const MagazineIssues = require('./lib/node-types/MagazineIssues.js')
+        const CarModels = require('./lib/node-types/CarModels.js')
+        await MagazineIssues.create()
+        await CarModels.create()
+        await MagazineIssues.createCoversCarModelRelationship()
