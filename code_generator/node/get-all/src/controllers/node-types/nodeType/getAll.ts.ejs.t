@@ -24,7 +24,7 @@ export async function getAll(req: express.Request, res: express.Response) {
         const params = extractCollectionConstraintParameters(req, availableProperties)
         const modelNodes = await <%= h.changeCase.pascal(nodeType) %>.findAll(params)
         const nodes = modelNodes.map(node => convert<%= h.changeCase.pascal(nodeType) %>ModelNodeToControllerNode(node))
-        const totalAmount = await Node.getTotalAmount(mapControllerNodeTypeToModelNodeType(ControllerNodeType.<%= h.changeCase.pascal(nodeType) %>))
+        const totalAmount = await Node.getTotalAmount(mapControllerNodeTypeToModelNodeType(ControllerNodeType.<%= h.changeCase.pascal(nodeType) %>), params)
         const marshalledData = marshalNodeCollection(nodes, {total: totalAmount})
 
         return sendResponse200(marshalledData, res)

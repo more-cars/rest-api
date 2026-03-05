@@ -4,6 +4,8 @@ import {convertDbNodeToModelNode} from "./node-types/convertDbNodeToModelNode"
 import type {ModelNodeType} from "./types/ModelNodeType"
 import {fetchNodeCountByNodeType} from "../db/nodes/fetchNodeCountByNodeType"
 import {mapModelNodeTypeToDbNodeType} from "./node-types/mapModelNodeTypeToDbNodeType"
+import type {NodeCollectionConstraints} from "./types/NodeCollectionConstraints"
+import {getDbQueryCollectionParams} from "../db/nodes/getDbQueryCollectionParams"
 
 export const Node = {
     async findById(id: number) {
@@ -16,7 +18,9 @@ export const Node = {
         return convertDbNodeToModelNode(dbNode)
     },
 
-    async getTotalAmount(nodeType: ModelNodeType) {
-        return await fetchNodeCountByNodeType(mapModelNodeTypeToDbNodeType(nodeType))
+    async getTotalAmount(nodeType: ModelNodeType, constraints: NodeCollectionConstraints = {}) {
+        const dbParams = getDbQueryCollectionParams(constraints)
+
+        return await fetchNodeCountByNodeType(mapModelNodeTypeToDbNodeType(nodeType), dbParams)
     }
 }
