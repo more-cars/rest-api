@@ -4,6 +4,9 @@ import {NodeType} from "../../../specification/NodeType"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
 import {RaceTrack} from "../../../models/node-types/race-tracks/RaceTrack"
 import {convertRaceTrackModelNodeToControllerNode} from "./convertRaceTrackModelNodeToControllerNode"
+import {Node} from "../../../models/Node"
+import {mapControllerNodeTypeToModelNodeType} from "../../nodes/mapControllerNodeTypeToModelNodeType"
+import {ControllerNodeType} from "../../types/ControllerNodeType"
 import {marshalNodeCollection} from "../../nodes/marshalNodeCollection"
 import {InvalidPaginationParams} from "../../../models/types/InvalidPaginationParams"
 import {InvalidSortingParams} from "../../../models/types/InvalidSortingParams"
@@ -18,7 +21,8 @@ export async function getAll(req: express.Request, res: express.Response) {
         const params = extractCollectionConstraintParameters(req, availableProperties)
         const modelNodes = await RaceTrack.findAll(params)
         const nodes = modelNodes.map(node => convertRaceTrackModelNodeToControllerNode(node))
-        const marshalledData = marshalNodeCollection(nodes)
+        const totalAmount = await Node.getTotalAmount(mapControllerNodeTypeToModelNodeType(ControllerNodeType.RaceTrack))
+        const marshalledData = marshalNodeCollection(nodes, {total: totalAmount})
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

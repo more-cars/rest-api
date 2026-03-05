@@ -4,6 +4,9 @@ import {NodeType} from "../../../specification/NodeType"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
 import {CarModelVariant} from "../../../models/node-types/car-model-variants/CarModelVariant"
 import {convertCarModelVariantModelNodeToControllerNode} from "./convertCarModelVariantModelNodeToControllerNode"
+import {Node} from "../../../models/Node"
+import {mapControllerNodeTypeToModelNodeType} from "../../nodes/mapControllerNodeTypeToModelNodeType"
+import {ControllerNodeType} from "../../types/ControllerNodeType"
 import {marshalNodeCollection} from "../../nodes/marshalNodeCollection"
 import {InvalidPaginationParams} from "../../../models/types/InvalidPaginationParams"
 import {InvalidSortingParams} from "../../../models/types/InvalidSortingParams"
@@ -18,7 +21,8 @@ export async function getAll(req: express.Request, res: express.Response) {
         const params = extractCollectionConstraintParameters(req, availableProperties)
         const modelNodes = await CarModelVariant.findAll(params)
         const nodes = modelNodes.map(node => convertCarModelVariantModelNodeToControllerNode(node))
-        const marshalledData = marshalNodeCollection(nodes)
+        const totalAmount = await Node.getTotalAmount(mapControllerNodeTypeToModelNodeType(ControllerNodeType.CarModelVariant))
+        const marshalledData = marshalNodeCollection(nodes, {total: totalAmount})
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

@@ -4,6 +4,9 @@ import {NodeType} from "../../../specification/NodeType"
 import {extractCollectionConstraintParameters} from "../../nodes/extractCollectionConstraintParameters"
 import {SessionResult} from "../../../models/node-types/session-results/SessionResult"
 import {convertSessionResultModelNodeToControllerNode} from "./convertSessionResultModelNodeToControllerNode"
+import {Node} from "../../../models/Node"
+import {mapControllerNodeTypeToModelNodeType} from "../../nodes/mapControllerNodeTypeToModelNodeType"
+import {ControllerNodeType} from "../../types/ControllerNodeType"
 import {marshalNodeCollection} from "../../nodes/marshalNodeCollection"
 import {InvalidPaginationParams} from "../../../models/types/InvalidPaginationParams"
 import {InvalidSortingParams} from "../../../models/types/InvalidSortingParams"
@@ -18,7 +21,8 @@ export async function getAll(req: express.Request, res: express.Response) {
         const params = extractCollectionConstraintParameters(req, availableProperties)
         const modelNodes = await SessionResult.findAll(params)
         const nodes = modelNodes.map(node => convertSessionResultModelNodeToControllerNode(node))
-        const marshalledData = marshalNodeCollection(nodes)
+        const totalAmount = await Node.getTotalAmount(mapControllerNodeTypeToModelNodeType(ControllerNodeType.SessionResult))
+        const marshalledData = marshalNodeCollection(nodes, {total: totalAmount})
 
         return sendResponse200(marshalledData, res)
     } catch (e) {
