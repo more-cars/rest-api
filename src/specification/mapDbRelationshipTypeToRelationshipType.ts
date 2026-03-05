@@ -46,6 +46,7 @@ export function mapDbRelationshipTypeToRelationshipType(dbRelationshipType: DbRe
         [DbRelationshipType.RacingEventTookPlaceAtRaceTrack, RelationshipType.RacingEventTookPlaceAtRaceTrack],
         [DbRelationshipType.RacingEventUsedTheTrackLayout, RelationshipType.RacingEventUsedTheTrackLayout],
         [DbRelationshipType.RacingEventHasRacingSession, RelationshipType.RacingEventHasRacingSession],
+        [DbRelationshipType.RacingEventCoveredByMagazineIssue, RelationshipType.RacingEventCoveredByMagazineIssue],
         [DbRelationshipType.RacingEventHasImage, RelationshipType.RacingEventHasImage],
         [DbRelationshipType.RacingEventHasPrimeImage, RelationshipType.RacingEventHasPrimeImage],
         [DbRelationshipType.RacingSessionBelongsToRacingEvent, RelationshipType.RacingSessionBelongsToRacingEvent],

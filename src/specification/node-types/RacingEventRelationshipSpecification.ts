@@ -33,6 +33,11 @@ export const RacingEventRelationshipSpecification: RelationshipTypeSpecification
         endNodeType: NodeType.RacingSession,
         isReverseRelationship: false,
     }],
+    [RelationshipType.RacingEventCoveredByMagazineIssue, {
+        startNodeType: NodeType.RacingEvent,
+        endNodeType: NodeType.MagazineIssue,
+        isReverseRelationship: true,
+    }],
     [RelationshipType.RacingEventHasImage, {
         startNodeType: NodeType.RacingEvent,
         endNodeType: NodeType.Image,
@@ -43,4 +48,5 @@ export const RacingEventRelationshipSpecification: RelationshipTypeSpecification
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    //
 ]

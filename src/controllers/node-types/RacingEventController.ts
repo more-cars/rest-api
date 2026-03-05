@@ -21,6 +21,7 @@ import {deleteUsedTheTrackLayoutRelation} from "./racing-events/deleteUsedTheTra
 import {createHasRacingSessionRelation} from "./racing-events/createHasRacingSessionRelation"
 import {getAllHasRacingSessionRelations} from "./racing-events/getAllHasRacingSessionRelations"
 import {deleteHasRacingSessionRelation} from "./racing-events/deleteHasRacingSessionRelation"
+import {createCoveredByMagazineIssueRelation} from "./racing-events/createCoveredByMagazineIssueRelation"
 import {createHasImageRelation} from "./racing-events/createHasImageRelation"
 import {getAllHasImageRelations} from "./racing-events/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./racing-events/deleteHasImageRelation"
@@ -115,6 +116,10 @@ export const RacingEventController = {
 
     async deleteHasRacingSessionRelation(req: express.Request, res: express.Response) {
         await deleteHasRacingSessionRelation(req, res)
+    },
+
+    async createCoveredByMagazineIssueRelation(req: express.Request, res: express.Response) {
+        await createCoveredByMagazineIssueRelation(req, res)
     },
 
     async createHasImageRelation(req: express.Request, res: express.Response) {

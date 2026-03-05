@@ -105,6 +105,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 // Racing Event - Reverse
                 [RelationshipTypeNeo4j.RacingEventBelongsToRacingSeries, RelationshipType.RacingEventBelongsToRacingSeries],
                 [RelationshipTypeNeo4j.RacingEventFollowsEvent, RelationshipType.RacingEventFollowsEvent],
+                [RelationshipTypeNeo4j.RacingEventCoveredByMagazineIssue, RelationshipType.RacingEventCoveredByMagazineIssue],
 
             ])],
             [RelationshipDirection.FORWARD, new Map([

@@ -44,6 +44,7 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.RacingEventTookPlaceAtRaceTrack, RelationType.RacingEventTookPlaceAtRaceTrack],
         [RelType.RacingEventUsedTheTrackLayout, RelationType.RacingEventUsedTheTrackLayout],
         [RelType.RacingEventHasRacingSession, RelationType.RacingEventHasRacingSession],
+        [RelType.RacingEventCoveredByMagazineIssue, RelationType.RacingEventCoveredByMagazineIssue],
         [RelType.RacingEventHasImage, RelationType.RacingEventHasImage],
         [RelType.RacingEventHasPrimeImage, RelationType.RacingEventHasPrimeImage],
         [RelType.RacingSessionBelongsToRacingEvent, RelationType.RacingSessionBelongsToRacingEvent],

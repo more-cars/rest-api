@@ -39,6 +39,7 @@ export enum RelType {
     RacingEventTookPlaceAtRaceTrack = 'racing_event_took_place_at_race_track',
     RacingEventUsedTheTrackLayout = 'racing_event_used_the_track_layout',
     RacingEventHasRacingSession = 'racing_event_has_racing_session',
+    RacingEventCoveredByMagazineIssue = 'racing_event_covered_by_magazine_issue',
     RacingEventHasImage = 'racing_event_has_image',
     RacingEventHasPrimeImage = 'racing_event_has_prime_image',
     RacingSessionBelongsToRacingEvent = 'racing_session_belongs_to_racing_event',

@@ -12,16 +12,20 @@ exports.createIsFollowedByEventRelationship = async function () {
     await post("/racing-events/" + bru.getEnvVar('validRacingEventId') + "/is-followed-by-event/" + bru.getEnvVar('validSecondRacingEventId'))
 }
 
-exports.createHasRacingSessionRelationship = async function () {
-    await post("/racing-events/" + bru.getEnvVar('validRacingEventId') + "/has-racing-session/" + bru.getEnvVar('validRacingSessionId'))
-}
-
 exports.createTookPlaceAtRaceTrackRelationship = async function () {
     await post("/racing-events/" + bru.getEnvVar('validRacingEventId') + "/took-place-at-race-track/" + bru.getEnvVar('validRaceTrackId'))
 }
 
 exports.createUsedTheTrackLayoutRelationship = async function () {
     await post("/racing-events/" + bru.getEnvVar('validRacingEventId') + "/used-the-track-layout/" + bru.getEnvVar('validTrackLayoutId'))
+}
+
+exports.createHasRacingSessionRelationship = async function () {
+    await post("/racing-events/" + bru.getEnvVar('validRacingEventId') + "/has-racing-session/" + bru.getEnvVar('validRacingSessionId'))
+}
+
+exports.createCoveredByMagazineIssueRelationship = async function () {
+    await post("/racing-events/" + bru.getEnvVar('validRacingEventId') + "/covered-by-magazine-issue/" + bru.getEnvVar('validMagazineIssueId'))
 }
 
 exports.createHasImageRelationship = async function () {
