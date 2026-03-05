@@ -130,6 +130,18 @@ export const MagazineIssue = {
         return createdRelationship
     },
 
+    async getFollowsIssueRelationship(magazineIssueId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await MagazineIssue.findById(magazineIssueId)
+
+        const relationship = await getRel(magazineIssueId, RelType.MagazineIssueFollowsIssue)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.MagazineIssueFollowsIssue, magazineIssueId, null)
+        }
+
+        return relationship
+    },
+
     async createFollowedByIssueRelationship(magazineIssueId: number, partnerId: number) {
         if (magazineIssueId === partnerId) {
             throw new SemanticError(`Magazine Issue #${magazineIssueId} cannot be connected to itself`)

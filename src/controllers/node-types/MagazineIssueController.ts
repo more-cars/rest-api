@@ -7,6 +7,7 @@ import {createBelongsToMagazineRelation} from "./magazine-issues/createBelongsTo
 import {getBelongsToMagazineRelation} from "./magazine-issues/getBelongsToMagazineRelation"
 import {deleteBelongsToMagazineRelation} from "./magazine-issues/deleteBelongsToMagazineRelation"
 import {createFollowsIssueRelation} from "./magazine-issues/createFollowsIssueRelation"
+import {getFollowsIssueRelation} from "./magazine-issues/getFollowsIssueRelation"
 import {createFollowedByIssueRelation} from "./magazine-issues/createFollowedByIssueRelation"
 import {getFollowedByIssueRelation} from "./magazine-issues/getFollowedByIssueRelation"
 import {deleteFollowedByIssueRelation} from "./magazine-issues/deleteFollowedByIssueRelation"
@@ -46,6 +47,14 @@ export const MagazineIssueController = {
         await deleteBelongsToMagazineRelation(req, res)
     },
 
+    async createFollowsIssueRelation(req: express.Request, res: express.Response) {
+        await createFollowsIssueRelation(req, res)
+    },
+
+    async getFollowsIssueRelation(req: express.Request, res: express.Response) {
+        await getFollowsIssueRelation(req, res)
+    },
+
     async createFollowedByIssueRelation(req: express.Request, res: express.Response) {
         await createFollowedByIssueRelation(req, res)
     },
@@ -80,9 +89,5 @@ export const MagazineIssueController = {
 
     async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
-    },
-
-    async createFollowsIssueRelation(req: express.Request, res: express.Response) {
-        await createFollowsIssueRelation(req, res)
     },
 }
