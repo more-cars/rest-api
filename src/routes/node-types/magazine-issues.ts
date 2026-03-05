@@ -19,6 +19,7 @@ router.delete('/magazine-issues/:magazineIssueId/followed-by-issue/:partnerId', 
 router.post('/magazine-issues/:magazineIssueId/covers-car-model/:carModelId', MagazineIssueController.createCoversCarModelRelation)
 router.get('/magazine-issues/:magazineIssueId/covers-car-model', MagazineIssueController.getAllCoversCarModelRelations)
 router.delete('/magazine-issues/:magazineIssueId/covers-car-model/:carModelId', MagazineIssueController.deleteCoversCarModelRelation)
+router.post('/magazine-issues/:magazineIssueId/presents-car-model-variant/:carModelVariantId', MagazineIssueController.createPresentsCarModelVariantRelation)
 router.post('/magazine-issues/:magazineIssueId/has-image/:imageId', MagazineIssueController.createHasImageRelation)
 router.get('/magazine-issues/:magazineIssueId/has-image', MagazineIssueController.getAllHasImageRelations)
 router.delete('/magazine-issues/:magazineIssueId/has-image/:imageId', MagazineIssueController.deleteHasImageRelation)

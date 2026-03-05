@@ -68,6 +68,7 @@ export enum RelationType {
     MagazineIssueFollowsIssue = 'follows-issue',
     MagazineIssueFollowedByIssue = 'followed-by-issue',
     MagazineIssueCoversCarModel = 'covers-car-model',
+    MagazineIssuePresentsCarModelVariant = 'presents-car-model-variant',
     MagazineIssueHasImage = 'has-image',
     MagazineIssueHasPrimeImage = 'has-prime-image',
     ImageBelongsToNode = 'belongs-to-node',

@@ -15,6 +15,7 @@ import {deleteFollowedByIssueRelation} from "./magazine-issues/deleteFollowedByI
 import {createCoversCarModelRelation} from "./magazine-issues/createCoversCarModelRelation"
 import {getAllCoversCarModelRelations} from "./magazine-issues/getAllCoversCarModelRelations"
 import {deleteCoversCarModelRelation} from "./magazine-issues/deleteCoversCarModelRelation"
+import {createPresentsCarModelVariantRelation} from "./magazine-issues/createPresentsCarModelVariantRelation"
 import {createHasImageRelation} from "./magazine-issues/createHasImageRelation"
 import {getAllHasImageRelations} from "./magazine-issues/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./magazine-issues/deleteHasImageRelation"
@@ -85,6 +86,10 @@ export const MagazineIssueController = {
 
     async deleteCoversCarModelRelation(req: express.Request, res: express.Response) {
         await deleteCoversCarModelRelation(req, res)
+    },
+
+    async createPresentsCarModelVariantRelation(req: express.Request, res: express.Response) {
+        await createPresentsCarModelVariantRelation(req, res)
     },
 
     async createHasImageRelation(req: express.Request, res: express.Response) {
