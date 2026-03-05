@@ -118,6 +118,14 @@ describe('Magazine Issues', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Get all ›covers-car-model‹ relationships', async () => {
+        await request(app)
+            .get('/magazine-issues/123/covers-car-model')
+
+        expect(MagazineIssueController.getAllCoversCarModelRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/magazine-issues/123/has-image/456')

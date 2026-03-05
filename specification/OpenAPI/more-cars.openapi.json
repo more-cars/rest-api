@@ -12543,6 +12543,48 @@
         }
       }
     },
+    "/magazine-issues/{magazine-issue-id}/covers-car-model": {
+      "get": {
+        "operationId": "getMagazineIssueCoversCarModelRel",
+        "tags": [
+          "Magazine Issues"
+        ],
+        "summary": "Get all ›covers-car-model‹ relationships for the `Magazine Issue`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "magazine-issue-id",
+            "description": "ID of the `Magazine Issue`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›covers-car-model‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MagazineIssueCoversCarModelCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Magazine Issue` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/magazine-issues/{magazine-issue-id}/covers-car-model/{car-model-id}": {
       "post": {
         "tags": [
@@ -18730,6 +18772,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/MagazineIssueCoversCarModel"
+          }
+        }
+      },
+      "MagazineIssueCoversCarModelCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MagazineIssueCoversCarModelResponse"
+            }
           }
         }
       },
