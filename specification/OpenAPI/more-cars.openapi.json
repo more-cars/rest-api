@@ -3248,6 +3248,48 @@
         }
       }
     },
+    "/car-model-variants/{car-model-variant-id}/is-presented-in-magazine-issue": {
+      "get": {
+        "operationId": "getCarModelVariantIsPresentedInMagazineIssueRel",
+        "tags": [
+          "Car Model Variants"
+        ],
+        "summary": "Get all ›is-presented-in-magazine-issue‹ relationships for the `Car Model Variant`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›is-presented-in-magazine-issue‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelVariantIsPresentedInMagazineIssueCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Car Model Variant` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/car-model-variants/{car-model-variant-id}/is-presented-in-magazine-issue/{magazine-issue-id}": {
       "post": {
         "tags": [
@@ -14729,6 +14771,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/CarModelVariantIsPresentedInMagazineIssue"
+          }
+        }
+      },
+      "CarModelVariantIsPresentedInMagazineIssueCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CarModelVariantIsPresentedInMagazineIssueResponse"
+            }
           }
         }
       },

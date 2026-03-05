@@ -17,6 +17,7 @@ router.post('/car-model-variants/:carModelVariantId/achieved-lap-time/:lapTimeId
 router.get('/car-model-variants/:carModelVariantId/achieved-lap-time', CarModelVariantController.getAllAchievedLapTimeRelations)
 router.delete('/car-model-variants/:carModelVariantId/achieved-lap-time/:lapTimeId', CarModelVariantController.deleteAchievedLapTimeRelation)
 router.post('/car-model-variants/:carModelVariantId/is-presented-in-magazine-issue/:magazineIssueId', CarModelVariantController.createIsPresentedInMagazineIssueRelation)
+router.get('/car-model-variants/:carModelVariantId/is-presented-in-magazine-issue', CarModelVariantController.getAllIsPresentedInMagazineIssueRelations)
 router.post('/car-model-variants/:carModelVariantId/is-featured-in-racing-game/:racingGameId', CarModelVariantController.createIsFeaturedInRacingGameRelation)
 router.get('/car-model-variants/:carModelVariantId/is-featured-in-racing-game', CarModelVariantController.getAllIsFeaturedInRacingGameRelations)
 router.delete('/car-model-variants/:carModelVariantId/is-featured-in-racing-game/:racingGameId', CarModelVariantController.deleteIsFeaturedInRacingGameRelation)
