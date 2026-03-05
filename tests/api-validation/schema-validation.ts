@@ -1,12 +1,16 @@
-import OpenAPISchemaValidator from "openapi-schema-validator"
+import {Validator} from "@seriousme/openapi-schema-validator"
 
-const targetVersion = 3
-const validator = new OpenAPISchemaValidator({version: targetVersion})
-const targetSchema = require('../../specification/OpenAPI/more-cars.openapi.json')
+validateSchema().then(_ => true)
 
-if (validator.validate(targetSchema).errors.length > 0) {
-    console.log(`⨯ Error: The provided schema does not conform to OpenApi version ${targetVersion}.`)
-    process.exitCode = 1
-} else {
-    console.log(`✓ The provided schema conforms to the OpenApi version ${targetVersion}.`)
+async function validateSchema() {
+    const validator = new Validator()
+    const res = await validator.validate(__dirname + '/../../specification/OpenAPI/more-cars.openapi.json')
+
+    if (res.valid) {
+        console.log(`✓ The provided schema conforms to OpenAPI version ${validator.version}.`)
+    } else {
+        console.log(`⨯ Error: The provided schema does not conform to OpenAPI.`)
+        console.log(res.errors)
+        process.exitCode = 1
+    }
 }
