@@ -1,0 +1,27 @@
+import {expect, test} from 'vitest'
+import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/racing-sessions/marshalling/unmarshalInputData"
+
+test('unmarshalling a request where the data types are incorrect', async () => {
+    const data: any = {
+        name: true,
+        start_date: true,
+        start_time: true,
+        duration: true,
+        duration_unit: true,
+        distance: true,
+        distance_unit: true,
+    }
+
+    const result = unmarshalInputData(data)
+
+    expect(result)
+        .toStrictEqual({
+            name: true,
+            start_date: true,
+            start_time: true,
+            duration: true,
+            duration_unit: true,
+            distance: true,
+            distance_unit: true,
+        })
+})
