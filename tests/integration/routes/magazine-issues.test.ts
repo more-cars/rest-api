@@ -78,6 +78,14 @@ describe('Magazine Issues', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete ›followed-by-issue‹ relationship', async () => {
+        await request(app)
+            .delete('/magazine-issues/123/followed-by-issue/456')
+
+        expect(MagazineIssueController.deleteFollowedByIssueRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/magazine-issues/123/has-image/456')

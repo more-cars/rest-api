@@ -8,6 +8,7 @@ import {getBelongsToMagazineRelation} from "./magazine-issues/getBelongsToMagazi
 import {deleteBelongsToMagazineRelation} from "./magazine-issues/deleteBelongsToMagazineRelation"
 import {createFollowedByIssueRelation} from "./magazine-issues/createFollowedByIssueRelation"
 import {getFollowedByIssueRelation} from "./magazine-issues/getFollowedByIssueRelation"
+import {deleteFollowedByIssueRelation} from "./magazine-issues/deleteFollowedByIssueRelation"
 import {createHasImageRelation} from "./magazine-issues/createHasImageRelation"
 import {getAllHasImageRelations} from "./magazine-issues/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./magazine-issues/deleteHasImageRelation"
@@ -50,6 +51,10 @@ export const MagazineIssueController = {
 
     async getFollowedByIssueRelation(req: express.Request, res: express.Response) {
         await getFollowedByIssueRelation(req, res)
+    },
+
+    async deleteFollowedByIssueRelation(req: express.Request, res: express.Response) {
+        await deleteFollowedByIssueRelation(req, res)
     },
 
     async createHasImageRelation(req: express.Request, res: express.Response) {

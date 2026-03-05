@@ -1,0 +1,24 @@
+info:
+  name: Delete ›followed-by-issue‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/magazine-issues/{{validMagazineIssueId}}/followed-by-issue/{{validSecondMagazineIssueId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const MagazineIssues = require('./lib/node-types/MagazineIssues.js')
+        await MagazineIssues.create()
+        await MagazineIssues.create('Second')
+        await MagazineIssues.createFollowedByIssueRelationship()
