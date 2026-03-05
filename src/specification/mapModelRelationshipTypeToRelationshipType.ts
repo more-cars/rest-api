@@ -70,6 +70,7 @@ export function mapModelRelationshipTypeToRelationshipType(relType: RelType): Re
         [RelType.MagazineHasImage, RelationshipType.MagazineHasImage],
         [RelType.MagazineHasPrimeImage, RelationshipType.MagazineHasPrimeImage],
         [RelType.MagazineIssueBelongsToMagazine, RelationshipType.MagazineIssueBelongsToMagazine],
+        [RelType.MagazineIssueFollowsIssue, RelationshipType.MagazineIssueFollowsIssue],
         [RelType.MagazineIssueFollowedByIssue, RelationshipType.MagazineIssueFollowedByIssue],
         [RelType.MagazineIssueHasImage, RelationshipType.MagazineIssueHasImage],
         [RelType.MagazineIssueHasPrimeImage, RelationshipType.MagazineIssueHasPrimeImage],

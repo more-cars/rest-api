@@ -107,6 +107,29 @@ export const MagazineIssue = {
         await deleteSpecificRel(magazineIssueId, magazineId, RelType.MagazineIssueBelongsToMagazine)
     },
 
+    async createFollowsIssueRelationship(magazineIssueId: number, partnerId: number) {
+        if (magazineIssueId === partnerId) {
+            throw new SemanticError(`Magazine Issue #${magazineIssueId} cannot be connected to itself`)
+        }
+        // checking that both nodes exist -> exception is thrown if not
+        await MagazineIssue.findById(magazineIssueId)
+        await MagazineIssue.findById(partnerId)
+
+        const existingRelation = await getSpecificRel(magazineIssueId, partnerId, RelType.MagazineIssueFollowsIssue)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.MagazineIssueFollowsIssue, magazineIssueId, partnerId)
+        }
+        await deleteOutgoingRel(magazineIssueId, RelType.MagazineIssueFollowsIssue, ModelNodeType.MagazineIssue)
+        await deleteIncomingRel(partnerId, RelType.MagazineIssueFollowsIssue, ModelNodeType.MagazineIssue)
+
+        const createdRelationship = await createRel(magazineIssueId, partnerId, RelType.MagazineIssueFollowsIssue)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
     async createFollowedByIssueRelationship(magazineIssueId: number, partnerId: number) {
         if (magazineIssueId === partnerId) {
             throw new SemanticError(`Magazine Issue #${magazineIssueId} cannot be connected to itself`)
