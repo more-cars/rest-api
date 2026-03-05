@@ -70,6 +70,14 @@ describe('Magazine Issues', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Get ›followed-by-issue‹ relationship', async () => {
+        await request(app)
+            .get('/magazine-issues/123/followed-by-issue')
+
+        expect(MagazineIssueController.getFollowedByIssueRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/magazine-issues/123/has-image/456')

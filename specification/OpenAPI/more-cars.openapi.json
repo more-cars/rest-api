@@ -12271,6 +12271,48 @@
         }
       }
     },
+    "/magazine-issues/{magazine-issue-id}/followed-by-issue": {
+      "get": {
+        "operationId": "getMagazineIssueFollowedByIssueRel",
+        "tags": [
+          "Magazine Issues"
+        ],
+        "summary": "Get the ›followed-by-issue‹ relationship for the `Magazine Issue`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "magazine-issue-id",
+            "description": "ID of the `Magazine Issue`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›followed-by-issue‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MagazineIssueFollowedByIssueResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Magazine Issue` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/magazine-issues/{magazine-issue-id}/followed-by-issue/{partner-id}": {
       "post": {
         "tags": [

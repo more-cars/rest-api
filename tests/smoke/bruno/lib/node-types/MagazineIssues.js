@@ -5,7 +5,7 @@ exports.createBelongsToMagazineRelationship = async function () {
 }
 
 exports.createFollowedByIssueRelationship = async function () {
-    await post("/magazine-issues/" + bru.getEnvVar('validMagazineIssueId') + "/followed-by-issue/" + bru.getEnvVar('validMagazineIssueId'))
+    await post("/magazine-issues/" + bru.getEnvVar('validMagazineIssueId') + "/followed-by-issue/" + bru.getEnvVar('validSecondMagazineIssueId'))
 }
 
 exports.createHasImageRelationship = async function () {
