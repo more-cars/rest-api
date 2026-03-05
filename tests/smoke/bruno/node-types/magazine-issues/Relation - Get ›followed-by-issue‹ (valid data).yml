@@ -54,5 +54,5 @@ runtime:
       code: |-
         const MagazineIssues = require('./lib/node-types/MagazineIssues.js')
         await MagazineIssues.create()
-        await MagazineIssues.create('Second)
+        await MagazineIssues.create('Second')
         await MagazineIssues.createFollowedByIssueRelationship()
