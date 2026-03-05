@@ -15,6 +15,7 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.CarModelHasSuccessor, RelationType.CarModelHasSuccessor],
         [RelType.CarModelIsSuccessorOf, RelationType.CarModelIsSuccessorOf],
         [RelType.CarModelHasVariant, RelationType.CarModelHasVariant],
+        [RelType.CarModelCoveredByMagazineIssue, RelationType.CarModelCoveredByMagazineIssue],
         [RelType.CarModelHasImage, RelationType.CarModelHasImage],
         [RelType.CarModelHasPrimeImage, RelationType.CarModelHasPrimeImage],
         [RelType.CarModelVariantIsVariantOf, RelationType.CarModelVariantIsVariantOf],

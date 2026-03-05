@@ -17,6 +17,7 @@ export function mapDbRelationshipTypeToNeo4jRelationshipType(
         [RelationshipType.CarModelIsSuccessorOf, RelationshipTypeNeo4j.CarModelIsSuccessorOf],
         [RelationshipType.CarModelHasSuccessor, RelationshipTypeNeo4j.CarModelHasSuccessor],
         [RelationshipType.CarModelHasVariant, RelationshipTypeNeo4j.CarModelHasVariant],
+        [RelationshipType.CarModelCoveredByMagazineIssue, RelationshipTypeNeo4j.CarModelCoveredByMagazineIssue],
         [RelationshipType.CarModelHasImage, RelationshipTypeNeo4j.CarModelHasImage],
         [RelationshipType.CarModelHasPrimeImage, RelationshipTypeNeo4j.CarModelHasPrimeImage],
         [RelationshipType.CarModelVariantIsVariantOf, RelationshipTypeNeo4j.CarModelVariantIsVariantOf],

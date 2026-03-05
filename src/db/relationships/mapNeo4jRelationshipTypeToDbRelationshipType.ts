@@ -38,6 +38,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 // Car Model - Reverse
                 [RelationshipTypeNeo4j.CarModelBelongsToBrand, RelationshipType.CarModelBelongsToBrand],
                 [RelationshipTypeNeo4j.CarModelIsSuccessorOf, RelationshipType.CarModelIsSuccessorOf],
+                [RelationshipTypeNeo4j.CarModelCoveredByMagazineIssue, RelationshipType.CarModelCoveredByMagazineIssue],
             ])],
             [RelationshipDirection.FORWARD, new Map([
                 // Car Model - Forward

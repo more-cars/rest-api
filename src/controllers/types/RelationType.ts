@@ -10,6 +10,7 @@ export enum RelationType {
     CarModelHasSuccessor = 'has-successor',
     CarModelIsSuccessorOf = 'is-successor-of',
     CarModelHasVariant = 'has-variant',
+    CarModelCoveredByMagazineIssue = 'covered-by-magazine-issue',
     CarModelHasImage = 'has-image',
     CarModelHasPrimeImage = 'has-prime-image',
     CarModelVariantIsVariantOf = 'is-variant-of',

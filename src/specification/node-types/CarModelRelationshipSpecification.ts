@@ -23,6 +23,11 @@ export const CarModelRelationshipSpecification: RelationshipTypeSpecification[] 
         endNodeType: NodeType.CarModelVariant,
         isReverseRelationship: false,
     }],
+    [RelationshipType.CarModelCoveredByMagazineIssue, {
+        startNodeType: NodeType.CarModel,
+        endNodeType: NodeType.MagazineIssue,
+        isReverseRelationship: true,
+    }],
     [RelationshipType.CarModelHasImage, {
         startNodeType: NodeType.CarModel,
         endNodeType: NodeType.Image,
@@ -33,4 +38,5 @@ export const CarModelRelationshipSpecification: RelationshipTypeSpecification[] 
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    //
 ]

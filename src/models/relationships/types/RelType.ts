@@ -10,6 +10,7 @@ export enum RelType {
     CarModelHasSuccessor = 'car_model_has_successor',
     CarModelIsSuccessorOf = 'car_model_is_successor_of',
     CarModelHasVariant = 'car_model_has_variant',
+    CarModelCoveredByMagazineIssue = 'car_model_covered_by_magazine_issue',
     CarModelHasImage = 'car_model_has_image',
     CarModelHasPrimeImage = 'car_model_has_prime_image',
     CarModelVariantIsVariantOf = 'car_model_variant_is_variant_of',

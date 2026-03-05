@@ -11,9 +11,11 @@ import {getHasSuccessorRelation} from "./car-models/getHasSuccessorRelation"
 import {deleteHasSuccessorRelation} from "./car-models/deleteHasSuccessorRelation"
 import {createIsSuccessorOfRelation} from "./car-models/createIsSuccessorOfRelation"
 import {getIsSuccessorOfRelation} from "./car-models/getIsSuccessorOfRelation"
+import {deleteIsSuccessorOfRelation} from "./car-models/deleteIsSuccessorOfRelation"
 import {createHasVariantRelation} from "./car-models/createHasVariantRelation"
 import {getAllHasVariantRelations} from "./car-models/getAllHasVariantRelations"
 import {deleteHasVariantRelation} from "./car-models/deleteHasVariantRelation"
+import {createCoveredByMagazineIssueRelation} from "./car-models/createCoveredByMagazineIssueRelation"
 import {createHasImageRelation} from "./car-models/createHasImageRelation"
 import {getSpecificHasImageRelation} from "./car-models/getSpecificHasImageRelation"
 import {getAllHasImageRelations} from "./car-models/getAllHasImageRelations"
@@ -22,7 +24,6 @@ import {createHasPrimeImageRelation} from "./car-models/createHasPrimeImageRelat
 import {getHasPrimeImageRelation} from "./car-models/getHasPrimeImageRelation"
 import {getSpecificHasPrimeImageRelation} from "./car-models/getSpecificHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./car-models/deleteHasPrimeImageRelation"
-import {deleteIsSuccessorOfRelation} from "./car-models/deleteIsSuccessorOfRelation"
 
 export const CarModelController = {
     async create(req: express.Request, res: express.Response) {
@@ -87,6 +88,10 @@ export const CarModelController = {
 
     async deleteHasVariantRelation(req: express.Request, res: express.Response) {
         await deleteHasVariantRelation(req, res)
+    },
+
+    async createCoveredByMagazineIssueRelation(req: express.Request, res: express.Response) {
+        await createCoveredByMagazineIssueRelation(req, res)
     },
 
     async createHasImageRelation(req: express.Request, res: express.Response) {
