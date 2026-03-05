@@ -344,4 +344,11 @@ export const MagazineIssue = {
 
         await deleteSpecificRel(magazineIssueId, imageId, RelType.MagazineIssueHasPrimeImage)
     },
+
+    async getAllPresentsCarModelVariantRelationships(magazineIssueId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await MagazineIssue.findById(magazineIssueId)
+
+        return getAllRels(magazineIssueId, RelType.MagazineIssuePresentsCarModelVariant)
+    },
 }

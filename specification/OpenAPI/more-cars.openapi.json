@@ -12679,6 +12679,48 @@
         }
       }
     },
+    "/magazine-issues/{magazine-issue-id}/presents-car-model-variant": {
+      "get": {
+        "operationId": "getMagazineIssuePresentsCarModelVariantRel",
+        "tags": [
+          "Magazine Issues"
+        ],
+        "summary": "Get all ›presents-car-model-variant‹ relationships for the `Magazine Issue`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "magazine-issue-id",
+            "description": "ID of the `Magazine Issue`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›presents-car-model-variant‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MagazineIssuePresentsCarModelVariantCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Magazine Issue` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/magazine-issues/{magazine-issue-id}/presents-car-model-variant/{car-model-variant-id}": {
       "post": {
         "tags": [
@@ -18927,6 +18969,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/MagazineIssuePresentsCarModelVariant"
+          }
+        }
+      },
+      "MagazineIssuePresentsCarModelVariantCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MagazineIssuePresentsCarModelVariantResponse"
+            }
           }
         }
       },

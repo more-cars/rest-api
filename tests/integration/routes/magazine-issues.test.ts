@@ -189,4 +189,12 @@ describe('Magazine Issues', () => {
         expect(MagazineIssueController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›presents-car-model-variant‹ relationships', async () => {
+        await request(app)
+            .get('/magazine-issues/123/presents-car-model-variant')
+
+        expect(MagazineIssueController.getAllPresentsCarModelVariantRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })

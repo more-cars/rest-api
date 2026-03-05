@@ -22,6 +22,7 @@ import {deleteHasImageRelation} from "./magazine-issues/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./magazine-issues/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./magazine-issues/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./magazine-issues/deleteHasPrimeImageRelation"
+import {getAllPresentsCarModelVariantRelations} from "./magazine-issues/getAllPresentsCarModelVariantRelations"
 
 export const MagazineIssueController = {
     async create(req: express.Request, res: express.Response) {
@@ -114,5 +115,9 @@ export const MagazineIssueController = {
 
     async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
+    },
+
+    async getAllPresentsCarModelVariantRelations(req: express.Request, res: express.Response) {
+        await getAllPresentsCarModelVariantRelations(req, res)
     },
 }
