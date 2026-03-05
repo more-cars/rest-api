@@ -24,6 +24,7 @@ router.get('/magazine-issues/:magazineIssueId/presents-car-model-variant', Magaz
 router.delete('/magazine-issues/:magazineIssueId/presents-car-model-variant/:carModelVariantId', MagazineIssueController.deletePresentsCarModelVariantRelation)
 router.post('/magazine-issues/:magazineIssueId/covers-racing-event/:racingEventId', MagazineIssueController.createCoversRacingEventRelation)
 router.get('/magazine-issues/:magazineIssueId/covers-racing-event', MagazineIssueController.getAllCoversRacingEventRelations)
+router.delete('/magazine-issues/:magazineIssueId/covers-racing-event/:racingEventId', MagazineIssueController.deleteCoversRacingEventRelation)
 router.post('/magazine-issues/:magazineIssueId/has-image/:imageId', MagazineIssueController.createHasImageRelation)
 router.get('/magazine-issues/:magazineIssueId/has-image', MagazineIssueController.getAllHasImageRelations)
 router.delete('/magazine-issues/:magazineIssueId/has-image/:imageId', MagazineIssueController.deleteHasImageRelation)

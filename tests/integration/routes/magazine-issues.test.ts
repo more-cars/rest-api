@@ -174,6 +174,14 @@ describe('Magazine Issues', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete ›covers-racing-event‹ relationship', async () => {
+        await request(app)
+            .delete('/magazine-issues/123/covers-racing-event/456')
+
+        expect(MagazineIssueController.deleteCoversRacingEventRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/magazine-issues/123/has-image/456')

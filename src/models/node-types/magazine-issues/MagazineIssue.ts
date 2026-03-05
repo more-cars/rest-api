@@ -309,6 +309,19 @@ export const MagazineIssue = {
         return getAllRels(magazineIssueId, RelType.MagazineIssueCoversRacingEvent)
     },
 
+    async deleteCoversRacingEventRelationship(magazineIssueId: number, racingEventId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await MagazineIssue.findById(magazineIssueId)
+        await RacingEvent.findById(racingEventId)
+
+        const relationship = await getSpecificRel(magazineIssueId, racingEventId, RelType.MagazineIssueCoversRacingEvent)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.MagazineIssueCoversRacingEvent, magazineIssueId, racingEventId)
+        }
+
+        await deleteSpecificRel(magazineIssueId, racingEventId, RelType.MagazineIssueCoversRacingEvent)
+    },
+
     async createHasImageRelationship(magazineIssueId: number, imageId: number) {
         // checking that both nodes exist -> exception is thrown if not
         await MagazineIssue.findById(magazineIssueId)
