@@ -3384,6 +3384,48 @@
         }
       }
     },
+    "/car-model-variants/{car-model-variant-id}/reviewed-by-magazine-issue-with-rating": {
+      "get": {
+        "operationId": "getCarModelVariantReviewedByMagazineIssueWithRatingRel",
+        "tags": [
+          "Car Model Variants"
+        ],
+        "summary": "Get all ›reviewed-by-magazine-issue-with-rating‹ relationships for the `Car Model Variant`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›reviewed-by-magazine-issue-with-rating‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelVariantReviewedByMagazineIssueWithRatingCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Car Model Variant` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/car-model-variants/{car-model-variant-id}/reviewed-by-magazine-issue-with-rating/{rating-id}": {
       "post": {
         "tags": [
@@ -15769,6 +15811,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/CarModelVariantReviewedByMagazineIssueWithRating"
+          }
+        }
+      },
+      "CarModelVariantReviewedByMagazineIssueWithRatingCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CarModelVariantReviewedByMagazineIssueWithRatingResponse"
+            }
           }
         }
       },

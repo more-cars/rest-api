@@ -142,6 +142,14 @@ describe('Car Model Variants', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Get all ›reviewed-by-magazine-issue-with-rating‹ relationships', async () => {
+        await request(app)
+            .get('/car-model-variants/123/reviewed-by-magazine-issue-with-rating')
+
+        expect(CarModelVariantController.getAllReviewedByMagazineIssueWithRatingRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›is-featured-in-racing-game‹ relationship', async () => {
         await request(app)
             .post('/car-model-variants/123/is-featured-in-racing-game/456')

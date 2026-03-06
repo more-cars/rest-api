@@ -230,6 +230,33 @@ export const CarModelVariant = {
         await deleteSpecificRel(carModelVariantId, magazineIssueId, RelType.CarModelVariantIsPresentedInMagazineIssue)
     },
 
+    async createReviewedByMagazineIssueWithRatingRelationship(carModelVariantId: number, ratingId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await Rating.findById(ratingId)
+
+        const existingRelation = await getSpecificRel(carModelVariantId, ratingId, RelType.CarModelVariantReviewedByMagazineIssueWithRating)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.CarModelVariantReviewedByMagazineIssueWithRating, carModelVariantId, ratingId)
+        }
+
+        await deleteIncomingRel(ratingId, RelType.CarModelVariantReviewedByMagazineIssueWithRating, ModelNodeType.CarModelVariant)
+
+        const createdRelationship = await createRel(carModelVariantId, ratingId, RelType.CarModelVariantReviewedByMagazineIssueWithRating)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getAllReviewedByMagazineIssueWithRatingRelationships(carModelVariantId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+
+        return getAllRels(carModelVariantId, RelType.CarModelVariantReviewedByMagazineIssueWithRating)
+    },
+
     async createIsFeaturedInRacingGameRelationship(carModelVariantId: number, racingGameId: number) {
         // checking that both nodes exist -> exception is thrown if not
         await CarModelVariant.findById(carModelVariantId)
@@ -350,25 +377,5 @@ export const CarModelVariant = {
         }
 
         await deleteSpecificRel(carModelVariantId, imageId, RelType.CarModelVariantHasPrimeImage)
-    },
-
-    async createReviewedByMagazineIssueWithRatingRelationship(carModelVariantId: number, ratingId: number) {
-        // checking that both nodes exist -> exception is thrown if not
-        await CarModelVariant.findById(carModelVariantId)
-        await Rating.findById(ratingId)
-
-        const existingRelation = await getSpecificRel(carModelVariantId, ratingId, RelType.CarModelVariantReviewedByMagazineIssueWithRating)
-        if (existingRelation) {
-            throw new RelAlreadyExistsError(RelType.CarModelVariantReviewedByMagazineIssueWithRating, carModelVariantId, ratingId)
-        }
-
-        await deleteIncomingRel(ratingId, RelType.CarModelVariantReviewedByMagazineIssueWithRating, ModelNodeType.CarModelVariant)
-
-        const createdRelationship = await createRel(carModelVariantId, ratingId, RelType.CarModelVariantReviewedByMagazineIssueWithRating)
-        if (!createdRelationship) {
-            throw new Error('Relationship could not be created')
-        }
-
-        return createdRelationship
     },
 }
