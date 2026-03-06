@@ -13720,59 +13720,6 @@
         }
       }
     },
-    "/ratings/{rating-id}/by-magazine-issue/{magazine-issue-id}": {
-      "post": {
-        "tags": [
-          "Ratings"
-        ],
-        "summary": "Creates a ›by-magazine-issue‹ relationship between the `Rating` and the `Magazine Issue`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "rating-id",
-            "description": "ID of the `Rating`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "in": "path",
-            "name": "magazine-issue-id",
-            "description": "ID of the `Magazine Issue`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Relationship ›by-magazine-issue‹ between `Rating` and `Magazine Issue` successfully created.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RatingByMagazineIssueResponse"
-                }
-              }
-            }
-          },
-          "304": {
-            "description": "The relationship ›by-magazine-issue‹ between `Rating` and `Magazine Issue` already exists."
-          },
-          "404": {
-            "description": "Request failed. `Rating` and/or `Magazine Issue` could not be found in the database.",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/ratings/{rating-id}": {
       "get": {
         "operationId": "getRatingById",
@@ -13836,6 +13783,101 @@
           },
           "404": {
             "description": "Deletion request failed. A `Rating` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ratings/{rating-id}/by-magazine-issue": {
+      "get": {
+        "operationId": "getRatingByMagazineIssueRel",
+        "tags": [
+          "Ratings"
+        ],
+        "summary": "Get the ›by-magazine-issue‹ relationship for the `Rating`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "rating-id",
+            "description": "ID of the `Rating`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›by-magazine-issue‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RatingByMagazineIssueResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Rating` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ratings/{rating-id}/by-magazine-issue/{magazine-issue-id}": {
+      "post": {
+        "tags": [
+          "Ratings"
+        ],
+        "summary": "Creates a ›by-magazine-issue‹ relationship between the `Rating` and the `Magazine Issue`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "rating-id",
+            "description": "ID of the `Rating`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "magazine-issue-id",
+            "description": "ID of the `Magazine Issue`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Relationship ›by-magazine-issue‹ between `Rating` and `Magazine Issue` successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RatingByMagazineIssueResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "The relationship ›by-magazine-issue‹ between `Rating` and `Magazine Issue` already exists."
+          },
+          "404": {
+            "description": "Request failed. `Rating` and/or `Magazine Issue` could not be found in the database.",
             "content": {
               "text/plain": {
                 "schema": {

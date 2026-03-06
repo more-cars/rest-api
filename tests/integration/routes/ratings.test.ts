@@ -45,4 +45,12 @@ describe('Ratings', () => {
         expect(RatingController.createByMagazineIssueRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›by-magazine-issue‹ relationship', async () => {
+        await request(app)
+            .get('/ratings/123/by-magazine-issue')
+
+        expect(RatingController.getByMagazineIssueRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

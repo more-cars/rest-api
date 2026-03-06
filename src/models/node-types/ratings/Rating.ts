@@ -9,15 +9,14 @@ import {getAllNodesOfType} from "../../../db/node-types/ratings/getAllNodesOfTyp
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {deleteNode} from "../../../db/nodes/deleteNode"
 import {createRel} from "../../relationships/createRel"
-
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
-
 import {MagazineIssue} from "../magazine-issues/MagazineIssue"
 import {getSpecificRel} from "../../relationships/getSpecificRel"
 import {ModelNodeType} from "../../types/ModelNodeType"
 import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
 import {RelType} from "../../relationships/types/RelType"
-
+import {getRel} from "../../relationships/getRel"
+import {RelNotFoundError} from "../../types/RelNotFoundError"
 
 export const Rating = {
     async create(data: CreateRatingInput): Promise<RatingNode> {
@@ -76,5 +75,17 @@ export const Rating = {
         }
 
         return createdRelationship
+    },
+
+    async getByMagazineIssueRelationship(ratingId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await Rating.findById(ratingId)
+
+        const relationship = await getRel(ratingId, RelType.RatingByMagazineIssue)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.RatingByMagazineIssue, ratingId, null)
+        }
+
+        return relationship
     },
 }
