@@ -18,7 +18,10 @@ exports.createHasPrimeImageRelationship = async function () {
 
 exports.create = async function (prefix = '') {
     const response = await post("/ratings", {
-        name: 'Dummy Rating',
+        rating_value: 93,
+        scale_minimum: 0,
+        scale_maximum: 100,
+        scale_direction: 'up',
     })
 
     bru.setEnvVar('valid' + prefix + 'RatingId', response.id)
