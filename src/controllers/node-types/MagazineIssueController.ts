@@ -20,6 +20,7 @@ import {getAllPresentsCarModelVariantRelations} from "./magazine-issues/getAllPr
 import {deletePresentsCarModelVariantRelation} from "./magazine-issues/deletePresentsCarModelVariantRelation"
 import {createReviewedCarModelVariantWithRatingRelation} from "./magazine-issues/createReviewedCarModelVariantWithRatingRelation"
 import {getAllReviewedCarModelVariantWithRatingRelations} from "./magazine-issues/getAllReviewedCarModelVariantWithRatingRelations"
+import {deleteReviewedCarModelVariantWithRatingRelation} from "./magazine-issues/deleteReviewedCarModelVariantWithRatingRelation"
 import {createCoversRacingEventRelation} from "./magazine-issues/createCoversRacingEventRelation"
 import {getAllCoversRacingEventRelations} from "./magazine-issues/getAllCoversRacingEventRelations"
 import {deleteCoversRacingEventRelation} from "./magazine-issues/deleteCoversRacingEventRelation"
@@ -115,12 +116,20 @@ export const MagazineIssueController = {
         await getAllReviewedCarModelVariantWithRatingRelations(req, res)
     },
 
+    async deleteReviewedCarModelVariantWithRatingRelation(req: express.Request, res: express.Response) {
+        await deleteReviewedCarModelVariantWithRatingRelation(req, res)
+    },
+
     async createCoversRacingEventRelation(req: express.Request, res: express.Response) {
         await createCoversRacingEventRelation(req, res)
     },
 
     async getAllCoversRacingEventRelations(req: express.Request, res: express.Response) {
         await getAllCoversRacingEventRelations(req, res)
+    },
+
+    async deleteCoversRacingEventRelation(req: express.Request, res: express.Response) {
+        await deleteCoversRacingEventRelation(req, res)
     },
 
     async createHasImageRelation(req: express.Request, res: express.Response) {
@@ -145,9 +154,5 @@ export const MagazineIssueController = {
 
     async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
-    },
-
-    async deleteCoversRacingEventRelation(req: express.Request, res: express.Response) {
-        await deleteCoversRacingEventRelation(req, res)
     },
 }

@@ -174,6 +174,14 @@ describe('Magazine Issues', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete ›reviewed-car-model-variant-with-rating‹ relationship', async () => {
+        await request(app)
+            .delete('/magazine-issues/123/reviewed-car-model-variant-with-rating/456')
+
+        expect(MagazineIssueController.deleteReviewedCarModelVariantWithRatingRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›covers-racing-event‹ relationship', async () => {
         await request(app)
             .post('/magazine-issues/123/covers-racing-event/456')
