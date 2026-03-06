@@ -1,0 +1,25 @@
+info:
+  name: Delete ›has-image‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/ratings/{{validRatingId}}/has-image/{{validImageId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const Ratings = require('./lib/node-types/Ratings.js')
+        const Images = require('./lib/node-types/Images.js')
+        await Ratings.create()
+        await Images.create()
+        await Ratings.createHasImageRelationship()

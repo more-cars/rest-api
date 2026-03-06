@@ -15,5 +15,6 @@ router.get('/ratings/:ratingId/for-car-model-variant', RatingController.getForCa
 router.delete('/ratings/:ratingId/for-car-model-variant/:carModelVariantId', RatingController.deleteForCarModelVariantRelation)
 router.post('/ratings/:ratingId/has-image/:imageId', RatingController.createHasImageRelation)
 router.get('/ratings/:ratingId/has-image', RatingController.getAllHasImageRelations)
+router.delete('/ratings/:ratingId/has-image/:imageId', RatingController.deleteHasImageRelation)
 
 export default router

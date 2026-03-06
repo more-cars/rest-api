@@ -101,4 +101,12 @@ describe('Ratings', () => {
         expect(RatingController.getAllHasImageRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-image‹ relationship', async () => {
+        await request(app)
+            .delete('/ratings/123/has-image/456')
+
+        expect(RatingController.deleteHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
