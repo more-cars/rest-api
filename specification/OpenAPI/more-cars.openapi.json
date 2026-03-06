@@ -13887,6 +13887,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Ratings"
+        ],
+        "summary": "Deletes the ›by-magazine-issue‹ relationship between the `Rating` and the `Magazine Issue`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "rating-id",
+            "description": "ID of the `Rating`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "magazine-issue-id",
+            "description": "ID of the `Magazine Issue`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›by-magazine-issue‹ relationship between `Rating` and `Magazine Issue` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›by-magazine-issue‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/relationships/{relationship-id}": {

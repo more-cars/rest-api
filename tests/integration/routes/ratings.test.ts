@@ -53,4 +53,12 @@ describe('Ratings', () => {
         expect(RatingController.getByMagazineIssueRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›by-magazine-issue‹ relationship', async () => {
+        await request(app)
+            .delete('/ratings/123/by-magazine-issue/456')
+
+        expect(RatingController.deleteByMagazineIssueRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
