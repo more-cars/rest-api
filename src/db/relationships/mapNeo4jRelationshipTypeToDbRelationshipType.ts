@@ -197,6 +197,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 // Magazine Issue - Reverse
                 [RelationshipTypeNeo4j.MagazineIssueBelongsToMagazine, RelationshipType.MagazineIssueBelongsToMagazine],
                 [RelationshipTypeNeo4j.MagazineIssueFollowsIssue, RelationshipType.MagazineIssueFollowsIssue],
+                [RelationshipTypeNeo4j.MagazineIssueReviewedCarModelVariantWithRating, RelationshipType.MagazineIssueReviewedCarModelVariantWithRating],
             ])],
             [RelationshipDirection.FORWARD, new Map([
                 // Magazine Issue - Forward

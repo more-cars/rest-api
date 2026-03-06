@@ -25,6 +25,7 @@ import {SemanticError} from "../../types/SemanticError"
 import {CarModel} from "../car-models/CarModel"
 import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 import {RacingEvent} from "../racing-events/RacingEvent"
+import {Rating} from "../ratings/Rating"
 
 export const MagazineIssue = {
     async create(data: CreateMagazineIssueInput): Promise<MagazineIssueNode> {
@@ -281,6 +282,26 @@ export const MagazineIssue = {
         }
 
         await deleteSpecificRel(magazineIssueId, carModelVariantId, RelType.MagazineIssuePresentsCarModelVariant)
+    },
+
+    async createReviewedCarModelVariantWithRatingRelationship(magazineIssueId: number, ratingId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await MagazineIssue.findById(magazineIssueId)
+        await Rating.findById(ratingId)
+
+        const existingRelation = await getSpecificRel(magazineIssueId, ratingId, RelType.MagazineIssueReviewedCarModelVariantWithRating)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.MagazineIssueReviewedCarModelVariantWithRating, magazineIssueId, ratingId)
+        }
+
+        await deleteIncomingRel(ratingId, RelType.MagazineIssueReviewedCarModelVariantWithRating, ModelNodeType.MagazineIssue)
+
+        const createdRelationship = await createRel(magazineIssueId, ratingId, RelType.MagazineIssueReviewedCarModelVariantWithRating)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 
     async createCoversRacingEventRelationship(magazineIssueId: number, racingEventId: number) {

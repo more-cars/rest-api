@@ -158,6 +158,14 @@ describe('Magazine Issues', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Create ›reviewed-car-model-variant-with-rating‹ relationship', async () => {
+        await request(app)
+            .post('/magazine-issues/123/reviewed-car-model-variant-with-rating/456')
+
+        expect(MagazineIssueController.createReviewedCarModelVariantWithRatingRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›covers-racing-event‹ relationship', async () => {
         await request(app)
             .post('/magazine-issues/123/covers-racing-event/456')

@@ -78,6 +78,7 @@ export function mapDbRelationshipTypeToModelRelType(dbRelationshipType: Relation
         [RelationshipType.MagazineIssueFollowedByIssue, RelType.MagazineIssueFollowedByIssue],
         [RelationshipType.MagazineIssueCoversCarModel, RelType.MagazineIssueCoversCarModel],
         [RelationshipType.MagazineIssuePresentsCarModelVariant, RelType.MagazineIssuePresentsCarModelVariant],
+        [RelationshipType.MagazineIssueReviewedCarModelVariantWithRating, RelType.MagazineIssueReviewedCarModelVariantWithRating],
         [RelationshipType.MagazineIssueCoversRacingEvent, RelType.MagazineIssueCoversRacingEvent],
         [RelationshipType.MagazineIssueHasImage, RelType.MagazineIssueHasImage],
         [RelationshipType.MagazineIssueHasPrimeImage, RelType.MagazineIssueHasPrimeImage],
