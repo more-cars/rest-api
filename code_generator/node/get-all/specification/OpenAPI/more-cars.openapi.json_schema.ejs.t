@@ -1,8 +1,8 @@
 ---
 inject: true
 to: specification/OpenAPI/more-cars.openapi.json
-before: "<%= h.changeCase.pascal(nodeType) %>Properties"
-skip_if: "<%= h.changeCase.pascal(nodeType) %>CollectionResponse"
+before: \"<%= h.changeCase.pascal(nodeType) %>Properties\"
+skip_if: \"<%= h.changeCase.pascal(nodeType) %>CollectionResponse\"
 ---
       "<%= h.changeCase.pascal(nodeType) %>CollectionResponse": {
         "type": "object",
@@ -11,6 +11,14 @@ skip_if: "<%= h.changeCase.pascal(nodeType) %>CollectionResponse"
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/<%= h.changeCase.pascal(nodeType) %>Response"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              }
             }
           }
         }
