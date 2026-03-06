@@ -1,0 +1,35 @@
+info:
+  name: Get Rating by ID (valid data)
+  type: http
+  tags:
+    - get
+    - node
+    - valid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/ratings/{{validRatingId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validRatingId}}"
+    - expression: res.body.attributes.created_at
+      operator: isString
+    - expression: res.body.attributes.created_at
+      operator: isNotEmpty
+    - expression: res.body.attributes.updated_at
+      operator: isString
+    - expression: res.body.attributes.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const Ratings = require('./lib/node-types/Ratings.js')
+        await Ratings.create()

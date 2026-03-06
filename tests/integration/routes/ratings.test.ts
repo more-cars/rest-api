@@ -13,4 +13,12 @@ describe('Ratings', () => {
         expect(RatingController.create)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get Node by ID', async () => {
+        await request(app)
+            .get('/ratings/123')
+
+        expect(RatingController.getById)
+            .toHaveBeenCalledTimes(1)
+    })
 })

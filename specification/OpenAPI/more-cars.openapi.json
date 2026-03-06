@@ -13661,6 +13661,48 @@
         }
       }
     },
+    "/ratings/{rating-id}": {
+      "get": {
+        "operationId": "getRatingById",
+        "tags": [
+          "Ratings"
+        ],
+        "summary": "Get `Rating` by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "rating-id",
+            "description": "ID of the `Rating`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Rating` successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RatingResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. A `Rating` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/relationships/{relationship-id}": {
       "get": {
         "operationId": "getRelationshipById",

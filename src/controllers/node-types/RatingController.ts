@@ -1,8 +1,13 @@
 import express from "express"
 import {create} from "./ratings/create"
+import {getById} from "./ratings/getById"
 
 export const RatingController = {
     async create(req: express.Request, res: express.Response) {
         await create(req, res)
+    },
+
+    async getById(req: express.Request, res: express.Response) {
+        await getById(req, res)
     },
 }

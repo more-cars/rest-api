@@ -3,6 +3,8 @@ import {RatingNode} from "./types/RatingNode"
 import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../../db/node-types/ratings/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
+import {getNodeById} from "../../../db/node-types/ratings/getNodeById"
+import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 
 export const Rating = {
     async create(data: CreateRatingInput): Promise<RatingNode> {
@@ -10,5 +12,15 @@ export const Rating = {
         const result = await createNode(input)
 
         return convertDbNodeToModelNode(result) as RatingNode
+    },
+
+    async findById(id: number): Promise<RatingNode> {
+        const node = await getNodeById(id)
+
+        if (!node) {
+            throw new NodeNotFoundError(id)
+        }
+
+        return convertDbNodeToModelNode(node) as RatingNode
     },
 }
