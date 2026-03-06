@@ -1,5 +1,9 @@
 const {post} = require("../apiRequest.js")
 
+exports.createByMagazineIssueRelationship = async function () {
+    await post("/ratings/" + bru.getEnvVar('validRatingId') + "/by-magazine-issue/" + bru.getEnvVar('validMagazineIssueId'))
+}
+
 exports.create = async function (prefix = '') {
     const response = await post("/ratings", {
         name: 'Dummy Rating',
