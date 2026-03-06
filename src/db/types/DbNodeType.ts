@@ -14,6 +14,7 @@ export enum DbNodeType {
     GamingPlatform = "GamingPlatform",
     Magazine = "Magazine",
     MagazineIssue = "MagazineIssue",
+    Rating = "Rating",
     Image = "Image",
     Node = "",
 }

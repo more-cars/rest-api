@@ -15,6 +15,7 @@ import {RacingGameSchema} from "./RacingGameSchema"
 import {GamingPlatformSchema} from "./GamingPlatformSchema"
 import {MagazineSchema} from "./MagazineSchema"
 import {MagazineIssueSchema} from "./MagazineIssueSchema"
+import {RatingSchema} from "./RatingSchema"
 import {ImageSchema} from "./ImageSchema"
 
 export function getResponseNodeSchema(nodeType: ControllerNodeType) {
@@ -49,6 +50,8 @@ export function getResponseNodeSchema(nodeType: ControllerNodeType) {
             return MagazineSchema
         case ControllerNodeType.MagazineIssue:
             return MagazineIssueSchema
+        case ControllerNodeType.Rating:
+            return RatingSchema
         case ControllerNodeType.Image:
             return ImageSchema
         default:

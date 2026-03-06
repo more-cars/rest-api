@@ -15,6 +15,7 @@ import {seedRacingGame} from "./racing-games/nodes/seedRacingGame"
 import {seedGamingPlatform} from "./gaming-platforms/nodes/seedGamingPlatform"
 import {seedMagazine} from "./magazines/nodes/seedMagazine"
 import {seedMagazineIssue} from "./magazine-issues/nodes/seedMagazineIssue"
+import {seedRating} from "./ratings/nodes/seedRating"
 import {seedImage} from "./images/nodes/seedImage"
 
 export async function seedNode(dbNodeType: DbNodeType, customFakeData: object = {}) {
@@ -49,6 +50,8 @@ export async function seedNode(dbNodeType: DbNodeType, customFakeData: object = 
             return seedMagazine(customFakeData)
         case DbNodeType.MagazineIssue:
             return seedMagazineIssue(customFakeData)
+        case DbNodeType.Rating:
+            return seedRating(customFakeData)
         case DbNodeType.Image:
             return seedImage(customFakeData)
         default:

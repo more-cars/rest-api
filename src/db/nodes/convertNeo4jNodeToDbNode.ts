@@ -16,6 +16,7 @@ import {convertRacingGameNeo4jNodeToDbNode} from "../node-types/racing-games/con
 import {convertGamingPlatformNeo4jNodeToDbNode} from "../node-types/gaming-platforms/convertGamingPlatformNeo4jNodeToDbNode"
 import {convertMagazineNeo4jNodeToDbNode} from "../node-types/magazines/convertMagazineNeo4jNodeToDbNode"
 import {convertMagazineIssueNeo4jNodeToDbNode} from "../node-types/magazine-issues/convertMagazineIssueNeo4jNodeToDbNode"
+import {convertRatingNeo4jNodeToDbNode} from "../node-types/ratings/convertRatingNeo4jNodeToDbNode"
 import {convertImageNeo4jNodeToDbNode} from "../node-types/images/convertImageNeo4jNodeToDbNode"
 
 export function convertNeo4jNodeToDbNode(neo4jNode: Node, nodeTypeLabel: Neo4jNodeType) {
@@ -35,6 +36,7 @@ export function convertNeo4jNodeToDbNode(neo4jNode: Node, nodeTypeLabel: Neo4jNo
         [Neo4jNodeType.GamingPlatform, convertGamingPlatformNeo4jNodeToDbNode],
         [Neo4jNodeType.Magazine, convertMagazineNeo4jNodeToDbNode],
         [Neo4jNodeType.MagazineIssue, convertMagazineIssueNeo4jNodeToDbNode],
+        [Neo4jNodeType.Rating, convertRatingNeo4jNodeToDbNode],
         [Neo4jNodeType.Image, convertImageNeo4jNodeToDbNode],
     ])
 

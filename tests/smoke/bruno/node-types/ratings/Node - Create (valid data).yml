@@ -1,0 +1,38 @@
+info:
+  name: Create Rating (valid data)
+  type: http
+  tags:
+    - create
+    - node
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/ratings"
+  body:
+    type: json
+    data: |-
+      {
+        "rating_value": 93,
+        "scale_minimum": 0,
+        "scale_maximum": 100,
+        "scale_direction": "up"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: gte
+      value: "12000000"
+  scripts:
+    - type: tests
+      code: |-
+        test("both timestamps should be identical", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.eql(data.attributes.updated_at)
+        })

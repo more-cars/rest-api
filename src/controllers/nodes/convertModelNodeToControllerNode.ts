@@ -33,6 +33,8 @@ import type {RacingGameNode} from "../../models/node-types/racing-games/types/Ra
 import type {GamingPlatformNode} from "../../models/node-types/gaming-platforms/types/GamingPlatformNode"
 import type {MagazineNode} from "../../models/node-types/magazines/types/MagazineNode"
 import type {MagazineIssueNode} from "../../models/node-types/magazine-issues/types/MagazineIssueNode"
+import {convertRatingModelNodeToControllerNode} from "../node-types/ratings/convertRatingModelNodeToControllerNode"
+import type {RatingNode} from "../../models/node-types/ratings/types/RatingNode"
 import type {ImageNode} from "../../models/node-types/images/types/ImageNode"
 
 export function convertModelNodeToControllerNode(modelNode: ModelNode): ControllerNode {
@@ -67,6 +69,8 @@ export function convertModelNodeToControllerNode(modelNode: ModelNode): Controll
             return convertMagazineModelNodeToControllerNode(modelNode as MagazineNode)
         case ModelNodeType.MagazineIssue:
             return convertMagazineIssueModelNodeToControllerNode(modelNode as MagazineIssueNode)
+        case ModelNodeType.Rating:
+            return convertRatingModelNodeToControllerNode(modelNode as RatingNode)
         case ModelNodeType.Image:
             return convertImageModelNodeToControllerNode(modelNode as ImageNode)
         default:

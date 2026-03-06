@@ -1,0 +1,25 @@
+import {expect, test} from 'vitest'
+import {FakeRating} from "../../../../../_toolbox/fixtures/nodes/FakeRating"
+import {Rating} from "../../../../../../src/models/node-types/ratings/Rating"
+
+test('Expecting node to be created when provided with valid data', async () => {
+    const inputData = FakeRating.dbInput
+    const createdNode = await Rating.create(inputData)
+
+    expect(createdNode.attributes)
+        .toEqual(expect.objectContaining(inputData))
+})
+
+test('Trying to override read-only properties', async () => {
+    const validData = FakeRating.dbInput
+    const readOnlyData = {
+        id: 9999,
+        created_at: "NOT_ALLOWED_TO_OVERWRITE",
+        updated_at: "NOT_ALLOWED_TO_OVERWRITE",
+    }
+    const data = Object.assign(validData, readOnlyData)
+    const createdNode = await Rating.create(data)
+
+    expect(createdNode)
+        .not.toEqual(expect.objectContaining(readOnlyData))
+})

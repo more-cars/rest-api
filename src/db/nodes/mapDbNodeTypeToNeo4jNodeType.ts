@@ -19,6 +19,7 @@ export function mapDbNodeTypeToNeo4jNodeType(nodeTypeLabel: DbNodeType): Neo4jNo
         [DbNodeType.GamingPlatform, Neo4jNodeType.GamingPlatform],
         [DbNodeType.Magazine, Neo4jNodeType.Magazine],
         [DbNodeType.MagazineIssue, Neo4jNodeType.MagazineIssue],
+        [DbNodeType.Rating, Neo4jNodeType.Rating],
         [DbNodeType.Image, Neo4jNodeType.Image],
         [DbNodeType.Node, Neo4jNodeType.Node],
     ])

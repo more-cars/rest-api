@@ -17,6 +17,7 @@ import racingGames from "./routes/node-types/racing-games"
 import gamingPlatforms from "./routes/node-types/gaming-platforms"
 import magazines from "./routes/node-types/magazines"
 import magazineIssues from "./routes/node-types/magazine-issues"
+import ratings from "./routes/node-types/ratings"
 import images from "./routes/node-types/images"
 import relationships from "./routes/relationships"
 import {basicAuthentication} from "./basicAuthentication"
@@ -51,6 +52,7 @@ app.use('/', racingGames)
 app.use('/', gamingPlatforms)
 app.use('/', magazines)
 app.use('/', magazineIssues)
+app.use('/', ratings)
 app.use('/', images)
 app.use('/', relationships)
 

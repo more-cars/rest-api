@@ -30,6 +30,8 @@ import {convertMagazineDbNodeToModelNode} from "./magazines/create/convertMagazi
 import type {MagazineNode} from "../../db/node-types/magazines/types/MagazineNode"
 import {convertMagazineIssueDbNodeToModelNode} from "./magazine-issues/create/convertMagazineIssueDbNodeToModelNode"
 import type {MagazineIssueNode} from "../../db/node-types/magazine-issues/types/MagazineIssueNode"
+import {convertRatingDbNodeToModelNode} from "./ratings/create/convertRatingDbNodeToModelNode"
+import type {RatingNode} from "../../db/node-types/ratings/types/RatingNode"
 import {convertImageDbNodeToModelNode} from "./images/create/convertImageDbNodeToModelNode"
 import type {ImageNode} from "../../db/node-types/images/types/ImageNode"
 import {NodeTypeNotFoundError} from "../types/NodeTypeNotFoundError"
@@ -66,6 +68,8 @@ export function convertDbNodeToModelNode(dbNode: DbNode) {
             return convertMagazineDbNodeToModelNode(dbNode as MagazineNode)
         case DbNodeType.MagazineIssue:
             return convertMagazineIssueDbNodeToModelNode(dbNode as MagazineIssueNode)
+        case DbNodeType.Rating:
+            return convertRatingDbNodeToModelNode(dbNode as RatingNode)
         case DbNodeType.Image:
             return convertImageDbNodeToModelNode(dbNode as ImageNode)
         default:

@@ -16,6 +16,7 @@ import {FakeRacingGame} from "./FakeRacingGame"
 import {FakeGamingPlatform} from "./FakeGamingPlatform"
 import {FakeMagazine} from "./FakeMagazine"
 import {FakeMagazineIssue} from "./FakeMagazineIssue"
+import {FakeRating} from "./FakeRating"
 import {FakeImage} from "./FakeImage"
 
 export function getFakeNode(nodeType: NodeType) {
@@ -35,6 +36,7 @@ export function getFakeNode(nodeType: NodeType) {
         [NodeType.GamingPlatform, FakeGamingPlatform],
         [NodeType.Magazine, FakeMagazine],
         [NodeType.MagazineIssue, FakeMagazineIssue],
+        [NodeType.Rating, FakeRating],
         [NodeType.Image, FakeImage],
         [NodeType.Node, FakeBrand],
     ])

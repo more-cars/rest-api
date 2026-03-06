@@ -13,6 +13,7 @@ import type {RacingGameNode} from "../node-types/racing-games/types/RacingGameNo
 import type {GamingPlatformNode} from "../node-types/gaming-platforms/types/GamingPlatformNode"
 import type {MagazineNode} from "../node-types/magazines/types/MagazineNode"
 import type {MagazineIssueNode} from "../node-types/magazine-issues/types/MagazineIssueNode"
+import type {RatingNode} from "../node-types/ratings/types/RatingNode"
 import type {ImageNode} from "../node-types/images/types/ImageNode"
 
 export type ControllerNode =
@@ -31,4 +32,5 @@ export type ControllerNode =
     GamingPlatformNode |
     MagazineNode |
     MagazineIssueNode |
+    RatingNode |
     ImageNode
