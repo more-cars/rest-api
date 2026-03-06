@@ -3477,6 +3477,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Car Model Variants"
+        ],
+        "summary": "Deletes the ›reviewed-by-magazine-issue-with-rating‹ relationship between the `Car Model Variant` and the `Rating`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "rating-id",
+            "description": "ID of the `Rating`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›reviewed-by-magazine-issue-with-rating‹ relationship between `Car Model Variant` and `Rating` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›reviewed-by-magazine-issue-with-rating‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/car-model-variants/{car-model-variant-id}/is-featured-in-racing-game": {

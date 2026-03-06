@@ -257,6 +257,19 @@ export const CarModelVariant = {
         return getAllRels(carModelVariantId, RelType.CarModelVariantReviewedByMagazineIssueWithRating)
     },
 
+    async deleteReviewedByMagazineIssueWithRatingRelationship(carModelVariantId: number, ratingId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await Rating.findById(ratingId)
+
+        const relationship = await getSpecificRel(carModelVariantId, ratingId, RelType.CarModelVariantReviewedByMagazineIssueWithRating)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.CarModelVariantReviewedByMagazineIssueWithRating, carModelVariantId, ratingId)
+        }
+
+        await deleteSpecificRel(carModelVariantId, ratingId, RelType.CarModelVariantReviewedByMagazineIssueWithRating)
+    },
+
     async createIsFeaturedInRacingGameRelationship(carModelVariantId: number, racingGameId: number) {
         // checking that both nodes exist -> exception is thrown if not
         await CarModelVariant.findById(carModelVariantId)

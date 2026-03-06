@@ -1,0 +1,25 @@
+info:
+  name: Delete ›reviewed-by-magazine-issue-with-rating‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/car-model-variants/{{validCarModelVariantId}}/reviewed-by-magazine-issue-with-rating/{{validRatingId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const CarModelVariants = require('./lib/node-types/CarModelVariants.js')
+        const Ratings = require('./lib/node-types/Ratings.js')
+        await CarModelVariants.create()
+        await Ratings.create()
+        await CarModelVariants.createReviewedByMagazineIssueWithRatingRelationship()
