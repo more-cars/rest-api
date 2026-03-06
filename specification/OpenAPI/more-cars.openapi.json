@@ -14772,6 +14772,14 @@
             "items": {
               "$ref": "#/components/schemas/BrandResponse"
             }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              }
+            }
           }
         }
       },
@@ -15075,6 +15083,14 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CarModelResponse"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              }
             }
           }
         }
@@ -15704,6 +15720,14 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CarModelVariantResponse"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              }
             }
           }
         }
@@ -16367,6 +16391,14 @@
             "items": {
               "$ref": "#/components/schemas/ImageResponse"
             }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              }
+            }
           }
         }
       },
@@ -16653,6 +16685,14 @@
             "items": {
               "$ref": "#/components/schemas/CompanyResponse"
             }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              }
+            }
           }
         }
       },
@@ -16906,6 +16946,14 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/RaceTrackResponse"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              }
             }
           }
         }
@@ -17250,6 +17298,14 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/TrackLayoutResponse"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              }
             }
           }
         }
@@ -17694,6 +17750,14 @@
             "items": {
               "$ref": "#/components/schemas/RacingSeriesResponse"
             }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              }
+            }
           }
         }
       },
@@ -17951,6 +18015,14 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/RacingEventResponse"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              }
             }
           }
         }
@@ -18534,6 +18606,14 @@
             "items": {
               "$ref": "#/components/schemas/RacingSessionResponse"
             }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              }
+            }
           }
         }
       },
@@ -18863,6 +18943,14 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/SessionResultResponse"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              }
             }
           }
         }
@@ -19220,6 +19308,14 @@
             "items": {
               "$ref": "#/components/schemas/LapTimeResponse"
             }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              }
+            }
           }
         }
       },
@@ -19563,6 +19659,14 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/RacingGameResponse"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              }
             }
           }
         }
@@ -19937,6 +20041,14 @@
             "items": {
               "$ref": "#/components/schemas/GamingPlatformResponse"
             }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              }
+            }
           }
         }
       },
@@ -20232,6 +20344,14 @@
             "items": {
               "$ref": "#/components/schemas/MagazineResponse"
             }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              }
+            }
           }
         }
       },
@@ -20515,6 +20635,14 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/MagazineIssueResponse"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              }
             }
           }
         }
