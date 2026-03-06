@@ -8,5 +8,10 @@ export const RatingRelationshipSpecification: RelationshipTypeSpecification[] = 
         endNodeType: NodeType.MagazineIssue,
         isReverseRelationship: false,
     }],
+    [RelationshipType.RatingForCarModelVariant, {
+        startNodeType: NodeType.Rating,
+        endNodeType: NodeType.CarModelVariant,
+        isReverseRelationship: false,
+    }],
     //
 ]

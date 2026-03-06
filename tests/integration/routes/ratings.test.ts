@@ -61,4 +61,12 @@ describe('Ratings', () => {
         expect(RatingController.deleteByMagazineIssueRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›for-car-model-variant‹ relationship', async () => {
+        await request(app)
+            .post('/ratings/123/for-car-model-variant/456')
+
+        expect(RatingController.createForCarModelVariantRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

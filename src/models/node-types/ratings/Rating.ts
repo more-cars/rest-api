@@ -18,6 +18,7 @@ import {RelType} from "../../relationships/types/RelType"
 import {getRel} from "../../relationships/getRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
 import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
+import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 
 export const Rating = {
     async create(data: CreateRatingInput): Promise<RatingNode> {
@@ -101,5 +102,25 @@ export const Rating = {
         }
 
         await deleteSpecificRel(ratingId, magazineIssueId, RelType.RatingByMagazineIssue)
+    },
+
+    async createForCarModelVariantRelationship(ratingId: number, carModelVariantId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Rating.findById(ratingId)
+        await CarModelVariant.findById(carModelVariantId)
+
+        const existingRelation = await getSpecificRel(ratingId, carModelVariantId, RelType.RatingForCarModelVariant)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.RatingForCarModelVariant, ratingId, carModelVariantId)
+        }
+        await deleteOutgoingRel(ratingId, RelType.RatingForCarModelVariant, ModelNodeType.CarModelVariant)
+
+
+        const createdRelationship = await createRel(ratingId, carModelVariantId, RelType.RatingForCarModelVariant)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }

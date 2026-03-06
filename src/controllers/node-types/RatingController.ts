@@ -6,6 +6,7 @@ import {deleteNode} from "./ratings/deleteNode"
 import {createByMagazineIssueRelation} from "./ratings/createByMagazineIssueRelation"
 import {getByMagazineIssueRelation} from "./ratings/getByMagazineIssueRelation"
 import {deleteByMagazineIssueRelation} from "./ratings/deleteByMagazineIssueRelation"
+import {createForCarModelVariantRelation} from "./ratings/createForCarModelVariantRelation"
 
 export const RatingController = {
     async create(req: express.Request, res: express.Response) {
@@ -34,5 +35,9 @@ export const RatingController = {
 
     async deleteByMagazineIssueRelation(req: express.Request, res: express.Response) {
         await deleteByMagazineIssueRelation(req, res)
+    },
+
+    async createForCarModelVariantRelation(req: express.Request, res: express.Response) {
+        await createForCarModelVariantRelation(req, res)
     },
 }
