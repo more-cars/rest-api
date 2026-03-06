@@ -109,4 +109,12 @@ describe('Ratings', () => {
         expect(RatingController.deleteHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .post('/ratings/123/has-prime-image/456')
+
+        expect(RatingController.createHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

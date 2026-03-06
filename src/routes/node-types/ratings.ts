@@ -16,5 +16,6 @@ router.delete('/ratings/:ratingId/for-car-model-variant/:carModelVariantId', Rat
 router.post('/ratings/:ratingId/has-image/:imageId', RatingController.createHasImageRelation)
 router.get('/ratings/:ratingId/has-image', RatingController.getAllHasImageRelations)
 router.delete('/ratings/:ratingId/has-image/:imageId', RatingController.deleteHasImageRelation)
+router.post('/ratings/:ratingId/has-prime-image/:imageId', RatingController.createHasPrimeImageRelation)
 
 export default router

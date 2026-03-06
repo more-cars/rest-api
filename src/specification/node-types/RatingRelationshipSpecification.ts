@@ -18,5 +18,10 @@ export const RatingRelationshipSpecification: RelationshipTypeSpecification[] = 
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    [RelationshipType.RatingHasPrimeImage, {
+        startNodeType: NodeType.Rating,
+        endNodeType: NodeType.Image,
+        isReverseRelationship: false,
+    }],
     //
 ]

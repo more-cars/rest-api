@@ -85,6 +85,7 @@ export function mapDbRelationshipTypeToRelationshipType(dbRelationshipType: DbRe
         [DbRelationshipType.RatingByMagazineIssue, RelationshipType.RatingByMagazineIssue],
         [DbRelationshipType.RatingForCarModelVariant, RelationshipType.RatingForCarModelVariant],
         [DbRelationshipType.RatingHasImage, RelationshipType.RatingHasImage],
+        [DbRelationshipType.RatingHasPrimeImage, RelationshipType.RatingHasPrimeImage],
         [DbRelationshipType.ImageBelongsToNode, RelationshipType.ImageBelongsToNode],
         [DbRelationshipType.ImageIsPrimeImageOfNode, RelationshipType.ImageIsPrimeImageOfNode],
     ])

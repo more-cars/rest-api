@@ -70,8 +70,8 @@ export const Rating = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.RatingByMagazineIssue, ratingId, magazineIssueId)
         }
-        await deleteOutgoingRel(ratingId, RelType.RatingByMagazineIssue, ModelNodeType.MagazineIssue)
 
+        await deleteOutgoingRel(ratingId, RelType.RatingByMagazineIssue, ModelNodeType.MagazineIssue)
 
         const createdRelationship = await createRel(ratingId, magazineIssueId, RelType.RatingByMagazineIssue)
         if (!createdRelationship) {
@@ -115,8 +115,8 @@ export const Rating = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.RatingForCarModelVariant, ratingId, carModelVariantId)
         }
-        await deleteOutgoingRel(ratingId, RelType.RatingForCarModelVariant, ModelNodeType.CarModelVariant)
 
+        await deleteOutgoingRel(ratingId, RelType.RatingForCarModelVariant, ModelNodeType.CarModelVariant)
 
         const createdRelationship = await createRel(ratingId, carModelVariantId, RelType.RatingForCarModelVariant)
         if (!createdRelationship) {
@@ -161,7 +161,6 @@ export const Rating = {
             throw new RelAlreadyExistsError(RelType.RatingHasImage, ratingId, imageId)
         }
 
-
         const createdRelationship = await createRel(ratingId, imageId, RelType.RatingHasImage)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
@@ -188,5 +187,25 @@ export const Rating = {
         }
 
         await deleteSpecificRel(ratingId, imageId, RelType.RatingHasImage)
+    },
+
+    async createHasPrimeImageRelationship(ratingId: number, imageId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Rating.findById(ratingId)
+        await Image.findById(imageId)
+
+        const existingRelation = await getSpecificRel(ratingId, imageId, RelType.RatingHasPrimeImage)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.RatingHasPrimeImage, ratingId, imageId)
+        }
+
+        await deleteOutgoingRel(ratingId, RelType.RatingHasPrimeImage, ModelNodeType.Image)
+
+        const createdRelationship = await createRel(ratingId, imageId, RelType.RatingHasPrimeImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }
