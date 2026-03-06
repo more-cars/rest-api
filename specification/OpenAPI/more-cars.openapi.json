@@ -14066,6 +14066,48 @@
         }
       }
     },
+    "/ratings/{rating-id}/has-image": {
+      "get": {
+        "operationId": "getRatingHasImageRel",
+        "tags": [
+          "Ratings"
+        ],
+        "summary": "Get all ›has-image‹ relationships for the `Rating`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "rating-id",
+            "description": "ID of the `Rating`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-image‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RatingHasImageCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Rating` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/ratings/{rating-id}/has-image/{image-id}": {
       "post": {
         "tags": [
@@ -20657,6 +20699,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/RatingHasImage"
+          }
+        }
+      },
+      "RatingHasImageCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RatingHasImageResponse"
+            }
           }
         }
       },

@@ -93,4 +93,12 @@ describe('Ratings', () => {
         expect(RatingController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›has-image‹ relationships', async () => {
+        await request(app)
+            .get('/ratings/123/has-image')
+
+        expect(RatingController.getAllHasImageRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })
