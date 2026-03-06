@@ -14,5 +14,6 @@ export enum NodeTypeLabelOld {
     GamingPlatform = "gamingplatform",
     Magazine = "carmagazine",
     MagazineIssue = "carmagazineissue",
+    Rating = "rating",
     Image = "image",
 }

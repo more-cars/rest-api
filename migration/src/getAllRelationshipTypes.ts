@@ -290,6 +290,54 @@ export function getAllRelationshipTypes() {
                 DbNodeType.MagazineIssue, new Map(
                 [
                     [
+                        DbNodeType.MagazineIssue,
+                        [
+                            RelationshipType.MagazineIssueFollowedByIssue,
+                        ],
+                    ],
+                    [
+                        DbNodeType.CarModel,
+                        [
+                            RelationshipType.MagazineIssueCoversCarModel,
+                        ],
+                    ],
+                    [
+                        DbNodeType.CarModelVariant,
+                        [
+                            RelationshipType.MagazineIssuePresentsCarModelVariant,
+                        ],
+                    ],
+                    [
+                        DbNodeType.RacingEvent,
+                        [
+                            RelationshipType.MagazineIssueCoversRacingEvent,
+                        ],
+                    ],
+                    [
+                        DbNodeType.Image,
+                        [
+                            RelationshipType.NodeHasImage,
+                            RelationshipType.NodeHasPrimeImage,
+                        ],
+                    ],
+                ])
+            ],
+            [
+                DbNodeType.Rating, new Map(
+                [
+                    [
+                        DbNodeType.MagazineIssue,
+                        [
+                            RelationshipType.RatingByMagazineIssue,
+                        ],
+                    ],
+                    [
+                        DbNodeType.CarModelVariant,
+                        [
+                            RelationshipType.RatingForCarModelVariant,
+                        ],
+                    ],
+                    [
                         DbNodeType.Image,
                         [
                             RelationshipType.NodeHasImage,

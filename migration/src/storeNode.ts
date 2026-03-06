@@ -18,6 +18,7 @@ import type {InputRacingGameCreate} from "../../src/db/node-types/racing-games/t
 import type {InputGamingPlatformCreate} from "../../src/db/node-types/gaming-platforms/types/InputGamingPlatformCreate"
 import type {InputMagazineCreate} from "../../src/db/node-types/magazines/types/InputMagazineCreate"
 import type {InputMagazineIssueCreate} from "../../src/db/node-types/magazine-issues/types/InputMagazineIssueCreate"
+import type {InputRatingCreate} from "../../src/db/node-types/ratings/types/InputRatingCreate"
 import type {InputImageCreate} from "../../src/db/node-types/images/types/InputImageCreate"
 
 type InputTypes =
@@ -36,6 +37,7 @@ type InputTypes =
     InputGamingPlatformCreate |
     InputMagazineCreate |
     InputMagazineIssueCreate |
+    InputRatingCreate |
     InputImageCreate
 
 

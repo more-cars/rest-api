@@ -22,6 +22,12 @@ export const RelationshipTypeMapping = new Map<RelationshipType, RelationshipTyp
     [RelationshipType.RacingGameFeaturesTrackLayout, RelationshipTypeLabelOld.RacingGameFeaturesTrackLayout],
     [RelationshipType.GamingPlatformFeaturesRacingGame, RelationshipTypeLabelOld.GamingPlatformFeaturesRacingGame],
     [RelationshipType.MagazineHasIssue, RelationshipTypeLabelOld.MagazineHasIssue],
+    [RelationshipType.MagazineIssueFollowedByIssue, RelationshipTypeLabelOld.MagazineIssueFollowedByIssue],
+    [RelationshipType.MagazineIssueCoversCarModel, RelationshipTypeLabelOld.MagazineIssueCoversCarModel],
+    [RelationshipType.MagazineIssuePresentsCarModelVariant, RelationshipTypeLabelOld.MagazineIssuePresentsCarModelVariant],
+    [RelationshipType.MagazineIssueCoversRacingEvent, RelationshipTypeLabelOld.MagazineIssueCoversRacingEvent],
+    [RelationshipType.RatingByMagazineIssue, RelationshipTypeLabelOld.RatingByMagazineIssue],
+    [RelationshipType.RatingForCarModelVariant, RelationshipTypeLabelOld.RatingForCarModelVariant],
     [RelationshipType.NodeHasImage, RelationshipTypeLabelOld.NodeHasImage],
     [RelationshipType.NodeHasPrimeImage, RelationshipTypeLabelOld.NodeHasPrimeImage],
 ])

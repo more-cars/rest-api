@@ -18,6 +18,12 @@ export enum RelationshipTypeLabelOld {
     RacingGameFeaturesTrackLayout = "FEATURES_RACE_TRACK_VARIANT",
     GamingPlatformFeaturesRacingGame = "FEATURES_RACING_GAME",
     MagazineHasIssue = "HAS_ISSUE",
+    MagazineIssueFollowedByIssue = "IS_SUCCESSOR_OF",
+    MagazineIssueCoversCarModel = "PRESENTS_CAR_MODEL",
+    MagazineIssuePresentsCarModelVariant = "PRESENTS_CAR_MODEL_VARIATION",
+    MagazineIssueCoversRacingEvent = "COVERS_RACING_EVENT",
+    RatingForCarModelVariant = "RATING_FOR_CAR_MODEL_VARIANT",
+    RatingByMagazineIssue = "RATED_BY_CAR_MAGAZINE_ISSUE",
     NodeHasImage = "HAS_IMAGE",
     NodeHasPrimeImage = "IS_MAIN_IMAGE_OF_NODE",
 }

@@ -8,6 +8,9 @@ export function isRelationshipReversedInOldDb(newRelationshipType: RelationshipT
         RelationshipType.TrackLayoutHasLapTime,
         RelationshipType.RacingEventIsFollowedByEvent,
         RelationshipType.SessionResultHasLapTime,
+        RelationshipType.MagazineIssueFollowedByIssue,
+        RelationshipType.RatingForCarModelVariant,
+        RelationshipType.RatingByMagazineIssue,
         RelationshipType.NodeHasPrimeImage,
     ].includes(newRelationshipType)
 }
