@@ -9,6 +9,7 @@ import {convert<%= h.changeCase.pascal(nodeType) %>ModelNodeToControllerNode} fr
 import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import type {Create<%= h.changeCase.pascal(nodeType) %>RawInput} from "./types/Create<%= h.changeCase.pascal(nodeType) %>RawInput"
 import {isMandatoryString} from "../../validators/isMandatoryString"
+import {isMandatoryNumber} from "../../validators/isMandatoryNumber"
 import {isOptionalString} from "../../validators/isOptionalString"
 import {isOptionalNumber} from "../../validators/isOptionalNumber"
 import {sendResponse201} from "../../responses/sendResponse201"

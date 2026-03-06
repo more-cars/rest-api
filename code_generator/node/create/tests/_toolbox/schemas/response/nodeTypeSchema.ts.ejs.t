@@ -4,15 +4,17 @@ to: tests/_toolbox/schemas/response/<%= h.changeCase.pascal(nodeType) %>Schema.t
 export const <%= h.changeCase.pascal(nodeType) %>Schema = {
     type: "object",
     properties: {
-        data: {
+        type: {type: ["string"]},
+        id: {type: ["integer"]},
+        attributes: {
             type: "object",
             properties: {
                 id: {type: ["integer"]},
 <% for (prop in properties) { -%>
                 <%= prop %>: {type: ["<%= properties[prop].datatype %>"<% if (!properties[prop].mandatory) { -%> ", null"<% } -%>]},
 <% } -%>
-                created_at: {type: "string"},
-                updated_at: {type: "string"},
+                created_at: {type: ["string"]},
+                updated_at: {type: ["string"]},
             },
             required: [
                 "id",
@@ -28,7 +30,9 @@ export const <%= h.changeCase.pascal(nodeType) %>Schema = {
         },
     },
     required: [
-        "data",
+        "type",
+        "id",
+        "attributes",
     ],
     additionalProperties: false,
 }

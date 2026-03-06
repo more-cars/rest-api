@@ -9,14 +9,14 @@ test.each([
 <%
     props = []
     for (prop in properties) {
-        if (properties[prop].datatype === 'string') {
-            props.push(properties[prop].example || 'nope')
+        if (properties[prop].datatype === 'string' && properties[prop].example) {
+            props.push('"' + (properties[prop].example || 'nope') + '"')
         } else {
             props.push(properties[prop].example || 0.01)
         }
     }
 -%>
-<% for (let i = 0; i < properties.length; i++) { -%>
+<% for (let i = 0; i < props.length; i++) { -%>
 <%  const originalValue = props[i] -%>
 <%  props[i] = false -%>
     [<%- props.join(', ') %>],

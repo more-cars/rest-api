@@ -1,7 +1,7 @@
 ---
 inject: true
-to: src/controllers/types/ControllerNode.ts
-after: "ControllerNode"
+to: src/models/types/ModelNodes.ts
+after: "ModelNodes"
 skip_if: "<%= h.changeCase.pascal(nodeType) %>Node "
 ---
     <%= h.changeCase.pascal(nodeType) %>Node |

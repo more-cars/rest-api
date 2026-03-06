@@ -13,9 +13,9 @@ to: tests/unit/controllers/node-types/<%= h.changeCase.kebab(h.inflection.plural
 
     props_out = []
     for (prop in properties) {
-        if (properties[prop].mandatory && properties[prop].datatype === 'string') {
+        if (!properties[prop].mandatory && properties[prop].datatype === 'string') {
             props_out.push(prop + ': "' + properties[prop].example + '"')
-        } else if (properties[prop].mandatory) {
+        } else if (!properties[prop].mandatory) {
             props_out.push(prop + ': ' + properties[prop].example)
         } else {
             props_out.push(prop + ': undefined')
@@ -27,12 +27,13 @@ import {unmarshalInputData} from "../../../../../../../src/controllers/node-type
 
 test('unmarshalling a request where mandatory fields are missing', async () => {
     const data: any = {
-<%- props_in.map(line => '        ' + line).join(',\n') %>,
+<%- props_in.map(line => '        ' + line).join(',\n') %>
     }
+
     const result = unmarshalInputData(data)
 
     expect(result)
         .toStrictEqual({
-<%- props_out.map(line => '            ' + line).join(',\n') %>,
+<%- props_out.map(line => '            ' + line).join(',\n') %>
         })
 })
