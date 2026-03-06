@@ -125,4 +125,12 @@ describe('Ratings', () => {
         expect(RatingController.getHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .delete('/ratings/123/has-prime-image/456')
+
+        expect(RatingController.deleteHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

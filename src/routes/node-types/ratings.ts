@@ -18,5 +18,6 @@ router.get('/ratings/:ratingId/has-image', RatingController.getAllHasImageRelati
 router.delete('/ratings/:ratingId/has-image/:imageId', RatingController.deleteHasImageRelation)
 router.post('/ratings/:ratingId/has-prime-image/:imageId', RatingController.createHasPrimeImageRelation)
 router.get('/ratings/:ratingId/has-prime-image', RatingController.getHasPrimeImageRelation)
+router.delete('/ratings/:ratingId/has-prime-image/:imageId', RatingController.deleteHasPrimeImageRelation)
 
 export default router

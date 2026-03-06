@@ -220,4 +220,17 @@ export const Rating = {
 
         return relationship
     },
+
+    async deleteHasPrimeImageRelationship(ratingId: number, imageId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Rating.findById(ratingId)
+        await Image.findById(imageId)
+
+        const relationship = await getSpecificRel(ratingId, imageId, RelType.RatingHasPrimeImage)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.RatingHasPrimeImage, ratingId, imageId)
+        }
+
+        await deleteSpecificRel(ratingId, imageId, RelType.RatingHasPrimeImage)
+    },
 }
