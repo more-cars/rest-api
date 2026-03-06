@@ -53,6 +53,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 // Car Model Variant - Reverse
                 [RelationshipTypeNeo4j.CarModelVariantIsVariantOf, RelationshipType.CarModelVariantIsVariantOf],
                 [RelationshipTypeNeo4j.CarModelVariantIsPresentedInMagazineIssue, RelationshipType.CarModelVariantIsPresentedInMagazineIssue],
+                [RelationshipTypeNeo4j.CarModelVariantReviewedByMagazineIssueWithRating, RelationshipType.CarModelVariantReviewedByMagazineIssueWithRating],
                 [RelationshipTypeNeo4j.CarModelVariantIsFeaturedInRacingGame, RelationshipType.CarModelVariantIsFeaturedInRacingGame],
             ])],
             [RelationshipDirection.FORWARD, new Map([

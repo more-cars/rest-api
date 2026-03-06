@@ -16,6 +16,10 @@ exports.createIsPresentedInMagazineIssueRelationship = async function () {
     await post("/car-model-variants/" + bru.getEnvVar('validCarModelVariantId') + "/is-presented-in-magazine-issue/" + bru.getEnvVar('validMagazineIssueId'))
 }
 
+exports.createReviewedByMagazineIssueWithRatingRelationship = async function () {
+    await post("/car-model-variants/" + bru.getEnvVar('validCarModelVariantId') + "/reviewed-by-magazine-issue-with-rating/" + bru.getEnvVar('validRatingId'))
+}
+
 exports.createIsFeaturedInRacingGameRelationship = async function () {
     await post("/car-model-variants/" + bru.getEnvVar('validCarModelVariantId') + "/is-featured-in-racing-game/" + bru.getEnvVar('validRacingGameId'))
 }

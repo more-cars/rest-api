@@ -24,6 +24,7 @@ export function mapDbRelationshipTypeToRelationshipType(dbRelationshipType: DbRe
         [DbRelationshipType.CarModelVariantAchievedSessionResult, RelationshipType.CarModelVariantAchievedSessionResult],
         [DbRelationshipType.CarModelVariantAchievedLapTime, RelationshipType.CarModelVariantAchievedLapTime],
         [DbRelationshipType.CarModelVariantIsPresentedInMagazineIssue, RelationshipType.CarModelVariantIsPresentedInMagazineIssue],
+        [DbRelationshipType.CarModelVariantReviewedByMagazineIssueWithRating, RelationshipType.CarModelVariantReviewedByMagazineIssueWithRating],
         [DbRelationshipType.CarModelVariantIsFeaturedInRacingGame, RelationshipType.CarModelVariantIsFeaturedInRacingGame],
         [DbRelationshipType.CarModelVariantHasImage, RelationshipType.CarModelVariantHasImage],
         [DbRelationshipType.CarModelVariantHasPrimeImage, RelationshipType.CarModelVariantHasPrimeImage],

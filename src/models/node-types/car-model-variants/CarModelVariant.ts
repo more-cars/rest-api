@@ -25,7 +25,7 @@ import {RacingGame} from "../racing-games/RacingGame"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {MagazineIssue} from "../magazine-issues/MagazineIssue"
-
+import {Rating} from "../ratings/Rating"
 
 export const CarModelVariant = {
     async create(data: CreateCarModelVariantInput): Promise<CarModelVariantNode> {
@@ -350,5 +350,25 @@ export const CarModelVariant = {
         }
 
         await deleteSpecificRel(carModelVariantId, imageId, RelType.CarModelVariantHasPrimeImage)
+    },
+
+    async createReviewedByMagazineIssueWithRatingRelationship(carModelVariantId: number, ratingId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await Rating.findById(ratingId)
+
+        const existingRelation = await getSpecificRel(carModelVariantId, ratingId, RelType.CarModelVariantReviewedByMagazineIssueWithRating)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.CarModelVariantReviewedByMagazineIssueWithRating, carModelVariantId, ratingId)
+        }
+
+        await deleteIncomingRel(ratingId, RelType.CarModelVariantReviewedByMagazineIssueWithRating, ModelNodeType.CarModelVariant)
+
+        const createdRelationship = await createRel(carModelVariantId, ratingId, RelType.CarModelVariantReviewedByMagazineIssueWithRating)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }
