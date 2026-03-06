@@ -13359,6 +13359,48 @@
         }
       }
     },
+    "/magazine-issues/{magazine-issue-id}/reviewed-car-model-variant-with-rating": {
+      "get": {
+        "operationId": "getMagazineIssueReviewedCarModelVariantWithRatingRel",
+        "tags": [
+          "Magazine Issues"
+        ],
+        "summary": "Get all ›reviewed-car-model-variant-with-rating‹ relationships for the `Magazine Issue`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "magazine-issue-id",
+            "description": "ID of the `Magazine Issue`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›reviewed-car-model-variant-with-rating‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MagazineIssueReviewedCarModelVariantWithRatingCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Magazine Issue` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/magazine-issues/{magazine-issue-id}/reviewed-car-model-variant-with-rating/{rating-id}": {
       "post": {
         "tags": [
@@ -20755,6 +20797,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/MagazineIssueReviewedCarModelVariantWithRating"
+          }
+        }
+      },
+      "MagazineIssueReviewedCarModelVariantWithRatingCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MagazineIssueReviewedCarModelVariantWithRatingResponse"
+            }
           }
         }
       },

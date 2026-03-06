@@ -304,6 +304,13 @@ export const MagazineIssue = {
         return createdRelationship
     },
 
+    async getAllReviewedCarModelVariantWithRatingRelationships(magazineIssueId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await MagazineIssue.findById(magazineIssueId)
+
+        return getAllRels(magazineIssueId, RelType.MagazineIssueReviewedCarModelVariantWithRating)
+    },
+
     async createCoversRacingEventRelationship(magazineIssueId: number, racingEventId: number) {
         // checking that both nodes exist -> exception is thrown if not
         await MagazineIssue.findById(magazineIssueId)
