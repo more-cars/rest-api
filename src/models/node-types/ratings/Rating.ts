@@ -5,6 +5,8 @@ import {createNode} from "../../../db/node-types/ratings/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/ratings/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
+import {getAllNodesOfType} from "../../../db/node-types/ratings/getAllNodesOfType"
+import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 
 export const Rating = {
     async create(data: CreateRatingInput): Promise<RatingNode> {
@@ -22,5 +24,16 @@ export const Rating = {
         }
 
         return convertDbNodeToModelNode(node) as RatingNode
+    },
+
+    async findAll(options: NodeCollectionConstraints = {}): Promise<RatingNode[]> {
+        const nodes: RatingNode[] = []
+        const nodesDb = await getAllNodesOfType(options)
+
+        nodesDb.forEach(node => {
+            nodes.push(convertDbNodeToModelNode(node) as RatingNode)
+        })
+
+        return nodes
     },
 }
