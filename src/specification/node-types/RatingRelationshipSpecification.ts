@@ -13,5 +13,10 @@ export const RatingRelationshipSpecification: RelationshipTypeSpecification[] = 
         endNodeType: NodeType.CarModelVariant,
         isReverseRelationship: false,
     }],
+    [RelationshipType.RatingHasImage, {
+        startNodeType: NodeType.Rating,
+        endNodeType: NodeType.Image,
+        isReverseRelationship: false,
+    }],
     //
 ]

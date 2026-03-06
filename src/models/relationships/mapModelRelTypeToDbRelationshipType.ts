@@ -82,6 +82,7 @@ export function mapModelRelTypeToDbRelationshipType(modelRelType: RelType): Rela
         [RelType.MagazineIssueHasPrimeImage, RelationshipType.MagazineIssueHasPrimeImage],
         [RelType.RatingByMagazineIssue, RelationshipType.RatingByMagazineIssue],
         [RelType.RatingForCarModelVariant, RelationshipType.RatingForCarModelVariant],
+        [RelType.RatingHasImage, RelationshipType.RatingHasImage],
         [RelType.ImageBelongsToNode, RelationshipType.ImageBelongsToNode],
         [RelType.ImageIsPrimeImageOfNode, RelationshipType.ImageIsPrimeImageOfNode],
     ])

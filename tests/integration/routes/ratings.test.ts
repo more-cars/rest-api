@@ -85,4 +85,12 @@ describe('Ratings', () => {
         expect(RatingController.deleteForCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-image‹ relationship', async () => {
+        await request(app)
+            .post('/ratings/123/has-image/456')
+
+        expect(RatingController.createHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

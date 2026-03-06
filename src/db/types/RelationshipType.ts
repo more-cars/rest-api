@@ -79,6 +79,7 @@ export enum RelationshipType {
     MagazineIssueHasPrimeImage = 'MAGAZINE_ISSUE_HAS_PRIME_IMAGE',
     RatingByMagazineIssue = 'RATING_BY_MAGAZINE_ISSUE',
     RatingForCarModelVariant = 'RATING_FOR_CAR_MODEL_VARIANT',
+    RatingHasImage = 'RATING_HAS_IMAGE',
     ImageBelongsToNode = 'IMAGE_BELONGS_TO_NODE',
     ImageIsPrimeImageOfNode = 'IMAGE_IS_PRIME_IMAGE_OF_NODE',
 }

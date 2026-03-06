@@ -8,6 +8,10 @@ exports.createForCarModelVariantRelationship = async function () {
     await post("/ratings/" + bru.getEnvVar('validRatingId') + "/for-car-model-variant/" + bru.getEnvVar('validCarModelVariantId'))
 }
 
+exports.createHasImageRelationship = async function () {
+    await post("/ratings/" + bru.getEnvVar('validRatingId') + "/has-image/" + bru.getEnvVar('validImageId'))
+}
+
 exports.create = async function (prefix = '') {
     const response = await post("/ratings", {
         name: 'Dummy Rating',

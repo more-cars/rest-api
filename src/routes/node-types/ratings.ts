@@ -13,5 +13,6 @@ router.delete('/ratings/:ratingId/by-magazine-issue/:magazineIssueId', RatingCon
 router.post('/ratings/:ratingId/for-car-model-variant/:carModelVariantId', RatingController.createForCarModelVariantRelation)
 router.get('/ratings/:ratingId/for-car-model-variant', RatingController.getForCarModelVariantRelation)
 router.delete('/ratings/:ratingId/for-car-model-variant/:carModelVariantId', RatingController.deleteForCarModelVariantRelation)
+router.post('/ratings/:ratingId/has-image/:imageId', RatingController.createHasImageRelation)
 
 export default router
