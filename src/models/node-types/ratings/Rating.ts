@@ -135,4 +135,17 @@ export const Rating = {
 
         return relationship
     },
+
+    async deleteForCarModelVariantRelationship(ratingId: number, carModelVariantId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Rating.findById(ratingId)
+        await CarModelVariant.findById(carModelVariantId)
+
+        const relationship = await getSpecificRel(ratingId, carModelVariantId, RelType.RatingForCarModelVariant)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.RatingForCarModelVariant, ratingId, carModelVariantId)
+        }
+
+        await deleteSpecificRel(ratingId, carModelVariantId, RelType.RatingForCarModelVariant)
+    },
 }

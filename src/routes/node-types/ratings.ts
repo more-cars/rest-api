@@ -12,5 +12,6 @@ router.get('/ratings/:ratingId/by-magazine-issue', RatingController.getByMagazin
 router.delete('/ratings/:ratingId/by-magazine-issue/:magazineIssueId', RatingController.deleteByMagazineIssueRelation)
 router.post('/ratings/:ratingId/for-car-model-variant/:carModelVariantId', RatingController.createForCarModelVariantRelation)
 router.get('/ratings/:ratingId/for-car-model-variant', RatingController.getForCarModelVariantRelation)
+router.delete('/ratings/:ratingId/for-car-model-variant/:carModelVariantId', RatingController.deleteForCarModelVariantRelation)
 
 export default router

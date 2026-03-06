@@ -14023,6 +14023,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Ratings"
+        ],
+        "summary": "Deletes the ›for-car-model-variant‹ relationship between the `Rating` and the `Car Model Variant`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "rating-id",
+            "description": "ID of the `Rating`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›for-car-model-variant‹ relationship between `Rating` and `Car Model Variant` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›for-car-model-variant‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/relationships/{relationship-id}": {

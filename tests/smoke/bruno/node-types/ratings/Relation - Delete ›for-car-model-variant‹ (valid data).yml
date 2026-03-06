@@ -1,0 +1,25 @@
+info:
+  name: Delete ›for-car-model-variant‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/ratings/{{validRatingId}}/for-car-model-variant/{{validCarModelVariantId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const Ratings = require('./lib/node-types/Ratings.js')
+        const CarModelVariants = require('./lib/node-types/CarModelVariants.js')
+        await Ratings.create()
+        await CarModelVariants.create()
+        await Ratings.createForCarModelVariantRelationship()
