@@ -7,6 +7,7 @@ import {getNodeById} from "../../../db/node-types/ratings/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 import {getAllNodesOfType} from "../../../db/node-types/ratings/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
+import {deleteNode} from "../../../db/nodes/deleteNode"
 
 export const Rating = {
     async create(data: CreateRatingInput): Promise<RatingNode> {
@@ -35,5 +36,15 @@ export const Rating = {
         })
 
         return nodes
+    },
+
+    async delete(id: number): Promise<void> {
+        const node = await getNodeById(id)
+
+        if (!node) {
+            throw new NodeNotFoundError(id)
+        }
+
+        await deleteNode(id)
     },
 }

@@ -29,4 +29,12 @@ describe('Ratings', () => {
         expect(RatingController.getAll)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete Node', async () => {
+        await request(app)
+            .delete('/ratings/123')
+
+        expect(RatingController.delete)
+            .toHaveBeenCalledTimes(1)
+    })
 })

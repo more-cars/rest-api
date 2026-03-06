@@ -1,0 +1,28 @@
+info:
+  name: Delete Rating (valid data)
+  type: http
+  tags:
+    - delete
+    - node
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/ratings/{{validRatingId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+    - expression: res.body
+      operator: isEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const Ratings = require('./lib/node-types/Ratings.js')
+        await Ratings.create()
+    - type: after-response
+      code: |-
+        const Ids = require('./lib/Ids.js')
+        Ids.forgetId('Rating')
