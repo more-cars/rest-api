@@ -6,10 +6,10 @@ import {app} from "../../../../../../src/app"
 describe('Expecting correct status code when requesting a sorted node collection', () => {
     test.each([
         ['id', 'asc'],
-        ['name', 'asc'],
-        ['name', 'desc'],
+        ['rating_value', 'asc'],
+        ['rating_value', 'desc'],
         ['', 'desc'],
-        ['name', ''],
+        ['rating_value', ''],
     ])('when sorting parameters are valid: $0 $1', async (sortByProperty, sortDirection) => {
         Rating.findAll = vi.fn().mockReturnValue([])
 
