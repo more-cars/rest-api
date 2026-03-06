@@ -123,4 +123,16 @@ export const Rating = {
 
         return createdRelationship
     },
+
+    async getForCarModelVariantRelationship(ratingId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await Rating.findById(ratingId)
+
+        const relationship = await getRel(ratingId, RelType.RatingForCarModelVariant)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.RatingForCarModelVariant, ratingId, null)
+        }
+
+        return relationship
+    },
 }

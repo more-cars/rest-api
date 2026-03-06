@@ -13930,6 +13930,48 @@
         }
       }
     },
+    "/ratings/{rating-id}/for-car-model-variant": {
+      "get": {
+        "operationId": "getRatingForCarModelVariantRel",
+        "tags": [
+          "Ratings"
+        ],
+        "summary": "Get the ›for-car-model-variant‹ relationship for the `Rating`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "rating-id",
+            "description": "ID of the `Rating`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›for-car-model-variant‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RatingForCarModelVariantResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Rating` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/ratings/{rating-id}/for-car-model-variant/{car-model-variant-id}": {
       "post": {
         "tags": [

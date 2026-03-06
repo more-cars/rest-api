@@ -69,4 +69,12 @@ describe('Ratings', () => {
         expect(RatingController.createForCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›for-car-model-variant‹ relationship', async () => {
+        await request(app)
+            .get('/ratings/123/for-car-model-variant')
+
+        expect(RatingController.getForCarModelVariantRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
