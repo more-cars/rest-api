@@ -117,4 +117,12 @@ describe('Ratings', () => {
         expect(RatingController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .get('/ratings/123/has-prime-image')
+
+        expect(RatingController.getHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

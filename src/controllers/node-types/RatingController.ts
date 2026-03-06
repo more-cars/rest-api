@@ -13,6 +13,7 @@ import {createHasImageRelation} from "./ratings/createHasImageRelation"
 import {getAllHasImageRelations} from "./ratings/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./ratings/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./ratings/createHasPrimeImageRelation"
+import {getHasPrimeImageRelation} from "./ratings/getHasPrimeImageRelation"
 
 export const RatingController = {
     async create(req: express.Request, res: express.Response) {
@@ -69,5 +70,9 @@ export const RatingController = {
 
     async createHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await createHasPrimeImageRelation(req, res)
+    },
+
+    async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
+        await getHasPrimeImageRelation(req, res)
     },
 }
