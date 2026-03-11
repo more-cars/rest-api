@@ -10,7 +10,7 @@ export const <%= h.changeCase.pascal(nodeType) %>Schema = {
             type: "object",
             properties: {
 <% for (prop in properties) { -%>
-                <%= prop %>: {type: ["<%= properties[prop].datatype %>"<% if (!properties[prop].mandatory) { -%> ", null"<% } -%>]},
+                <%= prop %>: {type: ["<%= properties[prop].datatype %><% if (!properties[prop].mandatory) { -%>", "null<% } -%>"]},
 <% } -%>
                 created_at: {type: ["string"]},
                 updated_at: {type: ["string"]},
