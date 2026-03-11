@@ -1,0 +1,40 @@
+info:
+  name: Create Motor Show (valid data)
+  type: http
+  tags:
+    - create
+    - node
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/motor-shows"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "2017 IAA Frankfurt",
+        "date_from": "2017-09-14",
+        "date_until": "2017-09-24",
+        "location": "Frankfurt",
+        "target_audience": "international",
+        "focus": "new cars"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: gte
+      value: "12000000"
+  scripts:
+    - type: tests
+      code: |-
+        test("both timestamps should be identical", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.eql(data.attributes.updated_at)
+        })

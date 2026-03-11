@@ -22,6 +22,7 @@ export function mapModelNodeTypeToDbNodeType(modelNodeType: ModelNodeType) {
         [ModelNodeType.Rating, DbNodeType.Rating],
         [ModelNodeType.Programme, DbNodeType.Programme],
         [ModelNodeType.ProgrammeEpisode, DbNodeType.ProgrammeEpisode],
+        [ModelNodeType.MotorShow, DbNodeType.MotorShow],
         [ModelNodeType.Image, DbNodeType.Image],
     ])
 

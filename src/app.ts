@@ -20,6 +20,7 @@ import magazineIssues from "./routes/node-types/magazine-issues"
 import ratings from "./routes/node-types/ratings"
 import programmes from "./routes/node-types/programmes"
 import programmeEpisodes from "./routes/node-types/programme-episodes"
+import motorShows from "./routes/node-types/motor-shows"
 import images from "./routes/node-types/images"
 import relationships from "./routes/relationships"
 import {basicAuthentication} from "./basicAuthentication"
@@ -57,6 +58,7 @@ app.use('/', magazineIssues)
 app.use('/', ratings)
 app.use('/', programmes)
 app.use('/', programmeEpisodes)
+app.use('/', motorShows)
 app.use('/', images)
 app.use('/', relationships)
 

@@ -20,6 +20,7 @@ import {convertMagazineIssueModelNodeToControllerNode} from "../node-types/magaz
 import {convertRatingModelNodeToControllerNode} from "../node-types/ratings/convertRatingModelNodeToControllerNode"
 import {convertProgrammeModelNodeToControllerNode} from "../node-types/programmes/convertProgrammeModelNodeToControllerNode"
 import {convertProgrammeEpisodeModelNodeToControllerNode} from "../node-types/programme-episodes/convertProgrammeEpisodeModelNodeToControllerNode"
+import {convertMotorShowModelNodeToControllerNode} from "../node-types/motor-shows/convertMotorShowModelNodeToControllerNode"
 import {convertImageModelNodeToControllerNode} from "../node-types/images/convertImageModelNodeToControllerNode"
 import type {CompanyNode} from "../../models/node-types/companies/types/CompanyNode"
 import type {BrandNode} from "../../models/node-types/brands/types/BrandNode"
@@ -39,6 +40,7 @@ import type {MagazineIssueNode} from "../../models/node-types/magazine-issues/ty
 import type {RatingNode} from "../../models/node-types/ratings/types/RatingNode"
 import type {ProgrammeNode} from "../../models/node-types/programmes/types/ProgrammeNode"
 import type {ProgrammeEpisodeNode} from "../../models/node-types/programme-episodes/types/ProgrammeEpisodeNode"
+import type {MotorShowNode} from "../../models/node-types/motor-shows/types/MotorShowNode"
 import type {ImageNode} from "../../models/node-types/images/types/ImageNode"
 
 export function convertModelNodeToControllerNode(modelNode: ModelNode): ControllerNode {
@@ -79,6 +81,8 @@ export function convertModelNodeToControllerNode(modelNode: ModelNode): Controll
             return convertProgrammeModelNodeToControllerNode(modelNode as ProgrammeNode)
         case ModelNodeType.ProgrammeEpisode:
             return convertProgrammeEpisodeModelNodeToControllerNode(modelNode as ProgrammeEpisodeNode)
+        case ModelNodeType.MotorShow:
+            return convertMotorShowModelNodeToControllerNode(modelNode as MotorShowNode)
         case ModelNodeType.Image:
             return convertImageModelNodeToControllerNode(modelNode as ImageNode)
         default:

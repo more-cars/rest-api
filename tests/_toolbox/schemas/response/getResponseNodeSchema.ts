@@ -18,6 +18,7 @@ import {MagazineIssueSchema} from "./MagazineIssueSchema"
 import {RatingSchema} from "./RatingSchema"
 import {ProgrammeSchema} from "./ProgrammeSchema"
 import {ProgrammeEpisodeSchema} from "./ProgrammeEpisodeSchema"
+import {MotorShowSchema} from "./MotorShowSchema"
 import {ImageSchema} from "./ImageSchema"
 
 export function getResponseNodeSchema(nodeType: ControllerNodeType) {
@@ -58,6 +59,8 @@ export function getResponseNodeSchema(nodeType: ControllerNodeType) {
             return ProgrammeSchema
         case ControllerNodeType.ProgrammeEpisode:
             return ProgrammeEpisodeSchema
+        case ControllerNodeType.MotorShow:
+            return MotorShowSchema
         case ControllerNodeType.Image:
             return ImageSchema
         default:

@@ -16,6 +16,7 @@ import type {InputMagazineIssueCreate} from "../node-types/magazine-issues/types
 import type {InputRatingCreate} from "../node-types/ratings/types/InputRatingCreate"
 import type {InputProgrammeCreate} from "../node-types/programmes/types/InputProgrammeCreate"
 import type {InputProgrammeEpisodeCreate} from "../node-types/programme-episodes/types/InputProgrammeEpisodeCreate"
+import type {InputMotorShowCreate} from "../node-types/motor-shows/types/InputMotorShowCreate"
 import type {InputImageCreate} from "../node-types/images/types/InputImageCreate"
 
 export type InputNodeTypeCreate =
@@ -37,4 +38,5 @@ export type InputNodeTypeCreate =
     InputRatingCreate |
     InputProgrammeCreate |
     InputProgrammeEpisodeCreate |
+    InputMotorShowCreate |
     InputImageCreate

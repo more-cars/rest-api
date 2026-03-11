@@ -1,0 +1,28 @@
+info:
+  name: Create Motor Show (minimal data)
+  type: http
+  tags:
+    - create
+    - node
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/motor-shows"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "2017 IAA Frankfurt"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: gte
+      value: "12000000"

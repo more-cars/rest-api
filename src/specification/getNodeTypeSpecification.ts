@@ -19,6 +19,7 @@ import {MagazineIssueNodeSpecification} from "./node-types/MagazineIssueNodeSpec
 import {RatingNodeSpecification} from "./node-types/RatingNodeSpecification"
 import {ProgrammeNodeSpecification} from "./node-types/ProgrammeNodeSpecification"
 import {ProgrammeEpisodeNodeSpecification} from "./node-types/ProgrammeEpisodeNodeSpecification"
+import {MotorShowNodeSpecification} from "./node-types/MotorShowNodeSpecification"
 import {ImageNodeSpecification} from "./node-types/ImageNodeSpecification"
 
 export function getNodeTypeSpecification(nodeType: NodeType) {
@@ -41,6 +42,7 @@ export function getNodeTypeSpecification(nodeType: NodeType) {
         [NodeType.Rating, RatingNodeSpecification],
         [NodeType.Programme, ProgrammeNodeSpecification],
         [NodeType.ProgrammeEpisode, ProgrammeEpisodeNodeSpecification],
+        [NodeType.MotorShow, MotorShowNodeSpecification],
         [NodeType.Image, ImageNodeSpecification],
     ])
 

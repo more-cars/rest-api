@@ -22,6 +22,7 @@ export function mapControllerNodeTypeToModelNodeType(controllerNodeType: Control
         [ControllerNodeType.Rating, ModelNodeType.Rating],
         [ControllerNodeType.Programme, ModelNodeType.Programme],
         [ControllerNodeType.ProgrammeEpisode, ModelNodeType.ProgrammeEpisode],
+        [ControllerNodeType.MotorShow, ModelNodeType.MotorShow],
         [ControllerNodeType.Image, ModelNodeType.Image],
     ])
 

@@ -1,0 +1,33 @@
+import {expect, test} from 'vitest'
+import {createNode} from "../../../../../../src/db/node-types/motor-shows/createNode"
+
+test('Single quotes in strings are correctly escaped and unescaped', async () => {
+    const data = {
+        name: "'2017 IAA Frankfurt''",
+        date_from: "'2017-09-14''",
+        date_until: "'2017-09-24''",
+        location: "'Frankfurt''",
+        target_audience: "'international''",
+        focus: "'new cars''",
+    }
+
+    const createdNode = await createNode(data)
+
+    expect(createdNode.properties.name)
+        .toEqual("'2017 IAA Frankfurt''")
+
+    expect(createdNode.properties.date_from)
+        .toEqual("'2017-09-14''")
+
+    expect(createdNode.properties.date_until)
+        .toEqual("'2017-09-24''")
+
+    expect(createdNode.properties.location)
+        .toEqual("'Frankfurt''")
+
+    expect(createdNode.properties.target_audience)
+        .toEqual("'international''")
+
+    expect(createdNode.properties.focus)
+        .toEqual("'new cars''")
+})
