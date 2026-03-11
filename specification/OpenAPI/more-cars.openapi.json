@@ -14739,6 +14739,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Programmes"
+        ],
+        "summary": "Delete `Programme`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "programme-id",
+            "description": "ID of the `Programme`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Programme` successfully deleted."
+          },
+          "404": {
+            "description": "Deletion request failed. A `Programme` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/relationships/{relationship-id}": {
@@ -21608,10 +21640,10 @@
       },
       "Programme": {
         "type": "object",
-        "required":         [
+        "required": [
           "name"
         ],
-        "properties":         {
+        "properties": {
           "created_at": {
             "type": "string",
             "readOnly": true,
@@ -21703,7 +21735,7 @@
       },
       "ProgrammeProperties": {
         "type": "string",
-        "enum":         [
+        "enum": [
           "created_at",
           "updated_at",
           "name",

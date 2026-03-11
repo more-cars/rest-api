@@ -29,4 +29,12 @@ describe('Programmes', () => {
         expect(ProgrammeController.getAll)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete Node', async () => {
+        await request(app)
+            .delete('/programmes/123')
+
+        expect(ProgrammeController.delete)
+            .toHaveBeenCalledTimes(1)
+    })
 })
