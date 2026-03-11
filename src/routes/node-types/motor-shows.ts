@@ -6,5 +6,6 @@ const router = express.Router()
 router.post('/motor-shows', MotorShowController.create)
 router.get('/motor-shows/:id', MotorShowController.getById)
 router.get('/motor-shows', MotorShowController.getAll)
+router.delete('/motor-shows/:id', MotorShowController.delete)
 
 export default router

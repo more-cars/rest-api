@@ -15033,6 +15033,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Motor Shows"
+        ],
+        "summary": "Delete `Motor Show`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "motor-show-id",
+            "description": "ID of the `Motor Show`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Motor Show` successfully deleted."
+          },
+          "404": {
+            "description": "Deletion request failed. A `Motor Show` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/relationships/{relationship-id}": {
@@ -22012,10 +22044,10 @@
       },
       "ProgrammeEpisode": {
         "type": "object",
-        "required":         [
+        "required": [
           "title"
         ],
-        "properties":         {
+        "properties": {
           "created_at": {
             "type": "string",
             "readOnly": true,
@@ -22097,7 +22129,7 @@
       },
       "ProgrammeEpisodeProperties": {
         "type": "string",
-        "enum":         [
+        "enum": [
           "created_at",
           "updated_at",
           "title",
@@ -22110,10 +22142,10 @@
       },
       "MotorShow": {
         "type": "object",
-        "required":         [
+        "required": [
           "name"
         ],
-        "properties":         {
+        "properties": {
           "created_at": {
             "type": "string",
             "readOnly": true,
@@ -22200,7 +22232,7 @@
       },
       "MotorShowProperties": {
         "type": "string",
-        "enum":         [
+        "enum": [
           "created_at",
           "updated_at",
           "name",

@@ -2,6 +2,7 @@ import express from "express"
 import {create} from "./motor-shows/create"
 import {getById} from "./motor-shows/getById"
 import {getAll} from "./motor-shows/getAll"
+import {deleteNode} from "./motor-shows/deleteNode"
 
 export const MotorShowController = {
     async create(req: express.Request, res: express.Response) {
@@ -14,5 +15,9 @@ export const MotorShowController = {
 
     async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
+    },
+
+    async delete(req: express.Request, res: express.Response) {
+        await deleteNode(req, res)
     },
 }

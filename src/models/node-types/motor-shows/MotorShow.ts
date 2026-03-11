@@ -7,6 +7,7 @@ import {getNodeById} from "../../../db/node-types/motor-shows/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 import {getAllNodesOfType} from "../../../db/node-types/motor-shows/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
+import {deleteNode} from "../../../db/nodes/deleteNode"
 
 export const MotorShow = {
     async create(data: CreateMotorShowInput): Promise<MotorShowNode> {
@@ -35,5 +36,15 @@ export const MotorShow = {
         })
 
         return nodes
+    },
+
+    async delete(id: number): Promise<void> {
+        const node = await getNodeById(id)
+
+        if (!node) {
+            throw new NodeNotFoundError(id)
+        }
+
+        await deleteNode(id)
     },
 }
