@@ -5,6 +5,8 @@ import {createNode} from "../../../db/node-types/programmes/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/programmes/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
+import {getAllNodesOfType} from "../../../db/node-types/programmes/getAllNodesOfType"
+import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 
 export const Programme = {
     async create(data: CreateProgrammeInput): Promise<ProgrammeNode> {
@@ -22,5 +24,16 @@ export const Programme = {
         }
 
         return convertDbNodeToModelNode(node) as ProgrammeNode
+    },
+
+    async findAll(options: NodeCollectionConstraints = {}): Promise<ProgrammeNode[]> {
+        const nodes: ProgrammeNode[] = []
+        const nodesDb = await getAllNodesOfType(options)
+
+        nodesDb.forEach(node => {
+            nodes.push(convertDbNodeToModelNode(node) as ProgrammeNode)
+        })
+
+        return nodes
     },
 }
