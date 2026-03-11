@@ -4,5 +4,6 @@ import {ProgrammeController} from "../../controllers/node-types/ProgrammeControl
 const router = express.Router()
 
 router.post('/programmes', ProgrammeController.create)
+router.get('/programmes/:id', ProgrammeController.getById)
 
 export default router
