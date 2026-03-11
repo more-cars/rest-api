@@ -21,4 +21,12 @@ describe('Programme Episodes', () => {
         expect(ProgrammeEpisodeController.getById)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all Nodes', async () => {
+        await request(app)
+            .get('/programme-episodes')
+
+        expect(ProgrammeEpisodeController.getAll)
+            .toHaveBeenCalledTimes(1)
+    })
 })

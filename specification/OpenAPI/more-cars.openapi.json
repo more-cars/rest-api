@@ -14774,6 +14774,65 @@
       }
     },
     "/programme-episodes": {
+      "get": {
+        "operationId": "getProgrammeEpisodes",
+        "tags": [
+          "Programme Episodes"
+        ],
+        "summary": "Get all `Programme Episodes`",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Page"
+          },
+          {
+            "in": "query",
+            "name": "sort_by_property",
+            "description": "Returns the `Programme Episode` collection, ordered by the specified property.",
+            "schema": {
+              "$ref": "#/components/schemas/ProgrammeEpisodeProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/SortDirection"
+          },
+          {
+            "in": "query",
+            "name": "filter_by_property",
+            "description": "Specifies by which node property the `Programme Episode` collection should be filtered.",
+            "schema": {
+              "$ref": "#/components/schemas/ProgrammeEpisodeProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/FilterValue"
+          },
+          {
+            "$ref": "#/components/parameters/FilterOperator"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Programme Episode` collection successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgrammeEpisodeCollectionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Programme Episodes"
@@ -21883,6 +21942,25 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/ProgrammeEpisode"
+          }
+        }
+      },
+      "ProgrammeEpisodeCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgrammeEpisodeResponse"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              }
+            }
           }
         }
       },
