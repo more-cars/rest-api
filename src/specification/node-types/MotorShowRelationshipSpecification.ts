@@ -8,5 +8,10 @@ export const MotorShowRelationshipSpecification: RelationshipTypeSpecification[]
         endNodeType: NodeType.CarModelVariant,
         isReverseRelationship: false,
     }],
+    [RelationshipType.MotorShowHasImage, {
+        startNodeType: NodeType.MotorShow,
+        endNodeType: NodeType.Image,
+        isReverseRelationship: false,
+    }],
     //
 ]

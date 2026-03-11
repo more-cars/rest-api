@@ -82,6 +82,7 @@ export enum RelType {
     RatingHasImage = 'rating_has_image',
     RatingHasPrimeImage = 'rating_has_prime_image',
     MotorShowPresentsCarModelVariant = 'motor_show_presents_car_model_variant',
+    MotorShowHasImage = 'motor_show_has_image',
     ImageBelongsToNode = 'image_belongs_to_node',
     ImageIsPrimeImageOfNode = 'image_is_prime_image_of_node',
 }

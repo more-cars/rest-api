@@ -16,6 +16,7 @@ import {RelType} from "../../relationships/types/RelType"
 import {getAllRels} from "../../relationships/getAllRels"
 import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
+import {Image} from "../images/Image"
 
 export const MotorShow = {
     async create(data: CreateMotorShowInput): Promise<MotorShowNode> {
@@ -92,5 +93,23 @@ export const MotorShow = {
         }
 
         await deleteSpecificRel(motorShowId, carModelVariantId, RelType.MotorShowPresentsCarModelVariant)
+    },
+
+    async createHasImageRelationship(motorShowId: number, imageId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await MotorShow.findById(motorShowId)
+        await Image.findById(imageId)
+
+        const existingRelation = await getSpecificRel(motorShowId, imageId, RelType.MotorShowHasImage)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.MotorShowHasImage, motorShowId, imageId)
+        }
+
+        const createdRelationship = await createRel(motorShowId, imageId, RelType.MotorShowHasImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }
