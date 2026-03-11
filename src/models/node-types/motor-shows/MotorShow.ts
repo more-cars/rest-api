@@ -14,6 +14,8 @@ import {getSpecificRel} from "../../relationships/getSpecificRel"
 import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
 import {RelType} from "../../relationships/types/RelType"
 import {getAllRels} from "../../relationships/getAllRels"
+import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
+import {RelNotFoundError} from "../../types/RelNotFoundError"
 
 export const MotorShow = {
     async create(data: CreateMotorShowInput): Promise<MotorShowNode> {
@@ -77,5 +79,18 @@ export const MotorShow = {
         await MotorShow.findById(motorShowId)
 
         return getAllRels(motorShowId, RelType.MotorShowPresentsCarModelVariant)
+    },
+
+    async deletePresentsCarModelVariantRelationship(motorShowId: number, carModelVariantId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await MotorShow.findById(motorShowId)
+        await CarModelVariant.findById(carModelVariantId)
+
+        const relationship = await getSpecificRel(motorShowId, carModelVariantId, RelType.MotorShowPresentsCarModelVariant)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.MotorShowPresentsCarModelVariant, motorShowId, carModelVariantId)
+        }
+
+        await deleteSpecificRel(motorShowId, carModelVariantId, RelType.MotorShowPresentsCarModelVariant)
     },
 }

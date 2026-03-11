@@ -15192,6 +15192,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Motor Shows"
+        ],
+        "summary": "Deletes the ›presents-car-model-variant‹ relationship between the `Motor Show` and the `Car Model Variant`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "motor-show-id",
+            "description": "ID of the `Motor Show`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›presents-car-model-variant‹ relationship between `Motor Show` and `Car Model Variant` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›presents-car-model-variant‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/relationships/{relationship-id}": {

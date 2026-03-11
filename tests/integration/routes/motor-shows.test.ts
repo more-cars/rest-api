@@ -53,4 +53,12 @@ describe('Motor Shows', () => {
         expect(MotorShowController.getAllPresentsCarModelVariantRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›presents-car-model-variant‹ relationship', async () => {
+        await request(app)
+            .delete('/motor-shows/123/presents-car-model-variant/456')
+
+        expect(MotorShowController.deletePresentsCarModelVariantRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
