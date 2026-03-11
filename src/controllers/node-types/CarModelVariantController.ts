@@ -21,13 +21,14 @@ import {deleteReviewedByMagazineIssueWithRatingRelation} from "./car-model-varia
 import {createIsFeaturedInRacingGameRelation} from "./car-model-variants/createIsFeaturedInRacingGameRelation"
 import {getAllIsFeaturedInRacingGameRelations} from "./car-model-variants/getAllIsFeaturedInRacingGameRelations"
 import {deleteIsFeaturedInRacingGameRelation} from "./car-model-variants/deleteIsFeaturedInRacingGameRelation"
+import {createPresentedAtMotorShowRelation} from "./car-model-variants/createPresentedAtMotorShowRelation"
+import {getAllPresentedAtMotorShowRelations} from "./car-model-variants/getAllPresentedAtMotorShowRelations"
 import {createHasImageRelation} from "./car-model-variants/createHasImageRelation"
 import {getAllHasImageRelations} from "./car-model-variants/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./car-model-variants/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./car-model-variants/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./car-model-variants/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./car-model-variants/deleteHasPrimeImageRelation"
-import {createPresentedAtMotorShowRelation} from "./car-model-variants/createPresentedAtMotorShowRelation"
 
 export const CarModelVariantController = {
     async create(req: express.Request, res: express.Response) {
@@ -120,6 +121,10 @@ export const CarModelVariantController = {
 
     async createPresentedAtMotorShowRelation(req: express.Request, res: express.Response) {
         await createPresentedAtMotorShowRelation(req, res)
+    },
+
+    async getAllPresentedAtMotorShowRelations(req: express.Request, res: express.Response) {
+        await getAllPresentedAtMotorShowRelations(req, res)
     },
 
     async createHasImageRelation(req: express.Request, res: express.Response) {

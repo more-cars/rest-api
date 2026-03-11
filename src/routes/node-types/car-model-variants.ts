@@ -26,6 +26,7 @@ router.post('/car-model-variants/:carModelVariantId/is-featured-in-racing-game/:
 router.get('/car-model-variants/:carModelVariantId/is-featured-in-racing-game', CarModelVariantController.getAllIsFeaturedInRacingGameRelations)
 router.delete('/car-model-variants/:carModelVariantId/is-featured-in-racing-game/:racingGameId', CarModelVariantController.deleteIsFeaturedInRacingGameRelation)
 router.post('/car-model-variants/:carModelVariantId/presented-at-motor-show/:motorShowId', CarModelVariantController.createPresentedAtMotorShowRelation)
+router.get('/car-model-variants/:carModelVariantId/presented-at-motor-show', CarModelVariantController.getAllPresentedAtMotorShowRelations)
 router.post('/car-model-variants/:carModelVariantId/has-image/:imageId', CarModelVariantController.createHasImageRelation)
 router.get('/car-model-variants/:carModelVariantId/has-image', CarModelVariantController.getAllHasImageRelations)
 router.delete('/car-model-variants/:carModelVariantId/has-image/:imageId', CarModelVariantController.deleteHasImageRelation)

@@ -310,6 +310,31 @@ export const CarModelVariant = {
         await deleteSpecificRel(carModelVariantId, racingGameId, RelType.CarModelVariantIsFeaturedInRacingGame)
     },
 
+    async createPresentedAtMotorShowRelationship(carModelVariantId: number, motorShowId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await MotorShow.findById(motorShowId)
+
+        const existingRelation = await getSpecificRel(carModelVariantId, motorShowId, RelType.CarModelVariantPresentedAtMotorShow)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.CarModelVariantPresentedAtMotorShow, carModelVariantId, motorShowId)
+        }
+
+        const createdRelationship = await createRel(carModelVariantId, motorShowId, RelType.CarModelVariantPresentedAtMotorShow)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getAllPresentedAtMotorShowRelationships(carModelVariantId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+
+        return getAllRels(carModelVariantId, RelType.CarModelVariantPresentedAtMotorShow)
+    },
+
     async createHasImageRelationship(carModelVariantId: number, imageId: number) {
         // checking that both nodes exist -> exception is thrown if not
         await CarModelVariant.findById(carModelVariantId)
@@ -391,23 +416,5 @@ export const CarModelVariant = {
         }
 
         await deleteSpecificRel(carModelVariantId, imageId, RelType.CarModelVariantHasPrimeImage)
-    },
-
-    async createPresentedAtMotorShowRelationship(carModelVariantId: number, motorShowId: number) {
-        // checking that both nodes exist -> exception is thrown if not
-        await CarModelVariant.findById(carModelVariantId)
-        await MotorShow.findById(motorShowId)
-
-        const existingRelation = await getSpecificRel(carModelVariantId, motorShowId, RelType.CarModelVariantPresentedAtMotorShow)
-        if (existingRelation) {
-            throw new RelAlreadyExistsError(RelType.CarModelVariantPresentedAtMotorShow, carModelVariantId, motorShowId)
-        }
-
-        const createdRelationship = await createRel(carModelVariantId, motorShowId, RelType.CarModelVariantPresentedAtMotorShow)
-        if (!createdRelationship) {
-            throw new Error('Relationship could not be created')
-        }
-
-        return createdRelationship
     },
 }
