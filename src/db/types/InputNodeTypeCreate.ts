@@ -14,6 +14,7 @@ import type {InputGamingPlatformCreate} from "../node-types/gaming-platforms/typ
 import type {InputMagazineCreate} from "../node-types/magazines/types/InputMagazineCreate"
 import type {InputMagazineIssueCreate} from "../node-types/magazine-issues/types/InputMagazineIssueCreate"
 import type {InputRatingCreate} from "../node-types/ratings/types/InputRatingCreate"
+import type {InputProgrammeCreate} from "../node-types/programmes/types/InputProgrammeCreate"
 import type {InputImageCreate} from "../node-types/images/types/InputImageCreate"
 
 export type InputNodeTypeCreate =
@@ -33,4 +34,5 @@ export type InputNodeTypeCreate =
     InputMagazineCreate |
     InputMagazineIssueCreate |
     InputRatingCreate |
+    InputProgrammeCreate |
     InputImageCreate

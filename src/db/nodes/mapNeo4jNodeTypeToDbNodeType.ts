@@ -4,6 +4,7 @@ import {NodeTypeNotFoundError} from "../types/NodeTypeNotFoundError"
 
 export function mapNeo4jNodeTypeToDbNodeType(nodeTypeLabel: Neo4jNodeType): DbNodeType {
     const mapping = new Map<Neo4jNodeType, DbNodeType>([
+        [Neo4jNodeType.Node, DbNodeType.Node],
         [Neo4jNodeType.Company, DbNodeType.Company],
         [Neo4jNodeType.Brand, DbNodeType.Brand],
         [Neo4jNodeType.CarModel, DbNodeType.CarModel],
@@ -20,8 +21,8 @@ export function mapNeo4jNodeTypeToDbNodeType(nodeTypeLabel: Neo4jNodeType): DbNo
         [Neo4jNodeType.Magazine, DbNodeType.Magazine],
         [Neo4jNodeType.MagazineIssue, DbNodeType.MagazineIssue],
         [Neo4jNodeType.Rating, DbNodeType.Rating],
+        [Neo4jNodeType.Programme, DbNodeType.Programme],
         [Neo4jNodeType.Image, DbNodeType.Image],
-        [Neo4jNodeType.Node, DbNodeType.Node],
     ])
 
     const mappedNodeType = mapping.get(nodeTypeLabel)

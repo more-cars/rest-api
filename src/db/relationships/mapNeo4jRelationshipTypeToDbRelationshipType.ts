@@ -221,6 +221,14 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.RatingHasPrimeImage, RelationshipType.RatingHasPrimeImage],
             ])],
         ])],
+        [Neo4jNodeType.Programme, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+            [RelationshipDirection.REVERSE, new Map([
+                // Programme - Reverse
+            ])],
+            [RelationshipDirection.FORWARD, new Map([
+                // Programme - Forward
+            ])],
+        ])],
         [Neo4jNodeType.Image, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
                 // Image - Reverse

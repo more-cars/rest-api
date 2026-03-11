@@ -16,6 +16,7 @@ import {GamingPlatformSchema} from "./GamingPlatformSchema"
 import {MagazineSchema} from "./MagazineSchema"
 import {MagazineIssueSchema} from "./MagazineIssueSchema"
 import {RatingSchema} from "./RatingSchema"
+import {ProgrammeSchema} from "./ProgrammeSchema"
 import {ImageSchema} from "./ImageSchema"
 
 export function getResponseNodeSchema(nodeType: ControllerNodeType) {
@@ -52,6 +53,8 @@ export function getResponseNodeSchema(nodeType: ControllerNodeType) {
             return MagazineIssueSchema
         case ControllerNodeType.Rating:
             return RatingSchema
+        case ControllerNodeType.Programme:
+            return ProgrammeSchema
         case ControllerNodeType.Image:
             return ImageSchema
         default:
