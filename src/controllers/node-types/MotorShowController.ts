@@ -8,6 +8,7 @@ import {getAllPresentsCarModelVariantRelations} from "./motor-shows/getAllPresen
 import {deletePresentsCarModelVariantRelation} from "./motor-shows/deletePresentsCarModelVariantRelation"
 import {createHasImageRelation} from "./motor-shows/createHasImageRelation"
 import {getAllHasImageRelations} from "./motor-shows/getAllHasImageRelations"
+import {deleteHasImageRelation} from "./motor-shows/deleteHasImageRelation"
 
 export const MotorShowController = {
     async create(req: express.Request, res: express.Response) {
@@ -44,5 +45,9 @@ export const MotorShowController = {
 
     async getAllHasImageRelations(req: express.Request, res: express.Response) {
         await getAllHasImageRelations(req, res)
+    },
+
+    async deleteHasImageRelation(req: express.Request, res: express.Response) {
+        await deleteHasImageRelation(req, res)
     },
 }

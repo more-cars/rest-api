@@ -77,4 +77,12 @@ describe('Motor Shows', () => {
         expect(MotorShowController.getAllHasImageRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-image‹ relationship', async () => {
+        await request(app)
+            .delete('/motor-shows/123/has-image/456')
+
+        expect(MotorShowController.deleteHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
