@@ -182,6 +182,14 @@ describe('Car Model Variants', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Create ›presented-at-motor-show‹ relationship', async () => {
+        await request(app)
+            .post('/car-model-variants/123/presented-at-motor-show/456')
+
+        expect(CarModelVariantController.createPresentedAtMotorShowRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/car-model-variants/123/has-image/456')

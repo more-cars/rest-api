@@ -24,12 +24,16 @@ exports.createIsFeaturedInRacingGameRelationship = async function () {
     await post("/car-model-variants/" + bru.getEnvVar('validCarModelVariantId') + "/is-featured-in-racing-game/" + bru.getEnvVar('validRacingGameId'))
 }
 
-exports.createHasPrimeImageRelationship = async function () {
-    await post("/car-model-variants/" + bru.getEnvVar('validCarModelVariantId') + "/has-prime-image/" + bru.getEnvVar('validImageId'))
+exports.createPresentedAtMotorShowRelationship = async function () {
+    await post("/car-model-variants/" + bru.getEnvVar('validCarModelVariantId') + "/presented-at-motor-show/" + bru.getEnvVar('validMotorShowId'))
 }
 
 exports.createHasImageRelationship = async function () {
     await post("/car-model-variants/" + bru.getEnvVar('validCarModelVariantId') + "/has-image/" + bru.getEnvVar('validImageId'))
+}
+
+exports.createHasPrimeImageRelationship = async function () {
+    await post("/car-model-variants/" + bru.getEnvVar('validCarModelVariantId') + "/has-prime-image/" + bru.getEnvVar('validImageId'))
 }
 
 exports.create = async function (prefix = '') {

@@ -27,6 +27,7 @@ import {deleteHasImageRelation} from "./car-model-variants/deleteHasImageRelatio
 import {createHasPrimeImageRelation} from "./car-model-variants/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./car-model-variants/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./car-model-variants/deleteHasPrimeImageRelation"
+import {createPresentedAtMotorShowRelation} from "./car-model-variants/createPresentedAtMotorShowRelation"
 
 export const CarModelVariantController = {
     async create(req: express.Request, res: express.Response) {
@@ -115,6 +116,10 @@ export const CarModelVariantController = {
 
     async deleteIsFeaturedInRacingGameRelation(req: express.Request, res: express.Response) {
         await deleteIsFeaturedInRacingGameRelation(req, res)
+    },
+
+    async createPresentedAtMotorShowRelation(req: express.Request, res: express.Response) {
+        await createPresentedAtMotorShowRelation(req, res)
     },
 
     async createHasImageRelation(req: express.Request, res: express.Response) {
