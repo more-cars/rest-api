@@ -14934,6 +14934,48 @@
         }
       }
     },
+    "/motor-shows/{motor-show-id}": {
+      "get": {
+        "operationId": "getMotorShowById",
+        "tags": [
+          "Motor Shows"
+        ],
+        "summary": "Get `Motor Show` by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "motor-show-id",
+            "description": "ID of the `Motor Show`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Motor Show` successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MotorShowResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. A `Motor Show` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/relationships/{relationship-id}": {
       "get": {
         "operationId": "getRelationshipById",
