@@ -13,5 +13,10 @@ export const MotorShowRelationshipSpecification: RelationshipTypeSpecification[]
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    [RelationshipType.MotorShowHasPrimeImage, {
+        startNodeType: NodeType.MotorShow,
+        endNodeType: NodeType.Image,
+        isReverseRelationship: false,
+    }],
     //
 ]

@@ -245,6 +245,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 // Motor Show - Forward
                 [RelationshipTypeNeo4j.MotorShowPresentsCarModelVariant, RelationshipType.MotorShowPresentsCarModelVariant],
                 [RelationshipTypeNeo4j.MotorShowHasImage, RelationshipType.MotorShowHasImage],
+                [RelationshipTypeNeo4j.MotorShowHasPrimeImage, RelationshipType.MotorShowHasPrimeImage],
             ])],
         ])],
         [Neo4jNodeType.Image, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
