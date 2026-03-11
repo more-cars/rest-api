@@ -19,6 +19,7 @@ import {RelNotFoundError} from "../../types/RelNotFoundError"
 import {Image} from "../images/Image"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {ModelNodeType} from "../../types/ModelNodeType"
+import {getRel} from "../../relationships/getRel"
 
 export const MotorShow = {
     async create(data: CreateMotorShowInput): Promise<MotorShowNode> {
@@ -152,5 +153,17 @@ export const MotorShow = {
         }
 
         return createdRelationship
+    },
+
+    async getHasPrimeImageRelationship(motorShowId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await MotorShow.findById(motorShowId)
+
+        const relationship = await getRel(motorShowId, RelType.MotorShowHasPrimeImage)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.MotorShowHasPrimeImage, motorShowId, null)
+        }
+
+        return relationship
     },
 }

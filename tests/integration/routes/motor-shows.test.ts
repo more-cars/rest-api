@@ -93,4 +93,12 @@ describe('Motor Shows', () => {
         expect(MotorShowController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .get('/motor-shows/123/has-prime-image')
+
+        expect(MotorShowController.getHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

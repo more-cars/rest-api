@@ -15371,6 +15371,48 @@
         }
       }
     },
+    "/motor-shows/{motor-show-id}/has-prime-image": {
+      "get": {
+        "operationId": "getMotorShowHasPrimeImageRel",
+        "tags": [
+          "Motor Shows"
+        ],
+        "summary": "Get the ›has-prime-image‹ relationship for the `Motor Show`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "motor-show-id",
+            "description": "ID of the `Motor Show`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›has-prime-image‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MotorShowHasPrimeImageResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Motor Show` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/motor-shows/{motor-show-id}/has-prime-image/{image-id}": {
       "post": {
         "tags": [
