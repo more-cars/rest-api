@@ -45,4 +45,12 @@ describe('Motor Shows', () => {
         expect(MotorShowController.createPresentsCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›presents-car-model-variant‹ relationships', async () => {
+        await request(app)
+            .get('/motor-shows/123/presents-car-model-variant')
+
+        expect(MotorShowController.getAllPresentsCarModelVariantRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })

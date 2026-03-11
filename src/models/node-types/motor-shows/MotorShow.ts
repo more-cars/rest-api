@@ -13,6 +13,7 @@ import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 import {getSpecificRel} from "../../relationships/getSpecificRel"
 import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
 import {RelType} from "../../relationships/types/RelType"
+import {getAllRels} from "../../relationships/getAllRels"
 
 export const MotorShow = {
     async create(data: CreateMotorShowInput): Promise<MotorShowNode> {
@@ -69,5 +70,12 @@ export const MotorShow = {
         }
 
         return createdRelationship
+    },
+
+    async getAllPresentsCarModelVariantRelationships(motorShowId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await MotorShow.findById(motorShowId)
+
+        return getAllRels(motorShowId, RelType.MotorShowPresentsCarModelVariant)
     },
 }

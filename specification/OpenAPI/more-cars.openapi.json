@@ -15099,6 +15099,48 @@
         }
       }
     },
+    "/motor-shows/{motor-show-id}/presents-car-model-variant": {
+      "get": {
+        "operationId": "getMotorShowPresentsCarModelVariantRel",
+        "tags": [
+          "Motor Shows"
+        ],
+        "summary": "Get all ›presents-car-model-variant‹ relationships for the `Motor Show`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "motor-show-id",
+            "description": "ID of the `Motor Show`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›presents-car-model-variant‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MotorShowPresentsCarModelVariantCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Motor Show` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/motor-shows/{motor-show-id}/presents-car-model-variant/{car-model-variant-id}": {
       "post": {
         "tags": [
@@ -22362,6 +22404,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/MotorShowPresentsCarModelVariant"
+          }
+        }
+      },
+      "MotorShowPresentsCarModelVariantCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MotorShowPresentsCarModelVariantResponse"
+            }
           }
         }
       },
