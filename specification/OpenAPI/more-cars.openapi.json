@@ -14902,6 +14902,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Programme Episodes"
+        ],
+        "summary": "Delete `Programme Episode`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "programme-episode-id",
+            "description": "ID of the `Programme Episode`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Programme Episode` successfully deleted."
+          },
+          "404": {
+            "description": "Deletion request failed. A `Programme Episode` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/motor-shows": {
