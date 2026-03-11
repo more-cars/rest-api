@@ -27,7 +27,7 @@ describe('database query for fetching all nodes of a type - sorting', () => {
                     "MATCH (node:" + nodeType + "_" + appInstanceId + ")\n" +
                     "WHERE node.dummy = 'dummy'\n" +
                     "RETURN node\n" +
-                    "  ORDER BY node." + sortByProperty + " " + sortDirection + "\n" +
+                    "  ORDER BY toLower(toString(node." + sortByProperty + ")) " + sortDirection + "\n" +
                     "  SKIP 0\n" +
                     "  LIMIT 100")
         })

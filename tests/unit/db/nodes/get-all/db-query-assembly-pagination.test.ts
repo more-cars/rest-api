@@ -26,7 +26,7 @@ describe('database query for fetching all nodes of a type - pagination', () => {
                     "MATCH (node:" + nodeType + "_" + appInstanceId + ")\n" +
                     "WHERE node.dummy = 'dummy'\n" +
                     "RETURN node\n" +
-                    "  ORDER BY node.dummy dummy\n" +
+                    "  ORDER BY toLower(toString(node.dummy)) dummy\n" +
                     "  SKIP " + offset + "\n" +
                     "  LIMIT " + limit)
         })

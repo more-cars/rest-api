@@ -25,7 +25,7 @@ describe('database query for fetching all nodes of a type - combined params', ()
                     "MATCH (node:" + nodeType + "_" + appInstanceId + ")\n" +
                     "WHERE node." + filterByProperty + " " + filterOperator + " '" + filterValue + "'\n" +
                     "RETURN node\n" +
-                    "  ORDER BY node." + sortByProperty + " " + sortDirection + "\n" +
+                    "  ORDER BY toLower(toString(node." + sortByProperty + ")) " + sortDirection + "\n" +
                     "  SKIP " + offset + "\n" +
                     "  LIMIT " + limit)
         })
