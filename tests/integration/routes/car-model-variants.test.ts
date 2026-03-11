@@ -198,6 +198,14 @@ describe('Car Model Variants', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete ›presented-at-motor-show‹ relationship', async () => {
+        await request(app)
+            .delete('/car-model-variants/123/presented-at-motor-show/456')
+
+        expect(CarModelVariantController.deletePresentedAtMotorShowRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/car-model-variants/123/has-image/456')
