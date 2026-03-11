@@ -69,4 +69,12 @@ describe('Motor Shows', () => {
         expect(MotorShowController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›has-image‹ relationships', async () => {
+        await request(app)
+            .get('/motor-shows/123/has-image')
+
+        expect(MotorShowController.getAllHasImageRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })

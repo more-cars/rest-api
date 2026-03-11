@@ -15235,6 +15235,48 @@
         }
       }
     },
+    "/motor-shows/{motor-show-id}/has-image": {
+      "get": {
+        "operationId": "getMotorShowHasImageRel",
+        "tags": [
+          "Motor Shows"
+        ],
+        "summary": "Get all ›has-image‹ relationships for the `Motor Show`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "motor-show-id",
+            "description": "ID of the `Motor Show`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-image‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MotorShowHasImageCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Motor Show` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/motor-shows/{motor-show-id}/has-image/{image-id}": {
       "post": {
         "tags": [
@@ -22559,6 +22601,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/MotorShowHasImage"
+          }
+        }
+      },
+      "MotorShowHasImageCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MotorShowHasImageResponse"
+            }
           }
         }
       },

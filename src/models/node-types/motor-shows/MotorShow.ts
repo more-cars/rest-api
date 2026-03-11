@@ -112,4 +112,11 @@ export const MotorShow = {
 
         return createdRelationship
     },
+
+    async getAllHasImageRelationships(motorShowId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await MotorShow.findById(motorShowId)
+
+        return getAllRels(motorShowId, RelType.MotorShowHasImage)
+    },
 }
