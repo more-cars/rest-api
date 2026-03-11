@@ -11,6 +11,7 @@ import {getAllHasImageRelations} from "./motor-shows/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./motor-shows/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./motor-shows/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./motor-shows/getHasPrimeImageRelation"
+import {deleteHasPrimeImageRelation} from "./motor-shows/deleteHasPrimeImageRelation"
 
 export const MotorShowController = {
     async create(req: express.Request, res: express.Response) {
@@ -59,5 +60,9 @@ export const MotorShowController = {
 
     async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await getHasPrimeImageRelation(req, res)
+    },
+
+    async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
+        await deleteHasPrimeImageRelation(req, res)
     },
 }

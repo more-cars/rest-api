@@ -1,0 +1,25 @@
+info:
+  name: Delete ›has-prime-image‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/motor-shows/{{validMotorShowId}}/has-prime-image/{{validImageId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const MotorShows = require('./lib/node-types/MotorShows.js')
+        const Images = require('./lib/node-types/Images.js')
+        await MotorShows.create()
+        await Images.create()
+        await MotorShows.createHasPrimeImageRelationship()

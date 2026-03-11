@@ -15,5 +15,6 @@ router.get('/motor-shows/:motorShowId/has-image', MotorShowController.getAllHasI
 router.delete('/motor-shows/:motorShowId/has-image/:imageId', MotorShowController.deleteHasImageRelation)
 router.post('/motor-shows/:motorShowId/has-prime-image/:imageId', MotorShowController.createHasPrimeImageRelation)
 router.get('/motor-shows/:motorShowId/has-prime-image', MotorShowController.getHasPrimeImageRelation)
+router.delete('/motor-shows/:motorShowId/has-prime-image/:imageId', MotorShowController.deleteHasPrimeImageRelation)
 
 export default router
