@@ -1,0 +1,35 @@
+info:
+  name: Get Programme Episode by ID (valid data)
+  type: http
+  tags:
+    - get
+    - node
+    - valid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/programme-episodes/{{validProgrammeEpisodeId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validProgrammeEpisodeId}}"
+    - expression: res.body.attributes.created_at
+      operator: isString
+    - expression: res.body.attributes.created_at
+      operator: isNotEmpty
+    - expression: res.body.attributes.updated_at
+      operator: isString
+    - expression: res.body.attributes.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const ProgrammeEpisodes = require('./lib/node-types/ProgrammeEpisodes.js')
+        await ProgrammeEpisodes.create()
