@@ -5,6 +5,8 @@ import {createNode} from "../../../db/node-types/motor-shows/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/motor-shows/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
+import {getAllNodesOfType} from "../../../db/node-types/motor-shows/getAllNodesOfType"
+import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 
 export const MotorShow = {
     async create(data: CreateMotorShowInput): Promise<MotorShowNode> {
@@ -22,5 +24,16 @@ export const MotorShow = {
         }
 
         return convertDbNodeToModelNode(node) as MotorShowNode
+    },
+
+    async findAll(options: NodeCollectionConstraints = {}): Promise<MotorShowNode[]> {
+        const nodes: MotorShowNode[] = []
+        const nodesDb = await getAllNodesOfType(options)
+
+        nodesDb.forEach(node => {
+            nodes.push(convertDbNodeToModelNode(node) as MotorShowNode)
+        })
+
+        return nodes
     },
 }

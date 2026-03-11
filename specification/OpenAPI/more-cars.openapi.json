@@ -14905,6 +14905,65 @@
       }
     },
     "/motor-shows": {
+      "get": {
+        "operationId": "getMotorShows",
+        "tags": [
+          "Motor Shows"
+        ],
+        "summary": "Get all `Motor Shows`",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Page"
+          },
+          {
+            "in": "query",
+            "name": "sort_by_property",
+            "description": "Returns the `Motor Show` collection, ordered by the specified property.",
+            "schema": {
+              "$ref": "#/components/schemas/MotorShowProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/SortDirection"
+          },
+          {
+            "in": "query",
+            "name": "filter_by_property",
+            "description": "Specifies by which node property the `Motor Show` collection should be filtered.",
+            "schema": {
+              "$ref": "#/components/schemas/MotorShowProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/FilterValue"
+          },
+          {
+            "$ref": "#/components/parameters/FilterOperator"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Motor Show` collection successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MotorShowCollectionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Motor Shows"
@@ -22117,6 +22176,25 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/MotorShow"
+          }
+        }
+      },
+      "MotorShowCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MotorShowResponse"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer"
+              }
+            }
           }
         }
       },
