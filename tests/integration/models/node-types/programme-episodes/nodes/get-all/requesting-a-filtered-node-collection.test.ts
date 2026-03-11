@@ -12,7 +12,7 @@ describe('A filtered "get all PROGRAMME EPISODE nodes" request returns only the 
 
         const expectedNodes: ProgrammeEpisodeNode[] = []
         const actualNodes = await ProgrammeEpisode.findAll({
-            filterByProperty: 'name',
+            filterByProperty: 'title',
             filterValue: 'test',
             filterOperator: FilterOperator.equal
         })
@@ -23,16 +23,16 @@ describe('A filtered "get all PROGRAMME EPISODE nodes" request returns only the 
 
     test('when there exist PROGRAMME EPISODE nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.ProgrammeEpisode)
-        const nodeA = await seedNode(DbNodeType.ProgrammeEpisode, {name: 'A Node'}) as ProgrammeEpisodeNode
-        await seedNode(DbNodeType.ProgrammeEpisode, {name: 'B Node'})
-        await seedNode(DbNodeType.ProgrammeEpisode, {name: 'C Node'})
+        const nodeA = await seedNode(DbNodeType.ProgrammeEpisode, {title: 'A Node'}) as ProgrammeEpisodeNode
+        await seedNode(DbNodeType.ProgrammeEpisode, {title: 'B Node'})
+        await seedNode(DbNodeType.ProgrammeEpisode, {title: 'C Node'})
 
         const filteredNodes = await ProgrammeEpisode.findAll({
-            filterByProperty: 'name',
+            filterByProperty: 'title',
             filterValue: 'A Node',
             filterOperator: FilterOperator.equal
         })
         expect(filteredNodes.length).toEqual(1)
-        expect(filteredNodes[0].attributes.name === nodeA.properties.name)
+        expect(filteredNodes[0].attributes.title === nodeA.properties.title)
     })
 })
