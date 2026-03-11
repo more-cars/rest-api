@@ -1,0 +1,31 @@
+info:
+  name: Create Programme Episode (ignored data)
+  type: http
+  tags:
+    - create
+    - node
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/programme-episodes"
+  body:
+    type: json
+    data: |-
+      {
+        "title": "The Falls Guys",
+        "created_at": "nope",
+        "updated_at": "nonono"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body.attributes.created_at
+      operator: neq
+      value: nope
+    - expression: res.body.attributes.updated_at
+      operator: neq
+      value: nonono

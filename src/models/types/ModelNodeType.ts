@@ -16,6 +16,7 @@ export enum ModelNodeType {
     MagazineIssue = "magazine_issue",
     Rating = "rating",
     Programme = "programme",
+    ProgrammeEpisode = "programme_episode",
     Image = "image",
     Node = "",
 }

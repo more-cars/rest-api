@@ -229,6 +229,14 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 // Programme - Forward
             ])],
         ])],
+        [Neo4jNodeType.ProgrammeEpisode, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+            [RelationshipDirection.REVERSE, new Map([
+                // Programme Episode - Reverse
+            ])],
+            [RelationshipDirection.FORWARD, new Map([
+                // Programme Episode - Forward
+            ])],
+        ])],
         [Neo4jNodeType.Image, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
                 // Image - Reverse

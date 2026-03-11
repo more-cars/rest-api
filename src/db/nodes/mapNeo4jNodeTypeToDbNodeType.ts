@@ -22,6 +22,7 @@ export function mapNeo4jNodeTypeToDbNodeType(nodeTypeLabel: Neo4jNodeType): DbNo
         [Neo4jNodeType.MagazineIssue, DbNodeType.MagazineIssue],
         [Neo4jNodeType.Rating, DbNodeType.Rating],
         [Neo4jNodeType.Programme, DbNodeType.Programme],
+        [Neo4jNodeType.ProgrammeEpisode, DbNodeType.ProgrammeEpisode],
         [Neo4jNodeType.Image, DbNodeType.Image],
     ])
 

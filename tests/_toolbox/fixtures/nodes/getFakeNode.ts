@@ -18,6 +18,7 @@ import {FakeMagazine} from "./FakeMagazine"
 import {FakeMagazineIssue} from "./FakeMagazineIssue"
 import {FakeRating} from "./FakeRating"
 import {FakeProgramme} from "./FakeProgramme"
+import {FakeProgrammeEpisode} from "./FakeProgrammeEpisode"
 import {FakeImage} from "./FakeImage"
 
 export function getFakeNode(nodeType: NodeType) {
@@ -39,6 +40,7 @@ export function getFakeNode(nodeType: NodeType) {
         [NodeType.MagazineIssue, FakeMagazineIssue],
         [NodeType.Rating, FakeRating],
         [NodeType.Programme, FakeProgramme],
+        [NodeType.ProgrammeEpisode, FakeProgrammeEpisode],
         [NodeType.Image, FakeImage],
         [NodeType.Node, FakeBrand],
     ])

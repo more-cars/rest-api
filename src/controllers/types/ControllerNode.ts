@@ -15,6 +15,7 @@ import type {MagazineNode} from "../node-types/magazines/types/MagazineNode"
 import type {MagazineIssueNode} from "../node-types/magazine-issues/types/MagazineIssueNode"
 import type {RatingNode} from "../node-types/ratings/types/RatingNode"
 import type {ProgrammeNode} from "../node-types/programmes/types/ProgrammeNode"
+import type {ProgrammeEpisodeNode} from "../node-types/programme-episodes/types/ProgrammeEpisodeNode"
 import type {ImageNode} from "../node-types/images/types/ImageNode"
 
 export type ControllerNode =
@@ -35,4 +36,5 @@ export type ControllerNode =
     MagazineIssueNode |
     RatingNode |
     ProgrammeNode |
+    ProgrammeEpisodeNode |
     ImageNode

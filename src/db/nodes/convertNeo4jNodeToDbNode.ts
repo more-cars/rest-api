@@ -18,6 +18,7 @@ import {convertMagazineNeo4jNodeToDbNode} from "../node-types/magazines/convertM
 import {convertMagazineIssueNeo4jNodeToDbNode} from "../node-types/magazine-issues/convertMagazineIssueNeo4jNodeToDbNode"
 import {convertRatingNeo4jNodeToDbNode} from "../node-types/ratings/convertRatingNeo4jNodeToDbNode"
 import {convertProgrammeNeo4jNodeToDbNode} from "../node-types/programmes/convertProgrammeNeo4jNodeToDbNode"
+import {convertProgrammeEpisodeNeo4jNodeToDbNode} from "../node-types/programme-episodes/convertProgrammeEpisodeNeo4jNodeToDbNode"
 import {convertImageNeo4jNodeToDbNode} from "../node-types/images/convertImageNeo4jNodeToDbNode"
 
 export function convertNeo4jNodeToDbNode(neo4jNode: Node, nodeTypeLabel: Neo4jNodeType) {
@@ -39,6 +40,7 @@ export function convertNeo4jNodeToDbNode(neo4jNode: Node, nodeTypeLabel: Neo4jNo
         [Neo4jNodeType.MagazineIssue, convertMagazineIssueNeo4jNodeToDbNode],
         [Neo4jNodeType.Rating, convertRatingNeo4jNodeToDbNode],
         [Neo4jNodeType.Programme, convertProgrammeNeo4jNodeToDbNode],
+        [Neo4jNodeType.ProgrammeEpisode, convertProgrammeEpisodeNeo4jNodeToDbNode],
         [Neo4jNodeType.Image, convertImageNeo4jNodeToDbNode],
     ])
 
