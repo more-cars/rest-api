@@ -137,10 +137,15 @@ Their implementation can be found in the directory `tests/behavior`.
 
 With `npm run tests:behavior` the whole suite of Cucumber tests can be executed.
 They run sequentially and produce test reports that can be found in the directory `test-reports/behavior`.
+Only tests that are marked as `implemented` and `NOT deactivated` will be run.
 
 The environment variable `API_URL` specifies where the tests can find the application.
 This needs to be a running instance of the API.
-It can be a local instance, a container in minikube or a cloud deployment - as long as the tests have access to it.
+It can be a local instance, a container in Minikube or a cloud deployment - as long as the tests have access to it.
+
+With `npm run tests:behavior:single` a specific test can be run.
+A wizard will ask for the ID of the respective Gherkin scenario, e.g. `MCA-3601`.
+This command will run the test no matter if it is tagged with `implemented` or `deactivated`.
 
 ### Smoke Tests
 
