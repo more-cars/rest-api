@@ -8,6 +8,11 @@ import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 import {getAllNodesOfType} from "../../../db/node-types/motor-shows/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {deleteNode} from "../../../db/nodes/deleteNode"
+import {createRel} from "../../relationships/createRel"
+import {CarModelVariant} from "../car-model-variants/CarModelVariant"
+import {getSpecificRel} from "../../relationships/getSpecificRel"
+import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
+import {RelType} from "../../relationships/types/RelType"
 
 export const MotorShow = {
     async create(data: CreateMotorShowInput): Promise<MotorShowNode> {
@@ -46,5 +51,23 @@ export const MotorShow = {
         }
 
         await deleteNode(id)
+    },
+
+    async createPresentsCarModelVariantRelationship(motorShowId: number, carModelVariantId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await MotorShow.findById(motorShowId)
+        await CarModelVariant.findById(carModelVariantId)
+
+        const existingRelation = await getSpecificRel(motorShowId, carModelVariantId, RelType.MotorShowPresentsCarModelVariant)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.MotorShowPresentsCarModelVariant, motorShowId, carModelVariantId)
+        }
+
+        const createdRelationship = await createRel(motorShowId, carModelVariantId, RelType.MotorShowPresentsCarModelVariant)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }

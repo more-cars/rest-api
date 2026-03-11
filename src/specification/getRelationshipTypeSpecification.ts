@@ -17,6 +17,7 @@ import {GamingPlatformRelationshipSpecification} from "./node-types/GamingPlatfo
 import {MagazineRelationshipSpecification} from "./node-types/MagazineRelationshipSpecification"
 import {MagazineIssueRelationshipSpecification} from "./node-types/MagazineIssueRelationshipSpecification"
 import {RatingRelationshipSpecification} from "./node-types/RatingRelationshipSpecification"
+import {MotorShowRelationshipSpecification} from "./node-types/MotorShowRelationshipSpecification"
 import {ImageRelationshipSpecification} from "./node-types/ImageRelationshipSpecification"
 
 export function getRelationshipTypeSpecification(relationshipType: RelationshipType) {
@@ -40,6 +41,7 @@ export function getRelationshipTypeSpecification(relationshipType: RelationshipT
         MagazineRelationshipSpecification,
         MagazineIssueRelationshipSpecification,
         RatingRelationshipSpecification,
+        MotorShowRelationshipSpecification,
         ImageRelationshipSpecification,
     ))
 

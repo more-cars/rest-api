@@ -83,6 +83,7 @@ export enum RelationshipType {
     RatingForCarModelVariant = 'Rating For Car Model Variant',
     RatingHasImage = 'Rating Has Image',
     RatingHasPrimeImage = 'Rating Has Prime Image',
+    MotorShowPresentsCarModelVariant = 'Motor Show Presents Car Model Variant',
     ImageBelongsToNode = 'Image Belongs To Node',
     ImageIsPrimeImageOfNode = 'Image Is Prime Image Of Node',
 }
