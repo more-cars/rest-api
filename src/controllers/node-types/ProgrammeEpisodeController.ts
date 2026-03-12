@@ -5,6 +5,7 @@ import {getAll} from "./programme-episodes/getAll"
 import {deleteNode} from "./programme-episodes/deleteNode"
 import {createCoversCarModelRelation} from "./programme-episodes/createCoversCarModelRelation"
 import {getAllCoversCarModelRelations} from "./programme-episodes/getAllCoversCarModelRelations"
+import {deleteCoversCarModelRelation} from "./programme-episodes/deleteCoversCarModelRelation"
 
 export const ProgrammeEpisodeController = {
     async create(req: express.Request, res: express.Response) {
@@ -29,5 +30,9 @@ export const ProgrammeEpisodeController = {
 
     async getAllCoversCarModelRelations(req: express.Request, res: express.Response) {
         await getAllCoversCarModelRelations(req, res)
+    },
+
+    async deleteCoversCarModelRelation(req: express.Request, res: express.Response) {
+        await deleteCoversCarModelRelation(req, res)
     },
 }

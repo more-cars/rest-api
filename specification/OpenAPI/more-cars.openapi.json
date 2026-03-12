@@ -15573,6 +15573,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Programme Episodes"
+        ],
+        "summary": "Deletes the ›covers-car-model‹ relationship between the `Programme Episode` and the `Car Model`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "programme-episode-id",
+            "description": "ID of the `Programme Episode`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "car-model-id",
+            "description": "ID of the `Car Model`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›covers-car-model‹ relationship between `Programme Episode` and `Car Model` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›covers-car-model‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/motor-shows": {
