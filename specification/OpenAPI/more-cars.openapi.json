@@ -15616,6 +15616,48 @@
         }
       }
     },
+    "/programme-episodes/{programme-episode-id}/features-car-model-variant": {
+      "get": {
+        "operationId": "getProgrammeEpisodeFeaturesCarModelVariantRel",
+        "tags": [
+          "Programme Episodes"
+        ],
+        "summary": "Get all ›features-car-model-variant‹ relationships for the `Programme Episode`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "programme-episode-id",
+            "description": "ID of the `Programme Episode`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›features-car-model-variant‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgrammeEpisodeFeaturesCarModelVariantCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Programme Episode` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/programme-episodes/{programme-episode-id}/features-car-model-variant/{car-model-variant-id}": {
       "post": {
         "tags": [
@@ -23641,6 +23683,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/ProgrammeEpisodeFeaturesCarModelVariant"
+          }
+        }
+      },
+      "ProgrammeEpisodeFeaturesCarModelVariantCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgrammeEpisodeFeaturesCarModelVariantResponse"
+            }
           }
         }
       },

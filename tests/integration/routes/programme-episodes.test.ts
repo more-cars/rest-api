@@ -69,4 +69,12 @@ describe('Programme Episodes', () => {
         expect(ProgrammeEpisodeController.createFeaturesCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›features-car-model-variant‹ relationships', async () => {
+        await request(app)
+            .get('/programme-episodes/123/features-car-model-variant')
+
+        expect(ProgrammeEpisodeController.getAllFeaturesCarModelVariantRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })
