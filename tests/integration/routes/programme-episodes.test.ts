@@ -165,4 +165,12 @@ describe('Programme Episodes', () => {
         expect(ProgrammeEpisodeController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›has-image‹ relationships', async () => {
+        await request(app)
+            .get('/programme-episodes/123/has-image')
+
+        expect(ProgrammeEpisodeController.getAllHasImageRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })

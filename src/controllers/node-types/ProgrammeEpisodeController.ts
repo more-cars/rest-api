@@ -19,6 +19,7 @@ import {createFeaturesCarModelVariantRelation} from "./programme-episodes/create
 import {getAllFeaturesCarModelVariantRelations} from "./programme-episodes/getAllFeaturesCarModelVariantRelations"
 import {deleteFeaturesCarModelVariantRelation} from "./programme-episodes/deleteFeaturesCarModelVariantRelation"
 import {createHasImageRelation} from "./programme-episodes/createHasImageRelation"
+import {getAllHasImageRelations} from "./programme-episodes/getAllHasImageRelations"
 
 export const ProgrammeEpisodeController = {
     async create(req: express.Request, res: express.Response) {
@@ -99,5 +100,9 @@ export const ProgrammeEpisodeController = {
 
     async createHasImageRelation(req: express.Request, res: express.Response) {
         await createHasImageRelation(req, res)
+    },
+
+    async getAllHasImageRelations(req: express.Request, res: express.Response) {
+        await getAllHasImageRelations(req, res)
     },
 }

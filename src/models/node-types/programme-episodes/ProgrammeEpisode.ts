@@ -298,4 +298,11 @@ export const ProgrammeEpisode = {
 
         return createdRelationship
     },
+
+    async getAllHasImageRelationships(programmeEpisodeId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await ProgrammeEpisode.findById(programmeEpisodeId)
+
+        return getAllRels(programmeEpisodeId, RelType.ProgrammeEpisodeHasImage)
+    },
 }

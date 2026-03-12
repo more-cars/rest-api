@@ -16432,6 +16432,48 @@
         }
       }
     },
+    "/programme-episodes/{programme-episode-id}/has-image": {
+      "get": {
+        "operationId": "getProgrammeEpisodeHasImageRel",
+        "tags": [
+          "Programme Episodes"
+        ],
+        "summary": "Get all ›has-image‹ relationships for the `Programme Episode`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "programme-episode-id",
+            "description": "ID of the `Programme Episode`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-image‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgrammeEpisodeHasImageCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Programme Episode` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/programme-episodes/{programme-episode-id}/has-image/{image-id}": {
       "post": {
         "tags": [
@@ -24790,6 +24832,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/ProgrammeEpisodeHasImage"
+          }
+        }
+      },
+      "ProgrammeEpisodeHasImageCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgrammeEpisodeHasImageResponse"
+            }
           }
         }
       },

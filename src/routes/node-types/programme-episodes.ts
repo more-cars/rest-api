@@ -23,5 +23,6 @@ router.post('/programme-episodes/:programmeEpisodeId/features-car-model-variant/
 router.get('/programme-episodes/:programmeEpisodeId/features-car-model-variant', ProgrammeEpisodeController.getAllFeaturesCarModelVariantRelations)
 router.delete('/programme-episodes/:programmeEpisodeId/features-car-model-variant/:carModelVariantId', ProgrammeEpisodeController.deleteFeaturesCarModelVariantRelation)
 router.post('/programme-episodes/:programmeEpisodeId/has-image/:imageId', ProgrammeEpisodeController.createHasImageRelation)
+router.get('/programme-episodes/:programmeEpisodeId/has-image', ProgrammeEpisodeController.getAllHasImageRelations)
 
 export default router
