@@ -8,5 +8,6 @@ router.get('/programme-episodes/:id', ProgrammeEpisodeController.getById)
 router.get('/programme-episodes', ProgrammeEpisodeController.getAll)
 router.delete('/programme-episodes/:id', ProgrammeEpisodeController.delete)
 router.post('/programme-episodes/:programmeEpisodeId/covers-car-model/:carModelId', ProgrammeEpisodeController.createCoversCarModelRelation)
+router.get('/programme-episodes/:programmeEpisodeId/covers-car-model', ProgrammeEpisodeController.getAllCoversCarModelRelations)
 
 export default router

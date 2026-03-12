@@ -45,4 +45,12 @@ describe('Programme Episodes', () => {
         expect(ProgrammeEpisodeController.createCoversCarModelRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›covers-car-model‹ relationships', async () => {
+        await request(app)
+            .get('/programme-episodes/123/covers-car-model')
+
+        expect(ProgrammeEpisodeController.getAllCoversCarModelRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })

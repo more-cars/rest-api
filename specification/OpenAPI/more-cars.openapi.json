@@ -15480,6 +15480,48 @@
         }
       }
     },
+    "/programme-episodes/{programme-episode-id}/covers-car-model": {
+      "get": {
+        "operationId": "getProgrammeEpisodeCoversCarModelRel",
+        "tags": [
+          "Programme Episodes"
+        ],
+        "summary": "Get all ›covers-car-model‹ relationships for the `Programme Episode`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "programme-episode-id",
+            "description": "ID of the `Programme Episode`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›covers-car-model‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgrammeEpisodeCoversCarModelCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Programme Episode` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/programme-episodes/{programme-episode-id}/covers-car-model/{car-model-id}": {
       "post": {
         "tags": [
@@ -23444,6 +23486,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/ProgrammeEpisodeCoversCarModel"
+          }
+        }
+      },
+      "ProgrammeEpisodeCoversCarModelCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgrammeEpisodeCoversCarModelResponse"
+            }
           }
         }
       },
