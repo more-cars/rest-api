@@ -27,5 +27,6 @@ router.get('/programme-episodes/:programmeEpisodeId/has-image', ProgrammeEpisode
 router.delete('/programme-episodes/:programmeEpisodeId/has-image/:imageId', ProgrammeEpisodeController.deleteHasImageRelation)
 router.post('/programme-episodes/:programmeEpisodeId/has-prime-image/:imageId', ProgrammeEpisodeController.createHasPrimeImageRelation)
 router.get('/programme-episodes/:programmeEpisodeId/has-prime-image', ProgrammeEpisodeController.getHasPrimeImageRelation)
+router.delete('/programme-episodes/:programmeEpisodeId/has-prime-image/:imageId', ProgrammeEpisodeController.deleteHasPrimeImageRelation)
 
 export default router

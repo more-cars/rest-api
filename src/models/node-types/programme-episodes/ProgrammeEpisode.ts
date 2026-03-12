@@ -350,4 +350,17 @@ export const ProgrammeEpisode = {
 
         return relationship
     },
+
+    async deleteHasPrimeImageRelationship(programmeEpisodeId: number, imageId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await ProgrammeEpisode.findById(programmeEpisodeId)
+        await Image.findById(imageId)
+
+        const relationship = await getSpecificRel(programmeEpisodeId, imageId, RelType.ProgrammeEpisodeHasPrimeImage)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.ProgrammeEpisodeHasPrimeImage, programmeEpisodeId, imageId)
+        }
+
+        await deleteSpecificRel(programmeEpisodeId, imageId, RelType.ProgrammeEpisodeHasPrimeImage)
+    },
 }
