@@ -173,4 +173,12 @@ describe('Programme Episodes', () => {
         expect(ProgrammeEpisodeController.getAllHasImageRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-image‹ relationship', async () => {
+        await request(app)
+            .delete('/programme-episodes/123/has-image/456')
+
+        expect(ProgrammeEpisodeController.deleteHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
