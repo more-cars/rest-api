@@ -77,4 +77,12 @@ describe('Programmes', () => {
         expect(ProgrammeController.getAllHasImageRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-image‹ relationship', async () => {
+        await request(app)
+            .delete('/programmes/123/has-image/456')
+
+        expect(ProgrammeController.deleteHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

@@ -123,4 +123,17 @@ export const Programme = {
 
         return getAllRels(programmeId, RelType.ProgrammeHasImage)
     },
+
+    async deleteHasImageRelationship(programmeId: number, imageId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Programme.findById(programmeId)
+        await Image.findById(imageId)
+
+        const relationship = await getSpecificRel(programmeId, imageId, RelType.ProgrammeHasImage)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.ProgrammeHasImage, programmeId, imageId)
+        }
+
+        await deleteSpecificRel(programmeId, imageId, RelType.ProgrammeHasImage)
+    },
 }

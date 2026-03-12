@@ -8,6 +8,7 @@ import {getAllHasEpisodeRelations} from "./programmes/getAllHasEpisodeRelations"
 import {deleteHasEpisodeRelation} from "./programmes/deleteHasEpisodeRelation"
 import {createHasImageRelation} from "./programmes/createHasImageRelation"
 import {getAllHasImageRelations} from "./programmes/getAllHasImageRelations"
+import {deleteHasImageRelation} from "./programmes/deleteHasImageRelation"
 
 export const ProgrammeController = {
     async create(req: express.Request, res: express.Response) {
@@ -44,5 +45,9 @@ export const ProgrammeController = {
 
     async getAllHasImageRelations(req: express.Request, res: express.Response) {
         await getAllHasImageRelations(req, res)
+    },
+
+    async deleteHasImageRelation(req: express.Request, res: express.Response) {
+        await deleteHasImageRelation(req, res)
     },
 }
