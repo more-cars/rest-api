@@ -77,4 +77,12 @@ describe('Programme Episodes', () => {
         expect(ProgrammeEpisodeController.getAllFeaturesCarModelVariantRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›features-car-model-variant‹ relationship', async () => {
+        await request(app)
+            .delete('/programme-episodes/123/features-car-model-variant/456')
+
+        expect(ProgrammeEpisodeController.deleteFeaturesCarModelVariantRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

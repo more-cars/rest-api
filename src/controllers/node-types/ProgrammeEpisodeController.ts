@@ -8,6 +8,7 @@ import {getAllCoversCarModelRelations} from "./programme-episodes/getAllCoversCa
 import {deleteCoversCarModelRelation} from "./programme-episodes/deleteCoversCarModelRelation"
 import {createFeaturesCarModelVariantRelation} from "./programme-episodes/createFeaturesCarModelVariantRelation"
 import {getAllFeaturesCarModelVariantRelations} from "./programme-episodes/getAllFeaturesCarModelVariantRelations"
+import {deleteFeaturesCarModelVariantRelation} from "./programme-episodes/deleteFeaturesCarModelVariantRelation"
 
 export const ProgrammeEpisodeController = {
     async create(req: express.Request, res: express.Response) {
@@ -44,5 +45,9 @@ export const ProgrammeEpisodeController = {
 
     async getAllFeaturesCarModelVariantRelations(req: express.Request, res: express.Response) {
         await getAllFeaturesCarModelVariantRelations(req, res)
+    },
+
+    async deleteFeaturesCarModelVariantRelation(req: express.Request, res: express.Response) {
+        await deleteFeaturesCarModelVariantRelation(req, res)
     },
 }

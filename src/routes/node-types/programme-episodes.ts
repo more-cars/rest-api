@@ -12,5 +12,6 @@ router.get('/programme-episodes/:programmeEpisodeId/covers-car-model', Programme
 router.delete('/programme-episodes/:programmeEpisodeId/covers-car-model/:carModelId', ProgrammeEpisodeController.deleteCoversCarModelRelation)
 router.post('/programme-episodes/:programmeEpisodeId/features-car-model-variant/:carModelVariantId', ProgrammeEpisodeController.createFeaturesCarModelVariantRelation)
 router.get('/programme-episodes/:programmeEpisodeId/features-car-model-variant', ProgrammeEpisodeController.getAllFeaturesCarModelVariantRelations)
+router.delete('/programme-episodes/:programmeEpisodeId/features-car-model-variant/:carModelVariantId', ProgrammeEpisodeController.deleteFeaturesCarModelVariantRelation)
 
 export default router
