@@ -24,6 +24,7 @@ router.get('/car-model-variants/:carModelVariantId/reviewed-by-magazine-issue-wi
 router.delete('/car-model-variants/:carModelVariantId/reviewed-by-magazine-issue-with-rating/:ratingId', CarModelVariantController.deleteReviewedByMagazineIssueWithRatingRelation)
 router.post('/car-model-variants/:carModelVariantId/featured-in-programme-episode/:programmeEpisodeId', CarModelVariantController.createFeaturedInProgrammeEpisodeRelation)
 router.get('/car-model-variants/:carModelVariantId/featured-in-programme-episode', CarModelVariantController.getAllFeaturedInProgrammeEpisodeRelations)
+router.delete('/car-model-variants/:carModelVariantId/featured-in-programme-episode/:programmeEpisodeId', CarModelVariantController.deleteFeaturedInProgrammeEpisodeRelation)
 router.post('/car-model-variants/:carModelVariantId/is-featured-in-racing-game/:racingGameId', CarModelVariantController.createIsFeaturedInRacingGameRelation)
 router.get('/car-model-variants/:carModelVariantId/is-featured-in-racing-game', CarModelVariantController.getAllIsFeaturedInRacingGameRelations)
 router.delete('/car-model-variants/:carModelVariantId/is-featured-in-racing-game/:racingGameId', CarModelVariantController.deleteIsFeaturedInRacingGameRelation)

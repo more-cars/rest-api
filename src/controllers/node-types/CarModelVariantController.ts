@@ -20,6 +20,7 @@ import {getAllReviewedByMagazineIssueWithRatingRelations} from "./car-model-vari
 import {deleteReviewedByMagazineIssueWithRatingRelation} from "./car-model-variants/deleteReviewedByMagazineIssueWithRatingRelation"
 import {createFeaturedInProgrammeEpisodeRelation} from "./car-model-variants/createFeaturedInProgrammeEpisodeRelation"
 import {getAllFeaturedInProgrammeEpisodeRelations} from "./car-model-variants/getAllFeaturedInProgrammeEpisodeRelations"
+import {deleteFeaturedInProgrammeEpisodeRelation} from "./car-model-variants/deleteFeaturedInProgrammeEpisodeRelation"
 import {createIsFeaturedInRacingGameRelation} from "./car-model-variants/createIsFeaturedInRacingGameRelation"
 import {getAllIsFeaturedInRacingGameRelations} from "./car-model-variants/getAllIsFeaturedInRacingGameRelations"
 import {deleteIsFeaturedInRacingGameRelation} from "./car-model-variants/deleteIsFeaturedInRacingGameRelation"
@@ -116,6 +117,10 @@ export const CarModelVariantController = {
 
     async getAllFeaturedInProgrammeEpisodeRelations(req: express.Request, res: express.Response) {
         await getAllFeaturedInProgrammeEpisodeRelations(req, res)
+    },
+
+    async deleteFeaturedInProgrammeEpisodeRelation(req: express.Request, res: express.Response) {
+        await deleteFeaturedInProgrammeEpisodeRelation(req, res)
     },
 
     async createIsFeaturedInRacingGameRelation(req: express.Request, res: express.Response) {

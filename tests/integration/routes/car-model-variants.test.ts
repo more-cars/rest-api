@@ -174,6 +174,14 @@ describe('Car Model Variants', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete ›featured-in-programme-episode‹ relationship', async () => {
+        await request(app)
+            .delete('/car-model-variants/123/featured-in-programme-episode/456')
+
+        expect(CarModelVariantController.deleteFeaturedInProgrammeEpisodeRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›is-featured-in-racing-game‹ relationship', async () => {
         await request(app)
             .post('/car-model-variants/123/is-featured-in-racing-game/456')
