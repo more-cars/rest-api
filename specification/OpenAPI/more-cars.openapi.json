@@ -14909,6 +14909,48 @@
         }
       }
     },
+    "/programmes/{programme-id}/has-episode": {
+      "get": {
+        "operationId": "getProgrammeHasEpisodeRel",
+        "tags": [
+          "Programmes"
+        ],
+        "summary": "Get all ›has-episode‹ relationships for the `Programme`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "programme-id",
+            "description": "ID of the `Programme`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-episode‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgrammeHasEpisodeCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Programme` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/programmes/{programme-id}/has-episode/{programme-episode-id}": {
       "post": {
         "tags": [
@@ -22764,6 +22806,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/ProgrammeHasEpisode"
+          }
+        }
+      },
+      "ProgrammeHasEpisodeCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgrammeHasEpisodeResponse"
+            }
           }
         }
       },

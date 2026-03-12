@@ -4,6 +4,7 @@ import {getById} from "./programmes/getById"
 import {getAll} from "./programmes/getAll"
 import {deleteNode} from "./programmes/deleteNode"
 import {createHasEpisodeRelation} from "./programmes/createHasEpisodeRelation"
+import {getAllHasEpisodeRelations} from "./programmes/getAllHasEpisodeRelations"
 
 export const ProgrammeController = {
     async create(req: express.Request, res: express.Response) {
@@ -24,5 +25,9 @@ export const ProgrammeController = {
 
     async createHasEpisodeRelation(req: express.Request, res: express.Response) {
         await createHasEpisodeRelation(req, res)
+    },
+
+    async getAllHasEpisodeRelations(req: express.Request, res: express.Response) {
+        await getAllHasEpisodeRelations(req, res)
     },
 }
