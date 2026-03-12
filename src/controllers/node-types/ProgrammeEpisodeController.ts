@@ -8,6 +8,7 @@ import {getBelongsToProgrammeRelation} from "./programme-episodes/getBelongsToPr
 import {deleteBelongsToProgrammeRelation} from "./programme-episodes/deleteBelongsToProgrammeRelation"
 import {createFollowsEpisodeRelation} from "./programme-episodes/createFollowsEpisodeRelation"
 import {getFollowsEpisodeRelation} from "./programme-episodes/getFollowsEpisodeRelation"
+import {deleteFollowsEpisodeRelation} from "./programme-episodes/deleteFollowsEpisodeRelation"
 import {createIsFollowedByEpisodeRelation} from "./programme-episodes/createIsFollowedByEpisodeRelation"
 import {getIsFollowedByEpisodeRelation} from "./programme-episodes/getIsFollowedByEpisodeRelation"
 import {deleteIsFollowedByEpisodeRelation} from "./programme-episodes/deleteIsFollowedByEpisodeRelation"
@@ -53,6 +54,10 @@ export const ProgrammeEpisodeController = {
 
     async getFollowsEpisodeRelation(req: express.Request, res: express.Response) {
         await getFollowsEpisodeRelation(req, res)
+    },
+
+    async deleteFollowsEpisodeRelation(req: express.Request, res: express.Response) {
+        await deleteFollowsEpisodeRelation(req, res)
     },
 
     async createIsFollowedByEpisodeRelation(req: express.Request, res: express.Response) {

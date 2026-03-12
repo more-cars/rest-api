@@ -1,0 +1,25 @@
+info:
+  name: Delete ›follows-episode‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/programme-episodes/{{validProgrammeEpisodeId}}/follows-episode/{{validProgrammeEpisodeId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const ProgrammeEpisodes = require('./lib/node-types/ProgrammeEpisodes.js')
+        const ProgrammeEpisodes = require('./lib/node-types/ProgrammeEpisodes.js')
+        await ProgrammeEpisodes.create()
+        await ProgrammeEpisodes.create()
+        await ProgrammeEpisodes.createFollowsEpisodeRelationship()

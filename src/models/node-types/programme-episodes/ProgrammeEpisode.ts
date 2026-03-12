@@ -142,6 +142,19 @@ export const ProgrammeEpisode = {
         return relationship
     },
 
+    async deleteFollowsEpisodeRelationship(programmeEpisodeId: number, partnerId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await ProgrammeEpisode.findById(programmeEpisodeId)
+        await ProgrammeEpisode.findById(partnerId)
+
+        const relationship = await getSpecificRel(programmeEpisodeId, partnerId, RelType.ProgrammeEpisodeFollowsEpisode)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.ProgrammeEpisodeFollowsEpisode, programmeEpisodeId, partnerId)
+        }
+
+        await deleteSpecificRel(programmeEpisodeId, partnerId, RelType.ProgrammeEpisodeFollowsEpisode)
+    },
+
     async createIsFollowedByEpisodeRelationship(programmeEpisodeId: number, partnerId: number) {
         if (programmeEpisodeId === partnerId) {
             throw new SemanticError(`Programme Episode #${programmeEpisodeId} cannot be connected to itself`)

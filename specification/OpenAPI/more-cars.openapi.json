@@ -15981,6 +15981,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Programme Episodes"
+        ],
+        "summary": "Deletes the ›follows-episode‹ relationship between the `Programme Episode` and the `Partner`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "programme-episode-id",
+            "description": "ID of the `Programme Episode`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "partner-id",
+            "description": "ID of the `Partner`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›follows-episode‹ relationship between `Programme Episode` and `Partner` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›follows-episode‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/programme-episodes/{programme-episode-id}/is-followed-by-episode": {
