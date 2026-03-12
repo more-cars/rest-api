@@ -8,5 +8,10 @@ export const ProgrammeEpisodeRelationshipSpecification: RelationshipTypeSpecific
         endNodeType: NodeType.CarModel,
         isReverseRelationship: false,
     }],
+    [RelationshipType.ProgrammeEpisodeFeaturesCarModelVariant, {
+        startNodeType: NodeType.ProgrammeEpisode,
+        endNodeType: NodeType.CarModelVariant,
+        isReverseRelationship: false,
+    }],
     //
 ]

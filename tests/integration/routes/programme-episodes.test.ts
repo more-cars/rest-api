@@ -61,4 +61,12 @@ describe('Programme Episodes', () => {
         expect(ProgrammeEpisodeController.deleteCoversCarModelRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›features-car-model-variant‹ relationship', async () => {
+        await request(app)
+            .post('/programme-episodes/123/features-car-model-variant/456')
+
+        expect(ProgrammeEpisodeController.createFeaturesCarModelVariantRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
