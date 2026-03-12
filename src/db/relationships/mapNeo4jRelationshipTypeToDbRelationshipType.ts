@@ -247,6 +247,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.ProgrammeEpisodeIsFollowedByEpisode, RelationshipType.ProgrammeEpisodeIsFollowedByEpisode],
                 [RelationshipTypeNeo4j.ProgrammeEpisodeFeaturesCarModelVariant, RelationshipType.ProgrammeEpisodeFeaturesCarModelVariant],
                 [RelationshipTypeNeo4j.ProgrammeEpisodeHasImage, RelationshipType.ProgrammeEpisodeHasImage],
+                [RelationshipTypeNeo4j.ProgrammeEpisodeHasPrimeImage, RelationshipType.ProgrammeEpisodeHasPrimeImage],
             ])],
         ])],
         [Neo4jNodeType.MotorShow, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([

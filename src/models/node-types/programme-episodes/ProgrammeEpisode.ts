@@ -318,4 +318,24 @@ export const ProgrammeEpisode = {
 
         await deleteSpecificRel(programmeEpisodeId, imageId, RelType.ProgrammeEpisodeHasImage)
     },
+
+    async createHasPrimeImageRelationship(programmeEpisodeId: number, imageId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await ProgrammeEpisode.findById(programmeEpisodeId)
+        await Image.findById(imageId)
+
+        const existingRelation = await getSpecificRel(programmeEpisodeId, imageId, RelType.ProgrammeEpisodeHasPrimeImage)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.ProgrammeEpisodeHasPrimeImage, programmeEpisodeId, imageId)
+        }
+        await deleteOutgoingRel(programmeEpisodeId, RelType.ProgrammeEpisodeHasPrimeImage, ModelNodeType.Image)
+
+
+        const createdRelationship = await createRel(programmeEpisodeId, imageId, RelType.ProgrammeEpisodeHasPrimeImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
 }

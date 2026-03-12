@@ -33,5 +33,10 @@ export const ProgrammeEpisodeRelationshipSpecification: RelationshipTypeSpecific
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    [RelationshipType.ProgrammeEpisodeHasPrimeImage, {
+        startNodeType: NodeType.ProgrammeEpisode,
+        endNodeType: NodeType.Image,
+        isReverseRelationship: false,
+    }],
     //
 ]
