@@ -189,4 +189,12 @@ describe('Programme Episodes', () => {
         expect(ProgrammeEpisodeController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .get('/programme-episodes/123/has-prime-image')
+
+        expect(ProgrammeEpisodeController.getHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

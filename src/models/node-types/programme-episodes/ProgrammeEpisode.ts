@@ -338,4 +338,16 @@ export const ProgrammeEpisode = {
 
         return createdRelationship
     },
+
+    async getHasPrimeImageRelationship(programmeEpisodeId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await ProgrammeEpisode.findById(programmeEpisodeId)
+
+        const relationship = await getRel(programmeEpisodeId, RelType.ProgrammeEpisodeHasPrimeImage)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.ProgrammeEpisodeHasPrimeImage, programmeEpisodeId, null)
+        }
+
+        return relationship
+    },
 }
