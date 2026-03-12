@@ -93,4 +93,12 @@ describe('Programmes', () => {
         expect(ProgrammeController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .get('/programmes/123/has-prime-image')
+
+        expect(ProgrammeController.getHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

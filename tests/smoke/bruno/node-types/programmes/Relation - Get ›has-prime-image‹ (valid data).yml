@@ -1,0 +1,59 @@
+info:
+  name: Get ›has-prime-image‹ relation (valid data)
+  type: http
+  tags:
+    - get
+    - relation
+    - valid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/programmes/{{validProgrammeId}}/has-prime-image"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data
+      operator: isJson
+    - expression: res.body.data.relationship_id
+      operator: gte
+      value: "12000000"
+    - expression: res.body.data.relationship_name
+      operator: eq
+      value: "has-prime-image"
+    - expression: res.body.data.start_node
+      operator: isJson
+    - expression: res.body.data.start_node.node_type
+      operator: eq
+      value: "programmes"
+    - expression: res.body.data.start_node.data.id
+      operator: eq
+      value: "{{validProgrammeId}}"
+    - expression: res.body.data.partner_node
+      operator: isJson
+    - expression: res.body.data.partner_node.node_type
+      operator: eq
+      value: "images"
+    - expression: res.body.data.partner_node.data.id
+      operator: eq
+      value: "{{validImageId}}"
+    - expression: res.body.data.created_at
+      operator: isString
+    - expression: res.body.data.created_at
+      operator: isNotEmpty
+    - expression: res.body.data.updated_at
+      operator: isString
+    - expression: res.body.data.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const Programmes = require('./lib/node-types/Programmes.js')
+        const Images = require('./lib/node-types/Images.js')
+        await Programmes.create()
+        await Images.create()
+        await Programmes.createHasPrimeImageRelationship()

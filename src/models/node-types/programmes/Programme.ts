@@ -20,6 +20,7 @@ import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
 import {Image} from "../images/Image"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
+import {getRel} from "../../relationships/getRel"
 
 export const Programme = {
     async create(data: CreateProgrammeInput): Promise<ProgrammeNode> {
@@ -156,5 +157,17 @@ export const Programme = {
         }
 
         return createdRelationship
+    },
+
+    async getHasPrimeImageRelationship(programmeId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await Programme.findById(programmeId)
+
+        const relationship = await getRel(programmeId, RelType.ProgrammeHasPrimeImage)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.ProgrammeHasPrimeImage, programmeId, null)
+        }
+
+        return relationship
     },
 }
