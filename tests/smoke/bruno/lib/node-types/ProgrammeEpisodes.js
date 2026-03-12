@@ -4,6 +4,10 @@ exports.createBelongsToProgrammeRelationship = async function () {
     await post("/programme-episodes/" + bru.getEnvVar('validProgrammeEpisodeId') + "/belongs-to-programme/" + bru.getEnvVar('validProgrammeId'))
 }
 
+exports.createIsFollowedByEpisodeRelationship = async function () {
+    await post("/programme-episodes/" + bru.getEnvVar('validProgrammeEpisodeId') + "/is-followed-by-episode/" + bru.getEnvVar('validProgrammeEpisodeId'))
+}
+
 exports.createCoversCarModelRelationship = async function () {
     await post("/programme-episodes/" + bru.getEnvVar('validProgrammeEpisodeId') + "/covers-car-model/" + bru.getEnvVar('validCarModelId'))
 }

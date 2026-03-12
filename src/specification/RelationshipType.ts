@@ -90,6 +90,7 @@ export enum RelationshipType {
     ProgrammeHasImage = 'Programme Has Image',
     ProgrammeHasPrimeImage = 'Programme Has Prime Image',
     ProgrammeEpisodeBelongsToProgramme = 'Programme Episode Belongs To Programme',
+    ProgrammeEpisodeIsFollowedByEpisode = 'Programme Episode Is Followed By Episode',
     ProgrammeEpisodeCoversCarModel = 'Programme Episode Covers Car Model',
     ProgrammeEpisodeFeaturesCarModelVariant = 'Programme Episode Features Car Model Variant',
     MotorShowPresentsCarModelVariant = 'Motor Show Presents Car Model Variant',
