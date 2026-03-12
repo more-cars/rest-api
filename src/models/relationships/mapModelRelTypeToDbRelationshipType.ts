@@ -89,6 +89,7 @@ export function mapModelRelTypeToDbRelationshipType(modelRelType: RelType): Rela
         [RelType.RatingHasPrimeImage, RelationshipType.RatingHasPrimeImage],
         [RelType.ProgrammeHasEpisode, RelationshipType.ProgrammeHasEpisode],
         [RelType.ProgrammeHasImage, RelationshipType.ProgrammeHasImage],
+        [RelType.ProgrammeHasPrimeImage, RelationshipType.ProgrammeHasPrimeImage],
         [RelType.MotorShowPresentsCarModelVariant, RelationshipType.MotorShowPresentsCarModelVariant],
         [RelType.MotorShowHasImage, RelationshipType.MotorShowHasImage],
         [RelType.MotorShowHasPrimeImage, RelationshipType.MotorShowHasPrimeImage],

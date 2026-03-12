@@ -86,6 +86,7 @@ export enum RelationshipType {
     RatingHasPrimeImage = 'Rating Has Prime Image',
     ProgrammeHasEpisode = 'Programme Has Episode',
     ProgrammeHasImage = 'Programme Has Image',
+    ProgrammeHasPrimeImage = 'Programme Has Prime Image',
     MotorShowPresentsCarModelVariant = 'Motor Show Presents Car Model Variant',
     MotorShowHasImage = 'Motor Show Has Image',
     MotorShowHasPrimeImage = 'Motor Show Has Prime Image',

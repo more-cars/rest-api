@@ -84,6 +84,7 @@ export enum RelType {
     RatingHasPrimeImage = 'rating_has_prime_image',
     ProgrammeHasEpisode = 'programme_has_episode',
     ProgrammeHasImage = 'programme_has_image',
+    ProgrammeHasPrimeImage = 'programme_has_prime_image',
     MotorShowPresentsCarModelVariant = 'motor_show_presents_car_model_variant',
     MotorShowHasImage = 'motor_show_has_image',
     MotorShowHasPrimeImage = 'motor_show_has_prime_image',

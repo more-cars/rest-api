@@ -19,6 +19,7 @@ import {getAllRels} from "../../relationships/getAllRels"
 import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
 import {Image} from "../images/Image"
+import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 
 export const Programme = {
     async create(data: CreateProgrammeInput): Promise<ProgrammeNode> {
@@ -135,5 +136,25 @@ export const Programme = {
         }
 
         await deleteSpecificRel(programmeId, imageId, RelType.ProgrammeHasImage)
+    },
+
+    async createHasPrimeImageRelationship(programmeId: number, imageId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Programme.findById(programmeId)
+        await Image.findById(imageId)
+
+        const existingRelation = await getSpecificRel(programmeId, imageId, RelType.ProgrammeHasPrimeImage)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.ProgrammeHasPrimeImage, programmeId, imageId)
+        }
+        await deleteOutgoingRel(programmeId, RelType.ProgrammeHasPrimeImage, ModelNodeType.Image)
+
+
+        const createdRelationship = await createRel(programmeId, imageId, RelType.ProgrammeHasPrimeImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }

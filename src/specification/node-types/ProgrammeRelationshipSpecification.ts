@@ -13,5 +13,10 @@ export const ProgrammeRelationshipSpecification: RelationshipTypeSpecification[]
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    [RelationshipType.ProgrammeHasPrimeImage, {
+        startNodeType: NodeType.Programme,
+        endNodeType: NodeType.Image,
+        isReverseRelationship: false,
+    }],
     //
 ]
