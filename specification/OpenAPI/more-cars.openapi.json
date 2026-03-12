@@ -15888,6 +15888,48 @@
         }
       }
     },
+    "/programme-episodes/{programme-episode-id}/follows-episode": {
+      "get": {
+        "operationId": "getProgrammeEpisodeFollowsEpisodeRel",
+        "tags": [
+          "Programme Episodes"
+        ],
+        "summary": "Get the ›follows-episode‹ relationship for the `Programme Episode`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "programme-episode-id",
+            "description": "ID of the `Programme Episode`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›follows-episode‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgrammeEpisodeFollowsEpisodeResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Programme Episode` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/programme-episodes/{programme-episode-id}/follows-episode/{partner-id}": {
       "post": {
         "tags": [
