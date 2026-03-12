@@ -18,6 +18,7 @@ import {MagazineRelationshipSpecification} from "./node-types/MagazineRelationsh
 import {MagazineIssueRelationshipSpecification} from "./node-types/MagazineIssueRelationshipSpecification"
 import {RatingRelationshipSpecification} from "./node-types/RatingRelationshipSpecification"
 import {ProgrammeRelationshipSpecification} from "./node-types/ProgrammeRelationshipSpecification"
+import {ProgrammeEpisodeRelationshipSpecification} from "./node-types/ProgrammeEpisodeRelationshipSpecification"
 import {MotorShowRelationshipSpecification} from "./node-types/MotorShowRelationshipSpecification"
 import {ImageRelationshipSpecification} from "./node-types/ImageRelationshipSpecification"
 
@@ -43,6 +44,7 @@ export function getRelationshipTypeSpecification(relationshipType: RelationshipT
         MagazineIssueRelationshipSpecification,
         RatingRelationshipSpecification,
         ProgrammeRelationshipSpecification,
+        ProgrammeEpisodeRelationshipSpecification,
         MotorShowRelationshipSpecification,
         ImageRelationshipSpecification,
     ))

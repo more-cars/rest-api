@@ -1,5 +1,9 @@
 const {post} = require("../apiRequest.js")
 
+exports.createCoversCarModelRelationship = async function () {
+    await post("/programme-episodes/" + bru.getEnvVar('validProgrammeEpisodeId') + "/covers-car-model/" + bru.getEnvVar('validCarModelId'))
+}
+
 exports.create = async function (prefix = '') {
     const response = await post("/programme-episodes", {
         name: 'Dummy Programme Episode',

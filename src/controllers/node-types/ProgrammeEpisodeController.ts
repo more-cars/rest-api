@@ -3,6 +3,7 @@ import {create} from "./programme-episodes/create"
 import {getById} from "./programme-episodes/getById"
 import {getAll} from "./programme-episodes/getAll"
 import {deleteNode} from "./programme-episodes/deleteNode"
+import {createCoversCarModelRelation} from "./programme-episodes/createCoversCarModelRelation"
 
 export const ProgrammeEpisodeController = {
     async create(req: express.Request, res: express.Response) {
@@ -19,5 +20,9 @@ export const ProgrammeEpisodeController = {
 
     async delete(req: express.Request, res: express.Response) {
         await deleteNode(req, res)
+    },
+
+    async createCoversCarModelRelation(req: express.Request, res: express.Response) {
+        await createCoversCarModelRelation(req, res)
     },
 }

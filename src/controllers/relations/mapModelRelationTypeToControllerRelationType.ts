@@ -91,6 +91,7 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.ProgrammeHasEpisode, RelationType.ProgrammeHasEpisode],
         [RelType.ProgrammeHasImage, RelationType.ProgrammeHasImage],
         [RelType.ProgrammeHasPrimeImage, RelationType.ProgrammeHasPrimeImage],
+        [RelType.ProgrammeEpisodeCoversCarModel, RelationType.ProgrammeEpisodeCoversCarModel],
         [RelType.MotorShowPresentsCarModelVariant, RelationType.MotorShowPresentsCarModelVariant],
         [RelType.MotorShowHasImage, RelationType.MotorShowHasImage],
         [RelType.MotorShowHasPrimeImage, RelationType.MotorShowHasPrimeImage],
