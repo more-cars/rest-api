@@ -23,6 +23,7 @@ import {ModelNodeType} from "../../types/ModelNodeType"
 import {getRel} from "../../relationships/getRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {SemanticError} from "../../types/SemanticError"
+import {Image} from "../images/Image"
 
 export const ProgrammeEpisode = {
     async create(data: CreateProgrammeEpisodeInput): Promise<ProgrammeEpisodeNode> {
@@ -278,5 +279,23 @@ export const ProgrammeEpisode = {
         }
 
         await deleteSpecificRel(programmeEpisodeId, carModelVariantId, RelType.ProgrammeEpisodeFeaturesCarModelVariant)
+    },
+
+    async createHasImageRelationship(programmeEpisodeId: number, imageId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await ProgrammeEpisode.findById(programmeEpisodeId)
+        await Image.findById(imageId)
+
+        const existingRelation = await getSpecificRel(programmeEpisodeId, imageId, RelType.ProgrammeEpisodeHasImage)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.ProgrammeEpisodeHasImage, programmeEpisodeId, imageId)
+        }
+
+        const createdRelationship = await createRel(programmeEpisodeId, imageId, RelType.ProgrammeEpisodeHasImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }

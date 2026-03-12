@@ -22,5 +22,6 @@ router.delete('/programme-episodes/:programmeEpisodeId/covers-car-model/:carMode
 router.post('/programme-episodes/:programmeEpisodeId/features-car-model-variant/:carModelVariantId', ProgrammeEpisodeController.createFeaturesCarModelVariantRelation)
 router.get('/programme-episodes/:programmeEpisodeId/features-car-model-variant', ProgrammeEpisodeController.getAllFeaturesCarModelVariantRelations)
 router.delete('/programme-episodes/:programmeEpisodeId/features-car-model-variant/:carModelVariantId', ProgrammeEpisodeController.deleteFeaturesCarModelVariantRelation)
+router.post('/programme-episodes/:programmeEpisodeId/has-image/:imageId', ProgrammeEpisodeController.createHasImageRelation)
 
 export default router

@@ -28,5 +28,10 @@ export const ProgrammeEpisodeRelationshipSpecification: RelationshipTypeSpecific
         endNodeType: NodeType.CarModelVariant,
         isReverseRelationship: false,
     }],
+    [RelationshipType.ProgrammeEpisodeHasImage, {
+        startNodeType: NodeType.ProgrammeEpisode,
+        endNodeType: NodeType.Image,
+        isReverseRelationship: false,
+    }],
     //
 ]

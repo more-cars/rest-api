@@ -157,4 +157,12 @@ describe('Programme Episodes', () => {
         expect(ProgrammeEpisodeController.deleteFeaturesCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-image‹ relationship', async () => {
+        await request(app)
+            .post('/programme-episodes/123/has-image/456')
+
+        expect(ProgrammeEpisodeController.createHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
