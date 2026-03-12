@@ -2400,6 +2400,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Car Models"
+        ],
+        "summary": "Deletes the ›covered-by-programme-episode‹ relationship between the `Car Model` and the `Programme Episode`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-id",
+            "description": "ID of the `Car Model`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "programme-episode-id",
+            "description": "ID of the `Programme Episode`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›covered-by-programme-episode‹ relationship between `Car Model` and `Programme Episode` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›covered-by-programme-episode‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/car-models/{car-model-id}/has-image": {

@@ -174,6 +174,14 @@ describe('Car Models', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete ›covered-by-programme-episode‹ relationship', async () => {
+        await request(app)
+            .delete('/car-models/123/covered-by-programme-episode/456')
+
+        expect(CarModelController.deleteCoveredByProgrammeEpisodeRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/car-models/123/has-image/456')

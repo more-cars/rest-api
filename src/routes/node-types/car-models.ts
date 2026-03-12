@@ -24,6 +24,7 @@ router.get('/car-models/:carModelId/covered-by-magazine-issue', CarModelControll
 router.delete('/car-models/:carModelId/covered-by-magazine-issue/:magazineIssueId', CarModelController.deleteCoveredByMagazineIssueRelation)
 router.post('/car-models/:carModelId/covered-by-programme-episode/:programmeEpisodeId', CarModelController.createCoveredByProgrammeEpisodeRelation)
 router.get('/car-models/:carModelId/covered-by-programme-episode', CarModelController.getAllCoveredByProgrammeEpisodeRelations)
+router.delete('/car-models/:carModelId/covered-by-programme-episode/:programmeEpisodeId', CarModelController.deleteCoveredByProgrammeEpisodeRelation)
 router.post('/car-models/:carModelId/has-image/:imageId', CarModelController.createHasImageRelation)
 router.get('/car-models/:carModelId/has-image/:imageId', CarModelController.getSpecificHasImageRelation)
 router.get('/car-models/:carModelId/has-image', CarModelController.getAllHasImageRelations)
