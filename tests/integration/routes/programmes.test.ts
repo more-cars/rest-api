@@ -101,4 +101,12 @@ describe('Programmes', () => {
         expect(ProgrammeController.getHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .delete('/programmes/123/has-prime-image/456')
+
+        expect(ProgrammeController.deleteHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

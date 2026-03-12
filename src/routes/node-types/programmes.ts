@@ -15,5 +15,6 @@ router.get('/programmes/:programmeId/has-image', ProgrammeController.getAllHasIm
 router.delete('/programmes/:programmeId/has-image/:imageId', ProgrammeController.deleteHasImageRelation)
 router.post('/programmes/:programmeId/has-prime-image/:imageId', ProgrammeController.createHasPrimeImageRelation)
 router.get('/programmes/:programmeId/has-prime-image', ProgrammeController.getHasPrimeImageRelation)
+router.delete('/programmes/:programmeId/has-prime-image/:imageId', ProgrammeController.deleteHasPrimeImageRelation)
 
 export default router
