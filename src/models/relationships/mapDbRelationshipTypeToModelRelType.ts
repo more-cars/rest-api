@@ -24,6 +24,7 @@ export function mapDbRelationshipTypeToModelRelType(dbRelationshipType: Relation
         [RelationshipType.CarModelVariantAchievedLapTime, RelType.CarModelVariantAchievedLapTime],
         [RelationshipType.CarModelVariantIsPresentedInMagazineIssue, RelType.CarModelVariantIsPresentedInMagazineIssue],
         [RelationshipType.CarModelVariantReviewedByMagazineIssueWithRating, RelType.CarModelVariantReviewedByMagazineIssueWithRating],
+        [RelationshipType.CarModelVariantPresentedInProgrammeEpisode, RelType.CarModelVariantPresentedInProgrammeEpisode],
         [RelationshipType.CarModelVariantIsFeaturedInRacingGame, RelType.CarModelVariantIsFeaturedInRacingGame],
         [RelationshipType.CarModelVariantPresentedAtMotorShow, RelType.CarModelVariantPresentedAtMotorShow],
         [RelationshipType.CarModelVariantHasImage, RelType.CarModelVariantHasImage],

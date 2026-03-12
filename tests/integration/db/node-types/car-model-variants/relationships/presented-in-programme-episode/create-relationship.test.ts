@@ -1,0 +1,44 @@
+import {describe, expect, test} from 'vitest'
+import {seedNode} from "../../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
+import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
+import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
+
+describe('Creating a ›presented-in-programme-episode‹ relationship', () => {
+    test('with valid data', async () => {
+        const carModelVariant = await seedNode(DbNodeType.CarModelVariant)
+        const programmeEpisode = await seedNode(DbNodeType.ProgrammeEpisode)
+
+        const createdRelationship = await createRelationship(
+            carModelVariant.properties.id,
+            programmeEpisode.properties.id,
+            RelationshipType.CarModelVariantPresentedInProgrammeEpisode,
+        )
+
+        expect(createdRelationship)
+            .toHaveProperty('id')
+        expect(createdRelationship)
+            .toHaveProperty('type', RelationshipType.CarModelVariantPresentedInProgrammeEpisode)
+        expect(createdRelationship)
+            .toHaveProperty('start_node.properties.id', carModelVariant.properties.id)
+        expect(createdRelationship)
+            .toHaveProperty('end_node.properties.id', programmeEpisode.properties.id)
+        expect(createdRelationship)
+            .toHaveProperty('created_at')
+        expect(createdRelationship)
+            .toHaveProperty('updated_at')
+    })
+
+    test('with invalid data', async () => {
+        const carModelVariant = await seedNode(DbNodeType.CarModelVariant)
+
+        const createdRelationship = await createRelationship(
+            carModelVariant.properties.id,
+            -42,
+            RelationshipType.CarModelVariantPresentedInProgrammeEpisode,
+        )
+
+        expect(createdRelationship)
+            .toEqual(false)
+    })
+})
