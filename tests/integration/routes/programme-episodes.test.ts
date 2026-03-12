@@ -62,6 +62,14 @@ describe('Programme Episodes', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Create ›follows-episode‹ relationship', async () => {
+        await request(app)
+            .post('/programme-episodes/123/follows-episode/456')
+
+        expect(ProgrammeEpisodeController.createFollowsEpisodeRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›is-followed-by-episode‹ relationship', async () => {
         await request(app)
             .post('/programme-episodes/123/is-followed-by-episode/456')

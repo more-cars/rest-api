@@ -90,6 +90,7 @@ export enum RelationshipType {
     ProgrammeHasImage = 'PROGRAMME_HAS_IMAGE',
     ProgrammeHasPrimeImage = 'PROGRAMME_HAS_PRIME_IMAGE',
     ProgrammeEpisodeBelongsToProgramme = 'PROGRAMME_EPISODE_BELONGS_TO_PROGRAMME',
+    ProgrammeEpisodeFollowsEpisode = 'PROGRAMME_EPISODE_FOLLOWS_EPISODE',
     ProgrammeEpisodeIsFollowedByEpisode = 'PROGRAMME_EPISODE_IS_FOLLOWED_BY_EPISODE',
     ProgrammeEpisodeCoversCarModel = 'PROGRAMME_EPISODE_COVERS_CAR_MODEL',
     ProgrammeEpisodeFeaturesCarModelVariant = 'PROGRAMME_EPISODE_FEATURES_CAR_MODEL_VARIANT',

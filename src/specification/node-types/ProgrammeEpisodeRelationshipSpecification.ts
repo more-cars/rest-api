@@ -8,6 +8,11 @@ export const ProgrammeEpisodeRelationshipSpecification: RelationshipTypeSpecific
         endNodeType: NodeType.Programme,
         isReverseRelationship: true,
     }],
+    [RelationshipType.ProgrammeEpisodeFollowsEpisode, {
+        startNodeType: NodeType.ProgrammeEpisode,
+        endNodeType: NodeType.ProgrammeEpisode,
+        isReverseRelationship: true,
+    }],
     [RelationshipType.ProgrammeEpisodeIsFollowedByEpisode, {
         startNodeType: NodeType.ProgrammeEpisode,
         endNodeType: NodeType.ProgrammeEpisode,

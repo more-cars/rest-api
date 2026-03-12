@@ -88,6 +88,7 @@ export enum RelType {
     ProgrammeHasImage = 'programme_has_image',
     ProgrammeHasPrimeImage = 'programme_has_prime_image',
     ProgrammeEpisodeBelongsToProgramme = 'programme_episode_belongs_to_programme',
+    ProgrammeEpisodeFollowsEpisode = 'programme_episode_follows_episode',
     ProgrammeEpisodeIsFollowedByEpisode = 'programme_episode_is_followed_by_episode',
     ProgrammeEpisodeCoversCarModel = 'programme_episode_covers_car_model',
     ProgrammeEpisodeFeaturesCarModelVariant = 'programme_episode_features_car_model_variant',
