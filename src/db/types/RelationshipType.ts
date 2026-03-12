@@ -84,6 +84,7 @@ export enum RelationshipType {
     RatingForCarModelVariant = 'RATING_FOR_CAR_MODEL_VARIANT',
     RatingHasImage = 'RATING_HAS_IMAGE',
     RatingHasPrimeImage = 'RATING_HAS_PRIME_IMAGE',
+    ProgrammeHasEpisode = 'PROGRAMME_HAS_EPISODE',
     MotorShowPresentsCarModelVariant = 'MOTOR_SHOW_PRESENTS_CAR_MODEL_VARIANT',
     MotorShowHasImage = 'MOTOR_SHOW_HAS_IMAGE',
     MotorShowHasPrimeImage = 'MOTOR_SHOW_HAS_PRIME_IMAGE',

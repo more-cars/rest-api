@@ -82,6 +82,7 @@ export enum RelType {
     RatingForCarModelVariant = 'rating_for_car_model_variant',
     RatingHasImage = 'rating_has_image',
     RatingHasPrimeImage = 'rating_has_prime_image',
+    ProgrammeHasEpisode = 'programme_has_episode',
     MotorShowPresentsCarModelVariant = 'motor_show_presents_car_model_variant',
     MotorShowHasImage = 'motor_show_has_image',
     MotorShowHasPrimeImage = 'motor_show_has_prime_image',

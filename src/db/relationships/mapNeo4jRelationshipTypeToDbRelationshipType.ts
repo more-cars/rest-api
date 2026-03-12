@@ -228,6 +228,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
             ])],
             [RelationshipDirection.FORWARD, new Map([
                 // Programme - Forward
+                [RelationshipTypeNeo4j.ProgrammeHasEpisode, RelationshipType.ProgrammeHasEpisode],
             ])],
         ])],
         [Neo4jNodeType.ProgrammeEpisode, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([

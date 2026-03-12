@@ -7,5 +7,6 @@ router.post('/programmes', ProgrammeController.create)
 router.get('/programmes/:id', ProgrammeController.getById)
 router.get('/programmes', ProgrammeController.getAll)
 router.delete('/programmes/:id', ProgrammeController.delete)
+router.post('/programmes/:programmeId/has-episode/:programmeEpisodeId', ProgrammeController.createHasEpisodeRelation)
 
 export default router

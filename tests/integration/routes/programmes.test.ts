@@ -37,4 +37,12 @@ describe('Programmes', () => {
         expect(ProgrammeController.delete)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-episode‹ relationship', async () => {
+        await request(app)
+            .post('/programmes/123/has-episode/456')
+
+        expect(ProgrammeController.createHasEpisodeRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
