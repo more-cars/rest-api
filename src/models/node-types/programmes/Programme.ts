@@ -18,6 +18,7 @@ import {RelType} from "../../relationships/types/RelType"
 import {getAllRels} from "../../relationships/getAllRels"
 import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
+import {Image} from "../images/Image"
 
 export const Programme = {
     async create(data: CreateProgrammeInput): Promise<ProgrammeNode> {
@@ -96,5 +97,23 @@ export const Programme = {
         }
 
         await deleteSpecificRel(programmeId, programmeEpisodeId, RelType.ProgrammeHasEpisode)
+    },
+
+    async createHasImageRelationship(programmeId: number, imageId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Programme.findById(programmeId)
+        await Image.findById(imageId)
+
+        const existingRelation = await getSpecificRel(programmeId, imageId, RelType.ProgrammeHasImage)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.ProgrammeHasImage, programmeId, imageId)
+        }
+
+        const createdRelationship = await createRel(programmeId, imageId, RelType.ProgrammeHasImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }
