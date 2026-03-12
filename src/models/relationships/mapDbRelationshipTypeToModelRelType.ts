@@ -90,6 +90,7 @@ export function mapDbRelationshipTypeToModelRelType(dbRelationshipType: Relation
         [RelationshipType.ProgrammeHasEpisode, RelType.ProgrammeHasEpisode],
         [RelationshipType.ProgrammeHasImage, RelType.ProgrammeHasImage],
         [RelationshipType.ProgrammeHasPrimeImage, RelType.ProgrammeHasPrimeImage],
+        [RelationshipType.ProgrammeEpisodeBelongsToProgramme, RelType.ProgrammeEpisodeBelongsToProgramme],
         [RelationshipType.ProgrammeEpisodeCoversCarModel, RelType.ProgrammeEpisodeCoversCarModel],
         [RelationshipType.ProgrammeEpisodeFeaturesCarModelVariant, RelType.ProgrammeEpisodeFeaturesCarModelVariant],
         [RelationshipType.MotorShowPresentsCarModelVariant, RelType.MotorShowPresentsCarModelVariant],

@@ -38,6 +38,14 @@ describe('Programme Episodes', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Create ›belongs-to-programme‹ relationship', async () => {
+        await request(app)
+            .post('/programme-episodes/123/belongs-to-programme/456')
+
+        expect(ProgrammeEpisodeController.createBelongsToProgrammeRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›covers-car-model‹ relationship', async () => {
         await request(app)
             .post('/programme-episodes/123/covers-car-model/456')

@@ -87,6 +87,7 @@ export enum RelationshipTypeNeo4j {
     ProgrammeHasEpisode = 'HAS_EPISODE',
     ProgrammeHasImage = 'HAS_IMAGE',
     ProgrammeHasPrimeImage = 'HAS_PRIME_IMAGE',
+    ProgrammeEpisodeBelongsToProgramme = 'HAS_EPISODE',
     ProgrammeEpisodeCoversCarModel = 'COVERS_CAR_MODEL',
     ProgrammeEpisodeFeaturesCarModelVariant = 'FEATURES_CAR_MODEL_VARIANT',
     MotorShowPresentsCarModelVariant = 'PRESENTS_CAR_MODEL_VARIANT',
