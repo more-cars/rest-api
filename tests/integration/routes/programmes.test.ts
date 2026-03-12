@@ -69,4 +69,12 @@ describe('Programmes', () => {
         expect(ProgrammeController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›has-image‹ relationships', async () => {
+        await request(app)
+            .get('/programmes/123/has-image')
+
+        expect(ProgrammeController.getAllHasImageRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })

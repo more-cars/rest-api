@@ -11,5 +11,6 @@ router.post('/programmes/:programmeId/has-episode/:programmeEpisodeId', Programm
 router.get('/programmes/:programmeId/has-episode', ProgrammeController.getAllHasEpisodeRelations)
 router.delete('/programmes/:programmeId/has-episode/:programmeEpisodeId', ProgrammeController.deleteHasEpisodeRelation)
 router.post('/programmes/:programmeId/has-image/:imageId', ProgrammeController.createHasImageRelation)
+router.get('/programmes/:programmeId/has-image', ProgrammeController.getAllHasImageRelations)
 
 export default router

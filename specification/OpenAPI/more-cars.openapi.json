@@ -15045,6 +15045,48 @@
         }
       }
     },
+    "/programmes/{programme-id}/has-image": {
+      "get": {
+        "operationId": "getProgrammeHasImageRel",
+        "tags": [
+          "Programmes"
+        ],
+        "summary": "Get all ›has-image‹ relationships for the `Programme`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "programme-id",
+            "description": "ID of the `Programme`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-image‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgrammeHasImageCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Programme` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/programmes/{programme-id}/has-image/{image-id}": {
       "post": {
         "tags": [
@@ -22961,6 +23003,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/ProgrammeHasImage"
+          }
+        }
+      },
+      "ProgrammeHasImageCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgrammeHasImageResponse"
+            }
           }
         }
       },

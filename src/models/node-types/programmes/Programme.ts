@@ -116,4 +116,11 @@ export const Programme = {
 
         return createdRelationship
     },
+
+    async getAllHasImageRelationships(programmeId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await Programme.findById(programmeId)
+
+        return getAllRels(programmeId, RelType.ProgrammeHasImage)
+    },
 }
