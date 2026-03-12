@@ -20,6 +20,7 @@ import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {Programme} from "../programmes/Programme"
 import {ModelNodeType} from "../../types/ModelNodeType"
+import {getRel} from "../../relationships/getRel"
 
 export const ProgrammeEpisode = {
     async create(data: CreateProgrammeEpisodeInput): Promise<ProgrammeEpisodeNode> {
@@ -77,6 +78,18 @@ export const ProgrammeEpisode = {
         }
 
         return createdRelationship
+    },
+
+    async getBelongsToProgrammeRelationship(programmeEpisodeId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await ProgrammeEpisode.findById(programmeEpisodeId)
+
+        const relationship = await getRel(programmeEpisodeId, RelType.ProgrammeEpisodeBelongsToProgramme)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.ProgrammeEpisodeBelongsToProgramme, programmeEpisodeId, null)
+        }
+
+        return relationship
     },
 
     async createCoversCarModelRelationship(programmeEpisodeId: number, carModelId: number) {
