@@ -19,6 +19,7 @@ import {createReviewedByMagazineIssueWithRatingRelation} from "./car-model-varia
 import {getAllReviewedByMagazineIssueWithRatingRelations} from "./car-model-variants/getAllReviewedByMagazineIssueWithRatingRelations"
 import {deleteReviewedByMagazineIssueWithRatingRelation} from "./car-model-variants/deleteReviewedByMagazineIssueWithRatingRelation"
 import {createFeaturedInProgrammeEpisodeRelation} from "./car-model-variants/createFeaturedInProgrammeEpisodeRelation"
+import {getAllFeaturedInProgrammeEpisodeRelations} from "./car-model-variants/getAllFeaturedInProgrammeEpisodeRelations"
 import {createIsFeaturedInRacingGameRelation} from "./car-model-variants/createIsFeaturedInRacingGameRelation"
 import {getAllIsFeaturedInRacingGameRelations} from "./car-model-variants/getAllIsFeaturedInRacingGameRelations"
 import {deleteIsFeaturedInRacingGameRelation} from "./car-model-variants/deleteIsFeaturedInRacingGameRelation"
@@ -109,6 +110,14 @@ export const CarModelVariantController = {
         await deleteReviewedByMagazineIssueWithRatingRelation(req, res)
     },
 
+    async createFeaturedInProgrammeEpisodeRelation(req: express.Request, res: express.Response) {
+        await createFeaturedInProgrammeEpisodeRelation(req, res)
+    },
+
+    async getAllFeaturedInProgrammeEpisodeRelations(req: express.Request, res: express.Response) {
+        await getAllFeaturedInProgrammeEpisodeRelations(req, res)
+    },
+
     async createIsFeaturedInRacingGameRelation(req: express.Request, res: express.Response) {
         await createIsFeaturedInRacingGameRelation(req, res)
     },
@@ -155,9 +164,5 @@ export const CarModelVariantController = {
 
     async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
-    },
-
-    async createFeaturedInProgrammeEpisodeRelation(req: express.Request, res: express.Response) {
-        await createFeaturedInProgrammeEpisodeRelation(req, res)
     },
 }

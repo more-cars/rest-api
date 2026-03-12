@@ -3656,6 +3656,48 @@
         }
       }
     },
+    "/car-model-variants/{car-model-variant-id}/featured-in-programme-episode": {
+      "get": {
+        "operationId": "getCarModelVariantFeaturedInProgrammeEpisodeRel",
+        "tags": [
+          "Car Model Variants"
+        ],
+        "summary": "Get all ›featured-in-programme-episode‹ relationships for the `Car Model Variant`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›featured-in-programme-episode‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelVariantFeaturedInProgrammeEpisodeCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Car Model Variant` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/car-model-variants/{car-model-variant-id}/featured-in-programme-episode/{programme-episode-id}": {
       "post": {
         "tags": [
@@ -18173,6 +18215,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/CarModelVariantFeaturedInProgrammeEpisode"
+          }
+        }
+      },
+      "CarModelVariantFeaturedInProgrammeEpisodeCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CarModelVariantFeaturedInProgrammeEpisodeResponse"
+            }
           }
         }
       },

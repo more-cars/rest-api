@@ -291,6 +291,13 @@ export const CarModelVariant = {
         return createdRelationship
     },
 
+    async getAllFeaturedInProgrammeEpisodeRelationships(carModelVariantId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+
+        return getAllRels(carModelVariantId, RelType.CarModelVariantFeaturedInProgrammeEpisode)
+    },
+
     async createIsFeaturedInRacingGameRelationship(carModelVariantId: number, racingGameId: number) {
         // checking that both nodes exist -> exception is thrown if not
         await CarModelVariant.findById(carModelVariantId)
