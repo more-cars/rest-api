@@ -142,6 +142,19 @@ export const ProgrammeEpisode = {
         return relationship
     },
 
+    async deleteIsFollowedByEpisodeRelationship(programmeEpisodeId: number, partnerId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await ProgrammeEpisode.findById(programmeEpisodeId)
+        await ProgrammeEpisode.findById(partnerId)
+
+        const relationship = await getSpecificRel(programmeEpisodeId, partnerId, RelType.ProgrammeEpisodeIsFollowedByEpisode)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.ProgrammeEpisodeIsFollowedByEpisode, programmeEpisodeId, partnerId)
+        }
+
+        await deleteSpecificRel(programmeEpisodeId, partnerId, RelType.ProgrammeEpisodeIsFollowedByEpisode)
+    },
+
     async createCoversCarModelRelationship(programmeEpisodeId: number, carModelId: number) {
         // checking that both nodes exist -> exception is thrown if not
         await ProgrammeEpisode.findById(programmeEpisodeId)

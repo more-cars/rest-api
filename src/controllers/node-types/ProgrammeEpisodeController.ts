@@ -8,6 +8,7 @@ import {getBelongsToProgrammeRelation} from "./programme-episodes/getBelongsToPr
 import {deleteBelongsToProgrammeRelation} from "./programme-episodes/deleteBelongsToProgrammeRelation"
 import {createIsFollowedByEpisodeRelation} from "./programme-episodes/createIsFollowedByEpisodeRelation"
 import {getIsFollowedByEpisodeRelation} from "./programme-episodes/getIsFollowedByEpisodeRelation"
+import {deleteIsFollowedByEpisodeRelation} from "./programme-episodes/deleteIsFollowedByEpisodeRelation"
 import {createCoversCarModelRelation} from "./programme-episodes/createCoversCarModelRelation"
 import {getAllCoversCarModelRelations} from "./programme-episodes/getAllCoversCarModelRelations"
 import {deleteCoversCarModelRelation} from "./programme-episodes/deleteCoversCarModelRelation"
@@ -50,6 +51,10 @@ export const ProgrammeEpisodeController = {
 
     async getIsFollowedByEpisodeRelation(req: express.Request, res: express.Response) {
         await getIsFollowedByEpisodeRelation(req, res)
+    },
+
+    async deleteIsFollowedByEpisodeRelation(req: express.Request, res: express.Response) {
+        await deleteIsFollowedByEpisodeRelation(req, res)
     },
 
     async createCoversCarModelRelation(req: express.Request, res: express.Response) {
