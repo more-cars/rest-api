@@ -166,6 +166,14 @@ describe('Car Models', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Get all ›covered-by-programme-episode‹ relationships', async () => {
+        await request(app)
+            .get('/car-models/123/covered-by-programme-episode')
+
+        expect(CarModelController.getAllCoveredByProgrammeEpisodeRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/car-models/123/has-image/456')

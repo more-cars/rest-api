@@ -2307,6 +2307,48 @@
         }
       }
     },
+    "/car-models/{car-model-id}/covered-by-programme-episode": {
+      "get": {
+        "operationId": "getCarModelCoveredByProgrammeEpisodeRel",
+        "tags": [
+          "Car Models"
+        ],
+        "summary": "Get all ›covered-by-programme-episode‹ relationships for the `Car Model`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-id",
+            "description": "ID of the `Car Model`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›covered-by-programme-episode‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelCoveredByProgrammeEpisodeCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Car Model` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/car-models/{car-model-id}/covered-by-programme-episode/{programme-episode-id}": {
       "post": {
         "tags": [
@@ -17428,6 +17470,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/CarModelHasPrimeImage"
+          }
+        }
+      },
+      "CarModelCoveredByProgrammeEpisodeCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CarModelCoveredByProgrammeEpisodeResponse"
+            }
           }
         }
       },

@@ -308,6 +308,13 @@ export const CarModel = {
         return createdRelationship
     },
 
+    async getAllCoveredByProgrammeEpisodeRelationships(carModelId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await CarModel.findById(carModelId)
+
+        return getAllRels(carModelId, RelType.CarModelCoveredByProgrammeEpisode)
+    },
+
     async createHasImageRelationship(carModelId: number, imageId: number) {
         // checking that both nodes exist -> exception is thrown if not
         await CarModel.findById(carModelId)
