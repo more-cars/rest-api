@@ -16,6 +16,8 @@ import {ModelNodeType} from "../../types/ModelNodeType"
 import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
 import {RelType} from "../../relationships/types/RelType"
 import {getAllRels} from "../../relationships/getAllRels"
+import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
+import {RelNotFoundError} from "../../types/RelNotFoundError"
 
 export const Programme = {
     async create(data: CreateProgrammeInput): Promise<ProgrammeNode> {
@@ -81,5 +83,18 @@ export const Programme = {
         await Programme.findById(programmeId)
 
         return getAllRels(programmeId, RelType.ProgrammeHasEpisode)
+    },
+
+    async deleteHasEpisodeRelationship(programmeId: number, programmeEpisodeId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Programme.findById(programmeId)
+        await ProgrammeEpisode.findById(programmeEpisodeId)
+
+        const relationship = await getSpecificRel(programmeId, programmeEpisodeId, RelType.ProgrammeHasEpisode)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.ProgrammeHasEpisode, programmeId, programmeEpisodeId)
+        }
+
+        await deleteSpecificRel(programmeId, programmeEpisodeId, RelType.ProgrammeHasEpisode)
     },
 }

@@ -53,4 +53,12 @@ describe('Programmes', () => {
         expect(ProgrammeController.getAllHasEpisodeRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-episode‹ relationship', async () => {
+        await request(app)
+            .delete('/programmes/123/has-episode/456')
+
+        expect(ProgrammeController.deleteHasEpisodeRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
