@@ -107,6 +107,41 @@ export const ProgrammeEpisode = {
         await deleteSpecificRel(programmeEpisodeId, programmeId, RelType.ProgrammeEpisodeBelongsToProgramme)
     },
 
+    async createIsFollowedByEpisodeRelationship(programmeEpisodeId: number, partnerId: number) {
+        if (programmeEpisodeId === partnerId) {
+            throw new SemanticError(`Programme Episode #${programmeEpisodeId} cannot be connected to itself`)
+        }
+        // checking that both nodes exist -> exception is thrown if not
+        await ProgrammeEpisode.findById(programmeEpisodeId)
+        await ProgrammeEpisode.findById(partnerId)
+
+        const existingRelation = await getSpecificRel(programmeEpisodeId, partnerId, RelType.ProgrammeEpisodeIsFollowedByEpisode)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.ProgrammeEpisodeIsFollowedByEpisode, programmeEpisodeId, partnerId)
+        }
+        await deleteOutgoingRel(programmeEpisodeId, RelType.ProgrammeEpisodeIsFollowedByEpisode, ModelNodeType.ProgrammeEpisode)
+        await deleteIncomingRel(partnerId, RelType.ProgrammeEpisodeIsFollowedByEpisode, ModelNodeType.ProgrammeEpisode)
+
+        const createdRelationship = await createRel(programmeEpisodeId, partnerId, RelType.ProgrammeEpisodeIsFollowedByEpisode)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getIsFollowedByEpisodeRelationship(programmeEpisodeId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await ProgrammeEpisode.findById(programmeEpisodeId)
+
+        const relationship = await getRel(programmeEpisodeId, RelType.ProgrammeEpisodeIsFollowedByEpisode)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.ProgrammeEpisodeIsFollowedByEpisode, programmeEpisodeId, null)
+        }
+
+        return relationship
+    },
+
     async createCoversCarModelRelationship(programmeEpisodeId: number, carModelId: number) {
         // checking that both nodes exist -> exception is thrown if not
         await ProgrammeEpisode.findById(programmeEpisodeId)
@@ -182,28 +217,5 @@ export const ProgrammeEpisode = {
         }
 
         await deleteSpecificRel(programmeEpisodeId, carModelVariantId, RelType.ProgrammeEpisodeFeaturesCarModelVariant)
-    },
-
-    async createIsFollowedByEpisodeRelationship(programmeEpisodeId: number, partnerId: number) {
-        if (programmeEpisodeId === partnerId) {
-            throw new SemanticError(`Programme Episode #${programmeEpisodeId} cannot be connected to itself`)
-        }
-        // checking that both nodes exist -> exception is thrown if not
-        await ProgrammeEpisode.findById(programmeEpisodeId)
-        await ProgrammeEpisode.findById(partnerId)
-
-        const existingRelation = await getSpecificRel(programmeEpisodeId, partnerId, RelType.ProgrammeEpisodeIsFollowedByEpisode)
-        if (existingRelation) {
-            throw new RelAlreadyExistsError(RelType.ProgrammeEpisodeIsFollowedByEpisode, programmeEpisodeId, partnerId)
-        }
-        await deleteOutgoingRel(programmeEpisodeId, RelType.ProgrammeEpisodeIsFollowedByEpisode, ModelNodeType.ProgrammeEpisode)
-        await deleteIncomingRel(partnerId, RelType.ProgrammeEpisodeIsFollowedByEpisode, ModelNodeType.ProgrammeEpisode)
-
-        const createdRelationship = await createRel(programmeEpisodeId, partnerId, RelType.ProgrammeEpisodeIsFollowedByEpisode)
-        if (!createdRelationship) {
-            throw new Error('Relationship could not be created')
-        }
-
-        return createdRelationship
     },
 }

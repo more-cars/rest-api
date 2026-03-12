@@ -11,6 +11,7 @@ router.post('/programme-episodes/:programmeEpisodeId/belongs-to-programme/:progr
 router.get('/programme-episodes/:programmeEpisodeId/belongs-to-programme', ProgrammeEpisodeController.getBelongsToProgrammeRelation)
 router.delete('/programme-episodes/:programmeEpisodeId/belongs-to-programme/:programmeId', ProgrammeEpisodeController.deleteBelongsToProgrammeRelation)
 router.post('/programme-episodes/:programmeEpisodeId/is-followed-by-episode/:partnerId', ProgrammeEpisodeController.createIsFollowedByEpisodeRelation)
+router.get('/programme-episodes/:programmeEpisodeId/is-followed-by-episode', ProgrammeEpisodeController.getIsFollowedByEpisodeRelation)
 router.post('/programme-episodes/:programmeEpisodeId/covers-car-model/:carModelId', ProgrammeEpisodeController.createCoversCarModelRelation)
 router.get('/programme-episodes/:programmeEpisodeId/covers-car-model', ProgrammeEpisodeController.getAllCoversCarModelRelations)
 router.delete('/programme-episodes/:programmeEpisodeId/covers-car-model/:carModelId', ProgrammeEpisodeController.deleteCoversCarModelRelation)

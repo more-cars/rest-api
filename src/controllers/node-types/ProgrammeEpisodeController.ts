@@ -7,6 +7,7 @@ import {createBelongsToProgrammeRelation} from "./programme-episodes/createBelon
 import {getBelongsToProgrammeRelation} from "./programme-episodes/getBelongsToProgrammeRelation"
 import {deleteBelongsToProgrammeRelation} from "./programme-episodes/deleteBelongsToProgrammeRelation"
 import {createIsFollowedByEpisodeRelation} from "./programme-episodes/createIsFollowedByEpisodeRelation"
+import {getIsFollowedByEpisodeRelation} from "./programme-episodes/getIsFollowedByEpisodeRelation"
 import {createCoversCarModelRelation} from "./programme-episodes/createCoversCarModelRelation"
 import {getAllCoversCarModelRelations} from "./programme-episodes/getAllCoversCarModelRelations"
 import {deleteCoversCarModelRelation} from "./programme-episodes/deleteCoversCarModelRelation"
@@ -43,6 +44,14 @@ export const ProgrammeEpisodeController = {
         await deleteBelongsToProgrammeRelation(req, res)
     },
 
+    async createIsFollowedByEpisodeRelation(req: express.Request, res: express.Response) {
+        await createIsFollowedByEpisodeRelation(req, res)
+    },
+
+    async getIsFollowedByEpisodeRelation(req: express.Request, res: express.Response) {
+        await getIsFollowedByEpisodeRelation(req, res)
+    },
+
     async createCoversCarModelRelation(req: express.Request, res: express.Response) {
         await createCoversCarModelRelation(req, res)
     },
@@ -65,9 +74,5 @@ export const ProgrammeEpisodeController = {
 
     async deleteFeaturesCarModelVariantRelation(req: express.Request, res: express.Response) {
         await deleteFeaturesCarModelVariantRelation(req, res)
-    },
-
-    async createIsFollowedByEpisodeRelation(req: express.Request, res: express.Response) {
-        await createIsFollowedByEpisodeRelation(req, res)
     },
 }

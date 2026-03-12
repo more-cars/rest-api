@@ -70,6 +70,14 @@ describe('Programme Episodes', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Get ›is-followed-by-episode‹ relationship', async () => {
+        await request(app)
+            .get('/programme-episodes/123/is-followed-by-episode')
+
+        expect(ProgrammeEpisodeController.getIsFollowedByEpisodeRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›covers-car-model‹ relationship', async () => {
         await request(app)
             .post('/programme-episodes/123/covers-car-model/456')
