@@ -1,0 +1,58 @@
+info:
+  name: Create ›covered-by-programme-episode‹ relation (valid data)
+  type: http
+  tags:
+    - create
+    - relation
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/car-models/{{validCarModelId}}/covered-by-programme-episode/{{validProgrammeEpisodeId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data
+      operator: isJson
+    - expression: res.body.data.relationship_id
+      operator: gte
+      value: "12000000"
+    - expression: res.body.data.relationship_name
+      operator: eq
+      value: "covered-by-programme-episode"
+    - expression: res.body.data.start_node
+      operator: isJson
+    - expression: res.body.data.start_node.node_type
+      operator: eq
+      value: "car-models"
+    - expression: res.body.data.start_node.data.id
+      operator: eq
+      value: "{{validCarModelId}}"
+    - expression: res.body.data.partner_node
+      operator: isJson
+    - expression: res.body.data.partner_node.node_type
+      operator: eq
+      value: "programme-episodes"
+    - expression: res.body.data.partner_node.data.id
+      operator: eq
+      value: "{{validProgrammeEpisodeId}}"
+    - expression: res.body.data.created_at
+      operator: isString
+    - expression: res.body.data.created_at
+      operator: isNotEmpty
+    - expression: res.body.data.updated_at
+      operator: isString
+    - expression: res.body.data.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const CarModels = require('./lib/node-types/CarModels.js')
+        const ProgrammeEpisodes = require('./lib/node-types/ProgrammeEpisodes.js')
+        await CarModels.create()
+        await ProgrammeEpisodes.create()

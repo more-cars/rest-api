@@ -18,6 +18,7 @@ export function mapDbRelationshipTypeToRelationshipType(dbRelationshipType: DbRe
         [DbRelationshipType.CarModelIsSuccessorOf, RelationshipType.CarModelIsSuccessorOf],
         [DbRelationshipType.CarModelHasVariant, RelationshipType.CarModelHasVariant],
         [DbRelationshipType.CarModelCoveredByMagazineIssue, RelationshipType.CarModelCoveredByMagazineIssue],
+        [DbRelationshipType.CarModelCoveredByProgrammeEpisode, RelationshipType.CarModelCoveredByProgrammeEpisode],
         [DbRelationshipType.CarModelHasImage, RelationshipType.CarModelHasImage],
         [DbRelationshipType.CarModelHasPrimeImage, RelationshipType.CarModelHasPrimeImage],
         [DbRelationshipType.CarModelVariantIsVariantOf, RelationshipType.CarModelVariantIsVariantOf],

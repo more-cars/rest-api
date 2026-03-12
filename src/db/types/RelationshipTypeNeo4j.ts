@@ -13,6 +13,7 @@ export enum RelationshipTypeNeo4j {
     CarModelIsSuccessorOf = 'HAS_SUCCESSOR',
     CarModelHasVariant = 'HAS_VARIANT',
     CarModelCoveredByMagazineIssue = 'COVERS_CAR_MODEL',
+    CarModelCoveredByProgrammeEpisode = 'COVERS_CAR_MODEL',
     CarModelHasImage = 'HAS_IMAGE',
     CarModelHasPrimeImage = 'HAS_PRIME_IMAGE',
     CarModelVariantIsVariantOf = 'HAS_VARIANT',

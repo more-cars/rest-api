@@ -24,6 +24,7 @@ import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {MagazineIssue} from "../magazine-issues/MagazineIssue"
+import {ProgrammeEpisode} from "../programme-episodes/ProgrammeEpisode"
 
 export const CarModel = {
     async create(data: CreateCarModelInput): Promise<CarModelNode> {
@@ -286,6 +287,25 @@ export const CarModel = {
         }
 
         await deleteSpecificRel(carModelId, magazineIssueId, RelType.CarModelCoveredByMagazineIssue)
+    },
+
+    async createCoveredByProgrammeEpisodeRelationship(carModelId: number, programmeEpisodeId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModel.findById(carModelId)
+        await ProgrammeEpisode.findById(programmeEpisodeId)
+
+        const existingRelation = await getSpecificRel(carModelId, programmeEpisodeId, RelType.CarModelCoveredByProgrammeEpisode)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.CarModelCoveredByProgrammeEpisode, carModelId, programmeEpisodeId)
+        }
+
+
+        const createdRelationship = await createRel(carModelId, programmeEpisodeId, RelType.CarModelCoveredByProgrammeEpisode)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 
     async createHasImageRelationship(carModelId: number, imageId: number) {
