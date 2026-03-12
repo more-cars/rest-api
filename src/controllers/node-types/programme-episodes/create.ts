@@ -6,7 +6,6 @@ import {convertProgrammeEpisodeModelNodeToControllerNode} from "./convertProgram
 import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import type {CreateProgrammeEpisodeRawInput} from "./types/CreateProgrammeEpisodeRawInput"
 import {isMandatoryString} from "../../validators/isMandatoryString"
-import {isMandatoryNumber} from "../../validators/isMandatoryNumber"
 import {isOptionalString} from "../../validators/isOptionalString"
 import {isOptionalNumber} from "../../validators/isOptionalNumber"
 import {sendResponse201} from "../../responses/sendResponse201"
