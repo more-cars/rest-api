@@ -19,7 +19,7 @@ export enum RelType {
     CarModelVariantAchievedLapTime = 'car_model_variant_achieved_lap_time',
     CarModelVariantIsPresentedInMagazineIssue = 'car_model_variant_is_presented_in_magazine_issue',
     CarModelVariantReviewedByMagazineIssueWithRating = 'car_model_variant_reviewed_by_magazine_issue_with_rating',
-    CarModelVariantPresentedInProgrammeEpisode = 'car_model_variant_presented_in_programme_episode',
+    CarModelVariantFeaturedInProgrammeEpisode = 'car_model_variant_featured_in_programme_episode',
     CarModelVariantIsFeaturedInRacingGame = 'car_model_variant_is_featured_in_racing_game',
     CarModelVariantPresentedAtMotorShow = 'car_model_variant_presented_at_motor_show',
     CarModelVariantHasImage = 'car_model_variant_has_image',

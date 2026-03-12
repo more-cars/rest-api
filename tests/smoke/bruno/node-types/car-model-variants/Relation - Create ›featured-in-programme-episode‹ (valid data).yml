@@ -1,5 +1,5 @@
 info:
-  name: Create ›presented-in-programme-episode‹ relation (valid data)
+  name: Create ›featured-in-programme-episode‹ relation (valid data)
   type: http
   tags:
     - create
@@ -8,7 +8,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/car-model-variants/{{validCarModelVariantId}}/presented-in-programme-episode/{{validProgrammeEpisodeId}}"
+  url: "{{baseUrl}}/car-model-variants/{{validCarModelVariantId}}/featured-in-programme-episode/{{validProgrammeEpisodeId}}"
 
 runtime:
   assertions:
@@ -24,7 +24,7 @@ runtime:
       value: "12000000"
     - expression: res.body.data.relationship_name
       operator: eq
-      value: "presented-in-programme-episode"
+      value: "featured-in-programme-episode"
     - expression: res.body.data.start_node
       operator: isJson
     - expression: res.body.data.start_node.node_type

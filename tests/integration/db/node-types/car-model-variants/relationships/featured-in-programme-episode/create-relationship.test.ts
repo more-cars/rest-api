@@ -4,7 +4,7 @@ import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 import {createRelationship} from "../../../../../../../src/db/relationships/createRelationship"
 import {RelationshipType} from "../../../../../../../src/db/types/RelationshipType"
 
-describe('Creating a ›presented-in-programme-episode‹ relationship', () => {
+describe('Creating a ›featured-in-programme-episode‹ relationship', () => {
     test('with valid data', async () => {
         const carModelVariant = await seedNode(DbNodeType.CarModelVariant)
         const programmeEpisode = await seedNode(DbNodeType.ProgrammeEpisode)
@@ -12,13 +12,13 @@ describe('Creating a ›presented-in-programme-episode‹ relationship', () => {
         const createdRelationship = await createRelationship(
             carModelVariant.properties.id,
             programmeEpisode.properties.id,
-            RelationshipType.CarModelVariantPresentedInProgrammeEpisode,
+            RelationshipType.CarModelVariantFeaturedInProgrammeEpisode,
         )
 
         expect(createdRelationship)
             .toHaveProperty('id')
         expect(createdRelationship)
-            .toHaveProperty('type', RelationshipType.CarModelVariantPresentedInProgrammeEpisode)
+            .toHaveProperty('type', RelationshipType.CarModelVariantFeaturedInProgrammeEpisode)
         expect(createdRelationship)
             .toHaveProperty('start_node.properties.id', carModelVariant.properties.id)
         expect(createdRelationship)
@@ -35,7 +35,7 @@ describe('Creating a ›presented-in-programme-episode‹ relationship', () => {
         const createdRelationship = await createRelationship(
             carModelVariant.properties.id,
             -42,
-            RelationshipType.CarModelVariantPresentedInProgrammeEpisode,
+            RelationshipType.CarModelVariantFeaturedInProgrammeEpisode,
         )
 
         expect(createdRelationship)

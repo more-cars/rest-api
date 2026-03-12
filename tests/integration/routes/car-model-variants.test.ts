@@ -158,11 +158,11 @@ describe('Car Model Variants', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Create ›presented-in-programme-episode‹ relationship', async () => {
+    test('Create ›featured-in-programme-episode‹ relationship', async () => {
         await request(app)
-            .post('/car-model-variants/123/presented-in-programme-episode/456')
+            .post('/car-model-variants/123/featured-in-programme-episode/456')
 
-        expect(CarModelVariantController.createPresentedInProgrammeEpisodeRelation)
+        expect(CarModelVariantController.createFeaturedInProgrammeEpisodeRelation)
             .toHaveBeenCalledTimes(1)
     })
 

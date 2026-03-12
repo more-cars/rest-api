@@ -4,11 +4,11 @@ import {DbNodeType} from "../../../../../../../../src/db/types/DbNodeType"
 import {CarModelVariant} from "../../../../../../../../src/models/node-types/car-model-variants/CarModelVariant"
 import {RelType} from "../../../../../../../../src/models/relationships/types/RelType"
 
-test('Creating a ›presented-in-programme-episode‹ relationship with valid data', async () => {
+test('Creating a ›featured-in-programme-episode‹ relationship with valid data', async () => {
     const carModelVariant = await seedNode(DbNodeType.CarModelVariant)
     const programmeEpisode = await seedNode(DbNodeType.ProgrammeEpisode)
 
-    const createdRelationship = await CarModelVariant.createPresentedInProgrammeEpisodeRelationship(carModelVariant.properties.id, programmeEpisode.properties.id)
+    const createdRelationship = await CarModelVariant.createFeaturedInProgrammeEpisodeRelationship(carModelVariant.properties.id, programmeEpisode.properties.id)
 
     expect(createdRelationship.origin.attributes.id)
         .toEqual(carModelVariant.properties.id)
@@ -17,7 +17,7 @@ test('Creating a ›presented-in-programme-episode‹ relationship with valid da
     expect(createdRelationship.id)
         .toBeDefined()
     expect(createdRelationship.type)
-        .toEqual(RelType.CarModelVariantPresentedInProgrammeEpisode)
+        .toEqual(RelType.CarModelVariantFeaturedInProgrammeEpisode)
     expect(createdRelationship.created_at)
         .toBeDefined()
     expect(createdRelationship.updated_at)

@@ -272,18 +272,18 @@ export const CarModelVariant = {
         await deleteSpecificRel(carModelVariantId, ratingId, RelType.CarModelVariantReviewedByMagazineIssueWithRating)
     },
 
-    async createPresentedInProgrammeEpisodeRelationship(carModelVariantId: number, programmeEpisodeId: number) {
+    async createFeaturedInProgrammeEpisodeRelationship(carModelVariantId: number, programmeEpisodeId: number) {
         // checking that both nodes exist -> exception is thrown if not
         await CarModelVariant.findById(carModelVariantId)
         await ProgrammeEpisode.findById(programmeEpisodeId)
 
-        const existingRelation = await getSpecificRel(carModelVariantId, programmeEpisodeId, RelType.CarModelVariantPresentedInProgrammeEpisode)
+        const existingRelation = await getSpecificRel(carModelVariantId, programmeEpisodeId, RelType.CarModelVariantFeaturedInProgrammeEpisode)
         if (existingRelation) {
-            throw new RelAlreadyExistsError(RelType.CarModelVariantPresentedInProgrammeEpisode, carModelVariantId, programmeEpisodeId)
+            throw new RelAlreadyExistsError(RelType.CarModelVariantFeaturedInProgrammeEpisode, carModelVariantId, programmeEpisodeId)
         }
 
 
-        const createdRelationship = await createRel(carModelVariantId, programmeEpisodeId, RelType.CarModelVariantPresentedInProgrammeEpisode)
+        const createdRelationship = await createRel(carModelVariantId, programmeEpisodeId, RelType.CarModelVariantFeaturedInProgrammeEpisode)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }

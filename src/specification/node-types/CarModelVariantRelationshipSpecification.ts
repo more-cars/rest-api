@@ -28,7 +28,7 @@ export const CarModelVariantRelationshipSpecification: RelationshipTypeSpecifica
         endNodeType: NodeType.Rating,
         isReverseRelationship: true,
     }],
-    [RelationshipType.CarModelVariantPresentedInProgrammeEpisode, {
+    [RelationshipType.CarModelVariantFeaturedInProgrammeEpisode, {
         startNodeType: NodeType.CarModelVariant,
         endNodeType: NodeType.ProgrammeEpisode,
         isReverseRelationship: true,

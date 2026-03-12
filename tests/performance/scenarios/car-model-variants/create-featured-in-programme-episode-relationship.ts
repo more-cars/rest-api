@@ -13,7 +13,7 @@ export const options = {
         duration: ['p(1)<=30', 'p(90)<=150', 'p(95)<=300', 'p(98)<=750'],
     },
     scenarios: {
-        createPresentedInProgrammeEpisodeRelationship: {
+        createFeaturedInProgrammeEpisodeRelationship: {
             executor: 'constant-arrival-rate',
             duration: '5m',
             rate: 1,
@@ -36,7 +36,7 @@ export function setup() {
 }
 
 export default function (data: { carModelVariantId: number, programmeEpisodeId: number }) {
-    const url = `${__ENV.API_URL}/car-model-variants/${data.carModelVariantId}/presented-in-programme-episode/${data.programmeEpisodeId}`
+    const url = `${__ENV.API_URL}/car-model-variants/${data.carModelVariantId}/featured-in-programme-episode/${data.programmeEpisodeId}`
 
     const response = http.post(url)
 

@@ -1,5 +1,5 @@
 info:
-  name: Create ›presented-in-programme-episode‹ relation (invalid data)
+  name: Create ›featured-in-programme-episode‹ relation (invalid data)
   type: http
   tags:
     - create
@@ -8,7 +8,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/car-model-variants/{{invalidCarModelVariantId}}/presented-in-programme-episode/{{invalidProgrammeEpisodeId}}"
+  url: "{{baseUrl}}/car-model-variants/{{invalidCarModelVariantId}}/featured-in-programme-episode/{{invalidProgrammeEpisodeId}}"
 
 runtime:
   assertions:

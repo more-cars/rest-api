@@ -9,12 +9,12 @@ import {sendResponse304} from "../../responses/sendResponse304"
 import {sendResponse404} from "../../responses/sendResponse404"
 import {sendResponse500} from "../../responses/sendResponse500"
 
-export async function createPresentedInProgrammeEpisodeRelation(req: express.Request, res: express.Response) {
+export async function createFeaturedInProgrammeEpisodeRelation(req: express.Request, res: express.Response) {
     const carModelVariantId = parseInt(req.params.carModelVariantId)
     const programmeEpisodeId = parseInt(req.params.programmeEpisodeId)
 
     try {
-        const modelRelation = await CarModelVariant.createPresentedInProgrammeEpisodeRelationship(carModelVariantId, programmeEpisodeId)
+        const modelRelation = await CarModelVariant.createFeaturedInProgrammeEpisodeRelationship(carModelVariantId, programmeEpisodeId)
         const relation = convertModelRelationToControllerRelation(modelRelation)
         const marshalledData = marshalRelation(relation)
 

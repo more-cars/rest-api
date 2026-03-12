@@ -3656,12 +3656,12 @@
         }
       }
     },
-    "/car-model-variants/{car-model-variant-id}/presented-in-programme-episode/{programme-episode-id}": {
+    "/car-model-variants/{car-model-variant-id}/featured-in-programme-episode/{programme-episode-id}": {
       "post": {
         "tags": [
           "Car Model Variants"
         ],
-        "summary": "Creates a ›presented-in-programme-episode‹ relationship between the `Car Model Variant` and the `Programme Episode`",
+        "summary": "Creates a ›featured-in-programme-episode‹ relationship between the `Car Model Variant` and the `Programme Episode`",
         "parameters": [
           {
             "in": "path",
@@ -3684,17 +3684,17 @@
         ],
         "responses": {
           "201": {
-            "description": "Relationship ›presented-in-programme-episode‹ between `Car Model Variant` and `Programme Episode` successfully created.",
+            "description": "Relationship ›featured-in-programme-episode‹ between `Car Model Variant` and `Programme Episode` successfully created.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CarModelVariantPresentedInProgrammeEpisodeResponse"
+                  "$ref": "#/components/schemas/CarModelVariantFeaturedInProgrammeEpisodeResponse"
                 }
               }
             }
           },
           "304": {
-            "description": "The relationship ›presented-in-programme-episode‹ between `Car Model Variant` and `Programme Episode` already exists."
+            "description": "The relationship ›featured-in-programme-episode‹ between `Car Model Variant` and `Programme Episode` already exists."
           },
           "404": {
             "description": "Request failed. `Car Model Variant` and/or `Programme Episode` could not be found in the database.",
@@ -18126,7 +18126,7 @@
           }
         }
       },
-      "CarModelVariantPresentedInProgrammeEpisode": {
+      "CarModelVariantFeaturedInProgrammeEpisode": {
         "type": "object",
         "required": [],
         "properties": {
@@ -18138,7 +18138,7 @@
           "relationship_name": {
             "type": "string",
             "readOnly": true,
-            "example": "presented-in-programme-episode"
+            "example": "featured-in-programme-episode"
           },
           "partner_node": {
             "type": "object",
@@ -18168,11 +18168,11 @@
           }
         }
       },
-      "CarModelVariantPresentedInProgrammeEpisodeResponse": {
+      "CarModelVariantFeaturedInProgrammeEpisodeResponse": {
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/CarModelVariantPresentedInProgrammeEpisode"
+            "$ref": "#/components/schemas/CarModelVariantFeaturedInProgrammeEpisode"
           }
         }
       },
