@@ -8,7 +8,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/programme-episodes/{{invalidProgrammeEpisodeId}}/is-followed-by-episode/{{invalidProgrammeEpisodeId}}"
+  url: "{{baseUrl}}/programme-episodes/{{invalidProgrammeEpisodeId}}/is-followed-by-episode/{{invalidSecondProgrammeEpisodeId}}"
 
 runtime:
   assertions:
@@ -24,4 +24,4 @@ runtime:
       code: |-
         const Ids = require('./lib/Ids.js')
         await Ids.generateInvalidId('ProgrammeEpisode')
-        await Ids.generateInvalidId('ProgrammeEpisode')
+        await Ids.generateInvalidId('SecondProgrammeEpisode')

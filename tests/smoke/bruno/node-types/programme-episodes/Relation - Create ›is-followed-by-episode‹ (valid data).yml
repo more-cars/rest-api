@@ -8,7 +8,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/programme-episodes/{{validProgrammeEpisodeId}}/is-followed-by-episode/{{validProgrammeEpisodeId}}"
+  url: "{{baseUrl}}/programme-episodes/{{validProgrammeEpisodeId}}/is-followed-by-episode/{{validSecondProgrammeEpisodeId}}"
 
 runtime:
   assertions:
@@ -40,7 +40,7 @@ runtime:
       value: "programme-episodes"
     - expression: res.body.data.partner_node.data.id
       operator: eq
-      value: "{{validProgrammeEpisodeId}}"
+      value: "{{validSecondProgrammeEpisodeId}}"
     - expression: res.body.data.created_at
       operator: isString
     - expression: res.body.data.created_at
@@ -53,6 +53,5 @@ runtime:
     - type: before-request
       code: |-
         const ProgrammeEpisodes = require('./lib/node-types/ProgrammeEpisodes.js')
-        const ProgrammeEpisodes = require('./lib/node-types/ProgrammeEpisodes.js')
         await ProgrammeEpisodes.create()
-        await ProgrammeEpisodes.create()
+        await ProgrammeEpisodes.create('Second')
