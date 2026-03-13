@@ -16,7 +16,7 @@ For an alternative Kubernetes setup check out the [Minikube](#minikube-local-kub
 * Clone or download the repository from https://github.com/more-cars/rest-api.git
 * Run `npm run local:db:start` to start the database in a local Docker container
     * when opening http://localhost:7474 the "Neo4j browser" should be shown
-    * optional: log in -> no credentials needed -> just click "Connect"
+    * optional: log in → no credentials needed → just click "Connect"
 * Run `npm install` to install all required dependencies and tools
 * Run `npm run local:app:start` to start the app locally
     * it should be available now at http://localhost:3000
@@ -46,9 +46,10 @@ but cannot be recreated in a local dev environment.
     * the script can be re-run multiple times
         * when a newer version is available it will override the installed one
         * when there is no newer version then the installed one remains untouched
-* Run `npm run minikube:start` to start a local minikube cluster
-    * this should automatically open the Kubernetes dashboard in the browser (might take a few minutes)
-    * memory and CPU settings can be adjusted in the file `deployment/minikube-cluster-start.sh`
+* Run `npm run minikube:start` to start a local Minikube cluster
+    * automatically opens the Kubernetes dashboard in the browser (might take a few minutes)
+    * automatically makes the database available via port-forwarding
+    * if necessary, the memory and CPU settings can be adjusted in the file `deployment/minikube-cluster-start.sh`
 * Run `npm run minikube:stop` to stop the Minikube cluster
     * aborting the `minikube:start` terminal (`ctrl` + `c` or `command` + `c`) will NOT stop the cluster
 * Run `npm run minikube:delete` to destroy the Minikube cluster
@@ -80,6 +81,34 @@ All docker images are managed automatically in the pipeline (see files in folder
 There should be no need to create, tag or push them locally.
 
 ## Databases
+
+### Access
+
+No matter which environment, by default the Neo4j database is not accessible from the outside.
+For the GKE cluster "outside" means the internet.
+In case of Minikube "outside" means the developer machine.
+Only the More Cars API "sees" the database, because it is launched in the same cluster.
+This architecture was chosen for security reasons.
+There are rarely cases were direct access to the database is needed.
+Having the database exposed to the internet in the remaining 99.99 percent of time is an unnecessary security risk.
+
+In general, a Neo4j database has two communication channels - `http` and `bolt`.
+Http is used to interact with the Neo4j admin page and the bolt protocol is used to actually communicate between app and
+database.
+Both channels are activated, so within the cluster the database can be accessed.
+But, there are no ports open to exposes them outside the cluster.
+
+For the few cases where direct access to the database is actually needed, the ports can be opened via `port-forwarding`.
+See the `deployment/forward-neo4j-ports.sh` script.
+It opens a port for all databases it can find in the cluster (e.g. testing, prod, dev)
+and presents the actual URLs to access the admin page resp. the bolt channel.
+
+```
+Bolt: bolt://localhost:<BOLT_PORT>
+Neo4j Browser: http://localhost:<WEB_PORT>/browser/?connectURL=bolt://localhost:<DB_PORT>
+```
+
+### Credentials
 
 All databases (except in local environment) require a password.
 The deployment scripts expect it as "Kubernetes Secret" with the name `db-credentials`,

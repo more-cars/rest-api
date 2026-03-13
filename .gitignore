@@ -4,6 +4,9 @@
 # artifacts
 /test-reports/
 
+# ops
+port-forward*
+
 # IDE
 /.idea/
 

@@ -6,8 +6,6 @@ resources:
   - api-https-route.yaml
   - api-service.yaml
   - api-deployment.yaml
-  - db-http-route.yaml
-  - db-https-route.yaml
   - db-service.yaml
   - db-pvc.yaml
   - db-deployment.yaml
@@ -44,11 +42,3 @@ patches:
     target:
       kind: HTTPRoute
       name: openapi-spec-https
-  - path: db-http-route.patch.json
-    target:
-      kind: HTTPRoute
-      name: db-http
-  - path: db-https-route.patch.json
-    target:
-      kind: HTTPRoute
-      name: db-https

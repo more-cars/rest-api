@@ -43,20 +43,6 @@ createOpenapiSpecHttpsRoutePatchFile()
         fs.writeFileSync(path + filename, JSON.stringify(data, null, 2))
     })
 
-createDbHttpRoutePatchFile()
-    .then((data) => {
-        const path = __dirname + '/../app/'
-        const filename = 'db-http-route.patch.json'
-        fs.writeFileSync(path + filename, JSON.stringify(data, null, 2))
-    })
-
-createDbHttpsRoutePatchFile()
-    .then((data) => {
-        const path = __dirname + '/../app/'
-        const filename = 'db-https-route.patch.json'
-        fs.writeFileSync(path + filename, JSON.stringify(data, null, 2))
-    })
-
 async function createApiDeploymentPatchFile() {
     const packageName = process.env.PACKAGE_NAME
     const packageVersion = process.env.PACKAGE_VERSION
@@ -135,32 +121,6 @@ async function createOpenapiSpecHttpsRoutePatchFile() {
             "op": "replace",
             "path": "/spec/hostnames/0",
             "value": getHostname(targetCluster, targetEnvironment, 'swagger'),
-        },
-    ]
-}
-
-async function createDbHttpRoutePatchFile() {
-    const targetEnvironment = process.env.TARGET_ENVIRONMENT || 'prod'
-    const targetCluster = process.env.TARGET_CLUSTER || 'gke'
-
-    return [
-        {
-            "op": "replace",
-            "path": "/spec/hostnames/0",
-            "value": getHostname(targetCluster, targetEnvironment, 'db'),
-        },
-    ]
-}
-
-async function createDbHttpsRoutePatchFile() {
-    const targetEnvironment = process.env.TARGET_ENVIRONMENT || 'prod'
-    const targetCluster = process.env.TARGET_CLUSTER || 'gke'
-
-    return [
-        {
-            "op": "replace",
-            "path": "/spec/hostnames/0",
-            "value": getHostname(targetCluster, targetEnvironment, 'db'),
         },
     ]
 }
