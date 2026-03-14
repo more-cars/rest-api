@@ -28,6 +28,11 @@ export const RelationshipTypeMapping = new Map<RelationshipType, RelationshipTyp
     [RelationshipType.MagazineIssueCoversRacingEvent, RelationshipTypeLabelOld.MagazineIssueCoversRacingEvent],
     [RelationshipType.RatingByMagazineIssue, RelationshipTypeLabelOld.RatingByMagazineIssue],
     [RelationshipType.RatingForCarModelVariant, RelationshipTypeLabelOld.RatingForCarModelVariant],
+    [RelationshipType.ProgrammeHasEpisode, RelationshipTypeLabelOld.ProgrammeHasEpisode],
+    [RelationshipType.ProgrammeEpisodeIsFollowedByEpisode, RelationshipTypeLabelOld.ProgrammeEpisodeIsFollowedByEpisode],
+    [RelationshipType.ProgrammeEpisodeCoversCarModel, RelationshipTypeLabelOld.ProgrammeEpisodeCoversCarModel],
+    [RelationshipType.ProgrammeEpisodeFeaturesCarModelVariant, RelationshipTypeLabelOld.ProgrammeEpisodeFeaturesCarModelVariant],
+    [RelationshipType.MotorShowPresentsCarModelVariant, RelationshipTypeLabelOld.MotorShowPresentsCarModelVariant],
     [RelationshipType.NodeHasImage, RelationshipTypeLabelOld.NodeHasImage],
     [RelationshipType.NodeHasPrimeImage, RelationshipTypeLabelOld.NodeHasPrimeImage],
 ])

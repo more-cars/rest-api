@@ -19,6 +19,9 @@ import type {InputGamingPlatformCreate} from "../../src/db/node-types/gaming-pla
 import type {InputMagazineCreate} from "../../src/db/node-types/magazines/types/InputMagazineCreate"
 import type {InputMagazineIssueCreate} from "../../src/db/node-types/magazine-issues/types/InputMagazineIssueCreate"
 import type {InputRatingCreate} from "../../src/db/node-types/ratings/types/InputRatingCreate"
+import type {InputProgrammeCreate} from "../../src/db/node-types/programmes/types/InputProgrammeCreate"
+import type {InputProgrammeEpisodeCreate} from "../../src/db/node-types/programme-episodes/types/InputProgrammeEpisodeCreate"
+import type {InputMotorShowCreate} from "../../src/db/node-types/motor-shows/types/InputMotorShowCreate"
 import type {InputImageCreate} from "../../src/db/node-types/images/types/InputImageCreate"
 
 type InputTypes =
@@ -38,6 +41,9 @@ type InputTypes =
     InputMagazineCreate |
     InputMagazineIssueCreate |
     InputRatingCreate |
+    InputProgrammeCreate |
+    InputProgrammeEpisodeCreate |
+    InputMotorShowCreate |
     InputImageCreate
 
 

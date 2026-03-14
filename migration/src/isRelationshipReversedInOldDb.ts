@@ -11,6 +11,7 @@ export function isRelationshipReversedInOldDb(newRelationshipType: RelationshipT
         RelationshipType.MagazineIssueFollowedByIssue,
         RelationshipType.RatingForCarModelVariant,
         RelationshipType.RatingByMagazineIssue,
+        RelationshipType.ProgrammeEpisodeIsFollowedByEpisode,
         RelationshipType.NodeHasPrimeImage,
     ].includes(newRelationshipType)
 }

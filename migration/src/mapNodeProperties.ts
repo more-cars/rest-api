@@ -17,6 +17,9 @@ import {mapGamingPlatform} from "./mappings/mapGamingPlatform"
 import {mapMagazine} from "./mappings/mapMagazine"
 import {mapMagazineIssue} from "./mappings/mapMagazineIssue"
 import {mapRating} from "./mappings/mapRating"
+import {mapProgramme} from "./mappings/mapProgramme"
+import {mapProgrammeEpisode} from "./mappings/mapProgrammeEpisode"
+import {mapMotorShow} from "./mappings/mapMotorShow"
 import {mapImage} from "./mappings/mapImage"
 
 export function mapNodeProperties(oldNode: Node, nodeType: DbNodeType) {
@@ -53,6 +56,12 @@ export function mapNodeProperties(oldNode: Node, nodeType: DbNodeType) {
             return mapMagazineIssue(oldNode)
         case DbNodeType.Rating:
             return mapRating(oldNode)
+        case DbNodeType.Programme:
+            return mapProgramme(oldNode)
+        case DbNodeType.ProgrammeEpisode:
+            return mapProgrammeEpisode(oldNode)
+        case DbNodeType.MotorShow:
+            return mapMotorShow(oldNode)
         case DbNodeType.Image:
             return mapImage(oldNode)
         default:

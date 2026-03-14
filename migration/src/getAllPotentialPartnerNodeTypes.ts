@@ -73,6 +73,20 @@ export function getAllPotentialPartnerNodeTypes() {
             DbNodeType.CarModelVariant,
             DbNodeType.Image,
         ]],
+        [DbNodeType.Programme, [
+            DbNodeType.ProgrammeEpisode,
+            DbNodeType.Image,
+        ]],
+        [DbNodeType.ProgrammeEpisode, [
+            DbNodeType.ProgrammeEpisode,
+            DbNodeType.CarModel,
+            DbNodeType.CarModelVariant,
+            DbNodeType.Image,
+        ]],
+        [DbNodeType.MotorShow, [
+            DbNodeType.CarModelVariant,
+            DbNodeType.Image,
+        ]],
         [DbNodeType.LapTime, [
             DbNodeType.Image,
         ]],

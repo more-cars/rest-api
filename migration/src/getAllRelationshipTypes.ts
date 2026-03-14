@@ -347,6 +347,62 @@ export function getAllRelationshipTypes() {
                 ])
             ],
             [
+                DbNodeType.Programme, new Map(
+                [
+                    [
+                        DbNodeType.ProgrammeEpisode,
+                        [
+                            RelationshipType.ProgrammeHasEpisode,
+                        ],
+                    ],
+                    [
+                        DbNodeType.Image,
+                        [
+                            RelationshipType.NodeHasImage,
+                            RelationshipType.NodeHasPrimeImage,
+                        ],
+                    ],
+                ])
+            ],
+            [
+                DbNodeType.ProgrammeEpisode, new Map(
+                [
+                    [
+                        DbNodeType.ProgrammeEpisode,
+                        [
+                            RelationshipType.ProgrammeEpisodeIsFollowedByEpisode,
+                            RelationshipType.ProgrammeEpisodeCoversCarModel,
+                            RelationshipType.ProgrammeEpisodeFeaturesCarModelVariant,
+                        ],
+                    ],
+                    [
+                        DbNodeType.Image,
+                        [
+                            RelationshipType.NodeHasImage,
+                            RelationshipType.NodeHasPrimeImage,
+                        ],
+                    ],
+                ])
+            ],
+            [
+                DbNodeType.MotorShow, new Map(
+                [
+                    [
+                        DbNodeType.CarModelVariant,
+                        [
+                            RelationshipType.MotorShowPresentsCarModelVariant,
+                        ],
+                    ],
+                    [
+                        DbNodeType.Image,
+                        [
+                            RelationshipType.NodeHasImage,
+                            RelationshipType.NodeHasPrimeImage,
+                        ],
+                    ],
+                ])
+            ],
+            [
                 DbNodeType.Image, new Map([])
             ],
         ])
