@@ -371,7 +371,17 @@ export function getAllRelationshipTypes() {
                         DbNodeType.ProgrammeEpisode,
                         [
                             RelationshipType.ProgrammeEpisodeIsFollowedByEpisode,
+                        ],
+                    ],
+                    [
+                        DbNodeType.CarModel,
+                        [
                             RelationshipType.ProgrammeEpisodeCoversCarModel,
+                        ],
+                    ],
+                    [
+                        DbNodeType.CarModelVariant,
+                        [
                             RelationshipType.ProgrammeEpisodeFeaturesCarModelVariant,
                         ],
                     ],
