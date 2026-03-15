@@ -59,7 +59,7 @@ export function validate(data: CreateProgrammeRawInput): boolean {
         return false
     }
 
-    if (!isOptionalNumber(data.regular_episode_running_time)) {
+    if (!isOptionalString(data.regular_episode_running_time)) {
         return false
     }
 
@@ -74,6 +74,6 @@ export function sanitize(data: CreateProgrammeInput): CreateProgrammeInput {
         channel: data.channel ? data.channel.trim() : null,
         total_seasons: data.total_seasons ? data.total_seasons : null,
         total_episodes: data.total_episodes ? data.total_episodes : null,
-        regular_episode_running_time: data.regular_episode_running_time ? data.regular_episode_running_time : null,
+        regular_episode_running_time: data.regular_episode_running_time ? data.regular_episode_running_time.trim() : null,
     } satisfies CreateProgrammeInput
 }

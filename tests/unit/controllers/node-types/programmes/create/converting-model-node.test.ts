@@ -17,7 +17,7 @@ test("converting a PROGRAMME node", async () => {
             channel: "BBC Two",
             total_seasons: 33,
             total_episodes: 240,
-            regular_episode_running_time: 60,
+            regular_episode_running_time: "PT60M",
         },
     }
 
@@ -34,7 +34,7 @@ test("converting a PROGRAMME node", async () => {
                 channel: "BBC Two",
                 total_seasons: 33,
                 total_episodes: 240,
-                regular_episode_running_time: 60,
+                regular_episode_running_time: "PT60M",
                 created_at: "2025-05-14T11:05:07.793Z",
                 updated_at: "2025-05-14T11:05:07.793Z",
             },

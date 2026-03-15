@@ -36,7 +36,7 @@ export const ProgrammeNodeSpecification: NodeSpecification = {
         },
         {
             name: 'regular_episode_running_time',
-            datatype: 'number',
+            datatype: 'string',
             mandatory: false,
         },
     ],

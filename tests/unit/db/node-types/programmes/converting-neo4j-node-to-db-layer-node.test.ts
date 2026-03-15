@@ -18,7 +18,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             channel: "BBC Two",
             total_seasons: 33,
             total_episodes: 240,
-            regular_episode_running_time: 60,
+            regular_episode_running_time: "PT60M",
         },
         elementId: "",
     }
@@ -38,7 +38,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
                 channel: "BBC Two",
                 total_seasons: 33,
                 total_episodes: 240,
-                regular_episode_running_time: 60,
+                regular_episode_running_time: "PT60M",
             },
         } satisfies ProgrammeNode)
 })

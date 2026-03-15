@@ -12,7 +12,7 @@ test('database query for creating a PROGRAMME node', async () => {
         channel: "BBC Two",
         total_seasons: 33,
         total_episodes: 240,
-        regular_episode_running_time: 60
+        regular_episode_running_time: "PT60M"
     }
 
     const query = createNodeQuery(DbNodeType.Programme, data)
@@ -26,7 +26,7 @@ test('database query for creating a PROGRAMME node', async () => {
             "  channel: 'BBC Two',\n" +
             "  total_seasons: 33,\n" +
             "  total_episodes: 240,\n" +
-            "  regular_episode_running_time: 60\n" +
+            "  regular_episode_running_time: 'PT60M'\n" +
             "})\n" +
             "RETURN node\n" +
             "  LIMIT 1")

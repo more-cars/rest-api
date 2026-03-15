@@ -24374,9 +24374,9 @@
             "example": "240"
           },
           "regular_episode_running_time": {
-            "type": "number",
+            "type": "string",
             "description": "",
-            "example": "60"
+            "example": "PT60M"
           }
         }
       },
