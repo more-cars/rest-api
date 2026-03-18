@@ -17,7 +17,7 @@ describe('Marshalling a node collection', () => {
         const nodeC = convertModelNodeToControllerNode(getFakeNode(nodeType).modelOutput)
         const expectedTotalNodeCount = 173
 
-        const marshalledNodeCollection = marshalNodeCollection([nodeA, nodeB, nodeC], {total: expectedTotalNodeCount})
+        const marshalledNodeCollection = marshalNodeCollection(nodeA.node_type, [nodeA, nodeB, nodeC], {}, expectedTotalNodeCount)
 
         expect(marshalledNodeCollection.data)
             .to.have.lengthOf(3)

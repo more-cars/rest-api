@@ -1,7 +1,9 @@
 import type {NodeResponse} from "./NodeResponse"
 
 export type NodeCollectionResponse = {
-    data: NodeResponse[]
+    links: {
+        self: string
+    }
     meta: {
         page: {
             current: number
@@ -10,4 +12,5 @@ export type NodeCollectionResponse = {
             total_pages: number
         }
     }
+    data: NodeResponse[]
 }

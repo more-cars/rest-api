@@ -30,3 +30,5 @@ runtime:
       operator: isNumber
     - expression: res.body.meta.page.total_nodes
       operator: isNumber
+    - expression: res.body.meta.links.self
+      operator: isString

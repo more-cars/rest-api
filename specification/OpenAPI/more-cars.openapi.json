@@ -25315,6 +25315,9 @@
       "MetaData": {
         "type": "object",
         "properties": {
+          "links": {
+            "self": "string"
+          },
           "page": {
             "current": {
               "type": "integer"

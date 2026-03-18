@@ -1,16 +1,25 @@
+import {ControllerNodeType} from "../types/ControllerNodeType"
 import type {ControllerNode} from "../types/ControllerNode"
-import type {MetaData} from "../types/MetaData"
+import type {NodeCollectionConstraints} from "../../models/types/NodeCollectionConstraints"
 import type {NodeCollectionResponse} from "../types/NodeCollectionResponse"
+import {buildPaginationLinkSelf} from "./meta-data/buildPaginationLinkSelf"
 import {marshalSingleNode} from "./marshalSingleNode"
 
-export function marshalNodeCollection(nodes: ControllerNode[], meta: MetaData) {
-    const currentPage = meta.current_page || 1
-    const pageSize = meta.page_size || 100
-    const totalNodes = meta.total || 0
+export function marshalNodeCollection(
+    nodeType: ControllerNodeType,
+    nodes: ControllerNode[],
+    constraints: NodeCollectionConstraints,
+    totalNodeCount: number,
+) {
+    const currentPage = constraints.page || 1
+    const pageSize = 100
+    const totalNodes = totalNodeCount || 0
     const totalPages = Math.floor((totalNodes / pageSize) + 1)
 
     const response: NodeCollectionResponse = {
-        data: [],
+        links: {
+            self: buildPaginationLinkSelf(nodeType, constraints),
+        },
         meta: {
             page: {
                 current: currentPage,
@@ -19,6 +28,7 @@ export function marshalNodeCollection(nodes: ControllerNode[], meta: MetaData) {
                 total_pages: totalPages,
             },
         },
+        data: [],
     }
 
     nodes.forEach((node) => {

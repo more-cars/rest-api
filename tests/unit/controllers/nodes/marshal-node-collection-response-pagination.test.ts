@@ -3,14 +3,11 @@ import {marshalNodeCollection} from "../../../../src/controllers/nodes/marshalNo
 import {convertModelNodeToControllerNode} from "../../../../src/controllers/nodes/convertModelNodeToControllerNode"
 import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
 import {NodeType} from "../../../../src/specification/NodeType"
+import {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 
 describe('Expecting pagination meta information when marshalling a node collection', () => {
     test('when the result list is empty', async () => {
-        const marshalledNodeCollection = marshalNodeCollection([], {
-            current_page: 3,
-            total: 10,
-            page_size: 50,
-        })
+        const marshalledNodeCollection = marshalNodeCollection(ControllerNodeType.CarModel, [], {page: 3}, 10)
 
         expect(marshalledNodeCollection.data.length)
             .toEqual(0)
@@ -19,7 +16,7 @@ describe('Expecting pagination meta information when marshalling a node collecti
             .toEqual(3)
 
         expect(marshalledNodeCollection.meta.page.size)
-            .toEqual(50)
+            .toEqual(100)
 
         expect(marshalledNodeCollection.meta.page.total_nodes)
             .toEqual(10)
@@ -30,14 +27,10 @@ describe('Expecting pagination meta information when marshalling a node collecti
 
     test('when the result list is not empty', async () => {
         const nodeA = convertModelNodeToControllerNode(getFakeNode(NodeType.CarModel).modelOutput)
-        const nodeB = convertModelNodeToControllerNode(getFakeNode(NodeType.RacingGame).modelOutput)
-        const nodeC = convertModelNodeToControllerNode(getFakeNode(NodeType.RaceTrack).modelOutput)
+        const nodeB = convertModelNodeToControllerNode(getFakeNode(NodeType.CarModel).modelOutput)
+        const nodeC = convertModelNodeToControllerNode(getFakeNode(NodeType.CarModel).modelOutput)
 
-        const marshalledNodeCollection = marshalNodeCollection([nodeA, nodeB, nodeC], {
-            current_page: 2,
-            total: 3,
-            page_size: 75,
-        })
+        const marshalledNodeCollection = marshalNodeCollection(ControllerNodeType.CarModel, [nodeA, nodeB, nodeC], {page: 2}, 3)
 
         expect(marshalledNodeCollection.data.length)
             .toEqual(3)
@@ -46,7 +39,7 @@ describe('Expecting pagination meta information when marshalling a node collecti
             .toEqual(2)
 
         expect(marshalledNodeCollection.meta.page.size)
-            .toEqual(75)
+            .toEqual(100)
 
         expect(marshalledNodeCollection.meta.page.total_nodes)
             .toEqual(3)
@@ -55,8 +48,8 @@ describe('Expecting pagination meta information when marshalling a node collecti
             .toEqual(1)
     })
 
-    test('when no meta information is provides', async () => {
-        const marshalledNodeCollection = marshalNodeCollection([], {})
+    test('when no meta information is provided', async () => {
+        const marshalledNodeCollection = marshalNodeCollection(ControllerNodeType.Magazine, [], {}, 0)
 
         expect(marshalledNodeCollection.data.length)
             .toEqual(0)
