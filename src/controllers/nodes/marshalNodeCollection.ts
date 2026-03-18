@@ -7,6 +7,7 @@ import {marshalSingleNode} from "./marshalSingleNode"
 import {buildPaginationLinkFirst} from "./meta-data/buildPaginationLinkFirst"
 import {buildPaginationLinkPrev} from "./meta-data/buildPaginationLinkPrev"
 import {buildPaginationLinkNext} from "./meta-data/buildPaginationLinkNext"
+import {buildPaginationLinkLast} from "./meta-data/buildPaginationLinkLast"
 
 export function marshalNodeCollection(
     nodeType: ControllerNodeType,
@@ -25,6 +26,7 @@ export function marshalNodeCollection(
             first: buildPaginationLinkFirst(nodeType, constraints),
             prev: buildPaginationLinkPrev(nodeType, constraints),
             next: buildPaginationLinkNext(nodeType, constraints),
+            last: buildPaginationLinkLast(nodeType, constraints, totalNodes),
         },
         meta: {
             page: {

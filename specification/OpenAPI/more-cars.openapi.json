@@ -25327,6 +25327,9 @@
             },
             "next": {
               "type": "string"
+            },
+            "last": {
+              "type": "string"
             }
           },
           "page": {

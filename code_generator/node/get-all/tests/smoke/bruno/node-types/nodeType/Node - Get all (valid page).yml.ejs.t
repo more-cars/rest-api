@@ -38,3 +38,5 @@ runtime:
       operator: isString
     - expression: res.body.meta.links.next
       operator: isString
+    - expression: res.body.meta.links.last
+      operator: isString
