@@ -7,6 +7,7 @@ import {NodeType} from "../../../../src/specification/NodeType"
 describe('Expecting pagination meta information when marshalling a node collection', () => {
     test('when the result list is empty', async () => {
         const marshalledNodeCollection = marshalNodeCollection([], {
+            current_page: 3,
             total: 0,
             page_size: 50,
         })
@@ -14,11 +15,16 @@ describe('Expecting pagination meta information when marshalling a node collecti
         expect(marshalledNodeCollection.data.length)
             .toEqual(0)
 
-        expect(marshalledNodeCollection.meta.page.total_nodes)
-            .toEqual(0)
+        expect(marshalledNodeCollection.meta.page.current)
+            .toEqual(3)
 
         expect(marshalledNodeCollection.meta.page.size)
             .toEqual(50)
+
+        expect(marshalledNodeCollection.meta.page.total_nodes)
+            .toEqual(0)
+
+
     })
 
     test('when the result list is not empty', async () => {
@@ -27,6 +33,7 @@ describe('Expecting pagination meta information when marshalling a node collecti
         const nodeC = convertModelNodeToControllerNode(getFakeNode(NodeType.RaceTrack).modelOutput)
 
         const marshalledNodeCollection = marshalNodeCollection([nodeA, nodeB, nodeC], {
+            current_page: 2,
             total: 3,
             page_size: 75,
         })
@@ -34,11 +41,14 @@ describe('Expecting pagination meta information when marshalling a node collecti
         expect(marshalledNodeCollection.data.length)
             .toEqual(3)
 
-        expect(marshalledNodeCollection.meta.page.total_nodes)
-            .toEqual(3)
+        expect(marshalledNodeCollection.meta.page.current)
+            .toEqual(2)
 
         expect(marshalledNodeCollection.meta.page.size)
             .toEqual(75)
+
+        expect(marshalledNodeCollection.meta.page.total_nodes)
+            .toEqual(3)
     })
 
     test('when no meta information is provides', async () => {
@@ -47,10 +57,13 @@ describe('Expecting pagination meta information when marshalling a node collecti
         expect(marshalledNodeCollection.data.length)
             .toEqual(0)
 
-        expect(marshalledNodeCollection.meta.page.total_nodes)
-            .toEqual(0)
+        expect(marshalledNodeCollection.meta.page.current)
+            .toEqual(1)
 
         expect(marshalledNodeCollection.meta.page.size)
             .toEqual(100)
+
+        expect(marshalledNodeCollection.meta.page.total_nodes)
+            .toEqual(0)
     })
 })

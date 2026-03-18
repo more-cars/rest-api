@@ -26,6 +26,8 @@ runtime:
     - expression: res.body.data[0].id
       operator: gte
       value: "12000000"
+    - expression: res.body.meta.page.current
+      operator: isNumber
     - expression: res.body.meta.page.size
       operator: isNumber
     - expression: res.body.meta.page.total_nodes

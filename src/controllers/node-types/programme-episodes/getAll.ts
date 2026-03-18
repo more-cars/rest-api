@@ -22,7 +22,7 @@ export async function getAll(req: express.Request, res: express.Response) {
         const modelNodes = await ProgrammeEpisode.findAll(params)
         const nodes = modelNodes.map(node => convertProgrammeEpisodeModelNodeToControllerNode(node))
         const totalAmount = await Node.getTotalAmount(mapControllerNodeTypeToModelNodeType(ControllerNodeType.ProgrammeEpisode), params)
-        const marshalledData = marshalNodeCollection(nodes, {total: totalAmount})
+        const marshalledData = marshalNodeCollection(nodes, {total: totalAmount, current_page: params.page})
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

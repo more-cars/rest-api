@@ -8,6 +8,7 @@ export function marshalNodeCollection(nodes: ControllerNode[], meta: MetaData) {
         data: [],
         meta: {
             page: {
+                current: meta.current_page || 1,
                 size: meta.page_size || 100,
                 total_nodes: meta.total || 0,
             },

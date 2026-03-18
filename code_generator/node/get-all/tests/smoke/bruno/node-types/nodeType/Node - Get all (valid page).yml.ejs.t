@@ -22,3 +22,9 @@ runtime:
       value: "200"
     - expression: res.body.data
       operator: isArray
+    - expression: res.body.meta.page.current
+      operator: isNumber
+    - expression: res.body.meta.page.size
+      operator: isNumber
+    - expression: res.body.meta.page.total_nodes
+      operator: isNumber
