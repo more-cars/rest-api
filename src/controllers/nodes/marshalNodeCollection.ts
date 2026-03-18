@@ -5,6 +5,7 @@ import type {NodeCollectionResponse} from "../types/NodeCollectionResponse"
 import {buildPaginationLinkSelf} from "./meta-data/buildPaginationLinkSelf"
 import {marshalSingleNode} from "./marshalSingleNode"
 import {buildPaginationLinkFirst} from "./meta-data/buildPaginationLinkFirst"
+import {buildPaginationLinkPrev} from "./meta-data/buildPaginationLinkPrev"
 
 export function marshalNodeCollection(
     nodeType: ControllerNodeType,
@@ -16,11 +17,12 @@ export function marshalNodeCollection(
     const pageSize = 100
     const totalNodes = totalNodeCount || 0
     const totalPages = Math.floor((totalNodes / pageSize) + 1)
-
+    console.log(constraints)
     const response: NodeCollectionResponse = {
         links: {
             self: buildPaginationLinkSelf(nodeType, constraints),
             first: buildPaginationLinkFirst(nodeType, constraints),
+            prev: buildPaginationLinkPrev(nodeType, constraints),
         },
         meta: {
             page: {

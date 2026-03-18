@@ -4,6 +4,7 @@ export type NodeCollectionResponse = {
     links: {
         self: string
         first: string
+        prev: string
     }
     meta: {
         page: {

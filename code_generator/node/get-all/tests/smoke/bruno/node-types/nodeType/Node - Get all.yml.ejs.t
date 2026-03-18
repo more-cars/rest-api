@@ -38,6 +38,8 @@ runtime:
       operator: isString
     - expression: res.body.meta.links.first
       operator: isString
+    - expression: res.body.meta.links.prev
+      operator: isString
   scripts:
     - type: before-request
       code: |-

@@ -25316,8 +25316,15 @@
         "type": "object",
         "properties": {
           "links": {
-            "self": "string",
-            "first": "string"
+            "self": {
+              "type": "string"
+            },
+            "first": {
+              "type": "string"
+            },
+            "prev": {
+              "type": "string"
+            }
           },
           "page": {
             "current": {
