@@ -30,6 +30,8 @@ runtime:
       operator: isNumber
     - expression: res.body.meta.page.size
       operator: isNumber
+    - expression: res.body.meta.page.total_pages
+      operator: isNumber
     - expression: res.body.meta.page.total_nodes
       operator: isNumber
   scripts:

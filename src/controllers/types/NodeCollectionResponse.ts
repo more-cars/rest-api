@@ -7,6 +7,7 @@ export type NodeCollectionResponse = {
             current: number
             size: number
             total_nodes: number
+            total_pages: number
         }
     }
 }

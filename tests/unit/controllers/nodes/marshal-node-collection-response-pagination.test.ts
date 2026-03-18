@@ -8,7 +8,7 @@ describe('Expecting pagination meta information when marshalling a node collecti
     test('when the result list is empty', async () => {
         const marshalledNodeCollection = marshalNodeCollection([], {
             current_page: 3,
-            total: 0,
+            total: 10,
             page_size: 50,
         })
 
@@ -22,9 +22,10 @@ describe('Expecting pagination meta information when marshalling a node collecti
             .toEqual(50)
 
         expect(marshalledNodeCollection.meta.page.total_nodes)
-            .toEqual(0)
+            .toEqual(10)
 
-
+        expect(marshalledNodeCollection.meta.page.total_pages)
+            .toEqual(1)
     })
 
     test('when the result list is not empty', async () => {
@@ -49,6 +50,9 @@ describe('Expecting pagination meta information when marshalling a node collecti
 
         expect(marshalledNodeCollection.meta.page.total_nodes)
             .toEqual(3)
+
+        expect(marshalledNodeCollection.meta.page.total_pages)
+            .toEqual(1)
     })
 
     test('when no meta information is provides', async () => {
@@ -65,5 +69,8 @@ describe('Expecting pagination meta information when marshalling a node collecti
 
         expect(marshalledNodeCollection.meta.page.total_nodes)
             .toEqual(0)
+
+        expect(marshalledNodeCollection.meta.page.total_pages)
+            .toEqual(1)
     })
 })

@@ -25324,6 +25324,9 @@
             },
             "total_nodes": {
               "type": "integer"
+            },
+            "total_pages": {
+              "type": "integer"
             }
           }
         }

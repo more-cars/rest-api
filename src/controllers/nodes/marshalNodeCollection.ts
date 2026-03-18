@@ -4,13 +4,19 @@ import type {NodeCollectionResponse} from "../types/NodeCollectionResponse"
 import {marshalSingleNode} from "./marshalSingleNode"
 
 export function marshalNodeCollection(nodes: ControllerNode[], meta: MetaData) {
+    const currentPage = meta.current_page || 1
+    const pageSize = meta.page_size || 100
+    const totalNodes = meta.total || 0
+    const totalPages = Math.floor((totalNodes / pageSize) + 1)
+
     const response: NodeCollectionResponse = {
         data: [],
         meta: {
             page: {
-                current: meta.current_page || 1,
-                size: meta.page_size || 100,
-                total_nodes: meta.total || 0,
+                current: currentPage,
+                size: pageSize,
+                total_nodes: totalNodes,
+                total_pages: totalPages,
             },
         },
     }
