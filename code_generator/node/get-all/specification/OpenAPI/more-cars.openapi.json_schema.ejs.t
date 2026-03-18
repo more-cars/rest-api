@@ -16,8 +16,10 @@ skip_if: \"<%= h.changeCase.pascal(nodeType) %>CollectionResponse\"
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }

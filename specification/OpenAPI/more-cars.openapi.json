@@ -17442,8 +17442,10 @@
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }
@@ -17754,8 +17756,10 @@
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }
@@ -18452,8 +18456,10 @@
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }
@@ -19244,8 +19250,10 @@
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }
@@ -19538,8 +19546,10 @@
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }
@@ -19800,8 +19810,10 @@
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }
@@ -20152,8 +20164,10 @@
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }
@@ -20603,8 +20617,10 @@
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }
@@ -20869,8 +20885,10 @@
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }
@@ -21459,8 +21477,10 @@
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }
@@ -21797,8 +21817,10 @@
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }
@@ -22161,8 +22183,10 @@
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }
@@ -22513,8 +22537,10 @@
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }
@@ -22894,8 +22920,10 @@
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }
@@ -23197,8 +23225,10 @@
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }
@@ -23489,8 +23519,10 @@
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }
@@ -24093,8 +24125,10 @@
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }
@@ -24411,8 +24445,10 @@
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }
@@ -24683,8 +24719,10 @@
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }
@@ -25169,8 +25207,10 @@
           "meta": {
             "type": "object",
             "properties": {
-              "total": {
-                "type": "integer"
+              "page": {
+                "total_nodes": {
+                  "type": "integer"
+                }
               }
             }
           }

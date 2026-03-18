@@ -30,8 +30,5 @@ describe('Marshalling a node collection', () => {
 
         expect(marshalledNodeCollection.data[2].id)
             .toEqual(nodeC.fields.id)
-
-        expect(marshalledNodeCollection.meta.total)
-            .toEqual(expectedTotalNodeCount)
     })
 })

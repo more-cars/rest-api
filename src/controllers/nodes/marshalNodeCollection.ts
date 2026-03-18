@@ -6,7 +6,9 @@ export function marshalNodeCollection(nodes: ControllerNode[], meta: { total: nu
     const response: NodeCollectionResponse = {
         data: [],
         meta: {
-            total: meta.total,
+            page: {
+                total_nodes: meta.total,
+            },
         },
     }
 

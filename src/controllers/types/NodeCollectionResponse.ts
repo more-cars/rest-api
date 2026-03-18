@@ -3,6 +3,8 @@ import type {NodeResponse} from "./NodeResponse"
 export type NodeCollectionResponse = {
     data: NodeResponse[]
     meta: {
-        total: number
+        page: {
+            total_nodes: number
+        }
     }
 }
