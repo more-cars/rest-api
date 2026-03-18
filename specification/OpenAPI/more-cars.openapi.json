@@ -25324,6 +25324,9 @@
             },
             "prev": {
               "type": "string"
+            },
+            "next": {
+              "type": "string"
             }
           },
           "page": {

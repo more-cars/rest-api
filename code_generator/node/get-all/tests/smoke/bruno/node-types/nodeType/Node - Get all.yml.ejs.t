@@ -40,6 +40,8 @@ runtime:
       operator: isString
     - expression: res.body.meta.links.prev
       operator: isString
+    - expression: res.body.meta.links.next
+      operator: isString
   scripts:
     - type: before-request
       code: |-
