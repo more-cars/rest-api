@@ -4,29 +4,53 @@ import {convertModelNodeToControllerNode} from "../../../../src/controllers/node
 import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
 import {NodeType} from "../../../../src/specification/NodeType"
 
-describe('Marshalling a node collection', () => {
+describe('Expecting pagination meta information when marshalling a node collection', () => {
     test('when the result list is empty', async () => {
-        const expectedTotalNodeCount = 0
-
         const marshalledNodeCollection = marshalNodeCollection([], {
-            total: expectedTotalNodeCount,
+            total: 0,
+            page_size: 50,
         })
 
+        expect(marshalledNodeCollection.data.length)
+            .toEqual(0)
+
         expect(marshalledNodeCollection.meta.page.total_nodes)
-            .toEqual(expectedTotalNodeCount)
+            .toEqual(0)
+
+        expect(marshalledNodeCollection.meta.page.size)
+            .toEqual(50)
     })
 
     test('when the result list is not empty', async () => {
         const nodeA = convertModelNodeToControllerNode(getFakeNode(NodeType.CarModel).modelOutput)
         const nodeB = convertModelNodeToControllerNode(getFakeNode(NodeType.RacingGame).modelOutput)
         const nodeC = convertModelNodeToControllerNode(getFakeNode(NodeType.RaceTrack).modelOutput)
-        const expectedTotalNodeCount = 3
 
         const marshalledNodeCollection = marshalNodeCollection([nodeA, nodeB, nodeC], {
-            total: expectedTotalNodeCount,
+            total: 3,
+            page_size: 75,
         })
 
+        expect(marshalledNodeCollection.data.length)
+            .toEqual(3)
+
         expect(marshalledNodeCollection.meta.page.total_nodes)
-            .toEqual(expectedTotalNodeCount)
+            .toEqual(3)
+
+        expect(marshalledNodeCollection.meta.page.size)
+            .toEqual(75)
+    })
+
+    test('when no meta information is provides', async () => {
+        const marshalledNodeCollection = marshalNodeCollection([], {})
+
+        expect(marshalledNodeCollection.data.length)
+            .toEqual(0)
+
+        expect(marshalledNodeCollection.meta.page.total_nodes)
+            .toEqual(0)
+
+        expect(marshalledNodeCollection.meta.page.size)
+            .toEqual(100)
     })
 })

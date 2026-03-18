@@ -1,13 +1,15 @@
 import type {ControllerNode} from "../types/ControllerNode"
+import type {MetaData} from "../types/MetaData"
 import type {NodeCollectionResponse} from "../types/NodeCollectionResponse"
 import {marshalSingleNode} from "./marshalSingleNode"
 
-export function marshalNodeCollection(nodes: ControllerNode[], meta: { total: number } = {total: 0}) {
+export function marshalNodeCollection(nodes: ControllerNode[], meta: MetaData) {
     const response: NodeCollectionResponse = {
         data: [],
         meta: {
             page: {
-                total_nodes: meta.total,
+                size: meta.page_size || 100,
+                total_nodes: meta.total || 0,
             },
         },
     }

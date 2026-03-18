@@ -14,14 +14,7 @@ skip_if: \"<%= h.changeCase.pascal(nodeType) %>CollectionResponse\"
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },

@@ -17440,14 +17440,7 @@
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
@@ -17754,14 +17747,7 @@
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
@@ -18454,14 +18440,7 @@
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
@@ -19248,14 +19227,7 @@
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
@@ -19544,14 +19516,7 @@
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
@@ -19808,14 +19773,7 @@
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
@@ -20162,14 +20120,7 @@
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
@@ -20615,14 +20566,7 @@
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
@@ -20883,14 +20827,7 @@
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
@@ -21475,14 +21412,7 @@
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
@@ -21815,14 +21745,7 @@
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
@@ -22181,14 +22104,7 @@
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
@@ -22535,14 +22451,7 @@
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
@@ -22918,14 +22827,7 @@
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
@@ -23223,14 +23125,7 @@
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
@@ -23517,14 +23412,7 @@
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
@@ -24123,14 +24011,7 @@
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
@@ -24443,14 +24324,7 @@
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
@@ -24717,14 +24591,7 @@
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
@@ -25205,14 +25072,7 @@
             }
           },
           "meta": {
-            "type": "object",
-            "properties": {
-              "page": {
-                "total_nodes": {
-                  "type": "integer"
-                }
-              }
-            }
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
@@ -25449,6 +25309,19 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/Relationship"
+          }
+        }
+      },
+      "MetaData": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "size": {
+              "type": "integer"
+            },
+            "total_nodes": {
+              "type": "integer"
+            }
           }
         }
       }
