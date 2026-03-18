@@ -25316,7 +25316,8 @@
         "type": "object",
         "properties": {
           "links": {
-            "self": "string"
+            "self": "string",
+            "first": "string"
           },
           "page": {
             "current": {

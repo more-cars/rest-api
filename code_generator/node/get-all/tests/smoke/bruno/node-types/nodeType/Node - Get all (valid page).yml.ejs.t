@@ -32,3 +32,5 @@ runtime:
       operator: isNumber
     - expression: res.body.meta.links.self
       operator: isString
+    - expression: res.body.meta.links.first
+      operator: isString

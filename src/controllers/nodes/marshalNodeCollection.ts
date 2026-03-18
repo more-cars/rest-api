@@ -4,6 +4,7 @@ import type {NodeCollectionConstraints} from "../../models/types/NodeCollectionC
 import type {NodeCollectionResponse} from "../types/NodeCollectionResponse"
 import {buildPaginationLinkSelf} from "./meta-data/buildPaginationLinkSelf"
 import {marshalSingleNode} from "./marshalSingleNode"
+import {buildPaginationLinkFirst} from "./meta-data/buildPaginationLinkFirst"
 
 export function marshalNodeCollection(
     nodeType: ControllerNodeType,
@@ -19,6 +20,7 @@ export function marshalNodeCollection(
     const response: NodeCollectionResponse = {
         links: {
             self: buildPaginationLinkSelf(nodeType, constraints),
+            first: buildPaginationLinkFirst(nodeType, constraints),
         },
         meta: {
             page: {

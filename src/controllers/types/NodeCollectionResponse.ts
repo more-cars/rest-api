@@ -3,6 +3,7 @@ import type {NodeResponse} from "./NodeResponse"
 export type NodeCollectionResponse = {
     links: {
         self: string
+        first: string
     }
     meta: {
         page: {
