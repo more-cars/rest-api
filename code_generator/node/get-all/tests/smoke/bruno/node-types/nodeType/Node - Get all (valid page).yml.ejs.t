@@ -30,13 +30,13 @@ runtime:
       operator: isNumber
     - expression: res.body.meta.page.total_nodes
       operator: isNumber
-    - expression: res.body.meta.links.self
+    - expression: res.body.links.self
       operator: isString
-    - expression: res.body.meta.links.first
+    - expression: res.body.links.first
       operator: isString
-    - expression: res.body.meta.links.prev
+    - expression: res.body.links.prev
       operator: isString
-    - expression: res.body.meta.links.next
+    - expression: res.body.links.next
       operator: isString
-    - expression: res.body.meta.links.last
+    - expression: res.body.links.last
       operator: isString
