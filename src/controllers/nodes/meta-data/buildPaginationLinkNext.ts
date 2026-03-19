@@ -2,9 +2,13 @@ import type {NodeCollectionConstraints} from "../../../models/types/NodeCollecti
 import {ControllerNodeType} from "../../types/ControllerNodeType"
 import {buildGetCollectionUrl} from "./buildGetCollectionUrl"
 
-export function buildPaginationLinkNext(nodeType: ControllerNodeType, constraints: NodeCollectionConstraints) {
+export function buildPaginationLinkNext(nodeType: ControllerNodeType, constraints: NodeCollectionConstraints, totalNodes: number) {
     const modifiedConstraints = Object.assign({}, constraints)
     modifiedConstraints.page = (constraints.page || 1) + 1
+
+    if (totalNodes <= (modifiedConstraints.page - 1) * 100) {
+        return null
+    }
 
     return buildGetCollectionUrl(nodeType, modifiedConstraints)
 }

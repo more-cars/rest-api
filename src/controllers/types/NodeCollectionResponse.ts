@@ -5,7 +5,7 @@ export type NodeCollectionResponse = {
         self: string
         first: string
         prev: string
-        next: string
+        next: string | null
         last: string
     }
     meta: {

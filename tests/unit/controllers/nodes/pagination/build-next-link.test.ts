@@ -8,35 +8,53 @@ import {convertStringToControllerNodeType} from "../../../../_toolbox/convertStr
 describe('Pagination "next" link is constructed correctly', () => {
     test.each(
         getAllExpectedNodeTypes()
-    )('for $0 when the current page number is 1', async (nodeType) => {
-        const constructedLink = buildPaginationLinkNext(convertStringToControllerNodeType(nodeType), {page: 1})
-        const expectedLink = `/${kebabCase(pluralize(nodeType.toLowerCase()))}?page=2`
+    )('for $0 when there is no next page', async (nodeType) => {
+        const expectedLink = null
 
-        expect(constructedLink)
-            .toEqual(expectedLink)
+        let constructedLink = buildPaginationLinkNext(convertStringToControllerNodeType(nodeType), {page: 2}, 199)
+        expect(constructedLink).toEqual(expectedLink)
+
+        constructedLink = buildPaginationLinkNext(convertStringToControllerNodeType(nodeType), {page: 2}, 200)
+        expect(constructedLink).toEqual(expectedLink)
     })
 
     test.each(
         getAllExpectedNodeTypes()
-    )('for $0 when the current page number is greater than 1', async (nodeType) => {
-        const pageNumber = Math.ceil(Math.random() * 50) + 1
-        const constructedLink = buildPaginationLinkNext(convertStringToControllerNodeType(nodeType), {page: pageNumber})
-        const expectedLink = `/${kebabCase(pluralize(nodeType.toLowerCase()))}?page=${pageNumber + 1}`
+    )('for $0 when there is a next page', async (nodeType) => {
+        const expectedLink = `/${kebabCase(pluralize(nodeType.toLowerCase()))}?page=3`
 
-        expect(constructedLink)
-            .toEqual(expectedLink)
+        let constructedLink = buildPaginationLinkNext(convertStringToControllerNodeType(nodeType), {page: 2}, 201)
+        expect(constructedLink).toEqual(expectedLink)
+
+        constructedLink = buildPaginationLinkNext(convertStringToControllerNodeType(nodeType), {page: 2}, 555)
+        expect(constructedLink).toEqual(expectedLink)
     })
 
     test.each(
         getAllExpectedNodeTypes()
-    )('for $0 when there is constraint information', async (nodeType) => {
+    )('for $0 when there is constraint information and a next page', async (nodeType) => {
         const pageNumber = Math.ceil(Math.random() * 50) + 1
         const constructedLink = buildPaginationLinkNext(convertStringToControllerNodeType(nodeType), {
             page: pageNumber,
             filterByProperty: 'name',
             filterValue: 'test',
-        })
+        }, (pageNumber * 100) + 10)
         const expectedLink = `/${kebabCase(pluralize(nodeType.toLowerCase()))}?filter_by_property=name&filter_value=test&page=${pageNumber + 1}`
+
+        expect(constructedLink)
+            .toEqual(expectedLink)
+    })
+
+    test.each(
+        getAllExpectedNodeTypes()
+    )('for $0 when there is constraint information and no next page', async (nodeType) => {
+        const pageNumber = Math.ceil(Math.random() * 50) + 1
+        const constructedLink = buildPaginationLinkNext(convertStringToControllerNodeType(nodeType), {
+            page: pageNumber,
+            filterByProperty: 'name',
+            filterValue: 'test',
+        }, (pageNumber * 100) - 10)
+        const expectedLink = null
 
         expect(constructedLink)
             .toEqual(expectedLink)
