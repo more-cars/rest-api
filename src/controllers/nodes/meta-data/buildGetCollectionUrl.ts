@@ -28,5 +28,5 @@ export function buildGetCollectionUrl(nodeType: ControllerNodeType, constraints:
         urlParams.append('page', constraints.page.toString())
     }
 
-    return `/${nodeType}?${urlParams.toString()}`
+    return urlParams.toString() ? `/${nodeType}?${urlParams.toString()}` : `/${nodeType}`
 }
