@@ -1,7 +1,7 @@
 import {When} from "@cucumber/cucumber"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
-import {convertStringToNodeType} from "../../lib/convertStringToNodeType"
+import {convertStringToNodeType} from "../../../_toolbox/convertStringToNodeType"
 import {performApiRequest} from "../../lib/performApiRequest"
 
 When('the user creates a(n) {string}',

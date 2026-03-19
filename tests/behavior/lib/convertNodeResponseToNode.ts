@@ -1,4 +1,4 @@
-import {convertStringToControllerNodeType} from "./convertStringToNodeType"
+import {convertStringToControllerNodeType} from "../../_toolbox/convertStringToNodeType"
 import type {ControllerNode} from "../../../src/controllers/types/ControllerNode"
 
 export function convertNodeResponseToNode(body: any) {

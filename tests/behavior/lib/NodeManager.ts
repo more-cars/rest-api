@@ -2,7 +2,7 @@ import type {ControllerNode} from "../../../src/controllers/types/ControllerNode
 import {getFakeNode} from "../../_toolbox/fixtures/nodes/getFakeNode"
 import {getBasePathFragmentForNodeType} from "./getBasePathFragmentForNodeType"
 import {performApiRequest} from "./performApiRequest"
-import {convertStringToControllerNodeType, convertStringToNodeType} from "./convertStringToNodeType"
+import {convertStringToControllerNodeType, convertStringToNodeType} from "../../_toolbox/convertStringToNodeType"
 
 const nodeCache = new Map<string, ControllerNode>()
 const nodeCollectionCache = new Map<string, ControllerNode[]>()

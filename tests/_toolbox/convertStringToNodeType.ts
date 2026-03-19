@@ -1,10 +1,10 @@
 import {pluralize, titleize} from "inflection"
 import {kebabCase, pascalCase, snakeCase} from "change-case"
-import type {NodeType} from "../../../src/specification/NodeType"
-import type {ControllerNodeType} from "../../../src/controllers/types/ControllerNodeType"
-import type {ModelNodeType} from "../../../src/models/types/ModelNodeType"
-import type {DbNodeType} from "../../../src/db/types/DbNodeType"
-import type {Neo4jNodeType} from "../../../src/db/types/Neo4jNodeType"
+import type {NodeType} from "../../src/specification/NodeType"
+import type {ControllerNodeType} from "../../src/controllers/types/ControllerNodeType"
+import type {ModelNodeType} from "../../src/models/types/ModelNodeType"
+import type {DbNodeType} from "../../src/db/types/DbNodeType"
+import type {Neo4jNodeType} from "../../src/db/types/Neo4jNodeType"
 
 export function convertStringToNodeType(rawNodeType: string) {
     return titleize(rawNodeType) as NodeType

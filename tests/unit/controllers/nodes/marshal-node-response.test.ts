@@ -3,7 +3,7 @@ import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
 import {getAllNodeTypes} from "../../../_toolbox/getAllNodeTypes"
 import {marshalSingleNode} from "../../../../src/controllers/nodes/marshalSingleNode"
 import {convertModelNodeToControllerNode} from "../../../../src/controllers/nodes/convertModelNodeToControllerNode"
-import {convertStringToControllerNodeType} from "../../../behavior/lib/convertStringToNodeType"
+import {convertStringToControllerNodeType} from "../../../_toolbox/convertStringToNodeType"
 
 describe('Marshalling a node', () => {
     test.each(

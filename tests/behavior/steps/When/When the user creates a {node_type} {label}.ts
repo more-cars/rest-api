@@ -1,6 +1,6 @@
 import {When} from "@cucumber/cucumber"
 import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
-import {convertStringToNodeType} from "../../lib/convertStringToNodeType"
+import {convertStringToNodeType} from "../../../_toolbox/convertStringToNodeType"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {performApiRequest} from "../../lib/performApiRequest"
 import {NodeManager} from "../../lib/NodeManager"
