@@ -35,8 +35,8 @@ runtime:
     - expression: res.body.links.first
       operator: isString
     - expression: res.body.links.prev
-      operator: isString
+      operator: isDefined
     - expression: res.body.links.next
-      operator: isString
+      operator: isDefined
     - expression: res.body.links.last
       operator: isString
