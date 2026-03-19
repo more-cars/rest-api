@@ -1,0 +1,39 @@
+info:
+  name: Create Model Car (valid data)
+  type: http
+  tags:
+    - create
+    - node
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/model-cars"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "BMW 2002",
+        "product_code": "DHX60",
+        "release_year": 2016,
+        "scale": "1:64",
+        "series": "BMW"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: gte
+      value: "12000000"
+  scripts:
+    - type: tests
+      code: |-
+        test("both timestamps should be identical", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.eql(data.attributes.updated_at)
+        })

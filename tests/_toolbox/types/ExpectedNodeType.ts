@@ -12,6 +12,7 @@ export enum ExpectedNodeType {
     LapTime = "Lap Time",
     RacingGame = "Racing Game",
     GamingPlatform = "Gaming Platform",
+    ModelCar = "Model Car",
     Magazine = "Magazine",
     MagazineIssue = "Magazine Issue",
     Rating = "Rating",

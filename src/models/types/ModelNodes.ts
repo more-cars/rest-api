@@ -11,6 +11,7 @@ import type {SessionResultNode} from "../node-types/session-results/types/Sessio
 import type {LapTimeNode} from "../node-types/lap-times/types/LapTimeNode"
 import type {RacingGameNode} from "../node-types/racing-games/types/RacingGameNode"
 import type {GamingPlatformNode} from "../node-types/gaming-platforms/types/GamingPlatformNode"
+import type {ModelCarNode} from "../node-types/model-cars/types/ModelCarNode"
 import type {MagazineNode} from "../node-types/magazines/types/MagazineNode"
 import type {MagazineIssueNode} from "../node-types/magazine-issues/types/MagazineIssueNode"
 import type {RatingNode} from "../node-types/ratings/types/RatingNode"
@@ -33,6 +34,7 @@ export type ModelNodes =
     LapTimeNode |
     RacingGameNode |
     GamingPlatformNode |
+    ModelCarNode |
     MagazineNode |
     MagazineIssueNode |
     RatingNode |

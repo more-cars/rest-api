@@ -12,6 +12,7 @@ export enum Neo4jNodeType {
     LapTime = "LapTime",
     RacingGame = "RacingGame",
     GamingPlatform = "GamingPlatform",
+    ModelCar = "ModelCar",
     Magazine = "Magazine",
     MagazineIssue = "MagazineIssue",
     Rating = "Rating",

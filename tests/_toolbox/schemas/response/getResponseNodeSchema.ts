@@ -13,6 +13,7 @@ import {SessionResultSchema} from "./SessionResultSchema"
 import {LapTimeSchema} from "./LapTimeSchema"
 import {RacingGameSchema} from "./RacingGameSchema"
 import {GamingPlatformSchema} from "./GamingPlatformSchema"
+import {ModelCarSchema} from "./ModelCarSchema"
 import {MagazineSchema} from "./MagazineSchema"
 import {MagazineIssueSchema} from "./MagazineIssueSchema"
 import {RatingSchema} from "./RatingSchema"
@@ -61,6 +62,8 @@ export function getResponseNodeSchema(nodeType: ControllerNodeType) {
             return ProgrammeEpisodeSchema
         case ControllerNodeType.MotorShow:
             return MotorShowSchema
+        case ControllerNodeType.ModelCar:
+            return ModelCarSchema
         case ControllerNodeType.Image:
             return ImageSchema
         default:

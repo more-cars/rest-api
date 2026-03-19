@@ -11,6 +11,7 @@ import type {InputSessionResultCreate} from "../node-types/session-results/types
 import type {InputLapTimeCreate} from "../node-types/lap-times/types/InputLapTimeCreate"
 import type {InputRacingGameCreate} from "../node-types/racing-games/types/InputRacingGameCreate"
 import type {InputGamingPlatformCreate} from "../node-types/gaming-platforms/types/InputGamingPlatformCreate"
+import type {InputModelCarCreate} from "../node-types/model-cars/types/InputModelCarCreate"
 import type {InputMagazineCreate} from "../node-types/magazines/types/InputMagazineCreate"
 import type {InputMagazineIssueCreate} from "../node-types/magazine-issues/types/InputMagazineIssueCreate"
 import type {InputRatingCreate} from "../node-types/ratings/types/InputRatingCreate"
@@ -33,6 +34,7 @@ export type InputNodeTypeCreate =
     InputLapTimeCreate |
     InputRacingGameCreate |
     InputGamingPlatformCreate |
+    InputModelCarCreate |
     InputMagazineCreate |
     InputMagazineIssueCreate |
     InputRatingCreate |

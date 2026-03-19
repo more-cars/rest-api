@@ -184,6 +184,14 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.GamingPlatformHasPrimeImage, RelationshipType.GamingPlatformHasPrimeImage],
             ])],
         ])],
+        [Neo4jNodeType.ModelCar, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+            [RelationshipDirection.REVERSE, new Map([
+                // Model Car - Reverse
+            ])],
+            [RelationshipDirection.FORWARD, new Map([
+                // Model Car - Forward
+            ])],
+        ])],
         [Neo4jNodeType.Magazine, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
                 // Magazine - Reverse

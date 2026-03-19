@@ -15,6 +15,7 @@ import {convertSessionResultModelNodeToControllerNode} from "../node-types/sessi
 import {convertLapTimeModelNodeToControllerNode} from "../node-types/lap-times/convertLapTimeModelNodeToControllerNode"
 import {convertRacingGameModelNodeToControllerNode} from "../node-types/racing-games/convertRacingGameModelNodeToControllerNode"
 import {convertGamingPlatformModelNodeToControllerNode} from "../node-types/gaming-platforms/convertGamingPlatformModelNodeToControllerNode"
+import {convertModelCarModelNodeToControllerNode} from "../node-types/model-cars/convertModelCarModelNodeToControllerNode"
 import {convertMagazineModelNodeToControllerNode} from "../node-types/magazines/convertMagazineModelNodeToControllerNode"
 import {convertMagazineIssueModelNodeToControllerNode} from "../node-types/magazine-issues/convertMagazineIssueModelNodeToControllerNode"
 import {convertRatingModelNodeToControllerNode} from "../node-types/ratings/convertRatingModelNodeToControllerNode"
@@ -41,6 +42,7 @@ import type {RatingNode} from "../../models/node-types/ratings/types/RatingNode"
 import type {ProgrammeNode} from "../../models/node-types/programmes/types/ProgrammeNode"
 import type {ProgrammeEpisodeNode} from "../../models/node-types/programme-episodes/types/ProgrammeEpisodeNode"
 import type {MotorShowNode} from "../../models/node-types/motor-shows/types/MotorShowNode"
+import type {ModelCarNode} from "../../models/node-types/model-cars/types/ModelCarNode"
 import type {ImageNode} from "../../models/node-types/images/types/ImageNode"
 
 export function convertModelNodeToControllerNode(modelNode: ModelNode): ControllerNode {
@@ -71,6 +73,8 @@ export function convertModelNodeToControllerNode(modelNode: ModelNode): Controll
             return convertRacingGameModelNodeToControllerNode(modelNode as RacingGameNode)
         case ModelNodeType.GamingPlatform:
             return convertGamingPlatformModelNodeToControllerNode(modelNode as GamingPlatformNode)
+        case ModelNodeType.ModelCar:
+            return convertModelCarModelNodeToControllerNode(modelNode as ModelCarNode)
         case ModelNodeType.Magazine:
             return convertMagazineModelNodeToControllerNode(modelNode as MagazineNode)
         case ModelNodeType.MagazineIssue:

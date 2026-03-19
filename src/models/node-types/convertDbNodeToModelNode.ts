@@ -26,6 +26,8 @@ import {convertRacingGameDbNodeToModelNode} from "./racing-games/create/convertR
 import type {RacingGameNode} from "../../db/node-types/racing-games/types/RacingGameNode"
 import {convertGamingPlatformDbNodeToModelNode} from "./gaming-platforms/create/convertGamingPlatformDbNodeToModelNode"
 import type {GamingPlatformNode} from "../../db/node-types/gaming-platforms/types/GamingPlatformNode"
+import {convertModelCarDbNodeToModelNode} from "./model-cars/create/convertModelCarDbNodeToModelNode"
+import type {ModelCarNode} from "../../db/node-types/model-cars/types/ModelCarNode"
 import {convertMagazineDbNodeToModelNode} from "./magazines/create/convertMagazineDbNodeToModelNode"
 import type {MagazineNode} from "../../db/node-types/magazines/types/MagazineNode"
 import {convertMagazineIssueDbNodeToModelNode} from "./magazine-issues/create/convertMagazineIssueDbNodeToModelNode"
@@ -70,6 +72,8 @@ export function convertDbNodeToModelNode(dbNode: DbNode) {
             return convertRacingGameDbNodeToModelNode(dbNode as RacingGameNode)
         case DbNodeType.GamingPlatform:
             return convertGamingPlatformDbNodeToModelNode(dbNode as GamingPlatformNode)
+        case DbNodeType.ModelCar:
+            return convertModelCarDbNodeToModelNode(dbNode as ModelCarNode)
         case DbNodeType.Magazine:
             return convertMagazineDbNodeToModelNode(dbNode as MagazineNode)
         case DbNodeType.MagazineIssue:

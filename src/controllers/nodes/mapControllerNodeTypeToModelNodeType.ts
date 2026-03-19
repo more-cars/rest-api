@@ -17,6 +17,7 @@ export function mapControllerNodeTypeToModelNodeType(controllerNodeType: Control
         [ControllerNodeType.LapTime, ModelNodeType.LapTime],
         [ControllerNodeType.RacingGame, ModelNodeType.RacingGame],
         [ControllerNodeType.GamingPlatform, ModelNodeType.GamingPlatform],
+        [ControllerNodeType.ModelCar, ModelNodeType.ModelCar],
         [ControllerNodeType.Magazine, ModelNodeType.Magazine],
         [ControllerNodeType.MagazineIssue, ModelNodeType.MagazineIssue],
         [ControllerNodeType.Rating, ModelNodeType.Rating],

@@ -12,6 +12,7 @@ export enum ControllerNodeType {
     LapTime = "lap-times",
     RacingGame = "racing-games",
     GamingPlatform = "gaming-platforms",
+    ModelCar = "model-cars",
     Magazine = "magazines",
     MagazineIssue = "magazine-issues",
     Rating = "ratings",
