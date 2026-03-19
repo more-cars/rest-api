@@ -24,7 +24,7 @@ export function marshalNodeCollection(
         links: {
             self: buildPaginationLinkSelf(nodeType, constraints),
             first: buildPaginationLinkFirst(nodeType, constraints),
-            prev: buildPaginationLinkPrev(nodeType, constraints),
+            prev: buildPaginationLinkPrev(nodeType, constraints, totalNodes),
             next: buildPaginationLinkNext(nodeType, constraints, totalNodes),
             last: buildPaginationLinkLast(nodeType, constraints, totalNodes),
         },

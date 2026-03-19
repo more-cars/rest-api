@@ -4,7 +4,7 @@ export type NodeCollectionResponse = {
     links: {
         self: string
         first: string
-        prev: string
+        prev: string | null
         next: string | null
         last: string
     }
