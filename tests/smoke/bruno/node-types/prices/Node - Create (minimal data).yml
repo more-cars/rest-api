@@ -1,0 +1,30 @@
+info:
+  name: Create Price (minimal data)
+  type: http
+  tags:
+    - create
+    - node
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/prices"
+  body:
+    type: json
+    data: |-
+      {
+        "price": 59990,
+        "currency_code": "EUR",
+        "country_code": "DE"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: gte
+      value: "12000000"

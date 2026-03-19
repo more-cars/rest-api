@@ -3,6 +3,7 @@ export enum ControllerNodeType {
     Brand = 'brands',
     CarModel = 'car-models',
     CarModelVariant = "car-model-variants",
+    Price = "prices",
     RaceTrack = 'race-tracks',
     TrackLayout = 'track-layouts',
     RacingSeries = "racing-series",

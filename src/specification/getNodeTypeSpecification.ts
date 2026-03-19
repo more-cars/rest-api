@@ -5,6 +5,7 @@ import {CompanyNodeSpecification} from "./node-types/CompanyNodeSpecification"
 import {BrandNodeSpecification} from "./node-types/BrandNodeSpecification"
 import {CarModelNodeSpecification} from "./node-types/CarModelNodeSpecification"
 import {CarModelVariantNodeSpecification} from "./node-types/CarModelVariantNodeSpecification"
+import {PriceNodeSpecification} from "./node-types/PriceNodeSpecification"
 import {RaceTrackNodeSpecification} from "./node-types/RaceTrackNodeSpecification"
 import {TrackLayoutNodeSpecification} from "./node-types/TrackLayoutNodeSpecification"
 import {RacingSeriesNodeSpecification} from "./node-types/RacingSeriesNodeSpecification"
@@ -30,6 +31,7 @@ export function getNodeTypeSpecification(nodeType: NodeType) {
         [NodeType.Brand, BrandNodeSpecification],
         [NodeType.CarModel, CarModelNodeSpecification],
         [NodeType.CarModelVariant, CarModelVariantNodeSpecification],
+        [NodeType.Price, PriceNodeSpecification],
         [NodeType.RaceTrack, RaceTrackNodeSpecification],
         [NodeType.TrackLayout, TrackLayoutNodeSpecification],
         [NodeType.RacingSeries, RacingSeriesNodeSpecification],

@@ -3,6 +3,7 @@ export enum DbNodeType {
     Brand = "Brand",
     CarModel = "CarModel",
     CarModelVariant = "CarModelVariant",
+    Price = "Price",
     RaceTrack = "RaceTrack",
     TrackLayout = "TrackLayout",
     RacingSeries = "RacingSeries",

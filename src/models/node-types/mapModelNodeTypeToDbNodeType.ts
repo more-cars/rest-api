@@ -8,6 +8,7 @@ export function mapModelNodeTypeToDbNodeType(modelNodeType: ModelNodeType) {
         [ModelNodeType.Brand, DbNodeType.Brand],
         [ModelNodeType.CarModel, DbNodeType.CarModel],
         [ModelNodeType.CarModelVariant, DbNodeType.CarModelVariant],
+        [ModelNodeType.Price, DbNodeType.Price],
         [ModelNodeType.RaceTrack, DbNodeType.RaceTrack],
         [ModelNodeType.TrackLayout, DbNodeType.TrackLayout],
         [ModelNodeType.RacingSeries, DbNodeType.RacingSeries],

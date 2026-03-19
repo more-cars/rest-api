@@ -5,6 +5,7 @@ import {convertCompanyNeo4jNodeToDbNode} from "../node-types/companies/convertCo
 import {convertBrandNeo4jNodeToDbNode} from "../node-types/brands/convertBrandNeo4jNodeToDbNode"
 import {convertCarModelNeo4jNodeToDbNode} from "../node-types/car-models/convertCarModelNeo4jNodeToDbNode"
 import {convertCarModelVariantNeo4jNodeToDbNode} from "../node-types/car-model-variants/convertCarModelVariantNeo4jNodeToDbNode"
+import {convertPriceNeo4jNodeToDbNode} from "../node-types/prices/convertPriceNeo4jNodeToDbNode"
 import {convertRaceTrackNeo4jNodeToDbNode} from "../node-types/race-tracks/convertRaceTrackNeo4jNodeToDbNode"
 import {convertTrackLayoutNeo4jNodeToDbNode} from "../node-types/track-layouts/convertTrackLayoutNeo4jNodeToDbNode"
 import {convertRacingSeriesNeo4jNodeToDbNode} from "../node-types/racing-series/convertRacingSeriesNeo4jNodeToDbNode"
@@ -30,6 +31,7 @@ export function convertNeo4jNodeToDbNode(neo4jNode: Node, nodeTypeLabel: Neo4jNo
         [Neo4jNodeType.Brand, convertBrandNeo4jNodeToDbNode],
         [Neo4jNodeType.CarModel, convertCarModelNeo4jNodeToDbNode],
         [Neo4jNodeType.CarModelVariant, convertCarModelVariantNeo4jNodeToDbNode],
+        [Neo4jNodeType.Price, convertPriceNeo4jNodeToDbNode],
         [Neo4jNodeType.RaceTrack, convertRaceTrackNeo4jNodeToDbNode],
         [Neo4jNodeType.TrackLayout, convertTrackLayoutNeo4jNodeToDbNode],
         [Neo4jNodeType.RacingSeries, convertRacingSeriesNeo4jNodeToDbNode],

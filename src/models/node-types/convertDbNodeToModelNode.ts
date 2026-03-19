@@ -8,6 +8,8 @@ import {convertCarModelDbNodeToModelNode} from "./car-models/create/convertCarMo
 import type {CarModelNode} from "../../db/node-types/car-models/types/CarModelNode"
 import {convertCarModelVariantDbNodeToModelNode} from "./car-model-variants/create/convertCarModelVariantDbNodeToModelNode"
 import type {CarModelVariantNode} from "../../db/node-types/car-model-variants/types/CarModelVariantNode"
+import {convertPriceDbNodeToModelNode} from "./prices/create/convertPriceDbNodeToModelNode"
+import type {PriceNode} from "../../db/node-types/prices/types/PriceNode"
 import {convertRaceTrackDbNodeToModelNode} from "./race-tracks/create/convertRaceTrackDbNodeToModelNode"
 import type {RaceTrackNode} from "../../db/node-types/race-tracks/types/RaceTrackNode"
 import {convertTrackLayoutDbNodeToModelNode} from "./track-layouts/create/convertTrackLayoutDbNodeToModelNode"
@@ -56,6 +58,8 @@ export function convertDbNodeToModelNode(dbNode: DbNode) {
             return convertCarModelDbNodeToModelNode(dbNode as CarModelNode)
         case DbNodeType.CarModelVariant:
             return convertCarModelVariantDbNodeToModelNode(dbNode as CarModelVariantNode)
+        case DbNodeType.Price:
+            return convertPriceDbNodeToModelNode(dbNode as PriceNode)
         case DbNodeType.RaceTrack:
             return convertRaceTrackDbNodeToModelNode(dbNode as RaceTrackNode)
         case DbNodeType.TrackLayout:

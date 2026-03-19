@@ -8,6 +8,7 @@ export function mapControllerNodeTypeToModelNodeType(controllerNodeType: Control
         [ControllerNodeType.Brand, ModelNodeType.Brand],
         [ControllerNodeType.CarModel, ModelNodeType.CarModel],
         [ControllerNodeType.CarModelVariant, ModelNodeType.CarModelVariant],
+        [ControllerNodeType.Price, ModelNodeType.Price],
         [ControllerNodeType.RaceTrack, ModelNodeType.RaceTrack],
         [ControllerNodeType.TrackLayout, ModelNodeType.TrackLayout],
         [ControllerNodeType.RacingSeries, ModelNodeType.RacingSeries],

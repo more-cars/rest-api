@@ -4,6 +4,7 @@ import {CompanySchema} from "./CompanySchema"
 import {BrandSchema} from "./BrandSchema"
 import {CarModelSchema} from "./CarModelSchema"
 import {CarModelVariantSchema} from "./CarModelVariantSchema"
+import {PriceSchema} from "./PriceSchema"
 import {RaceTrackSchema} from "./RaceTrackSchema"
 import {TrackLayoutSchema} from "./TrackLayoutSchema"
 import {RacingSeriesSchema} from "./RacingSeriesSchema"
@@ -33,6 +34,8 @@ export function getResponseNodeSchema(nodeType: ControllerNodeType) {
             return CarModelSchema
         case ControllerNodeType.CarModelVariant:
             return CarModelVariantSchema
+        case ControllerNodeType.Price:
+            return PriceSchema
         case ControllerNodeType.RaceTrack:
             return RaceTrackSchema
         case ControllerNodeType.TrackLayout:

@@ -6,6 +6,7 @@ import companies from "./routes/node-types/companies"
 import brands from './routes/node-types/brands'
 import carModels from "./routes/node-types/car-models"
 import carModelVariants from "./routes/node-types/car-model-variants"
+import prices from "./routes/node-types/prices"
 import raceTracks from "./routes/node-types/race-tracks"
 import trackLayouts from "./routes/node-types/track-layouts"
 import racingSeries from "./routes/node-types/racing-series"
@@ -46,6 +47,7 @@ app.use('/', companies)
 app.use('/', brands)
 app.use('/', carModels)
 app.use('/', carModelVariants)
+app.use('/', prices)
 app.use('/', raceTracks)
 app.use('/', trackLayouts)
 app.use('/', racingSeries)

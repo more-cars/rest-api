@@ -9,6 +9,7 @@ export function mapDbNodeTypeToNeo4jNodeType(nodeTypeLabel: DbNodeType): Neo4jNo
         [DbNodeType.Brand, Neo4jNodeType.Brand],
         [DbNodeType.CarModel, Neo4jNodeType.CarModel],
         [DbNodeType.CarModelVariant, Neo4jNodeType.CarModelVariant],
+        [DbNodeType.Price, Neo4jNodeType.Price],
         [DbNodeType.RaceTrack, Neo4jNodeType.RaceTrack],
         [DbNodeType.TrackLayout, Neo4jNodeType.TrackLayout],
         [DbNodeType.RacingSeries, Neo4jNodeType.RacingSeries],

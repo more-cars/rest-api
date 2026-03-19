@@ -4,6 +4,7 @@ import {seedCompany} from "./companies/nodes/seedCompany"
 import {seedBrand} from "./brands/nodes/seedBrand"
 import {seedCarModel} from "./car-models/nodes/seedCarModel"
 import {seedCarModelVariant} from "./car-model-variants/nodes/seedCarModelVariant"
+import {seedPrice} from "./prices/nodes/seedPrice"
 import {seedRaceTrack} from "./race-tracks/nodes/seedRaceTrack"
 import {seedTrackLayout} from "./track-layouts/nodes/seedTrackLayout"
 import {seedRacingSeries} from "./racing-series/nodes/seedRacingSeries"
@@ -33,6 +34,8 @@ export async function seedNode(dbNodeType: DbNodeType, customFakeData: object = 
             return seedCarModel(customFakeData)
         case DbNodeType.CarModelVariant:
             return seedCarModelVariant(customFakeData)
+        case DbNodeType.Price:
+            return seedPrice(customFakeData)
         case DbNodeType.RaceTrack:
             return seedRaceTrack(customFakeData)
         case DbNodeType.TrackLayout:

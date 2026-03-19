@@ -3,6 +3,7 @@ export enum ModelNodeType {
     Brand = "brand",
     CarModel = "car_model",
     CarModelVariant = "car_model_variant",
+    Price = "price",
     RaceTrack = "race_track",
     TrackLayout = "track_layout",
     RacingSeries = "racing_series",

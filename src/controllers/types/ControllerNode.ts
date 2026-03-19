@@ -2,6 +2,7 @@ import type {CompanyNode} from "../node-types/companies/types/CompanyNode"
 import type {BrandNode} from "../node-types/brands/types/BrandNode"
 import type {CarModelNode} from "../node-types/car-models/types/CarModelNode"
 import type {CarModelVariantNode} from "../node-types/car-model-variants/types/CarModelVariantNode"
+import type {PriceNode} from "../node-types/prices/types/PriceNode"
 import type {RaceTrackNode} from "../node-types/race-tracks/types/RaceTrackNode"
 import type {TrackLayoutNode} from "../node-types/track-layouts/types/TrackLayoutNode"
 import type {RacingSeriesNode} from "../node-types/racing-series/types/RacingSeriesNode"
@@ -26,6 +27,7 @@ export type ControllerNode =
     BrandNode |
     CarModelNode |
     CarModelVariantNode |
+    PriceNode |
     RaceTrackNode |
     TrackLayoutNode |
     RacingSeriesNode |

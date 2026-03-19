@@ -2,6 +2,7 @@ import type {InputCompanyCreate} from "../node-types/companies/types/InputCompan
 import type {InputBrandCreate} from "../node-types/brands/types/InputBrandCreate"
 import type {InputCarModelCreate} from "../node-types/car-models/types/InputCarModelCreate"
 import type {InputCarModelVariantCreate} from "../node-types/car-model-variants/types/InputCarModelVariantCreate"
+import type {InputPriceCreate} from "../node-types/prices/types/InputPriceCreate"
 import type {InputRaceTrackCreate} from "../node-types/race-tracks/types/InputRaceTrackCreate"
 import type {InputTrackLayoutCreate} from "../node-types/track-layouts/types/InputTrackLayoutCreate"
 import type {InputRacingSeriesCreate} from "../node-types/racing-series/types/InputRacingSeriesCreate"
@@ -26,6 +27,7 @@ export type InputNodeTypeCreate =
     InputBrandCreate |
     InputCarModelCreate |
     InputCarModelVariantCreate |
+    InputPriceCreate |
     InputRaceTrackCreate |
     InputTrackLayoutCreate |
     InputRacingSeriesCreate |

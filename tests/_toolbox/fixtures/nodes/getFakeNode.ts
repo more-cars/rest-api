@@ -5,6 +5,7 @@ import {FakeCompany} from "./FakeCompany"
 import {FakeBrand} from "./FakeBrand"
 import {FakeCarModel} from "./FakeCarModel"
 import {FakeCarModelVariant} from "./FakeCarModelVariant"
+import {FakePrice} from "./FakePrice"
 import {FakeRaceTrack} from "./FakeRaceTrack"
 import {FakeTrackLayout} from "./FakeTrackLayout"
 import {FakeRacingSeries} from "./FakeRacingSeries"
@@ -30,6 +31,7 @@ export function getFakeNode(nodeType: NodeType) {
         [NodeType.Brand, FakeBrand],
         [NodeType.CarModel, FakeCarModel],
         [NodeType.CarModelVariant, FakeCarModelVariant],
+        [NodeType.Price, FakePrice],
         [NodeType.RaceTrack, FakeRaceTrack],
         [NodeType.TrackLayout, FakeTrackLayout],
         [NodeType.RacingSeries, FakeRacingSeries],

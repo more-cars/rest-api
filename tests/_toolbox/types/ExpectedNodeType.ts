@@ -3,6 +3,7 @@ export enum ExpectedNodeType {
     Brand = "Brand",
     CarModel = "Car Model",
     CarModelVariant = "Car Model Variant",
+    Price = "Price",
     RaceTrack = "Race Track",
     TrackLayout = "Track Layout",
     RacingSeries = "Racing Series",

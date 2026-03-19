@@ -6,6 +6,7 @@ import {convertCompanyModelNodeToControllerNode} from "../node-types/companies/c
 import {convertBrandModelNodeToControllerNode} from "../node-types/brands/convertBrandModelNodeToControllerNode"
 import {convertCarModelModelNodeToControllerNode} from "../node-types/car-models/convertCarModelModelNodeToControllerNode"
 import {convertCarModelVariantModelNodeToControllerNode} from "../node-types/car-model-variants/convertCarModelVariantModelNodeToControllerNode"
+import {convertPriceModelNodeToControllerNode} from "../node-types/prices/convertPriceModelNodeToControllerNode"
 import {convertRaceTrackModelNodeToControllerNode} from "../node-types/race-tracks/convertRaceTrackModelNodeToControllerNode"
 import {convertTrackLayoutModelNodeToControllerNode} from "../node-types/track-layouts/convertTrackLayoutModelNodeToControllerNode"
 import {convertRacingSeriesModelNodeToControllerNode} from "../node-types/racing-series/convertRacingSeriesModelNodeToControllerNode"
@@ -28,6 +29,7 @@ import type {CompanyNode} from "../../models/node-types/companies/types/CompanyN
 import type {BrandNode} from "../../models/node-types/brands/types/BrandNode"
 import type {CarModelNode} from "../../models/node-types/car-models/types/CarModelNode"
 import type {CarModelVariantNode} from "../../models/node-types/car-model-variants/types/CarModelVariantNode"
+import type {PriceNode} from "../../models/node-types/prices/types/PriceNode"
 import type {RaceTrackNode} from "../../models/node-types/race-tracks/types/RaceTrackNode"
 import type {TrackLayoutNode} from "../../models/node-types/track-layouts/types/TrackLayoutNode"
 import type {RacingSeriesNode} from "../../models/node-types/racing-series/types/RacingSeriesNode"
@@ -57,6 +59,8 @@ export function convertModelNodeToControllerNode(modelNode: ModelNode): Controll
             return convertCarModelModelNodeToControllerNode(modelNode as CarModelNode)
         case ModelNodeType.CarModelVariant:
             return convertCarModelVariantModelNodeToControllerNode(modelNode as CarModelVariantNode)
+        case ModelNodeType.Price:
+            return convertPriceModelNodeToControllerNode(modelNode as PriceNode)
         case ModelNodeType.RaceTrack:
             return convertRaceTrackModelNodeToControllerNode(modelNode as RaceTrackNode)
         case ModelNodeType.TrackLayout:
