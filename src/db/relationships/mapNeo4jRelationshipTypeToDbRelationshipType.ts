@@ -192,6 +192,14 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 // Model Car - Forward
             ])],
         ])],
+        [Neo4jNodeType.ModelCarBrand, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+            [RelationshipDirection.REVERSE, new Map([
+                // Model Car Brand - Reverse
+            ])],
+            [RelationshipDirection.FORWARD, new Map([
+                // Model Car Brand - Forward
+            ])],
+        ])],
         [Neo4jNodeType.Magazine, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
                 // Magazine - Reverse

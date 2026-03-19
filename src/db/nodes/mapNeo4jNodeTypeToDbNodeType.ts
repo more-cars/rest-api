@@ -19,6 +19,7 @@ export function mapNeo4jNodeTypeToDbNodeType(nodeTypeLabel: Neo4jNodeType): DbNo
         [Neo4jNodeType.RacingGame, DbNodeType.RacingGame],
         [Neo4jNodeType.GamingPlatform, DbNodeType.GamingPlatform],
         [Neo4jNodeType.ModelCar, DbNodeType.ModelCar],
+        [Neo4jNodeType.ModelCarBrand, DbNodeType.ModelCarBrand],
         [Neo4jNodeType.Magazine, DbNodeType.Magazine],
         [Neo4jNodeType.MagazineIssue, DbNodeType.MagazineIssue],
         [Neo4jNodeType.Rating, DbNodeType.Rating],

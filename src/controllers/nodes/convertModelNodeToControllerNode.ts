@@ -16,6 +16,7 @@ import {convertLapTimeModelNodeToControllerNode} from "../node-types/lap-times/c
 import {convertRacingGameModelNodeToControllerNode} from "../node-types/racing-games/convertRacingGameModelNodeToControllerNode"
 import {convertGamingPlatformModelNodeToControllerNode} from "../node-types/gaming-platforms/convertGamingPlatformModelNodeToControllerNode"
 import {convertModelCarModelNodeToControllerNode} from "../node-types/model-cars/convertModelCarModelNodeToControllerNode"
+import {convertModelCarBrandModelNodeToControllerNode} from "../node-types/model-car-brands/convertModelCarBrandModelNodeToControllerNode"
 import {convertMagazineModelNodeToControllerNode} from "../node-types/magazines/convertMagazineModelNodeToControllerNode"
 import {convertMagazineIssueModelNodeToControllerNode} from "../node-types/magazine-issues/convertMagazineIssueModelNodeToControllerNode"
 import {convertRatingModelNodeToControllerNode} from "../node-types/ratings/convertRatingModelNodeToControllerNode"
@@ -36,13 +37,14 @@ import type {SessionResultNode} from "../../models/node-types/session-results/ty
 import type {LapTimeNode} from "../../models/node-types/lap-times/types/LapTimeNode"
 import type {RacingGameNode} from "../../models/node-types/racing-games/types/RacingGameNode"
 import type {GamingPlatformNode} from "../../models/node-types/gaming-platforms/types/GamingPlatformNode"
+import type {ModelCarNode} from "../../models/node-types/model-cars/types/ModelCarNode"
+import type {ModelCarBrandNode} from "../../models/node-types/model-car-brands/types/ModelCarBrandNode"
 import type {MagazineNode} from "../../models/node-types/magazines/types/MagazineNode"
 import type {MagazineIssueNode} from "../../models/node-types/magazine-issues/types/MagazineIssueNode"
 import type {RatingNode} from "../../models/node-types/ratings/types/RatingNode"
 import type {ProgrammeNode} from "../../models/node-types/programmes/types/ProgrammeNode"
 import type {ProgrammeEpisodeNode} from "../../models/node-types/programme-episodes/types/ProgrammeEpisodeNode"
 import type {MotorShowNode} from "../../models/node-types/motor-shows/types/MotorShowNode"
-import type {ModelCarNode} from "../../models/node-types/model-cars/types/ModelCarNode"
 import type {ImageNode} from "../../models/node-types/images/types/ImageNode"
 
 export function convertModelNodeToControllerNode(modelNode: ModelNode): ControllerNode {
@@ -75,6 +77,8 @@ export function convertModelNodeToControllerNode(modelNode: ModelNode): Controll
             return convertGamingPlatformModelNodeToControllerNode(modelNode as GamingPlatformNode)
         case ModelNodeType.ModelCar:
             return convertModelCarModelNodeToControllerNode(modelNode as ModelCarNode)
+        case ModelNodeType.ModelCarBrand:
+            return convertModelCarBrandModelNodeToControllerNode(modelNode as ModelCarBrandNode)
         case ModelNodeType.Magazine:
             return convertMagazineModelNodeToControllerNode(modelNode as MagazineNode)
         case ModelNodeType.MagazineIssue:

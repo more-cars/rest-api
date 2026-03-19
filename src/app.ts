@@ -16,6 +16,7 @@ import lapTimes from "./routes/node-types/lap-times"
 import racingGames from "./routes/node-types/racing-games"
 import gamingPlatforms from "./routes/node-types/gaming-platforms"
 import modelCars from "./routes/node-types/model-cars"
+import modelCarBrands from "./routes/node-types/model-car-brands"
 import magazines from "./routes/node-types/magazines"
 import magazineIssues from "./routes/node-types/magazine-issues"
 import ratings from "./routes/node-types/ratings"
@@ -55,6 +56,7 @@ app.use('/', lapTimes)
 app.use('/', racingGames)
 app.use('/', gamingPlatforms)
 app.use('/', modelCars)
+app.use('/', modelCarBrands)
 app.use('/', magazines)
 app.use('/', magazineIssues)
 app.use('/', ratings)

@@ -13,6 +13,7 @@ export enum DbNodeType {
     RacingGame = "RacingGame",
     GamingPlatform = "GamingPlatform",
     ModelCar = "ModelCar",
+    ModelCarBrand = "ModelCarBrand",
     Magazine = "Magazine",
     MagazineIssue = "MagazineIssue",
     Rating = "Rating",

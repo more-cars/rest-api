@@ -14,6 +14,7 @@ import {seedLapTime} from "./lap-times/nodes/seedLapTime"
 import {seedRacingGame} from "./racing-games/nodes/seedRacingGame"
 import {seedGamingPlatform} from "./gaming-platforms/nodes/seedGamingPlatform"
 import {seedModelCar} from "./model-cars/nodes/seedModelCar"
+import {seedModelCarBrand} from "./model-car-brands/nodes/seedModelCarBrand"
 import {seedMagazine} from "./magazines/nodes/seedMagazine"
 import {seedMagazineIssue} from "./magazine-issues/nodes/seedMagazineIssue"
 import {seedRating} from "./ratings/nodes/seedRating"
@@ -52,6 +53,8 @@ export async function seedNode(dbNodeType: DbNodeType, customFakeData: object = 
             return seedGamingPlatform(customFakeData)
         case DbNodeType.ModelCar:
             return seedModelCar(customFakeData)
+        case DbNodeType.ModelCarBrand:
+            return seedModelCarBrand(customFakeData)
         case DbNodeType.Magazine:
             return seedMagazine(customFakeData)
         case DbNodeType.MagazineIssue:

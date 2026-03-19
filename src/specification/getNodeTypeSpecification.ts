@@ -15,6 +15,7 @@ import {LapTimeNodeSpecification} from "./node-types/LapTimeNodeSpecification"
 import {RacingGameNodeSpecification} from "./node-types/RacingGameNodeSpecification"
 import {GamingPlatformNodeSpecification} from "./node-types/GamingPlatformNodeSpecification"
 import {ModelCarNodeSpecification} from "./node-types/ModelCarNodeSpecification"
+import {ModelCarBrandNodeSpecification} from "./node-types/ModelCarBrandNodeSpecification"
 import {MagazineNodeSpecification} from "./node-types/MagazineNodeSpecification"
 import {MagazineIssueNodeSpecification} from "./node-types/MagazineIssueNodeSpecification"
 import {RatingNodeSpecification} from "./node-types/RatingNodeSpecification"
@@ -39,6 +40,7 @@ export function getNodeTypeSpecification(nodeType: NodeType) {
         [NodeType.RacingGame, RacingGameNodeSpecification],
         [NodeType.GamingPlatform, GamingPlatformNodeSpecification],
         [NodeType.ModelCar, ModelCarNodeSpecification],
+        [NodeType.ModelCarBrand, ModelCarBrandNodeSpecification],
         [NodeType.Magazine, MagazineNodeSpecification],
         [NodeType.MagazineIssue, MagazineIssueNodeSpecification],
         [NodeType.Rating, RatingNodeSpecification],

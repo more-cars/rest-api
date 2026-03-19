@@ -13,6 +13,7 @@ export enum ModelNodeType {
     RacingGame = "racing_game",
     GamingPlatform = "gaming_platform",
     ModelCar = "model_car",
+    ModelCarBrand = "model_car_brand",
     Magazine = "magazine",
     MagazineIssue = "magazine_issue",
     Rating = "rating",
