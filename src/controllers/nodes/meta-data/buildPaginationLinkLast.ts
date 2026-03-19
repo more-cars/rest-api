@@ -4,7 +4,12 @@ import {buildGetCollectionUrl} from "./buildGetCollectionUrl"
 
 export function buildPaginationLinkLast(nodeType: ControllerNodeType, constraints: NodeCollectionConstraints, totalNodes: number) {
     const modifiedConstraints = Object.assign({}, constraints)
-    modifiedConstraints.page = Math.floor((totalNodes / 100) + 1)
+
+    modifiedConstraints.page = Math.floor(totalNodes / 100) + 1
+
+    if (totalNodes % 100 === 0) {
+        modifiedConstraints.page = modifiedConstraints.page - 1
+    }
 
     return buildGetCollectionUrl(nodeType, modifiedConstraints)
 }
