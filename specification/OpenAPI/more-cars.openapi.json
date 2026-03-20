@@ -13658,6 +13658,48 @@
         }
       }
     },
+    "/model-car-brands/{model-car-brand-id}/has-image": {
+      "get": {
+        "operationId": "getModelCarBrandHasImageRel",
+        "tags": [
+          "Model Car Brands"
+        ],
+        "summary": "Get all ›has-image‹ relationships for the `Model Car Brand`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "model-car-brand-id",
+            "description": "ID of the `Model Car Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-image‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelCarBrandHasImageCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Model Car Brand` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/model-car-brands/{model-car-brand-id}/has-image/{image-id}": {
       "post": {
         "tags": [
@@ -24998,6 +25040,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/ModelCarBrandHasImage"
+          }
+        }
+      },
+      "ModelCarBrandHasImageCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ModelCarBrandHasImageResponse"
+            }
           }
         }
       },

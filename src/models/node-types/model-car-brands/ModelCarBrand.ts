@@ -116,4 +116,11 @@ export const ModelCarBrand = {
 
         return createdRelationship
     },
+
+    async getAllHasImageRelationships(modelCarBrandId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await ModelCarBrand.findById(modelCarBrandId)
+
+        return getAllRels(modelCarBrandId, RelType.ModelCarBrandHasImage)
+    },
 }
