@@ -11,6 +11,7 @@ import {getMadeByModelCarBrandRelation} from "./model-cars/getMadeByModelCarBran
 import {deleteMadeByModelCarBrandRelation} from "./model-cars/deleteMadeByModelCarBrandRelation"
 import {createHasImageRelation} from "./model-cars/createHasImageRelation"
 import {getAllHasImageRelations} from "./model-cars/getAllHasImageRelations"
+import {deleteHasImageRelation} from "./model-cars/deleteHasImageRelation"
 
 export const ModelCarController = {
     async create(req: express.Request, res: express.Response) {
@@ -59,5 +60,9 @@ export const ModelCarController = {
 
     async getAllHasImageRelations(req: express.Request, res: express.Response) {
         await getAllHasImageRelations(req, res)
+    },
+
+    async deleteHasImageRelation(req: express.Request, res: express.Response) {
+        await deleteHasImageRelation(req, res)
     },
 }

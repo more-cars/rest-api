@@ -173,4 +173,17 @@ export const ModelCar = {
 
         return getAllRels(modelCarId, RelType.ModelCarHasImage)
     },
+
+    async deleteHasImageRelationship(modelCarId: number, imageId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await ModelCar.findById(modelCarId)
+        await Image.findById(imageId)
+
+        const relationship = await getSpecificRel(modelCarId, imageId, RelType.ModelCarHasImage)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.ModelCarHasImage, modelCarId, imageId)
+        }
+
+        await deleteSpecificRel(modelCarId, imageId, RelType.ModelCarHasImage)
+    },
 }

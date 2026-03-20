@@ -15,5 +15,6 @@ router.get('/model-cars/:modelCarId/made-by-model-car-brand', ModelCarController
 router.delete('/model-cars/:modelCarId/made-by-model-car-brand/:modelCarBrandId', ModelCarController.deleteMadeByModelCarBrandRelation)
 router.post('/model-cars/:modelCarId/has-image/:imageId', ModelCarController.createHasImageRelation)
 router.get('/model-cars/:modelCarId/has-image', ModelCarController.getAllHasImageRelations)
+router.delete('/model-cars/:modelCarId/has-image/:imageId', ModelCarController.deleteHasImageRelation)
 
 export default router
