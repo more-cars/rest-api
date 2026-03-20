@@ -12,6 +12,7 @@ test("converting a PRICE node", async () => {
             created_at: "2025-05-14T11:05:07.793Z",
             updated_at: "2025-05-14T11:05:07.793Z",
             price: 59990,
+            price_year: 2020,
             currency_code: "EUR",
             country_code: "DE",
         },
@@ -25,6 +26,7 @@ test("converting a PRICE node", async () => {
             fields: {
                 id: 1,
                 price: 59990,
+                price_year: 2020,
                 currency_code: "EUR",
                 country_code: "DE",
                 created_at: "2025-05-14T11:05:07.793Z",

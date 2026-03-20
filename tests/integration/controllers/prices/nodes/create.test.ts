@@ -11,6 +11,7 @@ test('Input data is valid', async () => {
         .post('/prices')
         .send({
             price: 59990,
+            price_year: 2020,
             currency_code: "EUR",
             country_code: "DE",
         })
@@ -45,6 +46,7 @@ test('Input is valid, but something breaks on the way', async () => {
         .post('/prices')
         .send({
             price: 59990,
+            price_year: 2020,
             currency_code: "EUR",
             country_code: "DE",
         })

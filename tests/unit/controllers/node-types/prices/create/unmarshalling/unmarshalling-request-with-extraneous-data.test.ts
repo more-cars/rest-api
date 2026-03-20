@@ -4,6 +4,7 @@ import {unmarshalInputData} from "../../../../../../../src/controllers/node-type
 test('unmarshalling a request where extraneous fields are contained', async () => {
     const data: any = {
         price: 59990,
+        price_year: 2020,
         currency_code: "EUR",
         country_code: "DE",
         my_property: "Hello",
@@ -14,6 +15,7 @@ test('unmarshalling a request where extraneous fields are contained', async () =
     expect(result)
         .toStrictEqual({
             price: 59990,
+            price_year: 2020,
             currency_code: "EUR",
             country_code: "DE",
         })

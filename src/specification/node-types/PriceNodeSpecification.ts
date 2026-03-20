@@ -10,6 +10,11 @@ export const PriceNodeSpecification: NodeSpecification = {
             mandatory: true,
         },
         {
+            name: 'price_year',
+            datatype: 'number',
+            mandatory: true,
+        },
+        {
             name: 'currency_code',
             datatype: 'string',
             mandatory: true,

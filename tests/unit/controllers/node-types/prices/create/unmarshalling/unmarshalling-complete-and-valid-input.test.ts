@@ -4,6 +4,7 @@ import {unmarshalInputData} from "../../../../../../../src/controllers/node-type
 test('unmarshalling a complete and valid request', async () => {
     const data: any = {
         price: 59990,
+        price_year: 2020,
         currency_code: "EUR",
         country_code: "DE",
     }
@@ -13,6 +14,7 @@ test('unmarshalling a complete and valid request', async () => {
     expect(result)
         .toStrictEqual({
             price: 59990,
+            price_year: 2020,
             currency_code: "EUR",
             country_code: "DE",
         })

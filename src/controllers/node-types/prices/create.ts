@@ -38,6 +38,10 @@ export function validate(data: CreatePriceRawInput): boolean {
         return false
     }
 
+    if (!isMandatoryNumber(data.price_year)) {
+        return false
+    }
+
     if (!isMandatoryString(data.currency_code)) {
         return false
     }
@@ -52,6 +56,7 @@ export function validate(data: CreatePriceRawInput): boolean {
 export function sanitize(data: CreatePriceInput): CreatePriceInput {
     return {
         price: data.price,
+        price_year: data.price_year,
         currency_code: data.currency_code.trim(),
         country_code: data.country_code.trim(),
     } satisfies CreatePriceInput

@@ -7,6 +7,7 @@ export type PriceNode = {
         created_at: string
         updated_at: string
         price: number
+        price_year: number
         currency_code: string
         country_code: string
     }

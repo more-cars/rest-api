@@ -4,6 +4,7 @@ import {createNode} from "../../../../../../src/db/node-types/prices/createNode"
 test('Single quotes in strings are correctly escaped and unescaped', async () => {
     const data = {
         price: 59990,
+        price_year: 2020,
         currency_code: "'EUR''",
         country_code: "'DE''",
     }

@@ -15,6 +15,7 @@ exports.createHasPrimeImageRelationship = async function () {
 exports.create = async function (prefix = '') {
     const response = await post("/prices", {
         price: 59990,
+        price_year: 2020,
         currency_code: "EUR",
         country_code: "DE",
     })

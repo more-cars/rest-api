@@ -8,6 +8,7 @@ export function convertPriceModelNodeToControllerNode(modelNode: ModelPriceNode)
         fields: {
             id: modelNode.attributes.id,
             price: modelNode.attributes.price,
+            price_year: modelNode.attributes.price_year,
             currency_code: modelNode.attributes.currency_code,
             country_code: modelNode.attributes.country_code,
             created_at: modelNode.attributes.created_at,

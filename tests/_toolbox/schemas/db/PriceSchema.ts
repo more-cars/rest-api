@@ -7,6 +7,7 @@ export const PriceSchema = {
             properties: {
                 id: {type: ["integer"]},
                 price: {type: ["number"]},
+                price_year: {type: ["number"]},
                 currency_code: {type: ["string"]},
                 country_code: {type: ["string"]},
                 created_at: {type: ["string"]},
@@ -15,6 +16,7 @@ export const PriceSchema = {
             required: [
                 "id",
                 "price",
+                "price_year",
                 "currency_code",
                 "country_code",
                 "created_at",

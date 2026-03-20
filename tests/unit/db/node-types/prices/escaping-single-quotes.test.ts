@@ -7,6 +7,7 @@ import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 test('single quotes are correctly escaped', async () => {
     const data: InputPriceCreate = {
         price: 59990,
+        price_year: 2020,
         currency_code: "'EUR",
         country_code: "'DE"
     }
@@ -17,6 +18,7 @@ test('single quotes are correctly escaped', async () => {
         .toEqual(
             "CREATE (node:Price_" + appInstanceId + " {\n" +
             "  price: 59990,\n" +
+            "  price_year: 2020,\n" +
             "  currency_code: '\\'EUR',\n" +
             "  country_code: '\\'DE'\n" +
             "})\n" +

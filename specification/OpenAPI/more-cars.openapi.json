@@ -21346,6 +21346,11 @@
             "description": "",
             "example": "59990"
           },
+          "price_year": {
+            "type": "number",
+            "description": "",
+            "example": "2020"
+          },
           "currency_code": {
             "type": "string",
             "description": "",

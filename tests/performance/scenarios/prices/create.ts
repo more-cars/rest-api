@@ -27,6 +27,7 @@ export default function () {
     const url = `${__ENV.API_URL}/prices`
     const payload = {
         "price": 59990,
+        "price_year": 2020,
         "currency_code": "EUR",
         "country_code": "DE",
     }

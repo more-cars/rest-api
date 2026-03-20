@@ -5,6 +5,7 @@ import {validate} from "../../../../../../../src/controllers/node-types/prices/c
 test('validating a complete and valid request', async () => {
     const data: CreatePriceRawInput = {
         price: 59990,
+        price_year: 2020,
         currency_code: "EUR",
         country_code: "DE",
     }

@@ -4,6 +4,7 @@ import {CreatePriceRawInput} from "../types/CreatePriceRawInput"
 export function unmarshalInputData(data): CreatePriceRawInput {
     return {
         price: data?.price,
+        price_year: data?.price_year,
         currency_code: data?.currency_code,
         country_code: data?.country_code,
     } satisfies CreatePriceRawInput

@@ -5,6 +5,7 @@ import {validate} from "../../../../../../../src/controllers/node-types/prices/c
 test('validating a request where mandatory fields are missing', async () => {
     const data: CreatePriceRawInput = {
         price: undefined,
+        price_year: undefined,
         currency_code: undefined,
         country_code: undefined,
     }

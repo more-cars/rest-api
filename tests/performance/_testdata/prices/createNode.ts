@@ -3,7 +3,10 @@ import http from "k6/http"
 export function createNode() {
     const url = `${__ENV.API_URL}/prices`
     const payload = {
-        "name": "Performance Test Price"
+        "price": 59990,
+        "price_year": 2020,
+        "currency_code": "EUR",
+        "country_code": "DE",
     }
 
     const response = http.post(

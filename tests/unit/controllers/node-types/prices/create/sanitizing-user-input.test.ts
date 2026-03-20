@@ -6,6 +6,7 @@ describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
         const data: CreatePriceInput = {
             price: 59990,
+            price_year: 2020,
             currency_code: "   EUR  ",
             country_code: "   DE  ",
         }
@@ -15,6 +16,7 @@ describe('Sanitizing user input', () => {
         expect(result)
             .toStrictEqual({
                 price: 59990,
+                price_year: 2020,
                 currency_code: "EUR",
                 country_code: "DE",
             })
