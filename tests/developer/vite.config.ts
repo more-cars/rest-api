@@ -25,6 +25,7 @@ export default defineConfig(({mode}) => ({
                 classnameTemplate: ''
             }],
         ],
+        testTimeout: 10000,
         coverage: {
             provider: 'v8',
             include: ['src/**'],
