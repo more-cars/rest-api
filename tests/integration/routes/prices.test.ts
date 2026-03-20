@@ -29,4 +29,12 @@ describe('Prices', () => {
         expect(PriceController.getAll)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete Node', async () => {
+        await request(app)
+            .delete('/prices/123')
+
+        expect(PriceController.delete)
+            .toHaveBeenCalledTimes(1)
+    })
 })

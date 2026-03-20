@@ -2,6 +2,7 @@ import express from "express"
 import {create} from "./prices/create"
 import {getById} from "./prices/getById"
 import {getAll} from "./prices/getAll"
+import {deleteNode} from "./prices/deleteNode"
 
 export const PriceController = {
     async create(req: express.Request, res: express.Response) {
@@ -14,5 +15,9 @@ export const PriceController = {
 
     async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
+    },
+
+    async delete(req: express.Request, res: express.Response) {
+        await deleteNode(req, res)
     },
 }

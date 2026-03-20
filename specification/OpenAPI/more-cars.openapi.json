@@ -4465,6 +4465,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Prices"
+        ],
+        "summary": "Delete `Price`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "price-id",
+            "description": "ID of the `Price`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Price` successfully deleted."
+          },
+          "404": {
+            "description": "Deletion request failed. A `Price` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/images": {
