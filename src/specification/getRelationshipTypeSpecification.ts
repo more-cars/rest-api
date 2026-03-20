@@ -5,6 +5,7 @@ import {CompanyRelationshipSpecification} from "./node-types/CompanyRelationship
 import {BrandRelationshipSpecification} from "./node-types/BrandRelationshipSpecification"
 import {CarModelRelationshipSpecification} from "./node-types/CarModelRelationshipSpecification"
 import {CarModelVariantRelationshipSpecification} from "./node-types/CarModelVariantRelationshipSpecification"
+import {PriceRelationshipSpecification} from "./node-types/PriceRelationshipSpecification"
 import {RaceTrackRelationshipSpecification} from "./node-types/RaceTrackRelationshipSpecification"
 import {TrackLayoutRelationshipSpecification} from "./node-types/TrackLayoutRelationshipSpecification"
 import {RacingSeriesRelationshipSpecification} from "./node-types/RacingSeriesRelationshipSpecification"
@@ -31,6 +32,7 @@ export function getRelationshipTypeSpecification(relationshipType: RelationshipT
         BrandRelationshipSpecification,
         CarModelRelationshipSpecification,
         CarModelVariantRelationshipSpecification,
+        PriceRelationshipSpecification,
         RaceTrackRelationshipSpecification,
         TrackLayoutRelationshipSpecification,
         RacingSeriesRelationshipSpecification,

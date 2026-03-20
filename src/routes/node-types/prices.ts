@@ -7,5 +7,6 @@ router.post('/prices', PriceController.create)
 router.get('/prices/:id', PriceController.getById)
 router.get('/prices', PriceController.getAll)
 router.delete('/prices/:id', PriceController.delete)
+router.post('/prices/:priceId/for-car-model-variant/:carModelVariantId', PriceController.createForCarModelVariantRelation)
 
 export default router

@@ -8,6 +8,14 @@ import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 import {getAllNodesOfType} from "../../../db/node-types/prices/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {deleteNode} from "../../../db/nodes/deleteNode"
+import {createRel} from "../../relationships/createRel"
+import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
+import {CarModelVariant} from "../car-model-variants/CarModelVariant"
+import {getSpecificRel} from "../../relationships/getSpecificRel"
+import {ModelNodeType} from "../../types/ModelNodeType"
+import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
+import {RelType} from "../../relationships/types/RelType"
+
 
 export const Price = {
     async create(data: CreatePriceInput): Promise<PriceNode> {
@@ -46,5 +54,24 @@ export const Price = {
         }
 
         await deleteNode(id)
+    },
+
+    async createForCarModelVariantRelationship(priceId: number, carModelVariantId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Price.findById(priceId)
+        await CarModelVariant.findById(carModelVariantId)
+
+        const existingRelation = await getSpecificRel(priceId, carModelVariantId, RelType.PriceForCarModelVariant)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.PriceForCarModelVariant, priceId, carModelVariantId)
+        }
+        await deleteOutgoingRel(priceId, RelType.PriceForCarModelVariant, ModelNodeType.CarModelVariant)
+
+        const createdRelationship = await createRel(priceId, carModelVariantId, RelType.PriceForCarModelVariant)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }

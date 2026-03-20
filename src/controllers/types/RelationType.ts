@@ -24,6 +24,7 @@ export enum RelationType {
     CarModelVariantPresentedAtMotorShow = 'presented-at-motor-show',
     CarModelVariantHasImage = 'has-image',
     CarModelVariantHasPrimeImage = 'has-prime-image',
+    PriceForCarModelVariant = 'for-car-model-variant',
     RaceTrackHasLayout = 'has-layout',
     RaceTrackHostedRacingEvent = 'hosted-racing-event',
     RaceTrackHasImage = 'has-image',

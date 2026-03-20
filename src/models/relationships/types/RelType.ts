@@ -24,6 +24,7 @@ export enum RelType {
     CarModelVariantPresentedAtMotorShow = 'car_model_variant_presented_at_motor_show',
     CarModelVariantHasImage = 'car_model_variant_has_image',
     CarModelVariantHasPrimeImage = 'car_model_variant_has_prime_image',
+    PriceForCarModelVariant = 'price_for_car_model_variant',
     RaceTrackHasLayout = 'race_track_has_layout',
     RaceTrackHostedRacingEvent = 'race_track_hosted_racing_event',
     RaceTrackHasImage = 'race_track_has_image',

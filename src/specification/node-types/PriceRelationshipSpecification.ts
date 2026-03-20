@@ -3,5 +3,10 @@ import {RelationshipType} from "../RelationshipType"
 import {NodeType} from "../NodeType"
 
 export const PriceRelationshipSpecification: RelationshipTypeSpecification[] = [
+    [RelationshipType.PriceForCarModelVariant, {
+        startNodeType: NodeType.Price,
+        endNodeType: NodeType.CarModelVariant,
+        isReverseRelationship: false,
+    }],
     //
 ]
