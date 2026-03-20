@@ -1,0 +1,48 @@
+info:
+  name: Get all Prices
+  type: http
+  tags:
+    - get
+    - node
+    - collection
+    - valid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/prices"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body.data
+      operator: isArray
+    - expression: res.body.data[0].attributes
+      operator: isJson
+    - expression: res.body.data[0].id
+      operator: gte
+      value: "12000000"
+    - expression: res.body.meta.page.current
+      operator: isNumber
+    - expression: res.body.meta.page.size
+      operator: isNumber
+    - expression: res.body.meta.page.total_pages
+      operator: isNumber
+    - expression: res.body.meta.page.total_nodes
+      operator: isNumber
+    - expression: res.body.links.self
+      operator: isString
+    - expression: res.body.links.first
+      operator: isString
+    - expression: res.body.links.prev
+      operator: isDefined
+    - expression: res.body.links.next
+      operator: isDefined
+    - expression: res.body.links.last
+      operator: isString
+  scripts:
+    - type: before-request
+      code: |-
+        const Prices = require('./lib/node-types/Prices.js')
+        await Prices.create()

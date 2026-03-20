@@ -5,6 +5,8 @@ import {createNode} from "../../../db/node-types/prices/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/prices/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
+import {getAllNodesOfType} from "../../../db/node-types/prices/getAllNodesOfType"
+import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 
 export const Price = {
     async create(data: CreatePriceInput): Promise<PriceNode> {
@@ -22,5 +24,16 @@ export const Price = {
         }
 
         return convertDbNodeToModelNode(node) as PriceNode
+    },
+
+    async findAll(options: NodeCollectionConstraints = {}): Promise<PriceNode[]> {
+        const nodes: PriceNode[] = []
+        const nodesDb = await getAllNodesOfType(options)
+
+        nodesDb.forEach(node => {
+            nodes.push(convertDbNodeToModelNode(node) as PriceNode)
+        })
+
+        return nodes
     },
 }

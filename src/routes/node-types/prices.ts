@@ -5,5 +5,6 @@ const router = express.Router()
 
 router.post('/prices', PriceController.create)
 router.get('/prices/:id', PriceController.getById)
+router.get('/prices', PriceController.getAll)
 
 export default router
