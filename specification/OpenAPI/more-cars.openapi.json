@@ -13488,6 +13488,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Model Car Brands"
+        ],
+        "summary": "Delete `Model Car Brand`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "model-car-brand-id",
+            "description": "ID of the `Model Car Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Model Car Brand` successfully deleted."
+          },
+          "404": {
+            "description": "Deletion request failed. A `Model Car Brand` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/magazines": {

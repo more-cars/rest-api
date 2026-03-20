@@ -6,5 +6,6 @@ const router = express.Router()
 router.post('/model-car-brands', ModelCarBrandController.create)
 router.get('/model-car-brands/:id', ModelCarBrandController.getById)
 router.get('/model-car-brands', ModelCarBrandController.getAll)
+router.delete('/model-car-brands/:id', ModelCarBrandController.delete)
 
 export default router

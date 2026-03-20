@@ -1,0 +1,28 @@
+info:
+  name: Delete Model Car Brand (valid data)
+  type: http
+  tags:
+    - delete
+    - node
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/model-car-brands/{{validModelCarBrandId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+    - expression: res.body
+      operator: isEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const ModelCarBrands = require('./lib/node-types/ModelCarBrands.js')
+        await ModelCarBrands.create()
+    - type: after-response
+      code: |-
+        const Ids = require('./lib/Ids.js')
+        Ids.forgetId('ModelCarBrand')

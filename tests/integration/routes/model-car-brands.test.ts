@@ -29,4 +29,12 @@ describe('Model Car Brands', () => {
         expect(ModelCarBrandController.getAll)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete Node', async () => {
+        await request(app)
+            .delete('/model-car-brands/123')
+
+        expect(ModelCarBrandController.delete)
+            .toHaveBeenCalledTimes(1)
+    })
 })
