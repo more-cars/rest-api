@@ -160,4 +160,16 @@ export const Price = {
 
         return createdRelationship
     },
+
+    async getHasPrimeImageRelationship(priceId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await Price.findById(priceId)
+
+        const relationship = await getRel(priceId, RelType.PriceHasPrimeImage)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.PriceHasPrimeImage, priceId, null)
+        }
+
+        return relationship
+    },
 }

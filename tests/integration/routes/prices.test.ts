@@ -93,4 +93,12 @@ describe('Prices', () => {
         expect(PriceController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .get('/prices/123/has-prime-image')
+
+        expect(PriceController.getHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

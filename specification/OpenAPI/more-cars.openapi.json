@@ -4771,6 +4771,48 @@
         }
       }
     },
+    "/prices/{price-id}/has-prime-image": {
+      "get": {
+        "operationId": "getPriceHasPrimeImageRel",
+        "tags": [
+          "Prices"
+        ],
+        "summary": "Get the ›has-prime-image‹ relationship for the `Price`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "price-id",
+            "description": "ID of the `Price`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›has-prime-image‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PriceHasPrimeImageResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Price` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/prices/{price-id}/has-prime-image/{image-id}": {
       "post": {
         "tags": [

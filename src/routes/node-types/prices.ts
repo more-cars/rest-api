@@ -14,5 +14,6 @@ router.post('/prices/:priceId/has-image/:imageId', PriceController.createHasImag
 router.get('/prices/:priceId/has-image', PriceController.getAllHasImageRelations)
 router.delete('/prices/:priceId/has-image/:imageId', PriceController.deleteHasImageRelation)
 router.post('/prices/:priceId/has-prime-image/:imageId', PriceController.createHasPrimeImageRelation)
+router.get('/prices/:priceId/has-prime-image', PriceController.getHasPrimeImageRelation)
 
 export default router
