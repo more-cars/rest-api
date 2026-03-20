@@ -1,21 +1,12 @@
 import neo4j, {type Session} from "neo4j-driver"
 import type {DbNodeType} from "../types/DbNodeType"
 import type {CollectionQueryParams} from "../types/CollectionQueryParams"
-import {DbFilterOperator} from "../types/DbFilterOperator"
 import {getDriver} from "../driver"
 import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 import {mapDbNodeTypeToNeo4jNodeType} from "./mapDbNodeTypeToNeo4jNodeType"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
-export async function fetchNodeCountByNodeType(nodeType: DbNodeType, params: CollectionQueryParams = {
-    sortByProperty: '',
-    sortDirection: '',
-    filterByProperty: 'mc_id',
-    filterValue: -1,
-    filterOperator: DbFilterOperator.not_equal,
-    offset: 0,
-    limit: 0,
-}) {
+export async function fetchNodeCountByNodeType(nodeType: DbNodeType, params?: CollectionQueryParams) {
     const driver = getDriver()
     const session: Session = driver.session({defaultAccessMode: neo4j.session.READ})
 
@@ -29,13 +20,19 @@ export async function fetchNodeCountByNodeType(nodeType: DbNodeType, params: Col
     return records[0].get('nodeCount') as number
 }
 
-export function fetchNodeCountByNodeTypeQuery(nodeType: DbNodeType, params: CollectionQueryParams) {
+export function fetchNodeCountByNodeTypeQuery(nodeType: DbNodeType, params?: CollectionQueryParams) {
     const nodeTypeLabel = getNamespacedNodeTypeLabel(mapDbNodeTypeToNeo4jNodeType(nodeType))
 
-    return getCypherQueryTemplate('nodes/_cypher/getNodeCountByNodeLabel.cypher')
-        .trim()
-        .replace(':nodeLabel', `:${nodeTypeLabel}`)
-        .replace('$filterByProperty', `${params.filterByProperty}`)
-        .replace('$filterValue', ['boolean', 'number'].includes(typeof params.filterValue) ? `${params.filterValue}` : `'${params.filterValue}'`)
-        .replace('$filterOperator', `${params.filterOperator}`)
+    if (params?.filterByProperty && params?.filterValue) {
+        return getCypherQueryTemplate('nodes/_cypher/getNodeCountByNodeTypeFiltered.cypher')
+            .trim()
+            .replace(':nodeLabel', `:${nodeTypeLabel}`)
+            .replace('$filterByProperty', `${params.filterByProperty}`)
+            .replace('$filterValue', ['boolean', 'number'].includes(typeof params.filterValue) ? `${params.filterValue}` : `'${params.filterValue}'`)
+            .replace('$filterOperator', `${params.filterOperator}`)
+    } else { // the reason for this switch is to take advantage of the better database performance when an unfiltered query is executed
+        return getCypherQueryTemplate('nodes/_cypher/getNodeCountByNodeType.cypher')
+            .trim()
+            .replace(':nodeLabel', `:${nodeTypeLabel}`)
+    }
 }
