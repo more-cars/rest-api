@@ -29,6 +29,7 @@ import {getAllPresentedAtMotorShowRelations} from "./car-model-variants/getAllPr
 import {deletePresentedAtMotorShowRelation} from "./car-model-variants/deletePresentedAtMotorShowRelation"
 import {createHasPriceRelation} from "./car-model-variants/createHasPriceRelation"
 import {getAllHasPriceRelations} from "./car-model-variants/getAllHasPriceRelations"
+import {deleteHasPriceRelation} from "./car-model-variants/deleteHasPriceRelation"
 import {createHasImageRelation} from "./car-model-variants/createHasImageRelation"
 import {getAllHasImageRelations} from "./car-model-variants/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./car-model-variants/deleteHasImageRelation"
@@ -155,6 +156,10 @@ export const CarModelVariantController = {
 
     async getAllHasPriceRelations(req: express.Request, res: express.Response) {
         await getAllHasPriceRelations(req, res)
+    },
+
+    async deleteHasPriceRelation(req: express.Request, res: express.Response) {
+        await deleteHasPriceRelation(req, res)
     },
 
     async createHasImageRelation(req: express.Request, res: express.Response) {

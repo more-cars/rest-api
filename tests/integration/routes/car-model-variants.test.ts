@@ -246,6 +246,14 @@ describe('Car Model Variants', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete ›has-price‹ relationship', async () => {
+        await request(app)
+            .delete('/car-model-variants/123/has-price/456')
+
+        expect(CarModelVariantController.deleteHasPriceRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/car-model-variants/123/has-image/456')

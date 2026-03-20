@@ -416,6 +416,19 @@ export const CarModelVariant = {
         return getAllRels(carModelVariantId, RelType.CarModelVariantHasPrice)
     },
 
+    async deleteHasPriceRelationship(carModelVariantId: number, priceId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await Price.findById(priceId)
+
+        const relationship = await getSpecificRel(carModelVariantId, priceId, RelType.CarModelVariantHasPrice)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.CarModelVariantHasPrice, carModelVariantId, priceId)
+        }
+
+        await deleteSpecificRel(carModelVariantId, priceId, RelType.CarModelVariantHasPrice)
+    },
+
     async createHasImageRelationship(carModelVariantId: number, imageId: number) {
         // checking that both nodes exist -> exception is thrown if not
         await CarModelVariant.findById(carModelVariantId)
