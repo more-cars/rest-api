@@ -121,4 +121,16 @@ export const ModelCar = {
 
         return createdRelationship
     },
+
+    async getMadeByModelCarBrandRelationship(modelCarId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await ModelCar.findById(modelCarId)
+
+        const relationship = await getRel(modelCarId, RelType.ModelCarMadeByModelCarBrand)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.ModelCarMadeByModelCarBrand, modelCarId, null)
+        }
+
+        return relationship
+    },
 }

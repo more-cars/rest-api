@@ -7,6 +7,7 @@ import {createIsScaleModelOfCarModelVariantRelation} from "./model-cars/createIs
 import {getIsScaleModelOfCarModelVariantRelation} from "./model-cars/getIsScaleModelOfCarModelVariantRelation"
 import {deleteIsScaleModelOfCarModelVariantRelation} from "./model-cars/deleteIsScaleModelOfCarModelVariantRelation"
 import {createMadeByModelCarBrandRelation} from "./model-cars/createMadeByModelCarBrandRelation"
+import {getMadeByModelCarBrandRelation} from "./model-cars/getMadeByModelCarBrandRelation"
 
 export const ModelCarController = {
     async create(req: express.Request, res: express.Response) {
@@ -39,5 +40,9 @@ export const ModelCarController = {
 
     async createMadeByModelCarBrandRelation(req: express.Request, res: express.Response) {
         await createMadeByModelCarBrandRelation(req, res)
+    },
+
+    async getMadeByModelCarBrandRelation(req: express.Request, res: express.Response) {
+        await getMadeByModelCarBrandRelation(req, res)
     },
 }

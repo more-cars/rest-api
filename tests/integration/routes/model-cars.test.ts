@@ -69,4 +69,12 @@ describe('Model Cars', () => {
         expect(ModelCarController.createMadeByModelCarBrandRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›made-by-model-car-brand‹ relationship', async () => {
+        await request(app)
+            .get('/model-cars/123/made-by-model-car-brand')
+
+        expect(ModelCarController.getMadeByModelCarBrandRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

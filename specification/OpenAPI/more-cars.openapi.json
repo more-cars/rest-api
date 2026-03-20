@@ -13359,6 +13359,48 @@
         }
       }
     },
+    "/model-cars/{model-car-id}/made-by-model-car-brand": {
+      "get": {
+        "operationId": "getModelCarMadeByModelCarBrandRel",
+        "tags": [
+          "Model Cars"
+        ],
+        "summary": "Get the ›made-by-model-car-brand‹ relationship for the `Model Car`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "model-car-id",
+            "description": "ID of the `Model Car`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›made-by-model-car-brand‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelCarMadeByModelCarBrandResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Model Car` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/model-cars/{model-car-id}/made-by-model-car-brand/{model-car-brand-id}": {
       "post": {
         "tags": [

@@ -11,5 +11,6 @@ router.post('/model-cars/:modelCarId/is-scale-model-of-car-model-variant/:carMod
 router.get('/model-cars/:modelCarId/is-scale-model-of-car-model-variant', ModelCarController.getIsScaleModelOfCarModelVariantRelation)
 router.delete('/model-cars/:modelCarId/is-scale-model-of-car-model-variant/:carModelVariantId', ModelCarController.deleteIsScaleModelOfCarModelVariantRelation)
 router.post('/model-cars/:modelCarId/made-by-model-car-brand/:modelCarBrandId', ModelCarController.createMadeByModelCarBrandRelation)
+router.get('/model-cars/:modelCarId/made-by-model-car-brand', ModelCarController.getMadeByModelCarBrandRelation)
 
 export default router
