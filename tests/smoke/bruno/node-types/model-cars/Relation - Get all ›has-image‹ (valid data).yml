@@ -1,0 +1,60 @@
+info:
+  name: Get all ›has-image‹ relations (valid data)
+  type: http
+  tags:
+    - get
+    - relation
+    - collection
+    - valid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/model-cars/{{validModelCarId}}/has-image"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data
+      operator: isArray
+    - expression: res.body.data[0].data.relationship_id
+      operator: gte
+      value: "12000000"
+    - expression: res.body.data[0].data.relationship_name
+      operator: eq
+      value: "has-image"
+    - expression: res.body.data[0].data.start_node
+      operator: isJson
+    - expression: res.body.data[0].data.start_node.node_type
+      operator: eq
+      value: "model-cars"
+    - expression: res.body.data[0].data.start_node.data.id
+      operator: eq
+      value: "{{validModelCarId}}"
+    - expression: res.body.data[0].data.partner_node
+      operator: isJson
+    - expression: res.body.data[0].data.partner_node.node_type
+      operator: eq
+      value: "images"
+    - expression: res.body.data[0].data.partner_node.data.id
+      operator: eq
+      value: "{{validImageId}}"
+    - expression: res.body.data[0].data.created_at
+      operator: isString
+    - expression: res.body.data[0].data.created_at
+      operator: isNotEmpty
+    - expression: res.body.data[0].data.updated_at
+      operator: isString
+    - expression: res.body.data[0].data.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const ModelCars = require('./lib/node-types/ModelCars.js')
+        const Images = require('./lib/node-types/Images.js')
+        await ModelCars.create()
+        await Images.create()
+        await ModelCars.createHasImageRelationship()

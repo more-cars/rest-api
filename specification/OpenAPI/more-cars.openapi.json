@@ -13495,6 +13495,48 @@
         }
       }
     },
+    "/model-cars/{model-car-id}/has-image": {
+      "get": {
+        "operationId": "getModelCarHasImageRel",
+        "tags": [
+          "Model Cars"
+        ],
+        "summary": "Get all ›has-image‹ relationships for the `Model Car`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "model-car-id",
+            "description": "ID of the `Model Car`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-image‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelCarHasImageCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Model Car` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/model-cars/{model-car-id}/has-image/{image-id}": {
       "post": {
         "tags": [
@@ -25312,6 +25354,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/ModelCarHasImage"
+          }
+        }
+      },
+      "ModelCarHasImageCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ModelCarHasImageResponse"
+            }
           }
         }
       },

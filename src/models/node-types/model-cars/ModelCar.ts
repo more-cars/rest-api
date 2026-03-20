@@ -20,6 +20,7 @@ import {RelNotFoundError} from "../../types/RelNotFoundError"
 import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {ModelCarBrand} from "../model-car-brands/ModelCarBrand"
 import {Image} from "../images/Image"
+import {getAllRels} from "../../relationships/getAllRels"
 
 export const ModelCar = {
     async create(data: CreateModelCarInput): Promise<ModelCarNode> {
@@ -164,5 +165,12 @@ export const ModelCar = {
         }
 
         return createdRelationship
+    },
+
+    async getAllHasImageRelationships(modelCarId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await ModelCar.findById(modelCarId)
+
+        return getAllRels(modelCarId, RelType.ModelCarHasImage)
     },
 }
