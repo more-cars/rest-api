@@ -7,7 +7,7 @@ import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
 import {NodeType} from "../../../../src/specification/NodeType"
 import {convertModelRelationToControllerRelation} from "../../../../src/controllers/relations/convertModelRelationToControllerRelation"
 import {validateJson} from "../../../_toolbox/validateJson"
-import {RelationshipSchema} from "../../../_toolbox/schemas/response/RelationshipSchema"
+import {RelationshipSchema} from "../../../_toolbox/schemas/response/node-types/RelationshipSchema"
 
 describe('Marshalling a relation', () => {
     test.each(
