@@ -77,4 +77,12 @@ describe('Prices', () => {
         expect(PriceController.getAllHasImageRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›has-image‹ relationship', async () => {
+        await request(app)
+            .delete('/prices/123/has-image/456')
+
+        expect(PriceController.deleteHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
