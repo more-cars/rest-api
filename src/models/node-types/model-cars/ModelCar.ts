@@ -7,6 +7,7 @@ import {getNodeById} from "../../../db/node-types/model-cars/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 import {getAllNodesOfType} from "../../../db/node-types/model-cars/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
+import {deleteNode} from "../../../db/nodes/deleteNode"
 
 export const ModelCar = {
     async create(data: CreateModelCarInput): Promise<ModelCarNode> {
@@ -35,5 +36,15 @@ export const ModelCar = {
         })
 
         return nodes
+    },
+
+    async delete(id: number): Promise<void> {
+        const node = await getNodeById(id)
+
+        if (!node) {
+            throw new NodeNotFoundError(id)
+        }
+
+        await deleteNode(id)
     },
 }

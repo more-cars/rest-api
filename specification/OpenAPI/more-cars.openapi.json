@@ -13189,6 +13189,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Model Cars"
+        ],
+        "summary": "Delete `Model Car`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "model-car-id",
+            "description": "ID of the `Model Car`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Model Car` successfully deleted."
+          },
+          "404": {
+            "description": "Deletion request failed. A `Model Car` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/model-car-brands": {

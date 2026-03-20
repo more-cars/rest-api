@@ -29,4 +29,12 @@ describe('Model Cars', () => {
         expect(ModelCarController.getAll)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete Node', async () => {
+        await request(app)
+            .delete('/model-cars/123')
+
+        expect(ModelCarController.delete)
+            .toHaveBeenCalledTimes(1)
+    })
 })
