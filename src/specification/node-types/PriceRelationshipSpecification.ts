@@ -6,7 +6,7 @@ export const PriceRelationshipSpecification: RelationshipTypeSpecification[] = [
     [RelationshipType.PriceForCarModelVariant, {
         startNodeType: NodeType.Price,
         endNodeType: NodeType.CarModelVariant,
-        isReverseRelationship: false,
+        isReverseRelationship: true,
     }],
     [RelationshipType.PriceHasImage, {
         startNodeType: NodeType.Price,

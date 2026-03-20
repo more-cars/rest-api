@@ -46,7 +46,7 @@ export const CarModelVariantRelationshipSpecification: RelationshipTypeSpecifica
     [RelationshipType.CarModelVariantHasPrice, {
         startNodeType: NodeType.CarModelVariant,
         endNodeType: NodeType.Price,
-        isReverseRelationship: true,
+        isReverseRelationship: false,
     }],
     [RelationshipType.CarModelVariantHasImage, {
         startNodeType: NodeType.CarModelVariant,

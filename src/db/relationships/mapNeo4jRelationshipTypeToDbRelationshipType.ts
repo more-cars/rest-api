@@ -58,12 +58,12 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.CarModelVariantFeaturedInProgrammeEpisode, RelationshipType.CarModelVariantFeaturedInProgrammeEpisode],
                 [RelationshipTypeNeo4j.CarModelVariantIsFeaturedInRacingGame, RelationshipType.CarModelVariantIsFeaturedInRacingGame],
                 [RelationshipTypeNeo4j.CarModelVariantPresentedAtMotorShow, RelationshipType.CarModelVariantPresentedAtMotorShow],
-                [RelationshipTypeNeo4j.CarModelVariantHasPrice, RelationshipType.CarModelVariantHasPrice],
             ])],
             [RelationshipDirection.FORWARD, new Map([
                 // Car Model Variant - Forward
                 [RelationshipTypeNeo4j.CarModelVariantAchievedSessionResult, RelationshipType.CarModelVariantAchievedSessionResult],
                 [RelationshipTypeNeo4j.CarModelVariantAchievedLapTime, RelationshipType.CarModelVariantAchievedLapTime],
+                [RelationshipTypeNeo4j.CarModelVariantHasPrice, RelationshipType.CarModelVariantHasPrice],
                 [RelationshipTypeNeo4j.CarModelVariantHasImage, RelationshipType.CarModelVariantHasImage],
                 [RelationshipTypeNeo4j.CarModelVariantHasPrimeImage, RelationshipType.CarModelVariantHasPrimeImage],
             ])],
@@ -71,10 +71,10 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
         [Neo4jNodeType.Price, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
                 // Price - Reverse
+                [RelationshipTypeNeo4j.PriceForCarModelVariant, RelationshipType.PriceForCarModelVariant],
             ])],
             [RelationshipDirection.FORWARD, new Map([
                 // Price - Forward
-                [RelationshipTypeNeo4j.PriceForCarModelVariant, RelationshipType.PriceForCarModelVariant],
                 [RelationshipTypeNeo4j.PriceHasImage, RelationshipType.PriceHasImage],
                 [RelationshipTypeNeo4j.PriceHasPrimeImage, RelationshipType.PriceHasPrimeImage],
             ])],
