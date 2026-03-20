@@ -25,54 +25,37 @@ import {MotorShowSchema} from "./MotorShowSchema"
 import {ImageSchema} from "./ImageSchema"
 
 export function getResponseNodeSchema(nodeType: ControllerNodeType) {
-    switch (nodeType) {
-        case ControllerNodeType.Company:
-            return CompanySchema
-        case ControllerNodeType.Brand:
-            return BrandSchema
-        case ControllerNodeType.CarModel:
-            return CarModelSchema
-        case ControllerNodeType.CarModelVariant:
-            return CarModelVariantSchema
-        case ControllerNodeType.Price:
-            return PriceSchema
-        case ControllerNodeType.RaceTrack:
-            return RaceTrackSchema
-        case ControllerNodeType.TrackLayout:
-            return TrackLayoutSchema
-        case ControllerNodeType.RacingSeries:
-            return RacingSeriesSchema
-        case ControllerNodeType.RacingEvent:
-            return RacingEventSchema
-        case ControllerNodeType.RacingSession:
-            return RacingSessionSchema
-        case ControllerNodeType.SessionResult:
-            return SessionResultSchema
-        case ControllerNodeType.LapTime:
-            return LapTimeSchema
-        case ControllerNodeType.RacingGame:
-            return RacingGameSchema
-        case ControllerNodeType.GamingPlatform:
-            return GamingPlatformSchema
-        case ControllerNodeType.ModelCar:
-            return ModelCarSchema
-        case ControllerNodeType.ModelCarBrand:
-            return ModelCarBrandSchema
-        case ControllerNodeType.Magazine:
-            return MagazineSchema
-        case ControllerNodeType.MagazineIssue:
-            return MagazineIssueSchema
-        case ControllerNodeType.Rating:
-            return RatingSchema
-        case ControllerNodeType.Programme:
-            return ProgrammeSchema
-        case ControllerNodeType.ProgrammeEpisode:
-            return ProgrammeEpisodeSchema
-        case ControllerNodeType.MotorShow:
-            return MotorShowSchema
-        case ControllerNodeType.Image:
-            return ImageSchema
-        default:
-            assert.fail(`Node type "${nodeType}" is invalid or unknown`)
+    const mapping = new Map<ControllerNodeType, object>([
+        [ControllerNodeType.Company, CompanySchema],
+        [ControllerNodeType.Brand, BrandSchema],
+        [ControllerNodeType.CarModel, CarModelSchema],
+        [ControllerNodeType.CarModelVariant, CarModelVariantSchema],
+        [ControllerNodeType.Price, PriceSchema],
+        [ControllerNodeType.RaceTrack, RaceTrackSchema],
+        [ControllerNodeType.TrackLayout, TrackLayoutSchema],
+        [ControllerNodeType.RacingSeries, RacingSeriesSchema],
+        [ControllerNodeType.RacingEvent, RacingEventSchema],
+        [ControllerNodeType.RacingSession, RacingSessionSchema],
+        [ControllerNodeType.SessionResult, SessionResultSchema],
+        [ControllerNodeType.LapTime, LapTimeSchema],
+        [ControllerNodeType.RacingGame, RacingGameSchema],
+        [ControllerNodeType.GamingPlatform, GamingPlatformSchema],
+        [ControllerNodeType.ModelCar, ModelCarSchema],
+        [ControllerNodeType.ModelCarBrand, ModelCarBrandSchema],
+        [ControllerNodeType.Magazine, MagazineSchema],
+        [ControllerNodeType.MagazineIssue, MagazineIssueSchema],
+        [ControllerNodeType.Rating, RatingSchema],
+        [ControllerNodeType.Programme, ProgrammeSchema],
+        [ControllerNodeType.ProgrammeEpisode, ProgrammeEpisodeSchema],
+        [ControllerNodeType.MotorShow, MotorShowSchema],
+        [ControllerNodeType.Image, ImageSchema],
+    ])
+
+    const responseNodeSchema = mapping.get(nodeType)
+
+    if (!responseNodeSchema) {
+        assert.fail(`No schema found for node type "${nodeType}"`)
     }
+
+    return responseNodeSchema
 }
