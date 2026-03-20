@@ -21,6 +21,7 @@ export enum RelationType {
     CarModelVariantReviewedByMagazineIssueWithRating = 'reviewed-by-magazine-issue-with-rating',
     CarModelVariantFeaturedInProgrammeEpisode = 'featured-in-programme-episode',
     CarModelVariantIsFeaturedInRacingGame = 'is-featured-in-racing-game',
+    CarModelVariantHasScaleModel = 'has-scale-model',
     CarModelVariantPresentedAtMotorShow = 'presented-at-motor-show',
     CarModelVariantHasPrice = 'has-price',
     CarModelVariantHasImage = 'has-image',

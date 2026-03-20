@@ -24,6 +24,7 @@ import {deleteFeaturedInProgrammeEpisodeRelation} from "./car-model-variants/del
 import {createIsFeaturedInRacingGameRelation} from "./car-model-variants/createIsFeaturedInRacingGameRelation"
 import {getAllIsFeaturedInRacingGameRelations} from "./car-model-variants/getAllIsFeaturedInRacingGameRelations"
 import {deleteIsFeaturedInRacingGameRelation} from "./car-model-variants/deleteIsFeaturedInRacingGameRelation"
+import {createHasScaleModelRelation} from "./car-model-variants/createHasScaleModelRelation"
 import {createPresentedAtMotorShowRelation} from "./car-model-variants/createPresentedAtMotorShowRelation"
 import {getAllPresentedAtMotorShowRelations} from "./car-model-variants/getAllPresentedAtMotorShowRelations"
 import {deletePresentedAtMotorShowRelation} from "./car-model-variants/deletePresentedAtMotorShowRelation"
@@ -136,6 +137,10 @@ export const CarModelVariantController = {
 
     async deleteIsFeaturedInRacingGameRelation(req: express.Request, res: express.Response) {
         await deleteIsFeaturedInRacingGameRelation(req, res)
+    },
+
+    async createHasScaleModelRelation(req: express.Request, res: express.Response) {
+        await createHasScaleModelRelation(req, res)
     },
 
     async createPresentedAtMotorShowRelation(req: express.Request, res: express.Response) {

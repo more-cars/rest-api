@@ -23,6 +23,7 @@ export enum RelationshipType {
     CarModelVariantReviewedByMagazineIssueWithRating = 'CAR_MODEL_VARIANT_REVIEWED_BY_MAGAZINE_ISSUE_WITH_RATING',
     CarModelVariantFeaturedInProgrammeEpisode = 'CAR_MODEL_VARIANT_FEATURED_IN_PROGRAMME_EPISODE',
     CarModelVariantIsFeaturedInRacingGame = 'CAR_MODEL_VARIANT_IS_FEATURED_IN_RACING_GAME',
+    CarModelVariantHasScaleModel = 'CAR_MODEL_VARIANT_HAS_SCALE_MODEL',
     CarModelVariantPresentedAtMotorShow = 'CAR_MODEL_VARIANT_PRESENTED_AT_MOTOR_SHOW',
     CarModelVariantHasPrice = 'CAR_MODEL_VARIANT_HAS_PRICE',
     CarModelVariantHasImage = 'CAR_MODEL_VARIANT_HAS_IMAGE',

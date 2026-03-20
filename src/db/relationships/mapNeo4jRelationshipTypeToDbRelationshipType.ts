@@ -64,6 +64,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.CarModelVariantAchievedSessionResult, RelationshipType.CarModelVariantAchievedSessionResult],
                 [RelationshipTypeNeo4j.CarModelVariantAchievedLapTime, RelationshipType.CarModelVariantAchievedLapTime],
                 [RelationshipTypeNeo4j.CarModelVariantHasPrice, RelationshipType.CarModelVariantHasPrice],
+                [RelationshipTypeNeo4j.CarModelVariantHasScaleModel, RelationshipType.CarModelVariantHasScaleModel],
                 [RelationshipTypeNeo4j.CarModelVariantHasImage, RelationshipType.CarModelVariantHasImage],
                 [RelationshipTypeNeo4j.CarModelVariantHasPrimeImage, RelationshipType.CarModelVariantHasPrimeImage],
             ])],
@@ -199,11 +200,11 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
         [Neo4jNodeType.ModelCar, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
                 // Model Car - Reverse
+                [RelationshipTypeNeo4j.ModelCarIsScaleModelOfCarModelVariant, RelationshipType.ModelCarIsScaleModelOfCarModelVariant],
                 [RelationshipTypeNeo4j.ModelCarMadeByModelCarBrand, RelationshipType.ModelCarMadeByModelCarBrand],
             ])],
             [RelationshipDirection.FORWARD, new Map([
                 // Model Car - Forward
-                [RelationshipTypeNeo4j.ModelCarIsScaleModelOfCarModelVariant, RelationshipType.ModelCarIsScaleModelOfCarModelVariant],
                 [RelationshipTypeNeo4j.ModelCarHasImage, RelationshipType.ModelCarHasImage],
                 [RelationshipTypeNeo4j.ModelCarHasPrimeImage, RelationshipType.ModelCarHasPrimeImage],
             ])],

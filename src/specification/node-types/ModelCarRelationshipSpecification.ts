@@ -6,7 +6,7 @@ export const ModelCarRelationshipSpecification: RelationshipTypeSpecification[] 
     [RelationshipType.ModelCarIsScaleModelOfCarModelVariant, {
         startNodeType: NodeType.ModelCar,
         endNodeType: NodeType.CarModelVariant,
-        isReverseRelationship: false,
+        isReverseRelationship: true,
     }],
     [RelationshipType.ModelCarMadeByModelCarBrand, {
         startNodeType: NodeType.ModelCar,

@@ -28,6 +28,10 @@ exports.createIsFeaturedInRacingGameRelationship = async function () {
     await post("/car-model-variants/" + bru.getEnvVar('validCarModelVariantId') + "/is-featured-in-racing-game/" + bru.getEnvVar('validRacingGameId'))
 }
 
+exports.createHasScaleModelRelationship = async function () {
+    await post("/car-model-variants/" + bru.getEnvVar('validCarModelVariantId') + "/has-scale-model/" + bru.getEnvVar('validModelCarId'))
+}
+
 exports.createPresentedAtMotorShowRelationship = async function () {
     await post("/car-model-variants/" + bru.getEnvVar('validCarModelVariantId') + "/presented-at-motor-show/" + bru.getEnvVar('validMotorShowId'))
 }

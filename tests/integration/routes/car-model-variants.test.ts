@@ -206,6 +206,14 @@ describe('Car Model Variants', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Create ›has-scale-model‹ relationship', async () => {
+        await request(app)
+            .post('/car-model-variants/123/has-scale-model/456')
+
+        expect(CarModelVariantController.createHasScaleModelRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›presented-at-motor-show‹ relationship', async () => {
         await request(app)
             .post('/car-model-variants/123/presented-at-motor-show/456')

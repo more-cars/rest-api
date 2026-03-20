@@ -38,6 +38,11 @@ export const CarModelVariantRelationshipSpecification: RelationshipTypeSpecifica
         endNodeType: NodeType.RacingGame,
         isReverseRelationship: true,
     }],
+    [RelationshipType.CarModelVariantHasScaleModel, {
+        startNodeType: NodeType.CarModelVariant,
+        endNodeType: NodeType.ModelCar,
+        isReverseRelationship: false,
+    }],
     [RelationshipType.CarModelVariantPresentedAtMotorShow, {
         startNodeType: NodeType.CarModelVariant,
         endNodeType: NodeType.MotorShow,
