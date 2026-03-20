@@ -78,6 +78,7 @@ export function mapDbRelationshipTypeToModelRelType(dbRelationshipType: Relation
         [RelationshipType.GamingPlatformHasImage, RelType.GamingPlatformHasImage],
         [RelationshipType.GamingPlatformHasPrimeImage, RelType.GamingPlatformHasPrimeImage],
         [RelationshipType.ModelCarIsScaleModelOfCarModelVariant, RelType.ModelCarIsScaleModelOfCarModelVariant],
+        [RelationshipType.ModelCarMadeByModelCarBrand, RelType.ModelCarMadeByModelCarBrand],
         [RelationshipType.ModelCarBrandCreatedModelCar, RelType.ModelCarBrandCreatedModelCar],
         [RelationshipType.ModelCarBrandHasImage, RelType.ModelCarBrandHasImage],
         [RelationshipType.ModelCarBrandHasPrimeImage, RelType.ModelCarBrandHasPrimeImage],

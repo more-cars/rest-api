@@ -61,4 +61,12 @@ describe('Model Cars', () => {
         expect(ModelCarController.deleteIsScaleModelOfCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›made-by-model-car-brand‹ relationship', async () => {
+        await request(app)
+            .post('/model-cars/123/made-by-model-car-brand/456')
+
+        expect(ModelCarController.createMadeByModelCarBrandRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

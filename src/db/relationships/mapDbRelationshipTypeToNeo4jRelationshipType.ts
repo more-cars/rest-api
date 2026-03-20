@@ -82,6 +82,7 @@ export function mapDbRelationshipTypeToNeo4jRelationshipType(
         [RelationshipType.GamingPlatformHasImage, RelationshipTypeNeo4j.GamingPlatformHasImage],
         [RelationshipType.GamingPlatformHasPrimeImage, RelationshipTypeNeo4j.GamingPlatformHasPrimeImage],
         [RelationshipType.ModelCarIsScaleModelOfCarModelVariant, RelationshipTypeNeo4j.ModelCarIsScaleModelOfCarModelVariant],
+        [RelationshipType.ModelCarMadeByModelCarBrand, RelationshipTypeNeo4j.ModelCarMadeByModelCarBrand],
         [RelationshipType.ModelCarBrandCreatedModelCar, RelationshipTypeNeo4j.ModelCarBrandCreatedModelCar],
         [RelationshipType.ModelCarBrandHasImage, RelationshipTypeNeo4j.ModelCarBrandHasImage],
         [RelationshipType.ModelCarBrandHasPrimeImage, RelationshipTypeNeo4j.ModelCarBrandHasPrimeImage],

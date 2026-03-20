@@ -8,5 +8,10 @@ export const ModelCarRelationshipSpecification: RelationshipTypeSpecification[] 
         endNodeType: NodeType.CarModelVariant,
         isReverseRelationship: false,
     }],
+    [RelationshipType.ModelCarMadeByModelCarBrand, {
+        startNodeType: NodeType.ModelCar,
+        endNodeType: NodeType.ModelCarBrand,
+        isReverseRelationship: true,
+    }],
     //
 ]

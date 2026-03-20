@@ -10,5 +10,6 @@ router.delete('/model-cars/:id', ModelCarController.delete)
 router.post('/model-cars/:modelCarId/is-scale-model-of-car-model-variant/:carModelVariantId', ModelCarController.createIsScaleModelOfCarModelVariantRelation)
 router.get('/model-cars/:modelCarId/is-scale-model-of-car-model-variant', ModelCarController.getIsScaleModelOfCarModelVariantRelation)
 router.delete('/model-cars/:modelCarId/is-scale-model-of-car-model-variant/:carModelVariantId', ModelCarController.deleteIsScaleModelOfCarModelVariantRelation)
+router.post('/model-cars/:modelCarId/made-by-model-car-brand/:modelCarBrandId', ModelCarController.createMadeByModelCarBrandRelation)
 
 export default router

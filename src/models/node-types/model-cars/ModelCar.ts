@@ -18,6 +18,7 @@ import {RelType} from "../../relationships/types/RelType"
 import {getRel} from "../../relationships/getRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
 import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
+import {ModelCarBrand} from "../model-car-brands/ModelCarBrand"
 
 export const ModelCar = {
     async create(data: CreateModelCarInput): Promise<ModelCarNode> {
@@ -100,5 +101,24 @@ export const ModelCar = {
         }
 
         await deleteSpecificRel(modelCarId, carModelVariantId, RelType.ModelCarIsScaleModelOfCarModelVariant)
+    },
+
+    async createMadeByModelCarBrandRelationship(modelCarId: number, modelCarBrandId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await ModelCar.findById(modelCarId)
+        await ModelCarBrand.findById(modelCarBrandId)
+
+        const existingRelation = await getSpecificRel(modelCarId, modelCarBrandId, RelType.ModelCarMadeByModelCarBrand)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.ModelCarMadeByModelCarBrand, modelCarId, modelCarBrandId)
+        }
+        await deleteOutgoingRel(modelCarId, RelType.ModelCarMadeByModelCarBrand, ModelNodeType.ModelCarBrand)
+
+        const createdRelationship = await createRel(modelCarId, modelCarBrandId, RelType.ModelCarMadeByModelCarBrand)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }
