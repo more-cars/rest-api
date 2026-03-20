@@ -32,6 +32,10 @@ exports.createPresentedAtMotorShowRelationship = async function () {
     await post("/car-model-variants/" + bru.getEnvVar('validCarModelVariantId') + "/presented-at-motor-show/" + bru.getEnvVar('validMotorShowId'))
 }
 
+exports.createHasPriceRelationship = async function () {
+    await post("/car-model-variants/" + bru.getEnvVar('validCarModelVariantId') + "/has-price/" + bru.getEnvVar('validPriceId'))
+}
+
 exports.createHasImageRelationship = async function () {
     await post("/car-model-variants/" + bru.getEnvVar('validCarModelVariantId') + "/has-image/" + bru.getEnvVar('validImageId'))
 }

@@ -24,6 +24,7 @@ export enum RelationshipType {
     CarModelVariantFeaturedInProgrammeEpisode = 'Car Model Variant Featured In Programme Episode',
     CarModelVariantIsFeaturedInRacingGame = 'Car Model Variant Is Featured In Racing Game',
     CarModelVariantPresentedAtMotorShow = 'Car Model Variant Presented At Motor Show',
+    CarModelVariantHasPrice = 'Car Model Variant Has Price',
     CarModelVariantHasImage = 'Car Model Variant Has Image',
     CarModelVariantHasPrimeImage = 'Car Model Variant Has Prime Image',
     PriceForCarModelVariant = 'Price For Car Model Variant',

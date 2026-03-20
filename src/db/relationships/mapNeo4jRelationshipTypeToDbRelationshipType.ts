@@ -58,6 +58,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.CarModelVariantFeaturedInProgrammeEpisode, RelationshipType.CarModelVariantFeaturedInProgrammeEpisode],
                 [RelationshipTypeNeo4j.CarModelVariantIsFeaturedInRacingGame, RelationshipType.CarModelVariantIsFeaturedInRacingGame],
                 [RelationshipTypeNeo4j.CarModelVariantPresentedAtMotorShow, RelationshipType.CarModelVariantPresentedAtMotorShow],
+                [RelationshipTypeNeo4j.CarModelVariantHasPrice, RelationshipType.CarModelVariantHasPrice],
             ])],
             [RelationshipDirection.FORWARD, new Map([
                 // Car Model Variant - Forward

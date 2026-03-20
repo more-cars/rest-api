@@ -24,6 +24,7 @@ export enum RelationshipTypeNeo4j {
     CarModelVariantFeaturedInProgrammeEpisode = 'FEATURED_CAR_MODEL_VARIANT',
     CarModelVariantIsFeaturedInRacingGame = 'FEATURES_CAR_MODEL_VARIANT',
     CarModelVariantPresentedAtMotorShow = 'PRESENTED_CAR_MODEL_VARIANT',
+    CarModelVariantHasPrice = 'FOR_CAR_MODEL_VARIANT',
     CarModelVariantHasImage = 'HAS_IMAGE',
     CarModelVariantHasPrimeImage = 'HAS_PRIME_IMAGE',
     PriceForCarModelVariant = 'FOR_CAR_MODEL_VARIANT',
