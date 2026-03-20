@@ -6,8 +6,6 @@ import {convertModelCarBrandModelNodeToControllerNode} from "./convertModelCarBr
 import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import type {CreateModelCarBrandRawInput} from "./types/CreateModelCarBrandRawInput"
 import {isMandatoryString} from "../../validators/isMandatoryString"
-import {isMandatoryNumber} from "../../validators/isMandatoryNumber"
-import {isOptionalString} from "../../validators/isOptionalString"
 import {isOptionalNumber} from "../../validators/isOptionalNumber"
 import {sendResponse201} from "../../responses/sendResponse201"
 import {sendResponse400} from "../../responses/sendResponse400"
