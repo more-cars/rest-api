@@ -13316,6 +13316,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Model Cars"
+        ],
+        "summary": "Deletes the ›is-scale-model-of-car-model-variant‹ relationship between the `Model Car` and the `Car Model Variant`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "model-car-id",
+            "description": "ID of the `Model Car`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›is-scale-model-of-car-model-variant‹ relationship between `Model Car` and `Car Model Variant` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›is-scale-model-of-car-model-variant‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/model-car-brands": {

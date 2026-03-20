@@ -1,0 +1,25 @@
+info:
+  name: Delete ›is-scale-model-of-car-model-variant‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/model-cars/{{validModelCarId}}/is-scale-model-of-car-model-variant/{{validCarModelVariantId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const ModelCars = require('./lib/node-types/ModelCars.js')
+        const CarModelVariants = require('./lib/node-types/CarModelVariants.js')
+        await ModelCars.create()
+        await CarModelVariants.create()
+        await ModelCars.createIsScaleModelOfCarModelVariantRelationship()

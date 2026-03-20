@@ -17,6 +17,7 @@ import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
 import {RelType} from "../../relationships/types/RelType"
 import {getRel} from "../../relationships/getRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
+import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 
 export const ModelCar = {
     async create(data: CreateModelCarInput): Promise<ModelCarNode> {
@@ -86,5 +87,18 @@ export const ModelCar = {
         }
 
         return relationship
+    },
+
+    async deleteIsScaleModelOfCarModelVariantRelationship(modelCarId: number, carModelVariantId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await ModelCar.findById(modelCarId)
+        await CarModelVariant.findById(carModelVariantId)
+
+        const relationship = await getSpecificRel(modelCarId, carModelVariantId, RelType.ModelCarIsScaleModelOfCarModelVariant)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.ModelCarIsScaleModelOfCarModelVariant, modelCarId, carModelVariantId)
+        }
+
+        await deleteSpecificRel(modelCarId, carModelVariantId, RelType.ModelCarIsScaleModelOfCarModelVariant)
     },
 }
