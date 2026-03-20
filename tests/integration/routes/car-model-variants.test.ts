@@ -222,6 +222,14 @@ describe('Car Model Variants', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Delete ›has-scale-model‹ relationship', async () => {
+        await request(app)
+            .delete('/car-model-variants/123/has-scale-model/456')
+
+        expect(CarModelVariantController.deleteHasScaleModelRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›presented-at-motor-show‹ relationship', async () => {
         await request(app)
             .post('/car-model-variants/123/presented-at-motor-show/456')
