@@ -15,6 +15,7 @@ import {getSpecificRel} from "../../relationships/getSpecificRel"
 import {ModelNodeType} from "../../types/ModelNodeType"
 import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
 import {RelType} from "../../relationships/types/RelType"
+import {getAllRels} from "../../relationships/getAllRels"
 
 export const ModelCarBrand = {
     async create(data: CreateModelCarBrandInput): Promise<ModelCarBrandNode> {
@@ -73,5 +74,12 @@ export const ModelCarBrand = {
         }
 
         return createdRelationship
+    },
+
+    async getAllCreatedModelCarRelationships(modelCarBrandId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await ModelCarBrand.findById(modelCarBrandId)
+
+        return getAllRels(modelCarBrandId, RelType.ModelCarBrandCreatedModelCar)
     },
 }

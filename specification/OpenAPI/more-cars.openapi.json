@@ -13522,6 +13522,48 @@
         }
       }
     },
+    "/model-car-brands/{model-car-brand-id}/created-model-car": {
+      "get": {
+        "operationId": "getModelCarBrandCreatedModelCarRel",
+        "tags": [
+          "Model Car Brands"
+        ],
+        "summary": "Get all ›created-model-car‹ relationships for the `Model Car Brand`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "model-car-brand-id",
+            "description": "ID of the `Model Car Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›created-model-car‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelCarBrandCreatedModelCarCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Model Car Brand` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/model-car-brands/{model-car-brand-id}/created-model-car/{model-car-id}": {
       "post": {
         "tags": [
@@ -24801,6 +24843,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/ModelCarBrandCreatedModelCar"
+          }
+        }
+      },
+      "ModelCarBrandCreatedModelCarCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ModelCarBrandCreatedModelCarResponse"
+            }
           }
         }
       },

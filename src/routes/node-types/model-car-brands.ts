@@ -8,5 +8,6 @@ router.get('/model-car-brands/:id', ModelCarBrandController.getById)
 router.get('/model-car-brands', ModelCarBrandController.getAll)
 router.delete('/model-car-brands/:id', ModelCarBrandController.delete)
 router.post('/model-car-brands/:modelCarBrandId/created-model-car/:modelCarId', ModelCarBrandController.createCreatedModelCarRelation)
+router.get('/model-car-brands/:modelCarBrandId/created-model-car', ModelCarBrandController.getAllCreatedModelCarRelations)
 
 export default router

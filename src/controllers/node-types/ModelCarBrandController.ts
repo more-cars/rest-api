@@ -4,6 +4,7 @@ import {getById} from "./model-car-brands/getById"
 import {getAll} from "./model-car-brands/getAll"
 import {deleteNode} from "./model-car-brands/deleteNode"
 import {createCreatedModelCarRelation} from "./model-car-brands/createCreatedModelCarRelation"
+import {getAllCreatedModelCarRelations} from "./model-car-brands/getAllCreatedModelCarRelations"
 
 export const ModelCarBrandController = {
     async create(req: express.Request, res: express.Response) {
@@ -24,5 +25,9 @@ export const ModelCarBrandController = {
 
     async createCreatedModelCarRelation(req: express.Request, res: express.Response) {
         await createCreatedModelCarRelation(req, res)
+    },
+
+    async getAllCreatedModelCarRelations(req: express.Request, res: express.Response) {
+        await getAllCreatedModelCarRelations(req, res)
     },
 }
