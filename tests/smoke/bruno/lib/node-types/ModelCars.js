@@ -12,6 +12,10 @@ exports.createHasImageRelationship = async function () {
     await post("/model-cars/" + bru.getEnvVar('validModelCarId') + "/has-image/" + bru.getEnvVar('validImageId'))
 }
 
+exports.createHasPrimeImageRelationship = async function () {
+    await post("/model-cars/" + bru.getEnvVar('validModelCarId') + "/has-prime-image/" + bru.getEnvVar('validImageId'))
+}
+
 exports.create = async function (prefix = '') {
     const response = await post("/model-cars", {
         name: 'Dummy Model Car',

@@ -75,6 +75,7 @@ export enum RelType {
     ModelCarIsScaleModelOfCarModelVariant = 'model_car_is_scale_model_of_car_model_variant',
     ModelCarMadeByModelCarBrand = 'model_car_made_by_model_car_brand',
     ModelCarHasImage = 'model_car_has_image',
+    ModelCarHasPrimeImage = 'model_car_has_prime_image',
     ModelCarBrandCreatedModelCar = 'model_car_brand_created_model_car',
     ModelCarBrandHasImage = 'model_car_brand_has_image',
     ModelCarBrandHasPrimeImage = 'model_car_brand_has_prime_image',

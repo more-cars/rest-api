@@ -75,6 +75,7 @@ export enum RelationType {
     ModelCarIsScaleModelOfCarModelVariant = 'is-scale-model-of-car-model-variant',
     ModelCarMadeByModelCarBrand = 'made-by-model-car-brand',
     ModelCarHasImage = 'has-image',
+    ModelCarHasPrimeImage = 'has-prime-image',
     ModelCarBrandCreatedModelCar = 'created-model-car',
     ModelCarBrandHasImage = 'has-image',
     ModelCarBrandHasPrimeImage = 'has-prime-image',
