@@ -77,6 +77,7 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.GamingPlatformFeaturesRacingGame, RelationType.GamingPlatformFeaturesRacingGame],
         [RelType.GamingPlatformHasImage, RelationType.GamingPlatformHasImage],
         [RelType.GamingPlatformHasPrimeImage, RelationType.GamingPlatformHasPrimeImage],
+        [RelType.ModelCarIsScaleModelOfCarModelVariant, RelationType.ModelCarIsScaleModelOfCarModelVariant],
         [RelType.ImageBelongsToNode, RelationType.ImageBelongsToNode],
         [RelType.MagazineHasIssue, RelationType.MagazineHasIssue],
         [RelType.MagazineHasImage, RelationType.MagazineHasImage],

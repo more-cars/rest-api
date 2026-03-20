@@ -6,6 +6,8 @@ export function mapDbRelationshipTypeToNeo4jRelationshipType(
     relationshipType: RelationshipType,
 ): RelationshipTypeNeo4j {
     const mapping = new Map<RelationshipType, RelationshipTypeNeo4j>([
+        [RelationshipType.NodeHasImage, RelationshipTypeNeo4j.NodeHasImage],
+        [RelationshipType.NodeHasPrimeImage, RelationshipTypeNeo4j.NodeHasPrimeImage],
         [RelationshipType.CompanyHasBrand, RelationshipTypeNeo4j.CompanyHasBrand],
         [RelationshipType.CompanyHasImage, RelationshipTypeNeo4j.CompanyHasImage],
         [RelationshipType.CompanyHasPrimeImage, RelationshipTypeNeo4j.CompanyHasPrimeImage],
@@ -79,8 +81,7 @@ export function mapDbRelationshipTypeToNeo4jRelationshipType(
         [RelationshipType.GamingPlatformFeaturesRacingGame, RelationshipTypeNeo4j.GamingPlatformFeaturesRacingGame],
         [RelationshipType.GamingPlatformHasImage, RelationshipTypeNeo4j.GamingPlatformHasImage],
         [RelationshipType.GamingPlatformHasPrimeImage, RelationshipTypeNeo4j.GamingPlatformHasPrimeImage],
-        [RelationshipType.ImageBelongsToNode, RelationshipTypeNeo4j.ImageBelongsToNode],
-        [RelationshipType.ImageIsPrimeImageOfNode, RelationshipTypeNeo4j.ImageIsPrimeImageOfNode],
+        [RelationshipType.ModelCarIsScaleModelOfCarModelVariant, RelationshipTypeNeo4j.ModelCarIsScaleModelOfCarModelVariant],
         [RelationshipType.MagazineHasIssue, RelationshipTypeNeo4j.MagazineHasIssue],
         [RelationshipType.MagazineHasImage, RelationshipTypeNeo4j.MagazineHasImage],
         [RelationshipType.MagazineHasPrimeImage, RelationshipTypeNeo4j.MagazineHasPrimeImage],
@@ -110,8 +111,8 @@ export function mapDbRelationshipTypeToNeo4jRelationshipType(
         [RelationshipType.MotorShowPresentsCarModelVariant, RelationshipTypeNeo4j.MotorShowPresentsCarModelVariant],
         [RelationshipType.MotorShowHasImage, RelationshipTypeNeo4j.MotorShowHasImage],
         [RelationshipType.MotorShowHasPrimeImage, RelationshipTypeNeo4j.MotorShowHasPrimeImage],
-        [RelationshipType.NodeHasImage, RelationshipTypeNeo4j.NodeHasImage],
-        [RelationshipType.NodeHasPrimeImage, RelationshipTypeNeo4j.NodeHasPrimeImage],
+        [RelationshipType.ImageBelongsToNode, RelationshipTypeNeo4j.ImageBelongsToNode],
+        [RelationshipType.ImageIsPrimeImageOfNode, RelationshipTypeNeo4j.ImageIsPrimeImageOfNode],
     ])
 
     const dbRelationshipType = mapping.get(relationshipType)

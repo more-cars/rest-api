@@ -8,6 +8,13 @@ import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 import {getAllNodesOfType} from "../../../db/node-types/model-cars/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {deleteNode} from "../../../db/nodes/deleteNode"
+import {createRel} from "../../relationships/createRel"
+import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
+import {CarModelVariant} from "../car-model-variants/CarModelVariant"
+import {getSpecificRel} from "../../relationships/getSpecificRel"
+import {ModelNodeType} from "../../types/ModelNodeType"
+import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
+import {RelType} from "../../relationships/types/RelType"
 
 export const ModelCar = {
     async create(data: CreateModelCarInput): Promise<ModelCarNode> {
@@ -46,5 +53,24 @@ export const ModelCar = {
         }
 
         await deleteNode(id)
+    },
+
+    async createIsScaleModelOfCarModelVariantRelationship(modelCarId: number, carModelVariantId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await ModelCar.findById(modelCarId)
+        await CarModelVariant.findById(carModelVariantId)
+
+        const existingRelation = await getSpecificRel(modelCarId, carModelVariantId, RelType.ModelCarIsScaleModelOfCarModelVariant)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.ModelCarIsScaleModelOfCarModelVariant, modelCarId, carModelVariantId)
+        }
+        await deleteOutgoingRel(modelCarId, RelType.ModelCarIsScaleModelOfCarModelVariant, ModelNodeType.CarModelVariant)
+
+        const createdRelationship = await createRel(modelCarId, carModelVariantId, RelType.ModelCarIsScaleModelOfCarModelVariant)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }

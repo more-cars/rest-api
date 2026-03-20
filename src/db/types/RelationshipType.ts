@@ -74,6 +74,7 @@ export enum RelationshipType {
     GamingPlatformFeaturesRacingGame = 'GAMING_PLATFORM_FEATURES_RACING_GAME',
     GamingPlatformHasImage = 'GAMING_PLATFORM_HAS_IMAGE',
     GamingPlatformHasPrimeImage = 'GAMING_PLATFORM_HAS_PRIME_IMAGE',
+    ModelCarIsScaleModelOfCarModelVariant = 'MODEL_CAR_IS_SCALE_MODEL_OF_CAR_MODEL_VARIANT',
     MagazineHasIssue = 'MAGAZINE_HAS_ISSUE',
     MagazineHasImage = 'MAGAZINE_HAS_IMAGE',
     MagazineHasPrimeImage = 'MAGAZINE_HAS_PRIME_IMAGE',

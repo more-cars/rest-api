@@ -79,6 +79,7 @@ export function mapDbRelationshipTypeToRelationshipType(dbRelationshipType: DbRe
         [DbRelationshipType.GamingPlatformFeaturesRacingGame, RelationshipType.GamingPlatformFeaturesRacingGame],
         [DbRelationshipType.GamingPlatformHasImage, RelationshipType.GamingPlatformHasImage],
         [DbRelationshipType.GamingPlatformHasPrimeImage, RelationshipType.GamingPlatformHasPrimeImage],
+        [DbRelationshipType.ModelCarIsScaleModelOfCarModelVariant, RelationshipType.ModelCarIsScaleModelOfCarModelVariant],
         [DbRelationshipType.MagazineHasIssue, RelationshipType.MagazineHasIssue],
         [DbRelationshipType.MagazineHasImage, RelationshipType.MagazineHasImage],
         [DbRelationshipType.MagazineHasPrimeImage, RelationshipType.MagazineHasPrimeImage],
