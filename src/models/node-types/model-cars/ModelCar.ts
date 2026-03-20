@@ -15,6 +15,8 @@ import {getSpecificRel} from "../../relationships/getSpecificRel"
 import {ModelNodeType} from "../../types/ModelNodeType"
 import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
 import {RelType} from "../../relationships/types/RelType"
+import {getRel} from "../../relationships/getRel"
+import {RelNotFoundError} from "../../types/RelNotFoundError"
 
 export const ModelCar = {
     async create(data: CreateModelCarInput): Promise<ModelCarNode> {
@@ -72,5 +74,17 @@ export const ModelCar = {
         }
 
         return createdRelationship
+    },
+
+    async getIsScaleModelOfCarModelVariantRelationship(modelCarId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await ModelCar.findById(modelCarId)
+
+        const relationship = await getRel(modelCarId, RelType.ModelCarIsScaleModelOfCarModelVariant)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.ModelCarIsScaleModelOfCarModelVariant, modelCarId, null)
+        }
+
+        return relationship
     },
 }

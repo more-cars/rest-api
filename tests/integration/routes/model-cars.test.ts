@@ -45,4 +45,12 @@ describe('Model Cars', () => {
         expect(ModelCarController.createIsScaleModelOfCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›is-scale-model-of-car-model-variant‹ relationship', async () => {
+        await request(app)
+            .get('/model-cars/123/is-scale-model-of-car-model-variant')
+
+        expect(ModelCarController.getIsScaleModelOfCarModelVariantRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

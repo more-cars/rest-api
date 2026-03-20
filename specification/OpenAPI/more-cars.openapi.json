@@ -13223,6 +13223,48 @@
         }
       }
     },
+    "/model-cars/{model-car-id}/is-scale-model-of-car-model-variant": {
+      "get": {
+        "operationId": "getModelCarIsScaleModelOfCarModelVariantRel",
+        "tags": [
+          "Model Cars"
+        ],
+        "summary": "Get the ›is-scale-model-of-car-model-variant‹ relationship for the `Model Car`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "model-car-id",
+            "description": "ID of the `Model Car`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›is-scale-model-of-car-model-variant‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelCarIsScaleModelOfCarModelVariantResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Model Car` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/model-cars/{model-car-id}/is-scale-model-of-car-model-variant/{car-model-variant-id}": {
       "post": {
         "tags": [
