@@ -53,4 +53,12 @@ describe('Prices', () => {
         expect(PriceController.getForCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›for-car-model-variant‹ relationship', async () => {
+        await request(app)
+            .delete('/prices/123/for-car-model-variant/456')
+
+        expect(PriceController.deleteForCarModelVariantRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

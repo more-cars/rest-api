@@ -5,6 +5,7 @@ import {getAll} from "./prices/getAll"
 import {deleteNode} from "./prices/deleteNode"
 import {createForCarModelVariantRelation} from "./prices/createForCarModelVariantRelation"
 import {getForCarModelVariantRelation} from "./prices/getForCarModelVariantRelation"
+import {deleteForCarModelVariantRelation} from "./prices/deleteForCarModelVariantRelation"
 
 export const PriceController = {
     async create(req: express.Request, res: express.Response) {
@@ -29,5 +30,9 @@ export const PriceController = {
 
     async getForCarModelVariantRelation(req: express.Request, res: express.Response) {
         await getForCarModelVariantRelation(req, res)
+    },
+
+    async deleteForCarModelVariantRelation(req: express.Request, res: express.Response) {
+        await deleteForCarModelVariantRelation(req, res)
     },
 }

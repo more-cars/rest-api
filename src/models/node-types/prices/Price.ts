@@ -17,6 +17,7 @@ import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
 import {RelType} from "../../relationships/types/RelType"
 import {getRel} from "../../relationships/getRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
+import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 
 export const Price = {
     async create(data: CreatePriceInput): Promise<PriceNode> {
@@ -86,5 +87,18 @@ export const Price = {
         }
 
         return relationship
+    },
+
+    async deleteForCarModelVariantRelationship(priceId: number, carModelVariantId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Price.findById(priceId)
+        await CarModelVariant.findById(carModelVariantId)
+
+        const relationship = await getSpecificRel(priceId, carModelVariantId, RelType.PriceForCarModelVariant)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.PriceForCarModelVariant, priceId, carModelVariantId)
+        }
+
+        await deleteSpecificRel(priceId, carModelVariantId, RelType.PriceForCarModelVariant)
     },
 }

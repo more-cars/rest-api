@@ -4592,6 +4592,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Prices"
+        ],
+        "summary": "Deletes the ›for-car-model-variant‹ relationship between the `Price` and the `Car Model Variant`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "price-id",
+            "description": "ID of the `Price`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›for-car-model-variant‹ relationship between `Price` and `Car Model Variant` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›for-car-model-variant‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/images": {
