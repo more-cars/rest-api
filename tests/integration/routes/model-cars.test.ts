@@ -77,4 +77,12 @@ describe('Model Cars', () => {
         expect(ModelCarController.getMadeByModelCarBrandRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›made-by-model-car-brand‹ relationship', async () => {
+        await request(app)
+            .delete('/model-cars/123/made-by-model-car-brand/456')
+
+        expect(ModelCarController.deleteMadeByModelCarBrandRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

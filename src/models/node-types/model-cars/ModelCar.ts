@@ -133,4 +133,17 @@ export const ModelCar = {
 
         return relationship
     },
+
+    async deleteMadeByModelCarBrandRelationship(modelCarId: number, modelCarBrandId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await ModelCar.findById(modelCarId)
+        await ModelCarBrand.findById(modelCarBrandId)
+
+        const relationship = await getSpecificRel(modelCarId, modelCarBrandId, RelType.ModelCarMadeByModelCarBrand)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.ModelCarMadeByModelCarBrand, modelCarId, modelCarBrandId)
+        }
+
+        await deleteSpecificRel(modelCarId, modelCarBrandId, RelType.ModelCarMadeByModelCarBrand)
+    },
 }

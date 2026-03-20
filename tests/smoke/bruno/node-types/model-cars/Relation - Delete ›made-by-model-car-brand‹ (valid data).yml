@@ -1,0 +1,25 @@
+info:
+  name: Delete ›made-by-model-car-brand‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/model-cars/{{validModelCarId}}/made-by-model-car-brand/{{validModelCarBrandId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const ModelCars = require('./lib/node-types/ModelCars.js')
+        const ModelCarBrands = require('./lib/node-types/ModelCarBrands.js')
+        await ModelCars.create()
+        await ModelCarBrands.create()
+        await ModelCars.createMadeByModelCarBrandRelationship()

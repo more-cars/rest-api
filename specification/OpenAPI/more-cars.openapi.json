@@ -13452,6 +13452,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Model Cars"
+        ],
+        "summary": "Deletes the ›made-by-model-car-brand‹ relationship between the `Model Car` and the `Model Car Brand`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "model-car-id",
+            "description": "ID of the `Model Car`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "model-car-brand-id",
+            "description": "ID of the `Model Car Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›made-by-model-car-brand‹ relationship between `Model Car` and `Model Car Brand` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›made-by-model-car-brand‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/model-car-brands": {
