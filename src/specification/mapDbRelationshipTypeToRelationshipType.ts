@@ -81,6 +81,7 @@ export function mapDbRelationshipTypeToRelationshipType(dbRelationshipType: DbRe
         [DbRelationshipType.GamingPlatformHasPrimeImage, RelationshipType.GamingPlatformHasPrimeImage],
         [DbRelationshipType.ModelCarIsScaleModelOfCarModelVariant, RelationshipType.ModelCarIsScaleModelOfCarModelVariant],
         [DbRelationshipType.ModelCarBrandCreatedModelCar, RelationshipType.ModelCarBrandCreatedModelCar],
+        [DbRelationshipType.ModelCarBrandHasImage, RelationshipType.ModelCarBrandHasImage],
         [DbRelationshipType.MagazineHasIssue, RelationshipType.MagazineHasIssue],
         [DbRelationshipType.MagazineHasImage, RelationshipType.MagazineHasImage],
         [DbRelationshipType.MagazineHasPrimeImage, RelationshipType.MagazineHasPrimeImage],

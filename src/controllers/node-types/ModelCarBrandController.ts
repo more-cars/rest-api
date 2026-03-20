@@ -6,6 +6,7 @@ import {deleteNode} from "./model-car-brands/deleteNode"
 import {createCreatedModelCarRelation} from "./model-car-brands/createCreatedModelCarRelation"
 import {getAllCreatedModelCarRelations} from "./model-car-brands/getAllCreatedModelCarRelations"
 import {deleteCreatedModelCarRelation} from "./model-car-brands/deleteCreatedModelCarRelation"
+import {createHasImageRelation} from "./model-car-brands/createHasImageRelation"
 
 export const ModelCarBrandController = {
     async create(req: express.Request, res: express.Response) {
@@ -34,5 +35,9 @@ export const ModelCarBrandController = {
 
     async deleteCreatedModelCarRelation(req: express.Request, res: express.Response) {
         await deleteCreatedModelCarRelation(req, res)
+    },
+
+    async createHasImageRelation(req: express.Request, res: express.Response) {
+        await createHasImageRelation(req, res)
     },
 }

@@ -8,5 +8,10 @@ export const ModelCarBrandRelationshipSpecification: RelationshipTypeSpecificati
         endNodeType: NodeType.ModelCar,
         isReverseRelationship: false,
     }],
+    [RelationshipType.ModelCarBrandHasImage, {
+        startNodeType: NodeType.ModelCarBrand,
+        endNodeType: NodeType.Image,
+        isReverseRelationship: false,
+    }],
     //
 ]
