@@ -14,6 +14,7 @@ import {getAllHasImageRelations} from "./model-cars/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./model-cars/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./model-cars/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./model-cars/getHasPrimeImageRelation"
+import {deleteHasPrimeImageRelation} from "./model-cars/deleteHasPrimeImageRelation"
 
 export const ModelCarController = {
     async create(req: express.Request, res: express.Response) {
@@ -74,5 +75,9 @@ export const ModelCarController = {
 
     async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await getHasPrimeImageRelation(req, res)
+    },
+
+    async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
+        await deleteHasPrimeImageRelation(req, res)
     },
 }
