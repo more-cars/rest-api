@@ -15,7 +15,8 @@ import {getSpecificRel} from "../../relationships/getSpecificRel"
 import {ModelNodeType} from "../../types/ModelNodeType"
 import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
 import {RelType} from "../../relationships/types/RelType"
-
+import {getRel} from "../../relationships/getRel"
+import {RelNotFoundError} from "../../types/RelNotFoundError"
 
 export const Price = {
     async create(data: CreatePriceInput): Promise<PriceNode> {
@@ -73,5 +74,17 @@ export const Price = {
         }
 
         return createdRelationship
+    },
+
+    async getForCarModelVariantRelationship(priceId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await Price.findById(priceId)
+
+        const relationship = await getRel(priceId, RelType.PriceForCarModelVariant)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.PriceForCarModelVariant, priceId, null)
+        }
+
+        return relationship
     },
 }

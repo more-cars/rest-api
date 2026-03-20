@@ -45,4 +45,12 @@ describe('Prices', () => {
         expect(PriceController.createForCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get ›for-car-model-variant‹ relationship', async () => {
+        await request(app)
+            .get('/prices/123/for-car-model-variant')
+
+        expect(PriceController.getForCarModelVariantRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

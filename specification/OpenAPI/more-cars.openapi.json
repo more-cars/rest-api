@@ -4499,6 +4499,48 @@
         }
       }
     },
+    "/prices/{price-id}/for-car-model-variant": {
+      "get": {
+        "operationId": "getPriceForCarModelVariantRel",
+        "tags": [
+          "Prices"
+        ],
+        "summary": "Get the ›for-car-model-variant‹ relationship for the `Price`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "price-id",
+            "description": "ID of the `Price`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›for-car-model-variant‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PriceForCarModelVariantResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Price` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/prices/{price-id}/for-car-model-variant/{car-model-variant-id}": {
       "post": {
         "tags": [
