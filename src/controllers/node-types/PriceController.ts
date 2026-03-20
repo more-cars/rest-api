@@ -11,6 +11,7 @@ import {getAllHasImageRelations} from "./prices/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./prices/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./prices/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./prices/getHasPrimeImageRelation"
+import {deleteHasPrimeImageRelation} from "./prices/deleteHasPrimeImageRelation"
 
 export const PriceController = {
     async create(req: express.Request, res: express.Response) {
@@ -59,5 +60,9 @@ export const PriceController = {
 
     async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await getHasPrimeImageRelation(req, res)
+    },
+
+    async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
+        await deleteHasPrimeImageRelation(req, res)
     },
 }
