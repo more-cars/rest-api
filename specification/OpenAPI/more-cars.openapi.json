@@ -13631,6 +13631,48 @@
         }
       }
     },
+    "/model-cars/{model-car-id}/has-prime-image": {
+      "get": {
+        "operationId": "getModelCarHasPrimeImageRel",
+        "tags": [
+          "Model Cars"
+        ],
+        "summary": "Get the ›has-prime-image‹ relationship for the `Model Car`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "model-car-id",
+            "description": "ID of the `Model Car`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›has-prime-image‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelCarHasPrimeImageResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Model Car` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/model-cars/{model-car-id}/has-prime-image/{image-id}": {
       "post": {
         "tags": [

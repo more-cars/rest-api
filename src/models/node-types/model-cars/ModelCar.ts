@@ -205,4 +205,16 @@ export const ModelCar = {
 
         return createdRelationship
     },
+
+    async getHasPrimeImageRelationship(modelCarId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await ModelCar.findById(modelCarId)
+
+        const relationship = await getRel(modelCarId, RelType.ModelCarHasPrimeImage)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.ModelCarHasPrimeImage, modelCarId, null)
+        }
+
+        return relationship
+    },
 }
