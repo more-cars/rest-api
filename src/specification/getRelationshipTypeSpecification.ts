@@ -16,6 +16,7 @@ import {LapTimeRelationshipSpecification} from "./node-types/LapTimeRelationship
 import {RacingGameRelationshipSpecification} from "./node-types/RacingGameRelationshipSpecification"
 import {GamingPlatformRelationshipSpecification} from "./node-types/GamingPlatformRelationshipSpecification"
 import {ModelCarRelationshipSpecification} from "./node-types/ModelCarRelationshipSpecification"
+import {ModelCarBrandRelationshipSpecification} from "./node-types/ModelCarBrandRelationshipSpecification"
 import {MagazineRelationshipSpecification} from "./node-types/MagazineRelationshipSpecification"
 import {MagazineIssueRelationshipSpecification} from "./node-types/MagazineIssueRelationshipSpecification"
 import {RatingRelationshipSpecification} from "./node-types/RatingRelationshipSpecification"
@@ -44,6 +45,7 @@ export function getRelationshipTypeSpecification(relationshipType: RelationshipT
         RacingGameRelationshipSpecification,
         GamingPlatformRelationshipSpecification,
         ModelCarRelationshipSpecification,
+        ModelCarBrandRelationshipSpecification,
         MagazineRelationshipSpecification,
         MagazineIssueRelationshipSpecification,
         RatingRelationshipSpecification,

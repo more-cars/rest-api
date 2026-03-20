@@ -73,6 +73,7 @@ export enum RelationType {
     GamingPlatformHasImage = 'has-image',
     GamingPlatformHasPrimeImage = 'has-prime-image',
     ModelCarIsScaleModelOfCarModelVariant = 'is-scale-model-of-car-model-variant',
+    ModelCarBrandCreatedModelCar = 'created-model-car',
     MagazineHasIssue = 'has-issue',
     MagazineHasImage = 'has-image',
     MagazineHasPrimeImage = 'has-prime-image',
