@@ -10,7 +10,7 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/prices?sort_by_property=name&sort_direction=desc"
+  url: "{{baseUrl}}/prices?sort_by_property=price&sort_direction=desc"
 
 runtime:
   assertions:

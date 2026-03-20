@@ -14,7 +14,9 @@ exports.createHasPrimeImageRelationship = async function () {
 
 exports.create = async function (prefix = '') {
     const response = await post("/prices", {
-        name: 'Dummy Price',
+        price: 59990,
+        currency_code: "EUR",
+        country_code: "DE",
     })
 
     bru.setEnvVar('valid' + prefix + 'PriceId', response.id)
