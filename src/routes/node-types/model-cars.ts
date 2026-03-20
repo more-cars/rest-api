@@ -4,5 +4,6 @@ import {ModelCarController} from "../../controllers/node-types/ModelCarControlle
 const router = express.Router()
 
 router.post('/model-cars', ModelCarController.create)
+router.get('/model-cars/:id', ModelCarController.getById)
 
 export default router

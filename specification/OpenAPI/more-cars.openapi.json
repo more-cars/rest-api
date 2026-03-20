@@ -13090,6 +13090,48 @@
         }
       }
     },
+    "/model-cars/{model-car-id}": {
+      "get": {
+        "operationId": "getModelCarById",
+        "tags": [
+          "Model Cars"
+        ],
+        "summary": "Get `Model Car` by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "model-car-id",
+            "description": "ID of the `Model Car`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Model Car` successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelCarResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. A `Model Car` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/model-car-brands": {
       "post": {
         "tags": [

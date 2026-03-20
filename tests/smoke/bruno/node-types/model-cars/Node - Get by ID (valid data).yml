@@ -1,0 +1,35 @@
+info:
+  name: Get Model Car by ID (valid data)
+  type: http
+  tags:
+    - get
+    - node
+    - valid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/model-cars/{{validModelCarId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validModelCarId}}"
+    - expression: res.body.attributes.created_at
+      operator: isString
+    - expression: res.body.attributes.created_at
+      operator: isNotEmpty
+    - expression: res.body.attributes.updated_at
+      operator: isString
+    - expression: res.body.attributes.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const ModelCars = require('./lib/node-types/ModelCars.js')
+        await ModelCars.create()

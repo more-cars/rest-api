@@ -13,4 +13,12 @@ describe('Model Cars', () => {
         expect(ModelCarController.create)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get Node by ID', async () => {
+        await request(app)
+            .get('/model-cars/123')
+
+        expect(ModelCarController.getById)
+            .toHaveBeenCalledTimes(1)
+    })
 })
