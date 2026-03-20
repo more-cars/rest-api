@@ -4064,6 +4064,48 @@
         }
       }
     },
+    "/car-model-variants/{car-model-variant-id}/has-price": {
+      "get": {
+        "operationId": "getCarModelVariantHasPriceRel",
+        "tags": [
+          "Car Model Variants"
+        ],
+        "summary": "Get all ›has-price‹ relationships for the `Car Model Variant`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-price‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelVariantHasPriceCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Car Model Variant` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/car-model-variants/{car-model-variant-id}/has-price/{price-id}": {
       "post": {
         "tags": [
@@ -19763,6 +19805,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/CarModelVariantHasPrimeImage"
+          }
+        }
+      },
+      "CarModelVariantHasPriceCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CarModelVariantHasPriceResponse"
+            }
           }
         }
       },

@@ -238,6 +238,14 @@ describe('Car Model Variants', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Get all ›has-price‹ relationships', async () => {
+        await request(app)
+            .get('/car-model-variants/123/has-price')
+
+        expect(CarModelVariantController.getAllHasPriceRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/car-model-variants/123/has-image/456')

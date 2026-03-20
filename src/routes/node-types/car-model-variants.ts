@@ -32,6 +32,7 @@ router.post('/car-model-variants/:carModelVariantId/presented-at-motor-show/:mot
 router.get('/car-model-variants/:carModelVariantId/presented-at-motor-show', CarModelVariantController.getAllPresentedAtMotorShowRelations)
 router.delete('/car-model-variants/:carModelVariantId/presented-at-motor-show/:motorShowId', CarModelVariantController.deletePresentedAtMotorShowRelation)
 router.post('/car-model-variants/:carModelVariantId/has-price/:priceId', CarModelVariantController.createHasPriceRelation)
+router.get('/car-model-variants/:carModelVariantId/has-price', CarModelVariantController.getAllHasPriceRelations)
 router.post('/car-model-variants/:carModelVariantId/has-image/:imageId', CarModelVariantController.createHasImageRelation)
 router.get('/car-model-variants/:carModelVariantId/has-image', CarModelVariantController.getAllHasImageRelations)
 router.delete('/car-model-variants/:carModelVariantId/has-image/:imageId', CarModelVariantController.deleteHasImageRelation)
