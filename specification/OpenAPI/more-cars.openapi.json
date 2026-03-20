@@ -4635,6 +4635,48 @@
         }
       }
     },
+    "/prices/{price-id}/has-image": {
+      "get": {
+        "operationId": "getPriceHasImageRel",
+        "tags": [
+          "Prices"
+        ],
+        "summary": "Get all ›has-image‹ relationships for the `Price`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "price-id",
+            "description": "ID of the `Price`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-image‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PriceHasImageCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Price` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/prices/{price-id}/has-image/{image-id}": {
       "post": {
         "tags": [
@@ -19657,6 +19699,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/PriceHasImage"
+          }
+        }
+      },
+      "PriceHasImageCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PriceHasImageResponse"
+            }
           }
         }
       },

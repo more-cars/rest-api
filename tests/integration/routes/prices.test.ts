@@ -69,4 +69,12 @@ describe('Prices', () => {
         expect(PriceController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›has-image‹ relationships', async () => {
+        await request(app)
+            .get('/prices/123/has-image')
+
+        expect(PriceController.getAllHasImageRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })

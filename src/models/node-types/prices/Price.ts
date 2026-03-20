@@ -19,6 +19,7 @@ import {getRel} from "../../relationships/getRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
 import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {Image} from "../images/Image"
+import {getAllRels} from "../../relationships/getAllRels"
 
 export const Price = {
     async create(data: CreatePriceInput): Promise<PriceNode> {
@@ -119,5 +120,12 @@ export const Price = {
         }
 
         return createdRelationship
+    },
+
+    async getAllHasImageRelationships(priceId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await Price.findById(priceId)
+
+        return getAllRels(priceId, RelType.PriceHasImage)
     },
 }
