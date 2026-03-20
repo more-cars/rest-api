@@ -372,6 +372,13 @@ export const CarModelVariant = {
         return createdRelationship
     },
 
+    async getAllHasScaleModelRelationships(carModelVariantId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+
+        return getAllRels(carModelVariantId, RelType.CarModelVariantHasScaleModel)
+    },
+
     async createPresentedAtMotorShowRelationship(carModelVariantId: number, motorShowId: number) {
         // checking that both nodes exist -> exception is thrown if not
         await CarModelVariant.findById(carModelVariantId)
