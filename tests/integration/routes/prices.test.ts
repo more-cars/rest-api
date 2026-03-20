@@ -61,4 +61,12 @@ describe('Prices', () => {
         expect(PriceController.deleteForCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-image‹ relationship', async () => {
+        await request(app)
+            .post('/prices/123/has-image/456')
+
+        expect(PriceController.createHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

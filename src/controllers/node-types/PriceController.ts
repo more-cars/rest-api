@@ -6,6 +6,7 @@ import {deleteNode} from "./prices/deleteNode"
 import {createForCarModelVariantRelation} from "./prices/createForCarModelVariantRelation"
 import {getForCarModelVariantRelation} from "./prices/getForCarModelVariantRelation"
 import {deleteForCarModelVariantRelation} from "./prices/deleteForCarModelVariantRelation"
+import {createHasImageRelation} from "./prices/createHasImageRelation"
 
 export const PriceController = {
     async create(req: express.Request, res: express.Response) {
@@ -34,5 +35,9 @@ export const PriceController = {
 
     async deleteForCarModelVariantRelation(req: express.Request, res: express.Response) {
         await deleteForCarModelVariantRelation(req, res)
+    },
+
+    async createHasImageRelation(req: express.Request, res: express.Response) {
+        await createHasImageRelation(req, res)
     },
 }

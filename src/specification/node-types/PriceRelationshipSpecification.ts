@@ -8,5 +8,10 @@ export const PriceRelationshipSpecification: RelationshipTypeSpecification[] = [
         endNodeType: NodeType.CarModelVariant,
         isReverseRelationship: false,
     }],
+    [RelationshipType.PriceHasImage, {
+        startNodeType: NodeType.Price,
+        endNodeType: NodeType.Image,
+        isReverseRelationship: false,
+    }],
     //
 ]

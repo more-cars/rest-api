@@ -10,5 +10,6 @@ router.delete('/prices/:id', PriceController.delete)
 router.post('/prices/:priceId/for-car-model-variant/:carModelVariantId', PriceController.createForCarModelVariantRelation)
 router.get('/prices/:priceId/for-car-model-variant', PriceController.getForCarModelVariantRelation)
 router.delete('/prices/:priceId/for-car-model-variant/:carModelVariantId', PriceController.deleteForCarModelVariantRelation)
+router.post('/prices/:priceId/has-image/:imageId', PriceController.createHasImageRelation)
 
 export default router
