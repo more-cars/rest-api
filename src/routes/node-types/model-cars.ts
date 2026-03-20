@@ -13,5 +13,6 @@ router.delete('/model-cars/:modelCarId/is-scale-model-of-car-model-variant/:carM
 router.post('/model-cars/:modelCarId/made-by-model-car-brand/:modelCarBrandId', ModelCarController.createMadeByModelCarBrandRelation)
 router.get('/model-cars/:modelCarId/made-by-model-car-brand', ModelCarController.getMadeByModelCarBrandRelation)
 router.delete('/model-cars/:modelCarId/made-by-model-car-brand/:modelCarBrandId', ModelCarController.deleteMadeByModelCarBrandRelation)
+router.post('/model-cars/:modelCarId/has-image/:imageId', ModelCarController.createHasImageRelation)
 
 export default router

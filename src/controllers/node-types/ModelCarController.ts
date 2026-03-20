@@ -9,6 +9,7 @@ import {deleteIsScaleModelOfCarModelVariantRelation} from "./model-cars/deleteIs
 import {createMadeByModelCarBrandRelation} from "./model-cars/createMadeByModelCarBrandRelation"
 import {getMadeByModelCarBrandRelation} from "./model-cars/getMadeByModelCarBrandRelation"
 import {deleteMadeByModelCarBrandRelation} from "./model-cars/deleteMadeByModelCarBrandRelation"
+import {createHasImageRelation} from "./model-cars/createHasImageRelation"
 
 export const ModelCarController = {
     async create(req: express.Request, res: express.Response) {
@@ -49,5 +50,9 @@ export const ModelCarController = {
 
     async deleteMadeByModelCarBrandRelation(req: express.Request, res: express.Response) {
         await deleteMadeByModelCarBrandRelation(req, res)
+    },
+
+    async createHasImageRelation(req: express.Request, res: express.Response) {
+        await createHasImageRelation(req, res)
     },
 }

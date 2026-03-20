@@ -8,6 +8,10 @@ exports.createMadeByModelCarBrandRelationship = async function () {
     await post("/model-cars/" + bru.getEnvVar('validModelCarId') + "/made-by-model-car-brand/" + bru.getEnvVar('validModelCarBrandId'))
 }
 
+exports.createHasImageRelationship = async function () {
+    await post("/model-cars/" + bru.getEnvVar('validModelCarId') + "/has-image/" + bru.getEnvVar('validImageId'))
+}
+
 exports.create = async function (prefix = '') {
     const response = await post("/model-cars", {
         name: 'Dummy Model Car',
