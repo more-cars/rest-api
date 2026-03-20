@@ -33,6 +33,7 @@ export function mapDbRelationshipTypeToRelationshipType(dbRelationshipType: DbRe
         [DbRelationshipType.CarModelVariantHasPrimeImage, RelationshipType.CarModelVariantHasPrimeImage],
         [DbRelationshipType.PriceForCarModelVariant, RelationshipType.PriceForCarModelVariant],
         [DbRelationshipType.PriceHasImage, RelationshipType.PriceHasImage],
+        [DbRelationshipType.PriceHasPrimeImage, RelationshipType.PriceHasPrimeImage],
         [DbRelationshipType.RaceTrackHasLayout, RelationshipType.RaceTrackHasLayout],
         [DbRelationshipType.RaceTrackHostedRacingEvent, RelationshipType.RaceTrackHostedRacingEvent],
         [DbRelationshipType.RaceTrackHasImage, RelationshipType.RaceTrackHasImage],

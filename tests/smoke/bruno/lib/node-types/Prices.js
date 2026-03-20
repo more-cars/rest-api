@@ -8,6 +8,10 @@ exports.createHasImageRelationship = async function () {
     await post("/prices/" + bru.getEnvVar('validPriceId') + "/has-image/" + bru.getEnvVar('validImageId'))
 }
 
+exports.createHasPrimeImageRelationship = async function () {
+    await post("/prices/" + bru.getEnvVar('validPriceId') + "/has-prime-image/" + bru.getEnvVar('validImageId'))
+}
+
 exports.create = async function (prefix = '') {
     const response = await post("/prices", {
         name: 'Dummy Price',

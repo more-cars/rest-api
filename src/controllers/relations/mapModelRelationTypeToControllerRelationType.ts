@@ -31,6 +31,7 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.CarModelVariantHasPrimeImage, RelationType.CarModelVariantHasPrimeImage],
         [RelType.PriceForCarModelVariant, RelationType.PriceForCarModelVariant],
         [RelType.PriceHasImage, RelationType.PriceHasImage],
+        [RelType.PriceHasPrimeImage, RelationType.PriceHasPrimeImage],
         [RelType.RaceTrackHasLayout, RelationType.RaceTrackHasLayout],
         [RelType.RaceTrackHostedRacingEvent, RelationType.RaceTrackHostedRacingEvent],
         [RelType.RaceTrackHasImage, RelationType.RaceTrackHasImage],

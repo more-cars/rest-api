@@ -141,4 +141,23 @@ export const Price = {
 
         await deleteSpecificRel(priceId, imageId, RelType.PriceHasImage)
     },
+
+    async createHasPrimeImageRelationship(priceId: number, imageId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Price.findById(priceId)
+        await Image.findById(imageId)
+
+        const existingRelation = await getSpecificRel(priceId, imageId, RelType.PriceHasPrimeImage)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.PriceHasPrimeImage, priceId, imageId)
+        }
+        await deleteOutgoingRel(priceId, RelType.PriceHasPrimeImage, ModelNodeType.Image)
+
+        const createdRelationship = await createRel(priceId, imageId, RelType.PriceHasPrimeImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
 }

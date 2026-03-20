@@ -85,4 +85,12 @@ describe('Prices', () => {
         expect(PriceController.deleteHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .post('/prices/123/has-prime-image/456')
+
+        expect(PriceController.createHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

@@ -13,5 +13,10 @@ export const PriceRelationshipSpecification: RelationshipTypeSpecification[] = [
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    [RelationshipType.PriceHasPrimeImage, {
+        startNodeType: NodeType.Price,
+        endNodeType: NodeType.Image,
+        isReverseRelationship: false,
+    }],
     //
 ]

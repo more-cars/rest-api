@@ -28,6 +28,7 @@ export enum RelationshipTypeNeo4j {
     CarModelVariantHasPrimeImage = 'HAS_PRIME_IMAGE',
     PriceForCarModelVariant = 'FOR_CAR_MODEL_VARIANT',
     PriceHasImage = 'HAS_IMAGE',
+    PriceHasPrimeImage = 'HAS_PRIME_IMAGE',
     RaceTrackHasLayout = 'HAS_LAYOUT',
     RaceTrackHostedRacingEvent = 'TOOK_PLACE_AT_RACE_TRACK',
     RaceTrackHasImage = 'HAS_IMAGE',

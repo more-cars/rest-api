@@ -75,6 +75,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 // Price - Forward
                 [RelationshipTypeNeo4j.PriceForCarModelVariant, RelationshipType.PriceForCarModelVariant],
                 [RelationshipTypeNeo4j.PriceHasImage, RelationshipType.PriceHasImage],
+                [RelationshipTypeNeo4j.PriceHasPrimeImage, RelationshipType.PriceHasPrimeImage],
             ])],
         ])],
         [Neo4jNodeType.RaceTrack, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
