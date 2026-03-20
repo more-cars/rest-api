@@ -4,33 +4,27 @@ import {DbFilterOperator} from "../types/DbFilterOperator"
 import {FilterOperator} from "../../models/types/FilterOperator"
 
 export function getDbQueryCollectionParams(constraints: NodeCollectionConstraints = {}): CollectionQueryParams {
-    const sortByProperty = constraints.sortByProperty ? getDbProperty(constraints.sortByProperty) : 'mc_id'
-    const sortDirection = constraints.sortDirection ? constraints.sortDirection.toUpperCase() : 'ASC'
+    const params: CollectionQueryParams = {}
 
-    let filterByProperty, filterValue, filterOperator
-    if (!constraints.filterByProperty || !constraints.filterValue) {
-        filterByProperty = 'mc_id'
-        filterValue = '-1'
-        filterOperator = DbFilterOperator.not_equal
-    } else {
-        filterByProperty = getDbProperty(constraints.filterByProperty)
-        filterValue = constraints.filterValue
-        filterOperator = constraints.filterOperator ? getDbFilterOperator(constraints.filterOperator) : DbFilterOperator.equal
+    if (constraints.sortByProperty) {
+        params.sortByProperty = getDbProperty(constraints.sortByProperty)
+    }
+
+    if (constraints.sortDirection) {
+        params.sortDirection = getDbProperty(constraints.sortDirection.toUpperCase())
+    }
+
+    if (constraints.filterByProperty && constraints.filterValue) {
+        params.filterByProperty = getDbProperty(constraints.filterByProperty)
+        params.filterOperator = constraints.filterOperator ? getDbFilterOperator(constraints.filterOperator) : DbFilterOperator.equal
+        params.filterValue = constraints.filterValue
     }
 
     const page = constraints.page || 1
-    const limit = 100
-    const offset = (page - 1) * limit
+    params.limit = 100
+    params.offset = (page - 1) * params.limit
 
-    return {
-        sortByProperty,
-        sortDirection,
-        filterByProperty,
-        filterValue,
-        filterOperator,
-        offset,
-        limit,
-    }
+    return params
 }
 
 function getDbFilterOperator(filterOperator: FilterOperator): DbFilterOperator {
