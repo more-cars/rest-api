@@ -4,10 +4,10 @@ import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 import {mapDbNodeTypeToNeo4jNodeType} from "./mapDbNodeTypeToNeo4jNodeType"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
-export function getAllNodesOfTypeQuery(nodeType: DbNodeType, params: CollectionQueryParams) {
+export function getFilteredNodeTypeCollectionQuery(nodeType: DbNodeType, params: CollectionQueryParams) {
     const nodeTypeLabel = getNamespacedNodeTypeLabel(mapDbNodeTypeToNeo4jNodeType(nodeType))
 
-    return getCypherQueryTemplate('nodes/_cypher/getAllNodesOfType.cypher')
+    return getCypherQueryTemplate('nodes/_cypher/getFilteredNodeTypeCollection.cypher')
         .trim()
         .replace(':nodeLabel', `:${nodeTypeLabel}`)
         .replace('$sortByProperty', `${params.sortByProperty}`)

@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {getAllDbNodeTypes} from "../../../../_toolbox/getAllDbNodeTypes"
-import {getAllNodesOfTypeQuery} from "../../../../../src/db/nodes/getAllNodesOfTypeQuery"
+import {getFilteredNodeTypeCollectionQuery} from "../../../../../src/db/nodes/getFilteredNodeTypeCollectionQuery"
 import {DbFilterOperator} from "../../../../../src/db/types/DbFilterOperator"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
@@ -12,7 +12,7 @@ describe('database query for fetching all nodes of a type - filtering', () => {
         ['name', '  test  ', DbFilterOperator.equal],
     ])('filter by $0 $2 $1', async (filterByProperty, filterValue, filterOperator) => {
         getAllDbNodeTypes().forEach((nodeType) => {
-            const query = getAllNodesOfTypeQuery(nodeType, {
+            const query = getFilteredNodeTypeCollectionQuery(nodeType, {
                 sortByProperty: 'dummy',
                 sortDirection: 'dummy',
                 filterByProperty,

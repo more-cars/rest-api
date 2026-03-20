@@ -3,7 +3,7 @@ import {getDriver} from "../driver"
 import type {DbNodeType} from "../types/DbNodeType"
 import type {CollectionQueryParams} from "../types/CollectionQueryParams"
 import {DbFilterOperator} from "../types/DbFilterOperator"
-import {getAllNodesOfTypeQuery} from "./getAllNodesOfTypeQuery"
+import {getFilteredNodeTypeCollectionQuery} from "./getFilteredNodeTypeCollectionQuery"
 
 export async function fetchNodesFromDb(nodeType: DbNodeType, params: CollectionQueryParams = {
     sortByProperty: 'mc_id',
@@ -20,7 +20,7 @@ export async function fetchNodesFromDb(nodeType: DbNodeType, params: CollectionQ
     const session: Session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getAllNodesOfTypeQuery(nodeType, params))
+        const result = await txc.run(getFilteredNodeTypeCollectionQuery(nodeType, params))
         return result.records
     })
 
