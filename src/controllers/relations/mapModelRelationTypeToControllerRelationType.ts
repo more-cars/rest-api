@@ -80,6 +80,7 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.ModelCarIsScaleModelOfCarModelVariant, RelationType.ModelCarIsScaleModelOfCarModelVariant],
         [RelType.ModelCarBrandCreatedModelCar, RelationType.ModelCarBrandCreatedModelCar],
         [RelType.ModelCarBrandHasImage, RelationType.ModelCarBrandHasImage],
+        [RelType.ModelCarBrandHasPrimeImage, RelationType.ModelCarBrandHasPrimeImage],
         [RelType.ImageBelongsToNode, RelationType.ImageBelongsToNode],
         [RelType.MagazineHasIssue, RelationType.MagazineHasIssue],
         [RelType.MagazineHasImage, RelationType.MagazineHasImage],
