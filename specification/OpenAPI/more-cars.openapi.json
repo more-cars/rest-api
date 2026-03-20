@@ -13389,6 +13389,48 @@
         }
       }
     },
+    "/model-car-brands/{model-car-brand-id}": {
+      "get": {
+        "operationId": "getModelCarBrandById",
+        "tags": [
+          "Model Car Brands"
+        ],
+        "summary": "Get `Model Car Brand` by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "model-car-brand-id",
+            "description": "ID of the `Model Car Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Model Car Brand` successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelCarBrandResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. A `Model Car Brand` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/magazines": {
       "get": {
         "operationId": "getMagazines",

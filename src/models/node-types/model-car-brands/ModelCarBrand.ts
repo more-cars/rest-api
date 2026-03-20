@@ -3,6 +3,8 @@ import {ModelCarBrandNode} from "./types/ModelCarBrandNode"
 import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../../db/node-types/model-car-brands/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
+import {getNodeById} from "../../../db/node-types/model-car-brands/getNodeById"
+import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 
 export const ModelCarBrand = {
     async create(data: CreateModelCarBrandInput): Promise<ModelCarBrandNode> {
@@ -10,5 +12,15 @@ export const ModelCarBrand = {
         const result = await createNode(input)
 
         return convertDbNodeToModelNode(result) as ModelCarBrandNode
+    },
+
+    async findById(id: number): Promise<ModelCarBrandNode> {
+        const node = await getNodeById(id)
+
+        if (!node) {
+            throw new NodeNotFoundError(id)
+        }
+
+        return convertDbNodeToModelNode(node) as ModelCarBrandNode
     },
 }
