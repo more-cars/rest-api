@@ -5,6 +5,8 @@ import {createNode} from "../../../db/node-types/model-cars/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/model-cars/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
+import {getAllNodesOfType} from "../../../db/node-types/model-cars/getAllNodesOfType"
+import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 
 export const ModelCar = {
     async create(data: CreateModelCarInput): Promise<ModelCarNode> {
@@ -22,5 +24,16 @@ export const ModelCar = {
         }
 
         return convertDbNodeToModelNode(node) as ModelCarNode
+    },
+
+    async findAll(options: NodeCollectionConstraints = {}): Promise<ModelCarNode[]> {
+        const nodes: ModelCarNode[] = []
+        const nodesDb = await getAllNodesOfType(options)
+
+        nodesDb.forEach(node => {
+            nodes.push(convertDbNodeToModelNode(node) as ModelCarNode)
+        })
+
+        return nodes
     },
 }

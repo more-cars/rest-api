@@ -13061,6 +13061,65 @@
       }
     },
     "/model-cars": {
+      "get": {
+        "operationId": "getModelCars",
+        "tags": [
+          "Model Cars"
+        ],
+        "summary": "Get all `Model Cars`",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Page"
+          },
+          {
+            "in": "query",
+            "name": "sort_by_property",
+            "description": "Returns the `Model Car` collection, ordered by the specified property.",
+            "schema": {
+              "$ref": "#/components/schemas/ModelCarProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/SortDirection"
+          },
+          {
+            "in": "query",
+            "name": "filter_by_property",
+            "description": "Specifies by which node property the `Model Car` collection should be filtered.",
+            "schema": {
+              "$ref": "#/components/schemas/ModelCarProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/FilterValue"
+          },
+          {
+            "$ref": "#/components/parameters/FilterOperator"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Model Car` collection successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelCarCollectionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Model Cars"
@@ -24191,6 +24250,20 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/ModelCar"
+          }
+        }
+      },
+      "ModelCarCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ModelCarResponse"
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },
