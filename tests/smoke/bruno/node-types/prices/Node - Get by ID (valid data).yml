@@ -1,0 +1,35 @@
+info:
+  name: Get Price by ID (valid data)
+  type: http
+  tags:
+    - get
+    - node
+    - valid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/prices/{{validPriceId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validPriceId}}"
+    - expression: res.body.attributes.created_at
+      operator: isString
+    - expression: res.body.attributes.created_at
+      operator: isNotEmpty
+    - expression: res.body.attributes.updated_at
+      operator: isString
+    - expression: res.body.attributes.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const Prices = require('./lib/node-types/Prices.js')
+        await Prices.create()

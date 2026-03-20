@@ -13,4 +13,12 @@ describe('Prices', () => {
         expect(PriceController.create)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get Node by ID', async () => {
+        await request(app)
+            .get('/prices/123')
+
+        expect(PriceController.getById)
+            .toHaveBeenCalledTimes(1)
+    })
 })

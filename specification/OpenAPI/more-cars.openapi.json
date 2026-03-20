@@ -4366,6 +4366,48 @@
         }
       }
     },
+    "/prices/{price-id}": {
+      "get": {
+        "operationId": "getPriceById",
+        "tags": [
+          "Prices"
+        ],
+        "summary": "Get `Price` by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "price-id",
+            "description": "ID of the `Price`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Price` successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PriceResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. A `Price` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/images": {
       "get": {
         "operationId": "getImages",
