@@ -75,11 +75,35 @@ export function getAllRelationshipTypes() {
                         ],
                     ],
                     [
+                        DbNodeType.Price,
+                        [
+                            RelationshipType.CarModelVariantHasPrice,
+                        ],
+                    ],
+                    [
+                        DbNodeType.ModelCar,
+                        [
+                            RelationshipType.CarModelVariantHasScaleModel,
+                        ],
+                    ],
+                    [
                         DbNodeType.LapTime,
                         [
                             RelationshipType.CarModelVariantAchievedLapTime,
                         ],
                     ],
+                    [
+                        DbNodeType.Image,
+                        [
+                            RelationshipType.NodeHasImage,
+                            RelationshipType.NodeHasPrimeImage,
+                        ],
+                    ],
+                ])
+            ],
+            [
+                DbNodeType.Price, new Map(
+                [
                     [
                         DbNodeType.Image,
                         [
@@ -257,6 +281,36 @@ export function getAllRelationshipTypes() {
                         DbNodeType.RacingGame,
                         [
                             RelationshipType.GamingPlatformFeaturesRacingGame,
+                        ],
+                    ],
+                    [
+                        DbNodeType.Image,
+                        [
+                            RelationshipType.NodeHasImage,
+                            RelationshipType.NodeHasPrimeImage,
+                        ],
+                    ],
+                ])
+            ],
+            [
+                DbNodeType.ModelCar, new Map(
+                [
+                    [
+                        DbNodeType.Image,
+                        [
+                            RelationshipType.NodeHasImage,
+                            RelationshipType.NodeHasPrimeImage,
+                        ],
+                    ],
+                ])
+            ],
+            [
+                DbNodeType.ModelCarBrand, new Map(
+                [
+                    [
+                        DbNodeType.ModelCar,
+                        [
+                            RelationshipType.ModelCarBrandCreatedModelCar,
                         ],
                     ],
                     [

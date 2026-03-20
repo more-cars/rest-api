@@ -5,6 +5,7 @@ export function isRelationshipReversedInOldDb(newRelationshipType: RelationshipT
         RelationshipType.CarModelHasSuccessor,
         RelationshipType.CarModelVariantAchievedLapTime,
         RelationshipType.CarModelVariantAchievedSessionResult,
+        RelationshipType.CarModelVariantHasScaleModel,
         RelationshipType.TrackLayoutHasLapTime,
         RelationshipType.RacingEventIsFollowedByEvent,
         RelationshipType.SessionResultHasLapTime,

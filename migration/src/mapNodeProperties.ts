@@ -5,6 +5,7 @@ import {mapCompany} from "./mappings/mapCompany"
 import {mapBrand} from "./mappings/mapBrand"
 import {mapCarModel} from "./mappings/mapCarModel"
 import {mapCarModelVariant} from "./mappings/mapCarModelVariant"
+import {mapPrice} from "./mappings/mapPrice"
 import {mapRaceTrack} from "./mappings/mapRaceTrack"
 import {mapTrackLayout} from "./mappings/mapTrackLayout"
 import {mapRacingSeries} from "./mappings/mapRacingSeries"
@@ -14,6 +15,8 @@ import {mapSessionResult} from "./mappings/mapSessionResult"
 import {mapLapTime} from "./mappings/mapLapTime"
 import {mapRacingGame} from "./mappings/mapRacingGame"
 import {mapGamingPlatform} from "./mappings/mapGamingPlatform"
+import {mapModelCar} from "./mappings/mapModelCar"
+import {mapModelCarBrand} from "./mappings/mapModelCarBrand"
 import {mapMagazine} from "./mappings/mapMagazine"
 import {mapMagazineIssue} from "./mappings/mapMagazineIssue"
 import {mapRating} from "./mappings/mapRating"
@@ -32,6 +35,8 @@ export function mapNodeProperties(oldNode: Node, nodeType: DbNodeType) {
             return mapCarModel(oldNode)
         case DbNodeType.CarModelVariant:
             return mapCarModelVariant(oldNode)
+        case DbNodeType.Price:
+            return mapPrice(oldNode)
         case DbNodeType.RaceTrack:
             return mapRaceTrack(oldNode)
         case DbNodeType.TrackLayout:
@@ -50,6 +55,10 @@ export function mapNodeProperties(oldNode: Node, nodeType: DbNodeType) {
             return mapRacingGame(oldNode)
         case DbNodeType.GamingPlatform:
             return mapGamingPlatform(oldNode)
+        case DbNodeType.ModelCar:
+            return mapModelCar(oldNode)
+        case DbNodeType.ModelCarBrand:
+            return mapModelCarBrand(oldNode)
         case DbNodeType.Magazine:
             return mapMagazine(oldNode)
         case DbNodeType.MagazineIssue:

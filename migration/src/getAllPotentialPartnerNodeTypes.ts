@@ -18,7 +18,12 @@ export function getAllPotentialPartnerNodeTypes() {
         ]],
         [DbNodeType.CarModelVariant, [
             DbNodeType.SessionResult,
+            DbNodeType.Price,
+            DbNodeType.ModelCar,
             DbNodeType.LapTime,
+            DbNodeType.Image,
+        ]],
+        [DbNodeType.Price, [
             DbNodeType.Image,
         ]],
         [DbNodeType.RaceTrack, [
@@ -55,6 +60,13 @@ export function getAllPotentialPartnerNodeTypes() {
         ]],
         [DbNodeType.GamingPlatform, [
             DbNodeType.RacingGame,
+            DbNodeType.Image,
+        ]],
+        [DbNodeType.ModelCar, [
+            DbNodeType.Image,
+        ]],
+        [DbNodeType.ModelCarBrand, [
+            DbNodeType.ModelCar,
             DbNodeType.Image,
         ]],
         [DbNodeType.Magazine, [

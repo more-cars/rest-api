@@ -7,6 +7,7 @@ import type {InputCompanyCreate} from "../../src/db/node-types/companies/types/I
 import type {InputBrandCreate} from "../../src/db/node-types/brands/types/InputBrandCreate"
 import type {InputCarModelCreate} from "../../src/db/node-types/car-models/types/InputCarModelCreate"
 import type {InputCarModelVariantCreate} from "../../src/db/node-types/car-model-variants/types/InputCarModelVariantCreate"
+import type {InputPriceCreate} from "../../src/db/node-types/prices/types/InputPriceCreate"
 import type {InputRaceTrackCreate} from "../../src/db/node-types/race-tracks/types/InputRaceTrackCreate"
 import type {InputTrackLayoutCreate} from "../../src/db/node-types/track-layouts/types/InputTrackLayoutCreate"
 import type {InputRacingSeriesCreate} from "../../src/db/node-types/racing-series/types/InputRacingSeriesCreate"
@@ -16,6 +17,8 @@ import type {InputSessionResultCreate} from "../../src/db/node-types/session-res
 import type {InputLapTimeCreate} from "../../src/db/node-types/lap-times/types/InputLapTimeCreate"
 import type {InputRacingGameCreate} from "../../src/db/node-types/racing-games/types/InputRacingGameCreate"
 import type {InputGamingPlatformCreate} from "../../src/db/node-types/gaming-platforms/types/InputGamingPlatformCreate"
+import type {InputModelCarCreate} from "../../src/db/node-types/model-cars/types/InputModelCarCreate"
+import type {InputModelCarBrandCreate} from "../../src/db/node-types/model-car-brands/types/InputModelCarBrandCreate"
 import type {InputMagazineCreate} from "../../src/db/node-types/magazines/types/InputMagazineCreate"
 import type {InputMagazineIssueCreate} from "../../src/db/node-types/magazine-issues/types/InputMagazineIssueCreate"
 import type {InputRatingCreate} from "../../src/db/node-types/ratings/types/InputRatingCreate"
@@ -29,6 +32,7 @@ type InputTypes =
     InputBrandCreate |
     InputCarModelCreate |
     InputCarModelVariantCreate |
+    InputPriceCreate |
     InputRaceTrackCreate |
     InputTrackLayoutCreate |
     InputRacingSeriesCreate |
@@ -38,6 +42,8 @@ type InputTypes =
     InputLapTimeCreate |
     InputRacingGameCreate |
     InputGamingPlatformCreate |
+    InputModelCarCreate |
+    InputModelCarBrandCreate |
     InputMagazineCreate |
     InputMagazineIssueCreate |
     InputRatingCreate |
