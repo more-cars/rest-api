@@ -12,8 +12,8 @@ describe('A filtered "get all PRICE nodes" request returns only the matching nod
 
         const expectedNodes: PriceNode[] = []
         const actualNodes = await Price.findAll({
-            filterByProperty: 'name',
-            filterValue: 'test',
+            filterByProperty: 'price',
+            filterValue: 99,
             filterOperator: FilterOperator.equal
         })
 
@@ -23,13 +23,13 @@ describe('A filtered "get all PRICE nodes" request returns only the matching nod
 
     test('when there exist PRICE nodes', async () => {
         await deleteAllNodesOfType(DbNodeType.Price)
-        const nodeA = await seedNode(DbNodeType.Price, {name: 'A Node'}) as PriceNode
-        await seedNode(DbNodeType.Price, {name: 'B Node'})
-        await seedNode(DbNodeType.Price, {name: 'C Node'})
+        const nodeA = await seedNode(DbNodeType.Price, {price: 99}) as PriceNode
+        await seedNode(DbNodeType.Price, {price: 70})
+        await seedNode(DbNodeType.Price, {price: 71})
 
         const filteredNodes = await Price.findAll({
-            filterByProperty: 'name',
-            filterValue: 'A Node',
+            filterByProperty: 'price',
+            filterValue: 99,
             filterOperator: FilterOperator.equal
         })
         expect(filteredNodes.length).toEqual(1)
