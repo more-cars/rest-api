@@ -2,7 +2,7 @@
   {
     "op": "replace",
     "path": "/metadata/name",
-    "value": "migrate-relationships-1761820777"
+    "value": "migrate-relationships-1774082797"
   },
   {
     "op": "replace",
@@ -14,7 +14,7 @@
     "path": "/spec/template/spec/containers/0/env/-",
     "value": {
       "name": "MIGRATE_RELATIONSHIP_TYPE",
-      "value": "HAS_LAP_TIME"
+      "value": "NODE_HAS_PRIME_IMAGE"
     }
   },
   {
@@ -22,7 +22,7 @@
     "path": "/spec/template/spec/containers/0/env/-",
     "value": {
       "name": "START_NODE_TYPE",
-      "value": "TrackLayout"
+      "value": "ModelCarBrand"
     }
   },
   {
@@ -30,7 +30,7 @@
     "path": "/spec/template/spec/containers/0/env/-",
     "value": {
       "name": "END_NODE_TYPE",
-      "value": "LapTime"
+      "value": "Image"
     }
   }
 ]
