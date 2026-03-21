@@ -5,7 +5,7 @@ import {<%= h.changeCase.pascal(nodeType) %>Node} from "./types/<%= h.changeCase
 import {fetchNodeById} from "../../nodes/fetchNodeById"
 
 export async function getNodeById(id: number) {
-    const node = await fetchNodeById(id)
+    const node = await fetchNodeById(id, DbNodeType.<%= h.changeCase.pascal(nodeType) %>)
 
     if (!node) {
         return false
