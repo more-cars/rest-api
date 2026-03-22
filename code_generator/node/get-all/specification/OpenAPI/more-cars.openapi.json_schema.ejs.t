@@ -13,6 +13,9 @@ skip_if: \"<%= h.changeCase.pascal(nodeType) %>CollectionResponse\"
               "$ref": "#/components/schemas/<%= h.changeCase.pascal(nodeType) %>Response"
             }
           },
+          "links": {
+            "$ref": "#/components/schemas/PaginationLinks"
+          },
           "meta": {
             "$ref": "#/components/schemas/MetaData"
           }
