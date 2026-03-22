@@ -23,11 +23,18 @@ export const RatingSchema = {
             ],
             additionalProperties: false,
         },
+        links: {
+            type: "object",
+            properties: {
+                self: {type: ["string"]},
+            },
+        },
     },
     required: [
         "type",
         "id",
         "attributes",
+        "links",
     ],
     additionalProperties: false,
 }
