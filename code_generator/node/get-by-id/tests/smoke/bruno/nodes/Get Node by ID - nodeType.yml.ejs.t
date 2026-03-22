@@ -1,5 +1,8 @@
+---
+to: tests/smoke/bruno/nodes/Get Node by ID - <%= h.changeCase.title(nodeType) %>.yml
+---
 info:
-  name: Get Track Layout by ID (valid data)
+  name: Get Node by ID - <%= h.changeCase.title(nodeType) %>
   type: http
   tags:
     - get
@@ -8,7 +11,7 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/track-layouts/{{validTrackLayoutId}}"
+  url: "{{baseUrl}}/nodes/{{valid<%= h.changeCase.pascal(nodeType) %>Id}}"
 
 runtime:
   assertions:
@@ -19,7 +22,7 @@ runtime:
       operator: isJson
     - expression: res.body.id
       operator: eq
-      value: "{{validTrackLayoutId}}"
+      value: "{{valid<%= h.changeCase.pascal(nodeType) %>Id}}"
     - expression: res.body.attributes.created_at
       operator: isString
     - expression: res.body.attributes.created_at
@@ -35,5 +38,5 @@ runtime:
   scripts:
     - type: before-request
       code: |-
-        const TrackLayouts = require('./lib/node-types/TrackLayouts.js')
-        await TrackLayouts.create()
+        const <%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %> = require('./lib/node-types/<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>.js')
+        await <%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>.create()

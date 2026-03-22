@@ -31,6 +31,10 @@ runtime:
       operator: isString
     - expression: res.body.attributes.updated_at
       operator: isNotEmpty
+    - expression: res.body.links.self
+      operator: isString
+    - expression: res.body.links.self
+      operator: isNotEmpty
   scripts:
     - type: before-request
       code: |-

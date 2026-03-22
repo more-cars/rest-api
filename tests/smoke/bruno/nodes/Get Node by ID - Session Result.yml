@@ -1,5 +1,5 @@
 info:
-  name: Get Track Layout by ID (valid data)
+  name: Get Node by ID - Session Result
   type: http
   tags:
     - get
@@ -8,7 +8,7 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/track-layouts/{{validTrackLayoutId}}"
+  url: "{{baseUrl}}/nodes/{{validSessionResultId}}"
 
 runtime:
   assertions:
@@ -19,7 +19,7 @@ runtime:
       operator: isJson
     - expression: res.body.id
       operator: eq
-      value: "{{validTrackLayoutId}}"
+      value: "{{validSessionResultId}}"
     - expression: res.body.attributes.created_at
       operator: isString
     - expression: res.body.attributes.created_at
@@ -35,5 +35,5 @@ runtime:
   scripts:
     - type: before-request
       code: |-
-        const TrackLayouts = require('./lib/node-types/TrackLayouts.js')
-        await TrackLayouts.create()
+        const SessionResults = require('./lib/node-types/SessionResults.js')
+        await SessionResults.create()

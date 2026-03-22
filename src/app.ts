@@ -2,6 +2,7 @@ import express, {Express} from "express"
 import cors from "cors"
 import openApiSpecification from "./routes/open-api-specification"
 import health from "./routes/health"
+import nodes from "./routes/nodes/nodes"
 import companies from "./routes/node-types/companies"
 import brands from './routes/node-types/brands'
 import carModels from "./routes/node-types/car-models"
@@ -66,6 +67,7 @@ app.use('/', programmes)
 app.use('/', programmeEpisodes)
 app.use('/', motorShows)
 app.use('/', images)
+app.use('/', nodes)
 app.use('/', relationships)
 
 export {app}

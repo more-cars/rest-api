@@ -35,6 +35,8 @@ describe('Marshalling a node', () => {
         expect(isFlatObject(marshalledNode.attributes))
             .toBe(true)
 
+        expect(marshalledNode.links.self)
+            .to.equal(`/${convertStringToControllerNodeType(nodeType)}/${modelNode.attributes.id}`)
     })
 })
 

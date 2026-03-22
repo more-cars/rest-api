@@ -1,5 +1,5 @@
 info:
-  name: Get Track Layout by ID (valid data)
+  name: Get Node by ID - Track Layout
   type: http
   tags:
     - get
@@ -8,7 +8,7 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/track-layouts/{{validTrackLayoutId}}"
+  url: "{{baseUrl}}/nodes/{{validTrackLayoutId}}"
 
 runtime:
   assertions:
