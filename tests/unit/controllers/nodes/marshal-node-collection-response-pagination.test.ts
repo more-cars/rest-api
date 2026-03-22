@@ -2,7 +2,7 @@ import {describe, expect, test} from 'vitest'
 import {marshalNodeCollection} from "../../../../src/controllers/nodes/marshalNodeCollection"
 import {convertModelNodeToControllerNode} from "../../../../src/controllers/nodes/convertModelNodeToControllerNode"
 import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
-import {NodeType} from "../../../../src/specification/NodeType"
+import {ExpectedNodeType} from "../../../_toolbox/types/ExpectedNodeType"
 import {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 
 describe('Expecting pagination meta information when marshalling a node collection', () => {
@@ -26,9 +26,9 @@ describe('Expecting pagination meta information when marshalling a node collecti
     })
 
     test('when the result list is not empty', async () => {
-        const nodeA = convertModelNodeToControllerNode(getFakeNode(NodeType.CarModel).modelOutput)
-        const nodeB = convertModelNodeToControllerNode(getFakeNode(NodeType.CarModel).modelOutput)
-        const nodeC = convertModelNodeToControllerNode(getFakeNode(NodeType.CarModel).modelOutput)
+        const nodeA = convertModelNodeToControllerNode(getFakeNode(ExpectedNodeType.CarModel).modelOutput)
+        const nodeB = convertModelNodeToControllerNode(getFakeNode(ExpectedNodeType.CarModel).modelOutput)
+        const nodeC = convertModelNodeToControllerNode(getFakeNode(ExpectedNodeType.CarModel).modelOutput)
 
         const marshalledNodeCollection = marshalNodeCollection(ControllerNodeType.CarModel, [nodeA, nodeB, nodeC], {page: 2}, 3)
 

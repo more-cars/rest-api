@@ -1,13 +1,13 @@
 import {When} from "@cucumber/cucumber"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
-import {convertStringToNodeType} from "../../../_toolbox/convertStringToNodeType"
+import {convertStringToExpectedNodeType} from "../../../_toolbox/convertStringToNodeType"
 import {performApiRequest} from "../../lib/performApiRequest"
 
 When('the user creates a(n) {string}',
     async (nodeType: string) => {
         const nodePath = getBasePathFragmentForNodeType(nodeType)
-        const data = getFakeNode(convertStringToNodeType(nodeType)).dbInput
+        const data = getFakeNode(convertStringToExpectedNodeType(nodeType)).dbInput
         const path = `/${nodePath}`
 
         await performApiRequest(path, 'POST', data)

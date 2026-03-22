@@ -2,14 +2,14 @@ import type {ControllerNode} from "../../../src/controllers/types/ControllerNode
 import {getFakeNode} from "../../_toolbox/fixtures/nodes/getFakeNode"
 import {getBasePathFragmentForNodeType} from "./getBasePathFragmentForNodeType"
 import {performApiRequest} from "./performApiRequest"
-import {convertStringToControllerNodeType, convertStringToNodeType} from "../../_toolbox/convertStringToNodeType"
+import {convertStringToControllerNodeType, convertStringToExpectedNodeType} from "../../_toolbox/convertStringToNodeType"
 
 const nodeCache = new Map<string, ControllerNode>()
 const nodeCollectionCache = new Map<string, ControllerNode[]>()
 
 export const NodeManager = {
     async createNode(nodeType: string, label: string, data?: any) {
-        const inputData = data || getFakeNode(convertStringToNodeType(nodeType)).dbInput
+        const inputData = data || getFakeNode(convertStringToExpectedNodeType(nodeType)).dbInput
         const nodeBasePath = getBasePathFragmentForNodeType(nodeType)
         const path = `/${nodeBasePath}`
 

@@ -1,10 +1,15 @@
 import {pluralize, titleize} from "inflection"
 import {kebabCase, pascalCase, snakeCase} from "change-case"
+import type {ExpectedNodeType} from "./types/ExpectedNodeType"
 import type {NodeType} from "../../src/specification/NodeType"
 import type {ControllerNodeType} from "../../src/controllers/types/ControllerNodeType"
 import type {ModelNodeType} from "../../src/models/types/ModelNodeType"
 import type {DbNodeType} from "../../src/db/types/DbNodeType"
 import type {Neo4jNodeType} from "../../src/db/types/Neo4jNodeType"
+
+export function convertStringToExpectedNodeType(rawNodeType: string) {
+    return titleize(rawNodeType) as ExpectedNodeType
+}
 
 export function convertStringToNodeType(rawNodeType: string) {
     return titleize(rawNodeType) as NodeType

@@ -1,13 +1,14 @@
 import {describe, expect, test} from 'vitest'
-import {getAllNodeTypes} from "../../../_toolbox/getAllNodeTypes"
-import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
 import request from "supertest"
+import {getAllExpectedNodeTypes} from "../../../_toolbox/getAllExpectedNodeTypes"
+import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
 import {app} from "../../../../src/app"
 import {getUrlFragmentForNodeType} from "../../../_toolbox/getUrlFragmentForNodeType"
+import {convertStringToNodeType} from "../../../_toolbox/convertStringToNodeType"
 
 describe('The user injects the timestamp fields illegally', () => {
     test.each(
-        getAllNodeTypes().map(nodeType => [nodeType]),
+        getAllExpectedNodeTypes().map(nodeType => [nodeType]),
     )('when creating a new node of type $0', async (nodeType) => {
         if (!nodeType) {
             return
@@ -20,7 +21,7 @@ describe('The user injects the timestamp fields illegally', () => {
         })
 
         const response = await request(app)
-            .post('/' + getUrlFragmentForNodeType(nodeType))
+            .post('/' + getUrlFragmentForNodeType(convertStringToNodeType(nodeType)))
             .send(manipulatedInput)
 
         expect(response.body.attributes).toHaveProperty('created_at')

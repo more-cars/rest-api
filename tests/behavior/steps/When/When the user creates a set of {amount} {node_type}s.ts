@@ -2,7 +2,7 @@ import {When} from "@cucumber/cucumber"
 import type {ApiResponse} from "../../lib/ApiResponse"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
-import {convertStringToNodeType} from "../../../_toolbox/convertStringToNodeType"
+import {convertStringToExpectedNodeType} from "../../../_toolbox/convertStringToNodeType"
 import {performApiRequest} from "../../lib/performApiRequest"
 import {NodeManager} from "../../lib/NodeManager"
 import {convertNodeResponseToNode} from "../../lib/convertNodeResponseToNode"
@@ -13,7 +13,7 @@ When('the user creates a set {string} of {int} {string}s',
 
         for (let i = 0; i < amount; i++) {
             const nodePath = getBasePathFragmentForNodeType(nodeType)
-            const data = getFakeNode(convertStringToNodeType(nodeType)).dbInput
+            const data = getFakeNode(convertStringToExpectedNodeType(nodeType)).dbInput
             const path = `/${nodePath}`
 
             const response = await performApiRequest(path, 'POST', data)

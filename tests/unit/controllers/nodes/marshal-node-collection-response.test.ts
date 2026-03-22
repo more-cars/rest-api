@@ -1,12 +1,12 @@
 import {describe, expect, test} from 'vitest'
 import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
-import {getAllNodeTypes} from "../../../_toolbox/getAllNodeTypes"
+import {getAllExpectedNodeTypes} from "../../../_toolbox/getAllExpectedNodeTypes"
 import {convertModelNodeToControllerNode} from "../../../../src/controllers/nodes/convertModelNodeToControllerNode"
 import {marshalNodeCollection} from "../../../../src/controllers/nodes/marshalNodeCollection"
 
 describe('Marshalling a node collection', () => {
     test.each(
-        getAllNodeTypes().map(relType => [relType])
+        getAllExpectedNodeTypes().map(relType => [relType])
     )('marshalling a $0 node collection', async (nodeType) => {
         if (!nodeType) {
             return

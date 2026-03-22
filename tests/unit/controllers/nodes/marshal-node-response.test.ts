@@ -1,13 +1,13 @@
 import {describe, expect, test} from 'vitest'
+import {getAllExpectedNodeTypes} from "../../../_toolbox/getAllExpectedNodeTypes"
 import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
-import {getAllNodeTypes} from "../../../_toolbox/getAllNodeTypes"
-import {marshalSingleNode} from "../../../../src/controllers/nodes/marshalSingleNode"
 import {convertModelNodeToControllerNode} from "../../../../src/controllers/nodes/convertModelNodeToControllerNode"
+import {marshalSingleNode} from "../../../../src/controllers/nodes/marshalSingleNode"
 import {convertStringToControllerNodeType} from "../../../_toolbox/convertStringToNodeType"
 
 describe('Marshalling a node', () => {
     test.each(
-        getAllNodeTypes().map(relType => [relType])
+        getAllExpectedNodeTypes().map(relType => [relType])
     )('marshalling a $0 node', async (nodeType) => {
         if (!nodeType) {
             return

@@ -1,6 +1,6 @@
 import {When} from "@cucumber/cucumber"
 import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
-import {convertStringToNodeType} from "../../../_toolbox/convertStringToNodeType"
+import {convertStringToExpectedNodeType} from "../../../_toolbox/convertStringToNodeType"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {performApiRequest} from "../../lib/performApiRequest"
 import {NodeManager} from "../../lib/NodeManager"
@@ -8,7 +8,7 @@ import {convertNodeResponseToNode} from "../../lib/convertNodeResponseToNode"
 
 When('the user creates a {string} {string}',
     async (nodeType: string, label: string) => {
-        const data = getFakeNode(convertStringToNodeType(nodeType)).dbInput
+        const data = getFakeNode(convertStringToExpectedNodeType(nodeType)).dbInput
         const nodePath = getBasePathFragmentForNodeType(nodeType)
         const path = `/${nodePath}`
 

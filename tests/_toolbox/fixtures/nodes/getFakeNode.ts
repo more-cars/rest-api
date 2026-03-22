@@ -1,5 +1,5 @@
 import assert from "assert"
-import {NodeType} from "../../../../src/specification/NodeType"
+import {ExpectedNodeType} from "../../types/ExpectedNodeType"
 import type {FakeNode} from "./types/FakeNode"
 import {FakeCompany} from "./FakeCompany"
 import {FakeBrand} from "./FakeBrand"
@@ -25,32 +25,32 @@ import {FakeProgrammeEpisode} from "./FakeProgrammeEpisode"
 import {FakeMotorShow} from "./FakeMotorShow"
 import {FakeImage} from "./FakeImage"
 
-export function getFakeNode(nodeType: NodeType) {
-    const mapping = new Map<NodeType, FakeNode>([
-        [NodeType.Company, FakeCompany],
-        [NodeType.Brand, FakeBrand],
-        [NodeType.CarModel, FakeCarModel],
-        [NodeType.CarModelVariant, FakeCarModelVariant],
-        [NodeType.Price, FakePrice],
-        [NodeType.RaceTrack, FakeRaceTrack],
-        [NodeType.TrackLayout, FakeTrackLayout],
-        [NodeType.RacingSeries, FakeRacingSeries],
-        [NodeType.RacingEvent, FakeRacingEvent],
-        [NodeType.RacingSession, FakeRacingSession],
-        [NodeType.SessionResult, FakeSessionResult],
-        [NodeType.LapTime, FakeLapTime],
-        [NodeType.RacingGame, FakeRacingGame],
-        [NodeType.GamingPlatform, FakeGamingPlatform],
-        [NodeType.ModelCar, FakeModelCar],
-        [NodeType.ModelCarBrand, FakeModelCarBrand],
-        [NodeType.Magazine, FakeMagazine],
-        [NodeType.MagazineIssue, FakeMagazineIssue],
-        [NodeType.Rating, FakeRating],
-        [NodeType.Programme, FakeProgramme],
-        [NodeType.ProgrammeEpisode, FakeProgrammeEpisode],
-        [NodeType.MotorShow, FakeMotorShow],
-        [NodeType.Image, FakeImage],
-        [NodeType.Node, FakeBrand],
+export function getFakeNode(nodeType: ExpectedNodeType) {
+    const mapping = new Map<ExpectedNodeType, FakeNode>([
+        [ExpectedNodeType.Node, FakeBrand],
+        [ExpectedNodeType.Company, FakeCompany],
+        [ExpectedNodeType.Brand, FakeBrand],
+        [ExpectedNodeType.CarModel, FakeCarModel],
+        [ExpectedNodeType.CarModelVariant, FakeCarModelVariant],
+        [ExpectedNodeType.Price, FakePrice],
+        [ExpectedNodeType.RaceTrack, FakeRaceTrack],
+        [ExpectedNodeType.TrackLayout, FakeTrackLayout],
+        [ExpectedNodeType.RacingSeries, FakeRacingSeries],
+        [ExpectedNodeType.RacingEvent, FakeRacingEvent],
+        [ExpectedNodeType.RacingSession, FakeRacingSession],
+        [ExpectedNodeType.SessionResult, FakeSessionResult],
+        [ExpectedNodeType.LapTime, FakeLapTime],
+        [ExpectedNodeType.RacingGame, FakeRacingGame],
+        [ExpectedNodeType.GamingPlatform, FakeGamingPlatform],
+        [ExpectedNodeType.ModelCar, FakeModelCar],
+        [ExpectedNodeType.ModelCarBrand, FakeModelCarBrand],
+        [ExpectedNodeType.Magazine, FakeMagazine],
+        [ExpectedNodeType.MagazineIssue, FakeMagazineIssue],
+        [ExpectedNodeType.Rating, FakeRating],
+        [ExpectedNodeType.Programme, FakeProgramme],
+        [ExpectedNodeType.ProgrammeEpisode, FakeProgrammeEpisode],
+        [ExpectedNodeType.MotorShow, FakeMotorShow],
+        [ExpectedNodeType.Image, FakeImage],
     ])
 
     const fakeNode = mapping.get(nodeType)
