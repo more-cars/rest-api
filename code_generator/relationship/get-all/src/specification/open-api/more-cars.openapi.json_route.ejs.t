@@ -1,6 +1,6 @@
 ---
 inject: true
-to: specification/OpenAPI/more-cars.openapi.json
+to: src/specification/open-api/more-cars.openapi.json
 before: <%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/{<%= h.changeCase.kebab(startNodeType) %>-id}/<%= h.changeCase.kebab(relationshipName) %>
 skip_if: Get all ›<%= h.changeCase.kebab(relationshipName) %>‹ relationships for the `<%= h.changeCase.title(startNodeType) %>`
 ---

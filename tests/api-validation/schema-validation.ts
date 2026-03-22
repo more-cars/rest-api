@@ -4,7 +4,7 @@ validateSchema().then(_ => true)
 
 async function validateSchema() {
     const validator = new Validator()
-    const res = await validator.validate(__dirname + '/../../specification/OpenAPI/more-cars.openapi.json')
+    const res = await validator.validate(__dirname + '/../../src/specification/open-api/more-cars.openapi.json')
 
     if (res.valid) {
         console.log(`✓ The provided schema conforms to OpenAPI version ${validator.version}.`)

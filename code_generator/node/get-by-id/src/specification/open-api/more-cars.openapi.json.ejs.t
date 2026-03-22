@@ -1,6 +1,6 @@
 ---
 inject: true
-to: specification/OpenAPI/more-cars.openapi.json
+to: src/specification/open-api/more-cars.openapi.json
 before: \"/relationships/{relationship-id}\"
 skip_if: Get `<%= h.changeCase.title(nodeType) %>` by ID
 ---

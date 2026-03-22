@@ -1,6 +1,6 @@
 ---
 inject: true
-to: specification/OpenAPI/more-cars.openapi.json
+to: src/specification/open-api/more-cars.openapi.json
 after: '"/<%= h.inflection.pluralize(h.changeCase.kebab(nodeType)) %>/{<%= h.changeCase.kebab(nodeType) %>-id}": {'
 skip_if: 'Delete `<%= h.changeCase.title(nodeType) %>`'
 ---
