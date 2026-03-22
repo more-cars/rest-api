@@ -21770,26 +21770,7 @@
             "example": "belongs-to-node"
           },
           "partner_node": {
-            "type": "object",
-            "properties": {
-              "node_type": {
-                "type": "string",
-                "example": "brands"
-              },
-              "data": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/Company"
-                  },
-                  {
-                    "$ref": "#/components/schemas/Brand"
-                  },
-                  {
-                    "$ref": "#/components/schemas/CarModel"
-                  }
-                ]
-              }
-            }
+            "$ref": "#/components/schemas/Node"
           },
           "created_at": {
             "type": "string",
@@ -21873,26 +21854,7 @@
             "example": "is-prime-image-of-node"
           },
           "partner_node": {
-            "type": "object",
-            "properties": {
-              "node_type": {
-                "type": "string",
-                "example": "brands"
-              },
-              "data": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/Company"
-                  },
-                  {
-                    "$ref": "#/components/schemas/Brand"
-                  },
-                  {
-                    "$ref": "#/components/schemas/CarModel"
-                  }
-                ]
-              }
-            }
+            "$ref": "#/components/schemas/Node"
           },
           "created_at": {
             "type": "string",
