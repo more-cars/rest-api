@@ -127,19 +127,6 @@ export const Brand = {
         return createdRelationship
     },
 
-    async getSpecificHasCarModelRelationship(brandId: number, carModelId: number) {
-        // checking that the node exists -> exception is thrown if not
-        await Brand.findById(brandId)
-        await CarModel.findById(carModelId)
-
-        const relationship = await getSpecificRel(brandId, carModelId, RelType.BrandHasCarModel)
-        if (!relationship) {
-            throw new RelNotFoundError(RelType.BrandHasCarModel, brandId, carModelId)
-        }
-
-        return relationship
-    },
-
     async getAllHasCarModelRelationships(brandId: number) {
         // checking that the node exists -> exception is thrown if not
         await Brand.findById(brandId)
@@ -176,19 +163,6 @@ export const Brand = {
         }
 
         return createdRelationship
-    },
-
-    async getSpecificHasImageRelationship(brandId: number, imageId: number) {
-        // checking that the node exists -> exception is thrown if not
-        await Brand.findById(brandId)
-        await Image.findById(imageId)
-
-        const relationship = await getSpecificRel(brandId, imageId, RelType.BrandHasImage)
-        if (!relationship) {
-            throw new RelNotFoundError(RelType.BrandHasImage, brandId, imageId)
-        }
-
-        return relationship
     },
 
     async getAllHasImageRelationships(brandId: number) {

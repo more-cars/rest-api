@@ -7,11 +7,9 @@ import {createBelongsToCompanyRelation} from "./brands/createBelongsToCompanyRel
 import {getBelongsToCompanyRelation} from "./brands/getBelongsToCompanyRelation"
 import {deleteBelongsToCompanyRelation} from "./brands/deleteBelongsToCompanyRelation"
 import {createHasCarModelRelation} from "./brands/createHasCarModelRelation"
-import {getSpecificHasCarModelRelation} from "./brands/getSpecificHasCarModelRelation"
 import {getAllHasCarModelRelations} from "./brands/getAllHasCarModelRelations"
 import {deleteHasCarModelRelation} from "./brands/deleteHasCarModelRelation"
 import {createHasImageRelation} from "./brands/createHasImageRelation"
-import {getSpecificHasImageRelation} from "./brands/getSpecificHasImageRelation"
 import {getAllHasImageRelations} from "./brands/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./brands/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./brands/createHasPrimeImageRelation"
@@ -51,10 +49,6 @@ export const BrandController = {
         await createHasCarModelRelation(req, res)
     },
 
-    async getSpecificHasCarModelRelation(req: express.Request, res: express.Response) {
-        await getSpecificHasCarModelRelation(req, res)
-    },
-
     async getAllHasCarModelRelations(req: express.Request, res: express.Response) {
         await getAllHasCarModelRelations(req, res)
     },
@@ -65,10 +59,6 @@ export const BrandController = {
 
     async createHasImageRelation(req: express.Request, res: express.Response) {
         await createHasImageRelation(req, res)
-    },
-
-    async getSpecificHasImageRelation(req: express.Request, res: express.Response) {
-        await getSpecificHasImageRelation(req, res)
     },
 
     async getAllHasImageRelations(req: express.Request, res: express.Response) {

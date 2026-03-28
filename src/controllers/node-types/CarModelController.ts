@@ -22,12 +22,10 @@ import {createCoveredByProgrammeEpisodeRelation} from "./car-models/createCovere
 import {getAllCoveredByProgrammeEpisodeRelations} from "./car-models/getAllCoveredByProgrammeEpisodeRelations"
 import {deleteCoveredByProgrammeEpisodeRelation} from "./car-models/deleteCoveredByProgrammeEpisodeRelation"
 import {createHasImageRelation} from "./car-models/createHasImageRelation"
-import {getSpecificHasImageRelation} from "./car-models/getSpecificHasImageRelation"
 import {getAllHasImageRelations} from "./car-models/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./car-models/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./car-models/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./car-models/getHasPrimeImageRelation"
-import {getSpecificHasPrimeImageRelation} from "./car-models/getSpecificHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./car-models/deleteHasPrimeImageRelation"
 
 export const CarModelController = {
@@ -123,10 +121,6 @@ export const CarModelController = {
         await createHasImageRelation(req, res)
     },
 
-    async getSpecificHasImageRelation(req: express.Request, res: express.Response) {
-        await getSpecificHasImageRelation(req, res)
-    },
-
     async getAllHasImageRelations(req: express.Request, res: express.Response) {
         await getAllHasImageRelations(req, res)
     },
@@ -141,10 +135,6 @@ export const CarModelController = {
 
     async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await getHasPrimeImageRelation(req, res)
-    },
-
-    async getSpecificHasPrimeImageRelation(req: express.Request, res: express.Response) {
-        await getSpecificHasPrimeImageRelation(req, res)
     },
 
     async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {

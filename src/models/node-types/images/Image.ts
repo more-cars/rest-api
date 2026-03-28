@@ -93,19 +93,6 @@ export const Image = {
         return createdRelationship
     },
 
-    async getSpecificBelongsToNodeRelationship(imageId: number, partnerId: number) {
-        // checking that both nodes exist -> exception is thrown if not
-        await Image.findById(imageId)
-        await Node.findById(partnerId)
-
-        const relationship = await getSpecificRel(imageId, partnerId, RelType.ImageBelongsToNode)
-        if (!relationship) {
-            throw new RelNotFoundError(RelType.ImageBelongsToNode, imageId, partnerId)
-        }
-
-        return relationship
-    },
-
     async getAllBelongsToNodeRelationships(imageId: number) {
         // checking that the node exists -> exception is thrown if not
         await Image.findById(imageId)

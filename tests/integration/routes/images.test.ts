@@ -46,14 +46,6 @@ describe('Images', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get specific ›belongs-to-node‹ relationship', async () => {
-        await request(app)
-            .get('/images/123/belongs-to-node/456')
-
-        expect(ImageController.getSpecificBelongsToNodeRelation)
-            .toHaveBeenCalledTimes(1)
-    })
-
     test('Get all ›belongs-to-node‹ relationships', async () => {
         await request(app)
             .get('/images/123/belongs-to-node')

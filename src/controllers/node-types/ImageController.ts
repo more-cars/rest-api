@@ -4,7 +4,6 @@ import {getById} from "./images/getById"
 import {getAll} from "./images/getAll"
 import {deleteNode} from "./images/deleteNode"
 import {createBelongsToNodeRelation} from "./images/createBelongsToNodeRelation"
-import {getSpecificBelongsToNodeRelation} from "./images/getSpecificBelongsToNodeRelation"
 import {getAllBelongsToNodeRelations} from "./images/getAllBelongsToNodeRelations"
 import {deleteBelongsToNodeRelation} from "./images/deleteBelongsToNodeRelation"
 import {getAllBelongsToNodeTypeRelations} from "./images/getAllBelongsToNodeTypeRelations"
@@ -31,10 +30,6 @@ export const ImageController = {
 
     async createBelongsToNodeRelation(req: express.Request, res: express.Response) {
         await createBelongsToNodeRelation(req, res)
-    },
-
-    async getSpecificBelongsToNodeRelation(req: express.Request, res: express.Response) {
-        await getSpecificBelongsToNodeRelation(req, res)
     },
 
     async getAllBelongsToNodeRelations(req: express.Request, res: express.Response) {

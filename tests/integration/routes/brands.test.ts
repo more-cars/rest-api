@@ -70,14 +70,6 @@ describe('Brands', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get specific ›has-car-model‹ relationship', async () => {
-        await request(app)
-            .get('/brands/123/has-car-model/456')
-
-        expect(BrandController.getSpecificHasCarModelRelation)
-            .toHaveBeenCalledTimes(1)
-    })
-
     test('Get all ›has-car-model‹ relationships', async () => {
         await request(app)
             .get('/brands/123/has-car-model')
@@ -99,14 +91,6 @@ describe('Brands', () => {
             .post('/brands/123/has-image/456')
 
         expect(BrandController.createHasImageRelation)
-            .toHaveBeenCalledTimes(1)
-    })
-
-    test('Get specific ›has-image‹ relationship', async () => {
-        await request(app)
-            .get('/brands/123/has-image/456')
-
-        expect(BrandController.getSpecificHasImageRelation)
             .toHaveBeenCalledTimes(1)
     })
 

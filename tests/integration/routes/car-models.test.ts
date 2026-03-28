@@ -190,14 +190,6 @@ describe('Car Models', () => {
             .toHaveBeenCalledTimes(1)
     })
 
-    test('Get specific ›has-image‹ relationship', async () => {
-        await request(app)
-            .get('/car-models/123/has-image/456')
-
-        expect(CarModelController.getSpecificHasImageRelation)
-            .toHaveBeenCalledTimes(1)
-    })
-
     test('Get all ›has-image‹ relationships', async () => {
         await request(app)
             .get('/car-models/123/has-image')
@@ -227,14 +219,6 @@ describe('Car Models', () => {
             .get('/car-models/123/has-prime-image')
 
         expect(CarModelController.getHasPrimeImageRelation)
-            .toHaveBeenCalledTimes(1)
-    })
-
-    test('Has "has prime image" Relationship', async () => {
-        await request(app)
-            .get('/car-models/123/has-prime-image/456')
-
-        expect(CarModelController.getSpecificHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
 
