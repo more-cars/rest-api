@@ -1,7 +1,7 @@
 ---
 inject: true
 to: src/specification/open-api/more-cars.openapi.json
-before: \"/relationships/{relationship-id}\"
+before: \"/nodes/{node-id}\"
 skip_if: Get `<%= h.changeCase.title(nodeType) %>` by ID
 ---
     "/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/{<%= h.changeCase.kebab(nodeType) %>-id}": {
