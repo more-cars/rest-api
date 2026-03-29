@@ -23,6 +23,7 @@ import {RatingRelationshipSpecification} from "./node-types/RatingRelationshipSp
 import {ProgrammeRelationshipSpecification} from "./node-types/ProgrammeRelationshipSpecification"
 import {ProgrammeEpisodeRelationshipSpecification} from "./node-types/ProgrammeEpisodeRelationshipSpecification"
 import {MotorShowRelationshipSpecification} from "./node-types/MotorShowRelationshipSpecification"
+import {VideoRelationshipSpecification} from "./node-types/VideoRelationshipSpecification"
 import {ImageRelationshipSpecification} from "./node-types/ImageRelationshipSpecification"
 
 export function getRelationshipTypeSpecification(relationshipType: RelationshipType) {
@@ -52,6 +53,7 @@ export function getRelationshipTypeSpecification(relationshipType: RelationshipT
         ProgrammeRelationshipSpecification,
         ProgrammeEpisodeRelationshipSpecification,
         MotorShowRelationshipSpecification,
+        VideoRelationshipSpecification,
         ImageRelationshipSpecification,
     ))
 

@@ -115,6 +115,7 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.MotorShowPresentsCarModelVariant, RelationType.MotorShowPresentsCarModelVariant],
         [RelType.MotorShowHasImage, RelationType.MotorShowHasImage],
         [RelType.MotorShowHasPrimeImage, RelationType.MotorShowHasPrimeImage],
+        [RelType.VideoBelongsToNode, RelationType.VideoBelongsToNode],
         [RelType.ImageIsPrimeImageOfNode, RelationType.ImageIsPrimeImageOfNode],
     ])
 

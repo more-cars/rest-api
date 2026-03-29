@@ -109,6 +109,7 @@ export enum RelType {
     MotorShowPresentsCarModelVariant = 'motor_show_presents_car_model_variant',
     MotorShowHasImage = 'motor_show_has_image',
     MotorShowHasPrimeImage = 'motor_show_has_prime_image',
+    VideoBelongsToNode = 'video_belongs_to_node',
     ImageBelongsToNode = 'image_belongs_to_node',
     ImageIsPrimeImageOfNode = 'image_is_prime_image_of_node',
 }

@@ -37,4 +37,12 @@ describe('Videos', () => {
         expect(VideoController.delete)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›belongs-to-node‹ relationship', async () => {
+        await request(app)
+            .post('/videos/123/belongs-to-node/456')
+
+        expect(VideoController.createBelongsToNodeRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
