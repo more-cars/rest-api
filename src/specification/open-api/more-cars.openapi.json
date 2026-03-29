@@ -19304,6 +19304,48 @@
         }
       }
     },
+    "/videos/{video-id}/belongs-to-node": {
+      "get": {
+        "operationId": "getVideoBelongsToNodeRel",
+        "tags": [
+          "Videos"
+        ],
+        "summary": "Get all ›belongs-to-node‹ relationships for the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›belongs-to-node‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VideoBelongsToNodeCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Video` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/videos/{video-id}/belongs-to-node/{node-id}": {
       "post": {
         "tags": [
@@ -28491,6 +28533,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/VideoBelongsToNode"
+          }
+        }
+      },
+      "VideoBelongsToNodeCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VideoBelongsToNodeResponse"
+            }
           }
         }
       },

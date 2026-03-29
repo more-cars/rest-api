@@ -45,4 +45,12 @@ describe('Videos', () => {
         expect(VideoController.createBelongsToNodeRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›belongs-to-node‹ relationships', async () => {
+        await request(app)
+            .get('/videos/123/belongs-to-node')
+
+        expect(VideoController.getAllBelongsToNodeRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })

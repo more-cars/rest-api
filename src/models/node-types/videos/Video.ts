@@ -14,6 +14,7 @@ import {createRel} from "../../relationships/createRel"
 import {getSpecificRel} from "../../relationships/getSpecificRel"
 import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
 import {RelType} from "../../relationships/types/RelType"
+import {getAllRels} from "../../relationships/getAllRels"
 
 export const Video = {
     async create(data: CreateVideoInput): Promise<VideoNode> {
@@ -72,6 +73,13 @@ export const Video = {
         }
 
         return createdRelationship
+    },
+
+    async getAllBelongsToNodeRelationships(videoId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await Video.findById(videoId)
+
+        return getAllRels(videoId, RelType.VideoBelongsToNode)
     },
 }
 
