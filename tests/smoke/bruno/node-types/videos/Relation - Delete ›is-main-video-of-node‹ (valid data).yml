@@ -1,0 +1,26 @@
+info:
+  name: Delete ›is-main-video-of-node‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/videos/{{validVideoId}}/is-main-video-of-node/{{validNodeId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const Videos = require('./lib/node-types/Videos.js')
+        const Brands = require('./lib/node-types/Brands.js')
+        await Videos.create()
+        await Brands.create()
+        bru.setEnvVar('validNodeId', bru.getEnvVar('validBrandId'))
+        await Videos.createIsMainVideoOfNodeRelationship()

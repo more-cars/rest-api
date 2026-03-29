@@ -125,6 +125,19 @@ export const Video = {
 
         return getAllRels(videoId, RelType.VideoIsMainVideoOfNode)
     },
+
+    async deleteIsMainVideoOfNodeRelationship(videoId: number, nodeId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Video.findById(videoId)
+        await Node.findById(nodeId)
+
+        const relationship = await getSpecificRel(videoId, nodeId, RelType.VideoIsMainVideoOfNode)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.VideoIsMainVideoOfNode, videoId, nodeId)
+        }
+
+        await deleteSpecificRel(videoId, nodeId, RelType.VideoIsMainVideoOfNode)
+    },
 }
 
 /**
