@@ -9,5 +9,6 @@ router.get('/videos', VideoController.getAll)
 router.delete('/videos/:id', VideoController.delete)
 router.post('/videos/:videoId/belongs-to-node/:nodeId', VideoController.createBelongsToNodeRelation)
 router.get('/videos/:videoId/belongs-to-node', VideoController.getAllBelongsToNodeRelations)
+router.delete('/videos/:videoId/belongs-to-node/:nodeId', VideoController.deleteBelongsToNodeRelation)
 
 export default router

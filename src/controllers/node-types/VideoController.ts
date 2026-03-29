@@ -5,6 +5,7 @@ import {getAll} from "./videos/getAll"
 import {deleteNode} from "./videos/deleteNode"
 import {createBelongsToNodeRelation} from "./videos/createBelongsToNodeRelation"
 import {getAllBelongsToNodeRelations} from "./videos/getAllBelongsToNodeRelations"
+import {deleteBelongsToNodeRelation} from "./videos/deleteBelongsToNodeRelation"
 
 export const VideoController = {
     async create(req: express.Request, res: express.Response) {
@@ -29,5 +30,9 @@ export const VideoController = {
 
     async getAllBelongsToNodeRelations(req: express.Request, res: express.Response) {
         await getAllBelongsToNodeRelations(req, res)
+    },
+
+    async deleteBelongsToNodeRelation(req: express.Request, res: express.Response) {
+        await deleteBelongsToNodeRelation(req, res)
     },
 }

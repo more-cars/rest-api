@@ -8,7 +8,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/videos/{{validVideoId}}/belongs-to-node/{{validBrandId}}"
+  url: "{{baseUrl}}/videos/{{validVideoId}}/belongs-to-node/{{validNodeId}}"
 
 runtime:
   assertions:
@@ -56,3 +56,4 @@ runtime:
         const Brands = require('./lib/node-types/Brands.js')
         await Videos.create()
         await Brands.create()
+        bru.setEnvVar('validNodeId', bru.getEnvVar('validBrandId'))

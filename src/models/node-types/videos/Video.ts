@@ -15,6 +15,8 @@ import {getSpecificRel} from "../../relationships/getSpecificRel"
 import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
 import {RelType} from "../../relationships/types/RelType"
 import {getAllRels} from "../../relationships/getAllRels"
+import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
+import {RelNotFoundError} from "../../types/RelNotFoundError"
 
 export const Video = {
     async create(data: CreateVideoInput): Promise<VideoNode> {
@@ -80,6 +82,19 @@ export const Video = {
         await Video.findById(videoId)
 
         return getAllRels(videoId, RelType.VideoBelongsToNode)
+    },
+
+    async deleteBelongsToNodeRelationship(videoId: number, nodeId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Video.findById(videoId)
+        await Node.findById(nodeId)
+
+        const relationship = await getSpecificRel(videoId, nodeId, RelType.VideoBelongsToNode)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.VideoBelongsToNode, videoId, nodeId)
+        }
+
+        await deleteSpecificRel(videoId, nodeId, RelType.VideoBelongsToNode)
     },
 }
 

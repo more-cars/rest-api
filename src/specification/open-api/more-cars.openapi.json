@@ -19397,6 +19397,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Videos"
+        ],
+        "summary": "Deletes the ›belongs-to-node‹ relationship between the `Video` and the `Node`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "node-id",
+            "description": "ID of the `Node`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›belongs-to-node‹ relationship between `Video` and `Node` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›belongs-to-node‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/nodes/{node-id}": {
