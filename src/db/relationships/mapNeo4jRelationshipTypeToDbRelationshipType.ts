@@ -301,6 +301,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
             [RelationshipDirection.REVERSE, new Map([
                 // Video - Reverse
                 [RelationshipTypeNeo4j.VideoBelongsToNode, RelationshipType.VideoBelongsToNode],
+                [RelationshipTypeNeo4j.VideoIsMainVideoOfNode, RelationshipType.VideoIsMainVideoOfNode],
             ])],
             [RelationshipDirection.FORWARD, new Map([
                 // Video - Forward

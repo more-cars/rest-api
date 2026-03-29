@@ -8,5 +8,10 @@ export const VideoRelationshipSpecification: RelationshipTypeSpecification[] = [
         endNodeType: NodeType.Node,
         isReverseRelationship: true,
     }],
+    [RelationshipType.VideoIsMainVideoOfNode, {
+        startNodeType: NodeType.Video,
+        endNodeType: NodeType.Node,
+        isReverseRelationship: true,
+    }],
     //
 ]

@@ -115,6 +115,7 @@ export function mapModelRelTypeToDbRelationshipType(modelRelType: RelType): Rela
         [RelType.MotorShowHasImage, RelationshipType.MotorShowHasImage],
         [RelType.MotorShowHasPrimeImage, RelationshipType.MotorShowHasPrimeImage],
         [RelType.VideoBelongsToNode, RelationshipType.VideoBelongsToNode],
+        [RelType.VideoIsMainVideoOfNode, RelationshipType.VideoIsMainVideoOfNode],
         [RelType.ImageBelongsToNode, RelationshipType.ImageBelongsToNode],
         [RelType.ImageIsPrimeImageOfNode, RelationshipType.ImageIsPrimeImageOfNode],
     ])

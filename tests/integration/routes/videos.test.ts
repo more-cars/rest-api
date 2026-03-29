@@ -61,4 +61,12 @@ describe('Videos', () => {
         expect(VideoController.deleteBelongsToNodeRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›is-main-video-of-node‹ relationship', async () => {
+        await request(app)
+            .post('/videos/123/is-main-video-of-node/456')
+
+        expect(VideoController.createIsMainVideoOfNodeRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

@@ -119,6 +119,7 @@ export function mapDbRelationshipTypeToNeo4jRelationshipType(
         [RelationshipType.MotorShowHasImage, RelationshipTypeNeo4j.MotorShowHasImage],
         [RelationshipType.MotorShowHasPrimeImage, RelationshipTypeNeo4j.MotorShowHasPrimeImage],
         [RelationshipType.VideoBelongsToNode, RelationshipTypeNeo4j.VideoBelongsToNode],
+        [RelationshipType.VideoIsMainVideoOfNode, RelationshipTypeNeo4j.VideoIsMainVideoOfNode],
         [RelationshipType.ImageBelongsToNode, RelationshipTypeNeo4j.ImageBelongsToNode],
         [RelationshipType.ImageIsPrimeImageOfNode, RelationshipTypeNeo4j.ImageIsPrimeImageOfNode],
     ])

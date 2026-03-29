@@ -112,6 +112,7 @@ export enum RelationshipTypeNeo4j {
     MotorShowHasImage = 'HAS_IMAGE',
     MotorShowHasPrimeImage = 'HAS_PRIME_IMAGE',
     VideoBelongsToNode = 'HAS_VIDEO',
+    VideoIsMainVideoOfNode = 'HAS_MAIN_VIDEO',
     ImageBelongsToNode = 'HAS_IMAGE',
     ImageIsPrimeImageOfNode = 'HAS_PRIME_IMAGE',
 }

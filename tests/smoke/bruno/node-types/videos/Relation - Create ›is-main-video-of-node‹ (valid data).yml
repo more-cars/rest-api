@@ -1,0 +1,59 @@
+info:
+  name: Create ›is-main-video-of-node‹ relation (valid data)
+  type: http
+  tags:
+    - create
+    - relation
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/videos/{{validVideoId}}/is-main-video-of-node/{{validNodeId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data
+      operator: isJson
+    - expression: res.body.data.relationship_id
+      operator: gte
+      value: "12000000"
+    - expression: res.body.data.relationship_name
+      operator: eq
+      value: "is-main-video-of-node"
+    - expression: res.body.data.start_node
+      operator: isJson
+    - expression: res.body.data.start_node.node_type
+      operator: eq
+      value: "videos"
+    - expression: res.body.data.start_node.data.id
+      operator: eq
+      value: "{{validVideoId}}"
+    - expression: res.body.data.partner_node
+      operator: isJson
+    - expression: res.body.data.partner_node.node_type
+      operator: eq
+      value: "nodes"
+    - expression: res.body.data.partner_node.data.id
+      operator: eq
+      value: "{{validNodeId}}"
+    - expression: res.body.data.created_at
+      operator: isString
+    - expression: res.body.data.created_at
+      operator: isNotEmpty
+    - expression: res.body.data.updated_at
+      operator: isString
+    - expression: res.body.data.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const Videos = require('./lib/node-types/Videos.js')
+        const Brands = require('./lib/node-types/Brands.js')
+        await Videos.create()
+        await Brands.create()
+        bru.setEnvVar('validNodeId', bru.getEnvVar('validBrandId'))

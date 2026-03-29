@@ -17,6 +17,8 @@ import {RelType} from "../../relationships/types/RelType"
 import {getAllRels} from "../../relationships/getAllRels"
 import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
+import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
+import {ModelNodeType} from "../../types/ModelNodeType"
 
 export const Video = {
     async create(data: CreateVideoInput): Promise<VideoNode> {
@@ -95,6 +97,26 @@ export const Video = {
         }
 
         await deleteSpecificRel(videoId, nodeId, RelType.VideoBelongsToNode)
+    },
+
+    async createIsMainVideoOfNodeRelationship(videoId: number, nodeId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Video.findById(videoId)
+        await Node.findById(nodeId)
+
+        const existingRelation = await getSpecificRel(videoId, nodeId, RelType.VideoIsMainVideoOfNode)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.VideoIsMainVideoOfNode, videoId, nodeId)
+        }
+
+        await deleteIncomingRel(nodeId, RelType.VideoIsMainVideoOfNode, ModelNodeType.Video)
+
+        const createdRelationship = await createRel(videoId, nodeId, RelType.VideoIsMainVideoOfNode)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }
 
