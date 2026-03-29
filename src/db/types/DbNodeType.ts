@@ -1,4 +1,5 @@
 export enum DbNodeType {
+    // "Node" means "any" node type.
     Node = "",
     Company = "Company",
     Brand = "Brand",

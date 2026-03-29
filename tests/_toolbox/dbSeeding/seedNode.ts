@@ -27,6 +27,8 @@ import {seedImage} from "./images/nodes/seedImage"
 
 export async function seedNode(dbNodeType: DbNodeType, customFakeData: object = {}) {
     switch (dbNodeType) {
+        case DbNodeType.Node:
+            return seedCarModelVariant(customFakeData)
         case DbNodeType.Company:
             return seedCompany(customFakeData)
         case DbNodeType.Brand:
