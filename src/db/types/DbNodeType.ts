@@ -1,4 +1,5 @@
 export enum DbNodeType {
+    Node = "",
     Company = "Company",
     Brand = "Brand",
     CarModel = "CarModel",
@@ -21,6 +22,6 @@ export enum DbNodeType {
     Programme = "Programme",
     ProgrammeEpisode = "ProgrammeEpisode",
     MotorShow = "MotorShow",
+    Video = "Video",
     Image = "Image",
-    Node = "",
 }

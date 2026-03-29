@@ -21,5 +21,6 @@ export enum ControllerNodeType {
     Programme = "programmes",
     ProgrammeEpisode = "programme-episodes",
     MotorShow = "motor-shows",
+    Video = "videos",
     Image = 'images',
 }

@@ -23,6 +23,7 @@ import {FakeRating} from "./FakeRating"
 import {FakeProgramme} from "./FakeProgramme"
 import {FakeProgrammeEpisode} from "./FakeProgrammeEpisode"
 import {FakeMotorShow} from "./FakeMotorShow"
+import {FakeVideo} from "./FakeVideo"
 import {FakeImage} from "./FakeImage"
 
 export function getFakeNode(nodeType: ExpectedNodeType) {
@@ -50,6 +51,7 @@ export function getFakeNode(nodeType: ExpectedNodeType) {
         [ExpectedNodeType.Programme, FakeProgramme],
         [ExpectedNodeType.ProgrammeEpisode, FakeProgrammeEpisode],
         [ExpectedNodeType.MotorShow, FakeMotorShow],
+        [ExpectedNodeType.Video, FakeVideo],
         [ExpectedNodeType.Image, FakeImage],
     ])
 

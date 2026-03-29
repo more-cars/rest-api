@@ -26,6 +26,7 @@ export function mapControllerNodeTypeToModelNodeType(controllerNodeType: Control
         [ControllerNodeType.Programme, ModelNodeType.Programme],
         [ControllerNodeType.ProgrammeEpisode, ModelNodeType.ProgrammeEpisode],
         [ControllerNodeType.MotorShow, ModelNodeType.MotorShow],
+        [ControllerNodeType.Video, ModelNodeType.Video],
         [ControllerNodeType.Image, ModelNodeType.Image],
     ])
 

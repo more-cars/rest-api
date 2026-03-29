@@ -1,0 +1,16 @@
+import {describe, expect, test, vi} from "vitest"
+import request from "supertest"
+import {app} from "../../../src/app"
+import {VideoController} from "../../../src/controllers/node-types/VideoController"
+
+describe('Videos', () => {
+    vi.mock("../../../src/controllers/node-types/VideoController.ts", {spy: true})
+
+    test('Create Node', async () => {
+        await request(app)
+            .post('/videos')
+
+        expect(VideoController.create)
+            .toHaveBeenCalledTimes(1)
+    })
+})

@@ -1,4 +1,5 @@
 export enum NodeType {
+    Node = "",
     Company = "Company",
     Brand = "Brand",
     CarModel = "Car Model",
@@ -21,6 +22,6 @@ export enum NodeType {
     Programme = "Programme",
     ProgrammeEpisode = "Programme Episode",
     MotorShow = "Motor Show",
+    Video = "Video",
     Image = "Image",
-    Node = "",
 }

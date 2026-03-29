@@ -1,4 +1,5 @@
 export enum Neo4jNodeType {
+    Node = "",
     Company = "Company",
     Brand = "Brand",
     CarModel = "CarModel",
@@ -21,6 +22,6 @@ export enum Neo4jNodeType {
     Programme = "Programme",
     ProgrammeEpisode = "ProgrammeEpisode",
     MotorShow = "MotorShow",
+    Video = "Video",
     Image = "Image",
-    Node = "",
 }

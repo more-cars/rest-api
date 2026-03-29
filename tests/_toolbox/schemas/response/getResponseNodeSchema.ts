@@ -22,6 +22,7 @@ import {RatingSchema} from "./node-types/RatingSchema"
 import {ProgrammeSchema} from "./node-types/ProgrammeSchema"
 import {ProgrammeEpisodeSchema} from "./node-types/ProgrammeEpisodeSchema"
 import {MotorShowSchema} from "./node-types/MotorShowSchema"
+import {VideoSchema} from "./VideoSchema"
 import {ImageSchema} from "./node-types/ImageSchema"
 
 export function getResponseNodeSchema(nodeType: ControllerNodeType) {
@@ -48,6 +49,7 @@ export function getResponseNodeSchema(nodeType: ControllerNodeType) {
         [ControllerNodeType.Programme, ProgrammeSchema],
         [ControllerNodeType.ProgrammeEpisode, ProgrammeEpisodeSchema],
         [ControllerNodeType.MotorShow, MotorShowSchema],
+        [ControllerNodeType.Video, VideoSchema],
         [ControllerNodeType.Image, ImageSchema],
     ])
 

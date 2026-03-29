@@ -20,6 +20,7 @@ import type {RatingNode} from "../node-types/ratings/types/RatingNode"
 import type {ProgrammeNode} from "../node-types/programmes/types/ProgrammeNode"
 import type {ProgrammeEpisodeNode} from "../node-types/programme-episodes/types/ProgrammeEpisodeNode"
 import type {MotorShowNode} from "../node-types/motor-shows/types/MotorShowNode"
+import type {VideoNode} from "../node-types/videos/types/VideoNode"
 import type {ImageNode} from "../node-types/images/types/ImageNode"
 
 export type ControllerNode =
@@ -45,4 +46,5 @@ export type ControllerNode =
     ProgrammeNode |
     ProgrammeEpisodeNode |
     MotorShowNode |
+    VideoNode |
     ImageNode

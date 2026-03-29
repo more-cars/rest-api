@@ -297,6 +297,14 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.MotorShowHasPrimeImage, RelationshipType.MotorShowHasPrimeImage],
             ])],
         ])],
+        [Neo4jNodeType.Video, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+            [RelationshipDirection.REVERSE, new Map([
+                // Video - Reverse
+            ])],
+            [RelationshipDirection.FORWARD, new Map([
+                // Video - Forward
+            ])],
+        ])],
         [Neo4jNodeType.Image, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
                 // Image - Reverse

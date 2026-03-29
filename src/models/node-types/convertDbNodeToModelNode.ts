@@ -44,6 +44,8 @@ import {convertProgrammeEpisodeDbNodeToModelNode} from "./programme-episodes/cre
 import type {ProgrammeEpisodeNode} from "../../db/node-types/programme-episodes/types/ProgrammeEpisodeNode"
 import {convertMotorShowDbNodeToModelNode} from "./motor-shows/create/convertMotorShowDbNodeToModelNode"
 import type {MotorShowNode} from "../../db/node-types/motor-shows/types/MotorShowNode"
+import {convertVideoDbNodeToModelNode} from "./videos/create/convertVideoDbNodeToModelNode"
+import type {VideoNode} from "../../db/node-types/videos/types/VideoNode"
 import {convertImageDbNodeToModelNode} from "./images/create/convertImageDbNodeToModelNode"
 import type {ImageNode} from "../../db/node-types/images/types/ImageNode"
 import {NodeTypeNotFoundError} from "../types/NodeTypeNotFoundError"
@@ -94,6 +96,8 @@ export function convertDbNodeToModelNode(dbNode: DbNode) {
             return convertProgrammeEpisodeDbNodeToModelNode(dbNode as ProgrammeEpisodeNode)
         case DbNodeType.MotorShow:
             return convertMotorShowDbNodeToModelNode(dbNode as MotorShowNode)
+        case DbNodeType.Video:
+            return convertVideoDbNodeToModelNode(dbNode as VideoNode)
         case DbNodeType.Image:
             return convertImageDbNodeToModelNode(dbNode as ImageNode)
         default:

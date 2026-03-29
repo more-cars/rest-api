@@ -1,0 +1,47 @@
+info:
+  name: Create Video (valid data)
+  type: http
+  tags:
+    - create
+    - node
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/videos"
+  body:
+    type: json
+    data: |-
+      {
+        "video_provider": "youtube",
+        "external_id": "NqsBncRslsg",
+        "title": "P1 vs F40",
+        "description": "Drag Race - P1 vs F40",
+        "creator": "Lovecars",
+        "license": "youtube",
+        "tags": "F40, P1",
+        "source": "https://www.youtube.com/watch?v=NqsBncRslsg",
+        "duration": "PT7M24S",
+        "thumbnail_url_l": "https://i.ytimg.com/vi/NqsBncRslsg/maxresdefault.jpg",
+        "thumbnail_url_m": "https://i.ytimg.com/vi/NqsBncRslsg/sddefault.jpg",
+        "thumbnail_url_s": "https://i.ytimg.com/vi/NqsBncRslsg/mqdefault.jpg",
+        "thumbnail_url_xs": "https://i.ytimg.com/vi/NqsBncRslsg/default.jpg"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: gte
+      value: "12000000"
+  scripts:
+    - type: tests
+      code: |-
+        test("both timestamps should be identical", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.eql(data.attributes.updated_at)
+        })

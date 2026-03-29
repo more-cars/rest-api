@@ -1,0 +1,35 @@
+export const VideoSchema = {
+    type: "object",
+    properties: {
+        node_type: {type: ["string"]},
+        properties: {
+            type: "object",
+            properties: {
+                id: {type: ["integer"]},
+                video_provider: {type: ["string"]},
+                external_id: {type: ["string"]},
+                title: {type: ["string", "null"]},
+                description: {type: ["string", "null"]},
+                creator: {type: ["string", "null"]},
+                license: {type: ["string", "null"]},
+                tags: {type: ["string", "null"]},
+                source: {type: ["string", "null"]},
+                duration: {type: ["string", "null"]},
+                thumbnail_url_l: {type: ["string", "null"]},
+                thumbnail_url_m: {type: ["string", "null"]},
+                thumbnail_url_s: {type: ["string", "null"]},
+                thumbnail_url_xs: {type: ["string", "null"]},
+                created_at: {type: ["string"]},
+                updated_at: {type: ["string"]},
+            },
+            required: [
+                "id",
+                "video_provider",
+                "external_id",
+                "created_at",
+                "updated_at",
+            ],
+        },
+    },
+    additionalProperties: false,
+}

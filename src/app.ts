@@ -25,6 +25,7 @@ import ratings from "./routes/node-types/ratings"
 import programmes from "./routes/node-types/programmes"
 import programmeEpisodes from "./routes/node-types/programme-episodes"
 import motorShows from "./routes/node-types/motor-shows"
+import videos from "./routes/node-types/videos"
 import images from "./routes/node-types/images"
 import relationships from "./routes/relationships"
 import {basicAuthentication} from "./basicAuthentication"
@@ -66,6 +67,7 @@ app.use('/', ratings)
 app.use('/', programmes)
 app.use('/', programmeEpisodes)
 app.use('/', motorShows)
+app.use('/', videos)
 app.use('/', images)
 app.use('/', nodes)
 app.use('/', relationships)

@@ -1,4 +1,5 @@
 export enum ModelNodeType {
+    Node = "",
     Company = "company",
     Brand = "brand",
     CarModel = "car_model",
@@ -21,6 +22,6 @@ export enum ModelNodeType {
     Programme = "programme",
     ProgrammeEpisode = "programme_episode",
     MotorShow = "motor_show",
+    Video = "video",
     Image = "image",
-    Node = "",
 }

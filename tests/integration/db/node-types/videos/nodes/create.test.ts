@@ -1,0 +1,21 @@
+import {describe, expect, test} from 'vitest'
+import {FakeVideo} from "../../../../../_toolbox/fixtures/nodes/FakeVideo"
+import {createNode} from "../../../../../../src/db/node-types/videos/createNode"
+
+describe('Creating node', () => {
+    test('with valid data', async () => {
+        const inputData = FakeVideo.dbInput
+        const createdNode = await createNode(inputData)
+
+        expect(createdNode.properties)
+            .toEqual(expect.objectContaining(inputData))
+    })
+
+    test('with valid minimum data', async () => {
+        const inputData = FakeVideo.dbInputMinimal
+        const createdNode = await createNode(inputData)
+
+        expect(createdNode.properties)
+            .toEqual(expect.objectContaining(inputData))
+    })
+})
