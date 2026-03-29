@@ -6,6 +6,8 @@ import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import type {CreateVideoGeneratedInput} from "./create/CreateVideoGeneratedInput"
 import {getNodeById} from "../../../db/node-types/videos/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
+import {getAllNodesOfType} from "../../../db/node-types/videos/getAllNodesOfType"
+import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 
 export const Video = {
     async create(data: CreateVideoInput): Promise<VideoNode> {
@@ -24,6 +26,17 @@ export const Video = {
         }
 
         return convertDbNodeToModelNode(node) as VideoNode
+    },
+
+    async findAll(options: NodeCollectionConstraints = {}): Promise<VideoNode[]> {
+        const nodes: VideoNode[] = []
+        const nodesDb = await getAllNodesOfType(options)
+
+        nodesDb.forEach(node => {
+            nodes.push(convertDbNodeToModelNode(node) as VideoNode)
+        })
+
+        return nodes
     },
 }
 
