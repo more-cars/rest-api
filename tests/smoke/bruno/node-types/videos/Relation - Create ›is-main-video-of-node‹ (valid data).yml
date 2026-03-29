@@ -37,7 +37,7 @@ runtime:
       operator: isJson
     - expression: res.body.data.partner_node.node_type
       operator: eq
-      value: "nodes"
+      value: "brands"
     - expression: res.body.data.partner_node.data.id
       operator: eq
       value: "{{validNodeId}}"
