@@ -118,6 +118,13 @@ export const Video = {
 
         return createdRelationship
     },
+
+    async getAllIsMainVideoOfNodeRelationships(videoId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await Video.findById(videoId)
+
+        return getAllRels(videoId, RelType.VideoIsMainVideoOfNode)
+    },
 }
 
 /**

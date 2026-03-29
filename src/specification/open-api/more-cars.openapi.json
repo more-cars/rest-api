@@ -19440,6 +19440,48 @@
         }
       }
     },
+    "/videos/{video-id}/is-main-video-of-node": {
+      "get": {
+        "operationId": "getVideoIsMainVideoOfNodeRel",
+        "tags": [
+          "Videos"
+        ],
+        "summary": "Get all ›is-main-video-of-node‹ relationships for the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›is-main-video-of-node‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VideoIsMainVideoOfNodeCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Video` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/videos/{video-id}/is-main-video-of-node/{node-id}": {
       "post": {
         "tags": [
@@ -28688,6 +28730,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/VideoIsMainVideoOfNode"
+          }
+        }
+      },
+      "VideoIsMainVideoOfNodeCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VideoIsMainVideoOfNodeResponse"
+            }
           }
         }
       },

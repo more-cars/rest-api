@@ -69,4 +69,12 @@ describe('Videos', () => {
         expect(VideoController.createIsMainVideoOfNodeRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›is-main-video-of-node‹ relationships', async () => {
+        await request(app)
+            .get('/videos/123/is-main-video-of-node')
+
+        expect(VideoController.getAllIsMainVideoOfNodeRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })
