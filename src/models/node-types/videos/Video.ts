@@ -4,6 +4,8 @@ import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../../db/node-types/videos/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import type {CreateVideoGeneratedInput} from "./create/CreateVideoGeneratedInput"
+import {getNodeById} from "../../../db/node-types/videos/getNodeById"
+import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 
 export const Video = {
     async create(data: CreateVideoInput): Promise<VideoNode> {
@@ -12,6 +14,16 @@ export const Video = {
         const result = await createNode(input)
 
         return convertDbNodeToModelNode(result) as VideoNode
+    },
+
+    async findById(id: number): Promise<VideoNode> {
+        const node = await getNodeById(id)
+
+        if (!node) {
+            throw new NodeNotFoundError(id)
+        }
+
+        return convertDbNodeToModelNode(node) as VideoNode
     },
 }
 

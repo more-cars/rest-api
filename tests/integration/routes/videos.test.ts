@@ -13,4 +13,12 @@ describe('Videos', () => {
         expect(VideoController.create)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get Node by ID', async () => {
+        await request(app)
+            .get('/videos/123')
+
+        expect(VideoController.getById)
+            .toHaveBeenCalledTimes(1)
+    })
 })

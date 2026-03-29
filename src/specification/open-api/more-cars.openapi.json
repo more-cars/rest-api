@@ -19171,6 +19171,48 @@
         }
       }
     },
+    "/videos/{video-id}": {
+      "get": {
+        "operationId": "getVideoById",
+        "tags": [
+          "Videos"
+        ],
+        "summary": "Get `Video` by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Video` successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VideoResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. A `Video` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/nodes/{node-id}": {
       "get": {
         "operationId": "getNodeById",

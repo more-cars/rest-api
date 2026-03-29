@@ -1,0 +1,39 @@
+info:
+  name: Get Video by ID (valid data)
+  type: http
+  tags:
+    - get
+    - node
+    - valid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/videos/{{validVideoId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validVideoId}}"
+    - expression: res.body.attributes.created_at
+      operator: isString
+    - expression: res.body.attributes.created_at
+      operator: isNotEmpty
+    - expression: res.body.attributes.updated_at
+      operator: isString
+    - expression: res.body.attributes.updated_at
+      operator: isNotEmpty
+    - expression: res.body.links.self
+      operator: isString
+    - expression: res.body.links.self
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const Videos = require('./lib/node-types/Videos.js')
+        await Videos.create()
