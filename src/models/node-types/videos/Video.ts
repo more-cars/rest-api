@@ -8,6 +8,7 @@ import {getNodeById} from "../../../db/node-types/videos/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 import {getAllNodesOfType} from "../../../db/node-types/videos/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
+import {deleteNode} from "../../../db/nodes/deleteNode"
 
 export const Video = {
     async create(data: CreateVideoInput): Promise<VideoNode> {
@@ -37,6 +38,16 @@ export const Video = {
         })
 
         return nodes
+    },
+
+    async delete(id: number): Promise<void> {
+        const node = await getNodeById(id)
+
+        if (!node) {
+            throw new NodeNotFoundError(id)
+        }
+
+        await deleteNode(id)
     },
 }
 

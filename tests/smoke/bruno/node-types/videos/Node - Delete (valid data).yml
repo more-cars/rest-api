@@ -1,0 +1,28 @@
+info:
+  name: Delete Video (valid data)
+  type: http
+  tags:
+    - delete
+    - node
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/videos/{{validVideoId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+    - expression: res.body
+      operator: isEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const Videos = require('./lib/node-types/Videos.js')
+        await Videos.create()
+    - type: after-response
+      code: |-
+        const Ids = require('./lib/Ids.js')
+        Ids.forgetId('Video')

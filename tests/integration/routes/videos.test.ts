@@ -29,4 +29,12 @@ describe('Videos', () => {
         expect(VideoController.getAll)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete Node', async () => {
+        await request(app)
+            .delete('/videos/123')
+
+        expect(VideoController.delete)
+            .toHaveBeenCalledTimes(1)
+    })
 })
