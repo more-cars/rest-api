@@ -1366,6 +1366,278 @@
         }
       }
     },
+    "/brands/{brand-id}/has-video": {
+      "get": {
+        "operationId": "getBrandHasVideoRel",
+        "tags": [
+          "Brands"
+        ],
+        "summary": "Get all ›has-video‹ relationships for the `Brand`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "brand-id",
+            "description": "ID of the `Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-video‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BrandHasVideoCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Brand` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/brands/{brand-id}/has-video/{video-id}": {
+      "post": {
+        "tags": [
+          "Brands"
+        ],
+        "summary": "Creates a ›has-video‹ relationship between the `Brand` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "brand-id",
+            "description": "ID of the `Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Relationship ›has-video‹ between `Brand` and `Video` successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BrandHasVideoResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "The relationship ›has-video‹ between `Brand` and `Video` already exists."
+          },
+          "404": {
+            "description": "Request failed. `Brand` and/or `Video` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Brands"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Brand` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "brand-id",
+            "description": "ID of the `Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Brand` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/brands/{brand-id}/has-main-video": {
+      "get": {
+        "operationId": "getBrandHasMainVideoRel",
+        "tags": [
+          "Brands"
+        ],
+        "summary": "Get the ›has-main-video‹ relationship for the `Brand`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "brand-id",
+            "description": "ID of the `Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›has-main-video‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BrandHasMainVideoResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Brand` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/brands/{brand-id}/has-main-video/{video-id}": {
+      "post": {
+        "tags": [
+          "Brands"
+        ],
+        "summary": "Creates a ›has-main-video‹ relationship between the `Brand` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "brand-id",
+            "description": "ID of the `Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Relationship ›has-main-video‹ between `Brand` and `Video` successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BrandHasMainVideoResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "The relationship ›has-main-video‹ between `Brand` and `Video` already exists."
+          },
+          "404": {
+            "description": "Request failed. `Brand` and/or `Video` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Brands"
+        ],
+        "summary": "Deletes the ›has-main-video‹ relationship between the `Brand` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "brand-id",
+            "description": "ID of the `Brand`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-main-video‹ relationship between `Brand` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-main-video‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/car-models": {
       "get": {
         "operationId": "getCarModels",
@@ -19984,6 +20256,117 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/BrandHasPrimeImage"
+          }
+        }
+      },
+      "BrandHasVideo": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "relationship_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "123456"
+          },
+          "relationship_name": {
+            "type": "string",
+            "readOnly": true,
+            "example": "has-video"
+          },
+          "partner_node": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "videos"
+              },
+              "data": {
+                "$ref": "#/components/schemas/Video"
+              }
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "BrandHasVideoResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/BrandHasVideo"
+          }
+        }
+      },
+      "BrandHasVideoCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BrandHasVideoResponse"
+            }
+          }
+        }
+      },
+      "BrandHasMainVideo": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "relationship_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "123456"
+          },
+          "relationship_name": {
+            "type": "string",
+            "readOnly": true,
+            "example": "has-main-video"
+          },
+          "partner_node": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "videos"
+              },
+              "data": {
+                "$ref": "#/components/schemas/Video"
+              }
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "BrandHasMainVideoResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/BrandHasMainVideo"
           }
         }
       },

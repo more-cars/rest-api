@@ -13,6 +13,8 @@ export function mapDbRelationshipTypeToRelationshipType(dbRelationshipType: DbRe
         [DbRelationshipType.BrandHasCarModel, RelationshipType.BrandHasCarModel],
         [DbRelationshipType.BrandHasImage, RelationshipType.BrandHasImage],
         [DbRelationshipType.BrandHasPrimeImage, RelationshipType.BrandHasPrimeImage],
+        [DbRelationshipType.BrandHasVideo, RelationshipType.BrandHasVideo],
+        [DbRelationshipType.BrandHasMainVideo, RelationshipType.BrandHasMainVideo],
         [DbRelationshipType.CarModelBelongsToBrand, RelationshipType.CarModelBelongsToBrand],
         [DbRelationshipType.CarModelHasSuccessor, RelationshipType.CarModelHasSuccessor],
         [DbRelationshipType.CarModelIsSuccessorOf, RelationshipType.CarModelIsSuccessorOf],

@@ -19,5 +19,11 @@ router.delete('/brands/:brandId/has-image/:imageId', BrandController.deleteHasIm
 router.post('/brands/:brandId/has-prime-image/:imageId', BrandController.createHasPrimeImageRelation)
 router.get('/brands/:brandId/has-prime-image', BrandController.getHasPrimeImageRelation)
 router.delete('/brands/:brandId/has-prime-image/:imageId', BrandController.deleteHasPrimeImageRelation)
+router.post('/brands/:brandId/has-video/:videoId', BrandController.createHasVideoRelation)
+router.get('/brands/:brandId/has-video', BrandController.getAllHasVideoRelations)
+router.delete('/brands/:brandId/has-video/:videoId', BrandController.deleteHasVideoRelation)
+router.post('/brands/:brandId/has-main-video/:videoId', BrandController.createHasMainVideoRelation)
+router.get('/brands/:brandId/has-main-video', BrandController.getHasMainVideoRelation)
+router.delete('/brands/:brandId/has-main-video/:videoId', BrandController.deleteHasMainVideoRelation)
 
 export default router

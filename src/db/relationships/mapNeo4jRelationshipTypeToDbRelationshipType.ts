@@ -31,6 +31,8 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.BrandHasCarModel, RelationshipType.BrandHasCarModel],
                 [RelationshipTypeNeo4j.BrandHasImage, RelationshipType.BrandHasImage],
                 [RelationshipTypeNeo4j.BrandHasPrimeImage, RelationshipType.BrandHasPrimeImage],
+                [RelationshipTypeNeo4j.BrandHasVideo, RelationshipType.BrandHasVideo],
+                [RelationshipTypeNeo4j.BrandHasMainVideo, RelationshipType.BrandHasMainVideo],
             ])],
         ])],
         [Neo4jNodeType.CarModel, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([

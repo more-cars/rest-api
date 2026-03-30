@@ -23,5 +23,15 @@ export const BrandRelationshipSpecification: RelationshipTypeSpecification[] = [
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    [RelationshipType.BrandHasVideo, {
+        startNodeType: NodeType.Brand,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
+    [RelationshipType.BrandHasMainVideo, {
+        startNodeType: NodeType.Brand,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
     //
 ]

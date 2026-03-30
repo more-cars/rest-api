@@ -1,0 +1,25 @@
+info:
+  name: Delete ›has-main-video‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/brands/{{validBrandId}}/has-main-video/{{validVideoId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const Brands = require('./lib/node-types/Brands.js')
+        const Videos = require('./lib/node-types/Videos.js')
+        await Brands.create()
+        await Videos.create()
+        await Brands.createHasMainVideoRelationship()

@@ -11,6 +11,8 @@ export function mapModelRelationshipTypeToRelationshipType(relType: RelType): Re
         [RelType.BrandHasCarModel, RelationshipType.BrandHasCarModel],
         [RelType.BrandHasImage, RelationshipType.BrandHasImage],
         [RelType.BrandHasPrimeImage, RelationshipType.BrandHasPrimeImage],
+        [RelType.BrandHasVideo, RelationshipType.BrandHasVideo],
+        [RelType.BrandHasMainVideo, RelationshipType.BrandHasMainVideo],
         [RelType.CarModelBelongsToBrand, RelationshipType.CarModelBelongsToBrand],
         [RelType.CarModelHasSuccessor, RelationshipType.CarModelHasSuccessor],
         [RelType.CarModelIsSuccessorOf, RelationshipType.CarModelIsSuccessorOf],

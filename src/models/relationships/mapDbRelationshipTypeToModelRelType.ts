@@ -11,6 +11,8 @@ export function mapDbRelationshipTypeToModelRelType(dbRelationshipType: Relation
         [RelationshipType.BrandHasCarModel, RelType.BrandHasCarModel],
         [RelationshipType.BrandHasImage, RelType.BrandHasImage],
         [RelationshipType.BrandHasPrimeImage, RelType.BrandHasPrimeImage],
+        [RelationshipType.BrandHasVideo, RelType.BrandHasVideo],
+        [RelationshipType.BrandHasMainVideo, RelType.BrandHasMainVideo],
         [RelationshipType.CarModelBelongsToBrand, RelType.CarModelBelongsToBrand],
         [RelationshipType.CarModelHasSuccessor, RelType.CarModelHasSuccessor],
         [RelationshipType.CarModelIsSuccessorOf, RelType.CarModelIsSuccessorOf],
