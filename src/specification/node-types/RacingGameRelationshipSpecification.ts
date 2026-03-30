@@ -28,4 +28,5 @@ export const RacingGameRelationshipSpecification: RelationshipTypeSpecification[
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    //
 ]

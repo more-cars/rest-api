@@ -23,4 +23,5 @@ export const ImageRelationshipSpecification: RelationshipTypeSpecification[] = [
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    //
 ]

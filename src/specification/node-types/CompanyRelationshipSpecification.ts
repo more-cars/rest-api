@@ -18,4 +18,5 @@ export const CompanyRelationshipSpecification: RelationshipTypeSpecification[] =
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    //
 ]

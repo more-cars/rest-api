@@ -28,4 +28,5 @@ export const SessionResultRelationshipSpecification: RelationshipTypeSpecificati
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    //
 ]

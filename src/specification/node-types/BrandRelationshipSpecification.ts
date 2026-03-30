@@ -23,4 +23,5 @@ export const BrandRelationshipSpecification: RelationshipTypeSpecification[] = [
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    //
 ]

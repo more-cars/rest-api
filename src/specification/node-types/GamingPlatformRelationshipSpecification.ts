@@ -18,4 +18,5 @@ export const GamingPlatformRelationshipSpecification: RelationshipTypeSpecificat
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    //
 ]
