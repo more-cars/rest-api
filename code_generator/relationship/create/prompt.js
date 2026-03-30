@@ -28,6 +28,7 @@ module.exports = [
     {
         type: 'input',
         name: 'forwardRelationshipName',
+        default: 'false',
         message: "ONLY IF REVERSE RELATIONSHIP: Name of the inverse relationship?",
     },
 ]
