@@ -6,8 +6,12 @@ import {convertVideoModelNodeToControllerNode} from "./convertVideoModelNodeToCo
 import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import type {CreateVideoRawInput} from "./types/CreateVideoRawInput"
 import {isMandatoryString} from "../../validators/isMandatoryString"
+import {YouTubeVideoNotFoundError} from "../../../models/types/YouTubeVideoNotFoundError"
+import {YouTubeVideoAlreadyExistsError} from "../../../models/types/YouTubeVideoAlreadyExistsError"
 import {sendResponse201} from "../../responses/sendResponse201"
 import {sendResponse400} from "../../responses/sendResponse400"
+import {sendResponse409} from "../../responses/sendResponse409"
+import {sendResponse422} from "../../responses/sendResponse422"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
@@ -26,14 +30,24 @@ export async function create(req: express.Request, res: express.Response) {
 
         return sendResponse201(marshalledData, res)
     } catch (e) {
-        console.error(e)
-        return sendResponse500(res)
+        if (e instanceof YouTubeVideoNotFoundError) {
+            return sendResponse422(res)
+        } else if (e instanceof YouTubeVideoAlreadyExistsError) {
+            return sendResponse409(res)
+        } else {
+            console.error(e)
+            return sendResponse500(res)
+        }
     }
 }
 
 export function validate(data: CreateVideoRawInput): boolean {
 
     if (!isMandatoryString(data.video_provider)) {
+        return false
+    }
+
+    if (data.video_provider !== 'youtube') {
         return false
     }
 

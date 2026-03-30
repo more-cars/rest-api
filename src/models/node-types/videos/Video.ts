@@ -1,9 +1,9 @@
 import {CreateVideoInput} from "./types/CreateVideoInput"
+import {YouTubeFacade} from "../../../db/external/YouTubeFacade"
 import {VideoNode} from "./types/VideoNode"
 import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../../db/node-types/videos/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
-import type {CreateVideoGeneratedInput} from "./create/CreateVideoGeneratedInput"
 import {getNodeById} from "../../../db/node-types/videos/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 import {getAllNodesOfType} from "../../../db/node-types/videos/getAllNodesOfType"
@@ -19,14 +19,28 @@ import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {ModelNodeType} from "../../types/ModelNodeType"
+import {YouTubeVideoNotFoundError} from "../../types/YouTubeVideoNotFoundError"
+import {YouTubeVideoAlreadyExistsError} from "../../types/YouTubeVideoAlreadyExistsError"
+import {videoAlreadyExists} from "./create/videoAlreadyExists"
 
 export const Video = {
     async create(data: CreateVideoInput): Promise<VideoNode> {
-        const generatedData = getGeneratedData()
-        const input = convertInputData(Object.assign(data, generatedData))
-        const result = await createNode(input)
+        const id = data.external_id
+        const provider = data.video_provider
 
-        return convertDbNodeToModelNode(result) as VideoNode
+        if (await videoAlreadyExists(provider, id)) {
+            throw new YouTubeVideoAlreadyExistsError(id)
+        }
+
+        try {
+            const youTubeVideo = await YouTubeFacade.getVideoById(id)
+            const input = convertInputData(Object.assign(data, youTubeVideo))
+            const result = await createNode(input)
+
+            return convertDbNodeToModelNode(result) as VideoNode
+        } catch (error) {
+            throw new YouTubeVideoNotFoundError(id)
+        }
     },
 
     async findById(id: number): Promise<VideoNode> {
@@ -138,23 +152,4 @@ export const Video = {
 
         await deleteSpecificRel(videoId, nodeId, RelType.VideoIsMainVideoOfNode)
     },
-}
-
-/**
- * TEMPORARY solution until the youtube importer is implemented
- */
-function getGeneratedData(): CreateVideoGeneratedInput {
-    return {
-        title: 'DUMMY',
-        description: 'DUMMY',
-        creator: 'DUMMY',
-        license: 'DUMMY',
-        tags: 'DUMMY',
-        source: 'DUMMY',
-        duration: 'DUMMY',
-        thumbnail_url_l: 'DUMMY',
-        thumbnail_url_m: 'DUMMY',
-        thumbnail_url_s: 'DUMMY',
-        thumbnail_url_xs: 'DUMMY',
-    } satisfies CreateVideoGeneratedInput
 }

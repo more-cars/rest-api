@@ -1,8 +1,8 @@
-export type CreateVideoGeneratedInput = {
+export type CreateYouTubeVideoInput = {
     title: string | null,
     description: string | null,
     creator: string | null,
-    license: string | null,
+    license: 'youtube' | 'cc by' | null,
     tags: string | null,
     source: string | null,
     duration: string | null,

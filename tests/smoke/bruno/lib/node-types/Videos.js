@@ -10,8 +10,8 @@ exports.createIsMainVideoOfNodeRelationship = async function () {
 
 exports.create = async function (prefix = '') {
     const response = await post("/videos", {
-        video_provider: "youtubbi",
-        external_id: "123456",
+        video_provider: "youtube",
+        external_id: "zbZ9iYWReZA",
     })
 
     bru.setEnvVar('valid' + prefix + 'VideoId', response.id)

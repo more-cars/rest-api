@@ -14,18 +14,7 @@ http:
     data: |-
       {
         "video_provider": "youtube",
-        "external_id": "NqsBncRslsg",
-        "title": "P1 vs F40",
-        "description": "Drag Race - P1 vs F40",
-        "creator": "Lovecars",
-        "license": "youtube",
-        "tags": "F40, P1",
-        "source": "https://www.youtube.com/watch?v=NqsBncRslsg",
-        "duration": "PT7M24S",
-        "thumbnail_url_l": "https://i.ytimg.com/vi/NqsBncRslsg/maxresdefault.jpg",
-        "thumbnail_url_m": "https://i.ytimg.com/vi/NqsBncRslsg/sddefault.jpg",
-        "thumbnail_url_s": "https://i.ytimg.com/vi/NqsBncRslsg/mqdefault.jpg",
-        "thumbnail_url_xs": "https://i.ytimg.com/vi/NqsBncRslsg/default.jpg"
+        "external_id": "NqsBncRslsg"
       }
 
 runtime:
