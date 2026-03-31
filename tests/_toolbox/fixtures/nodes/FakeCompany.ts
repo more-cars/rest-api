@@ -13,7 +13,6 @@ export const FakeCompany = {
     } as InputCompanyCreate,
 
     dbInputMinimal: {
-
         name: faker.company.name(),
     } as InputCompanyCreate,
 

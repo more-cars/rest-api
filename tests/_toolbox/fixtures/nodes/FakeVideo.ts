@@ -5,7 +5,7 @@ import type {VideoNode} from "../../../../src/models/node-types/videos/types/Vid
 
 export const FakeVideo = {
     dbInput: {
-        video_provider: faker.lorem.word(),
+        video_provider: 'youtube',
         external_id: faker.string.uuid(),
         title: faker.commerce.productName(),
         description: faker.commerce.productDescription(),
@@ -21,7 +21,7 @@ export const FakeVideo = {
     } as InputVideoCreate,
 
     dbInputMinimal: {
-        video_provider: faker.lorem.word(),
+        video_provider: 'youtube',
         external_id: faker.string.uuid(),
     } as InputVideoCreate,
 
@@ -29,7 +29,7 @@ export const FakeVideo = {
         node_type: ModelNodeType.Video,
         attributes: {
             id: faker.number.int({min: 12_000_000, max: 20_000_000}),
-            video_provider: faker.lorem.word(),
+            video_provider: 'youtube',
             external_id: faker.string.uuid(),
             title: faker.commerce.productName(),
             description: faker.commerce.productDescription(),

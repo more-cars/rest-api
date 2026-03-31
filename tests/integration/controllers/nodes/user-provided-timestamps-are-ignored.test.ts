@@ -1,6 +1,8 @@
-import {describe, expect, test} from 'vitest'
+import {describe, expect, test, vi} from 'vitest'
 import request from "supertest"
 import {getAllExpectedNodeTypes} from "../../../_toolbox/getAllExpectedNodeTypes"
+import * as yt from "../../../../src/db/external/youtube/performYouTubeApiRequest"
+import {FakeGetVideoByIdResponse} from "../../../_toolbox/fixtures/external/youtube/FakeGetVideoByIdResponse"
 import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
 import {app} from "../../../../src/app"
 import {getUrlFragmentForNodeType} from "../../../_toolbox/getUrlFragmentForNodeType"
@@ -13,6 +15,10 @@ describe('The user injects the timestamp fields illegally', () => {
         if (!nodeType) {
             return
         }
+
+        // edge case 'Video' -> mocking YouTube API request
+        vi.spyOn(yt, 'performYouTubeApiRequest')
+            .mockImplementation(async () => FakeGetVideoByIdResponse)
 
         const manipulatedInput = Object.assign({}, getFakeNode(nodeType).dbInput, {
             name: "TIMESTAMP TEST",
