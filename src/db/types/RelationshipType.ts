@@ -56,6 +56,8 @@ export enum RelationshipType {
     RacingSeriesHasRacingEvent = 'RACING_SERIES_HAS_RACING_EVENT',
     RacingSeriesHasImage = 'RACING_SERIES_HAS_IMAGE',
     RacingSeriesHasPrimeImage = 'RACING_SERIES_HAS_PRIME_IMAGE',
+    RacingSeriesHasVideo = 'RACING_SERIES_HAS_VIDEO',
+    RacingSeriesHasMainVideo = 'RACING_SERIES_HAS_MAIN_VIDEO',
     RacingEventBelongsToRacingSeries = 'RACING_EVENT_BELONGS_TO_RACING_SERIES',
     RacingEventIsFollowedByEvent = 'RACING_EVENT_IS_FOLLOWED_BY_EVENT',
     RacingEventFollowsEvent = 'RACING_EVENT_FOLLOWS_EVENT',

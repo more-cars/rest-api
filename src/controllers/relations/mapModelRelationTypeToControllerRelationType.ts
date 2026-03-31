@@ -59,6 +59,8 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.RacingSeriesHasRacingEvent, RelationType.RacingSeriesHasRacingEvent],
         [RelType.RacingSeriesHasImage, RelationType.RacingSeriesHasImage],
         [RelType.RacingSeriesHasPrimeImage, RelationType.RacingSeriesHasPrimeImage],
+        [RelType.RacingSeriesHasVideo, RelationType.RacingSeriesHasVideo],
+        [RelType.RacingSeriesHasMainVideo, RelationType.RacingSeriesHasMainVideo],
         [RelType.RacingEventBelongsToRacingSeries, RelationType.RacingEventBelongsToRacingSeries],
         [RelType.RacingEventIsFollowedByEvent, RelationType.RacingEventIsFollowedByEvent],
         [RelType.RacingEventFollowsEvent, RelationType.RacingEventFollowsEvent],

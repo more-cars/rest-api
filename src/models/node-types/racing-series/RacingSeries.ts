@@ -21,6 +21,7 @@ import {getRel} from "../../relationships/getRel"
 import {ModelNodeType} from "../../types/ModelNodeType"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
+import {Video} from "../videos/Video"
 
 export const RacingSeries = {
     async create(data: CreateRacingSeriesInput): Promise<RacingSeriesNode> {
@@ -182,5 +183,87 @@ export const RacingSeries = {
         }
 
         await deleteSpecificRel(racingSeriesId, imageId, RelType.RacingSeriesHasPrimeImage)
+    },
+
+    async createHasVideoRelationship(racingSeriesId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSeries.findById(racingSeriesId)
+        await Video.findById(videoId)
+
+        const existingRelation = await getSpecificRel(racingSeriesId, videoId, RelType.RacingSeriesHasVideo)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.RacingSeriesHasVideo, racingSeriesId, videoId)
+        }
+
+        const createdRelationship = await createRel(racingSeriesId, videoId, RelType.RacingSeriesHasVideo)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getAllHasVideoRelationships(racingSeriesId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await RacingSeries.findById(racingSeriesId)
+
+        return getAllRels(racingSeriesId, RelType.RacingSeriesHasVideo)
+    },
+
+    async deleteHasVideoRelationship(racingSeriesId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSeries.findById(racingSeriesId)
+        await Video.findById(videoId)
+
+        const relationship = await getSpecificRel(racingSeriesId, videoId, RelType.RacingSeriesHasVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.RacingSeriesHasVideo, racingSeriesId, videoId)
+        }
+
+        await deleteSpecificRel(racingSeriesId, videoId, RelType.RacingSeriesHasVideo)
+    },
+
+    async createHasMainVideoRelationship(racingSeriesId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSeries.findById(racingSeriesId)
+        await Video.findById(videoId)
+
+        const existingRelation = await getSpecificRel(racingSeriesId, videoId, RelType.RacingSeriesHasMainVideo)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.RacingSeriesHasMainVideo, racingSeriesId, videoId)
+        }
+        await deleteOutgoingRel(racingSeriesId, RelType.RacingSeriesHasMainVideo, ModelNodeType.Video)
+
+        const createdRelationship = await createRel(racingSeriesId, videoId, RelType.RacingSeriesHasMainVideo)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getHasMainVideoRelationship(racingSeriesId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await RacingSeries.findById(racingSeriesId)
+
+        const relationship = await getRel(racingSeriesId, RelType.RacingSeriesHasMainVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.RacingSeriesHasMainVideo, racingSeriesId, null)
+        }
+
+        return relationship
+    },
+
+    async deleteHasMainVideoRelationship(racingSeriesId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSeries.findById(racingSeriesId)
+        await Video.findById(videoId)
+
+        const relationship = await getSpecificRel(racingSeriesId, videoId, RelType.RacingSeriesHasMainVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.RacingSeriesHasMainVideo, racingSeriesId, videoId)
+        }
+
+        await deleteSpecificRel(racingSeriesId, videoId, RelType.RacingSeriesHasMainVideo)
     },
 }

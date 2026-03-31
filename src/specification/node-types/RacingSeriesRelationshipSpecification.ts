@@ -18,5 +18,15 @@ export const RacingSeriesRelationshipSpecification: RelationshipTypeSpecificatio
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    [RelationshipType.RacingSeriesHasVideo, {
+        startNodeType: NodeType.RacingSeries,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
+    [RelationshipType.RacingSeriesHasMainVideo, {
+        startNodeType: NodeType.RacingSeries,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
     //
 ]
