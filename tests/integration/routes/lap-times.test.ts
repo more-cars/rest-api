@@ -157,4 +157,52 @@ describe('Lap Times', () => {
         expect(LapTimeController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-video‹ relationship', async () => {
+        await request(app)
+            .post('/lap-times/123/has-video/456')
+
+        expect(LapTimeController.createHasVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get all ›has-video‹ relationships', async () => {
+        await request(app)
+            .get('/lap-times/123/has-video')
+
+        expect(LapTimeController.getAllHasVideoRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Delete ›has-video‹ relationship', async () => {
+        await request(app)
+            .delete('/lap-times/123/has-video/456')
+
+        expect(LapTimeController.deleteHasVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Create ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .post('/lap-times/123/has-main-video/456')
+
+        expect(LapTimeController.createHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .get('/lap-times/123/has-main-video')
+
+        expect(LapTimeController.getHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Delete ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .delete('/lap-times/123/has-main-video/456')
+
+        expect(LapTimeController.deleteHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

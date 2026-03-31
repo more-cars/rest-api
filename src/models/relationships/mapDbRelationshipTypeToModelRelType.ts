@@ -88,6 +88,8 @@ export function mapDbRelationshipTypeToModelRelType(dbRelationshipType: Relation
         [RelationshipType.LapTimeAchievedWithCarModelVariant, RelType.LapTimeAchievedWithCarModelVariant],
         [RelationshipType.LapTimeHasImage, RelType.LapTimeHasImage],
         [RelationshipType.LapTimeHasPrimeImage, RelType.LapTimeHasPrimeImage],
+        [RelationshipType.LapTimeHasVideo, RelType.LapTimeHasVideo],
+        [RelationshipType.LapTimeHasMainVideo, RelType.LapTimeHasMainVideo],
         [RelationshipType.RacingGameFeaturesCarModelVariant, RelType.RacingGameFeaturesCarModelVariant],
         [RelationshipType.RacingGameFeaturesTrackLayout, RelType.RacingGameFeaturesTrackLayout],
         [RelationshipType.RacingGameReleasedOnGamingPlatform, RelType.RacingGameReleasedOnGamingPlatform],

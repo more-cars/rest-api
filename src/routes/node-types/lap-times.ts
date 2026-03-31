@@ -22,5 +22,11 @@ router.delete('/lap-times/:lapTimeId/has-image/:imageId', LapTimeController.dele
 router.post('/lap-times/:lapTimeId/has-prime-image/:imageId', LapTimeController.createHasPrimeImageRelation)
 router.get('/lap-times/:lapTimeId/has-prime-image', LapTimeController.getHasPrimeImageRelation)
 router.delete('/lap-times/:lapTimeId/has-prime-image/:imageId', LapTimeController.deleteHasPrimeImageRelation)
+router.post('/lap-times/:lapTimeId/has-video/:videoId', LapTimeController.createHasVideoRelation)
+router.get('/lap-times/:lapTimeId/has-video', LapTimeController.getAllHasVideoRelations)
+router.delete('/lap-times/:lapTimeId/has-video/:videoId', LapTimeController.deleteHasVideoRelation)
+router.post('/lap-times/:lapTimeId/has-main-video/:videoId', LapTimeController.createHasMainVideoRelation)
+router.get('/lap-times/:lapTimeId/has-main-video', LapTimeController.getHasMainVideoRelation)
+router.delete('/lap-times/:lapTimeId/has-main-video/:videoId', LapTimeController.deleteHasMainVideoRelation)
 
 export default router

@@ -83,6 +83,8 @@ export enum RelationType {
     LapTimeAchievedWithCarModelVariant = 'achieved-with-car-model-variant',
     LapTimeHasImage = 'has-image',
     LapTimeHasPrimeImage = 'has-prime-image',
+    LapTimeHasVideo = 'has-video',
+    LapTimeHasMainVideo = 'has-main-video',
     RacingGameFeaturesCarModelVariant = 'features-car-model-variant',
     RacingGameFeaturesTrackLayout = 'features-track-layout',
     RacingGameReleasedOnGamingPlatform = 'released-on-gaming-platform',

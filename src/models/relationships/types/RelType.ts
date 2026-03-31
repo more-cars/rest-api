@@ -83,6 +83,8 @@ export enum RelType {
     LapTimeAchievedWithCarModelVariant = 'lap_time_achieved_with_car_model_variant',
     LapTimeHasImage = 'lap_time_has_image',
     LapTimeHasPrimeImage = 'lap_time_has_prime_image',
+    LapTimeHasVideo = 'lap_time_has_video',
+    LapTimeHasMainVideo = 'lap_time_has_main_video',
     RacingGameFeaturesCarModelVariant = 'racing_game_features_car_model_variant',
     RacingGameFeaturesTrackLayout = 'racing_game_features_track_layout',
     RacingGameReleasedOnGamingPlatform = 'racing_game_released_on_gaming_platform',

@@ -85,6 +85,8 @@ export enum RelationshipTypeNeo4j {
     LapTimeAchievedWithCarModelVariant = 'ACHIEVED_LAP_TIME',
     LapTimeHasImage = 'HAS_IMAGE',
     LapTimeHasPrimeImage = 'HAS_PRIME_IMAGE',
+    LapTimeHasVideo = 'HAS_VIDEO',
+    LapTimeHasMainVideo = 'HAS_MAIN_VIDEO',
     RacingGameFeaturesCarModelVariant = 'FEATURES_CAR_MODEL_VARIANT',
     RacingGameFeaturesTrackLayout = 'FEATURES_TRACK_LAYOUT',
     RacingGameReleasedOnGamingPlatform = 'FEATURES_RACING_GAME',

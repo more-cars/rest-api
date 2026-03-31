@@ -88,6 +88,8 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.LapTimeAchievedWithCarModelVariant, RelationType.LapTimeAchievedWithCarModelVariant],
         [RelType.LapTimeHasImage, RelationType.LapTimeHasImage],
         [RelType.LapTimeHasPrimeImage, RelationType.LapTimeHasPrimeImage],
+        [RelType.LapTimeHasVideo, RelationType.LapTimeHasVideo],
+        [RelType.LapTimeHasMainVideo, RelationType.LapTimeHasMainVideo],
         [RelType.RacingGameFeaturesCarModelVariant, RelationType.RacingGameFeaturesCarModelVariant],
         [RelType.RacingGameFeaturesTrackLayout, RelationType.RacingGameFeaturesTrackLayout],
         [RelType.RacingGameReleasedOnGamingPlatform, RelationType.RacingGameReleasedOnGamingPlatform],

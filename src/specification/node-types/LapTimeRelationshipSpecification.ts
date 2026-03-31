@@ -28,5 +28,15 @@ export const LapTimeRelationshipSpecification: RelationshipTypeSpecification[] =
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    [RelationshipType.LapTimeHasVideo, {
+        startNodeType: NodeType.LapTime,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
+    [RelationshipType.LapTimeHasMainVideo, {
+        startNodeType: NodeType.LapTime,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
     //
 ]

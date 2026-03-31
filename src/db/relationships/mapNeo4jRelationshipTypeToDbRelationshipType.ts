@@ -189,6 +189,8 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 // Lap Time - Forward
                 [RelationshipTypeNeo4j.LapTimeHasImage, RelationshipType.LapTimeHasImage],
                 [RelationshipTypeNeo4j.LapTimeHasPrimeImage, RelationshipType.LapTimeHasPrimeImage],
+                [RelationshipTypeNeo4j.LapTimeHasMainVideo, RelationshipType.LapTimeHasMainVideo],
+                [RelationshipTypeNeo4j.LapTimeHasVideo, RelationshipType.LapTimeHasVideo],
             ])],
         ])],
         [Neo4jNodeType.RacingGame, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([

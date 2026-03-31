@@ -18,6 +18,12 @@ import {deleteHasImageRelation} from "./lap-times/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./lap-times/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./lap-times/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./lap-times/deleteHasPrimeImageRelation"
+import {createHasVideoRelation} from "./lap-times/createHasVideoRelation"
+import {getAllHasVideoRelations} from "./lap-times/getAllHasVideoRelations"
+import {deleteHasVideoRelation} from "./lap-times/deleteHasVideoRelation"
+import {createHasMainVideoRelation} from "./lap-times/createHasMainVideoRelation"
+import {getHasMainVideoRelation} from "./lap-times/getHasMainVideoRelation"
+import {deleteHasMainVideoRelation} from "./lap-times/deleteHasMainVideoRelation"
 
 export const LapTimeController = {
     async create(req: express.Request, res: express.Response) {
@@ -94,5 +100,29 @@ export const LapTimeController = {
 
     async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
+    },
+
+    async createHasVideoRelation(req: express.Request, res: express.Response) {
+        await createHasVideoRelation(req, res)
+    },
+
+    async getAllHasVideoRelations(req: express.Request, res: express.Response) {
+        await getAllHasVideoRelations(req, res)
+    },
+
+    async deleteHasVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasVideoRelation(req, res)
+    },
+
+    async createHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await createHasMainVideoRelation(req, res)
+    },
+
+    async getHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await getHasMainVideoRelation(req, res)
+    },
+
+    async deleteHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasMainVideoRelation(req, res)
     },
 }
