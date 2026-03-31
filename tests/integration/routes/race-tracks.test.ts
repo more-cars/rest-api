@@ -133,4 +133,52 @@ describe('Race Tracks', () => {
         expect(RaceTrackController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-video‹ relationship', async () => {
+        await request(app)
+            .post('/race-tracks/123/has-video/456')
+
+        expect(RaceTrackController.createHasVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get all ›has-video‹ relationships', async () => {
+        await request(app)
+            .get('/race-tracks/123/has-video')
+
+        expect(RaceTrackController.getAllHasVideoRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Delete ›has-video‹ relationship', async () => {
+        await request(app)
+            .delete('/race-tracks/123/has-video/456')
+
+        expect(RaceTrackController.deleteHasVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Create ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .post('/race-tracks/123/has-main-video/456')
+
+        expect(RaceTrackController.createHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .get('/race-tracks/123/has-main-video')
+
+        expect(RaceTrackController.getHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Delete ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .delete('/race-tracks/123/has-main-video/456')
+
+        expect(RaceTrackController.deleteHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

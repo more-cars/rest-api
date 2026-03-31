@@ -19,5 +19,11 @@ router.delete('/race-tracks/:raceTrackId/has-image/:imageId', RaceTrackControlle
 router.post('/race-tracks/:raceTrackId/has-prime-image/:imageId', RaceTrackController.createHasPrimeImageRelation)
 router.get('/race-tracks/:raceTrackId/has-prime-image', RaceTrackController.getHasPrimeImageRelation)
 router.delete('/race-tracks/:raceTrackId/has-prime-image/:imageId', RaceTrackController.deleteHasPrimeImageRelation)
+router.post('/race-tracks/:raceTrackId/has-video/:videoId', RaceTrackController.createHasVideoRelation)
+router.get('/race-tracks/:raceTrackId/has-video', RaceTrackController.getAllHasVideoRelations)
+router.delete('/race-tracks/:raceTrackId/has-video/:videoId', RaceTrackController.deleteHasVideoRelation)
+router.post('/race-tracks/:raceTrackId/has-main-video/:videoId', RaceTrackController.createHasMainVideoRelation)
+router.get('/race-tracks/:raceTrackId/has-main-video', RaceTrackController.getHasMainVideoRelation)
+router.delete('/race-tracks/:raceTrackId/has-main-video/:videoId', RaceTrackController.deleteHasMainVideoRelation)
 
 export default router

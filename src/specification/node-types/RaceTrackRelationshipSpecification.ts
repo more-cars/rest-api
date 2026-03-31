@@ -23,5 +23,15 @@ export const RaceTrackRelationshipSpecification: RelationshipTypeSpecification[]
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    [RelationshipType.RaceTrackHasVideo, {
+        startNodeType: NodeType.RaceTrack,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
+    [RelationshipType.RaceTrackHasMainVideo, {
+        startNodeType: NodeType.RaceTrack,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
     //
 ]

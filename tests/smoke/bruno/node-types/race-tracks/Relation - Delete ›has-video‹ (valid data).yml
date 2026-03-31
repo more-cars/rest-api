@@ -1,0 +1,25 @@
+info:
+  name: Delete ›has-video‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/race-tracks/{{validRaceTrackId}}/has-video/{{validVideoId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const RaceTracks = require('./lib/node-types/RaceTracks.js')
+        const Videos = require('./lib/node-types/Videos.js')
+        await RaceTracks.create()
+        await Videos.create()
+        await RaceTracks.createHasVideoRelationship()

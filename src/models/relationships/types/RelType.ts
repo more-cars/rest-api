@@ -41,6 +41,8 @@ export enum RelType {
     RaceTrackHostedRacingEvent = 'race_track_hosted_racing_event',
     RaceTrackHasImage = 'race_track_has_image',
     RaceTrackHasPrimeImage = 'race_track_has_prime_image',
+    RaceTrackHasVideo = 'race_track_has_video',
+    RaceTrackHasMainVideo = 'race_track_has_main_video',
     TrackLayoutBelongsToRaceTrack = 'track_layout_belongs_to_race_track',
     TrackLayoutWasUsedByRacingEvent = 'track_layout_was_used_by_racing_event',
     TrackLayoutHasLapTime = 'track_layout_has_lap_time',

@@ -43,6 +43,8 @@ export enum RelationshipTypeNeo4j {
     RaceTrackHostedRacingEvent = 'TOOK_PLACE_AT_RACE_TRACK',
     RaceTrackHasImage = 'HAS_IMAGE',
     RaceTrackHasPrimeImage = 'HAS_PRIME_IMAGE',
+    RaceTrackHasVideo = 'HAS_VIDEO',
+    RaceTrackHasMainVideo = 'HAS_MAIN_VIDEO',
     TrackLayoutBelongsToRaceTrack = 'HAS_LAYOUT',
     TrackLayoutWasUsedByRacingEvent = 'USED_THE_TRACK_LAYOUT',
     TrackLayoutHasLapTime = 'HAS_LAP_TIME',

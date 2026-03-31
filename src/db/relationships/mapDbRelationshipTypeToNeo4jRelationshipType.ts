@@ -50,6 +50,8 @@ export function mapDbRelationshipTypeToNeo4jRelationshipType(
         [RelationshipType.RaceTrackHasLayout, RelationshipTypeNeo4j.RaceTrackHasLayout],
         [RelationshipType.RaceTrackHasImage, RelationshipTypeNeo4j.RaceTrackHasImage],
         [RelationshipType.RaceTrackHasPrimeImage, RelationshipTypeNeo4j.RaceTrackHasPrimeImage],
+        [RelationshipType.RaceTrackHasVideo, RelationshipTypeNeo4j.RaceTrackHasVideo],
+        [RelationshipType.RaceTrackHasMainVideo, RelationshipTypeNeo4j.RaceTrackHasMainVideo],
         [RelationshipType.TrackLayoutBelongsToRaceTrack, RelationshipTypeNeo4j.TrackLayoutBelongsToRaceTrack],
         [RelationshipType.TrackLayoutWasUsedByRacingEvent, RelationshipTypeNeo4j.TrackLayoutWasUsedByRacingEvent],
         [RelationshipType.TrackLayoutIsFeaturedInRacingGame, RelationshipTypeNeo4j.TrackLayoutIsFeaturedInRacingGame],

@@ -41,6 +41,8 @@ export enum RelationType {
     RaceTrackHostedRacingEvent = 'hosted-racing-event',
     RaceTrackHasImage = 'has-image',
     RaceTrackHasPrimeImage = 'has-prime-image',
+    RaceTrackHasVideo = 'has-video',
+    RaceTrackHasMainVideo = 'has-main-video',
     TrackLayoutBelongsToRaceTrack = 'belongs-to-race-track',
     TrackLayoutWasUsedByRacingEvent = 'was-used-by-racing-event',
     TrackLayoutHasLapTime = 'has-lap-time',
