@@ -1,5 +1,7 @@
+import {ControllerNodeType} from "./ControllerNodeType"
+
 export type NodeResponse = {
-    type: string
+    type: ControllerNodeType
     id: number
     attributes: {
         [key: string]: string | number | boolean | null
