@@ -26,9 +26,8 @@ import {videoAlreadyExists} from "./create/videoAlreadyExists"
 export const Video = {
     async create(data: CreateVideoInput): Promise<VideoNode> {
         const id = data.external_id
-        const provider = data.video_provider
 
-        if (await videoAlreadyExists(provider, id)) {
+        if (await videoAlreadyExists(id)) {
             throw new YouTubeVideoAlreadyExistsError(id)
         }
 

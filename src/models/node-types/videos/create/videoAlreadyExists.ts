@@ -1,3 +1,7 @@
-export async function videoAlreadyExists(videoPlatform: string, externalId: string) {
-    return false // TODO query database
+import {Video} from "../Video"
+
+export async function videoAlreadyExists(externalId: string) {
+    const videos = await Video.findAll({filterByProperty: 'externalId', filterValue: externalId})
+
+    return videos.length > 0
 }
