@@ -111,6 +111,8 @@ export function mapDbRelationshipTypeToModelRelType(dbRelationshipType: Relation
         [RelationshipType.ModelCarBrandCreatedModelCar, RelType.ModelCarBrandCreatedModelCar],
         [RelationshipType.ModelCarBrandHasImage, RelType.ModelCarBrandHasImage],
         [RelationshipType.ModelCarBrandHasPrimeImage, RelType.ModelCarBrandHasPrimeImage],
+        [RelationshipType.ModelCarBrandHasVideo, RelType.ModelCarBrandHasVideo],
+        [RelationshipType.ModelCarBrandHasMainVideo, RelType.ModelCarBrandHasMainVideo],
         [RelationshipType.MagazineHasIssue, RelType.MagazineHasIssue],
         [RelationshipType.MagazineHasImage, RelType.MagazineHasImage],
         [RelationshipType.MagazineHasPrimeImage, RelType.MagazineHasPrimeImage],

@@ -106,6 +106,8 @@ export enum RelType {
     ModelCarBrandCreatedModelCar = 'model_car_brand_created_model_car',
     ModelCarBrandHasImage = 'model_car_brand_has_image',
     ModelCarBrandHasPrimeImage = 'model_car_brand_has_prime_image',
+    ModelCarBrandHasVideo = 'model_car_brand_has_video',
+    ModelCarBrandHasMainVideo = 'model_car_brand_has_main_video',
     MagazineHasIssue = 'magazine_has_issue',
     MagazineHasImage = 'magazine_has_image',
     MagazineHasPrimeImage = 'magazine_has_prime_image',

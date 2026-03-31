@@ -12,6 +12,12 @@ import {deleteHasImageRelation} from "./model-car-brands/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./model-car-brands/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./model-car-brands/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./model-car-brands/deleteHasPrimeImageRelation"
+import {createHasVideoRelation} from "./model-car-brands/createHasVideoRelation"
+import {getAllHasVideoRelations} from "./model-car-brands/getAllHasVideoRelations"
+import {deleteHasVideoRelation} from "./model-car-brands/deleteHasVideoRelation"
+import {createHasMainVideoRelation} from "./model-car-brands/createHasMainVideoRelation"
+import {getHasMainVideoRelation} from "./model-car-brands/getHasMainVideoRelation"
+import {deleteHasMainVideoRelation} from "./model-car-brands/deleteHasMainVideoRelation"
 
 export const ModelCarBrandController = {
     async create(req: express.Request, res: express.Response) {
@@ -64,5 +70,29 @@ export const ModelCarBrandController = {
 
     async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
+    },
+
+    async createHasVideoRelation(req: express.Request, res: express.Response) {
+        await createHasVideoRelation(req, res)
+    },
+
+    async getAllHasVideoRelations(req: express.Request, res: express.Response) {
+        await getAllHasVideoRelations(req, res)
+    },
+
+    async deleteHasVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasVideoRelation(req, res)
+    },
+
+    async createHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await createHasMainVideoRelation(req, res)
+    },
+
+    async getHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await getHasMainVideoRelation(req, res)
+    },
+
+    async deleteHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasMainVideoRelation(req, res)
     },
 }

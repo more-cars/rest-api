@@ -109,4 +109,52 @@ describe('Model Car Brands', () => {
         expect(ModelCarBrandController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-video‹ relationship', async () => {
+        await request(app)
+            .post('/model-car-brands/123/has-video/456')
+
+        expect(ModelCarBrandController.createHasVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get all ›has-video‹ relationships', async () => {
+        await request(app)
+            .get('/model-car-brands/123/has-video')
+
+        expect(ModelCarBrandController.getAllHasVideoRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Delete ›has-video‹ relationship', async () => {
+        await request(app)
+            .delete('/model-car-brands/123/has-video/456')
+
+        expect(ModelCarBrandController.deleteHasVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Create ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .post('/model-car-brands/123/has-main-video/456')
+
+        expect(ModelCarBrandController.createHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .get('/model-car-brands/123/has-main-video')
+
+        expect(ModelCarBrandController.getHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Delete ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .delete('/model-car-brands/123/has-main-video/456')
+
+        expect(ModelCarBrandController.deleteHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })
