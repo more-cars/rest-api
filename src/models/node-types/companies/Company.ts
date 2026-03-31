@@ -21,6 +21,7 @@ import {getAllRels} from "../../relationships/getAllRels"
 import {ModelNodeType} from "../../types/ModelNodeType"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
+import {Video} from "../videos/Video"
 
 export const Company = {
     async create(data: CreateCompanyInput): Promise<CompanyNode> {
@@ -182,5 +183,87 @@ export const Company = {
         }
 
         await deleteSpecificRel(companyId, imageId, RelType.CompanyHasPrimeImage)
+    },
+
+    async createHasVideoRelationship(companyId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Company.findById(companyId)
+        await Video.findById(videoId)
+
+        const existingRelation = await getSpecificRel(companyId, videoId, RelType.CompanyHasVideo)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.CompanyHasVideo, companyId, videoId)
+        }
+
+        const createdRelationship = await createRel(companyId, videoId, RelType.CompanyHasVideo)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getAllHasVideoRelationships(companyId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await Company.findById(companyId)
+
+        return getAllRels(companyId, RelType.CompanyHasVideo)
+    },
+
+    async deleteHasVideoRelationship(companyId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Company.findById(companyId)
+        await Video.findById(videoId)
+
+        const relationship = await getSpecificRel(companyId, videoId, RelType.CompanyHasVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.CompanyHasVideo, companyId, videoId)
+        }
+
+        await deleteSpecificRel(companyId, videoId, RelType.CompanyHasVideo)
+    },
+
+    async createHasMainVideoRelationship(companyId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Company.findById(companyId)
+        await Video.findById(videoId)
+
+        const existingRelation = await getSpecificRel(companyId, videoId, RelType.CompanyHasMainVideo)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.CompanyHasMainVideo, companyId, videoId)
+        }
+        await deleteOutgoingRel(companyId, RelType.CompanyHasMainVideo, ModelNodeType.Video)
+
+        const createdRelationship = await createRel(companyId, videoId, RelType.CompanyHasMainVideo)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getHasMainVideoRelationship(companyId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await Company.findById(companyId)
+
+        const relationship = await getRel(companyId, RelType.CompanyHasMainVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.CompanyHasMainVideo, companyId, null)
+        }
+
+        return relationship
+    },
+
+    async deleteHasMainVideoRelationship(companyId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Company.findById(companyId)
+        await Video.findById(videoId)
+
+        const relationship = await getSpecificRel(companyId, videoId, RelType.CompanyHasMainVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.CompanyHasMainVideo, companyId, videoId)
+        }
+
+        await deleteSpecificRel(companyId, videoId, RelType.CompanyHasMainVideo)
     },
 }

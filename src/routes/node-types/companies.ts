@@ -16,5 +16,11 @@ router.delete('/companies/:companyId/has-image/:imageId', CompanyController.dele
 router.post('/companies/:companyId/has-prime-image/:imageId', CompanyController.createHasPrimeImageRelation)
 router.get('/companies/:companyId/has-prime-image', CompanyController.getHasPrimeImageRelation)
 router.delete('/companies/:companyId/has-prime-image/:imageId', CompanyController.deleteHasPrimeImageRelation)
+router.post('/companies/:companyId/has-video/:videoId', CompanyController.createHasVideoRelation)
+router.get('/companies/:companyId/has-video', CompanyController.getAllHasVideoRelations)
+router.delete('/companies/:companyId/has-video/:videoId', CompanyController.deleteHasVideoRelation)
+router.post('/companies/:companyId/has-main-video/:videoId', CompanyController.createHasMainVideoRelation)
+router.get('/companies/:companyId/has-main-video', CompanyController.getHasMainVideoRelation)
+router.delete('/companies/:companyId/has-main-video/:videoId', CompanyController.deleteHasMainVideoRelation)
 
 export default router

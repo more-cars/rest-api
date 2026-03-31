@@ -31,7 +31,8 @@ export function getRelationshipTypeSpecification(relationshipType: RelationshipT
         startNodeType: NodeType,
         endNodeType: NodeType,
         isReverseRelationship: boolean,
-    }>(CompanyRelationshipSpecification.concat(
+    }>(VideoRelationshipSpecification.concat(
+        CompanyRelationshipSpecification,
         BrandRelationshipSpecification,
         CarModelRelationshipSpecification,
         CarModelVariantRelationshipSpecification,
@@ -53,7 +54,6 @@ export function getRelationshipTypeSpecification(relationshipType: RelationshipT
         ProgrammeRelationshipSpecification,
         ProgrammeEpisodeRelationshipSpecification,
         MotorShowRelationshipSpecification,
-        VideoRelationshipSpecification,
         ImageRelationshipSpecification,
     ))
 

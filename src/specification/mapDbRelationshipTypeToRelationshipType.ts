@@ -9,6 +9,8 @@ export function mapDbRelationshipTypeToRelationshipType(dbRelationshipType: DbRe
         [DbRelationshipType.CompanyHasBrand, RelationshipType.CompanyHasBrand],
         [DbRelationshipType.CompanyHasImage, RelationshipType.CompanyHasImage],
         [DbRelationshipType.CompanyHasPrimeImage, RelationshipType.CompanyHasPrimeImage],
+        [DbRelationshipType.CompanyHasVideo, RelationshipType.CompanyHasVideo],
+        [DbRelationshipType.CompanyHasMainVideo, RelationshipType.CompanyHasMainVideo],
         [DbRelationshipType.BrandBelongsToCompany, RelationshipType.BrandBelongsToCompany],
         [DbRelationshipType.BrandHasCarModel, RelationshipType.BrandHasCarModel],
         [DbRelationshipType.BrandHasImage, RelationshipType.BrandHasImage],

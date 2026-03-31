@@ -110,4 +110,52 @@ describe('Companies', () => {
         expect(CompanyController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-video‹ relationship', async () => {
+        await request(app)
+            .post('/companies/123/has-video/456')
+
+        expect(CompanyController.createHasVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get all ›has-video‹ relationships', async () => {
+        await request(app)
+            .get('/companies/123/has-video')
+
+        expect(CompanyController.getAllHasVideoRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Delete ›has-video‹ relationship', async () => {
+        await request(app)
+            .delete('/companies/123/has-video/456')
+
+        expect(CompanyController.deleteHasVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Create ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .post('/companies/123/has-main-video/456')
+
+        expect(CompanyController.createHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .get('/companies/123/has-main-video')
+
+        expect(CompanyController.getHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Delete ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .delete('/companies/123/has-main-video/456')
+
+        expect(CompanyController.deleteHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

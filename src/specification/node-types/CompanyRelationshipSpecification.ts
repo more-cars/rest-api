@@ -18,5 +18,15 @@ export const CompanyRelationshipSpecification: RelationshipTypeSpecification[] =
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    [RelationshipType.CompanyHasVideo, {
+        startNodeType: NodeType.Company,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
+    [RelationshipType.CompanyHasMainVideo, {
+        startNodeType: NodeType.Company,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
     //
 ]

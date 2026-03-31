@@ -2,6 +2,8 @@ export enum RelType {
     CompanyHasBrand = 'company_has_brand',
     CompanyHasImage = 'company_has_image',
     CompanyHasPrimeImage = 'company_has_prime_image',
+    CompanyHasVideo = 'company_has_video',
+    CompanyHasMainVideo = 'company_has_main_video',
     BrandBelongsToCompany = 'brand_belongs_to_company',
     BrandHasCarModel = 'brand_has_car_model',
     BrandHasImage = 'brand_has_image',

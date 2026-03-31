@@ -1,0 +1,59 @@
+info:
+  name: Get ›has-main-video‹ relation (valid data)
+  type: http
+  tags:
+    - get
+    - relation
+    - valid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/companies/{{validCompanyId}}/has-main-video"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data
+      operator: isJson
+    - expression: res.body.data.relationship_id
+      operator: gte
+      value: "12000000"
+    - expression: res.body.data.relationship_name
+      operator: eq
+      value: "has-main-video"
+    - expression: res.body.data.start_node
+      operator: isJson
+    - expression: res.body.data.start_node.node_type
+      operator: eq
+      value: "companies"
+    - expression: res.body.data.start_node.data.id
+      operator: eq
+      value: "{{validCompanyId}}"
+    - expression: res.body.data.partner_node
+      operator: isJson
+    - expression: res.body.data.partner_node.node_type
+      operator: eq
+      value: "videos"
+    - expression: res.body.data.partner_node.data.id
+      operator: eq
+      value: "{{validVideoId}}"
+    - expression: res.body.data.created_at
+      operator: isString
+    - expression: res.body.data.created_at
+      operator: isNotEmpty
+    - expression: res.body.data.updated_at
+      operator: isString
+    - expression: res.body.data.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const Companies = require('./lib/node-types/Companies.js')
+        const Videos = require('./lib/node-types/Videos.js')
+        await Companies.create()
+        await Videos.create()
+        await Companies.createHasMainVideoRelationship()
