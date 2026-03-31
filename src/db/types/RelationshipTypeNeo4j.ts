@@ -103,6 +103,8 @@ export enum RelationshipTypeNeo4j {
     ModelCarMadeByModelCarBrand = 'CREATED_MODEL_CAR',
     ModelCarHasImage = 'HAS_IMAGE',
     ModelCarHasPrimeImage = 'HAS_PRIME_IMAGE',
+    ModelCarHasVideo = 'HAS_VIDEO',
+    ModelCarHasMainVideo = 'HAS_MAIN_VIDEO',
     ModelCarBrandCreatedModelCar = 'CREATED_MODEL_CAR',
     ModelCarBrandHasImage = 'HAS_IMAGE',
     ModelCarBrandHasPrimeImage = 'HAS_PRIME_IMAGE',

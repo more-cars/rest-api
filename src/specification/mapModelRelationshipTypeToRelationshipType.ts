@@ -106,6 +106,8 @@ export function mapModelRelationshipTypeToRelationshipType(relType: RelType): Re
         [RelType.ModelCarMadeByModelCarBrand, RelationshipType.ModelCarMadeByModelCarBrand],
         [RelType.ModelCarHasImage, RelationshipType.ModelCarHasImage],
         [RelType.ModelCarHasPrimeImage, RelationshipType.ModelCarHasPrimeImage],
+        [RelType.ModelCarHasVideo, RelationshipType.ModelCarHasVideo],
+        [RelType.ModelCarHasMainVideo, RelationshipType.ModelCarHasMainVideo],
         [RelType.ModelCarBrandCreatedModelCar, RelationshipType.ModelCarBrandCreatedModelCar],
         [RelType.ModelCarBrandHasImage, RelationshipType.ModelCarBrandHasImage],
         [RelType.ModelCarBrandHasPrimeImage, RelationshipType.ModelCarBrandHasPrimeImage],

@@ -101,6 +101,8 @@ export enum RelationType {
     ModelCarMadeByModelCarBrand = 'made-by-model-car-brand',
     ModelCarHasImage = 'has-image',
     ModelCarHasPrimeImage = 'has-prime-image',
+    ModelCarHasVideo = 'has-video',
+    ModelCarHasMainVideo = 'has-main-video',
     ModelCarBrandCreatedModelCar = 'created-model-car',
     ModelCarBrandHasImage = 'has-image',
     ModelCarBrandHasPrimeImage = 'has-prime-image',

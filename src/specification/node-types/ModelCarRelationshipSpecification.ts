@@ -23,5 +23,15 @@ export const ModelCarRelationshipSpecification: RelationshipTypeSpecification[] 
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    [RelationshipType.ModelCarHasVideo, {
+        startNodeType: NodeType.ModelCar,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
+    [RelationshipType.ModelCarHasMainVideo, {
+        startNodeType: NodeType.ModelCar,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
     //
 ]
