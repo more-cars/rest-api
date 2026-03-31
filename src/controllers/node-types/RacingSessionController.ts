@@ -15,6 +15,12 @@ import {deleteHasImageRelation} from "./racing-sessions/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./racing-sessions/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./racing-sessions/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./racing-sessions/deleteHasPrimeImageRelation"
+import {createHasVideoRelation} from "./racing-sessions/createHasVideoRelation"
+import {getAllHasVideoRelations} from "./racing-sessions/getAllHasVideoRelations"
+import {deleteHasVideoRelation} from "./racing-sessions/deleteHasVideoRelation"
+import {createHasMainVideoRelation} from "./racing-sessions/createHasMainVideoRelation"
+import {getHasMainVideoRelation} from "./racing-sessions/getHasMainVideoRelation"
+import {deleteHasMainVideoRelation} from "./racing-sessions/deleteHasMainVideoRelation"
 
 export const RacingSessionController = {
     async create(req: express.Request, res: express.Response) {
@@ -79,5 +85,29 @@ export const RacingSessionController = {
 
     async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
+    },
+
+    async createHasVideoRelation(req: express.Request, res: express.Response) {
+        await createHasVideoRelation(req, res)
+    },
+
+    async getAllHasVideoRelations(req: express.Request, res: express.Response) {
+        await getAllHasVideoRelations(req, res)
+    },
+
+    async deleteHasVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasVideoRelation(req, res)
+    },
+
+    async createHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await createHasMainVideoRelation(req, res)
+    },
+
+    async getHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await getHasMainVideoRelation(req, res)
+    },
+
+    async deleteHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasMainVideoRelation(req, res)
     },
 }

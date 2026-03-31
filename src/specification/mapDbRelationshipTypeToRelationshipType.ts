@@ -78,6 +78,8 @@ export function mapDbRelationshipTypeToRelationshipType(dbRelationshipType: DbRe
         [DbRelationshipType.RacingSessionHasSessionResult, RelationshipType.RacingSessionHasSessionResult],
         [DbRelationshipType.RacingSessionHasImage, RelationshipType.RacingSessionHasImage],
         [DbRelationshipType.RacingSessionHasPrimeImage, RelationshipType.RacingSessionHasPrimeImage],
+        [DbRelationshipType.RacingSessionHasVideo, RelationshipType.RacingSessionHasVideo],
+        [DbRelationshipType.RacingSessionHasMainVideo, RelationshipType.RacingSessionHasMainVideo],
         [DbRelationshipType.SessionResultBelongsToRacingSession, RelationshipType.SessionResultBelongsToRacingSession],
         [DbRelationshipType.SessionResultHasLapTime, RelationshipType.SessionResultHasLapTime],
         [DbRelationshipType.SessionResultAchievedWithCarModelVariant, RelationshipType.SessionResultAchievedWithCarModelVariant],

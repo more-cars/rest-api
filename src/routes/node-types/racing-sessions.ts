@@ -19,5 +19,11 @@ router.delete('/racing-sessions/:racingSessionId/has-image/:imageId', RacingSess
 router.post('/racing-sessions/:racingSessionId/has-prime-image/:imageId', RacingSessionController.createHasPrimeImageRelation)
 router.get('/racing-sessions/:racingSessionId/has-prime-image', RacingSessionController.getHasPrimeImageRelation)
 router.delete('/racing-sessions/:racingSessionId/has-prime-image/:imageId', RacingSessionController.deleteHasPrimeImageRelation)
+router.post('/racing-sessions/:racingSessionId/has-video/:videoId', RacingSessionController.createHasVideoRelation)
+router.get('/racing-sessions/:racingSessionId/has-video', RacingSessionController.getAllHasVideoRelations)
+router.delete('/racing-sessions/:racingSessionId/has-video/:videoId', RacingSessionController.deleteHasVideoRelation)
+router.post('/racing-sessions/:racingSessionId/has-main-video/:videoId', RacingSessionController.createHasMainVideoRelation)
+router.get('/racing-sessions/:racingSessionId/has-main-video', RacingSessionController.getHasMainVideoRelation)
+router.delete('/racing-sessions/:racingSessionId/has-main-video/:videoId', RacingSessionController.deleteHasMainVideoRelation)
 
 export default router

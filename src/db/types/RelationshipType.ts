@@ -73,6 +73,8 @@ export enum RelationshipType {
     RacingEventCoveredByMagazineIssue = 'RACING_EVENT_COVERED_BY_MAGAZINE_ISSUE',
     RacingSessionHasImage = 'RACING_SESSION_HAS_IMAGE',
     RacingSessionHasPrimeImage = 'RACING_SESSION_HAS_PRIME_IMAGE',
+    RacingSessionHasVideo = 'RACING_SESSION_HAS_VIDEO',
+    RacingSessionHasMainVideo = 'RACING_SESSION_HAS_MAIN_VIDEO',
     SessionResultBelongsToRacingSession = 'SESSION_RESULT_BELONGS_TO_RACING_SESSION',
     SessionResultHasLapTime = 'SESSION_RESULT_HAS_LAP_TIME',
     SessionResultAchievedWithCarModelVariant = 'SESSION_RESULT_ACHIEVED_WITH_CAR_MODEL_VARIANT',

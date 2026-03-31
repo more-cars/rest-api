@@ -80,6 +80,8 @@ export function mapDbRelationshipTypeToNeo4jRelationshipType(
         [RelationshipType.RacingSessionHasSessionResult, RelationshipTypeNeo4j.RacingSessionHasSessionResult],
         [RelationshipType.RacingSessionHasImage, RelationshipTypeNeo4j.RacingSessionHasImage],
         [RelationshipType.RacingSessionHasPrimeImage, RelationshipTypeNeo4j.RacingSessionHasPrimeImage],
+        [RelationshipType.RacingSessionHasVideo, RelationshipTypeNeo4j.RacingSessionHasVideo],
+        [RelationshipType.RacingSessionHasMainVideo, RelationshipTypeNeo4j.RacingSessionHasMainVideo],
         [RelationshipType.SessionResultBelongsToRacingSession, RelationshipTypeNeo4j.SessionResultBelongsToRacingSession],
         [RelationshipType.SessionResultAchievedWithCarModelVariant, RelationshipTypeNeo4j.SessionResultAchievedWithCarModelVariant],
         [RelationshipType.SessionResultHasLapTime, RelationshipTypeNeo4j.SessionResultHasLapTime],

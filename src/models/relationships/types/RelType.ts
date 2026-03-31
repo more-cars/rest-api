@@ -71,6 +71,8 @@ export enum RelType {
     RacingSessionHasSessionResult = 'racing_session_has_session_result',
     RacingSessionHasImage = 'racing_session_has_image',
     RacingSessionHasPrimeImage = 'racing_session_has_prime_image',
+    RacingSessionHasVideo = 'racing_session_has_video',
+    RacingSessionHasMainVideo = 'racing_session_has_main_video',
     SessionResultBelongsToRacingSession = 'session_result_belongs_to_racing_session',
     SessionResultHasLapTime = 'session_result_has_lap_time',
     SessionResultAchievedWithCarModelVariant = 'session_result_achieved_with_car_model_variant',

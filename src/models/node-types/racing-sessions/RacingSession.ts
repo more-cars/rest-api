@@ -22,6 +22,7 @@ import {SessionResult} from "../session-results/SessionResult"
 import {ModelNodeType} from "../../types/ModelNodeType"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
+import {Video} from "../videos/Video"
 
 export const RacingSession = {
     async create(data: CreateRacingSessionInput): Promise<RacingSessionNode> {
@@ -228,5 +229,87 @@ export const RacingSession = {
         }
 
         await deleteSpecificRel(racingSessionId, imageId, RelType.RacingSessionHasPrimeImage)
+    },
+
+    async createHasVideoRelationship(racingSessionId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSession.findById(racingSessionId)
+        await Video.findById(videoId)
+
+        const existingRelation = await getSpecificRel(racingSessionId, videoId, RelType.RacingSessionHasVideo)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.RacingSessionHasVideo, racingSessionId, videoId)
+        }
+
+        const createdRelationship = await createRel(racingSessionId, videoId, RelType.RacingSessionHasVideo)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getAllHasVideoRelationships(racingSessionId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await RacingSession.findById(racingSessionId)
+
+        return getAllRels(racingSessionId, RelType.RacingSessionHasVideo)
+    },
+
+    async deleteHasVideoRelationship(racingSessionId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSession.findById(racingSessionId)
+        await Video.findById(videoId)
+
+        const relationship = await getSpecificRel(racingSessionId, videoId, RelType.RacingSessionHasVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.RacingSessionHasVideo, racingSessionId, videoId)
+        }
+
+        await deleteSpecificRel(racingSessionId, videoId, RelType.RacingSessionHasVideo)
+    },
+
+    async createHasMainVideoRelationship(racingSessionId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSession.findById(racingSessionId)
+        await Video.findById(videoId)
+
+        const existingRelation = await getSpecificRel(racingSessionId, videoId, RelType.RacingSessionHasMainVideo)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.RacingSessionHasMainVideo, racingSessionId, videoId)
+        }
+        await deleteOutgoingRel(racingSessionId, RelType.RacingSessionHasMainVideo, ModelNodeType.Video)
+
+        const createdRelationship = await createRel(racingSessionId, videoId, RelType.RacingSessionHasMainVideo)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getHasMainVideoRelationship(racingSessionId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await RacingSession.findById(racingSessionId)
+
+        const relationship = await getRel(racingSessionId, RelType.RacingSessionHasMainVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.RacingSessionHasMainVideo, racingSessionId, null)
+        }
+
+        return relationship
+    },
+
+    async deleteHasMainVideoRelationship(racingSessionId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingSession.findById(racingSessionId)
+        await Video.findById(videoId)
+
+        const relationship = await getSpecificRel(racingSessionId, videoId, RelType.RacingSessionHasMainVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.RacingSessionHasMainVideo, racingSessionId, videoId)
+        }
+
+        await deleteSpecificRel(racingSessionId, videoId, RelType.RacingSessionHasMainVideo)
     },
 }

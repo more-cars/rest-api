@@ -76,6 +76,8 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.RacingSessionHasSessionResult, RelationType.RacingSessionHasSessionResult],
         [RelType.RacingSessionHasImage, RelationType.RacingSessionHasImage],
         [RelType.RacingSessionHasPrimeImage, RelationType.RacingSessionHasPrimeImage],
+        [RelType.RacingSessionHasVideo, RelationType.RacingSessionHasVideo],
+        [RelType.RacingSessionHasMainVideo, RelationType.RacingSessionHasMainVideo],
         [RelType.SessionResultBelongsToRacingSession, RelationType.SessionResultBelongsToRacingSession],
         [RelType.SessionResultHasLapTime, RelationType.SessionResultHasLapTime],
         [RelType.SessionResultAchievedWithCarModelVariant, RelationType.SessionResultAchievedWithCarModelVariant],

@@ -73,6 +73,8 @@ export enum RelationshipTypeNeo4j {
     RacingSessionHasSessionResult = 'HAS_SESSION_RESULT',
     RacingSessionHasImage = 'HAS_IMAGE',
     RacingSessionHasPrimeImage = 'HAS_PRIME_IMAGE',
+    RacingSessionHasVideo = 'HAS_VIDEO',
+    RacingSessionHasMainVideo = 'HAS_MAIN_VIDEO',
     SessionResultBelongsToRacingSession = 'HAS_SESSION_RESULT',
     SessionResultHasLapTime = 'GOT_LAP_TIME',
     SessionResultAchievedWithCarModelVariant = 'ACHIEVED_SESSION_RESULT',

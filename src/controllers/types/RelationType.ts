@@ -71,6 +71,8 @@ export enum RelationType {
     RacingSessionHasSessionResult = 'has-session-result',
     RacingSessionHasImage = 'has-image',
     RacingSessionHasPrimeImage = 'has-prime-image',
+    RacingSessionHasVideo = 'has-video',
+    RacingSessionHasMainVideo = 'has-main-video',
     SessionResultBelongsToRacingSession = 'belongs-to-racing-session',
     SessionResultHasLapTime = 'has-lap-time',
     SessionResultAchievedWithCarModelVariant = 'achieved-with-car-model-variant',
