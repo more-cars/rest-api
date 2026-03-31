@@ -87,6 +87,8 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.RacingGameReleasedOnGamingPlatform, RelationType.RacingGameReleasedOnGamingPlatform],
         [RelType.RacingGameHasImage, RelationType.RacingGameHasImage],
         [RelType.RacingGameHasPrimeImage, RelationType.RacingGameHasPrimeImage],
+        [RelType.RacingGameHasVideo, RelationType.RacingGameHasVideo],
+        [RelType.RacingGameHasMainVideo, RelationType.RacingGameHasMainVideo],
         [RelType.GamingPlatformFeaturesRacingGame, RelationType.GamingPlatformFeaturesRacingGame],
         [RelType.GamingPlatformHasImage, RelationType.GamingPlatformHasImage],
         [RelType.GamingPlatformHasPrimeImage, RelationType.GamingPlatformHasPrimeImage],

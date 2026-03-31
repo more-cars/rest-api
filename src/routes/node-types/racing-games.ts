@@ -22,5 +22,11 @@ router.delete('/racing-games/:racingGameId/has-image/:imageId', RacingGameContro
 router.post('/racing-games/:racingGameId/has-prime-image/:imageId', RacingGameController.createHasPrimeImageRelation)
 router.get('/racing-games/:racingGameId/has-prime-image', RacingGameController.getHasPrimeImageRelation)
 router.delete('/racing-games/:racingGameId/has-prime-image/:imageId', RacingGameController.deleteHasPrimeImageRelation)
+router.post('/racing-games/:racingGameId/has-video/:videoId', RacingGameController.createHasVideoRelation)
+router.get('/racing-games/:racingGameId/has-video', RacingGameController.getAllHasVideoRelations)
+router.delete('/racing-games/:racingGameId/has-video/:videoId', RacingGameController.deleteHasVideoRelation)
+router.post('/racing-games/:racingGameId/has-main-video/:videoId', RacingGameController.createHasMainVideoRelation)
+router.get('/racing-games/:racingGameId/has-main-video', RacingGameController.getHasMainVideoRelation)
+router.delete('/racing-games/:racingGameId/has-main-video/:videoId', RacingGameController.deleteHasMainVideoRelation)
 
 export default router

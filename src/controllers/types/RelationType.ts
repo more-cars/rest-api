@@ -82,6 +82,8 @@ export enum RelationType {
     RacingGameReleasedOnGamingPlatform = 'released-on-gaming-platform',
     RacingGameHasImage = 'has-image',
     RacingGameHasPrimeImage = 'has-prime-image',
+    RacingGameHasVideo = 'has-video',
+    RacingGameHasMainVideo = 'has-main-video',
     GamingPlatformFeaturesRacingGame = 'features-racing-game',
     GamingPlatformHasImage = 'has-image',
     GamingPlatformHasPrimeImage = 'has-prime-image',
