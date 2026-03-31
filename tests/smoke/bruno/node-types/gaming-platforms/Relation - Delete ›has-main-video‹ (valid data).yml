@@ -1,0 +1,25 @@
+info:
+  name: Delete ›has-main-video‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/gaming-platforms/{{validGamingPlatformId}}/has-main-video/{{validVideoId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const GamingPlatforms = require('./lib/node-types/GamingPlatforms.js')
+        const Videos = require('./lib/node-types/Videos.js')
+        await GamingPlatforms.create()
+        await Videos.create()
+        await GamingPlatforms.createHasMainVideoRelationship()

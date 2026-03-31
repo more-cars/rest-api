@@ -18,5 +18,15 @@ export const GamingPlatformRelationshipSpecification: RelationshipTypeSpecificat
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    [RelationshipType.GamingPlatformHasVideo, {
+        startNodeType: NodeType.GamingPlatform,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
+    [RelationshipType.GamingPlatformHasMainVideo, {
+        startNodeType: NodeType.GamingPlatform,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
     //
 ]

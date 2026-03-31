@@ -20,6 +20,7 @@ import {Image} from "../images/Image"
 import {ModelNodeType} from "../../types/ModelNodeType"
 import {getRel} from "../../relationships/getRel"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
+import {Video} from "../videos/Video"
 
 export const GamingPlatform = {
     async create(data: CreateGamingPlatformInput): Promise<GamingPlatformNode> {
@@ -180,5 +181,87 @@ export const GamingPlatform = {
         }
 
         await deleteSpecificRel(gamingPlatformId, imageId, RelType.GamingPlatformHasPrimeImage)
+    },
+
+    async createHasVideoRelationship(gamingPlatformId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await GamingPlatform.findById(gamingPlatformId)
+        await Video.findById(videoId)
+
+        const existingRelation = await getSpecificRel(gamingPlatformId, videoId, RelType.GamingPlatformHasVideo)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.GamingPlatformHasVideo, gamingPlatformId, videoId)
+        }
+
+        const createdRelationship = await createRel(gamingPlatformId, videoId, RelType.GamingPlatformHasVideo)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getAllHasVideoRelationships(gamingPlatformId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await GamingPlatform.findById(gamingPlatformId)
+
+        return getAllRels(gamingPlatformId, RelType.GamingPlatformHasVideo)
+    },
+
+    async deleteHasVideoRelationship(gamingPlatformId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await GamingPlatform.findById(gamingPlatformId)
+        await Video.findById(videoId)
+
+        const relationship = await getSpecificRel(gamingPlatformId, videoId, RelType.GamingPlatformHasVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.GamingPlatformHasVideo, gamingPlatformId, videoId)
+        }
+
+        await deleteSpecificRel(gamingPlatformId, videoId, RelType.GamingPlatformHasVideo)
+    },
+
+    async createHasMainVideoRelationship(gamingPlatformId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await GamingPlatform.findById(gamingPlatformId)
+        await Video.findById(videoId)
+
+        const existingRelation = await getSpecificRel(gamingPlatformId, videoId, RelType.GamingPlatformHasMainVideo)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.GamingPlatformHasMainVideo, gamingPlatformId, videoId)
+        }
+        await deleteOutgoingRel(gamingPlatformId, RelType.GamingPlatformHasMainVideo, ModelNodeType.Video)
+
+        const createdRelationship = await createRel(gamingPlatformId, videoId, RelType.GamingPlatformHasMainVideo)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getHasMainVideoRelationship(gamingPlatformId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await GamingPlatform.findById(gamingPlatformId)
+
+        const relationship = await getRel(gamingPlatformId, RelType.GamingPlatformHasMainVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.GamingPlatformHasMainVideo, gamingPlatformId, null)
+        }
+
+        return relationship
+    },
+
+    async deleteHasMainVideoRelationship(gamingPlatformId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await GamingPlatform.findById(gamingPlatformId)
+        await Video.findById(videoId)
+
+        const relationship = await getSpecificRel(gamingPlatformId, videoId, RelType.GamingPlatformHasMainVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.GamingPlatformHasMainVideo, gamingPlatformId, videoId)
+        }
+
+        await deleteSpecificRel(gamingPlatformId, videoId, RelType.GamingPlatformHasMainVideo)
     },
 }

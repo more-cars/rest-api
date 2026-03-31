@@ -12,6 +12,12 @@ import {deleteHasImageRelation} from "./gaming-platforms/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./gaming-platforms/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./gaming-platforms/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./gaming-platforms/deleteHasPrimeImageRelation"
+import {createHasVideoRelation} from "./gaming-platforms/createHasVideoRelation"
+import {getAllHasVideoRelations} from "./gaming-platforms/getAllHasVideoRelations"
+import {deleteHasVideoRelation} from "./gaming-platforms/deleteHasVideoRelation"
+import {createHasMainVideoRelation} from "./gaming-platforms/createHasMainVideoRelation"
+import {getHasMainVideoRelation} from "./gaming-platforms/getHasMainVideoRelation"
+import {deleteHasMainVideoRelation} from "./gaming-platforms/deleteHasMainVideoRelation"
 
 export const GamingPlatformController = {
     async create(req: express.Request, res: express.Response) {
@@ -64,5 +70,29 @@ export const GamingPlatformController = {
 
     async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
+    },
+
+    async createHasVideoRelation(req: express.Request, res: express.Response) {
+        await createHasVideoRelation(req, res)
+    },
+
+    async getAllHasVideoRelations(req: express.Request, res: express.Response) {
+        await getAllHasVideoRelations(req, res)
+    },
+
+    async deleteHasVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasVideoRelation(req, res)
+    },
+
+    async createHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await createHasMainVideoRelation(req, res)
+    },
+
+    async getHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await getHasMainVideoRelation(req, res)
+    },
+
+    async deleteHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasMainVideoRelation(req, res)
     },
 }

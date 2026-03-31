@@ -209,6 +209,8 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.GamingPlatformFeaturesRacingGame, RelationshipType.GamingPlatformFeaturesRacingGame],
                 [RelationshipTypeNeo4j.GamingPlatformHasImage, RelationshipType.GamingPlatformHasImage],
                 [RelationshipTypeNeo4j.GamingPlatformHasPrimeImage, RelationshipType.GamingPlatformHasPrimeImage],
+                [RelationshipTypeNeo4j.GamingPlatformHasMainVideo, RelationshipType.GamingPlatformHasMainVideo],
+                [RelationshipTypeNeo4j.GamingPlatformHasVideo, RelationshipType.GamingPlatformHasVideo],
             ])],
         ])],
         [Neo4jNodeType.ModelCar, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([

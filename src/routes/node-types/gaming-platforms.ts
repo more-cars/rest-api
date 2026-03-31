@@ -16,5 +16,11 @@ router.delete('/gaming-platforms/:gamingPlatformId/has-image/:imageId', GamingPl
 router.post('/gaming-platforms/:gamingPlatformId/has-prime-image/:imageId', GamingPlatformController.createHasPrimeImageRelation)
 router.get('/gaming-platforms/:gamingPlatformId/has-prime-image', GamingPlatformController.getHasPrimeImageRelation)
 router.delete('/gaming-platforms/:gamingPlatformId/has-prime-image/:imageId', GamingPlatformController.deleteHasPrimeImageRelation)
+router.post('/gaming-platforms/:gamingPlatformId/has-video/:videoId', GamingPlatformController.createHasVideoRelation)
+router.get('/gaming-platforms/:gamingPlatformId/has-video', GamingPlatformController.getAllHasVideoRelations)
+router.delete('/gaming-platforms/:gamingPlatformId/has-video/:videoId', GamingPlatformController.deleteHasVideoRelation)
+router.post('/gaming-platforms/:gamingPlatformId/has-main-video/:videoId', GamingPlatformController.createHasMainVideoRelation)
+router.get('/gaming-platforms/:gamingPlatformId/has-main-video', GamingPlatformController.getHasMainVideoRelation)
+router.delete('/gaming-platforms/:gamingPlatformId/has-main-video/:videoId', GamingPlatformController.deleteHasMainVideoRelation)
 
 export default router

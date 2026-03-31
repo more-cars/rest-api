@@ -89,6 +89,8 @@ export enum RelationshipTypeNeo4j {
     GamingPlatformFeaturesRacingGame = 'FEATURES_RACING_GAME',
     GamingPlatformHasImage = 'HAS_IMAGE',
     GamingPlatformHasPrimeImage = 'HAS_PRIME_IMAGE',
+    GamingPlatformHasVideo = 'HAS_VIDEO',
+    GamingPlatformHasMainVideo = 'HAS_MAIN_VIDEO',
     ModelCarIsScaleModelOfCarModelVariant = 'HAS_SCALE_MODEL',
     ModelCarMadeByModelCarBrand = 'CREATED_MODEL_CAR',
     ModelCarHasImage = 'HAS_IMAGE',

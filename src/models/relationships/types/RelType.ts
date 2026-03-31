@@ -87,6 +87,8 @@ export enum RelType {
     GamingPlatformFeaturesRacingGame = 'gaming_platform_features_racing_game',
     GamingPlatformHasImage = 'gaming_platform_has_image',
     GamingPlatformHasPrimeImage = 'gaming_platform_has_prime_image',
+    GamingPlatformHasVideo = 'gaming_platform_has_video',
+    GamingPlatformHasMainVideo = 'gaming_platform_has_main_video',
     ModelCarIsScaleModelOfCarModelVariant = 'model_car_is_scale_model_of_car_model_variant',
     ModelCarMadeByModelCarBrand = 'model_car_made_by_model_car_brand',
     ModelCarHasImage = 'model_car_has_image',
