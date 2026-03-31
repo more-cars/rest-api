@@ -6,22 +6,9 @@ export const LapTimeSchema = {
             type: "object",
             properties: {
                 id: {type: "integer"},
-                time: {
-                    type: [
-                        "string",
-                    ]
-                },
-                driver_name: {
-                    type: [
-                        "string",
-                    ]
-                },
-                date: {
-                    type: [
-                        "string",
-                        "null",
-                    ]
-                },
+                time: {type: ["string"]},
+                driver_name: {type: ["string"]},
+                date: {type: ["string", "null"]},
                 created_at: {type: "string"},
                 updated_at: {type: "string"},
             },

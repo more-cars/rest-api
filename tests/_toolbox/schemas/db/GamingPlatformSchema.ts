@@ -6,23 +6,9 @@ export const GamingPlatformSchema = {
             type: "object",
             properties: {
                 id: {type: "integer"},
-                name: {
-                    type: [
-                        "string",
-                    ]
-                },
-                release_year: {
-                    type: [
-                        "number",
-                        "null",
-                    ]
-                },
-                manufacturer: {
-                    type: [
-                        "string",
-                        "null",
-                    ]
-                },
+                name: {type: ["string"]},
+                release_year: {type: ["number", "null"]},
+                manufacturer: {type: ["string", "null"]},
                 created_at: {type: "string"},
                 updated_at: {type: "string"},
             },

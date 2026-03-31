@@ -5,16 +5,9 @@ export const ImageSchema = {
         properties: {
             type: "object",
             properties: {
-                // system data
                 id: {type: "integer"},
-                created_at: {type: "string"},
-                updated_at: {type: "string"},
-
-                // user data
                 image_provider: {type: "string"},
                 external_id: {type: "string"},
-
-                // generated data
                 name: {type: "string"},
                 description: {type: ["string", "null"]},
                 creator: {type: "string"},
@@ -28,6 +21,8 @@ export const ImageSchema = {
                 image_url_m: {type: ["string", "null"]},
                 image_url_s: {type: ["string", "null"]},
                 image_url_xs: {type: ["string", "null"]},
+                created_at: {type: "string"},
+                updated_at: {type: "string"},
             },
             required: [
                 "id",

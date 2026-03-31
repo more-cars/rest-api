@@ -6,41 +6,12 @@ export const RaceTrackSchema = {
             type: "object",
             properties: {
                 id: {type: "integer"},
-                name: {
-                    type: [
-                        "string",
-                    ]
-                },
-                opened: {
-                    type: [
-                        "number",
-                        "null",
-                    ]
-                },
-                closed: {
-                    type: [
-                        "number",
-                        "null",
-                    ]
-                },
-                type: {
-                    type: [
-                        "string",
-                        "null",
-                    ]
-                },
-                location: {
-                    type: [
-                        "string",
-                        "null",
-                    ]
-                },
-                geo_position: {
-                    type: [
-                        "string",
-                        "null",
-                    ]
-                },
+                name: {type: ["string"]},
+                opened: {type: ["number", "null"]},
+                closed: {type: ["number", "null"]},
+                type: {type: ["string", "null"]},
+                location: {type: ["string", "null"]},
+                geo_position: {type: ["string", "null"]},
                 created_at: {type: "string"},
                 updated_at: {type: "string"},
             },
