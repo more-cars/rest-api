@@ -51,6 +51,8 @@ export enum RelationshipType {
     TrackLayoutIsFeaturedInRacingGame = 'TRACK_LAYOUT_IS_FEATURED_IN_RACING_GAME',
     TrackLayoutHasImage = 'TRACK_LAYOUT_HAS_IMAGE',
     TrackLayoutHasPrimeImage = 'TRACK_LAYOUT_HAS_PRIME_IMAGE',
+    TrackLayoutHasVideo = 'TRACK_LAYOUT_HAS_VIDEO',
+    TrackLayoutHasMainVideo = 'TRACK_LAYOUT_HAS_MAIN_VIDEO',
     RacingSeriesHasRacingEvent = 'RACING_SERIES_HAS_RACING_EVENT',
     RacingSeriesHasImage = 'RACING_SERIES_HAS_IMAGE',
     RacingSeriesHasPrimeImage = 'RACING_SERIES_HAS_PRIME_IMAGE',

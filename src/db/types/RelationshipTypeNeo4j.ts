@@ -51,6 +51,8 @@ export enum RelationshipTypeNeo4j {
     TrackLayoutIsFeaturedInRacingGame = 'FEATURES_TRACK_LAYOUT',
     TrackLayoutHasImage = 'HAS_IMAGE',
     TrackLayoutHasPrimeImage = 'HAS_PRIME_IMAGE',
+    TrackLayoutHasVideo = 'HAS_VIDEO',
+    TrackLayoutHasMainVideo = 'HAS_MAIN_VIDEO',
     RacingSeriesHasRacingEvent = 'HAS_RACING_EVENT',
     RacingSeriesHasImage = 'HAS_IMAGE',
     RacingSeriesHasPrimeImage = 'HAS_PRIME_IMAGE',

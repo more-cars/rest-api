@@ -8536,6 +8536,278 @@
         }
       }
     },
+    "/track-layouts/{track-layout-id}/has-video": {
+      "get": {
+        "operationId": "getTrackLayoutHasVideoRel",
+        "tags": [
+          "Track Layouts"
+        ],
+        "summary": "Get all ›has-video‹ relationships for the `Track Layout`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "track-layout-id",
+            "description": "ID of the `Track Layout`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-video‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrackLayoutHasVideoCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Track Layout` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/track-layouts/{track-layout-id}/has-video/{video-id}": {
+      "delete": {
+        "tags": [
+          "Track Layouts"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Track Layout` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "track-layout-id",
+            "description": "ID of the `Track Layout`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Track Layout` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Track Layouts"
+        ],
+        "summary": "Creates a ›has-video‹ relationship between the `Track Layout` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "track-layout-id",
+            "description": "ID of the `Track Layout`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Relationship ›has-video‹ between `Track Layout` and `Video` successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrackLayoutHasVideoResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "The relationship ›has-video‹ between `Track Layout` and `Video` already exists."
+          },
+          "404": {
+            "description": "Request failed. `Track Layout` and/or `Video` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/track-layouts/{track-layout-id}/has-main-video": {
+      "get": {
+        "operationId": "getTrackLayoutHasMainVideoRel",
+        "tags": [
+          "Track Layouts"
+        ],
+        "summary": "Get the ›has-main-video‹ relationship for the `Track Layout`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "track-layout-id",
+            "description": "ID of the `Track Layout`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›has-main-video‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrackLayoutHasMainVideoResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Track Layout` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/track-layouts/{track-layout-id}/has-main-video/{video-id}": {
+      "delete": {
+        "tags": [
+          "Track Layouts"
+        ],
+        "summary": "Deletes the ›has-main-video‹ relationship between the `Track Layout` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "track-layout-id",
+            "description": "ID of the `Track Layout`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-main-video‹ relationship between `Track Layout` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-main-video‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Track Layouts"
+        ],
+        "summary": "Creates a ›has-main-video‹ relationship between the `Track Layout` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "track-layout-id",
+            "description": "ID of the `Track Layout`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Relationship ›has-main-video‹ between `Track Layout` and `Video` successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrackLayoutHasMainVideoResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "The relationship ›has-main-video‹ between `Track Layout` and `Video` already exists."
+          },
+          "404": {
+            "description": "Request failed. `Track Layout` and/or `Video` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/racing-series": {
       "get": {
         "operationId": "getRacingSeries",
@@ -25055,6 +25327,117 @@
             "items": {
               "$ref": "#/components/schemas/TrackLayoutIsFeaturedInRacingGameResponse"
             }
+          }
+        }
+      },
+      "TrackLayoutHasVideo": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "relationship_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "123456"
+          },
+          "relationship_name": {
+            "type": "string",
+            "readOnly": true,
+            "example": "has-video"
+          },
+          "partner_node": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "videos"
+              },
+              "data": {
+                "$ref": "#/components/schemas/Video"
+              }
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "TrackLayoutHasVideoResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/TrackLayoutHasVideo"
+          }
+        }
+      },
+      "TrackLayoutHasVideoCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TrackLayoutHasVideoResponse"
+            }
+          }
+        }
+      },
+      "TrackLayoutHasMainVideo": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "relationship_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "123456"
+          },
+          "relationship_name": {
+            "type": "string",
+            "readOnly": true,
+            "example": "has-main-video"
+          },
+          "partner_node": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "videos"
+              },
+              "data": {
+                "$ref": "#/components/schemas/Video"
+              }
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "TrackLayoutHasMainVideoResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/TrackLayoutHasMainVideo"
           }
         }
       },

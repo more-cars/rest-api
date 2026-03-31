@@ -51,6 +51,8 @@ export enum RelationshipType {
     TrackLayoutIsFeaturedInRacingGame = 'Track Layout Is Featured In Racing Game',
     TrackLayoutHasImage = 'Track Layout Has Image',
     TrackLayoutHasPrimeImage = 'Track Layout Has Prime Image',
+    TrackLayoutHasVideo = 'Track Layout Has Video',
+    TrackLayoutHasMainVideo = 'Track Layout Has Main Video',
     RacingSeriesHasRacingEvent = 'Racing Series Has Racing Event',
     RacingSeriesHasImage = 'Racing Series Has Image',
     RacingSeriesHasPrimeImage = 'Racing Series Has Prime Image',

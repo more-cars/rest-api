@@ -21,6 +21,12 @@ import {deleteHasImageRelation} from "./track-layouts/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./track-layouts/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./track-layouts/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./track-layouts/deleteHasPrimeImageRelation"
+import {createHasVideoRelation} from "./track-layouts/createHasVideoRelation"
+import {getAllHasVideoRelations} from "./track-layouts/getAllHasVideoRelations"
+import {deleteHasVideoRelation} from "./track-layouts/deleteHasVideoRelation"
+import {createHasMainVideoRelation} from "./track-layouts/createHasMainVideoRelation"
+import {getHasMainVideoRelation} from "./track-layouts/getHasMainVideoRelation"
+import {deleteHasMainVideoRelation} from "./track-layouts/deleteHasMainVideoRelation"
 
 export const TrackLayoutController = {
     async create(req: express.Request, res: express.Response) {
@@ -109,5 +115,29 @@ export const TrackLayoutController = {
 
     async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
+    },
+
+    async createHasVideoRelation(req: express.Request, res: express.Response) {
+        await createHasVideoRelation(req, res)
+    },
+
+    async getAllHasVideoRelations(req: express.Request, res: express.Response) {
+        await getAllHasVideoRelations(req, res)
+    },
+
+    async deleteHasVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasVideoRelation(req, res)
+    },
+
+    async createHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await createHasMainVideoRelation(req, res)
+    },
+
+    async getHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await getHasMainVideoRelation(req, res)
+    },
+
+    async deleteHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasMainVideoRelation(req, res)
     },
 }

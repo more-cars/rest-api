@@ -181,4 +181,52 @@ describe('Track Layouts', () => {
         expect(TrackLayoutController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-video‹ relationship', async () => {
+        await request(app)
+            .post('/track-layouts/123/has-video/456')
+
+        expect(TrackLayoutController.createHasVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get all ›has-video‹ relationships', async () => {
+        await request(app)
+            .get('/track-layouts/123/has-video')
+
+        expect(TrackLayoutController.getAllHasVideoRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Delete ›has-video‹ relationship', async () => {
+        await request(app)
+            .delete('/track-layouts/123/has-video/456')
+
+        expect(TrackLayoutController.deleteHasVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Create ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .post('/track-layouts/123/has-main-video/456')
+
+        expect(TrackLayoutController.createHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .get('/track-layouts/123/has-main-video')
+
+        expect(TrackLayoutController.getHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Delete ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .delete('/track-layouts/123/has-main-video/456')
+
+        expect(TrackLayoutController.deleteHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

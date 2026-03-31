@@ -54,6 +54,8 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.TrackLayoutIsFeaturedInRacingGame, RelationType.TrackLayoutIsFeaturedInRacingGame],
         [RelType.TrackLayoutHasImage, RelationType.TrackLayoutHasImage],
         [RelType.TrackLayoutHasPrimeImage, RelationType.TrackLayoutHasPrimeImage],
+        [RelType.TrackLayoutHasVideo, RelationType.TrackLayoutHasVideo],
+        [RelType.TrackLayoutHasMainVideo, RelationType.TrackLayoutHasMainVideo],
         [RelType.RacingSeriesHasRacingEvent, RelationType.RacingSeriesHasRacingEvent],
         [RelType.RacingSeriesHasImage, RelationType.RacingSeriesHasImage],
         [RelType.RacingSeriesHasPrimeImage, RelationType.RacingSeriesHasPrimeImage],

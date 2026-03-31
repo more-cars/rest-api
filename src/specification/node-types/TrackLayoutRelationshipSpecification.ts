@@ -33,5 +33,15 @@ export const TrackLayoutRelationshipSpecification: RelationshipTypeSpecification
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    [RelationshipType.TrackLayoutHasVideo, {
+        startNodeType: NodeType.TrackLayout,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
+    [RelationshipType.TrackLayoutHasMainVideo, {
+        startNodeType: NodeType.TrackLayout,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
     //
 ]

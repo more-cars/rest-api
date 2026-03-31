@@ -25,5 +25,11 @@ router.delete('/track-layouts/:trackLayoutId/has-image/:imageId', TrackLayoutCon
 router.post('/track-layouts/:trackLayoutId/has-prime-image/:imageId', TrackLayoutController.createHasPrimeImageRelation)
 router.get('/track-layouts/:trackLayoutId/has-prime-image', TrackLayoutController.getHasPrimeImageRelation)
 router.delete('/track-layouts/:trackLayoutId/has-prime-image/:imageId', TrackLayoutController.deleteHasPrimeImageRelation)
+router.post('/track-layouts/:trackLayoutId/has-video/:videoId', TrackLayoutController.createHasVideoRelation)
+router.get('/track-layouts/:trackLayoutId/has-video', TrackLayoutController.getAllHasVideoRelations)
+router.delete('/track-layouts/:trackLayoutId/has-video/:videoId', TrackLayoutController.deleteHasVideoRelation)
+router.post('/track-layouts/:trackLayoutId/has-main-video/:videoId', TrackLayoutController.createHasMainVideoRelation)
+router.get('/track-layouts/:trackLayoutId/has-main-video', TrackLayoutController.getHasMainVideoRelation)
+router.delete('/track-layouts/:trackLayoutId/has-main-video/:videoId', TrackLayoutController.deleteHasMainVideoRelation)
 
 export default router

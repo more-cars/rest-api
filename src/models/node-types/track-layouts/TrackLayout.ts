@@ -24,6 +24,7 @@ import {ModelNodeType} from "../../types/ModelNodeType"
 import {RacingGame} from "../racing-games/RacingGame"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
+import {Video} from "../videos/Video"
 
 export const TrackLayout = {
     async create(data: CreateTrackLayoutInput): Promise<TrackLayoutNode> {
@@ -309,5 +310,87 @@ export const TrackLayout = {
         }
 
         await deleteSpecificRel(trackLayoutId, racingGameId, RelType.TrackLayoutIsFeaturedInRacingGame)
+    },
+
+    async createHasVideoRelationship(trackLayoutId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
+        await Video.findById(videoId)
+
+        const existingRelation = await getSpecificRel(trackLayoutId, videoId, RelType.TrackLayoutHasVideo)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.TrackLayoutHasVideo, trackLayoutId, videoId)
+        }
+
+        const createdRelationship = await createRel(trackLayoutId, videoId, RelType.TrackLayoutHasVideo)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getAllHasVideoRelationships(trackLayoutId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
+
+        return getAllRels(trackLayoutId, RelType.TrackLayoutHasVideo)
+    },
+
+    async deleteHasVideoRelationship(trackLayoutId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
+        await Video.findById(videoId)
+
+        const relationship = await getSpecificRel(trackLayoutId, videoId, RelType.TrackLayoutHasVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.TrackLayoutHasVideo, trackLayoutId, videoId)
+        }
+
+        await deleteSpecificRel(trackLayoutId, videoId, RelType.TrackLayoutHasVideo)
+    },
+
+    async createHasMainVideoRelationship(trackLayoutId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
+        await Video.findById(videoId)
+
+        const existingRelation = await getSpecificRel(trackLayoutId, videoId, RelType.TrackLayoutHasMainVideo)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.TrackLayoutHasMainVideo, trackLayoutId, videoId)
+        }
+        await deleteOutgoingRel(trackLayoutId, RelType.TrackLayoutHasMainVideo, ModelNodeType.Video)
+
+        const createdRelationship = await createRel(trackLayoutId, videoId, RelType.TrackLayoutHasMainVideo)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getHasMainVideoRelationship(trackLayoutId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
+
+        const relationship = await getRel(trackLayoutId, RelType.TrackLayoutHasMainVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.TrackLayoutHasMainVideo, trackLayoutId, null)
+        }
+
+        return relationship
+    },
+
+    async deleteHasMainVideoRelationship(trackLayoutId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await TrackLayout.findById(trackLayoutId)
+        await Video.findById(videoId)
+
+        const relationship = await getSpecificRel(trackLayoutId, videoId, RelType.TrackLayoutHasMainVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.TrackLayoutHasMainVideo, trackLayoutId, videoId)
+        }
+
+        await deleteSpecificRel(trackLayoutId, videoId, RelType.TrackLayoutHasMainVideo)
     },
 }

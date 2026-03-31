@@ -24,6 +24,14 @@ exports.createHasPrimeImageRelationship = async function () {
     await post("/track-layouts/" + bru.getEnvVar('validTrackLayoutId') + "/has-prime-image/" + bru.getEnvVar('validImageId'))
 }
 
+exports.createHasVideoRelationship = async function () {
+    await post("/track-layouts/" + bru.getEnvVar('validTrackLayoutId') + "/has-video/" + bru.getEnvVar('validVideoId'))
+}
+
+exports.createHasMainVideoRelationship = async function () {
+    await post("/track-layouts/" + bru.getEnvVar('validTrackLayoutId') + "/has-main-video/" + bru.getEnvVar('validVideoId'))
+}
+
 exports.create = async function (prefix = '') {
     const response = await post("/track-layouts", {
         name: 'Dummy Track Layout',

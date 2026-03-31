@@ -49,6 +49,8 @@ export enum RelType {
     TrackLayoutIsFeaturedInRacingGame = 'track_layout_is_featured_in_racing_game',
     TrackLayoutHasImage = 'track_layout_has_image',
     TrackLayoutHasPrimeImage = 'track_layout_has_prime_image',
+    TrackLayoutHasVideo = 'track_layout_has_video',
+    TrackLayoutHasMainVideo = 'track_layout_has_main_video',
     RacingSeriesHasRacingEvent = 'racing_series_has_racing_event',
     RacingSeriesHasImage = 'racing_series_has_image',
     RacingSeriesHasPrimeImage = 'racing_series_has_prime_image',
