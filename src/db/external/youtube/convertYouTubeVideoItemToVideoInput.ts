@@ -7,7 +7,7 @@ export function convertYouTubeVideoItemToVideoInput(data: YouTubeVideoItem): Cre
         description: data.snippet.description,
         creator: data.snippet.channelTitle,
         license: data.status.license === 'creativeCommon' ? 'cc by' : 'youtube',
-        tags: data.snippet.tags.join(','),
+        tags: data.snippet.tags ? data.snippet.tags.join(',') : null,
         source: "https://www.youtube.com/watch?v=" + data.id,
         duration: data.contentDetails.duration,
         thumbnail_url_l: data.snippet.thumbnails.standard.url,
