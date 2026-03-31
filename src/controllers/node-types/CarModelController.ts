@@ -27,6 +27,12 @@ import {deleteHasImageRelation} from "./car-models/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./car-models/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./car-models/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./car-models/deleteHasPrimeImageRelation"
+import {createHasVideoRelation} from "./car-models/createHasVideoRelation"
+import {getAllHasVideoRelations} from "./car-models/getAllHasVideoRelations"
+import {deleteHasVideoRelation} from "./car-models/deleteHasVideoRelation"
+import {createHasMainVideoRelation} from "./car-models/createHasMainVideoRelation"
+import {getHasMainVideoRelation} from "./car-models/getHasMainVideoRelation"
+import {deleteHasMainVideoRelation} from "./car-models/deleteHasMainVideoRelation"
 
 export const CarModelController = {
     async create(req: express.Request, res: express.Response) {
@@ -139,5 +145,29 @@ export const CarModelController = {
 
     async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
+    },
+
+    async createHasVideoRelation(req: express.Request, res: express.Response) {
+        await createHasVideoRelation(req, res)
+    },
+
+    async getAllHasVideoRelations(req: express.Request, res: express.Response) {
+        await getAllHasVideoRelations(req, res)
+    },
+
+    async deleteHasVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasVideoRelation(req, res)
+    },
+
+    async createHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await createHasMainVideoRelation(req, res)
+    },
+
+    async getHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await getHasMainVideoRelation(req, res)
+    },
+
+    async deleteHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasMainVideoRelation(req, res)
     },
 }

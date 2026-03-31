@@ -20,6 +20,8 @@ export enum RelationshipTypeNeo4j {
     CarModelCoveredByProgrammeEpisode = 'COVERED_CAR_MODEL',
     CarModelHasImage = 'HAS_IMAGE',
     CarModelHasPrimeImage = 'HAS_PRIME_IMAGE',
+    CarModelHasVideo = 'HAS_VIDEO',
+    CarModelHasMainVideo = 'HAS_MAIN_VIDEO',
     CarModelVariantIsVariantOf = 'HAS_VARIANT',
     CarModelVariantAchievedSessionResult = 'ACHIEVED_SESSION_RESULT',
     CarModelVariantAchievedLapTime = 'ACHIEVED_LAP_TIME',

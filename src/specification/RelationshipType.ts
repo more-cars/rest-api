@@ -20,6 +20,8 @@ export enum RelationshipType {
     CarModelCoveredByProgrammeEpisode = 'Car Model Covered By Programme Episode',
     CarModelHasImage = 'Car Model Has Image',
     CarModelHasPrimeImage = 'Car Model Has Prime Image',
+    CarModelHasVideo = 'Car Model Has Video',
+    CarModelHasMainVideo = 'Car Model Has Main Video',
     CarModelVariantIsVariantOf = 'Car Model Variant is Variant Of',
     CarModelVariantAchievedSessionResult = 'Car Model Variant Achieved Session Result',
     CarModelVariantAchievedLapTime = 'Car Model Variant Achieved Lap Time',

@@ -23,6 +23,8 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.CarModelCoveredByProgrammeEpisode, RelationType.CarModelCoveredByProgrammeEpisode],
         [RelType.CarModelHasImage, RelationType.CarModelHasImage],
         [RelType.CarModelHasPrimeImage, RelationType.CarModelHasPrimeImage],
+        [RelType.CarModelHasVideo, RelationType.CarModelHasVideo],
+        [RelType.CarModelHasMainVideo, RelationType.CarModelHasMainVideo],
         [RelType.CarModelVariantIsVariantOf, RelationType.CarModelVariantIsVariantOf],
         [RelType.CarModelVariantAchievedSessionResult, RelationType.CarModelVariantAchievedSessionResult],
         [RelType.CarModelVariantAchievedLapTime, RelationType.CarModelVariantAchievedLapTime],

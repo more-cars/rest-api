@@ -18,6 +18,8 @@ export enum RelationType {
     CarModelCoveredByProgrammeEpisode = 'covered-by-programme-episode',
     CarModelHasImage = 'has-image',
     CarModelHasPrimeImage = 'has-prime-image',
+    CarModelHasVideo = 'has-video',
+    CarModelHasMainVideo = 'has-main-video',
     CarModelVariantIsVariantOf = 'is-variant-of',
     CarModelVariantAchievedSessionResult = 'achieved-session-result',
     CarModelVariantAchievedLapTime = 'achieved-lap-time',

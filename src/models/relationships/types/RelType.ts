@@ -18,6 +18,8 @@ export enum RelType {
     CarModelCoveredByProgrammeEpisode = 'car_model_covered_by_programme_episode',
     CarModelHasImage = 'car_model_has_image',
     CarModelHasPrimeImage = 'car_model_has_prime_image',
+    CarModelHasVideo = 'car_model_has_video',
+    CarModelHasMainVideo = 'car_model_has_main_video',
     CarModelVariantIsVariantOf = 'car_model_variant_is_variant_of',
     CarModelVariantAchievedSessionResult = 'car_model_variant_achieved_session_result',
     CarModelVariantAchievedLapTime = 'car_model_variant_achieved_lap_time',
