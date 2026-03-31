@@ -38,7 +38,8 @@ export const Video = {
             const result = await createNode(input)
 
             return convertDbNodeToModelNode(result) as VideoNode
-        } catch (error) {
+        } catch (e) {
+            console.error(e)
             throw new YouTubeVideoNotFoundError(id)
         }
     },
