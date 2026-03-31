@@ -34,6 +34,8 @@ export enum RelationshipType {
     CarModelVariantHasPrice = 'Car Model Variant Has Price',
     CarModelVariantHasImage = 'Car Model Variant Has Image',
     CarModelVariantHasPrimeImage = 'Car Model Variant Has Prime Image',
+    CarModelVariantHasVideo = 'Car Model Variant Has Video',
+    CarModelVariantHasMainVideo = 'Car Model Variant Has Main Video',
     PriceForCarModelVariant = 'Price For Car Model Variant',
     PriceHasImage = 'Price Has Image',
     PriceHasPrimeImage = 'Price Has Prime Image',

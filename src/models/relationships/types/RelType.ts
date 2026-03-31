@@ -32,6 +32,8 @@ export enum RelType {
     CarModelVariantHasPrice = 'car_model_variant_has_price',
     CarModelVariantHasImage = 'car_model_variant_has_image',
     CarModelVariantHasPrimeImage = 'car_model_variant_has_prime_image',
+    CarModelVariantHasVideo = 'car_model_variant_has_video',
+    CarModelVariantHasMainVideo = 'car_model_variant_has_main_video',
     PriceForCarModelVariant = 'price_for_car_model_variant',
     PriceHasImage = 'price_has_image',
     PriceHasPrimeImage = 'price_has_prime_image',

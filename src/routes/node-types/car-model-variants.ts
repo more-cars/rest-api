@@ -43,5 +43,11 @@ router.delete('/car-model-variants/:carModelVariantId/has-image/:imageId', CarMo
 router.post('/car-model-variants/:carModelVariantId/has-prime-image/:imageId', CarModelVariantController.createHasPrimeImageRelation)
 router.get('/car-model-variants/:carModelVariantId/has-prime-image', CarModelVariantController.getHasPrimeImageRelation)
 router.delete('/car-model-variants/:carModelVariantId/has-prime-image/:imageId', CarModelVariantController.deleteHasPrimeImageRelation)
+router.post('/car-model-variants/:carModelVariantId/has-video/:videoId', CarModelVariantController.createHasVideoRelation)
+router.get('/car-model-variants/:carModelVariantId/has-video', CarModelVariantController.getAllHasVideoRelations)
+router.delete('/car-model-variants/:carModelVariantId/has-video/:videoId', CarModelVariantController.deleteHasVideoRelation)
+router.post('/car-model-variants/:carModelVariantId/has-main-video/:videoId', CarModelVariantController.createHasMainVideoRelation)
+router.get('/car-model-variants/:carModelVariantId/has-main-video', CarModelVariantController.getHasMainVideoRelation)
+router.delete('/car-model-variants/:carModelVariantId/has-main-video/:videoId', CarModelVariantController.deleteHasMainVideoRelation)
 
 export default router

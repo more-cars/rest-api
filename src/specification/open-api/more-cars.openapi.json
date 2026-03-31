@@ -5228,6 +5228,278 @@
         }
       }
     },
+    "/car-model-variants/{car-model-variant-id}/has-video": {
+      "get": {
+        "operationId": "getCarModelVariantHasVideoRel",
+        "tags": [
+          "Car Model Variants"
+        ],
+        "summary": "Get all ›has-video‹ relationships for the `Car Model Variant`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-video‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelVariantHasVideoCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Car Model Variant` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/car-model-variants/{car-model-variant-id}/has-video/{video-id}": {
+      "delete": {
+        "tags": [
+          "Car Model Variants"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Car Model Variant` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Car Model Variant` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Car Model Variants"
+        ],
+        "summary": "Creates a ›has-video‹ relationship between the `Car Model Variant` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Relationship ›has-video‹ between `Car Model Variant` and `Video` successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelVariantHasVideoResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "The relationship ›has-video‹ between `Car Model Variant` and `Video` already exists."
+          },
+          "404": {
+            "description": "Request failed. `Car Model Variant` and/or `Video` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/car-model-variants/{car-model-variant-id}/has-main-video": {
+      "get": {
+        "operationId": "getCarModelVariantHasMainVideoRel",
+        "tags": [
+          "Car Model Variants"
+        ],
+        "summary": "Get the ›has-main-video‹ relationship for the `Car Model Variant`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›has-main-video‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelVariantHasMainVideoResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Car Model Variant` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/car-model-variants/{car-model-variant-id}/has-main-video/{video-id}": {
+      "post": {
+        "tags": [
+          "Car Model Variants"
+        ],
+        "summary": "Creates a ›has-main-video‹ relationship between the `Car Model Variant` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Relationship ›has-main-video‹ between `Car Model Variant` and `Video` successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelVariantHasMainVideoResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "The relationship ›has-main-video‹ between `Car Model Variant` and `Video` already exists."
+          },
+          "404": {
+            "description": "Request failed. `Car Model Variant` and/or `Video` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Car Model Variants"
+        ],
+        "summary": "Deletes the ›has-main-video‹ relationship between the `Car Model Variant` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-main-video‹ relationship between `Car Model Variant` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-main-video‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/prices": {
       "get": {
         "operationId": "getPrices",
@@ -22516,6 +22788,117 @@
             "items": {
               "$ref": "#/components/schemas/CarModelVariantHasScaleModelResponse"
             }
+          }
+        }
+      },
+      "CarModelVariantHasVideo": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "relationship_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "123456"
+          },
+          "relationship_name": {
+            "type": "string",
+            "readOnly": true,
+            "example": "has-video"
+          },
+          "partner_node": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "videos"
+              },
+              "data": {
+                "$ref": "#/components/schemas/Video"
+              }
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "CarModelVariantHasVideoResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CarModelVariantHasVideo"
+          }
+        }
+      },
+      "CarModelVariantHasVideoCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CarModelVariantHasVideoResponse"
+            }
+          }
+        }
+      },
+      "CarModelVariantHasMainVideo": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "relationship_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "123456"
+          },
+          "relationship_name": {
+            "type": "string",
+            "readOnly": true,
+            "example": "has-main-video"
+          },
+          "partner_node": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "videos"
+              },
+              "data": {
+                "$ref": "#/components/schemas/Video"
+              }
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "CarModelVariantHasMainVideoResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CarModelVariantHasMainVideo"
           }
         }
       },

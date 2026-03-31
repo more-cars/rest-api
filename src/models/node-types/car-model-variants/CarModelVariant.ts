@@ -30,6 +30,7 @@ import {MotorShow} from "../motor-shows/MotorShow"
 import {ProgrammeEpisode} from "../programme-episodes/ProgrammeEpisode"
 import {Price} from "../prices/Price"
 import {ModelCar} from "../model-cars/ModelCar"
+import {Video} from "../videos/Video"
 
 export const CarModelVariant = {
     async create(data: CreateCarModelVariantInput): Promise<CarModelVariantNode> {
@@ -551,5 +552,87 @@ export const CarModelVariant = {
         }
 
         await deleteSpecificRel(carModelVariantId, imageId, RelType.CarModelVariantHasPrimeImage)
+    },
+
+    async createHasVideoRelationship(carModelVariantId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await Video.findById(videoId)
+
+        const existingRelation = await getSpecificRel(carModelVariantId, videoId, RelType.CarModelVariantHasVideo)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.CarModelVariantHasVideo, carModelVariantId, videoId)
+        }
+
+        const createdRelationship = await createRel(carModelVariantId, videoId, RelType.CarModelVariantHasVideo)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getAllHasVideoRelationships(carModelVariantId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+
+        return getAllRels(carModelVariantId, RelType.CarModelVariantHasVideo)
+    },
+
+    async deleteHasVideoRelationship(carModelVariantId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await Video.findById(videoId)
+
+        const relationship = await getSpecificRel(carModelVariantId, videoId, RelType.CarModelVariantHasVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.CarModelVariantHasVideo, carModelVariantId, videoId)
+        }
+
+        await deleteSpecificRel(carModelVariantId, videoId, RelType.CarModelVariantHasVideo)
+    },
+
+    async createHasMainVideoRelationship(carModelVariantId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await Video.findById(videoId)
+
+        const existingRelation = await getSpecificRel(carModelVariantId, videoId, RelType.CarModelVariantHasMainVideo)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.CarModelVariantHasMainVideo, carModelVariantId, videoId)
+        }
+        await deleteOutgoingRel(carModelVariantId, RelType.CarModelVariantHasMainVideo, ModelNodeType.Video)
+
+        const createdRelationship = await createRel(carModelVariantId, videoId, RelType.CarModelVariantHasMainVideo)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getHasMainVideoRelationship(carModelVariantId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+
+        const relationship = await getRel(carModelVariantId, RelType.CarModelVariantHasMainVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.CarModelVariantHasMainVideo, carModelVariantId, null)
+        }
+
+        return relationship
+    },
+
+    async deleteHasMainVideoRelationship(carModelVariantId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await Video.findById(videoId)
+
+        const relationship = await getSpecificRel(carModelVariantId, videoId, RelType.CarModelVariantHasMainVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.CarModelVariantHasMainVideo, carModelVariantId, videoId)
+        }
+
+        await deleteSpecificRel(carModelVariantId, videoId, RelType.CarModelVariantHasMainVideo)
     },
 }

@@ -39,6 +39,12 @@ import {deleteHasImageRelation} from "./car-model-variants/deleteHasImageRelatio
 import {createHasPrimeImageRelation} from "./car-model-variants/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./car-model-variants/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./car-model-variants/deleteHasPrimeImageRelation"
+import {createHasVideoRelation} from "./car-model-variants/createHasVideoRelation"
+import {getAllHasVideoRelations} from "./car-model-variants/getAllHasVideoRelations"
+import {deleteHasVideoRelation} from "./car-model-variants/deleteHasVideoRelation"
+import {createHasMainVideoRelation} from "./car-model-variants/createHasMainVideoRelation"
+import {getHasMainVideoRelation} from "./car-model-variants/getHasMainVideoRelation"
+import {deleteHasMainVideoRelation} from "./car-model-variants/deleteHasMainVideoRelation"
 
 export const CarModelVariantController = {
     async create(req: express.Request, res: express.Response) {
@@ -199,5 +205,29 @@ export const CarModelVariantController = {
 
     async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
+    },
+
+    async createHasVideoRelation(req: express.Request, res: express.Response) {
+        await createHasVideoRelation(req, res)
+    },
+
+    async getAllHasVideoRelations(req: express.Request, res: express.Response) {
+        await getAllHasVideoRelations(req, res)
+    },
+
+    async deleteHasVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasVideoRelation(req, res)
+    },
+
+    async createHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await createHasMainVideoRelation(req, res)
+    },
+
+    async getHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await getHasMainVideoRelation(req, res)
+    },
+
+    async deleteHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasMainVideoRelation(req, res)
     },
 }

@@ -37,6 +37,8 @@ export function mapModelRelTypeToDbRelationshipType(modelRelType: RelType): Rela
         [RelType.CarModelVariantPresentedAtMotorShow, RelationshipType.CarModelVariantPresentedAtMotorShow],
         [RelType.CarModelVariantHasImage, RelationshipType.CarModelVariantHasImage],
         [RelType.CarModelVariantHasPrimeImage, RelationshipType.CarModelVariantHasPrimeImage],
+        [RelType.CarModelVariantHasVideo, RelationshipType.CarModelVariantHasVideo],
+        [RelType.CarModelVariantHasMainVideo, RelationshipType.CarModelVariantHasMainVideo],
         [RelType.PriceForCarModelVariant, RelationshipType.PriceForCarModelVariant],
         [RelType.PriceHasImage, RelationshipType.PriceHasImage],
         [RelType.PriceHasPrimeImage, RelationshipType.PriceHasPrimeImage],
