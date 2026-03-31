@@ -1,34 +1,11 @@
 import express, {Express} from "express"
 import cors from "cors"
+import {basicAuthentication} from "./basicAuthentication"
 import openApiSpecification from "./routes/open-api-specification"
 import health from "./routes/health"
 import nodes from "./routes/nodes/nodes"
-import companies from "./routes/node-types/companies"
-import brands from './routes/node-types/brands'
-import carModels from "./routes/node-types/car-models"
-import carModelVariants from "./routes/node-types/car-model-variants"
-import prices from "./routes/node-types/prices"
-import raceTracks from "./routes/node-types/race-tracks"
-import trackLayouts from "./routes/node-types/track-layouts"
-import racingSeries from "./routes/node-types/racing-series"
-import racingEvents from "./routes/node-types/racing-events"
-import racingSessions from "./routes/node-types/racing-sessions"
-import sessionResults from "./routes/node-types/session-results"
-import lapTimes from "./routes/node-types/lap-times"
-import racingGames from "./routes/node-types/racing-games"
-import gamingPlatforms from "./routes/node-types/gaming-platforms"
-import modelCars from "./routes/node-types/model-cars"
-import modelCarBrands from "./routes/node-types/model-car-brands"
-import magazines from "./routes/node-types/magazines"
-import magazineIssues from "./routes/node-types/magazine-issues"
-import ratings from "./routes/node-types/ratings"
-import programmes from "./routes/node-types/programmes"
-import programmeEpisodes from "./routes/node-types/programme-episodes"
-import motorShows from "./routes/node-types/motor-shows"
-import videos from "./routes/node-types/videos"
-import images from "./routes/node-types/images"
 import relationships from "./routes/relationships"
-import {basicAuthentication} from "./basicAuthentication"
+import {registerNodeTypeRoutes} from "./routes/registerNodeTypeRoutes"
 
 const app: Express = express()
 
@@ -45,31 +22,8 @@ app.use(basicAuthentication)
 // registering all routes
 app.use('/', openApiSpecification)
 app.use('/', health)
-app.use('/', companies)
-app.use('/', brands)
-app.use('/', carModels)
-app.use('/', carModelVariants)
-app.use('/', prices)
-app.use('/', raceTracks)
-app.use('/', trackLayouts)
-app.use('/', racingSeries)
-app.use('/', racingEvents)
-app.use('/', racingSessions)
-app.use('/', sessionResults)
-app.use('/', lapTimes)
-app.use('/', racingGames)
-app.use('/', gamingPlatforms)
-app.use('/', modelCars)
-app.use('/', modelCarBrands)
-app.use('/', magazines)
-app.use('/', magazineIssues)
-app.use('/', ratings)
-app.use('/', programmes)
-app.use('/', programmeEpisodes)
-app.use('/', motorShows)
-app.use('/', videos)
-app.use('/', images)
 app.use('/', nodes)
 app.use('/', relationships)
+registerNodeTypeRoutes(app)
 
 export {app}
