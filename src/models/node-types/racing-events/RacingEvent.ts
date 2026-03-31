@@ -26,6 +26,7 @@ import {ModelNodeType} from "../../types/ModelNodeType"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {MagazineIssue} from "../magazine-issues/MagazineIssue"
+import {Video} from "../videos/Video"
 
 export const RacingEvent = {
     async create(data: CreateRacingEventInput): Promise<RacingEventNode> {
@@ -461,5 +462,87 @@ export const RacingEvent = {
         }
 
         await deleteSpecificRel(racingEventId, imageId, RelType.RacingEventHasPrimeImage)
+    },
+
+    async createHasVideoRelationship(racingEventId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingEvent.findById(racingEventId)
+        await Video.findById(videoId)
+
+        const existingRelation = await getSpecificRel(racingEventId, videoId, RelType.RacingEventHasVideo)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.RacingEventHasVideo, racingEventId, videoId)
+        }
+
+        const createdRelationship = await createRel(racingEventId, videoId, RelType.RacingEventHasVideo)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getAllHasVideoRelationships(racingEventId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await RacingEvent.findById(racingEventId)
+
+        return getAllRels(racingEventId, RelType.RacingEventHasVideo)
+    },
+
+    async deleteHasVideoRelationship(racingEventId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingEvent.findById(racingEventId)
+        await Video.findById(videoId)
+
+        const relationship = await getSpecificRel(racingEventId, videoId, RelType.RacingEventHasVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.RacingEventHasVideo, racingEventId, videoId)
+        }
+
+        await deleteSpecificRel(racingEventId, videoId, RelType.RacingEventHasVideo)
+    },
+
+    async createHasMainVideoRelationship(racingEventId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingEvent.findById(racingEventId)
+        await Video.findById(videoId)
+
+        const existingRelation = await getSpecificRel(racingEventId, videoId, RelType.RacingEventHasMainVideo)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.RacingEventHasMainVideo, racingEventId, videoId)
+        }
+        await deleteOutgoingRel(racingEventId, RelType.RacingEventHasMainVideo, ModelNodeType.Video)
+
+        const createdRelationship = await createRel(racingEventId, videoId, RelType.RacingEventHasMainVideo)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getHasMainVideoRelationship(racingEventId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await RacingEvent.findById(racingEventId)
+
+        const relationship = await getRel(racingEventId, RelType.RacingEventHasMainVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.RacingEventHasMainVideo, racingEventId, null)
+        }
+
+        return relationship
+    },
+
+    async deleteHasMainVideoRelationship(racingEventId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await RacingEvent.findById(racingEventId)
+        await Video.findById(videoId)
+
+        const relationship = await getSpecificRel(racingEventId, videoId, RelType.RacingEventHasMainVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.RacingEventHasMainVideo, racingEventId, videoId)
+        }
+
+        await deleteSpecificRel(racingEventId, videoId, RelType.RacingEventHasMainVideo)
     },
 }

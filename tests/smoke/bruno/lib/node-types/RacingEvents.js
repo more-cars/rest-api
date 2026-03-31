@@ -36,6 +36,14 @@ exports.createHasPrimeImageRelationship = async function () {
     await post("/racing-events/" + bru.getEnvVar('validRacingEventId') + "/has-prime-image/" + bru.getEnvVar('validImageId'))
 }
 
+exports.createHasVideoRelationship = async function () {
+    await post("/racing-events/" + bru.getEnvVar('validRacingEventId') + "/has-video/" + bru.getEnvVar('validVideoId'))
+}
+
+exports.createHasMainVideoRelationship = async function () {
+    await post("/racing-events/" + bru.getEnvVar('validRacingEventId') + "/has-main-video/" + bru.getEnvVar('validVideoId'))
+}
+
 exports.create = async function (prefix = '') {
     const response = await post("/racing-events", {
         name: 'Dummy Racing Event',

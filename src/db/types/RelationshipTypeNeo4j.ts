@@ -67,6 +67,8 @@ export enum RelationshipTypeNeo4j {
     RacingEventCoveredByMagazineIssue = 'COVERS_RACING_EVENT',
     RacingEventHasImage = 'HAS_IMAGE',
     RacingEventHasPrimeImage = 'HAS_PRIME_IMAGE',
+    RacingEventHasVideo = 'HAS_VIDEO',
+    RacingEventHasMainVideo = 'HAS_MAIN_VIDEO',
     RacingSessionBelongsToRacingEvent = 'HAS_RACING_SESSION',
     RacingSessionHasSessionResult = 'HAS_SESSION_RESULT',
     RacingSessionHasImage = 'HAS_IMAGE',

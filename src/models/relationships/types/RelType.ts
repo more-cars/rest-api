@@ -65,6 +65,8 @@ export enum RelType {
     RacingEventCoveredByMagazineIssue = 'racing_event_covered_by_magazine_issue',
     RacingEventHasImage = 'racing_event_has_image',
     RacingEventHasPrimeImage = 'racing_event_has_prime_image',
+    RacingEventHasVideo = 'racing_event_has_video',
+    RacingEventHasMainVideo = 'racing_event_has_main_video',
     RacingSessionBelongsToRacingEvent = 'racing_session_belongs_to_racing_event',
     RacingSessionHasSessionResult = 'racing_session_has_session_result',
     RacingSessionHasImage = 'racing_session_has_image',

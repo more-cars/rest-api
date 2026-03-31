@@ -147,6 +147,8 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.RacingEventHasRacingSession, RelationshipType.RacingEventHasRacingSession],
                 [RelationshipTypeNeo4j.RacingEventHasImage, RelationshipType.RacingEventHasImage],
                 [RelationshipTypeNeo4j.RacingEventHasPrimeImage, RelationshipType.RacingEventHasPrimeImage],
+                [RelationshipTypeNeo4j.RacingEventHasMainVideo, RelationshipType.RacingEventHasMainVideo],
+                [RelationshipTypeNeo4j.RacingEventHasVideo, RelationshipType.RacingEventHasVideo],
             ])],
         ])],
         [Neo4jNodeType.RacingSession, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
