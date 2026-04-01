@@ -149,6 +149,8 @@ export function mapDbRelationshipTypeToNeo4jRelationshipType(
         [RelationshipType.ProgrammeEpisodeFeaturesCarModelVariant, RelationshipTypeNeo4j.ProgrammeEpisodeFeaturesCarModelVariant],
         [RelationshipType.ProgrammeEpisodeHasImage, RelationshipTypeNeo4j.ProgrammeEpisodeHasImage],
         [RelationshipType.ProgrammeEpisodeHasPrimeImage, RelationshipTypeNeo4j.ProgrammeEpisodeHasPrimeImage],
+        [RelationshipType.ProgrammeEpisodeHasVideo, RelationshipTypeNeo4j.ProgrammeEpisodeHasVideo],
+        [RelationshipType.ProgrammeEpisodeHasMainVideo, RelationshipTypeNeo4j.ProgrammeEpisodeHasMainVideo],
         [RelationshipType.MotorShowPresentsCarModelVariant, RelationshipTypeNeo4j.MotorShowPresentsCarModelVariant],
         [RelationshipType.MotorShowHasImage, RelationshipTypeNeo4j.MotorShowHasImage],
         [RelationshipType.MotorShowHasPrimeImage, RelationshipTypeNeo4j.MotorShowHasPrimeImage],

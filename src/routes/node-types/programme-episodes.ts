@@ -28,5 +28,11 @@ router.delete('/programme-episodes/:programmeEpisodeId/has-image/:imageId', Prog
 router.post('/programme-episodes/:programmeEpisodeId/has-prime-image/:imageId', ProgrammeEpisodeController.createHasPrimeImageRelation)
 router.get('/programme-episodes/:programmeEpisodeId/has-prime-image', ProgrammeEpisodeController.getHasPrimeImageRelation)
 router.delete('/programme-episodes/:programmeEpisodeId/has-prime-image/:imageId', ProgrammeEpisodeController.deleteHasPrimeImageRelation)
+router.post('/programme-episodes/:programmeEpisodeId/has-video/:videoId', ProgrammeEpisodeController.createHasVideoRelation)
+router.get('/programme-episodes/:programmeEpisodeId/has-video', ProgrammeEpisodeController.getAllHasVideoRelations)
+router.delete('/programme-episodes/:programmeEpisodeId/has-video/:videoId', ProgrammeEpisodeController.deleteHasVideoRelation)
+router.post('/programme-episodes/:programmeEpisodeId/has-main-video/:videoId', ProgrammeEpisodeController.createHasMainVideoRelation)
+router.get('/programme-episodes/:programmeEpisodeId/has-main-video', ProgrammeEpisodeController.getHasMainVideoRelation)
+router.delete('/programme-episodes/:programmeEpisodeId/has-main-video/:videoId', ProgrammeEpisodeController.deleteHasMainVideoRelation)
 
 export default router

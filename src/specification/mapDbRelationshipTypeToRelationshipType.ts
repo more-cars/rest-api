@@ -147,6 +147,8 @@ export function mapDbRelationshipTypeToRelationshipType(dbRelationshipType: DbRe
         [DbRelationshipType.ProgrammeEpisodeFeaturesCarModelVariant, RelationshipType.ProgrammeEpisodeFeaturesCarModelVariant],
         [DbRelationshipType.ProgrammeEpisodeHasImage, RelationshipType.ProgrammeEpisodeHasImage],
         [DbRelationshipType.ProgrammeEpisodeHasPrimeImage, RelationshipType.ProgrammeEpisodeHasPrimeImage],
+        [DbRelationshipType.ProgrammeEpisodeHasVideo, RelationshipType.ProgrammeEpisodeHasVideo],
+        [DbRelationshipType.ProgrammeEpisodeHasMainVideo, RelationshipType.ProgrammeEpisodeHasMainVideo],
         [DbRelationshipType.MotorShowPresentsCarModelVariant, RelationshipType.MotorShowPresentsCarModelVariant],
         [DbRelationshipType.MotorShowHasImage, RelationshipType.MotorShowHasImage],
         [DbRelationshipType.MotorShowHasPrimeImage, RelationshipType.MotorShowHasPrimeImage],

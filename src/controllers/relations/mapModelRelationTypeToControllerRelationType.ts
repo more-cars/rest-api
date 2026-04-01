@@ -146,6 +146,8 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.ProgrammeEpisodeFeaturesCarModelVariant, RelationType.ProgrammeEpisodeFeaturesCarModelVariant],
         [RelType.ProgrammeEpisodeHasImage, RelationType.ProgrammeEpisodeHasImage],
         [RelType.ProgrammeEpisodeHasPrimeImage, RelationType.ProgrammeEpisodeHasPrimeImage],
+        [RelType.ProgrammeEpisodeHasVideo, RelationType.ProgrammeEpisodeHasVideo],
+        [RelType.ProgrammeEpisodeHasMainVideo, RelationType.ProgrammeEpisodeHasMainVideo],
         [RelType.MotorShowPresentsCarModelVariant, RelationType.MotorShowPresentsCarModelVariant],
         [RelType.MotorShowHasImage, RelationType.MotorShowHasImage],
         [RelType.MotorShowHasPrimeImage, RelationType.MotorShowHasPrimeImage],

@@ -24,6 +24,12 @@ import {deleteHasImageRelation} from "./programme-episodes/deleteHasImageRelatio
 import {createHasPrimeImageRelation} from "./programme-episodes/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./programme-episodes/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./programme-episodes/deleteHasPrimeImageRelation"
+import {createHasVideoRelation} from "./programme-episodes/createHasVideoRelation"
+import {getAllHasVideoRelations} from "./programme-episodes/getAllHasVideoRelations"
+import {deleteHasVideoRelation} from "./programme-episodes/deleteHasVideoRelation"
+import {createHasMainVideoRelation} from "./programme-episodes/createHasMainVideoRelation"
+import {getHasMainVideoRelation} from "./programme-episodes/getHasMainVideoRelation"
+import {deleteHasMainVideoRelation} from "./programme-episodes/deleteHasMainVideoRelation"
 
 export const ProgrammeEpisodeController = {
     async create(req: express.Request, res: express.Response) {
@@ -124,5 +130,29 @@ export const ProgrammeEpisodeController = {
 
     async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
+    },
+
+    async createHasVideoRelation(req: express.Request, res: express.Response) {
+        await createHasVideoRelation(req, res)
+    },
+
+    async getAllHasVideoRelations(req: express.Request, res: express.Response) {
+        await getAllHasVideoRelations(req, res)
+    },
+
+    async deleteHasVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasVideoRelation(req, res)
+    },
+
+    async createHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await createHasMainVideoRelation(req, res)
+    },
+
+    async getHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await getHasMainVideoRelation(req, res)
+    },
+
+    async deleteHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasMainVideoRelation(req, res)
     },
 }

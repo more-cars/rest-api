@@ -318,6 +318,8 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.ProgrammeEpisodeFeaturesCarModelVariant, RelationshipType.ProgrammeEpisodeFeaturesCarModelVariant],
                 [RelationshipTypeNeo4j.ProgrammeEpisodeHasImage, RelationshipType.ProgrammeEpisodeHasImage],
                 [RelationshipTypeNeo4j.ProgrammeEpisodeHasPrimeImage, RelationshipType.ProgrammeEpisodeHasPrimeImage],
+                [RelationshipTypeNeo4j.ProgrammeEpisodeHasMainVideo, RelationshipType.ProgrammeEpisodeHasMainVideo],
+                [RelationshipTypeNeo4j.ProgrammeEpisodeHasVideo, RelationshipType.ProgrammeEpisodeHasVideo],
             ])],
         ])],
         [Neo4jNodeType.MotorShow, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([

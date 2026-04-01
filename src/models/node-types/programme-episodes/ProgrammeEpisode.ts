@@ -24,6 +24,7 @@ import {getRel} from "../../relationships/getRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {SemanticError} from "../../types/SemanticError"
 import {Image} from "../images/Image"
+import {Video} from "../videos/Video"
 
 export const ProgrammeEpisode = {
     async create(data: CreateProgrammeEpisodeInput): Promise<ProgrammeEpisodeNode> {
@@ -362,5 +363,87 @@ export const ProgrammeEpisode = {
         }
 
         await deleteSpecificRel(programmeEpisodeId, imageId, RelType.ProgrammeEpisodeHasPrimeImage)
+    },
+
+    async createHasVideoRelationship(programmeEpisodeId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await ProgrammeEpisode.findById(programmeEpisodeId)
+        await Video.findById(videoId)
+
+        const existingRelation = await getSpecificRel(programmeEpisodeId, videoId, RelType.ProgrammeEpisodeHasVideo)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.ProgrammeEpisodeHasVideo, programmeEpisodeId, videoId)
+        }
+
+        const createdRelationship = await createRel(programmeEpisodeId, videoId, RelType.ProgrammeEpisodeHasVideo)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getAllHasVideoRelationships(programmeEpisodeId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await ProgrammeEpisode.findById(programmeEpisodeId)
+
+        return getAllRels(programmeEpisodeId, RelType.ProgrammeEpisodeHasVideo)
+    },
+
+    async deleteHasVideoRelationship(programmeEpisodeId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await ProgrammeEpisode.findById(programmeEpisodeId)
+        await Video.findById(videoId)
+
+        const relationship = await getSpecificRel(programmeEpisodeId, videoId, RelType.ProgrammeEpisodeHasVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.ProgrammeEpisodeHasVideo, programmeEpisodeId, videoId)
+        }
+
+        await deleteSpecificRel(programmeEpisodeId, videoId, RelType.ProgrammeEpisodeHasVideo)
+    },
+
+    async createHasMainVideoRelationship(programmeEpisodeId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await ProgrammeEpisode.findById(programmeEpisodeId)
+        await Video.findById(videoId)
+
+        const existingRelation = await getSpecificRel(programmeEpisodeId, videoId, RelType.ProgrammeEpisodeHasMainVideo)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.ProgrammeEpisodeHasMainVideo, programmeEpisodeId, videoId)
+        }
+        await deleteOutgoingRel(programmeEpisodeId, RelType.ProgrammeEpisodeHasMainVideo, ModelNodeType.Video)
+
+        const createdRelationship = await createRel(programmeEpisodeId, videoId, RelType.ProgrammeEpisodeHasMainVideo)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getHasMainVideoRelationship(programmeEpisodeId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await ProgrammeEpisode.findById(programmeEpisodeId)
+
+        const relationship = await getRel(programmeEpisodeId, RelType.ProgrammeEpisodeHasMainVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.ProgrammeEpisodeHasMainVideo, programmeEpisodeId, null)
+        }
+
+        return relationship
+    },
+
+    async deleteHasMainVideoRelationship(programmeEpisodeId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await ProgrammeEpisode.findById(programmeEpisodeId)
+        await Video.findById(videoId)
+
+        const relationship = await getSpecificRel(programmeEpisodeId, videoId, RelType.ProgrammeEpisodeHasMainVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.ProgrammeEpisodeHasMainVideo, programmeEpisodeId, videoId)
+        }
+
+        await deleteSpecificRel(programmeEpisodeId, videoId, RelType.ProgrammeEpisodeHasMainVideo)
     },
 }

@@ -140,6 +140,8 @@ export enum RelType {
     ProgrammeEpisodeFeaturesCarModelVariant = 'programme_episode_features_car_model_variant',
     ProgrammeEpisodeHasImage = 'programme_episode_has_image',
     ProgrammeEpisodeHasPrimeImage = 'programme_episode_has_prime_image',
+    ProgrammeEpisodeHasVideo = 'programme_episode_has_video',
+    ProgrammeEpisodeHasMainVideo = 'programme_episode_has_main_video',
     MotorShowPresentsCarModelVariant = 'motor_show_presents_car_model_variant',
     MotorShowHasImage = 'motor_show_has_image',
     MotorShowHasPrimeImage = 'motor_show_has_prime_image',
