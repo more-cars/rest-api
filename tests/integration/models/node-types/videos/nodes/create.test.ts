@@ -3,6 +3,7 @@ import * as yt from "../../../../../../src/db/external/youtube/performYouTubeApi
 import {FakeGetVideoByIdResponse} from "../../../../../_toolbox/fixtures/external/youtube/FakeGetVideoByIdResponse"
 import {FakeVideo} from "../../../../../_toolbox/fixtures/nodes/FakeVideo"
 import {Video} from "../../../../../../src/models/node-types/videos/Video"
+import {YouTubeVideoAlreadyExistsError} from "../../../../../../src/models/types/YouTubeVideoAlreadyExistsError"
 
 test('Expecting node to be created when provided with valid data', async () => {
     vi.spyOn(yt, 'performYouTubeApiRequest')
@@ -30,4 +31,15 @@ test('Trying to override read-only properties', async () => {
 
     expect(createdNode)
         .not.toEqual(expect.objectContaining(readOnlyData))
+})
+
+test('Trying to add the same YouTube video again', async () => {
+    vi.spyOn(yt, 'performYouTubeApiRequest')
+        .mockImplementation(async () => FakeGetVideoByIdResponse)
+
+    await Video.create(FakeVideo.dbInput)
+
+    await expect(Video.create(FakeVideo.dbInput))
+        .rejects
+        .toThrow(YouTubeVideoAlreadyExistsError)
 })
