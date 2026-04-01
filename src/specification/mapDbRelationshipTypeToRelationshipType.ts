@@ -138,6 +138,8 @@ export function mapDbRelationshipTypeToRelationshipType(dbRelationshipType: DbRe
         [DbRelationshipType.ProgrammeHasEpisode, RelationshipType.ProgrammeHasEpisode],
         [DbRelationshipType.ProgrammeHasImage, RelationshipType.ProgrammeHasImage],
         [DbRelationshipType.ProgrammeHasPrimeImage, RelationshipType.ProgrammeHasPrimeImage],
+        [DbRelationshipType.ProgrammeHasVideo, RelationshipType.ProgrammeHasVideo],
+        [DbRelationshipType.ProgrammeHasMainVideo, RelationshipType.ProgrammeHasMainVideo],
         [DbRelationshipType.ProgrammeEpisodeBelongsToProgramme, RelationshipType.ProgrammeEpisodeBelongsToProgramme],
         [DbRelationshipType.ProgrammeEpisodeFollowsEpisode, RelationshipType.ProgrammeEpisodeFollowsEpisode],
         [DbRelationshipType.ProgrammeEpisodeIsFollowedByEpisode, RelationshipType.ProgrammeEpisodeIsFollowedByEpisode],

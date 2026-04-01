@@ -131,6 +131,8 @@ export enum RelType {
     ProgrammeHasEpisode = 'programme_has_episode',
     ProgrammeHasImage = 'programme_has_image',
     ProgrammeHasPrimeImage = 'programme_has_prime_image',
+    ProgrammeHasVideo = 'programme_has_video',
+    ProgrammeHasMainVideo = 'programme_has_main_video',
     ProgrammeEpisodeBelongsToProgramme = 'programme_episode_belongs_to_programme',
     ProgrammeEpisodeFollowsEpisode = 'programme_episode_follows_episode',
     ProgrammeEpisodeIsFollowedByEpisode = 'programme_episode_is_followed_by_episode',

@@ -18,5 +18,15 @@ export const ProgrammeRelationshipSpecification: RelationshipTypeSpecification[]
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    [RelationshipType.ProgrammeHasVideo, {
+        startNodeType: NodeType.Programme,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
+    [RelationshipType.ProgrammeHasMainVideo, {
+        startNodeType: NodeType.Programme,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
     //
 ]

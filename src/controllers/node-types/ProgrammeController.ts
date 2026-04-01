@@ -12,6 +12,12 @@ import {deleteHasImageRelation} from "./programmes/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./programmes/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./programmes/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./programmes/deleteHasPrimeImageRelation"
+import {createHasVideoRelation} from "./programmes/createHasVideoRelation"
+import {getAllHasVideoRelations} from "./programmes/getAllHasVideoRelations"
+import {deleteHasVideoRelation} from "./programmes/deleteHasVideoRelation"
+import {createHasMainVideoRelation} from "./programmes/createHasMainVideoRelation"
+import {getHasMainVideoRelation} from "./programmes/getHasMainVideoRelation"
+import {deleteHasMainVideoRelation} from "./programmes/deleteHasMainVideoRelation"
 
 export const ProgrammeController = {
     async create(req: express.Request, res: express.Response) {
@@ -64,5 +70,29 @@ export const ProgrammeController = {
 
     async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
+    },
+
+    async createHasVideoRelation(req: express.Request, res: express.Response) {
+        await createHasVideoRelation(req, res)
+    },
+
+    async getAllHasVideoRelations(req: express.Request, res: express.Response) {
+        await getAllHasVideoRelations(req, res)
+    },
+
+    async deleteHasVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasVideoRelation(req, res)
+    },
+
+    async createHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await createHasMainVideoRelation(req, res)
+    },
+
+    async getHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await getHasMainVideoRelation(req, res)
+    },
+
+    async deleteHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasMainVideoRelation(req, res)
     },
 }

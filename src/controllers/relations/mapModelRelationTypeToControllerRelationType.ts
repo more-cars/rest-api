@@ -137,6 +137,8 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.ProgrammeHasEpisode, RelationType.ProgrammeHasEpisode],
         [RelType.ProgrammeHasImage, RelationType.ProgrammeHasImage],
         [RelType.ProgrammeHasPrimeImage, RelationType.ProgrammeHasPrimeImage],
+        [RelType.ProgrammeHasVideo, RelationType.ProgrammeHasVideo],
+        [RelType.ProgrammeHasMainVideo, RelationType.ProgrammeHasMainVideo],
         [RelType.ProgrammeEpisodeBelongsToProgramme, RelationType.ProgrammeEpisodeBelongsToProgramme],
         [RelType.ProgrammeEpisodeFollowsEpisode, RelationType.ProgrammeEpisodeFollowsEpisode],
         [RelType.ProgrammeEpisodeIsFollowedByEpisode, RelationType.ProgrammeEpisodeIsFollowedByEpisode],

@@ -21807,6 +21807,278 @@
         }
       }
     },
+    "/programmes/{programme-id}/has-video": {
+      "get": {
+        "operationId": "getProgrammeHasVideoRel",
+        "tags": [
+          "Programmes"
+        ],
+        "summary": "Get all ›has-video‹ relationships for the `Programme`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "programme-id",
+            "description": "ID of the `Programme`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-video‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgrammeHasVideoCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Programme` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/programmes/{programme-id}/has-video/{video-id}": {
+      "delete": {
+        "tags": [
+          "Programmes"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Programme` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "programme-id",
+            "description": "ID of the `Programme`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Programme` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Programmes"
+        ],
+        "summary": "Creates a ›has-video‹ relationship between the `Programme` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "programme-id",
+            "description": "ID of the `Programme`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Relationship ›has-video‹ between `Programme` and `Video` successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgrammeHasVideoResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "The relationship ›has-video‹ between `Programme` and `Video` already exists."
+          },
+          "404": {
+            "description": "Request failed. `Programme` and/or `Video` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/programmes/{programme-id}/has-main-video": {
+      "get": {
+        "operationId": "getProgrammeHasMainVideoRel",
+        "tags": [
+          "Programmes"
+        ],
+        "summary": "Get the ›has-main-video‹ relationship for the `Programme`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "programme-id",
+            "description": "ID of the `Programme`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›has-main-video‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgrammeHasMainVideoResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Programme` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/programmes/{programme-id}/has-main-video/{video-id}": {
+      "post": {
+        "tags": [
+          "Programmes"
+        ],
+        "summary": "Creates a ›has-main-video‹ relationship between the `Programme` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "programme-id",
+            "description": "ID of the `Programme`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Relationship ›has-main-video‹ between `Programme` and `Video` successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgrammeHasMainVideoResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "The relationship ›has-main-video‹ between `Programme` and `Video` already exists."
+          },
+          "404": {
+            "description": "Request failed. `Programme` and/or `Video` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Programmes"
+        ],
+        "summary": "Deletes the ›has-main-video‹ relationship between the `Programme` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "programme-id",
+            "description": "ID of the `Programme`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-main-video‹ relationship between `Programme` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-main-video‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/programme-episodes": {
       "get": {
         "operationId": "getProgrammeEpisodes",
@@ -33896,6 +34168,117 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/ProgrammeHasPrimeImage"
+          }
+        }
+      },
+      "ProgrammeHasVideo": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "relationship_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "123456"
+          },
+          "relationship_name": {
+            "type": "string",
+            "readOnly": true,
+            "example": "has-video"
+          },
+          "partner_node": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "videos"
+              },
+              "data": {
+                "$ref": "#/components/schemas/Video"
+              }
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "ProgrammeHasVideoResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ProgrammeHasVideo"
+          }
+        }
+      },
+      "ProgrammeHasVideoCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProgrammeHasVideoResponse"
+            }
+          }
+        }
+      },
+      "ProgrammeHasMainVideo": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "relationship_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "123456"
+          },
+          "relationship_name": {
+            "type": "string",
+            "readOnly": true,
+            "example": "has-main-video"
+          },
+          "partner_node": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "videos"
+              },
+              "data": {
+                "$ref": "#/components/schemas/Video"
+              }
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "ProgrammeHasMainVideoResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ProgrammeHasMainVideo"
           }
         }
       },

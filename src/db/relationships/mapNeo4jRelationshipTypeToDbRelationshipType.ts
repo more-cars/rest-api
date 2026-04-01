@@ -301,6 +301,8 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.ProgrammeHasEpisode, RelationshipType.ProgrammeHasEpisode],
                 [RelationshipTypeNeo4j.ProgrammeHasImage, RelationshipType.ProgrammeHasImage],
                 [RelationshipTypeNeo4j.ProgrammeHasPrimeImage, RelationshipType.ProgrammeHasPrimeImage],
+                [RelationshipTypeNeo4j.ProgrammeHasMainVideo, RelationshipType.ProgrammeHasMainVideo],
+                [RelationshipTypeNeo4j.ProgrammeHasVideo, RelationshipType.ProgrammeHasVideo],
             ])],
         ])],
         [Neo4jNodeType.ProgrammeEpisode, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([

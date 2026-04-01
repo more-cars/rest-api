@@ -133,6 +133,8 @@ export enum RelationshipTypeNeo4j {
     ProgrammeHasEpisode = 'HAS_EPISODE',
     ProgrammeHasImage = 'HAS_IMAGE',
     ProgrammeHasPrimeImage = 'HAS_PRIME_IMAGE',
+    ProgrammeHasVideo = 'HAS_VIDEO',
+    ProgrammeHasMainVideo = 'HAS_MAIN_VIDEO',
     ProgrammeEpisodeBelongsToProgramme = 'HAS_EPISODE',
     ProgrammeEpisodeFollowsEpisode = 'IS_FOLLOWED_BY_EPISODE',
     ProgrammeEpisodeIsFollowedByEpisode = 'IS_FOLLOWED_BY_EPISODE',

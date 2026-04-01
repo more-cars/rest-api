@@ -133,6 +133,8 @@ export enum RelationshipType {
     ProgrammeHasEpisode = 'PROGRAMME_HAS_EPISODE',
     ProgrammeHasImage = 'PROGRAMME_HAS_IMAGE',
     ProgrammeHasPrimeImage = 'PROGRAMME_HAS_PRIME_IMAGE',
+    ProgrammeHasVideo = 'PROGRAMME_HAS_VIDEO',
+    ProgrammeHasMainVideo = 'PROGRAMME_HAS_MAIN_VIDEO',
     ProgrammeEpisodeBelongsToProgramme = 'PROGRAMME_EPISODE_BELONGS_TO_PROGRAMME',
     ProgrammeEpisodeFollowsEpisode = 'PROGRAMME_EPISODE_FOLLOWS_EPISODE',
     ProgrammeEpisodeIsFollowedByEpisode = 'PROGRAMME_EPISODE_IS_FOLLOWED_BY_EPISODE',

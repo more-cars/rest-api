@@ -136,6 +136,8 @@ export function mapDbRelationshipTypeToModelRelType(dbRelationshipType: Relation
         [RelationshipType.ProgrammeHasEpisode, RelType.ProgrammeHasEpisode],
         [RelationshipType.ProgrammeHasImage, RelType.ProgrammeHasImage],
         [RelationshipType.ProgrammeHasPrimeImage, RelType.ProgrammeHasPrimeImage],
+        [RelationshipType.ProgrammeHasVideo, RelType.ProgrammeHasVideo],
+        [RelationshipType.ProgrammeHasMainVideo, RelType.ProgrammeHasMainVideo],
         [RelationshipType.ProgrammeEpisodeBelongsToProgramme, RelType.ProgrammeEpisodeBelongsToProgramme],
         [RelationshipType.ProgrammeEpisodeFollowsEpisode, RelType.ProgrammeEpisodeFollowsEpisode],
         [RelationshipType.ProgrammeEpisodeIsFollowedByEpisode, RelType.ProgrammeEpisodeIsFollowedByEpisode],
