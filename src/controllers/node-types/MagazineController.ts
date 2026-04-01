@@ -12,6 +12,12 @@ import {deleteHasImageRelation} from "./magazines/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./magazines/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./magazines/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./magazines/deleteHasPrimeImageRelation"
+import {createHasVideoRelation} from "./magazines/createHasVideoRelation"
+import {getAllHasVideoRelations} from "./magazines/getAllHasVideoRelations"
+import {deleteHasVideoRelation} from "./magazines/deleteHasVideoRelation"
+import {createHasMainVideoRelation} from "./magazines/createHasMainVideoRelation"
+import {getHasMainVideoRelation} from "./magazines/getHasMainVideoRelation"
+import {deleteHasMainVideoRelation} from "./magazines/deleteHasMainVideoRelation"
 
 export const MagazineController = {
     async create(req: express.Request, res: express.Response) {
@@ -64,5 +70,29 @@ export const MagazineController = {
 
     async deleteHasIssueRelation(req: express.Request, res: express.Response) {
         await deleteHasIssueRelation(req, res)
+    },
+
+    async createHasVideoRelation(req: express.Request, res: express.Response) {
+        await createHasVideoRelation(req, res)
+    },
+
+    async getAllHasVideoRelations(req: express.Request, res: express.Response) {
+        await getAllHasVideoRelations(req, res)
+    },
+
+    async deleteHasVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasVideoRelation(req, res)
+    },
+
+    async createHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await createHasMainVideoRelation(req, res)
+    },
+
+    async getHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await getHasMainVideoRelation(req, res)
+    },
+
+    async deleteHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasMainVideoRelation(req, res)
     },
 }

@@ -111,6 +111,8 @@ export enum RelType {
     MagazineHasIssue = 'magazine_has_issue',
     MagazineHasImage = 'magazine_has_image',
     MagazineHasPrimeImage = 'magazine_has_prime_image',
+    MagazineHasVideo = 'magazine_has_video',
+    MagazineHasMainVideo = 'magazine_has_main_video',
     MagazineIssueBelongsToMagazine = 'magazine_issue_belongs_to_magazine',
     MagazineIssueFollowsIssue = 'magazine_issue_follows_issue',
     MagazineIssueFollowedByIssue = 'magazine_issue_followed_by_issue',

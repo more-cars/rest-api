@@ -117,6 +117,8 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.MagazineHasIssue, RelationType.MagazineHasIssue],
         [RelType.MagazineHasImage, RelationType.MagazineHasImage],
         [RelType.MagazineHasPrimeImage, RelationType.MagazineHasPrimeImage],
+        [RelType.MagazineHasVideo, RelationType.MagazineHasVideo],
+        [RelType.MagazineHasMainVideo, RelationType.MagazineHasMainVideo],
         [RelType.MagazineIssueBelongsToMagazine, RelationType.MagazineIssueBelongsToMagazine],
         [RelType.MagazineIssueFollowsIssue, RelationType.MagazineIssueFollowsIssue],
         [RelType.MagazineIssueFollowedByIssue, RelationType.MagazineIssueFollowedByIssue],
