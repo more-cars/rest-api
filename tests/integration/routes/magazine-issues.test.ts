@@ -253,4 +253,52 @@ describe('Magazine Issues', () => {
         expect(MagazineIssueController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-video‹ relationship', async () => {
+        await request(app)
+            .post('/magazine-issues/123/has-video/456')
+
+        expect(MagazineIssueController.createHasVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get all ›has-video‹ relationships', async () => {
+        await request(app)
+            .get('/magazine-issues/123/has-video')
+
+        expect(MagazineIssueController.getAllHasVideoRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Delete ›has-video‹ relationship', async () => {
+        await request(app)
+            .delete('/magazine-issues/123/has-video/456')
+
+        expect(MagazineIssueController.deleteHasVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Create ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .post('/magazine-issues/123/has-main-video/456')
+
+        expect(MagazineIssueController.createHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .get('/magazine-issues/123/has-main-video')
+
+        expect(MagazineIssueController.getHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Delete ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .delete('/magazine-issues/123/has-main-video/456')
+
+        expect(MagazineIssueController.deleteHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

@@ -34,5 +34,11 @@ router.delete('/magazine-issues/:magazineIssueId/has-image/:imageId', MagazineIs
 router.post('/magazine-issues/:magazineIssueId/has-prime-image/:imageId', MagazineIssueController.createHasPrimeImageRelation)
 router.get('/magazine-issues/:magazineIssueId/has-prime-image', MagazineIssueController.getHasPrimeImageRelation)
 router.delete('/magazine-issues/:magazineIssueId/has-prime-image/:imageId', MagazineIssueController.deleteHasPrimeImageRelation)
+router.post('/magazine-issues/:magazineIssueId/has-video/:videoId', MagazineIssueController.createHasVideoRelation)
+router.get('/magazine-issues/:magazineIssueId/has-video', MagazineIssueController.getAllHasVideoRelations)
+router.delete('/magazine-issues/:magazineIssueId/has-video/:videoId', MagazineIssueController.deleteHasVideoRelation)
+router.post('/magazine-issues/:magazineIssueId/has-main-video/:videoId', MagazineIssueController.createHasMainVideoRelation)
+router.get('/magazine-issues/:magazineIssueId/has-main-video', MagazineIssueController.getHasMainVideoRelation)
+router.delete('/magazine-issues/:magazineIssueId/has-main-video/:videoId', MagazineIssueController.deleteHasMainVideoRelation)
 
 export default router

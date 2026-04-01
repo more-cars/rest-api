@@ -26,6 +26,7 @@ import {CarModel} from "../car-models/CarModel"
 import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 import {RacingEvent} from "../racing-events/RacingEvent"
 import {Rating} from "../ratings/Rating"
+import {Video} from "../videos/Video"
 
 export const MagazineIssue = {
     async create(data: CreateMagazineIssueInput): Promise<MagazineIssueNode> {
@@ -444,5 +445,87 @@ export const MagazineIssue = {
         }
 
         await deleteSpecificRel(magazineIssueId, imageId, RelType.MagazineIssueHasPrimeImage)
+    },
+
+    async createHasVideoRelationship(magazineIssueId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await MagazineIssue.findById(magazineIssueId)
+        await Video.findById(videoId)
+
+        const existingRelation = await getSpecificRel(magazineIssueId, videoId, RelType.MagazineIssueHasVideo)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.MagazineIssueHasVideo, magazineIssueId, videoId)
+        }
+
+        const createdRelationship = await createRel(magazineIssueId, videoId, RelType.MagazineIssueHasVideo)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getAllHasVideoRelationships(magazineIssueId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await MagazineIssue.findById(magazineIssueId)
+
+        return getAllRels(magazineIssueId, RelType.MagazineIssueHasVideo)
+    },
+
+    async deleteHasVideoRelationship(magazineIssueId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await MagazineIssue.findById(magazineIssueId)
+        await Video.findById(videoId)
+
+        const relationship = await getSpecificRel(magazineIssueId, videoId, RelType.MagazineIssueHasVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.MagazineIssueHasVideo, magazineIssueId, videoId)
+        }
+
+        await deleteSpecificRel(magazineIssueId, videoId, RelType.MagazineIssueHasVideo)
+    },
+
+    async createHasMainVideoRelationship(magazineIssueId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await MagazineIssue.findById(magazineIssueId)
+        await Video.findById(videoId)
+
+        const existingRelation = await getSpecificRel(magazineIssueId, videoId, RelType.MagazineIssueHasMainVideo)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.MagazineIssueHasMainVideo, magazineIssueId, videoId)
+        }
+        await deleteOutgoingRel(magazineIssueId, RelType.MagazineIssueHasMainVideo, ModelNodeType.Video)
+
+        const createdRelationship = await createRel(magazineIssueId, videoId, RelType.MagazineIssueHasMainVideo)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getHasMainVideoRelationship(magazineIssueId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await MagazineIssue.findById(magazineIssueId)
+
+        const relationship = await getRel(magazineIssueId, RelType.MagazineIssueHasMainVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.MagazineIssueHasMainVideo, magazineIssueId, null)
+        }
+
+        return relationship
+    },
+
+    async deleteHasMainVideoRelationship(magazineIssueId: number, videoId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await MagazineIssue.findById(magazineIssueId)
+        await Video.findById(videoId)
+
+        const relationship = await getSpecificRel(magazineIssueId, videoId, RelType.MagazineIssueHasMainVideo)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.MagazineIssueHasMainVideo, magazineIssueId, videoId)
+        }
+
+        await deleteSpecificRel(magazineIssueId, videoId, RelType.MagazineIssueHasMainVideo)
     },
 }

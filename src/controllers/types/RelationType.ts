@@ -122,6 +122,8 @@ export enum RelationType {
     MagazineIssueCoversRacingEvent = 'covers-racing-event',
     MagazineIssueHasImage = 'has-image',
     MagazineIssueHasPrimeImage = 'has-prime-image',
+    MagazineIssueHasVideo = 'has-video',
+    MagazineIssueHasMainVideo = 'has-main-video',
     RatingByMagazineIssue = 'by-magazine-issue',
     RatingForCarModelVariant = 'for-car-model-variant',
     RatingHasImage = 'has-image',

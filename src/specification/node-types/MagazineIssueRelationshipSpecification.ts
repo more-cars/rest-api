@@ -48,5 +48,15 @@ export const MagazineIssueRelationshipSpecification: RelationshipTypeSpecificati
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    [RelationshipType.MagazineIssueHasVideo, {
+        startNodeType: NodeType.MagazineIssue,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
+    [RelationshipType.MagazineIssueHasMainVideo, {
+        startNodeType: NodeType.MagazineIssue,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
     //
 ]

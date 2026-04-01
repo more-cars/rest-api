@@ -128,6 +128,8 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.MagazineIssueCoversRacingEvent, RelationType.MagazineIssueCoversRacingEvent],
         [RelType.MagazineIssueHasImage, RelationType.MagazineIssueHasImage],
         [RelType.MagazineIssueHasPrimeImage, RelationType.MagazineIssueHasPrimeImage],
+        [RelType.MagazineIssueHasVideo, RelationType.MagazineIssueHasVideo],
+        [RelType.MagazineIssueHasMainVideo, RelationType.MagazineIssueHasMainVideo],
         [RelType.RatingByMagazineIssue, RelationType.RatingByMagazineIssue],
         [RelType.RatingForCarModelVariant, RelationType.RatingForCarModelVariant],
         [RelType.RatingHasImage, RelationType.RatingHasImage],

@@ -30,6 +30,12 @@ import {deleteHasImageRelation} from "./magazine-issues/deleteHasImageRelation"
 import {createHasPrimeImageRelation} from "./magazine-issues/createHasPrimeImageRelation"
 import {getHasPrimeImageRelation} from "./magazine-issues/getHasPrimeImageRelation"
 import {deleteHasPrimeImageRelation} from "./magazine-issues/deleteHasPrimeImageRelation"
+import {createHasVideoRelation} from "./magazine-issues/createHasVideoRelation"
+import {getAllHasVideoRelations} from "./magazine-issues/getAllHasVideoRelations"
+import {deleteHasVideoRelation} from "./magazine-issues/deleteHasVideoRelation"
+import {createHasMainVideoRelation} from "./magazine-issues/createHasMainVideoRelation"
+import {getHasMainVideoRelation} from "./magazine-issues/getHasMainVideoRelation"
+import {deleteHasMainVideoRelation} from "./magazine-issues/deleteHasMainVideoRelation"
 
 export const MagazineIssueController = {
     async create(req: express.Request, res: express.Response) {
@@ -154,5 +160,29 @@ export const MagazineIssueController = {
 
     async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
         await deleteHasPrimeImageRelation(req, res)
+    },
+
+    async createHasVideoRelation(req: express.Request, res: express.Response) {
+        await createHasVideoRelation(req, res)
+    },
+
+    async getAllHasVideoRelations(req: express.Request, res: express.Response) {
+        await getAllHasVideoRelations(req, res)
+    },
+
+    async deleteHasVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasVideoRelation(req, res)
+    },
+
+    async createHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await createHasMainVideoRelation(req, res)
+    },
+
+    async getHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await getHasMainVideoRelation(req, res)
+    },
+
+    async deleteHasMainVideoRelation(req: express.Request, res: express.Response) {
+        await deleteHasMainVideoRelation(req, res)
     },
 }

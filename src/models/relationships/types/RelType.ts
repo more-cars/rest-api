@@ -122,6 +122,8 @@ export enum RelType {
     MagazineIssueCoversRacingEvent = 'magazine_issue_covers_racing_event',
     MagazineIssueHasImage = 'magazine_issue_has_image',
     MagazineIssueHasPrimeImage = 'magazine_issue_has_prime_image',
+    MagazineIssueHasVideo = 'magazine_issue_has_video',
+    MagazineIssueHasMainVideo = 'magazine_issue_has_main_video',
     RatingByMagazineIssue = 'rating_by_magazine_issue',
     RatingForCarModelVariant = 'rating_for_car_model_variant',
     RatingHasImage = 'rating_has_image',
