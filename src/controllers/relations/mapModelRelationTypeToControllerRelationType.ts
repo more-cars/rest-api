@@ -113,7 +113,6 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.ModelCarBrandHasPrimeImage, RelationType.ModelCarBrandHasPrimeImage],
         [RelType.ModelCarBrandHasVideo, RelationType.ModelCarBrandHasVideo],
         [RelType.ModelCarBrandHasMainVideo, RelationType.ModelCarBrandHasMainVideo],
-        [RelType.ImageBelongsToNode, RelationType.ImageBelongsToNode],
         [RelType.MagazineHasIssue, RelationType.MagazineHasIssue],
         [RelType.MagazineHasImage, RelationType.MagazineHasImage],
         [RelType.MagazineHasPrimeImage, RelationType.MagazineHasPrimeImage],
@@ -151,8 +150,11 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.MotorShowPresentsCarModelVariant, RelationType.MotorShowPresentsCarModelVariant],
         [RelType.MotorShowHasImage, RelationType.MotorShowHasImage],
         [RelType.MotorShowHasPrimeImage, RelationType.MotorShowHasPrimeImage],
+        [RelType.MotorShowHasVideo, RelationType.MotorShowHasVideo],
+        [RelType.MotorShowHasMainVideo, RelationType.MotorShowHasMainVideo],
         [RelType.VideoBelongsToNode, RelationType.VideoBelongsToNode],
         [RelType.VideoIsMainVideoOfNode, RelationType.VideoIsMainVideoOfNode],
+        [RelType.ImageBelongsToNode, RelationType.ImageBelongsToNode],
         [RelType.ImageIsPrimeImageOfNode, RelationType.ImageIsPrimeImageOfNode],
     ])
 

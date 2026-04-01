@@ -16,5 +16,11 @@ router.delete('/motor-shows/:motorShowId/has-image/:imageId', MotorShowControlle
 router.post('/motor-shows/:motorShowId/has-prime-image/:imageId', MotorShowController.createHasPrimeImageRelation)
 router.get('/motor-shows/:motorShowId/has-prime-image', MotorShowController.getHasPrimeImageRelation)
 router.delete('/motor-shows/:motorShowId/has-prime-image/:imageId', MotorShowController.deleteHasPrimeImageRelation)
+router.post('/motor-shows/:motorShowId/has-video/:videoId', MotorShowController.createHasVideoRelation)
+router.get('/motor-shows/:motorShowId/has-video', MotorShowController.getAllHasVideoRelations)
+router.delete('/motor-shows/:motorShowId/has-video/:videoId', MotorShowController.deleteHasVideoRelation)
+router.post('/motor-shows/:motorShowId/has-main-video/:videoId', MotorShowController.createHasMainVideoRelation)
+router.get('/motor-shows/:motorShowId/has-main-video', MotorShowController.getHasMainVideoRelation)
+router.delete('/motor-shows/:motorShowId/has-main-video/:videoId', MotorShowController.deleteHasMainVideoRelation)
 
 export default router

@@ -154,6 +154,8 @@ export function mapDbRelationshipTypeToNeo4jRelationshipType(
         [RelationshipType.MotorShowPresentsCarModelVariant, RelationshipTypeNeo4j.MotorShowPresentsCarModelVariant],
         [RelationshipType.MotorShowHasImage, RelationshipTypeNeo4j.MotorShowHasImage],
         [RelationshipType.MotorShowHasPrimeImage, RelationshipTypeNeo4j.MotorShowHasPrimeImage],
+        [RelationshipType.MotorShowHasVideo, RelationshipTypeNeo4j.MotorShowHasVideo],
+        [RelationshipType.MotorShowHasMainVideo, RelationshipTypeNeo4j.MotorShowHasMainVideo],
         [RelationshipType.VideoBelongsToNode, RelationshipTypeNeo4j.VideoBelongsToNode],
         [RelationshipType.VideoIsMainVideoOfNode, RelationshipTypeNeo4j.VideoIsMainVideoOfNode],
         [RelationshipType.ImageBelongsToNode, RelationshipTypeNeo4j.ImageBelongsToNode],

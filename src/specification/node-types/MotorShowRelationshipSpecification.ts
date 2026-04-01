@@ -18,5 +18,15 @@ export const MotorShowRelationshipSpecification: RelationshipTypeSpecification[]
         endNodeType: NodeType.Image,
         isReverseRelationship: false,
     }],
+    [RelationshipType.MotorShowHasVideo, {
+        startNodeType: NodeType.MotorShow,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
+    [RelationshipType.MotorShowHasMainVideo, {
+        startNodeType: NodeType.MotorShow,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
     //
 ]

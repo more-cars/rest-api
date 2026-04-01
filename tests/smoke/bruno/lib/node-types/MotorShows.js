@@ -12,6 +12,14 @@ exports.createHasPrimeImageRelationship = async function () {
     await post("/motor-shows/" + bru.getEnvVar('validMotorShowId') + "/has-prime-image/" + bru.getEnvVar('validImageId'))
 }
 
+exports.createHasVideoRelationship = async function () {
+    await post("/motor-shows/" + bru.getEnvVar('validMotorShowId') + "/has-video/" + bru.getEnvVar('validVideoId'))
+}
+
+exports.createHasMainVideoRelationship = async function () {
+    await post("/motor-shows/" + bru.getEnvVar('validMotorShowId') + "/has-main-video/" + bru.getEnvVar('validVideoId'))
+}
+
 exports.create = async function (prefix = '') {
     const response = await post("/motor-shows", {
         name: 'Dummy Motor Show',

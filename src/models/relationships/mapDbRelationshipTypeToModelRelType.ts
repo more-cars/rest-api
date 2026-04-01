@@ -150,6 +150,8 @@ export function mapDbRelationshipTypeToModelRelType(dbRelationshipType: Relation
         [RelationshipType.MotorShowPresentsCarModelVariant, RelType.MotorShowPresentsCarModelVariant],
         [RelationshipType.MotorShowHasImage, RelType.MotorShowHasImage],
         [RelationshipType.MotorShowHasPrimeImage, RelType.MotorShowHasPrimeImage],
+        [RelationshipType.MotorShowHasVideo, RelType.MotorShowHasVideo],
+        [RelationshipType.MotorShowHasMainVideo, RelType.MotorShowHasMainVideo],
         [RelationshipType.VideoBelongsToNode, RelType.VideoBelongsToNode],
         [RelationshipType.VideoIsMainVideoOfNode, RelType.VideoIsMainVideoOfNode],
         [RelationshipType.ImageBelongsToNode, RelType.ImageBelongsToNode],
