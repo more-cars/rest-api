@@ -1,0 +1,231 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "YouTube API v3 - API Specification",
+    "description": "OpenAPI specification for the YouTube API. Includes only the parts that are relevant for More Cars.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3004",
+      "description": "Local"
+    }
+  ],
+  "paths": {
+    "/youtube/v3/videos": {
+      "get": {
+        "operationId": "getVideo",
+        "summary": "Get video",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "key",
+            "description": "key",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "part",
+            "description": "part",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "id",
+            "description": "Video ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Video successfully loaded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VideoResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Video": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "example": "youtube#video"
+          },
+          "id": {
+            "type": "string",
+            "example": "zbZ9iYWReZA"
+          },
+          "snippet": {
+            "type": "object",
+            "properties": {
+              "publishedAt": {
+                "type": "string",
+                "example": "2026-03-29T23:01:00Z"
+              },
+              "channelId": {
+                "type": "string",
+                "example": "UC8AMAhCRmep7VJKe1sxvHFg"
+              },
+              "title": {
+                "type": "string",
+                "example": "Chris Harris on Cars: Aston Martin Valhalla"
+              },
+              "description": {
+                "type": "string",
+                "example": "First drive of Aston's 1000hp hybrid supercar."
+              },
+              "thumbnails": {
+                "type": "object",
+                "properties": {
+                  "default": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string",
+                        "example": "https://i.ytimg.com/vi/zbZ9iYWReZA/default.jpg"
+                      },
+                      "width": {
+                        "type": "integer",
+                        "example": "120"
+                      },
+                      "height": {
+                        "type": "integer",
+                        "example": "90"
+                      }
+                    }
+                  },
+                  "medium": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string",
+                        "example": "https://i.ytimg.com/vi/zbZ9iYWReZA/mqdefault.jpg"
+                      },
+                      "width": {
+                        "type": "integer",
+                        "example": "320"
+                      },
+                      "height": {
+                        "type": "integer",
+                        "example": "180"
+                      }
+                    }
+                  },
+                  "high": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string",
+                        "example": "https://i.ytimg.com/vi/zbZ9iYWReZA/hqdefault.jpg"
+                      },
+                      "width": {
+                        "type": "integer",
+                        "example": "480"
+                      },
+                      "height": {
+                        "type": "integer",
+                        "example": "360"
+                      }
+                    }
+                  },
+                  "standard": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string",
+                        "example": "https://i.ytimg.com/vi/zbZ9iYWReZA/sddefault.jpg"
+                      },
+                      "width": {
+                        "type": "integer",
+                        "example": "640"
+                      },
+                      "height": {
+                        "type": "integer",
+                        "example": "360"
+                      }
+                    }
+                  },
+                  "maxres": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string",
+                        "example": "https://i.ytimg.com/vi/zbZ9iYWReZA/maxresdefault.jpg"
+                      },
+                      "width": {
+                        "type": "integer",
+                        "example": "1280"
+                      },
+                      "height": {
+                        "type": "integer",
+                        "example": "720"
+                      }
+                    }
+                  }
+                }
+              },
+              "channelTitle": {
+                "type": "string",
+                "example": "Chris Harris on Cars"
+              },
+              "tags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "contentDetails": {
+            "type": "object",
+            "properties": {
+              "duration": {
+                "type": "string",
+                "example": "PT28M6S"
+              },
+              "definition": {
+                "type": "string",
+                "example": "hd"
+              }
+            }
+          },
+          "status": {
+            "type": "object",
+            "properties": {
+              "license": {
+                "type": "string",
+                "example": "youtube"
+              }
+            }
+          }
+        }
+      },
+      "VideoResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Video"
+            }
+          }
+        }
+      }
+    }
+  }
+}
