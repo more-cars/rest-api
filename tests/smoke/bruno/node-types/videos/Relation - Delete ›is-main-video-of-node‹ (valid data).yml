@@ -24,3 +24,7 @@ runtime:
         await Brands.create()
         bru.setEnvVar('validNodeId', bru.getEnvVar('validBrandId'))
         await Videos.createIsMainVideoOfNodeRelationship()
+    - type: after-response
+      code: |-
+        const Videos = require('./lib/node-types/Videos.js')
+        await Videos.delete(bru.getEnvVar('validVideoId'))

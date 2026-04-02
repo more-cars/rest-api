@@ -23,3 +23,7 @@ runtime:
         await TrackLayouts.create()
         await Videos.create()
         await TrackLayouts.createHasVideoRelationship()
+    - type: after-response
+      code: |-
+        const Videos = require('./lib/node-types/Videos.js')
+        await Videos.delete(bru.getEnvVar('validVideoId'))

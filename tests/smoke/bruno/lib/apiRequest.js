@@ -9,3 +9,13 @@ exports.post = async function (path, data) {
 
     return response.data
 }
+
+exports.del = async function (path) {
+    const response = await axios.delete(bru.getEnvVar('baseUrl') + path, {
+        validateStatus: function (status) {
+            return status < 400
+        },
+    })
+
+    return response.data
+}

@@ -23,3 +23,7 @@ runtime:
         await ModelCarBrands.create()
         await Videos.create()
         await ModelCarBrands.createHasMainVideoRelationship()
+    - type: after-response
+      code: |-
+        const Videos = require('./lib/node-types/Videos.js')
+        await Videos.delete(bru.getEnvVar('validVideoId'))

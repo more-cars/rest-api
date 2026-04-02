@@ -34,3 +34,7 @@ runtime:
           const data = res.getBody()
           expect(data.attributes.created_at).to.eql(data.attributes.updated_at)
         })
+    - type: after-response
+      code: |-
+        const Videos = require('./lib/node-types/Videos.js')
+        await Videos.delete(res.body.id)

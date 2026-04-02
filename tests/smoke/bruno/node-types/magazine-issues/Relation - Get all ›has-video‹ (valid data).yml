@@ -58,3 +58,7 @@ runtime:
         await MagazineIssues.create()
         await Videos.create()
         await MagazineIssues.createHasVideoRelationship()
+    - type: after-response
+      code: |-
+        const Videos = require('./lib/node-types/Videos.js')
+        await Videos.delete(bru.getEnvVar('validVideoId'))

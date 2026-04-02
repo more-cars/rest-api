@@ -23,3 +23,7 @@ runtime:
         await RacingSeries.create()
         await Videos.create()
         await RacingSeries.createHasVideoRelationship()
+    - type: after-response
+      code: |-
+        const Videos = require('./lib/node-types/Videos.js')
+        await Videos.delete(bru.getEnvVar('validVideoId'))

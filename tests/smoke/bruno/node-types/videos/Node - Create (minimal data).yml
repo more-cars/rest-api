@@ -27,3 +27,8 @@ runtime:
     - expression: res.body.id
       operator: gte
       value: "12000000"
+  scripts:
+    - type: after-response
+      code: |-
+        const Videos = require('./lib/node-types/Videos.js')
+        await Videos.delete(res.body.id)

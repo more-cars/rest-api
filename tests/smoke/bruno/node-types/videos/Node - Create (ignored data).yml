@@ -30,3 +30,8 @@ runtime:
     - expression: res.body.attributes.updated_at
       operator: neq
       value: nonono
+  scripts:
+    - type: after-response
+      code: |-
+        const Videos = require('./lib/node-types/Videos.js')
+        await Videos.delete(res.body.id)
