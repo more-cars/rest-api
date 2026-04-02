@@ -1,6 +1,7 @@
 import express, {Express} from "express"
 import cors from "cors"
 import {basicAuthentication} from "./basicAuthentication"
+import {userDbNamespace} from "./userDbNamespace"
 import openApiSpecification from "./routes/open-api-specification"
 import health from "./routes/health"
 import nodes from "./routes/nodes/nodes"
@@ -18,6 +19,9 @@ app.use(express.json())
 
 // enabling basic auth (if credentials are configured)
 app.use(basicAuthentication)
+
+// creating an isolated namespace for the user in the database
+app.use(userDbNamespace)
 
 // registering all routes
 app.use('/', openApiSpecification)

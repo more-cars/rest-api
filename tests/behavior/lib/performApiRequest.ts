@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios, {type AxiosRequestConfig} from "axios"
 import type {ApiResponse} from "./ApiResponse"
 import {ResponseManager} from "./ResponseManager"
 
@@ -9,11 +9,14 @@ axios.defaults.validateStatus = function (status) {
 }
 
 export async function performApiRequest(path: string, method: 'POST' | 'GET' | 'DELETE' = 'GET', data?: any): Promise<ApiResponse> {
-    const axiosConfig = {
+    const axiosConfig: AxiosRequestConfig = {
         baseURL: process.env.API_URL,
         url: path,
         method: method.toLowerCase(),
         data,
+        headers: {
+            'user-namespace': process.env.UNIQUE_TEST_ID
+        }
     }
 
     const axiosResponse = await axios.request(axiosConfig)
