@@ -12,7 +12,7 @@ Given('there exist {int} {string} relationships for {string}',
         const startNode = NodeManager.getNodeByLabel(startNodeLabel)
         const relationshipType = convertStringToRelationshipType(relationshipName, startNode.node_type)
         const relationshipSpecification = getRelationshipTypeSpecification(relationshipType)
-        const endNodeType = relationshipSpecification.endNodeType || NodeType.CarModel
+        const endNodeType = relationshipSpecification.endNodeType || NodeType.Brand
         const nodePath = getBasePathFragmentForNodeType(startNode.node_type)
 
         for (let i = 0; i < amount; i++) {
