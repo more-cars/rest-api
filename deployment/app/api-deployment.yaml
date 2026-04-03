@@ -40,6 +40,11 @@ spec:
                   optional: true
                   name: basic-auth
                   key: password
+            - name: YOUTUBE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: youtube-credentials
+                  key: apikey
           resources:
             requests:
               cpu: "50m"
