@@ -22,7 +22,7 @@ import {RatingSchema} from "./node-types/RatingSchema"
 import {ProgrammeSchema} from "./node-types/ProgrammeSchema"
 import {ProgrammeEpisodeSchema} from "./node-types/ProgrammeEpisodeSchema"
 import {MotorShowSchema} from "./node-types/MotorShowSchema"
-import {VideoSchema} from "./VideoSchema"
+import {VideoSchema} from "./node-types/VideoSchema"
 import {ImageSchema} from "./node-types/ImageSchema"
 
 export function getResponseNodeSchema(nodeType: ControllerNodeType) {
