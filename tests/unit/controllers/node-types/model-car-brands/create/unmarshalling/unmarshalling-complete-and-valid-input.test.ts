@@ -1,8 +1,9 @@
 import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/model-car-brands/marshalling/unmarshalInputData"
+import type {CreateModelCarBrandRawInput} from "../../../../../../../src/controllers/node-types/model-car-brands/types/CreateModelCarBrandRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
-    const data: any = {
+    const data: CreateModelCarBrandRawInput = {
         name: "Hot Wheels",
         founded: 1968,
         defunct: null,

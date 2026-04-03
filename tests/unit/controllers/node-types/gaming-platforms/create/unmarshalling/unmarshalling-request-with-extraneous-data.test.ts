@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/gaming-platforms/marshalling/unmarshalInputData"
 
 test('unmarshalling a request where extraneous fields are contained', async () => {
-    const data: any = {
+    const data: unknown = {
         name: "PlayStation 5",
         release_year: 2020,
         manufacturer: "Sony",

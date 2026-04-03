@@ -17,7 +17,7 @@ import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshalling/unmarshalInputData"
 
 test('unmarshalling a request where extraneous fields are contained', async () => {
-    const data: any = {
+    const data: unknown = {
 <%- props.map(line => '        ' + line).join(',\n') %>,
         my_property: "Hello",
     }

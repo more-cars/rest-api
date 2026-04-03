@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/motor-shows/marshalling/unmarshalInputData"
 
 test('unmarshalling a request where extraneous fields are contained', async () => {
-    const data: any = {
+    const data: unknown = {
         name: "2017 IAA Frankfurt",
         date_from: "2017-09-14",
         date_until: "2017-09-24",

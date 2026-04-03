@@ -2,9 +2,7 @@ import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/ratings/marshalling/unmarshalInputData"
 
 test('unmarshalling a request where mandatory fields are missing', async () => {
-    const data: any = {
-
-    }
+    const data: unknown = {}
 
     const result = unmarshalInputData(data)
 

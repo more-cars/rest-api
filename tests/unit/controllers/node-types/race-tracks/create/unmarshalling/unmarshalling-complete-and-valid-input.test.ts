@@ -1,8 +1,9 @@
 import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/race-tracks/marshalling/unmarshalInputData"
+import type {CreateRaceTrackRawInput} from "../../../../../../../src/controllers/node-types/race-tracks/types/CreateRaceTrackRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
-    const data: any = {
+    const data: CreateRaceTrackRawInput = {
         name: "Lausitzring",
         opened: 2000,
         closed: null,

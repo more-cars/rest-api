@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/racing-games/marshalling/unmarshalInputData"
 
 test('unmarshalling a valid request where optional fields are missing', async () => {
-    const data: any = {
+    const data: unknown = {
         name: "Forza Motorsport 7",
     }
 

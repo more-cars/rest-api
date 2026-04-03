@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/companies/marshalling/unmarshalInputData"
 
 test('unmarshalling a request where extraneous fields are contained', async () => {
-    const data: any = {
+    const data: unknown = {
         name: "BMW AG",
         founded: 1916,
         defunct: null,

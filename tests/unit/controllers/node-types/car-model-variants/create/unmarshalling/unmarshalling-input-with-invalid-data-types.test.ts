@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/car-model-variants/marshalling/unmarshalInputData"
 
 test('unmarshalling a request where the data types are incorrect', async () => {
-    const data: any = {
+    const data: unknown = {
         name: true,
         internal_code: true,
         built_from: true,

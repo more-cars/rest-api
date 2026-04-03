@@ -1,8 +1,9 @@
 import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/ratings/marshalling/unmarshalInputData"
+import type {CreateRatingRawInput} from "../../../../../../../src/controllers/node-types/ratings/types/CreateRatingRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
-    const data: any = {
+    const data: CreateRatingRawInput = {
         rating_value: 93,
         scale_minimum: 0,
         scale_maximum: 100,

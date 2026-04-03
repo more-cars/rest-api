@@ -1,8 +1,9 @@
 import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/videos/marshalling/unmarshalInputData"
+import type {CreateVideoRawInput} from "../../../../../../../src/controllers/node-types/videos/types/CreateVideoRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
-    const data: any = {
+    const data: CreateVideoRawInput = {
         video_provider: "youtube",
         external_id: "NqsBncRslsg",
     }

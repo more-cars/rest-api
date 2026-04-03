@@ -1,8 +1,9 @@
 import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/magazine-issues/marshalling/unmarshalInputData"
+import type {CreateMagazineIssueRawInput} from "../../../../../../../src/controllers/node-types/magazine-issues/types/CreateMagazineIssueRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
-    const data: any = {
+    const data: CreateMagazineIssueRawInput = {
         title: "Performance Car of the Year",
         consecutive_number: 402,
         issue_number: 12,

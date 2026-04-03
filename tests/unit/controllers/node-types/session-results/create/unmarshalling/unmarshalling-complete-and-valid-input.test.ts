@@ -1,8 +1,9 @@
 import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/session-results/marshalling/unmarshalInputData"
+import type {CreateSessionResultRawInput} from "../../../../../../../src/controllers/node-types/session-results/types/CreateSessionResultRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
-    const data: any = {
+    const data: CreateSessionResultRawInput = {
         position: 1,
         race_number: "44",
         driver_name: "Lewis Hamilton",

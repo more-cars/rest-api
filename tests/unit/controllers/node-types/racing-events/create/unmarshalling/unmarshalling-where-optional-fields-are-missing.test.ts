@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/racing-events/marshalling/unmarshalInputData"
 
 test('unmarshalling a valid request where optional fields are missing', async () => {
-    const data: any = {
+    const data: unknown = {
         name: "GP Monaco 2025"
     }
 

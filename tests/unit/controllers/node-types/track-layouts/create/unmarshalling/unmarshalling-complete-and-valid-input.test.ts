@@ -1,8 +1,9 @@
 import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/track-layouts/marshalling/unmarshalInputData"
+import type {CreateTrackLayoutRawInput} from "../../../../../../../src/controllers/node-types/track-layouts/types/CreateTrackLayoutRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
-    const data: any = {
+    const data: CreateTrackLayoutRawInput = {
         name: "GP Circuit",
         year_from: 1967,
         year_to: 1999,
