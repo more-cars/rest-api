@@ -25,7 +25,7 @@ test('database query for creating a VIDEO node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:Video_" + appInstanceId + " {\n" +
+            "CREATE (node:Video_A_" + appInstanceId + " {\n" +
             "  video_provider: 'youtube',\n" +
             "  external_id: 'NqsBncRslsg',\n" +
             "  title: 'P1 vs F40',\n" +

@@ -6,7 +6,9 @@ import {getSpecificRelationshipQuery} from "../../../../../src/db/relationships/
 import {mapDbRelationshipTypeToNeo4jRelationshipType} from "../../../../../src/db/relationships/mapDbRelationshipTypeToNeo4jRelationshipType"
 
 describe('Assembling database query for fetching a specific relationship', () => {
-    test.each(getAllDbRelationshipTypes(RelationshipDirection.FORWARD))('forward $0 relationship', async (relationshipType: RelationshipType) => {
+    test.each(
+        getAllDbRelationshipTypes(RelationshipDirection.FORWARD)
+    )('forward $0 relationship', async (relationshipType: RelationshipType) => {
         const startNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
         const endNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
         const query = getSpecificRelationshipQuery(startNodeId, relationshipType, endNodeId)
@@ -18,7 +20,9 @@ describe('Assembling database query for fetching a specific relationship', () =>
                 "RETURN a, r, b")
     })
 
-    test.each(getAllDbRelationshipTypes(RelationshipDirection.REVERSE))('reverse $0 relationship', async (relationshipType: RelationshipType) => {
+    test.each(
+        getAllDbRelationshipTypes(RelationshipDirection.REVERSE)
+    )('reverse $0 relationship', async (relationshipType: RelationshipType) => {
         const startNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
         const endNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
         const query = getSpecificRelationshipQuery(startNodeId, relationshipType, endNodeId)

@@ -1,6 +1,8 @@
 export enum RelationshipTypeNeo4j {
     NodeHasImage = 'HAS_IMAGE',
     NodeHasPrimeImage = 'HAS_PRIME_IMAGE',
+    NodeHasVideo = 'HAS_VIDEO',
+    NodeHasMainVideo = 'HAS_MAIN_VIDEO',
     CompanyHasBrand = 'HAS_BRAND',
     CompanyHasImage = 'HAS_IMAGE',
     CompanyHasPrimeImage = 'HAS_PRIME_IMAGE',

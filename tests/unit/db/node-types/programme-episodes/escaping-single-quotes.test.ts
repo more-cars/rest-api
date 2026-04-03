@@ -17,7 +17,7 @@ test('single quotes are correctly escaped', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:ProgrammeEpisode_" + appInstanceId + " {\n" +
+            "CREATE (node:ProgrammeEpisode_A_" + appInstanceId + " {\n" +
             "  title: '\\'The Falls Guys',\n" +
             "  season_number: null,\n" +
             "  season_episode_number: null,\n" +

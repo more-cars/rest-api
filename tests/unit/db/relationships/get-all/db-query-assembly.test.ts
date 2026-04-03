@@ -6,7 +6,9 @@ import {getRelationshipCollectionQuery} from "../../../../../src/db/relationship
 import {mapDbRelationshipTypeToNeo4jRelationshipType} from "../../../../../src/db/relationships/mapDbRelationshipTypeToNeo4jRelationshipType"
 
 describe('Assembling database query for fetching all relationships', () => {
-    test.each(getAllDbRelationshipTypes(RelationshipDirection.FORWARD))('forward $0 relationship', async (relationshipType: RelationshipType) => {
+    test.each(
+        getAllDbRelationshipTypes(RelationshipDirection.FORWARD)
+    )('forward $0 relationship', async (relationshipType: RelationshipType) => {
         const startNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
         const query = getRelationshipCollectionQuery(startNodeId, relationshipType)
         const relationshipName = mapDbRelationshipTypeToNeo4jRelationshipType(relationshipType)
@@ -17,7 +19,9 @@ describe('Assembling database query for fetching all relationships', () => {
                 "RETURN a, r, b")
     })
 
-    test.each(getAllDbRelationshipTypes(RelationshipDirection.REVERSE))('reverse $0 relationship', async (relationshipType: RelationshipType) => {
+    test.each(
+        getAllDbRelationshipTypes(RelationshipDirection.REVERSE)
+    )('reverse $0 relationship', async (relationshipType: RelationshipType) => {
         const startNodeId = Math.floor((Math.random() * 1_000_000) + 12_000_000)
         const query = getRelationshipCollectionQuery(startNodeId, relationshipType)
         const relationshipName = mapDbRelationshipTypeToNeo4jRelationshipType(relationshipType)

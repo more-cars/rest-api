@@ -17,7 +17,7 @@ test('database query for creating a MODEL CAR node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:ModelCar_" + appInstanceId + " {\n" +
+            "CREATE (node:ModelCar_A_" + appInstanceId + " {\n" +
             "  name: 'BMW 2002',\n" +
             "  product_code: 'DHX60',\n" +
             "  release_year: 2016,\n" +

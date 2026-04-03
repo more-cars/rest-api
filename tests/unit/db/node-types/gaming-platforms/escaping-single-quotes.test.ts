@@ -15,7 +15,7 @@ test('single quotes are correctly escaped', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:GamingPlatform_" + appInstanceId + " {\n" +
+            "CREATE (node:GamingPlatform_A_" + appInstanceId + " {\n" +
             "  name: '\\'PlayStation 5',\n" +
             "  release_year: null,\n" +
             "  manufacturer: '\\'Sony'\n" +

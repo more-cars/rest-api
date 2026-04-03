@@ -1,6 +1,8 @@
 export enum RelationshipType {
     NodeHasImage = 'Node Has Image',
     NodeHasPrimeImage = 'Node Has Prime Image',
+    NodeHasVideo = 'Node Has Video',
+    NodeHasMainVideo = 'Node Has Main Video',
     CompanyHasBrand = 'Company Has Brand',
     CompanyHasImage = 'Company Has Image',
     CompanyHasPrimeImage = 'Company Has Prime Image',

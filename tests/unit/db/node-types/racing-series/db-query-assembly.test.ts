@@ -18,7 +18,7 @@ test('database query for creating a RACING SERIES node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:RacingSeries_" + appInstanceId + " {\n" +
+            "CREATE (node:RacingSeries_A_" + appInstanceId + " {\n" +
             "  name: 'Formula 1',\n" +
             "  short_name: 'F1',\n" +
             "  founded: 1950,\n" +

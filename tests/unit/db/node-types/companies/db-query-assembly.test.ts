@@ -17,7 +17,7 @@ test('database query for creating a COMPANY node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:Company_" + appInstanceId + " {\n" +
+            "CREATE (node:Company_A_" + appInstanceId + " {\n" +
             "  name: 'BMW AG',\n" +
             "  founded: 1916,\n" +
             "  defunct: null,\n" +

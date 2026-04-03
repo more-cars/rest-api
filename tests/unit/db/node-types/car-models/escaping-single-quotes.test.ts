@@ -17,7 +17,7 @@ test('single quotes are correctly escaped', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:CarModel_" + appInstanceId + " {\n" +
+            "CREATE (node:CarModel_A_" + appInstanceId + " {\n" +
             "  name: '360 \\'Modena',\n" +
             "  built_from: null,\n" +
             "  built_to: null,\n" +

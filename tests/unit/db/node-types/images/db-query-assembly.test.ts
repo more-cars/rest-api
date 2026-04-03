@@ -26,7 +26,7 @@ test('database query for creating an IMAGE node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:Image_" + appInstanceId + " {\n" +
+            "CREATE (node:Image_A_" + appInstanceId + " {\n" +
             "  image_provider: 'flickr',\n" +
             "  external_id: '54570839725',\n" +
             "  name: '1989 Porsche 911 Turbo',\n" +

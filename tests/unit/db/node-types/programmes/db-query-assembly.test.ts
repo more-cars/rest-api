@@ -19,7 +19,7 @@ test('database query for creating a PROGRAMME node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:Programme_" + appInstanceId + " {\n" +
+            "CREATE (node:Programme_A_" + appInstanceId + " {\n" +
             "  name: 'Top Gear',\n" +
             "  aired_from_year: 2002,\n" +
             "  aired_until_year: 2022,\n" +

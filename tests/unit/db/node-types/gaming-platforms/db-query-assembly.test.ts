@@ -15,7 +15,7 @@ test('database query for creating a GAMING PLATFORM node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:GamingPlatform_" + appInstanceId + " {\n" +
+            "CREATE (node:GamingPlatform_A_" + appInstanceId + " {\n" +
             "  name: 'PlayStation 5',\n" +
             "  release_year: 2020,\n" +
             "  manufacturer: 'Sony'\n" +

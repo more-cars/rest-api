@@ -16,7 +16,7 @@ test('database query for creating a PRICE node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:Price_" + appInstanceId + " {\n" +
+            "CREATE (node:Price_A_" + appInstanceId + " {\n" +
             "  price: 59990,\n" +
             "  price_year: 2020,\n" +
             "  currency_code: 'EUR',\n" +

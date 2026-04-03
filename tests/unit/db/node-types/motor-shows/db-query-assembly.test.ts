@@ -18,7 +18,7 @@ test('database query for creating a MOTOR SHOW node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:MotorShow_" + appInstanceId + " {\n" +
+            "CREATE (node:MotorShow_A_" + appInstanceId + " {\n" +
             "  name: '2017 IAA Frankfurt',\n" +
             "  date_from: '2017-09-14',\n" +
             "  date_until: '2017-09-24',\n" +

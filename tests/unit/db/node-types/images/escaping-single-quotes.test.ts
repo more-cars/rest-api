@@ -26,7 +26,7 @@ test('single quotes are correctly escaped', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:Image_" + appInstanceId + " {\n" +
+            "CREATE (node:Image_A_" + appInstanceId + " {\n" +
             "  image_provider: 'flic\\'kr',\n" +
             "  external_id: '\\'54570839725\\'',\n" +
             "  name: '1989 Po\\'rsche 911 Turbo',\n" +

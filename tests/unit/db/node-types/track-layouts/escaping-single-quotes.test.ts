@@ -21,7 +21,7 @@ test('single quotes are correctly escaped', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:TrackLayout_" + appInstanceId + " {\n" +
+            "CREATE (node:TrackLayout_A_" + appInstanceId + " {\n" +
             "  name: '\\'GP Circuit',\n" +
             "  year_from: null,\n" +
             "  year_to: null,\n" +

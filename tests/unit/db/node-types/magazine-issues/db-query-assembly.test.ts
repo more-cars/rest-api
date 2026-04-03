@@ -20,7 +20,7 @@ test('database query for creating a MAGAZINE ISSUE node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:MagazineIssue_" + appInstanceId + " {\n" +
+            "CREATE (node:MagazineIssue_A_" + appInstanceId + " {\n" +
             "  title: 'Performance Car of the Year',\n" +
             "  consecutive_number: 402,\n" +
             "  issue_number: 12,\n" +

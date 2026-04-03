@@ -15,7 +15,7 @@ test('database query for creating a LAP TIME node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:LapTime_" + appInstanceId + " {\n" +
+            "CREATE (node:LapTime_A_" + appInstanceId + " {\n" +
             "  time: 'PT1M33.294S',\n" +
             "  driver_name: 'Klaus Ludwig',\n" +
             "  date: '1996-08-03'\n" +

@@ -8,6 +8,8 @@ export function mapDbRelationshipTypeToNeo4jRelationshipType(
     const mapping = new Map<RelationshipType, RelationshipTypeNeo4j>([
         [RelationshipType.NodeHasImage, RelationshipTypeNeo4j.NodeHasImage],
         [RelationshipType.NodeHasPrimeImage, RelationshipTypeNeo4j.NodeHasPrimeImage],
+        [RelationshipType.NodeHasVideo, RelationshipTypeNeo4j.NodeHasVideo],
+        [RelationshipType.NodeHasMainVideo, RelationshipTypeNeo4j.NodeHasMainVideo],
         [RelationshipType.CompanyHasBrand, RelationshipTypeNeo4j.CompanyHasBrand],
         [RelationshipType.CompanyHasImage, RelationshipTypeNeo4j.CompanyHasImage],
         [RelationshipType.CompanyHasPrimeImage, RelationshipTypeNeo4j.CompanyHasPrimeImage],

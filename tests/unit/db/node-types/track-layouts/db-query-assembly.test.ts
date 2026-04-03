@@ -21,7 +21,7 @@ test('database query for creating a TRACK LAYOUT node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:TrackLayout_" + appInstanceId + " {\n" +
+            "CREATE (node:TrackLayout_A_" + appInstanceId + " {\n" +
             "  name: 'GP Circuit',\n" +
             "  year_from: 1967,\n" +
             "  year_to: 1999,\n" +

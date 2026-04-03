@@ -24,7 +24,7 @@ test('database query for creating a MAGAZINE node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:Magazine_" + appInstanceId + " {\n" +
+            "CREATE (node:Magazine_A_" + appInstanceId + " {\n" +
             "  name: 'Top Gear',\n" +
             "  founded: 1993,\n" +
             "  defunct: null,\n" +

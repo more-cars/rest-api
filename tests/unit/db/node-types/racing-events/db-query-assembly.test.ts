@@ -16,7 +16,7 @@ test('database query for creating a RACING EVENT node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:RacingEvent_" + appInstanceId + " {\n" +
+            "CREATE (node:RacingEvent_A_" + appInstanceId + " {\n" +
             "  name: 'GP Monaco 2025',\n" +
             "  round: 8,\n" +
             "  date_from: '2025-05-25',\n" +

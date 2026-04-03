@@ -19,7 +19,7 @@ test('single quotes are correctly escaped', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:Programme_" + appInstanceId + " {\n" +
+            "CREATE (node:Programme_A_" + appInstanceId + " {\n" +
             "  name: '\\'Top Gear',\n" +
             "  aired_from_year: null,\n" +
             "  aired_until_year: null,\n" +

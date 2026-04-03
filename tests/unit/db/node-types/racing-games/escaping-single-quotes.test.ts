@@ -16,7 +16,7 @@ test('single quotes are correctly escaped', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:RacingGame_" + appInstanceId + " {\n" +
+            "CREATE (node:RacingGame_A_" + appInstanceId + " {\n" +
             "  name: '\\'Forza Motorsport 7',\n" +
             "  release_year: null,\n" +
             "  developer: '\\'Turn 10 Studios',\n" +

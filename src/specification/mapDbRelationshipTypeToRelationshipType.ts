@@ -6,6 +6,8 @@ export function mapDbRelationshipTypeToRelationshipType(dbRelationshipType: DbRe
     const mapping = new Map<DbRelationshipType, RelationshipType>([
         [DbRelationshipType.NodeHasImage, RelationshipType.NodeHasImage],
         [DbRelationshipType.NodeHasPrimeImage, RelationshipType.NodeHasPrimeImage],
+        [DbRelationshipType.NodeHasVideo, RelationshipType.NodeHasVideo],
+        [DbRelationshipType.NodeHasMainVideo, RelationshipType.NodeHasMainVideo],
         [DbRelationshipType.CompanyHasBrand, RelationshipType.CompanyHasBrand],
         [DbRelationshipType.CompanyHasImage, RelationshipType.CompanyHasImage],
         [DbRelationshipType.CompanyHasPrimeImage, RelationshipType.CompanyHasPrimeImage],

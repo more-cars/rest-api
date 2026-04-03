@@ -20,7 +20,7 @@ test('database query for creating a SESSION RESULT node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:SessionResult_" + appInstanceId + " {\n" +
+            "CREATE (node:SessionResult_A_" + appInstanceId + " {\n" +
             "  position: 1,\n" +
             "  race_number: '44',\n" +
             "  driver_name: 'Lewis Hamilton',\n" +

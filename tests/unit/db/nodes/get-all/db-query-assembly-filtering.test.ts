@@ -24,7 +24,7 @@ describe('database query for fetching all nodes of a type - filtering', () => {
 
             expect(query)
                 .toEqual(
-                    "MATCH (node:" + nodeType + "_" + appInstanceId + ")\n" +
+                    "MATCH (node:" + nodeType + "_A_" + appInstanceId + ")\n" +
                     "WHERE node." + filterByProperty + " " + filterOperator + " '" + filterValue + "'\n" +
                     "RETURN node\n" +
                     "  ORDER BY toLower(toString(node.dummy)) dummy\n" +

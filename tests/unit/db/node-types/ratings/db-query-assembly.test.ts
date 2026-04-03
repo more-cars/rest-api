@@ -16,7 +16,7 @@ test('database query for creating a RATING node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:Rating_" + appInstanceId + " {\n" +
+            "CREATE (node:Rating_A_" + appInstanceId + " {\n" +
             "  rating_value: 93,\n" +
             "  scale_minimum: 0,\n" +
             "  scale_maximum: 100,\n" +

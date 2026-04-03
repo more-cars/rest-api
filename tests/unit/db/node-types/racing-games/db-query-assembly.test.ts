@@ -16,7 +16,7 @@ test('database query for creating a RACING GAME node', async () => {
 
     expect(query)
         .toEqual(
-            "CREATE (node:RacingGame_" + appInstanceId + " {\n" +
+            "CREATE (node:RacingGame_A_" + appInstanceId + " {\n" +
             "  name: 'Forza Motorsport 7',\n" +
             "  release_year: 2017,\n" +
             "  developer: 'Turn 10 Studios',\n" +
