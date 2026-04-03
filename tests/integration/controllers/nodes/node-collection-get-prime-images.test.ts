@@ -5,7 +5,7 @@ import {Node} from "../../../../src/models/Node"
 import {FakeImage} from "../../../_toolbox/fixtures/nodes/FakeImage"
 
 describe('Requesting the connected prime images', () => {
-    test('when the provided nodes do not have one', async (page) => {
+    test('when the provided nodes do not have one', async () => {
         Node.findPrimeImages = vi.fn().mockReturnValue([])
 
         const response = await request(app)
@@ -18,7 +18,7 @@ describe('Requesting the connected prime images', () => {
             .toHaveLength(0)
     })
 
-    test('when the provided nodes have one', async (page) => {
+    test('when the provided nodes have one', async () => {
         const primeImageA = FakeImage.modelOutput
         const primeImageB = FakeImage.modelOutput
         const primeImageC = FakeImage.modelOutput
@@ -45,7 +45,7 @@ describe('Requesting the connected prime images', () => {
             .toEqual(primeImageA.attributes.id)
     })
 
-    test('when not all nodes have one', async (page) => {
+    test('when not all nodes have one', async () => {
         const primeImageA = FakeImage.modelOutput
         const primeImageC = FakeImage.modelOutput
 

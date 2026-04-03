@@ -10,5 +10,5 @@ When('the user requests page {int} of the {string} collection as {string}',
         const path = `/${nodePath}?page=${page}`
 
         const response = await performApiRequest(path, 'GET')
-        NodeManager.cacheNodeCollection(response.body.data.map((node: any) => convertNodeResponseToNode(node)), collectionLabel)
+        NodeManager.cacheNodeCollection(response.body.data.map((node: unknown) => convertNodeResponseToNode(node)), collectionLabel)
     })

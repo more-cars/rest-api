@@ -3,6 +3,6 @@ import type {InputNodeTypeCreate} from "../../../../../src/db/types/InputNodeTyp
 
 export type FakeNode = {
     dbInput: InputNodeTypeCreate
-    dbInputMinimal: {}
+    dbInputMinimal: object
     modelOutput: ModelNodes
 }

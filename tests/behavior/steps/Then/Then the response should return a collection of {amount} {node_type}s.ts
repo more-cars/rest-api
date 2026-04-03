@@ -14,7 +14,7 @@ Then('the response should return a collection of {int} {string}s',
 
         assert.equal(data.length, amount)
 
-        data.forEach((item: any) => {
+        data.forEach((item: unknown) => {
             assert.ok(validateJson(item, schema))
         })
     })

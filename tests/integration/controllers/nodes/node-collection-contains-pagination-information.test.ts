@@ -7,7 +7,7 @@ import {Node} from "../../../../src/models/Node"
 
 describe('Expecting node collection response to contain pagination information', () => {
     describe('when the node collection is empty', () => {
-        test('and the user provided a pagination parameter', async (page) => {
+        test('and the user provided a pagination parameter', async () => {
             CarModel.findAll = vi.fn().mockReturnValue([])
 
             const response = await request(app)
@@ -17,7 +17,7 @@ describe('Expecting node collection response to contain pagination information',
                 .toEqual(0)
         })
 
-        test('and the user provided no pagination parameter', async (page) => {
+        test('and the user provided no pagination parameter', async () => {
             CarModel.findAll = vi.fn().mockReturnValue([])
 
             const response = await request(app)
@@ -29,7 +29,7 @@ describe('Expecting node collection response to contain pagination information',
     })
 
     describe('when the node collection is not empty', () => {
-        test('and the user provided a pagination parameter', async (page) => {
+        test('and the user provided a pagination parameter', async () => {
             CarModel.findAll = vi.fn().mockReturnValue([
                 FakeCarModel.modelOutput,
                 FakeCarModel.modelOutput,
@@ -44,7 +44,7 @@ describe('Expecting node collection response to contain pagination information',
                 .toEqual(3)
         })
 
-        test('and the user provided no pagination parameter', async (page) => {
+        test('and the user provided no pagination parameter', async () => {
             CarModel.findAll = vi.fn().mockReturnValue([
                 FakeCarModel.modelOutput,
                 FakeCarModel.modelOutput,
@@ -61,7 +61,7 @@ describe('Expecting node collection response to contain pagination information',
     })
 
     describe('when there are more results than fit on one page', () => {
-        test('and the user provided a pagination parameter', async (page) => {
+        test('and the user provided a pagination parameter', async () => {
             // faking a page size of 3
             CarModel.findAll = vi.fn().mockReturnValue([
                 FakeCarModel.modelOutput,
@@ -77,7 +77,7 @@ describe('Expecting node collection response to contain pagination information',
                 .toEqual(10)
         })
 
-        test('and the user provided no pagination parameter', async (page) => {
+        test('and the user provided no pagination parameter', async () => {
             // faking a page size of 3
             CarModel.findAll = vi.fn().mockReturnValue([
                 FakeCarModel.modelOutput,

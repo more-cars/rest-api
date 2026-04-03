@@ -8,7 +8,7 @@ axios.defaults.validateStatus = function (status) {
     return status < 500
 }
 
-export async function performApiRequest(path: string, method: 'POST' | 'GET' | 'DELETE' = 'GET', data?: any): Promise<ApiResponse> {
+export async function performApiRequest(path: string, method: 'POST' | 'GET' | 'DELETE' = 'GET', data?: unknown): Promise<ApiResponse> {
     const axiosConfig: AxiosRequestConfig = {
         baseURL: process.env.API_URL,
         url: path,

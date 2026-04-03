@@ -33,7 +33,6 @@ describe('Pagination "last" link is constructed correctly', () => {
     test.each(
         getAllExpectedNodeTypes()
     )('for $0 when there is constraint information', async (nodeType) => {
-        const pageNumber = Math.ceil(Math.random() * 50) + 2
         const constructedLink = buildPaginationLinkLast(convertStringToControllerNodeType(nodeType), {
             filterByProperty: 'name',
             filterValue: 'test',

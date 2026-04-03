@@ -1,6 +1,6 @@
 import Ajv from "ajv"
 
-export function validateJson(data: any, validationSchema: any): boolean {
+export function validateJson(data: unknown, validationSchema: any): boolean {
     const validate = new Ajv().compile(validationSchema)
     const valid = validate(data)
     if (!valid) {
