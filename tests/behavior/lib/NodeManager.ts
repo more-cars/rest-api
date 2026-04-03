@@ -9,6 +9,11 @@ const nodeCollectionCache = new Map<string, ControllerNode[]>()
 
 export const NodeManager = {
     async createNode(nodeType: string, label: string, data?: any) {
+        // the generic node type "NODE" is a special case and only works for fetch requests
+        if (nodeType.toLowerCase() === 'node') {
+            nodeType = 'BRAND'
+        }
+
         const inputData = data || getFakeNode(convertStringToExpectedNodeType(nodeType)).dbInput
         const nodeBasePath = getBasePathFragmentForNodeType(nodeType)
         const path = `/${nodeBasePath}`
