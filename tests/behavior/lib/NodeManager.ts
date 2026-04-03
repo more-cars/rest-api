@@ -1,3 +1,4 @@
+import {faker} from "@faker-js/faker"
 import type {ControllerNode} from "../../../src/controllers/types/ControllerNode"
 import {getFakeNode} from "../../_toolbox/fixtures/nodes/getFakeNode"
 import {getBasePathFragmentForNodeType} from "./getBasePathFragmentForNodeType"
@@ -15,6 +16,12 @@ export const NodeManager = {
         }
 
         const inputData = data || getFakeNode(convertStringToExpectedNodeType(nodeType)).dbInput
+
+        // TODO update FakeVideo to return a fresh set of data (instead of cached)
+        if (nodeType.toLowerCase() === 'video') {
+            inputData.external_id = faker.string.uuid()
+        }
+
         const nodeBasePath = getBasePathFragmentForNodeType(nodeType)
         const path = `/${nodeBasePath}`
 
