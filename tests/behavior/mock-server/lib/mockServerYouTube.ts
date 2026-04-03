@@ -4,9 +4,11 @@ import {OpenAPIBackend} from "openapi-backend"
 const api = new OpenAPIBackend({
     definition: __dirname + "/../api-specs/youtube.openapi.json",
     handlers: {
-        notImplemented: (context, req, res) => {
+        getVideo: (context, req, res) => {
+            const mock = context.api.mockResponseForOperation(context.operation.operationId as string, {code: 200}).mock
+
             res.status(200)
-                .json(context.api.mockResponseForOperation(context.operation.operationId as string, {code: 200}).mock)
+                .json(mock)
         },
     },
 })
