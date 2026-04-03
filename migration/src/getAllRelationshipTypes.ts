@@ -15,6 +15,12 @@ export function getAllRelationshipTypes() {
                         ],
                     ],
                     [
+                        DbNodeType.Video,
+                        [
+                            RelationshipType.NodeHasVideo,
+                        ],
+                    ],
+                    [
                         DbNodeType.Image,
                         [
                             RelationshipType.NodeHasImage,
@@ -30,6 +36,12 @@ export function getAllRelationshipTypes() {
                         DbNodeType.CarModel,
                         [
                             RelationshipType.BrandHasCarModel,
+                        ],
+                    ],
+                    [
+                        DbNodeType.Video,
+                        [
+                            RelationshipType.NodeHasVideo,
                         ],
                     ],
                     [
@@ -54,6 +66,12 @@ export function getAllRelationshipTypes() {
                         DbNodeType.CarModelVariant,
                         [
                             RelationshipType.CarModelHasVariant,
+                        ],
+                    ],
+                    [
+                        DbNodeType.Video,
+                        [
+                            RelationshipType.NodeHasVideo,
                         ],
                     ],
                     [
@@ -93,6 +111,12 @@ export function getAllRelationshipTypes() {
                         ],
                     ],
                     [
+                        DbNodeType.Video,
+                        [
+                            RelationshipType.NodeHasVideo,
+                        ],
+                    ],
+                    [
                         DbNodeType.Image,
                         [
                             RelationshipType.NodeHasImage,
@@ -123,6 +147,12 @@ export function getAllRelationshipTypes() {
                         ],
                     ],
                     [
+                        DbNodeType.Video,
+                        [
+                            RelationshipType.NodeHasVideo,
+                        ],
+                    ],
+                    [
                         DbNodeType.Image,
                         [
                             RelationshipType.NodeHasImage,
@@ -139,13 +169,20 @@ export function getAllRelationshipTypes() {
                         [
                             RelationshipType.TrackLayoutHasLapTime,
                         ],
-                    ], [
-                    DbNodeType.Image,
-                    [
-                        RelationshipType.NodeHasImage,
-                        RelationshipType.NodeHasPrimeImage,
                     ],
-                ],
+                    [
+                        DbNodeType.Video,
+                        [
+                            RelationshipType.NodeHasVideo,
+                        ],
+                    ],
+                    [
+                        DbNodeType.Image,
+                        [
+                            RelationshipType.NodeHasImage,
+                            RelationshipType.NodeHasPrimeImage,
+                        ],
+                    ],
                 ])
             ],
             [
@@ -155,6 +192,12 @@ export function getAllRelationshipTypes() {
                         DbNodeType.RacingEvent,
                         [
                             RelationshipType.RacingSeriesHasRacingEvent,
+                        ],
+                    ],
+                    [
+                        DbNodeType.Video,
+                        [
+                            RelationshipType.NodeHasVideo,
                         ],
                     ],
                     [
@@ -194,6 +237,12 @@ export function getAllRelationshipTypes() {
                         ],
                     ],
                     [
+                        DbNodeType.Video,
+                        [
+                            RelationshipType.NodeHasVideo,
+                        ],
+                    ],
+                    [
                         DbNodeType.Image,
                         [
                             RelationshipType.NodeHasImage,
@@ -209,6 +258,12 @@ export function getAllRelationshipTypes() {
                         DbNodeType.SessionResult,
                         [
                             RelationshipType.RacingSessionHasSessionResult,
+                        ],
+                    ],
+                    [
+                        DbNodeType.Video,
+                        [
+                            RelationshipType.NodeHasVideo,
                         ],
                     ],
                     [
@@ -242,6 +297,12 @@ export function getAllRelationshipTypes() {
                 DbNodeType.LapTime, new Map(
                 [
                     [
+                        DbNodeType.Video,
+                        [
+                            RelationshipType.NodeHasVideo,
+                        ],
+                    ],
+                    [
                         DbNodeType.Image,
                         [
                             RelationshipType.NodeHasImage,
@@ -266,6 +327,12 @@ export function getAllRelationshipTypes() {
                         ],
                     ],
                     [
+                        DbNodeType.Video,
+                        [
+                            RelationshipType.NodeHasVideo,
+                        ],
+                    ],
+                    [
                         DbNodeType.Image,
                         [
                             RelationshipType.NodeHasImage,
@@ -284,6 +351,12 @@ export function getAllRelationshipTypes() {
                         ],
                     ],
                     [
+                        DbNodeType.Video,
+                        [
+                            RelationshipType.NodeHasVideo,
+                        ],
+                    ],
+                    [
                         DbNodeType.Image,
                         [
                             RelationshipType.NodeHasImage,
@@ -295,6 +368,12 @@ export function getAllRelationshipTypes() {
             [
                 DbNodeType.ModelCar, new Map(
                 [
+                    [
+                        DbNodeType.Video,
+                        [
+                            RelationshipType.NodeHasVideo,
+                        ],
+                    ],
                     [
                         DbNodeType.Image,
                         [
@@ -314,6 +393,12 @@ export function getAllRelationshipTypes() {
                         ],
                     ],
                     [
+                        DbNodeType.Video,
+                        [
+                            RelationshipType.NodeHasVideo,
+                        ],
+                    ],
+                    [
                         DbNodeType.Image,
                         [
                             RelationshipType.NodeHasImage,
@@ -329,6 +414,12 @@ export function getAllRelationshipTypes() {
                         DbNodeType.MagazineIssue,
                         [
                             RelationshipType.MagazineHasIssue,
+                        ],
+                    ],
+                    [
+                        DbNodeType.Video,
+                        [
+                            RelationshipType.NodeHasVideo,
                         ],
                     ],
                     [
@@ -365,6 +456,12 @@ export function getAllRelationshipTypes() {
                         DbNodeType.RacingEvent,
                         [
                             RelationshipType.MagazineIssueCoversRacingEvent,
+                        ],
+                    ],
+                    [
+                        DbNodeType.Video,
+                        [
+                            RelationshipType.NodeHasVideo,
                         ],
                     ],
                     [
@@ -410,6 +507,12 @@ export function getAllRelationshipTypes() {
                         ],
                     ],
                     [
+                        DbNodeType.Video,
+                        [
+                            RelationshipType.NodeHasVideo,
+                        ],
+                    ],
+                    [
                         DbNodeType.Image,
                         [
                             RelationshipType.NodeHasImage,
@@ -440,6 +543,12 @@ export function getAllRelationshipTypes() {
                         ],
                     ],
                     [
+                        DbNodeType.Video,
+                        [
+                            RelationshipType.NodeHasVideo,
+                        ],
+                    ],
+                    [
                         DbNodeType.Image,
                         [
                             RelationshipType.NodeHasImage,
@@ -458,6 +567,12 @@ export function getAllRelationshipTypes() {
                         ],
                     ],
                     [
+                        DbNodeType.Video,
+                        [
+                            RelationshipType.NodeHasVideo,
+                        ],
+                    ],
+                    [
                         DbNodeType.Image,
                         [
                             RelationshipType.NodeHasImage,
@@ -465,6 +580,9 @@ export function getAllRelationshipTypes() {
                         ],
                     ],
                 ])
+            ],
+            [
+                DbNodeType.Video, new Map([])
             ],
             [
                 DbNodeType.Image, new Map([])

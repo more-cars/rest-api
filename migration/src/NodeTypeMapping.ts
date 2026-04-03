@@ -24,5 +24,6 @@ export const NodeTypeMapping = new Map<DbNodeType, NodeTypeLabelOld>([
     [DbNodeType.Programme, NodeTypeLabelOld.Programme],
     [DbNodeType.ProgrammeEpisode, NodeTypeLabelOld.ProgrammeEpisode],
     [DbNodeType.MotorShow, NodeTypeLabelOld.MotorShow],
+    [DbNodeType.Video, NodeTypeLabelOld.Video],
     [DbNodeType.Image, NodeTypeLabelOld.Image],
 ])

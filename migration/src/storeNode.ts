@@ -25,6 +25,7 @@ import type {InputRatingCreate} from "../../src/db/node-types/ratings/types/Inpu
 import type {InputProgrammeCreate} from "../../src/db/node-types/programmes/types/InputProgrammeCreate"
 import type {InputProgrammeEpisodeCreate} from "../../src/db/node-types/programme-episodes/types/InputProgrammeEpisodeCreate"
 import type {InputMotorShowCreate} from "../../src/db/node-types/motor-shows/types/InputMotorShowCreate"
+import type {InputVideoCreate} from "../../src/db/node-types/videos/types/InputVideoCreate"
 import type {InputImageCreate} from "../../src/db/node-types/images/types/InputImageCreate"
 
 type InputTypes =
@@ -50,6 +51,7 @@ type InputTypes =
     InputProgrammeCreate |
     InputProgrammeEpisodeCreate |
     InputMotorShowCreate |
+    InputVideoCreate |
     InputImageCreate
 
 

@@ -21,5 +21,6 @@ export enum NodeTypeLabelOld {
     Programme = "carshow",
     ProgrammeEpisode = "carshowepisode",
     MotorShow = "motorshow",
+    Video = "video",
     Image = "image",
 }
