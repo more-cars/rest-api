@@ -1,4 +1,4 @@
-MATCH (a)-[:HAS_PRIME_IMAGE]->(b)
+MATCH (a)-[r:HAS_PRIME_IMAGE]->(b)
   WHERE a.mc_id IN [$nodeIds]
-RETURN b
+RETURN a, r, b
   LIMIT 100

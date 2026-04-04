@@ -1,11 +1,11 @@
 import {describe, expect, test} from 'vitest'
-import {FakeImage} from "../../../../_toolbox/fixtures/nodes/FakeImage"
-import {FakeBrand} from "../../../../_toolbox/fixtures/nodes/FakeBrand"
-import {FakeCompany} from "../../../../_toolbox/fixtures/nodes/FakeCompany"
-import {Image} from "../../../../../src/models/node-types/images/Image"
 import {Brand} from "../../../../../src/models/node-types/brands/Brand"
 import {Company} from "../../../../../src/models/node-types/companies/Company"
+import {Image} from "../../../../../src/models/node-types/images/Image"
 import {Node} from "../../../../../src/models/Node"
+import {FakeBrand} from "../../../../_toolbox/fixtures/nodes/FakeBrand"
+import {FakeCompany} from "../../../../_toolbox/fixtures/nodes/FakeCompany"
+import {FakeImage} from "../../../../_toolbox/fixtures/nodes/FakeImage"
 
 describe('Fetching the prime images of a node collection', () => {
     test('when the nodes actually have a prime image connected', async () => {
@@ -19,16 +19,16 @@ describe('Fetching the prime images of a node collection', () => {
 
         const result = await Node.findPrimeImages([brand.attributes.id, company.attributes.id])
 
-        expect(result[0].node_type)
+        expect(result[0].destination.node_type)
             .toEqual('image')
 
-        expect(result[0].attributes.id)
+        expect(result[0].destination.attributes.id)
             .toEqual(brandImage.attributes.id)
 
-        expect(result[1].node_type)
+        expect(result[1].destination.node_type)
             .toEqual('image')
 
-        expect(result[1].attributes.id)
+        expect(result[1].destination.attributes.id)
             .toEqual(companyImage.attributes.id)
     })
 })

@@ -1,4 +1,6 @@
 export enum RelType {
+    NodeHasImage = 'node_has_image',
+    NodeHasPrimeImage = 'node_has_prime_image',
     CompanyHasBrand = 'company_has_brand',
     CompanyHasImage = 'company_has_image',
     CompanyHasPrimeImage = 'company_has_prime_image',

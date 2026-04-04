@@ -9,9 +9,9 @@ describe('assembling the database query for fetching the prime images', () => {
 
             expect(query)
                 .toEqual(
-                    "MATCH (a)-[:HAS_PRIME_IMAGE]->(b)\n" +
+                    "MATCH (a)-[r:HAS_PRIME_IMAGE]->(b)\n" +
                     "  WHERE a.mc_id IN []\n" +
-                    "RETURN b\n" +
+                    "RETURN a, r, b\n" +
                     "  LIMIT 100")
         })
     })
@@ -22,9 +22,9 @@ describe('assembling the database query for fetching the prime images', () => {
 
             expect(query)
                 .toEqual(
-                    "MATCH (a)-[:HAS_PRIME_IMAGE]->(b)\n" +
+                    "MATCH (a)-[r:HAS_PRIME_IMAGE]->(b)\n" +
                     "  WHERE a.mc_id IN [10,20,30,99]\n" +
-                    "RETURN b\n" +
+                    "RETURN a, r, b\n" +
                     "  LIMIT 100")
         })
     })

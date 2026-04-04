@@ -1,4 +1,6 @@
 export enum RelationType {
+    NodeHasImage = 'has-image',
+    NodeHasPrimeImage = 'has-prime-image',
     CompanyHasBrand = 'has-brand',
     CompanyHasImage = 'has-image',
     CompanyHasPrimeImage = 'has-prime-image',
