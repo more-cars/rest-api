@@ -7,7 +7,6 @@ import {getNodeById} from "../../../db/node-types/images/getNodeById"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {getAllNodesOfType} from "../../../db/node-types/images/getAllNodesOfType"
 import {deleteNode} from "../../../db/nodes/deleteNode"
-import type {ImageBelongsToNodeTypeRelationships} from "./types/ImageBelongsToNodeTypeRelationships"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 import {SemanticError} from "../../types/SemanticError"
 import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
@@ -18,11 +17,7 @@ import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {RelType} from "../../relationships/types/RelType"
 import {createRel} from "../../relationships/createRel"
 import {getAllRels} from "../../relationships/getAllRels"
-import {DbNodeType} from "../../../db/types/DbNodeType"
 import {ModelNodeType} from "../../types/ModelNodeType"
-import {convertDbRelToModelRel} from "../../relationships/convertDbRelToModelRel"
-import {getRelationshipCollection} from "../../../db/relationships/getRelationshipCollection"
-import {RelationshipType} from "../../../db/types/RelationshipType"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import type {ModelNode} from "../../types/ModelNode"
 import {imageAlreadyExists} from "./create/imageAlreadyExists"
@@ -125,42 +120,6 @@ export const Image = {
         }
 
         await deleteSpecificRel(imageId, partnerNodeId, RelType.ImageBelongsToNode)
-    },
-
-    async getBelongsToNodeTypeRelationships(imageId: number) {
-        if (!await getNodeById(imageId)) {
-            return false
-        }
-
-        const companyRelationships = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, DbNodeType.Company)
-        const brandRelationships = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, DbNodeType.Brand)
-        const carModelRelationships = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, DbNodeType.CarModel)
-        const carModelVariantRelationships = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, DbNodeType.CarModelVariant)
-        const raceTrackRelationships = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, DbNodeType.RaceTrack)
-        const trackLayoutRelationships = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, DbNodeType.TrackLayout)
-        const racingSeriesRelationships = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, DbNodeType.RacingSeries)
-        const racingEventRelationships = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, DbNodeType.RacingEvent)
-        const racingSessionRelationships = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, DbNodeType.RacingSession)
-        const sessionResultRelationships = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, DbNodeType.SessionResult)
-        const lapTimeRelationships = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, DbNodeType.LapTime)
-        const racingGameRelationships = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, DbNodeType.RacingGame)
-        const gamingPlatformRelationships = await getRelationshipCollection(imageId, RelationshipType.ImageBelongsToNode, DbNodeType.GamingPlatform)
-
-        return {
-            companies: companyRelationships.map(relationship => convertDbRelToModelRel(relationship)),
-            brands: brandRelationships.map(relationship => convertDbRelToModelRel(relationship)),
-            car_models: carModelRelationships.map(relationship => convertDbRelToModelRel(relationship)),
-            car_model_variants: carModelVariantRelationships.map(relationship => convertDbRelToModelRel(relationship)),
-            race_tracks: raceTrackRelationships.map(relationship => convertDbRelToModelRel(relationship)),
-            track_layouts: trackLayoutRelationships.map(relationship => convertDbRelToModelRel(relationship)),
-            racing_series: racingSeriesRelationships.map(relationship => convertDbRelToModelRel(relationship)),
-            racing_events: racingEventRelationships.map(relationship => convertDbRelToModelRel(relationship)),
-            racing_sessions: racingSessionRelationships.map(relationship => convertDbRelToModelRel(relationship)),
-            session_results: sessionResultRelationships.map(relationship => convertDbRelToModelRel(relationship)),
-            lap_times: lapTimeRelationships.map(relationship => convertDbRelToModelRel(relationship)),
-            racing_games: racingGameRelationships.map(relationship => convertDbRelToModelRel(relationship)),
-            gaming_platforms: gamingPlatformRelationships.map(relationship => convertDbRelToModelRel(relationship)),
-        } satisfies ImageBelongsToNodeTypeRelationships
     },
 
     async createIsPrimeImageOfNodeRelationship(imageId: number, nodeId: number) {

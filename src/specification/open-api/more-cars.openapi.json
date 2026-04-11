@@ -6390,58 +6390,6 @@
         }
       }
     },
-    "/images/{image-id}/belongs-to-node-type": {
-      "get": {
-        "operationId": "getImageBelongsToNodeTypeRel",
-        "tags": [
-          "Images"
-        ],
-        "summary": "Get all ›belongs-to-node-type‹ relationships for the `Image`",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "image-id",
-            "description": "ID of the `Image`",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The collection of ›belongs-to-node-type‹ relationships was successfully loaded.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ImageBelongsToNodeTypeResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Request failed. The `Image` could not be found in the database.",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Request could not be processed.",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/images/{image-id}/is-prime-image-of-node": {
       "get": {
         "operationId": "getImageIsPrimeImageOfNodeRel",
@@ -36052,38 +36000,6 @@
             "items": {
               "$ref": "#/components/schemas/ImageBelongsToNodeResponse"
             }
-          }
-        }
-      },
-      "ImageBelongsToNodeType": {
-        "type": "object",
-        "required": [],
-        "properties": {
-          "companies": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ImageBelongsToNode"
-            }
-          },
-          "brands": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ImageBelongsToNode"
-            }
-          },
-          "car_models": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ImageBelongsToNode"
-            }
-          }
-        }
-      },
-      "ImageBelongsToNodeTypeResponse": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/ImageBelongsToNodeType"
           }
         }
       },
