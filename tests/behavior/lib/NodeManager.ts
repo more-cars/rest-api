@@ -22,6 +22,11 @@ export const NodeManager = {
             inputData.external_id = faker.string.uuid()
         }
 
+        // TODO update FakeImage to return a fresh set of data (instead of cached)
+        if (nodeType.toLowerCase() === 'image') {
+            inputData.external_id = faker.string.uuid()
+        }
+
         const nodeBasePath = getBasePathFragmentForNodeType(nodeType)
         const path = `/${nodeBasePath}`
 
