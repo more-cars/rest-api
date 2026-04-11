@@ -1,0 +1,247 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Flickr API - API Specification",
+    "description": "OpenAPI specification for the Flickr API. Includes only the parts that are relevant for More Cars.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3006",
+      "description": "Local"
+    }
+  ],
+  "paths": {
+    "/services/rest": {
+      "get": {
+        "operationId": "getImage",
+        "summary": "Get image",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "api_key",
+            "description": "api_key",
+            "schema": {
+              "type": "string",
+              "example": "123"
+            }
+          },
+          {
+            "in": "query",
+            "name": "format",
+            "description": "format",
+            "schema": {
+              "type": "string",
+              "example": "json"
+            }
+          },
+          {
+            "in": "query",
+            "name": "nojsoncallback",
+            "description": "nojsoncallback",
+            "schema": {
+              "type": "string",
+              "example": "1"
+            }
+          },
+          {
+            "in": "query",
+            "name": "method",
+            "description": "method",
+            "schema": {
+              "type": "string",
+              "example": "flickr.photos.getInfo"
+            }
+          },
+          {
+            "in": "query",
+            "name": "photo_id",
+            "description": "photo_id",
+            "schema": {
+              "type": "string",
+              "example": "52121228041"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image successfully loaded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageResponse"
+                }
+              }
+            }
+          },
+          "222": {
+            "description": "Thumbnails successfully loaded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThumbnailsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Image": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "52121228041"
+          },
+          "license": {
+            "type": "string",
+            "example": "4"
+          },
+          "owner": {
+            "type": "object",
+            "properties": {
+              "username": {
+                "type": "string",
+                "example": "More Cars"
+              },
+              "realname": {
+                "type": "string",
+                "example": ""
+              }
+            }
+          },
+          "title": {
+            "type": "object",
+            "properties": {
+              "_content": {
+                "type": "string",
+                "example": "#14 Alfa Romeo 155 V6 TI (ITC, Stefan Rupp)"
+              }
+            }
+          },
+          "description": {
+            "type": "object",
+            "properties": {
+              "_content": {
+                "type": "string",
+                "example": "Engine: 2.5L V6\nPower: 360 kW\nWeight: 1060 kg\nTop Speed: 300 km/h\n\n→ <a href=\"https://more-cars.net/alfa-romeo-155-v6-ti__511115\" rel=\"noreferrer nofollow\">more-cars.net/alfa-romeo-155-v6-ti__511115</a>"
+              }
+            }
+          },
+          "visibility": {
+            "type": "object",
+            "properties": {
+              "ispublic": {
+                "type": "integer",
+                "example": 1
+              }
+            }
+          },
+          "tags": {
+            "type": "object",
+            "properties": {
+              "tag": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "raw": {
+                      "type": "string",
+                      "example": "Alfa Romeo"
+                    },
+                    "_content": {
+                      "type": "string",
+                      "example": "alfaromeo"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "urls": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "photopage"
+                    },
+                    "_content": {
+                      "type": "string",
+                      "example": "https://www.flickr.com/photos/more-cars/52121228041/"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "media": {
+            "type": "string",
+            "example": "photo"
+          }
+        }
+      },
+      "ImageResponse": {
+        "type": "object",
+        "properties": {
+          "photo": {
+            "$ref": "#/components/schemas/Image"
+          }
+        }
+      },
+      "Thumbnail": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "example": "Medium"
+          },
+          "width": {
+            "type": "number",
+            "example": 500
+          },
+          "height": {
+            "type": "number",
+            "example": 375
+          },
+          "source": {
+            "type": "string",
+            "example": "https://live.staticflickr.com/65535/52121228041_1000a31a7d.jpg"
+          },
+          "url": {
+            "type": "string",
+            "example": "https://www.flickr.com/photos/more-cars/52121228041/sizes/m/"
+          },
+          "media": {
+            "type": "string",
+            "example": "photo"
+          }
+        }
+      },
+      "ThumbnailsResponse": {
+        "type": "object",
+        "properties": {
+          "sizes": {
+            "type": "object",
+            "properties": {
+              "size": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Thumbnail"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

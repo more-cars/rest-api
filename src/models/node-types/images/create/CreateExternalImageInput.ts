@@ -1,4 +1,4 @@
-export type CreateWikimediaImageInput = {
+export type CreateExternalImageInput = {
     name: string,
     description: string | null,
     creator: string,

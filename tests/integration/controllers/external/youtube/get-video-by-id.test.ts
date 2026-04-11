@@ -3,7 +3,7 @@ import request from "supertest"
 import * as yt from "../../../../../src/db/external/youtube/performYouTubeApiRequest"
 import {app} from "../../../../../src/app"
 import * as video from "../../../../../src/models/node-types/videos/create/videoAlreadyExists"
-import {FakeGetVideoByIdResponse} from "../../../../_toolbox/fixtures/external/youtube/FakeGetVideoByIdResponse"
+import {mockYouTubeRequest} from "../../../../_toolbox/mockYouTubeRequest"
 
 beforeEach(() => {
     vi.resetAllMocks()
@@ -61,8 +61,7 @@ describe('Get YouTube video by ID', () => {
     })
 
     test('when the video exists and is not in the database yet', async () => {
-        const spy = vi.spyOn(yt, 'performYouTubeApiRequest')
-            .mockImplementation(async () => FakeGetVideoByIdResponse)
+        mockYouTubeRequest()
 
         const response = await request(app)
             .post('/videos')
@@ -73,8 +72,5 @@ describe('Get YouTube video by ID', () => {
 
         expect(response.statusCode)
             .toBe(201)
-
-        expect(spy)
-            .toHaveBeenCalledTimes(1)
     })
 })

@@ -6,6 +6,7 @@ import {convertVideoModelNodeToControllerNode} from "./convertVideoModelNodeToCo
 import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import type {CreateVideoRawInput} from "./types/CreateVideoRawInput"
 import {isMandatoryString} from "../../validators/isMandatoryString"
+import {isValidVideoPlatform} from "../../validators/isValidVideoPlatform"
 import {YouTubeVideoNotFoundError} from "../../../models/types/YouTubeVideoNotFoundError"
 import {YouTubeVideoAlreadyExistsError} from "../../../models/types/YouTubeVideoAlreadyExistsError"
 import {sendResponse201} from "../../responses/sendResponse201"
@@ -47,7 +48,7 @@ export function validate(data: CreateVideoRawInput): boolean {
         return false
     }
 
-    if (data.video_provider !== 'youtube') {
+    if (!isValidVideoPlatform(data.video_provider)) {
         return false
     }
 

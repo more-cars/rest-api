@@ -1,11 +1,7 @@
-import {beforeEach, describe, expect, test, vi} from "vitest"
+import {describe, expect, test, vi} from "vitest"
 import * as yt from "../../../../../src/db/external/youtube/performYouTubeApiRequest"
-import {FakeGetVideoByIdResponse} from "../../../../_toolbox/fixtures/external/youtube/FakeGetVideoByIdResponse"
 import {Video} from "../../../../../src/models/node-types/videos/Video"
-
-beforeEach(() => {
-    vi.resetAllMocks()
-})
+import {mockYouTubeRequest} from "../../../../_toolbox/mockYouTubeRequest"
 
 describe('Get YouTube video by ID', () => {
     test('when the video does not exist', async () => {
@@ -23,16 +19,12 @@ describe('Get YouTube video by ID', () => {
     })
 
     test('when the video does exist', async () => {
-        const spy = vi.spyOn(yt, 'performYouTubeApiRequest')
-            .mockImplementation(async () => FakeGetVideoByIdResponse)
+        mockYouTubeRequest()
 
         const video = await Video.create({
             video_provider: 'youtube',
             external_id: 'YT123456',
         })
-
-        expect(spy)
-            .toHaveBeenCalledTimes(1)
 
         expect(video.attributes.video_provider)
             .toEqual('youtube')

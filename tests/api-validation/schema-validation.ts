@@ -1,31 +1,21 @@
 import {Validator} from "@seriousme/openapi-schema-validator"
 
 (async () => {
-    await validateMoreCarsSchema()
-    await validateYouTubeSchema()
+    await validateSchema('more-cars')
+    await validateSchema('flickr')
+    await validateSchema('wikimedia')
+    await validateSchema('youtube')
 })()
 
-async function validateMoreCarsSchema() {
+async function validateSchema(target: 'more-cars' | 'flickr' | 'wikimedia' | 'youtube') {
     const validator = new Validator()
-    const res = await validator.validate(__dirname + '/../../src/specification/open-api/more-cars.openapi.json')
+    const schemaLocation = target === 'more-cars' ? `${__dirname}/../../src/specification/open-api/${target}.openapi.json` : `${__dirname}/../behavior/mock-server/api-specs/${target}.openapi.json`
+    const res = await validator.validate(schemaLocation)
 
     if (res.valid) {
-        console.log(`✓ The provided schema conforms to OpenAPI version ${validator.version}.`)
+        console.log(`✅ The "${target}" schema conforms to OpenAPI version ${validator.version}.`)
     } else {
-        console.log(`⨯ Error: The provided schema does not conform to OpenAPI.`)
-        console.log(res.errors)
-        process.exitCode = 1
-    }
-}
-
-async function validateYouTubeSchema() {
-    const validator = new Validator()
-    const res = await validator.validate(__dirname + '/../behavior/mock-server/api-specs/youtube.openapi.json')
-
-    if (res.valid) {
-        console.log(`✓ The provided schema conforms to OpenAPI version ${validator.version}.`)
-    } else {
-        console.log(`⨯ Error: The provided schema does not conform to OpenAPI.`)
+        console.log(`❌ Error: The ${target}" schema does not conform to OpenAPI.`)
         console.log(res.errors)
         process.exitCode = 1
     }

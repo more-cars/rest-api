@@ -22,20 +22,32 @@ import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import type {ModelNode} from "../../types/ModelNode"
 import {imageAlreadyExists} from "./create/imageAlreadyExists"
 import {WikimediaImageAlreadyExistsError} from "../../types/WikimediaImageAlreadyExistsError"
+import {FlickrImageAlreadyExistsError} from "../../types/FlickrImageAlreadyExistsError"
 import {WikimediaFacade} from "../../../db/external/WikimediaFacade"
 import {WikimediaImageNotFoundError} from "../../types/WikimediaImageNotFoundError"
+import {FlickrFacade} from "../../../db/external/FlickrFacade"
 
 export const Image = {
     async create(data: CreateImageInput): Promise<ImageNode> {
         const id = data.external_id
 
         if (await imageAlreadyExists(id)) {
-            throw new WikimediaImageAlreadyExistsError(id)
+            if (data.image_provider === 'flickr') {
+                throw new FlickrImageAlreadyExistsError(id)
+            } else if (data.image_provider === 'wikimedia') {
+                throw new WikimediaImageAlreadyExistsError(id)
+            }
         }
 
         try {
-            const wikimediaImage = await WikimediaFacade.getImageById(id)
-            const input = convertInputData(Object.assign({}, data, wikimediaImage))
+            let image
+            if (data.image_provider === 'flickr') {
+                image = await FlickrFacade.getImageById(id)
+            } else if (data.image_provider === 'wikimedia') {
+                image = await WikimediaFacade.getImageById(id)
+            }
+
+            const input = convertInputData(Object.assign({}, data, image))
             const result = await createNode(input)
 
             return convertDbNodeToModelNode(result) as ImageNode

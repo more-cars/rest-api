@@ -1,26 +1,26 @@
 import {beforeEach, describe, expect, test, vi} from "vitest"
 import request from "supertest"
-import * as wm from "../../../../../src/db/external/wikimedia/performWikimediaApiRequest"
+import * as fl from "../../../../../src/db/external/flickr/performFlickrApiRequest"
 import {app} from "../../../../../src/app"
 import * as image from "../../../../../src/models/node-types/images/create/imageAlreadyExists"
-import {mockWikimediaRequest} from "../../../../_toolbox/mockWikimediaRequest"
+import {mockFlickrRequest} from "../../../../_toolbox/mockFlickrRequest"
 
 beforeEach(() => {
     vi.resetAllMocks()
 })
 
-describe('Get Wikimedia image by ID', () => {
+describe('Get Flickr image by ID', () => {
     test('when the image does not exist', async () => {
-        const spy = vi.spyOn(wm, 'performWikimediaApiRequest')
+        const spy = vi.spyOn(fl, 'performFlickrApiRequest')
             .mockImplementation(async () => {
-                throw new Error('Wikimedia request failed')
+                throw new Error('Flickr request failed')
             })
 
         const response = await request(app)
             .post('/images')
             .send({
-                image_provider: 'wikimedia',
-                external_id: 'WM123456',
+                image_provider: 'flickr',
+                external_id: 'FL123456',
             })
 
         expect(response.statusCode)
@@ -37,8 +37,8 @@ describe('Get Wikimedia image by ID', () => {
         const response = await request(app)
             .post('/images')
             .send({
-                image_provider: 'wikimedia',
-                external_id: 'WM123456',
+                image_provider: 'flickr',
+                external_id: 'FL123456',
             })
 
         expect(response.statusCode)
@@ -49,13 +49,13 @@ describe('Get Wikimedia image by ID', () => {
     })
 
     test('when the image exists and is not in the database yet', async () => {
-        mockWikimediaRequest()
+        mockFlickrRequest()
 
         const response = await request(app)
             .post('/images')
             .send({
-                image_provider: 'wikimedia',
-                external_id: 'WM123456',
+                image_provider: 'flickr',
+                external_id: 'FL123456',
             })
 
         expect(response.statusCode)

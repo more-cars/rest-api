@@ -1,8 +1,8 @@
 import {CreateImageInput} from "../types/CreateImageInput"
 import {InputImageCreate} from "../../../../db/node-types/images/types/InputImageCreate"
-import type {CreateWikimediaImageInput} from "./CreateWikimediaImageInput"
+import type {CreateExternalImageInput} from "./CreateExternalImageInput"
 
-export function convertInputData(data: CreateImageInput & CreateWikimediaImageInput): InputImageCreate {
+export function convertInputData(data: CreateImageInput & CreateExternalImageInput): InputImageCreate {
     return {
         image_provider: data.image_provider,
         external_id: data.external_id,

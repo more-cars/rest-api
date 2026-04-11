@@ -5,9 +5,12 @@ import {Image} from "../../../models/node-types/images/Image"
 import {convertImageModelNodeToControllerNode} from "./convertImageModelNodeToControllerNode"
 import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import type {CreateImageRawInput} from "./types/CreateImageRawInput"
-import {WikimediaImageNotFoundError} from "../../../models/types/WikimediaImageNotFoundError"
-import {WikimediaImageAlreadyExistsError} from "../../../models/types/WikimediaImageAlreadyExistsError"
 import {isMandatoryString} from "../../validators/isMandatoryString"
+import {isValidImagePlatform} from "../../validators/isValidImagePlatform"
+import {FlickrImageAlreadyExistsError} from "../../../models/types/FlickrImageAlreadyExistsError"
+import {WikimediaImageAlreadyExistsError} from "../../../models/types/WikimediaImageAlreadyExistsError"
+import {FlickrImageNotFoundError} from "../../../models/types/FlickrImageNotFoundError"
+import {WikimediaImageNotFoundError} from "../../../models/types/WikimediaImageNotFoundError"
 import {sendResponse201} from "../../responses/sendResponse201"
 import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse409} from "../../responses/sendResponse409"
@@ -30,9 +33,9 @@ export async function create(req: express.Request, res: express.Response) {
 
         return sendResponse201(marshalledData, res)
     } catch (e) {
-        if (e instanceof WikimediaImageNotFoundError) {
+        if (e instanceof WikimediaImageNotFoundError || e instanceof FlickrImageNotFoundError) {
             return sendResponse422(res)
-        } else if (e instanceof WikimediaImageAlreadyExistsError) {
+        } else if (e instanceof WikimediaImageAlreadyExistsError || e instanceof FlickrImageAlreadyExistsError) {
             return sendResponse409(res)
         } else {
             console.error(e)
@@ -42,15 +45,15 @@ export async function create(req: express.Request, res: express.Response) {
 }
 
 export function validate(data: CreateImageRawInput): boolean {
-    if (!isMandatoryString(data.external_id)) {
-        return false
-    }
-
-    if (data.image_provider !== 'wikimedia') {
+    if (!isValidImagePlatform(data.image_provider)) {
         return false
     }
 
     if (!isMandatoryString(data.image_provider)) {
+        return false
+    }
+
+    if (!isMandatoryString(data.external_id)) {
         return false
     }
 
