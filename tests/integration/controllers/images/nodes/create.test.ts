@@ -10,8 +10,8 @@ test('Input data is valid', async () => {
     const response = await request(app)
         .post('/images')
         .send({
-            image_provider: 'flickr',
-            external_id: '1234',
+            image_provider: "wikimedia",
+            external_id: "2011-03-04 Autosalon Genf 1391.JPG"
         })
 
     expect(response.statusCode)
@@ -31,7 +31,7 @@ test('Input data is structurally invalid', async () => {
     response = await request(app)
         .post('/images')
         .send({
-            external_id: '1234'
+            external_id: "2011-03-04 Autosalon Genf 1391.JPG"
         })
 
     expect(response.statusCode)
@@ -41,7 +41,7 @@ test('Input data is structurally invalid', async () => {
     response = await request(app)
         .post('/images')
         .send({
-            image_provider: 'picci'
+            image_provider: 'wikimedia'
         })
 
     expect(response.statusCode)
@@ -64,8 +64,8 @@ test('Input is valid, but something breaks on the way', async () => {
     const response = await request(app)
         .post('/images')
         .send({
-            image_provider: 'flickr',
-            external_id: '1234',
+            image_provider: "wikimedia",
+            external_id: "2011-03-04 Autosalon Genf 1391.JPG"
         })
 
     expect(response.statusCode)

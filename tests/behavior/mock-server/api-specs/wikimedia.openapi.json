@@ -1,0 +1,202 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Wikimedia API - API Specification",
+    "description": "OpenAPI specification for the Wikimedia API. Includes only the parts that are relevant for More Cars.",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3005",
+      "description": "Local"
+    }
+  ],
+  "paths": {
+    "/w/api.php": {
+      "get": {
+        "operationId": "getImage",
+        "summary": "Get image",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "action",
+            "description": "action",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "format",
+            "description": "format",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "indexpageids",
+            "description": "Video ID",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "iiurlparam",
+            "description": "iiurlparam",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "prop",
+            "description": "prop",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "iiprop",
+            "description": "iiprop",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "titles",
+            "description": "titles",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image successfully loaded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Image": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string",
+            "example": "Morio"
+          },
+          "width": {
+            "type": "integer",
+            "example": 2560
+          },
+          "height": {
+            "type": "integer",
+            "example": 1706
+          },
+          "thumburl": {
+            "type": "string",
+            "example": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Sheldon_van_der_Linde_2019_DTM_Hockenheim_%28May%29_FP2_3.jpg/120px-Sheldon_van_der_Linde_2019_DTM_Hockenheim_%28May%29_FP2_3.jpg"
+          },
+          "thumbwidth": {
+            "type": "integer",
+            "example": 120
+          },
+          "thumbheight": {
+            "type": "integer",
+            "example": 80
+          },
+          "url": {
+            "type": "string",
+            "example": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Sheldon_van_der_Linde_2019_DTM_Hockenheim_%28May%29_FP2_3.jpg"
+          },
+          "descriptionurl": {
+            "type": "string",
+            "example": "https://commons.wikimedia.org/wiki/File:Sheldon_van_der_Linde_2019_DTM_Hockenheim_(May)_FP2_3.jpg"
+          },
+          "mediatype": {
+            "type": "string",
+            "example": "BITMAP"
+          },
+          "extmetadata": {
+            "type": "object",
+            "properties": {
+              "ObjectName": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string",
+                    "example": "Sheldon van der Linde 2019 DTM Hockenheim (May) FP2 3"
+                  }
+                }
+              },
+              "ImageDescription": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string",
+                    "example": "<b>2019 DTM Hockenheimring (May)</b>: BMW M4 Turbo DTM of Sheldon van der Linde"
+                  }
+                }
+              },
+              "LicenseShortName": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string",
+                    "example": "CC BY-SA 4.0"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "ImageResponse": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "object",
+            "properties": {
+              "pageids": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "example": 1234
+                }
+              },
+              "pages": {
+                "type": "object",
+                "properties": {
+                  "1234": {
+                    "type": "object",
+                    "properties": {
+                      "imageinfo": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Image"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -57,3 +57,7 @@ runtime:
         await ProgrammeEpisodes.create()
         await Images.create()
         await ProgrammeEpisodes.createHasPrimeImageRelationship()
+    - type: after-response
+      code: |-
+        const Images = require('./lib/node-types/Images.js')
+        await Images.delete(bru.getEnvVar('validImageId'))

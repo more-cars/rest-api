@@ -13,7 +13,7 @@ describe('Get YouTube video by ID', () => {
     test('when the video does not exist', async () => {
         const spy = vi.spyOn(yt, 'performYouTubeApiRequest')
             .mockImplementation(async () => {
-                throw new Error('YouTube video not found')
+                throw new Error('YouTube request failed')
             })
 
         const response = await request(app)

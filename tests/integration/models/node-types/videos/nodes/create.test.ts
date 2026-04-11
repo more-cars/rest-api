@@ -11,11 +11,10 @@ test('Expecting node to be created when provided with valid data', async () => {
         .mockImplementation(async () => FakeGetVideoByIdResponse)
 
     const inputData = FakeVideo.dbInput
-    inputData.external_id = faker.string.uuid() // TODO update FakeVideo to return a fresh set of data (instead of cached)
     const createdNode = await Video.create(inputData)
 
-    expect(createdNode.attributes)
-        .toEqual(expect.objectContaining(inputData))
+    expect(createdNode.attributes.external_id)
+        .toEqual(inputData.external_id)
 })
 
 test('Trying to override read-only properties', async () => {

@@ -4,6 +4,6 @@ export async function performYouTubeApiRequest(url: string) {
     if (response.ok) {
         return await response.json()
     } else {
-        throw new Error('Unable to retrieve YouTube video')
+        throw new Error('YouTube API request failed')
     }
 }

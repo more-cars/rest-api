@@ -59,3 +59,7 @@ runtime:
         await Brands.create()
         bru.setEnvVar('validNodeId', bru.getEnvVar('validBrandId'))
         await Images.createBelongsToNodeRelationship()
+    - type: after-response
+      code: |-
+        const Images = require('./lib/node-types/Images.js')
+        await Images.delete(bru.getEnvVar('validImageId'))

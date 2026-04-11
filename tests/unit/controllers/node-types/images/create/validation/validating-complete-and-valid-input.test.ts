@@ -4,8 +4,8 @@ import {validate} from "../../../../../../../src/controllers/node-types/images/c
 
 test('validating a complete and valid request', async () => {
     const data: CreateImageRawInput = {
-        external_id: "54570839725",
-        image_provider: "flickr",
+        image_provider: "wikimedia",
+        external_id: "2011-03-04 Autosalon Genf 1391.JPG"
     }
 
     const result = validate(data)

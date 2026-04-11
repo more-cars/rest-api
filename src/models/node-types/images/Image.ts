@@ -1,6 +1,5 @@
 import {ImageNode} from "./types/ImageNode"
 import {CreateImageInput} from "./types/CreateImageInput"
-import {CreateImageGeneratedInput} from "./types/CreateImageGeneratedInput"
 import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../../db/node-types/images/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
@@ -26,14 +25,29 @@ import {getRelationshipCollection} from "../../../db/relationships/getRelationsh
 import {RelationshipType} from "../../../db/types/RelationshipType"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import type {ModelNode} from "../../types/ModelNode"
+import {imageAlreadyExists} from "./create/imageAlreadyExists"
+import {WikimediaImageAlreadyExistsError} from "../../types/WikimediaImageAlreadyExistsError"
+import {WikimediaFacade} from "../../../db/external/WikimediaFacade"
+import {WikimediaImageNotFoundError} from "../../types/WikimediaImageNotFoundError"
 
 export const Image = {
     async create(data: CreateImageInput): Promise<ImageNode> {
-        const generatedData = getGeneratedData()
-        const input = convertInputData(Object.assign(data, generatedData))
-        const result = await createNode(input)
+        const id = data.external_id
 
-        return convertDbNodeToModelNode(result) as ImageNode
+        if (await imageAlreadyExists(id)) {
+            throw new WikimediaImageAlreadyExistsError(id)
+        }
+
+        try {
+            const wikimediaImage = await WikimediaFacade.getImageById(id)
+            const input = convertInputData(Object.assign({}, data, wikimediaImage))
+            const result = await createNode(input)
+
+            return convertDbNodeToModelNode(result) as ImageNode
+        } catch (e) {
+            console.error(e)
+            throw new WikimediaImageNotFoundError(id)
+        }
     },
 
     async findById(id: number): Promise<ImageNode> {
@@ -196,29 +210,6 @@ export const Image = {
 
         await deleteSpecificRel(imageId, nodeId, RelType.ImageIsPrimeImageOfNode)
     },
-}
-
-/**
- * TEMPORARY solution until the flickr and wikimedia importer are implemented
- */
-function getGeneratedData(): CreateImageGeneratedInput {
-    const generatedData: CreateImageGeneratedInput = {
-        name: "DUMMY",
-        description: "DUMMY",
-        creator: "DUMMY",
-        license: "DUMMY",
-        tags: "DUMMY",
-        source: "DUMMY",
-        image_url_original: "DUMMY",
-        image_url_xxl: "DUMMY",
-        image_url_xl: "DUMMY",
-        image_url_l: "DUMMY",
-        image_url_m: "DUMMY",
-        image_url_s: "DUMMY",
-        image_url_xs: "DUMMY",
-    }
-
-    return generatedData
 }
 
 function nodeIsAnImageNode(node: ModelNode) {

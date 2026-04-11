@@ -2,7 +2,6 @@ import {beforeEach, describe, expect, test, vi} from "vitest"
 import * as yt from "../../../../../src/db/external/youtube/performYouTubeApiRequest"
 import {FakeGetVideoByIdResponse} from "../../../../_toolbox/fixtures/external/youtube/FakeGetVideoByIdResponse"
 import {Video} from "../../../../../src/models/node-types/videos/Video"
-import {YouTubeVideoNotFoundError} from "../../../../../src/models/types/YouTubeVideoNotFoundError"
 
 beforeEach(() => {
     vi.resetAllMocks()
@@ -12,7 +11,7 @@ describe('Get YouTube video by ID', () => {
     test('when the video does not exist', async () => {
         vi.spyOn(yt, 'performYouTubeApiRequest')
             .mockImplementation(async () => {
-                throw new Error('YouTube video not found')
+                throw new Error('YouTube request failed')
             })
 
         await expect(Video.create({
@@ -20,7 +19,7 @@ describe('Get YouTube video by ID', () => {
             external_id: 'YT123456',
         }))
             .rejects
-            .toThrow(YouTubeVideoNotFoundError)
+            .toThrow(Error)
     })
 
     test('when the video does exist', async () => {

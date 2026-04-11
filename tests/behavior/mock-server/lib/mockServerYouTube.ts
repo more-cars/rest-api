@@ -22,5 +22,5 @@ mockApiServer.use((req, res) => api.handleRequest(req, req, res))
 
 const port = 3004
 mockApiServer.listen(port, () =>
-    console.log(`YouTube Mock Server running on http://localhost:${port}`)
+    console.log(`🟢 YouTube Mock Server running on http://localhost:${port}`)
 )

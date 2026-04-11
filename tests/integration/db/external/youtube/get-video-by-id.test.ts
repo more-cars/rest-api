@@ -11,7 +11,7 @@ describe('Get YouTube video by ID', () => {
     test('when the video does not exist', async () => {
         vi.spyOn(yt, 'performYouTubeApiRequest')
             .mockImplementation(async () => {
-                throw new Error('YouTube video not found')
+                throw new Error('YouTube request failed')
             })
 
         await expect(YouTubeFacade.getVideoById('1a2b3c4d'))

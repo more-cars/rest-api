@@ -13,8 +13,8 @@ http:
     type: json
     data: |-
       {
-        "image_provider": "picci",
-        "external_id": "123456",
+        "image_provider": "wikimedia",
+        "external_id": "2011-03-04 Autosalon Genf 1391.JPG",
         "name": "nein",
         "my_property": "no",
         "created_at": "nope",
@@ -32,3 +32,8 @@ runtime:
     - expression: res.body.attributes.updated_at
       operator: neq
       value: nonono
+  scripts:
+    - type: after-response
+      code: |-
+        const Images = require('./lib/node-types/Images.js')
+        await Images.delete(res.body.id)

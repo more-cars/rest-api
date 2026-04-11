@@ -6,7 +6,7 @@ import type {ImageNode} from "../../../../src/models/node-types/images/types/Ima
 export const FakeImage = {
     dbInput: {
         external_id: faker.string.uuid(),
-        image_provider: faker.lorem.word(),
+        image_provider: 'wikimedia',
         name: faker.commerce.productName(),
         description: faker.commerce.productDescription(),
         creator: faker.person.fullName(),
@@ -23,7 +23,7 @@ export const FakeImage = {
     } as InputImageCreate,
 
     dbInputMinimal: {
-        image_provider: faker.lorem.word(),
+        image_provider: 'wikimedia',
         external_id: faker.string.uuid(),
         name: faker.commerce.productName(),
         creator: faker.person.fullName(),
@@ -37,7 +37,7 @@ export const FakeImage = {
         attributes: {
             id: faker.number.int({min: 12_000_000, max: 20_000_000}),
             external_id: faker.string.uuid(),
-            image_provider: faker.lorem.word(),
+            image_provider: 'wikimedia',
             name: faker.commerce.productName(),
             description: faker.commerce.productDescription(),
             creator: faker.person.fullName(),

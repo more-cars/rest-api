@@ -58,3 +58,7 @@ runtime:
         await SessionResults.create()
         await Images.create()
         await SessionResults.createHasImageRelationship()
+    - type: after-response
+      code: |-
+        const Images = require('./lib/node-types/Images.js')
+        await Images.delete(bru.getEnvVar('validImageId'))

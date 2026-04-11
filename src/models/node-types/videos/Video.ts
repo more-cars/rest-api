@@ -33,7 +33,7 @@ export const Video = {
 
         try {
             const youTubeVideo = await YouTubeFacade.getVideoById(id)
-            const input = convertInputData(Object.assign(data, youTubeVideo))
+            const input = convertInputData(Object.assign({}, data, youTubeVideo))
             const result = await createNode(input)
 
             return convertDbNodeToModelNode(result) as VideoNode

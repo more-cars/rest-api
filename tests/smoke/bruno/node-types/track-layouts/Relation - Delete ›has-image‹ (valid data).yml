@@ -23,3 +23,7 @@ runtime:
         await TrackLayouts.create()
         await Images.create()
         await TrackLayouts.createHasImageRelationship()
+    - type: after-response
+      code: |-
+        const Images = require('./lib/node-types/Images.js')
+        await Images.delete(bru.getEnvVar('validImageId'))
