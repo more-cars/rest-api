@@ -10,6 +10,7 @@ test('unmarshalling a request where the data types are incorrect', async () => {
         total_seasons: true,
         total_episodes: true,
         regular_episode_running_time: true,
+        country_code: true,
     }
 
     const result = unmarshalInputData(data)
@@ -23,5 +24,6 @@ test('unmarshalling a request where the data types are incorrect', async () => {
             total_seasons: true,
             total_episodes: true,
             regular_episode_running_time: true,
+            country_code: true,
         })
 })

@@ -18,6 +18,7 @@ test("converting a PROGRAMME node", async () => {
             total_seasons: 33,
             total_episodes: 240,
             regular_episode_running_time: "PT60M",
+            country_code: "GB",
         },
     }
 
@@ -35,6 +36,7 @@ test("converting a PROGRAMME node", async () => {
                 total_seasons: 33,
                 total_episodes: 240,
                 regular_episode_running_time: "PT60M",
+                country_code: "GB",
                 created_at: "2025-05-14T11:05:07.793Z",
                 updated_at: "2025-05-14T11:05:07.793Z",
             },

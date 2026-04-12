@@ -16,6 +16,7 @@ test('unmarshalling a valid request where optional fields are missing', async ()
             channel: undefined,
             total_seasons: undefined,
             total_episodes: undefined,
-            regular_episode_running_time: undefined
+            regular_episode_running_time: undefined,
+            country_code: undefined,
         })
 })

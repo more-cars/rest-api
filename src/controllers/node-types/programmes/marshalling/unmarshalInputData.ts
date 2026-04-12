@@ -10,5 +10,6 @@ export function unmarshalInputData(data): CreateProgrammeRawInput {
         total_seasons: data?.total_seasons,
         total_episodes: data?.total_episodes,
         regular_episode_running_time: data?.regular_episode_running_time,
+        country_code: data?.country_code,
     } satisfies CreateProgrammeRawInput
 }

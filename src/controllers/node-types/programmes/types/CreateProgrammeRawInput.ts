@@ -6,4 +6,5 @@ export type CreateProgrammeRawInput = {
     total_seasons: unknown
     total_episodes: unknown
     regular_episode_running_time: unknown
+    country_code: unknown
 }

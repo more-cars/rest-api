@@ -11,6 +11,7 @@ test('validating a complete and valid request', async () => {
         total_seasons: 33,
         total_episodes: 240,
         regular_episode_running_time: "PT60M",
+        country_code: "GB",
     }
 
     const result = validate(data)

@@ -8,7 +8,8 @@ test('unmarshalling a request where mandatory fields are missing', async () => {
         channel: "BBC Two",
         total_seasons: 33,
         total_episodes: 240,
-        regular_episode_running_time: "PT60M"
+        regular_episode_running_time: "PT60M",
+        country_code: "GB",
     }
 
     const result = unmarshalInputData(data)
@@ -21,6 +22,7 @@ test('unmarshalling a request where mandatory fields are missing', async () => {
             channel: "BBC Two",
             total_seasons: 33,
             total_episodes: 240,
-            regular_episode_running_time: "PT60M"
+            regular_episode_running_time: "PT60M",
+            country_code: "GB",
         })
 })

@@ -10,5 +10,6 @@ export function mapProgramme(oldNode: Node): InputProgrammeCreate {
         total_seasons: oldNode.properties.seasons,
         total_episodes: oldNode.properties.episodes,
         regular_episode_running_time: oldNode.properties.running_time,
+        country_code: null,
     }
 }

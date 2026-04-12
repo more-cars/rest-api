@@ -34182,6 +34182,11 @@
             "type": "string",
             "description": "",
             "example": "PT60M"
+          },
+          "country_code": {
+            "type": "string",
+            "description": "2-letter ISO 3166 country code.",
+            "example": "GB"
           }
         }
       },
@@ -34515,7 +34520,8 @@
           "channel",
           "total_seasons",
           "total_episodes",
-          "regular_episode_running_time"
+          "regular_episode_running_time",
+          "country_code"
         ],
         "default": "name"
       },

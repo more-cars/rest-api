@@ -63,6 +63,10 @@ export function validate(data: CreateProgrammeRawInput): boolean {
         return false
     }
 
+    if (!isOptionalString(data.country_code)) {
+        return false
+    }
+
     return true
 }
 
@@ -75,5 +79,6 @@ export function sanitize(data: CreateProgrammeInput): CreateProgrammeInput {
         total_seasons: data.total_seasons ? data.total_seasons : null,
         total_episodes: data.total_episodes ? data.total_episodes : null,
         regular_episode_running_time: data.regular_episode_running_time ? data.regular_episode_running_time.trim() : null,
+        country_code: data.country_code ? data.country_code.trim() : null,
     } satisfies CreateProgrammeInput
 }

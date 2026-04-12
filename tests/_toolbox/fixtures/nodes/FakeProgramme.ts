@@ -12,6 +12,7 @@ export const FakeProgramme = {
         total_seasons: faker.number.int({min: 1000, max: 3000}),
         total_episodes: faker.number.int({min: 1000, max: 3000}),
         regular_episode_running_time: faker.word.noun(),
+        country_code: faker.location.countryCode(),
     } as InputProgrammeCreate,
 
     dbInputMinimal: {
@@ -29,6 +30,7 @@ export const FakeProgramme = {
             total_seasons: faker.number.int({min: 1000, max: 3000}),
             total_episodes: faker.number.int({min: 1000, max: 3000}),
             regular_episode_running_time: faker.word.noun(),
+            country_code: faker.location.countryCode(),
             created_at: faker.date.past().toISOString(),
             updated_at: faker.date.past().toISOString(),
         },

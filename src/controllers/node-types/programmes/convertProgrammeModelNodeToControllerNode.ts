@@ -14,6 +14,7 @@ export function convertProgrammeModelNodeToControllerNode(modelNode: ModelProgra
             total_seasons: modelNode.attributes.total_seasons ?? null,
             total_episodes: modelNode.attributes.total_episodes ?? null,
             regular_episode_running_time: modelNode.attributes.regular_episode_running_time ?? null,
+            country_code: modelNode.attributes.country_code ?? null,
             created_at: modelNode.attributes.created_at,
             updated_at: modelNode.attributes.updated_at,
         },

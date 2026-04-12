@@ -13,5 +13,6 @@ export type ProgrammeNode = {
         total_seasons: number | null
         total_episodes: number | null
         regular_episode_running_time: string | null
+        country_code: string | null
     }
 }

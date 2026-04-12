@@ -10,6 +10,7 @@ test('unmarshalling a request where extraneous fields are contained', async () =
         total_seasons: 33,
         total_episodes: 240,
         regular_episode_running_time: "PT60M",
+        country_code: "GB",
         my_property: "Hello",
     }
 
@@ -24,5 +25,6 @@ test('unmarshalling a request where extraneous fields are contained', async () =
             total_seasons: 33,
             total_episodes: 240,
             regular_episode_running_time: "PT60M",
+            country_code: "GB",
         })
 })

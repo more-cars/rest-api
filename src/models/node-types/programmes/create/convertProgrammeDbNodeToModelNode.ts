@@ -14,6 +14,7 @@ export function convertProgrammeDbNodeToModelNode(data: ProgrammeNodeInput): Pro
             total_seasons: data.properties.total_seasons,
             total_episodes: data.properties.total_episodes,
             regular_episode_running_time: data.properties.regular_episode_running_time,
+            country_code: data.properties.country_code,
             created_at: data.properties.created_at,
             updated_at: data.properties.updated_at,
         },

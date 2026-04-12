@@ -10,6 +10,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         total_seasons: 33,
         total_episodes: 240,
         regular_episode_running_time: "'PT60M''",
+        country_code: "'GB''",
     }
 
     const createdNode = await createNode(data)
@@ -22,4 +23,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
 
     expect(createdNode.properties.regular_episode_running_time)
         .toEqual("'PT60M''")
+
+    expect(createdNode.properties.country_code)
+        .toEqual("'GB''")
 })
