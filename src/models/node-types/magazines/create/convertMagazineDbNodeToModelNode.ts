@@ -19,6 +19,7 @@ export function convertMagazineDbNodeToModelNode(data: MagazineNodeInput): Magaz
             circulation_year: data.properties.circulation_year,
             publisher: data.properties.publisher,
             issn: data.properties.issn,
+            country_code: data.properties.country_code,
             created_at: data.properties.created_at,
             updated_at: data.properties.updated_at,
         },

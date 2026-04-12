@@ -32746,6 +32746,11 @@
             "type": "string",
             "description": "",
             "example": "1350-9624"
+          },
+          "country_code": {
+            "type": "string",
+            "description": "2-letter ISO 3166 country code.",
+            "example": "GB"
           }
         }
       },
@@ -33084,7 +33089,8 @@
           "circulation",
           "circulation_year",
           "publisher",
-          "issn"
+          "issn",
+          "country_code"
         ],
         "default": "name"
       },

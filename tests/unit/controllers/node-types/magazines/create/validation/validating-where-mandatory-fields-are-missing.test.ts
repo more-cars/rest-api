@@ -16,6 +16,7 @@ test('validating a request where mandatory fields are missing', async () => {
         circulation_year: 2013,
         publisher: "Immediate Media Company",
         issn: "1350-9624",
+        country_code: "GB",
     }
 
     const result = validate(data)

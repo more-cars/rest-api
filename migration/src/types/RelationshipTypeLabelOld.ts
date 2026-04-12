@@ -23,6 +23,7 @@ export enum RelationshipTypeLabelOld {
     GamingPlatformFeaturesRacingGame = "FEATURES_RACING_GAME",
     ModelCarBrandCreatedModelCar = "BELONGS_TO_TOY_BRAND",
     MagazineHasIssue = "HAS_ISSUE",
+    MagazineOriginatesFromCountry = "ORIGINATES_FROM_COUNTRY",
     MagazineIssueFollowedByIssue = "IS_SUCCESSOR_OF",
     MagazineIssueCoversCarModel = "PRESENTS_CAR_MODEL",
     MagazineIssuePresentsCarModelVariant = "PRESENTS_CAR_MODEL_VARIATION",

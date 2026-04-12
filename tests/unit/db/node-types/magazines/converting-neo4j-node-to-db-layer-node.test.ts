@@ -24,6 +24,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             circulation_year: 2013,
             publisher: "Immediate Media Company",
             issn: "1350-9624",
+            country_code: "GB",
         },
         elementId: "",
     }
@@ -49,6 +50,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
                 circulation_year: 2013,
                 publisher: "Immediate Media Company",
                 issn: "1350-9624",
+                country_code: "GB",
             },
         } satisfies MagazineNode)
 })

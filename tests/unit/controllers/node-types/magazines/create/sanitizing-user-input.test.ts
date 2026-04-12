@@ -17,6 +17,7 @@ describe('Sanitizing user input', () => {
             circulation_year: 2013,
             publisher: "   Immediate Media Company  ",
             issn: "   1350-9624  ",
+            country_code: "   GB  ",
         }
 
         const result = sanitize(data)
@@ -35,6 +36,7 @@ describe('Sanitizing user input', () => {
                 circulation_year: 2013,
                 publisher: "Immediate Media Company",
                 issn: "1350-9624",
+                country_code: "GB",
             })
     })
 })

@@ -23,6 +23,7 @@ test("converting a MAGAZINE node", async () => {
             circulation_year: 2013,
             publisher: "Immediate Media Company",
             issn: "1350-9624",
+            country_code: "GB",
         },
     }
 
@@ -45,6 +46,7 @@ test("converting a MAGAZINE node", async () => {
                 circulation_year: 2013,
                 publisher: "Immediate Media Company",
                 issn: "1350-9624",
+                country_code: "GB",
                 created_at: "2025-05-14T11:05:07.793Z",
                 updated_at: "2025-05-14T11:05:07.793Z",
             },

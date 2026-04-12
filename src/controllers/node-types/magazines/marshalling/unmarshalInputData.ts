@@ -15,5 +15,6 @@ export function unmarshalInputData(data): CreateMagazineRawInput {
         circulation_year: data?.circulation_year,
         publisher: data?.publisher,
         issn: data?.issn,
+        country_code: data?.country_code,
     } satisfies CreateMagazineRawInput
 }

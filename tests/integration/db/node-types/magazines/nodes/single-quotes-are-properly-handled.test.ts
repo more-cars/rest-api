@@ -15,6 +15,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         circulation_year: 2013,
         publisher: "'Immediate Media Company''",
         issn: "'1350-9624''",
+        country_code: "'GB''",
     }
 
     const createdNode = await createNode(data)
@@ -39,4 +40,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
 
     expect(createdNode.properties.issn)
         .toEqual("'1350-9624''")
+
+    expect(createdNode.properties.country_code)
+        .toEqual("'GB''")
 })

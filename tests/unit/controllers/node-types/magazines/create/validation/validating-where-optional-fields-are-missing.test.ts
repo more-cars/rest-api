@@ -16,6 +16,7 @@ test('validating a valid request where optional fields are missing', async () =>
         circulation_year: undefined,
         publisher: undefined,
         issn: undefined,
+        country_code: undefined,
     }
 
     const result = validate(data)

@@ -18,6 +18,7 @@ export const MagazineSchema = {
                 circulation_year: {type: ["number", "null",]},
                 publisher: {type: ["string", "null",]},
                 issn: {type: ["string", "null",]},
+                country_code: {type: ["string", "null",]},
                 created_at: {type: ["string"]},
                 updated_at: {type: ["string"]},
             },

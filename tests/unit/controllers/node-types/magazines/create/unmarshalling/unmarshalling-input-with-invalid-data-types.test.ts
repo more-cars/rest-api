@@ -15,6 +15,7 @@ test('unmarshalling a request where the data types are incorrect', async () => {
         circulation_year: true,
         publisher: true,
         issn: true,
+        country_code: true,
     }
 
     const result = unmarshalInputData(data)
@@ -33,5 +34,6 @@ test('unmarshalling a request where the data types are incorrect', async () => {
             circulation_year: true,
             publisher: true,
             issn: true,
+            country_code: true,
         })
 })

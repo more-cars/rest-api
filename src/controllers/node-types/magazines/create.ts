@@ -83,6 +83,10 @@ export function validate(data: CreateMagazineRawInput): boolean {
         return false
     }
 
+    if (!isOptionalString(data.country_code)) {
+        return false
+    }
+
     return true
 }
 
@@ -100,5 +104,6 @@ export function sanitize(data: CreateMagazineInput): CreateMagazineInput {
         circulation_year: data.circulation_year ? data.circulation_year : null,
         publisher: data.publisher ? data.publisher.trim() : null,
         issn: data.issn ? data.issn.trim() : null,
+        country_code: data.country_code ? data.country_code.trim() : null,
     } satisfies CreateMagazineInput
 }

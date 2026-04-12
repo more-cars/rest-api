@@ -15,6 +15,7 @@ test('unmarshalling a request where extraneous fields are contained', async () =
         circulation_year: 2013,
         publisher: "Immediate Media Company",
         issn: "1350-9624",
+        country_code: "GB",
         my_property: "Hello",
     }
 
@@ -34,5 +35,6 @@ test('unmarshalling a request where extraneous fields are contained', async () =
             circulation_year: 2013,
             publisher: "Immediate Media Company",
             issn: "1350-9624",
+            country_code: "GB",
         })
 })

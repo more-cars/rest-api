@@ -10,7 +10,7 @@ export function convertMagazineNeo4jNodeToDbNode(neo4jNode: Node): MagazineNode 
             id: neo4jNode.properties.mc_id,
             created_at: neo4jNode.properties.created_at,
             updated_at: neo4jNode.properties.updated_at,
-    
+
             // user data
             name: neo4jNode.properties.name,
             founded: neo4jNode.properties.founded,
@@ -24,6 +24,7 @@ export function convertMagazineNeo4jNodeToDbNode(neo4jNode: Node): MagazineNode 
             circulation_year: neo4jNode.properties.circulation_year,
             publisher: neo4jNode.properties.publisher,
             issn: neo4jNode.properties.issn,
+            country_code: neo4jNode.properties.country_code,
         },
     } satisfies MagazineNode
 }

@@ -24,7 +24,8 @@ http:
         "circulation": 150884,
         "circulation_year": 2013,
         "publisher": "Immediate Media Company",
-        "issn": "1350-9624"
+        "issn": "1350-9624",
+        "country_code": "GB"
       }
 
 runtime:

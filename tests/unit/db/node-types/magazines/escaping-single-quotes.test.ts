@@ -17,7 +17,8 @@ test('single quotes are correctly escaped', async () => {
         circulation: null,
         circulation_year: null,
         publisher: "'Immediate Media Company",
-        issn: "'1350-9624"
+        issn: "'1350-9624",
+        country_code: "'GB",
     }
 
     const query = createNodeQuery(DbNodeType.Magazine, data)
@@ -36,7 +37,8 @@ test('single quotes are correctly escaped', async () => {
             "  circulation: null,\n" +
             "  circulation_year: null,\n" +
             "  publisher: '\\'Immediate Media Company',\n" +
-            "  issn: '\\'1350-9624'\n" +
+            "  issn: '\\'1350-9624',\n" +
+            "  country_code: '\\'GB'\n" +
             "})\n" +
             "RETURN node\n" +
             "  LIMIT 1")

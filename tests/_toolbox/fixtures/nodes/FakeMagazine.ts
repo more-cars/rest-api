@@ -17,6 +17,7 @@ export const FakeMagazine = {
         circulation_year: faker.number.int({min: 1000, max: 3000}),
         publisher: faker.company.name(),
         issn: faker.commerce.isbn(),
+        country_code: faker.location.countryCode(),
     } as InputMagazineCreate,
 
     dbInputMinimal: {
@@ -39,6 +40,7 @@ export const FakeMagazine = {
             circulation_year: faker.number.int({min: 1000, max: 3000}),
             publisher: faker.company.name(),
             issn: faker.commerce.isbn(),
+            country_code: faker.location.countryCode(),
             created_at: faker.date.past().toISOString(),
             updated_at: faker.date.past().toISOString(),
         },

@@ -5,6 +5,7 @@ export function getCountryRelationshipType(startNode: DbNodeType) {
     const mapping = new Map<DbNodeType, RelationshipTypeLabelOld>([
         [DbNodeType.Price, RelationshipTypeLabelOld.PriceInCountry],
         [DbNodeType.RaceTrack, RelationshipTypeLabelOld.RaceTrackLocatedInCountry],
+        [DbNodeType.Magazine, RelationshipTypeLabelOld.MagazineOriginatesFromCountry],
         [DbNodeType.MotorShow, RelationshipTypeLabelOld.MotorShowLocatedInCountry],
     ])
 

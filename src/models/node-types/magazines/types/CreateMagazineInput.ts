@@ -11,4 +11,5 @@ export type CreateMagazineInput = {
     circulation_year: number | null
     publisher: string | null
     issn: string | null
+    country_code: string | null
 }

@@ -15,6 +15,7 @@ export function mapMagazine(oldNode: Node): InputMagazineCreate {
         circulation_year: oldNode.properties.circulation_year,
         publisher: oldNode.properties.publisher,
         issn: oldNode.properties.issn,
+        country_code: null,
     }
 }
 

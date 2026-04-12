@@ -11,4 +11,5 @@ export type CreateMagazineRawInput = {
     circulation_year: unknown
     publisher: unknown
     issn: unknown
+    country_code: unknown
 }

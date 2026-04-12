@@ -19,6 +19,7 @@ export function convertMagazineModelNodeToControllerNode(modelNode: ModelMagazin
             circulation_year: modelNode.attributes.circulation_year ?? null,
             publisher: modelNode.attributes.publisher ?? null,
             issn: modelNode.attributes.issn ?? null,
+            country_code: modelNode.attributes.country_code ?? null,
             created_at: modelNode.attributes.created_at,
             updated_at: modelNode.attributes.updated_at,
         },

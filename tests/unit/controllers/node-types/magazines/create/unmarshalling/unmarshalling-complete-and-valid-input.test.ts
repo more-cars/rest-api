@@ -16,6 +16,7 @@ test('unmarshalling a complete and valid request', async () => {
         circulation_year: 2013,
         publisher: "Immediate Media Company",
         issn: "1350-9624",
+        country_code: "GB",
     }
 
     const result = unmarshalInputData(data)
@@ -34,5 +35,6 @@ test('unmarshalling a complete and valid request', async () => {
             circulation_year: 2013,
             publisher: "Immediate Media Company",
             issn: "1350-9624",
+            country_code: "GB",
         })
 })
