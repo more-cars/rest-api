@@ -24,9 +24,9 @@ test('single quotes are correctly escaped', async () => {
             "  founded: null,\n" +
             "  defunct: null,\n" +
             "  headquarters_location: '\\'Munich',\n" +
-            "  hq_country_code: '\\'Munich',\n" +
-            "  legal_headquarters_location: '\\'Munich,'\n" +
-            "  legal_hq_country_code: '\\'Munich'\n" +
+            "  hq_country_code: '\\'DE',\n" +
+            "  legal_headquarters_location: '\\'Munich',\n" +
+            "  legal_hq_country_code: '\\'DE'\n" +
             "})\n" +
             "RETURN node\n" +
             "  LIMIT 1")

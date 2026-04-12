@@ -6,5 +6,6 @@ export function mapModelCarBrand(oldNode: Node): InputModelCarBrandCreate {
         name: oldNode.properties.name,
         founded: oldNode.properties.founded,
         defunct: oldNode.properties.defunct,
+        country_code: null,
     }
 }

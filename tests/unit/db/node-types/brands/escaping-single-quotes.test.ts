@@ -26,7 +26,7 @@ test('single quotes are correctly escaped', async () => {
             "  defunct: null,\n" +
             "  wmi: 'A\\'BC',\n" +
             "  hsn: '00\\'\\'05',\n" +
-            "  country_code: 'DE\\'\\'\n" +
+            "  country_code: 'DE\\'\\''\n" +
             "})\n" +
             "RETURN node\n" +
             "  LIMIT 1")

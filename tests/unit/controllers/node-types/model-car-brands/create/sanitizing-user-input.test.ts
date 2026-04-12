@@ -8,6 +8,7 @@ describe('Sanitizing user input', () => {
             name: "   Hot Wheels  ",
             founded: 1968,
             defunct: null,
+            country_code: "   US  ",
         }
 
         const result = sanitize(data)
@@ -17,6 +18,7 @@ describe('Sanitizing user input', () => {
                 name: "Hot Wheels",
                 founded: 1968,
                 defunct: null,
+                country_code: "US",
             })
     })
 })

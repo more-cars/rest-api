@@ -7,6 +7,7 @@ export type ModelCarBrandNode = {
         name: string
         founded: number | null
         defunct: number | null
+        country_code: string | null
         created_at: string
         updated_at: string
     }

@@ -32358,6 +32358,11 @@
             "type": "number",
             "description": "",
             "example": ""
+          },
+          "country_code": {
+            "type": "string",
+            "description": "2-letter ISO 3166 country code.",
+            "example": "US"
           }
         }
       },
@@ -32687,7 +32692,8 @@
           "updated_at",
           "name",
           "founded",
-          "defunct"
+          "defunct",
+          "country_code"
         ],
         "default": "name"
       },

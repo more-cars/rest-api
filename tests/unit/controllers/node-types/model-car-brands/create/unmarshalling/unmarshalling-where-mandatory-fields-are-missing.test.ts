@@ -5,6 +5,7 @@ test('unmarshalling a request where mandatory fields are missing', async () => {
     const data: unknown = {
         founded: 1968,
         defunct: 2345,
+        country_code: 'US',
     }
 
     const result = unmarshalInputData(data)
@@ -14,5 +15,6 @@ test('unmarshalling a request where mandatory fields are missing', async () => {
             name: undefined,
             founded: 1968,
             defunct: 2345,
+            country_code: 'US',
         })
 })

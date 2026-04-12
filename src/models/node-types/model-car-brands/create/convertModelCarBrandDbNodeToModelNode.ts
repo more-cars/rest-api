@@ -10,6 +10,7 @@ export function convertModelCarBrandDbNodeToModelNode(data: ModelCarBrandNodeInp
             name: data.properties.name,
             founded: data.properties.founded,
             defunct: data.properties.defunct,
+            country_code: data.properties.country_code,
             created_at: data.properties.created_at,
             updated_at: data.properties.updated_at,
         },

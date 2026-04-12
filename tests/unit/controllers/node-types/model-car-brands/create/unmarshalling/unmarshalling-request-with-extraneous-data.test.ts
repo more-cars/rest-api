@@ -6,6 +6,7 @@ test('unmarshalling a request where extraneous fields are contained', async () =
         name: "Hot Wheels",
         founded: 1968,
         defunct: null,
+        country_code: 'US',
         my_property: "Hello",
     }
 
@@ -16,5 +17,6 @@ test('unmarshalling a request where extraneous fields are contained', async () =
             name: "Hot Wheels",
             founded: 1968,
             defunct: null,
+            country_code: 'US',
         })
 })

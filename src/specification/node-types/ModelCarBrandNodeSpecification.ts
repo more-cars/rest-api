@@ -19,5 +19,10 @@ export const ModelCarBrandNodeSpecification: NodeSpecification = {
             datatype: 'number',
             mandatory: false,
         },
+        {
+            name: 'country_code',
+            datatype: 'string',
+            mandatory: false,
+        },
     ],
 }

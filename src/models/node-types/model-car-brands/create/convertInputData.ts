@@ -6,5 +6,6 @@ export function convertInputData(data: CreateModelCarBrandInput): InputModelCarB
         name: data.name,
         founded: data.founded,
         defunct: data.defunct,
+        country_code: data.country_code,
     } satisfies InputModelCarBrandCreate
 }

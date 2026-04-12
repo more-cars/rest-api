@@ -14,6 +14,7 @@ test("converting a MODEL CAR BRAND node", async () => {
             name: "Hot Wheels",
             founded: 1968,
             defunct: null,
+            country_code: 'US',
         },
     }
 
@@ -27,6 +28,7 @@ test("converting a MODEL CAR BRAND node", async () => {
                 name: "Hot Wheels",
                 founded: 1968,
                 defunct: null,
+                country_code: 'US',
                 created_at: "2025-05-14T11:05:07.793Z",
                 updated_at: "2025-05-14T11:05:07.793Z",
             },

@@ -8,6 +8,7 @@ export function getCountryRelationshipType(startNode: DbNodeType) {
         [DbNodeType.Price, RelationshipTypeLabelOld.PriceInCountry],
         [DbNodeType.RaceTrack, RelationshipTypeLabelOld.RaceTrackLocatedInCountry],
         [DbNodeType.RacingSeries, RelationshipTypeLabelOld.RacingSeriesHasPrimaryMarket],
+        [DbNodeType.ModelCarBrand, RelationshipTypeLabelOld.ModelCarBrandOriginatesFromCountry],
         [DbNodeType.Magazine, RelationshipTypeLabelOld.MagazineOriginatesFromCountry],
         [DbNodeType.Programme, RelationshipTypeLabelOld.ProgrammeOriginatesFromCountry],
         [DbNodeType.MotorShow, RelationshipTypeLabelOld.MotorShowLocatedInCountry],

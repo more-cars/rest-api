@@ -10,6 +10,7 @@ export function convertModelCarBrandModelNodeToControllerNode(modelNode: ModelMo
             name: modelNode.attributes.name,
             founded: modelNode.attributes.founded ?? null,
             defunct: modelNode.attributes.defunct ?? null,
+            country_code: modelNode.attributes.country_code ?? null,
             created_at: modelNode.attributes.created_at,
             updated_at: modelNode.attributes.updated_at,
         },

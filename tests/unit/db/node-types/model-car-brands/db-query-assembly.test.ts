@@ -8,7 +8,8 @@ test('database query for creating a MODEL CAR BRAND node', async () => {
     const data: InputModelCarBrandCreate = {
         name: "Hot Wheels",
         founded: 1968,
-        defunct: null
+        defunct: null,
+        country_code: 'US',
     }
 
     const query = createNodeQuery(DbNodeType.ModelCarBrand, data)
@@ -18,7 +19,8 @@ test('database query for creating a MODEL CAR BRAND node', async () => {
             "CREATE (node:ModelCarBrand_A_" + appInstanceId + " {\n" +
             "  name: 'Hot Wheels',\n" +
             "  founded: 1968,\n" +
-            "  defunct: null\n" +
+            "  defunct: null,\n" +
+            "  country_code: 'US'\n" +
             "})\n" +
             "RETURN node\n" +
             "  LIMIT 1")

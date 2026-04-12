@@ -7,6 +7,7 @@ test('unmarshalling a complete and valid request', async () => {
         name: "Hot Wheels",
         founded: 1968,
         defunct: null,
+        country_code: 'US',
     }
 
     const result = unmarshalInputData(data)
@@ -16,5 +17,6 @@ test('unmarshalling a complete and valid request', async () => {
             name: "Hot Wheels",
             founded: 1968,
             defunct: null,
+            country_code: 'US',
         })
 })

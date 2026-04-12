@@ -8,7 +8,8 @@ test('single quotes are correctly escaped', async () => {
     const data: InputModelCarBrandCreate = {
         name: "'Hot Wheels",
         founded: null,
-        defunct: null
+        defunct: null,
+        country_code: "'US",
     }
 
     const query = createNodeQuery(DbNodeType.ModelCarBrand, data)
@@ -18,7 +19,8 @@ test('single quotes are correctly escaped', async () => {
             "CREATE (node:ModelCarBrand_A_" + appInstanceId + " {\n" +
             "  name: '\\'Hot Wheels',\n" +
             "  founded: null,\n" +
-            "  defunct: null\n" +
+            "  defunct: null,\n" +
+            "  country_code: '\\'US'\n" +
             "})\n" +
             "RETURN node\n" +
             "  LIMIT 1")

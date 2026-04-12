@@ -10,6 +10,7 @@ import {isOptionalNumber} from "../../validators/isOptionalNumber"
 import {sendResponse201} from "../../responses/sendResponse201"
 import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
+import {isOptionalString} from "../../validators/isOptionalString"
 
 export async function create(req: express.Request, res: express.Response) {
     const data = unmarshalInputData(req.body)
@@ -46,6 +47,10 @@ export function validate(data: CreateModelCarBrandRawInput): boolean {
         return false
     }
 
+    if (!isOptionalString(data.country_code)) {
+        return false
+    }
+
     return true
 }
 
@@ -54,5 +59,6 @@ export function sanitize(data: CreateModelCarBrandInput): CreateModelCarBrandInp
         name: data.name.trim(),
         founded: data.founded ? data.founded : null,
         defunct: data.defunct ? data.defunct : null,
+        country_code: data.country_code ? data.country_code.trim() : null,
     } satisfies CreateModelCarBrandInput
 }

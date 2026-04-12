@@ -12,6 +12,7 @@ test('unmarshalling a valid request where optional fields are missing', async ()
         .toStrictEqual({
             name: "Hot Wheels",
             founded: undefined,
-            defunct: undefined
+            defunct: undefined,
+            country_code: undefined,
         })
 })

@@ -8,6 +8,7 @@ export const FakeModelCarBrand = {
         name: faker.word.noun(),
         founded: faker.number.int({min: 1000, max: 3000}),
         defunct: faker.number.int({min: 1000, max: 3000}),
+        country_code: faker.location.countryCode(),
     } as InputModelCarBrandCreate,
 
     dbInputMinimal: {
@@ -21,6 +22,7 @@ export const FakeModelCarBrand = {
             name: faker.word.noun(),
             founded: faker.number.int({min: 1000, max: 3000}),
             defunct: faker.number.int({min: 1000, max: 3000}),
+            country_code: faker.location.countryCode(),
             created_at: faker.date.past().toISOString(),
             updated_at: faker.date.past().toISOString(),
         },

@@ -15,6 +15,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             name: "Hot Wheels",
             founded: 1968,
             defunct: null,
+            country_code: 'US',
         },
         elementId: "",
     }
@@ -31,6 +32,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
                 name: "Hot Wheels",
                 founded: 1968,
                 defunct: null,
+                country_code: 'US',
             },
         } satisfies ModelCarBrandNode)
 })
