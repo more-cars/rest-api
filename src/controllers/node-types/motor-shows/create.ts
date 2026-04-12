@@ -58,6 +58,9 @@ export function validate(data: CreateMotorShowRawInput): boolean {
         return false
     }
 
+    if (!isOptionalString(data.country_code)) {
+        return false
+    }
     return true
 }
 
@@ -69,5 +72,6 @@ export function sanitize(data: CreateMotorShowInput): CreateMotorShowInput {
         location: data.location ? data.location.trim() : null,
         target_audience: data.target_audience ? data.target_audience.trim() : null,
         focus: data.focus ? data.focus.trim() : null,
+        country_code: data.country_code ? data.country_code.trim() : null,
     } satisfies CreateMotorShowInput
 }

@@ -11,7 +11,8 @@ test('single quotes are correctly escaped', async () => {
         date_until: "'2017-09-24",
         location: "'Frankfurt",
         target_audience: "'international",
-        focus: "'new cars"
+        focus: "'new cars",
+        country_code: "'DE",
     }
 
     const query = createNodeQuery(DbNodeType.MotorShow, data)
@@ -24,7 +25,8 @@ test('single quotes are correctly escaped', async () => {
             "  date_until: '\\'2017-09-24',\n" +
             "  location: '\\'Frankfurt',\n" +
             "  target_audience: '\\'international',\n" +
-            "  focus: '\\'new cars'\n" +
+            "  focus: '\\'new cars',\n" +
+            "  country_code: '\\'DE'\n" +
             "})\n" +
             "RETURN node\n" +
             "  LIMIT 1")

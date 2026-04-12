@@ -15,6 +15,7 @@ test('unmarshalling a valid request where optional fields are missing', async ()
             date_until: undefined,
             location: undefined,
             target_audience: undefined,
-            focus: undefined
+            focus: undefined,
+            country_code: undefined,
         })
 })

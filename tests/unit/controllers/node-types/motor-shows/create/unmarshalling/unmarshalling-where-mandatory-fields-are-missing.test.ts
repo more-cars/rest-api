@@ -7,7 +7,8 @@ test('unmarshalling a request where mandatory fields are missing', async () => {
         date_until: "2017-09-24",
         location: "Frankfurt",
         target_audience: "international",
-        focus: "new cars"
+        focus: "new cars",
+        country_code: "DE",
     }
 
     const result = unmarshalInputData(data)
@@ -19,6 +20,7 @@ test('unmarshalling a request where mandatory fields are missing', async () => {
             date_until: "2017-09-24",
             location: "Frankfurt",
             target_audience: "international",
-            focus: "new cars"
+            focus: "new cars",
+            country_code: "DE",
         })
 })

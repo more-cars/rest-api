@@ -5,4 +5,5 @@ export type CreateMotorShowRawInput = {
     location: unknown
     target_audience: unknown
     focus: unknown
+    country_code: unknown
 }

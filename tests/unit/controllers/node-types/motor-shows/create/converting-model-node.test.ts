@@ -17,6 +17,7 @@ test("converting a MOTOR SHOW node", async () => {
             location: "Frankfurt",
             target_audience: "international",
             focus: "new cars",
+            country_code: "DE",
         },
     }
 
@@ -33,6 +34,7 @@ test("converting a MOTOR SHOW node", async () => {
                 location: "Frankfurt",
                 target_audience: "international",
                 focus: "new cars",
+                country_code: "DE",
                 created_at: "2025-05-14T11:05:07.793Z",
                 updated_at: "2025-05-14T11:05:07.793Z",
             },

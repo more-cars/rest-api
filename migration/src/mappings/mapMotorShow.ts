@@ -9,5 +9,6 @@ export function mapMotorShow(oldNode: Node): InputMotorShowCreate {
         location: oldNode.properties.location,
         target_audience: oldNode.properties.target,
         focus: oldNode.properties.focus,
+        country_code: null,
     }
 }

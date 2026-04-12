@@ -35152,6 +35152,11 @@
             "type": "string",
             "description": "",
             "example": "new cars"
+          },
+          "country_code": {
+            "type": "string",
+            "description": "2-letter ISO 3166 country code.",
+            "example": "DE"
           }
         }
       },
@@ -35484,7 +35489,8 @@
           "date_until",
           "location",
           "target_audience",
-          "focus"
+          "focus",
+          "country_code"
         ],
         "default": "name"
       },

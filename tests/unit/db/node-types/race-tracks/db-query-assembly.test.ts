@@ -25,7 +25,7 @@ test('database query for creating a RACE TRACK node', async () => {
             "  closed: null,\n" +
             "  type: 'permanent race track',\n" +
             "  location: 'Klettwitz',\n" +
-            "  geo_position: '51°32\\'0\"N 13°55\\'10\"E'\n" +
+            "  geo_position: '51°32\\'0\"N 13°55\\'10\"E',\n" +
             "  country_code: 'DE'\n" +
             "})\n" +
             "RETURN node\n" +

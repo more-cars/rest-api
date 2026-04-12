@@ -11,6 +11,7 @@ export const FakeMotorShow = {
         location: faker.word.noun(),
         target_audience: faker.word.noun(),
         focus: faker.word.noun(),
+        country_code: faker.location.countryCode(),
     } as InputMotorShowCreate,
 
     dbInputMinimal: {
@@ -27,6 +28,7 @@ export const FakeMotorShow = {
             location: faker.word.noun(),
             target_audience: faker.word.noun(),
             focus: faker.word.noun(),
+            country_code: faker.location.countryCode(),
             created_at: faker.date.past().toISOString(),
             updated_at: faker.date.past().toISOString(),
         },

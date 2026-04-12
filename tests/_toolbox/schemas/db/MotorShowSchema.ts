@@ -12,6 +12,7 @@ export const MotorShowSchema = {
                 location: {type: ["string", "null"]},
                 target_audience: {type: ["string", "null"]},
                 focus: {type: ["string", "null"]},
+                country_code: {type: ["string", "null"]},
                 created_at: {type: ["string"]},
                 updated_at: {type: ["string"]},
             },

@@ -13,6 +13,7 @@ export function convertMotorShowDbNodeToModelNode(data: MotorShowNodeInput): Mot
             location: data.properties.location,
             target_audience: data.properties.target_audience,
             focus: data.properties.focus,
+            country_code: data.properties.country_code,
             created_at: data.properties.created_at,
             updated_at: data.properties.updated_at,
         },

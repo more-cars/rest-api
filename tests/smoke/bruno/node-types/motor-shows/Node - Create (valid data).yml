@@ -19,6 +19,7 @@ http:
         "location": "Frankfurt",
         "target_audience": "international",
         "focus": "new cars"
+        "country_code": "DE"
       }
 
 runtime:

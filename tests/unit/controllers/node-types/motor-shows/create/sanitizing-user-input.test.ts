@@ -11,6 +11,7 @@ describe('Sanitizing user input', () => {
             location: "   Frankfurt  ",
             target_audience: "   international  ",
             focus: "   new cars  ",
+            country_code: "   DE  ",
         }
 
         const result = sanitize(data)
@@ -23,6 +24,7 @@ describe('Sanitizing user input', () => {
                 location: "Frankfurt",
                 target_audience: "international",
                 focus: "new cars",
+                country_code: "DE",
             })
     })
 })

@@ -13,6 +13,7 @@ export function convertMotorShowModelNodeToControllerNode(modelNode: ModelMotorS
             location: modelNode.attributes.location ?? null,
             target_audience: modelNode.attributes.target_audience ?? null,
             focus: modelNode.attributes.focus ?? null,
+            country_code: modelNode.attributes.country_code ?? null,
             created_at: modelNode.attributes.created_at,
             updated_at: modelNode.attributes.updated_at,
         },

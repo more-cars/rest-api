@@ -9,5 +9,6 @@ export function unmarshalInputData(data): CreateMotorShowRawInput {
         location: data?.location,
         target_audience: data?.target_audience,
         focus: data?.focus,
+        country_code: data?.country_code,
     } satisfies CreateMotorShowRawInput
 }

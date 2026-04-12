@@ -10,6 +10,7 @@ test('validating a complete and valid request', async () => {
         location: "Frankfurt",
         target_audience: "international",
         focus: "new cars",
+        country_code: "DE",
     }
 
     const result = validate(data)
