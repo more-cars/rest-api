@@ -13,6 +13,7 @@ export function convertRacingSeriesModelNodeToControllerNode(modelNode: ModelRac
             defunct: modelNode.attributes.defunct ?? null,
             organized_by: modelNode.attributes.organized_by ?? null,
             vehicle_type: modelNode.attributes.vehicle_type ?? null,
+            country_code: modelNode.attributes.country_code ?? null,
             created_at: modelNode.attributes.created_at,
             updated_at: modelNode.attributes.updated_at,
         },

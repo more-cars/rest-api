@@ -12,6 +12,7 @@ export const RacingSeriesSchema = {
                 defunct: {type: ["number", "null"]},
                 organized_by: {type: ["string", "null"]},
                 vehicle_type: {type: ["string", "null"]},
+                country_code: {type: ["string", "null"]},
                 created_at: {type: "string"},
                 updated_at: {type: "string"},
             },

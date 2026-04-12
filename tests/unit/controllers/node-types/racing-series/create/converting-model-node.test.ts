@@ -17,6 +17,7 @@ test("converting a RACING SERIES node", async () => {
             defunct: null,
             organized_by: "FIA",
             vehicle_type: "formula racing cars",
+            country_code: "US",
         }
     }
 
@@ -33,6 +34,7 @@ test("converting a RACING SERIES node", async () => {
                 defunct: null,
                 organized_by: "FIA",
                 vehicle_type: "formula racing cars",
+                country_code: "US",
                 created_at: "2025-05-14T11:05:07.793Z",
                 updated_at: "2025-05-14T11:05:07.793Z",
             }

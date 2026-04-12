@@ -9,5 +9,6 @@ export function unmarshalInputData(data): CreateRacingSeriesRawInput {
         defunct: data?.defunct,
         organized_by: data?.organized_by,
         vehicle_type: data?.vehicle_type,
+        country_code: data?.country_code,
     } satisfies CreateRacingSeriesRawInput
 }

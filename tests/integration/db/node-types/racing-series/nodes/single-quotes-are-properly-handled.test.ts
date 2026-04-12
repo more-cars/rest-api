@@ -9,6 +9,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         defunct: null,
         organized_by: "'FIA''",
         vehicle_type: "'formula racing cars''",
+        country_code: "'US''",
     }
 
     const createdNode = await createNode(data)
@@ -24,4 +25,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
 
     expect(createdNode.properties.vehicle_type)
         .toEqual("'formula racing cars''")
+
+    expect(createdNode.properties.country_code)
+        .toEqual("'US''")
 })

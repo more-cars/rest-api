@@ -11,7 +11,8 @@ test('single quotes are correctly escaped', async () => {
         founded: null,
         defunct: null,
         organized_by: "'FIA",
-        vehicle_type: "'formula racing cars"
+        vehicle_type: "'formula racing cars",
+        country_code: "'US",
     }
 
     const query = createNodeQuery(DbNodeType.RacingSeries, data)
@@ -24,7 +25,8 @@ test('single quotes are correctly escaped', async () => {
             "  founded: null,\n" +
             "  defunct: null,\n" +
             "  organized_by: '\\'FIA',\n" +
-            "  vehicle_type: '\\'formula racing cars'\n" +
+            "  vehicle_type: '\\'formula racing cars',\n" +
+            "  country_code: '\\'US'\n" +
             "})\n" +
             "RETURN node\n" +
             "  LIMIT 1")

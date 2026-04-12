@@ -9,5 +9,6 @@ export function convertInputData(data: CreateRacingSeriesInput): InputRacingSeri
         defunct: data.defunct,
         organized_by: data.organized_by,
         vehicle_type: data.vehicle_type,
+        country_code: data.country_code,
     } satisfies InputRacingSeriesCreate
 }

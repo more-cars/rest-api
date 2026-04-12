@@ -9,6 +9,7 @@ test('unmarshalling a request where extraneous fields are contained', async () =
         defunct: null,
         organized_by: "FIA",
         vehicle_type: "formula racing cars",
+        country_code: "US",
         my_property: "Hello",
     }
 
@@ -22,5 +23,6 @@ test('unmarshalling a request where extraneous fields are contained', async () =
             defunct: null,
             organized_by: "FIA",
             vehicle_type: "formula racing cars",
+            country_code: "US",
         })
 })

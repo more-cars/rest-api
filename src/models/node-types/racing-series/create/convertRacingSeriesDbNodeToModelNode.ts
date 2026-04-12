@@ -13,6 +13,7 @@ export function convertRacingSeriesDbNodeToModelNode(data: DbRacingSeriesNode): 
             defunct: data.properties.defunct,
             organized_by: data.properties.organized_by,
             vehicle_type: data.properties.vehicle_type,
+            country_code: data.properties.country_code,
             created_at: data.properties.created_at,
             updated_at: data.properties.updated_at,
         },

@@ -11,6 +11,7 @@ export const FakeRacingSeries = {
         defunct: faker.number.int({min: 1000, max: 3000}),
         organized_by: faker.company.name(),
         vehicle_type: faker.vehicle.type(),
+        country_code: faker.location.countryCode(),
     } as InputRacingSeriesCreate,
 
     dbInputMinimal: {
@@ -28,6 +29,7 @@ export const FakeRacingSeries = {
             defunct: faker.number.int({min: 1000, max: 3000}),
             organized_by: faker.company.name(),
             vehicle_type: faker.vehicle.type(),
+            country_code: faker.location.countryCode(),
             created_at: faker.date.past().toISOString(),
             updated_at: faker.date.past().toISOString(),
         },

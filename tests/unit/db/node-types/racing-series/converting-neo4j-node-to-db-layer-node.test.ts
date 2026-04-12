@@ -18,6 +18,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             defunct: null,
             organized_by: "FIA",
             vehicle_type: "formula racing cars",
+            country_code: "US",
         },
         elementId: "",
     }
@@ -37,6 +38,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
                 defunct: null,
                 organized_by: "FIA",
                 vehicle_type: "formula racing cars",
+                country_code: "US",
             },
         } satisfies RacingSeriesNode)
 })

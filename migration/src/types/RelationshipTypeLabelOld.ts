@@ -12,6 +12,7 @@ export enum RelationshipTypeLabelOld {
     RaceTrackLocatedInCountry = "LOCATED_IN_COUNTRY",
     TrackLayoutHasLapTime = "ACHIEVED_ON_RACE_TRACK_VARIANT",
     RacingSeriesHasRacingEvent = "HAS_RACING_EVENT",
+    RacingSeriesHasPrimaryMarket = "HAS_PRIMARY_MARKET",
     RacingEventIsFollowedByEvent = "IS_SUCCESSOR_OF",
     RacingEventTookPlaceAtRaceTrack = "TAKES_PLACE_AT_RACE_TRACK",
     RacingEventUsedTheTrackLayout = "TAKES_PLACE_AT_RACE_TRACK_VARIANT",

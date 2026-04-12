@@ -18,6 +18,7 @@ export function convertRacingSeriesNeo4jNodeToDbNode(neo4jNode: Node): RacingSer
             defunct: neo4jNode.properties.defunct,
             organized_by: neo4jNode.properties.organized_by,
             vehicle_type: neo4jNode.properties.vehicle_type,
+            country_code: neo4jNode.properties.country_code,
         },
     } satisfies RacingSeriesNode
 }

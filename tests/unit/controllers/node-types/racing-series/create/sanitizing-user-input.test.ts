@@ -11,6 +11,7 @@ describe('Sanitizing user input', () => {
             defunct: null,
             organized_by: "   FIA  ",
             vehicle_type: "   formula racing cars  ",
+            country_code: "   US  ",
         }
 
         const result = sanitize(data)
@@ -23,6 +24,7 @@ describe('Sanitizing user input', () => {
                 defunct: null,
                 organized_by: "FIA",
                 vehicle_type: "formula racing cars",
+                country_code: "US",
             })
     })
 })

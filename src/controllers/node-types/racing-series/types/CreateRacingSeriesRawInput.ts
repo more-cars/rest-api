@@ -5,4 +5,5 @@ export type CreateRacingSeriesRawInput = {
     defunct: unknown
     organized_by: unknown
     vehicle_type: unknown
+    country_code: unknown
 }

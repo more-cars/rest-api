@@ -28715,6 +28715,11 @@
             "type": "string",
             "description": "",
             "example": "formula racing cars"
+          },
+          "country_code": {
+            "type": "string",
+            "description": "2-letter ISO 3166 country code.",
+            "example": "US"
           }
         }
       },
@@ -29047,7 +29052,8 @@
           "founded",
           "defunct",
           "organized_by",
-          "vehicle_type"
+          "vehicle_type",
+          "country_code"
         ],
         "default": "name"
       },

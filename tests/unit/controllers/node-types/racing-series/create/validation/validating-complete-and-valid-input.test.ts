@@ -10,6 +10,7 @@ test('validating a complete and valid request', async () => {
         defunct: null,
         organized_by: "FIA",
         vehicle_type: "formula racing cars",
+        country_code: "US",
     }
 
     const result = validate(data)

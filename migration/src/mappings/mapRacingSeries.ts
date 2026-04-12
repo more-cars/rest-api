@@ -9,5 +9,6 @@ export function mapRacingSeries(oldNode: Node): InputRacingSeriesCreate {
         defunct: oldNode.properties.defunct,
         organized_by: oldNode.properties.organization,
         vehicle_type: oldNode.properties.type,
+        country_code: null,
     }
 }

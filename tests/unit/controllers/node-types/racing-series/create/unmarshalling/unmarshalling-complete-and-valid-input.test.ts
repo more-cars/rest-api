@@ -10,6 +10,7 @@ test('unmarshalling a complete and valid request', async () => {
         defunct: null,
         organized_by: "FIA",
         vehicle_type: "formula racing cars",
+        country_code: "US",
     }
 
     const result = unmarshalInputData(data)
@@ -22,5 +23,6 @@ test('unmarshalling a complete and valid request', async () => {
             defunct: null,
             organized_by: "FIA",
             vehicle_type: "formula racing cars",
+            country_code: "US",
         })
 })

@@ -59,6 +59,10 @@ export function validate(data: CreateRacingSeriesRawInput): boolean {
         return false
     }
 
+    if (!isOptionalString(data.country_code)) {
+        return false
+    }
+
     return true
 }
 
@@ -70,5 +74,6 @@ export function sanitize(data: CreateRacingSeriesInput): CreateRacingSeriesInput
         defunct: data.defunct ? data.defunct : null,
         organized_by: data.organized_by ? data.organized_by.trim() : null,
         vehicle_type: data.vehicle_type ? data.vehicle_type.trim() : null,
+        country_code: data.country_code ? data.country_code.trim() : null,
     } satisfies CreateRacingSeriesInput
 }
