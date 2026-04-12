@@ -7,6 +7,7 @@ test('validating a request where mandatory fields are missing', async () => {
         name: undefined,
         founded: 1968,
         defunct: null,
+        country_code: "US",
     }
 
     const result = validate(data)

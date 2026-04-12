@@ -7,6 +7,7 @@ test('validating a valid request where optional fields are missing', async () =>
         name: "Hot Wheels",
         founded: undefined,
         defunct: undefined,
+        country_code: undefined,
     }
 
     const result = validate(data)
