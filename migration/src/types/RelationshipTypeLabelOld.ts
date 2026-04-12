@@ -1,5 +1,7 @@
 export enum RelationshipTypeLabelOld {
     CompanyHasBrand = "OWNS_BRAND",
+    CompanyOriginatesFromCountry = "ORIGINATES_FROM_COUNTRY",
+    CompanyLegalHqInCountry = "LEGAL_HQ_IN_COUNTRY",
     BrandHasCarModel = "BUILDS_CAR_MODEL",
     BrandOriginatesFromCountry = "ORIGINATES_FROM_COUNTRY",
     CarModelHasSuccessor = "IS_SUCCESSOR_OF",

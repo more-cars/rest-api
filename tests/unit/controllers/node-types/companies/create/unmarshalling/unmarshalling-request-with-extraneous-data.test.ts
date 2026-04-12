@@ -7,7 +7,9 @@ test('unmarshalling a request where extraneous fields are contained', async () =
         founded: 1916,
         defunct: null,
         headquarters_location: "Munich",
+        hq_country_code: "DE",
         legal_headquarters_location: "Munich",
+        legal_hq_country_code: "DE",
         my_property: "Hello",
     }
 
@@ -19,6 +21,8 @@ test('unmarshalling a request where extraneous fields are contained', async () =
             founded: 1916,
             defunct: null,
             headquarters_location: "Munich",
+            hq_country_code: "DE",
             legal_headquarters_location: "Munich",
+            legal_hq_country_code: "DE",
         })
 })

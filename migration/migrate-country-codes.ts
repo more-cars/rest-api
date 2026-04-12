@@ -8,14 +8,20 @@ import {updateCountryCode} from "./src/updateCountryCode"
 import {getCountryRelationshipType} from "./src/getCountryRelationshipType"
 import {RelationshipTypeLabelOld} from "./src/types/RelationshipTypeLabelOld"
 
-migrateCountryCodes().then(() => true)
-
-async function migrateCountryCodes() {
+(async () => {
     const newStartNodeType = await determineStartNodeType()
     const oldStartNodeType = NodeTypeMapping.get(newStartNodeType) as NodeTypeLabelOld
     const oldEndNodeType = NodeTypeLabelOld.Country
     const oldRelationshipType = getCountryRelationshipType(newStartNodeType)
 
+    await migrateCountryCodes(oldRelationshipType, oldStartNodeType, oldEndNodeType)
+
+    if (newStartNodeType === DbNodeType.Company) {
+        await migrateCountryCodes(RelationshipTypeLabelOld.CompanyLegalHqInCountry, oldStartNodeType, oldEndNodeType)
+    }
+})()
+
+async function migrateCountryCodes(oldRelationshipType: RelationshipTypeLabelOld, oldStartNodeType: NodeTypeLabelOld, oldEndNodeType: NodeTypeLabelOld) {
     let records
     if (oldRelationshipType === RelationshipTypeLabelOld.PriceInCountry) {
         records = await fetchOldRelationshipsOfType(oldRelationshipType, oldEndNodeType, oldStartNodeType)
@@ -24,7 +30,7 @@ async function migrateCountryCodes() {
     }
 
     const progress = new cliProgress.SingleBar({
-        format: `{bar} | ${newStartNodeType} ${oldRelationshipType} ${oldEndNodeType} | ETA: {eta}s | {value}/{total}`
+        format: `{bar} | ${oldStartNodeType} ${oldRelationshipType} ${oldEndNodeType} | ETA: {eta}s | {value}/{total}`
     })
 
     console.log(`Starting migration of ${records.length} '${oldRelationshipType}' relationships`)
@@ -34,7 +40,11 @@ async function migrateCountryCodes() {
         const startNode: Node = record.get('a')
         const countryNode: Node = record.get('b')
 
-        if (oldRelationshipType === RelationshipTypeLabelOld.PriceInCountry) {
+        if (oldStartNodeType === NodeTypeLabelOld.Company && oldRelationshipType === RelationshipTypeLabelOld.CompanyOriginatesFromCountry) {
+            await updateCountryCode(Number(startNode.identity) + 10_000_000, countryNode.properties.code, 'hq_country_code')
+        } else if (oldStartNodeType === NodeTypeLabelOld.Company && oldRelationshipType === RelationshipTypeLabelOld.CompanyLegalHqInCountry) {
+            await updateCountryCode(Number(startNode.identity) + 10_000_000, countryNode.properties.code, 'legal_hq_country_code')
+        } else if (oldRelationshipType === RelationshipTypeLabelOld.PriceInCountry) {
             await updateCountryCode(Number(countryNode.identity) + 10_000_000, startNode.properties.code)
         } else {
             await updateCountryCode(Number(startNode.identity) + 10_000_000, countryNode.properties.code)

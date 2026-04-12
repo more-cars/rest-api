@@ -15,7 +15,9 @@ test("converting a COMPANY node", async () => {
             founded: 1916,
             defunct: null,
             headquarters_location: "Munich",
+            hq_country_code: "DE",
             legal_headquarters_location: "Munich",
+            legal_hq_country_code: "DE",
         }
     }
 
@@ -30,7 +32,9 @@ test("converting a COMPANY node", async () => {
                 founded: 1916,
                 defunct: null,
                 headquarters_location: "Munich",
+                hq_country_code: "DE",
                 legal_headquarters_location: "Munich",
+                legal_hq_country_code: "DE",
                 created_at: "2025-05-14T11:05:07.793Z",
                 updated_at: "2025-05-14T11:05:07.793Z",
             }

@@ -7,7 +7,9 @@ test('unmarshalling a request where the data types are incorrect', async () => {
         founded: true,
         defunct: true,
         headquarters_location: true,
+        hq_country_code: true,
         legal_headquarters_location: true,
+        legal_hq_country_code: true,
     }
 
     const result = unmarshalInputData(data)
@@ -18,6 +20,8 @@ test('unmarshalling a request where the data types are incorrect', async () => {
             founded: true,
             defunct: true,
             headquarters_location: true,
+            hq_country_code: true,
             legal_headquarters_location: true,
+            legal_hq_country_code: true,
         })
 })

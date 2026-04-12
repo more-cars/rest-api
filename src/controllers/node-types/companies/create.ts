@@ -49,8 +49,15 @@ export function validate(data: CreateCompanyRawInput): boolean {
     if (!isOptionalString(data.headquarters_location)) {
         return false
     }
+    if (!isOptionalString(data.hq_country_code)) {
+        return false
+    }
 
     if (!isOptionalString(data.legal_headquarters_location)) {
+        return false
+    }
+
+    if (!isOptionalString(data.legal_hq_country_code)) {
         return false
     }
 
@@ -63,6 +70,8 @@ export function sanitize(data: CreateCompanyInput): CreateCompanyInput {
         founded: data.founded ? data.founded : null,
         defunct: data.defunct ? data.defunct : null,
         headquarters_location: data.headquarters_location ? data.headquarters_location.trim() : null,
+        hq_country_code: data.hq_country_code ? data.hq_country_code.trim() : null,
         legal_headquarters_location: data.legal_headquarters_location ? data.legal_headquarters_location.trim() : null,
+        legal_hq_country_code: data.legal_hq_country_code ? data.legal_hq_country_code.trim() : null,
     } satisfies CreateCompanyInput
 }

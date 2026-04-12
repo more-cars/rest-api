@@ -7,6 +7,8 @@ export function mapCompany(oldNode: Node): InputCompanyCreate {
         founded: oldNode.properties.founded,
         defunct: oldNode.properties.defunct,
         headquarters_location: oldNode.properties.hq_city,
+        hq_country_code: null,
         legal_headquarters_location: oldNode.properties.legal_hq_city,
+        legal_hq_country_code: null,
     }
 }

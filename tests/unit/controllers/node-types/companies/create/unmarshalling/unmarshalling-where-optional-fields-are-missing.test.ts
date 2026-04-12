@@ -14,6 +14,8 @@ test('unmarshalling a valid request where optional fields are missing', async ()
             founded: undefined,
             defunct: undefined,
             headquarters_location: undefined,
+            hq_country_code: undefined,
             legal_headquarters_location: undefined,
+            legal_hq_country_code: undefined,
         })
 })

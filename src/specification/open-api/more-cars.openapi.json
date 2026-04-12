@@ -27293,10 +27293,20 @@
             "description": "The city, town or region in which the company has its (de facto) headquarters.",
             "example": "Munich"
           },
+          "hq_country_code": {
+            "type": "string",
+            "description": "2-letter ISO 3166 country code.",
+            "example": "DE"
+          },
           "legal_headquarters_location": {
             "type": "string",
             "description": "The city, town or region where the company has its official headquarters. As an example, `Ferrari` is an Italian company, based in `Maranello`, but on paper they are a Dutch company, located in `Amsterdam`.",
             "example": "Munich"
+          },
+          "legal_hq_country_code": {
+            "type": "string",
+            "description": "2-letter ISO 3166 country code.",
+            "example": "DE"
           },
           "created_at": {
             "type": "string",
@@ -27432,7 +27442,9 @@
           "founded",
           "defunct",
           "headquarters_location",
+          "hq_country_code",
           "legal_headquarters_location",
+          "legal_hq_country_code",
           "created_at",
           "updated_at"
         ],

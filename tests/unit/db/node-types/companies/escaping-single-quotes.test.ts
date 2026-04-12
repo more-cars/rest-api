@@ -10,7 +10,9 @@ test('single quotes are correctly escaped', async () => {
         founded: null,
         defunct: null,
         headquarters_location: "'Munich",
-        legal_headquarters_location: "'Munich"
+        hq_country_code: "'DE",
+        legal_headquarters_location: "'Munich",
+        legal_hq_country_code: "'DE",
     }
 
     const query = createNodeQuery(DbNodeType.Company, data)
@@ -22,7 +24,9 @@ test('single quotes are correctly escaped', async () => {
             "  founded: null,\n" +
             "  defunct: null,\n" +
             "  headquarters_location: '\\'Munich',\n" +
-            "  legal_headquarters_location: '\\'Munich'\n" +
+            "  hq_country_code: '\\'Munich',\n" +
+            "  legal_headquarters_location: '\\'Munich,'\n" +
+            "  legal_hq_country_code: '\\'Munich'\n" +
             "})\n" +
             "RETURN node\n" +
             "  LIMIT 1")

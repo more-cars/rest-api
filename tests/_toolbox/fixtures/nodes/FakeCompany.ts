@@ -9,7 +9,9 @@ export const FakeCompany = {
         founded: faker.number.int({min: 1000, max: 3000}),
         defunct: faker.number.int({min: 1000, max: 3000}),
         headquarters_location: faker.location.city(),
+        hq_country_code: faker.location.countryCode(),
         legal_headquarters_location: faker.location.city(),
+        legal_hq_country_code: faker.location.countryCode(),
     } as InputCompanyCreate,
 
     dbInputMinimal: {
@@ -24,7 +26,9 @@ export const FakeCompany = {
             founded: faker.number.int({min: 1000, max: 3000}),
             defunct: faker.number.int({min: 1000, max: 3000}),
             headquarters_location: faker.location.city(),
+            hq_country_code: faker.location.countryCode(),
             legal_headquarters_location: faker.location.city(),
+            legal_hq_country_code: faker.location.countryCode(),
             created_at: faker.date.past().toISOString(),
             updated_at: faker.date.past().toISOString(),
         },

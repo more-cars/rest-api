@@ -25,7 +25,17 @@ export const CompanyNodeSpecification: NodeSpecification = {
             mandatory: false,
         },
         {
+            name: 'hq_country_code',
+            datatype: 'string',
+            mandatory: false,
+        },
+        {
             name: 'legal_headquarters_location',
+            datatype: 'string',
+            mandatory: false,
+        },
+        {
+            name: 'legal_hq_country_code',
             datatype: 'string',
             mandatory: false,
         },

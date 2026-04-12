@@ -8,7 +8,9 @@ test('validating a complete and valid request', async () => {
         founded: 1916,
         defunct: null,
         headquarters_location: "Munich",
+        hq_country_code: "DE",
         legal_headquarters_location: "Munich",
+        legal_hq_country_code: "DE",
     }
 
     const result = validate(data)

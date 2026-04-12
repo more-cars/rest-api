@@ -3,6 +3,7 @@ import {RelationshipTypeLabelOld} from "./types/RelationshipTypeLabelOld"
 
 export function getCountryRelationshipType(startNode: DbNodeType) {
     const mapping = new Map<DbNodeType, RelationshipTypeLabelOld>([
+        [DbNodeType.Company, RelationshipTypeLabelOld.CompanyOriginatesFromCountry],
         [DbNodeType.Brand, RelationshipTypeLabelOld.BrandOriginatesFromCountry],
         [DbNodeType.Price, RelationshipTypeLabelOld.PriceInCountry],
         [DbNodeType.RaceTrack, RelationshipTypeLabelOld.RaceTrackLocatedInCountry],

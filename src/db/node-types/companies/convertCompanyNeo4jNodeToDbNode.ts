@@ -16,7 +16,9 @@ export function convertCompanyNeo4jNodeToDbNode(neo4jNode: Node): CompanyNode {
             founded: neo4jNode.properties.founded,
             defunct: neo4jNode.properties.defunct,
             headquarters_location: neo4jNode.properties.headquarters_location,
+            hq_country_code: neo4jNode.properties.hq_country_code,
             legal_headquarters_location: neo4jNode.properties.legal_headquarters_location,
+            legal_hq_country_code: neo4jNode.properties.legal_hq_country_code,
         },
     } satisfies CompanyNode
 }

@@ -16,7 +16,9 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             founded: 1916,
             defunct: null,
             headquarters_location: "Munich",
+            hq_country_code: "DE",
             legal_headquarters_location: "Munich",
+            legal_hq_country_code: "DE",
         },
         elementId: "",
     }
@@ -34,7 +36,9 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
                 founded: 1916,
                 defunct: null,
                 headquarters_location: "Munich",
+                hq_country_code: "DE",
                 legal_headquarters_location: "Munich",
+                legal_hq_country_code: "DE",
             },
         } satisfies CompanyNode)
 })
