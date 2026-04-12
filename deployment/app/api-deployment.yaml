@@ -40,6 +40,11 @@ spec:
                   optional: true
                   name: basic-auth
                   key: password
+            - name: FLICKR_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: flickr-credentials
+                  key: apikey
             - name: YOUTUBE_API_KEY
               valueFrom:
                 secretKeyRef:
