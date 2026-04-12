@@ -6,6 +6,7 @@ import {DbNodeType} from "../src/db/types/DbNodeType"
 import type {Node} from "neo4j-driver"
 import {updateCountryCode} from "./src/updateCountryCode"
 import {getCountryRelationshipType} from "./src/getCountryRelationshipType"
+import {RelationshipTypeLabelOld} from "./src/types/RelationshipTypeLabelOld"
 
 migrateCountryCodes().then(() => true)
 
@@ -15,7 +16,12 @@ async function migrateCountryCodes() {
     const oldEndNodeType = NodeTypeLabelOld.Country
     const oldRelationshipType = getCountryRelationshipType(newStartNodeType)
 
-    const records = await fetchOldRelationshipsOfType(oldRelationshipType, oldStartNodeType, oldEndNodeType)
+    let records
+    if (oldRelationshipType === RelationshipTypeLabelOld.PriceInCountry) {
+        records = await fetchOldRelationshipsOfType(oldRelationshipType, oldEndNodeType, oldStartNodeType)
+    } else {
+        records = await fetchOldRelationshipsOfType(oldRelationshipType, oldStartNodeType, oldEndNodeType)
+    }
 
     const progress = new cliProgress.SingleBar({
         format: `{bar} | ${newStartNodeType} ${oldRelationshipType} ${oldEndNodeType} | ETA: {eta}s | {value}/{total}`
@@ -28,7 +34,11 @@ async function migrateCountryCodes() {
         const startNode: Node = record.get('a')
         const countryNode: Node = record.get('b')
 
-        await updateCountryCode(Number(startNode.identity) + 10_000_000, countryNode.properties.code)
+        if (oldRelationshipType === RelationshipTypeLabelOld.PriceInCountry) {
+            await updateCountryCode(Number(countryNode.identity) + 10_000_000, startNode.properties.code)
+        } else {
+            await updateCountryCode(Number(startNode.identity) + 10_000_000, countryNode.properties.code)
+        }
 
         progress.increment(1)
     }

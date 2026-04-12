@@ -6,6 +6,6 @@ export function mapPrice(oldNode: Node): InputPriceCreate {
         price: oldNode.properties.price,
         price_year: oldNode.properties.year,
         currency_code: oldNode.properties.currency,
-        country_code: 'OO', // not available in old db
+        country_code: '--', // not available in old db, but a mandatory field
     }
 }
