@@ -10,6 +10,7 @@ test('unmarshalling a complete and valid request', async () => {
         type: "permanent race track",
         location: "Klettwitz",
         geo_position: "51°32'0\"N 13°55'10\"E",
+        country_code: "DE",
     }
 
     const result = unmarshalInputData(data)
@@ -22,5 +23,6 @@ test('unmarshalling a complete and valid request', async () => {
             type: "permanent race track",
             location: "Klettwitz",
             geo_position: "51°32'0\"N 13°55'10\"E",
+            country_code: "DE",
         })
 })

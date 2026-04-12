@@ -5,4 +5,5 @@ export type CreateRaceTrackRawInput = {
     type: unknown
     location: unknown
     geo_position: unknown
+    country_code: unknown
 }

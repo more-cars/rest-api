@@ -13,6 +13,7 @@ export function convertRaceTrackDbNodeToModelNode(data: DbRaceTrackNode): RaceTr
             type: data.properties.type,
             location: data.properties.location,
             geo_position: data.properties.geo_position,
+            country_code: data.properties.country_code,
             created_at: data.properties.created_at,
             updated_at: data.properties.updated_at,
         },

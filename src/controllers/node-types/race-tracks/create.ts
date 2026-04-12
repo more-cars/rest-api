@@ -59,6 +59,10 @@ export function validate(data: CreateRaceTrackRawInput): boolean {
         return false
     }
 
+    if (!isOptionalString(data.country_code)) {
+        return false
+    }
+
     return true
 }
 
@@ -70,5 +74,6 @@ export function sanitize(data: CreateRaceTrackInput): CreateRaceTrackInput {
         type: data.type ? data.type.trim() : null,
         location: data.location ? data.location.trim() : null,
         geo_position: data.geo_position ? data.geo_position.trim() : null,
+        country_code: data.country_code ? data.country_code.trim() : null,
     } satisfies CreateRaceTrackInput
 }

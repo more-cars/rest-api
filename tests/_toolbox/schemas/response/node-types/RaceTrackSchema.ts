@@ -12,6 +12,7 @@ export const RaceTrackSchema = {
                 type: {type: ["string", "null"]},
                 location: {type: ["string", "null"]},
                 geo_position: {type: ["string", "null"]},
+                country_code: {type: ["string", "null"]},
                 created_at: {type: ["string"]},
                 updated_at: {type: ["string"]},
             },

@@ -9,6 +9,7 @@ test('unmarshalling a request where extraneous fields are contained', async () =
         type: "permanent race track",
         location: "Klettwitz",
         geo_position: "51°32'0\"N 13°55'10\"E",
+        country_code: "DE",
         my_property: "Hello",
     }
 
@@ -22,5 +23,6 @@ test('unmarshalling a request where extraneous fields are contained', async () =
             type: "permanent race track",
             location: "Klettwitz",
             geo_position: "51°32'0\"N 13°55'10\"E",
+            country_code: "DE",
         })
 })

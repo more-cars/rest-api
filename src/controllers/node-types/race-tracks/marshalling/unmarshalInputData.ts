@@ -9,5 +9,6 @@ export function unmarshalInputData(data): CreateRaceTrackRawInput {
         type: data?.type,
         location: data?.location,
         geo_position: data?.geo_position,
+        country_code: data?.country_code,
     } satisfies CreateRaceTrackRawInput
 }

@@ -18,6 +18,7 @@ export function convertRaceTrackNeo4jNodeToDbNode(neo4jNode: Node): RaceTrackNod
             type: neo4jNode.properties.type,
             location: neo4jNode.properties.location,
             geo_position: neo4jNode.properties.geo_position,
+            country_code: neo4jNode.properties.country_code,
         },
     } satisfies RaceTrackNode
 }

@@ -3,15 +3,16 @@ import {CreateRaceTrackRawInput} from "../../../../../../../src/controllers/node
 import {validate} from "../../../../../../../src/controllers/node-types/race-tracks/create"
 
 test.each([
-    [true, 2000, 2345, "permanent race track", "Klettwitz", "51°32'0\"N 13°55'10\"E"],
-    ["Lausitzring", false, 2345, "permanent race track", "Klettwitz", "51°32'0\"N 13°55'10\"E"],
-    ["Lausitzring", 2000, false, "permanent race track", "Klettwitz", "51°32'0\"N 13°55'10\"E"],
-    ["Lausitzring", 2000, 2345, false, "Klettwitz", "51°32'0\"N 13°55'10\"E"],
-    ["Lausitzring", 2000, 2345, "permanent race track", false, "51°32'0\"N 13°55'10\"E"],
-    ["Lausitzring", 2000, 2345, "permanent race track", "Klettwitz", false],
+    [true, 2000, 2345, "permanent race track", "Klettwitz", "51°32'0\"N 13°55'10\"E", "DE"],
+    ["Lausitzring", false, 2345, "permanent race track", "Klettwitz", "51°32'0\"N 13°55'10\"E", "DE"],
+    ["Lausitzring", 2000, false, "permanent race track", "Klettwitz", "51°32'0\"N 13°55'10\"E", "DE"],
+    ["Lausitzring", 2000, 2345, false, "Klettwitz", "51°32'0\"N 13°55'10\"E", "DE"],
+    ["Lausitzring", 2000, 2345, "permanent race track", false, "51°32'0\"N 13°55'10\"E", "DE"],
+    ["Lausitzring", 2000, 2345, "permanent race track", "Klettwitz", false, "DE"],
+    ["Lausitzring", 2000, 2345, "permanent race track", "Klettwitz", "51°32'0\"N 13°55'10\"E", false],
 
 ])('validating a request where the fields have invalid data types', async (
-    name, opened, closed, type, location, geo_position
+    name, opened, closed, type, location, geo_position, country_code
 ) => {
     const data: CreateRaceTrackRawInput = {
         name,
@@ -20,6 +21,7 @@ test.each([
         type,
         location,
         geo_position,
+        country_code,
     }
 
     const result = validate(data)

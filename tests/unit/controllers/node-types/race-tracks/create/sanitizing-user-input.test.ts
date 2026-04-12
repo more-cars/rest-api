@@ -11,6 +11,7 @@ describe('Sanitizing user input', () => {
             type: "   permanent race track  ",
             location: "   Klettwitz  ",
             geo_position: "   51°32'0\"N 13°55'10\"E  ",
+            country_code: "   DE  ",
         }
 
         const result = sanitize(data)
@@ -23,6 +24,7 @@ describe('Sanitizing user input', () => {
                 type: "permanent race track",
                 location: "Klettwitz",
                 geo_position: "51°32'0\"N 13°55'10\"E",
+                country_code: "DE",
             })
     })
 })

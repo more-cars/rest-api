@@ -11,7 +11,8 @@ test('database query for creating a RACE TRACK node', async () => {
         closed: null,
         type: "permanent race track",
         location: "Klettwitz",
-        geo_position: "51°32'0\"N 13°55'10\"E"
+        geo_position: "51°32'0\"N 13°55'10\"E",
+        country_code: "DE",
     }
 
     const query = createNodeQuery(DbNodeType.RaceTrack, data)
@@ -25,6 +26,7 @@ test('database query for creating a RACE TRACK node', async () => {
             "  type: 'permanent race track',\n" +
             "  location: 'Klettwitz',\n" +
             "  geo_position: '51°32\\'0\"N 13°55\\'10\"E'\n" +
+            "  country_code: 'DE'\n" +
             "})\n" +
             "RETURN node\n" +
             "  LIMIT 1")

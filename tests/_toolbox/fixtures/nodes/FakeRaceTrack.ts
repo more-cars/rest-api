@@ -11,6 +11,7 @@ export const FakeRaceTrack = {
         type: faker.word.noun(),
         location: faker.location.city(),
         geo_position: faker.location.latitude() + ' ' + faker.location.longitude,
+        country_code: faker.location.countryCode(),
     } as InputRaceTrackCreate,
 
     dbInputMinimal: {
@@ -27,6 +28,7 @@ export const FakeRaceTrack = {
             type: faker.word.noun(),
             location: faker.location.city(),
             geo_position: faker.location.latitude() + ' ' + faker.location.longitude,
+            country_code: faker.location.countryCode(),
             created_at: faker.date.past().toISOString(),
             updated_at: faker.date.past().toISOString(),
         },

@@ -27688,6 +27688,11 @@
             "type": "string",
             "description": "The geographic position of the race track, provided as coordinates with latitude and longitude information.",
             "example": "51°32'0\"N 13°55'10\"E"
+          },
+          "country_code": {
+            "type": "string",
+            "description": "2-letter ISO 3166 country code.",
+            "example": "DE"
           }
         }
       },
@@ -28081,7 +28086,8 @@
           "closed",
           "type",
           "location",
-          "geo_position"
+          "geo_position",
+          "country_code"
         ],
         "default": "name"
       },

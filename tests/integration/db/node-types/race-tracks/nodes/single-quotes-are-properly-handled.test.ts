@@ -9,6 +9,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         type: "'permanent race track''",
         location: "'Klettwitz''",
         geo_position: "'51°32&#39;0&#34;N 13°55&#39;10&#34;E''",
+        country_code: "'DE''",
     }
 
     const createdNode = await createNode(data)
@@ -24,4 +25,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
 
     expect(createdNode.properties.geo_position)
         .toEqual("'51°32&#39;0&#34;N 13°55&#39;10&#34;E''")
+
+    expect(createdNode.properties.country_code)
+        .toEqual("'DE''")
 })

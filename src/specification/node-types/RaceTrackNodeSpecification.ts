@@ -34,5 +34,10 @@ export const RaceTrackNodeSpecification: NodeSpecification = {
             datatype: 'string',
             mandatory: false,
         },
+        {
+            name: 'country_code',
+            datatype: 'string',
+            mandatory: false,
+        },
     ],
 }

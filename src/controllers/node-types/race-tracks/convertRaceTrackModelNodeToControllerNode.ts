@@ -13,6 +13,7 @@ export function convertRaceTrackModelNodeToControllerNode(modelNode: ModelRaceTr
             type: modelNode.attributes.type ?? null,
             location: modelNode.attributes.location ?? null,
             geo_position: modelNode.attributes.geo_position ?? null,
+            country_code: modelNode.attributes.country_code ?? null,
             created_at: modelNode.attributes.created_at,
             updated_at: modelNode.attributes.updated_at,
         },
