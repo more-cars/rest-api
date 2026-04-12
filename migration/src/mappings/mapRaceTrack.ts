@@ -9,5 +9,6 @@ export function mapRaceTrack(oldNode: Node): InputRaceTrackCreate {
         type: oldNode.properties.type,
         location: oldNode.properties.location,
         geo_position: oldNode.properties.coordinates,
+        country_code: null,
     }
 }

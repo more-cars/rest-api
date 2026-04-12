@@ -19,5 +19,5 @@ export async function fetchOldRelationshipsOfType(relationshipType: Relationship
 }
 
 function getRelationshipQuery(startNodeType: string, relationshipName: string, endNodeType: string) {
-    return `MATCH (a:${startNodeType})-[rel:${relationshipName}]->(:${endNodeType}) RETURN rel ORDER BY id(rel)`
+    return `MATCH (a:${startNodeType})-[rel:${relationshipName}]->(b:${endNodeType}) RETURN a, rel, b ORDER BY id(rel)`
 }

@@ -35,6 +35,8 @@ async function collectParams() {
         startNodeType = await getStartNodeType(process.env.START_NODE_TYPE)
         endNodeType = await getEndNodeType(startNodeType, process.env.END_NODE_TYPE)
         relationshipType = await getRelationshipType(startNodeType, endNodeType, process.env.MIGRATE_RELATIONSHIP_TYPE)
+    } else if (dataType === 'country_codes') {
+        startNodeType = await getStartNodeType(process.env.START_NODE_TYPE)
     }
 
     return assembleEnvFileData({

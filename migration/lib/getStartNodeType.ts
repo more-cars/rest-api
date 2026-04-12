@@ -11,7 +11,9 @@ export async function getStartNodeType(override: string | undefined) {
     const choices = []
 
     for (const node of nodeOptions) {
-        choices.push({value: node})
+        if (node) {
+            choices.push({value: node})
+        }
     }
 
     return select({

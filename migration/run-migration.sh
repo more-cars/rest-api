@@ -18,7 +18,7 @@ echo "  Data type: $MIGRATE_DATA_TYPE"
 echo "  Node type: $MIGRATE_NODE_TYPE"
 echo "  Relationship type: $MIGRATE_RELATIONSHIP_TYPE"
 echo "  Start node type: $START_NODE_TYPE"
-echo "  end node type: $END_NODE_TYPE"
+echo "  End node type: $END_NODE_TYPE"
 echo ----------------------------------------------------------
 
 if [ "$MIGRATION_RUNNER" = local ]; then
@@ -26,6 +26,8 @@ if [ "$MIGRATION_RUNNER" = local ]; then
     node -r ts-node/register migration/migrate-nodes.ts
   elif [ "$MIGRATE_DATA_TYPE" = relationships ]; then
     node -r ts-node/register migration/migrate-relationships.ts
+  elif [ "$MIGRATE_DATA_TYPE" = country_codes ]; then
+      node -r ts-node/register migration/migrate-country-codes.ts
   fi
 elif [ "$MIGRATION_RUNNER" = minikube ]; then
   if [ "$MIGRATE_DATA_TYPE" = nodes ]; then
@@ -44,6 +46,14 @@ elif [ "$MIGRATION_RUNNER" = minikube ]; then
     kubectl apply -k "$SCRIPT_PATH"/../deployment/overlays/"$TARGET_ENVIRONMENT"/jobs/migrate-relationships
     kubectl wait --for=condition=complete job/"$JOB_NAME" --timeout=60m
     kubectl describe job/"$JOB_NAME"
+  elif [ "$MIGRATE_DATA_TYPE" = country_codes ]; then
+      JOB_NAME=migrate-country-codes-$(date +%s)
+      npx ts-node "$SCRIPT_PATH"/lib/create-patch-file_country_codes.ts "$JOB_NAME"
+      kubectl config use-context morecars
+      kubectl config set-context --current --namespace="$TARGET_ENVIRONMENT"
+      kubectl apply -k "$SCRIPT_PATH"/../deployment/overlays/"$TARGET_ENVIRONMENT"/jobs/migrate-country-codes
+      kubectl wait --for=condition=complete job/"$JOB_NAME" --timeout=60m
+      kubectl describe job/"$JOB_NAME"
   fi
 elif [ "$MIGRATION_RUNNER" = gke ]; then
   if [ "$MIGRATE_DATA_TYPE" = nodes ]; then
@@ -64,5 +74,14 @@ elif [ "$MIGRATION_RUNNER" = gke ]; then
     kubectl apply -k "$SCRIPT_PATH"/../deployment/overlays/"$TARGET_ENVIRONMENT"/jobs/migrate-relationships
     kubectl wait --for=condition=complete job/"$JOB_NAME" --timeout=60m
     kubectl describe job/"$JOB_NAME"
+  elif [ "$MIGRATE_DATA_TYPE" = country_codes ]; then
+      JOB_NAME=migrate-country-codes-$(date +%s)
+      npx ts-node "$SCRIPT_PATH"/lib/create-patch-file_country_codes.ts "$JOB_NAME"
+      gcloud container clusters get-credentials more-cars --region=europe-west1-b
+      kubectl config use-context gke_more-cars_europe-west1-b_more-cars
+      kubectl config set-context --current --namespace="$TARGET_ENVIRONMENT"
+      kubectl apply -k "$SCRIPT_PATH"/../deployment/overlays/"$TARGET_ENVIRONMENT"/jobs/migrate-country-codes
+      kubectl wait --for=condition=complete job/"$JOB_NAME" --timeout=60m
+      kubectl describe job/"$JOB_NAME"
   fi
 fi

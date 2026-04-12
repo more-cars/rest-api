@@ -1,0 +1,20 @@
+[
+  {
+    "op": "replace",
+    "path": "/metadata/name",
+    "value": "migrate-country-codes-1774081430"
+  },
+  {
+    "op": "replace",
+    "path": "/spec/template/spec/containers/0/image",
+    "value": "ghcr.io/more-cars/rest-api-rc:latest"
+  },
+  {
+    "op": "add",
+    "path": "/spec/template/spec/containers/0/env/-",
+    "value": {
+      "name": "START_NODE_TYPE",
+      "value": "RaceTrack"
+    }
+  }
+]
