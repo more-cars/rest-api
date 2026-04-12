@@ -9,5 +9,6 @@ export function convertInputData(data: CreateBrandInput): InputBrandCreate {
         defunct: data.defunct,
         wmi: data.wmi,
         hsn: data.hsn,
+        country_code: data.country_code,
     } satisfies InputBrandCreate
 }

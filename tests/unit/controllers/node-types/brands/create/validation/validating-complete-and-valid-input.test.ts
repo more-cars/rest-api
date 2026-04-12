@@ -10,6 +10,7 @@ test('validating a complete and valid request', async () => {
         defunct: 2222,
         wmi: "WBA",
         hsn: "0005",
+        country_code: "DE",
     }
 
     const result = validate(data)

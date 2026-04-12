@@ -9,5 +9,6 @@ export function unmarshalInputData(data): CreateBrandRawInput {
         defunct: data?.defunct,
         wmi: data?.wmi,
         hsn: data?.hsn,
+        country_code: data?.country_code,
     } satisfies CreateBrandRawInput
 }

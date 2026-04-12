@@ -9,5 +9,6 @@ export function mapBrand(oldNode: Node): InputBrandCreate {
         defunct: oldNode.properties.defunct,
         wmi: oldNode.properties.wmi,
         hsn: oldNode.properties.hsn,
+        country_code: null,
     }
 }

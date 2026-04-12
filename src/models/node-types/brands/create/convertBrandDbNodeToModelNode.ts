@@ -13,6 +13,7 @@ export function convertBrandDbNodeToModelNode(data: DbBrandNode): BrandNode {
             defunct: data.properties.defunct,
             wmi: data.properties.wmi,
             hsn: data.properties.hsn,
+            country_code: data.properties.country_code,
             created_at: data.properties.created_at,
             updated_at: data.properties.updated_at,
         },

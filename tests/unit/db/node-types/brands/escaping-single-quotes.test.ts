@@ -12,6 +12,7 @@ test('single quotes are correctly escaped', async () => {
         defunct: null,
         wmi: "A'BC",
         hsn: "00''05",
+        country_code: "DE''",
     }
 
     const query = createNodeQuery(DbNodeType.Brand, data)
@@ -24,7 +25,8 @@ test('single quotes are correctly escaped', async () => {
             "  founded: null,\n" +
             "  defunct: null,\n" +
             "  wmi: 'A\\'BC',\n" +
-            "  hsn: '00\\'\\'05'\n" +
+            "  hsn: '00\\'\\'05',\n" +
+            "  country_code: 'DE\\'\\'\n" +
             "})\n" +
             "RETURN node\n" +
             "  LIMIT 1")

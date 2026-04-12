@@ -34,5 +34,10 @@ export const BrandNodeSpecification: NodeSpecification = {
             datatype: 'string',
             mandatory: false,
         },
+        {
+            name: 'country_code',
+            datatype: 'string',
+            mandatory: false,
+        },
     ],
 }

@@ -18,6 +18,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             defunct: null,
             wmi: "WBA",
             hsn: "0005",
+            country_code: "DE",
         },
         elementId: "",
     }
@@ -37,6 +38,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
                 defunct: null,
                 wmi: "WBA",
                 hsn: "0005",
+                country_code: "DE",
             },
         } satisfies BrandNode)
 })

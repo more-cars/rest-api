@@ -58,6 +58,10 @@ export function validate(data: CreateBrandRawInput): boolean {
         return false
     }
 
+    if (!isOptionalString(data.country_code)) {
+        return false
+    }
+
     return true
 }
 
@@ -69,5 +73,6 @@ export function sanitize(data: CreateBrandInput): CreateBrandInput {
         defunct: data.defunct ? data.defunct : null,
         wmi: data.wmi ? data.wmi.trim() : null,
         hsn: data.hsn ? data.hsn.trim() : null,
+        country_code: data.country_code ? data.country_code.trim() : null,
     } satisfies CreateBrandInput
 }

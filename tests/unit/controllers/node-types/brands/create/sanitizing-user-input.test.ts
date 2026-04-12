@@ -11,6 +11,7 @@ describe('Sanitizing user input', () => {
             defunct: null,
             wmi: "WBA",
             hsn: "    0005",
+            country_code: "    DE",
         }
 
         const result = sanitize(data)
@@ -23,6 +24,7 @@ describe('Sanitizing user input', () => {
                 defunct: null,
                 wmi: "WBA",
                 hsn: "0005",
+                country_code: "DE",
             })
     })
 })

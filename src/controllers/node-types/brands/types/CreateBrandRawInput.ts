@@ -5,4 +5,5 @@ export type CreateBrandRawInput = {
     defunct: unknown
     wmi: unknown
     hsn: unknown
+    country_code: unknown
 }

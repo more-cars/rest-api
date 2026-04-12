@@ -17,6 +17,7 @@ test("converting a BRAND node", async () => {
             defunct: null,
             wmi: "WBA",
             hsn: "0005",
+            country_code: "DE",
         }
     }
 
@@ -33,6 +34,7 @@ test("converting a BRAND node", async () => {
                 defunct: null,
                 wmi: "WBA",
                 hsn: "0005",
+                country_code: "DE",
                 created_at: "2025-05-14T11:05:07.793Z",
                 updated_at: "2025-05-14T11:05:07.793Z",
             }

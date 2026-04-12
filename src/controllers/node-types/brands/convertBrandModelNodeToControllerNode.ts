@@ -13,6 +13,7 @@ export function convertBrandModelNodeToControllerNode(modelNode: ModelBrandNode)
             defunct: modelNode.attributes.defunct ?? null,
             wmi: modelNode.attributes.wmi ?? null,
             hsn: modelNode.attributes.hsn ?? null,
+            country_code: modelNode.attributes.country_code ?? null,
             created_at: modelNode.attributes.created_at,
             updated_at: modelNode.attributes.updated_at,
         },

@@ -8,6 +8,7 @@ test('unmarshalling a request where mandatory fields are missing', async () => {
         defunct: 2222,
         wmi: "WBA",
         hsn: "0005",
+        country_code: "DE",
     }
 
     const result = unmarshalInputData(data)
@@ -20,5 +21,6 @@ test('unmarshalling a request where mandatory fields are missing', async () => {
             defunct: 2222,
             wmi: "WBA",
             hsn: "0005",
+            country_code: "DE",
         })
 })

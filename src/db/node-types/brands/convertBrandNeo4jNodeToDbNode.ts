@@ -18,6 +18,7 @@ export function convertBrandNeo4jNodeToDbNode(neo4jNode: Node): BrandNode {
             defunct: neo4jNode.properties.defunct,
             wmi: neo4jNode.properties.wmi,
             hsn: neo4jNode.properties.hsn,
+            country_code: neo4jNode.properties.country_code,
         },
     } satisfies BrandNode
 }

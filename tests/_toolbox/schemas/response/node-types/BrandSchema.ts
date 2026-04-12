@@ -12,6 +12,7 @@ export const BrandSchema = {
                 defunct: {type: ["integer", "null"]},
                 wmi: {type: ["string", "null"]},
                 hsn: {type: ["string", "null"]},
+                country_code: {type: ["string", "null"]},
                 created_at: {type: ["string"]},
                 updated_at: {type: ["string"]},
             },

@@ -17,6 +17,7 @@ test('unmarshalling a request where extraneous fields are contained', async () =
             founded: undefined,
             defunct: undefined,
             wmi: undefined,
-            hsn: undefined
+            hsn: undefined,
+            country_code: undefined,
         })
 })

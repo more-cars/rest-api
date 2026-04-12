@@ -12,6 +12,7 @@ test('database query for creating a BRAND node', async () => {
         defunct: 2020,
         wmi: null,
         hsn: "0005",
+        country_code: "DE",
     }
 
     const query = createNodeQuery(DbNodeType.Brand, data)
@@ -24,7 +25,8 @@ test('database query for creating a BRAND node', async () => {
             "  founded: null,\n" +
             "  defunct: 2020,\n" +
             "  wmi: null,\n" +
-            "  hsn: '0005'\n" +
+            "  hsn: '0005',\n" +
+            "  country_code: 'DE'\n" +
             "})\n" +
             "RETURN node\n" +
             "  LIMIT 1")

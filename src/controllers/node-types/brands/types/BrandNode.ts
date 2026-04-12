@@ -11,6 +11,7 @@ export type BrandNode = {
         defunct: number | null
         wmi: string | null
         hsn: string | null
+        country_code: string | null
 
         created_at: string
         updated_at: string

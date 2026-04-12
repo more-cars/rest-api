@@ -5,4 +5,5 @@ export type InputBrandCreate = {
     defunct: number | null
     wmi: string | null
     hsn: string | null
+    country_code: string | null
 }

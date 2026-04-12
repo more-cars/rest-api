@@ -11,6 +11,7 @@ export const FakeBrand = {
         defunct: faker.number.int({min: 1000, max: 3000}),
         wmi: faker.vehicle.vrm(),
         hsn: faker.vehicle.vrm(),
+        country_code: faker.location.countryCode(),
     } satisfies InputBrandCreate,
 
     dbInputMinimal: {
@@ -27,6 +28,7 @@ export const FakeBrand = {
             defunct: faker.number.int({min: 1000, max: 3000}),
             wmi: faker.vehicle.vrm(),
             hsn: faker.vehicle.vrm(),
+            country_code: faker.location.countryCode(),
             created_at: faker.date.past().toISOString(),
             updated_at: faker.date.past().toISOString(),
         },

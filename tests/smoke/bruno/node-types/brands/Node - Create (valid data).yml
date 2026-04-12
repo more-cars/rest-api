@@ -18,7 +18,8 @@ http:
         "founded": 1916,
         "defunct": 1966,
         "wmi": null,
-        "hsn": "0010"
+        "hsn": "0010",
+        "country_code": "DE"
       }
 
 runtime:
