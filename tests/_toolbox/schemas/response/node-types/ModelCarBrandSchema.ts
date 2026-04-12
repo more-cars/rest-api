@@ -9,6 +9,7 @@ export const ModelCarBrandSchema = {
                 name: {type: ["string"]},
                 founded: {type: ["number", "null"]},
                 defunct: {type: ["number", "null"]},
+                country_code: {type: ["string", "null"]},
                 created_at: {type: ["string"]},
                 updated_at: {type: ["string"]},
             },
