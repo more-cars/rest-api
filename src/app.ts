@@ -1,5 +1,6 @@
 import express, {Express} from "express"
 import cors from "cors"
+import {authentication} from "./routes/middleware/authentication"
 import {basicAuthentication} from "./basicAuthentication"
 import {userDbNamespace} from "./userDbNamespace"
 import openApiSpecification from "./routes/open-api-specification"
@@ -13,6 +14,9 @@ const app: Express = express()
 // Allowing all CORS requests
 // TODO: CORS was enabled to allow the Swagger UI to load the API Spec. Does this have any side-effects or introduce security risks?
 app.use(cors())
+
+// enabling auth checks
+app.use(authentication)
 
 // enabling express to parse requests that have a json body
 app.use(express.json())
