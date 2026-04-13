@@ -1,21 +1,23 @@
-import {expect, test} from 'vitest'
-import {createNode as createBrandNode} from "../../../../../src/db/node-types/brands/createNode"
-import {createNode as createCarModelNode} from "../../../../../src/db/node-types/car-models/createNode"
-import {createNode as createImageNode} from "../../../../../src/db/node-types/images/createNode"
-import {FakeBrand} from "../../../../_toolbox/fixtures/nodes/FakeBrand"
-import {FakeCarModel} from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
-import {FakeImage} from "../../../../_toolbox/fixtures/nodes/FakeImage"
+import {describe, expect, test} from 'vitest'
+import {getAllExpectedNodeTypes} from "../../../../_toolbox/getAllExpectedNodeTypes"
+import {createNeo4jNode} from "../../../../../src/db/nodes/createNeo4jNode"
+import {convertStringToDbNodeType} from "../../../../_toolbox/convertStringToNodeType"
+import {getFakeNode} from "../../../../_toolbox/fixtures/nodes/getFakeNode"
+import type {InputNodeTypeCreate} from "../../../../../src/db/types/InputNodeTypeCreate"
 
-test('Timestamps are identical when creating a node', async () => {
-    const createdBrand = await createBrandNode(FakeBrand.dbInput)
-    expect(createdBrand.properties.created_at)
-        .toEqual(createdBrand.properties.updated_at)
+describe('Both timestamps are identical for new nodes', () => {
+    test.each(
+        getAllExpectedNodeTypes()
+    )('$0', async (nodeType) => {
+        if (!nodeType) {
+            return
+        }
 
-    const createdCarModel = await createCarModelNode(FakeCarModel.dbInput)
-    expect(createdCarModel.properties.created_at)
-        .toEqual(createdCarModel.properties.updated_at)
+        const dbNodeType = convertStringToDbNodeType(nodeType)
+        const nodeData = getFakeNode(nodeType).dbInputMinimal as InputNodeTypeCreate
+        const createdNode = await createNeo4jNode(dbNodeType, nodeData)
 
-    const createdImage = await createImageNode(FakeImage.dbInput)
-    expect(createdImage.properties.created_at)
-        .toEqual(createdImage.properties.updated_at)
+        expect(createdNode.properties.created_at)
+            .toEqual(createdNode.properties.updated_at)
+    })
 })
