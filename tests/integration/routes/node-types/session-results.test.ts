@@ -1,11 +1,11 @@
 import {describe, expect, test, vi} from "vitest"
 import request from "supertest"
-import {app} from "../../../src/app"
-import {SessionResultController} from "../../../src/controllers/node-types/SessionResultController"
+import {app} from "../../../../src/app"
+import {SessionResultController} from "../../../../src/controllers/node-types/SessionResultController"
+
+vi.mock("../../../../src/controllers/node-types/SessionResultController.ts", {spy: true})
 
 describe('Session Results', () => {
-    vi.mock("../../../src/controllers/node-types/SessionResultController.ts", {spy: true})
-
     test('Create Node', async () => {
         await request(app)
             .post('/session-results')

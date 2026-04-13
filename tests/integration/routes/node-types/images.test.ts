@@ -1,11 +1,11 @@
 import {describe, expect, test, vi} from "vitest"
 import request from "supertest"
-import {app} from "../../../src/app"
-import {ImageController} from "../../../src/controllers/node-types/ImageController"
+import {app} from "../../../../src/app"
+import {ImageController} from "../../../../src/controllers/node-types/ImageController"
+
+vi.mock("../../../../src/controllers/node-types/ImageController.ts", {spy: true})
 
 describe('Images', () => {
-    vi.mock("../../../src/controllers/node-types/ImageController.ts", {spy: true})
-
     test('Create Node', async () => {
         await request(app)
             .post('/images')

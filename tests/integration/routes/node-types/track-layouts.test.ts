@@ -1,11 +1,11 @@
 import {describe, expect, test, vi} from "vitest"
 import request from "supertest"
-import {app} from "../../../src/app"
-import {TrackLayoutController} from "../../../src/controllers/node-types/TrackLayoutController"
+import {app} from "../../../../src/app"
+import {TrackLayoutController} from "../../../../src/controllers/node-types/TrackLayoutController"
+
+vi.mock("../../../../src/controllers/node-types/TrackLayoutController.ts", {spy: true})
 
 describe('Track Layouts', () => {
-    vi.mock("../../../src/controllers/node-types/TrackLayoutController.ts", {spy: true})
-
     test('Create Node', async () => {
         await request(app)
             .post('/track-layouts')
