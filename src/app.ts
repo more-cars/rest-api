@@ -11,23 +11,22 @@ import {registerNodeTypeRoutes} from "./routes/registerNodeTypeRoutes"
 
 const app: Express = express()
 
-// Allowing all CORS requests
-// TODO: CORS was enabled to allow the Swagger UI to load the API Spec. Does this have any side-effects or introduce security risks?
-app.use(cors())
-
 // activating "auth" checks
 app.use(authentication)
 
 // activating "basic auth" checks
 app.use(basicAuthentication)
 
-// enabling express to parse requests that have a json body
+// allowing all cross-origin requests
+app.use(cors())
+
+// activating JSON support (e.g. to be able to parse POST request bodies)
 app.use(express.json())
 
-// creating an isolated namespace for the user in the database
+// allowing/disallowing the user to create their own isolated namespace in the database
 app.use(userDbNamespace)
 
-// registering all routes
+// registering the routes
 app.use('/', openApiSpecification)
 app.use('/', health)
 app.use('/', nodes)
