@@ -2,9 +2,7 @@ import express from "express"
 import {sendResponse401} from "../../controllers/responses/sendResponse401"
 
 export function authentication(req: express.Request, res: express.Response, next: express.NextFunction) {
-    const accessToken = process.env.API_ACCESS_TOKEN as string
-
-    if (!accessToken) {
+    if (!requiresAuthentication()) {
         return next()
     }
 
@@ -19,6 +17,7 @@ export function authentication(req: express.Request, res: express.Response, next
             return sendResponse401(res, next)
         }
 
+        const accessToken = process.env.API_ACCESS_TOKEN as string
         const providedToken = authParts[1]
 
         if (providedToken !== accessToken) {
@@ -29,4 +28,8 @@ export function authentication(req: express.Request, res: express.Response, next
     }
 
     return next()
+}
+
+function requiresAuthentication(): boolean {
+    return !!(process.env.API_ACCESS_TOKEN)
 }

@@ -1,8 +1,8 @@
 import express from "express"
-import {sendResponse401} from "./controllers/responses/sendResponse401"
+import {sendResponse401} from "../../controllers/responses/sendResponse401"
 
 export function basicAuthentication(req: express.Request, res: express.Response, next: express.NextFunction) {
-    if (!requiresAuthentication()) {
+    if (!requiresBasicAuthentication()) {
         return next()
     }
 
@@ -24,6 +24,6 @@ export function basicAuthentication(req: express.Request, res: express.Response,
     return next()
 }
 
-function requiresAuthentication(): boolean {
+function requiresBasicAuthentication(): boolean {
     return !!(process.env.BASIC_AUTH_USERNAME && process.env.BASIC_AUTH_PASSWORD)
 }
