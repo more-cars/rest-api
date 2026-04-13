@@ -6,13 +6,13 @@ import {seedNode} from "../../../../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../../../../src/db/types/DbNodeType"
 import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../../../src/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
 
-test('A completely valid request, but the database call fails (e.g. one of the nodes was deleted just a moment ago)', async () => {
-    vi.mock("../../../../../../../../src/db/relationships/createRelationship", async () => {
-        return {
-            createRelationship: () => false
-        }
-    })
+vi.mock("../../../../../../../../src/db/relationships/createRelationship", async () => {
+    return {
+        createRelationship: () => false
+    }
+})
 
+test('A completely valid request, but the database call fails (e.g. one of the nodes was deleted just a moment ago)', async () => {
     const <%= h.changeCase.camel(startNodeType) %> = await seedNode(DbNodeType.<%= h.changeCase.pascal(startNodeType) %>)
     const <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %> = await seedNode(DbNodeType.<%= h.changeCase.pascal(endNodeType) %>)
 
