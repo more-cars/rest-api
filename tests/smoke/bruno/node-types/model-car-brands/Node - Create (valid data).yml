@@ -16,7 +16,7 @@ http:
         "name": "Hot Wheels",
         "founded": 1968,
         "defunct": null,
-        "country_code": 'US'
+        "country_code": "US"
       }
 
 runtime:
