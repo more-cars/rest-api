@@ -21,11 +21,11 @@ patches:
   - path: api-deployment.patch.json
     target:
       kind: Deployment
-      name: api-deployment
+      name: api
   - path: openapi-spec-deployment.patch.json
     target:
       kind: Deployment
-      name: openapi-spec-deployment
+      name: openapi-spec
   - path: api-http-route.patch.json
     target:
       kind: HTTPRoute

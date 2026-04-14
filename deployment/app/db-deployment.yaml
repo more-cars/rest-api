@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-db-deployment
+  name: api-db
 spec:
   replicas: 1
   selector:
@@ -20,13 +20,13 @@ spec:
             - name: NEO4J_AUTH
               value: 'neo4j/123456789'
           volumeMounts:
-            - name: api-db-volume
+            - name: api-db
               mountPath: /data
           resources:
             requests:
               cpu: "100m"
               memory: "1500Mi"
       volumes:
-        - name: api-db-volume
+        - name: api-db
           persistentVolumeClaim:
-            claimName: api-db-pvc
+            claimName: api-db
