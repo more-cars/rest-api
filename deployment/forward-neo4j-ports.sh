@@ -24,8 +24,8 @@ trap cleanup INT TERM EXIT
 kubectl get ns -o jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}' | while IFS= read -r ns; do
     [ -z "$ns" ] && continue
 
-    # Check for service named 'api-db-service' in this namespace
-    svc=$(kubectl -n "$ns" get svc api-db-service -o jsonpath='{.metadata.name}' 2>/dev/null || true)
+    # Check for service named 'api-db' in this namespace
+    svc=$(kubectl -n "$ns" get svc api-db -o jsonpath='{.metadata.name}' 2>/dev/null || true)
     if [ -n "$svc" ]; then
         echo "Found Neo4j service '$svc' in namespace '$ns'. Starting port-forward..."
 

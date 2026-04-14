@@ -15,7 +15,7 @@ spec:
             - name: API_NAMESPACE
               value: default
             - name: DB_HOST
-              value: $(API_DB_SERVICE_SERVICE_HOST)
+              value: $(API_DB_SERVICE_HOST)
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:

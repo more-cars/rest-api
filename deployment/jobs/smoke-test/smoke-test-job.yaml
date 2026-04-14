@@ -13,7 +13,7 @@ spec:
           image: ghcr.io/more-cars/rest-api:latest
           env:
             - name: API_URL
-              value: http://$(API_SERVICE_SERVICE_HOST)
+              value: http://$(API_SERVICE_HOST)
           resources:
             requests:
               cpu: "300m"

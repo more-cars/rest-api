@@ -20,7 +20,7 @@ spec:
           image: grafana/k6:0.56.0
           env:
             - name: API_URL
-              value: http://$(API_SERVICE_SERVICE_HOST)
+              value: http://$(API_SERVICE_HOST)
           command: [ 'k6', 'run', '/tests/scenarios/$(SCENARIO)' ]
           volumeMounts:
             - name: test-cases-volume
