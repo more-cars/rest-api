@@ -17,3 +17,11 @@ patches:
         value:
           name: USER_NAMESPACE_ENABLED
           value: "false"
+      - op: add
+        path: /spec/template/spec/containers/0/env/-
+        value:
+          name: MORE_CARS_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: more-cars-credentials
+              key: apikey
