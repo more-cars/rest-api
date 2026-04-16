@@ -8,6 +8,7 @@ spec:
     spec:
       template:
         spec:
+          restartPolicy: Never
           containers:
             - name: rclone
               image: rclone/rclone:latest
@@ -22,11 +23,11 @@ spec:
                     secretKeyRef:
                       name: s3-credentials
                       key: secret
-                - name: S3_URL
+                - name: S3_BUCKET
                   valueFrom:
                     secretKeyRef:
                       name: s3-credentials
-                      key: url
+                      key: bucket
               command:
                 - /bin/sh
                 - -c
@@ -36,24 +37,29 @@ spec:
                   cat <<EOF > /tmp/rclone.conf
                   [hetzner]
                   type = s3
-                  provider = Other
+                  provider = Hetzner
                   access_key_id = $S3_KEY
                   secret_access_key = $S3_SECRET
-                  endpoint = $S3_URL
-                  region = eu-central-1
-                  force_path_style = true
+                  endpoint = fsn1.your-objectstorage.com
+                  acl = private
+                  region = fsn1
+                  
+                  [bucket]
+                  type = alias
+                  remote = hetzner:$S3_BUCKET
                   EOF
                   
                   echo Starting db backup.
-                  
-                  rclone copy --config=/tmp/rclone.conf --backup-dir hetzner:backups/neo4j/archive/$(date +%F)/ /opt/src hetzner:backups/neo4j/current/
-                  
+                  rclone copy --config=/tmp/rclone.conf --backup-dir bucket:backups/neo4j/archive/$(date +%F) /opt/src bucket:backups/neo4j/current
                   echo DB backup finished.
               volumeMounts:
                 - mountPath: /opt/src
                   name: api-db
+              resources:
+                requests:
+                  cpu: "50m"
+                  memory: "50Mi"
           volumes:
             - name: api-db
               persistentVolumeClaim:
                 claimName: api-db
-          restartPolicy: Never
