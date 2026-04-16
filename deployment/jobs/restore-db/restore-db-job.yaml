@@ -1,0 +1,64 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: restore-db
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: rclone
+          image: rclone/rclone:latest
+          env:
+            - name: S3_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: s3-credentials
+                  key: key
+            - name: S3_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: s3-credentials
+                  key: secret
+            - name: S3_BUCKET
+              valueFrom:
+                secretKeyRef:
+                  name: s3-credentials
+                  key: bucket
+          command:
+            - /bin/sh
+            - -c
+            - |
+              set -e
+
+              cat <<EOF > /tmp/rclone.conf
+              [hetzner]
+              type = s3
+              provider = Hetzner
+              access_key_id = $S3_KEY
+              secret_access_key = $S3_SECRET
+              endpoint = fsn1.your-objectstorage.com
+              acl = private
+              region = fsn1
+              
+              [bucket]
+              type = alias
+              remote = hetzner:$S3_BUCKET
+              EOF
+
+              echo Starting db restore.
+              rclone copy --config=/tmp/rclone.conf bucket:backups/neo4j/current /opt/dest
+              echo DB restore finished.
+          volumeMounts:
+            - mountPath: /opt/dest
+              name: api-db
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "50Mi"
+      volumes:
+        - name: api-db
+          persistentVolumeClaim:
+            claimName: api-db
