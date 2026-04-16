@@ -59,6 +59,13 @@ spec:
                 requests:
                   cpu: "50m"
                   memory: "50Mi"
+          affinity:
+            podAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                - labelSelector:
+                    matchLabels:
+                      app: api-db
+                  topologyKey: kubernetes.io/hostname
           volumes:
             - name: api-db
               persistentVolumeClaim:
