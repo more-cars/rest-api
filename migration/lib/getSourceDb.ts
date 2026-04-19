@@ -20,8 +20,8 @@ async function promptUser() {
         {value: 'mc1db.dev.more-cars.internal'},
         {value: 'mc1db.testing.more-cars.internal'},
         {value: 'mc1db.prod.more-cars.internal'},
-        {value: 'mc1db.testing.fast-cars.info'},
-        {value: 'mc1db.prod.fast-cars.info'},
+        {value: 'mc1db.testing.more-cars.net'},
+        {value: 'mc1db.prod.more-cars.net'},
     )
 
     return select({

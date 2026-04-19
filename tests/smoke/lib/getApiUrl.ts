@@ -14,8 +14,8 @@ export function getApiUrl(testRunner: string, targetCluster: string, targetEnvir
                 ['prod', 'http://api.prod.more-cars.internal'],
             ])],
             ['gke', new Map([
-                ['testing', 'http://api.testing.fast-cars.info'],
-                ['prod', 'http://api.prod.fast-cars.info'],
+                ['testing', 'http://api.testing.more-cars.net'],
+                ['prod', 'http://api.prod.more-cars.net'],
             ])],
         ])],
         ['minikube', new Map([ // runner

@@ -3,5 +3,13 @@
     "op": "replace",
     "path": "/spec/template/spec/containers/0/image",
     "value": "ghcr.io/more-cars/rest-api:latest"
+  },
+  {
+    "op": "replace",
+    "path": "/spec/template/spec/containers/0/env/0",
+    "value": {
+      "name": "ANALYTICS_URL",
+      "value": "https://analytics.prod.more-cars.internal"
+    }
   }
 ]

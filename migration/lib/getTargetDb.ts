@@ -14,8 +14,8 @@ export function getTargetDb(migrationRunner: string, targetCluster: string, targ
                 ['prod', 'db.prod.more-cars.internal'],
             ])],
             ['gke', new Map([
-                ['testing', 'db.testing.fast-cars.info'],
-                ['prod', 'db.prod.fast-cars.info'],
+                ['testing', 'db.testing.more-cars.net'],
+                ['prod', 'db.prod.more-cars.net'],
             ])],
         ])],
         ['minikube', new Map([ // runner

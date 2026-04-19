@@ -23,11 +23,11 @@
       "description": "Local Minikube - Production"
     },
     {
-      "url": "http://api.testing.fast-cars.info",
+      "url": "http://api.testing.more-cars.net",
       "description": "Testing"
     },
     {
-      "url": "http://api.prod.fast-cars.info",
+      "url": "http://api.prod.more-cars.net",
       "description": "Production"
     }
   ],
