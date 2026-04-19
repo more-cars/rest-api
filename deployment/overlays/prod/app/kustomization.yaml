@@ -20,7 +20,7 @@ patches:
       - op: add
         path: /spec/template/spec/containers/0/env/-
         value:
-          name: MORE_CARS_API_KEY
+          name: API_ACCESS_TOKEN
           valueFrom:
             secretKeyRef:
               name: more-cars-credentials
