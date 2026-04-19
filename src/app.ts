@@ -1,4 +1,5 @@
-import express, {Express} from "express"
+import express from "express"
+import compression from "compression"
 import cors from "cors"
 import {analyticsMiddleware} from "./tracking/analyticsMiddleware"
 import {authentication} from "./routes/middleware/authentication"
@@ -10,10 +11,13 @@ import nodes from "./routes/nodes/nodes"
 import relationships from "./routes/relationships"
 import {registerNodeTypeRoutes} from "./routes/registerNodeTypeRoutes"
 
-const app: Express = express()
+const app = express()
 
 // needed, so the tracking still works with Kubernetes+Gateway+HTTPRoute
 app.set('trust proxy', true)
+
+// activating gzip
+app.use(compression())
 
 // activating tracking
 app.use(analyticsMiddleware)
