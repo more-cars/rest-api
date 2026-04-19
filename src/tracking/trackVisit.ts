@@ -1,5 +1,4 @@
 import type {Request} from "express"
-import axios from "axios"
 import crypto from "crypto"
 import {getAnalyticsUrl} from "./getAnalyticsUrl"
 
@@ -58,14 +57,12 @@ export async function trackVisit(req: Request, options: TrackOptions): Promise<v
         }
     }
 
-    await axios.post(
-        getAnalyticsUrl(),
-        new URLSearchParams(payload as Record<string, string>).toString(),
-        {
+    await fetch(getAnalyticsUrl(), {
+            method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            timeout: 1000
+            body: new URLSearchParams(payload as Record<string, string>).toString(),
         }
     )
 }
