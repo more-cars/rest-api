@@ -19,6 +19,8 @@ spec:
           #image: docker.io/dennisgerike/more-cars-api:latest
           image: ghcr.io/more-cars/rest-api:latest
           env:
+            - name: ANALYTICS_URL
+              value: https://analytics.default.more-cars.net
             - name: API_NAMESPACE
               value: default
             - name: DB_HOST

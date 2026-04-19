@@ -1,5 +1,6 @@
 import express, {Express} from "express"
 import cors from "cors"
+import {analyticsMiddleware} from "./tracking/analyticsMiddleware"
 import {authentication} from "./routes/middleware/authentication"
 import {basicAuthentication} from "./routes/middleware/basicAuthentication"
 import {userDbNamespace} from "./userDbNamespace"
@@ -10,6 +11,12 @@ import relationships from "./routes/relationships"
 import {registerNodeTypeRoutes} from "./routes/registerNodeTypeRoutes"
 
 const app: Express = express()
+
+// needed, so the tracking still works with Kubernetes+Gateway+HTTPRoute
+app.set('trust proxy', true)
+
+// activating tracking
+app.use(analyticsMiddleware)
 
 // activating "auth" checks
 app.use(authentication)

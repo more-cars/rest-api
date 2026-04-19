@@ -46,12 +46,22 @@ createOpenapiSpecHttpsRoutePatchFile()
 async function createApiDeploymentPatchFile() {
     const packageName = process.env.PACKAGE_NAME
     const packageVersion = process.env.PACKAGE_VERSION
+    const targetEnvironment = process.env.TARGET_ENVIRONMENT || 'prod'
+    const targetCluster = process.env.TARGET_CLUSTER || 'gke'
 
     return [
         {
             "op": "replace",
             "path": "/spec/template/spec/containers/0/image",
             "value": `ghcr.io/more-cars/${packageName}:${packageVersion}`
+        },
+        {
+            "op": "replace",
+            "path": "/spec/template/spec/containers/0/env/0",
+            "value": {
+                "name": "ANALYTICS_URL",
+                "value": 'https://' + getHostname(targetCluster, targetEnvironment, 'analytics'),
+            }
         }
     ]
 }
