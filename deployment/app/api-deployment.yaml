@@ -54,5 +54,5 @@ spec:
                   key: apikey
           resources:
             requests:
-              cpu: "50m"
-              memory: "500Mi"
+              cpu: "400m"
+              memory: "800Mi"
