@@ -14,7 +14,6 @@ describe('Requesting all ›released-on-gaming-platform‹ relationships', () =>
         const relationships = await getRelationshipCollection(
             racingGame.properties.id,
             RelationshipType.RacingGameReleasedOnGamingPlatform,
-            DbNodeType.GamingPlatform,
         )
 
         expect(relationships.length)
@@ -27,7 +26,6 @@ describe('Requesting all ›released-on-gaming-platform‹ relationships', () =>
         const relationships = await getRelationshipCollection(
             racingGame.properties.id,
             RelationshipType.RacingGameReleasedOnGamingPlatform,
-            DbNodeType.GamingPlatform,
         )
 
         expect(relationships.length)
@@ -38,7 +36,6 @@ describe('Requesting all ›released-on-gaming-platform‹ relationships', () =>
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.RacingGameReleasedOnGamingPlatform,
-            DbNodeType.GamingPlatform,
         )
 
         expect(relationships.length)

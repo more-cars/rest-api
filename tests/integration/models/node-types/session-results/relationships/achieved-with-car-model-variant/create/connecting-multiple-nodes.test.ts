@@ -18,7 +18,6 @@ test('A SESSION RESULT cannot have multiple â€ºachieved-with-car-model-variantâ€
     const relationships = await getRelationshipCollection(
         sessionResult.properties.id,
         RelationshipType.SessionResultAchievedWithCarModelVariant,
-        DbNodeType.CarModelVariant,
     )
 
     expect(relationships.length)

@@ -12,7 +12,6 @@ describe('Requesting a ›is-variant-of‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             relationship.start_node.properties.id,
             RelationshipType.CarModelVariantIsVariantOf,
-            DbNodeType.CarModel,
         )
 
         expect(relationships.length)
@@ -25,7 +24,6 @@ describe('Requesting a ›is-variant-of‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             carModelVariant.properties.id,
             RelationshipType.CarModelVariantIsVariantOf,
-            DbNodeType.CarModel,
         )
 
         expect(relationships.length)
@@ -36,7 +34,6 @@ describe('Requesting a ›is-variant-of‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.CarModelVariantIsVariantOf,
-            DbNodeType.CarModel,
         )
 
         expect(relationships.length)

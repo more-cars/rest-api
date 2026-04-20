@@ -18,7 +18,6 @@ test('A CAR MODEL VARIANT cannot have multiple ›is-variant-of‹ relationships
     const relationships = await getRelationshipCollection(
         carModelVariant.properties.id,
         RelationshipType.CarModelVariantIsVariantOf,
-        DbNodeType.CarModel,
     )
 
     expect(relationships.length)

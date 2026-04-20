@@ -14,7 +14,6 @@ describe('Requesting all ›is-featured-in-racing-game‹ relationships', () => 
         const relationships = await getRelationshipCollection(
             carModelVariant.properties.id,
             RelationshipType.CarModelVariantIsFeaturedInRacingGame,
-            DbNodeType.RacingGame,
         )
 
         expect(relationships.length)
@@ -27,7 +26,6 @@ describe('Requesting all ›is-featured-in-racing-game‹ relationships', () => 
         const relationships = await getRelationshipCollection(
             carModelVariant.properties.id,
             RelationshipType.CarModelVariantIsFeaturedInRacingGame,
-            DbNodeType.RacingGame,
         )
 
         expect(relationships.length)
@@ -38,7 +36,6 @@ describe('Requesting all ›is-featured-in-racing-game‹ relationships', () => 
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.CarModelVariantIsFeaturedInRacingGame,
-            DbNodeType.RacingGame,
         )
 
         expect(relationships.length)

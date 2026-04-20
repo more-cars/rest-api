@@ -73,7 +73,7 @@ export const SessionResult = {
             throw new RelAlreadyExistsError(RelType.SessionResultBelongsToRacingSession, sessionResultId, racingSessionId)
         }
 
-        await deleteOutgoingRel(sessionResultId, RelType.SessionResultBelongsToRacingSession, ModelNodeType.RacingSession)
+        await deleteOutgoingRel(sessionResultId, RelType.SessionResultBelongsToRacingSession)
 
         const createdRelationship = await createRel(sessionResultId, racingSessionId, RelType.SessionResultBelongsToRacingSession)
         if (!createdRelationship) {
@@ -158,7 +158,7 @@ export const SessionResult = {
             throw new RelAlreadyExistsError(RelType.SessionResultAchievedWithCarModelVariant, sessionResultId, carModelVariantId)
         }
 
-        await deleteOutgoingRel(sessionResultId, RelType.SessionResultAchievedWithCarModelVariant, ModelNodeType.CarModelVariant)
+        await deleteOutgoingRel(sessionResultId, RelType.SessionResultAchievedWithCarModelVariant)
 
         const createdRelationship = await createRel(sessionResultId, carModelVariantId, RelType.SessionResultAchievedWithCarModelVariant)
         if (!createdRelationship) {
@@ -242,7 +242,7 @@ export const SessionResult = {
             throw new RelAlreadyExistsError(RelType.SessionResultHasPrimeImage, sessionResultId, imageId)
         }
 
-        await deleteOutgoingRel(sessionResultId, RelType.SessionResultHasPrimeImage, ModelNodeType.Image)
+        await deleteOutgoingRel(sessionResultId, RelType.SessionResultHasPrimeImage)
 
         const createdRelationship = await createRel(sessionResultId, imageId, RelType.SessionResultHasPrimeImage)
         if (!createdRelationship) {

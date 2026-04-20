@@ -19,7 +19,6 @@ import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {TrackLayout} from "../track-layouts/TrackLayout"
 import {Image} from "../images/Image"
 import {getAllRels} from "../../relationships/getAllRels"
-import {ModelNodeType} from "../../types/ModelNodeType"
 import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {Video} from "../videos/Video"
@@ -73,7 +72,7 @@ export const LapTime = {
             throw new RelAlreadyExistsError(RelType.LapTimeBelongsToSessionResult, lapTimeId, sessionResultId)
         }
 
-        await deleteOutgoingRel(lapTimeId, RelType.LapTimeBelongsToSessionResult, ModelNodeType.SessionResult)
+        await deleteOutgoingRel(lapTimeId, RelType.LapTimeBelongsToSessionResult)
 
         const createdRelationship = await createRel(lapTimeId, sessionResultId, RelType.LapTimeBelongsToSessionResult)
         if (!createdRelationship) {
@@ -118,7 +117,7 @@ export const LapTime = {
             throw new RelAlreadyExistsError(RelType.LapTimeAchievedOnTrackLayout, lapTimeId, trackLayoutId)
         }
 
-        await deleteOutgoingRel(lapTimeId, RelType.LapTimeAchievedOnTrackLayout, ModelNodeType.TrackLayout)
+        await deleteOutgoingRel(lapTimeId, RelType.LapTimeAchievedOnTrackLayout)
 
         const createdRelationship = await createRel(lapTimeId, trackLayoutId, RelType.LapTimeAchievedOnTrackLayout)
         if (!createdRelationship) {
@@ -163,7 +162,7 @@ export const LapTime = {
             throw new RelAlreadyExistsError(RelType.LapTimeAchievedWithCarModelVariant, lapTimeId, carModelVariantId)
         }
 
-        await deleteOutgoingRel(lapTimeId, RelType.LapTimeAchievedWithCarModelVariant, ModelNodeType.CarModelVariant)
+        await deleteOutgoingRel(lapTimeId, RelType.LapTimeAchievedWithCarModelVariant)
 
         const createdRelationship = await createRel(lapTimeId, carModelVariantId, RelType.LapTimeAchievedWithCarModelVariant)
         if (!createdRelationship) {
@@ -246,7 +245,7 @@ export const LapTime = {
             throw new RelAlreadyExistsError(RelType.LapTimeHasPrimeImage, lapTimeId, imageId)
         }
 
-        await deleteOutgoingRel(lapTimeId, RelType.LapTimeHasPrimeImage, ModelNodeType.Image)
+        await deleteOutgoingRel(lapTimeId, RelType.LapTimeHasPrimeImage)
 
         const createdRelationship = await createRel(lapTimeId, imageId, RelType.LapTimeHasPrimeImage)
         if (!createdRelationship) {
@@ -328,7 +327,7 @@ export const LapTime = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.LapTimeHasMainVideo, lapTimeId, videoId)
         }
-        await deleteOutgoingRel(lapTimeId, RelType.LapTimeHasMainVideo, ModelNodeType.Video)
+        await deleteOutgoingRel(lapTimeId, RelType.LapTimeHasMainVideo)
 
         const createdRelationship = await createRel(lapTimeId, videoId, RelType.LapTimeHasMainVideo)
         if (!createdRelationship) {

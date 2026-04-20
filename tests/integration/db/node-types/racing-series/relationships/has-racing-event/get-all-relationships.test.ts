@@ -14,7 +14,6 @@ describe('Requesting all ›has-racing-event‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             racingSeries.properties.id,
             RelationshipType.RacingSeriesHasRacingEvent,
-            DbNodeType.RacingEvent,
         )
 
         expect(relationships.length)
@@ -27,7 +26,6 @@ describe('Requesting all ›has-racing-event‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             racingSeries.properties.id,
             RelationshipType.RacingSeriesHasRacingEvent,
-            DbNodeType.RacingEvent,
         )
 
         expect(relationships.length)
@@ -38,7 +36,6 @@ describe('Requesting all ›has-racing-event‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.RacingSeriesHasRacingEvent,
-            DbNodeType.RacingEvent,
         )
 
         expect(relationships.length)

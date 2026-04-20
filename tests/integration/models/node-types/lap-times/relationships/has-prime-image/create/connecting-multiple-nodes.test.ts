@@ -18,7 +18,6 @@ test('A LAP TIME cannot have multiple ›has-prime-image‹ relationships', asyn
     const relationships = await getRelationshipCollection(
         lapTime.properties.id,
         RelationshipType.LapTimeHasPrimeImage,
-        DbNodeType.Image,
     )
 
     expect(relationships.length)

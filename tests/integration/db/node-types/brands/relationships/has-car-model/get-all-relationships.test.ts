@@ -14,7 +14,6 @@ describe('Requesting all ›has-car-model‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             brand.properties.id,
             RelationshipType.BrandHasCarModel,
-            DbNodeType.CarModel,
         )
 
         expect(relationships.length)
@@ -27,7 +26,6 @@ describe('Requesting all ›has-car-model‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             brand.properties.id,
             RelationshipType.BrandHasCarModel,
-            DbNodeType.CarModel,
         )
 
         expect(relationships.length)
@@ -38,7 +36,6 @@ describe('Requesting all ›has-car-model‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.BrandHasCarModel,
-            DbNodeType.CarModel,
         )
 
         expect(relationships.length)

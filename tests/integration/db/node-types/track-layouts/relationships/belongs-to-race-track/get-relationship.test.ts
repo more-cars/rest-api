@@ -12,7 +12,6 @@ describe('Requesting a ›belongs-to-race-track‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             relationship.start_node.properties.id,
             RelationshipType.TrackLayoutBelongsToRaceTrack,
-            DbNodeType.RaceTrack,
         )
 
         expect(relationships.length)
@@ -25,7 +24,6 @@ describe('Requesting a ›belongs-to-race-track‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             trackLayout.properties.id,
             RelationshipType.TrackLayoutBelongsToRaceTrack,
-            DbNodeType.RaceTrack,
         )
 
         expect(relationships.length)
@@ -36,7 +34,6 @@ describe('Requesting a ›belongs-to-race-track‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.TrackLayoutBelongsToRaceTrack,
-            DbNodeType.RaceTrack,
         )
 
         expect(relationships.length)

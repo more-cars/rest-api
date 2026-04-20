@@ -14,7 +14,6 @@ describe('Requesting all ›has-lap-time‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             trackLayout.properties.id,
             RelationshipType.TrackLayoutHasLapTime,
-            DbNodeType.LapTime,
         )
 
         expect(relationships.length)
@@ -27,7 +26,6 @@ describe('Requesting all ›has-lap-time‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             trackLayout.properties.id,
             RelationshipType.TrackLayoutHasLapTime,
-            DbNodeType.LapTime,
         )
 
         expect(relationships.length)
@@ -38,7 +36,6 @@ describe('Requesting all ›has-lap-time‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.TrackLayoutHasLapTime,
-            DbNodeType.LapTime,
         )
 
         expect(relationships.length)

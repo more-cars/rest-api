@@ -12,7 +12,6 @@ describe('Requesting a ›belongs-to-racing-session‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             relationship.start_node.properties.id,
             RelationshipType.SessionResultBelongsToRacingSession,
-            DbNodeType.RacingSession,
         )
 
         expect(relationships.length)
@@ -25,7 +24,6 @@ describe('Requesting a ›belongs-to-racing-session‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             sessionResult.properties.id,
             RelationshipType.SessionResultBelongsToRacingSession,
-            DbNodeType.RacingSession,
         )
 
         expect(relationships.length)
@@ -36,7 +34,6 @@ describe('Requesting a ›belongs-to-racing-session‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.SessionResultBelongsToRacingSession,
-            DbNodeType.RacingSession,
         )
 
         expect(relationships.length)

@@ -15,7 +15,7 @@ test('A BRAND cannot have multiple ›belongs-to-company‹ relationships', asyn
         await Brand.createBelongsToCompanyRelationship(brand.properties.id, company.properties.id)
     }
 
-    const relationships = await getRelationshipCollection(brand.properties.id, RelationshipType.BrandBelongsToCompany, DbNodeType.Company)
+    const relationships = await getRelationshipCollection(brand.properties.id, RelationshipType.BrandBelongsToCompany)
 
     expect(relationships.length)
         .toBe(1)

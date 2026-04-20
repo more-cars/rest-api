@@ -12,7 +12,6 @@ describe('Requesting a ›belongs-to-node‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             relationship.start_node.properties.id,
             RelationshipType.ImageBelongsToNode,
-            DbNodeType.Brand,
         )
 
         expect(relationships.length)
@@ -25,7 +24,6 @@ describe('Requesting a ›belongs-to-node‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             image.properties.id,
             RelationshipType.ImageBelongsToNode,
-            DbNodeType.Brand,
         )
 
         expect(relationships.length)
@@ -36,7 +34,6 @@ describe('Requesting a ›belongs-to-node‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.ImageBelongsToNode,
-            DbNodeType.Brand,
         )
 
         expect(relationships.length)

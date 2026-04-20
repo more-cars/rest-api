@@ -18,7 +18,6 @@ test('A LAP TIME cannot have multiple ›achieved-on-track-layout‹ relationshi
     const relationships = await getRelationshipCollection(
         lapTime.properties.id,
         RelationshipType.LapTimeAchievedOnTrackLayout,
-        DbNodeType.TrackLayout,
     )
 
     expect(relationships.length)

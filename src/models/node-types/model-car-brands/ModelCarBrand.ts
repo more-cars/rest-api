@@ -149,7 +149,7 @@ export const ModelCarBrand = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.ModelCarBrandHasPrimeImage, modelCarBrandId, imageId)
         }
-        await deleteOutgoingRel(modelCarBrandId, RelType.ModelCarBrandHasPrimeImage, ModelNodeType.Image)
+        await deleteOutgoingRel(modelCarBrandId, RelType.ModelCarBrandHasPrimeImage)
 
         const createdRelationship = await createRel(modelCarBrandId, imageId, RelType.ModelCarBrandHasPrimeImage)
         if (!createdRelationship) {
@@ -231,7 +231,7 @@ export const ModelCarBrand = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.ModelCarBrandHasMainVideo, modelCarBrandId, videoId)
         }
-        await deleteOutgoingRel(modelCarBrandId, RelType.ModelCarBrandHasMainVideo, ModelNodeType.Video)
+        await deleteOutgoingRel(modelCarBrandId, RelType.ModelCarBrandHasMainVideo)
 
         const createdRelationship = await createRel(modelCarBrandId, videoId, RelType.ModelCarBrandHasMainVideo)
         if (!createdRelationship) {

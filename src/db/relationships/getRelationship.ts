@@ -1,6 +1,6 @@
 import neo4j, {Driver, Node, Relationship as Neo4jRelationship} from "neo4j-driver"
 import type {RelationshipType} from "../types/RelationshipType"
-import type {DbNodeType} from "../types/DbNodeType"
+import {mapNodeTypeToDbNodeType} from "../../specification/mapNodeTypeToDbNodeType"
 import type {Relationship} from "../types/Relationship"
 import {getRelationshipTypeSpecification} from "../../specification/getRelationshipTypeSpecification"
 import {getDriver} from "../driver"
@@ -13,13 +13,12 @@ import {mapDbRelationshipTypeToRelationshipType} from "../../specification/mapDb
 export async function getRelationship(
     startNodeId: number,
     relationshipType: RelationshipType,
-    endNodeType: DbNodeType,
 ): Promise<false | Relationship> {
     const driver: Driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getRelationshipQuery(startNodeId, relationshipType, endNodeType))
+        const result = await txc.run(getRelationshipQuery(startNodeId, relationshipType))
         return result.records
     })
 
@@ -36,15 +35,29 @@ export async function getRelationship(
     return convertNeo4jRelationshipToDbRelationship(dbRelationship, startNode, endNode)
 }
 
-export function getRelationshipQuery(startNodeId: number, relationshipType: RelationshipType, endNodeType: DbNodeType) {
+export function getRelationshipQuery(startNodeId: number, relationshipType: RelationshipType) {
     const relationshipSpecs = getRelationshipTypeSpecification(mapDbRelationshipTypeToRelationshipType(relationshipType))
     const templateName = relationshipSpecs.isReverseRelationship ? 'getRelationshipReversed' : 'getRelationship'
+    const startNodeType = mapNodeTypeToDbNodeType(relationshipSpecs.startNodeType)
     const relationshipName = mapDbRelationshipTypeToNeo4jRelationshipType(relationshipType)
-    const endNodeLabel = getNamespacedNodeTypeLabel(endNodeType)
+    const endNodeType = mapNodeTypeToDbNodeType(relationshipSpecs.endNodeType)
 
-    return getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')
+    let template = getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')
         .trim()
         .replace('$startNodeId', startNodeId.toString())
         .replace('relationshipName', relationshipName)
-        .replace('$endNodeLabel', endNodeLabel)
+
+    if (startNodeType) {
+        template = template.replace('$startNodeLabel', getNamespacedNodeTypeLabel(startNodeType))
+    } else {
+        template = template.replace(':$startNodeLabel', '')
+    }
+
+    if (endNodeType) {
+        template = template.replace('$endNodeLabel', getNamespacedNodeTypeLabel(endNodeType))
+    } else {
+        template = template.replace(':$endNodeLabel', '')
+    }
+
+    return template
 }

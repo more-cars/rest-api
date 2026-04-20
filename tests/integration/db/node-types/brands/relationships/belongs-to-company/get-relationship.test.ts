@@ -12,7 +12,6 @@ describe('Requesting a ›belongs-to-company‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             relationship.start_node.properties.id,
             RelationshipType.BrandBelongsToCompany,
-            DbNodeType.Company,
         )
 
         expect(relationships.length)
@@ -25,7 +24,6 @@ describe('Requesting a ›belongs-to-company‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             brand.properties.id,
             RelationshipType.BrandBelongsToCompany,
-            DbNodeType.Company,
         )
 
         expect(relationships.length)
@@ -36,7 +34,6 @@ describe('Requesting a ›belongs-to-company‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.BrandBelongsToCompany,
-            DbNodeType.Company,
         )
 
         expect(relationships.length)

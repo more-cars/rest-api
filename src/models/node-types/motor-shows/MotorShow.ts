@@ -18,7 +18,6 @@ import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
 import {Image} from "../images/Image"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
-import {ModelNodeType} from "../../types/ModelNodeType"
 import {getRel} from "../../relationships/getRel"
 import {Video} from "../videos/Video"
 
@@ -146,7 +145,7 @@ export const MotorShow = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.MotorShowHasPrimeImage, motorShowId, imageId)
         }
-        await deleteOutgoingRel(motorShowId, RelType.MotorShowHasPrimeImage, ModelNodeType.Image)
+        await deleteOutgoingRel(motorShowId, RelType.MotorShowHasPrimeImage)
 
         const createdRelationship = await createRel(motorShowId, imageId, RelType.MotorShowHasPrimeImage)
         if (!createdRelationship) {
@@ -228,7 +227,7 @@ export const MotorShow = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.MotorShowHasMainVideo, motorShowId, videoId)
         }
-        await deleteOutgoingRel(motorShowId, RelType.MotorShowHasMainVideo, ModelNodeType.Video)
+        await deleteOutgoingRel(motorShowId, RelType.MotorShowHasMainVideo)
 
         const createdRelationship = await createRel(motorShowId, videoId, RelType.MotorShowHasMainVideo)
         if (!createdRelationship) {

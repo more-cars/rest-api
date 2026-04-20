@@ -12,7 +12,6 @@ describe('Requesting a ›achieved-with-car-model-variant‹ relationship', () =
         const relationships = await getRelationshipCollection(
             relationship.start_node.properties.id,
             RelationshipType.LapTimeAchievedWithCarModelVariant,
-            DbNodeType.CarModelVariant,
         )
 
         expect(relationships.length)
@@ -25,7 +24,6 @@ describe('Requesting a ›achieved-with-car-model-variant‹ relationship', () =
         const relationships = await getRelationshipCollection(
             lapTime.properties.id,
             RelationshipType.LapTimeAchievedWithCarModelVariant,
-            DbNodeType.CarModelVariant,
         )
 
         expect(relationships.length)
@@ -36,7 +34,6 @@ describe('Requesting a ›achieved-with-car-model-variant‹ relationship', () =
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.LapTimeAchievedWithCarModelVariant,
-            DbNodeType.CarModelVariant,
         )
 
         expect(relationships.length)

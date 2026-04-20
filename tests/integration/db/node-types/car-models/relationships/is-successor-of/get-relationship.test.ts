@@ -12,7 +12,6 @@ describe('Requesting a ›is-successor-of‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             relationship.start_node.properties.id,
             RelationshipType.CarModelIsSuccessorOf,
-            DbNodeType.CarModel,
         )
 
         expect(relationships.length)
@@ -25,7 +24,6 @@ describe('Requesting a ›is-successor-of‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             carModel.properties.id,
             RelationshipType.CarModelIsSuccessorOf,
-            DbNodeType.CarModel,
         )
 
         expect(relationships.length)
@@ -36,7 +34,6 @@ describe('Requesting a ›is-successor-of‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.CarModelIsSuccessorOf,
-            DbNodeType.CarModel,
         )
 
         expect(relationships.length)

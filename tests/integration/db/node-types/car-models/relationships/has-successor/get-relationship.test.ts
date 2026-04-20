@@ -12,7 +12,6 @@ describe('Requesting a ›has-successor‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             relationship.start_node.properties.id,
             RelationshipType.CarModelHasSuccessor,
-            DbNodeType.CarModel,
         )
 
         expect(relationships.length)
@@ -25,7 +24,6 @@ describe('Requesting a ›has-successor‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             carModel.properties.id,
             RelationshipType.CarModelHasSuccessor,
-            DbNodeType.CarModel,
         )
 
         expect(relationships.length)
@@ -36,7 +34,6 @@ describe('Requesting a ›has-successor‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.CarModelHasSuccessor,
-            DbNodeType.CarModel,
         )
 
         expect(relationships.length)

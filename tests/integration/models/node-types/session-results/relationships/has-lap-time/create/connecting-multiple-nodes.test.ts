@@ -18,7 +18,6 @@ test('A SESSION RESULT can have multiple ›has-lap-time‹ relationships', asyn
     const relationships = await getRelationshipCollection(
         sessionResult.properties.id,
         RelationshipType.SessionResultHasLapTime,
-        DbNodeType.LapTime,
     )
 
     expect(relationships.length)

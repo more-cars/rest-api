@@ -81,7 +81,7 @@ export const CarModelVariant = {
             throw new RelAlreadyExistsError(RelType.CarModelVariantIsVariantOf, carModelVariantId, carModelId)
         }
 
-        await deleteOutgoingRel(carModelVariantId, RelType.CarModelVariantIsVariantOf, ModelNodeType.CarModel)
+        await deleteOutgoingRel(carModelVariantId, RelType.CarModelVariantIsVariantOf)
 
         const createdRelationship = await createRel(carModelVariantId, carModelId, RelType.CarModelVariantIsVariantOf)
         if (!createdRelationship) {
@@ -519,7 +519,7 @@ export const CarModelVariant = {
             throw new RelAlreadyExistsError(RelType.CarModelVariantHasPrimeImage, carModelVariantId, imageId)
         }
 
-        await deleteOutgoingRel(carModelVariantId, RelType.CarModelVariantHasPrimeImage, ModelNodeType.Image)
+        await deleteOutgoingRel(carModelVariantId, RelType.CarModelVariantHasPrimeImage)
 
         const createdRelationship = await createRel(carModelVariantId, imageId, RelType.CarModelVariantHasPrimeImage)
         if (!createdRelationship) {
@@ -601,7 +601,7 @@ export const CarModelVariant = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.CarModelVariantHasMainVideo, carModelVariantId, videoId)
         }
-        await deleteOutgoingRel(carModelVariantId, RelType.CarModelVariantHasMainVideo, ModelNodeType.Video)
+        await deleteOutgoingRel(carModelVariantId, RelType.CarModelVariantHasMainVideo)
 
         const createdRelationship = await createRel(carModelVariantId, videoId, RelType.CarModelVariantHasMainVideo)
         if (!createdRelationship) {

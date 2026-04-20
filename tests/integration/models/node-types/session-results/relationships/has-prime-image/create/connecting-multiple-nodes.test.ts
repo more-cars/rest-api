@@ -18,7 +18,6 @@ test('A SESSION RESULT cannot have multiple ›has-prime-image‹ relationships'
     const relationships = await getRelationshipCollection(
         sessionResult.properties.id,
         RelationshipType.SessionResultHasPrimeImage,
-        DbNodeType.Image,
     )
 
     expect(relationships.length)

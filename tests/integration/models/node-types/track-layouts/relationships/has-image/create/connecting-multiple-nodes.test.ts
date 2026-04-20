@@ -18,7 +18,6 @@ test('A TRACK LAYOUT can have multiple ›has-image‹ relationships', async () 
     const relationships = await getRelationshipCollection(
         trackLayout.properties.id,
         RelationshipType.TrackLayoutHasImage,
-        DbNodeType.Image,
     )
 
     expect(relationships.length)

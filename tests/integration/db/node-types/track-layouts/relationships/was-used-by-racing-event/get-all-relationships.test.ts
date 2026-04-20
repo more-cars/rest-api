@@ -14,7 +14,6 @@ describe('Requesting all ›was-used-by-racing-event‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             trackLayout.properties.id,
             RelationshipType.TrackLayoutWasUsedByRacingEvent,
-            DbNodeType.RacingEvent,
         )
 
         expect(relationships.length)
@@ -27,7 +26,6 @@ describe('Requesting all ›was-used-by-racing-event‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             trackLayout.properties.id,
             RelationshipType.TrackLayoutWasUsedByRacingEvent,
-            DbNodeType.RacingEvent,
         )
 
         expect(relationships.length)
@@ -38,7 +36,6 @@ describe('Requesting all ›was-used-by-racing-event‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.TrackLayoutWasUsedByRacingEvent,
-            DbNodeType.RacingEvent,
         )
 
         expect(relationships.length)

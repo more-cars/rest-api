@@ -18,7 +18,6 @@ test('A LAP TIME can have multiple ›has-image‹ relationships', async () => {
     const relationships = await getRelationshipCollection(
         lapTime.properties.id,
         RelationshipType.LapTimeHasImage,
-        DbNodeType.Image,
     )
 
     expect(relationships.length)

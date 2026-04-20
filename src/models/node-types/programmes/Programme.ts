@@ -149,7 +149,7 @@ export const Programme = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.ProgrammeHasPrimeImage, programmeId, imageId)
         }
-        await deleteOutgoingRel(programmeId, RelType.ProgrammeHasPrimeImage, ModelNodeType.Image)
+        await deleteOutgoingRel(programmeId, RelType.ProgrammeHasPrimeImage)
 
 
         const createdRelationship = await createRel(programmeId, imageId, RelType.ProgrammeHasPrimeImage)
@@ -232,7 +232,7 @@ export const Programme = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.ProgrammeHasMainVideo, programmeId, videoId)
         }
-        await deleteOutgoingRel(programmeId, RelType.ProgrammeHasMainVideo, ModelNodeType.Video)
+        await deleteOutgoingRel(programmeId, RelType.ProgrammeHasMainVideo)
 
         const createdRelationship = await createRel(programmeId, videoId, RelType.ProgrammeHasMainVideo)
         if (!createdRelationship) {

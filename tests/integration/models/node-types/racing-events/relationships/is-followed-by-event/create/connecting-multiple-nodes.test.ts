@@ -18,7 +18,6 @@ test('A RACING EVENT cannot have multiple ›is-followed-by-event‹ relationshi
     const relationships = await getRelationshipCollection(
         racingEvent.properties.id,
         RelationshipType.RacingEventIsFollowedByEvent,
-        DbNodeType.RacingEvent,
     )
 
     expect(relationships.length)

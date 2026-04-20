@@ -14,7 +14,6 @@ describe('Requesting all ›has-image‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             raceTrack.properties.id,
             RelationshipType.RaceTrackHasImage,
-            DbNodeType.Image,
         )
 
         expect(relationships.length)
@@ -27,7 +26,6 @@ describe('Requesting all ›has-image‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             raceTrack.properties.id,
             RelationshipType.RaceTrackHasImage,
-            DbNodeType.Image,
         )
 
         expect(relationships.length)
@@ -38,7 +36,6 @@ describe('Requesting all ›has-image‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.RaceTrackHasImage,
-            DbNodeType.Image,
         )
 
         expect(relationships.length)

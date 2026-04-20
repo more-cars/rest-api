@@ -18,7 +18,6 @@ test('A TRACK LAYOUT cannot have multiple ›has-prime-image‹ relationships', 
     const relationships = await getRelationshipCollection(
         trackLayout.properties.id,
         RelationshipType.TrackLayoutHasPrimeImage,
-        DbNodeType.Image,
     )
 
     expect(relationships.length)

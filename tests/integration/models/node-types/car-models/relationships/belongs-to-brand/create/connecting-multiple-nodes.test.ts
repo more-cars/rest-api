@@ -18,7 +18,6 @@ test('A CAR MODEL cannot have multiple ›belongs-to-brand‹ relationships', as
     const relationships = await getRelationshipCollection(
         carModel.properties.id,
         RelationshipType.CarModelBelongsToBrand,
-        DbNodeType.Brand,
     )
 
     expect(relationships.length)

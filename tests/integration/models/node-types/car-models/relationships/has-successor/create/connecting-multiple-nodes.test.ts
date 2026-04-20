@@ -18,7 +18,6 @@ test('A CAR MODEL cannot have multiple ›has-successor‹ relationships', async
     const relationships = await getRelationshipCollection(
         carModel.properties.id,
         RelationshipType.CarModelHasSuccessor,
-        DbNodeType.CarModel,
     )
 
     expect(relationships.length)

@@ -18,7 +18,6 @@ test('A COMPANY can have multiple ›has-image‹ relationships', async () => {
     const relationships = await getRelationshipCollection(
         company.properties.id,
         RelationshipType.CompanyHasImage,
-        DbNodeType.Image,
     )
 
     expect(relationships.length)

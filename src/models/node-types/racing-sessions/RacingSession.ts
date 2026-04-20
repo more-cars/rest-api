@@ -73,7 +73,7 @@ export const RacingSession = {
             throw new RelAlreadyExistsError(RelType.RacingSessionBelongsToRacingEvent, racingSessionId, racingEventId)
         }
 
-        await deleteOutgoingRel(racingSessionId, RelType.RacingSessionBelongsToRacingEvent, ModelNodeType.RacingEvent)
+        await deleteOutgoingRel(racingSessionId, RelType.RacingSessionBelongsToRacingEvent)
 
         const createdRelationship = await createRel(racingSessionId, racingEventId, RelType.RacingSessionBelongsToRacingEvent)
         if (!createdRelationship) {
@@ -196,7 +196,7 @@ export const RacingSession = {
             throw new RelAlreadyExistsError(RelType.RacingSessionHasPrimeImage, racingSessionId, imageId)
         }
 
-        await deleteOutgoingRel(racingSessionId, RelType.RacingSessionHasPrimeImage, ModelNodeType.Image)
+        await deleteOutgoingRel(racingSessionId, RelType.RacingSessionHasPrimeImage)
 
         const createdRelationship = await createRel(racingSessionId, imageId, RelType.RacingSessionHasPrimeImage)
         if (!createdRelationship) {
@@ -278,7 +278,7 @@ export const RacingSession = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.RacingSessionHasMainVideo, racingSessionId, videoId)
         }
-        await deleteOutgoingRel(racingSessionId, RelType.RacingSessionHasMainVideo, ModelNodeType.Video)
+        await deleteOutgoingRel(racingSessionId, RelType.RacingSessionHasMainVideo)
 
         const createdRelationship = await createRel(racingSessionId, videoId, RelType.RacingSessionHasMainVideo)
         if (!createdRelationship) {

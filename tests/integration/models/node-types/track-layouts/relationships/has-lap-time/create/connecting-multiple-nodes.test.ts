@@ -18,7 +18,6 @@ test('A TRACK LAYOUT can have multiple ›has-lap-time‹ relationships', async 
     const relationships = await getRelationshipCollection(
         trackLayout.properties.id,
         RelationshipType.TrackLayoutHasLapTime,
-        DbNodeType.LapTime,
     )
 
     expect(relationships.length)

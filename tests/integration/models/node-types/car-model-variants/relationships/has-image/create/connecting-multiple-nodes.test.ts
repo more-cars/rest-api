@@ -18,7 +18,6 @@ test('A CAR MODEL VARIANT can have multiple ›has-image‹ relationships', asyn
     const relationships = await getRelationshipCollection(
         carModelVariant.properties.id,
         RelationshipType.CarModelVariantHasImage,
-        DbNodeType.Image,
     )
 
     expect(relationships.length)

@@ -18,7 +18,6 @@ test('A TRACK LAYOUT can have multiple ›is-featured-in-racing-game‹ relation
     const relationships = await getRelationshipCollection(
         trackLayout.properties.id,
         RelationshipType.TrackLayoutIsFeaturedInRacingGame,
-        DbNodeType.RacingGame,
     )
 
     expect(relationships.length)

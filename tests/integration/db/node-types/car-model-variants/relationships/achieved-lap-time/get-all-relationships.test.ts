@@ -14,7 +14,6 @@ describe('Requesting all ›achieved-lap-time‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             carModelVariant.properties.id,
             RelationshipType.CarModelVariantAchievedLapTime,
-            DbNodeType.LapTime,
         )
 
         expect(relationships.length)
@@ -27,7 +26,6 @@ describe('Requesting all ›achieved-lap-time‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             carModelVariant.properties.id,
             RelationshipType.CarModelVariantAchievedLapTime,
-            DbNodeType.LapTime,
         )
 
         expect(relationships.length)
@@ -38,7 +36,6 @@ describe('Requesting all ›achieved-lap-time‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.CarModelVariantAchievedLapTime,
-            DbNodeType.LapTime,
         )
 
         expect(relationships.length)

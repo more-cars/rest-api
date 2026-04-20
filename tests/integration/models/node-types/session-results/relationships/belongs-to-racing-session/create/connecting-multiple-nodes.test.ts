@@ -18,7 +18,6 @@ test('A SESSION RESULT cannot have multiple ›belongs-to-racing-session‹ rela
     const relationships = await getRelationshipCollection(
         sessionResult.properties.id,
         RelationshipType.SessionResultBelongsToRacingSession,
-        DbNodeType.RacingSession,
     )
 
     expect(relationships.length)

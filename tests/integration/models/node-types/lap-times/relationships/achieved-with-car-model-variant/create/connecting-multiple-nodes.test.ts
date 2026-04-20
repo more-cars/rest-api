@@ -18,7 +18,6 @@ test('A LAP TIME cannot have multiple ›achieved-with-car-model-variant‹ rela
     const relationships = await getRelationshipCollection(
         lapTime.properties.id,
         RelationshipType.LapTimeAchievedWithCarModelVariant,
-        DbNodeType.CarModelVariant,
     )
 
     expect(relationships.length)

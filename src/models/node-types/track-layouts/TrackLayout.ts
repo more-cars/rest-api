@@ -75,7 +75,7 @@ export const TrackLayout = {
             throw new RelAlreadyExistsError(RelType.TrackLayoutBelongsToRaceTrack, trackLayoutId, raceTrackId)
         }
 
-        await deleteOutgoingRel(trackLayoutId, RelType.TrackLayoutBelongsToRaceTrack, ModelNodeType.RaceTrack)
+        await deleteOutgoingRel(trackLayoutId, RelType.TrackLayoutBelongsToRaceTrack)
 
         const createdRelationship = await createRel(trackLayoutId, raceTrackId, RelType.TrackLayoutBelongsToRaceTrack)
         if (!createdRelationship) {
@@ -238,7 +238,7 @@ export const TrackLayout = {
             throw new RelAlreadyExistsError(RelType.TrackLayoutHasPrimeImage, trackLayoutId, imageId)
         }
 
-        await deleteOutgoingRel(trackLayoutId, RelType.TrackLayoutHasPrimeImage, ModelNodeType.Image)
+        await deleteOutgoingRel(trackLayoutId, RelType.TrackLayoutHasPrimeImage)
 
         const createdRelationship = await createRel(trackLayoutId, imageId, RelType.TrackLayoutHasPrimeImage)
         if (!createdRelationship) {
@@ -359,7 +359,7 @@ export const TrackLayout = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.TrackLayoutHasMainVideo, trackLayoutId, videoId)
         }
-        await deleteOutgoingRel(trackLayoutId, RelType.TrackLayoutHasMainVideo, ModelNodeType.Video)
+        await deleteOutgoingRel(trackLayoutId, RelType.TrackLayoutHasMainVideo)
 
         const createdRelationship = await createRel(trackLayoutId, videoId, RelType.TrackLayoutHasMainVideo)
         if (!createdRelationship) {

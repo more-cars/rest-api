@@ -14,7 +14,6 @@ describe('Requesting all ›achieved-session-result‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             carModelVariant.properties.id,
             RelationshipType.CarModelVariantAchievedSessionResult,
-            DbNodeType.SessionResult,
         )
 
         expect(relationships.length)
@@ -27,7 +26,6 @@ describe('Requesting all ›achieved-session-result‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             carModelVariant.properties.id,
             RelationshipType.CarModelVariantAchievedSessionResult,
-            DbNodeType.SessionResult,
         )
 
         expect(relationships.length)
@@ -38,7 +36,6 @@ describe('Requesting all ›achieved-session-result‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.CarModelVariantAchievedSessionResult,
-            DbNodeType.SessionResult,
         )
 
         expect(relationships.length)

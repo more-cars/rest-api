@@ -18,7 +18,6 @@ test('A GAMING PLATFORM can have multiple ›has-image‹ relationships', async 
     const relationships = await getRelationshipCollection(
         gamingPlatform.properties.id,
         RelationshipType.GamingPlatformHasImage,
-        DbNodeType.Image,
     )
 
     expect(relationships.length)

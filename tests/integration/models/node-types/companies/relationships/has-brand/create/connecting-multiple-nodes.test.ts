@@ -18,7 +18,6 @@ test('A COMPANY can have multiple ›has-brand‹ relationships', async () => {
     const relationships = await getRelationshipCollection(
         company.properties.id,
         RelationshipType.CompanyHasBrand,
-        DbNodeType.Brand,
     )
 
     expect(relationships.length)

@@ -12,7 +12,6 @@ import {createRel} from "../../relationships/createRel"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 import {getSpecificRel} from "../../relationships/getSpecificRel"
-import {ModelNodeType} from "../../types/ModelNodeType"
 import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
 import {RelType} from "../../relationships/types/RelType"
 import {getRel} from "../../relationships/getRel"
@@ -69,7 +68,7 @@ export const Price = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.PriceForCarModelVariant, priceId, carModelVariantId)
         }
-        await deleteOutgoingRel(priceId, RelType.PriceForCarModelVariant, ModelNodeType.CarModelVariant)
+        await deleteOutgoingRel(priceId, RelType.PriceForCarModelVariant)
 
         const createdRelationship = await createRel(priceId, carModelVariantId, RelType.PriceForCarModelVariant)
         if (!createdRelationship) {
@@ -151,7 +150,7 @@ export const Price = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.PriceHasPrimeImage, priceId, imageId)
         }
-        await deleteOutgoingRel(priceId, RelType.PriceHasPrimeImage, ModelNodeType.Image)
+        await deleteOutgoingRel(priceId, RelType.PriceHasPrimeImage)
 
         const createdRelationship = await createRel(priceId, imageId, RelType.PriceHasPrimeImage)
         if (!createdRelationship) {

@@ -18,7 +18,6 @@ test('A RACING GAME can have multiple ›has-image‹ relationships', async () =
     const relationships = await getRelationshipCollection(
         racingGame.properties.id,
         RelationshipType.RacingGameHasImage,
-        DbNodeType.Image,
     )
 
     expect(relationships.length)

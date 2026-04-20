@@ -1,7 +1,7 @@
 import neo4j, {Driver, Node, Relationship as Neo4jRelationship} from "neo4j-driver"
 import {getDriver} from "../driver"
 import type {RelationshipType} from "../types/RelationshipType"
-import type {DbNodeType} from "../types/DbNodeType"
+import {mapNodeTypeToDbNodeType} from "../../specification/mapNodeTypeToDbNodeType"
 import type {Relationship} from "../types/Relationship"
 import {getRelationshipTypeSpecification} from "../../specification/getRelationshipTypeSpecification"
 import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationshipToDbRelationship"
@@ -13,7 +13,6 @@ import {mapDbRelationshipTypeToRelationshipType} from "../../specification/mapDb
 export async function getRelationshipCollection(
     startNodeId: number,
     relationshipType: RelationshipType,
-    endNodeType?: DbNodeType,
 ): Promise<Relationship[]> {
     const relationships: Relationship[] = []
 
@@ -21,7 +20,7 @@ export async function getRelationshipCollection(
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getRelationshipCollectionQuery(startNodeId, relationshipType, endNodeType))
+        const result = await txc.run(getRelationshipCollectionQuery(startNodeId, relationshipType))
         return result.records
     })
 
@@ -38,15 +37,23 @@ export async function getRelationshipCollection(
     return relationships
 }
 
-export function getRelationshipCollectionQuery(startNodeId: number, relationshipType: RelationshipType, endNodeType?: DbNodeType) {
+export function getRelationshipCollectionQuery(startNodeId: number, relationshipType: RelationshipType) {
     const relationshipSpecs = getRelationshipTypeSpecification(mapDbRelationshipTypeToRelationshipType(relationshipType))
     const templateName = relationshipSpecs.isReverseRelationship ? 'getRelationshipCollectionReversed' : 'getRelationshipCollection'
+    const startNodeType = mapNodeTypeToDbNodeType(relationshipSpecs.startNodeType)
     const relationshipName = mapDbRelationshipTypeToNeo4jRelationshipType(relationshipType)
+    const endNodeType = mapNodeTypeToDbNodeType(relationshipSpecs.endNodeType)
 
     let template = getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')
         .trim()
         .replace('$startNodeId', startNodeId.toString())
         .replace('relationshipName', relationshipName)
+
+    if (startNodeType) {
+        template = template.replace('$startNodeLabel', getNamespacedNodeTypeLabel(startNodeType))
+    } else {
+        template = template.replace(':$startNodeLabel', '')
+    }
 
     if (endNodeType) {
         template = template.replace('$endNodeLabel', getNamespacedNodeTypeLabel(endNodeType))

@@ -14,7 +14,6 @@ describe('Requesting all ›has-brand‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             company.properties.id,
             RelationshipType.CompanyHasBrand,
-            DbNodeType.Brand,
         )
 
         expect(relationships.length)
@@ -27,7 +26,6 @@ describe('Requesting all ›has-brand‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             company.properties.id,
             RelationshipType.CompanyHasBrand,
-            DbNodeType.Brand,
         )
 
         expect(relationships.length)
@@ -38,7 +36,6 @@ describe('Requesting all ›has-brand‹ relationships', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.CompanyHasBrand,
-            DbNodeType.Brand,
         )
 
         expect(relationships.length)

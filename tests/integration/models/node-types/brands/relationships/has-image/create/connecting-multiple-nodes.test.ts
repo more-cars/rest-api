@@ -15,7 +15,7 @@ test('A BRAND can have multiple ›has-image‹ relationships', async () => {
         await Brand.createHasImageRelationship(brand.properties.id, image.properties.id)
     }
 
-    const relationships = await getRelationshipCollection(brand.properties.id, RelationshipType.BrandHasImage, DbNodeType.Image)
+    const relationships = await getRelationshipCollection(brand.properties.id, RelationshipType.BrandHasImage)
 
     expect(relationships.length)
         .toBe(imagesAmount)

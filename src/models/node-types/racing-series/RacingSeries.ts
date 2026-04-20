@@ -150,7 +150,7 @@ export const RacingSeries = {
             throw new RelAlreadyExistsError(RelType.RacingSeriesHasPrimeImage, racingSeriesId, imageId)
         }
 
-        await deleteOutgoingRel(racingSeriesId, RelType.RacingSeriesHasPrimeImage, ModelNodeType.Image)
+        await deleteOutgoingRel(racingSeriesId, RelType.RacingSeriesHasPrimeImage)
 
         const createdRelationship = await createRel(racingSeriesId, imageId, RelType.RacingSeriesHasPrimeImage)
         if (!createdRelationship) {
@@ -232,7 +232,7 @@ export const RacingSeries = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.RacingSeriesHasMainVideo, racingSeriesId, videoId)
         }
-        await deleteOutgoingRel(racingSeriesId, RelType.RacingSeriesHasMainVideo, ModelNodeType.Video)
+        await deleteOutgoingRel(racingSeriesId, RelType.RacingSeriesHasMainVideo)
 
         const createdRelationship = await createRel(racingSeriesId, videoId, RelType.RacingSeriesHasMainVideo)
         if (!createdRelationship) {

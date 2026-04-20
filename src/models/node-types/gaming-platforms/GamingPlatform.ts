@@ -17,7 +17,6 @@ import {getAllRels} from "../../relationships/getAllRels"
 import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
 import {Image} from "../images/Image"
-import {ModelNodeType} from "../../types/ModelNodeType"
 import {getRel} from "../../relationships/getRel"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {Video} from "../videos/Video"
@@ -147,7 +146,7 @@ export const GamingPlatform = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.GamingPlatformHasPrimeImage, gamingPlatformId, imageId)
         }
-        await deleteOutgoingRel(gamingPlatformId, RelType.GamingPlatformHasPrimeImage, ModelNodeType.Image)
+        await deleteOutgoingRel(gamingPlatformId, RelType.GamingPlatformHasPrimeImage)
 
 
         const createdRelationship = await createRel(gamingPlatformId, imageId, RelType.GamingPlatformHasPrimeImage)
@@ -230,7 +229,7 @@ export const GamingPlatform = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.GamingPlatformHasMainVideo, gamingPlatformId, videoId)
         }
-        await deleteOutgoingRel(gamingPlatformId, RelType.GamingPlatformHasMainVideo, ModelNodeType.Video)
+        await deleteOutgoingRel(gamingPlatformId, RelType.GamingPlatformHasMainVideo)
 
         const createdRelationship = await createRel(gamingPlatformId, videoId, RelType.GamingPlatformHasMainVideo)
         if (!createdRelationship) {

@@ -18,7 +18,6 @@ test('A SESSION RESULT can have multiple ›has-image‹ relationships', async (
     const relationships = await getRelationshipCollection(
         sessionResult.properties.id,
         RelationshipType.SessionResultHasImage,
-        DbNodeType.Image,
     )
 
     expect(relationships.length)

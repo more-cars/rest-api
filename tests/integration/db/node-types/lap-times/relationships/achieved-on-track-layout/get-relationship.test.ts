@@ -12,7 +12,6 @@ describe('Requesting a ›achieved-on-track-layout‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             relationship.start_node.properties.id,
             RelationshipType.LapTimeAchievedOnTrackLayout,
-            DbNodeType.TrackLayout,
         )
 
         expect(relationships.length)
@@ -25,7 +24,6 @@ describe('Requesting a ›achieved-on-track-layout‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             lapTime.properties.id,
             RelationshipType.LapTimeAchievedOnTrackLayout,
-            DbNodeType.TrackLayout,
         )
 
         expect(relationships.length)
@@ -36,7 +34,6 @@ describe('Requesting a ›achieved-on-track-layout‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.LapTimeAchievedOnTrackLayout,
-            DbNodeType.TrackLayout,
         )
 
         expect(relationships.length)

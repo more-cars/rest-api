@@ -76,7 +76,7 @@ export const CarModel = {
             throw new RelAlreadyExistsError(RelType.CarModelBelongsToBrand, carModelId, brandId)
         }
 
-        await deleteOutgoingRel(carModelId, RelType.CarModelBelongsToBrand, ModelNodeType.Brand)
+        await deleteOutgoingRel(carModelId, RelType.CarModelBelongsToBrand)
 
         const createdRelationship = await createRel(carModelId, brandId, RelType.CarModelBelongsToBrand)
         if (!createdRelationship) {
@@ -125,7 +125,7 @@ export const CarModel = {
             throw new RelAlreadyExistsError(RelType.CarModelHasSuccessor, carModelId, partnerId)
         }
 
-        await deleteOutgoingRel(carModelId, RelType.CarModelHasSuccessor, ModelNodeType.CarModel)
+        await deleteOutgoingRel(carModelId, RelType.CarModelHasSuccessor)
         await deleteIncomingRel(partnerId, RelType.CarModelHasSuccessor, ModelNodeType.CarModel)
 
         const createdRelationship = await createRel(carModelId, partnerId, RelType.CarModelHasSuccessor)
@@ -175,7 +175,7 @@ export const CarModel = {
             throw new RelAlreadyExistsError(RelType.CarModelIsSuccessorOf, carModelId, partnerId)
         }
 
-        await deleteOutgoingRel(carModelId, RelType.CarModelIsSuccessorOf, ModelNodeType.CarModel)
+        await deleteOutgoingRel(carModelId, RelType.CarModelIsSuccessorOf)
         await deleteIncomingRel(partnerId, RelType.CarModelIsSuccessorOf, ModelNodeType.CarModel)
 
         const createdRelationship = await createRel(carModelId, partnerId, RelType.CarModelIsSuccessorOf)
@@ -377,7 +377,7 @@ export const CarModel = {
             throw new RelAlreadyExistsError(RelType.CarModelHasPrimeImage, carModelId, imageId)
         }
 
-        await deleteOutgoingRel(carModelId, RelType.CarModelHasPrimeImage, ModelNodeType.Image)
+        await deleteOutgoingRel(carModelId, RelType.CarModelHasPrimeImage)
 
         const createdRelationship = await createRel(carModelId, imageId, RelType.CarModelHasPrimeImage)
         if (!createdRelationship) {
@@ -459,7 +459,7 @@ export const CarModel = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.CarModelHasMainVideo, carModelId, videoId)
         }
-        await deleteOutgoingRel(carModelId, RelType.CarModelHasMainVideo, ModelNodeType.Video)
+        await deleteOutgoingRel(carModelId, RelType.CarModelHasMainVideo)
 
         const createdRelationship = await createRel(carModelId, videoId, RelType.CarModelHasMainVideo)
         if (!createdRelationship) {

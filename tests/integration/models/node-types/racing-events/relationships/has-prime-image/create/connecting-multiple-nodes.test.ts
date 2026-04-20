@@ -18,7 +18,6 @@ test('A RACING EVENT cannot have multiple ›has-prime-image‹ relationships', 
     const relationships = await getRelationshipCollection(
         racingEvent.properties.id,
         RelationshipType.RacingEventHasPrimeImage,
-        DbNodeType.Image,
     )
 
     expect(relationships.length)

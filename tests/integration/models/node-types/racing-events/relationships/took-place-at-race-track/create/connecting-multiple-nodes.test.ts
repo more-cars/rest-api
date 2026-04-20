@@ -18,7 +18,6 @@ test('A RACING EVENT cannot have multiple ›took-place-at-race-track‹ relatio
     const relationships = await getRelationshipCollection(
         racingEvent.properties.id,
         RelationshipType.RacingEventTookPlaceAtRaceTrack,
-        DbNodeType.RaceTrack,
     )
 
     expect(relationships.length)

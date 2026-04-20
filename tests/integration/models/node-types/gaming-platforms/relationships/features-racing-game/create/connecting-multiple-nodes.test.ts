@@ -18,7 +18,6 @@ test('A GAMING PLATFORM can have multiple ›features-racing-game‹ relationshi
     const relationships = await getRelationshipCollection(
         gamingPlatform.properties.id,
         RelationshipType.GamingPlatformFeaturesRacingGame,
-        DbNodeType.RacingGame,
     )
 
     expect(relationships.length)

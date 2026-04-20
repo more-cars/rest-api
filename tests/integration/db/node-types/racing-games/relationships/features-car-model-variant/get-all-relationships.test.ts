@@ -14,7 +14,6 @@ describe('Requesting all ›features-car-model-variant‹ relationships', () => 
         const relationships = await getRelationshipCollection(
             racingGame.properties.id,
             RelationshipType.RacingGameFeaturesCarModelVariant,
-            DbNodeType.CarModelVariant,
         )
 
         expect(relationships.length)
@@ -27,7 +26,6 @@ describe('Requesting all ›features-car-model-variant‹ relationships', () => 
         const relationships = await getRelationshipCollection(
             racingGame.properties.id,
             RelationshipType.RacingGameFeaturesCarModelVariant,
-            DbNodeType.CarModelVariant,
         )
 
         expect(relationships.length)
@@ -38,7 +36,6 @@ describe('Requesting all ›features-car-model-variant‹ relationships', () => 
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.RacingGameFeaturesCarModelVariant,
-            DbNodeType.CarModelVariant,
         )
 
         expect(relationships.length)

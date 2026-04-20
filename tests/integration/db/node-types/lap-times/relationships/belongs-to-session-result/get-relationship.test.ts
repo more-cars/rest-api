@@ -12,7 +12,6 @@ describe('Requesting a ›belongs-to-session-result‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             relationship.start_node.properties.id,
             RelationshipType.LapTimeBelongsToSessionResult,
-            DbNodeType.SessionResult,
         )
 
         expect(relationships.length)
@@ -25,7 +24,6 @@ describe('Requesting a ›belongs-to-session-result‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             lapTime.properties.id,
             RelationshipType.LapTimeBelongsToSessionResult,
-            DbNodeType.SessionResult,
         )
 
         expect(relationships.length)
@@ -36,7 +34,6 @@ describe('Requesting a ›belongs-to-session-result‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.LapTimeBelongsToSessionResult,
-            DbNodeType.SessionResult,
         )
 
         expect(relationships.length)

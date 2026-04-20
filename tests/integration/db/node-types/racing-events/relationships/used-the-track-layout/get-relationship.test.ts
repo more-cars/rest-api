@@ -12,7 +12,6 @@ describe('Requesting a ›used-the-track-layout‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             relationship.start_node.properties.id,
             RelationshipType.RacingEventUsedTheTrackLayout,
-            DbNodeType.TrackLayout,
         )
 
         expect(relationships.length)
@@ -25,7 +24,6 @@ describe('Requesting a ›used-the-track-layout‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             racingEvent.properties.id,
             RelationshipType.RacingEventUsedTheTrackLayout,
-            DbNodeType.TrackLayout,
         )
 
         expect(relationships.length)
@@ -36,7 +34,6 @@ describe('Requesting a ›used-the-track-layout‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.RacingEventUsedTheTrackLayout,
-            DbNodeType.TrackLayout,
         )
 
         expect(relationships.length)

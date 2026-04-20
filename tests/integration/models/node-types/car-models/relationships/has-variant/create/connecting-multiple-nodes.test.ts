@@ -18,7 +18,6 @@ test('A CAR MODEL can have multiple ›has-variant‹ relationships', async () =
     const relationships = await getRelationshipCollection(
         carModel.properties.id,
         RelationshipType.CarModelHasVariant,
-        DbNodeType.CarModelVariant,
     )
 
     expect(relationships.length)

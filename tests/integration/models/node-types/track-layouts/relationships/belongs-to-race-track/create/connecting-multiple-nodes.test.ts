@@ -18,7 +18,6 @@ test('A TRACK LAYOUT cannot have multiple ›belongs-to-race-track‹ relationsh
     const relationships = await getRelationshipCollection(
         trackLayout.properties.id,
         RelationshipType.TrackLayoutBelongsToRaceTrack,
-        DbNodeType.RaceTrack,
     )
 
     expect(relationships.length)

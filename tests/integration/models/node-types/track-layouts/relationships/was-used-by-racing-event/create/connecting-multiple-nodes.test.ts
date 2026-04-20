@@ -18,7 +18,6 @@ test('A TRACK LAYOUT can have multiple ›was-used-by-racing-event‹ relationsh
     const relationships = await getRelationshipCollection(
         trackLayout.properties.id,
         RelationshipType.TrackLayoutWasUsedByRacingEvent,
-        DbNodeType.RacingEvent,
     )
 
     expect(relationships.length)

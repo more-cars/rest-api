@@ -12,7 +12,6 @@ import {createRel} from "../../relationships/createRel"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {MagazineIssue} from "../magazine-issues/MagazineIssue"
 import {getSpecificRel} from "../../relationships/getSpecificRel"
-import {ModelNodeType} from "../../types/ModelNodeType"
 import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
 import {RelType} from "../../relationships/types/RelType"
 import {getRel} from "../../relationships/getRel"
@@ -71,7 +70,7 @@ export const Rating = {
             throw new RelAlreadyExistsError(RelType.RatingByMagazineIssue, ratingId, magazineIssueId)
         }
 
-        await deleteOutgoingRel(ratingId, RelType.RatingByMagazineIssue, ModelNodeType.MagazineIssue)
+        await deleteOutgoingRel(ratingId, RelType.RatingByMagazineIssue)
 
         const createdRelationship = await createRel(ratingId, magazineIssueId, RelType.RatingByMagazineIssue)
         if (!createdRelationship) {
@@ -116,7 +115,7 @@ export const Rating = {
             throw new RelAlreadyExistsError(RelType.RatingForCarModelVariant, ratingId, carModelVariantId)
         }
 
-        await deleteOutgoingRel(ratingId, RelType.RatingForCarModelVariant, ModelNodeType.CarModelVariant)
+        await deleteOutgoingRel(ratingId, RelType.RatingForCarModelVariant)
 
         const createdRelationship = await createRel(ratingId, carModelVariantId, RelType.RatingForCarModelVariant)
         if (!createdRelationship) {
@@ -199,7 +198,7 @@ export const Rating = {
             throw new RelAlreadyExistsError(RelType.RatingHasPrimeImage, ratingId, imageId)
         }
 
-        await deleteOutgoingRel(ratingId, RelType.RatingHasPrimeImage, ModelNodeType.Image)
+        await deleteOutgoingRel(ratingId, RelType.RatingHasPrimeImage)
 
         const createdRelationship = await createRel(ratingId, imageId, RelType.RatingHasPrimeImage)
         if (!createdRelationship) {

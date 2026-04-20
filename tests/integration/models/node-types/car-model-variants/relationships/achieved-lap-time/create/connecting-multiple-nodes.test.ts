@@ -15,7 +15,7 @@ test('A CAR MODEL VARIANT can have multiple ›achieved-lap-time‹ relationship
         await CarModelVariant.createAchievedLapTimeRelationship(carModelVariant.properties.id, lapTime.properties.id)
     }
 
-    const relationships = await getRelationshipCollection(carModelVariant.properties.id, RelationshipType.CarModelVariantAchievedLapTime, DbNodeType.LapTime)
+    const relationships = await getRelationshipCollection(carModelVariant.properties.id, RelationshipType.CarModelVariantAchievedLapTime)
 
     expect(relationships.length)
         .toBe(lapTimesAmount)

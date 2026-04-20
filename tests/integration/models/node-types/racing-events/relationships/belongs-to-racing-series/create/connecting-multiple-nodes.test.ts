@@ -18,7 +18,6 @@ test('A RACING EVENT cannot have multiple ›belongs-to-racing-series‹ relatio
     const relationships = await getRelationshipCollection(
         racingEvent.properties.id,
         RelationshipType.RacingEventBelongsToRacingSeries,
-        DbNodeType.RacingSeries,
     )
 
     expect(relationships.length)

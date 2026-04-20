@@ -18,7 +18,6 @@ import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
 import {TrackLayout} from "../track-layouts/TrackLayout"
 import {Image} from "../images/Image"
-import {ModelNodeType} from "../../types/ModelNodeType"
 import {getRel} from "../../relationships/getRel"
 import {GamingPlatform} from "../gaming-platforms/GamingPlatform"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
@@ -189,7 +188,7 @@ export const RacingGame = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.RacingGameHasPrimeImage, racingGameId, imageId)
         }
-        await deleteOutgoingRel(racingGameId, RelType.RacingGameHasPrimeImage, ModelNodeType.Image)
+        await deleteOutgoingRel(racingGameId, RelType.RacingGameHasPrimeImage)
 
 
         const createdRelationship = await createRel(racingGameId, imageId, RelType.RacingGameHasPrimeImage)
@@ -311,7 +310,7 @@ export const RacingGame = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.RacingGameHasMainVideo, racingGameId, videoId)
         }
-        await deleteOutgoingRel(racingGameId, RelType.RacingGameHasMainVideo, ModelNodeType.Video)
+        await deleteOutgoingRel(racingGameId, RelType.RacingGameHasMainVideo)
 
         const createdRelationship = await createRel(racingGameId, videoId, RelType.RacingGameHasMainVideo)
         if (!createdRelationship) {

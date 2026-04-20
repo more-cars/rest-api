@@ -191,7 +191,7 @@ export const RaceTrack = {
             throw new RelAlreadyExistsError(RelType.RaceTrackHasPrimeImage, raceTrackId, imageId)
         }
 
-        await deleteOutgoingRel(raceTrackId, RelType.RaceTrackHasPrimeImage, ModelNodeType.Image)
+        await deleteOutgoingRel(raceTrackId, RelType.RaceTrackHasPrimeImage)
 
         const createdRelationship = await createRel(raceTrackId, imageId, RelType.RaceTrackHasPrimeImage)
         if (!createdRelationship) {
@@ -273,7 +273,7 @@ export const RaceTrack = {
         if (existingRelation) {
             throw new RelAlreadyExistsError(RelType.RaceTrackHasMainVideo, raceTrackId, videoId)
         }
-        await deleteOutgoingRel(raceTrackId, RelType.RaceTrackHasMainVideo, ModelNodeType.Video)
+        await deleteOutgoingRel(raceTrackId, RelType.RaceTrackHasMainVideo)
 
         const createdRelationship = await createRel(raceTrackId, videoId, RelType.RaceTrackHasMainVideo)
         if (!createdRelationship) {

@@ -18,7 +18,6 @@ test('A LAP TIME cannot have multiple ›belongs-to-session-result‹ relationsh
     const relationships = await getRelationshipCollection(
         lapTime.properties.id,
         RelationshipType.LapTimeBelongsToSessionResult,
-        DbNodeType.SessionResult,
     )
 
     expect(relationships.length)

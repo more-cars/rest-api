@@ -12,7 +12,6 @@ describe('Requesting a ›is-followed-by-event‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             relationship.start_node.properties.id,
             RelationshipType.RacingEventIsFollowedByEvent,
-            DbNodeType.RacingEvent,
         )
 
         expect(relationships.length)
@@ -25,7 +24,6 @@ describe('Requesting a ›is-followed-by-event‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             racingEvent.properties.id,
             RelationshipType.RacingEventIsFollowedByEvent,
-            DbNodeType.RacingEvent,
         )
 
         expect(relationships.length)
@@ -36,7 +34,6 @@ describe('Requesting a ›is-followed-by-event‹ relationship', () => {
         const relationships = await getRelationshipCollection(
             -42,
             RelationshipType.RacingEventIsFollowedByEvent,
-            DbNodeType.RacingEvent,
         )
 
         expect(relationships.length)
