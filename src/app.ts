@@ -1,7 +1,6 @@
 import express from "express"
 import compression from "compression"
 import cors from "cors"
-import {analyticsMiddleware} from "./tracking/analyticsMiddleware"
 import {authentication} from "./routes/middleware/authentication"
 import {basicAuthentication} from "./routes/middleware/basicAuthentication"
 import {userDbNamespace} from "./userDbNamespace"
@@ -20,7 +19,7 @@ app.set('trust proxy', true)
 app.use(compression())
 
 // activating tracking
-app.use(analyticsMiddleware)
+// app.use(analyticsMiddleware)
 
 // activating "auth" checks
 app.use(authentication)
