@@ -4,6 +4,7 @@ import {mapNodeTypeToDbNodeType} from "../../specification/mapNodeTypeToDbNodeTy
 import type {Relationship} from "../types/Relationship"
 import {getRelationshipTypeSpecification} from "../../specification/getRelationshipTypeSpecification"
 import {getDriver} from "../driver"
+import {runNeo4jQuery} from "../runNeo4jQuery"
 import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationshipToDbRelationship"
 import {mapDbRelationshipTypeToNeo4jRelationshipType} from "./mapDbRelationshipTypeToNeo4jRelationshipType"
 import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
@@ -18,7 +19,7 @@ export async function getRelationship(
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getRelationshipQuery(startNodeId, relationshipType))
+        const result = await runNeo4jQuery(getRelationshipQuery(startNodeId, relationshipType), txc)
         return result.records
     })
 

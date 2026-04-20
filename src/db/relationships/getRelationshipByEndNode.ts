@@ -2,6 +2,7 @@ import neo4j, {Driver, Node, Relationship as Neo4jRelationship} from "neo4j-driv
 import type {RelationshipType} from "../types/RelationshipType"
 import type {Relationship} from "../types/Relationship"
 import {getDriver} from "../driver"
+import {runNeo4jQuery} from "../runNeo4jQuery"
 import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationshipToDbRelationship"
 import {getRelationshipTypeSpecification} from "../../specification/getRelationshipTypeSpecification"
 import {mapDbRelationshipTypeToNeo4jRelationshipType} from "./mapDbRelationshipTypeToNeo4jRelationshipType"
@@ -18,7 +19,7 @@ export async function getRelationshipByEndNode(
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getRelationshipQuery(endNodeId, relationshipType))
+        const result = await runNeo4jQuery(getRelationshipQuery(endNodeId, relationshipType), txc)
         return result.records
     })
 

@@ -1,5 +1,6 @@
 import neo4j, {Driver, Node, Relationship as Neo4jRelationship} from "neo4j-driver"
 import {getDriver} from "../driver"
+import {runNeo4jQuery} from "../runNeo4jQuery"
 import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationshipToDbRelationship"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
@@ -8,7 +9,7 @@ export async function getRelationshipById(relationshipId: number) {
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getRelationshipByIdQuery(relationshipId))
+        const result = await runNeo4jQuery(getRelationshipByIdQuery(relationshipId), txc)
         return result.records
     })
 

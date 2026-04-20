@@ -1,5 +1,6 @@
 import neo4j, {Driver, Node, Session} from "neo4j-driver"
 import {getDriver} from "../driver"
+import {runNeo4jQuery} from "../runNeo4jQuery"
 import {convertNeo4jNodeToDbNode} from "./convertNeo4jNodeToDbNode"
 import {getDenamespacedNodeTypeLabel, getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 import {Neo4jNodeType} from "../types/Neo4jNodeType"
@@ -12,7 +13,7 @@ export async function fetchNodeById(id: number, nodeType: DbNodeType = DbNodeTyp
     const session: Session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(fetchNodeByIdQuery(id, nodeType))
+        const result = await runNeo4jQuery(fetchNodeByIdQuery(id, nodeType), txc)
         return result.records
     })
 

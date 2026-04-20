@@ -1,5 +1,6 @@
 import neo4j, {Driver, Node, Session} from "neo4j-driver"
 import {getDriver} from "../driver"
+import {runNeo4jQuery} from "../runNeo4jQuery"
 import type {Relationship} from "../types/Relationship"
 import {Relationship as Neo4jRelationship} from "neo4j-driver-core/types/graph-types"
 import {convertNeo4jRelationshipToDbRelationship} from "../relationships/convertNeo4jRelationshipToDbRelationship"
@@ -10,7 +11,7 @@ export async function fetchNodesPrimeImage(ids: number[]) {
     const session: Session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(fetchNodesPrimeImageQuery(ids))
+        const result = await runNeo4jQuery(fetchNodesPrimeImageQuery(ids), txc)
         return result.records
     })
 

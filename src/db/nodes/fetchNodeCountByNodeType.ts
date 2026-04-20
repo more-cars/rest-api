@@ -2,6 +2,7 @@ import neo4j, {type Session} from "neo4j-driver"
 import type {DbNodeType} from "../types/DbNodeType"
 import type {CollectionQueryParams} from "../types/CollectionQueryParams"
 import {getDriver} from "../driver"
+import {runNeo4jQuery} from "../runNeo4jQuery"
 import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 import {mapDbNodeTypeToNeo4jNodeType} from "./mapDbNodeTypeToNeo4jNodeType"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
@@ -12,7 +13,7 @@ export async function fetchNodeCountByNodeType(nodeType: DbNodeType, params?: Co
     const session: Session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(fetchNodeCountByNodeTypeQuery(nodeType, params))
+        const result = await runNeo4jQuery(fetchNodeCountByNodeTypeQuery(nodeType, params), txc)
         return result.records
     })
 

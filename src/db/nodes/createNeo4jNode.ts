@@ -1,5 +1,6 @@
 import neo4j, {Driver, Node, Session} from "neo4j-driver"
 import {getDriver} from "../driver"
+import {runNeo4jQuery} from "../runNeo4jQuery"
 import {generateMoreCarsId} from "../generateMoreCarsId"
 import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId"
 import {addMoreCarsIdToNode} from "./addMoreCarsIdToNode"
@@ -20,7 +21,7 @@ export async function createNeo4jNode(nodeType: DbNodeType, data: InputNodeTypeC
 
     // 1. Creating the node in the database
     let neo4jNode: Node = await session.executeWrite(async txc => {
-        const result = await txc.run(createNodeQuery(nodeType, data))
+        const result = await runNeo4jQuery(createNodeQuery(nodeType, data), txc)
         return result.records[0].get('node')
     })
 

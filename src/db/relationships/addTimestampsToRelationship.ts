@@ -1,13 +1,14 @@
 import neo4j, {Driver, Relationship, Session} from "neo4j-driver"
-import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {getDriver} from "../driver"
+import {runNeo4jQuery} from "../runNeo4jQuery"
+import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 export async function addTimestampsToRelationship(elementId: string, createdAt: string, updatedAt: string): Promise<Relationship> {
     const driver: Driver = getDriver()
     const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
     const dbRel: Relationship = await session.executeWrite(async txc => {
-        const result = await txc.run(addTimestampsToRelationshipQuery(elementId, createdAt, updatedAt))
+        const result = await runNeo4jQuery(addTimestampsToRelationshipQuery(elementId, createdAt, updatedAt), txc)
         return result.records[0].get('relationship')
     })
 

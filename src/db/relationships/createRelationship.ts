@@ -3,6 +3,7 @@ import {RelationshipType} from "../types/RelationshipType"
 import {Relationship} from "../types/Relationship"
 import {getRelationshipTypeSpecification} from "../../specification/getRelationshipTypeSpecification"
 import {getDriver} from "../driver"
+import {runNeo4jQuery} from "../runNeo4jQuery"
 import {generateMoreCarsId} from "../generateMoreCarsId"
 import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId"
 import {addMoreCarsIdToRelationship} from "./addMoreCarsIdToRelationship"
@@ -22,7 +23,7 @@ export async function createRelationship(
 
     // 1. Creating the rel in the database
     const records = await session.executeWrite(async txc => {
-        const result = await txc.run(createRelationshipQuery(startNodeId, relationshipType, endNodeId))
+        const result = await runNeo4jQuery(createRelationshipQuery(startNodeId, relationshipType, endNodeId), txc)
         return result.records
     })
 

@@ -1,5 +1,6 @@
 import neo4j, {Driver, Node, Session} from "neo4j-driver"
 import {getDriver} from "../driver"
+import {runNeo4jQuery} from "../runNeo4jQuery"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 export async function addTimestampsToNode(elementId: string, createdAt: string, updatedAt: string): Promise<Node> {
@@ -7,7 +8,7 @@ export async function addTimestampsToNode(elementId: string, createdAt: string, 
     const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
     const dbNode: Node = await session.executeWrite(async txc => {
-        const result = await txc.run(addTimestampsToNodeQuery(elementId, createdAt, updatedAt))
+        const result = await runNeo4jQuery(addTimestampsToNodeQuery(elementId, createdAt, updatedAt), txc)
         return result.records[0].get('node')
     })
 

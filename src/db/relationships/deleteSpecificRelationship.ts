@@ -2,6 +2,7 @@ import neo4j from "neo4j-driver"
 import {RelationshipType} from "../types/RelationshipType"
 import {getRelationshipTypeSpecification} from "../../specification/getRelationshipTypeSpecification"
 import {getDriver} from "../driver"
+import {runNeo4jQuery} from "../runNeo4jQuery"
 import {mapDbRelationshipTypeToNeo4jRelationshipType} from "./mapDbRelationshipTypeToNeo4jRelationshipType"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {mapDbRelationshipTypeToRelationshipType} from "../../specification/mapDbRelationshipTypeToRelationshipType"
@@ -15,7 +16,7 @@ export async function deleteSpecificRelationship(
     const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
     const result = await session.executeWrite(async txc => {
-        const result = await txc.run(deleteSpecificRelationshipQuery(startNodeId, relationshipType, endNodeId))
+        const result = await runNeo4jQuery(deleteSpecificRelationshipQuery(startNodeId, relationshipType, endNodeId), txc)
         return result.summary.counters.containsUpdates()
     })
 

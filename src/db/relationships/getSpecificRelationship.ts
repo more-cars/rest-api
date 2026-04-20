@@ -3,6 +3,7 @@ import type {RelationshipType} from "../types/RelationshipType"
 import type {Relationship} from "../types/Relationship"
 import {getRelationshipTypeSpecification} from "../../specification/getRelationshipTypeSpecification"
 import {getDriver} from "../driver"
+import {runNeo4jQuery} from "../runNeo4jQuery"
 import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationshipToDbRelationship"
 import {mapDbRelationshipTypeToNeo4jRelationshipType} from "./mapDbRelationshipTypeToNeo4jRelationshipType"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
@@ -19,7 +20,7 @@ export async function getSpecificRelationship(
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getSpecificRelationshipQuery(startNodeId, relationshipType, endNodeId))
+        const result = await runNeo4jQuery(getSpecificRelationshipQuery(startNodeId, relationshipType, endNodeId), txc)
         return result.records
     })
 

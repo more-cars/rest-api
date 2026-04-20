@@ -1,5 +1,6 @@
 import neo4j, {Driver, Node, Session} from "neo4j-driver"
 import {getDriver} from "../driver"
+import {runNeo4jQuery} from "../runNeo4jQuery"
 import type {DbNodeType} from "../types/DbNodeType"
 import type {CollectionQueryParams} from "../types/CollectionQueryParams"
 import {getNodeTypeCollectionQuery} from "./getNodeTypeCollectionQuery"
@@ -19,7 +20,7 @@ export async function fetchNodesFromDb(nodeType: DbNodeType, params?: Collection
     const session: Session = driver.session({defaultAccessMode: neo4j.session.READ})
 
     const records = await session.executeRead(async txc => {
-        const result = await txc.run(getNodeTypeCollectionQuery(nodeType, mergedParams))
+        const result = await runNeo4jQuery(getNodeTypeCollectionQuery(nodeType, mergedParams), txc)
         return result.records
     })
 

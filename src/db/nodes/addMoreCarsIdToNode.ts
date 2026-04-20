@@ -1,6 +1,7 @@
 import neo4j, {Driver, Node, Session} from "neo4j-driver"
-import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {getDriver} from "../driver"
+import {runNeo4jQuery} from "../runNeo4jQuery"
+import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 export async function addMoreCarsIdToNode(
     elementId: string,
@@ -10,7 +11,7 @@ export async function addMoreCarsIdToNode(
     const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
     const dbNode: Node = await session.executeWrite(async txc => {
-        const result = await txc.run(addMoreCarsIdToNodeQuery(elementId, moreCarsId))
+        const result = await runNeo4jQuery(addMoreCarsIdToNodeQuery(elementId, moreCarsId), txc)
         return result.records[0].get('node')
     })
 

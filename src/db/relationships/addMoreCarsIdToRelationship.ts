@@ -1,6 +1,7 @@
 import neo4j, {Driver, Relationship, Session} from "neo4j-driver"
-import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {getDriver} from "../driver"
+import {runNeo4jQuery} from "../runNeo4jQuery"
+import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 /**
  * Attaching a More Cars ID to the given relationship.
@@ -14,7 +15,7 @@ export async function addMoreCarsIdToRelationship(elementId: string, moreCarsId:
     const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
     const dbRel: Relationship = await session.executeWrite(async txc => {
-        const result = await txc.run(addMoreCarsIdToRelationshipQuery(elementId, moreCarsId))
+        const result = await runNeo4jQuery(addMoreCarsIdToRelationshipQuery(elementId, moreCarsId), txc)
         return result.records[0].get('rel')
     })
 
