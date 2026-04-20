@@ -14,9 +14,9 @@ resources:
   - openapi-spec-service.yaml
   - openapi-spec-deployment.yaml
   - backup-db-cronjob.yaml
-  - mc1/db-mc1-pvc.yaml
-  - mc1/db-mc1-service.yaml
-  - mc1/db-mc1-deployment.yaml
+#  - mc1/db-mc1-pvc.yaml
+#  - mc1/db-mc1-service.yaml
+#  - mc1/db-mc1-deployment.yaml
 
 patches:
   - path: api-deployment.patch.json
