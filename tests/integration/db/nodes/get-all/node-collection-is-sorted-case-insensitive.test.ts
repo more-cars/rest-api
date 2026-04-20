@@ -22,9 +22,13 @@ describe('get sorted node collection - sorting is case-insensitive', () => {
         })
 
         expect(nodes.length).to.equal(4)
+        // @ts-ignore
         expect(nodes[0].properties.name).toEqual('Auto Bild')
+        // @ts-ignore
         expect(nodes[1].properties.name).toEqual('evo UK')
+        // @ts-ignore
         expect(nodes[2].properties.name).toEqual('sport auto')
+        // @ts-ignore
         expect(nodes[3].properties.name).toEqual('Top Gear')
     })
 })

@@ -3,13 +3,13 @@ import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllN
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 import {ProgrammeEpisodeNode} from "../../../../../../src/db/node-types/programme-episodes/types/ProgrammeEpisodeNode"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
-import {getAllNodesOfType} from "../../../../../../src/db/node-types/programme-episodes/getAllNodesOfType"
+import {fetchNodesFromDb} from "../../../../../../src/db/nodes/fetchNodesFromDb"
 
 test('When there are no PROGRAMME EPISODES then an empty array should be returned', async () => {
     await deleteAllNodesOfType(DbNodeType.ProgrammeEpisode)
 
     const expectedProgrammeEpisodes: ProgrammeEpisodeNode[] = []
-    const actualProgrammeEpisodes = await getAllNodesOfType()
+    const actualProgrammeEpisodes = await fetchNodesFromDb(DbNodeType.ProgrammeEpisode)
 
     expect(actualProgrammeEpisodes)
         .toEqual(expectedProgrammeEpisodes)
@@ -20,7 +20,7 @@ test('When PROGRAMME EPISODES exist then all of them should be returned', async 
     const amount = Math.ceil(Math.random() * 20)
     await seedNodes(DbNodeType.ProgrammeEpisode, amount)
 
-    const actualProgrammeEpisodes = await getAllNodesOfType()
+    const actualProgrammeEpisodes = await fetchNodesFromDb(DbNodeType.ProgrammeEpisode)
 
     expect(actualProgrammeEpisodes.length)
         .toEqual(amount)

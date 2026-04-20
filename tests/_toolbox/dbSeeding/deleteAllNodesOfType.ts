@@ -1,4 +1,4 @@
-import neo4j, {Driver, Session} from "neo4j-driver"
+import neo4j from "neo4j-driver"
 import type {DbNodeType} from "../../../src/db/types/DbNodeType"
 import {getDriver} from "../../../src/db/driver"
 import {runNeo4jQuery} from "../../../src/db/runNeo4jQuery"
@@ -6,8 +6,8 @@ import {mapDbNodeTypeToNeo4jNodeType} from "../../../src/db/nodes/mapDbNodeTypeT
 import {getNamespacedNodeTypeLabel} from "../../../src/db/getNamespacedNodeTypeLabel"
 
 export async function deleteAllNodesOfType(nodeType: DbNodeType) {
-    const driver: Driver = getDriver()
-    const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
+    const driver = getDriver()
+    const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
     const dbNodeType = mapDbNodeTypeToNeo4jNodeType(nodeType)
 

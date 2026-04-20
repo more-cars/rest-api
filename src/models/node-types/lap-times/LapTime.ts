@@ -4,7 +4,6 @@ import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../../db/node-types/lap-times/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/lap-times/getNodeById"
-import {getAllNodesOfType} from "../../../db/node-types/lap-times/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {deleteNode} from "../../../db/nodes/deleteNode"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
@@ -22,6 +21,9 @@ import {getAllRels} from "../../relationships/getAllRels"
 import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {Video} from "../videos/Video"
+import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
+import {DbNodeType} from "../../../db/types/DbNodeType"
+import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
 
 export const LapTime = {
     async create(data: CreateLapTimeInput): Promise<LapTimeNode> {
@@ -43,7 +45,7 @@ export const LapTime = {
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<LapTimeNode[]> {
         const nodes: LapTimeNode[] = []
-        const nodesDb = await getAllNodesOfType(options)
+        const nodesDb = await fetchNodesFromDb(DbNodeType.LapTime, getDbQueryCollectionParams(options))
 
         nodesDb.forEach(node => {
             nodes.push(convertDbNodeToModelNode(node) as LapTimeNode)

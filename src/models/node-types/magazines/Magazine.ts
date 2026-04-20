@@ -5,7 +5,6 @@ import {createNode} from "../../../db/node-types/magazines/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/magazines/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
-import {getAllNodesOfType} from "../../../db/node-types/magazines/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {deleteNode} from "../../../db/nodes/deleteNode"
 import {createRel} from "../../relationships/createRel"
@@ -21,6 +20,9 @@ import {getRel} from "../../relationships/getRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {MagazineIssue} from "../magazine-issues/MagazineIssue"
 import {Video} from "../videos/Video"
+import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
+import {DbNodeType} from "../../../db/types/DbNodeType"
+import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
 
 export const Magazine = {
     async create(data: CreateMagazineInput): Promise<MagazineNode> {
@@ -42,7 +44,7 @@ export const Magazine = {
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<MagazineNode[]> {
         const nodes: MagazineNode[] = []
-        const nodesDb = await getAllNodesOfType(options)
+        const nodesDb = await fetchNodesFromDb(DbNodeType.Magazine, getDbQueryCollectionParams(options))
 
         nodesDb.forEach(node => {
             nodes.push(convertDbNodeToModelNode(node) as MagazineNode)

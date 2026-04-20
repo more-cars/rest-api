@@ -4,7 +4,6 @@ import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../../db/node-types/track-layouts/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/track-layouts/getNodeById"
-import {getAllNodesOfType} from "../../../db/node-types/track-layouts/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {deleteNode} from "../../../db/nodes/deleteNode"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
@@ -24,6 +23,9 @@ import {RacingGame} from "../racing-games/RacingGame"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {Video} from "../videos/Video"
+import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
+import {DbNodeType} from "../../../db/types/DbNodeType"
+import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
 
 export const TrackLayout = {
     async create(data: CreateTrackLayoutInput): Promise<TrackLayoutNode> {
@@ -45,7 +47,7 @@ export const TrackLayout = {
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<TrackLayoutNode[]> {
         const nodes: TrackLayoutNode[] = []
-        const nodesDb = await getAllNodesOfType(options)
+        const nodesDb = await fetchNodesFromDb(DbNodeType.TrackLayout, getDbQueryCollectionParams(options))
 
         nodesDb.forEach(node => {
             nodes.push(convertDbNodeToModelNode(node) as TrackLayoutNode)

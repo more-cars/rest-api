@@ -4,7 +4,6 @@ import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../../db/node-types/gaming-platforms/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/gaming-platforms/getNodeById"
-import {getAllNodesOfType} from "../../../db/node-types/gaming-platforms/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {deleteNode} from "../../../db/nodes/deleteNode"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
@@ -20,6 +19,9 @@ import {Image} from "../images/Image"
 import {getRel} from "../../relationships/getRel"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {Video} from "../videos/Video"
+import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
+import {DbNodeType} from "../../../db/types/DbNodeType"
+import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
 
 export const GamingPlatform = {
     async create(data: CreateGamingPlatformInput): Promise<GamingPlatformNode> {
@@ -41,7 +43,7 @@ export const GamingPlatform = {
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<GamingPlatformNode[]> {
         const nodes: GamingPlatformNode[] = []
-        const nodesDb = await getAllNodesOfType(options)
+        const nodesDb = await fetchNodesFromDb(DbNodeType.GamingPlatform, getDbQueryCollectionParams(options))
 
         nodesDb.forEach(node => {
             nodes.push(convertDbNodeToModelNode(node) as GamingPlatformNode)

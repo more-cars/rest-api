@@ -5,7 +5,6 @@ import {createNode} from "../../../db/node-types/motor-shows/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/motor-shows/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
-import {getAllNodesOfType} from "../../../db/node-types/motor-shows/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {deleteNode} from "../../../db/nodes/deleteNode"
 import {createRel} from "../../relationships/createRel"
@@ -20,6 +19,9 @@ import {Image} from "../images/Image"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {getRel} from "../../relationships/getRel"
 import {Video} from "../videos/Video"
+import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
+import {DbNodeType} from "../../../db/types/DbNodeType"
+import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
 
 export const MotorShow = {
     async create(data: CreateMotorShowInput): Promise<MotorShowNode> {
@@ -41,7 +43,7 @@ export const MotorShow = {
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<MotorShowNode[]> {
         const nodes: MotorShowNode[] = []
-        const nodesDb = await getAllNodesOfType(options)
+        const nodesDb = await fetchNodesFromDb(DbNodeType.MotorShow, getDbQueryCollectionParams(options))
 
         nodesDb.forEach(node => {
             nodes.push(convertDbNodeToModelNode(node) as MotorShowNode)

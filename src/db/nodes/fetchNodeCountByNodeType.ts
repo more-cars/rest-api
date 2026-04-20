@@ -1,4 +1,4 @@
-import neo4j, {type Session} from "neo4j-driver"
+import neo4j from "neo4j-driver"
 import type {DbNodeType} from "../types/DbNodeType"
 import type {CollectionQueryParams} from "../types/CollectionQueryParams"
 import {getDriver} from "../driver"
@@ -10,16 +10,18 @@ import {escapeSingleQuotes} from "./escapeSingleQuotes"
 
 export async function fetchNodeCountByNodeType(nodeType: DbNodeType, params?: CollectionQueryParams) {
     const driver = getDriver()
-    const session: Session = driver.session({defaultAccessMode: neo4j.session.READ})
+    const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
-    const records = await session.executeRead(async txc => {
-        const result = await runNeo4jQuery(fetchNodeCountByNodeTypeQuery(nodeType, params), txc)
-        return result.records
-    })
+    try {
+        const records = await session.executeRead(async txc => {
+            const result = await runNeo4jQuery(fetchNodeCountByNodeTypeQuery(nodeType, params), txc)
+            return result.records
+        })
 
-    await session.close()
-
-    return records[0].get('nodeCount') as number
+        return records[0].get('nodeCount') as number
+    } finally {
+        await session.close()
+    }
 }
 
 export function fetchNodeCountByNodeTypeQuery(nodeType: DbNodeType, params?: CollectionQueryParams) {

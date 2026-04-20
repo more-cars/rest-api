@@ -57,7 +57,7 @@ type InputTypes =
 
 export async function storeNode(data: InputTypes, newNodeType: DbNodeType, oldNode: Node) {
     try {
-        const createdNode: Node = await createNeo4jNode(newNodeType, data)
+        const createdNode = await createNeo4jNode(newNodeType, data)
         await addMoreCarsIdToNode(
             createdNode.elementId,
             parseInt(oldNode.elementId) + 10_000_000

@@ -3,13 +3,13 @@ import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllN
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 import {RacingSessionNode} from "../../../../../../src/db/node-types/racing-sessions/types/RacingSessionNode"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
-import {getAllNodesOfType} from "../../../../../../src/db/node-types/racing-sessions/getAllNodesOfType"
+import {fetchNodesFromDb} from "../../../../../../src/db/nodes/fetchNodesFromDb"
 
 test('When there are no RACING SESSIONS then an empty array should be returned', async () => {
     await deleteAllNodesOfType(DbNodeType.RacingSession)
 
     const expectedRacingSessions: RacingSessionNode[] = []
-    const actualRacingSessions = await getAllNodesOfType()
+    const actualRacingSessions = await fetchNodesFromDb(DbNodeType.RacingSession)
 
     expect(actualRacingSessions)
         .toEqual(expectedRacingSessions)
@@ -20,7 +20,7 @@ test('When RACING SESSIONS exist then all of them should be returned', async () 
     const amount = Math.ceil(Math.random() * 20)
     await seedNodes(DbNodeType.RacingSession, amount)
 
-    const actualRacingSessions = await getAllNodesOfType()
+    const actualRacingSessions = await fetchNodesFromDb(DbNodeType.RacingSession)
 
     expect(actualRacingSessions.length)
         .toEqual(amount)

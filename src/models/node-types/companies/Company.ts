@@ -5,7 +5,6 @@ import {createNode} from "../../../db/node-types/companies/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/companies/getNodeById"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
-import {getAllNodesOfType} from "../../../db/node-types/companies/getAllNodesOfType"
 import {deleteNode} from "../../../db/nodes/deleteNode"
 import {Brand} from "../brands/Brand"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
@@ -21,6 +20,9 @@ import {getAllRels} from "../../relationships/getAllRels"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {Video} from "../videos/Video"
+import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
+import {DbNodeType} from "../../../db/types/DbNodeType"
+import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
 
 export const Company = {
     async create(data: CreateCompanyInput): Promise<CompanyNode> {
@@ -42,7 +44,7 @@ export const Company = {
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<CompanyNode[]> {
         const nodes: CompanyNode[] = []
-        const nodesDb = await getAllNodesOfType(options)
+        const nodesDb = await fetchNodesFromDb(DbNodeType.Company, getDbQueryCollectionParams(options))
 
         nodesDb.forEach(node => {
             nodes.push(convertDbNodeToModelNode(node) as CompanyNode)

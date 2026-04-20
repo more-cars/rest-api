@@ -8,7 +8,7 @@ skip_if: async findAll
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<<%= h.changeCase.pascal(nodeType) %>Node[]> {
         const nodes: <%= h.changeCase.pascal(nodeType) %>Node[] = []
-        const nodesDb = await getAllNodesOfType(options)
+        const nodesDb = await fetchNodesFromDb(DbNodeType.<%= h.changeCase.pascal(nodeType) %>, getDbQueryCollectionParams(options))
 
         nodesDb.forEach(node => {
             nodes.push(convertDbNodeToModelNode(node) as <%= h.changeCase.pascal(nodeType) %>Node)

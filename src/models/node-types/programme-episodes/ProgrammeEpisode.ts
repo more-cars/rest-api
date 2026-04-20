@@ -5,7 +5,6 @@ import {createNode} from "../../../db/node-types/programme-episodes/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/programme-episodes/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
-import {getAllNodesOfType} from "../../../db/node-types/programme-episodes/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {deleteNode} from "../../../db/nodes/deleteNode"
 import {createRel} from "../../relationships/createRel"
@@ -24,6 +23,9 @@ import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {SemanticError} from "../../types/SemanticError"
 import {Image} from "../images/Image"
 import {Video} from "../videos/Video"
+import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
+import {DbNodeType} from "../../../db/types/DbNodeType"
+import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
 
 export const ProgrammeEpisode = {
     async create(data: CreateProgrammeEpisodeInput): Promise<ProgrammeEpisodeNode> {
@@ -45,7 +47,7 @@ export const ProgrammeEpisode = {
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<ProgrammeEpisodeNode[]> {
         const nodes: ProgrammeEpisodeNode[] = []
-        const nodesDb = await getAllNodesOfType(options)
+        const nodesDb = await fetchNodesFromDb(DbNodeType.ProgrammeEpisode, getDbQueryCollectionParams(options))
 
         nodesDb.forEach(node => {
             nodes.push(convertDbNodeToModelNode(node) as ProgrammeEpisodeNode)

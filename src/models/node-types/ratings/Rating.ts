@@ -5,7 +5,6 @@ import {createNode} from "../../../db/node-types/ratings/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/ratings/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
-import {getAllNodesOfType} from "../../../db/node-types/ratings/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {deleteNode} from "../../../db/nodes/deleteNode"
 import {createRel} from "../../relationships/createRel"
@@ -20,6 +19,9 @@ import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 import {Image} from "../images/Image"
 import {getAllRels} from "../../relationships/getAllRels"
+import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
+import {DbNodeType} from "../../../db/types/DbNodeType"
+import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
 
 export const Rating = {
     async create(data: CreateRatingInput): Promise<RatingNode> {
@@ -41,7 +43,7 @@ export const Rating = {
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<RatingNode[]> {
         const nodes: RatingNode[] = []
-        const nodesDb = await getAllNodesOfType(options)
+        const nodesDb = await fetchNodesFromDb(DbNodeType.Rating, getDbQueryCollectionParams(options))
 
         nodesDb.forEach(node => {
             nodes.push(convertDbNodeToModelNode(node) as RatingNode)

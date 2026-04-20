@@ -1,4 +1,4 @@
-import neo4j, {Driver, Node, Session} from "neo4j-driver"
+import neo4j, {Node} from "neo4j-driver"
 import {getDriver} from "../driver"
 import {runNeo4jQuery} from "../runNeo4jQuery"
 import type {Relationship} from "../types/Relationship"
@@ -7,27 +7,29 @@ import {convertNeo4jRelationshipToDbRelationship} from "../relationships/convert
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 export async function fetchNodesPrimeImage(ids: number[]) {
-    const driver: Driver = getDriver()
-    const session: Session = driver.session({defaultAccessMode: neo4j.session.READ})
+    const driver = getDriver()
+    const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
-    const records = await session.executeRead(async txc => {
-        const result = await runNeo4jQuery(fetchNodesPrimeImageQuery(ids), txc)
-        return result.records
-    })
+    try {
+        const records = await session.executeRead(async txc => {
+            const result = await runNeo4jQuery(fetchNodesPrimeImageQuery(ids), txc)
+            return result.records
+        })
 
-    await session.close()
+        const relationships: Relationship[] = []
 
-    const relationships: Relationship[] = []
+        records.forEach(record => {
+            const startNode: Node = record.get('a')
+            const dbRelationship: Neo4jRelationship = record.get('r')
+            const endNode: Node = record.get('b')
 
-    records.forEach(record => {
-        const startNode: Node = record.get('a')
-        const dbRelationship: Neo4jRelationship = record.get('r')
-        const endNode: Node = record.get('b')
+            relationships.push(convertNeo4jRelationshipToDbRelationship(dbRelationship, startNode, endNode))
+        })
 
-        relationships.push(convertNeo4jRelationshipToDbRelationship(dbRelationship, startNode, endNode))
-    })
-
-    return relationships
+        return relationships
+    } finally {
+        await session.close()
+    }
 }
 
 export function fetchNodesPrimeImageQuery(ids: number[]) {

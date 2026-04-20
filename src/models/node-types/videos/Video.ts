@@ -6,7 +6,6 @@ import {createNode} from "../../../db/node-types/videos/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/videos/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
-import {getAllNodesOfType} from "../../../db/node-types/videos/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {deleteNode} from "../../../db/nodes/deleteNode"
 import {Node} from "../../Node"
@@ -21,6 +20,9 @@ import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {YouTubeVideoNotFoundError} from "../../types/YouTubeVideoNotFoundError"
 import {YouTubeVideoAlreadyExistsError} from "../../types/YouTubeVideoAlreadyExistsError"
 import {videoAlreadyExists} from "./create/videoAlreadyExists"
+import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
+import {DbNodeType} from "../../../db/types/DbNodeType"
+import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
 
 export const Video = {
     async create(data: CreateVideoInput): Promise<VideoNode> {
@@ -54,7 +56,7 @@ export const Video = {
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<VideoNode[]> {
         const nodes: VideoNode[] = []
-        const nodesDb = await getAllNodesOfType(options)
+        const nodesDb = await fetchNodesFromDb(DbNodeType.Video, getDbQueryCollectionParams(options))
 
         nodesDb.forEach(node => {
             nodes.push(convertDbNodeToModelNode(node) as VideoNode)

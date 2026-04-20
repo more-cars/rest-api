@@ -1,4 +1,4 @@
-import neo4j, {Driver, Node, Session} from "neo4j-driver"
+import neo4j, {Node} from "neo4j-driver"
 import {getDriver} from "../driver"
 import {runNeo4jQuery} from "../runNeo4jQuery"
 import {convertNeo4jNodeToDbNode} from "./convertNeo4jNodeToDbNode"
@@ -9,23 +9,25 @@ import {mapDbNodeTypeToNeo4jNodeType} from "./mapDbNodeTypeToNeo4jNodeType"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 export async function fetchNodeById(id: number, nodeType: DbNodeType = DbNodeType.Node) {
-    const driver: Driver = getDriver()
-    const session: Session = driver.session({defaultAccessMode: neo4j.session.READ})
+    const driver = getDriver()
+    const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
-    const records = await session.executeRead(async txc => {
-        const result = await runNeo4jQuery(fetchNodeByIdQuery(id, nodeType), txc)
-        return result.records
-    })
+    try {
+        const records = await session.executeRead(async txc => {
+            const result = await runNeo4jQuery(fetchNodeByIdQuery(id, nodeType), txc)
+            return result.records
+        })
 
-    await session.close()
+        if (records.length === 0) {
+            return false
+        }
 
-    if (records.length === 0) {
-        return false
+        const node: Node = records[0].get('node')
+
+        return convertNeo4jNodeToDbNode(node, getDenamespacedNodeTypeLabel(node.labels[0]) as Neo4jNodeType)
+    } finally {
+        await session.close()
     }
-
-    const node: Node = records[0].get('node')
-
-    return convertNeo4jNodeToDbNode(node, getDenamespacedNodeTypeLabel(node.labels[0]) as Neo4jNodeType)
 }
 
 export function fetchNodeByIdQuery(id: number, nodeType: DbNodeType = DbNodeType.Node) {

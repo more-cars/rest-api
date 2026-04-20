@@ -4,7 +4,6 @@ import {convertInputData} from "./create/convertInputData"
 import {createNode} from "../../../db/node-types/car-model-variants/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/car-model-variants/getNodeById"
-import {getAllNodesOfType} from "../../../db/node-types/car-model-variants/getAllNodesOfType"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {deleteNode} from "../../../db/nodes/deleteNode"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
@@ -30,6 +29,9 @@ import {ProgrammeEpisode} from "../programme-episodes/ProgrammeEpisode"
 import {Price} from "../prices/Price"
 import {ModelCar} from "../model-cars/ModelCar"
 import {Video} from "../videos/Video"
+import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
+import {DbNodeType} from "../../../db/types/DbNodeType"
+import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
 
 export const CarModelVariant = {
     async create(data: CreateCarModelVariantInput): Promise<CarModelVariantNode> {
@@ -51,7 +53,7 @@ export const CarModelVariant = {
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<CarModelVariantNode[]> {
         const nodes: CarModelVariantNode[] = []
-        const nodesDb = await getAllNodesOfType(options)
+        const nodesDb = await fetchNodesFromDb(DbNodeType.CarModelVariant, getDbQueryCollectionParams(options))
 
         nodesDb.forEach(node => {
             nodes.push(convertDbNodeToModelNode(node) as CarModelVariantNode)

@@ -5,7 +5,6 @@ import {createNode} from "../../../db/node-types/images/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/images/getNodeById"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
-import {getAllNodesOfType} from "../../../db/node-types/images/getAllNodesOfType"
 import {deleteNode} from "../../../db/nodes/deleteNode"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 import {SemanticError} from "../../types/SemanticError"
@@ -25,6 +24,9 @@ import {FlickrImageAlreadyExistsError} from "../../types/FlickrImageAlreadyExist
 import {WikimediaFacade} from "../../../db/external/WikimediaFacade"
 import {WikimediaImageNotFoundError} from "../../types/WikimediaImageNotFoundError"
 import {FlickrFacade} from "../../../db/external/FlickrFacade"
+import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
+import {DbNodeType} from "../../../db/types/DbNodeType"
+import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
 
 export const Image = {
     async create(data: CreateImageInput): Promise<ImageNode> {
@@ -68,7 +70,7 @@ export const Image = {
 
     async findAll(options: NodeCollectionConstraints = {}): Promise<ImageNode[]> {
         const nodes: ImageNode[] = []
-        const nodesDb = await getAllNodesOfType(options)
+        const nodesDb = await fetchNodesFromDb(DbNodeType.Image, getDbQueryCollectionParams(options))
 
         nodesDb.forEach(node => {
             nodes.push(convertDbNodeToModelNode(node) as ImageNode)

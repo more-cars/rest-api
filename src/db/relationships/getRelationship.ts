@@ -1,4 +1,4 @@
-import neo4j, {Driver, Node, Relationship as Neo4jRelationship} from "neo4j-driver"
+import neo4j, {Node, Relationship as Neo4jRelationship} from "neo4j-driver"
 import type {RelationshipType} from "../types/RelationshipType"
 import {mapNodeTypeToDbNodeType} from "../../specification/mapNodeTypeToDbNodeType"
 import type {Relationship} from "../types/Relationship"
@@ -15,25 +15,27 @@ export async function getRelationship(
     startNodeId: number,
     relationshipType: RelationshipType,
 ): Promise<false | Relationship> {
-    const driver: Driver = getDriver()
+    const driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
-    const records = await session.executeRead(async txc => {
-        const result = await runNeo4jQuery(getRelationshipQuery(startNodeId, relationshipType), txc)
-        return result.records
-    })
+    try {
+        const records = await session.executeRead(async txc => {
+            const result = await runNeo4jQuery(getRelationshipQuery(startNodeId, relationshipType), txc)
+            return result.records
+        })
 
-    await session.close()
+        if (records.length === 0) {
+            return false
+        }
 
-    if (records.length === 0) {
-        return false
+        const startNode: Node = records[0].get('a')
+        const dbRelationship: Neo4jRelationship = records[0].get('r')
+        const endNode: Node = records[0].get('b')
+
+        return convertNeo4jRelationshipToDbRelationship(dbRelationship, startNode, endNode)
+    } finally {
+        await session.close()
     }
-
-    const startNode: Node = records[0].get('a')
-    const dbRelationship: Neo4jRelationship = records[0].get('r')
-    const endNode: Node = records[0].get('b')
-
-    return convertNeo4jRelationshipToDbRelationship(dbRelationship, startNode, endNode)
 }
 
 export function getRelationshipQuery(startNodeId: number, relationshipType: RelationshipType) {
