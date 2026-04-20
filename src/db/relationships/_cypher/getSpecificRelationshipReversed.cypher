@@ -1,2 +1,2 @@
-MATCH (a {mc_id: $startNodeId})<-[r:relationshipName]-(b {mc_id: $endNodeId})
+MATCH (a:$startNodeLabel {mc_id: $startNodeId})<-[r:relationshipName]-(b:$endNodeLabel {mc_id: $endNodeId})
 RETURN a, r, b

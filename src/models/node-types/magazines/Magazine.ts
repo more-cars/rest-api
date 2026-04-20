@@ -17,7 +17,6 @@ import {getAllRels} from "../../relationships/getAllRels"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
 import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
-import {ModelNodeType} from "../../types/ModelNodeType"
 import {getRel} from "../../relationships/getRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {MagazineIssue} from "../magazine-issues/MagazineIssue"
@@ -72,7 +71,7 @@ export const Magazine = {
             throw new RelAlreadyExistsError(RelType.MagazineHasIssue, magazineId, magazineIssueId)
         }
 
-        await deleteIncomingRel(magazineIssueId, RelType.MagazineHasIssue, ModelNodeType.Magazine)
+        await deleteIncomingRel(magazineIssueId, RelType.MagazineHasIssue)
 
         const createdRelationship = await createRel(magazineId, magazineIssueId, RelType.MagazineHasIssue)
         if (!createdRelationship) {

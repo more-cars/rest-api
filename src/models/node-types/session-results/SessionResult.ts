@@ -19,7 +19,6 @@ import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {LapTime} from "../lap-times/LapTime"
 import {getAllRels} from "../../relationships/getAllRels"
 import {Image} from "../images/Image"
-import {ModelNodeType} from "../../types/ModelNodeType"
 import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
@@ -118,7 +117,7 @@ export const SessionResult = {
             throw new RelAlreadyExistsError(RelType.SessionResultHasLapTime, sessionResultId, lapTimeId)
         }
 
-        await deleteIncomingRel(lapTimeId, RelType.SessionResultHasLapTime, ModelNodeType.SessionResult)
+        await deleteIncomingRel(lapTimeId, RelType.SessionResultHasLapTime)
 
         const createdRelationship = await createRel(sessionResultId, lapTimeId, RelType.SessionResultHasLapTime)
         if (!createdRelationship) {

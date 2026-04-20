@@ -19,7 +19,6 @@ import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {Image} from "../images/Image"
 import {getAllRels} from "../../relationships/getAllRels"
 import {SessionResult} from "../session-results/SessionResult"
-import {ModelNodeType} from "../../types/ModelNodeType"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {Video} from "../videos/Video"
@@ -118,7 +117,7 @@ export const RacingSession = {
             throw new RelAlreadyExistsError(RelType.RacingSessionHasSessionResult, racingSessionId, sessionResultId)
         }
 
-        await deleteIncomingRel(sessionResultId, RelType.RacingSessionHasSessionResult, ModelNodeType.RacingSession)
+        await deleteIncomingRel(sessionResultId, RelType.RacingSessionHasSessionResult)
 
         const createdRelationship = await createRel(racingSessionId, sessionResultId, RelType.RacingSessionHasSessionResult)
         if (!createdRelationship) {

@@ -19,7 +19,6 @@ import {RelNotFoundError} from "../../types/RelNotFoundError"
 import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {Programme} from "../programmes/Programme"
-import {ModelNodeType} from "../../types/ModelNodeType"
 import {getRel} from "../../relationships/getRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {SemanticError} from "../../types/SemanticError"
@@ -122,7 +121,7 @@ export const ProgrammeEpisode = {
             throw new RelAlreadyExistsError(RelType.ProgrammeEpisodeFollowsEpisode, programmeEpisodeId, partnerId)
         }
         await deleteOutgoingRel(programmeEpisodeId, RelType.ProgrammeEpisodeFollowsEpisode)
-        await deleteIncomingRel(partnerId, RelType.ProgrammeEpisodeFollowsEpisode, ModelNodeType.ProgrammeEpisode)
+        await deleteIncomingRel(partnerId, RelType.ProgrammeEpisodeFollowsEpisode)
 
         const createdRelationship = await createRel(programmeEpisodeId, partnerId, RelType.ProgrammeEpisodeFollowsEpisode)
         if (!createdRelationship) {
@@ -170,7 +169,7 @@ export const ProgrammeEpisode = {
             throw new RelAlreadyExistsError(RelType.ProgrammeEpisodeIsFollowedByEpisode, programmeEpisodeId, partnerId)
         }
         await deleteOutgoingRel(programmeEpisodeId, RelType.ProgrammeEpisodeIsFollowedByEpisode)
-        await deleteIncomingRel(partnerId, RelType.ProgrammeEpisodeIsFollowedByEpisode, ModelNodeType.ProgrammeEpisode)
+        await deleteIncomingRel(partnerId, RelType.ProgrammeEpisodeIsFollowedByEpisode)
 
         const createdRelationship = await createRel(programmeEpisodeId, partnerId, RelType.ProgrammeEpisodeIsFollowedByEpisode)
         if (!createdRelationship) {

@@ -9,7 +9,6 @@ import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstrai
 import {deleteNode} from "../../../db/nodes/deleteNode"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 import {createRel} from "../../relationships/createRel"
-import {ModelNodeType} from "../../types/ModelNodeType"
 import {CarModel} from "../car-models/CarModel"
 import {getSpecificRel} from "../../relationships/getSpecificRel"
 import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
@@ -126,7 +125,7 @@ export const CarModelVariant = {
             throw new RelAlreadyExistsError(RelType.CarModelVariantAchievedSessionResult, carModelVariantId, sessionResultId)
         }
 
-        await deleteIncomingRel(sessionResultId, RelType.CarModelVariantAchievedSessionResult, ModelNodeType.CarModelVariant)
+        await deleteIncomingRel(sessionResultId, RelType.CarModelVariantAchievedSessionResult)
 
         const createdRelationship = await createRel(carModelVariantId, sessionResultId, RelType.CarModelVariantAchievedSessionResult)
         if (!createdRelationship) {
@@ -166,7 +165,7 @@ export const CarModelVariant = {
             throw new RelAlreadyExistsError(RelType.CarModelVariantAchievedLapTime, carModelVariantId, lapTimeId)
         }
 
-        await deleteIncomingRel(lapTimeId, RelType.CarModelVariantAchievedLapTime, ModelNodeType.CarModelVariant)
+        await deleteIncomingRel(lapTimeId, RelType.CarModelVariantAchievedLapTime)
 
         const createdRelationship = await createRel(carModelVariantId, lapTimeId, RelType.CarModelVariantAchievedLapTime)
         if (!createdRelationship) {
@@ -245,7 +244,7 @@ export const CarModelVariant = {
             throw new RelAlreadyExistsError(RelType.CarModelVariantReviewedByMagazineIssueWithRating, carModelVariantId, ratingId)
         }
 
-        await deleteIncomingRel(ratingId, RelType.CarModelVariantReviewedByMagazineIssueWithRating, ModelNodeType.CarModelVariant)
+        await deleteIncomingRel(ratingId, RelType.CarModelVariantReviewedByMagazineIssueWithRating)
 
         const createdRelationship = await createRel(carModelVariantId, ratingId, RelType.CarModelVariantReviewedByMagazineIssueWithRating)
         if (!createdRelationship) {
@@ -363,7 +362,7 @@ export const CarModelVariant = {
             throw new RelAlreadyExistsError(RelType.CarModelVariantHasScaleModel, carModelVariantId, modelCarId)
         }
 
-        await deleteIncomingRel(modelCarId, RelType.CarModelVariantHasScaleModel, ModelNodeType.CarModelVariant)
+        await deleteIncomingRel(modelCarId, RelType.CarModelVariantHasScaleModel)
 
         const createdRelationship = await createRel(carModelVariantId, modelCarId, RelType.CarModelVariantHasScaleModel)
         if (!createdRelationship) {
@@ -441,7 +440,7 @@ export const CarModelVariant = {
             throw new RelAlreadyExistsError(RelType.CarModelVariantHasPrice, carModelVariantId, priceId)
         }
 
-        await deleteIncomingRel(priceId, RelType.CarModelVariantHasPrice, ModelNodeType.CarModelVariant)
+        await deleteIncomingRel(priceId, RelType.CarModelVariantHasPrice)
 
         const createdRelationship = await createRel(carModelVariantId, priceId, RelType.CarModelVariantHasPrice)
         if (!createdRelationship) {

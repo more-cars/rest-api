@@ -18,7 +18,6 @@ import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
 import {Image} from "../images/Image"
 import {getRel} from "../../relationships/getRel"
-import {ModelNodeType} from "../../types/ModelNodeType"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {Video} from "../videos/Video"
@@ -72,7 +71,7 @@ export const RacingSeries = {
             throw new RelAlreadyExistsError(RelType.RacingSeriesHasRacingEvent, racingSeriesId, racingEventId)
         }
 
-        await deleteIncomingRel(racingEventId, RelType.RacingSeriesHasRacingEvent, ModelNodeType.RacingSeries)
+        await deleteIncomingRel(racingEventId, RelType.RacingSeriesHasRacingEvent)
 
         const createdRelationship = await createRel(racingSeriesId, racingEventId, RelType.RacingSeriesHasRacingEvent)
         if (!createdRelationship) {

@@ -18,7 +18,6 @@ import {getAllRels} from "../../relationships/getAllRels"
 import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {RelNotFoundError} from "../../types/RelNotFoundError"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
-import {ModelNodeType} from "../../types/ModelNodeType"
 import {YouTubeVideoNotFoundError} from "../../types/YouTubeVideoNotFoundError"
 import {YouTubeVideoAlreadyExistsError} from "../../types/YouTubeVideoAlreadyExistsError"
 import {videoAlreadyExists} from "./create/videoAlreadyExists"
@@ -123,7 +122,7 @@ export const Video = {
             throw new RelAlreadyExistsError(RelType.VideoIsMainVideoOfNode, videoId, nodeId)
         }
 
-        await deleteIncomingRel(nodeId, RelType.VideoIsMainVideoOfNode, ModelNodeType.Video)
+        await deleteIncomingRel(nodeId, RelType.VideoIsMainVideoOfNode)
 
         const createdRelationship = await createRel(videoId, nodeId, RelType.VideoIsMainVideoOfNode)
         if (!createdRelationship) {

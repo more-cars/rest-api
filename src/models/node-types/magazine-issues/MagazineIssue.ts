@@ -12,7 +12,6 @@ import {createRel} from "../../relationships/createRel"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {Magazine} from "../magazines/Magazine"
 import {getSpecificRel} from "../../relationships/getSpecificRel"
-import {ModelNodeType} from "../../types/ModelNodeType"
 import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
 import {RelType} from "../../relationships/types/RelType"
 import {getRel} from "../../relationships/getRel"
@@ -125,7 +124,7 @@ export const MagazineIssue = {
             throw new RelAlreadyExistsError(RelType.MagazineIssueFollowsIssue, magazineIssueId, partnerId)
         }
         await deleteOutgoingRel(magazineIssueId, RelType.MagazineIssueFollowsIssue)
-        await deleteIncomingRel(partnerId, RelType.MagazineIssueFollowsIssue, ModelNodeType.MagazineIssue)
+        await deleteIncomingRel(partnerId, RelType.MagazineIssueFollowsIssue)
 
         const createdRelationship = await createRel(magazineIssueId, partnerId, RelType.MagazineIssueFollowsIssue)
         if (!createdRelationship) {
@@ -173,7 +172,7 @@ export const MagazineIssue = {
             throw new RelAlreadyExistsError(RelType.MagazineIssueFollowedByIssue, magazineIssueId, partnerId)
         }
         await deleteOutgoingRel(magazineIssueId, RelType.MagazineIssueFollowedByIssue)
-        await deleteIncomingRel(partnerId, RelType.MagazineIssueFollowedByIssue, ModelNodeType.MagazineIssue)
+        await deleteIncomingRel(partnerId, RelType.MagazineIssueFollowedByIssue)
 
         const createdRelationship = await createRel(magazineIssueId, partnerId, RelType.MagazineIssueFollowedByIssue)
         if (!createdRelationship) {
@@ -295,7 +294,7 @@ export const MagazineIssue = {
             throw new RelAlreadyExistsError(RelType.MagazineIssueReviewedCarModelVariantWithRating, magazineIssueId, ratingId)
         }
 
-        await deleteIncomingRel(ratingId, RelType.MagazineIssueReviewedCarModelVariantWithRating, ModelNodeType.MagazineIssue)
+        await deleteIncomingRel(ratingId, RelType.MagazineIssueReviewedCarModelVariantWithRating)
 
         const createdRelationship = await createRel(magazineIssueId, ratingId, RelType.MagazineIssueReviewedCarModelVariantWithRating)
         if (!createdRelationship) {

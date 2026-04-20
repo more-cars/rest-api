@@ -12,7 +12,6 @@ import {createRel} from "../../relationships/createRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {ProgrammeEpisode} from "../programme-episodes/ProgrammeEpisode"
 import {getSpecificRel} from "../../relationships/getSpecificRel"
-import {ModelNodeType} from "../../types/ModelNodeType"
 import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
 import {RelType} from "../../relationships/types/RelType"
 import {getAllRels} from "../../relationships/getAllRels"
@@ -72,7 +71,7 @@ export const Programme = {
             throw new RelAlreadyExistsError(RelType.ProgrammeHasEpisode, programmeId, programmeEpisodeId)
         }
 
-        await deleteIncomingRel(programmeEpisodeId, RelType.ProgrammeHasEpisode, ModelNodeType.Programme)
+        await deleteIncomingRel(programmeEpisodeId, RelType.ProgrammeHasEpisode)
 
         const createdRelationship = await createRel(programmeId, programmeEpisodeId, RelType.ProgrammeHasEpisode)
         if (!createdRelationship) {

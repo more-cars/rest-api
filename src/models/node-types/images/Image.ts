@@ -17,7 +17,6 @@ import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {RelType} from "../../relationships/types/RelType"
 import {createRel} from "../../relationships/createRel"
 import {getAllRels} from "../../relationships/getAllRels"
-import {ModelNodeType} from "../../types/ModelNodeType"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import type {ModelNode} from "../../types/ModelNode"
 import {imageAlreadyExists} from "./create/imageAlreadyExists"
@@ -152,7 +151,7 @@ export const Image = {
             throw new RelAlreadyExistsError(RelType.ImageIsPrimeImageOfNode, imageId, nodeId)
         }
 
-        await deleteIncomingRel(nodeId, RelType.ImageIsPrimeImageOfNode, ModelNodeType.Image)
+        await deleteIncomingRel(nodeId, RelType.ImageIsPrimeImageOfNode)
 
         const createdRelationship = await createRel(imageId, nodeId, RelType.ImageIsPrimeImageOfNode)
         if (!createdRelationship) {

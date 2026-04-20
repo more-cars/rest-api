@@ -18,7 +18,6 @@ import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
 import {getSpecificRel} from "../../relationships/getSpecificRel"
 import {createRel} from "../../relationships/createRel"
 import {getAllRels} from "../../relationships/getAllRels"
-import {ModelNodeType} from "../../types/ModelNodeType"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {Video} from "../videos/Video"
@@ -72,7 +71,7 @@ export const Company = {
             throw new RelAlreadyExistsError(RelType.CompanyHasBrand, companyId, brandId)
         }
 
-        await deleteIncomingRel(brandId, RelType.CompanyHasBrand, ModelNodeType.Company)
+        await deleteIncomingRel(brandId, RelType.CompanyHasBrand)
 
         const createdRelationship = await createRel(companyId, brandId, RelType.CompanyHasBrand)
         if (!createdRelationship) {

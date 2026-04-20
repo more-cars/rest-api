@@ -20,7 +20,6 @@ import {Image} from "../images/Image"
 import {getAllRels} from "../../relationships/getAllRels"
 import {RacingEvent} from "../racing-events/RacingEvent"
 import {LapTime} from "../lap-times/LapTime"
-import {ModelNodeType} from "../../types/ModelNodeType"
 import {RacingGame} from "../racing-games/RacingGame"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
@@ -120,7 +119,7 @@ export const TrackLayout = {
             throw new RelAlreadyExistsError(RelType.TrackLayoutWasUsedByRacingEvent, trackLayoutId, racingEventId)
         }
 
-        await deleteIncomingRel(racingEventId, RelType.TrackLayoutWasUsedByRacingEvent, ModelNodeType.TrackLayout)
+        await deleteIncomingRel(racingEventId, RelType.TrackLayoutWasUsedByRacingEvent)
 
         const createdRelationship = await createRel(trackLayoutId, racingEventId, RelType.TrackLayoutWasUsedByRacingEvent)
         if (!createdRelationship) {
@@ -160,7 +159,7 @@ export const TrackLayout = {
             throw new RelAlreadyExistsError(RelType.TrackLayoutHasLapTime, trackLayoutId, lapTimeId)
         }
 
-        await deleteIncomingRel(lapTimeId, RelType.TrackLayoutHasLapTime, ModelNodeType.TrackLayout)
+        await deleteIncomingRel(lapTimeId, RelType.TrackLayoutHasLapTime)
 
         const createdRelationship = await createRel(trackLayoutId, lapTimeId, RelType.TrackLayoutHasLapTime)
         if (!createdRelationship) {
