@@ -18,6 +18,13 @@ export function getDriver() {
     return driver
 }
 
+export async function closeDriver() {
+    if (driver) {
+        await driver.close()
+        driver = null
+    }
+}
+
 function getDatabaseUrl() {
     if (!process.env.DB_HOST) {
         throw new Error('Missing database host')

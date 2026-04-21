@@ -1,6 +1,5 @@
 import http from 'http'
-import {Driver} from "neo4j-driver"
-import {getDriver} from "./db/driver"
+import {closeDriver} from "./db/driver"
 import {app} from "./app"
 
 const PORT = 3000
@@ -15,8 +14,7 @@ server.listen(PORT, () => {
 
 async function shutdown(signal: string) {
     console.log(`🟡 Received signal ${signal}. Shutting down...`)
-    const driver: Driver = getDriver()
-    await driver.close()
+    await closeDriver()
     console.log('🟥 Database connection closed')
 
     server.close(() => {
