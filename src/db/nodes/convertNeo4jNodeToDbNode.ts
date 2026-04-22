@@ -1,5 +1,6 @@
 import type {Node} from "neo4j-driver"
 import {Neo4jNodeType} from "../types/Neo4jNodeType"
+import type {DbNode} from "../types/DbNode"
 import {NodeTypeNotFoundError} from "../types/NodeTypeNotFoundError"
 import {convertCompanyNeo4jNodeToDbNode} from "../node-types/companies/convertCompanyNeo4jNodeToDbNode"
 import {convertBrandNeo4jNodeToDbNode} from "../node-types/brands/convertBrandNeo4jNodeToDbNode"
@@ -27,7 +28,7 @@ import {convertVideoNeo4jNodeToDbNode} from "../node-types/videos/convertVideoNe
 import {convertImageNeo4jNodeToDbNode} from "../node-types/images/convertImageNeo4jNodeToDbNode"
 
 export function convertNeo4jNodeToDbNode(neo4jNode: Node, nodeTypeLabel: Neo4jNodeType) {
-    const mapping = new Map<Neo4jNodeType, (neo4jNode: Node) => void>([
+    const mapping = new Map<Neo4jNodeType, (neo4jNode: Node) => DbNode>([
         [Neo4jNodeType.Company, convertCompanyNeo4jNodeToDbNode],
         [Neo4jNodeType.Brand, convertBrandNeo4jNodeToDbNode],
         [Neo4jNodeType.CarModel, convertCarModelNeo4jNodeToDbNode],

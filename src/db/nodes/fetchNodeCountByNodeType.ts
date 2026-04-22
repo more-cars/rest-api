@@ -5,10 +5,10 @@ import {getDriver} from "../driver"
 import {runNeo4jQuery} from "../runNeo4jQuery"
 import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 import {mapDbNodeTypeToNeo4jNodeType} from "./mapDbNodeTypeToNeo4jNodeType"
-import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {escapeSingleQuotes} from "./escapeSingleQuotes"
+import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
-export async function fetchNodeCountByNodeType(nodeType: DbNodeType, params?: CollectionQueryParams) {
+export async function fetchNodeCountByNodeType(nodeType: DbNodeType, params?: CollectionQueryParams): Promise<number> {
     const driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
 
@@ -18,7 +18,7 @@ export async function fetchNodeCountByNodeType(nodeType: DbNodeType, params?: Co
             return result.records
         })
 
-        return records[0].get('nodeCount') as number
+        return records[0].get('nodeCount') || 0
     } finally {
         await session.close()
     }

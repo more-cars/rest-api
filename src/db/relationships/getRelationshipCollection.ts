@@ -27,11 +27,11 @@ export async function getRelationshipCollection(
         })
 
         records.forEach(record => {
-            const startNode: Node = record.get('a')
-            const dbRelationship: Neo4jRelationship = record.get('r')
-            const endNode: Node = record.get('b')
+            const startNode = record.get('a') as Node
+            const neo4jRelationship = record.get('r') as Neo4jRelationship
+            const endNode = record.get('b') as Node
 
-            relationships.push(convertNeo4jRelationshipToDbRelationship(dbRelationship, startNode, endNode))
+            relationships.push(convertNeo4jRelationshipToDbRelationship(neo4jRelationship, startNode, endNode))
         })
 
         return relationships

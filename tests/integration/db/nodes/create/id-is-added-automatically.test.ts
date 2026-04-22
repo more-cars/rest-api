@@ -17,9 +17,9 @@ describe('ID is automatically added when creating a node', () => {
         const nodeData = getFakeNode(nodeType).dbInputMinimal as InputNodeTypeCreate
         const createdNode = await createNeo4jNode(dbNodeType, nodeData)
 
-        expect(createdNode.properties.mc_id)
+        expect(createdNode.properties.id)
             .toBeGreaterThanOrEqual(12000000)
-        expect(createdNode.properties.mc_id)
+        expect(createdNode.properties.id)
             .toBeLessThanOrEqual(99999999)
     })
 })

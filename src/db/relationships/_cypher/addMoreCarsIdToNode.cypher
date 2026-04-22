@@ -1,5 +1,5 @@
-MATCH ()-[rel]-()
-  WHERE elementId(rel) = '$elementId'
-SET rel.mc_id = $moreCarsId
-RETURN rel
+MATCH (a)-[r]-(b)
+  WHERE elementId(r) = '$elementId'
+SET r.mc_id = $moreCarsId
+RETURN a, r, b
   LIMIT 1

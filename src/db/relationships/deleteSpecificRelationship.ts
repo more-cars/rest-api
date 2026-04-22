@@ -15,14 +15,14 @@ export async function deleteSpecificRelationship(
     const driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
-    const result = await session.executeWrite(async txc => {
-        const result = await runNeo4jQuery(deleteSpecificRelationshipQuery(startNodeId, relationshipType, endNodeId), txc)
-        return result.summary.counters.containsUpdates()
-    })
-
-    await session.close()
-
-    return result
+    try {
+        return await session.executeWrite(async txc => {
+            const result = await runNeo4jQuery(deleteSpecificRelationshipQuery(startNodeId, relationshipType, endNodeId), txc)
+            return result.summary.counters.containsUpdates()
+        })
+    } finally {
+        await session.close()
+    }
 }
 
 export function deleteSpecificRelationshipQuery(startNodeId: number, relationshipType: RelationshipType, endNodeId: number) {

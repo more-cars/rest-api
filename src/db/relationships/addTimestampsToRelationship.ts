@@ -1,20 +1,28 @@
-import neo4j, {Driver, Relationship, Session} from "neo4j-driver"
+import neo4j, {Node, Relationship as Neo4jRelationship} from "neo4j-driver"
+import type {Relationship} from "../types/Relationship"
 import {getDriver} from "../driver"
 import {runNeo4jQuery} from "../runNeo4jQuery"
+import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationshipToDbRelationship"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
 export async function addTimestampsToRelationship(elementId: string, createdAt: string, updatedAt: string): Promise<Relationship> {
-    const driver: Driver = getDriver()
-    const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
+    const driver = getDriver()
+    const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
-    const dbRel: Relationship = await session.executeWrite(async txc => {
-        const result = await runNeo4jQuery(addTimestampsToRelationshipQuery(elementId, createdAt, updatedAt), txc)
-        return result.records[0].get('relationship')
-    })
+    try {
+        const record = await session.executeWrite(async txc => {
+            const result = await runNeo4jQuery(addTimestampsToRelationshipQuery(elementId, createdAt, updatedAt), txc)
+            return result.records[0]
+        })
 
-    await session.close()
+        const startNode = record.get('a') as Node
+        const neo4jRelationship = record.get('r') as Neo4jRelationship
+        const endNode = record.get('b') as Node
 
-    return dbRel
+        return convertNeo4jRelationshipToDbRelationship(neo4jRelationship, startNode, endNode)
+    } finally {
+        await session.close()
+    }
 }
 
 export function addTimestampsToRelationshipQuery(elementId: string, createdAt: string, updatedAt: string) {

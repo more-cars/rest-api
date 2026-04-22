@@ -1,7 +1,7 @@
-MATCH ()-[relationship]-()
-  WHERE elementId(relationship) = '$elementId'
+MATCH (a)-[r]-(b)
+  WHERE elementId(r) = '$elementId'
 SET
-relationship.created_at = '$createdAt',
-relationship.updated_at = '$updatedAt'
-RETURN relationship
+r.created_at = '$createdAt',
+r.updated_at = '$updatedAt'
+RETURN a, r, b
   LIMIT 1

@@ -18,7 +18,7 @@ export async function getSpecificRelationship(
 ): Promise<false | Relationship> {
     const driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
-
+    console.log(getSpecificRelationshipQuery(startNodeId, relationshipType, endNodeId))
     try {
         const records = await session.executeRead(async txc => {
             const result = await runNeo4jQuery(getSpecificRelationshipQuery(startNodeId, relationshipType, endNodeId), txc)
@@ -29,11 +29,11 @@ export async function getSpecificRelationship(
             return false
         }
 
-        const startNode: Node = records[0].get('a')
-        const dbRelationship: Neo4jRelationship = records[0].get('r')
-        const endNode: Node = records[0].get('b')
+        const startNode = records[0].get('a') as Node
+        const neo4jRelationship = records[0].get('r') as Neo4jRelationship
+        const endNode = records[0].get('b') as Node
 
-        return convertNeo4jRelationshipToDbRelationship(dbRelationship, startNode, endNode)
+        return convertNeo4jRelationshipToDbRelationship(neo4jRelationship, startNode, endNode)
     } finally {
         await session.close()
     }

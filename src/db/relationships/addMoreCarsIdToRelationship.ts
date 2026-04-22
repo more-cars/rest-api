@@ -1,27 +1,28 @@
-import neo4j, {Driver, Relationship, Session} from "neo4j-driver"
+import neo4j, {Node, Relationship as Neo4jRelationship} from "neo4j-driver"
+import type {Relationship} from "../types/Relationship"
 import {getDriver} from "../driver"
 import {runNeo4jQuery} from "../runNeo4jQuery"
+import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationshipToDbRelationship"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
-/**
- * Attaching a More Cars ID to the given relationship.
- *
- * ⚠️
- * The input data is assumed to be valid. It is not validated here.
- * When the given relationship doesn't exist or the More Cars ID is invalid then the db query will crash.
- */
 export async function addMoreCarsIdToRelationship(elementId: string, moreCarsId: number): Promise<Relationship> {
-    const driver: Driver = getDriver()
-    const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
+    const driver = getDriver()
+    const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
-    const dbRel: Relationship = await session.executeWrite(async txc => {
-        const result = await runNeo4jQuery(addMoreCarsIdToRelationshipQuery(elementId, moreCarsId), txc)
-        return result.records[0].get('rel')
-    })
+    try {
+        const record = await session.executeWrite(async txc => {
+            const result = await runNeo4jQuery(addMoreCarsIdToRelationshipQuery(elementId, moreCarsId), txc)
+            return result.records[0]
+        })
 
-    await session.close()
+        const startNode = record.get('a') as Node
+        const neo4jRelationship = record.get('r') as Neo4jRelationship
+        const endNode = record.get('b') as Node
 
-    return dbRel
+        return convertNeo4jRelationshipToDbRelationship(neo4jRelationship, startNode, endNode)
+    } finally {
+        await session.close()
+    }
 }
 
 export function addMoreCarsIdToRelationshipQuery(elementId: string, moreCarsId: number) {

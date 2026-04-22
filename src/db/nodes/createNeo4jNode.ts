@@ -1,4 +1,5 @@
-import neo4j, {Driver, Node, Session} from "neo4j-driver"
+import neo4j, {Node} from "neo4j-driver"
+import type {DbNode} from "../types/DbNode"
 import {getDriver} from "../driver"
 import {runNeo4jQuery} from "../runNeo4jQuery"
 import {generateMoreCarsId} from "../generateMoreCarsId"
@@ -6,8 +7,8 @@ import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId"
 import {addMoreCarsIdToNode} from "./addMoreCarsIdToNode"
 import {addTimestampsToNode} from "./addTimestampsToNode"
 import {getNodeTypeSpecification} from "../../specification/getNodeTypeSpecification"
-import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
+import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import type {PropertySpecification} from "../../specification/PropertySpecification"
 import {escapeSingleQuotes} from "./escapeSingleQuotes"
 import type {InputNodeTypeCreate} from "../types/InputNodeTypeCreate"
@@ -15,28 +16,30 @@ import {DbNodeType} from "../types/DbNodeType"
 import {mapDbNodeTypeToNeo4jNodeType} from "./mapDbNodeTypeToNeo4jNodeType"
 import {mapDbNodeTypeToNodeType} from "../../specification/mapDbNodeTypeToNodeType"
 
-export async function createNeo4jNode(nodeType: DbNodeType, data: InputNodeTypeCreate): Promise<Node> {
-    const driver: Driver = getDriver()
-    const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
+export async function createNeo4jNode(nodeType: DbNodeType, data: InputNodeTypeCreate): Promise<DbNode> {
+    const driver = getDriver()
+    const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
-    // 1. Creating the node in the database
-    let neo4jNode: Node = await session.executeWrite(async txc => {
-        const result = await runNeo4jQuery(createNodeQuery(nodeType, data), txc)
-        return result.records[0].get('node')
-    })
+    try {
+        // 1. Creating the node in the database
+        const neo4jNode = await session.executeWrite(async txc => {
+            const result = await runNeo4jQuery(createNodeQuery(nodeType, data), txc)
+            return result.records[0].get('node') as Node
+        })
 
-    // 2. Adding a custom More Cars ID for that node
-    const elementId = neo4jNode.elementId
-    const moreCarsId = generateMoreCarsId(extractBaseIdFromElementId(elementId))
-    await addMoreCarsIdToNode(elementId, moreCarsId)
+        // 2. Adding a custom More Cars ID for that node
+        const elementId = neo4jNode.elementId
+        const moreCarsId = generateMoreCarsId(extractBaseIdFromElementId(elementId))
+        await addMoreCarsIdToNode(elementId, moreCarsId)
 
-    // 3. Adding timestamps
-    const timestamp = new Date().toISOString()
-    neo4jNode = await addTimestampsToNode(elementId, timestamp, timestamp)
+        // 3. Adding timestamps
+        const timestamp = new Date().toISOString()
+        const dbNode = await addTimestampsToNode(elementId, timestamp, timestamp)
 
-    await session.close()
-
-    return neo4jNode
+        return dbNode
+    } finally {
+        await session.close()
+    }
 }
 
 export function createNodeQuery(nodeType: DbNodeType, data: InputNodeTypeCreate) {

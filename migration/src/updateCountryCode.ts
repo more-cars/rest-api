@@ -1,18 +1,18 @@
-import neo4j, {type Driver, type Session} from "neo4j-driver"
+import neo4j from "neo4j-driver"
 import {getDriver} from "../../src/db/driver"
 
-export async function updateCountryCode(nodeId: number, countryCode: string, property?: string) {
-    const driver: Driver = getDriver()
-    const session: Session = driver.session({defaultAccessMode: neo4j.session.WRITE})
+export async function updateCountryCode(nodeId: number, countryCode: string, property?: string): Promise<boolean> {
+    const driver = getDriver()
+    const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
-    const result = await session.executeWrite(async txc => {
-        const result = await txc.run(updateCountryCodeQuery(nodeId, countryCode, property))
-        return result.summary.counters.containsUpdates()
-    })
-
-    await session.close()
-
-    return result
+    try {
+        return await session.executeWrite(async txc => {
+            const result = await txc.run(updateCountryCodeQuery(nodeId, countryCode, property))
+            return result.summary.counters.containsUpdates()
+        })
+    } finally {
+        await session.close()
+    }
 }
 
 function updateCountryCodeQuery(nodeId: number, countryCode: string, property?: string) {

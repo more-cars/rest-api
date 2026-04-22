@@ -28,11 +28,11 @@ export async function getRelationship(
             return false
         }
 
-        const startNode: Node = records[0].get('a')
-        const dbRelationship: Neo4jRelationship = records[0].get('r')
-        const endNode: Node = records[0].get('b')
+        const startNode = records[0].get('a') as Node
+        const neo4jRelationship = records[0].get('r') as Neo4jRelationship
+        const endNode = records[0].get('b') as Node
 
-        return convertNeo4jRelationshipToDbRelationship(dbRelationship, startNode, endNode)
+        return convertNeo4jRelationshipToDbRelationship(neo4jRelationship, startNode, endNode)
     } finally {
         await session.close()
     }

@@ -37,8 +37,8 @@ async function migrateCountryCodes(oldRelationshipType: RelationshipTypeLabelOld
 
     progress.start(records.length, 0)
     for (const record of records) {
-        const startNode: Node = record.get('a')
-        const countryNode: Node = record.get('b')
+        const startNode = record.get('a') as Node
+        const countryNode = record.get('b') as Node
 
         if (oldStartNodeType === NodeTypeLabelOld.Company && oldRelationshipType === RelationshipTypeLabelOld.CompanyOriginatesFromCountry) {
             await updateCountryCode(Number(startNode.identity) + 10_000_000, countryNode.properties.code, 'hq_country_code')
