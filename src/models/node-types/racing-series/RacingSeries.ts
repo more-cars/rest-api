@@ -1,7 +1,6 @@
 import {CreateRacingSeriesInput} from "./types/CreateRacingSeriesInput"
 import {RacingSeriesNode} from "./types/RacingSeriesNode"
 import {convertInputData} from "./create/convertInputData"
-import {createNode} from "../../../db/node-types/racing-series/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/racing-series/getNodeById"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
@@ -23,11 +22,12 @@ import {Video} from "../videos/Video"
 import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
+import {createNeo4jNode} from "../../../db/nodes/createNeo4jNode"
 
 export const RacingSeries = {
     async create(data: CreateRacingSeriesInput): Promise<RacingSeriesNode> {
         const input = convertInputData(data)
-        const result = await createNode(input)
+        const result = await createNeo4jNode(DbNodeType.RacingSeries, input)
 
         return convertDbNodeToModelNode(result) as RacingSeriesNode
     },

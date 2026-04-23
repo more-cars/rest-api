@@ -1,7 +1,6 @@
 import {CreateSessionResultInput} from "./types/CreateSessionResultInput"
 import {SessionResultNode} from "./types/SessionResultNode"
 import {convertInputData} from "./create/convertInputData"
-import {createNode} from "../../../db/node-types/session-results/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/session-results/getNodeById"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
@@ -24,11 +23,12 @@ import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
+import {createNeo4jNode} from "../../../db/nodes/createNeo4jNode"
 
 export const SessionResult = {
     async create(data: CreateSessionResultInput): Promise<SessionResultNode> {
         const input = convertInputData(data)
-        const result = await createNode(input)
+        const result = await createNeo4jNode(DbNodeType.SessionResult, input)
 
         return convertDbNodeToModelNode(result) as SessionResultNode
     },

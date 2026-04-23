@@ -1,6 +1,7 @@
-import {createNode} from "../../../../../src/db/node-types/lap-times/createNode"
+import {createNeo4jNode} from "../../../../../src/db/nodes/createNeo4jNode"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {FakeLapTime} from "../../../fixtures/nodes/FakeLapTime"
 
 export async function seedLapTime(customFakeData: object = {}) {
-    return createNode(Object.assign({}, FakeLapTime.dbInput, customFakeData))
+    return createNeo4jNode(DbNodeType.LapTime, Object.assign({}, FakeLapTime.dbInput, customFakeData))
 }

@@ -1,5 +1,7 @@
 import {expect, test} from 'vitest'
-import {createNode} from "../../../../../../src/db/node-types/session-results/createNode"
+import {createNeo4jNode} from "../../../../../../src/db/nodes/createNeo4jNode"
+import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
+import type {SessionResultNode} from "../../../../../../src/db/node-types/session-results/types/SessionResultNode"
 
 test('Single quotes in strings are correctly escaped and unescaped', async () => {
     const data = {
@@ -13,7 +15,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         points: 25,
     }
 
-    const createdNode = await createNode(data)
+    const createdNode = await createNeo4jNode(DbNodeType.SessionResult, data) as SessionResultNode
 
     expect(createdNode.properties.race_number)
         .toEqual("'44''")

@@ -1,7 +1,6 @@
 import {CreateModelCarInput} from "./types/CreateModelCarInput"
 import {ModelCarNode} from "./types/ModelCarNode"
 import {convertInputData} from "./create/convertInputData"
-import {createNode} from "../../../db/node-types/model-cars/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/model-cars/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
@@ -23,11 +22,12 @@ import {Video} from "../videos/Video"
 import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
+import {createNeo4jNode} from "../../../db/nodes/createNeo4jNode"
 
 export const ModelCar = {
     async create(data: CreateModelCarInput): Promise<ModelCarNode> {
         const input = convertInputData(data)
-        const result = await createNode(input)
+        const result = await createNeo4jNode(DbNodeType.ModelCar, input)
 
         return convertDbNodeToModelNode(result) as ModelCarNode
     },

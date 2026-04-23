@@ -1,7 +1,6 @@
 import {CreateTrackLayoutInput} from "./types/CreateTrackLayoutInput"
 import {TrackLayoutNode} from "./types/TrackLayoutNode"
 import {convertInputData} from "./create/convertInputData"
-import {createNode} from "../../../db/node-types/track-layouts/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/track-layouts/getNodeById"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
@@ -26,11 +25,12 @@ import {Video} from "../videos/Video"
 import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
+import {createNeo4jNode} from "../../../db/nodes/createNeo4jNode"
 
 export const TrackLayout = {
     async create(data: CreateTrackLayoutInput): Promise<TrackLayoutNode> {
         const input = convertInputData(data)
-        const result = await createNode(input)
+        const result = await createNeo4jNode(DbNodeType.TrackLayout, input)
 
         return convertDbNodeToModelNode(result) as TrackLayoutNode
     },

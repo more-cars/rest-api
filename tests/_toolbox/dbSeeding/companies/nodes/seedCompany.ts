@@ -1,6 +1,7 @@
-import {createNode} from "../../../../../src/db/node-types/companies/createNode"
+import {createNeo4jNode} from "../../../../../src/db/nodes/createNeo4jNode"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {FakeCompany} from "../../../fixtures/nodes/FakeCompany"
 
 export async function seedCompany(customFakeData: object = {}) {
-    return createNode(Object.assign({}, FakeCompany.dbInput, customFakeData))
+    return createNeo4jNode(DbNodeType.Company, Object.assign({}, FakeCompany.dbInput, customFakeData))
 }

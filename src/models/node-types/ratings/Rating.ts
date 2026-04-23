@@ -1,7 +1,6 @@
 import {CreateRatingInput} from "./types/CreateRatingInput"
 import {RatingNode} from "./types/RatingNode"
 import {convertInputData} from "./create/convertInputData"
-import {createNode} from "../../../db/node-types/ratings/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/ratings/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
@@ -22,11 +21,12 @@ import {getAllRels} from "../../relationships/getAllRels"
 import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
+import {createNeo4jNode} from "../../../db/nodes/createNeo4jNode"
 
 export const Rating = {
     async create(data: CreateRatingInput): Promise<RatingNode> {
         const input = convertInputData(data)
-        const result = await createNode(input)
+        const result = await createNeo4jNode(DbNodeType.Rating, input)
 
         return convertDbNodeToModelNode(result) as RatingNode
     },

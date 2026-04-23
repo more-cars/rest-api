@@ -1,7 +1,6 @@
 import {ImageNode} from "./types/ImageNode"
 import {CreateImageInput} from "./types/CreateImageInput"
 import {convertInputData} from "./create/convertInputData"
-import {createNode} from "../../../db/node-types/images/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/images/getNodeById"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
@@ -27,6 +26,7 @@ import {FlickrFacade} from "../../../db/external/FlickrFacade"
 import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
+import {createNeo4jNode} from "../../../db/nodes/createNeo4jNode"
 
 export const Image = {
     async create(data: CreateImageInput): Promise<ImageNode> {
@@ -49,7 +49,7 @@ export const Image = {
             }
 
             const input = convertInputData(Object.assign({}, data, image))
-            const result = await createNode(input)
+            const result = await createNeo4jNode(DbNodeType.Image, input)
 
             return convertDbNodeToModelNode(result) as ImageNode
         } catch (e) {

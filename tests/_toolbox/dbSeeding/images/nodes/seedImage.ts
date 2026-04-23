@@ -1,6 +1,7 @@
-import {createNode} from "../../../../../src/db/node-types/images/createNode"
+import {createNeo4jNode} from "../../../../../src/db/nodes/createNeo4jNode"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {FakeImage} from "../../../fixtures/nodes/FakeImage"
 
 export async function seedImage(customFakeData: object = {}) {
-    return createNode(Object.assign({}, FakeImage.dbInput, customFakeData))
+    return createNeo4jNode(DbNodeType.Image, Object.assign({}, FakeImage.dbInput, customFakeData))
 }

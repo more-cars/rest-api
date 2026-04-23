@@ -1,6 +1,7 @@
-import {createNode} from "../../../../../src/db/node-types/racing-series/createNode"
+import {createNeo4jNode} from "../../../../../src/db/nodes/createNeo4jNode"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {FakeRacingSeries} from "../../../fixtures/nodes/FakeRacingSeries"
 
 export async function seedRacingSeries(customFakeData: object = {}) {
-    return createNode(Object.assign({}, FakeRacingSeries.dbInput, customFakeData))
+    return createNeo4jNode(DbNodeType.RacingSeries, Object.assign({}, FakeRacingSeries.dbInput, customFakeData))
 }

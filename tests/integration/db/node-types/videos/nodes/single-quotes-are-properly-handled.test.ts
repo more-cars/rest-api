@@ -1,5 +1,7 @@
 import {expect, test} from 'vitest'
-import {createNode} from "../../../../../../src/db/node-types/videos/createNode"
+import {createNeo4jNode} from "../../../../../../src/db/nodes/createNeo4jNode"
+import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
+import type {VideoNode} from "../../../../../../src/db/node-types/videos/types/VideoNode"
 
 test('Single quotes in strings are correctly escaped and unescaped', async () => {
     const data = {
@@ -18,7 +20,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         thumbnail_url_xs: "'https://i.ytimg.com/vi/NqsBncRslsg/default.jpg''",
     }
 
-    const createdNode = await createNode(data)
+    const createdNode = await createNeo4jNode(DbNodeType.Video, data) as VideoNode
 
     expect(createdNode.properties.video_provider)
         .toEqual("'youtube''")

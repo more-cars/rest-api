@@ -1,7 +1,6 @@
 import {CreateGamingPlatformInput} from "./types/CreateGamingPlatformInput"
 import {GamingPlatformNode} from "./types/GamingPlatformNode"
 import {convertInputData} from "./create/convertInputData"
-import {createNode} from "../../../db/node-types/gaming-platforms/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/gaming-platforms/getNodeById"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
@@ -22,11 +21,12 @@ import {Video} from "../videos/Video"
 import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
+import {createNeo4jNode} from "../../../db/nodes/createNeo4jNode"
 
 export const GamingPlatform = {
     async create(data: CreateGamingPlatformInput): Promise<GamingPlatformNode> {
         const input = convertInputData(data)
-        const result = await createNode(input)
+        const result = await createNeo4jNode(DbNodeType.GamingPlatform, input)
 
         return convertDbNodeToModelNode(result) as GamingPlatformNode
     },

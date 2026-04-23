@@ -1,6 +1,7 @@
-import {createNode} from "../../../../../src/db/node-types/session-results/createNode"
+import {createNeo4jNode} from "../../../../../src/db/nodes/createNeo4jNode"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {FakeSessionResult} from "../../../fixtures/nodes/FakeSessionResult"
 
 export async function seedSessionResult(customFakeData: object = {}) {
-    return createNode(Object.assign({}, FakeSessionResult.dbInput, customFakeData))
+    return createNeo4jNode(DbNodeType.SessionResult, Object.assign({}, FakeSessionResult.dbInput, customFakeData))
 }

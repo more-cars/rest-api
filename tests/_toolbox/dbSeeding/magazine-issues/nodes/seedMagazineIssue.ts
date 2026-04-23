@@ -1,6 +1,7 @@
-import {createNode} from "../../../../../src/db/node-types/magazine-issues/createNode"
+import {createNeo4jNode} from "../../../../../src/db/nodes/createNeo4jNode"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {FakeMagazineIssue} from "../../../fixtures/nodes/FakeMagazineIssue"
 
 export async function seedMagazineIssue(customFakeData: object = {}) {
-    return createNode(Object.assign({}, FakeMagazineIssue.dbInput, customFakeData))
+    return createNeo4jNode(DbNodeType.MagazineIssue, Object.assign({}, FakeMagazineIssue.dbInput, customFakeData))
 }

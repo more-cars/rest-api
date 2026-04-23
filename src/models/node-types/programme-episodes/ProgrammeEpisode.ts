@@ -1,7 +1,6 @@
 import {CreateProgrammeEpisodeInput} from "./types/CreateProgrammeEpisodeInput"
 import {ProgrammeEpisodeNode} from "./types/ProgrammeEpisodeNode"
 import {convertInputData} from "./create/convertInputData"
-import {createNode} from "../../../db/node-types/programme-episodes/createNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/programme-episodes/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
@@ -26,11 +25,12 @@ import {Video} from "../videos/Video"
 import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
+import {createNeo4jNode} from "../../../db/nodes/createNeo4jNode"
 
 export const ProgrammeEpisode = {
     async create(data: CreateProgrammeEpisodeInput): Promise<ProgrammeEpisodeNode> {
         const input = convertInputData(data)
-        const result = await createNode(input)
+        const result = await createNeo4jNode(DbNodeType.ProgrammeEpisode, input)
 
         return convertDbNodeToModelNode(result) as ProgrammeEpisodeNode
     },

@@ -1,16 +1,16 @@
 import {expect, test} from 'vitest'
 import assert from "assert"
-import {createNode as createBrandNode} from "../../../../../src/db/node-types/brands/createNode"
-import {createNode as createCarModelNode} from "../../../../../src/db/node-types/car-models/createNode"
+import {createNeo4jNode} from "../../../../../src/db/nodes/createNeo4jNode"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
+import {FakeCarModel} from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
+import {FakeBrand} from "../../../../_toolbox/fixtures/nodes/FakeBrand"
 import {RelationshipType} from "../../../../../src/db/types/RelationshipType"
 import {createRelationship} from "../../../../../src/db/relationships/createRelationship"
 import {getSpecificRelationship} from "../../../../../src/db/relationships/getSpecificRelationship"
-import {FakeCarModel} from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
-import {FakeBrand} from "../../../../_toolbox/fixtures/nodes/FakeBrand"
 
 test('ID is always contained in response', async () => {
-    const carModel = await createCarModelNode(FakeCarModel.dbInput)
-    const brand = await createBrandNode(FakeBrand.dbInput)
+    const carModel = await createNeo4jNode(DbNodeType.CarModel, FakeCarModel.dbInput)
+    const brand = await createNeo4jNode(DbNodeType.Brand, FakeBrand.dbInput)
     const expectedRelationship = await createRelationship(brand.properties.id, carModel.properties.id, RelationshipType.BrandHasCarModel)
 
     if (!expectedRelationship) {

@@ -1,6 +1,7 @@
-import {createNode} from "../../../../../src/db/node-types/videos/createNode"
+import {createNeo4jNode} from "../../../../../src/db/nodes/createNeo4jNode"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {FakeVideo} from "../../../fixtures/nodes/FakeVideo"
 
 export async function seedVideo(customFakeData: object = {}) {
-    return createNode(Object.assign({}, FakeVideo.dbInput, customFakeData))
+    return createNeo4jNode(DbNodeType.Video, Object.assign({}, FakeVideo.dbInput, customFakeData))
 }
