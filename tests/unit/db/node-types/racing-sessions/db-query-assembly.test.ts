@@ -15,19 +15,21 @@ test('database query for creating a RACING SESSION node', async () => {
         distance_unit: "laps"
     }
 
-    const query = createNodeQuery(DbNodeType.RacingSession, data)
+    const query = createNodeQuery(DbNodeType.RacingSession, data, "2025-05-14T11:05:07.793Z")
 
     expect(query)
         .toEqual(
-            "CREATE (node:RacingSession_A_" + appInstanceId + " {\n" +
+            "CREATE (n:RacingSession_A_" + appInstanceId + " {\n" +
             "  name: 'Grand Prix',\n" +
             "  start_date: '2025-05-20',\n" +
             "  start_time: '14:00',\n" +
             "  duration: 120,\n" +
             "  duration_unit: 'min',\n" +
             "  distance: 58,\n" +
-            "  distance_unit: 'laps'\n" +
+            "  distance_unit: 'laps',\n" +
+            "  created_at: '2025-05-14T11:05:07.793Z',\n" +
+            "  updated_at: '2025-05-14T11:05:07.793Z'\n" +
             "})\n" +
-            "RETURN node\n" +
+            "RETURN n\n" +
             "  LIMIT 1")
 })

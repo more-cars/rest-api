@@ -16,11 +16,11 @@ test('database query for creating a MAGAZINE ISSUE node', async () => {
         pages: 156
     }
 
-    const query = createNodeQuery(DbNodeType.MagazineIssue, data)
+    const query = createNodeQuery(DbNodeType.MagazineIssue, data, "2025-05-14T11:05:07.793Z")
 
     expect(query)
         .toEqual(
-            "CREATE (node:MagazineIssue_A_" + appInstanceId + " {\n" +
+            "CREATE (n:MagazineIssue_A_" + appInstanceId + " {\n" +
             "  title: 'Performance Car of the Year',\n" +
             "  consecutive_number: 402,\n" +
             "  issue_number: 12,\n" +
@@ -28,8 +28,10 @@ test('database query for creating a MAGAZINE ISSUE node', async () => {
             "  release_date: '2025-11-26',\n" +
             "  single_copy_price: 5.99,\n" +
             "  single_copy_price_unit: 'GBP',\n" +
-            "  pages: 156\n" +
+            "  pages: 156,\n" +
+            "  created_at: '2025-05-14T11:05:07.793Z',\n" +
+            "  updated_at: '2025-05-14T11:05:07.793Z'\n" +
             "})\n" +
-            "RETURN node\n" +
+            "RETURN n\n" +
             "  LIMIT 1")
 })

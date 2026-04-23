@@ -13,17 +13,19 @@ test('database query for creating a MODEL CAR node', async () => {
         series: "BMW"
     }
 
-    const query = createNodeQuery(DbNodeType.ModelCar, data)
+    const query = createNodeQuery(DbNodeType.ModelCar, data, "2025-05-14T11:05:07.793Z")
 
     expect(query)
         .toEqual(
-            "CREATE (node:ModelCar_A_" + appInstanceId + " {\n" +
+            "CREATE (n:ModelCar_A_" + appInstanceId + " {\n" +
             "  name: 'BMW 2002',\n" +
             "  product_code: 'DHX60',\n" +
             "  release_year: 2016,\n" +
             "  scale: '1:64',\n" +
-            "  series: 'BMW'\n" +
+            "  series: 'BMW',\n" +
+            "  created_at: '2025-05-14T11:05:07.793Z',\n" +
+            "  updated_at: '2025-05-14T11:05:07.793Z'\n" +
             "})\n" +
-            "RETURN node\n" +
+            "RETURN n\n" +
             "  LIMIT 1")
 })

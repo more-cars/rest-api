@@ -30,7 +30,7 @@ export async function fetchNodesFromDb(nodeType: DbNodeType, params?: Collection
         const dbNodes: DbNode[] = []
 
         records.forEach(record => {
-            const neo4jNode = record.get('node') as Node
+            const neo4jNode = record.get('n') as Node
             const dbNode = convertNeo4jNodeToDbNode(neo4jNode, getDenamespacedNodeTypeLabel(neo4jNode.labels[0]) as Neo4jNodeType)
 
             dbNodes.push(dbNode)

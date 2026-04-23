@@ -12,16 +12,18 @@ test('single quotes are correctly escaped', async () => {
         country_code: "'DE"
     }
 
-    const query = createNodeQuery(DbNodeType.Price, data)
+    const query = createNodeQuery(DbNodeType.Price, data, "2025-05-14T11:05:07.793Z")
 
     expect(query)
         .toEqual(
-            "CREATE (node:Price_A_" + appInstanceId + " {\n" +
+            "CREATE (n:Price_A_" + appInstanceId + " {\n" +
             "  price: 59990,\n" +
             "  price_year: 2020,\n" +
             "  currency_code: '\\'EUR',\n" +
-            "  country_code: '\\'DE'\n" +
+            "  country_code: '\\'DE',\n" +
+            "  created_at: '2025-05-14T11:05:07.793Z',\n" +
+            "  updated_at: '2025-05-14T11:05:07.793Z'\n" +
             "})\n" +
-            "RETURN node\n" +
+            "RETURN n\n" +
             "  LIMIT 1")
 })

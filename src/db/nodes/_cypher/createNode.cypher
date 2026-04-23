@@ -1,5 +1,7 @@
-CREATE (node:$NODE_TYPE_LABEL {
-$NODE_PROPERTIES
+CREATE (n:$nodeLabel {
+$nodeProperties,
+  created_at: '$timestamp',
+  updated_at: '$timestamp'
 })
-RETURN node
+RETURN n
   LIMIT 1

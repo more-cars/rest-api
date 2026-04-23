@@ -21,11 +21,11 @@ test('database query for creating a VIDEO node', async () => {
         thumbnail_url_xs: "https://i.ytimg.com/vi/NqsBncRslsg/default.jpg"
     }
 
-    const query = createNodeQuery(DbNodeType.Video, data)
+    const query = createNodeQuery(DbNodeType.Video, data, "2025-05-14T11:05:07.793Z")
 
     expect(query)
         .toEqual(
-            "CREATE (node:Video_A_" + appInstanceId + " {\n" +
+            "CREATE (n:Video_A_" + appInstanceId + " {\n" +
             "  video_provider: 'youtube',\n" +
             "  external_id: 'NqsBncRslsg',\n" +
             "  title: 'P1 vs F40',\n" +
@@ -38,8 +38,10 @@ test('database query for creating a VIDEO node', async () => {
             "  thumbnail_url_l: 'https://i.ytimg.com/vi/NqsBncRslsg/maxresdefault.jpg',\n" +
             "  thumbnail_url_m: 'https://i.ytimg.com/vi/NqsBncRslsg/sddefault.jpg',\n" +
             "  thumbnail_url_s: 'https://i.ytimg.com/vi/NqsBncRslsg/mqdefault.jpg',\n" +
-            "  thumbnail_url_xs: 'https://i.ytimg.com/vi/NqsBncRslsg/default.jpg'\n" +
+            "  thumbnail_url_xs: 'https://i.ytimg.com/vi/NqsBncRslsg/default.jpg',\n" +
+            "  created_at: '2025-05-14T11:05:07.793Z',\n" +
+            "  updated_at: '2025-05-14T11:05:07.793Z'\n" +
             "})\n" +
-            "RETURN node\n" +
+            "RETURN n\n" +
             "  LIMIT 1")
 })

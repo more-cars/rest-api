@@ -4,14 +4,20 @@ import {getDriver} from "../driver"
 import {runNeo4jQuery} from "../runNeo4jQuery"
 import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationshipToDbRelationship"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
+import {mapNodeTypeToDbNodeType} from "../../specification/mapNodeTypeToDbNodeType"
+import {mapDbRelationshipTypeToNeo4jRelationshipType} from "./mapDbRelationshipTypeToNeo4jRelationshipType"
+import {getRelationshipTypeSpecification} from "../../specification/getRelationshipTypeSpecification"
+import {mapDbRelationshipTypeToRelationshipType} from "../../specification/mapDbRelationshipTypeToRelationshipType"
+import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
+import type {RelationshipType} from "../types/RelationshipType"
 
-export async function addMoreCarsIdToRelationship(elementId: string, moreCarsId: number): Promise<Relationship> {
+export async function addMoreCarsIdToRelationship(moreCarsId: number, startNodeId: number, relType: RelationshipType, endNodeId: number): Promise<Relationship> {
     const driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
     try {
         const record = await session.executeWrite(async txc => {
-            const result = await runNeo4jQuery(addMoreCarsIdToRelationshipQuery(elementId, moreCarsId), txc)
+            const result = await runNeo4jQuery(addMoreCarsIdToRelationshipQuery(moreCarsId, startNodeId, relType, endNodeId), txc)
             return result.records[0]
         })
 
@@ -25,9 +31,31 @@ export async function addMoreCarsIdToRelationship(elementId: string, moreCarsId:
     }
 }
 
-export function addMoreCarsIdToRelationshipQuery(elementId: string, moreCarsId: number) {
-    return getCypherQueryTemplate('relationships/_cypher/addMoreCarsIdToNode.cypher')
+export function addMoreCarsIdToRelationshipQuery(moreCarsId: number, startNodeId: number, relType: RelationshipType, endNodeId: number) {
+    const relationshipSpecs = getRelationshipTypeSpecification(mapDbRelationshipTypeToRelationshipType(relType))
+    const templateName = relationshipSpecs.isReverseRelationship ? 'addMoreCarsIdToRelationshipReversed' : 'addMoreCarsIdToRelationship'
+    const startNodeType = mapNodeTypeToDbNodeType(relationshipSpecs.startNodeType)
+    const relationshipName = mapDbRelationshipTypeToNeo4jRelationshipType(relType)
+    const endNodeType = mapNodeTypeToDbNodeType(relationshipSpecs.endNodeType)
+
+    let template = getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')
         .trim()
-        .replace('$elementId', elementId)
+        .replace('$startNodeId', startNodeId.toString())
+        .replace('relationshipName', relationshipName)
+        .replace('$endNodeId', endNodeId.toString())
         .replace('$moreCarsId', moreCarsId.toString())
+
+    if (startNodeType) {
+        template = template.replace('$startNodeLabel', getNamespacedNodeTypeLabel(startNodeType))
+    } else {
+        template = template.replace(':$startNodeLabel', '')
+    }
+
+    if (endNodeType) {
+        template = template.replace('$endNodeLabel', getNamespacedNodeTypeLabel(endNodeType))
+    } else {
+        template = template.replace(':$endNodeLabel', '')
+    }
+
+    return template
 }

@@ -12,16 +12,18 @@ test('database query for creating a RATING node', async () => {
         scale_direction: "up"
     }
 
-    const query = createNodeQuery(DbNodeType.Rating, data)
+    const query = createNodeQuery(DbNodeType.Rating, data, "2025-05-14T11:05:07.793Z")
 
     expect(query)
         .toEqual(
-            "CREATE (node:Rating_A_" + appInstanceId + " {\n" +
+            "CREATE (n:Rating_A_" + appInstanceId + " {\n" +
             "  rating_value: 93,\n" +
             "  scale_minimum: 0,\n" +
             "  scale_maximum: 100,\n" +
-            "  scale_direction: 'up'\n" +
+            "  scale_direction: 'up',\n" +
+            "  created_at: '2025-05-14T11:05:07.793Z',\n" +
+            "  updated_at: '2025-05-14T11:05:07.793Z'\n" +
             "})\n" +
-            "RETURN node\n" +
+            "RETURN n\n" +
             "  LIMIT 1")
 })

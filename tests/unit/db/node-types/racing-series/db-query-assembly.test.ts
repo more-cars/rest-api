@@ -15,19 +15,21 @@ test('database query for creating a RACING SERIES node', async () => {
         country_code: "US",
     }
 
-    const query = createNodeQuery(DbNodeType.RacingSeries, data)
+    const query = createNodeQuery(DbNodeType.RacingSeries, data, "2025-05-14T11:05:07.793Z")
 
     expect(query)
         .toEqual(
-            "CREATE (node:RacingSeries_A_" + appInstanceId + " {\n" +
+            "CREATE (n:RacingSeries_A_" + appInstanceId + " {\n" +
             "  name: 'Formula 1',\n" +
             "  short_name: 'F1',\n" +
             "  founded: 1950,\n" +
             "  defunct: null,\n" +
             "  organized_by: 'FIA',\n" +
             "  vehicle_type: 'formula racing cars',\n" +
-            "  country_code: 'US'\n" +
+            "  country_code: 'US',\n" +
+            "  created_at: '2025-05-14T11:05:07.793Z',\n" +
+            "  updated_at: '2025-05-14T11:05:07.793Z'\n" +
             "})\n" +
-            "RETURN node\n" +
+            "RETURN n\n" +
             "  LIMIT 1")
 })

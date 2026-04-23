@@ -7,8 +7,8 @@ describe('database query for fetching a node by ID', () => {
 
         expect(query)
             .toEqual(
-                "MATCH (node {mc_id: 12123456})\n" +
-                "RETURN node\n" +
+                "MATCH (n {mc_id: 12123456})\n" +
+                "RETURN n\n" +
                 "  LIMIT 1")
     })
 })

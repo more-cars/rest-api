@@ -1,5 +1,5 @@
-MATCH (node)
-  WHERE elementId(node) = '$elementId'
-SET node.mc_id = $moreCarsId
-RETURN node
+MATCH (n)
+  WHERE elementId(n) = '$elementId'
+SET n.mc_id = $moreCarsId
+RETURN n
   LIMIT 1

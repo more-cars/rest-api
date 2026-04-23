@@ -44,11 +44,11 @@ test('database query for creating a CAR MODEL VARIANT node', async () => {
         total_production: 50000
     }
 
-    const query = createNodeQuery(DbNodeType.CarModelVariant, data)
+    const query = createNodeQuery(DbNodeType.CarModelVariant, data, "2025-05-14T11:05:07.793Z")
 
     expect(query)
         .toEqual(
-            "CREATE (node:CarModelVariant_A_" + appInstanceId + " {\n" +
+            "CREATE (n:CarModelVariant_A_" + appInstanceId + " {\n" +
             "  name: 'BMW M3',\n" +
             "  internal_code: 'E46',\n" +
             "  built_from: 2000,\n" +
@@ -84,8 +84,10 @@ test('database query for creating a CAR MODEL VARIANT node', async () => {
             "  sprint_time_0_100_kmh: 5.2,\n" +
             "  top_speed: 250,\n" +
             "  top_speed_unit: 'km/h',\n" +
-            "  total_production: 50000\n" +
+            "  total_production: 50000,\n" +
+            "  created_at: '2025-05-14T11:05:07.793Z',\n" +
+            "  updated_at: '2025-05-14T11:05:07.793Z'\n" +
             "})\n" +
-            "RETURN node\n" +
+            "RETURN n\n" +
             "  LIMIT 1")
 })

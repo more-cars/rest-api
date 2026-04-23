@@ -11,15 +11,17 @@ test('database query for creating a LAP TIME node', async () => {
         date: "1996-08-03"
     }
 
-    const query = createNodeQuery(DbNodeType.LapTime, data)
+    const query = createNodeQuery(DbNodeType.LapTime, data, "2025-05-14T11:05:07.793Z")
 
     expect(query)
         .toEqual(
-            "CREATE (node:LapTime_A_" + appInstanceId + " {\n" +
+            "CREATE (n:LapTime_A_" + appInstanceId + " {\n" +
             "  time: 'PT1M33.294S',\n" +
             "  driver_name: 'Klaus Ludwig',\n" +
-            "  date: '1996-08-03'\n" +
+            "  date: '1996-08-03',\n" +
+            "  created_at: '2025-05-14T11:05:07.793Z',\n" +
+            "  updated_at: '2025-05-14T11:05:07.793Z'\n" +
             "})\n" +
-            "RETURN node\n" +
+            "RETURN n\n" +
             "  LIMIT 1")
 })

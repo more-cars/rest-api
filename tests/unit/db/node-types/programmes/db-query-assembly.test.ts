@@ -16,11 +16,11 @@ test('database query for creating a PROGRAMME node', async () => {
         country_code: "GB",
     }
 
-    const query = createNodeQuery(DbNodeType.Programme, data)
+    const query = createNodeQuery(DbNodeType.Programme, data, "2025-05-14T11:05:07.793Z")
 
     expect(query)
         .toEqual(
-            "CREATE (node:Programme_A_" + appInstanceId + " {\n" +
+            "CREATE (n:Programme_A_" + appInstanceId + " {\n" +
             "  name: 'Top Gear',\n" +
             "  aired_from_year: 2002,\n" +
             "  aired_until_year: 2022,\n" +
@@ -28,8 +28,10 @@ test('database query for creating a PROGRAMME node', async () => {
             "  total_seasons: 33,\n" +
             "  total_episodes: 240,\n" +
             "  regular_episode_running_time: 'PT60M',\n" +
-            "  country_code: 'GB'\n" +
+            "  country_code: 'GB',\n" +
+            "  created_at: '2025-05-14T11:05:07.793Z',\n" +
+            "  updated_at: '2025-05-14T11:05:07.793Z'\n" +
             "})\n" +
-            "RETURN node\n" +
+            "RETURN n\n" +
             "  LIMIT 1")
 })

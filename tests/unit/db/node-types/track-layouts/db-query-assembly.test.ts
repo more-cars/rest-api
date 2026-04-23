@@ -17,11 +17,11 @@ test('database query for creating a TRACK LAYOUT node', async () => {
         surface: "asphalt"
     }
 
-    const query = createNodeQuery(DbNodeType.TrackLayout, data)
+    const query = createNodeQuery(DbNodeType.TrackLayout, data, "2025-05-14T11:05:07.793Z")
 
     expect(query)
         .toEqual(
-            "CREATE (node:TrackLayout_A_" + appInstanceId + " {\n" +
+            "CREATE (n:TrackLayout_A_" + appInstanceId + " {\n" +
             "  name: 'GP Circuit',\n" +
             "  year_from: 1967,\n" +
             "  year_to: 1999,\n" +
@@ -30,8 +30,10 @@ test('database query for creating a TRACK LAYOUT node', async () => {
             "  direction: 'clockwise',\n" +
             "  elevation_change: 71,\n" +
             "  elevation_change_unit: 'm',\n" +
-            "  surface: 'asphalt'\n" +
+            "  surface: 'asphalt',\n" +
+            "  created_at: '2025-05-14T11:05:07.793Z',\n" +
+            "  updated_at: '2025-05-14T11:05:07.793Z'\n" +
             "})\n" +
-            "RETURN node\n" +
+            "RETURN n\n" +
             "  LIMIT 1")
 })

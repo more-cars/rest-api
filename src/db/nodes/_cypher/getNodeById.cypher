@@ -1,3 +1,3 @@
-MATCH (node:nodeLabel {mc_id: $id})
-RETURN node
+MATCH (n:nodeLabel {mc_id: $id})
+RETURN n
   LIMIT 1

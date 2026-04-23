@@ -16,11 +16,11 @@ test('single quotes are correctly escaped', async () => {
         pages: null
     }
 
-    const query = createNodeQuery(DbNodeType.MagazineIssue, data)
+    const query = createNodeQuery(DbNodeType.MagazineIssue, data, "2025-05-14T11:05:07.793Z")
 
     expect(query)
         .toEqual(
-            "CREATE (node:MagazineIssue_A_" + appInstanceId + " {\n" +
+            "CREATE (n:MagazineIssue_A_" + appInstanceId + " {\n" +
             "  title: '\\'Performance Car of the Year',\n" +
             "  consecutive_number: null,\n" +
             "  issue_number: null,\n" +
@@ -28,8 +28,10 @@ test('single quotes are correctly escaped', async () => {
             "  release_date: '\\'2025-11-26',\n" +
             "  single_copy_price: null,\n" +
             "  single_copy_price_unit: '\\'GBP',\n" +
-            "  pages: null\n" +
+            "  pages: null,\n" +
+            "  created_at: '2025-05-14T11:05:07.793Z',\n" +
+            "  updated_at: '2025-05-14T11:05:07.793Z'\n" +
             "})\n" +
-            "RETURN node\n" +
+            "RETURN n\n" +
             "  LIMIT 1")
 })

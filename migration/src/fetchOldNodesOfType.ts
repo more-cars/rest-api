@@ -18,5 +18,5 @@ export async function fetchOldNodesOfType(nodeType: NodeTypeLabelOld): Promise<A
 }
 
 function getNodeQuery(label: string) {
-    return `MATCH (node:${label}) RETURN node ORDER BY id(node)`
+    return `MATCH (n:${label}) RETURN n ORDER BY id(n)`
 }

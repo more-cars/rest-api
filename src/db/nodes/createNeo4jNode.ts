@@ -5,7 +5,6 @@ import {runNeo4jQuery} from "../runNeo4jQuery"
 import {generateMoreCarsId} from "../generateMoreCarsId"
 import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId"
 import {addMoreCarsIdToNode} from "./addMoreCarsIdToNode"
-import {addTimestampsToNode} from "./addTimestampsToNode"
 import {getNodeTypeSpecification} from "../../specification/getNodeTypeSpecification"
 import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
@@ -21,28 +20,22 @@ export async function createNeo4jNode(nodeType: DbNodeType, data: InputNodeTypeC
     const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
     try {
-        // 1. Creating the node in the database
-        const neo4jNode = await session.executeWrite(async txc => {
-            const result = await runNeo4jQuery(createNodeQuery(nodeType, data), txc)
-            return result.records[0].get('node') as Node
+        const record = await session.executeWrite(async txc => {
+            const timestamp = new Date().toISOString()
+            const result = await runNeo4jQuery(createNodeQuery(nodeType, data, timestamp), txc)
+            return result.records[0].get('n') as Node
         })
 
-        // 2. Adding a custom More Cars ID for that node
-        const elementId = neo4jNode.elementId
+        const elementId = record.elementId
         const moreCarsId = generateMoreCarsId(extractBaseIdFromElementId(elementId))
-        await addMoreCarsIdToNode(elementId, moreCarsId)
 
-        // 3. Adding timestamps
-        const timestamp = new Date().toISOString()
-        const dbNode = await addTimestampsToNode(elementId, timestamp, timestamp)
-
-        return dbNode
+        return addMoreCarsIdToNode(moreCarsId, elementId)
     } finally {
         await session.close()
     }
 }
 
-export function createNodeQuery(nodeType: DbNodeType, data: InputNodeTypeCreate) {
+export function createNodeQuery(nodeType: DbNodeType, data: InputNodeTypeCreate, timestamp: string) {
     const nodeSpecs = getNodeTypeSpecification(mapDbNodeTypeToNodeType(nodeType))
     const nodeTypeLabel = getNamespacedNodeTypeLabel(mapDbNodeTypeToNeo4jNodeType(nodeType))
     const properties = getCypherFormattedPropertyList(nodeSpecs.properties, data)
@@ -51,8 +44,9 @@ export function createNodeQuery(nodeType: DbNodeType, data: InputNodeTypeCreate)
         .trim()
 
     template = template
-        .replace('$NODE_TYPE_LABEL', nodeTypeLabel)
-        .replace('$NODE_PROPERTIES', properties)
+        .replace('$nodeLabel', `${nodeTypeLabel}`)
+        .replace('$nodeProperties', properties)
+        .replaceAll('$timestamp', timestamp)
 
     return template
 }

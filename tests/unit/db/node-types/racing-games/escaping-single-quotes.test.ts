@@ -12,16 +12,18 @@ test('single quotes are correctly escaped', async () => {
         publisher: "'Microsoft Studios"
     }
 
-    const query = createNodeQuery(DbNodeType.RacingGame, data)
+    const query = createNodeQuery(DbNodeType.RacingGame, data, "2025-05-14T11:05:07.793Z")
 
     expect(query)
         .toEqual(
-            "CREATE (node:RacingGame_A_" + appInstanceId + " {\n" +
+            "CREATE (n:RacingGame_A_" + appInstanceId + " {\n" +
             "  name: '\\'Forza Motorsport 7',\n" +
             "  release_year: null,\n" +
             "  developer: '\\'Turn 10 Studios',\n" +
-            "  publisher: '\\'Microsoft Studios'\n" +
+            "  publisher: '\\'Microsoft Studios',\n" +
+            "  created_at: '2025-05-14T11:05:07.793Z',\n" +
+            "  updated_at: '2025-05-14T11:05:07.793Z'\n" +
             "})\n" +
-            "RETURN node\n" +
+            "RETURN n\n" +
             "  LIMIT 1")
 })

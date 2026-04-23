@@ -17,11 +17,11 @@ test('single quotes are correctly escaped', async () => {
         surface: "'asphalt"
     }
 
-    const query = createNodeQuery(DbNodeType.TrackLayout, data)
+    const query = createNodeQuery(DbNodeType.TrackLayout, data, "2025-05-14T11:05:07.793Z")
 
     expect(query)
         .toEqual(
-            "CREATE (node:TrackLayout_A_" + appInstanceId + " {\n" +
+            "CREATE (n:TrackLayout_A_" + appInstanceId + " {\n" +
             "  name: '\\'GP Circuit',\n" +
             "  year_from: null,\n" +
             "  year_to: null,\n" +
@@ -30,8 +30,10 @@ test('single quotes are correctly escaped', async () => {
             "  direction: '\\'clockwise',\n" +
             "  elevation_change: null,\n" +
             "  elevation_change_unit: '\\'m',\n" +
-            "  surface: '\\'asphalt'\n" +
+            "  surface: '\\'asphalt',\n" +
+            "  created_at: '2025-05-14T11:05:07.793Z',\n" +
+            "  updated_at: '2025-05-14T11:05:07.793Z'\n" +
             "})\n" +
-            "RETURN node\n" +
+            "RETURN n\n" +
             "  LIMIT 1")
 })

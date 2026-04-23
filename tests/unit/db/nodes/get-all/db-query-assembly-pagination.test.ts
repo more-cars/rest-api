@@ -23,10 +23,10 @@ describe('database query for fetching all nodes of a type - pagination', () => {
 
             expect(query)
                 .toEqual(
-                    "MATCH (node:" + nodeType + "_A_" + appInstanceId + ")\n" +
-                    "WHERE node.dummy = 'dummy'\n" +
-                    "RETURN node\n" +
-                    "  ORDER BY toLower(toString(node.dummy)) dummy\n" +
+                    "MATCH (n:" + nodeType + "_A_" + appInstanceId + ")\n" +
+                    "WHERE n.dummy = 'dummy'\n" +
+                    "RETURN n\n" +
+                    "  ORDER BY toLower(toString(n.dummy)) dummy\n" +
                     "  SKIP " + offset + "\n" +
                     "  LIMIT " + limit)
         })

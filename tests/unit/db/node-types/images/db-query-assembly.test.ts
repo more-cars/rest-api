@@ -22,11 +22,11 @@ test('database query for creating an IMAGE node', async () => {
         image_url_s: "https://live.staticflickr.com/65535/54570839725_652073f374_n.jpg",
         image_url_xs: "https://live.staticflickr.com/65535/54570839725_652073f374_t.jpg",
     }
-    const query = createNodeQuery(DbNodeType.Image, data)
+    const query = createNodeQuery(DbNodeType.Image, data, "2025-05-14T11:05:07.793Z")
 
     expect(query)
         .toEqual(
-            "CREATE (node:Image_A_" + appInstanceId + " {\n" +
+            "CREATE (n:Image_A_" + appInstanceId + " {\n" +
             "  image_provider: 'flickr',\n" +
             "  external_id: '54570839725',\n" +
             "  name: '1989 Porsche 911 Turbo',\n" +
@@ -41,8 +41,10 @@ test('database query for creating an IMAGE node', async () => {
             "  image_url_l: 'https://live.staticflickr.com/65535/54570839725_652073f374_b.jpg',\n" +
             "  image_url_m: 'https://live.staticflickr.com/65535/54570839725_652073f374_z.jpg',\n" +
             "  image_url_s: 'https://live.staticflickr.com/65535/54570839725_652073f374_n.jpg',\n" +
-            "  image_url_xs: 'https://live.staticflickr.com/65535/54570839725_652073f374_t.jpg'\n" +
+            "  image_url_xs: 'https://live.staticflickr.com/65535/54570839725_652073f374_t.jpg',\n" +
+            "  created_at: '2025-05-14T11:05:07.793Z',\n" +
+            "  updated_at: '2025-05-14T11:05:07.793Z'\n" +
             "})\n" +
-            "RETURN node\n" +
+            "RETURN n\n" +
             "  LIMIT 1")
 })

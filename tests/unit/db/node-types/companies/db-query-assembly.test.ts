@@ -15,19 +15,21 @@ test('database query for creating a COMPANY node', async () => {
         legal_hq_country_code: "DE",
     }
 
-    const query = createNodeQuery(DbNodeType.Company, data)
+    const query = createNodeQuery(DbNodeType.Company, data, "2025-05-14T11:05:07.793Z")
 
     expect(query)
         .toEqual(
-            "CREATE (node:Company_A_" + appInstanceId + " {\n" +
+            "CREATE (n:Company_A_" + appInstanceId + " {\n" +
             "  name: 'BMW AG',\n" +
             "  founded: 1916,\n" +
             "  defunct: null,\n" +
             "  headquarters_location: 'Munich',\n" +
             "  hq_country_code: 'DE',\n" +
             "  legal_headquarters_location: 'Munich',\n" +
-            "  legal_hq_country_code: 'DE'\n" +
+            "  legal_hq_country_code: 'DE',\n" +
+            "  created_at: '2025-05-14T11:05:07.793Z',\n" +
+            "  updated_at: '2025-05-14T11:05:07.793Z'\n" +
             "})\n" +
-            "RETURN node\n" +
+            "RETURN n\n" +
             "  LIMIT 1")
 })

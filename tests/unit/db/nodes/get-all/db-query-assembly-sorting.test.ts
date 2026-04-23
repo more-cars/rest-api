@@ -20,9 +20,9 @@ describe('database query for fetching all nodes of a type - sorting', () => {
 
             expect(query)
                 .toEqual(
-                    "MATCH (node:" + nodeType + "_A_" + appInstanceId + ")\n" +
-                    "RETURN node\n" +
-                    "  ORDER BY toLower(toString(node." + sortByProperty + ")) " + sortDirection + "\n" +
+                    "MATCH (n:" + nodeType + "_A_" + appInstanceId + ")\n" +
+                    "RETURN n\n" +
+                    "  ORDER BY toLower(toString(n." + sortByProperty + ")) " + sortDirection + "\n" +
                     "  SKIP 0\n" +
                     "  LIMIT 100")
         })

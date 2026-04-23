@@ -16,11 +16,11 @@ test('single quotes are correctly escaped', async () => {
         country_code: "'GB",
     }
 
-    const query = createNodeQuery(DbNodeType.Programme, data)
+    const query = createNodeQuery(DbNodeType.Programme, data, "2025-05-14T11:05:07.793Z")
 
     expect(query)
         .toEqual(
-            "CREATE (node:Programme_A_" + appInstanceId + " {\n" +
+            "CREATE (n:Programme_A_" + appInstanceId + " {\n" +
             "  name: '\\'Top Gear',\n" +
             "  aired_from_year: null,\n" +
             "  aired_until_year: null,\n" +
@@ -28,8 +28,10 @@ test('single quotes are correctly escaped', async () => {
             "  total_seasons: null,\n" +
             "  total_episodes: null,\n" +
             "  regular_episode_running_time: '\\'PT60M',\n" +
-            "  country_code: '\\'GB'\n" +
+            "  country_code: '\\'GB',\n" +
+            "  created_at: '2025-05-14T11:05:07.793Z',\n" +
+            "  updated_at: '2025-05-14T11:05:07.793Z'\n" +
             "})\n" +
-            "RETURN node\n" +
+            "RETURN n\n" +
             "  LIMIT 1")
 })

@@ -18,7 +18,7 @@ export async function getSpecificRelationship(
 ): Promise<false | Relationship> {
     const driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.READ})
-    console.log(getSpecificRelationshipQuery(startNodeId, relationshipType, endNodeId))
+
     try {
         const records = await session.executeRead(async txc => {
             const result = await runNeo4jQuery(getSpecificRelationshipQuery(startNodeId, relationshipType, endNodeId), txc)

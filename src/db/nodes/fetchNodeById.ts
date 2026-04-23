@@ -23,7 +23,7 @@ export async function fetchNodeById(id: number, nodeType: DbNodeType = DbNodeTyp
             return false
         }
 
-        const node = records[0].get('node') as Node
+        const node = records[0].get('n') as Node
 
         return convertNeo4jNodeToDbNode(node, getDenamespacedNodeTypeLabel(node.labels[0]) as Neo4jNodeType)
     } finally {

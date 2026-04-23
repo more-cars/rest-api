@@ -2,7 +2,6 @@ import type {Node} from "neo4j-driver"
 import {DbNodeType} from "../../src/db/types/DbNodeType"
 import {createNeo4jNode} from "../../src/db/nodes/createNeo4jNode"
 import {addMoreCarsIdToNode} from "../../src/db/nodes/addMoreCarsIdToNode"
-import {addTimestampsToNode} from "../../src/db/nodes/addTimestampsToNode"
 import type {InputCompanyCreate} from "../../src/db/node-types/companies/types/InputCompanyCreate"
 import type {InputBrandCreate} from "../../src/db/node-types/brands/types/InputBrandCreate"
 import type {InputCarModelCreate} from "../../src/db/node-types/car-models/types/InputCarModelCreate"
@@ -59,13 +58,8 @@ export async function storeNode(data: InputTypes, newNodeType: DbNodeType, oldNo
     try {
         const createdNode = await createNeo4jNode(newNodeType, data)
         await addMoreCarsIdToNode(
+            parseInt(oldNode.elementId) + 10_000_000,
             createdNode.elementId,
-            parseInt(oldNode.elementId) + 10_000_000
-        )
-        await addTimestampsToNode(
-            createdNode.elementId,
-            new Date(oldNode.properties.created_at).toISOString(),
-            new Date(oldNode.properties.updated_at).toISOString(),
         )
     } catch (e) {
         console.error(e)

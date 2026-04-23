@@ -19,7 +19,7 @@ async function migrateNodesOfType() {
 
     progress.start(records.length, 0)
     for (const record of records) {
-        const oldNode = record.get('node')
+        const oldNode = record.get('n')
         const newNode = mapNodeProperties(oldNode, newNodeType)
         await storeNode(newNode, newNodeType, oldNode)
         progress.increment(1)

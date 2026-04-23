@@ -16,11 +16,11 @@ test('database query for creating a SESSION RESULT node', async () => {
         points: 25
     }
 
-    const query = createNodeQuery(DbNodeType.SessionResult, data)
+    const query = createNodeQuery(DbNodeType.SessionResult, data, "2025-05-14T11:05:07.793Z")
 
     expect(query)
         .toEqual(
-            "CREATE (node:SessionResult_A_" + appInstanceId + " {\n" +
+            "CREATE (n:SessionResult_A_" + appInstanceId + " {\n" +
             "  position: 1,\n" +
             "  race_number: '44',\n" +
             "  driver_name: 'Lewis Hamilton',\n" +
@@ -28,8 +28,10 @@ test('database query for creating a SESSION RESULT node', async () => {
             "  race_time: 'PT1H23M45.678S',\n" +
             "  laps: 51,\n" +
             "  status: 'finished',\n" +
-            "  points: 25\n" +
+            "  points: 25,\n" +
+            "  created_at: '2025-05-14T11:05:07.793Z',\n" +
+            "  updated_at: '2025-05-14T11:05:07.793Z'\n" +
             "})\n" +
-            "RETURN node\n" +
+            "RETURN n\n" +
             "  LIMIT 1")
 })

@@ -1,4 +1,4 @@
-import neo4j, {Relationship as Neo4jRelationship} from "neo4j-driver"
+import neo4j, {Node, Relationship as Neo4jRelationship} from "neo4j-driver"
 import {RelationshipType} from "../types/RelationshipType"
 import {Relationship} from "../types/Relationship"
 import {getRelationshipTypeSpecification} from "../../specification/getRelationshipTypeSpecification"
@@ -7,10 +7,12 @@ import {runNeo4jQuery} from "../runNeo4jQuery"
 import {generateMoreCarsId} from "../generateMoreCarsId"
 import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId"
 import {addMoreCarsIdToRelationship} from "./addMoreCarsIdToRelationship"
-import {addTimestampsToRelationship} from "./addTimestampsToRelationship"
 import {mapDbRelationshipTypeToNeo4jRelationshipType} from "./mapDbRelationshipTypeToNeo4jRelationshipType"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {mapDbRelationshipTypeToRelationshipType} from "../../specification/mapDbRelationshipTypeToRelationshipType"
+import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
+import {mapNodeTypeToDbNodeType} from "../../specification/mapNodeTypeToDbNodeType"
+import {convertNeo4jRelationshipToDbRelationship} from "./convertNeo4jRelationshipToDbRelationship"
 
 export async function createRelationship(
     startNodeId: number,
@@ -21,42 +23,56 @@ export async function createRelationship(
     const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
     try {
-        // 1. Creating the rel in the database
         const records = await session.executeWrite(async txc => {
-            const result = await runNeo4jQuery(createRelationshipQuery(startNodeId, relationshipType, endNodeId), txc)
+            const timestamp = new Date().toISOString()
+            const result = await runNeo4jQuery(createRelationshipQuery(startNodeId, relationshipType, endNodeId, timestamp), txc)
             return result.records
         })
 
         if (records.length === 0) {
-            await session.close()
             return false
         }
 
+        const startNode = records[0].get('a') as Node
         const neo4jRelationship = records[0].get('r') as Neo4jRelationship
+        const endNode = records[0].get('b') as Node
 
-        // 2. Adding a custom More Cars ID for that relationship
         const elementId = neo4jRelationship.elementId
         const moreCarsId = generateMoreCarsId(extractBaseIdFromElementId(elementId))
-        await addMoreCarsIdToRelationship(elementId, moreCarsId)
+        const dbRel = convertNeo4jRelationshipToDbRelationship(neo4jRelationship, startNode, endNode)
 
-        // 3. Adding timestamps
-        const timestamp = new Date().toISOString()
-        const dbRelationship = await addTimestampsToRelationship(elementId, timestamp, timestamp)
-
-        return dbRelationship
+        return addMoreCarsIdToRelationship(moreCarsId, dbRel.start_node.properties.id, dbRel.type, dbRel.end_node.properties.id)
     } finally {
         await session.close()
     }
 }
 
-export function createRelationshipQuery(startNodeId: number, relationshipType: RelationshipType, endNodeId: number) {
+export function createRelationshipQuery(startNodeId: number, relationshipType: RelationshipType, endNodeId: number, timestamp: string) {
     const relationshipSpecs = getRelationshipTypeSpecification(mapDbRelationshipTypeToRelationshipType(relationshipType))
     const templateName = relationshipSpecs.isReverseRelationship ? 'createRelationshipReversed' : 'createRelationship'
+    const startNodeType = mapNodeTypeToDbNodeType(relationshipSpecs.startNodeType)
     const relationshipName = mapDbRelationshipTypeToNeo4jRelationshipType(relationshipType)
+    const endNodeType = mapNodeTypeToDbNodeType(relationshipSpecs.endNodeType)
 
-    return getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')
+    let template = getCypherQueryTemplate('relationships/_cypher/' + templateName + '.cypher')
         .trim()
         .replace('relationshipName', relationshipName)
         .replace('$startNodeId', startNodeId.toString())
         .replace('$endNodeId', endNodeId.toString())
+        .replace('$endNodeId', endNodeId.toString())
+        .replaceAll('$timestamp', timestamp)
+
+    if (startNodeType) {
+        template = template.replace('$startNodeLabel', getNamespacedNodeTypeLabel(startNodeType))
+    } else {
+        template = template.replace(':$startNodeLabel', '')
+    }
+
+    if (endNodeType) {
+        template = template.replace('$endNodeLabel', getNamespacedNodeTypeLabel(endNodeType))
+    } else {
+        template = template.replace(':$endNodeLabel', '')
+    }
+
+    return template
 }

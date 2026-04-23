@@ -7,7 +7,6 @@ import {isRelationshipReversedInOldDb} from "./src/isRelationshipReversedInOldDb
 import {fetchOldRelationshipsOfType} from "./src/fetchOldRelationshipsOfType"
 import {createRelationship} from "../src/db/relationships/createRelationship"
 import {addMoreCarsIdToRelationship} from "../src/db/relationships/addMoreCarsIdToRelationship"
-import {addTimestampsToRelationship} from "../src/db/relationships/addTimestampsToRelationship"
 import {DbNodeType} from "../src/db/types/DbNodeType"
 import {RelationshipType} from "../src/db/types/RelationshipType"
 
@@ -37,18 +36,23 @@ async function migrateRelationshipsOfType() {
     progress.start(records.length, 0)
     for (const record of records) {
         const oldRelationship = record.get('rel')
-        let newRelationship
+
         if (isRelationshipReversedInOldDb(newRelationshipType)) {
-            newRelationship = await createRelationship(parseInt(oldRelationship.end) + 10_000_000, parseInt(oldRelationship.start) + 10_000_000, newRelationshipType)
+            const newRelationship = await createRelationship(parseInt(oldRelationship.end) + 10_000_000, parseInt(oldRelationship.start) + 10_000_000, newRelationshipType)
+            if (newRelationship) {
+                await addMoreCarsIdToRelationship(Number(newRelationship.elementId), parseInt(oldRelationship.end) + 10_000_000, newRelationshipType, parseInt(oldRelationship.start) + 10_000_000)
+            } else {
+                console.error('Relationship could not be migrated: #', oldRelationship.elementId)
+            }
         } else {
-            newRelationship = await createRelationship(parseInt(oldRelationship.start) + 10_000_000, parseInt(oldRelationship.end) + 10_000_000, newRelationshipType)
+            const newRelationship = await createRelationship(parseInt(oldRelationship.start) + 10_000_000, parseInt(oldRelationship.end) + 10_000_000, newRelationshipType)
+            if (newRelationship) {
+                await addMoreCarsIdToRelationship(Number(newRelationship.elementId), parseInt(oldRelationship.start) + 10_000_000, newRelationshipType, parseInt(oldRelationship.end) + 10_000_000)
+            } else {
+                console.error('Relationship could not be migrated: #', oldRelationship.elementId)
+            }
         }
-        if (newRelationship) {
-            await addMoreCarsIdToRelationship(newRelationship.elementId as string, parseInt(oldRelationship.elementId) + 10_000_000)
-            await addTimestampsToRelationship(newRelationship.elementId as string, oldRelationship.properties.created_at, oldRelationship.properties.updated_at)
-        } else {
-            console.error('Relationship could not be migrated: #', oldRelationship.elementId)
-        }
+
         progress.increment(1)
     }
     progress.stop()

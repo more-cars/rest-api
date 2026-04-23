@@ -1,6 +1,6 @@
-MATCH (node:nodeLabel)
-WHERE node.$filterByProperty $filterOperator $filterValue
-RETURN node
-  ORDER BY toLower(toString(node.$sortByProperty)) $sortDirection
+MATCH (n:nodeLabel)
+WHERE n.$filterByProperty $filterOperator $filterValue
+RETURN n
+  ORDER BY toLower(toString(n.$sortByProperty)) $sortDirection
   SKIP $offset
   LIMIT $limit
