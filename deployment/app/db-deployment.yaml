@@ -24,7 +24,7 @@ spec:
               mountPath: /data
           resources:
             requests:
-              cpu: "750m"
+              cpu: "600m"
               memory: "2000Mi"
       volumes:
         - name: api-db
