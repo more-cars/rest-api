@@ -1,3 +1,3 @@
-MATCH (node:nodeLabel)
-WHERE node.$filterByProperty $filterOperator $filterValue
-RETURN count(node) AS nodeCount
+MATCH (n:nodeLabel)
+WHERE n.$filterByProperty $filterOperator $filterValue
+RETURN count(n) AS nodeCount

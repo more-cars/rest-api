@@ -16,9 +16,9 @@ describe('assembling database query for fetching the node count', () => {
 
             expect(query)
                 .toEqual(
-                    "MATCH (node:" + nodeType + "_A_" + appInstanceId + ")\n" +
-                    "WHERE node." + params.filterByProperty + " " + params.filterOperator + " '" + params.filterValue + "'\n" +
-                    "RETURN count(node) AS nodeCount")
+                    "MATCH (n:" + nodeType + "_A_" + appInstanceId + ")\n" +
+                    "WHERE n." + params.filterByProperty + " " + params.filterOperator + " '" + params.filterValue + "'\n" +
+                    "RETURN count(n) AS nodeCount")
         })
     })
 
