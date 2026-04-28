@@ -18,7 +18,7 @@ type TrackOptions = {
     event?: MatomoEvent
 }
 
-export async function trackVisit(req: Request, options: TrackOptions): Promise<void> {
+export function trackVisit(req: Request, options: TrackOptions) {
     const ip = (req.headers["x-forwarded-for"] as string)?.split(",")[0] || req.socket.remoteAddress || ""
     const userAgent = req.headers["user-agent"] || ""
     const visitorId = crypto
@@ -57,12 +57,14 @@ export async function trackVisit(req: Request, options: TrackOptions): Promise<v
         }
     }
 
-    await fetch(getAnalyticsUrl(), {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: new URLSearchParams(payload as Record<string, string>).toString(),
-        }
-    )
+    fetch(getAnalyticsUrl(), {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: new URLSearchParams(payload as Record<string, string>).toString(),
+        signal: AbortSignal.timeout(1000),
+    }).catch(() => {
+        /* empty */
+    })
 }
