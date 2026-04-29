@@ -8,21 +8,25 @@ export const PriceNodeSpecification: NodeSpecification = {
             name: 'price',
             datatype: 'number',
             mandatory: true,
+            example: 59990,
         },
         {
             name: 'price_year',
             datatype: 'number',
             mandatory: true,
+            example: 2020,
         },
         {
             name: 'currency_code',
             datatype: 'string',
             mandatory: true,
+            example: 'EUR',
         },
         {
             name: 'country_code',
             datatype: 'string',
             mandatory: true,
+            example: 'DE',
         },
     ],
 }

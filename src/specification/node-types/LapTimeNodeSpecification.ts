@@ -8,16 +8,19 @@ export const LapTimeNodeSpecification: NodeSpecification = {
             name: 'time',
             datatype: 'string',
             mandatory: true,
+            example: 'PT1M33.294S',
         },
         {
             name: 'driver_name',
             datatype: 'string',
             mandatory: true,
+            example: 'Klaus Ludwig',
         },
         {
             name: 'date',
             datatype: 'string',
             mandatory: false,
+            example: '1996-08-03',
         },
     ],
 }
