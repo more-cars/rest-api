@@ -1,18 +1,20 @@
 import {expect, test} from 'vitest'
-import {InputModelCarBrandCreate} from "../../../../../src/db/node-types/model-car-brands/types/InputModelCarBrandCreate"
+import type {QueryInputData} from "../../../../../src/db/types/QueryInputData"
 import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
-    const data: InputModelCarBrandCreate = {
+    const data: QueryInputData = {
         name: "'Hot Wheels",
         founded: null,
         defunct: null,
         country_code: "'US",
+        created_at: "2025-05-14T11:05:07.793Z",
+        updated_at: "2025-05-14T11:05:07.793Z",
     }
 
-    const query = createNodeQuery(DbNodeType.ModelCarBrand, data, "2025-05-14T11:05:07.793Z")
+    const query = createNodeQuery(DbNodeType.ModelCarBrand, data)
 
     expect(query)
         .toEqual(

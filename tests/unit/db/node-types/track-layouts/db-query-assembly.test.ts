@@ -1,11 +1,11 @@
 import {expect, test} from 'vitest'
-import {InputTrackLayoutCreate} from "../../../../../src/db/node-types/track-layouts/types/InputTrackLayoutCreate"
+import type {QueryInputData} from "../../../../../src/db/types/QueryInputData"
 import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a TRACK LAYOUT node', async () => {
-    const data: InputTrackLayoutCreate = {
+    const data: QueryInputData = {
         name: "GP Circuit",
         year_from: 1967,
         year_to: 1999,
@@ -14,10 +14,12 @@ test('database query for creating a TRACK LAYOUT node', async () => {
         direction: "clockwise",
         elevation_change: 71,
         elevation_change_unit: "m",
-        surface: "asphalt"
+        surface: "asphalt",
+        created_at: "2025-05-14T11:05:07.793Z",
+        updated_at: "2025-05-14T11:05:07.793Z",
     }
 
-    const query = createNodeQuery(DbNodeType.TrackLayout, data, "2025-05-14T11:05:07.793Z")
+    const query = createNodeQuery(DbNodeType.TrackLayout, data)
 
     expect(query)
         .toEqual(

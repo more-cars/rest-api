@@ -1,11 +1,11 @@
 import {expect, test} from 'vitest'
-import {InputRaceTrackCreate} from "../../../../../src/db/node-types/race-tracks/types/InputRaceTrackCreate"
+import type {QueryInputData} from "../../../../../src/db/types/QueryInputData"
 import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
-    const data: InputRaceTrackCreate = {
+    const data: QueryInputData = {
         name: "'Lausitzring",
         opened: null,
         closed: null,
@@ -13,9 +13,11 @@ test('single quotes are correctly escaped', async () => {
         location: "'Klettwitz",
         geo_position: "'51°32'0\"N 13°55'10\"E",
         country_code: "'DE",
+        created_at: "2025-05-14T11:05:07.793Z",
+        updated_at: "2025-05-14T11:05:07.793Z",
     }
 
-    const query = createNodeQuery(DbNodeType.RaceTrack, data, "2025-05-14T11:05:07.793Z")
+    const query = createNodeQuery(DbNodeType.RaceTrack, data)
 
     expect(query)
         .toEqual(

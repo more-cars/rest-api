@@ -1,13 +1,13 @@
 import {expect, test} from 'vitest'
-import {InputImageCreate} from "../../../../../src/db/node-types/images/types/InputImageCreate"
+import type {QueryInputData} from "../../../../../src/db/types/QueryInputData"
 import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating an IMAGE node', async () => {
-    const data: InputImageCreate = {
-        external_id: "54570839725",
+    const data: QueryInputData = {
         image_provider: "flickr",
+        external_id: "54570839725",
         name: "1989 Porsche 911 Turbo",
         description: "Engine: 3.3L B6Power: 221 kW→ <a href=\"https://more-cars.net/porsche-911-turbo-33-g50-930__974483\" rel=\"noreferrer nofollow\">more-cars.net/porsche-911-turbo-33-g50-930__974483</a>",
         creator: "More Cars",
@@ -21,8 +21,10 @@ test('database query for creating an IMAGE node', async () => {
         image_url_m: "https://live.staticflickr.com/65535/54570839725_652073f374_z.jpg",
         image_url_s: "https://live.staticflickr.com/65535/54570839725_652073f374_n.jpg",
         image_url_xs: "https://live.staticflickr.com/65535/54570839725_652073f374_t.jpg",
+        created_at: "2025-05-14T11:05:07.793Z",
+        updated_at: "2025-05-14T11:05:07.793Z",
     }
-    const query = createNodeQuery(DbNodeType.Image, data, "2025-05-14T11:05:07.793Z")
+    const query = createNodeQuery(DbNodeType.Image, data)
 
     expect(query)
         .toEqual(

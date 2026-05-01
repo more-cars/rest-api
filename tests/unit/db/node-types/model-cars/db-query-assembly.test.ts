@@ -1,19 +1,21 @@
 import {expect, test} from 'vitest'
-import {InputModelCarCreate} from "../../../../../src/db/node-types/model-cars/types/InputModelCarCreate"
+import type {QueryInputData} from "../../../../../src/db/types/QueryInputData"
 import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a MODEL CAR node', async () => {
-    const data: InputModelCarCreate = {
+    const data: QueryInputData = {
         name: "BMW 2002",
         product_code: "DHX60",
         release_year: 2016,
         scale: "1:64",
-        series: "BMW"
+        series: "BMW",
+        created_at: "2025-05-14T11:05:07.793Z",
+        updated_at: "2025-05-14T11:05:07.793Z",
     }
 
-    const query = createNodeQuery(DbNodeType.ModelCar, data, "2025-05-14T11:05:07.793Z")
+    const query = createNodeQuery(DbNodeType.ModelCar, data)
 
     expect(query)
         .toEqual(

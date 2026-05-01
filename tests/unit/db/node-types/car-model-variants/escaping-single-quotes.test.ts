@@ -1,11 +1,11 @@
 import {expect, test} from 'vitest'
-import {InputCarModelVariantCreate} from "../../../../../src/db/node-types/car-model-variants/types/InputCarModelVariantCreate"
+import type {QueryInputData} from "../../../../../src/db/types/QueryInputData"
 import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
-    const data: InputCarModelVariantCreate = {
+    const data: QueryInputData = {
         name: "'BMW M3",
         internal_code: "'E46",
         built_from: null,
@@ -41,10 +41,12 @@ test('single quotes are correctly escaped', async () => {
         sprint_time_0_100_kmh: null,
         top_speed: null,
         top_speed_unit: "'km/h",
-        total_production: null
+        total_production: null,
+        created_at: "2025-05-14T11:05:07.793Z",
+        updated_at: "2025-05-14T11:05:07.793Z",
     }
 
-    const query = createNodeQuery(DbNodeType.CarModelVariant, data, "2025-05-14T11:05:07.793Z")
+    const query = createNodeQuery(DbNodeType.CarModelVariant, data)
 
     expect(query)
         .toEqual(

@@ -1,11 +1,11 @@
 import {expect, test} from 'vitest'
-import {InputRacingSeriesCreate} from "../../../../../src/db/node-types/racing-series/types/InputRacingSeriesCreate"
+import type {QueryInputData} from "../../../../../src/db/types/QueryInputData"
 import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
-    const data: InputRacingSeriesCreate = {
+    const data: QueryInputData = {
         name: "'Formula 1",
         short_name: "'F1",
         founded: null,
@@ -13,9 +13,11 @@ test('single quotes are correctly escaped', async () => {
         organized_by: "'FIA",
         vehicle_type: "'formula racing cars",
         country_code: "'US",
+        created_at: "2025-05-14T11:05:07.793Z",
+        updated_at: "2025-05-14T11:05:07.793Z",
     }
 
-    const query = createNodeQuery(DbNodeType.RacingSeries, data, "2025-05-14T11:05:07.793Z")
+    const query = createNodeQuery(DbNodeType.RacingSeries, data)
 
     expect(query)
         .toEqual(

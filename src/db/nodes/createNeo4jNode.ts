@@ -1,19 +1,17 @@
 import neo4j, {Node} from "neo4j-driver"
+import type {DbNodeType} from "../types/DbNodeType"
+import type {InputNodeTypeCreate} from "../types/InputNodeTypeCreate"
 import type {DbNode} from "../types/DbNode"
 import {getDriver} from "../driver"
+import type {QueryInputData} from "../types/QueryInputData"
 import {runNeo4jQuery} from "../runNeo4jQuery"
 import {generateMoreCarsId} from "../generateMoreCarsId"
 import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId"
 import {addMoreCarsIdToNode} from "./addMoreCarsIdToNode"
-import {getNodeTypeSpecification} from "../../specification/getNodeTypeSpecification"
 import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
-import type {PropertySpecification} from "../../specification/PropertySpecification"
-import {escapeSingleQuotes} from "./escapeSingleQuotes"
-import type {InputNodeTypeCreate} from "../types/InputNodeTypeCreate"
-import {DbNodeType} from "../types/DbNodeType"
 import {mapDbNodeTypeToNeo4jNodeType} from "./mapDbNodeTypeToNeo4jNodeType"
-import {mapDbNodeTypeToNodeType} from "../../specification/mapDbNodeTypeToNodeType"
+import {escapeSingleQuotes} from "./escapeSingleQuotes"
 
 export async function createNeo4jNode(nodeType: DbNodeType, data: InputNodeTypeCreate): Promise<DbNode> {
     const driver = getDriver()
@@ -21,8 +19,12 @@ export async function createNeo4jNode(nodeType: DbNodeType, data: InputNodeTypeC
 
     try {
         const record = await session.executeWrite(async txc => {
+            const queryInputData: QueryInputData = data
             const timestamp = new Date().toISOString()
-            const result = await runNeo4jQuery(createNodeQuery(nodeType, data, timestamp), txc)
+            queryInputData.created_at = timestamp
+            queryInputData.updated_at = timestamp
+
+            const result = await runNeo4jQuery(createNodeQuery(nodeType, queryInputData), txc)
             return result.records[0].get('n') as Node
         })
 
@@ -35,53 +37,42 @@ export async function createNeo4jNode(nodeType: DbNodeType, data: InputNodeTypeC
     }
 }
 
-export function createNodeQuery(nodeType: DbNodeType, data: InputNodeTypeCreate, timestamp: string) {
-    const nodeSpecs = getNodeTypeSpecification(mapDbNodeTypeToNodeType(nodeType))
+export function createNodeQuery(nodeType: DbNodeType, data: QueryInputData) {
     const nodeTypeLabel = getNamespacedNodeTypeLabel(mapDbNodeTypeToNeo4jNodeType(nodeType))
-    const properties = getCypherFormattedPropertyList(nodeSpecs.properties, data)
+    const properties = getCypherFormattedProperties(data)
 
-    let template = getCypherQueryTemplate('nodes/_cypher/createNode.cypher')
+    return getCypherQueryTemplate('nodes/_cypher/createNode.cypher')
         .trim()
-
-    template = template
-        .replace('$nodeLabel', `${nodeTypeLabel}`)
-        .replace('$nodeProperties', properties)
-        .replaceAll('$timestamp', timestamp)
-
-    return template
+        .replace('$label', `${nodeTypeLabel}`)
+        .replace('$properties', properties)
 }
 
-function getCypherFormattedPropertyList(propertySpecs: PropertySpecification[], data: InputNodeTypeCreate) {
+function getCypherFormattedProperties(data: QueryInputData) {
     const lines: string[] = []
 
-    propertySpecs.forEach((property, index) => {
+    for (const property in data) {
         const line: string[] = []
         const indentation = '  '
 
         line.push(indentation)
-        line.push(property.name)
+        line.push(property)
         line.push(': ')
-        // @ts-expect-error TS7053 TS7053
-        line.push(getCypherFormattedPropertyValue(data[property.name], property))
 
-        if (index + 1 < propertySpecs.length) {
-            line.push(',')
+        if (data[property] === null) {
+            line.push('null')
+        }
+
+        switch (typeof data[property]) {
+            case 'string':
+                line.push(`'${escapeSingleQuotes(data[property])}'`)
+                break
+            case 'number':
+            case 'boolean':
+                line.push(`${data[property]}`)
         }
 
         lines.push(line.join(''))
-    })
-
-    return lines.join('\n')
-}
-
-function getCypherFormattedPropertyValue(value: string, propertySpecification: PropertySpecification) {
-    if (value === undefined || value === null) {
-        return 'null'
     }
 
-    if (propertySpecification.datatype === 'string') {
-        return "'" + escapeSingleQuotes(value) + "'"
-    }
-
-    return value
+    return lines.join(',\n')
 }

@@ -1,18 +1,20 @@
 import {expect, test} from 'vitest'
-import {InputPriceCreate} from "../../../../../src/db/node-types/prices/types/InputPriceCreate"
+import type {QueryInputData} from "../../../../../src/db/types/QueryInputData"
 import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a PRICE node', async () => {
-    const data: InputPriceCreate = {
+    const data: QueryInputData = {
         price: 59990,
         price_year: 2020,
         currency_code: "EUR",
-        country_code: "DE"
+        country_code: "DE",
+        created_at: "2025-05-14T11:05:07.793Z",
+        updated_at: "2025-05-14T11:05:07.793Z",
     }
 
-    const query = createNodeQuery(DbNodeType.Price, data, "2025-05-14T11:05:07.793Z")
+    const query = createNodeQuery(DbNodeType.Price, data)
 
     expect(query)
         .toEqual(

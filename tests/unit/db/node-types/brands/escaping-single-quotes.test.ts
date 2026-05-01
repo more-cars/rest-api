@@ -1,11 +1,11 @@
 import {expect, test} from 'vitest'
-import {InputBrandCreate} from "../../../../../src/db/node-types/brands/types/InputBrandCreate"
+import type {QueryInputData} from "../../../../../src/db/types/QueryInputData"
 import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
-    const data: InputBrandCreate = {
+    const data: QueryInputData = {
         name: "Test's Brand",
         full_name: "Test's Brand Full' Name",
         founded: null,
@@ -13,9 +13,11 @@ test('single quotes are correctly escaped', async () => {
         wmi: "A'BC",
         hsn: "00''05",
         country_code: "DE''",
+        created_at: "2025-05-14T11:05:07.793Z",
+        updated_at: "2025-05-14T11:05:07.793Z"
     }
 
-    const query = createNodeQuery(DbNodeType.Brand, data, "2025-05-14T11:05:07.793Z")
+    const query = createNodeQuery(DbNodeType.Brand, data)
 
     expect(query)
         .toEqual(

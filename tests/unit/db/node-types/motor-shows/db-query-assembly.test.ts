@@ -1,11 +1,11 @@
 import {expect, test} from 'vitest'
-import {InputMotorShowCreate} from "../../../../../src/db/node-types/motor-shows/types/InputMotorShowCreate"
+import type {QueryInputData} from "../../../../../src/db/types/QueryInputData"
 import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a MOTOR SHOW node', async () => {
-    const data: InputMotorShowCreate = {
+    const data: QueryInputData = {
         name: "2017 IAA Frankfurt",
         date_from: "2017-09-14",
         date_until: "2017-09-24",
@@ -13,9 +13,11 @@ test('database query for creating a MOTOR SHOW node', async () => {
         target_audience: "international",
         focus: "new cars",
         country_code: "DE",
+        created_at: "2025-05-14T11:05:07.793Z",
+        updated_at: "2025-05-14T11:05:07.793Z",
     }
 
-    const query = createNodeQuery(DbNodeType.MotorShow, data, "2025-05-14T11:05:07.793Z")
+    const query = createNodeQuery(DbNodeType.MotorShow, data)
 
     expect(query)
         .toEqual(

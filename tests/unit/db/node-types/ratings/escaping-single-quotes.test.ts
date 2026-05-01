@@ -1,18 +1,20 @@
 import {expect, test} from 'vitest'
-import {InputRatingCreate} from "../../../../../src/db/node-types/ratings/types/InputRatingCreate"
+import type {QueryInputData} from "../../../../../src/db/types/QueryInputData"
 import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
-    const data: InputRatingCreate = {
+    const data: QueryInputData = {
         rating_value: 93,
         scale_minimum: 0,
         scale_maximum: 100,
-        scale_direction: "'up"
+        scale_direction: "'up",
+        created_at: "2025-05-14T11:05:07.793Z",
+        updated_at: "2025-05-14T11:05:07.793Z",
     }
 
-    const query = createNodeQuery(DbNodeType.Rating, data, "2025-05-14T11:05:07.793Z")
+    const query = createNodeQuery(DbNodeType.Rating, data)
 
     expect(query)
         .toEqual(

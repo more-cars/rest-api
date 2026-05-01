@@ -1,18 +1,20 @@
 import {expect, test} from 'vitest'
-import {InputRacingEventCreate} from "../../../../../src/db/node-types/racing-events/types/InputRacingEventCreate"
+import type {QueryInputData} from "../../../../../src/db/types/QueryInputData"
 import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a RACING EVENT node', async () => {
-    const data: InputRacingEventCreate = {
+    const data: QueryInputData = {
         name: "GP Monaco 2025",
         round: 8,
         date_from: "2025-05-25",
-        date_to: "2025-05-27"
+        date_to: "2025-05-27",
+        created_at: "2025-05-14T11:05:07.793Z",
+        updated_at: "2025-05-14T11:05:07.793Z",
     }
 
-    const query = createNodeQuery(DbNodeType.RacingEvent, data, "2025-05-14T11:05:07.793Z")
+    const query = createNodeQuery(DbNodeType.RacingEvent, data)
 
     expect(query)
         .toEqual(

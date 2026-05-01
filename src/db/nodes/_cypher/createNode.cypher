@@ -1,7 +1,5 @@
-CREATE (n:$nodeLabel {
-$nodeProperties,
-  created_at: '$timestamp',
-  updated_at: '$timestamp'
+CREATE (n:$label {
+$properties
 })
 RETURN n
   LIMIT 1

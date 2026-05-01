@@ -1,11 +1,11 @@
 import {expect, test} from 'vitest'
-import {InputVideoCreate} from "../../../../../src/db/node-types/videos/types/InputVideoCreate"
+import type {QueryInputData} from "../../../../../src/db/types/QueryInputData"
 import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a VIDEO node', async () => {
-    const data: InputVideoCreate = {
+    const data: QueryInputData = {
         video_provider: "youtube",
         external_id: "NqsBncRslsg",
         title: "P1 vs F40",
@@ -18,10 +18,12 @@ test('database query for creating a VIDEO node', async () => {
         thumbnail_url_l: "https://i.ytimg.com/vi/NqsBncRslsg/maxresdefault.jpg",
         thumbnail_url_m: "https://i.ytimg.com/vi/NqsBncRslsg/sddefault.jpg",
         thumbnail_url_s: "https://i.ytimg.com/vi/NqsBncRslsg/mqdefault.jpg",
-        thumbnail_url_xs: "https://i.ytimg.com/vi/NqsBncRslsg/default.jpg"
+        thumbnail_url_xs: "https://i.ytimg.com/vi/NqsBncRslsg/default.jpg",
+        created_at: "2025-05-14T11:05:07.793Z",
+        updated_at: "2025-05-14T11:05:07.793Z",
     }
 
-    const query = createNodeQuery(DbNodeType.Video, data, "2025-05-14T11:05:07.793Z")
+    const query = createNodeQuery(DbNodeType.Video, data)
 
     expect(query)
         .toEqual(

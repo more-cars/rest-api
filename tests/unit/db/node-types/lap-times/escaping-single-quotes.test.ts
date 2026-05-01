@@ -1,17 +1,19 @@
 import {expect, test} from 'vitest'
-import {InputLapTimeCreate} from "../../../../../src/db/node-types/lap-times/types/InputLapTimeCreate"
+import type {QueryInputData} from "../../../../../src/db/types/QueryInputData"
 import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
-    const data: InputLapTimeCreate = {
+    const data: QueryInputData = {
         time: "'PT1M33.294S",
         driver_name: "'Klaus Ludwig",
-        date: "'1996-08-03"
+        date: "'1996-08-03",
+        created_at: "2025-05-14T11:05:07.793Z",
+        updated_at: "2025-05-14T11:05:07.793Z",
     }
 
-    const query = createNodeQuery(DbNodeType.LapTime, data, "2025-05-14T11:05:07.793Z")
+    const query = createNodeQuery(DbNodeType.LapTime, data)
 
     expect(query)
         .toEqual(

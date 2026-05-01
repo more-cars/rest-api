@@ -1,11 +1,11 @@
 import {expect, test} from 'vitest'
-import {InputCompanyCreate} from "../../../../../src/db/node-types/companies/types/InputCompanyCreate"
+import type {QueryInputData} from "../../../../../src/db/types/QueryInputData"
 import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a COMPANY node', async () => {
-    const data: InputCompanyCreate = {
+    const data: QueryInputData = {
         name: "BMW AG",
         founded: 1916,
         defunct: null,
@@ -13,9 +13,11 @@ test('database query for creating a COMPANY node', async () => {
         hq_country_code: "DE",
         legal_headquarters_location: "Munich",
         legal_hq_country_code: "DE",
+        created_at: "2025-05-14T11:05:07.793Z",
+        updated_at: "2025-05-14T11:05:07.793Z",
     }
 
-    const query = createNodeQuery(DbNodeType.Company, data, "2025-05-14T11:05:07.793Z")
+    const query = createNodeQuery(DbNodeType.Company, data)
 
     expect(query)
         .toEqual(

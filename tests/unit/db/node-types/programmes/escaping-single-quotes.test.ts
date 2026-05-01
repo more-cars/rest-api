@@ -1,11 +1,11 @@
 import {expect, test} from 'vitest'
-import {InputProgrammeCreate} from "../../../../../src/db/node-types/programmes/types/InputProgrammeCreate"
+import type {QueryInputData} from "../../../../../src/db/types/QueryInputData"
 import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
-    const data: InputProgrammeCreate = {
+    const data: QueryInputData = {
         name: "'Top Gear",
         aired_from_year: null,
         aired_until_year: null,
@@ -14,9 +14,11 @@ test('single quotes are correctly escaped', async () => {
         total_episodes: null,
         regular_episode_running_time: "'PT60M",
         country_code: "'GB",
+        created_at: "2025-05-14T11:05:07.793Z",
+        updated_at: "2025-05-14T11:05:07.793Z",
     }
 
-    const query = createNodeQuery(DbNodeType.Programme, data, "2025-05-14T11:05:07.793Z")
+    const query = createNodeQuery(DbNodeType.Programme, data)
 
     expect(query)
         .toEqual(

@@ -1,11 +1,11 @@
 import {expect, test} from 'vitest'
-import {InputMagazineCreate} from "../../../../../src/db/node-types/magazines/types/InputMagazineCreate"
+import type {QueryInputData} from "../../../../../src/db/types/QueryInputData"
 import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
-    const data: InputMagazineCreate = {
+    const data: QueryInputData = {
         name: "'Top Gear",
         founded: null,
         defunct: null,
@@ -19,9 +19,11 @@ test('single quotes are correctly escaped', async () => {
         publisher: "'Immediate Media Company",
         issn: "'1350-9624",
         country_code: "'GB",
+        created_at: "2025-05-14T11:05:07.793Z",
+        updated_at: "2025-05-14T11:05:07.793Z",
     }
 
-    const query = createNodeQuery(DbNodeType.Magazine, data, "2025-05-14T11:05:07.793Z")
+    const query = createNodeQuery(DbNodeType.Magazine, data)
 
     expect(query)
         .toEqual(

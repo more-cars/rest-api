@@ -1,17 +1,19 @@
 import {expect, test} from 'vitest'
-import {InputGamingPlatformCreate} from "../../../../../src/db/node-types/gaming-platforms/types/InputGamingPlatformCreate"
+import type {QueryInputData} from "../../../../../src/db/types/QueryInputData"
 import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('single quotes are correctly escaped', async () => {
-    const data: InputGamingPlatformCreate = {
+    const data: QueryInputData = {
         name: "'PlayStation 5",
         release_year: null,
-        manufacturer: "'Sony"
+        manufacturer: "'Sony",
+        created_at: "2025-05-14T11:05:07.793Z",
+        updated_at: "2025-05-14T11:05:07.793Z",
     }
 
-    const query = createNodeQuery(DbNodeType.GamingPlatform, data, "2025-05-14T11:05:07.793Z")
+    const query = createNodeQuery(DbNodeType.GamingPlatform, data)
 
     expect(query)
         .toEqual(

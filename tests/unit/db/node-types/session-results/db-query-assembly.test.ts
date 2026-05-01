@@ -1,11 +1,11 @@
 import {expect, test} from 'vitest'
-import {InputSessionResultCreate} from "../../../../../src/db/node-types/session-results/types/InputSessionResultCreate"
+import type {QueryInputData} from "../../../../../src/db/types/QueryInputData"
 import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 
 test('database query for creating a SESSION RESULT node', async () => {
-    const data: InputSessionResultCreate = {
+    const data: QueryInputData = {
         position: 1,
         race_number: "44",
         driver_name: "Lewis Hamilton",
@@ -13,10 +13,12 @@ test('database query for creating a SESSION RESULT node', async () => {
         race_time: "PT1H23M45.678S",
         laps: 51,
         status: "finished",
-        points: 25
+        points: 25,
+        created_at: "2025-05-14T11:05:07.793Z",
+        updated_at: "2025-05-14T11:05:07.793Z",
     }
 
-    const query = createNodeQuery(DbNodeType.SessionResult, data, "2025-05-14T11:05:07.793Z")
+    const query = createNodeQuery(DbNodeType.SessionResult, data)
 
     expect(query)
         .toEqual(
