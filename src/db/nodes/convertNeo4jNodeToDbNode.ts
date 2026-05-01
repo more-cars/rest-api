@@ -26,6 +26,7 @@ import {convertProgrammeEpisodeNeo4jNodeToDbNode} from "../node-types/programme-
 import {convertMotorShowNeo4jNodeToDbNode} from "../node-types/motor-shows/convertMotorShowNeo4jNodeToDbNode"
 import {convertVideoNeo4jNodeToDbNode} from "../node-types/videos/convertVideoNeo4jNodeToDbNode"
 import {convertImageNeo4jNodeToDbNode} from "../node-types/images/convertImageNeo4jNodeToDbNode"
+import {convertRevisionNeo4jNodeToDbNode} from "../node-types/revisions/convertRevisionNeo4jNodeToDbNode"
 
 export function convertNeo4jNodeToDbNode(neo4jNode: Node, nodeTypeLabel: Neo4jNodeType) {
     const mapping = new Map<Neo4jNodeType, (neo4jNode: Node) => DbNode>([
@@ -53,6 +54,7 @@ export function convertNeo4jNodeToDbNode(neo4jNode: Node, nodeTypeLabel: Neo4jNo
         [Neo4jNodeType.MotorShow, convertMotorShowNeo4jNodeToDbNode],
         [Neo4jNodeType.Video, convertVideoNeo4jNodeToDbNode],
         [Neo4jNodeType.Image, convertImageNeo4jNodeToDbNode],
+        [Neo4jNodeType.Revision, convertRevisionNeo4jNodeToDbNode],
     ])
 
     const convertFn = mapping.get(nodeTypeLabel)

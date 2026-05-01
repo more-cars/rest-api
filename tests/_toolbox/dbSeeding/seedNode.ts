@@ -24,6 +24,7 @@ import {seedProgrammeEpisode} from "./programme-episodes/nodes/seedProgrammeEpis
 import {seedMotorShow} from "./motor-shows/nodes/seedMotorShow"
 import {seedVideo} from "./videos/nodes/seedVideo"
 import {seedImage} from "./images/nodes/seedImage"
+import {seedRevision} from "./revisions/nodes/seedRevision"
 
 export async function seedNode(dbNodeType: DbNodeType, customFakeData: object = {}) {
     switch (dbNodeType) {
@@ -77,6 +78,8 @@ export async function seedNode(dbNodeType: DbNodeType, customFakeData: object = 
             return seedVideo(customFakeData)
         case DbNodeType.Image:
             return seedImage(customFakeData)
+        case DbNodeType.Revision:
+            return seedRevision(customFakeData)
         default:
             assert.fail(`Node type "${dbNodeType}" is invalid or unknown`)
     }

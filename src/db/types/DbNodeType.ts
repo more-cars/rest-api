@@ -25,4 +25,5 @@ export enum DbNodeType {
     MotorShow = "MotorShow",
     Video = "Video",
     Image = "Image",
+    Revision = "Revision",
 }

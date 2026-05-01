@@ -24,4 +24,5 @@ export enum Neo4jNodeType {
     MotorShow = "MotorShow",
     Video = "Video",
     Image = "Image",
+    Revision = "Revision",
 }

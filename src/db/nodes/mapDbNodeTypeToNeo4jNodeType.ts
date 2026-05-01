@@ -29,6 +29,7 @@ export function mapDbNodeTypeToNeo4jNodeType(nodeTypeLabel: DbNodeType): Neo4jNo
         [DbNodeType.MotorShow, Neo4jNodeType.MotorShow],
         [DbNodeType.Video, Neo4jNodeType.Video],
         [DbNodeType.Image, Neo4jNodeType.Image],
+        [DbNodeType.Revision, Neo4jNodeType.Revision],
     ])
 
     const mappedNodeType = mapping.get(nodeTypeLabel)

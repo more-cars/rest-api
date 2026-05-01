@@ -24,4 +24,5 @@ export enum ModelNodeType {
     MotorShow = "motor_show",
     Video = "video",
     Image = "image",
+    Revision = "revision",
 }

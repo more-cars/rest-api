@@ -29,6 +29,7 @@ export function mapDbNodeTypeToNodeType(nodeType: DbNodeType): NodeType {
         [DbNodeType.MotorShow, NodeType.MotorShow],
         [DbNodeType.Video, NodeType.Video],
         [DbNodeType.Image, NodeType.Image],
+        [DbNodeType.Revision, NodeType.Revision],
     ])
 
     const mappedNodeType = mapping.get(nodeType)

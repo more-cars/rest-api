@@ -25,6 +25,7 @@ import {ProgrammeEpisodeNodeSpecification} from "./node-types/ProgrammeEpisodeNo
 import {MotorShowNodeSpecification} from "./node-types/MotorShowNodeSpecification"
 import {VideoNodeSpecification} from "./node-types/VideoNodeSpecification"
 import {ImageNodeSpecification} from "./node-types/ImageNodeSpecification"
+import {RevisionNodeSpecification} from "./node-types/RevisionNodeSpecification"
 
 export function getNodeTypeSpecification(nodeType: NodeType) {
     const mapping = new Map<NodeType, NodeSpecification>([
@@ -52,6 +53,7 @@ export function getNodeTypeSpecification(nodeType: NodeType) {
         [NodeType.MotorShow, MotorShowNodeSpecification],
         [NodeType.Video, VideoNodeSpecification],
         [NodeType.Image, ImageNodeSpecification],
+        [NodeType.Revision, RevisionNodeSpecification],
     ])
 
     const nodeSpecification = mapping.get(nodeType)

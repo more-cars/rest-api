@@ -1,5 +1,6 @@
 import type {DbNode} from "../../db/types/DbNode"
 import {DbNodeType} from "../../db/types/DbNodeType"
+import {NodeTypeNotFoundError} from "../types/NodeTypeNotFoundError"
 import {convertCompanyDbNodeToModelNode} from "./companies/create/convertCompanyDbNodeToModelNode"
 import type {CompanyNode} from "../../db/node-types/companies/types/CompanyNode"
 import {convertBrandDbNodeToModelNode} from "./brands/create/convertBrandDbNodeToModelNode"
@@ -48,7 +49,8 @@ import {convertVideoDbNodeToModelNode} from "./videos/create/convertVideoDbNodeT
 import type {VideoNode} from "../../db/node-types/videos/types/VideoNode"
 import {convertImageDbNodeToModelNode} from "./images/create/convertImageDbNodeToModelNode"
 import type {ImageNode} from "../../db/node-types/images/types/ImageNode"
-import {NodeTypeNotFoundError} from "../types/NodeTypeNotFoundError"
+import {convertRevisionDbNodeToModelNode} from "./revisions/create/convertRevisionDbNodeToModelNode"
+import type {RevisionNode} from "../../db/node-types/revisions/types/RevisionNode"
 
 export function convertDbNodeToModelNode(dbNode: DbNode) {
     switch (dbNode.node_type) {
@@ -100,6 +102,8 @@ export function convertDbNodeToModelNode(dbNode: DbNode) {
             return convertVideoDbNodeToModelNode(dbNode as VideoNode)
         case DbNodeType.Image:
             return convertImageDbNodeToModelNode(dbNode as ImageNode)
+        case DbNodeType.Revision:
+            return convertRevisionDbNodeToModelNode(dbNode as RevisionNode)
         default:
             throw new NodeTypeNotFoundError(dbNode.node_type)
     }

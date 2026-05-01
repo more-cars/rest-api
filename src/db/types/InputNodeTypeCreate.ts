@@ -22,6 +22,7 @@ import type {InputProgrammeEpisodeCreate} from "../node-types/programme-episodes
 import type {InputMotorShowCreate} from "../node-types/motor-shows/types/InputMotorShowCreate"
 import type {InputVideoCreate} from "../node-types/videos/types/InputVideoCreate"
 import type {InputImageCreate} from "../node-types/images/types/InputImageCreate"
+import type {InputRevisionCreate} from "../node-types/revisions/types/InputRevisionCreate"
 
 export type InputNodeTypeCreate =
     InputCompanyCreate |
@@ -47,4 +48,5 @@ export type InputNodeTypeCreate =
     InputProgrammeEpisodeCreate |
     InputMotorShowCreate |
     InputVideoCreate |
-    InputImageCreate
+    InputImageCreate |
+    InputRevisionCreate

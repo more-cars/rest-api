@@ -24,4 +24,5 @@ export enum NodeType {
     MotorShow = "Motor Show",
     Video = "Video",
     Image = "Image",
+    Revision = "Revision",
 }
