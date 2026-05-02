@@ -1,0 +1,25 @@
+info:
+  name: Delete ›documents-lap-time‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/magazine-issues/{{validMagazineIssueId}}/documents-lap-time/{{validLapTimeId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const MagazineIssues = require('./lib/node-types/MagazineIssues.js')
+        const LapTimes = require('./lib/node-types/LapTimes.js')
+        await MagazineIssues.create()
+        await LapTimes.create()
+        await MagazineIssues.createDocumentsLapTimeRelationship()

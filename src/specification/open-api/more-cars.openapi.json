@@ -20162,6 +20162,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Magazine Issues"
+        ],
+        "summary": "Deletes the ›documents-lap-time‹ relationship between the `Magazine Issue` and the `Lap Time`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "magazine-issue-id",
+            "description": "ID of the `Magazine Issue`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "lap-time-id",
+            "description": "ID of the `Lap Time`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›documents-lap-time‹ relationship between `Magazine Issue` and `Lap Time` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›documents-lap-time‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/magazine-issues/{magazine-issue-id}/has-image": {

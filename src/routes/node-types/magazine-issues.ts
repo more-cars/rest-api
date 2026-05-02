@@ -30,6 +30,7 @@ router.get('/magazine-issues/:magazineIssueId/covers-racing-event', MagazineIssu
 router.delete('/magazine-issues/:magazineIssueId/covers-racing-event/:racingEventId', MagazineIssueController.deleteCoversRacingEventRelation)
 router.post('/magazine-issues/:magazineIssueId/documents-lap-time/:lapTimeId', MagazineIssueController.createDocumentsLapTimeRelation)
 router.get('/magazine-issues/:magazineIssueId/documents-lap-time', MagazineIssueController.getAllDocumentsLapTimeRelations)
+router.delete('/magazine-issues/:magazineIssueId/documents-lap-time/:lapTimeId', MagazineIssueController.deleteDocumentsLapTimeRelation)
 router.post('/magazine-issues/:magazineIssueId/has-image/:imageId', MagazineIssueController.createHasImageRelation)
 router.get('/magazine-issues/:magazineIssueId/has-image', MagazineIssueController.getAllHasImageRelations)
 router.delete('/magazine-issues/:magazineIssueId/has-image/:imageId', MagazineIssueController.deleteHasImageRelation)

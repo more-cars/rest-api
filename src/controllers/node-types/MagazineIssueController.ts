@@ -26,6 +26,7 @@ import {getAllCoversRacingEventRelations} from "./magazine-issues/getAllCoversRa
 import {deleteCoversRacingEventRelation} from "./magazine-issues/deleteCoversRacingEventRelation"
 import {createDocumentsLapTimeRelation} from "./magazine-issues/createDocumentsLapTimeRelation"
 import {getAllDocumentsLapTimeRelations} from "./magazine-issues/getAllDocumentsLapTimeRelations"
+import {deleteDocumentsLapTimeRelation} from "./magazine-issues/deleteDocumentsLapTimeRelation"
 import {createHasImageRelation} from "./magazine-issues/createHasImageRelation"
 import {getAllHasImageRelations} from "./magazine-issues/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./magazine-issues/deleteHasImageRelation"
@@ -146,6 +147,10 @@ export const MagazineIssueController = {
 
     async getAllDocumentsLapTimeRelations(req: express.Request, res: express.Response) {
         await getAllDocumentsLapTimeRelations(req, res)
+    },
+
+    async deleteDocumentsLapTimeRelation(req: express.Request, res: express.Response) {
+        await deleteDocumentsLapTimeRelation(req, res)
     },
 
     async createHasImageRelation(req: express.Request, res: express.Response) {
