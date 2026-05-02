@@ -11,7 +11,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
         properties: {
             mc_id: 87654321,
             node_type: 'CarModel',
-            node_mc_id: 12345678,
+            node_id: 12345678,
             node_created_at: "2024-04-14T11:04:04.493Z",
             node_updated_at: "2024-04-14T11:04:04.493Z",
             name: 'Corolla',
