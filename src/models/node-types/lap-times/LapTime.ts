@@ -219,6 +219,18 @@ export const LapTime = {
         return createdRelationship
     },
 
+    async getDocumentedInMagazineIssueRelationship(lapTimeId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await LapTime.findById(lapTimeId)
+
+        const relationship = await getRel(lapTimeId, RelType.LapTimeDocumentedInMagazineIssue)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.LapTimeDocumentedInMagazineIssue, lapTimeId, null)
+        }
+
+        return relationship
+    },
+
     async createHasImageRelationship(lapTimeId: number, imageId: number) {
         // checking that both nodes exist -> exception is thrown if not
         await LapTime.findById(lapTimeId)

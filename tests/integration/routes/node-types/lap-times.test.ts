@@ -118,6 +118,14 @@ describe('Lap Times', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Get ›documented-in-magazine-issue‹ relationship', async () => {
+        await request(app)
+            .get('/lap-times/123/documented-in-magazine-issue')
+
+        expect(LapTimeController.getDocumentedInMagazineIssueRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/lap-times/123/has-image/456')

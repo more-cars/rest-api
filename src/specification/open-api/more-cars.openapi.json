@@ -13651,6 +13651,48 @@
         }
       }
     },
+    "/lap-times/{lap-time-id}/documented-in-magazine-issue": {
+      "get": {
+        "operationId": "getLapTimeDocumentedInMagazineIssueRel",
+        "tags": [
+          "Lap Times"
+        ],
+        "summary": "Get the ›documented-in-magazine-issue‹ relationship for the `Lap Time`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "lap-time-id",
+            "description": "ID of the `Lap Time`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›documented-in-magazine-issue‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LapTimeDocumentedInMagazineIssueResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Lap Time` could not be found in the database.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/lap-times/{lap-time-id}/documented-in-magazine-issue/{magazine-issue-id}": {
       "post": {
         "tags": [
