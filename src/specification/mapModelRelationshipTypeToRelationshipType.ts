@@ -126,6 +126,7 @@ export function mapModelRelationshipTypeToRelationshipType(relType: RelType): Re
         [RelType.MagazineIssuePresentsCarModelVariant, RelationshipType.MagazineIssuePresentsCarModelVariant],
         [RelType.MagazineIssueReviewedCarModelVariantWithRating, RelationshipType.MagazineIssueReviewedCarModelVariantWithRating],
         [RelType.MagazineIssueCoversRacingEvent, RelationshipType.MagazineIssueCoversRacingEvent],
+        [RelType.MagazineIssueDocumentsLapTime, RelationshipType.MagazineIssueDocumentsLapTime],
         [RelType.MagazineIssueHasImage, RelationshipType.MagazineIssueHasImage],
         [RelType.MagazineIssueHasPrimeImage, RelationshipType.MagazineIssueHasPrimeImage],
         [RelType.MagazineIssueHasVideo, RelationshipType.MagazineIssueHasVideo],

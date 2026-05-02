@@ -28,6 +28,7 @@ import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
 import {createNeo4jNode} from "../../../db/nodes/createNeo4jNode"
+import {LapTime} from "../lap-times/LapTime"
 
 export const MagazineIssue = {
     async create(data: CreateMagazineIssueInput): Promise<MagazineIssueNode> {
@@ -363,6 +364,26 @@ export const MagazineIssue = {
         }
 
         await deleteSpecificRel(magazineIssueId, racingEventId, RelType.MagazineIssueCoversRacingEvent)
+    },
+
+    async createDocumentsLapTimeRelationship(magazineIssueId: number, lapTimeId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await MagazineIssue.findById(magazineIssueId)
+        await LapTime.findById(lapTimeId)
+
+        const existingRelation = await getSpecificRel(magazineIssueId, lapTimeId, RelType.MagazineIssueDocumentsLapTime)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.MagazineIssueDocumentsLapTime, magazineIssueId, lapTimeId)
+        }
+
+        await deleteIncomingRel(lapTimeId, RelType.MagazineIssueDocumentsLapTime)
+
+        const createdRelationship = await createRel(magazineIssueId, lapTimeId, RelType.MagazineIssueDocumentsLapTime)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 
     async createHasImageRelationship(magazineIssueId: number, imageId: number) {

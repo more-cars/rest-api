@@ -206,6 +206,14 @@ describe('Magazine Issues', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Create ›documents-lap-time‹ relationship', async () => {
+        await request(app)
+            .post('/magazine-issues/123/documents-lap-time/456')
+
+        expect(MagazineIssueController.createDocumentsLapTimeRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/magazine-issues/123/has-image/456')

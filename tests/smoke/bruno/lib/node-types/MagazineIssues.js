@@ -28,6 +28,10 @@ exports.createCoversRacingEventRelationship = async function () {
     await post("/magazine-issues/" + bru.getEnvVar('validMagazineIssueId') + "/covers-racing-event/" + bru.getEnvVar('validRacingEventId'))
 }
 
+exports.createDocumentsLapTimeRelationship = async function () {
+    await post("/magazine-issues/" + bru.getEnvVar('validMagazineIssueId') + "/documents-lap-time/" + bru.getEnvVar('validLapTimeId'))
+}
+
 exports.createHasImageRelationship = async function () {
     await post("/magazine-issues/" + bru.getEnvVar('validMagazineIssueId') + "/has-image/" + bru.getEnvVar('validImageId'))
 }

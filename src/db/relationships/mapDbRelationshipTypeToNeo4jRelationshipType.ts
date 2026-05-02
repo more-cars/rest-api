@@ -132,6 +132,7 @@ export function mapDbRelationshipTypeToNeo4jRelationshipType(
         [RelationshipType.MagazineIssuePresentsCarModelVariant, RelationshipTypeNeo4j.MagazineIssuePresentsCarModelVariant],
         [RelationshipType.MagazineIssueReviewedCarModelVariantWithRating, RelationshipTypeNeo4j.MagazineIssueReviewedCarModelVariantWithRating],
         [RelationshipType.MagazineIssueCoversRacingEvent, RelationshipTypeNeo4j.MagazineIssueCoversRacingEvent],
+        [RelationshipType.MagazineIssueDocumentsLapTime, RelationshipTypeNeo4j.MagazineIssueDocumentsLapTime],
         [RelationshipType.MagazineIssueHasImage, RelationshipTypeNeo4j.MagazineIssueHasImage],
         [RelationshipType.MagazineIssueHasPrimeImage, RelationshipTypeNeo4j.MagazineIssueHasPrimeImage],
         [RelationshipType.MagazineIssueHasVideo, RelationshipTypeNeo4j.MagazineIssueHasVideo],

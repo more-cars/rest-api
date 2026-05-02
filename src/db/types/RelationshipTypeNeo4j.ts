@@ -125,6 +125,7 @@ export enum RelationshipTypeNeo4j {
     MagazineIssuePresentsCarModelVariant = 'PRESENTS_CAR_MODEL_VARIANT',
     MagazineIssueReviewedCarModelVariantWithRating = 'BY_MAGAZINE_ISSUE',
     MagazineIssueCoversRacingEvent = 'COVERS_RACING_EVENT',
+    MagazineIssueDocumentsLapTime = 'DOCUMENTS_LAP_TIME',
     MagazineIssueHasImage = 'HAS_IMAGE',
     MagazineIssueHasPrimeImage = 'HAS_PRIME_IMAGE',
     MagazineIssueHasVideo = 'HAS_VIDEO',

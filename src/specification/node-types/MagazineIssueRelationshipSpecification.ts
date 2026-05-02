@@ -38,6 +38,11 @@ export const MagazineIssueRelationshipSpecification: RelationshipTypeSpecificati
         endNodeType: NodeType.RacingEvent,
         isReverseRelationship: false,
     }],
+    [RelationshipType.MagazineIssueDocumentsLapTime, {
+        startNodeType: NodeType.MagazineIssue,
+        endNodeType: NodeType.LapTime,
+        isReverseRelationship: false,
+    }],
     [RelationshipType.MagazineIssueHasImage, {
         startNodeType: NodeType.MagazineIssue,
         endNodeType: NodeType.Image,
