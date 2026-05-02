@@ -9,6 +9,7 @@ import {createRelationship} from "../src/db/relationships/createRelationship"
 import {addMoreCarsIdToRelationship} from "../src/db/relationships/addMoreCarsIdToRelationship"
 import {DbNodeType} from "../src/db/types/DbNodeType"
 import {RelationshipType} from "../src/db/types/RelationshipType"
+import {closeDriver} from "../src/db/driver"
 
 migrateRelationshipsOfType().then(() => true)
 
@@ -55,6 +56,7 @@ async function migrateRelationshipsOfType() {
 
         progress.increment(1)
     }
+    await closeDriver()
     progress.stop()
 
     console.log(`Migration finished`)

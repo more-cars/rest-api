@@ -5,6 +5,7 @@ import cliProgress from "cli-progress"
 import {mapNodeProperties} from "./src/mapNodeProperties"
 import {storeNode} from "./src/storeNode"
 import {DbNodeType} from "../src/db/types/DbNodeType"
+import {closeDriver} from "../src/db/driver"
 
 async function migrateNodesOfType() {
     const newNodeType = determineNodeType()
@@ -24,6 +25,7 @@ async function migrateNodesOfType() {
         await storeNode(newNode, newNodeType, oldNode)
         progress.increment(1)
     }
+    await closeDriver()
     progress.stop()
 
     console.log(`Migration finished`)

@@ -4,6 +4,7 @@ import {fetchOldNodesOfType} from "./src/fetchOldNodesOfType"
 import {mapNodeProperties} from "./src/mapNodeProperties"
 import {storeNode} from "./src/storeNode"
 import {DbNodeType} from "../src/db/types/DbNodeType"
+import {closeDriver} from "../src/db/driver"
 
 (async () => {
     await migrateRevisions()
@@ -25,6 +26,7 @@ async function migrateRevisions() {
         await storeNode(newNodeData, DbNodeType.Revision, oldNode)
         progress.increment(1)
     }
+    await closeDriver()
     progress.stop()
 
     console.log(`Migration finished`)

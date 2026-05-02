@@ -7,6 +7,7 @@ import type {Node} from "neo4j-driver"
 import {updateCountryCode} from "./src/updateCountryCode"
 import {getCountryRelationshipType} from "./src/getCountryRelationshipType"
 import {RelationshipTypeLabelOld} from "./src/types/RelationshipTypeLabelOld"
+import {closeDriver} from "../src/db/driver"
 
 (async () => {
     const newStartNodeType = await determineStartNodeType()
@@ -52,6 +53,7 @@ async function migrateCountryCodes(oldRelationshipType: RelationshipTypeLabelOld
 
         progress.increment(1)
     }
+    await closeDriver()
     progress.stop()
 
     console.log(`Migration finished`)
