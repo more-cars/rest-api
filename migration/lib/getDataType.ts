@@ -18,6 +18,9 @@ export async function getDataType(override: string | undefined) {
             {
                 value: 'country_codes',
             },
+            {
+                value: 'revisions',
+            },
         ],
     })
 }

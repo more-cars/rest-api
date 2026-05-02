@@ -25,6 +25,7 @@ import {mapProgrammeEpisode} from "./mappings/mapProgrammeEpisode"
 import {mapMotorShow} from "./mappings/mapMotorShow"
 import {mapVideo} from "./mappings/mapVideo"
 import {mapImage} from "./mappings/mapImage"
+import {mapRevision} from "./mappings/mapRevision"
 
 export function mapNodeProperties(oldNode: Node, nodeType: DbNodeType) {
     switch (nodeType) {
@@ -76,6 +77,8 @@ export function mapNodeProperties(oldNode: Node, nodeType: DbNodeType) {
             return mapVideo(oldNode)
         case DbNodeType.Image:
             return mapImage(oldNode)
+        case DbNodeType.Revision:
+            return mapRevision(oldNode)
         default:
             assert.fail(`Node type "${nodeType}" is invalid or unknown`)
     }

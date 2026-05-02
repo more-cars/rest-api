@@ -1,0 +1,12 @@
+[
+  {
+    "op": "replace",
+    "path": "/metadata/name",
+    "value": "migrate-revisions-1774081430"
+  },
+  {
+    "op": "replace",
+    "path": "/spec/template/spec/containers/0/image",
+    "value": "ghcr.io/more-cars/rest-api-rc:latest"
+  }
+]

@@ -28,6 +28,8 @@ if [ "$MIGRATION_RUNNER" = local ]; then
     node -r ts-node/register migration/migrate-relationships.ts
   elif [ "$MIGRATE_DATA_TYPE" = country_codes ]; then
       node -r ts-node/register migration/migrate-country-codes.ts
+  elif [ "$MIGRATE_DATA_TYPE" = revisions ]; then
+      node -r ts-node/register migration/migrate-revisions.ts
   fi
 elif [ "$MIGRATION_RUNNER" = minikube ]; then
   if [ "$MIGRATE_DATA_TYPE" = nodes ]; then
@@ -54,6 +56,14 @@ elif [ "$MIGRATION_RUNNER" = minikube ]; then
       kubectl apply -k "$SCRIPT_PATH"/../deployment/overlays/"$TARGET_ENVIRONMENT"/jobs/migrate-country-codes
       kubectl wait --for=condition=complete job/"$JOB_NAME" --timeout=60m
       kubectl describe job/"$JOB_NAME"
+    elif [ "$MIGRATE_DATA_TYPE" = revisions ]; then
+        JOB_NAME=migrate-revisions-$(date +%s)
+        npx ts-node "$SCRIPT_PATH"/lib/create-patch-file_revisions.ts "$JOB_NAME"
+        kubectl config use-context morecars
+        kubectl config set-context --current --namespace="$TARGET_ENVIRONMENT"
+        kubectl apply -k "$SCRIPT_PATH"/../deployment/overlays/"$TARGET_ENVIRONMENT"/jobs/migrate-revisions
+        kubectl wait --for=condition=complete job/"$JOB_NAME" --timeout=60m
+        kubectl describe job/"$JOB_NAME"
   fi
 elif [ "$MIGRATION_RUNNER" = gke ]; then
   if [ "$MIGRATE_DATA_TYPE" = nodes ]; then
@@ -75,13 +85,22 @@ elif [ "$MIGRATION_RUNNER" = gke ]; then
     kubectl wait --for=condition=complete job/"$JOB_NAME" --timeout=60m
     kubectl describe job/"$JOB_NAME"
   elif [ "$MIGRATE_DATA_TYPE" = country_codes ]; then
-      JOB_NAME=migrate-country-codes-$(date +%s)
-      npx ts-node "$SCRIPT_PATH"/lib/create-patch-file_country_codes.ts "$JOB_NAME"
-      gcloud container clusters get-credentials more-cars --region=europe-west1-b
-      kubectl config use-context gke_more-cars_europe-west1-b_more-cars
-      kubectl config set-context --current --namespace="$TARGET_ENVIRONMENT"
-      kubectl apply -k "$SCRIPT_PATH"/../deployment/overlays/"$TARGET_ENVIRONMENT"/jobs/migrate-country-codes
-      kubectl wait --for=condition=complete job/"$JOB_NAME" --timeout=60m
-      kubectl describe job/"$JOB_NAME"
+    JOB_NAME=migrate-country-codes-$(date +%s)
+    npx ts-node "$SCRIPT_PATH"/lib/create-patch-file_country_codes.ts "$JOB_NAME"
+    gcloud container clusters get-credentials more-cars --region=europe-west1-b
+    kubectl config use-context gke_more-cars_europe-west1-b_more-cars
+    kubectl config set-context --current --namespace="$TARGET_ENVIRONMENT"
+    kubectl apply -k "$SCRIPT_PATH"/../deployment/overlays/"$TARGET_ENVIRONMENT"/jobs/migrate-country-codes
+    kubectl wait --for=condition=complete job/"$JOB_NAME" --timeout=60m
+    kubectl describe job/"$JOB_NAME"
+  elif [ "$MIGRATE_DATA_TYPE" = revisions ]; then
+    JOB_NAME=migrate-revisions-$(date +%s)
+    npx ts-node "$SCRIPT_PATH"/lib/create-patch-file_revisions.ts "$JOB_NAME"
+    gcloud container clusters get-credentials more-cars --region=europe-west1-b
+    kubectl config use-context gke_more-cars_europe-west1-b_more-cars
+    kubectl config set-context --current --namespace="$TARGET_ENVIRONMENT"
+    kubectl apply -k "$SCRIPT_PATH"/../deployment/overlays/"$TARGET_ENVIRONMENT"/jobs/migrate-revisions
+    kubectl wait --for=condition=complete job/"$JOB_NAME" --timeout=60m
+    kubectl describe job/"$JOB_NAME"
   fi
 fi

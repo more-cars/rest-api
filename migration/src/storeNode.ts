@@ -7,10 +7,14 @@ import type {InputNodeTypeCreate} from "../../src/db/types/InputNodeTypeCreate"
 export async function storeNode(data: InputNodeTypeCreate, newNodeType: DbNodeType, oldNode: Node) {
     try {
         const createdNode = await createNeo4jNode(newNodeType, data)
-        await addMoreCarsIdToNode(
+
+        const dbNode = await addMoreCarsIdToNode(
             parseInt(oldNode.elementId) + 10_000_000,
-            createdNode.elementId,
+            '',
+            createdNode.properties.id,
         )
+
+        // TODO replace fresh timestamps with original timestamps
     } catch (e) {
         console.error(e)
         console.error(oldNode)
