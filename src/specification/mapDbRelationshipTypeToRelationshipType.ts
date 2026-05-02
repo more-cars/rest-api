@@ -90,6 +90,7 @@ export function mapDbRelationshipTypeToRelationshipType(dbRelationshipType: DbRe
         [DbRelationshipType.LapTimeBelongsToSessionResult, RelationshipType.LapTimeBelongsToSessionResult],
         [DbRelationshipType.LapTimeAchievedOnTrackLayout, RelationshipType.LapTimeAchievedOnTrackLayout],
         [DbRelationshipType.LapTimeAchievedWithCarModelVariant, RelationshipType.LapTimeAchievedWithCarModelVariant],
+        [DbRelationshipType.LapTimeDocumentedInMagazineIssue, RelationshipType.LapTimeDocumentedInMagazineIssue],
         [DbRelationshipType.LapTimeHasImage, RelationshipType.LapTimeHasImage],
         [DbRelationshipType.LapTimeHasPrimeImage, RelationshipType.LapTimeHasPrimeImage],
         [DbRelationshipType.LapTimeHasVideo, RelationshipType.LapTimeHasVideo],

@@ -92,6 +92,7 @@ export function mapDbRelationshipTypeToNeo4jRelationshipType(
         [RelationshipType.LapTimeBelongsToSessionResult, RelationshipTypeNeo4j.LapTimeBelongsToSessionResult],
         [RelationshipType.LapTimeAchievedOnTrackLayout, RelationshipTypeNeo4j.LapTimeAchievedOnTrackLayout],
         [RelationshipType.LapTimeAchievedWithCarModelVariant, RelationshipTypeNeo4j.LapTimeAchievedWithCarModelVariant],
+        [RelationshipType.LapTimeDocumentedInMagazineIssue, RelationshipTypeNeo4j.LapTimeDocumentedInMagazineIssue],
         [RelationshipType.LapTimeHasImage, RelationshipTypeNeo4j.LapTimeHasImage],
         [RelationshipType.LapTimeHasPrimeImage, RelationshipTypeNeo4j.LapTimeHasPrimeImage],
         [RelationshipType.LapTimeHasVideo, RelationshipTypeNeo4j.LapTimeHasVideo],

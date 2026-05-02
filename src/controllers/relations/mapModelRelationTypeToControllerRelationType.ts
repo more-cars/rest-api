@@ -88,6 +88,7 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.LapTimeBelongsToSessionResult, RelationType.LapTimeBelongsToSessionResult],
         [RelType.LapTimeAchievedOnTrackLayout, RelationType.LapTimeAchievedOnTrackLayout],
         [RelType.LapTimeAchievedWithCarModelVariant, RelationType.LapTimeAchievedWithCarModelVariant],
+        [RelType.LapTimeDocumentedInMagazineIssue, RelationType.LapTimeDocumentedInMagazineIssue],
         [RelType.LapTimeHasImage, RelationType.LapTimeHasImage],
         [RelType.LapTimeHasPrimeImage, RelationType.LapTimeHasPrimeImage],
         [RelType.LapTimeHasVideo, RelationType.LapTimeHasVideo],

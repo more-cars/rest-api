@@ -85,6 +85,7 @@ export enum RelationshipType {
     LapTimeBelongsToSessionResult = 'Lap Time Belongs To Session Result',
     LapTimeAchievedOnTrackLayout = 'Lap Time Achieved On Track Layout',
     LapTimeAchievedWithCarModelVariant = 'Lap Time Achieved With Car Model Variant',
+    LapTimeDocumentedInMagazineIssue = 'Lap Time Documented In Magazine Issue',
     LapTimeHasImage = 'Lap Time Has Image',
     LapTimeHasPrimeImage = 'Lap Time Has Prime Image',
     LapTimeHasVideo = 'Lap Time Has Video',

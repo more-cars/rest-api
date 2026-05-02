@@ -12,6 +12,10 @@ exports.createAchievedOnTrackLayoutRelationship = async function () {
     await post("/lap-times/" + bru.getEnvVar('validLapTimeId') + "/achieved-on-track-layout/" + bru.getEnvVar('validTrackLayoutId'))
 }
 
+exports.createDocumentedInMagazineIssueRelationship = async function () {
+    await post("/lap-times/" + bru.getEnvVar('validLapTimeId') + "/documented-in-magazine-issue/" + bru.getEnvVar('validMagazineIssueId'))
+}
+
 exports.createHasImageRelationship = async function () {
     await post("/lap-times/" + bru.getEnvVar('validLapTimeId') + "/has-image/" + bru.getEnvVar('validImageId'))
 }

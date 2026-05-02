@@ -18,6 +18,11 @@ export const LapTimeRelationshipSpecification: RelationshipTypeSpecification[] =
         endNodeType: NodeType.CarModelVariant,
         isReverseRelationship: true,
     }],
+    [RelationshipType.LapTimeDocumentedInMagazineIssue, {
+        startNodeType: NodeType.LapTime,
+        endNodeType: NodeType.MagazineIssue,
+        isReverseRelationship: true,
+    }],
     [RelationshipType.LapTimeHasImage, {
         startNodeType: NodeType.LapTime,
         endNodeType: NodeType.Image,

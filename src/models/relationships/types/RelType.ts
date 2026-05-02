@@ -83,6 +83,7 @@ export enum RelType {
     LapTimeBelongsToSessionResult = 'lap_time_belongs_to_session_result',
     LapTimeAchievedOnTrackLayout = 'lap_time_achieved_on_track_layout',
     LapTimeAchievedWithCarModelVariant = 'lap_time_achieved_with_car_model_variant',
+    LapTimeDocumentedInMagazineIssue = 'lap_time_documented_in_magazine_issue',
     LapTimeHasImage = 'lap_time_has_image',
     LapTimeHasPrimeImage = 'lap_time_has_prime_image',
     LapTimeHasVideo = 'lap_time_has_video',

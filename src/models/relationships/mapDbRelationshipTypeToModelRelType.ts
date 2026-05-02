@@ -86,6 +86,7 @@ export function mapDbRelationshipTypeToModelRelType(dbRelationshipType: Relation
         [RelationshipType.LapTimeBelongsToSessionResult, RelType.LapTimeBelongsToSessionResult],
         [RelationshipType.LapTimeAchievedOnTrackLayout, RelType.LapTimeAchievedOnTrackLayout],
         [RelationshipType.LapTimeAchievedWithCarModelVariant, RelType.LapTimeAchievedWithCarModelVariant],
+        [RelationshipType.LapTimeDocumentedInMagazineIssue, RelType.LapTimeDocumentedInMagazineIssue],
         [RelationshipType.LapTimeHasImage, RelType.LapTimeHasImage],
         [RelationshipType.LapTimeHasPrimeImage, RelType.LapTimeHasPrimeImage],
         [RelationshipType.LapTimeHasVideo, RelType.LapTimeHasVideo],

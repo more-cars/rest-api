@@ -184,6 +184,7 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.LapTimeBelongsToSessionResult, RelationshipType.LapTimeBelongsToSessionResult],
                 [RelationshipTypeNeo4j.LapTimeAchievedOnTrackLayout, RelationshipType.LapTimeAchievedOnTrackLayout],
                 [RelationshipTypeNeo4j.LapTimeAchievedWithCarModelVariant, RelationshipType.LapTimeAchievedWithCarModelVariant],
+                [RelationshipTypeNeo4j.LapTimeDocumentedInMagazineIssue, RelationshipType.LapTimeDocumentedInMagazineIssue],
             ])],
             [RelationshipDirection.FORWARD, new Map([
                 // Lap Time - Forward

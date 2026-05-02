@@ -85,6 +85,7 @@ export enum RelationshipTypeNeo4j {
     LapTimeBelongsToSessionResult = 'GOT_LAP_TIME',
     LapTimeAchievedOnTrackLayout = 'HAS_LAP_TIME',
     LapTimeAchievedWithCarModelVariant = 'ACHIEVED_LAP_TIME',
+    LapTimeDocumentedInMagazineIssue = 'DOCUMENTS_LAP_TIME',
     LapTimeHasImage = 'HAS_IMAGE',
     LapTimeHasPrimeImage = 'HAS_PRIME_IMAGE',
     LapTimeHasVideo = 'HAS_VIDEO',
