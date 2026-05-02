@@ -18,6 +18,7 @@ router.get('/lap-times/:lapTimeId/achieved-with-car-model-variant', LapTimeContr
 router.delete('/lap-times/:lapTimeId/achieved-with-car-model-variant/:carModelVariantId', LapTimeController.deleteAchievedWithCarModelVariantRelation)
 router.post('/lap-times/:lapTimeId/documented-in-magazine-issue/:magazineIssueId', LapTimeController.createDocumentedInMagazineIssueRelation)
 router.get('/lap-times/:lapTimeId/documented-in-magazine-issue', LapTimeController.getDocumentedInMagazineIssueRelation)
+router.delete('/lap-times/:lapTimeId/documented-in-magazine-issue/:magazineIssueId', LapTimeController.deleteDocumentedInMagazineIssueRelation)
 router.post('/lap-times/:lapTimeId/has-image/:imageId', LapTimeController.createHasImageRelation)
 router.get('/lap-times/:lapTimeId/has-image', LapTimeController.getAllHasImageRelations)
 router.delete('/lap-times/:lapTimeId/has-image/:imageId', LapTimeController.deleteHasImageRelation)

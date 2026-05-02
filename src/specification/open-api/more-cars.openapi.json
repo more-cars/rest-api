@@ -13744,6 +13744,47 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Lap Times"
+        ],
+        "summary": "Deletes the ›documented-in-magazine-issue‹ relationship between the `Lap Time` and the `Magazine Issue`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "lap-time-id",
+            "description": "ID of the `Lap Time`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "magazine-issue-id",
+            "description": "ID of the `Magazine Issue`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›documented-in-magazine-issue‹ relationship between `Lap Time` and `Magazine Issue` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›documented-in-magazine-issue‹ relationship between them.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/lap-times/{lap-time-id}/has-image": {

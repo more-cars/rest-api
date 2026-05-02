@@ -14,6 +14,7 @@ import {getAchievedWithCarModelVariantRelation} from "./lap-times/getAchievedWit
 import {deleteAchievedWithCarModelVariantRelation} from "./lap-times/deleteAchievedWithCarModelVariantRelation"
 import {createDocumentedInMagazineIssueRelation} from "./lap-times/createDocumentedInMagazineIssueRelation"
 import {getDocumentedInMagazineIssueRelation} from "./lap-times/getDocumentedInMagazineIssueRelation"
+import {deleteDocumentedInMagazineIssueRelation} from "./lap-times/deleteDocumentedInMagazineIssueRelation"
 import {createHasImageRelation} from "./lap-times/createHasImageRelation"
 import {getAllHasImageRelations} from "./lap-times/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./lap-times/deleteHasImageRelation"
@@ -86,6 +87,10 @@ export const LapTimeController = {
 
     async getDocumentedInMagazineIssueRelation(req: express.Request, res: express.Response) {
         await getDocumentedInMagazineIssueRelation(req, res)
+    },
+
+    async deleteDocumentedInMagazineIssueRelation(req: express.Request, res: express.Response) {
+        await deleteDocumentedInMagazineIssueRelation(req, res)
     },
 
     async createHasImageRelation(req: express.Request, res: express.Response) {
