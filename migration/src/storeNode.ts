@@ -8,13 +8,11 @@ export async function storeNode(data: InputNodeTypeCreate, newNodeType: DbNodeTy
     try {
         const createdNode = await createNeo4jNode(newNodeType, data)
 
-        const dbNode = await addMoreCarsIdToNode(
+        return await addMoreCarsIdToNode(
             parseInt(oldNode.elementId) + 10_000_000,
             '',
             createdNode.properties.id,
         )
-
-        // TODO replace fresh timestamps with original timestamps
     } catch (e) {
         console.error(e)
         console.error(oldNode)

@@ -3,7 +3,7 @@ import type {InputRevisionCreate} from "../../../src/db/node-types/revisions/typ
 import {NodeTypeMappingReversed} from "../NodeTypeMappingReversed"
 
 export function mapRevision(oldNode: Node): InputRevisionCreate {
-    const data = oldNode.properties
+    const data = {...oldNode.properties}
 
     let nodeType: string | null = NodeTypeMappingReversed.get(data.node_type.replace('App\\Nodes\\', '').toLowerCase()) as string
     if (data.node_type === 'App\\Nodes\\Onlinearticle') {
