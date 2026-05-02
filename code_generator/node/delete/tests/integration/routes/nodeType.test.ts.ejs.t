@@ -1,6 +1,6 @@
 ---
 inject: true
-to: tests/integration/routes/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>.test.ts
+to: tests/integration/routes/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>.test.ts
 before: \}\)\n\}\)
 skip_if: Delete Node
 ---
