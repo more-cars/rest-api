@@ -5,10 +5,18 @@ import {NodeTypeMappingReversed} from "../NodeTypeMappingReversed"
 export function mapRevision(oldNode: Node): InputRevisionCreate {
     const data = oldNode.properties
 
-    data.node_type = NodeTypeMappingReversed.get(data.node_type.replace('App\\Nodes\\', '').toLowerCase())
+    let nodeType: string | null = NodeTypeMappingReversed.get(data.node_type.replace('App\\Nodes\\', '').toLowerCase()) as string
+    if (data.node_type === 'App\\Nodes\\Onlinearticle') {
+        nodeType = 'OnlineArticle'
+    }
+    if (!nodeType) {
+        nodeType = null
+    }
+
+    data.node_type = nodeType
     data.node_id = data.node_id + 10_000_000
-    data.node_created_at = data.original_created_at.replace(' ', 'T').concat('Z')
-    data.node_updated_at = data.original_updated_at.replace(' ', 'T').concat('Z')
+    data.node_created_at = data.original_created_at ? data.original_created_at.replace(' ', 'T').concat('Z') : null
+    data.node_updated_at = data.original_created_at ? data.original_updated_at.replace(' ', 'T').concat('Z') : null
 
     delete data.original_created_at
     delete data.original_updated_at
