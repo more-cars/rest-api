@@ -33,6 +33,7 @@ export enum RelationshipTypeLabelOld {
     MagazineIssueCoversCarModel = "PRESENTS_CAR_MODEL",
     MagazineIssuePresentsCarModelVariant = "PRESENTS_CAR_MODEL_VARIATION",
     MagazineIssueCoversRacingEvent = "COVERS_RACING_EVENT",
+    MagazineIssueDocumentsLapTime = "ACHIEVED_IN_CAR_MAGAZINE_ISSUE",
     RatingForCarModelVariant = "RATING_FOR_CAR_MODEL_VARIANT",
     ProgrammeHasEpisode = "HAS_CAR_SHOW_EPISODE",
     ProgrammeOriginatesFromCountry = "ORIGINATES_FROM_COUNTRY",

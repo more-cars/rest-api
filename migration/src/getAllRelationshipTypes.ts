@@ -459,6 +459,12 @@ export function getAllRelationshipTypes() {
                         ],
                     ],
                     [
+                        DbNodeType.LapTime,
+                        [
+                            RelationshipType.MagazineIssueDocumentsLapTime,
+                        ],
+                    ],
+                    [
                         DbNodeType.Video,
                         [
                             RelationshipType.NodeHasVideo,

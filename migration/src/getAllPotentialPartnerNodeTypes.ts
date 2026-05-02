@@ -96,6 +96,7 @@ export function getAllPotentialPartnerNodeTypes() {
             DbNodeType.CarModel,
             DbNodeType.CarModelVariant,
             DbNodeType.RacingEvent,
+            DbNodeType.LapTime,
             DbNodeType.Video,
             DbNodeType.Image,
         ]],

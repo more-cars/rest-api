@@ -10,6 +10,7 @@ export function isRelationshipReversedInOldDb(newRelationshipType: RelationshipT
         RelationshipType.RacingEventIsFollowedByEvent,
         RelationshipType.SessionResultHasLapTime,
         RelationshipType.MagazineIssueFollowedByIssue,
+        RelationshipType.MagazineIssueDocumentsLapTime,
         RelationshipType.RatingForCarModelVariant,
         RelationshipType.RatingByMagazineIssue,
         RelationshipType.ProgrammeEpisodeIsFollowedByEpisode,

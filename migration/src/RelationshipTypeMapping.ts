@@ -29,6 +29,7 @@ export const RelationshipTypeMapping = new Map<RelationshipType, RelationshipTyp
     [RelationshipType.MagazineIssueCoversCarModel, RelationshipTypeLabelOld.MagazineIssueCoversCarModel],
     [RelationshipType.MagazineIssuePresentsCarModelVariant, RelationshipTypeLabelOld.MagazineIssuePresentsCarModelVariant],
     [RelationshipType.MagazineIssueCoversRacingEvent, RelationshipTypeLabelOld.MagazineIssueCoversRacingEvent],
+    [RelationshipType.MagazineIssueDocumentsLapTime, RelationshipTypeLabelOld.MagazineIssueDocumentsLapTime],
     [RelationshipType.RatingByMagazineIssue, RelationshipTypeLabelOld.RatingByMagazineIssue],
     [RelationshipType.RatingForCarModelVariant, RelationshipTypeLabelOld.RatingForCarModelVariant],
     [RelationshipType.ProgrammeHasEpisode, RelationshipTypeLabelOld.ProgrammeHasEpisode],
