@@ -6,6 +6,7 @@ resources:
   - api-https-route.yaml
   - api-service.yaml
   - api-deployment.yaml
+  - api-health-check.yaml
   - db-service.yaml
   - db-pvc.yaml
   - db-deployment.yaml
