@@ -10,7 +10,7 @@ import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 export async function setTimestampsForNode(moreCarsId: number, createdAt: string, updatedAt: string): Promise<DbNode> {
     const driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
-    console.log(setTimestampsForNodeQuery(moreCarsId, createdAt, updatedAt))
+
     try {
         const node = await session.executeWrite(async txc => {
             const result = await runNeo4jQuery(setTimestampsForNodeQuery(moreCarsId, createdAt, updatedAt), txc)
