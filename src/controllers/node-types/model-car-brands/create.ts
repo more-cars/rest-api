@@ -1,5 +1,7 @@
 import express from "express"
-import {unmarshalInputData} from "./marshalling/unmarshalInputData"
+import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
+import {NodeType} from "../../../specification/NodeType"
+import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateModelCarBrandInput} from "../../../models/node-types/model-car-brands/types/CreateModelCarBrandInput"
 import {ModelCarBrand} from "../../../models/node-types/model-car-brands/ModelCarBrand"
 import {convertModelCarBrandModelNodeToControllerNode} from "./convertModelCarBrandModelNodeToControllerNode"
@@ -13,16 +15,15 @@ import {sendResponse500} from "../../responses/sendResponse500"
 import {isOptionalString} from "../../validators/isOptionalString"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshalInputData(req.body)
+    const propertyNames = getNodeTypeSpecification(NodeType.ModelCarBrand).properties.map(prop => prop.name)
+    const data = unmarshalInputData(req.body, propertyNames) as CreateModelCarBrandInput
 
     if (!validate(data)) {
         return sendResponse400(res)
     }
 
-    const sanitizedData = sanitize(data as CreateModelCarBrandInput)
-
     try {
-        const modelNode = await ModelCarBrand.create(sanitizedData)
+        const modelNode = await ModelCarBrand.create(data)
         const node = convertModelCarBrandModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
 
@@ -52,13 +53,4 @@ export function validate(data: CreateModelCarBrandRawInput): boolean {
     }
 
     return true
-}
-
-export function sanitize(data: CreateModelCarBrandInput): CreateModelCarBrandInput {
-    return {
-        name: data.name.trim(),
-        founded: data.founded ? data.founded : null,
-        defunct: data.defunct ? data.defunct : null,
-        country_code: data.country_code ? data.country_code.trim() : null,
-    } satisfies CreateModelCarBrandInput
 }
