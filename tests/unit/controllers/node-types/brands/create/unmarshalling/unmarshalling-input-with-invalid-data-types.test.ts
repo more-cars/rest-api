@@ -1,27 +1,35 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/brands/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 
 test('unmarshalling a request where the data types are incorrect', async () => {
     const data: unknown = {
-        name: "BMW",
-        full_name: "Bayerische Motoren Werke",
-        founded: "1916",
+        name: false,
+        full_name: false,
+        founded: false,
         defunct: false,
-        wmi: [1, 2, 3],
-        hsn: 5,
-        country_code: 5,
+        wmi: false,
+        hsn: false,
+        country_code: false,
     }
 
-    const result = unmarshalInputData(data)
+    const result = unmarshalInputData(data, [
+        'name',
+        'full_name',
+        'founded',
+        'defunct',
+        'wmi',
+        'hsn',
+        'country_code',
+    ])
 
     expect(result)
         .toStrictEqual({
-            name: "BMW",
-            full_name: "Bayerische Motoren Werke",
-            founded: "1916",
+            name: false,
+            full_name: false,
+            founded: false,
             defunct: false,
-            wmi: [1, 2, 3],
-            hsn: 5,
-            country_code: 5,
+            wmi: false,
+            hsn: false,
+            country_code: false,
         })
 })
