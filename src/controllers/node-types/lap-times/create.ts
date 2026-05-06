@@ -1,5 +1,7 @@
 import express from "express"
-import {unmarshalInputData} from "./marshalling/unmarshalInputData"
+import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
+import {NodeType} from "../../../specification/NodeType"
+import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateLapTimeInput} from "../../../models/node-types/lap-times/types/CreateLapTimeInput"
 import {LapTime} from "../../../models/node-types/lap-times/LapTime"
 import {convertLapTimeModelNodeToControllerNode} from "./convertLapTimeModelNodeToControllerNode"
@@ -12,16 +14,15 @@ import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshalInputData(req.body)
+    const propertyNames = getNodeTypeSpecification(NodeType.LapTime).properties.map(prop => prop.name)
+    const data = unmarshalInputData(req.body, propertyNames) as CreateLapTimeInput
 
     if (!validate(data)) {
         return sendResponse400(res)
     }
 
-    const sanitizedData = sanitize(data as CreateLapTimeInput)
-
     try {
-        const modelNode = await LapTime.create(sanitizedData)
+        const modelNode = await LapTime.create(data)
         const node = convertLapTimeModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
 
@@ -46,12 +47,4 @@ export function validate(data: CreateLapTimeRawInput): boolean {
     }
 
     return true
-}
-
-export function sanitize(data: CreateLapTimeInput): CreateLapTimeInput {
-    return {
-        time: data.time.trim(),
-        driver_name: data.driver_name.trim(),
-        date: data.date ? data.date.trim() : null,
-    } satisfies CreateLapTimeInput
 }

@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/lap-times/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 
 test('unmarshalling a valid request where optional fields are missing', async () => {
     const data: unknown = {
@@ -7,7 +7,11 @@ test('unmarshalling a valid request where optional fields are missing', async ()
         driver_name: "Klaus Ludwig",
     }
 
-    const result = unmarshalInputData(data)
+    const result = unmarshalInputData(data, [
+        'time',
+        'driver_name',
+        'date',
+    ])
 
     expect(result)
         .toStrictEqual({
