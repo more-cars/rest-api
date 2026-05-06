@@ -1,5 +1,7 @@
 import express from "express"
-import {unmarshalInputData} from "./marshalling/unmarshalInputData"
+import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
+import {NodeType} from "../../../specification/NodeType"
+import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateMagazineIssueInput} from "../../../models/node-types/magazine-issues/types/CreateMagazineIssueInput"
 import {MagazineIssue} from "../../../models/node-types/magazine-issues/MagazineIssue"
 import {convertMagazineIssueModelNodeToControllerNode} from "./convertMagazineIssueModelNodeToControllerNode"
@@ -13,16 +15,15 @@ import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshalInputData(req.body)
+    const propertyNames = getNodeTypeSpecification(NodeType.MagazineIssue).properties.map(prop => prop.name)
+    const data = unmarshalInputData(req.body, propertyNames) as CreateMagazineIssueInput
 
     if (!validate(data)) {
         return sendResponse400(res)
     }
 
-    const sanitizedData = sanitize(data as CreateMagazineIssueInput)
-
     try {
-        const modelNode = await MagazineIssue.create(sanitizedData)
+        const modelNode = await MagazineIssue.create(data)
         const node = convertMagazineIssueModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
 
@@ -68,17 +69,4 @@ export function validate(data: CreateMagazineIssueRawInput): boolean {
     }
 
     return true
-}
-
-export function sanitize(data: CreateMagazineIssueInput): CreateMagazineIssueInput {
-    return {
-        title: data.title.trim(),
-        consecutive_number: data.consecutive_number ? data.consecutive_number : null,
-        issue_number: data.issue_number ? data.issue_number : null,
-        issue_year: data.issue_year ? data.issue_year : null,
-        release_date: data.release_date ? data.release_date.trim() : null,
-        single_copy_price: data.single_copy_price ? data.single_copy_price : null,
-        single_copy_price_unit: data.single_copy_price_unit ? data.single_copy_price_unit.trim() : null,
-        pages: data.pages ? data.pages : null,
-    } satisfies CreateMagazineIssueInput
 }

@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/magazine-issues/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 import type {CreateMagazineIssueRawInput} from "../../../../../../../src/controllers/node-types/magazine-issues/types/CreateMagazineIssueRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
@@ -14,7 +14,16 @@ test('unmarshalling a complete and valid request', async () => {
         pages: 156,
     }
 
-    const result = unmarshalInputData(data)
+    const result = unmarshalInputData(data, [
+        'title',
+        'consecutive_number',
+        'issue_number',
+        'issue_year',
+        'release_date',
+        'single_copy_price',
+        'single_copy_price_unit',
+        'pages',
+    ])
 
     expect(result)
         .toStrictEqual({

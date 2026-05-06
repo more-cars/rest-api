@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/magazine-issues/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 
 test('unmarshalling a request where mandatory fields are missing', async () => {
     const data: unknown = {
@@ -11,7 +11,17 @@ test('unmarshalling a request where mandatory fields are missing', async () => {
         single_copy_price_unit: "GBP",
         pages: 156,
     }
-    const result = unmarshalInputData(data)
+
+    const result = unmarshalInputData(data, [
+        'title',
+        'consecutive_number',
+        'issue_number',
+        'issue_year',
+        'release_date',
+        'single_copy_price',
+        'single_copy_price_unit',
+        'pages',
+    ])
 
     expect(result)
         .toStrictEqual({
