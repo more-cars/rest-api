@@ -6,13 +6,13 @@ export function unmarshalInputData(data, validPropertyNames: string[]): RawInput
 
     for (const prop of validPropertyNames) {
         if (data && typeof data[prop] === 'string') {
-            unmarshalledData[prop] = data[prop] ? data[prop].trim() : undefined
+            unmarshalledData[prop] = data[prop] !== undefined ? data[prop].trim() : undefined
         } else if (data && data[prop] === null) {
             unmarshalledData[prop] = null
         } else if (!data) {
             unmarshalledData[prop] = undefined
         } else {
-            unmarshalledData[prop] = data[prop] ? data[prop] : undefined
+            unmarshalledData[prop] = data[prop] !== undefined ? data[prop] : undefined
         }
     }
 
