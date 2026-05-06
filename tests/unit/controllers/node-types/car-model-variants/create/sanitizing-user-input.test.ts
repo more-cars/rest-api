@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {CreateCarModelVariantInput} from "../../../../../../src/models/node-types/car-model-variants/types/CreateCarModelVariantInput"
-import {sanitize} from "../../../../../../src/controllers/node-types/car-model-variants/create"
+import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
@@ -43,7 +43,44 @@ describe('Sanitizing user input', () => {
             total_production: 50000,
         }
 
-        const result = sanitize(data)
+        const result = unmarshalInputData(data, [
+            'name',
+            'internal_code',
+            'built_from',
+            'built_to',
+            'body_style',
+            'drag_coefficient',
+            'doors',
+            'weight',
+            'weight_unit',
+            'max_power',
+            'max_power_unit',
+            'max_torque',
+            'max_torque_unit',
+            'cylinders',
+            'engine_configuration',
+            'displacement',
+            'displacement_unit',
+            'air_induction',
+            'engine_type',
+            'energy_source',
+            'energy_source_2',
+            'consumption',
+            'consumption_unit',
+            'consumption_2',
+            'consumption_2_unit',
+            'energy_capacity',
+            'energy_capacity_unit',
+            'energy_capacity_2',
+            'energy_capacity_2_unit',
+            'transmission',
+            'gears',
+            'drivetrain',
+            'sprint_time_0_100_kmh',
+            'top_speed',
+            'top_speed_unit',
+            'total_production',
+        ])
 
         expect(result)
             .toStrictEqual({
