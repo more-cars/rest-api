@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {CreateMagazineInput} from "../../../../../../src/models/node-types/magazines/types/CreateMagazineInput"
-import {sanitize} from "../../../../../../src/controllers/node-types/magazines/create"
+import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
@@ -20,7 +20,21 @@ describe('Sanitizing user input', () => {
             country_code: "   GB  ",
         }
 
-        const result = sanitize(data)
+        const result = unmarshalInputData(data, [
+            'name',
+            'founded',
+            'defunct',
+            'focus',
+            'publication_frequency',
+            'single_copy_price',
+            'single_copy_price_unit',
+            'publication_format',
+            'circulation',
+            'circulation_year',
+            'publisher',
+            'issn',
+            'country_code',
+        ])
 
         expect(result)
             .toStrictEqual({
