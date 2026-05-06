@@ -51,6 +51,10 @@ function getCypherFormattedProperties(data: QueryInputData) {
     const lines: string[] = []
 
     for (const property in data) {
+        if (data[property] === undefined) {
+            continue
+        }
+
         const line: string[] = []
         const indentation = '  '
 
