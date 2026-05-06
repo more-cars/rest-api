@@ -1,20 +1,23 @@
 import {describe, expect, test} from 'vitest'
 import {CreateImageInput} from "../../../../../../src/models/node-types/images/types/CreateImageInput"
-import {sanitize} from "../../../../../../src/controllers/node-types/images/create"
+import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
         const data: CreateImageInput = {
-            external_id: "    54570839725",
             image_provider: " flickr    ",
+            external_id: "    54570839725",
         }
 
-        const result = sanitize(data)
+        const result = unmarshalInputData(data, [
+            'image_provider',
+            'external_id',
+        ])
 
         expect(result)
             .toStrictEqual({
-                external_id: "54570839725",
                 image_provider: "flickr",
+                external_id: "54570839725",
             })
     })
 })

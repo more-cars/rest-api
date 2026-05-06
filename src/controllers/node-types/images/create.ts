@@ -1,5 +1,5 @@
 import express from "express"
-import {unmarshalInputData} from "./marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateImageInput} from "../../../models/node-types/images/types/CreateImageInput"
 import {Image} from "../../../models/node-types/images/Image"
 import {convertImageModelNodeToControllerNode} from "./convertImageModelNodeToControllerNode"
@@ -18,16 +18,14 @@ import {sendResponse422} from "../../responses/sendResponse422"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshalInputData(req.body)
+    const data = unmarshalInputData(req.body, ['image_provider', 'external_id']) as CreateImageInput
 
     if (!validate(data)) {
         return sendResponse400(res)
     }
 
-    const sanitizedData = sanitize(data as CreateImageInput)
-
     try {
-        const modelNode = await Image.create(sanitizedData)
+        const modelNode = await Image.create(data)
         const node = convertImageModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
 
@@ -58,11 +56,4 @@ export function validate(data: CreateImageRawInput): boolean {
     }
 
     return true
-}
-
-export function sanitize(data: CreateImageInput): CreateImageInput {
-    return {
-        image_provider: data.image_provider.trim(),
-        external_id: data.external_id.trim(),
-    } satisfies CreateImageInput
 }
