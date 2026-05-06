@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {CreateCarModelInput} from "../../../../../../src/models/node-types/car-models/types/CreateCarModelInput"
-import {sanitize} from "../../../../../../src/controllers/node-types/car-models/create"
+import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
@@ -13,7 +13,14 @@ describe('Sanitizing user input', () => {
             total_production: 16365,
         }
 
-        const result = sanitize(data)
+        const result = unmarshalInputData(data, [
+            'name',
+            'built_from',
+            'built_to',
+            'generation',
+            'internal_code',
+            'total_production',
+        ])
 
         expect(result)
             .toStrictEqual({

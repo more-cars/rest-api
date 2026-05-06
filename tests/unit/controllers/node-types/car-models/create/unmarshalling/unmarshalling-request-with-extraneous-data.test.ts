@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/car-models/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 
 test('unmarshalling a request where extraneous fields are contained', async () => {
     const data: unknown = {
@@ -8,7 +8,14 @@ test('unmarshalling a request where extraneous fields are contained', async () =
         my_property: "Hello",
     }
 
-    const result = unmarshalInputData(data)
+    const result = unmarshalInputData(data, [
+        'name',
+        'built_from',
+        'built_to',
+        'generation',
+        'internal_code',
+        'total_production',
+    ])
 
     expect(result)
         .toStrictEqual({
