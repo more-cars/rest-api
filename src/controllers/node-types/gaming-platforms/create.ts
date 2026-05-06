@@ -1,5 +1,7 @@
 import express from "express"
-import {unmarshalInputData} from "./marshalling/unmarshalInputData"
+import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
+import {NodeType} from "../../../specification/NodeType"
+import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateGamingPlatformInput} from "../../../models/node-types/gaming-platforms/types/CreateGamingPlatformInput"
 import {GamingPlatform} from "../../../models/node-types/gaming-platforms/GamingPlatform"
 import {convertGamingPlatformModelNodeToControllerNode} from "./convertGamingPlatformModelNodeToControllerNode"
@@ -13,16 +15,15 @@ import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshalInputData(req.body)
+    const propertyNames = getNodeTypeSpecification(NodeType.GamingPlatform).properties.map(prop => prop.name)
+    const data = unmarshalInputData(req.body, propertyNames) as CreateGamingPlatformInput
 
     if (!validate(data)) {
         return sendResponse400(res)
     }
 
-    const sanitizedData = sanitize(data as CreateGamingPlatformInput)
-
     try {
-        const modelNode = await GamingPlatform.create(sanitizedData)
+        const modelNode = await GamingPlatform.create(data)
         const node = convertGamingPlatformModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
 
@@ -48,12 +49,4 @@ export function validate(data: CreateGamingPlatformRawInput): boolean {
     }
 
     return true
-}
-
-export function sanitize(data: CreateGamingPlatformInput): CreateGamingPlatformInput {
-    return {
-        name: data.name.trim(),
-        release_year: data.release_year ? data.release_year : null,
-        manufacturer: data.manufacturer ? data.manufacturer.trim() : null,
-    } satisfies CreateGamingPlatformInput
 }

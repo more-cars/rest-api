@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {CreateGamingPlatformInput} from "../../../../../../src/models/node-types/gaming-platforms/types/CreateGamingPlatformInput"
-import {sanitize} from "../../../../../../src/controllers/node-types/gaming-platforms/create"
+import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
@@ -10,7 +10,11 @@ describe('Sanitizing user input', () => {
             manufacturer: "   Sony  ",
         }
 
-        const result = sanitize(data)
+        const result = unmarshalInputData(data, [
+            'name',
+            'release_year',
+            'manufacturer',
+        ])
 
         expect(result)
             .toStrictEqual({
