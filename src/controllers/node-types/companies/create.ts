@@ -1,5 +1,7 @@
 import express from "express"
-import {unmarshalInputData} from "./marshalling/unmarshalInputData"
+import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
+import {NodeType} from "../../../specification/NodeType"
+import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateCompanyInput} from "../../../models/node-types/companies/types/CreateCompanyInput"
 import {Company} from "../../../models/node-types/companies/Company"
 import {convertCompanyModelNodeToControllerNode} from "./convertCompanyModelNodeToControllerNode"
@@ -13,16 +15,15 @@ import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshalInputData(req.body)
+    const propertyNames = getNodeTypeSpecification(NodeType.Company).properties.map(prop => prop.name)
+    const data = unmarshalInputData(req.body, propertyNames) as CreateCompanyInput
 
     if (!validate(data)) {
         return sendResponse400(res)
     }
 
-    const sanitizedData = sanitize(data as CreateCompanyInput)
-
     try {
-        const modelNode = await Company.create(sanitizedData)
+        const modelNode = await Company.create(data)
         const node = convertCompanyModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
 
@@ -62,16 +63,4 @@ export function validate(data: CreateCompanyRawInput): boolean {
     }
 
     return true
-}
-
-export function sanitize(data: CreateCompanyInput): CreateCompanyInput {
-    return {
-        name: data.name.trim(),
-        founded: data.founded ? data.founded : null,
-        defunct: data.defunct ? data.defunct : null,
-        headquarters_location: data.headquarters_location ? data.headquarters_location.trim() : null,
-        hq_country_code: data.hq_country_code ? data.hq_country_code.trim() : null,
-        legal_headquarters_location: data.legal_headquarters_location ? data.legal_headquarters_location.trim() : null,
-        legal_hq_country_code: data.legal_hq_country_code ? data.legal_hq_country_code.trim() : null,
-    } satisfies CreateCompanyInput
 }
