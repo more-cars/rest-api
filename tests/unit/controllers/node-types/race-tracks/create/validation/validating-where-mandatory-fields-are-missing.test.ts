@@ -1,9 +1,9 @@
 import {expect, test} from 'vitest'
-import {CreateRaceTrackRawInput} from "../../../../../../../src/controllers/node-types/race-tracks/types/CreateRaceTrackRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/race-tracks/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test('validating a request where mandatory fields are missing', async () => {
-    const data: CreateRaceTrackRawInput = {
+    const data = {
         name: undefined,
         opened: 2000,
         closed: null,
@@ -13,7 +13,7 @@ test('validating a request where mandatory fields are missing', async () => {
         country_code: "DE",
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.RaceTrack)
 
     expect(result)
         .toBeFalsy()

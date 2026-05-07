@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateRaceTrackRawInput} from "../../../../../../../src/controllers/node-types/race-tracks/types/CreateRaceTrackRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/race-tracks/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test.each([
     [true, 2000, 2345, "permanent race track", "Klettwitz", "51°32'0\"N 13°55'10\"E", "DE"],
@@ -14,7 +14,7 @@ test.each([
 ])('validating a request where the fields have invalid data types', async (
     name, opened, closed, type, location, geo_position, country_code
 ) => {
-    const data: CreateRaceTrackRawInput = {
+    const data = {
         name,
         opened,
         closed,
@@ -24,7 +24,7 @@ test.each([
         country_code,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.RaceTrack)
 
     expect(result)
         .toBeFalsy()
