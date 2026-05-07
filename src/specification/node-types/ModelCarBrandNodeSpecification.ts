@@ -27,6 +27,7 @@ export const ModelCarBrandNodeSpecification: NodeSpecification = {
             datatype: 'string',
             mandatory: false,
             example: 'US',
+            validation: 'isValidCountryCode',
         },
     ],
 }

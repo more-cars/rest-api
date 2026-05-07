@@ -50,7 +50,8 @@ export const ProgrammeNodeSpecification: NodeSpecification = {
             name: 'country_code',
             datatype: 'string',
             mandatory: false,
-            example: 'DE',
+            example: 'GB',
+            validation: 'isValidCountryCode',
         },
     ],
 }

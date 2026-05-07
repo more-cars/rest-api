@@ -45,6 +45,7 @@ export const RacingSeriesNodeSpecification: NodeSpecification = {
             datatype: 'string',
             mandatory: false,
             example: 'DE',
+            validation: 'isValidCountryCode',
         },
     ],
 }

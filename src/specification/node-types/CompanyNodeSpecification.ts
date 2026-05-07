@@ -33,6 +33,7 @@ export const CompanyNodeSpecification: NodeSpecification = {
             datatype: 'string',
             mandatory: false,
             example: 'DE',
+            validation: 'isValidCountryCode',
         },
         {
             name: 'legal_headquarters_location',
@@ -45,6 +46,7 @@ export const CompanyNodeSpecification: NodeSpecification = {
             datatype: 'string',
             mandatory: false,
             example: 'DE',
+            validation: 'isValidCountryCode',
         },
     ],
 }

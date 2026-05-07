@@ -7,6 +7,7 @@ import {isMandatoryNumber} from "../validators/isMandatoryNumber"
 import {isOptionalNumber} from "../validators/isOptionalNumber"
 import {isValidImagePlatform} from "../validators/isValidImagePlatform"
 import {isValidVideoPlatform} from "../validators/isValidVideoPlatform"
+import {isValidCountryCode} from "../validators/isValidCountryCode"
 
 export function validateInputData(data: RawInputData, nodeType: NodeType, onlyCheckTheseProperties?: string[]): boolean {
     let isValid = true
@@ -39,6 +40,12 @@ export function validateInputData(data: RawInputData, nodeType: NodeType, onlyCh
 
         if (property.datatype === 'number' && !property.mandatory) {
             if (!isOptionalNumber(data[property.name])) {
+                isValid = false
+            }
+        }
+
+        if (property.validation === 'isValidCountryCode') {
+            if (!isValidCountryCode(data[property.name])) {
                 isValid = false
             }
         }
