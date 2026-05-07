@@ -3,13 +3,10 @@ import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecif
 import {NodeType} from "../../../specification/NodeType"
 import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateMagazineInput} from "../../../models/node-types/magazines/types/CreateMagazineInput"
+import {validateInputData} from "../../nodes/validateInputData"
 import {Magazine} from "../../../models/node-types/magazines/Magazine"
 import {convertMagazineModelNodeToControllerNode} from "./convertMagazineModelNodeToControllerNode"
 import {marshalSingleNode} from "../../nodes/marshalSingleNode"
-import type {CreateMagazineRawInput} from "./types/CreateMagazineRawInput"
-import {isMandatoryString} from "../../validators/isMandatoryString"
-import {isOptionalString} from "../../validators/isOptionalString"
-import {isOptionalNumber} from "../../validators/isOptionalNumber"
 import {sendResponse201} from "../../responses/sendResponse201"
 import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
@@ -18,7 +15,7 @@ export async function create(req: express.Request, res: express.Response) {
     const propertyNames = getNodeTypeSpecification(NodeType.Magazine).properties.map(prop => prop.name)
     const data = unmarshalInputData(req.body, propertyNames) as CreateMagazineInput
 
-    if (!validate(data)) {
+    if (!validateInputData(data, NodeType.Magazine)) {
         return sendResponse400(res)
     }
 
@@ -32,61 +29,4 @@ export async function create(req: express.Request, res: express.Response) {
         console.error(e)
         return sendResponse500(res)
     }
-}
-
-export function validate(data: CreateMagazineRawInput): boolean {
-
-    if (!isMandatoryString(data.name)) {
-        return false
-    }
-
-    if (!isOptionalNumber(data.founded)) {
-        return false
-    }
-
-    if (!isOptionalNumber(data.defunct)) {
-        return false
-    }
-
-    if (!isOptionalString(data.focus)) {
-        return false
-    }
-
-    if (!isOptionalString(data.publication_frequency)) {
-        return false
-    }
-
-    if (!isOptionalNumber(data.single_copy_price)) {
-        return false
-    }
-
-    if (!isOptionalString(data.single_copy_price_unit)) {
-        return false
-    }
-
-    if (!isOptionalString(data.publication_format)) {
-        return false
-    }
-
-    if (!isOptionalNumber(data.circulation)) {
-        return false
-    }
-
-    if (!isOptionalNumber(data.circulation_year)) {
-        return false
-    }
-
-    if (!isOptionalString(data.publisher)) {
-        return false
-    }
-
-    if (!isOptionalString(data.issn)) {
-        return false
-    }
-
-    if (!isOptionalString(data.country_code)) {
-        return false
-    }
-
-    return true
 }
