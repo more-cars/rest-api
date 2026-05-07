@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/motor-shows/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 import type {CreateMotorShowRawInput} from "../../../../../../../src/controllers/node-types/motor-shows/types/CreateMotorShowRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
@@ -13,7 +13,15 @@ test('unmarshalling a complete and valid request', async () => {
         country_code: "DE",
     }
 
-    const result = unmarshalInputData(data)
+    const result = unmarshalInputData(data, [
+        'name',
+        'date_from',
+        'date_until',
+        'location',
+        'target_audience',
+        'focus',
+        'country_code',
+    ])
 
     expect(result)
         .toStrictEqual({

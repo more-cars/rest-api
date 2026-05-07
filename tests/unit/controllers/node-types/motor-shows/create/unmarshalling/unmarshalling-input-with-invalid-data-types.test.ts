@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/motor-shows/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 
 test('unmarshalling a request where the data types are incorrect', async () => {
     const data: unknown = {
@@ -12,7 +12,15 @@ test('unmarshalling a request where the data types are incorrect', async () => {
         country_code: true,
     }
 
-    const result = unmarshalInputData(data)
+    const result = unmarshalInputData(data, [
+        'name',
+        'date_from',
+        'date_until',
+        'location',
+        'target_audience',
+        'focus',
+        'country_code',
+    ])
 
     expect(result)
         .toStrictEqual({
