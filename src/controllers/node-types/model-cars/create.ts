@@ -1,5 +1,7 @@
 import express from "express"
-import {unmarshalInputData} from "./marshalling/unmarshalInputData"
+import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
+import {NodeType} from "../../../specification/NodeType"
+import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateModelCarInput} from "../../../models/node-types/model-cars/types/CreateModelCarInput"
 import {ModelCar} from "../../../models/node-types/model-cars/ModelCar"
 import {convertModelCarModelNodeToControllerNode} from "./convertModelCarModelNodeToControllerNode"
@@ -13,16 +15,15 @@ import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshalInputData(req.body)
+    const propertyNames = getNodeTypeSpecification(NodeType.ModelCar).properties.map(prop => prop.name)
+    const data = unmarshalInputData(req.body, propertyNames) as CreateModelCarInput
 
     if (!validate(data)) {
         return sendResponse400(res)
     }
 
-    const sanitizedData = sanitize(data as CreateModelCarInput)
-
     try {
-        const modelNode = await ModelCar.create(sanitizedData)
+        const modelNode = await ModelCar.create(data)
         const node = convertModelCarModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
 
@@ -56,14 +57,4 @@ export function validate(data: CreateModelCarRawInput): boolean {
     }
 
     return true
-}
-
-export function sanitize(data: CreateModelCarInput): CreateModelCarInput {
-    return {
-        name: data.name.trim(),
-        product_code: data.product_code ? data.product_code.trim() : null,
-        release_year: data.release_year ? data.release_year : null,
-        scale: data.scale ? data.scale.trim() : null,
-        series: data.series ? data.series.trim() : null,
-    } satisfies CreateModelCarInput
 }
