@@ -14,7 +14,7 @@ to: tests/unit/controllers/node-types/<%= h.changeCase.kebab(h.inflection.plural
     }
 -%>
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 import type {Create<%= h.changeCase.pascal(nodeType) %>RawInput} from "../../../../../../../src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Create<%= h.changeCase.pascal(nodeType) %>RawInput"
 
 test('unmarshalling a complete and valid request', async () => {
@@ -22,7 +22,9 @@ test('unmarshalling a complete and valid request', async () => {
 <%- props.map(line => '        ' + line).join(',\n') %>,
     }
 
-    const result = unmarshalInputData(data)
+    const result = unmarshalInputData(data, [
+<%- properties.map(prop => '        ' + prop.name).join(',\n') %>,
+    ])
 
     expect(result)
         .toStrictEqual({

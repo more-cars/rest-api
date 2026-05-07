@@ -2,7 +2,9 @@
 to: src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create.ts
 ---
 import express from "express"
-import {unmarshalInputData} from "./marshalling/unmarshalInputData"
+import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
+import {NodeType} from "../../../specification/NodeType"
+import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {Create<%= h.changeCase.pascal(nodeType) %>Input} from "../../../models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Create<%= h.changeCase.pascal(nodeType) %>Input"
 import {<%= h.changeCase.pascal(nodeType) %>} from "../../../models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/<%= h.changeCase.pascal(nodeType) %>"
 import {convert<%= h.changeCase.pascal(nodeType) %>ModelNodeToControllerNode} from "./convert<%= h.changeCase.pascal(nodeType) %>ModelNodeToControllerNode"
@@ -17,16 +19,15 @@ import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshalInputData(req.body)
+    const propertyNames = getNodeTypeSpecification(NodeType.<%= h.changeCase.pascal(nodeType) %>).properties.map(prop => prop.name)
+    const data = unmarshalInputData(req.body, propertyNames) as Create<%= h.changeCase.pascal(nodeType) %>Input
 
     if (!validate(data)) {
         return sendResponse400(res)
     }
 
-    const sanitizedData = sanitize(data as Create<%= h.changeCase.pascal(nodeType) %>Input)
-
     try {
-        const modelNode = await <%= h.changeCase.pascal(nodeType) %>.create(sanitizedData)
+        const modelNode = await <%= h.changeCase.pascal(nodeType) %>.create(data)
         const node = convert<%= h.changeCase.pascal(nodeType) %>ModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
 
@@ -55,20 +56,4 @@ export function validate(data: Create<%= h.changeCase.pascal(nodeType) %>RawInpu
 <% } -%>
 
     return true
-}
-
-export function sanitize(data: Create<%= h.changeCase.pascal(nodeType) %>Input): Create<%= h.changeCase.pascal(nodeType) %>Input {
-    return {
-<% for (prop in properties) { -%>
-<%   if (properties[prop].mandatory && properties[prop].datatype === 'string') { -%>
-        <%= prop -%>: data.<%= prop -%>.trim(),
-<%   } else if (properties[prop].mandatory) { -%>
-        <%= prop -%>: data.<%= prop -%>,
-<%   } else if (properties[prop].datatype === 'string') { -%>
-        <%= prop -%>: data.<%= prop -%> ? data.<%= prop -%>.trim() : null,
-<%   } else { -%>
-        <%= prop -%>: data.<%= prop -%> ? data.<%= prop -%> : null,
-<%   } -%>
-<% } -%>
-    } satisfies Create<%= h.changeCase.pascal(nodeType) %>Input
 }

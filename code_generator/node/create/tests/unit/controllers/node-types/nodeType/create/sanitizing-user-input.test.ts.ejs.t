@@ -26,7 +26,7 @@ to: tests/unit/controllers/node-types/<%= h.changeCase.kebab(h.inflection.plural
 -%>
 import {describe, expect, test} from 'vitest'
 import {Create<%= h.changeCase.pascal(nodeType) %>Input} from "../../../../../../src/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Create<%= h.changeCase.pascal(nodeType) %>Input"
-import {sanitize} from "../../../../../../src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create"
+import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
@@ -34,7 +34,9 @@ describe('Sanitizing user input', () => {
 <%- props_in.map(line => '            ' + line).join(',\n') %>,
         }
 
-        const result = sanitize(data)
+        const result = unmarshalInputData(data, [
+<%- properties.map(prop => '            ' + prop.name).join(',\n') %>,
+        ])
 
         expect(result)
             .toStrictEqual({

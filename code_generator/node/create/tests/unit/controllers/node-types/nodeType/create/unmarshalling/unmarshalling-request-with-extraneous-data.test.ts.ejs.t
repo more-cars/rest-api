@@ -14,7 +14,7 @@ to: tests/unit/controllers/node-types/<%= h.changeCase.kebab(h.inflection.plural
     }
 -%>
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 
 test('unmarshalling a request where extraneous fields are contained', async () => {
     const data: unknown = {
@@ -22,7 +22,9 @@ test('unmarshalling a request where extraneous fields are contained', async () =
         my_property: "Hello",
     }
 
-    const result = unmarshalInputData(data)
+    const result = unmarshalInputData(data, [
+<%- properties.map(prop => '        ' + prop.name).join(',\n') %>,
+    ])
 
     expect(result)
         .toStrictEqual({
