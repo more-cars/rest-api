@@ -1,9 +1,9 @@
 import {expect, test} from 'vitest'
-import {CreateTrackLayoutRawInput} from "../../../../../../../src/controllers/node-types/track-layouts/types/CreateTrackLayoutRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/track-layouts/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test('validating a request where mandatory fields are missing', async () => {
-    const data: CreateTrackLayoutRawInput = {
+    const data = {
         name: undefined,
         year_from: 1967,
         year_to: 1999,
@@ -15,7 +15,7 @@ test('validating a request where mandatory fields are missing', async () => {
         surface: "asphalt",
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.TrackLayout)
 
     expect(result)
         .toBeFalsy()

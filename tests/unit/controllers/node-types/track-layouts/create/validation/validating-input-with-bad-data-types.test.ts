@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateTrackLayoutRawInput} from "../../../../../../../src/controllers/node-types/track-layouts/types/CreateTrackLayoutRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/track-layouts/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test.each([
     [true, 1967, 1999, 7.004, "km", "clockwise", 71, "m", "asphalt"],
@@ -15,7 +15,7 @@ test.each([
 ])('validating a request where the fields have invalid data types', async (
     name, year_from, year_to, length, length_unit, direction, elevation_change, elevation_change_unit, surface
 ) => {
-    const data: CreateTrackLayoutRawInput = {
+    const data = {
         name,
         year_from,
         year_to,
@@ -27,7 +27,7 @@ test.each([
         surface,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.TrackLayout)
 
     expect(result)
         .toBeFalsy()
