@@ -3,14 +3,10 @@ import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecif
 import {NodeType} from "../../../specification/NodeType"
 import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateSessionResultInput} from "../../../models/node-types/session-results/types/CreateSessionResultInput"
+import {validateInputData} from "../../nodes/validateInputData"
 import {SessionResult} from "../../../models/node-types/session-results/SessionResult"
 import {convertSessionResultModelNodeToControllerNode} from "./convertSessionResultModelNodeToControllerNode"
 import {marshalSingleNode} from "../../nodes/marshalSingleNode"
-import type {CreateSessionResultRawInput} from "./types/CreateSessionResultRawInput"
-import {isMandatoryString} from "../../validators/isMandatoryString"
-import {isOptionalString} from "../../validators/isOptionalString"
-import {isMandatoryNumber} from "../../validators/isMandatoryNumber"
-import {isOptionalNumber} from "../../validators/isOptionalNumber"
 import {sendResponse201} from "../../responses/sendResponse201"
 import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
@@ -19,7 +15,7 @@ export async function create(req: express.Request, res: express.Response) {
     const propertyNames = getNodeTypeSpecification(NodeType.SessionResult).properties.map(prop => prop.name)
     const data = unmarshalInputData(req.body, propertyNames) as CreateSessionResultInput
 
-    if (!validate(data)) {
+    if (!validateInputData(data, NodeType.SessionResult)) {
         return sendResponse400(res)
     }
 
@@ -33,41 +29,4 @@ export async function create(req: express.Request, res: express.Response) {
         console.error(e)
         return sendResponse500(res)
     }
-}
-
-export function validate(data: CreateSessionResultRawInput): boolean {
-
-    if (!isMandatoryNumber(data.position)) {
-        return false
-    }
-
-    if (!isOptionalString(data.race_number)) {
-        return false
-    }
-
-    if (!isMandatoryString(data.driver_name)) {
-        return false
-    }
-
-    if (!isOptionalString(data.team_name)) {
-        return false
-    }
-
-    if (!isOptionalString(data.race_time)) {
-        return false
-    }
-
-    if (!isOptionalNumber(data.laps)) {
-        return false
-    }
-
-    if (!isOptionalString(data.status)) {
-        return false
-    }
-
-    if (!isOptionalNumber(data.points)) {
-        return false
-    }
-
-    return true
 }

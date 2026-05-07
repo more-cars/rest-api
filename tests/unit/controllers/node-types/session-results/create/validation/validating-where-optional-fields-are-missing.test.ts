@@ -1,9 +1,9 @@
 import {expect, test} from 'vitest'
-import {CreateSessionResultRawInput} from "../../../../../../../src/controllers/node-types/session-results/types/CreateSessionResultRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/session-results/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test('validating a valid request where optional fields are missing', async () => {
-    const data: CreateSessionResultRawInput = {
+    const data = {
         position: 1,
         race_number: undefined,
         driver_name: "Lewis Hamilton",
@@ -14,7 +14,7 @@ test('validating a valid request where optional fields are missing', async () =>
         points: undefined,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.SessionResult)
 
     expect(result)
         .toBeTruthy()

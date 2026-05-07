@@ -1,9 +1,9 @@
 import {expect, test} from 'vitest'
-import {CreateSessionResultRawInput} from "../../../../../../../src/controllers/node-types/session-results/types/CreateSessionResultRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/session-results/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test('validating a request where mandatory fields are missing', async () => {
-    const data: CreateSessionResultRawInput = {
+    const data = {
         position: undefined,
         race_number: "44",
         driver_name: undefined,
@@ -14,7 +14,7 @@ test('validating a request where mandatory fields are missing', async () => {
         points: 25,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.SessionResult)
 
     expect(result)
         .toBeFalsy()
