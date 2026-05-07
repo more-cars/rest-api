@@ -1,5 +1,7 @@
 import express from "express"
-import {unmarshalInputData} from "./marshalling/unmarshalInputData"
+import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
+import {NodeType} from "../../../specification/NodeType"
+import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateRaceTrackInput} from "../../../models/node-types/race-tracks/types/CreateRaceTrackInput"
 import {RaceTrack} from "../../../models/node-types/race-tracks/RaceTrack"
 import {convertRaceTrackModelNodeToControllerNode} from "./convertRaceTrackModelNodeToControllerNode"
@@ -13,16 +15,15 @@ import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshalInputData(req.body)
+    const propertyNames = getNodeTypeSpecification(NodeType.ModelCar).properties.map(prop => prop.name)
+    const data = unmarshalInputData(req.body, propertyNames) as CreateRaceTrackInput
 
     if (!validate(data)) {
         return sendResponse400(res)
     }
 
-    const sanitizedData = sanitize(data as CreateRaceTrackInput)
-
     try {
-        const modelNode = await RaceTrack.create(sanitizedData)
+        const modelNode = await RaceTrack.create(data)
         const node = convertRaceTrackModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
 
@@ -64,16 +65,4 @@ export function validate(data: CreateRaceTrackRawInput): boolean {
     }
 
     return true
-}
-
-export function sanitize(data: CreateRaceTrackInput): CreateRaceTrackInput {
-    return {
-        name: data.name.trim(),
-        opened: data.opened ? data.opened : null,
-        closed: data.closed ? data.closed : null,
-        type: data.type ? data.type.trim() : null,
-        location: data.location ? data.location.trim() : null,
-        geo_position: data.geo_position ? data.geo_position.trim() : null,
-        country_code: data.country_code ? data.country_code.trim() : null,
-    } satisfies CreateRaceTrackInput
 }

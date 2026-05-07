@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/race-tracks/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 
 test('unmarshalling a request where mandatory fields are missing', async () => {
     const data: unknown = {
@@ -11,7 +11,16 @@ test('unmarshalling a request where mandatory fields are missing', async () => {
         geo_position: "51°32'0\"N 13°55'10\"E",
         country_code: "DE",
     }
-    const result = unmarshalInputData(data)
+
+    const result = unmarshalInputData(data, [
+        'name',
+        'opened',
+        'closed',
+        'type',
+        'location',
+        'geo_position',
+        'country_code',
+    ])
 
     expect(result)
         .toStrictEqual({

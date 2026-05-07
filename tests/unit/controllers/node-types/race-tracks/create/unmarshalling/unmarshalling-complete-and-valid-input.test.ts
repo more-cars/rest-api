@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/race-tracks/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 import type {CreateRaceTrackRawInput} from "../../../../../../../src/controllers/node-types/race-tracks/types/CreateRaceTrackRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
@@ -13,7 +13,15 @@ test('unmarshalling a complete and valid request', async () => {
         country_code: "DE",
     }
 
-    const result = unmarshalInputData(data)
+    const result = unmarshalInputData(data, [
+        'name',
+        'opened',
+        'closed',
+        'type',
+        'location',
+        'geo_position',
+        'country_code',
+    ])
 
     expect(result)
         .toStrictEqual({
