@@ -1,5 +1,7 @@
 import express from "express"
-import {unmarshalInputData} from "./marshalling/unmarshalInputData"
+import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
+import {NodeType} from "../../../specification/NodeType"
+import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateTrackLayoutInput} from "../../../models/node-types/track-layouts/types/CreateTrackLayoutInput"
 import {TrackLayout} from "../../../models/node-types/track-layouts/TrackLayout"
 import {convertTrackLayoutModelNodeToControllerNode} from "./convertTrackLayoutModelNodeToControllerNode"
@@ -13,16 +15,15 @@ import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshalInputData(req.body)
+    const propertyNames = getNodeTypeSpecification(NodeType.TrackLayout).properties.map(prop => prop.name)
+    const data = unmarshalInputData(req.body, propertyNames) as CreateTrackLayoutInput
 
     if (!validate(data)) {
         return sendResponse400(res)
     }
 
-    const sanitizedData = sanitize(data as CreateTrackLayoutInput)
-
     try {
-        const modelNode = await TrackLayout.create(sanitizedData)
+        const modelNode = await TrackLayout.create(data)
         const node = convertTrackLayoutModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
 
@@ -72,18 +73,4 @@ export function validate(data: CreateTrackLayoutRawInput): boolean {
     }
 
     return true
-}
-
-export function sanitize(data: CreateTrackLayoutInput): CreateTrackLayoutInput {
-    return {
-        name: data.name.trim(),
-        year_from: data.year_from ? data.year_from : null,
-        year_to: data.year_to ? data.year_to : null,
-        length: data.length ? data.length : null,
-        length_unit: data.length_unit ? data.length_unit.trim() : null,
-        direction: data.direction ? data.direction.trim() : null,
-        elevation_change: data.elevation_change ? data.elevation_change : null,
-        elevation_change_unit: data.elevation_change_unit ? data.elevation_change_unit.trim() : null,
-        surface: data.surface ? data.surface.trim() : null,
-    } satisfies CreateTrackLayoutInput
 }

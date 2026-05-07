@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/track-layouts/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 import type {CreateTrackLayoutRawInput} from "../../../../../../../src/controllers/node-types/track-layouts/types/CreateTrackLayoutRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
@@ -15,7 +15,17 @@ test('unmarshalling a complete and valid request', async () => {
         surface: "asphalt",
     }
 
-    const result = unmarshalInputData(data)
+    const result = unmarshalInputData(data, [
+        'name',
+        'year_from',
+        'year_to',
+        'length',
+        'length_unit',
+        'direction',
+        'elevation_change',
+        'elevation_change_unit',
+        'surface',
+    ])
 
     expect(result)
         .toStrictEqual({

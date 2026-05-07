@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/track-layouts/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 
 test('unmarshalling a request where mandatory fields are missing', async () => {
     const data: unknown = {
@@ -12,7 +12,18 @@ test('unmarshalling a request where mandatory fields are missing', async () => {
         elevation_change_unit: "m",
         surface: "asphalt",
     }
-    const result = unmarshalInputData(data)
+
+    const result = unmarshalInputData(data, [
+        'name',
+        'year_from',
+        'year_to',
+        'length',
+        'length_unit',
+        'direction',
+        'elevation_change',
+        'elevation_change_unit',
+        'surface',
+    ])
 
     expect(result)
         .toStrictEqual({

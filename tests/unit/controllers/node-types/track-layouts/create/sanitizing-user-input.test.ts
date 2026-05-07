@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {CreateTrackLayoutInput} from "../../../../../../src/models/node-types/track-layouts/types/CreateTrackLayoutInput"
-import {sanitize} from "../../../../../../src/controllers/node-types/track-layouts/create"
+import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
@@ -16,7 +16,17 @@ describe('Sanitizing user input', () => {
             surface: "   asphalt  ",
         }
 
-        const result = sanitize(data)
+        const result = unmarshalInputData(data, [
+            'name',
+            'year_from',
+            'year_to',
+            'length',
+            'length_unit',
+            'direction',
+            'elevation_change',
+            'elevation_change_unit',
+            'surface',
+        ])
 
         expect(result)
             .toStrictEqual({
