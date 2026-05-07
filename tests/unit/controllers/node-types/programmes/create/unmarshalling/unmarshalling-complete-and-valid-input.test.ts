@@ -1,9 +1,8 @@
 import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
-import type {CreateProgrammeRawInput} from "../../../../../../../src/controllers/node-types/programmes/types/CreateProgrammeRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
-    const data: CreateProgrammeRawInput = {
+    const data = {
         name: "Top Gear",
         aired_from_year: 2002,
         aired_until_year: 2022,

@@ -1,9 +1,9 @@
 import {expect, test} from 'vitest'
-import {CreateProgrammeRawInput} from "../../../../../../../src/controllers/node-types/programmes/types/CreateProgrammeRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/programmes/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test('validating a request where mandatory fields are missing', async () => {
-    const data: CreateProgrammeRawInput = {
+    const data = {
         name: undefined,
         aired_from_year: 2002,
         aired_until_year: 2022,
@@ -14,7 +14,7 @@ test('validating a request where mandatory fields are missing', async () => {
         country_code: "GB",
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.Programme)
 
     expect(result)
         .toBeFalsy()

@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateProgrammeRawInput} from "../../../../../../../src/controllers/node-types/programmes/types/CreateProgrammeRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/programmes/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test.each([
     [false, 2002, 2022, "BBC Two", 33, 240, 60, "GB"],
@@ -21,7 +21,7 @@ test.each([
     regular_episode_running_time,
     country_code,
 ) => {
-    const data: CreateProgrammeRawInput = {
+    const data = {
         name,
         aired_from_year,
         aired_until_year,
@@ -32,7 +32,7 @@ test.each([
         country_code,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.Programme)
 
     expect(result)
         .toBeFalsy()

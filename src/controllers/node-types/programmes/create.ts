@@ -3,13 +3,10 @@ import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecif
 import {NodeType} from "../../../specification/NodeType"
 import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateProgrammeInput} from "../../../models/node-types/programmes/types/CreateProgrammeInput"
+import {validateInputData} from "../../nodes/validateInputData"
 import {Programme} from "../../../models/node-types/programmes/Programme"
 import {convertProgrammeModelNodeToControllerNode} from "./convertProgrammeModelNodeToControllerNode"
 import {marshalSingleNode} from "../../nodes/marshalSingleNode"
-import type {CreateProgrammeRawInput} from "./types/CreateProgrammeRawInput"
-import {isMandatoryString} from "../../validators/isMandatoryString"
-import {isOptionalString} from "../../validators/isOptionalString"
-import {isOptionalNumber} from "../../validators/isOptionalNumber"
 import {sendResponse201} from "../../responses/sendResponse201"
 import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
@@ -18,7 +15,7 @@ export async function create(req: express.Request, res: express.Response) {
     const propertyNames = getNodeTypeSpecification(NodeType.Programme).properties.map(prop => prop.name)
     const data = unmarshalInputData(req.body, propertyNames) as CreateProgrammeInput
 
-    if (!validate(data)) {
+    if (!validateInputData(data, NodeType.Programme)) {
         return sendResponse400(res)
     }
 
@@ -32,41 +29,4 @@ export async function create(req: express.Request, res: express.Response) {
         console.error(e)
         return sendResponse500(res)
     }
-}
-
-export function validate(data: CreateProgrammeRawInput): boolean {
-
-    if (!isMandatoryString(data.name)) {
-        return false
-    }
-
-    if (!isOptionalNumber(data.aired_from_year)) {
-        return false
-    }
-
-    if (!isOptionalNumber(data.aired_until_year)) {
-        return false
-    }
-
-    if (!isOptionalString(data.channel)) {
-        return false
-    }
-
-    if (!isOptionalNumber(data.total_seasons)) {
-        return false
-    }
-
-    if (!isOptionalNumber(data.total_episodes)) {
-        return false
-    }
-
-    if (!isOptionalString(data.regular_episode_running_time)) {
-        return false
-    }
-
-    if (!isOptionalString(data.country_code)) {
-        return false
-    }
-
-    return true
 }
