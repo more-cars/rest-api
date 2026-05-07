@@ -1,9 +1,9 @@
 import {expect, test} from 'vitest'
-import {CreateMotorShowRawInput} from "../../../../../../../src/controllers/node-types/motor-shows/types/CreateMotorShowRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/motor-shows/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test('validating a valid request where optional fields are missing', async () => {
-    const data: CreateMotorShowRawInput = {
+    const data = {
         name: "2017 IAA Frankfurt",
         date_from: undefined,
         date_until: undefined,
@@ -13,7 +13,7 @@ test('validating a valid request where optional fields are missing', async () =>
         country_code: undefined,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.MotorShow)
 
     expect(result)
         .toBeTruthy()

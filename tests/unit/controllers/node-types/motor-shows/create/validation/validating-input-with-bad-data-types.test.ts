@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateMotorShowRawInput} from "../../../../../../../src/controllers/node-types/motor-shows/types/CreateMotorShowRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/motor-shows/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test.each([
     [false, "2017-09-14", "2017-09-24", "Frankfurt", "international", "new cars", "DE"],
@@ -19,7 +19,7 @@ test.each([
     focus,
     country_code,
 ) => {
-    const data: CreateMotorShowRawInput = {
+    const data = {
         name,
         date_from,
         date_until,
@@ -29,7 +29,7 @@ test.each([
         country_code,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.MotorShow)
 
     expect(result)
         .toBeFalsy()

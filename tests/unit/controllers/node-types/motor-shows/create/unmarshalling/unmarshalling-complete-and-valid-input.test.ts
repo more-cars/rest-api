@@ -1,9 +1,8 @@
 import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
-import type {CreateMotorShowRawInput} from "../../../../../../../src/controllers/node-types/motor-shows/types/CreateMotorShowRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
-    const data: CreateMotorShowRawInput = {
+    const data = {
         name: "2017 IAA Frankfurt",
         date_from: "2017-09-14",
         date_until: "2017-09-24",
