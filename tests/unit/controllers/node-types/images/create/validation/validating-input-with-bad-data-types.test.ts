@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateImageRawInput} from "../../../../../../../src/controllers/node-types/images/types/CreateImageRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/images/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test.each([
     [true, "flickr"],
@@ -8,12 +8,12 @@ test.each([
 ])('validating a request where the fields have invalid data types', async (
     external_id, image_provider
 ) => {
-    const data: CreateImageRawInput = {
+    const data = {
         external_id,
         image_provider,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.Image, ['image_provider', 'external_id'])
 
     expect(result)
         .toBeFalsy()

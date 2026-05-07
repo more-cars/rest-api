@@ -1,12 +1,11 @@
 import express from "express"
 import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateImageInput} from "../../../models/node-types/images/types/CreateImageInput"
+import {validateInputData} from "../../nodes/validateInputData"
+import {NodeType} from "../../../specification/NodeType"
 import {Image} from "../../../models/node-types/images/Image"
 import {convertImageModelNodeToControllerNode} from "./convertImageModelNodeToControllerNode"
 import {marshalSingleNode} from "../../nodes/marshalSingleNode"
-import type {CreateImageRawInput} from "./types/CreateImageRawInput"
-import {isMandatoryString} from "../../validators/isMandatoryString"
-import {isValidImagePlatform} from "../../validators/isValidImagePlatform"
 import {FlickrImageAlreadyExistsError} from "../../../models/types/FlickrImageAlreadyExistsError"
 import {WikimediaImageAlreadyExistsError} from "../../../models/types/WikimediaImageAlreadyExistsError"
 import {FlickrImageNotFoundError} from "../../../models/types/FlickrImageNotFoundError"
@@ -20,7 +19,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 export async function create(req: express.Request, res: express.Response) {
     const data = unmarshalInputData(req.body, ['image_provider', 'external_id']) as CreateImageInput
 
-    if (!validate(data)) {
+    if (!validateInputData(data, NodeType.Image, ['image_provider', 'external_id'])) {
         return sendResponse400(res)
     }
 
@@ -40,20 +39,4 @@ export async function create(req: express.Request, res: express.Response) {
             return sendResponse500(res)
         }
     }
-}
-
-export function validate(data: CreateImageRawInput): boolean {
-    if (!isValidImagePlatform(data.image_provider)) {
-        return false
-    }
-
-    if (!isMandatoryString(data.image_provider)) {
-        return false
-    }
-
-    if (!isMandatoryString(data.external_id)) {
-        return false
-    }
-
-    return true
 }

@@ -1,14 +1,14 @@
 import {expect, test} from 'vitest'
-import {CreateImageRawInput} from "../../../../../../../src/controllers/node-types/images/types/CreateImageRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/images/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test('validating a request where mandatory fields are missing', async () => {
-    const data: CreateImageRawInput = {
+    const data = {
         external_id: undefined,
         image_provider: undefined,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.Image, ['image_provider', 'external_id'])
 
     expect(result)
         .toBeFalsy()

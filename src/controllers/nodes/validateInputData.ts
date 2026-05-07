@@ -5,12 +5,19 @@ import {isMandatoryString} from "../validators/isMandatoryString"
 import {isOptionalString} from "../validators/isOptionalString"
 import {isMandatoryNumber} from "../validators/isMandatoryNumber"
 import {isOptionalNumber} from "../validators/isOptionalNumber"
+import {isValidImagePlatform} from "../validators/isValidImagePlatform"
 
-export function validateInputData(data: RawInputData, nodeType: NodeType): boolean {
+export function validateInputData(data: RawInputData, nodeType: NodeType, onlyCheckTheseProperties?: string[]): boolean {
     let isValid = true
 
     const properties = getNodeTypeSpecification(nodeType).properties
     properties.forEach((property) => {
+        if (onlyCheckTheseProperties) {
+            if (!onlyCheckTheseProperties.includes(property.name)) {
+                return
+            }
+        }
+
         if (property.datatype === 'string' && property.mandatory) {
             if (!isMandatoryString(data[property.name])) {
                 isValid = false
@@ -31,6 +38,12 @@ export function validateInputData(data: RawInputData, nodeType: NodeType): boole
 
         if (property.datatype === 'number' && !property.mandatory) {
             if (!isOptionalNumber(data[property.name])) {
+                isValid = false
+            }
+        }
+
+        if (property.name === 'image_provider') {
+            if (!isValidImagePlatform(data[property.name])) {
                 isValid = false
             }
         }

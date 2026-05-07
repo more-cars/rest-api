@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 
 test('unmarshalling a request where extraneous fields are contained', async () => {
-    const data: unknown = {
+    const data = {
         image_provider: "flickr",
         external_id: "54570839725",
         my_property: "Hello",
