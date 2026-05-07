@@ -1,5 +1,7 @@
 import express from "express"
-import {unmarshalInputData} from "./marshalling/unmarshalInputData"
+import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
+import {NodeType} from "../../../specification/NodeType"
+import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateRacingSeriesInput} from "../../../models/node-types/racing-series/types/CreateRacingSeriesInput"
 import {RacingSeries} from "../../../models/node-types/racing-series/RacingSeries"
 import {convertRacingSeriesModelNodeToControllerNode} from "./convertRacingSeriesModelNodeToControllerNode"
@@ -13,16 +15,15 @@ import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshalInputData(req.body)
+    const propertyNames = getNodeTypeSpecification(NodeType.RacingSeries).properties.map(prop => prop.name)
+    const data = unmarshalInputData(req.body, propertyNames) as CreateRacingSeriesInput
 
     if (!validate(data)) {
         return sendResponse400(res)
     }
 
-    const sanitizedData = sanitize(data as CreateRacingSeriesInput)
-
     try {
-        const modelNode = await RacingSeries.create(sanitizedData)
+        const modelNode = await RacingSeries.create(data)
         const node = convertRacingSeriesModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
 
@@ -64,16 +65,4 @@ export function validate(data: CreateRacingSeriesRawInput): boolean {
     }
 
     return true
-}
-
-export function sanitize(data: CreateRacingSeriesInput): CreateRacingSeriesInput {
-    return {
-        name: data.name.trim(),
-        short_name: data.short_name ? data.short_name.trim() : null,
-        founded: data.founded ? data.founded : null,
-        defunct: data.defunct ? data.defunct : null,
-        organized_by: data.organized_by ? data.organized_by.trim() : null,
-        vehicle_type: data.vehicle_type ? data.vehicle_type.trim() : null,
-        country_code: data.country_code ? data.country_code.trim() : null,
-    } satisfies CreateRacingSeriesInput
 }
