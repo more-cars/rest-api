@@ -1,16 +1,16 @@
 import {expect, test} from 'vitest'
-import {CreateRatingRawInput} from "../../../../../../../src/controllers/node-types/ratings/types/CreateRatingRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/ratings/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test('validating a complete and valid request', async () => {
-    const data: CreateRatingRawInput = {
+    const data = {
         rating_value: 93,
         scale_minimum: 0,
         scale_maximum: 100,
         scale_direction: "up",
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.Rating)
 
     expect(result)
         .toBeTruthy()

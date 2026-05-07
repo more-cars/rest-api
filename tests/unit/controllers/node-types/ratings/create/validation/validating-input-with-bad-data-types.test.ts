@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateRatingRawInput} from "../../../../../../../src/controllers/node-types/ratings/types/CreateRatingRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/ratings/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test.each([
     [false, 0, 100, "up"],
@@ -13,14 +13,14 @@ test.each([
     scale_maximum,
     scale_direction,
 ) => {
-    const data: CreateRatingRawInput = {
+    const data = {
         rating_value,
         scale_minimum,
         scale_maximum,
         scale_direction,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.Rating)
 
     expect(result)
         .toBeFalsy()
