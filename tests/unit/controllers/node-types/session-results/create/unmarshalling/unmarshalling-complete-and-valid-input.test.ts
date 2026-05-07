@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/session-results/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 import type {CreateSessionResultRawInput} from "../../../../../../../src/controllers/node-types/session-results/types/CreateSessionResultRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
@@ -14,7 +14,16 @@ test('unmarshalling a complete and valid request', async () => {
         points: 25,
     }
 
-    const result = unmarshalInputData(data)
+    const result = unmarshalInputData(data, [
+        'position',
+        'race_number',
+        'driver_name',
+        'team_name',
+        'race_time',
+        'laps',
+        'status',
+        'points',
+    ])
 
     expect(result)
         .toStrictEqual({

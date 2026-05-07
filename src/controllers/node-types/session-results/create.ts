@@ -1,5 +1,7 @@
 import express from "express"
-import {unmarshalInputData} from "./marshalling/unmarshalInputData"
+import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
+import {NodeType} from "../../../specification/NodeType"
+import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateSessionResultInput} from "../../../models/node-types/session-results/types/CreateSessionResultInput"
 import {SessionResult} from "../../../models/node-types/session-results/SessionResult"
 import {convertSessionResultModelNodeToControllerNode} from "./convertSessionResultModelNodeToControllerNode"
@@ -14,16 +16,15 @@ import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshalInputData(req.body)
+    const propertyNames = getNodeTypeSpecification(NodeType.SessionResult).properties.map(prop => prop.name)
+    const data = unmarshalInputData(req.body, propertyNames) as CreateSessionResultInput
 
     if (!validate(data)) {
         return sendResponse400(res)
     }
 
-    const sanitizedData = sanitize(data as CreateSessionResultInput)
-
     try {
-        const modelNode = await SessionResult.create(sanitizedData)
+        const modelNode = await SessionResult.create(data)
         const node = convertSessionResultModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
 
@@ -69,17 +70,4 @@ export function validate(data: CreateSessionResultRawInput): boolean {
     }
 
     return true
-}
-
-export function sanitize(data: CreateSessionResultInput): CreateSessionResultInput {
-    return {
-        position: data.position,
-        race_number: data.race_number ? data.race_number.trim() : null,
-        driver_name: data.driver_name.trim(),
-        team_name: data.team_name ? data.team_name.trim() : null,
-        race_time: data.race_time ? data.race_time.trim() : null,
-        laps: data.laps ? data.laps : null,
-        status: data.status ? data.status.trim() : null,
-        points: data.points ? data.points : null,
-    } satisfies CreateSessionResultInput
 }
