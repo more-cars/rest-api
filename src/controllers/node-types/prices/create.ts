@@ -1,5 +1,7 @@
 import express from "express"
-import {unmarshalInputData} from "./marshalling/unmarshalInputData"
+import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
+import {NodeType} from "../../../specification/NodeType"
+import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreatePriceInput} from "../../../models/node-types/prices/types/CreatePriceInput"
 import {Price} from "../../../models/node-types/prices/Price"
 import {convertPriceModelNodeToControllerNode} from "./convertPriceModelNodeToControllerNode"
@@ -12,16 +14,15 @@ import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshalInputData(req.body)
+    const propertyNames = getNodeTypeSpecification(NodeType.Price).properties.map(prop => prop.name)
+    const data = unmarshalInputData(req.body, propertyNames) as CreatePriceInput
 
     if (!validate(data)) {
         return sendResponse400(res)
     }
 
-    const sanitizedData = sanitize(data as CreatePriceInput)
-
     try {
-        const modelNode = await Price.create(sanitizedData)
+        const modelNode = await Price.create(data)
         const node = convertPriceModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
 
@@ -51,13 +52,4 @@ export function validate(data: CreatePriceRawInput): boolean {
     }
 
     return true
-}
-
-export function sanitize(data: CreatePriceInput): CreatePriceInput {
-    return {
-        price: data.price,
-        price_year: data.price_year,
-        currency_code: data.currency_code.trim(),
-        country_code: data.country_code.trim(),
-    } satisfies CreatePriceInput
 }
