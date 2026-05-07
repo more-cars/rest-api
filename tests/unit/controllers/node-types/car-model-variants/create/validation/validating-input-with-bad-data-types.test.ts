@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateCarModelVariantRawInput} from "../../../../../../../src/controllers/node-types/car-model-variants/types/CreateCarModelVariantRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/car-model-variants/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test.each([
     [true, "E46", 2000, 2006, "coupe", 0.31, 2, 1549, "kg", 343, "PS", 365, "Nm", 6, "inline", 3246, "ccm", "naturally aspirated", "otto", "petrol", "nope", 11.9, "l", 0.0, "nope", 63, "l", 0.0, "nope", "sequential", 6, "rwd", 5.2, 250, "km/h", 50000],
@@ -77,7 +77,7 @@ test.each([
     top_speed_unit,
     total_production,
 ) => {
-    const data: CreateCarModelVariantRawInput = {
+    const data = {
         name,
         internal_code,
         built_from,
@@ -116,7 +116,7 @@ test.each([
         total_production,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.CarModelVariant)
 
     expect(result)
         .toBeFalsy()
