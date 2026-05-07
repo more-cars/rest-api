@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateGamingPlatformRawInput} from "../../../../../../../src/controllers/node-types/gaming-platforms/types/CreateGamingPlatformRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/gaming-platforms/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test.each([
     [true, 2020, "Sony"],
@@ -9,13 +9,13 @@ test.each([
 ])('validating a request where the fields have invalid data types', async (
     name, release_year, manufacturer
 ) => {
-    const data: CreateGamingPlatformRawInput = {
+    const data = {
         name,
         release_year,
         manufacturer,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.GamingPlatform)
 
     expect(result)
         .toBeFalsy()
