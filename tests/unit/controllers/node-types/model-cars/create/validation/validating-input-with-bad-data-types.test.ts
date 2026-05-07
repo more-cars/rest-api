@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateModelCarRawInput} from "../../../../../../../src/controllers/node-types/model-cars/types/CreateModelCarRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/model-cars/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test.each([
     [false, "DHX60", 2016, "1:64", "BMW"],
@@ -15,7 +15,7 @@ test.each([
     scale,
     series,
 ) => {
-    const data: CreateModelCarRawInput = {
+    const data = {
         name,
         product_code,
         release_year,
@@ -23,7 +23,7 @@ test.each([
         series,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.ModelCar)
 
     expect(result)
         .toBeFalsy()
