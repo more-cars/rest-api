@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateLapTimeRawInput} from "../../../../../../../src/controllers/node-types/lap-times/types/CreateLapTimeRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/lap-times/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test.each([
     [true, "Klaus Ludwig", "WBA"],
@@ -9,13 +9,13 @@ test.each([
 ])('validating a request where the fields have invalid data types', async (
     time, driver_name, date
 ) => {
-    const data: CreateLapTimeRawInput = {
+    const data = {
         time,
         driver_name,
         date,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.LapTime)
 
     expect(result)
         .toBeFalsy()
