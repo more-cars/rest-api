@@ -1,5 +1,5 @@
 import express from "express"
-import {unmarshalInputData} from "./marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateVideoInput} from "../../../models/node-types/videos/types/CreateVideoInput"
 import {Video} from "../../../models/node-types/videos/Video"
 import {convertVideoModelNodeToControllerNode} from "./convertVideoModelNodeToControllerNode"
@@ -16,16 +16,14 @@ import {sendResponse422} from "../../responses/sendResponse422"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshalInputData(req.body)
+    const data = unmarshalInputData(req.body, ['video_provider', 'external_id']) as CreateVideoInput
 
     if (!validate(data)) {
         return sendResponse400(res)
     }
 
-    const sanitizedData = sanitize(data as CreateVideoInput)
-
     try {
-        const modelNode = await Video.create(sanitizedData)
+        const modelNode = await Video.create(data)
         const node = convertVideoModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
 
@@ -57,11 +55,4 @@ export function validate(data: CreateVideoRawInput): boolean {
     }
 
     return true
-}
-
-export function sanitize(data: CreateVideoInput): CreateVideoInput {
-    return {
-        video_provider: data.video_provider.trim(),
-        external_id: data.external_id.trim(),
-    } satisfies CreateVideoInput
 }
