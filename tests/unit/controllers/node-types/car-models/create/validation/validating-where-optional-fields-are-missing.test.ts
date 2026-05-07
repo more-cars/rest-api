@@ -1,9 +1,9 @@
 import {expect, test} from 'vitest'
-import {CreateCarModelRawInput} from "../../../../../../../src/controllers/node-types/car-models/types/CreateCarModelRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/car-models/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test('validating a valid request where optional fields are missing', async () => {
-    const data: CreateCarModelRawInput = {
+    const data = {
         name: "360 Modena",
         built_from: undefined,
         built_to: undefined,
@@ -12,7 +12,7 @@ test('validating a valid request where optional fields are missing', async () =>
         total_production: undefined,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.CarModel)
 
     expect(result)
         .toBeTruthy()
