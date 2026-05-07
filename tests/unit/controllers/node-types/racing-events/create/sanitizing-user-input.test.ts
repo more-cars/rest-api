@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {CreateRacingEventInput} from "../../../../../../src/models/node-types/racing-events/types/CreateRacingEventInput"
-import {sanitize} from "../../../../../../src/controllers/node-types/racing-events/create"
+import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
@@ -11,7 +11,12 @@ describe('Sanitizing user input', () => {
             date_to: "   2025-05-27  ",
         }
 
-        const result = sanitize(data)
+        const result = unmarshalInputData(data, [
+            'name',
+            'round',
+            'date_from',
+            'date_to',
+        ])
 
         expect(result)
             .toStrictEqual({

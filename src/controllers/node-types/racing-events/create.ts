@@ -1,5 +1,7 @@
 import express from "express"
-import {unmarshalInputData} from "./marshalling/unmarshalInputData"
+import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
+import {NodeType} from "../../../specification/NodeType"
+import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateRacingEventInput} from "../../../models/node-types/racing-events/types/CreateRacingEventInput"
 import {RacingEvent} from "../../../models/node-types/racing-events/RacingEvent"
 import type {CreateRacingEventRawInput} from "./types/CreateRacingEventRawInput"
@@ -13,16 +15,15 @@ import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshalInputData(req.body)
+    const propertyNames = getNodeTypeSpecification(NodeType.RacingEvent).properties.map(prop => prop.name)
+    const data = unmarshalInputData(req.body, propertyNames) as CreateRacingEventInput
 
     if (!validate(data)) {
         return sendResponse400(res)
     }
 
-    const sanitizedData = sanitize(data as CreateRacingEventInput)
-
     try {
-        const modelNode = await RacingEvent.create(sanitizedData)
+        const modelNode = await RacingEvent.create(data)
         const node = convertRacingEventModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
 
@@ -52,13 +53,4 @@ export function validate(data: CreateRacingEventRawInput): boolean {
     }
 
     return true
-}
-
-export function sanitize(data: CreateRacingEventInput): CreateRacingEventInput {
-    return {
-        name: data.name.trim(),
-        round: data.round ? data.round : null,
-        date_from: data.date_from ? data.date_from.trim() : null,
-        date_to: data.date_to ? data.date_to.trim() : null,
-    } satisfies CreateRacingEventInput
 }

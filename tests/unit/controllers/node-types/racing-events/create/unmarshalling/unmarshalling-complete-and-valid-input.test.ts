@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/racing-events/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 import type {CreateRacingEventRawInput} from "../../../../../../../src/controllers/node-types/racing-events/types/CreateRacingEventRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
@@ -10,7 +10,12 @@ test('unmarshalling a complete and valid request', async () => {
         date_to: "2025-05-27",
     }
 
-    const result = unmarshalInputData(data)
+    const result = unmarshalInputData(data, [
+        'name',
+        'round',
+        'date_from',
+        'date_to',
+    ])
 
     expect(result)
         .toStrictEqual({
