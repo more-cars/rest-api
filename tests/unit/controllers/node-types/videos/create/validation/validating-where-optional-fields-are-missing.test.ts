@@ -1,14 +1,14 @@
 import {expect, test} from 'vitest'
-import {CreateVideoRawInput} from "../../../../../../../src/controllers/node-types/videos/types/CreateVideoRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/videos/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test('validating a valid request where optional fields are missing', async () => {
-    const data: CreateVideoRawInput = {
+    const data = {
         video_provider: "youtube",
         external_id: "NqsBncRslsg",
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.Video, ['video_provider', 'external_id'])
 
     expect(result)
         .toBeTruthy()

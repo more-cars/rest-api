@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateVideoRawInput} from "../../../../../../../src/controllers/node-types/videos/types/CreateVideoRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/videos/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test.each([
     [false, "NqsBncRslsg"],
@@ -9,12 +9,12 @@ test.each([
     video_provider,
     external_id,
 ) => {
-    const data: CreateVideoRawInput = {
+    const data = {
         video_provider,
         external_id,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.Video, ['video_provider', 'external_id'])
 
     expect(result)
         .toBeFalsy()

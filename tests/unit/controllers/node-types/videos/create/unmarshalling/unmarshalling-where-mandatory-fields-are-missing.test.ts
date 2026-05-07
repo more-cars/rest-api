@@ -2,7 +2,7 @@ import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 
 test('unmarshalling a request where mandatory fields are missing', async () => {
-    const data: unknown = {}
+    const data = {}
 
     const result = unmarshalInputData(data, [
         'video_provider',

@@ -6,6 +6,7 @@ import {isOptionalString} from "../validators/isOptionalString"
 import {isMandatoryNumber} from "../validators/isMandatoryNumber"
 import {isOptionalNumber} from "../validators/isOptionalNumber"
 import {isValidImagePlatform} from "../validators/isValidImagePlatform"
+import {isValidVideoPlatform} from "../validators/isValidVideoPlatform"
 
 export function validateInputData(data: RawInputData, nodeType: NodeType, onlyCheckTheseProperties?: string[]): boolean {
     let isValid = true
@@ -44,6 +45,12 @@ export function validateInputData(data: RawInputData, nodeType: NodeType, onlyCh
 
         if (property.name === 'image_provider') {
             if (!isValidImagePlatform(data[property.name])) {
+                isValid = false
+            }
+        }
+
+        if (property.name === 'video_provider') {
+            if (!isValidVideoPlatform(data[property.name])) {
                 isValid = false
             }
         }
