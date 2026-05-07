@@ -2,8 +2,8 @@
 to: tests/unit/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create/validation/validating-input-with-bad-data-types.test.ts
 ---
 import {expect, test} from 'vitest'
-import {Create<%= h.changeCase.pascal(nodeType) %>RawInput} from "../../../../../../../src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Create<%= h.changeCase.pascal(nodeType) %>RawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test.each([
 <%
@@ -27,13 +27,13 @@ test.each([
     <%= prop %>,
 <% } -%>
 ) => {
-    const data: Create<%= h.changeCase.pascal(nodeType) %>RawInput = {
+    const data = {
 <% for (prop in properties) { -%>
         <%= prop %>,
 <% } -%>
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.<%= h.changeCase.pascal(nodeType) %>)
 
     expect(result)
         .toBeFalsy()

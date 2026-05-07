@@ -16,15 +16,15 @@ to: tests/unit/controllers/node-types/<%= h.changeCase.kebab(h.inflection.plural
     }
 -%>
 import {expect, test} from 'vitest'
-import {Create<%= h.changeCase.pascal(nodeType) %>RawInput} from "../../../../../../../src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Create<%= h.changeCase.pascal(nodeType) %>RawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test('validating a valid request where optional fields are missing', async () => {
-    const data: Create<%= h.changeCase.pascal(nodeType) %>RawInput = {
+    const data = {
 <%- props.map(line => '        ' + line).join(',\n') %>,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.<%= h.changeCase.pascal(nodeType) %>)
 
     expect(result)
         .toBeTruthy()
