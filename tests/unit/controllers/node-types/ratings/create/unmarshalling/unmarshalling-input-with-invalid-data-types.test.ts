@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/ratings/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 
 test('unmarshalling a request where the data types are incorrect', async () => {
     const data: unknown = {
@@ -9,7 +9,12 @@ test('unmarshalling a request where the data types are incorrect', async () => {
         scale_direction: true,
     }
 
-    const result = unmarshalInputData(data)
+    const result = unmarshalInputData(data, [
+        'rating_value',
+        'scale_minimum',
+        'scale_maximum',
+        'scale_direction',
+    ])
 
     expect(result)
         .toStrictEqual({

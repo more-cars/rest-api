@@ -1,10 +1,15 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/ratings/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 
 test('unmarshalling a request where mandatory fields are missing', async () => {
     const data: unknown = {}
 
-    const result = unmarshalInputData(data)
+    const result = unmarshalInputData(data, [
+        'rating_value',
+        'scale_minimum',
+        'scale_maximum',
+        'scale_direction',
+    ])
 
     expect(result)
         .toStrictEqual({

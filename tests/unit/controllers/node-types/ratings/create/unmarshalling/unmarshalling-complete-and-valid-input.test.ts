@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/ratings/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 import type {CreateRatingRawInput} from "../../../../../../../src/controllers/node-types/ratings/types/CreateRatingRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
@@ -10,7 +10,12 @@ test('unmarshalling a complete and valid request', async () => {
         scale_direction: "up",
     }
 
-    const result = unmarshalInputData(data)
+    const result = unmarshalInputData(data, [
+        'rating_value',
+        'scale_minimum',
+        'scale_maximum',
+        'scale_direction',
+    ])
 
     expect(result)
         .toStrictEqual({

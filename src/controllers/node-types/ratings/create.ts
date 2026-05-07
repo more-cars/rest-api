@@ -1,5 +1,7 @@
 import express from "express"
-import {unmarshalInputData} from "./marshalling/unmarshalInputData"
+import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
+import {NodeType} from "../../../specification/NodeType"
+import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateRatingInput} from "../../../models/node-types/ratings/types/CreateRatingInput"
 import {Rating} from "../../../models/node-types/ratings/Rating"
 import {convertRatingModelNodeToControllerNode} from "./convertRatingModelNodeToControllerNode"
@@ -12,16 +14,15 @@ import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshalInputData(req.body)
+    const propertyNames = getNodeTypeSpecification(NodeType.Rating).properties.map(prop => prop.name)
+    const data = unmarshalInputData(req.body, propertyNames) as CreateRatingInput
 
     if (!validate(data)) {
         return sendResponse400(res)
     }
 
-    const sanitizedData = sanitize(data as CreateRatingInput)
-
     try {
-        const modelNode = await Rating.create(sanitizedData)
+        const modelNode = await Rating.create(data)
         const node = convertRatingModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
 
@@ -51,13 +52,4 @@ export function validate(data: CreateRatingRawInput): boolean {
     }
 
     return true
-}
-
-export function sanitize(data: CreateRatingInput): CreateRatingInput {
-    return {
-        rating_value: data.rating_value,
-        scale_minimum: data.scale_minimum,
-        scale_maximum: data.scale_maximum,
-        scale_direction: data.scale_direction.trim(),
-    } satisfies CreateRatingInput
 }

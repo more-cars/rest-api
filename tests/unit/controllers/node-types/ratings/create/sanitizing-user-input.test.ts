@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {CreateRatingInput} from "../../../../../../src/models/node-types/ratings/types/CreateRatingInput"
-import {sanitize} from "../../../../../../src/controllers/node-types/ratings/create"
+import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
@@ -11,7 +11,12 @@ describe('Sanitizing user input', () => {
             scale_direction: "   up  ",
         }
 
-        const result = sanitize(data)
+        const result = unmarshalInputData(data, [
+            'rating_value',
+            'scale_minimum',
+            'scale_maximum',
+            'scale_direction',
+        ])
 
         expect(result)
             .toStrictEqual({
