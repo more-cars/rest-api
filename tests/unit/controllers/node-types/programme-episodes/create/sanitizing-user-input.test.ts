@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {CreateProgrammeEpisodeInput} from "../../../../../../src/models/node-types/programme-episodes/types/CreateProgrammeEpisodeInput"
-import {sanitize} from "../../../../../../src/controllers/node-types/programme-episodes/create"
+import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
@@ -12,7 +12,13 @@ describe('Sanitizing user input', () => {
             duration: "   PT55M  ",
         }
 
-        const result = sanitize(data)
+        const result = unmarshalInputData(data, [
+            'title',
+            'season_number',
+            'season_episode_number',
+            'original_air_date',
+            'duration',
+        ])
 
         expect(result)
             .toStrictEqual({

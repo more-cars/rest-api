@@ -1,5 +1,7 @@
 import express from "express"
-import {unmarshalInputData} from "./marshalling/unmarshalInputData"
+import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
+import {NodeType} from "../../../specification/NodeType"
+import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateProgrammeEpisodeInput} from "../../../models/node-types/programme-episodes/types/CreateProgrammeEpisodeInput"
 import {ProgrammeEpisode} from "../../../models/node-types/programme-episodes/ProgrammeEpisode"
 import {convertProgrammeEpisodeModelNodeToControllerNode} from "./convertProgrammeEpisodeModelNodeToControllerNode"
@@ -13,16 +15,15 @@ import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshalInputData(req.body)
+    const propertyNames = getNodeTypeSpecification(NodeType.Company).properties.map(prop => prop.name)
+    const data = unmarshalInputData(req.body, propertyNames) as CreateProgrammeEpisodeInput
 
     if (!validate(data)) {
         return sendResponse400(res)
     }
 
-    const sanitizedData = sanitize(data as CreateProgrammeEpisodeInput)
-
     try {
-        const modelNode = await ProgrammeEpisode.create(sanitizedData)
+        const modelNode = await ProgrammeEpisode.create(data)
         const node = convertProgrammeEpisodeModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
 
@@ -56,14 +57,4 @@ export function validate(data: CreateProgrammeEpisodeRawInput): boolean {
     }
 
     return true
-}
-
-export function sanitize(data: CreateProgrammeEpisodeInput): CreateProgrammeEpisodeInput {
-    return {
-        title: data.title.trim(),
-        season_number: data.season_number ? data.season_number : null,
-        season_episode_number: data.season_episode_number ? data.season_episode_number : null,
-        original_air_date: data.original_air_date ? data.original_air_date.trim() : null,
-        duration: data.duration ? data.duration.trim() : null,
-    } satisfies CreateProgrammeEpisodeInput
 }

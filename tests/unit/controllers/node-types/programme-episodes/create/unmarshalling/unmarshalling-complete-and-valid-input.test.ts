@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/programme-episodes/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 import type {CreateProgrammeEpisodeRawInput} from "../../../../../../../src/controllers/node-types/programme-episodes/types/CreateProgrammeEpisodeRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
@@ -11,7 +11,13 @@ test('unmarshalling a complete and valid request', async () => {
         duration: "PT55M",
     }
 
-    const result = unmarshalInputData(data)
+    const result = unmarshalInputData(data, [
+        'title',
+        'season_number',
+        'season_episode_number',
+        'original_air_date',
+        'duration',
+    ])
 
     expect(result)
         .toStrictEqual({
