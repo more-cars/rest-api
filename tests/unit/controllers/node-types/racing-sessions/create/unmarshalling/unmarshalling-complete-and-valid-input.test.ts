@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/racing-sessions/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 import type {CreateRacingSessionRawInput} from "../../../../../../../src/controllers/node-types/racing-sessions/types/CreateRacingSessionRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
@@ -13,7 +13,15 @@ test('unmarshalling a complete and valid request', async () => {
         distance_unit: "laps",
     }
 
-    const result = unmarshalInputData(data)
+    const result = unmarshalInputData(data, [
+        'name',
+        'start_date',
+        'start_time',
+        'duration',
+        'duration_unit',
+        'distance',
+        'distance_unit',
+    ])
 
     expect(result)
         .toStrictEqual({

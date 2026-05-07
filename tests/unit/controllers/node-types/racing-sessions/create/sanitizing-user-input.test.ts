@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {CreateRacingSessionInput} from "../../../../../../src/models/node-types/racing-sessions/types/CreateRacingSessionInput"
-import {sanitize} from "../../../../../../src/controllers/node-types/racing-sessions/create"
+import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
@@ -14,7 +14,15 @@ describe('Sanitizing user input', () => {
             distance_unit: "   laps  ",
         }
 
-        const result = sanitize(data)
+        const result = unmarshalInputData(data, [
+            'name',
+            'start_date',
+            'start_time',
+            'duration',
+            'duration_unit',
+            'distance',
+            'distance_unit',
+        ])
 
         expect(result)
             .toStrictEqual({

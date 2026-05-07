@@ -1,5 +1,7 @@
 import express from "express"
-import {unmarshalInputData} from "./marshalling/unmarshalInputData"
+import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
+import {NodeType} from "../../../specification/NodeType"
+import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateRacingSessionInput} from "../../../models/node-types/racing-sessions/types/CreateRacingSessionInput"
 import {RacingSession} from "../../../models/node-types/racing-sessions/RacingSession"
 import {convertRacingSessionModelNodeToControllerNode} from "./convertRacingSessionModelNodeToControllerNode"
@@ -13,16 +15,15 @@ import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshalInputData(req.body)
+    const propertyNames = getNodeTypeSpecification(NodeType.RacingSession).properties.map(prop => prop.name)
+    const data = unmarshalInputData(req.body, propertyNames) as CreateRacingSessionInput
 
     if (!validate(data)) {
         return sendResponse400(res)
     }
 
-    const sanitizedData = sanitize(data as CreateRacingSessionInput)
-
     try {
-        const modelNode = await RacingSession.create(sanitizedData)
+        const modelNode = await RacingSession.create(data)
         const node = convertRacingSessionModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
 
@@ -64,16 +65,4 @@ export function validate(data: CreateRacingSessionRawInput): boolean {
     }
 
     return true
-}
-
-export function sanitize(data: CreateRacingSessionInput): CreateRacingSessionInput {
-    return {
-        name: data.name.trim(),
-        start_date: data.start_date ? data.start_date.trim() : null,
-        start_time: data.start_time ? data.start_time.trim() : null,
-        duration: data.duration ? data.duration : null,
-        duration_unit: data.duration_unit ? data.duration_unit.trim() : null,
-        distance: data.distance ? data.distance : null,
-        distance_unit: data.distance_unit ? data.distance_unit.trim() : null,
-    } satisfies CreateRacingSessionInput
 }

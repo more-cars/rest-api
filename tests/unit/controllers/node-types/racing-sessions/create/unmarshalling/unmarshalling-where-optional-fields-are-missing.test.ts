@@ -1,12 +1,20 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/racing-sessions/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 
 test('unmarshalling a valid request where optional fields are missing', async () => {
     const data: unknown = {
         name: "Grand Prix"
     }
 
-    const result = unmarshalInputData(data)
+    const result = unmarshalInputData(data, [
+        'name',
+        'start_date',
+        'start_time',
+        'duration',
+        'duration_unit',
+        'distance',
+        'distance_unit',
+    ])
 
     expect(result)
         .toStrictEqual({
