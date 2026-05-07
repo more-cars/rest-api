@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateCompanyRawInput} from "../../../../../../../src/controllers/node-types/companies/types/CreateCompanyRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/companies/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test.each([
     [true, 1916, 2345, "Munich", "DE", "Munich", "DE"],
@@ -13,7 +13,7 @@ test.each([
 ])('validating a request where the fields have invalid data types', async (
     name, founded, defunct, headquarters_location, hq_country_code, legal_headquarters_location, legal_hq_country_code
 ) => {
-    const data: CreateCompanyRawInput = {
+    const data = {
         name,
         founded,
         defunct,
@@ -23,7 +23,7 @@ test.each([
         legal_hq_country_code,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.Company)
 
     expect(result)
         .toBeFalsy()

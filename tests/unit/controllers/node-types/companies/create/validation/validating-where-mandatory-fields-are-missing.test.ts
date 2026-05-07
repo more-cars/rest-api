@@ -1,9 +1,9 @@
 import {expect, test} from 'vitest'
-import {CreateCompanyRawInput} from "../../../../../../../src/controllers/node-types/companies/types/CreateCompanyRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/companies/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test('validating a request where mandatory fields are missing', async () => {
-    const data: CreateCompanyRawInput = {
+    const data = {
         name: undefined,
         founded: 1916,
         defunct: null,
@@ -13,7 +13,7 @@ test('validating a request where mandatory fields are missing', async () => {
         legal_hq_country_code: "DE",
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.Company)
 
     expect(result)
         .toBeFalsy()

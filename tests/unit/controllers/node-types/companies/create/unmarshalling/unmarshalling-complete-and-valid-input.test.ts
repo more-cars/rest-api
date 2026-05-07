@@ -1,9 +1,8 @@
 import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
-import type {CreateCompanyRawInput} from "../../../../../../../src/controllers/node-types/companies/types/CreateCompanyRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
-    const data: CreateCompanyRawInput = {
+    const data = {
         name: "BMW AG",
         founded: 1916,
         defunct: null,
