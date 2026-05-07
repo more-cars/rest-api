@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateProgrammeEpisodeRawInput} from "../../../../../../../src/controllers/node-types/programme-episodes/types/CreateProgrammeEpisodeRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/programme-episodes/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test.each([
     [false, 2, 2, "2017-12-08", "PT55M"],
@@ -15,7 +15,7 @@ test.each([
     original_air_date,
     duration,
 ) => {
-    const data: CreateProgrammeEpisodeRawInput = {
+    const data = {
         title,
         season_number,
         season_episode_number,
@@ -23,7 +23,7 @@ test.each([
         duration,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.ProgrammeEpisode)
 
     expect(result)
         .toBeFalsy()

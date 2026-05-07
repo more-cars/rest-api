@@ -1,9 +1,9 @@
 import {expect, test} from 'vitest'
-import {CreateProgrammeEpisodeRawInput} from "../../../../../../../src/controllers/node-types/programme-episodes/types/CreateProgrammeEpisodeRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/programme-episodes/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test('validating a request where mandatory fields are missing', async () => {
-    const data: CreateProgrammeEpisodeRawInput = {
+    const data = {
         title: undefined,
         season_number: 2,
         season_episode_number: 2,
@@ -11,7 +11,7 @@ test('validating a request where mandatory fields are missing', async () => {
         duration: "PT55M",
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.ProgrammeEpisode)
 
     expect(result)
         .toBeFalsy()
