@@ -1,16 +1,16 @@
 import {expect, test} from 'vitest'
-import {CreateModelCarBrandRawInput} from "../../../../../../../src/controllers/node-types/model-car-brands/types/CreateModelCarBrandRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/model-car-brands/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test('validating a valid request where optional fields are missing', async () => {
-    const data: CreateModelCarBrandRawInput = {
+    const data = {
         name: "Hot Wheels",
         founded: undefined,
         defunct: undefined,
         country_code: undefined,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.ModelCarBrand)
 
     expect(result)
         .toBeTruthy()
