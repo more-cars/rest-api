@@ -1,16 +1,16 @@
 import {expect, test} from 'vitest'
-import {CreatePriceRawInput} from "../../../../../../../src/controllers/node-types/prices/types/CreatePriceRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/prices/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test('validating a request where mandatory fields are missing', async () => {
-    const data: CreatePriceRawInput = {
+    const data = {
         price: undefined,
         price_year: undefined,
         currency_code: undefined,
         country_code: undefined,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.Price)
 
     expect(result)
         .toBeFalsy()

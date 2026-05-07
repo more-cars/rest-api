@@ -1,9 +1,8 @@
 import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
-import type {CreatePriceRawInput} from "../../../../../../../src/controllers/node-types/prices/types/CreatePriceRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
-    const data: CreatePriceRawInput = {
+    const data = {
         price: 59990,
         price_year: 2020,
         currency_code: "EUR",

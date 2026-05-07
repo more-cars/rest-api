@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreatePriceRawInput} from "../../../../../../../src/controllers/node-types/prices/types/CreatePriceRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/prices/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test.each([
     [false, 2020, "EUR", "DE"],
@@ -13,14 +13,14 @@ test.each([
     currency_code,
     country_code,
 ) => {
-    const data: CreatePriceRawInput = {
+    const data = {
         price,
         price_year,
         currency_code,
         country_code,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.Price)
 
     expect(result)
         .toBeFalsy()
