@@ -3,13 +3,10 @@ import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecif
 import {NodeType} from "../../../specification/NodeType"
 import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateRacingEventInput} from "../../../models/node-types/racing-events/types/CreateRacingEventInput"
+import {validateInputData} from "../../nodes/validateInputData"
 import {RacingEvent} from "../../../models/node-types/racing-events/RacingEvent"
-import type {CreateRacingEventRawInput} from "./types/CreateRacingEventRawInput"
 import {convertRacingEventModelNodeToControllerNode} from "./convertRacingEventModelNodeToControllerNode"
 import {marshalSingleNode} from "../../nodes/marshalSingleNode"
-import {isMandatoryString} from "../../validators/isMandatoryString"
-import {isOptionalString} from "../../validators/isOptionalString"
-import {isOptionalNumber} from "../../validators/isOptionalNumber"
 import {sendResponse201} from "../../responses/sendResponse201"
 import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
@@ -18,7 +15,7 @@ export async function create(req: express.Request, res: express.Response) {
     const propertyNames = getNodeTypeSpecification(NodeType.RacingEvent).properties.map(prop => prop.name)
     const data = unmarshalInputData(req.body, propertyNames) as CreateRacingEventInput
 
-    if (!validate(data)) {
+    if (!validateInputData(data, NodeType.RacingEvent)) {
         return sendResponse400(res)
     }
 
@@ -32,25 +29,4 @@ export async function create(req: express.Request, res: express.Response) {
         console.error(e)
         return sendResponse500(res)
     }
-}
-
-export function validate(data: CreateRacingEventRawInput): boolean {
-
-    if (!isMandatoryString(data.name)) {
-        return false
-    }
-
-    if (!isOptionalNumber(data.round)) {
-        return false
-    }
-
-    if (!isOptionalString(data.date_from)) {
-        return false
-    }
-
-    if (!isOptionalString(data.date_to)) {
-        return false
-    }
-
-    return true
 }

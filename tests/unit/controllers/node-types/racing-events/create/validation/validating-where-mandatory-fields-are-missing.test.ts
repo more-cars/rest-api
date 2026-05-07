@@ -1,16 +1,16 @@
 import {expect, test} from 'vitest'
-import {CreateRacingEventRawInput} from "../../../../../../../src/controllers/node-types/racing-events/types/CreateRacingEventRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/racing-events/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test('validating a request where mandatory fields are missing', async () => {
-    const data: CreateRacingEventRawInput = {
+    const data = {
         name: undefined,
         round: 8,
         date_from: "2025-05-25",
         date_to: "2025-05-27",
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.RacingEvent)
 
     expect(result)
         .toBeFalsy()
