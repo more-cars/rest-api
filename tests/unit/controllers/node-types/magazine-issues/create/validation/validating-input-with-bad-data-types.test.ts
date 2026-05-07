@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateMagazineIssueRawInput} from "../../../../../../../src/controllers/node-types/magazine-issues/types/CreateMagazineIssueRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/magazine-issues/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test.each([
     [true, 402, 12, 2025, "2025-11-26", 5.99, "GBP", 156],
@@ -21,7 +21,7 @@ test.each([
     single_copy_price_unit,
     pages,
 ) => {
-    const data: CreateMagazineIssueRawInput = {
+    const data = {
         title,
         consecutive_number,
         issue_number,
@@ -32,7 +32,7 @@ test.each([
         pages,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.MagazineIssue)
 
     expect(result)
         .toBeFalsy()

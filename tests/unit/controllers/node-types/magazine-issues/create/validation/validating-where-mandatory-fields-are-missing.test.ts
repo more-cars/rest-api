@@ -1,9 +1,9 @@
 import {expect, test} from 'vitest'
-import {CreateMagazineIssueRawInput} from "../../../../../../../src/controllers/node-types/magazine-issues/types/CreateMagazineIssueRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/magazine-issues/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test('validating a request where mandatory fields are missing', async () => {
-    const data: CreateMagazineIssueRawInput = {
+    const data = {
         title: undefined,
         consecutive_number: 402,
         issue_number: 12,
@@ -14,7 +14,7 @@ test('validating a request where mandatory fields are missing', async () => {
         pages: 156,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.MagazineIssue)
 
     expect(result)
         .toBeFalsy()
