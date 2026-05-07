@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
-import {CreateRacingSessionRawInput} from "../../../../../../../src/controllers/node-types/racing-sessions/types/CreateRacingSessionRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/racing-sessions/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test.each([
     [true, "2025-05-20", "14:00", 120, "min", 58, "laps"],
@@ -13,7 +13,7 @@ test.each([
 ])('validating a request where the fields have invalid data types', async (
     name, start_date, start_time, duration, duration_unit, distance, distance_unit
 ) => {
-    const data: CreateRacingSessionRawInput = {
+    const data = {
         name,
         start_date,
         start_time,
@@ -23,7 +23,7 @@ test.each([
         distance_unit,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.RacingSession)
 
     expect(result)
         .toBeFalsy()

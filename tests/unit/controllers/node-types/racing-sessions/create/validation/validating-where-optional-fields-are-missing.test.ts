@@ -1,9 +1,9 @@
 import {expect, test} from 'vitest'
-import {CreateRacingSessionRawInput} from "../../../../../../../src/controllers/node-types/racing-sessions/types/CreateRacingSessionRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/racing-sessions/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test('validating a valid request where optional fields are missing', async () => {
-    const data: CreateRacingSessionRawInput = {
+    const data = {
         name: "Grand Prix",
         start_date: undefined,
         start_time: undefined,
@@ -13,7 +13,7 @@ test('validating a valid request where optional fields are missing', async () =>
         distance_unit: undefined,
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.RacingSession)
 
     expect(result)
         .toBeTruthy()
