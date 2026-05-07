@@ -3,13 +3,10 @@ import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecif
 import {NodeType} from "../../../specification/NodeType"
 import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateBrandInput} from "../../../models/node-types/brands/types/CreateBrandInput"
+import {validateInputData} from "../../nodes/validateInputData"
 import {Brand} from "../../../models/node-types/brands/Brand"
 import {convertBrandModelNodeToControllerNode} from "./convertBrandModelNodeToControllerNode"
 import {marshalSingleNode} from "../../nodes/marshalSingleNode"
-import type {CreateBrandRawInput} from "./types/CreateBrandRawInput"
-import {isMandatoryString} from "../../validators/isMandatoryString"
-import {isOptionalString} from "../../validators/isOptionalString"
-import {isOptionalNumber} from "../../validators/isOptionalNumber"
 import {sendResponse201} from "../../responses/sendResponse201"
 import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
@@ -18,7 +15,7 @@ export async function create(req: express.Request, res: express.Response) {
     const propertyNames = getNodeTypeSpecification(NodeType.Brand).properties.map(prop => prop.name)
     const data = unmarshalInputData(req.body, propertyNames) as CreateBrandInput
 
-    if (!validate(data)) {
+    if (!validateInputData(data, NodeType.Brand)) {
         return sendResponse400(res)
     }
 
@@ -32,36 +29,4 @@ export async function create(req: express.Request, res: express.Response) {
         console.error(e)
         return sendResponse500(res)
     }
-}
-
-export function validate(data: CreateBrandRawInput): boolean {
-    if (!isMandatoryString(data.name)) {
-        return false
-    }
-
-    if (!isOptionalString(data.full_name)) {
-        return false
-    }
-
-    if (!isOptionalNumber(data.founded)) {
-        return false
-    }
-
-    if (!isOptionalNumber(data.defunct)) {
-        return false
-    }
-
-    if (!isOptionalString(data.wmi)) {
-        return false
-    }
-
-    if (!isOptionalString(data.hsn)) {
-        return false
-    }
-
-    if (!isOptionalString(data.country_code)) {
-        return false
-    }
-
-    return true
 }
