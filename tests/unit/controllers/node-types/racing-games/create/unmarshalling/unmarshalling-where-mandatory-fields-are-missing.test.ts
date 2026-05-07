@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/racing-games/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 
 test('unmarshalling a request where mandatory fields are missing', async () => {
     const data: unknown = {
@@ -7,7 +7,13 @@ test('unmarshalling a request where mandatory fields are missing', async () => {
         developer: "Turn 10 Studios",
         publisher: "Microsoft Studios",
     }
-    const result = unmarshalInputData(data)
+
+    const result = unmarshalInputData(data, [
+        'name',
+        'release_year',
+        'developer',
+        'publisher',
+    ])
 
     expect(result)
         .toStrictEqual({

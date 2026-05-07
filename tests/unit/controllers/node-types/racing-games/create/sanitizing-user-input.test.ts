@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {CreateRacingGameInput} from "../../../../../../src/models/node-types/racing-games/types/CreateRacingGameInput"
-import {sanitize} from "../../../../../../src/controllers/node-types/racing-games/create"
+import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
@@ -11,7 +11,12 @@ describe('Sanitizing user input', () => {
             publisher: "   Microsoft Studios  ",
         }
 
-        const result = sanitize(data)
+        const result = unmarshalInputData(data, [
+            'name',
+            'release_year',
+            'developer',
+            'publisher',
+        ])
 
         expect(result)
             .toStrictEqual({

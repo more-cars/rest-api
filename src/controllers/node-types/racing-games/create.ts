@@ -1,5 +1,7 @@
 import express from "express"
-import {unmarshalInputData} from "./marshalling/unmarshalInputData"
+import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
+import {NodeType} from "../../../specification/NodeType"
+import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateRacingGameInput} from "../../../models/node-types/racing-games/types/CreateRacingGameInput"
 import {RacingGame} from "../../../models/node-types/racing-games/RacingGame"
 import {convertRacingGameModelNodeToControllerNode} from "./convertRacingGameModelNodeToControllerNode"
@@ -13,16 +15,15 @@ import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshalInputData(req.body)
+    const propertyNames = getNodeTypeSpecification(NodeType.RacingGame).properties.map(prop => prop.name)
+    const data = unmarshalInputData(req.body, propertyNames) as CreateRacingGameInput
 
     if (!validate(data)) {
         return sendResponse400(res)
     }
 
-    const sanitizedData = sanitize(data as CreateRacingGameInput)
-
     try {
-        const modelNode = await RacingGame.create(sanitizedData)
+        const modelNode = await RacingGame.create(data)
         const node = convertRacingGameModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
 
@@ -52,13 +53,4 @@ export function validate(data: CreateRacingGameRawInput): boolean {
     }
 
     return true
-}
-
-export function sanitize(data: CreateRacingGameInput): CreateRacingGameInput {
-    return {
-        name: data.name.trim(),
-        release_year: data.release_year ? data.release_year : null,
-        developer: data.developer ? data.developer.trim() : null,
-        publisher: data.publisher ? data.publisher.trim() : null,
-    } satisfies CreateRacingGameInput
 }

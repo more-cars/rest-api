@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {unmarshalInputData} from "../../../../../../../src/controllers/node-types/racing-games/marshalling/unmarshalInputData"
+import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
 import type {CreateRacingGameRawInput} from "../../../../../../../src/controllers/node-types/racing-games/types/CreateRacingGameRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
@@ -10,7 +10,12 @@ test('unmarshalling a complete and valid request', async () => {
         publisher: "Microsoft Studios",
     }
 
-    const result = unmarshalInputData(data)
+    const result = unmarshalInputData(data, [
+        'name',
+        'release_year',
+        'developer',
+        'publisher',
+    ])
 
     expect(result)
         .toStrictEqual({
