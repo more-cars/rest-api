@@ -1,9 +1,9 @@
 import {expect, test} from 'vitest'
-import {CreateRacingSeriesRawInput} from "../../../../../../../src/controllers/node-types/racing-series/types/CreateRacingSeriesRawInput"
-import {validate} from "../../../../../../../src/controllers/node-types/racing-series/create"
+import {validateInputData} from "../../../../../../../src/controllers/nodes/validateInputData"
+import {NodeType} from "../../../../../../../src/specification/NodeType"
 
 test('validating a complete and valid request', async () => {
-    const data: CreateRacingSeriesRawInput = {
+    const data = {
         name: "Formula 1",
         short_name: "F1",
         founded: 1950,
@@ -13,7 +13,7 @@ test('validating a complete and valid request', async () => {
         country_code: "US",
     }
 
-    const result = validate(data)
+    const result = validateInputData(data, NodeType.RacingSeries)
 
     expect(result)
         .toBeTruthy()

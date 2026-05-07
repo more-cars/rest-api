@@ -1,9 +1,8 @@
 import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
-import type {CreateRacingSeriesRawInput} from "../../../../../../../src/controllers/node-types/racing-series/types/CreateRacingSeriesRawInput"
 
 test('unmarshalling a complete and valid request', async () => {
-    const data: CreateRacingSeriesRawInput = {
+    const data = {
         name: "Formula 1",
         short_name: "F1",
         founded: 1950,
