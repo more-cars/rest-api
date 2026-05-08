@@ -7,14 +7,21 @@ Then('the response should contain the following properties',
         const response = ResponseManager.getPreviousResponse()
         const data = response.body.attributes
 
-        const rows = dataTable.hashes()
-        rows.forEach((row) => {
-            if (row.datatype === 'string' || row.datatype === 'boolean') {
-                assert(data[row.key] === (row.value === '' ? null : row.value), `Expected property "${row.key}" to have value "${row.value}", but got "${data[row.key]}."`)
-            } else if (row.datatype === 'number') {
-                assert(data[row.key] === (row.value === '' ? null : parseFloat(row.value)), `Expected property "${row.key}" to have value "${row.value}", but got "${data[row.key]}."`)
+        const properties = dataTable.hashes()
+        properties.forEach((property) => {
+            if (property.value === '') {
+                assert(
+                    data[property.key] === null,
+                    `Expected property "${property.key}" to have value "null", but got "${data[property.key]}."`)
+            } else if (!isNaN(Number(property.value))) {
+                data[property.key] = Number(property.value)
+                assert(
+                    data[property.key] === Number(property.value),
+                    `Expected property "${property.key}" to have value "${property.value}", but got "${data[property.key]}."`)
             } else {
-                assert.fail(`Datatype information missing for property "${row.key}"`)
+                assert(
+                    data[property.key] = property.value,
+                    `Expected property "${property.key}" to have value "${property.value}", but got "${data[property.key]}."`)
             }
         })
     })
