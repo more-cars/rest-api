@@ -12,7 +12,7 @@ test('database query for creating a MAGAZINE node', async () => {
         focus: "sports cars",
         publication_frequency: "monthly",
         single_copy_price: 5.99,
-        single_copy_price_unit: "£",
+        single_copy_price_unit: "GBP",
         publication_format: "print",
         circulation: 150884,
         circulation_year: 2013,
@@ -34,7 +34,7 @@ test('database query for creating a MAGAZINE node', async () => {
             "  focus: 'sports cars',\n" +
             "  publication_frequency: 'monthly',\n" +
             "  single_copy_price: 5.99,\n" +
-            "  single_copy_price_unit: '£',\n" +
+            "  single_copy_price_unit: 'GBP',\n" +
             "  publication_format: 'print',\n" +
             "  circulation: 150884,\n" +
             "  circulation_year: 2013,\n" +

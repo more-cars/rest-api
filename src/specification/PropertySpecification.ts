@@ -3,5 +3,5 @@ export type PropertySpecification = {
     datatype: 'string' | 'number' | 'boolean'
     mandatory: boolean
     example?: string | number | boolean | null
-    validation?: 'isValidCountryCode'
+    validation?: 'isValidCountryCode' | 'isValidCurrencyCode'
 }

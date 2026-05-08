@@ -10,7 +10,7 @@ test('validating a complete and valid request', async () => {
         focus: "sports cars",
         publication_frequency: "monthly",
         single_copy_price: 5.99,
-        single_copy_price_unit: "£",
+        single_copy_price_unit: "GBP",
         publication_format: "print",
         circulation: 150884,
         circulation_year: 2013,

@@ -21,6 +21,7 @@ export const PriceNodeSpecification: NodeSpecification = {
             datatype: 'string',
             mandatory: true,
             example: 'EUR',
+            validation: 'isValidCurrencyCode'
         },
         {
             name: 'country_code',

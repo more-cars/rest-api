@@ -11,7 +11,7 @@ export const FakeMagazineIssue = {
         issue_year: faker.number.int({min: 1000, max: 3000}),
         release_date: faker.date.past().toISOString().substring(0, 10),
         single_copy_price: faker.number.float({min: 1, max: 50, fractionDigits: 2}),
-        single_copy_price_unit: faker.finance.currency().symbol,
+        single_copy_price_unit: faker.finance.currency().code,
         pages: faker.number.int({min: 50, max: 250}),
     } as InputMagazineIssueCreate,
 
@@ -29,7 +29,7 @@ export const FakeMagazineIssue = {
             issue_year: faker.number.int({min: 1000, max: 3000}),
             release_date: faker.date.past().toISOString().substring(0, 10),
             single_copy_price: faker.number.float({min: 1, max: 50, fractionDigits: 2}),
-            single_copy_price_unit: faker.finance.currency().symbol,
+            single_copy_price_unit: faker.finance.currency().code,
             pages: faker.number.int({min: 50, max: 250}),
             created_at: faker.date.past().toISOString(),
             updated_at: faker.date.past().toISOString(),

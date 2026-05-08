@@ -12,7 +12,7 @@ test('single quotes are correctly escaped', async () => {
         focus: "'sports cars",
         publication_frequency: "'monthly",
         single_copy_price: null,
-        single_copy_price_unit: "'£",
+        single_copy_price_unit: "'GBP",
         publication_format: "'print",
         circulation: null,
         circulation_year: null,
@@ -34,7 +34,7 @@ test('single quotes are correctly escaped', async () => {
             "  focus: '\\'sports cars',\n" +
             "  publication_frequency: '\\'monthly',\n" +
             "  single_copy_price: null,\n" +
-            "  single_copy_price_unit: '\\'£',\n" +
+            "  single_copy_price_unit: '\\'GBP',\n" +
             "  publication_format: '\\'print',\n" +
             "  circulation: null,\n" +
             "  circulation_year: null,\n" +
