@@ -1,5 +1,6 @@
 import {select} from "@inquirer/prompts"
 import inquirer from 'inquirer'
+import {getNodeTypeSpecification} from "../src/specification/getNodeTypeSpecification"
 import {convertToCliParameters} from "./lib/convertToCliParameters"
 import {spawnShellCommand} from "./lib/spawnShellCommand"
 
@@ -9,8 +10,10 @@ async function generateCodeForFeature() {
     const typeOfData = await promptTypeOfData() as 'node' | 'relationship'
     const typeOfFeature = await promptTypeOfFeature(typeOfData)
     const featureParameters = await promptFeatureParameters(typeOfData, typeOfFeature)
+    const nodeSpecs = getNodeTypeSpecification(featureParameters['nodeType'])
+    const nodeTypeProperties = nodeSpecs.properties.map(property => property)
     const cliParameters = convertToCliParameters(featureParameters)
-    const hygenCommand = `HYGEN_OVERWRITE=1 HYGEN_TMPLS='${__dirname}' hygen ${typeOfData} ${typeOfFeature} ${cliParameters}`
+    const hygenCommand = `HYGEN_OVERWRITE=1 HYGEN_TMPLS='${__dirname}' hygen ${typeOfData} ${typeOfFeature} ${cliParameters} --props='${JSON.stringify(nodeTypeProperties)}'`
     console.log(hygenCommand)
     await spawnShellCommand(hygenCommand)
 }
@@ -33,6 +36,7 @@ async function promptTypeOfFeature(typeOfData: 'node' | 'relationship') {
         case 'node':
             choices.push({value: 'get-by-id'})
             choices.push({value: 'get-all'})
+            choices.push({value: 'update'})
             choices.push({value: 'delete'})
             break
         case 'relationship':
