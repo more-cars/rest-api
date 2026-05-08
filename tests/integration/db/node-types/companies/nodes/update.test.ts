@@ -1,0 +1,52 @@
+import {describe, expect, test} from 'vitest'
+import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
+import {updateDbNode} from "../../../../../../src/db/nodes/updateDbNode"
+import type {InputCompanyCreate} from "../../../../../../src/db/node-types/companies/types/InputCompanyCreate"
+import type {CompanyNode} from "../../../../../../src/db/node-types/companies/types/CompanyNode"
+
+describe('Updating COMPANY', () => {
+    test('with valid data', async () => {
+        const createdNode = await seedNode(DbNodeType.Company)
+
+        // @ts-ignore TODO workaround until the node faker can return fresh copies, instead of cached ones
+        const {FakeCompany} = await import("../../../../../_toolbox/fixtures/nodes/FakeCompany?update=${Date.now()}")
+        const inputData = FakeCompany.dbInput
+        const updatedNode = await updateDbNode(DbNodeType.Company, createdNode.properties.id, inputData)
+
+        expect(updatedNode.properties)
+            .not.toEqual(expect.objectContaining(createdNode.properties))
+
+        expect(updatedNode.properties)
+            .toEqual(expect.objectContaining(inputData))
+    })
+
+    test('with the same data', async () => {
+        const createdNode = await seedNode(DbNodeType.Company)
+        const inputData = createdNode.properties as unknown as InputCompanyCreate
+        const updatedNode = await updateDbNode(DbNodeType.Company, createdNode.properties.id, inputData)
+
+        expect(updatedNode.properties.updated_at)
+            .not.toEqual(createdNode.properties.updated_at)
+
+        createdNode.properties.updated_at = ''
+        updatedNode.properties.updated_at = ''
+
+        expect(updatedNode.properties)
+            .toEqual(expect.objectContaining(createdNode.properties))
+
+        expect(updatedNode.properties)
+            .toEqual(expect.objectContaining(inputData))
+    })
+
+    test('removing a field', async () => {
+        const createdNode = await seedNode(DbNodeType.Company)
+        const inputData = createdNode.properties as unknown as InputCompanyCreate
+        // @ts-ignore
+        inputData.name = null
+        const updatedNode = await updateDbNode(DbNodeType.Company, createdNode.properties.id, inputData) as CompanyNode
+
+        expect(updatedNode.properties.name)
+            .toBeNull()
+    })
+})

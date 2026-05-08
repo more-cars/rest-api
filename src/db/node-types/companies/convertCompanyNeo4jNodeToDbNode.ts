@@ -12,13 +12,13 @@ export function convertCompanyNeo4jNodeToDbNode(neo4jNode: Node): CompanyNode {
             updated_at: neo4jNode.properties.updated_at,
 
             // user data
-            name: neo4jNode.properties.name,
-            founded: neo4jNode.properties.founded,
-            defunct: neo4jNode.properties.defunct,
-            headquarters_location: neo4jNode.properties.headquarters_location,
-            hq_country_code: neo4jNode.properties.hq_country_code,
-            legal_headquarters_location: neo4jNode.properties.legal_headquarters_location,
-            legal_hq_country_code: neo4jNode.properties.legal_hq_country_code,
+            name: neo4jNode.properties.name || null,
+            founded: neo4jNode.properties.founded || null,
+            defunct: neo4jNode.properties.defunct || null,
+            headquarters_location: neo4jNode.properties.headquarters_location || null,
+            hq_country_code: neo4jNode.properties.hq_country_code || null,
+            legal_headquarters_location: neo4jNode.properties.legal_headquarters_location || null,
+            legal_hq_country_code: neo4jNode.properties.legal_hq_country_code || null,
         },
     } satisfies CompanyNode
 }

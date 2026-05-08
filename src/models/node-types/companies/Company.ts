@@ -4,6 +4,8 @@ import {convertInputData} from "./create/convertInputData"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/companies/getNodeById"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
+import {updateDbNode} from "../../../db/nodes/updateDbNode"
+import type {CompanyInput} from "./types/CompanyInput"
 import {deleteNode} from "../../../db/nodes/deleteNode"
 import {Brand} from "../brands/Brand"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
@@ -51,6 +53,19 @@ export const Company = {
         })
 
         return nodes
+    },
+
+    async update(id: number, data: CompanyInput): Promise<CompanyNode> {
+        const node = await getNodeById(id)
+
+        if (!node) {
+            throw new NodeNotFoundError(id)
+        }
+
+        const input = convertInputData(data as CreateCompanyInput)
+        const result = await updateDbNode(DbNodeType.Company, id, input)
+
+        return convertDbNodeToModelNode(result) as CompanyNode
     },
 
     async delete(id: number): Promise<void> {

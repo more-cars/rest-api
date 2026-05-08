@@ -1,0 +1,41 @@
+info:
+  name: Update Company (valid data)
+  type: http
+  tags:
+    - update
+    - node
+    - valid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/companies/{{validCompanyId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "BMW AG - Updated",
+        "founded": 1918,
+        "defunct": null,
+        "headquarters_location": "Munich - Updated",
+        "hq_country_code": "AT",
+        "legal_headquarters_location": "Munich - Updated",
+        "legal_hq_country_code": "AT"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validCompanyId}}"
+  scripts:
+    - type: tests
+      code: |-
+        test("both timestamps should be different", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)
+        })

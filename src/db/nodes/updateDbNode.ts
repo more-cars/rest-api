@@ -1,6 +1,5 @@
 import neo4j, {Node} from "neo4j-driver"
 import type {DbNodeType} from "../types/DbNodeType"
-import type {InputNodeTypeCreate} from "../types/InputNodeTypeCreate"
 import type {DbNode} from "../types/DbNode"
 import {getDriver} from "../driver"
 import type {QueryInputData} from "../types/QueryInputData"
@@ -12,16 +11,16 @@ import {mapDbNodeTypeToNeo4jNodeType} from "./mapDbNodeTypeToNeo4jNodeType"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {escapeSingleQuotes} from "./escapeSingleQuotes"
 
-export async function updateDbNode(nodeType: DbNodeType, id: number, data: InputNodeTypeCreate): Promise<DbNode> {
+export async function updateDbNode(nodeType: DbNodeType, id: number, data: QueryInputData): Promise<DbNode> {
     const driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
     try {
         const node = await session.executeWrite(async txc => {
-            const queryInputData: QueryInputData = data
-            queryInputData.updated_at = new Date().toISOString()
+            const inputData = {...data}
+            inputData.updated_at = new Date().toISOString()
 
-            const result = await runNeo4jQuery(updateNodeQuery(nodeType, id, queryInputData), txc)
+            const result = await runNeo4jQuery(updateNodeQuery(nodeType, id, inputData), txc)
             return result.records[0].get('n') as Node
         })
 
@@ -46,6 +45,10 @@ function getCypherFormattedProperties(data: QueryInputData) {
     const lines: string[] = []
 
     for (const property in data) {
+        if (data[property] === undefined) {
+            continue
+        }
+
         const line: string[] = []
         const indentation = '  '
 
