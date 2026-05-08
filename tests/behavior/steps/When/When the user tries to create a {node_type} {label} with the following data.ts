@@ -1,33 +1,26 @@
 import {DataTable, When} from "@cucumber/cucumber"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {performApiRequest} from "../../lib/performApiRequest"
-import {NodeManager} from "../../lib/NodeManager"
-import {convertNodeResponseToNode} from "../../lib/convertNodeResponseToNode"
 
-When('the user tries to create a {string} {string} with the following data',
-    async (nodeType: string, label: string, dataTable: DataTable) => {
-        const rows = dataTable.hashes()
-
+When('the user tries to create a {string} with the following data',
+    async (nodeType: string, dataTable: DataTable) => {
         const data: any = {}
-        rows.forEach((row) => {
-            switch (row.datatype) {
-                case 'string':
-                    data[row.key] = row.value
-                    break
-                case 'number':
-                    data[row.key] = parseFloat(row.value)
-                    break
-                case 'boolean':
-                    data[row.key] = (row.value.toLowerCase() === 'true')
-                    break
+
+        const properties = dataTable.hashes()
+        properties.forEach((property) => {
+            if (!isNaN(Number(property.value))) {
+                data[property.key] = Number(property.value)
+            } else if (property.value === 'true') {
+                data[property.key] = true
+            } else if (property.value === 'false') {
+                data[property.key] = false
+            } else {
+                data[property.key] = property.value
             }
         })
 
         const nodePath = getBasePathFragmentForNodeType(nodeType)
         const path = `/${nodePath}`
 
-        const response = await performApiRequest(path, 'POST', data)
-        if (response.status_code < 400) {
-            NodeManager.cacheNode(convertNodeResponseToNode(response.body), label)
-        }
+        await performApiRequest(path, 'POST', data)
     })
