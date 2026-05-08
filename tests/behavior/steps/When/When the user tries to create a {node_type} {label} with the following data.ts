@@ -8,7 +8,9 @@ When('the user tries to create a {string} with the following data',
 
         const properties = dataTable.hashes()
         properties.forEach((property) => {
-            if (!isNaN(Number(property.value))) {
+            if (property.value === '') {
+                data[property.key] = null
+            } else if (!isNaN(Number(property.value))) {
                 data[property.key] = Number(property.value)
             } else if (property.value === 'true') {
                 data[property.key] = true
