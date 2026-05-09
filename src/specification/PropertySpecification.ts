@@ -7,6 +7,7 @@ export type PropertySpecification = {
     validation?: (
         'mandatory' |
         'string' |
+        'number' |
         'isValidCountryCode' |
         'isValidCurrencyCode' |
         'isValidIssn')[]

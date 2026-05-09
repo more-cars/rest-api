@@ -10,6 +10,7 @@ import {isValidVideoPlatform} from "../validators/isValidVideoPlatform"
 import {isValidCountryCode} from "../validators/isValidCountryCode"
 import {isValidCurrencyCode} from "../validators/isValidCurrencyCode"
 import {isMandatory} from "../validators/isMandatory"
+import {isNumber} from "../validators/isNumber"
 import {isString} from "../validators/isString"
 import {isValidIssn} from "../validators/isValidIssn"
 
@@ -67,6 +68,12 @@ export function validateInputData(data: RawInputData, nodeType: NodeType): boole
 
             if (property.validation.includes('string')) {
                 if (!isString(data[property.name])) {
+                    isValid = false
+                }
+            }
+
+            if (property.validation.includes('number')) {
+                if (!isNumber(data[property.name])) {
                     isValid = false
                 }
             }
