@@ -10,7 +10,7 @@ export const CompanyNodeSpecification: NodeSpecification = {
             mandatory: true,
             example: 'BMW AG',
             scope: 'user',
-            validation: ['mandatory', 'string']
+            validation: ['mandatory', 'string'],
         },
         {
             name: 'founded',
@@ -18,7 +18,7 @@ export const CompanyNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 1916,
             scope: 'user',
-            validation: ['number']
+            validation: ['number'],
         },
         {
             name: 'defunct',
@@ -26,7 +26,7 @@ export const CompanyNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: null,
             scope: 'user',
-            validation: ['number']
+            validation: ['number'],
         },
         {
             name: 'headquarters_location',
@@ -34,7 +34,7 @@ export const CompanyNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'Munich',
             scope: 'user',
-            validation: ['string']
+            validation: ['string'],
         },
         {
             name: 'hq_country_code',
@@ -50,7 +50,7 @@ export const CompanyNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'Munich',
             scope: 'user',
-            validation: ['string']
+            validation: ['string'],
         },
         {
             name: 'legal_hq_country_code',

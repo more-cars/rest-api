@@ -9,19 +9,23 @@ export const PriceNodeSpecification: NodeSpecification = {
             datatype: 'number',
             mandatory: true,
             example: 59990,
+            scope: 'user',
+            validation: ['mandatory', 'string'],
         },
         {
             name: 'price_year',
             datatype: 'number',
             mandatory: true,
             example: 2020,
+            scope: 'user',
+            validation: ['number'],
         },
         {
             name: 'currency_code',
             datatype: 'string',
             mandatory: true,
             example: 'EUR',
-            validation: ['isValidCurrencyCode']
+            validation: ['isValidCurrencyCode'],
         },
         {
             name: 'country_code',
