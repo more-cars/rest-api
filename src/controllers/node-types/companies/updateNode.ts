@@ -18,7 +18,7 @@ export async function updateNode(req: express.Request, res: express.Response) {
     const propertyNames = getNodeTypeSpecification(NodeType.Company).properties.map(prop => prop.name)
     const data = unmarshalInputData(req.body, propertyNames) as CompanyInput
 
-    if (!validateInputData(data, NodeType.Company)) {
+    if (!validateInputData(data, NodeType.Company, 'UPDATE')) {
         return sendResponse400(res)
     }
 

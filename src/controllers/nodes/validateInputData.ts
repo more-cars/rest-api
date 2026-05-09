@@ -14,7 +14,7 @@ import {isNumber} from "../validators/isNumber"
 import {isString} from "../validators/isString"
 import {isValidIssn} from "../validators/isValidIssn"
 
-export function validateInputData(data: RawInputData, nodeType: NodeType): boolean {
+export function validateInputData(data: RawInputData, nodeType: NodeType, mode: 'CREATE' | 'UPDATE' = 'CREATE'): boolean {
     let isValid = true
 
     const properties = getNodeTypeSpecification(nodeType).properties
@@ -60,7 +60,7 @@ export function validateInputData(data: RawInputData, nodeType: NodeType): boole
                 }
             }
         } else {
-            if (property.validation.includes('mandatory')) {
+            if (property.validation.includes('mandatory') && (mode === 'CREATE' || data[property.name] === null)) {
                 if (!isMandatory(data[property.name])) {
                     isValid = false
                 }
