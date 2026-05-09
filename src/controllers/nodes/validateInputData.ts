@@ -9,6 +9,9 @@ import {isValidImagePlatform} from "../validators/isValidImagePlatform"
 import {isValidVideoPlatform} from "../validators/isValidVideoPlatform"
 import {isValidCountryCode} from "../validators/isValidCountryCode"
 import {isValidCurrencyCode} from "../validators/isValidCurrencyCode"
+import {isMandatory} from "../validators/isMandatory"
+import {isString} from "../validators/isString"
+import {isValidIssn} from "../validators/isValidIssn"
 
 export function validateInputData(data: RawInputData, nodeType: NodeType, onlyCheckTheseProperties?: string[]): boolean {
     let isValid = true
@@ -21,51 +24,71 @@ export function validateInputData(data: RawInputData, nodeType: NodeType, onlyCh
             }
         }
 
-        if (property.datatype === 'string' && property.mandatory) {
-            if (!isMandatoryString(data[property.name])) {
-                isValid = false
+        if (!property.validation) { // TODO oldschool checks, can be removed after all specs have been updated to contain validation rules
+            if (property.datatype === 'string' && property.mandatory) {
+                if (!isMandatoryString(data[property.name])) {
+                    isValid = false
+                }
             }
-        }
 
-        if (property.datatype === 'string' && !property.mandatory) {
-            if (!isOptionalString(data[property.name])) {
-                isValid = false
+            if (property.datatype === 'string' && !property.mandatory) {
+                if (!isOptionalString(data[property.name])) {
+                    isValid = false
+                }
             }
-        }
 
-        if (property.datatype === 'number' && property.mandatory) {
-            if (!isMandatoryNumber(data[property.name])) {
-                isValid = false
+            if (property.datatype === 'number' && property.mandatory) {
+                if (!isMandatoryNumber(data[property.name])) {
+                    isValid = false
+                }
             }
-        }
 
-        if (property.datatype === 'number' && !property.mandatory) {
-            if (!isOptionalNumber(data[property.name])) {
-                isValid = false
+            if (property.datatype === 'number' && !property.mandatory) {
+                if (!isOptionalNumber(data[property.name])) {
+                    isValid = false
+                }
             }
-        }
 
-        if (property.validation === 'isValidCountryCode') {
-            if (!isValidCountryCode(data[property.name])) {
-                isValid = false
+            if (property.name === 'image_provider') {
+                if (!isValidImagePlatform(data[property.name])) {
+                    isValid = false
+                }
             }
-        }
 
-        if (property.validation === 'isValidCurrencyCode') {
-            if (!isValidCurrencyCode(data[property.name])) {
-                isValid = false
+            if (property.name === 'video_provider') {
+                if (!isValidVideoPlatform(data[property.name])) {
+                    isValid = false
+                }
             }
-        }
-
-        if (property.name === 'image_provider') {
-            if (!isValidImagePlatform(data[property.name])) {
-                isValid = false
+        } else {
+            if (property.validation.includes('mandatory')) {
+                if (!isMandatory(data[property.name])) {
+                    isValid = false
+                }
             }
-        }
 
-        if (property.name === 'video_provider') {
-            if (!isValidVideoPlatform(data[property.name])) {
-                isValid = false
+            if (property.validation.includes('string')) {
+                if (!isString(data[property.name])) {
+                    isValid = false
+                }
+            }
+
+            if (property.validation.includes('isValidCountryCode')) {
+                if (!isValidCountryCode(data[property.name])) {
+                    isValid = false
+                }
+            }
+
+            if (property.validation.includes('isValidCurrencyCode')) {
+                if (!isValidCurrencyCode(data[property.name])) {
+                    isValid = false
+                }
+            }
+
+            if (property.validation.includes('isValidIssn')) {
+                if (!isValidIssn(data[property.name])) {
+                    isValid = false
+                }
             }
         }
     })

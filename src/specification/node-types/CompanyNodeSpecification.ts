@@ -9,6 +9,7 @@ export const CompanyNodeSpecification: NodeSpecification = {
             datatype: 'string',
             mandatory: true,
             example: 'BMW AG',
+            validation: ['mandatory', 'string']
         },
         {
             name: 'founded',
@@ -33,7 +34,7 @@ export const CompanyNodeSpecification: NodeSpecification = {
             datatype: 'string',
             mandatory: false,
             example: 'DE',
-            validation: 'isValidCountryCode',
+            validation: ['isValidCountryCode'],
         },
         {
             name: 'legal_headquarters_location',
@@ -46,7 +47,7 @@ export const CompanyNodeSpecification: NodeSpecification = {
             datatype: 'string',
             mandatory: false,
             example: 'DE',
-            validation: 'isValidCountryCode',
+            validation: ['isValidCountryCode'],
         },
     ],
 }

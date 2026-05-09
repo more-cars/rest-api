@@ -21,14 +21,14 @@ export const PriceNodeSpecification: NodeSpecification = {
             datatype: 'string',
             mandatory: true,
             example: 'EUR',
-            validation: 'isValidCurrencyCode'
+            validation: ['isValidCurrencyCode']
         },
         {
             name: 'country_code',
             datatype: 'string',
             mandatory: true,
             example: 'DE',
-            validation: 'isValidCountryCode',
+            validation: ['isValidCountryCode'],
         },
     ],
 }
