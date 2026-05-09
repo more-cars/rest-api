@@ -14,7 +14,7 @@ test.each([
         external_id,
     }
 
-    const result = validateInputData(data, NodeType.Video, ['video_provider', 'external_id'])
+    const result = validateInputData(data, NodeType.Video)
 
     expect(result)
         .toBeFalsy()

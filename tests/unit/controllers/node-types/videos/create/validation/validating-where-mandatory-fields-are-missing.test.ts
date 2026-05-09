@@ -8,7 +8,7 @@ test('validating a request where mandatory fields are missing', async () => {
         external_id: undefined,
     }
 
-    const result = validateInputData(data, NodeType.Video, ['video_provider', 'external_id'])
+    const result = validateInputData(data, NodeType.Video)
 
     expect(result)
         .toBeFalsy()

@@ -13,7 +13,7 @@ test.each([
         image_provider,
     }
 
-    const result = validateInputData(data, NodeType.Image, ['image_provider', 'external_id'])
+    const result = validateInputData(data, NodeType.Image)
 
     expect(result)
         .toBeFalsy()

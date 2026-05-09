@@ -8,7 +8,7 @@ test('validating a request where mandatory fields are missing', async () => {
         image_provider: undefined,
     }
 
-    const result = validateInputData(data, NodeType.Image, ['image_provider', 'external_id'])
+    const result = validateInputData(data, NodeType.Image)
 
     expect(result)
         .toBeFalsy()

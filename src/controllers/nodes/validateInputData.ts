@@ -13,15 +13,13 @@ import {isMandatory} from "../validators/isMandatory"
 import {isString} from "../validators/isString"
 import {isValidIssn} from "../validators/isValidIssn"
 
-export function validateInputData(data: RawInputData, nodeType: NodeType, onlyCheckTheseProperties?: string[]): boolean {
+export function validateInputData(data: RawInputData, nodeType: NodeType): boolean {
     let isValid = true
 
     const properties = getNodeTypeSpecification(nodeType).properties
     properties.forEach((property) => {
-        if (onlyCheckTheseProperties) {
-            if (!onlyCheckTheseProperties.includes(property.name)) {
-                return
-            }
+        if (property.scope === 'system') {
+            return
         }
 
         if (!property.validation) { // TODO oldschool checks, can be removed after all specs have been updated to contain validation rules

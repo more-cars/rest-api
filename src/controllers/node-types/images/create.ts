@@ -1,8 +1,9 @@
 import express from "express"
+import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
+import {NodeType} from "../../../specification/NodeType"
 import {unmarshalInputData} from "../../nodes/unmarshalInputData"
 import {CreateImageInput} from "../../../models/node-types/images/types/CreateImageInput"
 import {validateInputData} from "../../nodes/validateInputData"
-import {NodeType} from "../../../specification/NodeType"
 import {Image} from "../../../models/node-types/images/Image"
 import {convertImageModelNodeToControllerNode} from "./convertImageModelNodeToControllerNode"
 import {marshalSingleNode} from "../../nodes/marshalSingleNode"
@@ -17,9 +18,13 @@ import {sendResponse422} from "../../responses/sendResponse422"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function create(req: express.Request, res: express.Response) {
-    const data = unmarshalInputData(req.body, ['image_provider', 'external_id']) as CreateImageInput
+    const propertyNames = getNodeTypeSpecification(NodeType.Image)
+        .properties
+        .filter(prop => prop.scope !== 'system')
+        .map(prop => prop.name)
+    const data = unmarshalInputData(req.body, propertyNames) as CreateImageInput
 
-    if (!validateInputData(data, NodeType.Image, ['image_provider', 'external_id'])) {
+    if (!validateInputData(data, NodeType.Image)) {
         return sendResponse400(res)
     }
 

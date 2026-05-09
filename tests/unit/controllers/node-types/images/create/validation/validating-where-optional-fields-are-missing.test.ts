@@ -8,7 +8,7 @@ test('validating a valid request where optional fields are missing', async () =>
         external_id: "2011-03-04 Autosalon Genf 1391.JPG"
     }
 
-    const result = validateInputData(data, NodeType.Image, ['image_provider', 'external_id'])
+    const result = validateInputData(data, NodeType.Image)
 
     expect(result)
         .toBeTruthy()

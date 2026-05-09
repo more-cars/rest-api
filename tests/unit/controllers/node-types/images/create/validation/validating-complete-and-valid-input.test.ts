@@ -9,7 +9,7 @@ describe('Validating a complete and valid request', () => {
             external_id: 'FL123456',
         }
 
-        const result = validateInputData(data, NodeType.Image, ['image_provider', 'external_id'])
+        const result = validateInputData(data, NodeType.Image)
 
         expect(result)
             .toBeTruthy()
@@ -21,7 +21,7 @@ describe('Validating a complete and valid request', () => {
             external_id: "2011-03-04 Autosalon Genf 1391.JPG"
         }
 
-        const result = validateInputData(data, NodeType.Image, ['image_provider', 'external_id'])
+        const result = validateInputData(data, NodeType.Image)
 
         expect(result)
             .toBeTruthy()
