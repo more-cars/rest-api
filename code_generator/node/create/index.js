@@ -35,6 +35,19 @@ module.exports = {
                         name: 'properties.' + prop + '.example',
                         type: 'input',
                     })
+
+                    questions.push({
+                        message: `Scope of property "${prop}"?`,
+                        name: 'properties.' + prop + '.scope',
+                        type: 'select',
+                        choices: ['user', 'system'],
+                    })
+
+                    questions.push({
+                        message: `Validation rules of property "${prop}"? (comma-separated list)`,
+                        name: 'properties.' + prop + '.validation',
+                        type: 'input',
+                    })
                 })
 
                 return inquirer

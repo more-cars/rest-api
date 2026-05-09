@@ -12,6 +12,9 @@ export const <%= h.changeCase.pascal(nodeType) %>NodeSpecification: NodeSpecific
             name: '<%= prop -%>',
             datatype: '<%= properties[prop].datatype -%>',
             mandatory: <%= properties[prop].mandatory -%>,
+            example: <%= properties[prop].example -%>,
+            scope: <%= properties[prop].scope -%>,
+            validation: [<%= properties[prop].validation -%>],
         },
 <% } -%>
     ],
