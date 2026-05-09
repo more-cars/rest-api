@@ -1,9 +1,11 @@
 import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
-import {app} from "../../../../../src/app.ts"
 import {Company} from "../../../../../src/models/node-types/companies/Company"
 import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
+import {app} from "../../../../../src/app.ts"
 import {FakeCompany} from "../../../../_toolbox/fixtures/nodes/FakeCompany"
+import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 
 describe('Update COMPANY', () => {
     test('Node does not exist', async () => {
@@ -49,6 +51,34 @@ describe('Update COMPANY', () => {
 
         expect(response.statusCode)
             .toBe(400)
+    })
+
+    test('Trying to remove a mandatory field', async () => {
+        const createdNode = await seedNode(DbNodeType.Company)
+        const inputData = createdNode.properties
+        // @ts-ignore
+        inputData.name = null
+
+        const response = await request(app)
+            .patch('/companies/' + createdNode.properties.id)
+            .send(inputData)
+
+        expect(response.statusCode)
+            .toBe(400)
+    })
+
+    test('Removing an optional field', async () => {
+        const createdNode = await seedNode(DbNodeType.Company)
+        const inputData = createdNode.properties
+        // @ts-ignore
+        inputData.founded = null
+
+        const response = await request(app)
+            .patch('/companies/' + createdNode.properties.id)
+            .send(inputData)
+
+        expect(response.statusCode)
+            .toBe(201)
     })
 
     test('Input is valid, but something breaks on the way', async () => {
