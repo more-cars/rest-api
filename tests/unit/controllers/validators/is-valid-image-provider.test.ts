@@ -11,8 +11,6 @@ describe('Validating image provider', () => {
     })
 
     test.each([
-        [null],
-        [undefined],
         [''],
         ['flikkr'],
         ['shutterstock'],

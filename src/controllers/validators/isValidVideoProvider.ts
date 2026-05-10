@@ -1,6 +1,10 @@
 export function isValidVideoProvider(value: unknown) {
-    if (!value) {
-        return false
+    if (value === null) {
+        return true
+    }
+
+    if (value === undefined) {
+        return true
     }
 
     if (typeof value !== "string") {

@@ -10,7 +10,7 @@ export const VideoNodeSpecification: NodeSpecification = {
             mandatory: true,
             example: 'youtube',
             scope: 'user',
-            validation: ['mandatory', 'string'],
+            validation: ['mandatory', 'videoProvider'],
         },
         {
             name: 'external_id',
@@ -18,7 +18,7 @@ export const VideoNodeSpecification: NodeSpecification = {
             mandatory: true,
             example: 'NqsBncRslsg',
             scope: 'user',
-            validation: ['mandatory', 'videoProvider'],
+            validation: ['mandatory', 'string'],
         },
         {
             name: 'title',

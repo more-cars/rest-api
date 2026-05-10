@@ -10,8 +10,6 @@ describe('video image provider', () => {
     })
 
     test.each([
-        [null],
-        [undefined],
         [''],
         ['yuutube'],
         ['vimeo'],
