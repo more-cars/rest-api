@@ -10,7 +10,7 @@ export const RatingNodeSpecification: NodeSpecification = {
             mandatory: true,
             example: 93,
             scope: 'user',
-            validation: ['mandatory', 'string'],
+            validation: ['mandatory', 'number'],
         },
         {
             name: 'scale_minimum',
@@ -18,7 +18,7 @@ export const RatingNodeSpecification: NodeSpecification = {
             mandatory: true,
             example: 0,
             scope: 'user',
-            validation: ['number'],
+            validation: ['mandatory', 'number'],
         },
         {
             name: 'scale_maximum',
@@ -26,7 +26,7 @@ export const RatingNodeSpecification: NodeSpecification = {
             mandatory: true,
             example: 100,
             scope: 'user',
-            validation: ['number'],
+            validation: ['mandatory', 'number'],
         },
         {
             name: 'scale_direction',
@@ -34,7 +34,7 @@ export const RatingNodeSpecification: NodeSpecification = {
             mandatory: true,
             example: 'up',
             scope: 'user',
-            validation: ['string'],
+            validation: ['mandatory', 'string'],
         },
     ],
 }

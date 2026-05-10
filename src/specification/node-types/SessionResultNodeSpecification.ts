@@ -10,7 +10,7 @@ export const SessionResultNodeSpecification: NodeSpecification = {
             mandatory: true,
             example: 1,
             scope: 'user',
-            validation: ['mandatory', 'string'],
+            validation: ['mandatory', 'number'],
         },
         {
             name: 'race_number',
@@ -26,7 +26,7 @@ export const SessionResultNodeSpecification: NodeSpecification = {
             mandatory: true,
             example: 'Lewis Hamilton',
             scope: 'user',
-            validation: ['string'],
+            validation: ['mandatory', 'string'],
         },
         {
             name: 'team_name',
