@@ -1,4 +1,4 @@
-export function isValidVideoPlatform(value: unknown) {
+export function isValidVideoProvider(value: unknown) {
     if (!value) {
         return false
     }

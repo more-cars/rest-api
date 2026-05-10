@@ -8,6 +8,8 @@ export type PropertySpecification = {
         'mandatory' |
         'string' |
         'number' |
+        'imageProvider' |
+        'videoProvider' |
         'isValidCountryCode' |
         'isValidCurrencyCode' |
         'isValidIssn')[]

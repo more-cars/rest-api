@@ -10,7 +10,7 @@ export const ImageNodeSpecification: NodeSpecification = {
             mandatory: true,
             example: 'flickr',
             scope: 'user',
-            validation: ['mandatory', 'string'],
+            validation: ['mandatory', 'imageProvider'],
         },
         {
             name: 'external_id',

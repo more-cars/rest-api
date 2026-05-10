@@ -18,7 +18,7 @@ export const VideoNodeSpecification: NodeSpecification = {
             mandatory: true,
             example: 'NqsBncRslsg',
             scope: 'user',
-            validation: ['mandatory', 'string'],
+            validation: ['mandatory', 'videoProvider'],
         },
         {
             name: 'title',

@@ -1,11 +1,11 @@
 import {describe, expect, test} from "vitest"
-import {isValidVideoPlatform} from "../../../../src/controllers/validators/isValidVideoPlatform"
+import {isValidVideoProvider} from "../../../../src/controllers/validators/isValidVideoProvider"
 
 describe('video image provider', () => {
     test.each([
         ['youtube'],
     ])('valid value: $0', async (input) => {
-        expect(isValidVideoPlatform(input))
+        expect(isValidVideoProvider(input))
             .toBeTruthy()
     })
 
@@ -22,7 +22,7 @@ describe('video image provider', () => {
         [false],
         [NaN],
     ])('invalid value: $0', async (input) => {
-        expect(isValidVideoPlatform(input))
+        expect(isValidVideoProvider(input))
             .toBeFalsy()
     })
 })

@@ -1,11 +1,13 @@
 import type {RawInputData} from "../types/RawInputData"
 import {NodeType} from "../../specification/NodeType"
 import {getNodeTypeSpecification} from "../../specification/getNodeTypeSpecification"
+import {isMandatory} from "../validators/isMandatory"
+import {isString} from "../validators/isString"
+import {isNumber} from "../validators/isNumber"
+import {isValidImageProvider} from "../validators/isValidImageProvider"
+import {isValidVideoProvider} from "../validators/isValidVideoProvider"
 import {isValidCountryCode} from "../validators/isValidCountryCode"
 import {isValidCurrencyCode} from "../validators/isValidCurrencyCode"
-import {isMandatory} from "../validators/isMandatory"
-import {isNumber} from "../validators/isNumber"
-import {isString} from "../validators/isString"
 import {isValidIssn} from "../validators/isValidIssn"
 
 export function validateInputData(data: RawInputData, nodeType: NodeType, mode: 'CREATE' | 'UPDATE' = 'CREATE'): boolean {
@@ -31,6 +33,18 @@ export function validateInputData(data: RawInputData, nodeType: NodeType, mode: 
 
         if (property.validation.includes('number')) {
             if (!isNumber(data[property.name])) {
+                isValid = false
+            }
+        }
+
+        if (property.validation.includes('imageProvider')) {
+            if (!isValidImageProvider(data[property.name])) {
+                isValid = false
+            }
+        }
+
+        if (property.validation.includes('videoProvider')) {
+            if (!isValidVideoProvider(data[property.name])) {
                 isValid = false
             }
         }
