@@ -1,4 +1,4 @@
-export function isValidImagePlatform(value: unknown) {
+export function isValidImageProvider(value: unknown) {
     if (!value) {
         return false
     }
