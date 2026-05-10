@@ -4,7 +4,7 @@ export type PropertySpecification = {
     mandatory: boolean
     scope?: 'user' | 'system'
     example?: string | number | boolean | null
-    validation?: (
+    validation: (
         'mandatory' |
         'string' |
         'number' |
