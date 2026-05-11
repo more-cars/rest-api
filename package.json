@@ -17,10 +17,10 @@
   "description": "REST API for the open car database 'More Cars'",
   "devDependencies": {
     "@types/cli-progress": "3.11.6",
-    "@cucumber/cucumber": "12.8.2",
+    "@cucumber/cucumber": "12.8.3",
     "@eslint/js": "10.0.1",
     "@faker-js/faker": "10.4.0",
-    "@inquirer/prompts": "8.4.2",
+    "@inquirer/prompts": "8.4.3",
     "@seriousme/openapi-schema-validator": "2.9.0",
     "@types/k6": "1.7.0",
     "@types/supertest": "7.2.0",
@@ -33,13 +33,13 @@
     "dotenv": "17.4.2",
     "eslint": "10.3.0",
     "hygen": "6.2.11",
-    "inquirer": "13.4.2",
+    "inquirer": "13.4.3",
     "inquirer-file-selector": "1.0.1",
     "moment": "2.30.1",
     "openapi-backend": "5.16.1",
     "sloc": "0.3.2",
     "supertest": "7.2.2",
-    "typescript-eslint": "8.58.0",
+    "typescript-eslint": "8.59.2",
     "vitest": "4.1.5"
   },
   "engines": {
