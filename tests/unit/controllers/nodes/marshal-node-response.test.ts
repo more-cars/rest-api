@@ -40,6 +40,6 @@ describe('Marshalling a node', () => {
     })
 })
 
-function isFlatObject(data: any) {
+function isFlatObject(data: unknown) {
     return Object.values(data).every(value => typeof value !== 'object' || value === null)
 }
