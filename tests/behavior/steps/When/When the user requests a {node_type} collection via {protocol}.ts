@@ -1,9 +1,7 @@
 import {When} from "@cucumber/cucumber"
-import axios from "axios"
-import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import assert from "assert"
-import type {ApiResponse} from "../../lib/ApiResponse"
-import {ResponseManager} from "../../lib/ResponseManager"
+import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
+import {performApiRequest} from "../../lib/performApiRequest"
 
 When('the user requests a {string} collection via {string}',
     async (nodeType: string, protocol: string) => {
@@ -27,16 +25,8 @@ When('the user requests a {string} collection via {string}',
             apiUrl.replace(':3443', ':3000')
         }
 
+        process.env.API_URL = apiUrl
         const path = getBasePathFragmentForNodeType(nodeType)
 
-        const response = await axios
-            .get(`${apiUrl}/${path}`)
-
-        const apiResponse = {
-            status_code: response.status,
-            body: response.data,
-            headers: response.headers,
-        } satisfies ApiResponse
-
-        ResponseManager.cacheResponse(apiResponse)
+        await performApiRequest('/' + path, 'GET')
     })

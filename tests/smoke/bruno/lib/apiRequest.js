@@ -1,21 +1,36 @@
-const axios = require("axios")
-
 exports.post = async function (path, data) {
-    const response = await axios.post(bru.getEnvVar('baseUrl') + path, data, {
-        validateStatus: function (status) {
-            return status < 400
+    const response = await fetch(bru.getEnvVar('baseUrl') + path, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
         },
+        body: JSON.stringify(data),
     })
 
-    return response.data
+    let responseBody = await response.text()
+    try {
+        responseBody = JSON.parse(responseBody)
+    } catch (e) {
+
+    }
+
+    return responseBody
 }
 
 exports.del = async function (path) {
-    const response = await axios.delete(bru.getEnvVar('baseUrl') + path, {
-        validateStatus: function (status) {
-            return status < 400
+    const response = await fetch(bru.getEnvVar('baseUrl') + path, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json',
         },
     })
 
-    return response.data
+    let responseBody = await response.text()
+    try {
+        responseBody = JSON.parse(responseBody)
+    } catch (e) {
+
+    }
+
+    return responseBody
 }

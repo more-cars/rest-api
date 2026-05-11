@@ -1,30 +1,30 @@
-import axios, {type AxiosRequestConfig} from "axios"
+import {getJiraApiAuthKey} from "../../../rest-api-ticket-generator/lib/getJiraApiAuthKey"
 import type {ApiResponse} from "./ApiResponse"
 import {ResponseManager} from "./ResponseManager"
 
-// By default, Axios fails every request that returns with a status code >= 400.
-// But for the tests we only want them to fail when a server error occurred (status code >= 500).
-axios.defaults.validateStatus = function (status) {
-    return status < 500
-}
-
 export async function performApiRequest(path: string, method: 'POST' | 'GET' | 'PATCH' | 'DELETE' = 'GET', data?: unknown): Promise<ApiResponse> {
-    const axiosConfig: AxiosRequestConfig = {
-        baseURL: process.env.API_URL,
-        url: path,
-        method: method.toLowerCase(),
-        data,
-        headers: {
-            'user-namespace': process.env.UNIQUE_TEST_ID
+    const response = await fetch(process.env.API_URL + path, {
+            method,
+            headers: {
+                'Authorization': `Basic ${getJiraApiAuthKey()}`,
+                'Content-Type': 'application/json',
+                'user-namespace': process.env.UNIQUE_TEST_ID || '',
+            },
+            body: JSON.stringify(data),
         }
+    )
+
+    let responseBody = await response.text()
+    try {
+        responseBody = JSON.parse(responseBody)
+    } catch (e) {
+
     }
 
-    const axiosResponse = await axios.request(axiosConfig)
-
     const apiResponse = {
-        status_code: axiosResponse.status,
-        body: axiosResponse.data,
-        headers: axiosResponse.headers,
+        status_code: response.status,
+        body: responseBody,
+        headers: Object.fromEntries(response.headers),
     } satisfies ApiResponse
 
     ResponseManager.cacheResponse(apiResponse)
