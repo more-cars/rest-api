@@ -11,7 +11,7 @@ import {addMoreCarsIdToNode} from "./addMoreCarsIdToNode"
 import {getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {mapDbNodeTypeToNeo4jNodeType} from "./mapDbNodeTypeToNeo4jNodeType"
-import {escapeSingleQuotes} from "./escapeSingleQuotes"
+import {getCypherFormattedProperties} from "./getCypherFormattedProperties"
 
 export async function createNeo4jNode(nodeType: DbNodeType, data: InputNodeTypeCreate): Promise<DbNode> {
     const driver = getDriver()
@@ -45,38 +45,4 @@ export function createNodeQuery(nodeType: DbNodeType, data: QueryInputData) {
         .trim()
         .replace('$label', `${nodeTypeLabel}`)
         .replace('$properties', properties)
-}
-
-function getCypherFormattedProperties(data: QueryInputData) {
-    const lines: string[] = []
-
-    for (const property in data) {
-        if (data[property] === undefined) {
-            continue
-        }
-
-        const line: string[] = []
-        const indentation = '  '
-
-        line.push(indentation)
-        line.push(property)
-        line.push(': ')
-
-        if (data[property] === null) {
-            line.push('null')
-        }
-
-        switch (typeof data[property]) {
-            case 'string':
-                line.push(`'${escapeSingleQuotes(data[property])}'`)
-                break
-            case 'number':
-            case 'boolean':
-                line.push(`${data[property]}`)
-        }
-
-        lines.push(line.join(''))
-    }
-
-    return lines.join(',\n')
 }

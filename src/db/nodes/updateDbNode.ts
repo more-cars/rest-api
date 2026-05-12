@@ -9,7 +9,7 @@ import {getDenamespacedNodeTypeLabel, getNamespacedNodeTypeLabel} from "../getNa
 import {Neo4jNodeType} from "../types/Neo4jNodeType"
 import {mapDbNodeTypeToNeo4jNodeType} from "./mapDbNodeTypeToNeo4jNodeType"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
-import {escapeSingleQuotes} from "./escapeSingleQuotes"
+import {getCypherFormattedProperties} from "./getCypherFormattedProperties"
 
 export async function updateDbNode(nodeType: DbNodeType, id: number, data: QueryInputData): Promise<DbNode> {
     const driver = getDriver()
@@ -39,38 +39,4 @@ export function updateNodeQuery(nodeType: DbNodeType, id: number, data: QueryInp
         .replace('$label', nodeTypeLabel)
         .replace('$id', id.toString())
         .replace('$properties', properties)
-}
-
-function getCypherFormattedProperties(data: QueryInputData) {
-    const lines: string[] = []
-
-    for (const property in data) {
-        if (data[property] === undefined) {
-            continue
-        }
-
-        const line: string[] = []
-        const indentation = '  '
-
-        line.push(indentation)
-        line.push(property)
-        line.push(': ')
-
-        if (data[property] === null) {
-            line.push('null')
-        }
-
-        switch (typeof data[property]) {
-            case 'string':
-                line.push(`'${escapeSingleQuotes(data[property])}'`)
-                break
-            case 'number':
-            case 'boolean':
-                line.push(`${data[property]}`)
-        }
-
-        lines.push(line.join(''))
-    }
-
-    return lines.join(',\n')
 }
