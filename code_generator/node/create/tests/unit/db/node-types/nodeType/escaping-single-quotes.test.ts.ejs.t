@@ -26,7 +26,7 @@ to: tests/unit/db/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeT
 -%>
 import {expect, test} from 'vitest'
 import {Input<%= h.changeCase.pascal(nodeType) %>Create} from "../../../../../src/db/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Input<%= h.changeCase.pascal(nodeType) %>Create"
-import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
+import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 

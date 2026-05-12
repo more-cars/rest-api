@@ -23,12 +23,12 @@ import {deleteIncomingRel} from "../../relationships/deleteIncomingRel"
 import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
-import {createNeo4jNode} from "../../../db/nodes/createNeo4jNode"
+import {createDbNode} from "../../../db/nodes/createDbNode"
 
 export const SessionResult = {
     async create(data: CreateSessionResultInput): Promise<SessionResultNode> {
         const input = convertInputData(data)
-        const result = await createNeo4jNode(DbNodeType.SessionResult, input)
+        const result = await createDbNode(DbNodeType.SessionResult, input)
 
         return convertDbNodeToModelNode(result) as SessionResultNode
     },

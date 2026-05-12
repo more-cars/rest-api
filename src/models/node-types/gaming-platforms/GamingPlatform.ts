@@ -21,12 +21,12 @@ import {Video} from "../videos/Video"
 import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
-import {createNeo4jNode} from "../../../db/nodes/createNeo4jNode"
+import {createDbNode} from "../../../db/nodes/createDbNode"
 
 export const GamingPlatform = {
     async create(data: CreateGamingPlatformInput): Promise<GamingPlatformNode> {
         const input = convertInputData(data)
-        const result = await createNeo4jNode(DbNodeType.GamingPlatform, input)
+        const result = await createDbNode(DbNodeType.GamingPlatform, input)
 
         return convertDbNodeToModelNode(result) as GamingPlatformNode
     },

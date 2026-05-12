@@ -1,6 +1,6 @@
 import {describe, expect, test} from 'vitest'
 import {getAllExpectedNodeTypes} from "../../../../_toolbox/getAllExpectedNodeTypes"
-import {createNeo4jNode} from "../../../../../src/db/nodes/createNeo4jNode"
+import {createDbNode} from "../../../../../src/db/nodes/createDbNode"
 import {convertStringToDbNodeType} from "../../../../_toolbox/convertStringToNodeType"
 import {getFakeNode} from "../../../../_toolbox/fixtures/nodes/getFakeNode"
 import type {InputNodeTypeCreate} from "../../../../../src/db/types/InputNodeTypeCreate"
@@ -15,7 +15,7 @@ describe('Both timestamps are identical for new nodes', () => {
 
         const dbNodeType = convertStringToDbNodeType(nodeType)
         const nodeData = getFakeNode(nodeType).dbInputMinimal as InputNodeTypeCreate
-        const createdNode = await createNeo4jNode(dbNodeType, nodeData)
+        const createdNode = await createDbNode(dbNodeType, nodeData)
 
         expect(createdNode.properties.created_at)
             .toEqual(createdNode.properties.updated_at)

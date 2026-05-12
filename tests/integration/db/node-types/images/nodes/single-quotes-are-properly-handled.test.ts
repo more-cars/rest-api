@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {createNeo4jNode} from "../../../../../../src/db/nodes/createNeo4jNode"
+import {createDbNode} from "../../../../../../src/db/nodes/createDbNode"
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 import type {ImageNode} from "../../../../../../src/db/node-types/images/types/ImageNode"
 
@@ -21,7 +21,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         image_url_s: "ab''cd'ef",
         image_url_xs: "ab'''cd'ef",
     }
-    const createdNode = await createNeo4jNode(DbNodeType.Image, data) as ImageNode
+    const createdNode = await createDbNode(DbNodeType.Image, data) as ImageNode
 
     expect(createdNode.properties.external_id)
         .toEqual("Ö_3'A123456789")

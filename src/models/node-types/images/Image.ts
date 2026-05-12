@@ -26,7 +26,7 @@ import {FlickrFacade} from "../../../db/external/FlickrFacade"
 import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
-import {createNeo4jNode} from "../../../db/nodes/createNeo4jNode"
+import {createDbNode} from "../../../db/nodes/createDbNode"
 
 export const Image = {
     async create(data: CreateImageInput): Promise<ImageNode> {
@@ -49,7 +49,7 @@ export const Image = {
             }
 
             const input = convertInputData(Object.assign({}, data, image))
-            const result = await createNeo4jNode(DbNodeType.Image, input)
+            const result = await createDbNode(DbNodeType.Image, input)
 
             return convertDbNodeToModelNode(result) as ImageNode
         } catch (e) {

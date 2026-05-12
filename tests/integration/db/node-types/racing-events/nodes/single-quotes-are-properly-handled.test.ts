@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {createNeo4jNode} from "../../../../../../src/db/nodes/createNeo4jNode"
+import {createDbNode} from "../../../../../../src/db/nodes/createDbNode"
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 import type {RacingEventNode} from "../../../../../../src/db/node-types/racing-events/types/RacingEventNode"
 
@@ -11,7 +11,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         date_to: "'2025-05-27''",
     }
 
-    const createdNode = await createNeo4jNode(DbNodeType.RacingEvent, data) as RacingEventNode
+    const createdNode = await createDbNode(DbNodeType.RacingEvent, data) as RacingEventNode
 
     expect(createdNode.properties.name)
         .toEqual("'GP Monaco 2025''")

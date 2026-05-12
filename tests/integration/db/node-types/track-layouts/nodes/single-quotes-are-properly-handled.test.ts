@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {createNeo4jNode} from "../../../../../../src/db/nodes/createNeo4jNode"
+import {createDbNode} from "../../../../../../src/db/nodes/createDbNode"
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 import type {TrackLayoutNode} from "../../../../../../src/db/node-types/track-layouts/types/TrackLayoutNode"
 
@@ -16,7 +16,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         surface: "'asphalt''",
     }
 
-    const createdNode = await createNeo4jNode(DbNodeType.TrackLayout, data) as TrackLayoutNode
+    const createdNode = await createDbNode(DbNodeType.TrackLayout, data) as TrackLayoutNode
 
     expect(createdNode.properties.name)
         .toEqual("'GP Circuit''")

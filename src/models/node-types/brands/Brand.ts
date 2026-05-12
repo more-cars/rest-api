@@ -1,7 +1,7 @@
 import {BrandNode} from "./types/BrandNode"
 import {CreateBrandInput} from "./types/CreateBrandInput"
 import {convertInputData} from "./create/convertInputData"
-import {createNeo4jNode} from "../../../db/nodes/createNeo4jNode"
+import {createDbNode} from "../../../db/nodes/createDbNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/brands/getNodeById"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
@@ -28,7 +28,7 @@ import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollection
 export const Brand = {
     async create(data: CreateBrandInput): Promise<BrandNode> {
         const input = convertInputData(data)
-        const result = await createNeo4jNode(DbNodeType.Brand, input)
+        const result = await createDbNode(DbNodeType.Brand, input)
 
         return convertDbNodeToModelNode(result) as BrandNode
     },

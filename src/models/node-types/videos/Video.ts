@@ -22,7 +22,7 @@ import {videoAlreadyExists} from "./create/videoAlreadyExists"
 import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
-import {createNeo4jNode} from "../../../db/nodes/createNeo4jNode"
+import {createDbNode} from "../../../db/nodes/createDbNode"
 
 export const Video = {
     async create(data: CreateVideoInput): Promise<VideoNode> {
@@ -35,7 +35,7 @@ export const Video = {
         try {
             const youTubeVideo = await YouTubeFacade.getVideoById(id)
             const input = convertInputData(Object.assign({}, data, youTubeVideo))
-            const result = await createNeo4jNode(DbNodeType.Video, input)
+            const result = await createDbNode(DbNodeType.Video, input)
 
             return convertDbNodeToModelNode(result) as VideoNode
         } catch (e) {

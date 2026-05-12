@@ -1,5 +1,5 @@
 import {expect, test} from 'vitest'
-import {createNeo4jNode} from "../../../../../../src/db/nodes/createNeo4jNode"
+import {createDbNode} from "../../../../../../src/db/nodes/createDbNode"
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 import type {RacingSessionNode} from "../../../../../../src/db/node-types/racing-sessions/types/RacingSessionNode"
 
@@ -14,7 +14,7 @@ test('Single quotes in strings are correctly escaped and unescaped', async () =>
         distance_unit: "'laps''",
     }
 
-    const createdNode = await createNeo4jNode(DbNodeType.RacingSession, data) as RacingSessionNode
+    const createdNode = await createDbNode(DbNodeType.RacingSession, data) as RacingSessionNode
 
     expect(createdNode.properties.name)
         .toEqual("'Grand Prix''")

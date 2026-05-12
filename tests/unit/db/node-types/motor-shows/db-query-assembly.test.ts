@@ -1,6 +1,6 @@
 import {expect, test} from 'vitest'
 import type {QueryInputData} from "../../../../../src/db/types/QueryInputData"
-import {createNodeQuery} from "../../../../../src/db/nodes/createNeo4jNode"
+import {createNodeQuery} from "../../../../../src/db/nodes/createDbNode"
 import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
 import {appInstanceId} from "../../../../../src/db/getNamespacedNodeTypeLabel"
 

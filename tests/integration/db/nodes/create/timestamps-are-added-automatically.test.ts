@@ -1,5 +1,5 @@
 import {describe, expect, test} from 'vitest'
-import {createNeo4jNode} from "../../../../../src/db/nodes/createNeo4jNode"
+import {createDbNode} from "../../../../../src/db/nodes/createDbNode"
 import {getAllExpectedNodeTypes} from "../../../../_toolbox/getAllExpectedNodeTypes"
 import {convertStringToDbNodeType} from "../../../../_toolbox/convertStringToNodeType"
 import {getFakeNode} from "../../../../_toolbox/fixtures/nodes/getFakeNode"
@@ -15,7 +15,7 @@ describe('Timestamps are automatically added when creating a node', () => {
 
         const dbNodeType = convertStringToDbNodeType(nodeType)
         const nodeData = getFakeNode(nodeType).dbInputMinimal as InputNodeTypeCreate
-        const createdNode = await createNeo4jNode(dbNodeType, nodeData)
+        const createdNode = await createDbNode(dbNodeType, nodeData)
 
         expect(createdNode.properties)
             .toHaveProperty('created_at')

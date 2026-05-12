@@ -24,12 +24,12 @@ import {Video} from "../videos/Video"
 import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
-import {createNeo4jNode} from "../../../db/nodes/createNeo4jNode"
+import {createDbNode} from "../../../db/nodes/createDbNode"
 
 export const Company = {
     async create(data: CreateCompanyInput): Promise<CompanyNode> {
         const input = convertInputData(data)
-        const result = await createNeo4jNode(DbNodeType.Company, input)
+        const result = await createDbNode(DbNodeType.Company, input)
 
         return convertDbNodeToModelNode(result) as CompanyNode
     },

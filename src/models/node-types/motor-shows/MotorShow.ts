@@ -21,12 +21,12 @@ import {Video} from "../videos/Video"
 import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
-import {createNeo4jNode} from "../../../db/nodes/createNeo4jNode"
+import {createDbNode} from "../../../db/nodes/createDbNode"
 
 export const MotorShow = {
     async create(data: CreateMotorShowInput): Promise<MotorShowNode> {
         const input = convertInputData(data)
-        const result = await createNeo4jNode(DbNodeType.MotorShow, input)
+        const result = await createDbNode(DbNodeType.MotorShow, input)
 
         return convertDbNodeToModelNode(result) as MotorShowNode
     },

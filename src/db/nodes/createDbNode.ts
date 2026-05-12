@@ -13,7 +13,7 @@ import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {mapDbNodeTypeToNeo4jNodeType} from "./mapDbNodeTypeToNeo4jNodeType"
 import {getCypherFormattedProperties} from "./getCypherFormattedProperties"
 
-export async function createNeo4jNode(nodeType: DbNodeType, data: InputNodeTypeCreate): Promise<DbNode> {
+export async function createDbNode(nodeType: DbNodeType, data: InputNodeTypeCreate): Promise<DbNode> {
     const driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
