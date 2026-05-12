@@ -7,7 +7,7 @@ import {isValidSortingDirection} from "../validators/isValidSortingDirection"
 import {isValidSortingProperty} from "../validators/isValidSortingProperty"
 import {isValidFilterProperty} from "../validators/isValidFilterProperty"
 import {isValidFilterOperator} from "../validators/isValidFilterOperator"
-import {isOptionalString} from "../validators/isOptionalString"
+import {isString} from "../validators/isString"
 import {InvalidPaginationParams} from "../../models/types/InvalidPaginationParams"
 import {InvalidSortingParams} from "../../models/types/InvalidSortingParams"
 import {InvalidFilterParams} from "../../models/types/InvalidFilterParams"
@@ -24,11 +24,11 @@ export function extractCollectionConstraintParameters(req: express.Request, node
         throw new InvalidSortingParams(sortByProperty, sortDirection)
     }
 
-    const {filterByProperty, filterValue, filterOperator} = extractFilterParameters(req)
+    const {filterByProperty, filterOperator, filterValue} = extractFilterParameters(req)
     if (filterByProperty && !filterValue || !filterByProperty && filterValue) {
         throw new InvalidFilterParams(filterByProperty, filterValue, filterOperator)
     }
-    if (!isOptionalString(filterValue) || !isValidFilterOperator(filterOperator) || !isValidFilterProperty(filterByProperty, nodeProperties)) {
+    if (!isValidFilterProperty(filterByProperty, nodeProperties) || !isValidFilterOperator(filterOperator) || !isString(filterValue)) {
         throw new InvalidFilterParams(filterByProperty, filterValue, filterOperator)
     }
 
