@@ -68,10 +68,10 @@ export const Company = {
 
         await Revision.create({
             node_type: DbNodeType.Company,
-            node_id: result.properties.id,
-            node_created_at: result.properties.created_at,
-            node_updated_at: result.properties.updated_at,
-            ...result.properties,
+            node_id: node.properties.id,
+            node_created_at: node.properties.created_at,
+            node_updated_at: node.properties.updated_at,
+            ...node.properties,
         })
 
         return convertDbNodeToModelNode(result) as CompanyNode

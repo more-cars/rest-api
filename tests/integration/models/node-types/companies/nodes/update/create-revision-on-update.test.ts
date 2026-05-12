@@ -5,12 +5,12 @@ import type {CompanyInput} from "../../../../../../../src/models/node-types/comp
 import {Revision} from "../../../../../../../src/models/node-types/revisions/Revision"
 
 test('Expecting REVISION to be created when updating a node', async () => {
-    const createdNode = await Company.create(FakeCompany.dbInput)
-    const updatedNode = await Company.update(createdNode.attributes.id, {} as CompanyInput)
+    const node = await Company.create(FakeCompany.dbInput)
+    await Company.update(node.attributes.id, {} as CompanyInput)
 
     const revisionNodes = await Revision.findAll({
         filterByProperty: 'node_updated_at',
-        filterValue: updatedNode.attributes.updated_at,
+        filterValue: node.attributes.updated_at,
     })
 
     expect(revisionNodes.length)

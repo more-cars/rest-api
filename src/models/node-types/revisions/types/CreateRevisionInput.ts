@@ -3,5 +3,5 @@ export type CreateRevisionInput = {
     node_id: number
     node_created_at: string
     node_updated_at: string
-    [key: string]: string | number | boolean
+    [key: string]: string | number | boolean | null
 }
