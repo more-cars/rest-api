@@ -7,14 +7,7 @@ exports.post = async function (path, data) {
         body: JSON.stringify(data),
     })
 
-    let responseBody = await response.text()
-    try {
-        responseBody = JSON.parse(responseBody)
-    } catch (e) {
-
-    }
-
-    return responseBody
+    return extractResponseBody(response)
 }
 
 exports.del = async function (path) {
@@ -25,12 +18,14 @@ exports.del = async function (path) {
         },
     })
 
-    let responseBody = await response.text()
+    return extractResponseBody(response)
+}
+
+async function extractResponseBody(response) {
+    const responseBody = await response.text()
     try {
-        responseBody = JSON.parse(responseBody)
+        return JSON.parse(responseBody)
     } catch (e) {
-
+        return responseBody
     }
-
-    return responseBody
 }

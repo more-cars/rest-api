@@ -14,20 +14,22 @@ export async function performApiRequest(path: string, method: 'POST' | 'GET' | '
         }
     )
 
-    let responseBody = await response.text()
-    try {
-        responseBody = JSON.parse(responseBody)
-    } catch (e) {
-
-    }
-
     const apiResponse = {
         status_code: response.status,
-        body: responseBody,
+        body: await extractResponseBody(response),
         headers: Object.fromEntries(response.headers),
     } satisfies ApiResponse
 
     ResponseManager.cacheResponse(apiResponse)
 
     return apiResponse
+}
+
+async function extractResponseBody(response: Response) {
+    const responseBody = await response.text()
+    try {
+        return JSON.parse(responseBody)
+    } catch (e) {
+        return responseBody
+    }
 }
