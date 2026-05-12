@@ -22,11 +22,9 @@ export async function updateNode(req: express.Request, res: express.Response) {
     const propertyNames = getNodeTypeSpecification(NodeType.<%= h.changeCase.pascal(nodeType) %>).properties.map(prop => prop.name)
     const data = unmarshalInputData(req.body, propertyNames) as <%= h.changeCase.pascal(nodeType) %>Input
 
-    if (!validateInputData(data, NodeType.<%= h.changeCase.pascal(nodeType) %>)) {
+    if (!validateInputData(data, NodeType.<%= h.changeCase.pascal(nodeType) %>, 'UPDATE')) {
         return sendResponse400(res)
     }
-
-    const sanitizedData = sanitize(data)
 
     try {
         const modelNode = await <%= h.changeCase.pascal(nodeType) %>.update(nodeId, data)

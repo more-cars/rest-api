@@ -11,8 +11,16 @@ skip_if: async update
             throw new NodeNotFoundError(id)
         }
 
-        const input = convertInputData(data as CreateCompanyInput)
+        const input = convertInputData(data as Create<%= h.changeCase.pascal(nodeType) %>Input)
         const result = await updateDbNode(DbNodeType.<%= h.changeCase.pascal(nodeType) %>, id, input)
+
+        await Revision.create({
+            node_type: DbNodeType.<%= h.changeCase.pascal(nodeType) %>,
+            node_id: result.properties.id,
+            node_created_at: result.properties.created_at,
+            node_updated_at: result.properties.updated_at,
+            ...result.properties,
+        })
 
         return convertDbNodeToModelNode(result) as <%= h.changeCase.pascal(nodeType) %>Node
     },

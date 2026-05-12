@@ -6,6 +6,9 @@ import {DbNodeType} from "../../../db/types/DbNodeType"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/revisions/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
+import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
+import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
+import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
 
 export const Revision = {
     async create(data: CreateRevisionInput): Promise<RevisionNode> {
@@ -23,5 +26,16 @@ export const Revision = {
         }
 
         return convertDbNodeToModelNode(node) as RevisionNode
+    },
+
+    async findAll(options: NodeCollectionConstraints = {}): Promise<RevisionNode[]> {
+        const nodes: RevisionNode[] = []
+        const nodesDb = await fetchNodesFromDb(DbNodeType.Revision, getDbQueryCollectionParams(options))
+
+        nodesDb.forEach(node => {
+            nodes.push(convertDbNodeToModelNode(node) as RevisionNode)
+        })
+
+        return nodes
     },
 }

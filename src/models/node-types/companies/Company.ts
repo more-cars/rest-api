@@ -25,6 +25,7 @@ import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
 import {createDbNode} from "../../../db/nodes/createDbNode"
+import {Revision} from "../revisions/Revision"
 
 export const Company = {
     async create(data: CreateCompanyInput): Promise<CompanyNode> {
@@ -64,6 +65,14 @@ export const Company = {
 
         const input = convertInputData(data as CreateCompanyInput)
         const result = await updateDbNode(DbNodeType.Company, id, input)
+
+        await Revision.create({
+            node_type: DbNodeType.Company,
+            node_id: result.properties.id,
+            node_created_at: result.properties.created_at,
+            node_updated_at: result.properties.updated_at,
+            ...result.properties,
+        })
 
         return convertDbNodeToModelNode(result) as CompanyNode
     },
