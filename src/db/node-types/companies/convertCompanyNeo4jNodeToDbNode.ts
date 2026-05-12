@@ -1,24 +1,12 @@
 import {Node} from "neo4j-driver"
 import {CompanyNode} from "./types/CompanyNode"
 import {DbNodeType} from "../../types/DbNodeType"
+import {convertNeo4jPropertiesToDbProperties} from "../../nodes/convertNeo4jPropertiesToDbProperties"
+import {NodeType} from "../../../specification/NodeType"
 
 export function convertCompanyNeo4jNodeToDbNode(neo4jNode: Node): CompanyNode {
     return {
         node_type: DbNodeType.Company,
-        properties: {
-            // system data
-            id: neo4jNode.properties.mc_id,
-            created_at: neo4jNode.properties.created_at,
-            updated_at: neo4jNode.properties.updated_at,
-
-            // user data
-            name: neo4jNode.properties.name || null,
-            founded: neo4jNode.properties.founded || null,
-            defunct: neo4jNode.properties.defunct || null,
-            headquarters_location: neo4jNode.properties.headquarters_location || null,
-            hq_country_code: neo4jNode.properties.hq_country_code || null,
-            legal_headquarters_location: neo4jNode.properties.legal_headquarters_location || null,
-            legal_hq_country_code: neo4jNode.properties.legal_hq_country_code || null,
-        },
-    } satisfies CompanyNode
+        properties: convertNeo4jPropertiesToDbProperties(neo4jNode, NodeType.Company)
+    } as CompanyNode
 }

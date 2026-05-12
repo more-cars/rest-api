@@ -1,20 +1,12 @@
 import {Node} from "neo4j-driver"
 import {GamingPlatformNode} from "./types/GamingPlatformNode"
 import {DbNodeType} from "../../types/DbNodeType"
+import {convertNeo4jPropertiesToDbProperties} from "../../nodes/convertNeo4jPropertiesToDbProperties"
+import {NodeType} from "../../../specification/NodeType"
 
 export function convertGamingPlatformNeo4jNodeToDbNode(neo4jNode: Node): GamingPlatformNode {
     return {
         node_type: DbNodeType.GamingPlatform,
-        properties: {
-            // system data
-            id: neo4jNode.properties.mc_id,
-            created_at: neo4jNode.properties.created_at,
-            updated_at: neo4jNode.properties.updated_at,
-
-            // user data
-            name: neo4jNode.properties.name,
-            release_year: neo4jNode.properties.release_year,
-            manufacturer: neo4jNode.properties.manufacturer,
-        },
-    } satisfies GamingPlatformNode
+        properties: convertNeo4jPropertiesToDbProperties(neo4jNode, NodeType.GamingPlatform)
+    } as GamingPlatformNode
 }

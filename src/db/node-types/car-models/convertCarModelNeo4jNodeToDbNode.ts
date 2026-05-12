@@ -1,23 +1,12 @@
 import {Node} from "neo4j-driver"
 import {CarModelNode} from "./types/CarModelNode"
 import {DbNodeType} from "../../types/DbNodeType"
+import {convertNeo4jPropertiesToDbProperties} from "../../nodes/convertNeo4jPropertiesToDbProperties"
+import {NodeType} from "../../../specification/NodeType"
 
 export function convertCarModelNeo4jNodeToDbNode(neo4jNode: Node): CarModelNode {
     return {
         node_type: DbNodeType.CarModel,
-        properties: {
-            // system data
-            id: neo4jNode.properties.mc_id,
-            created_at: neo4jNode.properties.created_at,
-            updated_at: neo4jNode.properties.updated_at,
-
-            // user data
-            name: neo4jNode.properties.name,
-            built_from: neo4jNode.properties.built_from,
-            built_to: neo4jNode.properties.built_to,
-            generation: neo4jNode.properties.generation,
-            internal_code: neo4jNode.properties.internal_code,
-            total_production: neo4jNode.properties.total_production,
-        },
-    } satisfies CarModelNode
+        properties: convertNeo4jPropertiesToDbProperties(neo4jNode, NodeType.CarModel)
+    } as CarModelNode
 }

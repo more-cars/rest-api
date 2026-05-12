@@ -1,24 +1,12 @@
 import {Node} from "neo4j-driver"
 import {MotorShowNode} from "./types/MotorShowNode"
 import {DbNodeType} from "../../types/DbNodeType"
+import {convertNeo4jPropertiesToDbProperties} from "../../nodes/convertNeo4jPropertiesToDbProperties"
+import {NodeType} from "../../../specification/NodeType"
 
 export function convertMotorShowNeo4jNodeToDbNode(neo4jNode: Node): MotorShowNode {
     return {
         node_type: DbNodeType.MotorShow,
-        properties: {
-            // system data
-            id: neo4jNode.properties.mc_id,
-            created_at: neo4jNode.properties.created_at,
-            updated_at: neo4jNode.properties.updated_at,
-
-            // user data
-            name: neo4jNode.properties.name,
-            date_from: neo4jNode.properties.date_from,
-            date_until: neo4jNode.properties.date_until,
-            location: neo4jNode.properties.location,
-            target_audience: neo4jNode.properties.target_audience,
-            focus: neo4jNode.properties.focus,
-            country_code: neo4jNode.properties.country_code,
-        },
-    } satisfies MotorShowNode
+        properties: convertNeo4jPropertiesToDbProperties(neo4jNode, NodeType.MotorShow)
+    } as MotorShowNode
 }
