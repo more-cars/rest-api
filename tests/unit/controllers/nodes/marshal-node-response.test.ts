@@ -4,6 +4,7 @@ import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
 import {convertModelNodeToControllerNode} from "../../../../src/controllers/nodes/convertModelNodeToControllerNode"
 import {marshalSingleNode} from "../../../../src/controllers/nodes/marshalSingleNode"
 import {convertStringToControllerNodeType} from "../../../_toolbox/convertStringToNodeType"
+import {isFlatObject} from "../../../../src/controllers/validators/isFlatObject"
 
 describe('Marshalling a node', () => {
     test.each(
@@ -40,6 +41,3 @@ describe('Marshalling a node', () => {
     })
 })
 
-function isFlatObject(data: unknown) {
-    return Object.values(data).every(value => typeof value !== 'object' || value === null)
-}
