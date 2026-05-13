@@ -2138,6 +2138,55 @@
           }
         }
       },
+      "patch": {
+        "tags": [
+          "Car Models"
+        ],
+        "summary": "Update `Car Model`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-id",
+            "description": "ID of the `Car Model`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "`Car Model` successfully updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "`Car Model` could not be updated. The provided data was invalid or malformed.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Update request failed. A `Car Model` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
       "delete": {
         "tags": [
           "Car Models"

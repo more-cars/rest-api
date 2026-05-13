@@ -1,0 +1,28 @@
+info:
+  name: Update Car Model (invalid data)
+  type: http
+  tags:
+    - update
+    - node
+    - invalid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/car-models/{{invalidCarModelId}}"
+  body:
+    type: json
+    data: |-
+      {}
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "400"
+    - expression: res.body
+      operator: isString
+  scripts:
+    - type: before-request
+      code: |-
+        const CarModels = require('./lib/node-types/CarModels.js')
+        await CarModels.create()

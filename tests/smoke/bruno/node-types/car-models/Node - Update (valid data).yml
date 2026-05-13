@@ -1,0 +1,40 @@
+info:
+  name: Update Car Model (valid data)
+  type: http
+  tags:
+    - update
+    - node
+    - valid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/car-models/{{validCarModelId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Corvette - Updated",
+        "built_from": 1978,
+        "built_to": 1989,
+        "generation": 5,
+        "internal_code": "C3 - Updated",
+        "total_production": 1234569,
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validCarModelId}}"
+  scripts:
+    - type: tests
+      code: |-
+        test("both timestamps should be different", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)
+        })
