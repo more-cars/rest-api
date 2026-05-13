@@ -38,6 +38,20 @@ async function createPatchFile() {
                 "name": "REPORTS_PATH",
                 "value": process.env.REPORTS_PATH
             }
-        }
+        }, {
+            "op": "add",
+            "path": "/spec/template/spec/containers/0/env/-",
+            "value": {
+                "name": "TARGET_CLUSTER",
+                "value": process.env.TARGET_CLUSTER
+            }
+        }, {
+            "op": "add",
+            "path": "/spec/template/spec/containers/0/env/-",
+            "value": {
+                "name": "TARGET_ENVIRONMENT",
+                "value": process.env.TARGET_ENVIRONMENT
+            }
+        },
     ]
 }

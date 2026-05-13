@@ -2,7 +2,7 @@
   {
     "op": "replace",
     "path": "/metadata/name",
-    "value": "smoke-test-1757758645"
+    "value": "smoke-test-1778680662"
   },
   {
     "op": "replace",
@@ -23,6 +23,22 @@
     "value": {
       "name": "REPORTS_PATH",
       "value": "./test-reports/smoke"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/spec/template/spec/containers/0/env/-",
+    "value": {
+      "name": "TARGET_CLUSTER",
+      "value": "minikube"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/spec/template/spec/containers/0/env/-",
+    "value": {
+      "name": "TARGET_ENVIRONMENT",
+      "value": "testing"
     }
   }
 ]
