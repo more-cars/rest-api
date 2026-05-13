@@ -20,6 +20,7 @@ echo ----------------------------------------------------------
 
 if [ "$TEST_RUNNER" = local ]; then
   cd "$SCRIPT_PATH"/bruno || exit
+  npm run local:mockserver:start &
   if [ "$REPORTS_ENABLED" = true ]; then
     mkdir -p "$REPORTS_PATH"
     npx bru run --sandbox=developer --env "$TARGET_CLUSTER"-"$TARGET_ENVIRONMENT" --reporter-json "$REPORTS_PATH"/report.json --reporter-junit "$REPORTS_PATH"/report.xml --reporter-html "$REPORTS_PATH"/report.html
