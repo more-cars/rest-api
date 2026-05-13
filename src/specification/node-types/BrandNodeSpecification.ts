@@ -48,7 +48,7 @@ export const BrandNodeSpecification: NodeSpecification = {
             name: 'hsn',
             datatype: 'string',
             mandatory: false,
-            example: '0005',
+            example: 'A005',
             scope: 'user',
             validation: ['string'],
         },
