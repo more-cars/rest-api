@@ -2,6 +2,7 @@ import express from "express"
 import {create} from "./car-model-variants/create"
 import {getById} from "./car-model-variants/getById"
 import {getAll} from "./car-model-variants/getAll"
+import {updateNode} from "./car-model-variants/updateNode"
 import {deleteNode} from "./car-model-variants/deleteNode"
 import {createIsVariantOfRelation} from "./car-model-variants/createIsVariantOfRelation"
 import {getIsVariantOfRelation} from "./car-model-variants/getIsVariantOfRelation"
@@ -57,6 +58,10 @@ export const CarModelVariantController = {
 
     async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
+    },
+
+    async update(req: express.Request, res: express.Response) {
+        await updateNode(req, res)
     },
 
     async delete(req: express.Request, res: express.Response) {

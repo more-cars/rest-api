@@ -1,0 +1,70 @@
+info:
+  name: Update Car Model Variant (valid data)
+  type: http
+  tags:
+    - update
+    - node
+    - valid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/car-model-variants/{{validCarModelVariantId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "BMW M3 - Updated",
+        "internal_code": "E46 - Updated",
+        "built_from": 2002,
+        "built_to": 2008,
+        "body_style": "coupe - Updated",
+        "drag_coefficient": 2.31,
+        "doors": 4,
+        "weight": 1551,
+        "weight_unit": "kg - Updated",
+        "max_power": 345,
+        "max_power_unit": "PS - Updated",
+        "max_torque": 367,
+        "max_torque_unit": "Nm - Updated",
+        "cylinders": 8,
+        "engine_configuration": "inline - Updated",
+        "displacement": 3248,
+        "displacement_unit": "ccm - Updated",
+        "air_induction": "naturally aspirated - Updated",
+        "engine_type": "otto - Updated",
+        "energy_source": "petrol - Updated",
+        "energy_source_2": null,
+        "consumption": 13.9,
+        "consumption_unit": "l - Updated",
+        "consumption_2": null,
+        "consumption_2_unit": null,
+        "energy_capacity": 65,
+        "energy_capacity_unit": "l - Updated",
+        "energy_capacity_2": null,
+        "energy_capacity_2_unit": null,
+        "transmission": "sequential - Updated",
+        "gears": 8,
+        "drivetrain": "rwd - Updated",
+        "sprint_time_0_100_kmh": 7.2,
+        "top_speed": 252,
+        "top_speed_unit": "km/h - Updated",
+        "total_production": 50002,
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validCarModelVariantId}}"
+  scripts:
+    - type: tests
+      code: |-
+        test("both timestamps should be different", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)
+        })
