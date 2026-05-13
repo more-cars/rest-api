@@ -1,0 +1,41 @@
+info:
+  name: Update Brand (valid data)
+  type: http
+  tags:
+    - update
+    - node
+    - valid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/brands/{{validBrandId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "BMW - Updated",
+        "full_name": "Bayerische Motoren Werke - Updated",
+        "founded": 1918,
+        "defunct": null,
+        "wmi": "WBA - Updated",
+        "hsn": "0005 - Updated",
+        "country_code": "DE - Updated",
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validBrandId}}"
+  scripts:
+    - type: tests
+      code: |-
+        test("both timestamps should be different", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)
+        })

@@ -2,6 +2,7 @@ import express from "express"
 import {create} from "./brands/create"
 import {getById} from "./brands/getById"
 import {getAll} from "./brands/getAll"
+import {updateNode} from "./brands/updateNode"
 import {deleteNode} from "./brands/deleteNode"
 import {createBelongsToCompanyRelation} from "./brands/createBelongsToCompanyRelation"
 import {getBelongsToCompanyRelation} from "./brands/getBelongsToCompanyRelation"
@@ -33,6 +34,10 @@ export const BrandController = {
 
     async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
+    },
+
+    async update(req: express.Request, res: express.Response) {
+        await updateNode(req, res)
     },
 
     async delete(req: express.Request, res: express.Response) {

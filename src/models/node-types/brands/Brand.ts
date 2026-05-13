@@ -5,6 +5,9 @@ import {createDbNode} from "../../../db/nodes/createDbNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/brands/getNodeById"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
+import {updateDbNode} from "../../../db/nodes/updateDbNode"
+import type {BrandInput} from "./types/BrandInput"
+import {Revision} from "../revisions/Revision"
 import {deleteNode} from "../../../db/nodes/deleteNode"
 import {CarModel} from "../car-models/CarModel"
 import {Image} from "../images/Image"
@@ -52,6 +55,27 @@ export const Brand = {
         })
 
         return nodes
+    },
+
+    async update(id: number, data: BrandInput): Promise<BrandNode> {
+        const node = await getNodeById(id)
+
+        if (!node) {
+            throw new NodeNotFoundError(id)
+        }
+
+        const input = convertInputData(data as CreateBrandInput)
+        const result = await updateDbNode(DbNodeType.Brand, id, input)
+
+        await Revision.create({
+            node_type: DbNodeType.Brand,
+            node_id: node.properties.id,
+            node_created_at: node.properties.created_at,
+            node_updated_at: node.properties.updated_at,
+            ...node.properties,
+        })
+
+        return convertDbNodeToModelNode(result) as BrandNode
     },
 
     async delete(id: number): Promise<void> {

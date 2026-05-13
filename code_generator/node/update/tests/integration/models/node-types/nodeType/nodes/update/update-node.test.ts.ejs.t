@@ -11,7 +11,7 @@ import {DbNodeType} from "../../../../../../../src/db/types/DbNodeType"
 
 describe('Updating a <%= h.changeCase.upper(nodeType) %>', () => {
     test('Node does not exist', async () => {
-        await expect(<%= h.changeCase.pascal(nodeType) %>.update(-42, Fake<%= h.changeCase.pascal(nodeType) %>.dbInput as <%= h.changeCase.pascal(nodeType) %>Input))
+        await expect(<%= h.changeCase.pascal(nodeType) %>.update(-42, Fake<%= h.changeCase.pascal(nodeType) %>.dbInput() as <%= h.changeCase.pascal(nodeType) %>Input))
             .rejects
             .toThrow(NodeNotFoundError)
     })

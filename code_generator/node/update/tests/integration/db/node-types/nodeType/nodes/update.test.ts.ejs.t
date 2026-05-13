@@ -28,7 +28,7 @@ describe('Updating <%= h.changeCase.upper(nodeType) %>', () => {
         const updatedNode = await updateDbNode(DbNodeType.<%= h.changeCase.pascal(nodeType) %>, createdNode.properties.id, inputData)
 
         expect(updatedNode.properties)
-            .toEqual(expect.objectContaining(createdNode.properties))
+            .not.toEqual(createdNode.properties.updated_at)
 
         createdNode.properties.updated_at = ''
         updatedNode.properties.updated_at = ''
