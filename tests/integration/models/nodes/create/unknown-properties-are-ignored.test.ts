@@ -8,7 +8,7 @@ test('Unknown properties are ignored', async () => {
     let createdNode
 
     // CAR MODEL
-    const carModelData = Object.assign({}, FakeCarModel.dbInput, {
+    const carModelData = Object.assign({}, FakeCarModel.dbInput(), {
         "my_property": "NOT_ALLOWED_TO_ADD"
     })
     createdNode = await CarModel.create(carModelData)
@@ -16,7 +16,7 @@ test('Unknown properties are ignored', async () => {
         .not.toContain("my_property")
 
     // BRAND
-    const brandData = Object.assign({}, FakeBrand.dbInput, {
+    const brandData = Object.assign({}, FakeBrand.dbInput(), {
         "my_property": "NOT_ALLOWED_TO_ADD"
     })
     createdNode = await Brand.create(brandData)

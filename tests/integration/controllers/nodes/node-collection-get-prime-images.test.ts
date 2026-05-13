@@ -26,8 +26,8 @@ describe('Requesting the connected prime images', () => {
         const imageRelA = {
             id: 1,
             type: RelType.NodeHasPrimeImage,
-            origin: FakeBrand.modelOutput,
-            destination: FakeImage.modelOutput,
+            origin: FakeBrand.modelOutput(),
+            destination: FakeImage.modelOutput(),
             created_at: "DUMMY",
             updated_at: "DUMMY",
         }
@@ -35,8 +35,8 @@ describe('Requesting the connected prime images', () => {
         const imageRelB = {
             id: 2,
             type: RelType.NodeHasPrimeImage,
-            origin: FakeCarModel.modelOutput,
-            destination: FakeImage.modelOutput,
+            origin: FakeCarModel.modelOutput(),
+            destination: FakeImage.modelOutput(),
             created_at: "DUMMY",
             updated_at: "DUMMY",
         }
@@ -44,8 +44,8 @@ describe('Requesting the connected prime images', () => {
         const imageRelC = {
             id: 3,
             type: RelType.NodeHasPrimeImage,
-            origin: FakeRaceTrack.modelOutput,
-            destination: FakeImage.modelOutput,
+            origin: FakeRaceTrack.modelOutput(),
+            destination: FakeImage.modelOutput(),
             created_at: "DUMMY",
             updated_at: "DUMMY",
         }
@@ -76,8 +76,8 @@ describe('Requesting the connected prime images', () => {
         const imageRelA = {
             id: 1,
             type: RelType.NodeHasPrimeImage,
-            origin: FakeBrand.modelOutput,
-            destination: FakeImage.modelOutput,
+            origin: FakeBrand.modelOutput(),
+            destination: FakeImage.modelOutput(),
             created_at: "DUMMY",
             updated_at: "DUMMY",
         }
@@ -85,8 +85,8 @@ describe('Requesting the connected prime images', () => {
         const imageRelC = {
             id: 3,
             type: RelType.NodeHasPrimeImage,
-            origin: FakeRaceTrack.modelOutput,
-            destination: FakeImage.modelOutput,
+            origin: FakeRaceTrack.modelOutput(),
+            destination: FakeImage.modelOutput(),
             created_at: "DUMMY",
             updated_at: "DUMMY",
         }

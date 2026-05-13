@@ -15,7 +15,7 @@ describe('Marshalling a »get prime images« collection', () => {
     test('when there are images', async () => {
         const node = {
             node_type: ControllerNodeType.Image,
-            fields: FakeImage.modelOutput.attributes,
+            fields: FakeImage.modelOutput().attributes,
         } as ImageNode
 
         const marshalledNodeCollection = marshalHasPrimeImageNodeCollection([node, node, node])

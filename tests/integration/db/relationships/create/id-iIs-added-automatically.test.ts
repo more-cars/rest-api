@@ -8,8 +8,8 @@ import {createRelationship} from "../../../../../src/db/relationships/createRela
 import {RelationshipType} from "../../../../../src/db/types/RelationshipType"
 
 test('ID is added when creating a relationship', async () => {
-    const brand = await createDbNode(DbNodeType.Brand, FakeBrand.dbInput)
-    const carModel = await createDbNode(DbNodeType.CarModel, FakeCarModel.dbInput)
+    const brand = await createDbNode(DbNodeType.Brand, FakeBrand.dbInput())
+    const carModel = await createDbNode(DbNodeType.CarModel, FakeCarModel.dbInput())
     const relationship = await createRelationship(brand.properties.id, carModel.properties.id, RelationshipType.BrandHasCarModel)
 
     if (!relationship) {

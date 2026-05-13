@@ -6,7 +6,7 @@ import {FakeImage} from "../../../../_toolbox/fixtures/nodes/FakeImage"
 
 describe('Create Image', () => {
     test('Input data is valid - Flickr', async () => {
-        Image.create = vi.fn().mockReturnValue(FakeImage.modelOutput)
+        Image.create = vi.fn().mockReturnValue(FakeImage.modelOutput())
 
         const response = await request(app)
             .post('/images')
@@ -20,7 +20,7 @@ describe('Create Image', () => {
     })
 
     test('Input data is valid - Wikimedia', async () => {
-        Image.create = vi.fn().mockReturnValue(FakeImage.modelOutput)
+        Image.create = vi.fn().mockReturnValue(FakeImage.modelOutput())
 
         const response = await request(app)
             .post('/images')

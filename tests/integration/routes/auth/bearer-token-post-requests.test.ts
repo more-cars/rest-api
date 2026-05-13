@@ -10,7 +10,7 @@ describe('Authentication for POST requests', () => {
 
             const response = await request(app)
                 .post('/brands')
-                .send(FakeBrand.dbInput)
+                .send(FakeBrand.dbInput())
 
             expect(response.statusCode)
                 .toEqual(401)
@@ -22,7 +22,7 @@ describe('Authentication for POST requests', () => {
 
             const response = await request(app)
                 .post('/brands')
-                .send(FakeBrand.dbInput)
+                .send(FakeBrand.dbInput())
                 .set('Authorization', 'Bearer ' + token)
 
             expect(response.statusCode)
@@ -35,7 +35,7 @@ describe('Authentication for POST requests', () => {
 
             const response = await request(app)
                 .post('/brands')
-                .send(FakeBrand.dbInput)
+                .send(FakeBrand.dbInput())
                 .set('Authorization', 'Bearer ' + token)
 
             expect(response.statusCode)
@@ -49,7 +49,7 @@ describe('Authentication for POST requests', () => {
 
             const response = await request(app)
                 .post('/brands')
-                .send(FakeBrand.dbInput)
+                .send(FakeBrand.dbInput())
 
             expect(response.statusCode)
                 .toEqual(201)
@@ -61,7 +61,7 @@ describe('Authentication for POST requests', () => {
 
             const response = await request(app)
                 .post('/brands')
-                .send(FakeBrand.dbInput)
+                .send(FakeBrand.dbInput())
                 .set('Authorization', 'Bearer ' + token)
 
             expect(response.statusCode)

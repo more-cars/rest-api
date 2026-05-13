@@ -1,5 +1,4 @@
 import {describe, expect, test, vi} from 'vitest'
-import {faker} from "@faker-js/faker"
 import * as wm from "../../../../../src/db/external/wikimedia/performWikimediaApiRequest"
 import {FakeGetWikimediaImageByIdResponse} from "../../../../_toolbox/fixtures/external/wikimedia/FakeGetWikimediaImageByIdResponse"
 import {Image} from "../../../../../src/models/node-types/images/Image"
@@ -15,15 +14,11 @@ describe('Fetching the prime images of a node collection', () => {
         vi.spyOn(wm, 'performWikimediaApiRequest')
             .mockImplementation(async () => FakeGetWikimediaImageByIdResponse)
 
-        const imageInputData = FakeImage.dbInput
+        const brand = await Brand.create(FakeBrand.dbInput())
+        const brandImage = await Image.create(FakeImage.dbInput())
 
-        const brand = await Brand.create(FakeBrand.dbInput)
-        imageInputData.external_id = faker.string.uuid() // TODO update FakeImage to return a fresh set of data (instead of cached)
-        const brandImage = await Image.create(imageInputData)
-
-        const company = await Company.create(FakeCompany.dbInput)
-        imageInputData.external_id = faker.string.uuid() // TODO update FakeImage to return a fresh set of data (instead of cached)
-        const companyImage = await Image.create(imageInputData)
+        const company = await Company.create(FakeCompany.dbInput())
+        const companyImage = await Image.create(FakeImage.dbInput())
 
         await Brand.createHasPrimeImageRelationship(brand.attributes.id, brandImage.attributes.id)
         await Company.createHasPrimeImageRelationship(company.attributes.id, companyImage.attributes.id)

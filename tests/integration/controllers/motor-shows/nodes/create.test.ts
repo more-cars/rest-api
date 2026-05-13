@@ -5,7 +5,7 @@ import {MotorShow} from "../../../../../src/models/node-types/motor-shows/MotorS
 import {FakeMotorShow} from "../../../../_toolbox/fixtures/nodes/FakeMotorShow"
 
 test('Input data is valid', async () => {
-    MotorShow.create = vi.fn().mockReturnValue(FakeMotorShow.modelOutput)
+    MotorShow.create = vi.fn().mockReturnValue(FakeMotorShow.modelOutput())
 
     const response = await request(app)
         .post('/motor-shows')

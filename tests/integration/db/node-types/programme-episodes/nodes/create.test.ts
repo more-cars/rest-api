@@ -5,7 +5,7 @@ import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 
 describe('Creating node', () => {
     test('with valid data', async () => {
-        const inputData = FakeProgrammeEpisode.dbInput
+        const inputData = FakeProgrammeEpisode.dbInput()
         const createdNode = await createDbNode(DbNodeType.ProgrammeEpisode, inputData)
 
         expect(createdNode.properties)
@@ -13,7 +13,7 @@ describe('Creating node', () => {
     })
 
     test('with valid minimum data', async () => {
-        const inputData = FakeProgrammeEpisode.dbInputMinimal
+        const inputData = FakeProgrammeEpisode.dbInputMinimal()
         const createdNode = await createDbNode(DbNodeType.ProgrammeEpisode, inputData)
 
         expect(createdNode.properties)

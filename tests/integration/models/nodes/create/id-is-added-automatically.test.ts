@@ -5,13 +5,13 @@ import {FakeBrand} from "../../../../_toolbox/fixtures/nodes/FakeBrand"
 import {FakeCarModel} from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
 
 test('ID is added when creating a node', async () => {
-    const createdBrand = await Brand.create(FakeBrand.dbInput)
+    const createdBrand = await Brand.create(FakeBrand.dbInput())
     expect(createdBrand.attributes.id)
         .toBeGreaterThanOrEqual(12000000)
     expect(createdBrand.attributes.id)
         .toBeLessThanOrEqual(99999999)
 
-    const createdCarModel = await CarModel.create(FakeCarModel.dbInput)
+    const createdCarModel = await CarModel.create(FakeCarModel.dbInput())
     expect(createdCarModel.attributes.id)
         .toBeGreaterThanOrEqual(12000000)
     expect(createdCarModel.attributes.id)

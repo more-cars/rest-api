@@ -7,7 +7,7 @@ import {performApiRequest} from "../../lib/performApiRequest"
 When('the user creates a(n) {string}',
     async (nodeType: string) => {
         const nodePath = getBasePathFragmentForNodeType(nodeType)
-        const data = getFakeNode(convertStringToExpectedNodeType(nodeType)).dbInput
+        const data = getFakeNode(convertStringToExpectedNodeType(nodeType)).dbInput()
         const path = `/${nodePath}`
 
         await performApiRequest(path, 'POST', data)

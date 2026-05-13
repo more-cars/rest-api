@@ -5,7 +5,7 @@ import {ModelCar} from "../../../../../src/models/node-types/model-cars/ModelCar
 import {FakeModelCar} from "../../../../_toolbox/fixtures/nodes/FakeModelCar"
 
 test('Input data is valid', async () => {
-    ModelCar.create = vi.fn().mockReturnValue(FakeModelCar.modelOutput)
+    ModelCar.create = vi.fn().mockReturnValue(FakeModelCar.modelOutput())
 
     const response = await request(app)
         .post('/model-cars')

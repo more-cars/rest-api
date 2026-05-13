@@ -5,7 +5,7 @@ import {ProgrammeEpisode} from "../../../../../src/models/node-types/programme-e
 import {FakeProgrammeEpisode} from "../../../../_toolbox/fixtures/nodes/FakeProgrammeEpisode"
 
 test('Input data is valid', async () => {
-    ProgrammeEpisode.create = vi.fn().mockReturnValue(FakeProgrammeEpisode.modelOutput)
+    ProgrammeEpisode.create = vi.fn().mockReturnValue(FakeProgrammeEpisode.modelOutput())
 
     const response = await request(app)
         .post('/programme-episodes')

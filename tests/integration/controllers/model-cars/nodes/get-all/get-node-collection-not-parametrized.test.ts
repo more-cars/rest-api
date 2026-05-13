@@ -17,9 +17,9 @@ describe('Expecting correct status code when requesting a plain node collection'
 
     test('when multiple nodes exist', async () => {
         ModelCar.findAll = vi.fn().mockReturnValue([
-            FakeModelCar.modelOutput,
-            FakeModelCar.modelOutput,
-            FakeModelCar.modelOutput,
+            FakeModelCar.modelOutput(),
+            FakeModelCar.modelOutput(),
+            FakeModelCar.modelOutput(),
         ])
 
         const response = await request(app)

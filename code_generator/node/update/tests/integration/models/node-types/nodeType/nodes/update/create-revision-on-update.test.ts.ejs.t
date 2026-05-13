@@ -8,7 +8,7 @@ import type {<%= h.changeCase.pascal(nodeType) %>Input} from "../../../../../../
 import {Revision} from "../../../../../../../src/models/node-types/revisions/Revision"
 
 test('Expecting REVISION to be created when updating a node', async () => {
-    const node = await <%= h.changeCase.pascal(nodeType) %>.create(Fake<%= h.changeCase.pascal(nodeType) %>.dbInput)
+    const node = await <%= h.changeCase.pascal(nodeType) %>.create(Fake<%= h.changeCase.pascal(nodeType) %>.dbInput())
     await <%= h.changeCase.pascal(nodeType) %>.update(node.attributes.id, {} as <%= h.changeCase.pascal(nodeType) %>Input)
 
     const revisionNodes = await Revision.findAll({

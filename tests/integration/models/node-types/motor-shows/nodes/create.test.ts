@@ -3,7 +3,7 @@ import {FakeMotorShow} from "../../../../../_toolbox/fixtures/nodes/FakeMotorSho
 import {MotorShow} from "../../../../../../src/models/node-types/motor-shows/MotorShow"
 
 test('Expecting node to be created when provided with valid data', async () => {
-    const inputData = FakeMotorShow.dbInput
+    const inputData = FakeMotorShow.dbInput()
     const createdNode = await MotorShow.create(inputData)
 
     expect(createdNode.attributes)
@@ -11,7 +11,7 @@ test('Expecting node to be created when provided with valid data', async () => {
 })
 
 test('Trying to override read-only properties', async () => {
-    const validData = FakeMotorShow.dbInput
+    const validData = FakeMotorShow.dbInput()
     const readOnlyData = {
         id: 9999,
         created_at: "NOT_ALLOWED_TO_OVERWRITE",

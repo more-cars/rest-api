@@ -3,7 +3,7 @@ import {FakePrice} from "../../../../../_toolbox/fixtures/nodes/FakePrice"
 import {Price} from "../../../../../../src/models/node-types/prices/Price"
 
 test('Expecting node to be created when provided with valid data', async () => {
-    const inputData = FakePrice.dbInput
+    const inputData = FakePrice.dbInput()
     const createdNode = await Price.create(inputData)
 
     expect(createdNode.attributes)
@@ -11,7 +11,7 @@ test('Expecting node to be created when provided with valid data', async () => {
 })
 
 test('Trying to override read-only properties', async () => {
-    const validData = FakePrice.dbInput
+    const validData = FakePrice.dbInput()
     const readOnlyData = {
         id: 9999,
         created_at: "NOT_ALLOWED_TO_OVERWRITE",

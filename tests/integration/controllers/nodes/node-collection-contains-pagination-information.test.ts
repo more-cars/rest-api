@@ -31,9 +31,9 @@ describe('Expecting node collection response to contain pagination information',
     describe('when the node collection is not empty', () => {
         test('and the user provided a pagination parameter', async () => {
             CarModel.findAll = vi.fn().mockReturnValue([
-                FakeCarModel.modelOutput,
-                FakeCarModel.modelOutput,
-                FakeCarModel.modelOutput,
+                FakeCarModel.modelOutput(),
+                FakeCarModel.modelOutput(),
+                FakeCarModel.modelOutput(),
             ])
             Node.getTotalAmount = vi.fn().mockReturnValue(3)
 
@@ -46,9 +46,9 @@ describe('Expecting node collection response to contain pagination information',
 
         test('and the user provided no pagination parameter', async () => {
             CarModel.findAll = vi.fn().mockReturnValue([
-                FakeCarModel.modelOutput,
-                FakeCarModel.modelOutput,
-                FakeCarModel.modelOutput,
+                FakeCarModel.modelOutput(),
+                FakeCarModel.modelOutput(),
+                FakeCarModel.modelOutput(),
             ])
             Node.getTotalAmount = vi.fn().mockReturnValue(3)
 
@@ -64,9 +64,9 @@ describe('Expecting node collection response to contain pagination information',
         test('and the user provided a pagination parameter', async () => {
             // faking a page size of 3
             CarModel.findAll = vi.fn().mockReturnValue([
-                FakeCarModel.modelOutput,
-                FakeCarModel.modelOutput,
-                FakeCarModel.modelOutput,
+                FakeCarModel.modelOutput(),
+                FakeCarModel.modelOutput(),
+                FakeCarModel.modelOutput(),
             ])
             Node.getTotalAmount = vi.fn().mockReturnValue(10)
 
@@ -80,9 +80,9 @@ describe('Expecting node collection response to contain pagination information',
         test('and the user provided no pagination parameter', async () => {
             // faking a page size of 3
             CarModel.findAll = vi.fn().mockReturnValue([
-                FakeCarModel.modelOutput,
-                FakeCarModel.modelOutput,
-                FakeCarModel.modelOutput,
+                FakeCarModel.modelOutput(),
+                FakeCarModel.modelOutput(),
+                FakeCarModel.modelOutput(),
             ])
             Node.getTotalAmount = vi.fn().mockReturnValue(10)
 

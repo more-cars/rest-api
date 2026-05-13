@@ -5,7 +5,7 @@ import {Video} from "../../../../../src/models/node-types/videos/Video"
 import {FakeVideo} from "../../../../_toolbox/fixtures/nodes/FakeVideo"
 
 test('Input data is valid', async () => {
-    Video.create = vi.fn().mockReturnValue(FakeVideo.modelOutput)
+    Video.create = vi.fn().mockReturnValue(FakeVideo.modelOutput())
 
     const response = await request(app)
         .post('/videos')

@@ -26,9 +26,9 @@ describe('Expecting pagination meta information when marshalling a node collecti
     })
 
     test('when the result list is not empty', async () => {
-        const nodeA = convertModelNodeToControllerNode(getFakeNode(ExpectedNodeType.CarModel).modelOutput)
-        const nodeB = convertModelNodeToControllerNode(getFakeNode(ExpectedNodeType.CarModel).modelOutput)
-        const nodeC = convertModelNodeToControllerNode(getFakeNode(ExpectedNodeType.CarModel).modelOutput)
+        const nodeA = convertModelNodeToControllerNode(getFakeNode(ExpectedNodeType.CarModel).modelOutput())
+        const nodeB = convertModelNodeToControllerNode(getFakeNode(ExpectedNodeType.CarModel).modelOutput())
+        const nodeC = convertModelNodeToControllerNode(getFakeNode(ExpectedNodeType.CarModel).modelOutput())
 
         const marshalledNodeCollection = marshalNodeCollection(ControllerNodeType.CarModel, [nodeA, nodeB, nodeC], {page: 2}, 3)
 

@@ -17,9 +17,9 @@ describe('Expecting correct status code when requesting a plain node collection'
 
     test('when multiple nodes exist', async () => {
         Video.findAll = vi.fn().mockReturnValue([
-            FakeVideo.modelOutput,
-            FakeVideo.modelOutput,
-            FakeVideo.modelOutput,
+            FakeVideo.modelOutput(),
+            FakeVideo.modelOutput(),
+            FakeVideo.modelOutput(),
         ])
 
         const response = await request(app)

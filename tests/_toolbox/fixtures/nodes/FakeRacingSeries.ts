@@ -4,25 +4,8 @@ import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {RacingSeriesNode} from "../../../../src/models/node-types/racing-series/types/RacingSeriesNode"
 
 export const FakeRacingSeries = {
-    dbInput: {
-        name: faker.word.words(3),
-        short_name: faker.word.noun().toUpperCase(),
-        founded: faker.number.int({min: 1000, max: 3000}),
-        defunct: faker.number.int({min: 1000, max: 3000}),
-        organized_by: faker.company.name(),
-        vehicle_type: faker.vehicle.type(),
-        country_code: faker.location.countryCode(),
-    } as InputRacingSeriesCreate,
-
-    dbInputMinimal: {
-        name: faker.word.words(3),
-    } as InputRacingSeriesCreate,
-
-
-    modelOutput: {
-        node_type: ModelNodeType.RacingSeries,
-        attributes: {
-            id: faker.number.int({min: 12_000_000, max: 20_000_000}),
+    dbInput: function () {
+        return {
             name: faker.word.words(3),
             short_name: faker.word.noun().toUpperCase(),
             founded: faker.number.int({min: 1000, max: 3000}),
@@ -30,8 +13,31 @@ export const FakeRacingSeries = {
             organized_by: faker.company.name(),
             vehicle_type: faker.vehicle.type(),
             country_code: faker.location.countryCode(),
-            created_at: faker.date.past().toISOString(),
-            updated_at: faker.date.past().toISOString(),
-        },
-    } satisfies RacingSeriesNode,
+        } as InputRacingSeriesCreate
+    },
+
+    dbInputMinimal: function () {
+        return {
+            name: faker.word.words(3),
+        } as InputRacingSeriesCreate
+    },
+
+
+    modelOutput: function () {
+        return {
+            node_type: ModelNodeType.RacingSeries,
+            attributes: {
+                id: faker.number.int({min: 12_000_000, max: 20_000_000}),
+                name: faker.word.words(3),
+                short_name: faker.word.noun().toUpperCase(),
+                founded: faker.number.int({min: 1000, max: 3000}),
+                defunct: faker.number.int({min: 1000, max: 3000}),
+                organized_by: faker.company.name(),
+                vehicle_type: faker.vehicle.type(),
+                country_code: faker.location.countryCode(),
+                created_at: faker.date.past().toISOString(),
+                updated_at: faker.date.past().toISOString(),
+            },
+        } satisfies RacingSeriesNode
+    },
 }

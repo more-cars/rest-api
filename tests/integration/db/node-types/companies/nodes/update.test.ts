@@ -1,6 +1,7 @@
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
+import {FakeCompany} from "../../../../../_toolbox/fixtures/nodes/FakeCompany"
 import {updateDbNode} from "../../../../../../src/db/nodes/updateDbNode"
 import type {InputCompanyCreate} from "../../../../../../src/db/node-types/companies/types/InputCompanyCreate"
 import type {CompanyNode} from "../../../../../../src/db/node-types/companies/types/CompanyNode"
@@ -8,10 +9,7 @@ import type {CompanyNode} from "../../../../../../src/db/node-types/companies/ty
 describe('Updating COMPANY', () => {
     test('with valid data', async () => {
         const createdNode = await seedNode(DbNodeType.Company)
-
-        // @ts-ignore TODO workaround until the node faker can return fresh copies, instead of cached ones
-        const {FakeCompany} = await import("../../../../../_toolbox/fixtures/nodes/FakeCompany?update=${Date.now()}")
-        const inputData = FakeCompany.dbInput
+        const inputData = FakeCompany.dbInput()
         const updatedNode = await updateDbNode(DbNodeType.Company, createdNode.properties.id, inputData)
 
         expect(updatedNode.properties)

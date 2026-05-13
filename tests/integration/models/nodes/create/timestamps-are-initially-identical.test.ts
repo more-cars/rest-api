@@ -5,11 +5,11 @@ import {FakeBrand} from "../../../../_toolbox/fixtures/nodes/FakeBrand"
 import {FakeCarModel} from "../../../../_toolbox/fixtures/nodes/FakeCarModel"
 
 test('Timestamps are identical when creating a node', async () => {
-    const createdBrand = await Brand.create(FakeBrand.dbInput)
+    const createdBrand = await Brand.create(FakeBrand.dbInput())
     expect(createdBrand.attributes.created_at)
         .toEqual(createdBrand.attributes.updated_at)
 
-    const createdCarModel = await CarModel.create(FakeCarModel.dbInput)
+    const createdCarModel = await CarModel.create(FakeCarModel.dbInput())
     expect(createdCarModel.attributes.created_at)
         .toEqual(createdCarModel.attributes.updated_at)
 })

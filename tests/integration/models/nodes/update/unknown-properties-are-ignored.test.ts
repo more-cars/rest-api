@@ -5,7 +5,7 @@ import type {CompanyInput} from "../../../../../src/models/node-types/companies/
 
 describe('trying to update a node with unknown properties', () => {
     test('unknown properties are ignored', async () => {
-        const createdNode = await Company.create(FakeCompany.dbInput)
+        const createdNode = await Company.create(FakeCompany.dbInput())
         const data = Object.assign({}, createdNode.attributes, {
             "my_property": "NOT_ALLOWED_TO_ADD"
         })

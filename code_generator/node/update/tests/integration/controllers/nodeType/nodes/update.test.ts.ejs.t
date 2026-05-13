@@ -26,7 +26,7 @@ describe('Update <%= h.changeCase.upper(nodeType) %>', () => {
     })
 
     test('Input data is valid', async () => {
-        <%= h.changeCase.pascal(nodeType) %>.update = vi.fn().mockReturnValue(Fake<%= h.changeCase.pascal(nodeType) %>.modelOutput)
+        <%= h.changeCase.pascal(nodeType) %>.update = vi.fn().mockReturnValue(Fake<%= h.changeCase.pascal(nodeType) %>.modelOutput())
 
         const response = await request(app)
             .patch('/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/42')

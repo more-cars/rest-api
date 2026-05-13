@@ -5,7 +5,7 @@ import {Price} from "../../../../../src/models/node-types/prices/Price"
 import {FakePrice} from "../../../../_toolbox/fixtures/nodes/FakePrice"
 
 test('Input data is valid', async () => {
-    Price.create = vi.fn().mockReturnValue(FakePrice.modelOutput)
+    Price.create = vi.fn().mockReturnValue(FakePrice.modelOutput())
 
     const response = await request(app)
         .post('/prices')

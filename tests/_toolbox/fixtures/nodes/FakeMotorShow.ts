@@ -4,24 +4,8 @@ import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {MotorShowNode} from "../../../../src/models/node-types/motor-shows/types/MotorShowNode"
 
 export const FakeMotorShow = {
-    dbInput: {
-        name: faker.word.noun(),
-        date_from: faker.word.noun(),
-        date_until: faker.word.noun(),
-        location: faker.word.noun(),
-        target_audience: faker.word.noun(),
-        focus: faker.word.noun(),
-        country_code: faker.location.countryCode(),
-    } as InputMotorShowCreate,
-
-    dbInputMinimal: {
-        name: faker.word.noun(),
-    } as InputMotorShowCreate,
-
-    modelOutput: {
-        node_type: ModelNodeType.MotorShow,
-        attributes: {
-            id: faker.number.int({min: 12_000_000, max: 20_000_000}),
+    dbInput: function () {
+        return {
             name: faker.word.noun(),
             date_from: faker.word.noun(),
             date_until: faker.word.noun(),
@@ -29,8 +13,30 @@ export const FakeMotorShow = {
             target_audience: faker.word.noun(),
             focus: faker.word.noun(),
             country_code: faker.location.countryCode(),
-            created_at: faker.date.past().toISOString(),
-            updated_at: faker.date.past().toISOString(),
-        },
-    } satisfies MotorShowNode
+        } as InputMotorShowCreate
+    },
+
+    dbInputMinimal: function () {
+        return {
+            name: faker.word.noun(),
+        } as InputMotorShowCreate
+    },
+
+    modelOutput: function () {
+        return {
+            node_type: ModelNodeType.MotorShow,
+            attributes: {
+                id: faker.number.int({min: 12_000_000, max: 20_000_000}),
+                name: faker.word.noun(),
+                date_from: faker.word.noun(),
+                date_until: faker.word.noun(),
+                location: faker.word.noun(),
+                target_audience: faker.word.noun(),
+                focus: faker.word.noun(),
+                country_code: faker.location.countryCode(),
+                created_at: faker.date.past().toISOString(),
+                updated_at: faker.date.past().toISOString(),
+            },
+        } satisfies MotorShowNode
+    },
 }

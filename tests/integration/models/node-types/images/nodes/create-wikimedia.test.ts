@@ -1,5 +1,4 @@
 import {describe, expect, test} from 'vitest'
-import {faker} from "@faker-js/faker"
 import {FakeImage} from "../../../../../_toolbox/fixtures/nodes/FakeImage"
 import {Image} from "../../../../../../src/models/node-types/images/Image"
 import {WikimediaImageAlreadyExistsError} from "../../../../../../src/models/types/WikimediaImageAlreadyExistsError"
@@ -9,7 +8,7 @@ describe('Create Image - Wikimedia', () => {
     test('When providing valid data then the new node is created', async () => {
         mockWikimediaRequest()
 
-        const inputData = FakeImage.dbInputMinimal
+        const inputData = FakeImage.dbInputMinimal()
         const createdNode = await Image.create(inputData)
 
         expect(createdNode.attributes.external_id)
@@ -19,8 +18,7 @@ describe('Create Image - Wikimedia', () => {
     test('Read-only properties cannot be overridden', async () => {
         mockWikimediaRequest()
 
-        const validData = FakeImage.dbInputMinimal
-        validData.external_id = faker.string.uuid() // TODO update FakeImage to return a fresh set of data (instead of cached)
+        const validData = FakeImage.dbInputMinimal()
         const readOnlyData = {
             id: 9999,
             created_at: "NOT_ALLOWED_TO_OVERWRITE",
@@ -49,8 +47,7 @@ describe('Create Image - Wikimedia', () => {
     test('Trying to add the same image again', async () => {
         mockWikimediaRequest()
 
-        const inputData = FakeImage.dbInputMinimal
-        inputData.external_id = faker.string.uuid() // TODO update FakeImage to return a fresh set of data (instead of cached)
+        const inputData = FakeImage.dbInputMinimal()
 
         await Image.create(inputData)
 

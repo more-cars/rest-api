@@ -14,7 +14,7 @@ describe('Marshalling a node', () => {
             return
         }
 
-        const modelNode = getFakeNode(nodeType).modelOutput
+        const modelNode = getFakeNode(nodeType).modelOutput()
         const controllerNode = convertModelNodeToControllerNode(modelNode)
         const marshalledNode = marshalSingleNode(controllerNode)
 

@@ -13,7 +13,7 @@ When('the user creates a set {string} of {int} {string}s',
 
         for (let i = 0; i < amount; i++) {
             const nodePath = getBasePathFragmentForNodeType(nodeType)
-            const data = getFakeNode(convertStringToExpectedNodeType(nodeType)).dbInput
+            const data = getFakeNode(convertStringToExpectedNodeType(nodeType)).dbInput()
             const path = `/${nodePath}`
 
             const response = await performApiRequest(path, 'POST', data)

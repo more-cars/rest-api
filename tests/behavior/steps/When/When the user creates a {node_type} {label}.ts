@@ -8,7 +8,7 @@ import {convertNodeResponseToNode} from "../../lib/convertNodeResponseToNode"
 
 When('the user creates a {string} {string}',
     async (nodeType: string, label: string) => {
-        const data = getFakeNode(convertStringToExpectedNodeType(nodeType)).dbInput
+        const data = getFakeNode(convertStringToExpectedNodeType(nodeType)).dbInput()
         const nodePath = getBasePathFragmentForNodeType(nodeType)
         const path = `/${nodePath}`
 

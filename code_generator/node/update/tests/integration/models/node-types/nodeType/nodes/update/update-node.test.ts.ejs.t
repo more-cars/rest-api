@@ -18,10 +18,8 @@ describe('Updating a <%= h.changeCase.upper(nodeType) %>', () => {
 
     test('Node exists', async () => {
         const createdNode = await seedNode(DbNodeType.<%= h.changeCase.pascal(nodeType) %>)
-        // @ts-ignore TODO workaround until the node faker can return fresh copies, instead of cached ones
-        const {Fake<%= h.changeCase.pascal(nodeType) %>} = await import("../../../../../../_toolbox/fixtures/nodes/Fake<%= h.changeCase.pascal(nodeType) %>?update=${Date.now()}")
-        const inputData = Fake<%= h.changeCase.pascal(nodeType) %>.dbInput
-        const updatedNode = await <%= h.changeCase.pascal(nodeType) %>.update(createdNode.properties.id, inputData)
+        const inputData = Fake<%= h.changeCase.pascal(nodeType) %>.dbInput()
+        const updatedNode = await <%= h.changeCase.pascal(nodeType) %>.update(createdNode.properties.id, inputData as <%= h.changeCase.pascal(nodeType) %>Input)
 
         expect(updatedNode.attributes)
             .toEqual(expect.objectContaining(inputData))
@@ -29,7 +27,7 @@ describe('Updating a <%= h.changeCase.upper(nodeType) %>', () => {
 
     test('Trying to override read-only properties', async () => {
         const createdNode = await seedNode(DbNodeType.<%= h.changeCase.pascal(nodeType) %>)
-        const validData = Fake<%= h.changeCase.pascal(nodeType) %>.dbInput
+        const validData = Fake<%= h.changeCase.pascal(nodeType) %>.dbInput()
         const readOnlyData = {
             id: 9999,
             created_at: "NOT_ALLOWED_TO_OVERWRITE",

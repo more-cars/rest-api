@@ -4,6 +4,7 @@ to: tests/integration/db/node-types/<%= h.changeCase.kebab(h.inflection.pluraliz
 import {describe, expect, test} from 'vitest'
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
+import {Fake<%= h.changeCase.pascal(nodeType) %>} from "../../../../../_toolbox/fixtures/nodes/Fake<%= h.changeCase.pascal(nodeType) %>"
 import {updateDbNode} from "../../../../../../src/db/nodes/updateDbNode"
 import type {Input<%= h.changeCase.pascal(nodeType) %>Create} from "../../../../../../src/db/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Input<%= h.changeCase.pascal(nodeType) %>Create"
 import type {<%= h.changeCase.pascal(nodeType) %>Node} from "../../../../../../src/db/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node"
@@ -11,10 +12,7 @@ import type {<%= h.changeCase.pascal(nodeType) %>Node} from "../../../../../../s
 describe('Updating <%= h.changeCase.upper(nodeType) %>', () => {
     test('with valid data', async () => {
         const createdNode = await seedNode(DbNodeType.<%= h.changeCase.pascal(nodeType) %>)
-
-        // @ts-ignore TODO workaround until the node faker can return fresh copies, instead of cached ones
-        const {Fake<%= h.changeCase.pascal(nodeType) %>} = await import("../../../../../_toolbox/fixtures/nodes/Fake<%= h.changeCase.pascal(nodeType) %>?update=${Date.now()}")
-        const inputData = Fake<%= h.changeCase.pascal(nodeType) %>.dbInput
+        const inputData = Fake<%= h.changeCase.pascal(nodeType) %>.dbInput()
         const updatedNode = await updateDbNode(DbNodeType.<%= h.changeCase.pascal(nodeType) %>, createdNode.properties.id, inputData)
 
         expect(updatedNode.properties)

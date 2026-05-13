@@ -5,7 +5,7 @@ import {Rating} from "../../../../../src/models/node-types/ratings/Rating"
 import {FakeRating} from "../../../../_toolbox/fixtures/nodes/FakeRating"
 
 test('Input data is valid', async () => {
-    Rating.create = vi.fn().mockReturnValue(FakeRating.modelOutput)
+    Rating.create = vi.fn().mockReturnValue(FakeRating.modelOutput())
 
     const response = await request(app)
         .post('/ratings')

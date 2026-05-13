@@ -8,7 +8,7 @@ import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 
 describe('Creating node', () => {
     test('with valid data', async () => {
-        const inputData = Fake<%= h.changeCase.pascal(nodeType) %>.dbInput
+        const inputData = Fake<%= h.changeCase.pascal(nodeType) %>.dbInput()
         const createdNode = await createDbNode(DbNodeType.<%= h.changeCase.pascal(nodeType) %>, inputData)
 
         expect(createdNode.properties)
@@ -16,7 +16,7 @@ describe('Creating node', () => {
     })
 
     test('with valid minimum data', async () => {
-        const inputData = Fake<%= h.changeCase.pascal(nodeType) %>.dbInputMinimal
+        const inputData = Fake<%= h.changeCase.pascal(nodeType) %>.dbInputMinimal()
         const createdNode = await createDbNode(DbNodeType.<%= h.changeCase.pascal(nodeType) %>, inputData)
 
         expect(createdNode.properties)

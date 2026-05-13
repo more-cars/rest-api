@@ -5,7 +5,7 @@ import type {CompanyInput} from "../../../../../src/models/node-types/companies/
 
 describe('updating a node', () => {
     test('updated_at timestamp is updated, but not created_at', async () => {
-        const createdNode = await Company.create(FakeCompany.dbInput)
+        const createdNode = await Company.create(FakeCompany.dbInput())
         const updatedNode = await Company.update(createdNode.attributes.id, createdNode.attributes as CompanyInput)
 
         expect(createdNode.attributes.created_at)

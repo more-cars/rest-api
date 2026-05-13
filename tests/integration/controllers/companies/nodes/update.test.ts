@@ -22,7 +22,7 @@ describe('Update COMPANY', () => {
     })
 
     test('Input data is valid', async () => {
-        Company.update = vi.fn().mockReturnValue(FakeCompany.modelOutput)
+        Company.update = vi.fn().mockReturnValue(FakeCompany.modelOutput())
 
         const response = await request(app)
             .patch('/companies/42')

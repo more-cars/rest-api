@@ -6,5 +6,5 @@ import {createDbNode} from "../../../../../src/db/nodes/createDbNode"
 import {Fake<%= h.changeCase.pascal(nodeType) %>} from "../../../fixtures/nodes/Fake<%= h.changeCase.pascal(nodeType) %>"
 
 export async function seed<%= h.changeCase.pascal(nodeType) %>(customFakeData: object = {}) {
-    return createDbNode(DbNodeType.<%= h.changeCase.pascal(nodeType) %>, Object.assign({}, Fake<%= h.changeCase.pascal(nodeType) %>.dbInput, customFakeData))
+    return createDbNode(DbNodeType.<%= h.changeCase.pascal(nodeType) %>, Object.assign({}, Fake<%= h.changeCase.pascal(nodeType) %>.dbInput(), customFakeData))
 }

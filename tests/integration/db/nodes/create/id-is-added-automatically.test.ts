@@ -14,7 +14,7 @@ describe('ID is automatically added when creating a node', () => {
         }
 
         const dbNodeType = convertStringToDbNodeType(nodeType)
-        const nodeData = getFakeNode(nodeType).dbInputMinimal as InputNodeTypeCreate
+        const nodeData = getFakeNode(nodeType).dbInputMinimal() as InputNodeTypeCreate
         const createdNode = await createDbNode(dbNodeType, nodeData)
 
         expect(createdNode.properties.id)

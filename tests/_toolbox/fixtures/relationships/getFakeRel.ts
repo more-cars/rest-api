@@ -12,8 +12,8 @@ export function getFakeRel(relType: RelType): Rel {
     return {
         id: faker.number.int({min: 12_000_000, max: 20_000_000}),
         type: relType,
-        origin: getFakeNode(convertStringToExpectedNodeType(relationshipTypeSpecification.startNodeType)).modelOutput,
-        destination: getFakeNode(convertStringToExpectedNodeType(relationshipTypeSpecification.endNodeType)).modelOutput,
+        origin: getFakeNode(convertStringToExpectedNodeType(relationshipTypeSpecification.startNodeType)).modelOutput(),
+        destination: getFakeNode(convertStringToExpectedNodeType(relationshipTypeSpecification.endNodeType)).modelOutput(),
         created_at: faker.date.past().toISOString(),
         updated_at: faker.date.past().toISOString(),
     } satisfies Rel

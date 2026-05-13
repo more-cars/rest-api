@@ -26,7 +26,7 @@ describe('The user injects the timestamp fields illegally', () => {
         vi.spyOn(wm, 'performWikimediaApiRequest')
             .mockImplementation(async () => FakeGetWikimediaImageByIdResponse)
 
-        const manipulatedInput = Object.assign({}, getFakeNode(nodeType).dbInput, {
+        const manipulatedInput = Object.assign({}, getFakeNode(nodeType).dbInput(), {
             name: "TIMESTAMP TEST",
             created_at: "blubb",
             updated_at: "blobb",

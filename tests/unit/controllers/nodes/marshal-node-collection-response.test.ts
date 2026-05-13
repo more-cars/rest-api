@@ -12,9 +12,9 @@ describe('Marshalling a node collection', () => {
             return
         }
 
-        const nodeA = convertModelNodeToControllerNode(getFakeNode(nodeType).modelOutput)
-        const nodeB = convertModelNodeToControllerNode(getFakeNode(nodeType).modelOutput)
-        const nodeC = convertModelNodeToControllerNode(getFakeNode(nodeType).modelOutput)
+        const nodeA = convertModelNodeToControllerNode(getFakeNode(nodeType).modelOutput())
+        const nodeB = convertModelNodeToControllerNode(getFakeNode(nodeType).modelOutput())
+        const nodeC = convertModelNodeToControllerNode(getFakeNode(nodeType).modelOutput())
         const expectedTotalNodeCount = 173
 
         const marshalledNodeCollection = marshalNodeCollection(nodeA.node_type, [nodeA, nodeB, nodeC], {}, expectedTotalNodeCount)

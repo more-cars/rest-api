@@ -14,7 +14,7 @@ describe('Both timestamps are identical for new nodes', () => {
         }
 
         const dbNodeType = convertStringToDbNodeType(nodeType)
-        const nodeData = getFakeNode(nodeType).dbInputMinimal as InputNodeTypeCreate
+        const nodeData = getFakeNode(nodeType).dbInputMinimal() as InputNodeTypeCreate
         const createdNode = await createDbNode(dbNodeType, nodeData)
 
         expect(createdNode.properties.created_at)

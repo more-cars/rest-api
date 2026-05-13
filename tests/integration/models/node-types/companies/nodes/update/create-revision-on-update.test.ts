@@ -5,7 +5,7 @@ import type {CompanyInput} from "../../../../../../../src/models/node-types/comp
 import {Revision} from "../../../../../../../src/models/node-types/revisions/Revision"
 
 test('Expecting REVISION to be created when updating a node', async () => {
-    const node = await Company.create(FakeCompany.dbInput)
+    const node = await Company.create(FakeCompany.dbInput())
     await Company.update(node.attributes.id, {} as CompanyInput)
 
     const revisionNodes = await Revision.findAll({
