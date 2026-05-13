@@ -39,8 +39,16 @@ runtime:
       operator: eq
       value: "{{valid<%= h.changeCase.pascal(nodeType) %>Id}}"
   scripts:
+    - type: before-request
+      code: |-
+        const <%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %> = require('./lib/node-types/<%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>.js')
+        await <%= h.changeCase.pascal(h.inflection.pluralize(nodeType)) %>.create()
     - type: tests
       code: |-
+        test("response should return the intended record", function () {
+          const data = res.getBody()
+          expect(data.id).to.eql(bru.getEnvVar('valid<%= h.changeCase.pascal(nodeType) %>Id'))
+        })
         test("both timestamps should be different", function () {
           const data = res.getBody()
           expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)

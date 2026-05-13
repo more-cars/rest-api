@@ -8,11 +8,13 @@ info:
 
 http:
   method: PATCH
-  url: "{{baseUrl}}/car-models/{{invalidCarModelId}}"
+  url: "{{baseUrl}}/car-models/{{validCarModelId}}"
   body:
     type: json
     data: |-
-      {}
+      {
+        "name": null
+      }
 
 runtime:
   assertions:

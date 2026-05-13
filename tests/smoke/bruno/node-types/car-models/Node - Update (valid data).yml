@@ -18,7 +18,7 @@ http:
         "built_to": 1989,
         "generation": 5,
         "internal_code": "C3 - Updated",
-        "total_production": 1234569,
+        "total_production": 1234569
       }
 
 runtime:
@@ -32,8 +32,16 @@ runtime:
       operator: eq
       value: "{{validCarModelId}}"
   scripts:
+    - type: before-request
+      code: |-
+        const CarModels = require('./lib/node-types/CarModels.js')
+        await CarModels.create()
     - type: tests
       code: |-
+        test("response should return the intended record", function () {
+          const data = res.getBody()
+          expect(data.id).to.eql(bru.getEnvVar('validCarModelId'))
+        })
         test("both timestamps should be different", function () {
           const data = res.getBody()
           expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)

@@ -48,7 +48,7 @@ http:
         "sprint_time_0_100_kmh": 7.2,
         "top_speed": 252,
         "top_speed_unit": "km/h - Updated",
-        "total_production": 50002,
+        "total_production": 50002
       }
 
 runtime:
@@ -62,8 +62,16 @@ runtime:
       operator: eq
       value: "{{validCarModelVariantId}}"
   scripts:
+    - type: before-request
+      code: |-
+        const CarModelVariants = require('./lib/node-types/CarModelVariants.js')
+        await CarModelVariants.create()
     - type: tests
       code: |-
+        test("response should return the intended record", function () {
+          const data = res.getBody()
+          expect(data.id).to.eql(bru.getEnvVar('validCarModelVariantId'))
+        })
         test("both timestamps should be different", function () {
           const data = res.getBody()
           expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)

@@ -11,11 +11,13 @@ info:
 
 http:
   method: PATCH
-  url: "{{baseUrl}}/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/{{invalid<%= h.changeCase.pascal(nodeType) %>Id}}"
+  url: "{{baseUrl}}/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/{{valid<%= h.changeCase.pascal(nodeType) %>Id}}"
   body:
     type: json
     data: |-
-      {}
+      {
+        "name": null
+      }
 
 runtime:
   assertions:
