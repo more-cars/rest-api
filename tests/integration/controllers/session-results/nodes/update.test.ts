@@ -47,7 +47,7 @@ describe('Update SESSION RESULT', () => {
         const createdNode = await seedNode(DbNodeType.SessionResult)
         const inputData = createdNode.properties
         // @ts-expect-error TS2339 TS2339 TS2339
-        inputData.name = null
+        inputData.position = null
 
         const response = await request(app)
             .patch('/session-results/' + createdNode.properties.id)

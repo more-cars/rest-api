@@ -18,7 +18,7 @@ export const LapTimeNodeSpecification: NodeSpecification = {
             mandatory: true,
             example: 'Klaus Ludwig',
             scope: 'user',
-            validation: ['string'],
+            validation: ['mandatory', 'string'],
         },
         {
             name: 'date',

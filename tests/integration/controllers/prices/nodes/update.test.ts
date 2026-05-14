@@ -29,8 +29,8 @@ describe('Update PRICE', () => {
             .send({
                 "price": 59992,
                 "price_year": 2022,
-                "currency_code": "EUR - Updated",
-                "country_code": "DE - Updated",
+                "currency_code": "GBP",
+                "country_code": "GB",
             })
 
         expect(response.statusCode)
