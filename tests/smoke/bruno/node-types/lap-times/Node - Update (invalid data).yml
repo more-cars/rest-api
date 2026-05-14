@@ -1,0 +1,30 @@
+info:
+  name: Update Lap Time (invalid data)
+  type: http
+  tags:
+    - update
+    - node
+    - invalid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/lap-times/{{validLapTimeId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "driver_name": null
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "400"
+    - expression: res.body
+      operator: isString
+  scripts:
+    - type: before-request
+      code: |-
+        const LapTimes = require('./lib/node-types/LapTimes.js')
+        await LapTimes.create()

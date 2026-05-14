@@ -2,6 +2,7 @@ import express from "express"
 import {create} from "./lap-times/create"
 import {getById} from "./lap-times/getById"
 import {getAll} from "./lap-times/getAll"
+import {updateNode} from "./lap-times/updateNode"
 import {deleteNode} from "./lap-times/deleteNode"
 import {createBelongsToSessionResultRelation} from "./lap-times/createBelongsToSessionResultRelation"
 import {getBelongsToSessionResultRelation} from "./lap-times/getBelongsToSessionResultRelation"
@@ -39,6 +40,10 @@ export const LapTimeController = {
 
     async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
+    },
+
+    async update(req: express.Request, res: express.Response) {
+        await updateNode(req, res)
     },
 
     async delete(req: express.Request, res: express.Response) {

@@ -30,6 +30,14 @@ describe('Lap Times', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Update Node', async () => {
+        await request(app)
+            .patch('/lap-times/123')
+
+        expect(LapTimeController.update)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Delete Node', async () => {
         await request(app)
             .delete('/lap-times/123')

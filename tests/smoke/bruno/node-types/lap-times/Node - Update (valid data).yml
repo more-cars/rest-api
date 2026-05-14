@@ -1,0 +1,45 @@
+info:
+  name: Update Lap Time (valid data)
+  type: http
+  tags:
+    - update
+    - node
+    - valid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/lap-times/{{validLapTimeId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "time": "PT1M33.294S - Updated",
+        "driver_name": "Klaus Ludwig - Updated",
+        "date": "1996-08-03 - Updated",
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validLapTimeId}}"
+  scripts:
+    - type: before-request
+      code: |-
+        const LapTimes = require('./lib/node-types/LapTimes.js')
+        await LapTimes.create()
+    - type: tests
+      code: |-
+        test("response should return the intended record", function () {
+          const data = res.getBody()
+          expect(data.id).to.eql(bru.getEnvVar('validLapTimeId'))
+        })
+        test("both timestamps should be different", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)
+        })
