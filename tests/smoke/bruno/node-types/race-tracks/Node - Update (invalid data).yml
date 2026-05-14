@@ -1,0 +1,30 @@
+info:
+  name: Update Race Track (invalid data)
+  type: http
+  tags:
+    - update
+    - node
+    - invalid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/race-tracks/{{validRaceTrackId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name": null
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "400"
+    - expression: res.body
+      operator: isString
+  scripts:
+    - type: before-request
+      code: |-
+        const RaceTracks = require('./lib/node-types/RaceTracks.js')
+        await RaceTracks.create()

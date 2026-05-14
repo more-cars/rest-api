@@ -2,6 +2,7 @@ import express from "express"
 import {create} from "./race-tracks/create"
 import {getById} from "./race-tracks/getById"
 import {getAll} from "./race-tracks/getAll"
+import {updateNode} from "./race-tracks/updateNode"
 import {deleteNode} from "./race-tracks/deleteNode"
 import {createHasLayoutRelation} from "./race-tracks/createHasLayoutRelation"
 import {getAllHasLayoutRelations} from "./race-tracks/getAllHasLayoutRelations"
@@ -33,6 +34,10 @@ export const RaceTrackController = {
 
     async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
+    },
+
+    async update(req: express.Request, res: express.Response) {
+        await updateNode(req, res)
     },
 
     async delete(req: express.Request, res: express.Response) {

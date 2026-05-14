@@ -1,0 +1,49 @@
+info:
+  name: Update Race Track (valid data)
+  type: http
+  tags:
+    - update
+    - node
+    - valid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/race-tracks/{{validRaceTrackId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Lausitzring - Updated",
+        "opened": 2002,
+        "closed": null,
+        "type": "permanent race track - Updated",
+        "location": "Klettwitz - Updated",
+        "geo_position": "51°32’0”N 13°55’10”E - Updated",
+        "country_code": "AT",
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validRaceTrackId}}"
+  scripts:
+    - type: before-request
+      code: |-
+        const RaceTracks = require('./lib/node-types/RaceTracks.js')
+        await RaceTracks.create()
+    - type: tests
+      code: |-
+        test("response should return the intended record", function () {
+          const data = res.getBody()
+          expect(data.id).to.eql(bru.getEnvVar('validRaceTrackId'))
+        })
+        test("both timestamps should be different", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)
+        })
