@@ -1,0 +1,50 @@
+info:
+  name: Update Session Result (valid data)
+  type: http
+  tags:
+    - update
+    - node
+    - valid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/session-results/{{validSessionResultId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "position": 3,
+        "race_number": "44 - Updated",
+        "driver_name": "Lewis Hamilton - Updated",
+        "team_name": "Mercedes - Updated",
+        "race_time": "PT1H23M45.678S - Updated",
+        "laps": 53,
+        "status": "finished - Updated",
+        "points": 27,
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validSessionResultId}}"
+  scripts:
+    - type: before-request
+      code: |-
+        const SessionResults = require('./lib/node-types/SessionResults.js')
+        await SessionResults.create()
+    - type: tests
+      code: |-
+        test("response should return the intended record", function () {
+          const data = res.getBody()
+          expect(data.id).to.eql(bru.getEnvVar('validSessionResultId'))
+        })
+        test("both timestamps should be different", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)
+        })

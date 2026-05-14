@@ -4,6 +4,9 @@ import {convertInputData} from "./create/convertInputData"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/session-results/getNodeById"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
+import {updateDbNode} from "../../../db/nodes/updateDbNode"
+import type {SessionResultInput} from "./types/SessionResultInput"
+import {Revision} from "../revisions/Revision"
 import {deleteNode} from "../../../db/nodes/deleteNode"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 import {createRel} from "../../relationships/createRel"
@@ -52,6 +55,27 @@ export const SessionResult = {
         })
 
         return nodes
+    },
+
+    async update(id: number, data: SessionResultInput): Promise<SessionResultNode> {
+        const node = await getNodeById(id)
+
+        if (!node) {
+            throw new NodeNotFoundError(id)
+        }
+
+        const input = convertInputData(data as CreateSessionResultInput)
+        const result = await updateDbNode(DbNodeType.SessionResult, id, input)
+
+        await Revision.create({
+            node_type: DbNodeType.SessionResult,
+            node_id: node.properties.id,
+            node_created_at: node.properties.created_at,
+            node_updated_at: node.properties.updated_at,
+            ...node.properties,
+        })
+
+        return convertDbNodeToModelNode(result) as SessionResultNode
     },
 
     async delete(id: number): Promise<void> {

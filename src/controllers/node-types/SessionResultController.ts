@@ -2,6 +2,7 @@ import express from "express"
 import {create} from "./session-results/create"
 import {getById} from "./session-results/getById"
 import {getAll} from "./session-results/getAll"
+import {updateNode} from "./session-results/updateNode"
 import {deleteNode} from "./session-results/deleteNode"
 import {createBelongsToRacingSessionRelation} from "./session-results/createBelongsToRacingSessionRelation"
 import {getBelongsToRacingSessionRelation} from "./session-results/getBelongsToRacingSessionRelation"
@@ -30,6 +31,10 @@ export const SessionResultController = {
 
     async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
+    },
+
+    async update(req: express.Request, res: express.Response) {
+        await updateNode(req, res)
     },
 
     async delete(req: express.Request, res: express.Response) {

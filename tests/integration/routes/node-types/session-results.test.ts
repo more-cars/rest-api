@@ -30,6 +30,14 @@ describe('Session Results', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Update Node', async () => {
+        await request(app)
+            .patch('/session-results/123')
+
+        expect(SessionResultController.update)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Delete Node', async () => {
         await request(app)
             .delete('/session-results/123')
