@@ -30,6 +30,14 @@ describe('Racing Series', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Update Node', async () => {
+        await request(app)
+            .patch('/racing-series/123')
+
+        expect(RacingSeriesController.update)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Delete Node', async () => {
         await request(app)
             .delete('/racing-series/123')

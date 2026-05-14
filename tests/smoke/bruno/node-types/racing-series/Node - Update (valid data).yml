@@ -1,0 +1,49 @@
+info:
+  name: Update Racing Series (valid data)
+  type: http
+  tags:
+    - update
+    - node
+    - valid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/racing-series/{{validRacingSeriesId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Deutsche Tourenwagen-Masters - Updated",
+        "short_name": "DTM - Updated",
+        "founded": 2002,
+        "defunct": null,
+        "organized_by": "ITR - Updated",
+        "vehicle_type": "touring cars - Updated",
+        "country_code": "AT",
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validRacingSeriesId}}"
+  scripts:
+    - type: before-request
+      code: |-
+        const RacingSeries = require('./lib/node-types/RacingSeries.js')
+        await RacingSeries.create()
+    - type: tests
+      code: |-
+        test("response should return the intended record", function () {
+          const data = res.getBody()
+          expect(data.id).to.eql(bru.getEnvVar('validRacingSeriesId'))
+        })
+        test("both timestamps should be different", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)
+        })

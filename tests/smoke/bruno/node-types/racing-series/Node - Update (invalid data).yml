@@ -1,0 +1,30 @@
+info:
+  name: Update Racing Series (invalid data)
+  type: http
+  tags:
+    - update
+    - node
+    - invalid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/racing-series/{{validRacingSeriesId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name": null
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "400"
+    - expression: res.body
+      operator: isString
+  scripts:
+    - type: before-request
+      code: |-
+        const RacingSeries = require('./lib/node-types/RacingSeries.js')
+        await RacingSeries.create()

@@ -2,6 +2,7 @@ import express from "express"
 import {create} from "./racing-series/create"
 import {getById} from "./racing-series/getById"
 import {getAll} from "./racing-series/getAll"
+import {updateNode} from "./racing-series/updateNode"
 import {deleteNode} from "./racing-series/deleteNode"
 import {createHasRacingEventRelation} from "./racing-series/createHasRacingEventRelation"
 import {getAllHasRacingEventRelations} from "./racing-series/getAllHasRacingEventRelations"
@@ -30,6 +31,10 @@ export const RacingSeriesController = {
 
     async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
+    },
+
+    async update(req: express.Request, res: express.Response) {
+        await updateNode(req, res)
     },
 
     async delete(req: express.Request, res: express.Response) {
