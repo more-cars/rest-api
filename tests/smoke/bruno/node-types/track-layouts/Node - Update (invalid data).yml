@@ -1,0 +1,30 @@
+info:
+  name: Update Track Layout (invalid data)
+  type: http
+  tags:
+    - update
+    - node
+    - invalid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/track-layouts/{{validTrackLayoutId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name": null
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "400"
+    - expression: res.body
+      operator: isString
+  scripts:
+    - type: before-request
+      code: |-
+        const TrackLayouts = require('./lib/node-types/TrackLayouts.js')
+        await TrackLayouts.create()

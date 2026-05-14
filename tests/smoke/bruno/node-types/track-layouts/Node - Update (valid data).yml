@@ -1,0 +1,51 @@
+info:
+  name: Update Track Layout (valid data)
+  type: http
+  tags:
+    - update
+    - node
+    - valid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/track-layouts/{{validTrackLayoutId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "GP Circuit - Updated",
+        "year_from": 1969,
+        "year_to": 2001,
+        "length": 7.397,
+        "length_unit": "km - Updated",
+        "direction": "clockwise - Updated",
+        "elevation_change": 75,
+        "elevation_change_unit": "m - Updated",
+        "surface": "asphalt - Updated",
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validTrackLayoutId}}"
+  scripts:
+    - type: before-request
+      code: |-
+        const TrackLayouts = require('./lib/node-types/TrackLayouts.js')
+        await TrackLayouts.create()
+    - type: tests
+      code: |-
+        test("response should return the intended record", function () {
+          const data = res.getBody()
+          expect(data.id).to.eql(bru.getEnvVar('validTrackLayoutId'))
+        })
+        test("both timestamps should be different", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)
+        })
