@@ -43,7 +43,7 @@ describe('Updating <%= h.changeCase.upper(nodeType) %>', () => {
     test('removing a field', async () => {
         const createdNode = await seedNode(DbNodeType.<%= h.changeCase.pascal(nodeType) %>)
         const inputData = createdNode.properties as unknown as Input<%= h.changeCase.pascal(nodeType) %>Create
-        // @ts-ignore
+        // @ts-expect-error TS2339 TS2339 TS2339
         inputData.name = null
         const updatedNode = await updateDbNode(DbNodeType.<%= h.changeCase.pascal(nodeType) %>, createdNode.properties.id, inputData) as <%= h.changeCase.pascal(nodeType) %>Node
 

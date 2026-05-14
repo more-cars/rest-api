@@ -40,7 +40,7 @@ describe('Updating LAP TIME', () => {
     test('removing a field', async () => {
         const createdNode = await seedNode(DbNodeType.LapTime)
         const inputData = createdNode.properties as unknown as InputLapTimeCreate
-        // @ts-ignore
+        // @ts-expect-error TS2339 TS2339 TS2339
         inputData.driver_name = null
         const updatedNode = await updateDbNode(DbNodeType.LapTime, createdNode.properties.id, inputData) as LapTimeNode
 

@@ -1,9 +1,10 @@
 import {Then} from "@cucumber/cucumber"
 import assert from "assert"
 import {dasherize} from "inflection"
+import {NodeManager} from "../../lib/NodeManager"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {performApiRequest} from "../../lib/performApiRequest"
-import {NodeManager} from "../../lib/NodeManager"
+import type {RelationResponse} from "../../../../src/controllers/types/RelationResponse"
 
 Then('there should exist a {string} relationship between {string} and {string}',
     async (relationshipName: string, startNodeLabel: string, endNodeLabel: string) => {
@@ -19,7 +20,7 @@ Then('there should exist a {string} relationship between {string} and {string}',
         if (Array.isArray(response.body.data)) {
             let success = false
 
-            response.body.data.forEach((relationship: any) => {
+            response.body.data.forEach((relationship: RelationResponse) => {
                 if (relationship.data.partner_node.data.id === endNode.fields.id) {
                     success = true
                 }

@@ -7,7 +7,7 @@ Given('there exists a(n) {string} {string} with {string} {string}',
     async (nodeType: string, label: string, property: string, propertyValue: string) => {
         const node = getFakeNode(convertStringToExpectedNodeType(nodeType)).dbInput()
 
-        // @ts-ignore
+        // @ts-expect-error TS7053 TS7053 TS7053
         node[property] = isNaN(propertyValue) ? propertyValue : Number(propertyValue)
 
         await NodeManager.createNode(nodeType, label, node)

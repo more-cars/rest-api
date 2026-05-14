@@ -40,7 +40,7 @@ describe('Updating SESSION RESULT', () => {
     test('removing a field', async () => {
         const createdNode = await seedNode(DbNodeType.SessionResult)
         const inputData = createdNode.properties as unknown as InputSessionResultCreate
-        // @ts-ignore
+        // @ts-expect-error TS2339 TS2339 TS2339
         inputData.driver_name = null
         const updatedNode = await updateDbNode(DbNodeType.SessionResult, createdNode.properties.id, inputData) as SessionResultNode
 

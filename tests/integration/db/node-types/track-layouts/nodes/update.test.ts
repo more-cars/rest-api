@@ -40,7 +40,7 @@ describe('Updating TRACK LAYOUT', () => {
     test('removing a field', async () => {
         const createdNode = await seedNode(DbNodeType.TrackLayout)
         const inputData = createdNode.properties as unknown as InputTrackLayoutCreate
-        // @ts-ignore
+        // @ts-expect-error TS2339 TS2339 TS2339
         inputData.name = null
         const updatedNode = await updateDbNode(DbNodeType.TrackLayout, createdNode.properties.id, inputData) as TrackLayoutNode
 

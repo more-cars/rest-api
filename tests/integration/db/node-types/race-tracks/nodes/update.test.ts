@@ -40,7 +40,7 @@ describe('Updating RACE TRACK', () => {
     test('removing a field', async () => {
         const createdNode = await seedNode(DbNodeType.RaceTrack)
         const inputData = createdNode.properties as unknown as InputRaceTrackCreate
-        // @ts-ignore
+        // @ts-expect-error TS2339 TS2339 TS2339
         inputData.name = null
         const updatedNode = await updateDbNode(DbNodeType.RaceTrack, createdNode.properties.id, inputData) as RaceTrackNode
 
