@@ -2,6 +2,7 @@ import express from "express"
 import {create} from "./prices/create"
 import {getById} from "./prices/getById"
 import {getAll} from "./prices/getAll"
+import {updateNode} from "./prices/updateNode"
 import {deleteNode} from "./prices/deleteNode"
 import {createForCarModelVariantRelation} from "./prices/createForCarModelVariantRelation"
 import {getForCarModelVariantRelation} from "./prices/getForCarModelVariantRelation"
@@ -24,6 +25,10 @@ export const PriceController = {
 
     async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
+    },
+
+    async update(req: express.Request, res: express.Response) {
+        await updateNode(req, res)
     },
 
     async delete(req: express.Request, res: express.Response) {

@@ -1,0 +1,46 @@
+info:
+  name: Update Price (valid data)
+  type: http
+  tags:
+    - update
+    - node
+    - valid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/prices/{{validPriceId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "price": 59992,
+        "price_year": 2022,
+        "currency_code": "GBP",
+        "country_code": "GB",
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validPriceId}}"
+  scripts:
+    - type: before-request
+      code: |-
+        const Prices = require('./lib/node-types/Prices.js')
+        await Prices.create()
+    - type: tests
+      code: |-
+        test("response should return the intended record", function () {
+          const data = res.getBody()
+          expect(data.id).to.eql(bru.getEnvVar('validPriceId'))
+        })
+        test("both timestamps should be different", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)
+        })
