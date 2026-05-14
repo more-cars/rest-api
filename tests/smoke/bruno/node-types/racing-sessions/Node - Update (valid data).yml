@@ -1,0 +1,49 @@
+info:
+  name: Update Racing Session (valid data)
+  type: http
+  tags:
+    - update
+    - node
+    - valid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/racing-sessions/{{validRacingSessionId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Grand Prix - Updated",
+        "start_date": "2025-05-25 - Updated",
+        "start_time": "15:00 - Updated",
+        "duration": 122,
+        "duration_unit": "min - Updated",
+        "distance": 63,
+        "distance_unit": "laps - Updated",
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validRacingSessionId}}"
+  scripts:
+    - type: before-request
+      code: |-
+        const RacingSessions = require('./lib/node-types/RacingSessions.js')
+        await RacingSessions.create()
+    - type: tests
+      code: |-
+        test("response should return the intended record", function () {
+          const data = res.getBody()
+          expect(data.id).to.eql(bru.getEnvVar('validRacingSessionId'))
+        })
+        test("both timestamps should be different", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)
+        })

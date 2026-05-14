@@ -11829,6 +11829,55 @@
           }
         }
       },
+      "patch": {
+        "tags": [
+          "Racing Sessions"
+        ],
+        "summary": "Update `Racing Session`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-session-id",
+            "description": "ID of the `Racing Session`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "`Racing Session` successfully updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RacingSessionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "`Racing Session` could not be updated. The provided data was invalid or malformed.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Update request failed. A `Racing Session` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
       "delete": {
         "tags": [
           "Racing Sessions"

@@ -1,0 +1,87 @@
+import {describe, expect, test, vi} from 'vitest'
+import request from 'supertest'
+import {RacingSession} from "../../../../../src/models/node-types/racing-sessions/RacingSession"
+import {NodeNotFoundError} from "../../../../../src/models/types/NodeNotFoundError"
+import {app} from "../../../../../src/app.ts"
+import {FakeRacingSession} from "../../../../_toolbox/fixtures/nodes/FakeRacingSession"
+import {seedNode} from "../../../../_toolbox/dbSeeding/seedNode"
+import {DbNodeType} from "../../../../../src/db/types/DbNodeType"
+
+describe('Update RACING SESSION', () => {
+    test('Node does not exist', async () => {
+        vi.spyOn(RacingSession, 'update')
+            .mockImplementation(async () => {
+                throw new NodeNotFoundError(-42)
+            })
+
+        const response = await request(app)
+            .patch('/racing-sessions/-42')
+
+        expect(response.statusCode)
+            .toBe(404)
+    })
+
+    test('Input data is valid', async () => {
+        RacingSession.update = vi.fn().mockReturnValue(FakeRacingSession.modelOutput())
+
+        const response = await request(app)
+            .patch('/racing-sessions/42')
+            .send({
+                "name": "Grand Prix - Updated",
+            })
+
+        expect(response.statusCode)
+            .toBe(201)
+    })
+
+    test.skip('Request is invalid', async () => {
+        const response = await request(app)
+            .patch('/racing-sessions/42') // payload is missing
+
+        expect(response.statusCode)
+            .toBe(400)
+    })
+
+    test('Trying to remove a mandatory field', async () => {
+        const createdNode = await seedNode(DbNodeType.RacingSession)
+        const inputData = createdNode.properties
+        // @ts-ignore
+        inputData.name = null
+
+        const response = await request(app)
+            .patch('/racing-sessions/' + createdNode.properties.id)
+            .send(inputData)
+
+        expect(response.statusCode)
+            .toBe(400)
+    })
+
+    test('Removing an optional field', async () => {
+        const createdNode = await seedNode(DbNodeType.RacingSession)
+        const inputData = createdNode.properties
+        // @ts-ignore
+        inputData.duration = null
+
+        const response = await request(app)
+            .patch('/racing-sessions/' + createdNode.properties.id)
+            .send(inputData)
+
+        expect(response.statusCode)
+            .toBe(201)
+    })
+
+    test('Input is valid, but something breaks on the way', async () => {
+        RacingSession.update = vi.fn().mockImplementation(() => {
+            throw new Error()
+        })
+
+        const response = await request(app)
+            .patch('/racing-sessions/42')
+            .send({
+                "name": "Grand Prix - Updated",
+            })
+
+        expect(response.statusCode)
+            .toBe(500)
+    })
+})
