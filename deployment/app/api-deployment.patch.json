@@ -2,7 +2,7 @@
   {
     "op": "replace",
     "path": "/spec/template/spec/containers/0/image",
-    "value": "ghcr.io/more-cars/rest-api:latest"
+    "value": "ghcr.io/more-cars/rest-api-rc:latest"
   },
   {
     "op": "replace",

@@ -16,7 +16,7 @@ http:
         "price": 59992,
         "price_year": 2022,
         "currency_code": "GBP",
-        "country_code": "GB",
+        "country_code": "GB"
       }
 
 runtime:

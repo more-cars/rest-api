@@ -21,7 +21,7 @@ http:
         "direction": "clockwise - Updated",
         "elevation_change": 75,
         "elevation_change_unit": "m - Updated",
-        "surface": "asphalt - Updated",
+        "surface": "asphalt - Updated"
       }
 
 runtime:

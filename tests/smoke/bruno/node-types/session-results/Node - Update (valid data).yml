@@ -20,7 +20,7 @@ http:
         "race_time": "PT1H23M45.678S - Updated",
         "laps": 53,
         "status": "finished - Updated",
-        "points": 27,
+        "points": 27
       }
 
 runtime:

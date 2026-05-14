@@ -19,7 +19,7 @@ http:
         "type": "permanent race track - Updated",
         "location": "Klettwitz - Updated",
         "geo_position": "51°32’0”N 13°55’10”E - Updated",
-        "country_code": "AT",
+        "country_code": "AT"
       }
 
 runtime:

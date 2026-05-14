@@ -19,7 +19,7 @@ http:
         "duration": 122,
         "duration_unit": "min - Updated",
         "distance": 63,
-        "distance_unit": "laps - Updated",
+        "distance_unit": "laps - Updated"
       }
 
 runtime:
