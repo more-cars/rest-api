@@ -42,7 +42,7 @@ export const CarModelVariantNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'coupe',
             scope: 'user',
-            validation: ['string'],
+            validation: ['bodyStyle'],
         },
         {
             name: 'drag_coefficient',
@@ -74,7 +74,7 @@ export const CarModelVariantNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'kg',
             scope: 'user',
-            validation: ['string'],
+            validation: ['weightUnit'],
         },
         {
             name: 'max_power',
@@ -90,7 +90,7 @@ export const CarModelVariantNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'PS',
             scope: 'user',
-            validation: ['string'],
+            validation: ['powerUnit'],
         },
         {
             name: 'max_torque',
@@ -106,7 +106,7 @@ export const CarModelVariantNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'Nm',
             scope: 'user',
-            validation: ['string'],
+            validation: ['torqueUnit'],
         },
         {
             name: 'cylinders',
@@ -122,7 +122,7 @@ export const CarModelVariantNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'inline',
             scope: 'user',
-            validation: ['string'],
+            validation: ['engineConfiguration'],
         },
         {
             name: 'displacement',
@@ -138,7 +138,7 @@ export const CarModelVariantNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'ccm',
             scope: 'user',
-            validation: ['string'],
+            validation: ['displacementUnit'],
         },
         {
             name: 'air_induction',
@@ -146,7 +146,7 @@ export const CarModelVariantNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'naturally aspirated',
             scope: 'user',
-            validation: ['string'],
+            validation: ['airInduction'],
         },
         {
             name: 'engine_type',
@@ -154,7 +154,7 @@ export const CarModelVariantNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'otto',
             scope: 'user',
-            validation: ['string'],
+            validation: ['engineType'],
         },
         {
             name: 'energy_source',
@@ -162,7 +162,7 @@ export const CarModelVariantNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'petrol',
             scope: 'user',
-            validation: ['string'],
+            validation: ['energySource'],
         },
         {
             name: 'energy_source_2',
@@ -170,7 +170,7 @@ export const CarModelVariantNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: null,
             scope: 'user',
-            validation: ['string'],
+            validation: ['energySource'],
         },
         {
             name: 'consumption',
@@ -186,7 +186,7 @@ export const CarModelVariantNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'l',
             scope: 'user',
-            validation: ['string'],
+            validation: ['consumptionUnit'],
         },
         {
             name: 'consumption_2',
@@ -202,7 +202,7 @@ export const CarModelVariantNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: null,
             scope: 'user',
-            validation: ['string'],
+            validation: ['consumptionUnit'],
         },
         {
             name: 'energy_capacity',
@@ -218,7 +218,7 @@ export const CarModelVariantNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'l',
             scope: 'user',
-            validation: ['string'],
+            validation: ['capacityUnit'],
         },
         {
             name: 'energy_capacity_2',
@@ -234,7 +234,7 @@ export const CarModelVariantNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: null,
             scope: 'user',
-            validation: ['string'],
+            validation: ['capacityUnit'],
         },
         {
             name: 'transmission',
@@ -242,7 +242,7 @@ export const CarModelVariantNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'sequential',
             scope: 'user',
-            validation: ['string'],
+            validation: ['transmission'],
         },
         {
             name: 'gears',
@@ -258,7 +258,7 @@ export const CarModelVariantNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'rwd',
             scope: 'user',
-            validation: ['string'],
+            validation: ['drivetrain'],
         },
         {
             name: 'sprint_time_0_100_kmh',
@@ -282,7 +282,7 @@ export const CarModelVariantNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'km/h',
             scope: 'user',
-            validation: ['string'],
+            validation: ['speedUnit'],
         },
         {
             name: 'total_production',

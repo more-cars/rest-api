@@ -26854,107 +26854,212 @@
           "built_from": {
             "type": "number",
             "description": "",
-            "example": "2000"
+            "example": 2000
           },
           "built_to": {
             "type": "number",
             "description": "",
-            "example": "2006"
+            "example": 2006
           },
           "body_style": {
             "type": "string",
             "description": "",
-            "example": "coupe"
+            "example": "coupe",
+            "nullable": true,
+            "enum": [
+              "coupe",
+              "convertible",
+              "formula race car",
+              "hatchback",
+              "kei car",
+              "minivan",
+              "offroad",
+              "other",
+              "pickup truck",
+              "roadster",
+              "sedan",
+              "station wagon",
+              "suv",
+              "t-top",
+              "targa",
+              "truck",
+              "van",
+              null
+            ]
           },
           "drag_coefficient": {
             "type": "number",
             "description": "",
-            "example": "0.31"
+            "example": 0.31
           },
           "doors": {
             "type": "number",
             "description": "",
-            "example": "2"
+            "example": 2
           },
           "weight": {
             "type": "number",
             "description": "",
-            "example": "1549"
+            "example": 1549
           },
           "weight_unit": {
             "type": "string",
             "description": "",
-            "example": "kg"
+            "example": "kg",
+            "nullable": true,
+            "enum": [
+              "kg",
+              "kg_EG",
+              "kg_dry",
+              "kg_DIN",
+              "lbs",
+              null
+            ]
           },
           "max_power": {
             "type": "number",
             "description": "",
-            "example": "343"
+            "example": 343
           },
           "max_power_unit": {
             "type": "string",
             "description": "",
-            "example": "PS"
+            "example": "PS",
+            "nullable": true,
+            "enum": [
+              "PS",
+              "bhp",
+              "kW",
+              "PS_SAE",
+              null
+            ]
           },
           "max_torque": {
             "type": "number",
             "description": "",
-            "example": "365"
+            "example": 365
           },
           "max_torque_unit": {
             "type": "string",
             "description": "",
-            "example": "Nm"
+            "example": "Nm",
+            "nullable": true,
+            "enum": [
+              "Nm",
+              "lb ft",
+              null
+            ]
           },
           "cylinders": {
             "type": "number",
             "description": "",
-            "example": "6"
+            "example": 6
           },
           "engine_configuration": {
             "type": "string",
             "description": "",
-            "example": "inline"
+            "example": "inline",
+            "nullable": true,
+            "enum": [
+              "Inline",
+              "V",
+              "Flat",
+              "Rotary",
+              "W",
+              null
+            ]
           },
           "displacement": {
             "type": "number",
             "description": "",
-            "example": "3246"
+            "example": 3246
           },
           "displacement_unit": {
             "type": "string",
             "description": "",
-            "example": "ccm"
+            "example": "ccm",
+            "nullable": true,
+            "enum": [
+              "ccm",
+              "cu",
+              null
+            ]
           },
           "air_induction": {
             "type": "string",
             "description": "",
-            "example": "naturally aspirated"
+            "example": "naturally aspirated",
+            "nullable": true,
+            "enum": [
+              "none",
+              "turbo",
+              "super",
+              "turbo_and_supercharged",
+              null
+            ]
           },
           "engine_type": {
             "type": "string",
             "description": "",
-            "example": "otto"
+            "example": "otto",
+            "nullable": true,
+            "enum": [
+              "otto",
+              "hybrid",
+              "electric",
+              "wankel",
+              "diesel",
+              "fuel_cell",
+              "turbine",
+              null
+            ]
           },
           "energy_source": {
             "type": "string",
             "description": "",
-            "example": "petrol"
+            "example": "petrol",
+            "nullable": true,
+            "enum": [
+              "petrol",
+              "electricity",
+              "diesel",
+              "hydrogen",
+              "ethanol",
+              null
+            ]
           },
           "energy_source_2": {
             "type": "string",
             "description": "",
-            "example": ""
+            "example": "",
+            "nullable": true,
+            "enum": [
+              "petrol",
+              "electricity",
+              "diesel",
+              "hydrogen",
+              "ethanol",
+              null
+            ]
           },
           "consumption": {
             "type": "number",
             "description": "",
-            "example": "11.9"
+            "example": 11.9
           },
           "consumption_unit": {
             "type": "string",
             "description": "",
-            "example": "l"
+            "example": "l",
+            "nullable": true,
+            "enum": [
+              "l / 100 km",
+              "mpg",
+              "kWh / 100 km",
+              "l / 100 km (NEDC)",
+              "l / 100 km (WLTP)",
+              null
+            ]
           },
           "consumption_2": {
             "type": "number",
@@ -26964,17 +27069,34 @@
           "consumption_2_unit": {
             "type": "string",
             "description": "",
-            "example": ""
+            "example": "",
+            "nullable": true,
+            "enum": [
+              "l / 100 km",
+              "mpg",
+              "kWh / 100 km",
+              "l / 100 km (NEDC)",
+              "l / 100 km (WLTP)",
+              null
+            ]
           },
           "energy_capacity": {
             "type": "number",
             "description": "",
-            "example": "63"
+            "example": 63
           },
           "energy_capacity_unit": {
             "type": "string",
             "description": "",
-            "example": "l"
+            "example": "l",
+            "nullable": true,
+            "enum": [
+              "l",
+              "kWh",
+              "gal",
+              "kg",
+              null
+            ]
           },
           "energy_capacity_2": {
             "type": "number",
@@ -26984,42 +27106,73 @@
           "energy_capacity_2_unit": {
             "type": "string",
             "description": "",
-            "example": ""
+            "example": "",
+            "nullable": true,
+            "enum": [
+              "l",
+              "kWh",
+              "gal",
+              "kg",
+              null
+            ]
           },
           "transmission": {
             "type": "string",
             "description": "",
-            "example": "sequential"
+            "example": "sequential",
+            "nullable": true,
+            "enum": [
+              "manual",
+              "dual clutch",
+              "auto",
+              "sequential",
+              "automated manual",
+              "cvt",
+              null
+            ]
           },
           "gears": {
             "type": "number",
             "description": "",
-            "example": "6"
+            "example": 6
           },
           "drivetrain": {
             "type": "string",
             "description": "",
-            "example": "rwd"
+            "example": "rwd",
+            "nullable": true,
+            "enum": [
+              "RWD",
+              "AWD",
+              "FWD",
+              null
+            ]
           },
           "sprint_time_0_100_kmh": {
             "type": "number",
             "description": "",
-            "example": "5.2"
+            "example": 5.2
           },
           "top_speed": {
             "type": "number",
             "description": "",
-            "example": "250"
+            "example": 250
           },
           "top_speed_unit": {
             "type": "string",
             "description": "",
-            "example": "km/h"
+            "example": "km/h",
+            "nullable": true,
+            "enum": [
+              "km/h",
+              "mph",
+              null
+            ]
           },
           "total_production": {
             "type": "number",
             "description": "",
-            "example": "50000"
+            "example": 50000
           }
         }
       },
