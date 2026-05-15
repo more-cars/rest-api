@@ -24404,6 +24404,55 @@
           }
         }
       },
+      "patch": {
+        "tags": [
+          "Motor Shows"
+        ],
+        "summary": "Update `Motor Show`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "motor-show-id",
+            "description": "ID of the `Motor Show`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "`Motor Show` successfully updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MotorShowResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "`Motor Show` could not be updated. The provided data was invalid or malformed.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Update request failed. A `Motor Show` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
       "delete": {
         "tags": [
           "Motor Shows"

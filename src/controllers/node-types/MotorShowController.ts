@@ -2,6 +2,7 @@ import express from "express"
 import {create} from "./motor-shows/create"
 import {getById} from "./motor-shows/getById"
 import {getAll} from "./motor-shows/getAll"
+import {updateNode} from "./motor-shows/updateNode"
 import {deleteNode} from "./motor-shows/deleteNode"
 import {createPresentsCarModelVariantRelation} from "./motor-shows/createPresentsCarModelVariantRelation"
 import {getAllPresentsCarModelVariantRelations} from "./motor-shows/getAllPresentsCarModelVariantRelations"
@@ -30,6 +31,10 @@ export const MotorShowController = {
 
     async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
+    },
+
+    async update(req: express.Request, res: express.Response) {
+        await updateNode(req, res)
     },
 
     async delete(req: express.Request, res: express.Response) {

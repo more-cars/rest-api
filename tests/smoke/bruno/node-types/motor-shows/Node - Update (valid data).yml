@@ -1,0 +1,49 @@
+info:
+  name: Update Motor Show (valid data)
+  type: http
+  tags:
+    - update
+    - node
+    - valid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/motor-shows/{{validMotorShowId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "2017 IAA Frankfurt - Updated",
+        "date_from": "2017-09-14 - Updated",
+        "date_until": "2017-09-24 - Updated",
+        "location": "Frankfurt - Updated",
+        "target_audience": "international - Updated",
+        "focus": "new cars - Updated",
+        "country_code": "AT"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validMotorShowId}}"
+  scripts:
+    - type: before-request
+      code: |-
+        const MotorShows = require('./lib/node-types/MotorShows.js')
+        await MotorShows.create()
+    - type: tests
+      code: |-
+        test("response should return the intended record", function () {
+          const data = res.getBody()
+          expect(data.id).to.eql(bru.getEnvVar('validMotorShowId'))
+        })
+        test("both timestamps should be different", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)
+        })
