@@ -15049,6 +15049,55 @@
           }
         }
       },
+      "patch": {
+        "tags": [
+          "Racing Games"
+        ],
+        "summary": "Update `Racing Game`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "racing-game-id",
+            "description": "ID of the `Racing Game`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "`Racing Game` successfully updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RacingGameResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "`Racing Game` could not be updated. The provided data was invalid or malformed.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Update request failed. A `Racing Game` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
       "delete": {
         "tags": [
           "Racing Games"
