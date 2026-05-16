@@ -1,0 +1,46 @@
+info:
+  name: Update Model Car Brand (valid data)
+  type: http
+  tags:
+    - update
+    - node
+    - valid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/model-car-brands/{{validModelCarBrandId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Hot Wheels - Updated",
+        "founded": 1970,
+        "defunct": null,
+        "country_code": "AT"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validModelCarBrandId}}"
+  scripts:
+    - type: before-request
+      code: |-
+        const ModelCarBrands = require('./lib/node-types/ModelCarBrands.js')
+        await ModelCarBrands.create()
+    - type: tests
+      code: |-
+        test("response should return the intended record", function () {
+          const data = res.getBody()
+          expect(data.id).to.eql(bru.getEnvVar('validModelCarBrandId'))
+        })
+        test("both timestamps should be different", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)
+        })
