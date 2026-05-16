@@ -1,7 +1,7 @@
-import {CreateCarModelVariantInput} from "../types/CreateCarModelVariantInput"
-import {InputCarModelVariantCreate} from "../../../../db/node-types/car-model-variants/types/InputCarModelVariantCreate"
+import type {CarModelVariantInput} from "../types/CarModelVariantInput"
+import type {DbInputData} from "../../../../db/types/DbInputData"
 
-export function convertInputData(data: CreateCarModelVariantInput): InputCarModelVariantCreate {
+export function convertInputData(data: CarModelVariantInput): DbInputData {
     return {
         name: data.name,
         internal_code: data.internal_code,
@@ -39,5 +39,5 @@ export function convertInputData(data: CreateCarModelVariantInput): InputCarMode
         top_speed: data.top_speed,
         top_speed_unit: data.top_speed_unit,
         total_production: data.total_production,
-    } satisfies InputCarModelVariantCreate
+    }
 }

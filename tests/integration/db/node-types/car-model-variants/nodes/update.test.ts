@@ -3,8 +3,8 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 import {FakeCarModelVariant} from "../../../../../_toolbox/fixtures/nodes/FakeCarModelVariant"
 import {updateDbNode} from "../../../../../../src/db/nodes/updateDbNode"
-import type {InputCarModelVariantCreate} from "../../../../../../src/db/node-types/car-model-variants/types/InputCarModelVariantCreate"
 import type {CarModelVariantNode} from "../../../../../../src/db/node-types/car-model-variants/types/CarModelVariantNode"
+import type {DbInputData} from "../../../../../../src/db/types/DbInputData"
 
 describe('Updating CAR MODEL VARIANT', () => {
     test('with valid data', async () => {
@@ -21,7 +21,7 @@ describe('Updating CAR MODEL VARIANT', () => {
 
     test('with the same data', async () => {
         const createdNode = await seedNode(DbNodeType.CarModelVariant)
-        const inputData = createdNode.properties as unknown as InputCarModelVariantCreate
+        const inputData = createdNode.properties as DbInputData
         const updatedNode = await updateDbNode(DbNodeType.CarModelVariant, createdNode.properties.id, inputData)
 
         expect(updatedNode.properties)
@@ -39,9 +39,9 @@ describe('Updating CAR MODEL VARIANT', () => {
 
     test('removing a field', async () => {
         const createdNode = await seedNode(DbNodeType.CarModelVariant)
-        const inputData = createdNode.properties as unknown as InputCarModelVariantCreate
-        // @ts-expect-error TS2339 TS2339 TS2339
+        const inputData = createdNode.properties as DbInputData
         inputData.name = null
+
         const updatedNode = await updateDbNode(DbNodeType.CarModelVariant, createdNode.properties.id, inputData) as CarModelVariantNode
 
         expect(updatedNode.properties.name)

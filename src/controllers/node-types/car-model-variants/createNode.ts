@@ -2,7 +2,6 @@ import express from "express"
 import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
 import {NodeType} from "../../../specification/NodeType"
 import {unmarshalInputData} from "../../nodes/unmarshalInputData"
-import {CreateCarModelVariantInput} from "../../../models/node-types/car-model-variants/types/CreateCarModelVariantInput"
 import {validateInputData} from "../../nodes/validateInputData"
 import {CarModelVariant} from "../../../models/node-types/car-model-variants/CarModelVariant"
 import {convertCarModelVariantModelNodeToControllerNode} from "./convertCarModelVariantModelNodeToControllerNode"
@@ -10,10 +9,11 @@ import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import {sendResponse201} from "../../responses/sendResponse201"
 import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
+import type {CarModelVariantInput} from "../../../models/node-types/car-model-variants/types/CarModelVariantInput"
 
-export async function create(req: express.Request, res: express.Response) {
+export async function createNode(req: express.Request, res: express.Response) {
     const propertyNames = getNodeTypeSpecification(NodeType.CarModelVariant).properties.map(prop => prop.name)
-    const data = unmarshalInputData(req.body, propertyNames) as CreateCarModelVariantInput
+    const data = unmarshalInputData(req.body, propertyNames) as CarModelVariantInput
 
     if (!validateInputData(data, NodeType.CarModelVariant)) {
         return sendResponse400(res)

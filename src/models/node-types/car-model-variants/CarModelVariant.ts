@@ -1,4 +1,3 @@
-import {CreateCarModelVariantInput} from "./types/CreateCarModelVariantInput"
 import {CarModelVariantNode} from "./types/CarModelVariantNode"
 import {convertInputData} from "./create/convertInputData"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
@@ -37,7 +36,7 @@ import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollection
 import {createDbNode} from "../../../db/nodes/createDbNode"
 
 export const CarModelVariant = {
-    async create(data: CreateCarModelVariantInput): Promise<CarModelVariantNode> {
+    async create(data: CarModelVariantInput): Promise<CarModelVariantNode> {
         const input = convertInputData(data)
         const result = await createDbNode(DbNodeType.CarModelVariant, input)
 
@@ -72,7 +71,7 @@ export const CarModelVariant = {
             throw new NodeNotFoundError(id)
         }
 
-        const input = convertInputData(data as CreateCarModelVariantInput)
+        const input = convertInputData(data)
         const result = await updateDbNode(DbNodeType.CarModelVariant, id, input)
 
         await Revision.create({

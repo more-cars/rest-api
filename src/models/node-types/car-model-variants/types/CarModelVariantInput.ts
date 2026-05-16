@@ -1,38 +1,38 @@
 export type CarModelVariantInput = {
-    name: string | undefined
-    internal_code: string | undefined
-    built_from: number | undefined
-    built_to: number | undefined
-    body_style: string | undefined
-    drag_coefficient: number | undefined
-    doors: number | undefined
-    weight: number | undefined
-    weight_unit: string | undefined
-    max_power: number | undefined
-    max_power_unit: string | undefined
-    max_torque: number | undefined
-    max_torque_unit: string | undefined
-    cylinders: number | undefined
-    engine_configuration: string | undefined
-    displacement: number | undefined
-    displacement_unit: string | undefined
-    air_induction: string | undefined
-    engine_type: string | undefined
-    energy_source: string | undefined
-    energy_source_2: string | undefined
-    consumption: number | undefined
-    consumption_unit: string | undefined
-    consumption_2: number | undefined
-    consumption_2_unit: string | undefined
-    energy_capacity: number | undefined
-    energy_capacity_unit: string | undefined
-    energy_capacity_2: number | undefined
-    energy_capacity_2_unit: string | undefined
-    transmission: string | undefined
-    gears: number | undefined
-    drivetrain: string | undefined
-    sprint_time_0_100_kmh: number | undefined
-    top_speed: number | undefined
-    top_speed_unit: string | undefined
-    total_production: number | undefined
+    name: string | null | undefined
+    internal_code: string | null | undefined
+    built_from: number | null | undefined
+    built_to: number | null | undefined
+    body_style: string | null | undefined
+    drag_coefficient: number | null | undefined
+    doors: number | null | undefined
+    weight: number | null | undefined
+    weight_unit: string | null | undefined
+    max_power: number | null | undefined
+    max_power_unit: string | null | undefined
+    max_torque: number | null | undefined
+    max_torque_unit: string | null | undefined
+    cylinders: number | null | undefined
+    engine_configuration: string | null | undefined
+    displacement: number | null | undefined
+    displacement_unit: string | null | undefined
+    air_induction: string | null | undefined
+    engine_type: string | null | undefined
+    energy_source: string | null | undefined
+    energy_source_2: string | null | undefined
+    consumption: number | null | undefined
+    consumption_unit: string | null | undefined
+    consumption_2: number | null | undefined
+    consumption_2_unit: string | null | undefined
+    energy_capacity: number | null | undefined
+    energy_capacity_unit: string | null | undefined
+    energy_capacity_2: number | null | undefined
+    energy_capacity_2_unit: string | null | undefined
+    transmission: string | null | undefined
+    gears: number | null | undefined
+    drivetrain: string | null | undefined
+    sprint_time_0_100_kmh: number | null | undefined
+    top_speed: number | null | undefined
+    top_speed_unit: string | null | undefined
+    total_production: number | null | undefined
 }
