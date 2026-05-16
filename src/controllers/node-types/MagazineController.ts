@@ -2,6 +2,7 @@ import express from "express"
 import {create} from "./magazines/create"
 import {getById} from "./magazines/getById"
 import {getAll} from "./magazines/getAll"
+import {updateNode} from "./magazines/updateNode"
 import {deleteNode} from "./magazines/deleteNode"
 import {createHasIssueRelation} from "./magazines/createHasIssueRelation"
 import {getAllHasIssueRelations} from "./magazines/getAllHasIssueRelations"
@@ -30,6 +31,10 @@ export const MagazineController = {
 
     async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
+    },
+
+    async update(req: express.Request, res: express.Response) {
+        await updateNode(req, res)
     },
 
     async delete(req: express.Request, res: express.Response) {

@@ -19025,6 +19025,55 @@
           }
         }
       },
+      "patch": {
+        "tags": [
+          "Magazines"
+        ],
+        "summary": "Update `Magazine`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "magazine-id",
+            "description": "ID of the `Magazine`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "`Magazine` successfully updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MagazineResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "`Magazine` could not be updated. The provided data was invalid or malformed.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Update request failed. A `Magazine` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
       "delete": {
         "tags": [
           "Magazines"

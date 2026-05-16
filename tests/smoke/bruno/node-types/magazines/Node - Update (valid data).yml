@@ -1,0 +1,55 @@
+info:
+  name: Update Magazine (valid data)
+  type: http
+  tags:
+    - update
+    - node
+    - valid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/magazines/{{validMagazineId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Top Gear - Updated",
+        "founded": 1995,
+        "defunct": null,
+        "focus": "sports cars - Updated",
+        "publication_frequency": "monthly - Updated",
+        "single_copy_price": 7.99,
+        "single_copy_price_unit": "GBP",
+        "publication_format": "print - Updated",
+        "circulation": 150886,
+        "circulation_year": 2015,
+        "publisher": "Immediate Media Company - Updated",
+        "issn": "1350-9624 - Updated",
+        "country_code": "AT"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validMagazineId}}"
+  scripts:
+    - type: before-request
+      code: |-
+        const Magazines = require('./lib/node-types/Magazines.js')
+        await Magazines.create()
+    - type: tests
+      code: |-
+        test("response should return the intended record", function () {
+          const data = res.getBody()
+          expect(data.id).to.eql(bru.getEnvVar('validMagazineId'))
+        })
+        test("both timestamps should be different", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)
+        })

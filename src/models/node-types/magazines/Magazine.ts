@@ -5,6 +5,9 @@ import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/magazines/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
+import {updateDbNode} from "../../../db/nodes/updateDbNode"
+import type {MagazineInput} from "./types/MagazineInput"
+import {Revision} from "../revisions/Revision"
 import {deleteNode} from "../../../db/nodes/deleteNode"
 import {createRel} from "../../relationships/createRel"
 import {Image} from "../images/Image"
@@ -51,6 +54,27 @@ export const Magazine = {
         })
 
         return nodes
+    },
+
+    async update(id: number, data: MagazineInput): Promise<MagazineNode> {
+        const node = await getNodeById(id)
+
+        if (!node) {
+            throw new NodeNotFoundError(id)
+        }
+
+        const input = convertInputData(data as CreateMagazineInput)
+        const result = await updateDbNode(DbNodeType.Magazine, id, input)
+
+        await Revision.create({
+            node_type: DbNodeType.Magazine,
+            node_id: node.properties.id,
+            node_created_at: node.properties.created_at,
+            node_updated_at: node.properties.updated_at,
+            ...node.properties,
+        })
+
+        return convertDbNodeToModelNode(result) as MagazineNode
     },
 
     async delete(id: number): Promise<void> {
