@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputBrandCreate} from "../../../../src/db/node-types/brands/types/InputBrandCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {BrandNode} from "../../../../src/models/node-types/brands/types/BrandNode"
 
@@ -13,13 +13,13 @@ export const FakeBrand = {
             wmi: faker.vehicle.vrm(),
             hsn: faker.vehicle.vrm(),
             country_code: faker.location.countryCode(),
-        } satisfies InputBrandCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
         return {
             name: faker.vehicle.manufacturer(),
-        } as InputBrandCreate
+        } as DbInputData
     },
 
     modelOutput: function () {

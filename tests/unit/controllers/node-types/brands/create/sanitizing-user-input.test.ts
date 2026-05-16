@@ -1,10 +1,10 @@
 import {describe, expect, test} from 'vitest'
-import {CreateBrandInput} from "../../../../../../src/models/node-types/brands/types/CreateBrandInput"
+import {BrandInput} from "../../../../../../src/models/node-types/brands/types/BrandInput"
 import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
-        const data: CreateBrandInput = {
+        const data: BrandInput = {
             name: "     BMW     ",
             full_name: "Bayerische Motoren Werke     ",
             founded: 1916,

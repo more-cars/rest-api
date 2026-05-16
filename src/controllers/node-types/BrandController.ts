@@ -1,5 +1,5 @@
 import express from "express"
-import {create} from "./brands/create"
+import {createNode} from "./brands/createNode"
 import {getById} from "./brands/getById"
 import {getAll} from "./brands/getAll"
 import {updateNode} from "./brands/updateNode"
@@ -25,7 +25,7 @@ import {deleteHasMainVideoRelation} from "./brands/deleteHasMainVideoRelation"
 
 export const BrandController = {
     async create(req: express.Request, res: express.Response) {
-        await create(req, res)
+        await createNode(req, res)
     },
 
     async getById(req: express.Request, res: express.Response) {

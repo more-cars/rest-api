@@ -1,7 +1,7 @@
-import {CreateBrandInput} from "../types/CreateBrandInput"
-import {InputBrandCreate} from "../../../../db/node-types/brands/types/InputBrandCreate"
+import type {BrandInput} from "../types/BrandInput"
+import type {DbInputData} from "../../../../db/types/DbInputData"
 
-export function convertInputData(data: CreateBrandInput): InputBrandCreate {
+export function convertInputData(data: BrandInput): DbInputData {
     return {
         name: data.name,
         full_name: data.full_name,
@@ -10,5 +10,5 @@ export function convertInputData(data: CreateBrandInput): InputBrandCreate {
         wmi: data.wmi,
         hsn: data.hsn,
         country_code: data.country_code,
-    } satisfies InputBrandCreate
+    }
 }

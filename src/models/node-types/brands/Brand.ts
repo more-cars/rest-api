@@ -1,5 +1,4 @@
 import {BrandNode} from "./types/BrandNode"
-import {CreateBrandInput} from "./types/CreateBrandInput"
 import {convertInputData} from "./create/convertInputData"
 import {createDbNode} from "../../../db/nodes/createDbNode"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
@@ -29,7 +28,7 @@ import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
 
 export const Brand = {
-    async create(data: CreateBrandInput): Promise<BrandNode> {
+    async create(data: BrandInput): Promise<BrandNode> {
         const input = convertInputData(data)
         const result = await createDbNode(DbNodeType.Brand, input)
 
@@ -64,7 +63,7 @@ export const Brand = {
             throw new NodeNotFoundError(id)
         }
 
-        const input = convertInputData(data as CreateBrandInput)
+        const input = convertInputData(data)
         const result = await updateDbNode(DbNodeType.Brand, id, input)
 
         await Revision.create({
