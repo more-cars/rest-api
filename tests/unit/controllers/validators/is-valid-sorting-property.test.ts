@@ -3,8 +3,8 @@ import {isValidSortingProperty} from "../../../../src/controllers/validators/isV
 
 describe('Validating sorting property', () => {
     test.each([
-        [null],
         [undefined],
+        [null],
         [''],
         ['name'],
         ['founded'],

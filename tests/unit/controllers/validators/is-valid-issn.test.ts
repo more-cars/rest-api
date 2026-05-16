@@ -1,22 +1,21 @@
 import {describe, expect, test} from "vitest"
-import {isValidImageProvider} from "../../../../src/controllers/validators/isValidImageProvider"
+import {isValidIssn} from "../../../../src/controllers/validators/isValidIssn"
 
-describe('Validating image provider', () => {
+describe('Validating issn', () => {
     test.each([
         [undefined],
         [null],
-        ['flickr'],
-        ['wikimedia'],
+        ['1111-1119'],
     ])('valid value: $0', async (input) => {
-        expect(isValidImageProvider(input))
+        expect(isValidIssn(input))
             .toBeTruthy()
     })
 
     test.each([
-        ['flikkr'],
-        ['shutterstock'],
+        ['1111-1111'],
+        ['1234-5678'],
     ])('invalid value: $0', async (input) => {
-        expect(isValidImageProvider(input))
+        expect(isValidIssn(input))
             .toBeFalsy()
     })
 
@@ -32,7 +31,7 @@ describe('Validating image provider', () => {
         [['test']],
         [{test: 'dummy'}],
     ])('invalid value: $0', async (input) => {
-        expect(isValidImageProvider(input))
+        expect(isValidIssn(input))
             .toBeFalsy()
     })
 })

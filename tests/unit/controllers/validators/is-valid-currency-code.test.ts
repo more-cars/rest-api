@@ -1,23 +1,21 @@
 import {describe, expect, test} from "vitest"
-import {isValidImageProvider} from "../../../../src/controllers/validators/isValidImageProvider"
+import cc from 'currency-codes'
+import {isValidCurrencyCode} from "../../../../src/controllers/validators/isValidCurrencyCode"
 
-describe('Validating image provider', () => {
+describe('Validating currency code', () => {
     test.each([
         [undefined],
         [null],
-        ['flickr'],
-        ['wikimedia'],
     ])('valid value: $0', async (input) => {
-        expect(isValidImageProvider(input))
+        expect(isValidCurrencyCode(input))
             .toBeTruthy()
     })
 
-    test.each([
-        ['flikkr'],
-        ['shutterstock'],
-    ])('invalid value: $0', async (input) => {
-        expect(isValidImageProvider(input))
-            .toBeFalsy()
+    test.each(
+        cc.codes()
+    )('valid value: $0', async (input) => {
+        expect(isValidCurrencyCode(input))
+            .toBeTruthy()
     })
 
     test.each([
@@ -32,7 +30,7 @@ describe('Validating image provider', () => {
         [['test']],
         [{test: 'dummy'}],
     ])('invalid value: $0', async (input) => {
-        expect(isValidImageProvider(input))
+        expect(isValidCurrencyCode(input))
             .toBeFalsy()
     })
 })

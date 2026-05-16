@@ -1,22 +1,18 @@
 import {describe, expect, test} from "vitest"
-import {isValidVideoProvider} from "../../../../src/controllers/validators/isValidVideoProvider"
+import {isValidEnergySource} from "../../../../src/controllers/validators/isValidEnergySource"
 
-describe('video image provider', () => {
+describe('Validating energy source', () => {
     test.each([
         [undefined],
         [null],
-        ['youtube'],
+        ['petrol'],
+        ['electricity'],
+        ['diesel'],
+        ['hydrogen'],
+        ['ethanol'],
     ])('valid value: $0', async (input) => {
-        expect(isValidVideoProvider(input))
+        expect(isValidEnergySource(input))
             .toBeTruthy()
-    })
-
-    test.each([
-        ['yuutube'],
-        ['vimeo'],
-    ])('invalid value: $0', async (input) => {
-        expect(isValidVideoProvider(input))
-            .toBeFalsy()
     })
 
     test.each([
@@ -31,7 +27,7 @@ describe('video image provider', () => {
         [['test']],
         [{test: 'dummy'}],
     ])('invalid value: $0', async (input) => {
-        expect(isValidVideoProvider(input))
+        expect(isValidEnergySource(input))
             .toBeFalsy()
     })
 })

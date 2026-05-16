@@ -1,22 +1,17 @@
 import {describe, expect, test} from "vitest"
-import {isValidVideoProvider} from "../../../../src/controllers/validators/isValidVideoProvider"
+import {isValidAirInduction} from "../../../../src/controllers/validators/isValidAirInduction"
 
-describe('video image provider', () => {
+describe('Validating air induction', () => {
     test.each([
         [undefined],
         [null],
-        ['youtube'],
+        ['none'],
+        ['turbo'],
+        ['super'],
+        ['turbo_and_supercharged'],
     ])('valid value: $0', async (input) => {
-        expect(isValidVideoProvider(input))
+        expect(isValidAirInduction(input))
             .toBeTruthy()
-    })
-
-    test.each([
-        ['yuutube'],
-        ['vimeo'],
-    ])('invalid value: $0', async (input) => {
-        expect(isValidVideoProvider(input))
-            .toBeFalsy()
     })
 
     test.each([
@@ -31,7 +26,7 @@ describe('video image provider', () => {
         [['test']],
         [{test: 'dummy'}],
     ])('invalid value: $0', async (input) => {
-        expect(isValidVideoProvider(input))
+        expect(isValidAirInduction(input))
             .toBeFalsy()
     })
 })

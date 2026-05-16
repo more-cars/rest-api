@@ -3,8 +3,8 @@ import {isValidFilterProperty} from "../../../../src/controllers/validators/isVa
 
 describe('Validating filter property', () => {
     test.each([
-        [null],
         [undefined],
+        [null],
         [''],
         ['name'],
         ['founded'],

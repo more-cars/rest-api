@@ -3,8 +3,8 @@ import {isValidFilterOperator} from "../../../../src/controllers/validators/isVa
 
 describe('Validating filter operator', () => {
     test.each([
-        [null],
         [undefined],
+        [null],
         [''],
         ['eq'],
         ['neq'],

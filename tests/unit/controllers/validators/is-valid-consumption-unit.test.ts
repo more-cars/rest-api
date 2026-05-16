@@ -1,22 +1,18 @@
 import {describe, expect, test} from "vitest"
-import {isValidVideoProvider} from "../../../../src/controllers/validators/isValidVideoProvider"
+import {isValidConsumptionUnit} from "../../../../src/controllers/validators/isValidConsumptionUnit"
 
-describe('video image provider', () => {
+describe('Validating consumption unit', () => {
     test.each([
         [undefined],
         [null],
-        ['youtube'],
+        ['l / 100 km'],
+        ['mpg'],
+        ['kWh / 100 km'],
+        ['l / 100 km (NEDC)'],
+        ['l / 100 km (WLTP)'],
     ])('valid value: $0', async (input) => {
-        expect(isValidVideoProvider(input))
+        expect(isValidConsumptionUnit(input))
             .toBeTruthy()
-    })
-
-    test.each([
-        ['yuutube'],
-        ['vimeo'],
-    ])('invalid value: $0', async (input) => {
-        expect(isValidVideoProvider(input))
-            .toBeFalsy()
     })
 
     test.each([
@@ -31,7 +27,7 @@ describe('video image provider', () => {
         [['test']],
         [{test: 'dummy'}],
     ])('invalid value: $0', async (input) => {
-        expect(isValidVideoProvider(input))
+        expect(isValidConsumptionUnit(input))
             .toBeFalsy()
     })
 })

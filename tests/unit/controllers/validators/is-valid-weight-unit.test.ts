@@ -1,22 +1,18 @@
 import {describe, expect, test} from "vitest"
-import {isValidVideoProvider} from "../../../../src/controllers/validators/isValidVideoProvider"
+import {isValidWeightUnit} from "../../../../src/controllers/validators/isValidWeightUnit"
 
-describe('video image provider', () => {
+describe('Validating weight unit', () => {
     test.each([
         [undefined],
         [null],
-        ['youtube'],
+        ['kg'],
+        ['kg_EG'],
+        ['kg_dry'],
+        ['kg_DIN'],
+        ['lbs'],
     ])('valid value: $0', async (input) => {
-        expect(isValidVideoProvider(input))
+        expect(isValidWeightUnit(input))
             .toBeTruthy()
-    })
-
-    test.each([
-        ['yuutube'],
-        ['vimeo'],
-    ])('invalid value: $0', async (input) => {
-        expect(isValidVideoProvider(input))
-            .toBeFalsy()
     })
 
     test.each([
@@ -31,7 +27,7 @@ describe('video image provider', () => {
         [['test']],
         [{test: 'dummy'}],
     ])('invalid value: $0', async (input) => {
-        expect(isValidVideoProvider(input))
+        expect(isValidWeightUnit(input))
             .toBeFalsy()
     })
 })

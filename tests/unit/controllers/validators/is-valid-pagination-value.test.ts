@@ -3,10 +3,10 @@ import {isValidPaginationValue} from "../../../../src/controllers/validators/isV
 
 describe('Validating pagination value', () => {
     test.each([
+        [undefined],
+        [null],
         [1],
         [999999999],
-        [null],
-        [undefined],
     ])('valid value: $0', async (input) => {
         expect(isValidPaginationValue(input))
             .toBeTruthy()

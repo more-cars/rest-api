@@ -1,22 +1,18 @@
 import {describe, expect, test} from "vitest"
-import {isValidVideoProvider} from "../../../../src/controllers/validators/isValidVideoProvider"
+import {isValidEngineConfiguration} from "../../../../src/controllers/validators/isValidEngineConfiguration"
 
-describe('video image provider', () => {
+describe('Validating engine configuration', () => {
     test.each([
         [undefined],
         [null],
-        ['youtube'],
+        ['Inline'],
+        ['V'],
+        ['Flat'],
+        ['Rotary'],
+        ['W'],
     ])('valid value: $0', async (input) => {
-        expect(isValidVideoProvider(input))
+        expect(isValidEngineConfiguration(input))
             .toBeTruthy()
-    })
-
-    test.each([
-        ['yuutube'],
-        ['vimeo'],
-    ])('invalid value: $0', async (input) => {
-        expect(isValidVideoProvider(input))
-            .toBeFalsy()
     })
 
     test.each([
@@ -31,7 +27,7 @@ describe('video image provider', () => {
         [['test']],
         [{test: 'dummy'}],
     ])('invalid value: $0', async (input) => {
-        expect(isValidVideoProvider(input))
+        expect(isValidEngineConfiguration(input))
             .toBeFalsy()
     })
 })

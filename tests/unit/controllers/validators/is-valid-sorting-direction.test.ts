@@ -3,15 +3,15 @@ import {isValidSortingDirection} from "../../../../src/controllers/validators/is
 
 describe('Validating sorting direction', () => {
     test.each([
+        [undefined],
+        [null],
+        [''],
         ['asc'],
         ['desc'],
         ['ASC'],
         ['DESC'],
         ['aSC'],
         ['DeSc'],
-        [''],
-        [null],
-        [undefined],
     ])('valid value: $0', async (input) => {
         expect(isValidSortingDirection(input))
             .toBeTruthy()
