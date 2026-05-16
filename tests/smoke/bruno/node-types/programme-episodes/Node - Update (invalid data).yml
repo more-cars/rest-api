@@ -1,0 +1,30 @@
+info:
+  name: Update Programme Episode (invalid data)
+  type: http
+  tags:
+    - update
+    - node
+    - invalid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/programme-episodes/{{validProgrammeEpisodeId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name": null
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "400"
+    - expression: res.body
+      operator: isString
+  scripts:
+    - type: before-request
+      code: |-
+        const ProgrammeEpisodes = require('./lib/node-types/ProgrammeEpisodes.js')
+        await ProgrammeEpisodes.create()

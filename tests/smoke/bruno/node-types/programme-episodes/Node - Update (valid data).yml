@@ -1,0 +1,47 @@
+info:
+  name: Update Programme Episode (valid data)
+  type: http
+  tags:
+    - update
+    - node
+    - valid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/programme-episodes/{{validProgrammeEpisodeId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "title": "The Falls Guys - Updated",
+        "season_number": 4,
+        "season_episode_number": 4,
+        "original_air_date": "2017-12-08 - Updated",
+        "duration": "PT55M - Updated"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validProgrammeEpisodeId}}"
+  scripts:
+    - type: before-request
+      code: |-
+        const ProgrammeEpisodes = require('./lib/node-types/ProgrammeEpisodes.js')
+        await ProgrammeEpisodes.create()
+    - type: tests
+      code: |-
+        test("response should return the intended record", function () {
+          const data = res.getBody()
+          expect(data.id).to.eql(bru.getEnvVar('validProgrammeEpisodeId'))
+        })
+        test("both timestamps should be different", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)
+        })
