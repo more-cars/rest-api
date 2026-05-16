@@ -1,0 +1,46 @@
+info:
+  name: Update Rating (valid data)
+  type: http
+  tags:
+    - update
+    - node
+    - valid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/ratings/{{validRatingId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "rating_value": 95,
+        "scale_minimum": 0,
+        "scale_maximum": 102,
+        "scale_direction": "down"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validRatingId}}"
+  scripts:
+    - type: before-request
+      code: |-
+        const Ratings = require('./lib/node-types/Ratings.js')
+        await Ratings.create()
+    - type: tests
+      code: |-
+        test("response should return the intended record", function () {
+          const data = res.getBody()
+          expect(data.id).to.eql(bru.getEnvVar('validRatingId'))
+        })
+        test("both timestamps should be different", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)
+        })

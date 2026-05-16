@@ -2,6 +2,7 @@ import express from "express"
 import {create} from "./ratings/create"
 import {getById} from "./ratings/getById"
 import {getAll} from "./ratings/getAll"
+import {updateNode} from "./ratings/updateNode"
 import {deleteNode} from "./ratings/deleteNode"
 import {createByMagazineIssueRelation} from "./ratings/createByMagazineIssueRelation"
 import {getByMagazineIssueRelation} from "./ratings/getByMagazineIssueRelation"
@@ -27,6 +28,10 @@ export const RatingController = {
 
     async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
+    },
+
+    async update(req: express.Request, res: express.Response) {
+        await updateNode(req, res)
     },
 
     async delete(req: express.Request, res: express.Response) {

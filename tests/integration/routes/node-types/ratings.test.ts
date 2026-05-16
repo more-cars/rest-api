@@ -30,6 +30,14 @@ describe('Ratings', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Update Node', async () => {
+        await request(app)
+            .patch('/ratings/123')
+
+        expect(RatingController.update)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Delete Node', async () => {
         await request(app)
             .delete('/ratings/123')

@@ -21761,6 +21761,55 @@
           }
         }
       },
+      "patch": {
+        "tags": [
+          "Ratings"
+        ],
+        "summary": "Update `Rating`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "rating-id",
+            "description": "ID of the `Rating`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "`Rating` successfully updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RatingResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "`Rating` could not be updated. The provided data was invalid or malformed.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Update request failed. A `Rating` with the provided ID could not be found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
       "delete": {
         "tags": [
           "Ratings"

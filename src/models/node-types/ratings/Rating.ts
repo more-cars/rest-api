@@ -5,6 +5,9 @@ import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/ratings/getNodeById"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
+import {updateDbNode} from "../../../db/nodes/updateDbNode"
+import type {RatingInput} from "./types/RatingInput"
+import {Revision} from "../revisions/Revision"
 import {deleteNode} from "../../../db/nodes/deleteNode"
 import {createRel} from "../../relationships/createRel"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
@@ -50,6 +53,27 @@ export const Rating = {
         })
 
         return nodes
+    },
+
+    async update(id: number, data: RatingInput): Promise<RatingNode> {
+        const node = await getNodeById(id)
+
+        if (!node) {
+            throw new NodeNotFoundError(id)
+        }
+
+        const input = convertInputData(data as CreateRatingInput)
+        const result = await updateDbNode(DbNodeType.Rating, id, input)
+
+        await Revision.create({
+            node_type: DbNodeType.Rating,
+            node_id: node.properties.id,
+            node_created_at: node.properties.created_at,
+            node_updated_at: node.properties.updated_at,
+            ...node.properties,
+        })
+
+        return convertDbNodeToModelNode(result) as RatingNode
     },
 
     async delete(id: number): Promise<void> {

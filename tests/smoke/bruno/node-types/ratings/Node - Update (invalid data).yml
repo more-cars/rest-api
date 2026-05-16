@@ -1,0 +1,30 @@
+info:
+  name: Update Rating (invalid data)
+  type: http
+  tags:
+    - update
+    - node
+    - invalid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/ratings/{{validRatingId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "rating_value": null
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "400"
+    - expression: res.body
+      operator: isString
+  scripts:
+    - type: before-request
+      code: |-
+        const Ratings = require('./lib/node-types/Ratings.js')
+        await Ratings.create()
