@@ -1,9 +1,9 @@
 export type CompanyInput = {
-    name: string | undefined
-    founded: number | undefined
-    defunct: number | undefined
-    headquarters_location: string | undefined
-    hq_country_code: string | undefined
-    legal_headquarters_location: string | undefined
-    legal_hq_country_code: string | undefined
+    name: string | null | undefined
+    founded: number | null | undefined
+    defunct: number | null | undefined
+    headquarters_location: string | null | undefined
+    hq_country_code: string | null | undefined
+    legal_headquarters_location: string | null | undefined
+    legal_hq_country_code: string | null | undefined
 }

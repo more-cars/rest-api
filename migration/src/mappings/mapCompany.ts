@@ -1,7 +1,7 @@
 import {Node} from "neo4j-driver"
-import type {InputCompanyCreate} from "../../../src/db/node-types/companies/types/InputCompanyCreate"
+import type {DbInputData} from "../../../src/db/types/DbInputData"
 
-export function mapCompany(oldNode: Node): InputCompanyCreate {
+export function mapCompany(oldNode: Node): DbInputData {
     return {
         name: oldNode.properties.name,
         founded: oldNode.properties.founded,

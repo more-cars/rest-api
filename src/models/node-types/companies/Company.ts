@@ -1,4 +1,3 @@
-import {CreateCompanyInput} from "./types/CreateCompanyInput"
 import {CompanyNode} from "./types/CompanyNode"
 import {convertInputData} from "./create/convertInputData"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
@@ -28,7 +27,7 @@ import {createDbNode} from "../../../db/nodes/createDbNode"
 import {Revision} from "../revisions/Revision"
 
 export const Company = {
-    async create(data: CreateCompanyInput): Promise<CompanyNode> {
+    async create(data: CompanyInput): Promise<CompanyNode> {
         const input = convertInputData(data)
         const result = await createDbNode(DbNodeType.Company, input)
 
@@ -63,7 +62,7 @@ export const Company = {
             throw new NodeNotFoundError(id)
         }
 
-        const input = convertInputData(data as CreateCompanyInput)
+        const input = convertInputData(data)
         const result = await updateDbNode(DbNodeType.Company, id, input)
 
         await Revision.create({

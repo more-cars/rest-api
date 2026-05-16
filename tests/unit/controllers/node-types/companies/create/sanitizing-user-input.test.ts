@@ -1,10 +1,10 @@
 import {describe, expect, test} from 'vitest'
-import {CreateCompanyInput} from "../../../../../../src/models/node-types/companies/types/CreateCompanyInput"
+import type {DbInputData} from "../../../../../../src/db/types/DbInputData"
 import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
-        const data: CreateCompanyInput = {
+        const data: DbInputData = {
             name: "   BMW AG  ",
             founded: 1916,
             defunct: null,

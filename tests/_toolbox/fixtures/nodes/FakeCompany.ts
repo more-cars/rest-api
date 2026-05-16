@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputCompanyCreate} from "../../../../src/db/node-types/companies/types/InputCompanyCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {CompanyNode} from "../../../../src/models/node-types/companies/types/CompanyNode"
 
@@ -13,13 +13,13 @@ export const FakeCompany = {
             hq_country_code: faker.location.countryCode(),
             legal_headquarters_location: faker.location.city(),
             legal_hq_country_code: faker.location.countryCode(),
-        } as InputCompanyCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
         return {
             name: faker.company.name(),
-        } as InputCompanyCreate
+        } as DbInputData
     },
 
     modelOutput: function () {
