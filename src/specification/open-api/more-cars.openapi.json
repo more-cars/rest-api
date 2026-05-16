@@ -27399,7 +27399,7 @@
           "engine_configuration": {
             "type": "string",
             "description": "",
-            "example": "inline",
+            "example": "Inline",
             "nullable": true,
             "enum": [
               "Inline",
@@ -27429,7 +27429,7 @@
           "air_induction": {
             "type": "string",
             "description": "",
-            "example": "naturally aspirated",
+            "example": "none",
             "nullable": true,
             "enum": [
               "none",
@@ -27491,7 +27491,7 @@
           "consumption_unit": {
             "type": "string",
             "description": "",
-            "example": "l",
+            "example": "l / 100 km",
             "nullable": true,
             "enum": [
               "l / 100 km",
@@ -27580,7 +27580,7 @@
           "drivetrain": {
             "type": "string",
             "description": "",
-            "example": "rwd",
+            "example": "RWD",
             "nullable": true,
             "enum": [
               "RWD",
