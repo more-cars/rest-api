@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputCarModelCreate} from "../../../../src/db/node-types/car-models/types/InputCarModelCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {CarModelNode} from "../../../../src/models/node-types/car-models/types/CarModelNode"
 
@@ -12,13 +12,13 @@ export const FakeCarModel = {
             generation: faker.number.int({min: 1, max: 10}),
             internal_code: faker.vehicle.vrm(),
             total_production: faker.number.int({min: 100, max: 10000000}),
-        } as InputCarModelCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
         return {
             name: faker.vehicle.model(),
-        } as InputCarModelCreate
+        } as DbInputData
     },
 
     modelOutput: function () {

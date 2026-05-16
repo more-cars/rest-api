@@ -1,10 +1,10 @@
 import {describe, expect, test} from 'vitest'
-import {CreateCarModelInput} from "../../../../../../src/models/node-types/car-models/types/CreateCarModelInput"
+import type {CarModelInput} from "../../../../../../src/models/node-types/car-models/types/CarModelInput"
 import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
-        const data: CreateCarModelInput = {
+        const data: CarModelInput = {
             name: "    360 Modena    ",
             built_from: 1999,
             built_to: 2005,
