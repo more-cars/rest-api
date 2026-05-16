@@ -2,6 +2,7 @@ import express from "express"
 import {create} from "./gaming-platforms/create"
 import {getById} from "./gaming-platforms/getById"
 import {getAll} from "./gaming-platforms/getAll"
+import {updateNode} from "./gaming-platforms/updateNode"
 import {deleteNode} from "./gaming-platforms/deleteNode"
 import {createFeaturesRacingGameRelation} from "./gaming-platforms/createFeaturesRacingGameRelation"
 import {getAllFeaturesRacingGameRelations} from "./gaming-platforms/getAllFeaturesRacingGameRelations"
@@ -30,6 +31,10 @@ export const GamingPlatformController = {
 
     async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
+    },
+
+    async update(req: express.Request, res: express.Response) {
+        await updateNode(req, res)
     },
 
     async delete(req: express.Request, res: express.Response) {

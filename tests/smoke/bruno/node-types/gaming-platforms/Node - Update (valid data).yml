@@ -1,0 +1,45 @@
+info:
+  name: Update Gaming Platform (valid data)
+  type: http
+  tags:
+    - update
+    - node
+    - valid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/gaming-platforms/{{validGamingPlatformId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "PlayStation 5 - Updated",
+        "release_year": 2022,
+        "manufacturer": "Sony - Updated"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validGamingPlatformId}}"
+  scripts:
+    - type: before-request
+      code: |-
+        const GamingPlatforms = require('./lib/node-types/GamingPlatforms.js')
+        await GamingPlatforms.create()
+    - type: tests
+      code: |-
+        test("response should return the intended record", function () {
+          const data = res.getBody()
+          expect(data.id).to.eql(bru.getEnvVar('validGamingPlatformId'))
+        })
+        test("both timestamps should be different", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)
+        })

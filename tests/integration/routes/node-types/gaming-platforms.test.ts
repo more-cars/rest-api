@@ -30,6 +30,14 @@ describe('Gaming Platforms', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Update Node', async () => {
+        await request(app)
+            .patch('/gaming-platforms/123')
+
+        expect(GamingPlatformController.update)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Delete Node', async () => {
         await request(app)
             .delete('/gaming-platforms/123')

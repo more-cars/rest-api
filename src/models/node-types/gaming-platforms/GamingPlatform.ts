@@ -4,6 +4,9 @@ import {convertInputData} from "./create/convertInputData"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/gaming-platforms/getNodeById"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
+import {updateDbNode} from "../../../db/nodes/updateDbNode"
+import type {GamingPlatformInput} from "./types/GamingPlatformInput"
+import {Revision} from "../revisions/Revision"
 import {deleteNode} from "../../../db/nodes/deleteNode"
 import {NodeNotFoundError} from "../../types/NodeNotFoundError"
 import {createRel} from "../../relationships/createRel"
@@ -50,6 +53,27 @@ export const GamingPlatform = {
         })
 
         return nodes
+    },
+
+    async update(id: number, data: GamingPlatformInput): Promise<GamingPlatformNode> {
+        const node = await getNodeById(id)
+
+        if (!node) {
+            throw new NodeNotFoundError(id)
+        }
+
+        const input = convertInputData(data as CreateGamingPlatformInput)
+        const result = await updateDbNode(DbNodeType.GamingPlatform, id, input)
+
+        await Revision.create({
+            node_type: DbNodeType.GamingPlatform,
+            node_id: node.properties.id,
+            node_created_at: node.properties.created_at,
+            node_updated_at: node.properties.updated_at,
+            ...node.properties,
+        })
+
+        return convertDbNodeToModelNode(result) as GamingPlatformNode
     },
 
     async delete(id: number): Promise<void> {
