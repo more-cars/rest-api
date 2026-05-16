@@ -2,6 +2,7 @@ import express from "express"
 import {create} from "./model-cars/create"
 import {getById} from "./model-cars/getById"
 import {getAll} from "./model-cars/getAll"
+import {updateNode} from "./model-cars/updateNode"
 import {deleteNode} from "./model-cars/deleteNode"
 import {createIsScaleModelOfCarModelVariantRelation} from "./model-cars/createIsScaleModelOfCarModelVariantRelation"
 import {getIsScaleModelOfCarModelVariantRelation} from "./model-cars/getIsScaleModelOfCarModelVariantRelation"
@@ -33,6 +34,10 @@ export const ModelCarController = {
 
     async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
+    },
+
+    async update(req: express.Request, res: express.Response) {
+        await updateNode(req, res)
     },
 
     async delete(req: express.Request, res: express.Response) {

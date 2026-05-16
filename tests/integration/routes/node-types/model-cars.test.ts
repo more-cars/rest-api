@@ -30,6 +30,14 @@ describe('Model Cars', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Update Node', async () => {
+        await request(app)
+            .patch('/model-cars/123')
+
+        expect(ModelCarController.update)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Delete Node', async () => {
         await request(app)
             .delete('/model-cars/123')
