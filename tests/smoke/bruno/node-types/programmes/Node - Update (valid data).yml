@@ -1,0 +1,50 @@
+info:
+  name: Update Programme (valid data)
+  type: http
+  tags:
+    - update
+    - node
+    - valid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/programmes/{{validProgrammeId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Top Gear - Updated",
+        "aired_from_year": 2004,
+        "aired_until_year": 2024,
+        "channel": "BBC Two - Updated",
+        "total_seasons": 35,
+        "total_episodes": 242,
+        "regular_episode_running_time": "PT60M - Updated",
+        "country_code": "DE"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validProgrammeId}}"
+  scripts:
+    - type: before-request
+      code: |-
+        const Programmes = require('./lib/node-types/Programmes.js')
+        await Programmes.create()
+    - type: tests
+      code: |-
+        test("response should return the intended record", function () {
+          const data = res.getBody()
+          expect(data.id).to.eql(bru.getEnvVar('validProgrammeId'))
+        })
+        test("both timestamps should be different", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)
+        })

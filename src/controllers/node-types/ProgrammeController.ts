@@ -2,6 +2,7 @@ import express from "express"
 import {create} from "./programmes/create"
 import {getById} from "./programmes/getById"
 import {getAll} from "./programmes/getAll"
+import {updateNode} from "./programmes/updateNode"
 import {deleteNode} from "./programmes/deleteNode"
 import {createHasEpisodeRelation} from "./programmes/createHasEpisodeRelation"
 import {getAllHasEpisodeRelations} from "./programmes/getAllHasEpisodeRelations"
@@ -30,6 +31,10 @@ export const ProgrammeController = {
 
     async getAll(req: express.Request, res: express.Response) {
         await getAll(req, res)
+    },
+
+    async update(req: express.Request, res: express.Response) {
+        await updateNode(req, res)
     },
 
     async delete(req: express.Request, res: express.Response) {
