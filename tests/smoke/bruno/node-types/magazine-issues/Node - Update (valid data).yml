@@ -1,0 +1,50 @@
+info:
+  name: Update Magazine Issue (valid data)
+  type: http
+  tags:
+    - update
+    - node
+    - valid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/magazine-issues/{{validMagazineIssueId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "title": "Sieger-Typen - Updated",
+        "consecutive_number": null,
+        "issue_number": 13,
+        "issue_year": 2027,
+        "release_date": "2025-10-01 - Updated",
+        "single_copy_price": 7.4,
+        "single_copy_price_unit": "GBP",
+        "pages": 150
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validMagazineIssueId}}"
+  scripts:
+    - type: before-request
+      code: |-
+        const MagazineIssues = require('./lib/node-types/MagazineIssues.js')
+        await MagazineIssues.create()
+    - type: tests
+      code: |-
+        test("response should return the intended record", function () {
+          const data = res.getBody()
+          expect(data.id).to.eql(bru.getEnvVar('validMagazineIssueId'))
+        })
+        test("both timestamps should be different", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)
+        })

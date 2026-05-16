@@ -1,0 +1,30 @@
+info:
+  name: Update Magazine Issue (invalid data)
+  type: http
+  tags:
+    - update
+    - node
+    - invalid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/magazine-issues/{{validMagazineIssueId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "title": null
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "400"
+    - expression: res.body
+      operator: isString
+  scripts:
+    - type: before-request
+      code: |-
+        const MagazineIssues = require('./lib/node-types/MagazineIssues.js')
+        await MagazineIssues.create()
