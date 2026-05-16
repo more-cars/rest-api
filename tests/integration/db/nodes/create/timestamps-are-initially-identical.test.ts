@@ -3,7 +3,7 @@ import {getAllExpectedNodeTypes} from "../../../../_toolbox/getAllExpectedNodeTy
 import {createDbNode} from "../../../../../src/db/nodes/createDbNode"
 import {convertStringToDbNodeType} from "../../../../_toolbox/convertStringToNodeType"
 import {getFakeNode} from "../../../../_toolbox/fixtures/nodes/getFakeNode"
-import type {InputNodeTypeCreate} from "../../../../../src/db/types/InputNodeTypeCreate"
+import type {DbInputData} from "../../../../../src/db/types/DbInputData"
 
 describe('Both timestamps are identical for new nodes', () => {
     test.each(
@@ -14,7 +14,7 @@ describe('Both timestamps are identical for new nodes', () => {
         }
 
         const dbNodeType = convertStringToDbNodeType(nodeType)
-        const nodeData = getFakeNode(nodeType).dbInputMinimal() as InputNodeTypeCreate
+        const nodeData = getFakeNode(nodeType).dbInputMinimal() as DbInputData
         const createdNode = await createDbNode(dbNodeType, nodeData)
 
         expect(createdNode.properties.created_at)

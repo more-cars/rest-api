@@ -1,8 +1,8 @@
 import neo4j, {Node} from "neo4j-driver"
 import type {DbNodeType} from "../types/DbNodeType"
+import type {DbInputData} from "../types/DbInputData"
 import type {DbNode} from "../types/DbNode"
 import {getDriver} from "../driver"
-import type {QueryInputData} from "../types/QueryInputData"
 import {runNeo4jQuery} from "../runNeo4jQuery"
 import {convertNeo4jNodeToDbNode} from "./convertNeo4jNodeToDbNode"
 import {getDenamespacedNodeTypeLabel, getNamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
@@ -11,7 +11,7 @@ import {mapDbNodeTypeToNeo4jNodeType} from "./mapDbNodeTypeToNeo4jNodeType"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {getCypherFormattedProperties} from "./getCypherFormattedProperties"
 
-export async function updateDbNode(nodeType: DbNodeType, id: number, data: QueryInputData): Promise<DbNode> {
+export async function updateDbNode(nodeType: DbNodeType, id: number, data: DbInputData): Promise<DbNode> {
     const driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
@@ -30,7 +30,7 @@ export async function updateDbNode(nodeType: DbNodeType, id: number, data: Query
     }
 }
 
-export function updateNodeQuery(nodeType: DbNodeType, id: number, data: QueryInputData) {
+export function updateNodeQuery(nodeType: DbNodeType, id: number, data: DbInputData) {
     const nodeTypeLabel = getNamespacedNodeTypeLabel(mapDbNodeTypeToNeo4jNodeType(nodeType))
     const properties = getCypherFormattedProperties(data)
 

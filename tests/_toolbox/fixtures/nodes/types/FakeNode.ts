@@ -1,8 +1,8 @@
 import type {ModelNodes} from "../../../../../src/models/types/ModelNodes"
-import type {InputNodeTypeCreate} from "../../../../../src/db/types/InputNodeTypeCreate"
+import type {DbInputData} from "../../../../../src/db/types/DbInputData"
 
 export type FakeNode = {
-    dbInput(): InputNodeTypeCreate
+    dbInput(): DbInputData
     dbInputMinimal(): object
     modelOutput(): ModelNodes
 }

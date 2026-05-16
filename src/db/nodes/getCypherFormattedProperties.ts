@@ -1,7 +1,7 @@
-import type {QueryInputData} from "../types/QueryInputData"
+import type {DbInputData} from "../types/DbInputData"
 import {escapeSingleQuotes} from "./escapeSingleQuotes"
 
-export function getCypherFormattedProperties(data: QueryInputData) {
+export function getCypherFormattedProperties(data: DbInputData) {
     const lines: string[] = []
 
     for (const property in data) {

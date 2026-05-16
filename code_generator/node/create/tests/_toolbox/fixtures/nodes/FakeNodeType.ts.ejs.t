@@ -2,7 +2,7 @@
 to: tests/_toolbox/fixtures/nodes/Fake<%= h.changeCase.pascal(nodeType) %>.ts
 ---
 import {faker} from "@faker-js/faker"
-import type {Input<%= h.changeCase.pascal(nodeType) %>Create} from "../../../../src/db/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/Input<%= h.changeCase.pascal(nodeType) %>Create"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {<%= h.changeCase.pascal(nodeType) %>Node} from "../../../../src/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node"
 
@@ -18,7 +18,7 @@ export const Fake<%= h.changeCase.pascal(nodeType) %> = {
             <%= prop %>: faker.datatype.boolean(),
 <%    } -%>
 <% } -%>
-        } as Input<%= h.changeCase.pascal(nodeType) %>Create
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
@@ -34,7 +34,7 @@ export const Fake<%= h.changeCase.pascal(nodeType) %> = {
 <%      } -%>
 <%    } -%>
 <% } -%>
-        } as Input<%= h.changeCase.pascal(nodeType) %>Create
+        } as DbInputData
     },
 
     modelOutput: function () {

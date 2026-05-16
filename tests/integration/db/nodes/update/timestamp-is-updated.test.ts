@@ -3,7 +3,7 @@ import {getAllExpectedNodeTypes} from "../../../../_toolbox/getAllExpectedNodeTy
 import {createDbNode} from "../../../../../src/db/nodes/createDbNode"
 import {convertStringToDbNodeType} from "../../../../_toolbox/convertStringToNodeType"
 import {getFakeNode} from "../../../../_toolbox/fixtures/nodes/getFakeNode"
-import type {InputNodeTypeCreate} from "../../../../../src/db/types/InputNodeTypeCreate"
+import type {DbInputData} from "../../../../../src/db/types/DbInputData"
 import {updateDbNode} from "../../../../../src/db/nodes/updateDbNode"
 
 describe('updated_at timestamp is updated when updating a node', () => {
@@ -15,7 +15,7 @@ describe('updated_at timestamp is updated when updating a node', () => {
         }
 
         const dbNodeType = convertStringToDbNodeType(nodeType)
-        const nodeData = getFakeNode(nodeType).dbInputMinimal() as InputNodeTypeCreate
+        const nodeData = getFakeNode(nodeType).dbInputMinimal() as DbInputData
         const createdNode = await createDbNode(dbNodeType, nodeData)
         const updatedNode = await updateDbNode(dbNodeType, createdNode.properties.id, nodeData)
 

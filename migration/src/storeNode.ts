@@ -2,9 +2,9 @@ import type {Node} from "neo4j-driver"
 import {DbNodeType} from "../../src/db/types/DbNodeType"
 import {createDbNode} from "../../src/db/nodes/createDbNode"
 import {addMoreCarsIdToNode} from "../../src/db/nodes/addMoreCarsIdToNode"
-import type {InputNodeTypeCreate} from "../../src/db/types/InputNodeTypeCreate"
+import type {DbInputData} from "../../src/db/types/DbInputData"
 
-export async function storeNode(data: InputNodeTypeCreate, newNodeType: DbNodeType, oldNode: Node) {
+export async function storeNode(data: DbInputData, newNodeType: DbNodeType, oldNode: Node) {
     try {
         const createdNode = await createDbNode(newNodeType, data)
 

@@ -1,9 +1,8 @@
 import neo4j, {Node} from "neo4j-driver"
 import type {DbNodeType} from "../types/DbNodeType"
-import type {InputNodeTypeCreate} from "../types/InputNodeTypeCreate"
+import type {DbInputData} from "../types/DbInputData"
 import type {DbNode} from "../types/DbNode"
 import {getDriver} from "../driver"
-import type {QueryInputData} from "../types/QueryInputData"
 import {runNeo4jQuery} from "../runNeo4jQuery"
 import {generateMoreCarsId} from "../generateMoreCarsId"
 import {extractBaseIdFromElementId} from "../extractBaseIdFromElementId"
@@ -13,18 +12,18 @@ import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 import {mapDbNodeTypeToNeo4jNodeType} from "./mapDbNodeTypeToNeo4jNodeType"
 import {getCypherFormattedProperties} from "./getCypherFormattedProperties"
 
-export async function createDbNode(nodeType: DbNodeType, data: InputNodeTypeCreate): Promise<DbNode> {
+export async function createDbNode(nodeType: DbNodeType, data: DbInputData): Promise<DbNode> {
     const driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
     try {
         const record = await session.executeWrite(async txc => {
-            const queryInputData: QueryInputData = data
+            const inputData = {...data}
             const timestamp = new Date().toISOString()
-            queryInputData.created_at = timestamp
-            queryInputData.updated_at = timestamp
+            inputData.created_at = timestamp
+            inputData.updated_at = timestamp
 
-            const result = await runNeo4jQuery(createNodeQuery(nodeType, queryInputData), txc)
+            const result = await runNeo4jQuery(createNodeQuery(nodeType, inputData), txc)
             return result.records[0].get('n') as Node
         })
 
@@ -37,7 +36,7 @@ export async function createDbNode(nodeType: DbNodeType, data: InputNodeTypeCrea
     }
 }
 
-export function createNodeQuery(nodeType: DbNodeType, data: QueryInputData) {
+export function createNodeQuery(nodeType: DbNodeType, data: DbInputData) {
     const nodeTypeLabel = getNamespacedNodeTypeLabel(mapDbNodeTypeToNeo4jNodeType(nodeType))
     const properties = getCypherFormattedProperties(data)
 
