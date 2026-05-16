@@ -14,13 +14,12 @@ Then('the response should contain the following properties',
                     data[property.key] === null,
                     `Expected property "${property.key}" to have value "null", but got "${data[property.key]}."`)
             } else if (!isNaN(Number(property.value))) {
-                data[property.key] = Number(property.value)
                 assert(
                     data[property.key] === Number(property.value),
                     `Expected property "${property.key}" to have value "${property.value}", but got "${data[property.key]}."`)
             } else {
                 assert(
-                    data[property.key] = property.value,
+                    data[property.key] === property.value,
                     `Expected property "${property.key}" to have value "${property.value}", but got "${data[property.key]}."`)
             }
         })
