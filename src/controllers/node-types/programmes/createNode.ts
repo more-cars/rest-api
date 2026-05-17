@@ -2,7 +2,7 @@ import express from "express"
 import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
 import {NodeType} from "../../../specification/NodeType"
 import {unmarshalInputData} from "../../nodes/unmarshalInputData"
-import {CreateProgrammeInput} from "../../../models/node-types/programmes/types/CreateProgrammeInput"
+import type {ProgrammeInput} from "../../../models/node-types/programmes/types/ProgrammeInput"
 import {validateInputData} from "../../nodes/validateInputData"
 import {Programme} from "../../../models/node-types/programmes/Programme"
 import {convertProgrammeModelNodeToControllerNode} from "./convertProgrammeModelNodeToControllerNode"
@@ -11,9 +11,9 @@ import {sendResponse201} from "../../responses/sendResponse201"
 import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
 
-export async function create(req: express.Request, res: express.Response) {
+export async function createNode(req: express.Request, res: express.Response) {
     const propertyNames = getNodeTypeSpecification(NodeType.Programme).properties.map(prop => prop.name)
-    const data = unmarshalInputData(req.body, propertyNames) as CreateProgrammeInput
+    const data = unmarshalInputData(req.body, propertyNames) as ProgrammeInput
 
     if (!validateInputData(data, NodeType.Programme)) {
         return sendResponse400(res)

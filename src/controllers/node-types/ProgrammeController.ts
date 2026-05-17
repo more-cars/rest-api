@@ -1,5 +1,5 @@
 import express from "express"
-import {create} from "./programmes/create"
+import {createNode} from "./programmes/createNode"
 import {getById} from "./programmes/getById"
 import {getAll} from "./programmes/getAll"
 import {updateNode} from "./programmes/updateNode"
@@ -22,7 +22,7 @@ import {deleteHasMainVideoRelation} from "./programmes/deleteHasMainVideoRelatio
 
 export const ProgrammeController = {
     async create(req: express.Request, res: express.Response) {
-        await create(req, res)
+        await createNode(req, res)
     },
 
     async getById(req: express.Request, res: express.Response) {

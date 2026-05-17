@@ -3,8 +3,8 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 import {FakeProgramme} from "../../../../../_toolbox/fixtures/nodes/FakeProgramme"
 import {updateDbNode} from "../../../../../../src/db/nodes/updateDbNode"
-import type {InputProgrammeCreate} from "../../../../../../src/db/node-types/programmes/types/InputProgrammeCreate"
 import type {ProgrammeNode} from "../../../../../../src/db/node-types/programmes/types/ProgrammeNode"
+import type {DbInputData} from "../../../../../../src/db/types/DbInputData"
 
 describe('Updating PROGRAMME', () => {
     test('with valid data', async () => {
@@ -21,7 +21,7 @@ describe('Updating PROGRAMME', () => {
 
     test('with the same data', async () => {
         const createdNode = await seedNode(DbNodeType.Programme)
-        const inputData = createdNode.properties as unknown as InputProgrammeCreate
+        const inputData = createdNode.properties as DbInputData
         const updatedNode = await updateDbNode(DbNodeType.Programme, createdNode.properties.id, inputData)
 
         expect(updatedNode.properties)
@@ -39,9 +39,9 @@ describe('Updating PROGRAMME', () => {
 
     test('removing a field', async () => {
         const createdNode = await seedNode(DbNodeType.Programme)
-        const inputData = createdNode.properties as unknown as InputProgrammeCreate
-        // @ts-expect-error TS2339 TS2339 TS2339
+        const inputData = createdNode.properties as DbInputData
         inputData.name = null
+
         const updatedNode = await updateDbNode(DbNodeType.Programme, createdNode.properties.id, inputData) as ProgrammeNode
 
         expect(updatedNode.properties.name)

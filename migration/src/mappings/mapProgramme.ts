@@ -1,7 +1,7 @@
 import {Node} from "neo4j-driver"
-import type {InputProgrammeCreate} from "../../../src/db/node-types/programmes/types/InputProgrammeCreate"
+import type {DbInputData} from "../../../src/db/types/DbInputData"
 
-export function mapProgramme(oldNode: Node): InputProgrammeCreate {
+export function mapProgramme(oldNode: Node): DbInputData {
     return {
         name: oldNode.properties.name,
         aired_from_year: oldNode.properties.aired_from,

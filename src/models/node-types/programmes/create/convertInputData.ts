@@ -1,7 +1,7 @@
-import {CreateProgrammeInput} from "../types/CreateProgrammeInput"
-import {InputProgrammeCreate} from "../../../../db/node-types/programmes/types/InputProgrammeCreate"
+import type {ProgrammeInput} from "../types/ProgrammeInput"
+import type {DbInputData} from "../../../../db/types/DbInputData"
 
-export function convertInputData(data: CreateProgrammeInput): InputProgrammeCreate {
+export function convertInputData(data: ProgrammeInput): DbInputData {
     return {
         name: data.name,
         aired_from_year: data.aired_from_year,
@@ -11,5 +11,5 @@ export function convertInputData(data: CreateProgrammeInput): InputProgrammeCrea
         total_episodes: data.total_episodes,
         regular_episode_running_time: data.regular_episode_running_time,
         country_code: data.country_code,
-    } satisfies InputProgrammeCreate
+    }
 }
