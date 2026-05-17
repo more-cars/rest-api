@@ -55,7 +55,7 @@ export default function (id: number) {
     )
 
     check(response, {
-        'returns with status code 201': (r) => r.status === 201,
+        'returns with status code 200': (r) => r.status === 200,
         'content-type is JSON': (r) => r.headers['Content-Type'].includes('application/json'),
     })
 

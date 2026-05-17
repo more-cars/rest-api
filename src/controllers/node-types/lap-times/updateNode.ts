@@ -8,7 +8,7 @@ import {LapTime} from "../../../models/node-types/lap-times/LapTime"
 import {convertLapTimeModelNodeToControllerNode} from "./convertLapTimeModelNodeToControllerNode"
 import {marshalSingleNode} from "../../nodes/marshalSingleNode"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
-import {sendResponse201} from "../../responses/sendResponse201"
+import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse404} from "../../responses/sendResponse404"
 import {sendResponse500} from "../../responses/sendResponse500"
@@ -27,7 +27,7 @@ export async function updateNode(req: express.Request, res: express.Response) {
         const node = convertLapTimeModelNodeToControllerNode(modelNode)
         const marshalledData = marshalSingleNode(node)
 
-        return sendResponse201(marshalledData, res)
+        return sendResponse200(marshalledData, res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {
             return sendResponse404(res)

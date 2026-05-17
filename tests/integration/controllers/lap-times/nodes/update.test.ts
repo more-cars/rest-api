@@ -32,7 +32,7 @@ describe('Update LAP TIME', () => {
             })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(200)
     })
 
     test.skip('Request is invalid', async () => {
@@ -68,7 +68,7 @@ describe('Update LAP TIME', () => {
             .send(inputData)
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(200)
     })
 
     test('Input is valid, but something breaks on the way', async () => {

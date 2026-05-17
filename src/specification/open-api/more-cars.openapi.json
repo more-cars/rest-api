@@ -235,7 +235,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Company` successfully updated.",
             "content": {
               "application/json": {
@@ -1127,7 +1127,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Brand` successfully updated.",
             "content": {
               "application/json": {
@@ -2155,7 +2155,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Car Model` successfully updated.",
             "content": {
               "application/json": {
@@ -3727,7 +3727,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Car Model Variant` successfully updated.",
             "content": {
               "application/json": {
@@ -5843,7 +5843,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Price` successfully updated.",
             "content": {
               "application/json": {
@@ -6918,7 +6918,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Race Track` successfully updated.",
             "content": {
               "application/json": {
@@ -7946,7 +7946,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Track Layout` successfully updated.",
             "content": {
               "application/json": {
@@ -9246,7 +9246,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Racing Series` successfully updated.",
             "content": {
               "application/json": {
@@ -10138,7 +10138,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Racing Event` successfully updated.",
             "content": {
               "application/json": {
@@ -11846,7 +11846,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Racing Session` successfully updated.",
             "content": {
               "application/json": {
@@ -12874,7 +12874,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Session Result` successfully updated.",
             "content": {
               "application/json": {
@@ -13766,7 +13766,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Lap Time` successfully updated.",
             "content": {
               "application/json": {
@@ -15066,7 +15066,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Racing Game` successfully updated.",
             "content": {
               "application/json": {
@@ -16230,7 +16230,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Gaming Platform` successfully updated.",
             "content": {
               "application/json": {
@@ -17122,7 +17122,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Model Car` successfully updated.",
             "content": {
               "application/json": {
@@ -18150,7 +18150,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Model Car Brand` successfully updated.",
             "content": {
               "application/json": {
@@ -19042,7 +19042,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Magazine` successfully updated.",
             "content": {
               "application/json": {
@@ -19934,7 +19934,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Magazine Issue` successfully updated.",
             "content": {
               "application/json": {
@@ -21778,7 +21778,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Rating` successfully updated.",
             "content": {
               "application/json": {
@@ -22534,7 +22534,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Programme` successfully updated.",
             "content": {
               "application/json": {
@@ -23426,7 +23426,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Programme Episode` successfully updated.",
             "content": {
               "application/json": {
@@ -24862,7 +24862,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`Motor Show` successfully updated.",
             "content": {
               "application/json": {

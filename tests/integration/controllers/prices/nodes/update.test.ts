@@ -34,7 +34,7 @@ describe('Update PRICE', () => {
             })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(200)
     })
 
     test.skip('Request is invalid', async () => {

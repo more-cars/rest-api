@@ -31,7 +31,7 @@ describe('Update PROGRAMME EPISODE', () => {
             })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(200)
     })
 
     test.skip('Request is invalid', async () => {
@@ -67,7 +67,7 @@ describe('Update PROGRAMME EPISODE', () => {
             .send(inputData)
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(200)
     })
 
     test('Input is valid, but something breaks on the way', async () => {

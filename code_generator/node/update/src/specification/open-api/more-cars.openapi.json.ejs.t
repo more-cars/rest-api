@@ -21,7 +21,7 @@ skip_if: 'Update `<%= h.changeCase.title(nodeType) %>`'
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "`<%= h.changeCase.title(nodeType) %>` successfully updated.",
             "content": {
               "application/json": {
