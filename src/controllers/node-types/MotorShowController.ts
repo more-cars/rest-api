@@ -1,5 +1,5 @@
 import express from "express"
-import {create} from "./motor-shows/create"
+import {createNode} from "./motor-shows/createNode"
 import {getById} from "./motor-shows/getById"
 import {getAll} from "./motor-shows/getAll"
 import {updateNode} from "./motor-shows/updateNode"
@@ -22,7 +22,7 @@ import {deleteHasMainVideoRelation} from "./motor-shows/deleteHasMainVideoRelati
 
 export const MotorShowController = {
     async create(req: express.Request, res: express.Response) {
-        await create(req, res)
+        await createNode(req, res)
     },
 
     async getById(req: express.Request, res: express.Response) {

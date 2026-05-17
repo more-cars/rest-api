@@ -1,9 +1,9 @@
 export type MotorShowInput = {
-    name: string | undefined
-    date_from: string | undefined
-    date_until: string | undefined
-    location: string | undefined
-    target_audience: string | undefined
-    focus: string | undefined
-    country_code: string | undefined
+    name: string | null | undefined
+    date_from: string | null | undefined
+    date_until: string | null | undefined
+    location: string | null | undefined
+    target_audience: string | null | undefined
+    focus: string | null | undefined
+    country_code: string | null | undefined
 }

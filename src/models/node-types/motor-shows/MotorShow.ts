@@ -1,4 +1,3 @@
-import {CreateMotorShowInput} from "./types/CreateMotorShowInput"
 import {MotorShowNode} from "./types/MotorShowNode"
 import {convertInputData} from "./create/convertInputData"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
@@ -27,7 +26,7 @@ import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollection
 import {createDbNode} from "../../../db/nodes/createDbNode"
 
 export const MotorShow = {
-    async create(data: CreateMotorShowInput): Promise<MotorShowNode> {
+    async create(data: MotorShowInput): Promise<MotorShowNode> {
         const input = convertInputData(data)
         const result = await createDbNode(DbNodeType.MotorShow, input)
 
@@ -62,7 +61,7 @@ export const MotorShow = {
             throw new NodeNotFoundError(id)
         }
 
-        const input = convertInputData(data as CreateMotorShowInput)
+        const input = convertInputData(data)
         const result = await updateDbNode(DbNodeType.MotorShow, id, input)
 
         await Revision.create({

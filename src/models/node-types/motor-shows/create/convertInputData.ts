@@ -1,7 +1,7 @@
-import {CreateMotorShowInput} from "../types/CreateMotorShowInput"
-import {InputMotorShowCreate} from "../../../../db/node-types/motor-shows/types/InputMotorShowCreate"
+import type {MotorShowInput} from "../types/MotorShowInput"
+import type {DbInputData} from "../../../../db/types/DbInputData"
 
-export function convertInputData(data: CreateMotorShowInput): InputMotorShowCreate {
+export function convertInputData(data: MotorShowInput): DbInputData {
     return {
         name: data.name,
         date_from: data.date_from,
@@ -10,5 +10,5 @@ export function convertInputData(data: CreateMotorShowInput): InputMotorShowCrea
         target_audience: data.target_audience,
         focus: data.focus,
         country_code: data.country_code,
-    } satisfies InputMotorShowCreate
+    }
 }

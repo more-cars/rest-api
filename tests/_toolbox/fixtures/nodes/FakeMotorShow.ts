@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputMotorShowCreate} from "../../../../src/db/node-types/motor-shows/types/InputMotorShowCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {MotorShowNode} from "../../../../src/models/node-types/motor-shows/types/MotorShowNode"
 
@@ -13,13 +13,13 @@ export const FakeMotorShow = {
             target_audience: faker.word.noun(),
             focus: faker.word.noun(),
             country_code: faker.location.countryCode(),
-        } as InputMotorShowCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
         return {
             name: faker.word.noun(),
-        } as InputMotorShowCreate
+        } as DbInputData
     },
 
     modelOutput: function () {
