@@ -1,6 +1,6 @@
 import {faker} from "@faker-js/faker"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
-import type {InputRevisionCreate} from "../../../../src/db/node-types/revisions/types/InputRevisionCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import type {RevisionNode} from "../../../../src/models/node-types/revisions/types/RevisionNode"
 
 export const FakeRevision = {
@@ -16,7 +16,7 @@ export const FakeRevision = {
             generation: faker.number.int({min: 1, max: 10}),
             internal_code: faker.vehicle.vrm(),
             total_production: faker.number.int({min: 100, max: 10000000}),
-        } as InputRevisionCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
@@ -26,7 +26,7 @@ export const FakeRevision = {
             node_created_at: faker.date.past().toISOString(),
             node_updated_at: faker.date.past().toISOString(),
             name: faker.vehicle.model(),
-        } as InputRevisionCreate
+        } as DbInputData
     },
 
     modelOutput: function () {

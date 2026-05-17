@@ -1,8 +1,8 @@
 import {Node} from "neo4j-driver"
-import type {InputRevisionCreate} from "../../../src/db/node-types/revisions/types/InputRevisionCreate"
+import type {DbInputData} from "../../../src/db/types/DbInputData"
 import {NodeTypeMappingReversed} from "../NodeTypeMappingReversed"
 
-export function mapRevision(oldNode: Node): InputRevisionCreate {
+export function mapRevision(oldNode: Node): DbInputData {
     const data = {...oldNode.properties}
 
     let nodeType: string | null = NodeTypeMappingReversed.get(data.node_type.replace('App\\Nodes\\', '').toLowerCase()) as string
@@ -24,5 +24,5 @@ export function mapRevision(oldNode: Node): InputRevisionCreate {
     delete data._title
     delete data.quality_index
 
-    return data as InputRevisionCreate
+    return data
 }

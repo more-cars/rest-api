@@ -1,4 +1,4 @@
-import type {CreateRevisionInput} from "./types/CreateRevisionInput"
+import type {RevisionInput} from "./types/RevisionInput"
 import type {RevisionNode} from "./types/RevisionNode"
 import {convertInputData} from "./create/convertInputData"
 import {createDbNode} from "../../../db/nodes/createDbNode"
@@ -11,7 +11,7 @@ import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
 
 export const Revision = {
-    async create(data: CreateRevisionInput): Promise<RevisionNode> {
+    async create(data: RevisionInput): Promise<RevisionNode> {
         const input = convertInputData(data)
         const result = await createDbNode(DbNodeType.Revision, input)
 

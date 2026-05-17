@@ -1,6 +1,6 @@
-import type {CreateRevisionInput} from "../types/CreateRevisionInput"
-import type {InputRevisionCreate} from "../../../../db/node-types/revisions/types/InputRevisionCreate"
+import {RevisionInput} from "../types/RevisionInput"
+import type {DbInputData} from "../../../../db/types/DbInputData"
 
-export function convertInputData(data: CreateRevisionInput): InputRevisionCreate {
-    return data as InputRevisionCreate
+export function convertInputData(data: RevisionInput): DbInputData {
+    return data
 }
