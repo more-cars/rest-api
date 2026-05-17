@@ -1,7 +1,7 @@
 export type ModelCarInput = {
-    name: string | undefined
-    product_code: string | undefined
-    release_year: number | undefined
-    scale: string | undefined
-    series: string | undefined
+    name: string | null | undefined
+    product_code: string | null | undefined
+    release_year: number | null | undefined
+    scale: string | null | undefined
+    series: string | null | undefined
 }

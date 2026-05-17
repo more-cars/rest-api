@@ -1,5 +1,5 @@
 import express from "express"
-import {create} from "./model-cars/create"
+import {createNode} from "./model-cars/createNode"
 import {getById} from "./model-cars/getById"
 import {getAll} from "./model-cars/getAll"
 import {updateNode} from "./model-cars/updateNode"
@@ -25,7 +25,7 @@ import {deleteHasMainVideoRelation} from "./model-cars/deleteHasMainVideoRelatio
 
 export const ModelCarController = {
     async create(req: express.Request, res: express.Response) {
-        await create(req, res)
+        await createNode(req, res)
     },
 
     async getById(req: express.Request, res: express.Response) {

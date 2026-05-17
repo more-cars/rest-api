@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputModelCarCreate} from "../../../../src/db/node-types/model-cars/types/InputModelCarCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {ModelCarNode} from "../../../../src/models/node-types/model-cars/types/ModelCarNode"
 
@@ -11,13 +11,13 @@ export const FakeModelCar = {
             release_year: faker.number.int({min: 1000, max: 3000}),
             scale: faker.word.noun(),
             series: faker.word.noun(),
-        } as InputModelCarCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
         return {
             name: faker.word.noun(),
-        } as InputModelCarCreate
+        } as DbInputData
     },
 
     modelOutput: function () {
