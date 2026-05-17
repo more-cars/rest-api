@@ -1,15 +1,15 @@
 export type MagazineInput = {
-    name: string | undefined
-    founded: number | undefined
-    defunct: number | undefined
-    focus: string | undefined
-    publication_frequency: string | undefined
-    single_copy_price: number | undefined
-    single_copy_price_unit: string | undefined
-    publication_format: string | undefined
-    circulation: number | undefined
-    circulation_year: number | undefined
-    publisher: string | undefined
-    issn: string | undefined
-    country_code: string | undefined
+    name: string | null | undefined
+    founded: number | null | undefined
+    defunct: number | null | undefined
+    focus: string | null | undefined
+    publication_frequency: string | null | undefined
+    single_copy_price: number | null | undefined
+    single_copy_price_unit: string | null | undefined
+    publication_format: string | null | undefined
+    circulation: number | null | undefined
+    circulation_year: number | null | undefined
+    publisher: string | null | undefined
+    issn: string | null | undefined
+    country_code: string | null | undefined
 }

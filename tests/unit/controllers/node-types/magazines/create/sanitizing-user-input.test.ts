@@ -1,10 +1,10 @@
 import {describe, expect, test} from 'vitest'
-import {CreateMagazineInput} from "../../../../../../src/models/node-types/magazines/types/CreateMagazineInput"
+import type {MagazineInput} from "../../../../../../src/models/node-types/magazines/types/MagazineInput"
 import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
-        const data: CreateMagazineInput = {
+        const data: MagazineInput = {
             name: "   Top Gear  ",
             founded: 1993,
             defunct: null,

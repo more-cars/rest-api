@@ -1,7 +1,7 @@
-import {CreateMagazineInput} from "../types/CreateMagazineInput"
-import {InputMagazineCreate} from "../../../../db/node-types/magazines/types/InputMagazineCreate"
+import type {MagazineInput} from "../types/MagazineInput"
+import type {DbInputData} from "../../../../db/types/DbInputData"
 
-export function convertInputData(data: CreateMagazineInput): InputMagazineCreate {
+export function convertInputData(data: MagazineInput): DbInputData {
     return {
         name: data.name,
         founded: data.founded,
@@ -16,5 +16,5 @@ export function convertInputData(data: CreateMagazineInput): InputMagazineCreate
         publisher: data.publisher,
         issn: data.issn,
         country_code: data.country_code,
-    } satisfies InputMagazineCreate
+    }
 }

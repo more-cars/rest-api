@@ -1,7 +1,7 @@
 import {Node} from "neo4j-driver"
-import type {InputMagazineCreate} from "../../../src/db/node-types/magazines/types/InputMagazineCreate"
+import type {DbInputData} from "../../../src/db/types/DbInputData"
 
-export function mapMagazine(oldNode: Node): InputMagazineCreate {
+export function mapMagazine(oldNode: Node): DbInputData {
     return {
         name: oldNode.properties.name,
         founded: oldNode.properties.founded,

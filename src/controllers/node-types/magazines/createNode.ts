@@ -2,7 +2,7 @@ import express from "express"
 import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
 import {NodeType} from "../../../specification/NodeType"
 import {unmarshalInputData} from "../../nodes/unmarshalInputData"
-import {CreateMagazineInput} from "../../../models/node-types/magazines/types/CreateMagazineInput"
+import type {MagazineInput} from "../../../models/node-types/magazines/types/MagazineInput"
 import {validateInputData} from "../../nodes/validateInputData"
 import {Magazine} from "../../../models/node-types/magazines/Magazine"
 import {convertMagazineModelNodeToControllerNode} from "./convertMagazineModelNodeToControllerNode"
@@ -11,9 +11,9 @@ import {sendResponse201} from "../../responses/sendResponse201"
 import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
 
-export async function create(req: express.Request, res: express.Response) {
+export async function createNode(req: express.Request, res: express.Response) {
     const propertyNames = getNodeTypeSpecification(NodeType.Magazine).properties.map(prop => prop.name)
-    const data = unmarshalInputData(req.body, propertyNames) as CreateMagazineInput
+    const data = unmarshalInputData(req.body, propertyNames) as MagazineInput
 
     if (!validateInputData(data, NodeType.Magazine)) {
         return sendResponse400(res)

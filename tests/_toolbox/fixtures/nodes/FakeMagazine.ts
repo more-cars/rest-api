@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputMagazineCreate} from "../../../../src/db/node-types/magazines/types/InputMagazineCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {MagazineNode} from "../../../../src/models/node-types/magazines/types/MagazineNode"
 
@@ -19,13 +19,13 @@ export const FakeMagazine = {
             publisher: faker.company.name(),
             issn: '1350-9624',
             country_code: faker.location.countryCode(),
-        } as InputMagazineCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
         return {
             name: faker.company.name(),
-        } as InputMagazineCreate
+        } as DbInputData
     },
 
     modelOutput: function () {
