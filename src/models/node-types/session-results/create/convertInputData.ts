@@ -1,7 +1,7 @@
-import {CreateSessionResultInput} from "../types/CreateSessionResultInput"
-import {InputSessionResultCreate} from "../../../../db/node-types/session-results/types/InputSessionResultCreate"
+import type {SessionResultInput} from "../types/SessionResultInput"
+import type {DbInputData} from "../../../../db/types/DbInputData"
 
-export function convertInputData(data: CreateSessionResultInput): InputSessionResultCreate {
+export function convertInputData(data: SessionResultInput): DbInputData {
     return {
         position: data.position,
         race_number: data.race_number,
@@ -11,5 +11,5 @@ export function convertInputData(data: CreateSessionResultInput): InputSessionRe
         laps: data.laps,
         status: data.status,
         points: data.points,
-    } satisfies InputSessionResultCreate
+    }
 }

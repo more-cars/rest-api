@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputSessionResultCreate} from "../../../../src/db/node-types/session-results/types/InputSessionResultCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {SessionResultNode} from "../../../../src/models/node-types/session-results/types/SessionResultNode"
 
@@ -14,14 +14,14 @@ export const FakeSessionResult = {
             laps: faker.number.int({min: 1, max: 99}),
             status: faker.word.noun(),
             points: faker.number.int({min: 1, max: 99}),
-        } as InputSessionResultCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
         return {
             position: faker.number.int({min: 1, max: 99}),
             driver_name: faker.person.fullName(),
-        } as InputSessionResultCreate
+        } as DbInputData
     },
 
     modelOutput: function () {

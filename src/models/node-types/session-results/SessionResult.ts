@@ -1,4 +1,3 @@
-import {CreateSessionResultInput} from "./types/CreateSessionResultInput"
 import {SessionResultNode} from "./types/SessionResultNode"
 import {convertInputData} from "./create/convertInputData"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
@@ -29,7 +28,7 @@ import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollection
 import {createDbNode} from "../../../db/nodes/createDbNode"
 
 export const SessionResult = {
-    async create(data: CreateSessionResultInput): Promise<SessionResultNode> {
+    async create(data: SessionResultInput): Promise<SessionResultNode> {
         const input = convertInputData(data)
         const result = await createDbNode(DbNodeType.SessionResult, input)
 
@@ -64,7 +63,7 @@ export const SessionResult = {
             throw new NodeNotFoundError(id)
         }
 
-        const input = convertInputData(data as CreateSessionResultInput)
+        const input = convertInputData(data)
         const result = await updateDbNode(DbNodeType.SessionResult, id, input)
 
         await Revision.create({

@@ -1,10 +1,10 @@
 import {describe, expect, test} from 'vitest'
-import {CreateSessionResultInput} from "../../../../../../src/models/node-types/session-results/types/CreateSessionResultInput"
+import type {SessionResultInput} from "../../../../../../src/models/node-types/session-results/types/SessionResultInput"
 import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
-        const data: CreateSessionResultInput = {
+        const data: SessionResultInput = {
             position: 1,
             race_number: "   44  ",
             driver_name: "   Lewis Hamilton  ",

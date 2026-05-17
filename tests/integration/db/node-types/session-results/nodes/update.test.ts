@@ -3,7 +3,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 import {FakeSessionResult} from "../../../../../_toolbox/fixtures/nodes/FakeSessionResult"
 import {updateDbNode} from "../../../../../../src/db/nodes/updateDbNode"
-import type {InputSessionResultCreate} from "../../../../../../src/db/node-types/session-results/types/InputSessionResultCreate"
+import type {DbInputData} from "../../../../../../src/db/types/DbInputData"
 import type {SessionResultNode} from "../../../../../../src/db/node-types/session-results/types/SessionResultNode"
 
 describe('Updating SESSION RESULT', () => {
@@ -21,7 +21,7 @@ describe('Updating SESSION RESULT', () => {
 
     test('with the same data', async () => {
         const createdNode = await seedNode(DbNodeType.SessionResult)
-        const inputData = createdNode.properties as unknown as InputSessionResultCreate
+        const inputData = createdNode.properties as DbInputData
         const updatedNode = await updateDbNode(DbNodeType.SessionResult, createdNode.properties.id, inputData)
 
         expect(updatedNode.properties)
@@ -39,9 +39,9 @@ describe('Updating SESSION RESULT', () => {
 
     test('removing a field', async () => {
         const createdNode = await seedNode(DbNodeType.SessionResult)
-        const inputData = createdNode.properties as unknown as InputSessionResultCreate
-        // @ts-expect-error TS2339 TS2339 TS2339
+        const inputData = createdNode.properties as DbInputData
         inputData.driver_name = null
+
         const updatedNode = await updateDbNode(DbNodeType.SessionResult, createdNode.properties.id, inputData) as SessionResultNode
 
         expect(updatedNode.properties.driver_name)

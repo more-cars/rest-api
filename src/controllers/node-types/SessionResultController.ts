@@ -1,5 +1,5 @@
 import express from "express"
-import {create} from "./session-results/create"
+import {createNode} from "./session-results/createNode"
 import {getById} from "./session-results/getById"
 import {getAll} from "./session-results/getAll"
 import {updateNode} from "./session-results/updateNode"
@@ -22,7 +22,7 @@ import {deleteHasPrimeImageRelation} from "./session-results/deleteHasPrimeImage
 
 export const SessionResultController = {
     async create(req: express.Request, res: express.Response) {
-        await create(req, res)
+        await createNode(req, res)
     },
 
     async getById(req: express.Request, res: express.Response) {
