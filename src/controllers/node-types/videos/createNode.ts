@@ -2,7 +2,7 @@ import express from "express"
 import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
 import {NodeType} from "../../../specification/NodeType"
 import {unmarshalInputData} from "../../nodes/unmarshalInputData"
-import {CreateVideoInput} from "../../../models/node-types/videos/types/CreateVideoInput"
+import {VideoInput} from "../../../models/node-types/videos/types/VideoInput"
 import {validateInputData} from "../../nodes/validateInputData"
 import {Video} from "../../../models/node-types/videos/Video"
 import {convertVideoModelNodeToControllerNode} from "./convertVideoModelNodeToControllerNode"
@@ -15,12 +15,12 @@ import {sendResponse409} from "../../responses/sendResponse409"
 import {sendResponse422} from "../../responses/sendResponse422"
 import {sendResponse500} from "../../responses/sendResponse500"
 
-export async function create(req: express.Request, res: express.Response) {
+export async function createNode(req: express.Request, res: express.Response) {
     const propertyNames = getNodeTypeSpecification(NodeType.Video)
         .properties
         .filter(prop => prop.scope !== 'system')
         .map(prop => prop.name)
-    const data = unmarshalInputData(req.body, propertyNames) as CreateVideoInput
+    const data = unmarshalInputData(req.body, propertyNames) as VideoInput
 
     if (!validateInputData(data, NodeType.Video)) {
         return sendResponse400(res)

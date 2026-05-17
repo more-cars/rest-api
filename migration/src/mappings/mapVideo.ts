@@ -1,7 +1,7 @@
 import {Node} from "neo4j-driver"
-import type {InputVideoCreate} from "../../../src/db/node-types/videos/types/InputVideoCreate"
+import type {DbInputData} from "../../../src/db/types/DbInputData"
 
-export function mapVideo(oldNode: Node): InputVideoCreate {
+export function mapVideo(oldNode: Node): DbInputData {
     return {
         video_provider: oldNode.properties.video_platform,
         external_id: oldNode.properties.video_id,

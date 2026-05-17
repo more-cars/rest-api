@@ -1,7 +1,7 @@
 import type {YouTubeVideoItem} from "./types/YouTubeVideoItem"
-import type {CreateYouTubeVideoInput} from "../../../models/node-types/videos/create/CreateYouTubeVideoInput"
+import type {VideoInputExternal} from "../../../models/node-types/videos/create/VideoInputExternal"
 
-export function convertYouTubeVideoItemToVideoInput(data: YouTubeVideoItem): CreateYouTubeVideoInput {
+export function convertYouTubeVideoItemToVideoInput(data: YouTubeVideoItem): VideoInputExternal {
     return {
         title: data.snippet.title,
         description: data.snippet.description,

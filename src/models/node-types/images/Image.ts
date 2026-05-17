@@ -65,7 +65,7 @@ export const Image = {
             return convertDbNodeToModelNode(result) as ImageNode
         } catch (e) {
             console.error(e)
-            throw new WikimediaImageNotFoundError(id as string)
+            throw new Error('Node could not be created')
         }
     },
 

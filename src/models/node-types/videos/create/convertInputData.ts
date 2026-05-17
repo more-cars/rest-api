@@ -1,8 +1,8 @@
-import type {CreateVideoInput} from "../types/CreateVideoInput"
-import type {CreateYouTubeVideoInput} from "./CreateYouTubeVideoInput"
-import type {InputVideoCreate} from "../../../../db/node-types/videos/types/InputVideoCreate"
+import type {VideoInput} from "../types/VideoInput"
+import type {VideoInputExternal} from "./VideoInputExternal"
+import type {DbInputData} from "../../../../db/types/DbInputData"
 
-export function convertInputData(data: CreateVideoInput & CreateYouTubeVideoInput): InputVideoCreate {
+export function convertInputData(data: VideoInput & VideoInputExternal): DbInputData {
     return {
         video_provider: data.video_provider,
         external_id: data.external_id,
@@ -17,5 +17,5 @@ export function convertInputData(data: CreateVideoInput & CreateYouTubeVideoInpu
         thumbnail_url_m: data.thumbnail_url_m,
         thumbnail_url_s: data.thumbnail_url_s,
         thumbnail_url_xs: data.thumbnail_url_xs,
-    } satisfies InputVideoCreate
+    }
 }

@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputVideoCreate} from "../../../../src/db/node-types/videos/types/InputVideoCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {VideoNode} from "../../../../src/models/node-types/videos/types/VideoNode"
 
@@ -19,14 +19,14 @@ export const FakeVideo = {
             thumbnail_url_m: faker.internet.url(),
             thumbnail_url_s: faker.internet.url(),
             thumbnail_url_xs: faker.internet.url(),
-        } as InputVideoCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
         return {
             video_provider: 'youtube',
             external_id: faker.string.uuid(),
-        } as InputVideoCreate
+        } as DbInputData
     },
 
     modelOutput: function () {

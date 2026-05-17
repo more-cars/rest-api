@@ -1,4 +1,4 @@
-import {CreateVideoInput} from "./types/CreateVideoInput"
+import {VideoInput} from "./types/VideoInput"
 import {YouTubeFacade} from "../../../db/external/YouTubeFacade"
 import {VideoNode} from "./types/VideoNode"
 import {convertInputData} from "./create/convertInputData"
@@ -25,22 +25,30 @@ import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollection
 import {createDbNode} from "../../../db/nodes/createDbNode"
 
 export const Video = {
-    async create(data: CreateVideoInput): Promise<VideoNode> {
+    async create(data: VideoInput): Promise<VideoNode> {
         const id = data.external_id
+        let externalVideoData
 
-        if (await videoAlreadyExists(id)) {
-            throw new YouTubeVideoAlreadyExistsError(id)
+        if (id) {
+            if (await videoAlreadyExists(id)) {
+                throw new YouTubeVideoAlreadyExistsError(id)
+            }
+
+            try {
+                externalVideoData = await YouTubeFacade.getVideoById(id)
+            } catch (error) {
+                throw new YouTubeVideoNotFoundError(id)
+            }
         }
 
         try {
-            const youTubeVideo = await YouTubeFacade.getVideoById(id)
-            const input = convertInputData(Object.assign({}, data, youTubeVideo))
+            const input = convertInputData(Object.assign({}, data, externalVideoData))
             const result = await createDbNode(DbNodeType.Video, input)
 
             return convertDbNodeToModelNode(result) as VideoNode
         } catch (e) {
             console.error(e)
-            throw new YouTubeVideoNotFoundError(id)
+            throw new Error('Node could not be created')
         }
     },
 

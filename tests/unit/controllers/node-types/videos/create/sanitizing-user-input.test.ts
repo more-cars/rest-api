@@ -1,10 +1,10 @@
 import {describe, expect, test} from 'vitest'
-import {CreateVideoInput} from "../../../../../../src/models/node-types/videos/types/CreateVideoInput"
+import {VideoInput} from "../../../../../../src/models/node-types/videos/types/VideoInput"
 import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
-        const data: CreateVideoInput = {
+        const data: VideoInput = {
             video_provider: "   youtube  ",
             external_id: "   NqsBncRslsg  ",
         }

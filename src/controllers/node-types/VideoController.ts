@@ -1,5 +1,5 @@
 import express from "express"
-import {create} from "./videos/create"
+import {createNode} from "./videos/createNode"
 import {getById} from "./videos/getById"
 import {getAll} from "./videos/getAll"
 import {deleteNode} from "./videos/deleteNode"
@@ -12,7 +12,7 @@ import {deleteIsMainVideoOfNodeRelation} from "./videos/deleteIsMainVideoOfNodeR
 
 export const VideoController = {
     async create(req: express.Request, res: express.Response) {
-        await create(req, res)
+        await createNode(req, res)
     },
 
     async getById(req: express.Request, res: express.Response) {
