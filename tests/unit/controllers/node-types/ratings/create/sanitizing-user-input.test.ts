@@ -1,10 +1,10 @@
 import {describe, expect, test} from 'vitest'
-import {CreateRatingInput} from "../../../../../../src/models/node-types/ratings/types/CreateRatingInput"
+import type {RatingInput} from "../../../../../../src/models/node-types/ratings/types/RatingInput"
 import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
-        const data: CreateRatingInput = {
+        const data: RatingInput = {
             rating_value: 93,
             scale_minimum: 0,
             scale_maximum: 100,

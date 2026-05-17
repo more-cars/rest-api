@@ -1,5 +1,5 @@
 import express from "express"
-import {create} from "./ratings/create"
+import {createNode} from "./ratings/createNode"
 import {getById} from "./ratings/getById"
 import {getAll} from "./ratings/getAll"
 import {updateNode} from "./ratings/updateNode"
@@ -19,7 +19,7 @@ import {deleteHasPrimeImageRelation} from "./ratings/deleteHasPrimeImageRelation
 
 export const RatingController = {
     async create(req: express.Request, res: express.Response) {
-        await create(req, res)
+        await createNode(req, res)
     },
 
     async getById(req: express.Request, res: express.Response) {

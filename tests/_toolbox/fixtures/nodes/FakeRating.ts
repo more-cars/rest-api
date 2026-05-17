@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputRatingCreate} from "../../../../src/db/node-types/ratings/types/InputRatingCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {RatingNode} from "../../../../src/models/node-types/ratings/types/RatingNode"
 
@@ -10,7 +10,7 @@ export const FakeRating = {
             scale_minimum: faker.number.int({min: 1000, max: 3000}),
             scale_maximum: faker.number.int({min: 1000, max: 3000}),
             scale_direction: faker.word.noun(),
-        } as InputRatingCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
@@ -19,7 +19,7 @@ export const FakeRating = {
             scale_minimum: faker.number.int({min: 1000, max: 3000}),
             scale_maximum: faker.number.int({min: 1000, max: 3000}),
             scale_direction: faker.word.noun(),
-        } as InputRatingCreate
+        } as DbInputData
     },
 
     modelOutput: function () {

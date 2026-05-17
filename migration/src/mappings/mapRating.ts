@@ -1,7 +1,7 @@
 import {Node} from "neo4j-driver"
-import type {InputRatingCreate} from "../../../src/db/node-types/ratings/types/InputRatingCreate"
+import type {DbInputData} from "../../../src/db/types/DbInputData"
 
-export function mapRating(oldNode: Node): InputRatingCreate {
+export function mapRating(oldNode: Node): DbInputData {
     return {
         rating_value: oldNode.properties.rating,
         scale_minimum: oldNode.properties.scale_min,

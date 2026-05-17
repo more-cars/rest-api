@@ -1,4 +1,3 @@
-import {CreateRatingInput} from "./types/CreateRatingInput"
 import {RatingNode} from "./types/RatingNode"
 import {convertInputData} from "./create/convertInputData"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
@@ -27,7 +26,7 @@ import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollection
 import {createDbNode} from "../../../db/nodes/createDbNode"
 
 export const Rating = {
-    async create(data: CreateRatingInput): Promise<RatingNode> {
+    async create(data: RatingInput): Promise<RatingNode> {
         const input = convertInputData(data)
         const result = await createDbNode(DbNodeType.Rating, input)
 
@@ -62,7 +61,7 @@ export const Rating = {
             throw new NodeNotFoundError(id)
         }
 
-        const input = convertInputData(data as CreateRatingInput)
+        const input = convertInputData(data)
         const result = await updateDbNode(DbNodeType.Rating, id, input)
 
         await Revision.create({
