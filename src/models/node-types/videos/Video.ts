@@ -36,20 +36,16 @@ export const Video = {
 
             try {
                 externalVideoData = await YouTubeFacade.getVideoById(id)
-            } catch (error) {
+            } catch (e) {
+                console.error(e)
                 throw new YouTubeVideoNotFoundError(id)
             }
         }
 
-        try {
-            const input = convertInputData(Object.assign({}, data, externalVideoData))
-            const result = await createDbNode(DbNodeType.Video, input)
+        const input = convertInputData(Object.assign({}, data, externalVideoData))
+        const result = await createDbNode(DbNodeType.Video, input)
 
-            return convertDbNodeToModelNode(result) as VideoNode
-        } catch (e) {
-            console.error(e)
-            throw new Error('Node could not be created')
-        }
+        return convertDbNodeToModelNode(result) as VideoNode
     },
 
     async findById(id: number): Promise<VideoNode> {

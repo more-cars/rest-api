@@ -46,27 +46,24 @@ export const Image = {
             if (data.image_provider === 'flickr') {
                 try {
                     externalImageData = await FlickrFacade.getImageById(id)
-                } catch (error) {
+                } catch (e) {
+                    console.error(e)
                     throw new FlickrImageNotFoundError(id)
                 }
             } else if (data.image_provider === 'wikimedia') {
                 try {
                     externalImageData = await WikimediaFacade.getImageById(id)
-                } catch (error) {
+                } catch (e) {
+                    console.error(e)
                     throw new WikimediaImageNotFoundError(id)
                 }
             }
         }
 
-        try {
-            const input = convertInputData(Object.assign({}, data, externalImageData))
-            const result = await createDbNode(DbNodeType.Image, input)
+        const input = convertInputData(Object.assign({}, data, externalImageData))
+        const result = await createDbNode(DbNodeType.Image, input)
 
-            return convertDbNodeToModelNode(result) as ImageNode
-        } catch (e) {
-            console.error(e)
-            throw new Error('Node could not be created')
-        }
+        return convertDbNodeToModelNode(result) as ImageNode
     },
 
     async findById(id: number): Promise<ImageNode> {
