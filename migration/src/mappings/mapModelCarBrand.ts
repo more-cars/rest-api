@@ -1,7 +1,7 @@
 import {Node} from "neo4j-driver"
-import type {InputModelCarBrandCreate} from "../../../src/db/node-types/model-car-brands/types/InputModelCarBrandCreate"
+import type {DbInputData} from "../../../src/db/types/DbInputData"
 
-export function mapModelCarBrand(oldNode: Node): InputModelCarBrandCreate {
+export function mapModelCarBrand(oldNode: Node): DbInputData {
     return {
         name: oldNode.properties.name,
         founded: oldNode.properties.founded,

@@ -1,6 +1,6 @@
 export type ModelCarBrandInput = {
-    name: string | undefined
-    founded: number | undefined
-    defunct: number | undefined
-    country_code: string | undefined
+    name: string | null | undefined
+    founded: number | null | undefined
+    defunct: number | null | undefined
+    country_code: string | null | undefined
 }
