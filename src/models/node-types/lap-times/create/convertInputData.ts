@@ -1,10 +1,10 @@
-import {CreateLapTimeInput} from "../types/CreateLapTimeInput"
-import {InputLapTimeCreate} from "../../../../db/node-types/lap-times/types/InputLapTimeCreate"
+import type {LapTimeInput} from "../types/LapTimeInput"
+import type {DbInputData} from "../../../../db/types/DbInputData"
 
-export function convertInputData(data: CreateLapTimeInput): InputLapTimeCreate {
+export function convertInputData(data: LapTimeInput): DbInputData {
     return {
         time: data.time,
         driver_name: data.driver_name,
         date: data.date,
-    } satisfies InputLapTimeCreate
+    }
 }

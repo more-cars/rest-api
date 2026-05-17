@@ -1,5 +1,5 @@
 export type LapTimeInput = {
-    time: string | undefined
-    driver_name: string | undefined
-    date: string | undefined
+    time: string | null | undefined
+    driver_name: string | null | undefined
+    date: string | null | undefined
 }

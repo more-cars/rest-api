@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputLapTimeCreate} from "../../../../src/db/node-types/lap-times/types/InputLapTimeCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {LapTimeNode} from "../../../../src/models/node-types/lap-times/types/LapTimeNode"
 
@@ -9,14 +9,14 @@ export const FakeLapTime = {
             time: faker.word.noun(),
             driver_name: faker.person.fullName(),
             date: faker.date.past().toISOString().substring(0, 10),
-        } as InputLapTimeCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
         return {
             time: faker.word.noun(),
             driver_name: faker.person.fullName(),
-        } as InputLapTimeCreate
+        } as DbInputData
     },
 
     modelOutput: function () {

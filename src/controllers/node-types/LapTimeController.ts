@@ -1,5 +1,5 @@
 import express from "express"
-import {create} from "./lap-times/create"
+import {createNode} from "./lap-times/createNode"
 import {getById} from "./lap-times/getById"
 import {getAll} from "./lap-times/getAll"
 import {updateNode} from "./lap-times/updateNode"
@@ -31,7 +31,7 @@ import {deleteHasMainVideoRelation} from "./lap-times/deleteHasMainVideoRelation
 
 export const LapTimeController = {
     async create(req: express.Request, res: express.Response) {
-        await create(req, res)
+        await createNode(req, res)
     },
 
     async getById(req: express.Request, res: express.Response) {

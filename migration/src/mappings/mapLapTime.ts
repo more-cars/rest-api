@@ -1,7 +1,7 @@
 import {Node} from "neo4j-driver"
-import type {InputLapTimeCreate} from "../../../src/db/node-types/lap-times/types/InputLapTimeCreate"
+import type {DbInputData} from "../../../src/db/types/DbInputData"
 
-export function mapLapTime(oldNode: Node): InputLapTimeCreate {
+export function mapLapTime(oldNode: Node): DbInputData {
     return {
         time: oldNode.properties.lap_time,
         driver_name: oldNode.properties.driver_name,
