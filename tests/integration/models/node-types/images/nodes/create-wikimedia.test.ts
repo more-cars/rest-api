@@ -1,15 +1,16 @@
 import {describe, expect, test} from 'vitest'
+import {mockWikimediaRequest} from "../../../../../_toolbox/mockWikimediaRequest"
 import {FakeImage} from "../../../../../_toolbox/fixtures/nodes/FakeImage"
 import {Image} from "../../../../../../src/models/node-types/images/Image"
+import type {ImageInput} from "../../../../../../src/models/node-types/images/types/ImageInput"
 import {WikimediaImageAlreadyExistsError} from "../../../../../../src/models/types/WikimediaImageAlreadyExistsError"
-import {mockWikimediaRequest} from "../../../../../_toolbox/mockWikimediaRequest"
 
 describe('Create Image - Wikimedia', () => {
     test('When providing valid data then the new node is created', async () => {
         mockWikimediaRequest()
 
         const inputData = FakeImage.dbInputMinimal()
-        const createdNode = await Image.create(inputData)
+        const createdNode = await Image.create(inputData as ImageInput)
 
         expect(createdNode.attributes.external_id)
             .toEqual(inputData.external_id)
@@ -37,7 +38,7 @@ describe('Create Image - Wikimedia', () => {
             image_url_s: "NOT_ALLOWED_TO_OVERWRITE",
             image_url_xs: "NOT_ALLOWED_TO_OVERWRITE",
         }
-        const data = Object.assign(validData, readOnlyData)
+        const data = Object.assign(validData, readOnlyData) as unknown as ImageInput
         const createdNode = await Image.create(data)
 
         expect(createdNode.attributes)
@@ -49,9 +50,9 @@ describe('Create Image - Wikimedia', () => {
 
         const inputData = FakeImage.dbInputMinimal()
 
-        await Image.create(inputData)
+        await Image.create(inputData as ImageInput)
 
-        await expect(Image.create(inputData))
+        await expect(Image.create(inputData as ImageInput))
             .rejects
             .toThrow(WikimediaImageAlreadyExistsError)
     })

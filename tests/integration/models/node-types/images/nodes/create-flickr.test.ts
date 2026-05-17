@@ -1,8 +1,9 @@
 import {describe, expect, test} from 'vitest'
+import {mockFlickrRequest} from "../../../../../_toolbox/mockFlickrRequest"
 import {FakeImage} from "../../../../../_toolbox/fixtures/nodes/FakeImage"
 import {Image} from "../../../../../../src/models/node-types/images/Image"
+import type {ImageInput} from "../../../../../../src/models/node-types/images/types/ImageInput"
 import {FlickrImageAlreadyExistsError} from "../../../../../../src/models/types/FlickrImageAlreadyExistsError"
-import {mockFlickrRequest} from "../../../../../_toolbox/mockFlickrRequest"
 
 describe('Create Image - Flickr', () => {
     test('When providing valid data then the new node is created', async () => {
@@ -11,7 +12,7 @@ describe('Create Image - Flickr', () => {
         const inputData = FakeImage.dbInputMinimal()
         inputData.image_provider = 'flickr'
 
-        const createdNode = await Image.create(inputData)
+        const createdNode = await Image.create(inputData as ImageInput)
 
         expect(createdNode.attributes.external_id)
             .toEqual(inputData.external_id)
@@ -23,9 +24,9 @@ describe('Create Image - Flickr', () => {
         const inputData = FakeImage.dbInputMinimal()
         inputData.image_provider = 'flickr'
 
-        await Image.create(inputData)
+        await Image.create(inputData as ImageInput)
 
-        await expect(Image.create(inputData))
+        await expect(Image.create(inputData as ImageInput))
             .rejects
             .toThrow(FlickrImageAlreadyExistsError)
     })

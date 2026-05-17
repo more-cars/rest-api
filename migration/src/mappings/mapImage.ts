@@ -1,7 +1,7 @@
 import {Node} from "neo4j-driver"
-import {InputImageCreate} from "../../../src/db/node-types/images/types/InputImageCreate"
+import type {DbInputData} from "../../../src/db/types/DbInputData"
 
-export function mapImage(oldNode: Node): InputImageCreate {
+export function mapImage(oldNode: Node): DbInputData {
     return {
         image_provider: oldNode.properties.image_platform ? oldNode.properties.image_platform : 'MISSING',
         external_id: oldNode.properties.image_id ? oldNode.properties.image_id : 'MISSING',

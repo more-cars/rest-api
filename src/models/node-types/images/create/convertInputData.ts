@@ -1,8 +1,8 @@
-import {CreateImageInput} from "../types/CreateImageInput"
-import {InputImageCreate} from "../../../../db/node-types/images/types/InputImageCreate"
-import type {CreateExternalImageInput} from "./CreateExternalImageInput"
+import {ImageInput} from "../types/ImageInput"
+import type {ImageInputExternal} from "./ImageInputExternal"
+import type {DbInputData} from "../../../../db/types/DbInputData"
 
-export function convertInputData(data: CreateImageInput & CreateExternalImageInput): InputImageCreate {
+export function convertInputData(data: ImageInput & ImageInputExternal): DbInputData {
     return {
         image_provider: data.image_provider,
         external_id: data.external_id,
@@ -19,5 +19,5 @@ export function convertInputData(data: CreateImageInput & CreateExternalImageInp
         image_url_m: data.image_url_m,
         image_url_s: data.image_url_s,
         image_url_xs: data.image_url_xs,
-    } satisfies InputImageCreate
+    }
 }

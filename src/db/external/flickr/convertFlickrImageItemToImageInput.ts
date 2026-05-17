@@ -1,8 +1,8 @@
 import type {FlickrImageItem} from "./types/FlickrImageItem"
 import type {FlickrThumbnailItem} from "./types/FlickrThumbnailItem"
-import type {CreateExternalImageInput} from "../../../models/node-types/images/create/CreateExternalImageInput"
+import type {ImageInputExternal} from "../../../models/node-types/images/create/ImageInputExternal"
 
-export function convertFlickrImageItemToImageInput(data: FlickrImageItem, thumbnails: FlickrThumbnailItem[]): CreateExternalImageInput {
+export function convertFlickrImageItemToImageInput(data: FlickrImageItem, thumbnails: FlickrThumbnailItem[]): ImageInputExternal {
     return {
         name: data.title._content,
         description: data.description._content,

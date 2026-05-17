@@ -1,5 +1,5 @@
 import {ImageNode} from "./types/ImageNode"
-import {CreateImageInput} from "./types/CreateImageInput"
+import {ImageInput} from "./types/ImageInput"
 import {convertInputData} from "./create/convertInputData"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 import {getNodeById} from "../../../db/node-types/images/getNodeById"
@@ -27,34 +27,45 @@ import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
 import {createDbNode} from "../../../db/nodes/createDbNode"
+import {FlickrImageNotFoundError} from "../../types/FlickrImageNotFoundError"
 
 export const Image = {
-    async create(data: CreateImageInput): Promise<ImageNode> {
+    async create(data: ImageInput): Promise<ImageNode> {
         const id = data.external_id
+        let externalImageData
 
-        if (await imageAlreadyExists(id)) {
+        if (id) {
+            if (await imageAlreadyExists(id)) {
+                if (data.image_provider === 'flickr') {
+                    throw new FlickrImageAlreadyExistsError(id)
+                } else if (data.image_provider === 'wikimedia') {
+                    throw new WikimediaImageAlreadyExistsError(id)
+                }
+            }
+
             if (data.image_provider === 'flickr') {
-                throw new FlickrImageAlreadyExistsError(id)
+                try {
+                    externalImageData = await FlickrFacade.getImageById(id)
+                } catch (error) {
+                    throw new FlickrImageNotFoundError(id)
+                }
             } else if (data.image_provider === 'wikimedia') {
-                throw new WikimediaImageAlreadyExistsError(id)
+                try {
+                    externalImageData = await WikimediaFacade.getImageById(id)
+                } catch (error) {
+                    throw new WikimediaImageNotFoundError(id)
+                }
             }
         }
 
         try {
-            let image
-            if (data.image_provider === 'flickr') {
-                image = await FlickrFacade.getImageById(id)
-            } else if (data.image_provider === 'wikimedia') {
-                image = await WikimediaFacade.getImageById(id)
-            }
-
-            const input = convertInputData(Object.assign({}, data, image))
+            const input = convertInputData(Object.assign({}, data, externalImageData))
             const result = await createDbNode(DbNodeType.Image, input)
 
             return convertDbNodeToModelNode(result) as ImageNode
         } catch (e) {
             console.error(e)
-            throw new WikimediaImageNotFoundError(id)
+            throw new WikimediaImageNotFoundError(id as string)
         }
     },
 

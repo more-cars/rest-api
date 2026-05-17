@@ -1,5 +1,5 @@
 import express from "express"
-import {create} from "./images/create"
+import {createNode} from "./images/createNode"
 import {getById} from "./images/getById"
 import {getAll} from "./images/getAll"
 import {deleteNode} from "./images/deleteNode"
@@ -12,7 +12,7 @@ import {deleteIsPrimeImageOfNodeRelation} from "./images/deleteIsPrimeImageOfNod
 
 export const ImageController = {
     async create(req: express.Request, res: express.Response) {
-        await create(req, res)
+        await createNode(req, res)
     },
 
     async getById(req: express.Request, res: express.Response) {

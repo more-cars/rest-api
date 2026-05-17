@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputImageCreate} from "../../../../src/db/node-types/images/types/InputImageCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {ImageNode} from "../../../../src/models/node-types/images/types/ImageNode"
 
@@ -21,7 +21,7 @@ export const FakeImage = {
             image_url_m: faker.image.url(),
             image_url_s: faker.image.url(),
             image_url_xs: faker.image.url(),
-        } as InputImageCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
@@ -33,7 +33,7 @@ export const FakeImage = {
             license: "CC BY",
             source: faker.internet.url(),
             image_url_original: faker.image.url(),
-        } as InputImageCreate
+        } as DbInputData
     },
 
     modelOutput: function () {

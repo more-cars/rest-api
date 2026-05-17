@@ -1,7 +1,7 @@
 import type {WikimediaImageItem} from "./types/WikimediaImageItem"
-import type {CreateExternalImageInput} from "../../../models/node-types/images/create/CreateExternalImageInput"
+import type {ImageInputExternal} from "../../../models/node-types/images/create/ImageInputExternal"
 
-export function convertWikimediaImageItemToImageInput(data: WikimediaImageItem, thumbnailSize: number): CreateExternalImageInput {
+export function convertWikimediaImageItemToImageInput(data: WikimediaImageItem, thumbnailSize: number): ImageInputExternal {
     const originalWidth = data.width
 
     return {
