@@ -1,10 +1,10 @@
-import {CreateGamingPlatformInput} from "../types/CreateGamingPlatformInput"
-import {InputGamingPlatformCreate} from "../../../../db/node-types/gaming-platforms/types/InputGamingPlatformCreate"
+import type {GamingPlatformInput} from "../types/GamingPlatformInput"
+import type {DbInputData} from "../../../../db/types/DbInputData"
 
-export function convertInputData(data: CreateGamingPlatformInput): InputGamingPlatformCreate {
+export function convertInputData(data: GamingPlatformInput): DbInputData {
     return {
         name: data.name,
         release_year: data.release_year,
         manufacturer: data.manufacturer,
-    } satisfies InputGamingPlatformCreate
+    }
 }

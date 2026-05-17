@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputGamingPlatformCreate} from "../../../../src/db/node-types/gaming-platforms/types/InputGamingPlatformCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {GamingPlatformNode} from "../../../../src/models/node-types/gaming-platforms/types/GamingPlatformNode"
 
@@ -9,13 +9,13 @@ export const FakeGamingPlatform = {
             name: faker.commerce.product(),
             release_year: faker.number.int({min: 1000, max: 3000}),
             manufacturer: faker.company.name(),
-        } as InputGamingPlatformCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
         return {
             name: faker.commerce.product(),
-        } as InputGamingPlatformCreate
+        } as DbInputData
     },
 
     modelOutput: function () {

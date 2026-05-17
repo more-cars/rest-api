@@ -1,7 +1,7 @@
 import {Node} from "neo4j-driver"
-import {InputGamingPlatformCreate} from "../../../src/db/node-types/gaming-platforms/types/InputGamingPlatformCreate"
+import type {DbInputData} from "../../../src/db/types/DbInputData"
 
-export function mapGamingPlatform(oldNode: Node): InputGamingPlatformCreate {
+export function mapGamingPlatform(oldNode: Node): DbInputData {
     return {
         name: oldNode.properties.name,
         release_year: oldNode.properties.release_year,

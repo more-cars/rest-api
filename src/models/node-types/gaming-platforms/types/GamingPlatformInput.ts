@@ -1,5 +1,5 @@
 export type GamingPlatformInput = {
-    name: string | undefined
-    release_year: number | undefined
-    manufacturer: string | undefined
+    name: string | null | undefined
+    release_year: number | null | undefined
+    manufacturer: string | null | undefined
 }

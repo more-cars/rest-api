@@ -1,4 +1,3 @@
-import {CreateGamingPlatformInput} from "./types/CreateGamingPlatformInput"
 import {GamingPlatformNode} from "./types/GamingPlatformNode"
 import {convertInputData} from "./create/convertInputData"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
@@ -27,7 +26,7 @@ import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollection
 import {createDbNode} from "../../../db/nodes/createDbNode"
 
 export const GamingPlatform = {
-    async create(data: CreateGamingPlatformInput): Promise<GamingPlatformNode> {
+    async create(data: GamingPlatformInput): Promise<GamingPlatformNode> {
         const input = convertInputData(data)
         const result = await createDbNode(DbNodeType.GamingPlatform, input)
 
@@ -62,7 +61,7 @@ export const GamingPlatform = {
             throw new NodeNotFoundError(id)
         }
 
-        const input = convertInputData(data as CreateGamingPlatformInput)
+        const input = convertInputData(data)
         const result = await updateDbNode(DbNodeType.GamingPlatform, id, input)
 
         await Revision.create({
