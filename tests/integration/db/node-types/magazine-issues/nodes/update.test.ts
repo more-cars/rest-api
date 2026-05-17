@@ -3,8 +3,8 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 import {FakeMagazineIssue} from "../../../../../_toolbox/fixtures/nodes/FakeMagazineIssue"
 import {updateDbNode} from "../../../../../../src/db/nodes/updateDbNode"
-import type {InputMagazineIssueCreate} from "../../../../../../src/db/node-types/magazine-issues/types/InputMagazineIssueCreate"
 import type {MagazineIssueNode} from "../../../../../../src/db/node-types/magazine-issues/types/MagazineIssueNode"
+import type {DbInputData} from "../../../../../../src/db/types/DbInputData"
 
 describe('Updating MAGAZINE ISSUE', () => {
     test('with valid data', async () => {
@@ -21,7 +21,7 @@ describe('Updating MAGAZINE ISSUE', () => {
 
     test('with the same data', async () => {
         const createdNode = await seedNode(DbNodeType.MagazineIssue)
-        const inputData = createdNode.properties as unknown as InputMagazineIssueCreate
+        const inputData = createdNode.properties as DbInputData
         const updatedNode = await updateDbNode(DbNodeType.MagazineIssue, createdNode.properties.id, inputData)
 
         expect(updatedNode.properties)
@@ -39,9 +39,9 @@ describe('Updating MAGAZINE ISSUE', () => {
 
     test('removing a field', async () => {
         const createdNode = await seedNode(DbNodeType.MagazineIssue)
-        const inputData = createdNode.properties as unknown as InputMagazineIssueCreate
-        // @ts-expect-error TS2339 TS2339 TS2339
+        const inputData = createdNode.properties as DbInputData
         inputData.title = null
+
         const updatedNode = await updateDbNode(DbNodeType.MagazineIssue, createdNode.properties.id, inputData) as MagazineIssueNode
 
         expect(updatedNode.properties.title)

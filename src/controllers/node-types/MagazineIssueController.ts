@@ -1,5 +1,5 @@
 import express from "express"
-import {create} from "./magazine-issues/create"
+import {createNode} from "./magazine-issues/createNode"
 import {getById} from "./magazine-issues/getById"
 import {getAll} from "./magazine-issues/getAll"
 import {updateNode} from "./magazine-issues/updateNode"
@@ -43,7 +43,7 @@ import {deleteHasMainVideoRelation} from "./magazine-issues/deleteHasMainVideoRe
 
 export const MagazineIssueController = {
     async create(req: express.Request, res: express.Response) {
-        await create(req, res)
+        await createNode(req, res)
     },
 
     async getById(req: express.Request, res: express.Response) {

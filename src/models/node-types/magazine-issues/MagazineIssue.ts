@@ -1,4 +1,3 @@
-import {CreateMagazineIssueInput} from "./types/CreateMagazineIssueInput"
 import {MagazineIssueNode} from "./types/MagazineIssueNode"
 import {convertInputData} from "./create/convertInputData"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
@@ -34,7 +33,7 @@ import {createDbNode} from "../../../db/nodes/createDbNode"
 import {LapTime} from "../lap-times/LapTime"
 
 export const MagazineIssue = {
-    async create(data: CreateMagazineIssueInput): Promise<MagazineIssueNode> {
+    async create(data: MagazineIssueInput): Promise<MagazineIssueNode> {
         const input = convertInputData(data)
         const result = await createDbNode(DbNodeType.MagazineIssue, input)
 
@@ -69,7 +68,7 @@ export const MagazineIssue = {
             throw new NodeNotFoundError(id)
         }
 
-        const input = convertInputData(data as CreateMagazineIssueInput)
+        const input = convertInputData(data)
         const result = await updateDbNode(DbNodeType.MagazineIssue, id, input)
 
         await Revision.create({

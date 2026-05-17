@@ -1,7 +1,7 @@
-import {CreateMagazineIssueInput} from "../types/CreateMagazineIssueInput"
-import {InputMagazineIssueCreate} from "../../../../db/node-types/magazine-issues/types/InputMagazineIssueCreate"
+import type {MagazineIssueInput} from "../types/MagazineIssueInput"
+import type {DbInputData} from "../../../../db/types/DbInputData"
 
-export function convertInputData(data: CreateMagazineIssueInput): InputMagazineIssueCreate {
+export function convertInputData(data: MagazineIssueInput): DbInputData {
     return {
         title: data.title,
         consecutive_number: data.consecutive_number,
@@ -11,5 +11,5 @@ export function convertInputData(data: CreateMagazineIssueInput): InputMagazineI
         single_copy_price: data.single_copy_price,
         single_copy_price_unit: data.single_copy_price_unit,
         pages: data.pages,
-    } satisfies InputMagazineIssueCreate
+    }
 }

@@ -1,7 +1,7 @@
 import {Node} from "neo4j-driver"
-import type {InputMagazineIssueCreate} from "../../../src/db/node-types/magazine-issues/types/InputMagazineIssueCreate"
+import type {DbInputData} from "../../../src/db/types/DbInputData"
 
-export function mapMagazineIssue(oldNode: Node): InputMagazineIssueCreate {
+export function mapMagazineIssue(oldNode: Node): DbInputData {
     return {
         title: oldNode.properties.name,
         consecutive_number: oldNode.properties.consecutive_number,

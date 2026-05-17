@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputMagazineIssueCreate} from "../../../../src/db/node-types/magazine-issues/types/InputMagazineIssueCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {MagazineIssueNode} from "../../../../src/models/node-types/magazine-issues/types/MagazineIssueNode"
 
@@ -14,13 +14,13 @@ export const FakeMagazineIssue = {
             single_copy_price: faker.number.float({min: 1, max: 50, fractionDigits: 2}),
             single_copy_price_unit: faker.finance.currency().code,
             pages: faker.number.int({min: 50, max: 250}),
-        } as InputMagazineIssueCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
         return {
             title: faker.commerce.productName(),
-        } as InputMagazineIssueCreate
+        } as DbInputData
     },
 
     modelOutput: function () {
