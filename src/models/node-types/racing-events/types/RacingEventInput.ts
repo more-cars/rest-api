@@ -1,6 +1,6 @@
 export type RacingEventInput = {
-    name: string | undefined
-    round: number | undefined
-    date_from: string | undefined
-    date_to: string | undefined
+    name: string | null | undefined
+    round: number | null | undefined
+    date_from: string | null | undefined
+    date_to: string | null | undefined
 }

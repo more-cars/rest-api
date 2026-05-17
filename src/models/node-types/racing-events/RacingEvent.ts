@@ -1,4 +1,3 @@
-import {CreateRacingEventInput} from "./types/CreateRacingEventInput"
 import {RacingEventNode} from "./types/RacingEventNode"
 import {convertInputData} from "./create/convertInputData"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
@@ -33,7 +32,7 @@ import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollection
 import {createDbNode} from "../../../db/nodes/createDbNode"
 
 export const RacingEvent = {
-    async create(data: CreateRacingEventInput): Promise<RacingEventNode> {
+    async create(data: RacingEventInput): Promise<RacingEventNode> {
         const input = convertInputData(data)
         const result = await createDbNode(DbNodeType.RacingEvent, input)
 
@@ -68,7 +67,7 @@ export const RacingEvent = {
             throw new NodeNotFoundError(id)
         }
 
-        const input = convertInputData(data as CreateRacingEventInput)
+        const input = convertInputData(data)
         const result = await updateDbNode(DbNodeType.RacingEvent, id, input)
 
         await Revision.create({

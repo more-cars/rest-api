@@ -1,10 +1,10 @@
 import {describe, expect, test} from 'vitest'
-import {CreateRacingEventInput} from "../../../../../../src/models/node-types/racing-events/types/CreateRacingEventInput"
+import type {RacingEventInput} from "../../../../../../src/models/node-types/racing-events/types/RacingEventInput"
 import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
-        const data: CreateRacingEventInput = {
+        const data: RacingEventInput = {
             name: "   GP Monaco 2025  ",
             round: 8,
             date_from: "   2025-05-25  ",

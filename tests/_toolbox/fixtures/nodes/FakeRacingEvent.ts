@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputRacingEventCreate} from "../../../../src/db/node-types/racing-events/types/InputRacingEventCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {RacingEventNode} from "../../../../src/models/node-types/racing-events/types/RacingEventNode"
 
@@ -10,13 +10,13 @@ export const FakeRacingEvent = {
             round: faker.number.int({min: 1000, max: 3000}),
             date_from: faker.date.past().toLocaleString(),
             date_to: faker.date.past().toLocaleString(),
-        } as InputRacingEventCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
         return {
             name: 'F1 GP ' + faker.location.country(),
-        } as InputRacingEventCreate
+        } as DbInputData
     },
 
     modelOutput: function () {

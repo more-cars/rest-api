@@ -1,7 +1,7 @@
 import {Node} from "neo4j-driver"
-import type {InputRacingEventCreate} from "../../../src/db/node-types/racing-events/types/InputRacingEventCreate"
+import type {DbInputData} from "../../../src/db/types/DbInputData"
 
-export function mapRacingEvent(oldNode: Node): InputRacingEventCreate {
+export function mapRacingEvent(oldNode: Node): DbInputData {
     return {
         name: oldNode.properties.name,
         round: oldNode.properties.round,
