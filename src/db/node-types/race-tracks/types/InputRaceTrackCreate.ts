@@ -1,9 +1,0 @@
-export type InputRaceTrackCreate = {
-    name: string
-    opened: number | null
-    closed: number | null
-    type: string | null
-    location: string | null
-    geo_position: string | null
-    country_code: string | null
-}

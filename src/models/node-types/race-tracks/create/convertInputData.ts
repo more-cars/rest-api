@@ -1,7 +1,7 @@
-import {CreateRaceTrackInput} from "../types/CreateRaceTrackInput"
-import {InputRaceTrackCreate} from "../../../../db/node-types/race-tracks/types/InputRaceTrackCreate"
+import type {RaceTrackInput} from "../types/RaceTrackInput"
+import type {DbInputData} from "../../../../db/types/DbInputData"
 
-export function convertInputData(data: CreateRaceTrackInput): InputRaceTrackCreate {
+export function convertInputData(data: RaceTrackInput): DbInputData {
     return {
         name: data.name,
         opened: data.opened,
@@ -10,5 +10,5 @@ export function convertInputData(data: CreateRaceTrackInput): InputRaceTrackCrea
         location: data.location,
         geo_position: data.geo_position,
         country_code: data.country_code,
-    } satisfies InputRaceTrackCreate
+    }
 }

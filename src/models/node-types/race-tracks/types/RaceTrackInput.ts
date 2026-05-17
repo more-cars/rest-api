@@ -1,9 +1,9 @@
 export type RaceTrackInput = {
-    name: string | undefined
-    opened: number | undefined
-    closed: number | undefined
-    type: string | undefined
-    location: string | undefined
-    geo_position: string | undefined
-    country_code: string | undefined
+    name: string | null | undefined
+    opened: number | null | undefined
+    closed: number | null | undefined
+    type: string | null | undefined
+    location: string | null | undefined
+    geo_position: string | null | undefined
+    country_code: string | null | undefined
 }

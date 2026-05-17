@@ -1,10 +1,10 @@
 import {describe, expect, test} from 'vitest'
-import {CreateRaceTrackInput} from "../../../../../../src/models/node-types/race-tracks/types/CreateRaceTrackInput"
+import type {RaceTrackInput} from "../../../../../../src/models/node-types/race-tracks/types/RaceTrackInput"
 import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
-        const data: CreateRaceTrackInput = {
+        const data: RaceTrackInput = {
             name: "   Lausitzring  ",
             opened: 2000,
             closed: null,

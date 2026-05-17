@@ -1,7 +1,7 @@
 import {faker} from "@faker-js/faker"
 import type {RaceTrackNode} from "../../../../src/models/node-types/race-tracks/types/RaceTrackNode"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
-import type {InputRaceTrackCreate} from "../../../../src/db/node-types/race-tracks/types/InputRaceTrackCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 
 export const FakeRaceTrack = {
     dbInput: function () {
@@ -13,13 +13,13 @@ export const FakeRaceTrack = {
             location: faker.location.city(),
             geo_position: faker.location.latitude() + ' ' + faker.location.longitude,
             country_code: faker.location.countryCode(),
-        } as InputRaceTrackCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
         return {
             name: faker.location.city() + ' Racetrack',
-        } as InputRaceTrackCreate
+        } as DbInputData
     },
 
     modelOutput: function () {

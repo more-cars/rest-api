@@ -1,5 +1,5 @@
 import express from "express"
-import {create} from "./race-tracks/create"
+import {createNode} from "./race-tracks/createNode"
 import {getById} from "./race-tracks/getById"
 import {getAll} from "./race-tracks/getAll"
 import {updateNode} from "./race-tracks/updateNode"
@@ -25,7 +25,7 @@ import {deleteHasMainVideoRelation} from "./race-tracks/deleteHasMainVideoRelati
 
 export const RaceTrackController = {
     async create(req: express.Request, res: express.Response) {
-        await create(req, res)
+        await createNode(req, res)
     },
 
     async getById(req: express.Request, res: express.Response) {
