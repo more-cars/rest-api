@@ -3,7 +3,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 import {FakeRacingGame} from "../../../../../_toolbox/fixtures/nodes/FakeRacingGame"
 import {updateDbNode} from "../../../../../../src/db/nodes/updateDbNode"
-import type {InputRacingGameCreate} from "../../../../../../src/db/node-types/racing-games/types/InputRacingGameCreate"
+import type {DbInputData} from "../../../../../../src/db/types/DbInputData"
 import type {RacingGameNode} from "../../../../../../src/db/node-types/racing-games/types/RacingGameNode"
 
 describe('Updating RACING GAME', () => {
@@ -21,7 +21,7 @@ describe('Updating RACING GAME', () => {
 
     test('with the same data', async () => {
         const createdNode = await seedNode(DbNodeType.RacingGame)
-        const inputData = createdNode.properties as unknown as InputRacingGameCreate
+        const inputData = createdNode.properties as DbInputData
         const updatedNode = await updateDbNode(DbNodeType.RacingGame, createdNode.properties.id, inputData)
 
         expect(updatedNode.properties)
@@ -39,9 +39,9 @@ describe('Updating RACING GAME', () => {
 
     test('removing a field', async () => {
         const createdNode = await seedNode(DbNodeType.RacingGame)
-        const inputData = createdNode.properties as unknown as InputRacingGameCreate
-        // @ts-expect-error TS2339 TS2339 TS2339
+        const inputData = createdNode.properties as DbInputData
         inputData.name = null
+
         const updatedNode = await updateDbNode(DbNodeType.RacingGame, createdNode.properties.id, inputData) as RacingGameNode
 
         expect(updatedNode.properties.name)

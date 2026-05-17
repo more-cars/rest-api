@@ -1,5 +1,5 @@
 import express from "express"
-import {create} from "./racing-games/create"
+import {createNode} from "./racing-games/createNode"
 import {getById} from "./racing-games/getById"
 import {getAll} from "./racing-games/getAll"
 import {updateNode} from "./racing-games/updateNode"
@@ -28,7 +28,7 @@ import {deleteHasMainVideoRelation} from "./racing-games/deleteHasMainVideoRelat
 
 export const RacingGameController = {
     async create(req: express.Request, res: express.Response) {
-        await create(req, res)
+        await createNode(req, res)
     },
 
     async getById(req: express.Request, res: express.Response) {

@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputRacingGameCreate} from "../../../../src/db/node-types/racing-games/types/InputRacingGameCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {RacingGameNode} from "../../../../src/models/node-types/racing-games/types/RacingGameNode"
 
@@ -10,13 +10,13 @@ export const FakeRacingGame = {
             release_year: faker.number.int({min: 1000, max: 3000}),
             developer: faker.company.name(),
             publisher: faker.company.name(),
-        } as InputRacingGameCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
         return {
             name: faker.commerce.productName(),
-        } as InputRacingGameCreate
+        } as DbInputData
     },
 
     modelOutput: function () {

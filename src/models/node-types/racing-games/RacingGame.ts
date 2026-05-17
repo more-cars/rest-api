@@ -1,4 +1,3 @@
-import {CreateRacingGameInput} from "./types/CreateRacingGameInput"
 import {RacingGameNode} from "./types/RacingGameNode"
 import {convertInputData} from "./create/convertInputData"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
@@ -29,7 +28,7 @@ import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollection
 import {createDbNode} from "../../../db/nodes/createDbNode"
 
 export const RacingGame = {
-    async create(data: CreateRacingGameInput): Promise<RacingGameNode> {
+    async create(data: RacingGameInput): Promise<RacingGameNode> {
         const input = convertInputData(data)
         const result = await createDbNode(DbNodeType.RacingGame, input)
 
@@ -64,7 +63,7 @@ export const RacingGame = {
             throw new NodeNotFoundError(id)
         }
 
-        const input = convertInputData(data as CreateRacingGameInput)
+        const input = convertInputData(data)
         const result = await updateDbNode(DbNodeType.RacingGame, id, input)
 
         await Revision.create({
