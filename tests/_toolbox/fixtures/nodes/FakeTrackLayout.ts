@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputTrackLayoutCreate} from "../../../../src/db/node-types/track-layouts/types/InputTrackLayoutCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {TrackLayoutNode} from "../../../../src/models/node-types/track-layouts/types/TrackLayoutNode"
 
@@ -15,13 +15,13 @@ export const FakeTrackLayout = {
             elevation_change: faker.number.int({min: 1000, max: 3000}),
             elevation_change_unit: faker.science.unit().name,
             surface: faker.word.noun(),
-        } as InputTrackLayoutCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
         return {
             name: faker.word.words(3),
-        } as InputTrackLayoutCreate
+        } as DbInputData
     },
 
     modelOutput: function () {

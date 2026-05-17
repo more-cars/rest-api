@@ -1,7 +1,7 @@
 import {Node} from "neo4j-driver"
-import type {InputTrackLayoutCreate} from "../../../src/db/node-types/track-layouts/types/InputTrackLayoutCreate"
+import type {DbInputData} from "../../../src/db/types/DbInputData"
 
-export function mapTrackLayout(oldNode: Node): InputTrackLayoutCreate {
+export function mapTrackLayout(oldNode: Node): DbInputData {
     return {
         name: oldNode.properties.name,
         year_from: oldNode.properties.year_from,

@@ -1,7 +1,7 @@
-import {CreateTrackLayoutInput} from "../types/CreateTrackLayoutInput"
-import {InputTrackLayoutCreate} from "../../../../db/node-types/track-layouts/types/InputTrackLayoutCreate"
+import type {TrackLayoutInput} from "../types/TrackLayoutInput"
+import type {DbInputData} from "../../../../db/types/DbInputData"
 
-export function convertInputData(data: CreateTrackLayoutInput): InputTrackLayoutCreate {
+export function convertInputData(data: TrackLayoutInput): DbInputData {
     return {
         name: data.name,
         year_from: data.year_from,
@@ -12,5 +12,5 @@ export function convertInputData(data: CreateTrackLayoutInput): InputTrackLayout
         elevation_change: data.elevation_change,
         elevation_change_unit: data.elevation_change_unit,
         surface: data.surface,
-    } satisfies InputTrackLayoutCreate
+    }
 }

@@ -1,11 +1,11 @@
 export type TrackLayoutInput = {
-    name: string | undefined
-    year_from: number | undefined
-    year_to: number | undefined
-    length: number | undefined
-    length_unit: string | undefined
-    direction: string | undefined
-    elevation_change: number | undefined
-    elevation_change_unit: string | undefined
-    surface: string | undefined
+    name: string | null | undefined
+    year_from: number | null | undefined
+    year_to: number | null | undefined
+    length: number | null | undefined
+    length_unit: string | null | undefined
+    direction: string | null | undefined
+    elevation_change: number | null | undefined
+    elevation_change_unit: string | null | undefined
+    surface: string | null | undefined
 }

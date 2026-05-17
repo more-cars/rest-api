@@ -1,10 +1,10 @@
 import {describe, expect, test} from 'vitest'
-import {CreateTrackLayoutInput} from "../../../../../../src/models/node-types/track-layouts/types/CreateTrackLayoutInput"
+import type {TrackLayoutInput} from "../../../../../../src/models/node-types/track-layouts/types/TrackLayoutInput"
 import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
-        const data: CreateTrackLayoutInput = {
+        const data: TrackLayoutInput = {
             name: "   GP Circuit  ",
             year_from: 1967,
             year_to: 1999,

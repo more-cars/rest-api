@@ -1,5 +1,5 @@
 import express from "express"
-import {create} from "./track-layouts/create"
+import {createNode} from "./track-layouts/createNode"
 import {getById} from "./track-layouts/getById"
 import {getAll} from "./track-layouts/getAll"
 import {updateNode} from "./track-layouts/updateNode"
@@ -31,7 +31,7 @@ import {deleteHasMainVideoRelation} from "./track-layouts/deleteHasMainVideoRela
 
 export const TrackLayoutController = {
     async create(req: express.Request, res: express.Response) {
-        await create(req, res)
+        await createNode(req, res)
     },
 
     async getById(req: express.Request, res: express.Response) {

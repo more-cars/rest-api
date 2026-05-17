@@ -3,8 +3,8 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 import {FakeTrackLayout} from "../../../../../_toolbox/fixtures/nodes/FakeTrackLayout"
 import {updateDbNode} from "../../../../../../src/db/nodes/updateDbNode"
-import type {InputTrackLayoutCreate} from "../../../../../../src/db/node-types/track-layouts/types/InputTrackLayoutCreate"
 import type {TrackLayoutNode} from "../../../../../../src/db/node-types/track-layouts/types/TrackLayoutNode"
+import type {DbInputData} from "../../../../../../src/db/types/DbInputData"
 
 describe('Updating TRACK LAYOUT', () => {
     test('with valid data', async () => {
@@ -21,7 +21,7 @@ describe('Updating TRACK LAYOUT', () => {
 
     test('with the same data', async () => {
         const createdNode = await seedNode(DbNodeType.TrackLayout)
-        const inputData = createdNode.properties as unknown as InputTrackLayoutCreate
+        const inputData = createdNode.properties as DbInputData
         const updatedNode = await updateDbNode(DbNodeType.TrackLayout, createdNode.properties.id, inputData)
 
         expect(updatedNode.properties)
@@ -39,9 +39,9 @@ describe('Updating TRACK LAYOUT', () => {
 
     test('removing a field', async () => {
         const createdNode = await seedNode(DbNodeType.TrackLayout)
-        const inputData = createdNode.properties as unknown as InputTrackLayoutCreate
-        // @ts-expect-error TS2339 TS2339 TS2339
+        const inputData = createdNode.properties as DbInputData
         inputData.name = null
+
         const updatedNode = await updateDbNode(DbNodeType.TrackLayout, createdNode.properties.id, inputData) as TrackLayoutNode
 
         expect(updatedNode.properties.name)

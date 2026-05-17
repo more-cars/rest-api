@@ -1,4 +1,3 @@
-import {CreateTrackLayoutInput} from "./types/CreateTrackLayoutInput"
 import {TrackLayoutNode} from "./types/TrackLayoutNode"
 import {convertInputData} from "./create/convertInputData"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
@@ -31,7 +30,7 @@ import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollection
 import {createDbNode} from "../../../db/nodes/createDbNode"
 
 export const TrackLayout = {
-    async create(data: CreateTrackLayoutInput): Promise<TrackLayoutNode> {
+    async create(data: TrackLayoutInput): Promise<TrackLayoutNode> {
         const input = convertInputData(data)
         const result = await createDbNode(DbNodeType.TrackLayout, input)
 
@@ -66,7 +65,7 @@ export const TrackLayout = {
             throw new NodeNotFoundError(id)
         }
 
-        const input = convertInputData(data as CreateTrackLayoutInput)
+        const input = convertInputData(data)
         const result = await updateDbNode(DbNodeType.TrackLayout, id, input)
 
         await Revision.create({

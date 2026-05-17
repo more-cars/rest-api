@@ -2,7 +2,7 @@ import express from "express"
 import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
 import {NodeType} from "../../../specification/NodeType"
 import {unmarshalInputData} from "../../nodes/unmarshalInputData"
-import {CreateTrackLayoutInput} from "../../../models/node-types/track-layouts/types/CreateTrackLayoutInput"
+import type {TrackLayoutInput} from "../../../models/node-types/track-layouts/types/TrackLayoutInput"
 import {validateInputData} from "../../nodes/validateInputData"
 import {TrackLayout} from "../../../models/node-types/track-layouts/TrackLayout"
 import {convertTrackLayoutModelNodeToControllerNode} from "./convertTrackLayoutModelNodeToControllerNode"
@@ -11,9 +11,9 @@ import {sendResponse201} from "../../responses/sendResponse201"
 import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
 
-export async function create(req: express.Request, res: express.Response) {
+export async function createNode(req: express.Request, res: express.Response) {
     const propertyNames = getNodeTypeSpecification(NodeType.TrackLayout).properties.map(prop => prop.name)
-    const data = unmarshalInputData(req.body, propertyNames) as CreateTrackLayoutInput
+    const data = unmarshalInputData(req.body, propertyNames) as TrackLayoutInput
 
     if (!validateInputData(data, NodeType.TrackLayout)) {
         return sendResponse400(res)
