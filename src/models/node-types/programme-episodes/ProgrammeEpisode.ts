@@ -1,4 +1,3 @@
-import {CreateProgrammeEpisodeInput} from "./types/CreateProgrammeEpisodeInput"
 import {ProgrammeEpisodeNode} from "./types/ProgrammeEpisodeNode"
 import {convertInputData} from "./create/convertInputData"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
@@ -31,7 +30,7 @@ import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollection
 import {createDbNode} from "../../../db/nodes/createDbNode"
 
 export const ProgrammeEpisode = {
-    async create(data: CreateProgrammeEpisodeInput): Promise<ProgrammeEpisodeNode> {
+    async create(data: ProgrammeEpisodeInput): Promise<ProgrammeEpisodeNode> {
         const input = convertInputData(data)
         const result = await createDbNode(DbNodeType.ProgrammeEpisode, input)
 
@@ -66,7 +65,7 @@ export const ProgrammeEpisode = {
             throw new NodeNotFoundError(id)
         }
 
-        const input = convertInputData(data as CreateProgrammeEpisodeInput)
+        const input = convertInputData(data)
         const result = await updateDbNode(DbNodeType.ProgrammeEpisode, id, input)
 
         await Revision.create({

@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputProgrammeEpisodeCreate} from "../../../../src/db/node-types/programme-episodes/types/InputProgrammeEpisodeCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {ProgrammeEpisodeNode} from "../../../../src/models/node-types/programme-episodes/types/ProgrammeEpisodeNode"
 
@@ -11,13 +11,13 @@ export const FakeProgrammeEpisode = {
             season_episode_number: faker.number.int({min: 1000, max: 3000}),
             original_air_date: faker.word.noun(),
             duration: faker.word.noun(),
-        } as InputProgrammeEpisodeCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
         return {
             title: faker.word.noun(),
-        } as InputProgrammeEpisodeCreate
+        } as DbInputData
     },
 
     modelOutput: function () {

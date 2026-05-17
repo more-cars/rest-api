@@ -1,7 +1,7 @@
 import {Node} from "neo4j-driver"
-import type {InputProgrammeEpisodeCreate} from "../../../src/db/node-types/programme-episodes/types/InputProgrammeEpisodeCreate"
+import type {DbInputData} from "../../../src/db/types/DbInputData"
 
-export function mapProgrammeEpisode(oldNode: Node): InputProgrammeEpisodeCreate {
+export function mapProgrammeEpisode(oldNode: Node): DbInputData {
     return {
         title: oldNode.properties.name,
         season_number: oldNode.properties.season,

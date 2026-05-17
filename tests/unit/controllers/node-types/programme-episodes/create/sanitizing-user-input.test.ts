@@ -1,10 +1,10 @@
 import {describe, expect, test} from 'vitest'
-import {CreateProgrammeEpisodeInput} from "../../../../../../src/models/node-types/programme-episodes/types/CreateProgrammeEpisodeInput"
+import type {ProgrammeEpisodeInput} from "../../../../../../src/models/node-types/programme-episodes/types/ProgrammeEpisodeInput"
 import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
-        const data: CreateProgrammeEpisodeInput = {
+        const data: ProgrammeEpisodeInput = {
             title: "   The Falls Guys  ",
             season_number: 2,
             season_episode_number: 2,
