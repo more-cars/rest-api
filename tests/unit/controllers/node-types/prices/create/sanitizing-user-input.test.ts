@@ -1,10 +1,10 @@
 import {describe, expect, test} from 'vitest'
-import {CreatePriceInput} from "../../../../../../src/models/node-types/prices/types/CreatePriceInput"
+import type {PriceInput} from "../../../../../../src/models/node-types/prices/types/PriceInput"
 import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
-        const data: CreatePriceInput = {
+        const data: PriceInput = {
             price: 59990,
             price_year: 2020,
             currency_code: "   EUR  ",

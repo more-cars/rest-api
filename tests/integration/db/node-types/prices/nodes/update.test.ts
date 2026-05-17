@@ -3,7 +3,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 import {FakePrice} from "../../../../../_toolbox/fixtures/nodes/FakePrice"
 import {updateDbNode} from "../../../../../../src/db/nodes/updateDbNode"
-import type {InputPriceCreate} from "../../../../../../src/db/node-types/prices/types/InputPriceCreate"
+import type {DbInputData} from "../../../../../../src/db/types/DbInputData"
 import type {PriceNode} from "../../../../../../src/db/node-types/prices/types/PriceNode"
 
 describe('Updating PRICE', () => {
@@ -21,7 +21,7 @@ describe('Updating PRICE', () => {
 
     test('with the same data', async () => {
         const createdNode = await seedNode(DbNodeType.Price)
-        const inputData = createdNode.properties as unknown as InputPriceCreate
+        const inputData = createdNode.properties as DbInputData
         const updatedNode = await updateDbNode(DbNodeType.Price, createdNode.properties.id, inputData)
 
         expect(updatedNode.properties)
@@ -39,9 +39,9 @@ describe('Updating PRICE', () => {
 
     test('removing a field', async () => {
         const createdNode = await seedNode(DbNodeType.Price)
-        const inputData = createdNode.properties as unknown as InputPriceCreate
-        // @ts-expect-error TS2339 TS2339 TS2339
+        const inputData = createdNode.properties as DbInputData
         inputData.price = null
+
         const updatedNode = await updateDbNode(DbNodeType.Price, createdNode.properties.id, inputData) as PriceNode
 
         expect(updatedNode.properties.price)

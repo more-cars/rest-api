@@ -1,5 +1,5 @@
 import express from "express"
-import {create} from "./prices/create"
+import {createNode} from "./prices/createNode"
 import {getById} from "./prices/getById"
 import {getAll} from "./prices/getAll"
 import {updateNode} from "./prices/updateNode"
@@ -16,7 +16,7 @@ import {deleteHasPrimeImageRelation} from "./prices/deleteHasPrimeImageRelation"
 
 export const PriceController = {
     async create(req: express.Request, res: express.Response) {
-        await create(req, res)
+        await createNode(req, res)
     },
 
     async getById(req: express.Request, res: express.Response) {

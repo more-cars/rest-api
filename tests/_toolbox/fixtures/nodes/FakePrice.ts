@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputPriceCreate} from "../../../../src/db/node-types/prices/types/InputPriceCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {PriceNode} from "../../../../src/models/node-types/prices/types/PriceNode"
 
@@ -10,7 +10,7 @@ export const FakePrice = {
             price_year: faker.number.int({min: 1000, max: 3000}),
             currency_code: faker.finance.currencyCode(),
             country_code: faker.location.countryCode(),
-        } as InputPriceCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
@@ -19,7 +19,7 @@ export const FakePrice = {
             price_year: faker.number.int({min: 1000, max: 3000}),
             currency_code: faker.finance.currencyCode(),
             country_code: faker.location.countryCode(),
-        } as InputPriceCreate
+        } as DbInputData
     },
 
     modelOutput: function () {

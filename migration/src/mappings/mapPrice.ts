@@ -1,7 +1,7 @@
 import {Node} from "neo4j-driver"
-import type {InputPriceCreate} from "../../../src/db/node-types/prices/types/InputPriceCreate"
+import type {DbInputData} from "../../../src/db/types/DbInputData"
 
-export function mapPrice(oldNode: Node): InputPriceCreate {
+export function mapPrice(oldNode: Node): DbInputData {
     return {
         price: oldNode.properties.price,
         price_year: oldNode.properties.year,

@@ -1,11 +1,11 @@
-import {CreatePriceInput} from "../types/CreatePriceInput"
-import {InputPriceCreate} from "../../../../db/node-types/prices/types/InputPriceCreate"
+import type {PriceInput} from "../types/PriceInput"
+import type {DbInputData} from "../../../../db/types/DbInputData"
 
-export function convertInputData(data: CreatePriceInput): InputPriceCreate {
+export function convertInputData(data: PriceInput): DbInputData {
     return {
         price: data.price,
         price_year: data.price_year,
         currency_code: data.currency_code,
         country_code: data.country_code,
-    } satisfies InputPriceCreate
+    }
 }

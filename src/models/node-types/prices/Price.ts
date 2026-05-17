@@ -1,4 +1,3 @@
-import {CreatePriceInput} from "./types/CreatePriceInput"
 import {PriceNode} from "./types/PriceNode"
 import {convertInputData} from "./create/convertInputData"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
@@ -26,7 +25,7 @@ import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollection
 import {createDbNode} from "../../../db/nodes/createDbNode"
 
 export const Price = {
-    async create(data: CreatePriceInput): Promise<PriceNode> {
+    async create(data: PriceInput): Promise<PriceNode> {
         const input = convertInputData(data)
         const result = await createDbNode(DbNodeType.Price, input)
 
@@ -61,7 +60,7 @@ export const Price = {
             throw new NodeNotFoundError(id)
         }
 
-        const input = convertInputData(data as CreatePriceInput)
+        const input = convertInputData(data)
         const result = await updateDbNode(DbNodeType.Price, id, input)
 
         await Revision.create({
