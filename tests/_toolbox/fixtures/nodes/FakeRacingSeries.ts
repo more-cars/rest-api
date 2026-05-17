@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputRacingSeriesCreate} from "../../../../src/db/node-types/racing-series/types/InputRacingSeriesCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {RacingSeriesNode} from "../../../../src/models/node-types/racing-series/types/RacingSeriesNode"
 
@@ -13,13 +13,13 @@ export const FakeRacingSeries = {
             organized_by: faker.company.name(),
             vehicle_type: faker.vehicle.type(),
             country_code: faker.location.countryCode(),
-        } as InputRacingSeriesCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
         return {
             name: faker.word.words(3),
-        } as InputRacingSeriesCreate
+        } as DbInputData
     },
 
 

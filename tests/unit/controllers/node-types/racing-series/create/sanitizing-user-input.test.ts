@@ -1,10 +1,10 @@
 import {describe, expect, test} from 'vitest'
-import {CreateRacingSeriesInput} from "../../../../../../src/models/node-types/racing-series/types/CreateRacingSeriesInput"
+import type {RacingSeriesInput} from "../../../../../../src/models/node-types/racing-series/types/RacingSeriesInput"
 import {unmarshalInputData} from "../../../../../../src/controllers/nodes/unmarshalInputData"
 
 describe('Sanitizing user input', () => {
     test('leading and trailing whitespaces', async () => {
-        const data: CreateRacingSeriesInput = {
+        const data: RacingSeriesInput = {
             name: "   Formula 1  ",
             short_name: "   F1  ",
             founded: 1950,

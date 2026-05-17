@@ -2,7 +2,7 @@ import express from "express"
 import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
 import {NodeType} from "../../../specification/NodeType"
 import {unmarshalInputData} from "../../nodes/unmarshalInputData"
-import {CreateRacingSeriesInput} from "../../../models/node-types/racing-series/types/CreateRacingSeriesInput"
+import type {RacingSeriesInput} from "../../../models/node-types/racing-series/types/RacingSeriesInput"
 import {validateInputData} from "../../nodes/validateInputData"
 import {RacingSeries} from "../../../models/node-types/racing-series/RacingSeries"
 import {convertRacingSeriesModelNodeToControllerNode} from "./convertRacingSeriesModelNodeToControllerNode"
@@ -11,9 +11,9 @@ import {sendResponse201} from "../../responses/sendResponse201"
 import {sendResponse400} from "../../responses/sendResponse400"
 import {sendResponse500} from "../../responses/sendResponse500"
 
-export async function create(req: express.Request, res: express.Response) {
+export async function createNode(req: express.Request, res: express.Response) {
     const propertyNames = getNodeTypeSpecification(NodeType.RacingSeries).properties.map(prop => prop.name)
-    const data = unmarshalInputData(req.body, propertyNames) as CreateRacingSeriesInput
+    const data = unmarshalInputData(req.body, propertyNames) as RacingSeriesInput
 
     if (!validateInputData(data, NodeType.RacingSeries)) {
         return sendResponse400(res)
