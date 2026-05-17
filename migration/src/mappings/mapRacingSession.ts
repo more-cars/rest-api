@@ -1,7 +1,7 @@
 import {Node} from "neo4j-driver"
-import type {InputRacingSessionCreate} from "../../../src/db/node-types/racing-sessions/types/InputRacingSessionCreate"
+import type {DbInputData} from "../../../src/db/types/DbInputData"
 
-export function mapRacingSession(oldNode: Node): InputRacingSessionCreate {
+export function mapRacingSession(oldNode: Node): DbInputData {
     return {
         name: oldNode.properties.name,
         start_date: oldNode.properties.start_date,

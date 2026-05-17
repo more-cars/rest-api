@@ -1,5 +1,5 @@
 import {faker} from "@faker-js/faker"
-import type {InputRacingSessionCreate} from "../../../../src/db/node-types/racing-sessions/types/InputRacingSessionCreate"
+import type {DbInputData} from "../../../../src/db/types/DbInputData"
 import {ModelNodeType} from "../../../../src/models/types/ModelNodeType"
 import type {RacingSessionNode} from "../../../../src/models/node-types/racing-sessions/types/RacingSessionNode"
 
@@ -13,13 +13,13 @@ export const FakeRacingSession = {
             duration_unit: faker.science.unit().name,
             distance: faker.number.int({min: 1000, max: 3000}),
             distance_unit: faker.science.unit().name,
-        } as InputRacingSessionCreate
+        } satisfies DbInputData
     },
 
     dbInputMinimal: function () {
         return {
             name: faker.word.noun(),
-        } as InputRacingSessionCreate
+        } as DbInputData
     },
 
     modelOutput: function () {

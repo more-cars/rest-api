@@ -1,7 +1,7 @@
-import {CreateRacingSessionInput} from "../types/CreateRacingSessionInput"
-import {InputRacingSessionCreate} from "../../../../db/node-types/racing-sessions/types/InputRacingSessionCreate"
+import type {RacingSessionInput} from "../types/RacingSessionInput"
+import type {DbInputData} from "../../../../db/types/DbInputData"
 
-export function convertInputData(data: CreateRacingSessionInput): InputRacingSessionCreate {
+export function convertInputData(data: RacingSessionInput): DbInputData {
     return {
         name: data.name,
         start_date: data.start_date,
@@ -10,5 +10,5 @@ export function convertInputData(data: CreateRacingSessionInput): InputRacingSes
         duration_unit: data.duration_unit,
         distance: data.distance,
         distance_unit: data.distance_unit,
-    } satisfies InputRacingSessionCreate
+    }
 }

@@ -1,4 +1,3 @@
-import {CreateRacingSessionInput} from "./types/CreateRacingSessionInput"
 import {RacingSessionNode} from "./types/RacingSessionNode"
 import {convertInputData} from "./create/convertInputData"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
@@ -29,7 +28,7 @@ import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollection
 import {createDbNode} from "../../../db/nodes/createDbNode"
 
 export const RacingSession = {
-    async create(data: CreateRacingSessionInput): Promise<RacingSessionNode> {
+    async create(data: RacingSessionInput): Promise<RacingSessionNode> {
         const input = convertInputData(data)
         const result = await createDbNode(DbNodeType.RacingSession, input)
 
@@ -64,7 +63,7 @@ export const RacingSession = {
             throw new NodeNotFoundError(id)
         }
 
-        const input = convertInputData(data as CreateRacingSessionInput)
+        const input = convertInputData(data)
         const result = await updateDbNode(DbNodeType.RacingSession, id, input)
 
         await Revision.create({

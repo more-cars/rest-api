@@ -1,9 +1,9 @@
 export type RacingSessionInput = {
-    name: string | undefined
-    start_date: string | undefined
-    start_time: string | undefined
-    duration: number | undefined
-    duration_unit: string | undefined
-    distance: number | undefined
-    distance_unit: string | undefined
+    name: string | null | undefined
+    start_date: string | null | undefined
+    start_time: string | null | undefined
+    duration: number | null | undefined
+    duration_unit: string | null | undefined
+    distance: number | null | undefined
+    distance_unit: string | null | undefined
 }

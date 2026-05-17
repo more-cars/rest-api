@@ -3,7 +3,7 @@ import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 import {FakeRacingSession} from "../../../../../_toolbox/fixtures/nodes/FakeRacingSession"
 import {updateDbNode} from "../../../../../../src/db/nodes/updateDbNode"
-import type {InputRacingSessionCreate} from "../../../../../../src/db/node-types/racing-sessions/types/InputRacingSessionCreate"
+import type {DbInputData} from "../../../../../../src/db/types/DbInputData"
 import type {RacingSessionNode} from "../../../../../../src/db/node-types/racing-sessions/types/RacingSessionNode"
 
 describe('Updating RACING SESSION', () => {
@@ -21,7 +21,7 @@ describe('Updating RACING SESSION', () => {
 
     test('with the same data', async () => {
         const createdNode = await seedNode(DbNodeType.RacingSession)
-        const inputData = createdNode.properties as unknown as InputRacingSessionCreate
+        const inputData = createdNode.properties as DbInputData
         const updatedNode = await updateDbNode(DbNodeType.RacingSession, createdNode.properties.id, inputData)
 
         expect(updatedNode.properties)
@@ -39,9 +39,9 @@ describe('Updating RACING SESSION', () => {
 
     test('removing a field', async () => {
         const createdNode = await seedNode(DbNodeType.RacingSession)
-        const inputData = createdNode.properties as unknown as InputRacingSessionCreate
-        // @ts-expect-error TS2339 TS2339 TS2339
+        const inputData = createdNode.properties as DbInputData
         inputData.name = null
+
         const updatedNode = await updateDbNode(DbNodeType.RacingSession, createdNode.properties.id, inputData) as RacingSessionNode
 
         expect(updatedNode.properties.name)
