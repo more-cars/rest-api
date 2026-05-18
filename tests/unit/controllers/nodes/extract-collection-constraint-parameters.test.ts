@@ -58,8 +58,12 @@ type Query = {
     filter_value?: string;
 }
 
-function assembleRequest(queryParams: Query) {
+function assembleRequest(queryParams: Query): Request {
     return {
-        query: queryParams
-    } as Request<{}, {}, {}, Query>
+        query: queryParams,
+        params: {},
+        body: {},
+        headers: {},
+        get: () => undefined,
+    } as unknown as Request
 }
