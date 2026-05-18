@@ -16,7 +16,7 @@ export type ValidationRule =
     'torqueUnit' |
     'transmission' |
     'weightUnit' |
-    'isValidCountryCode' |
+    'countryCode' |
     'isValidCurrencyCode' |
     'isValidIssn' |
     'string' |

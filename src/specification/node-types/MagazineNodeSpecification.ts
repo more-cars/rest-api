@@ -103,7 +103,7 @@ export const MagazineNodeSpecification: NodeSpecification = {
             datatype: 'string',
             mandatory: false,
             example: 'GB',
-            validation: ['isValidCountryCode'],
+            validation: ['countryCode'],
         },
     ],
 }

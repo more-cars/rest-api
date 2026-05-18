@@ -42,7 +42,7 @@ export const CompanyNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'DE',
             scope: 'user',
-            validation: ['isValidCountryCode'],
+            validation: ['countryCode'],
         },
         {
             name: 'legal_headquarters_location',
@@ -58,7 +58,7 @@ export const CompanyNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'DE',
             scope: 'user',
-            validation: ['isValidCountryCode'],
+            validation: ['countryCode'],
         },
     ],
 }

@@ -57,7 +57,7 @@ export const MotorShowNodeSpecification: NodeSpecification = {
             datatype: 'string',
             mandatory: false,
             example: 'DE',
-            validation: ['isValidCountryCode'],
+            validation: ['countryCode'],
         },
     ],
 }

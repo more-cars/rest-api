@@ -57,7 +57,7 @@ export const BrandNodeSpecification: NodeSpecification = {
             datatype: 'string',
             mandatory: false,
             example: 'DE',
-            validation: ['isValidCountryCode'],
+            validation: ['countryCode'],
         },
     ],
 }
