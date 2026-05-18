@@ -48,7 +48,6 @@ describe('Update LAP TIME', () => {
     test('Trying to remove a mandatory field', async () => {
         const createdNode = await seedNode(DbNodeType.LapTime)
         const inputData = createdNode.properties
-        // @ts-expect-error TS2339 TS2339 TS2339
         inputData.driver_name = null
 
         const response = await request(app)
@@ -62,7 +61,6 @@ describe('Update LAP TIME', () => {
     test('Removing an optional field', async () => {
         const createdNode = await seedNode(DbNodeType.LapTime)
         const inputData = createdNode.properties
-        // @ts-expect-error TS2339 TS2339 TS2339
         inputData.date = null
 
         const response = await request(app)

@@ -47,7 +47,6 @@ describe('Update TRACK LAYOUT', () => {
     test('Trying to remove a mandatory field', async () => {
         const createdNode = await seedNode(DbNodeType.TrackLayout)
         const inputData = createdNode.properties
-        // @ts-expect-error TS2339 TS2339 TS2339
         inputData.name = null
 
         const response = await request(app)
@@ -61,7 +60,6 @@ describe('Update TRACK LAYOUT', () => {
     test('Removing an optional field', async () => {
         const createdNode = await seedNode(DbNodeType.TrackLayout)
         const inputData = createdNode.properties
-        // @ts-expect-error TS2339 TS2339 TS2339
         inputData.direction = null
 
         const response = await request(app)

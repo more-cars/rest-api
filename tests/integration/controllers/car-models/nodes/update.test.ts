@@ -47,7 +47,6 @@ describe('Update CAR MODEL', () => {
     test('Trying to remove a mandatory field', async () => {
         const createdNode = await seedNode(DbNodeType.CarModel)
         const inputData = createdNode.properties
-        // @ts-expect-error TS2339 TS2339 TS2339
         inputData.name = null
 
         const response = await request(app)
@@ -61,7 +60,6 @@ describe('Update CAR MODEL', () => {
     test('Removing an optional field', async () => {
         const createdNode = await seedNode(DbNodeType.CarModel)
         const inputData = createdNode.properties
-        // @ts-expect-error TS2339 TS2339 TS2339
         inputData.built_from = null
 
         const response = await request(app)

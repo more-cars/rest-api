@@ -50,7 +50,6 @@ describe('Update PRICE', () => {
     test('Trying to remove a mandatory field', async () => {
         const createdNode = await seedNode(DbNodeType.Price)
         const inputData = createdNode.properties
-        // @ts-expect-error TS2339 TS2339 TS2339
         inputData.price = null
 
         const response = await request(app)

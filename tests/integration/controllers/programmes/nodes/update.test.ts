@@ -47,7 +47,6 @@ describe('Update PROGRAMME', () => {
     test('Trying to remove a mandatory field', async () => {
         const createdNode = await seedNode(DbNodeType.Programme)
         const inputData = createdNode.properties
-        // @ts-expect-error TS2339 TS2339 TS2339
         inputData.name = null
 
         const response = await request(app)
@@ -61,7 +60,6 @@ describe('Update PROGRAMME', () => {
     test('Removing an optional field', async () => {
         const createdNode = await seedNode(DbNodeType.Programme)
         const inputData = createdNode.properties
-        // @ts-expect-error TS2339 TS2339 TS2339
         inputData.channel = null
 
         const response = await request(app)

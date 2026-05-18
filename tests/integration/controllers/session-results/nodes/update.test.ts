@@ -48,7 +48,6 @@ describe('Update SESSION RESULT', () => {
     test('Trying to remove a mandatory field', async () => {
         const createdNode = await seedNode(DbNodeType.SessionResult)
         const inputData = createdNode.properties
-        // @ts-expect-error TS2339 TS2339 TS2339
         inputData.position = null
 
         const response = await request(app)
@@ -62,7 +61,6 @@ describe('Update SESSION RESULT', () => {
     test('Removing an optional field', async () => {
         const createdNode = await seedNode(DbNodeType.SessionResult)
         const inputData = createdNode.properties
-        // @ts-expect-error TS2339 TS2339 TS2339
         inputData.team_name = null
 
         const response = await request(app)
