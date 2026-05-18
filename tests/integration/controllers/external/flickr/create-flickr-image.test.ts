@@ -9,7 +9,7 @@ beforeEach(() => {
     vi.resetAllMocks()
 })
 
-describe('Get Flickr image by ID', () => {
+describe('Create Flickr image', () => {
     test('when the image does not exist', async () => {
         const spy = vi.spyOn(fl, 'performFlickrApiRequest')
             .mockImplementation(async () => {

@@ -9,7 +9,7 @@ beforeEach(() => {
     vi.resetAllMocks()
 })
 
-describe('Get YouTube video by ID', () => {
+describe('Create YouTube video', () => {
     test('when the video does not exist', async () => {
         const spy = vi.spyOn(yt, 'performYouTubeApiRequest')
             .mockImplementation(async () => {

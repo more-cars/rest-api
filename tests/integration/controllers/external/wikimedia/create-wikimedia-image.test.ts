@@ -9,7 +9,7 @@ beforeEach(() => {
     vi.resetAllMocks()
 })
 
-describe('Get Wikimedia image by ID', () => {
+describe('Create Wikimedia image', () => {
     test('when the image does not exist', async () => {
         const spy = vi.spyOn(wm, 'performWikimediaApiRequest')
             .mockImplementation(async () => {
