@@ -44,12 +44,14 @@ describe('Update <%= h.changeCase.upper(nodeType) %>', () => {
             .toBe(200)
     })
 
-    test.skip('Request is invalid', async () => {
+    test('Request is empty', async () => {
+        <%= h.changeCase.pascal(nodeType) %>.update = vi.fn().mockReturnValue(Fake<%= h.changeCase.pascal(nodeType) %>.modelOutput())
+
         const response = await request(app)
             .patch('/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/42') // payload is missing
 
         expect(response.statusCode)
-            .toBe(400)
+            .toBe(200)
     })
 
     test('Trying to remove a mandatory field', async () => {

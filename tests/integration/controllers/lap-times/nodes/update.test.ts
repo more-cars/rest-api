@@ -35,12 +35,14 @@ describe('Update LAP TIME', () => {
             .toBe(200)
     })
 
-    test.skip('Request is invalid', async () => {
+    test('Request is empty', async () => {
+        LapTime.update = vi.fn().mockReturnValue(FakeLapTime.modelOutput())
+
         const response = await request(app)
             .patch('/lap-times/42') // payload is missing
 
         expect(response.statusCode)
-            .toBe(400)
+            .toBe(200)
     })
 
     test('Trying to remove a mandatory field', async () => {

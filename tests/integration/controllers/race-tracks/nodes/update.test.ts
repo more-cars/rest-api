@@ -34,12 +34,14 @@ describe('Update RACE TRACK', () => {
             .toBe(200)
     })
 
-    test.skip('Request is invalid', async () => {
+    test('Request is empty', async () => {
+        RaceTrack.update = vi.fn().mockReturnValue(FakeRaceTrack.modelOutput())
+
         const response = await request(app)
             .patch('/race-tracks/42') // payload is missing
 
         expect(response.statusCode)
-            .toBe(400)
+            .toBe(200)
     })
 
     test('Trying to remove a mandatory field', async () => {

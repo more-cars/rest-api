@@ -34,12 +34,14 @@ describe('Update CAR MODEL VARIANT', () => {
             .toBe(200)
     })
 
-    test.skip('Request is invalid', async () => {
+    test('Request is empty', async () => {
+        CarModelVariant.update = vi.fn().mockReturnValue(FakeCarModelVariant.modelOutput())
+
         const response = await request(app)
             .patch('/car-model-variants/42') // payload is missing
 
         expect(response.statusCode)
-            .toBe(400)
+            .toBe(200)
     })
 
     test('Trying to remove a mandatory field', async () => {

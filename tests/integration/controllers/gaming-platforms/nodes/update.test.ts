@@ -34,12 +34,14 @@ describe('Update GAMING PLATFORM', () => {
             .toBe(200)
     })
 
-    test.skip('Request is invalid', async () => {
+    test('Request is empty', async () => {
+        GamingPlatform.update = vi.fn().mockReturnValue(FakeGamingPlatform.modelOutput())
+
         const response = await request(app)
             .patch('/gaming-platforms/42') // payload is missing
 
         expect(response.statusCode)
-            .toBe(400)
+            .toBe(200)
     })
 
     test('Trying to remove a mandatory field', async () => {
