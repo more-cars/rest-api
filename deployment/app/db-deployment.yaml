@@ -15,7 +15,7 @@ spec:
       containers:
         - name:
             neo4j
-          image: neo4j:5.23.0
+          image: neo4j:2026.04-community
           env:
             - name: NEO4J_AUTH
               value: 'neo4j/123456789'

@@ -26,6 +26,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
 <% } -%>
         },
         elementId: "",
+        as: Object,
     }
 
     const mappedNode = convert<%= h.changeCase.pascal(nodeType) %>Neo4jNodeToDbNode(dbNode)

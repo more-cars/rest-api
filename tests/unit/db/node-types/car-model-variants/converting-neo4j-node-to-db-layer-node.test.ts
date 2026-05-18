@@ -50,6 +50,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             total_production: 50000,
         },
         elementId: "",
+        as: Object,
     }
 
     const mappedNode = convertCarModelVariantNeo4jNodeToDbNode(dbNode)

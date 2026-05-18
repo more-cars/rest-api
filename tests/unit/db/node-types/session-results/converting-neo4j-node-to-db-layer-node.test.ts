@@ -22,6 +22,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             points: 25,
         },
         elementId: "",
+        as: Object,
     }
 
     const mappedNode = convertSessionResultNeo4jNodeToDbNode(dbNode)

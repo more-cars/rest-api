@@ -21,6 +21,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             distance_unit: "laps",
         },
         elementId: "",
+        as: Object,
     }
 
     const mappedNode = convertRacingSessionNeo4jNodeToDbNode(dbNode)

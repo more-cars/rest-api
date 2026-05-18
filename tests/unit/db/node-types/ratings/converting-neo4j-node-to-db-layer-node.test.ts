@@ -18,6 +18,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             scale_direction: "up",
         },
         elementId: "",
+        as: Object,
     }
 
     const mappedNode = convertRatingNeo4jNodeToDbNode(dbNode)

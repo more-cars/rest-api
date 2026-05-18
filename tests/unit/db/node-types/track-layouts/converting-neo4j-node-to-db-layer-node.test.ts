@@ -23,6 +23,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             surface: "asphalt",
         },
         elementId: "",
+        as: Object,
     }
 
     const mappedNode = convertTrackLayoutNeo4jNodeToDbNode(dbNode)

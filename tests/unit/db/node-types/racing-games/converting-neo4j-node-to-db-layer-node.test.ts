@@ -18,6 +18,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             publisher: "Microsoft Studios",
         },
         elementId: "",
+        as: Object,
     }
 
     const mappedNode = convertRacingGameNeo4jNodeToDbNode(dbNode)

@@ -19,6 +19,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             duration: "PT55M",
         },
         elementId: "",
+        as: Object,
     }
 
     const mappedNode = convertProgrammeEpisodeNeo4jNodeToDbNode(dbNode)

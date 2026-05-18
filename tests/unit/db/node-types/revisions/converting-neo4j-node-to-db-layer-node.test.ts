@@ -24,6 +24,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             updated_at: "2025-05-14T11:05:07.793Z",
         },
         elementId: "",
+        as: Object,
     }
 
     const mappedNode = convertRevisionNeo4jNodeToDbNode(dbNode)

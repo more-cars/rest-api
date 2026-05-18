@@ -29,6 +29,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             image_url_xs: "https://live.staticflickr.com/65535/54570839725_652073f374_t.jpg",
         },
         elementId: "",
+        as: Object,
     }
 
     const mappedNode = convertImageNeo4jNodeToDbNode(dbNode)

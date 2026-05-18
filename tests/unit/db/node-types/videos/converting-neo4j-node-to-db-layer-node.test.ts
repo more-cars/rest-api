@@ -27,6 +27,7 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             thumbnail_url_xs: "https://i.ytimg.com/vi/NqsBncRslsg/default.jpg",
         },
         elementId: "",
+        as: Object,
     }
 
     const mappedNode = convertVideoNeo4jNodeToDbNode(dbNode)
