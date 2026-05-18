@@ -26,6 +26,9 @@ import {isValidTorqueUnit} from "../validators/isValidTorqueUnit"
 import {isValidTransmission} from "../validators/isValidTransmission"
 import {isValidDuration} from "../validators/isValidDuration"
 import {isValidDate} from "../validators/isValidDate"
+import {isValidMagazineFocus} from "../validators/isValidMagazineFocus"
+import {isValidPublicationFormat} from "../validators/isValidPublicationFormat"
+import {isValidPublicationFrequency} from "../validators/isValidPublicationFrequency"
 
 export function validateInputData(data: RawInputData, nodeType: NodeType, mode: 'CREATE' | 'UPDATE' = 'CREATE'): boolean {
     let isValid = true
@@ -81,6 +84,9 @@ function validate(value: unknown, validationRule: ValidationRule) {
         ['issn', isValidIssn],
         ['duration', isValidDuration],
         ['date', isValidDate],
+        ['magazineFocus', isValidMagazineFocus],
+        ['publicationFormat', isValidPublicationFormat],
+        ['publicationFrequency', isValidPublicationFrequency],
         ['string', isString],
         ['number', isNumber],
     ])

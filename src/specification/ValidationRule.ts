@@ -21,5 +21,8 @@ export type ValidationRule =
     'issn' |
     'duration' |
     'date' |
+    'magazineFocus' |
+    'publicationFrequency' |
+    'publicationFormat' |
     'string' |
     'number'
