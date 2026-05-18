@@ -29,6 +29,9 @@ import {isValidDate} from "../validators/isValidDate"
 import {isValidMagazineFocus} from "../validators/isValidMagazineFocus"
 import {isValidPublicationFormat} from "../validators/isValidPublicationFormat"
 import {isValidPublicationFrequency} from "../validators/isValidPublicationFrequency"
+import {isValidModelScale} from "../validators/isValidModelScale"
+import {isValidTargetAudience} from "../validators/isValidTargetAudience"
+import {isValidMotorShowFocus} from "../validators/isValidMotorShowFocus"
 
 export function validateInputData(data: RawInputData, nodeType: NodeType, mode: 'CREATE' | 'UPDATE' = 'CREATE'): boolean {
     let isValid = true
@@ -87,6 +90,9 @@ function validate(value: unknown, validationRule: ValidationRule) {
         ['magazineFocus', isValidMagazineFocus],
         ['publicationFormat', isValidPublicationFormat],
         ['publicationFrequency', isValidPublicationFrequency],
+        ['modelScale', isValidModelScale],
+        ['targetAudience', isValidTargetAudience],
+        ['motorShowFocus', isValidMotorShowFocus],
         ['string', isString],
         ['number', isNumber],
     ])
