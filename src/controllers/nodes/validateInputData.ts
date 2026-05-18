@@ -24,6 +24,8 @@ import {isValidEngineType} from "../validators/isValidEngineType"
 import {isValidSpeedUnit} from "../validators/isValidSpeedUnit"
 import {isValidTorqueUnit} from "../validators/isValidTorqueUnit"
 import {isValidTransmission} from "../validators/isValidTransmission"
+import {isValidDuration} from "../validators/isValidDuration"
+import {isValidDate} from "../validators/isValidDate"
 
 export function validateInputData(data: RawInputData, nodeType: NodeType, mode: 'CREATE' | 'UPDATE' = 'CREATE'): boolean {
     let isValid = true
@@ -77,6 +79,8 @@ function validate(value: unknown, validationRule: ValidationRule) {
         ['countryCode', isValidCountryCode],
         ['currencyCode', isValidCurrencyCode],
         ['issn', isValidIssn],
+        ['duration', isValidDuration],
+        ['date', isValidDate],
         ['string', isString],
         ['number', isNumber],
     ])

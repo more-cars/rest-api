@@ -19,5 +19,7 @@ export type ValidationRule =
     'countryCode' |
     'currencyCode' |
     'issn' |
+    'duration' |
+    'date' |
     'string' |
     'number'
