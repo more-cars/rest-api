@@ -75,7 +75,7 @@ function validate(value: unknown, validationRule: ValidationRule) {
         ['transmission', isValidTransmission],
         ['weightUnit', isValidWeightUnit],
         ['countryCode', isValidCountryCode],
-        ['isValidCurrencyCode', isValidCurrencyCode],
+        ['currencyCode', isValidCurrencyCode],
         ['isValidIssn', isValidIssn],
         ['string', isString],
         ['number', isNumber],

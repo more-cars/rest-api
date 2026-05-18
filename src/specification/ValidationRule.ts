@@ -17,7 +17,7 @@ export type ValidationRule =
     'transmission' |
     'weightUnit' |
     'countryCode' |
-    'isValidCurrencyCode' |
+    'currencyCode' |
     'isValidIssn' |
     'string' |
     'number'

@@ -57,7 +57,7 @@ export const MagazineNodeSpecification: NodeSpecification = {
             datatype: 'string',
             mandatory: false,
             example: 'GBP',
-            validation: ['isValidCurrencyCode'],
+            validation: ['currencyCode'],
         },
         {
             name: 'publication_format',
