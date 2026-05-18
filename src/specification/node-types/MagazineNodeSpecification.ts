@@ -96,7 +96,7 @@ export const MagazineNodeSpecification: NodeSpecification = {
             datatype: 'string',
             mandatory: false,
             example: '1350-9624',
-            validation: ['isValidIssn'],
+            validation: ['issn'],
         },
         {
             name: 'country_code',

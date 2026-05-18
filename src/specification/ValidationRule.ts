@@ -18,6 +18,6 @@ export type ValidationRule =
     'weightUnit' |
     'countryCode' |
     'currencyCode' |
-    'isValidIssn' |
+    'issn' |
     'string' |
     'number'
