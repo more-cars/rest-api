@@ -12,6 +12,7 @@ describe('Validating engine type', () => {
         ['diesel'],
         ['fuel_cell'],
         ['turbine'],
+        ['other'],
     ])('valid value: $0', async (input) => {
         expect(isValidEngineType(input))
             .toBeTruthy()

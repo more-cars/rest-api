@@ -9,7 +9,7 @@ test('validating a complete and valid request', async () => {
         date_until: "2017-09-24",
         location: "Frankfurt",
         target_audience: "international",
-        focus: "new cars",
+        focus: "new_cars",
         country_code: "DE",
     }
 

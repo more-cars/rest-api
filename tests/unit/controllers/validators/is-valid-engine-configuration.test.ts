@@ -10,6 +10,7 @@ describe('Validating engine configuration', () => {
         ['Flat'],
         ['Rotary'],
         ['W'],
+        ['other'],
     ])('valid value: $0', async (input) => {
         expect(isValidEngineConfiguration(input))
             .toBeTruthy()

@@ -11,7 +11,7 @@ export function isValidEngineConfiguration(value: unknown) {
         return false
     }
 
-    if (!["Inline", "V", "Flat", "Rotary", "W"].includes(value)) {
+    if (!["Inline", "V", "Flat", "Rotary", "W", "other"].includes(value)) {
         return false
     }
 

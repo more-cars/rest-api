@@ -22,7 +22,20 @@ export type ValidationRule =
     'duration' |
     'date' |
     'magazineFocus' |
-    'publicationFrequency' |
     'publicationFormat' |
+    'publicationFrequency' |
+    'modelScale' |
+    'targetAudience' |
+    'motorShowFocus' |
+    'trackType' |
+    'vehicleType' |
+    'distanceUnit' |
+    'scaleDirection' |
+    'sessionResultStatus' |
+    'lengthUnit' |
+    'trackDirection' |
+    'trackSurface' |
+    'geoPosition' |
+    'dateTime' |
     'string' |
     'number'

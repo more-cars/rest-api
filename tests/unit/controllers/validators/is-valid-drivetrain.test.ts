@@ -8,6 +8,7 @@ describe('Validating drivetrain', () => {
         ['RWD'],
         ['AWD'],
         ['FWD'],
+        ['other'],
     ])('valid value: $0', async (input) => {
         expect(isValidDrivetrain(input))
             .toBeTruthy()

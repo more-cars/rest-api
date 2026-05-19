@@ -11,6 +11,7 @@ describe('Validating transmission', () => {
         ['sequential'],
         ['automated manual'],
         ['cvt'],
+        ['other'],
     ])('valid value: $0', async (input) => {
         expect(isValidTransmission(input))
             .toBeTruthy()

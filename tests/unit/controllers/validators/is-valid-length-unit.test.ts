@@ -1,21 +1,16 @@
 import {describe, expect, test} from "vitest"
-import {isValidMagazineFocus} from "../../../../src/controllers/validators/isValidMagazineFocus"
+import {isValidLengthUnit} from "../../../../src/controllers/validators/isValidLengthUnit"
 
-describe('Validating magazine focus', () => {
+describe('Validating length unit', () => {
     test.each([
         [undefined],
         [null],
-        ['new cars'],
-        ['sports cars'],
-        ['classic cars'],
-        ['brand specific'],
-        ['race cars'],
-        ['tuned cars'],
-        ['american cars'],
-        ['mixed'],
-        ['other'],
+        ['m'],
+        ['km'],
+        ['miles'],
+        ['laps'],
     ])('valid value: $0', async (input) => {
-        expect(isValidMagazineFocus(input))
+        expect(isValidLengthUnit(input))
             .toBeTruthy()
     })
 
@@ -31,7 +26,7 @@ describe('Validating magazine focus', () => {
         [['test']],
         [{test: 'dummy'}],
     ])('invalid value: $0', async (input) => {
-        expect(isValidMagazineFocus(input))
+        expect(isValidLengthUnit(input))
             .toBeFalsy()
     })
 })

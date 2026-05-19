@@ -11,7 +11,7 @@ export function isValidMagazineFocus(value: unknown) {
         return false
     }
 
-    if (!["new cars", "sports cars", "classic cars", "other", "brand specific", "race cars", "tuned cars", "american cars", "mixed"].includes(value)) {
+    if (!["new cars", "sports cars", "classic cars", "brand specific", "race cars", "tuned cars", "american cars", "mixed", "other"].includes(value)) {
         return false
     }
 

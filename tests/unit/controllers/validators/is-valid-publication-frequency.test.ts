@@ -5,22 +5,16 @@ describe('Validating publication frequency', () => {
     test.each([
         [undefined],
         [null],
-        ['l'],
-        ['kWh'],
-        ['gal'],
-        ['kg'],
-    ])('valid value: $0', async (input) => {
-        expect(isValidPublicationFrequency(input))
-            .toBeTruthy()
-    })
-
-    test.each([
-        [undefined],
-        [null],
-        ['l'],
-        ['kWh'],
-        ['gal'],
-        ['kg'],
+        ['yearly'],
+        ['twice a year'],
+        ['quarterly'],
+        ['every two months'],
+        ['every six weeks'],
+        ['monthly'],
+        ['twice per month'],
+        ['weekly'],
+        ['irregular'],
+        ['other'],
     ])('valid value: $0', async (input) => {
         expect(isValidPublicationFrequency(input))
             .toBeTruthy()

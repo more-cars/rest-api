@@ -7,6 +7,7 @@ describe('Validating speed unit', () => {
         [null],
         ['km/h'],
         ['mph'],
+        ['m/s'],
     ])('valid value: $0', async (input) => {
         expect(isValidSpeedUnit(input))
             .toBeTruthy()

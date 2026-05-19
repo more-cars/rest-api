@@ -1,4 +1,4 @@
-export function isValidDrivetrain(value: unknown) {
+export function isValidSessionResultStatus(value: unknown) {
     if (value === null) {
         return true
     }
@@ -11,7 +11,7 @@ export function isValidDrivetrain(value: unknown) {
         return false
     }
 
-    if (!["RWD", "AWD", "FWD", "other"].includes(value)) {
+    if (!['Finished', 'DSQ', 'DNF', 'DNC', 'DNS', 'other'].includes(value)) {
         return false
     }
 

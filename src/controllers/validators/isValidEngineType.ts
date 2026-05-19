@@ -11,7 +11,7 @@ export function isValidEngineType(value: unknown) {
         return false
     }
 
-    if (!["otto", "hybrid", "electric", "wankel", "diesel", "fuel_cell", "turbine"].includes(value)) {
+    if (!["otto", "hybrid", "electric", "wankel", "diesel", "fuel_cell", "turbine", "other"].includes(value)) {
         return false
     }
 

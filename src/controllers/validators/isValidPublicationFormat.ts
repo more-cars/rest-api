@@ -11,7 +11,7 @@ export function isValidPublicationFormat(value: unknown) {
         return false
     }
 
-    if (!["print", "digital", "print_and_digital"].includes(value)) {
+    if (!["print", "digital", "print_and_digital", "other"].includes(value)) {
         return false
     }
 

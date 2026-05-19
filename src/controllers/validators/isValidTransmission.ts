@@ -11,7 +11,7 @@ export function isValidTransmission(value: unknown) {
         return false
     }
 
-    if (!["manual", "dual clutch", "auto", "sequential", "automated manual", "cvt"].includes(value)) {
+    if (!["manual", "dual clutch", "auto", "sequential", "automated manual", "cvt", "other"].includes(value)) {
         return false
     }
 

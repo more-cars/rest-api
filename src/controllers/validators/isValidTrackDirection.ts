@@ -1,4 +1,4 @@
-export function isValidDrivetrain(value: unknown) {
+export function isValidTrackDirection(value: unknown) {
     if (value === null) {
         return true
     }
@@ -11,7 +11,7 @@ export function isValidDrivetrain(value: unknown) {
         return false
     }
 
-    if (!["RWD", "AWD", "FWD", "other"].includes(value)) {
+    if (!['clockwise', 'counterclockwise'].includes(value)) {
         return false
     }
 

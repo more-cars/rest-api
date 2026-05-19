@@ -11,7 +11,7 @@ export function isValidEnergySource(value: unknown) {
         return false
     }
 
-    if (!["petrol", "electricity", "diesel", "hydrogen", "ethanol"].includes(value)) {
+    if (!["petrol", "electricity", "diesel", "hydrogen", "ethanol", "other"].includes(value)) {
         return false
     }
 

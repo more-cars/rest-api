@@ -9,6 +9,7 @@ describe('Validating air induction', () => {
         ['turbo'],
         ['super'],
         ['turbo_and_supercharged'],
+        ['other'],
     ])('valid value: $0', async (input) => {
         expect(isValidAirInduction(input))
             .toBeTruthy()

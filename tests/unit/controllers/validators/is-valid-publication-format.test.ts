@@ -5,22 +5,10 @@ describe('Validating publication format', () => {
     test.each([
         [undefined],
         [null],
-        ['l'],
-        ['kWh'],
-        ['gal'],
-        ['kg'],
-    ])('valid value: $0', async (input) => {
-        expect(isValidPublicationFormat(input))
-            .toBeTruthy()
-    })
-
-    test.each([
-        [undefined],
-        [null],
-        ['l'],
-        ['kWh'],
-        ['gal'],
-        ['kg'],
+        ['print'],
+        ['digital'],
+        ['print_and_digital'],
+        ['other'],
     ])('valid value: $0', async (input) => {
         expect(isValidPublicationFormat(input))
             .toBeTruthy()

@@ -10,6 +10,7 @@ describe('Validating energy source', () => {
         ['diesel'],
         ['hydrogen'],
         ['ethanol'],
+        ['other'],
     ])('valid value: $0', async (input) => {
         expect(isValidEnergySource(input))
             .toBeTruthy()

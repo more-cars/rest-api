@@ -21,6 +21,7 @@ describe('Validating body style', () => {
         ['targa'],
         ['truck'],
         ['van'],
+        ['other'],
     ])('valid value: $0', async (input) => {
         expect(isValidBodyStyle(input))
             .toBeTruthy()

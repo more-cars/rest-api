@@ -1,5 +1,5 @@
 import {describe, expect, test} from "vitest"
-import {isValidModelScale} from "../../../../src/controllers/validators/isValidModelScale"
+import {isValidMotorShowFocus} from "../../../../src/controllers/validators/isValidMotorShowFocus"
 
 describe('Validating motor show focus', () => {
     test.each([
@@ -8,7 +8,7 @@ describe('Validating motor show focus', () => {
         ['new_cars'],
         ['other'],
     ])('valid value: $0', async (input) => {
-        expect(isValidModelScale(input))
+        expect(isValidMotorShowFocus(input))
             .toBeTruthy()
     })
 
@@ -24,7 +24,7 @@ describe('Validating motor show focus', () => {
         [['test']],
         [{test: 'dummy'}],
     ])('invalid value: $0', async (input) => {
-        expect(isValidModelScale(input))
+        expect(isValidMotorShowFocus(input))
             .toBeFalsy()
     })
 })
