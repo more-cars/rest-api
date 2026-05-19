@@ -8,8 +8,8 @@ export const FakeRacingEvent = {
         return {
             name: 'F1 GP ' + faker.location.country(),
             round: faker.number.int({min: 1000, max: 3000}),
-            date_from: faker.date.past().toLocaleString(),
-            date_to: faker.date.past().toLocaleString(),
+            date_from: faker.date.past().toISOString().substring(0, 10),
+            date_to: faker.date.past().toISOString().substring(0, 10),
         } satisfies DbInputData
     },
 
@@ -26,8 +26,8 @@ export const FakeRacingEvent = {
                 id: faker.number.int({min: 12_000_000, max: 20_000_000}),
                 name: 'F1 GP ' + faker.location.country(),
                 round: faker.number.int({min: 1000, max: 3000}),
-                date_from: faker.date.past().toLocaleString(),
-                date_to: faker.date.past().toLocaleString(),
+                date_from: faker.date.past().toISOString().substring(0, 10),
+                date_to: faker.date.past().toISOString().substring(0, 10),
                 created_at: faker.date.past().toISOString(),
                 updated_at: faker.date.past().toISOString(),
             },

@@ -7,11 +7,11 @@ export const FakeMotorShow = {
     dbInput: function () {
         return {
             name: faker.word.noun(),
-            date_from: faker.word.noun(),
-            date_until: faker.word.noun(),
+            date_from: faker.date.past().toISOString().substring(0, 10),
+            date_until: faker.date.past().toISOString().substring(0, 10),
             location: faker.word.noun(),
-            target_audience: faker.word.noun(),
-            focus: faker.word.noun(),
+            target_audience: faker.helpers.arrayElement(['international', 'national']),
+            focus: faker.helpers.arrayElement(['new_cars', 'other']),
             country_code: faker.location.countryCode(),
         } satisfies DbInputData
     },
@@ -28,11 +28,11 @@ export const FakeMotorShow = {
             attributes: {
                 id: faker.number.int({min: 12_000_000, max: 20_000_000}),
                 name: faker.word.noun(),
-                date_from: faker.word.noun(),
-                date_until: faker.word.noun(),
+                date_from: faker.date.past().toISOString().substring(0, 10),
+                date_until: faker.date.past().toISOString().substring(0, 10),
                 location: faker.word.noun(),
-                target_audience: faker.word.noun(),
-                focus: faker.word.noun(),
+                target_audience: faker.helpers.arrayElement(['international', 'national']),
+                focus: faker.helpers.arrayElement(['new_cars', 'other']),
                 country_code: faker.location.countryCode(),
                 created_at: faker.date.past().toISOString(),
                 updated_at: faker.date.past().toISOString(),

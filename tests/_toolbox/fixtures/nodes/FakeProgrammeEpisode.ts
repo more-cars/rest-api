@@ -9,8 +9,8 @@ export const FakeProgrammeEpisode = {
             title: faker.word.noun(),
             season_number: faker.number.int({min: 1000, max: 3000}),
             season_episode_number: faker.number.int({min: 1000, max: 3000}),
-            original_air_date: faker.word.noun(),
-            duration: faker.word.noun(),
+            original_air_date: faker.date.past().toISOString().substring(0, 10),
+            duration: "PT30M",
         } satisfies DbInputData
     },
 
@@ -28,8 +28,8 @@ export const FakeProgrammeEpisode = {
                 title: faker.word.noun(),
                 season_number: faker.number.int({min: 1000, max: 3000}),
                 season_episode_number: faker.number.int({min: 1000, max: 3000}),
-                original_air_date: faker.word.noun(),
-                duration: faker.word.noun(),
+                original_air_date: faker.date.past().toISOString().substring(0, 10),
+                duration: "PT30M",
                 created_at: faker.date.past().toISOString(),
                 updated_at: faker.date.past().toISOString(),
             },

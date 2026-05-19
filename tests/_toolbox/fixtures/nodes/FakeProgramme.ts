@@ -12,7 +12,7 @@ export const FakeProgramme = {
             channel: faker.word.noun(),
             total_seasons: faker.number.int({min: 1000, max: 3000}),
             total_episodes: faker.number.int({min: 1000, max: 3000}),
-            regular_episode_running_time: faker.word.noun(),
+            regular_episode_running_time: "PT45M",
             country_code: faker.location.countryCode(),
         } satisfies DbInputData
     },

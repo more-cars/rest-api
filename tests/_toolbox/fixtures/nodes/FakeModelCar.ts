@@ -9,7 +9,7 @@ export const FakeModelCar = {
             name: faker.word.noun(),
             product_code: faker.word.noun(),
             release_year: faker.number.int({min: 1000, max: 3000}),
-            scale: faker.word.noun(),
+            scale: faker.helpers.arrayElement(['1:64', '1:10']),
             series: faker.word.noun(),
         } satisfies DbInputData
     },
@@ -28,7 +28,7 @@ export const FakeModelCar = {
                 name: faker.word.noun(),
                 product_code: faker.word.noun(),
                 release_year: faker.number.int({min: 1000, max: 3000}),
-                scale: faker.word.noun(),
+                scale: faker.helpers.arrayElement(['1:64', '1:10']),
                 series: faker.word.noun(),
                 created_at: faker.date.past().toISOString(),
                 updated_at: faker.date.past().toISOString(),

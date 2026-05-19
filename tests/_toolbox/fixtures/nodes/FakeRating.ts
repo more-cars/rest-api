@@ -9,7 +9,7 @@ export const FakeRating = {
             rating_value: faker.number.int({min: 1000, max: 3000}),
             scale_minimum: faker.number.int({min: 1000, max: 3000}),
             scale_maximum: faker.number.int({min: 1000, max: 3000}),
-            scale_direction: faker.word.noun(),
+            scale_direction: faker.helpers.arrayElement(['up', 'down']),
         } satisfies DbInputData
     },
 
@@ -18,7 +18,7 @@ export const FakeRating = {
             rating_value: faker.number.int({min: 1000, max: 3000}),
             scale_minimum: faker.number.int({min: 1000, max: 3000}),
             scale_maximum: faker.number.int({min: 1000, max: 3000}),
-            scale_direction: faker.word.noun(),
+            scale_direction: faker.helpers.arrayElement(['up', 'down']),
         } as DbInputData
     },
 
@@ -30,7 +30,7 @@ export const FakeRating = {
                 rating_value: faker.number.int({min: 1000, max: 3000}),
                 scale_minimum: faker.number.int({min: 1000, max: 3000}),
                 scale_maximum: faker.number.int({min: 1000, max: 3000}),
-                scale_direction: faker.word.noun(),
+                scale_direction: faker.helpers.arrayElement(['up', 'down']),
                 created_at: faker.date.past().toISOString(),
                 updated_at: faker.date.past().toISOString(),
             },

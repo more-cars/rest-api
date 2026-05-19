@@ -6,7 +6,7 @@ import type {LapTimeNode} from "../../../../src/models/node-types/lap-times/type
 export const FakeLapTime = {
     dbInput: function () {
         return {
-            time: faker.word.noun(),
+            time: "PT1M33.333S",
             driver_name: faker.person.fullName(),
             date: faker.date.past().toISOString().substring(0, 10),
         } satisfies DbInputData
@@ -14,7 +14,7 @@ export const FakeLapTime = {
 
     dbInputMinimal: function () {
         return {
-            time: faker.word.noun(),
+            time: "PT1M33.333S",
             driver_name: faker.person.fullName(),
         } as DbInputData
     },
@@ -24,7 +24,7 @@ export const FakeLapTime = {
             node_type: ModelNodeType.LapTime,
             attributes: {
                 id: faker.number.int({min: 12_000_000, max: 20_000_000}),
-                time: faker.word.noun(),
+                time: "PT1M33.333S",
                 driver_name: faker.person.fullName(),
                 date: faker.date.past().toISOString().substring(0, 10),
                 created_at: faker.date.past().toISOString(),
