@@ -13,9 +13,9 @@ http:
     type: json
     data: |-
       {
-        "time": "PT1M33.294S - Updated",
-        "driver_name": "Klaus Ludwig - Updated",
-        "date": "1996-08-03 - Updated"
+        "time": "PT1M23.294S",
+        "driver_name": "Klaus Ludwig",
+        "date": "1996-08-02"
       }
 
 runtime:

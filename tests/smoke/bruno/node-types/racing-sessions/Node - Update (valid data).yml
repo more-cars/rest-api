@@ -14,12 +14,12 @@ http:
     data: |-
       {
         "name": "Grand Prix - Updated",
-        "start_date": "2025-05-25 - Updated",
+        "start_date": "2025-05-23",
         "start_time": "15:00 - Updated",
         "duration": 122,
         "duration_unit": "min - Updated",
         "distance": 63,
-        "distance_unit": "laps - Updated"
+        "distance_unit": "laps"
       }
 
 runtime:

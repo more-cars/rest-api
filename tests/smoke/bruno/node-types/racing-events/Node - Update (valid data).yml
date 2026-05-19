@@ -15,8 +15,8 @@ http:
       {
         "name": "GP Monaco - Updated",
         "round": 9,
-        "date_from": "2025-05-20 - Updated",
-        "date_to": "2025-05-22 - Updated"
+        "date_from": "2025-05-22",
+        "date_to": "2025-05-24"
       }
 
 runtime:

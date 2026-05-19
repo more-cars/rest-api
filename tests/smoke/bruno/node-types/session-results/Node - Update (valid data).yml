@@ -17,10 +17,10 @@ http:
         "race_number": "44 - Updated",
         "driver_name": "Lewis Hamilton - Updated",
         "team_name": "Mercedes - Updated",
-        "race_time": "PT1H23M45.678S - Updated",
+        "race_time": "PT1H23M45.678S",
         "laps": 53,
-        "status": "finished - Updated",
-        "points": 27
+        "status": "DSQ",
+        "points": 0
       }
 
 runtime:

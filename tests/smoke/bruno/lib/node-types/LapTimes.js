@@ -34,8 +34,8 @@ exports.createHasMainVideoRelationship = async function () {
 
 exports.create = async function (prefix = '') {
     const response = await post("/lap-times", {
-        time: 'Dummy Lap Time',
-        driver_name: 'Dummy Lap Time',
+        time: 'PT1M33.294S',
+        driver_name: 'Dummy Driver',
     })
 
     bru.setEnvVar('valid' + prefix + 'LapTimeId', response.id)

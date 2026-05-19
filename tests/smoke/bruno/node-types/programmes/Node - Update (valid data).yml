@@ -19,7 +19,7 @@ http:
         "channel": "BBC Two - Updated",
         "total_seasons": 35,
         "total_episodes": 242,
-        "regular_episode_running_time": "PT60M - Updated",
+        "regular_episode_running_time": "PT50M",
         "country_code": "DE"
       }
 

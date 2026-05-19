@@ -17,11 +17,11 @@ http:
         "year_from": 1969,
         "year_to": 2001,
         "length": 7.397,
-        "length_unit": "km - Updated",
-        "direction": "clockwise - Updated",
+        "length_unit": "m",
+        "direction": "clockwise",
         "elevation_change": 75,
-        "elevation_change_unit": "m - Updated",
-        "surface": "asphalt - Updated"
+        "elevation_change_unit": "m",
+        "surface": "asphalt"
       }
 
 runtime:

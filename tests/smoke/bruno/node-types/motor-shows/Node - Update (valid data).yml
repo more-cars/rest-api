@@ -14,11 +14,11 @@ http:
     data: |-
       {
         "name": "2017 IAA Frankfurt - Updated",
-        "date_from": "2017-09-14 - Updated",
-        "date_until": "2017-09-24 - Updated",
+        "date_from": "2017-09-14",
+        "date_until": "2017-09-24",
         "location": "Frankfurt - Updated",
-        "target_audience": "international - Updated",
-        "focus": "new cars - Updated",
+        "target_audience": "regional",
+        "focus": "new_cars",
         "country_code": "AT"
       }
 

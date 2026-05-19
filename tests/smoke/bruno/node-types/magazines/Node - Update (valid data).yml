@@ -16,15 +16,15 @@ http:
         "name": "Top Gear - Updated",
         "founded": 1995,
         "defunct": null,
-        "focus": "sports cars - Updated",
-        "publication_frequency": "monthly - Updated",
+        "focus": "sports cars",
+        "publication_frequency": "monthly",
         "single_copy_price": 7.99,
         "single_copy_price_unit": "GBP",
-        "publication_format": "print - Updated",
+        "publication_format": "print",
         "circulation": 150886,
         "circulation_year": 2015,
         "publisher": "Immediate Media Company - Updated",
-        "issn": "1350-9624 - Updated",
+        "issn": "1350-9624",
         "country_code": "AT"
       }
 
