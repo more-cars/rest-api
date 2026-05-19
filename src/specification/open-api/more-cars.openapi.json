@@ -26202,6 +26202,7 @@
           },
           "country_code": {
             "type": "string",
+            "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "DE"
           },
@@ -27315,7 +27316,6 @@
               "kei car",
               "minivan",
               "offroad",
-              "other",
               "pickup truck",
               "roadster",
               "sedan",
@@ -27325,6 +27325,7 @@
               "targa",
               "truck",
               "van",
+              "other",
               null
             ]
           },
@@ -27407,6 +27408,7 @@
               "Flat",
               "Rotary",
               "W",
+              "other",
               null
             ]
           },
@@ -27436,6 +27438,7 @@
               "turbo",
               "super",
               "turbo_and_supercharged",
+              "other",
               null
             ]
           },
@@ -27452,6 +27455,7 @@
               "diesel",
               "fuel_cell",
               "turbine",
+              "other",
               null
             ]
           },
@@ -27466,6 +27470,7 @@
               "diesel",
               "hydrogen",
               "ethanol",
+              "other",
               null
             ]
           },
@@ -27480,6 +27485,7 @@
               "diesel",
               "hydrogen",
               "ethanol",
+              "other",
               null
             ]
           },
@@ -27569,6 +27575,7 @@
               "sequential",
               "automated manual",
               "cvt",
+              "other",
               null
             ]
           },
@@ -27586,6 +27593,7 @@
               "RWD",
               "AWD",
               "FWD",
+              "other",
               null
             ]
           },
@@ -27607,6 +27615,7 @@
             "enum": [
               "km/h",
               "mph",
+              "m/s",
               null
             ]
           },
@@ -28543,20 +28552,22 @@
           "price": {
             "type": "number",
             "description": "",
-            "example": "59990"
+            "example": 59990
           },
           "price_year": {
             "type": "number",
             "description": "",
-            "example": "2020"
+            "example": 2020
           },
           "currency_code": {
             "type": "string",
-            "description": "",
+            "format": "iso4217",
+            "description": "3-letter ISO 4217 currency code",
             "example": "EUR"
           },
           "country_code": {
             "type": "string",
+            "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "DE"
           }
@@ -28784,12 +28795,12 @@
           "founded": {
             "type": "number",
             "description": "The year the company was founded.",
-            "example": "1916"
+            "example": 1916
           },
           "defunct": {
             "type": "number",
             "description": "The year the company was shut down.",
-            "example": ""
+            "example": null
           },
           "headquarters_location": {
             "type": "string",
@@ -28798,6 +28809,7 @@
           },
           "hq_country_code": {
             "type": "string",
+            "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "DE"
           },
@@ -28808,6 +28820,7 @@
           },
           "legal_hq_country_code": {
             "type": "string",
+            "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "DE"
           },
@@ -29188,17 +29201,24 @@
           "opened": {
             "type": "number",
             "description": "The year in which the race track was opened to the public.",
-            "example": "2000"
+            "example": 2000
           },
           "closed": {
             "type": "number",
             "description": "The year in which the race track was shut down.",
-            "example": ""
+            "example": null
           },
           "type": {
             "type": "string",
             "description": "Is it a permanent race track or a temporary one?",
-            "example": "permanent race track"
+            "example": "permanent race track",
+            "nullable": true,
+            "enum": [
+              "permanent race track",
+              "street circuit",
+              "other",
+              null
+            ]
           },
           "location": {
             "type": "string",
@@ -29207,11 +29227,13 @@
           },
           "geo_position": {
             "type": "string",
-            "description": "The geographic position of the race track, provided as coordinates with latitude and longitude information.",
-            "example": "51°32'0\"N 13°55'10\"E"
+            "format": "iso6709",
+            "description": "ISO 6709 coordinates.",
+            "example": "51°32′0″N 13°55′10″E"
           },
           "country_code": {
             "type": "string",
+            "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "DE"
           }
@@ -29640,42 +29662,70 @@
           "year_from": {
             "type": "number",
             "description": "",
-            "example": "1967"
+            "example": 1967
           },
           "year_to": {
             "type": "number",
             "description": "",
-            "example": "1999"
+            "example": 1999
           },
           "length": {
             "type": "number",
             "description": "",
-            "example": "7.004"
+            "example": 7.004
           },
           "length_unit": {
             "type": "string",
             "description": "",
-            "example": "km"
+            "example": "km",
+            "nullable": true,
+            "enum": [
+              "m",
+              "km",
+              "miles",
+              "laps",
+              null
+            ]
           },
           "direction": {
             "type": "string",
             "description": "",
-            "example": "clockwise"
+            "example": "clockwise",
+            "nullable": true,
+            "enum": [
+              "clockwise",
+              "counterclockwise",
+              null
+            ]
           },
           "elevation_change": {
             "type": "number",
             "description": "",
-            "example": "71"
+            "example": 71
           },
           "elevation_change_unit": {
             "type": "string",
             "description": "",
-            "example": "m"
+            "example": "m",
+            "nullable": true,
+            "enum": [
+              "m",
+              "km",
+              "miles",
+              null
+            ]
           },
           "surface": {
             "type": "string",
             "description": "",
-            "example": "asphalt"
+            "example": "asphalt",
+            "nullable": true,
+            "enum": [
+              "asphalt",
+              "mixed",
+              "other",
+              null
+            ]
           }
         }
       },
@@ -30220,12 +30270,12 @@
           "founded": {
             "type": "number",
             "description": "",
-            "example": "1950"
+            "example": 1950
           },
           "defunct": {
             "type": "number",
             "description": "",
-            "example": ""
+            "example": null
           },
           "organized_by": {
             "type": "string",
@@ -30235,10 +30285,20 @@
           "vehicle_type": {
             "type": "string",
             "description": "",
-            "example": "formula racing cars"
+            "example": "formula racing cars",
+            "nullable": true,
+            "enum": [
+              "formula racing cars",
+              "rally cars",
+              "touring cars",
+              "sports cars",
+              "other",
+              null
+            ]
           },
           "country_code": {
             "type": "string",
+            "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "US"
           }
@@ -30606,16 +30666,18 @@
           "round": {
             "type": "number",
             "description": "",
-            "example": "8"
+            "example": 8
           },
           "date_from": {
             "type": "string",
-            "description": "",
+            "format": "iso8601",
+            "description": "ISO 8601 date",
             "example": "2025-05-25"
           },
           "date_to": {
             "type": "string",
-            "description": "",
+            "format": "iso8601",
+            "description": "ISO 8601 date",
             "example": "2025-05-27"
           }
         }
@@ -31289,33 +31351,39 @@
           },
           "start_date": {
             "type": "string",
-            "description": "",
+            "format": "iso8601",
+            "description": "ISO 8601 date",
             "example": "2025-05-20"
           },
           "start_time": {
             "type": "string",
-            "description": "",
-            "example": "14:00"
+            "format": "iso8601",
+            "description": "ISO 8601 time",
+            "example": "14:00:00"
           },
           "duration": {
-            "type": "number",
-            "description": "",
-            "example": "120"
-          },
-          "duration_unit": {
             "type": "string",
-            "description": "",
-            "example": "min"
+            "format": "iso8601",
+            "description": "ISO 8601 duration",
+            "example": "PT120M"
           },
           "distance": {
             "type": "number",
             "description": "",
-            "example": "58"
+            "example": 58
           },
           "distance_unit": {
             "type": "string",
             "description": "",
-            "example": "laps"
+            "example": "laps",
+            "nullable": true,
+            "enum": [
+              "m",
+              "km",
+              "miles",
+              "laps",
+              null
+            ]
           }
         }
       },
@@ -31727,7 +31795,7 @@
           "position": {
             "type": "number",
             "description": "",
-            "example": "1"
+            "example": 1
           },
           "race_number": {
             "type": "string",
@@ -31746,23 +31814,34 @@
           },
           "race_time": {
             "type": "string",
-            "description": "",
+            "format": "iso8601",
+            "description": "ISO 8601 duration",
             "example": "PT1H23M45.678S"
           },
           "laps": {
             "type": "number",
             "description": "",
-            "example": "51"
+            "example": 51
           },
           "status": {
             "type": "string",
             "description": "",
-            "example": "finished"
+            "example": "Finished",
+            "nullable": true,
+            "enum": [
+              "Finished",
+              "DSQ",
+              "DNF",
+              "DNC",
+              "DNS",
+              "other",
+              null
+            ]
           },
           "points": {
             "type": "number",
             "description": "",
-            "example": "25"
+            "example": 25
           }
         }
       },
@@ -32113,7 +32192,8 @@
           },
           "time": {
             "type": "string",
-            "description": "",
+            "format": "iso8601",
+            "description": "ISO 8601 duration",
             "example": "PT1M33.294S"
           },
           "driver_name": {
@@ -32123,7 +32203,8 @@
           },
           "date": {
             "type": "string",
-            "description": "",
+            "format": "iso8601",
+            "description": "ISO 8601 date",
             "example": "1996-08-03"
           }
         }
@@ -32625,7 +32706,7 @@
           "release_year": {
             "type": "number",
             "description": "",
-            "example": "2017"
+            "example": 2017
           },
           "developer": {
             "type": "string",
@@ -33120,7 +33201,7 @@
           "release_year": {
             "type": "number",
             "description": "",
-            "example": "2020"
+            "example": 2020
           },
           "manufacturer": {
             "type": "string",
@@ -33492,12 +33573,22 @@
           "release_year": {
             "type": "number",
             "description": "",
-            "example": "2016"
+            "example": 2016
           },
           "scale": {
             "type": "string",
             "description": "",
-            "example": "1:64"
+            "example": "1:64",
+            "nullable": true,
+            "enum": [
+              "1:64",
+              "1:43",
+              "1:24",
+              "1:18",
+              "1:10",
+              "other",
+              null
+            ]
           },
           "series": {
             "type": "string",
@@ -33914,6 +34005,7 @@
           },
           "country_code": {
             "type": "string",
+            "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "US"
           }
@@ -34278,7 +34370,7 @@
           "founded": {
             "type": "integer",
             "description": "",
-            "example": "1993"
+            "example": 1993
           },
           "defunct": {
             "type": "integer",
@@ -34288,37 +34380,73 @@
           "focus": {
             "type": "string",
             "description": "",
-            "example": null
+            "example": "new cars",
+            "nullable": true,
+            "enum": [
+              "new cars",
+              "sports cars",
+              "classic cars",
+              "brand specific",
+              "race cars",
+              "tuned cars",
+              "american cars",
+              "mixed",
+              "other",
+              null
+            ]
           },
           "publication_frequency": {
             "type": "string",
             "description": "",
-            "example": "monthly"
+            "example": "monthly",
+            "nullable": true,
+            "enum": [
+              "yearly",
+              "twice a year",
+              "quarterly",
+              "every two months",
+              "every six weeks",
+              "monthly",
+              "twice per month",
+              "weekly",
+              "irregular",
+              "other",
+              null
+            ]
           },
           "single_copy_price": {
             "type": "number",
             "description": "",
-            "example": "5.99"
+            "example": 5.99
           },
           "single_copy_price_unit": {
             "type": "string",
-            "description": "",
+            "format": "iso4217",
+            "description": "3-letter ISO 4217 currency code",
             "example": "GBP"
           },
           "publication_format": {
             "type": "string",
             "description": "",
-            "example": "print"
+            "example": "print",
+            "nullable": true,
+            "enum": [
+              "print",
+              "digital",
+              "print_and_digital",
+              "other",
+              null
+            ]
           },
           "circulation": {
             "type": "integer",
             "description": "",
-            "example": "150884"
+            "example": 150884
           },
           "circulation_year": {
             "type": "integer",
             "description": "",
-            "example": "2013"
+            "example": 2013
           },
           "publisher": {
             "type": "string",
@@ -34327,11 +34455,13 @@
           },
           "issn": {
             "type": "string",
-            "description": "",
+            "format": "iso3297",
+            "description": "ISO 3297 ISSN number",
             "example": "1350-9624"
           },
           "country_code": {
             "type": "string",
+            "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "GB"
           }
@@ -35494,22 +35624,28 @@
           "rating_value": {
             "type": "number",
             "description": "",
-            "example": "93"
+            "example": 93
           },
           "scale_minimum": {
             "type": "number",
             "description": "",
-            "example": "0"
+            "example": 0
           },
           "scale_maximum": {
             "type": "number",
             "description": "",
-            "example": "100"
+            "example": 100
           },
           "scale_direction": {
             "type": "string",
             "description": "",
-            "example": "up"
+            "example": "up",
+            "nullable": true,
+            "enum": [
+              "up",
+              "down",
+              null
+            ]
           }
         }
       },
@@ -35800,12 +35936,12 @@
           "aired_from_year": {
             "type": "number",
             "description": "",
-            "example": "2002"
+            "example": 2002
           },
           "aired_until_year": {
             "type": "number",
             "description": "",
-            "example": "2022"
+            "example": 2022
           },
           "channel": {
             "type": "string",
@@ -35815,20 +35951,22 @@
           "total_seasons": {
             "type": "number",
             "description": "",
-            "example": "33"
+            "example": 33
           },
           "total_episodes": {
             "type": "number",
             "description": "",
-            "example": "240"
+            "example": 240
           },
           "regular_episode_running_time": {
             "type": "string",
-            "description": "",
+            "format": "iso8601",
+            "description": "ISO 8601 duration",
             "example": "PT60M"
           },
           "country_code": {
             "type": "string",
+            "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "GB"
           }
@@ -36197,21 +36335,23 @@
           "season_number": {
             "type": "number",
             "description": "",
-            "example": "2"
+            "example": 2
           },
           "season_episode_number": {
             "type": "number",
             "description": "",
-            "example": "2"
+            "example": 2
           },
           "original_air_date": {
             "type": "string",
-            "description": "",
+            "format": "iso8601",
+            "description": "ISO 8601 date",
             "example": "2017-12-08"
           },
           "duration": {
             "type": "string",
-            "description": "",
+            "format": "iso8601",
+            "description": "ISO 8601 duration",
             "example": "PT55M"
           }
         }
@@ -36786,12 +36926,14 @@
           },
           "date_from": {
             "type": "string",
-            "description": "",
+            "format": "iso8601",
+            "description": "ISO 8601 date",
             "example": "2017-09-14"
           },
           "date_until": {
             "type": "string",
-            "description": "",
+            "format": "iso8601",
+            "description": "ISO 8601 date",
             "example": "2017-09-24"
           },
           "location": {
@@ -36802,15 +36944,30 @@
           "target_audience": {
             "type": "string",
             "description": "",
-            "example": "international"
+            "example": "international",
+            "nullable": true,
+            "enum": [
+              "international",
+              "national",
+              "regional",
+              "other",
+              null
+            ]
           },
           "focus": {
             "type": "string",
             "description": "",
-            "example": "new cars"
+            "example": "new_cars",
+            "nullable": true,
+            "enum": [
+              "new_cars",
+              "other",
+              null
+            ]
           },
           "country_code": {
             "type": "string",
+            "format": "iso3166-1-alpha2",
             "description": "2-letter ISO 3166 country code.",
             "example": "DE"
           }
@@ -37174,7 +37331,10 @@
           "video_provider": {
             "type": "string",
             "description": "",
-            "example": "youtube"
+            "example": "youtube",
+            "enum": [
+              "youtube"
+            ]
           },
           "external_id": {
             "type": "string",
@@ -37213,7 +37373,8 @@
           },
           "duration": {
             "type": "string",
-            "description": "",
+            "format": "iso8601",
+            "description": "ISO 8601 duration",
             "example": "PT7M24S"
           },
           "thumbnail_url_l": {
