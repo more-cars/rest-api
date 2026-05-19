@@ -71,7 +71,7 @@ describe('Update RATING', () => {
                 "rating_value": 95,
                 "scale_minimum": 2,
                 "scale_maximum": 102,
-                "scale_direction": "up - Updated",
+                "scale_direction": "down",
             })
 
         expect(response.statusCode)

@@ -27,7 +27,7 @@ describe('Update LAP TIME', () => {
         const response = await request(app)
             .patch('/lap-times/42')
             .send({
-                "time": "PT1M33.294S - Updated",
+                "time": "PT1M33.294S",
                 "driver_name": "Klaus Ludwig - Updated",
             })
 
@@ -79,7 +79,7 @@ describe('Update LAP TIME', () => {
         const response = await request(app)
             .patch('/lap-times/42')
             .send({
-                "time": "PT1M33.294S - Updated",
+                "time": "PT1M33.294S",
                 "driver_name": "Klaus Ludwig - Updated",
             })
 
