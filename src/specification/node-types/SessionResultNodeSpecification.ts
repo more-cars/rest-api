@@ -42,7 +42,7 @@ export const SessionResultNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'PT1H23M45.678S',
             scope: 'user',
-            validation: ['string'],
+            validation: ['string', 'duration'],
         },
         {
             name: 'laps',
@@ -58,7 +58,7 @@ export const SessionResultNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'finished',
             scope: 'user',
-            validation: ['string'],
+            validation: ['string', 'sessionResultStatus'],
         },
         {
             name: 'points',

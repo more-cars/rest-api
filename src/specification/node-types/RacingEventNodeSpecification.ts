@@ -26,7 +26,7 @@ export const RacingEventNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: '2025-05-20',
             scope: 'user',
-            validation: ['string'],
+            validation: ['string', 'date'],
         },
         {
             name: 'date_to',
@@ -34,7 +34,7 @@ export const RacingEventNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: '2025-05-22',
             scope: 'user',
-            validation: ['string'],
+            validation: ['string', 'date'],
         },
     ],
 }

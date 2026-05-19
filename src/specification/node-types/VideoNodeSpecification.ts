@@ -74,7 +74,7 @@ export const VideoNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'PT7M24S',
             scope: 'system',
-            validation: ['string'],
+            validation: ['string', 'duration'],
         },
         {
             name: 'thumbnail_url_l',

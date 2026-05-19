@@ -34,7 +34,7 @@ export const ProgrammeEpisodeNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: '2017-12-08',
             scope: 'user',
-            validation: ['string'],
+            validation: ['string', 'date'],
         },
         {
             name: 'duration',
@@ -42,7 +42,7 @@ export const ProgrammeEpisodeNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'PT55M',
             scope: 'user',
-            validation: ['string'],
+            validation: ['string', 'duration'],
         },
     ],
 }

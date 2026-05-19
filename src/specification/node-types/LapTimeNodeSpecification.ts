@@ -10,7 +10,7 @@ export const LapTimeNodeSpecification: NodeSpecification = {
             mandatory: true,
             example: 'PT1M33.294S',
             scope: 'user',
-            validation: ['mandatory', 'string'],
+            validation: ['mandatory', 'duration'],
         },
         {
             name: 'driver_name',
@@ -26,7 +26,7 @@ export const LapTimeNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: '1996-08-03',
             scope: 'user',
-            validation: ['string'],
+            validation: ['string', 'date'],
         },
     ],
 }

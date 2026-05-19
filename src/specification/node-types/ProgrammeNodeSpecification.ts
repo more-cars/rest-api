@@ -58,7 +58,7 @@ export const ProgrammeNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 'PT60M',
             scope: 'user',
-            validation: ['string'],
+            validation: ['string', 'duration'],
         },
         {
             name: 'country_code',

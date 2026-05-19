@@ -26,7 +26,7 @@ export const RevisionNodeSpecification: NodeSpecification = {
             mandatory: true,
             example: '2024-04-14T11:04:04.493Z',
             scope: 'system',
-            validation: ['string'],
+            validation: ['string', 'dateTime'],
         },
         {
             name: 'node_updated_at',
@@ -34,7 +34,7 @@ export const RevisionNodeSpecification: NodeSpecification = {
             mandatory: true,
             example: '2024-04-14T11:04:04.493Z',
             scope: 'system',
-            validation: ['string'],
+            validation: ['string', 'dateTime'],
         },
     ],
 }

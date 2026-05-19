@@ -34,7 +34,7 @@ export const RatingNodeSpecification: NodeSpecification = {
             mandatory: true,
             example: 'up',
             scope: 'user',
-            validation: ['mandatory', 'string'],
+            validation: ['mandatory', 'scaleDirection'],
         },
     ],
 }
