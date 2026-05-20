@@ -1,5 +1,6 @@
 import express from "express"
 import {OpenAPIBackend} from "openapi-backend"
+import "dotenv/config.js"
 
 const api = new OpenAPIBackend({
     definition: __dirname + "/../api-specs/youtube.openapi.json",
