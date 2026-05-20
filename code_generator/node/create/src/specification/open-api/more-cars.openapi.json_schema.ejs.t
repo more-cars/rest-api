@@ -49,7 +49,9 @@ skip_if: \"<%= h.changeCase.pascal(nodeType) %>\"
           "type": {
             "type": "string",
             "description": "",
-            "const": "<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>",
+            "enum": [
+              "<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>"
+            ],
             "example": "<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>"
           },
           "id": {

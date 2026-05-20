@@ -26243,7 +26243,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "brands",
+            "enum": [
+              "brands"
+            ],
             "example": "brands"
           },
           "id": {
@@ -26664,7 +26666,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "car-models",
+            "enum": [
+              "car-models"
+            ],
             "example": "car-models"
           },
           "id": {
@@ -27631,7 +27635,9 @@
         "properties": {
           "type": {
             "type": "string",
-            "const": "car-model-variants",
+            "enum": [
+              "car-model-variants"
+            ],
             "description": "",
             "example": "car-model-variants"
           },
@@ -28579,7 +28585,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "prices",
+            "enum": [
+              "prices"
+            ],
             "example": "prices"
           },
           "id": {
@@ -29245,7 +29253,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "race-tracks",
+            "enum": [
+              "race-tracks"
+            ],
             "example": "race-tracks"
           },
           "id": {
@@ -29735,7 +29745,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "track-layouts",
+            "enum": [
+              "track-layouts"
+            ],
             "example": "track-layouts"
           },
           "id": {
@@ -30310,7 +30322,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "racing-series",
+            "enum": [
+              "racing-series"
+            ],
             "example": "racing-series"
           },
           "id": {
@@ -30688,7 +30702,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "racing-events",
+            "enum": [
+              "racing-events"
+            ],
             "example": "racing-events"
           },
           "id": {
@@ -31393,7 +31409,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "racing-sessions",
+            "enum": [
+              "racing-sessions"
+            ],
             "example": "racing-sessions"
           },
           "id": {
@@ -31851,7 +31869,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "session-results",
+            "enum": [
+              "session-results"
+            ],
             "example": "session-results"
           },
           "id": {
@@ -32215,7 +32235,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "lap-times",
+            "enum": [
+              "lap-times"
+            ],
             "example": "lap-times"
           },
           "id": {
@@ -32726,7 +32748,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "racing-games",
+            "enum": [
+              "racing-games"
+            ],
             "example": "racing-games"
           },
           "id": {
@@ -33216,7 +33240,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "gaming-platforms",
+            "enum": [
+              "gaming-platforms"
+            ],
             "example": "gaming-platforms"
           },
           "id": {
@@ -33603,7 +33629,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "model-cars",
+            "enum": [
+              "model-cars"
+            ],
             "example": "model-cars"
           },
           "id": {
@@ -34017,7 +34045,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "model-car-brands",
+            "enum": [
+              "model-car-brands"
+            ],
             "example": "model-car-brands"
           },
           "id": {
@@ -34473,7 +34503,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "magazines",
+            "enum": [
+              "magazines"
+            ],
             "example": "magazines"
           },
           "id": {
@@ -34875,7 +34907,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "magazine-issues",
+            "enum": [
+              "magazine-issues"
+            ],
             "example": "magazine-issues"
           },
           "id": {
@@ -35655,7 +35689,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "ratings",
+            "enum": [
+              "ratings"
+            ],
             "example": "ratings"
           },
           "id": {
@@ -35978,7 +36014,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "programmes",
+            "enum": [
+              "programmes"
+            ],
             "example": "programmes"
           },
           "id": {
@@ -36362,7 +36400,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "programme-episodes",
+            "enum": [
+              "programme-episodes"
+            ],
             "example": "programme-episodes"
           },
           "id": {
@@ -36979,7 +37019,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "motor-shows",
+            "enum": [
+              "motor-shows"
+            ],
             "example": "motor-shows"
           },
           "id": {
@@ -37405,7 +37447,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "videos",
+            "enum": [
+              "videos"
+            ],
             "example": "videos"
           },
           "id": {
@@ -37730,7 +37774,9 @@
           "type": {
             "type": "string",
             "description": "",
-            "const": "images",
+            "enum": [
+              "images"
+            ],
             "example": "images"
           },
           "id": {
