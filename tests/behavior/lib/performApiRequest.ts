@@ -30,7 +30,6 @@ async function extractResponseBody(response: Response) {
     try {
         return JSON.parse(responseBody)
     } catch (e) {
-        console.error(e)
         return responseBody
     }
 }
