@@ -18,9 +18,13 @@ runtime:
     - expression: res.status
       operator: eq
       value: "404"
-    - expression: res.body
-      operator: isString
-    - expression: res.body
+    - expression: res.body.errors
+      operator: isArray
+    - expression: res.body.errors[0].status
+      operator: isNotEmpty
+    - expression: res.body.errors[0].title
+      operator: isNotEmpty
+    - expression: res.body.errors[0].detail
       operator: isNotEmpty
   scripts:
     - type: before-request
