@@ -6,7 +6,7 @@ import {convertNodeResponseToNode} from "../../lib/convertNodeResponseToNode"
 
 When('the user creates a {string} {string} with the following data',
     async (nodeType: string, nodeLabel: string, dataTable: DataTable) => {
-        const data: any = {}
+        const data: Record<string, string | number | boolean | null> = {}
 
         const properties = dataTable.hashes()
         properties.forEach((property) => {

@@ -5,7 +5,7 @@ import {NodeManager} from "../../lib/NodeManager"
 
 When('the user updates the node {string} with the following data',
     async (nodeLabel: string, dataTable: DataTable) => {
-        const data: any = {}
+        const data: Record<string, string | number | boolean | null> = {}
 
         const properties = dataTable.hashes()
         properties.forEach((property) => {

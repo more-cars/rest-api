@@ -4,7 +4,7 @@ import {performApiRequest} from "../../lib/performApiRequest"
 
 When('the user tries to create a {string} with the following data',
     async (nodeType: string, dataTable: DataTable) => {
-        const data: any = {}
+        const data: Record<string, string | number | boolean | null> = {}
 
         const properties = dataTable.hashes()
         properties.forEach((property) => {

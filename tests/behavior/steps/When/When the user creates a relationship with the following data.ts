@@ -7,7 +7,7 @@ When('the user creates a relationship with the following data',
     async (dataTable: DataTable) => {
         const startNode = await NodeManager.createNode(NodeType.Brand, '')
         const endNode = await NodeManager.createNode(NodeType.CarModel, '')
-        const data: any = {}
+        const data: Record<string, string | number | boolean | null> = {}
 
         const rows = dataTable.hashes()
         rows.forEach((row) => {
