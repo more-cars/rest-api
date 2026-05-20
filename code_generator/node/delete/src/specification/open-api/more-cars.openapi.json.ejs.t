@@ -27,9 +27,9 @@ skip_if: 'Delete `<%= h.changeCase.title(nodeType) %>`'
           "404": {
             "description": "Deletion request failed. A `<%= h.changeCase.title(nodeType) %>` with the provided ID could not be found.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response404"
                 }
               }
             }

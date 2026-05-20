@@ -36,9 +36,9 @@ skip_if: Get the ›<%= h.changeCase.kebab(relationshipName) %>‹ relationship 
           "404": {
             "description": "Request failed. The `<%= h.changeCase.title(startNodeType) %>` could not be found in the database.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response404"
                 }
               }
             }

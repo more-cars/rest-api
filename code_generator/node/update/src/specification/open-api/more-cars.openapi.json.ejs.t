@@ -44,9 +44,9 @@ skip_if: 'Update `<%= h.changeCase.title(nodeType) %>`'
           "404": {
             "description": "Update request failed. A `<%= h.changeCase.title(nodeType) %>` with the provided ID could not be found.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response404"
                 }
               }
             }

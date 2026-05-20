@@ -9,7 +9,7 @@ export function sendResponse404(res: express.Response) {
             {
                 status: '404',
                 title: 'Node not found',
-                detail: `The request contains a reference to a node that does not exist, does not exist anymore, or is temporarily unavailable.`,
+                detail: 'The request contains a reference to a node that does not exist, does not exist anymore, or is temporarily unavailable.',
             },
         ],
     })

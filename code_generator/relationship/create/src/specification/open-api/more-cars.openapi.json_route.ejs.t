@@ -47,9 +47,9 @@ skip_if: Creates a ›<%= h.changeCase.kebab(relationshipName) %>‹ relationshi
           "404": {
             "description": "Request failed. `<%= h.changeCase.title(startNodeType) %>` and/or `<%= h.changeCase.title(startNodeType === endNodeType ? 'partner' : endNodeType) %>` could not be found in the database.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response404"
                 }
               }
             }
