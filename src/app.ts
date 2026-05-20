@@ -9,6 +9,7 @@ import health from "./routes/health"
 import nodes from "./routes/nodes/nodes"
 import relationships from "./routes/relationships"
 import {registerNodeTypeRoutes} from "./routes/registerNodeTypeRoutes"
+import {notFound} from "./routes/notFound"
 
 const app = express()
 
@@ -42,5 +43,6 @@ app.use('/', health)
 app.use('/', nodes)
 app.use('/', relationships)
 registerNodeTypeRoutes(app)
+app.use(notFound)
 
 export {app}
