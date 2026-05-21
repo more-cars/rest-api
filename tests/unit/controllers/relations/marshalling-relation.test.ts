@@ -26,6 +26,9 @@ describe('Marshalling a relation', () => {
         }
 
         const marshalledRelation = marshalRelation(convertModelRelationToControllerRelation(relationship))
+        const sourceNodeType = convertStringToControllerNodeType(origin.node_type)
+        const targetNodeType = convertStringToControllerNodeType(destination.node_type)
+        const {id, ...attributes} = destination.attributes
 
         // schema check
         expect(validateJson(marshalledRelation, RelationshipSchema))
@@ -35,10 +38,13 @@ describe('Marshalling a relation', () => {
         expect(marshalledRelation)
             .toStrictEqual({
                 links: {
-                    self: `/${convertStringToControllerNodeType(origin.node_type)}/${origin.attributes.id}/${mapModelRelationTypeToControllerRelationType(relType)}`,
-                    related: `/${convertStringToControllerNodeType(destination.node_type)}/${destination.attributes.id}`,
+                    self: `/${sourceNodeType}/${origin.attributes.id}/${mapModelRelationTypeToControllerRelationType(relType)}`,
+                    related: `/${targetNodeType}/${destination.attributes.id}`,
                 },
                 data: {
+                    type: targetNodeType,
+                    id,
+                    attributes,
                     relationship_id: 3,
                     relationship_name: mapModelRelationTypeToControllerRelationType(relType),
                     start_node: {

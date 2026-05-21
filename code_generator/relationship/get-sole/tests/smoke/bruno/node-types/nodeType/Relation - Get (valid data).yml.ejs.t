@@ -36,12 +36,12 @@ runtime:
     - expression: res.body.data.start_node.data.id
       operator: eq
       value: "{{valid<%= h.changeCase.pascal(startNodeType) %>Id}}"
-    - expression: res.body.data.partner_node
+    - expression: res.body.data.attributes
       operator: isJson
-    - expression: res.body.data.partner_node.node_type
+    - expression: res.body.data.type
       operator: eq
       value: "<%= h.changeCase.kebab(h.inflection.pluralize(endNodeType)) %>"
-    - expression: res.body.data.partner_node.data.id
+    - expression: res.body.data.id
       operator: eq
       value: "{{valid<%= h.changeCase.pascal(endNodeType) %>Id}}"
     - expression: res.body.data.created_at

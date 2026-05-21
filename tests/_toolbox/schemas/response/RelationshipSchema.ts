@@ -6,11 +6,19 @@ export const RelationshipSchema = {
             properties: {
                 self: {type: "string"},
                 related: {type: "string"},
-            }
+            },
+            required: [
+                "self",
+                "related",
+            ],
+            additionalProperties: false,
         },
         data: {
             type: "object",
             properties: {
+                type: {type: "string"},
+                id: {type: "integer"},
+                attributes: {type: "object"},
                 relationship_id: {type: "integer"},
                 relationship_name: {type: "string"},
                 start_node: {
@@ -39,6 +47,9 @@ export const RelationshipSchema = {
                 updated_at: {type: "string"},
             },
             required: [
+                "type",
+                "id",
+                "attributes",
                 "relationship_id",
                 "relationship_name",
                 "start_node",
@@ -50,6 +61,7 @@ export const RelationshipSchema = {
         },
     },
     required: [
+        "links",
         "data",
     ],
     additionalProperties: false,

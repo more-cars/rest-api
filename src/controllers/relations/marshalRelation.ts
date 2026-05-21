@@ -2,12 +2,17 @@ import type {Relation} from "../types/Relation"
 import type {RelationResponse} from "../types/RelationResponse"
 
 export function marshalRelation(relation: Relation) {
+    const {id, ...attributes} = relation.to_node.fields
+
     const marshalledRelation: RelationResponse = {
         links: {
             self: `/${relation.from_node.node_type}/${relation.from_node.fields.id}/${relation.type}`,
             related: `/${relation.to_node.node_type}/${relation.to_node.fields.id}`,
         },
         data: {
+            type: relation.to_node.node_type,
+            id,
+            attributes,
             relationship_id: relation.id,
             relationship_name: relation.type,
             start_node: {

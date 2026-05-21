@@ -33,12 +33,12 @@ runtime:
     - expression: res.body.data.start_node.data.id
       operator: eq
       value: "{{validMagazineIssueId}}"
-    - expression: res.body.data.partner_node
+    - expression: res.body.data.attributes
       operator: isJson
-    - expression: res.body.data.partner_node.node_type
+    - expression: res.body.data.type
       operator: eq
       value: "lap-times"
-    - expression: res.body.data.partner_node.data.id
+    - expression: res.body.data.id
       operator: eq
       value: "{{validLapTimeId}}"
     - expression: res.body.data.created_at

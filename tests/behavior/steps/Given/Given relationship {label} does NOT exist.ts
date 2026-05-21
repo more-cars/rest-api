@@ -2,15 +2,23 @@ import {Given} from "@cucumber/cucumber"
 import {RelationType} from "../../../../src/controllers/types/RelationType"
 import {RelationshipManager} from "../../lib/RelationshipManager"
 import type {RelationResponse} from "../../../../src/controllers/types/RelationResponse"
+import type {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
 
 Given('relationship {string} does NOT exist',
     async (label: string) => {
         const relationship = {
             links: {
-                self: `/dummy`,
-                related: `/dummy`,
+                self: '/dummy',
+                related: '/dummy',
             },
             data: {
+                type: 'dummy' as ControllerNodeType,
+                id: 4321,
+                attributes: {
+                    id: 4321,
+                    created_at: 'DUMMY',
+                    updated_at: 'DUMMY',
+                },
                 relationship_id: -Math.ceil(Math.random() * 1000),
                 relationship_name: 'DUMMY' as RelationType,
                 start_node: {

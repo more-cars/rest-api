@@ -26,16 +26,22 @@ describe('Marshalling a relation collection', () => {
         const relations = [relation, relation, relation]
 
         const marshalledRelations = marshalRelations(relations)
+        const sourceNodeType = convertStringToControllerNodeType(origin.node_type)
+        const targetNodeType = convertStringToControllerNodeType(destination.node_type)
+        const {id, ...attributes} = destination.attributes
 
         expect(marshalledRelations.data.length)
             .toEqual(3)
 
         const expectedRelation = {
             links: {
-                self: `/${convertStringToControllerNodeType(origin.node_type)}/${origin.attributes.id}/${mapModelRelationTypeToControllerRelationType(relType)}`,
-                related: `/${convertStringToControllerNodeType(destination.node_type)}/${destination.attributes.id}`,
+                self: `/${sourceNodeType}/${origin.attributes.id}/${mapModelRelationTypeToControllerRelationType(relType)}`,
+                related: `/${targetNodeType}/${destination.attributes.id}`,
             },
             data: {
+                type: targetNodeType,
+                id,
+                attributes,
                 relationship_id: 3,
                 relationship_name: relation.type,
                 start_node: {

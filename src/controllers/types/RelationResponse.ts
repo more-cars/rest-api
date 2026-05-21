@@ -1,4 +1,5 @@
 import {RelationType} from "./RelationType"
+import type {ControllerNodeType} from "./ControllerNodeType"
 
 export type RelationResponse = {
     links: {
@@ -6,6 +7,9 @@ export type RelationResponse = {
         related: string
     }
     data: {
+        type: ControllerNodeType
+        id: number
+        attributes: Record<string, string | number | boolean | null>
         relationship_id: number
         relationship_name: RelationType
         start_node: {
