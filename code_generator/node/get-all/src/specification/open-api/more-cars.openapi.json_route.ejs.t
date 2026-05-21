@@ -54,9 +54,9 @@ skip_if: Get all `<%= h.changeCase.title(h.inflection.pluralize(nodeType)) %>`
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }

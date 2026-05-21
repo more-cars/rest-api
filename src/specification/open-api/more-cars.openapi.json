@@ -139,9 +139,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -167,9 +167,9 @@
           "400": {
             "description": "`Company` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -248,9 +248,9 @@
           "400": {
             "description": "`Company` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -1031,9 +1031,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -1059,9 +1059,9 @@
           "400": {
             "description": "`Brand` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -1140,9 +1140,9 @@
           "400": {
             "description": "`Brand` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -2059,9 +2059,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -2087,9 +2087,9 @@
           "400": {
             "description": "`Car Model` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -2168,9 +2168,9 @@
           "400": {
             "description": "`Car Model` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -3631,9 +3631,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -3659,9 +3659,9 @@
           "400": {
             "description": "`Car Model Variant` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -3740,9 +3740,9 @@
           "400": {
             "description": "`Car Model Variant` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -5747,9 +5747,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -5775,9 +5775,9 @@
           "400": {
             "description": "`Price` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -5856,9 +5856,9 @@
           "400": {
             "description": "`Price` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -6367,9 +6367,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -6395,9 +6395,9 @@
           "400": {
             "description": "`Image` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -6822,9 +6822,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -6850,9 +6850,9 @@
           "400": {
             "description": "`Race Track` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -6931,9 +6931,9 @@
           "400": {
             "description": "`Race Track` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -7850,9 +7850,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -7878,9 +7878,9 @@
           "400": {
             "description": "`Track Layout` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -7959,9 +7959,9 @@
           "400": {
             "description": "`Track Layout` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -9150,9 +9150,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -9178,9 +9178,9 @@
           "400": {
             "description": "`Racing Series` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -9259,9 +9259,9 @@
           "400": {
             "description": "`Racing Series` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -10042,9 +10042,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -10070,9 +10070,9 @@
           "400": {
             "description": "`Racing Event` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -10151,9 +10151,9 @@
           "400": {
             "description": "`Racing Event` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -11750,9 +11750,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -11778,9 +11778,9 @@
           "400": {
             "description": "`Racing Session` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -11859,9 +11859,9 @@
           "400": {
             "description": "`Racing Session` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -12778,9 +12778,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -12806,9 +12806,9 @@
           "400": {
             "description": "`Session Result` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -12887,9 +12887,9 @@
           "400": {
             "description": "`Session Result` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -13670,9 +13670,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -13698,9 +13698,9 @@
           "400": {
             "description": "`Lap Time` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -13779,9 +13779,9 @@
           "400": {
             "description": "`Lap Time` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -14970,9 +14970,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -14998,9 +14998,9 @@
           "400": {
             "description": "`Racing Game` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -15079,9 +15079,9 @@
           "400": {
             "description": "`Racing Game` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -16134,9 +16134,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -16162,9 +16162,9 @@
           "400": {
             "description": "`Gaming Platform` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -16243,9 +16243,9 @@
           "400": {
             "description": "`Gaming Platform` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -17026,9 +17026,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -17054,9 +17054,9 @@
           "400": {
             "description": "`Model Car` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -17135,9 +17135,9 @@
           "400": {
             "description": "`Model Car` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -18054,9 +18054,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -18082,9 +18082,9 @@
           "400": {
             "description": "`Model Car Brand` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -18163,9 +18163,9 @@
           "400": {
             "description": "`Model Car Brand` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -18946,9 +18946,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -18974,9 +18974,9 @@
           "400": {
             "description": "`Magazine` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -19055,9 +19055,9 @@
           "400": {
             "description": "`Magazine` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -19838,9 +19838,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -19866,9 +19866,9 @@
           "400": {
             "description": "`Magazine Issue` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -19947,9 +19947,9 @@
           "400": {
             "description": "`Magazine Issue` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -21682,9 +21682,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -21710,9 +21710,9 @@
           "400": {
             "description": "`Rating` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -21791,9 +21791,9 @@
           "400": {
             "description": "`Rating` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -22438,9 +22438,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -22466,9 +22466,9 @@
           "400": {
             "description": "`Programme` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -22547,9 +22547,9 @@
           "400": {
             "description": "`Programme` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -23330,9 +23330,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -23358,9 +23358,9 @@
           "400": {
             "description": "`Programme Episode` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -23439,9 +23439,9 @@
           "400": {
             "description": "`Programme Episode` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -24766,9 +24766,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -24794,9 +24794,9 @@
           "400": {
             "description": "`Motor Show` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -24875,9 +24875,9 @@
           "400": {
             "description": "`Motor Show` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -25658,9 +25658,9 @@
           "400": {
             "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -25686,9 +25686,9 @@
           "400": {
             "description": "`Video` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }
@@ -38226,6 +38226,31 @@
           },
           "last": {
             "type": "string"
+          }
+        }
+      },
+      "Response400": {
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "400"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Invalid Request"
+                },
+                "detail": {
+                  "type": "string",
+                  "example": "The request contains invalid data, like a syntax error or malformed data."
+                }
+              }
+            }
           }
         }
       },

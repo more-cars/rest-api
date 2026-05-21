@@ -2,12 +2,12 @@
   {
     "op": "replace",
     "path": "/metadata/name",
-    "value": "smoke-test-1778680662"
+    "value": "smoke-test-1779353632"
   },
   {
     "op": "replace",
     "path": "/spec/template/spec/containers/0/image",
-    "value": "ghcr.io/more-cars/rest-api-rc:latest"
+    "value": "ghcr.io/more-cars/rest-api-rc:dc0a612f8877296245e5e59c2489604c889e4043"
   },
   {
     "op": "add",

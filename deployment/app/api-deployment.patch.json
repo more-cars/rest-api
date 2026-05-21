@@ -9,7 +9,7 @@
     "path": "/spec/template/spec/containers/0/env/0",
     "value": {
       "name": "ANALYTICS_URL",
-      "value": "https://analytics.prod.more-cars.internal"
+      "value": "https://analytics.testing.more-cars.internal"
     }
   }
 ]

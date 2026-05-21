@@ -34,9 +34,9 @@ skip_if: 'Update `<%= h.changeCase.title(nodeType) %>`'
           "400": {
             "description": "`<%= h.changeCase.title(nodeType) %>` could not be updated. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }

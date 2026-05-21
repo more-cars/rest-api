@@ -24,9 +24,9 @@ skip_if: Create `<%= h.changeCase.title(nodeType) %>`
           "400": {
             "description": "`<%= h.changeCase.title(nodeType) %>` could not be created. The provided data was invalid or malformed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response400"
                 }
               }
             }

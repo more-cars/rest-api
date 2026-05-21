@@ -2,6 +2,6 @@
   {
     "op": "replace",
     "path": "/spec/hostnames/0",
-    "value": "swagger.prod.more-cars.internal"
+    "value": "swagger.testing.more-cars.internal"
   }
 ]
