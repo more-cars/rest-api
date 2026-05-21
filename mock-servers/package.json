@@ -1,0 +1,11 @@
+{
+  "name": "@more-cars/rest-api-mock-servers",
+  "dependencies": {
+    "express": "5.2.1",
+    "openapi-backend": "5.17.0",
+    "dotenv": "17.4.2"
+  },
+  "scripts": {
+    "start": "./start.sh"
+  }
+}
