@@ -17,3 +17,18 @@ patches:
         value:
           name: USER_NAMESPACE_ENABLED
           value: "true"
+      - op: add
+        path: /spec/template/spec/containers/0/env/-
+        value:
+          name: FLICKR_SERVER_URL
+          value: http://$(MOCK_SERVERS_SERVICE_HOST):$(MOCK_SERVERS_SERVICE_PORT_FLICKR)
+      - op: add
+        path: /spec/template/spec/containers/0/env/-
+        value:
+          name: WIKIMEDIA_SERVER_URL
+          value: http://$(MOCK_SERVERS_SERVICE_HOST):$(MOCK_SERVERS_SERVICE_PORT_WIKIMEDIA)
+      - op: add
+        path: /spec/template/spec/containers/0/env/-
+        value:
+          name: YOUTUBE_SERVER_URL
+          value: http://$(MOCK_SERVERS_SERVICE_HOST):$(MOCK_SERVERS_SERVICE_PORT_YOUTUBE)
