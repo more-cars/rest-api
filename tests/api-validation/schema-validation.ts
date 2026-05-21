@@ -9,7 +9,7 @@ import {Validator} from "@seriousme/openapi-schema-validator"
 
 async function validateSchema(target: 'more-cars' | 'flickr' | 'wikimedia' | 'youtube') {
     const validator = new Validator()
-    const schemaLocation = target === 'more-cars' ? `${__dirname}/../../src/specification/open-api/${target}.openapi.json` : `${__dirname}/../behavior/mock-server/api-specs/${target}.openapi.json`
+    const schemaLocation = target === 'more-cars' ? `${__dirname}/../../src/specification/open-api/${target}.openapi.json` : `${__dirname}/../../mock-servers/api-specs/${target}.openapi.json`
     const res = await validator.validate(schemaLocation)
 
     if (res.valid) {
