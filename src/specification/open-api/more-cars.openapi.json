@@ -2447,6 +2447,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "The relationship could not be created. The same node cannot be connected to itself.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response422"
+                }
+              }
+            }
           }
         }
       },
@@ -2580,6 +2590,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The relationship could not be created. The same node cannot be connected to itself.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response422"
                 }
               }
             }
@@ -6411,6 +6431,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "The node could not be created. External image not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response422"
+                }
+              }
+            }
           }
         }
       }
@@ -6531,9 +6561,9 @@
           "422": {
             "description": "Request could not be processed.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response422"
                 }
               }
             }
@@ -6594,9 +6624,9 @@
           "422": {
             "description": "Request failed. Partner node not compatible with the `Image`.",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Response422"
                 }
               }
             }
@@ -6733,6 +6763,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request failed. Partner node not compatible with the `Image`.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response422"
                 }
               }
             }
@@ -10440,6 +10480,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "The relationship could not be created. The same node cannot be connected to itself.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response422"
+                }
+              }
+            }
           }
         }
       },
@@ -10573,6 +10623,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The relationship could not be created. The same node cannot be connected to itself.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response422"
                 }
               }
             }
@@ -20236,6 +20296,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "The relationship could not be created. The same node cannot be connected to itself.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response422"
+                }
+              }
+            }
           }
         }
       },
@@ -20369,6 +20439,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The relationship could not be created. The same node cannot be connected to itself.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response422"
                 }
               }
             }
@@ -23728,6 +23808,16 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "The relationship could not be created. The same node cannot be connected to itself.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response422"
+                }
+              }
+            }
           }
         }
       },
@@ -23861,6 +23951,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The relationship could not be created. The same node cannot be connected to itself.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response422"
                 }
               }
             }
@@ -25709,6 +25809,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Response409"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The node could not be created. External video not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response422"
                 }
               }
             }
@@ -38318,6 +38428,31 @@
                 "detail": {
                   "type": "string",
                   "example": "There already exists a node with this data in the database."
+                }
+              }
+            }
+          }
+        }
+      },
+      "Response422": {
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "422"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Semantical Error"
+                },
+                "detail": {
+                  "type": "string",
+                  "example": "Request could not be processed. There is probably a semantical error in the provided data."
                 }
               }
             }
