@@ -1,6 +1,10 @@
 import {RelationType} from "./RelationType"
 
 export type RelationResponse = {
+    links: {
+        self: string
+        related: string
+    }
     data: {
         relationship_id: number
         relationship_name: RelationType

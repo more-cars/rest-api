@@ -5,6 +5,8 @@ import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
 import {ExpectedNodeType} from "../../../_toolbox/types/ExpectedNodeType"
 import {convertModelRelationToControllerRelation} from "../../../../src/controllers/relations/convertModelRelationToControllerRelation"
 import {marshalRelations} from "../../../../src/controllers/relations/marshalRelations"
+import {convertStringToControllerNodeType} from "../../../_toolbox/convertStringToNodeType"
+import {mapModelRelationTypeToControllerRelationType} from "../../../../src/controllers/relations/mapModelRelationTypeToControllerRelationType"
 
 describe('Marshalling a relation collection', () => {
     test.each(
@@ -29,6 +31,10 @@ describe('Marshalling a relation collection', () => {
             .toEqual(3)
 
         const expectedRelation = {
+            links: {
+                self: `/${convertStringToControllerNodeType(origin.node_type)}/${origin.attributes.id}/${mapModelRelationTypeToControllerRelationType(relType)}`,
+                related: `/${convertStringToControllerNodeType(destination.node_type)}/${destination.attributes.id}`,
+            },
             data: {
                 relationship_id: 3,
                 relationship_name: relation.type,

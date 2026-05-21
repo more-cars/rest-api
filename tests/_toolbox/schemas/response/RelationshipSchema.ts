@@ -1,6 +1,13 @@
 export const RelationshipSchema = {
     type: "object",
     properties: {
+        links: {
+            type: "object",
+            properties: {
+                self: {type: "string"},
+                related: {type: "string"},
+            }
+        },
         data: {
             type: "object",
             properties: {

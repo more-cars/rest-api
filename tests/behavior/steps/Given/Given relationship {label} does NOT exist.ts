@@ -6,6 +6,10 @@ import type {RelationResponse} from "../../../../src/controllers/types/RelationR
 Given('relationship {string} does NOT exist',
     async (label: string) => {
         const relationship = {
+            links: {
+                self: `/dummy`,
+                related: `/dummy`,
+            },
             data: {
                 relationship_id: -Math.ceil(Math.random() * 1000),
                 relationship_name: 'DUMMY' as RelationType,
