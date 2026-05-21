@@ -23,8 +23,6 @@ spec:
             - |
               npm ci
               
-              npm run local:mockserver:start &
-              
               cd tests/smoke/bruno
               
               if [ "$REPORTS_ENABLED" = true ]; then
