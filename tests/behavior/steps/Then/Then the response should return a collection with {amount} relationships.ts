@@ -11,6 +11,7 @@ Then('the response should return a collection with {int} relationships',
         assert.equal(relationships.length, amount)
 
         relationships.forEach((relationship) => {
+            // @ts-ignore
             assert("relationship_id" in relationship.data, `relationship ID not found in the response`)
         })
     })

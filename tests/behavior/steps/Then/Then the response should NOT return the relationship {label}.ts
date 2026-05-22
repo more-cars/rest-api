@@ -10,7 +10,7 @@ Then('the response should NOT return the relationship {string}',
         const returnedRelationship = response.body
 
         assert.notDeepStrictEqual(
-            rememberedRelationship.data.relationship_id,
+            rememberedRelationship.data?.relationship_id,
             returnedRelationship.data.relationship_id,
         )
     })

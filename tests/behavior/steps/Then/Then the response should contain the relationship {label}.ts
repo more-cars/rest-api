@@ -14,5 +14,5 @@ Then('the response should contain the relationship {string}',
             return JSON.stringify(relationship) === JSON.stringify(rememberedRelationship)
         })
 
-        assert.ok(found, `Relationship #"${rememberedRelationship.data.relationship_id}" not found in response.`)
+        assert.ok(found, `Relationship #"${rememberedRelationship.data?.relationship_id}" not found in response.`)
     })

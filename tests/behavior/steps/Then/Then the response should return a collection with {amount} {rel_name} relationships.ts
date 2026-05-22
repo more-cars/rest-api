@@ -12,6 +12,6 @@ Then('the response should return a collection with {int} {string} relationships'
         assert.equal(relationships.length, amount)
 
         relationships.forEach((relationship) => {
-            assert.equal(relationship.data.relationship_name, kebabCase(relationshipName))
+            assert.equal(relationship.data?.relationship_name, kebabCase(relationshipName))
         })
     })

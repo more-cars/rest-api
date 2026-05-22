@@ -11,6 +11,6 @@ Then('the response should return the relationship {string}',
 
         assert.equal(
             actualRelationship.data.relationship_id,
-            expectedRelationship.data.relationship_id,
+            expectedRelationship.data?.relationship_id,
         )
     })

@@ -8,6 +8,7 @@ Then('the response should contain the node {string}',
     (label: string) => {
         const expectedNode = NodeManager.getNodeByLabel(label)
         const response = ResponseManager.getPreviousResponse()
+        // @ts-ignore
         const partnerNodeIds: number[] = response.body.data.map((rel: RelationResponse) => Number(rel.data.partner_node.data.id))
 
         const match = partnerNodeIds.find(nodeId => nodeId === expectedNode.fields.id)

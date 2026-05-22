@@ -11,7 +11,7 @@ Then('the response should contain the id of relationship {string}',
 
         assert.equal(
             data.relationship_id,
-            rememberedRelationship.data.relationship_id,
-            `Relationship ID "${data.relationship_id}" was returned, but expected "${rememberedRelationship.data.relationship_id}".`
+            rememberedRelationship.data?.relationship_id,
+            `Relationship ID "${data.relationship_id}" was returned, but expected "${rememberedRelationship.data?.relationship_id}".`
         )
     })

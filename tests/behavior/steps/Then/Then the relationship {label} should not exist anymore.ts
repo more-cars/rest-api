@@ -6,7 +6,7 @@ import {performApiRequest} from "../../lib/performApiRequest"
 Then('the relationship {string} should not exist anymore',
     async (label: string) => {
         const relationship = RelationshipManager.getRelationshipByLabel(label)
-        const path = `/relationships/${relationship.data.relationship_id}`
+        const path = `/relationships/${relationship.data?.relationship_id}`
 
         const response = await performApiRequest(path, 'GET')
 

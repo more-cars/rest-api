@@ -21,7 +21,7 @@ Then('there should exist a {string} relationship between {string} and {string}',
             let success = false
 
             response.body.data.forEach((relationship: RelationResponse) => {
-                if (relationship.data.partner_node.data.id === endNode.fields.id) {
+                if (relationship.data?.partner_node.data.id === endNode.fields.id) {
                     success = true
                 }
             })

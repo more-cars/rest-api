@@ -6,7 +6,8 @@ import {removeDuplicates} from "../../../_toolbox/removeDuplicates"
 Then('each relationship in the set {string} should contain a different ID',
     (label: string) => {
         const relationships = RelationshipManager.getRelationshipCollectionByLabel(label)
-        const extractedIds = relationships.map((relationship) => relationship.data.relationship_id)
+        const extractedIds = relationships.map((relationship) => relationship.data?.relationship_id)
+        // @ts-ignore
         const deduplicatedIds = removeDuplicates(extractedIds)
 
         assert.equal(extractedIds.length, deduplicatedIds.length)

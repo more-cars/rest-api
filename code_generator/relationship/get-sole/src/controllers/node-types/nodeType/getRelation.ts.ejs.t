@@ -5,6 +5,9 @@ import express from "express"
 import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
 import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
 import {marshalRelation} from "../../relations/marshalRelation"
+import {marshalEmptyRelation} from "../../relations/marshalEmptyRelation"
+import {ControllerNodeType} from "../../types/ControllerNodeType"
+import {RelationType} from "../../types/RelationType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../models/types/RelNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
@@ -24,7 +27,8 @@ export async function get<%= h.changeCase.pascal(relationshipName) %>Relation(re
         if (e instanceof NodeNotFoundError) {
             return sendResponse404(res)
         } else if (e instanceof RelNotFoundError) {
-            return sendResponse200(null, res)
+            const marshalledData = marshalEmptyRelation(ControllerNodeType.<%= h.changeCase.pascal(startNodeType) %>, <%= h.changeCase.camel(startNodeType) %>Id, RelationType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
+            return sendResponse200(marshalledData, res)
         } else {
             console.error(e)
             return sendResponse500(res)
