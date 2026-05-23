@@ -5,15 +5,15 @@ import {ExpectedNodeType} from "../../../_toolbox/types/ExpectedNodeType"
 import type {Rel} from "../../../../src/models/relationships/types/Rel"
 import {marshalRelation} from "../../../../src/controllers/relations/marshalRelation"
 import {convertModelRelationToControllerRelation} from "../../../../src/controllers/relations/convertModelRelationToControllerRelation"
+import {convertStringToControllerNodeType} from "../../../_toolbox/convertStringToNodeType"
 import {validateJson} from "../../../_toolbox/validateJson"
 import {RelationshipSchema} from "../../../_toolbox/schemas/response/RelationshipSchema"
-import {convertStringToControllerNodeType} from "../../../_toolbox/convertStringToNodeType"
 import {mapModelRelationTypeToControllerRelationType} from "../../../../src/controllers/relations/mapModelRelationTypeToControllerRelationType"
 
-describe('Marshalling a relation', () => {
+describe('Marshalling single relation', () => {
     test.each(
         getAllModelRelationshipTypes().map(relType => [relType])
-    )('marshalling a relation $0', async (relType) => {
+    )('$0', async (relType) => {
         const origin = getFakeNode(ExpectedNodeType.Brand).modelOutput()
         const destination = getFakeNode(ExpectedNodeType.CarModel).modelOutput()
         const relationship: Rel = {
@@ -39,7 +39,7 @@ describe('Marshalling a relation', () => {
             .toStrictEqual({
                 links: {
                     self: `/${sourceNodeType}/${origin.attributes.id}/${mapModelRelationTypeToControllerRelationType(relType)}`,
-                    related: `/${targetNodeType}/${destination.attributes.id}`,
+                    related: `/${targetNodeType}/${id}`,
                 },
                 data: {
                     type: targetNodeType,
