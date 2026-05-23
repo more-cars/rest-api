@@ -1,7 +1,7 @@
 import express from "express"
 import {RacingEvent} from "../../../models/node-types/racing-events/RacingEvent"
 import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
-import {marshalRelation} from "../../relations/marshalRelation"
+import {marshalSingleRelation} from "../../relations/marshalSingleRelation"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 import {sendResponse201} from "../../responses/sendResponse201"
@@ -16,7 +16,7 @@ export async function createHasVideoRelation(req: express.Request, res: express.
     try {
         const modelRelation = await RacingEvent.createHasVideoRelationship(racingEventId, videoId)
         const relation = convertModelRelationToControllerRelation(modelRelation)
-        const marshalledData = marshalRelation(relation)
+        const marshalledData = marshalSingleRelation(relation)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

@@ -1,7 +1,7 @@
 import express from "express"
 import {Rating} from "../../../models/node-types/ratings/Rating"
 import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
-import {marshalRelation} from "../../relations/marshalRelation"
+import {marshalSingleRelation} from "../../relations/marshalSingleRelation"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 
@@ -17,7 +17,7 @@ export async function createByMagazineIssueRelation(req: express.Request, res: e
     try {
         const modelRelation = await Rating.createByMagazineIssueRelationship(ratingId, magazineIssueId)
         const relation = convertModelRelationToControllerRelation(modelRelation)
-        const marshalledData = marshalRelation(relation)
+        const marshalledData = marshalSingleRelation(relation)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

@@ -1,7 +1,7 @@
 import express from "express"
 import {MotorShow} from "../../../models/node-types/motor-shows/MotorShow"
 import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
-import {marshalRelation} from "../../relations/marshalRelation"
+import {marshalSingleRelation} from "../../relations/marshalSingleRelation"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 
@@ -17,7 +17,7 @@ export async function createHasPrimeImageRelation(req: express.Request, res: exp
     try {
         const modelRelation = await MotorShow.createHasPrimeImageRelationship(motorShowId, imageId)
         const relation = convertModelRelationToControllerRelation(modelRelation)
-        const marshalledData = marshalRelation(relation)
+        const marshalledData = marshalSingleRelation(relation)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

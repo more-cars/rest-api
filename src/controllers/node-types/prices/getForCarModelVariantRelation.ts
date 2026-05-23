@@ -1,7 +1,7 @@
 import express from "express"
 import {Price} from "../../../models/node-types/prices/Price"
 import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
-import {marshalRelation} from "../../relations/marshalRelation"
+import {marshalSingleRelation} from "../../relations/marshalSingleRelation"
 import {marshalEmptyRelation} from "../../relations/marshalEmptyRelation"
 import {ControllerNodeType} from "../../types/ControllerNodeType"
 import {RelationType} from "../../types/RelationType"
@@ -17,7 +17,7 @@ export async function getForCarModelVariantRelation(req: express.Request, res: e
     try {
         const modelRelation = await Price.getForCarModelVariantRelationship(priceId)
         const relation = convertModelRelationToControllerRelation(modelRelation)
-        const marshalledData = marshalRelation(relation)
+        const marshalledData = marshalSingleRelation(relation)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

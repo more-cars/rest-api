@@ -1,7 +1,7 @@
 import express from "express"
 import {ProgrammeEpisode} from "../../../models/node-types/programme-episodes/ProgrammeEpisode"
 import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
-import {marshalRelation} from "../../relations/marshalRelation"
+import {marshalSingleRelation} from "../../relations/marshalSingleRelation"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 import {SemanticError} from "../../../models/types/SemanticError"
@@ -18,7 +18,7 @@ export async function createIsFollowedByEpisodeRelation(req: express.Request, re
     try {
         const modelRelation = await ProgrammeEpisode.createIsFollowedByEpisodeRelationship(programmeEpisodeId, partnerId)
         const relation = convertModelRelationToControllerRelation(modelRelation)
-        const marshalledData = marshalRelation(relation)
+        const marshalledData = marshalSingleRelation(relation)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

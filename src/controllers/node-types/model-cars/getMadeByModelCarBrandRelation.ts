@@ -1,7 +1,7 @@
 import express from "express"
 import {ModelCar} from "../../../models/node-types/model-cars/ModelCar"
 import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
-import {marshalRelation} from "../../relations/marshalRelation"
+import {marshalSingleRelation} from "../../relations/marshalSingleRelation"
 import {marshalEmptyRelation} from "../../relations/marshalEmptyRelation"
 import {ControllerNodeType} from "../../types/ControllerNodeType"
 import {RelationType} from "../../types/RelationType"
@@ -17,7 +17,7 @@ export async function getMadeByModelCarBrandRelation(req: express.Request, res: 
     try {
         const modelRelation = await ModelCar.getMadeByModelCarBrandRelationship(modelCarId)
         const relation = convertModelRelationToControllerRelation(modelRelation)
-        const marshalledData = marshalRelation(relation)
+        const marshalledData = marshalSingleRelation(relation)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

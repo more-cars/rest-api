@@ -1,7 +1,7 @@
 import express from "express"
 import {RacingEvent} from "../../../models/node-types/racing-events/RacingEvent"
 import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
-import {marshalRelation} from "../../relations/marshalRelation"
+import {marshalSingleRelation} from "../../relations/marshalSingleRelation"
 import {marshalEmptyRelation} from "../../relations/marshalEmptyRelation"
 import {ControllerNodeType} from "../../types/ControllerNodeType"
 import {RelationType} from "../../types/RelationType"
@@ -17,7 +17,7 @@ export async function getBelongsToRacingSeriesRelation(req: express.Request, res
     try {
         const modelRelation = await RacingEvent.getBelongsToRacingSeriesRelationship(racingEventId)
         const relation = convertModelRelationToControllerRelation(modelRelation)
-        const marshalledData = marshalRelation(relation)
+        const marshalledData = marshalSingleRelation(relation)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

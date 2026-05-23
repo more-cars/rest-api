@@ -1,7 +1,7 @@
 import express from "express"
 import {Image} from "../../../models/node-types/images/Image"
 import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
-import {marshalRelation} from "../../relations/marshalRelation"
+import {marshalSingleRelation} from "../../relations/marshalSingleRelation"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 import {SemanticError} from "../../../models/types/SemanticError"
@@ -18,7 +18,7 @@ export async function createIsPrimeImageOfNodeRelation(req: express.Request, res
     try {
         const modelRelation = await Image.createIsPrimeImageOfNodeRelationship(imageId, nodeId)
         const relation = convertModelRelationToControllerRelation(modelRelation)
-        const marshalledData = marshalRelation(relation)
+        const marshalledData = marshalSingleRelation(relation)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

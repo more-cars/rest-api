@@ -1,7 +1,7 @@
 import express from "express"
 import {SessionResult} from "../../../models/node-types/session-results/SessionResult"
 import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
-import {marshalRelation} from "../../relations/marshalRelation"
+import {marshalSingleRelation} from "../../relations/marshalSingleRelation"
 import {marshalEmptyRelation} from "../../relations/marshalEmptyRelation"
 import {ControllerNodeType} from "../../types/ControllerNodeType"
 import {RelationType} from "../../types/RelationType"
@@ -17,7 +17,7 @@ export async function getBelongsToRacingSessionRelation(req: express.Request, re
     try {
         const modelRelation = await SessionResult.getBelongsToRacingSessionRelationship(sessionResultId)
         const relation = convertModelRelationToControllerRelation(modelRelation)
-        const marshalledData = marshalRelation(relation)
+        const marshalledData = marshalSingleRelation(relation)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

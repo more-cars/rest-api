@@ -1,7 +1,7 @@
 import express from "express"
 import {Magazine} from "../../../models/node-types/magazines/Magazine"
 import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
-import {marshalRelation} from "../../relations/marshalRelation"
+import {marshalSingleRelation} from "../../relations/marshalSingleRelation"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 
@@ -17,7 +17,7 @@ export async function createHasPrimeImageRelation(req: express.Request, res: exp
     try {
         const modelRelation = await Magazine.createHasPrimeImageRelationship(magazineId, imageId)
         const relation = convertModelRelationToControllerRelation(modelRelation)
-        const marshalledData = marshalRelation(relation)
+        const marshalledData = marshalSingleRelation(relation)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {

@@ -1,6 +1,6 @@
 import express from "express"
 import {Relationship} from "../../models/Relationship"
-import {marshalRelation} from "./marshalRelation"
+import {marshalSingleRelation} from "./marshalSingleRelation"
 import {convertModelRelationToControllerRelation} from "./convertModelRelationToControllerRelation"
 import {NodeNotFoundError} from "../../models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../models/types/RelNotFoundError"
@@ -13,7 +13,7 @@ export async function getById(req: express.Request, res: express.Response) {
 
     try {
         const relation = await Relationship.findById(relationId)
-        const marshalledData = marshalRelation(convertModelRelationToControllerRelation(relation))
+        const marshalledData = marshalSingleRelation(convertModelRelationToControllerRelation(relation))
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

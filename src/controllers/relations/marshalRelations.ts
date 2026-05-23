@@ -1,13 +1,13 @@
 import type {Relation} from "../types/Relation"
 import type {RelationResponse} from "../types/RelationResponse"
 import type {RelationCollectionResponse} from "../types/RelationCollectionResponse"
-import {marshalRelation} from "./marshalRelation"
+import {marshalSingleRelation} from "./marshalSingleRelation"
 
 export function marshalRelations(relationships: Relation[]) {
     const items: RelationResponse[] = []
 
     for (const relationship of relationships) {
-        items.push(marshalRelation(relationship))
+        items.push(marshalSingleRelation(relationship))
     }
 
     return {data: items} satisfies RelationCollectionResponse

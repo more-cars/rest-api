@@ -3,7 +3,7 @@ import {getAllModelRelationshipTypes} from "../../../_toolbox/getAllModelRelatio
 import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
 import {ExpectedNodeType} from "../../../_toolbox/types/ExpectedNodeType"
 import type {Rel} from "../../../../src/models/relationships/types/Rel"
-import {marshalRelation} from "../../../../src/controllers/relations/marshalRelation"
+import {marshalSingleRelation} from "../../../../src/controllers/relations/marshalSingleRelation"
 import {convertModelRelationToControllerRelation} from "../../../../src/controllers/relations/convertModelRelationToControllerRelation"
 import {convertStringToControllerNodeType} from "../../../_toolbox/convertStringToNodeType"
 import {validateJson} from "../../../_toolbox/validateJson"
@@ -25,7 +25,7 @@ describe('Marshalling single relation', () => {
             updated_at: "2023-10-01T00:00:00.001Z",
         }
 
-        const marshalledRelation = marshalRelation(convertModelRelationToControllerRelation(relationship))
+        const marshalledRelation = marshalSingleRelation(convertModelRelationToControllerRelation(relationship))
         const sourceNodeType = convertStringToControllerNodeType(origin.node_type)
         const targetNodeType = convertStringToControllerNodeType(destination.node_type)
         const {id, ...attributes} = destination.attributes

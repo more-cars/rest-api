@@ -1,7 +1,7 @@
 import type {Relation} from "../types/Relation"
 import type {RelationResponse} from "../types/RelationResponse"
 
-export function marshalRelation(relation: Relation) {
+export function marshalSingleRelation(relation: Relation) {
     const {id, ...attributes} = relation.to_node.fields
 
     const marshalledRelation: RelationResponse = {
