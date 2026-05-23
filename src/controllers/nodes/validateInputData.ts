@@ -63,7 +63,6 @@ export function validateInputData(data: RawInputData, nodeType: NodeType, mode: 
             }
 
             if (!validate(data[property.name], validationRule)) {
-                console.log(validationRule)
                 isValid = false
             }
         })
