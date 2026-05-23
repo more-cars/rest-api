@@ -70,7 +70,7 @@
     "tests:unit": "npx vitest run -c tests/unit/vite.config.ts",
     "tests:integration": "npx vitest run -c tests/integration/vite.config.ts",
     "tests:developer": "./tests/developer/run-tests.sh",
-    "tests:smoke:gui": "bruno",
+    "tests:smoke:gui": "npm run start --workspace=@more-cars/rest-api-mock-servers & bruno",
     "tests:smoke:cli": "./tests/smoke/run-smoke-tests.sh",
     "tests:behavior": "node --env-file=.env -r ts-node/register tests/behavior/check-dependencies.ts true && npm run start --workspace=@more-cars/rest-api-mock-servers & npx cucumber-js --tags '@implemented and not @deactivated'",
     "tests:behavior:single": "node --env-file=.env -r ts-node/register tests/behavior/run-single-test.ts",
