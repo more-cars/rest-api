@@ -2,6 +2,8 @@ import express from "express"
 import {RacingSession} from "../../../models/node-types/racing-sessions/RacingSession"
 import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
 import {marshalRelations} from "../../relations/marshalRelations"
+import {ControllerNodeType} from "../../types/ControllerNodeType"
+import {RelationType} from "../../types/RelationType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"
@@ -13,7 +15,7 @@ export async function getAllHasSessionResultRelations(req: express.Request, res:
     try {
         const modelRelations = await RacingSession.getAllHasSessionResultRelationships(racingSessionId)
         const relations = modelRelations.map(relation => convertModelRelationToControllerRelation(relation))
-        const marshalledData = marshalRelations(relations)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.RacingSeries, racingSessionId, RelationType.RacingSessionHasSessionResult)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

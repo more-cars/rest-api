@@ -4,7 +4,7 @@ import {dasherize} from "inflection"
 import {NodeManager} from "../../lib/NodeManager"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
 import {performApiRequest} from "../../lib/performApiRequest"
-import type {RelationResponse} from "../../../../src/controllers/types/RelationResponse"
+import type {RelationResponseItem} from "../../../../src/controllers/types/RelationResponseItem"
 
 Then('there should exist a {string} relationship between {string} and {string}',
     async (relationshipName: string, startNodeLabel: string, endNodeLabel: string) => {
@@ -18,17 +18,11 @@ Then('there should exist a {string} relationship between {string} and {string}',
         assert.equal(response.status_code, 200)
 
         if (Array.isArray(response.body.data)) {
-            let success = false
-
-            response.body.data.forEach((relationship: RelationResponse) => {
-                if (relationship.data?.partner_node.data.id === endNode.fields.id) {
-                    success = true
-                }
-            })
-
-            assert.equal(success, true, `None of the returned relationships contains the node #${endNode.fields.id}.`)
-        } else if ('partner_node' in response.body.data) {
-            assert.equal(response.body.data.partner_node.data.id, endNode.fields.id, `The returned relationship does not contain the node #${endNode.fields.id}.`)
+            const data: RelationResponseItem[] = response.body.data
+            const match = data.find(relationship => relationship.id === endNode.fields.id)
+            assert.notEqual(match, undefined, `None of the returned relationships contains the node #${endNode.fields.id}.`)
+        } else if (response.body.data !== null) {
+            assert.equal(response.body.data.id, endNode.fields.id, `The returned relationship does not contain the node #${endNode.fields.id}.`)
         } else {
             assert.fail('respond did not return any relationship')
         }

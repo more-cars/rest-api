@@ -1,5 +1,8 @@
-import type {RelationResponse} from "./RelationResponse"
+import type {RelationResponseItem} from "./RelationResponseItem"
 
 export type RelationCollectionResponse = {
-    data: RelationResponse[]
+    links: {
+        self: string
+    }
+    data: RelationResponseItem[]
 }

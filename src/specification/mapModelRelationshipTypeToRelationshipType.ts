@@ -4,6 +4,8 @@ import {RelationshipTypeMappingNotFoundError} from "./RelationshipTypeMappingNot
 
 export function mapModelRelationshipTypeToRelationshipType(relType: RelType): RelationshipType {
     const mapping = new Map<RelType, RelationshipType>([
+        [RelType.NodeHasImage, RelationshipType.NodeHasImage],
+        [RelType.NodeHasPrimeImage, RelationshipType.NodeHasPrimeImage],
         [RelType.CompanyHasBrand, RelationshipType.CompanyHasBrand],
         [RelType.CompanyHasImage, RelationshipType.CompanyHasImage],
         [RelType.CompanyHasPrimeImage, RelationshipType.CompanyHasPrimeImage],

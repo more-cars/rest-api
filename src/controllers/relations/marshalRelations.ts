@@ -1,14 +1,25 @@
 import type {Relation} from "../types/Relation"
-import type {RelationResponse} from "../types/RelationResponse"
+import type {RelationResponseItem} from "../types/RelationResponseItem"
 import type {RelationCollectionResponse} from "../types/RelationCollectionResponse"
-import {marshalSingleRelation} from "./marshalSingleRelation"
+import type {ControllerNodeType} from "../types/ControllerNodeType"
+import type {RelationType} from "../types/RelationType"
 
-export function marshalRelations(relationships: Relation[]) {
-    const items: RelationResponse[] = []
+export function marshalRelations(relations: Relation[], fromNodeType: ControllerNodeType, fromNodeId: number | number[], relationType: RelationType) {
+    const items: RelationResponseItem[] = []
 
-    for (const relationship of relationships) {
-        items.push(marshalSingleRelation(relationship))
+    for (const relation of relations) {
+        const {id, ...attributes} = relation.to_node.fields
+        items.push({
+            type: relation.to_node.node_type,
+            id,
+            attributes,
+        })
     }
 
-    return {data: items} satisfies RelationCollectionResponse
+    return {
+        links: {
+            self: `/${fromNodeType}/${fromNodeId}/${relationType}`,
+        },
+        data: items,
+    } satisfies RelationCollectionResponse
 }

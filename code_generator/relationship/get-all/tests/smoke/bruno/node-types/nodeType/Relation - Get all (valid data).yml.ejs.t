@@ -23,35 +23,24 @@ runtime:
       operator: isJson
     - expression: res.body.data
       operator: isArray
-    - expression: res.body.data[0].data.relationship_id
+    - expression: res.body.data[0].id
       operator: gte
       value: "12000000"
-    - expression: res.body.data[0].data.relationship_name
-      operator: eq
-      value: "<%= h.changeCase.kebab(relationshipName) %>"
-    - expression: res.body.data[0].data.start_node
-      operator: isJson
-    - expression: res.body.data[0].data.start_node.node_type
-      operator: eq
-      value: "<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>"
-    - expression: res.body.data[0].data.start_node.data.id
-      operator: eq
-      value: "{{valid<%= h.changeCase.pascal(startNodeType) %>Id}}"
-    - expression: res.body.data[0].data.partner_node
-      operator: isJson
-    - expression: res.body.data[0].data.partner_node.node_type
+    - expression: res.body.data[0].type
       operator: eq
       value: "<%= h.changeCase.kebab(h.inflection.pluralize(endNodeType)) %>"
-    - expression: res.body.data[0].data.partner_node.data.id
+    - expression: res.body.data[0].attributes
+      operator: isJson
+    - expression: res.body.links.self
       operator: eq
-      value: "{{valid<%= h.changeCase.pascal(endNodeType) %>Id}}"
-    - expression: res.body.data[0].data.created_at
+      value: "/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/{{valid<%= h.changeCase.pascal(startNodeType) %>Id}}/<%= h.changeCase.kebab(relationshipName) %>"
+    - expression: res.body.data[0].attributes.created_at
       operator: isString
-    - expression: res.body.data[0].data.created_at
+    - expression: res.body.data[0].attributes.created_at
       operator: isNotEmpty
-    - expression: res.body.data[0].data.updated_at
+    - expression: res.body.data[0].attributes.updated_at
       operator: isString
-    - expression: res.body.data[0].data.updated_at
+    - expression: res.body.data[0].attributes.updated_at
       operator: isNotEmpty
   scripts:
     - type: before-request

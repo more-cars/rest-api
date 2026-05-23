@@ -65,10 +65,10 @@ describe('Requesting the connected prime images', () => {
         expect(response.body.data)
             .toHaveLength(3)
 
-        expect(response.body.data[0].data.partner_node.node_type)
+        expect(response.body.data[0].type)
             .toEqual('images')
 
-        expect(response.body.data[0].data.partner_node.data.id)
+        expect(response.body.data[0].id)
             .toEqual(imageRelA.destination.attributes.id)
     })
 

@@ -2,17 +2,17 @@ import {Then} from "@cucumber/cucumber"
 import assert from "assert"
 import {RelationshipManager} from "../../lib/RelationshipManager"
 import {ResponseManager} from "../../lib/ResponseManager"
-import type {RelationResponse} from "../../../../src/controllers/types/RelationResponse"
+import type {RelationResponseItem} from "../../../../src/controllers/types/RelationResponseItem"
 
 Then('the response should contain the relationship {string}',
     (label: string) => {
         const rememberedRelationship = RelationshipManager.getRelationshipByLabel(label)
         const response = ResponseManager.getPreviousResponse()
-        const data = response.body.data as RelationResponse[]
+        const items: RelationResponseItem[] = response.body.data
 
-        const found = data.find((relationship) => {
-            return JSON.stringify(relationship) === JSON.stringify(rememberedRelationship)
+        const match = items.find(relationship => {
+            return JSON.stringify(relationship.attributes) === JSON.stringify(rememberedRelationship.data?.attributes)
         })
 
-        assert.ok(found, `Relationship #"${rememberedRelationship.data?.relationship_id}" not found in response.`)
+        assert.notEqual(match, undefined, `Relationship #"${rememberedRelationship.data?.id}" not found in response.`)
     })

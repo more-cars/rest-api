@@ -2,14 +2,14 @@ import {Then} from "@cucumber/cucumber"
 import assert from "assert"
 import {NodeManager} from "../../lib/NodeManager"
 import {ResponseManager} from "../../lib/ResponseManager"
-import type {RelationResponse} from "../../../../src/controllers/types/RelationResponse"
+import type {RelationResponseItem} from "../../../../src/controllers/types/RelationResponseItem"
 
 Then('the response should contain the node {string}',
     (label: string) => {
         const expectedNode = NodeManager.getNodeByLabel(label)
         const response = ResponseManager.getPreviousResponse()
-        // @ts-ignore
-        const partnerNodeIds: number[] = response.body.data.map((rel: RelationResponse) => Number(rel.data.partner_node.data.id))
+        const items: RelationResponseItem[] = response.body.data
+        const partnerNodeIds = items.map(item => item.id)
 
         const match = partnerNodeIds.find(nodeId => nodeId === expectedNode.fields.id)
 

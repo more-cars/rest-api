@@ -1,17 +1,15 @@
 import {Then} from "@cucumber/cucumber"
 import assert from "assert"
-import {kebabCase} from "change-case"
 import {ResponseManager} from "../../lib/ResponseManager"
-import type {RelationResponse} from "../../../../src/controllers/types/RelationResponse"
+import type {RelationCollectionResponse} from "../../../../src/controllers/types/RelationCollectionResponse"
+import {dasherize} from "inflection"
 
 Then('the response should return a collection with {int} {string} relationships',
     (amount: number, relationshipName: string) => {
         const response = ResponseManager.getPreviousResponse()
-        const relationships = response.body.data as RelationResponse[]
+        const relationships = response.body as RelationCollectionResponse
+        const controllerRelationshipName = dasherize(relationshipName.toLowerCase())
 
-        assert.equal(relationships.length, amount)
-
-        relationships.forEach((relationship) => {
-            assert.equal(relationship.data?.relationship_name, kebabCase(relationshipName))
-        })
+        assert.equal(relationships.data.length, amount)
+        assert.ok(relationships.links.self.includes(controllerRelationshipName))
     })

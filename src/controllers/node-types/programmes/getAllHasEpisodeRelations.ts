@@ -2,6 +2,8 @@ import express from "express"
 import {Programme} from "../../../models/node-types/programmes/Programme"
 import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
 import {marshalRelations} from "../../relations/marshalRelations"
+import {ControllerNodeType} from "../../types/ControllerNodeType"
+import {RelationType} from "../../types/RelationType"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {sendResponse200} from "../../responses/sendResponse200"
 import {sendResponse404} from "../../responses/sendResponse404"
@@ -13,7 +15,7 @@ export async function getAllHasEpisodeRelations(req: express.Request, res: expre
     try {
         const modelRelations = await Programme.getAllHasEpisodeRelationships(programmeId)
         const relations = modelRelations.map(relation => convertModelRelationToControllerRelation(relation))
-        const marshalledData = marshalRelations(relations)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.Programme, programmeId, RelationType.ProgrammeHasEpisode)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

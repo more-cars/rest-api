@@ -1,69 +1,50 @@
 import {describe, expect, test} from 'vitest'
 import {getAllModelRelationshipTypes} from "../../../_toolbox/getAllModelRelationshipTypes"
-import type {Rel} from "../../../../src/models/relationships/types/Rel"
-import {getFakeNode} from "../../../_toolbox/fixtures/nodes/getFakeNode"
-import {ExpectedNodeType} from "../../../_toolbox/types/ExpectedNodeType"
 import {convertModelRelationToControllerRelation} from "../../../../src/controllers/relations/convertModelRelationToControllerRelation"
+import {getFakeRel} from "../../../_toolbox/fixtures/relationships/getFakeRel"
 import {marshalRelations} from "../../../../src/controllers/relations/marshalRelations"
-import {convertStringToControllerNodeType} from "../../../_toolbox/convertStringToNodeType"
-import {mapModelRelationTypeToControllerRelationType} from "../../../../src/controllers/relations/mapModelRelationTypeToControllerRelationType"
+import {validateJson} from "../../../_toolbox/validateJson"
+import {RelationshipCollectionSchema} from "../../../_toolbox/schemas/response/RelationshipCollectionSchema"
 
 describe('Marshalling a relation collection', () => {
     test.each(
         getAllModelRelationshipTypes().map(relType => [relType])
     )('when creating a relation from type $0', async (relType) => {
-        const origin = getFakeNode(ExpectedNodeType.Brand).modelOutput()
-        const destination = getFakeNode(ExpectedNodeType.CarModel).modelOutput()
-        const rel: Rel = {
-            id: 3,
-            type: relType,
-            origin,
-            destination,
-            created_at: "2023-10-01T00:00:00.001Z",
-            updated_at: "2023-10-01T00:00:00.001Z",
-        }
-        const relation = convertModelRelationToControllerRelation(rel)
-        const relations = [relation, relation, relation]
+        const relationA = convertModelRelationToControllerRelation(getFakeRel(relType))
+        const relationB = convertModelRelationToControllerRelation(getFakeRel(relType))
+        const relationC = convertModelRelationToControllerRelation(getFakeRel(relType))
+        const relations = [relationA, relationB, relationC]
 
-        const marshalledRelations = marshalRelations(relations)
-        const sourceNodeType = convertStringToControllerNodeType(origin.node_type)
-        const targetNodeType = convertStringToControllerNodeType(destination.node_type)
-        const {id, ...attributes} = destination.attributes
+        const marshalledRelations = marshalRelations(relations, relationA.from_node.node_type, relationA.from_node.fields.id, relationA.type)
 
         expect(marshalledRelations.data.length)
             .toEqual(3)
 
-        const expectedRelation = {
+        // schema check
+        expect(validateJson(marshalledRelations, RelationshipCollectionSchema))
+            .toBeTruthy()
+
+        // data check
+        const expectedRelations = {
             links: {
-                self: `/${sourceNodeType}/${origin.attributes.id}/${mapModelRelationTypeToControllerRelationType(relType)}`,
-                related: `/${targetNodeType}/${destination.attributes.id}`,
+                self: `/${relationA.from_node.node_type}/${relationA.from_node.fields.id}/${relationA.type}`,
             },
-            data: {
-                type: targetNodeType,
-                id,
-                attributes,
-                relationship_id: 3,
-                relationship_name: relation.type,
-                start_node: {
-                    node_type: "brands",
-                    data: origin.attributes,
-                },
-                partner_node: {
-                    node_type: "car-models",
-                    data: destination.attributes,
-                },
-                created_at: "2023-10-01T00:00:00.001Z",
-                updated_at: "2023-10-01T00:00:00.001Z",
-            }
+            data: [{
+                type: relationA.to_node.node_type,
+                id: relationA.to_node.fields.id,
+                attributes: (({id, ...fields}) => fields)(relationA.to_node.fields),
+            }, {
+                type: relationB.to_node.node_type,
+                id: relationB.to_node.fields.id,
+                attributes: (({id, ...fields}) => fields)(relationB.to_node.fields),
+            }, {
+                type: relationC.to_node.node_type,
+                id: relationC.to_node.fields.id,
+                attributes: (({id, ...fields}) => fields)(relationC.to_node.fields),
+            }],
         }
 
-        expect(marshalledRelations.data[0])
-            .toStrictEqual(expectedRelation)
-
-        expect(marshalledRelations.data[1])
-            .toStrictEqual(expectedRelation)
-
-        expect(marshalledRelations.data[2])
-            .toStrictEqual(expectedRelation)
+        expect(marshalledRelations)
+            .toStrictEqual(expectedRelations)
     })
 })
