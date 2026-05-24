@@ -1,6 +1,7 @@
 ---
 to: tests/_toolbox/schemas/db/<%= h.changeCase.pascal(nodeType) %>Schema.ts
 ---
+<% const properties = JSON.parse(props) -%>
 export const <%= h.changeCase.pascal(nodeType) %>Schema = {
     type: "object",
     properties: {
@@ -9,19 +10,19 @@ export const <%= h.changeCase.pascal(nodeType) %>Schema = {
             type: "object",
             properties: {
                 id: {type: ["integer"]},
-<% for (prop in properties) { -%>
-                <%= prop %>: {type: ["<%= properties[prop].datatype %><% if (!properties[prop].mandatory) { -%>", "null<% } -%>"]},
-<% } -%>
+<% properties.forEach(prop => { -%>
+                <%= prop.name %>: {type: ["<%= prop.datatype %><% if (!prop.mandatory) { -%>", "null<% } -%>"]},
+<% }) -%>
                 created_at: {type: ["string"]},
                 updated_at: {type: ["string"]},
             },
             required: [
                 "id",
-<% for (prop in properties) { -%>
-<%    if (properties[prop].mandatory) { -%>
-                "<%= prop %>",
+<% properties.forEach(prop => { -%>
+<%    if (prop.mandatory) { -%>
+                "<%= prop.name %>",
 <%    } -%>
-<% } -%>
+<% }) -%>
                 "created_at",
                 "updated_at",
             ],

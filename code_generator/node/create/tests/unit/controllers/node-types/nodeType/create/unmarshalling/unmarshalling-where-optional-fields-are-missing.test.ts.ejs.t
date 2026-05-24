@@ -1,26 +1,27 @@
 ---
 to: tests/unit/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create/unmarshalling/unmarshalling-where-optional-fields-are-missing.test.ts
 ---
+<% const properties = JSON.parse(props) -%>
 <%
     props_in = []
-    for (prop in properties) {
-        if (properties[prop].mandatory && properties[prop].datatype === 'string') {
-            props_in.push(prop + ': "' + properties[prop].example + '"')
-        } else if (properties[prop].mandatory) {
-            props_in.push(prop + ': ' + properties[prop].example)
+    properties.forEach(prop => {
+        if (prop.mandatory && prop.datatype === 'string') {
+            props_in.push(prop.name + ': "' + prop.example + '"')
+        } else if (prop.mandatory) {
+            props_in.push(prop.name + ': ' + prop.example)
         }
-    }
+    })
 
     props_out = []
-    for (prop in properties) {
-        if (properties[prop].mandatory && properties[prop].datatype === 'string') {
-            props_out.push(prop + ': "' + properties[prop].example + '"')
-        } else if (properties[prop].mandatory) {
-            props_out.push(prop + ': ' + properties[prop].example)
+    properties.forEach(prop => {
+        if (prop.mandatory && prop.datatype === 'string') {
+            props_out.push(prop.name + ': "' + prop.example + '"')
+        } else if (prop.mandatory) {
+            props_out.push(prop.name + ': ' + prop.example)
         } else {
-            props_out.push(prop + ': undefined')
+            props_out.push(prop.name + ': undefined')
         }
-    }
+    })
 -%>
 import {expect, test} from 'vitest'
 import {unmarshalInputData} from "../../../../../../../src/controllers/nodes/unmarshalInputData"
@@ -31,7 +32,7 @@ test('unmarshalling a valid request where optional fields are missing', async ()
     }
 
     const result = unmarshalInputData(data, [
-<%- properties.map(prop => '        ' + prop.name).join(',\n') %>,
+<%- properties.map(prop => '        ' + `'${prop.name}'`).join(',\n') %>,
     ])
 
     expect(result)

@@ -1,6 +1,7 @@
 ---
 to: tests/smoke/bruno/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/Node - Create (valid data).yml
 ---
+<% const properties = JSON.parse(props) -%>
 info:
   name: Create <%= h.changeCase.title(nodeType) %> (valid data)
   type: http
@@ -16,18 +17,18 @@ http:
     type: json
     data: |-
 <%
-    const props = {}
-    for (prop in properties) {
-        if (properties[prop].datatype === 'string') {
-            props[prop] = properties[prop].example
-        } else if (properties[prop].datatype === 'number') {
-            props[prop] = parseInt(properties[prop].example)
-        } else if (properties[prop].datatype === 'boolean') {
-            props[prop] = properties[prop].example === 'true' ? true : false
+    const props_out = {}
+    properties.forEach(prop => {
+        if (prop.datatype === 'string') {
+            props_out[prop.name] = prop.example
+        } else if (prop.datatype === 'number') {
+            props_out[prop.name] = parseInt(prop.example)
+        } else if (prop.datatype === 'boolean') {
+            props_out[prop.name] = prop.example === 'true' ? true : false
         }
-    }
+    })
 -%>
-<%- JSON.stringify(props, null, 2).split('\n').map(line => '      ' + line).join('\n') %>
+<%- JSON.stringify(props_out, null, 2).split('\n').map(line => '      ' + line).join('\n') %>
 
 runtime:
   assertions:

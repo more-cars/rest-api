@@ -1,28 +1,29 @@
 ---
 to: tests/unit/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create/sanitizing-user-input.test.ts
 ---
+<% const properties = JSON.parse(props) -%>
 <%
     props_in = []
-    for (prop in properties) {
-        if (properties[prop].datatype === 'string' && properties[prop].example) {
-            props_in.push(prop + ': "   ' + properties[prop].example + '  "')
-        } else if (!properties[prop].example) {
-            props_in.push(prop + ': null')
+    properties.forEach(prop => {
+        if (prop.datatype === 'string' && prop.example) {
+            props_in.push(prop.name + ': "   ' + prop.example + '  "')
+        } else if (!prop.example) {
+            props_in.push(prop.name + ': null')
         } else {
-            props_in.push(prop + ': ' + properties[prop].example)
+            props_in.push(prop.name + ': ' + prop.example)
         }
-    }
+    })
 
     props_out = []
-    for (prop in properties) {
-        if (properties[prop].datatype === 'string' && properties[prop].example) {
-            props_out.push(prop + ': "' + properties[prop].example + '"')
-        } else if (!properties[prop].example) {
-            props_out.push(prop + ': null')
+    properties.forEach(prop => {
+        if (prop.datatype === 'string' && prop.example) {
+            props_out.push(prop.name + ': "' + prop.example + '"')
+        } else if (!prop.example) {
+            props_out.push(prop.name + ': null')
         } else {
-            props_out.push(prop + ': ' + properties[prop].example)
+            props_out.push(prop.name + ': ' + prop.example)
         }
-    }
+    })
 -%>
 import {describe, expect, test} from 'vitest'
 import {<%= h.changeCase.pascal(nodeType) %>Input} from "../../../../../../src/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Input"
@@ -35,7 +36,7 @@ describe('Sanitizing user input', () => {
         }
 
         const result = unmarshalInputData(data, [
-<%- properties.map(prop => '            ' + prop.name).join(',\n') %>,
+<%- properties.map(prop => '            ' + `'${prop.name}'`).join(',\n') %>,
         ])
 
         expect(result)

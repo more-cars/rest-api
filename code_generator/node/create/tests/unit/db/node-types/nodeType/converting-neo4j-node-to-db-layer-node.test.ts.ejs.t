@@ -1,6 +1,7 @@
 ---
 to: tests/unit/db/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/converting-neo4j-node-to-db-layer-node.test.ts
 ---
+<% const properties = JSON.parse(props) -%>
 import {expect, test} from 'vitest'
 import {Integer, Node} from "neo4j-driver"
 import {convert<%= h.changeCase.pascal(nodeType) %>Neo4jNodeToDbNode} from "../../../../../src/db/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/convert<%= h.changeCase.pascal(nodeType) %>Neo4jNodeToDbNode"
@@ -15,15 +16,15 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
             mc_id: 1,
             created_at: "2025-05-14T11:05:07.793Z",
             updated_at: "2025-05-14T11:05:07.793Z",
-<% for (prop in properties) { -%>
-<%    if (properties[prop].datatype === 'string' && properties[prop].example) { -%>
-            <%= prop %>: "<%= properties[prop].example %>",
-<%   } else if (!properties[prop].example) { -%>
-            <%= prop -%>: null,
+<% properties.forEach(prop => { -%>
+<%    if (prop.datatype === 'string' && prop.example) { -%>
+            <%= prop.name %>: "<%= prop.example %>",
+<%   } else if (!prop.example) { -%>
+            <%= prop.name -%>: null,
 <%   } else { -%>
-            <%= prop %>: <%= properties[prop].example -%>,
+            <%= prop.name %>: <%= prop.example -%>,
 <%   } -%>
-<% } -%>
+<% }) -%>
         },
         elementId: "",
         as: Object,
@@ -38,15 +39,15 @@ test('the Neo4j node is correctly mapped to a More Cars node', async () => {
                 id: 1,
                 created_at: "2025-05-14T11:05:07.793Z",
                 updated_at: "2025-05-14T11:05:07.793Z",
-<% for (prop in properties) { -%>
-<%    if (properties[prop].datatype === 'string' && properties[prop].example) { -%>
-                <%= prop %>: "<%= properties[prop].example %>",
-<%   } else if (!properties[prop].example) { -%>
-                <%= prop -%>: null,
+<% properties.forEach(prop => { -%>
+<%    if (prop.datatype === 'string' && prop.example) { -%>
+                <%= prop.name %>: "<%= prop.example %>",
+<%   } else if (!prop.example) { -%>
+                <%= prop.name -%>: null,
 <%   } else { -%>
-                <%= prop %>: <%= properties[prop].example -%>,
+                <%= prop.name %>: <%= prop.example -%>,
 <%   } -%>
-<% } -%>
+<% }) -%>
             },
         } satisfies <%= h.changeCase.pascal(nodeType) %>Node)
 })

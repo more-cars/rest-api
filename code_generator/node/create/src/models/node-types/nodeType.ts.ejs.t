@@ -5,6 +5,7 @@ import {<%= h.changeCase.pascal(nodeType) %>Input} from "./types/<%= h.changeCas
 import {<%= h.changeCase.pascal(nodeType) %>Node} from "./types/<%= h.changeCase.pascal(nodeType) %>Node"
 import {convertInputData} from "./create/convertInputData"
 import {createDbNode} from "../../../db/nodes/createDbNode"
+import {DbNodeType} from "../../../db/types/DbNodeType"
 import {convertDbNodeToModelNode} from "../convertDbNodeToModelNode"
 
 export const <%= h.changeCase.pascal(nodeType) %> = {

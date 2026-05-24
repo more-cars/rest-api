@@ -1,6 +1,7 @@
 ---
 to: src/db/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node.ts
 ---
+<% const properties = JSON.parse(props) -%>
 import {DbNodeType} from "../../../types/DbNodeType"
 
 export type <%= h.changeCase.pascal(nodeType) %>Node = {
@@ -9,8 +10,8 @@ export type <%= h.changeCase.pascal(nodeType) %>Node = {
         id: number
         created_at: string
         updated_at: string
-<% for (prop in properties) { -%>
-        <%= prop %>: <%= properties[prop].datatype %><% if (!properties[prop].mandatory) { %> | null<% } %>
-<% } -%>
+<% properties.forEach(prop => { -%>
+        <%= prop.name %>: <%= prop.datatype %><% if (!prop.mandatory) { %> | null<% } %>
+<% }) -%>
     }
 }

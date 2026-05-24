@@ -1,6 +1,7 @@
 ---
 to: tests/performance/scenarios/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create.ts
 ---
+<% const properties = JSON.parse(props) -%>
 import http from 'k6/http'
 import {check} from "k6"
 import {Trend} from "k6/metrics"
@@ -29,13 +30,13 @@ export const options = {
 export default function () {
     const url = `${__ENV.API_URL}/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>`
     const payload = {
-<% for (prop in properties) { -%>
-<%    if (properties[prop].mandatory && properties[prop].datatype === 'string') { -%>
-        "<%= prop %>": "<%= properties[prop].example %>",
-<%    } else if (properties[prop].mandatory) { -%>
-        "<%= prop %>": <%= properties[prop].example -%>,
+<% properties.forEach(prop => { -%>
+<%    if (prop.mandatory && prop.datatype === 'string') { -%>
+        "<%= prop.name %>": "<%= prop.example %>",
+<%    } else if (prop.mandatory) { -%>
+        "<%= prop.name %>": <%= prop.example -%>,
 <%    } -%>
-<% } -%>
+<% }) -%>
     }
 
     const response = http.post(

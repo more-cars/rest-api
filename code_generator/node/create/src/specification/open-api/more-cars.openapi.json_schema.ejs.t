@@ -4,6 +4,7 @@ to: src/specification/open-api/more-cars.openapi.json
 before: \"Relationship\"
 skip_if: \"<%= h.changeCase.pascal(nodeType) %>\"
 ---
+<% const properties = JSON.parse(props) -%>
 <%
     const schemaProperties = {}
 
@@ -23,20 +24,20 @@ skip_if: \"<%= h.changeCase.pascal(nodeType) %>\"
         example: "2025-05-14T11:05:07.793Z"
     }
 
-    for (prop in properties) {
-        schemaProperties[prop] = {
-            type: properties[prop].datatype,
+    properties.forEach(prop => {
+        schemaProperties[prop.name] = {
+            type: prop.datatype,
             description: "",
-            example: properties[prop].example,
+            example: prop.example,
         }
-    }
+    })
 
     const requiredProperties = []
-    for (prop in properties) {
-        if (properties[prop].mandatory) {
-            requiredProperties.push(prop)
+    properties.forEach(prop => {
+        if (prop.mandatory) {
+            requiredProperties.push(prop.name)
         }
-    }
+    })
 -%>
       "<%= h.changeCase.pascal(nodeType) %>": {
         "type": "object",
@@ -70,9 +71,9 @@ skip_if: \"<%= h.changeCase.pascal(nodeType) %>\"
     enumProperties.push('created_at')
     enumProperties.push('updated_at')
 
-    for (prop in properties) {
-        enumProperties.push(prop)
-    }
+    properties.forEach(prop => {
+        enumProperties.push(prop.name)
+    })
 -%>
       "<%= h.changeCase.pascal(nodeType) %>Properties": {
         "type": "string",

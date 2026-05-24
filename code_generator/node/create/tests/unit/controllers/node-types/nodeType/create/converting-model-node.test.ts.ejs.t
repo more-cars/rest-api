@@ -1,17 +1,18 @@
 ---
 to: tests/unit/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/create/converting-model-node.test.ts
 ---
+<% const properties = JSON.parse(props) -%>
 <%
-    let props = []
-    for (prop in properties) {
-        if (properties[prop].datatype === 'string' && properties[prop].example) {
-            props.push(prop + ': "' + properties[prop].example + '"')
-        } else if (!properties[prop].example) {
-            props.push(prop + ': null')
+    let props_out = []
+    properties.forEach(prop => {
+        if (prop.datatype === 'string' && prop.example) {
+            props_out.push(prop.name + ': "' + prop.example + '"')
+        } else if (!prop.example) {
+            props_out.push(prop.name + ': null')
         } else {
-            props.push(prop + ': ' + properties[prop].example)
+            props_out.push(prop.name + ': ' + prop.example)
         }
-    }
+    })
 -%>
 import {expect, test} from 'vitest'
 import {<%= h.changeCase.pascal(nodeType) %>Node} from "../../../../../../src/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node"
@@ -26,7 +27,7 @@ test("converting a <%= h.changeCase.upper(nodeType) %> node", async () => {
             id: 1,
             created_at: "2025-05-14T11:05:07.793Z",
             updated_at: "2025-05-14T11:05:07.793Z",
-<%- props.map(line => '            ' + line).join(',\n') %>,
+<%- props_out.map(line => '            ' + line).join(',\n') %>,
         },
     }
 
@@ -37,7 +38,7 @@ test("converting a <%= h.changeCase.upper(nodeType) %> node", async () => {
             node_type: ControllerNodeType.<%= h.changeCase.pascal(nodeType) %>,
             fields: {
                 id: 1,
-<%- props.map(line => '                ' + line).join(',\n') %>,
+<%- props_out.map(line => '                ' + line).join(',\n') %>,
                 created_at: "2025-05-14T11:05:07.793Z",
                 updated_at: "2025-05-14T11:05:07.793Z",
             },

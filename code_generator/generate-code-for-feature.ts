@@ -1,3 +1,4 @@
+import fs from "node:fs"
 import {select} from "@inquirer/prompts"
 import inquirer from 'inquirer'
 import {getNodeTypeSpecification} from "../src/specification/getNodeTypeSpecification"
@@ -10,10 +11,20 @@ async function generateCodeForFeature() {
     const typeOfData = await promptTypeOfData() as 'node' | 'relationship'
     const typeOfFeature = await promptTypeOfFeature(typeOfData)
     const featureParameters = await promptFeatureParameters(typeOfData, typeOfFeature)
-    const nodeSpecs = getNodeTypeSpecification(featureParameters['nodeType'])
-    const nodeTypeProperties = nodeSpecs.properties.map(property => property)
+
+    let properties: any = {}
+    try {
+        const nodeSpecs = getNodeTypeSpecification(featureParameters['nodeType'])
+        properties = nodeSpecs.properties.map(property => property)
+    } catch (e) {
+        properties = JSON.parse(fs.readFileSync(__dirname + '/_temp/properties.json', {
+            encoding: 'utf8',
+            flag: 'r'
+        }))
+    }
+
     const cliParameters = convertToCliParameters(featureParameters)
-    const hygenCommand = `HYGEN_OVERWRITE=1 HYGEN_TMPLS='${__dirname}' hygen ${typeOfData} ${typeOfFeature} ${cliParameters} --props='${JSON.stringify(nodeTypeProperties)}'`
+    const hygenCommand = `HYGEN_OVERWRITE=1 HYGEN_TMPLS='${__dirname}' hygen ${typeOfData} ${typeOfFeature} ${cliParameters} --props='${JSON.stringify(properties)}'`
     console.log(hygenCommand)
     await spawnShellCommand(hygenCommand)
 }
@@ -34,6 +45,7 @@ async function promptTypeOfFeature(typeOfData: 'node' | 'relationship') {
     const choices = []
     switch (typeOfData) {
         case 'node':
+            choices.push({value: 'create'})
             choices.push({value: 'get-by-id'})
             choices.push({value: 'get-all'})
             choices.push({value: 'update'})

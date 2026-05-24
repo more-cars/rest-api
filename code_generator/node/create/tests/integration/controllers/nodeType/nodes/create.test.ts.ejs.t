@@ -1,6 +1,7 @@
 ---
 to: tests/integration/controllers/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/nodes/create.test.ts
 ---
+<% const properties = JSON.parse(props) -%>
 import {expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from "../../../../../src/app.ts"
@@ -13,13 +14,13 @@ test('Input data is valid', async () => {
     const response = await request(app)
         .post('/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>')
         .send({
-<% for (prop in properties) { -%>
-<%    if (properties[prop].mandatory && properties[prop].datatype === 'string') { -%>
-            <%= prop %>: "<%= properties[prop].example %>",
-<%    } else if (properties[prop].mandatory) { -%>
-            <%= prop %>: <%= properties[prop].example -%>,
+<% properties.forEach(prop => { -%>
+<%    if (prop.mandatory && prop.datatype === 'string') { -%>
+            <%= prop.name %>: "<%= prop.example %>",
+<%    } else if (prop.mandatory) { -%>
+            <%= prop.name %>: <%= prop.example -%>,
 <%    } -%>
-<% } -%>
+<% }) -%>
         })
 
     expect(response.statusCode)
@@ -51,13 +52,13 @@ test('Input is valid, but something breaks on the way', async () => {
     const response = await request(app)
         .post('/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>')
         .send({
-<% for (prop in properties) { -%>
-<%    if (properties[prop].mandatory && properties[prop].datatype === 'string') { -%>
-            <%= prop %>: "<%= properties[prop].example %>",
-<%    } else if (properties[prop].mandatory) { -%>
-            <%= prop %>: <%= properties[prop].example -%>,
+<% properties.forEach(prop => { -%>
+<%    if (prop.mandatory && prop.datatype === 'string') { -%>
+            <%= prop.name %>: "<%= prop.example %>",
+<%    } else if (prop.mandatory) { -%>
+            <%= prop.name %>: <%= prop.example -%>,
 <%    } -%>
-<% } -%>
+<% }) -%>
         })
 
     expect(response.statusCode)
