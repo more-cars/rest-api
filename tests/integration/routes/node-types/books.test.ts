@@ -70,4 +70,52 @@ describe('Books', () => {
         expect(BookController.deleteCoversCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Create ›has-video‹ relationship', async () => {
+        await request(app)
+            .post('/books/123/has-video/456')
+
+        expect(BookController.createHasVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get all ›has-video‹ relationships', async () => {
+        await request(app)
+            .get('/books/123/has-video')
+
+        expect(BookController.getAllHasVideoRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Delete ›has-video‹ relationship', async () => {
+        await request(app)
+            .delete('/books/123/has-video/456')
+
+        expect(BookController.deleteHasVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Create ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .post('/books/123/has-main-video/456')
+
+        expect(BookController.createHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .get('/books/123/has-main-video')
+
+        expect(BookController.getHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Delete ›has-main-video‹ relationship', async () => {
+        await request(app)
+            .delete('/books/123/has-main-video/456')
+
+        expect(BookController.deleteHasMainVideoRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

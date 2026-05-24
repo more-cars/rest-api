@@ -8,5 +8,15 @@ export const BookRelationshipSpecification: RelationshipTypeSpecification[] = [
         endNodeType: NodeType.CarModelVariant,
         isReverseRelationship: false,
     }],
+    [RelationshipType.BookHasVideo, {
+        startNodeType: NodeType.Book,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
+    [RelationshipType.BookHasMainVideo, {
+        startNodeType: NodeType.Book,
+        endNodeType: NodeType.Video,
+        isReverseRelationship: false,
+    }],
     //
 ]

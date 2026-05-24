@@ -154,6 +154,8 @@ export enum RelationshipType {
     MotorShowHasVideo = 'Motor Show Has Video',
     MotorShowHasMainVideo = 'Motor Show Has Main Video',
     BookCoversCarModelVariant = 'Book Covers Car Model Variant',
+    BookHasVideo = 'Book Has Video',
+    BookHasMainVideo = 'Book Has Main Video',
     ImageBelongsToNode = 'Image Belongs To Node',
     ImageIsPrimeImageOfNode = 'Image Is Prime Image Of Node',
     VideoBelongsToNode = 'Video Belongs To Node',

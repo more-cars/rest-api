@@ -11,5 +11,11 @@ router.delete('/books/:id', BookController.delete)
 router.post('/books/:bookId/covers-car-model-variant/:carModelVariantId', BookController.createCoversCarModelVariantRelation)
 router.get('/books/:bookId/covers-car-model-variant', BookController.getAllCoversCarModelVariantRelations)
 router.delete('/books/:bookId/covers-car-model-variant/:carModelVariantId', BookController.deleteCoversCarModelVariantRelation)
+router.post('/books/:bookId/has-video/:videoId', BookController.createHasVideoRelation)
+router.get('/books/:bookId/has-video', BookController.getAllHasVideoRelations)
+router.delete('/books/:bookId/has-video/:videoId', BookController.deleteHasVideoRelation)
+router.post('/books/:bookId/has-main-video/:videoId', BookController.createHasMainVideoRelation)
+router.get('/books/:bookId/has-main-video', BookController.getHasMainVideoRelation)
+router.delete('/books/:bookId/has-main-video/:videoId', BookController.deleteHasMainVideoRelation)
 
 export default router

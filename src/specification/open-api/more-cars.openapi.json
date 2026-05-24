@@ -26065,6 +26065,278 @@
         }
       }
     },
+    "/books/{book-id}/has-video": {
+      "get": {
+        "operationId": "getBookHasVideoRel",
+        "tags": [
+          "Books"
+        ],
+        "summary": "Get all ›has-video‹ relationships for the `Book`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "book-id",
+            "description": "ID of the `Book`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-video‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookHasVideoCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Book` could not be found in the database.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/books/{book-id}/has-video/{video-id}": {
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Deletes the ›has-video‹ relationship between the `Book` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "book-id",
+            "description": "ID of the `Book`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-video‹ relationship between `Book` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-video‹ relationship between them.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Creates a ›has-video‹ relationship between the `Book` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "book-id",
+            "description": "ID of the `Book`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Relationship ›has-video‹ between `Book` and `Video` successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookHasVideoResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "The relationship ›has-video‹ between `Book` and `Video` already exists."
+          },
+          "404": {
+            "description": "Request failed. `Book` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/books/{book-id}/has-main-video": {
+      "get": {
+        "operationId": "getBookHasMainVideoRel",
+        "tags": [
+          "Books"
+        ],
+        "summary": "Get the ›has-main-video‹ relationship for the `Book`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "book-id",
+            "description": "ID of the `Book`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›has-main-video‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookHasMainVideoResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Book` could not be found in the database.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/books/{book-id}/has-main-video/{video-id}": {
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Deletes the ›has-main-video‹ relationship between the `Book` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "book-id",
+            "description": "ID of the `Book`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-main-video‹ relationship between `Book` and `Video` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-main-video‹ relationship between them.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Creates a ›has-main-video‹ relationship between the `Book` and the `Video`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "book-id",
+            "description": "ID of the `Book`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "video-id",
+            "description": "ID of the `Video`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Relationship ›has-main-video‹ between `Book` and `Video` successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookHasMainVideoResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "The relationship ›has-main-video‹ between `Book` and `Video` already exists."
+          },
+          "404": {
+            "description": "Request failed. `Book` and/or `Video` could not be found in the database.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/videos": {
       "get": {
         "operationId": "getVideos",
@@ -37980,6 +38252,117 @@
             "items": {
               "$ref": "#/components/schemas/BookCoversCarModelVariantResponse"
             }
+          }
+        }
+      },
+      "BookHasVideo": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "relationship_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "123456"
+          },
+          "relationship_name": {
+            "type": "string",
+            "readOnly": true,
+            "example": "has-video"
+          },
+          "partner_node": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "videos"
+              },
+              "data": {
+                "$ref": "#/components/schemas/Video"
+              }
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "BookHasVideoResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/BookHasVideo"
+          }
+        }
+      },
+      "BookHasVideoCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BookHasVideoResponse"
+            }
+          }
+        }
+      },
+      "BookHasMainVideo": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "relationship_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "123456"
+          },
+          "relationship_name": {
+            "type": "string",
+            "readOnly": true,
+            "example": "has-main-video"
+          },
+          "partner_node": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "videos"
+              },
+              "data": {
+                "$ref": "#/components/schemas/Video"
+              }
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "BookHasMainVideoResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/BookHasMainVideo"
           }
         }
       },
