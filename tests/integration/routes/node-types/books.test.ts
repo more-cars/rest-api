@@ -62,4 +62,12 @@ describe('Books', () => {
         expect(BookController.getAllCoversCarModelVariantRelations)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Delete ›covers-car-model-variant‹ relationship', async () => {
+        await request(app)
+            .delete('/books/123/covers-car-model-variant/456')
+
+        expect(BookController.deleteCoversCarModelVariantRelation)
+            .toHaveBeenCalledTimes(1)
+    })
 })

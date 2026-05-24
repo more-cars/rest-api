@@ -18,6 +18,8 @@ import {getSpecificRel} from "../../relationships/getSpecificRel"
 import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
 import {RelType} from "../../relationships/types/RelType"
 import {getAllRels} from "../../relationships/getAllRels"
+import {deleteSpecificRel} from "../../relationships/deleteSpecificRel"
+import {RelNotFoundError} from "../../types/RelNotFoundError"
 
 export const Book = {
     async create(data: BookInput): Promise<BookNode> {
@@ -102,5 +104,18 @@ export const Book = {
         await Book.findById(bookId)
 
         return getAllRels(bookId, RelType.BookCoversCarModelVariant)
+    },
+
+    async deleteCoversCarModelVariantRelationship(bookId: number, carModelVariantId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Book.findById(bookId)
+        await CarModelVariant.findById(carModelVariantId)
+
+        const relationship = await getSpecificRel(bookId, carModelVariantId, RelType.BookCoversCarModelVariant)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.BookCoversCarModelVariant, bookId, carModelVariantId)
+        }
+
+        await deleteSpecificRel(bookId, carModelVariantId, RelType.BookCoversCarModelVariant)
     },
 }

@@ -1,0 +1,25 @@
+info:
+  name: Delete ›covers-car-model-variant‹ relation (valid data)
+  type: http
+  tags:
+    - delete
+    - relation
+    - valid
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/books/{{validBookId}}/covers-car-model-variant/{{validCarModelVariantId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "204"
+  scripts:
+    - type: before-request
+      code: |-
+        const Books = require('./lib/node-types/Books.js')
+        const CarModelVariants = require('./lib/node-types/CarModelVariants.js')
+        await Books.create()
+        await CarModelVariants.create()
+        await Books.createCoversCarModelVariantRelationship()

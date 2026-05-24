@@ -6,6 +6,7 @@ import {updateNode} from "./books/updateNode"
 import {deleteNode} from "./books/deleteNode"
 import {createCoversCarModelVariantRelation} from "./books/createCoversCarModelVariantRelation"
 import {getAllCoversCarModelVariantRelations} from "./books/getAllCoversCarModelVariantRelations"
+import {deleteCoversCarModelVariantRelation} from "./books/deleteCoversCarModelVariantRelation"
 
 export const BookController = {
     async create(req: express.Request, res: express.Response) {
@@ -34,5 +35,9 @@ export const BookController = {
 
     async getAllCoversCarModelVariantRelations(req: express.Request, res: express.Response) {
         await getAllCoversCarModelVariantRelations(req, res)
+    },
+
+    async deleteCoversCarModelVariantRelation(req: express.Request, res: express.Response) {
+        await deleteCoversCarModelVariantRelation(req, res)
     },
 }
