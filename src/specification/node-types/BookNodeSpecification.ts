@@ -42,7 +42,7 @@ export const BookNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: "9783868528893",
             scope: 'user',
-            validation: ['string'],
+            validation: ['isbn'],
         },
         {
             name: 'pages',

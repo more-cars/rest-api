@@ -42,6 +42,7 @@ import {isValidTrackSurface} from "../validators/isValidTrackSurface"
 import {isValidGeoPosition} from "../validators/isValidGeoPosition"
 import {isValidDateTime} from "../validators/isValidDateTime"
 import {isValidLanguageCode} from "../validators/isValidLanguageCode"
+import {isValidIsbn} from "../validators/isValidIsbn"
 
 export function validateInputData(data: RawInputData, nodeType: NodeType, mode: 'CREATE' | 'UPDATE' = 'CREATE'): boolean {
     let isValid = true
@@ -114,6 +115,7 @@ function validate(value: unknown, validationRule: ValidationRule) {
         ['geoPosition', isValidGeoPosition],
         ['dateTime', isValidDateTime],
         ['languageCode', isValidLanguageCode],
+        ['isbn', isValidIsbn],
     ])
 
     const validationFunction = mapping.get(validationRule)

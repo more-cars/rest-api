@@ -1,5 +1,7 @@
 export type ValidationRule =
     'mandatory' |
+    'string' |
+    'number' |
     'imageProvider' |
     'videoProvider' |
     'airInduction' |
@@ -38,5 +40,4 @@ export type ValidationRule =
     'geoPosition' |
     'dateTime' |
     'languageCode' |
-    'string' |
-    'number'
+    'isbn'
