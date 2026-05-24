@@ -38397,63 +38397,6 @@
       "Node": {
         "oneOf": [
           {
-            "$ref": "#/components/schemas/Book"
-          },
-          {
-            "$ref": "#/components/schemas/Book"
-          },
-          {
-            "$ref": "#/components/schemas/Book"
-          },
-          {
-            "$ref": "#/components/schemas/Book"
-          },
-          {
-            "$ref": "#/components/schemas/Book"
-          },
-          {
-            "$ref": "#/components/schemas/Book"
-          },
-          {
-            "$ref": "#/components/schemas/Book"
-          },
-          {
-            "$ref": "#/components/schemas/Book"
-          },
-          {
-            "$ref": "#/components/schemas/Book"
-          },
-          {
-            "$ref": "#/components/schemas/Book"
-          },
-          {
-            "$ref": "#/components/schemas/Book"
-          },
-          {
-            "$ref": "#/components/schemas/Book"
-          },
-          {
-            "$ref": "#/components/schemas/Book"
-          },
-          {
-            "$ref": "#/components/schemas/Book"
-          },
-          {
-            "$ref": "#/components/schemas/Book"
-          },
-          {
-            "$ref": "#/components/schemas/Book"
-          },
-          {
-            "$ref": "#/components/schemas/Book"
-          },
-          {
-            "$ref": "#/components/schemas/Book"
-          },
-          {
-            "$ref": "#/components/schemas/Book"
-          },
-          {
             "$ref": "#/components/schemas/Company"
           },
           {
@@ -38520,10 +38463,13 @@
             "$ref": "#/components/schemas/MotorShow"
           },
           {
-            "$ref": "#/components/schemas/Video"
+            "$ref": "#/components/schemas/Book"
           },
           {
             "$ref": "#/components/schemas/Image"
+          },
+          {
+            "$ref": "#/components/schemas/Video"
           }
         ]
       },
