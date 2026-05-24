@@ -18,7 +18,7 @@ export async function getAll<%= h.changeCase.pascal(relationshipName) %>Relation
     try {
         const modelRelations = await <%= h.changeCase.pascal(startNodeType) %>.getAll<%= h.changeCase.pascal(relationshipName) %>Relationships(<%= h.changeCase.camel(startNodeType) %>Id)
         const relations = modelRelations.map(relation => convertModelRelationToControllerRelation(relation))
-        const marshalledData = marshalRelations(relations, ControllerNodeType.<%= h.changeCase.pascal(startNodeType) %>, <%= h.changeCase.camel(startNodeType) %>Id, RelationType.<%= h.changeCase.pascal(relationshipName) %>)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.<%= h.changeCase.pascal(startNodeType) %>, <%= h.changeCase.camel(startNodeType) %>Id, RelationType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

@@ -25929,6 +25929,48 @@
         }
       }
     },
+    "/books/{book-id}/covers-car-model-variant": {
+      "get": {
+        "operationId": "getBookCoversCarModelVariantRel",
+        "tags": [
+          "Books"
+        ],
+        "summary": "Get all ›covers-car-model-variant‹ relationships for the `Book`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "book-id",
+            "description": "ID of the `Book`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›covers-car-model-variant‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookCoversCarModelVariantCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Book` could not be found in the database.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/books/{book-id}/covers-car-model-variant/{car-model-variant-id}": {
       "post": {
         "tags": [
@@ -37886,6 +37928,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/BookCoversCarModelVariant"
+          }
+        }
+      },
+      "BookCoversCarModelVariantCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BookCoversCarModelVariantResponse"
+            }
           }
         }
       },

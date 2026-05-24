@@ -9,5 +9,6 @@ router.get('/books', BookController.getAll)
 router.patch('/books/:id', BookController.update)
 router.delete('/books/:id', BookController.delete)
 router.post('/books/:bookId/covers-car-model-variant/:carModelVariantId', BookController.createCoversCarModelVariantRelation)
+router.get('/books/:bookId/covers-car-model-variant', BookController.getAllCoversCarModelVariantRelations)
 
 export default router

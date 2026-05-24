@@ -54,4 +54,12 @@ describe('Books', () => {
         expect(BookController.createCoversCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get all ›covers-car-model-variant‹ relationships', async () => {
+        await request(app)
+            .get('/books/123/covers-car-model-variant')
+
+        expect(BookController.getAllCoversCarModelVariantRelations)
+            .toHaveBeenCalledTimes(1)
+    })
 })

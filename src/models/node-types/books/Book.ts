@@ -17,6 +17,7 @@ import {CarModelVariant} from "../car-model-variants/CarModelVariant"
 import {getSpecificRel} from "../../relationships/getSpecificRel"
 import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
 import {RelType} from "../../relationships/types/RelType"
+import {getAllRels} from "../../relationships/getAllRels"
 
 export const Book = {
     async create(data: BookInput): Promise<BookNode> {
@@ -94,5 +95,12 @@ export const Book = {
         }
 
         return createdRelationship
+    },
+
+    async getAllCoversCarModelVariantRelationships(bookId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await Book.findById(bookId)
+
+        return getAllRels(bookId, RelType.BookCoversCarModelVariant)
     },
 }
