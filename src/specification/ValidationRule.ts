@@ -37,5 +37,6 @@ export type ValidationRule =
     'trackSurface' |
     'geoPosition' |
     'dateTime' |
+    'languageCode' |
     'string' |
     'number'

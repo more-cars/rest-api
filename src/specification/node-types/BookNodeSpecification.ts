@@ -10,7 +10,7 @@ export const BookNodeSpecification: NodeSpecification = {
             mandatory: true,
             example: "Living the Supercar Dream",
             scope: 'user',
-            validation: [], // TODO enter validation rules
+            validation: ['mandatory', 'string'],
         },
         {
             name: 'author',
@@ -18,7 +18,7 @@ export const BookNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: "Tim Burton",
             scope: 'user',
-            validation: [], // TODO enter validation rules
+            validation: ['string'],
         },
         {
             name: 'publisher',
@@ -26,7 +26,7 @@ export const BookNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: "Blink Publishing",
             scope: 'user',
-            validation: [], // TODO enter validation rules
+            validation: ['string'],
         },
         {
             name: 'year_of_publication',
@@ -34,7 +34,7 @@ export const BookNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 2016,
             scope: 'user',
-            validation: [], // TODO enter validation rules
+            validation: ['number'],
         },
         {
             name: 'isbn',
@@ -42,7 +42,7 @@ export const BookNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: "9783868528893",
             scope: 'user',
-            validation: [], // TODO enter validation rules
+            validation: ['string'],
         },
         {
             name: 'pages',
@@ -50,7 +50,7 @@ export const BookNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: 256,
             scope: 'user',
-            validation: [], // TODO enter validation rules
+            validation: ['number'],
         },
         {
             name: 'language',
@@ -58,7 +58,7 @@ export const BookNodeSpecification: NodeSpecification = {
             mandatory: false,
             example: "en",
             scope: 'user',
-            validation: [], // TODO enter validation rules
+            validation: ['languageCode'],
         },
     ],
 }
