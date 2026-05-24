@@ -4,7 +4,7 @@ to: src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(sta
 import express from "express"
 import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
 import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
-import {marshalRelation} from "../../relations/marshalRelation"
+import {marshalSingleRelation} from "../../relations/marshalSingleRelation"
 import {marshalEmptyRelation} from "../../relations/marshalEmptyRelation"
 import {ControllerNodeType} from "../../types/ControllerNodeType"
 import {RelationType} from "../../types/RelationType"
@@ -20,7 +20,7 @@ export async function get<%= h.changeCase.pascal(relationshipName) %>Relation(re
     try {
         const modelRelation = await <%= h.changeCase.pascal(startNodeType) %>.get<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id)
         const relation = convertModelRelationToControllerRelation(modelRelation)
-        const marshalledData = marshalRelation(relation)
+        const marshalledData = marshalSingleRelation(relation)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

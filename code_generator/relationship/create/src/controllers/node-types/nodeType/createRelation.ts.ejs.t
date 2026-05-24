@@ -4,7 +4,7 @@ to: src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(sta
 import express from "express"
 import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
 import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
-import {marshalRelation} from "../../relations/marshalRelation"
+import {marshalSingleRelation} from "../../relations/marshalSingleRelation"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
 <% if (startNodeType === endNodeType) { %>
@@ -23,7 +23,7 @@ export async function create<%= h.changeCase.pascal(relationshipName) %>Relation
     try {
         const modelRelation = await <%= h.changeCase.pascal(startNodeType) %>.create<%= h.changeCase.pascal(relationshipName) %>Relationship(<%= h.changeCase.camel(startNodeType) %>Id, <%= h.changeCase.camel(startNodeType === endNodeType ? 'partner' : endNodeType) %>Id)
         const relation = convertModelRelationToControllerRelation(modelRelation)
-        const marshalledData = marshalRelation(relation)
+        const marshalledData = marshalSingleRelation(relation)
 
         return sendResponse201(marshalledData, res)
     } catch (e) {
