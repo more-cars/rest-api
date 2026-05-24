@@ -45,10 +45,12 @@ import {convertProgrammeEpisodeDbNodeToModelNode} from "./programme-episodes/cre
 import type {ProgrammeEpisodeNode} from "../../db/node-types/programme-episodes/types/ProgrammeEpisodeNode"
 import {convertMotorShowDbNodeToModelNode} from "./motor-shows/create/convertMotorShowDbNodeToModelNode"
 import type {MotorShowNode} from "../../db/node-types/motor-shows/types/MotorShowNode"
-import {convertVideoDbNodeToModelNode} from "./videos/create/convertVideoDbNodeToModelNode"
-import type {VideoNode} from "../../db/node-types/videos/types/VideoNode"
+import {convertBookDbNodeToModelNode} from "./books/create/convertBookDbNodeToModelNode"
+import type {BookNode} from "../../db/node-types/books/types/BookNode"
 import {convertImageDbNodeToModelNode} from "./images/create/convertImageDbNodeToModelNode"
 import type {ImageNode} from "../../db/node-types/images/types/ImageNode"
+import {convertVideoDbNodeToModelNode} from "./videos/create/convertVideoDbNodeToModelNode"
+import type {VideoNode} from "../../db/node-types/videos/types/VideoNode"
 import {convertRevisionDbNodeToModelNode} from "./revisions/create/convertRevisionDbNodeToModelNode"
 import type {RevisionNode} from "../../db/node-types/revisions/types/RevisionNode"
 
@@ -98,10 +100,12 @@ export function convertDbNodeToModelNode(dbNode: DbNode) {
             return convertProgrammeEpisodeDbNodeToModelNode(dbNode as ProgrammeEpisodeNode)
         case DbNodeType.MotorShow:
             return convertMotorShowDbNodeToModelNode(dbNode as MotorShowNode)
-        case DbNodeType.Video:
-            return convertVideoDbNodeToModelNode(dbNode as VideoNode)
+        case DbNodeType.Book:
+            return convertBookDbNodeToModelNode(dbNode as BookNode)
         case DbNodeType.Image:
             return convertImageDbNodeToModelNode(dbNode as ImageNode)
+        case DbNodeType.Video:
+            return convertVideoDbNodeToModelNode(dbNode as VideoNode)
         case DbNodeType.Revision:
             return convertRevisionDbNodeToModelNode(dbNode as RevisionNode)
         default:

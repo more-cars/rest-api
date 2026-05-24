@@ -23,8 +23,9 @@ import {FakeRating} from "./FakeRating"
 import {FakeProgramme} from "./FakeProgramme"
 import {FakeProgrammeEpisode} from "./FakeProgrammeEpisode"
 import {FakeMotorShow} from "./FakeMotorShow"
-import {FakeVideo} from "./FakeVideo"
+import {FakeBook} from "./FakeBook"
 import {FakeImage} from "./FakeImage"
+import {FakeVideo} from "./FakeVideo"
 
 export function getFakeNode(nodeType: ExpectedNodeType) {
     const mapping = new Map<ExpectedNodeType, FakeNode>([
@@ -51,8 +52,9 @@ export function getFakeNode(nodeType: ExpectedNodeType) {
         [ExpectedNodeType.Programme, FakeProgramme],
         [ExpectedNodeType.ProgrammeEpisode, FakeProgrammeEpisode],
         [ExpectedNodeType.MotorShow, FakeMotorShow],
-        [ExpectedNodeType.Video, FakeVideo],
+        [ExpectedNodeType.Book, FakeBook],
         [ExpectedNodeType.Image, FakeImage],
+        [ExpectedNodeType.Video, FakeVideo],
     ])
 
     const fakeNode = mapping.get(nodeType)

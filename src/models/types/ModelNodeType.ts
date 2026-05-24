@@ -22,7 +22,8 @@ export enum ModelNodeType {
     Programme = "programme",
     ProgrammeEpisode = "programme_episode",
     MotorShow = "motor_show",
-    Video = "video",
+    Book = "book",
     Image = "image",
+    Video = "video",
     Revision = "revision",
 }

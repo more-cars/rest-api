@@ -24,8 +24,9 @@ import {convertRatingNeo4jNodeToDbNode} from "../node-types/ratings/convertRatin
 import {convertProgrammeNeo4jNodeToDbNode} from "../node-types/programmes/convertProgrammeNeo4jNodeToDbNode"
 import {convertProgrammeEpisodeNeo4jNodeToDbNode} from "../node-types/programme-episodes/convertProgrammeEpisodeNeo4jNodeToDbNode"
 import {convertMotorShowNeo4jNodeToDbNode} from "../node-types/motor-shows/convertMotorShowNeo4jNodeToDbNode"
-import {convertVideoNeo4jNodeToDbNode} from "../node-types/videos/convertVideoNeo4jNodeToDbNode"
+import {convertBookNeo4jNodeToDbNode} from "../node-types/books/convertBookNeo4jNodeToDbNode"
 import {convertImageNeo4jNodeToDbNode} from "../node-types/images/convertImageNeo4jNodeToDbNode"
+import {convertVideoNeo4jNodeToDbNode} from "../node-types/videos/convertVideoNeo4jNodeToDbNode"
 import {convertRevisionNeo4jNodeToDbNode} from "../node-types/revisions/convertRevisionNeo4jNodeToDbNode"
 
 export function convertNeo4jNodeToDbNode(neo4jNode: Node, nodeTypeLabel: Neo4jNodeType) {
@@ -52,8 +53,9 @@ export function convertNeo4jNodeToDbNode(neo4jNode: Node, nodeTypeLabel: Neo4jNo
         [Neo4jNodeType.Programme, convertProgrammeNeo4jNodeToDbNode],
         [Neo4jNodeType.ProgrammeEpisode, convertProgrammeEpisodeNeo4jNodeToDbNode],
         [Neo4jNodeType.MotorShow, convertMotorShowNeo4jNodeToDbNode],
-        [Neo4jNodeType.Video, convertVideoNeo4jNodeToDbNode],
+        [Neo4jNodeType.Book, convertBookNeo4jNodeToDbNode],
         [Neo4jNodeType.Image, convertImageNeo4jNodeToDbNode],
+        [Neo4jNodeType.Video, convertVideoNeo4jNodeToDbNode],
         [Neo4jNodeType.Revision, convertRevisionNeo4jNodeToDbNode],
     ])
 

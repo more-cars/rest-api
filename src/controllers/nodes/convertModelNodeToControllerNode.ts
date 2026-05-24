@@ -25,6 +25,7 @@ import {convertProgrammeModelNodeToControllerNode} from "../node-types/programme
 import {convertProgrammeEpisodeModelNodeToControllerNode} from "../node-types/programme-episodes/convertProgrammeEpisodeModelNodeToControllerNode"
 import {convertMotorShowModelNodeToControllerNode} from "../node-types/motor-shows/convertMotorShowModelNodeToControllerNode"
 import {convertVideoModelNodeToControllerNode} from "../node-types/videos/convertVideoModelNodeToControllerNode"
+import {convertBookModelNodeToControllerNode} from "../node-types/books/convertBookModelNodeToControllerNode"
 import {convertImageModelNodeToControllerNode} from "../node-types/images/convertImageModelNodeToControllerNode"
 import type {CompanyNode} from "../../models/node-types/companies/types/CompanyNode"
 import type {BrandNode} from "../../models/node-types/brands/types/BrandNode"
@@ -49,6 +50,7 @@ import type {ProgrammeNode} from "../../models/node-types/programmes/types/Progr
 import type {ProgrammeEpisodeNode} from "../../models/node-types/programme-episodes/types/ProgrammeEpisodeNode"
 import type {MotorShowNode} from "../../models/node-types/motor-shows/types/MotorShowNode"
 import type {VideoNode} from "../../models/node-types/videos/types/VideoNode"
+import type {BookNode} from "../../models/node-types/books/types/BookNode"
 import type {ImageNode} from "../../models/node-types/images/types/ImageNode"
 
 export function convertModelNodeToControllerNode(modelNode: ModelNode): ControllerNode {
@@ -97,10 +99,12 @@ export function convertModelNodeToControllerNode(modelNode: ModelNode): Controll
             return convertProgrammeEpisodeModelNodeToControllerNode(modelNode as ProgrammeEpisodeNode)
         case ModelNodeType.MotorShow:
             return convertMotorShowModelNodeToControllerNode(modelNode as MotorShowNode)
-        case ModelNodeType.Video:
-            return convertVideoModelNodeToControllerNode(modelNode as VideoNode)
+        case ModelNodeType.Book:
+            return convertBookModelNodeToControllerNode(modelNode as BookNode)
         case ModelNodeType.Image:
             return convertImageModelNodeToControllerNode(modelNode as ImageNode)
+        case ModelNodeType.Video:
+            return convertVideoModelNodeToControllerNode(modelNode as VideoNode)
         default:
             throw new NodeTypeNotFoundError(modelNode.node_type)
     }

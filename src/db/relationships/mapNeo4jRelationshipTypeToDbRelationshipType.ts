@@ -337,14 +337,12 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
                 [RelationshipTypeNeo4j.MotorShowHasVideo, RelationshipType.MotorShowHasVideo],
             ])],
         ])],
-        [Neo4jNodeType.Video, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+        [Neo4jNodeType.Book, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
             [RelationshipDirection.REVERSE, new Map([
-                // Video - Reverse
-                [RelationshipTypeNeo4j.VideoBelongsToNode, RelationshipType.VideoBelongsToNode],
-                [RelationshipTypeNeo4j.VideoIsMainVideoOfNode, RelationshipType.VideoIsMainVideoOfNode],
+                // Book - Reverse
             ])],
             [RelationshipDirection.FORWARD, new Map([
-                // Video - Forward
+                // Book - Forward
             ])],
         ])],
         [Neo4jNodeType.Image, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
@@ -355,6 +353,16 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
             ])],
             [RelationshipDirection.FORWARD, new Map([
                 // Image - Forward
+            ])],
+        ])],
+        [Neo4jNodeType.Video, new Map<RelationshipDirection, Map<RelationshipTypeNeo4j, RelationshipType>>([
+            [RelationshipDirection.REVERSE, new Map([
+                // Video - Reverse
+                [RelationshipTypeNeo4j.VideoBelongsToNode, RelationshipType.VideoBelongsToNode],
+                [RelationshipTypeNeo4j.VideoIsMainVideoOfNode, RelationshipType.VideoIsMainVideoOfNode],
+            ])],
+            [RelationshipDirection.FORWARD, new Map([
+                // Video - Forward
             ])],
         ])],
     ])

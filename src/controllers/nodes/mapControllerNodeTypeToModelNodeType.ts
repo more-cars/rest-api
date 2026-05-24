@@ -26,8 +26,9 @@ export function mapControllerNodeTypeToModelNodeType(controllerNodeType: Control
         [ControllerNodeType.Programme, ModelNodeType.Programme],
         [ControllerNodeType.ProgrammeEpisode, ModelNodeType.ProgrammeEpisode],
         [ControllerNodeType.MotorShow, ModelNodeType.MotorShow],
-        [ControllerNodeType.Video, ModelNodeType.Video],
+        [ControllerNodeType.Book, ModelNodeType.Book],
         [ControllerNodeType.Image, ModelNodeType.Image],
+        [ControllerNodeType.Video, ModelNodeType.Video],
     ])
 
     const mappedNodeType = mapping.get(controllerNodeType)

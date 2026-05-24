@@ -21,8 +21,9 @@ import ratings from "./node-types/ratings"
 import programmes from "./node-types/programmes"
 import programmeEpisodes from "./node-types/programme-episodes"
 import motorShows from "./node-types/motor-shows"
-import videos from "./node-types/videos"
+import books from "./node-types/books"
 import images from "./node-types/images"
+import videos from "./node-types/videos"
 
 export function registerNodeTypeRoutes(app: Express) {
     app.use('/', companies)
@@ -47,6 +48,7 @@ export function registerNodeTypeRoutes(app: Express) {
     app.use('/', programmes)
     app.use('/', programmeEpisodes)
     app.use('/', motorShows)
+    app.use('/', books)
     app.use('/', images)
     app.use('/', videos)
 }

@@ -1,0 +1,29 @@
+info:
+  name: Create Book (invalid data)
+  type: http
+  tags:
+    - create
+    - node
+    - invalid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/books"
+  body:
+    type: json
+    data: |-
+      {}
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "400"
+    - expression: res.body.errors
+      operator: isArray
+    - expression: res.body.errors[0].status
+      operator: isNotEmpty
+    - expression: res.body.errors[0].title
+      operator: isNotEmpty
+    - expression: res.body.errors[0].detail
+      operator: isNotEmpty

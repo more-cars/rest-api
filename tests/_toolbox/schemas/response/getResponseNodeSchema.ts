@@ -22,8 +22,9 @@ import {RatingSchema} from "./node-types/RatingSchema"
 import {ProgrammeSchema} from "./node-types/ProgrammeSchema"
 import {ProgrammeEpisodeSchema} from "./node-types/ProgrammeEpisodeSchema"
 import {MotorShowSchema} from "./node-types/MotorShowSchema"
-import {VideoSchema} from "./node-types/VideoSchema"
+import {BookSchema} from "./node-types/BookSchema"
 import {ImageSchema} from "./node-types/ImageSchema"
+import {VideoSchema} from "./node-types/VideoSchema"
 
 export function getResponseNodeSchema(nodeType: ControllerNodeType) {
     const mapping = new Map<ControllerNodeType, object>([
@@ -49,8 +50,9 @@ export function getResponseNodeSchema(nodeType: ControllerNodeType) {
         [ControllerNodeType.Programme, ProgrammeSchema],
         [ControllerNodeType.ProgrammeEpisode, ProgrammeEpisodeSchema],
         [ControllerNodeType.MotorShow, MotorShowSchema],
-        [ControllerNodeType.Video, VideoSchema],
+        [ControllerNodeType.Book, BookSchema],
         [ControllerNodeType.Image, ImageSchema],
+        [ControllerNodeType.Video, VideoSchema],
     ])
 
     const responseNodeSchema = mapping.get(nodeType)

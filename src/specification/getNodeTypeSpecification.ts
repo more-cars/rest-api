@@ -23,8 +23,9 @@ import {RatingNodeSpecification} from "./node-types/RatingNodeSpecification"
 import {ProgrammeNodeSpecification} from "./node-types/ProgrammeNodeSpecification"
 import {ProgrammeEpisodeNodeSpecification} from "./node-types/ProgrammeEpisodeNodeSpecification"
 import {MotorShowNodeSpecification} from "./node-types/MotorShowNodeSpecification"
-import {VideoNodeSpecification} from "./node-types/VideoNodeSpecification"
+import {BookNodeSpecification} from "./node-types/BookNodeSpecification"
 import {ImageNodeSpecification} from "./node-types/ImageNodeSpecification"
+import {VideoNodeSpecification} from "./node-types/VideoNodeSpecification"
 import {RevisionNodeSpecification} from "./node-types/RevisionNodeSpecification"
 
 export function getNodeTypeSpecification(nodeType: NodeType) {
@@ -51,8 +52,9 @@ export function getNodeTypeSpecification(nodeType: NodeType) {
         [NodeType.Programme, ProgrammeNodeSpecification],
         [NodeType.ProgrammeEpisode, ProgrammeEpisodeNodeSpecification],
         [NodeType.MotorShow, MotorShowNodeSpecification],
-        [NodeType.Video, VideoNodeSpecification],
+        [NodeType.Book, BookNodeSpecification],
         [NodeType.Image, ImageNodeSpecification],
+        [NodeType.Video, VideoNodeSpecification],
         [NodeType.Revision, RevisionNodeSpecification],
     ])
 

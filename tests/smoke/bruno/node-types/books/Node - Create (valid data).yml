@@ -1,0 +1,41 @@
+info:
+  name: Create Book (valid data)
+  type: http
+  tags:
+    - create
+    - node
+    - valid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/books"
+  body:
+    type: json
+    data: |-
+      {
+        "title": "Living the Supercar Dream",
+        "author": "Tim Burton",
+        "publisher": "Blink Publishing",
+        "year_of_publication": 2016,
+        "isbn": "9783868528893",
+        "pages": 256,
+        "language": "en"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "201"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: gte
+      value: "12000000"
+  scripts:
+    - type: tests
+      code: |-
+        test("both timestamps should be identical", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.eql(data.attributes.updated_at)
+        })
