@@ -13,4 +13,12 @@ describe('Books', () => {
         expect(BookController.create)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Get Node by ID', async () => {
+        await request(app)
+            .get('/books/123')
+
+        expect(BookController.getById)
+            .toHaveBeenCalledTimes(1)
+    })
 })
