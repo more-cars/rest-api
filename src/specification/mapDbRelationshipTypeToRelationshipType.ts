@@ -158,10 +158,11 @@ export function mapDbRelationshipTypeToRelationshipType(dbRelationshipType: DbRe
         [DbRelationshipType.MotorShowHasPrimeImage, RelationshipType.MotorShowHasPrimeImage],
         [DbRelationshipType.MotorShowHasVideo, RelationshipType.MotorShowHasVideo],
         [DbRelationshipType.MotorShowHasMainVideo, RelationshipType.MotorShowHasMainVideo],
-        [DbRelationshipType.VideoBelongsToNode, RelationshipType.VideoBelongsToNode],
-        [DbRelationshipType.VideoIsMainVideoOfNode, RelationshipType.VideoIsMainVideoOfNode],
+        [DbRelationshipType.BookCoversCarModelVariant, RelationshipType.BookCoversCarModelVariant],
         [DbRelationshipType.ImageBelongsToNode, RelationshipType.ImageBelongsToNode],
         [DbRelationshipType.ImageIsPrimeImageOfNode, RelationshipType.ImageIsPrimeImageOfNode],
+        [DbRelationshipType.VideoBelongsToNode, RelationshipType.VideoBelongsToNode],
+        [DbRelationshipType.VideoIsMainVideoOfNode, RelationshipType.VideoIsMainVideoOfNode],
     ])
 
     const relationshipType = mapping.get(dbRelationshipType)

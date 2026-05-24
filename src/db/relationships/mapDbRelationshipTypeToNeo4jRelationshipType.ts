@@ -160,10 +160,11 @@ export function mapDbRelationshipTypeToNeo4jRelationshipType(
         [RelationshipType.MotorShowHasPrimeImage, RelationshipTypeNeo4j.MotorShowHasPrimeImage],
         [RelationshipType.MotorShowHasVideo, RelationshipTypeNeo4j.MotorShowHasVideo],
         [RelationshipType.MotorShowHasMainVideo, RelationshipTypeNeo4j.MotorShowHasMainVideo],
-        [RelationshipType.VideoBelongsToNode, RelationshipTypeNeo4j.VideoBelongsToNode],
-        [RelationshipType.VideoIsMainVideoOfNode, RelationshipTypeNeo4j.VideoIsMainVideoOfNode],
+        [RelationshipType.BookCoversCarModelVariant, RelationshipTypeNeo4j.BookCoversCarModelVariant],
         [RelationshipType.ImageBelongsToNode, RelationshipTypeNeo4j.ImageBelongsToNode],
         [RelationshipType.ImageIsPrimeImageOfNode, RelationshipTypeNeo4j.ImageIsPrimeImageOfNode],
+        [RelationshipType.VideoBelongsToNode, RelationshipTypeNeo4j.VideoBelongsToNode],
+        [RelationshipType.VideoIsMainVideoOfNode, RelationshipTypeNeo4j.VideoIsMainVideoOfNode],
     ])
 
     const dbRelationshipType = mapping.get(relationshipType)

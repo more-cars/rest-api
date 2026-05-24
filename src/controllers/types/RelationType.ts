@@ -151,8 +151,9 @@ export enum RelationType {
     MotorShowHasPrimeImage = 'has-prime-image',
     MotorShowHasVideo = 'has-video',
     MotorShowHasMainVideo = 'has-main-video',
-    VideoBelongsToNode = 'belongs-to-node',
-    VideoIsMainVideoOfNode = 'is-main-video-of-node',
+    BookCoversCarModelVariant = 'covers-car-model-variant',
     ImageBelongsToNode = 'belongs-to-node',
     ImageIsPrimeImageOfNode = 'is-prime-image-of-node',
+    VideoBelongsToNode = 'belongs-to-node',
+    VideoIsMainVideoOfNode = 'is-main-video-of-node',
 }

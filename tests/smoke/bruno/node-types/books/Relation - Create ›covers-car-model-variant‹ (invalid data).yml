@@ -1,0 +1,31 @@
+info:
+  name: Create ›covers-car-model-variant‹ relation (invalid data)
+  type: http
+  tags:
+    - create
+    - relation
+    - invalid
+
+http:
+  method: POST
+  url: "{{baseUrl}}/books/{{invalidBookId}}/covers-car-model-variant/{{invalidCarModelVariantId}}"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "404"
+    - expression: res.body.errors
+      operator: isArray
+    - expression: res.body.errors[0].status
+      operator: isNotEmpty
+    - expression: res.body.errors[0].title
+      operator: isNotEmpty
+    - expression: res.body.errors[0].detail
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const Ids = require('./lib/Ids.js')
+        await Ids.generateInvalidId('Book')
+        await Ids.generateInvalidId('CarModelVariant')

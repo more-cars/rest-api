@@ -23,8 +23,9 @@ import {RatingRelationshipSpecification} from "./node-types/RatingRelationshipSp
 import {ProgrammeRelationshipSpecification} from "./node-types/ProgrammeRelationshipSpecification"
 import {ProgrammeEpisodeRelationshipSpecification} from "./node-types/ProgrammeEpisodeRelationshipSpecification"
 import {MotorShowRelationshipSpecification} from "./node-types/MotorShowRelationshipSpecification"
-import {VideoRelationshipSpecification} from "./node-types/VideoRelationshipSpecification"
+import {BookRelationshipSpecification} from "./node-types/BookRelationshipSpecification"
 import {ImageRelationshipSpecification} from "./node-types/ImageRelationshipSpecification"
+import {VideoRelationshipSpecification} from "./node-types/VideoRelationshipSpecification"
 
 export function getRelationshipTypeSpecification(relationshipType: RelationshipType) {
     const mapping = new Map<RelationshipType, {
@@ -54,6 +55,7 @@ export function getRelationshipTypeSpecification(relationshipType: RelationshipT
         ProgrammeRelationshipSpecification,
         ProgrammeEpisodeRelationshipSpecification,
         MotorShowRelationshipSpecification,
+        BookRelationshipSpecification,
         ImageRelationshipSpecification,
     ))
 

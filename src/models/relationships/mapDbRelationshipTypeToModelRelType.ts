@@ -154,10 +154,11 @@ export function mapDbRelationshipTypeToModelRelType(dbRelationshipType: Relation
         [RelationshipType.MotorShowHasPrimeImage, RelType.MotorShowHasPrimeImage],
         [RelationshipType.MotorShowHasVideo, RelType.MotorShowHasVideo],
         [RelationshipType.MotorShowHasMainVideo, RelType.MotorShowHasMainVideo],
-        [RelationshipType.VideoBelongsToNode, RelType.VideoBelongsToNode],
-        [RelationshipType.VideoIsMainVideoOfNode, RelType.VideoIsMainVideoOfNode],
+        [RelationshipType.BookCoversCarModelVariant, RelType.BookCoversCarModelVariant],
         [RelationshipType.ImageBelongsToNode, RelType.ImageBelongsToNode],
         [RelationshipType.ImageIsPrimeImageOfNode, RelType.ImageIsPrimeImageOfNode],
+        [RelationshipType.VideoBelongsToNode, RelType.VideoBelongsToNode],
+        [RelationshipType.VideoIsMainVideoOfNode, RelType.VideoIsMainVideoOfNode],
     ])
 
     const modelRelType = mapping.get(dbRelationshipType)

@@ -12,6 +12,11 @@ import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstrai
 import {updateDbNode} from "../../../db/nodes/updateDbNode"
 import {Revision} from "../revisions/Revision"
 import {deleteNode} from "../../../db/nodes/deleteNode"
+import {createRel} from "../../relationships/createRel"
+import {CarModelVariant} from "../car-model-variants/CarModelVariant"
+import {getSpecificRel} from "../../relationships/getSpecificRel"
+import {RelAlreadyExistsError} from "../../types/RelAlreadyExistsError"
+import {RelType} from "../../relationships/types/RelType"
 
 export const Book = {
     async create(data: BookInput): Promise<BookNode> {
@@ -71,5 +76,23 @@ export const Book = {
         }
 
         await deleteNode(id)
+    },
+
+    async createCoversCarModelVariantRelationship(bookId: number, carModelVariantId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Book.findById(bookId)
+        await CarModelVariant.findById(carModelVariantId)
+
+        const existingRelation = await getSpecificRel(bookId, carModelVariantId, RelType.BookCoversCarModelVariant)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.BookCoversCarModelVariant, bookId, carModelVariantId)
+        }
+
+        const createdRelationship = await createRel(bookId, carModelVariantId, RelType.BookCoversCarModelVariant)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 }

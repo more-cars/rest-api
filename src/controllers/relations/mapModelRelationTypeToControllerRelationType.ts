@@ -156,10 +156,11 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.MotorShowHasPrimeImage, RelationType.MotorShowHasPrimeImage],
         [RelType.MotorShowHasVideo, RelationType.MotorShowHasVideo],
         [RelType.MotorShowHasMainVideo, RelationType.MotorShowHasMainVideo],
-        [RelType.VideoBelongsToNode, RelationType.VideoBelongsToNode],
-        [RelType.VideoIsMainVideoOfNode, RelationType.VideoIsMainVideoOfNode],
+        [RelType.BookCoversCarModelVariant, RelationType.BookCoversCarModelVariant],
         [RelType.ImageBelongsToNode, RelationType.ImageBelongsToNode],
         [RelType.ImageIsPrimeImageOfNode, RelationType.ImageIsPrimeImageOfNode],
+        [RelType.VideoBelongsToNode, RelationType.VideoBelongsToNode],
+        [RelType.VideoIsMainVideoOfNode, RelationType.VideoIsMainVideoOfNode],
     ])
 
     const mappedRel = mapping.get(modelRelationshipType)
