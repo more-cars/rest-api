@@ -25846,6 +25846,55 @@
             }
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Update `Book`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "book-id",
+            "description": "ID of the `Book`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Book` successfully updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "`Book` could not be updated. The provided data was invalid or malformed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response400"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Update request failed. A `Book` with the provided ID could not be found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/videos": {

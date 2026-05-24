@@ -1,0 +1,49 @@
+info:
+  name: Update Book (valid data)
+  type: http
+  tags:
+    - update
+    - node
+    - valid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/books/{{validBookId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "title": "Living the Supercar Dream - Updated",
+        "author": "Tim Burton - Updated",
+        "publisher": "Blink Publishing - Updated",
+        "year_of_publication": 2018,
+        "isbn": "978386852889-3",
+        "pages": 258,
+        "language": "de"
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.id
+      operator: eq
+      value: "{{validBookId}}"
+  scripts:
+    - type: before-request
+      code: |-
+        const Books = require('./lib/node-types/Books.js')
+        await Books.create()
+    - type: tests
+      code: |-
+        test("response should return the intended record", function () {
+          const data = res.getBody()
+          expect(data.id).to.eql(bru.getEnvVar('validBookId'))
+        })
+        test("both timestamps should be different", function () {
+          const data = res.getBody()
+          expect(data.attributes.created_at).to.not.eql(data.attributes.updated_at)
+        })

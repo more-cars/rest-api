@@ -1,0 +1,36 @@
+info:
+  name: Update Book (invalid data)
+  type: http
+  tags:
+    - update
+    - node
+    - invalid
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/books/{{validBookId}}"
+  body:
+    type: json
+    data: |-
+      {
+        "title": null
+      }
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "400"
+    - expression: res.body.errors
+      operator: isArray
+    - expression: res.body.errors[0].status
+      operator: isNotEmpty
+    - expression: res.body.errors[0].title
+      operator: isNotEmpty
+    - expression: res.body.errors[0].detail
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const Books = require('./lib/node-types/Books.js')
+        await Books.create()

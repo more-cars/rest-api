@@ -9,6 +9,8 @@ import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
+import {updateDbNode} from "../../../db/nodes/updateDbNode"
+import {Revision} from "../revisions/Revision"
 
 export const Book = {
     async create(data: BookInput): Promise<BookNode> {
@@ -37,5 +39,26 @@ export const Book = {
         })
 
         return nodes
+    },
+
+    async update(id: number, data: BookInput): Promise<BookNode> {
+        const node = await getNodeById(id)
+
+        if (!node) {
+            throw new NodeNotFoundError(id)
+        }
+
+        const input = convertInputData(data)
+        const result = await updateDbNode(DbNodeType.Book, id, input)
+
+        await Revision.create({
+            node_type: DbNodeType.Book,
+            node_id: node.properties.id,
+            node_created_at: node.properties.created_at,
+            node_updated_at: node.properties.updated_at,
+            ...node.properties,
+        })
+
+        return convertDbNodeToModelNode(result) as BookNode
     },
 }

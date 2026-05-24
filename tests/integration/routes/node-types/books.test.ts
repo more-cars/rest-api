@@ -29,4 +29,13 @@ describe('Books', () => {
         expect(BookController.getAll)
             .toHaveBeenCalledTimes(1)
     })
+
+    test('Update Node', async () => {
+        await request(app)
+            .patch('/books/123')
+
+        expect(BookController.update)
+            .toHaveBeenCalledTimes(1)
+
+    })
 })
