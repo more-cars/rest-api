@@ -26,8 +26,8 @@ describe('Expecting correct status code when requesting a filtered node collecti
         ['', '', '1234'],
         ['id', 'greaterThan', '1234'],
         ['id', 'avg', '1234'],
-        ['name', 'equal', 'test'],
-        ['name', 'contains', 'test'],
+        ['title', 'equal', 'test'],
+        ['title', 'contains', 'test'],
         ['unknown_property', 'eq', 'test'],
         ['42', 'neq', 'test'],
     ])('when filter parameters are invalid: $0 $1 $2', async (filterByProperty, filterOperator, filterValue) => {

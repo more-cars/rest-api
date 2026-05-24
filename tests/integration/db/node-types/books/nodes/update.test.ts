@@ -40,7 +40,7 @@ describe('Updating BOOK', () => {
     test('removing a field', async () => {
         const createdNode = await seedNode(DbNodeType.Book)
         const inputData = createdNode.properties as DbInputData
-        inputData.name = null
+        inputData.title = null
 
         const updatedNode = await updateDbNode(DbNodeType.Book, createdNode.properties.id, inputData) as BookNode
 

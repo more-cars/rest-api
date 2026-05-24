@@ -47,7 +47,7 @@ describe('Update BOOK', () => {
     test('Trying to remove a mandatory field', async () => {
         const createdNode = await seedNode(DbNodeType.Book)
         const inputData = createdNode.properties
-        inputData.name = null
+        inputData.title = null
 
         const response = await request(app)
             .patch('/books/' + createdNode.properties.id)
