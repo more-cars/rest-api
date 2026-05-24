@@ -7,5 +7,6 @@ router.post('/books', BookController.create)
 router.get('/books/:id', BookController.getById)
 router.get('/books', BookController.getAll)
 router.patch('/books/:id', BookController.update)
+router.delete('/books/:id', BookController.delete)
 
 export default router

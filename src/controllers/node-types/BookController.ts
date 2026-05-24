@@ -3,6 +3,7 @@ import {createNode} from "./books/createNode"
 import {getById} from "./books/getById"
 import {getAll} from "./books/getAll"
 import {updateNode} from "./books/updateNode"
+import {deleteNode} from "./books/deleteNode"
 
 export const BookController = {
     async create(req: express.Request, res: express.Response) {
@@ -19,5 +20,9 @@ export const BookController = {
 
     async update(req: express.Request, res: express.Response) {
         await updateNode(req, res)
+    },
+
+    async delete(req: express.Request, res: express.Response) {
+        await deleteNode(req, res)
     },
 }

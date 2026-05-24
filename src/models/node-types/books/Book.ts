@@ -11,6 +11,7 @@ import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollection
 import type {NodeCollectionConstraints} from "../../types/NodeCollectionConstraints"
 import {updateDbNode} from "../../../db/nodes/updateDbNode"
 import {Revision} from "../revisions/Revision"
+import {deleteNode} from "../../../db/nodes/deleteNode"
 
 export const Book = {
     async create(data: BookInput): Promise<BookNode> {
@@ -60,5 +61,15 @@ export const Book = {
         })
 
         return convertDbNodeToModelNode(result) as BookNode
+    },
+
+    async delete(id: number): Promise<void> {
+        const node = await getNodeById(id)
+
+        if (!node) {
+            throw new NodeNotFoundError(id)
+        }
+
+        await deleteNode(id)
     },
 }

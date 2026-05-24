@@ -25895,6 +25895,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Delete `Book`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "book-id",
+            "description": "ID of the `Book`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "`Book` successfully deleted."
+          },
+          "404": {
+            "description": "Deletion request failed. A `Book` with the provided ID could not be found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/videos": {

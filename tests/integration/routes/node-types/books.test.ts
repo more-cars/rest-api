@@ -38,4 +38,12 @@ describe('Books', () => {
             .toHaveBeenCalledTimes(1)
 
     })
+
+    test('Delete Node', async () => {
+        await request(app)
+            .delete('/books/123')
+
+        expect(BookController.delete)
+            .toHaveBeenCalledTimes(1)
+    })
 })
