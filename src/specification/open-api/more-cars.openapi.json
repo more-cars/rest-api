@@ -25718,6 +25718,65 @@
       }
     },
     "/books": {
+      "get": {
+        "operationId": "getBooks",
+        "tags": [
+          "Books"
+        ],
+        "summary": "Get all `Books`",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Page"
+          },
+          {
+            "in": "query",
+            "name": "sort_by_property",
+            "description": "Returns the `Book` collection, ordered by the specified property.",
+            "schema": {
+              "$ref": "#/components/schemas/BookProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/SortDirection"
+          },
+          {
+            "in": "query",
+            "name": "filter_by_property",
+            "description": "Specifies by which node property the `Book` collection should be filtered.",
+            "schema": {
+              "$ref": "#/components/schemas/BookProperties"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/FilterValue"
+          },
+          {
+            "$ref": "#/components/parameters/FilterOperator"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "`Book` collection successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookCollectionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request failed. One or multiple of the provided collection parameters ('page', 'sort_by_property', 'sort_direction', 'filter_by_property', 'filter_value', 'filter_operator') are invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response400"
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "Books"
@@ -37626,6 +37685,23 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/Book"
+          }
+        }
+      },
+      "BookCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BookResponse"
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/PaginationLinks"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/MetaData"
           }
         }
       },

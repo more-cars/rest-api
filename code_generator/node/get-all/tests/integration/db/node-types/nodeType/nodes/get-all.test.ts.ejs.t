@@ -5,6 +5,7 @@ import {expect, test} from 'vitest'
 import {deleteAllNodesOfType} from "../../../../../_toolbox/dbSeeding/deleteAllNodesOfType"
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 import {<%= h.changeCase.pascal(nodeType) %>Node} from "../../../../../../src/db/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/types/<%= h.changeCase.pascal(nodeType) %>Node"
+import {fetchNodesFromDb} from "../../../../../../src/db/nodes/fetchNodesFromDb"
 import {seedNodes} from "../../../../../_toolbox/dbSeeding/seedNodes"
 
 test('When there are no <%= h.changeCase.upper(h.inflection.pluralize(nodeType)) %> then an empty array should be returned', async () => {
