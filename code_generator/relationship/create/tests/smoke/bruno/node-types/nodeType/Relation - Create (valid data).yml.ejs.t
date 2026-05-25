@@ -59,3 +59,9 @@ runtime:
         const <%= h.changeCase.pascal(h.inflection.pluralize(endNodeType)) %> = require('./lib/node-types/<%= h.changeCase.pascal(h.inflection.pluralize(endNodeType)) %>.js')
         await <%= h.changeCase.pascal(h.inflection.pluralize(startNodeType)) %>.create()
         await <%= h.changeCase.pascal(h.inflection.pluralize(endNodeType)) %>.create()
+    - type: after-response
+      code: |-
+        const <%= h.changeCase.pascal(h.inflection.pluralize(startNodeType)) %> = require('./lib/node-types/<%= h.changeCase.pascal(h.inflection.pluralize(startNodeType)) %>.js')
+        const <%= h.changeCase.pascal(h.inflection.pluralize(endNodeType)) %> = require('./lib/node-types/<%= h.changeCase.pascal(h.inflection.pluralize(endNodeType)) %>.js')
+        await <%= h.changeCase.pascal(h.inflection.pluralize(startNodeType)) %>.delete(bru.getEnvVar('valid<%= h.changeCase.pascal(startNodeType) %>Id'))
+        await <%= h.changeCase.pascal(h.inflection.pluralize(endNodeType)) %>.delete(bru.getEnvVar('valid<%= h.changeCase.pascal(endNodeType) %>Id'))
