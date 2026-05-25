@@ -37,6 +37,7 @@ export function mapModelRelationshipTypeToRelationshipType(relType: RelType): Re
         [RelType.CarModelVariantHasScaleModel, RelationshipType.CarModelVariantHasScaleModel],
         [RelType.CarModelVariantPresentedAtMotorShow, RelationshipType.CarModelVariantPresentedAtMotorShow],
         [RelType.CarModelVariantHasPrice, RelationshipType.CarModelVariantHasPrice],
+        [RelType.CarModelVariantIsCoveredByBook, RelationshipType.CarModelVariantIsCoveredByBook],
         [RelType.CarModelVariantHasImage, RelationshipType.CarModelVariantHasImage],
         [RelType.CarModelVariantHasPrimeImage, RelationshipType.CarModelVariantHasPrimeImage],
         [RelType.CarModelVariantHasVideo, RelationshipType.CarModelVariantHasVideo],

@@ -32,6 +32,7 @@ export enum RelType {
     CarModelVariantHasScaleModel = 'car_model_variant_has_scale_model',
     CarModelVariantPresentedAtMotorShow = 'car_model_variant_presented_at_motor_show',
     CarModelVariantHasPrice = 'car_model_variant_has_price',
+    CarModelVariantIsCoveredByBook = 'car_model_variant_is_covered_by_book',
     CarModelVariantHasImage = 'car_model_variant_has_image',
     CarModelVariantHasPrimeImage = 'car_model_variant_has_prime_image',
     CarModelVariantHasVideo = 'car_model_variant_has_video',

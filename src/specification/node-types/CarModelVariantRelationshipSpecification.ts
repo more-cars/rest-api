@@ -53,6 +53,11 @@ export const CarModelVariantRelationshipSpecification: RelationshipTypeSpecifica
         endNodeType: NodeType.Price,
         isReverseRelationship: false,
     }],
+    [RelationshipType.CarModelVariantIsCoveredByBook, {
+        startNodeType: NodeType.CarModelVariant,
+        endNodeType: NodeType.Book,
+        isReverseRelationship: true,
+    }],
     [RelationshipType.CarModelVariantHasImage, {
         startNodeType: NodeType.CarModelVariant,
         endNodeType: NodeType.Image,

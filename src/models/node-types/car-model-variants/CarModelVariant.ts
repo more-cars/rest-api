@@ -34,6 +34,7 @@ import {fetchNodesFromDb} from "../../../db/nodes/fetchNodesFromDb"
 import {DbNodeType} from "../../../db/types/DbNodeType"
 import {getDbQueryCollectionParams} from "../../../db/nodes/getDbQueryCollectionParams"
 import {createDbNode} from "../../../db/nodes/createDbNode"
+import {Book} from "../books/Book"
 
 export const CarModelVariant = {
     async create(data: CarModelVariantInput): Promise<CarModelVariantNode> {
@@ -493,6 +494,25 @@ export const CarModelVariant = {
         }
 
         await deleteSpecificRel(carModelVariantId, priceId, RelType.CarModelVariantHasPrice)
+    },
+
+    async createIsCoveredByBookRelationship(carModelVariantId: number, bookId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await Book.findById(bookId)
+
+        const existingRelation = await getSpecificRel(carModelVariantId, bookId, RelType.CarModelVariantIsCoveredByBook)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.CarModelVariantIsCoveredByBook, carModelVariantId, bookId)
+        }
+
+
+        const createdRelationship = await createRel(carModelVariantId, bookId, RelType.CarModelVariantIsCoveredByBook)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
     },
 
     async createHasImageRelationship(carModelVariantId: number, imageId: number) {

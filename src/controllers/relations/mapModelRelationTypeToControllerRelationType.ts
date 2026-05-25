@@ -37,6 +37,7 @@ export function mapModelRelationTypeToControllerRelationType(modelRelationshipTy
         [RelType.CarModelVariantHasScaleModel, RelationType.CarModelVariantHasScaleModel],
         [RelType.CarModelVariantPresentedAtMotorShow, RelationType.CarModelVariantPresentedAtMotorShow],
         [RelType.CarModelVariantHasPrice, RelationType.CarModelVariantHasPrice],
+        [RelType.CarModelVariantIsCoveredByBook, RelationType.CarModelVariantIsCoveredByBook],
         [RelType.CarModelVariantHasImage, RelationType.CarModelVariantHasImage],
         [RelType.CarModelVariantHasPrimeImage, RelationType.CarModelVariantHasPrimeImage],
         [RelType.CarModelVariantHasVideo, RelationType.CarModelVariantHasVideo],
