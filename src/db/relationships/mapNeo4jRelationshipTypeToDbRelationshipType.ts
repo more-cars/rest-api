@@ -344,6 +344,8 @@ export function mapNeo4jRelationshipTypeToDbRelationshipType(
             [RelationshipDirection.FORWARD, new Map([
                 // Book - Forward
                 [RelationshipTypeNeo4j.BookCoversCarModelVariant, RelationshipType.BookCoversCarModelVariant],
+                [RelationshipTypeNeo4j.BookHasImage, RelationshipType.BookHasImage],
+                [RelationshipTypeNeo4j.BookHasPrimeImage, RelationshipType.BookHasPrimeImage],
                 [RelationshipTypeNeo4j.BookHasVideo, RelationshipType.BookHasVideo],
                 [RelationshipTypeNeo4j.BookHasMainVideo, RelationshipType.BookHasMainVideo],
             ])],

@@ -23,6 +23,7 @@ import {RelNotFoundError} from "../../types/RelNotFoundError"
 import {Video} from "../videos/Video"
 import {deleteOutgoingRel} from "../../relationships/deleteOutgoingRel"
 import {getRel} from "../../relationships/getRel"
+import {Image} from "../images/Image"
 
 export const Book = {
     async create(data: BookInput): Promise<BookNode> {
@@ -120,6 +121,90 @@ export const Book = {
         }
 
         await deleteSpecificRel(bookId, carModelVariantId, RelType.BookCoversCarModelVariant)
+    },
+
+    async createHasImageRelationship(bookId: number, imageId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Book.findById(bookId)
+        await Image.findById(imageId)
+
+        const existingRelation = await getSpecificRel(bookId, imageId, RelType.BookHasImage)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.BookHasImage, bookId, imageId)
+        }
+
+
+        const createdRelationship = await createRel(bookId, imageId, RelType.BookHasImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getAllHasImageRelationships(bookId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await Book.findById(bookId)
+
+        return getAllRels(bookId, RelType.BookHasImage)
+    },
+
+    async deleteHasImageRelationship(bookId: number, imageId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Book.findById(bookId)
+        await Image.findById(imageId)
+
+        const relationship = await getSpecificRel(bookId, imageId, RelType.BookHasImage)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.BookHasImage, bookId, imageId)
+        }
+
+        await deleteSpecificRel(bookId, imageId, RelType.BookHasImage)
+    },
+
+    async createHasPrimeImageRelationship(bookId: number, imageId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Book.findById(bookId)
+        await Image.findById(imageId)
+
+        const existingRelation = await getSpecificRel(bookId, imageId, RelType.BookHasPrimeImage)
+        if (existingRelation) {
+            throw new RelAlreadyExistsError(RelType.BookHasPrimeImage, bookId, imageId)
+        }
+        await deleteOutgoingRel(bookId, RelType.BookHasPrimeImage)
+
+
+        const createdRelationship = await createRel(bookId, imageId, RelType.BookHasPrimeImage)
+        if (!createdRelationship) {
+            throw new Error('Relationship could not be created')
+        }
+
+        return createdRelationship
+    },
+
+    async getHasPrimeImageRelationship(bookId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await Book.findById(bookId)
+
+        const relationship = await getRel(bookId, RelType.BookHasPrimeImage)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.BookHasPrimeImage, bookId, null)
+        }
+
+        return relationship
+    },
+
+    async deleteHasPrimeImageRelationship(bookId: number, imageId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await Book.findById(bookId)
+        await Image.findById(imageId)
+
+        const relationship = await getSpecificRel(bookId, imageId, RelType.BookHasPrimeImage)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.BookHasPrimeImage, bookId, imageId)
+        }
+
+        await deleteSpecificRel(bookId, imageId, RelType.BookHasPrimeImage)
     },
 
     async createHasVideoRelationship(bookId: number, videoId: number) {

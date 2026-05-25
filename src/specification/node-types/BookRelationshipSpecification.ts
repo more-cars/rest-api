@@ -8,6 +8,16 @@ export const BookRelationshipSpecification: RelationshipTypeSpecification[] = [
         endNodeType: NodeType.CarModelVariant,
         isReverseRelationship: false,
     }],
+    [RelationshipType.BookHasImage, {
+        startNodeType: NodeType.Book,
+        endNodeType: NodeType.Image,
+        isReverseRelationship: false,
+    }],
+    [RelationshipType.BookHasPrimeImage, {
+        startNodeType: NodeType.Book,
+        endNodeType: NodeType.Image,
+        isReverseRelationship: false,
+    }],
     [RelationshipType.BookHasVideo, {
         startNodeType: NodeType.Book,
         endNodeType: NodeType.Video,

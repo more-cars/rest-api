@@ -1,0 +1,59 @@
+info:
+  name: Get ›has-prime-image‹ relation (valid data)
+  type: http
+  tags:
+    - get
+    - relation
+    - valid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/books/{{validBookId}}/has-prime-image"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data
+      operator: isJson
+    - expression: res.body.data.relationship_id
+      operator: gte
+      value: "12000000"
+    - expression: res.body.data.relationship_name
+      operator: eq
+      value: "has-prime-image"
+    - expression: res.body.data.start_node
+      operator: isJson
+    - expression: res.body.data.start_node.node_type
+      operator: eq
+      value: "books"
+    - expression: res.body.data.start_node.data.id
+      operator: eq
+      value: "{{validBookId}}"
+    - expression: res.body.data.attributes
+      operator: isJson
+    - expression: res.body.data.type
+      operator: eq
+      value: "images"
+    - expression: res.body.data.id
+      operator: eq
+      value: "{{validImageId}}"
+    - expression: res.body.data.created_at
+      operator: isString
+    - expression: res.body.data.created_at
+      operator: isNotEmpty
+    - expression: res.body.data.updated_at
+      operator: isString
+    - expression: res.body.data.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const Books = require('./lib/node-types/Books.js')
+        const Images = require('./lib/node-types/Images.js')
+        await Books.create()
+        await Images.create()
+        await Books.createHasPrimeImageRelationship()

@@ -71,6 +71,54 @@ describe('Books', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Create ›has-image‹ relationship', async () => {
+        await request(app)
+            .post('/books/123/has-image/456')
+
+        expect(BookController.createHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get all ›has-image‹ relationships', async () => {
+        await request(app)
+            .get('/books/123/has-image')
+
+        expect(BookController.getAllHasImageRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Delete ›has-image‹ relationship', async () => {
+        await request(app)
+            .delete('/books/123/has-image/456')
+
+        expect(BookController.deleteHasImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Create ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .post('/books/123/has-prime-image/456')
+
+        expect(BookController.createHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Get ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .get('/books/123/has-prime-image')
+
+        expect(BookController.getHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
+    test('Delete ›has-prime-image‹ relationship', async () => {
+        await request(app)
+            .delete('/books/123/has-prime-image/456')
+
+        expect(BookController.deleteHasPrimeImageRelation)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-video‹ relationship', async () => {
         await request(app)
             .post('/books/123/has-video/456')

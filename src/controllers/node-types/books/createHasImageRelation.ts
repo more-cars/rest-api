@@ -1,0 +1,32 @@
+import express from "express"
+import {Book} from "../../../models/node-types/books/Book"
+import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
+import {marshalSingleRelation} from "../../relations/marshalSingleRelation"
+import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
+import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
+import {sendResponse201} from "../../responses/sendResponse201"
+import {sendResponse304} from "../../responses/sendResponse304"
+import {sendResponse404} from "../../responses/sendResponse404"
+import {sendResponse500} from "../../responses/sendResponse500"
+
+export async function createHasImageRelation(req: express.Request, res: express.Response) {
+    const bookId = parseInt(req.params.bookId)
+    const imageId = parseInt(req.params.imageId)
+
+    try {
+        const modelRelation = await Book.createHasImageRelationship(bookId, imageId)
+        const relation = convertModelRelationToControllerRelation(modelRelation)
+        const marshalledData = marshalSingleRelation(relation)
+
+        return sendResponse201(marshalledData, res)
+    } catch (e) {
+        if (e instanceof NodeNotFoundError) {
+            return sendResponse404(res)
+        } else if (e instanceof RelAlreadyExistsError) {
+            return sendResponse304(res)
+        } else {
+            console.error(e)
+            return sendResponse500(res)
+        }
+    }
+}

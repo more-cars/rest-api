@@ -4,6 +4,14 @@ exports.createCoversCarModelVariantRelationship = async function () {
     await post("/books/" + bru.getEnvVar('validBookId') + "/covers-car-model-variant/" + bru.getEnvVar('validCarModelVariantId'))
 }
 
+exports.createHasImageRelationship = async function () {
+    await post("/books/" + bru.getEnvVar('validBookId') + "/has-image/" + bru.getEnvVar('validImageId'))
+}
+
+exports.createHasPrimeImageRelationship = async function () {
+    await post("/books/" + bru.getEnvVar('validBookId') + "/has-prime-image/" + bru.getEnvVar('validImageId'))
+}
+
 exports.createHasVideoRelationship = async function () {
     await post("/books/" + bru.getEnvVar('validBookId') + "/has-video/" + bru.getEnvVar('validVideoId'))
 }

@@ -7,6 +7,12 @@ import {deleteNode} from "./books/deleteNode"
 import {createCoversCarModelVariantRelation} from "./books/createCoversCarModelVariantRelation"
 import {getAllCoversCarModelVariantRelations} from "./books/getAllCoversCarModelVariantRelations"
 import {deleteCoversCarModelVariantRelation} from "./books/deleteCoversCarModelVariantRelation"
+import {createHasImageRelation} from "./books/createHasImageRelation"
+import {getAllHasImageRelations} from "./books/getAllHasImageRelations"
+import {deleteHasImageRelation} from "./books/deleteHasImageRelation"
+import {createHasPrimeImageRelation} from "./books/createHasPrimeImageRelation"
+import {getHasPrimeImageRelation} from "./books/getHasPrimeImageRelation"
+import {deleteHasPrimeImageRelation} from "./books/deleteHasPrimeImageRelation"
 import {createHasVideoRelation} from "./books/createHasVideoRelation"
 import {getAllHasVideoRelations} from "./books/getAllHasVideoRelations"
 import {deleteHasVideoRelation} from "./books/deleteHasVideoRelation"
@@ -45,6 +51,30 @@ export const BookController = {
 
     async deleteCoversCarModelVariantRelation(req: express.Request, res: express.Response) {
         await deleteCoversCarModelVariantRelation(req, res)
+    },
+
+    async createHasImageRelation(req: express.Request, res: express.Response) {
+        await createHasImageRelation(req, res)
+    },
+
+    async getAllHasImageRelations(req: express.Request, res: express.Response) {
+        await getAllHasImageRelations(req, res)
+    },
+
+    async deleteHasImageRelation(req: express.Request, res: express.Response) {
+        await deleteHasImageRelation(req, res)
+    },
+
+    async createHasPrimeImageRelation(req: express.Request, res: express.Response) {
+        await createHasPrimeImageRelation(req, res)
+    },
+
+    async getHasPrimeImageRelation(req: express.Request, res: express.Response) {
+        await getHasPrimeImageRelation(req, res)
+    },
+
+    async deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
+        await deleteHasPrimeImageRelation(req, res)
     },
 
     async createHasVideoRelation(req: express.Request, res: express.Response) {

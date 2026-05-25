@@ -26065,6 +26065,278 @@
         }
       }
     },
+    "/books/{book-id}/has-image": {
+      "get": {
+        "operationId": "getBookHasImageRel",
+        "tags": [
+          "Books"
+        ],
+        "summary": "Get all ›has-image‹ relationships for the `Book`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "book-id",
+            "description": "ID of the `Book`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›has-image‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookHasImageCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Book` could not be found in the database.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/books/{book-id}/has-image/{image-id}": {
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Deletes the ›has-image‹ relationship between the `Book` and the `Image`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "book-id",
+            "description": "ID of the `Book`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-image‹ relationship between `Book` and `Image` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-image‹ relationship between them.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Creates a ›has-image‹ relationship between the `Book` and the `Image`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "book-id",
+            "description": "ID of the `Book`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Relationship ›has-image‹ between `Book` and `Image` successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookHasImageResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "The relationship ›has-image‹ between `Book` and `Image` already exists."
+          },
+          "404": {
+            "description": "Request failed. `Book` and/or `Image` could not be found in the database.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/books/{book-id}/has-prime-image": {
+      "get": {
+        "operationId": "getBookHasPrimeImageRel",
+        "tags": [
+          "Books"
+        ],
+        "summary": "Get the ›has-prime-image‹ relationship for the `Book`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "book-id",
+            "description": "ID of the `Book`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ›has-prime-image‹ relationship was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookHasPrimeImageResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Book` could not be found in the database.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/books/{book-id}/has-prime-image/{image-id}": {
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Deletes the ›has-prime-image‹ relationship between the `Book` and the `Image`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "book-id",
+            "description": "ID of the `Book`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleting ›has-prime-image‹ relationship between `Book` and `Image` was successful."
+          },
+          "404": {
+            "description": "Request failed. Either the nodes don't exist or there exists no ›has-prime-image‹ relationship between them.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Creates a ›has-prime-image‹ relationship between the `Book` and the `Image`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "book-id",
+            "description": "ID of the `Book`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "image-id",
+            "description": "ID of the `Image`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Relationship ›has-prime-image‹ between `Book` and `Image` successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookHasPrimeImageResponse"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "The relationship ›has-prime-image‹ between `Book` and `Image` already exists."
+          },
+          "404": {
+            "description": "Request failed. `Book` and/or `Image` could not be found in the database.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/books/{book-id}/has-video": {
       "get": {
         "operationId": "getBookHasVideoRel",
@@ -38252,6 +38524,117 @@
             "items": {
               "$ref": "#/components/schemas/BookCoversCarModelVariantResponse"
             }
+          }
+        }
+      },
+      "BookHasImage": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "relationship_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "123456"
+          },
+          "relationship_name": {
+            "type": "string",
+            "readOnly": true,
+            "example": "has-image"
+          },
+          "partner_node": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "images"
+              },
+              "data": {
+                "$ref": "#/components/schemas/Image"
+              }
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "BookHasImageResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/BookHasImage"
+          }
+        }
+      },
+      "BookHasImageCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BookHasImageResponse"
+            }
+          }
+        }
+      },
+      "BookHasPrimeImage": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "relationship_id": {
+            "type": "integer",
+            "readOnly": true,
+            "example": "123456"
+          },
+          "relationship_name": {
+            "type": "string",
+            "readOnly": true,
+            "example": "has-prime-image"
+          },
+          "partner_node": {
+            "type": "object",
+            "properties": {
+              "node_type": {
+                "type": "string",
+                "example": "images"
+              },
+              "data": {
+                "$ref": "#/components/schemas/Image"
+              }
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was created. Generated by the system. Cannot be changed.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Timestamp for when this relationship was last modified. Generated by the system.",
+            "format": "date-time",
+            "example": "2025-05-14T11:05:07.793Z"
+          }
+        }
+      },
+      "BookHasPrimeImageResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/BookHasPrimeImage"
           }
         }
       },

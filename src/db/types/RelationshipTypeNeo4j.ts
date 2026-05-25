@@ -154,6 +154,8 @@ export enum RelationshipTypeNeo4j {
     MotorShowHasVideo = 'HAS_VIDEO',
     MotorShowHasMainVideo = 'HAS_MAIN_VIDEO',
     BookCoversCarModelVariant = 'COVERS_CAR_MODEL_VARIANT',
+    BookHasImage = 'HAS_IMAGE',
+    BookHasPrimeImage = 'HAS_PRIME_IMAGE',
     BookHasVideo = 'HAS_VIDEO',
     BookHasMainVideo = 'HAS_MAIN_VIDEO',
     ImageBelongsToNode = 'HAS_IMAGE',
