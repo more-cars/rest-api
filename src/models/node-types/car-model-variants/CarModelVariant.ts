@@ -506,13 +506,19 @@ export const CarModelVariant = {
             throw new RelAlreadyExistsError(RelType.CarModelVariantIsCoveredByBook, carModelVariantId, bookId)
         }
 
-
         const createdRelationship = await createRel(carModelVariantId, bookId, RelType.CarModelVariantIsCoveredByBook)
         if (!createdRelationship) {
             throw new Error('Relationship could not be created')
         }
 
         return createdRelationship
+    },
+
+    async getAllIsCoveredByBookRelationships(carModelVariantId: number) {
+        // checking that the node exists -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+
+        return getAllRels(carModelVariantId, RelType.CarModelVariantIsCoveredByBook)
     },
 
     async createHasImageRelationship(carModelVariantId: number, imageId: number) {

@@ -1,0 +1,49 @@
+info:
+  name: Get all ›is-covered-by-book‹ relations (valid data)
+  type: http
+  tags:
+    - get
+    - relation
+    - collection
+    - valid
+
+http:
+  method: GET
+  url: "{{baseUrl}}/car-model-variants/{{validCarModelVariantId}}/is-covered-by-book"
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body
+      operator: isJson
+    - expression: res.body.data
+      operator: isArray
+    - expression: res.body.data[0].id
+      operator: gte
+      value: "12000000"
+    - expression: res.body.data[0].type
+      operator: eq
+      value: "books"
+    - expression: res.body.data[0].attributes
+      operator: isJson
+    - expression: res.body.links.self
+      operator: eq
+      value: "/car-model-variants/{{validCarModelVariantId}}/is-covered-by-book"
+    - expression: res.body.data[0].attributes.created_at
+      operator: isString
+    - expression: res.body.data[0].attributes.created_at
+      operator: isNotEmpty
+    - expression: res.body.data[0].attributes.updated_at
+      operator: isString
+    - expression: res.body.data[0].attributes.updated_at
+      operator: isNotEmpty
+  scripts:
+    - type: before-request
+      code: |-
+        const CarModelVariants = require('./lib/node-types/CarModelVariants.js')
+        const Books = require('./lib/node-types/Books.js')
+        await CarModelVariants.create()
+        await Books.create()
+        await CarModelVariants.createIsCoveredByBookRelationship()

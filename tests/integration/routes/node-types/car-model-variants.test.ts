@@ -294,6 +294,14 @@ describe('Car Model Variants', () => {
             .toHaveBeenCalledTimes(1)
     })
 
+    test('Get all ›is-covered-by-book‹ relationships', async () => {
+        await request(app)
+            .get('/car-model-variants/123/is-covered-by-book')
+
+        expect(CarModelVariantController.getAllIsCoveredByBookRelations)
+            .toHaveBeenCalledTimes(1)
+    })
+
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
             .post('/car-model-variants/123/has-image/456')

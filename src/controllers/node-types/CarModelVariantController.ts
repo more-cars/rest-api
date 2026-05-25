@@ -35,6 +35,7 @@ import {createHasPriceRelation} from "./car-model-variants/createHasPriceRelatio
 import {getAllHasPriceRelations} from "./car-model-variants/getAllHasPriceRelations"
 import {deleteHasPriceRelation} from "./car-model-variants/deleteHasPriceRelation"
 import {createIsCoveredByBookRelation} from "./car-model-variants/createIsCoveredByBookRelation"
+import {getAllIsCoveredByBookRelations} from "./car-model-variants/getAllIsCoveredByBookRelations"
 import {createHasImageRelation} from "./car-model-variants/createHasImageRelation"
 import {getAllHasImageRelations} from "./car-model-variants/getAllHasImageRelations"
 import {deleteHasImageRelation} from "./car-model-variants/deleteHasImageRelation"
@@ -191,6 +192,10 @@ export const CarModelVariantController = {
 
     async createIsCoveredByBookRelation(req: express.Request, res: express.Response) {
         await createIsCoveredByBookRelation(req, res)
+    },
+
+    async getAllIsCoveredByBookRelations(req: express.Request, res: express.Response) {
+        await getAllIsCoveredByBookRelations(req, res)
     },
 
     async createHasImageRelation(req: express.Request, res: express.Response) {

@@ -5172,6 +5172,48 @@
         }
       }
     },
+    "/car-model-variants/{car-model-variant-id}/is-covered-by-book": {
+      "get": {
+        "operationId": "getCarModelVariantIsCoveredByBookRel",
+        "tags": [
+          "Car Model Variants"
+        ],
+        "summary": "Get all ›is-covered-by-book‹ relationships for the `Car Model Variant`",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "car-model-variant-id",
+            "description": "ID of the `Car Model Variant`",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The collection of ›is-covered-by-book‹ relationships was successfully loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarModelVariantIsCoveredByBookCollectionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request failed. The `Car Model Variant` could not be found in the database.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response404"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/car-model-variants/{car-model-variant-id}/is-covered-by-book/{book-id}": {
       "post": {
         "tags": [
@@ -29611,6 +29653,17 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/CarModelVariantHasMainVideo"
+          }
+        }
+      },
+      "CarModelVariantIsCoveredByBookCollectionResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CarModelVariantIsCoveredByBookResponse"
+            }
           }
         }
       },
