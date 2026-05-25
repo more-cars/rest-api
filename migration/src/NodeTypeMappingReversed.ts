@@ -24,6 +24,7 @@ export const NodeTypeMappingReversed = new Map<NodeTypeLabelOld, DbNodeType>([
     [NodeTypeLabelOld.Programme, DbNodeType.Programme],
     [NodeTypeLabelOld.ProgrammeEpisode, DbNodeType.ProgrammeEpisode],
     [NodeTypeLabelOld.MotorShow, DbNodeType.MotorShow],
-    [NodeTypeLabelOld.Video, DbNodeType.Video],
+    [NodeTypeLabelOld.Book, DbNodeType.Book],
     [NodeTypeLabelOld.Image, DbNodeType.Image],
+    [NodeTypeLabelOld.Video, DbNodeType.Video],
 ])

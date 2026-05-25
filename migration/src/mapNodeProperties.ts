@@ -23,8 +23,9 @@ import {mapRating} from "./mappings/mapRating"
 import {mapProgramme} from "./mappings/mapProgramme"
 import {mapProgrammeEpisode} from "./mappings/mapProgrammeEpisode"
 import {mapMotorShow} from "./mappings/mapMotorShow"
-import {mapVideo} from "./mappings/mapVideo"
+import {mapBook} from "./mappings/mapBook"
 import {mapImage} from "./mappings/mapImage"
+import {mapVideo} from "./mappings/mapVideo"
 import {mapRevision} from "./mappings/mapRevision"
 
 export function mapNodeProperties(oldNode: Node, nodeType: DbNodeType) {
@@ -73,10 +74,12 @@ export function mapNodeProperties(oldNode: Node, nodeType: DbNodeType) {
             return mapProgrammeEpisode(oldNode)
         case DbNodeType.MotorShow:
             return mapMotorShow(oldNode)
-        case DbNodeType.Video:
-            return mapVideo(oldNode)
+        case DbNodeType.Book:
+            return mapBook(oldNode)
         case DbNodeType.Image:
             return mapImage(oldNode)
+        case DbNodeType.Video:
+            return mapVideo(oldNode)
         case DbNodeType.Revision:
             return mapRevision(oldNode)
         default:

@@ -37,7 +37,8 @@ export const RelationshipTypeMapping = new Map<RelationshipType, RelationshipTyp
     [RelationshipType.ProgrammeEpisodeCoversCarModel, RelationshipTypeLabelOld.ProgrammeEpisodeCoversCarModel],
     [RelationshipType.ProgrammeEpisodeFeaturesCarModelVariant, RelationshipTypeLabelOld.ProgrammeEpisodeFeaturesCarModelVariant],
     [RelationshipType.MotorShowPresentsCarModelVariant, RelationshipTypeLabelOld.MotorShowPresentsCarModelVariant],
-    [RelationshipType.NodeHasVideo, RelationshipTypeLabelOld.NodeHasVideo],
+    [RelationshipType.BookCoversCarModelVariant, RelationshipTypeLabelOld.BookCoversCarModelVariant],
     [RelationshipType.NodeHasImage, RelationshipTypeLabelOld.NodeHasImage],
     [RelationshipType.NodeHasPrimeImage, RelationshipTypeLabelOld.NodeHasPrimeImage],
+    [RelationshipType.NodeHasVideo, RelationshipTypeLabelOld.NodeHasVideo],
 ])

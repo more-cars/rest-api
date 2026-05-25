@@ -122,5 +122,10 @@ export function getAllPotentialPartnerNodeTypes() {
             DbNodeType.Video,
             DbNodeType.Image,
         ]],
+        [DbNodeType.Book, [
+            DbNodeType.CarModelVariant,
+            DbNodeType.Video,
+            DbNodeType.Image,
+        ]],
     ])
 }

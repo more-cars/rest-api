@@ -588,6 +588,30 @@ export function getAllRelationshipTypes() {
                 ])
             ],
             [
+                DbNodeType.Book, new Map(
+                [
+                    [
+                        DbNodeType.CarModelVariant,
+                        [
+                            RelationshipType.BookCoversCarModelVariant,
+                        ],
+                    ],
+                    [
+                        DbNodeType.Image,
+                        [
+                            RelationshipType.NodeHasImage,
+                            RelationshipType.NodeHasPrimeImage,
+                        ],
+                    ],
+                    [
+                        DbNodeType.Video,
+                        [
+                            RelationshipType.NodeHasVideo,
+                        ],
+                    ],
+                ])
+            ],
+            [
                 DbNodeType.Video, new Map([])
             ],
             [
