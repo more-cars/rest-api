@@ -7,8 +7,8 @@ describe('Expecting correct status code when requesting a filtered node collecti
     test.each([
         ['id', 'gt', '1234'],
         ['id', '', '1234'],
-        ['name', 'eq', 'test'],
-        ['name', '', 'test'],
+        ['title', 'eq', 'test'],
+        ['title', '', 'test'],
         ['', '', ''],
     ])('when filter parameters are valid: $0 $2 $1', async (filterByProperty, filterOperator, filterValue) => {
         Book.findAll = vi.fn().mockReturnValue([])
