@@ -38611,7 +38611,7 @@
           "isbn": {
             "type": "string",
             "description": "",
-            "example": "9783868528893"
+            "example": "978-3-86-852889-3"
           },
           "pages": {
             "type": "number",
