@@ -521,6 +521,19 @@ export const CarModelVariant = {
         return getAllRels(carModelVariantId, RelType.CarModelVariantIsCoveredByBook)
     },
 
+    async deleteIsCoveredByBookRelationship(carModelVariantId: number, bookId: number) {
+        // checking that both nodes exist -> exception is thrown if not
+        await CarModelVariant.findById(carModelVariantId)
+        await Book.findById(bookId)
+
+        const relationship = await getSpecificRel(carModelVariantId, bookId, RelType.CarModelVariantIsCoveredByBook)
+        if (!relationship) {
+            throw new RelNotFoundError(RelType.CarModelVariantIsCoveredByBook, carModelVariantId, bookId)
+        }
+
+        await deleteSpecificRel(carModelVariantId, bookId, RelType.CarModelVariantIsCoveredByBook)
+    },
+
     async createHasImageRelationship(carModelVariantId: number, imageId: number) {
         // checking that both nodes exist -> exception is thrown if not
         await CarModelVariant.findById(carModelVariantId)

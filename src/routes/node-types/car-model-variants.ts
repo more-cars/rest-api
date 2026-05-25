@@ -40,6 +40,7 @@ router.get('/car-model-variants/:carModelVariantId/has-price', CarModelVariantCo
 router.delete('/car-model-variants/:carModelVariantId/has-price/:priceId', CarModelVariantController.deleteHasPriceRelation)
 router.post('/car-model-variants/:carModelVariantId/is-covered-by-book/:bookId', CarModelVariantController.createIsCoveredByBookRelation)
 router.get('/car-model-variants/:carModelVariantId/is-covered-by-book', CarModelVariantController.getAllIsCoveredByBookRelations)
+router.delete('/car-model-variants/:carModelVariantId/is-covered-by-book/:bookId', CarModelVariantController.deleteIsCoveredByBookRelation)
 router.post('/car-model-variants/:carModelVariantId/has-image/:imageId', CarModelVariantController.createHasImageRelation)
 router.get('/car-model-variants/:carModelVariantId/has-image', CarModelVariantController.getAllHasImageRelations)
 router.delete('/car-model-variants/:carModelVariantId/has-image/:imageId', CarModelVariantController.deleteHasImageRelation)
