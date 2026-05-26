@@ -7,14 +7,13 @@ import {getDenamespacedNodeTypeLabel} from "../getNamespacedNodeTypeLabel"
 import {Neo4jNodeType} from "../types/Neo4jNodeType"
 import {getCypherQueryTemplate} from "../getCypherQueryTemplate"
 
-// TODO: oldMoreCarsId is a fallback in case the elementId is unknown -> this is a workaround for the migration scripts -> can be removed after all migrations are done
-export async function addMoreCarsIdToNode(newMoreCarsId: number, elementId: string, oldMoreCarsId?: number): Promise<DbNode> {
+export async function addMoreCarsIdToNode(newMoreCarsId: number, elementId: string): Promise<DbNode> {
     const driver = getDriver()
     const session = driver.session({defaultAccessMode: neo4j.session.WRITE})
 
     try {
         const node = await session.executeWrite(async txc => {
-            const result = await runNeo4jQuery(addMoreCarsIdToNodeQuery(newMoreCarsId, elementId, oldMoreCarsId), txc)
+            const result = await runNeo4jQuery(addMoreCarsIdToNodeQuery(newMoreCarsId, elementId), txc)
             return result.records[0].get('n') as Node
         })
 
@@ -24,17 +23,9 @@ export async function addMoreCarsIdToNode(newMoreCarsId: number, elementId: stri
     }
 }
 
-export function addMoreCarsIdToNodeQuery(newMoreCarsId: number, elementId: string, oldMoreCarsId?: number) {
-    let template = getCypherQueryTemplate('nodes/_cypher/addMoreCarsIdToNode.cypher')
+export function addMoreCarsIdToNodeQuery(newMoreCarsId: number, elementId: string) {
+    return getCypherQueryTemplate('nodes/_cypher/addMoreCarsIdToNode.cypher')
         .trim()
         .replace('$moreCarsId', newMoreCarsId.toString())
-
-    if (oldMoreCarsId) {
-        template = template.replace('elementId(n)', 'n.mc_id')
-        template = template.replace("'$elementId'", oldMoreCarsId.toString())
-    } else {
-        template = template.replace('$elementId', elementId)
-    }
-
-    return template
+        .replace('$elementId', elementId)
 }

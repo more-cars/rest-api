@@ -26,7 +26,6 @@ export function convertNeo4jRelationshipToDbRelationship(
 
     const relationship: Relationship = {
         id: dbRelationship.properties.mc_id,
-        elementId: dbRelationship.elementId,
         type: relationshipType,
         start_node: {
             node_type: mapNeo4jNodeTypeToDbNodeType(startNodeLabel),

@@ -31,7 +31,6 @@ export default defineConfig(({mode}) => ({
             include: ['src/**'],
             exclude: [
                 'src/server.ts',
-                'src/db/driver-mc1.ts',
                 '*.cypher',
             ],
             reporter: [
