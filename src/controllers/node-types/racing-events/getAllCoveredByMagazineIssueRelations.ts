@@ -15,7 +15,7 @@ export async function getAllCoveredByMagazineIssueRelations(req: express.Request
     try {
         const modelRelations = await RacingEvent.getAllCoveredByMagazineIssueRelationships(racingEventId)
         const relations = modelRelations.map(relation => convertModelRelationToControllerRelation(relation))
-        const marshalledData = marshalRelations(relations, ControllerNodeType.RacingGame, racingEventId, RelationType.RacingEventCoveredByMagazineIssue)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.RacingEvent, racingEventId, RelationType.RacingEventCoveredByMagazineIssue)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {

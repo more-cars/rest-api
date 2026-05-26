@@ -15,7 +15,7 @@ export async function getAllHasSessionResultRelations(req: express.Request, res:
     try {
         const modelRelations = await RacingSession.getAllHasSessionResultRelationships(racingSessionId)
         const relations = modelRelations.map(relation => convertModelRelationToControllerRelation(relation))
-        const marshalledData = marshalRelations(relations, ControllerNodeType.RacingSeries, racingSessionId, RelationType.RacingSessionHasSessionResult)
+        const marshalledData = marshalRelations(relations, ControllerNodeType.RacingSession, racingSessionId, RelationType.RacingSessionHasSessionResult)
 
         return sendResponse200(marshalledData, res)
     } catch (e) {
