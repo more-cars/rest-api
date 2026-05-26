@@ -1,0 +1,11 @@
+{
+  "name": "@more-cars/rest-api-statistics",
+  "dependencies": {
+    "sloc": "0.3.2"
+  },
+  "scripts": {
+    "stats:lines-of-code:src": "sloc ../src/",
+    "stats:lines-of-code:test": "sloc ../tests/",
+    "stats:lines-of-code:dependencies": "sloc ../node_modules/"
+  }
+}

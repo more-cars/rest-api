@@ -35,7 +35,6 @@
     "inquirer": "14.0.0",
     "inquirer-file-selector": "1.0.1",
     "moment": "2.30.1",
-    "sloc": "0.3.2",
     "supertest": "7.2.2",
     "typescript-eslint": "8.60.0",
     "vitest": "4.1.7"
@@ -71,12 +70,11 @@
     "tests:smoke:cli": "./tests/smoke/run-smoke-tests.sh",
     "tests:behavior": "node --env-file=.env -r ts-node/register tests/behavior/check-dependencies.ts true && npm run start --workspace=@more-cars/rest-api-mock-servers & npx cucumber-js --tags '@implemented and not @deactivated'",
     "tests:behavior:single": "node --env-file=.env -r ts-node/register tests/behavior/run-single-test.ts",
-    "tests:performance": "./tests/performance/run-tests.sh",
-    "stats:lines-of-code:src": "sloc src/",
-    "stats:lines-of-code:test": "sloc tests/"
+    "tests:performance": "./tests/performance/run-tests.sh"
   },
   "workspaces": [
-    "mock-servers"
+    "mock-servers",
+    "statistics"
   ],
   "version": "0.37.0"
 }
