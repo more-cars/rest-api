@@ -1,7 +1,6 @@
 ---
 to: src/controllers/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/updateNode.ts
 ---
-<% const properties = JSON.parse(props) -%>
 import express from "express"
 import {getNodeTypeSpecification} from "../../../specification/getNodeTypeSpecification"
 import {NodeType} from "../../../specification/NodeType"
