@@ -4,7 +4,7 @@ import {RelationshipType} from "../../../../../../src/db/types/RelationshipType"
 import {seedNode} from "../../../../../_toolbox/dbSeeding/seedNode"
 import {DbNodeType} from "../../../../../../src/db/types/DbNodeType"
 import {Company} from "../../../../../../src/models/node-types/companies/Company"
-import {getRelationshipById} from "../../../../../../src/db/relationships/getRelationshipById"
+import {getRelationship} from "../../../../../../src/db/relationships/getRelationship"
 
 describe('Creating a m:n relationship', () => {
     test('expecting the destination node to NOT lose its already existing relationship', async () => {
@@ -20,7 +20,8 @@ describe('Creating a m:n relationship', () => {
         expect(newRelationship.destination.attributes.id)
             .to.equal(foreignRelationship.end_node.properties.id)
 
-        const refetchedForeignRelationship = await getRelationshipById(foreignRelationship.id)
+        const refetchedForeignRelationship = await getRelationship(foreignRelationship.start_node.properties.id, foreignRelationship.type)
+
         expect(refetchedForeignRelationship)
             .toBeTruthy()
     })

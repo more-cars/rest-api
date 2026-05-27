@@ -7,7 +7,6 @@ import {userDbNamespace} from "./userDbNamespace"
 import openApiSpecification from "./routes/open-api-specification"
 import health from "./routes/health"
 import nodes from "./routes/nodes/nodes"
-import relationships from "./routes/relationships"
 import {registerNodeTypeRoutes} from "./routes/registerNodeTypeRoutes"
 import {notFound} from "./routes/notFound"
 
@@ -41,7 +40,6 @@ app.use(userDbNamespace)
 app.use('/', openApiSpecification)
 app.use('/', health)
 app.use('/', nodes)
-app.use('/', relationships)
 registerNodeTypeRoutes(app)
 app.use(notFound)
 
