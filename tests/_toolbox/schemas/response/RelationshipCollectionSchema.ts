@@ -19,13 +19,11 @@ export const RelationshipCollectionSchema = {
                     type: {type: "string"},
                     id: {type: "integer"},
                     attributes: {type: "object"},
-                    data: {type: "object"},
                 },
                 required: [
                     "type",
                     "id",
                     "attributes",
-                    "data",
                 ],
                 additionalProperties: false,
             }

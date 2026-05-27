@@ -14,5 +14,5 @@ Then('there should exist exactly one {string} relationship for {string}',
         const response = await performApiRequest(path, 'GET')
 
         assert.equal(Array.isArray(response.body.data), false)
-        assert(response.body.data.relationship_id !== undefined)
+        assert(response.body.data !== null)
     })

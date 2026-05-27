@@ -45,18 +45,6 @@ describe('Marshalling single relation', () => {
                     type: targetNodeType,
                     id,
                     attributes,
-                    relationship_id: 3,
-                    relationship_name: mapModelRelationTypeToControllerRelationType(relType),
-                    start_node: {
-                        node_type: "brands",
-                        data: origin.attributes,
-                    },
-                    partner_node: {
-                        node_type: "car-models",
-                        data: destination.attributes,
-                    },
-                    created_at: "2023-10-01T00:00:00.001Z",
-                    updated_at: "2023-10-01T00:00:00.001Z",
                 }
             })
     })

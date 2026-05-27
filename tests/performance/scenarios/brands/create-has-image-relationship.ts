@@ -44,7 +44,7 @@ export default function (data: { brandId: number, imageId: number }) {
         'returns with status code 201': (r) => r.status === 201,
         'content-type is JSON': (r) => r.headers['Content-Type'].includes('application/json'),
         // @ts-expect-error TS2531
-        'response contains an ID': (r) => typeof r.json().relationship_id === "number",
+        'response contains an ID': (r) => typeof r.json().data.id === "number",
     })
 
     trendDuration.add(response.timings.duration)

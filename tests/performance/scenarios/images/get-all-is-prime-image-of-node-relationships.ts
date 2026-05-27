@@ -50,7 +50,7 @@ export default function (data: { imageId: number }) {
         'returns with status code 200': (r) => r.status === 200,
         'content-type is JSON': (r) => r.headers['Content-Type'].includes('application/json'),
         // @ts-expect-error TS2531
-        'response is an Array': (r) => r.json().length > 0,
+        'response is an Array': (r) => r.json().data.length > 0,
     })
 
     trendDuration.add(response.timings.duration)

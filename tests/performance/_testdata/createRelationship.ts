@@ -6,11 +6,8 @@ export function createRelationship(
     startNodeType: ControllerNodeType,
     startNodeId: number,
     endNodeId: number,
-    relationshipName: string
+    relationshipName: string,
 ) {
     const url = `${__ENV.API_URL}/${dasherize(pluralize(startNodeType.toLowerCase()))}/${startNodeId}/${dasherize(relationshipName)}/${endNodeId}`
-    const response = http.post(url)
-
-    // @ts-expect-error TS2531
-    return response.json().data.relationship_id
+    http.post(url)
 }

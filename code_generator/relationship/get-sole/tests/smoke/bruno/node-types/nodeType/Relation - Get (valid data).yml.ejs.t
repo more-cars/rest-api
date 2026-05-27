@@ -22,20 +22,9 @@ runtime:
       operator: isJson
     - expression: res.body.data
       operator: isJson
-    - expression: res.body.data.relationship_id
-      operator: gte
-      value: "12000000"
-    - expression: res.body.data.relationship_name
+    - expression: res.body.links.self
       operator: eq
-      value: "<%= h.changeCase.kebab(relationshipName) %>"
-    - expression: res.body.data.start_node
-      operator: isJson
-    - expression: res.body.data.start_node.node_type
-      operator: eq
-      value: "<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>"
-    - expression: res.body.data.start_node.data.id
-      operator: eq
-      value: "{{valid<%= h.changeCase.pascal(startNodeType) %>Id}}"
+      value: "/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/{{valid<%= h.changeCase.pascal(startNodeType) %>Id}}/<%= h.changeCase.kebab(relationshipName) %>"
     - expression: res.body.data.attributes
       operator: isJson
     - expression: res.body.data.type

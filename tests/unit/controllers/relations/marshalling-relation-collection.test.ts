@@ -33,56 +33,14 @@ describe('Marshalling a relation collection', () => {
                 type: relationA.to_node.node_type,
                 id: relationA.to_node.fields.id,
                 attributes: (({id, ...fields}) => fields)(relationA.to_node.fields),
-                data: {
-                    relationship_id: relationA.id,
-                    relationship_name: relationA.type,
-                    start_node: {
-                        node_type: relationA.from_node.node_type,
-                        data: relationA.from_node.fields
-                    },
-                    partner_node: {
-                        node_type: relationA.to_node.node_type,
-                        data: relationA.to_node.fields
-                    },
-                    created_at: relationA.created_at,
-                    updated_at: relationA.updated_at,
-                },
             }, {
                 type: relationB.to_node.node_type,
                 id: relationB.to_node.fields.id,
                 attributes: (({id, ...fields}) => fields)(relationB.to_node.fields),
-                data: {
-                    relationship_id: relationB.id,
-                    relationship_name: relationB.type,
-                    start_node: {
-                        node_type: relationB.from_node.node_type,
-                        data: relationB.from_node.fields
-                    },
-                    partner_node: {
-                        node_type: relationB.to_node.node_type,
-                        data: relationB.to_node.fields,
-                    },
-                    created_at: relationB.created_at,
-                    updated_at: relationB.updated_at,
-                },
             }, {
                 type: relationC.to_node.node_type,
                 id: relationC.to_node.fields.id,
                 attributes: (({id, ...fields}) => fields)(relationC.to_node.fields),
-                data: {
-                    relationship_id: relationC.id,
-                    relationship_name: relationC.type,
-                    start_node: {
-                        node_type: relationC.from_node.node_type,
-                        data: relationC.from_node.fields
-                    },
-                    partner_node: {
-                        node_type: relationC.to_node.node_type,
-                        data: relationC.to_node.fields,
-                    },
-                    created_at: relationC.created_at,
-                    updated_at: relationC.updated_at,
-                },
             }],
         }
 

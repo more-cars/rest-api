@@ -1,5 +1,4 @@
 import {Given} from "@cucumber/cucumber"
-import {RelationType} from "../../../../src/controllers/types/RelationType"
 import {RelationshipManager} from "../../lib/RelationshipManager"
 import type {RelationResponse} from "../../../../src/controllers/types/RelationResponse"
 import type {ControllerNodeType} from "../../../../src/controllers/types/ControllerNodeType"
@@ -16,29 +15,7 @@ Given('relationship {string} does NOT exist',
                 id: 4321,
                 attributes: {
                     id: 4321,
-                    created_at: 'DUMMY',
-                    updated_at: 'DUMMY',
                 },
-                relationship_id: -Math.ceil(Math.random() * 1000),
-                relationship_name: 'DUMMY' as RelationType,
-                start_node: {
-                    node_type: 'DUMMY' as RelationType,
-                    data: {
-                        id: 1234,
-                        created_at: 'DUMMY',
-                        updated_at: 'DUMMY',
-                    },
-                },
-                partner_node: {
-                    node_type: 'DUMMY' as RelationType,
-                    data: {
-                        id: 4321,
-                        created_at: 'DUMMY',
-                        updated_at: 'DUMMY',
-                    },
-                },
-                created_at: 'DUMMY',
-                updated_at: 'DUMMY',
             }
         } satisfies RelationResponse
 

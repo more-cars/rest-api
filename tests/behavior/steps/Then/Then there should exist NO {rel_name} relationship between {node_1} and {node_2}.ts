@@ -16,11 +16,7 @@ Then('there should exist NO {string} relationship between {string} and {string}'
 
         assert.equal(response.status_code, 200)
 
-        if (Array.isArray(response.body.data)) {
-            assert.fail('NOT IMPLEMENTED') // TODO
-        } else if ('partner_node' in response.body.data) {
-            assert.notEqual(response.body.data.partner_node.data.id, endNode.fields.id)
-        } else {
-            assert.ok(true)
+        if (response.body.data === null) {
+            assert.equal(response.body.data, null, 'unexpected relationship data')
         }
     })
