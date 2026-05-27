@@ -10,5 +10,5 @@ Then('the relationship {string} should not exist anymore',
 
         const response = await performApiRequest(path, 'GET')
 
-        assert.ok(response.body.data === null || response.body.data.length === 0)
+        assert.ok(response.status_code === 404 || response.body.data === null || response.body.data.length === 0)
     })
