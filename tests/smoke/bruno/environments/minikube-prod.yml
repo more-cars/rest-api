@@ -2,4 +2,4 @@ name: minikube-prod
 color: "#346AB2"
 variables:
   - name: baseUrl
-    value: https://api.prod.more-cars.internal:31850
+    value: https://api.prod.more-cars.internal
