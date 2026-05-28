@@ -1,4 +1,5 @@
 name: minikube-testing
+color: "#346AB2"
 variables:
   - name: baseUrl
     value: https://api.testing.more-cars.internal
