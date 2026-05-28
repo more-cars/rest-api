@@ -5,6 +5,7 @@ import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../src/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {app} from '../../../../../../src/app'
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
@@ -15,10 +16,16 @@ describe('Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relations
         <%= h.changeCase.pascal(startNodeType) %>.create<%= h.changeCase.pascal(relationshipName) %>Relationship = vi.fn().mockReturnValue(getFakeRel(RelType.<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(relationshipName) %>))
 
         const response = await request(app)
-            .post('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/123/<%= h.changeCase.kebab(relationshipName) %>/567')
+            .post('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/123/relationships/<%= h.changeCase.kebab(relationshipName) %>')
+            .send({
+                data: {
+                    type: ControllerNodeType.<%= h.changeCase.pascal(endNodeType) %>,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -28,7 +35,13 @@ describe('Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relations
             })
 
         const response = await request(app)
-            .post('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/123/<%= h.changeCase.kebab(relationshipName) %>/567')
+            .post('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/123/relationships/<%= h.changeCase.kebab(relationshipName) %>')
+            .send({
+                data: {
+                    type: ControllerNodeType.<%= h.changeCase.pascal(endNodeType) %>,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -41,7 +54,13 @@ describe('Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relations
             })
 
         const response = await request(app)
-            .post('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/123/<%= h.changeCase.kebab(relationshipName) %>/567')
+            .post('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/123/relationships/<%= h.changeCase.kebab(relationshipName) %>')
+            .send({
+                data: {
+                    type: ControllerNodeType.<%= h.changeCase.pascal(endNodeType) %>,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -54,7 +73,13 @@ describe('Creating a ›<%= h.changeCase.kebab(relationshipName) %>‹ relations
             })
 
         const response = await request(app)
-            .post('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/123/<%= h.changeCase.kebab(relationshipName) %>/567')
+            .post('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/123/relationships/<%= h.changeCase.kebab(relationshipName) %>')
+            .send({
+                data: {
+                    type: ControllerNodeType.<%= h.changeCase.pascal(endNodeType) %>,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

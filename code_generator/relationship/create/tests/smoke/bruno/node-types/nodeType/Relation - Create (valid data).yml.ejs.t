@@ -11,47 +11,22 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/{{valid<%= h.changeCase.pascal(startNodeType) %>Id}}/<%= h.changeCase.kebab(relationshipName) %>/{{valid<%= h.changeCase.pascal(endNodeType) %>Id}}"
+  url: "{{baseUrl}}/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/{{valid<%= h.changeCase.pascal(startNodeType) %>Id}}/relationships/<%= h.changeCase.kebab(relationshipName) %>"
+  body:
+    type: json
+    data: |-
+      {
+        "data": {
+          "type": "<%= h.changeCase.kebab(h.inflection.pluralize(endNodeType)) %>",
+          "id": "{{valid<%= h.changeCase.pascal(endNodeType) %>Id}}"
+        }
+      }
 
 runtime:
   assertions:
     - expression: res.status
       operator: eq
-      value: "201"
-    - expression: res.body
-      operator: isJson
-    - expression: res.body.data
-      operator: isJson
-    - expression: res.body.data.relationship_id
-      operator: gte
-      value: "12000000"
-    - expression: res.body.data.relationship_name
-      operator: eq
-      value: "<%= h.changeCase.kebab(relationshipName) %>"
-    - expression: res.body.data.start_node
-      operator: isJson
-    - expression: res.body.data.start_node.node_type
-      operator: eq
-      value: "<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>"
-    - expression: res.body.data.start_node.data.id
-      operator: eq
-      value: "{{valid<%= h.changeCase.pascal(startNodeType) %>Id}}"
-    - expression: res.body.data.attributes
-      operator: isJson
-    - expression: res.body.data.type
-      operator: eq
-      value: "<%= h.changeCase.kebab(h.inflection.pluralize(endNodeType)) %>"
-    - expression: res.body.data.id
-      operator: eq
-      value: "{{valid<%= h.changeCase.pascal(endNodeType) %>Id}}"
-    - expression: res.body.data.created_at
-      operator: isString
-    - expression: res.body.data.created_at
-      operator: isNotEmpty
-    - expression: res.body.data.updated_at
-      operator: isString
-    - expression: res.body.data.updated_at
-      operator: isNotEmpty
+      value: "204"
   scripts:
     - type: before-request
       code: |-

@@ -22,24 +22,24 @@ runtime:
       operator: isJson
     - expression: res.body.data
       operator: isJson
-    - expression: res.body.links.self
-      operator: eq
-      value: "/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/{{valid<%= h.changeCase.pascal(startNodeType) %>Id}}/<%= h.changeCase.kebab(relationshipName) %>"
-    - expression: res.body.data.attributes
-      operator: isJson
-    - expression: res.body.data.type
-      operator: eq
-      value: "<%= h.changeCase.kebab(h.inflection.pluralize(endNodeType)) %>"
     - expression: res.body.data.id
       operator: eq
       value: "{{valid<%= h.changeCase.pascal(endNodeType) %>Id}}"
-    - expression: res.body.data.created_at
+    - expression: res.body.data.type
+      operator: eq
+      value: "<%= h.changeCase.kebab(h.inflection.pluralize(endNodeType)) %>"
+    - expression: res.body.data.attributes
+      operator: isJson
+    - expression: res.body.links.self
+      operator: eq
+      value: "/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/{{valid<%= h.changeCase.pascal(startNodeType) %>Id}}/<%= h.changeCase.kebab(relationshipName) %>"
+    - expression: res.body.data.attributes.created_at
       operator: isString
-    - expression: res.body.data.created_at
+    - expression: res.body.data.attributes.created_at
       operator: isNotEmpty
-    - expression: res.body.data.updated_at
+    - expression: res.body.data.attributes.updated_at
       operator: isString
-    - expression: res.body.data.updated_at
+    - expression: res.body.data.attributes.updated_at
       operator: isNotEmpty
   scripts:
     - type: before-request

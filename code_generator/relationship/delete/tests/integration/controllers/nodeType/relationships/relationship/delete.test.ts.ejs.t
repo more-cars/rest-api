@@ -5,6 +5,7 @@ import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {app} from '../../../../../../src/app'
 import {<%= h.changeCase.pascal(startNodeType) %>} from "../../../../../../src/models/node-types/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/<%= h.changeCase.pascal(startNodeType) %>"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelNotFoundError} from "../../../../../../src/models/types/RelNotFoundError"
 
@@ -13,7 +14,13 @@ describe('Deleting a ›<%= h.changeCase.kebab(relationshipName) %>‹ relations
         <%= h.changeCase.pascal(startNodeType) %>.delete<%= h.changeCase.pascal(relationshipName) %>Relationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/123/<%= h.changeCase.kebab(relationshipName) %>/567')
+            .delete('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/123/relationships/<%= h.changeCase.kebab(relationshipName) %>')
+            .send({
+                data: {
+                    type: ControllerNodeType.<%= h.changeCase.pascal(endNodeType) %>,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -26,7 +33,13 @@ describe('Deleting a ›<%= h.changeCase.kebab(relationshipName) %>‹ relations
             })
 
         const response = await request(app)
-            .delete('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/123/<%= h.changeCase.kebab(relationshipName) %>/567')
+            .delete('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/123/relationships/<%= h.changeCase.kebab(relationshipName) %>')
+            .send({
+                data: {
+                    type: ControllerNodeType.<%= h.changeCase.pascal(endNodeType) %>,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -39,7 +52,13 @@ describe('Deleting a ›<%= h.changeCase.kebab(relationshipName) %>‹ relations
             })
 
         const response = await request(app)
-            .delete('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/123/<%= h.changeCase.kebab(relationshipName) %>/567')
+            .delete('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/123/relationships/<%= h.changeCase.kebab(relationshipName) %>')
+            .send({
+                data: {
+                    type: ControllerNodeType.<%= h.changeCase.pascal(endNodeType) %>,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -52,7 +71,13 @@ describe('Deleting a ›<%= h.changeCase.kebab(relationshipName) %>‹ relations
             })
 
         const response = await request(app)
-            .delete('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/123/<%= h.changeCase.kebab(relationshipName) %>/567')
+            .delete('/<%= h.changeCase.kebab(h.inflection.pluralize(startNodeType)) %>/123/relationships/<%= h.changeCase.kebab(relationshipName) %>')
+            .send({
+                data: {
+                    type: ControllerNodeType.<%= h.changeCase.pascal(endNodeType) %>,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
