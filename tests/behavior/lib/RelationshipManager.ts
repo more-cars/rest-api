@@ -21,14 +21,4 @@ export const RelationshipManager = {
     cacheRelationshipCollection(relationships: RelationResponse[], label: string) {
         relationshipCollectionCache.set(label, relationships)
     },
-
-    getRelationshipCollectionByLabel(label: string) {
-        const relationships = relationshipCollectionCache.get(label)
-
-        if (!relationships) {
-            throw new Error(`No relationship collection found for label ${label}`)
-        }
-
-        return relationships
-    }
 }
