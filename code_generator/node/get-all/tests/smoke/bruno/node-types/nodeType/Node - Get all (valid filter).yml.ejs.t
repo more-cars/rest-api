@@ -20,6 +20,11 @@ runtime:
     - expression: res.status
       operator: eq
       value: "200"
+    - expression: res.headers["content-type"]
+      operator: contains
+      value: application/vnd.api+json
+    - expression: res.headers["cache-control"]
+      operator: isNotEmpty
     - expression: res.body.data
       operator: isArray
     - expression: res.body.meta.page.current

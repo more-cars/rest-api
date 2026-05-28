@@ -19,6 +19,11 @@ runtime:
     - expression: res.status
       operator: eq
       value: "404"
+    - expression: res.headers["content-type"]
+      operator: contains
+      value: application/vnd.api+json
+    - expression: res.headers["cache-control"]
+      operator: isNotEmpty
     - expression: res.body.errors
       operator: isArray
     - expression: res.body.errors[0].status
