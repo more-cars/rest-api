@@ -10,7 +10,13 @@ describe('Deleting a ›covers-car-model‹ relationship', () => {
         MagazineIssue.deleteCoversCarModelRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/magazine-issues/123/covers-car-model/567')
+            .delete('/magazine-issues/123/relationships/covers-car-model')
+            .send({
+                data: {
+                    type: "covers-car-model",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›covers-car-model‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/magazine-issues/123/covers-car-model/567')
+            .delete('/magazine-issues/123/relationships/covers-car-model')
+            .send({
+                data: {
+                    type: "covers-car-model",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›covers-car-model‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/magazine-issues/123/covers-car-model/567')
+            .delete('/magazine-issues/123/relationships/covers-car-model')
+            .send({
+                data: {
+                    type: "covers-car-model",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›covers-car-model‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/magazine-issues/123/covers-car-model/567')
+            .delete('/magazine-issues/123/relationships/covers-car-model')
+            .send({
+                data: {
+                    type: "covers-car-model",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

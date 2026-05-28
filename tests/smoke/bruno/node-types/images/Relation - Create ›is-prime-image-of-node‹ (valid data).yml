@@ -8,47 +8,22 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/images/{{validImageId}}/is-prime-image-of-node/{{validBrandId}}"
+  url: "{{baseUrl}}/images/{{validImageId}}/relationships/is-prime-image-of-node"
+  body:
+    type: json
+    data: |-
+      {
+        "data": {
+          "type": "is-prime-image-of-node",
+          "id": "{{validBrandId}}"
+        }
+      }
 
 runtime:
   assertions:
     - expression: res.status
       operator: eq
-      value: "201"
-    - expression: res.body
-      operator: isJson
-    - expression: res.body.data
-      operator: isJson
-    - expression: res.body.data.relationship_id
-      operator: gte
-      value: "12000000"
-    - expression: res.body.data.relationship_name
-      operator: eq
-      value: "is-prime-image-of-node"
-    - expression: res.body.data.start_node
-      operator: isJson
-    - expression: res.body.data.start_node.node_type
-      operator: eq
-      value: "images"
-    - expression: res.body.data.start_node.data.id
-      operator: eq
-      value: "{{validImageId}}"
-    - expression: res.body.data.attributes
-      operator: isJson
-    - expression: res.body.data.type
-      operator: eq
-      value: "brands"
-    - expression: res.body.data.id
-      operator: eq
-      value: "{{validBrandId}}"
-    - expression: res.body.data.created_at
-      operator: isString
-    - expression: res.body.data.created_at
-      operator: isNotEmpty
-    - expression: res.body.data.updated_at
-      operator: isString
-    - expression: res.body.data.updated_at
-      operator: isNotEmpty
+      value: "204"
   scripts:
     - type: before-request
       code: |-

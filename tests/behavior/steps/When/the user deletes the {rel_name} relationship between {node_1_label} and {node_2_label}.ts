@@ -1,7 +1,7 @@
 import {When} from "@cucumber/cucumber"
+import {dasherize} from "inflection"
 import {NodeManager} from "../../lib/NodeManager"
 import {getBasePathFragmentForNodeType} from "../../lib/getBasePathFragmentForNodeType"
-import {getBasePathFragmentForRelationshipName} from "../../lib/getBasePathFragmentForRelationshipName"
 import {performApiRequest} from "../../lib/performApiRequest"
 
 When('the user deletes the {string} relationship between {string} and {string}',
@@ -9,8 +9,13 @@ When('the user deletes the {string} relationship between {string} and {string}',
         const startNode = NodeManager.getNodeByLabel(startNodeLabel)
         const endNode = NodeManager.getNodeByLabel(endNodeLabel)
         const nodePath = getBasePathFragmentForNodeType(startNode.node_type)
-        const relPath = getBasePathFragmentForRelationshipName(relationshipName)
-        const path = `/${nodePath}/${startNode.fields.id}/${relPath}/${endNode.fields.id}`
+        const path = `/${nodePath}/${startNode.fields.id}/relationships/${dasherize(relationshipName)}`
+        const data = {
+            data: {
+                type: endNode.node_type,
+                id: endNode.fields.id,
+            },
+        }
 
-        await performApiRequest(path, 'DELETE')
+        await performApiRequest(path, 'DELETE', data)
     })

@@ -10,7 +10,13 @@ describe('Deleting a ›belongs-to-node‹ relationship', () => {
         Image.deleteBelongsToNodeRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/images/123/belongs-to-node/567')
+            .delete('/images/123/relationships/belongs-to-node')
+            .send({
+                data: {
+                    type: "belongs-to-node",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›belongs-to-node‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/images/123/belongs-to-node/567')
+            .delete('/images/123/relationships/belongs-to-node')
+            .send({
+                data: {
+                    type: "belongs-to-node",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›belongs-to-node‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/images/123/belongs-to-node/567')
+            .delete('/images/123/relationships/belongs-to-node')
+            .send({
+                data: {
+                    type: "belongs-to-node",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›belongs-to-node‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/images/123/belongs-to-node/567')
+            .delete('/images/123/relationships/belongs-to-node')
+            .send({
+                data: {
+                    type: "belongs-to-node",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

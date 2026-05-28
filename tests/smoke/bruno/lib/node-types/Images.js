@@ -1,11 +1,21 @@
 const {del, post} = require("../apiRequest.js")
 
 exports.createIsPrimeImageOfNodeRelationship = async function () {
-    await post("/images/" + bru.getEnvVar('validImageId') + "/is-prime-image-of-node/" + bru.getEnvVar('validNodeId'))
+    await post("/images/" + bru.getEnvVar('validImageId') + "/relationships/is-prime-image-of-node", {
+        data: {
+            type: "is-prime-image-of-node",
+            id: bru.getEnvVar('validNodeId'),
+        },
+    })
 }
 
 exports.createBelongsToNodeRelationship = async function () {
-    await post("/images/" + bru.getEnvVar('validImageId') + "/belongs-to-node/" + bru.getEnvVar('validNodeId'))
+    await post("/images/" + bru.getEnvVar('validImageId') + "/relationships/belongs-to-node", {
+        data: {
+            type: "belongs-to-node",
+            id: bru.getEnvVar('validNodeId'),
+        },
+    })
 }
 
 exports.create = async function (prefix = '') {

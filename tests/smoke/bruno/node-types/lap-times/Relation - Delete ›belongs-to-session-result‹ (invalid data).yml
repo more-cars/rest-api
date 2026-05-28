@@ -8,7 +8,7 @@ info:
 
 http:
   method: DELETE
-  url: "{{baseUrl}}/lap-times/{{invalidLapTimeId}}/belongs-to-session-result/{{invalidSessionResultId}}"
+  url: "{{baseUrl}}/lap-times/{{invalidLapTimeId}}/relationships/belongs-to-session-result"
 
 runtime:
   assertions:

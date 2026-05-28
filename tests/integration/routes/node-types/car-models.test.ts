@@ -48,7 +48,13 @@ describe('Car Models', () => {
 
     test('Create ›belongs-to-brand‹ relationship', async () => {
         await request(app)
-            .post('/car-models/123/belongs-to-brand/456')
+            .post('/car-models/123/relationships/belongs-to-brand')
+            .send({
+                data: {
+                    type: "belongs-to-brand",
+                    id: 456,
+                }
+            })
 
         expect(CarModelController.createBelongsToBrandRelation)
             .toHaveBeenCalledTimes(1)
@@ -64,7 +70,13 @@ describe('Car Models', () => {
 
     test('Delete ›belongs-to-brand‹ relationship', async () => {
         await request(app)
-            .delete('/car-models/123/belongs-to-brand/456')
+            .delete('/car-models/123/relationships/belongs-to-brand')
+            .send({
+                data: {
+                    type: "belongs-to-brand",
+                    id: 456,
+                },
+            })
 
         expect(CarModelController.deleteBelongsToBrandRelation)
             .toHaveBeenCalledTimes(1)
@@ -72,7 +84,13 @@ describe('Car Models', () => {
 
     test('Create ›has-successor‹ relationship', async () => {
         await request(app)
-            .post('/car-models/123/has-successor/456')
+            .post('/car-models/123/relationships/has-successor')
+            .send({
+                data: {
+                    type: "has-successor",
+                    id: 456,
+                }
+            })
 
         expect(CarModelController.createHasSuccessorRelation)
             .toHaveBeenCalledTimes(1)
@@ -88,7 +106,13 @@ describe('Car Models', () => {
 
     test('Delete ›has-successor‹ relationship', async () => {
         await request(app)
-            .delete('/car-models/123/has-successor/456')
+            .delete('/car-models/123/relationships/has-successor')
+            .send({
+                data: {
+                    type: "has-successor",
+                    id: 456,
+                },
+            })
 
         expect(CarModelController.deleteHasSuccessorRelation)
             .toHaveBeenCalledTimes(1)
@@ -96,7 +120,13 @@ describe('Car Models', () => {
 
     test('Create ›is-successor-of‹ relationship', async () => {
         await request(app)
-            .post('/car-models/123/is-successor-of/456')
+            .post('/car-models/123/relationships/is-successor-of')
+            .send({
+                data: {
+                    type: "is-successor-of",
+                    id: 456,
+                }
+            })
 
         expect(CarModelController.createIsSuccessorOfRelation)
             .toHaveBeenCalledTimes(1)
@@ -112,7 +142,13 @@ describe('Car Models', () => {
 
     test('Delete ›is-successor-of‹ relationship', async () => {
         await request(app)
-            .delete('/car-models/123/is-successor-of/456')
+            .delete('/car-models/123/relationships/is-successor-of')
+            .send({
+                data: {
+                    type: "is-successor-of",
+                    id: 456,
+                },
+            })
 
         expect(CarModelController.deleteIsSuccessorOfRelation)
             .toHaveBeenCalledTimes(1)
@@ -120,7 +156,13 @@ describe('Car Models', () => {
 
     test('Create ›has-variant‹ relationship', async () => {
         await request(app)
-            .post('/car-models/123/has-variant/456')
+            .post('/car-models/123/relationships/has-variant')
+            .send({
+                data: {
+                    type: "has-variant",
+                    id: 456,
+                }
+            })
 
         expect(CarModelController.createHasVariantRelation)
             .toHaveBeenCalledTimes(1)
@@ -136,7 +178,13 @@ describe('Car Models', () => {
 
     test('Delete ›has-variant‹ relationship', async () => {
         await request(app)
-            .delete('/car-models/123/has-variant/456')
+            .delete('/car-models/123/relationships/has-variant')
+            .send({
+                data: {
+                    type: "has-variant",
+                    id: 456,
+                },
+            })
 
         expect(CarModelController.deleteHasVariantRelation)
             .toHaveBeenCalledTimes(1)
@@ -144,7 +192,13 @@ describe('Car Models', () => {
 
     test('Create ›covered-by-magazine-issue‹ relationship', async () => {
         await request(app)
-            .post('/car-models/123/covered-by-magazine-issue/456')
+            .post('/car-models/123/relationships/covered-by-magazine-issue')
+            .send({
+                data: {
+                    type: "covered-by-magazine-issue",
+                    id: 456,
+                }
+            })
 
         expect(CarModelController.createCoveredByMagazineIssueRelation)
             .toHaveBeenCalledTimes(1)
@@ -160,7 +214,13 @@ describe('Car Models', () => {
 
     test('Delete ›covered-by-magazine-issue‹ relationship', async () => {
         await request(app)
-            .delete('/car-models/123/covered-by-magazine-issue/456')
+            .delete('/car-models/123/relationships/covered-by-magazine-issue')
+            .send({
+                data: {
+                    type: "covered-by-magazine-issue",
+                    id: 456,
+                },
+            })
 
         expect(CarModelController.deleteCoveredByMagazineIssueRelation)
             .toHaveBeenCalledTimes(1)
@@ -168,7 +228,13 @@ describe('Car Models', () => {
 
     test('Create ›covered-by-programme-episode‹ relationship', async () => {
         await request(app)
-            .post('/car-models/123/covered-by-programme-episode/456')
+            .post('/car-models/123/relationships/covered-by-programme-episode')
+            .send({
+                data: {
+                    type: "covered-by-programme-episode",
+                    id: 456,
+                }
+            })
 
         expect(CarModelController.createCoveredByProgrammeEpisodeRelation)
             .toHaveBeenCalledTimes(1)
@@ -184,7 +250,13 @@ describe('Car Models', () => {
 
     test('Delete ›covered-by-programme-episode‹ relationship', async () => {
         await request(app)
-            .delete('/car-models/123/covered-by-programme-episode/456')
+            .delete('/car-models/123/relationships/covered-by-programme-episode')
+            .send({
+                data: {
+                    type: "covered-by-programme-episode",
+                    id: 456,
+                },
+            })
 
         expect(CarModelController.deleteCoveredByProgrammeEpisodeRelation)
             .toHaveBeenCalledTimes(1)
@@ -192,7 +264,13 @@ describe('Car Models', () => {
 
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
-            .post('/car-models/123/has-image/456')
+            .post('/car-models/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                }
+            })
 
         expect(CarModelController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -208,7 +286,13 @@ describe('Car Models', () => {
 
     test('Delete ›has-image‹ relationship', async () => {
         await request(app)
-            .delete('/car-models/123/has-image/456')
+            .delete('/car-models/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                },
+            })
 
         expect(CarModelController.deleteHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -216,7 +300,13 @@ describe('Car Models', () => {
 
     test('Create "has prime image" Relationship', async () => {
         await request(app)
-            .post('/car-models/123/has-prime-image/456')
+            .post('/car-models/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                }
+            })
 
         expect(CarModelController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -232,7 +322,13 @@ describe('Car Models', () => {
 
     test('Delete ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .delete('/car-models/123/has-prime-image/456')
+            .delete('/car-models/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                },
+            })
 
         expect(CarModelController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -240,7 +336,13 @@ describe('Car Models', () => {
 
     test('Create ›has-video‹ relationship', async () => {
         await request(app)
-            .post('/car-models/123/has-video/456')
+            .post('/car-models/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                }
+            })
 
         expect(CarModelController.createHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -256,7 +358,13 @@ describe('Car Models', () => {
 
     test('Delete ›has-video‹ relationship', async () => {
         await request(app)
-            .delete('/car-models/123/has-video/456')
+            .delete('/car-models/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                },
+            })
 
         expect(CarModelController.deleteHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -264,7 +372,13 @@ describe('Car Models', () => {
 
     test('Create ›has-main-video‹ relationship', async () => {
         await request(app)
-            .post('/car-models/123/has-main-video/456')
+            .post('/car-models/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                }
+            })
 
         expect(CarModelController.createHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -280,7 +394,13 @@ describe('Car Models', () => {
 
     test('Delete ›has-main-video‹ relationship', async () => {
         await request(app)
-            .delete('/car-models/123/has-main-video/456')
+            .delete('/car-models/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                },
+            })
 
         expect(CarModelController.deleteHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)

@@ -17,8 +17,14 @@ Given('there exist {int} {string} relationships for {string}',
 
         for (let i = 0; i < amount; i++) {
             const endNode = await NodeManager.createNode(endNodeType, '')
-            const path = `/${nodePath}/${startNode.fields.id}/${dasherize(relationshipName)}/${endNode.fields.id}`
+            const path = `/${nodePath}/${startNode.fields.id}/relationships/${dasherize(relationshipName)}`
+            const data = {
+                data: {
+                    type: endNode.node_type,
+                    id: endNode.fields.id,
+                },
+            }
 
-            await performApiRequest(path, 'POST')
+            await performApiRequest(path, 'POST', data)
         }
     })

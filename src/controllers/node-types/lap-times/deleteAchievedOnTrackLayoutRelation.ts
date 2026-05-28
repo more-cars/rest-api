@@ -8,7 +8,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function deleteAchievedOnTrackLayoutRelation(req: express.Request, res: express.Response) {
     const lapTimeId = parseInt(req.params.lapTimeId)
-    const trackLayoutId = parseInt(req.params.trackLayoutId)
+    const trackLayoutId = parseInt(req.body?.data?.id)
 
     try {
         await LapTime.deleteAchievedOnTrackLayoutRelationship(lapTimeId, trackLayoutId)

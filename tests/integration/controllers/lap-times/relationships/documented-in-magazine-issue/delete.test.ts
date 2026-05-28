@@ -10,7 +10,13 @@ describe('Deleting a ›documented-in-magazine-issue‹ relationship', () => {
         LapTime.deleteDocumentedInMagazineIssueRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/lap-times/123/documented-in-magazine-issue/567')
+            .delete('/lap-times/123/relationships/documented-in-magazine-issue')
+            .send({
+                data: {
+                    type: "documented-in-magazine-issue",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›documented-in-magazine-issue‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/lap-times/123/documented-in-magazine-issue/567')
+            .delete('/lap-times/123/relationships/documented-in-magazine-issue')
+            .send({
+                data: {
+                    type: "documented-in-magazine-issue",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›documented-in-magazine-issue‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/lap-times/123/documented-in-magazine-issue/567')
+            .delete('/lap-times/123/relationships/documented-in-magazine-issue')
+            .send({
+                data: {
+                    type: "documented-in-magazine-issue",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›documented-in-magazine-issue‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/lap-times/123/documented-in-magazine-issue/567')
+            .delete('/lap-times/123/relationships/documented-in-magazine-issue')
+            .send({
+                data: {
+                    type: "documented-in-magazine-issue",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

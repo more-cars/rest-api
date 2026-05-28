@@ -8,7 +8,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/lap-times/{{invalidLapTimeId}}/has-prime-image/{{invalidImageId}}"
+  url: "{{baseUrl}}/lap-times/{{invalidLapTimeId}}/relationships/has-prime-image"
 
 runtime:
   assertions:

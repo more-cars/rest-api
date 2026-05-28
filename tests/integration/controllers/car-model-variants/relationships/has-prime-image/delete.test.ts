@@ -10,7 +10,13 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
         CarModelVariant.deleteHasPrimeImageRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/car-model-variants/123/has-prime-image/567')
+            .delete('/car-model-variants/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-model-variants/123/has-prime-image/567')
+            .delete('/car-model-variants/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-model-variants/123/has-prime-image/567')
+            .delete('/car-model-variants/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›has-prime-image‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-model-variants/123/has-prime-image/567')
+            .delete('/car-model-variants/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

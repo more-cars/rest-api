@@ -8,7 +8,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function deleteDocumentsLapTimeRelation(req: express.Request, res: express.Response) {
     const magazineIssueId = parseInt(req.params.magazineIssueId)
-    const lapTimeId = parseInt(req.params.lapTimeId)
+    const lapTimeId = parseInt(req.body?.data?.id)
 
     try {
         await MagazineIssue.deleteDocumentsLapTimeRelationship(magazineIssueId, lapTimeId)

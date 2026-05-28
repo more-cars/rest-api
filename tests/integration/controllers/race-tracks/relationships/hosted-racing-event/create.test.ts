@@ -6,16 +6,23 @@ import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFound
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 
 describe('Creating a ›hosted-racing-event‹ relationship', () => {
     test('Providing valid data', async () => {
         RaceTrack.createHostedRacingEventRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.RaceTrackHostedRacingEvent))
 
         const response = await request(app)
-            .post('/race-tracks/123/hosted-racing-event/567')
+            .post('/race-tracks/123/relationships/hosted-racing-event')
+            .send({
+                data: {
+                    type: ControllerNodeType.RacingEvent,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›hosted-racing-event‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/race-tracks/123/hosted-racing-event/567')
+            .post('/race-tracks/123/relationships/hosted-racing-event')
+            .send({
+                data: {
+                    type: "hosted-racing-event",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›hosted-racing-event‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/race-tracks/123/hosted-racing-event/567')
+            .post('/race-tracks/123/relationships/hosted-racing-event')
+            .send({
+                data: {
+                    type: "hosted-racing-event",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›hosted-racing-event‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/race-tracks/123/hosted-racing-event/567')
+            .post('/race-tracks/123/relationships/hosted-racing-event')
+            .send({
+                data: {
+                    type: ControllerNodeType.RacingEvent,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

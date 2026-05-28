@@ -10,7 +10,13 @@ describe('Deleting a ›belongs-to-racing-series‹ relationship', () => {
         RacingEvent.deleteBelongsToRacingSeriesRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/racing-events/123/belongs-to-racing-series/567')
+            .delete('/racing-events/123/relationships/belongs-to-racing-series')
+            .send({
+                data: {
+                    type: "belongs-to-racing-series",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›belongs-to-racing-series‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/racing-events/123/belongs-to-racing-series/567')
+            .delete('/racing-events/123/relationships/belongs-to-racing-series')
+            .send({
+                data: {
+                    type: "belongs-to-racing-series",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›belongs-to-racing-series‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/racing-events/123/belongs-to-racing-series/567')
+            .delete('/racing-events/123/relationships/belongs-to-racing-series')
+            .send({
+                data: {
+                    type: "belongs-to-racing-series",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›belongs-to-racing-series‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/racing-events/123/belongs-to-racing-series/567')
+            .delete('/racing-events/123/relationships/belongs-to-racing-series')
+            .send({
+                data: {
+                    type: "belongs-to-racing-series",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

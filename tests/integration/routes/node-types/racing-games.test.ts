@@ -48,7 +48,13 @@ describe('Racing Games', () => {
 
     test('Create ›features-car-model-variant‹ relationship', async () => {
         await request(app)
-            .post('/racing-games/123/features-car-model-variant/456')
+            .post('/racing-games/123/relationships/features-car-model-variant')
+            .send({
+                data: {
+                    type: "features-car-model-variant",
+                    id: 456,
+                }
+            })
 
         expect(RacingGameController.createFeaturesCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
@@ -64,7 +70,13 @@ describe('Racing Games', () => {
 
     test('Delete ›features-car-model-variant‹ relationship', async () => {
         await request(app)
-            .delete('/racing-games/123/features-car-model-variant/456')
+            .delete('/racing-games/123/relationships/features-car-model-variant')
+            .send({
+                data: {
+                    type: "features-car-model-variant",
+                    id: 456,
+                },
+            })
 
         expect(RacingGameController.deleteFeaturesCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
@@ -72,7 +84,13 @@ describe('Racing Games', () => {
 
     test('Create ›features-track-layout‹ relationship', async () => {
         await request(app)
-            .post('/racing-games/123/features-track-layout/456')
+            .post('/racing-games/123/relationships/features-track-layout')
+            .send({
+                data: {
+                    type: "features-track-layout",
+                    id: 456,
+                }
+            })
 
         expect(RacingGameController.createFeaturesTrackLayoutRelation)
             .toHaveBeenCalledTimes(1)
@@ -88,7 +106,13 @@ describe('Racing Games', () => {
 
     test('Delete ›features-track-layout‹ relationship', async () => {
         await request(app)
-            .delete('/racing-games/123/features-track-layout/456')
+            .delete('/racing-games/123/relationships/features-track-layout')
+            .send({
+                data: {
+                    type: "features-track-layout",
+                    id: 456,
+                },
+            })
 
         expect(RacingGameController.deleteFeaturesTrackLayoutRelation)
             .toHaveBeenCalledTimes(1)
@@ -96,7 +120,13 @@ describe('Racing Games', () => {
 
     test('Create ›released-on-gaming-platform‹ relationship', async () => {
         await request(app)
-            .post('/racing-games/123/released-on-gaming-platform/456')
+            .post('/racing-games/123/relationships/released-on-gaming-platform')
+            .send({
+                data: {
+                    type: "released-on-gaming-platform",
+                    id: 456,
+                }
+            })
 
         expect(RacingGameController.createReleasedOnGamingPlatformRelation)
             .toHaveBeenCalledTimes(1)
@@ -112,7 +142,13 @@ describe('Racing Games', () => {
 
     test('Delete ›released-on-gaming-platform‹ relationship', async () => {
         await request(app)
-            .delete('/racing-games/123/released-on-gaming-platform/456')
+            .delete('/racing-games/123/relationships/released-on-gaming-platform')
+            .send({
+                data: {
+                    type: "released-on-gaming-platform",
+                    id: 456,
+                },
+            })
 
         expect(RacingGameController.deleteReleasedOnGamingPlatformRelation)
             .toHaveBeenCalledTimes(1)
@@ -120,7 +156,13 @@ describe('Racing Games', () => {
 
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
-            .post('/racing-games/123/has-image/456')
+            .post('/racing-games/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                }
+            })
 
         expect(RacingGameController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -136,7 +178,13 @@ describe('Racing Games', () => {
 
     test('Delete ›has-image‹ relationship', async () => {
         await request(app)
-            .delete('/racing-games/123/has-image/456')
+            .delete('/racing-games/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                },
+            })
 
         expect(RacingGameController.deleteHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -144,7 +192,13 @@ describe('Racing Games', () => {
 
     test('Create ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .post('/racing-games/123/has-prime-image/456')
+            .post('/racing-games/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                }
+            })
 
         expect(RacingGameController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -160,7 +214,13 @@ describe('Racing Games', () => {
 
     test('Delete ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .delete('/racing-games/123/has-prime-image/456')
+            .delete('/racing-games/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                },
+            })
 
         expect(RacingGameController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -168,7 +228,13 @@ describe('Racing Games', () => {
 
     test('Create ›has-video‹ relationship', async () => {
         await request(app)
-            .post('/racing-games/123/has-video/456')
+            .post('/racing-games/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                }
+            })
 
         expect(RacingGameController.createHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -184,7 +250,13 @@ describe('Racing Games', () => {
 
     test('Delete ›has-video‹ relationship', async () => {
         await request(app)
-            .delete('/racing-games/123/has-video/456')
+            .delete('/racing-games/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                },
+            })
 
         expect(RacingGameController.deleteHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -192,7 +264,13 @@ describe('Racing Games', () => {
 
     test('Create ›has-main-video‹ relationship', async () => {
         await request(app)
-            .post('/racing-games/123/has-main-video/456')
+            .post('/racing-games/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                }
+            })
 
         expect(RacingGameController.createHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -208,7 +286,13 @@ describe('Racing Games', () => {
 
     test('Delete ›has-main-video‹ relationship', async () => {
         await request(app)
-            .delete('/racing-games/123/has-main-video/456')
+            .delete('/racing-games/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                },
+            })
 
         expect(RacingGameController.deleteHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)

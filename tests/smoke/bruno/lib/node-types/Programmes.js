@@ -1,23 +1,48 @@
 const {post} = require("../apiRequest.js")
 
 exports.createHasEpisodeRelationship = async function () {
-    await post("/programmes/" + bru.getEnvVar('validProgrammeId') + "/has-episode/" + bru.getEnvVar('validProgrammeEpisodeId'))
+    await post("/programmes/" + bru.getEnvVar('validProgrammeId') + "/relationships/has-episode", {
+        data: {
+            type: "has-episode",
+            id: bru.getEnvVar('validProgrammeEpisodeId'),
+        },
+    })
 }
 
 exports.createHasImageRelationship = async function () {
-    await post("/programmes/" + bru.getEnvVar('validProgrammeId') + "/has-image/" + bru.getEnvVar('validImageId'))
+    await post("/programmes/" + bru.getEnvVar('validProgrammeId') + "/relationships/has-image", {
+        data: {
+            type: "has-image",
+            id: bru.getEnvVar('validImageId'),
+        },
+    })
 }
 
 exports.createHasPrimeImageRelationship = async function () {
-    await post("/programmes/" + bru.getEnvVar('validProgrammeId') + "/has-prime-image/" + bru.getEnvVar('validImageId'))
+    await post("/programmes/" + bru.getEnvVar('validProgrammeId') + "/relationships/has-prime-image", {
+        data: {
+            type: "has-prime-image",
+            id: bru.getEnvVar('validImageId'),
+        },
+    })
 }
 
 exports.createHasVideoRelationship = async function () {
-    await post("/programmes/" + bru.getEnvVar('validProgrammeId') + "/has-video/" + bru.getEnvVar('validVideoId'))
+    await post("/programmes/" + bru.getEnvVar('validProgrammeId') + "/relationships/has-video", {
+        data: {
+            type: "has-video",
+            id: bru.getEnvVar('validVideoId'),
+        },
+    })
 }
 
 exports.createHasMainVideoRelationship = async function () {
-    await post("/programmes/" + bru.getEnvVar('validProgrammeId') + "/has-main-video/" + bru.getEnvVar('validVideoId'))
+    await post("/programmes/" + bru.getEnvVar('validProgrammeId') + "/relationships/has-main-video", {
+        data: {
+            type: "has-main-video",
+            id: bru.getEnvVar('validVideoId'),
+        },
+    })
 }
 
 exports.create = async function (prefix = '') {

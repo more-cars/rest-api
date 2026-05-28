@@ -40,7 +40,13 @@ describe('Videos', () => {
 
     test('Create ›belongs-to-node‹ relationship', async () => {
         await request(app)
-            .post('/videos/123/belongs-to-node/456')
+            .post('/videos/123/relationships/belongs-to-node')
+            .send({
+                data: {
+                    type: "belongs-to-node",
+                    id: 456,
+                }
+            })
 
         expect(VideoController.createBelongsToNodeRelation)
             .toHaveBeenCalledTimes(1)
@@ -56,7 +62,13 @@ describe('Videos', () => {
 
     test('Delete ›belongs-to-node‹ relationship', async () => {
         await request(app)
-            .delete('/videos/123/belongs-to-node/456')
+            .delete('/videos/123/relationships/belongs-to-node')
+            .send({
+                data: {
+                    type: "belongs-to-node",
+                    id: 456,
+                },
+            })
 
         expect(VideoController.deleteBelongsToNodeRelation)
             .toHaveBeenCalledTimes(1)
@@ -64,7 +76,13 @@ describe('Videos', () => {
 
     test('Create ›is-main-video-of-node‹ relationship', async () => {
         await request(app)
-            .post('/videos/123/is-main-video-of-node/456')
+            .post('/videos/123/relationships/is-main-video-of-node')
+            .send({
+                data: {
+                    type: "is-main-video-of-node",
+                    id: 456,
+                }
+            })
 
         expect(VideoController.createIsMainVideoOfNodeRelation)
             .toHaveBeenCalledTimes(1)
@@ -80,7 +98,13 @@ describe('Videos', () => {
 
     test('Delete ›is-main-video-of-node‹ relationship', async () => {
         await request(app)
-            .delete('/videos/123/is-main-video-of-node/456')
+            .delete('/videos/123/relationships/is-main-video-of-node')
+            .send({
+                data: {
+                    type: "is-main-video-of-node",
+                    id: 456,
+                },
+            })
 
         expect(VideoController.deleteIsMainVideoOfNodeRelation)
             .toHaveBeenCalledTimes(1)

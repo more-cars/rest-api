@@ -8,7 +8,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function deleteReleasedOnGamingPlatformRelation(req: express.Request, res: express.Response) {
     const racingGameId = parseInt(req.params.racingGameId)
-    const gamingPlatformId = parseInt(req.params.gamingPlatformId)
+    const gamingPlatformId = parseInt(req.body?.data?.id)
 
     try {
         await RacingGame.deleteReleasedOnGamingPlatformRelationship(racingGameId, gamingPlatformId)

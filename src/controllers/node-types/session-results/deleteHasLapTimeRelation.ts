@@ -8,7 +8,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function deleteHasLapTimeRelation(req: express.Request, res: express.Response) {
     const sessionResultId = parseInt(req.params.sessionResultId)
-    const lapTimeId = parseInt(req.params.lapTimeId)
+    const lapTimeId = parseInt(req.body?.data?.id)
 
     try {
         await SessionResult.deleteHasLapTimeRelationship(sessionResultId, lapTimeId)

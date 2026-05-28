@@ -1,24 +1,19 @@
 import express from "express"
 import {MagazineIssue} from "../../../models/node-types/magazine-issues/MagazineIssue"
-import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
-import {marshalSingleRelation} from "../../relations/marshalSingleRelation"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
-import {sendResponse201} from "../../responses/sendResponse201"
+import {sendResponse204} from "../../responses/sendResponse204"
 import {sendResponse304} from "../../responses/sendResponse304"
 import {sendResponse404} from "../../responses/sendResponse404"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function createPresentsCarModelVariantRelation(req: express.Request, res: express.Response) {
     const magazineIssueId = parseInt(req.params.magazineIssueId)
-    const carModelVariantId = parseInt(req.params.carModelVariantId)
+    const carModelVariantId = parseInt(req.body?.data?.id)
 
     try {
-        const modelRelation = await MagazineIssue.createPresentsCarModelVariantRelationship(magazineIssueId, carModelVariantId)
-        const relation = convertModelRelationToControllerRelation(modelRelation)
-        const marshalledData = marshalSingleRelation(relation)
-
-        return sendResponse201(marshalledData, res)
+        await MagazineIssue.createPresentsCarModelVariantRelationship(magazineIssueId, carModelVariantId)
+        return sendResponse204(res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {
             return sendResponse404(res)

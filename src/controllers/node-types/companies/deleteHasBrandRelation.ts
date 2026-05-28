@@ -8,7 +8,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function deleteHasBrandRelation(req: express.Request, res: express.Response) {
     const companyId = parseInt(req.params.companyId)
-    const brandId = parseInt(req.params.brandId)
+    const brandId = parseInt(req.body?.data?.id)
 
     try {
         await Company.deleteHasBrandRelationship(companyId, brandId)

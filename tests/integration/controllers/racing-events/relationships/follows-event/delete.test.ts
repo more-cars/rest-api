@@ -10,7 +10,13 @@ describe('Deleting a ›follows-event‹ relationship', () => {
         RacingEvent.deleteFollowsEventRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/racing-events/123/follows-event/567')
+            .delete('/racing-events/123/relationships/follows-event')
+            .send({
+                data: {
+                    type: "follows-event",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›follows-event‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/racing-events/123/follows-event/567')
+            .delete('/racing-events/123/relationships/follows-event')
+            .send({
+                data: {
+                    type: "follows-event",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›follows-event‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/racing-events/123/follows-event/567')
+            .delete('/racing-events/123/relationships/follows-event')
+            .send({
+                data: {
+                    type: "follows-event",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›follows-event‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/racing-events/123/follows-event/567')
+            .delete('/racing-events/123/relationships/follows-event')
+            .send({
+                data: {
+                    type: "follows-event",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

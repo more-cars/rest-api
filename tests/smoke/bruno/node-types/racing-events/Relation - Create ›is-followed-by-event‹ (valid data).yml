@@ -8,47 +8,22 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/racing-events/{{validRacingEventId}}/is-followed-by-event/{{validSecondRacingEventId}}"
+  url: "{{baseUrl}}/racing-events/{{validRacingEventId}}/relationships/is-followed-by-event"
+  body:
+    type: json
+    data: |-
+      {
+        "data": {
+          "type": "is-followed-by-event",
+          "id": "{{validSecondRacingEventId}}"
+        }
+      }
 
 runtime:
   assertions:
     - expression: res.status
       operator: eq
-      value: "201"
-    - expression: res.body
-      operator: isJson
-    - expression: res.body.data
-      operator: isJson
-    - expression: res.body.data.relationship_id
-      operator: gte
-      value: "12000000"
-    - expression: res.body.data.relationship_name
-      operator: eq
-      value: "is-followed-by-event"
-    - expression: res.body.data.start_node
-      operator: isJson
-    - expression: res.body.data.start_node.node_type
-      operator: eq
-      value: "racing-events"
-    - expression: res.body.data.start_node.data.id
-      operator: eq
-      value: "{{validRacingEventId}}"
-    - expression: res.body.data.attributes
-      operator: isJson
-    - expression: res.body.data.type
-      operator: eq
-      value: "racing-events"
-    - expression: res.body.data.id
-      operator: eq
-      value: "{{validSecondRacingEventId}}"
-    - expression: res.body.data.created_at
-      operator: isString
-    - expression: res.body.data.created_at
-      operator: isNotEmpty
-    - expression: res.body.data.updated_at
-      operator: isString
-    - expression: res.body.data.updated_at
-      operator: isNotEmpty
+      value: "204"
   scripts:
     - type: before-request
       code: |-

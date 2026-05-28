@@ -10,7 +10,13 @@ describe('Deleting a ›belongs-to-session-result‹ relationship', () => {
         LapTime.deleteBelongsToSessionResultRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/lap-times/123/belongs-to-session-result/567')
+            .delete('/lap-times/123/relationships/belongs-to-session-result')
+            .send({
+                data: {
+                    type: "belongs-to-session-result",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›belongs-to-session-result‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/lap-times/123/belongs-to-session-result/567')
+            .delete('/lap-times/123/relationships/belongs-to-session-result')
+            .send({
+                data: {
+                    type: "belongs-to-session-result",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›belongs-to-session-result‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/lap-times/123/belongs-to-session-result/567')
+            .delete('/lap-times/123/relationships/belongs-to-session-result')
+            .send({
+                data: {
+                    type: "belongs-to-session-result",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›belongs-to-session-result‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/lap-times/123/belongs-to-session-result/567')
+            .delete('/lap-times/123/relationships/belongs-to-session-result')
+            .send({
+                data: {
+                    type: "belongs-to-session-result",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

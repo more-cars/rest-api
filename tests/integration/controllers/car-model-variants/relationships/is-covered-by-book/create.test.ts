@@ -2,6 +2,7 @@ import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {CarModelVariant} from "../../../../../../src/models/node-types/car-model-variants/CarModelVariant"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {app} from '../../../../../../src/app'
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
@@ -12,10 +13,16 @@ describe('Creating a ›is-covered-by-book‹ relationship', () => {
         CarModelVariant.createIsCoveredByBookRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.CarModelVariantIsCoveredByBook))
 
         const response = await request(app)
-            .post('/car-model-variants/123/is-covered-by-book/567')
+            .post('/car-model-variants/123/relationships/is-covered-by-book')
+            .send({
+                data: {
+                    type: ControllerNodeType.Book,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›is-covered-by-book‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/car-model-variants/123/is-covered-by-book/567')
+            .post('/car-model-variants/123/relationships/is-covered-by-book')
+            .send({
+                data: {
+                    type: "is-covered-by-book",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›is-covered-by-book‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/car-model-variants/123/is-covered-by-book/567')
+            .post('/car-model-variants/123/relationships/is-covered-by-book')
+            .send({
+                data: {
+                    type: "is-covered-by-book",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›is-covered-by-book‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/car-model-variants/123/is-covered-by-book/567')
+            .post('/car-model-variants/123/relationships/is-covered-by-book')
+            .send({
+                data: {
+                    type: ControllerNodeType.Book,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

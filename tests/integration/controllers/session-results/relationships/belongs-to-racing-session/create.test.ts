@@ -6,16 +6,23 @@ import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFound
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 
 describe('Creating a ›belongs-to-racing-session‹ relationship', () => {
     test('Providing valid data', async () => {
         SessionResult.createBelongsToRacingSessionRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.SessionResultBelongsToRacingSession))
 
         const response = await request(app)
-            .post('/session-results/123/belongs-to-racing-session/567')
+            .post('/session-results/123/relationships/belongs-to-racing-session')
+            .send({
+                data: {
+                    type: ControllerNodeType.RacingSession,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›belongs-to-racing-session‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/session-results/123/belongs-to-racing-session/567')
+            .post('/session-results/123/relationships/belongs-to-racing-session')
+            .send({
+                data: {
+                    type: "belongs-to-racing-session",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›belongs-to-racing-session‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/session-results/123/belongs-to-racing-session/567')
+            .post('/session-results/123/relationships/belongs-to-racing-session')
+            .send({
+                data: {
+                    type: "belongs-to-racing-session",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›belongs-to-racing-session‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/session-results/123/belongs-to-racing-session/567')
+            .post('/session-results/123/relationships/belongs-to-racing-session')
+            .send({
+                data: {
+                    type: ControllerNodeType.RacingSession,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

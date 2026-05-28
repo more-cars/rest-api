@@ -10,7 +10,13 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
         TrackLayout.deleteHasLapTimeRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/track-layouts/123/has-lap-time/567')
+            .delete('/track-layouts/123/relationships/has-lap-time')
+            .send({
+                data: {
+                    type: "has-lap-time",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/track-layouts/123/has-lap-time/567')
+            .delete('/track-layouts/123/relationships/has-lap-time')
+            .send({
+                data: {
+                    type: "has-lap-time",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/track-layouts/123/has-lap-time/567')
+            .delete('/track-layouts/123/relationships/has-lap-time')
+            .send({
+                data: {
+                    type: "has-lap-time",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›has-lap-time‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/track-layouts/123/has-lap-time/567')
+            .delete('/track-layouts/123/relationships/has-lap-time')
+            .send({
+                data: {
+                    type: "has-lap-time",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

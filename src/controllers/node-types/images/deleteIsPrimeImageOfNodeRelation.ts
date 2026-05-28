@@ -8,7 +8,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function deleteIsPrimeImageOfNodeRelation(req: express.Request, res: express.Response) {
     const imageId = parseInt(req.params.imageId)
-    const nodeId = parseInt(req.params.nodeId)
+    const nodeId = parseInt(req.body?.data?.id)
 
     try {
         await Image.deleteIsPrimeImageOfNodeRelationship(imageId, nodeId)

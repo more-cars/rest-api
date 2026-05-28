@@ -48,7 +48,13 @@ describe('Gaming Platforms', () => {
 
     test('Create ›features-racing-game‹ relationship', async () => {
         await request(app)
-            .post('/gaming-platforms/123/features-racing-game/456')
+            .post('/gaming-platforms/123/relationships/features-racing-game')
+            .send({
+                data: {
+                    type: "features-racing-game",
+                    id: 456,
+                }
+            })
 
         expect(GamingPlatformController.createFeaturesRacingGameRelation)
             .toHaveBeenCalledTimes(1)
@@ -64,7 +70,13 @@ describe('Gaming Platforms', () => {
 
     test('Delete ›features-racing-game‹ relationship', async () => {
         await request(app)
-            .delete('/gaming-platforms/123/features-racing-game/456')
+            .delete('/gaming-platforms/123/relationships/features-racing-game')
+            .send({
+                data: {
+                    type: "features-racing-game",
+                    id: 456,
+                },
+            })
 
         expect(GamingPlatformController.deleteFeaturesRacingGameRelation)
             .toHaveBeenCalledTimes(1)
@@ -72,7 +84,13 @@ describe('Gaming Platforms', () => {
 
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
-            .post('/gaming-platforms/123/has-image/456')
+            .post('/gaming-platforms/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                }
+            })
 
         expect(GamingPlatformController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -88,7 +106,13 @@ describe('Gaming Platforms', () => {
 
     test('Delete ›has-image‹ relationship', async () => {
         await request(app)
-            .delete('/gaming-platforms/123/has-image/456')
+            .delete('/gaming-platforms/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                },
+            })
 
         expect(GamingPlatformController.deleteHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -96,7 +120,13 @@ describe('Gaming Platforms', () => {
 
     test('Create ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .post('/gaming-platforms/123/has-prime-image/456')
+            .post('/gaming-platforms/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                }
+            })
 
         expect(GamingPlatformController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -112,7 +142,13 @@ describe('Gaming Platforms', () => {
 
     test('Delete ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .delete('/gaming-platforms/123/has-prime-image/456')
+            .delete('/gaming-platforms/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                },
+            })
 
         expect(GamingPlatformController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -120,7 +156,13 @@ describe('Gaming Platforms', () => {
 
     test('Create ›has-video‹ relationship', async () => {
         await request(app)
-            .post('/gaming-platforms/123/has-video/456')
+            .post('/gaming-platforms/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                }
+            })
 
         expect(GamingPlatformController.createHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -136,7 +178,13 @@ describe('Gaming Platforms', () => {
 
     test('Delete ›has-video‹ relationship', async () => {
         await request(app)
-            .delete('/gaming-platforms/123/has-video/456')
+            .delete('/gaming-platforms/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                },
+            })
 
         expect(GamingPlatformController.deleteHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -144,7 +192,13 @@ describe('Gaming Platforms', () => {
 
     test('Create ›has-main-video‹ relationship', async () => {
         await request(app)
-            .post('/gaming-platforms/123/has-main-video/456')
+            .post('/gaming-platforms/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                }
+            })
 
         expect(GamingPlatformController.createHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -160,7 +214,13 @@ describe('Gaming Platforms', () => {
 
     test('Delete ›has-main-video‹ relationship', async () => {
         await request(app)
-            .delete('/gaming-platforms/123/has-main-video/456')
+            .delete('/gaming-platforms/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                },
+            })
 
         expect(GamingPlatformController.deleteHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)

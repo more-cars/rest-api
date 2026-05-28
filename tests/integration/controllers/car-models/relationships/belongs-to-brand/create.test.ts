@@ -12,10 +12,16 @@ describe('Creating a ›belongs-to-brand‹ relationship', () => {
         CarModel.createBelongsToBrandRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.CarModelBelongsToBrand))
 
         const response = await request(app)
-            .post('/car-models/567/belongs-to-brand/123')
+            .post('/car-models/567/relationships/belongs-to-brand')
+            .send({
+                data: {
+                    type: "belongs-to-brand",
+                    id: 123,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +31,13 @@ describe('Creating a ›belongs-to-brand‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/car-models/567/belongs-to-brand/123')
+            .post('/car-models/567/relationships/belongs-to-brand')
+            .send({
+                data: {
+                    type: "belongs-to-brand",
+                    id: 123,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +50,13 @@ describe('Creating a ›belongs-to-brand‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/car-models/567/belongs-to-brand/123')
+            .post('/car-models/567/relationships/belongs-to-brand')
+            .send({
+                data: {
+                    type: "belongs-to-brand",
+                    id: 123,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +69,13 @@ describe('Creating a ›belongs-to-brand‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/car-models/567/belongs-to-brand/123')
+            .post('/car-models/567/relationships/belongs-to-brand')
+            .send({
+                data: {
+                    type: "belongs-to-brand",
+                    id: 123,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

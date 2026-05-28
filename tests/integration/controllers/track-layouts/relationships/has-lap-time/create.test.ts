@@ -6,16 +6,23 @@ import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFound
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 
 describe('Creating a ›has-lap-time‹ relationship', () => {
     test('Providing valid data', async () => {
         TrackLayout.createHasLapTimeRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.TrackLayoutHasLapTime))
 
         const response = await request(app)
-            .post('/track-layouts/123/has-lap-time/567')
+            .post('/track-layouts/123/relationships/has-lap-time')
+            .send({
+                data: {
+                    type: ControllerNodeType.LapTime,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›has-lap-time‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/track-layouts/123/has-lap-time/567')
+            .post('/track-layouts/123/relationships/has-lap-time')
+            .send({
+                data: {
+                    type: "has-lap-time",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›has-lap-time‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/track-layouts/123/has-lap-time/567')
+            .post('/track-layouts/123/relationships/has-lap-time')
+            .send({
+                data: {
+                    type: "has-lap-time",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›has-lap-time‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/track-layouts/123/has-lap-time/567')
+            .post('/track-layouts/123/relationships/has-lap-time')
+            .send({
+                data: {
+                    type: ControllerNodeType.LapTime,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

@@ -10,8 +10,23 @@ Given('there exists a {string} relationship {string} between {string} and {strin
         const startNode = NodeManager.getNodeByLabel(startNodeLabel)
         const endNode = NodeManager.getNodeByLabel(endNodeLabel)
         const nodePathFragment = getBasePathFragmentForNodeType(startNode.node_type)
-        const path = `/${nodePathFragment}/${startNode.fields.id}/${dasherize(relationshipName)}/${endNode.fields.id}`
+        const path = `/${nodePathFragment}/${startNode.fields.id}/relationships/${dasherize(relationshipName)}`
+        const data = {
+            data: {
+                type: endNode.node_type,
+                id: endNode.fields.id,
+            },
+        }
 
-        const response = await performApiRequest(path, 'POST')
-        RelationshipManager.cacheRelationship(response.body, relationshipLabel)
+        await performApiRequest(path, 'POST', data)
+        RelationshipManager.cacheRelationship({
+            links: {
+                self: `/${nodePathFragment}/${startNode.fields.id}/${dasherize(relationshipName)}`
+            },
+            data: {
+                type: endNode.node_type,
+                id: endNode.fields.id,
+                attributes: (({id, ...fields}) => fields)(endNode.fields),
+            },
+        }, relationshipLabel)
     })

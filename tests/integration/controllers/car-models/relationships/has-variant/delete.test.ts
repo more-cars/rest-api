@@ -10,7 +10,13 @@ describe('Deleting a ›has-variant‹ relationship', () => {
         CarModel.deleteHasVariantRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/car-models/123/has-variant/567')
+            .delete('/car-models/123/relationships/has-variant')
+            .send({
+                data: {
+                    type: "has-variant",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›has-variant‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-models/123/has-variant/567')
+            .delete('/car-models/123/relationships/has-variant')
+            .send({
+                data: {
+                    type: "has-variant",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›has-variant‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-models/123/has-variant/567')
+            .delete('/car-models/123/relationships/has-variant')
+            .send({
+                data: {
+                    type: "has-variant",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›has-variant‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-models/123/has-variant/567')
+            .delete('/car-models/123/relationships/has-variant')
+            .send({
+                data: {
+                    type: "has-variant",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

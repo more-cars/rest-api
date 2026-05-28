@@ -6,16 +6,23 @@ import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFound
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 
 describe('Creating a ›released-on-gaming-platform‹ relationship', () => {
     test('Providing valid data', async () => {
         RacingGame.createReleasedOnGamingPlatformRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.RacingGameReleasedOnGamingPlatform))
 
         const response = await request(app)
-            .post('/racing-games/123/released-on-gaming-platform/567')
+            .post('/racing-games/123/relationships/released-on-gaming-platform')
+            .send({
+                data: {
+                    type: ControllerNodeType.GamingPlatform,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›released-on-gaming-platform‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/racing-games/123/released-on-gaming-platform/567')
+            .post('/racing-games/123/relationships/released-on-gaming-platform')
+            .send({
+                data: {
+                    type: "released-on-gaming-platform",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›released-on-gaming-platform‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/racing-games/123/released-on-gaming-platform/567')
+            .post('/racing-games/123/relationships/released-on-gaming-platform')
+            .send({
+                data: {
+                    type: "released-on-gaming-platform",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›released-on-gaming-platform‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/racing-games/123/released-on-gaming-platform/567')
+            .post('/racing-games/123/relationships/released-on-gaming-platform')
+            .send({
+                data: {
+                    type: ControllerNodeType.GamingPlatform,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

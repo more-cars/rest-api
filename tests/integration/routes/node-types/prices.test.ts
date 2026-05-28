@@ -48,7 +48,13 @@ describe('Prices', () => {
 
     test('Create ›for-car-model-variant‹ relationship', async () => {
         await request(app)
-            .post('/prices/123/for-car-model-variant/456')
+            .post('/prices/123/relationships/for-car-model-variant')
+            .send({
+                data: {
+                    type: "for-car-model-variant",
+                    id: 456,
+                }
+            })
 
         expect(PriceController.createForCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
@@ -64,7 +70,13 @@ describe('Prices', () => {
 
     test('Delete ›for-car-model-variant‹ relationship', async () => {
         await request(app)
-            .delete('/prices/123/for-car-model-variant/456')
+            .delete('/prices/123/relationships/for-car-model-variant')
+            .send({
+                data: {
+                    type: "for-car-model-variant",
+                    id: 456,
+                },
+            })
 
         expect(PriceController.deleteForCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
@@ -72,7 +84,13 @@ describe('Prices', () => {
 
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
-            .post('/prices/123/has-image/456')
+            .post('/prices/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                }
+            })
 
         expect(PriceController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -88,7 +106,13 @@ describe('Prices', () => {
 
     test('Delete ›has-image‹ relationship', async () => {
         await request(app)
-            .delete('/prices/123/has-image/456')
+            .delete('/prices/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                },
+            })
 
         expect(PriceController.deleteHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -96,7 +120,13 @@ describe('Prices', () => {
 
     test('Create ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .post('/prices/123/has-prime-image/456')
+            .post('/prices/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                }
+            })
 
         expect(PriceController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -112,7 +142,13 @@ describe('Prices', () => {
 
     test('Delete ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .delete('/prices/123/has-prime-image/456')
+            .delete('/prices/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                },
+            })
 
         expect(PriceController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)

@@ -2,6 +2,7 @@ import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {ProgrammeEpisode} from "../../../../../../src/models/node-types/programme-episodes/ProgrammeEpisode"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {app} from '../../../../../../src/app'
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
@@ -12,10 +13,16 @@ describe('Creating a ›follows-episode‹ relationship', () => {
         ProgrammeEpisode.createFollowsEpisodeRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.ProgrammeEpisodeFollowsEpisode))
 
         const response = await request(app)
-            .post('/programme-episodes/123/follows-episode/567')
+            .post('/programme-episodes/123/relationships/follows-episode')
+            .send({
+                data: {
+                    type: ControllerNodeType.ProgrammeEpisode,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›follows-episode‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/programme-episodes/123/follows-episode/567')
+            .post('/programme-episodes/123/relationships/follows-episode')
+            .send({
+                data: {
+                    type: "follows-episode",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›follows-episode‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/programme-episodes/123/follows-episode/567')
+            .post('/programme-episodes/123/relationships/follows-episode')
+            .send({
+                data: {
+                    type: "follows-episode",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›follows-episode‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/programme-episodes/123/follows-episode/567')
+            .post('/programme-episodes/123/relationships/follows-episode')
+            .send({
+                data: {
+                    type: ControllerNodeType.ProgrammeEpisode,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

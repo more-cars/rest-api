@@ -8,7 +8,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function deleteIsFeaturedInRacingGameRelation(req: express.Request, res: express.Response) {
     const carModelVariantId = parseInt(req.params.carModelVariantId)
-    const racingGameId = parseInt(req.params.racingGameId)
+    const racingGameId = parseInt(req.body?.data?.id)
 
     try {
         await CarModelVariant.deleteIsFeaturedInRacingGameRelationship(carModelVariantId, racingGameId)

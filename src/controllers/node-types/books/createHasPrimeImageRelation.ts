@@ -1,24 +1,19 @@
 import express from "express"
 import {Book} from "../../../models/node-types/books/Book"
-import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
-import {marshalSingleRelation} from "../../relations/marshalSingleRelation"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
-import {sendResponse201} from "../../responses/sendResponse201"
+import {sendResponse204} from "../../responses/sendResponse204"
 import {sendResponse304} from "../../responses/sendResponse304"
 import {sendResponse404} from "../../responses/sendResponse404"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function createHasPrimeImageRelation(req: express.Request, res: express.Response) {
     const bookId = parseInt(req.params.bookId)
-    const imageId = parseInt(req.params.imageId)
+    const imageId = parseInt(req.body?.data?.id)
 
     try {
-        const modelRelation = await Book.createHasPrimeImageRelationship(bookId, imageId)
-        const relation = convertModelRelationToControllerRelation(modelRelation)
-        const marshalledData = marshalSingleRelation(relation)
-
-        return sendResponse201(marshalledData, res)
+        await Book.createHasPrimeImageRelationship(bookId, imageId)
+        return sendResponse204(res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {
             return sendResponse404(res)

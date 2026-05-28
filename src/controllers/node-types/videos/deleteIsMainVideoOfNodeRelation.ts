@@ -8,7 +8,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function deleteIsMainVideoOfNodeRelation(req: express.Request, res: express.Response) {
     const videoId = parseInt(req.params.videoId)
-    const nodeId = parseInt(req.params.nodeId)
+    const nodeId = parseInt(req.body?.data?.id)
 
     try {
         await Video.deleteIsMainVideoOfNodeRelationship(videoId, nodeId)

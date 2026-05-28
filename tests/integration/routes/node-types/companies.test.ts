@@ -49,7 +49,13 @@ describe('Companies', () => {
 
     test('Create ›has-brand‹ relationship', async () => {
         await request(app)
-            .post('/companies/123/has-brand/456')
+            .post('/companies/123/relationships/has-brand')
+            .send({
+                data: {
+                    type: "has-brand",
+                    id: 456,
+                }
+            })
 
         expect(CompanyController.createHasBrandRelation)
             .toHaveBeenCalledTimes(1)
@@ -65,7 +71,13 @@ describe('Companies', () => {
 
     test('Delete ›has-brand‹ relationship', async () => {
         await request(app)
-            .delete('/companies/123/has-brand/456')
+            .delete('/companies/123/relationships/has-brand')
+            .send({
+                data: {
+                    type: "has-brand",
+                    id: 456,
+                },
+            })
 
         expect(CompanyController.deleteHasBrandRelation)
             .toHaveBeenCalledTimes(1)
@@ -73,7 +85,13 @@ describe('Companies', () => {
 
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
-            .post('/companies/123/has-image/456')
+            .post('/companies/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                }
+            })
 
         expect(CompanyController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -89,7 +107,13 @@ describe('Companies', () => {
 
     test('Delete ›has-image‹ relationship', async () => {
         await request(app)
-            .delete('/companies/123/has-image/456')
+            .delete('/companies/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                },
+            })
 
         expect(CompanyController.deleteHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -97,7 +121,13 @@ describe('Companies', () => {
 
     test('Create ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .post('/companies/123/has-prime-image/456')
+            .post('/companies/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                }
+            })
 
         expect(CompanyController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -113,7 +143,13 @@ describe('Companies', () => {
 
     test('Delete ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .delete('/companies/123/has-prime-image/456')
+            .delete('/companies/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                },
+            })
 
         expect(CompanyController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -121,7 +157,13 @@ describe('Companies', () => {
 
     test('Create ›has-video‹ relationship', async () => {
         await request(app)
-            .post('/companies/123/has-video/456')
+            .post('/companies/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                }
+            })
 
         expect(CompanyController.createHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -137,7 +179,13 @@ describe('Companies', () => {
 
     test('Delete ›has-video‹ relationship', async () => {
         await request(app)
-            .delete('/companies/123/has-video/456')
+            .delete('/companies/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                },
+            })
 
         expect(CompanyController.deleteHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -145,7 +193,13 @@ describe('Companies', () => {
 
     test('Create ›has-main-video‹ relationship', async () => {
         await request(app)
-            .post('/companies/123/has-main-video/456')
+            .post('/companies/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                }
+            })
 
         expect(CompanyController.createHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -161,7 +215,13 @@ describe('Companies', () => {
 
     test('Delete ›has-main-video‹ relationship', async () => {
         await request(app)
-            .delete('/companies/123/has-main-video/456')
+            .delete('/companies/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                },
+            })
 
         expect(CompanyController.deleteHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)

@@ -22,7 +22,6 @@ Then('the response should return the {string} {string}',
             if (expectedProperty === 'id') {
                 assert.equal(actualNode.id, expectedNode.fields.id)
             } else {
-                // @ts-expect-error TS7053 TS7053
                 assert.equal(actualNode.attributes[expectedProperty], expectedNode.fields[expectedProperty])
             }
         }

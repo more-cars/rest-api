@@ -10,7 +10,13 @@ describe('Deleting a ›features-racing-game‹ relationship', () => {
         GamingPlatform.deleteFeaturesRacingGameRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/gaming-platforms/123/features-racing-game/567')
+            .delete('/gaming-platforms/123/relationships/features-racing-game')
+            .send({
+                data: {
+                    type: "features-racing-game",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›features-racing-game‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/gaming-platforms/123/features-racing-game/567')
+            .delete('/gaming-platforms/123/relationships/features-racing-game')
+            .send({
+                data: {
+                    type: "features-racing-game",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›features-racing-game‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/gaming-platforms/123/features-racing-game/567')
+            .delete('/gaming-platforms/123/relationships/features-racing-game')
+            .send({
+                data: {
+                    type: "features-racing-game",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›features-racing-game‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/gaming-platforms/123/features-racing-game/567')
+            .delete('/gaming-platforms/123/relationships/features-racing-game')
+            .send({
+                data: {
+                    type: "features-racing-game",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

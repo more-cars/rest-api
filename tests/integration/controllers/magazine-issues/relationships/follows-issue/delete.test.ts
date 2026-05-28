@@ -10,7 +10,13 @@ describe('Deleting a ›follows-issue‹ relationship', () => {
         MagazineIssue.deleteFollowsIssueRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/magazine-issues/123/follows-issue/567')
+            .delete('/magazine-issues/123/relationships/follows-issue')
+            .send({
+                data: {
+                    type: "follows-issue",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›follows-issue‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/magazine-issues/123/follows-issue/567')
+            .delete('/magazine-issues/123/relationships/follows-issue')
+            .send({
+                data: {
+                    type: "follows-issue",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›follows-issue‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/magazine-issues/123/follows-issue/567')
+            .delete('/magazine-issues/123/relationships/follows-issue')
+            .send({
+                data: {
+                    type: "follows-issue",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›follows-issue‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/magazine-issues/123/follows-issue/567')
+            .delete('/magazine-issues/123/relationships/follows-issue')
+            .send({
+                data: {
+                    type: "follows-issue",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

@@ -10,7 +10,13 @@ describe('Deleting a ›achieved-with-car-model-variant‹ relationship', () => 
         LapTime.deleteAchievedWithCarModelVariantRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/lap-times/123/achieved-with-car-model-variant/567')
+            .delete('/lap-times/123/relationships/achieved-with-car-model-variant')
+            .send({
+                data: {
+                    type: "achieved-with-car-model-variant",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›achieved-with-car-model-variant‹ relationship', () => 
             })
 
         const response = await request(app)
-            .delete('/lap-times/123/achieved-with-car-model-variant/567')
+            .delete('/lap-times/123/relationships/achieved-with-car-model-variant')
+            .send({
+                data: {
+                    type: "achieved-with-car-model-variant",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›achieved-with-car-model-variant‹ relationship', () => 
             })
 
         const response = await request(app)
-            .delete('/lap-times/123/achieved-with-car-model-variant/567')
+            .delete('/lap-times/123/relationships/achieved-with-car-model-variant')
+            .send({
+                data: {
+                    type: "achieved-with-car-model-variant",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›achieved-with-car-model-variant‹ relationship', () => 
             })
 
         const response = await request(app)
-            .delete('/lap-times/123/achieved-with-car-model-variant/567')
+            .delete('/lap-times/123/relationships/achieved-with-car-model-variant')
+            .send({
+                data: {
+                    type: "achieved-with-car-model-variant",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

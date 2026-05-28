@@ -2,6 +2,7 @@ import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {MotorShow} from "../../../../../../src/models/node-types/motor-shows/MotorShow"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {app} from '../../../../../../src/app'
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
@@ -12,10 +13,16 @@ describe('Creating a ›presents-car-model-variant‹ relationship', () => {
         MotorShow.createPresentsCarModelVariantRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.MotorShowPresentsCarModelVariant))
 
         const response = await request(app)
-            .post('/motor-shows/123/presents-car-model-variant/567')
+            .post('/motor-shows/123/relationships/presents-car-model-variant')
+            .send({
+                data: {
+                    type: ControllerNodeType.CarModelVariant,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›presents-car-model-variant‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/motor-shows/123/presents-car-model-variant/567')
+            .post('/motor-shows/123/relationships/presents-car-model-variant')
+            .send({
+                data: {
+                    type: "presents-car-model-variant",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›presents-car-model-variant‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/motor-shows/123/presents-car-model-variant/567')
+            .post('/motor-shows/123/relationships/presents-car-model-variant')
+            .send({
+                data: {
+                    type: "presents-car-model-variant",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›presents-car-model-variant‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/motor-shows/123/presents-car-model-variant/567')
+            .post('/motor-shows/123/relationships/presents-car-model-variant')
+            .send({
+                data: {
+                    type: ControllerNodeType.CarModelVariant,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

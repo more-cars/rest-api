@@ -8,7 +8,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function deleteHasEpisodeRelation(req: express.Request, res: express.Response) {
     const programmeId = parseInt(req.params.programmeId)
-    const programmeEpisodeId = parseInt(req.params.programmeEpisodeId)
+    const programmeEpisodeId = parseInt(req.body?.data?.id)
 
     try {
         await Programme.deleteHasEpisodeRelationship(programmeId, programmeEpisodeId)

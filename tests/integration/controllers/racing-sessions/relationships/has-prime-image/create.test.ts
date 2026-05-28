@@ -6,16 +6,23 @@ import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFound
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 
 describe('Creating a ›has-prime-image‹ relationship', () => {
     test('Providing valid data', async () => {
         RacingSession.createHasPrimeImageRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.RacingSessionHasPrimeImage))
 
         const response = await request(app)
-            .post('/racing-sessions/123/has-prime-image/567')
+            .post('/racing-sessions/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: ControllerNodeType.Image,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›has-prime-image‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/racing-sessions/123/has-prime-image/567')
+            .post('/racing-sessions/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›has-prime-image‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/racing-sessions/123/has-prime-image/567')
+            .post('/racing-sessions/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›has-prime-image‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/racing-sessions/123/has-prime-image/567')
+            .post('/racing-sessions/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: ControllerNodeType.Image,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

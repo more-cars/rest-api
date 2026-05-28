@@ -8,7 +8,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function deleteHasPrimeImageRelation(req: express.Request, res: express.Response) {
     const raceTrackId = parseInt(req.params.raceTrackId)
-    const imageId = parseInt(req.params.imageId)
+    const imageId = parseInt(req.body?.data?.id)
 
     try {
         await RaceTrack.deleteHasPrimeImageRelationship(raceTrackId, imageId)

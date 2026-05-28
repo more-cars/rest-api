@@ -8,7 +8,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/lap-times/{{invalidLapTimeId}}/achieved-on-track-layout/{{invalidTrackLayoutId}}"
+  url: "{{baseUrl}}/lap-times/{{invalidLapTimeId}}/relationships/achieved-on-track-layout"
 
 runtime:
   assertions:

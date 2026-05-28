@@ -8,7 +8,16 @@ info:
 
 http:
   method: DELETE
-  url: "{{baseUrl}}/gaming-platforms/{{validGamingPlatformId}}/has-image/{{validImageId}}"
+  url: "{{baseUrl}}/gaming-platforms/{{validGamingPlatformId}}/relationships/has-image"
+  body:
+    type: json
+    data: |-
+      {
+        "data": {
+          "type": "has-image",
+          "id": "{{validImageId}}"
+        }
+      }
 
 runtime:
   assertions:

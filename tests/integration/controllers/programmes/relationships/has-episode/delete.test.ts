@@ -10,7 +10,13 @@ describe('Deleting a ›has-episode‹ relationship', () => {
         Programme.deleteHasEpisodeRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/programmes/123/has-episode/567')
+            .delete('/programmes/123/relationships/has-episode')
+            .send({
+                data: {
+                    type: "has-episode",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›has-episode‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/programmes/123/has-episode/567')
+            .delete('/programmes/123/relationships/has-episode')
+            .send({
+                data: {
+                    type: "has-episode",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›has-episode‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/programmes/123/has-episode/567')
+            .delete('/programmes/123/relationships/has-episode')
+            .send({
+                data: {
+                    type: "has-episode",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›has-episode‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/programmes/123/has-episode/567')
+            .delete('/programmes/123/relationships/has-episode')
+            .send({
+                data: {
+                    type: "has-episode",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

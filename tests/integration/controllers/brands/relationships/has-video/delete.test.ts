@@ -10,7 +10,13 @@ describe('Deleting a ›has-video‹ relationship', () => {
         Brand.deleteHasVideoRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/brands/123/has-video/567')
+            .delete('/brands/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›has-video‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/brands/123/has-video/567')
+            .delete('/brands/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›has-video‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/brands/123/has-video/567')
+            .delete('/brands/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›has-video‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/brands/123/has-video/567')
+            .delete('/brands/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

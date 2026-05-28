@@ -6,16 +6,23 @@ import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFound
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 
 describe('Creating a ›features-car-model-variant‹ relationship', () => {
     test('Providing valid data', async () => {
         RacingGame.createFeaturesCarModelVariantRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.RacingGameFeaturesCarModelVariant))
 
         const response = await request(app)
-            .post('/racing-games/123/features-car-model-variant/567')
+            .post('/racing-games/123/relationships/features-car-model-variant')
+            .send({
+                data: {
+                    type: ControllerNodeType.CarModelVariant,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›features-car-model-variant‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/racing-games/123/features-car-model-variant/567')
+            .post('/racing-games/123/relationships/features-car-model-variant')
+            .send({
+                data: {
+                    type: "features-car-model-variant",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›features-car-model-variant‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/racing-games/123/features-car-model-variant/567')
+            .post('/racing-games/123/relationships/features-car-model-variant')
+            .send({
+                data: {
+                    type: "features-car-model-variant",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›features-car-model-variant‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/racing-games/123/features-car-model-variant/567')
+            .post('/racing-games/123/relationships/features-car-model-variant')
+            .send({
+                data: {
+                    type: ControllerNodeType.CarModelVariant,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

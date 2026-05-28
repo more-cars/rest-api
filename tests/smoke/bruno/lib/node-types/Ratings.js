@@ -1,19 +1,39 @@
 const {post} = require("../apiRequest.js")
 
 exports.createByMagazineIssueRelationship = async function () {
-    await post("/ratings/" + bru.getEnvVar('validRatingId') + "/by-magazine-issue/" + bru.getEnvVar('validMagazineIssueId'))
+    await post("/ratings/" + bru.getEnvVar('validRatingId') + "/relationships/by-magazine-issue", {
+        data: {
+            type: "by-magazine-issue",
+            id: bru.getEnvVar('validMagazineIssueId'),
+        },
+    })
 }
 
 exports.createForCarModelVariantRelationship = async function () {
-    await post("/ratings/" + bru.getEnvVar('validRatingId') + "/for-car-model-variant/" + bru.getEnvVar('validCarModelVariantId'))
+    await post("/ratings/" + bru.getEnvVar('validRatingId') + "/relationships/for-car-model-variant", {
+        data: {
+            type: "for-car-model-variant",
+            id: bru.getEnvVar('validCarModelVariantId'),
+        },
+    })
 }
 
 exports.createHasImageRelationship = async function () {
-    await post("/ratings/" + bru.getEnvVar('validRatingId') + "/has-image/" + bru.getEnvVar('validImageId'))
+    await post("/ratings/" + bru.getEnvVar('validRatingId') + "/relationships/has-image", {
+        data: {
+            type: "has-image",
+            id: bru.getEnvVar('validImageId'),
+        },
+    })
 }
 
 exports.createHasPrimeImageRelationship = async function () {
-    await post("/ratings/" + bru.getEnvVar('validRatingId') + "/has-prime-image/" + bru.getEnvVar('validImageId'))
+    await post("/ratings/" + bru.getEnvVar('validRatingId') + "/relationships/has-prime-image", {
+        data: {
+            type: "has-prime-image",
+            id: bru.getEnvVar('validImageId'),
+        },
+    })
 }
 
 exports.create = async function (prefix = '') {

@@ -10,7 +10,13 @@ describe('Deleting a ›was-used-by-racing-event‹ relationship', () => {
         TrackLayout.deleteWasUsedByRacingEventRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/track-layouts/123/was-used-by-racing-event/567')
+            .delete('/track-layouts/123/relationships/was-used-by-racing-event')
+            .send({
+                data: {
+                    type: "was-used-by-racing-event",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›was-used-by-racing-event‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/track-layouts/123/was-used-by-racing-event/567')
+            .delete('/track-layouts/123/relationships/was-used-by-racing-event')
+            .send({
+                data: {
+                    type: "was-used-by-racing-event",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›was-used-by-racing-event‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/track-layouts/123/was-used-by-racing-event/567')
+            .delete('/track-layouts/123/relationships/was-used-by-racing-event')
+            .send({
+                data: {
+                    type: "was-used-by-racing-event",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›was-used-by-racing-event‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/track-layouts/123/was-used-by-racing-event/567')
+            .delete('/track-layouts/123/relationships/was-used-by-racing-event')
+            .send({
+                data: {
+                    type: "was-used-by-racing-event",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

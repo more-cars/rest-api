@@ -48,7 +48,13 @@ describe('Track Layouts', () => {
 
     test('Create ›belongs-to-race-track‹ relationship', async () => {
         await request(app)
-            .post('/track-layouts/123/belongs-to-race-track/456')
+            .post('/track-layouts/123/relationships/belongs-to-race-track')
+            .send({
+                data: {
+                    type: "belongs-to-race-track",
+                    id: 456,
+                }
+            })
 
         expect(TrackLayoutController.createBelongsToRaceTrackRelation)
             .toHaveBeenCalledTimes(1)
@@ -64,7 +70,13 @@ describe('Track Layouts', () => {
 
     test('Delete ›belongs-to-race-track‹ relationship', async () => {
         await request(app)
-            .delete('/track-layouts/123/belongs-to-race-track/456')
+            .delete('/track-layouts/123/relationships/belongs-to-race-track')
+            .send({
+                data: {
+                    type: "belongs-to-race-track",
+                    id: 456,
+                },
+            })
 
         expect(TrackLayoutController.deleteBelongsToRaceTrackRelation)
             .toHaveBeenCalledTimes(1)
@@ -72,7 +84,13 @@ describe('Track Layouts', () => {
 
     test('Create ›was-used-by-racing-event‹ relationship', async () => {
         await request(app)
-            .post('/track-layouts/123/was-used-by-racing-event/456')
+            .post('/track-layouts/123/relationships/was-used-by-racing-event')
+            .send({
+                data: {
+                    type: "was-used-by-racing-event",
+                    id: 456,
+                }
+            })
 
         expect(TrackLayoutController.createWasUsedByRacingEventRelation)
             .toHaveBeenCalledTimes(1)
@@ -88,7 +106,13 @@ describe('Track Layouts', () => {
 
     test('Delete ›was-used-by-racing-event‹ relationship', async () => {
         await request(app)
-            .delete('/track-layouts/123/was-used-by-racing-event/456')
+            .delete('/track-layouts/123/relationships/was-used-by-racing-event')
+            .send({
+                data: {
+                    type: "was-used-by-racing-event",
+                    id: 456,
+                },
+            })
 
         expect(TrackLayoutController.deleteWasUsedByRacingEventRelation)
             .toHaveBeenCalledTimes(1)
@@ -96,7 +120,13 @@ describe('Track Layouts', () => {
 
     test('Create ›has-lap-time‹ relationship', async () => {
         await request(app)
-            .post('/track-layouts/123/has-lap-time/456')
+            .post('/track-layouts/123/relationships/has-lap-time')
+            .send({
+                data: {
+                    type: "has-lap-time",
+                    id: 456,
+                }
+            })
 
         expect(TrackLayoutController.createHasLapTimeRelation)
             .toHaveBeenCalledTimes(1)
@@ -112,7 +142,13 @@ describe('Track Layouts', () => {
 
     test('Delete ›has-lap-time‹ relationship', async () => {
         await request(app)
-            .delete('/track-layouts/123/has-lap-time/456')
+            .delete('/track-layouts/123/relationships/has-lap-time')
+            .send({
+                data: {
+                    type: "has-lap-time",
+                    id: 456,
+                },
+            })
 
         expect(TrackLayoutController.deleteHasLapTimeRelation)
             .toHaveBeenCalledTimes(1)
@@ -120,7 +156,13 @@ describe('Track Layouts', () => {
 
     test('Create ›is-featured-in-racing-game‹ relationship', async () => {
         await request(app)
-            .post('/track-layouts/123/is-featured-in-racing-game/456')
+            .post('/track-layouts/123/relationships/is-featured-in-racing-game')
+            .send({
+                data: {
+                    type: "is-featured-in-racing-game",
+                    id: 456,
+                }
+            })
 
         expect(TrackLayoutController.createIsFeaturedInRacingGameRelation)
             .toHaveBeenCalledTimes(1)
@@ -136,7 +178,13 @@ describe('Track Layouts', () => {
 
     test('Delete ›is-featured-in-racing-game‹ relationship', async () => {
         await request(app)
-            .delete('/track-layouts/123/is-featured-in-racing-game/456')
+            .delete('/track-layouts/123/relationships/is-featured-in-racing-game')
+            .send({
+                data: {
+                    type: "is-featured-in-racing-game",
+                    id: 456,
+                },
+            })
 
         expect(TrackLayoutController.deleteIsFeaturedInRacingGameRelation)
             .toHaveBeenCalledTimes(1)
@@ -144,7 +192,13 @@ describe('Track Layouts', () => {
 
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
-            .post('/track-layouts/123/has-image/456')
+            .post('/track-layouts/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                }
+            })
 
         expect(TrackLayoutController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -160,7 +214,13 @@ describe('Track Layouts', () => {
 
     test('Delete ›has-image‹ relationship', async () => {
         await request(app)
-            .delete('/track-layouts/123/has-image/456')
+            .delete('/track-layouts/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                },
+            })
 
         expect(TrackLayoutController.deleteHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -168,7 +228,13 @@ describe('Track Layouts', () => {
 
     test('Create ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .post('/track-layouts/123/has-prime-image/456')
+            .post('/track-layouts/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                }
+            })
 
         expect(TrackLayoutController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -184,7 +250,13 @@ describe('Track Layouts', () => {
 
     test('Delete ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .delete('/track-layouts/123/has-prime-image/456')
+            .delete('/track-layouts/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                },
+            })
 
         expect(TrackLayoutController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -192,7 +264,13 @@ describe('Track Layouts', () => {
 
     test('Create ›has-video‹ relationship', async () => {
         await request(app)
-            .post('/track-layouts/123/has-video/456')
+            .post('/track-layouts/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                }
+            })
 
         expect(TrackLayoutController.createHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -208,7 +286,13 @@ describe('Track Layouts', () => {
 
     test('Delete ›has-video‹ relationship', async () => {
         await request(app)
-            .delete('/track-layouts/123/has-video/456')
+            .delete('/track-layouts/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                },
+            })
 
         expect(TrackLayoutController.deleteHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -216,7 +300,13 @@ describe('Track Layouts', () => {
 
     test('Create ›has-main-video‹ relationship', async () => {
         await request(app)
-            .post('/track-layouts/123/has-main-video/456')
+            .post('/track-layouts/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                }
+            })
 
         expect(TrackLayoutController.createHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -232,7 +322,13 @@ describe('Track Layouts', () => {
 
     test('Delete ›has-main-video‹ relationship', async () => {
         await request(app)
-            .delete('/track-layouts/123/has-main-video/456')
+            .delete('/track-layouts/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                },
+            })
 
         expect(TrackLayoutController.deleteHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)

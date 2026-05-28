@@ -10,7 +10,13 @@ describe('Deleting a ›has-racing-event‹ relationship', () => {
         RacingSeries.deleteHasRacingEventRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/racing-series/123/has-racing-event/567')
+            .delete('/racing-series/123/relationships/has-racing-event')
+            .send({
+                data: {
+                    type: "has-racing-event",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›has-racing-event‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/racing-series/123/has-racing-event/567')
+            .delete('/racing-series/123/relationships/has-racing-event')
+            .send({
+                data: {
+                    type: "has-racing-event",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›has-racing-event‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/racing-series/123/has-racing-event/567')
+            .delete('/racing-series/123/relationships/has-racing-event')
+            .send({
+                data: {
+                    type: "has-racing-event",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›has-racing-event‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/racing-series/123/has-racing-event/567')
+            .delete('/racing-series/123/relationships/has-racing-event')
+            .send({
+                data: {
+                    type: "has-racing-event",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

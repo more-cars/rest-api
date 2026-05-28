@@ -10,7 +10,13 @@ describe('Deleting a ›is-variant-of‹ relationship', () => {
         CarModelVariant.deleteIsVariantOfRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/car-model-variants/123/is-variant-of/567')
+            .delete('/car-model-variants/123/relationships/is-variant-of')
+            .send({
+                data: {
+                    type: "is-variant-of",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›is-variant-of‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-model-variants/123/is-variant-of/567')
+            .delete('/car-model-variants/123/relationships/is-variant-of')
+            .send({
+                data: {
+                    type: "is-variant-of",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›is-variant-of‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-model-variants/123/is-variant-of/567')
+            .delete('/car-model-variants/123/relationships/is-variant-of')
+            .send({
+                data: {
+                    type: "is-variant-of",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›is-variant-of‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-model-variants/123/is-variant-of/567')
+            .delete('/car-model-variants/123/relationships/is-variant-of')
+            .send({
+                data: {
+                    type: "is-variant-of",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

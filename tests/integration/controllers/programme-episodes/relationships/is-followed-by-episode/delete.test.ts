@@ -10,7 +10,13 @@ describe('Deleting a ›is-followed-by-episode‹ relationship', () => {
         ProgrammeEpisode.deleteIsFollowedByEpisodeRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/programme-episodes/123/is-followed-by-episode/567')
+            .delete('/programme-episodes/123/relationships/is-followed-by-episode')
+            .send({
+                data: {
+                    type: "is-followed-by-episode",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›is-followed-by-episode‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/programme-episodes/123/is-followed-by-episode/567')
+            .delete('/programme-episodes/123/relationships/is-followed-by-episode')
+            .send({
+                data: {
+                    type: "is-followed-by-episode",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›is-followed-by-episode‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/programme-episodes/123/is-followed-by-episode/567')
+            .delete('/programme-episodes/123/relationships/is-followed-by-episode')
+            .send({
+                data: {
+                    type: "is-followed-by-episode",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›is-followed-by-episode‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/programme-episodes/123/is-followed-by-episode/567')
+            .delete('/programme-episodes/123/relationships/is-followed-by-episode')
+            .send({
+                data: {
+                    type: "is-followed-by-episode",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

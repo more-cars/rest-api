@@ -8,7 +8,16 @@ info:
 
 http:
   method: DELETE
-  url: "{{baseUrl}}/racing-events/{{validRacingEventId}}/took-place-at-race-track/{{validRaceTrackId}}"
+  url: "{{baseUrl}}/racing-events/{{validRacingEventId}}/relationships/took-place-at-race-track"
+  body:
+    type: json
+    data: |-
+      {
+        "data": {
+          "type": "took-place-at-race-track",
+          "id": "{{validRaceTrackId}}"
+        }
+      }
 
 runtime:
   assertions:

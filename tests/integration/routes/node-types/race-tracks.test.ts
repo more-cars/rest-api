@@ -48,7 +48,13 @@ describe('Race Tracks', () => {
 
     test('Create ›has-layout‹ relationship', async () => {
         await request(app)
-            .post('/race-tracks/123/has-layout/456')
+            .post('/race-tracks/123/relationships/has-layout')
+            .send({
+                data: {
+                    type: "has-layout",
+                    id: 456,
+                }
+            })
 
         expect(RaceTrackController.createHasLayoutRelation)
             .toHaveBeenCalledTimes(1)
@@ -64,7 +70,13 @@ describe('Race Tracks', () => {
 
     test('Delete ›has-layout‹ relationship', async () => {
         await request(app)
-            .delete('/race-tracks/123/has-layout/456')
+            .delete('/race-tracks/123/relationships/has-layout')
+            .send({
+                data: {
+                    type: "has-layout",
+                    id: 456,
+                },
+            })
 
         expect(RaceTrackController.deleteHasLayoutRelation)
             .toHaveBeenCalledTimes(1)
@@ -72,7 +84,13 @@ describe('Race Tracks', () => {
 
     test('Create ›hosted-racing-event‹ relationship', async () => {
         await request(app)
-            .post('/race-tracks/123/hosted-racing-event/456')
+            .post('/race-tracks/123/relationships/hosted-racing-event')
+            .send({
+                data: {
+                    type: "hosted-racing-event",
+                    id: 456,
+                }
+            })
 
         expect(RaceTrackController.createHostedRacingEventRelation)
             .toHaveBeenCalledTimes(1)
@@ -88,7 +106,13 @@ describe('Race Tracks', () => {
 
     test('Delete ›hosted-racing-event‹ relationship', async () => {
         await request(app)
-            .delete('/race-tracks/123/hosted-racing-event/456')
+            .delete('/race-tracks/123/relationships/hosted-racing-event')
+            .send({
+                data: {
+                    type: "hosted-racing-event",
+                    id: 456,
+                },
+            })
 
         expect(RaceTrackController.deleteHostedRacingEventRelation)
             .toHaveBeenCalledTimes(1)
@@ -96,7 +120,13 @@ describe('Race Tracks', () => {
 
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
-            .post('/race-tracks/123/has-image/456')
+            .post('/race-tracks/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                }
+            })
 
         expect(RaceTrackController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -112,7 +142,13 @@ describe('Race Tracks', () => {
 
     test('Delete ›has-image‹ relationship', async () => {
         await request(app)
-            .delete('/race-tracks/123/has-image/456')
+            .delete('/race-tracks/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                },
+            })
 
         expect(RaceTrackController.deleteHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -120,7 +156,13 @@ describe('Race Tracks', () => {
 
     test('Create ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .post('/race-tracks/123/has-prime-image/456')
+            .post('/race-tracks/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                }
+            })
 
         expect(RaceTrackController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -136,7 +178,13 @@ describe('Race Tracks', () => {
 
     test('Delete ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .delete('/race-tracks/123/has-prime-image/456')
+            .delete('/race-tracks/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                },
+            })
 
         expect(RaceTrackController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -144,7 +192,13 @@ describe('Race Tracks', () => {
 
     test('Create ›has-video‹ relationship', async () => {
         await request(app)
-            .post('/race-tracks/123/has-video/456')
+            .post('/race-tracks/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                }
+            })
 
         expect(RaceTrackController.createHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -160,7 +214,13 @@ describe('Race Tracks', () => {
 
     test('Delete ›has-video‹ relationship', async () => {
         await request(app)
-            .delete('/race-tracks/123/has-video/456')
+            .delete('/race-tracks/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                },
+            })
 
         expect(RaceTrackController.deleteHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -168,7 +228,13 @@ describe('Race Tracks', () => {
 
     test('Create ›has-main-video‹ relationship', async () => {
         await request(app)
-            .post('/race-tracks/123/has-main-video/456')
+            .post('/race-tracks/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                }
+            })
 
         expect(RaceTrackController.createHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -184,7 +250,13 @@ describe('Race Tracks', () => {
 
     test('Delete ›has-main-video‹ relationship', async () => {
         await request(app)
-            .delete('/race-tracks/123/has-main-video/456')
+            .delete('/race-tracks/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                },
+            })
 
         expect(RaceTrackController.deleteHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)

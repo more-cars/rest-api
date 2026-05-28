@@ -48,7 +48,13 @@ describe('Racing Events', () => {
 
     test('Create ›belongs-to-racing-series‹ relationship', async () => {
         await request(app)
-            .post('/racing-events/123/belongs-to-racing-series/456')
+            .post('/racing-events/123/relationships/belongs-to-racing-series')
+            .send({
+                data: {
+                    type: "belongs-to-racing-series",
+                    id: 456,
+                }
+            })
 
         expect(RacingEventController.createBelongsToRacingSeriesRelation)
             .toHaveBeenCalledTimes(1)
@@ -64,7 +70,13 @@ describe('Racing Events', () => {
 
     test('Delete ›belongs-to-racing-series‹ relationship', async () => {
         await request(app)
-            .delete('/racing-events/123/belongs-to-racing-series/456')
+            .delete('/racing-events/123/relationships/belongs-to-racing-series')
+            .send({
+                data: {
+                    type: "belongs-to-racing-series",
+                    id: 456,
+                },
+            })
 
         expect(RacingEventController.deleteBelongsToRacingSeriesRelation)
             .toHaveBeenCalledTimes(1)
@@ -72,7 +84,13 @@ describe('Racing Events', () => {
 
     test('Create ›is-followed-by-event‹ relationship', async () => {
         await request(app)
-            .post('/racing-events/123/is-followed-by-event/456')
+            .post('/racing-events/123/relationships/is-followed-by-event')
+            .send({
+                data: {
+                    type: "is-followed-by-event",
+                    id: 456,
+                }
+            })
 
         expect(RacingEventController.createIsFollowedByEventRelation)
             .toHaveBeenCalledTimes(1)
@@ -88,7 +106,13 @@ describe('Racing Events', () => {
 
     test('Delete ›is-followed-by-event‹ relationship', async () => {
         await request(app)
-            .delete('/racing-events/123/is-followed-by-event/456')
+            .delete('/racing-events/123/relationships/is-followed-by-event')
+            .send({
+                data: {
+                    type: "is-followed-by-event",
+                    id: 456,
+                },
+            })
 
         expect(RacingEventController.deleteIsFollowedByEventRelation)
             .toHaveBeenCalledTimes(1)
@@ -96,7 +120,13 @@ describe('Racing Events', () => {
 
     test('Create ›follows-event‹ relationship', async () => {
         await request(app)
-            .post('/racing-events/123/follows-event/456')
+            .post('/racing-events/123/relationships/follows-event')
+            .send({
+                data: {
+                    type: "follows-event",
+                    id: 456,
+                }
+            })
 
         expect(RacingEventController.createFollowsEventRelation)
             .toHaveBeenCalledTimes(1)
@@ -112,7 +142,13 @@ describe('Racing Events', () => {
 
     test('Delete ›follows-event‹ relationship', async () => {
         await request(app)
-            .delete('/racing-events/123/follows-event/456')
+            .delete('/racing-events/123/relationships/follows-event')
+            .send({
+                data: {
+                    type: "follows-event",
+                    id: 456,
+                },
+            })
 
         expect(RacingEventController.deleteFollowsEventRelation)
             .toHaveBeenCalledTimes(1)
@@ -120,7 +156,13 @@ describe('Racing Events', () => {
 
     test('Create ›took-place-at-race-track‹ relationship', async () => {
         await request(app)
-            .post('/racing-events/123/took-place-at-race-track/456')
+            .post('/racing-events/123/relationships/took-place-at-race-track')
+            .send({
+                data: {
+                    type: "took-place-at-race-track",
+                    id: 456,
+                }
+            })
 
         expect(RacingEventController.createTookPlaceAtRaceTrackRelation)
             .toHaveBeenCalledTimes(1)
@@ -136,7 +178,13 @@ describe('Racing Events', () => {
 
     test('Delete ›took-place-at-race-track‹ relationship', async () => {
         await request(app)
-            .delete('/racing-events/123/took-place-at-race-track/456')
+            .delete('/racing-events/123/relationships/took-place-at-race-track')
+            .send({
+                data: {
+                    type: "took-place-at-race-track",
+                    id: 456,
+                },
+            })
 
         expect(RacingEventController.deleteTookPlaceAtRaceTrackRelation)
             .toHaveBeenCalledTimes(1)
@@ -144,7 +192,13 @@ describe('Racing Events', () => {
 
     test('Create ›used-the-track-layout‹ relationship', async () => {
         await request(app)
-            .post('/racing-events/123/used-the-track-layout/456')
+            .post('/racing-events/123/relationships/used-the-track-layout')
+            .send({
+                data: {
+                    type: "used-the-track-layout",
+                    id: 456,
+                }
+            })
 
         expect(RacingEventController.createUsedTheTrackLayoutRelation)
             .toHaveBeenCalledTimes(1)
@@ -160,7 +214,13 @@ describe('Racing Events', () => {
 
     test('Delete ›used-the-track-layout‹ relationship', async () => {
         await request(app)
-            .delete('/racing-events/123/used-the-track-layout/456')
+            .delete('/racing-events/123/relationships/used-the-track-layout')
+            .send({
+                data: {
+                    type: "used-the-track-layout",
+                    id: 456,
+                },
+            })
 
         expect(RacingEventController.deleteUsedTheTrackLayoutRelation)
             .toHaveBeenCalledTimes(1)
@@ -168,7 +228,13 @@ describe('Racing Events', () => {
 
     test('Create ›has-racing-session‹ relationship', async () => {
         await request(app)
-            .post('/racing-events/123/has-racing-session/456')
+            .post('/racing-events/123/relationships/has-racing-session')
+            .send({
+                data: {
+                    type: "has-racing-session",
+                    id: 456,
+                }
+            })
 
         expect(RacingEventController.createHasRacingSessionRelation)
             .toHaveBeenCalledTimes(1)
@@ -184,7 +250,13 @@ describe('Racing Events', () => {
 
     test('Delete ›has-racing-session‹ relationship', async () => {
         await request(app)
-            .delete('/racing-events/123/has-racing-session/456')
+            .delete('/racing-events/123/relationships/has-racing-session')
+            .send({
+                data: {
+                    type: "has-racing-session",
+                    id: 456,
+                },
+            })
 
         expect(RacingEventController.deleteHasRacingSessionRelation)
             .toHaveBeenCalledTimes(1)
@@ -192,7 +264,13 @@ describe('Racing Events', () => {
 
     test('Create ›covered-by-magazine-issue‹ relationship', async () => {
         await request(app)
-            .post('/racing-events/123/covered-by-magazine-issue/456')
+            .post('/racing-events/123/relationships/covered-by-magazine-issue')
+            .send({
+                data: {
+                    type: "covered-by-magazine-issue",
+                    id: 456,
+                }
+            })
 
         expect(RacingEventController.createCoveredByMagazineIssueRelation)
             .toHaveBeenCalledTimes(1)
@@ -208,7 +286,13 @@ describe('Racing Events', () => {
 
     test('Delete ›covered-by-magazine-issue‹ relationship', async () => {
         await request(app)
-            .delete('/racing-events/123/covered-by-magazine-issue/456')
+            .delete('/racing-events/123/relationships/covered-by-magazine-issue')
+            .send({
+                data: {
+                    type: "covered-by-magazine-issue",
+                    id: 456,
+                },
+            })
 
         expect(RacingEventController.deleteCoveredByMagazineIssueRelation)
             .toHaveBeenCalledTimes(1)
@@ -216,7 +300,13 @@ describe('Racing Events', () => {
 
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
-            .post('/racing-events/123/has-image/456')
+            .post('/racing-events/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                }
+            })
 
         expect(RacingEventController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -232,7 +322,13 @@ describe('Racing Events', () => {
 
     test('Delete ›has-image‹ relationship', async () => {
         await request(app)
-            .delete('/racing-events/123/has-image/456')
+            .delete('/racing-events/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                },
+            })
 
         expect(RacingEventController.deleteHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -240,7 +336,13 @@ describe('Racing Events', () => {
 
     test('Create ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .post('/racing-events/123/has-prime-image/456')
+            .post('/racing-events/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                }
+            })
 
         expect(RacingEventController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -256,7 +358,13 @@ describe('Racing Events', () => {
 
     test('Delete ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .delete('/racing-events/123/has-prime-image/456')
+            .delete('/racing-events/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                },
+            })
 
         expect(RacingEventController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -264,7 +372,13 @@ describe('Racing Events', () => {
 
     test('Create ›has-video‹ relationship', async () => {
         await request(app)
-            .post('/racing-events/123/has-video/456')
+            .post('/racing-events/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                }
+            })
 
         expect(RacingEventController.createHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -280,7 +394,13 @@ describe('Racing Events', () => {
 
     test('Delete ›has-video‹ relationship', async () => {
         await request(app)
-            .delete('/racing-events/123/has-video/456')
+            .delete('/racing-events/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                },
+            })
 
         expect(RacingEventController.deleteHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -288,7 +408,13 @@ describe('Racing Events', () => {
 
     test('Create ›has-main-video‹ relationship', async () => {
         await request(app)
-            .post('/racing-events/123/has-main-video/456')
+            .post('/racing-events/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                }
+            })
 
         expect(RacingEventController.createHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -304,7 +430,13 @@ describe('Racing Events', () => {
 
     test('Delete ›has-main-video‹ relationship', async () => {
         await request(app)
-            .delete('/racing-events/123/has-main-video/456')
+            .delete('/racing-events/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                },
+            })
 
         expect(RacingEventController.deleteHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)

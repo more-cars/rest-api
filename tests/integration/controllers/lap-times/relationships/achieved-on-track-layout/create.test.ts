@@ -6,16 +6,23 @@ import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFound
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 
 describe('Creating a ›achieved-on-track-layout‹ relationship', () => {
     test('Providing valid data', async () => {
         LapTime.createAchievedOnTrackLayoutRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.LapTimeAchievedOnTrackLayout))
 
         const response = await request(app)
-            .post('/lap-times/123/achieved-on-track-layout/567')
+            .post('/lap-times/123/relationships/achieved-on-track-layout')
+            .send({
+                data: {
+                    type: ControllerNodeType.TrackLayout,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›achieved-on-track-layout‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/lap-times/123/achieved-on-track-layout/567')
+            .post('/lap-times/123/relationships/achieved-on-track-layout')
+            .send({
+                data: {
+                    type: "achieved-on-track-layout",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›achieved-on-track-layout‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/lap-times/123/achieved-on-track-layout/567')
+            .post('/lap-times/123/relationships/achieved-on-track-layout')
+            .send({
+                data: {
+                    type: "achieved-on-track-layout",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›achieved-on-track-layout‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/lap-times/123/achieved-on-track-layout/567')
+            .post('/lap-times/123/relationships/achieved-on-track-layout')
+            .send({
+                data: {
+                    type: ControllerNodeType.TrackLayout,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

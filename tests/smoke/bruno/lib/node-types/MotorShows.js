@@ -1,23 +1,48 @@
 const {post} = require("../apiRequest.js")
 
 exports.createPresentsCarModelVariantRelationship = async function () {
-    await post("/motor-shows/" + bru.getEnvVar('validMotorShowId') + "/presents-car-model-variant/" + bru.getEnvVar('validCarModelVariantId'))
+    await post("/motor-shows/" + bru.getEnvVar('validMotorShowId') + "/relationships/presents-car-model-variant", {
+        data: {
+            type: "presents-car-model-variant",
+            id: bru.getEnvVar('validCarModelVariantId'),
+        },
+    })
 }
 
 exports.createHasImageRelationship = async function () {
-    await post("/motor-shows/" + bru.getEnvVar('validMotorShowId') + "/has-image/" + bru.getEnvVar('validImageId'))
+    await post("/motor-shows/" + bru.getEnvVar('validMotorShowId') + "/relationships/has-image", {
+        data: {
+            type: "has-image",
+            id: bru.getEnvVar('validImageId'),
+        },
+    })
 }
 
 exports.createHasPrimeImageRelationship = async function () {
-    await post("/motor-shows/" + bru.getEnvVar('validMotorShowId') + "/has-prime-image/" + bru.getEnvVar('validImageId'))
+    await post("/motor-shows/" + bru.getEnvVar('validMotorShowId') + "/relationships/has-prime-image", {
+        data: {
+            type: "has-prime-image",
+            id: bru.getEnvVar('validImageId'),
+        },
+    })
 }
 
 exports.createHasVideoRelationship = async function () {
-    await post("/motor-shows/" + bru.getEnvVar('validMotorShowId') + "/has-video/" + bru.getEnvVar('validVideoId'))
+    await post("/motor-shows/" + bru.getEnvVar('validMotorShowId') + "/relationships/has-video", {
+        data: {
+            type: "has-video",
+            id: bru.getEnvVar('validVideoId'),
+        },
+    })
 }
 
 exports.createHasMainVideoRelationship = async function () {
-    await post("/motor-shows/" + bru.getEnvVar('validMotorShowId') + "/has-main-video/" + bru.getEnvVar('validVideoId'))
+    await post("/motor-shows/" + bru.getEnvVar('validMotorShowId') + "/relationships/has-main-video", {
+        data: {
+            type: "has-main-video",
+            id: bru.getEnvVar('validVideoId'),
+        },
+    })
 }
 
 exports.create = async function (prefix = '') {

@@ -8,7 +8,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function deleteFollowsEventRelation(req: express.Request, res: express.Response) {
     const racingEventId = parseInt(req.params.racingEventId)
-    const partnerId = parseInt(req.params.partnerId)
+    const partnerId = parseInt(req.body?.data?.id)
 
     try {
         await RacingEvent.deleteFollowsEventRelationship(racingEventId, partnerId)

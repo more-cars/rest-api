@@ -2,6 +2,7 @@ import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {ModelCarBrand} from "../../../../../../src/models/node-types/model-car-brands/ModelCarBrand"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {app} from '../../../../../../src/app'
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
@@ -12,10 +13,16 @@ describe('Creating a ›created-model-car‹ relationship', () => {
         ModelCarBrand.createCreatedModelCarRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.ModelCarBrandCreatedModelCar))
 
         const response = await request(app)
-            .post('/model-car-brands/123/created-model-car/567')
+            .post('/model-car-brands/123/relationships/created-model-car')
+            .send({
+                data: {
+                    type: ControllerNodeType.ModelCar,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›created-model-car‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/model-car-brands/123/created-model-car/567')
+            .post('/model-car-brands/123/relationships/created-model-car')
+            .send({
+                data: {
+                    type: "created-model-car",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›created-model-car‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/model-car-brands/123/created-model-car/567')
+            .post('/model-car-brands/123/relationships/created-model-car')
+            .send({
+                data: {
+                    type: "created-model-car",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›created-model-car‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/model-car-brands/123/created-model-car/567')
+            .post('/model-car-brands/123/relationships/created-model-car')
+            .send({
+                data: {
+                    type: ControllerNodeType.ModelCar,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

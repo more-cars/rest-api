@@ -8,7 +8,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/car-model-variants/{{invalidCarModelVariantId}}/reviewed-by-magazine-issue-with-rating/{{invalidRatingId}}"
+  url: "{{baseUrl}}/car-model-variants/{{invalidCarModelVariantId}}/relationships/reviewed-by-magazine-issue-with-rating"
 
 runtime:
   assertions:

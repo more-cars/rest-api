@@ -10,7 +10,13 @@ describe('Deleting a ›reviewed-by-magazine-issue-with-rating‹ relationship',
         CarModelVariant.deleteReviewedByMagazineIssueWithRatingRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/car-model-variants/123/reviewed-by-magazine-issue-with-rating/567')
+            .delete('/car-model-variants/123/relationships/reviewed-by-magazine-issue-with-rating')
+            .send({
+                data: {
+                    type: "reviewed-by-magazine-issue-with-rating",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›reviewed-by-magazine-issue-with-rating‹ relationship',
             })
 
         const response = await request(app)
-            .delete('/car-model-variants/123/reviewed-by-magazine-issue-with-rating/567')
+            .delete('/car-model-variants/123/relationships/reviewed-by-magazine-issue-with-rating')
+            .send({
+                data: {
+                    type: "reviewed-by-magazine-issue-with-rating",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›reviewed-by-magazine-issue-with-rating‹ relationship',
             })
 
         const response = await request(app)
-            .delete('/car-model-variants/123/reviewed-by-magazine-issue-with-rating/567')
+            .delete('/car-model-variants/123/relationships/reviewed-by-magazine-issue-with-rating')
+            .send({
+                data: {
+                    type: "reviewed-by-magazine-issue-with-rating",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›reviewed-by-magazine-issue-with-rating‹ relationship',
             })
 
         const response = await request(app)
-            .delete('/car-model-variants/123/reviewed-by-magazine-issue-with-rating/567')
+            .delete('/car-model-variants/123/relationships/reviewed-by-magazine-issue-with-rating')
+            .send({
+                data: {
+                    type: "reviewed-by-magazine-issue-with-rating",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

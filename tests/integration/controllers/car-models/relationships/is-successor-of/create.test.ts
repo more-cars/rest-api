@@ -7,16 +7,23 @@ import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlrea
 import {SemanticError} from "../../../../../../src/models/types/SemanticError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 
 describe('Creating a ›is-successor-of‹ relationship', () => {
     test('Providing valid data', async () => {
         CarModel.createIsSuccessorOfRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.CarModelIsSuccessorOf))
 
         const response = await request(app)
-            .post('/car-models/123/is-successor-of/567')
+            .post('/car-models/123/relationships/is-successor-of')
+            .send({
+                data: {
+                    type: ControllerNodeType.CarModel,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -26,7 +33,13 @@ describe('Creating a ›is-successor-of‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/car-models/123/is-successor-of/567')
+            .post('/car-models/123/relationships/is-successor-of')
+            .send({
+                data: {
+                    type: "is-successor-of",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -39,7 +52,13 @@ describe('Creating a ›is-successor-of‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/car-models/123/is-successor-of/567')
+            .post('/car-models/123/relationships/is-successor-of')
+            .send({
+                data: {
+                    type: "is-successor-of",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -52,7 +71,13 @@ describe('Creating a ›is-successor-of‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/car-models/123/is-successor-of/567')
+            .post('/car-models/123/relationships/is-successor-of')
+            .send({
+                data: {
+                    type: ControllerNodeType.CarModel,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)
@@ -65,7 +90,13 @@ describe('Creating a ›is-successor-of‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/car-models/123/is-successor-of/123')
+            .post('/car-models/123/relationships/is-successor-of')
+            .send({
+                data: {
+                    type: "is-successor-of",
+                    id: 123,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(422)

@@ -6,16 +6,23 @@ import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFound
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 
 describe('Creating a ›has-brand‹ relationship', () => {
     test('Providing valid data', async () => {
         Company.createHasBrandRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.CompanyHasBrand))
 
         const response = await request(app)
-            .post('/companies/123/has-brand/567')
+            .post('/companies/123/relationships/has-brand')
+            .send({
+                data: {
+                    type: ControllerNodeType.Brand,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›has-brand‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/companies/123/has-brand/567')
+            .post('/companies/123/relationships/has-brand')
+            .send({
+                data: {
+                    type: "has-brand",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›has-brand‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/companies/123/has-brand/567')
+            .post('/companies/123/relationships/has-brand')
+            .send({
+                data: {
+                    type: "has-brand",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›has-brand‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/companies/123/has-brand/567')
+            .post('/companies/123/relationships/has-brand')
+            .send({
+                data: {
+                    type: ControllerNodeType.Brand,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

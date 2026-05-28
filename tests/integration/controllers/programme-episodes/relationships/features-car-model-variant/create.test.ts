@@ -2,6 +2,7 @@ import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {ProgrammeEpisode} from "../../../../../../src/models/node-types/programme-episodes/ProgrammeEpisode"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {app} from '../../../../../../src/app'
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
@@ -12,10 +13,16 @@ describe('Creating a ›features-car-model-variant‹ relationship', () => {
         ProgrammeEpisode.createFeaturesCarModelVariantRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.ProgrammeEpisodeFeaturesCarModelVariant))
 
         const response = await request(app)
-            .post('/programme-episodes/123/features-car-model-variant/567')
+            .post('/programme-episodes/123/relationships/features-car-model-variant')
+            .send({
+                data: {
+                    type: ControllerNodeType.CarModelVariant,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›features-car-model-variant‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/programme-episodes/123/features-car-model-variant/567')
+            .post('/programme-episodes/123/relationships/features-car-model-variant')
+            .send({
+                data: {
+                    type: "features-car-model-variant",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›features-car-model-variant‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/programme-episodes/123/features-car-model-variant/567')
+            .post('/programme-episodes/123/relationships/features-car-model-variant')
+            .send({
+                data: {
+                    type: "features-car-model-variant",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›features-car-model-variant‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/programme-episodes/123/features-car-model-variant/567')
+            .post('/programme-episodes/123/relationships/features-car-model-variant')
+            .send({
+                data: {
+                    type: ControllerNodeType.CarModelVariant,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

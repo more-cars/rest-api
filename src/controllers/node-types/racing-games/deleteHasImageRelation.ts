@@ -8,7 +8,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function deleteHasImageRelation(req: express.Request, res: express.Response) {
     const racingGameId = parseInt(req.params.racingGameId)
-    const imageId = parseInt(req.params.imageId)
+    const imageId = parseInt(req.body?.data?.id)
 
     try {
         await RacingGame.deleteHasImageRelationship(racingGameId, imageId)

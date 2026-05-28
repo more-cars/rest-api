@@ -8,7 +8,16 @@ info:
 
 http:
   method: DELETE
-  url: "{{baseUrl}}/session-results/{{validSessionResultId}}/achieved-with-car-model-variant/{{validCarModelVariantId}}"
+  url: "{{baseUrl}}/session-results/{{validSessionResultId}}/relationships/achieved-with-car-model-variant"
+  body:
+    type: json
+    data: |-
+      {
+        "data": {
+          "type": "achieved-with-car-model-variant",
+          "id": "{{validCarModelVariantId}}"
+        }
+      }
 
 runtime:
   assertions:

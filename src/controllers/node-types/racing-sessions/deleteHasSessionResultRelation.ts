@@ -8,7 +8,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function deleteHasSessionResultRelation(req: express.Request, res: express.Response) {
     const racingSessionId = parseInt(req.params.racingSessionId)
-    const sessionResultId = parseInt(req.params.sessionResultId)
+    const sessionResultId = parseInt(req.body?.data?.id)
 
     try {
         await RacingSession.deleteHasSessionResultRelationship(racingSessionId, sessionResultId)

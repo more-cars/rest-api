@@ -1,24 +1,19 @@
 import express from "express"
 import {CarModelVariant} from "../../../models/node-types/car-model-variants/CarModelVariant"
-import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
-import {marshalSingleRelation} from "../../relations/marshalSingleRelation"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
-import {sendResponse201} from "../../responses/sendResponse201"
+import {sendResponse204} from "../../responses/sendResponse204"
 import {sendResponse304} from "../../responses/sendResponse304"
 import {sendResponse404} from "../../responses/sendResponse404"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function createIsVariantOfRelation(req: express.Request, res: express.Response) {
     const carModelVariantId = parseInt(req.params.carModelVariantId)
-    const carModelId = parseInt(req.params.carModelId)
+    const carModelId = parseInt(req.body?.data?.id)
 
     try {
-        const modelRelation = await CarModelVariant.createIsVariantOfRelationship(carModelVariantId, carModelId)
-        const relation = convertModelRelationToControllerRelation(modelRelation)
-        const marshalledData = marshalSingleRelation(relation)
-
-        return sendResponse201(marshalledData, res)
+        await CarModelVariant.createIsVariantOfRelationship(carModelVariantId, carModelId)
+        return sendResponse204(res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {
             return sendResponse404(res)

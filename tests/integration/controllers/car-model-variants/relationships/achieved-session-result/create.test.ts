@@ -6,16 +6,23 @@ import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFound
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 
 describe('Creating a ›achieved-session-result‹ relationship', () => {
     test('Providing valid data', async () => {
         CarModelVariant.createAchievedSessionResultRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.CarModelVariantAchievedSessionResult))
 
         const response = await request(app)
-            .post('/car-model-variants/123/achieved-session-result/567')
+            .post('/car-model-variants/123/relationships/achieved-session-result')
+            .send({
+                data: {
+                    type: ControllerNodeType.SessionResult,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›achieved-session-result‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/car-model-variants/123/achieved-session-result/567')
+            .post('/car-model-variants/123/relationships/achieved-session-result')
+            .send({
+                data: {
+                    type: "achieved-session-result",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›achieved-session-result‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/car-model-variants/123/achieved-session-result/567')
+            .post('/car-model-variants/123/relationships/achieved-session-result')
+            .send({
+                data: {
+                    type: "achieved-session-result",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›achieved-session-result‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/car-model-variants/123/achieved-session-result/567')
+            .post('/car-model-variants/123/relationships/achieved-session-result')
+            .send({
+                data: {
+                    type: ControllerNodeType.SessionResult,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

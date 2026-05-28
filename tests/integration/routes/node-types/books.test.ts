@@ -49,7 +49,13 @@ describe('Books', () => {
 
     test('Create ›covers-car-model-variant‹ relationship', async () => {
         await request(app)
-            .post('/books/123/covers-car-model-variant/456')
+            .post('/books/123/relationships/covers-car-model-variant')
+            .send({
+                data: {
+                    type: "covers-car-model-variant",
+                    id: 456,
+                }
+            })
 
         expect(BookController.createCoversCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
@@ -65,7 +71,13 @@ describe('Books', () => {
 
     test('Delete ›covers-car-model-variant‹ relationship', async () => {
         await request(app)
-            .delete('/books/123/covers-car-model-variant/456')
+            .delete('/books/123/relationships/covers-car-model-variant')
+            .send({
+                data: {
+                    type: "covers-car-model-variant",
+                    id: 456,
+                },
+            })
 
         expect(BookController.deleteCoversCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
@@ -73,7 +85,13 @@ describe('Books', () => {
 
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
-            .post('/books/123/has-image/456')
+            .post('/books/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                }
+            })
 
         expect(BookController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -89,7 +107,13 @@ describe('Books', () => {
 
     test('Delete ›has-image‹ relationship', async () => {
         await request(app)
-            .delete('/books/123/has-image/456')
+            .delete('/books/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                },
+            })
 
         expect(BookController.deleteHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -97,7 +121,13 @@ describe('Books', () => {
 
     test('Create ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .post('/books/123/has-prime-image/456')
+            .post('/books/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                }
+            })
 
         expect(BookController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -113,7 +143,13 @@ describe('Books', () => {
 
     test('Delete ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .delete('/books/123/has-prime-image/456')
+            .delete('/books/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                },
+            })
 
         expect(BookController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -121,7 +157,13 @@ describe('Books', () => {
 
     test('Create ›has-video‹ relationship', async () => {
         await request(app)
-            .post('/books/123/has-video/456')
+            .post('/books/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                }
+            })
 
         expect(BookController.createHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -137,7 +179,13 @@ describe('Books', () => {
 
     test('Delete ›has-video‹ relationship', async () => {
         await request(app)
-            .delete('/books/123/has-video/456')
+            .delete('/books/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                },
+            })
 
         expect(BookController.deleteHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -145,7 +193,13 @@ describe('Books', () => {
 
     test('Create ›has-main-video‹ relationship', async () => {
         await request(app)
-            .post('/books/123/has-main-video/456')
+            .post('/books/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                }
+            })
 
         expect(BookController.createHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -161,7 +215,13 @@ describe('Books', () => {
 
     test('Delete ›has-main-video‹ relationship', async () => {
         await request(app)
-            .delete('/books/123/has-main-video/456')
+            .delete('/books/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                },
+            })
 
         expect(BookController.deleteHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)

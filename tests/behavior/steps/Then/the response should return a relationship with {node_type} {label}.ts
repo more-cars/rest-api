@@ -18,7 +18,6 @@ Then('the response should return a relationship with {string} {string}',
             if (expectedProperty === 'id') {
                 assert.equal(relationResponse.data?.id, expectedNode.fields.id)
             } else {
-                // @ts-expect-error TS7053 TS7053
                 assert.equal(relationResponse.data?.attributes[expectedProperty], expectedNode.fields[expectedProperty])
             }
         }

@@ -8,7 +8,16 @@ info:
 
 http:
   method: DELETE
-  url: "{{baseUrl}}/lap-times/{{validLapTimeId}}/has-prime-image/{{validImageId}}"
+  url: "{{baseUrl}}/lap-times/{{validLapTimeId}}/relationships/has-prime-image"
+  body:
+    type: json
+    data: |-
+      {
+        "data": {
+          "type": "has-prime-image",
+          "id": "{{validImageId}}"
+        }
+      }
 
 runtime:
   assertions:

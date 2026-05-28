@@ -48,7 +48,13 @@ describe('Lap Times', () => {
 
     test('Create ›belongs-to-session-result‹ relationship', async () => {
         await request(app)
-            .post('/lap-times/123/belongs-to-session-result/456')
+            .post('/lap-times/123/relationships/belongs-to-session-result')
+            .send({
+                data: {
+                    type: "belongs-to-session-result",
+                    id: 456,
+                }
+            })
 
         expect(LapTimeController.createBelongsToSessionResultRelation)
             .toHaveBeenCalledTimes(1)
@@ -64,7 +70,13 @@ describe('Lap Times', () => {
 
     test('Delete ›belongs-to-session-result‹ relationship', async () => {
         await request(app)
-            .delete('/lap-times/123/belongs-to-session-result/456')
+            .delete('/lap-times/123/relationships/belongs-to-session-result')
+            .send({
+                data: {
+                    type: "belongs-to-session-result",
+                    id: 456,
+                },
+            })
 
         expect(LapTimeController.deleteBelongsToSessionResultRelation)
             .toHaveBeenCalledTimes(1)
@@ -72,7 +84,13 @@ describe('Lap Times', () => {
 
     test('Create ›achieved-on-track-layout‹ relationship', async () => {
         await request(app)
-            .post('/lap-times/123/achieved-on-track-layout/456')
+            .post('/lap-times/123/relationships/achieved-on-track-layout')
+            .send({
+                data: {
+                    type: "achieved-on-track-layout",
+                    id: 456,
+                }
+            })
 
         expect(LapTimeController.createAchievedOnTrackLayoutRelation)
             .toHaveBeenCalledTimes(1)
@@ -88,7 +106,13 @@ describe('Lap Times', () => {
 
     test('Delete ›achieved-on-track-layout‹ relationship', async () => {
         await request(app)
-            .delete('/lap-times/123/achieved-on-track-layout/456')
+            .delete('/lap-times/123/relationships/achieved-on-track-layout')
+            .send({
+                data: {
+                    type: "achieved-on-track-layout",
+                    id: 456,
+                },
+            })
 
         expect(LapTimeController.deleteAchievedOnTrackLayoutRelation)
             .toHaveBeenCalledTimes(1)
@@ -96,7 +120,13 @@ describe('Lap Times', () => {
 
     test('Create ›achieved-with-car-model-variant‹ relationship', async () => {
         await request(app)
-            .post('/lap-times/123/achieved-with-car-model-variant/456')
+            .post('/lap-times/123/relationships/achieved-with-car-model-variant')
+            .send({
+                data: {
+                    type: "achieved-with-car-model-variant",
+                    id: 456,
+                }
+            })
 
         expect(LapTimeController.createAchievedWithCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
@@ -112,7 +142,13 @@ describe('Lap Times', () => {
 
     test('Delete ›achieved-with-car-model-variant‹ relationship', async () => {
         await request(app)
-            .delete('/lap-times/123/achieved-with-car-model-variant/456')
+            .delete('/lap-times/123/relationships/achieved-with-car-model-variant')
+            .send({
+                data: {
+                    type: "achieved-with-car-model-variant",
+                    id: 456,
+                },
+            })
 
         expect(LapTimeController.deleteAchievedWithCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
@@ -120,7 +156,13 @@ describe('Lap Times', () => {
 
     test('Create ›documented-in-magazine-issue‹ relationship', async () => {
         await request(app)
-            .post('/lap-times/123/documented-in-magazine-issue/456')
+            .post('/lap-times/123/relationships/documented-in-magazine-issue')
+            .send({
+                data: {
+                    type: "documented-in-magazine-issue",
+                    id: 456,
+                }
+            })
 
         expect(LapTimeController.createDocumentedInMagazineIssueRelation)
             .toHaveBeenCalledTimes(1)
@@ -136,7 +178,13 @@ describe('Lap Times', () => {
 
     test('Delete ›documented-in-magazine-issue‹ relationship', async () => {
         await request(app)
-            .delete('/lap-times/123/documented-in-magazine-issue/456')
+            .delete('/lap-times/123/relationships/documented-in-magazine-issue')
+            .send({
+                data: {
+                    type: "documented-in-magazine-issue",
+                    id: 456,
+                },
+            })
 
         expect(LapTimeController.deleteDocumentedInMagazineIssueRelation)
             .toHaveBeenCalledTimes(1)
@@ -144,7 +192,13 @@ describe('Lap Times', () => {
 
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
-            .post('/lap-times/123/has-image/456')
+            .post('/lap-times/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                }
+            })
 
         expect(LapTimeController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -160,7 +214,13 @@ describe('Lap Times', () => {
 
     test('Delete ›has-image‹ relationship', async () => {
         await request(app)
-            .delete('/lap-times/123/has-image/456')
+            .delete('/lap-times/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                },
+            })
 
         expect(LapTimeController.deleteHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -168,7 +228,13 @@ describe('Lap Times', () => {
 
     test('Create ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .post('/lap-times/123/has-prime-image/456')
+            .post('/lap-times/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                }
+            })
 
         expect(LapTimeController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -184,7 +250,13 @@ describe('Lap Times', () => {
 
     test('Delete ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .delete('/lap-times/123/has-prime-image/456')
+            .delete('/lap-times/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                },
+            })
 
         expect(LapTimeController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -192,7 +264,13 @@ describe('Lap Times', () => {
 
     test('Create ›has-video‹ relationship', async () => {
         await request(app)
-            .post('/lap-times/123/has-video/456')
+            .post('/lap-times/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                }
+            })
 
         expect(LapTimeController.createHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -208,7 +286,13 @@ describe('Lap Times', () => {
 
     test('Delete ›has-video‹ relationship', async () => {
         await request(app)
-            .delete('/lap-times/123/has-video/456')
+            .delete('/lap-times/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                },
+            })
 
         expect(LapTimeController.deleteHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -216,7 +300,13 @@ describe('Lap Times', () => {
 
     test('Create ›has-main-video‹ relationship', async () => {
         await request(app)
-            .post('/lap-times/123/has-main-video/456')
+            .post('/lap-times/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                }
+            })
 
         expect(LapTimeController.createHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -232,7 +322,13 @@ describe('Lap Times', () => {
 
     test('Delete ›has-main-video‹ relationship', async () => {
         await request(app)
-            .delete('/lap-times/123/has-main-video/456')
+            .delete('/lap-times/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                },
+            })
 
         expect(LapTimeController.deleteHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)

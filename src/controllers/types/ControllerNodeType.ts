@@ -1,4 +1,5 @@
 export enum ControllerNodeType {
+    Node = 'nodes',
     Company = 'companies',
     Brand = 'brands',
     CarModel = 'car-models',

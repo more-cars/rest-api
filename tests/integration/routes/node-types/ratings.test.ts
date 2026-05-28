@@ -48,7 +48,13 @@ describe('Ratings', () => {
 
     test('Create ›by-magazine-issue‹ relationship', async () => {
         await request(app)
-            .post('/ratings/123/by-magazine-issue/456')
+            .post('/ratings/123/relationships/by-magazine-issue')
+            .send({
+                data: {
+                    type: "by-magazine-issue",
+                    id: 456,
+                }
+            })
 
         expect(RatingController.createByMagazineIssueRelation)
             .toHaveBeenCalledTimes(1)
@@ -64,7 +70,13 @@ describe('Ratings', () => {
 
     test('Delete ›by-magazine-issue‹ relationship', async () => {
         await request(app)
-            .delete('/ratings/123/by-magazine-issue/456')
+            .delete('/ratings/123/relationships/by-magazine-issue')
+            .send({
+                data: {
+                    type: "by-magazine-issue",
+                    id: 456,
+                },
+            })
 
         expect(RatingController.deleteByMagazineIssueRelation)
             .toHaveBeenCalledTimes(1)
@@ -72,7 +84,13 @@ describe('Ratings', () => {
 
     test('Create ›for-car-model-variant‹ relationship', async () => {
         await request(app)
-            .post('/ratings/123/for-car-model-variant/456')
+            .post('/ratings/123/relationships/for-car-model-variant')
+            .send({
+                data: {
+                    type: "for-car-model-variant",
+                    id: 456,
+                }
+            })
 
         expect(RatingController.createForCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
@@ -88,7 +106,13 @@ describe('Ratings', () => {
 
     test('Delete ›for-car-model-variant‹ relationship', async () => {
         await request(app)
-            .delete('/ratings/123/for-car-model-variant/456')
+            .delete('/ratings/123/relationships/for-car-model-variant')
+            .send({
+                data: {
+                    type: "for-car-model-variant",
+                    id: 456,
+                },
+            })
 
         expect(RatingController.deleteForCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
@@ -96,7 +120,13 @@ describe('Ratings', () => {
 
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
-            .post('/ratings/123/has-image/456')
+            .post('/ratings/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                }
+            })
 
         expect(RatingController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -112,7 +142,13 @@ describe('Ratings', () => {
 
     test('Delete ›has-image‹ relationship', async () => {
         await request(app)
-            .delete('/ratings/123/has-image/456')
+            .delete('/ratings/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                },
+            })
 
         expect(RatingController.deleteHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -120,7 +156,13 @@ describe('Ratings', () => {
 
     test('Create ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .post('/ratings/123/has-prime-image/456')
+            .post('/ratings/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                }
+            })
 
         expect(RatingController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -136,7 +178,13 @@ describe('Ratings', () => {
 
     test('Delete ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .delete('/ratings/123/has-prime-image/456')
+            .delete('/ratings/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                },
+            })
 
         expect(RatingController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)

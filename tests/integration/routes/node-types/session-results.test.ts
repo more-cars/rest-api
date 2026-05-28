@@ -48,7 +48,13 @@ describe('Session Results', () => {
 
     test('Create ›belongs-to-racing-session‹ relationship', async () => {
         await request(app)
-            .post('/session-results/123/belongs-to-racing-session/456')
+            .post('/session-results/123/relationships/belongs-to-racing-session')
+            .send({
+                data: {
+                    type: "belongs-to-racing-session",
+                    id: 456,
+                }
+            })
 
         expect(SessionResultController.createBelongsToRacingSessionRelation)
             .toHaveBeenCalledTimes(1)
@@ -64,7 +70,13 @@ describe('Session Results', () => {
 
     test('Delete ›belongs-to-racing-session‹ relationship', async () => {
         await request(app)
-            .delete('/session-results/123/belongs-to-racing-session/456')
+            .delete('/session-results/123/relationships/belongs-to-racing-session')
+            .send({
+                data: {
+                    type: "belongs-to-racing-session",
+                    id: 456,
+                },
+            })
 
         expect(SessionResultController.deleteBelongsToRacingSessionRelation)
             .toHaveBeenCalledTimes(1)
@@ -72,7 +84,13 @@ describe('Session Results', () => {
 
     test('Create ›has-lap-time‹ relationship', async () => {
         await request(app)
-            .post('/session-results/123/has-lap-time/456')
+            .post('/session-results/123/relationships/has-lap-time')
+            .send({
+                data: {
+                    type: "has-lap-time",
+                    id: 456,
+                }
+            })
 
         expect(SessionResultController.createHasLapTimeRelation)
             .toHaveBeenCalledTimes(1)
@@ -88,7 +106,13 @@ describe('Session Results', () => {
 
     test('Delete ›has-lap-time‹ relationship', async () => {
         await request(app)
-            .delete('/session-results/123/has-lap-time/456')
+            .delete('/session-results/123/relationships/has-lap-time')
+            .send({
+                data: {
+                    type: "has-lap-time",
+                    id: 456,
+                },
+            })
 
         expect(SessionResultController.deleteHasLapTimeRelation)
             .toHaveBeenCalledTimes(1)
@@ -96,7 +120,13 @@ describe('Session Results', () => {
 
     test('Create ›achieved-with-car-model-variant‹ relationship', async () => {
         await request(app)
-            .post('/session-results/123/achieved-with-car-model-variant/456')
+            .post('/session-results/123/relationships/achieved-with-car-model-variant')
+            .send({
+                data: {
+                    type: "achieved-with-car-model-variant",
+                    id: 456,
+                }
+            })
 
         expect(SessionResultController.createAchievedWithCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
@@ -112,7 +142,13 @@ describe('Session Results', () => {
 
     test('Delete ›achieved-with-car-model-variant‹ relationship', async () => {
         await request(app)
-            .delete('/session-results/123/achieved-with-car-model-variant/456')
+            .delete('/session-results/123/relationships/achieved-with-car-model-variant')
+            .send({
+                data: {
+                    type: "achieved-with-car-model-variant",
+                    id: 456,
+                },
+            })
 
         expect(SessionResultController.deleteAchievedWithCarModelVariantRelation)
             .toHaveBeenCalledTimes(1)
@@ -120,7 +156,13 @@ describe('Session Results', () => {
 
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
-            .post('/session-results/123/has-image/456')
+            .post('/session-results/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                }
+            })
 
         expect(SessionResultController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -136,7 +178,13 @@ describe('Session Results', () => {
 
     test('Delete ›has-image‹ relationship', async () => {
         await request(app)
-            .delete('/session-results/123/has-image/456')
+            .delete('/session-results/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                },
+            })
 
         expect(SessionResultController.deleteHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -144,7 +192,13 @@ describe('Session Results', () => {
 
     test('Create ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .post('/session-results/123/has-prime-image/456')
+            .post('/session-results/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                }
+            })
 
         expect(SessionResultController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -160,7 +214,13 @@ describe('Session Results', () => {
 
     test('Delete ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .delete('/session-results/123/has-prime-image/456')
+            .delete('/session-results/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                },
+            })
 
         expect(SessionResultController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)

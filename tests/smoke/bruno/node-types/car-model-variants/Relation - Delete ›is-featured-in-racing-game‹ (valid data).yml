@@ -8,7 +8,16 @@ info:
 
 http:
   method: DELETE
-  url: "{{baseUrl}}/car-model-variants/{{validCarModelVariantId}}/is-featured-in-racing-game/{{validRacingGameId}}"
+  url: "{{baseUrl}}/car-model-variants/{{validCarModelVariantId}}/relationships/is-featured-in-racing-game"
+  body:
+    type: json
+    data: |-
+      {
+        "data": {
+          "type": "is-featured-in-racing-game",
+          "id": "{{validRacingGameId}}"
+        }
+      }
 
 runtime:
   assertions:

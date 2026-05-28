@@ -1,11 +1,21 @@
 const {del, post} = require("../apiRequest.js")
 
 exports.createBelongsToNodeRelationship = async function () {
-    await post("/videos/" + bru.getEnvVar('validVideoId') + "/belongs-to-node/" + bru.getEnvVar('validNodeId'))
+    await post("/videos/" + bru.getEnvVar('validVideoId') + "/relationships/belongs-to-node", {
+        data: {
+            type: "belongs-to-node",
+            id: bru.getEnvVar('validNodeId'),
+        },
+    })
 }
 
 exports.createIsMainVideoOfNodeRelationship = async function () {
-    await post("/videos/" + bru.getEnvVar('validVideoId') + "/is-main-video-of-node/" + bru.getEnvVar('validNodeId'))
+    await post("/videos/" + bru.getEnvVar('validVideoId') + "/relationships/is-main-video-of-node", {
+        data: {
+            type: "is-main-video-of-node",
+            id: bru.getEnvVar('validNodeId'),
+        },
+    })
 }
 
 exports.create = async function (prefix = '') {

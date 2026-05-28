@@ -10,7 +10,13 @@ describe('Deleting a ›features-track-layout‹ relationship', () => {
         RacingGame.deleteFeaturesTrackLayoutRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/racing-games/123/features-track-layout/567')
+            .delete('/racing-games/123/relationships/features-track-layout')
+            .send({
+                data: {
+                    type: "features-track-layout",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›features-track-layout‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/racing-games/123/features-track-layout/567')
+            .delete('/racing-games/123/relationships/features-track-layout')
+            .send({
+                data: {
+                    type: "features-track-layout",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›features-track-layout‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/racing-games/123/features-track-layout/567')
+            .delete('/racing-games/123/relationships/features-track-layout')
+            .send({
+                data: {
+                    type: "features-track-layout",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›features-track-layout‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/racing-games/123/features-track-layout/567')
+            .delete('/racing-games/123/relationships/features-track-layout')
+            .send({
+                data: {
+                    type: "features-track-layout",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

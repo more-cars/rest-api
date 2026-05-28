@@ -6,16 +6,23 @@ import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFound
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 
 describe('Creating a ›has-image‹ relationship', () => {
     test('Providing valid data', async () => {
         SessionResult.createHasImageRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.SessionResultHasImage))
 
         const response = await request(app)
-            .post('/session-results/123/has-image/567')
+            .post('/session-results/123/relationships/has-image')
+            .send({
+                data: {
+                    type: ControllerNodeType.Image,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›has-image‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/session-results/123/has-image/567')
+            .post('/session-results/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›has-image‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/session-results/123/has-image/567')
+            .post('/session-results/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›has-image‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/session-results/123/has-image/567')
+            .post('/session-results/123/relationships/has-image')
+            .send({
+                data: {
+                    type: ControllerNodeType.Image,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

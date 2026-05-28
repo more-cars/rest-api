@@ -10,7 +10,13 @@ describe('Deleting a ›is-featured-in-racing-game‹ relationship', () => {
         TrackLayout.deleteIsFeaturedInRacingGameRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/track-layouts/123/is-featured-in-racing-game/567')
+            .delete('/track-layouts/123/relationships/is-featured-in-racing-game')
+            .send({
+                data: {
+                    type: "is-featured-in-racing-game",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›is-featured-in-racing-game‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/track-layouts/123/is-featured-in-racing-game/567')
+            .delete('/track-layouts/123/relationships/is-featured-in-racing-game')
+            .send({
+                data: {
+                    type: "is-featured-in-racing-game",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›is-featured-in-racing-game‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/track-layouts/123/is-featured-in-racing-game/567')
+            .delete('/track-layouts/123/relationships/is-featured-in-racing-game')
+            .send({
+                data: {
+                    type: "is-featured-in-racing-game",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›is-featured-in-racing-game‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/track-layouts/123/is-featured-in-racing-game/567')
+            .delete('/track-layouts/123/relationships/is-featured-in-racing-game')
+            .send({
+                data: {
+                    type: "is-featured-in-racing-game",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

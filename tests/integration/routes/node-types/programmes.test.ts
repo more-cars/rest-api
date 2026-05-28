@@ -48,7 +48,13 @@ describe('Programmes', () => {
 
     test('Create ›has-episode‹ relationship', async () => {
         await request(app)
-            .post('/programmes/123/has-episode/456')
+            .post('/programmes/123/relationships/has-episode')
+            .send({
+                data: {
+                    type: "has-episode",
+                    id: 456,
+                }
+            })
 
         expect(ProgrammeController.createHasEpisodeRelation)
             .toHaveBeenCalledTimes(1)
@@ -64,7 +70,13 @@ describe('Programmes', () => {
 
     test('Delete ›has-episode‹ relationship', async () => {
         await request(app)
-            .delete('/programmes/123/has-episode/456')
+            .delete('/programmes/123/relationships/has-episode')
+            .send({
+                data: {
+                    type: "has-episode",
+                    id: 456,
+                },
+            })
 
         expect(ProgrammeController.deleteHasEpisodeRelation)
             .toHaveBeenCalledTimes(1)
@@ -72,7 +84,13 @@ describe('Programmes', () => {
 
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
-            .post('/programmes/123/has-image/456')
+            .post('/programmes/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                }
+            })
 
         expect(ProgrammeController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -88,7 +106,13 @@ describe('Programmes', () => {
 
     test('Delete ›has-image‹ relationship', async () => {
         await request(app)
-            .delete('/programmes/123/has-image/456')
+            .delete('/programmes/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                },
+            })
 
         expect(ProgrammeController.deleteHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -96,7 +120,13 @@ describe('Programmes', () => {
 
     test('Create ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .post('/programmes/123/has-prime-image/456')
+            .post('/programmes/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                }
+            })
 
         expect(ProgrammeController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -112,7 +142,13 @@ describe('Programmes', () => {
 
     test('Delete ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .delete('/programmes/123/has-prime-image/456')
+            .delete('/programmes/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                },
+            })
 
         expect(ProgrammeController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -120,7 +156,13 @@ describe('Programmes', () => {
 
     test('Create ›has-video‹ relationship', async () => {
         await request(app)
-            .post('/programmes/123/has-video/456')
+            .post('/programmes/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                }
+            })
 
         expect(ProgrammeController.createHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -136,7 +178,13 @@ describe('Programmes', () => {
 
     test('Delete ›has-video‹ relationship', async () => {
         await request(app)
-            .delete('/programmes/123/has-video/456')
+            .delete('/programmes/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                },
+            })
 
         expect(ProgrammeController.deleteHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -144,7 +192,13 @@ describe('Programmes', () => {
 
     test('Create ›has-main-video‹ relationship', async () => {
         await request(app)
-            .post('/programmes/123/has-main-video/456')
+            .post('/programmes/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                }
+            })
 
         expect(ProgrammeController.createHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -160,7 +214,13 @@ describe('Programmes', () => {
 
     test('Delete ›has-main-video‹ relationship', async () => {
         await request(app)
-            .delete('/programmes/123/has-main-video/456')
+            .delete('/programmes/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                },
+            })
 
         expect(ProgrammeController.deleteHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)

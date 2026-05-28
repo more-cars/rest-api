@@ -40,7 +40,13 @@ describe('Images', () => {
 
     test('Create ›belongs-to-node‹ relationship', async () => {
         await request(app)
-            .post('/images/123/belongs-to-node/456')
+            .post('/images/123/relationships/belongs-to-node')
+            .send({
+                data: {
+                    type: "belongs-to-node",
+                    id: 456,
+                }
+            })
 
         expect(ImageController.createBelongsToNodeRelation)
             .toHaveBeenCalledTimes(1)
@@ -56,7 +62,13 @@ describe('Images', () => {
 
     test('Delete ›belongs-to-node‹ relationship', async () => {
         await request(app)
-            .delete('/images/123/belongs-to-node/456')
+            .delete('/images/123/relationships/belongs-to-node')
+            .send({
+                data: {
+                    type: "belongs-to-node",
+                    id: 456,
+                },
+            })
 
         expect(ImageController.deleteBelongsToNodeRelation)
             .toHaveBeenCalledTimes(1)
@@ -64,7 +76,13 @@ describe('Images', () => {
 
     test('Create ›is-prime-image-of-node‹ relationship', async () => {
         await request(app)
-            .post('/images/123/is-prime-image-of-node/456')
+            .post('/images/123/relationships/is-prime-image-of-node')
+            .send({
+                data: {
+                    type: "is-prime-image-of-node",
+                    id: 456,
+                }
+            })
 
         expect(ImageController.createIsPrimeImageOfNodeRelation)
             .toHaveBeenCalledTimes(1)
@@ -80,7 +98,13 @@ describe('Images', () => {
 
     test('Delete ›is-prime-image-of-node‹ relationship', async () => {
         await request(app)
-            .delete('/images/123/is-prime-image-of-node/456')
+            .delete('/images/123/relationships/is-prime-image-of-node')
+            .send({
+                data: {
+                    type: "is-prime-image-of-node",
+                    id: 456,
+                },
+            })
 
         expect(ImageController.deleteIsPrimeImageOfNodeRelation)
             .toHaveBeenCalledTimes(1)

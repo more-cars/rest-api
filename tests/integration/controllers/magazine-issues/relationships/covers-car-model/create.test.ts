@@ -2,6 +2,7 @@ import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {MagazineIssue} from "../../../../../../src/models/node-types/magazine-issues/MagazineIssue"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {app} from '../../../../../../src/app'
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
@@ -12,10 +13,16 @@ describe('Creating a ›covers-car-model‹ relationship', () => {
         MagazineIssue.createCoversCarModelRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.MagazineIssueCoversCarModel))
 
         const response = await request(app)
-            .post('/magazine-issues/123/covers-car-model/567')
+            .post('/magazine-issues/123/relationships/covers-car-model')
+            .send({
+                data: {
+                    type: ControllerNodeType.CarModel,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›covers-car-model‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/magazine-issues/123/covers-car-model/567')
+            .post('/magazine-issues/123/relationships/covers-car-model')
+            .send({
+                data: {
+                    type: "covers-car-model",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›covers-car-model‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/magazine-issues/123/covers-car-model/567')
+            .post('/magazine-issues/123/relationships/covers-car-model')
+            .send({
+                data: {
+                    type: "covers-car-model",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›covers-car-model‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/magazine-issues/123/covers-car-model/567')
+            .post('/magazine-issues/123/relationships/covers-car-model')
+            .send({
+                data: {
+                    type: ControllerNodeType.CarModel,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

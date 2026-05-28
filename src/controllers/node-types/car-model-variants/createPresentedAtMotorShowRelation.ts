@@ -1,24 +1,19 @@
 import express from "express"
 import {CarModelVariant} from "../../../models/node-types/car-model-variants/CarModelVariant"
-import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
-import {marshalSingleRelation} from "../../relations/marshalSingleRelation"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
-import {sendResponse201} from "../../responses/sendResponse201"
+import {sendResponse204} from "../../responses/sendResponse204"
 import {sendResponse304} from "../../responses/sendResponse304"
 import {sendResponse404} from "../../responses/sendResponse404"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function createPresentedAtMotorShowRelation(req: express.Request, res: express.Response) {
     const carModelVariantId = parseInt(req.params.carModelVariantId)
-    const motorShowId = parseInt(req.params.motorShowId)
+    const motorShowId = parseInt(req.body?.data?.id)
 
     try {
-        const modelRelation = await CarModelVariant.createPresentedAtMotorShowRelationship(carModelVariantId, motorShowId)
-        const relation = convertModelRelationToControllerRelation(modelRelation)
-        const marshalledData = marshalSingleRelation(relation)
-
-        return sendResponse201(marshalledData, res)
+        await CarModelVariant.createPresentedAtMotorShowRelationship(carModelVariantId, motorShowId)
+        return sendResponse204(res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {
             return sendResponse404(res)

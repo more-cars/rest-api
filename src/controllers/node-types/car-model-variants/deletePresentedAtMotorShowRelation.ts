@@ -8,7 +8,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function deletePresentedAtMotorShowRelation(req: express.Request, res: express.Response) {
     const carModelVariantId = parseInt(req.params.carModelVariantId)
-    const motorShowId = parseInt(req.params.motorShowId)
+    const motorShowId = parseInt(req.body?.data?.id)
 
     try {
         await CarModelVariant.deletePresentedAtMotorShowRelationship(carModelVariantId, motorShowId)

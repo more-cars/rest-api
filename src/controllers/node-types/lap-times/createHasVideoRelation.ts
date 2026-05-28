@@ -1,24 +1,19 @@
 import express from "express"
 import {LapTime} from "../../../models/node-types/lap-times/LapTime"
-import {convertModelRelationToControllerRelation} from "../../relations/convertModelRelationToControllerRelation"
-import {marshalSingleRelation} from "../../relations/marshalSingleRelation"
 import {NodeNotFoundError} from "../../../models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../models/types/RelAlreadyExistsError"
-import {sendResponse201} from "../../responses/sendResponse201"
+import {sendResponse204} from "../../responses/sendResponse204"
 import {sendResponse304} from "../../responses/sendResponse304"
 import {sendResponse404} from "../../responses/sendResponse404"
 import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function createHasVideoRelation(req: express.Request, res: express.Response) {
     const lapTimeId = parseInt(req.params.lapTimeId)
-    const videoId = parseInt(req.params.videoId)
+    const videoId = parseInt(req.body?.data?.id)
 
     try {
-        const modelRelation = await LapTime.createHasVideoRelationship(lapTimeId, videoId)
-        const relation = convertModelRelationToControllerRelation(modelRelation)
-        const marshalledData = marshalSingleRelation(relation)
-
-        return sendResponse201(marshalledData, res)
+        await LapTime.createHasVideoRelationship(lapTimeId, videoId)
+        return sendResponse204(res)
     } catch (e) {
         if (e instanceof NodeNotFoundError) {
             return sendResponse404(res)

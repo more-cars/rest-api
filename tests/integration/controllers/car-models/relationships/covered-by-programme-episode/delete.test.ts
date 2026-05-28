@@ -10,7 +10,13 @@ describe('Deleting a ›covered-by-programme-episode‹ relationship', () => {
         CarModel.deleteCoveredByProgrammeEpisodeRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/car-models/123/covered-by-programme-episode/567')
+            .delete('/car-models/123/relationships/covered-by-programme-episode')
+            .send({
+                data: {
+                    type: "covered-by-programme-episode",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›covered-by-programme-episode‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-models/123/covered-by-programme-episode/567')
+            .delete('/car-models/123/relationships/covered-by-programme-episode')
+            .send({
+                data: {
+                    type: "covered-by-programme-episode",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›covered-by-programme-episode‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-models/123/covered-by-programme-episode/567')
+            .delete('/car-models/123/relationships/covered-by-programme-episode')
+            .send({
+                data: {
+                    type: "covered-by-programme-episode",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›covered-by-programme-episode‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-models/123/covered-by-programme-episode/567')
+            .delete('/car-models/123/relationships/covered-by-programme-episode')
+            .send({
+                data: {
+                    type: "covered-by-programme-episode",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

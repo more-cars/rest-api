@@ -1,43 +1,93 @@
 const {post} = require("../apiRequest.js")
 
 exports.createBelongsToBrandRelationship = async function () {
-    await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/belongs-to-brand/" + bru.getEnvVar('validBrandId'))
+    await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/relationships/belongs-to-brand", {
+        data: {
+            type: "belongs-to-brand",
+            id: bru.getEnvVar('validBrandId'),
+        },
+    })
 }
 
 exports.createHasSuccessorRelationship = async function () {
-    await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/has-successor/" + bru.getEnvVar('validSecondCarModelId'))
+    await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/relationships/has-successor", {
+        data: {
+            type: "has-successor",
+            id: bru.getEnvVar('validSecondCarModelId'),
+        },
+    })
 }
 
 exports.createIsSuccessorOfRelationship = async function () {
-    await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/is-successor-of/" + bru.getEnvVar('validSecondCarModelId'))
+    await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/relationships/is-successor-of", {
+        data: {
+            type: "is-successor-of",
+            id: bru.getEnvVar('validSecondCarModelId'),
+        },
+    })
 }
 
 exports.createHasVariantRelationship = async function () {
-    await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/has-variant/" + bru.getEnvVar('validCarModelVariantId'))
+    await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/relationships/has-variant", {
+        data: {
+            type: "has-variant",
+            id: bru.getEnvVar('validCarModelVariantId'),
+        },
+    })
 }
 
 exports.createCoveredByMagazineIssueRelationship = async function () {
-    await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/covered-by-magazine-issue/" + bru.getEnvVar('validMagazineIssueId'))
+    await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/relationships/covered-by-magazine-issue", {
+        data: {
+            type: "covered-by-magazine-issue",
+            id: bru.getEnvVar('validMagazineIssueId'),
+        },
+    })
 }
 
 exports.createCoveredByProgrammeEpisodeRelationship = async function () {
-    await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/covered-by-programme-episode/" + bru.getEnvVar('validProgrammeEpisodeId'))
+    await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/relationships/covered-by-programme-episode", {
+        data: {
+            type: "covered-by-programme-episode",
+            id: bru.getEnvVar('validProgrammeEpisodeId'),
+        },
+    })
 }
 
 exports.createHasImageRelationship = async function () {
-    await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/has-image/" + bru.getEnvVar('validImageId'))
+    await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/relationships/has-image", {
+        data: {
+            type: "has-image",
+            id: bru.getEnvVar('validImageId'),
+        },
+    })
 }
 
 exports.createHasPrimeImageRelationship = async function () {
-    await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/has-prime-image/" + bru.getEnvVar('validImageId'))
+    await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/relationships/has-prime-image", {
+        data: {
+            type: "has-prime-image",
+            id: bru.getEnvVar('validImageId'),
+        },
+    })
 }
 
 exports.createHasVideoRelationship = async function () {
-    await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/has-video/" + bru.getEnvVar('validVideoId'))
+    await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/relationships/has-video", {
+        data: {
+            type: "has-video",
+            id: bru.getEnvVar('validVideoId'),
+        },
+    })
 }
 
 exports.createHasMainVideoRelationship = async function () {
-    await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/has-main-video/" + bru.getEnvVar('validVideoId'))
+    await post("/car-models/" + bru.getEnvVar('validCarModelId') + "/relationships/has-main-video", {
+        data: {
+            type: "has-main-video",
+            id: bru.getEnvVar('validVideoId'),
+        },
+    })
 }
 
 exports.create = async function (prefix = '') {

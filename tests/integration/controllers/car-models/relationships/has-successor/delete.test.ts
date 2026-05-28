@@ -10,7 +10,13 @@ describe('Deleting a ›has-successor‹ relationship', () => {
         CarModel.deleteHasSuccessorRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/car-models/123/has-successor/567')
+            .delete('/car-models/123/relationships/has-successor')
+            .send({
+                data: {
+                    type: "has-successor",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›has-successor‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-models/123/has-successor/567')
+            .delete('/car-models/123/relationships/has-successor')
+            .send({
+                data: {
+                    type: "has-successor",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›has-successor‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-models/123/has-successor/567')
+            .delete('/car-models/123/relationships/has-successor')
+            .send({
+                data: {
+                    type: "has-successor",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›has-successor‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-models/123/has-successor/567')
+            .delete('/car-models/123/relationships/has-successor')
+            .send({
+                data: {
+                    type: "has-successor",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

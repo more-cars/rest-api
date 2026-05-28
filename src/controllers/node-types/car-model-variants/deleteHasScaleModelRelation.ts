@@ -8,7 +8,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function deleteHasScaleModelRelation(req: express.Request, res: express.Response) {
     const carModelVariantId = parseInt(req.params.carModelVariantId)
-    const modelCarId = parseInt(req.params.modelCarId)
+    const modelCarId = parseInt(req.body?.data?.id)
 
     try {
         await CarModelVariant.deleteHasScaleModelRelationship(carModelVariantId, modelCarId)

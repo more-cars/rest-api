@@ -8,7 +8,16 @@ info:
 
 http:
   method: DELETE
-  url: "{{baseUrl}}/magazines/{{validMagazineId}}/has-main-video/{{validVideoId}}"
+  url: "{{baseUrl}}/magazines/{{validMagazineId}}/relationships/has-main-video"
+  body:
+    type: json
+    data: |-
+      {
+        "data": {
+          "type": "has-main-video",
+          "id": "{{validVideoId}}"
+        }
+      }
 
 runtime:
   assertions:

@@ -8,7 +8,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function deleteBelongsToCompanyRelation(req: express.Request, res: express.Response) {
     const brandId = parseInt(req.params.brandId)
-    const companyId = parseInt(req.params.companyId)
+    const companyId = parseInt(req.body?.data?.id)
 
     try {
         await Brand.deleteBelongsToCompanyRelationship(brandId, companyId)

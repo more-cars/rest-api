@@ -10,7 +10,13 @@ describe('Deleting a ›has-issue‹ relationship', () => {
         Magazine.deleteHasIssueRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/magazines/123/has-issue/567')
+            .delete('/magazines/123/relationships/has-issue')
+            .send({
+                data: {
+                    type: "has-issue",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›has-issue‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/magazines/123/has-issue/567')
+            .delete('/magazines/123/relationships/has-issue')
+            .send({
+                data: {
+                    type: "has-issue",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›has-issue‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/magazines/123/has-issue/567')
+            .delete('/magazines/123/relationships/has-issue')
+            .send({
+                data: {
+                    type: "has-issue",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›has-issue‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/magazines/123/has-issue/567')
+            .delete('/magazines/123/relationships/has-issue')
+            .send({
+                data: {
+                    type: "has-issue",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

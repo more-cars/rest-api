@@ -8,7 +8,16 @@ info:
 
 http:
   method: DELETE
-  url: "{{baseUrl}}/images/{{validImageId}}/is-prime-image-of-node/{{validNodeId}}"
+  url: "{{baseUrl}}/images/{{validImageId}}/relationships/is-prime-image-of-node"
+  body:
+    type: json
+    data: |-
+      {
+        "data": {
+          "type": "is-prime-image-of-node",
+          "id": "{{validNodeId}}"
+        }
+      }
 
 runtime:
   assertions:

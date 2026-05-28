@@ -10,7 +10,13 @@ describe('Deleting a ›featured-in-programme-episode‹ relationship', () => {
         CarModelVariant.deleteFeaturedInProgrammeEpisodeRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/car-model-variants/123/featured-in-programme-episode/567')
+            .delete('/car-model-variants/123/relationships/featured-in-programme-episode')
+            .send({
+                data: {
+                    type: "featured-in-programme-episode",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›featured-in-programme-episode‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-model-variants/123/featured-in-programme-episode/567')
+            .delete('/car-model-variants/123/relationships/featured-in-programme-episode')
+            .send({
+                data: {
+                    type: "featured-in-programme-episode",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›featured-in-programme-episode‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-model-variants/123/featured-in-programme-episode/567')
+            .delete('/car-model-variants/123/relationships/featured-in-programme-episode')
+            .send({
+                data: {
+                    type: "featured-in-programme-episode",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›featured-in-programme-episode‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-model-variants/123/featured-in-programme-episode/567')
+            .delete('/car-model-variants/123/relationships/featured-in-programme-episode')
+            .send({
+                data: {
+                    type: "featured-in-programme-episode",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

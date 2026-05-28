@@ -4,6 +4,7 @@ import {Video} from "../../../../../../src/models/node-types/videos/Video"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {app} from '../../../../../../src/app'
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 
@@ -12,10 +13,16 @@ describe('Creating a ›is-main-video-of-node‹ relationship', () => {
         Video.createIsMainVideoOfNodeRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.VideoIsMainVideoOfNode))
 
         const response = await request(app)
-            .post('/videos/123/is-main-video-of-node/567')
+            .post('/videos/123/relationships/is-main-video-of-node')
+            .send({
+                data: {
+                    type: ControllerNodeType.Node,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›is-main-video-of-node‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/videos/123/is-main-video-of-node/567')
+            .post('/videos/123/relationships/is-main-video-of-node')
+            .send({
+                data: {
+                    type: "is-main-video-of-node",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›is-main-video-of-node‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/videos/123/is-main-video-of-node/567')
+            .post('/videos/123/relationships/is-main-video-of-node')
+            .send({
+                data: {
+                    type: "is-main-video-of-node",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›is-main-video-of-node‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/videos/123/is-main-video-of-node/567')
+            .post('/videos/123/relationships/is-main-video-of-node')
+            .send({
+                data: {
+                    type: ControllerNodeType.Node,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

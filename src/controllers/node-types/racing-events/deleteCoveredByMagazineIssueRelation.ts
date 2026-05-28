@@ -8,7 +8,7 @@ import {sendResponse500} from "../../responses/sendResponse500"
 
 export async function deleteCoveredByMagazineIssueRelation(req: express.Request, res: express.Response) {
     const racingEventId = parseInt(req.params.racingEventId)
-    const magazineIssueId = parseInt(req.params.magazineIssueId)
+    const magazineIssueId = parseInt(req.body?.data?.id)
 
     try {
         await RacingEvent.deleteCoveredByMagazineIssueRelationship(racingEventId, magazineIssueId)

@@ -48,7 +48,13 @@ describe('Magazines', () => {
 
     test('Create ›has-issue‹ relationship', async () => {
         await request(app)
-            .post('/magazines/123/has-issue/456')
+            .post('/magazines/123/relationships/has-issue')
+            .send({
+                data: {
+                    type: "has-issue",
+                    id: 456,
+                }
+            })
 
         expect(MagazineController.createHasIssueRelation)
             .toHaveBeenCalledTimes(1)
@@ -64,7 +70,13 @@ describe('Magazines', () => {
 
     test('Delete ›has-issue‹ relationship', async () => {
         await request(app)
-            .delete('/magazines/123/has-issue/456')
+            .delete('/magazines/123/relationships/has-issue')
+            .send({
+                data: {
+                    type: "has-issue",
+                    id: 456,
+                },
+            })
 
         expect(MagazineController.deleteHasIssueRelation)
             .toHaveBeenCalledTimes(1)
@@ -72,7 +84,13 @@ describe('Magazines', () => {
 
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
-            .post('/magazines/123/has-image/456')
+            .post('/magazines/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                }
+            })
 
         expect(MagazineController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -88,7 +106,13 @@ describe('Magazines', () => {
 
     test('Delete ›has-image‹ relationship', async () => {
         await request(app)
-            .delete('/magazines/123/has-image/456')
+            .delete('/magazines/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                },
+            })
 
         expect(MagazineController.deleteHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -96,7 +120,13 @@ describe('Magazines', () => {
 
     test('Create ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .post('/magazines/123/has-prime-image/456')
+            .post('/magazines/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                }
+            })
 
         expect(MagazineController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -112,7 +142,13 @@ describe('Magazines', () => {
 
     test('Delete ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .delete('/magazines/123/has-prime-image/456')
+            .delete('/magazines/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                },
+            })
 
         expect(MagazineController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -120,7 +156,13 @@ describe('Magazines', () => {
 
     test('Create ›has-video‹ relationship', async () => {
         await request(app)
-            .post('/magazines/123/has-video/456')
+            .post('/magazines/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                }
+            })
 
         expect(MagazineController.createHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -136,7 +178,13 @@ describe('Magazines', () => {
 
     test('Delete ›has-video‹ relationship', async () => {
         await request(app)
-            .delete('/magazines/123/has-video/456')
+            .delete('/magazines/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                },
+            })
 
         expect(MagazineController.deleteHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -144,7 +192,13 @@ describe('Magazines', () => {
 
     test('Create ›has-main-video‹ relationship', async () => {
         await request(app)
-            .post('/magazines/123/has-main-video/456')
+            .post('/magazines/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                }
+            })
 
         expect(MagazineController.createHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -160,7 +214,13 @@ describe('Magazines', () => {
 
     test('Delete ›has-main-video‹ relationship', async () => {
         await request(app)
-            .delete('/magazines/123/has-main-video/456')
+            .delete('/magazines/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                },
+            })
 
         expect(MagazineController.deleteHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)

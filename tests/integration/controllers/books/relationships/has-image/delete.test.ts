@@ -10,7 +10,13 @@ describe('Deleting a ›has-image‹ relationship', () => {
         Book.deleteHasImageRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/books/123/has-image/567')
+            .delete('/books/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›has-image‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/books/123/has-image/567')
+            .delete('/books/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›has-image‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/books/123/has-image/567')
+            .delete('/books/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›has-image‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/books/123/has-image/567')
+            .delete('/books/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

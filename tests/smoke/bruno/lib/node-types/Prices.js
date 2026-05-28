@@ -1,15 +1,30 @@
 const {post} = require("../apiRequest.js")
 
 exports.createForCarModelVariantRelationship = async function () {
-    await post("/prices/" + bru.getEnvVar('validPriceId') + "/for-car-model-variant/" + bru.getEnvVar('validCarModelVariantId'))
+    await post("/prices/" + bru.getEnvVar('validPriceId') + "/relationships/for-car-model-variant", {
+        data: {
+            type: "for-car-model-variant",
+            id: bru.getEnvVar('validCarModelVariantId'),
+        },
+    })
 }
 
 exports.createHasImageRelationship = async function () {
-    await post("/prices/" + bru.getEnvVar('validPriceId') + "/has-image/" + bru.getEnvVar('validImageId'))
+    await post("/prices/" + bru.getEnvVar('validPriceId') + "/relationships/has-image", {
+        data: {
+            type: "has-image",
+            id: bru.getEnvVar('validImageId'),
+        },
+    })
 }
 
 exports.createHasPrimeImageRelationship = async function () {
-    await post("/prices/" + bru.getEnvVar('validPriceId') + "/has-prime-image/" + bru.getEnvVar('validImageId'))
+    await post("/prices/" + bru.getEnvVar('validPriceId') + "/relationships/has-prime-image", {
+        data: {
+            type: "has-prime-image",
+            id: bru.getEnvVar('validImageId'),
+        },
+    })
 }
 
 exports.create = async function (prefix = '') {

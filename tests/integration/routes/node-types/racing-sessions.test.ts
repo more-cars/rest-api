@@ -48,7 +48,13 @@ describe('Racing Sessions', () => {
 
     test('Create ›belongs-to-racing-event‹ relationship', async () => {
         await request(app)
-            .post('/racing-sessions/123/belongs-to-racing-event/456')
+            .post('/racing-sessions/123/relationships/belongs-to-racing-event')
+            .send({
+                data: {
+                    type: "belongs-to-racing-event",
+                    id: 456,
+                }
+            })
 
         expect(RacingSessionController.createBelongsToRacingEventRelation)
             .toHaveBeenCalledTimes(1)
@@ -64,7 +70,13 @@ describe('Racing Sessions', () => {
 
     test('Delete ›belongs-to-racing-event‹ relationship', async () => {
         await request(app)
-            .delete('/racing-sessions/123/belongs-to-racing-event/456')
+            .delete('/racing-sessions/123/relationships/belongs-to-racing-event')
+            .send({
+                data: {
+                    type: "belongs-to-racing-event",
+                    id: 456,
+                },
+            })
 
         expect(RacingSessionController.deleteBelongsToRacingEventRelation)
             .toHaveBeenCalledTimes(1)
@@ -72,7 +84,13 @@ describe('Racing Sessions', () => {
 
     test('Create ›has-session-result‹ relationship', async () => {
         await request(app)
-            .post('/racing-sessions/123/has-session-result/456')
+            .post('/racing-sessions/123/relationships/has-session-result')
+            .send({
+                data: {
+                    type: "has-session-result",
+                    id: 456,
+                }
+            })
 
         expect(RacingSessionController.createHasSessionResultRelation)
             .toHaveBeenCalledTimes(1)
@@ -88,7 +106,13 @@ describe('Racing Sessions', () => {
 
     test('Delete ›has-session-result‹ relationship', async () => {
         await request(app)
-            .delete('/racing-sessions/123/has-session-result/456')
+            .delete('/racing-sessions/123/relationships/has-session-result')
+            .send({
+                data: {
+                    type: "has-session-result",
+                    id: 456,
+                },
+            })
 
         expect(RacingSessionController.deleteHasSessionResultRelation)
             .toHaveBeenCalledTimes(1)
@@ -96,7 +120,13 @@ describe('Racing Sessions', () => {
 
     test('Create ›has-image‹ relationship', async () => {
         await request(app)
-            .post('/racing-sessions/123/has-image/456')
+            .post('/racing-sessions/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                }
+            })
 
         expect(RacingSessionController.createHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -112,7 +142,13 @@ describe('Racing Sessions', () => {
 
     test('Delete ›has-image‹ relationship', async () => {
         await request(app)
-            .delete('/racing-sessions/123/has-image/456')
+            .delete('/racing-sessions/123/relationships/has-image')
+            .send({
+                data: {
+                    type: "has-image",
+                    id: 456,
+                },
+            })
 
         expect(RacingSessionController.deleteHasImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -120,7 +156,13 @@ describe('Racing Sessions', () => {
 
     test('Create ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .post('/racing-sessions/123/has-prime-image/456')
+            .post('/racing-sessions/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                }
+            })
 
         expect(RacingSessionController.createHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -136,7 +178,13 @@ describe('Racing Sessions', () => {
 
     test('Delete ›has-prime-image‹ relationship', async () => {
         await request(app)
-            .delete('/racing-sessions/123/has-prime-image/456')
+            .delete('/racing-sessions/123/relationships/has-prime-image')
+            .send({
+                data: {
+                    type: "has-prime-image",
+                    id: 456,
+                },
+            })
 
         expect(RacingSessionController.deleteHasPrimeImageRelation)
             .toHaveBeenCalledTimes(1)
@@ -144,7 +192,13 @@ describe('Racing Sessions', () => {
 
     test('Create ›has-video‹ relationship', async () => {
         await request(app)
-            .post('/racing-sessions/123/has-video/456')
+            .post('/racing-sessions/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                }
+            })
 
         expect(RacingSessionController.createHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -160,7 +214,13 @@ describe('Racing Sessions', () => {
 
     test('Delete ›has-video‹ relationship', async () => {
         await request(app)
-            .delete('/racing-sessions/123/has-video/456')
+            .delete('/racing-sessions/123/relationships/has-video')
+            .send({
+                data: {
+                    type: "has-video",
+                    id: 456,
+                },
+            })
 
         expect(RacingSessionController.deleteHasVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -168,7 +228,13 @@ describe('Racing Sessions', () => {
 
     test('Create ›has-main-video‹ relationship', async () => {
         await request(app)
-            .post('/racing-sessions/123/has-main-video/456')
+            .post('/racing-sessions/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                }
+            })
 
         expect(RacingSessionController.createHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)
@@ -184,7 +250,13 @@ describe('Racing Sessions', () => {
 
     test('Delete ›has-main-video‹ relationship', async () => {
         await request(app)
-            .delete('/racing-sessions/123/has-main-video/456')
+            .delete('/racing-sessions/123/relationships/has-main-video')
+            .send({
+                data: {
+                    type: "has-main-video",
+                    id: 456,
+                },
+            })
 
         expect(RacingSessionController.deleteHasMainVideoRelation)
             .toHaveBeenCalledTimes(1)

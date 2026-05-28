@@ -6,16 +6,23 @@ import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFound
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 
 describe('Creating a ›features-racing-game‹ relationship', () => {
     test('Providing valid data', async () => {
         GamingPlatform.createFeaturesRacingGameRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.GamingPlatformFeaturesRacingGame))
 
         const response = await request(app)
-            .post('/gaming-platforms/123/features-racing-game/567')
+            .post('/gaming-platforms/123/relationships/features-racing-game')
+            .send({
+                data: {
+                    type: ControllerNodeType.RacingGame,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›features-racing-game‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/gaming-platforms/123/features-racing-game/567')
+            .post('/gaming-platforms/123/relationships/features-racing-game')
+            .send({
+                data: {
+                    type: "features-racing-game",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›features-racing-game‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/gaming-platforms/123/features-racing-game/567')
+            .post('/gaming-platforms/123/relationships/features-racing-game')
+            .send({
+                data: {
+                    type: "features-racing-game",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›features-racing-game‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/gaming-platforms/123/features-racing-game/567')
+            .post('/gaming-platforms/123/relationships/features-racing-game')
+            .send({
+                data: {
+                    type: ControllerNodeType.RacingGame,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

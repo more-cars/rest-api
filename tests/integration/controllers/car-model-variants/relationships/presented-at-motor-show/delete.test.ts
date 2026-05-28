@@ -10,7 +10,13 @@ describe('Deleting a ›presented-at-motor-show‹ relationship', () => {
         CarModelVariant.deletePresentedAtMotorShowRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/car-model-variants/123/presented-at-motor-show/567')
+            .delete('/car-model-variants/123/relationships/presented-at-motor-show')
+            .send({
+                data: {
+                    type: "presented-at-motor-show",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›presented-at-motor-show‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-model-variants/123/presented-at-motor-show/567')
+            .delete('/car-model-variants/123/relationships/presented-at-motor-show')
+            .send({
+                data: {
+                    type: "presented-at-motor-show",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›presented-at-motor-show‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-model-variants/123/presented-at-motor-show/567')
+            .delete('/car-model-variants/123/relationships/presented-at-motor-show')
+            .send({
+                data: {
+                    type: "presented-at-motor-show",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›presented-at-motor-show‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/car-model-variants/123/presented-at-motor-show/567')
+            .delete('/car-model-variants/123/relationships/presented-at-motor-show')
+            .send({
+                data: {
+                    type: "presented-at-motor-show",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

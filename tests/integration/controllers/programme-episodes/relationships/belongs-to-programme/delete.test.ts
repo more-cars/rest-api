@@ -10,7 +10,13 @@ describe('Deleting a ›belongs-to-programme‹ relationship', () => {
         ProgrammeEpisode.deleteBelongsToProgrammeRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/programme-episodes/123/belongs-to-programme/567')
+            .delete('/programme-episodes/123/relationships/belongs-to-programme')
+            .send({
+                data: {
+                    type: "belongs-to-programme",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›belongs-to-programme‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/programme-episodes/123/belongs-to-programme/567')
+            .delete('/programme-episodes/123/relationships/belongs-to-programme')
+            .send({
+                data: {
+                    type: "belongs-to-programme",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›belongs-to-programme‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/programme-episodes/123/belongs-to-programme/567')
+            .delete('/programme-episodes/123/relationships/belongs-to-programme')
+            .send({
+                data: {
+                    type: "belongs-to-programme",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›belongs-to-programme‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/programme-episodes/123/belongs-to-programme/567')
+            .delete('/programme-episodes/123/relationships/belongs-to-programme')
+            .send({
+                data: {
+                    type: "belongs-to-programme",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

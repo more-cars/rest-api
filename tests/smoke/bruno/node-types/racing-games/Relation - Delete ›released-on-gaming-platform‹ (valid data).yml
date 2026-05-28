@@ -8,7 +8,16 @@ info:
 
 http:
   method: DELETE
-  url: "{{baseUrl}}/racing-games/{{validRacingGameId}}/released-on-gaming-platform/{{validGamingPlatformId}}"
+  url: "{{baseUrl}}/racing-games/{{validRacingGameId}}/relationships/released-on-gaming-platform"
+  body:
+    type: json
+    data: |-
+      {
+        "data": {
+          "type": "released-on-gaming-platform",
+          "id": "{{validGamingPlatformId}}"
+        }
+      }
 
 runtime:
   assertions:

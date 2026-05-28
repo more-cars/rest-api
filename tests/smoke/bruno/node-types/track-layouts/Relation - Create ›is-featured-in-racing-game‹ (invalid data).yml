@@ -8,7 +8,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/track-layouts/{{invalidTrackLayoutId}}/is-featured-in-racing-game/{{invalidRacingGameId}}"
+  url: "{{baseUrl}}/track-layouts/{{invalidTrackLayoutId}}/relationships/is-featured-in-racing-game"
 
 runtime:
   assertions:

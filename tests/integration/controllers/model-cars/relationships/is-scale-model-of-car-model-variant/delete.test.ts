@@ -10,7 +10,13 @@ describe('Deleting a ›is-scale-model-of-car-model-variant‹ relationship', ()
         ModelCar.deleteIsScaleModelOfCarModelVariantRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/model-cars/123/is-scale-model-of-car-model-variant/567')
+            .delete('/model-cars/123/relationships/is-scale-model-of-car-model-variant')
+            .send({
+                data: {
+                    type: "is-scale-model-of-car-model-variant",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›is-scale-model-of-car-model-variant‹ relationship', ()
             })
 
         const response = await request(app)
-            .delete('/model-cars/123/is-scale-model-of-car-model-variant/567')
+            .delete('/model-cars/123/relationships/is-scale-model-of-car-model-variant')
+            .send({
+                data: {
+                    type: "is-scale-model-of-car-model-variant",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›is-scale-model-of-car-model-variant‹ relationship', ()
             })
 
         const response = await request(app)
-            .delete('/model-cars/123/is-scale-model-of-car-model-variant/567')
+            .delete('/model-cars/123/relationships/is-scale-model-of-car-model-variant')
+            .send({
+                data: {
+                    type: "is-scale-model-of-car-model-variant",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›is-scale-model-of-car-model-variant‹ relationship', ()
             })
 
         const response = await request(app)
-            .delete('/model-cars/123/is-scale-model-of-car-model-variant/567')
+            .delete('/model-cars/123/relationships/is-scale-model-of-car-model-variant')
+            .send({
+                data: {
+                    type: "is-scale-model-of-car-model-variant",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

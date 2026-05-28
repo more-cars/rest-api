@@ -6,16 +6,23 @@ import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFound
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 
 describe('Creating a ›achieved-with-car-model-variant‹ relationship', () => {
     test('Providing valid data', async () => {
         SessionResult.createAchievedWithCarModelVariantRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.SessionResultAchievedWithCarModelVariant))
 
         const response = await request(app)
-            .post('/session-results/123/achieved-with-car-model-variant/567')
+            .post('/session-results/123/relationships/achieved-with-car-model-variant')
+            .send({
+                data: {
+                    type: ControllerNodeType.CarModelVariant,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›achieved-with-car-model-variant‹ relationship', () => 
             })
 
         const response = await request(app)
-            .post('/session-results/123/achieved-with-car-model-variant/567')
+            .post('/session-results/123/relationships/achieved-with-car-model-variant')
+            .send({
+                data: {
+                    type: "achieved-with-car-model-variant",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›achieved-with-car-model-variant‹ relationship', () => 
             })
 
         const response = await request(app)
-            .post('/session-results/123/achieved-with-car-model-variant/567')
+            .post('/session-results/123/relationships/achieved-with-car-model-variant')
+            .send({
+                data: {
+                    type: "achieved-with-car-model-variant",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›achieved-with-car-model-variant‹ relationship', () => 
             })
 
         const response = await request(app)
-            .post('/session-results/123/achieved-with-car-model-variant/567')
+            .post('/session-results/123/relationships/achieved-with-car-model-variant')
+            .send({
+                data: {
+                    type: ControllerNodeType.CarModelVariant,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

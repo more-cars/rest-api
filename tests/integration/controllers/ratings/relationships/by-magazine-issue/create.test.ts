@@ -2,6 +2,7 @@ import {describe, expect, test, vi} from 'vitest'
 import request from 'supertest'
 import {Rating} from "../../../../../../src/models/node-types/ratings/Rating"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 import {app} from '../../../../../../src/app'
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
@@ -12,10 +13,16 @@ describe('Creating a ›by-magazine-issue‹ relationship', () => {
         Rating.createByMagazineIssueRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.RatingByMagazineIssue))
 
         const response = await request(app)
-            .post('/ratings/123/by-magazine-issue/567')
+            .post('/ratings/123/relationships/by-magazine-issue')
+            .send({
+                data: {
+                    type: ControllerNodeType.MagazineIssue,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›by-magazine-issue‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/ratings/123/by-magazine-issue/567')
+            .post('/ratings/123/relationships/by-magazine-issue')
+            .send({
+                data: {
+                    type: "by-magazine-issue",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›by-magazine-issue‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/ratings/123/by-magazine-issue/567')
+            .post('/ratings/123/relationships/by-magazine-issue')
+            .send({
+                data: {
+                    type: "by-magazine-issue",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›by-magazine-issue‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/ratings/123/by-magazine-issue/567')
+            .post('/ratings/123/relationships/by-magazine-issue')
+            .send({
+                data: {
+                    type: ControllerNodeType.MagazineIssue,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

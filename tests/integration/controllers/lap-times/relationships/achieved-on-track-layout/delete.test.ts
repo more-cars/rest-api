@@ -10,7 +10,13 @@ describe('Deleting a ›achieved-on-track-layout‹ relationship', () => {
         LapTime.deleteAchievedOnTrackLayoutRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/lap-times/123/achieved-on-track-layout/567')
+            .delete('/lap-times/123/relationships/achieved-on-track-layout')
+            .send({
+                data: {
+                    type: "achieved-on-track-layout",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›achieved-on-track-layout‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/lap-times/123/achieved-on-track-layout/567')
+            .delete('/lap-times/123/relationships/achieved-on-track-layout')
+            .send({
+                data: {
+                    type: "achieved-on-track-layout",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›achieved-on-track-layout‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/lap-times/123/achieved-on-track-layout/567')
+            .delete('/lap-times/123/relationships/achieved-on-track-layout')
+            .send({
+                data: {
+                    type: "achieved-on-track-layout",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›achieved-on-track-layout‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/lap-times/123/achieved-on-track-layout/567')
+            .delete('/lap-times/123/relationships/achieved-on-track-layout')
+            .send({
+                data: {
+                    type: "achieved-on-track-layout",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

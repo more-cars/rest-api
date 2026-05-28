@@ -8,7 +8,7 @@ info:
 
 http:
   method: DELETE
-  url: "{{baseUrl}}/model-cars/{{invalidModelCarId}}/has-video/{{invalidVideoId}}"
+  url: "{{baseUrl}}/model-cars/{{invalidModelCarId}}/relationships/has-video"
 
 runtime:
   assertions:

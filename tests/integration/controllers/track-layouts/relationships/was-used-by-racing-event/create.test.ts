@@ -5,6 +5,7 @@ import {TrackLayout} from "../../../../../../src/models/node-types/track-layouts
 import {NodeNotFoundError} from "../../../../../../src/models/types/NodeNotFoundError"
 import {RelAlreadyExistsError} from "../../../../../../src/models/types/RelAlreadyExistsError"
 import {getFakeRel} from "../../../../../_toolbox/fixtures/relationships/getFakeRel"
+import {ControllerNodeType} from "../../../../../../src/controllers/types/ControllerNodeType"
 import {RelType} from "../../../../../../src/models/relationships/types/RelType"
 
 describe('Creating a ›was-used-by-racing-event‹ relationship', () => {
@@ -12,10 +13,16 @@ describe('Creating a ›was-used-by-racing-event‹ relationship', () => {
         TrackLayout.createWasUsedByRacingEventRelationship = vi.fn().mockReturnValue(getFakeRel(RelType.TrackLayoutWasUsedByRacingEvent))
 
         const response = await request(app)
-            .post('/track-layouts/123/was-used-by-racing-event/567')
+            .post('/track-layouts/123/relationships/was-used-by-racing-event')
+            .send({
+                data: {
+                    type: ControllerNodeType.RacingEvent,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
-            .toBe(201)
+            .toBe(204)
     })
 
     test('Providing invalid data', async () => {
@@ -25,7 +32,13 @@ describe('Creating a ›was-used-by-racing-event‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/track-layouts/123/was-used-by-racing-event/567')
+            .post('/track-layouts/123/relationships/was-used-by-racing-event')
+            .send({
+                data: {
+                    type: "was-used-by-racing-event",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -38,7 +51,13 @@ describe('Creating a ›was-used-by-racing-event‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/track-layouts/123/was-used-by-racing-event/567')
+            .post('/track-layouts/123/relationships/was-used-by-racing-event')
+            .send({
+                data: {
+                    type: "was-used-by-racing-event",
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(500)
@@ -51,7 +70,13 @@ describe('Creating a ›was-used-by-racing-event‹ relationship', () => {
             })
 
         const response = await request(app)
-            .post('/track-layouts/123/was-used-by-racing-event/567')
+            .post('/track-layouts/123/relationships/was-used-by-racing-event')
+            .send({
+                data: {
+                    type: ControllerNodeType.RacingEvent,
+                    id: 567,
+                }
+            })
 
         expect(response.statusCode)
             .toBe(304)

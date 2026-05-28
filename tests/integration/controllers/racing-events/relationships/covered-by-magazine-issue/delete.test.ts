@@ -10,7 +10,13 @@ describe('Deleting a ›covered-by-magazine-issue‹ relationship', () => {
         RacingEvent.deleteCoveredByMagazineIssueRelationship = vi.fn().mockReturnValue(null)
 
         const response = await request(app)
-            .delete('/racing-events/123/covered-by-magazine-issue/567')
+            .delete('/racing-events/123/relationships/covered-by-magazine-issue')
+            .send({
+                data: {
+                    type: "covered-by-magazine-issue",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(204)
@@ -23,7 +29,13 @@ describe('Deleting a ›covered-by-magazine-issue‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/racing-events/123/covered-by-magazine-issue/567')
+            .delete('/racing-events/123/relationships/covered-by-magazine-issue')
+            .send({
+                data: {
+                    type: "covered-by-magazine-issue",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -36,7 +48,13 @@ describe('Deleting a ›covered-by-magazine-issue‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/racing-events/123/covered-by-magazine-issue/567')
+            .delete('/racing-events/123/relationships/covered-by-magazine-issue')
+            .send({
+                data: {
+                    type: "covered-by-magazine-issue",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(404)
@@ -49,7 +67,13 @@ describe('Deleting a ›covered-by-magazine-issue‹ relationship', () => {
             })
 
         const response = await request(app)
-            .delete('/racing-events/123/covered-by-magazine-issue/567')
+            .delete('/racing-events/123/relationships/covered-by-magazine-issue')
+            .send({
+                data: {
+                    type: "covered-by-magazine-issue",
+                    id: 567,
+                },
+            })
 
         expect(response.statusCode)
             .toBe(500)

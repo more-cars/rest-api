@@ -8,7 +8,16 @@ info:
 
 http:
   method: DELETE
-  url: "{{baseUrl}}/race-tracks/{{validRaceTrackId}}/has-layout/{{validTrackLayoutId}}"
+  url: "{{baseUrl}}/race-tracks/{{validRaceTrackId}}/relationships/has-layout"
+  body:
+    type: json
+    data: |-
+      {
+        "data": {
+          "type": "has-layout",
+          "id": "{{validTrackLayoutId}}"
+        }
+      }
 
 runtime:
   assertions:

@@ -8,7 +8,16 @@ info:
 
 http:
   method: DELETE
-  url: "{{baseUrl}}/lap-times/{{validLapTimeId}}/achieved-on-track-layout/{{validTrackLayoutId}}"
+  url: "{{baseUrl}}/lap-times/{{validLapTimeId}}/relationships/achieved-on-track-layout"
+  body:
+    type: json
+    data: |-
+      {
+        "data": {
+          "type": "achieved-on-track-layout",
+          "id": "{{validTrackLayoutId}}"
+        }
+      }
 
 runtime:
   assertions:
