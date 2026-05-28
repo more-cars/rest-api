@@ -27,6 +27,8 @@ runtime:
     - expression: res.status
       operator: eq
       value: "204"
+    - expression: res.headers["cache-control"]
+      operator: isNotEmpty
   scripts:
     - type: before-request
       code: |-
