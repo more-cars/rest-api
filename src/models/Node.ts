@@ -29,11 +29,10 @@ export const Node = {
 
     async findPrimeImages(ids: number[]) {
         const dbRelationships = await fetchNodesPrimeImage(ids)
+        const rels = new Map<number, Rel | null>
 
-        const rels: Rel[] = []
-
-        for (const dbRelationship of dbRelationships) {
-            rels.push({
+        dbRelationships.forEach((dbRelationship, id) => {
+            dbRelationship === undefined ? rels.set(id, null) : rels.set(id, {
                 id: dbRelationship.id,
                 type: RelType.NodeHasPrimeImage,
                 origin: convertDbNodeToModelNode(dbRelationship.start_node),
@@ -41,7 +40,7 @@ export const Node = {
                 created_at: dbRelationship.created_at,
                 updated_at: dbRelationship.updated_at,
             })
-        }
+        })
 
         return rels
     },
