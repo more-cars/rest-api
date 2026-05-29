@@ -27371,6 +27371,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/Brand"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/brands/12345678"
+              }
+            }
           }
         }
       },
@@ -27794,6 +27803,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/CarModel"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/car-models/12345678"
+              }
+            }
           }
         }
       },
@@ -28764,6 +28782,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/CarModelVariant"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/car-model-variants/12345678"
+              }
+            }
           }
         }
       },
@@ -29774,6 +29801,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/Price"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/prices/12345678"
+              }
+            }
           }
         }
       },
@@ -30166,6 +30202,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/Company"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/companies/12345678"
+              }
+            }
           }
         }
       },
@@ -30442,6 +30487,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/RaceTrack"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/race-tracks/12345678"
+              }
+            }
           }
         }
       },
@@ -30934,6 +30988,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/TrackLayout"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/track-layouts/12345678"
+              }
+            }
           }
         }
       },
@@ -31511,6 +31574,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/RacingSeries"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/racing-series/12345678"
+              }
+            }
           }
         }
       },
@@ -31891,6 +31963,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/RacingEvent"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/racing-events/12345678"
+              }
+            }
           }
         }
       },
@@ -32598,6 +32679,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/RacingSession"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/racing-sessions/12345678"
+              }
+            }
           }
         }
       },
@@ -33058,6 +33148,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/SessionResult"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/session-results/12345678"
+              }
+            }
           }
         }
       },
@@ -33424,6 +33523,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/LapTime"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/lap-times/12345678"
+              }
+            }
           }
         }
       },
@@ -33937,6 +34045,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/RacingGame"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/racing-games/12345678"
+              }
+            }
           }
         }
       },
@@ -34429,6 +34546,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/GamingPlatform"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/gaming-platforms/12345678"
+              }
+            }
           }
         }
       },
@@ -34818,6 +34944,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/ModelCar"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/model-cars/12345678"
+              }
+            }
           }
         }
       },
@@ -35234,6 +35369,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/ModelCarBrand"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/model-car-brands/12345678"
+              }
+            }
           }
         }
       },
@@ -35692,6 +35836,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/Magazine"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/magazines/12345678"
+              }
+            }
           }
         }
       },
@@ -36096,6 +36249,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/MagazineIssue"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/magazine-issues/12345678"
+              }
+            }
           }
         }
       },
@@ -36878,6 +37040,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/Rating"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/ratings/12345678"
+              }
+            }
           }
         }
       },
@@ -37203,6 +37374,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/Programme"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/programmes/12345678"
+              }
+            }
           }
         }
       },
@@ -37589,6 +37769,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/ProgrammeEpisode"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/programme-episodes/12345678"
+              }
+            }
           }
         }
       },
@@ -38208,6 +38397,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/MotorShow"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/motor-shows/12345678"
+              }
+            }
           }
         }
       },
@@ -38601,6 +38799,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/Book"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/books/12345678"
+              }
+            }
           }
         }
       },
@@ -39029,6 +39236,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/Video"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/videos/12345678"
+              }
+            }
           }
         }
       },
@@ -39356,6 +39572,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/Image"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/images/12345678"
+              }
+            }
           }
         }
       },
@@ -39707,6 +39932,15 @@
           },
           "attributes": {
             "$ref": "#/components/schemas/Node"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/car-models/12345678"
+              }
+            }
           }
         }
       },

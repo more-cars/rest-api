@@ -62,6 +62,15 @@ skip_if: \"<%= h.changeCase.pascal(nodeType) %>\"
           },
           "attributes": {
             "$ref": "#/components/schemas/<%= h.changeCase.pascal(nodeType) %>"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/<%= h.changeCase.kebab(h.inflection.pluralize(nodeType)) %>/12345678"
+              }
+            }
           }
         }
       },
