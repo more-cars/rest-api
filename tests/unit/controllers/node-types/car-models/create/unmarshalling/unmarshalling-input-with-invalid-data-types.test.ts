@@ -26,7 +26,7 @@ test('unmarshalling a request where the data types are incorrect', async () => {
             built_from: false,
             built_to: "2005",
             generation: null,
-            internal_code: [1, 2, 3],
+            internal_code: undefined,
             total_production: 16365,
         })
 })
