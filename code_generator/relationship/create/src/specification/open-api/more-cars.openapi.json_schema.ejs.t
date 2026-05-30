@@ -21,7 +21,18 @@ skip_if: \"<%= h.changeCase.pascal(startNodeType) %><%= h.changeCase.pascal(rela
             }
           },
           "data": {
-            "$ref": "#/components/schemas/<%= h.changeCase.pascal(endNodeType) %>"
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "<%= h.changeCase.kebab(h.inflection.pluralize(endNodeType)) %>"
+              },
+              "id": {
+                "type": "integer",
+                "example": "87654321"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/<%= h.changeCase.pascal(endNodeType) %>"
           }
         }
       },
