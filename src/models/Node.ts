@@ -32,7 +32,7 @@ export const Node = {
         const rels = new Map<number, Rel | null>
 
         dbRelationships.forEach((dbRelationship, id) => {
-            dbRelationship === undefined ? rels.set(id, null) : rels.set(id, {
+            rels.set(id, dbRelationship === undefined ? null : {
                 id: dbRelationship.id,
                 type: RelType.NodeHasPrimeImage,
                 origin: convertDbNodeToModelNode(dbRelationship.start_node),

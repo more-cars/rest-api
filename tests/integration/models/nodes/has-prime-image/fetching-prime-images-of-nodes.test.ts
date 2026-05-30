@@ -25,20 +25,17 @@ describe('Fetching the prime images of a node collection', () => {
 
         const result = await Node.findPrimeImages([brand.attributes.id, company.attributes.id])
 
-        expect(['brand', 'company'].includes(result[0].origin.node_type))
-            .toBe(true)
-        expect(['brand', 'company'].includes(result[1].origin.node_type))
-            .toBe(true)
+        const brandImageRel = result.get(brand.attributes.id)
+        const companyImageRel = result.get(company.attributes.id)
 
-        expect(result[0].destination.node_type)
-            .toEqual('image')
-        expect(result[1].destination.node_type)
-            .toEqual('image')
+        expect(brandImageRel?.destination.node_type)
+            .toBe(brandImage.node_type)
+        expect(companyImageRel?.destination.node_type)
+            .toBe(companyImage.node_type)
 
-        expect([brandImage.attributes.id, companyImage.attributes.id].includes(result[0].destination.attributes.id))
-            .toBe(true)
-
-        expect([brandImage.attributes.id, companyImage.attributes.id].includes(result[1].destination.attributes.id))
-            .toBe(true)
+        expect(brandImageRel?.destination.attributes.id)
+            .toBe(brandImage.attributes.id)
+        expect(companyImageRel?.destination.attributes.id)
+            .toBe(companyImage.attributes.id)
     })
 })
